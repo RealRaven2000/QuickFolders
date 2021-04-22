@@ -20,7 +20,7 @@ function onLoad(activatedWhileWindowOpen) {
 
     </window>
     
-    `, ["chrome://quickfolders/locale/overlay.dtd"]);
+    `); // , ["chrome://quickfolders/locale/overlay.dtd"]
 
 
     

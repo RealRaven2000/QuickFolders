@@ -12,9 +12,6 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 if (!QuickFolders.StringBundle)
 	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-if (!QuickFolders.Properties)
-	QuickFolders.Properties = QuickFolders.StringBundle.createBundle("chrome://quickfolders/locale/quickfolders.properties")
-		.QueryInterface(Components.interfaces.nsIStringBundle);
 
 QuickFolders.Interface = {
 	PaintModeActive: false,

@@ -8,19 +8,9 @@
   END LICENSE BLOCK */
 
  
-if (typeof ChromeUtils.import == "undefined")
-	Components.utils.import('resource://gre/modules/Services.jsm'); // Thunderbird 52
-else
-	var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
-var QuickFolders_ConsoleService=null;
-
-if (!QuickFolders.StringBundleSvc)
-	QuickFolders.StringBundleSvc = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-if (!QuickFolders.Properties)
-	QuickFolders.Properties =
-		QuickFolders.StringBundleSvc.createBundle("chrome://quickfolders/locale/quickfolders.properties")
-			.QueryInterface(Components.interfaces.nsIStringBundle);
+var QuickFolders_ConsoleService = null;
 
 if (!QuickFolders.Filter)
 	QuickFolders.Filter = {};

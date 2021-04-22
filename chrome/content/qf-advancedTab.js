@@ -158,11 +158,7 @@ QuickFolders.AdvancedTab = {
 		tabName.value = entry.name;
     
     // [mx-l10n]
-    let extension = QuickFolders.Util.localize(this);
-    
-    // localize extra buttons:
-    document.documentElement.getButton("extra1").label = extension.localeData.localizeMessage('btnApply'); // apply
-    document.documentElement.getButton("extra2").label = extension.localeData.localizeMessage('btnReset'); // reset
+    QuickFolders.Util.localize(document, {"extra1":'btnApply', "extra2": 'btnReset'});
 
 		this.updateCSSpreview();
     

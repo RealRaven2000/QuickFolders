@@ -452,13 +452,7 @@ QuickFolders.Options = {
     options.configExtra2Button();
     
     // [mx-l10n]
-    let extension = util.localize(this);
-
-    // dialog buttons need to be localized separately
-    try {
-      document.documentElement.getButton("extra2").label = extension.localeData.localizeMessage('qf.label.donate'); // donate
-    }
-    catch(ex) {;}
+    util.localize(document, {"extra2":'qf.label.donate'});
     
     util.logDebug("QuickFolders.Options.load() - COMPLETE");
   },

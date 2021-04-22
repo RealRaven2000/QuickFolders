@@ -1365,7 +1365,7 @@ QuickFolders.Util = {
 		return s;
 	} ,
   
-  localize: function(that) {
+  localize: function(document, buttons) {
     var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
     var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
     let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
@@ -1374,6 +1374,11 @@ QuickFolders.Util = {
     let i18nScriptPath = extension.rootURI.resolve("/chrome/content/i18n.js");
     Services.scriptloader.loadSubScript(i18nScriptPath, this, "UTF-8");
     i18n.updateDocument({extension});
+    if (buttons) {
+      for (let [id, label] of Object.entries(buttons)) {
+        document.documentElement.getButton(id).label = extension.localeData.localizeMessage(label); // apply
+      }
+    }    
     return extension;
   } ,
 

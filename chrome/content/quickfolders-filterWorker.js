@@ -594,63 +594,6 @@ QuickFolders.FilterWorker = {
 		
 	},
 	
-	selectTemplate : function selectTemplate(element) {
-		if (!element) {
-			element = document.getElementById('qf-filter-templates');
-		}
-		QuickFolders.FilterWorker.SelectedValue = element.selectedItem.value;
-		this.setCurrentFilterTemplate(element.selectedItem.value);
-	} ,
-	
-	
-	acceptTemplate : function acceptTemplate() {
-		QuickFolders.FilterWorker.selectTemplate();
-		QuickFolders.FilterWorker.TemplateSelected = true;
-		let retVals = window.arguments[0];
-		retVals.answer  = true;
-		setTimeout(function() {window.close()});
-		return true;
-	} ,
-	
-	cancelTemplate : function cancelTemplate() {
-		QuickFolders.FilterWorker.TemplateSelected = false;
-		let retVals = window.arguments[0];
-		retVals.answer = false;
-		return true;
-	} ,
-	
-	
-	loadTemplate : function loadTemplate() {
-		// initialize list and preselect last chosen item!
-		let element = document.getElementById('qf-filter-templates'),
-        util = QuickFolders.Util;
-		element.value = this.getCurrentFilterTemplate();
-    try {
-      let loc = Services.locale.requestedLocales[0]; // QuickFolders.Preferences.service.getStringPref("general.useragent.locale");
-      if (loc) {
-        util.logDebug('Locale found: ' + loc);
-        if (loc.indexOf('en')!=0) {
-          // hide quickFilters hint for non-english locales for now:
-          // document.getElementById('quickFiltersPromoBox').collapsed = true;
-        }
-      }
-      
-      window.addEventListener('dialogcancel', function () { return QuickFolders.FilterWorker.cancelTemplate(); });
-      window.addEventListener('dialogextra1', function (event) { 
-        return QuickFolders.FilterWorker.acceptTemplate();
-      });
-      window.addEventListener('dialogextra2', function (event) { 
-        QuickFolders.Util.openLinkInBrowser(event,'https://quickfolders.org/donate.html');
-      });
-      
-      
-    }
-    catch (ex) {
-      util.logException("QuickFolders.FilterWorker.loadTemplate()", ex);
-    }
-    
-	} ,
-	
 	getCurrentFilterTemplate : function getCurrentFilterTemplate() {
 		return QuickFolders.Preferences.getStringPref("filters.currentTemplate");
 	} ,

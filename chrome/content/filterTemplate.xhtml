@@ -6,25 +6,15 @@
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
 <?xml-stylesheet href="chrome://quickfolders/content/filterTemplate.css" type="text/css"?>
 
-<!DOCTYPE dialog SYSTEM "chrome://quickfolders/locale/filters.dtd" >
-
-
-<dialog title="&qf.filters.title;"
+<dialog title="__MSG_qf.filters.title__"
         id="qf-template"
         buttons="extra2,cancel,extra1"
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        buttonlabelcancel="&qf.label.cancel;"
-        buttonlabelextra1="&qf.continueFilter.label;"
-        buttonaccesskeyextra1="&qf.continueFilter.shortcut;"
-        buttonlabelextra2="&qf.label.donate;"
-        ondialogcancel="return QuickFolders.FilterWorker.cancelTemplate();"
-        ondialogextra1="return QuickFolders.FilterWorker.acceptTemplate();"
-        ondialogextra2="QuickFolders.Util.openLinkInBrowser(event,'https://quickfolders.org/donate.html')"
-        onload="QuickFolders.FilterWorker.loadTemplate();"
 >
-<!--	tooltiptextextra2="&qf.donate.tooltip;" -->
+<!--	tooltiptextextra2="__MSG_qf.donate.tooltip__" -->
 
+	<script type="application/javascript" src="chrome://quickfolders/content/filterTemplate.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-preferences.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
@@ -33,11 +23,6 @@
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-filterWorker.js" />
 	
 	<!-- Thunderbird 63: replace with Services.strings.createBundle(..) -->
-  <stringbundleset id="stringbundleset">
-    <stringbundle id="bundle_filter" src="chrome://quickfolders/locale/filters.properties"/>
-  </stringbundleset>
-	
-
 	<prefpane id="qf-template-prefpane" >
 
 		<preferences>
@@ -55,21 +40,21 @@
 
         <richlistbox 
           id="qf-filter-templates"
-          ondblclick="QuickFolders.FilterWorker.selectTemplate(this);"
+          ondblclick="FilterTemplate.selectTemplate(this);"
           onselect="QuickFolders.FilterWorker.selectTemplateFromList(this);"
           preference="qfp-SelectedFilterTemplate"
           rows="6">
-            <richlistitem value='from'>  &qf.filters.template.from; </richlistitem>
-            <richlistitem value='to'>    &qf.filters.template.to;   </richlistitem>
-            <richlistitem value='list'>  &qf.filters.template.list; </richlistitem>
-            <richlistitem value='topic'> &qf.filters.template.topic;</richlistitem>
-            <richlistitem value='tag'>   &qf.filters.template.tag;  </richlistitem>
+            <richlistitem value='from'>  __MSG_qf.filters.template.from__ </richlistitem>
+            <richlistitem value='to'>    __MSG_qf.filters.template.to__   </richlistitem>
+            <richlistitem value='list'>  __MSG_qf.filters.template.list__ </richlistitem>
+            <richlistitem value='topic'> __MSG_qf.filters.template.topic__</richlistitem>
+            <richlistitem value='tag'>   __MSG_qf.filters.template.tag__  </richlistitem>
         </richlistbox>
         <vbox id="quickFiltersPromoBox">
-          <description id="getQuickFilters">&qf.label.getQuickFilters;</description>
+          <description id="getQuickFilters">__MSG_qf.label.getQuickFilters__</description>
           <label id="quickFiltersLink"
                  class="para link" 
-                 onclick="QuickFolders.FilterWorker.showQuickFilters(event);">&qf.label.quickFilters.link;</label>
+                 onclick="QuickFolders.FilterWorker.showQuickFilters(event);">__MSG_qf.label.quickFilters.link__</label>
           
         </vbox>
       </hbox>
@@ -79,7 +64,7 @@
       </hbox>
     </vbox>
 		
-		<description id="qf-whatToDo">&qf.filters.instructions;</description>
+		<description id="qf-whatToDo">__MSG_qf.filters.instructions__</description>
     </prefpane>
 	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
 	<script>

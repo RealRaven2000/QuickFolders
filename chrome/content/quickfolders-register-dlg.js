@@ -238,7 +238,7 @@ var Register = {
 window.document.addEventListener('DOMContentLoaded', 
   Register.l10n.bind(Register) , 
   { once: true });
-window.document.addEventListener('load', 
+window.addEventListener('load', 
   Register.load.bind(Register) , 
   { once: true });
 

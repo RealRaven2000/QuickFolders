@@ -7,8 +7,6 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
-var QuickFolders = window.arguments[0];
-
 var ChangeOrder = {
 	window: null,
 	upString: "",
@@ -16,20 +14,18 @@ var ChangeOrder = {
 
 	getUIstring: function(id, defaultString) {
 		return QuickFolders.Util.getBundleString(id, defaultString);
-	},
-  
-  load: function() {
+	} ,
+
+	init: function(window) {
 		this.window = window;
 		this.showFolders();
-    window.sizeToContent();
-    window.resizeTo(window.outerWidth, window.parent.innerHeight * 0.8);
-  } ,
-
-	init: function() {
-		this.window = window;
-		// [mx-l10n]
-		QuickFolders.Util.localize(window);
+    
+    // [mx-l10n]
+    // QuickFolders.Util.localize(this); <== this will always throw: Uncaught ReferenceError: i18n is not defined
+    // moved sizing stuff into event below!
+    
 	} ,
+  
 
 	$: function(id) {
 		return this.window.document.getElementById(id);
@@ -119,14 +115,18 @@ var ChangeOrder = {
 	} 
 }
 
-window.document.addEventListener("DOMContentLoaded", 
-  ChangeOrder.init,
-  { once: true }
-);
-window.addEventListener("load", 
-  ChangeOrder.load.bind(ChangeOrder), 
-  { once: true }
-);
+function localize() {
+    var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
+    var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+    let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be'); // Add-on Id
 
-window.addEventListener("dialogaccept", function () { ChangeOrder.accept(); });
+    // Provide a relative path to i18.js from the root of your extension.
+    let i18nScriptPath = extension.rootURI.resolve("/chrome/content/i18n.js");
+    Services.scriptloader.loadSubScript(i18nScriptPath, this, "UTF-8");
+    i18n.updateDocument({extension});
+}
+    
+    
+z
+window.addEventListener('dialogaccept', function () { ChangeOrder.accept(); });
 

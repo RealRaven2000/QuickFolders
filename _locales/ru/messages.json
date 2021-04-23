@@ -1,1707 +1,1710 @@
 {
-    "account.label": {
-        "message": "Учётная запись:"
-    },
-    "active-version-info": {
-        "description": "The boldStart and boldEnd parts will be replaced with html tags",
-        "message": "Теперь вы используете {boldStart} версию $addonVer$ {boldEnd} на Thunderbird $appVer$.",
-        "placeholders": {
-            "addonVer": {
-                "content": "$1",
-                "example": "Version 1.1"
-            },
-            "appVer": {
-                "content": "$2",
-                "example": "78.0b4"
-            }
-        }
-    },
-    "addon-authors-struggle": {
-        "message": "Чтобы и дальше оставаться полезными, нам, разработчикам дополнений, теперь необходимо финансировать ресурсы, необходимые для исправления и перезаписи, чтобы наши пользователи могли продолжать пользоваться предоставляемыми нами функциями."
-    },
-    "btn-extend-license": {
-        "message": "Я хочу продлить лицензию на один год"
-    },
-    "btn-renew-license": {
-        "message": "Я хочу продлить свою лицензию"
-    },
-    "btn-want-a-license": {
-        "message": "Я хочу купить лицензию"
-    },
-    "btn-want-to-donate": {
-        "message": "Я хочу помочь разовым пожертвованием."
-    },
-    "btnApply": {
-        "message": "Применить"
-    },
-    "btnCategory": {
-        "message": "Категории"
-    },
-    "btnCategory.tooltip": {
-        "message": "Назначить категории закладки"
-    },
-    "btnReset": {
-        "message": "По умолчанию"
-    },
-    "buyDomainLicense.button": {
-        "message": "Купить групповую лицензию"
-    },
-    "buyDomainLicense.instruct": {
-        "message": "Нужна лицензия для группы с пятью пользователями и более? Групповая лицензия будет дешевле:"
-    },
-    "buyLicense.instruct": {
-        "message": "Нужна лицензия только для себя? Лицензия для одного человека привязана к адресу электронной почты и может использоваться параллельно в несколько местах."
-    },
-    "buyPersonalLicense.button": {
-        "message": "Купить лицензию для одного человека!"
-    },
-    "chkComposerSubfolders": {
-        "message": "Также применять к под-папкам"
-    },
-    "chkHideFromQuickJump": {
-        "message": "Пропустить из quickJump / quickMove"
-    },
-    "chkHideFromQuickJump.tooltip": {
-        "message": "Опустить эту папку и ее дочерние элементы в результатах quickJump / quickMove"
-    },
-    "chkIgnoreCounts": {
-        "message": "Не показывать количество сообщений"
-    },
-    "chkIgnoreCounts.tooltip": {
-        "message": "Не показывать количество сообщений в папке."
-    },
-    "chkIgnoreUnread": {
-        "message": "Не показывать непрочтённый статус"
-    },
-    "chkIgnoreUnread.tooltip": {
-        "message": "Не показывать в закладке количество непрочтённых сообщений, в том числе и жирным шрифтом."
-    },
-    "chkSetMailsUnread": {
-        "message": "Установить почту непрочитанной"
-    },
-    "chkSetMailsUnread.tooltip": {
-        "message": "Если вы перемещаете почту в эту папку, она становится непрочитанной."
-    },
-    "cost-of-independence": {
-        "message": "Разработка программного обеспечения требует времени и денег - в отличие от многих приложений на платформе, надстройки не разрабатываются крупными корпорациями и никоим образом не спонсируются Mozilla."
-    },
-    "cssBackground": {
-        "message": "Фон"
-    },
-    "cssBackground.tooltip": {
-        "message": "CSS-описание фона, например linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
-    },
-    "cssColor": {
-        "message": "Цвет текста"
-    },
-    "cssColor.tooltip": {
-        "message": "CSS-описание цвета, например rgba(100,20,20,0.8)"
-    },
-    "defaultAccountAddress.value": {
-        "message": "Стандартный адрес учётной записи"
-    },
-    "domainLicense.email": {
-        "message": "Мы свяжемся с вами в течении 2 рабочих дней по указанному адресу электронной почты для генерирования групповой лицензии. Укажите имя домена для лицензии на следующей странице."
-    },
-    "domainLicense.header": {
-        "message": "Имя домена для лицензии"
-    },
-    "domainLicense.instruct": {
-        "message": "Эта лицензия привязана к имени домена вашей компании. Эта лицензия позволяет пользователям с адресами электронной почты, начинающимеся на это доменное имя, пользоваться QuickFolders Pro. К примеру, если указано доменное имя  'abc.com', то пользователи с адресами fred@abc.com, martha@abc.com, mike.doe@abc.com могут пользоваться этой лицензией. Максимальное число пользователей этой лицензии было указано в первом диалоге."
-    },
-    "domainLicense.validate": {
-        "message": "Введите доменное имя точно так, как оно указано в адресе электронной почты вашей компании (часть после знака @), так как мы будем использовать его для авторизации адресов электронной почты ваших пользователей."
-    },
-    "donate": {
-        "message": "Помогите с разовым пожертвованием."
-    },
-    "donate-heading": {
-        "message": "Помогите пожертвованием!"
-    },
-    "email.label": {
-        "message": "Адрес:"
-    },
-    "enterLicenseKey.button": {
-        "message": "Ввести лицензионный ключ…"
-    },
-    "enterLicenseKey.tooltip": {
-        "message": "Ввести присланный лицензионный ключ."
-    },
-    "extend-your-license": {
-        "message": "Рассмотрите возможность продления лицензии на год."
-    },
-    "extensionDescription": {
-        "description": "Description of the extension.",
-        "message": "Bookmark your favorite mail folders in Thunderbird."
-    },
-    "extensionName": {
-        "description": "Name of the extension.",
-        "message": "QuickFolders"
-    },
-    "extensions.quickfolders@curious.be.description": {
-        "message": "Создайте закладки для ваших любимых папок в Thunderbird."
-    },
-    "firstName.label": {
-        "message": "Имя:"
-    },
-    "freeLicense": {
-        "message": "Если вы недавно поддержали проект или помогли переводом или исправлением, возможно вам положен бесплатный лицензионный ключ.  Свяжитесь со мной, контактные данные можно найти в настройках."
-    },
-    "fromAddress": {
-        "message": "От:"
-    },
-    "fromAddress.tooltip": {
-        "message": "Стандартный адрес отправителя для новых сообщений"
-    },
-    "getQuickFolders": {
-        "message": "Получить QuickFolders Pro"
-    },
-    "grpComposer": {
-        "message": "Стандартные значения полей сообщения"
-    },
-    "grpCustomCSS": {
-        "message": "Настроить CSS"
-    },
-    "grpTabBehavior": {
-        "message": "Продвинутое поведение закладки"
-    },
-    "heading-installed": {
-        "description": "page heading. first placeholder will be replaced with Add-on name",
-        "message": "Успешно установлено $addonName$",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "heading-updated": {
-        "description": "page heading. first placeholder will be replaced with Add-on name",
-        "message": "$addonName$ успешно обновлен",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "intro": {
-        "message": "Годовая лицензия позволяет использовать премиум-функции один год. У нас же появляется возможность поддерживать и расширять продукт, делая его более значимым."
-    },
-    "label-remind-me": {
-        "message": "Напомнить мне снова через $countDays$ дн.",
-        "placeholders": {
-            "countDays": {
-                "content": "$1",
-                "example": "10"
-            }
-        }
-    },
-    "lastName.label": {
-        "message": "Фамилия:"
-    },
-    "lblCustomPalette": {
-        "message": "Настроить палитру:"
-    },
-    "license-is-extended": {
-        "description": "Shown if license expires more than a year from now",
-        "message": "Спасибо, что недавно продлили лицензию или сделали пожертвование. Поскольку вы помогли подготовить это дополнение к будущему, вы можете просто закрыть это окно."
-    },
-    "licenseWindow.title": {
-        "message": "Лицензия QuickFolders Pro"
-    },
-    "mozillas-basic-platform": {
-        "message": "Mozilla предоставляет только базовую платформу для доставки нашего программного обеспечения вам, конечным пользователям. Если нам нужно запросить у наших пользователей оплату или поддержку, мы не сможем сделать это через addons.thunderbird.net - это не «магазин приложений» со встроенными платными доступом или управлением лицензиями, такими как iTunes или Google Play."
-    },
-    "notificationTitle": {
-        "description": "Title of the click notification.",
-        "message": "Click notification"
-    },
-    "ongoing-work": {
-        "message": "Изменения для преобразования $addonName$ в новую модель программирования заняли недели и были дорогостоящими. В следующей версии 2022 года есть еще много изменений. С таким сложным дополнением дорогостоящая работа становится неизбежной. Пожалуйста, помогите нам с этим.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "purchase-a-license": {
-        "message": "Купите лицензию."
-    },
-    "purchase-heading": {
-        "message": "Покупка лицензии!"
-    },
-    "qf.accounts": {
-        "message": "учетные записи"
-    },
-    "qf.alert.pasteFolders.formatErr": {
-        "message": "Не удалось создать закладки. См. «Инструменты» → «Консоль ошибок» для подробной информации."
-    },
-    "qf.backupAndRestore": {
-        "message": "Восстановления резервной копии"
-    },
-    "qf.btn.applyPosition": {
-        "message": "Панель инструментов QuickFolders Положение"
-    },
-    "qf.button.add": {
-        "message": "Добавить!"
-    },
-    "qf.button.configureTooltips": {
-        "message": "Настроить всплывающие подсказки…"
-    },
-    "qf.button.currentFolderBackground.set": {
-        "message": "установить"
-    },
-    "qf.button.default": {
-        "message": "По умолчанию"
-    },
-    "qf.button.defaultcolors": {
-        "message": "Стандартные цвета"
-    },
-    "qf.button.deleteselectedcategory": {
-        "message": "Удалить выбранную категорию"
-    },
-    "qf.button.down": {
-        "message": "Вниз"
-    },
-    "qf.button.pasteLicense": {
-        "message": "вставить"
-    },
-    "qf.button.rename": {
-        "message": "Переименовать"
-    },
-    "qf.button.reorderButtonBottom": {
-        "message": "Последним"
-    },
-    "qf.button.reorderButtonBottom.accessKey": {
-        "message": "и"
-    },
-    "qf.button.reorderButtonBottom.toolTip": {
-        "message": "Фильтровать после других фильтров"
-    },
-    "qf.button.reorderButtonTop": {
-        "message": "Первым"
-    },
-    "qf.button.reorderButtonTop.accessKey": {
-        "message": "е"
-    },
-    "qf.button.reorderButtonTop.toolTip": {
-        "message": "Фильтровать до других фильтров"
-    },
-    "qf.button.up": {
-        "message": "Вверх"
-    },
-    "qf.button.validateLicense": {
-        "message": "проверить"
-    },
-    "qf.caption.currentFolderBackground": {
-        "message": "Фон панели инструментов текущей папки"
-    },
-    "qf.categories.supportMultiple": {
-        "message": "Разрешить выбирать несколько категорий для закладки"
-    },
-    "qf.categories.supportMultiple.tooltip": {
-        "message": "Удерживайте Shift для выбора более чем одной категории из списка."
-    },
-    "qf.checkbox.autoFocusPreview": {
-        "message": "Переводить фокус на список сообщений после смены закладок"
-    },
-    "qf.checkbox.autoHideToolbar": {
-        "message": "Не показывать QuickFolders если он не нужен"
-    },
-    "qf.checkbox.autoHideToolbar.tooltip": {
-        "message": "Убирает панель инструментов в таких вкладках как календарь, менеджер дополнений и т.д."
-    },
-    "qf.checkbox.currentFolder.closeButton": {
-        "message": "Закрывающая кнопка"
-    },
-    "qf.checkbox.currentFolder.show": {
-        "message": "Показывать панель инструментов"
-    },
-    "qf.checkbox.currentfolder.lightweight": {
-        "message": "интегрировать с легкой темой"
-    },
-    "qf.checkbox.debug": {
-        "message": "Режим отладки"
-    },
-    "qf.checkbox.debug.tooltip": {
-        "message": "Нажмите правой кнопкой мышки для получения дополнительных настроек"
-    },
-    "qf.checkbox.displaylabel": {
-        "message": "Показывать текст в панели инструментов"
-    },
-    "qf.checkbox.displaylabel.tooltip": {
-        "message": "Нажмите правой кнопкой мышки для изменения этого текста"
-    },
-    "qf.checkbox.enableTransitions": {
-        "message": "Разрешить CSS-трансформации"
-    },
-    "qf.checkbox.enableTransitions.tooltip": {
-        "message": "Плавные переходы между цветами закладок."
-    },
-    "qf.checkbox.hideCategoryBox": {
-        "message": "Свернуть категории"
-    },
-    "qf.checkbox.hideCategoryBox.tooltip": {
-        "message": "Свернуть меню категорий, чтобы оно занимало меньше места"
-    },
-    "qf.checkbox.highlightNewMail": {
-        "message": "Подсвечивать папки с новыми сообщениями"
-    },
-    "qf.checkbox.menus.dragToNewFolder": {
-        "message": "Перетащить, создавая под-папку"
-    },
-    "qf.checkbox.menus.emptyJunk": {
-        "message": "Удалить спам"
-    },
-    "qf.checkbox.menus.emptyTrash": {
-        "message": "Очистить «Удалённые»"
-    },
-    "qf.checkbox.menus.getMailForInbox": {
-        "message": "Получить сообщения (почта)"
-    },
-    "qf.checkbox.menus.getMailForNews": {
-        "message": "Получить сообщения (новости)"
-    },
-    "qf.checkbox.menus.markAllRead": {
-        "message": "Отметить папку как прочитанную"
-    },
-    "qf.checkbox.menus.markAllReadRecursive": {
-        "message": "Отметить папку как прочитанную (рекурсивно)"
-    },
-    "qf.checkbox.quickCopy": {
-        "message": "quickCopy - Копирование сообщений в любую папку по нажатию"
-    },
-    "qf.checkbox.quickCopy.tip": {
-        "message": "Сочетания клавиш кнопки quickCopy для быстрого копирования сообщений в папку по имени."
-    },
-    "qf.checkbox.quickJump": {
-        "message": "quickJump - переход в любую папку по нажатию"
-    },
-    "qf.checkbox.quickJump.tip": {
-        "message": "Сочетания клавиш кнопки quickJump для быстрого перехода к папке по имени."
-    },
-    "qf.checkbox.quickMove": {
-        "message": "quickMove - перемещение сообщений в любую папку по нажатию"
-    },
-    "qf.checkbox.quickMove.tip": {
-        "message": "Сочетания клавиш кнопки quickMove для быстрого перемещения сообщений в папку по имени."
-    },
-    "qf.checkbox.quickmove.autofill": {
-        "message": "Вставить имя последней папки"
-    },
-    "qf.checkbox.quickmove.autofill.tip": {
-        "message": "Будет вставлено имя последней успешно использованной папки. Нажмите Enter, чтобы использовать его, или введите имя другой папки."
-    },
-    "qf.checkbox.readingList": {
-        "message": "Список для чтения"
-    },
-    "qf.checkbox.readingList.tooltip": {
-        "message": "Список сообщений для прочтения позже. Перетаскивайте важные сообщения на эту кнопку."
-    },
-    "qf.checkbox.shadows": {
-        "message": "с тенями"
-    },
-    "qf.checkbox.shift": {
-        "message": "Shift"
-    },
-    "qf.checkbox.showCountInSubFolders": {
-        "message": "... и общее количество сообщений для папок в этой папке"
-    },
-    "qf.checkbox.showCountInSubFolders.tooltip": {
-        "message": "Эти данные будут отделены от основных данных '+'; не прочтенные сообщения также могут привести к использованию жирного шрифта для текста папки"
-    },
-    "qf.checkbox.showFilterButton": {
-        "message": "Кнопка 'Создать фильтр'"
-    },
-    "qf.checkbox.showFilterButton.tooltip": {
-        "message": "Вы также можете создавать фильтры с помощью контекстного меню QuickFolders."
-    },
-    "qf.checkbox.showFolderNavigation": {
-        "message": "Кнопки навигации между папками"
-    },
-    "qf.checkbox.showIconButtons": {
-        "message": "Настроить кнопки иконок"
-    },
-    "qf.checkbox.showIcons": {
-        "message": "Показывать значки (Входящие, Отправленные, Спам, Удаленные, Черновики, Архивы, Шаблоны)"
-    },
-    "qf.checkbox.showMailFolderCommands": {
-        "message": "Команды почтовых папок"
-    },
-    "qf.checkbox.showMessageNavigation": {
-        "message": "Кнопки навигации между сообщениями"
-    },
-    "qf.checkbox.showNewMailItalics": {
-        "message": "Текст закладок для папок с новоприбывшими сообщениями - курсивом"
-    },
-    "qf.checkbox.showNonEmptyItalics": {
-        "message": "Текст закладок для папок с сообщениями - курсивом"
-    },
-    "qf.checkbox.showQuickMove": {
-        "message": "Кнопка &quot;Быстрое перемещение&quot;"
-    },
-    "qf.checkbox.showQuickMove.tooltip": {
-        "message": "Кнопка &quot;Быстрое перемещение&quot; позволяет переместить сообщения из различных папок в одну. После того как сообщения были собраны, введите название папки назначения в строке поиска."
-    },
-    "qf.checkbox.showRecentButton": {
-        "message": "Кнопка с последними папками"
-    },
-    "qf.checkbox.showRecentTab": {
-        "message": "Показывать закладку с последними папками"
-    },
-    "qf.checkbox.showRecentTab.tooltip": {
-        "message": "Для конфигурирования нажмите правой кнопкой мышки"
-    },
-    "qf.checkbox.showSubfolders": {
-        "message": "Раскрывать папки из этой папке в меню"
-    },
-    "qf.checkbox.showTotalMessageCount": {
-        "message": "Показывать в закладке общее количество сообщений"
-    },
-    "qf.checkbox.showUnreadBold": {
-        "message": "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом"
-    },
-    "qf.checkbox.showUnreadMessageCount": {
-        "message": "Показывать в закладке количество не прочтенных сообщений"
-    },
-    "qf.checkbox.showshortcutnumber": {
-        "message": "Показывать номер сокращения на закладках"
-    },
-    "qf.checkbox.singleMessage.currentFolder.show": {
-        "message": "…также и в новом окне с сообщением"
-    },
-    "qf.checkbox.singleMessage.currentFolder.tooltip": {
-        "message": "Показывать панель инструментов текущей папки в окне, если вы открываете сообщение в новом окне."
-    },
-    "qf.checkbox.singleMessageTab.currentFolder.show": {
-        "message": "И в новой вкладке с сообщением"
-    },
-    "qf.checkbox.skipFolder": {
-        "message": "Пропуск непрочитанной папки: Shift +"
-    },
-    "qf.checkbox.skipFolder.tip": {
-        "message": "Комбинация клавиш для перехода к следующей непрочитанной папке."
-    },
-    "qf.checkbox.sortMenusAlpha": {
-        "message": "Заставлять сортировать папки в папках по алфавиту."
-    },
-    "qf.checkbox.sortMenusAlpha.tooltip": {
-        "message": "Используйте только если нет правильной сортировки папок в папках."
-    },
-    "qf.checkbox.storeConfig.general": {
-        "message": "Включить общие настройки"
-    },
-    "qf.checkbox.storeConfig.layout": {
-        "message": "Включить расширенный и макет"
-    },
-    "qf.checkbox.storeConfig.tabs": {
-        "message": "Включить вкладки QuickFolders"
-    },
-    "qf.checkbox.tabMenuIcon": {
-        "message": "Значок меню на панели инструментов"
-    },
-    "qf.checkbox.tabMenuIcon.tooltip": {
-        "message": "Это меню можно также вызвать нажатием правой кнопки мыши на самой панели инструментов"
-    },
-    "qf.checkbox.transparent": {
-        "message": "прозрачный"
-    },
-    "qf.checkbox.useNavigationShortcuts": {
-        "message": "Alt-влево/Alt-вправо для предыдущей/следующей закладки"
-    },
-    "qf.checkbox.usePalette": {
-        "message": "Показ палитры"
-    },
-    "qf.checkbox.useRebuildShortcut": {
-        "message": "Обновить все закладки: Ctrl + Alt +"
-    },
-    "qf.checkbox.usekeyboardshortcuts": {
-        "message": "Использовать клавиатурные сокращения (от Alt + 1 до Alt + 9)"
-    },
-    "qf.checkbox.usekeyboardshortcutsCTRL": {
-        "message": "Использовать Ctrl вместо Alt"
-    },
-    "qf.continueFilter.label": {
-        "message": "Создать фильтр…"
-    },
-    "qf.continueFilter.shortcut": {
-        "message": "С"
-    },
-    "qf.copyfolders": {
-        "message": "Копировать закладки"
-    },
-    "qf.copyfolders.tooltip": {
-        "message": "Копировать настройки в буфер обмена"
-    },
-    "qf.currentFolderBackground.custom": {
-        "message": "собственный"
-    },
-    "qf.currentFolderBackground.dark": {
-        "message": "тёмный"
-    },
-    "qf.currentFolderBackground.default": {
-        "message": "по умолчанию"
-    },
-    "qf.currentFolderBackground.translucent": {
-        "message": "просвечивающий"
-    },
-    "qf.currentfolder.leftSpacer": {
-        "message": "Левая распорка:"
-    },
-    "qf.currentfolder.rightSpacer": {
-        "message": "Правая распорка:"
-    },
-    "qf.description.bugzilla": {
-        "message": "Пожалуйста пользуйтесь Bugzilla для сообщений об ошибках и запросов о новых возможностях"
-    },
-    "qf.description.categoryusage": {
-        "message": "Можно присвоить закладке категорию('Работа','Личное')"
-    },
-    "qf.description.changeCategory": {
-        "message": "Нажмите на закладке правой кнопкой мышки для присвоения ей категории. Список категорий будет показан в левой части панели инструментов."
-    },
-    "qf.description.contactMe": {
-        "message": "Мой личный адрес axelg@gofree.indigo.ie:"
-    },
-    "qf.description.donate": {
-        "message": "Если QuickFolders вам нравится также, как и нам, вы можете поддержать деньгами дальнейшее развитие."
-    },
-    "qf.description.dragToAdd": {
-        "message": "Для создания новых закладок перетаскивайте папки на свободное место в новой панели инструментов. Для перемещения сообщений перетаскивайте их на закладки (удерживайте Ctrl для копирования). Нажмите на закладку, чтобы переместится в папку."
-    },
-    "qf.description.dragToPopup": {
-        "message": "Перетаскивайте сообщения на контекстное меню закладки для их перемещения в папки, находящиеся в этой папке."
-    },
-    "qf.description.dragToPosition": {
-        "message": "Перетаскивайте закладки в пределах панели инструментов для изменения их положения. В контекстном меню (нажатие правой кнопкой мышки) закладки вы можете переместится в папки, находящиеся в этой папке, переименовать или удалить закладку(но не папку)."
-    },
-    "qf.description.dragexplain": {
-        "message": "Можно изменить порядок закладок перетаскиванием. Попробуйте положить одну на другую."
-    },
-    "qf.description.editcategory": {
-        "message": "Выберите существующую категорию с помощью двойного щелчка или добавьте новую ниже."
-    },
-    "qf.description.experimentalItems": {
-        "message": "Последующие функции - экспериментальные, надеюсь они будут работать в следующей версии!!"
-    },
-    "qf.description.languages": {
-        "message": "Вы можете помочь, добавив перевод на свой язык на Babelzilla:"
-    },
-    "qf.description.linkNote": {
-        "message": "Посетите страницу QuickFolders для детальных объяснений, советов и ответов на вопросы:"
-    },
-    "qf.description.multicategory": {
-        "message": "Чтобы присвоить папке несколько категорий: удерживайте Shift или Ctrl нажатыми при выборе."
-    },
-    "qf.description.pulldown": {
-        "message": "Панель инструментов QuickFolders будет показывать список для фильтрации закладок по категориям."
-    },
-    "qf.description.rightClickOptions": {
-        "message": "Для вызова меню настроек, нажмите на свободном месте панели инструментов. В этом меню вы можете выбрать обычный (занимает меньше места) или плоский(четче, показывает индикатор при перетаскивании) стиль."
-    },
-    "qf.description.tipMsg": {
-        "message": "Совет: если у вас много папок, попробуйте воспользоваться расширением 'Nostalgy' для навигации с помощью клавиатуры"
-    },
-    "qf.description.versionhistory": {
-        "message": "Подробная история изменений на quickfolders.org"
-    },
-    "qf.dialog.changeorder": {
-        "message": "Изменить порядок закладок"
-    },
-    "qf.dialog.quickmove.settings": {
-        "message": "quickMove Расширенные настройки"
-    },
-    "qf.dialog.setcategory": {
-        "message": "Присвоить закладке категорию"
-    },
-    "qf.donate.tooltip": {
-        "message": "Поддержи развитие QuickFolders!"
-    },
-    "qf.filters.instructions": {
-        "message": "Пожалуйста выберите шаблон. Фильтр можно будет настроить на следующем этапе."
-    },
-    "qf.filters.template.from": {
-        "message": "По отправителю (от)"
-    },
-    "qf.filters.template.from.description": {
-        "message": "Наверное самый популярный шаблон: адрес отправителя используется как критерии 'отправитель' и 'адресат' фильтра. Вся переписка с отправителем перемещается в новую папку."
-    },
-    "qf.filters.template.list": {
-        "message": "Список рассылки"
-    },
-    "qf.filters.template.list.description": {
-        "message": "Похож на шаблон 'По отправителю', но не заполняется критерий 'отправитель'."
-    },
-    "qf.filters.template.tag": {
-        "message": "По меткам"
-    },
-    "qf.filters.template.tag.description": {
-        "message": "Использует метки сообщения как критерии фильтра."
-    },
-    "qf.filters.template.to": {
-        "message": "По адресату (кому)"
-    },
-    "qf.filters.template.to.description": {
-        "message": "Похож на шаблон 'По отправителю': используется для отправленных сообщений. Адрес получателя используется как критерии 'отправитель' и 'адресат' фильтра. Вся переписка с получателем перемещается в новую папку."
-    },
-    "qf.filters.template.topic": {
-        "message": "По теме"
-    },
-    "qf.filters.template.topic.description": {
-        "message": "Критерий фильтра для сообщений со скобками в теме, как то [нумизматы] или {вегетарианцы}; фильтруются многие массовые рассылки, которые пользуются этим приёмом."
-    },
-    "qf.filters.title": {
-        "message": "Создать фильтр"
-    },
-    "qf.filters.toggleMessage.notificationText": {
-        "message": "Включён режим создания фильтров. Перенос сообщений на QuickFolders запускает мастер создания фильтров. Thunderbird перемещает сообщения с помощью фильтров на основе критериев «кто отправитель», «есть ли строка в теме» и т.д. Выход из режима  - нажатие кнопки на левой стороне панели инструментов QuickFolders."
-    },
-    "qf.filters.toggleMessage.title": {
-        "message": "Создание фильтров"
-    },
-    "qf.foldercontextmenu.quickfolders.customizeIcon": {
-        "message": "Настроить Иконку..."
-    },
-    "qf.foldercontextmenu.quickfolders.removeIcon": {
-        "message": "Удалить Индивидуальную Иконку"
-    },
-    "qf.fpJsonFile": {
-        "message": "Файл JSON"
-    },
-    "qf.goNextUnread.auto": {
-        "message": "Менять папку не спрашивая (рекомендовано)"
-    },
-    "qf.goNextUnread.none": {
-        "message": "Ничего не делать если в папке не осталось непрочитанных сообщений"
-    },
-    "qf.goNextUnread.prompt": {
-        "message": "Спрашивать разрешение на смену папки."
-    },
-    "qf.group.navigation": {
-        "message": "Навигация по сообщениям"
-    },
-    "qf.label.ActiveTabColor": {
-        "message": "Цвет активной закладки"
-    },
-    "qf.label.ColoredTabPalette": {
-        "message": "Палитра цветных закладок:"
-    },
-    "qf.label.ColoredTabPalette.tooltip": {
-        "message": "Палитра закладок с предопределенным цветом"
-    },
-    "qf.label.DragOverBackground": {
-        "message": "Цвет закладки под переносимой"
-    },
-    "qf.label.HoveredTabColor": {
-        "message": "Цвет закладки под мышкой"
-    },
-    "qf.label.Toolbar": {
-        "message": "Панель инструментов"
-    },
-    "qf.label.Toolbar.bottomLine": {
-        "message": "Ширина линии внизу:"
-    },
-    "qf.label.Toolbar.bottomLine.tip": {
-        "message": "Ширина линии под закладками. Цвет меняется цветом активной закладки чуть ниже."
-    },
-    "qf.label.ToolbarBackground": {
-        "message": "Фоновый цвет панели инструментов"
-    },
-    "qf.label.UncoloredTab": {
-        "message": "Бесцветные закладки"
-    },
-    "qf.label.UncoloredTab.tooltip": {
-        "message": "Вид (неактивных) закладок без предопределенного цвета"
-    },
-    "qf.label.appearance": {
-        "message": "Внешний вид"
-    },
-    "qf.label.behavior": {
-        "message": "Поведение"
-    },
-    "qf.label.bugzilla": {
-        "message": "Сообщить об ошибке/Запрос новых возможностей на Bugzilla…"
-    },
-    "qf.label.buttonFontSizeNumeric": {
-        "message": "Размер шрифта кнопки (0 - значение по умолчанию):"
-    },
-    "qf.label.cancel": {
-        "message": "Отмена"
-    },
-    "qf.label.colors": {
-        "message": "Цвета"
-    },
-    "qf.label.contactLink": {
-        "message": "Написать мне (на английском или немецком языке)"
-    },
-    "qf.label.currentFolderToolbar": {
-        "message": "Панель инструментов текущей папки"
-    },
-    "qf.label.donate": {
-        "message": "Пожертвовать"
-    },
-    "qf.label.donateLink": {
-        "message": "Поддержать…"
-    },
-    "qf.label.dragFolderLabel": {
-        "message": "Для создания закладки перетащите папку сюда. Нажмите на закладку для перехода в папку, перетащите сообщения на закладку для перемещения/копирования их в соответствующую папку."
-    },
-    "qf.label.existingcategories": {
-        "message": "Существующие категории:"
-    },
-    "qf.label.filterCountN_of_M": {
-        "message": "{0} из {1}"
-    },
-    "qf.label.filterEntities": {
-        "message": "элементов"
-    },
-    "qf.label.filterSingleEntity": {
-        "message": "1 элемент"
-    },
-    "qf.label.getQuickFilters": {
-        "message": "Установите моё расширение quickFilters для более утончённого создания фильтров!"
-    },
-    "qf.label.goNextUnread": {
-        "message": "Переходя к следующему непрочитанному сообщению:"
-    },
-    "qf.label.goNextUnread.tip": {
-        "message": "Обычно Thunderbird спрашивает разрешение, если при переходе к следующему непрочитанному сообщению нужно сменить папку."
-    },
-    "qf.label.haveLicense": {
-        "message": "Уже есть лицензионный ключ?"
-    },
-    "qf.label.homePage": {
-        "message": "Подробная информация на странице QuickFolders на quickfolders.org…"
-    },
-    "qf.label.initdelay": {
-        "message": "Начальная задержка, мс (1000 мс по умолчанию)"
-    },
-    "qf.label.insertLicense": {
-        "message": "Вставить лицензионный ключ сюда:"
-    },
-    "qf.label.insertLicense.tooltip": {
-        "message": "Ваш лицензионный ключ находится в сообщении от Fastspring, подтверждающем заказ."
-    },
-    "qf.label.instantApplyMsg": {
-        "message": "Если вы видите только кнопку [Закрыть], возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку [OK] и сохранить цветовые настройки."
-    },
-    "qf.label.keyboard": {
-        "message": "Клавиатурные сокращения"
-    },
-    "qf.label.languagesLink": {
-        "message": "Добавить перевод…"
-    },
-    "qf.label.licenseValid": {
-        "message": "Лицензионный ключ действителен до:"
-    },
-    "qf.label.mainToolbar": {
-        "message": "Элементы основной панели инструментов"
-    },
-    "qf.label.menus": {
-        "message": "Конфигурация меню"
-    },
-    "qf.label.menus.customIcon": {
-        "message": "Настроить иконку"
-    },
-    "qf.label.menus.help": {
-        "message": "Помощь QuickFolders"
-    },
-    "qf.label.menus.hideQFunlessCTRL": {
-        "message": "Показывать только при нажатой клавише Ctrl"
-    },
-    "qf.label.menus.lineBreak": {
-        "message": "Вставить перевод строк"
-    },
-    "qf.label.menus.mailFolder": {
-        "message": "Команды сообщений"
-    },
-    "qf.label.menus.options": {
-        "message": "Настройки"
-    },
-    "qf.label.menus.quickFolder": {
-        "message": "Команды QuickFolders"
-    },
-    "qf.label.menus.separator": {
-        "message": "Вставить разделитель"
-    },
-    "qf.label.menus.support": {
-        "message": "Поддержка QuickFolders"
-    },
-    "qf.label.misc": {
-        "message": "Разное"
-    },
-    "qf.label.newcategory": {
-        "message": "Новая категория:"
-    },
-    "qf.label.pixels": {
-        "message": "пикселов"
-    },
-    "qf.label.quickFilters.link": {
-        "message": "установить quickFilters!"
-    },
-    "qf.label.quickfolders": {
-        "message": "QuickFolders:"
-    },
-    "qf.label.renameselectedcategory": {
-        "message": "Переименовать выбранную категорию"
-    },
-    "qf.label.setcolors": {
-        "message": "Цвет текста и фона"
-    },
-    "qf.label.tabContent": {
-        "message": "Содержание закладок"
-    },
-    "qf.label.testfolder": {
-        "message": "Папка &quot;Тест&quot;"
-    },
-    "qf.label.testfolder2": {
-        "message": "Папка &quot;Тест 2&quot;"
-    },
-    "qf.label.themes": {
-        "message": "Темы:"
-    },
-    "qf.label.toolbarPosition": {
-        "message": "Применить значение позиции!"
-    },
-    "qf.label.versionhistory": {
-        "message": "Смотреть историю изменений…"
-    },
-    "qf.licenseValidation.expired": {
-        "message": "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии."
-    },
-    "qf.licenseValidation.failed": {
-        "message": "Лицензионный ключ недействителен. Ещё раз посмотрите сообщение от FastSpring. Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;)."
-    },
-    "qf.licenseValidation.guessAddon": {
-        "message": "(Введённый ключ может быть для {2})."
-    },
-    "qf.licenseValidation.invalidAddon": {
-        "message": "Введённый лицензионный ключ может быть для другого дополнения. Лицензионные ключи для {0} начинаются с {1}."
-    },
-    "qf.licenseValidation.invalidMail": {
-        "message": "Адрес, привязанный к лицензионному ключу [{1}] не используется ни в одной учётной записи почты. Свяжитесь со мной, контактные данные можно найти в настройках."
-    },
-    "qf.licenseValidation.notMatchedMail": {
-        "message": "Зашифрованный адрес не совпадает с имеющимся."
-    },
-    "qf.licenseValidation.passed": {
-        "message": "Спасибо за регистрацию! Вы можете пользоваться всеми премиальными функциями."
-    },
-    "qf.loadConfig": {
-        "message": "Загрузить конфигурацию …"
-    },
-    "qf.menu.Color": {
-        "message": "Цвет"
-    },
-    "qf.menu.tabColor": {
-        "message": "Без цвета!"
-    },
-    "qf.menuitem.quickfolders.changeOrder": {
-        "message": "Изменить порядок закладок"
-    },
-    "qf.menuitem.quickfolders.changeOrderAccess": {
-        "message": "И"
-    },
-    "qf.menuitem.quickfolders.deleteDeadTabs": {
-        "message": "Найти закладки без папок"
-    },
-    "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
-        "message": "з"
-    },
-    "qf.menuitem.quickfolders.displayPreviewToolbar": {
-        "message": "Показать инструменты текущей папки"
-    },
-    "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
-        "message": "к"
-    },
-    "qf.menuitem.quickfolders.filters": {
-        "message": "Создать фильтр сообщений…"
-    },
-    "qf.menuitem.quickfolders.filtersAccess": {
-        "message": "ф"
-    },
-    "qf.menuitem.quickfolders.find": {
-        "message": "Найти папку…"
-    },
-    "qf.menuitem.quickfolders.findAccess": {
-        "message": "а"
-    },
-    "qf.menuitem.quickfolders.help": {
-        "message": "Справка QuickFolders"
-    },
-    "qf.menuitem.quickfolders.helpAccess": {
-        "message": "С"
-    },
-    "qf.menuitem.quickfolders.options": {
-        "message": "Настройки QuickFolders"
-    },
-    "qf.menuitem.quickfolders.optionsAccess": {
-        "message": "Н"
-    },
-    "qf.menuitem.quickfolders.register": {
-        "message": "Зарегистрировать QuickFolders Pro…"
-    },
-    "qf.menuitem.quickfolders.repairTabs": {
-        "message": "Обновить видимые закладки!"
-    },
-    "qf.menuitem.quickfolders.repairTabsAccess": {
-        "message": "О"
-    },
-    "qf.menuitem.quickfolders.repairTreeIcons": {
-        "message": "Починить иконки дерева"
-    },
-    "qf.menuitem.quickfolders.support": {
-        "message": "Поддержка QuickFolders…"
-    },
-    "qf.menuitem.quickfolders.supportAccess": {
-        "message": "П"
-    },
-    "qf.menuitem.quickfolders.togglePaintMode": {
-        "message": "Режим раскраски"
-    },
-    "qf.menuitem.quickfolders.togglePaintModeAccess": {
-        "message": "р"
-    },
-    "qf.notification.categoryIsReadOnly": {
-        "message": "Эту категорию удалить нельзя."
-    },
-    "qf.notification.dontShowAgain": {
-        "message": "Более не показывать."
-    },
-    "qf.notification.premium.btn.extendLicense": {
-        "message": "Продлить лицензию"
-    },
-    "qf.notification.premium.btn.extendLicense.tooltip": {
-        "message": "Продление срока действия текущей лицензии на 1 год. Обычно это дешевле, чем новая лицензия."
-    },
-    "qf.notification.premium.btn.getLicense": {
-        "message": "Купить лицензию!"
-    },
-    "qf.notification.premium.btn.hotKey": {
-        "message": "л"
-    },
-    "qf.notification.premium.btn.renewLicense": {
-        "message": "Обновить лицензию"
-    },
-    "qf.notification.premium.readingList": {
-        "message": "Имеется {1} закладок. Бесплатная версия QuickFolders поддерживает не более {2} закладок."
-    },
-    "qf.notification.premium.tabIcons": {
-        "message": "Используется  {1} значков. Бесплатная версия QuickFolders поддерживает не более {2} значков."
-    },
-    "qf.notification.premium.text": {
-        "message": "Зарегистрируйте QuickFolders для постоянного пользования премиальных функцией {1}."
-    },
-    "qf.notification.premium.title": {
-        "message": "Премиальная функция"
-    },
-    "qf.options.LayoutColorAppearance": {
-        "message": "Индивидуальный вид закладок"
-    },
-    "qf.options.LayoutColorAppearanceFilled": {
-        "message": "(&quot;заполненный&quot; стиль)"
-    },
-    "qf.options.LayoutColorAppearanceStriped": {
-        "message": "(полосатый стиль)"
-    },
-    "qf.options.label.themeAuthor": {
-        "message": "Автор темы:"
-    },
-    "qf.options.theme.pastelColors": {
-        "message": "Пастельные цвета"
-    },
-    "qf.options.themes.customCornerRadius.Bottom.label": {
-        "message": "Низ:"
-    },
-    "qf.options.themes.customCornerRadius.Top.label": {
-        "message": "Верх:"
-    },
-    "qf.options.themes.customCornerRadius.checkbox": {
-        "message": "Радиус угла"
-    },
-    "qf.options.themes.showBorders.checkbox": {
-        "message": "Всегда показывать рамку"
-    },
-    "qf.options.versionnumber.tooltip": {
-        "message": "Нажмите правой кнопкой мышки для получения истории изменений."
-    },
-    "qf.palette.inactive": {
-        "message": "Как неактивная закладка"
-    },
-    "qf.palette.night": {
-        "message": "Ночной вид"
-    },
-    "qf.palette.pastel": {
-        "message": "Пастельные цвета"
-    },
-    "qf.palette.standard": {
-        "message": "Обычная палитра"
-    },
-    "qf.palette.twoColors": {
-        "message": "2 цвета"
-    },
-    "qf.pastefolders.tooltip": {
-        "message": "Удалить все QuickFolders и прочитать новую конфигурацию из буфера обмена"
-    },
-    "qf.pathFormat.AccountAndPath": {
-        "message": "Учётная запись - Путь к папке"
-    },
-    "qf.pathFormat.PathOnly": {
-        "message": "Путь к папке"
-    },
-    "qf.pathFormat.URI": {
-        "message": "URI-папки"
-    },
-    "qf.pathFormat.folderAndAccount": {
-        "message": "Имя папки - Учётная запись"
-    },
-    "qf.pathFormat.folderName": {
-        "message": "Имя папки"
-    },
-    "qf.pathFormat.maxDepth": {
-        "message": "Максимальная глубина пути:"
-    },
-    "qf.pathFormat.tooltip": {
-        "message": "Максимальное количество имен папок показываемых в пути к папке."
-    },
-    "qf.prefwindow.quickfolders.options": {
-        "message": "Настройки QuickFolders"
-    },
-    "qf.premium.renewLicense.tooltip": {
-        "message": "Ваша лицензия истекла уже {1} дней"
-    },
-    "qf.premiumConfig": {
-        "message": "Премиальные функции"
-    },
-    "qf.prompt.category.deleteMultiple": {
-        "message": "Хорошо, чтобы удалить несколько категорий?"
-    },
-    "qf.prompt.contact.subject": {
-        "message": "Введите тему сообщения:"
-    },
-    "qf.prompt.contact.title": {
-        "message": "Связаться с поддержкой QuickFolders"
-    },
-    "qf.prompt.loadFolders.confirm": {
-        "message": "Принять загруженные вкладки?"
-    },
-    "qf.prompt.newFolder.createQFtab": {
-        "message": "Также создать закладку QuickFolders Tab"
-    },
-    "qf.prompt.newFolder.newChildName": {
-        "message": "Введите имя новой подпапки в {0}"
-    },
-    "qf.prompt.newFolder.title": {
-        "message": "Новая папка"
-    },
-    "qf.prompt.pasteFolders": {
-        "message": "Это позволит удалить все закладки и заменить их элементами из буфера обмена.\\n{0} элементов были найдены в буфере обмена.\\nВы уверены?"
-    },
-    "qf.prompt.pasteFolders.confirm": {
-        "message": "Сохранить отображаемые закладки?"
-    },
-    "qf.prompt.readingList.removeItem": {
-        "message": "Удалить этот элемент?"
-    },
-    "qf.prompt.readingList.searchMissingItem": {
-        "message": "Не могу найти сообщение, возможно его переместили.\\n{1}\\n\\nХотите его найти?"
-    },
-    "qf.prompt.restoreFolders": {
-        "message": "Это приведет к удалению всех вкладок QuickFolders и замене на элементы из файла.\\n{0} записей было прочитано.\\nЗаменить вкладки?"
-    },
-    "qf.prompt.switchDomainLicense": {
-        "message": "Перейти на доменную лицензию?"
-    },
-    "qf.quickMove.escapeClears": {
-        "message": "Escape Key очищает список сообщений."
-    },
-    "qf.quickMove.excludeAccounts": {
-        "message": "Выберите любые учетные записи, которые следует исключить из результатов поиска:"
-    },
-    "qf.quickMove.lockAccount": {
-        "message": "Показывать результаты только из текущего почтового аккаунта."
-    },
-    "qf.quickMove.maxResults": {
-        "message": "Максимальное количество результатов поиска"
-    },
-    "qf.quickMove.path.format": {
-        "message": "Формат отображения:"
-    },
-    "qf.quickMove.silent": {
-        "message": "Нет уведомлений после перемещения писем."
-    },
-    "qf.register.licenseValid.expired": {
-        "message": "Ваша лицензия истекает:"
-    },
-    "qf.search.advanced": {
-        "message": "Настройки расширенного поиска…"
-    },
-    "qf.storeConfig": {
-        "message": "Сохранить конфигурацию …"
-    },
-    "qf.tab.advanced": {
-        "message": "Дополнительные"
-    },
-    "qf.tab.general": {
-        "message": "Основные"
-    },
-    "qf.tab.gopro": {
-        "message": "QuickFolders Pro"
-    },
-    "qf.tab.layout": {
-        "message": "Разнообразить закладки!"
-    },
-    "qf.tab.quickhelp": {
-        "message": "Справка"
-    },
-    "qf.tab.support": {
-        "message": "Поддержка"
-    },
-    "qf.textbox.searchBox.emptyText": {
-        "message": "найти фильтры…"
-    },
-    "qf.textbox.searchBox.toolTip": {
-        "message": "Введите ключевое слово для поиска фильтра по имени"
-    },
-    "qf.themes.applePills.description": {
-        "message": "Для наших пользователей Mac - простенькие, с парочкой цветовых \\\"пёрышек\\\"."
-    },
-    "qf.themes.applePills.label": {
-        "message": "Для Apple"
-    },
-    "qf.themes.flatButtons.description": {
-        "message": "Обычные кнопки панели инструментов - более всего напоминает оригинал из версии 0.5!"
-    },
-    "qf.themes.flatButtons.label": {
-        "message": "Кнопки панели инструментов"
-    },
-    "qf.themes.flatTabs.description": {
-        "message": "Современный вид - полностью настраивается, хорошо выглядит под Windows и Linux."
-    },
-    "qf.themes.flatTabs.label": {
-        "message": "Плоский стиль"
-    },
-    "qf.themes.nativeTabs.description": {
-        "message": "Напоминает закладки вашей ОС - гармонирует с темами для самой программы, но мало возможностей по настройке цвета."
-    },
-    "qf.themes.nativeTabs.label": {
-        "message": "Родные закладки"
-    },
-    "qf.themes.realButtons.description": {
-        "message": "Обычные кнопки - выглядят как стандартные кнопки в диалогах"
-    },
-    "qf.themes.realButtons.label": {
-        "message": "Обычные кнопки"
-    },
-    "qf.toolbar.quickfolders.toolbar": {
-        "message": "Панель инструментов QuickFolders"
-    },
-    "qf.toolbarMinimumHeight": {
-        "message": "Минимальная высота:"
-    },
-    "qf.toolbarMinimumHeight.tooltip": {
-        "message": "Для Mac систем страдающих от [ошибка 25021]"
-    },
-    "qf.toolbarPosition.tooltip": {
-        "message": "0 = поверх других панелей инструментов; 100 = низ. Высокое значение зависит от других дополнений."
-    },
-    "qf.tooltip.RecentFolders": {
-        "message": "Последние папки"
-    },
-    "qf.tooltip.closeToolbar": {
-        "message": "Закрыть эту панель инструментов"
-    },
-    "qf.tooltip.conversationRead": {
-        "message": "Отметить обсуждение как прочитанное и перейти к следующему непрочтённому сообщению"
-    },
-    "qf.tooltip.emailIcon": {
-        "message": "Текущее сообщение - перетащите на закладку QuickFolders для перемещения."
-    },
-    "qf.tooltip.filterStart": {
-        "message": "Активирует создание фильтров. Перетаскивание сообщений в QuickFolder создаёт новые фильтры."
-    },
-    "qf.tooltip.filters": {
-        "message": "Прекратить создавать фильтры сообщений."
-    },
-    "qf.tooltip.folderUp": {
-        "message": "Перейти к вышестоящей папке"
-    },
-    "qf.tooltip.goNextFolder": {
-        "message": "К следующему непрочтённому сообщению"
-    },
-    "qf.tooltip.goPreviousFolder": {
-        "message": "К предыдущему непрочтённому сообщению"
-    },
-    "qf.tooltip.mailFolderCommands": {
-        "message": "Команды почтовых папок"
-    },
-    "qf.tooltip.mainOptions": {
-        "message": "Настройки QuickFolders и дополнительные команды"
-    },
-    "qf.tooltip.paintCanActive": {
-        "message": "Режим раскраски: показывает палитру, нажатие на закладку её раскрасит, правой кнопкой мышки узнайте цвет закладки."
-    },
-    "qf.tooltip.quickFoldersNavToggle": {
-        "message": "переключает навигацию между всеми / непрочтёнными сообщениями"
-    },
-    "qf.tooltip.quickMove": {
-        "message": "Быстрое перемещение: перенесите сообщения сюда, затем введите название папки."
-    },
-    "qf.tooltip.skipUnreadFolder": {
-        "message": "К следующей непрочитанной папке"
-    },
-    "qf.tooltip.threadIcon": {
-        "message": "Текущее обсуждение - перетащите на закладку QuickFolders для перемещения."
-    },
-    "qf.youtube.description": {
-        "message": "Для подробных видео о дополнениях Thunderbird и как использовать QuickFolders посетите мой канал на YouTube Thunderbird Daily."
-    },
-    "qf.youtube.link": {
-        "message": "Смотреть видео о QuickFolders…"
-    },
-    "qf.youtube.tbdaily": {
-        "message": "Посетите Thunderbird Daily - канал на YouTube с советами и пособиями по использованию QuickFolders"
-    },
-    "qfAlertCopyString": {
-        "message": "Имя папки скопировано в буфер обмена"
-    },
-    "qfAlertDropFolderVirtual": {
-        "message": "В виртуальную папку нельзя копировать!"
-    },
-    "qfAlertUpgradeSuccess": {
-        "message": "QuickFolders был обновлён до версии:"
-    },
-    "qfAll": {
-        "message": "(Показать все)"
-    },
-    "qfCantMoveFolder": {
-        "message": "Папку {0} нельзя переместить."
-    },
-    "qfColorPickingWIP": {
-        "message": "К сожалению, эта функция находится в разработке!"
-    },
-    "qfCommandAccess": {
-        "message": "з"
-    },
-    "qfCommandPopup": {
-        "message": "Команды для закладок"
-    },
-    "qfCompactFolder": {
-        "message": "Сжать папку"
-    },
-    "qfCompactFolderAccess": {
-        "message": "С"
-    },
-    "qfCompacted": {
-        "message": "Сжато:"
-    },
-    "qfCompactedBytesFreed": {
-        "message": "Удалено"
-    },
-    "qfCompactedFolder": {
-        "message": "Папка сжата"
-    },
-    "qfCompactedNewFolderSize": {
-        "message": "Новый размер"
-    },
-    "qfCompactedOriginalFolderSize": {
-        "message": "Старый размер"
-    },
-    "qfConfirmCopyFolder": {
-        "message": "Действительно скопировать папку {0} в {1}?"
-    },
-    "qfConfirmMoveFolder": {
-        "message": "Переместить папку {0} в {1}?"
-    },
-    "qfConfirmVersionLink": {
-        "message": "Показать историю изменений QuickFolders"
-    },
-    "qfDeadTabsCount": {
-        "message": "закладок без папок найдено:"
-    },
-    "qfDeadTabsDeleted": {
-        "message": "закладок без папок удалено:"
-    },
-    "qfDeleteFolder": {
-        "message": "Удалить папку"
-    },
-    "qfDeleteFolderAccess": {
-        "message": "У"
-    },
-    "qfDeleteJunk": {
-        "message": "Удалить спам"
-    },
-    "qfDown": {
-        "message": "Вниз"
-    },
-    "qfDownloadAll": {
-        "message": "Загрузить все"
-    },
-    "qfEditVirtual": {
-        "message": "Свойства поиска"
-    },
-    "qfEditVirtualAccess": {
-        "message": "в"
-    },
-    "qfEmptiedJunk": {
-        "message": "Папка «Спам» очищенa и сжатa."
-    },
-    "qfEmptiedTrash": {
-        "message": "Папка «Удалённые» очищенa."
-    },
-    "qfEmptyJunk": {
-        "message": "Удалить спам"
-    },
-    "qfEmptyJunkAccess": {
-        "message": "а"
-    },
-    "qfEmptyTrash": {
-        "message": "Очистить «Удалённые»"
-    },
-    "qfEmptyTrashAccess": {
-        "message": "д"
-    },
-    "qfFolderAccess": {
-        "message": "п"
-    },
-    "qfFolderAlreadyBookmarked": {
-        "message": "Для этой папки закладка уже создана."
-    },
-    "qfFolderOpenLocation": {
-        "message": "Обзор расположения папки…"
-    },
-    "qfFolderPopup": {
-        "message": "Команды для папок"
-    },
-    "qfFolderProperties": {
-        "message": "Свойства папки…"
-    },
-    "qfFolderPropertiesAccess": {
-        "message": "в"
-    },
-    "qfFolderRepair": {
-        "message": "Починить папку"
-    },
-    "qfFolderRepairAccess": {
-        "message": "П"
-    },
-    "qfFolderRepairedMsg": {
-        "message": "Починили папку:"
-    },
-    "qfGetMail": {
-        "message": "Получить сообщения"
-    },
-    "qfGetMailAccess": {
-        "message": "о"
-    },
-    "qfInsertLineBreak": {
-        "message": "Вставить перевод строки"
-    },
-    "qfInsertSeparator": {
-        "message": "Вставить разделитель"
-    },
-    "qfInvalidTabCount": {
-        "message": "Найдено {0} вкладок с неправильным назначением папки. Вы можете удалить их, используя команду «Найти осиротевшие вкладки»."
-    },
-    "qfMarkAllRead": {
-        "message": "Отметить папку как прочитанную"
-    },
-    "qfMarkAllReadAccess": {
-        "message": "ч"
-    },
-    "qfMarkAllReadRecursive": {
-        "message": "Отметить папку и подпапки как прочитанные"
-    },
-    "qfMenuColor": {
-        "message": "Цвет"
-    },
-    "qfMenuTabColorDisabledInTheme": {
-        "message": "Выберите другую тему для поддержки окраски…"
-    },
-    "qfMenuTabColorNone": {
-        "message": "Без цвета!"
-    },
-    "qfMenuTabColorPopup": {
-        "message": "Цвет закладки"
-    },
-    "qfMoveFolderOrNewTab": {
-        "message": "Перетаскивайте папки в свободную часть панели инструментов - удерживайте Shift для переноса."
-    },
-    "qfNavigationWrapped": {
-        "message": "Непрочитанных папок не найдено, переход к {1}."
-    },
-    "qfNewFolder": {
-        "message": "Новая под-папка"
-    },
-    "qfNewFolderAccess": {
-        "message": "Н"
-    },
-    "qfNewName": {
-        "message": "Новое имя для закладки"
-    },
-    "qfNewSubFolder": {
-        "message": "Создаю подпапку {0} \\u00BB {1}…"
-    },
-    "qfNoFolderMatch": {
-        "message": "Нет соответствующих родительских папок!"
-    },
-    "qfPaintToggle": {
-        "message": "Завершить режим раскраски"
-    },
-    "qfRecentFolders": {
-        "message": "Последние папки"
-    },
-    "qfRemoveBookmark": {
-        "message": "Удалить закладку"
-    },
-    "qfRemoveBookmarkAccess": {
-        "message": "У"
-    },
-    "qfRemoveCategory": {
-        "message": "Удалить из текущей категории"
-    },
-    "qfRemoveCategoryPrompt": {
-        "message": "Текущая категория - «{1}» - Удалить?"
-    },
-    "qfRemoveIcon": {
-        "message": "Убрать значок"
-    },
-    "qfRemoveLineBreak": {
-        "message": "Удалить перевод строки"
-    },
-    "qfRemoveSeparator": {
-        "message": "Удалить разделитель"
-    },
-    "qfRenameBookmark": {
-        "message": "Переименовать закладку…"
-    },
-    "qfRenameBookmarkAccess": {
-        "message": "П"
-    },
-    "qfRenameFolder": {
-        "message": "Переименовать папку"
-    },
-    "qfRenameFolderAccess": {
-        "message": "П"
-    },
-    "qfRepairTreeIconsMissing": {
-        "message": "Следующие файлы значков не существуют:"
-    },
-    "qfSavePrompt": {
-        "message": "Сохранить эти изменения?"
-    },
-    "qfSelectIcon": {
-        "message": "Значок…"
-    },
-    "qfSetCategory": {
-        "message": "Назначить категорию закладке…"
-    },
-    "qfSetCategoryA": {
-        "message": "к"
-    },
-    "qfShowAlways": {
-        "message": "Всегда показывать!"
-    },
-    "qfShowNever": {
-        "message": "Не показывать (псевдоним папки)"
-    },
-    "qfTabAdvancedOptions": {
-        "message": "Свойства этой закладки…"
-    },
-    "qfTabDeleteOption": {
-        "message": "Сделайте это с оставшимися {0} папками."
-    },
-    "qfTabDeletePrompt": {
-        "message": "Удалить эту закладку?"
-    },
-    "qfThisTabIsInvalid": {
-        "message": ": Закладка указывает на неверную папку:"
-    },
-    "qfTidyDeadFolders": {
-        "message": "Удаляет закладки без папок.\\nЭти закладки иногда появляются при удалении или перемещении папки без уведомления QuickFolders."
-    },
-    "qfTreeIconsInvalidCount": {
-        "message": "{0} значков отсутствуют"
-    },
-    "qfTreeIconsRepairedCount": {
-        "message": "{0} значок дерева починен"
-    },
-    "qfUncategorized": {
-        "message": "(Без категории)"
-    },
-    "qfUp": {
-        "message": "Вверх"
-    },
-    "qfUpdatedThemesEngineMsg": {
-        "message": "Новая тема для QuickFolders установлена. Выберите её из списка и нажмите [Ok]."
-    },
-    "qfVersionDisableOnUpdate": {
-        "message": "Не показывать историю изменений после обновлений?"
-    },
-    "quickMove.singleMessage.goNext": {
-        "message": "Показать следующее письмо после перемещения текущего"
-    },
-    "quickMove.singleMessage.reopenTab": {
-        "message": "Повторно открыть исходное письмо после того, как оно было перемещено"
-    },
-    "quickMove.singleMessageTabs": {
-        "message": "Вкладка отдельного сообщения"
-    },
-    "quickfolders.findFolder.placeHolder": {
-        "message": "имя папки"
-    },
-    "quickfolders.quickMove.menu.cancel": {
-        "message": "Прервать быстрое перемещение"
-    },
-    "quickfolders.quickMove.menu.hideSearch": {
-        "message": "Убрать строку ввода имени папки"
-    },
-    "quickfolders.quickMove.menu.showSearch": {
-        "message": "Показать строку ввода имени папки"
-    },
-    "quickfolders.quickMove.menu.suspend": {
-        "message": "Перейти к папке (сообщения не перемещать)"
-    },
-    "quickfolders.readingList.addCurrent": {
-        "message": "Добавить текущий элемент"
-    },
-    "quickfolders.readingList.clear": {
-        "message": "Очистить список для чтения"
-    },
-    "quickfolders.readingList.tooltip": {
-        "message": "Список для чтения"
-    },
-    "quickfolders.toolbar.newsubfolder": {
-        "message": "Новая под-папка…"
-    },
-    "quickfolders.toolbar.skip": {
-        "message": "Пропустить"
-    },
-    "quickfoldersQuickCopiedMails": {
-        "message": "Письмо скопировано в папку {2};{1} письма скопированы в папку {2}"
-    },
-    "quickfoldersQuickMovedMails": {
-        "message": "Письмо перемещено в папку {2};{1} письма перемещены в папку {2}"
-    },
-    "renew-your-license": {
-        "message": "Продлите лицензию."
-    },
-    "special-offer-content": {
-        "message": "Сделайте QuickFolders перспективным для будущего и получите лицензию, а цена QuickFolders Pro будет {boldStart} 40% {boldEnd}! Это специальное предложение будет доступно до {boldStart} 1 мая {boldEnd}."
-    },
-    "special-offer-head": {
-        "message": "Сделайте QuickFolders перспективным!"
-    },
-    "special-offer-intro": {
-        "message": "{boldStart} Уважаемый {name} {boldEnd}, если у вас еще нет лицензии, подумайте о поддержке QuickFolders в будущем. Грядут еще большие изменения в Thunderbird, и мне нужна {boldStart} ваша помощь {boldEnd}, чтобы не отставать!"
-    },
-    "support-preference": {
-        "message": "Это предпочтительный способ поддержки $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "quickFilters"
-            }
-        }
-    },
-    "support-suggestion": {
-        "message": "Чтобы $addonName$ оставался работоспособным и живым, сделайте ему жизненно важную услугу:",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "testDrive": {
-        "message": "Можно попробовать премиум-функции и в бесплатной версии, но они могут быть немного ограничены."
-    },
-    "thanks-for-installing-intro": {
-        "message": "Спасибо за установку $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "thanks-for-updating-intro": {
-        "message": "Спасибо за обновление $addonName$.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "time-and-effort": {
-        "message": "$addonName$ требует постоянных изменений, чтобы оставаться совместимым с платформой Mozilla. Я постоянно работаю над тем, чтобы сохранить как можно больше функциональных возможностей для будущих версий Thunderbird.",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "toAddress": {
-        "message": "Кому:"
-    },
-    "toAddress.tooltip": {
-        "message": "Стандартный адрес получателя для новых сообщений"
-    },
-    "translated-by-google": {
-        "description": "disclaimer.",
-        "message": "переводы предоставлены google"
-    },
-    "updates.title": {
-        "message": "Обновления"
-    },
-    "updatesExpiry": {
-        "message": "QuickFolders Pro обновляется автоматически. Через год можно будет либо продлить лицензию, либо пользоваться премиум-возможностями в ограниченном режиме. 'Эксклюзивные' возможности требуют регистрационный ключ."
-    },
-    "vouchers.title": {
-        "message": "Ваучеры"
-    },
-    "whats-new-btn": {
-        "message": "Какие новости?"
-    },
-    "whats-new-head": {
-        "message": "Функциональность"
-    },
-    "whats-new-intro": {
-        "message": "Прочтите подробный журнал изменений здесь (только на английском языке):"
-    },
-    "whats-new-list": {
-        "message": "Эта версия дополнительно расширяет функцию quickMove за счет следующих функций: {L1} Вкладка «Одно сообщение»: возможность автоматически открывать следующее электронное письмо на той же вкладке после перемещения сообщения. {L2} {L1} Возможность полной отмены quickMove (и очистки ее списка сообщения) одним нажатием ESCAPE. {L2} {L1} Расширенное сопоставление родительских папок путем чтения из _ и разделителей пробелов и обработки их как начала искомого имени. {L2} {L1} Исправлено: поиск папок во время просмотра сообщения, отображаемые в результатах поиска или из беседы в нескольких папках. {L2} {L1} Эти и дополнительные функции для ограничения результатов поиска из определенных учетных записей можно настроить с помощью расширенных настроек поиска на вкладке QuickFolders Pro. {L2}"
-    },
-    "window-title": {
-        "description": "page title. first placeholder will be replaced with Add-on name",
-        "message": "Добро пожаловать в $addonName$",
-        "placeholders": {
-            "addonName": {
-                "content": "$1",
-                "example": "QuickFolders"
-            }
-        }
-    },
-    "windowTitle": {
-        "message": "Дополнительные свойства"
-    },
-    "yearlyLicense.premiumFeatures": {
-        "message": "QuickFolders Pro позволяет неограниченно пользоваться премиум-функциями."
-    },
-    "yearlyLicense.premiumFeatures.moreInfoLink": {
-        "message": "Ещё о премиум-функциях."
-    },
-    "yearlyLicense.title": {
-        "message": "Годовая лицензия"
-    },
-    "yearlyLicense.usageTerm": {
-        "message": "Лицензия предназначена для частного пользования и привязана к адресу электронной почты. Её можно использовать на нескольких клиентах, если они используют зарегистрированный адрес."
-    },
-    "yearlyLicense.usageTerm1": {
-        "message": "Любые дополнительные адреса электронной почты не проблема - они не требуют отдельной лицензии. В случае вопросов вы можете связаться со мной через вкладку поддержки."
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
+  "account.label": {
+    "message": "Учётная запись:"
+  },
+  "active-version-info": {
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Теперь вы используете {boldStart} версию $addonVer$ {boldEnd} на Thunderbird $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
     }
+  },
+  "addon-authors-struggle": {
+    "message": "Чтобы и дальше оставаться полезными, нам, разработчикам дополнений, теперь необходимо финансировать ресурсы, необходимые для исправления и перезаписи, чтобы наши пользователи могли продолжать пользоваться предоставляемыми нами функциями."
+  },
+  "btn-extend-license": {
+    "message": "Я хочу продлить лицензию на один год"
+  },
+  "btn-renew-license": {
+    "message": "Я хочу продлить свою лицензию"
+  },
+  "btn-want-a-license": {
+    "message": "Я хочу купить лицензию"
+  },
+  "btn-want-to-donate": {
+    "message": "Я хочу помочь разовым пожертвованием."
+  },
+  "btnApply": {
+    "message": "Применить"
+  },
+  "btnCategory": {
+    "message": "Категории"
+  },
+  "btnCategory.tooltip": {
+    "message": "Назначить категории закладки"
+  },
+  "btnReset": {
+    "message": "По умолчанию"
+  },
+  "buyDomainLicense.button": {
+    "message": "Купить групповую лицензию"
+  },
+  "buyDomainLicense.instruct": {
+    "message": "Нужна лицензия для группы с пятью пользователями и более? Групповая лицензия будет дешевле:"
+  },
+  "buyLicense.instruct": {
+    "message": "Нужна лицензия только для себя? Лицензия для одного человека привязана к адресу электронной почты и может использоваться параллельно в несколько местах."
+  },
+  "buyPersonalLicense.button": {
+    "message": "Купить лицензию для одного человека!"
+  },
+  "chkComposerSubfolders": {
+    "message": "Также применять к под-папкам"
+  },
+  "chkHideFromQuickJump": {
+    "message": "Пропустить из quickJump / quickMove"
+  },
+  "chkHideFromQuickJump.tooltip": {
+    "message": "Опустить эту папку и ее дочерние элементы в результатах quickJump / quickMove"
+  },
+  "chkIgnoreCounts": {
+    "message": "Не показывать количество сообщений"
+  },
+  "chkIgnoreCounts.tooltip": {
+    "message": "Не показывать количество сообщений в папке."
+  },
+  "chkIgnoreUnread": {
+    "message": "Не показывать непрочтённый статус"
+  },
+  "chkIgnoreUnread.tooltip": {
+    "message": "Не показывать в закладке количество непрочтённых сообщений, в том числе и жирным шрифтом."
+  },
+  "chkSetMailsUnread": {
+    "message": "Установить почту непрочитанной"
+  },
+  "chkSetMailsUnread.tooltip": {
+    "message": "Если вы перемещаете почту в эту папку, она становится непрочитанной."
+  },
+  "cost-of-independence": {
+    "message": "Разработка программного обеспечения требует времени и денег - в отличие от многих приложений на платформе, надстройки не разрабатываются крупными корпорациями и никоим образом не спонсируются Mozilla."
+  },
+  "cssBackground": {
+    "message": "Фон"
+  },
+  "cssBackground.tooltip": {
+    "message": "CSS-описание фона, например linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
+  },
+  "cssColor": {
+    "message": "Цвет текста"
+  },
+  "cssColor.tooltip": {
+    "message": "CSS-описание цвета, например rgba(100,20,20,0.8)"
+  },
+  "defaultAccountAddress.value": {
+    "message": "Стандартный адрес учётной записи"
+  },
+  "domainLicense.email": {
+    "message": "Мы свяжемся с вами в течении 2 рабочих дней по указанному адресу электронной почты для генерирования групповой лицензии. Укажите имя домена для лицензии на следующей странице."
+  },
+  "domainLicense.header": {
+    "message": "Имя домена для лицензии"
+  },
+  "domainLicense.instruct": {
+    "message": "Эта лицензия привязана к имени домена вашей компании. Эта лицензия позволяет пользователям с адресами электронной почты, начинающимеся на это доменное имя, пользоваться QuickFolders Pro. К примеру, если указано доменное имя  'abc.com', то пользователи с адресами fred@abc.com, martha@abc.com, mike.doe@abc.com могут пользоваться этой лицензией. Максимальное число пользователей этой лицензии было указано в первом диалоге."
+  },
+  "domainLicense.validate": {
+    "message": "Введите доменное имя точно так, как оно указано в адресе электронной почты вашей компании (часть после знака @), так как мы будем использовать его для авторизации адресов электронной почты ваших пользователей."
+  },
+  "donate": {
+    "message": "Помогите с разовым пожертвованием."
+  },
+  "donate-heading": {
+    "message": "Помогите пожертвованием!"
+  },
+  "email.label": {
+    "message": "Адрес:"
+  },
+  "enterLicenseKey.button": {
+    "message": "Ввести лицензионный ключ…"
+  },
+  "enterLicenseKey.tooltip": {
+    "message": "Ввести присланный лицензионный ключ."
+  },
+  "extend-your-license": {
+    "message": "Рассмотрите возможность продления лицензии на год."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Bookmark your favorite mail folders in Thunderbird."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "QuickFolders"
+  },
+  "extensions.quickfolders@curious.be.description": {
+    "message": "Создайте закладки для ваших любимых папок в Thunderbird."
+  },
+  "firstName.label": {
+    "message": "Имя:"
+  },
+  "freeLicense": {
+    "message": "Если вы недавно поддержали проект или помогли переводом или исправлением, возможно вам положен бесплатный лицензионный ключ.  Свяжитесь со мной, контактные данные можно найти в настройках."
+  },
+  "fromAddress": {
+    "message": "От:"
+  },
+  "fromAddress.tooltip": {
+    "message": "Стандартный адрес отправителя для новых сообщений"
+  },
+  "getQuickFolders": {
+    "message": "Получить QuickFolders Pro"
+  },
+  "grpComposer": {
+    "message": "Стандартные значения полей сообщения"
+  },
+  "grpCustomCSS": {
+    "message": "Настроить CSS"
+  },
+  "grpTabBehavior": {
+    "message": "Продвинутое поведение закладки"
+  },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "Успешно установлено $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ успешно обновлен",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "intro": {
+    "message": "Годовая лицензия позволяет использовать премиум-функции один год. У нас же появляется возможность поддерживать и расширять продукт, делая его более значимым."
+  },
+  "label-remind-me": {
+    "message": "Напомнить мне снова через $countDays$ дн.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "lastName.label": {
+    "message": "Фамилия:"
+  },
+  "lblCustomPalette": {
+    "message": "Настроить палитру:"
+  },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Спасибо, что недавно продлили лицензию или сделали пожертвование. Поскольку вы помогли подготовить это дополнение к будущему, вы можете просто закрыть это окно."
+  },
+  "licenseWindow.title": {
+    "message": "Лицензия QuickFolders Pro"
+  },
+  "mozillas-basic-platform": {
+    "message": "Mozilla предоставляет только базовую платформу для доставки нашего программного обеспечения вам, конечным пользователям. Если нам нужно запросить у наших пользователей оплату или поддержку, мы не сможем сделать это через addons.thunderbird.net - это не «магазин приложений» со встроенными платными доступом или управлением лицензиями, такими как iTunes или Google Play."
+  },
+  "notificationTitle": {
+    "description": "Title of the click notification.",
+    "message": "Click notification"
+  },
+  "ongoing-work": {
+    "message": "Изменения для преобразования $addonName$ в новую модель программирования заняли недели и были дорогостоящими. В следующей версии 2022 года есть еще много изменений. С таким сложным дополнением дорогостоящая работа становится неизбежной. Пожалуйста, помогите нам с этим.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "purchase-a-license": {
+    "message": "Купите лицензию."
+  },
+  "purchase-heading": {
+    "message": "Покупка лицензии!"
+  },
+  "qf.accounts": {
+    "message": "учетные записи"
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Не удалось создать закладки. См. «Инструменты» → «Консоль ошибок» для подробной информации."
+  },
+  "qf.backupAndRestore": {
+    "message": "Восстановления резервной копии"
+  },
+  "qf.btn.applyPosition": {
+    "message": "Панель инструментов QuickFolders Положение"
+  },
+  "qf.button.add": {
+    "message": "Добавить!"
+  },
+  "qf.button.configureTooltips": {
+    "message": "Настроить всплывающие подсказки…"
+  },
+  "qf.button.currentFolderBackground.set": {
+    "message": "установить"
+  },
+  "qf.button.default": {
+    "message": "По умолчанию"
+  },
+  "qf.button.defaultcolors": {
+    "message": "Стандартные цвета"
+  },
+  "qf.button.deleteselectedcategory": {
+    "message": "Удалить выбранную категорию"
+  },
+  "qf.button.down": {
+    "message": "Вниз"
+  },
+  "qf.button.pasteLicense": {
+    "message": "вставить"
+  },
+  "qf.button.rename": {
+    "message": "Переименовать"
+  },
+  "qf.button.reorderButtonBottom": {
+    "message": "Последним"
+  },
+  "qf.button.reorderButtonBottom.accessKey": {
+    "message": "и"
+  },
+  "qf.button.reorderButtonBottom.toolTip": {
+    "message": "Фильтровать после других фильтров"
+  },
+  "qf.button.reorderButtonTop": {
+    "message": "Первым"
+  },
+  "qf.button.reorderButtonTop.accessKey": {
+    "message": "е"
+  },
+  "qf.button.reorderButtonTop.toolTip": {
+    "message": "Фильтровать до других фильтров"
+  },
+  "qf.button.up": {
+    "message": "Вверх"
+  },
+  "qf.button.validateLicense": {
+    "message": "проверить"
+  },
+  "qf.caption.currentFolderBackground": {
+    "message": "Фон панели инструментов текущей папки"
+  },
+  "qf.categories.supportMultiple": {
+    "message": "Разрешить выбирать несколько категорий для закладки"
+  },
+  "qf.categories.supportMultiple.tooltip": {
+    "message": "Удерживайте Shift для выбора более чем одной категории из списка."
+  },
+  "qf.checkbox.autoFocusPreview": {
+    "message": "Переводить фокус на список сообщений после смены закладок"
+  },
+  "qf.checkbox.autoHideToolbar": {
+    "message": "Не показывать QuickFolders если он не нужен"
+  },
+  "qf.checkbox.autoHideToolbar.tooltip": {
+    "message": "Убирает панель инструментов в таких вкладках как календарь, менеджер дополнений и т.д."
+  },
+  "qf.checkbox.currentFolder.closeButton": {
+    "message": "Закрывающая кнопка"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "Показывать панель инструментов"
+  },
+  "qf.checkbox.currentfolder.lightweight": {
+    "message": "интегрировать с легкой темой"
+  },
+  "qf.checkbox.debug": {
+    "message": "Режим отладки"
+  },
+  "qf.checkbox.debug.tooltip": {
+    "message": "Нажмите правой кнопкой мышки для получения дополнительных настроек"
+  },
+  "qf.checkbox.displaylabel": {
+    "message": "Показывать текст в панели инструментов"
+  },
+  "qf.checkbox.displaylabel.tooltip": {
+    "message": "Нажмите правой кнопкой мышки для изменения этого текста"
+  },
+  "qf.checkbox.enableTransitions": {
+    "message": "Разрешить CSS-трансформации"
+  },
+  "qf.checkbox.enableTransitions.tooltip": {
+    "message": "Плавные переходы между цветами закладок."
+  },
+  "qf.checkbox.hideCategoryBox": {
+    "message": "Свернуть категории"
+  },
+  "qf.checkbox.hideCategoryBox.tooltip": {
+    "message": "Свернуть меню категорий, чтобы оно занимало меньше места"
+  },
+  "qf.checkbox.highlightNewMail": {
+    "message": "Подсвечивать папки с новыми сообщениями"
+  },
+  "qf.checkbox.menus.dragToNewFolder": {
+    "message": "Перетащить, создавая под-папку"
+  },
+  "qf.checkbox.menus.emptyJunk": {
+    "message": "Удалить спам"
+  },
+  "qf.checkbox.menus.emptyTrash": {
+    "message": "Очистить «Удалённые»"
+  },
+  "qf.checkbox.menus.getMailForInbox": {
+    "message": "Получить сообщения (почта)"
+  },
+  "qf.checkbox.menus.getMailForNews": {
+    "message": "Получить сообщения (новости)"
+  },
+  "qf.checkbox.menus.markAllRead": {
+    "message": "Отметить папку как прочитанную"
+  },
+  "qf.checkbox.menus.markAllReadRecursive": {
+    "message": "Отметить папку как прочитанную (рекурсивно)"
+  },
+  "qf.checkbox.quickCopy": {
+    "message": "quickCopy - Копирование сообщений в любую папку по нажатию"
+  },
+  "qf.checkbox.quickCopy.tip": {
+    "message": "Сочетания клавиш кнопки quickCopy для быстрого копирования сообщений в папку по имени."
+  },
+  "qf.checkbox.quickJump": {
+    "message": "quickJump - переход в любую папку по нажатию"
+  },
+  "qf.checkbox.quickJump.tip": {
+    "message": "Сочетания клавиш кнопки quickJump для быстрого перехода к папке по имени."
+  },
+  "qf.checkbox.quickMove": {
+    "message": "quickMove - перемещение сообщений в любую папку по нажатию"
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Сочетания клавиш кнопки quickMove для быстрого перемещения сообщений в папку по имени."
+  },
+  "qf.checkbox.quickmove.autofill": {
+    "message": "Вставить имя последней папки"
+  },
+  "qf.checkbox.quickmove.autofill.tip": {
+    "message": "Будет вставлено имя последней успешно использованной папки. Нажмите Enter, чтобы использовать его, или введите имя другой папки."
+  },
+  "qf.checkbox.readingList": {
+    "message": "Список для чтения"
+  },
+  "qf.checkbox.readingList.tooltip": {
+    "message": "Список сообщений для прочтения позже. Перетаскивайте важные сообщения на эту кнопку."
+  },
+  "qf.checkbox.shadows": {
+    "message": "с тенями"
+  },
+  "qf.checkbox.shift": {
+    "message": "Shift"
+  },
+  "qf.checkbox.showCountInSubFolders": {
+    "message": "... и общее количество сообщений для папок в этой папке"
+  },
+  "qf.checkbox.showCountInSubFolders.tooltip": {
+    "message": "Эти данные будут отделены от основных данных '+'; не прочтенные сообщения также могут привести к использованию жирного шрифта для текста папки"
+  },
+  "qf.checkbox.showFilterButton": {
+    "message": "Кнопка 'Создать фильтр'"
+  },
+  "qf.checkbox.showFilterButton.tooltip": {
+    "message": "Вы также можете создавать фильтры с помощью контекстного меню QuickFolders."
+  },
+  "qf.checkbox.showFolderNavigation": {
+    "message": "Кнопки навигации между папками"
+  },
+  "qf.checkbox.showIconButtons": {
+    "message": "Настроить кнопки иконок"
+  },
+  "qf.checkbox.showIcons": {
+    "message": "Показывать значки (Входящие, Отправленные, Спам, Удаленные, Черновики, Архивы, Шаблоны)"
+  },
+  "qf.checkbox.showMailFolderCommands": {
+    "message": "Команды почтовых папок"
+  },
+  "qf.checkbox.showMessageNavigation": {
+    "message": "Кнопки навигации между сообщениями"
+  },
+  "qf.checkbox.showNewMailItalics": {
+    "message": "Текст закладок для папок с новоприбывшими сообщениями - курсивом"
+  },
+  "qf.checkbox.showNonEmptyItalics": {
+    "message": "Текст закладок для папок с сообщениями - курсивом"
+  },
+  "qf.checkbox.showQuickMove": {
+    "message": "Кнопка &quot;Быстрое перемещение&quot;"
+  },
+  "qf.checkbox.showQuickMove.tooltip": {
+    "message": "Кнопка &quot;Быстрое перемещение&quot; позволяет переместить сообщения из различных папок в одну. После того как сообщения были собраны, введите название папки назначения в строке поиска."
+  },
+  "qf.checkbox.showRecentButton": {
+    "message": "Кнопка с последними папками"
+  },
+  "qf.checkbox.showRecentTab": {
+    "message": "Показывать закладку с последними папками"
+  },
+  "qf.checkbox.showRecentTab.tooltip": {
+    "message": "Для конфигурирования нажмите правой кнопкой мышки"
+  },
+  "qf.checkbox.showSubfolders": {
+    "message": "Раскрывать папки из этой папке в меню"
+  },
+  "qf.checkbox.showTotalMessageCount": {
+    "message": "Показывать в закладке общее количество сообщений"
+  },
+  "qf.checkbox.showUnreadBold": {
+    "message": "Текст закладок для папок с не прочтенными сообщениями - жирным шрифтом"
+  },
+  "qf.checkbox.showUnreadMessageCount": {
+    "message": "Показывать в закладке количество не прочтенных сообщений"
+  },
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Показывать номер сокращения на закладках"
+  },
+  "qf.checkbox.singleMessage.currentFolder.show": {
+    "message": "…также и в новом окне с сообщением"
+  },
+  "qf.checkbox.singleMessage.currentFolder.tooltip": {
+    "message": "Показывать панель инструментов текущей папки в окне, если вы открываете сообщение в новом окне."
+  },
+  "qf.checkbox.singleMessageTab.currentFolder.show": {
+    "message": "И в новой вкладке с сообщением"
+  },
+  "qf.checkbox.skipFolder": {
+    "message": "Пропуск непрочитанной папки: Shift +"
+  },
+  "qf.checkbox.skipFolder.tip": {
+    "message": "Комбинация клавиш для перехода к следующей непрочитанной папке."
+  },
+  "qf.checkbox.sortMenusAlpha": {
+    "message": "Заставлять сортировать папки в папках по алфавиту."
+  },
+  "qf.checkbox.sortMenusAlpha.tooltip": {
+    "message": "Используйте только если нет правильной сортировки папок в папках."
+  },
+  "qf.checkbox.storeConfig.general": {
+    "message": "Включить общие настройки"
+  },
+  "qf.checkbox.storeConfig.layout": {
+    "message": "Включить расширенный и макет"
+  },
+  "qf.checkbox.storeConfig.tabs": {
+    "message": "Включить вкладки QuickFolders"
+  },
+  "qf.checkbox.tabMenuIcon": {
+    "message": "Значок меню на панели инструментов"
+  },
+  "qf.checkbox.tabMenuIcon.tooltip": {
+    "message": "Это меню можно также вызвать нажатием правой кнопки мыши на самой панели инструментов"
+  },
+  "qf.checkbox.transparent": {
+    "message": "прозрачный"
+  },
+  "qf.checkbox.useNavigationShortcuts": {
+    "message": "Alt-влево/Alt-вправо для предыдущей/следующей закладки"
+  },
+  "qf.checkbox.usePalette": {
+    "message": "Показ палитры"
+  },
+  "qf.checkbox.useRebuildShortcut": {
+    "message": "Обновить все закладки: Ctrl + Alt +"
+  },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Использовать клавиатурные сокращения (от Alt + 1 до Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Использовать Ctrl вместо Alt"
+  },
+  "qf.continueFilter.label": {
+    "message": "Создать фильтр…"
+  },
+  "qf.continueFilter.shortcut": {
+    "message": "С"
+  },
+  "qf.copyfolders": {
+    "message": "Копировать закладки"
+  },
+  "qf.copyfolders.tooltip": {
+    "message": "Копировать настройки в буфер обмена"
+  },
+  "qf.currentFolderBackground.custom": {
+    "message": "собственный"
+  },
+  "qf.currentFolderBackground.dark": {
+    "message": "тёмный"
+  },
+  "qf.currentFolderBackground.default": {
+    "message": "по умолчанию"
+  },
+  "qf.currentFolderBackground.translucent": {
+    "message": "просвечивающий"
+  },
+  "qf.currentfolder.leftSpacer": {
+    "message": "Левая распорка:"
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "Правая распорка:"
+  },
+  "qf.description.bugzilla": {
+    "message": "Пожалуйста пользуйтесь Bugzilla для сообщений об ошибках и запросов о новых возможностях"
+  },
+  "qf.description.categoryusage": {
+    "message": "Можно присвоить закладке категорию('Работа','Личное')"
+  },
+  "qf.description.changeCategory": {
+    "message": "Нажмите на закладке правой кнопкой мышки для присвоения ей категории. Список категорий будет показан в левой части панели инструментов."
+  },
+  "qf.description.contactMe": {
+    "message": "Мой личный адрес axelg@gofree.indigo.ie:"
+  },
+  "qf.description.donate": {
+    "message": "Если QuickFolders вам нравится также, как и нам, вы можете поддержать деньгами дальнейшее развитие."
+  },
+  "qf.description.dragToAdd": {
+    "message": "Для создания новых закладок перетаскивайте папки на свободное место в новой панели инструментов. Для перемещения сообщений перетаскивайте их на закладки (удерживайте Ctrl для копирования). Нажмите на закладку, чтобы переместится в папку."
+  },
+  "qf.description.dragToPopup": {
+    "message": "Перетаскивайте сообщения на контекстное меню закладки для их перемещения в папки, находящиеся в этой папке."
+  },
+  "qf.description.dragToPosition": {
+    "message": "Перетаскивайте закладки в пределах панели инструментов для изменения их положения. В контекстном меню (нажатие правой кнопкой мышки) закладки вы можете переместится в папки, находящиеся в этой папке, переименовать или удалить закладку(но не папку)."
+  },
+  "qf.description.dragexplain": {
+    "message": "Можно изменить порядок закладок перетаскиванием. Попробуйте положить одну на другую."
+  },
+  "qf.description.editcategory": {
+    "message": "Выберите существующую категорию с помощью двойного щелчка или добавьте новую ниже."
+  },
+  "qf.description.experimentalItems": {
+    "message": "Последующие функции - экспериментальные, надеюсь они будут работать в следующей версии!!"
+  },
+  "qf.description.languages": {
+    "message": "Вы можете помочь, добавив перевод на свой язык на Babelzilla:"
+  },
+  "qf.description.linkNote": {
+    "message": "Посетите страницу QuickFolders для детальных объяснений, советов и ответов на вопросы:"
+  },
+  "qf.description.multicategory": {
+    "message": "Чтобы присвоить папке несколько категорий: удерживайте Shift или Ctrl нажатыми при выборе."
+  },
+  "qf.description.pulldown": {
+    "message": "Панель инструментов QuickFolders будет показывать список для фильтрации закладок по категориям."
+  },
+  "qf.description.rightClickOptions": {
+    "message": "Для вызова меню настроек, нажмите на свободном месте панели инструментов. В этом меню вы можете выбрать обычный (занимает меньше места) или плоский(четче, показывает индикатор при перетаскивании) стиль."
+  },
+  "qf.description.tipMsg": {
+    "message": "Совет: если у вас много папок, попробуйте воспользоваться расширением 'Nostalgy' для навигации с помощью клавиатуры"
+  },
+  "qf.description.versionhistory": {
+    "message": "Подробная история изменений на quickfolders.org"
+  },
+  "qf.dialog.changeorder": {
+    "message": "Изменить порядок закладок"
+  },
+  "qf.dialog.quickmove.settings": {
+    "message": "quickMove Расширенные настройки"
+  },
+  "qf.dialog.setcategory": {
+    "message": "Присвоить закладке категорию"
+  },
+  "qf.donate.tooltip": {
+    "message": "Поддержи развитие QuickFolders!"
+  },
+  "qf.filters.instructions": {
+    "message": "Пожалуйста выберите шаблон. Фильтр можно будет настроить на следующем этапе."
+  },
+  "qf.filters.template.from": {
+    "message": "По отправителю (от)"
+  },
+  "qf.filters.template.from.description": {
+    "message": "Наверное самый популярный шаблон: адрес отправителя используется как критерии 'отправитель' и 'адресат' фильтра. Вся переписка с отправителем перемещается в новую папку."
+  },
+  "qf.filters.template.list": {
+    "message": "Список рассылки"
+  },
+  "qf.filters.template.list.description": {
+    "message": "Похож на шаблон 'По отправителю', но не заполняется критерий 'отправитель'."
+  },
+  "qf.filters.template.tag": {
+    "message": "По меткам"
+  },
+  "qf.filters.template.tag.description": {
+    "message": "Использует метки сообщения как критерии фильтра."
+  },
+  "qf.filters.template.to": {
+    "message": "По адресату (кому)"
+  },
+  "qf.filters.template.to.description": {
+    "message": "Похож на шаблон 'По отправителю': используется для отправленных сообщений. Адрес получателя используется как критерии 'отправитель' и 'адресат' фильтра. Вся переписка с получателем перемещается в новую папку."
+  },
+  "qf.filters.template.topic": {
+    "message": "По теме"
+  },
+  "qf.filters.template.topic.description": {
+    "message": "Критерий фильтра для сообщений со скобками в теме, как то [нумизматы] или {вегетарианцы}; фильтруются многие массовые рассылки, которые пользуются этим приёмом."
+  },
+  "qf.filters.title": {
+    "message": "Создать фильтр"
+  },
+  "qf.filters.toggleMessage.notificationText": {
+    "message": "Включён режим создания фильтров. Перенос сообщений на QuickFolders запускает мастер создания фильтров. Thunderbird перемещает сообщения с помощью фильтров на основе критериев «кто отправитель», «есть ли строка в теме» и т.д. Выход из режима  - нажатие кнопки на левой стороне панели инструментов QuickFolders."
+  },
+  "qf.filters.toggleMessage.title": {
+    "message": "Создание фильтров"
+  },
+  "qf.foldercontextmenu.quickfolders.customizeIcon": {
+    "message": "Настроить Иконку..."
+  },
+  "qf.foldercontextmenu.quickfolders.removeIcon": {
+    "message": "Удалить Индивидуальную Иконку"
+  },
+  "qf.fpJsonFile": {
+    "message": "Файл JSON"
+  },
+  "qf.goNextUnread.auto": {
+    "message": "Менять папку не спрашивая (рекомендовано)"
+  },
+  "qf.goNextUnread.none": {
+    "message": "Ничего не делать если в папке не осталось непрочитанных сообщений"
+  },
+  "qf.goNextUnread.prompt": {
+    "message": "Спрашивать разрешение на смену папки."
+  },
+  "qf.group.navigation": {
+    "message": "Навигация по сообщениям"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Цвет активной закладки"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Палитра цветных закладок:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Палитра закладок с предопределенным цветом"
+  },
+  "qf.label.DragOverBackground": {
+    "message": "Цвет закладки под переносимой"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Цвет закладки под мышкой"
+  },
+  "qf.label.Toolbar": {
+    "message": "Панель инструментов"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Ширина линии внизу:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "Ширина линии под закладками. Цвет меняется цветом активной закладки чуть ниже."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Фоновый цвет панели инструментов"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Бесцветные закладки"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Вид (неактивных) закладок без предопределенного цвета"
+  },
+  "qf.label.appearance": {
+    "message": "Внешний вид"
+  },
+  "qf.label.behavior": {
+    "message": "Поведение"
+  },
+  "qf.label.bugzilla": {
+    "message": "Сообщить об ошибке/Запрос новых возможностей на Bugzilla…"
+  },
+  "qf.label.buttonFontSizeNumeric": {
+    "message": "Размер шрифта кнопки (0 - значение по умолчанию):"
+  },
+  "qf.label.cancel": {
+    "message": "Отмена"
+  },
+  "qf.label.colors": {
+    "message": "Цвета"
+  },
+  "qf.label.contactLink": {
+    "message": "Написать мне (на английском или немецком языке)"
+  },
+  "qf.label.currentFolderToolbar": {
+    "message": "Панель инструментов текущей папки"
+  },
+  "qf.label.donate": {
+    "message": "Пожертвовать"
+  },
+  "qf.label.donateLink": {
+    "message": "Поддержать…"
+  },
+  "qf.label.dragFolderLabel": {
+    "message": "Для создания закладки перетащите папку сюда. Нажмите на закладку для перехода в папку, перетащите сообщения на закладку для перемещения/копирования их в соответствующую папку."
+  },
+  "qf.label.existingcategories": {
+    "message": "Существующие категории:"
+  },
+  "qf.label.filterCountN_of_M": {
+    "message": "{0} из {1}"
+  },
+  "qf.label.filterEntities": {
+    "message": "элементов"
+  },
+  "qf.label.filterSingleEntity": {
+    "message": "1 элемент"
+  },
+  "qf.label.getQuickFilters": {
+    "message": "Установите моё расширение quickFilters для более утончённого создания фильтров!"
+  },
+  "qf.label.goNextUnread": {
+    "message": "Переходя к следующему непрочитанному сообщению:"
+  },
+  "qf.label.goNextUnread.tip": {
+    "message": "Обычно Thunderbird спрашивает разрешение, если при переходе к следующему непрочитанному сообщению нужно сменить папку."
+  },
+  "qf.label.haveLicense": {
+    "message": "Уже есть лицензионный ключ?"
+  },
+  "qf.label.homePage": {
+    "message": "Подробная информация на странице QuickFolders на quickfolders.org…"
+  },
+  "qf.label.initdelay": {
+    "message": "Начальная задержка, мс (1000 мс по умолчанию)"
+  },
+  "qf.label.insertLicense": {
+    "message": "Вставить лицензионный ключ сюда:"
+  },
+  "qf.label.insertLicense.tooltip": {
+    "message": "Ваш лицензионный ключ находится в сообщении от Fastspring, подтверждающем заказ."
+  },
+  "qf.label.instantApplyMsg": {
+    "message": "Если вы видите только кнопку [Закрыть], возможно цветовые настройки не работают. Попробуйте нажать правой кнопкой мышки на свободном месте в панели инструментов и выбрать настройки. Это должно заставить появится кнопку [OK] и сохранить цветовые настройки."
+  },
+  "qf.label.keyboard": {
+    "message": "Клавиатурные сокращения"
+  },
+  "qf.label.languagesLink": {
+    "message": "Добавить перевод…"
+  },
+  "qf.label.licenseValid": {
+    "message": "Лицензионный ключ действителен до:"
+  },
+  "qf.label.mainToolbar": {
+    "message": "Элементы основной панели инструментов"
+  },
+  "qf.label.menus": {
+    "message": "Конфигурация меню"
+  },
+  "qf.label.menus.customIcon": {
+    "message": "Настроить иконку"
+  },
+  "qf.label.menus.help": {
+    "message": "Помощь QuickFolders"
+  },
+  "qf.label.menus.hideQFunlessCTRL": {
+    "message": "Показывать только при нажатой клавише Ctrl"
+  },
+  "qf.label.menus.lineBreak": {
+    "message": "Вставить перевод строк"
+  },
+  "qf.label.menus.mailFolder": {
+    "message": "Команды сообщений"
+  },
+  "qf.label.menus.options": {
+    "message": "Настройки"
+  },
+  "qf.label.menus.quickFolder": {
+    "message": "Команды QuickFolders"
+  },
+  "qf.label.menus.separator": {
+    "message": "Вставить разделитель"
+  },
+  "qf.label.menus.support": {
+    "message": "Поддержка QuickFolders"
+  },
+  "qf.label.misc": {
+    "message": "Разное"
+  },
+  "qf.label.newcategory": {
+    "message": "Новая категория:"
+  },
+  "qf.label.pixels": {
+    "message": "пикселов"
+  },
+  "qf.label.quickFilters.link": {
+    "message": "установить quickFilters!"
+  },
+  "qf.label.quickfolders": {
+    "message": "QuickFolders:"
+  },
+  "qf.label.renameselectedcategory": {
+    "message": "Переименовать выбранную категорию"
+  },
+  "qf.label.setcolors": {
+    "message": "Цвет текста и фона"
+  },
+  "qf.label.tabContent": {
+    "message": "Содержание закладок"
+  },
+  "qf.label.testfolder": {
+    "message": "Папка &quot;Тест&quot;"
+  },
+  "qf.label.testfolder2": {
+    "message": "Папка &quot;Тест 2&quot;"
+  },
+  "qf.label.themes": {
+    "message": "Темы:"
+  },
+  "qf.label.toolbarPosition": {
+    "message": "Применить значение позиции!"
+  },
+  "qf.label.versionhistory": {
+    "message": "Смотреть историю изменений…"
+  },
+  "qf.licenseValidation.expired": {
+    "message": "Лицензионный ключ просрочен. Нажмите кнопку ниже для обновления лицензии."
+  },
+  "qf.licenseValidation.failed": {
+    "message": "Лицензионный ключ недействителен. Ещё раз посмотрите сообщение от FastSpring. Если их инструкции не помогут, обратитесь ко мне (см. &quot;Поддержка&quot;)."
+  },
+  "qf.licenseValidation.guessAddon": {
+    "message": "(Введённый ключ может быть для {2})."
+  },
+  "qf.licenseValidation.invalidAddon": {
+    "message": "Введённый лицензионный ключ может быть для другого дополнения. Лицензионные ключи для {0} начинаются с {1}."
+  },
+  "qf.licenseValidation.invalidMail": {
+    "message": "Адрес, привязанный к лицензионному ключу [{1}] не используется ни в одной учётной записи почты. Свяжитесь со мной, контактные данные можно найти в настройках."
+  },
+  "qf.licenseValidation.notMatchedMail": {
+    "message": "Зашифрованный адрес не совпадает с имеющимся."
+  },
+  "qf.licenseValidation.passed": {
+    "message": "Спасибо за регистрацию! Вы можете пользоваться всеми премиальными функциями."
+  },
+  "qf.loadConfig": {
+    "message": "Загрузить конфигурацию …"
+  },
+  "qf.menu.Color": {
+    "message": "Цвет"
+  },
+  "qf.menu.tabColor": {
+    "message": "Без цвета!"
+  },
+  "qf.menuitem.quickfolders.changeOrder": {
+    "message": "Изменить порядок закладок"
+  },
+  "qf.menuitem.quickfolders.changeOrderAccess": {
+    "message": "И"
+  },
+  "qf.menuitem.quickfolders.deleteDeadTabs": {
+    "message": "Найти закладки без папок"
+  },
+  "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
+    "message": "з"
+  },
+  "qf.menuitem.quickfolders.displayPreviewToolbar": {
+    "message": "Показать инструменты текущей папки"
+  },
+  "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
+    "message": "к"
+  },
+  "qf.menuitem.quickfolders.filters": {
+    "message": "Создать фильтр сообщений…"
+  },
+  "qf.menuitem.quickfolders.filtersAccess": {
+    "message": "ф"
+  },
+  "qf.menuitem.quickfolders.find": {
+    "message": "Найти папку…"
+  },
+  "qf.menuitem.quickfolders.findAccess": {
+    "message": "а"
+  },
+  "qf.menuitem.quickfolders.help": {
+    "message": "Справка QuickFolders"
+  },
+  "qf.menuitem.quickfolders.helpAccess": {
+    "message": "С"
+  },
+  "qf.menuitem.quickfolders.options": {
+    "message": "Настройки QuickFolders"
+  },
+  "qf.menuitem.quickfolders.optionsAccess": {
+    "message": "Н"
+  },
+  "qf.menuitem.quickfolders.register": {
+    "message": "Зарегистрировать QuickFolders Pro…"
+  },
+  "qf.menuitem.quickfolders.repairTabs": {
+    "message": "Обновить видимые закладки!"
+  },
+  "qf.menuitem.quickfolders.repairTabsAccess": {
+    "message": "О"
+  },
+  "qf.menuitem.quickfolders.repairTreeIcons": {
+    "message": "Починить иконки дерева"
+  },
+  "qf.menuitem.quickfolders.support": {
+    "message": "Поддержка QuickFolders…"
+  },
+  "qf.menuitem.quickfolders.supportAccess": {
+    "message": "П"
+  },
+  "qf.menuitem.quickfolders.togglePaintMode": {
+    "message": "Режим раскраски"
+  },
+  "qf.menuitem.quickfolders.togglePaintModeAccess": {
+    "message": "р"
+  },
+  "qf.notification.categoryIsReadOnly": {
+    "message": "Эту категорию удалить нельзя."
+  },
+  "qf.notification.dontShowAgain": {
+    "message": "Более не показывать."
+  },
+  "qf.notification.premium.btn.extendLicense": {
+    "message": "Продлить лицензию"
+  },
+  "qf.notification.premium.btn.extendLicense.tooltip": {
+    "message": "Продление срока действия текущей лицензии на 1 год. Обычно это дешевле, чем новая лицензия."
+  },
+  "qf.notification.premium.btn.getLicense": {
+    "message": "Купить лицензию!"
+  },
+  "qf.notification.premium.btn.hotKey": {
+    "message": "л"
+  },
+  "qf.notification.premium.btn.renewLicense": {
+    "message": "Обновить лицензию"
+  },
+  "qf.notification.premium.readingList": {
+    "message": "Имеется {1} закладок. Бесплатная версия QuickFolders поддерживает не более {2} закладок."
+  },
+  "qf.notification.premium.tabIcons": {
+    "message": "Используется  {1} значков. Бесплатная версия QuickFolders поддерживает не более {2} значков."
+  },
+  "qf.notification.premium.text": {
+    "message": "Зарегистрируйте QuickFolders для постоянного пользования премиальных функцией {1}."
+  },
+  "qf.notification.premium.title": {
+    "message": "Премиальная функция"
+  },
+  "qf.options.LayoutColorAppearance": {
+    "message": "Индивидуальный вид закладок"
+  },
+  "qf.options.LayoutColorAppearanceFilled": {
+    "message": "(&quot;заполненный&quot; стиль)"
+  },
+  "qf.options.LayoutColorAppearanceStriped": {
+    "message": "(полосатый стиль)"
+  },
+  "qf.options.label.themeAuthor": {
+    "message": "Автор темы:"
+  },
+  "qf.options.theme.pastelColors": {
+    "message": "Пастельные цвета"
+  },
+  "qf.options.themes.customCornerRadius.Bottom.label": {
+    "message": "Низ:"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "Верх:"
+  },
+  "qf.options.themes.customCornerRadius.checkbox": {
+    "message": "Радиус угла"
+  },
+  "qf.options.themes.showBorders.checkbox": {
+    "message": "Всегда показывать рамку"
+  },
+  "qf.options.versionnumber.tooltip": {
+    "message": "Нажмите правой кнопкой мышки для получения истории изменений."
+  },
+  "qf.palette.inactive": {
+    "message": "Как неактивная закладка"
+  },
+  "qf.palette.night": {
+    "message": "Ночной вид"
+  },
+  "qf.palette.pastel": {
+    "message": "Пастельные цвета"
+  },
+  "qf.palette.standard": {
+    "message": "Обычная палитра"
+  },
+  "qf.palette.twoColors": {
+    "message": "2 цвета"
+  },
+  "qf.pastefolders.tooltip": {
+    "message": "Удалить все QuickFolders и прочитать новую конфигурацию из буфера обмена"
+  },
+  "qf.pathFormat.AccountAndPath": {
+    "message": "Учётная запись - Путь к папке"
+  },
+  "qf.pathFormat.PathOnly": {
+    "message": "Путь к папке"
+  },
+  "qf.pathFormat.URI": {
+    "message": "URI-папки"
+  },
+  "qf.pathFormat.folderAndAccount": {
+    "message": "Имя папки - Учётная запись"
+  },
+  "qf.pathFormat.folderName": {
+    "message": "Имя папки"
+  },
+  "qf.pathFormat.maxDepth": {
+    "message": "Максимальная глубина пути:"
+  },
+  "qf.pathFormat.tooltip": {
+    "message": "Максимальное количество имен папок показываемых в пути к папке."
+  },
+  "qf.prefwindow.quickfolders.options": {
+    "message": "Настройки QuickFolders"
+  },
+  "qf.premium.renewLicense.tooltip": {
+    "message": "Ваша лицензия истекла уже {1} дней"
+  },
+  "qf.premiumConfig": {
+    "message": "Премиальные функции"
+  },
+  "qf.prompt.category.deleteMultiple": {
+    "message": "Хорошо, чтобы удалить несколько категорий?"
+  },
+  "qf.prompt.contact.subject": {
+    "message": "Введите тему сообщения:"
+  },
+  "qf.prompt.contact.title": {
+    "message": "Связаться с поддержкой QuickFolders"
+  },
+  "qf.prompt.loadFolders.confirm": {
+    "message": "Принять загруженные вкладки?"
+  },
+  "qf.prompt.newFolder.createQFtab": {
+    "message": "Также создать закладку QuickFolders Tab"
+  },
+  "qf.prompt.newFolder.newChildName": {
+    "message": "Введите имя новой подпапки в {0}"
+  },
+  "qf.prompt.newFolder.title": {
+    "message": "Новая папка"
+  },
+  "qf.prompt.pasteFolders": {
+    "message": "Это позволит удалить все закладки и заменить их элементами из буфера обмена.\\n{0} элементов были найдены в буфере обмена.\\nВы уверены?"
+  },
+  "qf.prompt.pasteFolders.confirm": {
+    "message": "Сохранить отображаемые закладки?"
+  },
+  "qf.prompt.readingList.removeItem": {
+    "message": "Удалить этот элемент?"
+  },
+  "qf.prompt.readingList.searchMissingItem": {
+    "message": "Не могу найти сообщение, возможно его переместили.\\n{1}\\n\\nХотите его найти?"
+  },
+  "qf.prompt.restoreFolders": {
+    "message": "Это приведет к удалению всех вкладок QuickFolders и замене на элементы из файла.\\n{0} записей было прочитано.\\nЗаменить вкладки?"
+  },
+  "qf.prompt.switchDomainLicense": {
+    "message": "Перейти на доменную лицензию?"
+  },
+  "qf.quickMove.escapeClears": {
+    "message": "Escape Key очищает список сообщений."
+  },
+  "qf.quickMove.excludeAccounts": {
+    "message": "Выберите любые учетные записи, которые следует исключить из результатов поиска:"
+  },
+  "qf.quickMove.lockAccount": {
+    "message": "Показывать результаты только из текущего почтового аккаунта."
+  },
+  "qf.quickMove.maxResults": {
+    "message": "Максимальное количество результатов поиска"
+  },
+  "qf.quickMove.path.format": {
+    "message": "Формат отображения:"
+  },
+  "qf.quickMove.silent": {
+    "message": "Нет уведомлений после перемещения писем."
+  },
+  "qf.register.licenseValid.expired": {
+    "message": "Ваша лицензия истекает:"
+  },
+  "qf.search.advanced": {
+    "message": "Настройки расширенного поиска…"
+  },
+  "qf.storeConfig": {
+    "message": "Сохранить конфигурацию …"
+  },
+  "qf.tab.advanced": {
+    "message": "Дополнительные"
+  },
+  "qf.tab.general": {
+    "message": "Основные"
+  },
+  "qf.tab.gopro": {
+    "message": "QuickFolders Pro"
+  },
+  "qf.tab.layout": {
+    "message": "Разнообразить закладки!"
+  },
+  "qf.tab.quickhelp": {
+    "message": "Справка"
+  },
+  "qf.tab.support": {
+    "message": "Поддержка"
+  },
+  "qf.textbox.searchBox.emptyText": {
+    "message": "найти фильтры…"
+  },
+  "qf.textbox.searchBox.toolTip": {
+    "message": "Введите ключевое слово для поиска фильтра по имени"
+  },
+  "qf.themes.applePills.description": {
+    "message": "Для наших пользователей Mac - простенькие, с парочкой цветовых \\\"пёрышек\\\"."
+  },
+  "qf.themes.applePills.label": {
+    "message": "Для Apple"
+  },
+  "qf.themes.flatButtons.description": {
+    "message": "Обычные кнопки панели инструментов - более всего напоминает оригинал из версии 0.5!"
+  },
+  "qf.themes.flatButtons.label": {
+    "message": "Кнопки панели инструментов"
+  },
+  "qf.themes.flatTabs.description": {
+    "message": "Современный вид - полностью настраивается, хорошо выглядит под Windows и Linux."
+  },
+  "qf.themes.flatTabs.label": {
+    "message": "Плоский стиль"
+  },
+  "qf.themes.nativeTabs.description": {
+    "message": "Напоминает закладки вашей ОС - гармонирует с темами для самой программы, но мало возможностей по настройке цвета."
+  },
+  "qf.themes.nativeTabs.label": {
+    "message": "Родные закладки"
+  },
+  "qf.themes.realButtons.description": {
+    "message": "Обычные кнопки - выглядят как стандартные кнопки в диалогах"
+  },
+  "qf.themes.realButtons.label": {
+    "message": "Обычные кнопки"
+  },
+  "qf.toolbar.quickfolders.toolbar": {
+    "message": "Панель инструментов QuickFolders"
+  },
+  "qf.toolbarMinimumHeight": {
+    "message": "Минимальная высота:"
+  },
+  "qf.toolbarMinimumHeight.tooltip": {
+    "message": "Для Mac систем страдающих от [ошибка 25021]"
+  },
+  "qf.toolbarPosition.tooltip": {
+    "message": "0 = поверх других панелей инструментов; 100 = низ. Высокое значение зависит от других дополнений."
+  },
+  "qf.tooltip.RecentFolders": {
+    "message": "Последние папки"
+  },
+  "qf.tooltip.closeToolbar": {
+    "message": "Закрыть эту панель инструментов"
+  },
+  "qf.tooltip.conversationRead": {
+    "message": "Отметить обсуждение как прочитанное и перейти к следующему непрочтённому сообщению"
+  },
+  "qf.tooltip.emailIcon": {
+    "message": "Текущее сообщение - перетащите на закладку QuickFolders для перемещения."
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Активирует создание фильтров. Перетаскивание сообщений в QuickFolder создаёт новые фильтры."
+  },
+  "qf.tooltip.filters": {
+    "message": "Прекратить создавать фильтры сообщений."
+  },
+  "qf.tooltip.folderUp": {
+    "message": "Перейти к вышестоящей папке"
+  },
+  "qf.tooltip.goNextFolder": {
+    "message": "К следующему непрочтённому сообщению"
+  },
+  "qf.tooltip.goPreviousFolder": {
+    "message": "К предыдущему непрочтённому сообщению"
+  },
+  "qf.tooltip.mailFolderCommands": {
+    "message": "Команды почтовых папок"
+  },
+  "qf.tooltip.mainOptions": {
+    "message": "Настройки QuickFolders и дополнительные команды"
+  },
+  "qf.tooltip.paintCanActive": {
+    "message": "Режим раскраски: показывает палитру, нажатие на закладку её раскрасит, правой кнопкой мышки узнайте цвет закладки."
+  },
+  "qf.tooltip.quickFoldersNavToggle": {
+    "message": "переключает навигацию между всеми / непрочтёнными сообщениями"
+  },
+  "qf.tooltip.quickMove": {
+    "message": "Быстрое перемещение: перенесите сообщения сюда, затем введите название папки."
+  },
+  "qf.tooltip.skipUnreadFolder": {
+    "message": "К следующей непрочитанной папке"
+  },
+  "qf.tooltip.threadIcon": {
+    "message": "Текущее обсуждение - перетащите на закладку QuickFolders для перемещения."
+  },
+  "qf.youtube.description": {
+    "message": "Для подробных видео о дополнениях Thunderbird и как использовать QuickFolders посетите мой канал на YouTube Thunderbird Daily."
+  },
+  "qf.youtube.link": {
+    "message": "Смотреть видео о QuickFolders…"
+  },
+  "qf.youtube.tbdaily": {
+    "message": "Посетите Thunderbird Daily - канал на YouTube с советами и пособиями по использованию QuickFolders"
+  },
+  "qfAlertCopyString": {
+    "message": "Имя папки скопировано в буфер обмена"
+  },
+  "qfAlertDropFolderVirtual": {
+    "message": "В виртуальную папку нельзя копировать!"
+  },
+  "qfAlertUpgradeSuccess": {
+    "message": "QuickFolders был обновлён до версии:"
+  },
+  "qfAll": {
+    "message": "(Показать все)"
+  },
+  "qfCantMoveFolder": {
+    "message": "Папку {0} нельзя переместить."
+  },
+  "qfColorPickingWIP": {
+    "message": "К сожалению, эта функция находится в разработке!"
+  },
+  "qfCommandAccess": {
+    "message": "з"
+  },
+  "qfCommandPopup": {
+    "message": "Команды для закладок"
+  },
+  "qfCompactFolder": {
+    "message": "Сжать папку"
+  },
+  "qfCompactFolderAccess": {
+    "message": "С"
+  },
+  "qfCompacted": {
+    "message": "Сжато:"
+  },
+  "qfCompactedBytesFreed": {
+    "message": "Удалено"
+  },
+  "qfCompactedFolder": {
+    "message": "Папка сжата"
+  },
+  "qfCompactedNewFolderSize": {
+    "message": "Новый размер"
+  },
+  "qfCompactedOriginalFolderSize": {
+    "message": "Старый размер"
+  },
+  "qfConfirmCopyFolder": {
+    "message": "Действительно скопировать папку {0} в {1}?"
+  },
+  "qfConfirmMoveFolder": {
+    "message": "Переместить папку {0} в {1}?"
+  },
+  "qfConfirmVersionLink": {
+    "message": "Показать историю изменений QuickFolders"
+  },
+  "qfDeadTabsCount": {
+    "message": "закладок без папок найдено:"
+  },
+  "qfDeadTabsDeleted": {
+    "message": "закладок без папок удалено:"
+  },
+  "qfDeleteFolder": {
+    "message": "Удалить папку"
+  },
+  "qfDeleteFolderAccess": {
+    "message": "У"
+  },
+  "qfDeleteJunk": {
+    "message": "Удалить спам"
+  },
+  "qfDown": {
+    "message": "Вниз"
+  },
+  "qfDownloadAll": {
+    "message": "Загрузить все"
+  },
+  "qfEditVirtual": {
+    "message": "Свойства поиска"
+  },
+  "qfEditVirtualAccess": {
+    "message": "в"
+  },
+  "qfEmptiedJunk": {
+    "message": "Папка «Спам» очищенa и сжатa."
+  },
+  "qfEmptiedTrash": {
+    "message": "Папка «Удалённые» очищенa."
+  },
+  "qfEmptyJunk": {
+    "message": "Удалить спам"
+  },
+  "qfEmptyJunkAccess": {
+    "message": "а"
+  },
+  "qfEmptyTrash": {
+    "message": "Очистить «Удалённые»"
+  },
+  "qfEmptyTrashAccess": {
+    "message": "д"
+  },
+  "qfFolderAccess": {
+    "message": "п"
+  },
+  "qfFolderAlreadyBookmarked": {
+    "message": "Для этой папки закладка уже создана."
+  },
+  "qfFolderOpenLocation": {
+    "message": "Обзор расположения папки…"
+  },
+  "qfFolderPopup": {
+    "message": "Команды для папок"
+  },
+  "qfFolderProperties": {
+    "message": "Свойства папки…"
+  },
+  "qfFolderPropertiesAccess": {
+    "message": "в"
+  },
+  "qfFolderRepair": {
+    "message": "Починить папку"
+  },
+  "qfFolderRepairAccess": {
+    "message": "П"
+  },
+  "qfFolderRepairedMsg": {
+    "message": "Починили папку:"
+  },
+  "qfGetMail": {
+    "message": "Получить сообщения"
+  },
+  "qfGetMailAccess": {
+    "message": "о"
+  },
+  "qfInsertLineBreak": {
+    "message": "Вставить перевод строки"
+  },
+  "qfInsertSeparator": {
+    "message": "Вставить разделитель"
+  },
+  "qfInvalidTabCount": {
+    "message": "Найдено {0} вкладок с неправильным назначением папки. Вы можете удалить их, используя команду «Найти осиротевшие вкладки»."
+  },
+  "qfMarkAllRead": {
+    "message": "Отметить папку как прочитанную"
+  },
+  "qfMarkAllReadAccess": {
+    "message": "ч"
+  },
+  "qfMarkAllReadRecursive": {
+    "message": "Отметить папку и подпапки как прочитанные"
+  },
+  "qfMenuColor": {
+    "message": "Цвет"
+  },
+  "qfMenuTabColorDisabledInTheme": {
+    "message": "Выберите другую тему для поддержки окраски…"
+  },
+  "qfMenuTabColorNone": {
+    "message": "Без цвета!"
+  },
+  "qfMenuTabColorPopup": {
+    "message": "Цвет закладки"
+  },
+  "qfMoveFolderOrNewTab": {
+    "message": "Перетаскивайте папки в свободную часть панели инструментов - удерживайте Shift для переноса."
+  },
+  "qfNavigationWrapped": {
+    "message": "Непрочитанных папок не найдено, переход к {1}."
+  },
+  "qfNewFolder": {
+    "message": "Новая под-папка"
+  },
+  "qfNewFolderAccess": {
+    "message": "Н"
+  },
+  "qfNewName": {
+    "message": "Новое имя для закладки"
+  },
+  "qfNewSubFolder": {
+    "message": "Создаю подпапку {0} \\u00BB {1}…"
+  },
+  "qfNoFolderMatch": {
+    "message": "Нет соответствующих родительских папок!"
+  },
+  "qfPaintToggle": {
+    "message": "Завершить режим раскраски"
+  },
+  "qfRecentFolders": {
+    "message": "Последние папки"
+  },
+  "qfRemoveBookmark": {
+    "message": "Удалить закладку"
+  },
+  "qfRemoveBookmarkAccess": {
+    "message": "У"
+  },
+  "qfRemoveCategory": {
+    "message": "Удалить из текущей категории"
+  },
+  "qfRemoveCategoryPrompt": {
+    "message": "Текущая категория - «{1}» - Удалить?"
+  },
+  "qfRemoveIcon": {
+    "message": "Убрать значок"
+  },
+  "qfRemoveLineBreak": {
+    "message": "Удалить перевод строки"
+  },
+  "qfRemoveSeparator": {
+    "message": "Удалить разделитель"
+  },
+  "qfRenameBookmark": {
+    "message": "Переименовать закладку…"
+  },
+  "qfRenameBookmarkAccess": {
+    "message": "П"
+  },
+  "qfRenameFolder": {
+    "message": "Переименовать папку"
+  },
+  "qfRenameFolderAccess": {
+    "message": "П"
+  },
+  "qfRepairTreeIconsMissing": {
+    "message": "Следующие файлы значков не существуют:"
+  },
+  "qfSavePrompt": {
+    "message": "Сохранить эти изменения?"
+  },
+  "qfSelectIcon": {
+    "message": "Значок…"
+  },
+  "qfSetCategory": {
+    "message": "Назначить категорию закладке…"
+  },
+  "qfSetCategoryA": {
+    "message": "к"
+  },
+  "qfShowAlways": {
+    "message": "Всегда показывать!"
+  },
+  "qfShowNever": {
+    "message": "Не показывать (псевдоним папки)"
+  },
+  "qfTabAdvancedOptions": {
+    "message": "Свойства этой закладки…"
+  },
+  "qfTabDeleteOption": {
+    "message": "Сделайте это с оставшимися {0} папками."
+  },
+  "qfTabDeletePrompt": {
+    "message": "Удалить эту закладку?"
+  },
+  "qfThisTabIsInvalid": {
+    "message": ": Закладка указывает на неверную папку:"
+  },
+  "qfTidyDeadFolders": {
+    "message": "Удаляет закладки без папок.\\nЭти закладки иногда появляются при удалении или перемещении папки без уведомления QuickFolders."
+  },
+  "qfTreeIconsInvalidCount": {
+    "message": "{0} значков отсутствуют"
+  },
+  "qfTreeIconsRepairedCount": {
+    "message": "{0} значок дерева починен"
+  },
+  "qfUncategorized": {
+    "message": "(Без категории)"
+  },
+  "qfUp": {
+    "message": "Вверх"
+  },
+  "qfUpdatedThemesEngineMsg": {
+    "message": "Новая тема для QuickFolders установлена. Выберите её из списка и нажмите [Ok]."
+  },
+  "qfVersionDisableOnUpdate": {
+    "message": "Не показывать историю изменений после обновлений?"
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Показать следующее письмо после перемещения текущего"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Повторно открыть исходное письмо после того, как оно было перемещено"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Вкладка отдельного сообщения"
+  },
+  "quickfolders.findFolder.placeHolder": {
+    "message": "имя папки"
+  },
+  "quickfolders.quickMove.menu.cancel": {
+    "message": "Прервать быстрое перемещение"
+  },
+  "quickfolders.quickMove.menu.hideSearch": {
+    "message": "Убрать строку ввода имени папки"
+  },
+  "quickfolders.quickMove.menu.showSearch": {
+    "message": "Показать строку ввода имени папки"
+  },
+  "quickfolders.quickMove.menu.suspend": {
+    "message": "Перейти к папке (сообщения не перемещать)"
+  },
+  "quickfolders.readingList.addCurrent": {
+    "message": "Добавить текущий элемент"
+  },
+  "quickfolders.readingList.clear": {
+    "message": "Очистить список для чтения"
+  },
+  "quickfolders.readingList.tooltip": {
+    "message": "Список для чтения"
+  },
+  "quickfolders.toolbar.newsubfolder": {
+    "message": "Новая под-папка…"
+  },
+  "quickfolders.toolbar.skip": {
+    "message": "Пропустить"
+  },
+  "quickfoldersQuickCopiedMails": {
+    "message": "Письмо скопировано в папку {2};{1} письма скопированы в папку {2}"
+  },
+  "quickfoldersQuickMovedMails": {
+    "message": "Письмо перемещено в папку {2};{1} письма перемещены в папку {2}"
+  },
+  "renew-your-license": {
+    "message": "Продлите лицензию."
+  },
+  "special-offer-content": {
+    "message": "Сделайте QuickFolders перспективным для будущего и получите лицензию, а цена QuickFolders Pro будет {boldStart} 40% {boldEnd}! Это специальное предложение будет доступно до {boldStart} 1 мая {boldEnd}."
+  },
+  "special-offer-head": {
+    "message": "Сделайте QuickFolders перспективным!"
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Уважаемый {name} {boldEnd}, если у вас еще нет лицензии, подумайте о поддержке QuickFolders в будущем. Грядут еще большие изменения в Thunderbird, и мне нужна {boldStart} ваша помощь {boldEnd}, чтобы не отставать!"
+  },
+  "support-preference": {
+    "message": "Это предпочтительный способ поддержки $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "quickFilters"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Чтобы $addonName$ оставался работоспособным и живым, сделайте ему жизненно важную услугу:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "testDrive": {
+    "message": "Можно попробовать премиум-функции и в бесплатной версии, но они могут быть немного ограничены."
+  },
+  "thanks-for-installing-intro": {
+    "message": "Спасибо за установку $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "thanks-for-updating-intro": {
+    "message": "Спасибо за обновление $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "time-and-effort": {
+    "message": "$addonName$ требует постоянных изменений, чтобы оставаться совместимым с платформой Mozilla. Я постоянно работаю над тем, чтобы сохранить как можно больше функциональных возможностей для будущих версий Thunderbird.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "toAddress": {
+    "message": "Кому:"
+  },
+  "toAddress.tooltip": {
+    "message": "Стандартный адрес получателя для новых сообщений"
+  },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "переводы предоставлены google"
+  },
+  "updates.title": {
+    "message": "Обновления"
+  },
+  "updatesExpiry": {
+    "message": "QuickFolders Pro обновляется автоматически. Через год можно будет либо продлить лицензию, либо пользоваться премиум-возможностями в ограниченном режиме. 'Эксклюзивные' возможности требуют регистрационный ключ."
+  },
+  "vouchers.title": {
+    "message": "Ваучеры"
+  },
+  "whats-new-btn": {
+    "message": "Какие новости?"
+  },
+  "whats-new-head": {
+    "message": "Функциональность"
+  },
+  "whats-new-intro": {
+    "message": "Прочтите подробный журнал изменений здесь (только на английском языке):"
+  },
+  "whats-new-list": {
+    "message": "Эта версия дополнительно расширяет функцию quickMove за счет следующих функций: {L1} Вкладка «Одно сообщение»: возможность автоматически открывать следующее электронное письмо на той же вкладке после перемещения сообщения. {L2} {L1} Возможность полной отмены quickMove (и очистки ее списка сообщения) одним нажатием ESCAPE. {L2} {L1} Расширенное сопоставление родительских папок путем чтения из _ и разделителей пробелов и обработки их как начала искомого имени. {L2} {L1} Исправлено: поиск папок во время просмотра сообщения, отображаемые в результатах поиска или из беседы в нескольких папках. {L2} {L1} Эти и дополнительные функции для ограничения результатов поиска из определенных учетных записей можно настроить с помощью расширенных настроек поиска на вкладке QuickFolders Pro. {L2}"
+  },
+  "window-title": {
+    "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Добро пожаловать в $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "windowTitle": {
+    "message": "Дополнительные свойства"
+  },
+  "yearlyLicense.premiumFeatures": {
+    "message": "QuickFolders Pro позволяет неограниченно пользоваться премиум-функциями."
+  },
+  "yearlyLicense.premiumFeatures.moreInfoLink": {
+    "message": "Ещё о премиум-функциях."
+  },
+  "yearlyLicense.title": {
+    "message": "Годовая лицензия"
+  },
+  "yearlyLicense.usageTerm": {
+    "message": "Лицензия предназначена для частного пользования и привязана к адресу электронной почты. Её можно использовать на нескольких клиентах, если они используют зарегистрированный адрес."
+  },
+  "yearlyLicense.usageTerm1": {
+    "message": "Любые дополнительные адреса электронной почты не проблема - они не требуют отдельной лицензии. В случае вопросов вы можете связаться со мной через вкладку поддержки."
+  }
 }

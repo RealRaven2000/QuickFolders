@@ -1,1520 +1,1523 @@
 {
-    "account.label": {
-        "message": "Trieu un compte:"
-    },
-    "btnApply": {
-        "message": "Apply"
-    },
-    "btnCategory": {
-        "message": "Categories"
-    },
-    "btnCategory.tooltip": {
-        "message": "Define Tab Categories"
-    },
-    "btnReset": {
-        "message": "Reset to Defaults"
-    },
-    "buyDomainLicense.button": {
-        "message": "Buy Domain License"
-    },
-    "buyDomainLicense.instruct": {
-        "message": "Need Licenses for a company with more than five users? Getting a domain license will work out cheaper:"
-    },
-    "buyLicense.instruct": {
-        "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
-    },
-    "buyPersonalLicense.button": {
-        "message": "Buy Personal License!"
-    },
-    "chkComposerSubfolders": {
-        "message": "Also apply to subfolders"
-    },
-    "chkHideFromQuickJump": {
-        "message": "Omit from quickJump / quickMove"
-    },
-    "chkHideFromQuickJump.tooltip": {
-        "message": "Omit this folder and its children in quickJump / quickMove results"
-    },
-    "chkIgnoreCounts": {
-        "message": "Hide Count of Mails"
-    },
-    "chkIgnoreCounts.tooltip": {
-        "message": "Never display number of contained mails."
-    },
-    "chkIgnoreUnread": {
-        "message": "Hide Unread Status"
-    },
-    "chkIgnoreUnread.tooltip": {
-        "message": "Never display bold or any unread count even when folder contains unread mail."
-    },
-    "chkSetMailsUnread": {
-        "message": "Set mail to unread"
-    },
-    "chkSetMailsUnread.tooltip": {
-        "message": "If you move mail into this folder it is set to unread."
-    },
-    "cssBackground": {
-        "message": "Background"
-    },
-    "cssBackground.tooltip": {
-        "message": "Enter a CSS background, e.g. linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
-    },
-    "cssColor": {
-        "message": "Text color"
-    },
-    "cssColor.tooltip": {
-        "message": "Enter a CSS color, e.g. rgba(100,20,20,0.8)"
-    },
-    "defaultAccountAddress.value": {
-        "message": "Account Default Identity"
-    },
-    "domainLicense.email": {
-        "message": "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page."
-    },
-    "domainLicense.header": {
-        "message": "Licensed Email Domain"
-    },
-    "domainLicense.instruct": {
-        "message": "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use QuickFolders Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen."
-    },
-    "domainLicense.validate": {
-        "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
-    },
-    "email.label": {
-        "message": "E-mail:"
-    },
-    "enterLicenseKey.button": {
-        "message": "Entreu la Clau de Llicència..."
-    },
-    "enterLicenseKey.tooltip": {
-        "message": "Entreu la Clau de Llicència que us hem enviat per e-mail."
-    },
-    "extensions.quickfolders@curious.be.description": {
-        "message": "Marqueu vostres carpetes de correu preferides al Thunderbird."
-    },
-    "firstName.label": {
-        "message": "Nom:"
-    },
-    "freeLicense": {
-        "message": "Si recentment heu fet una donació al projecte QuickFolders o heu fet una contribució amb la vostra feina, com ara traduïnt, podrieu demanar una llicència gratuita. Contacteu amb mi des de la pestanya de Suport, a les opcions de QuickFolders."
-    },
-    "fromAddress": {
-        "message": "From:"
-    },
-    "fromAddress.tooltip": {
-        "message": "Default Identity when composing emails"
-    },
-    "getQuickFolders": {
-        "message": "Obtenir QuickFolders Pro"
-    },
-    "grpComposer": {
-        "message": "Default Email Fields"
-    },
-    "grpCustomCSS": {
-        "message": "Custom CSS"
-    },
-    "grpTabBehavior": {
-        "message": "Advanced Tab Behavior"
-    },
-    "intro": {
-        "message": "La llicència anual de QuickFolders Pro, us dona accés a totes les característiques premium durant un any. També ens permet donar suport i fer crèixer el producte més enllà i convertir-lo en una cosa encara més impressionant."
-    },
-    "lastName.label": {
-        "message": "Cognoms:"
-    },
-    "lblCustomPalette": {
-        "message": "Custom Palette:"
-    },
-    "licenseWindow.title": {
-        "message": "Llicència QuickFolders Pro"
-    },
-    "qf.accounts": {
-        "message": "Comptes"
-    },
-    "qf.alert.pasteFolders.formatErr": {
-        "message": "Could not create tabs. See tools / error console for more detail."
-    },
-    "qf.backupAndRestore": {
-        "message": "Backup / Restore"
-    },
-    "qf.btn.applyPosition": {
-        "message": "Apliqueu el valor de la posició"
-    },
-    "qf.button.add": {
-        "message": "Afegir!"
-    },
-    "qf.button.configureTooltips": {
-        "message": "Configura les informacions emergents…"
-    },
-    "qf.button.currentFolderBackground.set": {
-        "message": "estableix"
-    },
-    "qf.button.default": {
-        "message": "Valors per defecte"
-    },
-    "qf.button.defaultcolors": {
-        "message": "Colors per Defecte"
-    },
-    "qf.button.deleteselectedcategory": {
-        "message": "Esborrar la categoria seleccionada"
-    },
-    "qf.button.down": {
-        "message": "Avall"
-    },
-    "qf.button.pasteLicense": {
-        "message": "enganxar"
-    },
-    "qf.button.rename": {
-        "message": "Reanomenar"
-    },
-    "qf.button.reorderButtonBottom": {
-        "message": "Al Capdavall"
-    },
-    "qf.button.reorderButtonBottom.accessKey": {
-        "message": "B"
-    },
-    "qf.button.reorderButtonBottom.toolTip": {
-        "message": "executa aquest filtre després de tots els altres"
-    },
-    "qf.button.reorderButtonTop": {
-        "message": "Al Damunt"
-    },
-    "qf.button.reorderButtonTop.accessKey": {
-        "message": "o"
-    },
-    "qf.button.reorderButtonTop.toolTip": {
-        "message": "executa aquest filtre abans que tots els altres"
-    },
-    "qf.button.up": {
-        "message": "Amunt"
-    },
-    "qf.button.validateLicense": {
-        "message": "validar"
-    },
-    "qf.caption.currentFolderBackground": {
-        "message": "Fons de la barra d'eines de la carpeta actual"
-    },
-    "qf.categories.supportMultiple": {
-        "message": "Support selecting multiple tab categories"
-    },
-    "qf.categories.supportMultiple.tooltip": {
-        "message": "Use the SHIFT key in order to select more than one category on the dropdown."
-    },
-    "qf.checkbox.autoFocusPreview": {
-        "message": "Passar el focus a la llista de missatges al canviar de pestanya"
-    },
-    "qf.checkbox.autoHideToolbar": {
-        "message": "Amaga QuickFolders quan no es necessiti"
-    },
-    "qf.checkbox.autoHideToolbar.tooltip": {
-        "message": "Col·lapsa la barra d'eines en fitxes especials, com ara calendari, contingut, gestor de complements."
-    },
-    "qf.checkbox.currentFolder.closeButton": {
-        "message": "Botó de Tancar"
-    },
-    "qf.checkbox.currentFolder.show": {
-        "message": "Mostra la Barra d'Eines"
-    },
-    "qf.checkbox.currentfolder.lightweight": {
-        "message": "integrate with lightweight theme"
-    },
-    "qf.checkbox.debug": {
-        "message": "Mode de Depuració"
-    },
-    "qf.checkbox.debug.tooltip": {
-        "message": "Feu clic amb el botó dret a aquesta casella per a les opcions avançades de depuració"
-    },
-    "qf.checkbox.displaylabel": {
-        "message": "Mostra 'QuickFolders' a la barra d'eines"
-    },
-    "qf.checkbox.displaylabel.tooltip": {
-        "message": "Feu clic amb el botó dret per canviar el text d'aquesta etiqueta"
-    },
-    "qf.checkbox.enableTransitions": {
-        "message": "Activa transicions CSS"
-    },
-    "qf.checkbox.enableTransitions.tooltip": {
-        "message": "Mostra transicions suaus entre diferents coloracions de les pestanyes."
-    },
-    "qf.checkbox.hideCategoryBox": {
-        "message": "Collapse Categories"
-    },
-    "qf.checkbox.hideCategoryBox.tooltip": {
-        "message": "Minimizes the Categories menu to take up less space."
-    },
-    "qf.checkbox.highlightNewMail": {
-        "message": "Ressalta carpetes amb correu nou"
-    },
-    "qf.checkbox.menus.dragToNewFolder": {
-        "message": "Arrosegar a nova Subcarpeta"
-    },
-    "qf.checkbox.menus.emptyJunk": {
-        "message": "Esborrar Brossa"
-    },
-    "qf.checkbox.menus.emptyTrash": {
-        "message": "Esborrar Paperera"
-    },
-    "qf.checkbox.menus.getMailForInbox": {
-        "message": "Obtenir Missatges (Comptes de Correu)"
-    },
-    "qf.checkbox.menus.getMailForNews": {
-        "message": "Obtenir Missatges (Comptes de Notícies)"
-    },
-    "qf.checkbox.menus.markAllRead": {
-        "message": "Marcar la Carpeta com a Llegida"
-    },
-    "qf.checkbox.menus.markAllReadRecursive": {
-        "message": "Marcar la Carpeta com a Llegida (recursiva)"
-    },
-    "qf.checkbox.quickCopy": {
-        "message": "quickCopy - Copy mail to any folder with Shortcut:"
-    },
-    "qf.checkbox.quickCopy.tip": {
-        "message": "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry."
-    },
-    "qf.checkbox.quickJump": {
-        "message": "quickJump - Go to any folder with Shortcut:"
-    },
-    "qf.checkbox.quickJump.tip": {
-        "message": "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry."
-    },
-    "qf.checkbox.quickMove": {
-        "message": "quickMove - Move mail to any folder with Shortcut:"
-    },
-    "qf.checkbox.quickMove.tip": {
-        "message": "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry."
-    },
-    "qf.checkbox.quickmove.autofill": {
-        "message": "Insert last folder name executed"
-    },
-    "qf.checkbox.quickmove.autofill.tip": {
-        "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
-    },
-    "qf.checkbox.readingList": {
-        "message": "Reading List"
-    },
-    "qf.checkbox.readingList.tooltip": {
-        "message": "A list for mails that should be read later. Drag your important emails on this button."
-    },
-    "qf.checkbox.shadows": {
-        "message": "ombres"
-    },
-    "qf.checkbox.shift": {
-        "message": "Shift"
-    },
-    "qf.checkbox.showCountInSubFolders": {
-        "message": "Mostra el total de subcarpetes"
-    },
-    "qf.checkbox.showCountInSubFolders.tooltip": {
-        "message": "Es mostren separats per un '+' al costat; el correu no llegit pot fer que la pestanya es mostri en negreta si l'opció està activa"
-    },
-    "qf.checkbox.showFilterButton": {
-        "message": "Botó 'Crea Filtres'"
-    },
-    "qf.checkbox.showFilterButton.tooltip": {
-        "message": "També podeu crear Filtres, utilitzant el menú de contexte de QuickFolders."
-    },
-    "qf.checkbox.showFolderNavigation": {
-        "message": "Folder Navigation buttons"
-    },
-    "qf.checkbox.showIconButtons": {
-        "message": "Personalitza Icones dels botons"
-    },
-    "qf.checkbox.showIcons": {
-        "message": "Mostrar Icones (Safata d'entrada, Enviats, Brossa, Escombraries, Esborranys, Arxivat, Plantilles)"
-    },
-    "qf.checkbox.showMailFolderCommands": {
-        "message": "Ordres de la Carpeta de Correu"
-    },
-    "qf.checkbox.showMessageNavigation": {
-        "message": "Botons de Navegació de Missatges"
-    },
-    "qf.checkbox.showNewMailItalics": {
-        "message": "Display tabs with newly arrived mail italic"
-    },
-    "qf.checkbox.showNonEmptyItalics": {
-        "message": "Mostra en cursiva els botons de les carpetes que continguin missatges"
-    },
-    "qf.checkbox.showQuickMove": {
-        "message": "Botó quickMove"
-    },
-    "qf.checkbox.showQuickMove.tooltip": {
-        "message": "El botó quickmove es pot utilitzar per moure correus a una carpeta determinada. Podeu recopilar correus de diferents carpetes. Quan hi tingueu els correus desitjats, entreu el nom de la carpeta destinació a la barra de cerca."
-    },
-    "qf.checkbox.showRecentButton": {
-        "message": "Botó de Carpetes Recents"
-    },
-    "qf.checkbox.showRecentTab": {
-        "message": "Mostra les Últimes Carpetes"
-    },
-    "qf.checkbox.showRecentTab.tooltip": {
-        "message": "Botó dret per configurar"
-    },
-    "qf.checkbox.showSubfolders": {
-        "message": "Expandir subcarpetes al menú emergent"
-    },
-    "qf.checkbox.showTotalMessageCount": {
-        "message": "Mostra el nombre total de missatges al botó de la carpeta"
-    },
-    "qf.checkbox.showUnreadBold": {
-        "message": "Mostra amb negreta els botons de les carpetes amb missatges per llegir"
-    },
-    "qf.checkbox.showUnreadMessageCount": {
-        "message": "Mostra el nombre de missatges per llegir al botó de la carpeta"
-    },
-    "qf.checkbox.showshortcutnumber": {
-        "message": "Mostra el número de drecera a les etiquetes de les carpetes"
-    },
-    "qf.checkbox.singleMessage.currentFolder.show": {
-        "message": "… i també a la Finestra de Missatge"
-    },
-    "qf.checkbox.singleMessage.currentFolder.tooltip": {
-        "message": "Mostra la barra d'eines de la carpeta actual a la finestra que s'obre quan trieu obrir un correu a una nova finestra"
-    },
-    "qf.checkbox.singleMessageTab.currentFolder.show": {
-        "message": "Toolbar in Single Message Tabs"
-    },
-    "qf.checkbox.skipFolder": {
-        "message": "Skip Unread Folder - use Shortcut: SHIFT +"
-    },
-    "qf.checkbox.skipFolder.tip": {
-        "message": "Shortcut for jumping to the next unread folder."
-    },
-    "qf.checkbox.sortMenusAlpha": {
-        "message": "Força la ordenació alfabètica dels menus amb les subcarpetes."
-    },
-    "qf.checkbox.sortMenusAlpha.tooltip": {
-        "message": "Utilitzeu aquesta opció, nomes si el vostre client de correu no ordena correctament les subcarpetes."
-    },
-    "qf.checkbox.storeConfig.general": {
-        "message": "Include general settings"
-    },
-    "qf.checkbox.storeConfig.layout": {
-        "message": "Include advanced and layout"
-    },
-    "qf.checkbox.storeConfig.tabs": {
-        "message": "Include QuickFolders Tabs"
-    },
-    "qf.checkbox.tabMenuIcon": {
-        "message": "Icona del Menú de la Barra d'eines"
-    },
-    "qf.checkbox.tabMenuIcon.tooltip": {
-        "message": "Aquest menú també pot obrir-se amb un clic al botó dret a la mateixa barra d'eines"
-    },
-    "qf.checkbox.transparent": {
-        "message": "transparent"
-    },
-    "qf.checkbox.useNavigationShortcuts": {
-        "message": "ALT-Esquerra/ALT-Dreta per a l'anterior/següent Pestanya"
-    },
-    "qf.checkbox.usePalette": {
-        "message": "Utilitza la paleta"
-    },
-    "qf.checkbox.useRebuildShortcut": {
-        "message": "Regenera Pestanyes amb: Ctrl + Alt +"
-    },
-    "qf.checkbox.usekeyboardshortcuts": {
-        "message": "Utilitzar dreceres de teclat (Alt +1 fins a Alt + 9)"
-    },
-    "qf.checkbox.usekeyboardshortcutsCTRL": {
-        "message": "Utilitzar Ctrl enlloc de Alt"
-    },
-    "qf.continueFilter.label": {
-        "message": "Crea Filtre…"
-    },
-    "qf.continueFilter.shortcut": {
-        "message": "F"
-    },
-    "qf.copyfolders": {
-        "message": "Copy Tabs"
-    },
-    "qf.copyfolders.tooltip": {
-        "message": "Copia la cadena de configuració de les carpetes al portapapers"
-    },
-    "qf.currentFolderBackground.custom": {
-        "message": "personalitzat"
-    },
-    "qf.currentFolderBackground.dark": {
-        "message": "fosc"
-    },
-    "qf.currentFolderBackground.default": {
-        "message": "per defecte"
-    },
-    "qf.currentFolderBackground.translucent": {
-        "message": "translúcid"
-    },
-    "qf.currentfolder.leftSpacer": {
-        "message": "Left Spacer:"
-    },
-    "qf.currentfolder.rightSpacer": {
-        "message": "Right Spacer:"
-    },
-    "qf.description.bugzilla": {
-        "message": "Utilitzeu el Bugzilla per a totes les peticions oficial de noves característiques i informes de fallades."
-    },
-    "qf.description.categoryusage": {
-        "message": "Podeu assignar una categoria a aquest preferit (ex.'Feina;','Privat',...)."
-    },
-    "qf.description.changeCategory": {
-        "message": "Feu clic amb el botó dret a un marcador, per organitzar-lo a una categoria. Podeu obtenir un desplegable de les categories a l'esquerra de la barra."
-    },
-    "qf.description.contactMe": {
-        "message": "També podeu contactar-me personalment a axelg@gofree.indigo.ie"
-    },
-    "qf.description.donate": {
-        "message": "Si us ha encantat QuickFolders i voleu donar suport al seu desenvolupament, podeu donar algun diner per al futur desenvolupament de QuickFolders"
-    },
-    "qf.description.dragToAdd": {
-        "message": "Arrossegueu carpetes de correu a una àrea buida d'una nova barra d'eines, per a crear una nova QuickFolder (funciona com un àlies). Arrossegueu missatges a sobre d'una QuickFolder per moure'ls a la carpeta corresponent (o copiar-los amb la tecla modificadora). Cliqueu la QuickFolder per anar a la carpeta de correu."
-    },
-    "qf.description.dragToPopup": {
-        "message": "Arrossegueu missatges al menu emergent de la QuickFolder per moure els missatges dintre les subcarpetes."
-    },
-    "qf.description.dragToPosition": {
-        "message": "Arrossegueu les QuickFolders cap als costats per canviar-les de posició. Feu clic amb el botó dret per al menú contextual; podeu anar a les subcarpetes, seleccionant-les. 'Reanomenar Marcador' canvia l'etiqueta de la QuickFolder. 'Esborrar Marcador' esborra la QuickFolder (no la carpeta de correu)."
-    },
-    "qf.description.dragexplain": {
-        "message": "Podeu arrossegar els preferits per canviar-los de posició! Deixeu-lo anar a sobre d'un altre per insertar-lo abans/després."
-    },
-    "qf.description.editcategory": {
-        "message": "Seleccioneu una categoria existent fent-hi doble-clic, o afegiu-ne una de nova."
-    },
-    "qf.description.experimentalItems": {
-        "message": "Les següents opcions estan en període experimental, esperem que estiguin totalment funcionals a la següent versió!!"
-    },
-    "qf.description.languages": {
-        "message": "QuickFolders suporta traduccións a múltiples idiomes - podeu ajudar afegint una traducció al vostre llenguatge a Babelzilla:"
-    },
-    "qf.description.linkNote": {
-        "message": "Visiteu la pàgina de QuickFolders per a la guia d'usuari detallada, Suggeriments i FAQ"
-    },
-    "qf.description.multicategory": {
-        "message": "Per afegir una carpeta amb més d'una categoria; Manteniu polsada MAJÚSCULES o CONTROL mentre seleccioneu els objectes."
-    },
-    "qf.description.pulldown": {
-        "message": "El desplegable de la barra QuickFolders us permet de filtrar els vostres preferits per categoria."
-    },
-    "qf.description.rightClickOptions": {
-        "message": "Feu clic amb el botó dret a sobre una àrea buida per obrir el menu d'opcions. A les opcions, podeu selecciona l'estil: estil natiu (mes petit) o estil pla (mes clar; suporta indicadors d'arrossegament)."
-    },
-    "qf.description.tipMsg": {
-        "message": "Consell: Si tenim una quantitat considerable de carpetes, proveu l'extensió Nostalgy per organitzar els missatges via teclat."
-    },
-    "qf.description.versionhistory": {
-        "message": "Historial Detallat de Versions a quickfolders.org"
-    },
-    "qf.dialog.changeorder": {
-        "message": "Canvia l'ordre dels preferits"
-    },
-    "qf.dialog.quickmove.settings": {
-        "message": "Configuració avançada de quickMove"
-    },
-    "qf.dialog.setcategory": {
-        "message": "Seleccioneu una categoria per al preferit"
-    },
-    "qf.donate.tooltip": {
-        "message": "Ajudeu al Desenvolupament de QuickFolders!"
-    },
-    "qf.filters.instructions": {
-        "message": "Seleccioneu una plantilla. Podreu afinar els filtres a la pantalla següent."
-    },
-    "qf.filters.template.from": {
-        "message": "Basat en Remitent (De:)"
-    },
-    "qf.filters.template.from.description": {
-        "message": "Aquesta és problablement la més utilitzada: agafa l'adreça del remitent, i l'enganxa als camps \"De:\" i \"Per a:\" dels camps de condicions del filtre. D'aquesta manera, es pot moure a una nova carpeta totes les conversacions amb el remitent."
-    },
-    "qf.filters.template.list": {
-        "message": "Llista de Distribució"
-    },
-    "qf.filters.template.list.description": {
-        "message": "Similar a \"Basada en Remitent\", però no emplena el camp \"Per a:\""
-    },
-    "qf.filters.template.tag": {
-        "message": "Per Marques"
-    },
-    "qf.filters.template.tag.description": {
-        "message": "Utilitza les etiquetes del correu electrònic i els afegeix com a condicions."
-    },
-    "qf.filters.template.to": {
-        "message": "Basat en Destinatari (Per a:)"
-    },
-    "qf.filters.template.to.description": {
-        "message": "Similar a \"Basada en Remitent\": utilitzeu aquesta quan hagueu marcat un email enviat a qualsevol. Això recupera l'adreça del destinatari i l'enganxa als camps \"De:\" i \"Per a:\" dels camps de condicions del filtre. D'aquesta manera, es pot moure a una nova carpeta totes les conversacions amb el destinatari."
-    },
-    "qf.filters.template.topic": {
-        "message": "Per Assumpte"
-    },
-    "qf.filters.template.topic.description": {
-        "message": "Això cerca expresions entre claudàtors, ex.[catalans] o {vegans} i crea una condició de filtre basada en aquestes. Es pot crear correu en massa amb aquest patró, ja que és realment fàcil d'utilitzar."
-    },
-    "qf.filters.title": {
-        "message": "Crear Filtres"
-    },
-    "qf.filters.toggleMessage.notificationText": {
-        "message": "Mode d'aprenentatge de filtre. Cada vegada que moveu un correu dintre de Quickfolders, l'Assistent de Creació de Filtres, es posarà en marxa. Thunderbird utilitza els filtres de missatges per moure automàticament els correus seguint unes regles com ara:\"qui és el remitent?\",\"hi ha certa paraula a l'Assumpte?\". Per finalitzar el mode d'aprenentatge cliqueu el botó de filtre a la part superior esquerra de la barra de QuickFolders."
-    },
-    "qf.filters.toggleMessage.title": {
-        "message": "Creació de Filtres"
-    },
-    "qf.foldercontextmenu.quickfolders.customizeIcon": {
-        "message": "Personalitza Icona..."
-    },
-    "qf.foldercontextmenu.quickfolders.removeIcon": {
-        "message": "Elimina Icona Personalitzada"
-    },
-    "qf.fpJsonFile": {
-        "message": "JSON File"
-    },
-    "qf.goNextUnread.auto": {
-        "message": "Go to next folder without asking (recommended)"
-    },
-    "qf.goNextUnread.none": {
-        "message": "Do nothing if no unread email is left in folder"
-    },
-    "qf.goNextUnread.prompt": {
-        "message": "Ask to go to next unread folder"
-    },
-    "qf.group.navigation": {
-        "message": "Message Navigation"
-    },
-    "qf.label.ActiveTabColor": {
-        "message": "Color de la Pestanya Activa:"
-    },
-    "qf.label.ColoredTabPalette": {
-        "message": "Paleta per a Pestanyes amb Color:"
-    },
-    "qf.label.ColoredTabPalette.tooltip": {
-        "message": "Paleta per a Pestanyes amb color seleccionat"
-    },
-    "qf.label.DragOverBackground": {
-        "message": "Color a l'arrossegar a sobre:"
-    },
-    "qf.label.HoveredTabColor": {
-        "message": "Color de la pestanya flotant:"
-    },
-    "qf.label.Toolbar": {
-        "message": "Toolbar"
-    },
-    "qf.label.Toolbar.bottomLine": {
-        "message": "Bottom Line Width:"
-    },
-    "qf.label.Toolbar.bottomLine.tip": {
-        "message": "The width of the line under tabs. Change its color with the Active Tab Color picker below."
-    },
-    "qf.label.ToolbarBackground": {
-        "message": "Fons de la barra d'eines"
-    },
-    "qf.label.UncoloredTab": {
-        "message": "Pestanya sense color assignat."
-    },
-    "qf.label.UncoloredTab.tooltip": {
-        "message": "Vista de Pestanyes (inactives) sense color seleccionat"
-    },
-    "qf.label.appearance": {
-        "message": "Aparença"
-    },
-    "qf.label.behavior": {
-        "message": "Aparença"
-    },
-    "qf.label.bugzilla": {
-        "message": "Informeu d'una fallada / Demaneu una nova característica amb el Bugzilla"
-    },
-    "qf.label.buttonFontSizeNumeric": {
-        "message": "Button font size (0 for default):"
-    },
-    "qf.label.cancel": {
-        "message": "Cancel·lar"
-    },
-    "qf.label.colors": {
-        "message": "Colors"
-    },
-    "qf.label.contactLink": {
-        "message": "Contacteu-me (Anglès o Alemany)…"
-    },
-    "qf.label.currentFolderToolbar": {
-        "message": "Barra d'Eines de la Carpeta Actual"
-    },
-    "qf.label.donate": {
-        "message": "Fer una Donació"
-    },
-    "qf.label.donateLink": {
-        "message": "Visiteu la Pàgina de Donacions…"
-    },
-    "qf.label.dragFolderLabel": {
-        "message": "Amolleu les carpetes aquí per afegir-les a preferits. Cliqueu el preferit per anar a la carpeta, amolleu missatges a sobre per moure'ls/copiar-los aquí."
-    },
-    "qf.label.existingcategories": {
-        "message": "Categories existents:"
-    },
-    "qf.label.filterCountN_of_M": {
-        "message": "{0} de {1}"
-    },
-    "qf.label.filterEntities": {
-        "message": "objectes"
-    },
-    "qf.label.filterSingleEntity": {
-        "message": "1 objecte"
-    },
-    "qf.label.getQuickFilters": {
-        "message": "Per a una millor i més potent manera de crear Filtres, instaleu-vos la meva extensió quickFilters!"
-    },
-    "qf.label.goNextUnread": {
-        "message": "Go to next unread email:"
-    },
-    "qf.label.goNextUnread.tip": {
-        "message": "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder."
-    },
-    "qf.label.haveLicense": {
-        "message": "Already have a License?"
-    },
-    "qf.label.homePage": {
-        "message": "Informació detallada a la nova pàgina de QuickFolders a quickfolders.org…"
-    },
-    "qf.label.initdelay": {
-        "message": "[ms] retard a l'inici {1000 es l'estàndard}:"
-    },
-    "qf.label.insertLicense": {
-        "message": "Inseriu la vostra clau de llicència aquí:"
-    },
-    "qf.label.insertLicense.tooltip": {
-        "message": "La vostra clau de llicència es troba a la confirmació de la comanda de Fastspring."
-    },
-    "qf.label.instantApplyMsg": {
-        "message": "Nota: si només veieu el boto de [Tancar], la configuració del color pot ser que no funcioni - per arreglar-ho, proveu de clicar amb el botó dret a sobre d'una àrea buida de la barra de QuickFolders per seleccionar opcions… això forçarà que aparegui el botó [OK], que us permetrà desar els colors."
-    },
-    "qf.label.keyboard": {
-        "message": "Dreceres de Teclat"
-    },
-    "qf.label.languagesLink": {
-        "message": "Afegir Traducció…"
-    },
-    "qf.label.licenseValid": {
-        "message": "Llicència vàlida fins a:"
-    },
-    "qf.label.mainToolbar": {
-        "message": "Elements de la barra d'Eines Principal"
-    },
-    "qf.label.menus": {
-        "message": "Configuració del Menú"
-    },
-    "qf.label.menus.customIcon": {
-        "message": "Personalitza Icona"
-    },
-    "qf.label.menus.help": {
-        "message": "QuickFolders Help"
-    },
-    "qf.label.menus.hideQFunlessCTRL": {
-        "message": "Only display with CTRL key held"
-    },
-    "qf.label.menus.lineBreak": {
-        "message": "Inserta Salt de Línia"
-    },
-    "qf.label.menus.mailFolder": {
-        "message": "Mail Commands"
-    },
-    "qf.label.menus.options": {
-        "message": "Options"
-    },
-    "qf.label.menus.quickFolder": {
-        "message": "QuickFolders Commands"
-    },
-    "qf.label.menus.separator": {
-        "message": "Inserta Separador"
-    },
-    "qf.label.menus.support": {
-        "message": "QuickFolders Support"
-    },
-    "qf.label.misc": {
-        "message": "Miscel·lània"
-    },
-    "qf.label.newcategory": {
-        "message": "Nova categoria:"
-    },
-    "qf.label.pixels": {
-        "message": "píxels"
-    },
-    "qf.label.quickFilters.link": {
-        "message": "obtenir quickFilters!"
-    },
-    "qf.label.quickfolders": {
-        "message": "QuickFolders:"
-    },
-    "qf.label.renameselectedcategory": {
-        "message": "Reanomenar la categoria seleccionada"
-    },
-    "qf.label.setcolors": {
-        "message": "Aplica [Color del text], Color del fons"
-    },
-    "qf.label.tabContent": {
-        "message": "Fitxa de Contingut"
-    },
-    "qf.label.testfolder": {
-        "message": "Carpeta de Prova"
-    },
-    "qf.label.testfolder2": {
-        "message": "Carpeta de prova 2"
-    },
-    "qf.label.themes": {
-        "message": "Temes:"
-    },
-    "qf.label.toolbarPosition": {
-        "message": "Posició de la barra d'eines QuickFolders"
-    },
-    "qf.label.versionhistory": {
-        "message": "Historial de Versions…"
-    },
-    "qf.licenseValidation.expired": {
-        "message": "La clau de llicència que heu entrat ja ha expirat. Polseu el següent botó per renovar-la."
-    },
-    "qf.licenseValidation.failed": {
-        "message": "La clau de llicència que heu entrat no és vàlida. Comproveu el vostre email de FastSpring per obtenir més instruccions. Si continueu tenint problemes, contacteu amb mi des de la pestanya Suport."
-    },
-    "qf.licenseValidation.guessAddon": {
-        "message": "(The key entered may be for {2})."
-    },
-    "qf.licenseValidation.invalidAddon": {
-        "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
-    },
-    "qf.licenseValidation.invalidMail": {
-        "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
-    },
-    "qf.licenseValidation.notMatchedMail": {
-        "message": "Encrypted Email address does not match readable one."
-    },
-    "qf.licenseValidation.passed": {
-        "message": "Gràcies per registrar QuickFolders Pro! S'han desbloquejat totes les característiques Premium."
-    },
-    "qf.loadConfig": {
-        "message": "Load Configuration…"
-    },
-    "qf.menu.Color": {
-        "message": "Color"
-    },
-    "qf.menu.tabColor": {
-        "message": "Sense Color!"
-    },
-    "qf.menuitem.quickfolders.changeOrder": {
-        "message": "Canvia l'ordre dels preferits"
-    },
-    "qf.menuitem.quickfolders.changeOrderAccess": {
-        "message": "C"
-    },
-    "qf.menuitem.quickfolders.deleteDeadTabs": {
-        "message": "Cerca Pestanyes orfes"
-    },
-    "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
-        "message": "T"
-    },
-    "qf.menuitem.quickfolders.displayPreviewToolbar": {
-        "message": "Mostra Eines de la Carpeta Actual"
-    },
-    "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
-        "message": "D"
-    },
-    "qf.menuitem.quickfolders.filters": {
-        "message": "Crear Filtres de Missatge…"
-    },
-    "qf.menuitem.quickfolders.filtersAccess": {
-        "message": "F"
-    },
-    "qf.menuitem.quickfolders.find": {
-        "message": "Cerca Carpeta…"
-    },
-    "qf.menuitem.quickfolders.findAccess": {
-        "message": "i"
-    },
-    "qf.menuitem.quickfolders.help": {
-        "message": "Ajuda de QuickFolders…"
-    },
-    "qf.menuitem.quickfolders.helpAccess": {
-        "message": "H"
-    },
-    "qf.menuitem.quickfolders.options": {
-        "message": "Opcions de QuickFolders"
-    },
-    "qf.menuitem.quickfolders.optionsAccess": {
-        "message": "O"
-    },
-    "qf.menuitem.quickfolders.register": {
-        "message": "Registrar QuickFolders Pro..."
-    },
-    "qf.menuitem.quickfolders.repairTabs": {
-        "message": "Actualitza les Pestanyes Visibles!"
-    },
-    "qf.menuitem.quickfolders.repairTabsAccess": {
-        "message": "V"
-    },
-    "qf.menuitem.quickfolders.repairTreeIcons": {
-        "message": "Repair Tree Icons"
-    },
-    "qf.menuitem.quickfolders.support": {
-        "message": "Servei Tècnic de QuickFolders…"
-    },
-    "qf.menuitem.quickfolders.supportAccess": {
-        "message": "S"
-    },
-    "qf.menuitem.quickfolders.togglePaintMode": {
-        "message": "Mode Pintura"
-    },
-    "qf.menuitem.quickfolders.togglePaintModeAccess": {
-        "message": "p"
-    },
-    "qf.notification.categoryIsReadOnly": {
-        "message": "This item cannot be deleted."
-    },
-    "qf.notification.dontShowAgain": {
-        "message": "No tornis a mostrar aquest missatge."
-    },
-    "qf.notification.premium.btn.extendLicense": {
-        "message": "Extend License"
-    },
-    "qf.notification.premium.btn.extendLicense.tooltip": {
-        "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
-    },
-    "qf.notification.premium.btn.getLicense": {
-        "message": "Obtenir Llicència!"
-    },
-    "qf.notification.premium.btn.hotKey": {
-        "message": "L"
-    },
-    "qf.notification.premium.btn.renewLicense": {
-        "message": "Renew License"
-    },
-    "qf.notification.premium.readingList": {
-        "message": "Teniu {1} marcadors definits. La versió gratuita de QuickFolders permet un màxim de {2}."
-    },
-    "qf.notification.premium.tabIcons": {
-        "message": "Teniu {1} icona(es) definides. La versió gratuita de QuickFolders permet un màxim de {2}."
-    },
-    "qf.notification.premium.text": {
-        "message": "{1} és una característica Premium, registreu QuickFolders per a poder utilitzar-la sempre."
-    },
-    "qf.notification.premium.title": {
-        "message": "Característica Premium"
-    },
-    "qf.options.LayoutColorAppearance": {
-        "message": "Colors Individuals de les Pestanyes"
-    },
-    "qf.options.LayoutColorAppearanceFilled": {
-        "message": "(estil ple)"
-    },
-    "qf.options.LayoutColorAppearanceStriped": {
-        "message": "(estil ratllat)"
-    },
-    "qf.options.label.themeAuthor": {
-        "message": "Autor del Tema:"
-    },
-    "qf.options.theme.pastelColors": {
-        "message": "Colors Pastel"
-    },
-    "qf.options.themes.customCornerRadius.Bottom.label": {
-        "message": "A baix:"
-    },
-    "qf.options.themes.customCornerRadius.Top.label": {
-        "message": "A dalt:"
-    },
-    "qf.options.themes.customCornerRadius.checkbox": {
-        "message": "Radi de les cantonades Personalitzat"
-    },
-    "qf.options.themes.showBorders.checkbox": {
-        "message": "Mostra Sempre els Costats"
-    },
-    "qf.options.versionnumber.tooltip": {
-        "message": "Clic amb el boto dret per a l'històric de versions."
-    },
-    "qf.palette.inactive": {
-        "message": "Com les Pestanyes inactives"
-    },
-    "qf.palette.night": {
-        "message": "Vista Nocturna"
-    },
-    "qf.palette.pastel": {
-        "message": "Colors Suaus"
-    },
-    "qf.palette.standard": {
-        "message": "Paleta estàndard"
-    },
-    "qf.palette.twoColors": {
-        "message": "2 colors"
-    },
-    "qf.pastefolders.tooltip": {
-        "message": "Delete all QuickFolders and read new configuration from clipboard"
-    },
-    "qf.pathFormat.AccountAndPath": {
-        "message": "Account - Folder Path"
-    },
-    "qf.pathFormat.PathOnly": {
-        "message": "Folder Path"
-    },
-    "qf.pathFormat.URI": {
-        "message": "Folder URI"
-    },
-    "qf.pathFormat.folderAndAccount": {
-        "message": "Folder Name - Mail Account"
-    },
-    "qf.pathFormat.folderName": {
-        "message": "Folder Name"
-    },
-    "qf.pathFormat.maxDepth": {
-        "message": "Maximum path depth:"
-    },
-    "qf.pathFormat.tooltip": {
-        "message": "Maximum number of folders displayed in folder path."
-    },
-    "qf.prefwindow.quickfolders.options": {
-        "message": "Opcions de QuickFolders"
-    },
-    "qf.premium.renewLicense.tooltip": {
-        "message": "Your license expired {1} days ago"
-    },
-    "qf.premiumConfig": {
-        "message": "Premium Features"
-    },
-    "qf.prompt.category.deleteMultiple": {
-        "message": "Ok to delete multiple categories?"
-    },
-    "qf.prompt.contact.subject": {
-        "message": "Entreu una petita descripció de l'assumpte:"
-    },
-    "qf.prompt.contact.title": {
-        "message": "Contacteu amb el suport tècnic de quickFilters"
-    },
-    "qf.prompt.loadFolders.confirm": {
-        "message": "Accept the loaded Tabs?"
-    },
-    "qf.prompt.newFolder.createQFtab": {
-        "message": "Also create a QuickFolders Tab"
-    },
-    "qf.prompt.newFolder.newChildName": {
-        "message": "Enter name for new child folder under {0}"
-    },
-    "qf.prompt.newFolder.title": {
-        "message": "New Folder"
-    },
-    "qf.prompt.pasteFolders": {
-        "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\\n{0} entries were found in clipboard.\\nReplace tabs?"
-    },
-    "qf.prompt.pasteFolders.confirm": {
-        "message": "Keep the displayed Tabs?"
-    },
-    "qf.prompt.readingList.removeItem": {
-        "message": "Esborrar aquest objecte?"
-    },
-    "qf.prompt.readingList.searchMissingItem": {
-        "message": "No es troba el correu, pot haver-se mogut a algun altre lloc.\\n{1}\\n\\nVoleu cercar-lo?"
-    },
-    "qf.prompt.restoreFolders": {
-        "message": "This will delete all QuickFolders tabs and replace with the items from the file.\\n{0} entries were read.\\nReplace tabs?"
-    },
-    "qf.prompt.switchDomainLicense": {
-        "message": "Switch to Domain License?"
-    },
-    "qf.quickMove.escapeClears": {
-        "message": "La tecla d'escapament sempre esborra la llista de missatges."
-    },
-    "qf.quickMove.excludeAccounts": {
-        "message": "Seleccioneu qualsevol compte que s'hagi d'excloure dels resultats de la cerca:"
-    },
-    "qf.quickMove.lockAccount": {
-        "message": "Mostra només els resultats del compte de correu actual."
-    },
-    "qf.quickMove.maxResults": {
-        "message": "Nombre màxim de resultats de cerca"
-    },
-    "qf.quickMove.path.format": {
-        "message": "Display Format:"
-    },
-    "qf.quickMove.silent": {
-        "message": "Omet les notificacions després de moure els correus."
-    },
-    "qf.register.licenseValid.expired": {
-        "message": "Your license expired on:"
-    },
-    "qf.search.advanced": {
-        "message": "Configuració de cerca avançada ..."
-    },
-    "qf.storeConfig": {
-        "message": "Save Configuration…"
-    },
-    "qf.tab.advanced": {
-        "message": "Advanced"
-    },
-    "qf.tab.general": {
-        "message": "General"
-    },
-    "qf.tab.gopro": {
-        "message": "QuickFolders Pro"
-    },
-    "qf.tab.layout": {
-        "message": "Pimp My Tabs!"
-    },
-    "qf.tab.quickhelp": {
-        "message": "Ajuda Ràpida"
-    },
-    "qf.tab.support": {
-        "message": "Suport"
-    },
-    "qf.textbox.searchBox.emptyText": {
-        "message": "cerca filtres…"
-    },
-    "qf.textbox.searchBox.toolTip": {
-        "message": "entreu una paralula clau per cercar els filtres per nom"
-    },
-    "qf.themes.applePills.description": {
-        "message": "Disseny agradable per als nostres usuaris de Mac - pla i simple; amb alguns tocs de color opccional."
-    },
-    "qf.themes.applePills.label": {
-        "message": "Pastilles d'Apple"
-    },
-    "qf.themes.flatButtons.description": {
-        "message": "Botons de la barra estàndard - és el més proper a l'aparença original de la versió 0.5!"
-    },
-    "qf.themes.flatButtons.label": {
-        "message": "Botons de la Barra d'Eines"
-    },
-    "qf.themes.flatTabs.description": {
-        "message": "Aparença Moderna - totalment configurable. Visualment molt atractiu a Windows i Linux."
-    },
-    "qf.themes.flatTabs.label": {
-        "message": "Estil Pla"
-    },
-    "qf.themes.nativeTabs.description": {
-        "message": "Disseny semblant a les pestanyes del seu SO - menys opcions de colors, però es veu més integrat amb el tema del seu Client de Correu."
-    },
-    "qf.themes.nativeTabs.label": {
-        "message": "Pestanyes Natives"
-    },
-    "qf.themes.realButtons.description": {
-        "message": "Botons - són com els botons standard de les finestres de windows"
-    },
-    "qf.themes.realButtons.label": {
-        "message": "Botons"
-    },
-    "qf.toolbar.quickfolders.toolbar": {
-        "message": "Barra d'eines de QuickFolders"
-    },
-    "qf.toolbarMinimumHeight": {
-        "message": "Minimum height:"
-    },
-    "qf.toolbarMinimumHeight.tooltip": {
-        "message": "For Mac systems who encounter [Bug 25021]"
-    },
-    "qf.toolbarPosition.tooltip": {
-        "message": "0 = a sobre d'altres barres d'eines; 100 = fons. El valor alt depèn d'altres complements."
-    },
-    "qf.tooltip.RecentFolders": {
-        "message": "Carpetes Recents"
-    },
-    "qf.tooltip.closeToolbar": {
-        "message": "Tanca aquesta barra d'eines"
-    },
-    "qf.tooltip.conversationRead": {
-        "message": "Marca la Conversa com a Llegida i salta al següent Missatge sense llegir"
-    },
-    "qf.tooltip.emailIcon": {
-        "message": "Email Actual - arrosega cap a una pestanya de QuickFolders per moure el Correu"
-    },
-    "qf.tooltip.filterStart": {
-        "message": "Activar aprenentatge de filtres. Arrossegant correus a QuickFoldres crea nous Filtres."
-    },
-    "qf.tooltip.filters": {
-        "message": "Atura la creació de filtres."
-    },
-    "qf.tooltip.folderUp": {
-        "message": "Anar a la Carpeta Superior"
-    },
-    "qf.tooltip.goNextFolder": {
-        "message": "Ves al següent missatge sense llegir"
-    },
-    "qf.tooltip.goPreviousFolder": {
-        "message": "Ves al l'anterior missatge sense llegir"
-    },
-    "qf.tooltip.mailFolderCommands": {
-        "message": "Ordres de la Carpeta de Correu"
-    },
-    "qf.tooltip.mainOptions": {
-        "message": "Opcions i comandaments avançats de QuickFolders"
-    },
-    "qf.tooltip.paintCanActive": {
-        "message": "Mode Pintura: fes clic per la paleta, clica les pestanyes per canviar-los-hi el color, clic amb el botó dret a la pestanya, per agafar el seu color."
-    },
-    "qf.tooltip.quickFoldersNavToggle": {
-        "message": "alterna &quot;sense llegir&quot;/&quot;tots&quot; els mails"
-    },
-    "qf.tooltip.quickMove": {
-        "message": "quickMove: arrossegueu un correu aquí"
-    },
-    "qf.tooltip.skipUnreadFolder": {
-        "message": "Skip to next Unread Folder"
-    },
-    "qf.tooltip.threadIcon": {
-        "message": "Conversa Actual - arrossega cap a una pestanaya de QuickFolders per moure la Conversa"
-    },
-    "qf.youtube.description": {
-        "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
-    },
-    "qf.youtube.link": {
-        "message": "Watch Videos about QuickFolders…"
-    },
-    "qf.youtube.tbdaily": {
-        "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
-    },
-    "qfAlertCopyString": {
-        "message": "Nom de la carpeta copiat al Portaretalls!"
-    },
-    "qfAlertDropFolderVirtual": {
-        "message": "No podeu copiar correu a una carpeta virtual!"
-    },
-    "qfAlertUpgradeSuccess": {
-        "message": "QuickFolders s'ha actualitzat satisfactòriament a la versió:"
-    },
-    "qfAll": {
-        "message": "(Mostrar tots)"
-    },
-    "qfCantMoveFolder": {
-        "message": "La carpeta {0} no es pot moure."
-    },
-    "qfColorPickingWIP": {
-        "message": "Ho sentim, aquesta funcinalitat encara no està acabada!"
-    },
-    "qfCommandAccess": {
-        "message": "Q"
-    },
-    "qfCommandPopup": {
-        "message": "Accions de QuickFolders"
-    },
-    "qfCompactFolder": {
-        "message": "Compactar Carpeta"
-    },
-    "qfCompactFolderAccess": {
-        "message": "F"
-    },
-    "qfCompacted": {
-        "message": "Compactat:"
-    },
-    "qfCompactedBytesFreed": {
-        "message": "Bytes alliberats"
-    },
-    "qfCompactedFolder": {
-        "message": "Carpeta compactada"
-    },
-    "qfCompactedNewFolderSize": {
-        "message": "Nova mida"
-    },
-    "qfCompactedOriginalFolderSize": {
-        "message": "Mida original"
-    },
-    "qfConfirmCopyFolder": {
-        "message": "Voleu copiar la carpeta {0} a {1}?"
-    },
-    "qfConfirmMoveFolder": {
-        "message": "Voleu moure la carpeta {0} a {1}?"
-    },
-    "qfConfirmVersionLink": {
-        "message": "Mostra l'històric de versions de QuickFolders"
-    },
-    "qfDeadTabsCount": {
-        "message": "# orphaned tabs found:"
-    },
-    "qfDeadTabsDeleted": {
-        "message": "# orphaned tabs removed:"
-    },
-    "qfDeleteFolder": {
-        "message": "Esborrar Carpeta"
-    },
-    "qfDeleteFolderAccess": {
-        "message": "D"
-    },
-    "qfDeleteJunk": {
-        "message": "Purge Junk"
-    },
-    "qfDown": {
-        "message": "Avall"
-    },
-    "qfDownloadAll": {
-        "message": "Descarrega-ho Tot"
-    },
-    "qfEditVirtual": {
-        "message": "Propietats de la Cerca"
-    },
-    "qfEditVirtualAccess": {
-        "message": "S"
-    },
-    "qfEmptiedJunk": {
-        "message": "Brossa esborrada i carpeta compactada"
-    },
-    "qfEmptiedTrash": {
-        "message": "Escombraries esborrades."
-    },
-    "qfEmptyJunk": {
-        "message": "Buida Correu Brossa"
-    },
-    "qfEmptyJunkAccess": {
-        "message": "J"
-    },
-    "qfEmptyTrash": {
-        "message": "Buida la Paperera"
-    },
-    "qfEmptyTrashAccess": {
-        "message": "T"
-    },
-    "qfFolderAccess": {
-        "message": "F"
-    },
-    "qfFolderAlreadyBookmarked": {
-        "message": "La carpeta ja és als marcadors."
-    },
-    "qfFolderOpenLocation": {
-        "message": "Explora Ubicació de la Carpeta..."
-    },
-    "qfFolderPopup": {
-        "message": "Accions de la Carpeta de Correu"
-    },
-    "qfFolderProperties": {
-        "message": "Folder Properties…"
-    },
-    "qfFolderPropertiesAccess": {
-        "message": "P"
-    },
-    "qfFolderRepair": {
-        "message": "Repair Folder"
-    },
-    "qfFolderRepairAccess": {
-        "message": "F"
-    },
-    "qfFolderRepairedMsg": {
-        "message": "Folder was repaired:"
-    },
-    "qfGetMail": {
-        "message": "Recupera Missatges"
-    },
-    "qfGetMailAccess": {
-        "message": "G"
-    },
-    "qfInsertLineBreak": {
-        "message": "Insert Line Break"
-    },
-    "qfInsertSeparator": {
-        "message": "Insert Separator"
-    },
-    "qfInvalidTabCount": {
-        "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
-    },
-    "qfMarkAllRead": {
-        "message": "Marca la Carpeta com a LLegida"
-    },
-    "qfMarkAllReadAccess": {
-        "message": "M"
-    },
-    "qfMarkAllReadRecursive": {
-        "message": "Mark folder + subfolders Read"
-    },
-    "qfMenuColor": {
-        "message": "Color"
-    },
-    "qfMenuTabColorDisabledInTheme": {
-        "message": "Select different Theme to support coloring…"
-    },
-    "qfMenuTabColorNone": {
-        "message": "Sense Color!"
-    },
-    "qfMenuTabColorPopup": {
-        "message": "Color de la pestanya"
-    },
-    "qfMoveFolderOrNewTab": {
-        "message": "Arrossegueu carpetes a una àrea buida de la barra d'eines - Per a MOURE la carpeta, mantingueu apretat el botó SHIFT mentre arrossegueu la carpeta."
-    },
-    "qfNavigationWrapped": {
-        "message": "No other unread folders found, continuing in {1}."
-    },
-    "qfNewFolder": {
-        "message": "Nova subcarpeta…"
-    },
-    "qfNewFolderAccess": {
-        "message": "N"
-    },
-    "qfNewName": {
-        "message": "Entreu un nom per al marcador"
-    },
-    "qfNewSubFolder": {
-        "message": "Create subfolder {0} \\u00BB {1}…"
-    },
-    "qfNoFolderMatch": {
-        "message": "No hi ha cap carpeta pare coincident."
-    },
-    "qfPaintToggle": {
-        "message": "Acaba el mode Pintura"
-    },
-    "qfRecentFolders": {
-        "message": "Carpetes Recents"
-    },
-    "qfRemoveBookmark": {
-        "message": "Esborrar marcador"
-    },
-    "qfRemoveBookmarkAccess": {
-        "message": "R"
-    },
-    "qfRemoveCategory": {
-        "message": "Esborrar de la categoria actual"
-    },
-    "qfRemoveCategoryPrompt": {
-        "message": "La categoria és '{1}' - Esborrar-la?"
-    },
-    "qfRemoveIcon": {
-        "message": "Esborrar Icona"
-    },
-    "qfRemoveLineBreak": {
-        "message": "Remove Line Break"
-    },
-    "qfRemoveSeparator": {
-        "message": "Remove Separator"
-    },
-    "qfRenameBookmark": {
-        "message": "Reanomenar marcador…"
-    },
-    "qfRenameBookmarkAccess": {
-        "message": "N"
-    },
-    "qfRenameFolder": {
-        "message": "Reanomenar Carpeta"
-    },
-    "qfRenameFolderAccess": {
-        "message": "R"
-    },
-    "qfRepairTreeIconsMissing": {
-        "message": "The following icon files do not exist:"
-    },
-    "qfSavePrompt": {
-        "message": "Save these changes?"
-    },
-    "qfSelectIcon": {
-        "message": "Icona..."
-    },
-    "qfSetCategory": {
-        "message": "Seleccionar la categoria del marcador…"
-    },
-    "qfSetCategoryA": {
-        "message": "C"
-    },
-    "qfShowAlways": {
-        "message": "Mostrar Sempre!"
-    },
-    "qfShowNever": {
-        "message": "Never Show (Folder Alias)"
-    },
-    "qfTabAdvancedOptions": {
-        "message": "Propietats del Tabulador..."
-    },
-    "qfTabDeleteOption": {
-        "message": "Do this with the remaining {0} folders."
-    },
-    "qfTabDeletePrompt": {
-        "message": "Delete this Tab?"
-    },
-    "qfThisTabIsInvalid": {
-        "message": ": This is a tab that points to an invalid folder:"
-    },
-    "qfTidyDeadFolders": {
-        "message": "This will remove the Tabs that have no valid folders assigned.\\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
-    },
-    "qfTreeIconsInvalidCount": {
-        "message": "{0} icons missing"
-    },
-    "qfTreeIconsRepairedCount": {
-        "message": "{0} tree icons repaired"
-    },
-    "qfUncategorized": {
-        "message": "(Sense Categoria)"
-    },
-    "qfUp": {
-        "message": "Amunt"
-    },
-    "qfUpdatedThemesEngineMsg": {
-        "message": "S'ha instal·lat un nou motor de temes de Quickfolders. Seleccioneu un item del desplegable i cliqueu OK."
-    },
-    "qfVersionDisableOnUpdate": {
-        "message": "No mostrar més l'historial de versions després de les actualitzacions?"
-    },
-    "quickMove.singleMessage.goNext": {
-        "message": "Mostra el següent missatge després de moure'n l'actual"
-    },
-    "quickMove.singleMessage.reopenTab": {
-        "message": "Torneu a obrir el correu original després de traslladar-lo"
-    },
-    "quickMove.singleMessageTabs": {
-        "message": "Pestanya Missatge únic"
-    },
-    "quickfolders.findFolder.placeHolder": {
-        "message": "nom de la carpeta"
-    },
-    "quickfolders.quickMove.menu.cancel": {
-        "message": "Cancel·lar quickMove"
-    },
-    "quickfolders.quickMove.menu.hideSearch": {
-        "message": "Amagar Nom de la Carpeta"
-    },
-    "quickfolders.quickMove.menu.showSearch": {
-        "message": "Mostrar Nom de la Carpeta"
-    },
-    "quickfolders.quickMove.menu.suspend": {
-        "message": "Saltar a la Carpeta (sense moure els correus)"
-    },
-    "quickfolders.readingList.addCurrent": {
-        "message": "Afegir l'objecte actual"
-    },
-    "quickfolders.readingList.clear": {
-        "message": "Esborrar Llista de Lectura"
-    },
-    "quickfolders.readingList.tooltip": {
-        "message": "Llista de Lectura"
-    },
-    "quickfolders.toolbar.newsubfolder": {
-        "message": "Nova subcarpeta…"
-    },
-    "quickfolders.toolbar.skip": {
-        "message": "Skip"
-    },
-    "quickfoldersQuickCopiedMails": {
-        "message": "Correu copiat a la carpeta {2};{1} correus copiats a la carpeta {2}"
-    },
-    "quickfoldersQuickMovedMails": {
-        "message": "Correu mogut a la carpeta {2};{1} correus moguts a la carpeta {2}"
-    },
-    "testDrive": {
-        "message": "Podeu provar les característiques premium amb la versió gratuïta, pero alguna pot estar lleugerament limitada."
-    },
-    "toAddress": {
-        "message": "To:"
-    },
-    "toAddress.tooltip": {
-        "message": "Default To Address when composing new mails"
-    },
-    "updates.title": {
-        "message": "Actualitzacions"
-    },
-    "updatesExpiry": {
-        "message": "QuickFolders Pro s'actualitzarà automàticament via addons.thunderbird.net com és habitual. Una vegada expiri el plaç d'un any, podeu renovar la llicència o continuar utilitzant les característiques premium sota els mateixos termes que els usuaris gratuits. Les característiques 'Premium Exclusive' requereixen d'una clau de registre vàlida."
-    },
-    "vouchers.title": {
-        "message": "Vals"
-    },
-    "windowTitle": {
-        "message": "Advanced Properties"
-    },
-    "yearlyLicense.premiumFeatures": {
-        "message": "QuickFolders Pro us permet accedir sense limitacions a totes les característiques Premium."
-    },
-    "yearlyLicense.premiumFeatures.moreInfoLink": {
-        "message": "Saber més sobre les característiques Premium."
-    },
-    "yearlyLicense.title": {
-        "message": "Llicència Anual"
-    },
-    "yearlyLicense.usageTerm": {
-        "message": "La llicència es només per al seu us personal i està lligada a la seva adreça electrònica. Podeu instal·lar-la a múltiples clients de correu, sempre i quan estiguin configurats per utilitzar aquesta adreça electrònica."
-    },
-    "yearlyLicense.usageTerm1": {
-        "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
-    }
+  "_l10nstatus": {
+    "message": "UI"
+  },
+  "account.label": {
+    "message": "Trieu un compte:"
+  },
+  "btnApply": {
+    "message": "Apply"
+  },
+  "btnCategory": {
+    "message": "Categories"
+  },
+  "btnCategory.tooltip": {
+    "message": "Define Tab Categories"
+  },
+  "btnReset": {
+    "message": "Reset to Defaults"
+  },
+  "buyDomainLicense.button": {
+    "message": "Buy Domain License"
+  },
+  "buyDomainLicense.instruct": {
+    "message": "Need Licenses for a company with more than five users? Getting a domain license will work out cheaper:"
+  },
+  "buyLicense.instruct": {
+    "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
+  },
+  "buyPersonalLicense.button": {
+    "message": "Buy Personal License!"
+  },
+  "chkComposerSubfolders": {
+    "message": "Also apply to subfolders"
+  },
+  "chkHideFromQuickJump": {
+    "message": "Omit from quickJump / quickMove"
+  },
+  "chkHideFromQuickJump.tooltip": {
+    "message": "Omit this folder and its children in quickJump / quickMove results"
+  },
+  "chkIgnoreCounts": {
+    "message": "Hide Count of Mails"
+  },
+  "chkIgnoreCounts.tooltip": {
+    "message": "Never display number of contained mails."
+  },
+  "chkIgnoreUnread": {
+    "message": "Hide Unread Status"
+  },
+  "chkIgnoreUnread.tooltip": {
+    "message": "Never display bold or any unread count even when folder contains unread mail."
+  },
+  "chkSetMailsUnread": {
+    "message": "Set mail to unread"
+  },
+  "chkSetMailsUnread.tooltip": {
+    "message": "If you move mail into this folder it is set to unread."
+  },
+  "cssBackground": {
+    "message": "Background"
+  },
+  "cssBackground.tooltip": {
+    "message": "Enter a CSS background, e.g. linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)"
+  },
+  "cssColor": {
+    "message": "Text color"
+  },
+  "cssColor.tooltip": {
+    "message": "Enter a CSS color, e.g. rgba(100,20,20,0.8)"
+  },
+  "defaultAccountAddress.value": {
+    "message": "Account Default Identity"
+  },
+  "domainLicense.email": {
+    "message": "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page."
+  },
+  "domainLicense.header": {
+    "message": "Licensed Email Domain"
+  },
+  "domainLicense.instruct": {
+    "message": "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use QuickFolders Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen."
+  },
+  "domainLicense.validate": {
+    "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
+  },
+  "email.label": {
+    "message": "E-mail:"
+  },
+  "enterLicenseKey.button": {
+    "message": "Entreu la Clau de Llicència..."
+  },
+  "enterLicenseKey.tooltip": {
+    "message": "Entreu la Clau de Llicència que us hem enviat per e-mail."
+  },
+  "extensions.quickfolders@curious.be.description": {
+    "message": "Marqueu vostres carpetes de correu preferides al Thunderbird."
+  },
+  "firstName.label": {
+    "message": "Nom:"
+  },
+  "freeLicense": {
+    "message": "Si recentment heu fet una donació al projecte QuickFolders o heu fet una contribució amb la vostra feina, com ara traduïnt, podrieu demanar una llicència gratuita. Contacteu amb mi des de la pestanya de Suport, a les opcions de QuickFolders."
+  },
+  "fromAddress": {
+    "message": "From:"
+  },
+  "fromAddress.tooltip": {
+    "message": "Default Identity when composing emails"
+  },
+  "getQuickFolders": {
+    "message": "Obtenir QuickFolders Pro"
+  },
+  "grpComposer": {
+    "message": "Default Email Fields"
+  },
+  "grpCustomCSS": {
+    "message": "Custom CSS"
+  },
+  "grpTabBehavior": {
+    "message": "Advanced Tab Behavior"
+  },
+  "intro": {
+    "message": "La llicència anual de QuickFolders Pro, us dona accés a totes les característiques premium durant un any. També ens permet donar suport i fer crèixer el producte més enllà i convertir-lo en una cosa encara més impressionant."
+  },
+  "lastName.label": {
+    "message": "Cognoms:"
+  },
+  "lblCustomPalette": {
+    "message": "Custom Palette:"
+  },
+  "licenseWindow.title": {
+    "message": "Llicència QuickFolders Pro"
+  },
+  "qf.accounts": {
+    "message": "Comptes"
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Could not create tabs. See tools / error console for more detail."
+  },
+  "qf.backupAndRestore": {
+    "message": "Backup / Restore"
+  },
+  "qf.btn.applyPosition": {
+    "message": "Apliqueu el valor de la posició"
+  },
+  "qf.button.add": {
+    "message": "Afegir!"
+  },
+  "qf.button.configureTooltips": {
+    "message": "Configura les informacions emergents…"
+  },
+  "qf.button.currentFolderBackground.set": {
+    "message": "estableix"
+  },
+  "qf.button.default": {
+    "message": "Valors per defecte"
+  },
+  "qf.button.defaultcolors": {
+    "message": "Colors per Defecte"
+  },
+  "qf.button.deleteselectedcategory": {
+    "message": "Esborrar la categoria seleccionada"
+  },
+  "qf.button.down": {
+    "message": "Avall"
+  },
+  "qf.button.pasteLicense": {
+    "message": "enganxar"
+  },
+  "qf.button.rename": {
+    "message": "Reanomenar"
+  },
+  "qf.button.reorderButtonBottom": {
+    "message": "Al Capdavall"
+  },
+  "qf.button.reorderButtonBottom.accessKey": {
+    "message": "B"
+  },
+  "qf.button.reorderButtonBottom.toolTip": {
+    "message": "executa aquest filtre després de tots els altres"
+  },
+  "qf.button.reorderButtonTop": {
+    "message": "Al Damunt"
+  },
+  "qf.button.reorderButtonTop.accessKey": {
+    "message": "o"
+  },
+  "qf.button.reorderButtonTop.toolTip": {
+    "message": "executa aquest filtre abans que tots els altres"
+  },
+  "qf.button.up": {
+    "message": "Amunt"
+  },
+  "qf.button.validateLicense": {
+    "message": "validar"
+  },
+  "qf.caption.currentFolderBackground": {
+    "message": "Fons de la barra d'eines de la carpeta actual"
+  },
+  "qf.categories.supportMultiple": {
+    "message": "Support selecting multiple tab categories"
+  },
+  "qf.categories.supportMultiple.tooltip": {
+    "message": "Use the SHIFT key in order to select more than one category on the dropdown."
+  },
+  "qf.checkbox.autoFocusPreview": {
+    "message": "Passar el focus a la llista de missatges al canviar de pestanya"
+  },
+  "qf.checkbox.autoHideToolbar": {
+    "message": "Amaga QuickFolders quan no es necessiti"
+  },
+  "qf.checkbox.autoHideToolbar.tooltip": {
+    "message": "Col·lapsa la barra d'eines en fitxes especials, com ara calendari, contingut, gestor de complements."
+  },
+  "qf.checkbox.currentFolder.closeButton": {
+    "message": "Botó de Tancar"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "Mostra la Barra d'Eines"
+  },
+  "qf.checkbox.currentfolder.lightweight": {
+    "message": "integrate with lightweight theme"
+  },
+  "qf.checkbox.debug": {
+    "message": "Mode de Depuració"
+  },
+  "qf.checkbox.debug.tooltip": {
+    "message": "Feu clic amb el botó dret a aquesta casella per a les opcions avançades de depuració"
+  },
+  "qf.checkbox.displaylabel": {
+    "message": "Mostra 'QuickFolders' a la barra d'eines"
+  },
+  "qf.checkbox.displaylabel.tooltip": {
+    "message": "Feu clic amb el botó dret per canviar el text d'aquesta etiqueta"
+  },
+  "qf.checkbox.enableTransitions": {
+    "message": "Activa transicions CSS"
+  },
+  "qf.checkbox.enableTransitions.tooltip": {
+    "message": "Mostra transicions suaus entre diferents coloracions de les pestanyes."
+  },
+  "qf.checkbox.hideCategoryBox": {
+    "message": "Collapse Categories"
+  },
+  "qf.checkbox.hideCategoryBox.tooltip": {
+    "message": "Minimizes the Categories menu to take up less space."
+  },
+  "qf.checkbox.highlightNewMail": {
+    "message": "Ressalta carpetes amb correu nou"
+  },
+  "qf.checkbox.menus.dragToNewFolder": {
+    "message": "Arrosegar a nova Subcarpeta"
+  },
+  "qf.checkbox.menus.emptyJunk": {
+    "message": "Esborrar Brossa"
+  },
+  "qf.checkbox.menus.emptyTrash": {
+    "message": "Esborrar Paperera"
+  },
+  "qf.checkbox.menus.getMailForInbox": {
+    "message": "Obtenir Missatges (Comptes de Correu)"
+  },
+  "qf.checkbox.menus.getMailForNews": {
+    "message": "Obtenir Missatges (Comptes de Notícies)"
+  },
+  "qf.checkbox.menus.markAllRead": {
+    "message": "Marcar la Carpeta com a Llegida"
+  },
+  "qf.checkbox.menus.markAllReadRecursive": {
+    "message": "Marcar la Carpeta com a Llegida (recursiva)"
+  },
+  "qf.checkbox.quickCopy": {
+    "message": "quickCopy - Copy mail to any folder with Shortcut:"
+  },
+  "qf.checkbox.quickCopy.tip": {
+    "message": "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry."
+  },
+  "qf.checkbox.quickJump": {
+    "message": "quickJump - Go to any folder with Shortcut:"
+  },
+  "qf.checkbox.quickJump.tip": {
+    "message": "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry."
+  },
+  "qf.checkbox.quickMove": {
+    "message": "quickMove - Move mail to any folder with Shortcut:"
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry."
+  },
+  "qf.checkbox.quickmove.autofill": {
+    "message": "Insert last folder name executed"
+  },
+  "qf.checkbox.quickmove.autofill.tip": {
+    "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
+  },
+  "qf.checkbox.readingList": {
+    "message": "Reading List"
+  },
+  "qf.checkbox.readingList.tooltip": {
+    "message": "A list for mails that should be read later. Drag your important emails on this button."
+  },
+  "qf.checkbox.shadows": {
+    "message": "ombres"
+  },
+  "qf.checkbox.shift": {
+    "message": "Shift"
+  },
+  "qf.checkbox.showCountInSubFolders": {
+    "message": "Mostra el total de subcarpetes"
+  },
+  "qf.checkbox.showCountInSubFolders.tooltip": {
+    "message": "Es mostren separats per un '+' al costat; el correu no llegit pot fer que la pestanya es mostri en negreta si l'opció està activa"
+  },
+  "qf.checkbox.showFilterButton": {
+    "message": "Botó 'Crea Filtres'"
+  },
+  "qf.checkbox.showFilterButton.tooltip": {
+    "message": "També podeu crear Filtres, utilitzant el menú de contexte de QuickFolders."
+  },
+  "qf.checkbox.showFolderNavigation": {
+    "message": "Folder Navigation buttons"
+  },
+  "qf.checkbox.showIconButtons": {
+    "message": "Personalitza Icones dels botons"
+  },
+  "qf.checkbox.showIcons": {
+    "message": "Mostrar Icones (Safata d'entrada, Enviats, Brossa, Escombraries, Esborranys, Arxivat, Plantilles)"
+  },
+  "qf.checkbox.showMailFolderCommands": {
+    "message": "Ordres de la Carpeta de Correu"
+  },
+  "qf.checkbox.showMessageNavigation": {
+    "message": "Botons de Navegació de Missatges"
+  },
+  "qf.checkbox.showNewMailItalics": {
+    "message": "Display tabs with newly arrived mail italic"
+  },
+  "qf.checkbox.showNonEmptyItalics": {
+    "message": "Mostra en cursiva els botons de les carpetes que continguin missatges"
+  },
+  "qf.checkbox.showQuickMove": {
+    "message": "Botó quickMove"
+  },
+  "qf.checkbox.showQuickMove.tooltip": {
+    "message": "El botó quickmove es pot utilitzar per moure correus a una carpeta determinada. Podeu recopilar correus de diferents carpetes. Quan hi tingueu els correus desitjats, entreu el nom de la carpeta destinació a la barra de cerca."
+  },
+  "qf.checkbox.showRecentButton": {
+    "message": "Botó de Carpetes Recents"
+  },
+  "qf.checkbox.showRecentTab": {
+    "message": "Mostra les Últimes Carpetes"
+  },
+  "qf.checkbox.showRecentTab.tooltip": {
+    "message": "Botó dret per configurar"
+  },
+  "qf.checkbox.showSubfolders": {
+    "message": "Expandir subcarpetes al menú emergent"
+  },
+  "qf.checkbox.showTotalMessageCount": {
+    "message": "Mostra el nombre total de missatges al botó de la carpeta"
+  },
+  "qf.checkbox.showUnreadBold": {
+    "message": "Mostra amb negreta els botons de les carpetes amb missatges per llegir"
+  },
+  "qf.checkbox.showUnreadMessageCount": {
+    "message": "Mostra el nombre de missatges per llegir al botó de la carpeta"
+  },
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Mostra el número de drecera a les etiquetes de les carpetes"
+  },
+  "qf.checkbox.singleMessage.currentFolder.show": {
+    "message": "… i també a la Finestra de Missatge"
+  },
+  "qf.checkbox.singleMessage.currentFolder.tooltip": {
+    "message": "Mostra la barra d'eines de la carpeta actual a la finestra que s'obre quan trieu obrir un correu a una nova finestra"
+  },
+  "qf.checkbox.singleMessageTab.currentFolder.show": {
+    "message": "Toolbar in Single Message Tabs"
+  },
+  "qf.checkbox.skipFolder": {
+    "message": "Skip Unread Folder - use Shortcut: SHIFT +"
+  },
+  "qf.checkbox.skipFolder.tip": {
+    "message": "Shortcut for jumping to the next unread folder."
+  },
+  "qf.checkbox.sortMenusAlpha": {
+    "message": "Força la ordenació alfabètica dels menus amb les subcarpetes."
+  },
+  "qf.checkbox.sortMenusAlpha.tooltip": {
+    "message": "Utilitzeu aquesta opció, nomes si el vostre client de correu no ordena correctament les subcarpetes."
+  },
+  "qf.checkbox.storeConfig.general": {
+    "message": "Include general settings"
+  },
+  "qf.checkbox.storeConfig.layout": {
+    "message": "Include advanced and layout"
+  },
+  "qf.checkbox.storeConfig.tabs": {
+    "message": "Include QuickFolders Tabs"
+  },
+  "qf.checkbox.tabMenuIcon": {
+    "message": "Icona del Menú de la Barra d'eines"
+  },
+  "qf.checkbox.tabMenuIcon.tooltip": {
+    "message": "Aquest menú també pot obrir-se amb un clic al botó dret a la mateixa barra d'eines"
+  },
+  "qf.checkbox.transparent": {
+    "message": "transparent"
+  },
+  "qf.checkbox.useNavigationShortcuts": {
+    "message": "ALT-Esquerra/ALT-Dreta per a l'anterior/següent Pestanya"
+  },
+  "qf.checkbox.usePalette": {
+    "message": "Utilitza la paleta"
+  },
+  "qf.checkbox.useRebuildShortcut": {
+    "message": "Regenera Pestanyes amb: Ctrl + Alt +"
+  },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Utilitzar dreceres de teclat (Alt +1 fins a Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Utilitzar Ctrl enlloc de Alt"
+  },
+  "qf.continueFilter.label": {
+    "message": "Crea Filtre…"
+  },
+  "qf.continueFilter.shortcut": {
+    "message": "F"
+  },
+  "qf.copyfolders": {
+    "message": "Copy Tabs"
+  },
+  "qf.copyfolders.tooltip": {
+    "message": "Copia la cadena de configuració de les carpetes al portapapers"
+  },
+  "qf.currentFolderBackground.custom": {
+    "message": "personalitzat"
+  },
+  "qf.currentFolderBackground.dark": {
+    "message": "fosc"
+  },
+  "qf.currentFolderBackground.default": {
+    "message": "per defecte"
+  },
+  "qf.currentFolderBackground.translucent": {
+    "message": "translúcid"
+  },
+  "qf.currentfolder.leftSpacer": {
+    "message": "Left Spacer:"
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "Right Spacer:"
+  },
+  "qf.description.bugzilla": {
+    "message": "Utilitzeu el Bugzilla per a totes les peticions oficial de noves característiques i informes de fallades."
+  },
+  "qf.description.categoryusage": {
+    "message": "Podeu assignar una categoria a aquest preferit (ex.'Feina;','Privat',...)."
+  },
+  "qf.description.changeCategory": {
+    "message": "Feu clic amb el botó dret a un marcador, per organitzar-lo a una categoria. Podeu obtenir un desplegable de les categories a l'esquerra de la barra."
+  },
+  "qf.description.contactMe": {
+    "message": "També podeu contactar-me personalment a axelg@gofree.indigo.ie"
+  },
+  "qf.description.donate": {
+    "message": "Si us ha encantat QuickFolders i voleu donar suport al seu desenvolupament, podeu donar algun diner per al futur desenvolupament de QuickFolders"
+  },
+  "qf.description.dragToAdd": {
+    "message": "Arrossegueu carpetes de correu a una àrea buida d'una nova barra d'eines, per a crear una nova QuickFolder (funciona com un àlies). Arrossegueu missatges a sobre d'una QuickFolder per moure'ls a la carpeta corresponent (o copiar-los amb la tecla modificadora). Cliqueu la QuickFolder per anar a la carpeta de correu."
+  },
+  "qf.description.dragToPopup": {
+    "message": "Arrossegueu missatges al menu emergent de la QuickFolder per moure els missatges dintre les subcarpetes."
+  },
+  "qf.description.dragToPosition": {
+    "message": "Arrossegueu les QuickFolders cap als costats per canviar-les de posició. Feu clic amb el botó dret per al menú contextual; podeu anar a les subcarpetes, seleccionant-les. 'Reanomenar Marcador' canvia l'etiqueta de la QuickFolder. 'Esborrar Marcador' esborra la QuickFolder (no la carpeta de correu)."
+  },
+  "qf.description.dragexplain": {
+    "message": "Podeu arrossegar els preferits per canviar-los de posició! Deixeu-lo anar a sobre d'un altre per insertar-lo abans/després."
+  },
+  "qf.description.editcategory": {
+    "message": "Seleccioneu una categoria existent fent-hi doble-clic, o afegiu-ne una de nova."
+  },
+  "qf.description.experimentalItems": {
+    "message": "Les següents opcions estan en període experimental, esperem que estiguin totalment funcionals a la següent versió!!"
+  },
+  "qf.description.languages": {
+    "message": "QuickFolders suporta traduccións a múltiples idiomes - podeu ajudar afegint una traducció al vostre llenguatge a Babelzilla:"
+  },
+  "qf.description.linkNote": {
+    "message": "Visiteu la pàgina de QuickFolders per a la guia d'usuari detallada, Suggeriments i FAQ"
+  },
+  "qf.description.multicategory": {
+    "message": "Per afegir una carpeta amb més d'una categoria; Manteniu polsada MAJÚSCULES o CONTROL mentre seleccioneu els objectes."
+  },
+  "qf.description.pulldown": {
+    "message": "El desplegable de la barra QuickFolders us permet de filtrar els vostres preferits per categoria."
+  },
+  "qf.description.rightClickOptions": {
+    "message": "Feu clic amb el botó dret a sobre una àrea buida per obrir el menu d'opcions. A les opcions, podeu selecciona l'estil: estil natiu (mes petit) o estil pla (mes clar; suporta indicadors d'arrossegament)."
+  },
+  "qf.description.tipMsg": {
+    "message": "Consell: Si tenim una quantitat considerable de carpetes, proveu l'extensió Nostalgy per organitzar els missatges via teclat."
+  },
+  "qf.description.versionhistory": {
+    "message": "Historial Detallat de Versions a quickfolders.org"
+  },
+  "qf.dialog.changeorder": {
+    "message": "Canvia l'ordre dels preferits"
+  },
+  "qf.dialog.quickmove.settings": {
+    "message": "Configuració avançada de quickMove"
+  },
+  "qf.dialog.setcategory": {
+    "message": "Seleccioneu una categoria per al preferit"
+  },
+  "qf.donate.tooltip": {
+    "message": "Ajudeu al Desenvolupament de QuickFolders!"
+  },
+  "qf.filters.instructions": {
+    "message": "Seleccioneu una plantilla. Podreu afinar els filtres a la pantalla següent."
+  },
+  "qf.filters.template.from": {
+    "message": "Basat en Remitent (De:)"
+  },
+  "qf.filters.template.from.description": {
+    "message": "Aquesta és problablement la més utilitzada: agafa l'adreça del remitent, i l'enganxa als camps \"De:\" i \"Per a:\" dels camps de condicions del filtre. D'aquesta manera, es pot moure a una nova carpeta totes les conversacions amb el remitent."
+  },
+  "qf.filters.template.list": {
+    "message": "Llista de Distribució"
+  },
+  "qf.filters.template.list.description": {
+    "message": "Similar a \"Basada en Remitent\", però no emplena el camp \"Per a:\""
+  },
+  "qf.filters.template.tag": {
+    "message": "Per Marques"
+  },
+  "qf.filters.template.tag.description": {
+    "message": "Utilitza les etiquetes del correu electrònic i els afegeix com a condicions."
+  },
+  "qf.filters.template.to": {
+    "message": "Basat en Destinatari (Per a:)"
+  },
+  "qf.filters.template.to.description": {
+    "message": "Similar a \"Basada en Remitent\": utilitzeu aquesta quan hagueu marcat un email enviat a qualsevol. Això recupera l'adreça del destinatari i l'enganxa als camps \"De:\" i \"Per a:\" dels camps de condicions del filtre. D'aquesta manera, es pot moure a una nova carpeta totes les conversacions amb el destinatari."
+  },
+  "qf.filters.template.topic": {
+    "message": "Per Assumpte"
+  },
+  "qf.filters.template.topic.description": {
+    "message": "Això cerca expresions entre claudàtors, ex.[catalans] o {vegans} i crea una condició de filtre basada en aquestes. Es pot crear correu en massa amb aquest patró, ja que és realment fàcil d'utilitzar."
+  },
+  "qf.filters.title": {
+    "message": "Crear Filtres"
+  },
+  "qf.filters.toggleMessage.notificationText": {
+    "message": "Mode d'aprenentatge de filtre. Cada vegada que moveu un correu dintre de Quickfolders, l'Assistent de Creació de Filtres, es posarà en marxa. Thunderbird utilitza els filtres de missatges per moure automàticament els correus seguint unes regles com ara:\"qui és el remitent?\",\"hi ha certa paraula a l'Assumpte?\". Per finalitzar el mode d'aprenentatge cliqueu el botó de filtre a la part superior esquerra de la barra de QuickFolders."
+  },
+  "qf.filters.toggleMessage.title": {
+    "message": "Creació de Filtres"
+  },
+  "qf.foldercontextmenu.quickfolders.customizeIcon": {
+    "message": "Personalitza Icona..."
+  },
+  "qf.foldercontextmenu.quickfolders.removeIcon": {
+    "message": "Elimina Icona Personalitzada"
+  },
+  "qf.fpJsonFile": {
+    "message": "JSON File"
+  },
+  "qf.goNextUnread.auto": {
+    "message": "Go to next folder without asking (recommended)"
+  },
+  "qf.goNextUnread.none": {
+    "message": "Do nothing if no unread email is left in folder"
+  },
+  "qf.goNextUnread.prompt": {
+    "message": "Ask to go to next unread folder"
+  },
+  "qf.group.navigation": {
+    "message": "Message Navigation"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Color de la Pestanya Activa:"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Paleta per a Pestanyes amb Color:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Paleta per a Pestanyes amb color seleccionat"
+  },
+  "qf.label.DragOverBackground": {
+    "message": "Color a l'arrossegar a sobre:"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Color de la pestanya flotant:"
+  },
+  "qf.label.Toolbar": {
+    "message": "Toolbar"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Bottom Line Width:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "The width of the line under tabs. Change its color with the Active Tab Color picker below."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Fons de la barra d'eines"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Pestanya sense color assignat."
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Vista de Pestanyes (inactives) sense color seleccionat"
+  },
+  "qf.label.appearance": {
+    "message": "Aparença"
+  },
+  "qf.label.behavior": {
+    "message": "Aparença"
+  },
+  "qf.label.bugzilla": {
+    "message": "Informeu d'una fallada / Demaneu una nova característica amb el Bugzilla"
+  },
+  "qf.label.buttonFontSizeNumeric": {
+    "message": "Button font size (0 for default):"
+  },
+  "qf.label.cancel": {
+    "message": "Cancel·lar"
+  },
+  "qf.label.colors": {
+    "message": "Colors"
+  },
+  "qf.label.contactLink": {
+    "message": "Contacteu-me (Anglès o Alemany)…"
+  },
+  "qf.label.currentFolderToolbar": {
+    "message": "Barra d'Eines de la Carpeta Actual"
+  },
+  "qf.label.donate": {
+    "message": "Fer una Donació"
+  },
+  "qf.label.donateLink": {
+    "message": "Visiteu la Pàgina de Donacions…"
+  },
+  "qf.label.dragFolderLabel": {
+    "message": "Amolleu les carpetes aquí per afegir-les a preferits. Cliqueu el preferit per anar a la carpeta, amolleu missatges a sobre per moure'ls/copiar-los aquí."
+  },
+  "qf.label.existingcategories": {
+    "message": "Categories existents:"
+  },
+  "qf.label.filterCountN_of_M": {
+    "message": "{0} de {1}"
+  },
+  "qf.label.filterEntities": {
+    "message": "objectes"
+  },
+  "qf.label.filterSingleEntity": {
+    "message": "1 objecte"
+  },
+  "qf.label.getQuickFilters": {
+    "message": "Per a una millor i més potent manera de crear Filtres, instaleu-vos la meva extensió quickFilters!"
+  },
+  "qf.label.goNextUnread": {
+    "message": "Go to next unread email:"
+  },
+  "qf.label.goNextUnread.tip": {
+    "message": "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder."
+  },
+  "qf.label.haveLicense": {
+    "message": "Already have a License?"
+  },
+  "qf.label.homePage": {
+    "message": "Informació detallada a la nova pàgina de QuickFolders a quickfolders.org…"
+  },
+  "qf.label.initdelay": {
+    "message": "[ms] retard a l'inici {1000 es l'estàndard}:"
+  },
+  "qf.label.insertLicense": {
+    "message": "Inseriu la vostra clau de llicència aquí:"
+  },
+  "qf.label.insertLicense.tooltip": {
+    "message": "La vostra clau de llicència es troba a la confirmació de la comanda de Fastspring."
+  },
+  "qf.label.instantApplyMsg": {
+    "message": "Nota: si només veieu el boto de [Tancar], la configuració del color pot ser que no funcioni - per arreglar-ho, proveu de clicar amb el botó dret a sobre d'una àrea buida de la barra de QuickFolders per seleccionar opcions… això forçarà que aparegui el botó [OK], que us permetrà desar els colors."
+  },
+  "qf.label.keyboard": {
+    "message": "Dreceres de Teclat"
+  },
+  "qf.label.languagesLink": {
+    "message": "Afegir Traducció…"
+  },
+  "qf.label.licenseValid": {
+    "message": "Llicència vàlida fins a:"
+  },
+  "qf.label.mainToolbar": {
+    "message": "Elements de la barra d'Eines Principal"
+  },
+  "qf.label.menus": {
+    "message": "Configuració del Menú"
+  },
+  "qf.label.menus.customIcon": {
+    "message": "Personalitza Icona"
+  },
+  "qf.label.menus.help": {
+    "message": "QuickFolders Help"
+  },
+  "qf.label.menus.hideQFunlessCTRL": {
+    "message": "Only display with CTRL key held"
+  },
+  "qf.label.menus.lineBreak": {
+    "message": "Inserta Salt de Línia"
+  },
+  "qf.label.menus.mailFolder": {
+    "message": "Mail Commands"
+  },
+  "qf.label.menus.options": {
+    "message": "Options"
+  },
+  "qf.label.menus.quickFolder": {
+    "message": "QuickFolders Commands"
+  },
+  "qf.label.menus.separator": {
+    "message": "Inserta Separador"
+  },
+  "qf.label.menus.support": {
+    "message": "QuickFolders Support"
+  },
+  "qf.label.misc": {
+    "message": "Miscel·lània"
+  },
+  "qf.label.newcategory": {
+    "message": "Nova categoria:"
+  },
+  "qf.label.pixels": {
+    "message": "píxels"
+  },
+  "qf.label.quickFilters.link": {
+    "message": "obtenir quickFilters!"
+  },
+  "qf.label.quickfolders": {
+    "message": "QuickFolders:"
+  },
+  "qf.label.renameselectedcategory": {
+    "message": "Reanomenar la categoria seleccionada"
+  },
+  "qf.label.setcolors": {
+    "message": "Aplica [Color del text], Color del fons"
+  },
+  "qf.label.tabContent": {
+    "message": "Fitxa de Contingut"
+  },
+  "qf.label.testfolder": {
+    "message": "Carpeta de Prova"
+  },
+  "qf.label.testfolder2": {
+    "message": "Carpeta de prova 2"
+  },
+  "qf.label.themes": {
+    "message": "Temes:"
+  },
+  "qf.label.toolbarPosition": {
+    "message": "Posició de la barra d'eines QuickFolders"
+  },
+  "qf.label.versionhistory": {
+    "message": "Historial de Versions…"
+  },
+  "qf.licenseValidation.expired": {
+    "message": "La clau de llicència que heu entrat ja ha expirat. Polseu el següent botó per renovar-la."
+  },
+  "qf.licenseValidation.failed": {
+    "message": "La clau de llicència que heu entrat no és vàlida. Comproveu el vostre email de FastSpring per obtenir més instruccions. Si continueu tenint problemes, contacteu amb mi des de la pestanya Suport."
+  },
+  "qf.licenseValidation.guessAddon": {
+    "message": "(The key entered may be for {2})."
+  },
+  "qf.licenseValidation.invalidAddon": {
+    "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
+  },
+  "qf.licenseValidation.invalidMail": {
+    "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
+  },
+  "qf.licenseValidation.notMatchedMail": {
+    "message": "Encrypted Email address does not match readable one."
+  },
+  "qf.licenseValidation.passed": {
+    "message": "Gràcies per registrar QuickFolders Pro! S'han desbloquejat totes les característiques Premium."
+  },
+  "qf.loadConfig": {
+    "message": "Load Configuration…"
+  },
+  "qf.menu.Color": {
+    "message": "Color"
+  },
+  "qf.menu.tabColor": {
+    "message": "Sense Color!"
+  },
+  "qf.menuitem.quickfolders.changeOrder": {
+    "message": "Canvia l'ordre dels preferits"
+  },
+  "qf.menuitem.quickfolders.changeOrderAccess": {
+    "message": "C"
+  },
+  "qf.menuitem.quickfolders.deleteDeadTabs": {
+    "message": "Cerca Pestanyes orfes"
+  },
+  "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
+    "message": "T"
+  },
+  "qf.menuitem.quickfolders.displayPreviewToolbar": {
+    "message": "Mostra Eines de la Carpeta Actual"
+  },
+  "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
+    "message": "D"
+  },
+  "qf.menuitem.quickfolders.filters": {
+    "message": "Crear Filtres de Missatge…"
+  },
+  "qf.menuitem.quickfolders.filtersAccess": {
+    "message": "F"
+  },
+  "qf.menuitem.quickfolders.find": {
+    "message": "Cerca Carpeta…"
+  },
+  "qf.menuitem.quickfolders.findAccess": {
+    "message": "i"
+  },
+  "qf.menuitem.quickfolders.help": {
+    "message": "Ajuda de QuickFolders…"
+  },
+  "qf.menuitem.quickfolders.helpAccess": {
+    "message": "H"
+  },
+  "qf.menuitem.quickfolders.options": {
+    "message": "Opcions de QuickFolders"
+  },
+  "qf.menuitem.quickfolders.optionsAccess": {
+    "message": "O"
+  },
+  "qf.menuitem.quickfolders.register": {
+    "message": "Registrar QuickFolders Pro..."
+  },
+  "qf.menuitem.quickfolders.repairTabs": {
+    "message": "Actualitza les Pestanyes Visibles!"
+  },
+  "qf.menuitem.quickfolders.repairTabsAccess": {
+    "message": "V"
+  },
+  "qf.menuitem.quickfolders.repairTreeIcons": {
+    "message": "Repair Tree Icons"
+  },
+  "qf.menuitem.quickfolders.support": {
+    "message": "Servei Tècnic de QuickFolders…"
+  },
+  "qf.menuitem.quickfolders.supportAccess": {
+    "message": "S"
+  },
+  "qf.menuitem.quickfolders.togglePaintMode": {
+    "message": "Mode Pintura"
+  },
+  "qf.menuitem.quickfolders.togglePaintModeAccess": {
+    "message": "p"
+  },
+  "qf.notification.categoryIsReadOnly": {
+    "message": "This item cannot be deleted."
+  },
+  "qf.notification.dontShowAgain": {
+    "message": "No tornis a mostrar aquest missatge."
+  },
+  "qf.notification.premium.btn.extendLicense": {
+    "message": "Extend License"
+  },
+  "qf.notification.premium.btn.extendLicense.tooltip": {
+    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+  },
+  "qf.notification.premium.btn.getLicense": {
+    "message": "Obtenir Llicència!"
+  },
+  "qf.notification.premium.btn.hotKey": {
+    "message": "L"
+  },
+  "qf.notification.premium.btn.renewLicense": {
+    "message": "Renew License"
+  },
+  "qf.notification.premium.readingList": {
+    "message": "Teniu {1} marcadors definits. La versió gratuita de QuickFolders permet un màxim de {2}."
+  },
+  "qf.notification.premium.tabIcons": {
+    "message": "Teniu {1} icona(es) definides. La versió gratuita de QuickFolders permet un màxim de {2}."
+  },
+  "qf.notification.premium.text": {
+    "message": "{1} és una característica Premium, registreu QuickFolders per a poder utilitzar-la sempre."
+  },
+  "qf.notification.premium.title": {
+    "message": "Característica Premium"
+  },
+  "qf.options.LayoutColorAppearance": {
+    "message": "Colors Individuals de les Pestanyes"
+  },
+  "qf.options.LayoutColorAppearanceFilled": {
+    "message": "(estil ple)"
+  },
+  "qf.options.LayoutColorAppearanceStriped": {
+    "message": "(estil ratllat)"
+  },
+  "qf.options.label.themeAuthor": {
+    "message": "Autor del Tema:"
+  },
+  "qf.options.theme.pastelColors": {
+    "message": "Colors Pastel"
+  },
+  "qf.options.themes.customCornerRadius.Bottom.label": {
+    "message": "A baix:"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "A dalt:"
+  },
+  "qf.options.themes.customCornerRadius.checkbox": {
+    "message": "Radi de les cantonades Personalitzat"
+  },
+  "qf.options.themes.showBorders.checkbox": {
+    "message": "Mostra Sempre els Costats"
+  },
+  "qf.options.versionnumber.tooltip": {
+    "message": "Clic amb el boto dret per a l'històric de versions."
+  },
+  "qf.palette.inactive": {
+    "message": "Com les Pestanyes inactives"
+  },
+  "qf.palette.night": {
+    "message": "Vista Nocturna"
+  },
+  "qf.palette.pastel": {
+    "message": "Colors Suaus"
+  },
+  "qf.palette.standard": {
+    "message": "Paleta estàndard"
+  },
+  "qf.palette.twoColors": {
+    "message": "2 colors"
+  },
+  "qf.pastefolders.tooltip": {
+    "message": "Delete all QuickFolders and read new configuration from clipboard"
+  },
+  "qf.pathFormat.AccountAndPath": {
+    "message": "Account - Folder Path"
+  },
+  "qf.pathFormat.PathOnly": {
+    "message": "Folder Path"
+  },
+  "qf.pathFormat.URI": {
+    "message": "Folder URI"
+  },
+  "qf.pathFormat.folderAndAccount": {
+    "message": "Folder Name - Mail Account"
+  },
+  "qf.pathFormat.folderName": {
+    "message": "Folder Name"
+  },
+  "qf.pathFormat.maxDepth": {
+    "message": "Maximum path depth:"
+  },
+  "qf.pathFormat.tooltip": {
+    "message": "Maximum number of folders displayed in folder path."
+  },
+  "qf.prefwindow.quickfolders.options": {
+    "message": "Opcions de QuickFolders"
+  },
+  "qf.premium.renewLicense.tooltip": {
+    "message": "Your license expired {1} days ago"
+  },
+  "qf.premiumConfig": {
+    "message": "Premium Features"
+  },
+  "qf.prompt.category.deleteMultiple": {
+    "message": "Ok to delete multiple categories?"
+  },
+  "qf.prompt.contact.subject": {
+    "message": "Entreu una petita descripció de l'assumpte:"
+  },
+  "qf.prompt.contact.title": {
+    "message": "Contacteu amb el suport tècnic de quickFilters"
+  },
+  "qf.prompt.loadFolders.confirm": {
+    "message": "Accept the loaded Tabs?"
+  },
+  "qf.prompt.newFolder.createQFtab": {
+    "message": "Also create a QuickFolders Tab"
+  },
+  "qf.prompt.newFolder.newChildName": {
+    "message": "Enter name for new child folder under {0}"
+  },
+  "qf.prompt.newFolder.title": {
+    "message": "New Folder"
+  },
+  "qf.prompt.pasteFolders": {
+    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\\n{0} entries were found in clipboard.\\nReplace tabs?"
+  },
+  "qf.prompt.pasteFolders.confirm": {
+    "message": "Keep the displayed Tabs?"
+  },
+  "qf.prompt.readingList.removeItem": {
+    "message": "Esborrar aquest objecte?"
+  },
+  "qf.prompt.readingList.searchMissingItem": {
+    "message": "No es troba el correu, pot haver-se mogut a algun altre lloc.\\n{1}\\n\\nVoleu cercar-lo?"
+  },
+  "qf.prompt.restoreFolders": {
+    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\\n{0} entries were read.\\nReplace tabs?"
+  },
+  "qf.prompt.switchDomainLicense": {
+    "message": "Switch to Domain License?"
+  },
+  "qf.quickMove.escapeClears": {
+    "message": "La tecla d'escapament sempre esborra la llista de missatges."
+  },
+  "qf.quickMove.excludeAccounts": {
+    "message": "Seleccioneu qualsevol compte que s'hagi d'excloure dels resultats de la cerca:"
+  },
+  "qf.quickMove.lockAccount": {
+    "message": "Mostra només els resultats del compte de correu actual."
+  },
+  "qf.quickMove.maxResults": {
+    "message": "Nombre màxim de resultats de cerca"
+  },
+  "qf.quickMove.path.format": {
+    "message": "Display Format:"
+  },
+  "qf.quickMove.silent": {
+    "message": "Omet les notificacions després de moure els correus."
+  },
+  "qf.register.licenseValid.expired": {
+    "message": "Your license expired on:"
+  },
+  "qf.search.advanced": {
+    "message": "Configuració de cerca avançada ..."
+  },
+  "qf.storeConfig": {
+    "message": "Save Configuration…"
+  },
+  "qf.tab.advanced": {
+    "message": "Advanced"
+  },
+  "qf.tab.general": {
+    "message": "General"
+  },
+  "qf.tab.gopro": {
+    "message": "QuickFolders Pro"
+  },
+  "qf.tab.layout": {
+    "message": "Pimp My Tabs!"
+  },
+  "qf.tab.quickhelp": {
+    "message": "Ajuda Ràpida"
+  },
+  "qf.tab.support": {
+    "message": "Suport"
+  },
+  "qf.textbox.searchBox.emptyText": {
+    "message": "cerca filtres…"
+  },
+  "qf.textbox.searchBox.toolTip": {
+    "message": "entreu una paralula clau per cercar els filtres per nom"
+  },
+  "qf.themes.applePills.description": {
+    "message": "Disseny agradable per als nostres usuaris de Mac - pla i simple; amb alguns tocs de color opccional."
+  },
+  "qf.themes.applePills.label": {
+    "message": "Pastilles d'Apple"
+  },
+  "qf.themes.flatButtons.description": {
+    "message": "Botons de la barra estàndard - és el més proper a l'aparença original de la versió 0.5!"
+  },
+  "qf.themes.flatButtons.label": {
+    "message": "Botons de la Barra d'Eines"
+  },
+  "qf.themes.flatTabs.description": {
+    "message": "Aparença Moderna - totalment configurable. Visualment molt atractiu a Windows i Linux."
+  },
+  "qf.themes.flatTabs.label": {
+    "message": "Estil Pla"
+  },
+  "qf.themes.nativeTabs.description": {
+    "message": "Disseny semblant a les pestanyes del seu SO - menys opcions de colors, però es veu més integrat amb el tema del seu Client de Correu."
+  },
+  "qf.themes.nativeTabs.label": {
+    "message": "Pestanyes Natives"
+  },
+  "qf.themes.realButtons.description": {
+    "message": "Botons - són com els botons standard de les finestres de windows"
+  },
+  "qf.themes.realButtons.label": {
+    "message": "Botons"
+  },
+  "qf.toolbar.quickfolders.toolbar": {
+    "message": "Barra d'eines de QuickFolders"
+  },
+  "qf.toolbarMinimumHeight": {
+    "message": "Minimum height:"
+  },
+  "qf.toolbarMinimumHeight.tooltip": {
+    "message": "For Mac systems who encounter [Bug 25021]"
+  },
+  "qf.toolbarPosition.tooltip": {
+    "message": "0 = a sobre d'altres barres d'eines; 100 = fons. El valor alt depèn d'altres complements."
+  },
+  "qf.tooltip.RecentFolders": {
+    "message": "Carpetes Recents"
+  },
+  "qf.tooltip.closeToolbar": {
+    "message": "Tanca aquesta barra d'eines"
+  },
+  "qf.tooltip.conversationRead": {
+    "message": "Marca la Conversa com a Llegida i salta al següent Missatge sense llegir"
+  },
+  "qf.tooltip.emailIcon": {
+    "message": "Email Actual - arrosega cap a una pestanya de QuickFolders per moure el Correu"
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Activar aprenentatge de filtres. Arrossegant correus a QuickFoldres crea nous Filtres."
+  },
+  "qf.tooltip.filters": {
+    "message": "Atura la creació de filtres."
+  },
+  "qf.tooltip.folderUp": {
+    "message": "Anar a la Carpeta Superior"
+  },
+  "qf.tooltip.goNextFolder": {
+    "message": "Ves al següent missatge sense llegir"
+  },
+  "qf.tooltip.goPreviousFolder": {
+    "message": "Ves al l'anterior missatge sense llegir"
+  },
+  "qf.tooltip.mailFolderCommands": {
+    "message": "Ordres de la Carpeta de Correu"
+  },
+  "qf.tooltip.mainOptions": {
+    "message": "Opcions i comandaments avançats de QuickFolders"
+  },
+  "qf.tooltip.paintCanActive": {
+    "message": "Mode Pintura: fes clic per la paleta, clica les pestanyes per canviar-los-hi el color, clic amb el botó dret a la pestanya, per agafar el seu color."
+  },
+  "qf.tooltip.quickFoldersNavToggle": {
+    "message": "alterna &quot;sense llegir&quot;/&quot;tots&quot; els mails"
+  },
+  "qf.tooltip.quickMove": {
+    "message": "quickMove: arrossegueu un correu aquí"
+  },
+  "qf.tooltip.skipUnreadFolder": {
+    "message": "Skip to next Unread Folder"
+  },
+  "qf.tooltip.threadIcon": {
+    "message": "Conversa Actual - arrossega cap a una pestanaya de QuickFolders per moure la Conversa"
+  },
+  "qf.youtube.description": {
+    "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
+  },
+  "qf.youtube.link": {
+    "message": "Watch Videos about QuickFolders…"
+  },
+  "qf.youtube.tbdaily": {
+    "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
+  },
+  "qfAlertCopyString": {
+    "message": "Nom de la carpeta copiat al Portaretalls!"
+  },
+  "qfAlertDropFolderVirtual": {
+    "message": "No podeu copiar correu a una carpeta virtual!"
+  },
+  "qfAlertUpgradeSuccess": {
+    "message": "QuickFolders s'ha actualitzat satisfactòriament a la versió:"
+  },
+  "qfAll": {
+    "message": "(Mostrar tots)"
+  },
+  "qfCantMoveFolder": {
+    "message": "La carpeta {0} no es pot moure."
+  },
+  "qfColorPickingWIP": {
+    "message": "Ho sentim, aquesta funcinalitat encara no està acabada!"
+  },
+  "qfCommandAccess": {
+    "message": "Q"
+  },
+  "qfCommandPopup": {
+    "message": "Accions de QuickFolders"
+  },
+  "qfCompactFolder": {
+    "message": "Compactar Carpeta"
+  },
+  "qfCompactFolderAccess": {
+    "message": "F"
+  },
+  "qfCompacted": {
+    "message": "Compactat:"
+  },
+  "qfCompactedBytesFreed": {
+    "message": "Bytes alliberats"
+  },
+  "qfCompactedFolder": {
+    "message": "Carpeta compactada"
+  },
+  "qfCompactedNewFolderSize": {
+    "message": "Nova mida"
+  },
+  "qfCompactedOriginalFolderSize": {
+    "message": "Mida original"
+  },
+  "qfConfirmCopyFolder": {
+    "message": "Voleu copiar la carpeta {0} a {1}?"
+  },
+  "qfConfirmMoveFolder": {
+    "message": "Voleu moure la carpeta {0} a {1}?"
+  },
+  "qfConfirmVersionLink": {
+    "message": "Mostra l'històric de versions de QuickFolders"
+  },
+  "qfDeadTabsCount": {
+    "message": "# orphaned tabs found:"
+  },
+  "qfDeadTabsDeleted": {
+    "message": "# orphaned tabs removed:"
+  },
+  "qfDeleteFolder": {
+    "message": "Esborrar Carpeta"
+  },
+  "qfDeleteFolderAccess": {
+    "message": "D"
+  },
+  "qfDeleteJunk": {
+    "message": "Purge Junk"
+  },
+  "qfDown": {
+    "message": "Avall"
+  },
+  "qfDownloadAll": {
+    "message": "Descarrega-ho Tot"
+  },
+  "qfEditVirtual": {
+    "message": "Propietats de la Cerca"
+  },
+  "qfEditVirtualAccess": {
+    "message": "S"
+  },
+  "qfEmptiedJunk": {
+    "message": "Brossa esborrada i carpeta compactada"
+  },
+  "qfEmptiedTrash": {
+    "message": "Escombraries esborrades."
+  },
+  "qfEmptyJunk": {
+    "message": "Buida Correu Brossa"
+  },
+  "qfEmptyJunkAccess": {
+    "message": "J"
+  },
+  "qfEmptyTrash": {
+    "message": "Buida la Paperera"
+  },
+  "qfEmptyTrashAccess": {
+    "message": "T"
+  },
+  "qfFolderAccess": {
+    "message": "F"
+  },
+  "qfFolderAlreadyBookmarked": {
+    "message": "La carpeta ja és als marcadors."
+  },
+  "qfFolderOpenLocation": {
+    "message": "Explora Ubicació de la Carpeta..."
+  },
+  "qfFolderPopup": {
+    "message": "Accions de la Carpeta de Correu"
+  },
+  "qfFolderProperties": {
+    "message": "Folder Properties…"
+  },
+  "qfFolderPropertiesAccess": {
+    "message": "P"
+  },
+  "qfFolderRepair": {
+    "message": "Repair Folder"
+  },
+  "qfFolderRepairAccess": {
+    "message": "F"
+  },
+  "qfFolderRepairedMsg": {
+    "message": "Folder was repaired:"
+  },
+  "qfGetMail": {
+    "message": "Recupera Missatges"
+  },
+  "qfGetMailAccess": {
+    "message": "G"
+  },
+  "qfInsertLineBreak": {
+    "message": "Insert Line Break"
+  },
+  "qfInsertSeparator": {
+    "message": "Insert Separator"
+  },
+  "qfInvalidTabCount": {
+    "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
+  },
+  "qfMarkAllRead": {
+    "message": "Marca la Carpeta com a LLegida"
+  },
+  "qfMarkAllReadAccess": {
+    "message": "M"
+  },
+  "qfMarkAllReadRecursive": {
+    "message": "Mark folder + subfolders Read"
+  },
+  "qfMenuColor": {
+    "message": "Color"
+  },
+  "qfMenuTabColorDisabledInTheme": {
+    "message": "Select different Theme to support coloring…"
+  },
+  "qfMenuTabColorNone": {
+    "message": "Sense Color!"
+  },
+  "qfMenuTabColorPopup": {
+    "message": "Color de la pestanya"
+  },
+  "qfMoveFolderOrNewTab": {
+    "message": "Arrossegueu carpetes a una àrea buida de la barra d'eines - Per a MOURE la carpeta, mantingueu apretat el botó SHIFT mentre arrossegueu la carpeta."
+  },
+  "qfNavigationWrapped": {
+    "message": "No other unread folders found, continuing in {1}."
+  },
+  "qfNewFolder": {
+    "message": "Nova subcarpeta…"
+  },
+  "qfNewFolderAccess": {
+    "message": "N"
+  },
+  "qfNewName": {
+    "message": "Entreu un nom per al marcador"
+  },
+  "qfNewSubFolder": {
+    "message": "Create subfolder {0} \\u00BB {1}…"
+  },
+  "qfNoFolderMatch": {
+    "message": "No hi ha cap carpeta pare coincident."
+  },
+  "qfPaintToggle": {
+    "message": "Acaba el mode Pintura"
+  },
+  "qfRecentFolders": {
+    "message": "Carpetes Recents"
+  },
+  "qfRemoveBookmark": {
+    "message": "Esborrar marcador"
+  },
+  "qfRemoveBookmarkAccess": {
+    "message": "R"
+  },
+  "qfRemoveCategory": {
+    "message": "Esborrar de la categoria actual"
+  },
+  "qfRemoveCategoryPrompt": {
+    "message": "La categoria és '{1}' - Esborrar-la?"
+  },
+  "qfRemoveIcon": {
+    "message": "Esborrar Icona"
+  },
+  "qfRemoveLineBreak": {
+    "message": "Remove Line Break"
+  },
+  "qfRemoveSeparator": {
+    "message": "Remove Separator"
+  },
+  "qfRenameBookmark": {
+    "message": "Reanomenar marcador…"
+  },
+  "qfRenameBookmarkAccess": {
+    "message": "N"
+  },
+  "qfRenameFolder": {
+    "message": "Reanomenar Carpeta"
+  },
+  "qfRenameFolderAccess": {
+    "message": "R"
+  },
+  "qfRepairTreeIconsMissing": {
+    "message": "The following icon files do not exist:"
+  },
+  "qfSavePrompt": {
+    "message": "Save these changes?"
+  },
+  "qfSelectIcon": {
+    "message": "Icona..."
+  },
+  "qfSetCategory": {
+    "message": "Seleccionar la categoria del marcador…"
+  },
+  "qfSetCategoryA": {
+    "message": "C"
+  },
+  "qfShowAlways": {
+    "message": "Mostrar Sempre!"
+  },
+  "qfShowNever": {
+    "message": "Never Show (Folder Alias)"
+  },
+  "qfTabAdvancedOptions": {
+    "message": "Propietats del Tabulador..."
+  },
+  "qfTabDeleteOption": {
+    "message": "Do this with the remaining {0} folders."
+  },
+  "qfTabDeletePrompt": {
+    "message": "Delete this Tab?"
+  },
+  "qfThisTabIsInvalid": {
+    "message": ": This is a tab that points to an invalid folder:"
+  },
+  "qfTidyDeadFolders": {
+    "message": "This will remove the Tabs that have no valid folders assigned.\\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
+  },
+  "qfTreeIconsInvalidCount": {
+    "message": "{0} icons missing"
+  },
+  "qfTreeIconsRepairedCount": {
+    "message": "{0} tree icons repaired"
+  },
+  "qfUncategorized": {
+    "message": "(Sense Categoria)"
+  },
+  "qfUp": {
+    "message": "Amunt"
+  },
+  "qfUpdatedThemesEngineMsg": {
+    "message": "S'ha instal·lat un nou motor de temes de Quickfolders. Seleccioneu un item del desplegable i cliqueu OK."
+  },
+  "qfVersionDisableOnUpdate": {
+    "message": "No mostrar més l'historial de versions després de les actualitzacions?"
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Mostra el següent missatge després de moure'n l'actual"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Torneu a obrir el correu original després de traslladar-lo"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Pestanya Missatge únic"
+  },
+  "quickfolders.findFolder.placeHolder": {
+    "message": "nom de la carpeta"
+  },
+  "quickfolders.quickMove.menu.cancel": {
+    "message": "Cancel·lar quickMove"
+  },
+  "quickfolders.quickMove.menu.hideSearch": {
+    "message": "Amagar Nom de la Carpeta"
+  },
+  "quickfolders.quickMove.menu.showSearch": {
+    "message": "Mostrar Nom de la Carpeta"
+  },
+  "quickfolders.quickMove.menu.suspend": {
+    "message": "Saltar a la Carpeta (sense moure els correus)"
+  },
+  "quickfolders.readingList.addCurrent": {
+    "message": "Afegir l'objecte actual"
+  },
+  "quickfolders.readingList.clear": {
+    "message": "Esborrar Llista de Lectura"
+  },
+  "quickfolders.readingList.tooltip": {
+    "message": "Llista de Lectura"
+  },
+  "quickfolders.toolbar.newsubfolder": {
+    "message": "Nova subcarpeta…"
+  },
+  "quickfolders.toolbar.skip": {
+    "message": "Skip"
+  },
+  "quickfoldersQuickCopiedMails": {
+    "message": "Correu copiat a la carpeta {2};{1} correus copiats a la carpeta {2}"
+  },
+  "quickfoldersQuickMovedMails": {
+    "message": "Correu mogut a la carpeta {2};{1} correus moguts a la carpeta {2}"
+  },
+  "testDrive": {
+    "message": "Podeu provar les característiques premium amb la versió gratuïta, pero alguna pot estar lleugerament limitada."
+  },
+  "toAddress": {
+    "message": "To:"
+  },
+  "toAddress.tooltip": {
+    "message": "Default To Address when composing new mails"
+  },
+  "updates.title": {
+    "message": "Actualitzacions"
+  },
+  "updatesExpiry": {
+    "message": "QuickFolders Pro s'actualitzarà automàticament via addons.thunderbird.net com és habitual. Una vegada expiri el plaç d'un any, podeu renovar la llicència o continuar utilitzant les característiques premium sota els mateixos termes que els usuaris gratuits. Les característiques 'Premium Exclusive' requereixen d'una clau de registre vàlida."
+  },
+  "vouchers.title": {
+    "message": "Vals"
+  },
+  "windowTitle": {
+    "message": "Advanced Properties"
+  },
+  "yearlyLicense.premiumFeatures": {
+    "message": "QuickFolders Pro us permet accedir sense limitacions a totes les característiques Premium."
+  },
+  "yearlyLicense.premiumFeatures.moreInfoLink": {
+    "message": "Saber més sobre les característiques Premium."
+  },
+  "yearlyLicense.title": {
+    "message": "Llicència Anual"
+  },
+  "yearlyLicense.usageTerm": {
+    "message": "La llicència es només per al seu us personal i està lligada a la seva adreça electrònica. Podeu instal·lar-la a múltiples clients de correu, sempre i quan estiguin configurats per utilitzar aquesta adreça electrònica."
+  },
+  "yearlyLicense.usageTerm1": {
+    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
+  }
 }

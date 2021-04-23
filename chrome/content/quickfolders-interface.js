@@ -2651,11 +2651,14 @@ QuickFolders.Interface = {
         folder = util.getPopupNode(element).folder;
     // check whether f has folder as parent
     function hasAsParent(child, p) {
-      debugger;
       if (!child.parent || !p) return false;
-      if (child.parent == p) return true;
+      if (child.parent == p) {
+        return true;
+      }
       if (p.isServer || !p.parent) return false;
-      return hasAsParent(child, p.parent);
+      // [issue 144] Mark folders + subfolders read stops at first generation (direct child folder) mails.
+      // original version used the parent of 2nd argument!
+      return hasAsParent(child.parent, p); 
     }
 
     evt.stopPropagation();

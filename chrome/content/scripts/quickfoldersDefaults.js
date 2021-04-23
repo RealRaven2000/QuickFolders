@@ -1,4 +1,5 @@
-pref("extensions.quickfolders@curious.be.description", "chrome://quickfolders/locale/quickfolders.properties");
+// OBSOLETE:
+// pref("extensions.quickfolders@curious.be.description", "chrome://quickfolders/locale/quickfolders.properties");
 // Model
 pref("extensions.quickfolders.lastSelectedOptionsTab",0);
 pref("extensions.quickfolders.lastActiveCategories","");

@@ -63,7 +63,7 @@ var QuickFolders_TabURIopener = {
 
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
-	HARDCODED_CURRENTVERSION : "5.5", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.5.1", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",

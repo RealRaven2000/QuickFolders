@@ -460,7 +460,7 @@ END LICENSE BLOCK */
     ## replaced Tb account-manager module with MailServices
     ## removed some of the excessive with from settings dialog
     
-  5.5 QuickFolders Pro - WIP
+  5.5 QuickFolders Pro - 18/04/2021
     ## [issue 136] quickMove - no folder suggestions while viewing in searched list (search results / open msg in conversation)
     ## [issue 135] "/" for sub / parent folders should work for substring, not just prefix...
                    Added the possibility to ignore _ and space within folder names so that parent folders with 
@@ -470,16 +470,18 @@ END LICENSE BLOCK */
     ## [issue 132] In mail tab, quickMove reopens mail in new tab after moving -
                    this behavior is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
                    instead Tb will open the next mail - see extensions.quickfolders.quickMove.gotoNextMsgAfterMove
-  5.6
-    ## fixed tool dialog "change the order of tabs"
-    ## web extensions localization. [mx-l10n]
+                   
+  5.5.1 QuickFolders Pro - WIP
+    ## [issue 144] Mark folders + subfolders read stops at first generation (direct child folder) mails  
+    ## Fixed tool dialog "change the order of tabs"
+    ## Changed localization to web extension method. [mx-l10n]
     ##   removed the legacy way of localization
     ##   conversion of all dtd and properties files to messages.json
     ##   calling overlay localisation with i18n.js
     ## 	 replaced bundle strings - removed all instances of GetStringFromName
     ##   label dialog extra buttons manually after i18n.updateDocument
 
-
+  
     
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders

@@ -410,16 +410,18 @@ END LICENSE BLOCK */
     ## [issue 110] "Tab-specific Properties" overwrites To Address when selecting to from AB
     ## [issue 112] Reading List menu - Add current Item not working
     
-    
-  4.21.1 QuickFolders Pro - WIP
+   
+  4.21.2 QuickFolders Pro - 18/04/2021
     ## [issue 115] fix restoring of config values - support saving / restoring current folder bar background selection
     ## [issue 117] Add color picker for text color in tab-specific properties
     ## In QF Settings, make sure correct options tab is opened / remembered
     ## [issue 132] In mail tab, quickMove reopens mail in new tab after moving - should go to next mail instead
                    this behavior  is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
                    instead Tb will open the next mail - see extensions.quickfolders.quickMove.gotoNextMsgAfterMove
-    
-  
+   
+  4.21.3 QuickFolders Pro - 26/04/2021
+    ## [issue 144] Mark folders + subfolders read stops at first generation (direct child folder) mails  
+    ## [issue 145] Thunderbird 60: QuickFolders always offers update to 4.21.2
     
 	Future Work
 	===========

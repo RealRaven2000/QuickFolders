@@ -1,21 +1,17 @@
-Release 4.21.2
+Release 4.21.3
 
 This release backports some of the fixes that were also done in the new version for Thunderbird 78. If you want to get the latest features, I highly recommend updating Thunderbird to the current 78 release version.
 To support QuickFolders, <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a license</a> or <a href="https://quickfolders.org/donate.html?referrer=atn-version-page">donate</a> to support the project.
 
-<b>Improvements</b>
-<ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/117">[issue 117]</a> Added color picker for text color in tab-specific properties.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/132">[issue 132]</a> In a single message tab, quickMove used to redisplay the mail after moving it with quickMove.
-This behavior has now been changed on request to go to the next email instead. It can be modified by editing the following configuration settings (the Thunderbird 78 version of QuickFolders has a dedicated User Interface):
-
-<tt>extensions.quickfolders.quickMove.reopenMsgTabAfterMove</tt>
-<tt>extensions.quickfolders.quickMove.gotoNextMsgAfterMove</tt></li>
-<li>QuickFolders Settings, now makes sure that correct options tab is opened / remembered</li>
-</ul>
-
-
 <b>Bug Fixes</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/115">[issue 115]</a> Fixed restoring of config values. Some general / layout settings were not restored properly even when they were saved during backup.</li>
+<li> 
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/144">[issue 144]</a> Mark folders + subfolders read stops at first generation (direct child folder) mails  
+</li>
+<li> 
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/144">[issue 144]</a> Thunderbird 60 users only - QuickFolders always offers update to 4.21.2 - this is due to a faulty version number in the deprecated file install.rdf (which isn't used by Thunderbird 66 - 91 anymore).
+<li> 
+<li>
+I am working on making QuickFolders compatible with Thunderbird 91, which is planned for release in summer 2021. There is a lot of rewriting going on in the background in order to replace internal functionality with the new API model. If you still ust THunderbird 68 or older, consider at least switching to Thunderbird 78 to get the <a href="https://quickfolders.org/version.html#latest">latest version of QuickFolders</a>.
+</li>
 </ul>

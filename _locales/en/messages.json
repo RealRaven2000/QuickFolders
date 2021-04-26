@@ -692,7 +692,7 @@
     "message": "Palette for Colored Tabs:"
   },
   "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palette for tabs with a specific color"
+    "message": "Palette for tabs with a user-assigned color"
   },
   "qf.label.DragOverBackground": {
     "message": "Drag Over Color:"
@@ -1430,7 +1430,7 @@
     "message": "Tab Color"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Drag folders to an empty area of the toolbar - For MOVING the folder, hold down SHIFT during dragging."
+    "message": "Drag folders to an empty area of the toolbar - For MOVING a folder, hold down SHIFT and drag to a Tab."
   },
   "qfNavigationWrapped": {
     "message": "No other unread folders found, continuing in {1}."

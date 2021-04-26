@@ -78,7 +78,7 @@
     "message": "Dominio de correo electrónico licenciado"
   },
   "domainLicense.instruct": {
-    "message": "La licencia se asigna a su dominio de la empresa. La licencia permitirá a los usuarios con direcciones de correo electrónico que terminan en este dominio de correo electrónico para utilizar QuickFolders Pro. Ej. si introduce el nombre de dominio &quot;abc.com&quot; entonces electrónico usuarios como fred@abc.com, martha@abc.com, mike.doe@abc.com etc., están autorizados a utilizar la licencia. El número máximo de usuarios individuales válidos es el número que ha introducido en la pantalla inicial."
+    "message": "La licencia se asigna a su dominio de la empresa. La licencia permitirá a los usuarios con direcciones de correo electrónico que terminan en este dominio de correo electrónico para utilizar QuickFolders Pro. Ej. si introduce el nombre de dominio 'abc.com' entonces electrónico usuarios como fred@abc.com, martha@abc.com, mike.doe@abc.com etc., están autorizados a utilizar la licencia. El número máximo de usuarios individuales válidos es el número que ha introducido en la pantalla inicial."
   },
   "domainLicense.validate": {
     "message": "Asegúrese de introducir el nombre de dominio *exactamente como es el correo electrónico* en las direcciones de correo electrónico de su compañía (la parte * después * el signo @), ya que se utilizará para autorizar a las direcciones de correo electrónico de sus usuarios."
@@ -309,7 +309,7 @@
     "message": "Mostrar además los totales de sub-carpetas."
   },
   "qf.checkbox.showCountInSubFolders.tooltip": {
-    "message": "Estos se muestran separados por un &quot;+&quot; al lado de los totales principales, incluye correo no leído y tendrá la pestaña en negritas si la opción anterior está activada"
+    "message": "Estos se muestran separados por un '+' al lado de los totales principales, incluye correo no leído y tendrá la pestaña en negritas si la opción anterior está activada"
   },
   "qf.checkbox.showFilterButton": {
     "message": "Botón de 'Crear Filtros'"
@@ -474,7 +474,7 @@
     "message": "Arrastra mensajes al menú emergente de QuickFolder para mover mensajes a las subcarpetas."
   },
   "qf.description.dragToPosition": {
-    "message": "Arrastre los QuickFolders hacia los lados para cambiar sus posiciones. Haga clic en un QuickFolder para desplegar el menú contextual, seleccionando puede saltar en subcarpetas. &quot;Cambiar el nombre de marcador&quot; cambia la etiqueta del QuickFolder. &quot;Eliminar marcador&quot; elimina el QuickFolder (no la carpeta de correo)."
+    "message": "Arrastre los QuickFolders hacia los lados para cambiar sus posiciones. Haga clic en un QuickFolder para desplegar el menú contextual, seleccionando puede saltar en subcarpetas. 'Cambiar el nombre de marcador' cambia la etiqueta del QuickFolder. 'Eliminar marcador' elimina el QuickFolder (no la carpeta de correo)."
   },
   "qf.description.dragexplain": {
     "message": "¡Puedes mover los marcadores arrastrándolos para cambiar su posición! Suéltalo encima de otro para insertarlo antes o después de ese."
@@ -1326,7 +1326,7 @@
     "message": "Color de la pestaña"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Arrastra carpetas a un área vacía de la barra de herramientas - Para MOVER la carpeta, mantén oprimida la tecla MAYUS durante el arrastre."
+    "message": "Arrastre carpetas a un área vacía de la barra de herramientas: para MOVER una carpeta, mantenga presionada la tecla MAYÚS y arrastre a una pestaña."
   },
   "qfNavigationWrapped": {
     "message": "No hay más carpetas no leídas, continuando en {1}."

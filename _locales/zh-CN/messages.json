@@ -59,13 +59,13 @@
     "message": "购买个人授权！"
   },
   "chkComposerSubfolders": {
-    "message": "Also apply to subfolders"
+    "message": "也适用于子文件夹"
   },
   "chkHideFromQuickJump": {
-    "message": "Omit from quickJump / quickMove"
+    "message": "从quickJump / quickMove中省略"
   },
   "chkHideFromQuickJump.tooltip": {
-    "message": "Omit this folder and its children in quickJump / quickMove results"
+    "message": "在quickJump / quickMove结果中忽略此文件夹及其子项"
   },
   "chkIgnoreCounts": {
     "message": "隐藏邮件数量"
@@ -80,10 +80,10 @@
     "message": "文件夹包含未读邮件时，不显示为粗体及显示未读数量。"
   },
   "chkSetMailsUnread": {
-    "message": "Set mail to unread"
+    "message": "将邮件设置为未读"
   },
   "chkSetMailsUnread.tooltip": {
-    "message": "If you move mail into this folder it is set to unread."
+    "message": "如果将邮件移到该文件夹，则将其设置为未读。"
   },
   "cost-of-independence": {
     "message": "软件开发花费时间和金钱-与许多平台应用程序不同，附加组件不是由大公司编写的，也不是由Mozilla以任何方式赞助的。"
@@ -135,7 +135,7 @@
   },
   "extensionDescription": {
     "description": "Description of the extension.",
-    "message": "Bookmark your favorite mail folders in Thunderbird."
+    "message": "在Thunderbird中为您喜欢的邮件文件夹添加书签。"
   },
   "extensionName": {
     "description": "Name of the extension.",
@@ -170,7 +170,7 @@
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "Successfully installed $addonName$",
+    "message": "已成功安装$addonName$",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -242,10 +242,10 @@
     "message": "Could not create tabs. See tools / error console for more detail."
   },
   "qf.backupAndRestore": {
-    "message": "Backup / Restore"
+    "message": "备份/还原"
   },
   "qf.btn.applyPosition": {
-    "message": "Apply position value!"
+    "message": "应用头寸价值！"
   },
   "qf.button.add": {
     "message": "新建"
@@ -269,7 +269,7 @@
     "message": "后移"
   },
   "qf.button.pasteLicense": {
-    "message": "paste"
+    "message": "贴"
   },
   "qf.button.rename": {
     "message": "重命名"
@@ -296,16 +296,16 @@
     "message": "前移"
   },
   "qf.button.validateLicense": {
-    "message": "validate"
+    "message": "证实"
   },
   "qf.caption.currentFolderBackground": {
     "message": "当前目录工具栏背景"
   },
   "qf.categories.supportMultiple": {
-    "message": "Support selecting multiple tab categories"
+    "message": "支持选择多个选项卡类别"
   },
   "qf.categories.supportMultiple.tooltip": {
-    "message": "Use the SHIFT key in order to select more than one category on the dropdown."
+    "message": "使用SHIFT键可以在下拉菜单上选择多个类别。"
   },
   "qf.checkbox.autoFocusPreview": {
     "message": "切换导航卡时将窗口焦点置于消息列表"
@@ -344,10 +344,10 @@
     "message": "在几个导航卡的着色方面显示平滑过渡。"
   },
   "qf.checkbox.hideCategoryBox": {
-    "message": "Collapse Categories"
+    "message": "收合类别"
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
-    "message": "Minimizes the Categories menu to take up less space."
+    "message": "最小化“类别”菜单以占用更少的空间。"
   },
   "qf.checkbox.highlightNewMail": {
     "message": "高亮有新邮件的文件夹"
@@ -374,34 +374,34 @@
     "message": "标记文件夹已读（遞歸）"
   },
   "qf.checkbox.quickCopy": {
-    "message": "quickCopy - Copy mail to any folder with Shortcut:"
+    "message": "quickCopy-使用键盘快捷键将邮件复制到任何文件夹："
   },
   "qf.checkbox.quickCopy.tip": {
-    "message": "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry."
+    "message": "键盘快捷方式，用于将邮件拖动到 quickCopy 按钮，以便通过名称输入将其快速复制到任何文件夹。"
   },
   "qf.checkbox.quickJump": {
-    "message": "quickJump - Go to any folder with Shortcut:"
+    "message": "quickJump-使用键盘快捷键转到任何文件夹："
   },
   "qf.checkbox.quickJump.tip": {
-    "message": "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry."
+    "message": "键盘单击quickJump按钮的快捷方式，可通过名称输入在任何地方进行最快的导航。"
   },
   "qf.checkbox.quickMove": {
-    "message": "quickMove - Move mail to any folder with Shortcut:"
+    "message": "quickMove-使用键盘快捷键将邮件移动到任何文件夹："
   },
   "qf.checkbox.quickMove.tip": {
-    "message": "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry."
+    "message": "键盘快捷方式，用于将邮件移动到quickMove按钮，以便通过名称输入将文件最快地归档到任何文件夹。"
   },
   "qf.checkbox.quickmove.autofill": {
-    "message": "Insert last folder name executed"
+    "message": "插入已执行的上一个文件夹名称"
   },
   "qf.checkbox.quickmove.autofill.tip": {
-    "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
+    "message": "成功插入的最后一个文件夹将被插入。 按下Enter键即可使用它，或直接在其他目的地上键入它。"
   },
   "qf.checkbox.readingList": {
-    "message": "Reading List"
+    "message": "阅读清单"
   },
   "qf.checkbox.readingList.tooltip": {
-    "message": "A list for mails that should be read later. Drag your important emails on this button."
+    "message": "邮件列表，稍后应阅读。 在此按钮上拖动重要的电子邮件。"
   },
   "qf.checkbox.shadows": {
     "message": "阴影"
@@ -482,10 +482,10 @@
     "message": "单个消息选项卡中的工具栏"
   },
   "qf.checkbox.skipFolder": {
-    "message": "Skip Unread Folder - use Shortcut: SHIFT +"
+    "message": "跳过未读文件夹-使用快捷键：SHIFT +"
   },
   "qf.checkbox.skipFolder.tip": {
-    "message": "Shortcut for jumping to the next unread folder."
+    "message": "跳转到下一个未读文件夹的快捷方式。"
   },
   "qf.checkbox.sortMenusAlpha": {
     "message": "强制按字母顺序排序目录与子文件夹"
@@ -494,13 +494,13 @@
     "message": "仅适用于邮件客户端没有正确排序子文件夹时"
   },
   "qf.checkbox.storeConfig.general": {
-    "message": "Include general settings"
+    "message": "包括常规设置"
   },
   "qf.checkbox.storeConfig.layout": {
-    "message": "Include advanced and layout"
+    "message": "包括高级和布局设置"
   },
   "qf.checkbox.storeConfig.tabs": {
-    "message": "Include QuickFolders Tabs"
+    "message": "包括QuickFolders选项卡"
   },
   "qf.checkbox.tabMenuIcon": {
     "message": "显示工具栏菜单图标"
@@ -665,10 +665,10 @@
     "message": "Creating Filters"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
-    "message": "Customize Icon…"
+    "message": "自定义图标…"
   },
   "qf.foldercontextmenu.quickfolders.removeIcon": {
-    "message": "Remove Customized Icon"
+    "message": "删除自定义图标"
   },
   "qf.fpJsonFile": {
     "message": "JSON File"
@@ -689,10 +689,10 @@
     "message": "导航卡激活的颜色:"
   },
   "qf.label.ColoredTabPalette": {
-    "message": "Palette for Colored Tabs:"
+    "message": "彩色标签的调色板："
   },
   "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palette for tabs with a specific color"
+    "message": "具有用户指定颜色的选项卡的调色板"
   },
   "qf.label.DragOverBackground": {
     "message": "导航卡拖曳的颜色:"
@@ -707,7 +707,7 @@
     "message": "按钮行宽度："
   },
   "qf.label.Toolbar.bottomLine.tip": {
-    "message": "The width of the line under tabs. Change its color with the Active Tab Color picker below."
+    "message": "制表符下的线宽。 使用下面的“活动标签”颜色选择器更改其颜色。"
   },
   "qf.label.ToolbarBackground": {
     "message": "工具栏背景:"
@@ -716,7 +716,7 @@
     "message": "Uncolored Tab"
   },
   "qf.label.UncoloredTab.tooltip": {
-    "message": "Look of (inactive) tabs without a specifically selected color"
+    "message": "没有用户定义颜色的（非活动）选项卡的布局"
   },
   "qf.label.appearance": {
     "message": "外观"
@@ -728,7 +728,7 @@
     "message": "使用 Bugzilla 提交问题反馈和功能请求…"
   },
   "qf.label.buttonFontSizeNumeric": {
-    "message": "Button font size (0 for default):"
+    "message": "按钮字体大小（默认为0）:"
   },
   "qf.label.cancel": {
     "message": "取消"
@@ -743,7 +743,7 @@
     "message": "当前目录工具栏"
   },
   "qf.label.donate": {
-    "message": "Donate"
+    "message": "捐"
   },
   "qf.label.donateLink": {
     "message": "访问捐助页面…"
@@ -782,10 +782,10 @@
     "message": "初始化延迟 {标准是1000} [毫秒]:"
   },
   "qf.label.insertLicense": {
-    "message": "Insert your personal License key here:"
+    "message": "在此处插入您的个人许可证密钥:"
   },
   "qf.label.insertLicense.tooltip": {
-    "message": "Your license key is contained in your order confirmation email from Fastspring."
+    "message": "您的许可证密钥包含在Fastspring的订单确认电子邮件中。"
   },
   "qf.label.instantApplyMsg": {
     "message": "　　注意：如果在下面只看到一个「关闭」按钮，那就是颜色设置可能无法正常工作。遇到这种情况，在目录导航工具栏上的空白区域点击鼠标右键，并选择「选项」。这将使「确定」按钮强制显示出来，并可以保存颜色。"
@@ -866,34 +866,34 @@
     "message": "主题:"
   },
   "qf.label.toolbarPosition": {
-    "message": "QuickFolders Bar Position"
+    "message": "QuickFolders工具栏位置"
   },
   "qf.label.versionhistory": {
     "message": "查看历史版本…"
   },
   "qf.licenseValidation.expired": {
-    "message": "The license key you entered is expired. Please press the button below to renew your license."
+    "message": "您输入的许可证密钥已过期。 请按下面的按钮续订您的许可证。"
   },
   "qf.licenseValidation.failed": {
-    "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."
+    "message": "您输入的许可证密钥无效。 查看来自FastSpring的电子邮件以获取说明。 如果仍有问题，请通过“支持”标签与我联系。"
   },
   "qf.licenseValidation.guessAddon": {
-    "message": "(The key entered may be for {2})."
+    "message": "（输入的密钥可能是用于{2}的）."
   },
   "qf.licenseValidation.invalidAddon": {
-    "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
+    "message": "您输入的许可证密钥可能用于其他附件。 {0}的许可证密钥以{1}开头。"
   },
   "qf.licenseValidation.invalidMail": {
-    "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
+    "message": "当前未在任何邮件帐户中列出与许可证密钥[{1}]绑定的电子邮件地址。 请从“支持”标签与我联系以获取帮助。"
   },
   "qf.licenseValidation.notMatchedMail": {
-    "message": "Encrypted Email address does not match readable one."
+    "message": "加密的电子邮件地址与可读的电子邮件地址不匹配。"
   },
   "qf.licenseValidation.passed": {
-    "message": "Thanks for registering QuickFolders Pro! All premium features are now unlocked."
+    "message": "感谢您注册QuickFolders Pro！ 所有高级功能现已解锁."
   },
   "qf.loadConfig": {
-    "message": "Load Configuration…"
+    "message": "负载配置…"
   },
   "qf.menu.Color": {
     "message": "颜色"
@@ -926,7 +926,7 @@
     "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
-    "message": "Find Folder…"
+    "message": "查找文件夹…"
   },
   "qf.menuitem.quickfolders.findAccess": {
     "message": "i"
@@ -968,37 +968,37 @@
     "message": "p"
   },
   "qf.notification.categoryIsReadOnly": {
-    "message": "This item cannot be deleted."
+    "message": "此项目无法删除。"
   },
   "qf.notification.dontShowAgain": {
-    "message": "Do not show this message again."
+    "message": "不要再显示此消息。"
   },
   "qf.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
+    "message": "延长许可"
   },
   "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+    "message": "这会将当前许可日期延长一年。 它通常比新许可证便宜。"
   },
   "qf.notification.premium.btn.getLicense": {
-    "message": "Buy License"
+    "message": "购买许可证"
   },
   "qf.notification.premium.btn.hotKey": {
     "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
-    "message": "Renew License"
+    "message": "续订许可证"
   },
   "qf.notification.premium.readingList": {
-    "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
+    "message": "现在，您已经定义了{1}个书签。 免费版本的QuickFolders最多允许{2}。"
   },
   "qf.notification.premium.tabIcons": {
     "message": "You have now {1} icon(s) defined. The free version of QuickFolders allows a maximum of {2}."
   },
   "qf.notification.premium.text": {
-    "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it permanently."
+    "message": "{1}是一项高级功能，请永久使用QuickFolders Pro许可证。"
   },
   "qf.notification.premium.title": {
-    "message": "Premium Feature"
+    "message": "高级功能"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "导航卡独立的颜色外观"
@@ -1088,13 +1088,13 @@
     "message": "联系 QuickFolders 支持"
   },
   "qf.prompt.loadFolders.confirm": {
-    "message": "Accept the loaded Tabs?"
+    "message": "接受已加载的标签页吗？"
   },
   "qf.prompt.newFolder.createQFtab": {
-    "message": "Also create a QuickFolders Tab"
+    "message": "同时创建一个QuickFolders选项卡"
   },
   "qf.prompt.newFolder.newChildName": {
-    "message": "Enter name for new child folder under {0}"
+    "message": "{0}下新子文件夹的名称"
   },
   "qf.prompt.newFolder.title": {
     "message": "新建文件夹"
@@ -1136,13 +1136,13 @@
     "message": "移動郵件後無通知。"
   },
   "qf.register.licenseValid.expired": {
-    "message": "Your license expired on:"
+    "message": "您的许可证已在以下日期到期："
   },
   "qf.search.advanced": {
     "message": "進階搜尋設定..."
   },
   "qf.storeConfig": {
-    "message": "Save Configuration…"
+    "message": "保存配置…"
   },
   "qf.tab.advanced": {
     "message": "Advanced"
@@ -1217,7 +1217,7 @@
     "message": "关闭工具栏"
   },
   "qf.tooltip.conversationRead": {
-    "message": "Mark Conversation as Read and jump to next unread Email"
+    "message": "将对话标记为已读，并跳至下一封未读电子邮件"
   },
   "qf.tooltip.emailIcon": {
     "message": "当前邮件 - 拖曳至导航卡可移动邮件"
@@ -1238,7 +1238,7 @@
     "message": "上一条未读消息"
   },
   "qf.tooltip.mailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "邮件文件夹命令"
   },
   "qf.tooltip.mainOptions": {
     "message": "QuickFolders options and advanced commands"
@@ -1250,16 +1250,16 @@
     "message": "toggle navigating unread only / all mails"
   },
   "qf.tooltip.quickMove": {
-    "message": "Drag an email here then enter target folder name (quickMove); or click to jump into the folder (quickJump)."
+    "message": "将电子邮件拖到此处，然后输入目标文件夹名称（quickMove）； 或单击以跳入该文件夹（quickJump）."
   },
   "qf.tooltip.skipUnreadFolder": {
-    "message": "Skip to next Unread Folder"
+    "message": "跳到下一个未读文件夹"
   },
   "qf.tooltip.threadIcon": {
     "message": "当前对话 - 拖曳至导航卡可移动对话"
   },
   "qf.youtube.description": {
-    "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
+    "message": "有关Thunderbird附加组件以及如何使用QuickFolders的详细视频，请访问我的YouTube频道Thunderbird Daily。"
   },
   "qf.youtube.link": {
     "message": "Watch Videos about QuickFolders…"
@@ -1400,10 +1400,10 @@
     "message": "G"
   },
   "qfInsertLineBreak": {
-    "message": "Insert Line Break"
+    "message": "插入换行符"
   },
   "qfInsertSeparator": {
-    "message": "Insert Separator"
+    "message": "插入分隔符"
   },
   "qfInvalidTabCount": {
     "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
@@ -1415,13 +1415,13 @@
     "message": "M"
   },
   "qfMarkAllReadRecursive": {
-    "message": "Mark folder + subfolders Read"
+    "message": "标记文件夹+子文件夹为已读"
   },
   "qfMenuColor": {
     "message": "颜色"
   },
   "qfMenuTabColorDisabledInTheme": {
-    "message": "Select different Theme to support coloring…"
+    "message": "选择其他主题以支持着色…"
   },
   "qfMenuTabColorNone": {
     "message": "默认颜色!"
@@ -1430,10 +1430,10 @@
     "message": "导航卡颜色"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Drag folders to an empty area of the toolbar - For MOVING the folder, hold down SHIFT during dragging."
+    "message": "将文件夹拖到工具栏的空白区域-要移动文件夹，请按住SHIFT并拖到选项卡。"
   },
   "qfNavigationWrapped": {
-    "message": "No other unread folders found, continuing in {1}."
+    "message": "找不到其他未读文件夹，继续在{1}中。"
   },
   "qfNewFolder": {
     "message": "新建子文件夹"
@@ -1472,10 +1472,10 @@
     "message": "移除自定义图标"
   },
   "qfRemoveLineBreak": {
-    "message": "Remove Line Break"
+    "message": "删除换行符"
   },
   "qfRemoveSeparator": {
-    "message": "Remove Separator"
+    "message": "删除分隔符"
   },
   "qfRenameBookmark": {
     "message": "重命名导航卡…"
@@ -1490,7 +1490,7 @@
     "message": "R"
   },
   "qfRepairTreeIconsMissing": {
-    "message": "The following icon files do not exist:"
+    "message": "以下图标文件不存在："
   },
   "qfSavePrompt": {
     "message": "保存更改？"
@@ -1514,7 +1514,7 @@
     "message": "特定导航卡属性…"
   },
   "qfTabDeleteOption": {
-    "message": "Do this with the remaining {0} folders."
+    "message": "对其余的{0}文件夹执行此操作。"
   },
   "qfTabDeletePrompt": {
     "message": "删除该导航卡？"
@@ -1526,10 +1526,10 @@
     "message": "该操作将移除没有文件夹关联的无效导航卡。\\n当文件夹被删除或移动而组件没有收到通知时可能会发生这种情况。"
   },
   "qfTreeIconsInvalidCount": {
-    "message": "{0} icons missing"
+    "message": "缺少{0}个图标"
   },
   "qfTreeIconsRepairedCount": {
-    "message": "{0} tree icons repaired"
+    "message": "修复了{0}个树形图标"
   },
   "qfUncategorized": {
     "message": "（未分类）"
@@ -1541,7 +1541,7 @@
     "message": "新的主题已安装。您可在下拉框中选择喜好的主题。"
   },
   "qfVersionDisableOnUpdate": {
-    "message": "Stop displaying version history after updates?"
+    "message": "更新后停止显示版本历史记录吗？"
   },
   "quickMove.singleMessage.goNext": {
     "message": "在移動當前一封郵件後顯示下一封郵件"
@@ -1553,34 +1553,34 @@
     "message": "單個消息選項卡"
   },
   "quickfolders.findFolder.placeHolder": {
-    "message": "folder name"
+    "message": "文件夹名称"
   },
   "quickfolders.quickMove.menu.cancel": {
-    "message": "Cancel quickMove"
+    "message": "取消quickMove"
   },
   "quickfolders.quickMove.menu.hideSearch": {
-    "message": "Hide Folder Name box"
+    "message": "隐藏搜索框"
   },
   "quickfolders.quickMove.menu.showSearch": {
-    "message": "Show Folder Name box"
+    "message": "显示搜索框"
   },
   "quickfolders.quickMove.menu.suspend": {
-    "message": "Jump to folder (don't move mails)"
+    "message": "转到文件夹（不要移动任何邮件）"
   },
   "quickfolders.readingList.addCurrent": {
-    "message": "Add current Item"
+    "message": "添加当前项目"
   },
   "quickfolders.readingList.clear": {
-    "message": "Clear Reading List"
+    "message": "清除阅读清单"
   },
   "quickfolders.readingList.tooltip": {
-    "message": "Reading List"
+    "message": "阅读清单"
   },
   "quickfolders.toolbar.newsubfolder": {
     "message": "新建子文件夹…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Skip"
+    "message": "跳过"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "邮件已复制到文件夹 {2}；{1} 封邮件已复制到文件夹 {2}"
@@ -1705,6 +1705,6 @@
     "message": "此授权是供您个人使用，并与您的电子邮件地址绑定。您只需将它安装到多个已配置使用该地址的电子邮件客户端上。"
   },
   "yearlyLicense.usageTerm1": {
-    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
+    "message": "任何其他电子邮件地址都没有问题-它们不需要单独的许可证。 如有疑问，您可以通过“支持”标签与我联系。"
   }
 }

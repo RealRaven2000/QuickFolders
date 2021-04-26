@@ -92,13 +92,13 @@
     "message": "Bakgrund"
   },
   "cssBackground.tooltip": {
-    "message": "Ange bakgrundsegenskaper i CSS, t.ex. &quot;linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)&quot;."
+    "message": "Ange bakgrundsegenskaper i CSS, t.ex. 'linear-gradient(to bottom, rgba(254,252,234,1) 0&#37;,rgba(241,218,54,1) 100&#37;)'."
   },
   "cssColor": {
     "message": "Textfärg"
   },
   "cssColor.tooltip": {
-    "message": "Ange en färg i CSS, t.ex. &quot;rgba(100,20,20,0.8)&quot;"
+    "message": "Ange en färg i CSS, t.ex. 'rgba(100,20,20,0.8)'"
   },
   "defaultAccountAddress.value": {
     "message": "Kontots standardidentitet"
@@ -110,7 +110,7 @@
     "message": "Licensierad e-postdomän"
   },
   "domainLicense.instruct": {
-    "message": "Licensen är kopplad till din företagsdomän. Licensen kommer att låta användare med e-postadresser som slutar på denna e-postdomän att använda QuickFolders Pro. D.v.s. om du anger domännamnet &quot;abc.com&quot; kommer e-postanvändare som fred@abc.com, martha@abc.com, mike.doe@abc.com, etc. tillåtas använda licensen. Det maximala antalet giltiga individuella användare är antalet du anger på den första skärmen."
+    "message": "Licensen är kopplad till din företagsdomän. Licensen kommer att låta användare med e-postadresser som slutar på denna e-postdomän att använda QuickFolders Pro. D.v.s. om du anger domännamnet 'abc.com' kommer e-postanvändare som fred@abc.com, martha@abc.com, mike.doe@abc.com, etc. tillåtas använda licensen. Det maximala antalet giltiga individuella användare är antalet du anger på den första skärmen."
   },
   "domainLicense.validate": {
     "message": "Se till att du anger domännamnet *precis som det är* på ditt företags e-postadresser (delen *efter* @), då den kommer att användas för att auktorisera e-postadresserna för dina användare."
@@ -332,7 +332,7 @@
     "message": "högerklicka på den här kryssrutan för avancerade felsökningsalternativ"
   },
   "qf.checkbox.displaylabel": {
-    "message": "Visa &quot;QuickFolders&quot;-etiketten i verktygsfältet"
+    "message": "Visa 'QuickFolders'-etiketten i verktygsfältet"
   },
   "qf.checkbox.displaylabel.tooltip": {
     "message": "högerklicka för att ändra etikettexten"
@@ -413,7 +413,7 @@
     "message": "Visa även det totala antalet undermappar"
   },
   "qf.checkbox.showCountInSubFolders.tooltip": {
-    "message": "Dessa visas med ett &quot;&quot;+&quot; bredvid sina huvudräknare; innehåll av olästa meddelanden kommer att visa fliktexten i fetstil om alternativet ovan är aktiverat"
+    "message": "Dessa visas med ett ''+' bredvid sina huvudräknare; innehåll av olästa meddelanden kommer att visa fliktexten i fetstil om alternativet ovan är aktiverat"
   },
   "qf.checkbox.showFilterButton": {
     "message": "Visa Skapa filter-knapp"
@@ -560,7 +560,7 @@
     "message": "Var vänlig använd Bugzilla för alla officiella funktionsönskemål och buggrapporter"
   },
   "qf.description.categoryusage": {
-    "message": "Du kan lägga det här bokmärket i en kategori (t.ex. &quot;Arbete&quot;, &quot;Privat&quot;, …)."
+    "message": "Du kan lägga det här bokmärket i en kategori (t.ex. 'Arbete', 'Privat', …)."
   },
   "qf.description.changeCategory": {
     "message": "Högerklicka på ett bokmärke för att inordna det i en kategori. Du får upp en rullgardinsmeny med kategorier till vänster om fältet."
@@ -578,7 +578,7 @@
     "message": "Dra meddelanden till snabbmappens popup-meny för att flytta dem till undermappar."
   },
   "qf.description.dragToPosition": {
-    "message": "Dra snabbmappar i sidled för att ändra deras inbördes positioner. Högerklicka på en snabbmapp för en snabbmeny där du kan välja undermappar att hoppa till. &quot;Byt namn på bokmärke&quot; ändrar snabbmappens etikett. &quot;Ta bort bokmärke&quot; tar bort snabbmappen (inte meddelandemappen)."
+    "message": "Dra snabbmappar i sidled för att ändra deras inbördes positioner. Högerklicka på en snabbmapp för en snabbmeny där du kan välja undermappar att hoppa till. 'Byt namn på bokmärke' ändrar snabbmappens etikett. 'Ta bort bokmärke' tar bort snabbmappen (inte meddelandemappen)."
   },
   "qf.description.dragexplain": {
     "message": "Bokmärkena kan också dras för att ändra deras inbördes positioner! Släpp ett ovanpå ett annat för att infoga före/efter det."
@@ -1430,7 +1430,7 @@
     "message": "Flikfärg"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Dra mappar till en tom yta på verktygsfältet. För att FLYTTA mappen, håll Skift nedtryckt medan du drar."
+    "message": "Dra mappar till ett tomt område i verktygsfältet - För att FLYTTA en mapp, håll ned SKIFT och dra till en flik."
   },
   "qfNavigationWrapped": {
     "message": "Inga andra olästa mappar hittades, fortsätter om {1}."

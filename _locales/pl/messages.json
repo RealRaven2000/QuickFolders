@@ -110,10 +110,10 @@
     "message": "Licencjonowany Email domeny"
   },
   "domainLicense.instruct": {
-    "message": "Licencja jest przypisana do domeny Twojej firmy. Licencja umożliwia korzystanie z wersji QuickFolders Pro użytkownikom z adresem e-mail kończącym się domeną. Dla przykładu, jeśli podasz nazwę domeny &quot;abc.com&quot; wówczas użytkownicy mający adresy takie jak: fred@abc.com, martha@abc.com, mike.doe@abc.com, mogą używać licencji. Maksymalną ilość uprawnionych użytkowników stanowi liczba podana na ekranie początkowym."
+    "message": "Licencja jest przypisana do domeny Twojej firmy. Licencja umożliwia korzystanie z wersji QuickFolders Pro użytkownikom z adresem e-mail kończącym się domeną. Dla przykładu, jeśli podasz nazwę domeny 'abc.com' wówczas użytkownicy mający adresy takie jak: fred@abc.com, martha@abc.com, mike.doe@abc.com, mogą używać licencji. Maksymalną ilość uprawnionych użytkowników stanowi liczba podana na ekranie początkowym."
   },
   "domainLicense.validate": {
-    "message": "Upewnij się, że wpisałeś właściwą nazwę domeny adresu e-mail Twojej firmy (część za znakiem &quot;@&quot;), ponieważ będzie ona używana do autoryzacji adresów e-mail użytkowników."
+    "message": "Upewnij się, że wpisałeś właściwą nazwę domeny adresu e-mail Twojej firmy (część za znakiem '@'), ponieważ będzie ona używana do autoryzacji adresów e-mail użytkowników."
   },
   "donate": {
     "message": "Pomóż w postaci jednorazowej darowizny."
@@ -1430,7 +1430,7 @@
     "message": "Kolor zakładki"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Przeciągnij foldery w puste miejsce na pasku narzędzi. Aby przenieść folder, przytrzymaj klawisz SHIFT podczas przeciągania."
+    "message": "Przeciągnij foldery do pustego obszaru paska narzędzi - Aby PRZENOSIĆ folder, przytrzymaj klawisz SHIFT i przeciągnij do karty."
   },
   "qfNavigationWrapped": {
     "message": "Nie znaleziono innych nieprzeczytanych folderów, kontynuacja {1}."

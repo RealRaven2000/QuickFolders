@@ -82,6 +82,16 @@ QuickFolders.Licenser = {
 			this.validateLicense(key);
     return (this.ValidationStatus == this.ELicenseState.Expired);
 	},
+    
+  getIsExpired: async function () {
+      let key = QuickFolders.Preferences.getStringPref('LicenseKey');
+          if (!key) return false;
+          if (this.ValidationStatus == this.ELicenseState.NotValidated) {
+			await this.validateLicense(key);
+          }
+          return (this.ValidationStatus == this.ELicenseState.Expired);    
+    },
+    
   ValidationStatus: 0,
   // enumeration for Validated state
   ELicenseState: {
@@ -165,7 +175,7 @@ QuickFolders.Licenser = {
     return arr[1];
   },
   
-  validateLicense: function validate(LicenseKey) {
+  validateLicense: async function validate(LicenseKey) {
     function logResult(parent) {
       util.logDebug ('validateLicense()\n returns ' 
                      + parent.licenseDescription(parent.ValidationStatus)

@@ -4,6 +4,7 @@
  */
 
 import * as util from "./scripts/qf-util.mjs";
+import {RSA} from './scripts/rsa/RSA.mjs';
 
 async function main() {
 

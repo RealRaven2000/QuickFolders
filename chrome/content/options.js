@@ -604,7 +604,7 @@ QuickFolders.Options = {
     btnLoadConfig.disabled = !isEnabled;
   },
   
-  decryptLicense: function decryptLicense(testMode) {
+  decryptLicense: async function decryptLicense(testMode) {
     const util = QuickFolders.Util,
           licenser = util.Licenser,
           prefs = QuickFolders.Preferences,
@@ -653,7 +653,7 @@ QuickFolders.Options = {
         util.logDebug(test);
       }
       if (crypto)
-        [result, LicenseKey] = licenser.validateLicense(license, maxDigits);
+        [result, LicenseKey] = await licenser.validateLicense(license, maxDigits);
       else { // reset internal state of object if no crypto can be found!
         result = State.Invalid;
         licenser.DecryptedDate = "";

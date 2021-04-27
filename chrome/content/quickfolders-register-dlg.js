@@ -19,7 +19,7 @@ var Register = {
   l10n: function() {
     QuickFolders.Util.localize(document);
   },
-  load: function load() {
+  load: async function load() {
     const getElement = document.getElementById.bind(document),
           util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences,
@@ -70,7 +70,7 @@ var Register = {
 				debugger;
 			}
 			if (licenser.ValidationStatus == ELS.NotValidated) {
-				licenser.validateLicense(prefs.getStringPref('LicenseKey'));
+				await licenser.validateLicense(prefs.getStringPref('LicenseKey'));
 				util.logDebug('Re-validated.\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
 			}
 				

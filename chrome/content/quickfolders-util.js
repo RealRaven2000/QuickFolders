@@ -361,7 +361,7 @@ QuickFolders.Util = {
 			}, 200);
 	} ,
   
-  hasPremiumLicense: function hasPremiumLicense(reset) {
+  hasPremiumLicense: async function hasPremiumLicense(reset) {
 		const licenser = QuickFolders.Util.Licenser;
     // early exit for Licensed copies
     if (licenser.isValidated) 
@@ -375,7 +375,7 @@ QuickFolders.Util = {
       return false; // short circuit if no license key!
     if (!licenser.isValidated || reset) {
       licenser.wasValidityTested = false;
-      licenser.validateLicense(licenseKey);
+      await licenser.validateLicense(licenseKey);
 			// store license key in this object
 			licenser.LicenseKey = licenseKey;
     }

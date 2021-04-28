@@ -365,6 +365,7 @@
         </table>
         
         <ul>
+        
           <h4 class="inList">KNOWN ISSUES</h4>
           <li> (maintenance version 5.5.2 will be published shortly)
             <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/148">[issue 148]</a> 
@@ -379,6 +380,7 @@
           <li> (maintenance version 5.5.2 will be published shortly)
             In some locales the character » is replaced with encoded unicode entry \u00BB in Create subfolder menu item
           </li>
+          
           <h4 class="inList">Maintenance Items</h4>
           <li> 
             Version 5.5.1 Hotfix: 
@@ -398,18 +400,19 @@
           <li> 
             Version 5.5.1: Completed Hungarian, Simplified Chinese and Catalan locales.
           </li>
-          <li> 
-            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/136">[issue 136]</a>
-            Fixed: There were no folder suggestions during quickJump / quickMove while viewing mails in a virtual
-            folder view (such as search results / or after open message in conversation). This was a 
-            side effect of changes from <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/57">[issue 57]</a>.
-          </li>
+          <h4 class="inList">Improvements (5.5)</h4>
           <li> 
             <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/135">[issue 135]</a>
              quickMove / quickJump: When using "/" for parent folders searching for substrings should work better...
              The Search algorithm now recognizes Underscore _ and Space within folder names so that parent folders with 
              prefixes such as "01_test" can still be found without knowing the number (type "test\subfoldername" to get 
              a match in this example). 
+          </li>
+          <li>
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/134">[issue 134]</a>
+            Feature Request: Escape key to "Cancel quickMove" completely. Before this change, Cancel would hide the search box but 
+            keep the list of mails queued to be moved so that more items could be added later.
+            If necessary, the old behavior can be restored in the Advanced search settings dialog. 
           </li>
           <li>
             <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/132">[issue 132]</a>
@@ -421,11 +424,14 @@
                  alt="single message settings" 
                  class="screenshots"/>
           </li>
-          <li>
-            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/134">[issue 134]</a>
-            Feature Request: Escape key to "Cancel quickMove" completely. Before this change, Cancel would hide the search box but 
-            keep the list of mails queued to be moved so that more items could be added later.
-            If necessary, the old behavior can be restored in the Advanced search settings dialog. 
+          <li>Increased maximum subfolders in a dropdown menu from 100 to 250.</li>
+          
+          <h4 class="inList">Bug Fixes (5.5)</h4>
+          <li> 
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/136">[issue 136]</a>
+            Fixed: There were no folder suggestions during quickJump / quickMove while viewing mails in a virtual
+            folder view (such as search results / or after open message in conversation). This was a 
+            side effect of changes from <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/57">[issue 57]</a>.
           </li>
           <li> 
             <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/140">[issue 140]</a> 
@@ -437,7 +443,6 @@
             Changed folder tree shortcut from F7 to F9 (consistent with Thunderbird 68). 
             Push F9 to make the folder tree visible or quickly hide it.
           </li>
-          <li>Increased maximum subfolders in a dropdown menu from 100 to 250.</li>
         </ul>
 			</li>      
       

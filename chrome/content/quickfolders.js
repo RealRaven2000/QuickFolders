@@ -423,6 +423,10 @@ END LICENSE BLOCK */
     ## [issue 144] Mark folders + subfolders read stops at first generation (direct child folder) mails  
     ## [issue 145] Thunderbird 60: QuickFolders always offers update to 4.21.2
     
+  4.21.4 QuickFolders Pro - WIP
+    ## [issue 148] quickMove: parent folder containing an underscore not suggested as parent
+    
+    
 	Future Work
 	===========
   

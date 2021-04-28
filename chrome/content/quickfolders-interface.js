@@ -5011,6 +5011,10 @@ QuickFolders.Interface = {
 				
         // [issue 135] allow in-string search for parents using delimiters: - _ . and space!
         let folderNameMatches = f.prettyName.toLowerCase().split(/[_ ]/);
+        // [issue 148] splitting prevents full name to be matched!
+        if (folderNameMatches.length>1) {
+          folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
+        }
         // ignore 1-character matches
         if (folderNameMatches.some(a => a.startsWith(ancestors[maxLevel]) && a.length>1)) {
 					// 1st (top level) match
@@ -5037,6 +5041,10 @@ QuickFolders.Interface = {
 				maxLevel--;
         // [issue 135] allow in-string search for children using delimiters: - _ . and space!
         let folderNameMatches = f.prettyName.toLowerCase().split(/[-_. ]/);
+        // [issue 148] splitting prevents full name to be matched!
+        if (folderNameMatches.length>1) {
+          folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
+        }        
 				if (folderNameMatches.some(a => a.startsWith(search))) {   
 					if (!directParent) directParent = folder;
 					if (maxLevel == 0) {

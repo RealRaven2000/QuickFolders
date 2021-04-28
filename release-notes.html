@@ -1,8 +1,17 @@
-<b>Release 5.5.1</b>
+<b>Release 5.5.2</b>
 <ul>
 <li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li>
 <li>You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li>
 <li>If you are not ready for a license you can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a></li>
+</ul>
+
+
+<b>Fixes in 5.5.2</b>
+<ul>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/148">[issue 148]</a> quickMove: parent folder containing an underscore not suggested as parent if typed from fully. This is a regression caused by changes in             <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/135">[issue 135]</a> which allows for entering parent names by entering text within the string if that starts with an underscore or space - e.g. to find all child folders of "001_Test" you could just type "tes/". The regression caused it not to be suggested when typing "001_tes/" as it only would evaluate the substrings "001" and "Test" as possible parents.
+</li>
+<li> Fixed: In some locales the character » is replaced with encoded unicode entry \u00BB in Create subfolder menu item</li>
+<li> Fixed: In Thunderbird 89, the options menu item was not displayed in Add-ons Manager.</li>
 </ul>
 
 <b>Fixes in 5.5.1</b>

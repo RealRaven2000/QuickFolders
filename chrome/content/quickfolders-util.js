@@ -9,61 +9,12 @@
 
  
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
-
 var QuickFolders_ConsoleService = null;
-
-if (!QuickFolders.Filter)
-	QuickFolders.Filter = {};
+if (!QuickFolders.Filter)	QuickFolders.Filter = {};
 	
-// code moved from options.js
-// open the new content tab for displaying support info, see
-// https://developer.mozilla.org/en/Thunderbird/Content_Tabs
-var QuickFolders_TabURIopener = {
-	openURLInTab: function openURLInTab(URL) {
-    let util = QuickFolders.Util;
-		URL = util.makeUriPremium(URL);
-		try {
-			let sTabMode="",
-			    tabmail;
-			tabmail = document.getElementById("tabmail");
-			if (!tabmail) {
-				// Try opening new tabs in an existing 3pane window
-				let mail3PaneWindow = util.getMail3PaneWindow();
-				if (mail3PaneWindow) {
-					tabmail = mail3PaneWindow.document.getElementById("tabmail");
-					mail3PaneWindow.focus();
-				}
-			}
-			if (tabmail) {
-				// find existing tab with URL
-				if (!util.findMailTab(tabmail, URL)) {
-					sTabMode = "contentTab";
-					tabmail.openTab(sTabMode,
-					{contentPage: URL, url: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
-				}
-			}
-			else
-				window.openDialog(
-          "chrome://messenger/content/", "_blank",
-					"chrome,dialog=no,all", null,
-          { tabType: "contentTab", 
-            tabParams: {
-              contentPage: URL, 
-              url: URL, 
-              clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", 
-              id: "QuickFolders_Weblink"
-            } 
-          } 
-        );
-		}
-		catch(e) { return false; }
-		return true;
-	}
-};
-
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
-	HARDCODED_CURRENTVERSION : "5.6", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "5.5.2", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
@@ -2128,6 +2079,54 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
     // Finally, we have a valid folder. Return it.
     return folder;
   };
+
+
+// code moved from options.js
+// open the new content tab for displaying support info, see
+// https://developer.mozilla.org/en/Thunderbird/Content_Tabs
+var QuickFolders_TabURIopener = {
+	openURLInTab: function openURLInTab(URL) {
+    let util = QuickFolders.Util;
+		URL = util.makeUriPremium(URL);
+		try {
+			let sTabMode="",
+			    tabmail;
+			tabmail = document.getElementById("tabmail");
+			if (!tabmail) {
+				// Try opening new tabs in an existing 3pane window
+				let mail3PaneWindow = util.getMail3PaneWindow();
+				if (mail3PaneWindow) {
+					tabmail = mail3PaneWindow.document.getElementById("tabmail");
+					mail3PaneWindow.focus();
+				}
+			}
+			if (tabmail) {
+				// find existing tab with URL
+				if (!util.findMailTab(tabmail, URL)) {
+					sTabMode = "contentTab";
+					tabmail.openTab(sTabMode,
+					{contentPage: URL, url: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
+				}
+			}
+			else
+				window.openDialog(
+          "chrome://messenger/content/", "_blank",
+					"chrome,dialog=no,all", null,
+          { tabType: "contentTab", 
+            tabParams: {
+              contentPage: URL, 
+              url: URL, 
+              clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", 
+              id: "QuickFolders_Weblink"
+            } 
+          } 
+        );
+		}
+		catch(e) { return false; }
+		return true;
+	}
+};
+
 
 
 // the following adds the notifyTools API as a util method to communicate with the background page

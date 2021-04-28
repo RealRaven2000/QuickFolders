@@ -471,7 +471,7 @@ END LICENSE BLOCK */
                    this behavior is now disabled - see extensions.quickfolders.quickMove.reopenMsgTabAfterMove
                    instead Tb will open the next mail - see extensions.quickfolders.quickMove.gotoNextMsgAfterMove
                    
-  5.5.1 QuickFolders Pro - WIP
+  5.5.1 QuickFolders Pro - 27/04/2021
     ## [issue 144] Mark folders + subfolders read stops at first generation (direct child folder) mails  
     ## Fixed tool dialog "change the order of tabs"
     ## Changed localization to web extension method. [mx-l10n]
@@ -480,6 +480,12 @@ END LICENSE BLOCK */
     ##   calling overlay localisation with i18n.js
     ## 	 replaced bundle strings - removed all instances of GetStringFromName
     ##   label dialog extra buttons manually after i18n.updateDocument
+    
+  5.5.2 QuickFolders Pro - 28/04/2021
+    ## [issue 148] quickMove: parent folder containing an underscore not suggested as parent
+    ## quickMove: character » is replaced with encoded unicode entry \u00BB in Create subfolder menu item (side effect 
+       from converting localization to json in 5.5.1)
+    ## In Thunderbird 89, the options menu item was not displayed in Add-ons Manager.
 
   
     

@@ -364,6 +364,16 @@
         </table>
         
         <ul>
+          <li> KNOWN ISSUE (maintenance version 5.5.2 will be published shortly):
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/148">[issue 148]</a> 
+            quickMove: parent folder containing an underscore not suggested as parent if typed from fully
+            this is a regression caused by changes in 
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/135">[issue 135]</a> 
+            which allows for entering parent names by entering text within the string if that starts with an
+            underscore or space - e.g. to find all child folders of "001_Test" you could just type "tes/".
+            The regression caused it not to be suggested when typing "001_tes/" as it only would 
+            evaluate the substrings "001" and "Test" as possible parents.
+          </li>        
           <li> 
             Version 5.5.1 Hotfix: 
             <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/144">[issue 144]</a>
@@ -810,6 +820,110 @@
 					</ul>
 			</li>
 			-->
+
+			<a name="4.21.4">&nbsp;</a>
+			<li>
+				<h4>
+				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.21.4 - WIP</a>
+				</h4>
+				<table class="QuickFoldersProRenew bargain"> 
+					<tr>
+						<td style="vertical-align:top;" colspan="2">
+						  <p class="emphasis">If you can see this box then your QuickFolders Pro license has expired!</p>
+							<h3 class="shillBox">QUICKFOLDERS PRO - RENEWAL SALE - RENEW FOR <u>33% OFF</u></h3>
+							<p>Catch this 2021 sale offer which reduces a third from the price from
+								 <span class="emphasis">April 17th</span> to <span class="emphasis">May 1st</span>!
+ 							   Renew or extend your license and pay 6.66$ instead of 10$ for your renewed QuickFolders Pro license.
+							</p> 
+						</td>
+						<td style="vertical-align:top; max-width:0;" rowspan="3">
+							<a class="nohover tooltip" href="">
+								<img id="bargainStar" src="images/bargain-easter-renew-33.png" />
+								<span > 
+								<img class="callout" src="images/callout_black.gif" />
+								You can extend or renew your license directly from QuickFolders - it will transmit your existing license key in order to 
+								create the new license. Simply use QuickFolders Options / QuickFolders Pro tab and the Extend License button.</span>
+							</a>
+						</td>
+					</tr>
+					<tr>
+						<td style="vertical-align:top;">
+							<p>
+								Support the future of QuickFolders and keep enjoying unlimited <a href="premium.html">Premium Features</a>. 
+								Simply click on <i>Renew License</i> on the QuickFolders toolbar. 
+							</p>
+						</td>
+						<td>
+							<p>
+								<img src="images/renew-license.png" alt="renew QuickFolders license" class="screenshots"/>
+							</p>
+						</td>
+					</tr>
+					<tr>
+						<td style="vertical-align:top;">
+							<p>
+								You can also <i>extend your license</i> (without losing a single day) by clicking on the <i>Extend License</i>
+								button on the QuickFolders Pro tab up to 30 days prior to your previous license expiry.
+							</p>
+							<p> 
+								As a thank you for my loyal supporters: if you missed the expiry date I will still give you a whole year in the renewal 
+								even if your expiry date is in the past.
+							</p>
+						</td>
+					</tr>
+				</table>
+        
+        <table class="QuickFoldersFreeUser bargain"> 
+          <tr>
+            <td style="vertical-align:top;">
+              <h3 class="shillBox">QUICKFOLDERS PRO - SALE</h3>
+             <p><span class="emphasis">Save 40%</span> on the regular price and support the QuickFolders project from
+               <span class="emphasis">April 17th</span> to <span class="emphasis">May 1st</span>! 
+               This deal will only be offered for this limited time period, to give you too a chance to support the QuickFolders Project.
+               I had considerable expenses to make QuickFolders compatible with Thunderbird 78 and there will be more work this year to
+               move QuickFolders closer to the "Mail extensions" model.
+             </p>
+              <p>
+                Support the future of QuickFolders and enjoy unlimited <a href="premium.html">Premium Features</a>. 
+                You can purchase a license from QuickFolders options, using the QuickFolders Pro tab. 
+                It's super easy and helps future proof this Add-on. 
+                Use QuickFolders Pro on as many Thunderbird installations as you like as long as it has your 
+                licensed email address as a Default Identity. 
+              </p>
+              <p>
+                Install the 
+                <a target="_blank" href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/">latest QuickFolders version</a> and then click the <i>Buy License</i> item from the QuickFolders Pro tab on the Options dialog.
+                  If you prefer, you can also go to the web shop directly: 
+                  <a href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-version-page">FastSpring Web Shop</a>
+              </p>
+            </td>
+            <td><img src="images/menus/QuickFoldersProMenu-78.png" 
+                alt="quickfolders pro" style="width:180px; height:auto; margin-left:20px;"/>
+            </td>
+					
+            <td style="vertical-align:top; max-width:0;">
+              <a class="nohover" href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-versionpage-bargain">
+                <img id="bargainStar" src="images/bargain-40-may.png" />
+              </a>
+            </td>
+				
+          </tr>
+        </table>
+					<ul>
+            <h4 class="inList">Bug Fixes</h4>
+            <li> 
+              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/148">[issue 148]</a> 
+              quickMove: parent folder containing an underscore not suggested as parent if typed from fully
+              this is a regression caused by changes in 
+              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/135">[issue 135]</a> 
+              which allows for entering parent names by entering text within the string if that starts with an
+              underscore or space - e.g. to find all child folders of "001_Test" you could just type "tes/".
+              The regression caused it not to be suggested when typing "001_tes/" as it only would 
+              evaluate the substrings "001" and "Test" as possible parents.
+            </li>
+					</ul>
+			</li>
+
       
 			<a name="4.21.3">&nbsp;</a>
 			<li>

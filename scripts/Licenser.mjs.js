@@ -156,7 +156,7 @@ export class Licenser {
       return getDate(this.RealLicense + ":xxx");
     }
 
-validate() {
+async validate() {
     this.reset();
     log("validateLicense", { LicenseKey: this.LicenseKey });
 
@@ -207,9 +207,9 @@ validate() {
     }
 
     // ******* CHECK MAIL IS MATCHING ********
-    let clearTextEmail = this.getClearTextMail();
-    let decryptedMail = this.getDecryptedMail();
-    if (clearTextEmail.toLocaleLowerCase() != decryptedMail.toLocaleLowerCase()) {
+    let clearTextEmail = this.getClearTextMail().toLocaleLowerCase();
+    let decryptedMail = this.getDecryptedMail().toLocaleLowerCase();
+    if (clearTextEmail != decryptedMail) {
       this.ValidationStatus = LicenseStates.MailDifferent;
       log('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
@@ -233,112 +233,93 @@ validate() {
       return [this.ValidationStatus, this.RealLicense];
     }
 
-    /* Still todo
     
- // ******* MATCH MAIL ACCOUNT  ********
+    // ******* MATCH MAIL ACCOUNT  ********
     // check mail accounts for setting
     // if not found return MailNotConfigured
     
-    let isMatched = false, 
-        iAccount=0,
-        isDbgAccounts = prefs.isDebugOption('premium.licenser'),
-        hasDefaultIdentity = false,
-        myAccounts = util.Accounts,
-        ForceSecondaryMail = prefs.getBoolPref('licenser.forceSecondaryIdentity');
-				
-		if (QuickFolders.Crypto.key_type==1) {
-			ForceSecondaryMail = false;
-			util.logToConsole	("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
-		}
-    if (ForceSecondaryMail) {
-      // switch for secondary email licensing
-      this.AllowSecondaryMails = true;
-    }
-    else {
-      for (let a=0; a < myAccounts.length; a++) { 
-        if (myAccounts[a].defaultIdentity) {
-          hasDefaultIdentity = true;
-          break;
-        }
+    let accounts = await messenger.accounts.list();
+    let ForceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");
+    let AllowFallbackToSecondaryIdentiy = false;
+
+    if (this.key_type == 1) {
+      // VOLUME LIC
+      if (ForceSecondaryIdentity) {
+        ForceSecondaryIdentity = false;
+        log("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
       }
-      if (!hasDefaultIdentity) {
-        this.AllowSecondaryMails = true;
-        util.logDebug("Premium License Check: There is no account with default identity!\n" +
-                      "You may want to check your account configuration as this might impact some functionality.\n" + 
-                      "Allowing use of secondary email addresses...");
-      }
-    }
-    let licensedMail = this.DecryptedMail.toLowerCase();
-    for (let a=0; a < myAccounts.length; a++) { 
-      let ac = myAccounts[a];
-      iAccount++;
-      if (ac.defaultIdentity && !ForceSecondaryMail) {
-        util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] Default Identity =\n" 
-          + logIdentity(ac.defaultIdentity));
-				if (!ac.defaultIdentity || !ac.defaultIdentity.email) {
-					if (ac.incomingServer.username != "nobody") {
-						util.logDebug("Account " + ac.incomingServer.prettyName + " has no default identity!");
-					}
-					continue;
-				}
-        if (isIdMatchedLicense(ac.defaultIdentity.email, licensedMail)) {
-          isMatched = true;
-          break;
-        }
-      }
-      else {
-        // allow secondary matching using override switch, but not with domain licenses
-        if (!this.AllowSecondaryMails
-            ||  
-            QuickFolders.Crypto.key_type == 1) 
-          continue;  
-        util.logDebugOptional("premium.licenser", "Iterate accounts: [" + ac.key + "] secondary ids");
-        // ... allow using non default identities 
-        let ids = ac.identities, // array of nsIMsgIdentity 
-            idCount = ids ? ids.length : 0;
-        util.logDebugOptional("premium.licenser", "Iterating " + idCount + " ids…");
-        if (ids) {
-          for (let i=0; i<idCount; i++) {
-            // use ac.defaultIdentity ??
-            // populate the dropdown with nsIMsgIdentity details
-            let id = util.getIdentityByIndex(ids, i);
-            if (!id || !id.email) {
-              util.logDebugOptional("premium.licenser", "Invalid nsIMsgIdentity: " + i);
-              continue;
-            }
-            let matchMail = id.email.toLocaleLowerCase();
-            if (isDbgAccounts) {
-              util.logDebugOptional("premium.licenser", 
-                "Account[" + ac.key + "], Identity[" + i + "] = " + logIdentity(id) +"\n"
-                + "Email: [" + matchMail + "]");
-            }
-            if (isIdMatchedLicense(matchMail, licensedMail)) {
-              isMatched = true;
-              break;
-            }
+    } else {
+      // SINGLE LIC - Check if secondary mode is necessarry (if not already enforced)
+      if (ForceSecondaryIdentity) {
+        AllowFallbackToSecondaryIdentiy = true;
+      } else {
+        let hasDefaultIdentity = false;
+        for (let account of accounts) {
+          let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id);
+          if (defaultIdentity) {
+            hasDefaultIdentity = true;
+            break;
           }
-          if (isMatched) break;
-        }     
+        }
+        if (!hasDefaultIdentity) {
+          AllowFallbackToSecondaryIdentiy = true;
+          log("Premium License Check: There is no account with default identity!\n" +
+                "You may want to check your account configuration as this might impact some functionality.\n" + 
+                "Allowing use of secondary email addresses...");
+        }
       }
     }
-    if (!isMatched) {
-      this.ValidationStatus = ELS.MailNotConfigured;
-    }
-    else {
-      util.logDebug ("validateLicense() - successful.");
-      this.ValidationStatus = ELS.Valid;
-    }
-    logResult(this);    
     
-    */
+    for (let account of accounts) {
+      let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id);
+      if (defaultIdentity && !ForceSecondaryIdentity) {
 
+        log("premium.licenser", {
+            "Iterate accounts" : account.name,
+            "Default Identity" : defaultIdentity.id,
+        });
+        if (!defaultIdentity.email) {
+          log("Default Identity of this account has no associated email!", {account: account.name, defaultIdentity});
+          continue;
+        }
+        if (this.isIdMatchedLicense(defaultIdentity.email, decryptedMail)) {
+          log("Default Identity of this account matched!", {account: account.name, identity: defaultIdentity.email});
+          this.ValidationStatus = LicenseStates.Valid;
+          return [this.ValidationStatus, this.RealLicense];
+        }
 
-  return [this.ValidationStatus, this.RealLicense];
+      } else if (AllowFallbackToSecondaryIdentiy) {
+
+        log("premium.licenser", {
+            "Iterate all identities of account" : account.name,
+            "Identities" : account.identities,
+        });
+        for (let identity of account.identities) {
+          if (defaultIdentity && defaultIdentity.id == identity.id) {
+            log("Skipping default identity!", {identity});
+            continue;
+          }          
+          if (!identity.email) {
+            log("Identity has no associated email!", {identity});
+            continue;
+          }
+          if (this.isIdMatchedLicense(identity.email, decryptedMail)) {
+            log("Identity of this account matched!", {account: account.name, identity: identity.email});
+            this.ValidationStatus = LicenseStates.Valid;
+            return [this.ValidationStatus, this.RealLicense];
+          }
+        }
+        
+      }
+    }
+    
+    this.ValidationStatus = LicenseStates.MailNotConfigured;
+    return [this.ValidationStatus, this.RealLicense];
   }
     
 }
   
-/* Switch detectionis not part of Licencerm but UI or Logic
+/* Switch detection is not part of Licencer but UI or Logic
        if (QuickFolders.Crypto.key_type!=1) { // not currently a domain key?
          let txt = util.getBundleString("qf.prompt.switchDomainLicense", "Switch to Domain License?");
 				  

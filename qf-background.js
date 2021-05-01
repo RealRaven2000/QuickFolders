@@ -105,9 +105,9 @@ async function main() {
 
   let key = await messenger.LegacyPrefs.getPref("extensions.quickfolders.LicenseKey");
   let licence = new Licenser(key);
-  licence.validate();
+  let status = await licence.validate();
   
-  console.log(key, licence);
+  console.log(key, licence, status);
 }
 
 main();

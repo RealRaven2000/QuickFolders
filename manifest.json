@@ -18,7 +18,10 @@
   "background": {
     "page": "qf-background.html"
   },
-  "permissions": ["notifications"],
+  "permissions": [
+    "notifications",
+    "accountsRead"
+  ],
   "experiment_apis": {
     "WindowListener": {
       "schema": "chrome/content/api/WindowListener/schema.json",

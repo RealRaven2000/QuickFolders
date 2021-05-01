@@ -15,12 +15,8 @@ import {BigIntModule} from './BigIntModule.mjs.js';
 // Dave Shapiro
 // dave@ohdave.com   
 
-export var Barrett = {
-    log: function log(txt) {
-      console.log(txt);
-    },
-    
-    BarrettMu: function BarrettMu(m) {
+export class Barrett {
+    constructor(m) {
       this.log('new BarrettMu()');
       BigIntModule.init();
       this.modulus = BigIntModule.biCopy(m);
@@ -33,9 +29,13 @@ export var Barrett = {
       this.modulo = this.BarrettMu_modulo;
       this.multiplyMod = this.BarrettMu_multiplyMod;
       this.powMod = this.BarrettMu_powMod;
-    },
+    }
 
-    BarrettMu_modulo: function BarrettMu_modulo(x) {
+    log(txt) {
+      console.log(txt);
+    }
+    
+    BarrettMu_modulo(x) {
       BigIntModule.init();
       let q1 = BigIntModule.biDivideByRadixPower(x, this.k - 1),
           q2 = BigIntModule.biMultiply(q1, this.mu),
@@ -53,16 +53,16 @@ export var Barrett = {
         rgtem = BigIntModule.biCompare(r, this.modulus) >= 0;
       }
       return r;
-    },
+    }
 
-    BarrettMu_multiplyMod: function BarrettMu_multiplyMod(x, y) {
+    BarrettMu_multiplyMod(x, y) {
       let xy = BigIntModule.biMultiply(x, y);
       return this.modulo(xy);
-    },
+    }
 
-    BarrettMu_powMod: function BarrettMu_powMod(x, y) {
+    BarrettMu_powMod(x, y) {
 			
-			let isLog = true; //use LegacyPrefs API messenger.LegacyPrefs.getPref(); QuickFolders.Preferences.isDebugOption('premium.rsa');
+      let isLog = true; //use LegacyPrefs API messenger.LegacyPrefs.getPref(); QuickFolders.Preferences.isDebugOption('premium.rsa');
       
       BigIntModule.log('BarrettMu_powMod()');
       BigIntModule.init();

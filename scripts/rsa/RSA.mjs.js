@@ -54,7 +54,7 @@ export var RSA = {
       this.chunkSize = keylength / 8;
     }
     this.radix = 16;
-    this.barrett = new Barrett.BarrettMu(this.m);
+    this.barrett = new Barrett(this.m);
   },
   
 /** 

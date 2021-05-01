@@ -295,7 +295,7 @@ async validate() {
             "Identities" : account.identities,
         });
         for (let identity of account.identities) {
-          if (defaultIdentity && defaultIdentity.id == identity.id) {
+          if (ForceSecondaryIdentity && defaultIdentity && defaultIdentity.id == identity.id) {
             log("Skipping default identity!", {identity});
             continue;
           }          

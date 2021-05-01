@@ -4,7 +4,7 @@
  */
 
 import * as util from "./scripts/qf-util.mjs.js";
-import * as licenceutils from "./scripts/licence-utils.mjs.js";
+import {Licenser} from "./scripts/Licenser.mjs.js";
 
 async function main() {
 
@@ -102,6 +102,12 @@ async function main() {
 
 
   messenger.WindowListener.startListening();
+
+  let key = await messenger.LegacyPrefs.getPref("extensions.quickfolders.LicenseKey");
+  let licence = new Licenser(key);
+  licence.validate();
+  
+  console.log(key, licence);
 }
 
 main();
@@ -113,3 +119,4 @@ messenger.NotifyTools.onNotifyBackground.addListener(async (info) => {
       break;
   }
 });
+

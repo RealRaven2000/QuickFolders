@@ -12,54 +12,7 @@ var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
 var QuickFolders_ConsoleService = null;
 
-if (!QuickFolders.Filter)
-	QuickFolders.Filter = {};
-	
-// code moved from options.js
-// open the new content tab for displaying support info, see
-// https://developer.mozilla.org/en/Thunderbird/Content_Tabs
-var QuickFolders_TabURIopener = {
-	openURLInTab: function openURLInTab(URL) {
-    let util = QuickFolders.Util;
-		URL = util.makeUriPremium(URL);
-		try {
-			let sTabMode="",
-			    tabmail;
-			tabmail = document.getElementById("tabmail");
-			if (!tabmail) {
-				// Try opening new tabs in an existing 3pane window
-				let mail3PaneWindow = util.getMail3PaneWindow();
-				if (mail3PaneWindow) {
-					tabmail = mail3PaneWindow.document.getElementById("tabmail");
-					mail3PaneWindow.focus();
-				}
-			}
-			if (tabmail) {
-				// find existing tab with URL
-				if (!util.findMailTab(tabmail, URL)) {
-					sTabMode = "contentTab";
-					tabmail.openTab(sTabMode,
-					{contentPage: URL, url: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
-				}
-			}
-			else
-				window.openDialog(
-          "chrome://messenger/content/", "_blank",
-					"chrome,dialog=no,all", null,
-          { tabType: "contentTab", 
-            tabParams: {
-              contentPage: URL, 
-              url: URL, 
-              clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", 
-              id: "QuickFolders_Weblink"
-            } 
-          } 
-        );
-		}
-		catch(e) { return false; }
-		return true;
-	}
-};
+if (!QuickFolders.Filter)	QuickFolders.Filter = {};
 
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
@@ -361,11 +314,12 @@ QuickFolders.Util = {
 			}, 200);
 	} ,
   
-  hasPremiumLicense: async function hasPremiumLicense(reset) {
+  // goal - take validation out and put it into an async function
+  
+  hasPremiumLicense: function hasPremiumLicense(reset = false) {
 		const licenser = QuickFolders.Util.Licenser;
     // early exit for Licensed copies
-    if (licenser.isValidated) 
-      return true;
+    return licenser.isValidated;  // let's not call an async function [validateLicense] from here
     // short circuit if we already validated:
     if (!reset && licenser.wasValidityTested)
       return licenser.isValidated;
@@ -375,7 +329,8 @@ QuickFolders.Util = {
       return false; // short circuit if no license key!
     if (!licenser.isValidated || reset) {
       licenser.wasValidityTested = false;
-      await licenser.validateLicense(licenseKey);
+      // this will need to be made async!
+      licenser.validateLicense(licenseKey); 
 			// store license key in this object
 			licenser.LicenseKey = licenseKey;
     }
@@ -390,7 +345,7 @@ QuickFolders.Util = {
         util = QuickFolders.Util,
 				prefs = QuickFolders.Preferences,
 				maindoc = util.getMail3PaneWindow().document;
-    if (util.hasPremiumLicense(false))
+    if (util.hasPremiumLicense())
       return;
     util.logDebugOptional("premium", "popupProFeature(" + featureName + ", " + text + ")");
 		// is notification disabled?
@@ -1279,12 +1234,12 @@ QuickFolders.Util = {
 	// appends user=pro OR user=proRenew if user has a valid / expired license
 	makeUriPremium: function makeUriPremium(URL) {
 		const util = QuickFolders.Util,
-					isPremiumLicense = util.hasPremiumLicense(false) || util.Licenser.isExpired;
+					isPremiumLicense = util.hasPremiumLicense() || util.Licenser.isExpired;
 		try {
 			let uType = "";
 			if (util.Licenser.isExpired) 
 				uType = "proRenew"
-			else if (util.hasPremiumLicense(false))
+			else if (util.hasPremiumLicense())
 			  uType = "pro";
 			// make sure we can sanitize all pages for our premium users!
 			if (   uType
@@ -1712,7 +1667,15 @@ QuickFolders.Util.FirstRun = {
 				}
 			}
 			else { 
-        let isPremiumLicense = util.hasPremiumLicense(false) || util.Licenser.isExpired,
+        // TO DO:
+        // call validateLicense async and resolve promise (maybe)        
+        // QuickFolders.Licenser.validateLicense(key).then( 
+        //   function( validationResult) { 
+        //      .. do sync stuff
+        //   } 
+        // );
+     
+        let isPremiumLicense = util.hasPremiumLicense() || util.Licenser.isExpired,
         		versionPage = util.makeUriPremium("https://quickfolders.org/version.html") + "#" + pureVersion;
         // UPDATE CASE 
         // this section does not get loaded if it's a fresh install.
@@ -2128,6 +2091,53 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
     // Finally, we have a valid folder. Return it.
     return folder;
   };
+
+
+// code moved from options.js
+// open the new content tab for displaying support info, see
+// https://developer.mozilla.org/en/Thunderbird/Content_Tabs
+var QuickFolders_TabURIopener = {
+	openURLInTab: function openURLInTab(URL) {
+    let util = QuickFolders.Util;
+		URL = util.makeUriPremium(URL);
+		try {
+			let sTabMode="",
+			    tabmail;
+			tabmail = document.getElementById("tabmail");
+			if (!tabmail) {
+				// Try opening new tabs in an existing 3pane window
+				let mail3PaneWindow = util.getMail3PaneWindow();
+				if (mail3PaneWindow) {
+					tabmail = mail3PaneWindow.document.getElementById("tabmail");
+					mail3PaneWindow.focus();
+				}
+			}
+			if (tabmail) {
+				// find existing tab with URL
+				if (!util.findMailTab(tabmail, URL)) {
+					sTabMode = "contentTab";
+					tabmail.openTab(sTabMode,
+					{contentPage: URL, url: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
+				}
+			}
+			else
+				window.openDialog(
+          "chrome://messenger/content/", "_blank",
+					"chrome,dialog=no,all", null,
+          { tabType: "contentTab", 
+            tabParams: {
+              contentPage: URL, 
+              url: URL, 
+              clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", 
+              id: "QuickFolders_Weblink"
+            } 
+          } 
+        );
+		}
+		catch(e) { return false; }
+		return true;
+	}
+};
 
 
 // the following adds the notifyTools API as a util method to communicate with the background page

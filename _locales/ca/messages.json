@@ -1042,7 +1042,7 @@
     "message": "Carpeta nova"
   },
   "qf.prompt.pasteFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\\n{0} entries were found in clipboard.\\nReplace tabs?"
+    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Keep the displayed Tabs?"
@@ -1051,10 +1051,10 @@
     "message": "Esborrar aquest objecte?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "No es troba el correu, pot haver-se mogut a algun altre lloc.\\n{1}\\n\\nVoleu cercar-lo?"
+    "message": "No es troba el correu, pot haver-se mogut a algun altre lloc.\n{1}\n\nVoleu cercar-lo?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Això suprimirà totes les pestanyes de carpetes ràpides i se substituirà pels elements del fitxer.\\nS'han llegit {0} entrades.\\nVoleu substituir les pestanyes?"
+    "message": "Això suprimirà totes les pestanyes de carpetes ràpides i se substituirà pels elements del fitxer.\nS'han llegit {0} entrades.\nVoleu substituir les pestanyes?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Switch to Domain License?"
@@ -1387,7 +1387,7 @@
     "message": "Entreu un nom per al marcador"
   },
   "qfNewSubFolder": {
-    "message": "Create subfolder {0} \\u00BB {1}…"
+    "message": "Create subfolder {0} » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "No hi ha cap carpeta pare coincident."
@@ -1465,7 +1465,7 @@
     "message": "Aquesta és una pestanya que apunta a una carpeta no vàlida:"
   },
   "qfTidyDeadFolders": {
-    "message": "This will remove the Tabs that have no valid folders assigned.\\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
+    "message": "This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
   },
   "qfTreeIconsInvalidCount": {
     "message": "Falten {0} icones"

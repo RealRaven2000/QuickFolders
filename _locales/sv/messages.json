@@ -1100,7 +1100,7 @@
     "message": "Ny mapp"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Detta kommer att radera alla QuickFolders-flikar och ersättas med objekten i ditt urklipp.\\n{0} element hittades i urklipp.\\nÄr du säker?"
+    "message": "Detta kommer att radera alla QuickFolders-flikar och ersättas med objekten i ditt urklipp.\n{0} element hittades i urklipp.\nÄr du säker?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Behålla de synliga flikarna?"
@@ -1109,10 +1109,10 @@
     "message": "Ta bort detta objekt?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Kan inte hitta e-postmeddelandet, det kanske har flyttats någonstans under tiden.\\n{1}\\n\\nVill du söka efter det?"
+    "message": "Kan inte hitta e-postmeddelandet, det kanske har flyttats någonstans under tiden.\n{1}\n\nVill du söka efter det?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Detta tar bort alla QuickFolders-flikar och ersätter dem med objekten från filen.\\n{0} poster lästes.\\nErsätt flikar?"
+    "message": "Detta tar bort alla QuickFolders-flikar och ersätter dem med objekten från filen.\n{0} poster lästes.\nErsätt flikar?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Byt till domänlicens?"
@@ -1445,7 +1445,7 @@
     "message": "Ange ett nytt namn för bokmärket"
   },
   "qfNewSubFolder": {
-    "message": "Skapa undermapp {0} \\u00BB {1}…"
+    "message": "Skapa undermapp {0} » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "Inga matchande överordnade mappar!"
@@ -1523,7 +1523,7 @@
     "message": ": Det här är en flik som hänvisar till en ogiltig mapp:"
   },
   "qfTidyDeadFolders": {
-    "message": "Det här kommer att ta bort de flikar som inte har några giltiga mappar tilldelade sig.\\nDet här kan hända om en mapp tas bort eller flyttas utan att QuickFolders meddelas om ändringen."
+    "message": "Det här kommer att ta bort de flikar som inte har några giltiga mappar tilldelade sig.\nDet här kan hända om en mapp tas bort eller flyttas utan att QuickFolders meddelas om ändringen."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} ikoner saknas"
@@ -1677,7 +1677,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.1 - snabbkorrigering för funktionen 'Markera mappar + undermappar som lästa' {L2}{L1} Jag slutförde även ungerska, förenklade kinesiska och katalanska språk. {L2}Denna version utökar quickMove-funktionen ytterligare genom följande funktioner: {L1} Flik för enstaka meddelanden: alternativ för att automatiskt öppna nästa e-post på samma flik efter att ett meddelande har flyttats {L2} {L1} Alternativ för att helt avbryta quickMove (och tömma listan över meddelanden) med ett enda tryck på ESCAPE. {L2} {L1} Avancerad matchning av överordnade mappar genom att läsa från _ och mellanslag och behandla dem som början på ett sökt namn. {L2} {L1} Reparerad: söka i mappar medan du tittar på meddelanden som visas i sökresultat eller från konversationer i flera mappar. {L2} {L1} Dessa och ytterligare funktioner för att begränsa sökresultat från vissa konton kan konfigureras via Avancerade sökinställningar på fliken QuickFolders Pro. {L2}"
+    "message": "{L1} 5.5.2 - snabbkorrigering - i Thunderbird 89 visades alternativmenyalternativet inte i tilläggshanteraren {L2}{L1} 5.5.2 - snabbkorrigering för quickMove - överordnad mapp som innehåller en understrykning som inte föreslås som överordnad {L2}{L1} 5.5.1 - snabbkorrigering för funktionen 'Markera mappar + undermappar som lästa' {L2}{L1} Jag slutförde även ungerska, förenklade kinesiska och katalanska språk. {L2}Denna version utökar quickMove-funktionen ytterligare genom följande funktioner: {L1} Flik för enstaka meddelanden: alternativ för att automatiskt öppna nästa e-post på samma flik efter att ett meddelande har flyttats {L2} {L1} Alternativ för att helt avbryta quickMove (och tömma listan över meddelanden) med ett enda tryck på ESCAPE. {L2} {L1} Avancerad matchning av överordnade mappar genom att läsa från _ och mellanslag och behandla dem som början på ett sökt namn. {L2} {L1} Reparerad: söka i mappar medan du tittar på meddelanden som visas i sökresultat eller från konversationer i flera mappar. {L2} {L1} Dessa och ytterligare funktioner för att begränsa sökresultat från vissa konton kan konfigureras via Avancerade sökinställningar på fliken QuickFolders Pro. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

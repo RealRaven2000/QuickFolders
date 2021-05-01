@@ -1100,7 +1100,7 @@
     "message": "Nueva carpeta"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Esto borrará todas las pestañas de QuickFolders y las reemplazará con los elementos en su portapapeles.\\nSe encontraron {0} entradas en el portapapeles.\\n ¿Está seguro?"
+    "message": "Esto borrará todas las pestañas de QuickFolders y las reemplazará con los elementos en su portapapeles.\nSe encontraron {0} entradas en el portapapeles.\n ¿Está seguro?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "¿Conservar las pestañas mostradas?"
@@ -1109,10 +1109,10 @@
     "message": "¿Eliminar este elemento?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "No se puede encontrar el correo, podría haber sido movido a cualquier parte entre tanto.\\n{1}\\n\\¿Quiere buscarlo?"
+    "message": "No se puede encontrar el correo, podría haber sido movido a cualquier parte entre tanto.\n{1}\n¿Quiere buscarlo?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Esto eliminará todas las pestañas de QuickFolders y las reemplazará con los elementos del archivo.\\n{0} se leyeron las entradas.\\n¿Reemplazar pestañas?"
+    "message": "Esto eliminará todas las pestañas de QuickFolders y las reemplazará con los elementos del archivo.\n{0} se leyeron las entradas.\n¿Reemplazar pestañas?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "¿Cambiar a licencia de dominio?"
@@ -1445,7 +1445,7 @@
     "message": "Introduzca un nuevo nombre para la pestaña"
   },
   "qfNewSubFolder": {
-    "message": "Crear subcarpeta {0} \\u00BB {1}…"
+    "message": "Crear subcarpeta {0} » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "¡No hay carpetas principales que coincidan!"
@@ -1523,7 +1523,7 @@
     "message": ": Esto es una pestaña que apunta a una carpeta no válida:"
   },
   "qfTidyDeadFolders": {
-    "message": "Esto eliminará las Pestañas que no tienen carpetas válidas asignadas.\\nEsto ocurre a veces si una carpeta se borra o mueve sin que QuickFolders sea notificado."
+    "message": "Esto eliminará las Pestañas que no tienen carpetas válidas asignadas.\nEsto ocurre a veces si una carpeta se borra o mueve sin que QuickFolders sea notificado."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} iconos ausentes"
@@ -1677,7 +1677,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.1 - revisión para la función 'Marcar carpetas + subcarpetas como leídas' {L2}{L1}Locales completos en húngaro, chino simplificado y catalán.{L2}Esta versión amplía aún más la función quickMove a través de las siguientes características: {L1} Pestaña de mensaje único: opción para abrir automáticamente el siguiente correo electrónico en la misma pestaña después de mover un mensaje {L2} {L1} Opción para cancelar por completo QuickMove (y vaciar su lista de mensajes) con una sola pulsación de ESCAPE. {L2} {L1} Coincidencia avanzada de carpetas principales mediante la lectura de _ y delimitadores de espacio y tratándolos como el comienzo de un nombre buscado. {L2} {L1} Reparado: búsqueda de carpetas durante la visualización mensajes que se muestran en los resultados de búsqueda o en conversaciones de varias carpetas. {L2} {L1} Estas y otras funciones adicionales para restringir los resultados de búsqueda de ciertas cuentas se pueden configurar a través de la Configuración de búsqueda avanzada en la pestaña QuickFolders Pro. {L2}"
+    "message": "{L1} 5.5.2 - revisión - en Thunderbird 89, el elemento del menú de opciones no se mostraba en el Administrador de complementos {L2}{L1} 5.5.2 - revisión para quickMove - carpeta principal que contiene un guión bajo no sugerido como principal.{L2}{L1} 5.5.1 - revisión para la función 'Marcar carpetas + subcarpetas como leídas' {L2}{L1}Locales completos en húngaro, chino simplificado y catalán.{L2}Esta versión amplía aún más la función quickMove a través de las siguientes características: {L1} Pestaña de mensaje único: opción para abrir automáticamente el siguiente correo electrónico en la misma pestaña después de mover un mensaje {L2} {L1} Opción para cancelar por completo QuickMove (y vaciar su lista de mensajes) con una sola pulsación de ESCAPE. {L2} {L1} Coincidencia avanzada de carpetas principales mediante la lectura de _ y delimitadores de espacio y tratándolos como el comienzo de un nombre buscado. {L2} {L1} Reparado: búsqueda de carpetas durante la visualización mensajes que se muestran en los resultados de búsqueda o en conversaciones de varias carpetas. {L2} {L1} Estas y otras funciones adicionales para restringir los resultados de búsqueda de ciertas cuentas se pueden configurar a través de la Configuración de búsqueda avanzada en la pestaña QuickFolders Pro. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

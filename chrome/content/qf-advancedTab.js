@@ -106,7 +106,7 @@ QuickFolders.AdvancedTab = {
       }
 			// apply email settings to all child folders
 			isRecursive.checked = (entry.flags & ADVANCED_FLAGS.EMAIL_RECURSIVE) && true;
-			if (!util.hasPremiumLicense(false)) {
+			if (!util.hasPremiumLicense()) {
 				isRecursive.disabled = true;
 				let proImg1 = elem('proRecursiveIcon'),
 				    theText=util.getBundleString("qf.notification.premium.text",

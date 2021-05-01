@@ -1100,7 +1100,7 @@
     "message": "Nova mapa"
   },
   "qf.prompt.pasteFolders": {
-    "message": "To bo izbrisalo vse zavihke s hitrimi mapami in jih nadomestilo s predmeti na odložišču.\\nNo odložišču je bilo najdenih {0} predmetov.\\Ali ste prepričani?"
+    "message": "To bo izbrisalo vse zavihke s hitrimi mapami in jih nadomestilo s predmeti na odložišču.\nNo odložišču je bilo najdenih {0} predmetov.\nAli ste prepričani?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Ohrani prikazane zavihke?"
@@ -1109,10 +1109,10 @@
     "message": "Odstrani ta predmet?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Pošte ni mogoče najti, morda je bila med tem premaknjena drugam .\\n{1}\\n\\nAli jo želite poiskati?"
+    "message": "Pošte ni mogoče najti, morda je bila med tem premaknjena drugam .\n{1}\n\nAli jo želite poiskati?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\\n{0} entries were read.\\nReplace tabs?"
+    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Preklopi na domensko dovoljenje?"
@@ -1445,7 +1445,7 @@
     "message": "Vnesite novo me za zavihek"
   },
   "qfNewSubFolder": {
-    "message": "Ustvari podmapo {0} \\u00BB {1} …"
+    "message": "Ustvari podmapo {0} » {1} …"
   },
   "qfNoFolderMatch": {
     "message": "Ni ujemajočih se nadrejenih map!"
@@ -1523,7 +1523,7 @@
     "message": ": To je zavihek, ki kaže na neveljavno mapo:"
   },
   "qfTidyDeadFolders": {
-    "message": "To bo odstranilo zavihke, ki nimajo dodeljenih veljavnih map.\\nTo se včasih zgodi, če je mapa izbrisana ali premaknjena brez obveščanja razširitve QuickFolders."
+    "message": "To bo odstranilo zavihke, ki nimajo dodeljenih veljavnih map.\nTo se včasih zgodi, če je mapa izbrisana ali premaknjena brez obveščanja razširitve QuickFolders."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} ikon manjka"
@@ -1677,7 +1677,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.1 - hitri popravek za funkcijo »Označi mape in podmape kot prebrane« {L2}{L1} Izpolnil sem tudi madžarski, poenostavljeni kitajski in katalonski jezik. {L2}Ta različica nadalje razširja funkcijo quickMove z naslednjimi funkcijami: {L1} Zavihek za eno sporočilo: možnost samodejnega odpiranja naslednjega e-poštnega sporočila na istem zavihku po premikanju sporočila {L2} {L1} Možnost popolnega preklica quickMove (in izpraznite seznam sporočila) z enim samim pritiskom tipke ESCAPE. {L2} {L1} Napredno ujemanje nadrejenih map z branjem iz _ in ločevalnikov presledkov ter z njimi ravna kot z začetkom iskanega imena. {L2} {L1} Popravljeno: iskanje map med ogledom sporočila, prikazana v rezultatih iskanja ali iz pogovora v več mapah. {L2} {L1} Te in dodatne funkcije za omejevanje rezultatov iskanja iz določenih računov lahko nastavite v naprednih nastavitvah iskanja na zavihku QuickFolders Pro. {L2}"
+    "message": "{L1} 5.5.2 - hitri popravek - v Thunderbirdu 89 element menija z možnostmi ni bil prikazan v upravitelju dodatkov {L2}{L1} 5.5.2 - hitri popravek za quickMove - nadrejena mapa, ki vsebuje podčrtaj, ni predlagana kot nadrejena {L2}{L1} 5.5.1 - hitri popravek za funkcijo »Označi mape in podmape kot prebrane« {L2}{L1} Izpolnil sem tudi madžarski, poenostavljeni kitajski in katalonski jezik. {L2}Ta različica nadalje razširja funkcijo quickMove z naslednjimi funkcijami: {L1} Zavihek za eno sporočilo: možnost samodejnega odpiranja naslednjega e-poštnega sporočila na istem zavihku po premikanju sporočila {L2} {L1} Možnost popolnega preklica quickMove (in izpraznite seznam sporočila) z enim samim pritiskom tipke ESCAPE. {L2} {L1} Napredno ujemanje nadrejenih map z branjem iz _ in ločevalnikov presledkov ter z njimi ravna kot z začetkom iskanega imena. {L2} {L1} Popravljeno: iskanje map med ogledom sporočila, prikazana v rezultatih iskanja ali iz pogovora v več mapah. {L2} {L1} Te in dodatne funkcije za omejevanje rezultatov iskanja iz določenih računov lahko nastavite v naprednih nastavitvah iskanja na zavihku QuickFolders Pro. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

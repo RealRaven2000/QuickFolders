@@ -451,7 +451,7 @@ QuickFolders.Interface = {
 		let currentFolder = QuickFolders.Util.CurrentFolder,
 				folder;
 
-		if (!util.hasPremiumLicense(false))
+		if (!util.hasPremiumLicense())
 			util.popupProFeature("skipUnreadFolder");
 
 		if (prefs.isDebugOption('navigation')) debugger;
@@ -1432,7 +1432,7 @@ QuickFolders.Interface = {
 		if (tabmode == 'message' || tabmode == 'folder' || tabmode == '3pane' || tabmode == 'glodaList') {
 			logKey(e);
       let QuickMove = QuickFolders.quickMove;
-      if (util.hasPremiumLicense(false)) {
+      if (util.hasPremiumLicense()) {
 				let isShiftOnly = !isAlt && !isCtrl && isShift && dir!='up',
             isNoAccelerator = !isAlt && !isCtrl && !isShift && dir!='up',
 				    theKeyPressed = e.key.toLowerCase();
@@ -2479,7 +2479,7 @@ QuickFolders.Interface = {
       if (entries[i].icon)
         countIcons++;
     }
-    if (!util.hasPremiumLicense(false) && countIcons>3){
+    if (!util.hasPremiumLicense() && countIcons >= MAX_ICONS){
       let text =util.getBundleString("qf.notification.premium.tabIcons",
         "You have now {1} icon(s) defined. The free version of QuickFolders allows a maximum of {2}.");
       util.popupProFeature("tabIcons", text.replace("{1}", countIcons).replace("{2}", MAX_ICONS));
@@ -4562,6 +4562,10 @@ QuickFolders.Interface = {
 
         // [issue 135] allow in-string search for parents using delimiters: - _ . and space!
         let folderNameMatches = f.prettyName.toLowerCase().split(/[_ ]/);
+        // [issue 148] splitting prevents full name to be matched!
+        if (folderNameMatches.length>1) {
+          folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
+        }
         if (folderNameMatches.some(a => a.startsWith(ancestors[maxLevel]) && a.length>1)) {
 					// 1st (top level) match
 					if (!directParent) directParent = f;
@@ -4587,6 +4591,10 @@ QuickFolders.Interface = {
 				maxLevel--;
         // [issue 135] allow in-string search for children using delimiters: - _ . and space!
         let folderNameMatches = f.prettyName.toLowerCase().split(/[-_. ]/);
+        // [issue 148] splitting prevents full name to be matched!
+        if (folderNameMatches.length>1) {
+          folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
+        }
 				if (folderNameMatches.some(a => a.startsWith(search))) {   
 					if (!directParent) directParent = folder;
 					if (maxLevel == 0) {
@@ -5035,7 +5043,7 @@ QuickFolders.Interface = {
 				}
         QI.updateFindBoxMenus(show);
 
-				let autofill = (ff.value == "") && util.hasPremiumLicense(false) && prefs.getBoolPref('quickMove.autoFill');
+				let autofill = (ff.value == "") && util.hasPremiumLicense() && prefs.getBoolPref('quickMove.autoFill');
 				if (autofill) {
 					ff.value = prefs.getStringPref('quickMove.lastFolderName'); // should [ESC] delete contents?
 					ff.select();

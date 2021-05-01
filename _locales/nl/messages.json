@@ -1100,7 +1100,7 @@
     "message": "Nieuwe map"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items op uw klembord.\\n{0} items gevonden op klembord.\\nWeet u het zeker?"
+    "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items op uw klembord.\n{0} items gevonden op klembord.\nWeet u het zeker?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Weergegeven tabbladen behouden?"
@@ -1109,10 +1109,10 @@
     "message": "Dit bericht verwijderen?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Kan de e-mail niet vinden; mogelijk is deze ondertussen verplaatst.\\n{1}\\n\\nWilt u ernaar zoeken?"
+    "message": "Kan de e-mail niet vinden; mogelijk is deze ondertussen verplaatst.\n{1}\n\nWilt u ernaar zoeken?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items in het bestand.\\n{0} items zijn gelezen.\\nTabbladen vervangen?"
+    "message": "Dit verwijdert alle QuickFolders-tabbladen en vervangt deze door de items in het bestand.\n{0} items zijn gelezen.\nTabbladen vervangen?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Wisselen naar domeinlicentie?"
@@ -1445,7 +1445,7 @@
     "message": "Voer een nieuwe naam in voor het tabblad"
   },
   "qfNewSubFolder": {
-    "message": "Submap {0} aanmaken \\u00BB {1}…"
+    "message": "Submap {0} aanmaken » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "Geen overeenkomende bovenliggende mappen!"
@@ -1523,7 +1523,7 @@
     "message": ": Dit tabblad verwijst naar een ongeldige map."
   },
   "qfTidyDeadFolders": {
-    "message": "Dit verwijdert de tabbladen waaraan geen geldige mappen zijn toegewezen.\\nDit gebeurt soms als een map wordt verwijderd of verplaatst zonder dat QuickFolders hiervan op de hoogte wordt gesteld."
+    "message": "Dit verwijdert de tabbladen waaraan geen geldige mappen zijn toegewezen.\nDit gebeurt soms als een map wordt verwijderd of verplaatst zonder dat QuickFolders hiervan op de hoogte wordt gesteld."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} ontbrekende pictogrammen"
@@ -1677,7 +1677,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.1 - hotfix voor de functie 'Markeer mappen + submappen als gelezen' {L2}{L1} Ik heb ook Hongaarse, Vereenvoudigd Chinese en Catalaanse taalinstellingen voltooid. {L2}Deze versie breidt de quickMove-functie verder uit met de volgende functies: {L1} Single Message Tab: optie om automatisch de volgende e-mail op hetzelfde tabblad te openen na het verplaatsen van een bericht {L2} {L1} Optie om quickMove volledig te annuleren (en de lijst met berichten) met een enkele druk op ESCAPE. {L2} {L1} Geavanceerde afstemming van bovenliggende mappen door het lezen van _ en spatiescheidingstekens en deze te behandelen als het begin van een gezochte naam. {L2} {L1} Gerepareerd: mappen zoeken tijdens het bekijken berichten die worden weergegeven in zoekresultaten of uit conversaties met meerdere mappen. {L2} {L1} Deze en aanvullende functies om zoekresultaten van bepaalde accounts te beperken, kunnen worden geconfigureerd via de geavanceerde zoekinstellingen op het tabblad QuickFolders Pro. {L2}"
+    "message": "{L1} 5.5.2 - hotfix - in Thunderbird 89 werd het optiemenu-item niet weergegeven in Add-onsbeheer {L2}{L1} 5.5.2 - hotfix voor quickMove - bovenliggende map met een onderstrepingsteken dat niet wordt voorgesteld als bovenliggende {L2}{L1} 5.5.1 - hotfix voor de functie 'Markeer mappen + submappen als gelezen' {L2}{L1} Ik heb ook Hongaarse, Vereenvoudigd Chinese en Catalaanse taalinstellingen voltooid. {L2}Deze versie breidt de quickMove-functie verder uit met de volgende functies: {L1} Single Message Tab: optie om automatisch de volgende e-mail op hetzelfde tabblad te openen na het verplaatsen van een bericht {L2} {L1} Optie om quickMove volledig te annuleren (en de lijst met berichten) met een enkele druk op ESCAPE. {L2} {L1} Geavanceerde afstemming van bovenliggende mappen door het lezen van _ en spatiescheidingstekens en deze te behandelen als het begin van een gezochte naam. {L2} {L1} Gerepareerd: mappen zoeken tijdens het bekijken berichten die worden weergegeven in zoekresultaten of uit conversaties met meerdere mappen. {L2} {L1} Deze en aanvullende functies om zoekresultaten van bepaalde accounts te beperken, kunnen worden geconfigureerd via de geavanceerde zoekinstellingen op het tabblad QuickFolders Pro. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1100,7 +1100,7 @@
     "message": "Nowy Folder"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Spowoduje to usunięcie wszystkich zakładek QuickFolders i podmieni je z tymi zawartymi w schowku.\\nZnaleziono w schowku {0} wpisów.\\nCzy na pewno?"
+    "message": "Spowoduje to usunięcie wszystkich zakładek QuickFolders i podmieni je z tymi zawartymi w schowku.\nZnaleziono w schowku {0} wpisów.\nCzy na pewno?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Zachować wyświetlone zakładki?"
@@ -1109,10 +1109,10 @@
     "message": "Usunąć tę pozycję?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Nie można znaleźć wiadomości. Być może została przeniesiona w inne miejsce.\\n{1}\\n\\nCzy chcesz jej poszukać?"
+    "message": "Nie można znaleźć wiadomości. Być może została przeniesiona w inne miejsce.\n{1}\n\nCzy chcesz jej poszukać?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Spowoduje to usunięcie wszystkich kart QuickFolders i zastąpienie elementami z pliku.\\n{0} wpisy zostały przeczytane.\\nCzy zamienić karty?"
+    "message": "Spowoduje to usunięcie wszystkich kart QuickFolders i zastąpienie elementami z pliku.\n{0} wpisy zostały przeczytane.\nCzy zamienić karty?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Przełączyć do strony licencji?"
@@ -1445,7 +1445,7 @@
     "message": "Podaj nową nazwę zakładki"
   },
   "qfNewSubFolder": {
-    "message": "Utwórz folder podrzędny {0} \\u00BB {1}…"
+    "message": "Utwórz folder podrzędny {0} » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "Brak pasujących folderów nadrzędnych!"
@@ -1523,7 +1523,7 @@
     "message": ": Ta zakładka odnosi się do niewłaściwego folderu:"
   },
   "qfTidyDeadFolders": {
-    "message": "Spowoduje to usunięcie kart, które nie mają przypisanych właściwych folderów.\\nDzieje się tak czasami, jeśli folder zostanie usunięty lub przeniesiony bez powiadomienia QuickFolders."
+    "message": "Spowoduje to usunięcie kart, które nie mają przypisanych właściwych folderów.\nDzieje się tak czasami, jeśli folder zostanie usunięty lub przeniesiony bez powiadomienia QuickFolders."
   },
   "qfTreeIconsInvalidCount": {
     "message": "Brakujące ikony: {0}"
@@ -1677,7 +1677,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.1 - poprawka do funkcji „Oznacz foldery + podfoldery jako przeczytane” {L2}{L1} Ukończyłem również język węgierski, chiński uproszczony i kataloński. {L2}Ta wersja dodatkowo rozszerza funkcję quickMove o następujące funkcje: {L1} Pojedyncza karta wiadomości: opcja automatycznego otwierania następnej wiadomości e-mail na tej samej karcie po przeniesieniu wiadomości {L2} {L1} Opcja całkowitego anulowania quickMove (i opróżnienia jego listy wiadomości) jednym naciśnięciem klawisza ESCAPE. {L2} {L1} Zaawansowane dopasowywanie folderów nadrzędnych poprzez czytanie z _ i separatorów spacji i traktowanie ich jak początku wyszukiwanej nazwy. {L2} {L1} Naprawiono: wyszukiwanie folderów podczas przeglądania wiadomości wyświetlane w wynikach wyszukiwania lub z konwersacji obejmującej wiele folderów. {L2} {L1} Te i dodatkowe funkcje ograniczające wyniki wyszukiwania z niektórych kont można skonfigurować w ustawieniach wyszukiwania zaawansowanego na karcie QuickFolders Pro. {L2}"
+    "message": "{L1} 5.5.2 - poprawka - w Thunderbirdzie 89 pozycja menu opcji nie była wyświetlana w Menedżerze dodatków {L2}{L1} 5.5.2 - poprawka do quickMove - folder nadrzędny zawierający podkreślenie nie jest sugerowany jako nadrzędny {L2}{L1} 5.5.1 - poprawka do funkcji „Oznacz foldery + podfoldery jako przeczytane” {L2}{L1} Ukończyłem również język węgierski, chiński uproszczony i kataloński. {L2}Ta wersja dodatkowo rozszerza funkcję quickMove o następujące funkcje: {L1} Pojedyncza karta wiadomości: opcja automatycznego otwierania następnej wiadomości e-mail na tej samej karcie po przeniesieniu wiadomości {L2} {L1} Opcja całkowitego anulowania quickMove (i opróżnienia jego listy wiadomości) jednym naciśnięciem klawisza ESCAPE. {L2} {L1} Zaawansowane dopasowywanie folderów nadrzędnych poprzez czytanie z _ i separatorów spacji i traktowanie ich jak początku wyszukiwanej nazwy. {L2} {L1} Naprawiono: wyszukiwanie folderów podczas przeglądania wiadomości wyświetlane w wynikach wyszukiwania lub z konwersacji obejmującej wiele folderów. {L2} {L1} Te i dodatkowe funkcje ograniczające wyniki wyszukiwania z niektórych kont można skonfigurować w ustawieniach wyszukiwania zaawansowanego na karcie QuickFolders Pro. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

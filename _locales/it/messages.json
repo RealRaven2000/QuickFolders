@@ -1100,7 +1100,7 @@
     "message": "Nuova cartella"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Questa azione cancellerà tutte le schede di QF e le rimpiazzerà con quanto presente negli Appunti.\\Sono stati trovati {0) elementi negli Appunti.\\Si è veramente sicuri?"
+    "message": "Questa azione cancellerà tutte le schede di QF e le rimpiazzerà con quanto presente negli Appunti.\nSono stati trovati {0) elementi negli Appunti.\nSi è veramente sicuri?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Mantenere le schede visualizzate?"
@@ -1109,10 +1109,10 @@
     "message": "Rimuovere questo elemento?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Non è possibile trovare il messaggio. Nel frattempo potrebbe essere stato spostato da qualche altra parte\\n{1}\\n\\n\\Lo si vuol cercare?"
+    "message": "Non è possibile trovare il messaggio. Nel frattempo potrebbe essere stato spostato da qualche altra parte\n{1}\n\nLo si vuol cercare?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Questo cancellerà tutte le schede QuickFolders e le rimpiazzerà con gli elementi presenti nel file\\n{0}. Si vuol procedere?"
+    "message": "Questo cancellerà tutte le schede QuickFolders e le rimpiazzerà con gli elementi presenti nel file\n{0}. Si vuol procedere?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Si vuol passare alla licenza di dominio?"
@@ -1445,7 +1445,7 @@
     "message": "Inserisci un nuovo nome per la scheda"
   },
   "qfNewSubFolder": {
-    "message": "Crea sottocartella {0} \\u00BB {1}…"
+    "message": "Crea sottocartella {0} » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "Nessuna cartella principale corrispondente!"
@@ -1523,7 +1523,7 @@
     "message": ": Questa è una scheda che fa riferimento a una cartella non valida:"
   },
   "qfTidyDeadFolders": {
-    "message": "Questa operazione rimuove le schede che non corrispondono a cartelle valide.\\nQuesto può accadere se viene eliminata o spostata una cartella senza che QuickFolders ne sia informato."
+    "message": "Questa operazione rimuove le schede che non corrispondono a cartelle valide.\nQuesto può accadere se viene eliminata o spostata una cartella senza che QuickFolders ne sia informato."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} icone mancanti"
@@ -1677,7 +1677,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.1 - hotfix per la funzione 'Contrassegna cartelle e sottocartelle come lette'{L2}{L1} Ho anche completato le lingue ungherese, cinese semplificato e catalano. {L2}Questa versione estende ulteriormente la funzione quickMove attraverso le seguenti caratteristiche: {L1} Scheda messaggio singolo: opzione per aprire automaticamente l'e-mail successiva nella stessa scheda dopo aver spostato un messaggio {L2} {L1} Opzione per annullare completamente quickMove (e svuotare il suo elenco di messaggi) con una singola pressione di ESCAPE. {L2} {L1} Corrispondenza avanzata delle cartelle principali leggendo da _ e dai delimitatori di spazio e trattandoli come l'inizio di un nome cercato. {L2} {L1} Riparato: ricerca nelle cartelle durante la visualizzazione messaggi visualizzati nei risultati di ricerca o da conversazioni in più cartelle. {L2} {L1} Queste e altre funzioni per limitare i risultati della ricerca da determinati account possono essere configurate tramite le Impostazioni di ricerca avanzata nella scheda QuickFolders Pro. {L2}"
+    "message": "{L1} 5.5.2 - hotfix - in Thunderbird 89, la voce di menu delle opzioni non veniva visualizzata in Gestione componenti aggiuntivi {L2}{L1} 5.5.2 - hotfix per quickMove - cartella principale contenente un trattino basso non suggerito come genitore {L2}{L1} 5.5.1 - hotfix per la funzione 'Contrassegna cartelle e sottocartelle come lette'{L2}{L1} Ho anche completato le lingue ungherese, cinese semplificato e catalano. {L2}Questa versione estende ulteriormente la funzione quickMove attraverso le seguenti caratteristiche: {L1} Scheda messaggio singolo: opzione per aprire automaticamente l'e-mail successiva nella stessa scheda dopo aver spostato un messaggio {L2} {L1} Opzione per annullare completamente quickMove (e svuotare il suo elenco di messaggi) con una singola pressione di ESCAPE. {L2} {L1} Corrispondenza avanzata delle cartelle principali leggendo da _ e dai delimitatori di spazio e trattandoli come l'inizio di un nome cercato. {L2} {L1} Riparato: ricerca nelle cartelle durante la visualizzazione messaggi visualizzati nei risultati di ricerca o da conversazioni in più cartelle. {L2} {L1} Queste e altre funzioni per limitare i risultati della ricerca da determinati account possono essere configurate tramite le Impostazioni di ricerca avanzata nella scheda QuickFolders Pro. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

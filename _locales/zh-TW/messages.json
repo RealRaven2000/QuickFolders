@@ -1100,7 +1100,7 @@
     "message": "新資料夾"
   },
   "qf.prompt.pasteFolders": {
-    "message": "這將刪除所有QuickFolders分頁，並從你的剪貼簿中置換項目。在剪貼簿中發現\\n{0} 項目，你確定嗎？"
+    "message": "這將刪除所有QuickFolders分頁，並從你的剪貼簿中置換項目。在剪貼簿中發現\n{0} 項目，你確定嗎？"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "保持顯示的分頁？"
@@ -1109,10 +1109,10 @@
     "message": "移除這個項目？"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "不能找到該封信件，或許是因為它在某個時候被移動到另外的地方。\\n{1}\\n\\n您想要搜尋這封郵件嗎？"
+    "message": "不能找到該封信件，或許是因為它在某個時候被移動到另外的地方。\n{1}\n\n您想要搜尋這封郵件嗎？"
   },
   "qf.prompt.restoreFolders": {
-    "message": "這將刪除所有 QuickFolders 分頁並且置換檔案中的項目。讀取到  \\n{0} 項目。 \\n 置換分頁？"
+    "message": "這將刪除所有 QuickFolders 分頁並且置換檔案中的項目。讀取到  \n{0} 項目。 \n 置換分頁？"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "切換到主要的授權？"
@@ -1445,7 +1445,7 @@
     "message": "鍵入標籤的新名稱"
   },
   "qfNewSubFolder": {
-    "message": "新增子資料夾 {0} \\u00BB {1}..."
+    "message": "新增子資料夾 {0} » {1}..."
   },
   "qfNoFolderMatch": {
     "message": "沒有匹配的父文件夾！"
@@ -1523,7 +1523,7 @@
     "message": "：這是一個指向不正確資料夾的標籤："
   },
   "qfTidyDeadFolders": {
-    "message": "這將移除那些指向不正確資料夾的標籤。\\n 這有時候發生在QuickFolders沒有注意到一個已經刪除或移動的資料夾。"
+    "message": "這將移除那些指向不正確資料夾的標籤。\n 這有時候發生在QuickFolders沒有注意到一個已經刪除或移動的資料夾。"
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} 圖示遺失"
@@ -1677,7 +1677,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}5.5.1-“將文件夾+子文件夾標記為已讀”功能的修復程序{L2}{L1}我還完成了匈牙利語，簡體中文和加泰羅尼亞語的地區設置。{L2}此版本通過以下功能進一步擴展了quickMove功能：{L1}單個郵件標籤：此選項可在移動郵件後自動在同一標籤中打開下一封電子郵件{L2} {L1}選項，以完全取消quickMove（並清空其列表 {L2} {L1}通過讀取_和空格分隔符並將它們視為搜索名稱的開頭來進行高級匹配，例如：{L2} {L1}已修復：在查看時搜索文件夾 {L2} {L1}這些和其他用於限制某些帳戶搜索結果的功能可以通過QuickFolders Pro標籤上的“高級搜索設置”進行配置。{L2}"
+    "message": "{L1} 5.5.2-修補程序-在Thunderbird 89中，選項菜單項未顯示在附加組件管理器中{L2}{L1} 5.5.2-quickMove的修復程序-包含下劃線的父文件夾不建議用作父項{L2}{L1}5.5.1-“將文件夾+子文件夾標記為已讀”功能的修復程序{L2}{L1}我還完成了匈牙利語，簡體中文和加泰羅尼亞語的地區設置。{L2}此版本通過以下功能進一步擴展了quickMove功能：{L1}單個郵件標籤：此選項可在移動郵件後自動在同一標籤中打開下一封電子郵件{L2} {L1}選項，以完全取消quickMove（並清空其列表 {L2} {L1}通過讀取_和空格分隔符並將它們視為搜索名稱的開頭來進行高級匹配，例如：{L2} {L1}已修復：在查看時搜索文件夾 {L2} {L1}這些和其他用於限制某些帳戶搜索結果的功能可以通過QuickFolders Pro標籤上的“高級搜索設置”進行配置。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

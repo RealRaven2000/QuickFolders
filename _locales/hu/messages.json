@@ -1083,7 +1083,7 @@
     "message": "New Folder"
   },
   "qf.prompt.pasteFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\\n{0} entries were found in clipboard.\\nReplace tabs?"
+    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Megtartja a megjelenített füleket?"
@@ -1092,10 +1092,10 @@
     "message": "Eltávolítja ezt az elemet?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "A levél nem található, lehet, hogy időközben máshova került.\\n{1}\\n\\nMeg akarja keresni?"
+    "message": "A levél nem található, lehet, hogy időközben máshova került.\n{1}\n\nMeg akarja keresni?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Taz ő törli az összes QuickFolders lapot, és lecseréli a fájl elemeire.\\n{0} entries were read.\\nReplace tabs?"
+    "message": "Taz ő törli az összes QuickFolders lapot, és lecseréli a fájl elemeire.\n{0} entries were read.\nReplace tabs?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Switch to Domain License?"
@@ -1428,7 +1428,7 @@
     "message": "Írja be a könyvjelző új nevét"
   },
   "qfNewSubFolder": {
-    "message": "Create subfolder {0} \\u00BB {1}…"
+    "message": "Create subfolder {0} » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "Nincsenek megfelelő szülőmappák!"
@@ -1506,7 +1506,7 @@
     "message": ": Ez a fül egy érvénytelen mappára mutat:"
   },
   "qfTidyDeadFolders": {
-    "message": "Ez eltávolítja a füleket, amelyek nincsenek érvényes mappához rendelve.\\nEz néha akkor történik, ha egy mappát törölnek vagy mozgatnak a QuickFolders értesítése nélkül."
+    "message": "Ez eltávolítja a füleket, amelyek nincsenek érvényes mappához rendelve.\nEz néha akkor történik, ha egy mappát törölnek vagy mozgatnak a QuickFolders értesítése nélkül."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} icons missing"
@@ -1638,7 +1638,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.1 - gyorsjavítás a „Mappák + almappák megjelölése olvasottként” funkcióhoz [144. kiadás] {L2}{L1} Magyar, egyszerűsített kínai és katalán nyelveket is kitöltöttem. {L2} Ez a verzió tovább javítja a quickMove funkciót a következő funkciók révén: {L1} Egyetlen üzenet fül: opció a következő e-mail ugyanazon a lapon egy üzenet áthelyezése után {L2} {L1} Lehetőség a QuickMove teljes törlésére (és az üzenetek listájának kiürítésére) az ESCAPE egyetlen megnyomásával. {L2} {L1} A szülőmappák speciális egyeztetése a következőből: _ és szóközökkel, és úgy kezeljük őket, mint a keresett név kezdetét. {L2} {L1} Javítva: mappák keresése a keresési eredmények között megjelenő üzenetek vagy a többmappás beszélgetések során. {L2} {L1} Ezek és további funkciók A keresési eredmények bizonyos fiókokból történő korlátozása a QuickFolders Pro fül Speciális keresési beállításai között konfigurálható. {L2}"
+    "message": "{L1} 5.5.2 - gyorsjavítás - a Thunderbird 89 alkalmazásban a Beállítások menüpont nem jelent meg a Bővítménykezelőben {L2}{L1} 5.5.2 - gyorsjavítás a quickMove-hoz - szülő mappa, amely aláhúzást tartalmaz, nem javasolt szülőnek{L2}{L1} 5.5.1 - gyorsjavítás a „Mappák + almappák megjelölése olvasottként” funkcióhoz [144. kiadás] {L2}{L1} Magyar, egyszerűsített kínai és katalán nyelveket is kitöltöttem. {L2} Ez a verzió tovább javítja a quickMove funkciót a következő funkciók révén: {L1} Egyetlen üzenet fül: opció a következő e-mail ugyanazon a lapon egy üzenet áthelyezése után {L2} {L1} Lehetőség a QuickMove teljes törlésére (és az üzenetek listájának kiürítésére) az ESCAPE egyetlen megnyomásával. {L2} {L1} A szülőmappák speciális egyeztetése a következőből: _ és szóközökkel, és úgy kezeljük őket, mint a keresett név kezdetét. {L2} {L1} Javítva: mappák keresése a keresési eredmények között megjelenő üzenetek vagy a többmappás beszélgetések során. {L2} {L1} Ezek és további funkciók A keresési eredmények bizonyos fiókokból történő korlátozása a QuickFolders Pro fül Speciális keresési beállításai között konfigurálható. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

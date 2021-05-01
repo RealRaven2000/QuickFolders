@@ -996,7 +996,7 @@
     "message": "Nueva carpeta"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Esto eliminará todos los QuickFolders y los reemplazará con los \\n{0}elementos que se encuentren en su portapapeles.\\n¿Está seguro?"
+    "message": "Esto eliminará todos los QuickFolders y los reemplazará con los \n{0}elementos que se encuentren en su portapapeles.\n¿Está seguro?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "¿Mantener las pestañas desplegadas?"
@@ -1005,10 +1005,10 @@
     "message": "¿Eliminar este elemento?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "No puedo encontrar este correo, puede haber sido movido a otra parte.\\n{1}\\n\\n¿Quieres buscarlo?"
+    "message": "No puedo encontrar este correo, puede haber sido movido a otra parte.\n{1}\n\n¿Quieres buscarlo?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Esto eliminará todas las pestañas de QuickFolders y las reemplazará con las el contenido del archivo.\\n Se leyeron {0} elementos.\\n¿Reemplazar pestañas?"
+    "message": "Esto eliminará todas las pestañas de QuickFolders y las reemplazará con las el contenido del archivo.\n Se leyeron {0} elementos.\n¿Reemplazar pestañas?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "¿Cambiar a licencia de dominio?"
@@ -1341,7 +1341,7 @@
     "message": "Nuevo nombre para el marcador"
   },
   "qfNewSubFolder": {
-    "message": "Crear subcarpeta {0} \\u00BB {1}…"
+    "message": "Crear subcarpeta {0} » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "¡No hay carpetas principales que coincidan!"
@@ -1419,7 +1419,7 @@
     "message": ":Esta pestaña apunta a una carpeta inválida:"
   },
   "qfTidyDeadFolders": {
-    "message": "Esto borrará las pestañas que no tienen asignadas carpetas válidas.\\nEsto llega a pasar si una carpeta es borrada o movida de lugar sin que se notifique a a QuickFolders."
+    "message": "Esto borrará las pestañas que no tienen asignadas carpetas válidas.\nEsto llega a pasar si una carpeta es borrada o movida de lugar sin que se notifique a a QuickFolders."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} íconos faltantes"

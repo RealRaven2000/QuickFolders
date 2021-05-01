@@ -1100,7 +1100,7 @@
     "message": "Nouveau dossier"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Cela va supprimer tous les onglets QuickFolders et les remplacer par les éléments présents dans le presse-papier.\\n{0} entrées ont été trouvées dans le presse-papier.\\nSouhaitez-vous vraiment poursuivre ?"
+    "message": "Cela va supprimer tous les onglets QuickFolders et les remplacer par les éléments présents dans le presse-papier.\n{0} entrées ont été trouvées dans le presse-papier.\nSouhaitez-vous vraiment poursuivre ?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Conserver les onglets affichés ?"
@@ -1109,10 +1109,10 @@
     "message": "Supprimer cet élément ?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Impossible de trouver le message, il a peut-être été déplacé depuis.\\n{1}\\n\\nSouhaitez-vous le rechercher ?"
+    "message": "Impossible de trouver le message, il a peut-être été déplacé depuis.\n{1}\n\nSouhaitez-vous le rechercher ?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Ceci supprimera tous les onglets de QuickFolders et les remplacera par les éléments du fichier. \\n{0} entrées ont été lues. \\nRemplacer les onglets?"
+    "message": "Ceci supprimera tous les onglets de QuickFolders et les remplacera par les éléments du fichier. \n{0} entrées ont été lues. \nRemplacer les onglets?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Prendre une licence de domaine ?"
@@ -1445,7 +1445,7 @@
     "message": "Indiquer un nouveau nom pour le raccourci"
   },
   "qfNewSubFolder": {
-    "message": "Créer le sous-dossier {0} \\u00BB {1}…"
+    "message": "Créer le sous-dossier {0} » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "Aucun dossier parent correspondant!"
@@ -1523,7 +1523,7 @@
     "message": ": Ceci est un onglet pointant vers un dossier invalide :"
   },
   "qfTidyDeadFolders": {
-    "message": "Cela supprimera les onglets qui ne sont associés à aucun dossier valide.\\nCela arrive parfois lorsqu'un dossier est supprimé ou déplacé sans que QuickFolders ne s'en aperçoive."
+    "message": "Cela supprimera les onglets qui ne sont associés à aucun dossier valide.\nCela arrive parfois lorsqu'un dossier est supprimé ou déplacé sans que QuickFolders ne s'en aperçoive."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} icône(s) manquante(s)"
@@ -1677,7 +1677,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.1 - hotfix pour la fonction 'Marquer les dossiers + sous-dossiers comme lus' {L2}{L1}J'ai également terminé les langues hongroises, chinoises simplifiées et catalanes.{L2}Cette version étend encore la fonction quickMove grâce aux fonctionnalités suivantes: {L1} Onglet Message unique: option pour ouvrir automatiquement l'e-mail suivant dans le même onglet après avoir déplacé un message {L2} {L1} Option pour annuler complètement quickMove (et vider sa liste de messages) avec une simple pression sur ÉCHAPPEMENT. {L2} {L1} Correspondance avancée des dossiers parents en lisant à partir des délimiteurs _ et d'espacement et en les traitant comme le début d'un nom recherché. {L2} {L1} Réparé: recherche de dossiers lors de la visualisation messages affichés dans les résultats de recherche ou à partir d'une conversation à plusieurs dossiers. {L2} {L1} Ces fonctions, ainsi que des fonctions supplémentaires permettant de restreindre les résultats de recherche de certains comptes, peuvent être configurées via les paramètres de recherche avancée de l'onglet QuickFolders Pro. {L2}"
+    "message": "{L1} 5.5.2 - hotfix - dans Thunderbird 89, l'élément de menu d'options n'était pas affiché dans le gestionnaire de modules complémentaires {L2}{L1} 5.5.2 - correctif pour quickMove - dossier parent contenant un trait de soulignement non suggéré comme parent {L2}{L1} 5.5.1 - hotfix pour la fonction 'Marquer les dossiers + sous-dossiers comme lus' {L2}{L1}J'ai également terminé les langues hongroises, chinoises simplifiées et catalanes.{L2}Cette version étend encore la fonction quickMove grâce aux fonctionnalités suivantes: {L1} Onglet Message unique: option pour ouvrir automatiquement l'e-mail suivant dans le même onglet après avoir déplacé un message {L2} {L1} Option pour annuler complètement quickMove (et vider sa liste de messages) avec une simple pression sur ÉCHAPPEMENT. {L2} {L1} Correspondance avancée des dossiers parents en lisant à partir des délimiteurs _ et d'espacement et en les traitant comme le début d'un nom recherché. {L2} {L1} Réparé: recherche de dossiers lors de la visualisation messages affichés dans les résultats de recherche ou à partir d'une conversation à plusieurs dossiers. {L2} {L1} Ces fonctions, ainsi que des fonctions supplémentaires permettant de restreindre les résultats de recherche de certains comptes, peuvent être configurées via les paramètres de recherche avancée de l'onglet QuickFolders Pro. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

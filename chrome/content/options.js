@@ -604,7 +604,7 @@ QuickFolders.Options = {
     btnLoadConfig.disabled = !isEnabled;
   },
   
-  decryptLicense: async function decryptLicense(testMode) {
+  decryptLicense: async function decryptLicense(testMode = false) {
     const util = QuickFolders.Util,
           licenser = util.Licenser,
           prefs = QuickFolders.Preferences,
@@ -769,54 +769,58 @@ QuickFolders.Options = {
       if (addedClass!='expired')  el.classList.remove('expired');
       if (addedClass!='free') el.classList.remove('free');
     }
-    const util = QuickFolders.Util,
-          State = util.Licenser.ELicenseState,
-          options = QuickFolders.Options,
-          prefs = QuickFolders.Preferences,
-          QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
-    let wd = window.document,
-        getElement = wd.getElementById.bind(wd),
-        btnLicense = getElement("btnLicense"),
-        proTab = getElement("QuickFolders-Pro");
+    const util = QuickFolders.Util;
     try {
       const elem3pane = util.getMail3PaneWindow().QuickFolders.Util.$;
-      let result = this.decryptLicense(testMode),
-          menuProLicense = elem3pane('QuickFolders-ToolbarPopup-register'),
-          quickFoldersSkipFolder = elem3pane('quickFoldersSkipFolder');
-      // this the updating the first button on the toolbar via the main instance
-      QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
-      switch(result) {
-        case State.Valid:
-          let today = new Date(),
-              later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
-              dateString = later.toISOString().substr(0, 10);
-          // if we were a month ahead would this be expired?
-          if (util.Licenser.DecryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
-            options.labelLicenseBtn(btnLicense, "extend");
+      this.decryptLicense(testMode).then (
+        function(result) {
+          const State = util.Licenser.ELicenseState,
+                options = QuickFolders.Options,
+                prefs = QuickFolders.Preferences,
+                QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
+
+          let wd = window.document,
+              getElement = wd.getElementById.bind(wd),
+              btnLicense = getElement("btnLicense"),
+              proTab = getElement("QuickFolders-Pro");
+          let menuProLicense = elem3pane('QuickFolders-ToolbarPopup-register'),
+              quickFoldersSkipFolder = elem3pane('quickFoldersSkipFolder');
+          // this the updating the first button on the toolbar via the main instance
+          QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
+          switch(result) {
+            case State.Valid:
+              let today = new Date(),
+                  later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
+                  dateString = later.toISOString().substr(0, 10);
+              // if we were a month ahead would this be expired?
+              if (util.Licenser.DecryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
+                options.labelLicenseBtn(btnLicense, "extend");
+              }
+              else
+                btnLicense.collapsed = true;
+              replaceCssClass(proTab, 'paid');
+              replaceCssClass(btnLicense, 'paid');
+              replaceCssClass(menuProLicense, 'paid');
+              break;
+            case State.Expired:
+              QI.TitleLabel.label = options.labelLicenseBtn(btnLicense, "renew");
+              replaceCssClass(proTab, 'expired');
+              replaceCssClass(btnLicense, 'expired');
+              replaceCssClass(menuProLicense, 'expired');
+              btnLicense.collapsed = false;
+              break;
+            default:
+              options.labelLicenseBtn(btnLicense, "buy");
+              btnLicense.collapsed = false;
+              replaceCssClass(btnLicense, 'register');
+              replaceCssClass(proTab, 'free');
+              replaceCssClass(menuProLicense, 'free');
           }
-          else
-            btnLicense.collapsed = true;
-          replaceCssClass(proTab, 'paid');
-          replaceCssClass(btnLicense, 'paid');
-          replaceCssClass(menuProLicense, 'paid');
-          break;
-        case State.Expired:
-          QI.TitleLabel.label = options.labelLicenseBtn(btnLicense, "renew");
-          replaceCssClass(proTab, 'expired');
-          replaceCssClass(btnLicense, 'expired');
-          replaceCssClass(menuProLicense, 'expired');
-          btnLicense.collapsed = false;
-          break;
-        default:
-          options.labelLicenseBtn(btnLicense, "buy");
-          btnLicense.collapsed = false;
-          replaceCssClass(btnLicense, 'register');
-          replaceCssClass(proTab, 'free');
-          replaceCssClass(menuProLicense, 'free');
-      }
-      
-      options.configExtra2Button();
-      util.logDebug('validateLicense - result = ' + result);
+          
+          options.configExtra2Button();
+          util.logDebug('validateLicense - result = ' + result);          
+        }
+      ); // end of promise resolver
     }
     catch(ex) {
       util.logException("Error in QuickFolders.Options.validateLicense():\n", ex);

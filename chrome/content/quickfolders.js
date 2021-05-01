@@ -1014,32 +1014,34 @@ var QuickFolders = {
     
     // Force Registration key check (if key is entered) in order to update interface
     window.setTimeout( function() {
-			let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register'),
-			    State = util.Licenser.ELicenseState,
-					hasLicense = util.hasPremiumLicense(true);
-      if (hasLicense) {  // reset licenser (e.g. in new window)
-        util.logDebug ("Premium License found - removing Animations()...");
-        QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
+			let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
+      
+      util.Licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey')).then {
+        let State = util.Licenser.ELicenseState,
+            hasLicense = util.hasPremiumLicense(true);
+        if (hasLicense) {  // reset licenser (e.g. in new window)
+          util.logDebug ("Premium License found - removing Animations()...");
+          QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
+        }
+        if (menuRegister) {
+          switch (util.Licenser.ValidationStatus) {
+            case State.Valid:
+              menuRegister.classList.add('paid');
+              menuRegister.classList.remove('free');
+              break;
+            case State.Expired:
+              menuRegister.label = "QuickFolders Pro: " + util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
+              menuRegister.classList.add('expired');
+              menuRegister.classList.remove('free');
+              break;
+            default:
+              menuRegister.classList.add('free');
+          }
+        }
+        // 4.9.1 decided to leave button on screen but serve premium notification on use
+        // let quickFoldersSkipFolder = document.getElementById('quickFoldersSkipFolder');
+        // quickFoldersSkipFolder.collapsed = !hasLicense;
       }
-			if (menuRegister) {
-				switch (util.Licenser.ValidationStatus) {
-					case State.Valid:
-						menuRegister.classList.add('paid');
-						menuRegister.classList.remove('free');
-						break;
-					case State.Expired:
-						menuRegister.label = "QuickFolders Pro: " + util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
-						menuRegister.classList.add('expired');
-						menuRegister.classList.remove('free');
-						break;
-					default:
-						menuRegister.classList.add('free');
-				}
-			}
-			// 4.9.1 decided to leave button on screen but serve premium notification on use
-			// let quickFoldersSkipFolder = document.getElementById('quickFoldersSkipFolder');
-			// quickFoldersSkipFolder.collapsed = !hasLicense;
-
     }, 1000);
     
 	} ,

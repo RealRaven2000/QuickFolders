@@ -1100,7 +1100,7 @@
     "message": "Neues Verzeichnis"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Zwischenablage.\\nEs wurden {0} Einträge gefunden.\\nSind Sie sicher?"
+    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Zwischenablage.\nEs wurden {0} Einträge gefunden.\nSind Sie sicher?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Die angezeigten Tabs beibehalten?"
@@ -1109,10 +1109,10 @@
     "message": "Diesen Eintrag entfernen?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Diese Email kann nicht gefunden werden, sie wurde vielleicht in ein anderes Verzeichnis verschoben.\\n{1}\\n\\nDanach suchen?"
+    "message": "Diese Email kann nicht gefunden werden, sie wurde vielleicht in ein anderes Verzeichnis verschoben.\n{1}\n\nDanach suchen?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Datei.\\nEs wurden {0} Einträge gefunden.\\nTabs ersetzen?"
+    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Datei.\nEs wurden {0} Einträge gefunden.\nTabs ersetzen?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Domänenlizenz aktivieren?"
@@ -1445,7 +1445,7 @@
     "message": "Neuer Name für den Tab"
   },
   "qfNewSubFolder": {
-    "message": "Neues Unterverzeichnis {0} \\u00BB {1}…"
+    "message": "Neues Unterverzeichnis {0} » {1}…"
   },
   "qfNoFolderMatch": {
     "message": "Keine passenden Elternverzeichnisse!"
@@ -1523,7 +1523,7 @@
     "message": ": Dieser Tab verweist auf ein ungültiges Verzeichnis."
   },
   "qfTidyDeadFolders": {
-    "message": "Löscht die Tabs die keinem gültigen Verzeichnis zugehören.\\nDies kann passieren, wenn ein Verzeichnis gelöscht oder verschoben wird ohne daß QuickFolders dies erkennt."
+    "message": "Löscht die Tabs die keinem gültigen Verzeichnis zugehören.\nDies kann passieren, wenn ein Verzeichnis gelöscht oder verschoben wird ohne daß QuickFolders dies erkennt."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} fehlende Symbole"
@@ -1677,7 +1677,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}5.5.1 - Hotfix für die Funktion 'Ordner + Unterordner als gelesen markieren'{L2}{L1}Vervollständigte Übersetzungen für ungarische, vereinfachte chinesische und katalanische Sprache.{L2}Diese Version erweitert die quickMove-Funktion um die folgenden Funktionen: {L1} Im dedizierten Mail-Tab: Nach Verschieben der aktuellen Nachricht die nächste E-Mail im selben Tab öffnen {L2} {L1} Option zum vollständigen Abbruch von quickMove (und Leeren der Nachrichten-Liste) mit einem einzigen Druck auf ESCAPE. {L2} {L1} Erweiterte Suche von Elternverzeichnissen indem _ und Leerzeichen als Start eines gesuchten Namens behandelt werden. {L2} {L1} Repariert: Durchsuchen von Ordnern während der Anzeige Nachrichten, die in Suchergebnissen oder aus Konversationen mit mehreren Ordnern angezeigt werden. {L2} {L1} Diese und zusätzliche Funktionen zum Einschränken der Suchergebnisse bestimmter Konten können über die erweiterten Sucheinstellungen auf der Registerkarte QuickFolders Pro konfiguriert werden. {L2}"
+    "message": "{L1} 5.5.2 - Hotfix - In Thunderbird 89 wurde der Optionsmenüpunkt im Add-On-Manager nicht angezeigt.{L2}{L1} 5.5.2 - Hotfix für quickMove - übergeordneter Ordner mit einem Unterstrich, wird nicht als übergeordneter vorgeschlagen.{L2}{L1} 5.5.1 - Hotfix für die Funktion 'Ordner + Unterordner als gelesen markieren'{L2}{L1}Vervollständigte Übersetzungen für ungarische, vereinfachte chinesische und katalanische Sprache.{L2}Diese Version erweitert die quickMove-Funktion um die folgenden Funktionen: {L1} Im dedizierten Mail-Tab: Nach Verschieben der aktuellen Nachricht die nächste E-Mail im selben Tab öffnen {L2} {L1} Option zum vollständigen Abbruch von quickMove (und Leeren der Nachrichten-Liste) mit einem einzigen Druck auf ESCAPE. {L2} {L1}Erweiterte Suche von Elternverzeichnissen indem _ und Leerzeichen als Start eines gesuchten Namens behandelt werden. {L2} {L1}Repariert: Durchsuchen von Ordnern während der Anzeige Nachrichten, die in Suchergebnissen oder aus Konversationen mit mehreren Ordnern angezeigt werden. {L2} {L1}Diese und zusätzliche Funktionen zum Einschränken der Suchergebnisse bestimmter Konten können über die erweiterten Sucheinstellungen auf der Registerkarte QuickFolders Pro konfiguriert werden. {L2}"
   },
   "window-title": {
     "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",

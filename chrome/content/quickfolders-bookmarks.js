@@ -257,7 +257,7 @@ QuickFolders.bookmarks = {
         prefs = QuickFolders.Preferences,
         countEntries = this.Entries.length;
     const MAX_BOOKMARKS = 5;
-    if (!util.hasPremiumLicense(false) && countEntries>2) {
+    if (!util.hasPremiumLicense() && countEntries>2) {
       let text = util.getBundleString("qf.notification.premium.readingList",
                   "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}.");
       util.popupProFeature("bookmarks", text.replace("{1}", countEntries).replace("{2}", MAX_BOOKMARKS.toString()));

@@ -86,7 +86,7 @@ export var BigIntModule = {
         this.digits = null;
       }
       else {
-        this.digits = this.ZERO_ARRAY.slice(0);
+        this.digits = BigIntModule.ZERO_ARRAY.slice(0); // cannot use this here
       }
       this.isNeg = false;
     },

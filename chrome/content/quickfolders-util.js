@@ -316,27 +316,9 @@ QuickFolders.Util = {
   
   // goal - take validation out and put it into an async function
   
-  hasPremiumLicense: function hasPremiumLicense(reset = false) {
+  hasPremiumLicense: function hasPremiumLicense() {
 		const licenser = QuickFolders.Util.Licenser;
-    // early exit for Licensed copies
     return licenser.isValidated;  // let's not call an async function [validateLicense] from here
-    // short circuit if we already validated:
-    if (!reset && licenser.wasValidityTested)
-      return licenser.isValidated;
-    let licenseKey = QuickFolders.Preferences.getStringPref('LicenseKey'),
-        util = QuickFolders.Util;
-    if (!licenseKey) 
-      return false; // short circuit if no license key!
-    if (!licenser.isValidated || reset) {
-      licenser.wasValidityTested = false;
-      // this will need to be made async!
-      licenser.validateLicense(licenseKey); 
-			// store license key in this object
-			licenser.LicenseKey = licenseKey;
-    }
-    if (licenser.isValidated) 
-      return true;
-    return false;
   },
   
 	popupProFeature: function popupProFeature(featureName, text) {

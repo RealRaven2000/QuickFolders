@@ -1013,12 +1013,11 @@ var QuickFolders = {
     }
     
     // Force Registration key check (if key is entered) in order to update interface
-    window.setTimeout( function() {
-			let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
-      
-      util.Licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey')).then {
+    let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
+    util.Licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey')).then ((rv) => {
+        // return value is: [Licenser.ValidationStatus, RealLicense]
         let State = util.Licenser.ELicenseState,
-            hasLicense = util.hasPremiumLicense(true);
+            hasLicense = util.hasPremiumLicense();
         if (hasLicense) {  // reset licenser (e.g. in new window)
           util.logDebug ("Premium License found - removing Animations()...");
           QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
@@ -1041,10 +1040,9 @@ var QuickFolders = {
         // 4.9.1 decided to leave button on screen but serve premium notification on use
         // let quickFoldersSkipFolder = document.getElementById('quickFoldersSkipFolder');
         // quickFoldersSkipFolder.collapsed = !hasLicense;
-      }
-    }, 1000);
+    });
     
-	} ,
+	},
 
 	sayHello: function sayHello() {
 		QuickFolders.Util.alert("Hello from QuickFolders");

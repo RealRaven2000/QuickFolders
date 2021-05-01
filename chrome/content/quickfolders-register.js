@@ -70,28 +70,24 @@ QuickFolders.Licenser = {
   DecryptedMail: '',
   DecryptedDate: '',
   AllowSecondaryMails: false,
-	ExpiredDays: 0,
+  ExpiredDays: 0,
   wasValidityTested: false, // save time do not validate again and again
+
   get isValidated() {
     return (this.ValidationStatus == this.ELicenseState.Valid);
   },
-	get isExpired() {
-		let key = QuickFolders.Preferences.getStringPref('LicenseKey');
-		if (!key) return false;
-		if (this.ValidationStatus == this.ELicenseState.NotValidated)
-			this.validateLicense(key);
-    return (this.ValidationStatus == this.ELicenseState.Expired);
-	},
-    
-  getIsExpired: async function () {
+
+  get isExpired() {
       let key = QuickFolders.Preferences.getStringPref('LicenseKey');
-          if (!key) return false;
-          if (this.ValidationStatus == this.ELicenseState.NotValidated) {
-			await this.validateLicense(key);
-          }
-          return (this.ValidationStatus == this.ELicenseState.Expired);    
-    },
+      if (!key) return false;
+      
+      // Temporary simplification, as we cannot call async validateLicence here
+      if (this.ValidationStatus == this.ELicenseState.NotValidated)
+        return false; //this.validateLicense(key);
     
+    return (this.ValidationStatus == this.ELicenseState.Expired);
+  },
+   
   ValidationStatus: 0,
   // enumeration for Validated state
   ELicenseState: {

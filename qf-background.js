@@ -3,8 +3,8 @@
  * https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78
  */
 
-import * as util from "./scripts/qf-util.mjs";
-import {RSA} from './scripts/rsa/RSA.mjs';
+import * as util from "./scripts/qf-util.mjs.js";
+import * as licenceutils from "./scripts/licence-utils.mjs.js";
 
 async function main() {
 

@@ -1,5 +1,5 @@
-import {BigIntModule} from './BigIntModule.mjs';
-import {Barrett} from './Barrett.mjs';
+import {BigIntModule} from './BigIntModule.mjs.js';
+import {Barrett} from './Barrett.mjs.js';
 
 // RSA, a suite of routines for performing RSA public-key computations in JavaScript.
 //

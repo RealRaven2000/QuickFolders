@@ -1,4 +1,4 @@
-import {BigIntModule} from './BigIntModule.mjs';
+import {BigIntModule} from './BigIntModule.mjs.js';
 
 // BarrettMu, a class for performing Barrett modular reduction computations in
 // JavaScript.

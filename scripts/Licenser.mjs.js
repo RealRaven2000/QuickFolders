@@ -42,121 +42,121 @@ function getMail(licence) {
 
 
 export class Licenser {
-    
-    constructor(LicenseKey) {
-      if (!LicenseKey) {
-        throw new Error("No LicenseKey!");
-      }
-      this.LicenseKey = LicenseKey;
-      this.reset();
-    }
-    
-    reset() {
-      this.ValidationStatus = LicenseStates.NotValidated;
-      this.RealLicense = "";
-      this.ExpiredDays = 0;
-
-      if (this.LicenseKey.indexOf('QFD')==0) {
-        this.key_type = 1; // Volume License
-      } else {
-        this.key_type = 0;
-      }
-    }
-    
-    get ValidationStatusDescription() {
-      switch(this.ValidationStatus) {
-        case LicenseStates.NotValidated: return 'Not Validated';
-        case LicenseStates.Valid: return 'Valid';
-        case LicenseStates.Invalid: return 'Invalid';
-        case LicenseStates.Expired: return 'Invalid (expired)';
-        case LicenseStates.MailNotConfigured: return 'Mail Not Configured';
-        case LicenseStates.MailDifferent: return 'Mail Different';
-        case LicenseStates.Empty: return 'Empty';
-        default: return 'Unknown Status';
-      }
-    }
   
-    isIdMatchedLicense(idMail, licenseMail) {
-      try {
-          switch(this.key_type) {
-              case 0: // private license
-                  return (idMail.toLowerCase() == licenseMail);
-              case 1: // domain matching 
-                  // only allow one *
-                  if ((licenseMail.match(/\*/g)||[]).length != 1)
-                      return false;
-                  // replace * => .*
-                  let r = new RegExp(licenseMail.replace("*",".*"));
-                  let t = r.test(idMail);
-                  return t;
-          }
-      }
-      catch (ex) {
-          log("validateLicense.isIdMatchedLicense() failed", ex);
-      }
-      return false;
+  constructor(LicenseKey) {
+    if (!LicenseKey) {
+      throw new Error("No LicenseKey!");
     }
-    
-    getCrypto() {
-      let arr = this.LicenseKey.split(';');
-      if (arr.length<2) {
-        log("getCrypto()","failed - no ; found");
-        return null;
-      }
-      return arr[1];
-    }
-    
-    // Testing purpose, may be removed
-    encryptLicense () {
-      log('encryptLicense - initialising with maxDigits:', this.RSA_maxDigits);
-      RSA.initialise(this.RSA_maxDigits);
-      // 64bit key pair
-      log('encryptLicense - creating key pair object with bit length:', this.RSA_keylength);
-      let key = new RSA.RSAKeyPair(
-        this.RSA_encryption,
-        this.RSA_decryption,
-        this.RSA_modulus,
-        this.RSA_keylength
-      );
-      log('encryptLicense - starting encryption…');
-      let Encrypted = RSA.encryptedString(key, this.LicenseKey, 'OHDave');
-      log('encryptLicense - finished encrypting registration key', {
-        length: Encrypted.length,
-        Encrypted
-      });
-      return Encrypted;    
-    }    
-    
+    this.LicenseKey = LicenseKey;
+    this.reset();
+  }
+  
+  reset() {
+    this.ValidationStatus = LicenseStates.NotValidated;
+    this.RealLicense = "";
+    this.ExpiredDays = 0;
 
-    // Get these information from the crypto module, which is unique for each add-on.
-    get RSA_encryption() {
-      return ""
+    if (this.LicenseKey.indexOf('QFD')==0) {
+      this.key_type = 1; // Volume License
+    } else {
+      this.key_type = 0;
     }
-    get RSA_decryption() {
-      return crypto.getDecryption_key(this.key_type);
+  }
+  
+  get ValidationStatusDescription() {
+    switch(this.ValidationStatus) {
+      case LicenseStates.NotValidated: return 'Not Validated';
+      case LicenseStates.Valid: return 'Valid';
+      case LicenseStates.Invalid: return 'Invalid';
+      case LicenseStates.Expired: return 'Invalid (expired)';
+      case LicenseStates.MailNotConfigured: return 'Mail Not Configured';
+      case LicenseStates.MailDifferent: return 'Mail Different';
+      case LicenseStates.Empty: return 'Empty';
+      default: return 'Unknown Status';
     }
-    get RSA_modulus() {
-      return crypto.getModulus(this.key_type);
-    }
-    get RSA_keylength() {
-      return crypto.getKeyLength(this.key_type);      
-    }
-    get RSA_maxDigits() {
-      return crypto.getMaxDigits(this.key_type);      
-    }
+  }
 
-    getClearTextMail() { 
-      return getMail(this.LicenseKey);
+  isIdMatchedLicense(idMail, licenseMail) {
+    try {
+        switch(this.key_type) {
+            case 0: // private license
+                return (idMail.toLowerCase() == licenseMail);
+            case 1: // domain matching 
+                // only allow one *
+                if ((licenseMail.match(/\*/g)||[]).length != 1)
+                    return false;
+                // replace * => .*
+                let r = new RegExp(licenseMail.replace("*",".*"));
+                let t = r.test(idMail);
+                return t;
+        }
     }
-    getDecryptedMail() {
-      return getMail(this.RealLicense + ":xxx");
+    catch (ex) {
+        log("validateLicense.isIdMatchedLicense() failed", ex);
     }
-    
-    getDecryptedDate() {
-      return getDate(this.RealLicense + ":xxx");
+    return false;
+  }
+  
+  getCrypto() {
+    let arr = this.LicenseKey.split(';');
+    if (arr.length<2) {
+      log("getCrypto()","failed - no ; found");
+      return null;
     }
+    return arr[1];
+  }
+  
+  // Testing purpose, may be removed
+  encryptLicense () {
+    log('encryptLicense - initialising with maxDigits:', this.RSA_maxDigits);
+    RSA.initialise(this.RSA_maxDigits);
+    // 64bit key pair
+    log('encryptLicense - creating key pair object with bit length:', this.RSA_keylength);
+    let key = new RSA.RSAKeyPair(
+      this.RSA_encryption,
+      this.RSA_decryption,
+      this.RSA_modulus,
+      this.RSA_keylength
+    );
+    log('encryptLicense - starting encryption…');
+    let Encrypted = RSA.encryptedString(key, this.LicenseKey, 'OHDave');
+    log('encryptLicense - finished encrypting registration key', {
+      length: Encrypted.length,
+      Encrypted
+    });
+    return Encrypted;    
+  }    
+  
 
-async validate() {
+  // Get these information from the crypto module, which is unique for each add-on.
+  get RSA_encryption() {
+    return ""
+  }
+  get RSA_decryption() {
+    return crypto.getDecryption_key(this.key_type);
+  }
+  get RSA_modulus() {
+    return crypto.getModulus(this.key_type);
+  }
+  get RSA_keylength() {
+    return crypto.getKeyLength(this.key_type);      
+  }
+  get RSA_maxDigits() {
+    return crypto.getMaxDigits(this.key_type);      
+  }
+
+  getClearTextMail() { 
+    return getMail(this.LicenseKey);
+  }
+  getDecryptedMail() {
+    return getMail(this.RealLicense + ":xxx");
+  }
+  
+  getDecryptedDate() {
+    return getDate(this.RealLicense + ":xxx");
+  }
+
+  async validate() {
     this.reset();
     log("validateLicense", { LicenseKey: this.LicenseKey });
 
@@ -316,7 +316,6 @@ async validate() {
     this.ValidationStatus = LicenseStates.MailNotConfigured;
     return [this.ValidationStatus, this.RealLicense];
   }
-    
 }
   
 /* Switch detection is not part of Licencer but UI or Logic

@@ -195,7 +195,6 @@ export class Licenser {
       return [this.ValidationStatus, ''];
     }
     
-    // RSAKeyPair(encryptionExponent, decryptionExponent, modulus)
     log("RSA.initialise", this.RSA_maxDigits);
     RSA.initialise(this.RSA_maxDigits);
     log('Creating RSA key + decrypting');

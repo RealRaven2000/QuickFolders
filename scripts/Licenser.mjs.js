@@ -43,24 +43,34 @@ function getMail(licence) {
 
 export class Licenser {
   
-  constructor(LicenseKey) {
+  constructor(LicenseKey, options = {}) {
     if (!LicenseKey) {
       throw new Error("No LicenseKey!");
-    }
+    }  
+    
+    this.ForceSecondaryIdentity = options.hasOwnProperty("forceSecondaryIdentity")
+      ? options.forceSecondaryIdentity
+      : false;
+
     this.LicenseKey = LicenseKey;
-    this.reset();
+    if (this.LicenseKey.indexOf('QFD')==0) {
+      this.key_type = 1; // Volume License
+    } else {
+      this.key_type = 0; // Private License
+    }
+    
+    if (this.key_type = 1 && this.ForceSecondaryIdentity) {
+      this.ForceSecondaryIdentity = false;
+      log("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
+    }
+
+    this.reset();    
   }
   
   reset() {
     this.ValidationStatus = LicenseStates.NotValidated;
     this.RealLicense = "";
     this.ExpiredDays = 0;
-
-    if (this.LicenseKey.indexOf('QFD')==0) {
-      this.key_type = 1; // Volume License
-    } else {
-      this.key_type = 0;
-    }
   }
   
   get ValidationStatusDescription() {
@@ -74,6 +84,10 @@ export class Licenser {
       case LicenseStates.Empty: return 'Empty';
       default: return 'Unknown Status';
     }
+  }
+
+  get isValid() {
+    return (this.ValidationStatus == LicenseStates.Valid);
   }
 
   isIdMatchedLicense(idMail, licenseMail) {
@@ -239,17 +253,10 @@ export class Licenser {
     // if not found return MailNotConfigured
     
     let accounts = await messenger.accounts.list();
-    let ForceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");
     let AllowFallbackToSecondaryIdentiy = false;
 
-    if (this.key_type == 1) {
-      // VOLUME LIC
-      if (ForceSecondaryIdentity) {
-        ForceSecondaryIdentity = false;
-        log("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
-      }
-    } else {
-      // SINGLE LIC - Check if secondary mode is necessarry (if not already enforced)
+    if (this.key_type == 0) {
+      // Private License - Check if secondary mode is necessarry (if not already enforced)
       if (ForceSecondaryIdentity) {
         AllowFallbackToSecondaryIdentiy = true;
       } else {

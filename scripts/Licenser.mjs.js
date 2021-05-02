@@ -5,7 +5,8 @@ import {log} from './qf-util.mjs.js';
 const LicenseStates = {
     NotValidated: 0, // default status
     Valid: 1,
-    Invalid: 2,
+    Expired: 2, // valid, but expired
+    Invalid: 3,
     MailNotConfigured: 4,
     MailDifferent: 5,
     Empty: 6,
@@ -75,9 +76,9 @@ export class Licenser {
   get ValidationStatusDescription() {
     switch(this.ValidationStatus) {
       case LicenseStates.Valid:
-        return (this.ExpiredDays == 0)
-          ? 'Valid'
-          : `Valid but expired since ${this.ExpiredDays} days`;
+        return 'Valid';
+      case LicenseStates.Expired:
+        return `Valid but expired since ${this.ExpiredDays} days`;
       case LicenseStates.NotValidated:
         return 'Not Validated';     
       case LicenseStates.Invalid:
@@ -93,22 +94,13 @@ export class Licenser {
   }
 
   get isValid() {
-    return (this.ValidationStatus == LicenseStates.Valid &&
-      this.ExpiredDays == 0);
+    return (this.ValidationStatus == LicenseStates.Valid);
   }
 
-  get isValidButExpired() {
-    // Will return false on any invalid state and also if valid. Only returns
-    // true if valid and expired. Intended to be used in
-    //   if (isValid || isValidButExpired)
-    return (this.ValidationStatus == LicenseStates.Valid &&
-      this.ExpiredDays > 0);
-    //Note: To get the full 3-state information use ExpiredDays:
-    // -1 : invalid
-    //  0 : valid and not expired
-    // >0 : valid and expired
+  get isExpired() { // valid, but expired
+    return (this.ValidationStatus == LicenseStates.Expired);
   }
-  
+
   isIdMatchedLicense(idMail, licenseMail) {
     try {
         switch(this.key_type) {
@@ -256,19 +248,14 @@ export class Licenser {
     let today = new Date();
     let dateString = today.toISOString().substr(0, 10);
     if (decryptedDate < dateString) {
-      // No longer use Expired state as it allowed to bypass the match mail
-      // account check below in any code checking for (isValid || isExpired).
-      // Instead, use the ExpiredDays member to check for isExpired.
-      // this.ValidationStatus = LicenseStates.Expired;
       let date1 = new Date(decryptedDate);
       this.ExpiredDays = parseInt((today - date1) / (1000 * 60 * 60 * 24)); 
       log('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
-      // Do not stop here, but continue the validation process. The isValid
-      // method needs to check for ExpiredDays to compensate this.
-      // return [this.ValidationStatus, this.RealLicense];
+      // Do not stop here, but continue the validation process and only if the
+      // Valid state is reached, set to Expired.
     } else {
       this.ExpiredDays = 0;
     }
@@ -316,8 +303,12 @@ export class Licenser {
           continue;
         }
         if (this.isIdMatchedLicense(defaultIdentity.email, decryptedMail)) {
-          log("Default Identity of this account matched!", {account: account.name, identity: defaultIdentity.email});
-          this.ValidationStatus = LicenseStates.Valid;
+          this.ValidationStatus = (this.ExpiredDays == 0) ? LicenseStates.Valid : LicenseStates.Expired;
+          log("Default Identity of this account matched!", {
+            account: account.name, 
+            identity: defaultIdentity.email,
+            status: this.ValidationStatusDescription
+          });
           return [this.ValidationStatus, this.RealLicense];
         }
 
@@ -337,8 +328,12 @@ export class Licenser {
             continue;
           }
           if (this.isIdMatchedLicense(identity.email, decryptedMail)) {
-            log("Identity of this account matched!", {account: account.name, identity: identity.email});
-            this.ValidationStatus = LicenseStates.Valid;
+            this.ValidationStatus = (this.ExpiredDays == 0) ? LicenseStates.Valid : LicenseStates.Expired;
+            log("Identity of this account matched!", {
+              account: account.name, 
+              identity: identity.email,
+              status: this.ValidationStatusDescription
+            });
             return [this.ValidationStatus, this.RealLicense];
           }
         }

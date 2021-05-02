@@ -6,7 +6,6 @@ const LicenseStates = {
     NotValidated: 0, // default status
     Valid: 1,
     Invalid: 2,
-    Expired: 3,
     MailNotConfigured: 4,
     MailDifferent: 5,
     Empty: 6,
@@ -70,26 +69,46 @@ export class Licenser {
   reset() {
     this.ValidationStatus = LicenseStates.NotValidated;
     this.RealLicense = "";
-    this.ExpiredDays = 0;
+    this.ExpiredDays = -1;
   }
   
   get ValidationStatusDescription() {
     switch(this.ValidationStatus) {
-      case LicenseStates.NotValidated: return 'Not Validated';
-      case LicenseStates.Valid: return 'Valid';
-      case LicenseStates.Invalid: return 'Invalid';
-      case LicenseStates.Expired: return 'Invalid (expired)';
-      case LicenseStates.MailNotConfigured: return 'Mail Not Configured';
-      case LicenseStates.MailDifferent: return 'Mail Different';
-      case LicenseStates.Empty: return 'Empty';
+      case LicenseStates.Valid:
+        return (this.ExpiredDays == 0)
+          ? 'Valid';
+          : `Valid but expired since ${this.ExpiredDays} days`;
+      case LicenseStates.NotValidated:
+        return 'Not Validated';     
+      case LicenseStates.Invalid:
+        return 'Invalid';
+      case LicenseStates.MailNotConfigured:
+        return 'Mail Not Configured';
+      case LicenseStates.MailDifferent:
+        return 'Mail Different';
+      case LicenseStates.Empty:
+        return 'Empty';
       default: return 'Unknown Status';
     }
   }
 
   get isValid() {
-    return (this.ValidationStatus == LicenseStates.Valid);
+    return (this.ValidationStatus == LicenseStates.Valid &&
+      this.ExpiredDays == 0);
   }
 
+  get isValidButExpired() {
+    // Will return false on any invalid state and also if valid. Only returns
+    // true if valid and expired. Intended to be used in
+    //   if (isValid || isValidButExpired)
+    return (this.ValidationStatus == LicenseStates.Valid &&
+      this.ExpiredDays > 0);
+    //Note: To get the full 3-state information use ExpiredDays:
+    // -1 : invalid
+    //  0 : valid and not expired
+    // >0 : valid and expired
+  }
+  
   isIdMatchedLicense(idMail, licenseMail) {
     try {
         switch(this.key_type) {
@@ -237,14 +256,21 @@ export class Licenser {
     let today = new Date();
     let dateString = today.toISOString().substr(0, 10);
     if (decryptedDate < dateString) {
-      this.ValidationStatus = LicenseStates.Expired;
+      // No longer use Expired state as it allowed to bypass the match mail
+      // account check below in any code checking for (isValid || isExpired).
+      // Instead, use the ExpiredDays member to check for isExpired.
+      // this.ValidationStatus = LicenseStates.Expired;
       let date1 = new Date(decryptedDate);
       this.ExpiredDays = parseInt((today - date1) / (1000 * 60 * 60 * 24)); 
       log('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
-      return [this.ValidationStatus, this.RealLicense];
+      // Do not stop here, but continue the validation process. The isValid
+      // method needs to check for ExpiredDays to compensate this.
+      // return [this.ValidationStatus, this.RealLicense];
+    } else {
+      this.ExpiredDays = 0;
     }
 
     

@@ -76,7 +76,7 @@ export class Licenser {
     switch(this.ValidationStatus) {
       case LicenseStates.Valid:
         return (this.ExpiredDays == 0)
-          ? 'Valid';
+          ? 'Valid'
           : `Valid but expired since ${this.ExpiredDays} days`;
       case LicenseStates.NotValidated:
         return 'Not Validated';     

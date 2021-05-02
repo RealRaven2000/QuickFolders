@@ -58,7 +58,7 @@ export class Licenser {
       this.key_type = 0; // Private License
     }
     
-    if (this.key_type = 1 && this.ForceSecondaryIdentity) {
+    if (this.key_type == 1 && this.ForceSecondaryIdentity) {
       this.ForceSecondaryIdentity = false;
       log("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
     }
@@ -283,7 +283,7 @@ export class Licenser {
 
     if (this.key_type == 0) {
       // Private License - Check if secondary mode is necessarry (if not already enforced)
-      if (ForceSecondaryIdentity) {
+      if (this.ForceSecondaryIdentity) {
         AllowFallbackToSecondaryIdentiy = true;
       } else {
         let hasDefaultIdentity = false;
@@ -305,7 +305,7 @@ export class Licenser {
     
     for (let account of accounts) {
       let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id);
-      if (defaultIdentity && !ForceSecondaryIdentity) {
+      if (defaultIdentity && !this.ForceSecondaryIdentity) {
 
         log("premium.licenser", {
             "Iterate accounts" : account.name,
@@ -328,7 +328,7 @@ export class Licenser {
             "Identities" : account.identities,
         });
         for (let identity of account.identities) {
-          if (ForceSecondaryIdentity && defaultIdentity && defaultIdentity.id == identity.id) {
+          if (this.ForceSecondaryIdentity && defaultIdentity && defaultIdentity.id == identity.id) {
             log("Skipping default identity!", {identity});
             continue;
           }          

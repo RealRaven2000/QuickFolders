@@ -30,7 +30,8 @@ async function onLoad(activatedWhileWindowOpen) {
       }
     }
     window.QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
-    window.QuickFolders.Util.licenseState = await window.QuickFolders.Util.notifyTools.notifyBackground({func: "getLicenseState" });
+    // kaputt
+    //window.QuickFolders.Util.licenseState = await window.QuickFolders.Util.notifyTools.notifyBackground({func: "getLicenseState" });
     
     let tb = WL.injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
     // tb.setAttribute("title", "QuickFolderStyles");
@@ -528,7 +529,7 @@ function onUnload(isAddOnShutDown) {
     window.QuickFolders.removeFolderPaneListener();
   }
   catch(ex) {
-    console.logException(ex);
+    console.log(ex);
   }
   // remove icon patch
   let treeView = window.gFolderTreeView;

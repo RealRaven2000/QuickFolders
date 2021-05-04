@@ -317,8 +317,7 @@ QuickFolders.Util = {
   // goal - take validation out and put it into an async function
   
   hasPremiumLicense: function hasPremiumLicense() {
-		const licenser = QuickFolders.Util.Licenser;
-    return licenser.isValidated;  // let's not call an async function [validateLicense] from here
+    return QuickFolders.Util.licenseState.status == "Valid";
   },
   
 	popupProFeature: function popupProFeature(featureName, text) {

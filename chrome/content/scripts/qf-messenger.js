@@ -19,10 +19,18 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-listener.js", window, "UTF-8");
 
-function onLoad(activatedWhileWindowOpen) {
+async function onLoad(activatedWhileWindowOpen) {
     console.log (Services.appinfo.version);
     let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
     layout.setAttribute("title", "QuickFolderStyles");
+    
+    const onBackgroundUpdates = (data) => {
+      if (data.licenseState) {
+        window.QuickFolders.Util.licenseState = data.licenseState;
+      }
+    }
+    window.QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
+    window.QuickFolders.Util.licenseState = await window.QuickFolders.Util.notifyTools.notifyBackground({func: "getLicenseState" });
     
     let tb = WL.injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
     // tb.setAttribute("title", "QuickFolderStyles");

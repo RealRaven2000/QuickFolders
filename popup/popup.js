@@ -8,7 +8,8 @@ END LICENSE BLOCK */
 
 /* shared module for installation popups */
 
-async function updateActions(addonName) {
+async function updateActions(addonName) { 
+  // Currently we do not notify this page if the license information is updated in the background.
   let licenseState = await messenger.runtime.sendMessage({command:"getLicenseState"});
   let isLicensed = licenseState.status == "Valid";
   let isExpired = licenseState.status == "Expired";   

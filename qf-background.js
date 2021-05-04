@@ -27,6 +27,32 @@ async function main() {
       }
     });
   
+    messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
+      switch (data.func) {      
+        case "slideAlert":
+          util[data.func](...data.args);
+          break;
+        
+        case "getLicenseState": 
+          return currentLicense.currentState;
+          break;
+        
+        case "updateLicense":
+          let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");
+          let newLicense = new Licenser(data.key, { forceSecondaryIdentity });
+          await newLicense.validate();
+          // Check new license and accept if ok.
+          // You may return values here, which will be send back to the caller.
+          // return false;
+          
+          // Update backgound license.
+          currentLicense = newLicense;
+          // Broadcast
+          messenger.NotifyTools.notifyExperiment({licenseState: currentLicense.currentState})
+          return true;
+      }
+    });
+    
     // if (temporary) return; // skip during development
     switch (reason) {
       case "install":
@@ -118,18 +144,9 @@ async function main() {
   */
 
 
-  messenger.WindowListener.startListening();
-
-  
+  messenger.WindowListener.startListening(); 
 }
 
 main();
 
-messenger.NotifyTools.onNotifyBackground.addListener(async (info) => {
-  switch (info.func) {        
-    case"slideAlert":
-      util[info.func](...info.args);
-      break;
-  }
-});
 

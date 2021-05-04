@@ -71,8 +71,8 @@ export class Licenser {
     this.ValidationStatus = LicenseStates.NotValidated;
     this.RealLicense = "";
     this.ExpiredDays = -1;
-    this.decryptedDate = null;
-    this.decryptedMail = null;
+    this.decryptedDate = "";
+    this.decryptedMail = "";
   }
   
   get currentState() {
@@ -81,6 +81,7 @@ export class Licenser {
       expiredDays: this.ExpiredDays,
       expiryDate: this.decryptedDate,
       email: this.decryptedMail,
+      licenseKey: this.LicenseKey,
     }
   }
   

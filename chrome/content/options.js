@@ -10,6 +10,7 @@
 */
 
 var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+var licenseState;
 
 var QuickFolders_TabURIregexp = {
   get _thunderbirdRegExp() {
@@ -235,12 +236,22 @@ QuickFolders.Options = {
     util.logDebug("loadPreferences - finished.");
   } ,
   
-  load: function load() {
+  load: async function load() {
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences,
           QI = QuickFolders.Interface,
-          options = QuickFolders.Options,
-          licenser = util.Licenser;
+          options = QuickFolders.Options;
+    
+    const onBackgroundUpdates = (data) => {
+      if (data.licenseState) {
+        licenseState = data.licenseState;
+      }
+      this.validateLicenseInOptions();      
+    }
+    QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
+    licenseState = await QuickFolders.Util.notifyTools.notifyBackground({func: "getLicenseState" });
+
+    
     let isOptionsTab = window.arguments && window.arguments.length>1;
           
     util.logDebug("QuickFolders.Options.load()");
@@ -301,16 +312,10 @@ QuickFolders.Options = {
     getElement('chkShowRepairFolderButton').label = QI.getUIstring("qfFolderRepair","Repair Folder")
     
     /*****  License  *****/
-    // licensing tab - we also need a "renew license"  label!
-    util.logDebugOptional('options', 'QuickFolders.Options.load - check License…');
-    
     options.labelLicenseBtn(getElement("btnLicense"), "buy");
-    
-    // validate License key
-    licenser.LicenseKey = prefs.getStringPref('LicenseKey');
-    getElement('txtLicenseKey').value = licenser.LicenseKey;
-    if (licenser.LicenseKey) {
-      this.validateLicenseInOptions(false);
+    getElement('txtLicenseKey').value = licenseState.licenseKey;    
+    if (licenseState.licenseKey) {
+      this.validateLicenseInOptions();      
     }
     
     /*****  Help / Support Mode  *****/
@@ -365,15 +370,12 @@ QuickFolders.Options = {
       }, 150);
       
     }
-    
-
-    
+  
     if (earlyExit) return;
-    if (licenser.isValidated)
+    if (licenseState.status == "Valid")
       setTimeout(function() { 
           util.logDebug('Remove animations in options dialog…');
           QI.removeAnimations('quickfolders-options.css');
-          
         }
       );
     
@@ -604,137 +606,13 @@ QuickFolders.Options = {
     btnLoadConfig.disabled = !isEnabled;
   },
   
-  decryptLicense: async function decryptLicense(testMode = false) {
-    const util = QuickFolders.Util,
-          licenser = util.Licenser,
-          prefs = QuickFolders.Preferences,
-          State = licenser.ELicenseState;
-    let getElement = document.getElementById.bind(document),
-        validationPassed       = getElement('validationPassed'),
-        validationFailed       = getElement('validationFailed'),
-        validationInvalidAddon = getElement('validationInvalidAddon'),
-        validationExpired      = getElement('validationExpired'),
-        validationInvalidEmail = getElement('validationInvalidEmail'),
-        validationEmailNoMatch = getElement('validationEmailNoMatch'),
-        validationDate         = getElement('validationDate'),
-        decryptedMail, decryptedDate,
-        result = State.NotValidated;
-    validationPassed.collapsed = true;
-    validationFailed.collapsed = true;
-    validationInvalidAddon.collapsed = true;
-    validationExpired.collapsed = true;
-    validationInvalidEmail.collapsed = true;
-    validationEmailNoMatch.collapsed = true;
-    validationDate.collapsed = false;
-    this.enablePremiumConfig(false);
-    try {
-      this.trimLicense();
-      let txtBox = getElement('txtLicenseKey'),
-          license = txtBox.value;
-      // store new license key
-      if (!testMode) // in test mode we do not store the license key!
-        prefs.setStringPref('LicenseKey', license);
-      
-      let maxDigits = QuickFolders.Crypto.maxDigits, // this will be hardcoded in production 
-          LicenseKey,
-          crypto = licenser.getCrypto(license),
-          mail = licenser.getMail(license),
-          date = licenser.getDate(license);
-      if (prefs.isDebug) {
-        let test = 
-            "┌───────────────────────────────────────────────────────────────┐\n"
-          + "│ QuickFolders.Licenser found the following License components:\n"
-          + "│ Email: " + mail + "\n"
-          + "│ Date: " + date + "\n"
-          + "│ Crypto: " + crypto + "\n"
-          + "└───────────────────────────────────────────────────────────────┘";
-        if (testMode)
-          util.alert(test);
-        util.logDebug(test);
-      }
-      if (crypto)
-        [result, LicenseKey] = await licenser.validateLicense(license, maxDigits);
-      else { // reset internal state of object if no crypto can be found!
-        result = State.Invalid;
-        licenser.DecryptedDate = "";
-        licenser.DecryptedMail = "";
-      }
-      decryptedDate = licenser.DecryptedDate;
-      getElement('licenseDate').value = decryptedDate; // invalid ??
-      decryptedMail = licenser.DecryptedMail;
-      switch(result) {
-        case State.Valid:
-          this.enablePremiumConfig(true);
-          validationPassed.collapsed=false;
-          getElement('dialogProductTitle').value = "QuickFolders Pro";
-          break;
-        case State.Invalid:
-          validationDate.collapsed=true;
-          let addonName = '';
-          switch (license.substr(0,2)) {
-            case 'QI':
-              addonName = 'quickFilters';
-              break;
-            case 'ST':
-              addonName = 'SmartTemplate4';
-              break;
-            case 'QF':
-            default: 
-              validationFailed.collapsed=false;
-          }
-          if (addonName) {
-            validationInvalidAddon.collapsed = false;
-            let txt = validationInvalidAddon.textContent;
-            txt = txt.replace('{0}','QuickFolders').replace('{1}','QF'); // keys for {0} start with {1}
-            if (txt.indexOf(addonName) < 0) {
-              txt += " " + util.getBundleString("qf.licenseValidation.guessAddon", "(The key above may be for {2})").replace('{2}',addonName);
-            }
-            validationInvalidAddon.textContent = txt;
-          }
-          break;
-        case State.Expired:
-          validationExpired.collapsed=false;
-          break;
-        case State.MailNotConfigured:
-          validationDate.collapsed=true;
-          validationInvalidEmail.collapsed=false;
-          // if mail was already replaced the string will contain [mail address] in square brackets
-          validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
-          break;
-        case State.MailDifferent:
-          validationFailed.collapsed=false;
-          validationEmailNoMatch.collapsed=false;
-          break;
-        default:
-          validationDate.collapsed=true;
-          Services.prompt.alert(null,"QuickFolders",'Unknown license status: ' + result);
-          break;
-      }
-      if (testMode) {  // removed in 4.9
-        // getElement('txtEncrypt').value = 'Date = ' + decryptedDate + '    Mail = ' +  decryptedMail +  '  Result = ' + result;
-      }
-      else {
-        // reset License status of main instance
-        if (window.arguments && window.arguments.length>1 && window.arguments[1].inn.instance) {
-          let mainLicenser = window.arguments[1].inn.instance.Licenser;
-          if (mainLicenser) {
-            mainLicenser.ValidationStatus =
-              result != State.Valid ? State.NotValidated : result;
-            mainLicenser.wasValidityTested = true; // no need to re-validate there
-          }
-        }
-      }
-      
-    }    
-    catch(ex) {
-      util.logException("Error in QuickFolders.Options.decryptLicense():\n", ex);
-    }
-    return result;
-  } ,
+  validateNewKey: async function validateNewKey() {
+      let rv = await QuickFolders.Util.notifyTools.notifyBackground({func: "updateLicense", key: document.getElementById('txtLicenseKey').value  });
+      // The backgrouns script will validate the new key and send a broadcast to all consumers on sucess.
+      // In this script, the consumer is onBackgroundUpdate.
+  },
   
   pasteLicense: function pasteLicense() {
-    const Cc = Components.classes,
-          Ci = Components.interfaces;
     let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable),
         str       = {},
         strLength = {},
@@ -754,14 +632,10 @@ QuickFolders.Options = {
       txtBox.value = strLicense;
       finalLicense = this.trimLicense();
     }
-    this.validateLicenseInOptions(false);
-    /* if (finalLicense) {
-      let testMode = !document.getElementById('boxKeyGenerator').collapsed;
-      this.validateLicenseInOptions(testMode);
-    } */
+    this.validateNewKey();
   } ,
   
-  validateLicenseInOptions: function validateLicenseInOptions(testMode) {
+  validateLicenseInOptions: function validateLicenseInOptions() {
     function replaceCssClass(el,addedClass) {
       if (!el) return;
       el.classList.add(addedClass);
@@ -771,55 +645,52 @@ QuickFolders.Options = {
     }
     const util = QuickFolders.Util;
     const elem3pane = util.getMail3PaneWindow().QuickFolders.Util.$;
-    this.decryptLicense(testMode).then ( (result) => {
-      const State = util.Licenser.ELicenseState,
-            options = QuickFolders.Options,
-            prefs = QuickFolders.Preferences,
-            QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
+    const result = licenseState.status;
+    
+    const options = QuickFolders.Options,
+          prefs = QuickFolders.Preferences,
+          QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
 
-      let wd = window.document,
-          getElement = wd.getElementById.bind(wd),
-          btnLicense = getElement("btnLicense"),
-          proTab = getElement("QuickFolders-Pro");
-      let menuProLicense = elem3pane('QuickFolders-ToolbarPopup-register'),
-          quickFoldersSkipFolder = elem3pane('quickFoldersSkipFolder');
-      // this the updating the first button on the toolbar via the main instance
-      QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
-      switch(result) {
-        case State.Valid:
-          let today = new Date(),
-              later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
-              dateString = later.toISOString().substr(0, 10);
-          // if we were a month ahead would this be expired?
-          if (util.Licenser.DecryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
-            options.labelLicenseBtn(btnLicense, "extend");
-          }
-          else
-            btnLicense.collapsed = true;
-          replaceCssClass(proTab, 'paid');
-          replaceCssClass(btnLicense, 'paid');
-          replaceCssClass(menuProLicense, 'paid');
-          break;
-        case State.Expired:
-          QI.TitleLabel.label = options.labelLicenseBtn(btnLicense, "renew");
-          replaceCssClass(proTab, 'expired');
-          replaceCssClass(btnLicense, 'expired');
-          replaceCssClass(menuProLicense, 'expired');
-          btnLicense.collapsed = false;
-          break;
-        default:
-          options.labelLicenseBtn(btnLicense, "buy");
-          btnLicense.collapsed = false;
-          replaceCssClass(btnLicense, 'register');
-          replaceCssClass(proTab, 'free');
-          replaceCssClass(menuProLicense, 'free');
-      }
-      
-      options.configExtra2Button();
-      util.logDebug('validateLicense - result = ' + result);          
-    }).catch( (ex) => {
-      util.logException("Error in QuickFolders.Options.validateLicense():\n", ex);
-    });
+    let wd = window.document,
+        getElement = wd.getElementById.bind(wd),
+        btnLicense = getElement("btnLicense"),
+        proTab = getElement("QuickFolders-Pro");
+    let menuProLicense = elem3pane('QuickFolders-ToolbarPopup-register'),
+        quickFoldersSkipFolder = elem3pane('quickFoldersSkipFolder');
+    // this the updating the first button on the toolbar via the main instance
+    QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
+    switch(result) {
+      case "Valid":
+        let today = new Date(),
+            later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
+            dateString = later.toISOString().substr(0, 10);
+        // if we were a month ahead would this be expired?
+        if (licenseState.decryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
+          options.labelLicenseBtn(btnLicense, "extend");
+        }
+        else
+          btnLicense.collapsed = true;
+        replaceCssClass(proTab, 'paid');
+        replaceCssClass(btnLicense, 'paid');
+        replaceCssClass(menuProLicense, 'paid');
+        break;
+      case "Expired":
+        QI.TitleLabel.label = options.labelLicenseBtn(btnLicense, "renew");
+        replaceCssClass(proTab, 'expired');
+        replaceCssClass(btnLicense, 'expired');
+        replaceCssClass(menuProLicense, 'expired');
+        btnLicense.collapsed = false;
+        break;
+      default:
+        options.labelLicenseBtn(btnLicense, "buy");
+        btnLicense.collapsed = false;
+        replaceCssClass(btnLicense, 'register');
+        replaceCssClass(proTab, 'free');
+        replaceCssClass(menuProLicense, 'free');
+    }
+    
+    options.configExtra2Button();
+    util.logDebug('validateLicense - result = ' + result);
   } ,
   
   restoreLicense: function restoreLicense() {

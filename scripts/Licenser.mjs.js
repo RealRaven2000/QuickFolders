@@ -71,8 +71,39 @@ export class Licenser {
     this.ValidationStatus = LicenseStates.NotValidated;
     this.RealLicense = "";
     this.ExpiredDays = -1;
+    this.decryptedDate = null;
+    this.decryptedMail = null;
   }
   
+  get currentState() {
+    return {
+      status: this.ValidationStatusShortDescription,
+      expiredDays: this.ExpiredDays,
+      expiryDate: this.decryptedDate,
+      email: this.decryptedMail,
+    }
+  }
+  
+  get ValidationStatusShortDescription() {
+    switch(this.ValidationStatus) {
+      case LicenseStates.Valid:
+        return 'Valid';
+      case LicenseStates.Expired:
+        return 'Expired';
+      case LicenseStates.NotValidated:
+        return 'NotValidated';     
+      case LicenseStates.Invalid:
+        return 'Invalid';
+      case LicenseStates.MailNotConfigured:
+        return 'MailNotConfigured';
+      case LicenseStates.MailDifferent:
+        return 'MailDifferent';
+      case LicenseStates.Empty:
+        return 'Empty';
+      default: return 'UnknownStatus';
+    }
+  }
+
   get ValidationStatusDescription() {
     switch(this.ValidationStatus) {
       case LicenseStates.Valid:
@@ -218,36 +249,36 @@ export class Licenser {
       return [this.ValidationStatus, ''];
     }
     
-    let decryptedDate = this.getDecryptedDate();
+    this.decryptedDate = this.getDecryptedDate();
     // check ISO format YYYY-MM-DD
     let regEx = /^\d{4}-\d{2}-\d{2}$/;
-    if (!decryptedDate.match(regEx)) {
+    if (!this.decryptedDate.match(regEx)) {
       this.ValidationStatus = LicenseStates.Invalid;
       log('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
-      return [this.ValidationStatus, this.RealLicense];
+      return this.currentState;
     }
 
     // ******* CHECK MAIL IS MATCHING ********
     let clearTextEmail = this.getClearTextMail().toLocaleLowerCase();
-    let decryptedMail = this.getDecryptedMail().toLocaleLowerCase();
-    if (clearTextEmail != decryptedMail) {
+    this.decryptedMail = this.getDecryptedMail().toLocaleLowerCase();
+    if (clearTextEmail != this.decryptedMail) {
       this.ValidationStatus = LicenseStates.MailDifferent;
       log('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
-      return [this.ValidationStatus, this.RealLicense];
+      return this.currentState;
     }
 
     // ******* CHECK LICENSE EXPIRY  ********
     // get current date
     let today = new Date();
     let dateString = today.toISOString().substr(0, 10);
-    if (decryptedDate < dateString) {
-      let date1 = new Date(decryptedDate);
+    if (this.decryptedDate < dateString) {
+      let date1 = new Date(this.decryptedDate);
       this.ExpiredDays = parseInt((today - date1) / (1000 * 60 * 60 * 24)); 
       log('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
@@ -301,14 +332,14 @@ export class Licenser {
           log("Default Identity of this account has no associated email!", {account: account.name, defaultIdentity});
           continue;
         }
-        if (this.isIdMatchedLicense(defaultIdentity.email, decryptedMail)) {
+        if (this.isIdMatchedLicense(defaultIdentity.email, this.decryptedMail)) {
           this.ValidationStatus = (this.ExpiredDays == 0) ? LicenseStates.Valid : LicenseStates.Expired;
           log("Default Identity of this account matched!", {
             account: account.name, 
             identity: defaultIdentity.email,
             status: this.ValidationStatusDescription
           });
-          return [this.ValidationStatus, this.RealLicense];
+          return this.currentState;
         }
 
       } else if (AllowFallbackToSecondaryIdentiy) {
@@ -326,14 +357,14 @@ export class Licenser {
             log("Identity has no associated email!", {identity});
             continue;
           }
-          if (this.isIdMatchedLicense(identity.email, decryptedMail)) {
+          if (this.isIdMatchedLicense(identity.email, this.decryptedMail)) {
             this.ValidationStatus = (this.ExpiredDays == 0) ? LicenseStates.Valid : LicenseStates.Expired;
             log("Identity of this account matched!", {
               account: account.name, 
               identity: identity.email,
               status: this.ValidationStatusDescription
             });
-            return [this.ValidationStatus, this.RealLicense];
+            return this.currentState;
           }
         }
         
@@ -341,7 +372,7 @@ export class Licenser {
     }
     
     this.ValidationStatus = LicenseStates.MailNotConfigured;
-    return [this.ValidationStatus, this.RealLicense];
+    return this.currentState;
   }
 }
   

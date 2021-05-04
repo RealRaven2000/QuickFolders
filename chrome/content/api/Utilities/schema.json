@@ -16,40 +16,6 @@
       },
 
       {
-        "name": "LicenseIsExpired",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-
-      {
-        "name": "LicenseIsProUser",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-    
-      {
-        "name": "LicensedDaysLeft",
-        "type": "function",
-        "async": true,
-        "parameters": []
-      },
-    
-      {
-        "name": "isLicensed",
-        "type": "function",
-        "async": true,
-        "parameters": [
-          {
-            "name" : "forceValidation",
-            "type" : "boolean"
-          }
-        ]
-      },
-
-
-      {
         "name": "getAddonVersion",
         "type": "function",
         "async": true,

@@ -6,11 +6,27 @@
 import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
 
-async function main() {
 
-  // landing windows.
-  messenger.runtime.onInstalled.addListener(async ({ reason, temporary }) => {
+async function main() { 
+  var currentLicense;
+
+  async function onInstalled(data) {
+    let { reason, temporary } = data;
     
+    let key = await messenger.LegacyPrefs.getPref("extensions.quickfolders.LicenseKey");
+    let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");
+    let currentLicense = new Licenser(key, { forceSecondaryIdentity });
+    currentLicense.validate();
+
+    messenger.runtime.onMessage.addListener(async (data, sender) => {
+      if (data.command) {
+        switch (data.command) {
+          case "getLicenseState": 
+            return currentLicense.currentState;
+        }
+      }
+    });
+  
     // if (temporary) return; // skip during development
     switch (reason) {
       case "install":
@@ -23,11 +39,10 @@ async function main() {
       // see below
       case "update":
       {
-        const mxUtilties = messenger.Utilities;
-        let isLicensed = await mxUtilties.isLicensed(true);
-        if (isLicensed) {
+        let currentLicenseState = currentLicense.currentState;
+        if (currentLicenseState.status == "Valid") {
           // suppress update popup for users with licenses that have been recently renewed
-          let gpdays = await mxUtilties.LicensedDaysLeft();
+          let gpdays = currentLicenseState.expiredDays;
           console.log("Licensed - " + gpdays  + " Days left.");
           // if (gpdays>40) {
             // console.log("Omitting update popup!");
@@ -45,9 +60,11 @@ async function main() {
       break;
     // see below
     }
-  });
+  }
   
-
+  messenger.runtime.onInstalled.addListener(onInstalled);
+ 
+  
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
   
   messenger.WindowListener.registerChromeUrl([ 
@@ -103,12 +120,7 @@ async function main() {
 
   messenger.WindowListener.startListening();
 
-  let key = await messenger.LegacyPrefs.getPref("extensions.quickfolders.LicenseKey");
-  let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");
-  let licence = new Licenser(key, { forceSecondaryIdentity });
-  let status = await licence.validate();
   
-  console.log(key, licence, status);
 }
 
 main();

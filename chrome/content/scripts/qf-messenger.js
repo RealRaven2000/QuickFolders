@@ -23,15 +23,16 @@ async function onLoad(activatedWhileWindowOpen) {
     console.log (Services.appinfo.version);
     let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
     layout.setAttribute("title", "QuickFolderStyles");
-    
+       
+    // Suggestion: Maybe move all of this into initDelay() ?
     const onBackgroundUpdates = (data) => {
-      if (data.licenseState) {
-        window.QuickFolders.Util.licenseState = data.licenseState;
-      }
-    }
+        if (data.licenseState) {
+            QuickFolders.Util.licenseState = data.licenseState;
+        }
+        // TODO Update UI on licence changes
+    }   
     window.QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
-    // kaputt
-    //window.QuickFolders.Util.licenseState = await window.QuickFolders.Util.notifyTools.notifyBackground({func: "getLicenseState" });
+    window.QuickFolders.Util.licenseState = await window.QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseState" });
     
     let tb = WL.injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
     // tb.setAttribute("title", "QuickFolderStyles");

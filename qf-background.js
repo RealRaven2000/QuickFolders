@@ -98,7 +98,7 @@ async function main() {
         return messenger.runtime.getPlatformInfo();
         break;
 
-      case "getBrowserInfoInfo": 
+      case "getBrowserInfo": 
         return messenger.runtime.getBrowserInfo();
         break;
 

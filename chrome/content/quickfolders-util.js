@@ -58,6 +58,30 @@ QuickFolders.Util = {
 	mPlatformVer: null,
 	mExtensionVer: null,
 	lastTime: 0,
+	
+	// Utils is used to keep contact with the background and will request the current state of
+	// some values during init and will update them if the background does a broadcast.
+	async init() {
+
+		const onBackgroundUpdates = (data) => {
+			if (data.licenseState) {
+				QuickFolders.Util.licenseState = data.licenseState;
+			}
+			// TODO Update UI on licence changes!
+			// Suggestion: Emit a custom event, which can be used wherever needed.
+		}   
+		QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
+		QuickFolders.Util.licenseState = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseState" });
+		QuickFolders.Util.plattformInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getPlattformInfo" });
+		QuickFolders.Util.browserInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getBrowserInfo" });
+		QuickFolders.Util.addonInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getAddonInfo" });
+		console.log({
+			plattformInfo: QuickFolders.Util.plattformInfo,
+			browserInfo: QuickFolders.Util.browserInfo,
+			addonInfo: QuickFolders.Util.addonInfo,
+		})
+	},
+	
 	get Licenser() { // retrieve Licenser always from the main window to keep everything in sync
 		const util = QuickFolders.Util;
 	  try { 
@@ -138,19 +162,17 @@ QuickFolders.Util = {
 	},
 	
 	get ApplicationName() {
-		if (!this.mAppName) {
-			let dummy = this.Application;
-		}
 		return this.mAppNameFull;
+		// QuickFolders.Util.browserInfo.name - check what Interlink returns here
 	} ,
 	
 	get HostSystem() {
-		if (null==this.mHost) {
-			let osString = Components.classes["@mozilla.org/xre/app-info;1"]
-						.getService(Components.interfaces.nsIXULRuntime).OS;
-			this.mHost = osString.toLowerCase();
-		}
-		return this.mHost; // linux - winnt - darwin
+		const legacyMap = {
+			mac: "darwin",
+			linux: "linux",
+			win: "winnt",
+		};
+		return legacyMap[QuickFolders.Util.plattformInfo.os];
 	},
   
   // return the button pressed:

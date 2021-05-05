@@ -724,27 +724,23 @@ var QuickFolders = {
 	  if (this.initDone) return;
     if (WLorig)
       QuickFolders.WL = WLorig;
-	  const Cc = Components.classes,
+    
+    const Cc = Components.classes,
 					Ci = Components.interfaces,
 					prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util,
 					QI = QuickFolders.Interface;
-	  let sWinLocation,
+	  
+    let sWinLocation,
 	      nDelay = prefs.getIntPref('initDelay');
-	  QuickFolders.initDocAndWindow(win);
+	  
+    QuickFolders.initDocAndWindow(win);
 	  nDelay = nDelay? nDelay: 750;
 	  sWinLocation = new String(window.location);
 
-    const onBackgroundUpdates = (data) => {
-        if (data.licenseState) {
-            QuickFolders.Util.licenseState = data.licenseState;
-        }
-        // TODO Update UI on licence changes!
-    }   
-    QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
-    QuickFolders.Util.licenseState = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseState" });
-
-	util.VersionProxy(); // initialize the version number using the AddonManager
+    // Do all the fancy background stuff.
+    await QuickFolders.Util.init();
+    util.VersionProxy(); // initialize the version number using the AddonManager
 	
     if (QuickFolders.isCorrectWindow()) {
 			util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + document.title + "\nwait " + nDelay + " msec until init()...");

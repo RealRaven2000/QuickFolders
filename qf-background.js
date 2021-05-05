@@ -87,13 +87,25 @@ async function main() {
   messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
     switch (data.func) {      
       case "slideAlert":
-        util[data.func](...data.args);
+        util.slideAlert(...data.args);
         break;
       
       case "getLicenseState": 
         return currentLicense.currentState;
         break;
       
+      case "getPlattformInfo": 
+        return messenger.runtime.getPlatformInfo();
+        break;
+
+      case "getBrowserInfoInfo": 
+        return messenger.runtime.getBrowserInfo();
+        break;
+
+      case "getAddonInfo": 
+        return messenger.management.getSelf();
+        break;
+
       case "updateLicense":
         let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");
         let newLicense = new Licenser(data.key, { forceSecondaryIdentity });

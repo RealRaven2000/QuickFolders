@@ -83,6 +83,7 @@ export class Licenser {
     this.ValidationStatus = LicenseStates.NotValidated;
     this.RealLicense = "";
     this.ExpiredDays = -1;
+    this.LicensedDaysLeft = 0;
     this.decryptedDate = "";
     this.decryptedMail = "";
   }
@@ -92,6 +93,7 @@ export class Licenser {
     return {
       status: this.ValidationStatusShortDescription,
       description: this.ValidationStatusDescription,
+      licensedDaysLeft: this.LicensedDaysLeft,
       expiredDays: this.ExpiredDays,
       expiryDate: this.decryptedDate,
       email: this.decryptedMail,
@@ -293,15 +295,19 @@ export class Licenser {
     let today = new Date();
     let dateString = today.toISOString().substr(0, 10);
     if (this.decryptedDate < dateString) {
-      let date1 = new Date(this.decryptedDate);
-      this.ExpiredDays = parseInt((today - date1) / (1000 * 60 * 60 * 24)); 
+      let licDate = new Date(this.decryptedDate);
+      this.ExpiredDays = parseInt((today - licDate) / (1000 * 60 * 60 * 24)); 
       log('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
       // Do not stop here, but continue the validation process and only if the
       // Valid state is reached, set to Expired.
+      this.LicensedDaysLeft = 0;
     } else {
+      let today = new Date(),
+          licDate = new Date(this.decryptedDate);
+      this.LicensedDaysLeft = parseInt((licDate - today) / (1000 * 60 * 60 * 24)); 
       this.ExpiredDays = 0;
     }
 

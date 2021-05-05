@@ -159,6 +159,12 @@ async function onLoad(activatedWhileWindowOpen) {
                                                     oncommand="QuickFolders.FolderTree.loadDictionary();" 
                                                     class="menuitem-iconic"
                                                     />														
+                              <menuitem id="QuickFolders-ToolbarPopup-dbg2"
+                                                  label="Force Tree Refresh"
+                                                  oncommand="QuickFolders.FolderTree.refreshTree();" 
+                                                  class="menuitem-iconic"
+                                                  />
+                                                  
                               <menuitem id="QuickFolders-ToolbarPopup-dbg3"
                                           label="Platform info - aboutHost()"
                                                     oncommand="QuickFolders.Util.aboutHost();"

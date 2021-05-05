@@ -164,7 +164,6 @@ QuickFolders.Util = {
 	
 	get ApplicationName() {
 		return this.mAppNameFull;
-		// QuickFolders.Util.browserInfo.name - check what Interlink returns here
 	} ,
 	
 	get HostSystem() {

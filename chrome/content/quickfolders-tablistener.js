@@ -24,7 +24,7 @@ QuickFolders.TabListener = {
 					return;
         let tabMode = util.getTabMode(info);
 				
-				let isToggleToolbar = (util.ApplicationName == 'Interlink'),
+				let isToggleToolbar = false,
 				    toolbarElement = isToggleToolbar ? document.getElementById("QuickFolders-Toolbar") : null;
         util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode + "\nisToggleToolbar = " + isToggleToolbar);
 				

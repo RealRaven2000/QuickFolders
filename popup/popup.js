@@ -56,7 +56,8 @@ async function updateActions(addonName) {
     else { // License Extension
       hide('renewLicenseListItem');
       hide('renew');
-      if (licenseState.expiredDays < 50) { // they may have seen this popup. Only show extend License section if it is < 50 days away
+      debugger;
+      if (licenseState.licensedDaysLeft < 50) { // they may have seen this popup. Only show extend License section if it is < 50 days away
         show('extendLicenseListItem');
         show('extend');
       }
@@ -68,7 +69,8 @@ async function updateActions(addonName) {
         hide('extendLicenseListItem');
         hide('extend');
         let animation = document.getElementById('gimmick');
-        animation.parentNode.removeChild(animation);
+        if (animation)
+          animation.parentNode.removeChild(animation);
 
         isActionList = false;
       }

@@ -78,6 +78,7 @@ export class Licenser {
   get currentState() {
     return {
       status: this.ValidationStatusShortDescription,
+      description: this.ValidationStatusDescription,
       expiredDays: this.ExpiredDays,
       expiryDate: this.decryptedDate,
       email: this.decryptedMail,

@@ -72,11 +72,11 @@ QuickFolders.Util = {
 		}   
 		QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
 		QuickFolders.Util.licenseState = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseState" });
-		QuickFolders.Util.plattformInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getPlattformInfo" });
+		QuickFolders.Util.platformInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getPlatformInfo" });
 		QuickFolders.Util.browserInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getBrowserInfo" });
 		QuickFolders.Util.addonInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getAddonInfo" });
 		console.log({
-			plattformInfo: QuickFolders.Util.plattformInfo,
+			platformInfo: QuickFolders.Util.platformInfo,
 			browserInfo: QuickFolders.Util.browserInfo,
 			addonInfo: QuickFolders.Util.addonInfo,
 		})
@@ -172,7 +172,7 @@ QuickFolders.Util = {
 			linux: "linux",
 			win: "winnt",
 		};
-		return legacyMap[QuickFolders.Util.plattformInfo.os];
+		return legacyMap[QuickFolders.Util.platformInfo.os];
 	},
   
   // return the button pressed:

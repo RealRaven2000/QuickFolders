@@ -21,7 +21,7 @@ async function main() {
     const event = new CustomEvent("WebExtStartupFinished");
     window.dispatchEvent(event);
   }
-  /*
+  
   messenger.runtime.onInstalled.addListener(async (data) => {
     let { reason, temporary } = data;
     
@@ -68,7 +68,7 @@ async function main() {
       break;
     // see below
     }    
-  });*/
+  });
   
   let key = await messenger.LegacyPrefs.getPref("extensions.quickfolders.LicenseKey");
   let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");
@@ -94,7 +94,7 @@ async function main() {
         return currentLicense.currentState;
         break;
       
-      case "getPlattformInfo": 
+      case "getPlatformInfo": 
         return messenger.runtime.getPlatformInfo();
         break;
 

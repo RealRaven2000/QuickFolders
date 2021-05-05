@@ -293,7 +293,7 @@ QuickFolders.Util = {
 
 	slideAlert: function slideAlert(title, text, icon) {
     /*	my first background call! */
-		QuickFolders.Util.notifyTools.notifyBackground({func: "slideAlert", args: [title, text, icon]});
+		QuickFolders.Util.notifyTools.notifyBackground({ func: "slideAlert", args: [title, text, icon] });
 	} ,
 	
 //	disableFeatureNotification: function disableFeatureNotification(featureName) {

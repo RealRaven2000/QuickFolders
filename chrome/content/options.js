@@ -607,7 +607,7 @@ QuickFolders.Options = {
   },
   
   validateNewKey: async function validateNewKey() {
-      let rv = await QuickFolders.Util.notifyTools.notifyBackground({func: "updateLicense", key: document.getElementById('txtLicenseKey').value  });
+      let rv = await QuickFolders.Util.notifyTools.notifyBackground({ func: "updateLicense", key: document.getElementById('txtLicenseKey').value });
       // The backgrouns script will validate the new key and send a broadcast to all consumers on sucess.
       // In this script, the consumer is onBackgroundUpdate.
   },

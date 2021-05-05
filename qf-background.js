@@ -26,7 +26,7 @@ async function main() {
     let { reason, temporary } = data;
     
     // Wait until the main startup routine has finished!
-    await new Promise(resolve => {
+    await new Promise((resolve) => {
       window.addEventListener("WebExtStartupFinished", resolve, { once: true });
       if (startupFinished) {
         // Looks like we missed the one send by main()

@@ -66,9 +66,10 @@ QuickFolders.Util = {
 		const onBackgroundUpdates = (data) => {
 			if (data.licenseState) {
 				QuickFolders.Util.licenseState = data.licenseState;
+
+				const event = new CustomEvent("QuickFolders.BackgroundUpdate");
+				window.dispatchEvent(event); 
 			}
-			// TODO Update UI on licence changes!
-			// Suggestion: Emit a custom event, which can be used wherever needed.
 		}   
 		QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
 		QuickFolders.Util.licenseState = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseState" });

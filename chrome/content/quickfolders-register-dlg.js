@@ -20,11 +20,16 @@ var Register = {
     QuickFolders.Util.localize(document);
   },
   load: async function load() {
+    window.addEventListener("QuickFolders.BackgroundUpdate", this.updateUI.bind(this));
+    await QuickFolders.Util.init();
+    this.updateUI();
+  },
+  
+  updateUI: async function updateUI() {
+    const licenser = QuickFolders.Util.licenseState;
     const getElement = document.getElementById.bind(document),
-          util = QuickFolders.Util,
-					prefs = QuickFolders.Preferences,
-					licenser = util.Licenser,
-          ELS = licenser.ELicenseState;
+      util = QuickFolders.Util,
+      prefs = QuickFolders.Preferences;
         
     let dropdownCount = 0;
     function appendIdentity(dropdown, id, account) {
@@ -62,22 +67,18 @@ var Register = {
       let ref = getElement('referrer');
       ref.value = window.arguments[1].inn.referrer;
     }
-		// prepare renew license button?
-    let decryptedDate = licenser ? licenser.DecryptedDate : '';
+   
+    let decryptedDate = licenser.expiryDate;
     if (decryptedDate) {
 			if (util.isDebug) {
-				util.logDebug('Register.load()\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
+				util.logDebug('Register.load()\n' + 'ValidationStatus = ' + licenser.description)
 				debugger;
-			}
-			if (licenser.ValidationStatus == ELS.NotValidated) {
-				await licenser.validateLicense(prefs.getStringPref('LicenseKey'));
-				util.logDebug('Re-validated.\n' + 'ValidationStatus = ' + licenser.licenseDescription(licenser.ValidationStatus))
 			}
 				
       getElement('licenseDate').value = decryptedDate; // invalid ??
-			if (licenser.isExpired || licenser.isValidated) {
+			if (licenser.status == "Expired" || licenser.status == "Valid") {
 				let btnLicense = getElement('btnLicense');
-				if(licenser.isExpired)
+				if(licenser.status == "Expired")
 					btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
 				else {
 					btnLicense.label = util.getBundleString("qf.notification.premium.btn.extendLicense", "Extend License!");
@@ -91,7 +92,7 @@ var Register = {
 				btnLicense.setAttribute('oncommand', 'Register.goPro(2);');
 				btnLicense.classList.add('expired');
 				// hide the "Enter License Key..." button + label
-				if (!licenser.isExpired) {
+				if (licenser.status == "Valid") {
 					getElement('haveLicense').collapsed=true;
 					getElement('btnEnterCode').collapsed=true;
 				}
@@ -100,20 +101,20 @@ var Register = {
     else
       getElement('licenseDate').collapsed = true;
 		
-		switch(licenser.ValidationStatus) {
-			case ELS.Expired:
+		switch(licenser.status) {
+			case "Expired":
 			  getElement('licenseDateLabel').value = util.getBundleString("qf.register.licenseValid.expired","Your license expired on:")
 				getElement('qfLicenseTerm').classList.add('expired');
 			  break;
-			case ELS.Valid:
+			case "Valid":
 			  getElement('btnLicense').classList.remove('register'); // remove the "pulsing effect" if license is valid.
 			  break;
-			case ELS.Empty:
-			case ELS.NotValidated:
+			case "Empty":
+			case "NotValidated":
 				getElement('licenseDateLabel').value = " ";
 			  break;
 			default: // default class=register will animate the button
-			  getElement('licenseDateLabel').value = licenser.licenseDescription(licenser.ValidationStatus) + ":";
+			  getElement('licenseDateLabel').value = licenser.description + ":";
 		}
 			
 

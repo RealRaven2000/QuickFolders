@@ -1671,13 +1671,13 @@
     "message": "What's new?"
   },
   "whats-new-head": {
-    "message": "Highlights"
+    "message": "Important Changes"
   },
   "whats-new-intro": {
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}5.5.2 - hotfix - in Thunderbird 89, the options menu item was not displayed in Add-ons Manager{L2}{L1}5.5.2 - hotfix for quickMove - parent folder containing an underscore not suggested as parent.{L2}{L1}5.5.1 - hotfix for the function 'Mark folders + subfolders as read' [issue 144]{L2}{L1}I also completed Hungarian, Simplified Chinese and Catalan locales.{L2}This version further improves the quickMove function through the following features: {L1}Single Message Tab: option to automatically open the next email in the same tab after moving a message{L2}{L1}Option to completely cancel quickMove (and empty its list of messages) with a single press of ESCAPE.{L2}{L1}Advanced matching of parent folders by reading from _ and space delimiters and treating them like the start of a searched name.{L2}{L1}Repaired: search folders while viewing messages displayed in search results or from multi-folder conversation.{L2}{L1}These and additional functions to restrict search results from certain accounts can be configured through the Advanced Search Settings on the QuickFolders Pro Tab.{L2}"
+    "message": "{L1} Corregido: Caracteres de nueva línea no deseados [\\n] que se muestran en la versión 5.5.2 {L2} {L1} El código del licenciatario se migró a una secuencia de comandos en segundo plano. Si experimenta algún efecto secundario relacionado con su licencia, no dude en ponerse en contacto conmigo. a través de la pestaña de asistencia {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1671,13 +1671,13 @@
     "message": "Vad är nytt?"
   },
   "whats-new-head": {
-    "message": "Höjdpunkter"
+    "message": "Viktiga förändringar"
   },
   "whats-new-intro": {
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - snabbkorrigering - i Thunderbird 89 visades alternativmenyalternativet inte i tilläggshanteraren {L2}{L1} 5.5.2 - snabbkorrigering för quickMove - överordnad mapp som innehåller en understrykning som inte föreslås som överordnad {L2}{L1} 5.5.1 - snabbkorrigering för funktionen 'Markera mappar + undermappar som lästa' {L2}{L1} Jag slutförde även ungerska, förenklade kinesiska och katalanska språk. {L2}Denna version utökar quickMove-funktionen ytterligare genom följande funktioner: {L1} Flik för enstaka meddelanden: alternativ för att automatiskt öppna nästa e-post på samma flik efter att ett meddelande har flyttats {L2} {L1} Alternativ för att helt avbryta quickMove (och tömma listan över meddelanden) med ett enda tryck på ESCAPE. {L2} {L1} Avancerad matchning av överordnade mappar genom att läsa från _ och mellanslag och behandla dem som början på ett sökt namn. {L2} {L1} Reparerad: söka i mappar medan du tittar på meddelanden som visas i sökresultat eller från konversationer i flera mappar. {L2} {L1} Dessa och ytterligare funktioner för att begränsa sökresultat från vissa konton kan konfigureras via Avancerade sökinställningar på fliken QuickFolders Pro. {L2}"
+    "message": "{L1} Fixat: Oönskade nya radtecken [\\n] visas i version 5.5.2 {L2} {L1} Licenskod migrerad till bakgrundsskript - om du upplever några biverkningar relaterade till din licens, tveka inte att kontakta mig via supportfliken {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

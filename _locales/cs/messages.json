@@ -172,13 +172,13 @@
     "message": "Co je nového?"
   }, 
   "whats-new-head": {
-    "message": "Hlavní body"
+    "message": "Důležité změny"
   },
   "whats-new-intro": {
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1} 5.5.2 - oprava hotfix - v Thunderbirdu 89 se položka nabídky možností ve Správci doplňků nezobrazila {L2}{L1} 5.5.2 - oprava hotfix pro quickMove - nadřazená složka obsahující podtržítko není doporučeno jako nadřazená {L2}{L1} 5.5.1 - oprava hotfix pro funkci „Označit složky + podsložky jako přečtené“{L2}{L1}Dokončená maďarská, zjednodušená čínská a katalánská národní prostředí.{L2}Tato verze dále rozšiřuje funkci quickMove o následující funkce: {L1}Karta Jedna zpráva: možnost automaticky otevřít další e-mail na stejné kartě po přesunutí zprávy{L2} {L1} Možnost úplného zrušení quickMove (a vyprázdnění seznamu zprávy) jediným stisknutím klávesy ESCAPE. {L2} {L1} Pokročilé porovnávání nadřazených složek čtením z oddělovačů _ a mezer a zacházením s nimi jako se začátkem hledaného jména. {L2} {L1} Opraveno: vyhledávání složek při prohlížení zprávy zobrazené ve výsledcích vyhledávání nebo z vícesložkové konverzace. {L2} {L1} Tyto a další funkce omezující výsledky vyhledávání z určitých účtů lze konfigurovat pomocí Rozšířeného nastavení vyhledávání na kartě QuickFolders Pro. {L2}"
+    "message" : "{L1} Opraveno: Nežádoucí nové řádkové znaky [\\n] zobrazené ve verzi 5.5.2 {L2} {L1} kód poskytovatele licence migrován do skriptu na pozadí - pokud se u vaší licence vyskytnou jakékoli vedlejší účinky, neváhejte mě kontaktovat prostřednictvím karty podpory {L2}"
   },
   "window-title": {
     "message": "Vítejte v $addonName$",

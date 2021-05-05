@@ -1671,13 +1671,13 @@
     "message": "Cosa c'è di nuovo?"
   },
   "whats-new-head": {
-    "message": "Punti salienti"
+    "message": "Cambiamenti importanti"
   },
   "whats-new-intro": {
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - hotfix - in Thunderbird 89, la voce di menu delle opzioni non veniva visualizzata in Gestione componenti aggiuntivi {L2}{L1} 5.5.2 - hotfix per quickMove - cartella principale contenente un trattino basso non suggerito come genitore {L2}{L1} 5.5.1 - hotfix per la funzione 'Contrassegna cartelle e sottocartelle come lette'{L2}{L1} Ho anche completato le lingue ungherese, cinese semplificato e catalano. {L2}Questa versione estende ulteriormente la funzione quickMove attraverso le seguenti caratteristiche: {L1} Scheda messaggio singolo: opzione per aprire automaticamente l'e-mail successiva nella stessa scheda dopo aver spostato un messaggio {L2} {L1} Opzione per annullare completamente quickMove (e svuotare il suo elenco di messaggi) con una singola pressione di ESCAPE. {L2} {L1} Corrispondenza avanzata delle cartelle principali leggendo da _ e dai delimitatori di spazio e trattandoli come l'inizio di un nome cercato. {L2} {L1} Riparato: ricerca nelle cartelle durante la visualizzazione messaggi visualizzati nei risultati di ricerca o da conversazioni in più cartelle. {L2} {L1} Queste e altre funzioni per limitare i risultati della ricerca da determinati account possono essere configurate tramite le Impostazioni di ricerca avanzata nella scheda QuickFolders Pro. {L2}"
+    "message": "{L1} Risolto: nuovi caratteri di riga indesiderati [\\n] visualizzati nella versione 5.5.2 {L2} {L1} codice del concessore di licenza migrato in uno script in background - se si verificano effetti collaterali relativi alla licenza, non esitate a contattarmi tramite la scheda di supporto {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

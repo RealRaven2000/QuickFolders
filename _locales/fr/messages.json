@@ -1671,13 +1671,13 @@
     "message": "Quoi de neuf?"
   },
   "whats-new-head": {
-    "message": "Points forts"
+    "message": "Changements importants"
   },
   "whats-new-intro": {
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - hotfix - dans Thunderbird 89, l'élément de menu d'options n'était pas affiché dans le gestionnaire de modules complémentaires {L2}{L1} 5.5.2 - correctif pour quickMove - dossier parent contenant un trait de soulignement non suggéré comme parent {L2}{L1} 5.5.1 - hotfix pour la fonction 'Marquer les dossiers + sous-dossiers comme lus' {L2}{L1}J'ai également terminé les langues hongroises, chinoises simplifiées et catalanes.{L2}Cette version étend encore la fonction quickMove grâce aux fonctionnalités suivantes: {L1} Onglet Message unique: option pour ouvrir automatiquement l'e-mail suivant dans le même onglet après avoir déplacé un message {L2} {L1} Option pour annuler complètement quickMove (et vider sa liste de messages) avec une simple pression sur ÉCHAPPEMENT. {L2} {L1} Correspondance avancée des dossiers parents en lisant à partir des délimiteurs _ et d'espacement et en les traitant comme le début d'un nom recherché. {L2} {L1} Réparé: recherche de dossiers lors de la visualisation messages affichés dans les résultats de recherche ou à partir d'une conversation à plusieurs dossiers. {L2} {L1} Ces fonctions, ainsi que des fonctions supplémentaires permettant de restreindre les résultats de recherche de certains comptes, peuvent être configurées via les paramètres de recherche avancée de l'onglet QuickFolders Pro. {L2}"
+    "message": "{L1} Corrigé: les caractères de nouvelle ligne indésirables [\\n] affichés dans la version 5.5.2 {L2} {L1} code du concédant migré vers le script d'arrière-plan - si vous rencontrez des effets secondaires liés à votre licence, n'hésitez pas à contacter moi via l'onglet Assistance {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

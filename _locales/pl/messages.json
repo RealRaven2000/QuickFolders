@@ -1671,13 +1671,13 @@
     "message": "Co nowego?"
   },
   "whats-new-head": {
-    "message": "Najważniejsze"
+    "message": "Ważne zmiany"
   },
   "whats-new-intro": {
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - poprawka - w Thunderbirdzie 89 pozycja menu opcji nie była wyświetlana w Menedżerze dodatków {L2}{L1} 5.5.2 - poprawka do quickMove - folder nadrzędny zawierający podkreślenie nie jest sugerowany jako nadrzędny {L2}{L1} 5.5.1 - poprawka do funkcji „Oznacz foldery + podfoldery jako przeczytane” {L2}{L1} Ukończyłem również język węgierski, chiński uproszczony i kataloński. {L2}Ta wersja dodatkowo rozszerza funkcję quickMove o następujące funkcje: {L1} Pojedyncza karta wiadomości: opcja automatycznego otwierania następnej wiadomości e-mail na tej samej karcie po przeniesieniu wiadomości {L2} {L1} Opcja całkowitego anulowania quickMove (i opróżnienia jego listy wiadomości) jednym naciśnięciem klawisza ESCAPE. {L2} {L1} Zaawansowane dopasowywanie folderów nadrzędnych poprzez czytanie z _ i separatorów spacji i traktowanie ich jak początku wyszukiwanej nazwy. {L2} {L1} Naprawiono: wyszukiwanie folderów podczas przeglądania wiadomości wyświetlane w wynikach wyszukiwania lub z konwersacji obejmującej wiele folderów. {L2} {L1} Te i dodatkowe funkcje ograniczające wyniki wyszukiwania z niektórych kont można skonfigurować w ustawieniach wyszukiwania zaawansowanego na karcie QuickFolders Pro. {L2}"
+    "message": "{L1} Naprawiono: niechciane znaki nowego wiersza [\\n] wyświetlane w wersji 5.5.2 {L2} {L1} Kod licencjodawcy został przeniesiony do skryptu działającego w tle - jeśli wystąpią jakiekolwiek skutki uboczne związane z licencją, prosimy o kontakt mnie za pośrednictwem karty pomocy {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

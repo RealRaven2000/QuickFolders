@@ -1671,13 +1671,13 @@
     "message": "Was gibt's Neues?"
   },
   "whats-new-head": {
-    "message": "Highlights"
+    "message": "Wichtige Änderungen"
   },
   "whats-new-intro": {
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - Hotfix - In Thunderbird 89 wurde der Optionsmenüpunkt im Add-On-Manager nicht angezeigt.{L2}{L1} 5.5.2 - Hotfix für quickMove - übergeordneter Ordner mit einem Unterstrich, wird nicht als übergeordneter vorgeschlagen.{L2}{L1} 5.5.1 - Hotfix für die Funktion 'Ordner + Unterordner als gelesen markieren'{L2}{L1}Vervollständigte Übersetzungen für ungarische, vereinfachte chinesische und katalanische Sprache.{L2}Diese Version erweitert die quickMove-Funktion um die folgenden Funktionen: {L1} Im dedizierten Mail-Tab: Nach Verschieben der aktuellen Nachricht die nächste E-Mail im selben Tab öffnen {L2} {L1} Option zum vollständigen Abbruch von quickMove (und Leeren der Nachrichten-Liste) mit einem einzigen Druck auf ESCAPE. {L2} {L1}Erweiterte Suche von Elternverzeichnissen indem _ und Leerzeichen als Start eines gesuchten Namens behandelt werden. {L2} {L1}Repariert: Durchsuchen von Ordnern während der Anzeige Nachrichten, die in Suchergebnissen oder aus Konversationen mit mehreren Ordnern angezeigt werden. {L2} {L1}Diese und zusätzliche Funktionen zum Einschränken der Suchergebnisse bestimmter Konten können über die erweiterten Sucheinstellungen auf der Registerkarte QuickFolders Pro konfiguriert werden. {L2}"
+    "message": "{L1} Behoben: Unerwünschte Zeilenumbrüche [\\n], die seit Version 5.5.2 angezeigt wurden. {L2} {L1} Lizenzierungscode in Hintergrundskript migriert. Wenn Sie Nebenwirkungen im Zusammenhang mit Ihrer Lizenz feststellen, zögern Sie bitte nicht, mich zu kontaktieren über die Support-Registerkarte {L2}"
   },
   "window-title": {
     "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",

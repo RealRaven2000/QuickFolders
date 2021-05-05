@@ -175,13 +175,13 @@
     "message": "Mikä on uutta?"
   },  
   "whats-new-head" : {
-    "message": "Kohokohdat"
+    "message": "Tärkeät muutokset"
   },  
   "whats-new-intro" : {
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list" : {
-    "message" : "{L1} 5.5.2 - hotfix-korjaus - Thunderbird 89: ssä asetusvalikkokohde ei näkynyt Lisäosien hallinnassa {L2}{L1} 5.5.2 - hotfix for quickMove - ylätason kansio, joka sisältää alaviivan, jota ei ehdoteta vanhemmaksi {L2}{L1} 5.5.1 - Korjaus toiminnolle 'Merkitse kansiot + alikansiot luetuiksi' {L2}Tämä versio laajentaa quickMove-toimintoa edelleen seuraavien ominaisuuksien avulla: {L1} Yhden viestin välilehti: vaihtoehto avata seuraava sähköposti samalla välilehdellä viestin siirtämisen jälkeen {L2} {L1} Mahdollisuus peruuttaa quickMove kokonaan (ja tyhjentää sen luettelo viestit) yhdellä ESCAPE-painalluksella. {L2} {L1} Vanhempien kansioiden edistynyt vastaavuus lukemalla _ ja välilyönneistä ja käsittelemällä niitä kuin etsityn nimen alku. {L2} {L1} Korjattu: kansioiden haku katselun aikana hakutuloksissa tai monikansioisessa keskustelussa näkyvät viestit. {L2} {L1} Nämä ja lisätoiminnot, joilla rajoitetaan hakutuloksia tietyiltä tileiltä, voidaan määrittää QuickFolders Pro -välilehden Tarkennettu haku -asetusten kautta. {L2}"
+    "message" : "{L1} Korjattu: Ei-toivotut uudet rivimerkit [\\n] näkyvät versiossa 5.5.2. {L2} {L1} lisenssinantajakoodi siirrettiin taustakoodiin - jos sinulla on lisenssiin liittyviä sivuvaikutuksia, älä epäröi ottaa yhteyttä minuun tuen välilehden kautta.{L2}"
   },
   "window-title": {
     "message": "Tervetuloa osoitteeseen $addonName$",

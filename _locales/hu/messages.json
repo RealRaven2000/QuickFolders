@@ -1632,13 +1632,13 @@
     "message": "Mi újság?"
   },
   "whats-new-head": {
-    "message": "Fénypontok"
+    "message": "Fontos változások"
   },
   "whats-new-intro": {
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - gyorsjavítás - a Thunderbird 89 alkalmazásban a Beállítások menüpont nem jelent meg a Bővítménykezelőben {L2}{L1} 5.5.2 - gyorsjavítás a quickMove-hoz - szülő mappa, amely aláhúzást tartalmaz, nem javasolt szülőnek{L2}{L1} 5.5.1 - gyorsjavítás a „Mappák + almappák megjelölése olvasottként” funkcióhoz [144. kiadás] {L2}{L1} Magyar, egyszerűsített kínai és katalán nyelveket is kitöltöttem. {L2} Ez a verzió tovább javítja a quickMove funkciót a következő funkciók révén: {L1} Egyetlen üzenet fül: opció a következő e-mail ugyanazon a lapon egy üzenet áthelyezése után {L2} {L1} Lehetőség a QuickMove teljes törlésére (és az üzenetek listájának kiürítésére) az ESCAPE egyetlen megnyomásával. {L2} {L1} A szülőmappák speciális egyeztetése a következőből: _ és szóközökkel, és úgy kezeljük őket, mint a keresett név kezdetét. {L2} {L1} Javítva: mappák keresése a keresési eredmények között megjelenő üzenetek vagy a többmappás beszélgetések során. {L2} {L1} Ezek és további funkciók A keresési eredmények bizonyos fiókokból történő korlátozása a QuickFolders Pro fül Speciális keresési beállításai között konfigurálható. {L2}"
+    "message": "{L1} Javítva: Nemkívánatos új sor karakterek [\\n] láthatók az 5.5.2 változatban. Az {L2} {L1} licenckód át lett véve háttérszkriptbe - ha a licencéhez kapcsolódó mellékhatásokat észlel, ne habozzon kapcsolatba lépni velem a támogatási fülön keresztül {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

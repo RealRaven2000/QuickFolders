@@ -1671,13 +1671,13 @@
     "message": "O que há de novo?"
   },
   "whats-new-head": {
-    "message": "Luzes"
+    "message": "Mudanças Importantes"
   },
   "whats-new-intro": {
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - hotfix - no Thunderbird 89, o item de menu de opções não era exibido no Gerenciador de complementos {L2}{L1} 5.5.2 - hotfix para quickMove - pasta pai contendo um sublinhado não sugerido como pai {L2}{L1} 5.5.1 - hotfix para a função 'Marcar pastas + subpastas como lidas' {L2}{L1} Também concluí as localidades húngara, chinesa simplificada e catalã. {L2}Esta versão estende ainda mais a função quickMove através dos seguintes recursos: {L1} Guia de mensagem única: opção para abrir automaticamente o próximo e-mail na mesma guia após mover uma mensagem {L2} {L1} Opção para cancelar completamente o quickMove (e esvaziar sua lista de ) com um único pressionamento de ESCAPE. {L2} {L1} Correspondência avançada de pastas pai, lendo de _ e delimitadores de espaço e tratando-os como o início de um nome pesquisado. {L2} {L1} Reparado: pesquisa de pastas durante a exibição mensagens exibidas nos resultados da pesquisa ou de conversas com várias pastas. {L2} {L1} Estas e outras funções para restringir os resultados da pesquisa de certas contas podem ser configuradas nas Configurações de pesquisa avançada na guia QuickFolders Pro. {L2}"
+    "message": "{L1} Corrigido: caracteres de nova linha indesejados [\\n] exibidos na versão 5.5.2 {L2} {L1} Código do licenciador migrado para o script de plano de fundo - se você experimentar quaisquer efeitos colaterais relacionados à sua licença, não hesite em entrar em contato eu por meio da guia de suporte {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

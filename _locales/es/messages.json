@@ -1671,13 +1671,13 @@
     "message": "¿Qué hay de nuevo?"
   },
   "whats-new-head": {
-    "message": "Reflejos"
+    "message": "Cambios importantes"
   },
   "whats-new-intro": {
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.5.2 - revisión - en Thunderbird 89, el elemento del menú de opciones no se mostraba en el Administrador de complementos {L2}{L1} 5.5.2 - revisión para quickMove - carpeta principal que contiene un guión bajo no sugerido como principal.{L2}{L1} 5.5.1 - revisión para la función 'Marcar carpetas + subcarpetas como leídas' {L2}{L1}Locales completos en húngaro, chino simplificado y catalán.{L2}Esta versión amplía aún más la función quickMove a través de las siguientes características: {L1} Pestaña de mensaje único: opción para abrir automáticamente el siguiente correo electrónico en la misma pestaña después de mover un mensaje {L2} {L1} Opción para cancelar por completo QuickMove (y vaciar su lista de mensajes) con una sola pulsación de ESCAPE. {L2} {L1} Coincidencia avanzada de carpetas principales mediante la lectura de _ y delimitadores de espacio y tratándolos como el comienzo de un nombre buscado. {L2} {L1} Reparado: búsqueda de carpetas durante la visualización mensajes que se muestran en los resultados de búsqueda o en conversaciones de varias carpetas. {L2} {L1} Estas y otras funciones adicionales para restringir los resultados de búsqueda de ciertas cuentas se pueden configurar a través de la Configuración de búsqueda avanzada en la pestaña QuickFolders Pro. {L2}"
+    "message": "{L1} Corregido: Caracteres de nueva línea no deseados [\\n] mostrados en la versión 5.5.2 {L2} {L1} código de licenciante migrado a una secuencia de comandos en segundo plano. Si experimenta algún efecto secundario relacionado con su licencia, no dude en contactar yo a través de la pestaña de asistencia {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

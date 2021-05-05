@@ -1,3 +1,13 @@
+/* 
+  BEGIN LICENSE BLOCK
+
+  QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+  Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+  For details, please refer to license.txt in the root folder of this extension
+
+  END LICENSE BLOCK 
+*/
+
 import * as crypto from './qf-crypto.mjs.js';
 import {RSA} from './rsa/RSA.mjs.js';
 import {log} from './qf-util.mjs.js';
@@ -42,32 +52,34 @@ function getMail(licence) {
 
 
 export class Licenser {
-  
   constructor(LicenseKey, options = {}) {
-    if (!LicenseKey) {
-      throw new Error("No LicenseKey!");
-    }  
-    
+    // the constructor ONLY sets the Licensekey, it does not set date etc.
+    this.reset();    
+    this.LicenseKey = "";
     this.ForceSecondaryIdentity = options.hasOwnProperty("forceSecondaryIdentity")
       ? options.forceSecondaryIdentity
       : false;
-
-    this.LicenseKey = LicenseKey;
-    if (this.LicenseKey.indexOf('QFD')==0) {
-      this.key_type = 1; // Volume License
-    } else {
-      this.key_type = 0; // Private License
+      
+    if (!LicenseKey) {
+      // we accept an empty license for resetting the 
+      this.key_type = 0; // defaul for now key is Pro license (but not valid)
+    } 
+    else {
+      this.LicenseKey = LicenseKey;
+      if (this.LicenseKey.indexOf('QFD')==0) {
+        this.key_type = 1; // Volume License
+      } else {
+        this.key_type = 0; // Private License
+      }
+      
+      if (this.key_type == 1 && this.ForceSecondaryIdentity) {
+        this.ForceSecondaryIdentity = false;
+        log("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
+      }
     }
-    
-    if (this.key_type == 1 && this.ForceSecondaryIdentity) {
-      this.ForceSecondaryIdentity = false;
-      log("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
-    }
-
-    this.reset();    
   }
   
-  reset() {
+  reset() { // initialize License Cache
     this.ValidationStatus = LicenseStates.NotValidated;
     this.RealLicense = "";
     this.ExpiredDays = -1;
@@ -75,6 +87,7 @@ export class Licenser {
     this.decryptedMail = "";
   }
   
+  // public Interface
   get currentState() {
     return {
       status: this.ValidationStatusShortDescription,

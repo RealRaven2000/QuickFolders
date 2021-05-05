@@ -73,7 +73,7 @@ async function main() {
   let key = await messenger.LegacyPrefs.getPref("extensions.quickfolders.LicenseKey");
   let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");
   currentLicense = new Licenser(key, { forceSecondaryIdentity });
-  currentLicense.validate();
+  await currentLicense.validate();
 
   messenger.runtime.onMessage.addListener(async (data, sender) => {
     if (data.command) {

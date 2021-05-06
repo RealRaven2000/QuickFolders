@@ -17,8 +17,8 @@ import {BigIntModule} from './BigIntModule.mjs.js';
 
 export class Barrett {
     constructor(m) {
-      this.log('new BarrettMu()');
       BigIntModule.init();
+      BigIntModule.logDebug("New Barrett instance!");
       this.modulus = BigIntModule.biCopy(m);
       this.k = BigIntModule.biHighIndex(this.modulus) + 1;
       let b2k = new BigIntModule.BigInt();
@@ -64,7 +64,7 @@ export class Barrett {
 			
       let isLog = true; //use LegacyPrefs API messenger.LegacyPrefs.getPref(); QuickFolders.Preferences.isDebugOption('premium.rsa');
       
-      BigIntModule.log('BarrettMu_powMod()');
+      BigIntModule.logDebug('BarrettMu_powMod()');
       BigIntModule.init();
       let result = new BigIntModule.BigInt();
       result.digits[0] = 1;
@@ -85,8 +85,8 @@ export class Barrett {
         a = this.multiplyMod(a, a);
       }
       if (isLog) {
-        BigIntModule.log(testStrng);
-        BigIntModule.log('BarrettMu_powMod().result =' + result.digits);
+        BigIntModule.logDebug(testStrng);
+        BigIntModule.logDebug('BarrettMu_powMod().result =' + result.digits);
       }
       return result;
     }

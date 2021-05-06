@@ -1069,15 +1069,18 @@ QuickFolders.Util = {
 		catch(e) {;}
 		return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
 	},
+  
+  // first argument is the option tag
+  logWithOption: function logWithOption() {
+    arguments[0] =  "QuickFolders "
+			+  '{' + arguments[0].toUpperCase() + '} ' 
+			+ QuickFolders.Util.logTime() + "\n";
+		console.log(...arguments);
+  },
 
-	logToConsole: function logToConsole(msg, optionTag) {
-		if (QuickFolders_ConsoleService == null)
-			QuickFolders_ConsoleService = Components.classes["@mozilla.org/consoleservice;1"]
-									.getService(Components.interfaces.nsIConsoleService);
-    let logMsg =  "QuickFolders "
-			+ (optionTag ? '{' + optionTag.toUpperCase() + '} ' : '')
-			+ QuickFolders.Util.logTime() + "\n"+ msg;
-		QuickFolders_ConsoleService.logStringMessage(logMsg);
+	logToConsole: function logToConsole(a) {
+    let msg = "QuickFolders " + QuickFolders.Util.logTime() + "\n";
+		console.log(msg, ...arguments);
 	},
 
 	// flags
@@ -1108,9 +1111,9 @@ QuickFolders.Util = {
 		this.logError(aMessage + "\n" + ex.message, fn, stack, ex.lineNumber, 0, 0x1);
 	} ,
 
-	logDebug: function (msg) {
+	logDebug: function (...msg) {
 		if (QuickFolders.Preferences.isDebug)
-			this.logToConsole(msg);
+			this.logToConsole(...msg);
 	},
 	
 	get isDebug() {
@@ -1123,12 +1126,12 @@ QuickFolders.Util = {
 	* @optionString {string}: comma delimited options
   * @msg {string}: text to log 
 	*/   
-	logDebugOptional: function logDebugOptional(optionString, msg) {
+	logDebugOptional: function logDebugOptional(optionString, ...msg) {
     let options = optionString.split(',');
     for (let i=0; i<options.length; i++) {
       let option = options[i];
       if (QuickFolders.Preferences.isDebugOption(option)) {
-        this.logToConsole(msg, option);
+        this.logWithOption(option, ...msg);
         break; // only log once, in case multiple log switches are on
       }
     }

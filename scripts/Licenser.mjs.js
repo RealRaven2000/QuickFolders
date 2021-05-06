@@ -22,11 +22,11 @@ const LicenseStates = {
     Empty: 6,
 }
 
-// format QF-EMAIL:DATE;CRYPTO
+// format QF-EMAIL:DATE  // ;CRYPTO
 // example: QF-joe.bloggs@gotmail.com:2015-05-20;
-function getDate(licence) {
+function getDate(license) {
   // get mail+date portion
-  let arr = licence.split(';');
+  let arr = license.split(';');
   if (!arr.length) {
     log("getDate()", "failed - no ; found");
     return ""; 
@@ -40,8 +40,8 @@ function getDate(licence) {
   return arr1[1];
 }
 
-function getMail(licence) {
-  let arr1 = licence.split(':');
+function getMail(license) {
+  let arr1 = license.split(':');
   if (!arr1.length) {
     log("getMail()", "failed - no : found");
     return '';
@@ -88,7 +88,7 @@ export class Licenser {
     this.decryptedMail = "";
   }
   
-  // public Interface
+  // public Interface - note that "description" can be consumed by the front end.
   get currentState() {
     return {
       status: this.ValidationStatusShortDescription,
@@ -98,6 +98,7 @@ export class Licenser {
       expiryDate: this.decryptedDate,
       email: this.decryptedMail,
       licenseKey: this.LicenseKey,
+      decryptedPart: this.RealLicense,
     }
   }
   
@@ -151,21 +152,21 @@ export class Licenser {
 
   isIdMatchedLicense(idMail, licenseMail) {
     try {
-        switch(this.key_type) {
-            case 0: // private license
-                return (idMail.toLowerCase() == licenseMail);
-            case 1: // domain matching 
-                // only allow one *
-                if ((licenseMail.match(/\*/g)||[]).length != 1)
-                    return false;
-                // replace * => .*
-                let r = new RegExp(licenseMail.replace("*",".*"));
-                let t = r.test(idMail);
-                return t;
-        }
+      switch(this.key_type) {
+        case 0: // private license
+          return (idMail.toLowerCase() == licenseMail);
+        case 1: // domain matching 
+          // only allow one *
+          if ((licenseMail.match(/\*/g)||[]).length != 1)
+              return false;
+          // replace * => .*
+          let r = new RegExp(licenseMail.replace("*",".*"));
+          let t = r.test(idMail);
+          return t;
+      }
     }
     catch (ex) {
-        log("validateLicense.isIdMatchedLicense() failed", ex);
+      log("validateLicense.isIdMatchedLicense() failed", ex);
     }
     return false;
   }
@@ -232,6 +233,12 @@ export class Licenser {
   async validate() {
     this.reset();
     log("validateLicense", { LicenseKey: this.LicenseKey });
+    
+    if (!this.LicenseKey) {
+      this.ValidationStatus = LicenseStates.Empty;
+      log(this);
+      return [this.ValidationStatus, ''];
+    }    
 
     let encrypted = this.getCrypto();  
     if (!encrypted) {
@@ -271,10 +278,12 @@ export class Licenser {
     let regEx = /^\d{4}-\d{2}-\d{2}$/;
     if (!this.decryptedDate.match(regEx)) {
       this.ValidationStatus = LicenseStates.Invalid;
+      log('encountered garbage date: ', this.decryptedDate);
       log('validateLicense()\n returns ', [
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
+      this.decryptedDate = ""; // throw it away!
       return this.currentState;
     }
 

@@ -28,10 +28,27 @@ QuickFolders.AdvancedTab = {
     return false;
   } ,
   
-  load: function load() {
-		const util = QuickFolders.AdvancedTab.MainQuickFolders.Util,
-		      ADVANCED_FLAGS = this.ADVANCED_FLAGS || util.ADVANCED_FLAGS;
+  updatePremiumFeatures: function() {
+    let isPremium = (QuickFolders.Util.hasPremiumLicense());
+    let isRecursive = document.getElementById('chkComposerSubFolders');
+    
+    isRecursive.disabled = !isPremium;
+    let proImg1 = document.getElementById('proRecursiveIcon'),
+        theText = QuickFolders.Util.getBundleString("qf.notification.premium.text",
+            "{1} is a Premium feature, please get a QuickFolders Pro License for using it permanently.");
+    proImg1.collapsed = isPremium;
+    proImg1.setAttribute('tooltiptext', theText.replace ("{1}", "[" + isRecursive.label + "]"));    
+  },
+  
+  load: async function load() {
     let dropdownCount = 0;
+    // get important state info from background
+    await QuickFolders.Util.init();
+    // add an event listener for changes:
+    window.addEventListener("QuickFolders.BackgroundUpdate", this.updatePremiumFeatures.bind(this));
+    
+		const util = QuickFolders.Util,
+		      ADVANCED_FLAGS = this.ADVANCED_FLAGS || util.ADVANCED_FLAGS;
 		
     function appendIdentity(dropdown, id, account) {
       try {
@@ -106,15 +123,8 @@ QuickFolders.AdvancedTab = {
       }
 			// apply email settings to all child folders
 			isRecursive.checked = (entry.flags & ADVANCED_FLAGS.EMAIL_RECURSIVE) && true;
-			if (!util.hasPremiumLicense()) {
-				isRecursive.disabled = true;
-				let proImg1 = elem('proRecursiveIcon'),
-				    theText=util.getBundleString("qf.notification.premium.text",
-				        "{1} is a Premium feature, please get a QuickFolders Pro License for using it permanently.");
-				proImg1.collapsed = false;
-				proImg1.setAttribute('tooltiptext', theText.replace ("{1}", "[" + isRecursive.label + "]"));
-			}
     }
+    this.updatePremiumFeatures();
 		// Addressing
 		// iterate accounts for From Address dropdown
 		let cboIdentity = elem('mailIdentity'),

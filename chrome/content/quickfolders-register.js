@@ -134,17 +134,12 @@ QuickFolders.Licenser = {
     return x;
   },
   
-  // format QF-EMAIL:DATE;CRYPTO
-  // example: QF-joe.bloggs@gotmail.com:2015-05-20;
+  // expected: decrypted portion of the license, format 
+  // format QF-EMAIL:DATE // ;CRYPTO
+  // example: QF-joe.bloggs@gotmail.com:2015-05-20  
   getDate: function getDate(LicenseKey) {
-    // get mail+date portion
-    let arr = LicenseKey.split(';');
-    if (!arr.length) {
-      QuickFolders.Util.logDebug('getDate() failed - no ; found');
-      return ''; 
-    }
     // get date portion
-    let arr1=arr[0].split(':');
+    let arr1=LicenseKey.split(':');
     if (arr1.length<2) {
       QuickFolders.Util.logDebug('getDate() failed - no : found');
       return '';
@@ -152,6 +147,8 @@ QuickFolders.Licenser = {
     return arr1[1];
   },
   
+  // expected: decrypted portion of the license, format 
+  // format QF-EMAIL:DATE  
   getMail: function getMail(LicenseKey) {
     let arr1 = LicenseKey.split(':');
     if (!arr1.length) {
@@ -267,7 +264,7 @@ QuickFolders.Licenser = {
     }
     else {
       this.DecryptedMail = this.getMail(RealLicense + ":xxx");
-      this.DecryptedDate = this.getDate(RealLicense + ":xxx");
+      this.DecryptedDate = this.getDate(RealLicense);
       // check ISO format YYYY-MM-DD
       let regEx = /^\d{4}-\d{2}-\d{2}$/;
       if (!this.DecryptedDate.match(regEx)) {

@@ -309,6 +309,8 @@ QuickFolders.Options = {
     if (QuickFolders.Util.licenseState.licenseKey) {
       this.validateLicenseInOptions();      
     }
+    // add an event listener for changes:
+    window.addEventListener("QuickFolders.BackgroundUpdate", this.validateLicenseInOptions.bind(this));
     
     /*****  Help / Support Mode  *****/
     // hide other tabs
@@ -599,7 +601,7 @@ QuickFolders.Options = {
   },
   
   // to do: fix this mess!
-  // this funciton is called on load and from validateLicenseInOptions
+  // this function is called on load and from validateLicenseInOptions
   // was decryptLicense
   updateLicenseOptionsUI: async function updateLicenseOptionsUI() {
     const util = QuickFolders.Util;
@@ -634,7 +636,7 @@ QuickFolders.Options = {
         case "Invalid":
           validationDate.collapsed=true;
           let addonName = '';
-          switch (license.substr(0,2)) {
+          switch (QuickFolders.Util.licenseState.licenseKey.substr(0,2)) {
             case 'QI':
               addonName = 'quickFilters';
               break;
@@ -667,6 +669,9 @@ QuickFolders.Options = {
         case "MailDifferent":
           validationFailed.collapsed=false;
           validationEmailNoMatch.collapsed=false;
+          break;
+        case "Empty":
+          validationDate.collapsed=true;
           break;
         default:
           validationDate.collapsed=true;

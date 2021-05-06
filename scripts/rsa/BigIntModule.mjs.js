@@ -13,6 +13,7 @@
 
 export var BigIntModule = {
     initialised: false,
+    isDebug: false,
     biRadixBase: 2,
     biRadixBits: 16,
     bitsPerDigit: null,
@@ -33,8 +34,11 @@ export var BigIntModule = {
     // lr10 = 10 ^ dpl10
     lr10 : null,
     
-    log: function log(txt) {
-      console.log(txt);
+    logDebug: function logDebug(txt) {
+      // from RSA.log
+      // quickFilters.Util.logDebugOptional('premium.rsa', txt);
+      if (this.isDebug)
+        console.log(txt);
     },
     
     reset: function reset() {
@@ -43,7 +47,7 @@ export var BigIntModule = {
     
     init: function init(MaxDigits) {
       if (this.initialised) return;
-      this.log('BigInt.init(' + MaxDigits + ')');
+      this.logDebug('BigInt.init(' + MaxDigits + ')');
       this.bitsPerDigit = this.biRadixBits;
       this.biRadix = 1 << 16; // = 2^16 = 65536
       this.biHalfRadix = this.biRadix >>> 1;
@@ -117,7 +121,7 @@ export var BigIntModule = {
     },
 
     biCopy: function biCopy(bi) {
-      this.log('BigInt.biCopy()');
+      this.logDebug('BigInt.biCopy()');
       let result = new this.BigInt(true);
       result.digits = bi.digits.slice(0);
       result.isNeg = bi.isNeg;

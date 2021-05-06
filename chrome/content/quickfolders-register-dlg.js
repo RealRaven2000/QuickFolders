@@ -20,16 +20,80 @@ var Register = {
     QuickFolders.Util.localize(document);
   },
   load: async function load() {
-    window.addEventListener("QuickFolders.BackgroundUpdate", this.updateUI.bind(this));
     await QuickFolders.Util.init();
     this.updateUI();
+    this.updateLicenseUI();
+    window.addEventListener("QuickFolders.BackgroundUpdate", this.updateLicenseUI.bind(this));
   },
   
+  updateLicenseUI: async function updateLicenseUI() {
+    const licenseState = QuickFolders.Util.licenseState,
+          getElement = document.getElementById.bind(document),
+          util = QuickFolders.Util;
+    
+    let decryptedDate = licenseState.expiryDate;
+    if (decryptedDate) {
+			if (util.isDebug) {
+				util.logDebug('Register.updateUI()\n' + 'ValidationStatus = ' + licenseState.description)
+				debugger;
+			}
+				
+      getElement('licenseDate').value = decryptedDate; // invalid ??
+			if (licenseState.status == "Expired" || licenseState.status == "Valid") {
+				let btnLicense = getElement('btnLicense');
+				if(licenseState.status == "Expired")
+					btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
+				else {
+					btnLicense.label = util.getBundleString("qf.notification.premium.btn.extendLicense", "Extend License!");
+					// add tooltip
+					btnLicense.setAttribute('tooltiptext',
+					  util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip", 
+						  "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
+				}
+
+				btnLicense.removeAttribute('oncommand');
+				btnLicense.setAttribute('oncommand', 'Register.goPro(2);');
+				btnLicense.classList.add('expired');
+				// hide the "Enter License Key..." button + label
+				if (licenseState.status == "Valid") {
+					getElement('haveLicense').collapsed=true;
+					getElement('btnEnterCode').collapsed=true;
+				}
+        getElement('licenseDate').collapsed = false;
+			}
+		}
+    else {
+      getElement('haveLicense').collapsed=false;
+      getElement('btnEnterCode').collapsed=false;
+      getElement('licenseDate').collapsed = true;
+    }
+    
+		switch(licenseState.status) {
+			case "Expired":
+			  getElement('licenseDateLabel').value = util.getBundleString("qf.register.licenseValid.expired","Your license expired on:")
+				getElement('qfLicenseTerm').classList.add('expired');
+			  break;
+			case "Valid":
+			  getElement('btnLicense').classList.remove('register'); // remove the "pulsing effect" if license is valid.
+        getElement('licenseDateLabel').value =  util.getBundleString("qf.label.licenseValid","Your license is valid until:");
+			  break;
+			case "Empty":
+			case "NotValidated":
+				getElement('licenseDateLabel').value = " ";
+			  break;
+			default: // default class=register will animate the button
+        let txt = "License Status: " + licenseState.description;
+			  getElement('licenseDateLabel').value = txt;
+        util.logToConsole("Registration Problem\n" + txt + "\nDecrypted part: " + licenseState.decryptedPart);
+        
+		}
+			
+  } ,
+  
   updateUI: async function updateUI() {
-    const licenser = QuickFolders.Util.licenseState;
     const getElement = document.getElementById.bind(document),
-      util = QuickFolders.Util,
-      prefs = QuickFolders.Preferences;
+          util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences;
         
     let dropdownCount = 0;
     function appendIdentity(dropdown, id, account) {
@@ -61,63 +125,11 @@ var Register = {
       }
     }
     
-    
-    
 		if (window.arguments && window.arguments.length>1 && window.arguments[1].inn.referrer) {
       let ref = getElement('referrer');
       ref.value = window.arguments[1].inn.referrer;
     }
-   
-    let decryptedDate = licenser.expiryDate;
-    if (decryptedDate) {
-			if (util.isDebug) {
-				util.logDebug('Register.load()\n' + 'ValidationStatus = ' + licenser.description)
-				debugger;
-			}
-				
-      getElement('licenseDate').value = decryptedDate; // invalid ??
-			if (licenser.status == "Expired" || licenser.status == "Valid") {
-				let btnLicense = getElement('btnLicense');
-				if(licenser.status == "Expired")
-					btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
-				else {
-					btnLicense.label = util.getBundleString("qf.notification.premium.btn.extendLicense", "Extend License!");
-					// add tooltip
-					btnLicense.setAttribute('tooltiptext',
-					  util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip", 
-						  "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
-				}
-
-				btnLicense.removeAttribute('oncommand');
-				btnLicense.setAttribute('oncommand', 'Register.goPro(2);');
-				btnLicense.classList.add('expired');
-				// hide the "Enter License Key..." button + label
-				if (licenser.status == "Valid") {
-					getElement('haveLicense').collapsed=true;
-					getElement('btnEnterCode').collapsed=true;
-				}
-			}
-		}
-    else
-      getElement('licenseDate').collapsed = true;
 		
-		switch(licenser.status) {
-			case "Expired":
-			  getElement('licenseDateLabel').value = util.getBundleString("qf.register.licenseValid.expired","Your license expired on:")
-				getElement('qfLicenseTerm').classList.add('expired');
-			  break;
-			case "Valid":
-			  getElement('btnLicense').classList.remove('register'); // remove the "pulsing effect" if license is valid.
-			  break;
-			case "Empty":
-			case "NotValidated":
-				getElement('licenseDateLabel').value = " ";
-			  break;
-			default: // default class=register will animate the button
-			  getElement('licenseDateLabel').value = licenser.description + ":";
-		}
-			
-
     // iterate accounts
     let idSelector = getElement('mailIdentity'),
         popup = idSelector.menupopup,

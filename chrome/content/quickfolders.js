@@ -757,17 +757,15 @@ var QuickFolders = {
       folderTree.addEventListener("select", QuickFolders.FolderTreeSelect, false);
 			// [Bug 26566] - Folder Tree doesn't show icons
 			let vc = Cc["@mozilla.org/xpcom/version-comparator;1"].getService(Ci.nsIVersionComparator);
-			if (vc.compare(util.ApplicationVersion, "60.0") >= 0) {
-				let w = util.getMail3PaneWindow(),
-				    time = prefs.getIntPref('treeIconsDelay');
-				util.logDebug("Repair Icons for "  + util.Application  + " " + util.ApplicationVersion + " in " + time/1000 + " sec...");
-				w.setTimeout(
-					function () {
-						util.logDebug("Repair Icons:");
-						QI.repairTreeIcons(true); // silently
-					}, time
-				);
-			}
+      let w = util.getMail3PaneWindow(),
+          time = prefs.getIntPref('treeIconsDelay');
+      util.logDebug("Repair Icons for "  + util.Application  + " " + util.ApplicationVersion + " in " + time/1000 + " sec...");
+      w.setTimeout(
+        function () {
+          util.logDebug("Repair Icons:");
+          QI.repairTreeIcons(true); // silently
+        }, time
+      );
 			
       util.logDebug("Adding Search Input event handler...");
       let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder

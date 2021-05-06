@@ -307,7 +307,7 @@ QuickFolders.FolderTree = {
         currentFolderTab = QI.CurrentFolderTab;
 		GUID = GUID.replace(/[\s\,\?\!\:\.\@\%\[\]\{\}\(\)\|\/\+\&\^]/g,'_');
 		// GUID = GUID.replace(/\_/g,'');// removed replacement with _; instead replace with ''
-		let prefix = util.Application=='SeaMonkey' ? "folderIcon-" : "folderIcon_",
+		let prefix = "folderIcon_",
 		    propName = prefix + GUID, 
 		    selector = this.makeSelector(propName);
 		try {
@@ -376,7 +376,8 @@ QuickFolders.FolderTree = {
     const util = QuickFolders.Util,
           Ci = Components.interfaces,
           theTreeView = gFolderTreeView,
-          NS_MSG_ERROR_OFFLINE = 0x80550014; // thrown by performExpand if offline!
+          NS_MSG_ERROR_OFFLINE = 0x80550014,
+          ImapNoselect    = 0x01000000; // thrown by performExpand if offline!
     let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
     
     function countSubfolders(parentFolder) {
@@ -402,39 +403,46 @@ QuickFolders.FolderTree = {
     
     try {
       // let input = { value: folderName };
-      let result = prompts.confirm(window, "QuickFolders.FolderTree", "Rebuid the tree for IMAP?\nThis may take a long time"); 
+      let result = prompts.confirm(window, "QuickFolders.FolderTree", "Rebuild the tree for IMAP?\n" +
+        "This may take a long time, depending on the number of folders on the server."); 
       if (!result) return;
       util.ensureNormalFolderView();
+      let collapsedFolders = [];
       for (let folder of QuickFolders.Util.allFoldersIterator()) {
         // open folder in tree...
-        let folderIndex = theTreeView.getIndexOfFolder(folder);
-        if (null != folderIndex) {
-          if (folder.incomingServerType == "imap") {
-            let subscribableServer = folder.server.QueryInterface(Ci.nsISubscribableServer); // gSubscribableServer
-            try {
-              let isSelected = theTreeView.selectFolder(folder, true); // forceSelect
-              // FolderPaneSelectionChange() - gFolderDisplay.show will fail if the folder is missing on Imap!
-              // FolderDisplayWidget.
-              let folderIndex = theTreeView.getIndexOfFolder(folder);
-              let hasSubFolders = folder.hasSubFolders,
-                  canCreateSubfolders = folder.canCreateSubfolders,
-                  subCount = hasSubFolders ? countSubfolders(folder) : 0;
-              util.logDebug("theTreeView.selectFolder(" + folder.prettyName + ") => index = " + folderIndex + ", hasSubFolders = " + hasSubFolders + ", subCount = " + subCount);
-              folder.performExpand(msgWindow);
-              let newSubCount = countSubfolders(folder);
-              if (subCount != newSubCount) {
-                util.logToConsole("Subfolder count for [" + folder.prettyName + "] has changed from " + subCount + " to " + newSubCount);
-              }
-            }
-            catch(ex) {
-              util.logDebug("couldn't select [" + folder.prettyName + "] - skipping that one!");
-            }
-            // if number of subfolders has changed: preserve subscribe state of parent and propagate
-            // subscribableServer.unsubscribe(name);
+        let rowIndex = theTreeView.getIndexOfFolder(folder),
+            isExpanded = rowIndex ? theTreeView._rowMap[rowIndex].open : false;
+        if (folder.incomingServerType == "imap" && 
+            !(folder.flags & ImapNoselect)) {
+          if (!isExpanded) collapsedFolders.push(folder); // remember folders that are not open, to restore later.
+          let subscribableServer = folder.server.QueryInterface(Ci.nsISubscribableServer); // gSubscribableServer
+          try {
+            let isSelected = theTreeView.selectFolder(folder, true); // forceSelect
+            // FolderPaneSelectionChange() - gFolderDisplay.show will fail if the folder is missing on Imap!
+            // FolderDisplayWidget.
+            let rowIndex = theTreeView.getIndexOfFolder(folder);
+            let hasSubFolders = folder.hasSubFolders,
+                canCreateSubfolders = folder.canCreateSubfolders;
+            //    subCount = hasSubFolders ? countSubfolders(folder) : 0;
+            util.logDebug("theTreeView.selectFolder(" + folder.prettyName + ") => index = " + rowIndex + ", hasSubFolders = " + hasSubFolders + ", open = " + isExpanded);
+            folder.performExpand(msgWindow);
+            //let newSubCount = countSubfolders(folder);
+            //if (subCount != newSubCount) {
+            //   util.logToConsole("Subfolder count for [" + folder.prettyName + "] has changed from " + subCount + " to " + newSubCount);
+            //}
           }
+          catch(ex) {
+            util.logException("Couldn't select [" + folder.prettyName + "] - skipping that one!", ex);
+          }
+          // if number of subfolders has changed: preserve subscribe state of parent and propagate
+          // subscribableServer.unsubscribe(name);
         }
-        else {
-          util.logDebug ("Cannot get tree index for folder [" + folder.prettyName + "] !!");
+      }
+      for (let i=collapsedFolders.length-1; i>0; i--) {
+        let folder = collapsedFolders[i];
+        let rowIndex = theTreeView.getIndexOfFolder(folder)
+        if (rowIndex > 0  && theTreeView._rowMap[rowIndex].open) {
+          theTreeView._toggleRow(rowIndex);
         }
       }
     }

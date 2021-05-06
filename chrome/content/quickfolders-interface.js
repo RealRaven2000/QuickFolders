@@ -2708,15 +2708,7 @@ QuickFolders.Interface = {
         folder = util.getPopupNode(element).folder,
 		    theURI = folder.URI;
     util.logDebugOptional("interface", "QuickFolders.Interface.onRenameFolder()");
-		if (util.Application == 'Thunderbird') {
-			this.globalTreeController.renameFolder(folder);
-		}
-		else {
-			QuickFolders_MySelectFolder(theURI);
-			MsgRenameFolder();
-			// let folder = QuickFolders.Model.getMsgFolderFromUri(theURI, false);
-			// QuickFolders.Model.renameFolder(theURI, folder.prettyName);
-		}
+    this.globalTreeController.renameFolder(folder);
 	} ,
 
 	onEmptyTrash: function onEmptyTrash(element) {
@@ -4146,26 +4138,12 @@ QuickFolders.Interface = {
 					// additional click event for safety in Thunderbird 60
 					let vc = Cc["@mozilla.org/xpcom/version-comparator;1"].getService(Ci.nsIVersionComparator),
 					    eventType;
-					// for the new Thunderbird (60+)
-					if (vc.compare(util.ApplicationVersion, "60.0") >= 0) {
-						eventType = prefs.getStringPref('debug.popupmenus.folderEventType'); // "onclick" or "oncommand" - default is onclick
-						if (eventType) {
-							// [Bug 26575]
-							util.logDebugOptional("popupmenus.items","add " + eventType + " event attribute for menuitem " + menuitem.getAttribute("label") + " onSelectSubFolder(" + subfolder.URI+ ")");
-							this.setEventAttribute(menuitem, eventType,"QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "',event)");
-						}
-            // this change selects the wrong folder sometimes?
-						/* menuitem.addEventListener("click",
-							function(event) {
-								QuickFolders.Interface.onSelectSubFolder(subfolder.URI, event);
-							}, false);
-						*/
-					}
-					else {
-						// [Bug 26592] recent folder menus stopped working in THunderbird 52.9
-						eventType = "oncommand";
-						this.setEventAttribute(menuitem, eventType,"QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "',event)");
-					}
+          eventType = prefs.getStringPref('debug.popupmenus.folderEventType'); // "onclick" or "oncommand" - default is onclick
+          if (eventType) {
+            // [Bug 26575]
+            util.logDebugOptional("popupmenus.items","add " + eventType + " event attribute for menuitem " + menuitem.getAttribute("label") + " onSelectSubFolder(" + subfolder.URI+ ")");
+            this.setEventAttribute(menuitem, eventType,"QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "',event)");
+          }
 					if (isRecentFolderList)
 						util.logDebugOptional("popupmenus", "Added " + eventType + " event to " + menuLabel + " for " + subfolder.URI );
 				}
@@ -5280,8 +5258,6 @@ QuickFolders.Interface = {
         tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode,
         rect0 = currentFolderTab.getBoundingClientRect();
     // move current folder BAR up if necessary!
-    if (util.Application != 'Thunderbird') return; // only in Tb we have the conversation view addon
-
     util.logDebugOptional("interface.currentFolderBar", "hoistCurrentFolderBar(tabMode: " + tabMode + ")");
 
     if (!rect0.width &&
@@ -6011,10 +5987,9 @@ QuickFolders.Interface = {
 			    colActiveBG = prefs.getUserStyle("ActiveTab","background-color","Highlight"),
 					btnSelector = '.quickfolders-flat toolbarbutton';
 
-			if (util.Application == 'SeaMonkey') btnSelector = 'toolbox toolbar' + btnSelector;
 			if (tabStyle != prefs.TABS_STRIPED)  {
 				styleEngine.setElementStyle(ss, btnSelector
-				  + ((util.Application == 'SeaMonkey') ? '' : '[background-image]')
+				  +  '[background-image]'
 					+ '.selected-folder','border-bottom-color', colActiveBG, true);
 			}
 
@@ -6027,7 +6002,6 @@ QuickFolders.Interface = {
 				bottomRadius = prefs.getIntPref('style.corners.customizedBottomRadiusN') + "px";
 			}
 
-			if (util.Application == 'SeaMonkey') btnSelector = btnSelector + ':not(.plain)';
 			styleEngine.setElementStyle(ss, btnSelector, 'border-top-left-radius', topRadius, true);
 			styleEngine.setElementStyle(ss, btnSelector, 'border-top-right-radius', topRadius, true);
 			styleEngine.setElementStyle(ss, btnSelector, 'border-bottom-left-radius', bottomRadius, true);
@@ -6764,10 +6738,7 @@ QuickFolders.Interface = {
 				util = QuickFolders.Util;
 		if (popup) {
 			try {
-				if (util.Application === 'SeaMonkey')
-					popup.parentNode.removeChild(popup);
-				else
-					popup.hidePopup(); // parentNode.removeChild(popup)
+        popup.hidePopup(); // parentNode.removeChild(popup)
 				util.logDebugOptional("dnd", "removed popup:" + p );
 			}
 			catch (e) {

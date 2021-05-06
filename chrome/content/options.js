@@ -2032,12 +2032,7 @@ QuickFolders.Options = {
         }
       }
     }
-
-		if (fp.open)
-			fp.open(fpCallback);
-  	else { // Postbox
-		  fpCallback(fp.show());
-  	}
+    fp.open(fpCallback);
 
     return true;
  		

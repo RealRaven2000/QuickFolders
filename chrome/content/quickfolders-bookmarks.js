@@ -471,16 +471,6 @@ QuickFolders.bookmarks = {
       return null; // in Linux we cannot get the browser while options dialog is displayed :(
     try {
       let isOriginBrowser = false;
-      // for SeaMonkey we need to determine whether we opened from the messenger or from the navigator window
-      if (util.Application=='SeaMonkey' && !tabmail) {
-        tabmail = browser.document ? browser.document.getElementById("tabmail") : document.getElementById("tabmail");
-        // double check whether we come from browser
-        if (util.Application=='SeaMonkey') {
-          if (!tabmail) {
-            isOriginBrowser = true;
-          }
-        }
-      }
       /*     GET CONTEXT FROM CURRENT MAIL TAB  */
       if (!isOriginBrowser) {
         if (tabmail) {

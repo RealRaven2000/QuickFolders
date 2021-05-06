@@ -346,21 +346,7 @@ QuickFolders.FilterList = {
 	
 	rebuildFilterList: function() {
 		const util = QuickFolders.Util;
-		if (typeof gCurrentFilterList !== "undefined") {
-			rebuildFilterList(gCurrentFilterList);
-		}
-		else {			
-			// force a repaint through the BoxObject
-			let fl = this.getFilterListElement(),
-			    // from: SM's setServer(uri) function - no gRDF in Postbox!
-			    resource = gRDF.GetResource(gCurrentServerURI),
-			    msgFolder = resource.QueryInterface(Components.interfaces.nsIMsgFolder);
-			
-			//Calling getFilterList will detect any errors in rules.dat, backup the file, and alert the user
-      this.gFilterTreeView().filterList = msgFolder.getEditableFilterList(gFilterListMsgWindow);
-      
-			// fl.boxObject.invalidate(); -= not working in Tb78!! boxObject is deprecated
-		}
+    rebuildFilterList(gCurrentFilterList);
 		this.updateCountBox();
 	} ,
 	

@@ -39,17 +39,14 @@ QuickFolders.FilterWorker = {
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           prefs = QuickFolders.Preferences,
-		      notificationId = 'mail-notification-box';
-          
+		      notificationId = 'mail-notification-box',
+			    notificationKey = "quickfolders-filter";          
     let notifyBox,
 				isQuickFilters = typeof window.quickFilters !== 'undefined';
         
 		util.logDebugOptional ("filters", "toggle_FilterMode(" + active + ")");
 		
 		if (!isQuickFilters) { // if quickFilters is installed, we omit all notifications and leave it to that Add-on to handle
-
-			let notificationKey = "quickfolders-filter";
-
       if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
         notifyBox = specialTabs.msgNotificationBar;
       }
@@ -401,16 +398,10 @@ QuickFolders.FilterWorker = {
               // We have to do prefill filter so we are going to launch the
               // filterEditor dialog and prefill that with the emailAddress.
 					    template = this.getCurrentFilterTemplate();
-					
-					if (util.Application=='Postbox') {
-						// mailWindowOverlay.js:1790
-						filtersList = sourceFolder.getFilterList(msgWindow);
-						newFilter = filtersList.createFilter(folderName);
-					}
-					else {
-						filtersList = sourceFolder.getEditableFilterList(msgWindow);
-						newFilter = filtersList.createFilter(folderName);
-					}
+
+          filtersList = sourceFolder.getEditableFilterList(msgWindow);
+          newFilter = filtersList.createFilter(folderName);
+
 					emailAddress2 = '';
 
 					switch (template) {

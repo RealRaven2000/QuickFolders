@@ -242,13 +242,9 @@ QuickFolders.Options = {
           QI = QuickFolders.Interface,
           options = QuickFolders.Options;
     
-    const onBackgroundUpdates = (data) => {
-      if (data.licenseState) {
-        licenseState = data.licenseState;
-      }
-      this.validateLicenseInOptions();      
-    }
-    QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
+    // get important state info from background
+    await QuickFolders.Util.init();
+    
     licenseState = await QuickFolders.Util.notifyTools.notifyBackground({func: "getLicenseState" });
 
     

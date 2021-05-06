@@ -10,7 +10,6 @@
 */
 
 var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
-var licenseState;
 
 var QuickFolders_TabURIregexp = {
   get _thunderbirdRegExp() {
@@ -245,9 +244,6 @@ QuickFolders.Options = {
     // get important state info from background
     await QuickFolders.Util.init();
     
-    licenseState = await QuickFolders.Util.notifyTools.notifyBackground({func: "getLicenseState" });
-
-    
     let isOptionsTab = window.arguments && window.arguments.length>1;
           
     util.logDebug("QuickFolders.Options.load()");
@@ -309,8 +305,8 @@ QuickFolders.Options = {
     
     /*****  License  *****/
     options.labelLicenseBtn(getElement("btnLicense"), "buy");
-    getElement('txtLicenseKey').value = licenseState.licenseKey;    
-    if (licenseState.licenseKey) {
+    getElement('txtLicenseKey').value = QuickFolders.Util.licenseState.licenseKey;    
+    if (QuickFolders.Util.licenseState.licenseKey) {
       this.validateLicenseInOptions();      
     }
     
@@ -368,7 +364,7 @@ QuickFolders.Options = {
     }
   
     if (earlyExit) return;
-    if (licenseState.status == "Valid")
+    if (QuickFolders.Util.licenseState.status == "Valid")
       setTimeout(function() { 
           util.logDebug('Remove animations in options dialog…');
           QI.removeAnimations('quickfolders-options.css');
@@ -615,9 +611,9 @@ QuickFolders.Options = {
         validationInvalidEmail = getElement('validationInvalidEmail'),
         validationEmailNoMatch = getElement('validationEmailNoMatch'),
         validationDate         = getElement('validationDate'),
-        decryptedMail = licenseState.email , 
-        decryptedDate = licenseState.expiryDate,
-        result = licenseState.status;
+        decryptedMail = QuickFolders.Util.licenseState.email , 
+        decryptedDate = QuickFolders.Util.licenseState.expiryDate,
+        result = QuickFolders.Util.licenseState.status;
     /* 1 - prepare UI */
     validationPassed.collapsed = true;
     validationFailed.collapsed = true;
@@ -724,7 +720,7 @@ QuickFolders.Options = {
     }
     const util = QuickFolders.Util;
     const elem3pane = util.getMail3PaneWindow().QuickFolders.Util.$;
-    const result = licenseState.status;
+    const result = QuickFolders.Util.licenseState.status;
     
     const options = QuickFolders.Options,
           prefs = QuickFolders.Preferences,
@@ -750,7 +746,7 @@ QuickFolders.Options = {
             later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
             dateString = later.toISOString().substr(0, 10);
         // if we were a month ahead would this be expired?
-        if (licenseState.decryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
+        if (QuickFolders.Util.licenseState.decryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
           options.labelLicenseBtn(btnLicense, "extend");
         }
         else

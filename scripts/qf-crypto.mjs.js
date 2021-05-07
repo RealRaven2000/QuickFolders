@@ -31,6 +31,19 @@ export function getModulus(key_type) {
   }
 }
 
+// determine the type of key from the prefix - this is Add-on specific!
+// extend this method to introduce other types of licenses.
+export function getKeyType(licenseKey) {
+  if (!licenseKey) 
+    return 0; // default to Pro, but that doesn't mean there is a valid license!
+  if (licenseKey.startsWith('QFD')) {
+    this.key_type = 1; // Domain License
+  } else {
+    this.key_type = 0; // Pro License
+  } // SmartTemplates uses "S1" for standard licenses with key_type=2
+}
+
+
 export function getMaxDigits(key_type) {
   switch (key_type) {
     case 0:  // private
@@ -52,3 +65,4 @@ export function getKeyLength(key_type) {
       return 0; // unknown or free license
   }
 }
+

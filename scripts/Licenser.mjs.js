@@ -60,22 +60,11 @@ export class Licenser {
       ? options.forceSecondaryIdentity
       : false;
       
-    if (!LicenseKey) {
-      // we accept an empty license for resetting the 
-      this.key_type = 0; // defaul for now key is Pro license (but not valid)
-    } 
-    else {
-      this.LicenseKey = LicenseKey;
-      if (this.LicenseKey.indexOf('QFD')==0) {
-        this.key_type = 1; // Volume License
-      } else {
-        this.key_type = 0; // Private License
-      }
-      
-      if (this.key_type == 1 && this.ForceSecondaryIdentity) {
-        this.ForceSecondaryIdentity = false;
-        log("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
-      }
+    this.key_type = crypto.getKeyType(LicenseKey);
+    
+    if (this.key_type == 1 && this.ForceSecondaryIdentity) {
+      this.ForceSecondaryIdentity = false;
+      log("Sorry, but forcing secondary email addresses with a Domain license is not supported!");
     }
   }
   
@@ -86,6 +75,7 @@ export class Licenser {
     this.LicensedDaysLeft = 0;
     this.decryptedDate = "";
     this.decryptedMail = "";
+    this.keyType = 0; // default to "pro license"
   }
   
   // public Interface - note that "description" can be consumed by the front end.
@@ -99,46 +89,47 @@ export class Licenser {
       email: this.decryptedMail,
       licenseKey: this.LicenseKey,
       decryptedPart: this.RealLicense,
+      keyType: this.key_type,
     }
   }
   
   get ValidationStatusShortDescription() {
     switch(this.ValidationStatus) {
       case LicenseStates.Valid:
-        return 'Valid';
+        return "Valid";
       case LicenseStates.Expired:
-        return 'Expired';
+        return "Expired";
       case LicenseStates.NotValidated:
-        return 'NotValidated';     
+        return "NotValidated";     
       case LicenseStates.Invalid:
-        return 'Invalid';
+        return "Invalid";
       case LicenseStates.MailNotConfigured:
-        return 'MailNotConfigured';
+        return "MailNotConfigured";
       case LicenseStates.MailDifferent:
-        return 'MailDifferent';
+        return "MailDifferent";
       case LicenseStates.Empty:
-        return 'Empty';
-      default: return 'UnknownStatus';
+        return "Empty";
+      default: return "UnknownStatus";
     }
   }
 
   get ValidationStatusDescription() {
     switch(this.ValidationStatus) {
       case LicenseStates.Valid:
-        return 'Valid';
+        return "Valid";
       case LicenseStates.Expired:
         return `Valid but expired since ${this.ExpiredDays} days`;
       case LicenseStates.NotValidated:
-        return 'Not Validated';     
+        return "Not Validated";     
       case LicenseStates.Invalid:
-        return 'Invalid';
+        return "Invalid";
       case LicenseStates.MailNotConfigured:
-        return 'Mail Not Configured';
+        return "Mail Not Configured";
       case LicenseStates.MailDifferent:
-        return 'Mail Different';
+        return "Mail Different";
       case LicenseStates.Empty:
-        return 'Empty';
-      default: return 'Unknown Status';
+        return "Empty";
+      default: return "Unknown Status";
     }
   }
 
@@ -217,6 +208,9 @@ export class Licenser {
   }
   get RSA_maxDigits() {
     return crypto.getMaxDigits(this.key_type);      
+  }
+  get Key_Type() {
+    return crypto.getKeyType(this.LicenseKey);
   }
 
   getClearTextMail() { 
@@ -344,8 +338,8 @@ export class Licenser {
         if (!hasDefaultIdentity) {
           AllowFallbackToSecondaryIdentiy = true;
           log("Premium License Check: There is no account with default identity!\n" +
-                "You may want to check your account configuration as this might impact some functionality.\n" + 
-                "Allowing use of secondary email addresses...");
+              "You may want to check your account configuration as this might impact some functionality.\n" + 
+              "Allowing use of secondary email addresses...");
         }
       }
     }
@@ -405,14 +399,4 @@ export class Licenser {
     return this.currentState;
   }
 }
-  
-/* Switch detection is not part of Licencer but UI or Logic
-       if (QuickFolders.Crypto.key_type!=1) { // not currently a domain key?
-         let txt = util.getBundleString("qf.prompt.switchDomainLicense", "Switch to Domain License?");
-				  
-         if (Services.prompt.confirm(null, "QuickFolders", txt)) {
-           QuickFolders.Crypto.key_type=1; // switch to volume license
-         }
-       }
-*/
 

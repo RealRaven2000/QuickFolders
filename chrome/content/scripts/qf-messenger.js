@@ -505,7 +505,7 @@ insertafter="QuickFolders-LabelBox">
     window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
     // initDelayed will already prepare background update listener ... #
     // => it calls await QuickFolders.Util.init();
-    window.QuickFolders.initDelayed(window, WL);
+    window.QuickFolders.initDelayed(WL);
 }
 
 function onUnload(isAddOnShutDown) {

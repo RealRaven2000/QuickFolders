@@ -484,6 +484,7 @@ QuickFolders.Interface = {
 					util = QuickFolders.Util;
 		// force label when there are no folders or license is in expired state!
 		try {
+      util.logDebug('updateQuickFoldersLabel()');
 			let showLabelBox = prefs.isShowQuickFoldersLabel || QuickFolders.Util.licenseInfo.isExpired  || (0==QuickFolders.Model.selectedFolders.length),
 					quickFoldersLabel = this.TitleLabel,
 					qfLabelBox = this.TitleLabelBox;

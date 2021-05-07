@@ -718,17 +718,19 @@ var QuickFolders = {
 		util.logDebug ("initDocAndWindow\nQuickFolders.doc = " + QuickFolders.doc.location + "\nthis.doc = " + this.doc.location);
 	},
 
-	initDelayed: async function initDelayed(win, WLorig) {
-	  if (this.initDone) return;
-    
-    if (WLorig)
-      QuickFolders.WL = WLorig;
-    
+	initDelayed: async function initDelayed(WLorig) {
     const Cc = Components.classes,
 					Ci = Components.interfaces,
 					prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util,
 					QI = QuickFolders.Interface;
+	  if (this.initDone) return;
+    
+    let win = window;
+    
+    if (WLorig)
+      QuickFolders.WL = WLorig;
+    
 	  
     let sWinLocation,
 	      nDelay = prefs.getIntPref('initDelay');
@@ -775,7 +777,7 @@ var QuickFolders = {
           }
         );
       }
-      else{
+      else {
         util.logDebug("element not found: QuickFolders-FindFolder");
       }
 			
@@ -958,10 +960,6 @@ var QuickFolders = {
 				QuickFolders.RenameFolders_Tb = gFolderTreeController.renameFolder; 
 				gFolderTreeController.renameFolder = QuickFolders.renameFolder.bind(gFolderTreeController);
 			}
-			else {
-				//?QuickFolders.RenameFolders_Tb = RenameFolder;  // SeaMonkey, legacy Postbox 
-				//?RenameFolder = QuickFolders.renameFolderSuite; // global, no bind necessary
-			}
     }
     
 		if (prefs && prefs.isDebug)
@@ -1021,15 +1019,17 @@ var QuickFolders = {
     }
     
     // replace this with something that is event driven from the background update thing ??
-    util.Licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey')).then ((rv) => {
-      QuickFolders.initLicensedUI();
-    });
+    //util.Licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey')).then ((rv) => {
+    //  QuickFolders.initLicensedUI();
+    //});
     
 	},
   
   initLicensedUI: function initLicensedUI() {
     let State = QuickFolders.Util.licenseInfo.status,    // QuickFolders.Util.Licenser.ELicenseState,
         hasLicense = QuickFolders.Util.hasPremiumLicense();
+    debugger;
+    QuickFolders.Util.logDebug ("initLicensedUI - hasLicense = " + hasLicense + "\n licenseInfo:", QuickFolders.Util.licenseInfo);
     if (hasLicense) {  // reset licenser (e.g. in new window)
       util.logDebug ("Premium License found - removing Animations()...");
       QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
@@ -1051,6 +1051,7 @@ var QuickFolders = {
           menuRegister.classList.add('free');
       }
     }
+    QuickFolders.Interface.updateQuickFoldersLabel(); // thjis is also called when udpating the main toolbar with QI.updateFolders()
   } ,
 
 	sayHello: function sayHello() {

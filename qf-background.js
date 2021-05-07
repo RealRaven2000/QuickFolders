@@ -116,6 +116,7 @@ async function main() {
         // return false;
         
         // Update background license.
+        await messenger.LegacyPrefs.setPref("extensions.quickfolders.LicenseKey", newLicense.currentState.licenseKey);
         currentLicense = newLicense;
         // Broadcast
         messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.currentState})

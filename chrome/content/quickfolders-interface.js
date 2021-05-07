@@ -484,17 +484,17 @@ QuickFolders.Interface = {
 					util = QuickFolders.Util;
 		// force label when there are no folders or license is in expired state!
 		try {
-			let showLabelBox = prefs.isShowQuickFoldersLabel || util.Licenser.isExpired  || (0==QuickFolders.Model.selectedFolders.length),
+			let showLabelBox = prefs.isShowQuickFoldersLabel || QuickFolders.Util.licenseInfo.isExpired  || (0==QuickFolders.Model.selectedFolders.length),
 					quickFoldersLabel = this.TitleLabel,
 					qfLabelBox = this.TitleLabelBox;
 
 			quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
 			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
-			if (util.Licenser.isExpired) {
+			if (QuickFolders.Util.licenseInfo.isExpired) {
 				quickFoldersLabel.classList.add('expired');
 				let txtExpired =
 				  util.getBundleString('qf.premium.renewLicense.tooltip',"Your license expired {1} days ago")
-					.replace("{1}", util.Licenser.ExpiredDays);
+					.replace("{1}", QuickFolders.Util.licenseInfo.expiredDays);
 				quickFoldersLabel.setAttribute('tooltiptext', txtExpired);
 			}
 			else {
@@ -6724,8 +6724,8 @@ QuickFolders.Interface = {
 
 	clickTitleLabel: function clickTitleLabel(btn) {
 	  const util = QuickFolders.Util;
-		if (util.Licenser.isExpired) {
-			QuickFolders.Licenser.showDialog('mainLabelRenewal');
+		if (QuickFolders.Util.licenseInfo.isExpired) {
+			QuickFolders.Interface.showLicenseDialog('mainLabelRenewal');
 		}
 		else { // get context Menu as normal
 			QuickFolders.Interface.showPopup(btn, 'QuickFolders-ToolbarPopup');
@@ -6757,7 +6757,21 @@ QuickFolders.Interface = {
 		let observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
 		observerService.notifyObservers(null, "quickfolders-options-saved", null);
 
-	}
+	},
+  
+  showLicenseDialog: function showLicenseDialog(featureName) {
+		let params = {
+      inn:{
+        referrer: featureName, 
+        instance: QuickFolders   // Why? should this be the main interface? make obsolete!
+      }, 
+      out:null
+    };
+    window.openDialog('chrome://quickfolders/content/register.xhtml',
+      'quickfolders-register','chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',
+      QuickFolders,
+      params).focus();
+  }
 
 
 }; // Interface

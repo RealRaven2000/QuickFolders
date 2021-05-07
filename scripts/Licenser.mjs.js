@@ -75,7 +75,6 @@ export class Licenser {
     this.LicensedDaysLeft = 0;
     this.decryptedDate = "";
     this.decryptedMail = "";
-    this.keyType = 0; // default to "pro license"
   }
   
   // public Interface - note that "description" can be consumed by the front end.

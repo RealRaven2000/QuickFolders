@@ -47,10 +47,10 @@ async function main() {
       // see below
       case "update":
       {
-        let currentLicenseState = currentLicense.currentState;
-        if (currentLicenseState.status == "Valid") {
+        let currentLicenseInfo = currentLicense.currentState;
+        if (currentLicenseInfo.status == "Valid") {
           // suppress update popup for users with licenses that have been recently renewed
-          let gpdays = currentLicenseState.expiredDays;
+          let gpdays = currentLicenseInfo.expiredDays;
           console.log("Licensed - " + gpdays  + " Days left.");
           // if (gpdays>40) {
             // console.log("Omitting update popup!");
@@ -78,7 +78,7 @@ async function main() {
   messenger.runtime.onMessage.addListener(async (data, sender) => {
     if (data.command) {
       switch (data.command) {
-        case "getLicenseState": 
+        case "getLicenseInfo": 
           return currentLicense.currentState;
       }
     }
@@ -90,7 +90,7 @@ async function main() {
         util.slideAlert(...data.args);
         break;
       
-      case "getLicenseState": 
+      case "getLicenseInfo": 
         return currentLicense.currentState;
         break;
       
@@ -108,16 +108,17 @@ async function main() {
 
       case "updateLicense":
         let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");
+        // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
         let newLicense = new Licenser(data.key, { forceSecondaryIdentity });
         await newLicense.validate();
         // Check new license and accept if ok.
         // You may return values here, which will be send back to the caller.
         // return false;
         
-        // Update backgound license.
+        // Update background license.
         currentLicense = newLicense;
         // Broadcast
-        messenger.NotifyTools.notifyExperiment({licenseState: currentLicense.currentState})
+        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.currentState})
         return true;
     }
   });

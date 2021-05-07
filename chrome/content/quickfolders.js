@@ -566,11 +566,6 @@ END LICENSE BLOCK */
 */
 
 
-if (!this.QuickFolders_CC)
-	this.QuickFolders_CC = Components.classes;
-if (!this.QuickFolders_CI)
-	this.QuickFolders_CI = Components.interfaces;
-
 // not sure whether (and how) to use defineModuleGetter() - does it work in Tb68??
 if (typeof DeferredTask == "undefined")
   var {DeferredTask} = ChromeUtils.import("resource://gre/modules/DeferredTask.jsm");  
@@ -669,7 +664,6 @@ var QuickFolders = {
 		return this._folderTree;
 	},
 	// keyListen: EventListener,
-	loadListen: false,
   folderPaneListen: false,
 	_tabContainer: null,
 	get tabContainer() {
@@ -751,7 +745,10 @@ var QuickFolders = {
 			// document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 			// var thefunc='QuickFolders.init()';
 			// setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
-			win.setTimeout(function() { QuickFolders.init(); }, nDelay);
+			win.setTimeout(function() { 
+        QuickFolders.init(); 
+      }, nDelay);
+      
       let folderTree = QuickFolders.mailFolderTree;
       // add an onSelect event!
       folderTree.addEventListener("select", QuickFolders.FolderTreeSelect, false);
@@ -1022,35 +1019,36 @@ var QuickFolders = {
     
     // Force Registration key check (if key is entered) in order to update interface
     let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
+    // replace this with something that is event driven from the background update thing ??
     util.Licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey')).then ((rv) => {
-        // return value is: [Licenser.ValidationStatus, RealLicense]
-        let State = util.Licenser.ELicenseState,
-            hasLicense = util.hasPremiumLicense();
-        if (hasLicense) {  // reset licenser (e.g. in new window)
-          util.logDebug ("Premium License found - removing Animations()...");
-          QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
-        }
-        if (menuRegister) {
-          switch (util.Licenser.ValidationStatus) {
-            case State.Valid:
-              menuRegister.classList.add('paid');
-              menuRegister.classList.remove('free');
-              break;
-            case State.Expired:
-              menuRegister.label = "QuickFolders Pro: " + util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
-              menuRegister.classList.add('expired');
-              menuRegister.classList.remove('free');
-              break;
-            default:
-              menuRegister.classList.add('free');
-          }
-        }
-        // 4.9.1 decided to leave button on screen but serve premium notification on use
-        // let quickFoldersSkipFolder = document.getElementById('quickFoldersSkipFolder');
-        // quickFoldersSkipFolder.collapsed = !hasLicense;
+      QuickFolders.initLicensedUI();
     });
     
 	},
+  
+  initLicensedUI: function initLicensedUI() {
+    let State = QuickFolders.Util.licenseInfo.status,    // QuickFolders.Util.Licenser.ELicenseState,
+        hasLicense = QuickFolders.Util.hasPremiumLicense();
+    if (hasLicense) {  // reset licenser (e.g. in new window)
+      util.logDebug ("Premium License found - removing Animations()...");
+      QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
+    }
+    if (menuRegister) {
+      switch (State) {
+        case "Valid":
+          menuRegister.classList.add('paid');
+          menuRegister.classList.remove('free');
+          break;
+        case "Expired":
+          menuRegister.label = "QuickFolders Pro: " + util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
+          menuRegister.classList.add('expired');
+          menuRegister.classList.remove('free');
+          break;
+        default:
+          menuRegister.classList.add('free');
+      }
+    }
+  } ,
 
 	sayHello: function sayHello() {
 		QuickFolders.Util.alert("Hello from QuickFolders");
@@ -2126,14 +2124,6 @@ var QuickFolders = {
 		
 	},
 	
-	addLoadEventListener: function addLoadEventListener() {
-		// avoid registering this event listener twice!
-		if (!this.loadListen) {
-			//window.addEventListener("load", function() { QuickFolders.initDelayed(window); }, true);
-		}
-		this.loadListen=true;
-	},
-  
   addFolderPaneListener: function addFolderPaneListener() {
     if (!this.folderPaneListen) {
       let menu = document.getElementById('folderPaneContext');
@@ -2175,7 +2165,7 @@ var QuickFolders = {
       tabContainer.removeEventListener(key, this.TabEventListeners[key]);
     }
   }
-};
+}; // QuickFolders main object
 
 
 

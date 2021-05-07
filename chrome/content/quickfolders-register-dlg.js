@@ -27,21 +27,21 @@ var Register = {
   },
   
   updateLicenseUI: async function updateLicenseUI() {
-    const licenseState = QuickFolders.Util.licenseState,
+    const licenseInfo = QuickFolders.Util.licenseInfo,
           getElement = document.getElementById.bind(document),
           util = QuickFolders.Util;
     
-    let decryptedDate = licenseState.expiryDate;
+    let decryptedDate = licenseInfo.expiryDate;
     if (decryptedDate) {
 			if (util.isDebug) {
-				util.logDebug('Register.updateUI()\n' + 'ValidationStatus = ' + licenseState.description)
+				util.logDebug('Register.updateLicenseUI()\n' + 'ValidationStatus = ' + licenseInfo.description)
 				debugger;
 			}
 				
       getElement('licenseDate').value = decryptedDate; // invalid ??
-			if (licenseState.status == "Expired" || licenseState.status == "Valid") {
+			if (licenseInfo.status == "Expired" || licenseInfo.status == "Valid") {
 				let btnLicense = getElement('btnLicense');
-				if(licenseState.status == "Expired")
+				if(licenseInfo.status == "Expired")
 					btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
 				else {
 					btnLicense.label = util.getBundleString("qf.notification.premium.btn.extendLicense", "Extend License!");
@@ -55,7 +55,7 @@ var Register = {
 				btnLicense.setAttribute('oncommand', 'Register.goPro(2);');
 				btnLicense.classList.add('expired');
 				// hide the "Enter License Key..." button + label
-				if (licenseState.status == "Valid") {
+				if (licenseInfo.status == "Valid") {
 					getElement('haveLicense').collapsed=true;
 					getElement('btnEnterCode').collapsed=true;
 				}
@@ -68,7 +68,7 @@ var Register = {
       getElement('licenseDate').collapsed = true;
     }
     
-		switch(licenseState.status) {
+		switch(licenseInfo.status) {
 			case "Expired":
 			  getElement('licenseDateLabel').value = util.getBundleString("qf.register.licenseValid.expired","Your license expired on:")
 				getElement('qfLicenseTerm').classList.add('expired');
@@ -82,9 +82,9 @@ var Register = {
 				getElement('licenseDateLabel').value = " ";
 			  break;
 			default: // default class=register will animate the button
-        let txt = "License Status: " + licenseState.description;
+        let txt = "License Status: " + licenseInfo.description;
 			  getElement('licenseDateLabel').value = txt;
-        util.logToConsole("Registration Problem\n" + txt + "\nDecrypted part: " + licenseState.decryptedPart);
+        util.logToConsole("Registration Problem\n" + txt + "\nDecrypted part: " + licenseInfo.decryptedPart);
         
 		}
 			
@@ -187,7 +187,7 @@ var Register = {
 				shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomain";
 			  break;
 			case 2: // license renewal
-				if (QuickFolders.Crypto.key_type==1) { // domain license!
+				if (QuickFolders.Util.licenseInfo.keyType==1) { // domain license!
 					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomainrenewal";
 				}
 				else
@@ -229,10 +229,18 @@ var Register = {
     QuickFolders.Util.openURL(event,'https://quickfolders.org/premium.html');
   },
   
+  sanitizeName: function sanitizeName(name) {
+    // remove bracketed stuff: "fred jones (freddy)" => "fred jones"
+    let x = name.replace(/ *\([^)]*\) */g, "");
+    if (x.trim)
+      return x.trim();
+    return x;
+  },
+  
   selectIdentity: function selectIdentity(element) {
     // get selectedItem attributes
     let it = element.selectedItem,
-        fName = QuickFolders.Licenser.sanitizeName(it.getAttribute('fullName')),
+        fName = Register.sanitizeName(it.getAttribute('fullName')), // not sure whether I can use this.sanitizeName
         email = it.getAttribute('value'),
         names = fName.split(' ');
     document.getElementById('firstName').value = names[0];

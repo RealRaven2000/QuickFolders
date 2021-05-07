@@ -37,9 +37,9 @@ export function getKeyType(licenseKey) {
   if (!licenseKey) 
     return 0; // default to Pro, but that doesn't mean there is a valid license!
   if (licenseKey.startsWith('QFD')) {
-    this.key_type = 1; // Domain License
+    return 1; // Domain License
   } else {
-    this.key_type = 0; // Pro License
+    return 0; // Pro License
   } // SmartTemplates uses "S1" for standard licenses with key_type=2
 }
 

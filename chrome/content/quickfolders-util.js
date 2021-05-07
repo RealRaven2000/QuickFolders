@@ -64,15 +64,15 @@ QuickFolders.Util = {
 	async init() {
 
 		const onBackgroundUpdates = (data) => {
-			if (data.licenseState) {
-				QuickFolders.Util.licenseState = data.licenseState;
+			if (data.licenseInfo) {
+				QuickFolders.Util.licenseInfo = data.licenseInfo;
 
 				const event = new CustomEvent("QuickFolders.BackgroundUpdate");
 				window.dispatchEvent(event); 
 			}
 		}   
 		QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
-		QuickFolders.Util.licenseState = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseState" });
+		QuickFolders.Util.licenseInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseInfo" });
 		QuickFolders.Util.platformInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getPlatformInfo" });
 		QuickFolders.Util.browserInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getBrowserInfo" });
 		QuickFolders.Util.addonInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getAddonInfo" });
@@ -339,7 +339,7 @@ QuickFolders.Util = {
   // goal - take validation out and put it into an async function
   
   hasPremiumLicense: function hasPremiumLicense() {
-    return QuickFolders.Util.licenseState.status == "Valid";
+    return QuickFolders.Util.licenseInfo.status == "Valid";
   },
   
 	popupProFeature: function popupProFeature(featureName, text) {
@@ -377,7 +377,7 @@ QuickFolders.Util = {
         hotKey = util.getBundleString("qf.notification.premium.btn.hotKey", "L"),
 		    nbox_buttons;
 		// overwrite for renewal
-		if (util.Licenser.isExpired)
+		if (QuickFolders.Util.licenseInfo.isExpired)
 				regBtn = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
 		if (notifyBox) {
 			let notificationKey = "quickfolders-proFeature";
@@ -388,7 +388,7 @@ QuickFolders.Util = {
           label: regBtn,
           accessKey: hotKey, 
           callback: function() {
-						util.getMail3PaneWindow().QuickFolders.Util.Licenser.showDialog(featureName); 
+						QuickFolders.Interface.showLicenseDialog(featureName);   // was util.getMail3PaneWindow().QuickFolders.Util.Licenser.showDialog
           },
           popup: null
         }
@@ -1240,10 +1240,10 @@ QuickFolders.Util = {
 	// appends user=pro OR user=proRenew if user has a valid / expired license
 	makeUriPremium: function makeUriPremium(URL) {
 		const util = QuickFolders.Util,
-					isPremiumLicense = util.hasPremiumLicense() || util.Licenser.isExpired;
+					isPremiumLicense = util.hasPremiumLicense() || QuickFolders.Util.licenseInfo.isExpired;
 		try {
 			let uType = "";
-			if (util.Licenser.isExpired) 
+			if (QuickFolders.Util.licenseInfo.isExpired) 
 				uType = "proRenew"
 			else if (util.hasPremiumLicense())
 			  uType = "pro";
@@ -1681,7 +1681,7 @@ QuickFolders.Util.FirstRun = {
         //   } 
         // );
      
-        let isPremiumLicense = util.hasPremiumLicense() || util.Licenser.isExpired,
+        let isPremiumLicense = util.hasPremiumLicense() || QuickFolders.Util.licenseInfo.isExpired,
         		versionPage = util.makeUriPremium("https://quickfolders.org/version.html") + "#" + pureVersion;
         // UPDATE CASE 
         // this section does not get loaded if it's a fresh install.

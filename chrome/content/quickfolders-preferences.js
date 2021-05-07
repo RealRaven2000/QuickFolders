@@ -270,7 +270,7 @@ QuickFolders.Preferences = {
 	get TextQuickfoldersLabel() {
 		const licenser = QuickFolders.Licenser,
 		      util = QuickFolders.Util;
-		let renewalLabel = (licenser.isExpired) 
+		let renewalLabel = (QuickFolders.Util.licenseInfo.isExpired) 
 		     ? util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!")
 				 : "";
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje

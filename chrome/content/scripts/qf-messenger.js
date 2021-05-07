@@ -299,7 +299,7 @@ async function onLoad(activatedWhileWindowOpen) {
 `);
 
 
-//------------------------------------ overlay current folder
+//------------------------------------ overlay current folder (navigation bar)
 WL.injectElements(`
 <hbox id="messagepaneboxwrapper">
 <vbox id="messagepanebox">
@@ -433,10 +433,7 @@ WL.injectElements(`
 
 
 //-----------------------------
-//qf-tools.xul
-//^ ^ wrong: we should load qf-tools69.xul
-
-
+// qf-tools69.xul
 WL.injectElements(`
     
 <hbox id="QuickFolders-left">
@@ -503,18 +500,13 @@ insertafter="QuickFolders-LabelBox">
 
 `);
 
-
-//qf-tools
-//------------------------------------
-    
+    // add listeners
     window.QuickFolders.Util.logDebug('Adding Folder Listener...');
     window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
-//   obsolete   window.QuickFolders.addLoadEventListener();
+    // initDelayed will already prepare background update listener ... #
+    // => it calls await QuickFolders.Util.init();
     window.QuickFolders.initDelayed(window, WL);
-    //WL.messenger.windows.create({}); //goes into loop
-    //WL.context.apiCan.findAPIPath("compose").beginNew(); // Geoff, but: context not defined
-    //console.log(WL.context);
-    //WL.messenger.compose.beginNew();  //example how to call api from legacy
+
 }
 
 function onUnload(isAddOnShutDown) {

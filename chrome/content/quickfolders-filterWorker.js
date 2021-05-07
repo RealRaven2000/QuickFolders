@@ -281,7 +281,7 @@ QuickFolders.FilterWorker = {
       messageHeader = messageDb.getMsgHdrForMessageID(messageId);
     }
     else { // Postbox ??
-      // let globalIndex = Cc['@mozilla.org/msg-global-index;1'].getService(QuickFolders_CI.nsIMsgGlobalIndex);
+      // let globalIndex = Cc['@mozilla.org/msg-global-index;1'].getService(Components.interfaces.nsIMsgGlobalIndex);
       try {
         // see nsMsgFilleTextIndexer
         messageDb = targetFolder.getMsgDatabase(null); //GetMsgFolderFromUri(currentFolderURI, false)

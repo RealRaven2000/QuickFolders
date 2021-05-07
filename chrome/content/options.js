@@ -305,8 +305,8 @@ QuickFolders.Options = {
     
     /*****  License  *****/
     options.labelLicenseBtn(getElement("btnLicense"), "buy");
-    getElement('txtLicenseKey').value = QuickFolders.Util.licenseState.licenseKey;    
-    if (QuickFolders.Util.licenseState.licenseKey) {
+    getElement('txtLicenseKey').value = QuickFolders.Util.licenseInfo.licenseKey;    
+    if (QuickFolders.Util.licenseInfo.licenseKey) {
       this.validateLicenseInOptions();      
     }
     // add an event listener for changes:
@@ -366,7 +366,7 @@ QuickFolders.Options = {
     }
   
     if (earlyExit) return;
-    if (QuickFolders.Util.licenseState.status == "Valid")
+    if (QuickFolders.Util.licenseInfo.status == "Valid")
       setTimeout(function() { 
           util.logDebug('Remove animations in options dialog…');
           QI.removeAnimations('quickfolders-options.css');
@@ -430,7 +430,7 @@ QuickFolders.Options = {
     window.addEventListener('dialogextra2', function (event) { 
       setTimeout(
         function() { 
-          QuickFolders.Licenser.showDialog('options_' + QuickFolders.Options.currentOptionsTab); 
+          QuickFolders.Interface.showLicenseDialog('options_' + QuickFolders.Options.currentOptionsTab); 
           window.close(); 
         }
       );
@@ -613,9 +613,9 @@ QuickFolders.Options = {
         validationInvalidEmail = getElement('validationInvalidEmail'),
         validationEmailNoMatch = getElement('validationEmailNoMatch'),
         validationDate         = getElement('validationDate'),
-        decryptedMail = QuickFolders.Util.licenseState.email , 
-        decryptedDate = QuickFolders.Util.licenseState.expiryDate,
-        result = QuickFolders.Util.licenseState.status;
+        decryptedMail = QuickFolders.Util.licenseInfo.email , 
+        decryptedDate = QuickFolders.Util.licenseInfo.expiryDate,
+        result = QuickFolders.Util.licenseInfo.status;
     /* 1 - prepare UI */
     validationPassed.collapsed = true;
     validationFailed.collapsed = true;
@@ -636,7 +636,7 @@ QuickFolders.Options = {
         case "Invalid":
           validationDate.collapsed=true;
           let addonName = '';
-          switch (QuickFolders.Util.licenseState.licenseKey.substr(0,2)) {
+          switch (QuickFolders.Util.licenseInfo.licenseKey.substr(0,2)) {
             case 'QI':
               addonName = 'quickFilters';
               break;
@@ -725,7 +725,7 @@ QuickFolders.Options = {
     }
     const util = QuickFolders.Util;
     const elem3pane = util.getMail3PaneWindow().QuickFolders.Util.$;
-    const result = QuickFolders.Util.licenseState.status;
+    const result = QuickFolders.Util.licenseInfo.status;
     
     const options = QuickFolders.Options,
           prefs = QuickFolders.Preferences,
@@ -751,7 +751,7 @@ QuickFolders.Options = {
             later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
             dateString = later.toISOString().substr(0, 10);
         // if we were a month ahead would this be expired?
-        if (QuickFolders.Util.licenseState.decryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
+        if (QuickFolders.Util.licenseInfo.decryptedDate < dateString || prefs.getBoolPref("debug.premium.forceShowExtend")) {
           options.labelLicenseBtn(btnLicense, "extend");
         }
         else
@@ -779,38 +779,11 @@ QuickFolders.Options = {
     util.logDebug('validateLicense - result = ' + result);
   } ,
   
-  restoreLicense: function restoreLicense() {
-    const licenser = QuickFolders.Util.Licenser;
-    licenser.LicenseKey = QuickFolders.Preferences.getStringPref('LicenseKey'); 
-    document.getElementById('txtLicenseKey').value = licenser.LicenseKey;
-  },
-  
   // only for testing, hence no l10n !
   // if we add the secret encryption string(s) to our config db
   // we will be able to generate new license keys...
   encryptLicense: function encryptLicense() {
     throw('Encryption is not supported!');
-    /*
-    let encryptThis = document.getElementById('txtEncrypt').value;
-    if (encryptThis.indexOf('*')>0) {
-      if (QuickFolders.Crypto.key_type!=1) { // not currently a domain key?
-        // test only - not meant for public consumption
-        if (confirm('Switch to domain license?')) {
-          QuickFolders.Crypto.key_type=1; // switch to domain license
-        }
-      }
-    }
-    else {
-      if (QuickFolders.Crypto.key_type!=0) { // not currently a private key?
-        // test only - not meant for public consumption
-        if (confirm('Switch to private license?')) {
-          QuickFolders.Crypto.key_type=0; // switch to private license
-        }
-      }
-    }
-    let encrypted = QuickFolders.Util.Licenser.encryptLicense(encryptThis, QuickFolders.Crypto.maxDigits);
-    document.getElementById('txtLicenseKey').value = encryptThis + ';' + encrypted;
-    */
   },
   
   selectTheme: function selectTheme(wd, themeId) {
@@ -1564,7 +1537,7 @@ QuickFolders.Options = {
           util = QuickFolders.Util,
           options = QuickFolders.Options,
           licenser = util.Licenser,
-          State = licenser.ELicenseState;
+          State = QuickFolders.Util.licenseInfo.status;
     try {
     let donateButton = document.documentElement.getButton('extra2');
     if(!el) el = document.getElementById("QuickFolders-Panels");
@@ -1579,23 +1552,22 @@ QuickFolders.Options = {
             donateButton.addEventListener(
               "click", 
               function(event) { 
-                licenser.showDialog('licenseTab'); 
+                QuickFolders.Interface.showLicenseDialog('licenseTab'); 
               }, 
               false);
-            
           }
           else {
-            switch (licenser.ValidationStatus) {
-              case State.NotValidated:
+            switch (State) {
+              case "NotValidated":
                 // options.labelLicenseBtn(donateButton, "buy"); // hide?
                 break;
-              case State.Expired:
+              case "Expired":
                 options.labelLicenseBtn(donateButton, "renew");
                 break;
-              case State.Valid:
+              case "Valid":
                 donateButton.collapsed = true;
                 break;
-              case State.Invalid:
+              case "Invalid":
                 options.labelLicenseBtn(donateButton, "buy");
                 break;
               default:
@@ -1673,7 +1645,7 @@ QuickFolders.Options = {
 			storedObj.advanced = [];
 			storedObj.layout = [];
 			storedObj.userStyle = [];
-			let isLicense =  (util.Licenser.isExpired || util.Licenser.isValidated);
+			let isLicense =  (QuickFolders.Util.licenseInfo.isExpired || QuickFolders.Util.licenseInfo.isValidated);
 			if (isLicense)
 				storedObj.premium = [];
       util.logDebug("Storing configuration...")

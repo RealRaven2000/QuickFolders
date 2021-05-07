@@ -10,9 +10,9 @@ END LICENSE BLOCK */
 
 async function updateActions(addonName) { 
   // Currently we do not notify this page if the license information is updated in the background.
-  let licenseState = await messenger.runtime.sendMessage({command:"getLicenseState"});
-  let isLicensed = licenseState.status == "Valid";
-  let isExpired = licenseState.status == "Expired";   
+  let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+  let isLicensed = licenseInfo.status == "Valid";
+  let isExpired = licenseInfo.status == "Expired";   
   
   function hide(id) {
     let el = document.getElementById(id);
@@ -57,7 +57,7 @@ async function updateActions(addonName) {
       hide('renewLicenseListItem');
       hide('renew');
       debugger;
-      if (licenseState.licensedDaysLeft < 50) { // they may have seen this popup. Only show extend License section if it is < 50 days away
+      if (licenseInfo.licensedDaysLeft < 50) { // they may have seen this popup. Only show extend License section if it is < 50 days away
         show('extendLicenseListItem');
         show('extend');
       }

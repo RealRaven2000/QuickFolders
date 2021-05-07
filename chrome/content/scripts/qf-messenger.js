@@ -503,8 +503,7 @@ insertafter="QuickFolders-LabelBox">
     // add listeners
     window.QuickFolders.Util.logDebug('Adding Folder Listener...');
     window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
-    // initDelayed will already prepare background update listener ... #
-    // => it calls await QuickFolders.Util.init();
+    // initDelayed will prepare background update listener by calling await QuickFolders.Util.init();
     window.QuickFolders.initDelayed(WL);
 }
 

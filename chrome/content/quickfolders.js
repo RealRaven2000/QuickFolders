@@ -726,12 +726,12 @@ var QuickFolders = {
 					QI = QuickFolders.Interface;
 	  if (this.initDone) return;
     
-    let win = window;
+    // from the time we passed in the window as win
+	let win = window;
     
     if (WLorig)
       QuickFolders.WL = WLorig;
-    
-	  
+      
     let sWinLocation,
 	      nDelay = prefs.getIntPref('initDelay');
 	  
@@ -742,7 +742,6 @@ var QuickFolders = {
     // Do all the fancy background stuff:
     win.addEventListener("QuickFolders.BackgroundUpdate", win.QuickFolders.initLicensedUI.bind(win.QuickFolders)); // prepare a listener for license updates.  
     await QuickFolders.Util.init();
-
     util.VersionProxy(); // initialize the version number using the AddonManager
 	
     if (QuickFolders.isCorrectWindow(win)) {
@@ -1018,20 +1017,16 @@ var QuickFolders = {
       QuickFolders.bookmarks.load();
     }
     
-    // replace this with something that is event driven from the background update thing ??
-    //util.Licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey')).then ((rv) => {
-    //  QuickFolders.initLicensedUI();
-    //});
+	QuickFolders.initLicensedUI();
     
 	},
   
   initLicensedUI: function initLicensedUI() {
     let State = QuickFolders.Util.licenseInfo.status,    // QuickFolders.Util.Licenser.ELicenseState,
         hasLicense = QuickFolders.Util.hasPremiumLicense();
-    debugger;
     QuickFolders.Util.logDebug ("initLicensedUI - hasLicense = " + hasLicense + "\n licenseInfo:", QuickFolders.Util.licenseInfo);
     if (hasLicense) {  // reset licenser (e.g. in new window)
-      util.logDebug ("Premium License found - removing Animations()...");
+      QuickFolders.Util.logDebug ("Premium License found - removing Animations()...");
       QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
     }
     // Force Registration key check (if key is entered) in order to update interface

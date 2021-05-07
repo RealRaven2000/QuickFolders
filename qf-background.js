@@ -50,7 +50,7 @@ async function main() {
         let currentLicenseInfo = currentLicense.currentState;
         if (currentLicenseInfo.status == "Valid") {
           // suppress update popup for users with licenses that have been recently renewed
-          let gpdays = currentLicenseInfo.expiredDays;
+          let gpdays = currentLicenseInfo.licensedDaysLeft;
           console.log("Licensed - " + gpdays  + " Days left.");
           // if (gpdays>40) {
             // console.log("Omitting update popup!");

@@ -1111,9 +1111,9 @@ QuickFolders.Util = {
 		this.logError(aMessage + "\n" + ex.message, fn, stack, ex.lineNumber, 0, 0x1);
 	} ,
 
-	logDebug: function (...msg) {
-		if (QuickFolders.Preferences.isDebug)
-			this.logToConsole(...msg);
+	logDebug: function (msg) {
+/*		if (QuickFolders.Preferences.isDebug)
+			this.logToConsole(...msg);*/
 	},
 	
 	get isDebug() {
@@ -1126,15 +1126,15 @@ QuickFolders.Util = {
 	* @optionString {string}: comma delimited options
   * @msg {string}: text to log 
 	*/   
-	logDebugOptional: function logDebugOptional(optionString, ...msg) {
-    let options = optionString.split(',');
+	logDebugOptional: function logDebugOptional(optionString, msg) {
+/*    let options = optionString.split(',');
     for (let i=0; i<options.length; i++) {
       let option = options[i];
       if (QuickFolders.Preferences.isDebugOption(option)) {
         this.logWithOption(option, ...msg);
         break; // only log once, in case multiple log switches are on
       }
-    }
+    }*/
 	},
 
 	logFocus: function logFocus(origin) {

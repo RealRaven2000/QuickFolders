@@ -85,7 +85,7 @@ async function main() {
   });
   
   messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
-    switch (data.func) {      
+    switch (data.func) {
       case "slideAlert":
         util.slideAlert(...data.args);
         break;

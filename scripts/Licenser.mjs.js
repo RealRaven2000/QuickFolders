@@ -55,11 +55,11 @@ export class Licenser {
   constructor(LicenseKey, options = {}) {
     // the constructor ONLY sets the Licensekey, it does not set date etc.
     this.reset();    
-    this.LicenseKey = "";
     this.ForceSecondaryIdentity = options.hasOwnProperty("forceSecondaryIdentity")
       ? options.forceSecondaryIdentity
       : false;
       
+    this.LicenseKey = LicenseKey;
     this.key_type = crypto.getKeyType(LicenseKey);
     
     if (this.key_type == 1 && this.ForceSecondaryIdentity) {

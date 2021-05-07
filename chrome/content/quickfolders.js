@@ -740,7 +740,7 @@ var QuickFolders = {
 	  sWinLocation = new String(win.location);
 
     // Do all the fancy background stuff:
-    win.addEventListener("QuickFolders.BackgroundUpdate", win.QuickFolders.initLicensedUI.bind(win.QuickFolders)); // prepare a listener for license updates.
+    win.addEventListener("QuickFolders.BackgroundUpdate", win.QuickFolders.initLicensedUI.bind(win.QuickFolders)); // prepare a listener for license updates.  
     await QuickFolders.Util.init();
 
     util.VersionProxy(); // initialize the version number using the AddonManager

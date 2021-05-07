@@ -89,6 +89,9 @@ export class Licenser {
       licenseKey: this.LicenseKey,
       decryptedPart: this.RealLicense,
       keyType: this.key_type,
+      // helper functions (transformed internal getters)
+      isValid: this.isValid,
+      isExpired: this.isExpired,
     }
   }
   

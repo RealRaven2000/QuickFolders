@@ -506,7 +506,6 @@ insertafter="QuickFolders-LabelBox">
     // initDelayed will already prepare background update listener ... #
     // => it calls await QuickFolders.Util.init();
     window.QuickFolders.initDelayed(window, WL);
-
 }
 
 function onUnload(isAddOnShutDown) {

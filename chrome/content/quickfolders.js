@@ -720,6 +720,7 @@ var QuickFolders = {
 
 	initDelayed: async function initDelayed(win, WLorig) {
 	  if (this.initDone) return;
+    
     if (WLorig)
       QuickFolders.WL = WLorig;
     
@@ -734,14 +735,16 @@ var QuickFolders = {
 	  
     QuickFolders.initDocAndWindow(win);
 	  nDelay = nDelay? nDelay: 750;
-	  sWinLocation = new String(window.location);
+	  sWinLocation = new String(win.location);
 
-    // Do all the fancy background stuff.
+    // Do all the fancy background stuff:
+    win.addEventListener("QuickFolders.BackgroundUpdate", win.QuickFolders.initLicensedUI.bind(win.QuickFolders)); // prepare a listener for license updates.
     await QuickFolders.Util.init();
+
     util.VersionProxy(); // initialize the version number using the AddonManager
 	
-    if (QuickFolders.isCorrectWindow()) {
-			util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + document.title + "\nwait " + nDelay + " msec until init()...");
+    if (QuickFolders.isCorrectWindow(win)) {
+			util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + win.document.title + "\nwait " + nDelay + " msec until init()...");
 			// document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 			// var thefunc='QuickFolders.init()';
 			// setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
@@ -780,7 +783,7 @@ var QuickFolders = {
 		}
 		else {
 		  try {
-        let doc = document; // in case a stand alone window is opened (e..g double clicking an eml file)
+        let doc = win.document; // in case a stand alone messageWindow is opened (e..g double clicking an eml file)
         let qfToolbar = QI.Toolbar;
         
         // if (qfToolbar) qfToolbar.style.display = 'none';
@@ -796,8 +799,8 @@ var QuickFolders = {
           util.logDebug('Calling displayNavigationToolbar()');
           QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
           // set current folder tab label
-          if (window.arguments) {
-            let args = window.arguments,
+          if (win.arguments) {
+            let args = win.arguments,
                 fld;
             // from messageWindow.js actuallyLoadMessage()
             if (args.length && args[0] instanceof Components.interfaces.nsIMsgDBHdr) {
@@ -824,9 +827,9 @@ var QuickFolders = {
 		}
 	} ,
 
-	isCorrectWindow: function isCorrectWindow() {
+	isCorrectWindow: function isCorrectWindow(win) {
 		try {
-			return document.getElementById('messengerWindow').getAttribute('windowtype') === "mail:3pane";
+			return win.document.getElementById('messengerWindow').getAttribute('windowtype') === "mail:3pane";
 		}
 		catch(e) { return false; }
 	} ,
@@ -1017,8 +1020,6 @@ var QuickFolders = {
       QuickFolders.bookmarks.load();
     }
     
-    // Force Registration key check (if key is entered) in order to update interface
-    let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
     // replace this with something that is event driven from the background update thing ??
     util.Licenser.validateLicense(QuickFolders.Preferences.getStringPref('LicenseKey')).then ((rv) => {
       QuickFolders.initLicensedUI();
@@ -1033,6 +1034,8 @@ var QuickFolders = {
       util.logDebug ("Premium License found - removing Animations()...");
       QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
     }
+    // Force Registration key check (if key is entered) in order to update interface
+    let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
     if (menuRegister) {
       switch (State) {
         case "Valid":

@@ -78,7 +78,7 @@ export class Licenser {
   }
   
   // public Interface - note that "description" can be consumed by the front end.
-  get currentState() {
+  get info() {
     return {
       status: this.ValidationStatusShortDescription,
       description: this.ValidationStatusDescription,
@@ -280,7 +280,7 @@ export class Licenser {
         this.ValidationStatus,
       ]);
       this.decryptedDate = ""; // throw it away!
-      return this.currentState;
+      return this.info;
     }
 
     // ******* CHECK MAIL IS MATCHING ********
@@ -292,7 +292,7 @@ export class Licenser {
         this.ValidationStatusDescription,
         this.ValidationStatus,
       ]);
-      return this.currentState;
+      return this.info;
     }
 
     // ******* CHECK LICENSE EXPIRY  ********
@@ -365,7 +365,7 @@ export class Licenser {
             identity: defaultIdentity.email,
             status: this.ValidationStatusDescription
           });
-          return this.currentState;
+          return this.info;
         }
 
       } else if (AllowFallbackToSecondaryIdentiy) {
@@ -390,7 +390,7 @@ export class Licenser {
               identity: identity.email,
               status: this.ValidationStatusDescription
             });
-            return this.currentState;
+            return this.info;
           }
         }
         
@@ -398,7 +398,7 @@ export class Licenser {
     }
     
     this.ValidationStatus = LicenseStates.MailNotConfigured;
-    return this.currentState;
+    return this.info;
   }
 }
 

@@ -47,7 +47,7 @@ async function main() {
       // see below
       case "update":
       {
-        let currentLicenseInfo = currentLicense.currentState;
+        let currentLicenseInfo = currentLicense.info;
         if (currentLicenseInfo.status == "Valid") {
           // suppress update popup for users with licenses that have been recently renewed
           let gpdays = currentLicenseInfo.licensedDaysLeft;
@@ -79,7 +79,7 @@ async function main() {
     if (data.command) {
       switch (data.command) {
         case "getLicenseInfo": 
-          return currentLicense.currentState;
+          return currentLicense.info;
       }
     }
   });
@@ -91,7 +91,7 @@ async function main() {
         break;
       
       case "getLicenseInfo": 
-        return currentLicense.currentState;
+        return currentLicense.info;
         break;
       
       case "getPlatformInfo": 
@@ -116,10 +116,10 @@ async function main() {
         // return false;
         
         // Update background license.
-        await messenger.LegacyPrefs.setPref("extensions.quickfolders.LicenseKey", newLicense.currentState.licenseKey);
+        await messenger.LegacyPrefs.setPref("extensions.quickfolders.LicenseKey", newLicense.info.licenseKey);
         currentLicense = newLicense;
         // Broadcast
-        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.currentState})
+        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info})
         return true;
     }
   });

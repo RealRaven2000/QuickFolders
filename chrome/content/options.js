@@ -1536,7 +1536,6 @@ QuickFolders.Options = {
     const prefs = QuickFolders.Preferences,
           util = QuickFolders.Util,
           options = QuickFolders.Options,
-          licenser = util.Licenser,
           State = QuickFolders.Util.licenseInfo.status;
     try {
     let donateButton = document.documentElement.getButton('extra2');

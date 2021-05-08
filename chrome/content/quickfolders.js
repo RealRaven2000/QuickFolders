@@ -738,18 +738,8 @@ var QuickFolders = {
     QuickFolders.initDocAndWindow(win);
 	  nDelay = nDelay? nDelay: 750;
 	  sWinLocation = new String(win.location);
-
-    function updateUI() {
-      console.log("update UI");
-      QuickFolders.initLicensedUI();
-    }
-    // Do all the fancy background stuff:
-    win.addEventListener( "QuickFolders.BackgroundUpdate", 
-      updateUI
-      // win.QuickFolders.initLicensedUI.bind(win.QuickFolders)
-    ); // prepare a listener for license updates!
-    
-    await QuickFolders.Util.init();
+        
+    // Todo: REMOVE
     util.VersionProxy(); // initialize the version number using the AddonManager
 	
     if (QuickFolders.isCorrectWindow(win)) {
@@ -1030,6 +1020,7 @@ var QuickFolders = {
 	},
   
   initLicensedUI: function initLicensedUI() {
+    console.log("initLicensedUI");
     let State = QuickFolders.Util.licenseInfo.status,    // QuickFolders.Util.Licenser.ELicenseState,
         hasLicense = QuickFolders.Util.hasPremiumLicense();
     QuickFolders.Util.logDebug ("initLicensedUI - hasLicense = " + hasLicense + "\n licenseInfo:", QuickFolders.Util.licenseInfo);

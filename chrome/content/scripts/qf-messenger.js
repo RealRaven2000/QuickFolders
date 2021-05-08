@@ -500,14 +500,23 @@ insertafter="QuickFolders-LabelBox">
 
 `);
 
-    // add listeners
-    window.QuickFolders.Util.logDebug('Adding Folder Listener...');
-    window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
-    // initDelayed will prepare background update listener by calling await QuickFolders.Util.init();
-    window.QuickFolders.initDelayed(WL);
+  // add listeners
+  window.QuickFolders.Util.logDebug('Adding Folder Listener...');
+  window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
+  
+  // Enable the global notify notifications from background.
+  window.QuickFolders.Util.notifyTools.enable();
+  await window.QuickFolders.Util.init();
+  window.addEventListener( "QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
+  
+  window.QuickFolders.initDelayed(WL);
 }
 
 function onUnload(isAddOnShutDown) {
+  // Disable the global notify notifications from background.
+  window.QuickFolders.Util.notifyTools.disable();
+  window.removeEventListener( "QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
+    
   // remove all listeners
   try {
     window.QuickFolders.Interface.removeToolbarHiding();

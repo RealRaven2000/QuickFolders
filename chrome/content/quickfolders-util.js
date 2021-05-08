@@ -16,8 +16,6 @@ if (!QuickFolders.Filter)	QuickFolders.Filter = {};
 
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
-	HARDCODED_CURRENTVERSION : "5.6", // will later be overriden call to AddonManager
-	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	ADDON_NAME: "QuickFolders",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -50,7 +48,6 @@ QuickFolders.Util = {
 	// avoid these global objects
 	Cc: Components.classes,
 	Ci: Components.interfaces,
-	VersionProxyRunning: false,
 	mAppver: null,
 	mAppName: null,
 	mAppNameFull: '',
@@ -187,60 +184,10 @@ QuickFolders.Util = {
     return (typeof Map == "function");
   } ,
 
-	// detect current QuickFolders version and storing it in mExtensionVer
-	// this is done asynchronously, so it respawns itself
-	VersionProxy: function VersionProxy() {
-    const util = QuickFolders.Util;
-		try {
-			if (util.mExtensionVer // early exit, we got the version!
-				||
-			    util.VersionProxyRunning) // no recursion...
-				return;
-			util.VersionProxyRunning = true;
-			util.logDebugOptional("firstrun", "Util.VersionProxy() started.");
-			if (Components.utils.import) {
-				
-				let versionCallback = function(addon) {
-					let versionLabel = window.document.getElementById("qf-options-header-description");
-					if (versionLabel) versionLabel.setAttribute("value", addon.version);
-
-					util.mExtensionVer = addon.version;
-					util.logDebug("AddonManager: QuickFolders extension's version is " + addon.version);
-					util.logDebug("QuickFolders.VersionProxy() - DETECTED QuickFolders Version " + util.mExtensionVer + "\n" + "Running on " + util.Application	 + " Version " + util.ApplicationVersion);
-					// make sure we are not in options window
-					if (!versionLabel)
-						util.FirstRun.init();
-				}
-				
-				Components.utils.import("resource://gre/modules/AddonManager.jsm");
-				const addonId = util.ADDON_ID.toString();
-        AddonManager.getAddonByID(addonId).then(function(addonId) { versionCallback(addonId); } ); // this function is now a promise
-			}
-
-			util.logDebugOptional("firstrun", "AddonManager.getAddonByID .. added callback for setting extensionVer.");
-
-		}
-		catch(ex) {
-			util.logToConsole("QuickFolder VersionProxy failed - are you using an old version of " + util.Application + "?"
-				+ "\n" + ex);
-		}
-		finally {
-			util.VersionProxyRunning=false;
-		}
-	},
-
 	get Version() {
-    console.log("Version() getter. addonInfo:",    QuickFolders.Util.addonInfo);
+    console.log("Version() getter. addonInfo:", QuickFolders.Util.addonInfo);
     return QuickFolders.Util.addonInfo.version;
-    /*
-    let util = QuickFolders.Util;
-		// returns the current QuickFolders (full) version number.
-		if (util.mExtensionVer)
-			return util.mExtensionVer; // set asynchronously
-		let current = util.HARDCODED_CURRENTVERSION + util.HARDCODED_EXTENSION_TOKEN;
-		util.VersionProxy(); 
-		return current;
-    */
+    // this used to call VersionProxy() which opened quickfolders.init
 	} ,
 
 	get VersionSanitized() {
@@ -1650,7 +1597,7 @@ QuickFolders.Util.FirstRun = {
 			}
 			
 			// STORE CURRENT VERSION NUMBER!
-			if (prev!=pureVersion && current!='?' && (current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0)) {
+			if (prev!=pureVersion && current!='?') {
 				util.logDebugOptional ("firstrun","Store current version " + current);
 				ssPrefs.setStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
 			}
@@ -1658,8 +1605,7 @@ QuickFolders.Util.FirstRun = {
 				util.logDebugOptional ("firstrun","Can't store current version: " + current
 					+ "\nprevious: " + prev.toString()
 					+ "\ncurrent!='?' = " + (current!='?').toString()
-					+ "\nprev!=current = " + (prev!=current).toString()
-					+ "\ncurrent.indexOf(" + util.HARDCODED_EXTENSION_TOKEN + ") = " + current.indexOf(util.HARDCODED_EXTENSION_TOKEN).toString());
+					+ "\nprev!=current = " + (prev!=current).toString());
 			}
 			// NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
 			if (firstrun){  // FIRST TIME INSTALL
@@ -1698,7 +1644,7 @@ QuickFolders.Util.FirstRun = {
 				
 				QuickFolders.Model.updatePalette();
 
-				if (prev!=pureVersion && current.indexOf(util.HARDCODED_EXTENSION_TOKEN) < 0) {
+				if (prev!=pureVersion) {
 					util.logDebugOptional ("firstrun","prev!=current -> upgrade case.");
 					// upgrade case!!
 					let sUpgradeMessage = util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version:")

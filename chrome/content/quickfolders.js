@@ -739,9 +739,6 @@ var QuickFolders = {
 	  nDelay = nDelay? nDelay: 750;
 	  sWinLocation = new String(win.location);
         
-    // Todo: REMOVE
-    util.VersionProxy(); // initialize the version number using the AddonManager
-	
     if (QuickFolders.isCorrectWindow(win)) {
 			util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + win.document.title + "\nwait " + nDelay + " msec until init()...");
 			// document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
@@ -944,7 +941,7 @@ var QuickFolders = {
 					QI = that.Interface, // main window Interface!
 					Cc = Components.classes,
 					Ci = Components.interfaces;
-		let myver = that.Util.Version, // will start VersionProxy
+		let myver = that.Util.Version, 
 		    ApVer, ApName,
         prefs = that.Preferences; 
     try{ ApVer=that.Util.ApplicationVersion} catch(e){ApVer="?"};
@@ -1035,13 +1032,15 @@ var QuickFolders = {
         case "Valid":
           menuRegister.classList.add('paid');
           menuRegister.classList.remove('free');
+          menuRegister.label = QuickFolders.Util.getBundleString("qf.menuitem.quickfolders.register", "QuickFolders Pro License…");
           break;
         case "Expired":
-          menuRegister.label = "QuickFolders Pro: " + util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
+          menuRegister.label = "QuickFolders Pro: " + QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
           menuRegister.classList.add('expired');
           menuRegister.classList.remove('free');
           break;
         default:
+          menuRegister.label = QuickFolders.Util.getBundleString("qf.menuitem.quickfolders.register", "QuickFolders Pro License…");
           menuRegister.classList.add('free');
       }
     }

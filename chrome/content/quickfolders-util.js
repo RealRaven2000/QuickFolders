@@ -230,17 +230,17 @@ QuickFolders.Util = {
 	},
 
 	get Version() {
+    console.log("Version() getter. addonInfo:",    QuickFolders.Util.addonInfo);
+    return QuickFolders.Util.addonInfo.version;
+    /*
     let util = QuickFolders.Util;
 		// returns the current QuickFolders (full) version number.
 		if (util.mExtensionVer)
 			return util.mExtensionVer; // set asynchronously
 		let current = util.HARDCODED_CURRENTVERSION + util.HARDCODED_EXTENSION_TOKEN;
-		// Addon Manager: use Proxy code to retrieve version asynchronously
-		util.VersionProxy(); // modern Mozilla builds.
-											// these will set mExtensionVer (eventually)
-											// also we will delay FirstRun.init() until we _know_ the version number
+		util.VersionProxy(); 
 		return current;
-
+    */
 	} ,
 
 	get VersionSanitized() {
@@ -1111,9 +1111,11 @@ QuickFolders.Util = {
 		this.logError(aMessage + "\n" + ex.message, fn, stack, ex.lineNumber, 0, 0x1);
 	} ,
 
-	logDebug: function (msg) {
-		if (QuickFolders.Preferences.isDebug)
-			this.logToConsole(msg);  /* ...msg */
+	logDebug: function (a) {
+		if (QuickFolders.Preferences.isDebug) {
+      let msg = "QuickFolders " + QuickFolders.Util.logTime() + "\n"
+			this.logToConsole(msg, ...arguments);  /* ...msg */
+    }
 	},
 	
 	get isDebug() {

@@ -32,6 +32,8 @@ var Register = {
           util = QuickFolders.Util;
     
     let decryptedDate = licenseInfo.expiryDate;
+    let btnLicense = getElement('btnLicense');
+    btnLicense.label = util.getBundleString("buyPersonalLicense.button","Buy Personal License!");
     if (decryptedDate) {
 			if (util.isDebug) {
 				util.logDebug('Register.updateLicenseUI()\n' + 'ValidationStatus = ' + licenseInfo.description)
@@ -40,7 +42,6 @@ var Register = {
 				
       getElement('licenseDate').value = decryptedDate; // invalid ??
 			if (licenseInfo.status == "Expired" || licenseInfo.status == "Valid") {
-				let btnLicense = getElement('btnLicense');
 				if(licenseInfo.status == "Expired")
 					btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
 				else {
@@ -68,6 +69,7 @@ var Register = {
       getElement('licenseDate').collapsed = true;
     }
     
+    getElement('qfLicenseTerm').classList.remove('expired');
 		switch(licenseInfo.status) {
 			case "Expired":
 			  getElement('licenseDateLabel').value = util.getBundleString("qf.register.licenseValid.expired","Your license expired on:")

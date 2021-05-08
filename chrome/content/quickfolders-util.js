@@ -1071,7 +1071,7 @@ QuickFolders.Util = {
 	},
   
   // first argument is the option tag
-  logWithOption: function logWithOption() {
+  logWithOption: function logWithOption(a) {
     arguments[0] =  "QuickFolders "
 			+  '{' + arguments[0].toUpperCase() + '} ' 
 			+ QuickFolders.Util.logTime() + "\n";
@@ -1112,8 +1112,8 @@ QuickFolders.Util = {
 	} ,
 
 	logDebug: function (msg) {
-/*		if (QuickFolders.Preferences.isDebug)
-			this.logToConsole(...msg);*/
+		if (QuickFolders.Preferences.isDebug)
+			this.logToConsole(msg);  /* ...msg */
 	},
 	
 	get isDebug() {
@@ -1127,14 +1127,14 @@ QuickFolders.Util = {
   * @msg {string}: text to log 
 	*/   
 	logDebugOptional: function logDebugOptional(optionString, msg) {
-/*    let options = optionString.split(',');
+    let options = optionString.split(',');
     for (let i=0; i<options.length; i++) {
       let option = options[i];
       if (QuickFolders.Preferences.isDebugOption(option)) {
         this.logWithOption(option, ...msg);
         break; // only log once, in case multiple log switches are on
       }
-    }*/
+    }
 	},
 
 	logFocus: function logFocus(origin) {

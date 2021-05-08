@@ -727,7 +727,7 @@ var QuickFolders = {
 	  if (this.initDone) return;
     
     // from the time we passed in the window as win
-	let win = window;
+    let win = window;
     
     if (WLorig)
       QuickFolders.WL = WLorig;
@@ -739,8 +739,16 @@ var QuickFolders = {
 	  nDelay = nDelay? nDelay: 750;
 	  sWinLocation = new String(win.location);
 
+    function updateUI() {
+      console.log("update UI");
+      QuickFolders.initLicensedUI();
+    }
     // Do all the fancy background stuff:
-    win.addEventListener("QuickFolders.BackgroundUpdate", win.QuickFolders.initLicensedUI.bind(win.QuickFolders)); // prepare a listener for license updates.  
+    win.addEventListener( "QuickFolders.BackgroundUpdate", 
+      updateUI
+      // win.QuickFolders.initLicensedUI.bind(win.QuickFolders)
+    ); // prepare a listener for license updates!
+    
     await QuickFolders.Util.init();
     util.VersionProxy(); // initialize the version number using the AddonManager
 	
@@ -1017,7 +1025,7 @@ var QuickFolders = {
       QuickFolders.bookmarks.load();
     }
     
-	QuickFolders.initLicensedUI();
+    QuickFolders.initLicensedUI();
     
 	},
   

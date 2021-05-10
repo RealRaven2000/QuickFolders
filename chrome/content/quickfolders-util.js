@@ -335,7 +335,8 @@ QuickFolders.Util = {
           label: regBtn,
           accessKey: hotKey, 
           callback: function() {
-						QuickFolders.Interface.showLicenseDialog(featureName);   // was util.getMail3PaneWindow().QuickFolders.Util.Licenser.showDialog
+            // was util.getMail3PaneWindow().QuickFolders.Util.Licenser.showDialog
+						QuickFolders.Interface.showLicenseDialog(featureName);   
           },
           popup: null
         }

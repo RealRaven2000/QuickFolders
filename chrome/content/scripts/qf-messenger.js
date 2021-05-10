@@ -261,7 +261,7 @@ async function onLoad(activatedWhileWindowOpen) {
                                   />
                         <menuitem id="QuickFolders-ToolbarPopup-register"
                                   label="__MSG_qf.menuitem.quickfolders.register__"
-                                  oncommand="QuickFolders.Licenser.showDialog('mainPopup');"
+                                  oncommand="QuickFolders.Interface.showLicenseDialog('mainPopup');"
                                   class="cmd menuitem-iconic free"
                                   tagName="qfRegister"
                                   />

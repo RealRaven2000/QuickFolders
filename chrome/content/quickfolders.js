@@ -1018,14 +1018,13 @@ var QuickFolders = {
   
   initLicensedUI: function initLicensedUI() {
     console.log("initLicensedUI");
-    let State = QuickFolders.Util.licenseInfo.status,    // QuickFolders.Util.Licenser.ELicenseState,
+    let State = QuickFolders.Util.licenseInfo.status,
         hasLicense = QuickFolders.Util.hasPremiumLicense();
     QuickFolders.Util.logDebug ("initLicensedUI - hasLicense = " + hasLicense + "\n licenseInfo:", QuickFolders.Util.licenseInfo);
     if (hasLicense) {  // reset licenser (e.g. in new window)
       QuickFolders.Util.logDebug ("Premium License found - removing Animations()...");
       QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
     }
-    // Force Registration key check (if key is entered) in order to update interface
     let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
     if (menuRegister) {
       switch (State) {

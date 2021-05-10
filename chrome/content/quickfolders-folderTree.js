@@ -372,13 +372,15 @@ QuickFolders.FolderTree = {
       }
     }
 	},
+  
   refreshTree: function() {
     const util = QuickFolders.Util,
           Ci = Components.interfaces,
           theTreeView = gFolderTreeView,
           NS_MSG_ERROR_OFFLINE = 0x80550014,
           ImapNoselect    = 0x01000000; // thrown by performExpand if offline!
-    let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+    let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),
+        iCount = 0;
     
     function countSubfolders(parentFolder) {
       let childFolders;
@@ -402,29 +404,30 @@ QuickFolders.FolderTree = {
     }
     
     try {
-      // let input = { value: folderName };
       let result = prompts.confirm(window, "QuickFolders.FolderTree", "Rebuild the tree for IMAP?\n" +
         "This may take a long time, depending on the number of folders on the server."); 
       if (!result) return;
       util.ensureNormalFolderView();
-      let collapsedFolders = [];
+      let collapsedFolders = [];          
+      util.logDebug("refreshTree() starting to iterate all folders which Thunderbird sees...");
       for (let folder of QuickFolders.Util.allFoldersIterator()) {
         // open folder in tree...
         let rowIndex = theTreeView.getIndexOfFolder(folder),
             isExpanded = rowIndex ? theTreeView._rowMap[rowIndex].open : false;
         if (folder.incomingServerType == "imap" && 
             !(folder.flags & ImapNoselect)) {
+          iCount++;
           if (!isExpanded) collapsedFolders.push(folder); // remember folders that are not open, to restore later.
           let subscribableServer = folder.server.QueryInterface(Ci.nsISubscribableServer); // gSubscribableServer
           try {
             let isSelected = theTreeView.selectFolder(folder, true); // forceSelect
             // FolderPaneSelectionChange() - gFolderDisplay.show will fail if the folder is missing on Imap!
             // FolderDisplayWidget.
-            let rowIndex = theTreeView.getIndexOfFolder(folder);
-            let hasSubFolders = folder.hasSubFolders,
+            let rowIndex = theTreeView.getIndexOfFolder(folder),
+                hasSubFolders = folder.hasSubFolders,
                 canCreateSubfolders = folder.canCreateSubfolders;
             //    subCount = hasSubFolders ? countSubfolders(folder) : 0;
-            util.logDebug("theTreeView.selectFolder(" + folder.prettyName + ") => index = " + rowIndex + ", hasSubFolders = " + hasSubFolders + ", open = " + isExpanded);
+            util.logDebug("[" + folder.prettyName + "] => index = " + rowIndex + ", hasSubFolders = " + hasSubFolders + ", open = " + isExpanded);
             folder.performExpand(msgWindow);
             //let newSubCount = countSubfolders(folder);
             //if (subCount != newSubCount) {
@@ -453,7 +456,7 @@ QuickFolders.FolderTree = {
       setTimeout( function() {
         util.touch = touch; // restore update function.  
       }, 10000);
-      
+      util.logDebug("refreshTree() iterated all accessible (" + iCount + ") folders.");
     }
   }
 } ;

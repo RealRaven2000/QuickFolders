@@ -3141,7 +3141,8 @@ QuickFolders.Interface = {
               type !== 'none'  // local folders
               &&
               !(folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_INBOX)) {
-              let downloadLabel = this.getUIstring("qfDownloadAll", "Download Now") + " [" + type + "]";
+              let downloadLabel = this.getUIstring("qfDownloadAll", "Download All") + " [" + type + "]";
+              // call nsIMsgFolder.downloadAllForOffline ?
 							menuitem = createMailCmdMenuItem("folderPaneContext-downloadAll", downloadLabel);
               menupopup.appendChild(menuitem);
               topShortCuts ++ ;

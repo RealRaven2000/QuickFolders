@@ -1060,8 +1060,7 @@ QuickFolders.Util = {
 
 	logDebug: function (a) {
 		if (QuickFolders.Preferences.isDebug) {
-      let msg = "QuickFolders " + QuickFolders.Util.logTime() + "\n"
-			this.logToConsole(msg, ...arguments);  /* ...msg */
+			this.logToConsole(...arguments);  /* ...msg */
     }
 	},
 	

@@ -1080,7 +1080,7 @@ QuickFolders.Util = {
     for (let i=0; i<options.length; i++) {
       let option = options[i];
       if (QuickFolders.Preferences.isDebugOption(option)) {
-        this.logWithOption(option, ...msg);
+        this.logWithOption(option, msg);
         break; // only log once, in case multiple log switches are on
       }
     }

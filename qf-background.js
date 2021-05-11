@@ -92,19 +92,15 @@ async function main() {
       
       case "getLicenseInfo": 
         return currentLicense.info;
-        break;
       
       case "getPlatformInfo": 
         return messenger.runtime.getPlatformInfo();
-        break;
 
       case "getBrowserInfo": 
         return messenger.runtime.getBrowserInfo();
-        break;
 
       case "getAddonInfo": 
         return messenger.management.getSelf();
-        break;
 
       case "updateLicense":
         let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");

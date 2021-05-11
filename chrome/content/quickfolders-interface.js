@@ -6396,7 +6396,7 @@ QuickFolders.Interface = {
         prefs = QuickFolders.Preferences,
         mode = "",
 		    isMailPanel = false,
-        hideToolbar = prefs.getBoolPref("toolbar.onlyShowInMailWindows");
+        hideToolbar = true; // prefs.getBoolPref("toolbar.onlyShowInMailWindows"); makes no sense as it doeasn't work anyway
     if (prefs.isDebug)
       util.logDebugOptional("interface", "onDeckChange("
         + util.enumProperties(targetTab)  + ")"

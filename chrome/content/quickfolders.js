@@ -573,67 +573,6 @@ if (typeof DeferredTask == "undefined")
   var {Task} = ChromeUtils.import("resource://gre/modules/Task.jsm");  
 
 	
-// THUNDERBIRD SPECIFIC CODE!!	
-// wrap function for session store: persist / restore categories	
-var QuickFolders_PrepareSessionStore = function () {
-	const util = QuickFolders.Util,
-        model = QuickFolders.Model,
-		    CI = Components.interfaces;
-	if (!util) {
-		return;
-	}
-	if (typeof mailTabType != "undefined") { // Thunderbird
-		if (mailTabType.QuickFolders_SessionStore) return; // avoid multiple modifications.
-		mailTabType.QuickFolders_SessionStore = true;
-		// overwrite persist 
-		let orgPersist = mailTabType.modes["folder"].persistTab;
-		mailTabType.modes["folder"].persistTab = function(aTab) {
-			let retval = orgPersist(aTab);
-			if (retval) {
-				util.logDebug("persist tab category: " + aTab.QuickFoldersCategory);
-				retval.QuickFoldersCategory = aTab.QuickFoldersCategory; // add category from the tab to persisted info object
-			}
-			return retval; 
-		}
-		// overwrite restoreTab
-		let orgRestore = mailTabType.modes["folder"].restoreTab;
-		mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
-			orgRestore(aTabmail, aPersistedState);
-      debugger;
-			let txt;
-			try {
-				txt = aPersistedState.QuickFoldersCategory || "(no category)";
-		  } catch(ex) {;}
-			util.logDebug("restored tabs: " + txt);
-			// let  rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(CI.nsIRDFService),
-      //      folder = rdf.GetResource(aPersistedState.folderURI).QueryInterface(CI.nsIMsgFolder);
-			let folder = model.getMsgFolderFromUri(aPersistedState.folderURI); 
-			if (folder && aPersistedState.QuickFoldersCategory) {
-        let tabInfo, theUri;
-			  // Thunderbird only code, so it is fine to use tabInfo here:
-				for (let i = 0; i < aTabmail.tabInfo.length; i++) {
-					tabInfo = aTabmail.tabInfo[i];
-					if (tabInfo && tabInfo.folderDisplay && tabInfo.folderDisplay.view && tabInfo.folderDisplay.view.displayedFolder) {
-						theUri = tabInfo.folderDisplay.view.displayedFolder.URI;
-						if (theUri == aPersistedState.folderURI) {
-							// util.logDebug("restore category to tabInfo folder [" + theUri + "] + " +  aPersistedState.QuickFoldersCategory);
-							let cat = aPersistedState.QuickFoldersCategory;
-							if (cat) {
-								util.logDebug("restore category " + cat);
-								tabInfo.QuickFoldersCategory = aPersistedState.QuickFoldersCategory;
-							}
-							return;
-						}
-					}
-				}
-			}
-		}
-	}
-};
-window.setTimeout(function () {
-  QuickFolders_PrepareSessionStore();
-}, 6000);
-
 /* GLOBAL VARIABLES */
 var QuickFolders_globalHidePopupId="",
     QuickFolders_globalLastChildPopup=null,
@@ -907,7 +846,7 @@ var QuickFolders = {
 				else
 				  cats = tab.QuickFoldersCategory;
 				
-				util.logDebug('init: setting categories to ' + cats);
+				util.logDebug("init: setting categories to " + cats);
 				if (tabMode == "folder" || tabMode == "message") {
 					// restore categories of first tab; set to "all" if not set
 					QI.currentActiveCategories = cats;
@@ -961,11 +900,7 @@ var QuickFolders = {
 
 		// moved into Version Proxy!
 		// that.Util.FirstRun.init();
-
 		that.addTabEventListener();
-		
-		let versionComparator = Cc["@mozilla.org/xpcom/version-comparator;1"]
-                            .getService(Ci.nsIVersionComparator);
 		
 		QuickFolders.initListeners();
 		
@@ -1011,7 +946,6 @@ var QuickFolders = {
     if (QuickFolders.bookmarks) {
       QuickFolders.bookmarks.load();
     }
-    
     QuickFolders.initLicensedUI();
     
 	},
@@ -2115,11 +2049,6 @@ var QuickFolders = {
 
 	},
 
-	// for persistent category selection, add a tabmail listener
-	addTabMailListener: function addTabMailListener() {
-		
-	},
-	
   addFolderPaneListener: function addFolderPaneListener() {
     if (!this.folderPaneListen) {
       let menu = document.getElementById('folderPaneContext');
@@ -2163,6 +2092,75 @@ var QuickFolders = {
   }
 }; // QuickFolders main object
 
+
+// wrap function for session store: persist / restore categories	
+QuickFolders.prepareSessionStore = function () {
+	const util = QuickFolders.Util,
+        model = QuickFolders.Model,
+		    CI = Components.interfaces;
+  util.logDebug("=============================\nPreparing Session Store - for QuickFolders Categories...\n========================");
+	if (!util) {
+		return;
+	}
+	if (typeof mailTabType == "undefined") { // Thunderbird - defined in mailTab.js
+    return;
+  }
+  
+  if (mailTabType.QuickFolders_SessionStore) return; // avoid multiple modifications.
+  mailTabType.QuickFolders_SessionStore = {};
+  // overwrite persist 
+  let orgPersist = mailTabType.modes["folder"].persistTab;
+  mailTabType.QuickFolders_SessionStore.persistTab = orgPersist;
+  mailTabType.modes["folder"].persistTab = function(aTab) {
+    let retval = orgPersist(aTab);
+    if (retval) {
+      util.logDebug("persist tab category: " + aTab.QuickFoldersCategory);
+      retval.QuickFoldersCategory = aTab.QuickFoldersCategory; // add category from the tab to persisted info object
+    }
+    return retval; 
+  }
+  // overwrite restoreTab
+  let orgRestore = mailTabType.modes["folder"].restoreTab;
+  mailTabType.QuickFolders_SessionStore.restoreTab = orgRestore;
+  mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
+    orgRestore(aTabmail, aPersistedState);
+    debugger;
+    let txt;
+    try {
+      txt = aPersistedState.QuickFoldersCategory || "(no category)";
+    } catch(ex) {;}
+    util.logDebug("restored tabs: " + txt);
+    // let  rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(CI.nsIRDFService),
+    //      folder = rdf.GetResource(aPersistedState.folderURI).QueryInterface(CI.nsIMsgFolder);
+    let folder = model.getMsgFolderFromUri(aPersistedState.folderURI); 
+    if (folder && aPersistedState.QuickFoldersCategory) {
+      let tabInfo, theUri;
+      // Thunderbird only code, so it is fine to use tabInfo here:
+      for (let i = 0; i < aTabmail.tabInfo.length; i++) {
+        tabInfo = aTabmail.tabInfo[i];
+        if (tabInfo && tabInfo.folderDisplay && tabInfo.folderDisplay.view && tabInfo.folderDisplay.view.displayedFolder) {
+          theUri = tabInfo.folderDisplay.view.displayedFolder.URI;
+          if (theUri == aPersistedState.folderURI) {
+            // util.logDebug("restore category to tabInfo folder [" + theUri + "] + " +  aPersistedState.QuickFoldersCategory);
+            let cat = aPersistedState.QuickFoldersCategory;
+            if (cat) {
+              util.logDebug("restore category " + cat);
+              tabInfo.QuickFoldersCategory = aPersistedState.QuickFoldersCategory;
+            }
+            return;
+          }
+        }
+      }
+    }
+  }
+	
+};
+
+QuickFolders.restoreSessionStore = function() {
+  if (!mailTabType.QuickFolders_SessionStore) return;
+  mailTabType.modes["folder"].persistTab = QuickFolders_SessionStore.persistTab;
+  mailTabType.modes["folder"].restoreTab = QuickFolders_SessionStore.restoreTab;
+}
 
 
 function QuickFolders_MyEnsureFolderIndex(tree, msgFolder) {

@@ -14,7 +14,7 @@
 
 var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
-// removed UI functionde from QuickFolders.Licenser
+// removed UI function from QuickFolders.Licenser
 var Register = {
   l10n: function() {
     QuickFolders.Util.localize(document);

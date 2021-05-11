@@ -735,8 +735,6 @@ QuickFolders.Options = {
         getElement = wd.getElementById.bind(wd),
         btnLicense = getElement("btnLicense"),
         proTab = getElement("QuickFolders-Pro");
-    let menuProLicense = elem3pane('QuickFolders-ToolbarPopup-register'),
-        quickFoldersSkipFolder = elem3pane('quickFoldersSkipFolder');
     // old call to decryptLicense was here
     // 1 - sanitize License
     // 2 - validate license
@@ -758,13 +756,11 @@ QuickFolders.Options = {
           btnLicense.collapsed = true;
         replaceCssClass(proTab, 'paid');
         replaceCssClass(btnLicense, 'paid');
-        replaceCssClass(menuProLicense, 'paid');
         break;
       case "Expired":
         QI.TitleLabel.label = options.labelLicenseBtn(btnLicense, "renew");
         replaceCssClass(proTab, 'expired');
         replaceCssClass(btnLicense, 'expired');
-        replaceCssClass(menuProLicense, 'expired');
         btnLicense.collapsed = false;
         break;
       default:
@@ -772,7 +768,6 @@ QuickFolders.Options = {
         btnLicense.collapsed = false;
         replaceCssClass(btnLicense, 'register');
         replaceCssClass(proTab, 'free');
-        replaceCssClass(menuProLicense, 'free');
     }
     
     options.configExtra2Button();

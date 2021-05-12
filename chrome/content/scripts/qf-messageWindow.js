@@ -11,7 +11,6 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickmove-set
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-model.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folder-category.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/options.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
@@ -193,10 +192,21 @@ function onLoad(activatedWhileWindowOpen) {
   // window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
   window.QuickFolders.Util.init();
   const QI = window.QuickFolders.Interface;
+  window.addEventListener( "QuickFolders.BackgroundUpdate.updateUserStyles", QI.updateUserStyles.bind(QI));
   window.addEventListener( "QuickFolders.BackgroundUpdate.updateCurrentFolderBar", QI.updateCurrentFolderBar.bind(QI));
-  window.QuickFolders.initDelayed(WL);
+
 }
 
 function onUnload(isAddOnShutDown) {
+  window.removeEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", window.QuickFolders.Interface.updateUserStyles);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateCurrentFolderBar", window.QuickFolders.Interface.updateCurrentFolderBar);
 }
+
+
+window.document.addEventListener('DOMContentLoaded', 
+  () => {
+    window.QuickFolders.initSingleMsg(WL);
+    window.QuickFolders.Interface.updateCurrentFolderBar();    
+  }, 
+  { once: true }
+);

@@ -716,52 +716,61 @@ var QuickFolders = {
 			
 			this.initDone=true;
 		}
-		else {
-		  try {
-        let doc = win.document; // in case a stand alone messageWindow is opened (e..g double clicking an eml file)
-        let qfToolbar = QI.Toolbar;
-        
-        // if (qfToolbar) qfToolbar.style.display = 'none';
-        // doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
-
-        let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
-
-        util.logDebug ("DIFFERENT window type(messengerWindow): "
-            + wt
-            + "\ndocument.title: " + doc.title )
-        /**** SINGLE MESSAGE WINDOWS ****/
-        if (wt === 'mail:messageWindow') {
-          util.logDebug('Calling displayNavigationToolbar()');
-          QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
-          // set current folder tab label
-          if (win.arguments) {
-            let args = win.arguments,
-                fld;
-            // from messageWindow.js actuallyLoadMessage()
-            if (args.length && args[0] instanceof Components.interfaces.nsIMsgDBHdr) {
-              let msgHdr= args[0];
-              fld = msgHdr.folder;
-            }
-            
-            let cF = QuickFolders.Interface.CurrentFolderTab;
-            // force loading main stylesheet (for single message window)
-            QI.ensureStyleSheetLoaded('quickfolders-layout.css', 'QuickFolderStyles');
-            if (fld)
-              QI.initCurrentFolderTab(cF, fld);
-            QI.updateUserStyles();
-          }
-        }
-        else {
-          util.logDebug('window type : ' + wt);
-        }
-		  }
-		  catch(e) { 
-        if (prefs.isDebug)
-          util.logException('QuickFolders.initDelayed()', e) ;
-      }  //-- always thrown when options dialog is up!
-		}
 	} ,
 
+
+  initSingleMsg: async function(WLorig) {
+    const prefs = QuickFolders.Preferences,
+					util = QuickFolders.Util,
+					QI = QuickFolders.Interface;
+    let win = window;
+    
+    if (WLorig)
+      QuickFolders.WL = WLorig;    
+    
+    try {
+      let doc = win.document; // in case a stand alone messageWindow is opened (e..g double clicking an eml file)
+      // let qfToolbar = QI.Toolbar;
+      
+      // if (qfToolbar) qfToolbar.style.display = 'none';
+      // doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
+
+      let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
+      util.logDebug ("initSingleMsg() window type(messengerWindow): "
+          + wt
+          + "\ndocument.title: " + doc.title )
+
+      if (wt === 'mail:messageWindow') {
+        util.logDebug('Calling displayNavigationToolbar()');
+        QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
+        // set current folder tab label
+        if (win.arguments) {
+          let args = win.arguments,
+              fld;
+          // from messageWindow.js actuallyLoadMessage()
+          if (args.length && args[0] instanceof Components.interfaces.nsIMsgDBHdr) {
+            let msgHdr= args[0];
+            fld = msgHdr.folder;
+          }
+          
+          let cF = QuickFolders.Interface.CurrentFolderTab;
+          // force loading main stylesheet (for single message window)
+          QI.ensureStyleSheetLoaded('quickfolders-layout.css', 'QuickFolderStyles');
+          if (fld)
+            QI.initCurrentFolderTab(cF, fld);
+          QI.updateUserStyles();
+        }
+      }
+      else {
+        util.logDebug('window type : ' + wt);
+      }
+    }
+    catch(e) { 
+      if (prefs.isDebug)
+        util.logException('QuickFolders.initDelayed()', e) ;
+    }  //-- always thrown when options dialog is up!
+  },
+  
 	isCorrectWindow: function isCorrectWindow(win) {
 		try {
 			return win.document.getElementById('messengerWindow').getAttribute('windowtype') === "mail:3pane";

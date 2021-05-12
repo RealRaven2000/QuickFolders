@@ -6287,8 +6287,6 @@ QuickFolders.Interface = {
         return;
       }
 
-      // doc = (mail3PaneWindow ? mail3PaneWindow.document : QuickFolders.doc);
-
       let tabMode = QuickFolders.Interface.CurrentTabMode,
           currentFolderBar = doc.getElementById(
                                (selector=='messageWindow') ?

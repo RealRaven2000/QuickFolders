@@ -644,17 +644,17 @@ var QuickFolders = {
     }
 
 		if (mainWindow) {
-			QuickFolders.doc = mainWindow.document;
-			QuickFolders.win = mainWindow;
+			QuickFolders_globalDoc = mainWindow.document;
+			QuickFolders_globalWin = mainWindow;
 		}
 		else {
-			QuickFolders.doc = document;
-			QuickFolders.win = window;
+			QuickFolders_globalDoc = document;
+			QuickFolders_globalWin = window;
 		}
-		QuickFolders_globalWin = QuickFolders.win;
-		QuickFolders_globalDoc = QuickFolders.doc;
+    this.doc = QuickFolders_globalDoc;
+    this.win = QuickFolders_globalWin;
 
-		util.logDebug ("initDocAndWindow\nQuickFolders.doc = " + QuickFolders.doc.location + "\nthis.doc = " + this.doc.location);
+		util.logDebug ("initDocAndWindow()\nQuickFolders_globalDoc = " + QuickFolders_globalDoc.location);
 	},
 
 	initDelayed: async function initDelayed(WLorig) {
@@ -729,12 +729,11 @@ var QuickFolders = {
       QuickFolders.WL = WLorig;    
     
     try {
-      let doc = win.document; // in case a stand alone messageWindow is opened (e..g double clicking an eml file)
       // let qfToolbar = QI.Toolbar;
-      
       // if (qfToolbar) qfToolbar.style.display = 'none';
       // doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
-
+      
+      let doc = win.document; // in case a stand alone messageWindow is opened (e..g double clicking an eml file)
       let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
       util.logDebug ("initSingleMsg() window type(messengerWindow): "
           + wt
@@ -2467,8 +2466,8 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	if (prefs.isFocusPreview && !(QuickFolders.Interface.getThreadPane().collapsed)) {
     util.logDebugOptional("folders.select", 'setFocusThreadPane()');
 		QuickFolders.Interface.setFocusThreadPane();
-		QuickFolders.doc.commandDispatcher.advanceFocus();
-		QuickFolders.doc.commandDispatcher.rewindFocus();
+		document.commandDispatcher.advanceFocus();
+		document.commandDispatcher.rewindFocus();
 	}
 	
 	// speed up the highlighting... - is this only necessary on MAC ?

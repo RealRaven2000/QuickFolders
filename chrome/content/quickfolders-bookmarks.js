@@ -19,9 +19,6 @@ QuickFolders.bookmarks = {
   get isDebug() {
     return (QuickFolders.Preferences.isDebugOption('bookmarks'));
   },
-  get document() {
-    return QuickFolders.doc;
-  },
   get hasEntries() {
     return (this.Entries.length > 0); 
   },

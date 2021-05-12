@@ -648,6 +648,12 @@ QuickFolders.Interface = {
 		}
 	} ,
 
+  // more comprehensive function to update both folder look and all styles (will be called from Options dialog via event listener)
+  updateFoldersUI: function () {
+    QuickFolders.Interface.updateFolders(true, false);
+		QuickFolders.Interface.updateUserStyles();
+  },
+
 	updateCurrentFolderBar: function updateCurrentFolderBar(styleSheet) {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
@@ -887,22 +893,18 @@ QuickFolders.Interface = {
 
 		// update the theme type - based on theme selection in options window, if this is open, else use the id from preferences
 		prefs.CurrentThemeId = themeSelector ? themeSelector.value : prefs.CurrentThemeId;
-		let style =  prefs.ColoredTabStyle,
-		    // refresh main window
-		    mail3PaneWindow = util.getMail3PaneWindow();
-		// we need to try and get at the main window context of QuickFolders, not the prefwindow instance!
-		if (mail3PaneWindow) {
-			let QI = mail3PaneWindow.QuickFolders.Interface;
-      if (!minimal) {
-        logCSS("updateMainWindow: update Folders…");
-        QI.updateFolders(true, false);
-      }
-			logCSS("updateMainWindow: update User Styles…");
-			QI.updateUserStyles();
-		}
-		else {
-			logCSS("updateMainWindow: no mail3PaneWindow found!");
-		}
+		let style =  prefs.ColoredTabStyle; // unused?
+    
+    // refresh main windows
+    if (!minimal) {
+      logCSS("updateMainWindow: update Folders UI…");
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // updates both folders - updateFolders(true, false) - and user styles
+    }
+    else {
+      logCSS("updateMainWindow: update User Styles…");
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateUserStyles" }); // updates only user styles
+    }
+    
     if (QuickFolders.bookmarks) {
       QuickFolders.bookmarks.load();
       util.logDebug ('bookmarks.load complete.');

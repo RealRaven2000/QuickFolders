@@ -63,13 +63,14 @@ QuickFolders.Util = {
 		const onBackgroundUpdates = (data) => {
 			if (data.licenseInfo) {
 				QuickFolders.Util.licenseInfo = data.licenseInfo;
-
+        QuickFolders.Util.logDebugOptional("notifications", "onBackgroundUpdates - dispatching licenseInfo ");
 				const event = new CustomEvent("QuickFolders.BackgroundUpdate");
 				window.dispatchEvent(event); 
 			}
 			// Event forwarder - take event from background script and forward to windows with appropriate listeners
 			if (data.event) {
 				if (!data.hasOwnProperty("window") || data.window.includes(window.document.location.href.toString())) {
+          QuickFolders.Util.logDebugOptional("notifications", "onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate." + data.event);
 					const event = new CustomEvent(`QuickFolders.BackgroundUpdate.${data.event}`);
 					window.dispatchEvent(event); 
 				}				

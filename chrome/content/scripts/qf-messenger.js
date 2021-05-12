@@ -297,8 +297,8 @@ async function onLoad(activatedWhileWindowOpen) {
 `);
 
 
-//------------------------------------ overlay current folder (navigation bar)
-WL.injectElements(`
+  //------------------------------------ overlay current folder (navigation bar)
+  WL.injectElements(`
 <hbox id="messagepaneboxwrapper">
   <vbox id="messagepanebox">
 
@@ -429,10 +429,9 @@ WL.injectElements(`
 `);
 
 
-
-//-----------------------------
-// qf-tools69.xul
-WL.injectElements(`
+  //-----------------------------
+  // qf-tools69.xul
+  WL.injectElements(`
     
 <hbox id="QuickFolders-left">
   <vbox id="QuickFolders-Tools-Pane" insertafter="QuickFolders-LabelBox">
@@ -508,14 +507,11 @@ WL.injectElements(`
   window.QuickFolders.Util.notifyTools.enable();
   await window.QuickFolders.Util.init();
   window.addEventListener( "QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
-  window.addEventListener( "QuickFolders.BackgroundUpdate.updateFoldersUI", () => {
-    QuickFolders.Interface.updateFolders(true, false);
-		QuickFolders.Interface.updateUserStyles();
-  });
-  window.addEventListener( "QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", () => {
-    QuickFolders.Interface.updateQuickFoldersLabel();
-  });
-  
+  const QI = window.QuickFolders.Interface;
+  window.addEventListener( "QuickFolders.BackgroundUpdate.updateFoldersUI", QI.updateFoldersUI.bind(QI));
+  window.addEventListener( "QuickFolders.BackgroundUpdate.updateUserStyles", QI.updateUserStyles.bind(QI));
+  window.addEventListener( "QuickFolders.BackgroundUpdate.updateCurrentFolderBar", QI.updateCurrentFolderBar.bind(QI));
+  window.addEventListener( "QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", QI.updateQuickFoldersLabel.bind(QI));
   
   window.QuickFolders.initDelayed(WL);
   
@@ -524,7 +520,11 @@ WL.injectElements(`
 function onUnload(isAddOnShutDown) {
   // Disable the global notify notifications from background.
   window.QuickFolders.Util.notifyTools.disable();
-  window.removeEventListener( "QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
+  window.removeEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
+  window.removeEventListener("QuickFolders.BackgroundUpdate.updateFoldersUI", window.QuickFolders.Interface.updateFoldersUI);
+  window.removeEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", window.QuickFolders.Interface.updateUserStyles);
+  window.removeEventListener("QuickFolders.BackgroundUpdate.updateCurrentFolderBar", window.QuickFolders.Interface.updateCurrentFolderBar);
+  window.removeEventListener("QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", window.QuickFolders.Interface.updateQuickFoldersLabel);
   
   // restore global overwritten functions 
   try {

@@ -106,12 +106,21 @@ async function main() {
         // Broadcast main windows to run updateQuickFoldersLabel
         messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
         break;
+
+      case "updateUserStyles":
+        // Broadcast main windows to update their styles (and maybe single message windows???)
+        messenger.NotifyTools.notifyExperiment({event: "updateUserStyles"});
+        break;
         
       case "updateFoldersUI": // replace observer
         messenger.NotifyTools.notifyExperiment(
           { event: "updateFoldersUI", 
             window: ["chrome://messenger/content/messenger.xhtml"]}
         );
+        break;
+        
+      case "updateCurrentFolderBar":
+        messenger.NotifyTools.notifyExperiment({event: "updateCurrentFolderBar"});
         break;
 
       case "updateLicense":

@@ -14,19 +14,19 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js"
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/options.js", window, "UTF-8");
 
 function onLoad(activatedWhileWindowOpen) {
-    let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
-    layout.setAttribute("title", "QuickFolderStyles");
-    
-    let layout1 = WL.injectCSS("chrome://quickfolders/content/quickfolders-palettes.css");
-    layout1.setAttribute("title", "QuickFolderPalettes");
-    
-    WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
+  let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
+  layout.setAttribute("title", "QuickFolderStyles");
+  
+  let layout1 = WL.injectCSS("chrome://quickfolders/content/quickfolders-palettes.css");
+  layout1.setAttribute("title", "QuickFolderPalettes");
+  
+  WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
+  WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
+  WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
 
-    
+  
 
-    WL.injectElements(`
+  WL.injectElements(`
     <menupopup id="QuickFolders-currentContextMenuSingle">
     <menuitem  label="Thunderbird12-currentFolderSingleMessage" />
 </menupopup>
@@ -189,10 +189,14 @@ function onLoad(activatedWhileWindowOpen) {
 `);
 */
         
-    window.QuickFolders.Util.logDebug('Adding messageWindow...');
-    // window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
-    window.QuickFolders.initDelayed();
+  window.QuickFolders.Util.logDebug('Adding messageWindow...');
+  // window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
+  window.QuickFolders.Util.init();
+  const QI = window.QuickFolders.Interface;
+  window.addEventListener( "QuickFolders.BackgroundUpdate.updateCurrentFolderBar", QI.updateCurrentFolderBar.bind(QI));
+  window.QuickFolders.initDelayed(WL);
 }
 
 function onUnload(isAddOnShutDown) {
+  window.removeEventListener("QuickFolders.BackgroundUpdate.updateCurrentFolderBar", window.QuickFolders.Interface.updateCurrentFolderBar);
 }

@@ -723,12 +723,9 @@ QuickFolders.Options = {
       if (addedClass!='expired')  el.classList.remove('expired');
       if (addedClass!='free') el.classList.remove('free');
     }
-    const util = QuickFolders.Util;
-    const result = QuickFolders.Util.licenseInfo.status;
-    
-    const options = QuickFolders.Options,
-          prefs = QuickFolders.Preferences,
-          QI = util.getMail3PaneWindow().QuickFolders.Interface; // main window
+    const util = QuickFolders.Util,
+          options = QuickFolders.Options,
+          prefs = QuickFolders.Preferences; 
 
     let wd = window.document,
         getElement = wd.getElementById.bind(wd),
@@ -740,10 +737,11 @@ QuickFolders.Options = {
     // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
     this.updateLicenseOptionsUI();
     // this the updating the first button on the toolbar via the main instance
-    //  use notify tools for updating the label QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" });
     // we use the quickfolders label to show if License needs renewal!
+    // use notify tools for updating the [QuickFolders] label 
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" }); // QI.updateQuickFoldersLabel();
     // 4 - update buy / extend button or hide it.
+    let result = QuickFolders.Util.licenseInfo.status;
     switch(result) {
       case "Valid":
         let today = new Date(),
@@ -759,7 +757,7 @@ QuickFolders.Options = {
         replaceCssClass(btnLicense, 'paid');
         break;
       case "Expired":
-        QI.TitleLabel.label = options.labelLicenseBtn(btnLicense, "renew");
+        options.labelLicenseBtn(btnLicense, "renew");
         replaceCssClass(proTab, 'expired');
         replaceCssClass(btnLicense, 'expired');
         btnLicense.collapsed = false;
@@ -861,11 +859,7 @@ QuickFolders.Options = {
     document.getElementById('QuickFolders-Options-CustomBottomRadius').value = "0";
     prefs.setIntPref('style.corners.customizedTopRadiusN', 4);
     prefs.setIntPref('style.corners.customizedBottomRadiusN', 0);
-    let main = QuickFolders.Util.getMail3PaneWindow();
-    if (main) {
-      const QI = main.QuickFolders.Interface; 
-      QI.updateUserStyles();
-    }
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateUserStyles" });  // main.QI.updateUserStyles
   },
 
   colorPickerTranslucent: function colorPickerTranslucent(picker) {
@@ -946,14 +940,9 @@ QuickFolders.Options = {
     //if (withUpdate)
     //  QuickFolders.Interface.updateMainWindow();
     // need to update current folder bar
-    if (withUpdate)
-      this.updateCurrentFolderBar();
-  },
-  
-  updateCurrentFolderBar: function updateCurrentFolderBar() {
-    const util = QuickFolders.Util;
-    // call update in main window
-    util.getMail3PaneWindow().QuickFolders.Interface.updateCurrentFolderBar();
+    if (withUpdate) {
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCurrentFolderBar" });  // main.QI.updateCurrentFolderBar
+    }
   },
   
   styleUpdate: function styleUpdate(elementName, elementStyle, styleValue, label ) {

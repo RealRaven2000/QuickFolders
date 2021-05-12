@@ -170,6 +170,7 @@ pref("extensions.quickfolders.debug.listeners.folder", false);
 pref("extensions.quickfolders.debug.mailTabs", false);
 pref("extensions.quickfolders.debug.mouseclicks", false);
 pref("extensions.quickfolders.debug.navigation", false);
+pref("extensions.quickfolders.debug.notifications", false); // debug notifyTools
 pref("extensions.quickfolders.debug.options", false);
 pref("extensions.quickfolders.debug.popupmenus", false);
 pref("extensions.quickfolders.debug.popupmenus.verticalOffset",0);

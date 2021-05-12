@@ -950,6 +950,7 @@ var QuickFolders = {
     
 	},
   
+  // all main window elements that change depending on license status (e.g. display "Expired" instead of QuickFolders label)
   initLicensedUI: function initLicensedUI() {
     console.log("initLicensedUI");
     let State = QuickFolders.Util.licenseInfo.status,
@@ -977,7 +978,7 @@ var QuickFolders = {
           menuRegister.classList.add('free');
       }
     }
-    QuickFolders.Interface.updateQuickFoldersLabel(); // thjis is also called when udpating the main toolbar with QI.updateFolders()
+    QuickFolders.Interface.updateQuickFoldersLabel.call(QuickFolders.Interface); // this is also called when udpating the main toolbar with QI.updateFolders()
   } ,
 
 	sayHello: function sayHello() {

@@ -94,7 +94,7 @@ QuickFolders.Options = {
       Services.prompt.alert(null,"QuickFolders","Error in QuickFolders:\n" + e);
     };
     this.rememberLastTab();
-    QuickFolders.Interface.updateObserver(); // update the main window layout
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // QI.updateObserver
     return true;
   } ,
   
@@ -724,7 +724,6 @@ QuickFolders.Options = {
       if (addedClass!='free') el.classList.remove('free');
     }
     const util = QuickFolders.Util;
-    const elem3pane = util.getMail3PaneWindow().QuickFolders.Util.$;
     const result = QuickFolders.Util.licenseInfo.status;
     
     const options = QuickFolders.Options,
@@ -741,6 +740,7 @@ QuickFolders.Options = {
     // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
     this.updateLicenseOptionsUI();
     // this the updating the first button on the toolbar via the main instance
+    //  use notify tools for updating the label QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFolderLabel" });
     QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
     // 4 - update buy / extend button or hide it.
     switch(result) {
@@ -1877,8 +1877,8 @@ QuickFolders.Options = {
 
         }
         if (isLayoutModified) { // instant visual feedback
-          // QI.updateMainWindow(true);
-          QI.updateObserver(); //  update the main window layout
+          //  update the main window layout
+          QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // QI.updateObserver();
         }
         
 			}

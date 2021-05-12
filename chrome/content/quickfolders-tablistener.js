@@ -17,7 +17,7 @@ QuickFolders.TabListener = {
             tabmail = document.getElementById("tabmail"),
             idx = QuickFolders.tabContainer.selectedIndex;
         idx = idx || 0;
-        util.logDebugOptional("listeners.tabmail", "TabListener.select() - tab index = " + idx);
+        util.logDebugOptional("listeners.tabmail,categories", "TabListener.select() - tab index = " + idx);
 				let tabs = tabmail.tabInfo || tabmail.tabOwners, // Pb: tabOwners
             info = util.getTabInfoByIndex(tabmail, idx);  // tabs[idx]
 				if (!info)
@@ -25,7 +25,7 @@ QuickFolders.TabListener = {
         let tabMode = util.getTabMode(info);
 				
 				let isToggleToolbar = false,
-				    toolbarElement = isToggleToolbar ? document.getElementById("QuickFolders-Toolbar") : null;
+				    toolbarElement = isToggleToolbar ? QuickFolders.Toolbar : null;
         util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode + "\nisToggleToolbar = " + isToggleToolbar);
 				
 				if (isToggleToolbar) {
@@ -35,8 +35,17 @@ QuickFolders.TabListener = {
 					toolbarElement.collapsed = isCollapsed;
 				}
 				
+         // restore the category
+        if (info.QuickFoldersCategory) {
+          util.logDebugOptional("listeners.tabmail,categories", "tab info - setting QuickFolders category: " + info.QuickFoldersCategory);
+          let isFolderUpdated = QI.selectCategory(info.QuickFoldersCategory, false);
+          util.logDebugOptional("listeners.tabmail", "After QuickFoldersCategory - isFolderUpdated =" + isFolderUpdated );
+          // do not select folder if selectCategory had to be done
+          if (!isFolderUpdated)
+            QI.setFolderSelectTimer();	
+        }
+        
         if (tabMode == 'message') {
-          // Tb / Pb
           let msg = null, fld = null;
           if (info.messageDisplay)
             msg = info.messageDisplay.displayedMessage;
@@ -47,24 +56,16 @@ QuickFolders.TabListener = {
             // force reselection when we return to a folder tab
             QI.lastTabSelected = null;
             QI.setTabSelectTimer();
-            return;
           }
-          util.logDebug("TabListener single message - could not determine displayed Message message in " + util.Application);
+          else 
+            util.logDebug("TabListener single message - could not determine currently displayed Message.");
         }
-        else {
-          // restore the category
-          if (info.QuickFoldersCategory) {
-            util.logDebugOptional("listeners.tabmail", "tab info - setting QuickFolders category: " + info.QuickFoldersCategory);
-            let isFolderUpdated = QI.selectCategory(info.QuickFoldersCategory, false);
-            util.logDebugOptional("listeners.tabmail", "After QuickFoldersCategory - isFolderUpdated =" + isFolderUpdated );
-            // do not select folder if selectCategory had to be done
-            if (!isFolderUpdated)
-              QI.setFolderSelectTimer();	
-          }
+        if (tabMode == 'message' || tabMode == 'folder')
+        {
           // Do not switch to current folder's category, if current tab has another selected!
-          else {
-            // there is no need for this if it is not a mail tab.
+          if (!info.QuickFoldersCategory) {
             if (tabMode == "folder") {
+              // there is no need for this if it is not a mail tab.
               QI.setTabSelectTimer();
             }
             else {

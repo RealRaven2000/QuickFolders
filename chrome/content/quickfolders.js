@@ -912,14 +912,14 @@ var QuickFolders = {
 		if (QuickFolders.FolderTree)
 			QuickFolders.FolderTree.init();
 
-		let observerService = Cc["@mozilla.org/observer-service;1"].getService(Ci.nsIObserverService);
-
-		observerService.addObserver({
-			observe: function() {
-				QuickFolders.Interface.updateFolders(true, false);
-				QuickFolders.Interface.updateUserStyles();
-			}
-		},"quickfolders-options-saved", false);
+    // old observer - replaced with notifyTools command "updateFoldersUI"
+		// let observerService = Cc["@mozilla.org/observer-service;1"].getService(Ci.nsIObserverService);
+		// observerService.addObserver({
+			// observe: function() {
+				// QuickFolders.Interface.updateFolders(true, false);
+				// QuickFolders.Interface.updateUserStyles();
+			// }
+		// },"quickfolders-options-saved", false);
 
 		that.Util.logDebug("call displayNavigationToolbar.");
 		// remember whether toolbar was shown, and make invisible or initialize if necessary

@@ -740,8 +740,9 @@ QuickFolders.Options = {
     // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
     this.updateLicenseOptionsUI();
     // this the updating the first button on the toolbar via the main instance
-    //  use notify tools for updating the label QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFolderLabel" });
-    QI.updateQuickFoldersLabel(); // we use the quickfolders label to show if License needs renewal!
+    //  use notify tools for updating the label QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" });
+    // we use the quickfolders label to show if License needs renewal!
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" }); // QI.updateQuickFoldersLabel();
     // 4 - update buy / extend button or hide it.
     switch(result) {
       case "Valid":

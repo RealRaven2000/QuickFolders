@@ -101,6 +101,18 @@ async function main() {
 
       case "getAddonInfo": 
         return messenger.management.getSelf();
+        
+      case "updateQuickFoldersLabel":
+        // Broadcast main windows to run updateQuickFoldersLabel
+        messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
+        break;
+        
+      case "updateFoldersUI": // replace observer
+        messenger.NotifyTools.notifyExperiment(
+          { event: "updateFoldersUI", 
+            window: ["chrome://messenger/content/messenger.xhtml"]}
+        );
+        break;
 
       case "updateLicense":
         let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref("extensions.quickfolders.licenser.forceSecondaryIdentity");

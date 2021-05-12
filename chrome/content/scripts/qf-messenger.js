@@ -508,6 +508,14 @@ WL.injectElements(`
   window.QuickFolders.Util.notifyTools.enable();
   await window.QuickFolders.Util.init();
   window.addEventListener( "QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
+  window.addEventListener( "QuickFolders.BackgroundUpdate.updateFoldersUI", () => {
+    QuickFolders.Interface.updateFolders(true, false);
+		QuickFolders.Interface.updateUserStyles();
+  });
+  window.addEventListener( "QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", () => {
+    QuickFolders.Interface.updateQuickFoldersLabel();
+  });
+  
   
   window.QuickFolders.initDelayed(WL);
   

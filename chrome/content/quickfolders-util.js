@@ -67,6 +67,14 @@ QuickFolders.Util = {
 				const event = new CustomEvent("QuickFolders.BackgroundUpdate");
 				window.dispatchEvent(event); 
 			}
+			// Event forwarder - take event from background script and forward to windows with appropriate listeners
+			if (data.event) {
+				if (!data.hasOwnProperty("window") || data.window.includes(window.document.location.href.toString())) {
+					const event = new CustomEvent(`QuickFolders.BackgroundUpdate.${data.event}`);
+					window.dispatchEvent(event); 
+				}				
+			}      
+      
 		}   
 		QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
 		QuickFolders.Util.licenseInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseInfo" });

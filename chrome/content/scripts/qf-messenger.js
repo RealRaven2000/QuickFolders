@@ -148,17 +148,23 @@ function onLoad(activatedWhileWindowOpen) {
                               label="Debug">
                             <menupopup class="dbgMenu">
                             
-                                <menuitem id="QuickFolders-ToolbarPopup-dbg1"
-                                                    label="Test Tree only Icons"
-                                                    oncommand="QuickFolders.Interface.testTreeIcons();" 
-                                                    class="menuitem-iconic"
-                                                    />
-                                                    
-                                <menuitem id="QuickFolders-ToolbarPopup-dbg2"
-                                                    label="Load FolderTree Dictionary"
-                                                    oncommand="QuickFolders.FolderTree.loadDictionary();" 
-                                                    class="menuitem-iconic"
-                                                    />														
+                              <menuitem id="QuickFolders-ToolbarPopup-dbg1"
+                                                  label="Test Tree only Icons"
+                                                  oncommand="QuickFolders.Interface.testTreeIcons();" 
+                                                  class="menuitem-iconic"
+                                                  />
+                                                  
+                              <menuitem id="QuickFolders-ToolbarPopup-dbg2"
+                                                  label="Load FolderTree Dictionary"
+                                                  oncommand="QuickFolders.FolderTree.loadDictionary();" 
+                                                  class="menuitem-iconic"
+                                                  />
+                              <menuitem id="QuickFolders-ToolbarPopup-dbg2"
+                                                  label="Force Tree Refresh"
+                                                  oncommand="QuickFolders.FolderTree.refreshTree();" 
+                                                  class="menuitem-iconic"
+                                                  />
+                                                  
                               <menuitem id="QuickFolders-ToolbarPopup-dbg3"
                                           label="Platform info - aboutHost()"
                                                     oncommand="QuickFolders.Util.aboutHost();"
@@ -520,7 +526,7 @@ function onUnload(isAddOnShutDown) {
     window.QuickFolders.removeFolderPaneListener();
   }
   catch(ex) {
-    console.logException(ex);
+    console.log(ex);
   }
   // remove icon patch
   let treeView = window.gFolderTreeView;

@@ -39,7 +39,8 @@ QuickFolders.FilterWorker = {
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           prefs = QuickFolders.Preferences,
-		      notificationId = 'mail-notification-box';
+		      notificationId = 'mail-notification-box',
+			    notificationKey = "quickfolders-filter";
           
     let notifyBox,
 				isQuickFilters = typeof window.quickFilters !== 'undefined';
@@ -48,7 +49,6 @@ QuickFolders.FilterWorker = {
 		
 		if (!isQuickFilters) { // if quickFilters is installed, we omit all notifications and leave it to that Add-on to handle
 
-			let notificationKey = "quickfolders-filter";
 
       if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
         notifyBox = specialTabs.msgNotificationBar;

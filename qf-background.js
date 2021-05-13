@@ -88,6 +88,9 @@ async function main() {
   messenger.WindowListener.registerWindow("chrome://messenger/content/SearchDialog.xhtml", "chrome/content/scripts/qf-searchDialog.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/qf-customizetoolbar.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/qf-messageWindow.js");  
+  // added!
+  messenger.WindowListener.registerWindow("chrome://messenger/content/FilterListDialog.xhtml", "chrome/content/scripts/qf-filterlist.js");
+  
 
   messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");
   messenger.WindowListener.registerShutdownScript("chrome/content/scripts/qf-shutdown.js");

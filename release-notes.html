@@ -1,30 +1,17 @@
-<b>Release 5.5.1</b>
+<b>Release 5.6</b>
 <ul>
 <li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li>
 <li>You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li>
 <li>If you are not ready for a license you can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a></li>
 </ul>
 
-<b>Fixes in 5.5.1</b>
-<ul>
-<li> Version 5.5.1 Hotfix: <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/136">[issue 144]</a> Fixed: Mark folders + subfolders read stops at first generation (direct child folder) mails and potentially may have affected parent folders, too.
-</li>
-<li> Version 5.5.1 - Fixed: The tool menu item  "Change the order of tabs" did not update the toolbar after clicking Ok. To make changes visible one had to click "Refrehs Visible tabs" 
-</li>
-<li> 5.5.1: Rewrote the legacy style localization to use the modern method which is a prerequisite for converting the Add-on to a "mail extension" in the future. </li>
-<li> Version 5.5.1: Completed Hungarian, Simplified Chinese and Catalan locales.
-</li>
 
+<b>Bug Fixes</b>
+<ul>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/150">[issue 150]</a> New line characters "\n" displayed in version 5.5.2</li>
+</ul>
 
 <b>Improvements</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/136">[issue 136]</a> Fixed: There were no folder suggestions during quickJump / quickMove while viewing mails in a virtual folder view (such as search results / or after open message in conversation). This was a  side effect of changes from <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/57">[issue 57]</a>.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/135">[issue 135]</a> quickMove / quickJump: When using "/" for parent folders searching for substrings should work better... The Search algorithm now recognizes Underscore _ and Space within folder names so that parent folders with  prefixes such as "01_test" can still be found without knowing the number (type "test\subfoldername" to get 
-a match in this example). </li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/132">[issue 132]</a> In a single message tab, quickMove used to redisplay the mail after moving it with quickMove.
-This behavior has now been changed on request to go to the next email instead. If necessary, this new behavior can be changed in via the advanced search settings button in the Single Message Tab box on the QF Pro settings tab.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/134">[issue 134]</a> Feature Request: Escape key to "Cancel quickMove" completely. Before this change, Cancel would hide the search box but keep the list of mails queued to be moved so that more items could be added later. If necessary, the old behavior can be restored in the Advanced search settings dialog. </li>
-<li> Changed folder tree shortcut from F7 to F9 (consistent with Thunderbird 68).  Push F0 to make the folder tree visible or quickly hide it.</li>
-<li>Increased maximum subfolders in a dropdown menu from 100 to 250.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/140">[issue 140]</a> Fixed: Restriction to current server unexpectedly suggests creating new subfolder.</li>
+<li> Ongoing work of Rewriting code to use APIs instead of Thunderbird's internal functions see <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/147">[issue 147]</a> for up to date detail.</li>
 </ul>

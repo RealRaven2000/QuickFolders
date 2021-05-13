@@ -648,7 +648,7 @@ QuickFolders.Options = {
               addonName = 'quickFilters';
               break;
             case 'ST':
-              addonName = 'SmartTemplate4';
+              addonName = 'SmartTemplates';
               break;
             case 'QF':
             default: 

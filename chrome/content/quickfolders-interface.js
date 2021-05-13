@@ -667,7 +667,7 @@ QuickFolders.Interface = {
 			return element;
 		}
 
-		util.logDebugOptional("interface", "updateCurrentFolderBar()");
+		util.logDebugOptional("interface", "updateCurrentFolderBar() - " + window.location);
 		try {
 			collapseConfigItem("QuickFolders-Close", "currentFolderBar.showClose");
 			collapseConfigItem("QuickFolders-currentFolderFilterActive", "currentFolderBar.showFilterButton");
@@ -5246,14 +5246,14 @@ QuickFolders.Interface = {
     // avoid re-entry
     QI.lastTabSelected = folder;
 
-		// single message window:
+/* 		// single message window:
 		if (prefs.isShowCurrentFolderToolbar('messageWindow')) {
 			let singleMessageWindow = util.getSingleMessageWindow();
 			if (singleMessageWindow && singleMessageWindow.gMessageDisplay && singleMessageWindow.gMessageDisplay.displayedMessage) {
 				let singleMessageCurrentFolderTab = singleMessageWindow.document.getElementById('QuickFoldersCurrentFolder');
 				QI.initCurrentFolderTab(singleMessageCurrentFolderTab, singleMessageWindow.gMessageDisplay.displayedMessage.folder);
 			}
-		}
+		} */
     return folder;
 	} ,
 
@@ -5963,7 +5963,7 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
 		try {
-			util.logDebugOptional ("interface","updateUserStyles()");
+			util.logDebugOptional ("interface","updateUserStyles() " + window.location);
 			// get MAIN STYLE SHEET
 			let styleEngine = QuickFolders.Styles,
 			    ss = this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles');

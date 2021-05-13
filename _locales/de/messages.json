@@ -566,7 +566,12 @@
     "message": "Per Rechts-klick kann man die Tabs kategorisieren. Am linken Ende der QuickFolders Werkzeugleiste wird dann ein Aufklappmenü angezeigt womit man eine Untergruppe von Tabs anzeigen kann."
   },
   "qf.description.contactMe": {
-    "message": "Sie können mich auch jederzeit persönlich unter axelg@gofree.indigo.ie kontaktieren:"
+    "message": "Sie können mich auch jederzeit persönlich unter $supportMail$ kontaktieren:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Falls Sie QuickFolders so sehr lieben wie wir, und die weitere Software-Entwicklung unterstützen wollen, können Sie uns hier eine Spende hinterlassen:"

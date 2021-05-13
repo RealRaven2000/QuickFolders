@@ -566,7 +566,12 @@
     "message": "Clique com o botão direito sobre um favorito para organizá-lo em uma categoria. Aparecerá uma lista de categorias à esquerda da barra."
   },
   "qf.description.contactMe": {
-    "message": "Você pode ainda entrar em contato comigo pessoalmente no email axelg@gofree.indigo.ie:"
+    "message": "Você pode ainda entrar em contato comigo pessoalmente no email $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Se você adora o QuickFolders tanto quanto nós e gostaria de ajudar seu desenvolvimento, pode doar algum dinheiro para incentivar a evolução do QuickFolders."

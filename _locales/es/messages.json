@@ -566,7 +566,12 @@
     "message": "Haga clic secundario en una pestaña para organizarla en una o varias categorías. Cree un filtro para categorías a la izquierda de las pestañas."
   },
   "qf.description.contactMe": {
-    "message": "También puede contactar conmigo personalmente en axelg@gofree.indigo.ie:"
+    "message": "También puede contactar conmigo personalmente en $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Si adora QuickFolders tanto como nosotros y le gustaría apoyar su desarrollo, puede donar algo de dinero en favor de la continuidad del desarrollo de QuickFolders."

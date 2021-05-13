@@ -566,7 +566,12 @@
     "message": "Нажмите на закладке правой кнопкой мышки для присвоения ей категории. Список категорий будет показан в левой части панели инструментов."
   },
   "qf.description.contactMe": {
-    "message": "Мой личный адрес axelg@gofree.indigo.ie:"
+    "message": "Мой личный адрес $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Если QuickFolders вам нравится также, как и нам, вы можете поддержать деньгами дальнейшее развитие."

@@ -549,7 +549,12 @@
     "message": "Kattintson jobb gombbal a könyvjelzőre kategóriákba rendezéshez. A kategóriák listáját a bal oldalon találja."
   },
   "qf.description.contactMe": {
-    "message": "Személyesen is elérhet a axelg@gofree.indigo.ie címen:"
+    "message": "Személyesen is elérhet a $supportMail$ címen:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Ha annyira kedveli a QuickFolderst, mint mi, kérem támogassa a fejlesztését, adományozva egy kisebb összeget a QuickFolders további fejlesztéséért."

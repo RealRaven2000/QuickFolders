@@ -566,7 +566,12 @@
     "message": "Desni klik na zavihek ga organizira v eno od več kategorij. Ustvari filter za kategorije ne levi stran zavihkov."
   },
   "qf.description.contactMe": {
-    "message": "Lahko tudi osebno navežete stik za mano na axelg@gofree.indigo.ie:"
+    "message": "Lahko tudi osebno navežete stik za mano na $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Če vam je QuickFolders všeč toliko, kot nam in bi radi podprli njegov razvoj, lahko prispevate nekaj denarja za nadaljnji razvoj razširitve."

@@ -566,7 +566,12 @@
     "message": "Fare clic col pulsante destro del mouse su di una scheda per assegnarla ad una o più categorie. Si crea così un filtro per le categorie posizionato a sinistra delle schede."
   },
   "qf.description.contactMe": {
-    "message": "Puoi anche contattarmi personalmente all'indirizzo axelg@gofree.indigo.ie:"
+    "message": "Puoi anche contattarmi personalmente all'indirizzo $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Se QuickFolders ti piace e vuoi contribuire al suo mantenimento, puoi donare qualche euro da dedicare al suo ulteriore sviluppo"

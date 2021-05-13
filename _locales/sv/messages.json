@@ -566,7 +566,12 @@
     "message": "Högerklicka på ett bokmärke för att inordna det i en kategori. Du får upp en rullgardinsmeny med kategorier till vänster om fältet."
   },
   "qf.description.contactMe": {
-    "message": "Du kan också kontakta oss via axelg@gofree.indigo.ie:"
+    "message": "Du kan också kontakta oss via $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Om du gillar QuickFolders lika mycket som vi gör och skulle vilja stödja dess utveckling, kan du donera lite pengar till den framtida utvecklingen av QuickFolders."

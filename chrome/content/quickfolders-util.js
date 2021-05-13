@@ -18,6 +18,7 @@ if (!QuickFolders.Filter) QuickFolders.Filter = {};
 QuickFolders.Util = {
   ADDON_ID: "quickfolders@curious.be",
   ADDON_NAME: "QuickFolders",
+  ADDON_SUPPORT_MAIL: "axel.grude@gmail.com",
   FolderFlags : {  // nsMsgFolderFlags
     MSG_FOLDER_FLAG_NEWSGROUP : 0x0001,
     MSG_FOLDER_FLAG_NEWSHOST  : 0x0002,
@@ -1259,11 +1260,11 @@ QuickFolders.Util = {
     }
   },
 
-  getBundleString: function getBundleString(id, defaultText) { // moved from local copies in various modules.
+  getBundleString: function getBundleString(id, defaultText, substitions = []) { // moved from local copies in various modules.
     // [mx-l10n]
     var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
     let extension = ExtensionParent.GlobalManager.getExtension('quickfolders@curious.be');
-    let localized = extension.localeData.localizeMessage(id);
+    let localized = extension.localeData.localizeMessage(id, substitions);
   
     let s = "";
     if (localized) {

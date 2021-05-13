@@ -453,6 +453,13 @@ QuickFolders.Options = {
   l10n: function l10n() {
     // [mx-l10n]
     QuickFolders.Util.localize(window, {extra2: 'qf.label.donate'});
+    
+    let supportLabel = document.getElementById('contactLabel'),
+        supportString = QuickFolders.Util.getBundleString(
+          "qf.description.contactMe",
+          "You can also contact me directly via email.", 
+          [QuickFolders.Util.ADDON_SUPPORT_MAIL]); // substitution parameter for 
+    supportLabel.textContent = supportString;
   },
   
   initBling: function initBling (tabbox) {
@@ -1267,7 +1274,7 @@ QuickFolders.Options = {
     return QuickFolders.Interface.updateMainWindow();
   },
 
-  sendMail: function sendMail(mailto) {
+  sendMail: function sendMail(mailto = QuickFolders.Util.ADDON_SUPPORT_MAIL) {
     let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                                   .getService(Components.interfaces.nsIPromptService),
         util = QuickFolders.Util,       

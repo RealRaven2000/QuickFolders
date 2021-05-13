@@ -566,7 +566,12 @@
     "message": "ブックマークを右クリックするとカテゴリに追加できます。カテゴリはバーの左端のプルダウンメニューから選択できます。"
   },
   "qf.description.contactMe": {
-    "message": "個人的な連絡は axelg@gofree.indigo.ie まで:"
+    "message": "個人的な連絡は $supportMail$ まで:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "QuickFolders の開発をサポートしたいときは、こちらで寄付を受け付けています:"

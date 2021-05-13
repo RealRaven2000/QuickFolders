@@ -566,7 +566,12 @@
     "message": "Klik met rechts op een tabblad om het in een of meer categorieën in te delen. Maakt een filter voor categorieën links van de tabbladen."
   },
   "qf.description.contactMe": {
-    "message": "U kunt ook persoonlijk contact met mij opnemen via axelg@gofree.indigo.ie:"
+    "message": "U kunt ook persoonlijk contact met mij opnemen via $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Als QuickFolders u net zo bevalt als ons en de ontwikkeling ervan wilt steunen, kunt u wat geld doneren voor de verdere ontwikkeling van QuickFolders."

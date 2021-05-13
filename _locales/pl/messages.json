@@ -566,7 +566,12 @@
     "message": "Aby przyporządkować folderowi kategorię, należy kliknąć prawym przyciskiem etykietę folderu. Używając przycisku znajdującego się po lewej stronie paska QuickFolders, można tworzyć filtry dla kategorii."
   },
   "qf.description.contactMe": {
-    "message": "Można kontaktować się z autorem osobiście pod adresem axelg@gofree.indigo.ie:"
+    "message": "Można kontaktować się z autorem osobiście pod adresem $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Jeśli lubisz QuickFolders i chcesz wesprzeć jego rozwój, możesz dokonać dotacji na rzecz jego dalszego rozwoju."

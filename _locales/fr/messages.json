@@ -566,7 +566,12 @@
     "message": "Cliquez droit sur un raccourci pour le classer dans une catégorie. Vous verrez apparaître à gauche de la barre un menu déroulant vous proposant les catégories."
   },
   "qf.description.contactMe": {
-    "message": "Vous pouvez également me contacter personnellement (axelg@gofree.indigo.ie) :"
+    "message": "Vous pouvez également me contacter personnellement ($supportMail$) :",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Si vous aimez QuickFolders autant que nous et que vous souhaitez soutenir son développement, vous pouvez faire un don pour faire évoluer QuickFolders."

@@ -566,7 +566,12 @@
     "message": "　　鼠标右键点击导航卡将其整理到合适的分类里，工具栏左测将出现一个导航卡分类的下拉列表。"
   },
   "qf.description.contactMe": {
-    "message": "您也可以通过我的个人邮箱 axelg@gofree.indigo.ie 联系我:"
+    "message": "您也可以通过我的个人邮箱 $supportMail$ 联系我:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "如果您喜欢这个组件，可以自愿的捐助些钱以支持这个组件的继续发展。"

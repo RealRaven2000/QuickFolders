@@ -566,7 +566,12 @@
     "message": "Ấn chuột phải lên đánh dấu để xếp nó vào một danh mục. Bạn sẽ thấy các danh mục xổ xuống ở bên trái thanh."
   },
   "qf.description.contactMe": {
-    "message": "Bạn còn có thể liên hệ riêng với tôi tại axelg@gofree.indigo.ie:"
+    "message": "Bạn còn có thể liên hệ riêng với tôi tại $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Nếu bạn yêu thích QuickFolders như chúng tôi và muốn hỗ trợ phát triển nó, bạn có thể quyên góp tiền cho QuickFolders"

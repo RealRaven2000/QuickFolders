@@ -462,7 +462,12 @@
     "message": "Clic derecho de un marcador para organizarlo en una categoría. Aparecerán las categorías a la izquierda de la barra."
   },
   "qf.description.contactMe": {
-    "message": "Puedes contactarme directamente en axelg@gofree.indigo.ie:"
+    "message": "Puedes contactarme directamente en $supportMail$:",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "Si te gusta QuickFolders tanto como a nosotros y quieres ayudar en su desarrollo, puedes donar algo de dinero destinado al continuo desarrollo de QuickFolders."

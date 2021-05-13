@@ -566,7 +566,12 @@
     "message": "滑鼠右鍵點選標籤能選擇一個適當分類。你能在工具列左側的下拉式選單中選擇一個分類。"
   },
   "qf.description.contactMe": {
-    "message": "您也能與我個人聯絡axelg@gofree.indigo.ie："
+    "message": "您也能與我個人聯絡$supportMail$：",
+    "placeholders": {
+      "supportMail": {
+        "content": "$1"
+      }
+    }
   },
   "qf.description.donate": {
     "message": "如果你非常喜愛QuickFolders，您可以藉由小額捐助支持它的開發。"

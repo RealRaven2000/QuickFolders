@@ -2167,8 +2167,8 @@ QuickFolders.prepareSessionStore = function () {
 
 QuickFolders.restoreSessionStore = function() {
   if (!mailTabType.QuickFolders_SessionStore) return;
-  mailTabType.modes["folder"].persistTab = QuickFolders_SessionStore.persistTab;
-  mailTabType.modes["folder"].restoreTab = QuickFolders_SessionStore.restoreTab;
+  mailTabType.modes["folder"].persistTab = mailTabType.QuickFolders_SessionStore.persistTab;
+  mailTabType.modes["folder"].restoreTab = mailTabType.QuickFolders_SessionStore.restoreTab;
 }
 
 

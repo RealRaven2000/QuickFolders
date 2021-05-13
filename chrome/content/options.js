@@ -1162,6 +1162,11 @@ QuickFolders.Options = {
         QI.updateCategoryLayout();
         return false;
     }
+    // broadcast change of current folder bar for all interested windows.
+    if (prefString.includes(".currentFolderBar.")) {
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCurrentFolderBar" }); 
+      return true;
+    }
     return QI.updateMainWindow(false); // force full updated
   },
   

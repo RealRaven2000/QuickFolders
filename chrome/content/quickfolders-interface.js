@@ -657,6 +657,10 @@ QuickFolders.Interface = {
 	updateCurrentFolderBar: function updateCurrentFolderBar(styleSheet) {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
+          
+    let isEvent = typeof styleSheet.target != "undefined"; // did we call this from a event listener?
+    if (isEvent) styleSheet = null; // throw away the parameter, it's not what we need!
+    
 		function collapseConfigItem(id, isShownSetting, checkParent) {
 			let element = util.$(id);
 			// safeguard for copied ids (such as button-previous / button-next)
@@ -690,12 +694,12 @@ QuickFolders.Interface = {
 				if (mw) {
 					let backImage = window.getComputedStyle(mw).getPropertyValue("background-image");
 					if (backImage && prefs.getBoolPref('currentFolderBar.background.lightweight')) {
-						styleEngine.setElementStyle(ss,'#QuickFolders-PreviewToolbarPanel', 'background-image', backImage);
-						styleEngine.setElementStyle(ss,'#QuickFolders-PreviewToolbarPanel', 'background-position', "right top");
+						styleEngine.setElementStyle(ss,'.QuickFolders-NavigationPanel', 'background-image', backImage);  // was #QuickFolders-PreviewToolbarPanel
+						styleEngine.setElementStyle(ss,'.QuickFolders-NavigationPanel', 'background-position', "right top"); // was #QuickFolders-PreviewToolbarPanel
 						styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools','opacity', '0.98');
 					}
 					else {
-						styleEngine.setElementStyle(ss,'#QuickFolders-PreviewToolbarPanel', 'background-image', 'none');
+						styleEngine.setElementStyle(ss,'.QuickFolders-NavigationPanel', 'background-image', 'none'); // was #QuickFolders-PreviewToolbarPanel
 						styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools','opacity', '1.0');
 					}
 				}

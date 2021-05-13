@@ -31,7 +31,7 @@ function onLoad(activatedWhileWindowOpen) {
 </menupopup>
 
 <vbox id="messagepanebox">
-    <hbox id="QuickFolders-PreviewToolbarPanel-Single" insertbefore="singlemessage" style="display:none;">
+    <hbox id="QuickFolders-PreviewToolbarPanel-Single" insertbefore="singlemessage" style="display:none;" class="QuickFolders-NavigationPanel">
         <spacer flex="5" id="QF-CurrentLeftSpacer" style="min-width:5px;" />
         <toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
             <toolbarbutton id="QuickFolders-CurrentMail"
@@ -124,72 +124,10 @@ function onLoad(activatedWhileWindowOpen) {
 </vbox>
 
 `);
-
-/*
-    // renamed QuickFolders-oneButtonPanel to QuickFolders-Toolbar to snatch css rules:
-    WL.injectElements(`   
-<vbox id="messagepanebox">    
-  <hbox id="QuickFolders-PreviewToolbarPanel-Single">
-    <hbox id="QuickFolders-Toolbar" insertbefore="QF-CurrentLeftSpacer">
-      <hbox id="QuickFolders-oneButtonPanel">
-          <toolbarbutton id="QuickFolders-quickMove"
-                           class="popupButton"
-                           tooltiptext="__MSG_qf.tooltip.quickMove__"
-                           label=""
-                           onclick="QuickFolders.Interface.quickMoveButtonClick(event,this);"
-                           ondrop="QuickFolders.buttonDragObserver.drop(event);"
-                           ondragenter="QuickFolders.buttonDragObserver.dragEnter(event);"
-                           ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
-                           context="QuickFolders-quickMoveMenu"
-                           />
-          <search-textbox id="QuickFolders-FindFolder" 
-                   oncommand="QuickFolders.Interface.findFolderName(this);"
-                   onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
-                   class="searchBox"
-                   type="search"
-                   collapsed="true"
-                   placeholder="__MSG_quickfolders.findFolder.placeHolder__"/>
-      </hbox>
-       
-      <popupset id="QuickFolders-QuickMovePopupSet">
-          <menupopup id="QuickFolders-quickMoveMenu">
-              <menuitem id="QuickFolders-quickMove-suspend"
-                        label="__MSG_quickfolders.quickMove.menu.suspend__"
-                        oncommand="QuickFolders.quickMove.toggleSuspendMove(this);" 
-                        type="checkbox"
-                        />
-              <menuitem id="QuickFolders-quickMove-cancel"
-                        label="__MSG_quickfolders.quickMove.menu.cancel__"
-                        oncommand="QuickFolders.quickMove.cancel();" 
-                        collapsed="true"
-                        />
-              <menuitem id="QuickFolders-quickMove-showSearch"
-                        label="__MSG_quickfolders.quickMove.menu.showSearch__"
-                        oncommand="QuickFolders.quickMove.showSearch();" 
-                        />
-              <menuitem id="QuickFolders-quickMove-hideSearch"
-                        label="__MSG_quickfolders.quickMove.menu.hideSearch__"
-                        oncommand="QuickFolders.quickMove.hideSearch();" 
-                        collapsed="true"
-                        />
-          </menupopup>
-      </popupset> 
-
-      <vbox id="QuickFolders-Folders-Pane"  flex="1">
-          <spacer flex="4" id="QuickFolders-FoldersBox-PushDown"/>
-          
-          <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
-      </box>
-      
-      </vbox>
-    </hbox>
-  </hbox>
-</vbox>
-`);
-*/
         
   window.QuickFolders.Util.logDebug('Adding messageWindow...');
   // window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
+  window.QuickFolders.Util.notifyTools.enable();
   window.QuickFolders.Util.init();
   const QI = window.QuickFolders.Interface;
   window.addEventListener( "QuickFolders.BackgroundUpdate.updateUserStyles", QI.updateUserStyles.bind(QI));
@@ -198,6 +136,7 @@ function onLoad(activatedWhileWindowOpen) {
 }
 
 function onUnload(isAddOnShutDown) {
+  window.QuickFolders.Util.notifyTools.disable();
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", window.QuickFolders.Interface.updateUserStyles);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateCurrentFolderBar", window.QuickFolders.Interface.updateCurrentFolderBar);
 }
@@ -207,6 +146,7 @@ window.document.addEventListener('DOMContentLoaded',
   () => {
     window.QuickFolders.initSingleMsg(WL);
     window.QuickFolders.Interface.updateCurrentFolderBar();    
+    window.QuickFolders.Interface.updateUserStyles(); // for colors of current folder button!
   }, 
   { once: true }
 );

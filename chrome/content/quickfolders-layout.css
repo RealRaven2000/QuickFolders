@@ -415,8 +415,11 @@ menupopup.widerMenu menucaption {
 
 /* CURRENT FOLDER TOOLBAR */
 /* Styles for Message Preview Navigation */
+/*
 #QuickFolders-PreviewToolbarPanel,
-#QuickFolders-PreviewToolbarPanel-ConversationView {
+#QuickFolders-PreviewToolbarPanel-ConversationView
+*/
+.QuickFolders-NavigationPanel {
 	/* background-color: transparent; */
 	background-color: var(--toolbar-bgcolor);
     color: var(--lwt-toolbar-field-color, black);

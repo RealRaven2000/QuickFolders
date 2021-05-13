@@ -85,6 +85,12 @@ async function main() {
   });
   
   messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
+    let isLog = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug.notifications");
+    if (isLog && data.func) {
+      console.log ("=========================\n" +
+                   "BACKGROUND LISTENER received: " + data.func + "\n" +
+                   "=========================");
+    }
     switch (data.func) {
       case "slideAlert":
         util.slideAlert(...data.args);

@@ -312,6 +312,7 @@ async function onLoad(activatedWhileWindowOpen) {
     <hbox id="QuickFolders-PreviewToolbarPanel" 
           position="1"
           insertbefore="multimessage"
+          class="QuickFolders-NavigationPanel"
           style="display:none;">
       <spacer flex="5" id="QF-CurrentLeftSpacer"/>
       <toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
@@ -414,16 +415,16 @@ async function onLoad(activatedWhileWindowOpen) {
                        oncommand="QuickFolders.Interface.displayNavigationToolbar(false,'?');" />
       </toolbar>
       <spacer flex="5" id="QF-CurrentRightSpacer" />
-    </hbox>
-
-
+    </hbox>` +
+/*
 <!-- if conversation view (extension) is active ?? then the browser element multimessage will be visible
      in this case we need to move the toolbar panel into the messagepanebox before multimessage
-    <hbox id="QuickFolders-PreviewToolbarPanel-ConversationView" insertbefore="multimessage">
+    <hbox id="QuickFolders-PreviewToolbarPanel-ConversationView" class=QuickFolders-PreviewToolbarPanel insertbefore="multimessage">
     
     </hbox>
 -->
-
+*/
+`
   </vbox>
 </hbox>
 `);

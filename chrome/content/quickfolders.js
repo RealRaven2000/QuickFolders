@@ -492,6 +492,18 @@ END LICENSE BLOCK */
     ## licenser code migrated into background script
        TO DO: rename hasPremiumLicense() ==> hasValidProLicense()
               simplify Expired logic
+    ## Removed many global functions that work in the last 3pane window and replaced them with event notifications
+    ## uses the Notification Tool library and uses the background script (a mechanism of the new API based extensions model)
+    ## this way all Thunderbird windows (if you work from multiple windows) will be update when you do one of the following actinos
+    ## - rename a tab
+    ## - move a tab position
+    ## - delete a tab or remove it from or add it to a category
+    ## - change the layout from the optiins dialog (themes, colors)
+    ## - rename categories
+    ## - change the theme / buttons of the Current Folder Bar
+    ## - change options of where to display the Current Folder Bar (main window, message tab, single message window)
+    ## - changes to the license when entered / validated
+    ## All these actions now work simultaneously and update in multiple Thunderbird windows.
                
     
     -=-----------------=-    PLANNED
@@ -692,10 +704,9 @@ var QuickFolders = {
       folderTree.addEventListener("select", QuickFolders.FolderTreeSelect, false);
 			// [Bug 26566] - Folder Tree doesn't show icons
 			let vc = Cc["@mozilla.org/xpcom/version-comparator;1"].getService(Ci.nsIVersionComparator);
-      let w = util.getMail3PaneWindow(),
-          time = prefs.getIntPref('treeIconsDelay');
+      let time = prefs.getIntPref('treeIconsDelay');
       util.logDebug("Repair Icons for "  + util.Application  + " " + util.ApplicationVersion + " in " + time/1000 + " sec...");
-      w.setTimeout(
+      win.setTimeout(
         function () {
           util.logDebug("Repair Icons:");
           QI.repairTreeIcons(true); // silently
@@ -802,22 +813,20 @@ var QuickFolders = {
                        name: folder.prettyName});
   },
      
-	initListeners: function () {
-			const util = QuickFolders.Util,
-			      win = util.getMail3PaneWindow(),
-			      prefs = QuickFolders.Preferences,
-						QI = win.QuickFolders.Interface;
+	initKeyListeners: function () {
+			const win = window,
+			      prefs = QuickFolders.Preferences;
 			// only add event listener on startup if necessary as we don't
 			// want to consume unnecessary performance during keyboard presses!
 			if (prefs.isKeyboardListeners) {
-				if(!QI.boundKeyListener) {
+				if(!QuickFolders.Interface.boundKeyListener) {
 					win.addEventListener("keypress", this.keyListen = function(e) {
-						QI.windowKeyPress(e,'down');
+						QuickFolders.Interface.windowKeyPress(e,'down');
 					}, true);
 					win.addEventListener("keyup", function(e) {
-						QI.windowKeyPress(e,'up');
+						QuickFolders.Interface.windowKeyPress(e,'up');
 					}, true);
-					QI.boundKeyListener = true;
+					QuickFolders.Interface.boundKeyListener = true;
 				}
 			}
 	},
@@ -910,7 +919,7 @@ var QuickFolders = {
 		// that.Util.FirstRun.init();
 		that.addTabEventListener();
 		
-		QuickFolders.initListeners();
+		QuickFolders.initKeyListeners();
 		
 		// move out to allow reload / editing feature
 		let folderEntries = prefs.loadFolderEntries();

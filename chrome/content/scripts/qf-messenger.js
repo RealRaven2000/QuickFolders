@@ -517,6 +517,7 @@ async function onLoad(activatedWhileWindowOpen) {
   window.addEventListener("QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", QI.updateQuickFoldersLabel.bind(QI));
   window.addEventListener("QuickFolders.BackgroundUpdate.updateCategoryBox", QI.updateCategoryLayout.bind(QI));
   window.addEventListener("QuickFolders.BackgroundUpdate.updateMainWindow", QI.updateMainWindow.bind(QI)); // need to add a parameter here, how to?
+  window.addEventListener("QuickFolders.BackgroundUpdate.initKeyListeners", window.QuickFolders.initKeyListeners.bind(window.QuickFolders))
   
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!
 }
@@ -533,6 +534,7 @@ function onUnload(isAddOnShutDown) {
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", window.QuickFolders.Interface.updateQuickFoldersLabel);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateCategoryBox", window.QuickFolders.Interface.updateQuickFoldersLabel);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateMainWindow", window.QuickFolders.Interface.updateMainWindow);
+  window.removeEventListener("QuickFolders.BackgroundUpdate.initKeyListeners", window.QuickFolders.initKeyListeners);
   
   // restore global overwritten functions 
   try {

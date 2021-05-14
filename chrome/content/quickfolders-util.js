@@ -92,18 +92,6 @@ QuickFolders.Util = {
     })
   },
   
-  get Licenser() { // retrieve Licenser always from the main window to keep everything in sync
-    const util = QuickFolders.Util;
-    try { 
-      let mail3Pane = util.getMail3PaneWindow();
-      return mail3Pane.QuickFolders.Licenser;
-    }
-    catch(ex) {
-      util.logException('Retrieve Licenser failed: ', ex);
-    }
-    return QuickFolders.Licenser;
-  } ,
-
   $: function(id) {
     // get an element from the main window for manipulating
     let doc = document; // we want the main document
@@ -1635,15 +1623,7 @@ QuickFolders.Util.FirstRun = {
           }, 1500); 
         }
       }
-      else { 
-        // TO DO:
-        // call validateLicense async and resolve promise (maybe)        
-        // QuickFolders.Licenser.validateLicense(key).then( 
-        //   function( validationResult) { 
-        //      .. do sync stuff
-        //   } 
-        // );
-     
+      else {    
         let isPremiumLicense = util.hasPremiumLicense() || QuickFolders.Util.licenseInfo.isExpired,
             versionPage = util.makeUriPremium("https://quickfolders.org/version.html") + "#" + pureVersion;
         // UPDATE CASE 

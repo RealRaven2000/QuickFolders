@@ -88,7 +88,8 @@ QuickFolders.Options = {
       prefs.setStringPref('currentFolderBar.background', 
                 getElement("currentFolderBackground").value);
       // QuickFolders.Interface.setPaintButtonColor(-1);
-      QuickFolders.initListeners();
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "initKeyListeners" }); // QuickFolders.initKeyListeners();
+      
     }
     catch(e) {
       Services.prompt.alert(null,"QuickFolders","Error in QuickFolders:\n" + e);
@@ -1170,8 +1171,7 @@ QuickFolders.Options = {
   
   // doing what instantApply really should provide...
   toggleBoolPreference: function toggleBoolPreference(cb, noUpdate) {
-    const util = QuickFolders.Util,
-          QI = util.getMail3PaneWindow().QuickFolders.Interface;
+    const util = QuickFolders.Util;
     let prefString = cb.getAttribute("preference");
     //  using the new preference system, this attribute should be the actual full string of the pref.
     //  pref = document.getElementById(prefString);
@@ -1370,6 +1370,8 @@ QuickFolders.Options = {
         if (Services.prompt.confirm(window, "QuickFolders", question)) {
           // store
           prefs.storeFolderEntries(entries);
+          // tell all windows!
+          QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });
         }
         else {
           // roll back
@@ -1830,6 +1832,8 @@ QuickFolders.Options = {
 					if (Services.prompt.confirm(window, "QuickFolders", question)) {
 						// store
 						prefs.storeFolderEntries(entries);
+            // notify all windows
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });
 					}
 					else {
 						// roll back

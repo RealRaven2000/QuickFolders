@@ -108,7 +108,7 @@ QuickFolders.Interface = {
 	get globalTreeController() {
 		if (typeof gFolderTreeController !== 'undefined')
 			return gFolderTreeController;
-		return QuickFolders.Util.getMail3PaneWindow().gFolderTreeController;
+		return QuickFolders.Util.getMail3PaneWindow().gFolderTreeController; // fallback
 	} ,
 
 	getUIstring: function getUIstring(id, defaultString) {
@@ -6701,7 +6701,7 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           styleEngine = QuickFolders.Styles;
-    // win = util.getMail3PaneWindow();
+    
     styleSheetName = styleSheetName || 'quickfolders-layout.css';
     let ss = QI.getStyleSheet(styleEngine, styleSheetName),  // rules are imported from *-widgets.css
         iconSelector = 'menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon, #QuickFolders-Pro .tab-icon';

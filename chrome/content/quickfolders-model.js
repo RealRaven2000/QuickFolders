@@ -214,7 +214,7 @@ QuickFolders.Model = {
   update: function update() {
     QuickFolders.Util.logDebug("model.update");
     this.store();
-    QuickFolders.Interface.updateFolders(true, false);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // QuickFolders.Interface.updateFolders(true, false);
   } ,
 
   setTabIcon: function setTabIcon(button, entry, iconURI, menuItem) {
@@ -499,7 +499,7 @@ QuickFolders.Model = {
         QuickFolders.Util.logDebug('Palette updated!');
         this.paletteUpdated = true;
 
-        QuickFolders.Interface.updateFolders(true, false);
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // QuickFolders.Interface.updateFolders(true, false);
         QuickFolders.Preferences.storeFolderEntries(folderEntries);
   
       }

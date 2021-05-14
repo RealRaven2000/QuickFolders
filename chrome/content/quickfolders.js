@@ -827,6 +827,7 @@ var QuickFolders = {
 		      that = this.isQuickFolders ? this : QuickFolders,
 					QI = that.Interface; // main window Interface!
 		
+    util.logDebug("initTabsFromEntries()");
 		if (folderEntries.length) try {
 			let currentFolder = util.CurrentFolder;
 			that.Model.selectedFolders = folderEntries;
@@ -869,7 +870,8 @@ var QuickFolders = {
 			util.logException('init: folderEntries', ex);
 		}
     finally {
-			QI.updateMainWindow();  // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QI.updateMainWindow();  
+      // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
       // make sure tabs not in active category are hidden - this at least doesn't happen if we load the extension from the debugging tab
       if (QI.currentActiveCategories) {
         util.logDebugOptional('categories', "forcing selectCategory");
@@ -877,9 +879,7 @@ var QuickFolders = {
         QI._selectedCategories = null;
         QI.selectCategory(bkCat);
       }
-      
     }
-	
 	},
 
 	init: function init() {
@@ -946,6 +946,7 @@ var QuickFolders = {
       QuickFolders.bookmarks.load();
     }
     QuickFolders.initLicensedUI();
+    QuickFolders.Interface.updateMainWindow(false);
     
 	},
   

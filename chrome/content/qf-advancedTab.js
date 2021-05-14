@@ -152,10 +152,7 @@ QuickFolders.AdvancedTab = {
 			}  
 		}
 		
-		if (entry.fromIdentity) 
-			cboIdentity.value = entry.fromIdentity;
-		else
-			cboIdentity.value = 'default'; // default - no identity, so default is chosen.
+    cboIdentity.value = entry.fromIdentity || 'default'; // default - no identity, so default is chosen.
 
 		elem('txtToAddress').value = entry.toAddress ? entry.toAddress : '';
     
@@ -169,9 +166,9 @@ QuickFolders.AdvancedTab = {
     
     // [mx-l10n]
     QuickFolders.Util.localize(window, {
-		extra1: "btnApply", 
-		extra2: "btnReset",
-	});
+      extra1: "btnApply", 
+      extra2: "btnReset",
+    });
 		this.updateCSSpreview();
     
     // we wait as the width isn't correct on load
@@ -180,7 +177,8 @@ QuickFolders.AdvancedTab = {
     setTimeout(
       function () {   
 			  QuickFolders.AdvancedTab.resize(win); 
-			});
+			}
+    );
   } ,
   
   close: function() {
@@ -266,7 +264,7 @@ QuickFolders.AdvancedTab = {
 		
     // refresh the model
     // QuickFolders.Interface.updateFolders(false, true);
-    QuickFolders.Interface.updateMainWindow();
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QuickFolders.Interface.updateMainWindow();
     this.MainQuickFolders.Model.store(); 
 		this.updateCSSpreview();
   } ,

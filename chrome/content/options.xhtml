@@ -117,7 +117,7 @@
 							<checkbox label="__MSG_qf.checkbox.showshortcutnumber__"
 												class="indent"
 												preference="qfpg-ShowShortcutNumber"
-												oncommand="options.toggleBoolPreference(this);QI.updateMainWindow();" />
+												oncommand="options.toggleBoolPreference(this);" />
 							<checkbox label="__MSG_qf.checkbox.usekeyboardshortcutsCTRL__"
 												class="indent"
 												preference="qfpg-UseKeyboardShortcutCTRL"
@@ -453,7 +453,7 @@
                 </hbox>
 								<menulist id="QuickFolders-CurrentFolder-Background-Select"
 													sizetopopup="none"
-													oncommand="QI.updateMainWindow();">
+													oncommand="/* options.updateMainWindow(); */">
 									<menupopup>
 										<!-- list order must correspond with BGCHOICE enum -->
 										<menuitem label="__MSG_qf.currentFolderBackground.default__"
@@ -582,34 +582,34 @@
 										<menulist id="QuickFolders-Theme-Selector"
 															sizetopopup="none"
 															preference="qfpl-Theme"
-															oncommand="QI.updateMainWindow();">
+															oncommand="options.updateMainWindow();">
 											<menupopup>
 												<!-- values in this list are QuickFolders.Themes.themes.id values -->
 												<menuitem id="QuickFolders-Theme-FlatStyle"
 																	label="__MSG_qf.themes.flatTabs.label__"
 																	originalName="Flat Style"
 																	value="flatTabs"													
-																	oncommand="options.selectTheme(window.document, 'flatTabs');" />
+																	oncommand="options.selectTheme(window.document, 'flatTabs', true);" />
 												<menuitem id="QuickFolders-Theme-Pills"
 																	label="__MSG_qf.themes.applePills.label__"
 																	originalName="Apple Pills"
 																	value="applePills"
-																	oncommand="options.selectTheme(window.document, 'applePills');" />
+																	oncommand="options.selectTheme(window.document, 'applePills', true);" />
 												<menuitem id="QuickFolders-Theme-NativeTabs"
 																	label="__MSG_qf.themes.nativeTabs.label__"
 																	originalName="Native Tabs"
 																	value="nativeTabs"
-																	oncommand="options.selectTheme(window.document, 'nativeTabs');" />
+																	oncommand="options.selectTheme(window.document, 'nativeTabs', true);" />
 												<menuitem id="QuickFolders-Theme-ButtonStyle"
 																	label="__MSG_qf.themes.realButtons.label__"
 																	originalName="Flat Style"
 																	value="realButtons"
-																	oncommand="options.selectTheme(window.document, 'realButtons');" />
+																	oncommand="options.selectTheme(window.document, 'realButtons', true);" />
 												<menuitem id="QuickFolders-Theme-FlatButtons"
 																	label="__MSG_qf.themes.flatButtons.label__"
 																	originalName="Toolbar Buttons"
 																	value="flatButtons"
-																	oncommand="options.selectTheme(window.document, 'flatButtons');" />
+																	oncommand="options.selectTheme(window.document, 'flatButtons', true);" />
 											</menupopup>
 										</menulist>
 									</hbox>
@@ -860,7 +860,7 @@
                     <menulist id="menuActiveTabPalette"
                               sizetopopup="none"
                               preference="qfpl-ActiveTab-PaletteType"
-                              oncommand="QI.updateMainWindow();">
+                              oncommand="options.updateMainWindow();">
                       <menupopup>
                         <menuitem label="__MSG_qf.palette.twoColors__"
                                   value="0"
@@ -900,7 +900,7 @@
                     <menulist id="menuHoverPalette"
                               sizetopopup="none"
                               preference="qfpl-HoveredTab-PaletteType"
-                              oncommand="QI.updateMainWindow();">
+                              oncommand="options.updateMainWindow();">
                       <menupopup>
                         <menuitem label="__MSG_qf.palette.twoColors__"
                                   value="0"
@@ -939,7 +939,7 @@
                     <menulist id="menuDragOverPalette"
                               sizetopopup="none"
                               preference="qfpl-DragOver-PaletteType"
-                              oncommand="QI.updateMainWindow();">
+                              oncommand="options.updateMainWindow();">
                       <menupopup>
                         <menuitem label="__MSG_qf.palette.twoColors__"
                                   value="0"

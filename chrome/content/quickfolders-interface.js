@@ -648,6 +648,13 @@ QuickFolders.Interface = {
 		}
 	} ,
 
+  // update visible tabs after folders were changed / tabs renamed or deleted.
+  // we also need to force refreshing / reading the Model from the store first!
+  updateAllTabs: function () {
+    QuickFolders.initTabsFromEntries(QuickFolders.Preferences.loadFolderEntries());
+    QuickFolders.Interface.updateFolders(true, false);
+  },
+  
   // more comprehensive function to update both folder look and all styles (will be called from Options dialog via event listener)
   updateFoldersUI: function () {
     QuickFolders.Interface.updateFolders(true, false);
@@ -948,7 +955,7 @@ QuickFolders.Interface = {
 				return 0;
 			case 2: // Cancel  - undo all changes
 				QuickFolders.Preferences.loadFolderEntries();
-				this.updateFolders(true, false);
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // this.updateFolders(true, false);
 				return -1;
 		}
 
@@ -1014,7 +1021,7 @@ QuickFolders.Interface = {
 						if (check.value) isContinue = true;
 					  countDeleted++;
 						// update UI
-						this.updateFolders(true, false);
+						QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // this.updateFolders(true, false);
 						i--; // array is spliced, so we need to go back one!
 					  break;
 					case 0:  // not deleted
@@ -1030,7 +1037,8 @@ QuickFolders.Interface = {
 		if (countDeleted > 0) {
 			if (confirm(this.getUIstring('qfSavePrompt', 'Save these changes?'))) {
 				QuickFolders.Preferences.storeFolderEntries(model.selectedFolders);
-				this.updateFolders(true, false); // show this on screen
+        // show this on screen
+				QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // this.updateFolders(true, false);
 			}
 			else {
 				// restore model
@@ -4997,7 +5005,7 @@ QuickFolders.Interface = {
 					folderEntry.uri = result;
 					if (QuickFolders_MySelectFolder(result)) {
 						QuickFolders.Preferences.storeFolderEntries(folderEntries);
-						this.updateFolders(true, true);
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // this.updateFolders(true, true);
 					}
 					else {
 						//alert('Could not find that path either!');
@@ -5646,7 +5654,7 @@ QuickFolders.Interface = {
 							cp.value = '#FFFFFF';
 						}
 						prefs.setUserStyle(styleKey, "background-color", 'rgb(255,255,255)');
-						QI.updateMainWindow();
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QI.updateMainWindow();
 					}
           if (styleKey == 'InactiveTab')
             this.applyTabStyle(document.getElementById('inactivetabs-label'), prefs.ColoredTabStyle);
@@ -5654,8 +5662,10 @@ QuickFolders.Interface = {
           if (styleKey == 'ActiveTab' && resultBackgroundColor) {
             options.styleUpdate('ActiveTab','background-color', resultBackgroundColor, 'activetabs-label');
           }
-          if (disableColorChangeStriped)
-            QI.updateMainWindow(true);  // force update as it might have been missed!
+          if (disableColorChangeStriped) {
+            // force update as it might have been missed!
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); // QI.updateMainWindow(true);
+          }
 					return; // early exit
 			} // end switch
 		}
@@ -6550,8 +6560,9 @@ QuickFolders.Interface = {
           );
         }
 			}
-      if (countChanges)
-        this.updateFolders(true, true);
+      if (countChanges) {
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });// this.updateFolders(true, true);
+      }
 		}
 		catch(ex) {
 			sPrompt = util.getBundleString("qfCantMoveFolder", "Folder {0} cannot be moved.");

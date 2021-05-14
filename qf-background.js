@@ -125,12 +125,27 @@ async function main() {
         );
         break;
         
+      case "updateAllTabs": 
+        // only update tabs, without styles - reads the tabs from the store to support adding / renaming / deleting / re-categorizing
+        // across all Windows instances.
+        messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
+        break;
+        
       case "updateNavigationBar":
         messenger.NotifyTools.notifyExperiment({event: "updateNavigationBar"});
         break;
 
       case "toggleNavigationBar":
         messenger.NotifyTools.notifyExperiment({event: "toggleNavigationBar"});
+        break;
+        
+      case "updateCategoryBox":
+        messenger.NotifyTools.notifyExperiment({event: "updateCategoryBox"});
+        break;
+        
+      case "updateMainWindow": // we need to add one parameter (minimal) to pass through!
+        let isMinimal = (data.minimal) || "false";
+        messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: isMinimal});
         break;
 
       case "updateLicense":

@@ -399,15 +399,17 @@ QuickFolders.Options = {
     util.logDebugOptional('options', 'QuickFolders.Options.load - end with sizeToContent()');
     sizeToContent();
     
-    let newTabMenuItem = util.getMail3PaneWindow().document.getElementById('folderPaneContext-openNewTab');
-    if (newTabMenuItem && newTabMenuItem.label) getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
-    
+    // using main window elements to read system colors - should we do this via notifyTools, too?
     let main = util.getMail3PaneWindow(),
         getMainElement = main.QuickFolders.Util.$,
         mainToolbox = getMainElement('mail-toolbox'),
         messengerWin = getMainElement('messengerWindow'),
         backColor = main.getComputedStyle(mainToolbox).getPropertyValue("background-color"),
-        backImage = main.getComputedStyle(messengerWin).getPropertyValue("background-image");
+        backImage = main.getComputedStyle(messengerWin).getPropertyValue("background-image"),
+        newTabMenuItem = getMainElement('folderPaneContext-openNewTab');
+    if (newTabMenuItem && newTabMenuItem.label) {
+      getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
+    }
         
     // where theme styling fails.   
     if (backColor) {
@@ -692,6 +694,14 @@ QuickFolders.Options = {
     return result;
   } ,  
   
+  updateNavigationBar: function updateNavigationBar() {
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" }); 
+  },
+  
+  updateMainWindow: function updateMainWindow() {
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
+  },
+  
   validateNewKey: async function validateNewKey() {
     this.trimLicense();
     let rv = await QuickFolders.Util.notifyTools.notifyBackground({ func: "updateLicense", key: document.getElementById('txtLicenseKey').value });
@@ -787,7 +797,7 @@ QuickFolders.Options = {
     throw('Encryption is not supported!');
   },
   
-  selectTheme: function selectTheme(wd, themeId) {
+  selectTheme: function selectTheme(wd, themeId, isUpdateUI = false) {
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface;
     let myTheme = QuickFolders.Themes.Theme(themeId),
@@ -846,9 +856,13 @@ QuickFolders.Options = {
       /******  FOR FUTURE USE ??  ******/
       // if (myTheme.supportsFeatures.supportsFontSelection)
       // if (myTheme.supportsFeatures.buttonInnerShadows)
-
       util.logDebug ('Theme [' + myTheme.Id + '] selected');
+      if (isUpdateUI) {
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
+      }
+      
     }
+    
     return myTheme;
   } ,
   
@@ -893,13 +907,13 @@ QuickFolders.Options = {
     }
     else {
       let item = backgroundCombo.getItemAtIndex( backgroundCombo.selectedIndex );
-      options.setCurrentToolbarBackground(item.value, true);
+      this.setCurrentToolbarBackground(item.value, true);
     }
   } ,
   
   applyOrdinalPosition: function applyOrdinalPosition() {
     // refresh the toolbar button in main window(s)
-    QuickFolders.Interface.updateMainWindow(true);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); // QuickFolders.Interface.updateMainWindow(true);
   } ,
   
   // change background color for current folder bar
@@ -944,9 +958,7 @@ QuickFolders.Options = {
     if (Preferences) {
       Preferences.get('extensions.quickfolders.currentFolderBar.background')._value=styleValue;
     }
-    //if (withUpdate)
-    //  QuickFolders.Interface.updateMainWindow();
-    // need to update current folder bar
+    // need to update current folder bar only
     if (withUpdate) {
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" });  // main.QI.updateNavigationBar
     }
@@ -967,9 +979,10 @@ QuickFolders.Options = {
           break;
       }
     }
-    let updateResult = QuickFolders.Interface.updateMainWindow(true);
-    util.logDebugOptional('interface.buttonStyles', 'styleUpdate() updateMainWindow returned ' + updateResult);
-    return updateResult;
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
+                  // let updateResult = QuickFolders.Interface.updateMainWindow(true);
+                  // util.logDebugOptional('interface.buttonStyles', 'styleUpdate() updateMainWindow returned ' + updateResult);
+    return true;  // return updateResult;
   },
 
   setColoredTabStyleFromRadioGroup: function setColoredTabStyleFromRadioGroup(rgroup) {
@@ -984,7 +997,7 @@ QuickFolders.Options = {
     if (!force && prefs.getIntPref("colorTabStyle") == styleId)
       return; // no change!
     prefs.setIntPref("colorTabStyle", styleId); // 0 striped 1 filled
-    QI.updateMainWindow(false);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QI.updateMainWindow(false);
     
     let inactiveTab = document.getElementById('inactivetabs-label');
     QI.applyTabStyle(inactiveTab, styleId);
@@ -1149,7 +1162,10 @@ QuickFolders.Options = {
       QuickFolders.Preferences.setIntPreference(prefString, txtBox.value);
     else
       QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
-    return QuickFolders.Interface.updateMainWindow(false);
+    
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
+    // return QuickFolders.Interface.updateMainWindow(false);
+    return true;
   },
   
   // doing what instantApply really should provide...
@@ -1166,7 +1182,7 @@ QuickFolders.Options = {
       return true;
     switch (prefString) {
       case 'extensions.quickfolders.collapseCategories':
-        QI.updateCategoryLayout();
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCategoryBox" }); // QI.updateCategoryLayout();
         return false;
     }
     // broadcast change of current folder bar for all interested windows.
@@ -1174,7 +1190,9 @@ QuickFolders.Options = {
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" }); 
       return true;
     }
-    return QI.updateMainWindow(false); // force full updated
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // force full update
+    // return QI.updateMainWindow(false); 
+    return true;
   },
   
   toggleColorTranslucent: function toggleColorTranslucent(cb, pickerId, label, userStyle) {
@@ -1188,7 +1206,9 @@ QuickFolders.Options = {
     if (prefString)
       QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
     
-    return QuickFolders.Interface.updateMainWindow(true);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
+    // return QuickFolders.Interface.updateMainWindow(true);
+    return true;
   },
   
   // switch pastel mode on preview tabs
@@ -1229,7 +1249,7 @@ QuickFolders.Options = {
     this.initPreviewTabStyles();
     
     if (withUpdate) {
-      QuickFolders.Interface.updateMainWindow();
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow" }); // QuickFolders.Interface.updateMainWindow();
     }
   },
 
@@ -1238,7 +1258,8 @@ QuickFolders.Options = {
         myStyle = !isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
     el.style.MozBoxShadow = myStyle;
     QuickFolders.Preferences.setBoolPref('buttonShadows', !isChecked);
-    return QuickFolders.Interface.updateMainWindow(true);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); // return QuickFolders.Interface.updateMainWindow(true);
+    return true;
   },
 
   // Set Default Colors (partly from system colors) 
@@ -1271,7 +1292,8 @@ QuickFolders.Options = {
     getElement("inactivetabs-label").style.backgroundColor = buttonfaceColor;
     getElement("inactive-fontcolorpicker").value = buttontextColor;
     getElement("inactivetabs-label").style.color = buttontextColor;
-    return QuickFolders.Interface.updateMainWindow();
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // return QuickFolders.Interface.updateMainWindow();
+    return true;
   },
 
   sendMail: function sendMail(mailto = QuickFolders.Util.ADDON_SUPPORT_MAIL) {
@@ -1438,7 +1460,9 @@ QuickFolders.Options = {
     }
     if (updateUI) {
       // make sure QuickFolders UI is updated when about:config is closed.
-      w.addEventListener('unload', function(event) { QuickFolders.Interface.updateMainWindow(); });
+      w.addEventListener('unload', function(event) { 
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QuickFolders.Interface.updateMainWindow(); 
+      });
     }
     w.focus();
     w.addEventListener('load', 

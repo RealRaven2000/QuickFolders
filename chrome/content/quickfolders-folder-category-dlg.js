@@ -289,9 +289,7 @@ var CatWin = {
 		}
 		
 		this.CategoriesListBox.value = QuickFolders.FolderCategory.ALL;
-		const mainInterface = util.getMail3PaneWindow().QuickFolders.Interface;
-		mainInterface.updateCategories();
-		// mainInterface.updateCategoryLayout();
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCategoryBox" }); // QI.updateCategoryLayout();
 	} ,
 
 	getCategoryColor: function(cat) {

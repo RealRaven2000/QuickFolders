@@ -39,7 +39,7 @@ var ChangeOrder = {
   
   accept: function() {
     QuickFolders.Model.update(); 
-    QuickFolders.Interface.updateMainWindow(false);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QuickFolders.Interface.updateMainWindow(false);
   } ,
 
 	showFolders: function() {

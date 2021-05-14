@@ -125,8 +125,12 @@ async function main() {
         );
         break;
         
-      case "updateCurrentFolderBar":
-        messenger.NotifyTools.notifyExperiment({event: "updateCurrentFolderBar"});
+      case "updateNavigationBar":
+        messenger.NotifyTools.notifyExperiment({event: "updateNavigationBar"});
+        break;
+
+      case "toggleNavigationBar":
+        messenger.NotifyTools.notifyExperiment({event: "toggleNavigationBar"});
         break;
 
       case "updateLicense":

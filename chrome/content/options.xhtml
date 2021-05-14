@@ -309,18 +309,18 @@
 							<checkbox id="chkCurrentFolderShow"
 												label="__MSG_qf.checkbox.currentFolder.show__"
 												preference="qfpa-ShowCurrentFolderBar"
-												oncommand="options.toggleCurrentFolderBar(this,'');" />
+												oncommand="options.toggleNavigationBar(this,'');" />
 							<checkbox id="chkCurrentFolderShowSingleTab"
 												class="indent"
 												label="__MSG_qf.checkbox.singleMessageTab.currentFolder.show__"
 												preference="qfpa-ShowCurrentFolderBar-MsgTab"
-												oncommand="options.toggleCurrentFolderBar(this,'singleMailTab');" />
+												oncommand="options.toggleNavigationBar(this,'singleMailTab');" />
 							<checkbox id="chkCurrentFolderShowSingleMsg"
 												class="indent"
 												label="__MSG_qf.checkbox.singleMessage.currentFolder.show__"
 												tooltiptext="__MSG_qf.checkbox.singleMessage.currentFolder.tooltip__"
 												preference="qfpa-ShowCurrentFolderBar-SingleMessage"
-												oncommand="options.toggleCurrentFolderBar(this,'messageWindow');" />
+												oncommand="options.toggleNavigationBar(this,'messageWindow');" />
 							<checkbox id="chkRecentCurrent"
 												label="__MSG_qf.checkbox.showRecentButton__"
 												tooltiptext="__MSG_qf.checkbox.showRecentTab.tooltip__"
@@ -481,7 +481,7 @@
 							<hbox flex="1" align="center">
 								<checkbox label="__MSG_qf.checkbox.currentfolder.lightweight__"
 													preference="qfpa-CurrentFolder-Lightweight"
-													oncommand="options.toggleBoolPreference(this,false); options.updateCurrentFolderBar();" />
+													oncommand="options.toggleBoolPreference(this,false); options.updateNavigationBar();" />
 								<spacer flex="1" />
 								<label control="leftSpacer"
 											 value ="__MSG_qf.currentfolder.leftSpacer__" />
@@ -490,7 +490,7 @@
                   type="number"
                   class="num1digit"
                   preference="qfpa-flexLeft"
-                  onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
+                  onchange="options.changeTextPreference(this); options.updateNavigationBar();" />
 								<label control="rightSpacer"
 											 value ="__MSG_qf.currentfolder.rightSpacer__" />
 								<html:input
@@ -498,7 +498,7 @@
 								  type="number"
 									class="num1digit"
 									preference="qfpa-flexRight"
-									onchange="options.changeTextPreference(this); options.updateCurrentFolderBar();" />
+									onchange="options.changeTextPreference(this); options.updateNavigationBar();" />
 								<spacer flex="2" />
 							</hbox>
 						</vbox>

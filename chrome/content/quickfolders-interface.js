@@ -654,11 +654,11 @@ QuickFolders.Interface = {
 		QuickFolders.Interface.updateUserStyles();
   },
 
-	updateCurrentFolderBar: function updateCurrentFolderBar(styleSheet) {
+	updateNavigationBar: function updateNavigationBar(styleSheet) {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
           
-    let isEvent = typeof styleSheet.target != "undefined"; // did we call this from a event listener?
+    let isEvent = styleSheet && typeof styleSheet.target != "undefined"; // did we call this from a event listener?
     if (isEvent) styleSheet = null; // throw away the parameter, it's not what we need!
     
 		function collapseConfigItem(id, isShownSetting, checkParent) {
@@ -671,7 +671,7 @@ QuickFolders.Interface = {
 			return element;
 		}
 
-		util.logDebugOptional("interface", "updateCurrentFolderBar() - " + window.location);
+		util.logDebugOptional("interface", "updateNavigationBar() - " + window.location);
 		try {
 			collapseConfigItem("QuickFolders-Close", "currentFolderBar.showClose");
 			collapseConfigItem("QuickFolders-currentFolderFilterActive", "currentFolderBar.showFilterButton");
@@ -746,7 +746,7 @@ QuickFolders.Interface = {
 
 		}
     catch (ex) {
-      util.logException("updateCurrentFolderBar()", ex);
+      util.logException("updateNavigationBar()", ex);
     }
 
 	} ,
@@ -5249,15 +5249,6 @@ QuickFolders.Interface = {
 
     // avoid re-entry
     QI.lastTabSelected = folder;
-
-/* 		// single message window:
-		if (prefs.isShowCurrentFolderToolbar('messageWindow')) {
-			let singleMessageWindow = util.getSingleMessageWindow();
-			if (singleMessageWindow && singleMessageWindow.gMessageDisplay && singleMessageWindow.gMessageDisplay.displayedMessage) {
-				let singleMessageCurrentFolderTab = singleMessageWindow.document.getElementById('QuickFoldersCurrentFolder');
-				QI.initCurrentFolderTab(singleMessageCurrentFolderTab, singleMessageWindow.gMessageDisplay.displayedMessage.folder);
-			}
-		} */
     return folder;
 	} ,
 
@@ -5315,7 +5306,7 @@ QuickFolders.Interface = {
 
   } ,
 
-	/* MESSAGE PREVIEW TOOLBAR */
+	/* INITIALIZES CURRENT FOLDER TAB AND ELEMENTS OF NAVIGATION TOOLBAR */
 	initCurrentFolderTab: function initCurrentFolderTab(currentFolderTab, folder, selectedButton, tabInfo) {
     function disableNavigation(isDisabled) {
       document.getElementById("QuickFolders-NavigateUp").disabled = isDisabled;
@@ -6068,7 +6059,7 @@ QuickFolders.Interface = {
       let tbBottom = prefs.getUserStyle("Toolbar","bottomLineWidth", 3) + "px";
       styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane', 'border-bottom-width', tbBottom, true);
 
-			this.updateCurrentFolderBar(ss);
+			this.updateNavigationBar(ss);
 
       // change to numeric
 			let minToolbarHeight = prefs.getStringPref('toolbar.minHeight');
@@ -6243,22 +6234,28 @@ QuickFolders.Interface = {
 
   /**
    * toggles visibility of current folder toolbar
-   * @visible {bool}: visibility tag
-   * @messageWindow {string} : '?' - determine which one to close from context
-   *                           '' - 3pane window
+   * @visibleOrEvent {bool}: visibility tag - or an event if called from notification tools
+   * @selectorIn    {string} : "" - determine which one to close from current window / tab context
    *                           'singleMailTab' - a single message (conversation) tab
    *                           'messageWindow' - a single mail window
    **/
-	displayNavigationToolbar: function displayNavigationToolbar(visible, selector = '') {
+	displayNavigationToolbar: function displayNavigationToolbar(visibleOrEvent, selectorIn = '') {
     const util = QuickFolders.Util;
+    var windowType;
     try {
-      const mail3PaneWindow = util.getMail3PaneWindow(),
-            mailMessageWindow = util.getSingleMessageWindow();
+      let win, 
+          doc,
+          isVisible,
+          isEvent,
+          selector = selectorIn;
+            
+      // determine selector from context
+      windowType = document.getElementById('messengerWindow').getAttribute('windowtype');
+      // first parameter may be an event - coming from notification!
+      isEvent = visibleOrEvent && (typeof visibleOrEvent["target"] !== "undefined");;
 
-      if (selector=='?') {
-        // determine selector from context
-        let wt = document.getElementById('messengerWindow').getAttribute('windowtype');
-        if (wt === 'mail:messageWindow') {
+      if (!selectorIn) {
+        if (windowType === 'mail:messageWindow') {
           selector = 'messageWindow';
         }
         else {
@@ -6268,19 +6265,19 @@ QuickFolders.Interface = {
             selector = ''; // 3pane mode
         }
       }
-      let win, doc;
-      util.logDebugOptional("interface.currentFolderBar", "displayNavigationToolbar(visible=" + visible + ", selector=" + selector + ")");
-      // store change in prefs
-      QuickFolders.Preferences.setShowCurrentFolderToolbar(visible, selector);
-
-      if (selector=='messageWindow') {
-        if (null == mailMessageWindow) return; // single message window not displayed
-        win = mailMessageWindow;
+      
+      win = window;      
+      if (!isEvent) {
+        isVisible = visibleOrEvent; // passed in directly
       }
       else {
-        if (null == mail3PaneWindow) return; // main window not displayed
-        win = mail3PaneWindow;
+        isVisible = QuickFolders.Preferences.isShowCurrentFolderToolbar(selector);
       }
+      
+      util.logDebugOptional("interface.currentFolderBar", "displayNavigationToolbar(visible=" + isVisible + ", selector=" + selector + ")");
+      // store change in prefs
+      // QuickFolders.Preferences.setShowCurrentFolderToolbar(visible, selector);
+      
       doc = win.document;
       util.logDebugOptional("interface.currentFolderBar", "win=" + win + "\ndocument=" + doc);
       if (!doc) {
@@ -6303,7 +6300,7 @@ QuickFolders.Interface = {
           + "| currentFolderBar.style.display = " + currentFolderBar.style.display  + "\n" 
           + "|===========================================================|" + "\n" 
           + "tabMode = " + tabMode + "\n" 
-          + "visible = " + visible);
+          + "visible = " + isVisible);
         if (selector == 'singleMailTab' && tabMode =='message'
             ||
             selector == '' // && tabMode == "folder"
@@ -6312,10 +6309,10 @@ QuickFolders.Interface = {
            ) {
           
           // currentFolderBar.style.display = visible ? '-moz-box' : 'none';
-          currentFolderBar.collapsed = !visible;
-          currentFolderBar.style.display = visible ? '-moz-box' : 'none';
+          currentFolderBar.collapsed = !isVisible;
+          currentFolderBar.style.display = isVisible ? '-moz-box' : 'none';
           util.logDebugOptional("interface.currentFolderBar", "Effected display of current folder bar =" + currentFolderBar.style.display);
-          if (visible && selector != 'messageWindow') {
+          if (isVisible && selector != 'messageWindow') {
             let rect = currentFolderBar.getBoundingClientRect();
             if (!rect.width)
               this.hoistCurrentFolderBar(this.CurrentFolderTab);
@@ -6330,9 +6327,8 @@ QuickFolders.Interface = {
       }
     }
     catch(ex) {
-      util.logException("displayNavigationToolbar(" + visible + ", " + selector + ")", ex);
+      util.logException("displayNavigationToolbar(" + visibleOrEvent + ", " + selector + ")", ex);
     }
-      
 	} ,
 
 	get CurrentTabMode() {
@@ -6758,11 +6754,6 @@ QuickFolders.Interface = {
 
 	}	,
 
-  // moved from options.js - this should update the main UI!
-  updateObserver: function updateObserver() {
-		let observerService = Components.classes["@mozilla.org/observer-service;1"].getService(Components.interfaces.nsIObserverService);
-		observerService.notifyObservers(null, "quickfolders-options-saved", null);
-	},
   
   showLicenseDialog: function showLicenseDialog(featureName) {
 		let params = {

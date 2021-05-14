@@ -395,6 +395,9 @@ QuickFolders.Util = {
     const prefs = QuickFolders.Preferences;
     
     try {
+      let container = getContainer();
+      if (!container) return sColorString;
+      
       if (sColorString.startsWith('rgb')) {
         // rgb colors.
         let components = sColorString.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/),
@@ -404,9 +407,9 @@ QuickFolders.Util = {
       let theColor, // convert system colors such as menubackground etc. to hex
           d = document.createXULElement ? document.createXULElement("div") : document.createElement("div");
       d.style.color = sColorString;
-      getContainer().appendChild(d)
+      container.appendChild(d)
       theColor = window.getComputedStyle(d,null).color;
-      getContainer().removeChild(d);
+      container.removeChild(d);
 
       if (theColor.search("rgb") == -1)
         return theColor; // unchanged

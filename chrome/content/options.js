@@ -94,7 +94,7 @@ QuickFolders.Options = {
       Services.prompt.alert(null,"QuickFolders","Error in QuickFolders:\n" + e);
     };
     this.rememberLastTab();
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // QI.updateObserver
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // replaced QI.updateObserver
     return true;
   } ,
   
@@ -948,7 +948,7 @@ QuickFolders.Options = {
     //  QuickFolders.Interface.updateMainWindow();
     // need to update current folder bar
     if (withUpdate) {
-      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCurrentFolderBar" });  // main.QI.updateCurrentFolderBar
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" });  // main.QI.updateNavigationBar
     }
   },
   
@@ -1171,7 +1171,7 @@ QuickFolders.Options = {
     }
     // broadcast change of current folder bar for all interested windows.
     if (prefString.includes(".currentFolderBar.")) {
-      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCurrentFolderBar" }); 
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" }); 
       return true;
     }
     return QI.updateMainWindow(false); // force full updated
@@ -1475,12 +1475,11 @@ QuickFolders.Options = {
   },
   
   // 3pane window only?
-  toggleCurrentFolderBar: function toggleCurrentFolderBar(chk, selector) {
-    let checked = chk.checked ? chk.checked : false,
-        util = QuickFolders.Util,
-        win = (selector=='messageWindow') ? util.getSingleMessageWindow() : util.getMail3PaneWindow();
-    if (win)
-      win.QuickFolders.Interface.displayNavigationToolbar(checked, selector);
+  toggleNavigationBar: function toggleNavigationBar(chk, selector) {
+    let checked = chk.checked ? chk.checked : false;
+    QuickFolders.Preferences.setShowCurrentFolderToolbar(checked, selector);
+    // we should not call displayNavigationToolbar directly but use the event broadcaster to notify all windows.
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "toggleNavigationBar" }); 
   },
   
   get currentOptionsTab() {
@@ -1880,7 +1879,7 @@ QuickFolders.Options = {
         }
         if (isLayoutModified) { // instant visual feedback
           //  update the main window layout
-          QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // QI.updateObserver();
+          QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // replaced QI.updateObserver();
         }
         
 			}

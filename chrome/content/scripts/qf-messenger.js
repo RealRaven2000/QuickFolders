@@ -254,7 +254,7 @@ async function onLoad(activatedWhileWindowOpen) {
             <menuitem id="QuickFolders-ToolbarPopup-displayPreviewToolbar"
                       label="__MSG_qf.menuitem.quickfolders.displayPreviewToolbar__"
                       accesskey="__MSG_qf.menuitem.quickfolders.displayPreviewToolbarAccessKey__"
-                      oncommand="QuickFolders.Interface.displayNavigationToolbar(true,'?');"
+                      oncommand="QuickFolders.Interface.displayNavigationToolbar(true);"
                       class="cmd menuitem-iconic"
                       tagName="qfPreviewToolbar" 
                       />
@@ -412,7 +412,7 @@ async function onLoad(activatedWhileWindowOpen) {
         <toolbarbutton id="QuickFolders-Close"
                        class="icon"
                        tooltiptext="__MSG_qf.tooltip.closeToolbar__"
-                       oncommand="QuickFolders.Interface.displayNavigationToolbar(false,'?');" />
+                       oncommand="QuickFolders.Interface.displayNavigationToolbar(false);" />
       </toolbar>
       <spacer flex="5" id="QF-CurrentRightSpacer" />
     </hbox>` +
@@ -507,12 +507,13 @@ async function onLoad(activatedWhileWindowOpen) {
   // Enable the global notify notifications from background.
   window.QuickFolders.Util.notifyTools.enable();
   await window.QuickFolders.Util.init();
-  window.addEventListener( "QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
+  window.addEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
   const QI = window.QuickFolders.Interface;
-  window.addEventListener( "QuickFolders.BackgroundUpdate.updateFoldersUI", QI.updateFoldersUI.bind(QI));
-  window.addEventListener( "QuickFolders.BackgroundUpdate.updateUserStyles", QI.updateUserStyles.bind(QI));
-  window.addEventListener( "QuickFolders.BackgroundUpdate.updateCurrentFolderBar", QI.updateCurrentFolderBar.bind(QI));
-  window.addEventListener( "QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", QI.updateQuickFoldersLabel.bind(QI));
+  window.addEventListener("QuickFolders.BackgroundUpdate.updateFoldersUI", QI.updateFoldersUI.bind(QI));
+  window.addEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", QI.updateUserStyles.bind(QI));
+  window.addEventListener("QuickFolders.BackgroundUpdate.updateNavigationBar", QI.updateNavigationBar.bind(QI));
+  window.addEventListener("QuickFolders.BackgroundUpdate.toggleNavigationBar", QI.displayNavigationToolbar.bind(QI));
+  window.addEventListener("QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", QI.updateQuickFoldersLabel.bind(QI));
   
   window.QuickFolders.initDelayed(WL);
   
@@ -524,7 +525,8 @@ function onUnload(isAddOnShutDown) {
   window.removeEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateFoldersUI", window.QuickFolders.Interface.updateFoldersUI);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", window.QuickFolders.Interface.updateUserStyles);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateCurrentFolderBar", window.QuickFolders.Interface.updateCurrentFolderBar);
+  window.removeEventListener("QuickFolders.BackgroundUpdate.updateNavigationBar", window.QuickFolders.Interface.updateNavigationBar);
+  window.removeEventListener("QuickFolders.BackgroundUpdate.toggleNavigationBar", window.QuickFolders.Interface.displayNavigationToolbar);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", window.QuickFolders.Interface.updateQuickFoldersLabel);
   
   // restore global overwritten functions 

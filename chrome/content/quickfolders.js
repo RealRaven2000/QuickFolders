@@ -740,8 +740,8 @@ var QuickFolders = {
           + "\ndocument.title: " + doc.title )
 
       if (wt === 'mail:messageWindow') {
-        util.logDebug('Calling displayNavigationToolbar()');
-        QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
+        util.logDebug("QuickFolders.initSingleMsg() - Calling displayNavigationToolbar()");
+        QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'));
         // set current folder tab label
         if (win.arguments) {
           let args = win.arguments,
@@ -920,16 +920,7 @@ var QuickFolders = {
 		if (QuickFolders.FolderTree)
 			QuickFolders.FolderTree.init();
 
-    // old observer - replaced with notifyTools command "updateFoldersUI"
-		// let observerService = Cc["@mozilla.org/observer-service;1"].getService(Ci.nsIObserverService);
-		// observerService.addObserver({
-			// observe: function() {
-				// QuickFolders.Interface.updateFolders(true, false);
-				// QuickFolders.Interface.updateUserStyles();
-			// }
-		// },"quickfolders-options-saved", false);
-
-		that.Util.logDebug("call displayNavigationToolbar.");
+		that.Util.logDebug("QuickFolders.Init() - call displayNavigationToolbar.");
 		// remember whether toolbar was shown, and make invisible or initialize if necessary
     // default to folder view
 		QI.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar(), ''); 

@@ -60,7 +60,7 @@ QuickFolders.TabListener = {
           else 
             util.logDebug("TabListener single message - could not determine currently displayed Message.");
         }
-        if (tabMode == 'message' || tabMode == 'folder')
+        else
         {
           // Do not switch to current folder's category, if current tab has another selected!
           if (!info.QuickFoldersCategory) {

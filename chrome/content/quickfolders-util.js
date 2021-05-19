@@ -78,18 +78,18 @@ QuickFolders.Util = {
           window.dispatchEvent(event); 
         }       
       }      
-      
     }   
     QuickFolders.Util.notifyTools.registerListener(onBackgroundUpdates);
     QuickFolders.Util.licenseInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getLicenseInfo" });
     QuickFolders.Util.platformInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getPlatformInfo" });
     QuickFolders.Util.browserInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getBrowserInfo" });
     QuickFolders.Util.addonInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getAddonInfo" });
-    console.log({
+    QuickFolders.Util.logDebugOptional("notifications",
+    {
       platformInfo: QuickFolders.Util.platformInfo,
       browserInfo: QuickFolders.Util.browserInfo,
       addonInfo: QuickFolders.Util.addonInfo,
-    })
+    });
   },
   
   $: function(id) {
@@ -1930,13 +1930,6 @@ Object.defineProperty(QuickFolders.Util, "Accounts",
 
 
 // refactored from async Task with help of @freaktechnik
-// asyunc function should be fine for Tb52.
-// Tb68: originally this code was resident in
-//       chrome/content/shimECMAnew/quickfolders-shimEcma.js
-//       and has dependencies on the existence of the following core modules:
-//       Task.jsm  (integrated since Tb67)
-//       PromiseUtils.jsm (obsolete?)
-// 
 QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
     const Ci = Components.interfaces,
           Cc = Components.classes,
@@ -1959,12 +1952,7 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
     );
     if (fls)
       folder = fls.getOrCreateFolderForURL(aUrl); 
-    else {
-      // old method, relying on Ci.nsIRDFService
-      // let rdf = Cc["@mozilla.org/rdf/rdf-service;1"].getService(Ci.nsIRDFService);
-      // folder = rdf.GetResource(aUrl).QueryInterface(Ci.nsIMsgFolder);
-      folder = null;
-    }
+
 
     logDebug('folder = ' + folder);   
     // Now try to ask the server if it has the folder. This will force folder
@@ -2003,8 +1991,6 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
       
       
       if (needToCreate) {
-        const GP = 
-          ChromeUtils.generateQI ? ChromeUtils : XPCOMUtils;
         const deferred = new Promise((resolve, reject) => {
           const listener = {
             OnStartRunningUrl(url) {},
@@ -2015,8 +2001,7 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
                 reject(aExitCode);
             },
             QueryInterface:  // Tb 68 XPCOMUtils.generateQI doesn't exist anymore
-              GP.generateQI([Ci.nsIUrlListener])
-              
+            ChromeUtils.generateQI([Ci.nsIUrlListener])
           };
    
           // If any error happens, it will throw--causing the outer promise to

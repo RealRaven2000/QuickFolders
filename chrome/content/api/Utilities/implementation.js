@@ -23,19 +23,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           win.QuickFolders.Util.logDebug(text);
         },
         
-        getAddonVersion: function() {
-          return win.QuickFolders.Util.Version;
-        },
-
-        getTBVersion : function() { //somehow(??), we can also get this in MX
-          return Services.appinfo.version;//win.QuickFolders.Util.VersionSanitized;
-        },
-
-
-        getAddonName : function() {
-          return win.QuickFolders.Util.ADDON_NAME;
-        },
-        
         getUserName : function () {
           const util = win.QuickFolders.Util;
           let Accounts = util.Accounts; 

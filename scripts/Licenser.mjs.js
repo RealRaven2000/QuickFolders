@@ -142,6 +142,70 @@ export class Licenser {
   get isExpired() { // valid, but expired
     return (this.ValidationStatus == LicenseStates.Expired);
   }
+  
+	get graceDate() {
+		let graceDate = "", isResetDate = false;
+		try {
+			graceDate = prefs.getStringPref("license.gracePeriodDate");
+		}
+		catch(ex) { 
+			isResetDate = true; 
+		}
+		let today = new Date().toISOString().substr(0, 10); // e.g. "2019-07-18"
+		if (!graceDate || graceDate>today) {
+			graceDate = today; // cannot be in the future
+			isResetDate = true;
+		}
+		else {
+			// if a license exists & is expired long ago, use the last day of expiration date.
+			if (this.ValidationStatus == LicenseStates.Expired) {
+				if (graceDate < this.getDecryptedDate()) {
+					log("Extending graceDate from {0} to {1}".replace("{0}",graceDate).replace("{1}", this.getDecryptedDate()));
+					graceDate = this.getDecryptedDate();
+					isResetDate = true;
+				}
+			}
+		}
+		if (isResetDate) {
+      Components.classes["@mozilla.org/preferences-service;1"]
+             .getService(Components.interfaces.nsIPrefBranch)
+			       .setStringPref("extensions.smartTemplate4.license.gracePeriodDate", graceDate);
+    }
+		// log("Returning Grace Period Date: " + graceDate);
+		return graceDate;
+	}  
+  
+	get TrialDays() {
+		let graceDate; // actually the install date
+		const period = 28,
+		      SINGLE_DAY = 1000*60*60*24; 
+		try {
+      if (this.ValidationStatus == LicenseStates.Expired) {
+        // [issue 100] Trial period should restart on license expiry
+        graceDate = this.DecryptedDate;
+      }
+      else {
+        try {
+          graceDate = 
+           Components.classes["@mozilla.org/preferences-service;1"]
+             .getService(Components.interfaces.nsIPrefBranch)
+             .getStringPref("extensions.smartTemplate4.license.gracePeriodDate");
+        }
+        catch (e) {graceDate = ""}
+      }
+			if (!graceDate) graceDate = this.graceDate(); // create the date
+		}
+		catch(ex) { 
+		  // if it's not there, set it now!
+			graceDate = this.graceDate(); 
+		}
+		let today = (new Date()),
+		    installDate = new Date(graceDate),
+				days = Math.floor( (today.getTime() - installDate.getTime()) / SINGLE_DAY);
+		// later.setDate(later.getDate()-period);
+    return (period - days); // returns number of days left, or -days since trial expired if past period
+	}
+  
 
   isIdMatchedLicense(idMail, licenseMail) {
     try {

@@ -1356,7 +1356,8 @@ var QuickFolders = {
               },
               function failedCreateFolder(ex) {
                 util.logException('getOrCreateFolder() ', ex);	
-                util.alert("Something unforeseen happened trying to create the folder, for detailed info please check error console!");
+                util.alert("Something unforeseen happened trying to create the folder, for detailed info please check tools / developer tools / error console!\n"
+                  + "To add more detail, enable debug mode in QuickFolders advanced settings.");
               }
             );
 						

@@ -610,7 +610,6 @@ QuickFolders.Options = {
     btnLoadConfig.disabled = !isEnabled;
   },
   
-  // to do: fix this mess!
   // this function is called on load and from validateLicenseInOptions
   // was decryptLicense
   updateLicenseOptionsUI: async function updateLicenseOptionsUI() {
@@ -703,6 +702,7 @@ QuickFolders.Options = {
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
   },
   
+  // send new key to background page for validation
   validateNewKey: async function validateNewKey() {
     this.trimLicense();
     let rv = await QuickFolders.Util.notifyTools.notifyBackground({ func: "updateLicense", key: document.getElementById('txtLicenseKey').value });
@@ -753,7 +753,7 @@ QuickFolders.Options = {
     // 1 - sanitize License
     // 2 - validate license
     // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
-    this.updateLicenseOptionsUI();
+    this.updateLicenseOptionsUI(); // async!
     // this the updating the first button on the toolbar via the main instance
     // we use the quickfolders label to show if License needs renewal!
     // use notify tools for updating the [QuickFolders] label 

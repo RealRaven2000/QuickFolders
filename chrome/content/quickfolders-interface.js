@@ -2953,12 +2953,8 @@ QuickFolders.Interface = {
     if (evt) evt.stopPropagation();
 
     util.logDebugOptional("interface", "QuickFolders.Interface.onNewFolder()");
-		if (util.getOrCreateFolder) {
-			QI.onCreateInstantFolder(folder);  // async function
-		}
-		else { 
-      QI.globalTreeController.newFolder(folder);
-		}
+    
+    QI.onCreateInstantFolder(folder);  // async function
 	},
 
 	// * function for creating a new folder under a given parent

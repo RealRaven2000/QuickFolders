@@ -143,6 +143,7 @@ export class Licenser {
     return (this.ValidationStatus == LicenseStates.Expired);
   }
   
+  // for future use (standard license / trial periods)
 	get graceDate() {
 		let graceDate = "", isResetDate = false;
 		try {

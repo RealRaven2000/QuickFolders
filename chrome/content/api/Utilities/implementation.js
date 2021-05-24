@@ -5,7 +5,6 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var win = Services.wm.getMostRecentWindow("mail:3pane"); 
 
 
-console.log("quickfolders implementation utilities");
 var Utilities = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {    
     

@@ -36,7 +36,6 @@ addEventListener("load", async (event) => {
           addonVer = manifest.version,
           appVer = browserInfo.version,
           hoursWorked = 290;
-    const mxUtilties = messenger.Utilities;
 
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)

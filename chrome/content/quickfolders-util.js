@@ -74,7 +74,15 @@ QuickFolders.Util = {
           QuickFolders.Util.logDebugOptional("notifications", 
             `onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.${data.event}\n` +
             `into ${window.document.location.href.toString()}`);
-          const event = new CustomEvent(`QuickFolders.BackgroundUpdate.${data.event}`);
+          let event;
+          if (data.detail) {
+            // use CustomEvent.detail for transporting function parameters?
+            event = new CustomEvent(`QuickFolders.BackgroundUpdate.${data.event}`, {detail: data.detail}) 
+          }
+          else {
+            event =  new CustomEvent(`QuickFolders.BackgroundUpdate.${data.event}`) ;
+          }
+          
           window.dispatchEvent(event); 
         }       
       }      
@@ -185,9 +193,9 @@ QuickFolders.Util = {
   } ,
 
   get Version() {
-    console.log("Version() getter. addonInfo:", QuickFolders.Util.addonInfo);
-    return QuickFolders.Util.addonInfo.version;
     // this used to call VersionProxy() which opened quickfolders.init
+    QuickFolders.Util.logDebug("Version() getter. addonInfo:", QuickFolders.Util.addonInfo);
+    return QuickFolders.Util.addonInfo.version;
   } ,
 
   get VersionSanitized() {

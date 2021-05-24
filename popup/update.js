@@ -12,8 +12,6 @@ addEventListener("click", async (event) => {
     messenger.Utilities.openLinkExternally("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");    
 	}
   if (event.target.id=='whatsNew') {
-    const manifest = await messenger.runtime.getManifest(),
-          version = manifest.version;
     messenger.Utilities.showVersionHistory();
     
   }

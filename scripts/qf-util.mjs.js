@@ -7,6 +7,6 @@ export function slideAlert(title, text, icon) {
 	});
 }
 
-export function log(origin, data, mode = "log") { // log, info, warn, error
-	console[mode](origin, data);
+export function log(msg, data, mode = "log") { // log, info, warn, error
+	console[mode](msg, data);
 }

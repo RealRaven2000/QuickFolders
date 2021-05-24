@@ -19,12 +19,10 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js"
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-listener.js", window, "UTF-8");
 
 async function onLoad(activatedWhileWindowOpen) {
-  console.log (Services.appinfo.version);
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
   layout.setAttribute("title", "QuickFolderStyles");
          
   let tb = WL.injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
-  // tb.setAttribute("title", "QuickFolderStyles");
   
   WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
   WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css");

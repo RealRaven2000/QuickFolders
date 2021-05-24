@@ -961,7 +961,6 @@ var QuickFolders = {
   
   // all main window elements that change depending on license status (e.g. display "Expired" instead of QuickFolders label)
   initLicensedUI: function initLicensedUI() {
-    console.log("initLicensedUI");
     let State = QuickFolders.Util.licenseInfo.status,
         hasLicense = QuickFolders.Util.hasPremiumLicense();
     QuickFolders.Util.logDebug ("initLicensedUI - hasLicense = " + hasLicense + "\n licenseInfo:", QuickFolders.Util.licenseInfo);

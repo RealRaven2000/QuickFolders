@@ -3010,7 +3010,7 @@ QuickFolders.Interface = {
 					}
 		    },
 				function failedCreateFolder(ex) {
-					util.logException('getOrCreateFolder() ', ex);
+					util.logException('Exception in getOrCreateFolder() ', ex);
 				}
 			);
 	},

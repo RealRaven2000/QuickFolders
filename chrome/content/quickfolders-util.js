@@ -1091,7 +1091,7 @@ QuickFolders.Util = {
     for (let i=0; i<options.length; i++) {
       let option = options[i];
       if (QuickFolders.Preferences.isDebugOption(option)) {
-        this.logWithOption(option, msg);
+        this.logWithOption(...arguments);
         break; // only log once, in case multiple log switches are on
       }
     }
@@ -1537,408 +1537,377 @@ QuickFolders.Util = {
   } ,
   
   
+  // All following code was added a shim Objects in earlier versions to be backwards compatible  
+  FirstRun : {
+    init: function init() {
+      const util = QuickFolders.Util,
+            prefs = QuickFolders.Preferences,
+            quickMoveSettings = QuickFolders.quickMove.Settings;
+      let prev = -1, firstrun = true,
+          showFirsts = true, debugFirstRun = false,
+          prefBranchString = "extensions.quickfolders.",
+          svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService),
+          ssPrefs = svc.getBranch(prefBranchString);
 
-  
-};  // QuickFolders.Util
+      try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstrun")); } 
+      catch (e) { debugFirstRun = false; }
 
-
-// https://developer.mozilla.org/en/Code_snippets/On_page_load#Running_code_on_an_extension%27s_first_run_or_after_an_extension%27s_update
-QuickFolders.Util.FirstRun = {
-  init: function init() {
-    const util = QuickFolders.Util,
-          prefs = QuickFolders.Preferences,
-          quickMoveSettings = QuickFolders.quickMove.Settings;
-    let prev = -1, firstrun = true,
-        showFirsts = true, debugFirstRun = false,
-        prefBranchString = "extensions.quickfolders.",
-        svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService),
-        ssPrefs = svc.getBranch(prefBranchString);
-
-    try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstrun")); } 
-    catch (e) { debugFirstRun = false; }
-
-    util.logDebugOptional ("firstrun","QuickFolders.Util.FirstRun.init()");
-    if (!ssPrefs) {
-      util.logDebugOptional ("firstrun","Could not retrieve prefbranch for " + prefBranchString);
-    }
-
-    let current = util.Version;
-    util.logDebug("Current QuickFolders Version: " + current);
-
-    try {
-      util.logDebugOptional ("firstrun","try to get setting: getStringPref(version)");
-      try { prev = ssPrefs.getStringPref("version"); }
-      catch (e) {
-        prev = "?";
-        util.logDebugOptional ("firstrun","Could not determine previous version - " + e);
-      } ;
-
-      util.logDebugOptional ("firstrun","try to get setting: getBoolPref(firstrun)");
-      try { firstrun = ssPrefs.getBoolPref("firstrun"); } catch (e) { firstrun = true; }
-
-      // enablefirstruns=false - allows start pages to be turned off for partners
-      util.logDebugOptional ("firstrun","try to get setting: getBoolPref(enablefirstruns)");
-      try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch (e) { showFirsts = true; }
-
-      util.logDebugOptional ("firstrun", "Settings retrieved:"
-          + "\nprevious version=" + prev
-          + "\ncurrent version=" + current
-          + "\nfirstrun=" + firstrun
-          + "\nshowfirstruns=" + showFirsts
-          + "\ndebugFirstRun=" + debugFirstRun);
-
-    }
-    catch(e) {
-      util.alert("QuickFolders exception in QuickFolders-util.js: " + e.message
-        + "\n\ncurrent: " + current
-        + "\nprev: " + prev
-        + "\nfirstrun: " + firstrun
-        + "\nshowFirstRuns: " + showFirsts
-        + "\ndebugFirstRun: " + debugFirstRun);
-    }
-    finally {
-      util.logDebugOptional ("firstrun","finally - firstrun=" + firstrun);
-      let suppressVersionScreen = false,
-      // AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
-          pureVersion = util.VersionSanitized;
-      util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
-      
-      if (pureVersion >= '3.12' && prev < "3.12") {
-        QuickFolders.Model.upgradePalette(ssPrefs);
+      util.logDebugOptional ("firstrun","QuickFolders.Util.FirstRun.init()");
+      if (!ssPrefs) {
+        util.logDebugOptional ("firstrun","Could not retrieve prefbranch for " + prefBranchString);
       }
-      
-      // STORE CURRENT VERSION NUMBER!
-      if (prev!=pureVersion && current!='?') {
-        util.logDebugOptional ("firstrun","Store current version " + current);
-        ssPrefs.setStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
-      }
-      else {
-        util.logDebugOptional ("firstrun","Can't store current version: " + current
-          + "\nprevious: " + prev.toString()
-          + "\ncurrent!='?' = " + (current!='?').toString()
-          + "\nprev!=current = " + (prev!=current).toString());
-      }
-      // NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
-      if (firstrun){  // FIRST TIME INSTALL
-        util.logDebugOptional ("firstrun","set firstrun=false");
-        ssPrefs.setBoolPref("firstrun",false);
 
-        if (showFirsts) {
-          // on very first run, we go to the index page - welcome blablabla
-          util.logDebugOptional ("firstrun","setTimeout for content tab (index.html)");
-          window.setTimeout(function() {
-            util.openURL(null, "https://quickfolders.org/index.html");
-          }, 1500); 
-        }
+      let current = util.Version;
+      util.logDebug("Current QuickFolders Version: " + current);
+
+      try {
+        util.logDebugOptional ("firstrun","try to get setting: getStringPref(version)");
+        try { prev = ssPrefs.getStringPref("version"); }
+        catch (e) {
+          prev = "?";
+          util.logDebugOptional ("firstrun","Could not determine previous version - " + e);
+        } ;
+
+        util.logDebugOptional ("firstrun","try to get setting: getBoolPref(firstrun)");
+        try { firstrun = ssPrefs.getBoolPref("firstrun"); } catch (e) { firstrun = true; }
+
+        // enablefirstruns=false - allows start pages to be turned off for partners
+        util.logDebugOptional ("firstrun","try to get setting: getBoolPref(enablefirstruns)");
+        try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch (e) { showFirsts = true; }
+
+        util.logDebugOptional ("firstrun", "Settings retrieved:"
+            + "\nprevious version=" + prev
+            + "\ncurrent version=" + current
+            + "\nfirstrun=" + firstrun
+            + "\nshowfirstruns=" + showFirsts
+            + "\ndebugFirstRun=" + debugFirstRun);
+
       }
-      else {    
-        let isPremiumLicense = util.hasPremiumLicense() || QuickFolders.Util.licenseInfo.isExpired,
-            versionPage = util.makeUriPremium("https://quickfolders.org/version.html") + "#" + pureVersion;
-        // UPDATE CASE 
-        // this section does not get loaded if it's a fresh install.
-        suppressVersionScreen = prefs.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate");
+      catch(e) {
+        util.alert("QuickFolders exception in QuickFolders-util.js: " + e.message
+          + "\n\ncurrent: " + current
+          + "\nprev: " + prev
+          + "\nfirstrun: " + firstrun
+          + "\nshowFirstRuns: " + showFirsts
+          + "\ndebugFirstRun: " + debugFirstRun);
+      }
+      finally {
+        util.logDebugOptional ("firstrun","finally - firstrun=" + firstrun);
+        let suppressVersionScreen = false,
+        // AG if this is a pre-release, cut off everything from "pre" on... e.g. 1.9pre11 => 1.9
+            pureVersion = util.VersionSanitized;
+        util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
         
-        // SILENT UPDATES
-        // Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
-        // then set suppressVersionScreen = true;
-        if (isPremiumLicense) {
-          util.logDebugOptional ("firstrun","has premium license.");
+        if (pureVersion >= '3.12' && prev < "3.12") {
+          QuickFolders.Model.upgradePalette(ssPrefs);
         }
         
-        QuickFolders.Model.updatePalette();
-
-        if (prev!=pureVersion) {
-          util.logDebugOptional ("firstrun","prev!=current -> upgrade case.");
-          // upgrade case!!
-          let sUpgradeMessage = util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version:")
-             + " " + current;
+        // STORE CURRENT VERSION NUMBER!
+        if (prev!=pureVersion && current!='?') {
+          util.logDebugOptional ("firstrun","Store current version " + current);
+          ssPrefs.setStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+        }
+        else {
+          util.logDebugOptional ("firstrun","Can't store current version: " + current
+            + "\nprevious: " + prev.toString()
+            + "\ncurrent!='?' = " + (current!='?').toString()
+            + "\nprev!=current = " + (prev!=current).toString());
+        }
+        // NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
+        if (firstrun){  // FIRST TIME INSTALL
+          util.logDebugOptional ("firstrun","set firstrun=false");
+          ssPrefs.setBoolPref("firstrun",false);
 
           if (showFirsts) {
-            // version is different => upgrade (or conceivably downgrade)
-            // DONATION PAGE - REMOVED
-            // VERSION HISTORY PAGE
-            // display version history - disable by right-clicking label above show history panel
-            if (!suppressVersionScreen) {
-              util.logDebugOptional ("firstrun","open tab for version history, QF " + current);
-              window.setTimeout(function(){ util.openURL(null, versionPage); }, 2200);
+            // on very first run, we go to the index page - welcome blablabla
+            util.logDebugOptional ("firstrun","setTimeout for content tab (index.html)");
+            window.setTimeout(function() {
+              util.openURL(null, "https://quickfolders.org/index.html");
+            }, 1500); 
+          }
+        }
+        else {    
+          let isPremiumLicense = util.hasPremiumLicense() || QuickFolders.Util.licenseInfo.isExpired,
+              versionPage = util.makeUriPremium("https://quickfolders.org/version.html") + "#" + pureVersion;
+          // UPDATE CASE 
+          // this section does not get loaded if it's a fresh install.
+          suppressVersionScreen = prefs.getBoolPrefSilent("extensions.quickfolders.hideVersionOnUpdate");
+          
+          // SILENT UPDATES
+          // Check for Maintenance updates (no donation screen when updating to 3.12.1, 3.12.2, etc.)
+          // then set suppressVersionScreen = true;
+          if (isPremiumLicense) {
+            util.logDebugOptional ("firstrun","has premium license.");
+          }
+          
+          QuickFolders.Model.updatePalette();
+
+          if (prev!=pureVersion) {
+            util.logDebugOptional ("firstrun","prev!=current -> upgrade case.");
+            // upgrade case!!
+            let sUpgradeMessage = util.getBundleString ("qfAlertUpgradeSuccess", "QuickFolders was successfully upgraded to version:")
+               + " " + current;
+
+            if (showFirsts) {
+              // version is different => upgrade (or conceivably downgrade)
+              // DONATION PAGE - REMOVED
+              // VERSION HISTORY PAGE
+              // display version history - disable by right-clicking label above show history panel
+              if (!suppressVersionScreen) {
+                util.logDebugOptional ("firstrun","open tab for version history, QF " + current);
+                window.setTimeout(function(){ util.openURL(null, versionPage); }, 2200);
+              }
+            }
+
+            window.setTimeout(function(){
+              util.slideAlert("QuickFolders",sUpgradeMessage);
+            }, 3000);
+          }
+          
+          util.loadPlatformStylesheet(window);
+          quickMoveSettings.loadExclusions();
+        }
+        util.logDebugOptional ("firstrun","finally { } ends.");
+      } // end finally
+
+      //window.removeEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
+    }
+  // // fire this on application launch, which includes open-link-in-new-window
+  // window.addEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
+
+  } ,   // QuickFolders.Util.FirstRun
+  
+  iterateFolders: function folderIterator(folders, findItem, fnPayload) {
+    const util = QuickFolders.Util;
+    let found = false;
+    // old style iterator (Postbox) - avoid in Thunderbird to avoid warning
+    for (let folder of folders) {
+      if (folder == findItem) {
+        found = true;
+        util.logDebugOptional('events','iterateFolders()\nfor..of - found the item and calling payload function(null, folder): ' + folder.prettyName);
+        fnPayload(null, folder);
+        break;
+      }
+    }
+    return found;
+  } , // QuickFolders.Util.iterateFolders
+
+
+  // iterate all folders
+  // writable - if this is set, exclude folders that do not accept mail from move/copy (e.g. newsgroups)
+  // isQuickJumpOrMove - if this is set we do a quickMove / quickJumpor quickCopy, which may return a restricted set of folders
+  allFoldersIterator: function allFoldersIterator(writable, isQuickJumpOrMove = false) {
+    let Ci = Components.interfaces,
+        Cc = Components.classes,
+        {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm"), // replace account-manager
+        acctMgr = MailServices.accounts,
+        FoldersArray, allFolders,
+        util = QuickFolders.Util,
+        quickMoveSettings = QuickFolders.quickMove.Settings,
+        isLockedInAccount = quickMoveSettings.isLockInAccount,
+        currentFolder, currentServer = 0;
+    if (isQuickJumpOrMove) {
+      currentFolder = util.CurrentFolder;
+      if (!currentFolder) { // [issue 136] search result list has no current folder!
+        isLockedInAccount = false;
+      }
+      else {
+        currentServer = currentFolder.server ? currentFolder.server.key : null;
+      }
+      quickMoveSettings.loadExclusions(); // prepare list of servers to omit
+    }
+    
+    // toXPCOMArray(allFolders, Ci.nsIMutableArray) ? 
+    var { fixIterator } = ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
+    
+    if (acctMgr.allFolders) { // Thunderbird & modern builds
+      FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+      allFolders = acctMgr.allFolders;
+      for (let aFolder of fixIterator(allFolders, Ci.nsIMsgFolder)) {
+        // filter out non-fileable folders (newsgroups...)
+        if (writable && 
+             (!aFolder.canFileMessages || 
+             (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) ||
+             (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSHOST))) {
+            continue;
+        }
+        if (isQuickJumpOrMove) {
+          if (isLockedInAccount && aFolder.server && aFolder.server.key!=currentServer)
+            continue;
+          if (quickMoveSettings.excludedIds.length) {
+            // exclude account
+            if (quickMoveSettings.excludedIds.includes(aFolder.server.key)) {
+              continue;
             }
           }
-
-          window.setTimeout(function(){
-            util.slideAlert("QuickFolders",sUpgradeMessage);
-          }, 3000);
         }
+        FoldersArray.appendElement(aFolder, false);
+      }          
+      return fixIterator(FoldersArray, Ci.nsIMsgFolder);
+    }
+    else { 
+      util.logToConsole("Error: allFolders missing in MailServices.accounts!");
+      return [];
+    }
+  },
+  
+  // find next unread folder
+  getNextUnreadFolder: function getNextUnreadFolder(currentFolder) {
+    const util = QuickFolders.Util,
+          unwantedFolders = util.FolderFlags.MSG_FOLDER_FLAG_DRAFTS   // skip drafts
+                               | util.FolderFlags.MSG_FOLDER_FLAG_TRASH // skip trash
+                               | util.FolderFlags.MSG_FOLDER_FLAG_QUEUE // skip queue
+                               | util.FolderFlags.MSG_FOLDER_FLAG_JUNK; // skip spam
+    let found = false,
+        isUnread = false,
+        lastFolder,
+        firstUnread = null,
+        folder; // remember this one for turnaround!
+      // progress the folder variable to the next sibling
+      // if no next sibling available to next sibling of parent folder (recursive)
+      // question: should own child folders also be included?
+
+
+    for (folder of util.allFoldersIterator(false)) {
+      if (!found && !firstUnread) {
+        // get first unread folder (before current folder)
+        if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
+          firstUnread = folder; // remember the first unread folder before we hit current folder
+          util.logDebugOptional("navigation", "first unread folder: " + firstUnread.prettyName);
+        }
+      }
+      if (found) {
+        // after current folder: unread folders only
+        if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
+          isUnread = true;
+          util.logDebugOptional("navigation", "Arrived in next unread after found current: " + folder.prettyName);
+          break; // if we have skipped the folder in the iterator and it has unread items we are in the next unread folder
+        }
+      } 
+      if (folder.URI === currentFolder.URI) {
+        util.logDebugOptional("navigation", "Arrived in current folder. ");
+        found = true; // found current folder
+      }
+      lastFolder = folder;
+    }
+    if (!isUnread) {
+      if (firstUnread && firstUnread!=currentFolder) {
+        util.logDebugOptional("navigation", "no folder found. ");
+        return firstUnread;
+      }
+      util.logDebug("Could not find another unread folder after:" + lastFolder ? lastFolder.URI : currentFolder.URI);
+      return currentFolder;
+    }
+    return folder;
+  },
+  
+  generateMRUlist: function qfu_generateMRUlist(ftv) { 
+    // generateMap: function ftv_recent_generateMap(ftv)
+    const util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences;
+    let oldestTime = 0,
+        recent = [],
+        items = [],
+        MAXRECENT = QuickFolders.Preferences.getIntPref("recentfolders.itemCount");
+    function sorter(a, b) {
+      return Number(a.getStringProperty("MRUTime")) < Number(b.getStringProperty("MRUTime"));
+    }
+    
+    function addIfRecent(aFolder) {
+      let time = 0;
+      if (typeof aFolder.getStringProperty != 'undefined') {
+        try {
+          time = Number(aFolder.getStringProperty("MRUTime")) || 0;
+        } catch (ex) {return;}
+        if (time <= oldestTime)
+          return -time;
+        if (recent.length == MAXRECENT) {
+          recent.sort(sorter);
+          recent.pop();
+          let oldestFolder = recent[recent.length - 1];
+          oldestTime = Number(oldestFolder.getStringProperty("MRUTime"));
+        }
+        recent.push(aFolder);
+      }
+      return time;
+    }
+
+    util.logDebugOptional("interface,recentFolders", "generateMRUlist()");
+    try {
+      /**
+       * Sorts our folders by their recent-times.
+       */
+
+      /**
+       * This function will add a folder to the recentFolders array if it
+       * is among the 15 most recent.  If we exceed 15 folders, it will pop
+       * the oldest folder, ensuring that we end up with the right number
+       *
+       * @param aFolder the folder to check
+       */
+
+      let debugTxt = prefs.isDebugOption('recentFolders.detail') ? 'Recent Folders List\n' : '';
+      for (let folder of ftv._enumerateFolders) {
+        let t = addIfRecent(folder);
+        if (debugTxt) {
+          if (t>0)
+            debugTxt += '--- ADDED: ' + folder.prettyName.padEnd(23, " ") + ' - : time = ' + t + ' = ' + util.getMruTime(folder) + '\n';
+          else
+            debugTxt += 'NOT ADDED: '  + folder.prettyName.padEnd(25, " ") + ' : time = ' + (-t) + ' = ' + util.getMruTime(folder) + '\n';;
+        }
+      }
+      if (debugTxt)
+        util.logDebug(debugTxt);
         
-        util.loadPlatformStylesheet(window);
-        quickMoveSettings.loadExclusions();
-      }
-      util.logDebugOptional ("firstrun","finally { } ends.");
-    } // end finally
 
-    //window.removeEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
-  }
+      recent.sort(sorter);
 
-
-// // fire this on application launch, which includes open-link-in-new-window
-// window.addEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
-
-};  // QuickFolders.Util.FirstRun
-
-
-
-// MODERN SHIM CODES - reintegrate these into Util={..} later.
-
-// Modern platform js (for of instead for in)
-QuickFolders.Util.iterateFolders = function folderIterator(folders, findItem, fnPayload) {
-  const util = QuickFolders.Util;
-  let found = false;
-  // old style iterator (Postbox) - avoid in Thunderbird to avoid warning
-  for (let folder of folders) {
-    if (folder == findItem) {
-      found = true;
-      util.logDebugOptional('events','iterateFolders()\nfor..of - found the item and calling payload function(null, folder): ' + folder.prettyName);
-      fnPayload(null, folder);
-      break;
-    }
-  }
-  return found;
-} // QuickFolders.Util.iterateFolders
-
-
-
-// iterate all folders
-// writable - if this is set, exclude folders that do not accept mail from move/copy (e.g. newsgroups)
-// isQuickJumpOrMove - if this is set we do a quickMove / quickJumpor quickCopy, which may return a restricted set of folders
-QuickFolders.Util.allFoldersIterator = function allFoldersIterator(writable, isQuickJumpOrMove = false) {
-  let Ci = Components.interfaces,
-      Cc = Components.classes,
-      {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm"), // replace account-manager
-      acctMgr = MailServices.accounts,
-      FoldersArray, allFolders,
-      util = QuickFolders.Util,
-      quickMoveSettings = QuickFolders.quickMove.Settings,
-      isLockedInAccount = quickMoveSettings.isLockInAccount,
-      currentFolder, currentServer = 0;
-  if (isQuickJumpOrMove) {
-    currentFolder = util.CurrentFolder;
-    if (!currentFolder) { // [issue 136] search result list has no current folder!
-      isLockedInAccount = false;
-    }
-    else {
-      currentServer = currentFolder.server ? currentFolder.server.key : null;
-    }
-    quickMoveSettings.loadExclusions(); // prepare list of servers to omit
-  }
-  
-  // toXPCOMArray(allFolders, Ci.nsIMutableArray) ? 
-  var { fixIterator } = ChromeUtils.import('resource:///modules/iteratorUtils.jsm');
-  
-  if (acctMgr.allFolders) { // Thunderbird & modern builds
-    FoldersArray = Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-    allFolders = acctMgr.allFolders;
-    for (let aFolder of fixIterator(allFolders, Ci.nsIMsgFolder)) {
-      // filter out non-fileable folders (newsgroups...)
-      if (writable && 
-           (!aFolder.canFileMessages || 
-           (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) ||
-           (aFolder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSHOST))) {
-          continue;
-      }
-      if (isQuickJumpOrMove) {
-        if (isLockedInAccount && aFolder.server && aFolder.server.key!=currentServer)
-          continue;
-        if (quickMoveSettings.excludedIds.length) {
-          // exclude account
-          if (quickMoveSettings.excludedIds.includes(aFolder.server.key)) {
-            continue;
-          }
-        }
-      }
-      FoldersArray.appendElement(aFolder, false);
-    }          
-    return fixIterator(FoldersArray, Ci.nsIMsgFolder);
-  }
-  else { 
-    util.logToConsole("Error: allFolders missing in MailServices.accounts!");
-    return [];
-  }
-} 
-
-
-// find next unread folder
-QuickFolders.Util.getNextUnreadFolder = function getNextUnreadFolder(currentFolder) {
-  const util = QuickFolders.Util,
-        unwantedFolders = util.FolderFlags.MSG_FOLDER_FLAG_DRAFTS   // skip drafts
-                             | util.FolderFlags.MSG_FOLDER_FLAG_TRASH // skip trash
-                             | util.FolderFlags.MSG_FOLDER_FLAG_QUEUE // skip queue
-                             | util.FolderFlags.MSG_FOLDER_FLAG_JUNK; // skip spam
-  let found = false,
-      isUnread = false,
-      lastFolder,
-      firstUnread = null,
-      folder; // remember this one for turnaround!
-    // progress the folder variable to the next sibling
-    // if no next sibling available to next sibling of parent folder (recursive)
-    // question: should own child folders also be included?
-
-
-  for (folder of util.allFoldersIterator(false)) {
-    if (!found && !firstUnread) {
-      // get first unread folder (before current folder)
-      if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
-        firstUnread = folder; // remember the first unread folder before we hit current folder
-        util.logDebugOptional("navigation", "first unread folder: " + firstUnread.prettyName);
-      }
-    }
-    if (found) {
-      // after current folder: unread folders only
-      if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
-        isUnread = true;
-        util.logDebugOptional("navigation", "Arrived in next unread after found current: " + folder.prettyName);
-        break; // if we have skipped the folder in the iterator and it has unread items we are in the next unread folder
-      }
-    } 
-    if (folder.URI === currentFolder.URI) {
-      util.logDebugOptional("navigation", "Arrived in current folder. ");
-      found = true; // found current folder
-    }
-    lastFolder = folder;
-  }
-  if (!isUnread) {
-    if (firstUnread && firstUnread!=currentFolder) {
-      util.logDebugOptional("navigation", "no folder found. ");
-      return firstUnread;
-    }
-    util.logDebug("Could not find another unread folder after:" + lastFolder ? lastFolder.URI : currentFolder.URI);
-    return currentFolder;
-  }
-  return folder;
-}
-
-
-QuickFolders.Util.generateMRUlist = function qfu_generateMRUlist(ftv) { 
-  // generateMap: function ftv_recent_generateMap(ftv)
-  const util = QuickFolders.Util,
-        prefs = QuickFolders.Preferences;
-  let oldestTime = 0,
-      recent = [],
-      items = [],
-      MAXRECENT = QuickFolders.Preferences.getIntPref("recentfolders.itemCount");
-  function sorter(a, b) {
-    return Number(a.getStringProperty("MRUTime")) < Number(b.getStringProperty("MRUTime"));
-  }
-  
-  function addIfRecent(aFolder) {
-    let time = 0;
-    if (typeof aFolder.getStringProperty != 'undefined') {
-      try {
-        time = Number(aFolder.getStringProperty("MRUTime")) || 0;
-      } catch (ex) {return;}
-      if (time <= oldestTime)
-        return -time;
-      if (recent.length == MAXRECENT) {
-        recent.sort(sorter);
-        recent.pop();
-        let oldestFolder = recent[recent.length - 1];
-        oldestTime = Number(oldestFolder.getStringProperty("MRUTime"));
-      }
-      recent.push(aFolder);
-    }
-    return time;
-  }
-
-  util.logDebugOptional("interface,recentFolders", "generateMRUlist()");
-  try {
-    /**
-     * Sorts our folders by their recent-times.
-     */
-
-    /**
-     * This function will add a folder to the recentFolders array if it
-     * is among the 15 most recent.  If we exceed 15 folders, it will pop
-     * the oldest folder, ensuring that we end up with the right number
-     *
-     * @param aFolder the folder to check
-     */
-
-    let debugTxt = prefs.isDebugOption('recentFolders.detail') ? 'Recent Folders List\n' : '';
-    for (let folder of ftv._enumerateFolders) {
-      let t = addIfRecent(folder);
-      if (debugTxt) {
-        if (t>0)
-          debugTxt += '--- ADDED: ' + folder.prettyName.padEnd(23, " ") + ' - : time = ' + t + ' = ' + util.getMruTime(folder) + '\n';
+      // remove legacy syntax:
+      // https://bugzilla.mozilla.org/show_bug.cgi?id=1220564
+      //items = [new ftvItem(f) for each (f in recent)];
+      for (let f of recent) { 
+        if (typeof ftvItem == "function") 
+          items.push(new ftvItem(f)); // Tb78 and older
         else
-          debugTxt += 'NOT ADDED: '  + folder.prettyName.padEnd(25, " ") + ' : time = ' + (-t) + ' = ' + util.getMruTime(folder) + '\n';;
-      }
-    }
-    if (debugTxt)
-      util.logDebug(debugTxt);
+          items.push(new FtvItem(f));
+      };
       
+      // There are no children in this view! flatten via empty array
+      for (let folder of items)
+        folder.__defineGetter__("children", function() { return [];});
 
-    recent.sort(sorter);
+    }
+    catch(ex) {
+      util.logException('Exception during generateMRUlist: ', ex);
+      return null;
+    }
 
-    // remove legacy syntax:
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=1220564
-    //items = [new ftvItem(f) for each (f in recent)];
-    for (let f of recent) { 
-      if (typeof ftvItem == "function") 
-        items.push(new ftvItem(f)); // Tb78 and older
-      else
-        items.push(new FtvItem(f));
-    };
-    
-    // There are no children in this view! flatten via empty array
-    for (let folder of items)
-      folder.__defineGetter__("children", function() { return [];});
-
-  }
-  catch(ex) {
-    util.logException('Exception during generateMRUlist: ', ex);
-    return null;
-  }
-
-  return items;
-}
-
-QuickFolders.Util.iterateDictionary = function iterateKeys(dictionary, iterateFunction) {
-  for (let [key, value] of dictionary.items) {
-    iterateFunction(key,value);
-  }
-};
-
-QuickFolders.Util.iterateDictionaryObject = function iterateKeysO(dictionary, iterateFunction, obj) {
-  for (let [key, value] of dictionary.items) {
-    iterateFunction(key,value,obj);
-  }
-};
-
-QuickFolders.Util.allFoldersMatch = function allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches) {
-  const util = QuickFolders.Util;
-  util.logDebugOptional("interface.findFolder","allFoldersMatch()");
-  for (let folder of util.allFoldersIterator(isFiling, true)) {
-    if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
-    addMatchingFolder(matches, folder);
-  }
-};
-
-Object.defineProperty(QuickFolders.Util, "Accounts",
-{ get: function() {
-    var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); // replace account-manager
-    
-    let acMgr = MailServices.accounts,
-        aAccounts = [];
-        
-    for (let ac of acMgr.accounts) {
-      aAccounts.push(ac);
-    };
-    return aAccounts;
-  }
-});
-
-
-
-// refactored from async Task with help of @freaktechnik
-QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
+    return items;
+  },
+  
+  iterateDictionary: function iterateKeys(dictionary, iterateFunction) {
+    for (let [key, value] of dictionary.items) {
+      iterateFunction(key,value);
+    }
+  },
+  
+  iterateDictionaryObject: function iterateKeysO(dictionary, iterateFunction, obj) {
+    for (let [key, value] of dictionary.items) {
+      iterateFunction(key,value,obj);
+    }
+  },
+  
+  allFoldersMatch: function allFoldersMatch(isFiling, isParentMatch, parentString, maxParentLevel, parents, addMatchingFolder, matches) {
+    const util = QuickFolders.Util;
+    util.logDebugOptional("interface.findFolder","allFoldersMatch()");
+    for (let folder of util.allFoldersIterator(isFiling, true)) {
+      if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
+      addMatchingFolder(matches, folder);
+    }
+  },
+  
+  // refactored from async Task with help of @freaktechnik
+  getOrCreateFolder: async function (aUrl, aFlags) {
     const Ci = Components.interfaces,
           Cc = Components.classes,
           Cr = Components.results,
@@ -2032,7 +2001,28 @@ QuickFolders.Util.getOrCreateFolder = async function (aUrl, aFlags) {
 
     // Finally, we have a valid folder. Return it.
     return folder;
-  };
+  }  
+  
+  
+};  // QuickFolders.Util
+
+
+
+
+
+Object.defineProperty(QuickFolders.Util, "Accounts",
+{ get: function() {
+    var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); // replace account-manager
+    
+    let acMgr = MailServices.accounts,
+        aAccounts = [];
+        
+    for (let ac of acMgr.accounts) {
+      aAccounts.push(ac);
+    };
+    return aAccounts;
+  }
+});
 
 
 // code moved from options.js

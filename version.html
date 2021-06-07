@@ -266,11 +266,45 @@
 				</h4>
         <ul>
           <li> 
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/155">[issue 155]</a> 
+            Support entering multiple words in a search string to find longer folder names that are composited, such as
+            "Fred.Flintstone" "Invoices June 2020" "Research+Development". These can now be found by entering
+            the starting letters of the words within the folder name, in any order. e.g. "f f" "2020 inv" "Dev Res".<br>
+            <img class="screenshot" src="img/multi-search-1.png" /> <br>
+            It can also be combined with the parent folder syntax by entering the parent folder start followed by a slash:<br>
+            <img class="screenshot" src="img/multi-search-2.png" /> <br>
+          </li>
+          <li> 
             <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/150">[issue 150]</a> 
-            New line characters "\n" displayed in version 5.5.2</li>
-          <li> Ongoing work of Rewriting code to use APIs instead of Thunderbird's internal functions see <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/147">[issue 147]</a> for up to date detail.</li>
-          <li> </li>
-          <li> </li>
+            Unwanted new line characters "\n" were displayed in some strings in version 5.5.2
+          </li>
+          <li>
+            [web extension migration] Licenser code migrated into background script.
+          </li>
+          <li>
+            <p>
+            [web extension migration] Removed many global functions that work in the last 3pane window and replaced them with event notifications.
+            This uses the Notification Tool library and the background script (a mechanism of the new API based extensions model)
+            </p>
+            <p>
+              This way all Thunderbird windows (if you work from multiple windows) will be updated correctly when doing one of the following actions.
+              All these now work simultaneously and update in multiple Thunderbird windows.          
+              <ul>
+                <li>rename a tab</li>
+                <li>move a tab positionto a different position</li>
+                <li>delete a tab or remove it from or add it to a category</li>
+                <li>change the layout from the optiins dialog (themes, colors)</li>
+                <li>rename QuickFolders categories</li>
+                <li>change the theme / buttons of the Current Folder Bar</li>
+                <li>change options of where to display the Current Folder Bar (main window, message tab, single message window)</li>
+                <li>changes to the license when entered / validated</li>
+              </ul>
+            </p>
+          </li>
+          <li> 
+            Other ongoing work of Rewriting code to use APIs instead of Thunderbird's internal functions see 
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/147">[issue 147]</a> for up to date detail.
+          </li>
         </ul>
 			</li>      
       
@@ -835,11 +869,32 @@
 					</ul>
 			</li>
 			-->
+      
+			<a name="4.22">&nbsp;</a>
+			<li>
+				<h4>
+				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.22</a>
+				</h4>
+					<ul>
+            <li> 
+              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/155">[issue 155]</a> 
+              Support entering multiple words in a search string to find longer folder names that are composited, such as
+              "Fred.Flintstone" "Invoices June 2020" "Research+Development". These can now be found by entering
+              the starting letters of the words within the folder name, in any order. e.g. "f f" "2020 inv" "Dev Res".<br>
+              <img class="screenshot" src="img/multi-search-1.png" /> <br>
+              It can also be combined with the parent folder syntax by entering the parent folder start followed by a slash:<br>
+              <img class="screenshot" src="img/multi-search-2.png" /> <br>
+            </li>
+						<li> </li>
+						<li> </li>
+					</ul>
+			</li>
+
 
 			<a name="4.21.4">&nbsp;</a>
 			<li>
 				<h4>
-				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.21.4 - WIP</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.21.4">Version 4.21.4 - 28/04/2021</a>
 				</h4>
 				<table class="QuickFoldersProRenew bargain"> 
 					<tr>
@@ -924,6 +979,7 @@
 				
           </tr>
         </table>
+        
 					<ul>
             <h4 class="inList">Bug Fixes</h4>
             <li> 

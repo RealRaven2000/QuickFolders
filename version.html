@@ -265,26 +265,21 @@
 				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.6 - WIP</a>
 				</h4>
         <ul>
+          <h4 class="inList">Improvements</h4>
           <li> 
             <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/155">[issue 155]</a> 
             Support entering multiple words in a search string to find longer folder names that are composited, such as
             "Fred.Flintstone" "Invoices June 2020" "Research+Development". These can now be found by entering
             the starting letters of the words within the folder name, in any order. e.g. "f f" "2020 inv" "Dev Res".<br>
             <img class="screenshot" src="images/multi-search-1.png" /> <br>
-            It can also be combined with the parent folder syntax by entering the parent folder start followed by a slash:<br>
+            This can also be combined with the parent folder syntax by entering the parent folder start followed by a forward slash "/":<br>
             <img class="screenshot" src="images/multi-search-2.png" /> <br>
-          </li>
-          <li> 
-            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/150">[issue 150]</a> 
-            Unwanted new line characters "\n" were displayed in some strings in version 5.5.2
-          </li>
-          <li>
-            [web extension migration] Licenser code migrated into background script.
           </li>
           <li>
             <p>
-            [web extension migration] Removed many global functions that work in the last 3pane window and replaced them with event notifications.
-            This uses the Notification Tool library and the background script (a mechanism of the new API based extensions model)
+            [web extension migration] Improved many functions that worked via accessing the "most recent Thunderbird window" 
+            and replaced them with event notifications that propagate to every window.
+            This uses the Notification Tool library and the background script (a mechanism of the new API based "mail extensions" model).
             </p>
             <p>
               This way all Thunderbird windows (if you work from multiple windows) will be updated correctly when doing one of the following actions.
@@ -293,13 +288,22 @@
                 <li>rename a tab</li>
                 <li>move a tab positionto a different position</li>
                 <li>delete a tab or remove it from or add it to a category</li>
-                <li>change the layout from the optiins dialog (themes, colors)</li>
+                <li>change the layout of all QuickFolders toolbar elements from the options dialog (themes, colors)</li>
                 <li>rename QuickFolders categories</li>
                 <li>change the theme / buttons of the Current Folder Bar</li>
                 <li>change options of where to display the Current Folder Bar (main window, message tab, single message window)</li>
                 <li>changes to the license when entered / validated</li>
+                <li>unlocking features such as the advanced / sab-specific properties when a license key is entered</li>
               </ul>
             </p>
+          </li>
+          <h4 class="inList">Bug Fixes + Miscellaneus</h4>
+          <li> 
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/150">[issue 150]</a> 
+            Unwanted new line characters "\n" were displayed in some strings in version 5.5.2
+          </li>
+          <li>
+            [web extension migration] Licenser code migrated into background script.
           </li>
           <li> 
             Other ongoing work of Rewriting code to use APIs instead of Thunderbird's internal functions see 

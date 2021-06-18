@@ -229,6 +229,9 @@
       }
     }
   },
+  "on-permissions": {
+    "message": "IMPORTANTE: Es posible que las actualizaciones automáticas no le pidan que las instale siempre que una nueva versión del complemento requiera permisos adicionales. En su lugar, verá este icono de advertencia en el botón del menú principal de Thunderbird, en el que debe hacer clic para completar la actualización. Es necesario solicitar permisos para migrar al nuevo sistema de extensión. De lo contrario, no podemos ofrecer ninguna corrección de errores / nuevas funciones."
+  },
   "purchase-a-license": {
     "message": "Compra una licencia."
   },

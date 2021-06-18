@@ -229,6 +229,9 @@
       }
     }
   },
+  "on-permissions": {
+    "message": "WAŻNE: Aktualizacje automatyczne mogą nie wymagać instalacji za każdym razem, gdy nowa wersja dodatku wymaga dodatkowych uprawnień. Zamiast tego zobaczysz tę ikonę ostrzeżenia na przycisku menu głównego Thunderbirda, który musisz kliknąć, aby zakończyć aktualizację. Żądanie uprawnień jest wymagane do migracji do nowego systemu rozszerzeń. W przeciwnym razie nie możemy dostarczyć żadnych poprawek / nowych funkcji!"
+  },
   "purchase-a-license": {
     "message": "Kup licencję."
   },

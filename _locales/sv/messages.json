@@ -229,6 +229,9 @@
       }
     }
   },
+  "on-permissions": {
+    "message": "VIKTIGT: Automatiska uppdateringar kanske inte ber dig att installera när en ny tilläggsversion kräver ytterligare behörigheter. Istället ser du denna varningsikon på Thunderbird-huvudmenyknappen, som du måste klicka för att slutföra uppdateringen. Begäran om behörighet krävs för att migrera till det nya tilläggssystemet. Annars kan vi inte leverera buggfixar / nya funktioner!"
+  },
   "purchase-a-license": {
     "message": "Köp en licens."
   },

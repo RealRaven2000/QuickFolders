@@ -229,6 +229,9 @@
       }
     }
   },
+  "on-permissions": {
+    "message": "IMPORTANT: Automatic updates might not ask you to install whenever a new Add-on version requires additional permissions. Instead you will see this warning icon on the Thunderbird main menu button, which you must click to complete the update. Requesting permissions is required for migrating to the new extension system. Otherwise we cannot deliver any bug fixes / new features!"
+  },
   "purchase-a-license": {
     "message": "Purchase a license."
   },

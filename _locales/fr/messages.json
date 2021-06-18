@@ -229,6 +229,9 @@
       }
     }
   },
+  "on-permissions": {
+    "message": "IMPORTANT : les mises à jour automatiques peuvent ne pas vous demander d'installer chaque fois qu'une nouvelle version du module complémentaire nécessite des autorisations supplémentaires. Au lieu de cela, vous verrez cette icône d'avertissement sur le bouton du menu principal de Thunderbird, sur lequel vous devez cliquer pour terminer la mise à jour. La demande d'autorisations est requise pour la migration vers le nouveau système d'extension. Sinon, nous ne pouvons pas fournir de corrections de bogues / nouvelles fonctionnalités !"
+  },
   "purchase-a-license": {
     "message": "Achetez une licence."
   },

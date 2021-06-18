@@ -229,6 +229,9 @@
       }
     }
   },
+  "on-permissions": {
+    "message": "WICHTIG: Automatische Updates werden Sie möglicherweise nicht zur Installation auffordern, wenn eine neue Add-on-Version zusätzliche Berechtigungen erfordert. Stattdessen sehen Sie dann dieses Warnsymbol auf der Thunderbird-Hauptmenüschaltfläche, auf die Sie klicken müssen, um das Update abzuschließen. Für die Migration auf das neue Erweiterungssystem ist das Anfordern von Berechtigungen erforderlich. Ansonsten können wir keine Bugfixes / neue Features liefern!"
+  },
   "purchase-a-license": {
     "message": "Kaufen Sie eine Lizenz."
   },

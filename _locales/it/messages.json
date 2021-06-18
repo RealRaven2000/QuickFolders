@@ -229,6 +229,9 @@
       }
     }
   },
+  "on-permissions": {
+    "message": "IMPORTANTE: gli aggiornamenti automatici potrebbero non richiedere l'installazione ogni volta che una nuova versione del componente aggiuntivo richiede autorizzazioni aggiuntive. Invece vedrai questa icona di avviso sul pulsante del menu principale di Thunderbird, che devi fare clic per completare l'aggiornamento. La richiesta delle autorizzazioni è necessaria per la migrazione al nuovo sistema di estensione. Altrimenti non possiamo fornire correzioni di bug/nuove funzionalità!"
+  },
   "purchase-a-license": {
     "message": "Acquista una licenza."
   },

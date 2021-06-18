@@ -104,6 +104,9 @@
       }    
     }
   },  
+  "on-permissions": {
+    "message": "TÄRKEÄÄ: Automaattiset päivitykset eivät välttämättä pyydä sinua asentamaan, kun uusi lisäosaversio vaatii lisäoikeuksia. Sen sijaan näet tämän varoituskuvakkeen Thunderbird-päävalikkopainikkeessa, jota sinun on napsautettava päivityksen viimeistelemiseksi. Uuteen laajennusjärjestelmään siirtyminen edellyttää käyttöoikeuksien pyytämistä. Muuten emme voi toimittaa virhekorjauksia / uusia ominaisuuksia!"
+  },
   "purchase-a-license" : {
     "message" : "Osta lisenssi."
   },       

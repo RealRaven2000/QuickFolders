@@ -25,6 +25,17 @@
 
 
 		<style type="text/css">
+    /* search tokens, characters */
+    tok {
+      padding: 1px 3px;
+      font-family: consolas, Courier, monospace;
+      font-size: 11px;
+      color: rgb(20,20,20);
+      background-color: rgb(210,210,210);
+      border-radius: 2px;
+      margin: 0 3px;
+    }
+    
 		td > p {
 			margin: 0 0 1.2em;
 		}
@@ -272,8 +283,12 @@
             "Fred.Flintstone" "Invoices June 2020" "Research+Development". These can now be found by entering
             the starting letters of the words within the folder name, in any order. e.g. "f f" "2020 inv" "Dev Res".<br>
             <img class="screenshot" src="images/multi-search-1.png" /> <br>
-            This can also be combined with the parent folder syntax by entering the parent folder start followed by a forward slash "/":<br>
+            The following characters are regarded as word boundaries and don't need to be typed:
+            <tok>_</tok> <tok>.</tok> <tok>-</tok> <tok>+</tok> <tok>&amp;</tok> <tok>@</tok>
+            <br>
+            This can also be combined with the parent folder syntax by entering the parent folder start followed by a forward slash <tok>/</tok>:<br>
             <img class="screenshot" src="images/multi-search-2.png" /> <br>
+            The new character <tok>&gt;</tok> can be used to skip any folder within the path.
           </li>
           <li>
             <p>

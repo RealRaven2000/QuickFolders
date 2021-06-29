@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Das Versionslog nach Updates nicht mehr anzeigen?"
   },
+  "quickMove.help.head": {
+    "message" : "Hilfe für {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Erweiterte Funktionen"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Tippen Sie den Anfang eines Ordnernamens, oder enthaltene Wörter getrennt durch Leerzeichen."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Die folgenden Zeichen gelten als Wortgrenzen und müssen nicht eingegeben werden:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Geben Sie {1} ein, um das Großeltern-/Eltern-/gesuchte Verzeichnis einzugeben."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Die ersten 2 Buchstaben eines Elternverzeichnisses sind in der Regel ausreichend. Sie können mit dieser Syntax auch neue Unterordner erstellen."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Verwenden Sie {1}, um alle Ordner dazwischen zu überspringen."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Dies ist nützlich für tiefere, kompliziertere oder unbekannte Ordnerhierarchien."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Auf der Registerkarte QuickFolders Pro können erweiterte Funktionen wie Tastaturkürzel zum Aufrufen eines Ordners / Verschieben von E-Mails oder das Ausschließen von Ordnern aus den Suchergebnissen konfiguriert werden. Um auf diese und andere Premium-Funktionen zuzugreifen, erwerben Sie eine Pro-Lizenz und unterstützen Sie die Zukunft von QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Nach Verschieben der aktuellen Nachricht die nächste E-Mail öffnen"
   },
@@ -1600,7 +1627,7 @@
     "message": "Erneuern Sie Ihre Lizenz."
   },
   "special-offer-content": {
-    "message": "Machen Sie QuickFolders zukunftssicher und holen Sie sich eine Lizenz, während der Preis von QuickFolders Pro {boldStart}um 40% gesenkt{boldEnd} ist! Dieses Sonderangebot gilt bis zum {boldStart}1. Mai.{boldEnd}."
+    "message": "Schützen Sie QuickFolders für die bevorstehende Thunderbird-Version 91 und sparen Sie beim Kauf einer Lizenz {boldStart}40%{boldEnd}! Dieses Sonderangebot ist bis zum {boldStart}18. Juni{boldEnd} verfügbar."
   },
   "special-offer-head": {
     "message": "Machen Sie QuickFolders zukunftssicher!"
@@ -1685,7 +1712,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Behoben: Unerwünschte Zeilenumbrüche [\\n], die seit Version 5.5.2 angezeigt wurden. {L2} {L1} Lizenzierungscode in Hintergrundskript migriert. Wenn Sie Nebenwirkungen im Zusammenhang mit Ihrer Lizenz feststellen, zögern Sie bitte nicht, mich zu kontaktieren über die Support-Registerkarte {L2}"
+    "message": "{L1}Der quickMove / quickJump-Funktion wurden wesentliche neue Suchfunktionen hinzugefügt. Um Hilfe dazu zu erhalten, klicken Sie auf das [?]-Symbol rechts neben dem Suchfeld.{L2}{L1}Verbesserte Unterstützung für mehrere Thunderbird-Fenster.{L2}{L1}Verbesserte Lesbarkeit der Symbolleisten unter Linux{L2}{L1} [Migration der Mail-Erweiterung] Die Lizenzbibliothek wurde in ein Hintergrundskript migriert. Bei Problemen mit der Lizenzierung kontaktieren Sie mich bitte über den Support-Tab!{L2}"
   },
   "window-title": {
     "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",

@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Ustavi prikaz zgodovine različic po posodobitvah?"
   },
+  "quickMove.help.head": {
+    "message" : "Pomoč za {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Napredne funkcije"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Vnesite začetek imena mape ali besed v njej, ločenih s presledkom."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Naslednji znaki so meje besed in jih ni treba vnašati:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Vnesite {1} za vnos mape starih staršev/staršev/iskane strani."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Običajno zadoščata prvi dve črki katere koli nadrejene mape. S to sintakso lahko ustvarite tudi nove podmape."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Vnesite {1}, če želite preskočiti mape vmes."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "To je uporabno za globlje, bolj zapletene ali neznane hierarhije map."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Naprednejše funkcije, kot so bližnjice na tipkovnici za prehod v mapo / premikanje pošte ali izključitev map iz rezultatov iskanja, lahko nastavite na zavihku QuickFolders Pro. Če želite dostopati do teh in drugih premium funkcij, pridobite licenco Pro in podprite prihodnost QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Prikaže naslednje sporočilo po premikanju trenutnega"
   },
@@ -1600,7 +1627,7 @@
     "message": "Obnovite licenco."
   },
   "special-offer-content": {
-    "message": "Pripravite QuickFolders v prihodnje in pridobite licenco, medtem ko je cena programa QuickFolders Pro {boldStart} 40% znižana {boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} 1. maja {boldEnd}."
+    "message": "Zaščitite QuickFolders za bližnjo različico Thunderbird 91 in prihranite {boldStart} 40% {boldEnd} pri nakupu licence! Ta posebna ponudba bo na voljo do {boldStart} 18. junija {boldEnd}."
   },
   "special-offer-head": {
     "message": "Naj bodo QuickFolders prihodnji dokaz!"
@@ -1685,7 +1712,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Popravljeno: neželeni znaki v novi vrstici [\\ n], prikazani v različici 5.5.2 {L2} {L1} Koda licence je preseljena v skript v ozadju - če imate kakršne koli neželene učinke, povezane z vašo licenco, se obrnite na me prek zavihka za podporo {L2}"
+    "message": "{L1} Funkciji quickMove / quickJump so dodane pomembne nove funkcije iskanja. Za pomoč pri njih kliknite simbol [?] Na desni strani iskalnega polja. {L2} {L1} Izboljšana podpora za več oken Thunderbird. {L2} {L1} Izboljšana berljivost orodnih vrstic pod Linuxom {L2} {L1} [migracija razširitve pošte] Knjižnica licenciranja je bila preseljena v skript v ozadju. Če imate kakršne koli težave, povezane z licenciranjem, se obrnite na mene prek zavihka za podporo! {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

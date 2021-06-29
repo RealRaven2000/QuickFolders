@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Sluta visa versionshistoriken efter uppdateringar?"
   },
+  "quickMove.help.head": {
+    "message" : "Hjälp för {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Avancerade funktioner"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Skriv in början på ett mappnamn eller ord i det, avgränsat med mellanslag."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Följande tecken betraktas som ordgränser och behöver inte skrivas:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Skriv {1} för att ange far-och farförälder/förälder/sökt mapp."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "De första två bokstäverna i en överordnad mapp är vanligtvis tillräckliga. Du kan också skapa nya undermappar med denna syntax."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Skriv {1} för att hoppa över alla mappar däremellan."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Detta är användbart för djupare, mer komplicerade eller okända mapphierarkier."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Mer avancerade funktioner som tangentbordsgenvägar för att gå till en mapp / flytta e-post eller exkludera mappar från sökresultat kan konfigureras på fliken QuickFolders Pro. För att få tillgång till dessa och andra premiumfunktioner, skaffa en Pro-licens och stödja framtiden för QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Visa nästa e-post efter att ha flyttat aktuell e-post"
   },
@@ -1600,13 +1627,13 @@
     "message": "Förnya din licens."
   },
   "special-offer-content": {
-    "message": "Gör QuickFolders framtidssäkra och hämta en licens medan det finns en {boldStart} 40% rabatt {boldEnd} på priset på QuickFolders Pro! Detta specialerbjudande kommer att finnas tillgängligt fram till {boldStart} 1 maj {boldEnd}."
+    "message": "Skydda QuickFolders för den överhängande Thunderbird version 91 och spara {boldStart} 40% {boldEnd} genom att köpa en licens! Detta specialerbjudande kommer att finnas tillgängligt fram till {boldStart} 18 juni {boldEnd}."
   },
   "special-offer-head": {
     "message": "Gör QuickFolders framtida bevis!"
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kära {name} {boldEnd}, om du inte har någon licens ännu, kan du överväga att stödja QuickFolders för framtiden. Fler stora förändringar på Thunderbird kommer och jag behöver {boldStart} din hjälp {boldEnd} för att fortsätta!"
+    "message": "Bảo vệ QuickFolders cho phiên bản Thunderbird 91 sắp ra mắt và tiết kiệm {boldStart} 40% {boldEnd} khi mua giấy phép! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 18 tháng 6 {boldEnd}."
   },
   "support-preference": {
     "message": "Detta är det föredragna sättet att stödja $addonName$.",
@@ -1685,7 +1712,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Fixat: Oönskade nya radtecken [\\n] visas i version 5.5.2 {L2} {L1} Licenskod migrerad till bakgrundsskript - om du upplever några biverkningar relaterade till din licens, tveka inte att kontakta mig via supportfliken {L2}"
+    "message": "{L1} Betydande nya sökfunktioner har lagts till i funktionen quickMove / quickJump. Om du vill ha hjälp med dessa klickar du på symbolen [?] Till höger om sökfältet. {L2} {L1} Förbättrat stöd för flera Thunderbird-fönster. {L2} {L1} Förbättrad läsbarhet för verktygsfält under Linux {L2} {L1} [migrering av e-posttillägg] Licensbiblioteket migrerades till bakgrundsskript. Om du har några problem relaterade till licensiering, vänligen kontakta mig via supportfliken! {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

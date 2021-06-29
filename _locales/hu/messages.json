@@ -1531,6 +1531,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Stop displaying version history after updates?"
   },
+  "quickMove.help.head": {
+    "message" : "Segítség a következőhöz: {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Speciális funkciók"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Írja be a mappa nevének vagy szavainak elejét szóközzel elválasztva."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "A következő karaktereket szóhatárnak tekintik, és nem kell begépelni:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Írja be a {1} szót a nagyszülő / szülő / keresett mappa megadásához."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Bármely szülő mappa első 2 betűje általában elegendő. Ezzel a szintaxissal új almappákat is létrehozhat."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Írja be a (z) {1} parancsot a mappák átugrásához."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Ez hasznos mélyebb, bonyolultabb vagy ismeretlen mappahierarchiák esetén."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "A QuickFolders Pro fülön konfigurálhatók olyan fejlettebb funkciók, mint például egy mappa eléréséhez szükséges gyorsbillentyűk / levelek áthelyezése vagy a mappák kizárása a keresési eredményekből. Ezen és egyéb prémium funkciók eléréséhez szerezzen be egy Pro licencet, és támogassa a QuickFolders jövőjét."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "A következő levél megjelenítése az aktuális áthelyezése után"
   },
@@ -1580,7 +1607,7 @@
     "message": "Újítsa meg a licencét."
   },
   "special-offer-content": {
-    "message": "Jövőbeni bizonyítékú QuickFolders és szerezzen licencet, mivel a {boldStart} 40% -os kedvezmény {boldEnd} van a QuickFolders Pro árán! Ez a különleges ajánlat {boldStart} május 1-ig {boldEnd} lesz elérhető."
+    "message": "Védje a gyorsmappákat a küszöbön álló Thunderbird 91-es verziótól, és licencet vásárolva megtakaríthatja a {boldStart} 40% -ot {boldEnd}! Ez a különleges ajánlat {boldStart} június 18-ig {boldEnd} lesz elérhető."
   },
   "special-offer-head": {
     "message": "Jövőbeli bizonyíték QuickFolders!"
@@ -1643,7 +1670,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Javítva: Nemkívánatos új sor karakterek [\\n] láthatók az 5.5.2 változatban. Az {L2} {L1} licenckód át lett véve háttérszkriptbe - ha a licencéhez kapcsolódó mellékhatásokat észlel, ne habozzon kapcsolatba lépni velem a támogatási fülön keresztül {L2}"
+    "message": "{L1} Jelentős új keresési funkciókkal bővült a quickMove / quickJump funkció. Ha segítségre van szüksége ezekről, kattintson a keresési mező jobb oldalán található [?] Szimbólumra. {L2} {L1} Több Thunderbird ablak támogatása javult. {L2} {L1} Az eszköztárak jobb olvashatósága Linux alatt {L2} {L1} [mail kiterjesztés migrálása] A licenckönyvtárat háttér szkriptbe költöztették. Ha bármilyen probléma merül fel az engedélyezéssel kapcsolatban, kérjük, lépjen kapcsolatba velem a támogatási fülön keresztül! {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

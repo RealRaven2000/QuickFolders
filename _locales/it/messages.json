@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Evitare la visualizzazione della cronologia delle versioni dopo gli aggiornamenti?"
   },
+  "quickMove.help.head": {
+    "message" : "Aiuto per {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Funzionalità avanzate"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Digita l'inizio del nome di una cartella o delle parole al suo interno, delimitate da uno spazio."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "I seguenti caratteri sono considerati limiti di parola e non devono essere digitati:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Digitare {1} per inserire la cartella nonni/genitori/cercati."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Di solito sono sufficienti le prime 2 lettere di qualsiasi cartella principale. Puoi anche creare nuove sottocartelle con questa sintassi."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Digita {1} per saltare le cartelle intermedie."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Questo è utile per gerarchie di cartelle più profonde, più complicate o sconosciute."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Funzioni più avanzate come le scorciatoie da tastiera per andare in una cartella/spostare la posta o escludere le cartelle dai risultati della ricerca possono essere configurate nella scheda QuickFolders Pro. Per accedere a queste e ad altre funzionalità premium, ottieni una licenza Pro e supporta il futuro di QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Visualizza la posta successiva dopo aver spostato quella corrente"
   },
@@ -1600,7 +1627,7 @@
     "message": "Renouvelez votre licence."
   },
   "special-offer-content": {
-    "message": "Rendi QuickFolders a prova di futuro e prendi una licenza mentre c'è una {boldStart} riduzione del 40% {boldEnd} sul prezzo di QuickFolders Pro! Questa offerta speciale sarà disponibile fino al {boldStart} 1 maggio {boldEnd}."
+    "message": "Proteggi QuickFolders per l'imminente versione 91 di Thunderbird e risparmia {boldStart}40%{boldEnd} acquistando una licenza! Questa offerta speciale sarà disponibile fino al {boldStart}18 giugno{boldEnd}."
   },
   "special-offer-head": {
     "message": "Rendi QuickFolders una prova per il futuro!"
@@ -1685,7 +1712,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} Risolto: nuovi caratteri di riga indesiderati [\\n] visualizzati nella versione 5.5.2 {L2} {L1} codice del concessore di licenza migrato in uno script in background - se si verificano effetti collaterali relativi alla licenza, non esitate a contattarmi tramite la scheda di supporto {L2}"
+    "message": "{L1}Nuove funzionalità di ricerca significative sono state aggiunte alla funzione quickMove / quickJump. Per assistenza su questi, fare clic sul simbolo [?] a destra del campo di ricerca.{L2}{L1}Supporto migliorato per più finestre Thunderbird .{L2}{L1}Leggibilità migliorata delle barre degli strumenti sotto Linux{L2}{L1} [migrazione dell'estensione di posta] La libreria delle licenze è stata migrata nello script in background. Se riscontri problemi relativi alla licenza, contattami tramite la scheda di supporto!{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

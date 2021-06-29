@@ -1493,6 +1493,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "No mostrar més l'historial de versions després de les actualitzacions?"
   },
+  "quickMove.help.head": {
+    "message" : "Ajuda per a {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Funcions avançades"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Escriviu l'inici d'un nom de carpeta o de paraules, delimitades per l'espai."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Els caràcters següents es consideren límits de paraules i no cal que els escriviu:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Escriviu {1} per introduir la carpeta de avis/pares/cercats."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Les dues primeres lletres de qualsevol pare solen ser suficients. També podeu crear subcarpetes noves amb aquesta sintaxi."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Escriviu {1} per ometre cap carpeta entremig."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Això és útil per a jerarquies de carpetes més profundes, més complicades o desconegudes."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "A la pestanya QuickFolders Pro es poden configurar funcions més avançades, com ara dreceres de teclat per anar a una carpeta / moure correu o excloure carpetes dels resultats de cerca. Per accedir a aquestes i altres funcions premium, obtingueu una llicència Pro i doneu suport al futur de QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Mostra el següent missatge després de moure'n l'actual"
   },
@@ -1542,7 +1569,7 @@
     "message": "Renoveu la llicència."
   },
   "special-offer-content": {
-    "message": "Proveu QuickFolders a prova de futur i obteniu una llicència ja que hi ha una {boldStart} reducció del 40% {boldEnd} en el preu de QuickFolders Pro. Aquesta oferta especial estarà disponible fins al {boldStart} 1 de maig {boldEnd}."
+    "message": "Protegiu les carpetes ràpides per a la imminent versió de Thunderbird 91 i estalvieu {boldStart} 40% {boldEnd} comprant una llicència. Aquesta oferta especial estarà disponible fins al {boldStart} 18 de juny {boldEnd}."
   },
   "special-offer-head": {
     "message": "Prova de futur QuickFolders!"
@@ -1605,7 +1632,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message" : "{L1} Solucionat: nous caràcters de línia no desitjats [\\n] que es mostren a la versió 5.5.2 {L2} {L1} codi de llicència migrat a un script de fons; si teniu algun efecte secundari relacionat amb la vostra llicència, no dubteu a posar-vos en contacte amb mi mitjançant la pestanya d'assistència {L2}"
+    "message" : "{L1} S'han afegit noves funcions de cerca significatives a la funció quickMove / quickJump. Per obtenir ajuda, feu clic al símbol [?] Situat a la dreta del camp de cerca. {L2} {L1} Millora de la compatibilitat amb diverses finestres del Thunderbird. {L2} {L1} Millora de la llegibilitat de les barres d'eines a Linux {L2} {L1} [migració de l'extensió de correu] La biblioteca de llicències s'ha migrat a un script de fons. Si teniu algun problema relacionat amb la concessió de llicències, poseu-vos en contacte amb mi a través de la pestanya d'assistència. {L2}"
   },
   "windowTitle": {
     "message": "Propietats avançades"

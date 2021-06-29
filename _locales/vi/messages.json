@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Stop displaying version history after updates?"
   },
+  "quickMove.help.head": {
+    "message" : "Trợ giúp cho {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Các tính năng tiên tiến"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Nhập phần đầu của tên thư mục hoặc các từ trong đó, được phân cách bằng dấu cách."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Các ký tự sau được coi là ranh giới từ và không cần phải nhập:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Nhập {1} để vào thư mục grandparent/parent/được tìm kiếm."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "2 chữ cái đầu tiên của bất kỳ thư mục mẹ nào thường là đủ. Bạn cũng có thể tạo các thư mục con mới bằng cú pháp này."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Nhập {1} để bỏ qua bất kỳ thư mục nào ở giữa."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Điều này hữu ích cho các cấu trúc phân cấp thư mục sâu hơn, phức tạp hơn hoặc không xác định."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Các chức năng nâng cao hơn như phím tắt để đi đến một thư mục / di chuyển thư hoặc loại trừ các thư mục khỏi kết quả tìm kiếm có thể được định cấu hình trên tab QuickFolders Pro. Để truy cập các tính năng này và các tính năng cao cấp khác, hãy nhận giấy phép Pro và hỗ trợ tương lai của QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Hiển thị thư tiếp theo sau khi chuyển thư hiện tại"
   },
@@ -1600,7 +1627,7 @@
     "message": "Gia hạn giấy phép của bạn."
   },
   "special-offer-content": {
-    "message": "Làm cho QuickFolders bằng chứng trong tương lai và tìm nạp Giấy phép trong khi {boldStart} giảm 40% {boldEnd} về giá của QuickFolders Pro! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 1 tháng 5 {boldEnd}."
+    "message": "Bảo vệ QuickFolders cho phiên bản Thunderbird 91 sắp ra mắt và tiết kiệm {boldStart} 40% {boldEnd} khi mua giấy phép! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 18 tháng 6 {boldEnd}."
   },
   "special-offer-head": {
     "message": "Làm cho QuickFolders bằng chứng trong tương lai!"
@@ -1685,7 +1712,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Đã khắc phục: Các ký tự dòng mới không mong muốn [\\n] hiển thị trong phiên bản 5.5.2 {L2} {L1} Mã của người cấp phép được di chuyển vào tập lệnh nền - nếu bạn gặp bất kỳ tác dụng phụ nào liên quan đến giấy phép của mình, vui lòng liên hệ tôi qua tab hỗ trợ {L2}"
+    "message": "{L1} Các tính năng tìm kiếm mới quan trọng đã được thêm vào chức năng quickMove / quickJump. Để được trợ giúp về những điều này, hãy nhấp vào biểu tượng [?] Ở bên phải trường tìm kiếm. {L2} {L1} Cải thiện hỗ trợ cho nhiều cửa sổ Thunderbird. {L2} {L1} Cải thiện khả năng đọc của các thanh công cụ trong Linux {L2} {L1} [di chuyển tiện ích mở rộng thư] Thư viện cấp phép đã được chuyển sang tập lệnh nền. Nếu bạn gặp bất kỳ sự cố nào liên quan đến việc cấp phép, vui lòng liên hệ với tôi qua tab hỗ trợ! {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

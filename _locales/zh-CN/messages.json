@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "更新后停止显示版本历史记录吗？"
   },
+  "quickMove.help.head": {
+    "message" : "{1} 的帮助"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "高级功能"
+  },
+  "quickMove.help.l1a": {
+    "message" : "键入文件夹名称的开头或其中的单词，以空格分隔。"
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "以下字符被视为单词边界，不需要键入："
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "输入 {1} 以输入祖父/父/搜索文件夹。"
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "任何父文件夹的前 2 个字母通常就足够了。 您还可以使用此语法创建新的子文件夹。"
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "键入 {1} 以跳过其间的任何文件夹。"
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "这对于更深、更复杂或未知的文件夹层次结构很有用。"
+  },   
+  "quickMove.help.advanced": {
+    "message" : "可以在 QuickFolders Pro 选项卡上配置更高级的功能，例如转到文件夹/移动邮件的键盘快捷键或从搜索结果中排除文件夹。 要访问这些和其他高级功能，请获取 Pro 许可证并支持 QuickFolders 的未来。"
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "在移動當前一封郵件後顯示下一封郵件"
   },
@@ -1600,7 +1627,7 @@
     "message": "续订您的许可证。"
   },
   "special-offer-content": {
-    "message": "使QuickFolders成为将来的证明并获取许可，同时QuickFolders Pro的价格降低{boldStart} 40％{boldEnd}！ 此特别优惠将在{boldStart} 5月1日{boldEnd}之前提供。"
+    "message": "为即将推出的 Thunderbird 91 版保护 QuickFolders 并节省 {boldStart}40%{boldEnd} 购买许可证！ 此特别优惠将持续到 {boldStart}6 月 18 日{boldEnd}。"
   },
   "special-offer-head": {
     "message": "使QuickFolders成为未来的证明！"
@@ -1685,7 +1712,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}已修复：在版本5.5.2中显示了不需要的换行符[\\n] {L2} {L1}许可人代码已迁移到后台脚本中-如果您遇到与许可相关的任何副作用，请随时与我们联系 通过“支持”标签{L2}"
+    "message": "{L1}quickMove / quickJump 功能中添加了重要的新搜索功能。 如需这些方面的帮助，请点击搜索字段右侧的 [?] 符号。{L2}{L1}改进了对多个 Thunderbird 窗口的支持。{L2}{L1}改进了 Linux 下工具栏的可读性{L2}{L1} [邮件扩展迁移] 许可库已迁移到后台脚本中。 如果您遇到与许可相关的任何问题，请通过支持选项卡与我联系！{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

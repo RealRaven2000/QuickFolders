@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "更新後のバージョン履歴の表示を止めますか？"
   },
+  "quickMove.help.head": {
+    "message" : "{1}のヘルプ"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "高度な機能"
+  },
+  "quickMove.help.l1a": {
+    "message" : "スペースで区切って、フォルダー名またはフォルダー内の単語の先頭を入力します。"
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "次の文字は単語の境界と見なされ、入力する必要はありません。"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "祖父母/親/検索されたフォルダに入るには{1}と入力します。"
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "通常、親フォルダの最初の2文字で十分です。 この構文で新しいサブフォルダーを作成することもできます。"
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "間にあるフォルダをスキップするには、{1}と入力します。"
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "これは、より深く、より複雑な、または未知のフォルダー階層に役立ちます。"
+  },   
+  "quickMove.help.advanced": {
+    "message" : "フォルダーに移動したり、メールを移動したり、検索結果からフォルダーを除外したりするためのキーボードショートカットなどのより高度な機能は、QuickFoldersProタブで構成できます。 これらおよびその他のプレミアム機能にアクセスするには、Proライセンスを取得し、QuickFoldersの将来をサポートしてください。"
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "現在のメールを移動した後、次のメールを表示する"
   },
@@ -1600,7 +1627,7 @@
     "message": "ライセンスを更新する。"
   },
   "special-offer-content": {
-    "message": "QuickFolders Proの価格が{boldStart} 40％割引{boldEnd}されている間に、QuickFoldersを将来にわたって保証し、ライセンスを取得してください。 この特別オファーは、{boldStart} 5月1日{boldEnd}までご利用いただけます。"
+    "message": "差し迫ったThunderbirdバージョン91のQuickFoldersを保護し、ライセンスの購入を{boldStart} 40％{boldEnd}節約しましょう！ この特別オファーは、{boldStart} 6月18日{boldEnd}までご利用いただけます。"
   },
   "special-offer-head": {
     "message": "QuickFoldersを将来の証拠にしましょう！"
@@ -1685,7 +1712,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1}修正済み：バージョン5.5.2で表示される不要な改行文字[\\n] {L2} {L1}ライセンスコードがバックグラウンドスクリプトに移行されました-ライセンスに関連する副作用が発生した場合は、遠慮なくお問い合わせください サポートタブ{L2}経由で私"
+    "message": "{L1} quickMove / quickJump関数に重要な新しい検索機能が追加されました。 これらのヘルプについては、検索フィールドの右側にある[？]記号をクリックしてください。{L2} {L1}複数のThunderbirdウィンドウのサポートが改善されました。{L2} {L1} Linuxでのツールバーの読みやすさが改善されました{L2} {L1} [メール拡張機能の移行]ライセンスライブラリがバックグラウンドスクリプトに移行されました。 ライセンスに関連する問題が発生した場合は、[サポート]タブからご連絡ください！{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

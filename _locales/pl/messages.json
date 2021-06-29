@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Czy przestać wyświetlać historię wersji po aktualizacji?"
   },
+  "quickMove.help.head": {
+    "message" : "Pomoc dla {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Zaawansowane funkcje"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Wpisz początek nazwy folderu lub słów w nim oddzielonych spacją."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Następujące znaki są traktowane jako granice wyrazów i nie trzeba ich wpisywać:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Wpisz {1}, aby wprowadzić folder dziadków/rodziców/przeszukiwany."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Zwykle wystarczą pierwsze 2 litery dowolnego folderu nadrzędnego. Za pomocą tej składni możesz także tworzyć nowe podfoldery."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Wpisz {1}, aby pominąć wszystkie foldery pomiędzy."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Jest to przydatne w przypadku głębszych, bardziej skomplikowanych lub nieznanych hierarchii folderów."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Bardziej zaawansowane funkcje, takie jak skróty klawiaturowe umożliwiające przejście do folderu/przenoszenie poczty lub wykluczanie folderów z wyników wyszukiwania, można skonfigurować na karcie QuickFolders Pro. Aby uzyskać dostęp do tych i innych funkcji premium, uzyskaj licencję Pro i wesprzyj przyszłość QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Wyświetl następną wiadomość po przeniesieniu bieżącej"
   },
@@ -1600,7 +1627,7 @@
     "message": "Odnów licencję."
   },
   "special-offer-content": {
-    "message": "Przygotuj QuickFolders na przyszłość i pobierz licencję, dopóki cena QuickFolders Pro jest {boldStart} 40% obniżona {boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart} 1 maja {boldEnd}."
+    "message": "Chroń QuickFolders przed zbliżającą się wersją 91 Thunderbirda i zaoszczędź {boldStart}40%{boldEnd} kupując licencję! Ta oferta specjalna będzie dostępna do {boldStart}18 czerwca{boldEnd}."
   },
   "special-offer-head": {
     "message": "Przygotuj QuickFolders na przyszłość!"
@@ -1685,7 +1712,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Naprawiono: niechciane znaki nowego wiersza [\\n] wyświetlane w wersji 5.5.2 {L2} {L1} Kod licencjodawcy został przeniesiony do skryptu działającego w tle - jeśli wystąpią jakiekolwiek skutki uboczne związane z licencją, prosimy o kontakt mnie za pośrednictwem karty pomocy {L2}"
+    "message": "{L1}Do funkcji quickMove/quickJump dodano nowe, znaczące funkcje wyszukiwania. Aby uzyskać pomoc, kliknij symbol [?] po prawej stronie pola wyszukiwania.{L2}{L1}Ulepszona obsługa wielu okien Thunderbirda.{L2}{L1}Poprawa czytelności pasków narzędzi w systemie Linux{L2}{L1} [migracja rozszerzenia poczty] Biblioteka licencjonowania została przeniesiona do skryptu działającego w tle. Jeśli napotkasz jakiekolwiek problemy związane z licencjonowaniem, skontaktuj się ze mną za pośrednictwem zakładki pomocy!{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

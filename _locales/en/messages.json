@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Stop displaying version history after updates?"
   },
+  "quickMove.help.head": {
+    "message" : "Help for {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Advanced Features"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Type the start of a folder name or words in it, delimited by space."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "The following characters are regarded as word boundaries and don't need to be typed:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Type {1} for entering grandparent/parent/searched folder."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Type {1} for skipping any folders in between."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "This is useful for deeper, more complicated or unknown folder hierarchies."
+  },
+  "quickMove.help.advanced": {
+    "message" : "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
+  },
   "quickMove.singleMessage.goNext": {
     "message": "Display next mail after moving current one"
   },
@@ -1600,7 +1627,7 @@
     "message": "Renew your license."
   },
   "special-offer-content": {
-    "message": "Future proof QuickFolders and get a License as there is a {boldStart}40% reduction{boldEnd} on the price of QuickFolders Pro! This special offer will be available until {boldStart}May 1st{boldEnd}."
+    "message": "Protect QuickFolders for the imminent Thunderbird version 91 and save {boldStart}40%{boldEnd} buying a license! This special offer will be available until {boldStart}June 18th{boldEnd}."
   },
   "special-offer-head": {
     "message": "Future Proof QuickFolders!"
@@ -1685,7 +1712,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Fixed: New line characters [\\n] displayed in version 5.5.2 {L2} {L1} licenser code migrated into background script. If you experience any problems related to licensing, please contact me via the support tab! {L2}"
+    "message": "{L1}Significant new search features have been added to the quickMove / quickJump function. For help on these, click the [?] symbol to the right of the search field.{L2}{L1}Improved support for multiple Thunderbird windows .{L2}{L1}Improved readability of toolbars under Linux{L2}{L1}[mail extension migration] Licensing library was migrated into background script. If you experience any problems related to licensing, please contact me via the support tab!{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

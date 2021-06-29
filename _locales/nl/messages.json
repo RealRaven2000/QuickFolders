@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Versiegeschiedenis niet meer weergeven na updates?"
   },
+  "quickMove.help.head": {
+    "message" : "Hulp voor {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Geavanceerde functies"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Typ het begin van een mapnaam of woorden erin, gescheiden door spatie."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "De volgende tekens worden beschouwd als woordgrenzen en hoeven niet te worden getypt:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Typ {1} voor het invoeren van de grootouder/ouder/gezochte map."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "De eerste 2 letters van een bovenliggende map zijn meestal voldoende. U kunt met deze syntaxis ook nieuwe submappen maken."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Typ {1} om tussenliggende mappen over te slaan."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Dit is handig voor diepere, meer gecompliceerde of onbekende mappenhiërarchieën."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Meer geavanceerde functies zoals sneltoetsen om naar een map te gaan / e-mail te verplaatsen of mappen uit te sluiten van zoekresultaten kunnen worden geconfigureerd op het tabblad QuickFolders Pro. Om toegang te krijgen tot deze en andere premiumfuncties, moet u een Pro-licentie aanschaffen en de toekomst van QuickFolders ondersteunen."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Geef de volgende e-mail weer nadat u de huidige hebt verplaatst"
   },
@@ -1600,7 +1627,7 @@
     "message": "Verleng uw licentie."
   },
   "special-offer-content": {
-    "message": "Maak QuickFolders toekomstbestendig en haal een licentie op terwijl er {boldStart} 40% korting {boldEnd} is op de prijs van QuickFolders Pro! Deze speciale aanbieding is beschikbaar tot {boldStart} 1 mei {boldEnd}."
+    "message": "Bescherm QuickFolders voor de naderende Thunderbird-versie 91 en bespaar {boldStart}40%{boldEnd} door een licentie te kopen! Deze speciale aanbieding is geldig tot {boldStart}18 juni{boldEnd}."
   },
   "special-offer-head": {
     "message": "Maak QuickFolders toekomstbestendig!"
@@ -1685,7 +1712,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Opgelost: ongewenste nieuwe lijntekens [\\n] weergegeven in versie 5.5.2 {L2} {L1} Licentiehoudercode gemigreerd naar achtergrondscript - als u bijwerkingen ervaart die verband houden met uw licentie, aarzel dan niet om contact op te nemen met mij via het ondersteuningstabblad {L2}"
+    "message": "{L1}Aanzienlijke nieuwe zoekfuncties zijn toegevoegd aan de quickMove / quickJump-functie. Klik voor hulp hierbij op het [?]-symbool rechts van het zoekveld.{L2}{L1}Verbeterde ondersteuning voor meerdere Thunderbird-vensters.{L2}{L1}Verbeterde leesbaarheid van werkbalken onder Linux{L2}{L1} [migratie van e-mailextensie] Licentiebibliotheek is gemigreerd naar achtergrondscript. Als u problemen ondervindt met betrekking tot licenties, neem dan contact met mij op via het tabblad Ondersteuning!{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1551,6 +1551,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "Parar de exibir histórico de versões após atualizações?"
   },
+  "quickMove.help.head": {
+    "message" : "Ajuda para {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Características avançadas"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Digite o início do nome de uma pasta ou palavras nela, delimitadas por um espaço."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Os seguintes caracteres são considerados limites de palavras e não precisam ser digitados:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Digite {1} para inserir a pasta avós/pais/pesquisada."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "As primeiras 2 letras de qualquer pasta pai geralmente são suficientes. Você também pode criar novas subpastas com esta sintaxe."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Digite {1} para pular todas as pastas intermediárias."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Isso é útil para hierarquias de pastas mais profundas, complicadas ou desconhecidas."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Funções mais avançadas, como atalhos de teclado para ir para uma pasta / mover e-mail ou excluir pastas dos resultados da pesquisa, podem ser configuradas na guia QuickFolders Pro. Para acessar esses e outros recursos premium, obtenha uma licença Pro e suporte o futuro de QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Exibir o próximo e-mail após mover o atual"
   },
@@ -1600,7 +1627,7 @@
     "message": "Renove sua licença."
   },
   "special-offer-content": {
-    "message": "Torne o QuickFolders à prova de futuro e obtenha uma licença enquanto há uma {boldStart} redução de 40% {boldEnd} no preço do QuickFolders Pro! Esta oferta especial estará disponível até {boldStart} 1º de maio {boldEnd}."
+    "message": "Proteja QuickFolders para a versão 91 iminente do Thunderbird e economize {boldStart} 40% {boldEnd} comprando uma licença! Esta oferta especial estará disponível até {boldStart} 18 de junho {boldEnd}."
   },
   "special-offer-head": {
     "message": "Faça QuickFolders à prova de futuro!"
@@ -1685,7 +1712,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Corrigido: caracteres de nova linha indesejados [\\n] exibidos na versão 5.5.2 {L2} {L1} Código do licenciador migrado para o script de plano de fundo - se você experimentar quaisquer efeitos colaterais relacionados à sua licença, não hesite em entrar em contato eu por meio da guia de suporte {L2}"
+    "message": "{L1} Novos recursos de pesquisa significativos foram adicionados à função quickMove / quickJump. Para obter ajuda sobre isso, clique no símbolo [?] À direita do campo de pesquisa. {L2} {L1} Suporte aprimorado para várias janelas do Thunderbird. {L2} {L1} Legibilidade aprimorada das barras de ferramentas no Linux {L2} {L1} [migração de extensão de correio] A biblioteca de licenciamento foi migrada para o script de segundo plano. Se você tiver problemas relacionados ao licenciamento, entre em contato comigo por meio da guia de suporte! {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

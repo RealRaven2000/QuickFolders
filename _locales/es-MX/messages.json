@@ -1444,6 +1444,33 @@
   "qfVersionDisableOnUpdate": {
     "message": "¿Dejar de mostrar el historial de versiones después de las actualizaciones?"
   },
+  "quickMove.help.head": {
+    "message" : "Ayuda para {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message" : "Características avanzadas"
+  },
+  "quickMove.help.l1a": {
+    "message" : "Escriba el inicio de un nombre de carpeta o palabras en él, delimitado por espacio."
+  }, 
+  "quickMove.help.l1b": {
+    "message" : "Los siguientes caracteres se consideran límites de palabras y no es necesario escribirlos:"
+  }, 
+  "quickMove.help.l2a": {
+    "message" : "Escriba {1} para ingresar a la carpeta abuelo / padre / búsqueda."
+  }, 
+  "quickMove.help.l2b": {
+    "message" : "Las primeras 2 letras de cualquier carpeta principal suelen ser suficientes. También puede crear nuevas subcarpetas con esta sintaxis."
+  }, 
+  "quickMove.help.l3a": {
+    "message" : "Kirjoita {1}, jos haluat ohittaa kaikki kansiot välissä."
+  }, 
+  "quickMove.help.l3b": {
+    "message" : "Esto es útil para jerarquías de carpetas más profundas, más complicadas o desconocidas."
+  },   
+  "quickMove.help.advanced": {
+    "message" : "Las funciones más avanzadas, como los atajos de teclado para ir a una carpeta / mover correo o excluir carpetas de los resultados de búsqueda, se pueden configurar en la pestaña QuickFolders Pro. Para acceder a estas y otras funciones premium, obtenga una licencia Pro y respalde el futuro de QuickFolders."
+  },  
   "quickMove.singleMessage.goNext": {
     "message": "Mostrar el siguiente correo después de mover el actual"
   },

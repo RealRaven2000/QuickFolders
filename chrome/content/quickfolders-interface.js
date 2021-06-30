@@ -29,50 +29,50 @@ QuickFolders.Interface = {
 	menuPopupsByOffset: [],
 	//myPopup: null,
 	boundKeyListener: false,
-	RecentPopupId: 'QuickFolders-folder-popup-Recent',
+	RecentPopupId: "QuickFolders-folder-popup-Recent",
 	_paletteStyleSheet: null,
 	_paletteStyleSheetOfOptions: null,
-	isCommandListeners: QuickFolders.Preferences.getBoolPref('debug.popupmenus.isCommandListeners'), // [false] remove these later
-	isOncommandAttributes: QuickFolders.Preferences.getBoolPref('debug.popupmenus.isOnCommandAttr'), // [false] remove these later
-	_verticalMenuOffset: QuickFolders.Preferences.getIntPref('debug.popupmenus.verticalOffset'),
+	isCommandListeners: QuickFolders.Preferences.getBoolPref("debug.popupmenus.isCommandListeners"), // [false] remove these later
+	isOncommandAttributes: QuickFolders.Preferences.getBoolPref("debug.popupmenus.isOnCommandAttr"), // [false] remove these later
+	_verticalMenuOffset: QuickFolders.Preferences.getIntPref("debug.popupmenus.verticalOffset"),
 	get verticalMenuOffset() { return this._verticalMenuOffset; },
-	set verticalMenuOffset(o) { this._verticalMenuOffset = o; QuickFolders.Preferences.setIntPref('debug.popupmenus.verticalOffset', o)},
-	RecentPopupIdCurrentFolderTool: 'QuickFolders-folder-popup-Recent-CurrentFolderTool',
-	get CategoryBox() { return  QuickFolders.Util.$('QuickFolders-Category-Box'); },
-	get FilterToggleButton() { return QuickFolders.Util.$('QuickFolders-filterActive'); },
+	set verticalMenuOffset(o) { this._verticalMenuOffset = o; QuickFolders.Preferences.setIntPref("debug.popupmenus.verticalOffset", o)},
+	RecentPopupIdCurrentFolderTool: "QuickFolders-folder-popup-Recent-CurrentFolderTool",
+	get CategoryBox() { return  QuickFolders.Util.$("QuickFolders-Category-Box"); },
+	get FilterToggleButton() { return QuickFolders.Util.$("QuickFolders-filterActive"); },
 	get CurrentFolderTab() { 
     // retrieves the Visible current folder tab - might have to move it in Tb for conversation view
-    return QuickFolders.Util.$('QuickFoldersCurrentFolder');
+    return QuickFolders.Util.$("QuickFoldersCurrentFolder");
   },
-	get CurrentFolderRemoveIconBtn() { return QuickFolders.Util.$('QuickFolders-RemoveIcon');},
-  get CurrentFolderSelectIconBtn() { return QuickFolders.Util.$('QuickFolders-SelectIcon');},
-	get CurrentFolderBar() { return QuickFolders.Util.$('QuickFolders-CurrentFolderTools');},
-	get CurrentFolderFilterToggleButton() { return QuickFolders.Util.$('QuickFolders-currentFolderFilterActive'); },
-	get CogWheelPopupButton () { return QuickFolders.Util.$('QuickFolders-mainPopup'); },
-	get QuickMoveButton () { return QuickFolders.Util.$('QuickFolders-quickMove'); },
-  get ReadingListButton () { return QuickFolders.Util.$('QuickFolders-readingList'); },
-	get CategoryMenu() { return QuickFolders.Util.$('QuickFolders-Category-Selection'); },
-	get PaintButton() { return QuickFolders.Util.$('QuickFolders-paintBucketActive'); },
-	get MailButton() { return QuickFolders.Util.$('QuickFolders-CurrentMail'); },
-	get TitleLabel() { return QuickFolders.Util.$('QuickFolders-title-label'); },
-	get TitleLabelBox() { return QuickFolders.Util.$('QuickFolders-LabelBox'); },
-	get FoldersBox() { return QuickFolders.Util.$('QuickFolders-FoldersBox'); },
-	get Toolbar() { return QuickFolders.Util.$('QuickFolders-Toolbar'); },
-	get PalettePopup() { return QuickFolders.Util.$('QuickFolders-PalettePopup');},
-	get FindFolderBox() { return QuickFolders.Util.$('QuickFolders-FindFolder');},
+	get CurrentFolderRemoveIconBtn() { return QuickFolders.Util.$("QuickFolders-RemoveIcon");},
+  get CurrentFolderSelectIconBtn() { return QuickFolders.Util.$("QuickFolders-SelectIcon");},
+	get CurrentFolderBar() { return QuickFolders.Util.$("QuickFolders-CurrentFolderTools");},
+	get CurrentFolderFilterToggleButton() { return QuickFolders.Util.$("QuickFolders-currentFolderFilterActive"); },
+	get CogWheelPopupButton () { return QuickFolders.Util.$("QuickFolders-mainPopup"); },
+	get QuickMoveButton () { return QuickFolders.Util.$("QuickFolders-quickMove"); },
+  get ReadingListButton () { return QuickFolders.Util.$("QuickFolders-readingList"); },
+	get CategoryMenu() { return QuickFolders.Util.$("QuickFolders-Category-Selection"); },
+	get PaintButton() { return QuickFolders.Util.$("QuickFolders-paintBucketActive"); },
+	get MailButton() { return QuickFolders.Util.$("QuickFolders-CurrentMail"); },
+	get TitleLabel() { return QuickFolders.Util.$("QuickFolders-title-label"); },
+	get TitleLabelBox() { return QuickFolders.Util.$("QuickFolders-LabelBox"); },
+	get FoldersBox() { return QuickFolders.Util.$("QuickFolders-FoldersBox"); },
+	get Toolbar() { return QuickFolders.Util.$("QuickFolders-Toolbar"); },
+	get PalettePopup() { return QuickFolders.Util.$("QuickFolders-PalettePopup");},
+	get FindFolderBox() { return QuickFolders.Util.$("QuickFolders-FindFolder");},
 	
   getPreviewButtonId: function getPreviewButtonId(previewId) {
 		switch(previewId) {
-			case 'standard':
-        return 'inactivetabs-label';
-			case 'active':
-        return 'activetabs-label';
-			case 'hovered':
-        return 'hoveredtabs-label';
-			case 'dragOver':
-        return 'dragovertabs-label';
+			case "standard":
+        return "inactivetabs-label";
+			case "active":
+        return "activetabs-label";
+			case "hovered":
+        return "hoveredtabs-label";
+			case "dragOver":
+        return "dragovertabs-label";
 			default:
-				QuickFolders.Util.logDebug('QuickFolders.Interface.getPreviewButtonId - Invalid previewId: ' + previewId); 
+				QuickFolders.Util.logDebug("QuickFolders.Interface.getPreviewButtonId - Invalid previewId: " + previewId); 
         return null;
 		}
   } ,
@@ -84,7 +84,7 @@ QuickFolders.Interface = {
 	
 	get PaletteStyleSheet() {
 		const util = QuickFolders.Util;
-	  let isOptionsScreen = (document.location.href.toString() == 'chrome://quickfolders/content/options.xul');
+	  let isOptionsScreen = (document.location.href.toString() == "chrome://quickfolders/content/options.xul");
 	
 		if (isOptionsScreen) {
 			if (this._paletteStyleSheetOfOptions)
@@ -96,8 +96,8 @@ QuickFolders.Interface = {
 		}
 		let ss = 
 			util.isCSSGradients ?
-			'skin/quickfolders-palettes.css' : 
-			'skin/quickfolders-palettes-legacy.css';
+			"skin/quickfolders-palettes.css" : 
+			"skin/quickfolders-palettes-legacy.css";
 			
 		this._paletteStyleSheet = 'chrome://quickfolders/' + ss;
 		if (!this._paletteStyleSheetOfOptions)  {
@@ -118,7 +118,7 @@ QuickFolders.Interface = {
 	} ,
 
 	get globalTreeController() {
-		if (typeof gFolderTreeController !== 'undefined')
+		if (typeof gFolderTreeController !== "undefined")
 			return gFolderTreeController;
 		return QuickFolders.Util.getMail3PaneWindow().gFolderTreeController;
 	} ,
@@ -129,7 +129,7 @@ QuickFolders.Interface = {
 			s = QuickFolders.Properties.GetStringFromName(id);
 		}
 		catch(ex) { 
-			QuickFolders.Util.logException('Exception during getUIstring(' + id + ') ', ex);
+			QuickFolders.Util.logException("Exception during getUIstring(" + id + ") ", ex);
 			s = defaultString; 
 		}
 		return s;
@@ -155,7 +155,7 @@ QuickFolders.Interface = {
         if (entry) {
           util.logDebugOptional ("mailTabs","Current Category = " + this.currentActiveCategories ); // + this.CurrentlySelectedCategories
           if (entry.category)
-            util.logDebugOptional ("mailTabs","Categories of selected Tab = " + entry.category.replace('|',', '));
+            util.logDebugOptional ("mailTabs","Categories of selected Tab = " + entry.category.replace("|",", "));
         }
       }
 		} catch(e) { util.logToConsole("tabSelectUpdate failed: " + e); }
@@ -195,7 +195,7 @@ QuickFolders.Interface = {
 		logDO("listeners.folder", "setFolderUpdateTimer() - Id = " + QI.TimeoutID);
 		if (!(QI.TimeoutID)) {
 			try {
-				let nDelay = QuickFolders.Preferences.getIntPref('queuedFolderUpdateDelay');
+				let nDelay = QuickFolders.Preferences.getIntPref("queuedFolderUpdateDelay");
         if (item && item.prettyName) {
           let isUpdateVisible = false;
           // if this folder is not displayed, can we bypass the update?
@@ -213,12 +213,12 @@ QuickFolders.Interface = {
               else
                 logDO("listeners.folder", "no need to display: " + entry.name);
             }
-            let slash = folderUri.lastIndexOf('/');
+            let slash = folderUri.lastIndexOf("/");
 					  folderUri = folderUri.substring(0, slash)
           }
           if (!isUpdateVisible) return;
             
-          util.logDebug('setFolderUpdateTimer(item):' + item.prettyName);
+          util.logDebug("setFolderUpdateTimer(item):" + item.prettyName);
         }
 				if (!nDelay>0) nDelay = 750;
 				//this.TimeoutID = setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
@@ -354,7 +354,7 @@ QuickFolders.Interface = {
 		    popupId = isCurrentFolderButton ? this.RecentPopupIdCurrentFolderTool : this.RecentPopupId,
         prefs = QuickFolders.Preferences,
         util = QuickFolders.Util;
-		util.logDebugOptional('recentFolders','createRecentPopup(passedPopup:' + passedPopup + ', isDrag:'+ isDrag +', isCreate:' + isCreate + ')');
+		util.logDebugOptional("recentFolders","createRecentPopup(passedPopup:" + passedPopup + ", isDrag:"+ isDrag +", isCreate:" + isCreate + ")");
 
  		if (passedPopup) {
 // 			menupopup = passedPopup;
@@ -366,12 +366,12 @@ QuickFolders.Interface = {
 			menupopup = passedPopup;
  		}
  		else {
-			menupopup = this.createIconicElement('menupopup','*');
- 			menupopup.setAttribute('id',popupId);
+			menupopup = this.createIconicElement("menupopup","*");
+ 			menupopup.setAttribute("id",popupId);
  		}
 
-		menupopup.setAttribute('position','after_start'); //
-		menupopup.className = 'QuickFolders-folder-popup';
+		menupopup.setAttribute("position","after_start"); //
+		menupopup.className = "QuickFolders-folder-popup";
 		if (isCreate) {
 			// if popup is null, we are creating the button - no need to populate the menu as it is being done again on the click / drag event!
 			return menupopup;
@@ -393,7 +393,7 @@ QuickFolders.Interface = {
 			recentFolders = util.generateMRUlist(gFolderTreeView);
 		}
 
-    let debugText = '';
+    let debugText = "";
 		for (let i = 0; i < recentFolders.length; i++) {
 			let f;
 			if (isOldFolderList)
@@ -401,27 +401,27 @@ QuickFolders.Interface = {
 			else
 				f = recentFolders[i]._folder;
 			FoldersArray.appendElement(f, false);
-      if (prefs.isDebugOption('recentFolders.detail')) {
-        debugText += '\n' + i + '. appended ' +  f.prettyName.padEnd(25, " ") + ' ' + f.URI;
+      if (prefs.isDebugOption("recentFolders.detail")) {
+        debugText += "\n" + i + ". appended " +  f.prettyName.padEnd(25, " ") + " " + f.URI;
       }
 		}
-		util.logDebugOptional('recentFolders.detail','Recent Folders Array appended: ' +  debugText);
+		util.logDebugOptional("recentFolders.detail","Recent Folders Array appended: " +  debugText);
 
 		// addSubFoldersPopupFromList expects nsISimpleEnumerator, enumerate() convrts the nsIMutableArray
 		let isAlphaSorted =  prefs.getBoolPref("recentfolders.sortAlphabetical");
 		this.addSubFoldersPopupFromList(FoldersArray.enumerate(), menupopup, isDrag, isAlphaSorted, true);
-		util.logDebugOptional('recentFolders','=============================\n'
-			+ 'createRecentPopup Finished!');
+		util.logDebugOptional("recentFolders","=============================\n"
+			+ "createRecentPopup Finished!");
 		return menupopup;
 	} ,
 
 	createRecentTab: function createRecentTab(passedPopup, isDrag, passedButton) {
 		try {
-			QuickFolders.Util.logDebugOptional('recentFolders','createRecentTab( '
-				+ ' passedPopup: ' + (passedPopup == null ? 'null' : passedPopup.id)
-				+ ', isDrag: ' + isDrag
-				+ ', passedButton: ' + (passedButton == null ? 'null' : passedButton.id)
-				+ ')');
+			QuickFolders.Util.logDebugOptional("recentFolders","createRecentTab( "
+				+ " passedPopup: " + (passedPopup == null ? "null" : passedPopup.id)
+				+ ", isDrag: " + isDrag
+				+ ", passedButton: " + (passedButton == null ? "null" : passedButton.id)
+				+ ")");
 			let menupopup,
 			    isFolderUpdate = false, //	need this to know if we are creating a fresh button (true) or just rebuild the folders menu on click/drag (false)
 			    isCurrentFolderButton = (passedButton == null ? false : (passedButton.id=="QuickFolders-Recent-CurrentFolderTool")),
@@ -430,14 +430,14 @@ QuickFolders.Interface = {
 			if (!passedButton) {
 				isFolderUpdate = true;
 				let recentLabel = QuickFolders.Preferences.getBoolPref("recentfolders.showLabel") ?
-					this.getUIstring("qfRecentFolders", "Recent Folders") : '';
+					this.getUIstring("qfRecentFolders", "Recent Folders") : "";
 				button.setAttribute("label", recentLabel);
 				button.setAttribute("tag", "#Recent");
 				button.id="QuickFolders-Recent";
 
 				// biffState = nsMsgBiffState_Unknown = 2
 				this.styleFolderButton(button, 0, 0, 0
-					, 'recent' + ((isCurrentFolderButton || QuickFolders.Preferences.isShowRecentTabIcon) ?  ' icon' : '')
+					, "recent" + ((isCurrentFolderButton || QuickFolders.Preferences.isShowRecentTabIcon) ?  " icon" : "")
 					, 0, false, null, null);
 				this.buttonsByOffset[0] = button; // currently, hard code to be the first! ([0] was [offset])
 				let tabColor = QuickFolders.Preferences.recentTabColor;
@@ -464,9 +464,9 @@ QuickFolders.Interface = {
 
 				if (!isCurrentFolderButton)  // the currentfolder recent button has already the correct attributes set by the overlay
 				{
-					if (button.getAttribute('context') != this.RecentPopupId) { // prevent event duplication
-						button.setAttribute('context', this.RecentPopupId);
-						button.setAttribute('position','after_start');
+					if (button.getAttribute("context") != this.RecentPopupId) { // prevent event duplication
+						button.setAttribute("context", this.RecentPopupId);
+						button.setAttribute("position","after_start");
 						// button.addEventListener("contextmenu", function(event) { QuickFolders.Interface.onClickRecent(event.target, event, false); }, true);
 						button.addEventListener("click", function(event) { QuickFolders.Interface.onClickRecent(event.target, event, true); return false; }, false);
 						button.addEventListener("dragenter", function(event) { nsDragAndDrop.dragEnter(event, QuickFolders.buttonDragObserver); }, false);
@@ -487,7 +487,7 @@ QuickFolders.Interface = {
 		const QI = QuickFolders.Interface,
 		      prefs = QuickFolders.Preferences;
 		// refresh the recent menu on right click
-		evt.stopPropagation();
+		if (evt) evt.stopPropagation();
 
 		if (this.PaintModeActive) {
 			let paintButton = this.PaintButton,
@@ -495,16 +495,16 @@ QuickFolders.Interface = {
 			if (!color) color = 0;
 			this.setButtonColor(button, color);
 			this.initElementPaletteClass(button);
-			QuickFolders.Preferences.setIntPref( 'recentfolders.color',  color)
+			QuickFolders.Preferences.setIntPref( "recentfolders.color",  color)
 			return;
 		}
 		// Thunderbird 52 fix for [Bug 26592] - recent folder clicks not working
-		if (button && (button.tagName == 'menuitem' || button.tagName == 'menupopup')) {
-			if (prefs.isDebugOption('popupmenus')) debugger;
+		if (button && (button.tagName == "menuitem" || button.tagName == "menupopup")) {
+			if (prefs.isDebugOption("popupmenus")) debugger;
 
 			let menuitem = button;
 			if (menuitem.folder) {
-				evt.preventDefault();
+				if (evt) evt.preventDefault();
 				// addSubFoldersPopupFromList is ultimately responsible for creating this menuitems
         QI.onSelectSubFolder(menuitem.folder.URI, evt);
 				return;
@@ -532,8 +532,8 @@ QuickFolders.Interface = {
   // in single folder view!
   ensureCurrentFolder: function ensureCurrentFolder() {
     let util = QuickFolders.Util,
-        currentFolderTab = document.getElementById('QuickFoldersCurrentFolder'),
-        existsMsgDisplay = (typeof gMessageDisplay != 'undefined') ,
+        currentFolderTab = document.getElementById("QuickFoldersCurrentFolder"),
+        existsMsgDisplay = (typeof gMessageDisplay != "undefined") ,
         current = !existsMsgDisplay ? null : gMessageDisplay.displayedMessage.folder;
     if (!existsMsgDisplay) {
       let txt = "No gMessageDisplay in current view";
@@ -555,15 +555,15 @@ QuickFolders.Interface = {
 	
 	onGoPreviousMsg: function onGoPreviousMsg(button, isSingleMessage) {
 		if (button.nextSibling.checked) 
-			goDoCommand('cmd_previousMsg');
+			goDoCommand("cmd_previousMsg");
 		else
-			goDoCommand('button_previous');
+			goDoCommand("button_previous");
 		if (isSingleMessage) {
       this.ensureCurrentFolder();
     } else
-      if (QuickFolders.Util.Application == 'Postbox' 
+      if (QuickFolders.Util.Application == "Postbox" 
           && 
-          QuickFolders.Interface.CurrentTabMode == 'message') 
+          QuickFolders.Interface.CurrentTabMode == "message") 
       {
         // See mailWindow.js messagePaneOnClick(event)
         // msgHdrViewOverlay.js   SelectMessageContainer(aContainer);
@@ -572,18 +572,18 @@ QuickFolders.Interface = {
 
 	onGoNextMsg: function onGoNextMsg(button, isSingleMessage) {
 		if (button.previousSibling.checked) 
-			goDoCommand('cmd_nextMsg');
+			goDoCommand("cmd_nextMsg");
 		else
-			goDoCommand('button_next');
+			goDoCommand("button_next");
     // mailTabs.js =>  DefaultController.doCommand(aCommand, aTab);
     // GoNextMessage(nsMsgNavigationType.nextMessage, false);
     // this will eventually call folderDisplay.navigate()
 		if (isSingleMessage) {
       this.ensureCurrentFolder();
     } else 
-      if (QuickFolders.Util.Application == 'Postbox' 
+      if (QuickFolders.Util.Application == "Postbox" 
           && 
-          QuickFolders.Interface.CurrentTabMode == 'message') 
+          QuickFolders.Interface.CurrentTabMode == "message") 
       {
         // See mailWindow.js messagePaneOnClick(event)
         // msgHdrViewOverlay.js   SelectMessageContainer(aContainer);
@@ -605,11 +605,11 @@ QuickFolders.Interface = {
 		if (!util.hasPremiumLicense(false))
 			util.popupProFeature("skipUnreadFolder");
 				
-		if (prefs.isDebugOption('navigation')) debugger;
+		if (prefs.isDebugOption("navigation")) debugger;
 		folder = util.getNextUnreadFolder(currentFolder);
 		
 		if (folder) {
-			util.logDebug("selecting next unread folder:" + folder.prettyName + '\n' + folder.URI);
+			util.logDebug("selecting next unread folder:" + folder.prettyName + "\n" + folder.URI);
 			QuickFolders_MySelectFolder(folder.URI);
 			// we need to jump to the top (first mail) for the 
 			if (GoNextMessage)
@@ -619,14 +619,14 @@ QuickFolders.Interface = {
 			
 			if (currentFolder == folder) { // wrap around case
 			  let txt = util.getBundleString("qfNavigationWrapped", "No other unread folders found, continuing in {1}.")
-				util.slideAlert("QuickFolders",  txt.replace('{1}', folder.prettyName));
+				util.slideAlert("QuickFolders",  txt.replace("{1}", folder.prettyName));
 			}
 			// find next sibling, of parent, then trigger onGoNextMsg  
 			// navigation types of nsMsgNavigationType are defined in nsIMsgDBView.idl
 			// GoNextMessage is defined  in msgViewNavigation.js
 			// GoNextMessage(1, true); // nsMsgNavigationType.firstMessage
 			// GoNextMessage(7, true); // nsMsgNavigationType.nextUnreadMessage
-			goDoCommand('button_next');
+			goDoCommand("button_next");
 		} 
 	} ,
 
@@ -642,15 +642,15 @@ QuickFolders.Interface = {
 			quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
 			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
 			if (util.Licenser.isExpired) {
-				quickFoldersLabel.classList.add('expired');
+				quickFoldersLabel.classList.add("expired");
 				let txtExpired = 
-				  util.getBundleString('qf.premium.renewLicense.tooltip',"Your license expired {1} days ago")
+				  util.getBundleString("qf.premium.renewLicense.tooltip","Your license expired {1} days ago")
 					.replace("{1}", util.Licenser.ExpiredDays);
-				quickFoldersLabel.setAttribute('tooltiptext', txtExpired);
+				quickFoldersLabel.setAttribute("tooltiptext", txtExpired);
 			}
 			else {
-				quickFoldersLabel.removeAttribute('tooltiptext');
-				quickFoldersLabel.classList.remove('expired');
+				quickFoldersLabel.removeAttribute("tooltiptext");
+				quickFoldersLabel.classList.remove("expired");
 			}
 			qfLabelBox.collapsed = !showLabelBox;
 			qfLabelBox.style.width = showLabelBox ? "auto" : "0px";
@@ -684,17 +684,18 @@ QuickFolders.Interface = {
 		if (rebuildCategories || prefs.isMinimalUpdateDisabled)
 			minimalUpdate = false;
 
-		let sDebug = 'updateFolders(rebuildCategories: ' + rebuildCategories + ', minimal: ' + minimalUpdate +')',
+		let sDebug = "updateFolders(rebuildCategories: " + rebuildCategories + ", minimal: " + minimalUpdate +")",
 		    toolbar = this.Toolbar,
 		    theme = prefs.CurrentTheme;
 		toolbar.className = theme.cssToolbarClassName; //  + " chromeclass-toolbar" [Bug 26612]
+    toolbar.classList.add("contentTabToolbar"); // Linux
 		
 		this.FoldersBox.className = "folderBarContainer " + theme.cssToolbarClassName; // [Bug 26575]
 
 		if (QuickFolders.Model.selectedFolders.length)
-			sDebug += ' - Number of Folders = ' + QuickFolders.Model.selectedFolders.length;
+			sDebug += " - Number of Folders = " + QuickFolders.Model.selectedFolders.length;
 
-		util.logDebugOptional("interface", sDebug);
+		util.logDebug(sDebug);
 
 		if (!minimalUpdate) {
 			this.buttonsByOffset = [];
@@ -750,7 +751,7 @@ QuickFolders.Interface = {
 					button = this.addFolderButton(folder, folderEntry, offset, null, null, tabStyle, isFirst);
 					if (button) {
 						if (!folder || typeof folder.server == "undefined")  {
-							button.setAttribute('folderURI', folderEntry.uri);
+							button.setAttribute("folderURI", folderEntry.uri);
 							folderEntry.invalid = true; // add invalid to entry!
 						}
 						this.buttonsByOffset[offset] = button;
@@ -775,7 +776,7 @@ QuickFolders.Interface = {
 			let sDoneWhat = minimalUpdate ? "refreshed on toolbar [minimalUpdate]." : "rebuilt [minimalUpdate=false].";
 			util.logDebug(countFolders + " of " + QuickFolders.Model.selectedFolders.length + " tabs " + sDoneWhat);
 			if (invalidCount)
-				util.logDebug("{0} invalid tabs where found!\n Please check with find orphaned tabs tool.".replace('{0}', invalidCount));
+				util.logDebug("{0} invalid tabs where found!\n Please check with find orphaned tabs tool.".replace("{0}", invalidCount));
 		}
 
 		// [Bug 25598] highlight active tab
@@ -790,7 +791,7 @@ QuickFolders.Interface = {
 
 		// current thread dragging; let's piggyback "isThread"...
 		// use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
-		button = util.$('QuickFolders-CurrentThread'); 
+		button = util.$("QuickFolders-CurrentThread");
 		if (button)
 			this.setEventAttribute(button, "ondragstart","event.isThread=true; nsDragAndDrop.startDrag(event,QuickFolders.messageDragObserver, true)");
 		if (prefs.isShowCategoryNewCount) {
@@ -804,10 +805,10 @@ QuickFolders.Interface = {
 		function collapseConfigItem(id, isShownSetting, checkParent) {
 			let element = util.$(id);
 			// safeguard for copied ids (such as button-previous / button-next)
-			if (checkParent && element.parentNode.id.indexOf('QuickFolders') < 0)
+			if (checkParent && element.parentNode.id.indexOf("QuickFolders") < 0)
 				return;
 			if (element)
-				element.setAttribute('collapsed', !prefs.getBoolPref(isShownSetting));
+				element.setAttribute("collapsed", !prefs.getBoolPref(isShownSetting));
 			return element;
 		}
 		
@@ -819,37 +820,37 @@ QuickFolders.Interface = {
 			collapseConfigItem("QuickFolders-currentFolderMailFolderCommands", "currentFolderBar.showFolderMenuButton");
 			collapseConfigItem("QuickFolders-currentFolderIconCommands", "currentFolderBar.showIconButtons");
 			let repairBtn = collapseConfigItem("QuickFolders-RepairFolderBtn", "currentFolderBar.showRepairFolderButton");
-			if (repairBtn && repairBtn.getAttribute('collapsed')=='false')
-			  repairBtn.setAttribute('tooltiptext', this.getUIstring("qfFolderRepair","Repair Folder"));
+			if (repairBtn && repairBtn.getAttribute("collapsed")=="false")
+			  repairBtn.setAttribute("tooltiptext", this.getUIstring("qfFolderRepair","Repair Folder"));
 			
 			let toolbar2 = this.CurrentFolderBar;
 			if (toolbar2) {
 				let theme = prefs.CurrentTheme,
 						styleEngine = QuickFolders.Styles,
-						ss = styleSheet || this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles'),
-						background = prefs.getStringPref('currentFolderBar.background');
-				styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools', 'background-image', background, true);
-				
-				let mw = util.$('messengerWindow');
+						ss = styleSheet || this.getStyleSheet(styleEngine, "quickfolders-layout.css", "QuickFolderStyles"),
+						background = prefs.getStringPref("currentFolderBar.background");
+				styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools", "background-image", background, true);
+
+				let mw = util.$("messengerWindow");
 				if (mw) {
 					let backImage = window.getComputedStyle(mw).getPropertyValue("background-image");
-					if (backImage && prefs.getBoolPref('currentFolderBar.background.lightweight')) {
-						styleEngine.setElementStyle(ss,'#QuickFolders-PreviewToolbarPanel', 'background-image', backImage);
-						styleEngine.setElementStyle(ss,'#QuickFolders-PreviewToolbarPanel', 'background-position', "right top");
-						styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools','opacity', '0.98');
+					if (backImage && prefs.getBoolPref("currentFolderBar.background.lightweight")) {
+						styleEngine.setElementStyle(ss,"#QuickFolders-PreviewToolbarPanel", "background-image", backImage);
+						styleEngine.setElementStyle(ss,"#QuickFolders-PreviewToolbarPanel", "background-position", "right top");
+						styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "0.98");
 					}
 					else {
-						styleEngine.setElementStyle(ss,'#QuickFolders-PreviewToolbarPanel', 'background-image', 'none');
-						styleEngine.setElementStyle(ss, 'toolbar#QuickFolders-CurrentFolderTools','opacity', '1.0');
+						styleEngine.setElementStyle(ss,"#QuickFolders-PreviewToolbarPanel", "background-image", "none");
+						styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "1.0");
 					}
 				}
 
 				// find (and move) button if necessary
 				let cF = this.CurrentFolderTab,
-				    leftSpace = document.getElementById('QF-CurrentLeftSpacer'),
-				    rightSpace = document.getElementById('QF-CurrentRightSpacer');
-				leftSpace.setAttribute('flex',prefs.getIntPref('currentFolderBar.flexLeft'));
-				rightSpace.setAttribute('flex',prefs.getIntPref('currentFolderBar.flexRight'));
+				    leftSpace = document.getElementById("QF-CurrentLeftSpacer"),
+				    rightSpace = document.getElementById("QF-CurrentRightSpacer");
+				leftSpace.setAttribute("flex",prefs.getIntPref("currentFolderBar.flexLeft"));
+				rightSpace.setAttribute("flex",prefs.getIntPref("currentFolderBar.flexRight"));
 				
 				// add styling to current folder via a fake container
 				if (cF && cF.parentNode)
@@ -873,11 +874,11 @@ QuickFolders.Interface = {
 				for (let n=0; n< toolbar2.childNodes.length; n++)
 				{
 					let node = toolbar2.childNodes[n],
-							special = node.getAttribute('special');
+							special = node.getAttribute("special");
 					if (special && special=="qfMsgFolderNavigation") {
 						node.collapsed = hideMsgNavigation;
 					}
-					else if (node.id && node.id.indexOf('QuickFolders-Navigate')==0) {
+					else if (node.id && node.id.indexOf("QuickFolders-Navigate")==0) {
 						// hide QuickFolders-NavigateUp, QuickFolders-NavigateLeft, QuickFolders-NavigateRight
 						node.collapsed = hideFolderNavigation;
 					}
@@ -908,7 +909,7 @@ QuickFolders.Interface = {
 					break;
 				}
 			}
-			cat.style.display = (showToolIcon || isCustomCat) ? '-moz-inline-box' : 'none';
+			cat.style.display = (showToolIcon || isCustomCat) ? "-moz-inline-box" : "none";
 			cat.collapsed = (!isCustomCat);
       
       if (this.currentActiveCategories) {
@@ -916,7 +917,7 @@ QuickFolders.Interface = {
           this.selectCategory(FCat.UNCATEGORIZED);
         else {
           // [issue 101] If multiple categories are selected, closing QuickFolders settings reverts to "Show All"
-          let cats = this.currentActiveCategories ? this.currentActiveCategories.split('|') : [],
+          let cats = this.currentActiveCategories ? this.currentActiveCategories.split("|") : [],
               newCats = [];
           
           // remove invalid categories
@@ -930,15 +931,15 @@ QuickFolders.Interface = {
             this.selectCategory(FCat.ALL);
           }
           else if (cats.length > newCats.length) {
-            QuickFolders.Interface.selectCategory(newCats.join('|'),false);
+            QuickFolders.Interface.selectCategory(newCats.join("|"),false);
           }
         }
       }
 				
-			if (prefs.getBoolPref('collapseCategories')) 
-				cat.classList.add('autocollapse');
+			if (prefs.getBoolPref("collapseCategories"))
+				cat.classList.add("autocollapse");
 			else 
-				cat.classList.remove ('autocollapse');
+				cat.classList.remove ("autocollapse");
 			
 	  }
 	} ,
@@ -948,7 +949,7 @@ QuickFolders.Interface = {
 		      model = QuickFolders.Model,
 					prefs = QuickFolders.Preferences,
           FCat = QuickFolders.FolderCategory,
-					isPostbox = (util.Application=='Postbox') ? true : false;
+					isPostbox = (util.Application=="Postbox") ? true : false;
 
 		util.logDebugOptional("interface", "updateCategories()");
 		
@@ -963,18 +964,18 @@ QuickFolders.Interface = {
     try { 
       if (lCatCount > 0 && menuList && menuPopup) {
 				let activeCatsList = this.currentActiveCategories,
-				    cats = activeCatsList ? activeCatsList.split('|') : [],
-            isMultiCategories = prefs.getBoolPref('premium.categories.multiSelect');
+				    cats = activeCatsList ? activeCatsList.split("|") : [],
+            isMultiCategories = prefs.getBoolPref("premium.categories.multiSelect")
         util.clearChildren(menuPopup,true);
 
         menuPopup.appendChild(this.createMenuItem(
           FCat.ALL, 
           this.getUIstring("qfAll", "(Display All)"), 
-          'menuitem-iconic'));
+          "menuitem-iconic"));
         for (let i = 0; i < lCatCount; i++) {
           let category = bookmarkCategories[i];
           if (category!=FCat.ALWAYS && category!=FCat.NEVER) {
-            let menuItem = this.createMenuItem(category, category, 'menuitem-iconic');
+            let menuItem = this.createMenuItem(category, category, "menuitem-iconic");
             // add checkbox for multiple category selection
             if (isMultiCategories) {
 							// multi selection
@@ -1001,11 +1002,11 @@ QuickFolders.Interface = {
 				
 				/* the following category items are only shown when necessary */
 				if (isUncat || isNever) {
-					menuPopup.appendChild(this.createIconicElement('menuseparator','*'));
+					menuPopup.appendChild(this.createIconicElement("menuseparator","*"));
 				}
 				if (isUncat) {
 					let s = this.getUIstring("qfUncategorized","(Uncategorized)"),
-              itemUncat = this.createMenuItem(FCat.UNCATEGORIZED , s, 'menuitem-iconic');
+              itemUncat = this.createMenuItem(FCat.UNCATEGORIZED , s, "menuitem-iconic");
 					menuPopup.appendChild(itemUncat);
           if (cats.includes(FCat.UNCATEGORIZED) && isMultiCategories) {
             itemUncat.setAttribute("checked", true);
@@ -1015,7 +1016,7 @@ QuickFolders.Interface = {
 				}
 				if (isNever) {
 					let s = this.getUIstring("qfShowNever","Never Show (Folder Alias)");
-					menuPopup.appendChild(this.createMenuItem(FCat.NEVER, s, 'menuitem-iconic'));
+					menuPopup.appendChild(this.createMenuItem(FCat.NEVER, s, "menuitem-iconic"));
 				}
 				
         menuList.value = activeCatsList || FCat.ALL; // revise this for MULTI SELECTS
@@ -1038,7 +1039,7 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences;
 
-		if (prefs.isDebugOption('interface.update')) debugger;
+		if (prefs.isDebugOption("interface.update")) debugger;
 		logCSS("============================\n" + "updateMainWindow…");
 		let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
 			
@@ -1077,18 +1078,18 @@ QuickFolders.Interface = {
 		let noCheckbox = {value: false};
 		// button = prompts.confirmEx(null, "Title of this Dialog", "What do you want to do?",
 													 // flags, "button 0", "Button 1", "button 2", "check message", let check = {value: false});
-		let text = folderEntry.name + this.getUIstring('qfThisTabIsInvalid',': This points to an invalid folder:') + '\n'
-									+ folderEntry.uri + '\n'
-									+ this.getUIstring('qfTabDeletePrompt', "Delete this Tab?"),
+		let text = folderEntry.name + this.getUIstring("qfThisTabIsInvalid",": This points to an invalid folder:") + "\n"
+									+ folderEntry.uri + "\n"
+									+ this.getUIstring("qfTabDeletePrompt", "Delete this Tab?"),
 				checkText = check ? 
-				              this.getUIstring('qfTabDeleteOption', "Do this with the remaining {0} folders.").replace("{0}", remaining) :
+				              this.getUIstring("qfTabDeleteOption", "Do this with the remaining {0} folders.").replace("{0}", remaining) :
 										  null;
 							 
 		let answer = prompts.confirmEx( null, 
 																		"QuickFolders", 
 																		text,
 																		flags,
-																		'', '', '',
+																		"", "", "",
 																		checkText,
 																		check || noCheckbox);  
 		switch (answer) {
@@ -1112,8 +1113,8 @@ QuickFolders.Interface = {
 		util.logDebugOptional("interface", "tidyDeadFolders()");
 		let countTabs=0,
 		    countDeleted=0,
-		    sMsg = this.getUIstring('qfTidyDeadFolders',
-			'This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is removed without QuickFolders being notified.');
+		    sMsg = this.getUIstring("qfTidyDeadFolders",
+			"This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is removed without QuickFolders being notified.");
 		if (!confirm(sMsg))
 			return;
 		let isCancel = false,
@@ -1151,7 +1152,7 @@ QuickFolders.Interface = {
 				folder = model.getMsgFolderFromUri(folderEntry.uri, false);
 			}
 			catch(ex) {
-				util.logException('GetMsgFolderFromUri failed with uri:' + folderEntry.uri, ex); 			
+				util.logException("GetMsgFolderFromUri failed with uri:" + folderEntry.uri, ex);
 			}
 			countTabs++;
 			
@@ -1179,7 +1180,7 @@ QuickFolders.Interface = {
 		}
 
 		if (countDeleted > 0) {
-			if (confirm(this.getUIstring('qfSavePrompt', 'Save these changes?'))) {
+			if (confirm(this.getUIstring("qfSavePrompt", "Save these changes?"))) {
 				QuickFolders.Preferences.storeFolderEntries(model.selectedFolders);
 				this.updateFolders(true, false); // show this on screen
 			}
@@ -1192,11 +1193,11 @@ QuickFolders.Interface = {
 		}
 		// restore / cancel refreshes the toolbar so no need for displaying a summary.
 		if (countDeleted || !isRollback) {
-			let sLabelFound = this.getUIstring('qfDeadTabsCount', '# dead tabs found:'),
-					sLabelDeleted = this.getUIstring('qfDeadTabsDeleted', '# dead tabs removed:'),
-					sResults = sLabelFound + ' ' + countOrphans + '\n';
+			let sLabelFound = this.getUIstring("qfDeadTabsCount", "# dead tabs found:"),
+					sLabelDeleted = this.getUIstring("qfDeadTabsDeleted", "# dead tabs removed:"),
+					sResults = sLabelFound + " " + countOrphans + "\n";
 			if (countDeleted)
-				sResults +=  sLabelDeleted + ' ' + countDeleted;
+				sResults +=  sLabelDeleted + " " + countDeleted;
 			Services.prompt.alert(null,"QuickFolders", sResults);
 		}
 	} ,
@@ -1281,7 +1282,7 @@ QuickFolders.Interface = {
             folder.setForcePropertyEmpty("folderIcon", false); // remove property
           }
           // button update is unnecessary as the icon is not shown anyway
-          model.setTabIcon (null, folderEntry, '');
+          model.setTabIcon (null, folderEntry, "");
           continue;
         }
         if (fileSpec && folder) {
@@ -1297,32 +1298,32 @@ QuickFolders.Interface = {
       }
     }
     if (missingIcons.length) {
-      let list = '';
+      let list = "";
       for (let i=0; i<missingIcons.length; i++) {
-        list += '\n' + missingIcons[i].name + '  =  ' + missingIcons[i].path;
+        list += "\n" + missingIcons[i].name + "  =  " + missingIcons[i].path;
       }
-      let txt = util.getBundleString('qfRepairTreeIconsMissing', 'The following icon files do not exist:');
+      let txt = util.getBundleString("qfRepairTreeIconsMissing", "The following icon files do not exist:");
 			if (!silent)
-				util.alert(txt + '\n' + list);
+				util.alert(txt + "\n" + list);
 			else
-				util.logToConsole("QuickFolders\n" + txt + '\n' + list);
+				util.logToConsole("QuickFolders\n" + txt + "\n" + list);
     }
-    let repairedTxt = util.getBundleString('qfTreeIconsRepairedCount', '{0} tree icons repaired'),
-        invalidTxt = util.getBundleString('qfTreeIconsInvalidCount', '{0} icons missing'),
-        msg = repairedTxt.replace('{0}', ctRepaired) + '\n' 
-            + invalidTxt.replace('{0}', ctMissing);
+    let repairedTxt = util.getBundleString("qfTreeIconsRepairedCount", "{0} tree icons repaired"),
+        invalidTxt = util.getBundleString("qfTreeIconsInvalidCount", "{0} icons missing"),
+        msg = repairedTxt.replace("{0}", ctRepaired) + "\n"
+            + invalidTxt.replace("{0}", ctMissing);
 		if (!silent)
-			util.slideAlert('repairTreeIcons()', msg);
+			util.slideAlert("repairTreeIcons()", msg);
     // store icons in entry
     if (ctMissing)
       model.store();
   } ,
   
 	createMenuItem: function createMenuItem(value, label, className) {
-		let menuItem = this.createIconicElement('menuitem', className || '*');
+		let menuItem = this.createIconicElement("menuitem", className || "*");
 		menuItem.setAttribute("label", label);
 		menuItem.setAttribute("value", value);
-    if (typeof className !== 'undefined') 
+    if (typeof className !== "undefined")
       menuItem.className = className;
 
 		return menuItem;
@@ -1337,31 +1338,31 @@ QuickFolders.Interface = {
           prefs = QuickFolders.Preferences;
     this._selectedCategories = v; // set menuitem value?
     let menulist = this.CategoryMenu,
-        cats = v.split('|'),
-				txtDebug = '';
+        cats = v.split("|"),
+				txtDebug = "";
 		try {
 			if (menulist) {
 				menulist.value = v;
 				// if multiple select, check all boxes
 				for (let i=0; i<menulist.itemCount; i++) {
 					let it = menulist.getItemAtIndex(i);
-          if (it.tagName!='menuitem') continue;
+          if (it.tagName!="menuitem") continue;
 					let isSelected = (cats.includes(it.value));
 					if (isSelected) {
-						txtDebug += 'Check menuitem: ' + it.value + '\n';
-						it.setAttribute('checked', isSelected); // check selected value
+						txtDebug += "Check menuitem: " + it.value + "\n";
+						it.setAttribute("checked", isSelected); // check selected value
 					}
 					else {
-						it.removeAttribute('checked');
+						it.removeAttribute("checked");
 					}
 				}
 			}
-			util.logDebugOptional('categories','set currentActiveCategories()\n' + txtDebug);
+			util.logDebugOptional("categories","set currentActiveCategories()\n" + txtDebug);
 			if (v!=null)
 				QuickFolders.Preferences.lastActiveCats = v; // store in pref
 		}
 		catch (ex) {
-			util.logException('Error in setter: currentActiveCategories', ex);
+			util.logException("Error in setter: currentActiveCategories", ex);
 		}
   } ,
 	
@@ -1402,7 +1403,7 @@ QuickFolders.Interface = {
 		let tabmail = document.getElementById("tabmail"),
 		    info = util.getTabInfoByIndex(tabmail, tabIndex);
 		info.QuickFoldersCategory = categories;
-		let tab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+		let tab = (util.Application=="Thunderbird") ? tabmail.selectedTab : tabmail.currentTabInfo;
 		if (tab == info) {
 			// current Tab:
 			QuickFolders.Interface.selectCategory(categories, false);
@@ -1432,21 +1433,21 @@ QuickFolders.Interface = {
 		if (categoryName == FCat.ALWAYS) // invalid
 			return false;
 		// add support for multiple categories
-		let cats = categoryName ? categoryName.split('|') : FCat.UNCATEGORIZED,  // QI.currentActiveCategories
-				currentCats = QI.currentActiveCategories ? (QI.currentActiveCategories.split('|')) : [],
+		let cats = categoryName ? categoryName.split("|") : FCat.UNCATEGORIZED,  // QI.currentActiveCategories
+				currentCats = QI.currentActiveCategories ? (QI.currentActiveCategories.split("|")) : [],
 		    idx = 0,
-				multiEnabled = prefs.getBoolPref('premium.categories.multiSelect');
+				multiEnabled = prefs.getBoolPref("premium.categories.multiSelect");
     if (multiEnabled && isShift) {
 			let selectedCat = cats[0];
 			if (currentCats.includes(selectedCat)) {
 				currentCats.splice(currentCats.indexOf(selectedCat), 1);
 				util.logDebugOptional("categories", "Removing Category: " + selectedCat + "…");
-				QI.currentActiveCategories = currentCats.join('|');
+				QI.currentActiveCategories = currentCats.join("|");
 			}
 			else {
 				util.logDebugOptional("categories", "Adding Category: " + selectedCat + "…");
 				QI.currentActiveCategories =
- 				  QI.currentActiveCategories ? (QI.currentActiveCategories + '|' + selectedCat) : selectedCat;
+ 				  QI.currentActiveCategories ? (QI.currentActiveCategories + "|" + selectedCat) : selectedCat;
 			}
 		}
     else {
@@ -1462,11 +1463,11 @@ QuickFolders.Interface = {
     // this.styleSelectedTab(selectedButton);
 		
 		try {
-			let cs = document.getElementById('QuickFolders-Category-Selection');
-			cs.setAttribute('label', QI.currentActiveCategories.split('|').join(' + '));
+			let cs = document.getElementById("QuickFolders-Category-Selection");
+			cs.setAttribute("label", QI.currentActiveCategories.split("|").join(" + "));
 		}
 		catch(ex) {
-			util.logException('Setting category label:',ex);
+			util.logException("Setting category label:",ex);
 		}
 
 		try {
@@ -1520,7 +1521,7 @@ QuickFolders.Interface = {
 			else {
         let cats = currentCat.split("|"); // allow multiple categories
         for (let c=0; c<cats.length; c++) {
-          if (folderCat.split('|').indexOf(cats[c]) >= 0)
+          if (folderCat.split("|").indexOf(cats[c]) >= 0)
             return true
         }
 				return false;  // check if its in the list
@@ -1536,64 +1537,65 @@ QuickFolders.Interface = {
     function logEvent(eventTarget) {
 			try {
 				util.logDebugOptional("events", "KeyboardEvent on unknown target" 
-					+ "\n" + "  id: " + (eventTarget.id || '(no id)') 
-					+ "\n" + "  nodeName: " + (eventTarget.nodeName || 'null')
-					+ "\n" + "  tagName: "  + (eventTarget.tagName || 'none'));
+					+ "\n" + "  id: " + (eventTarget.id || "(no id)")
+					+ "\n" + "  nodeName: " + (eventTarget.nodeName || "null")
+					+ "\n" + "  tagName: "  + (eventTarget.tagName || "none"));
 			}
 			catch (e) {;}
     }
 		function logKey(event) {
-			if (!prefs.isDebugOption('events.keyboard')) return;
+			if (!prefs.isDebugOption("events.keyboard")) return;
       util.logDebugOptional("events.keyboard", 
-				(isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') +
+				(isAlt ? "ALT + " : "") + (isCtrl ? "CTRL + " : "") + (isShift ? "SHIFT + " : "") +
 			  "charcode = " + e.charCode + " = "  + (String.fromCharCode(e.charCode)).toLowerCase() + "\n" +
         "keyCode = " + e.keyCode);
 		}
     const QI = QuickFolders.Interface,
 					util = QuickFolders.Util,
-					prefs = QuickFolders.Preferences,
-					tabmode = QuickFolders.Interface.CurrentTabMode;
+					prefs = QuickFolders.Preferences;
 		let isAlt = e.altKey,
 		    isCtrl = e.ctrlKey,
 		    isShift = e.shiftKey,
         eventTarget = e.target,
         isHandled = false, 
-				isShortcutMatched = false; 
+				isShortcutMatched = false,
+        tabmode = null; // move down to optimize text entries.
 
     // Ctrl+Alt+F for refresh, should always work.
-		if ((tabmode == 'message' || tabmode == 'folder' || tabmode == '3pane')
-        &&
-        isCtrl && isAlt && dir!='up' && prefs.isUseRebuildShortcut) {
+		if (isCtrl && isAlt && dir!="up" && prefs.isUseRebuildShortcut) {
 			if ((String.fromCharCode(e.charCode)).toLowerCase() == prefs.RebuildShortcutKey.toLowerCase()) {
-				this.updateFolders(true, false);
-				try {
-					util.logDebugOptional("events", "Shortcuts rebuilt, after pressing "
-					    + (isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '')
-					    + prefs.RebuildShortcutKey);
-					util.showStatusMessage('QuickFolders tabs were rebuilt', true);
-				} catch(e) {;};
+        tabmode = QuickFolders.Interface.CurrentTabMode;
+        if ((tabmode == 'message' || tabmode == 'folder' || tabmode == '3pane')) {
+          this.updateFolders(true, false);
+          try {
+            util.logDebugOptional("events", "Shortcuts rebuilt, after pressing "
+                + (isAlt ? "ALT + " : "") + (isCtrl ? "CTRL + " : "") + (isShift ? "SHIFT + " : "")
+                + prefs.RebuildShortcutKey);
+            util.showStatusMessage("QuickFolders tabs were rebuilt", true);
+          } catch(e) {;};
+        }
 			}
 		}    
 		
     // shortcuts should only work in thread tree, folder tree and email preview (exclude conversations as it might be in edit mode)
-    let tag = eventTarget.tagName ? eventTarget.tagName.toLowerCase() : '';
-    if (   eventTarget.id != 'threadTree' 
-        && eventTarget.id != 'folderTree'
-        && eventTarget.id != 'accountTree'
+    let tag = eventTarget.tagName ? eventTarget.tagName.toLowerCase() : "";
+    if (   eventTarget.id != "threadTree"
+        && eventTarget.id != "folderTree"
+        && eventTarget.id != "accountTree"
         && (
           (tag
             &&       
-            (tag == 'textarea'  // Postbox quick reply
+            (tag == "textarea"  // Postbox quick reply
             ||
-            tag == 'textbox'    // any textbox
+            tag == "textbox"    // any textbox
             ||
-            tag == 'input'      // Thunderbird 68 textboxes.
+            tag == "input"      // Thunderbird 68 textboxes.
 						||
-						tag == 'html:input'      // Thunderbird 78 textboxes.
+						tag == "html:input"      // Thunderbird 78 textboxes.
 						||
-            tag == 'search-textbox' // Thunderbird 78 search boxes 
+            tag == "search-textbox" // Thunderbird 78 search boxes 
             ||
-						tag == 'findbar')   // [Bug 26654] in-mail search
+						tag == "findbar")   // [Bug 26654] in-mail search
           )
 					||
 					(eventTarget.baseURI 
@@ -1607,15 +1609,14 @@ QuickFolders.Interface = {
     }
     
 
-		
 		// tag = body for CTRL+F (in mail search)
-    
-		if (tabmode == 'message' || tabmode == 'folder' || tabmode == '3pane' || tabmode == 'glodaList') {
+    if (!tabmode) tabmode = QuickFolders.Interface.CurrentTabMode;
+		if (tabmode == "message" || tabmode == "folder" || tabmode == "3pane" || tabmode == "glodaList") {
 			logKey(e);
       let QuickMove = QuickFolders.quickMove;
       if (util.hasPremiumLicense(false)) {
-				let isShiftOnly = !isAlt && !isCtrl && isShift && dir!='up',
-            isNoAccelerator = !isAlt && !isCtrl && !isShift && dir!='up',
+				let isShiftOnly = !isAlt && !isCtrl && isShift && dir!="up",
+            isNoAccelerator = !isAlt && !isCtrl && !isShift && dir!="up",
 				    theKeyPressed = (String.fromCharCode(e.charCode)).toLowerCase();
 				util.logDebugOptional("premium.quickJump", "hasPremiumLicense = true\n" +
 				  "quickJump Shortcut = " + prefs.isQuickJumpShortcut + ", " + prefs.QuickJumpShortcutKey + "\n" +
@@ -1635,7 +1636,7 @@ QuickFolders.Interface = {
                 QuickMove.toggleSuspendMove(); // suspend move to jump; also reflect in menu.
               QuickMove.suspended = true; // for safety in case previous UI operation goes wrong
             }
-            QuickFolders.Interface.findFolder(true, 'quickJump');
+            QuickFolders.Interface.findFolder(true, "quickJump");
             isHandled = true;
           }
         }
@@ -1657,7 +1658,7 @@ QuickFolders.Interface = {
               logEvent(eventTarget);
               QuickMove.suspended = false;
               // QuickFolders.Interface.findFolder(true);
-              if (tabmode == 'message') {
+              if (tabmode == "message") {
                 // first let's reset anything in the quickMove if we are in single message mode:
                 QuickMove.resetList();
               }
@@ -1697,8 +1698,8 @@ QuickFolders.Interface = {
 			}
     } // quickMove / quickJump
     
-    if (tabmode == 'folder' || tabmode == '3pane') { // only allow these shortcuts on the 3pane window!
-      if (!isCtrl && isAlt && (dir != 'up') && prefs.isUseNavigateShortcuts) {
+    if (tabmode == "folder" || tabmode == "3pane") { // only allow these shortcuts on the 3pane window!
+      if (!isCtrl && isAlt && (dir != "up") && prefs.isUseNavigateShortcuts) {
         // Alt + Left
         if (e.keyCode == 38) { // ALT + up
           this.goUpFolder();
@@ -1726,11 +1727,11 @@ QuickFolders.Interface = {
 							// trigger the context menu of current folder button, if it  is on screen
 							let toolpanel = document.getElementById("QuickFolders-CurrentFolderTools");
 							if (toolpanel && toolpanel.parentNode.style["display"]!="none") {
-								btn = document.getElementById('QuickFoldersCurrentFolder');	
+                btn = document.getElementById("QuickFoldersCurrentFolder");
 							}
 						}
 						if (btn) {
-							let popupId = btn.getAttribute('popupId');
+							let popupId = btn.getAttribute("popupId");
 							if (popupId) { // linux avoid this getting triggered twice
 								let activePopup = document.getElementById(popupId);
 							 
@@ -1740,9 +1741,9 @@ QuickFolders.Interface = {
 							}
 							else {
 								if (btn.hasContextListener) {
-									let event = document.createEvent('mouseevent');
+									let event = document.createEvent("mouseevent");
                   event.QFtype="NavDown"; // use this to signal popup menu to focus on first subfolder
-									event.initEvent('contextmenu', true, true);
+									event.initEvent("contextmenu", true, true);
 									btn.dispatchEvent(event);
 								}
 							}
@@ -1761,17 +1762,17 @@ QuickFolders.Interface = {
           (prefs.isUseKeyboardShortcutsCTRL && isCtrl);
 
         if (shouldBeHandled) {
-          let sFriendly = (isAlt ? 'ALT + ' : '') + (isCtrl ? 'CTRL + ' : '') + (isShift ? 'SHIFT + ' : '') + e.charCode + " : code=" + e.keyCode,
+          let sFriendly = (isAlt ? "ALT + " : "") + (isCtrl ? "CTRL + " : "") + (isShift ? "SHIFT + " : "") + e.charCode + " : code=" + e.keyCode,
               shortcut = -1;
           util.logDebugOptional("events", "windowKeyPress[" + dir + "]" + sFriendly);
-          if (dir == 'up')
+          if (dir == "up")
             shortcut = e.keyCode-48;
-          if (dir == 'down')
+          if (dir == "down")
             shortcut = e.charCode-48;
 
           if (shortcut >= 0 && shortcut < 10) {
             isHandled = true;
-            if (dir == 'down') return;
+            if (dir == "down") return;
             if(shortcut == 0) {
               shortcut = 10;
             }
@@ -1820,15 +1821,15 @@ QuickFolders.Interface = {
 	toggleToolbar: function toggleToolbar(button) {
 		QuickFolders.Util.logDebugOptional("interface", "toggleToolbar(" + button.checked + ")");
 		let toolbar = this.Toolbar,
-		    // toolbar.style.display = '-moz-inline-box';
+		    // toolbar.style.display = "-moz-inline-box";
 		    makeVisible = !(toolbar.collapsed);
-		toolbar.setAttribute('collapsed', makeVisible);
+		toolbar.setAttribute("collapsed", makeVisible);
 		button.checked = !makeVisible;
 		return makeVisible;
 	} ,
 	
 	get SpecialToolbar() {
-		return QuickFolders.Util.$('Quickfolders-SpecialTools');
+		return QuickFolders.Util.$("Quickfolders-SpecialTools");
 	} ,
 
 	endsWith: function endsWith(sURI, sFolder) {
@@ -1849,9 +1850,9 @@ QuickFolders.Interface = {
       let evtText;
       try { 
         let cT = evt.currentTarget, // .QueryInterface(Components.interfaces.nsIDOMElement), // investigate nsIDOMXULElement;
-            targetText = '';
+            targetText = "";
         if (cT) {
-          targetText = '{tagName=' + cT.tagName + ', id=' + cT.id + ', className=' + cT.className + ', lbl=' + cT.getAttribute('label') +'}';
+          targetText = "{tagName=" + cT.tagName + ", id=" + cT.id + ", className=" + cT.className + ", lbl=" + cT.getAttribute("label") +"}";
         } 
         else 
           targetText = evt.currentTarget;
@@ -1870,7 +1871,7 @@ QuickFolders.Interface = {
                 ", \n  URI = " + (folder ? folder.URI : "?") + 
                 ", \n  " + evtText + 
 								", \n  noCommands=" + noCommands + ")" );
-      if (folder && !(button && button.id == 'QuickFoldersCurrentFolder')) {
+      if (folder && !(button && button.id == "QuickFoldersCurrentFolder")) {
         let entry = QuickFolders.Model.getFolderEntry(folder.URI),
             offset = -1; // ignore this but try to reuse the popup object
         for (let o=0; o<QI.buttonsByOffset.length; o++) {
@@ -1903,25 +1904,25 @@ QuickFolders.Interface = {
 				// need to find first child menu
 				// see if cloned menu is there already.
 				let menupopup = null,
-				    nodes  = button.getElementsByTagName('menupopup');
+				    nodes  = button.getElementsByTagName("menupopup");
 
 				for (let i=0; i<nodes.length; i++) {
-					if (nodes[i].getAttribute('tag')=== 'quickFoldersCommands') {
+					if (nodes[i].getAttribute("tag")=== "quickFoldersCommands") {
 						menupopup = nodes[i];
 						break;
 					}
 				}
 				
 				if (!menupopup) {
-					nodes = p.getElementsByTagName('menu');
+					nodes = p.getElementsByTagName("menu");
 					// debugger;
 					for (let i=0; i<nodes.length; i++) {
-						if(nodes[i].id == 'quickFoldersCommands') {
-							nodes = nodes[i].getElementsByTagName('menupopup');
+						if(nodes[i].id == "quickFoldersCommands") {
+							nodes = nodes[i].getElementsByTagName("menupopup");
 							menupopup = nodes[0]; // .cloneNode(true); // Get first menupop = QuickFolders Commands // omit cloning!
-							// menupopup.classList.add( 'QuickFolders-folder-popup'); // retain styling
+							// menupopup.classList.add( "QuickFolders-folder-popup"); // retain styling
 							menupopup.folder = button.folder;
-							menupopup.setAttribute('tag', 'quickFoldersCommands');
+							menupopup.setAttribute("tag", "quickFoldersCommands");
 							button.appendChild(menupopup); 
 							break;
 						}
@@ -1929,16 +1930,16 @@ QuickFolders.Interface = {
 				}
 				if (menupopup) {
 					menupopup.id = "QuickFoldersCommandsOnly"; // for debugging purposes
-					let mps = menupopup.getElementsByTagName('menupopup');
+					let mps = menupopup.getElementsByTagName("menupopup");
 					if (mps.length) {
 						// add event handler for color commands (for some reason color submenu stops working otherwise)
-						this.setEventAttribute(mps[0], 'onclick',"QuickFolders.Interface.clickHandler(event,this);");
-						this.setEventAttribute(mps[0], 'oncommand',"QuickFolders.Interface.clickHandler(event,this);");
+						this.setEventAttribute(mps[0], "onclick","QuickFolders.Interface.clickHandler(event,this);");
+						this.setEventAttribute(mps[0], "oncommand","QuickFolders.Interface.clickHandler(event,this);");
 					}
           // [Bug 26703] add folder command popup if it was hidden
           let nodes = p.childNodes;
           for (let i=0; i<nodes.length; i++) {
-            if(nodes[i].id == 'quickFoldersMailFolderCommands') {
+            if(nodes[i].id == "quickFoldersMailFolderCommands") {
               menupopup.insertBefore(nodes[i], menupopup.firstChild);
               break;
             }
@@ -1958,7 +1959,7 @@ QuickFolders.Interface = {
 				// find all menu items with class "dbgMenu" and uncollapse them
 				let nodes = p.childNodes;
 				for (let i=0; i<nodes.length; i++) {
-					if(nodes[i].classList.contains('dbgMenu')) {
+					if(nodes[i].classList.contains("dbgMenu")) {
 						nodes[i].collapsed=!evt.shiftKey;
 					}
 				}
@@ -1970,10 +1971,10 @@ QuickFolders.Interface = {
 			p.targetNode = button; 
 			
 			let verticalOffset = QI.verticalMenuOffset; // was -1, Tb60 now -2
-			// if (prefs.isDebugOption('popupmenus')) debugger;
+			// if (prefs.isDebugOption("popupmenus")) debugger;
 			var isContextMenu = true; // was true; test for [Bug 26575]
 			if (p.openPopup)
-				p.openPopup(button, 'after_start', 0, verticalOffset, isContextMenu, false, evt);
+				p.openPopup(button, "after_start", 0, verticalOffset, isContextMenu, false, evt);
 			else
 				p.showPopup(button, 0, verticalOffset, "context", "bottomleft", "topleft"); // deprecated method
 		}
@@ -2010,7 +2011,7 @@ QuickFolders.Interface = {
 					triangleDown = "\u25be".toString();
 
 		try {
-			let isFolderInterface = folder && (typeof folder.getNumUnread!='undefined') && (typeof folder.getTotalMessages!='undefined'),
+			let isFolderInterface = folder && (typeof folder.getNumUnread!="undefined") && (typeof folder.getTotalMessages!="undefined"),
 			    nU = isFolderInterface ? folder.getNumUnread(false) : 0,
           numUnread = (nU==-1) ? 0 : nU, // Postbox root folder fix
 			    numUnreadInSubFolders = isFolderInterface ? (folder.getNumUnread(true) - numUnread) : 0,
@@ -2056,7 +2057,7 @@ QuickFolders.Interface = {
 				if(numUnread > 0)
 					s = s+numUnread;
 				if(numUnreadInSubFolders > 0 && prefs.isShowCountInSubFolders)
-					s = s + triangleDown + numUnreadInSubFolders+'';
+					s = s + triangleDown + numUnreadInSubFolders+"";
 				if(s!="")
 					displayNumbers.push(s);
 			}
@@ -2066,25 +2067,25 @@ QuickFolders.Interface = {
 				if(numTotal > 0)
 					s=s+numTotal;
 				if(numTotalInSubFolders > 0 && prefs.isShowCountInSubFolders)
-					s=s + triangleDown + numTotalInSubFolders+'';
+					s=s + triangleDown + numTotalInSubFolders+"";
 				if(s!="")
 					displayNumbers.push(s);
 			}
 
 			if (displayNumbers.length) {
-				label += " (" + displayNumbers.join(' / ') + ")";
+				label += " (" + displayNumbers.join(" / ") + ")";
 			}
 			return label;
 		}
 		catch(ex) {
-			util.logToConsole('getButtonLabel:' + ex);
+			util.logToConsole("getButtonLabel:" + ex);
 			return "";
 		}
 	} ,
 
   makePopupId: function makePopupId(folder, buttonId) {
 		this.IdUnique++;
-    return 'QuickFolders-folder-popup-' + (buttonId || folder ? folder.URI : this.IdUnique); // + "-" + this.IdUnique;
+    return "QuickFolders-folder-popup-" + (buttonId || folder ? folder.URI : this.IdUnique); // + "-" + this.IdUnique;
   },
   
 	addFolderButton: function addFolderButton(folder, entry, offset, theButton, buttonId, fillStyle, isFirst, isMinimal) {
@@ -2093,30 +2094,30 @@ QuickFolders.Interface = {
 					prefs = QuickFolders.Preferences,
 					FLAGS = util.FolderFlags;
 		let tabColor =  (entry && entry.tabColor) ? entry.tabColor : null,		
-		    tabIcon = (entry && entry.icon) ? entry.icon : '',
-        useName = (entry && entry.name) ? entry.name : '',
+		    tabIcon = (entry && entry.icon) ? entry.icon : "",
+        useName = (entry && entry.name) ? entry.name : "",
 				stats = { unreadTotal:0, unreadSubfolders:0, totalCount:0 },
 		    label = this.getButtonLabel(folder, useName, offset, entry, stats);
     
     if (!folder && !isMinimal) {
-      util.logToConsole('Error in addFolderButton: ' + 'folder parameter is empty!\n'
-                        + 'Entry: ' + (entry ? (entry.name || label) : (' invalid entry: ' + label)));
+      util.logToConsole("Error in addFolderButton: " + "folder parameter is empty!\n"
+                        + "Entry: " + (entry ? (entry.name || label) : (" invalid entry: " + label)));
     }
     try {
-			let isMsgFolder = folder && (typeof folder.getStringProperty != 'undefined');
+			let isMsgFolder = folder && (typeof folder.getStringProperty != "undefined");
 			// SeaMonkey: getStringProperty throws error if folder is in trash. it has no parent in this case.
-      if (!tabIcon && isMsgFolder && folder.parent && folder.getStringProperty('folderIcon')) {
+      if (!tabIcon && isMsgFolder && folder.parent && folder.getStringProperty("folderIcon")) {
         // folder icon, but no quickFolders tab!
-        let tI = folder.getStringProperty('iconURL');
+        let tI = folder.getStringProperty("iconURL");
         if (tI)
           tabIcon=tI;
       }
     }
     catch(ex) {
-      util.logToConsole('Error in addFolderButton: ' + 'folder getStringProperty is missing.\n'
-                        + 'Entry: ' + (entry ? entry.name : ' invalid entry') + '\n'
-                        + 'URI: ' + (folder.URI || 'missing'));
-      util.logException('Error in addFolderButton', ex);
+      util.logToConsole("Error in addFolderButton: " + "folder getStringProperty is missing.\n"
+                        + "Entry: " + (entry ? entry.name : " invalid entry") + "\n"
+                        + "URI: " + (folder.URI || "missing"));
+      util.logException("Error in addFolderButton", ex);
     }
     if (!theButton) isMinimal=false; // if we create new buttons from scratch, then we need a full creation including menu
 
@@ -2129,10 +2130,10 @@ QuickFolders.Interface = {
 		// find out whether this is a special button and add specialFolderType
 		// for (optional) icon display
 		let specialFolderType="",
-		    sDisplayIcons = (prefs.isShowToolbarIcons) ? ' icon': '',
+		    sDisplayIcons = (prefs.isShowToolbarIcons) ? " icon": "",
         // if the tab is colored, use the new palette setting "ColoredTab"
         // if it is uncolored use the old "InActiveTab"
-		    paletteClass = (tabColor!='0') ? this.getPaletteClass('ColoredTab') : this.getPaletteClass('InactiveTab'); 
+		    paletteClass = (tabColor!="0") ? this.getPaletteClass("ColoredTab") : this.getPaletteClass("InactiveTab");
     if (entry && entry.customPalette)
       paletteClass = this.getPaletteClassToken(entry.customPalette);
 
@@ -2159,11 +2160,11 @@ QuickFolders.Interface = {
 			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_VIRTUAL)
 				specialFolderType="virtual" + sDisplayIcons; // all other virtual folders (except smart which were alreadyhandled above)
 			else if (tabIcon) 
-				specialFolderType='icon'; // independant of option, customized icons are always shown			
+				specialFolderType="icon"; // independant of option, customized icons are always shown
 		}
 		else {
-			specialFolderType='invalid icon';
-			tabIcon='';
+			specialFolderType="invalid icon";
+			tabIcon="";
 		}
 
 		specialFolderType += paletteClass;
@@ -2178,7 +2179,7 @@ QuickFolders.Interface = {
 
 		if (null == theButton) { 
 			button.setAttribute("tooltiptext", util.getFolderTooltip(folder, label));
-			// this.setEventAttribute(button, "oncommand",'QuickFolders.Interface.onButtonClick(event.target, event, true);');
+			// this.setEventAttribute(button, "oncommand","QuickFolders.Interface.onButtonClick(event.target, event, true);");
 			button.addEventListener("click", 
 				function(event) { 
 					QI.onButtonClick(event.target, event, true); 
@@ -2194,14 +2195,14 @@ QuickFolders.Interface = {
 
     /**  Menu Stuff  **/
     
-		let popupId = '';
+		let popupId = "";
     if (!isMinimal) {
 			popupId = this.makePopupId(folder, buttonId); 
-			if (buttonId == 'QuickFoldersCurrentFolder') {
-				button.setAttribute('popupId', popupId);  
+			if (buttonId == "QuickFoldersCurrentFolder") {
+				button.setAttribute("popupId", popupId);
 			}
 
-      button.setAttribute('context',''); // overwrites the parent context menu
+      button.setAttribute("context",""); // overwrites the parent context menu
       // this.setEventAttribute(button, "oncontextmenu",'QuickFolders.Interface.showPopup(this,"' + popupId + '",event)');
 			// [Bug 26575]
 			if (!button.hasContextListener) {
@@ -2210,7 +2211,7 @@ QuickFolders.Interface = {
 					function(event) {
             // there is a problem with the closure on popupId in current folder button,
             // which could lead to it showing previous folders' menus
-            let pId = button.getAttribute('popupId') || popupId;
+            let pId = button.getAttribute("popupId") || popupId;
 						QI.showPopup(button, pId, event); 
 						// only hstop handling event when popup is shown!
 						event.preventDefault();
@@ -2218,7 +2219,7 @@ QuickFolders.Interface = {
 					}, false); 
 				button.hasContextListener = true;
 			}
-      if (buttonId == 'QuickFoldersCurrentFolder') {
+      if (buttonId == "QuickFoldersCurrentFolder") {
         // this.setEventAttribute(button, "onclick",'QuickFolders.Interface.showPopup(this,"' + popupId + '",event)');
 				if (!button.hasClickEventListener) { // additional left-click menu
 					button.addEventListener("click", 
@@ -2247,7 +2248,7 @@ QuickFolders.Interface = {
 			}
 			
 			if (entry && entry.separatorBefore  && !isFirst) {  // no separator if this is the first button on a line
-			  let sep = this.createIconicElement('toolbarseparator','*');
+			  let sep = this.createIconicElement("toolbarseparator","*");
 			  this.FoldersBox.appendChild(sep);
 			}
 			this.FoldersBox.appendChild(button);
@@ -2285,17 +2286,17 @@ QuickFolders.Interface = {
  	*/
 	applyIcon: function applyIcon(element, filePath) {
 	  try {
-			let cssUri = '';
+			let cssUri = "";
 			if (filePath) {
-        if (filePath.indexOf('url')==0)
+        if (filePath.indexOf("url")==0)
           cssUri = filePath;
         else
-          cssUri = 'url(' + filePath + ')';
+          cssUri = "url(" + filePath + ")";
 			}
 			element.style.listStyleImage = cssUri; // direct styling!
 		}
 		catch(ex) {
-		  QuickFolders.Util.logException('Exception in Interface.applyIcon ', ex); 
+		  QuickFolders.Util.logException("Exception in Interface.applyIcon ", ex);
 		}
 	} ,
 	
@@ -2309,12 +2310,12 @@ QuickFolders.Interface = {
  	* @specialStyle: if this is a special folder, such as inbox, virtual etc. - appended as css class
  	* @tabColor: palette index; 0=DEFAULT
  	* @gotNew:   new email has arrived (special inset style)
-	* @icon: icon or '' or null
+	* @icon: icon or "" or null
   * @entry: the entry from the model array - use for advanced (tab specific) properties
  	*/
 	styleFolderButton: function styleFolderButton(button, nUnreadTotal, nUnreadSubfolders, numTotal, specialStyle, tabColor, gotNew, icon, entry) {
 		//reset style!
-		let cssClass = '',
+		let cssClass = "",
         ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS;
 		//  toolbarbutton-menubutton-button
 
@@ -2382,52 +2383,52 @@ QuickFolders.Interface = {
   addCustomStyles: function addCustomStyles(button, entry) {
 		const util = QuickFolders.Util;
     function getLabel(button) {
-        let anonChildren = document.getAnonymousNodes(button);
-        if (!anonChildren) return null;
-        for (let i=0; i<anonChildren.length; i++) {
-          if (anonChildren[i].classList.contains('toolbarbutton-text'))
+      let anonChildren = document.getAnonymousNodes(button);
+      if (!anonChildren) return null;
+      for (let i=0; i<anonChildren.length; i++) {
+        if (anonChildren[i].classList.contains("toolbarbutton-text"))
             return anonChildren[i];
-        }
-        return null;
+      }
+      return null;
     }
     let ADVANCED_FLAGS = QuickFolders.AdvancedTab.ADVANCED_FLAGS;
     // custom colors
     if (entry && entry.flags && (entry.flags & ADVANCED_FLAGS.CUSTOM_CSS)) {
       try {
-				if (util.Application != 'Postbox')
-					button.style.setProperty('background-image', entry.cssBack, ''); 
+				if (util.Application != "Postbox")
+					button.style.setProperty("background-image", entry.cssBack, ""); 
 				else
-					button.style.setProperty('background', entry.cssBack, 'important'); 
+					button.style.setProperty("background", entry.cssBack, "important"); 
         let l = getLabel(button);
         if (l) 
-          l.style.setProperty('color', entry.cssColor, util.Application == 'Postbox' ? 'important' : '');  
+          l.style.setProperty("color", entry.cssColor, util.Application == "Postbox" ? "important" : "");  
       }
       catch(ex) {
-        QuickFolders.Util.logException('custom CSS failed',ex);
+        QuickFolders.Util.logException("custom CSS failed",ex);
       }
     }
     else {
-      if(button.id == 'QuickFoldersCurrentFolder') {
-        button.style.removeProperty('background-image');
+      if(button.id == "QuickFoldersCurrentFolder") {
+        button.style.removeProperty("background-image");
         let l = getLabel(button);
         if (l) 
-          l.style.removeProperty('color');
+          l.style.removeProperty("color");
       }
     }
   },
 
 	addSpecialButton: function addSpecialButton(SpecialFunction, SpecialId, Offset, tooltip) {
 		let button = document.createXULElement ? document.createXULElement("toolbarbutton") : document.createElement("toolbarbutton"),
-		    image = '',
-		    lbl = ''; // for testing
+		    image = "",
+		    lbl = ""; // for testing
 		switch (SpecialId) {
-			case 'Thread':
+			case "Thread":
 				image = "url('chrome://quickfolders/content/thread.png')"; // "thread.png" ; //
-				lbl = ''; // Thread
+				lbl = ""; // Thread
 				break;
-			case 'Trash':
+			case "Trash":
 				image = "url('chrome://quickfolders/skin/ico/folder-trash-gnome-qf.png')";
-				lbl = 'trash';
+				lbl = "trash";
 				break;
 			default:
 				break;
@@ -2454,7 +2455,7 @@ QuickFolders.Interface = {
 		// this may happen when we right-click the menu with CTRL
 		try {
 			let el = button.QueryInterface(Components.interfaces.nsIDOMXULControlElement);
-			if (el.tagName == 'menuitem' && button.parentElement.getAttribute('tag') == "quickFoldersCommands") {
+			if (el.tagName == "menuitem" && button.parentElement.getAttribute("tag") == "quickFoldersCommands") {
 				QI.clickHandler(evt, el);
 				return;
 			}
@@ -2504,9 +2505,9 @@ QuickFolders.Interface = {
 		if (button.folder) {
 			// [Bug 26190] - already selected = drill down on second click
 			// [Bug 26389] - Single Mail Tab should always open the folder!
-			if (button.folder === util.CurrentFolder & QI.CurrentTabMode != 'message') {
+			if (button.folder === util.CurrentFolder & QI.CurrentTabMode != "message") {
 				if (evt.type=="click" && evt.button==2) { // right click
-					let popupId = button.getAttribute('popupId');
+					let popupId = button.getAttribute("popupId");
 					if (popupId) { // linux avoid this getting triggered twice
 					  let activePopup = document.getElementById(popupId);
 					 
@@ -2532,7 +2533,7 @@ QuickFolders.Interface = {
 		else {
 			if (evt.button==0) { // left-click only
 				// force select folder on invalid URI - this will suggest to delete the folder.
-				let uri = button.getAttribute('folderURI');
+				let uri = button.getAttribute("folderURI");
 				if (uri) {
 					debugger;
 					QuickFolders_MySelectFolder(uri);
@@ -2548,14 +2549,14 @@ QuickFolders.Interface = {
 		if (tabmail) {
 		  let tabName = folder.name;
 			switch (util.Application) {
-				case 'Thunderbird':
+				case "Thunderbird":
 				  tabmail.openTab(util.mailFolderTypeName, {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} ) ; 
 					break;
-				case 'SeaMonkey':
-					tabmail.openTab(util.mailFolderTypeName, 7, folder.URI); // '3pane'
+				case "SeaMonkey":
+					tabmail.openTab(util.mailFolderTypeName, 7, folder.URI); // "3pane"
 					QuickFolders.tabContainer.selectedIndex = tabmail.tabContainer.childNodes.length - 1;
 					break;
-				case 'Postbox':
+				case "Postbox":
 					let win = util.getMail3PaneWindow();
 					win.MsgOpenNewTabForFolder(folder.URI, null /* msgHdr.messageKey key*/, false /*Background*/ )
 					break;
@@ -2585,7 +2586,7 @@ QuickFolders.Interface = {
 		if (folder)
 			QuickFolders.Model.removeFolder(folder.URI, true);
 		else
-			QuickFolders.Model.removeFolder(tab.getAttribute('folderURI'), true); // let's store folder URI for invalid loaded tabs
+			QuickFolders.Model.removeFolder(tab.getAttribute("folderURI"), true); // let's store folder URI for invalid loaded tabs
 		// this.updateFolders(true); already done!
 		try { util.showStatusMessage(msg, true); } catch(e) {;};
 	} ,
@@ -2595,9 +2596,9 @@ QuickFolders.Interface = {
         util = QuickFolders.Util,
         model = QuickFolders.Model;
     util.logDebugOptional("interface", "QuickFolders.Interface.onRemoveIcon()");
-		if (element.id == 'context-quickFoldersRemoveIcon' // folder tree icon
+		if (element.id == "context-quickFoldersRemoveIcon" // folder tree icon
 		    ||
-				element.id == 'QuickFolders-RemoveIcon') { // current folder bar
+				element.id == "QuickFolders-RemoveIcon") { // current folder bar
 			let folders = GetSelectedMsgFolders(); 
 			if (folders) {
 				for (let i=0; i<folders.length; i++) {
@@ -2607,14 +2608,14 @@ QuickFolders.Interface = {
 					if (entry) {
 						// if button visible, update it!
 					  folderButton = this.shouldDisplayFolder(entry) ? this.getButtonByFolder(folder) : null;
-						model.setTabIcon (folderButton, entry, ''); // will only modify stored entry, if tab not visible.
+						model.setTabIcon (folderButton, entry, ""); // will only modify stored entry, if tab not visible.
 					}
 				}			
 			}	
-      if (element.id == 'QuickFolders-RemoveIcon') {
+      if (element.id == "QuickFolders-RemoveIcon") {
         let cFT = QuickFolders.Interface.CurrentFolderTab;
         if (cFT)        
-          cFT.style.listStyleImage = '';
+          cFT.style.listStyleImage = "";
       }
       
 		}
@@ -2622,7 +2623,7 @@ QuickFolders.Interface = {
 			folderButton = util.getPopupNode(element);
 			entry = model.getButtonEntry(folderButton);
 			element.collapsed = true; // hide the menu item!
-	    model.setTabIcon	(folderButton, entry, '');
+	    model.setTabIcon	(folderButton, entry, "");
 			let folder = model.getMsgFolderFromUri(entry.uri)
 			if (folder && QuickFolders.FolderTree)
 				QuickFolders.FolderTree.setFolderTreeIcon(folder, null);
@@ -2641,9 +2642,9 @@ QuickFolders.Interface = {
         model = QuickFolders.Model,
         QI = QuickFolders.Interface;
     util.logDebugOptional("interface", "QuickFolders.Interface.onSelectIcon()");
-		if (element.id == 'context-quickFoldersIcon' // style a folder tree icon
+		if (element.id == "context-quickFoldersIcon" // style a folder tree icon
 		    ||
-				element.id == 'QuickFolders-SelectIcon')  // current folder bar
+				element.id == "QuickFolders-SelectIcon")  // current folder bar
 		{ 
 		  // get selected folder (form event?)
 			folders = GetSelectedMsgFolders(); 
@@ -2678,7 +2679,7 @@ QuickFolders.Interface = {
 						//localFile = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
 						try {
 							//localFile.initWithPath(path); // get the default path
-							QuickFolders.Preferences.setStringPref('tabIcons.defaultPath', file.path);
+							QuickFolders.Preferences.setStringPref("tabIcons.defaultPath", file.path);
 							let iconURL = fp.fileURL; 
 							if (folders) {
 							  for (let i=0; i<folders.length; i++) {
@@ -2716,7 +2717,7 @@ QuickFolders.Interface = {
 		
 //Error: NS_ERROR_XPC_BAD_CONVERT_JS: Could not convert JavaScript argument arg 0 [nsIFilePicker.displayDirectory]
 		let localFile = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE),
-		    lastPath = QuickFolders.Preferences.getStringPref('tabIcons.defaultPath');
+		    lastPath = QuickFolders.Preferences.getStringPref("tabIcons.defaultPath");
 		if (lastPath)
 			localFile.initWithPath(lastPath);
     fp.displayDirectory = localFile; // gLastOpenDirectory.path
@@ -2745,26 +2746,26 @@ QuickFolders.Interface = {
 		    sOldName = folderButton.label; //	this.getButtonByFolder(popupNode.folder).label;
 		// strip shortcut numbers
 		if(QuickFolders.Preferences.isShowShortcutNumbers) {
-			let i = sOldName.indexOf('. ');
+			let i = sOldName.indexOf(". ");
 			if (i<3 && i>0)
 				sOldName = sOldName.substring(i+2,sOldName.length);
 		}
 		// find if trhere is a number of total messages / unread message in the label, and strip them from renaming!!
 		if (QuickFolders.Preferences.isShowTotalCount || QuickFolders.Preferences.isShowUnreadCount) {
-			let i = sOldName.lastIndexOf(' ('),
-			    j = sOldName.lastIndexOf(')');
+			let i = sOldName.lastIndexOf(" ("),
+			    j = sOldName.lastIndexOf(")");
 			// TODO: additional check if there are just numbers and commas within the brackets!
 
 			//making sure there is stuff between the () and the last char is a )
 			if (i > 1 && sOldName.substr(i, j - i).length > 0 && j == sOldName.length - 1) {
 				let bracketedLen = j-i+1;
 				util.logDebug("Suspected number of new / total mails = " + sOldName.substr(i, j-i+1) + "	length = " + bracketedLen);
-			// lets check if this is numeral, after removing any ','
+			// lets check if this is numeral, after removing any ","
 				sOldName = sOldName.substring(0,sOldName.length - bracketedLen);
 			}
 		}
 		
-		let fUri =  folderButton.folder ? folderButton.folder.URI : folderButton.getAttribute('folderURI');
+		let fUri =  folderButton.folder ? folderButton.folder.URI : folderButton.getAttribute("folderURI");
 
 		let newName = window.prompt(this.getUIstring("qfNewName","Enter a new name for the bookmark")+"\n" + fUri, sOldName); // replace folder.name!
 		if(newName) {
@@ -2786,14 +2787,14 @@ QuickFolders.Interface = {
 		
     // attach to bottom of the Tab (like a popup menu)
     setTimeout(function() {
-			util.logDebug('onAdvancedProperties(evt)\n screenX = ' + x +'\n screenY = ' + y);
+			util.logDebug("onAdvancedProperties(evt)\n screenX = " + x +"\n screenY = " + y);
 			util.popupProFeature("advancedTabProperties");}
 		);
 		
     // the window may correct its x position if cropped by screen's right edge
     let win = window.openDialog(
-      'chrome://quickfolders/content/quickfolders-advanced-tab-props.xul',
-      'quickfilters-advanced','alwaysRaised, titlebar=no,chrome,close=no,top=' + y +',left=' + x, 
+      "chrome://quickfolders/content/quickfolders-advanced-tab-props.xul",
+      "quickfilters-advanced","alwaysRaised, titlebar=no,chrome,close=no,top=" + y +",left=" + x, 
       folder, entry); // 
     win.focus();
 		evt.stopPropagation();
@@ -2842,7 +2843,7 @@ QuickFolders.Interface = {
     util.logDebugOptional("interface", "QuickFolders.Interface.onMarkAllRead()");
 		try {
 			let f = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
-      if (util.Application == 'Postbox')
+      if (util.Application == "Postbox")
         f.markAllMessagesRead();
       else {
         f.markAllMessagesRead(msgWindow);
@@ -2874,8 +2875,8 @@ QuickFolders.Interface = {
 				
     util.logDebugOptional("interface", "QuickFolders.Interface.onDeleteFolder()");
     
-		if (((util.Application == 'Postbox') || (util.Application == 'SeaMonkey'))
-			  && typeof MsgDeleteFolder === 'function'
+		if (((util.Application == "Postbox") || (util.Application == "SeaMonkey"))
+			  && typeof MsgDeleteFolder === "function"
 			 ) {
 			QuickFolders_MySelectFolder(folderButton.folder.URI);
 			MsgDeleteFolder();
@@ -2895,7 +2896,7 @@ QuickFolders.Interface = {
         folder = util.getPopupNode(element).folder,
 		    theURI = folder.URI;
     util.logDebugOptional("interface", "QuickFolders.Interface.onRenameFolder()");
-		if (util.Application == 'Thunderbird') {
+		if (util.Application == "Thunderbird") {
 			this.globalTreeController.renameFolder(folder);
 		}
 		else {
@@ -2912,9 +2913,9 @@ QuickFolders.Interface = {
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyTrash()");
 		QuickFolders.compactLastFolderSize = folder.sizeOnDisk;
 		QuickFolders.compactLastFolderUri = folder.URI;
-		QuickFolders.compactReportCommandType = 'emptyTrash';
+		QuickFolders.compactReportCommandType = "emptyTrash";
 
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
+		if ((util.Application == "Postbox") || (util.Application == "SeaMonkey")) {
 			QuickFolders_MySelectFolder(folder.URI);
 			MsgEmptyTrash();
 		}
@@ -2928,7 +2929,7 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyJunk()");
-		if (typeof GetSelectedFolderURI === 'function') { 
+		if (typeof GetSelectedFolderURI === "function") { 
 		  // old Postbox Code
 			let getSelFunction;
 			try {
@@ -2936,15 +2937,15 @@ QuickFolders.Interface = {
 			  // Postbox hack: we pretend the tree folder was selected by temporarily replacing GetSelectedFolderURI
 			  getSelFunction = GetSelectedFolderURI;
 				GetSelectedFolderURI = function() { return folder.URI; };
-				deleteAllInFolder('emptyJunk');
+				deleteAllInFolder("emptyJunk");
 			}
-			catch(ex) { util.logException('Exception in onEmptyJunk ', ex);  };
+			catch(ex) { util.logException("Exception in onEmptyJunk ", ex);  };
 			if (getSelFunction)
 				GetSelectedFolderURI = getSelFunction;
 		}
 		else {
 			this.globalTreeController.emptyJunk(folder);
-		  this.compactFolder(folder, 'emptyJunk');
+		  this.compactFolder(folder, "emptyJunk");
 		}
 	} ,
 
@@ -2962,7 +2963,7 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEditVirtualFolder()");
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
+		if ((util.Application == "Postbox") || (util.Application == "SeaMonkey")) {
 			QuickFolders_MySelectFolder(folder.URI);
 			MsgFolderProperties();
 		}
@@ -2981,7 +2982,7 @@ QuickFolders.Interface = {
 			return;
 		}
 		
-		if ((util.Application == 'Postbox') || (util.Application == 'SeaMonkey')) {
+		if ((util.Application == "Postbox") || (util.Application == "SeaMonkey")) {
 			QuickFolders_MySelectFolder(folder.URI);
 			MsgFolderProperties();
 		}
@@ -2993,7 +2994,7 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util;
     util.logDebugOptional("interface", "QuickFolders.Interface.openExternal()");
     try {
-      util.logDebug('openExternal()' + aFile);
+      util.logDebug("openExternal()" + aFile);
       let uri = Cc["@mozilla.org/network/io-service;1"].
                 getService(Ci.nsIIOService).newFileURI(aFile),
           protocolSvc = Cc["@mozilla.org/uriloader/external-protocol-service;1"].
@@ -3001,7 +3002,7 @@ QuickFolders.Interface = {
       protocolSvc.loadUrl(uri);
     }
     catch(ex) {
-      util.logDebug('openExternal() failed:\n' + ex);
+      util.logDebug("openExternal() failed:\n" + ex);
     }
 	}, 
 	
@@ -3037,27 +3038,27 @@ QuickFolders.Interface = {
 		      NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
     let folder = util.getPopupNode(element).folder;
 		// code from gDownloadViewController.showDownload(folder);
-    util.logDebug('onFolderOpenLocation()\nfolder: ' + folder.name +'\nPath: ' + folder.filePath.path);
+    util.logDebug("onFolderOpenLocation()\nfolder: " + folder.name +"\nPath: " + folder.filePath.path);
 		let f = this.getLocalFileFromNativePathOrUrl(folder.filePath.path); // aDownload.getAttribute("file")
 		try {
 			// Show the directory containing the file and select the file
 			f.reveal();
 		} catch (e) {
-      util.logDebug('onFolderOpenLocation() - localfile.reveal failed: ' + e);
+      util.logDebug("onFolderOpenLocation() - localfile.reveal failed: " + e);
 			// If reveal fails for some reason (e.g., it's not implemented on unix or
 			// the file doesn't exist), try using the parent if we have it.
 			let parent = f.parent.QueryInterface(NSIFILE);
 			if (!parent) {
-        util.logDebug('onFolderOpenLocation() - no folder parent - giving up.');
+        util.logDebug("onFolderOpenLocation() - no folder parent - giving up.");
 				return;
       }
 
 			try {
 				// "Double click" the parent directory to show where the file should be
-        util.logDebug('onFolderOpenLocation() - parent.launch()');
+        util.logDebug("onFolderOpenLocation() - parent.launch()");
 				parent.launch();
 			} catch (ex) {
-        util.logDebug('onFolderOpenLocation() - parent.launch() failed:' + ex);
+        util.logDebug("onFolderOpenLocation() - parent.launch() failed:" + ex);
 				// If launch also fails (probably because it's not implemented), let the
 				// OS handler try to open the parent
 				this.openExternal(parent);
@@ -3076,7 +3077,7 @@ QuickFolders.Interface = {
 				folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_INBOX)) 
 		{ 
 			if (typeof GetNewMsgs != "undefined") { // Tb, Sm
-   			if (folder.server.type != 'none')   
+   			if (folder.server.type != "none")   
 				  GetNewMsgs(folder.server, folder); 
 			}
 			else if (typeof MsgGetMessage != "undefined") {  // Postbox
@@ -3117,7 +3118,7 @@ QuickFolders.Interface = {
 			if (offlineStore.exists())
 				offlineStore.remove(false);
 		}
-		if (typeof gFolderDisplay !='undefined') {
+		if (typeof gFolderDisplay !="undefined") {
 			if (gFolderDisplay.view) { // Tb3
 				if (gFolderDisplay.view.displayedFolder == folder) {
 					gFolderDisplay.view.close();
@@ -3140,7 +3141,7 @@ QuickFolders.Interface = {
 			let msgDB = folder.msgDatabase;
 			msgDB.summaryValid = false;
 			try {
-				folder.closeAndBackupFolderDB('');
+				folder.closeAndBackupFolderDB("");
 			}
 			catch(e) {
 				// In a failure, proceed anyway since we're dealing with problems
@@ -3148,7 +3149,7 @@ QuickFolders.Interface = {
 			}
 			folder.updateFolder(msgWindow);
 			if (isCurrent) {
-				if (typeof(gFolderDisplay.show) != 'undefined') {
+				if (typeof(gFolderDisplay.show) != "undefined") {
           setTimeout(
             function() {gFolderDisplay.show(folder);},
             100
@@ -3183,7 +3184,7 @@ QuickFolders.Interface = {
 			folder.updateFolder(msgWindow);
 		}
 		
-		QuickFolders.Util.slideAlert("QuickFolders", this.getUIstring('qfFolderRepairedMsg','Folder repaired:') + ' ' + folder.prettyName);
+		QuickFolders.Util.slideAlert("QuickFolders", this.getUIstring("qfFolderRepairedMsg","Folder repaired:") + " " + folder.prettyName);
 	} ,
 
 	onRepairFolder: function onRepairFolder(element) {
@@ -3204,8 +3205,8 @@ QuickFolders.Interface = {
 			QI.onCreateInstantFolder(folder);  // async function
 		}
 		else { // legacy code - uses "classic" dialog.
-			if ((util.Application == 'SeaMonkey') ||
-          (util.Application == 'Postbox' && typeof MsgNewFolder === 'function'))
+			if ((util.Application == "SeaMonkey") ||
+          (util.Application == "Postbox" && typeof MsgNewFolder === "function"))
 			{
 				QuickFolders_MySelectFolder(folder.URI);
 				MsgNewFolder(NewFolder); // NewFolder() = global function - doesn't exist in Postbox!
@@ -3236,13 +3237,13 @@ QuickFolders.Interface = {
 			isFindFolder = false;
 		}
 					
-    util.logDebugOptional('interface', 'QuickFolders.Interface.onCreateInstantFolder(' + parentFolder.prettyName + ', ' + folderName + ')');
-    let title = util.getBundleString('qf.prompt.newFolder.title', "New Folder"),
-        text = util.getBundleString('qf.prompt.newFolder.newChildName', "Enter name for new child folder under {0}") + ":",
-        checkBoxText = util.getBundleString('qf.prompt.newFolder.createQFtab', "Also create a QuickFolders Tab"),
+    util.logDebugOptional("interface", "QuickFolders.Interface.onCreateInstantFolder(" + parentFolder.prettyName + ", " + folderName + ")");
+    let title = util.getBundleString("qf.prompt.newFolder.title", "New Folder"),
+        text = util.getBundleString("qf.prompt.newFolder.newChildName", "Enter name for new child folder under {0}") + ":",
+        checkBoxText = util.getBundleString("qf.prompt.newFolder.createQFtab", "Also create a QuickFolders Tab"),
         input = { value: folderName },
         check = { value: false },
-        result = prompts.prompt(window, title, text.replace('{0}', parentFolder.prettyName), input, checkBoxText, check); 
+        result = prompts.prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
     if (!result) return;
     if (!parentFolder.canCreateSubfolders) throw ("cannot create a subfolder for: " + parentFolder.prettyName);
 		let newFolderUri = parentFolder.URI + "/" + encodeURI(input.value);
@@ -3270,7 +3271,7 @@ QuickFolders.Interface = {
 					}
 		    },
 				function failedCreateFolder(ex) {
-					util.logException('getOrCreateFolder() ', ex);				
+					util.logException("Exception in getOrCreateFolder() ", ex);
 				}
 			);
 	},
@@ -3289,12 +3290,12 @@ QuickFolders.Interface = {
 		      util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences,
 					QI = QuickFolders.Interface;   
-		let logLevel = (typeof existingPopupMenu === 'undefined') ? "interface.tabs" : "interface",
-        popupTitle = existingPopupMenu ? existingPopupMenu.id : 'none';
+		let logLevel = (typeof existingPopupMenu === "undefined") ? "interface.tabs" : "interface",
+        popupTitle = existingPopupMenu ? existingPopupMenu.id : "none";
 		util.logDebugOptional(
 			logLevel, 
 			"buildPaletteMenu(" + currentColor + ", existingPopupMenu=" + popupTitle + ")");
-		let menuColorPopup = existingPopupMenu ? existingPopupMenu : this.createIconicElement('menupopup','*');
+		let menuColorPopup = existingPopupMenu ? existingPopupMenu : this.createIconicElement("menupopup","*");
 		try {
 			const colorText = this.getUIstring("qfMenuColor", "Color");
 			// only flat style + apple pills support palette color
@@ -3302,17 +3303,17 @@ QuickFolders.Interface = {
 			    || prefs.CurrentThemeId == Themes.ApplePills.Id
 					|| prefs.CurrentThemeId == Themes.Flat.Id) {
 				for (let jCol=0; jCol<=20;jCol++) {
-					let menuitem = this.createIconicElement('menuitem', 'color menuitem-iconic'),
+					let menuitem = this.createIconicElement("menuitem", "color menuitem-iconic"),
 					    id = "qfColor"+jCol;
 					menuitem.setAttribute("tag", id);
 					if (jCol) {
-						menuitem.setAttribute('label', colorText + " "+ jCol);
+						menuitem.setAttribute("label", colorText + " "+ jCol);
 						//menuitem.setAttribute("style","background-image:url('cols/tabcol-" + jCol + ".png')!important;");
 						if (currentColor == jCol)
 							menuitem.checked = true;
 					}
 					else
-						menuitem.setAttribute('label',this.getUIstring("qfMenuTabColorNone", "No Color!"));
+						menuitem.setAttribute("label",this.getUIstring("qfMenuTabColorNone", "Default Color!"));
 					if (QI.isCommandListeners) {
 						menuitem.addEventListener("command", 
 						function(event) { 
@@ -3327,8 +3328,8 @@ QuickFolders.Interface = {
 			}
 			else {
 				const ELLIPSIS = "\u2026".toString();
-				let menuitem = this.createIconicElement('menuitem','*');
-				menuitem.setAttribute('label',this.getUIstring("qfMenuTabColorDisabledInTheme", "Select different Theme to support coloring" + ELLIPSIS));
+				let menuitem = this.createIconicElement("menuitem","*");
+				menuitem.setAttribute("label",this.getUIstring("qfMenuTabColorDisabledInTheme", "Select different Theme to support coloring" + ELLIPSIS));
 				// open "bling my tabs"
 				// this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.viewOptions(2)");
 				menuitem.addEventListener("command", function(event) { QI.viewOptions(2); }, false); 
@@ -3338,7 +3339,7 @@ QuickFolders.Interface = {
 			util.logDebugOptional("popupmenus","Colors Menu created.\n-------------------------");
 		}
 		catch(ex) {
-			util.logException('Exception in buildPaletteMenu ', ex); 
+			util.logException("Exception in buildPaletteMenu ", ex);
 		}
 		
 		return menuColorPopup;		
@@ -3354,12 +3355,12 @@ QuickFolders.Interface = {
 		      prefs = QuickFolders.Preferences,
 					QI = QuickFolders.Interface;
 		function createMailCmdMenuItem(id, label, tag)  {
-			let menuItem = QI.createIconicElement('menuitem');
+			let menuItem = QI.createIconicElement("menuitem");
 			menuItem.setAttribute("id",id);
 			if (label)
-				menuItem.setAttribute('label', label);
+				menuItem.setAttribute("label", label);
 			if (tag)
-				menuItem.setAttribute('tag', tag);
+				menuItem.setAttribute("tag", tag);
 			return menuItem;
 		}
     let topShortCuts = 0,
@@ -3389,7 +3390,7 @@ QuickFolders.Interface = {
 					false); 
 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
-			menuitem.setAttribute('accesskey',this.getUIstring("qfGetMailAccess", "G"));
+			menuitem.setAttribute("accesskey",this.getUIstring("qfGetMailAccess", "G"));
 			MailCommands.appendChild(menuitem);
 			if (isRootMenu)
 				topShortCuts ++ ;
@@ -3419,14 +3420,14 @@ QuickFolders.Interface = {
         let srv = folder.server || null;
         if (srv) {
           let type = srv.type;
-          if (type !== 'nntp' // newsgroups have their own "Get Messages" Command
+          if (type !== "nntp" // newsgroups have their own "Get Messages" Command
               &&
-              type !== 'pop3' 
+              type !== "pop3"
               &&
-              type !== 'none'  // local folders
+              type !== "none"  // local folders
               &&
               !(folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_INBOX)) { 
-              let downloadLabel = this.getUIstring("qfDownloadAll", "Download Now") + " [" + type + "]";
+              let downloadLabel = this.getUIstring("qfDownloadAll", "Download All") + " [" + type + "]";
 							menuitem = createMailCmdMenuItem("folderPaneContext-downloadAll", downloadLabel);
 							if (QI.isOncommandAttributes)
 								this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onDownloadAll(this);");
@@ -3443,7 +3444,7 @@ QuickFolders.Interface = {
         }    
       }
       catch(ex) {
-			  util.logException('Exception in appendMailFolderCommands for ' + folder.name + ' this should have a server property!', ex); 
+			  util.logException("Exception in appendMailFolderCommands for " + folder.name + " this should have a server property!", ex);
       }
       
       // MarkAllRead (always on top)
@@ -3505,7 +3506,7 @@ QuickFolders.Interface = {
 					if (!QI.checkIsDuplicateEvent({id:id}))								
 						QI.onEditVirtualFolder(menuitem); 
 					}, false); 
-			menuitem.setAttribute('accesskey',this.getUIstring("qfEditVirtualAccess", "S"));
+			menuitem.setAttribute("accesskey",this.getUIstring("qfEditVirtualAccess", "S"));
 			MailCommands.appendChild(menuitem);
 			if (isRootMenu)
 				topShortCuts ++ ;
@@ -3637,13 +3638,13 @@ QuickFolders.Interface = {
 		const { util, prefs, entry, folder, button } = vars,
 		      QI = QuickFolders.Interface;
 		/***  QUICKFOLDERS COMMANDS   ***/
-			let QFcommandPopup = this.createIconicElement('menupopup','*');
-		QFcommandPopup.className = 'QuickFolders-folder-popup';
+			let QFcommandPopup = this.createIconicElement("menupopup","*");
+		QFcommandPopup.className = "QuickFolders-folder-popup";
 
 		// tab colors menu
 		// we should clone this!
-			let colorMenu = this.createIconicElement('menu','*');
-		colorMenu.setAttribute("tag",'qfTabColorMenu');
+			let colorMenu = this.createIconicElement("menu","*");
+		colorMenu.setAttribute("tag","qfTabColorMenu");
 		colorMenu.setAttribute("label", this.getUIstring("qfMenuTabColorPopup", "Tab Color") );
 		colorMenu.className = 'QuickFolders-folder-popup';
 		colorMenu.setAttribute("class","menu-iconic");
@@ -3666,10 +3667,10 @@ QuickFolders.Interface = {
 		QFcommandPopup.appendChild(colorMenu);
 
 		// SelectCategory
-    let menuitem = this.createIconicElement('menuitem', 'cmd menuitem-iconic');
-		menuitem.setAttribute('tag','qfCategory');
-		menuitem.setAttribute('label',this.getUIstring('qfSetCategory', 'Set Bookmark Category…'));
-		menuitem.setAttribute('accesskey',this.getUIstring('qfSetCategoryA', 'C'));
+    let menuitem = this.createIconicElement("menuitem", "cmd menuitem-iconic");
+		menuitem.setAttribute("tag","qfCategory");
+		menuitem.setAttribute("label",this.getUIstring("qfSetCategory", "Set Bookmark Category…"));
+		menuitem.setAttribute("accesskey",this.getUIstring("qfSetCategoryA", "C"));
 
 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, 'oncommand', 'QuickFolders.Interface.configureCategory_FromMenu(this)');
@@ -3683,9 +3684,9 @@ QuickFolders.Interface = {
 
 		if (entry.category) {
 			// RemoveFromCategory
-      menuitem = this.createIconicElement('menuitem', 'cmd menuitem-iconic');
-			menuitem.setAttribute('tag','qfRemoveCategory');
-			menuitem.setAttribute('label',this.getUIstring('qfRemoveCategory', 'Remove from Category'));
+      menuitem = this.createIconicElement("menuitem", "cmd menuitem-iconic");
+			menuitem.setAttribute("tag","qfRemoveCategory");
+			menuitem.setAttribute("label",this.getUIstring("qfRemoveCategory", "Remove from Category"));
 
 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.removeFromCategory(this)');
@@ -3698,11 +3699,11 @@ QuickFolders.Interface = {
 		}
 
 		// DeleteQuickFolder
-    menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
-		menuitem.setAttribute('tag','qfRemove');
+    menuitem = this.createIconicElement("menuitem","cmd menuitem-iconic");
+		menuitem.setAttribute("tag","qfRemove");
 
-		menuitem.setAttribute('label',this.getUIstring('qfRemoveBookmark', 'Remove bookmark'));
-		menuitem.setAttribute('accesskey',this.getUIstring('qfRemoveBookmarkAccess','R'));
+		menuitem.setAttribute("label",this.getUIstring("qfRemoveBookmark", "Remove bookmark"));
+		menuitem.setAttribute("accesskey",this.getUIstring("qfRemoveBookmarkAccess","R"));
 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRemoveBookmark(this)');
 		if (QI.isCommandListeners) menuitem.addEventListener("command", 
@@ -3713,10 +3714,10 @@ QuickFolders.Interface = {
 		QFcommandPopup.appendChild(menuitem);
 
 		// RenameQuickFolder
-    menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
-		menuitem.setAttribute('tag','qfRename');
-		menuitem.setAttribute('label',this.getUIstring('qfRenameBookmark','Rename Bookmark'));
-		menuitem.setAttribute('accesskey',this.getUIstring('qfRenameBookmarkAccess','R'));
+    menuitem = this.createIconicElement("menuitem","cmd menuitem-iconic");
+		menuitem.setAttribute("tag","qfRename");
+		menuitem.setAttribute("label",this.getUIstring("qfRenameBookmark","Rename Bookmark"));
+		menuitem.setAttribute("accesskey",this.getUIstring("qfRenameBookmarkAccess","R"));
 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRenameBookmark(this)');
 		if (QI.isCommandListeners) menuitem.addEventListener("command", 
@@ -3726,11 +3727,11 @@ QuickFolders.Interface = {
 		QFcommandPopup.appendChild(menuitem);
 		
 		if (prefs.getBoolPref("commandMenu.lineBreak")) {
-			let tag = entry.breakBefore ? 'qfBreakDel' : 'qfBreak';
-			menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
-			menuitem.setAttribute('tag', tag);
-			let brString = entry.breakBefore ? this.getUIstring('qfRemoveLineBreak', 'Remove Line Break!') : this.getUIstring('qfInsertLineBreak', 'Insert Line Break!')
-			menuitem.setAttribute('label', brString);
+			let tag = entry.breakBefore ? "qfBreakDel" : "qfBreak";
+			menuitem = this.createIconicElement("menuitem","cmd menuitem-iconic");
+			menuitem.setAttribute("tag", tag);
+			let brString = entry.breakBefore ? this.getUIstring("qfRemoveLineBreak", "Remove Line Break!") : this.getUIstring("qfInsertLineBreak", "Insert Line Break!")
+			menuitem.setAttribute("label", brString);
 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onBreakToggle(this)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command", 
@@ -3741,11 +3742,11 @@ QuickFolders.Interface = {
 		}
 
 		if (prefs.getBoolPref("commandMenu.separator")) {
-			let tag = entry.separatorBefore ? 'qfSeparatorDel' : 'qfSeparator';
-			menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
-			menuitem.setAttribute('tag', tag);
-			let lbString = entry.separatorBefore ? this.getUIstring('qfRemoveSeparator', 'Remove Separator!') : this.getUIstring('qfInsertSeparator', 'Insert Separator!')
-			menuitem.setAttribute('label', lbString);
+			let tag = entry.separatorBefore ? "qfSeparatorDel" : "qfSeparator";
+			menuitem = this.createIconicElement("menuitem","cmd menuitem-iconic");
+			menuitem.setAttribute("tag", tag);
+			let lbString = entry.separatorBefore ? this.getUIstring("qfRemoveSeparator", "Remove Separator!") : this.getUIstring("qfInsertSeparator", "Insert Separator!")
+			menuitem.setAttribute("label", lbString);
 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onSeparatorToggle(this)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command", 
@@ -3761,9 +3762,9 @@ QuickFolders.Interface = {
 
 		// moved icon stuff down to bottom
 		if (prefs.getBoolPref("commandMenu.icon")) {
-      menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
-			menuitem.setAttribute('tag', 'qfIconAdd');
-			menuitem.setAttribute('label',this.getUIstring('qfSelectIcon','Customize Icon…'));
+      menuitem = this.createIconicElement("menuitem","cmd menuitem-iconic");
+			menuitem.setAttribute("tag", "qfIconAdd");
+			menuitem.setAttribute("label",this.getUIstring("qfSelectIcon","Customize Icon…"));
 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onSelectIcon(this, event)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command", 
@@ -3772,9 +3773,9 @@ QuickFolders.Interface = {
 						QI.onSelectIcon(menuitem); }, false); 
 			QFcommandPopup.appendChild(menuitem);
 			
-      menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
-			menuitem.setAttribute('tag', 'qfIconRemove');
-			menuitem.setAttribute('label',this.getUIstring('qfRemoveIcon','Remove Customized Icon…'));
+      menuitem = this.createIconicElement("menuitem","cmd menuitem-iconic");
+			menuitem.setAttribute("tag", "qfIconRemove");
+			menuitem.setAttribute("label",this.getUIstring("qfRemoveIcon","Remove Customized Icon…"));
 			if (QI.isOncommandAttributes)
 				this.setEventAttribute(menuitem, 'oncommand','QuickFolders.Interface.onRemoveIcon(this, event)');
 			if (QI.isCommandListeners) menuitem.addEventListener("command", 
@@ -3787,16 +3788,16 @@ QuickFolders.Interface = {
 			
 		}
 		
-    menuitem = this.createIconicElement('menuitem','cmd menuitem-iconic');
-		menuitem.setAttribute('tag', 'qfTabAdvanced');
-		menuitem.setAttribute('type', 'checkbox'); // some themes need this to display a checkmark 
-		menuitem.setAttribute('label',this.getUIstring('qfTabAdvancedOptions', 'Advanced Properties…'));
-		menuitem.type = 'checkbox';
+    menuitem = this.createIconicElement("menuitem","cmd menuitem-iconic");
+		menuitem.setAttribute("tag", "qfTabAdvanced");
+		menuitem.setAttribute("type", "checkbox"); // some themes need this to display a checkmark
+		menuitem.setAttribute("label",this.getUIstring("qfTabAdvancedOptions", "Advanced Properties…"));
+		menuitem.type = "checkbox";
 		if (entry.flags || entry.toAddress || entry.fromIdentity) {
-			menuitem.setAttribute('checked', 'true');
+			menuitem.setAttribute("checked", "true");
 		}
 		else
-			menuitem.setAttribute('checked', 'false');
+			menuitem.setAttribute("checked", "false");
 		
 		// we want the coordinates, therefore using click event:
 		if (QI.isOncommandAttributes)
@@ -3811,12 +3812,12 @@ QuickFolders.Interface = {
 			 prefs.getBoolPref("commandMenu.help")
 			 ) {
 			// --------------------
-			QFcommandPopup.appendChild(document.createXULElement ? document.createXULElement('menuseparator') : document.createElement('menuseparator'));
+			QFcommandPopup.appendChild(document.createXULElement ? document.createXULElement("menuseparator") : document.createElement("menuseparator"));
 		}
 		
 		if (prefs.getBoolPref("commandMenu.options")) {
 			// Options
-			menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-options');
+			menuItemToClone= document.getElementById("QuickFolders-ToolbarPopup-options");
 			if (menuItemToClone) {
 				menuitem = menuItemToClone.cloneNode(true);
 				QFcommandPopup.appendChild(menuitem);
@@ -3825,7 +3826,7 @@ QuickFolders.Interface = {
 
 		// Support
 		if (prefs.getBoolPref("commandMenu.support")) {
-			menuItemToClone = document.getElementById('QuickFolders-ToolbarPopup-support');
+			menuItemToClone = document.getElementById("QuickFolders-ToolbarPopup-support");
 			if (menuItemToClone) {
 				menuitem = menuItemToClone.cloneNode(true);
 				QFcommandPopup.appendChild(menuitem);
@@ -3834,21 +3835,21 @@ QuickFolders.Interface = {
 
 		// Help
 		if (prefs.getBoolPref("commandMenu.help")) {
-			menuItemToClone= document.getElementById('QuickFolders-ToolbarPopup-help');
+			menuItemToClone= document.getElementById("QuickFolders-ToolbarPopup-help");
 			if (menuItemToClone) {
 				menuitem = menuItemToClone.cloneNode(true);
 				QFcommandPopup.appendChild(menuitem);
 			}
 		}
 
-    let QuickFolderCmdMenu = this.createIconicElement('menu', 'cmd menu-iconic');
-		QuickFolderCmdMenu.setAttribute('id','quickFoldersCommands');
-		QuickFolderCmdMenu.setAttribute('label',this.getUIstring("qfCommandPopup",'QuickFolders Commands'));
+    let QuickFolderCmdMenu = this.createIconicElement("menu", "cmd menu-iconic");
+		QuickFolderCmdMenu.setAttribute("id","quickFoldersCommands");
+		QuickFolderCmdMenu.setAttribute("label",this.getUIstring("qfCommandPopup","QuickFolders Commands"));
 		QuickFolderCmdMenu.setAttribute("accesskey",this.getUIstring("qfCommandAccess","Q"));
-		QuickFolderCmdMenu.className='cmd menu-iconic'; //  QuickFolders-folder-popup ?
+		QuickFolderCmdMenu.className="cmd menu-iconic"; //  QuickFolders-folder-popup ?
 		QuickFolderCmdMenu.appendChild(QFcommandPopup);
 		// [Bug 26571] Add Option to hide QF command submenu
-		if (prefs.getBoolPref('commandMenu.CTRL')) {
+		if (prefs.getBoolPref("commandMenu.CTRL")) {
 			// hide the popup menu item (we can still use the contained menu items when hitting CTRL)
 			QuickFolderCmdMenu.style.display = "none"; 
 		}
@@ -3888,13 +3889,13 @@ QuickFolders.Interface = {
           util = QuickFolders.Util,
 					QI = QuickFolders.Interface;
 		let msg = evt.type + " event from popup - QI.clickHandler()";
-		if (prefs.isDebugOption('popupmenus')) debugger;
+		if (prefs.isDebugOption("popupmenus")) debugger;
 		if (evt.target) {
 			let isHandled = false,
 			    isTagHandler = true,
 					isIdHandler = true,
 			    menuitem = element,
-			    cmd = evt.target.getAttribute('oncommand'), 
+			    cmd = evt.target.getAttribute("oncommand"),
 			    lbl = evt.target.getAttribute("label"),
 			    tag = evt.target.getAttribute("tag"),
 					id = evt.target.id || null;
@@ -3914,10 +3915,10 @@ QuickFolders.Interface = {
 				while(par && par.parentNode && par.tagName != "toolbarbutton") par = par.parentNode;
 				let folder = par ? par.folder : null;
 				switch (tag) {
-					case 'openNewTab': // precedence over id (the menuitem may have no id)
+					case "openNewTab": // precedence over id (the menuitem may have no id)
 						QI.openFolderInNewTab(folder);	
 					  break;
-					case 'qfCategory':
+					case "qfCategory":
 						QI.configureCategory_FromMenu(menuitem);
 					  break;
 					case "qfRemoveCategory":
@@ -4003,7 +4004,7 @@ QuickFolders.Interface = {
 						QI.onEditVirtualFolder(menuitem);
 					  break;
 					case "folderPaneContext-compact":
-						QI.onCompactFolder(menuitem,'compactFolder');
+						QI.onCompactFolder(menuitem,"compactFolder");
 						break;
 					case "quickFolders-openFolderLocation":
 						QI.onFolderOpenLocation(menuitem);
@@ -4029,8 +4030,8 @@ QuickFolders.Interface = {
 	// against duplication of events, log time in ms
 	setLastHandledEvent: function setLastHandledEvent(o) {
 		QuickFolders.Interface.LastHandledEvent = {
-			id: '',
-			tag: '',
+			id: "",
+			tag: "",
 			time: (new Date()).getTime()
 		}
 		if (o.id)
@@ -4071,20 +4072,20 @@ QuickFolders.Interface = {
 		}
     
 		// else { ...see below...  }
-    let menupopup = document.createXULElement ? document.createXULElement('menupopup') : document.createElement('menupopup'),
+    let menupopup = document.createXULElement ? document.createXULElement("menupopup") : document.createElement("menupopup"),
         menuitem;
       
-    menupopup.setAttribute('id', popupId);
-    menupopup.setAttribute('position', 'after_start'); //
+    menupopup.setAttribute("id", popupId);
+    menupopup.setAttribute("position", "after_start"); //
     // [Bug 26575] (safety?) - seems to be only triggered on non folder commands
-    this.setEventAttribute(menupopup, 'onclick',"QuickFolders.Interface.clickHandler(event,this);");
-    this.setEventAttribute(menupopup, 'oncommand',"QuickFolders.Interface.clickHandler(event,this);");
-    menupopup.className = 'QuickFolders-folder-popup';
+    this.setEventAttribute(menupopup, "onclick","QuickFolders.Interface.clickHandler(event,this);");
+    this.setEventAttribute(menupopup, "oncommand","QuickFolders.Interface.clickHandler(event,this);");
+    menupopup.className = "QuickFolders-folder-popup";
     menupopup.folder = folder;
     let MailCommands, 
         isRootMenu=false,
         fi = null,
-        isHideMailCommands = evt ? (!evt.ctrlKey && prefs.getBoolPref('folderMenu.CTRL')) : false;
+        isHideMailCommands = evt ? (!evt.ctrlKey && prefs.getBoolPref("folderMenu.CTRL")) : false;
 
     if (folder) {
       util.logDebugOptional("popupmenus","Creating Popup Set for " + folder.name + "\nId: " + popupId);
@@ -4097,7 +4098,7 @@ QuickFolders.Interface = {
         isRootMenu = true;
       }
       else {
-        MailCommands = this.createIconicElement('menupopup', 'QuickFolders-folder-popup');
+        MailCommands = this.createIconicElement("menupopup", "QuickFolders-folder-popup");
         // removed mailCmd menu-iconic from class [Bug 26575]
         isRootMenu = false;
       }			
@@ -4127,16 +4128,16 @@ QuickFolders.Interface = {
         }
       
         if (prefs.getBoolPref("folderMenu.openNewTab")) {
-          let newTabMenuItem = document.getElementById('folderPaneContext-openNewTab');		
+          let newTabMenuItem = document.getElementById("folderPaneContext-openNewTab");
           // folder listener sometimes throws here?
           let label = newTabMenuItem && newTabMenuItem.label ? newTabMenuItem.label.toString() : "Open in New Tab";
-          let menuitem = this.createMenuItem('', label);
+          let menuitem = this.createMenuItem("", label);
           // oncommand="gFolderTreeController.newFolder();"			
-          menuitem.className = 'cmd menuitem-iconic';
+          menuitem.className = "cmd menuitem-iconic";
           menuitem.setAttribute("tag", "openNewTab");
-          menuitem.addEventListener('command', 
+          menuitem.addEventListener("command",
             function(event) {
-              if (!QI.checkIsDuplicateEvent({tag:'openNewTab', id:'folderPaneContext-openNewTab'}))
+              if (!QI.checkIsDuplicateEvent({tag:"openNewTab", id:"folderPaneContext-openNewTab"}))
                 QI.openFolderInNewTab(fi);
             } , true);
           // this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.openFolderInNewTab();");
@@ -4146,7 +4147,7 @@ QuickFolders.Interface = {
         }
 
         if (topShortCuts>0 && fi.hasSubFolders) // separator only if necessary
-          menupopup.appendChild(this.createIconicElement('menuseparator','*'));
+          menupopup.appendChild(this.createIconicElement("menuseparator","*"));
       }
 
       // 2. QUICKFOLDERS COMMANDS
@@ -4158,9 +4159,9 @@ QuickFolders.Interface = {
       // 3. APPEND MAIL FOLDER COMMANDS
       if (folder && menupopup != MailCommands && !isHideMailCommands) {
         // Append the Mail Folder Context Menu...
-        let MailFolderCmdMenu = this.createIconicElement('menu');
-        MailFolderCmdMenu.setAttribute('id','quickFoldersMailFolderCommands');
-        MailFolderCmdMenu.setAttribute('label', this.getUIstring("qfFolderPopup",'Mail Folder Commands'));
+        let MailFolderCmdMenu = this.createIconicElement("menu");
+        MailFolderCmdMenu.setAttribute("id","quickFoldersMailFolderCommands");
+        MailFolderCmdMenu.setAttribute("label", this.getUIstring("qfFolderPopup","Mail Folder Commands"));
         MailFolderCmdMenu.setAttribute("accesskey", this.getUIstring("qfFolderAccess","F"));
 
         MailFolderCmdMenu.appendChild(MailCommands);
@@ -4173,7 +4174,7 @@ QuickFolders.Interface = {
     if (fi && fi.hasSubFolders) {
       util.logDebugOptional("popupmenus","Creating SubFolder Menu for " + folder.name + "…");
       if (showCommandsSubmenus)
-        menupopup.appendChild(this.createIconicElement('menuseparator','*'));
+        menupopup.appendChild(this.createIconicElement("menuseparator","*"));
       this.debugPopupItems=0;
       this.addSubFoldersPopup(menupopup, folder, false);
       util.logDebugOptional("popupmenus","Created Menu " + folder.name + ": " + this.debugPopupItems + " items.\n-------------------------");
@@ -4199,14 +4200,14 @@ QuickFolders.Interface = {
 	
 	// append a button with mail folder commands (onclick)
 	showCurrentFolderMailContextMenu: function showCurrentFolderMailContextMenu(button) {
-		let menupopup = this.createIconicElement('menupopup','*'),
+		let menupopup = this.createIconicElement("menupopup","*"),
         util = QuickFolders.Util,
 				QI = QuickFolders.Interface,
 		    folder = util.CurrentFolder;
-		menupopup.setAttribute('position','after_start'); //
-		menupopup.id = 'QuickFolders-CurrentMailFolderCommandsPopup';
-		
-		menupopup.className = 'QuickFolders-folder-popup';
+		menupopup.setAttribute("position","after_start"); //
+		menupopup.id = "QuickFolders-CurrentMailFolderCommandsPopup";
+
+		menupopup.className = "QuickFolders-folder-popup";
 		
 		button.folder = folder;
 
@@ -4225,9 +4226,9 @@ QuickFolders.Interface = {
 	createMenuItem_DeleteJunk: function createMenuItem_DeleteJunk() {
 		const QI = QuickFolders.Interface,
 		      id = "deleteJunk";
-		let menuitem = this.createIconicElement('menuitem');
+		let menuitem = this.createIconicElement("menuitem");
 		menuitem.setAttribute("id", id);
-		menuitem.setAttribute('label',this.getUIstring("qfDeleteJunk", "Purge Junk"));
+		menuitem.setAttribute("label",this.getUIstring("qfDeleteJunk", "Purge Junk"));
 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onDeleteJunk(this);");
 		if (QI.isCommandListeners) menuitem.addEventListener("command", 
@@ -4242,10 +4243,10 @@ QuickFolders.Interface = {
 	createMenuItem_EmptyJunk: function createMenuItem_EmptyJunk() {
 		const QI = QuickFolders.Interface,
 		      id = "folderPaneContext-emptyJunk";
-	  let menuitem = this.createIconicElement('menuitem');
+	  let menuitem = this.createIconicElement("menuitem");
 		menuitem.setAttribute("id", id);
-		menuitem.setAttribute('label', this.getUIstring("qfEmptyJunk", "Empty Junk"));
-		menuitem.setAttribute('accesskey', this.getUIstring("qfEmptyJunkAccess", "Empty Junk"));
+		menuitem.setAttribute("label", this.getUIstring("qfEmptyJunk", "Empty Junk"));
+		menuitem.setAttribute("accesskey", this.getUIstring("qfEmptyJunkAccess", "Empty Junk"));
 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onEmptyJunk(this);");
 		if (QI.isCommandListeners) menuitem.addEventListener("command", 
@@ -4258,18 +4259,18 @@ QuickFolders.Interface = {
 	} ,
 	
 	createMenuItem_GetMail: function createMenuItem_GetMail(folder) {
-    let server = '?';
+    let server = "?";
 		const QI = QuickFolders.Interface,
 		      id = "folderPaneContext-getMessages"; // uses Thunderbird css
 		try {
 			// find out the server name
 			// let's clone it ?
-			let getMailMenuItem = this.createIconicElement('menuitem', '*'); // no className
+			let getMailMenuItem = this.createIconicElement("menuitem", "*"); // no className
 			server = folder.server;
 			getMailMenuItem.id = id;
 			getMailMenuItem.folder=folder;
-			getMailMenuItem.setAttribute('label', this.getUIstring("qfGetMail", "Get Messages…"));
-			getMailMenuItem.setAttribute('accesskey', this.getUIstring("qfGetMailAccess", "G"));
+			getMailMenuItem.setAttribute("label", this.getUIstring("qfGetMail", "Get Messages…"));
+			getMailMenuItem.setAttribute("accesskey", this.getUIstring("qfGetMailAccess", "G"));
 			
 			// use parent folder URI as each starting point
 			if (QI.isOncommandAttributes)
@@ -4284,7 +4285,7 @@ QuickFolders.Interface = {
 			
 		}
 		catch(ex) {
-			QuickFolders.Util.logException('Exception in createMenuItem_GetMail (Get Mail Command for Inbox): ' + server, ex); 
+			QuickFolders.Util.logException("Exception in createMenuItem_GetMail (Get Mail Command for Inbox): " + server, ex); 
 			return null;
 		}		
 	} ,
@@ -4292,9 +4293,9 @@ QuickFolders.Interface = {
 	createMenuItem_EmptyTrash: function createMenuItem_EmptyTrash() {
 		const QI = QuickFolders.Interface,
 		      id = "folderPaneContext-emptyTrash";
-		let menuitem = this.createIconicElement('menuitem');
+		let menuitem = this.createIconicElement("menuitem");
 		menuitem.setAttribute("id", id);
-		menuitem.setAttribute('label',this.getUIstring("qfEmptyTrash", "Empty Trash"));
+		menuitem.setAttribute("label",this.getUIstring("qfEmptyTrash", "Empty Trash"));
 		menuitem.setAttribute("accesskey",this.getUIstring("qfEmptyTrashAccess","T"));
 		if (QI.isOncommandAttributes)
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onEmptyTrash(this);event.stopPropagation();");
@@ -4310,15 +4311,15 @@ QuickFolders.Interface = {
 	createMenuItem_MarkAllRead: function createMenuItem_MarkAllRead(disabled, recursive = false) {
 		const QI = QuickFolders.Interface,
 				  id = recursive ? "folderPaneContext-markMailFolderAllReadRecursive" : "folderPaneContext-markMailFolderAllRead";
-    let menuitem = this.createIconicElement('menuitem');
+    let menuitem = this.createIconicElement("menuitem");
 		menuitem.setAttribute("id", id);
-		menuitem.setAttribute('label',
+		menuitem.setAttribute("label",
       recursive ? 
         this.getUIstring("qfMarkAllReadRecursive","Mark folder + subfolders as Read") : 
         this.getUIstring("qfMarkAllRead","Mark Folder Read")
     );
     if (!recursive)
-      menuitem.setAttribute('accesskey',this.getUIstring("qfMarkAllReadAccess","M"));
+      menuitem.setAttribute("accesskey",this.getUIstring("qfMarkAllReadAccess","M"));
 		if (QI.isOncommandAttributes) {
       let t = recursive ? "true" : "false";
 			this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onMarkAllRead(this, event, "+ t +");");
@@ -4338,9 +4339,9 @@ QuickFolders.Interface = {
 	createIconicElement: function createIconicElement(tagName, cl) {
 		let el = document.createXULElement ? document.createXULElement(tagName) : document.createElement(tagName);
 		el.setAttribute("xmlns", "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
-		if (cl != '*') {
+		if (cl != "*") {
 			if (!cl) 
-				cl = 'mailCmd menuitem-iconic'; // default
+				cl = "mailCmd menuitem-iconic"; // default
 			el.className = cl;
 		}
 		return el;
@@ -4376,7 +4377,7 @@ QuickFolders.Interface = {
 		      prefs = QuickFolders.Preferences,
 					Ci = Components.interfaces;
 		try {
-      if (typeof folder.server === 'undefined') return;
+      if (typeof folder.server === "undefined") return;
       
 			util.logDebugOptional("dragToNew","addDragToNewFolderItem	" + folder.prettyName
 				+ "\ncanCreateSubfolders = " + folder.canCreateSubfolders
@@ -4384,15 +4385,15 @@ QuickFolders.Interface = {
 			if (!folder.canCreateSubfolders) return;
 			let server=folder.server.QueryInterface(Ci.nsIMsgIncomingServer);// check server.type!!
 			switch(server.type) {
-				case 'pop3':
+				case "pop3":
 					if (!prefs.getBoolPref("dragToCreateFolder.pop3"))
 						return;
 					break;
-				case 'imap':
+				case "imap":
 					if (!prefs.getBoolPref("dragToCreateFolder.imap"))
 						return;
 					break;
-				case 'none': // allow all local folders!
+				case "none": // allow all local folders!
 					if (!prefs.getBoolPref("dragToCreateFolder.local"))
 						return;
 					break;
@@ -4404,13 +4405,13 @@ QuickFolders.Interface = {
 			}
 
 			// New Folder... submenu items
-			let folderPaneContext = document.getElementById('folderPaneContext');
+			let folderPaneContext = document.getElementById("folderPaneContext");
 			if (folderPaneContext) {
-				let newMenuItem = document.getElementById('folderPaneContext-new');
+				let newMenuItem = document.getElementById("folderPaneContext-new");
 				if (newMenuItem) {
 					let createFolderMenuItem=newMenuItem.cloneNode(true);
 					if (folder.hasSubFolders) {
-						let sep = this.createIconicElement('menuseparator','*');
+						let sep = this.createIconicElement("menuseparator","*");
 						popupMenu.appendChild(sep);
 					}
 					createFolderMenuItem.id=""; // delete existing menu
@@ -4423,7 +4424,7 @@ QuickFolders.Interface = {
 					this.setEventAttribute(createFolderMenuItem, "ondrop","nsDragAndDrop.drop(event,QuickFolders.popupDragObserver);");  // only case where we use the dedicated observer of the popup!
 					
 					// [Bug 26425] option to put 'create new subfolder' on top
-					if (prefs.getBoolPref('dragToCreateFolder.menutop'))
+					if (prefs.getBoolPref("dragToCreateFolder.menutop"))
 						popupMenu.insertBefore(createFolderMenuItem, popupMenu.firstChild);
 					else
 						popupMenu.appendChild(createFolderMenuItem);
@@ -4431,7 +4432,7 @@ QuickFolders.Interface = {
 			}
 			
 		}
-		catch(ex) {util.logException('Exception in addDragToNewFolderItem (adding drag Menu items): ', ex); }
+		catch(ex) {util.logException("Exception in addDragToNewFolderItem (adding drag Menu items): ", ex); }
 	} ,
   
   // show a reusable label representing a folder path (for quickMove, quickJump and recent folders).
@@ -4442,13 +4443,13 @@ QuickFolders.Interface = {
   // 4 - folder.URI  [for debugging]
   folderPathLabel : function folderPathLabel(detailType, folder, maxPathItems) {
     function folderPath(folder, maxAtoms, includeServer) {
-      let pathComponents = '',
-          chevron = ' ' + "\u00BB".toString() + ' ';
+      let pathComponents = "",
+          chevron = " " + "\u00BB".toString() + " ";
       while (folder && maxAtoms) {
         if (folder.isServer && !includeServer)
           return pathComponents;
         pathComponents = folder.prettyName 
-                       + (pathComponents ? chevron  : '')
+                       + (pathComponents ? chevron  : "")
                        + pathComponents;
         if (folder.isServer)
           break;
@@ -4464,12 +4465,12 @@ QuickFolders.Interface = {
         return folder.name;
       case 1: // folder name - account name
         hostString = folder.rootFolder.name;
-        return folder.name + ' - ' + hostString;
+        return folder.name + " - " + hostString;
       case 2: // account name - folder path (max[n])
         hostString = folder.rootFolder.name;
-        let f = folder.URI.indexOf('://'),
+        let f = folder.URI.indexOf("://"),
             fullPath = f ? folder.URI.substr(f+3) : folder.URI;
-        return hostString + ' - ' + folderPath(folder,  maxPathItems, false);
+        return hostString + " - " + folderPath(folder,  maxPathItems, false);
       case 3: 
         return folderPath(folder,  maxPathItems, false);
       case 4: // for debugging
@@ -4480,13 +4481,13 @@ QuickFolders.Interface = {
 	// isDrag: if this is set to true, then the command items are not included
 	addSubFoldersPopupFromList: function addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, forceAlphaSort, isRecentFolderList) {
     function splitPath(path, maxAtoms) {
-      let parts = path.split('/'),
+      let parts = path.split("/"),
           firstP = parts.length - maxAtoms,
-          pathComponents = '',
-          chevron=' ' + "\u00BB".toString() + ' '; // double angle quotation mark
+          pathComponents = "",
+          chevron=" " + "\u00BB".toString() + " "; // double angle quotation mark
       firstP = firstP>0 ? firstP : 1; // throw away account name
       for (let i=firstP; i<parts.length; i++) {
-        pathComponents += ((i>firstP) ? chevron : '') + parts[i];
+        pathComponents += ((i>firstP) ? chevron : "") + parts[i];
       }
       return pathComponents;
     }
@@ -4518,10 +4519,10 @@ QuickFolders.Interface = {
           : 0,
         maxPathItems = prefs.getIntPref("recentfolders.maxPathItems");
 
-		util.logDebugOptional('popupmenus.subfolders', 'addSubFoldersPopupFromList(..)');
+		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopupFromList(..)");
 		while (!done) {
 			// TB2 and Postbox:
-			if (typeof subfolders.currentItem!='undefined')
+			if (typeof subfolders.currentItem!="undefined")
 				subfolder = subfolders.currentItem().QueryInterface(Ci.nsIMsgFolder);
 			else {
 				if (subfolders.hasMoreElements())
@@ -4534,44 +4535,44 @@ QuickFolders.Interface = {
 
 			try {
 				this.debugPopupItems++;
-				let menuitem = this.createIconicElement('menuitem','*'),
+				let menuitem = this.createIconicElement("menuitem","*"),
 				    menuLabel,
 				    maxDetail = 4;
 				if (displayFolderPathDetail > maxDetail)
 					displayFolderPathDetail = maxDetail;
         menuLabel = this.folderPathLabel(displayFolderPathDetail, subfolder, maxPathItems);
         
-				if (isRecentFolderList && prefs.getBoolPref('recentfolders.showTimeStamp'))  {
-					menuLabel = util.getMruTime(subfolder) + ' - ' + menuLabel;
+				if (isRecentFolderList && prefs.getBoolPref("recentfolders.showTimeStamp"))  {
+					menuLabel = util.getMruTime(subfolder) + " - " + menuLabel;
 				}
 
-				menuitem.setAttribute('label', menuLabel); //+ subfolder.URI
+				menuitem.setAttribute("label", menuLabel); //+ subfolder.URI
 				menuitem.setAttribute("tag","sub");
 				
 				try {
 					let iconURL = subfolder.parent && (subfolder.parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)
 						? "url('chrome://quickfolders/skin/ico/folder-trash-gnome-qf.png')"
-						: ((typeof subfolder.getStringProperty != 'undefined') ? subfolder.getStringProperty("iconURL") : null);
+						: ((typeof subfolder.getStringProperty != "undefined") ? subfolder.getStringProperty("iconURL") : null);
 					if (iconURL) {
-						menuitem.style.setProperty('list-style-image', iconURL, '');
+						menuitem.style.setProperty("list-style-image", iconURL, "");
 					}
 				} 
 				catch(ex) {
           if (prefs.isDebug)
-            util.logException('Error in addSubFoldersPopupFromList', ex);
+            util.logException("Error in addSubFoldersPopupFromList", ex);
         }
 
 				let numUnread = subfolder.getNumUnread(false),
 				    numUnreadInSubFolders = subfolder.getNumUnread(true) - numUnread,
-				    sCount = ' (' + ((numUnread>0) ? numUnread : '') ;
+				    sCount = " (" + ((numUnread>0) ? numUnread : "") ;
 				if (numUnread + numUnreadInSubFolders == 0)
-					sCount = ''
+					sCount = "";
 
 				const triangleDown = "\u25be".toString();
 
 				if (numUnreadInSubFolders+numUnread>0) {
 					if(numUnreadInSubFolders > 0 && prefs.isShowCountInSubFolders)
-						sCount += triangleDown + numUnreadInSubFolders+'';
+						sCount += triangleDown + numUnreadInSubFolders+"";
 					sCount += ")";
 					if (!prefs.isShowCountInSubFolders && numUnread == 0)
 						sCount="";
@@ -4579,7 +4580,7 @@ QuickFolders.Interface = {
 					menuitem.setAttribute("class","hasUnread menuitem-iconic");
 					if (subfolder.hasNewMessages && prefs.isHighlightNewMail) 
 						menuitem.setAttribute("biffState-NewMail","true");
-					menuitem.setAttribute('label', menuLabel + sCount);
+					menuitem.setAttribute("label", menuLabel + sCount);
 				}
 				else
 					menuitem.setAttribute("class","menuitem-iconic");
@@ -4590,7 +4591,7 @@ QuickFolders.Interface = {
 					    eventType;
 					// for the new Thunderbird (60+) 
 					if (vc.compare(util.ApplicationVersion, "60.0") >= 0) { 
-						eventType = prefs.getStringPref('debug.popupmenus.folderEventType'); // "onclick" or "oncommand" - default is onclick
+						eventType = prefs.getStringPref("debug.popupmenus.folderEventType"); // "onclick" or "oncommand" - default is onclick
 						if (eventType) {
 							// [Bug 26575]
 							util.logDebugOptional("popupmenus.items","add " + eventType + " event attribute for menuitem " + menuitem.getAttribute("label") + " onSelectSubFolder(" + subfolder.URI+ ")");
@@ -4630,8 +4631,8 @@ QuickFolders.Interface = {
 					    sNewName = killDiacritics(subfolder.name);
 					// >=1 exclude first item (name of container folder) - fixes [Bug 22901] - maybe insert separator as well
 					// >=0 undo this change - fixes [Bug 21317]
-					for (;c>=0 && popupMenu.childNodes[c].hasAttribute('label');c--) {
-						if (sNewName > killDiacritics(popupMenu.childNodes[c].getAttribute('label')))
+					for (;c>=0 && popupMenu.childNodes[c].hasAttribute("label");c--) {
+						if (sNewName > killDiacritics(popupMenu.childNodes[c].getAttribute("label")))
 						{
 							if (c+1 == popupMenu.childNodes.length)
 								popupMenu.appendChild(menuitem);
@@ -4655,9 +4656,9 @@ QuickFolders.Interface = {
 				if (subfolder.hasSubFolders && prefs.isShowRecursiveFolders)
 				{
 					this.debugPopupItems++;
-					let subMenu = this.createIconicElement('menu','*');
+					let subMenu = this.createIconicElement("menu","*");
 					subMenu.setAttribute("label", menuLabel + sCount);
-					subMenu.className = 'QuickFolders-folder-popup menu-iconic' + ((numUnreadInSubFolders+numUnread>0) ? ' hasUnread' : '');
+					subMenu.className = "QuickFolders-folder-popup menu-iconic" + ((numUnreadInSubFolders+numUnread>0) ? " hasUnread" : "");
 					
 					// workaround for Phoenity - add the drop handler for buttons here
 					// this.setEventAttribute(subMenu, "ondrop", "nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
@@ -4670,9 +4671,9 @@ QuickFolders.Interface = {
 						// [Bug 26157] is folder deleted? use different icon!
 						let iconURL = subfolder.parent && (subfolder.parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)
 						  ? "url('chrome://quickfolders/skin/ico/folder-trash-gnome-qf.png')"
-						  :  ((typeof subfolder.getStringProperty != 'undefined')? subfolder.getStringProperty("iconURL") : null);
+						  :  ((typeof subfolder.getStringProperty != "undefined")? subfolder.getStringProperty("iconURL") : null);
 						if (iconURL) {
-							subMenu.style.setProperty('list-style-image', iconURL, '');
+							subMenu.style.setProperty("list-style-image", iconURL, "");
 						}
 					} 
 					catch(ex) {;}
@@ -4690,7 +4691,7 @@ QuickFolders.Interface = {
 					//let uriCopy = subfolder.URI; // snapshot! (not working in TB2)
 					this.addSubMenuEventListener(subMenu, subfolder.URI); // create a new context for copying URI
 
-					let subPopup = this.createIconicElement('menupopup','*');
+					let subPopup = this.createIconicElement("menupopup","*");
 					subMenu.appendChild(subPopup);
 
 					popupMenu.insertBefore(subMenu,menuitem)
@@ -4701,12 +4702,12 @@ QuickFolders.Interface = {
 					subPopup.removeChild(menuitem);
 				}
 
-				if (typeof subfolders.next!='undefined') {
+				if (typeof subfolders.next!="undefined") {
 					try { subfolders.next(); } catch(e) { done=true; }
 				}
 			}
 			catch(ex) {
-        util.logException('Exception in addSubFoldersPopupFromList: ', ex); 
+        util.logException("Exception in addSubFoldersPopupFromList: ", ex); 
         done = true;
       }
 		}
@@ -4716,13 +4717,13 @@ QuickFolders.Interface = {
 	addSubFoldersPopup: function addSubFoldersPopup(popupMenu, folder, isDrag) {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
-		util.logDebugOptional('popupmenus.subfolders', 'addSubFoldersPopup(' + folder.prettyName + ', drag=' + isDrag + ')' );
-		let isDragNew = isDrag && prefs.getBoolPref('folderMenu.dragToNew');
+		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopup(" + folder.prettyName + ", drag=" + isDrag + ")" );
+		let isDragNew = isDrag && prefs.getBoolPref("folderMenu.dragToNew");
 		
 		if (folder.hasSubFolders) {
-			util.logDebugOptional('popupmenus.subfolders', 'Adding folders…');
+			util.logDebugOptional("popupmenus.subfolders", "Adding folders…");
 			let subfolders;
-			if (typeof folder.subFolders != 'undefined')
+			if (typeof folder.subFolders != "undefined")
 				subfolders = folder.subFolders;
 			else
 				subfolders = folder.GetSubFolders();
@@ -4742,34 +4743,34 @@ QuickFolders.Interface = {
 		let p = Target,
         util = QuickFolders.Util;
 		util.logDebugOptional ("popupmenus.collapse", "Close menus for node=" + p.nodeName
-								 + "\nlabel=" + p.getAttribute('label')
+								 + "\nlabel=" + p.getAttribute("label")
 								 + "\nparent tag=" + p.parentNode.tagName);
 		switch(Target.tagName) {
-			case 'menuitem': // dropped mails to a menu item
-			case 'menu': // clicked on a parent folder?
+			case "menuitem": // dropped mails to a menu item
+			case "menu": // clicked on a parent folder?
 				// close all containing menus
 				// hidepopup is broken in linux during OnDrag action!!
 				// bug only confirmed on TB 2.0!
-				while (null!=p.parentNode && p.tagName!='toolbar') {
+				while (null!=p.parentNode && p.tagName!="toolbar") {
 					p=p.parentNode;
 					util.logDebugOptional ("popupmenus.collapse", "parenttag=" + p.tagName);
 					util.logDebugOptional ("popupmenus.collapse", "node= " + p.nodeName);
-					if (p.tagName == 'menupopup' && p.hidePopup) {
-						util.logDebugOptional ("popupmenus.collapse", "Try hide parent Popup " + p.getAttribute('label'));
+					if (p.tagName == "menupopup" && p.hidePopup) {
+						util.logDebugOptional ("popupmenus.collapse", "Try hide parent Popup " + p.getAttribute("label"));
 						p.hidePopup();
 						}
 					}
 				break;
 
-			case 'toolbarbutton':
-				QuickFolders_globalHidePopupId = 'moveTo_' + Target.folder.URI;
+			case "toolbarbutton":
+				QuickFolders_globalHidePopupId = "moveTo_" + Target.folder.URI;
 				util.logDebugOptional ("popupmenus.collapse", "set QuickFolders_globalHidePopupId to " + QuickFolders_globalHidePopupId);
 
 				let popup = document.getElementById(QuickFolders_globalHidePopupId);
 				if (popup)
 					try {
 						popup.parentNode.removeChild(popup); //was popup.hidePopup()
-						QuickFolders_globalHidePopupId = '';
+						QuickFolders_globalHidePopupId = "";
 					}
 					catch(e) {
 						util.logDebugOptional ("popupmenus.collapse", "Could not remove popup of " + QuickFolders_globalHidePopupId );
@@ -4805,13 +4806,13 @@ QuickFolders.Interface = {
 				let tabmail = document.getElementById("tabmail");
 				if (tabmail) {
 					switch (util.Application) {
-						case 'Thunderbird':
+						case "Thunderbird":
 							tabmail.openTab(util.mailFolderTypeName, {folder: folderUri, messagePaneVisible:true } );
 							break;
-						case 'SeaMonkey':
+						case "SeaMonkey":
 							tabmail.openTab(util.mailFolderTypeName, 7, folderUri);
 							break;
-						case 'Postbox':
+						case "Postbox":
 							let win = util.getMail3PaneWindow();
 							win.MsgOpenNewTabForFolder(folderUri, null /* msgHdr.messageKey key*/, false /*Background*/ )
 							break;
@@ -4850,33 +4851,33 @@ QuickFolders.Interface = {
 		  case VK_DOWN:
 			case VK_UP:
 			  util.logDebugOptional("interface.findFolder", (event.keyCode==VK_DOWN) ? "VK_DOWN" : "VK_UP");
-				menupopup = document.getElementById('QuickFolders-FindPopup');
+				menupopup = document.getElementById("QuickFolders-FindPopup");
 				let fC = menupopup.firstChild;
 				if (!fC) {
 					util.logDebugOptional("interface.findFolder","no popup children, early exit");
 				  return; // no children = no results!
 		    }
-				menupopup.removeAttribute('ignorekeys');
-				let palette = document.getElementById('QuickFolders-Palette');
+				menupopup.removeAttribute("ignorekeys");
+				let palette = document.getElementById("QuickFolders-Palette");
 				if (palette) {
 					util.logDebugOptional("interface.findFolder","1. show Popup…");
           // remove and add the popup to register ignorekeys removal
           menupopup = palette.appendChild(palette.removeChild(menupopup));
 					let searchBox = QI.FindFolderBox;
-					if (typeof menupopup.openPopup == 'undefined')
+					if (typeof menupopup.openPopup == "undefined")
 						menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
 					else
-						menupopup.openPopup(searchBox,'after_start', 0, -1, true, false); 
+						menupopup.openPopup(searchBox,"after_start", 0, -1, true, false); 
             
 					if (event.preventDefault) event.preventDefault();
 					if (event.stopPropagation) event.stopPropagation();
           
 					setTimeout( function() {
 						util.logDebugOptional("interface.findFolder","creating Keyboard Events…");
-						if (menupopup.dispatchEvent(makeEvent('keydown', event.keyCode))) { // event was not cancelled with preventDefault()
+						if (menupopup.dispatchEvent(makeEvent("keydown", event.keyCode))) { // event was not cancelled with preventDefault()
 							util.logDebugOptional("interface.findFolder","keydown event was dispatched.");
 						}
-						if (menupopup.dispatchEvent(makeEvent('keyup', event.keyCode))) { // event was not cancelled with preventDefault()
+						if (menupopup.dispatchEvent(makeEvent("keyup", event.keyCode))) { // event was not cancelled with preventDefault()
 							util.logDebugOptional("interface.findFolder","keyup event was dispatched.");
             }
 					});
@@ -4895,31 +4896,51 @@ QuickFolders.Interface = {
 	} ,
 	
 	hideFindPopup: function hideFindPopup() {
-	  let menupopup = document.getElementById('QuickFolders-FindPopup'),
-		    state = menupopup.getAttribute('state'),
+	  let menupopup = document.getElementById("QuickFolders-FindPopup"),
+		    state = menupopup.getAttribute("state"),
         util = QuickFolders.Util;
     util.logDebugOptional("interface.findFolder","hideFindPopup - menupopup status = " + state);
-		//if (state == 'open' || state == 'showing') 
+		//if (state == "open" || state == "showing")
     try {
 			menupopup.hidePopup();
-		} catch(ex) { util.logException('hideFindPopup', ex); }
+		} catch(ex) { util.logException("hideFindPopup", ex); }
 	} ,
   
   // forceFind - enter key has been pressed, so we want the first match to force a jump
 	findFolderName: function findFolderName(searchBox, forceFind) {
+    // make the abbreviated string for the menu item
 		function buildParentString(folder, parentCount) {
 			let pS = "", // build expanded parent string
-					par = folder.parent;
-			for (let i=parentCount; i>0; i--) {
-				if (!par || par.isServer) break; // do not add server here
-				if (!pS)  {
-					pS = par.prettyName;
-				}
-				else {
-					pS = par.prettyName + '/' + pS;
-				}
-				par = par.parent;
-			}
+					par = folder.parent,
+          countParents = parentCount;
+      if (parentString) { // build a longer string if we needed to skip parent parts.
+        // recalculate the count of parents:
+        let parts = parentString.split(/[\/>]/),
+            p=parts[parts.length]; // get right-most part
+        while (parts.length && par.parent) {
+          if (!pS)  {
+            pS = par.prettyName;
+          }
+          else {
+            pS = par.prettyName + "/" + pS;
+          }  
+          if (par.prettyName.toLocaleLowerCase().startsWith(p))
+            p=parts.pop();
+          par = par.parent;
+        }
+      }
+      else {
+        for (let i=countParents; i>0; i--) {
+          if (!par || par.isServer) break; // do not add server here
+          if (!pS)  {
+            pS = par.prettyName;
+          }
+          else {
+            pS = par.prettyName + "/" + pS;
+          }
+          par = par.parent;
+        }
+      }
 			return pS;
 		}
 
@@ -4947,47 +4968,85 @@ QuickFolders.Interface = {
 			return false;
 		}
 		
+    // folder name match algorithm -at the heart of quickMove / quickJump
 		function addMatchingFolder(matches, folder) {
 			let folderNameSearched = folder.prettyName.toLocaleLowerCase(),
-			    matchPos = folderNameSearched.indexOf(searchString);
-					
+			    matchPos = folderNameSearched.indexOf(searchFolderName),
+          isMatch = false,
+          rank = 0;
+          
+      if (searchFolderName.includes(" ")) { // multi word matching [issue 155]
+        if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
+          return;          // add unless already matched:
+        let sArray = searchFolderName.split(" "),
+            fArray = folderNameSearched.split(/[\-_@+&. ]+/); // use these as possible delimiters
+        while (sArray.length) {
+          let search = sArray.shift(),
+              foundEl = false;
+          if (matches.some( a => (a.uri == folder.URI) )) {
+            return;
+          }
+          for (let i=0; i<fArray.length; i++) {
+            if (fArray[i].startsWith(search)) {
+              if (search == fArray[i])  // full match
+                rank+=7;
+              else
+                rank+=3; // we could also use the length of the string for ranking? or search.length / fArray[i].length  as a percentage
+              fArray[i] = "####"; // blank out element
+              foundEl = true;
+              break;
+            }
+          }
+          if (!foundEl) return;
+        }
+        
+        isMatch = true;
+      }
+      else {
       // add all child folders if "parentName/" entered
-      if (searchString=='' && parentString!='') matchPos = 0;
-			if (matchPos >= 0) {
-				// only add to matches if not already there
-				if (!matches.some( function(a) { return (a.uri == folder.URI); })) {
-					let rank = 1; // searchString.length - folder.prettyName.length;
-					if (searchString.length == folder.prettyName.length) rank += 7;  // full match - promote
-					if (matchPos == 0) rank += 3; // promote the rank if folder name starts with this string
-					if (searchString.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
-						// is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
-						if (" .-,_".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
-							return;  // skip if not starting with single letter
-					}
-					
-					// [Bug 26692] skip if they are flagged for ignoring
-					if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) 
-						return; 
-					
-					let pS = buildParentString(folder, parentCount),
-              maxFindSearch = parentCount || QuickFolders.Preferences.getIntPref("premium.findFolder.maxPathItems"),
-              detail = QuickFolders.Preferences.getIntPref("premium.findFolder.folderPathDetail"),
-              fName = QuickFolders.Interface.folderPathLabel(detail, folder, maxFindSearch);
-					// omit certain folders from quickJump:
-					
-					matches.push( { name:fName, lname:folderNameSearched, uri:folder.URI, rank:rank, type:'folder', folder:folder, parentString: pS } );
-				}
-			}
+        if (searchFolderName=="" && parentString!="") matchPos = 0;
+        if (matchPos >= 0) {
+          // only add to matches if not already there
+          if (!matches.some( function(a) { return (a.uri == folder.URI); })) {
+            rank = 1; // searchString.length - folder.prettyName.length;
+            if (searchFolderName.length == folder.prettyName.length) rank += 7;  // full match - promote
+            if (matchPos == 0) rank += 3; // promote the rank if folder name starts with this string
+            if (searchFolderName.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
+              // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
+              if (" .-,_+&@".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
+                return;  // skip if not starting with single letter
+            }
+
+            // [Bug 26692] skip if they are flagged for ignoring
+            if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
+              return;
+            
+            isMatch = true;
+
+          }
+        }        
+      }
+      if (isMatch) {
+        let pS = buildParentString(folder, parentCount),
+            ct = pS.split("/").length + 1, // count folder parts including final name
+            maxFindSearch = ct || parentCount || QuickFolders.Preferences.getIntPref("premium.findFolder.maxPathItems"),
+            detail = QuickFolders.Preferences.getIntPref("premium.findFolder.folderPathDetail"),
+            fName = QuickFolders.Interface.folderPathLabel(detail, folder, maxFindSearch);
+        // omit certain folders from quickJump:
+
+        matches.push( { name:fName, lname:folderNameSearched, uri:folder.URI, rank:rank, type:"folder", folder:folder, parentString: pS } );
+      }
 		}
+
     
 		// check if any word in foldername string starts with typed characters
     function wordStartMatch(fName, search) {
 			// if search string contains a space just match the whole result rather than breaking up the folder into "words"
-			if (search.indexOf(' ')>0) {
+			if (search.indexOf(" ")>0) {
 				if (fName.indexOf(search)==0) return true;
 			}
 			else {
-				let m = fName.split(' ');
+				let m = fName.split(" ");
 				for (let i=0; i<m.length; i++) {
 					if (m[i].indexOf(search)==0) return true;
 				}
@@ -5001,46 +5060,50 @@ QuickFolders.Interface = {
       if (!search) return true; // ??? should be false?
       let f = folder,
 			    pLevel = 1,
-			    ancestors = search.split("/"),
-					directParent = null;
+			    ancestors = search.split(/[\/>]/), // use / for direct children and allow > for skipping folders (test)
+					firstParent = null,
+          skipParents = searchString.includes(">"); // new syntax for skipping some parents
 					
 			maxLevel = ancestors.length;
       while (f.parent && maxLevel) {
         maxLevel--;
         f = f.parent;
+        // 1st (top level) match
+        if (!firstParent) firstParent = f;
 				
-        // [issue 135] allow in-string search for parents using delimiters: - _ . and space!
-        let folderNameMatches = f.prettyName.toLowerCase().split(/[_ ]/);
+        // [issue 135] allow in-string search for parents using delimiters: _ . and space!
+        let folderNameMatches = f.prettyName.toLowerCase().split(/[_ \.]/);
         // [issue 148] splitting prevents full name to be matched!
         if (folderNameMatches.length>1) {
           folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
         }
         // ignore 1-character matches
         if (folderNameMatches.some(a => a.startsWith(ancestors[maxLevel]) && a.length>1)) {
-					// 1st (top level) match
-					if (!directParent) directParent = f;
 					
 					if (maxLevel == 0 ) {  // direct parent? Add to collection in case we want to create child (slash) // pLevel==1
-						if (parentList.indexOf(directParent)<0)
-							parentList.push(directParent);
+						if (!parentList.includes(firstParent))
+							parentList.push(firstParent);
 						return true;
 					}
 				}
-				else return false;
+				else if (skipParents) {
+          maxLevel++; // no match, stay on this level (this skips the current folder and goes on at the next parent)
+        }
+        else return false; // direct parents only.
 				pLevel++;
       }
       return false;
     }
 		
 		function addIfMatch(folder, search, parentList) {
-			let ancestors = search.split("/"),
+			let ancestors = search.split(/[\/>]/),
 			    maxLevel = ancestors.length,
 					f = folder,
 					directParent = null;
 			while (f && maxLevel) {
 				maxLevel--;
         // [issue 135] allow in-string search for children using delimiters: - _ . and space!
-        let folderNameMatches = f.prettyName.toLowerCase().split(/[-_. ]/);
+        let folderNameMatches = f.prettyName.toLowerCase().split(/[\-_@+&. ]/);
         // [issue 148] splitting prevents full name to be matched!
         if (folderNameMatches.length>1) {
           folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
@@ -5067,13 +5130,15 @@ QuickFolders.Interface = {
           prefs = QuickFolders.Preferences,
           Ci = Components.interfaces,
 					ELLIPSIS = "\u2026".toString(),
-					CHEVRON = "\u00BB".toString();
+					CHEVRON = "\u00BB".toString(),
+          maxResults = prefs.getIntPref("quickMove.maxResults"); // was hard coded to 25
 					
 		let isSelected = false,
 				enteredSearch = searchBox.value,
-	      searchString = enteredSearch.toLocaleLowerCase(),
-        parentString = '',  // effective parent string (using resulting prettyName atoms)
-				enteredParent = ''; // what's entered       
+	      searchString = enteredSearch.toLocaleLowerCase().trim(),
+        searchFolderName = "",
+        parentString = "",  // effective parent string (using resulting prettyName atoms)
+				enteredParent = ""; // what's entered       
     util.logDebug("findFolder (" + searchString + ")");
 		if (!searchString) 
 			return;
@@ -5104,26 +5169,29 @@ QuickFolders.Interface = {
 					continue;
 				// avoid duplicates
 				if (!matches.some( function(a) { return (a.uri == folderEntry.uri); })) {
-					matches.push( { name:folderEntry.name, lname:folderNameSearched, uri:folderEntry.uri, rank: rank, type:'quickFolder' } );
+					matches.push( { name:folderEntry.name, lname:folderNameSearched, uri:folderEntry.uri, rank: rank, type:"quickFolder" } );
 				}
 			}
 		}
 		// SLASH command - list child folders !
-    let parentPos = searchString.lastIndexOf('/'),
+    let parentPos = Math.max(searchString.lastIndexOf("/"), searchString.lastIndexOf(">")),
 		    parentCount = 0;  // default
     if (parentPos>0) { // we have a parent folder
       enteredParent = searchString.substr(0, parentPos);
  			parentString = enteredParent;
-      searchString = searchString.substr(parentPos+1);
+      searchFolderName = searchString.substr(parentPos+1);
 			enteredSearch = enteredSearch.substr(parentPos+1); // original mixed case for subfolder creation; include placeholder for account
-			parentCount = parentString.split("/").length + 1; // original entry for parent
+			parentCount = parentString.split(/[\/>]/).length + 1; // original entry for parent
     }
-		let isFiling = QuickFolders.quickMove.isActive;
+    else 
+      searchFolderName = searchString;
+    
+		const isFiling = QuickFolders.quickMove.isActive;
 
     // if quickMove is active we need to suppress matches from newsgroups (as we can't move mail to them)
 		// "parent/" no name given, only lists the direct children
 		// "parent/X" can it list grandchildren? It does, but shouldn't - test with "Addons/Qu"
-    let maxParentLevel = searchString.length ? prefs.getIntPref('premium.findFolder.maxParentLevel') : 1; 
+    let maxParentLevel = searchFolderName.length ? prefs.getIntPref("premium.findFolder.maxParentLevel") : 1; 
 		if (parentPos>0) maxParentLevel = 1; // no subfolders when SLASH is entered
 		
 		// multiple slashes?
@@ -5140,7 +5208,7 @@ QuickFolders.Interface = {
 		util.logDebugOptional("interface.findFolder", "built list: " + matches.length + " matches found. Building menu…");
 		
 		// rebuild popup
-		let menupopup, txtDebugMenu = '';
+		let menupopup, txtDebugMenu = "";
 		if (true) {
 			matches.sort(function (a,b) { 
         if (b.rank - a.rank == 0) 
@@ -5161,18 +5229,18 @@ QuickFolders.Interface = {
 				menupopup.removeChild(menupopup.firstChild);
 		  if (matches.length) {
 				// restrict results to 25
-				let count = Math.min(matches.length,25);
+				let count = Math.min(matches.length, maxResults);
 				for (let j=0; j<count; j++) {
-					let menuitem = this.createIconicElement('menuitem','*');
-					// menuitem.className='color menuitem-iconic';
-					menuitem.setAttribute('label', matches[j].name);
-					menuitem.setAttribute('value', matches[j].uri);
-					if (matches[j].type == 'quickFolder')
-						menuitem.className = 'quickFolder menuitem-iconic';
+					let menuitem = this.createIconicElement("menuitem","*");
+					// menuitem.className="color menuitem-iconic";
+					menuitem.setAttribute("label", matches[j].name);
+					menuitem.setAttribute("value", matches[j].uri);
+					if (matches[j].type == "quickFolder")
+						menuitem.className = "quickFolder menuitem-iconic";
           else
-            menuitem.className = 'menuitem-iconic';
+            menuitem.className = "menuitem-iconic";
 					if (matches[j].parentString)
-						menuitem.setAttribute('parentString', matches[j].parentString);
+						menuitem.setAttribute("parentString", matches[j].parentString);
 					menupopup.appendChild(menuitem);
 				}
 			}
@@ -5181,8 +5249,8 @@ QuickFolders.Interface = {
 		
 		// special commands: if slash was entered, allow creating subfolders. Exclude _old_ Postbox.
 		if (parentPos>0 && 
-		    (util.Application!='Postbox' ||
-				 util.Application=='Postbox' && typeof Task === 'object')
+		    (util.Application!="Postbox" ||
+				 util.Application=="Postbox" && typeof Task === "object")
 				) {
 			util.logDebugOptional("interface.findFolder", "/ entered, build create subfolder entries.");
 			// [Bug 26283] add matches from quickfolders (if named differently)
@@ -5199,7 +5267,7 @@ QuickFolders.Interface = {
 				}
 					
 				// 
-				if (matchPos == 0 && prefs.isDebugOption('quickMove')) debugger;			
+				if (matchPos == 0 && prefs.isDebugOption("quickMove")) debugger;			
 				if (matchPos == 0
 				   &&
 				   !parents.some(function(p) { return p.URI == folderEntry.uri; } )) {  // function to replace p => p.uri == folderEntry.uri - Postbox can't understand this.
@@ -5210,22 +5278,22 @@ QuickFolders.Interface = {
 				}
 			}
 			
-			let isInsertNewFolderTop = prefs.getBoolPref('quickMove.createFolderOnTop');
+			let isInsertNewFolderTop = prefs.getBoolPref("quickMove.createFolderOnTop");
 			if (parents.length)			
 				util.logDebugOptional("interface.findFolder", "/ create subfolder entries ");
 
-			// create new subfolder case
-			while (parents.length) {
+			// create new subfolder case - let's omit for ">" case for now
+      if (!searchString.includes(">")) while (parents.length) {
 				
 				let f = parents.pop();
 				
-				if (util.doesMailUriExist(f.URI + "/" + enteredSearch))
+				if (util.doesMailUriExist(f.URI + "/" + enteredSearch.replace(">","/")))
 					continue; // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
 				if (matches.length &&
-					  matches[0].uri.toLocaleLowerCase() == (f.URI + "/" + enteredSearch).toLocaleLowerCase())
+					  matches[0].uri.toLocaleLowerCase() == (f.URI + "/" + enteredSearch.replace(">","/")).toLocaleLowerCase())
 					continue; // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
-				let menuitem = this.createIconicElement('menuitem','*'),
-				    label = this.getUIstring('qfNewSubFolder', 'Create subfolder {0} ' + CHEVRON + ' {1}' + ELLIPSIS);
+				let menuitem = this.createIconicElement("menuitem","*"),
+				    label = this.getUIstring("qfNewSubFolder", "Create subfolder {0} " + CHEVRON + " {1}" + ELLIPSIS);
 						
 				let pc = parentCount,
 				    parFld = "",
@@ -5238,26 +5306,26 @@ QuickFolders.Interface = {
 					  parentString = atom.prettyName;
 					}
 					else {
-						parFld = atom.prettyName + ' ' + CHEVRON + ' ' + parFld; // prepend ancestor
-					  parentString = atom.prettyName + '/' + parentString;
+						parFld = atom.prettyName + " " + CHEVRON + " " + parFld; // prepend ancestor
+					  parentString = atom.prettyName + "/" + parentString;
 					}
 					pc--;
 				}
-				let theLabel = label.replace('{0}', f.rootFolder.name + ": " + parFld).replace('{1}', enteredSearch);
-				menuitem.setAttribute('label', theLabel);
-				if (prefs.isDebugOption('quickMove'))
+				let theLabel = label.replace("{0}", f.rootFolder.name + ": " + parFld).replace("{1}", enteredSearch);
+				menuitem.setAttribute("label", theLabel);
+				if (prefs.isDebugOption("quickMove"))
 					txtDebugMenu = txtDebugMenu + "menuItem: " + theLabel.padEnd(20, " ") + " - parentString:" + parentString + "\n";
 				
-				menuitem.setAttribute('parentString', parentString); // remember parent string in menu item (easiest)
-				menuitem.addEventListener('command', function(event) { 
+				menuitem.setAttribute("parentString", parentString); // remember parent string in menu item (easiest)
+				menuitem.addEventListener("command", function(event) {
 						QuickFolders.Interface.onCreateInstantFolder(f, enteredSearch); 
 						return false; 
 					}, false
 				);
-				menuitem.className = 'menuitem-iconic deferred'; // use 'deferred' to avoid selectFound handler
+				menuitem.className = "menuitem-iconic deferred"; // use "deferred" to avoid selectFound handler
 				if (f.getStringProperty("isQuickFolder")) {
 					f.setStringProperty("isQuickFolder", ""); // remove this temporary property
-					menuitem.classList.add('quickFolder');
+					menuitem.classList.add("quickFolder");
 				}
 				
 				if (menupopup.firstChild && isInsertNewFolderTop)
@@ -5267,16 +5335,16 @@ QuickFolders.Interface = {
 			}
 
 			if (!menupopup.childElementCount) {
-				let menuitem = this.createIconicElement('menuitem','*'),
+				let menuitem = this.createIconicElement("menuitem","*"),
             noMatchWrn = util.getBundleString("qfNoFolderMatch", "No matching parent folders!");
-				menuitem.setAttribute('label', noMatchWrn); // just one dummy to show we were searching
+				menuitem.setAttribute("label", noMatchWrn); // just one dummy to show we were searching
 				menuitem.setAttribute("tag", "dummy");
 				menupopup.appendChild(menuitem);
 			}
 		}
 		
 		if (txtDebugMenu) {
-			util.logDebugOptional('quickMove', txtDebugMenu);
+			util.logDebugOptional("quickMove", txtDebugMenu);
 		}
 		if (menupopup.childElementCount>1) {
 			// remove dummy!
@@ -5288,15 +5356,15 @@ QuickFolders.Interface = {
 		}
 		util.logDebugOptional("interface.findFolder", "showPopup:");
 		
-		menupopup.setAttribute('ignorekeys', 'true');
-		if (typeof menupopup.openPopup == 'undefined')
+		menupopup.setAttribute("ignorekeys", "true");
+		if (typeof menupopup.openPopup == "undefined")
 			menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
 		else
-			menupopup.openPopup(searchBox,'after_start', 0, -1,true,false);  // ,evt
+			menupopup.openPopup(searchBox,"after_start", 0, -1,true,false);  // ,evt
 		                           //                v-- [Bug 26665] support VK_ENTER even with multiple matches
 		if (matches.length == 1 || (matches.length>0 && forceFind) ) { 
-			util.logDebugOptional('quickMove', forceFind ? 'Enter key forces match' : 'single match found…');
-      if (wordStartMatch(matches[0].lname, searchString) && forceFind) {
+			util.logDebugOptional("quickMove", forceFind ? "Enter key forces match" : "single match found…");
+      if (wordStartMatch(matches[0].lname, searchFolderName) && forceFind) {
 				let finalURI = matches[0].uri;
 				if (!isFiling) {
 					// go to folder
@@ -5350,12 +5418,12 @@ QuickFolders.Interface = {
 	// should be passed on to the (parent) search box
 	foundInput: function foundInput(element, event) {
 		QuickFolders.Util.logDebug("foundInput - " + event);
-		element.setAttribute('ignorekeys', 'true');
+		element.setAttribute("ignorekeys", "true");
 	} ,
 	
 	findPopupBlur: function findPopupBlur(el, event) {
 		QuickFolders.Util.logDebug("findPopupBlur - " + event);
-		el.setAttribute('ignorekeys', 'true');
+		el.setAttribute("ignorekeys", "true");
 	} ,
 	
 	selectFound: function selectFound(element, event) {
@@ -5363,30 +5431,30 @@ QuickFolders.Interface = {
 		      QI = QuickFolders.Interface;
 		util.logDebug("selectFound - " + event);
 	  let el = event.target,
-		    URI = el.getAttribute('value'),
+		    URI = el.getAttribute("value"),
         isSelected,
         /**************  New quickMove Functionality  **************/
         isQuickMove = (QuickFolders.quickMove.isActive);
 		// this was a separate command which is handled elsewhere
-		if (el.classList.contains('deferred')) return;
-		element.setAttribute('ignorekeys', 'true');
-    util.logDebugOptional('quickMove', 'QuickFolders.quickMove.isActive = ' + isQuickMove);
+		if (el.classList.contains("deferred")) return;
+		element.setAttribute("ignorekeys", "true");
+    util.logDebugOptional("quickMove", "QuickFolders.quickMove.isActive = " + isQuickMove);
 		let searchTerm = QI.FindFolderBox.value,
-		    slashPos = searchTerm.indexOf('/'),
+		    slashPos = searchTerm.indexOf("/"),
 		    parentName = "";
 		if (slashPos>0) {
 			// determine name of parent folder
 			let target = QuickFolders.Model.getMsgFolderFromUri(URI),
-			    ps = el.getAttribute('parentString') || target.parent.name;
+			    ps = el.getAttribute("parentString") || target.parent.name;
 			parentName = ps;
 		}
     if (isQuickMove) { 
-			util.logDebugOptional('quickMove','selectFound: quickMove execute(\n' + URI + '\n[, parent: ' + parentName + '])');
+			util.logDebugOptional("quickMove","selectFound: quickMove execute(\n" + URI + "\n[, parent: " + parentName + "])");
       QuickFolders.quickMove.execute(URI, parentName); // folder.uri
       return;
     } /**************  quickMove End  **************/
     else {
-			util.logDebugOptional('quickMove','selectFound: quickMove End…');
+			util.logDebugOptional("quickMove","selectFound: quickMove End…");
       isSelected = QuickFolders_MySelectFolder(URI, true);
 			QuickFolders.quickMove.rememberLastFolder(URI, parentName);
 		}
@@ -5395,17 +5463,16 @@ QuickFolders.Interface = {
       this.findFolder(false);
 		}
 		else {
-			if (el.classList.contains('quickFolder')) {
+			if (el.classList.contains("quickFolder")) {
 				// this.correctFolderEntry(URI);
 				// in case we have deleted the QuickFolders (which QuickFolders_MySelectFolder allows now)
 				// we refresh the popup:
-				//  /////// this.findFolderName(document.getElementById('QuickFolders-FindFolder'));
+				//  /////// this.findFolderName(document.getElementById("QuickFolders-FindFolder"));
 				this.findFolder(false);
 				this.hideFindPopup();
 			}
 			else { // this should not happen as we have found it from the folder tree!
-				//alert('could not find folder!');
-				Services.prompt.alert(null,"QuickFolders",'could not find folder!');
+				Services.prompt.alert(null,"QuickFolders","could not find folder!");
 				this.findFolder(false);
 				this.hideFindPopup();
 			}
@@ -5413,8 +5480,8 @@ QuickFolders.Interface = {
 	} ,
   
 	correctFolderEntry: function correctFolderEntry(URI) {
-		let confirmationText = 'could not find this QuickFolder! The URL might be invalid - this can be caused by moving parent folders.\n'
-			+ 'Do you want to correct this manually?',
+		let confirmationText = "could not find this QuickFolder! The URL might be invalid - this can be caused by moving parent folders.\n"
+			+ "Do you want to correct this manually?",
 		    inputText = URI,		
 		    result = window.prompt(confirmationText, inputText);
 		switch(result) {
@@ -5440,15 +5507,14 @@ QuickFolders.Interface = {
 						this.updateFolders(true, true);
 					}
 					else {
-						//alert('Could not find that path either!');
-						Services.prompt.alert(null,"QuickFolders",'Could not find that path either!');
+						Services.prompt.alert(null,"QuickFolders","Could not find that path either!");
 					}
 				}
 				break;
 		}
 	} ,
 
-  // actionType - 'quickMove' or 'quickJump'. Empty when used for disabling the find / jump method
+  // actionType - "quickMove" or "quickJump". Empty when used for disabling the find / jump method
 	findFolder: function findFolder(show, actionType) {
     let util = QuickFolders.Util,
         QI = QuickFolders.Interface,
@@ -5461,7 +5527,7 @@ QuickFolders.Interface = {
 			if (show) {
 				if (actionType) {
 					util.popupProFeature(actionType); // Pro Version Notification
-          let isMove = (actionType == 'quickMove');
+          let isMove = (actionType == "quickMove");
           QI.toggleMoveModeSearchBox(isMove);
           if (isMove && QuickMove.suspended) {
             QuickMove.toggleSuspendMove(); // undo suspend
@@ -5469,9 +5535,9 @@ QuickFolders.Interface = {
 				}
         QI.updateFindBoxMenus(show);
         
-				let autofill = (ff.value == "") && util.hasPremiumLicense(false) && prefs.getBoolPref('quickMove.autoFill');
+				let autofill = (ff.value == "") && util.hasPremiumLicense(false) && prefs.getBoolPref("quickMove.autoFill");
 				if (autofill) {
-					ff.value = prefs.getStringPref('quickMove.lastFolderName'); // should [ESC] delete contents?
+					ff.value = prefs.getStringPref("quickMove.lastFolderName"); // should [ESC] delete contents?
 					ff.select();
 				}
 				ff.focus();
@@ -5518,11 +5584,11 @@ QuickFolders.Interface = {
 	viewOptions: function viewOptions(selectedTab, updateMessage) {
 		let params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null},
         //  in linux the first alwaysRaised hides the next child (config dialogs)
-        features = (QuickFolders.Util.HostSystem == 'linux') ?
-          'chrome,titlebar,centerscreen,resizable,dependent,instantApply' :
-          'chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',
-		    win = window.openDialog('chrome://quickfolders/content/options.xul',
-          'quickfolders-options',
+        features = (QuickFolders.Util.HostSystem == "linux") ?
+          "chrome,titlebar,centerscreen,resizable,dependent,instantApply" :
+          "chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply",
+		    win = window.openDialog("chrome://quickfolders/content/options.xul",
+          "quickfolders-options",
           features,
           QuickFolders,
           params).focus();
@@ -5530,24 +5596,24 @@ QuickFolders.Interface = {
 
 	viewHelp: function viewHelp() {
 		let params = {inn:{mode:"helpOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
-		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
+		window.openDialog("chrome://quickfolders/content/options.xul","quickfolders-options","chrome,titlebar,centerscreen,resizable,alwaysRaised ",QuickFolders,params).focus();
 	} ,
 
 	viewSupport: function viewSupport() {
 		let params = {inn:{mode:"supportOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
-		window.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
+		window.openDialog("chrome://quickfolders/content/options.xul","quickfolders-options","chrome,titlebar,centerscreen,resizable,alwaysRaised ",QuickFolders,params).focus();
 	} ,
   
   viewLicense: function viewLicense() {
 		let win = QuickFolders.Util.getMail3PaneWindow(),
         params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: win.QuickFolders}, out:null};
         
-    win.openDialog('chrome://quickfolders/content/options.xul','quickfolders-options','chrome,titlebar,centerscreen,resizable,alwaysRaised ',QuickFolders,params).focus();
+    win.openDialog("chrome://quickfolders/content/options.xul","quickfolders-options","chrome,titlebar,centerscreen,resizable,alwaysRaised ",QuickFolders,params).focus();
   } ,
 
 	viewChangeOrder: function viewChangeOrder() {
-		window.openDialog('chrome://quickfolders/content/change-order.xul','quickfolders-change-order',
-						  'chrome,titlebar,centerscreen,resizable,dependent', QuickFolders); // dependent = modeless
+		window.openDialog("chrome://quickfolders/content/change-order.xul","quickfolders-change-order",
+						  "chrome,titlebar,centerscreen,resizable,dependent", QuickFolders); // dependent = modeless
 	} ,
 
   lastTabSelected: null,
@@ -5570,16 +5636,16 @@ QuickFolders.Interface = {
         info = util.getTabInfoByIndex(tabmail, idx),
         tabMode = util.getTabMode(info);  // tabs[idx]
     // single message mode    
-    if (tabMode == 'message') {
+    if (tabMode == "message") {
       let msg;
       switch (util.Application) {
-        case 'Postbox': 
+        case "Postbox": 
           msg = info._msgHdr;
           break;
-        case 'Thunderbird': 
+        case "Thunderbird": 
           msg = info.messageDisplay.displayedMessage
           break;
-        case 'SeaMonkey':
+        case "SeaMonkey":
           msg = info.msgSelectedFolder;
           break;
       }      
@@ -5600,7 +5666,7 @@ QuickFolders.Interface = {
       folder = info.folderDisplay.view.displayedFolder
     else   // Postbox
       folder = GetFirstSelectedMsgFolder();
-    QuickFolders.Util.logDebugOptional("mailTabs", "getCurrentTabMailFolder() returns: " + (folder ? folder.prettyName : 'n/a'));
+    QuickFolders.Util.logDebugOptional("mailTabs", "getCurrentTabMailFolder() returns: " + (folder ? folder.prettyName : "n/a"));
     return folder;
   }, 
   
@@ -5613,7 +5679,7 @@ QuickFolders.Interface = {
 				prefs = QuickFolders.Preferences; // let's not use _this_ in an event function
 		try  {
 			// avoid TB logging unnecessary errors in Stack Trace
-			if ((util.Application == 'Thunderbird') && !gFolderTreeView )
+			if ((util.Application == "Thunderbird") && !gFolderTreeView )
 				return;
       
       // used to be: GetFirstSelectedMsgFolder() - but doesn't work in Sm
@@ -5626,8 +5692,8 @@ QuickFolders.Interface = {
         folder = QI.getCurrentTabMailFolder();
       
       util.logDebugOptional("interface", "onTabSelected("  
-			  + (forceButton || '') + ")\n folder = " 
-				+ (folder ? folder.prettyName : '<none>'));
+			  + (forceButton || "") + ")\n folder = "
+				+ (folder ? folder.prettyName : "<none>"));
 		}
 		catch (e) { 
 		  util.logException("onTabSelected", e);
@@ -5664,7 +5730,7 @@ QuickFolders.Interface = {
 				button.className = button.className.replace(/(col[0-9]+)/,"$1striped");
 
 			button.className = button.className.replace(/\s*selected-folder/,"");
-			// button.className = button.className.replace(/(cActive[0-9]+)/,''); // remove active coloring
+			// button.className = button.className.replace(/(cActive[0-9]+)/,""); // remove active coloring
 			// remove "selected" attribute of tab look
 			if (button.hasAttribute("selected"))
 				button.removeAttribute("selected");
@@ -5708,10 +5774,10 @@ QuickFolders.Interface = {
     QI.lastTabSelected = folder;
     
 		// single message window:
-		if (prefs.isShowCurrentFolderToolbar('messageWindow')) {
+		if (prefs.isShowCurrentFolderToolbar("messageWindow")) {
 			let singleMessageWindow = util.getSingleMessageWindow();
 			if (singleMessageWindow && singleMessageWindow.gMessageDisplay && singleMessageWindow.gMessageDisplay.displayedMessage) {
-				let singleMessageCurrentFolderTab = singleMessageWindow.document.getElementById('QuickFoldersCurrentFolder');
+				let singleMessageCurrentFolderTab = singleMessageWindow.document.getElementById("QuickFoldersCurrentFolder");
 				QI.initCurrentFolderTab(singleMessageCurrentFolderTab, singleMessageWindow.gMessageDisplay.displayedMessage.folder);
 			}
 		}
@@ -5723,17 +5789,17 @@ QuickFolders.Interface = {
         tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode,
         rect0 = currentFolderTab.getBoundingClientRect();
     // move current folder BAR up if necessary!
-    if (util.Application != 'Thunderbird') return; // only in Tb we have the conversation view addon
+    if (util.Application != "Thunderbird") return; // only in Tb we have the conversation view addon
     
     util.logDebugOptional("interface.currentFolderBar", "hoistCurrentFolderBar(tabMode: " + tabMode + ")");
     
     if (!rect0.width && 
-        (tabMode=='message' || tabMode=='folder' || tabMode=='3pane'))
+        (tabMode=="message" || tabMode=="folder" || tabMode=="3pane"))
     {
       let panel = currentFolderTab.parentNode,
           found = false;
       while (panel) {
-        if (panel.id && panel.id.indexOf('QuickFolders-PreviewToolbarPanel')==0) {
+        if (panel.id && panel.id.indexOf("QuickFolders-PreviewToolbarPanel")==0) {
           found=true;
           break;
         }
@@ -5743,12 +5809,12 @@ QuickFolders.Interface = {
         // now we got the toolbar panel let us move the whole lot
         let rect = panel.getBoundingClientRect();
         if (!rect.width) {
-          QuickFolders.Util.logDebug('Parent panel {' + panel.id + '} is not on screen; moving current folder button for tabMode: ' + tabMode);
+          QuickFolders.Util.logDebug("Parent panel {" + panel.id + "} is not on screen; moving current folder button for tabMode: " + tabMode);
           if (panel.id) {
 /*            
             // find multimessage browser element and check if it is visible
             // parent of visible toolbar
-            let multimessage = document.getElementById('multimessage'),
+            let multimessage = document.getElementById("multimessage"),
                 isMulti = false;
             if (multimessage) {
               let rect2 = multimessage.getBoundingClientRect();
@@ -5760,7 +5826,7 @@ QuickFolders.Interface = {
               multimessage.parentNode.insertBefore(panel, multimessage);
             }
             else {
-              let msgHeaderView = document.getElementById('msgHeaderView');
+              let msgHeaderView = document.getElementById("msgHeaderView");
               if (msgHeaderView) {
                 // msgHeaderView.nextSibling would be msgNotificationBar
                 msgHeaderView.parentNode.insertBefore(panel, msgHeaderView.nextSibling);
@@ -5790,7 +5856,7 @@ QuickFolders.Interface = {
 		      prefs = QuickFolders.Preferences;
     try {
       let tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode;
-      util.logDebugOptional("interface.currentFolderBar", 'initCurrentFolderTab(' + (folder ? folder.prettyName : 'null') + ')\n'
+      util.logDebugOptional("interface.currentFolderBar", "initCurrentFolderTab(" + (folder ? folder.prettyName : "null") + ")\n"
                             + "tabMode: " + tabMode);
       this.hoistCurrentFolderBar(currentFolderTab, tabInfo);
       
@@ -5799,7 +5865,7 @@ QuickFolders.Interface = {
         if (selectedButton) {
           currentFolderTab.className = selectedButton.className; // else : "icon";
         }
-        QuickFolders.Interface.addFolderButton(folder, entry, -1, currentFolderTab, 'QuickFoldersCurrentFolder', prefs.ColoredTabStyle, true, false);
+        QuickFolders.Interface.addFolderButton(folder, entry, -1, currentFolderTab, "QuickFoldersCurrentFolder", prefs.ColoredTabStyle, true, false);
         if (QuickFolders.FolderTree && this.CurrentFolderRemoveIconBtn) {
           if (!prefs.supportsCustomIcon) {
             this.CurrentFolderSelectIconBtn.collapsed = true;
@@ -5807,7 +5873,7 @@ QuickFolders.Interface = {
           }
           else {
             let hasIcon = 
-              prefs.getBoolPref('currentFolderBar.folderTreeIcon')
+              prefs.getBoolPref("currentFolderBar.folderTreeIcon")
               ? QuickFolders.FolderTree.addFolderIconToElement(currentFolderTab, folder)  // add icon from folder tree
               : QuickFolders.FolderTree.hasTreeItemFolderIcon(folder);
             this.CurrentFolderRemoveIconBtn.collapsed = !hasIcon;
@@ -5838,22 +5904,22 @@ QuickFolders.Interface = {
         currentFolderTab.setAttribute("tooltiptext", "");
       }
       
-      let currentFolderId = 'QuickFolders-folder-popup-currentFolder';
+      let currentFolderId = "QuickFolders-folder-popup-currentFolder";
       //if (!currentFolderTab.ownerDocument.getElementById(currentFolderId))
       //  QuickFolders.Interface.addPopupSet(currentFolderId, folder, null, -1, currentFolderTab);
       currentFolderTab.className = currentFolderTab.className.replace("striped", "");
       currentFolderTab.classList.remove("selected-folder");
     }
     catch(ex) {
-      util.logException("Quickfolders.initCurrentFolderTab()", ex);
+      util.logException("Quickfolders.Interface.initCurrentFolderTab()", ex);
     }
     
 	} ,
 
   configureCategory: function configureCategory(folder, quickfoldersPointer) {
 		let retval = {btnClicked:null};
-		window.openDialog('chrome://quickfolders/content/set-folder-category.xul',
-			'quickfolders-set-folder-category','chrome,titlebar,toolbar,centerscreen,modal=no,resizable,alwaysRaised', quickfoldersPointer, folder,retval);
+		window.openDialog("chrome://quickfolders/content/set-folder-category.xul",
+			"quickfolders-set-folder-category","chrome,titlebar,toolbar,centerscreen,modal=no,resizable,alwaysRaised", quickfoldersPointer, folder,retval);
 		if (retval.btnClicked!=null)
 			QuickFolders.Model.update();
   } ,
@@ -5866,15 +5932,15 @@ QuickFolders.Interface = {
   removeFromCategory: function removeFromCategory(element) {
     let folderButton = QuickFolders.Util.getPopupNode(element),
         entry = QuickFolders.Model.getButtonEntry(folderButton),
-        cats = entry.category.split('|'),
-        newC = '',
+        cats = entry.category.split("|"),
+        newC = "",
         removeAlwaysShow = false;
     // see if it is set to "show always" and show a prompt allowing to remove
     if (cats.indexOf(QuickFolders.FolderCategory.ALWAYS) >= 0) {
       let promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),
           text = QuickFolders.Util.getBundleString("qfRemoveCategoryPrompt","The category is '{1}'\n" + "Remove that?");
       text = text.replace("{1}", QuickFolders.Util.getBundleString("qfShowAlways","Show Always!"));
-      if (promptService.confirm(window, 'QuickFolders', text))
+      if (promptService.confirm(window, "QuickFolders", text))
         removeAlwaysShow = true;
     }
     
@@ -5882,7 +5948,7 @@ QuickFolders.Interface = {
     for (let i=0; i<cats.length; i++) {
       if (cats[i].trim() == this.currentActiveCategories.trim()) continue;
       if (removeAlwaysShow && cats[i].trim() == QuickFolders.FolderCategory.ALWAYS) continue;
-      newC += (newC.length ? '|' : '') + cats[i];
+      newC += (newC.length ? "|" : "") + cats[i];
     }
     entry.category = newC;
     QuickFolders.Model.update();
@@ -5892,16 +5958,16 @@ QuickFolders.Interface = {
 		//let sColFolder = (tabStyle == 0) ? "chrome://quickfolders/skin/striped" : "chrome://quickfolders/skin/cols";
 		let tabStyle = QuickFolders.Preferences.ColoredTabStyle;
 		
-		return 'col'+col+ 
-				((tabStyle == QuickFolders.Preferences.TABS_STRIPED && !noStripe) ? 'striped' : '');
+		return "col"+col+
+				((tabStyle == QuickFolders.Preferences.TABS_STRIPED && !noStripe) ? "striped" : "");
 	} ,
 	
 	getButtonColor: function getButtonColor(button) {
 		let cssClass = button.className,
-		    rClasses=cssClass.split(' ');
+		    rClasses=cssClass.split(" ");
 		for (let j=0; j<rClasses.length; j++) {
 			// determine number from string, e.g. col1striped or col1
-			let f = rClasses[j].indexOf('col');
+			let f = rClasses[j].indexOf("col");
 			if (f>=0)
 				return parseInt(rClasses[j].substr(f+3), 10);
 		}
@@ -5914,12 +5980,12 @@ QuickFolders.Interface = {
 			return false;
 		let folderLabel = button.getAttribute("label"), // fixes disappearing colors on startup bug
 		    cssClass = button.className,
-		    newclass = '',
-	      rClasses=cssClass.split(' ');
+		    newclass = "",
+	      rClasses=cssClass.split(" ");
 		for (let j=0; j<rClasses.length; j++) {
 			// strip previous style
-			if (rClasses[j].indexOf('col')<0)
-				newclass+=rClasses[j] + ' ';
+			if (rClasses[j].indexOf("col")<0)
+				newclass+=rClasses[j] + " ";
 		}
 
 		newclass += this.getButtonColorClass(col, dontStripe);
@@ -5934,7 +6000,7 @@ QuickFolders.Interface = {
 			return;
       
 		let paletteToken = 
-      isUncolored ? this.getPaletteClass('InactiveTab') : this.getPaletteClass('ColoredTab'); // QuickFolders.Preferences.isPastelColors;
+      isUncolored ? this.getPaletteClass("InactiveTab") : this.getPaletteClass("ColoredTab"); // QuickFolders.Preferences.isPastelColors;
      
     /* element needs to get custom Palette attribute from model entry */
     if (element.folder || (targetElement && targetElement.folder)) {
@@ -5949,7 +6015,7 @@ QuickFolders.Interface = {
 			"initElementPaletteClass(element: " + (element.id ? element.id : element.tagName) +
 			"\ntarget: "
 			+ (targetElement ? 
-			   (targetElement.label ? targetElement.label : targetElement.tagName) : 'none') 
+			   (targetElement.label ? targetElement.label : targetElement.tagName) : "none")
 			+ ")  paletteClass = {" + paletteToken + "}");
 		
 		// remove palette name(s)
@@ -5972,21 +6038,21 @@ QuickFolders.Interface = {
 			col = this.getButtonColor(paintButton);
 
 		this.setButtonColor(paintButton, col, false);    // let's allow striping
-		this.initElementPaletteClass(paintButton, '', (col=='0'));       // palette -> Button
+		this.initElementPaletteClass(paintButton, "", (col=="0"));       // palette -> Button
 		this.initElementPaletteClass(this.PalettePopup); // palette -> popup
 		// striped
-		if (QuickFolders.Preferences.ColoredTabStyle == QuickFolders.Preferences.TABS_STRIPED && paintButton.className.indexOf('striped')<0)
-			paintButton.className = paintButton.className.replace(/(col[0-9]+)/,'$1striped');
+		if (QuickFolders.Preferences.ColoredTabStyle == QuickFolders.Preferences.TABS_STRIPED && paintButton.className.indexOf("striped")<0)
+			paintButton.className = paintButton.className.replace(/(col[0-9]+)/,"$1striped");
 		// filled
-		if (QuickFolders.Preferences.ColoredTabStyle != QuickFolders.Preferences.TABS_STRIPED && paintButton.className.indexOf('striped')>0)
-			paintButton.className = paintButton.className.replace('striped','');
+		if (QuickFolders.Preferences.ColoredTabStyle != QuickFolders.Preferences.TABS_STRIPED && paintButton.className.indexOf("striped")>0)
+			paintButton.className = paintButton.className.replace("striped","");
 			
 		// initialize hover color
 		// ==> must become palette type aware as well!
     if (this.PaintModeActive) {
       this.initHoverStyle(
-               this.getStyleSheet(QuickFolders.Styles, 'quickfolders-layout.css', "QuickFolderStyles"), 
-               this.getStyleSheet(QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, 'QuickFolderPalettes'),
+               this.getStyleSheet(QuickFolders.Styles, "quickfolders-layout.css", "QuickFolderStyles"),
+               this.getStyleSheet(QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes"),
                true);
     }
 	} ,
@@ -6003,53 +6069,53 @@ QuickFolders.Interface = {
 		while (!parent.folder && parent.parentNode) {
 			parent=parent.parentNode;
 			switch(parent.id) {
-				case 'QuickFolders-Palette': // fall through
-				case 'QuickFolders-PalettePopup':
+				case "QuickFolders-Palette": // fall through
+				case "QuickFolders-PalettePopup":
 					// paint the paintBucketButton
 					this.setPaintButtonColor(col);
 					return;
-				default:  // 'QuickFolders-Options-PalettePopup' etc.
-				  if (parent.id.indexOf('QuickFolders-Options-')<0) 
+				default:  // "QuickFolders-Options-PalettePopup" etc.
+				  if (parent.id.indexOf("QuickFolders-Options-")<0)
 						continue;  // 
 					// options dialog case: parent is menupopup
-					//   showPopup should have set this as 'targetNode'
+					//   showPopup should have set this as "targetNode"
 					let targetNode = parent.targetNode;
 					// now paint the button
 				  options.preparePreviewTab(null, null, targetNode.id, col); // [Bug 25589]
 				  //options.preparePreviewPastel(prefs.getBoolPref('pastelColors'));
 					//   retrieve about config key to persist setting;
-					let styleKey =  targetNode.getAttribute('stylePrefKey'),
-				      stylePref = 'style.' + styleKey + '.',
-              userStyleKey = (styleKey == 'DragOver') ? 'DragTab' : styleKey; // fix naming inconsistency
+					let styleKey =  targetNode.getAttribute("stylePrefKey"),
+				      stylePref = "style." + styleKey + ".",
+              userStyleKey = (styleKey == "DragOver") ? "DragTab" : styleKey; // fix naming inconsistency
 				  if (stylePref)
-					  prefs.setIntPref(stylePref + 'paletteEntry', col);
+					  prefs.setIntPref(stylePref + "paletteEntry", col);
 					
 					// special rule: if this is the Active Tab Color, let's also determine the active BG (bottom pixel of gradient!)
 					let paletteClass = this.getPaletteClassCss(styleKey),
-					    ruleName = '.quickfolders-flat ' + paletteClass + '.col' + col,
+					    ruleName = ".quickfolders-flat " + paletteClass + ".col" + col,
 					    engine = QuickFolders.Styles,
-              disableColorChangeStriped = (styleKey=='InactiveTab' && prefs.ColoredTabStyle==prefs.TABS_STRIPED);
-					ssPalettes = ssPalettes ? ssPalettes : this.getStyleSheet(engine, QI.PaletteStyleSheet, 'QuickFolderPalettes');
-					let colPickId = '',
-					    selectedFontColor = engine.getElementStyle(ssPalettes, ruleName, 'color'),
+              disableColorChangeStriped = (styleKey=="InactiveTab" && prefs.ColoredTabStyle==prefs.TABS_STRIPED);
+					ssPalettes = ssPalettes ? ssPalettes : this.getStyleSheet(engine, QI.PaletteStyleSheet, "QuickFolderPalettes");
+					let colPickId = "",
+					    selectedFontColor = engine.getElementStyle(ssPalettes, ruleName, "color"),
 					    previewTab;
 					if (selectedFontColor !== null) {
 						switch(styleKey) {
-							case 'DragOver':
-							  previewTab = 'dragovertabs-label';
-								colPickId = 'dragover-fontcolorpicker';
+							case "DragOver":
+							  previewTab = "dragovertabs-label";
+								colPickId = "dragover-fontcolorpicker";
 								break;
-							case 'InactiveTab':
-							  previewTab = 'inactivetabs-label';
-								colPickId = 'inactive-fontcolorpicker';
+							case "InactiveTab":
+							  previewTab = "inactivetabs-label";
+								colPickId = "inactive-fontcolorpicker";
 								break;
-							case 'ActiveTab':
-							  previewTab = 'activetabs-label';
-								colPickId = 'activetab-fontcolorpicker';
+							case "ActiveTab":
+							  previewTab = "activetabs-label";
+								colPickId = "activetab-fontcolorpicker";
 								break;
-							case 'HoveredTab':
-							  previewTab = 'hoveredtabs-label';
-								colPickId = 'hover-fontcolorpicker';
+							case "HoveredTab":
+							  previewTab = "hoveredtabs-label";
+								colPickId = "hover-fontcolorpicker";
 								break;
 						}
 						// transfer color to font color picker for non-palette mode.
@@ -6058,35 +6124,35 @@ QuickFolders.Interface = {
 							// cp.color = selectedFontColor;
 							cp.value = util.getSystemColor(selectedFontColor); // convert to hex value
 							prefs.setUserStyle(userStyleKey, "color", selectedFontColor);
-							options.styleUpdate(userStyleKey, 'color', selectedFontColor, previewTab);
+							options.styleUpdate(userStyleKey, "color", selectedFontColor, previewTab);
 						}
 					}
 					
 					// find out the last (=main) gradient color and set as background color!
-					let selectedGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image'),
-              resultBackgroundColor = '';
+					let selectedGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image"),
+              resultBackgroundColor = "";
 					if (selectedGradient !== null) { 
 						// get last gradient point (bottom) to determine background color
 						// all gradients should be defined top down
 						util.logDebugOptional("css.palette", "selectedGradient = " + selectedGradient);
-						let f = selectedGradient.lastIndexOf('rgb');
+						let f = selectedGradient.lastIndexOf("rgb");
 						if (f>=0) {
 							let rgb = selectedGradient.substr(f);
-							f = rgb.indexOf(')');
+							f = rgb.indexOf(")");
 							rgb = rgb.substr(0, f + 1); // this is our rule
 							if (rgb) {
 								switch(styleKey) {
-									case 'DragOver':
-										colPickId = 'dragover-colorpicker';
+									case "DragOver":
+										colPickId = "dragover-colorpicker";
 										break;
-									case 'InactiveTab':
-										colPickId = 'inactive-colorpicker';
+									case "InactiveTab":
+										colPickId = "inactive-colorpicker";
 										break;
-									case 'ActiveTab':
-										colPickId = 'activetab-colorpicker';
+									case "ActiveTab":
+										colPickId = "activetab-colorpicker";
 										break;
-									case 'HoveredTab':
-										colPickId = 'hover-colorpicker';
+									case "HoveredTab":
+										colPickId = "hover-colorpicker";
 										break;
 								}
 								// transfer color to background color picker for non-palette mode.
@@ -6103,25 +6169,25 @@ QuickFolders.Interface = {
 					}
 
 					// if no color is selected in inactive tab, switch on transparent:
-					if (styleKey == 'InactiveTab' && col == 0) {
-						let chkTransparent = window.document.getElementById('buttonTransparency');
+					if (styleKey == "InactiveTab" && col == 0) {
+						let chkTransparent = window.document.getElementById("buttonTransparency");
 						if (chkTransparent && !chkTransparent.checked) {
 							chkTransparent.checked = true;
-							options.toggleColorTranslucent(chkTransparent, 'inactive-colorpicker', 'inactivetabs-label', styleKey);
+							options.toggleColorTranslucent(chkTransparent, "inactive-colorpicker", "inactivetabs-label", styleKey);
 						}
-						let cp = document.getElementById('inactive-colorpicker');
+						let cp = document.getElementById("inactive-colorpicker");
 						if (cp) {
-						  // cp.color = 'rgb(255,255,255)';
-							cp.value = '#FFFFFF';
+						  // cp.color = "rgb(255,255,255)";
+							cp.value = "#FFFFFF";
 						}
-						prefs.setUserStyle(styleKey, "background-color", 'rgb(255,255,255)');
+						prefs.setUserStyle(styleKey, "background-color", "rgb(255,255,255)");
 						QI.updateMainWindow();
 					}
-          if (styleKey == 'InactiveTab')
-            this.applyTabStyle(document.getElementById('inactivetabs-label'), prefs.ColoredTabStyle);
+          if (styleKey == "InactiveTab")
+            this.applyTabStyle(document.getElementById("inactivetabs-label"), prefs.ColoredTabStyle);
           // immediate update of background color for bottom border
-          if (styleKey == 'ActiveTab' && resultBackgroundColor) {
-            options.styleUpdate('ActiveTab','background-color', resultBackgroundColor, 'activetabs-label');
+          if (styleKey == "ActiveTab" && resultBackgroundColor) {
+            options.styleUpdate("ActiveTab","background-color", resultBackgroundColor, "activetabs-label");
           }
           if (disableColorChangeStriped)
             QI.updateMainWindow(true);  // force update as it might have been missed!
@@ -6133,7 +6199,7 @@ QuickFolders.Interface = {
 		    button = this.getButtonByFolder(theFolder);
 		util.logToConsole("Interface.setTabColorFromMenu(" + menuitem.toString() + ", " + col + ")" );
 		this.setButtonColor(button, col);        // color the  button via palette entry number
-    this.initElementPaletteClass(button, '', (col=='0'));    // make sure correct palette is set
+    this.initElementPaletteClass(button, "", (col=="0"));    // make sure correct palette is set
 		QuickFolders.Model.setFolderColor(theFolder.URI, col, false); // store color in folder string
 	} ,
   
@@ -6190,62 +6256,62 @@ QuickFolders.Interface = {
 	initHoverStyle: function initHoverStyle(ss, ssPalettes, isPaintMode) {
 	  if (ssPalettes == null)
 		  ssPalettes = ss;
-		let templateTabClass =  isPaintMode ? 'ColoredTab' : 'HoveredTab',
+		let templateTabClass =  isPaintMode ? "ColoredTab" : "HoveredTab",
 		    paletteClass = this.getPaletteClassCss(templateTabClass);
 		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "initHoverStyle()  PaintMode=" + isPaintMode + "   paletteClass=" + paletteClass);
 		let engine = QuickFolders.Styles,
         prefs = QuickFolders.Preferences,
 		    hoverBackColor = prefs.getUserStyle("HoveredTab","background-color","#F90"),
 		    tabStyle = prefs.ColoredTabStyle,
-		    noColorClass = (tabStyle != prefs.TABS_STRIPED) ? 'col0' : 'col0striped',
+		    noColorClass = (tabStyle != prefs.TABS_STRIPED) ? "col0" : "col0striped",
 		    hoverColor = prefs.getUserStyle(templateTabClass, "color", "#000000"),
-        avoidCurrentFolder = ':not(#QuickFoldersCurrentFolder)';
+        avoidCurrentFolder = ":not(#QuickFoldersCurrentFolder)";
 		
 		// default hover colors: (not sure if we even need them during paint mode)
-		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover','background-color', hoverBackColor,true);
-		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':hover','background-color', hoverBackColor,true);
-    engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':hover > label','color', hoverColor, true);
+		engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:hover","background-color", hoverBackColor,true);
+		engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton." + noColorClass + ":hover","background-color", hoverBackColor,true);
+    engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton." + noColorClass + ":hover > label","color", hoverColor, true);
 
 		let paintButton = isPaintMode ? this.PaintButton : null;
 			
 		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "style." + templateTabClass + ".paletteType = " 
-		  + prefs.getIntPref('style.' + templateTabClass + '.paletteType'));
+		  + prefs.getIntPref("style." + templateTabClass + ".paletteType"));
 
-		if (prefs.getIntPref('style.HoveredTab.paletteType') || isPaintMode) {
+		if (prefs.getIntPref("style.HoveredTab.paletteType") || isPaintMode) {
 			let paletteEntry = 
 				isPaintMode 
 				? paintButton.getAttribute("colorIndex")
-				: prefs.getIntPref('style.HoveredTab.paletteEntry');
+				: prefs.getIntPref("style.HoveredTab.paletteEntry");
 			if (!paletteEntry) 
 				paletteEntry = 1;
 			// extract current gradient from style sheet rule:
-			let ruleName = '.quickfolders-flat ' + paletteClass + '.col' + paletteEntry,
-			    hoverGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
+			let ruleName = ".quickfolders-flat " + paletteClass + ".col" + paletteEntry,
+			    hoverGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image");
 			QuickFolders.Util.logDebugOptional("interface.buttonStyles", "setting hover gradient[" + ruleName + "]: " + hoverGradient + "\nisPaintMode = " + isPaintMode);
 			
 			// build some rules..
 			// remove +paletteClass from rule as this should always apply!
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton'  + ':hover', 'background-image', hoverGradient, true); // [class^="col"]
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton'  + '.' + noColorClass + ':hover', 'background-image', hoverGradient, true); 
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton"  + ":hover", "background-image", hoverGradient, true); // [class^="col"]
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton"  + "." + noColorClass + ":hover", "background-image", hoverGradient, true);
 
 			// picked hover color (from paint mode)
-			//let hc = engine.getElementStyle(ssPalettes, ruleName, 'color');
+			//let hc = engine.getElementStyle(ssPalettes, ruleName, "color");
 			//hoverColor = hc ? hc : hoverColor;
       // tb + avoidCurrentFolder
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover > label','color', hoverColor, true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[buttonover="true"] > label','color', hoverColor, true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:hover > label","color", hoverColor, true);
+			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[buttonover="true"] > label',"color", hoverColor, true);
 		}
 		else { // two color mode
 			QuickFolders.Util.logDebugOptional("interface.buttonStyles", "Configure Plain backgrounds…");
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ':hover', 'background-image', 'none', true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass + ':hover', 'background-image', 'none', true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass + ":hover", "background-image", "none", true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass + "." + noColorClass + ":hover", "background-image", "none", true);
 			if (tabStyle == prefs.TABS_STRIPED) {
-				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover > label','color', hoverColor ,true);
+				engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:hover > label","color", hoverColor ,true);
 			}
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover > label','color', hoverColor, true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + '[buttonover="true"] > label','color', hoverColor ,true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:hover > label","color", hoverColor, true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton." + noColorClass + '[buttonover="true"] > label',"color", hoverColor ,true);
 			// full monochrome background
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:hover','background-color', hoverBackColor,true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:hover","background-color", hoverBackColor,true);
 		}
 	} ,
 	
@@ -6256,75 +6322,75 @@ QuickFolders.Interface = {
 		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "initDragOverStyle()");
 		let engine = QuickFolders.Styles,
         prefs = QuickFolders.Preferences,
-		    // let dragOverColor = engine.getElementStyle(ssPalettes, ruleName, 'color');
+		    // let dragOverColor = engine.getElementStyle(ssPalettes, ruleName, "color");
 		    dragOverColor = prefs.getUserStyle("DragTab","color","White");
-		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over','background-color', prefs.getUserStyle("DragTab","background-color","#E93903"),true);
-    let noColorClass = 'col0'; // ####
-    engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':-moz-drag-over > label','color', dragOverColor, true); // ####
+		engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:-moz-drag-over","background-color", prefs.getUserStyle("DragTab","background-color","#E93903"),true);
+    let noColorClass = "col0"; // ####
+    engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton." + noColorClass + ":-moz-drag-over > label","color", dragOverColor, true); // ####
 		
-		if (prefs.getIntPref('style.DragOver.paletteType')) {
-			let paletteClass = this.getPaletteClassCss('DragOver'),
-			    paletteEntry = prefs.getIntPref('style.DragOver.paletteEntry'),
-			    ruleName = '.quickfolders-flat ' + paletteClass + '.col' + paletteEntry,
-			    dragOverGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
+		if (prefs.getIntPref("style.DragOver.paletteType")) {
+			let paletteClass = this.getPaletteClassCss("DragOver"),
+			    paletteEntry = prefs.getIntPref("style.DragOver.paletteEntry"),
+			    ruleName = ".quickfolders-flat " + paletteClass + ".col" + paletteEntry,
+			    dragOverGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image");
 			// for some reason this one is completely ignored by SeaMonkey and Postbox
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over', 'background-image', dragOverGradient, true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ':-moz-drag-over > label','color', dragOverColor, true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '[buttonover="true"] > label','color', dragOverColor, true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:-moz-drag-over", "background-image", dragOverGradient, true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass + ":-moz-drag-over > label","color", dragOverColor, true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass + '[buttonover="true"] > label',"color", dragOverColor, true);
 		}
 		else {
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over', 'background-image', 'none', true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:-moz-drag-over > label','color', dragOverColor,true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:-moz-drag-over", "background-image", "none", true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:-moz-drag-over > label","color", dragOverColor,true);
 		}
 	} ,
 	
 	getPaletteClassCss: function getPaletteClassCss(tabStateId) {
 		let cl = this.getPaletteClass(tabStateId);
-		return cl.replace(' ', '.');
+		return cl.replace(" ", ".");
 	} ,
 	
 	stripPaletteClasses: function stripPaletteClasses(className, exclude) {
-		if (exclude !== 'pastel')
-		  className = className.replace(/\s*pastel/,'')
-		if (exclude !== 'plastic')
-		  className = className.replace(/\s*plastic/,'')
-		if (exclude !== 'night')
-		  className = className.replace(/\s*night/,'')
+		if (exclude !== "pastel")
+		  className = className.replace(/\s*pastel/,"")
+		if (exclude !== "plastic")
+		  className = className.replace(/\s*plastic/,"")
+		if (exclude !== "night")
+		  className = className.replace(/\s*night/,"")
 		return className;
 	  
 	} ,
 	
 	getPaletteClass: function getPaletteClass(tabStateId) {
-	  let paletteType = QuickFolders.Preferences.getIntPref('style.' + tabStateId + '.paletteType');
+	  let paletteType = QuickFolders.Preferences.getIntPref("style." + tabStateId + ".paletteType");
 		switch (paletteType) {
 		  case -1:
-			  if (tabStateId == 'InactiveTab') {
-					return '';  // error
+			  if (tabStateId == "InactiveTab") {
+					return "";  // error
 				}
 				else { // get from global tab style!
-					return this.getPaletteClass('InactiveTab');
+					return this.getPaletteClass("InactiveTab");
 				}
 				break;
 			default:
 				return this.getPaletteClassToken(paletteType);
 		}
-		return '';
+		return "";
 	} ,
 	
 	getPaletteClassToken: function getPaletteClassToken(paletteType) {
 		switch (parseInt(paletteType, 10)) {
 		  case -1:
-			  return this.getPaletteClassToken(this.getPaletteClass('InactiveTab')); // default
+			  return this.getPaletteClassToken(this.getPaletteClass("InactiveTab")); // default
 			case 0:
-			  return '';  // none
+			  return "";  // none
 			case 1:
-			  return ' plastic';  // default
+			  return " plastic";  // default
 			case 2:
-			  return ' pastel';
+			  return " pastel";
       case 3:
-        return ' night';
+        return " night";
 		}
-		return '';
+		return "";
 	} ,
 	
 	// SELECTED FOLDER STATE (.selected-folder)
@@ -6335,24 +6401,24 @@ QuickFolders.Interface = {
 		let engine = QuickFolders.Styles,
 		    colActiveBG = QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight"),
 		    selectedColor = QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText"),
-		    globalPaletteClass = this.getPaletteClassCss('InactiveTab'),
-        paletteClass = this.getPaletteClassCss('ActiveTab'),
-        coloredPaletteClass = this.getPaletteClassCss('ColoredTab');
-		
-		if (QuickFolders.Preferences.getIntPref('style.ActiveTab.paletteType')) {
-			let paletteEntry =  QuickFolders.Preferences.getIntPref('style.ActiveTab.paletteEntry'),
-			    ruleName = '.quickfolders-flat ' + paletteClass + '.col' + paletteEntry,
-			    selectedGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
-			// selectedColor = engine.getElementStyle(ssPalettes, ruleName, 'color'); // make this overridable!
+		    globalPaletteClass = this.getPaletteClassCss("InactiveTab"),
+        paletteClass = this.getPaletteClassCss("ActiveTab"),
+        coloredPaletteClass = this.getPaletteClassCss("ColoredTab");
+
+		if (QuickFolders.Preferences.getIntPref("style.ActiveTab.paletteType")) {
+			let paletteEntry =  QuickFolders.Preferences.getIntPref("style.ActiveTab.paletteEntry"),
+			    ruleName = ".quickfolders-flat " + paletteClass + ".col" + paletteEntry,
+			    selectedGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image");
+			// selectedColor = engine.getElementStyle(ssPalettes, ruleName, "color"); // make this overridable!
 			// we do not want the rule to containg the paletteClass because it has to always work!
-			engine.setElementStyle(ss, '.quickfolders-flat ' + '.selected-folder', 'background-image', selectedGradient, true);
+			engine.setElementStyle(ss, ".quickfolders-flat " + ".selected-folder", "background-image", selectedGradient, true);
 		}
 		else { // two colors mode
-			engine.setElementStyle(ss, '.quickfolders-flat ' + '.selected-folder', 'background-image', 'none', true);
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.selected-folder','background-color', colActiveBG, true);
+			engine.setElementStyle(ss, ".quickfolders-flat " + ".selected-folder", "background-image", "none", true);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton.selected-folder","background-color", colActiveBG, true);
 		}
-    engine.removeElementStyle(ss, '.quickfolders-flat .selected-folder > label', 'color');
-    engine.setElementStyle(ss, '.quickfolders-flat .selected-folder > label', 'color', selectedColor,true);
+    engine.removeElementStyle(ss, ".quickfolders-flat .selected-folder > label", "color");
+    engine.setElementStyle(ss, ".quickfolders-flat .selected-folder > label", "color", selectedColor,true);
 	} ,
 	
 	// INACTIVE STATE (DEFAULT)
@@ -6366,59 +6432,59 @@ QuickFolders.Interface = {
         inactiveGradientColor = null,
 		    inactiveBackground = util.getSystemColor(prefs.getUserStyle("InactiveTab","background-color","ButtonFace")),
 		    inactiveColor = util.getSystemColor(prefs.getUserStyle("InactiveTab","color","black")),
-		    paletteClass = this.getPaletteClassCss('InactiveTab'),
+		    paletteClass = this.getPaletteClassCss("InactiveTab"),
     // only plastic & pastel support striped style:
-        isTabsStriped = (tabStyle == prefs.TABS_STRIPED) && prefs.getIntPref('style.InactiveTab.paletteType')<3, 
-		    noColorClass = (isTabsStriped) ? 'col0striped' : 'col0',
-		    avoidCurrentFolder = ''; // = ':not(#QuickFoldersCurrentFolder)'; // we omit paletteClass for uncolored tabs:
+        isTabsStriped = (tabStyle == prefs.TABS_STRIPED) && prefs.getIntPref("style.InactiveTab.paletteType")<3, 
+		    noColorClass = (isTabsStriped) ? "col0striped" : "col0",
+		    avoidCurrentFolder = ""; // = ":not(#QuickFoldersCurrentFolder)"; // we omit paletteClass for uncolored tabs:
 
 		// transparent buttons: means translucent background! :))
-		if (prefs.getBoolPref('transparentButtons')) 
+		if (prefs.getBoolPref("transparentButtons")) 
 			inactiveBackground = util.getRGBA(inactiveBackground, 0.25) ; 
 
-		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton','background-color', inactiveBackground, true);
-		engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton#QuickFoldersCurrentFolder','background-color', inactiveBackground, true);
+		engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton","background-color", inactiveBackground, true);
+		engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton#QuickFoldersCurrentFolder","background-color", inactiveBackground, true);
 		
 		// INACTIVE STATE (PALETTE) FOR UNCOLORED TABS ONLY
 		// LETS AVOID !IMPORTANT TO SIMPLIFY STATE STYLING
-		if (prefs.getIntPref('style.InactiveTab.paletteType')>0) {
-			let paletteEntry = prefs.getIntPref('style.InactiveTab.paletteEntry');
+		if (prefs.getIntPref("style.InactiveTab.paletteType")>0) {
+			let paletteEntry = prefs.getIntPref("style.InactiveTab.paletteEntry");
 			if (tabStyle === prefs.TABS_STRIPED)
-				paletteEntry += 'striped';
-			let ruleName = (!isTabsStriped ? '.quickfolders-flat ' : '') + paletteClass + '.col' + paletteEntry;
-			let inactiveGradient = engine.getElementStyle(ssPalettes, ruleName, 'background-image');
-			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':not(:-moz-drag-over)', 'background-image'); // remove 'none'
-			// removed 'toolbarbutton'. qualifier
-			engine.setElementStyle(ss, '.quickfolders-flat .' + noColorClass + ':not(:-moz-drag-over)', 'background-image', inactiveGradient, false);
-			engine.setElementStyle(ss, '.quickfolders-flat .' + noColorClass + ':not(:-moz-drag-over)#QuickFoldersCurrentFolder', 'background-image', inactiveGradient, false);
+				paletteEntry += "striped";
+			let ruleName = (!isTabsStriped ? ".quickfolders-flat " : "") + paletteClass + ".col" + paletteEntry;
+			let inactiveGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image");
+			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton." + noColorClass + ":not(:-moz-drag-over)", "background-image"); // remove "none"
+			// removed "toolbarbutton". qualifier
+			engine.setElementStyle(ss, ".quickfolders-flat ." + noColorClass + ":not(:-moz-drag-over)", "background-image", inactiveGradient, false);
+			engine.setElementStyle(ss, ".quickfolders-flat ." + noColorClass + ":not(:-moz-drag-over)#QuickFoldersCurrentFolder", "background-image", inactiveGradient, false);
 			
-			inactiveGradientColor = (inactiveColor=='black') ? engine.getElementStyle(ssPalettes, ruleName, 'color') : inactiveColor;
+			inactiveGradientColor = (inactiveColor=="black") ? engine.getElementStyle(ssPalettes, ruleName, "color") : inactiveColor;
 		}
 		else {
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton.' + noColorClass + ':not(:-moz-drag-over)', 'background-image', 'none', false);
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton." + noColorClass + ":not(:-moz-drag-over)", "background-image", "none", false);
 		}
 		
     // tb + avoidCurrentFolder
-	  engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + '.' + noColorClass + ' > label','color', inactiveColor, false); 
+	  engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton" + "." + noColorClass + " > label","color", inactiveColor, false); 
     if (inactiveGradientColor!=null)
-      engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + '.' + noColorClass + ' > label','color', inactiveGradientColor, false);
+      engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass + "." + noColorClass + " > label","color", inactiveGradientColor, false);
 
 		// Coloring all striped tabbed buttons that have individual colors 
-    let coloredPaletteClass = this.getPaletteClassCss('ColoredTab');
+    let coloredPaletteClass = this.getPaletteClassCss("ColoredTab");
 		if (isTabsStriped) { // paletteClass = plastic, pastel, "", apple
 			// fallback for uncolored current folder (striped style)
-			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton#QuickFoldersCurrentFolder.col0' + paletteClass + ' > label','color', inactiveColor, false);
-		  // throws 'An invalid or illegal string was specified' in Postbox:
-			if (util.Application != 'Postbox' || util.Appversion > 5.4) {
+			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton#QuickFoldersCurrentFolder.col0" + paletteClass + " > label","color", inactiveColor, false);
+		  // throws "An invalid or illegal string was specified" in Postbox:
+			if (util.Application != "Postbox" || util.Appversion > 5.4) {
 				// avoid for current folder button as it always will be completely colored
         // #issue 7 these rules didn't work due to a syntax error
-				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)' + coloredPaletteClass + ' > label','color', inactiveColor, false);
-				engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)' + paletteClass + ' > label','color', inactiveColor, false);
+				engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)" + coloredPaletteClass + " > label","color", inactiveColor, false);
+				engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder)" + paletteClass + " > label","color", inactiveColor, false);
 			}
 		}
 		else {
-			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton' + paletteClass + ' > label','color');
-			engine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton' + coloredPaletteClass + ' > label','color');
+			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass + " > label","color");
+			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton" + coloredPaletteClass + " > label","color");
 		}
 		
 	} ,
@@ -6431,26 +6497,26 @@ QuickFolders.Interface = {
 			util.logDebugOptional ("interface.userStyles","updateUserStyles()");
 			// get MAIN STYLE SHEET
 			let styleEngine = QuickFolders.Styles,
-			    ss = this.getStyleSheet(styleEngine, 'quickfolders-layout.css', 'QuickFolderStyles');
+			    ss = this.getStyleSheet(styleEngine, "quickfolders-layout.css", "QuickFolderStyles");
           
 			if (!ss) return false;
 
 			util.logDebugOptional ("interface.userStyles","Palette sheet");
 			// get PALETTE STYLE SHEET
-			let ssPalettes = this.getStyleSheet(styleEngine, QuickFolders.Interface.PaletteStyleSheet, 'QuickFolderPalettes');
+			let ssPalettes = this.getStyleSheet(styleEngine, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes");
       ssPalettes = ssPalettes ? ssPalettes : ss; // if this fails, use main style sheet.
 			let theme = prefs.CurrentTheme,
 			    tabStyle = prefs.ColoredTabStyle;
 			
 			if (prefs.isCssTransitions) {
         util.logDebugOptional ("interface.userStyles","Css transitions");
-				styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-duration', '1s, 1s, 2s, 1s');
-				styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-property', 'color, background-color, border-radius, box-shadow');
+				styleEngine.setElementStyle(ss, ".quickfolders-flat toolbarbutton", "transition-duration", "1s, 1s, 2s, 1s");
+				styleEngine.setElementStyle(ss, ".quickfolders-flat toolbarbutton", "transition-property", "color, background-color, border-radius, box-shadow");
 			}
 			else {
         util.logDebugOptional ("interface.userStyles","Remove Css transitions");
-				styleEngine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-duration');
-				styleEngine.removeElementStyle(ss, '.quickfolders-flat toolbarbutton', 'transition-property');
+				styleEngine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton", "transition-duration");
+				styleEngine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton", "transition-property");
 			}
 
 			// =================
@@ -6458,13 +6524,13 @@ QuickFolders.Interface = {
       util.logDebugOptional ("interface.userStyles","Font Colors");
 			let theColorString = prefs.getUserStyle("InactiveTab","color","black"),
 			    colActiveBG = prefs.getUserStyle("ActiveTab","background-color","Highlight"),
-					btnSelector = '.quickfolders-flat toolbarbutton';
+					btnSelector = ".quickfolders-flat toolbarbutton";
 					
-			if (util.Application == 'SeaMonkey') btnSelector = 'toolbox toolbar' + btnSelector;
+			if (util.Application == "SeaMonkey") btnSelector = "toolbox toolbar" + btnSelector;
 			if (tabStyle != prefs.TABS_STRIPED)  {
 				styleEngine.setElementStyle(ss, btnSelector 
-				  + ((util.Application == 'SeaMonkey') ? '' : '[background-image]')
-					+ '.selected-folder','border-bottom-color', colActiveBG, true);
+				  + ((util.Application == "SeaMonkey") ? "" : "[background-image]")
+					+ ".selected-folder","border-bottom-color", colActiveBG, true);
 			}
 
 			// =================
@@ -6473,25 +6539,25 @@ QuickFolders.Interface = {
 			let topRadius = "4px",
 			    bottomRadius = "0px";
 			if (prefs.getBoolPref("style.corners.customizedRadius")) {
-				topRadius =  prefs.getIntPref('style.corners.customizedTopRadiusN') + "px";
-				bottomRadius = prefs.getIntPref('style.corners.customizedBottomRadiusN') + "px";
+				topRadius =  prefs.getIntPref("style.corners.customizedTopRadiusN") + "px";
+				bottomRadius = prefs.getIntPref("style.corners.customizedBottomRadiusN") + "px";
 			}
 			
 			let legacyRadius = !util.isCSSRadius;
 			
-			if (util.Application == 'SeaMonkey') btnSelector = btnSelector + ':not(.plain)';
-			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-topleft'     : 'border-top-left-radius', topRadius, true);
-			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-topright'    : 'border-top-right-radius', topRadius, true);
-			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-bottomleft'  : 'border-bottom-left-radius', bottomRadius, true);
-			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? '-moz-border-radius-bottomright' : 'border-bottom-right-radius', bottomRadius, true);
+			if (util.Application == "SeaMonkey") btnSelector = btnSelector + ":not(.plain)";
+			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? "-moz-border-radius-topleft"     : "border-top-left-radius", topRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? "-moz-border-radius-topright"    : "border-top-right-radius", topRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? "-moz-border-radius-bottomleft"  : "border-bottom-left-radius", bottomRadius, true);
+			styleEngine.setElementStyle(ss, btnSelector, legacyRadius ? "-moz-border-radius-bottomright" : "border-bottom-right-radius", bottomRadius, true);
 			
 			// QuickFolders Toolbar only
       util.logDebugOptional ("interface.userStyles","main toolbar buttons");
-			let btnInToolbarSelector = '.quickfolders-flat .folderBarContainer toolbarbutton',
-			    buttonHeight = prefs.getIntPref('style.button.minHeight') + "px",
-			    topPadding =  prefs.getIntPref('style.button.paddingTop') + "px";
-			styleEngine.setElementStyle(ss, btnInToolbarSelector, 'min-height', buttonHeight, true);
-			styleEngine.setElementStyle(ss, btnInToolbarSelector, 'padding-top', topPadding, true);
+			let btnInToolbarSelector = ".quickfolders-flat .folderBarContainer toolbarbutton",
+			    buttonHeight = prefs.getIntPref("style.button.minHeight") + "px",
+			    topPadding =  prefs.getIntPref("style.button.paddingTop") + "px";
+			styleEngine.setElementStyle(ss, btnInToolbarSelector, "min-height", buttonHeight, true);
+			styleEngine.setElementStyle(ss, btnInToolbarSelector, "padding-top", topPadding, true);
 			
 
 			// ==================
@@ -6499,31 +6565,31 @@ QuickFolders.Interface = {
 			// for full colored tabs color the border as well!
 			// but should only apply if background image is set!!
       util.logDebugOptional ("interface.userStyles","shadow");
-			let SHADOW = util.isCSSShadow ? 'box-shadow' : '-moz-box-shadow';
+			let SHADOW = util.isCSSShadow ? "box-shadow" : "-moz-box-shadow";
 			if (prefs.getBoolPref("buttonShadows")) {
-				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton', SHADOW,'1px -1px 3px -1px rgba(0,0,0,0.3)', true);
-				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton.selected-folder', SHADOW, '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
-				styleEngine.setElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton:hover', SHADOW, '0px 0px 2px -1px rgba(0,0,0,0.9)', true);
+				styleEngine.setElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton", SHADOW,"1px -1px 3px -1px rgba(0,0,0,0.3)", true);
+				styleEngine.setElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton.selected-folder", SHADOW, "0px 0px 2px -1px rgba(0,0,0,0.9)", true);
+				styleEngine.setElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton:hover", SHADOW, "0px 0px 2px -1px rgba(0,0,0,0.9)", true);
 			}
 			else {
-				styleEngine.removeElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton', SHADOW);
-				styleEngine.removeElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton.selected-folder', SHADOW);
-				styleEngine.removeElementStyle(ss, '.quickfolders-flat .folderBarContainer toolbarbutton:hover', SHADOW);
+				styleEngine.removeElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton", SHADOW);
+				styleEngine.removeElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton.selected-folder", SHADOW);
+				styleEngine.removeElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton:hover", SHADOW);
 			}
 
-			styleEngine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[background-image].selected-folder','border-bottom-color', colActiveBG, true);
-			styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane','border-bottom-color', colActiveBG, true); // only in main toolbar!
+			styleEngine.setElementStyle(ss, ".quickfolders-flat toolbarbutton[background-image].selected-folder","border-bottom-color", colActiveBG, true);
+			styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane","border-bottom-color", colActiveBG, true); // only in main toolbar!
 
-			let theInit = '';
+			let theInit = "";
       util.logDebugOptional ("interface.userStyles","folder styles");
 			try {
-			  theInit = 'SelectedFolderStyle';
+			  theInit = "SelectedFolderStyle";
 				this.initSelectedFolderStyle(ss, ssPalettes, tabStyle);			
-			  theInit = 'DefaultStyle';
+			  theInit = "DefaultStyle";
 				this.initDefaultStyle(ss, ssPalettes, tabStyle);			
-			  theInit = 'HoverStyle';
+			  theInit = "HoverStyle";
 				this.initHoverStyle(ss, ssPalettes, this.PaintModeActive);
-			  theInit = 'DragOverStyle';
+			  theInit = "DragOverStyle";
 				this.initDragOverStyle(ss, ssPalettes);
 			}
 			catch (ex) {
@@ -6535,26 +6601,26 @@ QuickFolders.Interface = {
 			theColorString = prefs.getUserStyle("Toolbar","background-color","ButtonFace");
 			if (prefs.getBoolPref("transparentToolbar"))
 				theColorString = "transparent";
-			styleEngine.setElementStyle(ss, '.toolbar','background-color', theColorString,true);
+			styleEngine.setElementStyle(ss, ".toolbar","background-color", theColorString,true);
 
       // restrict to toolbar only (so as not to affect the panel in currentFolder bar!)
-			styleEngine.setElementStyle(ss, 'toolbar.' + theme.cssToolbarClassName, 'background-color', theColorString,true);
+			styleEngine.setElementStyle(ss, "toolbar." + theme.cssToolbarClassName, "background-color", theColorString,true);
       let tbBottom = prefs.getUserStyle("Toolbar","bottomLineWidth", 3) + "px";
-      styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane', 'border-bottom-width', tbBottom, true);
+      styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane", "border-bottom-width", tbBottom, true);
 			
 			this.updateCurrentFolderBar(ss);
 			
       // change to numeric
-			let minToolbarHeight = prefs.getStringPref('toolbar.minHeight');
+			let minToolbarHeight = prefs.getStringPref("toolbar.minHeight");
       if (minToolbarHeight) {
         let mT = parseInt(minToolbarHeight);
-        styleEngine.setElementStyle(ss, '#QuickFolders-Toolbar', 'min-height', mT.toString()+"px", false);
+        styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar", "min-height", mT.toString()+"px", false);
       }
       
       // main toolbar position
       util.logDebugOptional ("interface.userStyles","toolbar position");
-      let ordinalGroup = prefs.getIntPref('toolbar.ordinalPosition') || 0;
-      styleEngine.setElementStyle(ss,'#QuickFolders-Toolbar', '-moz-box-ordinal-group', ordinalGroup.toString());
+      let ordinalGroup = prefs.getIntPref("toolbar.ordinalPosition") || 0;
+      styleEngine.setElementStyle(ss,"#QuickFolders-Toolbar", "-moz-box-ordinal-group", ordinalGroup.toString());
 
 			util.logDebugOptional ("css","updateUserStyles(): success");
 			return true;
@@ -6639,7 +6705,7 @@ QuickFolders.Interface = {
 		if (!aFolder || !parentFolder) 
 			return;
 			
-		if (typeof parentFolder.subFolders != 'undefined')
+		if (typeof parentFolder.subFolders != "undefined")
 			myenum = parentFolder.subFolders;
 		else
 			myenum = parentFolder.GetSubFolders();
@@ -6648,9 +6714,9 @@ QuickFolders.Interface = {
 		    folder=null;
 		while (!done) {
 			target = folder;
-			if (typeof myenum.currentItem!='undefined') {
+			if (typeof myenum.currentItem!="undefined") {
 				folder = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder); // Postbox
-				if (typeof myenum.next != 'undefined') {
+				if (typeof myenum.next != "undefined") {
 					try { myenum.next(); }
 					catch(e) {
 						done=true;
@@ -6671,7 +6737,7 @@ QuickFolders.Interface = {
 				// if target is null:
 				let x = null;
 				while (target == null) {  // we are at start, lets go to the end (wrap around)
-					if (typeof myenum.currentItem!='undefined') {
+					if (typeof myenum.currentItem!="undefined") {
 						try {
 							myenum.next();
 							x = myenum.currentItem().QueryInterface(Ci.nsIMsgFolder);
@@ -6703,7 +6769,7 @@ QuickFolders.Interface = {
 		if (!aFolder || !parentFolder)
 			return;
 
-		if (typeof parentFolder.subFolders != 'undefined')
+		if (typeof parentFolder.subFolders != "undefined")
 			myenum = parentFolder.subFolders;
 		else
 			myenum = parentFolder.GetSubFolders();
@@ -6712,9 +6778,9 @@ QuickFolders.Interface = {
 		    first=null,
 	      folder;
 		while (!(done)) {
-			if (typeof myenum.currentItem!='undefined') {
+			if (typeof myenum.currentItem!="undefined") {
 				folder = myenum.currentItem().QueryInterface(Components.interfaces.nsIMsgFolder); // Postbox
-				if (typeof myenum.next != 'undefined') {
+				if (typeof myenum.next != "undefined") {
 					try {
 						myenum.next();
 					}
@@ -6749,25 +6815,25 @@ QuickFolders.Interface = {
   /**
    * toggles visibility of current folder toolbar
    * @visible {bool}: visibility tag
-   * @messageWindow {string} : '?' - determine which one to close from context
-   *                           '' - 3pane window
-   *                           'singleMailTab' - a single message (conversation) tab
-   *                           'messageWindow' - a single mail window
+   * @messageWindow {string} : "?" - determine which one to close from context
+   *                           "" - 3pane window
+   *                           "singleMailTab" - a single message (conversation) tab
+   *                           "messageWindow" - a single mail window
    **/
 	displayNavigationToolbar: function displayNavigationToolbar(visible, selector) {
-    if (typeof selector === 'undefined') selector = ''; // Unfortunately Postbox cannot do default parameters
+    if (typeof selector === "undefined") selector = ""; // Unfortunately Postbox cannot do default parameters
     
-    if (selector=='?') {
+    if (selector=="?") {
       // determine selector from context
-      let wt = document.getElementById('messengerWindow').getAttribute('windowtype');
-      if (wt === 'mail:messageWindow') {
-        selector = 'messageWindow';
+      let wt = document.getElementById("messengerWindow").getAttribute("windowtype");
+      if (wt === "mail:messageWindow") {
+        selector = "messageWindow";
       }
       else {
-        if (this.CurrentTabMode=='message')
-          selector = 'singleMailTab';
+        if (this.CurrentTabMode=="message")
+          selector = "singleMailTab";
         else
-          selector = ''; // 3pane mode
+          selector = ""; // 3pane mode
       }
     }
     let util = QuickFolders.Util,
@@ -6778,7 +6844,7 @@ QuickFolders.Interface = {
     // store change in prefs
     QuickFolders.Preferences.setShowCurrentFolderToolbar(visible, selector);
     
-		if (selector=='messageWindow') {
+		if (selector=="messageWindow") {
 			if (null == mailMessageWindow) return; // single message window not displayed
 			win = mailMessageWindow;
 		}
@@ -6793,22 +6859,22 @@ QuickFolders.Interface = {
 
     let tabMode = QuickFolders.Interface.CurrentTabMode,
         currentFolderBar = doc.getElementById(
-                             (selector=='messageWindow') ? 
+                             (selector=="messageWindow") ? 
                              "QuickFolders-PreviewToolbarPanel-Single" :
                              "QuickFolders-PreviewToolbarPanel"
                            );
 		if (currentFolderBar) {
-      if (selector == 'singleMailTab' && tabMode =='message'
+      if (selector == "singleMailTab" && tabMode =="message"
           ||
-          selector == '' && tabMode == util.mailFolderTypeName
+          selector == "" && tabMode == util.mailFolderTypeName
           ||
-          selector == 'messageWindow'
+          selector == "messageWindow"
          ) {
           
-        // currentFolderBar.style.display = visible ? '-moz-box' : 'none';
+        // currentFolderBar.style.display = visible ? "-moz-box" : "none";
         currentFolderBar.collapsed = !visible;
-        currentFolderBar.style.display = visible ? '-moz-box' : 'none';
-        if (visible && selector != 'messageWindow') {
+        currentFolderBar.style.display = visible ? "-moz-box" : "none";
+        if (visible && selector != "messageWindow") {
           let rect = currentFolderBar.getBoundingClientRect();
           if (!rect.width)
             this.hoistCurrentFolderBar(this.CurrentFolderTab);
@@ -6841,7 +6907,7 @@ QuickFolders.Interface = {
 					}
 					else {
 						if (!tabmail.tabInfo.length)
-							tabMode =  '3pane';
+							tabMode =  "3pane";
 						else
 							tabMode = ""; // Sm -- [Bug 25585] this was in the wrong place!
 					}
@@ -6849,7 +6915,7 @@ QuickFolders.Interface = {
 			}
 		}
 
-		return tabMode ? tabMode.toString() : '';
+		return tabMode ? tabMode.toString() : "";
 	} ,
 
 	initToolbarHiding: function initToolbarHiding() {
@@ -6879,12 +6945,12 @@ QuickFolders.Interface = {
     if (prefs.isDebug)
       util.logDebugOptional("interface", "onDeckChange(" 
         + util.enumProperties(targetTab)  + ")" 
-        + "\n" + targetTab.mode ? util.enumProperties(targetTab.mode) : 'no mode.');
+        + "\n" + targetTab.mode ? util.enumProperties(targetTab.mode) : "no mode.");
     // used to early exit when !hideToolbar
 		
 		let toolbar = this.Toolbar;
     mode = util.getTabMode(targetTab);
-    if (['3pane','folder','glodaList','threadPaneBox'].indexOf(mode) >=0) {
+    if (["3pane","folder","glodaList","threadPaneBox"].indexOf(mode) >=0) {
       isMailPanel = true;
     }
 		if (targetTab && targetTab.selectedPanel) {
@@ -6899,13 +6965,13 @@ QuickFolders.Interface = {
 			util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar.id + " - mode: " + mode);
       mode = this.CurrentTabMode;
 		}
-    if (['glodaSearch-result','calendar','tasks','contentTab'].indexOf(mode) >=0)
+    if (["glodaSearch-result","calendar","tasks","contentTab"].indexOf(mode) >=0)
       isMailPanel = false;
     util.logDebugOptional("interface", "mode = " + mode + "\nisMailPanel = " + isMailPanel);
 		let isMailSingleMessageTab = (mode == "message") ? true  : false,
 		    action = "";
       
-		if (['threadPaneBox','accountCentralBox','3pane','folder','glodaList'].indexOf(mode) >=0 ||
+		if (["threadPaneBox","accountCentralBox","3pane","folder","glodaList"].indexOf(mode) >=0 ||
 		    isMailPanel && !prefs.getBoolPref("toolbar.hideInSingleMessage")) {
 			action = "Showing";
       if (hideToolbar)
@@ -6923,14 +6989,14 @@ QuickFolders.Interface = {
     // QuickFolders-PreviewToolbarPanel-ConversationView: in Thunderbird this is shown in single message tabs as well
     let singleMessageCurrentFolderPanel = document.getElementById("QuickFolders-PreviewToolbarPanel");
     if (isMailSingleMessageTab) {
-      let visible = prefs.isShowCurrentFolderToolbar('singleMailTab');
+      let visible = prefs.isShowCurrentFolderToolbar("singleMailTab");
       util.logDebugOptional("toolbarHiding", " isMailSingleMessageTab - setting display=none for QuickFolders-PreviewToolbarPanel");
-      singleMessageCurrentFolderPanel.style.display= visible ? '-moz-box' : 'none';
+      singleMessageCurrentFolderPanel.style.display= visible ? "-moz-box" : "none";
     }
     else if (mode == "3pane" || mode == "folder") {
       util.logDebugOptional("toolbarHiding", " isMailSingleMessageTab - setting display=-moz-box for QuickFolders-PreviewToolbarPanel");
-      let visible = prefs.isShowCurrentFolderToolbar('');
-      singleMessageCurrentFolderPanel.style.display= visible ? '-moz-box' : 'none';
+      let visible = prefs.isShowCurrentFolderToolbar("");
+      singleMessageCurrentFolderPanel.style.display= visible ? "-moz-box" : "none";
     }
 	} ,
 	
@@ -6979,7 +7045,7 @@ QuickFolders.Interface = {
 		let cs = Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
 		try {
 			let ap = util.Application,
-					isNewArray = (ap == 'Thunderbird' || ap == 'SeaMonkey'),
+					isNewArray = (ap == "Thunderbird" || ap == "SeaMonkey"),
           countChanges = 0; 
 			for (let i = 0; i < newFolders.length; i++) {
 				let folders = new Array,
@@ -7002,7 +7068,7 @@ QuickFolders.Interface = {
 				// folders[0]\ == targetFolder.server
 				let isMove = (!fld.locked && fld.canRename && fld.deletable
 												&&
-											 (fld.server.type == 'pop3' || fld.server.type == 'imap' || fld.server.type == 'none')),
+											 (fld.server.type == "pop3" || fld.server.type == "imap" || fld.server.type == "none")),
 						listener = null;
 				cs.CopyFolders(array, 
 											 targetFolder,
@@ -7012,7 +7078,7 @@ QuickFolders.Interface = {
 				// in case it has a Tab, fix the uri
 				//  see also OnItemRemoved
 				// get encoded folder Name:
-				let slash = fromURI.lastIndexOf('/'),
+				let slash = fromURI.lastIndexOf("/"),
 						encName = fromURI.substring(slash),
 						newURI = targetFolder.URI + encName;
 				countChanges += QuickFolders.Model.moveFolderURI(fromURI, newURI);
@@ -7032,7 +7098,7 @@ QuickFolders.Interface = {
 	} ,
 
 	showPalette: function showPalette(button) {
-		let context = button.getAttribute('context');
+		let context = button.getAttribute("context");
 		QuickFolders.Util.logDebugOptional("interface", "Interface.showPalette(" + button.id + "): context = " + context);
 		this.showPopup(button, context);
 	} ,
@@ -7041,13 +7107,13 @@ QuickFolders.Interface = {
 		const util = QuickFolders.Util;
 		let active;
 		switch (mode) {
-			case 'on':
+			case "on":
 				active = true;
 				break;
-			case 'off':
+			case "off":
 				active = false;
 				break;
-			case 'toggle': default:
+			case "toggle": default:
 				active = this.PaintModeActive ? false : true;
 		}
 		util.logDebugOptional("interface", "togglePaintMode(" + mode + ")\n" + " active = " + active);
@@ -7059,10 +7125,10 @@ QuickFolders.Interface = {
 				btnCogwheel.collapsed = active || !QuickFolders.Preferences.isShowToolIcon;
 			paintButton.collapsed = !active;
 			if (this.CategoryBox)
-				this.CategoryBox.setAttribute('mode', active ? 'paint' : '');
+				this.CategoryBox.setAttribute("mode", active ? "paint" : "");
 
 			if (this.CurrentFolderFilterToggleButton)
-				this.CurrentFolderFilterToggleButton.setAttribute('mode', '');
+				this.CurrentFolderFilterToggleButton.setAttribute("mode", "");
 			this.PaintModeActive = active;
 			
 			toolbar = this.Toolbar;
@@ -7083,10 +7149,9 @@ QuickFolders.Interface = {
 						this.buildPaletteMenu(tabColor, menupopup);
 						// a menu item to end this mode
 						let mItem = this.createMenuItem("qfPaint", this.getUIstring("qfPaintToggle", "Finish Paint Mode"));
-						// this.setEventAttribute(mItem, "oncommand",'QuickFolders.Interface.togglePaintMode("off");');
-						mItem.addEventListener("command", function(event) { QuickFolders.Interface.togglePaintMode('off'); }, false); 
-            mItem.className = 'menuitem-iconic';
-						menupopup.insertBefore(this.createIconicElement('menuseparator','*'), menupopup.firstChild);
+						mItem.addEventListener("command", function(event) { QuickFolders.Interface.togglePaintMode("off"); }, false); 
+            mItem.className = "menuitem-iconic";
+						menupopup.insertBefore(this.createIconicElement("menuseparator","*"), menupopup.firstChild);
 						menupopup.insertBefore(mItem, menupopup.firstChild);
 					}
 					else {
@@ -7097,17 +7162,17 @@ QuickFolders.Interface = {
 					this.initElementPaletteClass(menupopup);
 				}
 				catch(ex) {
-					util.logException('Exception during togglePaintMode(on)', ex);
+					util.logException("Exception during togglePaintMode(on)", ex);
 				};
-				toolbar.style.setProperty('cursor', "url(chrome://quickfolders/skin/ico/fugue-paint-cursor.png) 14 13, auto", 'important'); // supply hotspot coordinates
+				toolbar.style.setProperty("cursor", "url(chrome://quickfolders/skin/ico/fugue-paint-cursor.png) 14 13, auto", "important"); // supply hotspot coordinates
 			}
 			else {
-				toolbar.style.setProperty('cursor', 'auto', 'important');
+				toolbar.style.setProperty("cursor", "auto", "important");
 			}			
 		}
 		this.initHoverStyle(
-		         this.getStyleSheet(QuickFolders.Styles, 'quickfolders-layout.css', "QuickFolderStyles"), 
-		         this.getStyleSheet(QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, 'QuickFolderPalettes'),
+		         this.getStyleSheet(QuickFolders.Styles, "quickfolders-layout.css", "QuickFolderStyles"), 
+		         this.getStyleSheet(QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes"),
 		         this.PaintModeActive);
 
 		// set cursor!
@@ -7116,17 +7181,17 @@ QuickFolders.Interface = {
   updateFindBoxMenus: function updateFindBoxMenus(toggle) {
 		const util = QuickFolders.Util;
     try {
-      util.$('QuickFolders-quickMove-showSearch').collapsed = toggle;
-      util.$('QuickFolders-quickMove-hideSearch').collapsed = !toggle;
+      util.$("QuickFolders-quickMove-showSearch").collapsed = toggle;
+      util.$("QuickFolders-quickMove-hideSearch").collapsed = !toggle;
     }
     catch (ex) {
-			util.logException('Exception during updateFindBoxMenus(' + toggle + ') ', ex);
+			util.logException("Exception during updateFindBoxMenus(" + toggle + ") ", ex);
     }
   } ,
   
   // make a special style visible to show that [Enter] will move the mails in the list (and not just jump to the folder)
   toggleMoveModeSearchBox: function toggleMoveModeSearchBox(toggle) {
-    QuickFolders.Util.logDebug('toggleMoveModeSearchBox(' + toggle + ')');
+    QuickFolders.Util.logDebug("toggleMoveModeSearchBox(" + toggle + ")");
     let searchBox = QuickFolders.Interface.FindFolderBox;
 		if (toggle)
 			searchBox.classList.add("quickMove");
@@ -7142,14 +7207,14 @@ QuickFolders.Interface = {
       QuickFolders.quickMove.hideSearch(); // hide search box if shown
     else {
       if (QuickFolders.quickMove.hasMails)
-        QI.showPopup(el,'QuickFolders-quickMoveMenu');
+        QI.showPopup(el,"QuickFolders-quickMoveMenu");
       else
-        QI.findFolder(true,'quickJump'); // show jump to folder box
+        QI.findFolder(true,"quickJump"); // show jump to folder box
     }
   },
   
   readingListClick: function readingListClick(evt, el) {
-    QuickFolders.Interface.showPopup(el,'QuickFolders-readingListMenu');
+    QuickFolders.Interface.showPopup(el,"QuickFolders-readingListMenu");
   },
   
   // remove animated icons for pro version
@@ -7158,15 +7223,15 @@ QuickFolders.Interface = {
           QI = QuickFolders.Interface,
           styleEngine = QuickFolders.Styles;
     // win = util.getMail3PaneWindow();
-    styleSheetName = styleSheetName || 'quickfolders-layout.css';
+    styleSheetName = styleSheetName || "quickfolders-layout.css";
     let ss = QI.getStyleSheet(styleEngine, styleSheetName),  // rules are imported from *-widgets.css
         iconSelector = 'menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon, #QuickFolders-Pro .tab-icon';
     styleEngine.removeElementStyle(ss, 
                                    iconSelector, 
-                                   ['animation-name', 'height', 'width']);
+                                   ["animation-name", "height", "width"]);
     styleEngine.setElementStyle(ss, 
                                 'menuitem.cmd[tagName="qfRegister"], tab#QuickFolders-Pro',  
-                                'list-style-image', 
+                                "list-style-image", 
                                 "url('chrome://quickfolders/skin/ico/pro-16.png')", 
                                 true);
   } , 
@@ -7182,22 +7247,22 @@ QuickFolders.Interface = {
       util.$("context-quickFoldersIcon").collapsed = hasIcon; // hide select icon for tidier experience.
     }
     catch (ex) {
-      util.logDebug('folderPanePopup() failed:' + ex);
+      util.logDebug("folderPanePopup() failed:" + ex);
     }
     
   } ,
   
   toggleFolderTree: function toggleFolderTree() {
-    goDoCommand('cmd_toggleFolderPane');
+    goDoCommand("cmd_toggleFolderPane");
   } ,
 	
 	clickTitleLabel: function clickTitleLabel(btn) {
 	  const util = QuickFolders.Util;
 		if (util.Licenser.isExpired) {
-			QuickFolders.Licenser.showDialog('mainLabelRenewal');			
+			QuickFolders.Licenser.showDialog("mainLabelRenewal");			
 		}
 		else { // get context Menu as normal
-			QuickFolders.Interface.showPopup(btn, 'QuickFolders-ToolbarPopup');
+			QuickFolders.Interface.showPopup(btn, "QuickFolders-ToolbarPopup");
 		}
 	} ,
 
@@ -7207,7 +7272,7 @@ QuickFolders.Interface = {
 				util = QuickFolders.Util;
 		if (popup) {
 			try {
-				if (util.Application === 'SeaMonkey')
+				if (util.Application === "SeaMonkey")
 					popup.parentNode.removeChild(popup);
 				else
 					popup.hidePopup(); // parentNode.removeChild(popup)
@@ -7220,7 +7285,7 @@ QuickFolders.Interface = {
 		else
 			util.logDebugOptional("dnd", "removeLastPopup could not find element: " + p);
 		if (p === QuickFolders_globalHidePopupId)
-			QuickFolders_globalHidePopupId = '';
+			QuickFolders_globalHidePopupId = "";
 		
 	}	,
 	
@@ -7255,16 +7320,16 @@ QuickFolders.Interface = {
         let originId = prefMap[info.id];
         if (originId) {
           switch (originId.substr(0,5)) {
-            case 'qfpg-':  // general
+            case "qfpg-":  // general
               storedObj.general.push(node);
               break;
-            case 'qfpa-':  // advanced
+            case "qfpa-":  // advanced
               storedObj.advanced.push(node);
               break;
-            case 'qfpl-':  // layout
+            case "qfpl-":  // layout
               storedObj.layout.push(node);
               break;
-            case 'qfpp-':  // premium - make sure not to import the License without confirmation!
+            case "qfpp-":  // premium - make sure not to import the License without confirmation!
               if (isLicense)
                 storedObj.premium.push(node);
               break;
@@ -7316,28 +7381,28 @@ QuickFolders.Interface = {
           let e = foundElements[pref.id];
           if (e) {
             switch(e.tagName) {
-              case 'checkbox':
+              case "checkbox":
                 e.checked = pref.val;
-                if (e.getAttribute('oncommand'))
+                if (e.getAttribute("oncommand"))
                   e.dispatchEvent(new Event("command"));
                 break;
-              case 'textbox': // legacy
-              case 'html:input':
-              case 'html:textarea':
+              case "textbox": // legacy
+              case "html:input":
+              case "html:textarea":
                 e.value = pref.val;
                 if (e.id == "currentFolderBackground") {
                   options.setCurrentToolbarBackgroundCustom();
                 }
                 break;
-              case 'menulist':
+              case "menulist":
                 e.selectedIndex = pref.val;
                 let menuitem = e.selectedItem;
-                if (menuitem && menuitem.getAttribute('oncommand'))
+                if (menuitem && menuitem.getAttribute("oncommand"))
                   menuitem.dispatchEvent(new Event("command"));
                 break;
-              case 'radiogroup':
+              case "radiogroup":
                 e.value = pref.val;
-                if (e.getAttribute('oncommand'))
+                if (e.getAttribute("oncommand"))
                   e.dispatchEvent(new Event("command"));
               default:
                 debugger;

@@ -139,7 +139,7 @@ QuickFolders.quickMove = {
         fld = QuickFolders.Model.getMsgFolderFromUri(targetFolderUri, true),
         tabMode = QI.CurrentTabMode,    
         tabmail = document.getElementById("tabmail"),
-        currentTab = (util.Application=='Thunderbird') ? tabmail.selectedTab : tabmail.currentTabInfo;
+        currentTab = (util.Application=="Thunderbird") ? tabmail.selectedTab : tabmail.currentTabInfo;
 				
 		this.rememberLastFolder(fld, parentName);
         
@@ -181,8 +181,11 @@ QuickFolders.quickMove = {
 		}
 		catch(ex) { logException('quickMove.execute()', ex); }
 		finally {
-			util.touch(fld); // update MRUTime
-			util.logDebugOptional('quickMove', 'After hideFindPopup');
+      setTimeout(function(){
+        util.touch(fld); // update MRUTime
+        util.logDebugOptional('quickMove', "End of quickMove.execute()\nTimestamp of [" + fld.prettyName + "] = " +  util.getMruTime(fld));
+      },
+      800);
 		}
   },
   
@@ -190,7 +193,10 @@ QuickFolders.quickMove = {
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
     for (let i = menu.children.length-1; i>0; i--) {
       let item = menu.children[i];
-      if (item.className.indexOf('msgUri')>=0 || item.tagName=='menuseparator')
+      if (item.classList.contains('msgUri') || 
+          item.classList.contains('folderUri') || 
+          item.classList.contains('folderCopy') || 
+          item.tagName=='menuseparator')
         menu.removeChild(item);
     }    
   },

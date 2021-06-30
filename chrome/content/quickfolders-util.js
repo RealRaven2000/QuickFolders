@@ -66,7 +66,7 @@ QuickFolders.Util = {
   _isCSSGradients: -1,
 	_isCSSRadius: -1,
 	_isCSSShadow: true,
-	HARDCODED_CURRENTVERSION : "4.21.4", // will later be overriden call to AddonManager
+	HARDCODED_CURRENTVERSION : "4.22", // will later be overriden call to AddonManager
 	HARDCODED_EXTENSION_TOKEN : ".hc",
 	ADDON_ID: "quickfolders@curious.be",
 	FolderFlags : {  // nsMsgFolderFlags
@@ -992,6 +992,7 @@ QuickFolders.Util = {
 		const util = QuickFolders.Util,
           FLAGS = util.FolderFlags;
 		try {
+      let ct = parseInt(new Date().getTime() / 1000); // current time in secs
       // special folders we do not want / need in recent history:
       if (folder.flags & 
             (FLAGS.MSG_FOLDER_FLAG_TRASH | FLAGS.MSG_FOLDER_FLAG_SENTMAIL | FLAGS.MSG_FOLDER_FLAG_QUEUE | 
@@ -999,10 +1000,9 @@ QuickFolders.Util = {
 			if (folder.SetMRUTime)
 				folder.SetMRUTime();
 			else {
-				let ct = parseInt(new Date().getTime() / 1000); // current time in secs
 				folder.setStringProperty("MRUTime", ct);
 			}
-			let time = folder.getStringProperty("MRUTime");
+			let time = folder.getStringProperty("MRUTime"); // [issue 163] apparently something else may reset the string later?
 			util.logDebug("util.touch(" + folder.prettyName + ")\n" + time + '\n' + util.getMruTime(folder));
 		}
 		catch(ex) {
@@ -1034,7 +1034,7 @@ QuickFolders.Util = {
 	} ,
 	
 	getTabInfoByIndex: function getTabInfoByIndex(tabmail, idx) {
-    this.logDebug("getTabInfoByIndex(tabmail, " + idx + ") tabInfo: " + tabmail.tabInfo);
+    // this.logDebug("getTabInfoByIndex(tabmail, " + idx + ") tabInfo: ", tabmail.tabInfo);
 		if (tabmail.tabInfo && tabmail.tabInfo.length)
 			return tabmail.tabInfo[idx];
 		if (tabmail.tabOwners)
@@ -1516,7 +1516,6 @@ QuickFolders.Util = {
 
 	// moved from options.js (then called
 	openURL: function openURL(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
-		let ioservice, iuri, eps;
 		if (QuickFolders.Util.Application=='SeaMonkey' || QuickFolders.Util.Application=='Postbox')
 		{
 			this.openLinkInBrowserForced(URL);

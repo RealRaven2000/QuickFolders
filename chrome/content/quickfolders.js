@@ -423,8 +423,12 @@ END LICENSE BLOCK */
     ## [issue 144] Mark folders + subfolders read stops at first generation (direct child folder) mails  
     ## [issue 145] Thunderbird 60: QuickFolders always offers update to 4.21.2
     
-  4.21.4 QuickFolders Pro - WIP
+  4.21.4 QuickFolders Pro - 28/04/2021
     ## [issue 148] quickMove: parent folder containing an underscore not suggested as parent
+    
+  4.22 QuickFolders Pro - 
+    ## [issue 163] quickMove: folder created while moving is not displayed on top of recent folders menu
+    ## [issue 155] Support entering multiple words in a search string to find longer folder names that are composite
     
     
 	Future Work
@@ -530,8 +534,15 @@ var QuickFolders_PrepareSessionStore = function () {
 		mailTabType.modes["folder"].persistTab = function(aTab) {
 			let retval = orgPersist(aTab);
 			if (retval) {
-				util.logDebug("persist tab category: " + aTab.QuickFoldersCategory);
-				retval.QuickFoldersCategory = aTab.QuickFoldersCategory; // add category from the tab to persisted info object
+        if (aTab.QuickFoldersCategory) {
+          util.logDebug("persist tab category: " + aTab.QuickFoldersCategory);
+          retval.QuickFoldersCategory = aTab.QuickFoldersCategory; // add category from the tab to persisted info object
+        }
+        else {
+          retval.QuickFoldersCategory = "";
+          util.logDebug("QuickFolders_PrepareSessionStore() - No QuickFoldersCategory for tab: ");
+          util.logDebug(aTab);
+        }
 			}
 			return retval; 
 		}

@@ -169,6 +169,11 @@
 											oncommand="QuickFolders.Util.loadPlatformStylesheet();"
 											class="menuitem-iconic"
 											/>
+						<menuitem id="QuickFolders-ToolbarPopup-dbg5"
+											label="Refresh Recent folder menus"
+											oncommand="QuickFolders.Interface.onClickRecent(document.getElementById('QuickFolders-Recent-CurrentFolderTool'),null,true);" 
+											class="menuitem-iconic"
+											/>														
 
 
 					</menupopup>

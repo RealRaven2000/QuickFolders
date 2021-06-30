@@ -247,6 +247,8 @@ pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
 pref("extensions.quickfolders.quickMove.premium.silentMode", false);
+pref("extensions.quickfolders.quickMove.maxResults",25);
+
 /* popupProFeature( ) counts how often these features are used */
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
 pref("extensions.quickfolders.premium.bookmarks.usage", 0);

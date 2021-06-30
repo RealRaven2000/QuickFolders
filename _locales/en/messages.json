@@ -963,6 +963,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Repair Tree Icons"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Show Splash screen"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders Support…"
   },
@@ -1712,7 +1715,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Significant new search features have been added to the quickMove / quickJump function. For help on these, click the [?] symbol to the right of the search field.{L2}{L1}Improved support for multiple Thunderbird windows .{L2}{L1}Improved readability of toolbars under Linux{L2}{L1}[mail extension migration] Licensing library was migrated into background script. If you experience any problems related to licensing, please contact me via the support tab!{L2}"
+    "message": "{L1}Significant new search features have been added to the quickMove / quickJump function. For help on these, click the [?] symbol to the right of the search field.{L2}{L1}You can now open this screen from the QuickFolders tools menu.{L2}{L1}Improved support for multiple Thunderbird windows .{L2}{L1}Improved readability of toolbars under Linux{L2}{L1}[mail extension migration] Licensing library was migrated into background script. If you experience any problems related to licensing, please contact me via the support tab!{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

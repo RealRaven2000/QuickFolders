@@ -963,6 +963,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Riparazione delle icone della struttura delle cartelle"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Visualizza schermata iniziale"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "Supporto di QuickFolders…"
   },
@@ -1712,7 +1715,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Nuove funzionalità di ricerca significative sono state aggiunte alla funzione quickMove / quickJump. Per assistenza su questi, fare clic sul simbolo [?] a destra del campo di ricerca.{L2}{L1}Supporto migliorato per più finestre Thunderbird .{L2}{L1}Leggibilità migliorata delle barre degli strumenti sotto Linux{L2}{L1} [migrazione dell'estensione di posta] La libreria delle licenze è stata migrata nello script in background. Se riscontri problemi relativi alla licenza, contattami tramite la scheda di supporto!{L2}"
+    "message": "{L1}Nuove funzionalità di ricerca significative sono state aggiunte alla funzione quickMove / quickJump. Per assistenza su questi, fare clic sul simbolo [?] a destra del campo di ricerca.{L2}{L1}Ora puoi aprire questa schermata dal menu degli strumenti di QuickFolders.{L2}{L1}Supporto migliorato per più finestre Thunderbird .{L2}{L1}Leggibilità migliorata delle barre degli strumenti sotto Linux{L2}{L1} [migrazione dell'estensione di posta] La libreria delle licenze è stata migrata nello script in background. Se riscontri problemi relativi alla licenza, contattami tramite la scheda di supporto!{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -963,6 +963,9 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "ツリーアイコンを修復"
   },
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "スプラッシュ画面を表示する"
+  },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders サポート…"
   },
@@ -1712,7 +1715,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} quickMove / quickJump関数に重要な新しい検索機能が追加されました。 これらのヘルプについては、検索フィールドの右側にある[？]記号をクリックしてください。{L2} {L1}複数のThunderbirdウィンドウのサポートが改善されました。{L2} {L1} Linuxでのツールバーの読みやすさが改善されました{L2} {L1} [メール拡張機能の移行]ライセンスライブラリがバックグラウンドスクリプトに移行されました。 ライセンスに関連する問題が発生した場合は、[サポート]タブからご連絡ください！{L2}"
+    "message": "{L1} quickMove / quickJump関数に重要な新しい検索機能が追加されました。 これらのヘルプについては、検索フィールドの右側にある[？]記号をクリックしてください。{L2} {L1}これで、QuickFoldersツールメニューからこの画面を開くことができます。{L2}{L1}複数のThunderbirdウィンドウのサポートが改善されました。{L2} {L1} Linuxでのツールバーの読みやすさが改善されました{L2} {L1} [メール拡張機能の移行]ライセンスライブラリがバックグラウンドスクリプトに移行されました。 ライセンスに関連する問題が発生した場合は、[サポート]タブからご連絡ください！{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

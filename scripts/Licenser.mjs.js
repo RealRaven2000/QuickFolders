@@ -170,7 +170,7 @@ export class Licenser {
 		if (isResetDate) {
       Components.classes["@mozilla.org/preferences-service;1"]
              .getService(Components.interfaces.nsIPrefBranch)
-			       .setStringPref("extensions.smartTemplate4.license.gracePeriodDate", graceDate);
+			       .setStringPref("extensions.quickfolders.license.gracePeriodDate", graceDate);
     }
 		// log("Returning Grace Period Date: " + graceDate);
 		return graceDate;
@@ -190,7 +190,7 @@ export class Licenser {
           graceDate = 
            Components.classes["@mozilla.org/preferences-service;1"]
              .getService(Components.interfaces.nsIPrefBranch)
-             .getStringPref("extensions.smartTemplate4.license.gracePeriodDate");
+             .getStringPref("extensions.quickfolders.license.gracePeriodDate");
         }
         catch (e) {graceDate = ""}
       }
@@ -386,7 +386,7 @@ export class Licenser {
     // check mail accounts for setting
     // if not found return MailNotConfigured
     
-    let accounts = await messenger.accounts.list();
+    let accounts = await messenger.accounts.list(); // [bug 1630786] permissions prevent users from updating
     let AllowFallbackToSecondaryIdentiy = false;
 
     if (this.key_type == 0) {
@@ -396,7 +396,7 @@ export class Licenser {
       } else {
         let hasDefaultIdentity = false;
         for (let account of accounts) {
-          let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id);
+          let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id); // [bug 1630786] permissions prevent users from updating
           if (defaultIdentity) {
             hasDefaultIdentity = true;
             break;
@@ -413,7 +413,7 @@ export class Licenser {
     }
     
     for (let account of accounts) {
-      let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id);
+      let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id); // [bug 1630786] permissions prevent users from updating
       if (defaultIdentity && !this.ForceSecondaryIdentity) {
 
         this.logDebug("QuickFolders Licenser", {

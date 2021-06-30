@@ -3,7 +3,7 @@ export function slideAlert(title, text, icon) {
 		type: "basic",
 		title,
 		message: text,
-		iconUrl: icon || "/chrome/content/skin/ico/quickfolders-Icon.png"
+		iconUrl: icon || "/chrome/content/skin/ico/QuickFolders_32.svg"
 	});
 }
 

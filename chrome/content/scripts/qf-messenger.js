@@ -64,7 +64,7 @@ async function onLoad(activatedWhileWindowOpen) {
       <toolbar
             id="QuickFolders-Toolbar"
             toolbarname="QuickFolders Toolbar"
-            class="toolbar-primary"
+            class="toolbar-primary contentTabToolbar"
             ondragover="(QuickFolders.toolbarDragObserver).dragOver(event);"
             ondrop="(QuickFolders.toolbarDragObserver).drop(event);"
             ondragenter="QuickFolders.toolbarDragObserver.debug_log(event);"
@@ -191,6 +191,13 @@ async function onLoad(activatedWhileWindowOpen) {
                       class="cmd menuitem-iconic"
                       tagName="qfOptions"
                       />
+            <menuitem id="QuickFolders-ToolbarPopup-splash"
+                      label="__MSG_qf.menuitem.quickfolders.splash__"
+                      oncommand="QuickFolders.Interface.viewSplash();" 
+                      class="cmd menuitem-iconic"
+                      tagName="qfSplash"
+                      />
+                      
             <menuitem id="QuickFolders-ToolbarPopup-filterMode"
                       label="__MSG_qf.menuitem.quickfolders.filters__"
                       accesskey="__MSG_qf.menuitem.quickfolders.filtersAccess__"
@@ -268,10 +275,11 @@ async function onLoad(activatedWhileWindowOpen) {
 
         <!-- 		-->		
         <vbox id="QuickFolders-Folders-Pane"  flex="1">
-            <spacer flex="4" id="QuickFolders-FoldersBox-PushDown"/>
-            
-            <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
-        </box>
+          <spacer flex="4" id="QuickFolders-FoldersBox-PushDown"/>
+          
+          <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
+            <label id="QuickFolders-Instructions-Label" crop="end">__MSG_qf.label.dragFolderLabel__</label>
+          </box>
         <!-- 		-->		
         </vbox>
       </toolbar>
@@ -313,7 +321,7 @@ async function onLoad(activatedWhileWindowOpen) {
           class="QuickFolders-NavigationPanel"
           style="display:none;">
       <spacer flex="5" id="QF-CurrentLeftSpacer"/>
-      <toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
+      <toolbar id="QuickFolders-CurrentFolderTools" class="contentTabToolbar" iconsize="small">
         <toolbarbutton id="QuickFolders-CurrentMail"
                        class="icon draggable"
                        tooltiptext="__MSG_qf.tooltip.emailIcon__" />
@@ -488,6 +496,13 @@ async function onLoad(activatedWhileWindowOpen) {
                  type="search"
                  collapsed="true"
                  placeholder="__MSG_quickfolders.findFolder.placeHolder__"/>
+        <toolbarbutton id="QuickFolders-FindFolder-Help"
+                       class = "popupButton"
+                       label = ""
+                       tooltiptext="help with search"
+                       collapsed="true"
+                       onclick="QuickFolders.Interface.quickMoveHelp(this);"
+                       />
        </hbox>
     </hbox>
   </vbox>
@@ -496,6 +511,7 @@ async function onLoad(activatedWhileWindowOpen) {
 `);
 
   window.QuickFolders.prepareSessionStore();
+  // window.QuickFolders.initDocAndWindow(window);
   
   // add listeners
   window.QuickFolders.Util.logDebug('Adding Folder Listener...');
@@ -544,10 +560,10 @@ function onUnload(isAddOnShutDown) {
     
   // remove all listeners
   try {
-    window.QuickFolders.Interface.removeToolbarHiding();
+    window.QuickFolders.Interface.removeToolbarHiding.call(window.QuickFolders.Interface);
     window.QuickFolders_mailSession.RemoveFolderListener(window.QuickFolders.FolderListener);
-    window.QuickFolders.removeTabEventListener();
-    window.QuickFolders.removeFolderPaneListener();
+    window.QuickFolders.removeTabEventListener.call(window.QuickFolders);
+    window.QuickFolders.removeFolderPaneListener.call(window.QuickFolders);
   }
   catch(ex) {
     console.log(ex);

@@ -115,8 +115,7 @@ addEventListener("load", async (event) => {
            
     updateActions(addonName);
 
-    addAnimation('body');
-
+    // addAnimation('body');
   });  
 
   addEventListener("unload", async (event) => {

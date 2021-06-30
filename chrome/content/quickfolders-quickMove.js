@@ -172,8 +172,11 @@ QuickFolders.quickMove = {
 		}
 		catch(ex) { logException('quickMove.execute()', ex); }
 		finally {
-			util.touch(fld); // update MRUTime
-			util.logDebugOptional('quickMove', 'After hideFindPopup');
+      setTimeout(function(){
+        util.touch(fld); // update MRUTime
+        util.logDebugOptional('quickMove', "End of quickMove.execute()\nTimestamp of [" + fld.prettyName + "] = " +  util.getMruTime(fld));
+      },
+      800);
 		}
   },
   

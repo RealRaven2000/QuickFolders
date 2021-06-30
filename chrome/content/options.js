@@ -11,14 +11,6 @@
 
 var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
 
-var QuickFolders_TabURIregexp = {
-  get _thunderbirdRegExp() {
-    delete this._thunderbirdRegExp;
-    return this._thunderbirdRegExp = new RegExp("^https://quickfolders.org/");
-  }
-};
-
-
 QuickFolders.Options = {
   optionsMode : "",  // filter out certain pages (for support / help only)
   message : "",      // alert to display on dialog opening (for certain update cases); make sure to clear out after use!

@@ -1,19 +1,19 @@
 {
   "manifest_version" : 2,
+  "applications" : {
+    "gecko" : {
+      "id" : "quickfolders@curious.be",
+      "strict_min_version" : "78.0"
+    }
+  },
+  "author": "Axel Grude, Klaus Buecher/opto",
   "name" : "QuickFolders",
   "description" : "__MSG_extensionDescription__",
-  "version" : "5.6pre199",
+  "version" : "5.6",
   "default_locale": "en",
-  "author": "Axel Grude, Klaus Buecher/opto",
   "developer" : {
       "name" : "Axel Grude, Klaus Buecher/opto",
       "url" : "https://quickfolders.org/index.html"
-  },
-  "applications" : {
-    "gecko" : {
-        "id" : "quickfolders@curious.be",
-        "strict_min_version" : "78.0"
-    }
   },
   "background": {
     "page": "qf-background.html"
@@ -59,7 +59,6 @@
        }
     }
   },
-
  "icons" : {
     "32" : "chrome/content/skin/ico/QuickFolders_32.svg",
     "64" : "chrome/content/skin/ico/QuickFolders_32.svg"

@@ -162,6 +162,106 @@ menupopup.widerMenu menucaption {
 	color: rgb(255,255,255) !important;
 }
 
+/* help button */
+#QuickFolders-FindFolder-Help {
+  list-style-image: url("chrome://messenger/skin/icons/help.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+  padding-left: 0;
+  margin-left: -3px;
+}
+
+#quickMoveHelpOverlay.overlay {
+  position: fixed;
+  inset: 5px 0 0 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 1;           /* was zero */
+  pointer-events: none; /* click through */
+  z-index: 100;         /* folderpane_splitter and threadpane-splitter are 10! */
+}
+
+
+#quickMoveHelp {
+  background: #fff;
+  border: 1px solid rgba(120,120,120,0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(30,30,30,0.4);  
+  background-color: #ffffff;
+}
+
+
+#quickMoveHelp.popup {
+  border-radius: 5px;
+  float: left; /* may be needed, but really I want to shrink-wrap */
+  font-size: 1.1em;
+  margin-right: 20px;
+  max-width: 60%;
+  padding: 5px 16px;
+  pointer-events: all; /* re-activate click on close button */
+  position: relative;
+  transition: all 5s ease-in-out;
+  width: auto;
+  transform: translate3d(0, 0, 0); /* to "integrate" the arrow */
+}
+
+/* arrow on top */
+#quickMoveHelp.popup:after {
+  background: #f00;
+  border-top: 1px solid rgba(120,120,120,0.9);
+  content: "";
+  width: 13px;
+  height: 13px;
+  transform: rotate(-45deg);
+  background: #fff;
+  position: absolute;
+  z-index: -1;
+  top: -7px;
+  left: 3em;
+}
+
+
+#quickMoveHelp.popup .close {
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0px 6px 4px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  transition: all 200ms;
+  text-decoration: none;
+}
+
+#quickMoveHelp.popup .close:hover {
+  background-color: rgba(30,30,40,0.85);
+  border-radius: 4px;
+  color: #eeeeee;
+}
+
+
+#quickMoveHelp * {
+  color: rgb(80,80,80);
+  text-align: left;
+}
+
+#quickMoveHelp h3 {
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+#quickMoveHelp code {
+  display: inline;
+  padding: 1px 3px;
+  font-family: consolas, Courier, monospace;
+  font-size: 11px;
+  color: rgb(20,20,20);
+  background-color: rgb(210,210,210);
+  border-radius: 2px;
+  margin: 0 3px;
+}
+
 #QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { height:16px !important; }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
@@ -389,6 +489,11 @@ menupopup.widerMenu menucaption {
 	background-image: linear-gradient(to bottom, rgb(184, 211, 27) 0%, rgb(122, 166, 18) 50%, rgb(92, 138, 0) 51%, rgb(135, 181, 19) 100%) !important;
 	color: rgb(255, 255, 255);
 }
+
+#QuickFolders-title-label:hover .toolbarbutton-text {
+	color: rgb(255, 255, 255) !important;
+}
+
 
 #QuickFolders-FoldersBox {
 	/* display: inline-box;  - Tb68 only */
@@ -1019,6 +1124,10 @@ notification[value="quickfolders-proFeature"] .notification-button[accesskey] {
 	color: #FFFFFF;
 	cursor: pointer;
 	font-weight: bold;
+}
+
+notification[value="quickfolders-proFeature"] .notification-button[accesskey] .button-text {
+	color: #FFFFFF;
 }
 
 xbl-notification[value="quickfolders-proFeature"] .notification-button[accesskey]:hover, /* temporary Tb 64+ */

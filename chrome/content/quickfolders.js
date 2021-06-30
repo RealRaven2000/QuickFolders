@@ -488,7 +488,10 @@ END LICENSE BLOCK */
     ## In Thunderbird 89, the options menu item was not displayed in Add-ons Manager.
   
   5.6 QuickFolders Pro - WIP
-    ## [issue 150] New line characters "\n" displayed in version 5.5.2
+    ## [issue 155] Support entering multiple words in a search string to find longer folder names that are composite
+    ## [issue 150] New line characters "\n" displayed in some strings in version 5.5.2
+    ## [issue 167] Unreadable colors of QuickFolders toolbar icons / font in Linux
+    ## Added instruction text on empty toolbar which was missing since Thunderbird 78 migration
     ## licenser code migrated into background script
        TO DO: rename hasPremiumLicense() ==> hasValidProLicense()
               simplify Expired logic
@@ -620,8 +623,9 @@ var QuickFolders = {
 	get tabContainer() {
 		if (!this._tabContainer) {
 			const util = QuickFolders.Util;
+      let d = this.doc || document;
       this._tabContainer = 
-        this.doc.getElementById('tabmail').tabContainer || this.doc.getElementById('tabmail-tabs');
+        d.getElementById('tabmail').tabContainer || d.getElementById('tabmail-tabs');
 				
 		}
 		return this._tabContainer;
@@ -692,9 +696,7 @@ var QuickFolders = {
         
     if (QuickFolders.isCorrectWindow(win)) {
 			util.logDebug ("initDelayed ==== correct window: " + sWinLocation + " - " + win.document.title + "\nwait " + nDelay + " msec until init()...");
-			// document.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
-			// var thefunc='QuickFolders.init()';
-			// setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
+
 			win.setTimeout(function() { 
         QuickFolders.init(); 
       }, nDelay);
@@ -740,9 +742,6 @@ var QuickFolders = {
       QuickFolders.WL = WLorig;    
     
     try {
-      // let qfToolbar = QI.Toolbar;
-      // if (qfToolbar) qfToolbar.style.display = 'none';
-      // doc.getElementById('QuickFolders-Toolbar').style.display = 'none';
       
       let doc = win.document; // in case a stand alone messageWindow is opened (e..g double clicking an eml file)
       let wt = doc.getElementById('messengerWindow').getAttribute('windowtype');
@@ -942,7 +941,6 @@ var QuickFolders = {
 		that.Util.logDebug("QF.init() ends.");
 		// now make it visible!
 		QuickFolders.Interface.Toolbar.style.display = '-moz-inline-box';
-		// this.doc.getElementById('QuickFolders-Toolbar').style.display = '-moz-inline-box';
 		
 		if (QuickFolders.Preferences.getBoolPref('contextMenu.hideFilterMode')) {
 			if (QuickFolders.Interface.FilterToggleButton)
@@ -1051,11 +1049,11 @@ var QuickFolders = {
 			return false;
 		},
 
-		dragOver: function qftoolbar_dragOver(evt){//}, flavour, dragSession){
+		dragOver: function qftoolbar_dragOver(evt){
       if (!evt)
         debugger;
       evt.preventDefault();
-	  //if (!dragSession) 
+	  
 	  let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 
 			let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
@@ -1086,7 +1084,10 @@ var QuickFolders = {
       
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
-			if (this.prefs.isDebugOption('dnd')) debugger;
+			if (this.prefs.isDebugOption('dnd')) {
+        debugger;
+        QuickFolders.Util.logToConsole("toolbarDragObserver.drop() - dragSession = ", dragSession);
+      }
 			// let contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
       let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
@@ -1273,7 +1274,9 @@ var QuickFolders = {
             model = QuickFolders.Model,
             QI = QuickFolders.Interface,
             QFFW = QuickFolders.FilterWorker;
-      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
+      if (!dragSession) {
+        dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
+      }
       
 			let isThread = evt.isThread,
 			    isCopy = (QuickFolders.popupDragObserver.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY),
@@ -1842,6 +1845,7 @@ var QuickFolders = {
 			if (prefs.isDebugOption("dnd")) debugger;
       try {
         util.logDebugOptional("dnd", "buttonDragObserver.drop flavour=" + contentType);
+        util.logToConsole("dragSession = ", dragSession);
       } catch(ex) { util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId = "";
 

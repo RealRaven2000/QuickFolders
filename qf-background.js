@@ -52,21 +52,30 @@ messenger.runtime.onInstalled.addListener(async (data) => {
         if (isLicensed) {
           if (isDebug) console.log("QuickFolders License - " + gpdays  + " Days left.");
         }
-        // if (gpdays>40) {
-          // console.log("Omitting update popup!");
-          // return;
-        // }
-      }
-
-      let url = browser.runtime.getURL("popup/update.html");
-      let screenH = window.screen.height,
-          windowHeight = (screenH > 870) ? 870 : screenH;  
-      await browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
+      } 
+      let delayMinutes = await messenger.LegacyPrefs.getPref("extensions.quickfolders.splash.delay");
+      console.log("Delay for splash screen:" + delayMinutes);
+      // let's wait 12 minutes
+      showSplash(delayMinutes);
+      // future solution - use browser.idle.onStateChanged.addListener to set an idle timer for say 5 mins, then once the user has been idle for so long, pop up the dialog
     }
     break;
   // see below
   }    
 });
+
+// display splash screen after n minutes
+function showSplash(timeout = 0) {
+  // alternatively display this info in a tab with browser.tabs.create(...)  
+  setTimeout(
+    function() {
+      let url = browser.runtime.getURL("popup/update.html");
+      let screenH = window.screen.height,
+          windowHeight = (screenH > 870) ? 870 : screenH;  
+      browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
+    }, timeout * 60 * 1000
+  );
+}
 
 async function main() {
   const legacy_root = "extensions.quickfolders.";
@@ -106,6 +115,10 @@ async function main() {
         util.slideAlert(...data.args);
         break;
       
+      case "splashScreen":
+        showSplash(0);
+        break;
+        
       case "getLicenseInfo": 
         return currentLicense.info;
       
@@ -122,6 +135,7 @@ async function main() {
         // Broadcast main windows to run updateQuickFoldersLabel
         messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
         break;
+        
 
       case "updateUserStyles":
         // Broadcast main windows to update their styles (and maybe single message windows???)
@@ -182,8 +196,7 @@ async function main() {
         return true;
     }
   });
-    
-
+  
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
   
   // Init WindowListener.

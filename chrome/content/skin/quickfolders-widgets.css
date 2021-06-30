@@ -119,7 +119,11 @@ menuitem.cmd[tagName="qfOrder"] {
   list-style-image: url('chrome://quickfolders/content/skin/ico/order.svg') !important;
 }
 
-/* three state menuitems */
+/* menuitems */
+menuitem.cmd[tagName="qfSplash"] {
+  list-style-image : url('chrome://quickfolders/content/skin/ico/new.png') !important;
+}
+
 
 toolbarbutton#QuickFolders-Options,
 menuitem.cmd[tagName="qfOptions"] .menu-iconic-icon {

@@ -34,12 +34,13 @@
   position: absolute;
   opacity: 0.4;
   background-image: url("../chrome/content/skin/ico/QuickFolders_32.svg");
-  background-position: 3em 5em; 
+  background-position: top right; 
   background-repeat: no-repeat; 
-  background-size: 84%;
+  background-size: 8em;
   margin-left: -10%;
-  height: 56%;
-  width: 29%;
+  height: 40%;
+  width: 100%;
+  pointer-events:none;
 }
  
 
@@ -95,6 +96,18 @@ canvas[collapsed=true] {
   color: white;
 }
 
+#permissions-note.importantInfo {
+  background-color: rgba(50,0,0,1.0);
+  margin-bottom: 1.2em;
+}
+#permissions-note.importantInfo * {
+  background-color: rgba(50,0,0,1.0);
+  color: white;
+}
+#permissionsText {
+  padding-left: 1em; 
+}
+
 .importantInfo p, 
 .importantInfo ul, 
 .importantInfo li {
@@ -106,7 +119,8 @@ canvas[collapsed=true] {
   background-color: transparent;
 }
 
-#specialBox {
+#specialBox,
+#permissions-note {
   border-radius: 6px;
   margin-left: -1em;
   margin-right: -1em;
@@ -179,7 +193,8 @@ body p, body li {
 
 h1, h2, h3, h4 {
   /* color: #1a566d; */
-  font-family: Impact,Haettenschweiler,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif;
+  font-family: Impact, Ubuntu,Haettenschweiler,Coda,Franklin Gothic Bold,Charcoal,Helvetica Inserat,Bitstream Vera Sans Bold,Arial Black,sans serif;
+  font-weight: normal;
   text-align: center;
   color: rgba(20,30,50,0.6);
   margin-top: 0.5em;
@@ -202,13 +217,19 @@ h1, h2, h3, h4 {
   text-stroke: 1px lightblue;
 }
 
+#innerwrapper[os=linux] h1, 
+#innerwrapper[os=linux] h2, 
+#innerwrapper[os=linux] h3 {
+  font-family: Ubuntu, Charcoal, Charcoal, sans serif;
+  font-weight: bold;
+}
+
 h1 {
   font-size: 25pt;
 }
 
 h2 {
   font-size: 20pt;
-  font-weight: normal;
 }
 
 h3 {

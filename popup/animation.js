@@ -4,7 +4,13 @@ http://jsfiddle.net/realraven2000/rh6k0z34/14/
 
 // add animation to body element (pass 'body' as id)
 async function addAnimation(el) {
-    var exists = document.getElementById('gimmick')
+  let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+  let isExpired = licenseInfo.isExpired,
+      isValid = licenseInfo.isValid;
+      
+  if (isValid && !isExpired) return;
+
+  var exists = document.getElementById('gimmick');
     if (exists) {
       exists.parentNode.removeChild(exists);
       return false;

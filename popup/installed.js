@@ -19,13 +19,7 @@ addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("donate")) {
 	  messenger.Utilities.openLinkExternally("https://quickfolders.org/donate.html#donate");
 	}
-  });  
-
-
-
-  
-
-
+});  
 
 
 
@@ -34,8 +28,7 @@ addEventListener("load", async (event) => {
           browserInfo = await messenger.runtime.getBrowserInfo(),
           addonName = manifest.name, 
           addonVer = manifest.version,
-          appVer = browserInfo.version,
-          hoursWorked = 290;
+          appVer = browserInfo.version;
 
     // force replacement for __MSG_xx__ entities
     // using John's helper method (which calls i18n API)
@@ -84,7 +77,7 @@ addEventListener("load", async (event) => {
       
     updateActions(addonName);
 
-    addAnimation('body');
+    // addAnimation('body');
 
   });  
 

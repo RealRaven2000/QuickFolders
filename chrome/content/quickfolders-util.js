@@ -2024,8 +2024,15 @@ Object.defineProperty(QuickFolders.Util, "Accounts",
   }
 });
 
-
+/*****************************************************
 // code moved from options.js
+/****************************************************/
+var QuickFolders_TabURIregexp = {
+  get _thunderbirdRegExp() {
+    delete this._thunderbirdRegExp;
+    return this._thunderbirdRegExp = new RegExp("^https://quickfolders.org/");
+  }
+};
 // open the new content tab for displaying support info, see
 // https://developer.mozilla.org/en/Thunderbird/Content_Tabs
 var QuickFolders_TabURIopener = {
@@ -2070,6 +2077,7 @@ var QuickFolders_TabURIopener = {
     return true;
   }
 };
+/**************** - from options.js ]]] *************/
 
 
 // the following adds the notifyTools API as a util method to communicate with the background page

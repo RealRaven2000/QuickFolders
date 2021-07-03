@@ -28,21 +28,7 @@
 
         ]
       },
-
-      {
-        "name": "openLinkExternally",
-        "type": "function",
-        "parameters": [
-          {
-            "name": "url",
-            "type": "string",
-            "description": "url to open in browser"
-          }
- 
-
-        ]
-      },
-      
+     
       {
         "name": "showVersionHistory",
         "type": "function",

@@ -16,6 +16,8 @@ var callbacks = [];
    * -> emit a custom event once we are done and let onInstall await that
    */
 
+messenger.LegacyPrefs.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
+
 
 
 messenger.runtime.onInstalled.addListener(async (data) => {
@@ -62,7 +64,7 @@ messenger.runtime.onInstalled.addListener(async (data) => {
         function() {
           messenger.LegacyPrefs.setPref("extensions.quickfolders.hasNews", true);
         },
-        15000
+        10000
       )
     }
     break;
@@ -205,7 +207,6 @@ async function main() {
   });
   
   
-  messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
   
   // Init WindowListener.
   messenger.WindowListener.registerChromeUrl([ 

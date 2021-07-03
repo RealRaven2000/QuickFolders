@@ -95,9 +95,9 @@ QuickFolders.Preferences = {
 	} ,
 
 	get isShowQuickFoldersLabel() {
-		return this.getBoolPref("showQuickfoldersLabel");
+		return this.getBoolPref("showQuickfoldersLabel") || this.getBoolPref("hasNews");
 	} ,
-
+  
 	get isShowUnreadFoldersBold() {
 		return this.getBoolPref("showUnreadFoldersBold");
 	} ,
@@ -269,16 +269,22 @@ QuickFolders.Preferences = {
 
 	get TextQuickfoldersLabel() {
 		const util = QuickFolders.Util;
-		let renewalLabel = (QuickFolders.Util.licenseInfo.isExpired) 
-		     ? util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!")
-				 : "";
+    let overrideLabel = "";
+    // extend this for delivering the news splash when updated!
+    if (this.getBoolPref("hasNews"))
+      overrideLabel = util.getBundleString("qf.notification.newsFlash", "$addonName$ was updated! See what's new…", "QuickFolders");
+    else if (QuickFolders.Util.licenseInfo.isExpired)
+      overrideLabel = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
+    
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
 		  const url = "extensions.quickfolders.textQuickfoldersLabel",
 					  PS = this.service;
 			let customTitle = PS.getStringPref(url);
-			return renewalLabel || customTitle;
+			return overrideLabel || customTitle;
 		}
-		catch(e) { return renewalLabel || 'QuickFolders'; }
+		catch(e) { 
+      return overrideLabel || 'QuickFolders'; 
+    }
 	},
 
   get maxSubjectLength() {

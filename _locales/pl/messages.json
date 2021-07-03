@@ -984,6 +984,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Nie pokazuj tej wiadomości ponownie."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ został zaktualizowany! Zobacz co nowego…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Przedłużenie licencji"
   },
@@ -1039,7 +1048,7 @@
     "message": "Zawsze wyświetlaj obramowanie"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Kliknij prawym przyciskiem, by wyświetlić historię wersji"
+    "message": "Kliknij, aby wyświetlić historię wersji"
   },
   "qf.palette.inactive": {
     "message": "Jak foldery nieaktywne"
@@ -1630,7 +1639,7 @@
     "message": "Odnów licencję."
   },
   "special-offer-content": {
-    "message": "Chroń QuickFolders przed zbliżającą się wersją 91 Thunderbirda i zaoszczędź {boldStart}40%{boldEnd} kupując licencję! Ta oferta specjalna będzie dostępna do {boldStart}18 czerwca{boldEnd}."
+    "message": "Chroń QuickFolders przed zbliżającą się wersją 91 Thunderbirda i zaoszczędź {boldStart}40%{boldEnd} kupując licencję! Ta oferta specjalna będzie dostępna do {boldStart}18 lipca{boldEnd}."
   },
   "special-offer-head": {
     "message": "Przygotuj QuickFolders na przyszłość!"

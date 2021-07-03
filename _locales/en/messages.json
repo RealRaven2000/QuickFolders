@@ -984,6 +984,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Do not show this message again."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ was updated! See what's new…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Extend License"
   },
@@ -1039,7 +1048,7 @@
     "message": "Always Display Borders"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Right-click for version history."
+    "message": "Click for version history."
   },
   "qf.palette.inactive": {
     "message": "Like inactive Tabs"
@@ -1630,7 +1639,7 @@
     "message": "Renew your license."
   },
   "special-offer-content": {
-    "message": "Protect QuickFolders for the imminent Thunderbird version 91 and save {boldStart}40%{boldEnd} buying a license! This special offer will be available until {boldStart}June 18th{boldEnd}."
+    "message": "Protect QuickFolders for the imminent Thunderbird version 91 and save {boldStart}40%{boldEnd} buying a license! This special offer will be available until {boldStart}July 18th{boldEnd}."
   },
   "special-offer-head": {
     "message": "Future Proof QuickFolders!"

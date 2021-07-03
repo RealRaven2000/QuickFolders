@@ -984,6 +984,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Tega sporočila ne prikaži več."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ je bil posodobljen! Poglejte, kaj je novega ...",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Extend License"
   },
@@ -1039,7 +1048,7 @@
     "message": "Vedno prikaži obrobe"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Kliknite z desnim miškinim gumbom za zgodovino različic."
+    "message": "Kliknite za prikaz zgodovine različic."
   },
   "qf.palette.inactive": {
     "message": "Kot nedejavni zavihki"
@@ -1630,7 +1639,7 @@
     "message": "Obnovite licenco."
   },
   "special-offer-content": {
-    "message": "Zaščitite QuickFolders za bližnjo različico Thunderbird 91 in prihranite {boldStart} 40% {boldEnd} pri nakupu licence! Ta posebna ponudba bo na voljo do {boldStart} 18. junija {boldEnd}."
+    "message": "Zaščitite QuickFolders za bližnjo različico Thunderbird 91 in prihranite {boldStart} 40% {boldEnd} pri nakupu licence! Ta posebna ponudba bo na voljo do {boldStart} 18. julija {boldEnd}."
   },
   "special-offer-head": {
     "message": "Naj bodo QuickFolders prihodnji dokaz!"

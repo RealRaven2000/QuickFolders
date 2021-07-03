@@ -113,6 +113,15 @@
   "purchase-heading" : {
     "message" : "Lisenssin ostaminen!"
   }, 
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ päivitettiin! Katso mitä uutta…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },  
   "renew-your-license" : {
     "message" : "Uusi lisenssi."
   },    
@@ -123,7 +132,7 @@
     "message": "{boldStart} Hyvä {name} {boldEnd}, jos sinulla ei vielä ole käyttöoikeutta, harkitse QuickFolder-kansioiden tukemista jatkossa. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!"
   } , 
   "special-offer-content" : {
-    "message": "Suojaa pikakansiot välittömältä Thunderbird-versiolta 91 ja säästä {boldStart} 40% {boldEnd} ostamalla lisenssi! Tämä erikoistarjous on saatavilla {boldStart} 18. kesäkuuta {boldEnd} asti."
+    "message": "Suojaa pikakansiot välittömältä Thunderbird-versiolta 91 ja säästä {boldStart} 40% {boldEnd} ostamalla lisenssi! Tämä erikoistarjous on saatavilla {boldStart} 18. heinäkuuta {boldEnd} asti."
   }, 
   "support-preference" : {
     "message": "Tämä on ensisijainen tapa tukea $addonName$.",

@@ -53,10 +53,12 @@ messenger.runtime.onInstalled.addListener(async (data) => {
           if (isDebug) console.log("QuickFolders License - " + gpdays  + " Days left.");
         }
       } 
-      let delayMinutes = await messenger.LegacyPrefs.getPref("extensions.quickfolders.splash.delay");
-      console.log("Delay for splash screen:" + delayMinutes);
+      // let delayMinutes = await messenger.LegacyPrefs.getPref("extensions.quickfolders.splash.delay");
+      console.log("Arming for splash screen....");
+      // set a flag which will be cleared by clicking the [QuickFolders] button once
+      messenger.LegacyPrefs.setPref("extensions.quickfolders.hasNews", true);
       // let's wait 12 minutes
-      showSplash(delayMinutes);
+      // showSplash(delayMinutes);
       // future solution - use browser.idle.onStateChanged.addListener to set an idle timer for say 5 mins, then once the user has been idle for so long, pop up the dialog
     }
     break;

@@ -231,7 +231,7 @@ pref("extensions.quickfolders.commandMenu.icon", false);
 pref("extensions.quickfolders.tabIcons.defaultPath","");
 pref("extensions.quickfolders.commandMenu.support", true);
 pref("extensions.quickfolders.commandMenu.help", true);
-
+pref("extensions.quickfolders.hasNews", false); /* splash screen status after update */
 pref("extensions.quickfolders.hideVersionOnUpdate", false);
 pref("extensions.quickfolders.folderTree.icons", true);
 pref("extensions.quickfolders.folderTree.icons.injectCSS", true);

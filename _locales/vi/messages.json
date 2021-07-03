@@ -984,6 +984,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Không hiển thị thông báo này nữa."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ đã được cập nhật! Xem có gì mới…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Extend License"
   },
@@ -1039,7 +1048,7 @@
     "message": "Luôn hiển thị các đường biên"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Nhấp chuột phải để xem các phiên bản trước."
+    "message": "Nhấp để hiển thị lịch sử phiên bản."
   },
   "qf.palette.inactive": {
     "message": "Like inactive Tabs"
@@ -1630,7 +1639,7 @@
     "message": "Gia hạn giấy phép của bạn."
   },
   "special-offer-content": {
-    "message": "Bảo vệ QuickFolders cho phiên bản Thunderbird 91 sắp ra mắt và tiết kiệm {boldStart} 40% {boldEnd} khi mua giấy phép! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 18 tháng 6 {boldEnd}."
+    "message": "Bảo vệ QuickFolders cho phiên bản Thunderbird 91 sắp ra mắt và tiết kiệm {boldStart} 40% {boldEnd} khi mua giấy phép! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 18 tháng 7 {boldEnd}."
   },
   "special-offer-head": {
     "message": "Làm cho QuickFolders bằng chứng trong tương lai!"

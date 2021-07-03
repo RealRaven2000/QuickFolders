@@ -964,6 +964,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Ne mutassa újra ezt az üzenetet."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ frissítve! Nézze meg az újdonságokat…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Bővítse a licencet"
   },
@@ -1019,7 +1028,7 @@
     "message": "Mindig jelenítse meg a szegélyeket"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "A programverziók közti változások megjelenítéséhez kattintson jobb gombbal."
+    "message": "Kattintson a verzióelőzmények megjelenítéséhez."
   },
   "qf.palette.inactive": {
     "message": "Like inactive Tabs"
@@ -1610,7 +1619,7 @@
     "message": "Újítsa meg a licencét."
   },
   "special-offer-content": {
-    "message": "Védje a gyorsmappákat a küszöbön álló Thunderbird 91-es verziótól, és licencet vásárolva megtakaríthatja a {boldStart} 40% -ot {boldEnd}! Ez a különleges ajánlat {boldStart} június 18-ig {boldEnd} lesz elérhető."
+    "message": "Védje a gyorsmappákat a küszöbön álló Thunderbird 91-es verziótól, és licencet vásárolva megtakaríthatja a {boldStart} 40% -ot {boldEnd}! Ez a különleges ajánlat {boldStart} július 18-ig {boldEnd} lesz elérhető."
   },
   "special-offer-head": {
     "message": "Jövőbeli bizonyíték QuickFolders!"

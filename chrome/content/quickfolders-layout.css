@@ -455,6 +455,25 @@ menupopup.widerMenu menucaption {
 	to {box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.25);}
 }
 
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
+	background-color: #006EB7 !important; /* blue */
+	background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
+  border-radius: 2px !important;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash label {
+	color: rgb(255,255,255) !important;
+  font-size: 1.1em;
+}
+
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash:hover {
+	background-color: #ffd65e !important; /* yellow */
+	background-image: linear-gradient(to bottom, #fff65e 0%,#febf04 100%) !important;
+}
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash:hover label {
+	color: rgb(60,0,0) !important;
+}
 
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
 	animation: quickfoldersRenew 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);

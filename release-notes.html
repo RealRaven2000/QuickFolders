@@ -1,4 +1,4 @@
-<b>Release 5.6</b>
+<b>Release 5.6.1</b>
 <ul>
 <li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li>
 <li>You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li>
@@ -7,6 +7,7 @@
 
 <b>Improvements</b>
 <ul>
+<li> The update splash screen will now not be displayed automatically anymore. Instead there will be a message on the QuickFolders button which can be clicked once to read the latest news. There is also a new entry "Show Splash screen" on the QuickFolders tools menu</li>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/155">[issue 155]</a> Support entering multiple words in a search string to find longer folder names that are composited, such as "Fred.Flintstone" "Invoices June 2020" "Research+Development". These can now be found by entering the starting letters of the words within the folder name, in any order. e.g. "f f" "2020 inv" "Dev Res". The following characters are regarded as word boundaries and don't need to be typed:
 _ . - + & @
 

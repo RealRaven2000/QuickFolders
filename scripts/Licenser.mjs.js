@@ -386,7 +386,7 @@ export class Licenser {
     // check mail accounts for setting
     // if not found return MailNotConfigured
     
-    let accounts = await messenger.accounts.list(); // [bug 1630786] permissions prevent users from updating
+    let accounts = await messenger.ex_accounts.list(); // [bug 1630786] permissions prevent users from updating
     let AllowFallbackToSecondaryIdentiy = false;
 
     if (this.key_type == 0) {
@@ -396,7 +396,7 @@ export class Licenser {
       } else {
         let hasDefaultIdentity = false;
         for (let account of accounts) {
-          let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id); // [bug 1630786] permissions prevent users from updating
+          let defaultIdentity = await messenger.ex_accounts.getDefaultIdentity(account.id); // [bug 1630786] permissions prevent users from updating
           if (defaultIdentity) {
             hasDefaultIdentity = true;
             break;
@@ -413,7 +413,7 @@ export class Licenser {
     }
     
     for (let account of accounts) {
-      let defaultIdentity = await messenger.accounts.getDefaultIdentity(account.id); // [bug 1630786] permissions prevent users from updating
+      let defaultIdentity = await messenger.ex_accounts.getDefaultIdentity(account.id); // [bug 1630786] permissions prevent users from updating
       if (defaultIdentity && !this.ForceSecondaryIdentity) {
 
         this.logDebug("QuickFolders Licenser", {

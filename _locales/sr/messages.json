@@ -984,6 +984,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Убудуће не приказуј ову поруку."
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ је ажуриран! Погледајте шта је ново ...",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Extend License"
   },
@@ -1039,7 +1048,7 @@
     "message": "Увек приказуј оквире"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Притисните десни клик да бисте видели историјат верзија."
+    "message": "Кликните да бисте приказали историју верзија."
   },
   "qf.palette.inactive": {
     "message": "као неактивни језичци"
@@ -1630,7 +1639,7 @@
     "message": "Обновите лиценцу."
   },
   "special-offer-content": {
-    "message": "Заштитите КуицкФолдерс за предстојећу Тхундербирд верзију 91 и уштедите {boldStart} 40% {boldEnd} купујући лиценцу! Ова посебна понуда биће доступна до {boldStart} 18. јуна {boldEnd}."
+    "message": "Заштитите КуицкФолдерс за предстојећу Тхундербирд верзију 91 и уштедите {boldStart} 40% {boldEnd} купујући лиценцу! Ова посебна понуда биће доступна до {boldStart} 18. јула {boldEnd}."
   },
   "special-offer-head": {
     "message": "Нека QuickFolders буду будући доказ!"

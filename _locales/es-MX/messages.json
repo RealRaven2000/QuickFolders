@@ -877,6 +877,15 @@
   "qf.notification.dontShowAgain": {
     "message": "No mostrar este mensaje de nuevo."
   },
+  "qf.notification.newsFlash": {
+    "message": "¡$addonName$ fue actualizado! Ver qué hay de nuevo…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Licencia extendida"
   },
@@ -932,7 +941,7 @@
     "message": "Siempre muestra bordes"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "clic con el botón derecho para ver la historia de versiones."
+    "message": "Haga clic para mostrar el historial de versiones"
   },
   "qf.palette.inactive": {
     "message": "Como las pestañas inactivas"

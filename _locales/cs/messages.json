@@ -110,6 +110,15 @@
   "purchase-heading": {
     "message" : "Nákup licence!"
   }, 
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ bylo aktualizováno! Podívejte se, co je nového…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "renew-your-license": {
     "message" : "Obnovte si licenci."
   },  
@@ -120,7 +129,7 @@
     "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory QuickFolders pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
   },  
   "special-offer-content": {
-    "message": "Chraňte QuickFolders pro hrozící verzi Thunderbirdu 91 a ušetřete {boldStart} 40% {boldEnd} nákupem licence! Tato speciální nabídka bude k dispozici do {boldStart} 18. Června {boldEnd}."
+    "message": "Chraňte QuickFolders pro hrozící verzi Thunderbirdu 91 a ušetřete {boldStart} 40% {boldEnd} nákupem licence! Tato speciální nabídka bude k dispozici do {boldStart} 18. Července {boldEnd}."
   },
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",

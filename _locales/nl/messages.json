@@ -984,6 +984,15 @@
   "qf.notification.dontShowAgain": {
     "message": "Dit bericht niet meer tonen"
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ is bijgewerkt! Zie wat nieuw is…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "Licentie verlengen"
   },
@@ -1039,7 +1048,7 @@
     "message": "Randen altijd weergeven"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Klik met rechts voor versiegeschiedenis."
+    "message": "Klik om de versiegeschiedenis weer te geven."
   },
   "qf.palette.inactive": {
     "message": "Zoals inactieve tabbladen"
@@ -1630,7 +1639,7 @@
     "message": "Verleng uw licentie."
   },
   "special-offer-content": {
-    "message": "Bescherm QuickFolders voor de naderende Thunderbird-versie 91 en bespaar {boldStart}40%{boldEnd} door een licentie te kopen! Deze speciale aanbieding is geldig tot {boldStart}18 juni{boldEnd}."
+    "message": "Bescherm QuickFolders voor de naderende Thunderbird-versie 91 en bespaar {boldStart}40%{boldEnd} door een licentie te kopen! Deze speciale aanbieding is geldig tot {boldStart}18 juli{boldEnd}."
   },
   "special-offer-head": {
     "message": "Maak QuickFolders toekomstbestendig!"

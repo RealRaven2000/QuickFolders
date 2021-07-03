@@ -492,7 +492,11 @@ QuickFolders.Interface = {
 
 			quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
 			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
-			if (QuickFolders.Util.licenseInfo.isExpired) {
+      if (prefs.getBoolPref("hasNews")) {
+				quickFoldersLabel.classList.add("newsflash");
+				quickFoldersLabel.setAttribute("tooltiptext", "Show the Splash screen once!");
+      }
+			else if (QuickFolders.Util.licenseInfo.isExpired) {
 				quickFoldersLabel.classList.add("expired");
 				let txtExpired =
 				  util.getBundleString("qf.premium.renewLicense.tooltip","Your license expired {1} days ago")
@@ -502,6 +506,7 @@ QuickFolders.Interface = {
 			else {
 				quickFoldersLabel.removeAttribute("tooltiptext");
 				quickFoldersLabel.classList.remove("expired");
+				quickFoldersLabel.classList.remove("newsflash");
 			}
 			qfLabelBox.collapsed = !showLabelBox;
 			qfLabelBox.style.width = showLabelBox ? "auto" : "0px";
@@ -6798,7 +6803,13 @@ QuickFolders.Interface = {
 
 	clickTitleLabel: function clickTitleLabel(btn) {
 	  const util = QuickFolders.Util;
-		if (QuickFolders.Util.licenseInfo.isExpired) {
+    if (QuickFolders.Preferences.getBoolPref("hasNews")) {
+      QuickFolders.Interface.viewSplash();
+      QuickFolders.Preferences.setBoolPref("hasNews", false); // reset
+      // send a notification to update all windows!
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" }); 
+    }
+		else if (QuickFolders.Util.licenseInfo.isExpired) {
 			QuickFolders.Interface.showLicenseDialog("mainLabelRenewal");
 		}
 		else { // get context Menu as normal

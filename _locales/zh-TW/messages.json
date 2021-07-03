@@ -984,6 +984,15 @@
   "qf.notification.dontShowAgain": {
     "message": "不再顯示這個訊息。"
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ 已更新！ 看看有什麼新鮮事……",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "展延購買憑證"
   },
@@ -1039,7 +1048,7 @@
     "message": "總是顯示邊界"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "以滑鼠右鍵點選以顯示版本歷史"
+    "message": "單擊以顯示版本歷史記錄"
   },
   "qf.palette.inactive": {
     "message": "像非作用中分頁"
@@ -1630,7 +1639,7 @@
     "message": "續訂您的許可證。"
   },
   "special-offer-content": {
-    "message": "為即將推出的 Thunderbird 91 版保護 QuickFolders 並節省 {boldStart}40%{boldEnd} 購買許可證！ 此特別優惠將持續到 {boldStart}6 月 18 日{boldEnd}。"
+    "message": "為即將推出的 Thunderbird 91 版保護 QuickFolders 並節省 {boldStart}40%{boldEnd} 購買許可證！ 此特別優惠將持續到 {boldStart}7 月 18 日{boldEnd}。"
   },
   "special-offer-head": {
     "message": "使QuickFolders成為未來的證明！"

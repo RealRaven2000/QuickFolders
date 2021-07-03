@@ -984,6 +984,15 @@
   "qf.notification.dontShowAgain": {
     "message": "今後はこのメッセージを表示しない。"
   },
+  "qf.notification.newsFlash": {
+    "message": "$addonName$ が更新されました！ 新機能を見る…",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "qf.notification.premium.btn.extendLicense": {
     "message": "ライセンスを延長"
   },
@@ -1039,7 +1048,7 @@
     "message": "常に境界線を表示する"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "右クリックでバージョン履歴を表示します。"
+    "message": "クリックしてバージョン履歴を表示。"
   },
   "qf.palette.inactive": {
     "message": "アクティブでないタブの色"
@@ -1630,7 +1639,7 @@
     "message": "ライセンスを更新する。"
   },
   "special-offer-content": {
-    "message": "差し迫ったThunderbirdバージョン91のQuickFoldersを保護し、ライセンスの購入を{boldStart} 40％{boldEnd}節約しましょう！ この特別オファーは、{boldStart} 6月18日{boldEnd}までご利用いただけます。"
+    "message": "差し迫ったThunderbirdバージョン91のQuickFoldersを保護し、ライセンスの購入を{boldStart} 40％{boldEnd}節約しましょう！ この特別オファーは、{boldStart} 7月18日{boldEnd}までご利用いただけます。"
   },
   "special-offer-head": {
     "message": "QuickFoldersを将来の証拠にしましょう！"

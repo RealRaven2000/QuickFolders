@@ -147,7 +147,7 @@ export class Licenser {
 	get graceDate() {
 		let graceDate = "", isResetDate = false;
 		try {
-			graceDate = prefs.getStringPref("license.gracePeriodDate");
+			graceDate = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getStringPref("license.gracePeriodDate");
 		}
 		catch(ex) { 
 			isResetDate = true; 

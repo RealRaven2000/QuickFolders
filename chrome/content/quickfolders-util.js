@@ -308,6 +308,7 @@ QuickFolders.Util = {
   // goal - take validation out and put it into an async function
   
   hasPremiumLicense: function hasPremiumLicense() {
+    if (!QuickFolders.Util.licenseInfo) return false;
     return QuickFolders.Util.licenseInfo.status == "Valid";
   },
   

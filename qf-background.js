@@ -16,6 +16,8 @@ var callbacks = [];
    * -> emit a custom event once we are done and let onInstall await that
    */
 
+
+
 messenger.runtime.onInstalled.addListener(async (data) => {
   let { reason, temporary } = data,
       isDebug = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug");
@@ -53,13 +55,15 @@ messenger.runtime.onInstalled.addListener(async (data) => {
           if (isDebug) console.log("QuickFolders License - " + gpdays  + " Days left.");
         }
       } 
-      // let delayMinutes = await messenger.LegacyPrefs.getPref("extensions.quickfolders.splash.delay");
+
       console.log("Arming for splash screen....");
       // set a flag which will be cleared by clicking the [QuickFolders] button once
-      messenger.LegacyPrefs.setPref("extensions.quickfolders.hasNews", true);
-      // let's wait 12 minutes
-      // showSplash(delayMinutes);
-      // future solution - use browser.idle.onStateChanged.addListener to set an idle timer for say 5 mins, then once the user has been idle for so long, pop up the dialog
+      setTimeout(
+        function() {
+          messenger.LegacyPrefs.setPref("extensions.quickfolders.hasNews", true);
+        },
+        15000
+      )
     }
     break;
   // see below
@@ -81,10 +85,11 @@ function showSplash(timeout = 0) {
 
 async function main() {
   const legacy_root = "extensions.quickfolders.";
-  let key = await messenger.LegacyPrefs.getPref(legacy_root + "LicenseKey"),
-      forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity"),
-      isDebug = await messenger.LegacyPrefs.getPref(legacy_root + "debug"),
-      isDebugLicenser = await messenger.LegacyPrefs.getPref(legacy_root + "debug.premium.licenser");
+  let key = await messenger.LegacyPrefs.getPref(legacy_root + "LicenseKey", ""),
+      forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity") || false,
+      isDebug = await messenger.LegacyPrefs.getPref(legacy_root + "debug")  || false,
+      isDebugLicenser = await messenger.LegacyPrefs.getPref(legacy_root + "debug.premium.licenser")  || false;
+
       
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();
@@ -198,6 +203,7 @@ async function main() {
         return true;
     }
   });
+  
   
   messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
   

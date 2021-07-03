@@ -250,7 +250,7 @@ pref("extensions.quickfolders.quickMove.premium.silentMode", false);
 pref("extensions.quickfolders.quickMove.premium.escapeClearsList", false); // [issue 134] 
 pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");
 pref("extensions.quickfolders.quickMove.premium.lockInAccount", false);
-pref("extensions.quickfolders.quickMove.maxResults",25);
+pref("extensions.quickfolders.quickMove.maxResults", 25);
 
 /* popupProFeature( ) counts how often these features are used */
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
@@ -265,8 +265,6 @@ pref("extensions.quickfolders.premium.tabSeparator.usage", 0);
 pref("extensions.quickfolders.licenser.forceSecondaryIdentity",false);
 pref("extensions.quickfolders.license.gracePeriodDate",""); // for future use.
 pref("extensions.quickfolders.LicenseKey", "");
-pref("extensions.quickfolders.premium.encryptionKey", ""); /* use for generating new keys */
 pref("extensions.quickfolders.menuMessageList.maxSubjectLength", 40);
-pref("extensions.quickfolders.splash.delay", 12); /* minutes delay to avoid users being overwhelmed on startup */
 /** obsolete **/
 

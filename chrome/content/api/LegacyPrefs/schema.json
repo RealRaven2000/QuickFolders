@@ -22,17 +22,6 @@
     ],
     "functions": [
       {
-        "name": "registerDefaultPrefs",
-        "type": "function",
-        "parameters": [
-          {
-            "name": "aPath",
-            "type": "string",
-            "description": "Relative path to the default file."
-          }
-        ]
-      },
-      {
         "name": "setObservingBranch",
         "type": "function",
         "async": true,

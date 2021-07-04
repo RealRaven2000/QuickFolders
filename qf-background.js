@@ -58,11 +58,11 @@ messenger.runtime.onInstalled.addListener(async (data) => {
         }
       } 
 
-      console.log("Arming for splash screen....");
       // set a flag which will be cleared by clicking the [QuickFolders] button once
       setTimeout(
         function() {
           messenger.LegacyPrefs.setPref("extensions.quickfolders.hasNews", true);
+          messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
         },
         10000
       )

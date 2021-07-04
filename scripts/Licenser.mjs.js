@@ -168,9 +168,11 @@ export class Licenser {
 			}
 		}
 		if (isResetDate) {
-      Components.classes["@mozilla.org/preferences-service;1"]
-             .getService(Components.interfaces.nsIPrefBranch)
-			       .setStringPref("extensions.quickfolders.license.gracePeriodDate", graceDate);
+      /* TO DO!! */
+//    await messenger.LegacyPrefs.setPref("extensions.quickfolders.license.gracePeriodDate", graceDate);
+//      Components.classes["@mozilla.org/preferences-service;1"]
+//             .getService(Components.interfaces.nsIPrefBranch)
+//			       .setStringPref("extensions.quickfolders.license.gracePeriodDate", graceDate);
     }
 		// log("Returning Grace Period Date: " + graceDate);
 		return graceDate;
@@ -188,9 +190,12 @@ export class Licenser {
       else {
         try {
           graceDate = 
-           Components.classes["@mozilla.org/preferences-service;1"]
-             .getService(Components.interfaces.nsIPrefBranch)
-             .getStringPref("extensions.quickfolders.license.gracePeriodDate");
+            ""; // dummy
+      /* TO DO!! */
+//            await messenger.LegacyPrefs.getPref("extensions.quickfolders.license.gracePeriodDate");
+//           Components.classes["@mozilla.org/preferences-service;1"]
+//             .getService(Components.interfaces.nsIPrefBranch)
+//             .getStringPref("extensions.quickfolders.license.gracePeriodDate");
         }
         catch (e) {graceDate = ""}
       }

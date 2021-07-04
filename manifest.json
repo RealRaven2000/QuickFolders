@@ -61,8 +61,8 @@
       "parent": {
         "scopes": ["addon_parent"],
         "paths": [["NotifyTools"]],
-        "script": "chrome/content/api/NotifyTools/implementation.js"
-
+        "script": "chrome/content/api/NotifyTools/implementation.js",
+        "events": ["startup"]
       }
     },
     "Utilities": {

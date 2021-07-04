@@ -16,7 +16,7 @@ var callbacks = [];
    * -> emit a custom event once we are done and let onInstall await that
    */
 
-messenger.LegacyPrefs.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
+messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
 
 
 

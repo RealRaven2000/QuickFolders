@@ -264,7 +264,7 @@ QuickFolders.AdvancedTab = {
 		
     // refresh the model
     // QuickFolders.Interface.updateFolders(false, true);
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QuickFolders.Interface.updateMainWindow();
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
     this.MainQuickFolders.Model.store(); 
 		this.updateCSSpreview();
   } ,

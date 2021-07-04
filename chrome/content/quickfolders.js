@@ -878,7 +878,7 @@ var QuickFolders = {
 			util.logException('init: folderEntries', ex);
 		}
     finally {
-      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QI.updateMainWindow();  
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
       // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
       // make sure tabs not in active category are hidden - this at least doesn't happen if we load the extension from the debugging tab
       if (QI.currentActiveCategories) {

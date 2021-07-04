@@ -671,6 +671,7 @@ QuickFolders.Interface = {
   
   // more comprehensive function to update both folder look and all styles (will be called from Options dialog via event listener)
   updateFoldersUI: function () {
+    QuickFolders.Util.logDebug("updateFoldersUI()...");
     QuickFolders.Interface.updateFolders(true, false);
 		QuickFolders.Interface.updateUserStyles();
   },
@@ -912,6 +913,7 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences;
 
+    util.logDebug("updateMainWindow()...");
 		if (prefs.isDebugOption("interface.update")) debugger;
 		logCSS("============================\n" + "updateMainWindow…");
 		let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
@@ -5721,7 +5723,7 @@ QuickFolders.Interface = {
 							cp.value = "#FFFFFF";
 						}
 						prefs.setUserStyle(styleKey, "background-color", "rgb(255,255,255)");
-            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QI.updateMainWindow();
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
 					}
           if (styleKey == "InactiveTab")
             this.applyTabStyle(document.getElementById("inactivetabs-label"), prefs.ColoredTabStyle);
@@ -5731,7 +5733,7 @@ QuickFolders.Interface = {
           }
           if (disableColorChangeStriped) {
             // force update as it might have been missed!
-            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); // QI.updateMainWindow(true);
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
           }
 					return; // early exit
 			} // end switch
@@ -5790,7 +5792,7 @@ QuickFolders.Interface = {
 		if (!sheet) {
 			debugger;
 			sheet = QuickFolders.Styles.getMyStyleSheet(Name, Title);
-			QuickFolders.Util.logToConsole("updateUserStyles() - missing style sheet '" +  Name + "' - not found = not attempting any style modifications.");
+			QuickFolders.Util.logToConsole("ensureStyleSheetLoaded() - missing style sheet '" +  Name + "' - not found = not attempting any style modifications.");
 		}
 		return sheet;
 	} ,

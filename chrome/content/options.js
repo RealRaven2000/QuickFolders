@@ -906,7 +906,7 @@ QuickFolders.Options = {
   
   applyOrdinalPosition: function applyOrdinalPosition() {
     // refresh the toolbar button in main window(s)
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); // QuickFolders.Interface.updateMainWindow(true);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
   } ,
   
   // change background color for current folder bar
@@ -959,6 +959,7 @@ QuickFolders.Options = {
   
   styleUpdate: function styleUpdate(elementName, elementStyle, styleValue, label ) {
     let util = QuickFolders.Util;
+    util.logDebug("styleUpdate(" + elementName + ")...");
     util.logDebugOptional('interface.buttonStyles', 'styleUpdate(' + elementName + ', ' + elementStyle + ', ' + styleValue + ')');
     QuickFolders.Preferences.setUserStyle(elementName, elementStyle, styleValue);
     if (label) {
@@ -973,8 +974,6 @@ QuickFolders.Options = {
       }
     }
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
-                  // let updateResult = QuickFolders.Interface.updateMainWindow(true);
-                  // util.logDebugOptional('interface.buttonStyles', 'styleUpdate() updateMainWindow returned ' + updateResult);
     return true;  // return updateResult;
   },
 
@@ -990,7 +989,7 @@ QuickFolders.Options = {
     if (!force && prefs.getIntPref("colorTabStyle") == styleId)
       return; // no change!
     prefs.setIntPref("colorTabStyle", styleId); // 0 striped 1 filled
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QI.updateMainWindow(false);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
     
     let inactiveTab = document.getElementById('inactivetabs-label');
     QI.applyTabStyle(inactiveTab, styleId);
@@ -1157,7 +1156,6 @@ QuickFolders.Options = {
       QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
     
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
-    // return QuickFolders.Interface.updateMainWindow(false);
     return true;
   },
   
@@ -1183,7 +1181,6 @@ QuickFolders.Options = {
       return true;
     }
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // force full update
-    // return QI.updateMainWindow(false); 
     return true;
   },
   
@@ -1199,7 +1196,6 @@ QuickFolders.Options = {
       QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
     
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
-    // return QuickFolders.Interface.updateMainWindow(true);
     return true;
   },
   
@@ -1241,7 +1237,7 @@ QuickFolders.Options = {
     this.initPreviewTabStyles();
     
     if (withUpdate) {
-      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow" }); // QuickFolders.Interface.updateMainWindow();
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow" }); 
     }
   },
 
@@ -1250,7 +1246,7 @@ QuickFolders.Options = {
         myStyle = !isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
     el.style.MozBoxShadow = myStyle;
     QuickFolders.Preferences.setBoolPref('buttonShadows', !isChecked);
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); // return QuickFolders.Interface.updateMainWindow(true);
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
     return true;
   },
 
@@ -1284,7 +1280,7 @@ QuickFolders.Options = {
     getElement("inactivetabs-label").style.backgroundColor = buttonfaceColor;
     getElement("inactive-fontcolorpicker").value = buttontextColor;
     getElement("inactivetabs-label").style.color = buttontextColor;
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // return QuickFolders.Interface.updateMainWindow();
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
     return true;
   },
 
@@ -1455,7 +1451,7 @@ QuickFolders.Options = {
     if (updateUI) {
       // make sure QuickFolders UI is updated when about:config is closed.
       w.addEventListener('unload', function(event) { 
-        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // QuickFolders.Interface.updateMainWindow(); 
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
       });
     }
     w.focus();

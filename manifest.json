@@ -9,7 +9,7 @@
   "author": "Axel Grude, Klaus Buecher/opto",
   "name" : "QuickFolders",
   "description" : "__MSG_extensionDescription__",
-  "version" : "5.6.2",
+  "version" : "5.6.4",
   "default_locale": "en",
   "developer" : {
       "name" : "Axel Grude, Klaus Buecher/opto",
@@ -61,8 +61,8 @@
       "parent": {
         "scopes": ["addon_parent"],
         "paths": [["NotifyTools"]],
-        "script": "chrome/content/api/NotifyTools/implementation.js",
-        "events": ["startup"]
+        "script": "chrome/content/api/NotifyTools/implementation.js"
+
       }
     },
     "Utilities": {

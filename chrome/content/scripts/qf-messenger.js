@@ -530,7 +530,7 @@ async function onLoad(activatedWhileWindowOpen) {
   window.addEventListener("QuickFolders.BackgroundUpdate.toggleNavigationBar", QI.displayNavigationToolbar.bind(QI));
   window.addEventListener("QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", QI.updateQuickFoldersLabel.bind(QI));
   window.addEventListener("QuickFolders.BackgroundUpdate.updateCategoryBox", QI.updateCategoryLayout.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateMainWindow", QI.updateMainWindow.bind(QI)); // need to add a parameter here, how to?
+  window.addEventListener("QuickFolders.BackgroundUpdate.updateMainWindow", QI.updateMainWindow.bind(QI), false); // need to add a parameter here, how to?
   window.addEventListener("QuickFolders.BackgroundUpdate.initKeyListeners", window.QuickFolders.initKeyListeners.bind(window.QuickFolders))
   
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!
@@ -539,15 +539,15 @@ async function onLoad(activatedWhileWindowOpen) {
 function onUnload(isAddOnShutDown) {
   // Disable the global notify notifications from background.
   window.QuickFolders.Util.notifyTools.disable();
+  window.removeEventListener("QuickFolders.BackgroundUpdate.updateMainWindow", window.QuickFolders.Interface.updateMainWindow);
   window.removeEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
+  window.removeEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", window.QuickFolders.Interface.updateUserStyles);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateFoldersUI", window.QuickFolders.Interface.updateFoldersUI);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateAllTabs", window.QuickFolders.Interface.updateAllTabs);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", window.QuickFolders.Interface.updateUserStyles);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateNavigationBar", window.QuickFolders.Interface.updateNavigationBar);
   window.removeEventListener("QuickFolders.BackgroundUpdate.toggleNavigationBar", window.QuickFolders.Interface.displayNavigationToolbar);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", window.QuickFolders.Interface.updateQuickFoldersLabel);
   window.removeEventListener("QuickFolders.BackgroundUpdate.updateCategoryBox", window.QuickFolders.Interface.updateQuickFoldersLabel);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateMainWindow", window.QuickFolders.Interface.updateMainWindow);
   window.removeEventListener("QuickFolders.BackgroundUpdate.initKeyListeners", window.QuickFolders.initKeyListeners);
   
   // restore global overwritten functions 

@@ -153,9 +153,8 @@ async function main() {
         
       case "updateFoldersUI": // replace observer
         messenger.NotifyTools.notifyExperiment(
-          { event: "updateFoldersUI", 
-            window: ["chrome://messenger/content/messenger.xhtml"]}
-        );
+          { event: "updateFoldersUI"}
+        ); // omit 2nd parameter -  window: ["chrome://messenger/content/messenger.xhtml"]
         break;
         
       case "updateAllTabs": 

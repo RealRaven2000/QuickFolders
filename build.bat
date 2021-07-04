@@ -8,4 +8,4 @@ pwsh -Command "(gc -en UTF8NoBOM manifest.json) -replace 'pre%oldRev%', 'pre%qui
 echo %quickFoldersRev% > revision.txt
 move QuickFolders*.xpi "..\..\..\Release\_Test Versions\5.6\"
 pwsh -Command "Start-Sleep -m 150"
-rename QuickFoldersWeb.zip QuickFolders-mx-5.6.2pre%quickFoldersRev%.xpi
+rename QuickFoldersWeb.zip QuickFolders-mx-5.6.4pre%quickFoldersRev%.xpi

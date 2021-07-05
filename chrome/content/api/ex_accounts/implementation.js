@@ -175,7 +175,6 @@ var ex_accounts = class extends ExtensionAPI {
     return {
       ex_accounts: {
         async list() {
-          debugger;
           let accounts = [];
           for (let account of MailServices.accounts.accounts) {
             account = convertAccount(account);

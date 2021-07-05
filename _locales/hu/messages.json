@@ -1682,7 +1682,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Jelentős új keresési funkciókkal bővült a quickMove / quickJump funkció. Ha segítségre van szüksége ezekről, kattintson a keresési mező jobb oldalán található [?] Szimbólumra. {L2}{L1} Ezt a képernyőt most megnyithatja a QuickFolders eszközök menüjéből. {L2}{L1} Több Thunderbird ablak támogatása javult. {L2} {L1} Az eszköztárak jobb olvashatósága Linux alatt {L2} {L1} [mail kiterjesztés migrálása] A licenckönyvtárat háttér szkriptbe költöztették. Ha bármilyen probléma merül fel az engedélyezéssel kapcsolatban, kérjük, lépjen kapcsolatba velem a támogatási fülön keresztül! {L2}"
+    "message": "{L1} Jelentős új keresési funkciókkal bővült a quickMove / quickJump funkció. Ha segítségre van szüksége ezekről, kattintson a keresési mező jobb oldalán található [?] Szimbólumra. {L2}{L1} Javítva az 5.6.5 verzióban - a quickMove eredmény elérési útjai helytelenül csak az utolsó 2 mappát mutatták, ha csak egyetlen keresőszót adott meg. {L2}{L1} Ezt a képernyőt most megnyithatja a QuickFolders eszközök menüjéből. {L2}{L1} Több Thunderbird ablak támogatása javult. {L2} {L1} Az eszköztárak jobb olvashatósága Linux alatt {L2} {L1} [mail kiterjesztés migrálása] A licenckönyvtárat háttér szkriptbe költöztették. Ha bármilyen probléma merül fel az engedélyezéssel kapcsolatban, kérjük, lépjen kapcsolatba velem a támogatási fülön keresztül! {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

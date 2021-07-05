@@ -1644,7 +1644,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message" : "{L1} S'han afegit noves funcions de cerca significatives a la funció quickMove / quickJump. Per obtenir ajuda, feu clic al símbol [?] Situat a la dreta del camp de cerca. {L2}{L1} Ara podeu obrir aquesta pantalla des del menú d'eines de QuickFolders. {L2}{L1} Millora de la compatibilitat amb diverses finestres del Thunderbird. {L2} {L1} Millora de la llegibilitat de les barres d'eines a Linux {L2} {L1} [migració de l'extensió de correu] La biblioteca de llicències s'ha migrat a un script de fons. Si teniu algun problema relacionat amb la concessió de llicències, poseu-vos en contacte amb mi a través de la pestanya d'assistència. {L2}"
+    "message" : "{L1} S'han afegit noves funcions de cerca significatives a la funció quickMove / quickJump. Per obtenir ajuda, feu clic al símbol [?] Situat a la dreta del camp de cerca. {L2}{L1} S'ha corregit el 5.6.5: les rutes de resultats de QuickMove només mostraven les darreres 2 carpetes quan només s'introdueix una sola paraula de cerca. {L2}{L1} Ara podeu obrir aquesta pantalla des del menú d'eines de QuickFolders. {L2}{L1} Millora de la compatibilitat amb diverses finestres del Thunderbird. {L2} {L1} Millora de la llegibilitat de les barres d'eines a Linux {L2} {L1} [migració de l'extensió de correu] La biblioteca de llicències s'ha migrat a un script de fons. Si teniu algun problema relacionat amb la concessió de llicències, poseu-vos en contacte amb mi a través de la pestanya d'assistència. {L2}"
   },
   "windowTitle": {
     "message": "Propietats avançades"

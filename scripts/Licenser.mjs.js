@@ -144,7 +144,7 @@ export class Licenser {
   }
   
   // for future use (standard license / trial periods)
-	get graceDate() {
+	async graceDate() {
 		let graceDate = "", isResetDate = false;
 		try {
 			graceDate = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch).getStringPref("license.gracePeriodDate");
@@ -169,16 +169,13 @@ export class Licenser {
 		}
 		if (isResetDate) {
       /* TO DO!! */
-//    await messenger.LegacyPrefs.setPref("extensions.quickfolders.license.gracePeriodDate", graceDate);
-//      Components.classes["@mozilla.org/preferences-service;1"]
-//             .getService(Components.interfaces.nsIPrefBranch)
-//			       .setStringPref("extensions.quickfolders.license.gracePeriodDate", graceDate);
+      await messenger.LegacyPrefs.setPref("extensions.quickfolders.license.gracePeriodDate", graceDate);
     }
 		// log("Returning Grace Period Date: " + graceDate);
 		return graceDate;
 	}  
   
-	get TrialDays() {
+	async TrialDays() {
 		let graceDate; // actually the install date
 		const period = 28,
 		      SINGLE_DAY = 1000*60*60*24; 
@@ -190,20 +187,15 @@ export class Licenser {
       else {
         try {
           graceDate = 
-            ""; // dummy
-      /* TO DO!! */
-//            await messenger.LegacyPrefs.getPref("extensions.quickfolders.license.gracePeriodDate");
-//           Components.classes["@mozilla.org/preferences-service;1"]
-//             .getService(Components.interfaces.nsIPrefBranch)
-//             .getStringPref("extensions.quickfolders.license.gracePeriodDate");
+            await messenger.LegacyPrefs.getPref("extensions.quickfolders.license.gracePeriodDate");
         }
         catch (e) {graceDate = ""}
       }
-			if (!graceDate) graceDate = this.graceDate(); // create the date
+			if (!graceDate) graceDate = await this.graceDate(); // create the date
 		}
 		catch(ex) { 
 		  // if it's not there, set it now!
-			graceDate = this.graceDate(); 
+			graceDate = await this.graceDate(); 
 		}
 		let today = (new Date()),
 		    installDate = new Date(graceDate),

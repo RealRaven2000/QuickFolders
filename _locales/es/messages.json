@@ -1724,7 +1724,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Se han agregado nuevas funciones de búsqueda significativas a la función quickMove / quickJump. Para obtener ayuda sobre estos, haga clic en el símbolo [?] A la derecha del campo de búsqueda. {L2} {L1} Soporte mejorado para múltiples ventanas Thunderbird. {L2}{L1} Ahora puede abrir esta pantalla desde el menú de herramientas de QuickFolders. {L2}{L1} Mejor legibilidad de las barras de herramientas en Linux {L2} {L1} [migración de extensión de correo] La biblioteca de licencias se migró a una secuencia de comandos en segundo plano. Si tiene algún problema relacionado con las licencias, comuníquese conmigo a través de la pestaña de asistencia. {L2}"
+    "message": "{L1} Se han agregado nuevas funciones de búsqueda significativas a la función quickMove / quickJump. Para obtener ayuda sobre estos, haga clic en el símbolo [?] A la derecha del campo de búsqueda. {L2}{L1} Se corrigió en 5.6.5: las rutas de resultados de QuickMove de forma incorrecta solo mostraban las 2 últimas carpetas cuando solo se ingresaba una palabra de búsqueda. {L2}{L1} Soporte mejorado para múltiples ventanas Thunderbird. {L2}{L1} Ahora puede abrir esta pantalla desde el menú de herramientas de QuickFolders. {L2}{L1} Mejor legibilidad de las barras de herramientas en Linux {L2} {L1} [migración de extensión de correo] La biblioteca de licencias se migró a una secuencia de comandos en segundo plano. Si tiene algún problema relacionado con las licencias, comuníquese conmigo a través de la pestaña de asistencia. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

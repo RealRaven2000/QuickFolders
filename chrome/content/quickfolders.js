@@ -487,8 +487,10 @@ END LICENSE BLOCK */
        from converting localization to json in 5.5.1)
     ## In Thunderbird 89, the options menu item was not displayed in Add-ons Manager.
   
-  5.6 QuickFolders Pro - WIP
+  5.6.4 QuickFolders Pro - 04/07/2021
     ## [issue 155] Support entering multiple words in a search string to find longer folder names that are composite
+    ##             also support ">" for skipping folders.
+    ##             added help panel for search
     ## [issue 150] New line characters "\n" displayed in some strings in version 5.5.2
     ## [issue 167] Unreadable colors of QuickFolders toolbar icons / font in Linux
     ## Added instruction text on empty toolbar which was missing since Thunderbird 78 migration
@@ -507,6 +509,9 @@ END LICENSE BLOCK */
     ## - change options of where to display the Current Folder Bar (main window, message tab, single message window)
     ## - changes to the license when entered / validated
     ## All these actions now work simultaneously and update in multiple Thunderbird windows.
+    
+  5.6.5 QuickFolders Pro - WIP
+    ## [issue 172] quickMove results pathes are only showing last 2 folders in path if only a single search word is entered.
                
     
     -=-----------------=-    PLANNED

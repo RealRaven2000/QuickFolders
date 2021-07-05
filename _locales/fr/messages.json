@@ -1724,7 +1724,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}De nouvelles fonctionnalités de recherche importantes ont été ajoutées à la fonction quickMove / quickJump. Pour obtenir de l'aide, cliquez sur le symbole [?] à droite du champ de recherche.{L2}{L1}Vous pouvez maintenant ouvrir cet écran à partir du menu des outils QuickFolders.{L2}{L1}Support amélioré pour plusieurs fenêtres Thunderbird.{L2}{L1}Lisibilité améliorée des barres d'outils sous Linux{L2}{L1} [migration de l'extension de messagerie] La bibliothèque de licences a été migrée dans le script d'arrière-plan. Si vous rencontrez des problèmes liés aux licences, veuillez me contacter via l'onglet support !{L2}"
+    "message": "{L1}De nouvelles fonctionnalités de recherche importantes ont été ajoutées à la fonction quickMove / quickJump. Pour obtenir de l'aide, cliquez sur le symbole [?] à droite du champ de recherche.{L2}{L1}Corrigé dans 5.6.5 - les chemins de résultats quickMove n'affichaient à tort que les 2 derniers dossiers lorsqu'un seul mot de recherche est entré.{L2}{L1}Vous pouvez maintenant ouvrir cet écran à partir du menu des outils QuickFolders.{L2}{L1}Support amélioré pour plusieurs fenêtres Thunderbird.{L2}{L1}Lisibilité améliorée des barres d'outils sous Linux{L2}{L1} [migration de l'extension de messagerie] La bibliothèque de licences a été migrée dans le script d'arrière-plan. Si vous rencontrez des problèmes liés aux licences, veuillez me contacter via l'onglet support !{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

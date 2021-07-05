@@ -4551,7 +4551,7 @@ QuickFolders.Interface = {
                 rank+=7;
               else
                 rank+=3; // we could also use the length of the string for ranking? or search.length / fArray[i].length  as a percentage
-              fArray[i] = "####"; // blank out element
+              fArray[i] = "####"; // blank out matched element
               foundEl = true;
               break;
             }
@@ -4562,7 +4562,7 @@ QuickFolders.Interface = {
         isMatch = true;
       }
       else {
-      // add all child folders if "parentName/" entered
+        // add all child folders if "parentName/" entered
         if (searchFolderName=="" && parentString!="") matchPos = 0;
         if (matchPos >= 0) {
           // only add to matches if not already there
@@ -4587,11 +4587,14 @@ QuickFolders.Interface = {
       }
       if (isMatch) {
         let pS = buildParentString(folder, parentCount),
-            ct = pS.split("/").length + 1, // count folder parts including final name
-            maxFindSearch = ct || parentCount || QuickFolders.Preferences.getIntPref("premium.findFolder.maxPathItems"),
-            detail = QuickFolders.Preferences.getIntPref("premium.findFolder.folderPathDetail"),
-            fName = QuickFolders.Interface.folderPathLabel(detail, folder, maxFindSearch);
-        // omit certain folders from quickJump:
+            ct = pS.split("/").length + 1, // count parent folders parts including final name
+            maxFindSearch = QuickFolders.Preferences.getIntPref("premium.findFolder.maxPathItems"),
+            detail = QuickFolders.Preferences.getIntPref("premium.findFolder.folderPathDetail");
+        
+        // ct should be max(pLevel) from isParentMatch, and not length of the _complete_ path
+        // if (parentCount) maxFindSearch = Math.max(ct, maxFindSearch); 
+        
+        let fName = QuickFolders.Interface.folderPathLabel(detail, folder, maxFindSearch);
 
         matches.push( { name:fName, lname:folderNameSearched, uri:folder.URI, rank:rank, type:"folder", folder:folder, parentString: pS } );
       }
@@ -4644,16 +4647,16 @@ QuickFolders.Interface = {
 					if (maxLevel == 0 ) {  // direct parent? Add to collection in case we want to create child (slash) // pLevel==1
 						if (!parentList.includes(firstParent))
 							parentList.push(firstParent);
-						return true;
+						return pLevel;
 					}
 				}
 				else if (skipParents) {
           maxLevel++; // no match, stay on this level (this skips the current folder and goes on at the next parent)
         }
-        else return false; // direct parents only.
+        else return 0; // direct parents only.
 				pLevel++;
       }
-      return false;
+      return 0;
     }
 
 		function addIfMatch(folder, search, parentList) {
@@ -4743,7 +4746,7 @@ QuickFolders.Interface = {
 		}
 		// SLASH command - list child folders !
     let parentPos = Math.max(searchString.lastIndexOf("/"), searchString.lastIndexOf(">")),
-		    parentCount = 0;  // default
+		    parentCount = 0;  // number of parent folders in search string
     if (parentPos>0) { // we have a parent folder
       enteredParent = searchString.substr(0, parentPos);
  			parentString = enteredParent;

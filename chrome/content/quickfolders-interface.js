@@ -4974,8 +4974,9 @@ QuickFolders.Interface = {
 			    matchPos = folderNameSearched.indexOf(searchFolderName),
           isMatch = false,
           rank = 0;
-          
-      if (searchFolderName.includes(" ")) { // multi word matching [issue 155]
+
+      // [issue 177] matchPos=0 means partial or full match, no need to split!          
+      if (matchPos < 0 && searchFolderName.includes(" ")) { // multi word matching [issue 155]
         if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
           return;          // add unless already matched:
         let sArray = searchFolderName.split(" "),
@@ -6937,6 +6938,15 @@ QuickFolders.Interface = {
 			QuickFolders.Util.logDebugOptional("toolbarHiding", "registered Tab Monitor");
 		}
 	} ,
+  
+  /* triggers onDeckChange function for changing visibility of toolbar from options window */
+  currentDeckUpdate: function() {
+    let QF = QuickFolders.Util.getMail3PaneWindow().QuickFolders;
+    let tabmail = QF.Util.$("tabmail");
+		if (tabmail) {
+      QF.Interface.onDeckChange(tabmail.selectedTab);
+		}    
+  } ,  
 
   // Called when we go to a different mail tab in order to show / hide QuickFolders Toolbar accordingly
 	onDeckChange : function onDeckChange(targetTab) {
@@ -6944,7 +6954,7 @@ QuickFolders.Interface = {
         prefs = QuickFolders.Preferences,
         mode = "",
 		    isMailPanel = false,
-        hideToolbar = prefs.getBoolPref("toolbar.onlyShowInMailWindows");
+        hideToolbar = prefs.getBoolPref("toolbar.hideInSingleMessage");
     if (prefs.isDebug)
       util.logDebugOptional("interface", "onDeckChange(" 
         + util.enumProperties(targetTab)  + ")" 
@@ -6974,11 +6984,11 @@ QuickFolders.Interface = {
 		let isMailSingleMessageTab = (mode == "message") ? true  : false,
 		    action = "";
       
-		if (["threadPaneBox","accountCentralBox","3pane","folder","glodaList"].indexOf(mode) >=0 ||
-		    isMailPanel && !prefs.getBoolPref("toolbar.hideInSingleMessage")) {
+		if (isMailPanel || 
+        "accountCentralBox" == mode ||
+		    isMailSingleMessageTab && !hideToolbar) {
 			action = "Showing";
-      if (hideToolbar)
-        toolbar.removeAttribute("collapsed");
+      toolbar.removeAttribute("collapsed");
 		} 
 		else {
 			action = "Collapsing";

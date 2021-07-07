@@ -52,7 +52,7 @@ pref("extensions.quickfolders.bookmarks.maxEntries", 100);
 pref("extensions.quickfolders.bookmarks.searchUri", "");
 pref("extensions.quickfolders.bookmarks.openMethod", "currentTab");
 pref("extensions.quickfolders.toolbar.minHeight", "24");
-pref("extensions.quickfolders.toolbar.onlyShowInMailWindows", false);
+pref("extensions.quickfolders.toolbar.onlyShowInMailWindows", false); // obsolete, remove in next version!!
 pref("extensions.quickfolders.toolbar.hideInSingleMessage", true);
 pref("extensions.quickfolders.toolbar.ordinalPosition", 100);
 pref("extensions.quickfolders.behavior.nonFolderView.openNewTab", true);

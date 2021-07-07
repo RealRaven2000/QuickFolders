@@ -1,9 +1,16 @@
-Release 4.22.1
+Release 4.22.2
 
 This release backports some of the fixes that were also done in the new version for Thunderbird 78. If you want to get the latest features, I highly recommend updating Thunderbird to the current 78 release version.
 To support QuickFolders, <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a license</a> or <a href="https://quickfolders.org/donate.html?referrer=atn-version-page">donate</a> to support the project.
 
-<b>Improvements</b>
+
+<b>Maintenance items - 4.22.2</b>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/172">[issue 172]</a> Fixed: quickMove result paths only show last 2 folders in path if only a single search word is entered.</li> 
+<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/177">[issue 177]</a> Fixed: Unreliable search if space and "-" characters are combined in the search string</li>
+<li>
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/174">[issue 174]</a> Main QuickFolders toolbar was hidden in single message tabs by default. Changed to being visible by default and added a setting to QuickFolders General settings.</li>
+
+<b>Improvements - 4.22.1</b>
 <ul>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/155">[issue 155]</a> Support entering multiple words in a search string to find longer folder names that are composited, such as "Fred.Flintstone" "Invoices June 2020" "Research+Development". These can now be found by entering the starting letters of the words within the folder name, in any order. e.g. "f f" "2020 inv" "Dev Res". The following characters are regarded as word boundaries and don't need to be typed:
 _ . - + & @

@@ -426,9 +426,15 @@ END LICENSE BLOCK */
   4.21.4 QuickFolders Pro - 28/04/2021
     ## [issue 148] quickMove: parent folder containing an underscore not suggested as parent
     
-  4.22 QuickFolders Pro - 
+  4.22.1 QuickFolders Pro - 05/07/2021
     ## [issue 163] quickMove: folder created while moving is not displayed on top of recent folders menu
     ## [issue 155] Support entering multiple words in a search string to find longer folder names that are composite
+    
+  4.22.2 QuickFolders Pro - WIP
+    ## [issue 177] Unreliable search if space and "-" characters are combined in the search string
+    ## [issue 174] QuickFolders toolbar is hidden in single message tabs by default.
+       Removed obsolete setting extensions.quickfolders.toolbar.onlyShowInMailWindows and added UI for 
+       hiding QuickFolders toolbar in single message tabs
     
     
 	Future Work

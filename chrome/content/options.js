@@ -1258,6 +1258,10 @@ QuickFolders.Options = {
 			case 'extensions.quickfolders.collapseCategories':
 			  QI.updateCategoryLayout();
 			  return false;
+      case "extensions.quickfolders.toolbar.hideInSingleMessage":
+        QI.currentDeckUpdate(); // instant feedback (only 1 main window)
+        // QuickFolders.Util.notifyTools.notifyBackground({ func: "currentDeckUpdate" }); // QI.onDeckChange(current tab)
+        return false;
 		}
 		QI.updateMainWindow(false); // force full updated
     return false;

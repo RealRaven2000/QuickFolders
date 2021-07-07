@@ -29,8 +29,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Développer les sous-dossiers dans des menus popup">
 <!ENTITY qf.checkbox.sortMenusAlpha "Forcer l'ordre alphabétique des menus avec sous-dossiers.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "N'utilisez cette option que si votre client de messagerie ne trie pas correctement les sous-dossiers.">
-<!ENTITY qf.checkbox.autoHideToolbar "Masquer la barre d'outils si elle n'est pas nécessaire">
-<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Masque/affiche la barre d'outils dans les onglets spéciaux tels que le calendrier, le contenu, le gestionnaire de modules.">
+<!ENTITY qf.checkbox.hideInSingleMessage "Masquer les QuickFolders dans des onglets de message unique">
+<!ENTITY qf.checkbox.hideInSingleMessage.tooltip "Supprime la barre d'outils QuickFolders dans les onglets qui affichent un seul message.">
 <!ENTITY qf.label.mainToolbar "Éléments de la barre d'outils principale">
 <!ENTITY qf.checkbox.showRecentTab "Afficher l'onglet des dossiers récents">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Clic droit pour la configuration">

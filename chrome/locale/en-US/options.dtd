@@ -29,8 +29,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Expand Subfolders in popup menus">
 <!ENTITY qf.checkbox.sortMenusAlpha "Force alphabetic sorting of menus with subfolders.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Only use this option if your mail client doesn't sort the subfolders correctly.">
-<!ENTITY qf.checkbox.autoHideToolbar "Hide QuickFolders when they are not needed">
-<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Collapses the toolbar in special tabs such as calendar, content, addon manager.">
+<!ENTITY qf.checkbox.hideInSingleMessage "Hide QuickFolders in single message tabs">
+<!ENTITY qf.checkbox.hideInSingleMessage.tooltip "Removes the QuickFolders toolbar in tabs that show a single message.">
 <!ENTITY qf.label.mainToolbar "Main Toolbar Elements">
 <!ENTITY qf.checkbox.showRecentTab "Display Recent Folders Tab">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Right click for configuration">

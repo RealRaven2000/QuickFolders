@@ -29,8 +29,8 @@
 <!ENTITY qf.checkbox.showSubfolders "Unterverzeichnisse in Kontext Menüs">
 <!ENTITY qf.checkbox.sortMenusAlpha "Menüs mit Unterverzeichnissen alphabetisch sortieren.">
 <!ENTITY qf.checkbox.sortMenusAlpha.tooltip "Diese Option nur aktivieren falls Ihr Mail Programm die Unterverzeichnisse selbst nicht korrekt sortiert.">
-<!ENTITY qf.checkbox.autoHideToolbar "QuickFolders ausblenden wenn unnötig">
-<!ENTITY qf.checkbox.autoHideToolbar.tooltip "Versteckt die Werkzeugleiste bei Aktivierung bestimmter Thunderbird Tabs, wie z.B. Kalender (Lightning), Addon Manager.">
+<!ENTITY qf.checkbox.hideInSingleMessage "QuickFolders in Einzelnachtrichten-Tabs ausblenden">
+<!ENTITY qf.checkbox.hideInSingleMessage.tooltip "Versteckt die QuickFolders-Leiste wenn eine einzelne Mail im Tab angezeigt wird.">
 <!ENTITY qf.label.mainToolbar "Elemente der Tableiste">
 <!ENTITY qf.checkbox.showRecentTab "Letzte Ordner Tab anzeigen">
 <!ENTITY qf.checkbox.showRecentTab.tooltip "Rechtsklick für weitere Konfiguration">

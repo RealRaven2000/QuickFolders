@@ -313,11 +313,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Osredotoči se seznam sporočil ob spreminjanju zavihkov"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Skrij hitre mape, ko niso potrebne"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Skrij mape QuickFolders na zavihkih posameznih sporočil"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Strne orodno vrstico v posebnih zavihkih, kot so koledar, vsebina, upravitelj dodatkov."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Odstrani orodno vrstico QuickFolders na zavihkih, ki prikazujejo eno sporočilo."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Gumb Zapri"
@@ -1724,7 +1724,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Funkciji quickMove / quickJump so dodane pomembne nove funkcije iskanja. Za pomoč pri njih kliknite simbol [?] Na desni strani iskalnega polja. {L2} {L1} Odpravljeno v 5.6.5 - poti rezultatov quickMove so napačno prikazovale le zadnji dve mapi, če je bila vnesena samo ena iskalna beseda. {L2}{L1} Zdaj lahko ta zaslon odprete v meniju orodij QuickFolders. {L2}{L1} Izboljšana podpora za več oken Thunderbird. {L2} {L1} Izboljšana berljivost orodnih vrstic pod Linuxom {L2} {L1} [migracija razširitve pošte] Knjižnica licenciranja je bila preseljena v skript v ozadju. Če imate kakršne koli težave, povezane z licenciranjem, se obrnite na mene prek zavihka za podporo! {L2}"
+    "message": "{L1} Funkciji quickMove / quickJump so dodane pomembne nove funkcije iskanja. Za pomoč pri njih kliknite simbol [?] Na desni strani iskalnega polja. {L2} {L1} 5.6.6 - nova možnost za skrivanje / prikaz QuickFolders na zavihku z enim sporočilom {L2} {L1} 5.6.6 - različni popravki napak za iskanje z hitrim skokom. {L2}{L1} Zdaj lahko ta zaslon odprete v meniju orodij QuickFolders. {L2}{L1} Izboljšana podpora za več oken Thunderbird. {L2} {L1} Izboljšana berljivost orodnih vrstic pod Linuxom {L2} {L1} [migracija razširitve pošte] Knjižnica licenciranja je bila preseljena v skript v ozadju. Če imate kakršne koli težave, povezane z licenciranjem, se obrnite na mene prek zavihka za podporo! {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

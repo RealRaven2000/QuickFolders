@@ -313,11 +313,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "タブの変更時にメッセージリストをフォーカスする"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "QuickFolders が不要な場合は隠す"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "単一のメッセージタブでQuickFoldersを非表示にする"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "カレンダーや Web コンテンツ、アドオンマネージャのタブではツールバーを隠します。"
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "単一のメッセージを表示するタブのQuickFoldersツールバーを削除します。"
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "閉じるボタン"
@@ -1724,7 +1724,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} quickMove / quickJump関数に重要な新しい検索機能が追加されました。 これらのヘルプについては、検索フィールドの右側にある[？]記号をクリックしてください。{L2} {L1} 5.6.5で修正済み-quickMoveの結果パスは、検索語が1つだけ入力された場合に、最後の2つのフォルダーのみを誤って表示していました。{L2} {L1}これで、QuickFoldersツールメニューからこの画面を開くことができます。{L2}{L1}複数のThunderbirdウィンドウのサポートが改善されました。{L2} {L1} Linuxでのツールバーの読みやすさが改善されました{L2} {L1} [メール拡張機能の移行]ライセンスライブラリがバックグラウンドスクリプトに移行されました。 ライセンスに関連する問題が発生した場合は、[サポート]タブからご連絡ください！{L2}"
+    "message": "{L1} quickMove / quickJump関数に重要な新しい検索機能が追加されました。 これらのヘルプについては、検索フィールドの右側にある[？]記号をクリックしてください。{L2} {L1} 5.6.6-単一のメッセージタブでQuickFoldersを非表示/表示する新しいオプション{L2} {L1} 5.6.6-quickJump検索のさまざまなバグ修正。{L2} {L1}これで、QuickFoldersツールメニューからこの画面を開くことができます。{L2}{L1}複数のThunderbirdウィンドウのサポートが改善されました。{L2} {L1} Linuxでのツールバーの読みやすさが改善されました{L2} {L1} [メール拡張機能の移行]ライセンスライブラリがバックグラウンドスクリプトに移行されました。 ライセンスに関連する問題が発生した場合は、[サポート]タブからご連絡ください！{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -313,11 +313,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Cambiando scheda si porta in primo piano l'elenco dei messaggi"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Nasconde la barra degli strumenti di QuickFolders se non è necessaria"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Nascondi QuickFolders nelle schede dei singoli messaggi"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Fa' scomparire la barra degli strumenti di QuickFolders nel caso si usino schede speciali quali il calendario, la pagina introduttiva, il gestore dei componenti aggiuntivi"
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Rimuove la barra degli strumenti QuickFolders nelle schede che mostrano un singolo messaggio."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Pulsante di chiusura"
@@ -1724,7 +1724,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Nuove funzionalità di ricerca significative sono state aggiunte alla funzione quickMove / quickJump. Per assistenza su questi, fare clic sul simbolo [?] a destra del campo di ricerca.{L2}{L1}Risolto in 5.6.5: i percorsi dei risultati quickMove mostravano erroneamente solo le ultime 2 cartelle quando veniva inserita una sola parola di ricerca.{L2}{L1}Ora puoi aprire questa schermata dal menu degli strumenti di QuickFolders.{L2}{L1}Supporto migliorato per più finestre Thunderbird .{L2}{L1}Leggibilità migliorata delle barre degli strumenti sotto Linux{L2}{L1} [migrazione dell'estensione di posta] La libreria delle licenze è stata migrata nello script in background. Se riscontri problemi relativi alla licenza, contattami tramite la scheda di supporto!{L2}"
+    "message": "{L1}Nuove funzionalità di ricerca significative sono state aggiunte alla funzione quickMove / quickJump. Per assistenza su questi, fare clic sul simbolo [?] a destra del campo di ricerca.{L2}{L1}5.6.6 - nuova opzione per nascondere/mostrare QuickFolders nella scheda di un singolo messaggio{L2}{L1}5.6.6 - varie correzioni di bug per la ricerca QuickJump.{L2}{L1}Ora puoi aprire questa schermata dal menu degli strumenti di QuickFolders.{L2}{L1}Supporto migliorato per più finestre Thunderbird .{L2}{L1}Leggibilità migliorata delle barre degli strumenti sotto Linux{L2}{L1} [migrazione dell'estensione di posta] La libreria delle licenze è stata migrata nello script in background. Se riscontri problemi relativi alla licenza, contattami tramite la scheda di supporto!{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

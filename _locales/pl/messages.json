@@ -313,11 +313,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Uaktywniaj listę wiadomości podczas zmiany folderów"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Nie wyświetlaj paska QuickFolders, gdy jest niepotrzebny"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Ukryj QuickFolders w zakładkach pojedynczych wiadomości"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Pasek QuickFolders będzie ukrywany, gdy będą wyświetlane specjalne karty, takie jak kalendarz, treści, menedżer dodatków"
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Usuwa pasek narzędzi QuickFolders z kart, które pokazują pojedynczą wiadomość."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Przycisk zamykania"
@@ -1724,7 +1724,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Do funkcji quickMove/quickJump dodano nowe, znaczące funkcje wyszukiwania. Aby uzyskać pomoc, kliknij symbol [?] po prawej stronie pola wyszukiwania.{L2}{L1}Naprawiono w 5.6.5 – ścieżki wyników quickMove błędnie pokazywały tylko 2 ostatnie foldery, gdy wprowadzono tylko jedno słowo wyszukiwania.{L2}{L1}Możesz teraz otworzyć ten ekran z menu narzędzi QuickFolders.{L2}{L1}Ulepszona obsługa wielu okien Thunderbirda.{L2}{L1}Poprawa czytelności pasków narzędzi w systemie Linux{L2}{L1} [migracja rozszerzenia poczty] Biblioteka licencjonowania została przeniesiona do skryptu działającego w tle. Jeśli napotkasz jakiekolwiek problemy związane z licencjonowaniem, skontaktuj się ze mną za pośrednictwem zakładki pomocy!{L2}"
+    "message": "{L1}Do funkcji quickMove/quickJump dodano nowe, znaczące funkcje wyszukiwania. Aby uzyskać pomoc, kliknij symbol [?] po prawej stronie pola wyszukiwania.{L2}{L1}5.6.6 - nowa opcja ukrywania/pokazywania QuickFolderów w zakładce pojedynczej wiadomości{L2}{L1}5.6.6 - różne poprawki do szybkiego wyszukiwania.{L2}{L1}Możesz teraz otworzyć ten ekran z menu narzędzi QuickFolders.{L2}{L1}Ulepszona obsługa wielu okien Thunderbirda.{L2}{L1}Poprawa czytelności pasków narzędzi w systemie Linux{L2}{L1} [migracja rozszerzenia poczty] Biblioteka licencjonowania została przeniesiona do skryptu działającego w tle. Jeśli napotkasz jakiekolwiek problemy związane z licencjonowaniem, skontaktuj się ze mną za pośrednictwem zakładki pomocy!{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -313,11 +313,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "當改變標籤時聚焦於信件清單"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "當不需要QuickFolders時隱藏"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "在單個消息選項卡中隱藏 QuickFolders"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "在特別的頁面，像是日曆、內容或附加元件管理中心折疊工具列。"
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "在顯示單個消息的選項卡中刪除 QuickFolders 工具欄。"
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "關閉按鈕"
@@ -1724,7 +1724,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}quickMove / quickJump 功能中添加了重要的新搜索功能。 如需這些方面的幫助，請點擊搜索字段右側的 [?] 符號。{L2}{L1}改進了對多個 Thunderbird 窗口的支持。{L2}{L1}在 5.6.5 中修復 - 當僅輸入一個搜索詞時，quickMove 結果路徑錯誤地僅顯示最後 2 個文件夾。{L2}{L1}您現在可以從 QuickFolders 工具菜單打開此屏幕。{L2}{L1}改進了 Linux 下工具欄的可讀性{L2}{L1} [郵件擴展遷移] 許可庫已遷移到後台腳本中。 如果您遇到與許可相關的任何問題，請通過支持選項卡與我聯繫！{L2}"
+    "message": "{L1}quickMove / quickJump 功能中添加了重要的新搜索功能。 如需這些方面的幫助，請點擊搜索字段右側的 [?] 符號。{L2}{L1}改進了對多個 Thunderbird 窗口的支持。{L2}{L1}5.6.6 - 在單個消息選項卡中隱藏/顯示 QuickFolders 的新選項{L2}{L1}5.6.6 - quickJump 搜索的各種錯誤修正。{L2}{L1}您現在可以從 QuickFolders 工具菜單打開此屏幕。{L2}{L1}改進了 Linux 下工具欄的可讀性{L2}{L1} [郵件擴展遷移] 許可庫已遷移到後台腳本中。 如果您遇到與許可相關的任何問題，請通過支持選項卡與我聯繫！{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

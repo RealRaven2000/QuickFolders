@@ -206,11 +206,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Enfoque en la lista de mensajes al cambiar de pestañas"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Ocultar QuickFolders cuando no se necesiten"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Ocultar carpetas rápidas en pestañas de mensajes individuales"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Contrae la barra de herramientas en pestañas especiales, tales como calendario, contenido, administrador de complementos."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Elimina la barra de herramientas QuickFolders en pestañas que muestran un solo mensaje."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Botón de cerrar"

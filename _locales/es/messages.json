@@ -313,11 +313,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Poner el foco en la lista de mensajes al cambiar de pestaña"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Ocultar barra de QuickFolders cuando no sea necesaria"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Ocultar carpetas rápidas en pestañas de mensajes individuales"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Retira la barra de QuickFolders en pestañas especiales como calendario, contenido, y administrador de complementos."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Elimina la barra de herramientas QuickFolders en pestañas que muestran un solo mensaje."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Botón cerrar"
@@ -1724,7 +1724,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Se han agregado nuevas funciones de búsqueda significativas a la función quickMove / quickJump. Para obtener ayuda sobre estos, haga clic en el símbolo [?] A la derecha del campo de búsqueda. {L2}{L1} Se corrigió en 5.6.5: las rutas de resultados de QuickMove de forma incorrecta solo mostraban las 2 últimas carpetas cuando solo se ingresaba una palabra de búsqueda. {L2}{L1} Soporte mejorado para múltiples ventanas Thunderbird. {L2}{L1} Ahora puede abrir esta pantalla desde el menú de herramientas de QuickFolders. {L2}{L1} Mejor legibilidad de las barras de herramientas en Linux {L2} {L1} [migración de extensión de correo] La biblioteca de licencias se migró a una secuencia de comandos en segundo plano. Si tiene algún problema relacionado con las licencias, comuníquese conmigo a través de la pestaña de asistencia. {L2}"
+    "message": "{L1} Se han agregado nuevas funciones de búsqueda significativas a la función quickMove / quickJump. Para obtener ayuda sobre estos, haga clic en el símbolo [?] A la derecha del campo de búsqueda. {L2}{L1} 5.6.6 - nueva opción para ocultar / mostrar QuickFolders en la pestaña de un solo mensaje.{L2}{L1} 5.6.6 - varias correcciones de errores para la búsqueda quickJump. {L2}{L1} Soporte mejorado para múltiples ventanas Thunderbird. {L2}{L1} Ahora puede abrir esta pantalla desde el menú de herramientas de QuickFolders. {L2}{L1} Mejor legibilidad de las barras de herramientas en Linux {L2} {L1} [migración de extensión de correo] La biblioteca de licencias se migró a una secuencia de comandos en segundo plano. Si tiene algún problema relacionado con las licencias, comuníquese conmigo a través de la pestaña de asistencia. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

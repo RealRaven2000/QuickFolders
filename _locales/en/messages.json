@@ -313,11 +313,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Focus on message list when changing tabs"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Hide QuickFolders when they are not needed"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Hide QuickFolders in single message tabs"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Collapses the toolbar in special tabs such as calendar, content, addon manager."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Removes the QuickFolders toolbar in tabs that show a single message."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Close Button"
@@ -1724,7 +1724,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Significant new search features have been added to the quickMove / quickJump function. For help on these, click the [?] symbol to the right of the search field.{L2}{L1}Fixed in 5.6.5 - quickMove result paths wrongly only showed last 2 folders when only a single search word is entered.{L2}{L1}You can now open this screen from the QuickFolders tools menu.{L2}{L1}Improved support for multiple Thunderbird windows .{L2}{L1}Improved readability of toolbars under Linux{L2}{L1}[mail extension migration] Licensing library was migrated into background script. If you experience any problems related to licensing, please contact me via the support tab!{L2}"
+    "message": "{L1}Significant new search features have been added to the quickMove / quickJump function. For help on these, click the [?] symbol to the right of the search field.{L2}{L1}You can now open this popup screen from the QuickFolders tools menu.{L2}{L1}5.6.6 - new option to hide/show QuickFolders in single message tab{L2}{L1}5.6.6 - various bugfixes for quickJump search.{L2}{L1}Improved support for multiple Thunderbird windows.{L2}{L1}Improved readability of toolbars under Linux{L2}{L1}[mail extension migration] Licensing library was migrated into background script. If you experience any problems related to licensing, please contact me via the support tab!{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

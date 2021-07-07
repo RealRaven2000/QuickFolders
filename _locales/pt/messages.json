@@ -313,11 +313,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Foco na lista de mensagens ao mudar de aba"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "Esconder QuickFolders quando não são necessários"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Ocultar QuickFolders em guias de mensagens únicas."
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Recolhe a barra de ferramentas em abas especiais, tais como calendário, conteúdo, gerenciador de extensões."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Remove a barra de ferramentas QuickFolders em guias que mostram uma única mensagem."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Botão de fechar"
@@ -1724,7 +1724,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Novos recursos de pesquisa significativos foram adicionados à função quickMove / quickJump. Para obter ajuda sobre isso, clique no símbolo [?] À direita do campo de pesquisa. {L2}{L1} Corrigido em 5.6.5 - caminhos de resultado do QuickMove erroneamente só mostravam as últimas 2 pastas quando apenas uma única palavra de pesquisa era inserida. {L2}{L1} Agora você pode abrir esta tela no menu de ferramentas QuickFolders. {L2}{L1} Suporte aprimorado para várias janelas do Thunderbird. {L2} {L1} Legibilidade aprimorada das barras de ferramentas no Linux {L2} {L1} [migração de extensão de correio] A biblioteca de licenciamento foi migrada para o script de segundo plano. Se você tiver problemas relacionados ao licenciamento, entre em contato comigo por meio da guia de suporte! {L2}"
+    "message": "{L1} Novos recursos de pesquisa significativos foram adicionados à função quickMove / quickJump. Para obter ajuda sobre isso, clique no símbolo [?] À direita do campo de pesquisa. {L2}{L1} 5.6.6 - nova opção para ocultar / mostrar QuickFolders na guia de mensagem única {L2} {L1} 5.6.6 - várias correções de bugs para pesquisa QuickJump. {L2}{L1} Agora você pode abrir esta tela no menu de ferramentas QuickFolders. {L2}{L1} Suporte aprimorado para várias janelas do Thunderbird. {L2} {L1} Legibilidade aprimorada das barras de ferramentas no Linux {L2} {L1} [migração de extensão de correio] A biblioteca de licenciamento foi migrada para o script de segundo plano. Se você tiver problemas relacionados ao licenciamento, entre em contato comigo por meio da guia de suporte! {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

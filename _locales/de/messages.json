@@ -313,11 +313,11 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Bei Verzeichniswechsel Eingabefokus auf EMail-Liste"
   },
-  "qf.checkbox.autoHideToolbar": {
-    "message": "QuickFolders ausblenden wenn unnötig"
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "QuickFolders in Einzelnachtrichten-Tabs ausblenden"
   },
-  "qf.checkbox.autoHideToolbar.tooltip": {
-    "message": "Versteckt die Werkzeugleiste bei Aktivierung bestimmter Thunderbird Tabs, wie z.B. Kalender (Lightning), Addon Manager."
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Versteckt die QuickFolders-Leiste wenn eine einzelne Mail im Tab angezeigt wird."
   },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Schliessen Schaltfläche"
@@ -1724,7 +1724,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Der quickMove / quickJump-Funktion wurden wesentliche neue Suchfunktionen hinzugefügt. Um Hilfe dazu zu erhalten, klicken Sie auf das [?]-Symbol rechts neben dem Suchfeld.{L2}{L1}Behoben in 5.6.5 - quickMove-Ergebnispfade zeigten fälschlicherweise nur die letzten 2 Ordner an, wenn nur ein einzelnes Suchwort eingegeben wurde.{L2}{L1}Sie können diesen Bildschirm jetzt über das QuickFolders-Werkzeugmenü öffnen.{L2}{L1}Verbesserte Unterstützung für mehrere Thunderbird-Fenster.{L2}{L1}Verbesserte Lesbarkeit der Symbolleisten unter Linux{L2}{L1} [Migration der Mail-Erweiterung] Die Lizenzbibliothek wurde in ein Hintergrundskript migriert. Bei Problemen mit der Lizenzierung kontaktieren Sie mich bitte über den Support-Tab!{L2}"
+    "message": "{L1}Der quickMove / quickJump-Funktion wurden wesentliche neue Suchfunktionen hinzugefügt. Um Hilfe dazu zu erhalten, klicken Sie auf das [?]-Symbol rechts neben dem Suchfeld.{L2}{L1}5.6.6 - neue Option zum Ausblenden/Anzeigen von QuickFoldern in der Registerkarte für einzelne Nachrichten{L2}{L1}5.6.6 - diverse Fehlerbehebungen für die QuickJump-Suche.{L2}{L1}Sie können diesen Bildschirm jetzt über das QuickFolders-Werkzeugmenü öffnen.{L2}{L1}Verbesserte Unterstützung für mehrere Thunderbird-Fenster.{L2}{L1}Verbesserte Lesbarkeit der Symbolleisten unter Linux{L2}{L1} [Migration der Mail-Erweiterung] Die Lizenzbibliothek wurde in ein Hintergrundskript migriert. Bei Problemen mit der Lizenzierung kontaktieren Sie mich bitte über den Support-Tab!{L2}"
   },
   "window-title": {
     "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",

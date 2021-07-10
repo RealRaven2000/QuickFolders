@@ -2,7 +2,7 @@
  * This file is provided by the addon-developer-support repository at
  * https://github.com/thundernest/addon-developer-support
  *
- * Version: 1.54
+ * Version: 1.56
  *
  * Author: John Bieling (john@thunderbird.net)
  *
@@ -30,6 +30,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
     return {
       major: parseInt(parts[0]),
       minor: parseInt(parts[1]),
+      revision: parts.length > 2 ? parseInt(parts[2]) : 0,
     }
   }
 
@@ -134,7 +135,8 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
           if (card.addon.id == this.extension.id) {
             let optionsMenu = 
               (this.getThunderbirdVersion().major > 78 && this.getThunderbirdVersion().major < 88) ||
-              (this.getThunderbirdVersion().major == 78 && this.getThunderbirdVersion().minor < 10);
+              (this.getThunderbirdVersion().major == 78 && this.getThunderbirdVersion().minor < 10) ||
+              (this.getThunderbirdVersion().major == 78 && this.getThunderbirdVersion().minor == 10 && this.getThunderbirdVersion().revision < 2);
             if (optionsMenu) {
               // Options menu in 78.0-78.10 and 79-87
               let addonOptionsLegacyEntry = card.querySelector(

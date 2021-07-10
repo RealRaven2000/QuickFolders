@@ -177,9 +177,14 @@ var ex_accounts = class extends ExtensionAPI {
         async list() {
           let accounts = [];
           for (let account of MailServices.accounts.accounts) {
-            account = convertAccount(account);
-            if (account) {
-              accounts.push(account);
+            try {
+              account = convertAccount(account);
+              if (account) {
+                accounts.push(account);
+              }
+            }
+            catch(ex) {
+              console.log("convertAccount failed:", account, ex);
             }
           }
           return accounts;

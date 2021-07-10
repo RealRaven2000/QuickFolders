@@ -510,9 +510,19 @@ END LICENSE BLOCK */
     ## - changes to the license when entered / validated
     ## All these actions now work simultaneously and update in multiple Thunderbird windows.
     
-  5.6.5 QuickFolders Pro - WIP
+  5.6.5 QuickFolders Pro - 05/07/2021
     ## [issue 172] quickMove results pathes are only showing last 2 folders in path if only a single search word is entered.
-               
+    
+  5.6.6 QuickFolders Pro - WIP
+    ## [issue 177] Unreliable search if space and "-" characters are combined in the search string
+    ## [issue 174] Fixed: QuickFolders toolbar was hidden in single message tabs by default.
+       Removed obsolete setting extensions.quickfolders.toolbar.onlyShowInMailWindows and added UI for 
+       hiding QuickFolders toolbar in single message tabs
+    ## added experimental accounts which prevents a rare error on startup.
+    ## [issue 176] Hide instructions on how to set up QuickFolders at startup (if tabs are already defined) 
+    ## Proper removal of event listeners on shut down
+    ## Improved icon for quickMove help
+    ## [issue 179] use extensions.quickfolders.premium.findFolder.disableSpace=true to disable " " search + improve performance
     
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders

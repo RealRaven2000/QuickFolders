@@ -181,6 +181,10 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: isMinimal});
         break;
         
+       case "currentDeckUpdate":
+        messenger.NotifyTools.notifyExperiment({event: "currentDeckUpdate"});
+        break;
+        
       case "initKeyListeners":
         messenger.NotifyTools.notifyExperiment({event: "initKeyListeners"});
         break;

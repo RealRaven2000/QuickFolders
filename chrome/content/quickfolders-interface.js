@@ -637,6 +637,8 @@ QuickFolders.Interface = {
     else { // no tabs defined : add instructions label
       let label = document.createXULElement('label'),
           txt = util.getBundleString("qf.label.dragFolderLabel");
+      label.id = "QuickFolders-Instructions-Label";
+      label.classList.add("QuickFolders-Empty-Toolbar-Label");
       label.setAttribute("crop","end");
       label.textContent = txt;
       this.FoldersBox.appendChild(label);
@@ -4532,9 +4534,11 @@ QuickFolders.Interface = {
 			let folderNameSearched = folder.prettyName.toLocaleLowerCase(),
 			    matchPos = folderNameSearched.indexOf(searchFolderName),
           isMatch = false,
-          rank = 0;
+          rank = 0,
+          enableMultiWordMatch = !QuickFolders.Preferences.getBoolPref("premium.findFolder.disableSpace");  // [issue 179] option to disable multi word matching
           
-      if (searchFolderName.includes(" ")) { // multi word matching [issue 155]
+      // [issue 177] matchPos=0 means partial or full match, no need to split!
+      if (enableMultiWordMatch && matchPos < 0 && searchFolderName.includes(" ")) { // multi word matching [issue 155]
         if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
           return;          // add unless already matched:
         let sArray = searchFolderName.split(" "),
@@ -4603,6 +4607,9 @@ QuickFolders.Interface = {
 
 		// check if any word in foldername string starts with typed characters
     function wordStartMatch(fName, search) {
+      if (QuickFolders.Preferences.getBoolPref("premium.findFolder.disableSpace"))
+        return fName.startsWith(search);
+      
 			// if search string contains a space just match the whole result rather than breaking up the folder into "words"
 			if (search.indexOf(" ")>0) {
 				// if (fName.indexOf(search)==0) 
@@ -6470,6 +6477,14 @@ QuickFolders.Interface = {
     if (this.TabMonitor)
       tabmail.unregisterTabMonitor(this.TabMonitor);
   },
+  
+  /* triggers onDeckChange function for changing visibility of toolbar from options window */
+  currentDeckUpdate: function() {
+    let tabmail = QuickFolders.Util.$("tabmail");
+		if (tabmail) {
+      QuickFolders.Interface.onDeckChange(tabmail.selectedTab);
+		}    
+  } ,
 
   // Called when we go to a different mail tab in order to show / hide QuickFolders Toolbar accordingly
 	onDeckChange : function onDeckChange(targetTab) {
@@ -6508,7 +6523,7 @@ QuickFolders.Interface = {
 		    action = "";
 
 		if (["threadPaneBox","accountCentralBox","3pane","folder","glodaList"].indexOf(mode) >=0 ||
-		    isMailPanel && !prefs.getBoolPref("toolbar.hideInSingleMessage")) {
+		    isMailSingleMessageTab && !prefs.getBoolPref("toolbar.hideInSingleMessage")) {
 			action = "Showing";
       if (hideToolbar)
         toolbar.removeAttribute("collapsed");

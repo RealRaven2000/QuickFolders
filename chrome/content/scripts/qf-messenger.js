@@ -18,6 +18,8 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-listener.js", window, "UTF-8");
 
+var mylisteners = {};
+
 async function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
   layout.setAttribute("title", "QuickFolderStyles");
@@ -278,7 +280,7 @@ async function onLoad(activatedWhileWindowOpen) {
           <spacer flex="4" id="QuickFolders-FoldersBox-PushDown"/>
           
           <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
-            <label id="QuickFolders-Instructions-Label" crop="end">__MSG_qf.label.dragFolderLabel__</label>
+            <label class="QuickFolders-Empty-Toolbar-Label" crop="end">Initialising QuickFolders…</label>
           </box>
         <!-- 		-->		
         </vbox>
@@ -516,22 +518,28 @@ async function onLoad(activatedWhileWindowOpen) {
   // add listeners
   window.QuickFolders.Util.logDebug('Adding Folder Listener...');
   window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
-  // window.setTimeout(window.QuickFolders.prepareSessionStore, 10000);
   
   // Enable the global notify notifications from background.
   window.QuickFolders.Util.notifyTools.enable();
   await window.QuickFolders.Util.init();
   window.addEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
   const QI = window.QuickFolders.Interface;
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateFoldersUI", QI.updateFoldersUI.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateAllTabs", QI.updateAllTabs.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", QI.updateUserStyles.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateNavigationBar", QI.updateNavigationBar.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.toggleNavigationBar", QI.displayNavigationToolbar.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", QI.updateQuickFoldersLabel.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateCategoryBox", QI.updateCategoryLayout.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateMainWindow", QI.updateMainWindow.bind(QI), false); // need to add a parameter here, how to?
-  window.addEventListener("QuickFolders.BackgroundUpdate.initKeyListeners", window.QuickFolders.initKeyListeners.bind(window.QuickFolders))
+  
+  mylisteners["updateFoldersUI"] = QI.updateFoldersUI.bind(QI);
+  mylisteners["updateAllTabs"] = QI.updateAllTabs.bind(QI);
+  mylisteners["updateUserStyles"] = QI.updateUserStyles.bind(QI);
+  mylisteners["updateNavigationBar"] = QI.updateNavigationBar.bind(QI);
+  mylisteners["toggleNavigationBar"] = QI.displayNavigationToolbar.bind(QI);
+  mylisteners["updateQuickFoldersLabel"] = QI.updateQuickFoldersLabel.bind(QI);
+  mylisteners["updateCategoryBox"] = QI.updateCategoryLayout.bind(QI);
+  mylisteners["updateMainWindow"] = QI.updateMainWindow.bind(QI); // need to add a parameter here, how to?
+  mylisteners["currentDeckUpdate"] = QI.currentDeckUpdate.bind(QI); 
+  mylisteners["initKeyListeners"] = window.QuickFolders.initKeyListeners.bind(window.QuickFolders);
+  
+  
+  for (let m in mylisteners) {
+    window.addEventListener(`QuickFolders.BackgroundUpdate.${m}` , mylisteners[m]);
+  }
   
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!
 }
@@ -539,16 +547,11 @@ async function onLoad(activatedWhileWindowOpen) {
 function onUnload(isAddOnShutDown) {
   // Disable the global notify notifications from background.
   window.QuickFolders.Util.notifyTools.disable();
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateMainWindow", window.QuickFolders.Interface.updateMainWindow);
   window.removeEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", window.QuickFolders.Interface.updateUserStyles);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateFoldersUI", window.QuickFolders.Interface.updateFoldersUI);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateAllTabs", window.QuickFolders.Interface.updateAllTabs);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateNavigationBar", window.QuickFolders.Interface.updateNavigationBar);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.toggleNavigationBar", window.QuickFolders.Interface.displayNavigationToolbar);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateQuickFoldersLabel", window.QuickFolders.Interface.updateQuickFoldersLabel);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateCategoryBox", window.QuickFolders.Interface.updateQuickFoldersLabel);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.initKeyListeners", window.QuickFolders.initKeyListeners);
+
+  for (let m in mylisteners) {
+    window.removeEventListener(`QuickFolders.BackgroundUpdate.${m}` , mylisteners[m]);
+  }
   
   // restore global overwritten functions 
   try {

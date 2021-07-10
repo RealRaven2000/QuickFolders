@@ -95,7 +95,7 @@
 						<preference id="qfpg-ShowCountInSubFolders" name="extensions.quickfolders.showCountInSubFolders" type="bool" />
 						<preference id="qfpg-ShowFoldersWithMessagesItalic" name="extensions.quickfolders.showFoldersWithMessagesItalic" type="bool" instantApply="true"/>
 						<preference id="qfpg-ShowFoldersWithNewMailItalic" name="extensions.quickfolders.showFoldersWithNewMailItalic" type="bool" instantApply="true"/>
-						<preference id="qfpg-HideToolbarWhenNotNeeded" name="extensions.quickfolders.toolbar.onlyShowInMailWindows" type="bool" instantApply="true"/>
+						<preference id="qfpg-HideToolbarSingleMsg" name="extensions.quickfolders.toolbar.hideInSingleMessage" type="bool" instantApply="true"/>
 						<preference id="qfpg-FocusPreview" name="extensions.quickfolders.autoFocusPreview" type="bool" />
 						<preference id="qfpg-ShowSubFolders" name="extensions.quickfolders.showSubfolders" type="bool" />
 						<preference id="qfpg-EnableMenuSorting" name="extensions.quickfolders.enableMenuAlphaSorting" type="bool" />
@@ -194,9 +194,10 @@
 													preference="qfpg-EnableMenuSorting"
                           oncommand="options.toggleBoolPreference(this);"
 													instantApply="true" />
-								<checkbox	label="__MSG_qf.checkbox.autoHideToolbar__"
-													tooltiptext="__MSG_qf.checkbox.autoHideToolbar.tooltip__"
-													preference="qfpg-HideToolbarWhenNotNeeded"
+								<checkbox	label="__MSG_qf.checkbox.hideInSingleMessage__"
+													tooltiptext="__MSG_qf.checkbox.hideInSingleMessage__.tooltip__"
+													preference="qfpg-HideToolbarSingleMsg"
+                          oncommand="options.toggleBoolPreference(this);"
 													instantApply="true"
                           oncontextmenu="options.showAboutConfig(this,'quickfolders.toolbar',true, true); return true;"
                           />

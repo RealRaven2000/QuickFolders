@@ -164,12 +164,26 @@ menupopup.widerMenu menucaption {
 
 /* help button */
 #QuickFolders-FindFolder-Help {
-  list-style-image: url("chrome://messenger/skin/icons/help.svg");
+  list-style-image: url("chrome://quickfolders/content/skin/ico/help-search.svg");
   -moz-context-properties: fill;
-  fill: currentColor;
+  fill: #0079ef; /* currentColor; */
   padding-left: 0;
-  margin-left: -3px;
+  margin-left: -5px;
 }
+
+#QuickFolders-FindFolder-Help > image.toolbarbutton-icon {
+  height:21px;
+  transition: height 0.2s;
+}
+
+#QuickFolders-FindFolder-Help:hover {
+  /* margin-right: -4px; */
+}
+
+#QuickFolders-FindFolder-Help:hover > image.toolbarbutton-icon {
+  height:25px;
+}
+
 
 #quickMoveHelpOverlay.overlay {
   position: fixed;
@@ -522,7 +536,7 @@ menupopup.widerMenu menucaption {
 	margin-bottom: 0px;
 }
 
-#QuickFolders-Instructions-Label {
+.QuickFolders-Empty-Toolbar-Label {
 	max-height:28px;
 	min-width: 85%;
 }

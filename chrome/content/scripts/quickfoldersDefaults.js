@@ -53,8 +53,7 @@ pref("extensions.quickfolders.bookmarks.maxEntries", 100);
 pref("extensions.quickfolders.bookmarks.searchUri", "");
 pref("extensions.quickfolders.bookmarks.openMethod", "currentTab");
 pref("extensions.quickfolders.toolbar.minHeight", "24");
-pref("extensions.quickfolders.toolbar.onlyShowInMailWindows", false);
-pref("extensions.quickfolders.toolbar.hideInSingleMessage", true);
+pref("extensions.quickfolders.toolbar.hideInSingleMessage", false);
 pref("extensions.quickfolders.toolbar.ordinalPosition", 100);
 pref("extensions.quickfolders.behavior.nonFolderView.openNewTab", true);
 pref("extensions.quickfolders.style.transitions", true); // changing to true because of wobbly bug
@@ -96,7 +95,7 @@ pref("extensions.quickfolders.style.theme", "flatTabs");
 pref("extensions.quickfolders.buttonFontSizeN", 0);
 pref("extensions.quickfolders.showIcons", true);
 pref("extensions.quickfolders.debug", false);
-pref("extensions.quickfolders.initDelay", 2500);
+pref("extensions.quickfolders.initDelay", 250);
 pref("extensions.quickfolders.colorTabStyle",0);
 pref("extensions.quickfolders.queuedFolderUpdateDelay",500);
 pref("extensions.quickfolders.transparentButtons", false);
@@ -246,6 +245,7 @@ pref("extensions.quickfolders.premium.categories.multiSelect",false);
 pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26088
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
+pref("extensions.quickfolders.premium.findFolder.disableSpace", false); // optimization?
 pref("extensions.quickfolders.quickMove.premium.silentMode", false);
 pref("extensions.quickfolders.quickMove.premium.escapeClearsList", false); // [issue 134] 
 pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");

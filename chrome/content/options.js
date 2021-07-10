@@ -1171,8 +1171,11 @@ QuickFolders.Options = {
     if (noUpdate)
       return true;
     switch (prefString) {
-      case 'extensions.quickfolders.collapseCategories':
+      case "extensions.quickfolders.collapseCategories":
         QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCategoryBox" }); // QI.updateCategoryLayout();
+        return false;
+      case "extensions.quickfolders.toolbar.hideInSingleMessage":
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "currentDeckUpdate" }); // QI.onDeckChange(current tab)
         return false;
     }
     // broadcast change of current folder bar for all interested windows.

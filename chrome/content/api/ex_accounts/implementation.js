@@ -156,10 +156,16 @@ function convertAccount(account) {
     return null;
   }
 
-  let folders = traverseSubfolders(
-    account.incomingServer.rootFolder,
-    account.key
-  ).subFolders;
+  let folders;
+  try {
+    folders = traverseSubfolders(
+      account.incomingServer.rootFolder,
+      account.key
+    ).subFolders;
+  }
+  catch (ex) {
+    console.log("traverseSubfolders failed:", account, ex);
+  }
 
   return {
     id: account.key,

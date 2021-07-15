@@ -382,18 +382,31 @@
           </li>
           <h4 class="inList">Improvements</h4>
           <li> 
-            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/155">[issue 155]</a> 
-            Support entering multiple words in a search string to find longer folder names that are composited, such as
-            "Fred.Flintstone" "Invoices June 2020" "Research+Development". These can now be found by entering
-            the starting letters of the words within the folder name, in any order. e.g. "f f" "2020 inv" "Dev Res".<br>
-            <img class="screenshot" src="images/multi-search-1.png" /> <br>
-            The following characters are regarded as word boundaries and don't need to be typed:
-            <tok>_</tok> <tok>.</tok> <tok>-</tok> <tok>+</tok> <tok>&amp;</tok> <tok>@</tok> <br>
-            <img class="screenshot" src="images/multi-search-3.png" /> 
-            <br>
-            This can also be combined with the parent folder syntax by entering the parent folder start followed by a forward slash <tok>/</tok>:<br>
-            <img class="screenshot" src="images/multi-search-2.png" /> <br>
-            The new character <tok>&gt;</tok> can be used to skip any folder within the path.
+            <p>
+              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/155">[issue 155]</a> 
+              Significant new search features have been added to the quickMove / quickJump function. 
+              For help on these, you can now click the [?] symbol to the right of the search field.<br>
+              <img class="screenshot" src="images/search-help.png" /> 
+            </p> 
+            <p>
+              Support entering multiple words in a search string to find longer folder names that are composited, such as
+              "Fred.Flintstone" "Invoices June 2020" "Research+Development". These can now be found by entering
+              the starting letters of the words within the folder name, in any order. e.g. "f f" "2020 inv" "Dev Res".<br>
+              <img class="screenshot" src="images/multi-search-1.png" /> 
+            </p>
+            <p>
+              The following characters are regarded as word boundaries and don't need to be typed:
+              <tok>_</tok> <tok>.</tok> <tok>-</tok> <tok>+</tok> <tok>&amp;</tok> <tok>@</tok> <br>
+              <img class="screenshot" src="images/multi-search-3.png" /> 
+            </p>
+            <p>
+              This can also be combined with the parent folder syntax by entering the parent folder start followed by a forward slash <tok>/</tok>:<br>
+              <img class="screenshot" src="images/multi-search-2.png" />
+            </p>
+            <p>
+              The new character <tok>&gt;</tok> can be used to skip any part within the path 
+              and if you do not know their order within the folder hierarchy.
+            </p>
           </li>
           <li>
             When the search box is opened there is a new button to display a help panel:<br>

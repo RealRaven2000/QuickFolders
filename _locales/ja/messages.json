@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "自分用にライセンスが必要ならパーソナルライセンスを取得してください。個人用のメールアドレス向けのライセンスを複数の端末に適用できます。"
   },
-  "buyPersonalLicense.button": {
-    "message": "パーソナルライセンスを購入"
+  "buyProLicense.button": {
+    "message": "プロライセンスを購入！"
+  },
+  "buyStandardLicense.button": {
+    "message": "標準ライセンスを購入します！"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "プレミアム機能は不要ですか？標準ライセンスでは、プレミアム機能のテストを行うことができます。"
   },
   "chkComposerSubfolders": {
     "message": "サブフォルダにも適用する"
@@ -157,7 +163,7 @@
     "message": "メール作成時の既定のアカウントです"
   },
   "getQuickFolders": {
-    "message": "QuickFolders Pro の入手"
+    "message": "QuickFoldersライセンス"
   },
   "grpComposer": {
     "message": "既定のメールフィールド"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "最近ライセンスを延長するか、寄付していただきありがとうございます。 このアドオンの将来の保証に役立ったので、このウィンドウを閉じるだけです。"
   },
+  "licenseTypes": {
+    "message": "QuickFoldersは、StandardとProの2つのライセンスを提供します。 これらは、Thunderbirdプラットフォームの変更に対応し、アドオンのイノベーションと修理に資金を提供するために必要です。 重大な変更は年次サイクルで展開されるため、ライセンスも1年間有効です。"
+  },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro ライセンス"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "フォルダへのパス文字列をクリップボードにコピーします。"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird のテーマ"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "カスタム"
   },
@@ -548,7 +560,7 @@
     "message": "ダーク"
   },
   "qf.currentFolderBackground.default": {
-    "message": "既定"
+    "message": "銀"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "半透明"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "ライセンスを更新"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Pro にアップグレード"
   },
   "qf.notification.premium.readingList": {
     "message": "{1} 件のブックマークが定義されています。QuickFolders のフリー版では最大 {2} 件まで定義できます。"
@@ -1724,7 +1739,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} quickMove / quickJump関数に重要な新しい検索機能が追加されました。 これらのヘルプについては、検索フィールドの右側にある[？]記号をクリックしてください。{L2} {L1} 5.6.6-単一のメッセージタブでQuickFoldersを非表示/表示する新しいオプション{L2} {L1} 5.6.6-quickJump検索のさまざまなバグ修正。{L2} {L1}これで、QuickFoldersツールメニューからこの画面を開くことができます。{L2}{L1}複数のThunderbirdウィンドウのサポートが改善されました。{L2} {L1} Linuxでのツールバーの読みやすさが改善されました{L2} {L1} [メール拡張機能の移行]ライセンスライブラリがバックグラウンドスクリプトに移行されました。 ライセンスに関連する問題が発生した場合は、[サポート]タブからご連絡ください！{L2}"
+    "message": "{L1} QuickFoldersをThunderbird91と互換性のあるものにしました。{L2} {L1}オプション画面とナビゲーションツールバーの両方で、ダークテーマとサードパーティテーマのサポートを改善しました。{L2} {L1} [新機能]ボタンの表示を改善しました。 -標準のQuickFoldersテーマ{L2} {L1}再起動時またはアドオンの更新時にすべてのカテゴリが表示される問題を修正しました。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

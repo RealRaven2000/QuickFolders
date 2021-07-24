@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Нужна лицензия только для себя? Лицензия для одного человека привязана к адресу электронной почты и может использоваться параллельно в несколько местах."
   },
-  "buyPersonalLicense.button": {
-    "message": "Купить лицензию для одного человека!"
+  "buyProLicense.button": {
+    "message": "Купить лицензию Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Купить стандартную лицензию!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Не можете позволить себе премиум функции? Получите очень доступную стандартную лицензию и продолжайте тестировать премиальные функции."
   },
   "chkComposerSubfolders": {
     "message": "Также применять к под-папкам"
@@ -157,7 +163,7 @@
     "message": "Стандартный адрес отправителя для новых сообщений"
   },
   "getQuickFolders": {
-    "message": "Получить QuickFolders Pro"
+    "message": "Лицензии QuickFolders"
   },
   "grpComposer": {
     "message": "Стандартные значения полей сообщения"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Спасибо, что недавно продлили лицензию или сделали пожертвование. Поскольку вы помогли подготовить это дополнение к будущему, вы можете просто закрыть это окно."
   },
+  "licenseTypes": {
+    "message": "QuickFolders предлагает две лицензии: Standard и Pro; они необходимы, чтобы идти в ногу с изменениями в платформе Thunderbird и финансировать инновации и ремонт надстройки. Поскольку критические изменения вносятся в годовой цикл, лицензия также будет действительна в течение 1 года."
+  },  
   "licenseWindow.title": {
     "message": "Лицензия QuickFolders Pro"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Копировать настройки в буфер обмена"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Тема Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "собственный"
   },
@@ -548,7 +560,7 @@
     "message": "тёмный"
   },
   "qf.currentFolderBackground.default": {
-    "message": "по умолчанию"
+    "message": "серебро"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "просвечивающий"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Обновить лицензию"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Обновление до Pro"
   },
   "qf.notification.premium.readingList": {
     "message": "Имеется {1} закладок. Бесплатная версия QuickFolders поддерживает не более {2} закладок."
@@ -1724,7 +1739,7 @@
     "message": "Прочтите подробный журнал изменений здесь (только на английском языке):"
   },
   "whats-new-list": {
-    "message": "{L1} В функцию quickMove / quickJump были добавлены новые важные функции поиска. Для получения справки щелкните символ [?] Справа от поля поиска. {L2} {L1} 5.6.6 - новая опция для скрытия / отображения QuickFolders на вкладке с одним сообщением {L2} {L1} 5.6.6 - различные исправления ошибок для быстрого поиска. {L2}{L1} Теперь вы можете открыть этот экран из меню инструментов QuickFolders. {L2}{L1} Улучшенная поддержка нескольких окон Thunderbird. {L2} {L1} Улучшенная читаемость панелей инструментов в Linux {L2} {L1} [перенос почтового расширения] Библиотека лицензирования перенесена в фоновый скрипт. Если у вас возникнут проблемы с лицензированием, свяжитесь со мной через вкладку поддержки! {L2}"
+    "message": "{L1} Сделал QuickFolders совместимым с Thunderbird 91. {L2} {L1} Улучшена поддержка темных и сторонних тем как на экране параметров, так и на панели инструментов навигации. {L2} {L1} Улучшена видимость кнопки [что нового] без -стандартная тема QuickFolders {L2} {L1} Исправлена проблема, при которой все категории отображались при перезапуске или обновлении дополнений. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

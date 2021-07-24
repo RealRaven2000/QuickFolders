@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "¿Necesita una licencia para si mismo? Obtenga una licencia de usuario único. Está ligada a su dirección de correo electrónico personal y se puede usar en múltiples instalaciones."
   },
-  "buyPersonalLicense.button": {
-    "message": "¡Adquiera una licencia personal!"
+  "buyProLicense.button": {
+    "message": "¡Adquiera una licencia Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "¡Comprar licencia estándar!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "¿No puede permitirse el lujo de las funciones premium? Obtenga una licencia estándar altamente asequible y siga probando funciones premium."
   },
   "chkComposerSubfolders": {
     "message": "Aplicar también a las subcarpetas"
@@ -157,7 +163,7 @@
     "message": "Identidad predeterminada al componer correos"
   },
   "getQuickFolders": {
-    "message": "Obtener QuickFolders Pro"
+    "message": "Licencias de QuickFolders"
   },
   "grpComposer": {
     "message": "Campos de correo predeterminados"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Gracias por extender su licencia recientemente o si ha donado. Como ha ayudado a preparar este complemento para el futuro, simplemente puede cerrar esta ventana."
   },
+  "licenseTypes": {
+    "message": "QuickFolders ofrece dos licencias, Standard y Pro; estos son necesarios para mantenerse al día con los cambios en la plataforma Thunderbird y para financiar innovaciones y reparaciones del complemento. Dado que los cambios importantes se implementan en un ciclo anual, la licencia también será válida por 1 año."
+  },  
   "licenseWindow.title": {
     "message": "Licencia Pro de QuickFolders"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Copiar la configuración de Pestañas de QuickFolders al portapapeles"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Tema Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "personalizar"
   },
@@ -548,7 +560,7 @@
     "message": "oscuro"
   },
   "qf.currentFolderBackground.default": {
-    "message": "predeterminado"
+    "message": "plata"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "traslúcido"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renovar licencia"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Actualizar a Pro"
   },
   "qf.notification.premium.readingList": {
     "message": "Ahora tiene {1} marcadores definidos. La versión gratuita de QuickFolders permite un máximo de {2}."
@@ -1724,7 +1739,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Se han agregado nuevas funciones de búsqueda significativas a la función quickMove / quickJump. Para obtener ayuda sobre estos, haga clic en el símbolo [?] A la derecha del campo de búsqueda. {L2}{L1} 5.6.6 - nueva opción para ocultar / mostrar QuickFolders en la pestaña de un solo mensaje.{L2}{L1} 5.6.6 - varias correcciones de errores para la búsqueda quickJump. {L2}{L1} Soporte mejorado para múltiples ventanas Thunderbird. {L2}{L1} Ahora puede abrir esta pantalla desde el menú de herramientas de QuickFolders. {L2}{L1} Mejor legibilidad de las barras de herramientas en Linux {L2} {L1} [migración de extensión de correo] La biblioteca de licencias se migró a una secuencia de comandos en segundo plano. Si tiene algún problema relacionado con las licencias, comuníquese conmigo a través de la pestaña de asistencia. {L2}"
+    "message": "{L1} Se hizo compatible QuickFolders con Thunderbird 91. {L2} {L1} Se mejoró la compatibilidad con temas oscuros y de terceros, tanto en la pantalla de opciones como en la barra de herramientas de navegación. {L2} {L1} Visibilidad mejorada del botón [novedades] sin -Tema de QuickFolders estándar {L2} {L1} Se solucionó un problema por el cual todas las categorías se mostraban al reiniciar o actualizaciones de complementos. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

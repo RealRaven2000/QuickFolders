@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Behöver du en licens själv? Skaffa en licens för en person. Den associeras med din personliga e-postadress och kan användas på flera installationer."
   },
-  "buyPersonalLicense.button": {
-    "message": "Köp personlig licens!"
+  "buyProLicense.button": {
+    "message": "Köp Pro-licens!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Köp standardlicens!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Har du inte råd med premiumfunktionerna? Få en mycket prisvärd standardlicens och testa premiumfunktioner."
   },
   "chkComposerSubfolders": {
     "message": "Tillämpa även på undermappar"
@@ -157,7 +163,7 @@
     "message": "Standardidentitet för att skapa e-brev"
   },
   "getQuickFolders": {
-    "message": "Skaffa QuickFolders Pro"
+    "message": "QuickFolders-licenser"
   },
   "grpComposer": {
     "message": "Standardfält för e-brev"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Tack för att du nyligen förlängde din licens eller om du har donerat. Eftersom du har hjälpt till att framtida bevisa detta tillägg kan du helt enkelt stänga det här fönstret."
   },
+  "licenseTypes": {
+    "message": "QuickFolders erbjuder två licenser, Standard och Pro; dessa är nödvändiga för att hålla jämna steg med förändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom brytande förändringar rullas ut under en årlig cykel gäller licensen också i ett år."
+  },  
   "licenseWindow.title": {
     "message": "Licens för QuickFolders Pro"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopierar mapparnas konfigurationssträng till Urklipp"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird-tema"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "egen"
   },
@@ -548,7 +560,7 @@
     "message": "mörk"
   },
   "qf.currentFolderBackground.default": {
-    "message": "standard"
+    "message": "silver"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "genomskinlig"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Förnya licens"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Uppgradera till PRO"
   },
   "qf.notification.premium.readingList": {
     "message": "Du har nu {1} definierade bokmärken. Gratisversionen av QuickFolders tillåter maximalt {2}."
@@ -1724,7 +1739,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Betydande nya sökfunktioner har lagts till i funktionen quickMove / quickJump. Om du vill ha hjälp med dessa klickar du på symbolen [?] Till höger om sökfältet. {L2} {L1} 5.6.6 - nytt alternativ för att dölja / visa QuickFolders i fliken för enstaka meddelanden {L2} {L1} 5.6.6 - olika buggfixar för snabb hoppsökning. {L2}{L1} Du kan nu öppna den här skärmen från verktygsmenyn QuickFolders. {L2}{L1} Förbättrat stöd för flera Thunderbird-fönster. {L2} {L1} Förbättrad läsbarhet för verktygsfält under Linux {L2} {L1} [migrering av e-posttillägg] Licensbiblioteket migrerades till bakgrundsskript. Om du har några problem relaterade till licensiering, vänligen kontakta mig via supportfliken! {L2}"
+    "message": "{L1} Gjorde QuickFolders kompatibla med Thunderbird 91. {L2} {L1} Förbättrat stöd för mörka teman och tredjeparts teman, både i alternativskärmen och för navigationsverktygsfältet. {L2} {L1} Förbättrad synlighet för [vad som är nytt] -knappen med icke -standard QuickFolders-tema {L2} {L1} Åtgärdade ett problem där alla kategorier visades vid omstart eller tilläggsuppdateringar. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

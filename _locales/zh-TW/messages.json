@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "需要自己的一份授權？取得一份個人使用者授權。它會跟你個人E-mail做連結，並且能使用在多處安裝上。"
   },
-  "buyPersonalLicense.button": {
-    "message": "購買個人授權！"
+  "buyProLicense.button": {
+    "message": "購買專業版許可證！"
+  },
+  "buyStandardLicense.button": {
+    "message": "购买标准许可证！"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "买不起高级功能？ 获得更便宜的标准许可证并继续测试高级功能。"
   },
   "chkComposerSubfolders": {
     "message": "也適用到子目錄"
@@ -157,7 +163,7 @@
     "message": "當撰寫新郵件時，使用預設的帳號"
   },
   "getQuickFolders": {
-    "message": "取得QuickFolders 專業版"
+    "message": "QuickFolders 許可證"
   },
   "grpComposer": {
     "message": "預設的E-mail範圍"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "感謝您最近延長許可證或捐贈。 當您幫助將來對該插件進行驗證時，只需關閉此窗口即可。"
   },
+  "licenseTypes": {
+    "message": "QuickFolders 提供兩種許可證，Standard 和 Pro； 這些對於跟上 Thunderbird 平台的變化以及為插件的創新和修復提供資金是必要的。 由於重大更改以年度為周期推出，因此許可證的有效期也為 1 年。"
+  },  
   "licenseWindow.title": {
     "message": "QuickFolders 專業版購買證明"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "複製資料夾設定於剪貼簿中"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird 主題"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "自訂"
   },
@@ -548,7 +560,7 @@
     "message": "暗黑"
   },
   "qf.currentFolderBackground.default": {
-    "message": "預設"
+    "message": "銀"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "半透明"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "展延授權"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "升級到專業版"
   },
   "qf.notification.premium.readingList": {
     "message": "您現在有{1}個已定義的書籤。免費版本的QuickFolders最多只允許{2}個。"
@@ -1724,7 +1739,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}quickMove / quickJump 功能中添加了重要的新搜索功能。 如需這些方面的幫助，請點擊搜索字段右側的 [?] 符號。{L2}{L1}改進了對多個 Thunderbird 窗口的支持。{L2}{L1}5.6.6 - 在單個消息選項卡中隱藏/顯示 QuickFolders 的新選項{L2}{L1}5.6.6 - quickJump 搜索的各種錯誤修正。{L2}{L1}您現在可以從 QuickFolders 工具菜單打開此屏幕。{L2}{L1}改進了 Linux 下工具欄的可讀性{L2}{L1} [郵件擴展遷移] 許可庫已遷移到後台腳本中。 如果您遇到與許可相關的任何問題，請通過支持選項卡與我聯繫！{L2}"
+    "message": "{L1}使 QuickFolders 與 Thunderbird 91 兼容。{L2}{L1}在選項屏幕和導航工具欄中改進了對黑暗和 3rd 方主題的支持。{L2}{L1}改進了 [what's new] 按鈕與非 -標準 QuickFolders 主題{L2}{L1}修復了在重新啟動或附加組件更新時顯示所有類別的問題。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

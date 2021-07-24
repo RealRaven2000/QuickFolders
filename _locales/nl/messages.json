@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Hebt u een licentie voor uzelf nodig? Neem een persoonlijke licentie. Deze is aan uw persoonlijke e-mailadres gekoppeld en kan bij verschillende installaties worden gebruikt."
   },
-  "buyPersonalLicense.button": {
-    "message": "Een persoonlijke licentie kopen!"
+  "buyProLicense.button": {
+    "message": "Koop Pro-licentie!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Standaardlicentie kopen!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Kunt u zich de premiumfuncties niet veroorloven? Koop dan een betaalbare standaardlicentie en blijf de premiumfuncties uitproberen."
   },
   "chkComposerSubfolders": {
     "message": "Ook op submappen toepassen"
@@ -157,7 +163,7 @@
     "message": "Standaardidentiteit bij het opstellen van e-mails"
   },
   "getQuickFolders": {
-    "message": "QuickFolders Pro kopen"
+    "message": "QuickFolders-licenties"
   },
   "grpComposer": {
     "message": "Standaard-e-mailvelden"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Bedankt voor het onlangs verlengen van uw licentie of als u heeft gedoneerd. Omdat u heeft geholpen om deze add-on toekomstbestendig te maken, kunt u dit venster eenvoudig sluiten."
   },
+  "licenseTypes": {
+    "message": "QuickFolders biedt twee licenties, Standard en Pro; deze zijn nodig om de veranderingen in het Thunderbird-platform bij te houden en om Innovaties en reparaties van de Add-on te financieren. Omdat belangrijke wijzigingen in een jaarlijkse cyclus worden uitgerold, is de licentie ook 1 jaar geldig."
+  },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro-licentie"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "De configuratie van QuickFolders-tabbladen naar het klembord kopiëren"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird-thema"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "aangepast"
   },
@@ -548,7 +560,7 @@
     "message": "donker"
   },
   "qf.currentFolderBackground.default": {
-    "message": "standaard"
+    "message": "zilver"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "doorschijnend"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Licentie vernieuwen"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Upgraden naar Pro"
   },
   "qf.notification.premium.readingList": {
     "message": "U hebt nu {1} bladwijzers gedefinieerd. De gratis versie van QuickFolders staat maximaal {2} bladwijzers toe."
@@ -1724,7 +1739,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Aanzienlijke nieuwe zoekfuncties zijn toegevoegd aan de quickMove / quickJump-functie. Klik voor hulp hierbij op het [?]-symbool rechts van het zoekveld.{L2}{L1}5.6.6 - nieuwe optie om QuickFolders te verbergen/weergeven in tabblad met één bericht{L2}{L1}5.6.6 - verschillende bugfixes voor zoeken met QuickJump.{L2}{L1}U kunt dit scherm nu openen vanuit het menu QuickFolders-hulpmiddelen.{L2}{L1}Verbeterde ondersteuning voor meerdere Thunderbird-vensters.{L2}{L1}Verbeterde leesbaarheid van werkbalken onder Linux{L2}{L1} [migratie van e-mailextensie] Licentiebibliotheek is gemigreerd naar achtergrondscript. Als u problemen ondervindt met betrekking tot licenties, neem dan contact met mij op via het tabblad Ondersteuning!{L2}"
+    "message": "{L1}QuickFolders compatibel gemaakt met Thunderbird 91.{L2}{L1}Verbeterde ondersteuning voor donkere thema's en thema's van derden, zowel in het optiescherm als voor de navigatiewerkbalk.{L2}{L1}Verbeterde zichtbaarheid van de knop [wat is er nieuw] met niet -standaard QuickFolders-thema{L2}{L1}Er is een probleem opgelost waarbij alle categorieën werden weergegeven bij opnieuw opstarten of updates van add-ons.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

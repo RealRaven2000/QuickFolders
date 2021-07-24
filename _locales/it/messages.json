@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Avete bisogno di una licenza solo per voi stessi? Acquisite una licenza per uso personale. Essa viene collegata ad un vostro account di posta elettronica e può essere utilizzata per installazioni multiple."
   },
-  "buyPersonalLicense.button": {
-    "message": "Acquista una licenza personale"
+  "buyProLicense.button": {
+    "message": "Acquista la licenza Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Acquista una licenza Standard!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Non ci si può permettere le caratteristiche Premium? Si acquisti una licenza Standard in modo di avere comunque la possibilità di testarele caratteristiche Premium"
   },
   "chkComposerSubfolders": {
     "message": "Si applica anche alle sottocartelle"
@@ -157,7 +163,7 @@
     "message": "Quando si compongono messaggi di posta elettronica usa l'identità predefinita"
   },
   "getQuickFolders": {
-    "message": "Acquista QuickFolders Pro"
+    "message": "Licenze QuickFolders"
   },
   "grpComposer": {
     "message": "Campi predefiniti del messaggio di posta elettronica"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Grazie per aver recentemente esteso la tua licenza o se hai donato. Poiché hai contribuito a rendere questo componente aggiuntivo a prova di futuro, puoi semplicemente chiudere questa finestra."
   },
+  "licenseTypes": {
+    "message": "QuickFolders offre due licenze, Standard e Pro; questi sono necessari per stare al passo con i cambiamenti nella piattaforma Thunderbird e per finanziare Innovazioni e riparazioni dell'Add-on. Poiché le modifiche sostanziali vengono implementate in un ciclo annuale, anche la licenza sarà valida per 1 anno."
+  },  
   "licenseWindow.title": {
     "message": "Licenza di QuickFolders Pro"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Copia la configurazione delle schede di QuickFolders negli appunti"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Tema Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "personalizzata"
   },
@@ -548,7 +560,7 @@
     "message": "scura"
   },
   "qf.currentFolderBackground.default": {
-    "message": "predefinita"
+    "message": "argento"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "traslucida"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Rinnova la licenza"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Aggiorna a Pro"
   },
   "qf.notification.premium.readingList": {
     "message": "Attualmente sono definiti {1} segnalibri. La versione free di QF ne consente un massimo di {2}."
@@ -1724,7 +1739,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Nuove funzionalità di ricerca significative sono state aggiunte alla funzione quickMove / quickJump. Per assistenza su questi, fare clic sul simbolo [?] a destra del campo di ricerca.{L2}{L1}5.6.6 - nuova opzione per nascondere/mostrare QuickFolders nella scheda di un singolo messaggio{L2}{L1}5.6.6 - varie correzioni di bug per la ricerca QuickJump.{L2}{L1}Ora puoi aprire questa schermata dal menu degli strumenti di QuickFolders.{L2}{L1}Supporto migliorato per più finestre Thunderbird .{L2}{L1}Leggibilità migliorata delle barre degli strumenti sotto Linux{L2}{L1} [migrazione dell'estensione di posta] La libreria delle licenze è stata migrata nello script in background. Se riscontri problemi relativi alla licenza, contattami tramite la scheda di supporto!{L2}"
+    "message": "{L1}Cartelle rapide rese compatibili con Thunderbird 91.{L2}{L1}Supporto migliorato per temi scuri e di terze parti, sia nella schermata delle opzioni che per la barra degli strumenti di navigazione.{L2}{L1}Visibilità migliorata del pulsante [novità] con non -standard QuickFolders theme{L2}{L1}Risolto un problema per cui tutte le categorie venivano mostrate al riavvio o agli aggiornamenti dei componenti aggiuntivi.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

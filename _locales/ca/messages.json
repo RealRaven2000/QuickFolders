@@ -52,8 +52,14 @@
   "buyLicense.instruct": {
     "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
   },
-  "buyPersonalLicense.button": {
-    "message": "Buy Personal License!"
+  "buyProLicense.button": {
+    "message": "Comprar llicència Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Compra una llicència estàndard!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "No us podeu permetre les funcions premium? Obteniu una llicència estàndard molt assequible i continueu provant funcions premium."
   },
   "chkComposerSubfolders": {
     "message": "Also apply to subfolders"
@@ -134,7 +140,7 @@
     "message": "Default Identity when composing emails"
   },
   "getQuickFolders": {
-    "message": "Obtenir QuickFolders Pro"
+    "message": "Llicències QuickFolders"
   },
   "grpComposer": {
     "message": "Default Email Fields"
@@ -168,6 +174,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Gràcies per ampliar recentment la llicència o si heu donat. Com heu ajudat a provar aquest complement en un futur, només podeu tancar aquesta finestra."
   },
+  "licenseTypes": {
+    "message": "QuickFolders ofereix dues llicències, Standard i Pro; són necessaris per estar al dia dels canvis a la plataforma Thunderbird i per finançar innovacions i reparacions del complement. Com que els canvis de ruptura es desenvolupen en un cicle anual, la llicència també serà vàlida durant un any."
+  },  
   "licenseWindow.title": {
     "message": "Llicència QuickFolders Pro"
   },
@@ -483,6 +492,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Copia la cadena de configuració de les carpetes al portapapers"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Tema Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "personalitzat"
   },
@@ -490,7 +502,7 @@
     "message": "fosc"
   },
   "qf.currentFolderBackground.default": {
-    "message": "per defecte"
+    "message": "plata"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "translúcid"
@@ -949,6 +961,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renova la llicència"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Actualitza a pro"
   },
   "qf.notification.premium.readingList": {
     "message": "Teniu {1} marcadors definits. La versió gratuita de QuickFolders permet un màxim de {2}."
@@ -1644,7 +1659,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message" : "{L1} S'han afegit noves funcions de cerca significatives a la funció quickMove / quickJump. Per obtenir ajuda, feu clic al símbol [?] Situat a la dreta del camp de cerca. {L2}{L1} 5.6.6: nova opció per amagar / mostrar carpetes ràpides a la pestanya d'un missatge únic {L2} {L1} 5.6.6 - diverses correccions d'errors per a la cerca de quickJump. {L2}{L1} Ara podeu obrir aquesta pantalla des del menú d'eines de QuickFolders. {L2}{L1} Millora de la compatibilitat amb diverses finestres del Thunderbird. {L2} {L1} Millora de la llegibilitat de les barres d'eines a Linux {L2} {L1} [migració de l'extensió de correu] La biblioteca de llicències s'ha migrat a un script de fons. Si teniu algun problema relacionat amb la concessió de llicències, poseu-vos en contacte amb mi a través de la pestanya d'assistència. {L2}"
+    "message" : "{L1} Compatibilitat amb les carpetes ràpides amb Thunderbird 91. {L2} {L1} Millora de la compatibilitat amb temes foscos i de tercers, tant a la pantalla d'opcions com a la barra d'eines de navegació. {L2} {L1} Millora de la visibilitat del botó [novetats] amb -Tema estàndard de les carpetes ràpides {L2} {L1} S'ha solucionat un problema en què es mostraven totes les categories en reiniciar o actualitzar els complements. {L2}"
   },
   "windowTitle": {
     "message": "Propietats avançades"

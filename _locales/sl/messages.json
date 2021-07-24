@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Ali zase potrebujete dovoljenje? Prejmite enojno uporabniško dovoljenje. Vezano je na vaš osebni e-poštni naslov in ga lahko uporabite na več namestitvah."
   },
-  "buyPersonalLicense.button": {
-    "message": "Kupi osebno dovoljenje!"
+  "buyProLicense.button": {
+    "message": "Nakup licence Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Kupite standardno licenco!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Ne morete si privoščiti premijskih funkcij? Pridobite zelo ugodno standardno licenco in še naprej preverjajte funkcije premium."
   },
   "chkComposerSubfolders": {
     "message": "Uveljavi tudi za podmape"
@@ -157,7 +163,7 @@
     "message": "Privzeta identiteta ob sestavljanju e-pošte"
   },
   "getQuickFolders": {
-    "message": "Prejmi QuickFolders Pro"
+    "message": "Licence QuickFolders"
   },
   "grpComposer": {
     "message": "Privzeta polja za e-pošto"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Zahvaljujemo se vam za nedavno podaljšanje licence ali če ste prispevali. Ker ste pomagali pri prihodnjem preverjanju tega dodatka, lahko preprosto zaprete to okno."
   },
+  "licenseTypes": {
+    "message": "QuickFolders ponuja dve licenci, Standard in Pro; ti so potrebni za sledenje spremembam platforme Thunderbird in financiranje inovacij in popravil dodatka. Ker se spremembe v letnem ciklu uvajajo, bo licenca veljala tudi 1 leto."
+  },  
   "licenseWindow.title": {
     "message": "Dovoljenje QuickFolders Pro"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopira nastavitveni niz map na odložišče"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Tema Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "Po meri"
   },
@@ -548,7 +560,7 @@
     "message": "Temno"
   },
   "qf.currentFolderBackground.default": {
-    "message": "Privzeto"
+    "message": "Srebro"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "Prosojno"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Obnovi dovoljenje"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Nadgradnja na profesionalni nivo"
   },
   "qf.notification.premium.readingList": {
     "message": "Sedaj imate določenih {1} zaznamkov. Brezplačna različica razširitve QuickFolders omogoča največ {2} zaznamkov."
@@ -1724,7 +1739,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Funkciji quickMove / quickJump so dodane pomembne nove funkcije iskanja. Za pomoč pri njih kliknite simbol [?] Na desni strani iskalnega polja. {L2} {L1} 5.6.6 - nova možnost za skrivanje / prikaz QuickFolders na zavihku z enim sporočilom {L2} {L1} 5.6.6 - različni popravki napak za iskanje z hitrim skokom. {L2}{L1} Zdaj lahko ta zaslon odprete v meniju orodij QuickFolders. {L2}{L1} Izboljšana podpora za več oken Thunderbird. {L2} {L1} Izboljšana berljivost orodnih vrstic pod Linuxom {L2} {L1} [migracija razširitve pošte] Knjižnica licenciranja je bila preseljena v skript v ozadju. Če imate kakršne koli težave, povezane z licenciranjem, se obrnite na mene prek zavihka za podporo! {L2}"
+    "message": "{L1} Izdelane QuickFolders združljive s Thunderbird 91. {L2} {L1} Izboljšana podpora temnim temam in temam drugih proizvajalcev, tako na zaslonu z možnostmi kot v orodni vrstici za krmarjenje. {L2} {L1} Izboljšana vidnost gumba [novosti] z ne -standardna tema QuickFolders {L2} {L1} Odpravljena težava, pri kateri so bile vse kategorije prikazane ob ponovnem zagonu ali posodobitvah dodatkov. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

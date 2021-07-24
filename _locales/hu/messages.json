@@ -52,9 +52,15 @@
   "buyLicense.instruct": {
     "message": "Szüksége van licencre magának? Szerezzen be egyetlen felhasználói licencet. Az Ön személyes e-mail címéhez van kötve, és több telepítésben is használható."
   },
-  "buyPersonalLicense.button": {
-    "message": "Vásároljon személyes licencet!"
+  "buyProLicense.button": {
+    "message": "Vásároljon Pro License-t!"
   },
+  "buyStandardLicense.button": {
+    "message": "Vásároljon Normál licencet!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Nem engedheti meg magának a prémium funkciókat? Szerezzen be egy igen megfizethető szabványos licencet, és próbálja ki a prémium funkciókat."
+  },    
   "chkComposerSubfolders": {
     "message": "Az almappákra is vonatkozik"
   },
@@ -140,7 +146,7 @@
     "message": "Alapértelmezett identitás az e-mailek írása során"
   },
   "getQuickFolders": {
-    "message": "Get QuickFolders Pro"
+    "message": "QuickFolders licencek"
   },
   "grpComposer": {
     "message": "Alapértelmezett e-mail mezők"
@@ -215,6 +221,9 @@
   "purchase-heading": {
     "message": "Licenc vásárlása!"
   },
+  "licenseTypes": {
+    "message": "A QuickFolders két licencet kínál, a Standard és a Pro; ezekre azért van szükség, hogy lépést tudjunk tartani a Thunderbird platform változásaival, és finanszírozzuk az innovációkat és a kiegészítő javításait. Mivel a megszakító változásokat egy éves ciklusban hajtják végre, az engedély 1 évig is érvényes lesz."
+  },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro License"
   },
@@ -521,6 +530,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Mappák beállításainak másolása a vágólapra"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird Téma"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "custom"
   },
@@ -528,7 +540,7 @@
     "message": "dark"
   },
   "qf.currentFolderBackground.default": {
-    "message": "default"
+    "message": "ezüst"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "translucent"
@@ -988,6 +1000,9 @@
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renew License"
   },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Frissítés Pro verzióra"
+  },  
   "qf.notification.premium.readingList": {
     "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
   },
@@ -1682,7 +1697,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Jelentős új keresési funkciókkal bővült a quickMove / quickJump funkció. Ha segítségre van szüksége ezekről, kattintson a keresési mező jobb oldalán található [?] Szimbólumra. {L2}{L1} 5.6.6 - új lehetőség a QuickFolderek elrejtésére / megjelenítésére az egyetlen üzenet fülön {L2} {L1} 5.6.6 - különféle hibajavítások a quickJump kereséshez. {L2}{L1} Ezt a képernyőt most megnyithatja a QuickFolders eszközök menüjéből. {L2}{L1} Több Thunderbird ablak támogatása javult. {L2} {L1} Az eszköztárak jobb olvashatósága Linux alatt {L2} {L1} [mail kiterjesztés migrálása] A licenckönyvtárat háttér szkriptbe költöztették. Ha bármilyen probléma merül fel az engedélyezéssel kapcsolatban, kérjük, lépjen kapcsolatba velem a támogatási fülön keresztül! {L2}"
+    "message": "{L1} A gyorsmappákat kompatibilisvé tette a Thunderbird 91-gyel. {L2} {L1} Javított a sötét és harmadik felek témáinak támogatása, mind az opciók képernyőn, mind a Navigációs eszköztáron. {L2} {L1} Az [újdonságok] gomb jobb láthatósága nem szabványos QuickFolders téma {L2} {L1} Javítva egy probléma, amikor az összes kategória megjelent az újraindítás vagy a bővítmény frissítésekor. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

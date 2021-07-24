@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
   },
-  "buyPersonalLicense.button": {
-    "message": "Buy Personal License!"
+  "buyProLicense.button": {
+    "message": "Buy Pro License!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Buy Standard License!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions."
   },
   "chkComposerSubfolders": {
     "message": "Also apply to subfolders"
@@ -157,7 +163,7 @@
     "message": "Default Identity when composing emails"
   },
   "getQuickFolders": {
-    "message": "Get QuickFolders Pro"
+    "message": "QuickFolders Licenses"
   },
   "grpComposer": {
     "message": "Default Email Fields"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
   },
+  "licenseTypes": {
+    "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in an annual cycle, the license will also be valid for 1 year."
+  },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro License"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Copy the QuickFolders Tabs configuration to the clipboard"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird theme"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "custom"
   },
@@ -548,7 +560,7 @@
     "message": "dark"
   },
   "qf.currentFolderBackground.default": {
-    "message": "default"
+    "message": "silver"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "translucent"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renew License"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Upgrade to Pro"
   },
   "qf.notification.premium.readingList": {
     "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
@@ -1724,7 +1739,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Significant new search features have been added to the quickMove / quickJump function. For help on these, click the [?] symbol to the right of the search field.{L2}{L1}You can now open this popup screen from the QuickFolders tools menu.{L2}{L1}5.6.6 - new option to hide/show QuickFolders in single message tab{L2}{L1}5.6.6 - various bugfixes for quickJump search.{L2}{L1}Improved support for multiple Thunderbird windows.{L2}{L1}Improved readability of toolbars under Linux{L2}{L1}[mail extension migration] Licensing library was migrated into background script. If you experience any problems related to licensing, please contact me via the support tab!{L2}"
+    "message": "{L1}Made QuickFolders compatible with Thunderbird 91.{L2}{L1}Improved support for dark and 3rd party themes, both in options screen and for Navigation toolbar.{L2}{L1}Improved visibility of [what's new] button with non-standard QuickFolders theme{L2}{L1}Fixed a problem where all Categories were shown on restart or Add-on updates.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

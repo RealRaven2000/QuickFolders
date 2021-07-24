@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Треба вам само једна лиценца? Онда набавите лиценцу за једног корисника. Везана је за вашу личну ел. адресу и може се користити за више инсталација."
   },
-  "buyPersonalLicense.button": {
-    "message": "Купи личну лиценцу!"
+  "buyProLicense.button": {
+    "message": "Купите Про лиценцу!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Купите стандардну лиценцу!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Не можете приуштити премиум функције? Набавите високо приступачну стандардну лиценцу и наставите да тестирате премиум функције."
   },
   "chkComposerSubfolders": {
     "message": "Also apply to subfolders"
@@ -157,7 +163,7 @@
     "message": "Default Identity when composing emails"
   },
   "getQuickFolders": {
-    "message": "Набави QuickFolders Pro"
+    "message": "Лиценце за КуицкФолдерс"
   },
   "grpComposer": {
     "message": "Default Email Fields"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Хвала вам што сте недавно продужили лиценцу или ако сте донирали. Као што сте помогли у будућем доказивању овог додатка, можете једноставно затворити овај прозор."
   },
+  "licenseTypes": {
+    "message": "QuickFolders нуди две лиценце, Стандардну и Про; они су неопходни да би се ишло у корак са променама на Тхундербирд платформи и да би се финансирале иновације и поправке додатка. Како се важне промене уводе у годишњи циклус, лиценца ће важити и годину дана."
+  },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro лиценца"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Копирање подешавања фасцикле у оставу"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird тхеме"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "прилагођено"
   },
@@ -548,7 +560,7 @@
     "message": "тамно"
   },
   "qf.currentFolderBackground.default": {
-    "message": "подразумевано"
+    "message": "сребро"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "провидно"
@@ -979,7 +991,7 @@
     "message": "б"
   },
   "qf.notification.categoryIsReadOnly": {
-    "message": "This item cannot be deleted."
+    "message": "Ова ставка се не може избрисати."
   },
   "qf.notification.dontShowAgain": {
     "message": "Убудуће не приказуј ову поруку."
@@ -994,10 +1006,10 @@
     }
   },
   "qf.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
+    "message": "Прошири лиценцу"
   },
   "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+    "message": "Ово ће продужити тренутни датум лиценце за 1 годину. То је обично јефтиније од нове лиценце."
   },
   "qf.notification.premium.btn.getLicense": {
     "message": "Набави лиценцу!"
@@ -1006,7 +1018,10 @@
     "message": "л"
   },
   "qf.notification.premium.btn.renewLicense": {
-    "message": "Renew License"
+    "message": "Обнови лиценцу"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Унапреди се у професионалца"
   },
   "qf.notification.premium.readingList": {
     "message": "Имате одређено {1} белешки. Бесплатна верзија додатка QuickFolders дозвољава највише {2}."
@@ -1724,7 +1739,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1} Функцији куицкМове / куицкЈумп додане су значајне нове функције претраживања. За помоћ у вези с њима кликните симбол [?] Десно од поља за претрагу. {L2} {L1} 5.6.6 - нова опција за сакривање / приказивање КуицкФолдерс-а на картици појединачне поруке {L2} {L1} 5.6.6 - разни исправци грешака за брзу претрагу. {L2}{L1} Овај екран сада можете да отворите у менију алата КуицкФолдерс. {L2}{L1} Побољшана подршка за више прозора Тхундербирда. {L2} {L1} Побољшана читљивост трака са алаткама под Линуком {L2} {L1} [миграција проширења поште] Библиотека лиценцирања је мигрирана у позадинску скрипту. Ако наиђете на проблеме у вези са лиценцирањем, контактирајте ме путем картице за подршку! {L2}"
+    "message": "{L1} Направљени КуицкФолдерс компатибилни са Тхундербирд 91. {L2} {L1} Побољшана подршка за тамне теме и теме независних произвођача, како на екрану опција тако и на траци са алаткама за навигацију. {L2} {L1} Побољшана видљивост дугмета [шта је ново] са не -стандардна тема КуицкФолдерс-а {L2} {L1} Решен је проблем када су све категорије биле приказане приликом поновног покретања или ажурирања додатака. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

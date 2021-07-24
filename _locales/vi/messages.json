@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
   },
-  "buyPersonalLicense.button": {
-    "message": "Buy Personal License!"
+  "buyProLicense.button": {
+    "message": "Mua Giấy phép Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Mua Giấy phép Tiêu chuẩn!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Không có khả năng mua các chức năng cao cấp? Nhận giấy phép tiêu chuẩn có giá cả phải chăng và tiếp tục thử nghiệm các chức năng cao cấp."
   },
   "chkComposerSubfolders": {
     "message": "Also apply to subfolders"
@@ -157,7 +163,7 @@
     "message": "Default Identity when composing emails"
   },
   "getQuickFolders": {
-    "message": "Get QuickFolders Pro"
+    "message": "Giấy phép QuickFolders"
   },
   "grpComposer": {
     "message": "Default Email Fields"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Cảm ơn bạn đã gia hạn giấy phép gần đây hoặc nếu bạn đã đóng góp. Vì bạn đã giúp chứng minh Tiện ích bổ sung này trong tương lai, bạn có thể chỉ cần đóng cửa sổ này."
   },
+  "licenseTypes": {
+    "message": "QuickFolders cung cấp hai giấy phép, Standard và Pro; những điều này là cần thiết để theo kịp những thay đổi trong nền tảng Thunderbird và tài trợ cho Cải tiến và sửa chữa Tiện ích bổ sung. Khi các thay đổi đột phá được triển khai theo chu kỳ hàng năm, giấy phép cũng sẽ có hiệu lực trong 1 năm."
+  },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro License"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Sao chép chuỗi cấu hình vào bộ nhớ tạm"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Chủ đề Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "thay đổi"
   },
@@ -548,7 +560,7 @@
     "message": "tối"
   },
   "qf.currentFolderBackground.default": {
-    "message": "mặc định"
+    "message": "bạc"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "trong suốt"
@@ -994,10 +1006,10 @@
     }
   },
   "qf.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
+    "message": "Gia hạn Giấy phép"
   },
   "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+    "message": "Điều này sẽ kéo dài ngày giấy phép hiện tại thêm 1 năm. Nó thường rẻ hơn giấy phép mới."
   },
   "qf.notification.premium.btn.getLicense": {
     "message": "Buy License"
@@ -1006,7 +1018,10 @@
     "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
-    "message": "Renew License"
+    "message": "Gia hạn giấy phép"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Nâng cấp lên Pro"
   },
   "qf.notification.premium.readingList": {
     "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
@@ -1724,7 +1739,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Các tính năng tìm kiếm mới quan trọng đã được thêm vào chức năng quickMove / quickJump. Để được trợ giúp về những điều này, hãy nhấp vào biểu tượng [?] Ở bên phải trường tìm kiếm. {L2} {L1} 5.6.6 - tùy chọn mới để ẩn / hiển thị Thư mục nhanh trong tab thông báo duy nhất {L2} {L1} 5.6.6 - các bản sửa lỗi khác nhau để tìm kiếm quickJump. {L2}{L1} Giờ đây, bạn có thể mở màn hình này từ menu công cụ QuickFolders. {L2}{L1} Cải thiện hỗ trợ cho nhiều cửa sổ Thunderbird. {L2} {L1} Cải thiện khả năng đọc của các thanh công cụ trong Linux {L2} {L1} [di chuyển tiện ích mở rộng thư] Thư viện cấp phép đã được chuyển sang tập lệnh nền. Nếu bạn gặp bất kỳ sự cố nào liên quan đến việc cấp phép, vui lòng liên hệ với tôi qua tab hỗ trợ! {L2}"
+    "message": "{L1} Tạo QuickFolders tương thích với Thunderbird 91. {L2} {L1} Cải thiện hỗ trợ cho các chủ đề của bên thứ ba và tối, cả trong màn hình tùy chọn và thanh công cụ Điều hướng. {L2} {L1} Cải thiện khả năng hiển thị của nút [có gì mới] với không -chủ đề QuickFolders tiêu chuẩn {L2} {L1} Đã khắc phục sự cố trong đó tất cả các Danh mục được hiển thị khi khởi động lại hoặc cập nhật Tiện ích bổ sung. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

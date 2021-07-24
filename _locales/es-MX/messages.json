@@ -26,8 +26,14 @@
   "buyLicense.instruct": {
     "message": "¿Necesitas una licencia para ti? Consigue una licencia personal. Se ligará a tu cuenta de correo y puede ser utilizada en múltiples instalaciones."
   },
-  "buyPersonalLicense.button": {
-    "message": "¡Compra ua licencia personal!"
+  "buyProLicense.button": {
+    "message": "¡Compra ua licencia Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "¡Comprar licencia estándar!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "¿No puede permitirse el lujo de las funciones premium? Obtenga una licencia estándar altamente asequible y siga probando funciones premium."
   },
   "chkComposerSubfolders": {
     "message": "Aplicar lo mismo a las sub carpetas"
@@ -108,7 +114,7 @@
     "message": "Identidad por omisión al escribir correos electrónicos"
   },
   "getQuickFolders": {
-    "message": "Obtener QuickFolders Pro"
+    "message": "Licencias de QuickFolders"
   },
   "grpComposer": {
     "message": "Campos avanzados de correo electrónico"
@@ -434,6 +440,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Copia la configuración de carpetas al portapapeles"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Tema Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "personalizado"
   },
@@ -441,7 +450,7 @@
     "message": "oscuro"
   },
   "qf.currentFolderBackground.default": {
-    "message": "por omisión"
+    "message": "plata"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "transparente"
@@ -900,6 +909,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renovar licencia"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Actualizar a Pro"
   },
   "qf.notification.premium.readingList": {
     "message": "Tienes ahora {1} marcadores definidos. La versión gratuita de QuickFolders permite un máximo de {2}."

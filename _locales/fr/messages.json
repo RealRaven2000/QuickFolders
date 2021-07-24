@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Vous souhaitez acquérir une licence ? Demandez une licence d'utilisateur personnelle. Elle est associée à votre adresse électronique et peut être utilisée sur plusieurs installations."
   },
-  "buyPersonalLicense.button": {
-    "message": "Acheter une licence personnelle !"
+  "buyProLicense.button": {
+    "message": "Acheter une licence Pro !"
+  },
+  "buyStandardLicense.button": {
+    "message": "Acheter une licence standard !"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Vous ne pouvez pas vous permettre les fonctions premium? Obtenez une licence standard très abordable et continuez à tester des fonctions premium."
   },
   "chkComposerSubfolders": {
     "message": "S'applique également aux sous-dossiers"
@@ -157,7 +163,7 @@
     "message": "Identité par défaut lors de la composition de courriels"
   },
   "getQuickFolders": {
-    "message": "Acheter QuickFolders Pro"
+    "message": "Licences QuickFolders"
   },
   "grpComposer": {
     "message": "Champs courriel par défaut"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Merci d'avoir récemment prolongé votre licence ou si vous avez fait un don. Comme vous avez contribué à la pérennité de cet add-on, vous pouvez simplement fermer cette fenêtre."
   },
+  "licenseTypes": {
+    "message": "QuickFolders propose deux licences, Standard et Pro ; ceux-ci sont nécessaires pour suivre les changements de la plate-forme Thunderbird et pour financer les innovations et les réparations de l'Add-on. Les changements de rupture étant déployés selon un cycle annuel, la licence sera également valable 1 an."
+  },  
   "licenseWindow.title": {
     "message": "Licence QuickFolders Pro"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Copie la chaîne de caractères de configuration des dossiers vers le presse-papiers"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thème Thunderbird"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "personnalisé"
   },
@@ -548,7 +560,7 @@
     "message": "sombre"
   },
   "qf.currentFolderBackground.default": {
-    "message": "défaut"
+    "message": "argent"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "translucide"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renouveler la licence"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Passer à Pro"
   },
   "qf.notification.premium.readingList": {
     "message": "Vous avez à présent défini {1} marque-page(s). La version libre de QuickFolders en autorise {2} au maximum."
@@ -1724,7 +1739,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}De nouvelles fonctionnalités de recherche importantes ont été ajoutées à la fonction quickMove / quickJump. Pour obtenir de l'aide, cliquez sur le symbole [?] à droite du champ de recherche.{L2}{L1}5.6.6 - nouvelle option pour masquer/afficher les QuickFolders dans un seul onglet de message{L2}{L1}5.6.6 - diverses corrections de bugs pour la recherche quickJump.{L2}{L1}Vous pouvez maintenant ouvrir cet écran à partir du menu des outils QuickFolders.{L2}{L1}Support amélioré pour plusieurs fenêtres Thunderbird.{L2}{L1}Lisibilité améliorée des barres d'outils sous Linux{L2}{L1} [migration de l'extension de messagerie] La bibliothèque de licences a été migrée dans le script d'arrière-plan. Si vous rencontrez des problèmes liés aux licences, veuillez me contacter via l'onglet support !{L2}"
+    "message": "{L1}Rendez QuickFolders compatible avec Thunderbird 91.{L2}{L1}Support amélioré pour les thèmes sombres et tiers, à la fois dans l'écran des options et pour la barre d'outils de navigation.{L2}{L1}Visibilité améliorée du bouton [quoi de neuf] avec non -thème QuickFolders standard{L2}{L1}Correction d'un problème où toutes les catégories étaient affichées au redémarrage ou aux mises à jour complémentaires.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

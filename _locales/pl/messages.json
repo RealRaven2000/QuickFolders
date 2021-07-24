@@ -55,8 +55,14 @@
   "buyLicense.instruct": {
     "message": "Potrzebujesz licencji dla siebie? Zdobądź licencję dla jednego użytkownika. Jest ona przypisana do Twojego adresu Email i może być używana w wielu instalacjach."
   },
-  "buyPersonalLicense.button": {
-    "message": "Kup prywatną licencję!"
+  "buyProLicense.button": {
+    "message": "Kup licencję Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Kup licencję standardową!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Nie możesz sobie pozwolić na funkcje premium? Uzyskaj niedrogą standardową licencję i testuj funkcje premium."
   },
   "chkComposerSubfolders": {
     "message": "Zastosuj również do podfolderów"
@@ -157,7 +163,7 @@
     "message": "Domyślna tożsamość podczas tworzenia nowych wiadomości"
   },
   "getQuickFolders": {
-    "message": "Zarejestruj QuickFolders Pro"
+    "message": "Licencje QuickFolders"
   },
   "grpComposer": {
     "message": "Pola domyślne wiadomości"
@@ -210,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Dziękujemy za niedawne przedłużenie licencji lub przekazanie darowizny. Ponieważ pomogłeś w przygotowaniu tego dodatku w przyszłości, możesz po prostu zamknąć to okno."
   },
+  "licenseTypes": {
+    "message": "QuickFolders oferuje dwie licencje, Standard i Pro; są one niezbędne, aby nadążyć za zmianami na platformie Thunderbird oraz sfinansować innowacje i naprawy dodatku. Ponieważ przełomowe zmiany wprowadzane są w cyklu rocznym, licencja będzie również ważna przez 1 rok."
+  },  
   "licenseWindow.title": {
     "message": "Licencja QuickFolders Pro"
   },
@@ -541,6 +550,9 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopiuje zapis konfiguracji folderów do schowka"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Motyw Thunderbirda"
+  },
   "qf.currentFolderBackground.custom": {
     "message": "Własne"
   },
@@ -548,7 +560,7 @@
     "message": "Ciemne"
   },
   "qf.currentFolderBackground.default": {
-    "message": "Domyślne"
+    "message": "Srebro"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "Przezroczyste"
@@ -1007,6 +1019,9 @@
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Odnów licencję"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Przejść na wersje Pro"
   },
   "qf.notification.premium.readingList": {
     "message": "Zdefiniowane zakładki - {1}. Darmowa wersja QuickFolders umożliwia definiowanie maksymalnie {2}."
@@ -1724,7 +1739,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Do funkcji quickMove/quickJump dodano nowe, znaczące funkcje wyszukiwania. Aby uzyskać pomoc, kliknij symbol [?] po prawej stronie pola wyszukiwania.{L2}{L1}5.6.6 - nowa opcja ukrywania/pokazywania QuickFolderów w zakładce pojedynczej wiadomości{L2}{L1}5.6.6 - różne poprawki do szybkiego wyszukiwania.{L2}{L1}Możesz teraz otworzyć ten ekran z menu narzędzi QuickFolders.{L2}{L1}Ulepszona obsługa wielu okien Thunderbirda.{L2}{L1}Poprawa czytelności pasków narzędzi w systemie Linux{L2}{L1} [migracja rozszerzenia poczty] Biblioteka licencjonowania została przeniesiona do skryptu działającego w tle. Jeśli napotkasz jakiekolwiek problemy związane z licencjonowaniem, skontaktuj się ze mną za pośrednictwem zakładki pomocy!{L2}"
+    "message": "{L1}Uczyniono QuickFolders kompatybilnymi z Thunderbirdem 91.{L2}{L1}Poprawiona obsługa motywów ciemnych i innych firm, zarówno na ekranie opcji, jak i na pasku narzędzi Nawigacja.{L2}{L1}Poprawiona widoczność przycisku [co nowego] przy braku -standardowy motyw QuickFolders{L2}{L1}Rozwiązano problem polegający na tym, że wszystkie kategorie były wyświetlane po ponownym uruchomieniu lub aktualizacjach dodatków.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

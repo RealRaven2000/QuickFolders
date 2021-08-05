@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "Vielen Dank für's Registrieren von Quickfolders Pro! Alle Premium-Funktionen sind nun freigeschaltet."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Vielen Dank für die Registrierung einer QuickFolders-Lizenz - Sie helfen dem Add-on ungemein! Wenn Sie weitere Funktionen benötigen, können Sie jederzeit auf die Pro-Lizenz upgraden."
+  },  
   "qf.loadConfig": {
     "message": "Konfiguration laden…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Premium Funktion"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Sie haben jetzt {1} Lesezeichen definiert. Die Standardlizenz von QuickFolders erlaubt maximal {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} ist eine Standardfunktion, bitte erwerben Sie eine QuickFolders-Lizenz, um sie zu verwenden."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standardfunktion"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Individuelle Tab-Farben"

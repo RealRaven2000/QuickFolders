@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "Obrigado por registrar o QuickFolders Pro! Todas as funcionalidades premium estão agora desbloqueadas."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Obrigado por registrar uma licença QuickFolders - você está ajudando imensamente o complemento! Se precisar de mais recursos, você sempre pode atualizar para a Licença Pro."
+  },  
   "qf.loadConfig": {
     "message": "Carregar configuração…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Recurso Premium"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Você agora tem {1} favoritos definidos. A licença padrão de QuickFolders permite no máximo {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} é um recurso padrão, obtenha uma licença QuickFolders para usá-lo."
+  },
+  "qf.notification.standard.title": {
+    "message": "Recurso Padrão"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Aparência individual de cores de abas"

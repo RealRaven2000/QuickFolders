@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "QuickFolders Pro のご登録ありがとうございます！ すべての有料機能がロック解除されました。"
   },
+  "qf.licenseValidation.standard": {
+    "message": "QuickFoldersライセンスを登録していただきありがとうございます-あなたはアドオンを大いに助けています！ より多くの機能が必要な場合は、いつでもプロライセンスにアップグレードできます。"
+  },  
   "qf.loadConfig": {
     "message": "Load Configuration…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "有料機能"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "これで、{1}ブックマークが定義されました。 QuickFoldersの標準ライセンスでは、最大{2}が許可されます。"
+  },
+  "qf.notification.standard.text": {
+    "message": "{1}は標準機能です。使用するにはQuickFoldersライセンスを取得してください。"
+  },
+  "qf.notification.standard.title": {
+    "message": "標準機能"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "タブのスタイル"

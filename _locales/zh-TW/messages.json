@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "感謝購買QuickFolders專業版！所有的進階功能現在都將開啟。"
   },
+  "qf.licenseValidation.standard": {
+    "message": "感謝您註冊 QuickFolders 許可證 - 您正在極大地幫助附加組件！ 如果您需要更多功能，您可以隨時升級到 Pro 許可證。"
+  },  
   "qf.loadConfig": {
     "message": "讀取設定..."
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "獨特的功能"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "您現在已經定義了 {1} 個書籤。 QuickFolders 的標准許可最多允許 {2}。"
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} 是一項標準功能，請獲得 QuickFolders 許可才能使用它。"
+  },
+  "qf.notification.standard.title": {
+    "message": "標準功能"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "個別標籤顏色樣式"

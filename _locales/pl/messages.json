@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "Dziękujemy za rejestrację QuickFolders Pro! Wszystkie funkcje premium są teraz odblokowane."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Dziękujemy za zarejestrowanie licencji QuickFolders — ogromnie pomagasz dodatkowi! Jeśli potrzebujesz więcej funkcji, zawsze możesz uaktualnić do licencji Pro."
+  },  
   "qf.loadConfig": {
     "message": "Ładowanie konfiguracji…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Funkcja Premium"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Masz teraz zdefiniowanych {1} zakładek. Standardowa licencja QuickFolders pozwala na maksymalnie {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} to standardowa funkcja, uzyskaj licencję QuickFolders, aby z niej korzystać."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standardowa funkcja"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Wygląd dodatkowych elementów paska"

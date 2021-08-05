@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "Thanks for registering QuickFolders Pro! All premium features are now unlocked."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Cảm ơn bạn đã đăng ký Giấy phép QuickFolders - Bạn đang giúp ích rất nhiều cho Tiện ích bổ sung! Nếu bạn cần nhiều tính năng hơn, bạn luôn có thể nâng cấp lên Giấy phép Pro."
+  },  
   "qf.loadConfig": {
     "message": "Load Configuration…"
   },
@@ -1024,16 +1027,25 @@
     "message": "Nâng cấp lên Pro"
   },
   "qf.notification.premium.readingList": {
-    "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
+    "message": "Bây giờ bạn đã xác định {1} dấu trang. Phiên bản miễn phí của QuickFolders cho phép tối đa {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "You have now {1} icon(s) defined. The free version of QuickFolders allows a maximum of {2}."
+    "message": "Bây giờ bạn đã xác định {1} (các) biểu tượng. Phiên bản miễn phí của QuickFolders cho phép tối đa {2}."
   },
   "qf.notification.premium.text": {
-    "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it permanently."
+    "message": "{1} là một tính năng Cao cấp, vui lòng nhận Giấy phép QuickFolders Pro để sử dụng nó."
   },
   "qf.notification.premium.title": {
     "message": "Premium Feature"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Bây giờ bạn đã xác định {1} dấu trang. Giấy phép tiêu chuẩn của QuickFolders cho phép tối đa là {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} là một tính năng Tiêu chuẩn, vui lòng nhận Giấy phép QuickFolders để sử dụng nó."
+  },
+  "qf.notification.standard.title": {
+    "message": "Tính năng tiêu chuẩn"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Màu riêng của từng thẻ"

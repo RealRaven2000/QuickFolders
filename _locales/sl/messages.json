@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "Hvala za registracijo razširitve QuickFolders Pro! Vse značilnosti Premium so sedaj odklenjene."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Hvala za registracijo licence QuickFolders - Izjemno pomagate dodatku! Če potrebujete več funkcij, lahko vedno nadgradite na licenco Pro."
+  },  
   "qf.loadConfig": {
     "message": "Naloži konfiguracijo…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Značilnost Premium"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Zdaj imate definirane zaznamke {1}. Standardna licenca QuickFolders omogoča največ {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} je standardna funkcija, za uporabo pridobite licenco QuickFolders."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standardna funkcija"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Videz barve posameznega zavihka"

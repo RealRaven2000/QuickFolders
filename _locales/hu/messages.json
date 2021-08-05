@@ -892,6 +892,9 @@
   "qf.licenseValidation.passed": {
     "message": "Köszönjük a QuickFolders Pro regisztrálását! Az összes prémium funkció fel van oldva."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Köszönjük, hogy regisztrálta a QuickFolders licencet - Rendkívül sokat segít a bővítményen! Ha további funkciókra van szüksége, mindig frissíthet Pro licencre."
+  },  
   "qf.loadConfig": {
     "message": "Konfiguráció betöltése…"
   },
@@ -1014,6 +1017,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Prémium funkció"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Most {1} könyvjelző van definiálva. A QuickFolders szabványos licence legfeljebb {2} engedélyezhető."
+  },
+  "qf.notification.standard.text": {
+    "message": "A {1} szabványos szolgáltatás, használatához szerezzen be QuickFolders licencet."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standard funkció"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Egyéni fül szín megjelenítés"

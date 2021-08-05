@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "感谢您注册QuickFolders Pro！ 所有高级功能现已解锁."
   },
+  "qf.licenseValidation.standard": {
+    "message": "感谢您注册 QuickFolders 许可证 - 您正在极大地帮助附加组件！ 如果您需要更多功能，您可以随时升级到 Pro 许可证。"
+  },  
   "qf.loadConfig": {
     "message": "负载配置…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "高级功能"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "您现在已经定义了 {1} 个书签。 QuickFolders 的标准许可最多允许 {2}。"
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} 是一项标准功能，请获得 QuickFolders 许可才能使用它。"
+  },
+  "qf.notification.standard.title": {
+    "message": "标准功能"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "导航卡独立的颜色外观"

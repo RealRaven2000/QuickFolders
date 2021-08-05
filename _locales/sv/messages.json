@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "Tack för att du registrerar QuickFolders Pro! Alla licensbelagda funktioner är nu tillgängliga."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Tack för att du registrerade en QuickFolders -licens - Du hjälper tillägget oerhört! Om du behöver fler funktioner kan du alltid uppgradera till Pro -licensen."
+  },  
   "qf.loadConfig": {
     "message": "Ladda konfiguration…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Licensbelagd funktion"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Du har nu {1} bokmärken definierade. Standardlicensen för QuickFolders tillåter högst {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} är en standardfunktion. Skaffa en QuickFolders -licens för att använda den."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standardfunktion"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Flikfärgsutseende"

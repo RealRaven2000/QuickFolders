@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "Grazie per aver registrato QuickFolders Pro. Tutte le caratteristiche della versione Premium sono ora disponibili."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Grazie per aver registrato una licenza QuickFolders - Stai aiutando immensamente il componente aggiuntivo! Se hai bisogno di più funzionalità puoi sempre aggiornare alla Licenza Pro."
+  },  
   "qf.loadConfig": {
     "message": "Carica la configurazione…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Caratteristica della versione Premium"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Ora hai definito {1} segnalibri. La licenza standard di QuickFolders consente un massimo di {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} è una funzionalità standard, ottenere una licenza QuickFolders per utilizzarla."
+  },
+  "qf.notification.standard.title": {
+    "message": "Caratteristica standard"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Aspetto del colore della singola scheda"

@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "Хвала што сте регистровали QuickFolders про! Све могућности су сада откључане."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Хвала вам што сте регистровали QuickFolders лиценцу - неизмерно помажете додатку! Ако вам требају додатне функције, увек можете надоградити на Про лиценцу."
+  },  
   "qf.loadConfig": {
     "message": "Load Configuration…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Премијум могућност"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Сада сте дефинисали обележиваче ({1}). Стандардна лиценца КуицкФолдерс -а дозвољава највише {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} је стандардна функција, молимо да набавите КуицкФолдерс лиценцу за њено коришћење."
+  },
+  "qf.notification.standard.title": {
+    "message": "Стандардна функција"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Приказ појединачне боје језичка"

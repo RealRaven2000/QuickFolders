@@ -854,6 +854,9 @@
   "qf.licenseValidation.passed": {
     "message": "Gràcies per registrar QuickFolders Pro! S'han desbloquejat totes les característiques Premium."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Gràcies per registrar una llicència QuickFolders: esteu ajudant enormement el complement. Si necessiteu més funcions, sempre podeu actualitzar a la llicència Pro."
+  },  
   "qf.loadConfig": {
     "message": "Carrega la configuració…"
   },
@@ -976,6 +979,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Característica Premium"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Ara teniu {1} marcadors definits. La llicència estàndard de QuickFolders permet un màxim de {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} és una funció estàndard. Obteniu una llicència de carpetes ràpides per utilitzar-la."
+  },
+  "qf.notification.standard.title": {
+    "message": "Funció estàndard"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Colors Individuals de les Pestanyes"

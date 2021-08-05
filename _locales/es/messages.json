@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "¡Gracias por registrar QuickFolders Pro! Todas las características premium ahora están desbloqueadas."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Gracias por registrar una licencia de QuickFolders. ¡Está ayudando enormemente al complemento! Si necesita más funciones, siempre puede actualizar a la licencia Pro."
+  },  
   "qf.loadConfig": {
     "message": "Cargar configuración…"
   },
@@ -1034,6 +1037,15 @@
   },
   "qf.notification.premium.title": {
     "message": "Característica Premium"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "Ahora tiene {1} marcadores definidos. La licencia estándar de QuickFolders permite un máximo de {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} es una función estándar, obtenga una licencia QuickFolders para usarla."
+  },
+  "qf.notification.standard.title": {
+    "message": "Característica estándar"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Apariencia del color de pestaña individual"

@@ -175,7 +175,7 @@ pref("extensions.quickfolders.debug.popupmenus", false);
 pref("extensions.quickfolders.debug.popupmenus.verticalOffset",0);
 pref("extensions.quickfolders.debug.popupmenus.isCommandListeners", false);
 pref("extensions.quickfolders.debug.popupmenus.isOnCommandAttr", false);
-pref("extensions.quickfolders.debug.popupmenus.folderEventType", "onclick");
+pref("extensions.quickfolders.debug.popupmenus.folderEventType", "oncommand"); // onclick
 pref("extensions.quickfolders.debug.popupmenus.subfolders", false);
 pref("extensions.quickfolders.debug.popupmenus.items", false);
 pref("extensions.quickfolders.debug.popupmenus.collapse", false);
@@ -252,7 +252,7 @@ pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");
 pref("extensions.quickfolders.quickMove.premium.lockInAccount", false);
 pref("extensions.quickfolders.quickMove.maxResults", 25);
 
-/* popupProFeature( ) counts how often these features are used */
+/* popupRestrictedFeature( ) counts how often these features are used */
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
 pref("extensions.quickfolders.premium.bookmarks.usage", 0);
 pref("extensions.quickfolders.premium.findFolder.usage", 0);

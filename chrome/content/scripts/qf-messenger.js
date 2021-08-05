@@ -8,7 +8,6 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-filterWorker.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-interface.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-rsa.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-quickMove.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickmove-settings.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-bookmarks.js", window, "UTF-8");
@@ -512,8 +511,11 @@ async function onLoad(activatedWhileWindowOpen) {
 
 `);
 
+  // remove category to force selection when loading new version
+  window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.ALL;
   window.QuickFolders.prepareSessionStore();
   // window.QuickFolders.initDocAndWindow(window);
+  
   
   // add listeners
   window.QuickFolders.Util.logDebug('Adding Folder Listener...');
@@ -555,7 +557,7 @@ function onUnload(isAddOnShutDown) {
   
   // restore global overwritten functions 
   try {
-    window.QuickFolders.restoreSessionStore();
+    // window.QuickFolders.restoreSessionStore();
   }
   catch(ex) {
     console.log(ex);
@@ -571,6 +573,8 @@ function onUnload(isAddOnShutDown) {
   catch(ex) {
     console.log(ex);
   }
+  
+  
   // remove icon patch
   let treeView = window.gFolderTreeView;
   if (treeView) {

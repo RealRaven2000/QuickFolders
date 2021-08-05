@@ -12,6 +12,8 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folder-category.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js", window, "UTF-8");
 
+var mylisteners = {};
+
 function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
   layout.setAttribute("title", "QuickFolderStyles");
@@ -128,17 +130,19 @@ function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.Util.notifyTools.enable();
   window.QuickFolders.Util.init();
   const QI = window.QuickFolders.Interface;
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", QI.updateUserStyles.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.updateNavigationBar", QI.updateNavigationBar.bind(QI));
-  window.addEventListener("QuickFolders.BackgroundUpdate.toggleNavigationBar", QI.displayNavigationToolbar.bind(QI));
-
+  mylisteners["updateUserStyles"] = QI.updateUserStyles.bind(QI);
+  mylisteners["updateNavigationBar"] = QI.updateNavigationBar.bind(QI);
+  mylisteners["toggleNavigationBar"] = QI.displayNavigationToolbar.bind(QI);
+  for (let m in mylisteners) {
+    window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
+  }
 }
 
 function onUnload(isAddOnShutDown) {
   window.QuickFolders.Util.notifyTools.disable();
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateUserStyles", window.QuickFolders.Interface.updateUserStyles);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.updateNavigationBar", window.QuickFolders.Interface.updateNavigationBar);
-  window.removeEventListener("QuickFolders.BackgroundUpdate.toggleNavigationBar", window.QuickFolders.Interface.displayNavigationToolbar);
+  for (let m in mylisteners) {
+    window.removeEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
+  }
 }
 
 

@@ -5,6 +5,17 @@
 @import url('chrome://quickfolders/content/quickfolders-mods.css');
 
 
+/* without standard license */
+toolbar .folderBarContainer toolbarbutton[disabled="true"] {
+  background-color: rgb(70,70,70) !important;
+  background-image: none !important;
+}
+toolbar .folderBarContainer toolbarbutton[disabled="true"] label {
+  color: rgb(170,170,170) !important;
+}
+
+
+
 #QuickFolders-Toolbar toolbarbutton.popupButton {
 	background: transparent !important;
 	border-style: none !important;
@@ -444,7 +455,7 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-LabelBox {
-	display: -moz-inline-box;
+	display: -moz-box; /* -moz-inline-box; */
 	/* float: left; */
 	border: 0 !important;
 	padding: 0 !important;
@@ -453,7 +464,8 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-Toolbar #QuickFolders-title-label {
-	-moz-appearance: none;
+	-moz-appearance: none !important;
+  appearance: none !important;
 	background: transparent !important;
 	border-radius: 0.4em !important;
 	font-weight: bold;
@@ -469,14 +481,22 @@ menupopup.widerMenu menucaption {
 	to {box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.25);}
 }
 
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash,
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
 	background-color: #006EB7 !important; /* blue */
 	background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   border-radius: 2px !important;
+}
+#QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+#QuickFolders-LabelBox #QuickFolders-title-label.expired {
   padding-left: 2em;
   padding-right: 2em;
 }
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash label {
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash label, 
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired label {
 	color: rgb(255,255,255) !important;
   font-size: 1.1em;
 }
@@ -492,14 +512,7 @@ menupopup.widerMenu menucaption {
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
 	animation: quickfoldersRenew 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);
 	box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.0);
-	background-color: #990038 !important; /* dark purple */
-	background-image: linear-gradient(to bottom, #bf376b 0%,#990038 51%,#700029 100%) !important;
 	margin: 0 4px 1px 7px;
-	padding: 2px 3px;
-}
-
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired label {
-	color: rgb(245, 235, 185) !important;
 }
 
 #QuickFolders-Toolbar[brighttext="true"] #QuickFolders-title-label.expired  {
@@ -512,12 +525,14 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-Toolbar #QuickFolders-title-label.expired:hover > label {
-	color: white !important;
+	color: rgb(255,250,205) !important; /* lemon chiffon */
 }
 
 
 
-#QuickFolders-Toolbar #QuickFolders-title-label:hover {
+#QuickFolders-Toolbar #QuickFolders-title-label:hover,
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired:hover:not(.newsflash) {
+  /* bright green */
 	border-color: rgb(255, 255, 255);
 	background-image: linear-gradient(to bottom, rgb(184, 211, 27) 0%, rgb(122, 166, 18) 50%, rgb(92, 138, 0) 51%, rgb(135, 181, 19) 100%) !important;
 	color: rgb(255, 255, 255);
@@ -559,7 +574,7 @@ menupopup.widerMenu menucaption {
 .QuickFolders-NavigationPanel {
 	/* background-color: transparent; */
 	background-color: var(--toolbar-bgcolor);
-    color: var(--lwt-toolbar-field-color, black);
+  color: var(--lwt-text-color, --lwt-toolbar-field-color); /* fallbck was black */
 	margin-bottom: -3px;
 	overflow-y: visible !important;
 	padding-top: 0 !important;
@@ -768,7 +783,9 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
   background-color: unset;
 }
 
-
+#QuickFolders-CurrentFolderTools[theme="default"] > toolbarbutton.icon {
+  fill: rgb(30,30,30); /* silver background */
+}
 
 #QuickFolders-Toolbar toolbarbutton.icon,
 #QuickFolders-CurrentFolderTools toolbarbutton.icon,

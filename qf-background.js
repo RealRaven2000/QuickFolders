@@ -64,7 +64,7 @@ messenger.runtime.onInstalled.addListener(async (data) => {
           messenger.LegacyPrefs.setPref("extensions.quickfolders.hasNews", true);
           messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
         },
-        10000
+        200
       )
     }
     break;
@@ -210,11 +210,30 @@ async function main() {
   });
   
   
-  
+  let browserInfo = await messenger.runtime.getBrowserInfo()
   // Init WindowListener.
+  function getThunderbirdVersion() {
+    let parts = browserInfo.version.split(".");
+    return {
+      major: parseInt(parts[0]),
+      minor: parseInt(parts[1]),
+      revision: parts.length > 2 ? parseInt(parts[2]) : 0,
+    }
+  }  
+  
+  let ver = "78",
+      tbVer = getThunderbirdVersion();
+  if (tbVer.major>=91)
+    ver = "91";
+  console.log("Detected Thunderbird version:", tbVer)
+  
+  
   messenger.WindowListener.registerChromeUrl([ 
-      ["content", "quickfolders", "chrome/content/"]
+      ["content", "quickfolders", "chrome/content/"],
+      ["content", "quickfolders-skins", "chrome/content/skin/tb" + ver + "/"]
   ]);
+  
+  
   messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
 
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");

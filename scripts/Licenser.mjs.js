@@ -23,6 +23,7 @@ const LicenseStates = {
 }
 
 // format QF-EMAIL:DATE  // ;CRYPTO
+// format QS-EMAIL:DATE  // ;CRYPTO
 // example: QF-joe.bloggs@gotmail.com:2015-05-20;
 function getDate(license) {
   // get mail+date portion
@@ -208,7 +209,8 @@ export class Licenser {
   isIdMatchedLicense(idMail, licenseMail) {
     try {
       switch(this.key_type) {
-        case 0: // private license
+        case 0: // pro license
+        case 2: // standard license
           return (idMail.toLowerCase() == licenseMail);
         case 1: // domain matching 
           // only allow one *

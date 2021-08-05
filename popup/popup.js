@@ -54,7 +54,7 @@ async function updateActions(addonName) {
       endSale = new Date("2021-07-20"); // Next Sale End Date
   let isSale = (currentTime < endSale);
 
-
+  hide('permissions-note');
   if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
     hideSelectorItems('.donations');

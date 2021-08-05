@@ -1,0 +1,41 @@
+/* only from TB91 forward: */
+menulist {
+  background-color: var(--button-bgcolor);
+}
+
+menulist menuitem {
+  background-color: var(--button-bgcolor);
+}
+
+menulist > menupopup {
+  background-color: var(--box-background-color) !important;
+	--panel-background: unset;
+}
+}
+
+menulist menupopup menu,
+menulist menupopup menuitem {
+  color: var(--box-text-color);
+}
+
+menulist > menupopup > menuitem:not([disabled="true"])[selected="true"] {
+  /*color: var(--item-selected-text);
+  background-color: var(--item-selected); */
+  color: var(--highlight-color);
+  background-color: var(--highlight-background);
+}
+
+menulist > menupopup > menuitem:hover,
+menulist > menupopup > menuitem[_moz-menuactive="true"] {
+	background-color: var(--popup-item-hover);
+  color: var(--popup-item-hover-text, --box-text-color);
+}
+
+
+button,
+menulist#folderCrossing,
+menulist[preference^="extensions.quickfolders"] , 
+menulist#QuickFolders-CurrentFolder-Background-Select 
+{
+  color: var(--field-text-color) !important; 
+}

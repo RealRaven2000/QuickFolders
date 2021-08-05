@@ -36,12 +36,6 @@ fieldset[orient="horizontal"] > checkbox {
   display: inline-block;
 }
 
-menulist#folderCrossing,
-menulist[preference^="extensions.quickfolders"] , 
-menulist#QuickFolders-CurrentFolder-Background-Select 
-{
-  color: var(--field-text-color) !important; 
-}
 /* scale down the overly larger number textboxes / spinner controls */
 tabpanel html|input[type="number"] {
   min-height: 22px;
@@ -454,12 +448,6 @@ hbox.quickhelp-dbg {
 	min-width: 45em; /* avoid "shrinking" too much in licenseKey only mode */
 }
 
-/* Test (Teo) - wanted to disable this font for consistency reasons
-   note that on Mac the system font is already a lot bigger than on Windows
-	 in Windows, mine is Tahoma, 8pt which makes a longer texts hard to read
-
-	 move #btnLicense to separate style sheet license.css
-  */
 .niceFont,
 .niceFont description,
 .niceFont button,

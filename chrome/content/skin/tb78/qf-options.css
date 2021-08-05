@@ -1,0 +1,44 @@
+/* TB78 specific rules: */
+menulist {
+  background-color: var(--button-bgcolor);
+}
+
+button, menulist {
+  color: inherit !important;
+  background-color: var(--button-bgcolor);
+}
+
+
+menulist menuitem {
+  background-color: var(--button-bgcolor);
+}
+
+menulist menupopup {
+  background-color: var(--box-background-color) !important;
+}
+
+menulist menupopup menu,
+menulist menupopup menuitem {
+  color: var(--box-text-color);
+}
+
+menulist > menupopup > menuitem:not([disabled="true"])[selected="true"] {
+  color: var(--box-text-color, --item-selected-text);
+  background-color: var(--popup-item-hover,--item-selected);
+}
+
+
+menulist > menupopup > menuitem:hover,
+menulist > menupopup > menuitem[_moz-menuactive="true"] {
+	background-color: var(--popup-item-hover);
+  color: var(--popup-item-hover-text, --box-text-color);
+}
+
+
+menulist#folderCrossing,
+menulist[preference^="extensions.quickfolders"] , 
+menulist#QuickFolders-CurrentFolder-Background-Select 
+{
+  color: var(--field-text-color) !important; 
+  background-color: var(--button-background) !important;
+}

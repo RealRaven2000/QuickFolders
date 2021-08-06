@@ -100,6 +100,10 @@ td {
   cursor: pointer;
 	text-decoration: underline;
 }
+#compLink {
+  display: inline-block;
+}
+
 .heading {
   background: none;
   border: 1px solid rgba(140,140,140,0.5) !important;

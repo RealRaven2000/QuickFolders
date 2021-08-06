@@ -216,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Cảm ơn bạn đã gia hạn giấy phép gần đây hoặc nếu bạn đã đóng góp. Vì bạn đã giúp chứng minh Tiện ích bổ sung này trong tương lai, bạn có thể chỉ cần đóng cửa sổ này."
   },
+  "licenseComparison" : {
+    "message": "Để so sánh các tính năng của các phiên bản khác nhau, hãy {linkStart}đọc danh sách này{linkEnd}."
+  },  
   "licenseTypes": {
     "message": "QuickFolders cung cấp hai giấy phép, Standard và Pro; những điều này là cần thiết để theo kịp những thay đổi trong nền tảng Thunderbird và tài trợ cho Cải tiến và sửa chữa Tiện ích bổ sung. Khi các thay đổi đột phá được triển khai theo chu kỳ hàng năm, giấy phép cũng sẽ có hiệu lực trong 1 năm."
   },  
@@ -1666,7 +1669,7 @@
     "message": "Gia hạn giấy phép của bạn."
   },
   "special-offer-content": {
-    "message": "Nâng cấp các tính năng của bạn và tiết kiệm {boldStart} $reduction$ {boldEnd} bằng cách mua giấy phép QuickFolders Pro! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} $expirydate$ {boldEnd}.",
+    "message": "Nâng cấp các tính năng của bạn và tiết kiệm {boldStart} $reduction$ {boldEnd} bằng cách mua giấy phép QuickFolders Pro! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}. Hoặc chọn các chức năng tiêu chuẩn với {linkStart}Giấy phép Tiêu chuẩn{linkEnd} mới.",
     "placeholders": {
       "expirydate": {
         "content": "$1",

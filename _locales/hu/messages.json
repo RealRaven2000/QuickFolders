@@ -221,6 +221,9 @@
   "purchase-heading": {
     "message": "Licenc vásárlása!"
   },
+  "licenseComparison" : {
+    "message": "A különböző verziók jellemzőinek összehasonlításához {linkStart}olvassa el ezt a listát{linkEnd}."
+  },  
   "licenseTypes": {
     "message": "A QuickFolders két licencet kínál, a Standard és a Pro; ezekre azért van szükség, hogy lépést tudjunk tartani a Thunderbird platform változásaival, és finanszírozzuk az innovációkat és a kiegészítő javításait. Mivel a megszakító változásokat egy éves ciklusban hajtják végre, az engedély 1 évig is érvényes lesz."
   },  
@@ -1646,7 +1649,7 @@
     "message": "Újítsa meg a licencét."
   },
   "special-offer-content": {
-    "message": "Frissítse a szolgáltatásait és spóroljon {boldStart} $reduction$ {boldEnd} a QuickFolders Pro licenc megvásárlásával! Ez a különleges ajánlat {boldStart} $expirydate$ {boldEnd} -ig érhető el.",
+    "message": "Frissítse a szolgáltatásait és spóroljon {boldStart} $reduction$ {boldEnd} a QuickFolders Pro licenc megvásárlásával! Ez a különleges ajánlat {boldStart} $expirydate$ {boldEnd} -ig érhető el. Vagy válassza ki a standard funkciókat az új {linkStart}szabványos licenc{linkEnd} segítségével.",
     "placeholders": {
       "expirydate": {
         "content": "$1",

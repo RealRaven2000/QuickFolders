@@ -216,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Merci d'avoir récemment prolongé votre licence ou si vous avez fait un don. Comme vous avez contribué à la pérennité de cet add-on, vous pouvez simplement fermer cette fenêtre."
   },
+  "licenseComparison" : {
+    "message": "Pour comparer les fonctionnalités des différentes versions, {linkStart}lisez cette liste{linkEd}.sur{linkEnd}."
+  },  
   "licenseTypes": {
     "message": "QuickFolders propose deux licences, Standard et Pro ; ceux-ci sont nécessaires pour suivre les changements de la plate-forme Thunderbird et pour financer les innovations et les réparations de l'Add-on. Les changements de rupture étant déployés selon un cycle annuel, la licence sera également valable 1 an."
   },  
@@ -1666,7 +1669,7 @@
     "message": "Renouvelez votre licence."
   },
   "special-offer-content": {
-    "message": "Mettez à niveau vos fonctionnalités et économisez {boldStart}$reduction${boldEnd} en achetant une licence QuickFolders Pro ! Cette offre spéciale sera disponible jusqu'au {boldStart}$expirydate${boldEnd}.",
+    "message": "Mettez à niveau vos fonctionnalités et économisez {boldStart}$reduction${boldEnd} en achetant une licence QuickFolders Pro ! Cette offre spéciale sera disponible jusqu'au {boldStart}$expirydate${boldEnd}. Ou choisissez les fonctions standard avec la nouvelle {linkStart}Licence Standard{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",

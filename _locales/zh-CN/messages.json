@@ -216,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "感谢您最近延长许可证或捐赠。 当您帮助将来对该插件进行验证时，只需关闭此窗口即可。"
   },
+  "licenseComparison" : {
+    "message": "要比较不同版本的功能，请{linkStart}阅读此列表{linkEnd}。"
+  },  
   "licenseTypes": {
     "message": "QuickFolders 提供两种许可证，Standard 和 Pro； 这些对于跟上 Thunderbird 平台的变化以及为插件的创新和修复提供资金是必要的。 由于重大更改以年度为周期推出，因此许可证的有效期也为 1 年。"
   },  
@@ -1666,7 +1669,7 @@
     "message": "续订您的许可证。"
   },
   "special-offer-content": {
-    "message": "通过购买 QuickFolders Pro 许可证升级您的功能并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
+    "message": "通过购买 QuickFolders Pro 许可证升级您的功能并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 选择标准功能。",
     "placeholders": {
       "expirydate": {
         "content": "$1",

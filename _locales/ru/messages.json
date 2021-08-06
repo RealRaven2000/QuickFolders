@@ -216,6 +216,9 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Спасибо, что недавно продлили лицензию или сделали пожертвование. Поскольку вы помогли подготовить это дополнение к будущему, вы можете просто закрыть это окно."
   },
+  "licenseComparison" : {
+    "message": "Чтобы сравнить функции разных версий, {linkStart}прочтите этот список{linkEnd}."
+  },  
   "licenseTypes": {
     "message": "QuickFolders предлагает две лицензии: Standard и Pro; они необходимы, чтобы идти в ногу с изменениями в платформе Thunderbird и финансировать инновации и ремонт надстройки. Поскольку критические изменения вносятся в годовой цикл, лицензия также будет действительна в течение 1 года."
   },  
@@ -1666,7 +1669,7 @@
     "message": "Продлите лицензию."
   },
   "special-offer-content": {
-    "message": "Обновите свои функции и сэкономьте {boldStart} $reduction$ {boldEnd}, купив лицензию QuickFolders Pro! Это специальное предложение будет действовать до {boldStart} $expirydate$ {boldEnd}.",
+    "message": "Обновите свои функции и сэкономьте {boldStart} $reduction$ {boldEnd}, купив лицензию QuickFolders Pro! Это специальное предложение будет действовать до {boldStart} $expirydate$ {boldEnd}. Или выберите стандартные функции с новой {linkStart} стандартной лицензией {linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",

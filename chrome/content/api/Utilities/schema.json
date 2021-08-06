@@ -24,10 +24,21 @@
             "type": "string",
             "description": "url to open in browser"
           }
-
-
         ]
       },
+
+      {
+        "name": "showLicenseDialog",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "referrer",
+            "type": "string",
+            "description": "referrer or feature name to transmit to shop"
+          }
+        ]
+      },
+
      
       {
         "name": "showVersionHistory",

@@ -46,6 +46,10 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             .getService(Components.interfaces.nsIWindowMediator)
             .getMostRecentWindow("mail:3pane");  
           mail3PaneWindow.openDialog(uri);
+        },
+        
+        showLicenseDialog: function(referrer) {
+          win.QuickFolders.Interface.showLicenseDialog(referrer);
         }
   
         // get may only return something, if a value is set

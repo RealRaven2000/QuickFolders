@@ -70,12 +70,12 @@ window.document.addEventListener("DOMContentLoaded", () =>
     QuickFolders.Util.localize(
       window,
       {
-        cancel: "qf.label.cancel", // buttonlabelcancel="__MSG_qf.label.cancel__"
-        extra1: "qf.continueFilter.label", // buttonlabelextra1="__MSG_qf.continueFilter.label__"
-        extra2: "qf.label.donate", // buttonlabelextra2="__MSG_qf.label.donate__"
+        cancel: "qf.label.cancel",
+        extra1: "qf.continueFilter.label", 
+        extra2: "qf.label.donate", 
       },
       {
-        extra1: "qf.continueFilter.shortcut", // buttonaccesskeyextra1="__MSG_qf.continueFilter.shortcut__"
+        extra1: "qf.continueFilter.shortcut", 
       }
     ); 
   }, { once: true }

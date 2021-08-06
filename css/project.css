@@ -135,8 +135,8 @@ h2.newsflash a {
 
 h3:before {
 	content: url('../ico/QF-Icon24.png');
-	margin: 0.2em 0.5em 0em 0em;
-	vertical-align: bottom;
+	margin-right: 10px;
+	vertical-align: middle;
 }
 
 h3 {
@@ -144,8 +144,7 @@ h3 {
 	background: linear-gradient(to bottom,  rgb(241, 231, 103) 0%, rgb(241, 231, 103) 37%, rgb(254, 182, 69) 100%);
 	border: 1px transparent !important;
 	display: inline-block;
-	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
-	border-radius: 0.5em;
+	border-radius: 2px;
 	font-weight: 600;
 	font-size: 1.2em;
 	padding:  0.4em 1em 0.4em 0.8em;
@@ -157,8 +156,6 @@ h3 {
 
 h3:hover
 {
-	margin: 1.1em 0.9em 0.9em 3px;
-	box-shadow: 2px 2px 2px -1px rgba(0,0,0,0.9);
 	border-radius: 1em 0.3em 1em 0.3em;
 }
 

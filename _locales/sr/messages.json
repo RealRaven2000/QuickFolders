@@ -29,7 +29,7 @@
     "message": "Желим да обновим лиценцу"
   },
   "btn-want-a-license": {
-    "message": "Желим да купим лиценцу"
+    "message": "Одаберите лиценцу"
   },
   "btn-want-to-donate": {
     "message": "Желим да помогнем једнократном донацијом."
@@ -1666,7 +1666,20 @@
     "message": "Обновите лиценцу."
   },
   "special-offer-content": {
-    "message": "Заштитите КуицкФолдерс за предстојећу Тхундербирд верзију 91 и уштедите {boldStart} 40% {boldEnd} купујући лиценцу! Ова посебна понуда биће доступна до {boldStart} 18. јула {boldEnd}."
+    "message": "Надоградите своје функције и уштедите {boldStart} $reduction$ {boldEnd} куповином лиценце КуицкФолдерс Про! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "16. априла"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "22. августа"
   },
   "special-offer-head": {
     "message": "Нека QuickFolders буду будући доказ!"

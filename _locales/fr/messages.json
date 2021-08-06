@@ -29,7 +29,7 @@
     "message": "Haluan uusia lisenssin"
   },
   "btn-want-a-license": {
-    "message": "Je veux acheter une licence"
+    "message": "Choisissez une licence"
   },
   "btn-want-to-donate": {
     "message": "Je veux aider avec un don unique."
@@ -1666,7 +1666,20 @@
     "message": "Renouvelez votre licence."
   },
   "special-offer-content": {
-    "message": "Protégez QuickFolders pour la version 91 imminente de Thunderbird et économisez {boldStart}40 %{boldEnd} en achetant une licence ! Cette offre spéciale sera disponible jusqu'au {boldStart}18 juillet{boldEnd}."
+    "message": "Mettez à niveau vos fonctionnalités et économisez {boldStart}$reduction${boldEnd} en achetant une licence QuickFolders Pro ! Cette offre spéciale sera disponible jusqu'au {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "22 août"    
   },
   "special-offer-head": {
     "message": "Rendez QuickFolders à l'épreuve du futur!"

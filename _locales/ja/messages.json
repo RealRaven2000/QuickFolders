@@ -29,7 +29,7 @@
     "message": "ライセンスを更新します"
   },
   "btn-want-a-license": {
-    "message": "ライセンスを購入します"
+    "message": "ライセンスを選択してください"
   },
   "btn-want-to-donate": {
     "message": "1 回限りの寄付を行います"
@@ -1666,7 +1666,20 @@
     "message": "ライセンスを更新する。"
   },
   "special-offer-content": {
-    "message": "差し迫ったThunderbirdバージョン91のQuickFoldersを保護し、ライセンスの購入を{boldStart} 40％{boldEnd}節約しましょう！ この特別オファーは、{boldStart} 7月18日{boldEnd}までご利用いただけます。"
+    "message": "ライセンスを選択機能をアップグレードし、QuickFolders Proライセンスを購入して{boldStart} $reduction$ {boldEnd}を節約してください。 この特別オファーは、{boldStart} $expiredate$ {boldEnd}までご利用いただけます。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "8月22日"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "8月22日"    
   },
   "special-offer-head": {
     "message": "QuickFoldersを将来の証拠にしましょう！"

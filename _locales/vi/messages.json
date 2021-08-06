@@ -29,7 +29,7 @@
     "message": "Tôi muốn gia hạn giấy phép của mình"
   },
   "btn-want-a-license": {
-    "message": "Tôi muốn mua giấy phép"
+    "message": "Chọn giấy phép"
   },
   "btn-want-to-donate": {
     "message": "Tôi muốn giúp đỡ với khoản đóng góp một lần."
@@ -1666,7 +1666,20 @@
     "message": "Gia hạn giấy phép của bạn."
   },
   "special-offer-content": {
-    "message": "Bảo vệ QuickFolders cho phiên bản Thunderbird 91 sắp ra mắt và tiết kiệm {boldStart} 40% {boldEnd} khi mua giấy phép! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 18 tháng 7 {boldEnd}."
+    "message": "Nâng cấp các tính năng của bạn và tiết kiệm {boldStart} $reduction$ {boldEnd} bằng cách mua giấy phép QuickFolders Pro! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": " ngày 16 tháng 4"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "Ngày 22 tháng 8"    
   },
   "special-offer-head": {
     "message": "Làm cho QuickFolders bằng chứng trong tương lai!"

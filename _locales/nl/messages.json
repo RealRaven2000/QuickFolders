@@ -29,7 +29,7 @@
     "message": "Ik wil mijn licentie verlengen"
   },
   "btn-want-a-license": {
-    "message": "Ik wil een vergunning kopen"
+    "message": "Kies een licentie"
   },
   "btn-want-to-donate": {
     "message": "Ik wil helpen met een eenmalige donatie."
@@ -1666,7 +1666,20 @@
     "message": "Verleng uw licentie."
   },
   "special-offer-content": {
-    "message": "Bescherm QuickFolders voor de naderende Thunderbird-versie 91 en bespaar {boldStart}40%{boldEnd} door een licentie te kopen! Deze speciale aanbieding is geldig tot {boldStart}18 juli{boldEnd}."
+    "message": "Upgrade uw functies en bespaar {boldStart}$reduction${boldEnd} door een QuickFolders Pro-licentie te kopen! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "22 augustus"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "22 augustus"    
   },
   "special-offer-head": {
     "message": "Maak QuickFolders toekomstbestendig!"

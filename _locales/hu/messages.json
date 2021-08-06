@@ -26,7 +26,7 @@
     "message": "Meg akarom újítani a licencemet"
   },
   "btn-want-a-license": {
-    "message": "Szeretnék licencet vásárolni"
+    "message": "Válasszon licencet"
   },
   "btn-want-to-donate": {
     "message": "Egyszeri adománnyal szeretnék segíteni."
@@ -1646,7 +1646,20 @@
     "message": "Újítsa meg a licencét."
   },
   "special-offer-content": {
-    "message": "Védje a gyorsmappákat a küszöbön álló Thunderbird 91-es verziótól, és licencet vásárolva megtakaríthatja a {boldStart} 40% -ot {boldEnd}! Ez a különleges ajánlat {boldStart} július 18-ig {boldEnd} lesz elérhető."
+    "message": "Frissítse a szolgáltatásait és spóroljon {boldStart} $reduction$ {boldEnd} a QuickFolders Pro licenc megvásárlásával! Ez a különleges ajánlat {boldStart} $expirydate$ {boldEnd} -ig érhető el.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "Augusztus 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "Augusztus 22"    
   },
   "special-offer-head": {
     "message": "Jövőbeli bizonyíték QuickFolders!"

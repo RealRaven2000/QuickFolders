@@ -29,7 +29,7 @@
     "message": "Я хочу продлить свою лицензию"
   },
   "btn-want-a-license": {
-    "message": "Я хочу купить лицензию"
+    "message": "Выберите лицензию"
   },
   "btn-want-to-donate": {
     "message": "Я хочу помочь разовым пожертвованием."
@@ -1666,7 +1666,20 @@
     "message": "Продлите лицензию."
   },
   "special-offer-content": {
-    "message": "Защитите QuickFolders перед выходом Thunderbird версии 91 и сэкономьте {boldStart} 40% {boldEnd}, купив лицензию! Это специальное предложение будет доступно до {boldStart} 18 июля {boldEnd}."
+    "message": "Обновите свои функции и сэкономьте {boldStart} $reduction$ {boldEnd}, купив лицензию QuickFolders Pro! Это специальное предложение будет действовать до {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "22 августа"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "22 августа"    
   },
   "special-offer-head": {
     "message": "Сделайте QuickFolders перспективным!"

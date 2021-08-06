@@ -29,7 +29,7 @@
     "message": "我想續簽我的許可證"
   },
   "btn-want-a-license": {
-    "message": "我想購買許可證"
+    "message": "選擇許可證"
   },
   "btn-want-to-donate": {
     "message": "我想提供一次捐款。"
@@ -1666,7 +1666,20 @@
     "message": "續訂您的許可證。"
   },
   "special-offer-content": {
-    "message": "為即將推出的 Thunderbird 91 版保護 QuickFolders 並節省 {boldStart}40%{boldEnd} 購買許可證！ 此特別優惠將持續到 {boldStart}7 月 18 日{boldEnd}。"
+    "message": "通過購買 QuickFolders Pro 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "4月16日"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "8月22日"    
   },
   "special-offer-head": {
     "message": "使QuickFolders成為未來的證明！"

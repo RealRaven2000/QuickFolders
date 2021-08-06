@@ -27,7 +27,7 @@
     "message" : "Chci si obnovit licenci"
   },
   "btn-want-a-license": {
-    "message" : "Chci koupit licenci"
+    "message" : "Vyberte licenci"
   },
   "btn-want-to-donate": {
     "message" : "Chci pomoci s jednorázovým darem."
@@ -129,7 +129,20 @@
     "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory QuickFolders pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
   },  
   "special-offer-content": {
-    "message": "Chraňte QuickFolders pro hrozící verzi Thunderbirdu 91 a ušetřete {boldStart} 40% {boldEnd} nákupem licence! Tato speciální nabídka bude k dispozici do {boldStart} 18. Července {boldEnd}."
+    "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením licence QuickFolders Pro! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "16. Dubna"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "22. srpna"
   },
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",

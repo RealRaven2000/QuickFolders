@@ -29,7 +29,7 @@
     "message": "Eu quero renovar minha licença"
   },
   "btn-want-a-license": {
-    "message": "Eu quero comprar uma licença"
+    "message": "Escolha uma licença"
   },
   "btn-want-to-donate": {
     "message": "Eu quero ajudar com uma doação única."
@@ -1666,7 +1666,20 @@
     "message": "Renove sua licença."
   },
   "special-offer-content": {
-    "message": "Proteja QuickFolders para a versão 91 iminente do Thunderbird e economize {boldStart} 40% {boldEnd} comprando uma licença! Esta oferta especial estará disponível até {boldStart} 18 de julho {boldEnd}."
+    "message": "Atualize seus recursos e economize {boldStart} $reduction$ {boldEnd} comprando uma licença QuickFolders Pro! Esta oferta especial estará disponível até {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "22 de agosto"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "22 de agosto"    
   },
   "special-offer-head": {
     "message": "Faça QuickFolders à prova de futuro!"

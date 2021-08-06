@@ -29,7 +29,7 @@
     "message": "I want to renew my license"
   },
   "btn-want-a-license": {
-    "message": "I want to buy a license"
+    "message": "Choose a License"
   },
   "btn-want-to-donate": {
     "message": "I want to help with a one time donation."
@@ -912,6 +912,9 @@
   "qf.licenseValidation.passed": {
     "message": "Thanks for registering QuickFolders Pro! All premium features are now unlocked."
   },
+  "qf.licenseValidation.standard": {
+    "message": "Thanks for registering a QuickFolders License - You are helping the Add-on immensely! If you need more features you can always upgrade to the Pro License."
+  },  
   "qf.loadConfig": {
     "message": "Load Configuration…"
   },
@@ -1030,10 +1033,19 @@
     "message": "You have now {1} icon(s) defined. The free version of QuickFolders allows a maximum of {2}."
   },
   "qf.notification.premium.text": {
-    "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it permanently."
+    "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it."
   },
   "qf.notification.premium.title": {
     "message": "Premium Feature"
+  },
+  "qf.notification.standard.readingList": {
+    "message": "You have now {1} bookmarks defined. The standard license of QuickFolders allows a maximum of {2}."
+  },
+  "qf.notification.standard.text": {
+    "message": "{1} is a Standard feature, please get a QuickFolders License for using it."
+  },
+  "qf.notification.standard.title": {
+    "message": "Standard Feature"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Individual Tab Color Appearance"
@@ -1654,7 +1666,20 @@
     "message": "Renew your license."
   },
   "special-offer-content": {
-    "message": "Protect QuickFolders for the imminent Thunderbird version 91 and save {boldStart}40%{boldEnd} buying a license! This special offer will be available until {boldStart}July 18th{boldEnd}."
+    "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} by buying a QuickFolders Pro license! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "August 22nd"
   },
   "special-offer-head": {
     "message": "Future Proof QuickFolders!"

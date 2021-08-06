@@ -26,7 +26,7 @@
     "message": "Vull renovar la meva llicència"
   },
   "btn-want-a-license": {
-    "message": "Vull comprar una llicència"
+    "message": "Trieu una llicència"
   },
   "btn-want-to-donate": {
     "message": "Vull ajudar amb una donació única."
@@ -1608,8 +1608,21 @@
     "message": "Renoveu la llicència."
   },
   "special-offer-content": {
-    "message": "Protegiu les carpetes ràpides per a la imminent versió de Thunderbird 91 i estalvieu {boldStart} 40% {boldEnd} comprant una llicència. Aquesta oferta especial estarà disponible fins al {boldStart} 18 de juliol {boldEnd}."
+    "message": "Actualitzeu les funcions i estalvieu {boldStart}$reduction${boldEnd} comprant una llicència QuickFolders Pro. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}.",    
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "22 d’agost"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
   },
+  "special-offer-expiry": {
+    "message": "22 d’agost"
+  },    
   "special-offer-head": {
     "message": "Prova de futur QuickFolders!"
   },

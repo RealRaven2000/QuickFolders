@@ -27,7 +27,7 @@
     "message" : "Haluan uusia lisenssin"
   } ,
   "btn-want-a-license": {
-    "message" : "Haluan ostaa lisenssin"
+    "message" : "Valitse lisenssi"
   } ,
   "btn-want-to-donate" : {
     "message" : "Haluan auttaa kertalahjoituksella."
@@ -125,15 +125,28 @@
   "renew-your-license" : {
     "message" : "Uusi lisenssi."
   },    
+  "special-offer-content" : {
+    "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla QuickFolders Pro -lisenssi! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "August 22"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "22. elokuuta"
+  }, 
   "special-offer-head" : {
     "message": "Tee QuickFoldersista tulevaisuuden todiste!"
   } ,  
   "special-offer-intro" : {
     "message": "{boldStart} Hyvä {name} {boldEnd}, jos sinulla ei vielä ole käyttöoikeutta, harkitse QuickFolder-kansioiden tukemista jatkossa. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!"
   } , 
-  "special-offer-content" : {
-    "message": "Suojaa pikakansiot välittömältä Thunderbird-versiolta 91 ja säästä {boldStart} 40% {boldEnd} ostamalla lisenssi! Tämä erikoistarjous on saatavilla {boldStart} 18. heinäkuuta {boldEnd} asti."
-  }, 
   "support-preference" : {
     "message": "Tämä on ensisijainen tapa tukea $addonName$.",
     "placeholders": {

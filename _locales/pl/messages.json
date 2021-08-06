@@ -29,7 +29,7 @@
     "message": "Chcę odnowić licencję"
   },
   "btn-want-a-license": {
-    "message": "Chcę kupić licencję"
+    "message": "Wybierz licencję"
   },
   "btn-want-to-donate": {
     "message": "Chcę pomóc w sprawie jednorazowej darowizny."
@@ -1666,7 +1666,20 @@
     "message": "Odnów licencję."
   },
   "special-offer-content": {
-    "message": "Chroń QuickFolders przed zbliżającą się wersją 91 Thunderbirda i zaoszczędź {boldStart}40%{boldEnd} kupując licencję! Ta oferta specjalna będzie dostępna do {boldStart}18 lipca{boldEnd}."
+    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując licencję QuickFolders Pro! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "22 sierpnia"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-expiry": {
+    "message": "22 sierpnia"    
   },
   "special-offer-head": {
     "message": "Przygotuj QuickFolders na przyszłość!"

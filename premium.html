@@ -183,15 +183,15 @@
 			<!--- **************** START OF CONTENT *********** -->
 
 			<p>Premium features are power functions which are an incentive for users to regularly support 
-			the QuickFolders project through a yearly contribution, called QuickFolders Pro license. 
-			My aim is that instead of very few people trying to carry the project with sometimes large
-			donations to try involving more supporters. It is a lot of work to keep the project 
-			going and up to date with all the latest code changes which happen every four(!) weeks on the Mozilla code base.
-			Staying in sync with the three complex applications (Thunderbird, Postbox and SeaMonkey) and to support 
-			multiple OS platforms (Windows, Linux and Mac) and 18 languages, 
-			writing support emails and fixing bugs is actually a big amount of work. 
-			I would rather actually spend more time on this than just burning away my weekends, but for this it 
-			needs to be financially viable.
+        the QuickFolders project through a yearly contribution, called QuickFolders Pro license. 
+        My aim is that instead of very few people trying to carry the project with sometimes large
+        donations to try involving more supporters. It is a lot of work to keep the project 
+        going and up to date with all the latest code changes which happen every four(!) weeks on the Mozilla code base.
+        Staying in sync with the three complex applications (Thunderbird, Postbox and SeaMonkey) and to support 
+        multiple OS platforms (Windows, Linux and Mac) and 18 languages, 
+        writing support emails and fixing bugs is actually a big amount of work. 
+        I would rather actually spend more time on this than just burning away my weekends, but for this it 
+        needs to be financially viable.
 			</p>
 			<p> See the <a href="donate.html">support page</a> on how to obtain a license. </p>
       
@@ -238,53 +238,60 @@
           <td><span class="check">✔</span></td>
         </tr>
         <tr>
-          <th>Save Configuration</th>
+          <th><a href="#backup">Save Configuration</a></th>
           <td><span class="check negative">✘</span></td>
           <td><span class="check">✔</span></td>
           <td><span class="check">✔</span></th>
         </tr>
         <tr>
-          <th>Load Configuration</th>
+          <th><a href="#backup">Load Configuration</a></th>
           <td><span class="check negative">✘</span></td>
           <td><span class="check">✔</span></td>
           <td><span class="check">✔</span></td>
         </tr>
         <tr>
-          <th>Skip unread folder</th>
+          <th><a href="#skipfolder">Skip unread folder</a></th>
           <td><span class="check negative">✘</span></td>
           <td><span class="check">✔</span></td>
           <td><span class="check">✔</span><br> + keyboard shortcut</td>
         </tr>
         <tr>
-          <th>quickJump / quickMove</th>
+          <th><a href="#quickjump">quickJump</a> / <a href="#quickmove">quickMove</a></th>
           <td><span class="check negative">✘</span><br>Restricted to 5 times / session</td>
           <td><span class="check">✔</span></td>
           <td><span class="check">✔</span><br>+ keyboard shortcuts</td>
         </tr>
         <tr>
-          <th>Tab / Folder Icons</th>
+          <th><a href="#advancedsearch">Advanced Search Settings</a></th>
+          <td><span class="check negative">✘</span></td>
+          <td><span class="check negative">✘</span></td>
+          <td><span class="check">✔</span></td>
+        </tr>
+        <tr>
+          <th><a href="#icons">Tab / Folder Icons</a></th>
           <td>6</td>
           <td>12</td>
           <td>unlimited</td>
         </tr>
         <tr>
-          <th>tab separators / line breaks</th>
+          <th><a href="#linebreaks">tab separators</a> / <a href="#linebreaks">line breaks</a></th>
           <td><span class="check negative">✘</span></td>
           <td><span class="check negative">✘</span></td>
           <td><span class="check">✔</span></td>
         </tr>
         <tr>
-          <th>Advanced Folder Properties: default From address</th>
+          <th><a href="#advancedprops">Advanced Folder Properties</a>: default From address</th>
           <td><span class="check negative">✘</span></td>
           <td><span class="check">✔</span></td>
           <td><span class="check">✔</span><br> + recursive to all subfolders </td>
         </tr>
         <tr>
-          <th>Advanced Folder Properties: default To address</th>
+          <th><a href="#advancedprops">Advanced Folder Properties</a>: default To address</th>
           <td><span class="check negative">✘</span></td>
           <td><span class="check">✔</span></td>
           <td><span class="check">✔</span><br> + recursive to all subfolders </td>
         </tr>
+        
         <tr>
           <th></th>
           <td></td>
@@ -309,6 +316,7 @@
 			 </tr>
 			 
 			 <tr>
+<a name="quickmove"> </a>
 					<td>quickMove</td>
 					<td>
 						 <img src="ico/quickMove16.png" alt="quickMove" class="inlineImage"/>
@@ -338,6 +346,7 @@
 					</td>
 			</tr>
 
+<a name="quickjump"> </a>
 			<tr>
 				<td>quickJump</td>
 				<td>
@@ -353,6 +362,7 @@
 				</td>
 			</tr>
       
+<a name="advancedsearch"> </a>      
 			<tr>
 				<td>Advanced Search settings</td>
 				<td>
@@ -386,8 +396,9 @@
 				</td>
 			</tr>
 			 
+<a name="skipfolder"> </a>
 			<tr>
-				<td>Skip Folder</td>
+				<td>Skip (Unread) Folder</td>
 				<td>
 					<h4>Skip an unread folder with a single click</h4>
 					<p><img src="ico/exit-folder.png" alt="Reading List" class="inlineImage"/>
@@ -400,11 +411,10 @@
 				</td>
 			</tr>
 			 
-      
+<a name="icons">  </a>
 			<tr>
 				<td>Tab Icons</td>
 				<td>
-          <a name="icons">  </a>
 					<h4>Some help for the eyes</h4>
 					<img src="images/tab-Icons.png" alt="Tab Icons"/><br>
 					You can now add customized icons to every QuickFolder tab. In Thunderbird this icon will also be shown in the folder tree.
@@ -442,6 +452,7 @@
 					</td>
 			 </tr>			 
 			 
+<a name="linebreaks"> </a>       
 			 <tr>
 				<td>Line Breaks</td>
 				<td><img src="images/linebreak.png" alt="Line Break"/><br>
@@ -449,7 +460,8 @@
 					To remove the line break, you right-click the first tab in the line and select QuickFolders Commands &gt; Remove Line Break
 				</td>
 			 </tr>
-			 
+
+<a name="separators"> </a>			 
 			 <tr>
 				<td>Separators</td>
 				<td><img src="images/separator.png" alt="Separator"/><br>
@@ -458,6 +470,9 @@
 					QuickFolders Commands &gt; Remove Separator
 				</td>
 			</tr>
+      
+      
+<a name="advancedprops"> </a>			 
 			<tr>
 				<td>Tab-specific Properties</td>
 				<td>
@@ -515,30 +530,30 @@
 					<iframe width="560" height="315" src="https://www.youtube.com/embed/ndUamqfCKos?rel=0&amp;start=138" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 				</td>
 		  </tr>
-
-			 <tr>
-					<td>Backup / Restore</td>
-					<td><p> <a name="24468" href="https://www.mozdev.org/bugs/show_bug.cgi?id=24468" target="_blank">[Bug 24468]</a>
-							Backup and restore functions - these can also be used to transfer your tabs to a different 
-							Computer or copy to another profile.</p>
-						<p>
-							<i>Save Configuration</i> will store everything including all QuickFolders Tabs, general settings, layout and advanced settings.
-							The later includes advanced settings except for the license key.
-							<i>Load Configuration</i> will only load whatever option you select.
-						</p>
-						<img src="images/backup-restore.png" alt="backup and restore" class="screenshots"/>
-						<p>If a tab is found which points to a non-existing folder destination this will be highlighted with
-						  a "broom" icon - those invalid tabs can be removed using the "Find orphaned Tabs" command on the tool
-							menu.</p>
-            <p>This feature can potentially be used to synchronise tabs on another Computer, but this will
-							only work if the account name is the same during creation on Thunderbird. This is a technical
-							limitation of the built in naming mechanism for mail folder URLs. Thereforce I cannot currently support
-							synchronising QuickFolders across various profiles.</p>
-						<p>The safest and easiest way 
-							to do this would be by copying the complete profile folder over to the new PC - then 
-							synchronizing via Backup / Restore files should be feasible.
-							</p>							 
-					</td>
+<a name="backup"> </a>
+      <tr>
+        <td>Backup / Restore</td>
+        <td><p> <a name="24468" href="https://www.mozdev.org/bugs/show_bug.cgi?id=24468" target="_blank">[Bug 24468]</a>
+            Backup and restore functions - these can also be used to transfer your tabs to a different 
+            Computer or copy to another profile.</p>
+          <p>
+            <i>Save Configuration</i> will store everything including all QuickFolders Tabs, general settings, layout and advanced settings.
+            The later includes advanced settings except for the license key.
+            <i>Load Configuration</i> will only load whatever option you select.
+          </p>
+          <img src="images/backup-restore.png" alt="backup and restore" class="screenshots"/>
+          <p>If a tab is found which points to a non-existing folder destination this will be highlighted with
+            a "broom" icon - those invalid tabs can be removed using the "Find orphaned Tabs" command on the tool
+            menu.</p>
+          <p>This feature can potentially be used to synchronise tabs on another Computer, but this will
+            only work if the account name is the same during creation on Thunderbird. This is a technical
+            limitation of the built in naming mechanism for mail folder URLs. Thereforce I cannot currently support
+            synchronising QuickFolders across various profiles.</p>
+          <p>The safest and easiest way 
+            to do this would be by copying the complete profile folder over to the new PC - then 
+            synchronizing via Backup / Restore files should be feasible.
+            </p>							 
+        </td>
 			 </tr>
 			 <tr>
 					<td>...</td>

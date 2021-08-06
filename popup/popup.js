@@ -51,13 +51,14 @@ async function updateActions(addonName) {
   let isActionList = true;
   
   let currentTime = new Date(),
-      endSale = new Date("2021-07-20"); // Next Sale End Date
+      endSale = new Date("2021-08-23"); // Next Sale End Date
   let isSale = (currentTime < endSale);
 
   hide('permissions-note');
+  hideSelectorItems('.donations');
+  
   if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
-    hideSelectorItems('.donations');
     hide('register');
     if (isExpired) { // License Renewal
       hide('extendLicenseListItem');

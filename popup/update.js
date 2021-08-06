@@ -8,12 +8,27 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
 addEventListener("click", async (event) => {
-	if (event.target.id.startsWith("register") || event.target.id == 'bargainIcon') {
-    messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
+	if (event.target.id.startsWith("register")) {
+    messenger.Utilities.showLicenseDialog("splashScreen");
 	}
-  if (event.target.id=='whatsNew') {
+	if (event.target.id == "bargainIcon") {
+    // to get the bargain, go straight to offer!
+    messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=splashScreen-bargainIcon");
+    // messenger.Utilities.showLicenseDialog("splashScreen-bargainIcon");
+	}
+  
+  if (event.target.id == "stdLink") {
+    messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=splashScreen-standard");
+  }
+  
+  if (event.target.id == "compLink") {
+    messenger.windows.openDefaultBrowser("https://quickfolders.org/premium.html#featureComparison");
+  }
+  
+  
+  
+  if (event.target.id=="whatsNew") {
     messenger.Utilities.showVersionHistory();
-    
   }
   if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
     messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
@@ -83,11 +98,24 @@ addEventListener("load", async (event) => {
       remind.innerText = messenger.i18n.getMessage("label-remind-me", remindInDays);
     }
     
-    let specialOffer = document.getElementById('specialOfferTxt');
-    if (specialOffer)
-      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content")
+    let specialOffer = document.getElementById("specialOfferTxt");
+    if (specialOffer) {
+      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
+          reduction = "30%";
+      // note: expiry day is set in popup.js "endSale" variable
+      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")
-          .replace(/\{boldEnd\}/g,"</b>");
+          .replace(/\{boldEnd\}/g,"</b>")
+          .replace(/\{linkStart\}/, "<a id='stdLink' href='#std'>")
+          .replace(/\{linkEnd\}/, "</a>");
+    }
+    let featureComparison = document.getElementById("featureComparison");
+    if (featureComparison) {
+      featureComparison.innerHTML = messenger.i18n.getMessage("licenseComparison")
+          .replace(/\{linkStart\}/, "<a id='compLink' href='#cmp'>")
+          .replace(/\{linkEnd\}/, "</a>");
+        
+    } 
           
     let specialIntro = document.getElementById('specialOfferIntro');
     if (specialIntro) {

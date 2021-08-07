@@ -74,14 +74,14 @@ var CatWin = {
 					listBox.addItemToSelection(item);
 			}
 		}
-		item = listBox.appendItem(util.getBundleString("qfShowAlways","Show Always!"), FC.ALWAYS);
+		item = listBox.appendItem(util.getBundleString("qfShowAlways"), FC.ALWAYS);
 		if (cats && cats.includes(FC.ALWAYS))
 			listBox.addItemToSelection(item);
-		item = listBox.appendItem(util.getBundleString("qfShowNever","Never Show (Folder Alias)"), FC.NEVER);
+		item = listBox.appendItem(util.getBundleString("qfShowNever"), FC.NEVER);
 		if (cats && cats.includes(FC.NEVER))
 			listBox.addItemToSelection(item);
 		// highlight uncategorized if no categories are defined in folder
-		item = listBox.appendItem(util.getBundleString("qfUncategorized", "(Uncategorized)"), FC.UNCATEGORIZED);
+		item = listBox.appendItem(util.getBundleString("qfUncategorized"), FC.UNCATEGORIZED);
 		if (!cats) // "" or null
 			listBox.addItemToSelection(item);
 		// Tb68 glitch: make sure the focus box is on the first selected index, to avoid always highlighting top item:
@@ -117,7 +117,7 @@ var CatWin = {
 	},
 
 	setColor: function setColor(picker) {
-		alert (QuickFolders.Util.getBundleString("qfColorPickingWIP", "Sorry, this feature is still Work in Progress!") + picker.color);
+		alert (QuickFolders.Util.getBundleString("qfColorPickingWIP") + picker.color);
 	},
 
 	onSelectionChange: function onSelectionChange(evt) {
@@ -249,12 +249,12 @@ var CatWin = {
 		if (selCount==1)  {
 			let selectedCategory = selectedItems[0].value;
 			if (!QuickFolders.FolderCategory.isSelectableUI(selectedCategory)) {
-				util.getBundleString("qf.notification.categoryIsReadOnly", "This item cannot be deleted.");
+				util.getBundleString("qf.notification.categoryIsReadOnly");
 				return;
 			}
 		}
 		else {
-			let question = util.getBundleString("qf.prompt.category.deleteMultiple","Ok to delete multiple categories?")
+			let question = util.getBundleString("qf.prompt.category.deleteMultiple");
 			if(!Services.prompt.confirm(this.window, "QuickFolders", question))
 				return;
 		}

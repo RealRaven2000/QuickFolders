@@ -69,8 +69,8 @@ QuickFolders.quickMove = {
     
       let msg = 
         isCopy 
-        ?  util.getBundleString("quickfoldersQuickCopiedMails","Email copied to folder {2};{1} Emails copied to folder {2}")
-        :  util.getBundleString("quickfoldersQuickMovedMails","Email moved to folder {2};{1} Emails moved to folder {2}");
+        ?  util.getBundleString("quickfoldersQuickCopiedMails")
+        :  util.getBundleString("quickfoldersQuickMovedMails");
       let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", fld.prettyName);
       
       // if we are in single message mode we now have to jump into the folder and reselect the message!

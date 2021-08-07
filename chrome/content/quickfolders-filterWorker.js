@@ -39,7 +39,6 @@ QuickFolders.FilterWorker = {
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           prefs = QuickFolders.Preferences,
-		      notificationId = 'mail-notification-box',
 			    notificationKey = "quickfolders-filter";          
     let notifyBox,
 				isQuickFilters = typeof window.quickFilters !== 'undefined';
@@ -50,15 +49,13 @@ QuickFolders.FilterWorker = {
       if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
         notifyBox = specialTabs.msgNotificationBar;
       }
-      else
-        notifyBox = document.getElementById (notificationId);
       if (notifyBox) {
         let item=notifyBox.getNotificationWithValue(notificationKey)
         if(item)
           notifyBox.removeNotification(item, false); // second parameter in Postbox(not documented): skipAnimation
       }
       else {
-        util.logToConsole("Sorry - I cannot show notifyBox, cannot find element '" + notificationId + "'\n" +
+        util.logToConsole("Sorry - I cannot show notifyBox, cannot find element specialTabs.msgNotificationBar\n" +
           "toggle_FilterMode(active=" + active + ");");
       }
 			
@@ -69,12 +66,9 @@ QuickFolders.FilterWorker = {
 				prefs.getBoolPref("filters.showMessage")) 
 			{
 				
-				let title = util.getBundleString("qf.filters.toggleMessage.title",
-										"Creating Filters"),
-						theText = util.getBundleString("qf.filters.toggleMessage.notificationText",
-							"Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'."
-							+" To end the filter learning mode, press the filter button on the top left of QuickFolders bar."),
-						dontShow = util.getBundleString("qf.notification.dontShowAgain", "Do not show this message again.");
+				let title = util.getBundleString("qf.filters.toggleMessage.title"),
+						theText = util.getBundleString("qf.filters.toggleMessage.notificationText"),
+						dontShow = util.getBundleString("qf.notification.dontShowAgain");
 
 				
 				if (notifyBox) {

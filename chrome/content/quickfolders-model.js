@@ -10,6 +10,8 @@
 var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
 
 QuickFolders.Model = {
+  MAX_UNPAID_TABS: 10,
+  MAX_STANDARD_TABS: 25,
   selectedFolders: [],
   categoriesList: [],
   paletteUpdated: false,
@@ -52,7 +54,7 @@ QuickFolders.Model = {
       }
 			// the entry exists in all categories
 			try {
-				util.alert(util.getBundleString("qfFolderAlreadyBookmarked", "The folder " + uri  + " is already bookmarked."));
+				util.alert(util.getBundleString("qfFolderAlreadyBookmarked"));
 				// select folder to make more obvious
 				QuickFolders_MySelectFolder(entry.uri);
 			} catch (e) { 
@@ -280,7 +282,7 @@ QuickFolders.Model = {
       // add class "spaced" with .spaced { margin-left: 2em;}
       if (isSpace) {
         entry.separatorBefore = true;
-        QuickFolders.Util.popupProFeature("tabSeparator");
+        QuickFolders.Util.popupRestrictedFeature("tabSeparator");
       }
       else
         delete entry.separatorBefore;
@@ -293,7 +295,7 @@ QuickFolders.Model = {
     if(entry) {
       if (isBreak) {
         entry.breakBefore = true;
-        QuickFolders.Util.popupProFeature("lineBreaks");
+        QuickFolders.Util.popupRestrictedFeature("lineBreaks");
       }
       else
         delete entry.breakBefore;

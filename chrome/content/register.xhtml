@@ -48,6 +48,8 @@
 			</vbox>
 			
 		</hbox>
+
+		<description class="para">__MSG_licenseTypes__</description>
 		
 		<description class="para">__MSG_intro__</description>
 
@@ -63,6 +65,7 @@
 					<description class="para">__MSG_yearlyLicense.premiumFeatures__</description>
 					<label class="para link" 
 					onclick="Register.premiumInfo(event);">__MSG_yearlyLicense.premiumFeatures.moreInfoLink__</label>
+          <description class="para" id="featureComparison">__MSG_licenseComparison__</description>
 					<description class="para">__MSG_yearlyLicense.usageTerm__ __MSG_yearlyLicense.usageTerm1__</description>
 				</td>
 			</tr>	
@@ -138,10 +141,26 @@
 				<td class="btnLicenseContainer">
 					<button id="btnLicense"
 					  class="register"
-						label="__MSG_buyPersonalLicense.button__"
+						label="__MSG_buyProLicense.button__"
 						oncommand="Register.goPro(0);" />
 				</td>
 			</tr>
+      
+			<tr align="center" id="StandardLicenseRow">
+				<td>
+					<spacer flex="1" />
+				</td>
+				<td>
+					<label class="shilling">__MSG_buyStandardLicense.instruct__</label>
+				</td>
+				<td class="btnLicenseContainer">
+					<button id="btnStdLicense"
+					  class="register"
+						label="__MSG_buyStandardLicense.button__"
+						oncommand="Register.goPro(2);" />
+				</td>
+			</tr>      
+      
 			<tr align="center">
 				<td>
 					<spacer flex="1" />

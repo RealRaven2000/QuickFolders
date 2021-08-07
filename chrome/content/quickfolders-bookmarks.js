@@ -169,7 +169,7 @@ QuickFolders.bookmarks = {
           entry.invalid = true; // make sure this propagates to this.Entries!
 					menuItem.classList.add('invalid');
           util.logDebug("Invalid Uri - couldn't open message tab from: " + entry.Uri);
-          let text = util.getBundleString('qf.prompt.readingList.searchMissingItem', 'Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?'),
+          let text = util.getBundleString("qf.prompt.readingList.searchMissingItem"),
               search = Services.prompt.confirm(window, "QuickFolders", text.replace("{1}", entry.label));
           if (search) {
             this.findBookmark(entry);
@@ -178,7 +178,7 @@ QuickFolders.bookmarks = {
         break;
       case 2: // right-click
         // remove item!
-        let question = util.getBundleString('qf.prompt.readingList.removeItem', "Remove this item?");
+        let question = util.getBundleString("qf.prompt.readingList.removeItem");
         if (Services.prompt.confirm(window, "QuickFolders", question)) {
           let bm = QuickFolders.bookmarks;
           bm.removeUri(entry.Uri);
@@ -250,14 +250,19 @@ QuickFolders.bookmarks = {
   } ,
 
   addMail: function addMail(newUri, sourceFolder)  {
-    let util = QuickFolders.Util,
-        prefs = QuickFolders.Preferences,
-        countEntries = this.Entries.length;
-    const MAX_BOOKMARKS = 5;
-    if (!util.hasPremiumLicense() && countEntries>2) {
-      let text = util.getBundleString("qf.notification.premium.readingList",
-                  "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}.");
-      util.popupProFeature("bookmarks", text.replace("{1}", countEntries).replace("{2}", MAX_BOOKMARKS.toString()));
+    const util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences,
+          countEntries = this.Entries.length,
+          isStandardLicense = (util.licenseInfo.keyType==2) ? true : false;
+    
+    let MAX_BOOKMARKS = isStandardLicense ? 10 : 5;
+          
+    if (util.hasValidLicense() && !isStandardLicense) MAX_BOOKMARKS = 100000;
+    
+    if (countEntries>=MAX_BOOKMARKS-2) {
+      let licenseType = isStandardLicense ? "standard" : "premium";
+      let text = util.getBundleString(`qf.notification.${licenseType}.readingList`);
+      util.popupRestrictedFeature("bookmarks", text.replace("{1}", countEntries).replace("{2}", MAX_BOOKMARKS.toString()));
       // early exit if no license key and maximum icon number is reached
       if (countEntries >= MAX_BOOKMARKS)
         return false;

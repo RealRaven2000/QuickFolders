@@ -72,17 +72,15 @@ messenger.runtime.onInstalled.addListener(async (data) => {
   }    
 });
 
-// display splash screen after n minutes
-function showSplash(timeout = 0) {
+// display splash screen
+function showSplash(msg="") {
   // alternatively display this info in a tab with browser.tabs.create(...)  
-  setTimeout(
-    function() {
-      let url = browser.runtime.getURL("popup/update.html");
-      let screenH = window.screen.height,
-          windowHeight = (screenH > 870) ? 870 : screenH;  
-      browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
-    }, timeout * 60 * 1000
-  );
+  let url = browser.runtime.getURL("popup/update.html");
+  if (msg) url+= "?msg=" + encodeURI(msg);
+  let screenH = window.screen.height,
+      windowHeight = (screenH > 870) ? 870 : screenH;
+      
+  browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
 }
 
 async function main() {
@@ -125,7 +123,8 @@ async function main() {
         break;
       
       case "splashScreen":
-        showSplash(0);
+        let splashMessage = data.msg || "";
+        showSplash(splashMessage);
         break;
         
       case "getLicenseInfo": 
@@ -154,7 +153,7 @@ async function main() {
       case "updateFoldersUI": // replace observer
         messenger.NotifyTools.notifyExperiment(
           { event: "updateFoldersUI"}
-        ); // omit 2nd parameter -  window: ["chrome://messenger/content/messenger.xhtml"]
+        );
         break;
         
       case "updateAllTabs": 
@@ -205,6 +204,8 @@ async function main() {
         currentLicense = newLicense;
         // Broadcast
         messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info})
+        messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
+        
         return true;
     }
   });

@@ -272,9 +272,9 @@ QuickFolders.Preferences = {
     let overrideLabel = "";
     // extend this for delivering the news splash when updated!
     if (QuickFolders.Preferences.getBoolPref("hasNews"))
-      overrideLabel = util.getBundleString("qf.notification.newsFlash", "$addonName$ was updated! See what's new…", "QuickFolders");
+      overrideLabel = util.getBundleString("qf.notification.newsFlash", "QuickFolders");
     else if (QuickFolders.Util.licenseInfo.isExpired)
-      overrideLabel = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
+      overrideLabel = util.getBundleString("qf.notification.premium.btn.renewLicense");
     
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
 		  const url = "extensions.quickfolders.textQuickfoldersLabel",

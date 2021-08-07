@@ -20,6 +20,11 @@ label.ref {
 	100% { opacity: 0.7; }
 }
 
+#featureComparison {
+  background-color: #fff229;
+  padding: 4px 6px;
+}
+
 #qfLicenseTerm.expired {
 	animation: quickfoldersRenew 3s 5s ease-in-out infinite;
 	background-color: #990038; /* dark purple */

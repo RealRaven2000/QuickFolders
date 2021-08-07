@@ -18,6 +18,23 @@ var { Services } = ChromeUtils.import('resource://gre/modules/Services.jsm');
 var Register = {
   l10n: function() {
     QuickFolders.Util.localize(document);
+    let featureComparison = document.getElementById("featureComparison");
+    if (featureComparison) {
+      let htmlFragment = "<label class='para' id='featureComparison'>"
+        + QuickFolders.Util.getBundleString("licenseComparison")
+          .replace(/\{linkStart\}/, "<a id='compLink' class='link'>")
+          .replace(/\{linkEnd\}/, "</a>")
+        + "</label>";
+      let e = featureComparison.ownerGlobal.MozXULElement.parseXULToFragment(htmlFragment);
+      
+      featureComparison.parentElement.insertBefore(e, featureComparison);
+      featureComparison.parentElement.removeChild(featureComparison);
+      window.addEventListener("click", async (event) => {
+        if (event.target.id == "compLink") {
+          QuickFolders.Util.openLinkInBrowser(event,"https://quickfolders.org/premium.html#featureComparison");
+        }         
+      });
+    } 
   },
   load: async function load() {
     await QuickFolders.Util.init();
@@ -30,31 +47,89 @@ var Register = {
     const licenseInfo = QuickFolders.Util.licenseInfo,
           getElement = document.getElementById.bind(document),
           util = QuickFolders.Util;
+		// for renewals, referrer is always the old license!
+    let referrerTxt = getElement('referrer');
+		if (licenseInfo.status=="Valid")
+			referrerTxt.value = licenseInfo.licenseKey;
     
     let decryptedDate = licenseInfo.expiryDate;
-    let btnLicense = getElement('btnLicense');
-    btnLicense.label = util.getBundleString("buyPersonalLicense.button","Buy Personal License!");
+    let btnProLicense = getElement('btnLicense');
+    btnProLicense.label = util.getBundleString("buyProLicense.button");
     if (decryptedDate) {
 			if (util.isDebug) {
 				util.logDebug('Register.updateLicenseUI()\n' + 'ValidationStatus = ' + licenseInfo.description)
-				debugger;
 			}
 				
       getElement('licenseDate').value = decryptedDate; // invalid ??
 			if (licenseInfo.status == "Expired" || licenseInfo.status == "Valid") {
-				if(licenseInfo.status == "Expired")
-					btnLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License!");
-				else {
-					btnLicense.label = util.getBundleString("qf.notification.premium.btn.extendLicense", "Extend License!");
+				let btnDomainLicense = getElement('btnDomainLicense'),
+				    btnStdLicense = getElement('btnStdLicense');
+        
+				if(licenseInfo.status == "Expired") {
+          switch (licenseInfo.keyType) {
+            case 0: // Pro
+              btnProLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense");
+              btnProLicense.removeAttribute('oncommand');
+              btnProLicense.setAttribute('oncommand', 'Register.goPro(0, true);');
+              break;
+            case 1: // Domain
+              btnDomainLicense.label = util.getBundleString("qf.notification.premium.btn.renewLicense");
+              btnDomainLicense.removeAttribute('oncommand');
+              btnDomainLicense.setAttribute('oncommand', 'Register.goPro(1, true);');
+              btnDomainLicense.classList.add('register');
+              btnProLicense.classList.remove('register');
+              break;
+            case 2: // Standard
+              btnProLicense.label = util.getBundleString("qf.notification.premium.btn.upgrade");
+              btnProLicense.removeAttribute('oncommand');
+              btnProLicense.setAttribute('oncommand', 'Register.goPro(3);'); // upgrade from standard
+              btnProLicense.classList.add('upgrade'); // no flashing
+              break;
+          }
+					
+        }
+				else { // EXTEND
+					let extBtn, extText;
+          switch(licenseInfo.keyType) {
+            case 0:
+              extBtn = btnProLicense;
+              btnProLicense.removeAttribute('oncommand');
+              btnProLicense.setAttribute('oncommand', 'Register.goPro(0, true);');
+              extText = util.getBundleString("qf.notification.premium.btn.extendLicense")
+              break;
+            case 1:
+              extBtn = btnDomainLicense;
+              btnProLicense.classList.remove('register'); // not flashing
+              btnDomainLicense.removeAttribute('oncommand');
+              btnDomainLicense.setAttribute('oncommand', 'Register.goPro(1, true);');
+              extText = util.getBundleString("qf.notification.premium.btn.extendLicense");
+              break;
+            case 2:
+              btnProLicense.label = util.getBundleString("qf.notification.premium.btn.upgrade");
+              btnProLicense.removeAttribute('oncommand');
+              btnProLicense.setAttribute('oncommand', 'Register.goPro(3, true);');
+              extBtn = btnStdLicense;
+              btnStdLicense.removeAttribute('oncommand');
+              btnStdLicense.setAttribute('oncommand', 'Register.goPro(2, true);');
+              extText = util.getBundleString("qf.notification.premium.btn.extendLicense")
+              // check whether renewal is up within 30 days
+              let today = new Date(),
+                  later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
+                  dateString = later.toISOString().substr(0, 10);
+              
+              if (!(licenseInfo.expiryDate < dateString)) { // not close to expiry yet. let's hide this path.
+                let standardRow = getElement('StandardLicenseRow');
+                standardRow.collapsed=true;
+              }
+              break;        
+          }
+
+					extBtn.label = extText;
+          extBtn.classList.add("register");
 					// add tooltip
-					btnLicense.setAttribute('tooltiptext',
-					  util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip", 
-						  "This will extend the current license date by 1 year. It's typically cheaper than a new license."));
+					extBtn.setAttribute("tooltiptext", util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip"));
 				}
 
-				btnLicense.removeAttribute('oncommand');
-				btnLicense.setAttribute('oncommand', 'Register.goPro(2);');
-				btnLicense.classList.add('expired');
 				// hide the "Enter License Key..." button + label
 				if (licenseInfo.status == "Valid") {
 					getElement('haveLicense').collapsed=true;
@@ -72,20 +147,20 @@ var Register = {
     getElement('qfLicenseTerm').classList.remove('expired');
 		switch(licenseInfo.status) {
 			case "Expired":
-			  getElement('licenseDateLabel').value = util.getBundleString("qf.register.licenseValid.expired","Your license expired on:")
-				getElement('qfLicenseTerm').classList.add('expired');
+			  getElement("licenseDateLabel").value = util.getBundleString("qf.register.licenseValid.expired")
+				getElement("qfLicenseTerm").classList.add("expired");
 			  break;
 			case "Valid":
-			  getElement('btnLicense').classList.remove('register'); // remove the "pulsing effect" if license is valid.
-        getElement('licenseDateLabel').value =  util.getBundleString("qf.label.licenseValid","Your license is valid until:");
+			  btnProLicense.classList.remove("register"); // remove the "pulsing effect" if license is valid.
+        getElement("licenseDateLabel").value = util.getBundleString("qf.label.licenseValid");
 			  break;
 			case "Empty":
 			case "NotValidated":
-				getElement('licenseDateLabel').value = " ";
+				getElement("licenseDateLabel").value = " ";
 			  break;
 			default: // default class=register will animate the button
         let txt = "License Status: " + licenseInfo.description;
-			  getElement('licenseDateLabel').value = txt;
+			  getElement("licenseDateLabel").value = txt;
         util.logToConsole("Registration Problem\n" + txt + "\nDecrypted part: " + licenseInfo.decryptedPart);
         
 		}
@@ -113,9 +188,8 @@ var Register = {
           util.logToConsole('Omitting account ' + id.fullName + ' - no mail address');
           return;
         }
-        let menuitem = document.createXULElement ? document.createXULElement('menuitem') : document.createElement('menuitem');
+        let menuitem = document.createXULElement("menuitem");
 				menuitem.setAttribute("id", "id" + dropdownCount++);
-				// this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.onGetMessages(this);");
 				menuitem.setAttribute("fullName", id.fullName);
 				menuitem.setAttribute("value", id.email);
 				menuitem.setAttribute("accountKey", account.key);
@@ -147,7 +221,7 @@ var Register = {
       }
       let ids = ac.identities; // array of nsIMsgIdentity
       if (ids) {
-        let idCount = ids ? (ids.Count ? ids.Count() : ids.length) : 0;
+        let idCount = ids ? ids.length : 0;
         util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities…');
         for (let i=0; i<idCount; i++) {
           // use ac.defaultIdentity ??
@@ -172,7 +246,7 @@ var Register = {
   
   } ,
   
-  goPro: function goPro(license_type) {
+  goPro: function goPro(license_type, isRenew = false) {
     const productDetail = "https://sites.fastspring.com/quickfolders/product/quickfolders",
 					prefs =  QuickFolders.Preferences,
           util = QuickFolders.Util;
@@ -180,23 +254,38 @@ var Register = {
     // short order process
     if (util.isDebug) debugger;
     let shortOrder,
-		    featureName = document.getElementById('referrer').value; // hidden field
+		    featureName = document.getElementById("referrer").value; // hidden field
+    if (isRenew || license_type==3) {
+      featureName = encodeURI(prefs.getStringPref("LicenseKey"));
+    }
     switch	(license_type) {
-			case 0:  // personal license
-				shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfolders";
+			case 0:  // pro license
+				if (isRenew) { 
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew";
+				}
+				else // NEW
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfolders";
+				
 			  break;
 			case 1: // domain license
-				shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomain";
+        if (isRenew) { 
+          shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomainrenewal";
+        }
+        else
+          shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomain";
 			  break;
-			case 2: // license renewal
-				if (QuickFolders.Util.licenseInfo.keyType==1) { // domain license!
-					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersdomainrenewal";
+			case 2: // standard license
+				if (isRenew) { 
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersstdrenewal";
 				}
 				else
-					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew";
-				featureName = encodeURI(prefs.getStringPref('LicenseKey'));
-				// should we autoselect the correct email address?
+					shortOrder = "https://sites.fastspring.com/quickfolders/instant/quickfoldersstandard";
 			  break;
+
+			case 3: // upgrade standard to pro
+				shortOrder = "https://sites.fastspring.com/quickfolders/product/quickfoldersupgrade"; // product to be created
+			  break;
+			        
 		}
     // view product detail
     let firstName = document.getElementById('firstName').value,

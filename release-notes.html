@@ -1,57 +1,23 @@
-<b>Release 5.6.6</b>
+<b>Release 5.7</b>
 <ul>
 <li> In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this with a license or donation:</li>
 <li>You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=qf-version-page">buy a license</a> here. This is the preferred way of funding all the ongoing work and improvements.</li>
 <li>If you are not ready for a license you can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a></li>
 </ul>
 
-
-
-<b>Maintenance versions - 5.6.6</b>
+<b>Improvements</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/177">[issue 177]</a> Fixed: Unreliable search if space and "-" characters are combined in the search string</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/174">[issue 174]</a> Main QuickFolders toolbar was hidden in single message tabs by default. Changed to being visible by default and added a setting to QuickFolders General settings.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/176">[issue 176]</a> Hide instructions on how to set up QuickFolders at startup (for users who already have set up tabs) </li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/179">[issue 179]</a> If you have many (1000s) of folders, you can disable the "multi word search" feature with the configuration setting extensions.quickfolders.premium.findFolder.disableSpace=true to improve performance while typing in quickJump / quickMove.</li>
-<li> Improved icon for quickMove help</li>
-<li> Improved removal of event listeners when installing new versions or disabling / reloading the Add-on.</li>
-</ul>
-
-<b>Improvements - 5.6.5</b>
-<ul>
-<li> From now on, the update splash screen will not be displayed automatically anymore. Instead, there will be a message on the QuickFolders button which can be clicked once to read the latest news. There is also a new entry "Show Splash screen" on the QuickFolders tools menu</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/155">[issue 155]</a> Support entering multiple words in a search string to find longer folder names that are composited, such as "Fred.Flintstone" "Invoices June 2020" "Research+Development". These can now be found by entering the starting letters of the words within the folder name, in any order. e.g. "f f" "2020 inv" "Dev Res". The following characters are regarded as word boundaries and don't need to be typed:
-_ . - + & @
-
-This can also be combined with the existing parent folder syntax by entering the parent folder start followed by a forward slash "/", e.g. enter "A/rev a" to match subfolders like "AMO » AMO-Reviews" "Addons » Accepted Revisions".
-
-Use the new character ">" to skip any folder within the path.
-
-Use the [?] symbol to the right of the search field to display a help panel.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/163">[issue 163]</a> quickMove: folder created while moving is not displayed on top of recent folders menu.</li>
-<li>[web extension migration] Improved many functions that worked via accessing the "most recent Thunderbird window" and replaced them with event notifications that propagate to every window. This uses the Notification Tool library and the background script (a mechanism of the new API based "mail extensions" model).
-
-This way all Thunderbird windows (if you work from multiple windows) will be updated correctly when doing one of the following actions. All these now work simultaneously and update in multiple Thunderbird windows:
-  <ul>
-    <li>rename a tab</li>
-    <li>move a tab positionto a different position</li>
-    <li>delete a tab or remove it from or add it to a category</li>
-    <li>change the layout of all QuickFolders toolbar elements from the options dialog (themes, colors)</li>
-    <li>rename QuickFolders categories</li>
-    <li>change the theme / buttons of the Current Folder Bar</li>
-    <li>change options of where to display the Current Folder Bar (main window, message tab, single message window)</li>
-    <li>changes to the license when entered / validated</li>
-    <li>unlocking features such as the advanced / tab-specific properties when a license key is entered</li>
-  </ul>
-</li>
+<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/187">[issue 187]</a> Implement a QuickFolders Standard License. There will be now 2 licenses Pro and Standard, and the unfunded version will have a few restrictions. Most importantly, no more than 10 tabs are supported without any license. This is necessary in order to fund ongoing and future work so that the Add-on won't be lost to all users when Thunderbird moves away from experimental APIs. Standard Features will be <a target="_blank" href="https://quickfolders.org/premium.html#stdfeat">listed here.</a></li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/184">[issue 184]</a> Update Notice - [What's New] button is badly visible when using different QF theme than flat style.</li>
+<li> Ongoing work of Rewriting code to use APIs instead of Thunderbird's internal functions see <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/147">[issue 147]</a> for up to date detail.</li>
 </ul>
 
 <b>Bug Fixes + Miscellaneus</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/172">[issue 172]</a> Fixed (in v5.6.5):  quickMove results pathes are only showing last 2 folders in path if only a single search word is entered.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/167">[issue 167]</a> Fixed: Unreadable colors of QuickFolders toolbar font and Navigation bar icons in Linux.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/150">[issue 150]</a> Unwanted new line characters "\n" were displayed in some strings in version 5.5.2</li>
-<li>[web extension migration] Licenser code migrated into background script.</li>
-<li> Ongoing work of Rewriting code to use APIs instead of Thunderbird's internal functions see <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/147">[issue 147]</a> for up to date detail.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/166">[issue 114]</a> Make QuickFolders compatible with Thunderbird 91. (ESR 2021/22)</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/166">[issue 166]</a> 3rd party themes - Current folder toolbar colors are incorrect until Refresh visible tabs command</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/186">[issue 186]</a> Theming make some items in options screens hard / impossible to see 
+- improved visibility of dropdowns in options screen when using dark (and third party) themes</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/185">[issue 185]</a> On installation / sometimes restart or update of _other_ add-ons category is reset to "all"</li>
 </ul>
 

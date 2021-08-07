@@ -6,6 +6,7 @@
 <?xml-stylesheet href="chrome://global/skin/xul.css" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css" ?>
 <?xml-stylesheet href="chrome://messenger/skin/themeableDialog.css" type="text/css"?>
+
 <?xml-stylesheet href="chrome://global/content/widgets.css" type="text/css"?>
 <!--  tb 59 -->
 <!--  ? xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ? -->
@@ -13,15 +14,19 @@
 <?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-options.css" title="QuickFolderStyles" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-widgets.css" title="QuickFolderStyles" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-widgets64.css" title="QuickFolderStyles" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders-skins/content/qf-options.css" type="text/css"?>
 
-<dialog id="qf-options"
+<window id="qf-options"
 				xmlns:html="http://www.w3.org/1999/xhtml"
 				xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 				title="__MSG_qf.prefwindow.quickfolders.options__"
 				buttons="extra2,accept,cancel"
 				buttonlabelextra2="__MSG_qf.label.donate__"
 				lightweightthemes="true"
+        lwtheme="true"
+        role="dialog"
 				>
+        <dialog>
 <!-- all events are wired in options.load which is loaded at the end of options.js -->
 
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
@@ -32,14 +37,13 @@
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/options.js" />
-	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-rsa.js" />
   <script type="application/javascript">
 	const QI = QuickFolders.Interface,
 	      options = QuickFolders.Options,
 				util = QuickFolders.Util;
 	</script>
   	
-	<prefpane id="qf-options-prefpane" orient="vertical">
+	<div id="qf-options-prefpane" orient="vertical">
 		<box id="qf-header-container">
 			<vbox>
 				<spacer flex="1" />
@@ -195,7 +199,7 @@
                           oncommand="options.toggleBoolPreference(this);"
 													instantApply="true" />
 								<checkbox	label="__MSG_qf.checkbox.hideInSingleMessage__"
-													tooltiptext="__MSG_qf.checkbox.hideInSingleMessage__.tooltip__"
+													tooltiptext="__MSG_qf.checkbox.hideInSingleMessage.tooltip__"
 													preference="qfpg-HideToolbarSingleMsg"
                           oncommand="options.toggleBoolPreference(this);"
 													instantApply="true"
@@ -469,7 +473,7 @@
 										<menuitem label="__MSG_qf.currentFolderBackground.custom__"
 															oncommand="options.setCurrentToolbarBackground('custom', true);"
 															value="custom" />
-										<menuitem label="lightweight"
+										<menuitem label="__MSG_qf.currentFolderBackground.lightweight__"
 															oncommand="options.setCurrentToolbarBackground('lightweight', true);"
 															value="lightweight" />
 									</menupopup>
@@ -1108,14 +1112,15 @@
 					</hbox>
 					<separator class="licenseSeparator" />
 					<hbox id="validationDate" collapsed="true" align="center">
-						<label>__MSG_qf.label.licenseValid__</label>
+						<label id="licenseDateLabel">__MSG_qf.label.licenseValid__</label>
             <spacer style="width:1em"/>
 						<label id="licenseDate" value="-" />
 					</hbox>
-					<separator class = "licenseSeparator" />
+					<separator id="validationDateSpace" class = "licenseSeparator" />
 					<hbox id="validationResults">
 					  <vbox>
 							<description id="validationPassed" class="niceFont" collapsed="true">__MSG_qf.licenseValidation.passed__</description>
+              <description id="validationStandard" class="niceFont" collapsed="true">__MSG_qf.licenseValidation.standard__</description>
 							<description id="validationFailed" class="niceFont licenseError" collapsed="true">__MSG_qf.licenseValidation.failed__</description>
 							<description id="validationExpired" class="niceFont licenseWarning" collapsed="true">__MSG_qf.licenseValidation.expired__</description>
 							<description id="validationInvalidEmail" class="niceFont licenseWarning" collapsed="true">__MSG_qf.licenseValidation.invalidMail__</description>
@@ -1306,11 +1311,12 @@
 			</tabpanels>
 		</tabbox>
 		<separator class="thin" />
-	</prefpane>
+	</div>
 	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
 	<script>
 	  Components.utils.import('resource://gre/modules/Services.jsm');
 	  QuickFolders.Options.loadPreferences(); /* Tb 66 compatibility. Should be called _before_ DOMcontent Loaded event */
 	</script>
-
-</dialog>
+  </dialog>
+  
+</window>

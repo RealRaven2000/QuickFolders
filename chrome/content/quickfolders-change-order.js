@@ -14,8 +14,8 @@ var ChangeOrder = {
 	upString: "",
 	downString: "",
 
-	getUIstring: function(id, defaultString) {
-		return QuickFolders.Util.getBundleString(id, defaultString);
+	getUIstring: function(id, substitions) {
+		return QuickFolders.Util.getBundleString(id, substitions);
 	} ,
   
   
@@ -60,9 +60,9 @@ var ChangeOrder = {
 		let label = (useName && useName.length) ? useName : folder.name;
 
 		if (this.upString=="")
-			this.upString = this.getUIstring("qfUp","Up");
+			this.upString = this.getUIstring("qfUp");
 		if (this.downString=="")
-			this.downString = this.getUIstring("qfDown","Down");
+			this.downString = this.getUIstring("qfDown");
 
 		let rows = this.$('QuickFolders-change-order-grid-rows'),
 		    row = document.createXULElement("row"),

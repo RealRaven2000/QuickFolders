@@ -513,7 +513,7 @@ END LICENSE BLOCK */
   5.6.5 QuickFolders Pro - 05/07/2021
     ## [issue 172] quickMove results pathes are only showing last 2 folders in path if only a single search word is entered.
     
-  5.6.6 QuickFolders Pro - WIP
+  5.6.6 QuickFolders Pro - 11/07/2021
     ## [issue 177] Unreliable search if space and "-" characters are combined in the search string
     ## [issue 174] Fixed: QuickFolders toolbar was hidden in single message tabs by default.
        Removed obsolete setting extensions.quickfolders.toolbar.onlyShowInMailWindows and added UI for 
@@ -526,6 +526,30 @@ END LICENSE BLOCK */
     
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
+
+  5.7 QuickFolders Pro - WIP
+    ## [issue 187] Implement a QuickFolders Standard License
+    ## [issue 184] Update Notice - "What's New button" is badly visible when using different QF theme than flat style
+    ## [issue 166] 3rd party themes - Current folder toolbar colors are incorrect until Refresh visible tabs command
+    ## [issue 186] Theming make some items in options screens hard / impossible to see 
+       - improved visibility of dropdowns in options screen when using dark (and third party) themes
+    ## [issue 185] On installation / sometimes restart or update of _other_ add-ons category is reset to "all"
+                   Fixed by not removing the session store function when Add-on is removed within session (call to  QuickFolders.restoreSessionStore)
+    ## Add keyboard support to selecting items from any recent folders menu.
+    ## Added dedicated path for Thunderbird 91 specific style rules. (content/skin/tb91) - qf-options.css
+    ## Removed old rsa module 
+    ## default event for popupmenus changed from click to command to better support keyboard only navigation. [extensions.quickfolders.debug.popupmenus.folderEventType]
+    ## [issue 114] Make QuickFolders compatible with Thunderbird 91. (ESR 2021/22)
+    ## - Fixed the missing (and badly styled) [Buy License] button at the bottom of the options dialog. 
+         this is done by loading a separate style sheet link element into the shadow DOM.
+    ## - Fixed: showing the debug settings (and other advanced settings) via a small window that 
+                filters "about:config" stopped working in Tb91.  
+    ## - Fixed: missing icons on sliding notification bars
+    ## - Removed deprecated fixIterators
+    ## - [issue 189] Fixed: No longer able to move a message by dropping it on a quick folder tab
+                     the function copyMessages was renamed in Tb91
+    ## TO DO: review qf.notification.premium.text (remove "using it -permanently-") 
+
 
 
    	TODOs
@@ -975,10 +999,10 @@ var QuickFolders = {
   // all main window elements that change depending on license status (e.g. display "Expired" instead of QuickFolders label)
   initLicensedUI: function initLicensedUI() {
     let State = QuickFolders.Util.licenseInfo.status,
-        hasLicense = QuickFolders.Util.hasPremiumLicense();
+        hasLicense = QuickFolders.Util.hasValidLicense();
     QuickFolders.Util.logDebug ("initLicensedUI - hasLicense = " + hasLicense + "\n licenseInfo:", QuickFolders.Util.licenseInfo);
     if (hasLicense) {  // reset licenser (e.g. in new window)
-      QuickFolders.Util.logDebug ("Premium License found - removing Animations()...");
+      QuickFolders.Util.logDebug ("License found - removing Animations()...");
       QuickFolders.Interface.removeAnimations('quickfolders-layout.css');
     }
     let menuRegister = document.getElementById('QuickFolders-ToolbarPopup-register');
@@ -987,15 +1011,15 @@ var QuickFolders = {
         case "Valid":
           menuRegister.classList.add('paid');
           menuRegister.classList.remove('free');
-          menuRegister.label = QuickFolders.Util.getBundleString("qf.menuitem.quickfolders.register", "QuickFolders Pro License…");
+          menuRegister.label = QuickFolders.Util.getBundleString("qf.menuitem.quickfolders.register");
           break;
         case "Expired":
-          menuRegister.label = "QuickFolders Pro: " + QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense", "Renew License") + "\u2026";
+          menuRegister.label = "QuickFolders Pro: " + QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense") + "\u2026";
           menuRegister.classList.add('expired');
           menuRegister.classList.remove('free');
           break;
         default:
-          menuRegister.label = QuickFolders.Util.getBundleString("qf.menuitem.quickfolders.register", "QuickFolders Pro License…");
+          menuRegister.label = QuickFolders.Util.getBundleString("qf.menuitem.quickfolders.register");
           menuRegister.classList.add('free');
       }
     }
@@ -1109,14 +1133,14 @@ var QuickFolders = {
 
 			this.util.logDebugOptional("dnd","toolbarDragObserver.drop - " + contentType);
  			function addFolder(src) {
-					if(src) {
-						let cat = QuickFolders.Interface.CurrentlySelectedCategories;
-						if (QuickFolders.Model.addFolder(src, cat)) {
-							let s = "Added shortcut " + src + " to QuickFolders"
-							if (cat !== null) s = s + " Category " + cat;
-							try{ QuickFolders.Util.showStatusMessage(s); } catch (e) {};
-						}
-					}
+        if(src) {
+          let cat = QuickFolders.Interface.CurrentlySelectedCategories;
+          if (QuickFolders.Model.addFolder(src, cat)) {
+            let s = "Added shortcut " + src + " to QuickFolders"
+            if (cat !== null) s = s + " Category " + cat;
+            try{ QuickFolders.Util.showStatusMessage(s); } catch (e) {};
+          }
+        }
 			};
 
 			QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.drop " + contentType);
@@ -1125,6 +1149,26 @@ var QuickFolders = {
 			switch (contentType) {
 				case "text/x-moz-folder":
 				case "text/x-moz-newsfolder":
+          {
+            let msg="", maxTabs, warnLevel;
+            if (!QuickFolders.Util.hasValidLicense()) { // max tab
+              maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
+              msg = QuickFolders.Util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
+              warnLevel = 2;
+            }
+            else if (QuickFolders.Util.licenseInfo.keyType==2) {
+              maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
+              msg = QuickFolders.Util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
+              warnLevel = 0;
+            }
+            if (QuickFolders.Model.selectedFolders.length >= maxTabs) {
+              if (msg) {
+                QuickFolders.Util.popupRestrictedFeature("tabs>" + maxTabs, msg, warnLevel);
+                Services.prompt.alert(null, "QuickFolders", msg);
+                return;
+              }         
+            }
+          }
 					if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) { 
             let count = evt.dataTransfer.mozItemCount ? evt.dataTransfer.mozItemCount : 1;
             for (let i=0; i<count; i++) { // allow multiple folder drops...
@@ -1639,6 +1683,8 @@ var QuickFolders = {
 						    menupopup = this.doc.createXULElement ? this.doc.createXULElement('menupopup') : this.doc.createElement('menupopup'),
 						    popupId;
 						QI.FoldersBox.appendChild(popupset);
+            
+            let isDisabled = (button && targetFolder) ? (button.getAttribute("disabled") || false) : false;
 
 						if (targetFolder) {
 							popupId = 'moveTo_'+targetFolder.URI;
@@ -1654,7 +1700,13 @@ var QuickFolders = {
 								menupopup.folder = targetFolder;
 								popupset.appendChild(menupopup);
 								removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
-								QI.addSubFoldersPopup(menupopup, targetFolder, true);
+                
+                if (isDisabled) {
+                  let mi = QI.createMenuItem_disabled();
+                  menupopup.appendChild(mi);
+                }
+                else
+                  QI.addSubFoldersPopup(menupopup, targetFolder, true);
 							}
 						}
 						else { // special folderbutton: recent
@@ -1923,6 +1975,23 @@ var QuickFolders = {
 							txtUris ='',
 							dt = evt.dataTransfer,
 					    types = dt.mozTypesAt(0);
+              
+          if (DropTarget.getAttribute("disabled")) {
+            let msg="", maxTabs;
+            if (!util.hasValidLicense()) { // max tab
+              maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
+              msg = util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
+            }
+            else if (util.licenseInfo.keyType==2) {
+              maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
+              msg = util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
+            }
+            if (msg) {
+              util.popupRestrictedFeature("tabs>" + maxTabs, msg, 2);
+              Services.prompt.alert(null, "QuickFolders", msg);
+              return;
+            }
+          }
 							
 					if (types.contains("text/x-moz-message")) {
 					  lastAction = "get data from event.dataTransfer"
@@ -2143,8 +2212,8 @@ QuickFolders.prepareSessionStore = function () {
   mailTabType.modes["folder"].persistTab = function(aTab) {
     let retval = orgPersist(aTab);
     if (retval) {
-      util.logDebug("persist tab category: " + aTab.QuickFoldersCategory);
       retval.QuickFoldersCategory = aTab.QuickFoldersCategory; // add category from the tab to persisted info object
+      util.logDebug("Persisted tab category: " + aTab.QuickFoldersCategory);
     }
     return retval; 
   }
@@ -2153,16 +2222,13 @@ QuickFolders.prepareSessionStore = function () {
   mailTabType.QuickFolders_SessionStore.restoreTab = orgRestore;
   mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
     orgRestore(aTabmail, aPersistedState);
-    debugger;
     let txt;
     try {
       txt = aPersistedState.QuickFoldersCategory || "(no category)";
     } catch(ex) {;}
-    util.logDebug("restored tabs: " + txt);
-    // let  rdf = Components.classes['@mozilla.org/rdf/rdf-service;1'].getService(CI.nsIRDFService),
-    //      folder = rdf.GetResource(aPersistedState.folderURI).QueryInterface(CI.nsIMsgFolder);
-    let folder = model.getMsgFolderFromUri(aPersistedState.folderURI); 
-    if (folder && aPersistedState.QuickFoldersCategory) {
+    // let folder = model.getMsgFolderFromUri(aPersistedState.folderURI); 
+    util.logDebug("restore tab: QuickFoldersCategory = " + txt + " persisted State = ", aPersistedState);
+    if (aPersistedState.QuickFoldersCategory) {
       let tabInfo, theUri;
       // Thunderbird only code, so it is fine to use tabInfo here:
       for (let i = 0; i < aTabmail.tabInfo.length; i++) {
@@ -2173,7 +2239,7 @@ QuickFolders.prepareSessionStore = function () {
             // util.logDebug("restore category to tabInfo folder [" + theUri + "] + " +  aPersistedState.QuickFoldersCategory);
             let cat = aPersistedState.QuickFoldersCategory;
             if (cat) {
-              util.logDebug("restore category " + cat);
+              util.logDebug("Restored category " + cat);
               tabInfo.QuickFoldersCategory = aPersistedState.QuickFoldersCategory;
             }
             return;
@@ -2690,15 +2756,15 @@ QuickFolders.FolderListener = {
 					// describe the action that caused the compacting
 					switch (QuickFolders.compactReportCommandType) {
 						case 'compactFolder':
-							message = util.getBundleString("qfCompactedFolder", "Compacted folder") + " '" + item.prettyName + "'";
+							message = util.getBundleString("qfCompactedFolder") + " '" + item.prettyName + "'";
 							break;
 						case 'emptyJunk':
-							message = util.getBundleString("qfEmptiedJunk", "Emptied junk and compacted folder")+ " '" + item.prettyName + "'";
+							message = util.getBundleString("qfEmptiedJunk") + " '" + item.prettyName + "'";
 							if (!item.URI)
 								size2 = 0;
 							break;
 						case 'emptyTrash':
-							message = util.getBundleString("qfEmptiedTrash", "Emptied trash.");
+							message = util.getBundleString("qfEmptiedTrash");
 							if (!item.URI)
 								size2 = 0;
 							break;
@@ -2706,9 +2772,9 @@ QuickFolders.FolderListener = {
 							message = "unknown compactReportCommandType: [" + compactReportCommandType + "]";
 							break;
 					}
-					let originalSize= util.getBundleString("qfCompactedOriginalFolderSize","Original size"),
-					    newSize = util.getBundleString("qfCompactedNewFolderSize","New Size"),
-					    expunged = util.getBundleString("qfCompactedBytesFreed","Bytes expunged"),
+					let originalSize= util.getBundleString("qfCompactedOriginalFolderSize"),
+					    newSize = util.getBundleString("qfCompactedNewFolderSize"),
+					    expunged = util.getBundleString("qfCompactedBytesFreed"),
 					    out = message + " :: "
 						+ (size1 ? (originalSize + ": " + add1000Separators(size1.toString()) + " ::  "
 								   + expunged + ":" + add1000Separators((size1-size2).toString()) + " :: ")

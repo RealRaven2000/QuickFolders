@@ -219,11 +219,38 @@
   "licenseComparison" : {
     "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
   },
+  "licenseHead": {
+    "message": "New Licensing System"
+  },  
   "licenseTypes": {
     "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. As breaking changes are rolled out in an annual cycle, the license will also be valid for 1 year."
   },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro License"
+  },
+  "license_restriced.std": {
+    "message": "Standard License - restricted Pro function. Find out more…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Unlicensed version - restricted function. Find out more…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders needs a Pro license to support more than $maxTabs$ tabs.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders needs a license to support more than $maxTabs$ tabs.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
@@ -1081,7 +1108,7 @@
     "message": "Click for version history."
   },
   "qf.palette.inactive": {
-    "message": "Like inactive Tabs"
+    "message": "Same as inactive Tabs"
   },
   "qf.palette.night": {
     "message": "Night Vision"
@@ -1685,7 +1712,7 @@
     "message": "August 22nd"
   },
   "special-offer-head": {
-    "message": "Future Proof QuickFolders!"
+    "message": "Make QuickFolders sustainable"
   },
   "special-offer-intro": {
     "message": "{boldStart}Dear {name}{boldEnd}, if you haven't got a license yet, please consider supporting QuickFolders for the future. More big changes on Thunderbird are coming and I need {boldStart}your help{boldEnd} to keep up!"
@@ -1767,7 +1794,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Made QuickFolders compatible with Thunderbird 91.{L2}{L1}Improved support for dark and 3rd party themes, both in options screen and for Navigation toolbar.{L2}{L1}Improved visibility of [what's new] button with non-standard QuickFolders theme{L2}{L1}Fixed a problem where all Categories were shown on restart or Add-on updates.{L2}"
+    "message": "{L1}Made QuickFolders compatible with Thunderbird 91.{L2}{L1}Improved support for dark and 3rd party themes, both in options screen and for Navigation toolbar.{L2}{L1}Improved visibility of [what's new] button with non-standard QuickFolders theme{L2}{L1}Fixed: where all Categories were shown on restart or Add-on updates.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

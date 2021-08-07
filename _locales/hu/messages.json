@@ -19,6 +19,9 @@
       }
     }
   },
+  "addon-authors-struggle": {
+    "message": "Ahhoz, hogy továbbra is hasznosak legyenek, a bővítmények fejlesztőinek most finanszírozniuk kell a javításhoz és átíráshoz szükséges erőforrásokat, hogy felhasználóink továbbra is részesülhessenek az asztalra hozott funkcionalitásból."
+  },
   "btn-extend-license": {
     "message": "Szeretném meghosszabbítani az engedélyemet egy évvel"
   },
@@ -88,6 +91,9 @@
   "chkSetMailsUnread.tooltip": {
     "message": "Ha e-mailt áthelyez ebbe a mappába, az olvasatlan állapotra lesz állítva."
   },
+  "cost-of-independence": {
+    "message": "A szoftverfejlesztés időbe és pénzbe kerül - sok platformalkalmazással ellentétben a bővítményeket nem nagyvállalatok írják, és semmilyen módon nem szponzorálják őket a Mozilla."
+  },
   "cssBackground": {
     "message": "Háttér"
   },
@@ -129,6 +135,17 @@
   },
   "enterLicenseKey.tooltip": {
     "message": "Írja be az e-mailben elküldött Licenckulcs kódot."
+  },
+  "extend-your-license": {
+    "message": "Fontolja meg a jogosítvány egy évvel történő meghosszabbítását."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Könyvjelzővel láthatja el kedvenc levelezési mappáit a Thunderbirdben."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
     "message": "Könyvjelzőzze a kedvenc mappáit a Thunderbirdben!"
@@ -199,6 +216,42 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Köszönjük, hogy nemrég meghosszabbította licencét, vagy ha adományozott. Mivel segített a kiegészítő későbbi bizonyításában, egyszerűen bezárhatja ezt az ablakot."
   },
+  "licenseComparison" : {
+    "message": "A különböző verziók jellemzőinek összehasonlításához {linkStart} olvassa el ezt a listát {linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Új engedélyezési rendszer"
+  },  
+  "licenseTypes": {
+    "message": "A QuickFolders két licencet kínál: Standard és Pro; ezek szükségesek ahhoz, hogy lépést tudjunk tartani a Thunderbird platform változásaival, és hogy finanszírozzuk a kiegészítő innovációit és javításait. Mivel a törési változtatások éves ciklusban kerülnek bevezetésre, az engedély is 1 évig érvényes."
+  },  
+  "licenseWindow.title": {
+    "message": "QuickFolders Pro licenc"
+  },
+  "license_restriced.std": {
+    "message": "Standard License - korlátozott Pro funkció. Tudj meg többet…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Engedély nélküli verzió - korlátozott funkció. Tudj meg többet…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "A QuickFolders Pro licencre van szüksége, hogy több mint $maxTabs$ lapot támogathasson.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "A QuickFolders licencre van szüksége, hogy több mint $ maxTabs $ lapot támogathasson.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
   },
@@ -215,20 +268,14 @@
       }
     }
   },
+  "on-permissions": {
+    "message": "IMPORTANT: Automatic updates might not ask you to install whenever a new Add-on version requires additional permissions. Instead you will see this warning icon on the Thunderbird main menu button, which you must click to complete the update. Requesting permissions is required for migrating to the new extension system. Otherwise we cannot deliver any bug fixes / new features!"
+  },
   "purchase-a-license": {
     "message": "Vásároljon licencet."
   },
   "purchase-heading": {
     "message": "Licenc vásárlása!"
-  },
-  "licenseComparison" : {
-    "message": "A különböző verziók jellemzőinek összehasonlításához {linkStart}olvassa el ezt a listát{linkEnd}."
-  },  
-  "licenseTypes": {
-    "message": "A QuickFolders két licencet kínál, a Standard és a Pro; ezekre azért van szükség, hogy lépést tudjunk tartani a Thunderbird platform változásaival, és finanszírozzuk az innovációkat és a kiegészítő javításait. Mivel a megszakító változásokat egy éves ciklusban hajtják végre, az engedély 1 évig is érvényes lesz."
-  },  
-  "licenseWindow.title": {
-    "message": "QuickFolders Pro License"
   },
   "qf.accounts": {
     "message": "Fiókok"
@@ -1670,8 +1717,26 @@
   "special-offer-intro": {
     "message": "{boldStart} Kedves {name} {boldEnd}! Ha még nem rendelkezik licenccel, kérjük, fontolja meg a QuickFolderek támogatását a jövőben. További nagy változások jönnek a Thunderbird-en, és a lépést tartáshoz {boldStart} segítségedre van szükségem {boldEnd}!"
   },
+  "support-preference": {
+    "message": "A $addonName$ támogatásának ez a preferált módja.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "quickFilters"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Annak érdekében, hogy a $addonName$ működőképes és életben maradjon, kérjük, tegye meg ezt a szívességet:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "testDrive": {
-    "message": "You can test drive the premium features with the free version, but they might be slightly restricted."
+    "message": "A Szabványos licenc néhány olyan szolgáltatást nyújt, amelyeket korábban prémiumként jelölt meg, és megszünteti a nem finanszírozott verzió korlátozásait. Finanszírozza a karbantartást a következő Thunderbird verzióval és az átalakítást egy modern API alapú levelezőbővítmény -architektúrává."
   },
   "thanks-for-installing-intro": {
     "message": "Köszönjük, hogy telepítette a $addonName$ alkalmazást.",
@@ -1706,6 +1771,10 @@
   "toAddress.tooltip": {
     "message": "Alapértelmezett 'Cím' cím új levelek összeállításakor"
   },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "a google által biztosított fordítások"
+  },
   "updates.title": {
     "message": "Frissítések"
   },
@@ -1725,7 +1794,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} A gyorsmappákat kompatibilisvé tette a Thunderbird 91-gyel. {L2} {L1} Javított a sötét és harmadik felek témáinak támogatása, mind az opciók képernyőn, mind a Navigációs eszköztáron. {L2} {L1} Az [újdonságok] gomb jobb láthatósága nem szabványos QuickFolders téma {L2} {L1} Javítva egy probléma, amikor az összes kategória megjelent az újraindítás vagy a bővítmény frissítésekor. {L2}"
+    "message": "{L1} A gyorsmappákat kompatibilisvé tette a Thunderbird 91-gyel. {L2} {L1} Javított a sötét és harmadik felek témáinak támogatása, mind az opciók képernyőn, mind a Navigációs eszköztáron. {L2} {L1} Az [újdonságok] gomb jobb láthatósága nem szabványos QuickFolders téma {L2} {L1} Javítva: Néha a munkamenet alaphelyzetbe állt újraindításkor vagy más kiegészítők vagy frissítések telepítése után, így minden kategória megjelenik. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

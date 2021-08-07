@@ -88,6 +88,30 @@
     "message": "Kiitos, että lisenssit äskettäin tai olet lahjoittanut. Koska olet auttanut todistamaan tämän lisäosan tulevaisuudessa, voit yksinkertaisesti sulkea tämän ikkunan.",
     "description": "Shown if license expires more than a year from now"
   },  
+  "license_restriced.std": {
+    "message": "Vakiolisenssi - rajoitettu Pro -toiminto. Lue lisää…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Lisensoimaton versio - rajoitettu toiminto. Lue lisää…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders tarvitsee Pro -lisenssin yli $maxTabs$ välilehtien tukemiseen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders tarvitsee lisenssin, joka tukee yli $maxTabs$ välilehteä.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
   "mozillas-basic-platform" : {
     "message" : "Mozilla tarjoaa vain perusalustan ohjelmistojemme toimittamiseksi sinulle, loppukäyttäjille. Jos meidän on pyydettävä käyttäjiltämme maksua tai tukea, emme voi tehdä tätä osoitteesta addons.thunderbird.net - se ei ole '' sovelluskauppa '', jossa on sisäänrakennetut paywallit tai lisenssien hallinta, kuten iTunes tai Google Play."
   } ,  
@@ -206,7 +230,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message" : "{L1} Tehneet pikakansiot yhteensopiviksi Thunderbird 91: n kanssa. {L2} {L1} Parannettu tummien ja kolmansien osapuolten teemojen tukea sekä asetusnäytössä että navigointityökalurivillä. {L2} {L1} Parannettu [mitä uutta] -painikkeen näkyvyys muilla kuin -standardin mukainen QuickFolders-teema {L2} {L1} Korjattu ongelma, jossa kaikki luokat näkyivät uudelleenkäynnistys- tai lisäosapäivityksissä. {L2}"
+    "message" : "{L1} Tehneet pikakansiot yhteensopiviksi Thunderbird 91: n kanssa. {L2} {L1} Parannettu tummien ja kolmansien osapuolten teemojen tukea sekä asetusnäytössä että navigointityökalurivillä. {L2} {L1} Parannettu [mitä uutta] -painikkeen näkyvyys muilla kuin -standardin mukainen QuickFolders-teema {L2} {L1} Korjattu: Joskus istunto nollautui uudelleenkäynnistyksen yhteydessä tai muiden lisäosien tai päivitysten asentamisen jälkeen, joten kaikki luokat näytettiin. {L2}"
   },
   "window-title": {
     "message": "Tervetuloa osoitteeseen $addonName$",

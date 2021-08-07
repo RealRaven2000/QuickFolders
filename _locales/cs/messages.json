@@ -85,6 +85,42 @@
     "message": "Děkujeme, že jste nedávno prodloužili licenci nebo jste darovali. Jelikož jste pomohli doložit tento doplněk do budoucna, můžete toto okno jednoduše zavřít.",
     "description": "Shown if license expires more than a year from now"
   },
+  "licenseComparison" : {
+    "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Nový licenční systém"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders nabízí dvě licence, Standard a Pro; jsou nezbytné k udržení kroku se změnami na platformě Thunderbird a k financování inovací a oprav doplňku. Jelikož jsou v ročním cyklu zaváděny zásadní změny, bude licence také platná po dobu 1 roku."
+  },  
+  "licenseWindow.title": {
+    "message": "Licence QuickFolders Pro"
+  },
+  "license_restriced.unpaid": {
+    "message": "Nelicencovaná verze - omezená funkce. Zjistit více…"
+  },
+  "license_restriced.std": {
+    "message": "Standardní licence - omezená funkce Pro. Zjistit více…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders potřebuje licenci Pro na podporu více než $maxTabs$ karet.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders potřebuje licenci k podpoře více než $maxTabs$ karet.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },  
   "mozillas-basic-platform": {
     "message" : "Mozilla poskytuje pouze základní platformu pro doručování našeho softwaru vám, koncovým uživatelům. Pokud potřebujeme požádat naše uživatele o platbu nebo podporu, nemůžeme to udělat z addons.thunderbird.net - nejedná se o „obchod s aplikacemi“ s vestavěnými paywally nebo správou licencí, jako je iTunes nebo Google Play."
   },
@@ -203,7 +239,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1} Vyrobeno QuickFolders kompatibilní s Thunderbirdem 91. {L2} {L1} Vylepšená podpora tmavých motivů a motivů třetích stran, a to jak na obrazovce možností, tak na panelu nástrojů Navigace. {L2} {L1} Vylepšená viditelnost tlačítka [co je nového] s -standardní téma QuickFolders {L2} {L1} Opraven problém, kdy se všechny kategorie zobrazovaly při restartu nebo doplňkových aktualizacích. {L2}"
+    "message" : "{L1} Vyrobeno QuickFolders kompatibilní s Thunderbirdem 91. {L2} {L1} Vylepšená podpora tmavých motivů a motivů třetích stran, a to jak na obrazovce možností, tak na panelu nástrojů Navigace. {L2} {L1} Vylepšená viditelnost tlačítka [co je nového] s -standardní téma QuickFolders {L2} {L1} Opraveno: Někdy byla relace resetována při restartu nebo po instalaci dalších doplňků nebo aktualizací, takže se zobrazily všechny kategorie.{L2}"
   },
   "window-title": {
     "message": "Vítejte v $addonName$",

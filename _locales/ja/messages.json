@@ -219,11 +219,38 @@
   "licenseComparison" : {
     "message": "異なるバージョンの機能を比較するには、{linkStart}このリストを読んでください{linkEnd}。"
   },  
+  "licenseHead": {
+    "message": "新しいライセンスシステム"
+  },  
   "licenseTypes": {
     "message": "QuickFoldersは、StandardとProの2つのライセンスを提供します。 これらは、Thunderbirdプラットフォームの変更に対応し、アドオンのイノベーションと修理に資金を提供するために必要です。 重大な変更は年次サイクルで展開されるため、ライセンスも1年間有効です。"
   },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro ライセンス"
+  },
+  "license_restriced.std": {
+    "message": "標準ライセンス-制限付きのPro機能。 詳細はこちら…"
+  },
+  "license_restriced.unpaid": {
+    "message": "ライセンスのないバージョン-制限された機能。 詳細はこちら…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFoldersには、$maxTabs$を超えるタブをサポートするためのProライセンスが必要です。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFoldersには、$maxTabs$を超えるタブをサポートするためのライセンスが必要です。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla は、エンドユーザーであるあなたにソフトウェアを提供するための基本的なプラットフォームのみを提供します。ユーザーに支払いやサポートを依頼する必要がある場合、addons.thunderbird.net からこれを行うことはできません。これは、アプリ内決済機能や、iTunes や Google Play のようなライセンス管理が組み込まれた「アプリストア」ではありません。"
@@ -1767,7 +1794,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} QuickFoldersをThunderbird91と互換性のあるものにしました。{L2} {L1}オプション画面とナビゲーションツールバーの両方で、ダークテーマとサードパーティテーマのサポートを改善しました。{L2} {L1} [新機能]ボタンの表示を改善しました。 -標準のQuickFoldersテーマ{L2} {L1}再起動時またはアドオンの更新時にすべてのカテゴリが表示される問題を修正しました。{L2}"
+    "message": "{L1} QuickFoldersをThunderbird91と互換性のあるものにしました。{L2} {L1}オプション画面とナビゲーションツールバーの両方で、ダークテーマとサードパーティテーマのサポートを改善しました。{L2} {L1} [新機能]ボタンの表示を改善しました。 -標準のQuickFoldersテーマ{L2} {L1}修正済み：再起動時、または他のアドオンやアップデートのインストール後にセッションがリセットされ、すべてのカテゴリが表示されることがありました。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -219,11 +219,38 @@
   "licenseComparison" : {
     "message": "Para comparar os recursos das diferentes versões, {linkStart}leia esta lista{linkEnd}."
   },  
+  "licenseHead": {
+    "message": "Novo Sistema de Licenciamento"
+  },  
   "licenseTypes": {
     "message": "QuickFolders oferece duas licenças, Standard e Pro; eles são necessários para acompanhar as mudanças na plataforma Thunderbird e para financiar inovações e reparos do add-on. Como as mudanças importantes são lançadas em um ciclo anual, a licença também será válida por 1 ano."
   },  
   "licenseWindow.title": {
     "message": "Licença do QuickFolders Pro"
+  },
+  "license_restriced.std": {
+    "message": "Licença padrão - função Pro restrita. Descubra mais…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Versão não licenciada - função restrita. Descubra mais…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders precisa de uma licença Pro para suportar mais de $maxTabs$ tabs.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders precisa de uma licença para suportar mais de $maxTabs$ tabs.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "A Mozilla fornece apenas uma plataforma básica para entregar nosso software a vocês, usuários finais. Se precisarmos pedir aos nossos usuários pagamento ou suporte, não podemos fazer isso em addons.thunderbird.net - não é uma 'loja de aplicativos' com paywalls integrados ou gerenciamento de licenças como iTunes ou Google Play."
@@ -1767,7 +1794,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Tornou QuickFolders compatíveis com Thunderbird 91. {L2} {L1} Suporte aprimorado para temas escuros e de terceiros, tanto na tela de opções quanto na barra de ferramentas de navegação. {L2} {L1} Visibilidade aprimorada do botão [novidades] com não - tema QuickFolders padrão {L2} {L1} Corrigido um problema em que todas as categorias eram mostradas na reinicialização ou atualizações de complementos. {L2}"
+    "message": "{L1} Tornou QuickFolders compatíveis com Thunderbird 91. {L2} {L1} Suporte aprimorado para temas escuros e de terceiros, tanto na tela de opções quanto na barra de ferramentas de navegação. {L2} {L1} Visibilidade aprimorada do botão [novidades] com não - tema QuickFolders padrão {L2} {L1} Corrigido: às vezes, a sessão era redefinida ao reiniciar ou após a instalação de outros complementos ou atualizações, para que todas as categorias fossem exibidas. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -219,11 +219,38 @@
   "licenseComparison" : {
     "message": "Um die Funktionen der verschiedenen Versionen zu vergleichen, {linkStart}lesen Sie diese Liste{linkEnd}."
   },  
+  "licenseHead": {
+    "message": "Neues Lizenzsystem"
+  },  
   "licenseTypes": {
     "message": "QuickFolders  bietet zwei Lizenztypen an, Standard und Pro; diese sind notwendig um mit den Änderungen in der Thunderbird Plattform Schritt zu halten und nötige Reparaturen und Innovationen zu finanzieren. Da funktionsunterbrechende Änderungen jährlich integriert werden, ist auch die Lizenz für 1 volles Jahr gültig."
   },
   "licenseWindow.title": {
     "message": "QuickFolders Pro Lizenz"
+  },
+  "license_restriced.unpaid": {
+    "message": "Nicht lizenzierte Version - eingeschränkte Funktion. Mehr Info…"
+  },
+  "license_restriced.std": {
+    "message": "Standardlizenz - eingeschränkte Pro-Funktion. Mehr Info…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders benötigt eine Pro-Lizenz, um mehr als $maxTabs$ Registerkarten zu unterstützen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders benötigt eine Lizenz, um mehr als $maxTabs$ Registerkarten zu unterstützen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla bietet nur eine Basis-Plattform, um unsere Software für Sie als Endbenutzer weiterzuleiten. Wenn wir unsere Benutzer um Zahlung oder Support bitten müssen, können wir dies nicht über addons.thunderbird.net tun - es handelt sich nicht um einen App Store mit integrierten Paywalls oder Lizenzverwaltung wie iTunes oder Google Play."
@@ -1685,7 +1712,7 @@
     "message": "22. August"    
   },
   "special-offer-head": {
-    "message": "Machen Sie QuickFolders zukunftssicher!"
+    "message": "Machen Sie QuickFolders nachhaltig"
   },
   "special-offer-intro": {
     "message": "{boldStart} Liebe(r) {name} {boldEnd}, wenn Sie noch keine Lizenz haben, sollten Sie QuickFolders für die Zukunft unterstützen. Weitere große Änderungen an Thunderbird kommen und ich brauche {boldStart}Ihre Hilfe{boldEnd}, um Schritt zu halten!"
@@ -1767,7 +1794,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}QuickFolders mit Thunderbird 91 kompatibel gemacht.{L2}{L1}Verbesserte Unterstützung für dunkle und Drittanbieter-Themen, sowohl im Optionsbildschirm als auch in der Navigationssymbolleiste.{L2}{L1}Verbesserte Sichtbarkeit der Schaltfläche [Neuigkeiten] mit nicht-standard QuickFolders Theme{L2}{L1}Ein Problem wurde behoben, bei dem Kategorien manchmal zurückgesetzt wurden, so das alle beim Neustart oder Add-On-Updates anzuzeigen.{L2}"
+    "message": "{L1}QuickFolders mit Thunderbird 91 kompatibel gemacht.{L2}{L1}Verbesserte Unterstützung für dunkle und Drittanbieter-Themen, sowohl im Optionsbildschirm als auch in der Navigationssymbolleiste.{L2}{L1}Verbesserte Sichtbarkeit der Schaltfläche [Neuigkeiten] mit nicht-standard QuickFolders Theme{L2}{L1}Behoben: Manchmal wurden bei Neustart oder nach Installation anderer Addons oder updates die Session zurückgesetzt, so das alle Kategorien angezeigt wurden.{L2}"
   },
   "window-title": {
     "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",

@@ -7,7 +7,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Ara esteu executant la versió {boldStart} $addonVer$ {boldEnd} a Thunderbird $appVer$.",
+    "message": "Ara esteu executant la {boldStart} versió $addonVer$ {boldEnd} a Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -18,6 +18,9 @@
         "example": "78.0b4"
       }
     }
+  },
+  "addon-authors-struggle": {
+    "message": "Per continuar sent útils, els desenvolupadors de complements ara han de finançar els recursos necessaris per corregir i reescriure perquè els nostres usuaris es puguin beneficiar de la funcionalitat que presentem a la taula."
   },
   "btn-extend-license": {
     "message": "Vull ampliar la llicència un any"
@@ -88,6 +91,9 @@
   "chkSetMailsUnread.tooltip": {
     "message": "Si moveu el correu a aquesta carpeta, estarà configurat com a no llegit."
   },
+  "cost-of-independence": {
+    "message": "El desenvolupament de programari costa temps i diners: a diferència de moltes aplicacions de plataformes, els complements no són escrits per grans empreses, ni Mozilla els patrocina de cap manera."
+  },
   "cssBackground": {
     "message": "Background"
   },
@@ -115,6 +121,12 @@
   "domainLicense.validate": {
     "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
   },
+  "donate": {
+    "message": "Ajudeu amb una donació única."
+  },
+  "donate-heading": {
+    "message": "Ajuda donant!"
+  },
   "email.label": {
     "message": "E-mail:"
   },
@@ -123,6 +135,17 @@
   },
   "enterLicenseKey.tooltip": {
     "message": "Entreu la Clau de Llicència que us hem enviat per e-mail."
+  },
+  "extend-your-license": {
+    "message": "Penseu en ampliar la llicència un any."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Marqueu les vostres carpetes de correu preferides al Thunderbird."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
     "message": "Marqueu vostres carpetes de correu preferides al Thunderbird."
@@ -151,6 +174,16 @@
   "grpTabBehavior": {
     "message": "Comportament de pestanyes avançades"
   },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ s'ha instal·lat correctament",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "heading-updated": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ s'ha actualitzat correctament",
@@ -177,11 +210,54 @@
   "licenseComparison" : {
     "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEdin}."
   },  
+  "licenseHead": {
+    "message": "Nou sistema de llicències"
+  },  
   "licenseTypes": {
     "message": "QuickFolders ofereix dues llicències, Standard i Pro; són necessaris per estar al dia dels canvis a la plataforma Thunderbird i per finançar innovacions i reparacions del complement. Com que els canvis de ruptura es desenvolupen en un cicle anual, la llicència també serà vàlida durant un any."
   },  
   "licenseWindow.title": {
     "message": "Llicència QuickFolders Pro"
+  },
+  "license_restriced.std": {
+    "message": "Funció Pro amb llicència estàndard restringida. Descobrir més…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Versió sense llicència: funció restringida. Descobrir més…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders necessita una llicència Pro per admetre més de $maxTabs$ pestanyes.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders necessita una llicència per admetre més de $maxTabs$ pestanyes.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "mozillas-basic-platform": {
+    "message": "Mozilla només proporciona una plataforma bàsica per lliurar-vos el nostre programari als vostres usuaris finals. Si hem de demanar pagament o assistència als nostres usuaris, no podem fer-ho des de addons.thunderbird.net: no és una \"botiga d'aplicacions\" amb taulers de pagament integrats o gestió de llicències com iTunes o Google Play."
+  },
+  "notificationTitle": {
+    "description": "Title of the click notification.",
+    "message": "Click notification"
+  },
+  "ongoing-work": {
+    "message": "Les modificacions per convertir $addonName$ al nou model de programació van trigar setmanes i van ser costoses. Hi ha molts més canvis per a la propera versió del 2022. Amb un complement complex com aquest, es fa inevitable un treball car. Ajudeu-nos amb això.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "on-permissions": {
     "message": "IMPORTANT: és possible que les actualitzacions automàtiques no us demanin la instal·lació sempre que una nova versió del complement requereixi permisos addicionals. En lloc d'això, veureu aquesta icona d'advertència al botó del menú principal del Thunderbird, al qual heu de fer clic per completar l'actualització. Cal sol·licitar permisos per migrar al nou sistema d’extensions. En cas contrari, no podem oferir cap correcció d’errors / noves funcions."
@@ -1632,6 +1708,24 @@
   "special-offer-intro": {
     "message": "{boldStart} Benvolgut {name} {boldEnd}, si encara no teniu una llicència, penseu en donar suport a QuickFolders per al futur. Hi haurà més canvis importants a Thunderbird i necessito {boldStart} la vostra ajuda {boldEnd} per estar al dia."
   },
+  "support-preference": {
+    "message": "Aquesta és la forma preferida de donar suport a $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "quickFilters"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Perquè $addonName$ es mantingui viu i funcional, faci un favor vital:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "testDrive": {
     "message": "Podeu provar les característiques premium amb la versió gratuïta, pero alguna pot estar lleugerament limitada."
   },
@@ -1668,6 +1762,10 @@
   "toAddress.tooltip": {
     "message": "Default To Address when composing new mails"
   },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "traduccions proporcionades per google"
+  },
   "updates.title": {
     "message": "Actualitzacions"
   },
@@ -1687,7 +1785,17 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message" : "{L1} Compatibilitat amb les carpetes ràpides amb Thunderbird 91. {L2} {L1} Millora de la compatibilitat amb temes foscos i de tercers, tant a la pantalla d'opcions com a la barra d'eines de navegació. {L2} {L1} Millora de la visibilitat del botó [novetats] amb -Tema estàndard de les carpetes ràpides {L2} {L1} S'ha solucionat un problema en què es mostraven totes les categories en reiniciar o actualitzar els complements. {L2}"
+    "message" : "{L1}Compatibilitat amb les carpetes ràpides amb Thunderbird 91.{L2} {L1}Millora de la compatibilitat amb temes foscos i de tercers, tant a la pantalla d'opcions com a la barra d'eines de navegació. {L2} {L1}Millora de la visibilitat del botó [novetats] amb -Tema estàndard de les carpetes ràpides {L2} {L1}Corregit: de vegades la sessió es restablia quan es reiniciava o després d’instal·lar altres complements o actualitzacions, de manera que es mostraven totes les categories.{L2}"
+  },
+  "window-title": {
+    "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Benvingut a $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "windowTitle": {
     "message": "Propietats avançades"

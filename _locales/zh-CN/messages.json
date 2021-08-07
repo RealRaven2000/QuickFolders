@@ -219,11 +219,38 @@
   "licenseComparison" : {
     "message": "要比较不同版本的功能，请{linkStart}阅读此列表{linkEnd}。"
   },  
+  "licenseHead": {
+    "message": "新的许可制度"
+  },  
   "licenseTypes": {
     "message": "QuickFolders 提供两种许可证，Standard 和 Pro； 这些对于跟上 Thunderbird 平台的变化以及为插件的创新和修复提供资金是必要的。 由于重大更改以年度为周期推出，因此许可证的有效期也为 1 年。"
   },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro 授权"
+  },
+  "license_restriced.std": {
+    "message": "标准许可证 - 受限 Pro 功能。 了解更多…"
+  },
+  "license_restriced.unpaid": {
+    "message": "未授权版本 - 受限功能。 了解更多…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders 需要 Pro 许可证才能支持多个 $maxTabs$ 选项卡。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders 需要一个许可证来支持多个 $maxTabs$ 选项卡。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla仅提供了一个向您（最终用户）交付我们软件的基本平台。 如果我们需要向我们的用户付款或提供支持，则不能通过addons.thunderbird.net进行操作-这不是内置付费界面或许可证管理（如iTunes或Google Play）的“应用商店”。"
@@ -1767,7 +1794,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}使 QuickFolders 与 Thunderbird 91 兼容。{L2}{L1}在选项屏幕和导航工具栏中改进了对黑暗和 3rd 方主题的支持。{L2}{L1}改进了 [what's new] 按钮与非 -标准 QuickFolders 主题{L2}{L1}修复了在重新启动或附加组件更新时显示所有类别的问题。{L2}"
+    "message": "{L1}使 QuickFolders 与 Thunderbird 91 兼容。{L2}{L1}在选项屏幕和导航工具栏中改进了对黑暗和 3rd 方主题的支持。{L2}{L1}改进了 [what's new] 按钮与非 -标准 QuickFolders 主题{L2}{L1}已修复：有时在重新启动或安装其他附加组件或更新后会重置会话，以便显示所有类别。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

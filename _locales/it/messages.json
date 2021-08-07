@@ -219,11 +219,38 @@
   "licenseComparison" : {
     "message": "Per confrontare le caratteristiche delle diverse versioni, {linkStart}leggi questo elenco{linkEnd}."
   },  
+  "licenseHead": {
+    "message": "Nuovo sistema di licenze"
+  },  
   "licenseTypes": {
     "message": "QuickFolders offre due licenze, Standard e Pro; questi sono necessari per stare al passo con i cambiamenti nella piattaforma Thunderbird e per finanziare Innovazioni e riparazioni dell'Add-on. Poiché le modifiche sostanziali vengono implementate in un ciclo annuale, anche la licenza sarà valida per 1 anno."
   },  
   "licenseWindow.title": {
     "message": "Licenza di QuickFolders Pro"
+  },
+  "license_restriced.std": {
+    "message": "Licenza standard - funzione Pro limitata. Scopri di più…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Versione senza licenza - funzione limitata. Scopri di più…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders necessita di una licenza Pro per supportare più di schede $maxTabs$.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders necessita di una licenza per supportare più di schede $maxTabs$.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla fornisce solo una piattaforma di base per fornire il nostro software a voi, utenti finali. Se abbiamo bisogno di chiedere ai nostri utenti il pagamento o il supporto non possiamo farlo da addons.thunderbird.net - non è un 'app store' con paywall integrati o gestione delle licenze come iTunes o Google Play."
@@ -1767,7 +1794,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Cartelle rapide rese compatibili con Thunderbird 91.{L2}{L1}Supporto migliorato per temi scuri e di terze parti, sia nella schermata delle opzioni che per la barra degli strumenti di navigazione.{L2}{L1}Visibilità migliorata del pulsante [novità] con non -standard QuickFolders theme{L2}{L1}Risolto un problema per cui tutte le categorie venivano mostrate al riavvio o agli aggiornamenti dei componenti aggiuntivi.{L2}"
+    "message": "{L1}Cartelle rapide rese compatibili con Thunderbird 91.{L2}{L1}Supporto migliorato per temi scuri e di terze parti, sia nella schermata delle opzioni che per la barra degli strumenti di navigazione.{L2}{L1}Visibilità migliorata del pulsante [novità] con non -standard QuickFolders theme{L2}{L1}Risolto: a volte la sessione veniva ripristinata al riavvio o dopo l'installazione di altri componenti aggiuntivi o aggiornamenti, in modo da visualizzare tutte le categorie.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

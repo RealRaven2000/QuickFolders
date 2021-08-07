@@ -219,11 +219,38 @@
   "licenseComparison" : {
     "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
   },  
+  "licenseHead": {
+    "message": "Nytt licenssystem"
+  },  
   "licenseTypes": {
     "message": "QuickFolders erbjuder två licenser, Standard och Pro; dessa är nödvändiga för att hålla jämna steg med förändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom brytande förändringar rullas ut under en årlig cykel gäller licensen också i ett år."
   },  
   "licenseWindow.title": {
     "message": "Licens för QuickFolders Pro"
+  },
+  "license_restriced.std": {
+    "message": "Standardlicens - begränsad Pro -funktion. Få reda på mer…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Olicensierad version - begränsad funktion. Få reda på mer…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders behöver en Pro -licens för att stödja mer än $maxTabs$ flikar.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders behöver en licens för att stödja mer än $maxTabs$ flikar.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla tillhandahåller bara en grundläggande plattform för att leverera vår programvara till dig, slutanvändarna. Om vi behöver be våra användare om betalning eller support kan vi inte göra detta från addons.thunderbird.net - det är inte en 'app store' med inbyggda betalväggar eller licenshantering som iTunes eller google play."
@@ -1767,7 +1794,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Gjorde QuickFolders kompatibla med Thunderbird 91. {L2} {L1} Förbättrat stöd för mörka teman och tredjeparts teman, både i alternativskärmen och för navigationsverktygsfältet. {L2} {L1} Förbättrad synlighet för [vad som är nytt] -knappen med icke -standard QuickFolders-tema {L2} {L1} Åtgärdade ett problem där alla kategorier visades vid omstart eller tilläggsuppdateringar. {L2}"
+    "message": "{L1} Gjorde QuickFolders kompatibla med Thunderbird 91. {L2} {L1} Förbättrat stöd för mörka teman och tredjeparts teman, både i alternativskärmen och för navigationsverktygsfältet. {L2} {L1} Förbättrad synlighet för [vad som är nytt] -knappen med icke -standard QuickFolders-tema {L2} {L1} Fast: Ibland återställdes sessionen vid omstart eller efter installation av andra tillägg eller uppdateringar, så att alla kategorier visades. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

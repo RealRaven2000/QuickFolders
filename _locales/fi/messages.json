@@ -55,16 +55,6 @@
   "qfMoveFolderOrNewTab": {
     "message": "Vedä kansiot tyhjälle alueelle työkalupalkissa - Jos haluat siirtää kansiota, pidä SHIFT-näppäintä alhaalla ja vedä välilehteen."
   },
-  "heading-updated": {
-    "message": "$addonName$ päivitetty onnistuneesti",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },  
   "heading-installed": {
     "message": "Asennus $addonName$ onnistui",
     "description": "page heading. first placeholder will be replaced with Add-on name",
@@ -75,6 +65,19 @@
       }    
     }
   },  
+  "heading-updated": {
+    "message": "$addonName$ päivitetty onnistuneesti",
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "placeholders": {
+      "addonName" : {
+        "content" : "$1", 
+        "example" : "QuickFolders"
+      }    
+    }
+  },  
+  "intro": {
+    "message": "QuickFolders Pron vuotuinen lisenssi tarjoaa sinulle kaikki premium -ominaisuudet vuodeksi. Sen avulla voimme myös tukea ja kasvattaa tuotetta entisestään ja muuttaa sen vieläkin mahtavammaksi."
+  },
   "label-remind-me" : {
     "message": "Muistuta minua uudelleen $countDays$ päivän kuluttua.",
     "placeholders": {
@@ -87,6 +90,18 @@
   "license-is-extended" : {
     "message": "Kiitos, että lisenssit äskettäin tai olet lahjoittanut. Koska olet auttanut todistamaan tämän lisäosan tulevaisuudessa, voit yksinkertaisesti sulkea tämän ikkunan.",
     "description": "Shown if license expires more than a year from now"
+  },
+  "licenseComparison" : {
+    "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Uusi lisenssijärjestelmä"
+  },  
+  "licenseTypes": {
+    "message": "QuickFolders tarjoaa kaksi lisenssiä, Standard ja Pro; nämä ovat välttämättömiä Thunderbird-alustan muutosten seuraamiseksi ja lisäosan innovaatioiden ja korjausten rahoittamiseksi. Koska muutokset, jotka mahdollisesti rikkovat laajennustoiminnon, otetaan käyttöön vuosittain, lisenssi on myös voimassa yhden vuoden."
+  },  
+  "licenseWindow.title": {
+    "message": "QuickFolders Pro -lisenssi"
   },  
   "license_restriced.std": {
     "message": "Vakiolisenssi - rajoitettu Pro -toiminto. Lue lisää…"

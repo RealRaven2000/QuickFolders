@@ -253,7 +253,7 @@ QuickFolders.bookmarks = {
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences,
           countEntries = this.Entries.length,
-          isStandardLicense = (util.licenseInfo.keyType==2) ? true : false;
+          isStandardLicense = util.hasStandardLicense();
     
     let MAX_BOOKMARKS = isStandardLicense ? 10 : 5;
           

@@ -12,6 +12,8 @@ var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
 QuickFolders.Model = {
   MAX_UNPAID_TABS: 10,
   MAX_STANDARD_TABS: 25,
+  MAX_UNPAID_ICONS: 5,
+  MAX_STANDARD_ICONS: 12,
   selectedFolders: [],
   categoriesList: [],
   paletteUpdated: false,
@@ -281,8 +283,11 @@ QuickFolders.Model = {
     if(entry) {
       // add class "spaced" with .spaced { margin-left: 2em;}
       if (isSpace) {
+        if (!QuickFolders.Util.hasValidLicense() || QuickFolders.Util.hasStandardLicense()) {
+          QuickFolders.Util.popupRestrictedFeature("tabSeparator");
+          return;
+        }
         entry.separatorBefore = true;
-        QuickFolders.Util.popupRestrictedFeature("tabSeparator");
       }
       else
         delete entry.separatorBefore;
@@ -294,8 +299,11 @@ QuickFolders.Model = {
     // insert before: <br xmlns="http://www.w3.org/1999/xhtml" />
     if(entry) {
       if (isBreak) {
+        if (!QuickFolders.Util.hasValidLicense() || QuickFolders.Util.hasStandardLicense()) {
+          QuickFolders.Util.popupRestrictedFeature("lineBreaks");
+          return;
+        }
         entry.breakBefore = true;
-        QuickFolders.Util.popupRestrictedFeature("lineBreaks");
       }
       else
         delete entry.breakBefore;

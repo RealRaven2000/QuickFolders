@@ -548,6 +548,7 @@ END LICENSE BLOCK */
     ## - Removed deprecated fixIterators
     ## - [issue 189] Fixed: No longer able to move a message by dropping it on a quick folder tab
                      the function copyMessages was renamed in Tb91
+    ## - [issue 190] Fixed dragging the envelope from current folder toolbar (Navigation bar)
     ## TO DO: review qf.notification.premium.text (remove "using it -permanently-") 
 
 
@@ -1156,7 +1157,7 @@ var QuickFolders = {
               msg = QuickFolders.Util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
               warnLevel = 2;
             }
-            else if (QuickFolders.Util.licenseInfo.keyType==2) {
+            else if (QuickFolders.Util.hasStandardLicense()) {
               maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
               msg = QuickFolders.Util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
               warnLevel = 0;
@@ -1982,7 +1983,7 @@ var QuickFolders = {
               maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
               msg = util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
             }
-            else if (util.licenseInfo.keyType==2) {
+            else if (util.hasStandardLicense()) {
               maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
               msg = util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
             }

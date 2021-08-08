@@ -1,0 +1,11 @@
+/* Thunderbird 91 specific rules (main windows) */
+
+/* advanced-tab-props.xhtml */
+#chkIgnoreCounts {
+  margin-left: 1em;
+}
+
+
+#advancedGrid html|input[type="text"] {
+  min-height: 20px;
+}

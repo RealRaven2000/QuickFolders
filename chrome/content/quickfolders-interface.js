@@ -445,8 +445,10 @@ QuickFolders.Interface = {
 		let currentFolder = QuickFolders.Util.CurrentFolder,
 				folder;
 
-		if (!util.hasValidLicense())
-			util.popupRestrictedFeature("skipUnreadFolder");
+		if (!util.hasValidLicense()) {
+      let txt = util.getBundleString("qf.notification.premium.shortcut");
+			util.popupRestrictedFeature("skipUnreadFolder",txt,2);
+    }
 
 		if (prefs.isDebugOption("navigation")) debugger;
 		folder = util.getNextUnreadFolder(currentFolder);
@@ -2501,11 +2503,25 @@ QuickFolders.Interface = {
           Cc = Components.classes,
           nsIFilePicker = Ci.nsIFilePicker,
 					NSIFILE = Ci.nsILocalFile || Ci.nsIFile,
-          MAX_ICONS = 12;
+          util = QuickFolders.Util,
+          model = QuickFolders.Model,
+          hasLicense = util.hasValidLicense();
+    
+    let maximumIcons = model.MAX_UNPAID_ICONS,
+        isRestricted = !hasLicense;
+        
+    if (hasLicense) {
+      if (util.hasStandardLicense()) {
+        maximumIcons = model.MAX_STANDARD_ICONS;
+        isRestricted = true;
+      }
+      else
+        maximumIcons = 10000;
+    }
+      
+          
 		let folderButton, entry,
 		    folders = null,
-        util = QuickFolders.Util,
-        model = QuickFolders.Model,
         QI = QuickFolders.Interface;
     util.logDebugOptional("interface", "QuickFolders.Interface.onSelectIcon()");
 		if (element.id == "context-quickFoldersIcon" // style a folder tree icon
@@ -2525,11 +2541,11 @@ QuickFolders.Interface = {
       if (entries[i].icon)
         countIcons++;
     }
-    if (!util.hasValidLicense() && countIcons >= MAX_ICONS){
-      let text =util.getBundleString("qf.notification.premium.tabIcons");
-      util.popupRestrictedFeature("tabIcons", text.replace("{1}", countIcons).replace("{2}", MAX_ICONS));
+    if (isRestricted && countIcons >= maximumIcons){
+      let text = util.getBundleString("qf.notification.premium.tabIcons",[countIcons, model.MAX_UNPAID_ICONS, model.MAX_STANDARD_ICONS]);
+      util.popupRestrictedFeature("tabIcons", text);
       // early exit if no license key and maximum icon number is reached
-      if (countIcons>=MAX_ICONS)
+      if (countIcons>=maximumIcons)
         return;
     }
 
@@ -2661,7 +2677,7 @@ QuickFolders.Interface = {
     // the window may correct its x position if cropped by screen's right edge
     let win = window.openDialog(
       "chrome://quickfolders/content/quickfolders-advanced-tab-props.xhtml",
-      "quickfilters-advanced","alwaysRaised, titlebar=no,chrome,close=no,top=" + y +",left=" + x,
+      "quickfolders-advanced","alwaysRaised, titlebar=no,chrome,close=no,top=" + y +",left=" + x,
       folder, entry); //
     win.focus();
 		evt.stopPropagation();
@@ -5145,7 +5161,7 @@ QuickFolders.Interface = {
       QI.FindFolderHelp.collapsed = !show;
 			if (show) {
 				if (actionType) {
-					util.popupRestrictedFeature(actionType); // Pro Version Notification
+					util.popupRestrictedFeature(actionType,util.getBundleString("qf.notification.premium.shortcut"),2); // Licensed Version Notification
           let isMove = (actionType == "quickMove");
           QI.toggleMoveModeSearchBox(isMove);
           if (isMove && QuickMove.suspended) {

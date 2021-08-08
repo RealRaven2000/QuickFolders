@@ -313,6 +313,11 @@ QuickFolders.Util = {
     return QuickFolders.Util.licenseInfo.status == "Valid";
   },
   
+  hasStandardLicense: function() {
+    if (!QuickFolders.Util.licenseInfo) return false;
+    return (QuickFolders.Util.licenseInfo.keyType==2);
+  },
+  
   /*
    * popupRestrictedFeature() 
    * show a notification in main window with feature specific text and link to registration screen
@@ -360,12 +365,16 @@ QuickFolders.Util = {
     if (text)
       theText = theText + '  ' + text;
     
+    
     let regBtn = util.getBundleString("qf.notification.premium.btn.getLicense"),
         hotKey = util.getBundleString("qf.notification.premium.btn.hotKey"),
         nbox_buttons;
     // overwrite for renewal
     if (QuickFolders.Util.licenseInfo.isExpired)
-        regBtn = util.getBundleString("qf.notification.premium.btn.renewLicense");
+      regBtn = util.getBundleString("qf.notification.premium.btn.renewLicense");
+    else if (licenseInfo.keyType == 2) { // overwrite for upgrade
+      regBtn = util.getBundleString("qf.notification.premium.btn.upgrade");
+    }
     if (notifyBox) {
       let notificationKey = "quickfolders-proFeature";
       util.logDebugOptional("premium", "configure buttons…");
@@ -399,12 +408,23 @@ QuickFolders.Util = {
           
       // setting img was removed in Tb91  
       if (newNotification.messageImage.tagName == "span") {
+        // style needs to go into shadowroot
+        let linkEl = document.createElement("link");
+        linkEl.setAttribute("rel", "stylesheet");
+        linkEl.setAttribute("href", "chrome://quickfolders-skins/content/qf-notifications.css");
+        newNotification.shadowRoot.insertBefore(linkEl, newNotification.shadowRoot.firstChild.nextSibling); 
+        
         let container = newNotification.shadowRoot.querySelector(".container");
         if (container) {
           let im = document.createElement("img");
           im.setAttribute("src", imgSrc);
-          container.insertBefore(im, newNotification.shadowRoot.querySelector(".icon"));
+          im.classList.add("messageImage");
+          // replace the standard "warning" icon:
+          let standardIcon = newNotification.shadowRoot.querySelector(".icon");
+          container.insertBefore(im, standardIcon);
+          container.removeChild(standardIcon);
         }
+        
       }          
     }
     else {
@@ -1011,13 +1031,12 @@ QuickFolders.Util = {
     if (aEvent.originalTarget.localName != "toolbarbutton")
       return;
     
-    let messages = this.getSelectedMsgUris();
-    if (!messages) return;
+    let messageUris = this.getSelectedMsgUris();
+    if (!messageUris) return;
     let ios = Components.classes["@mozilla.org/network/io-service;1"]
               .getService(Components.interfaces.nsIIOService),
         newUF = (typeof Set !== 'undefined'),
         fileNames = newUF ? new Set() : [],
-        msgUrls = {},
         uniqueFileName = '',
         count = 0;
 
@@ -1025,10 +1044,21 @@ QuickFolders.Util = {
     // currently work, pending core fixes for
     // multiple-drop-on-desktop support. (bug 513464)
     let summary = '';
-    for (let i in messages) {
-      let message = messages[i];
+    for (let i in messageUris) {
+      let message = messageUris[i];
+      let msgUrl;
       // copy message URLs:
-      messenger.messageServiceFromURI(message).GetUrlForUri(message, msgUrls, null);
+      let msgService = messenger.messageServiceFromURI(message),
+          spec;
+      if (msgService.getUrlForUri) { // Tb91
+        msgUrl = msgService.getUrlForUri(message);
+        spec = msgUrl.spec;
+      }
+      else { // Tb78
+        msgUrl = {};
+        msgService.GetUrlForUri(message, msgUrl, null);
+        spec = msgUrl.value.spec;
+      }
       aEvent.dataTransfer.mozSetDataAt("text/x-moz-message", message, i);
       let header = messenger.messageServiceFromURI(message).messageURIToMsgHdr(message),
           subject = header.mime2DecodedSubject;
@@ -1037,9 +1067,9 @@ QuickFolders.Util = {
         this.suggestUniqueFileName_Old(subject.substr(0,124), ".eml", fileNames);
       fileNames.add(uniqueFileName);
       try {
-        aEvent.dataTransfer.mozSetDataAt("text/x-moz-url", msgUrls.value.spec, i);
+        aEvent.dataTransfer.mozSetDataAt("text/x-moz-url", spec, i);
         aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise-url", 
-                                         msgUrls.value.spec + "&fileName=" + 
+                                         spec + "&fileName=" + 
                                          uniqueFileName, i);
         aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise", null, i);
         count++;

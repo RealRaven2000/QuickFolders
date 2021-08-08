@@ -18,6 +18,9 @@ function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
   layout.setAttribute("title", "QuickFolderStyles");
   
+  // version specific:
+  WL.injectCSS("chrome://quickfolders-skins/content/qf-current.css");
+  
   let layout1 = WL.injectCSS("chrome://quickfolders/content/quickfolders-palettes.css");
   layout1.setAttribute("title", "QuickFolderPalettes");
   

@@ -1,0 +1,53 @@
+/* rules for a shadowRoot insinde the notification-message[value="quickfolders-proFeature"] */
+/* therefore, no parent selector for the part oustide will work! */
+@keyframes quickFoldersPulse1 {to {box-shadow: 0 0 0 10px rgba(190, 80, 60, 0.1);}}
+.notification-button[accesskey] {
+	-moz-appearance: none;
+  animation: quickFoldersPulse1 2s infinite cubic-bezier(0.66, 0, 0, 1);
+	background-color: rgb(7, 97, 48) !important;
+	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
+	border: 1px solid white;
+	border-radius: 1px;
+	box-shadow: 2px 2px 3px -1px rgba(0, 0, 0, 0.5);
+	color: #FFFFFF;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.notification-button[accesskey] .button-text {
+	color: #FFFFFF;
+}
+
+.notification-button[accesskey]:hover {
+	background: linear-gradient(to bottom, #fedeb2 0%,#f1a233 46%,#eb8c07 57%,#fbba5f 100%) !important;
+	box-shadow: 1px 1px 2px -1px rgba(0, 0, 0, 0.5);
+}
+
+.messageImage {
+	/* proFeature.png */
+	min-width: 72px !important;
+	width: 72px !important;
+	min-height: 32px !important;
+	height: 32px !important; 
+  margin: 5px;
+}
+
+.messageCloseButton {
+	min-width: 20px;
+	min-height: 20px;
+}
+
+description.messageText
+{
+	white-space: normal !important;
+	height: auto;
+	word-wrap: normal;
+	overflow: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+  margin: 0.7em 0;  
+}
+
+
+
+

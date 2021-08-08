@@ -29,8 +29,12 @@ QuickFolders.AdvancedTab = {
   } ,
   
   updatePremiumFeatures: function() {
-    let isPremium = (QuickFolders.Util.hasValidLicense());
+    let hasLicense = QuickFolders.Util.hasValidLicense();
+    let isPremium = (hasLicense && !QuickFolders.Util.hasStandardLicense());
     let isRecursive = document.getElementById('chkComposerSubFolders');
+    
+    document.getElementById("mailIdentity").disabled = !hasLicense;
+    document.getElementById("txtToAddress").disabled = !hasLicense;
     
     isRecursive.disabled = !isPremium;
     let proImg1 = document.getElementById('proRecursiveIcon'),

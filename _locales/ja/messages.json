@@ -1060,7 +1060,22 @@
     "message": "{1} 件のブックマークが定義されています。QuickFolders のフリー版では最大 {2} 件まで定義できます。"
   },
   "qf.notification.premium.tabIcons": {
-    "message": "{1} 個のアイコンが定義されています。QuickFolders のフリー版では最大 {2} 個まで定義できます。"
+    "message": "タブに$cntIcons$カスタムアイコンを使用するようになりました。 QuickFoldersの無料バージョンは、最大$maxFreeIcons$をサポートします。 標準ライセンスは$maxStdIcons$をサポートします。",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
+    
   },
   "qf.notification.premium.text": {
     "message": "{1} は有料の機能です。この機能を永続的に使用するには QuickFolders Pro ライセンスを購入してください。"

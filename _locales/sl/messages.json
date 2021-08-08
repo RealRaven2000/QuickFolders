@@ -1060,7 +1060,21 @@
     "message": "Sedaj imate določenih {1} zaznamkov. Brezplačna različica razširitve QuickFolders omogoča največ {2} zaznamkov."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Sedaj imate določenih {1} ikon. Brezplačna različica razširitve QuickFolders omogoča največ {2} ikon."
+    "message": "Zdaj uporabljate $cntIcons$ ikone po meri za zavihke. Brezplačna različica QuickFolders podpira največ $maxFreeIcons$. Standardna licenca podpira $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} je značilnost Premium, pridobite si dovoljenje QuickFolders Pro, da jo boste lahko trajno uporabljali."

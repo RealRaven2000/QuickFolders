@@ -1060,7 +1060,21 @@
     "message": "您現在有{1}個已定義的書籤。免費版本的QuickFolders最多只允許{2}個。"
   },
   "qf.notification.premium.tabIcons": {
-    "message": "您現在有{1}個定義的圖示。免費版本的QuickFolders最多只允許{2}個。"
+    "message": "您現在為選項卡使用 $cntIcons$ 自定義圖標。 QuickFolders 的免費版本最多支持 $maxFreeIcons$。 標准許可證支持 $maxStdIcons$。",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} 是獨特的功能，請註冊QuickFolders以永久使用這項功能。"

@@ -1060,7 +1060,21 @@
     "message": "Es sind jetzt {1} Lesezeichen definiert. Die Gratisversion von QuickFolders unterstützt maximal {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Es sind jetzt {1} Symbole definiert. Die Gratisversion von QuickFolders unterstützt maximal {2}."
+    "message": "Sie verwenden jetzt $cntIcons$ benutzerdefinierte Symbole für Tabs. Die kostenlose Version von QuickFolders unterstützt maximal $maxFreeIcons$. Die Standardlizenz unterstützt $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} ist eine Premium Funktion, bitte registrieren Sie QuickFolders um diese permanent zu benutzen."

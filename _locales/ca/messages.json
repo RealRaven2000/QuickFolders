@@ -1051,7 +1051,21 @@
     "message": "Teniu {1} marcadors definits. La versió gratuita de QuickFolders permet un màxim de {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Teniu {1} icona(es) definides. La versió gratuita de QuickFolders permet un màxim de {2}."
+    "message": "Ara utilitzeu $cntIcons$ icones personalitzades per a les pestanyes. La versió gratuïta de QuickFolders admet un màxim de $maxFreeIcons$. La llicència estàndard admet $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} és una característica Premium, registreu QuickFolders per a poder utilitzar-la sempre."

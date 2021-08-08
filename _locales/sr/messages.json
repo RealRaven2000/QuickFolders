@@ -1060,7 +1060,21 @@
     "message": "Имате одређено {1} белешки. Бесплатна верзија додатка QuickFolders дозвољава највише {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Имате одређено {1} икона(е). Бесплатна верзија додатка QuickFolders дозвољава највише {2}."
+    "message": "Сада користите прилагођене иконе $cntIcons$ за картице. Бесплатна верзија КуицкФолдерс подржава највише $maxFreeIcons$. Стандардна лиценца подржава $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} је доступна у премијум верзији. Региструјете QuickFolders, ако желите трајно да користите."

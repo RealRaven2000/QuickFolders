@@ -1060,7 +1060,21 @@
     "message": "Zdefiniowane zakładki - {1}. Darmowa wersja QuickFolders umożliwia definiowanie maksymalnie {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Zdefiniowane ikony - {1}. Darmowa wersja QuickFolders umożliwia definiowanie maksymalnie {2}."
+    "message": "Teraz używasz niestandardowych ikon $cntIcons$ dla kart. Darmowa wersja QuickFolders obsługuje maksymalnie $maxFreeIcons$. Standardowa licencja obsługuje $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} jest funkcją Premium. Zarejestruj QuickFolders, aby móc z niej korzystać."

@@ -1060,7 +1060,21 @@
     "message": "Você tem agora {1} favoritos definidos. A versão gratuita do QuickFolders permite um máximo de {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Você tem agora {1} ícone(s) definidos. A versão gratuita do QuickFolders permite um máximo de {2}."
+    "message": "Agora você usa $cntIcons$ ícones personalizados para guias. A versão gratuita do QuickFolders suporta no máximo $maxFreeIcons$. A licença padrão suporta $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} é um recurso Premium, registre o QuickFolders para usá-lo permanentemente."

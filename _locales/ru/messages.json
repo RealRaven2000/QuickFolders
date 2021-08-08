@@ -1060,7 +1060,21 @@
     "message": "Имеется {1} закладок. Бесплатная версия QuickFolders поддерживает не более {2} закладок."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Используется  {1} значков. Бесплатная версия QuickFolders поддерживает не более {2} значков."
+    "message": "Теперь вы используете пользовательские значки $cntIcons$ для вкладок. Бесплатная версия QuickFolders поддерживает не более $maxFreeIcons$. Стандартная лицензия поддерживает $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "Зарегистрируйте QuickFolders для постоянного пользования премиальных функцией {1}."

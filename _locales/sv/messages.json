@@ -1060,7 +1060,21 @@
     "message": "Du har nu {1} definierade bokmärken. Gratisversionen av QuickFolders tillåter maximalt {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Du har nu {1} definierade ikon(er). Gratisversionen av QuickFolders tillåter maximalt {2}."
+    "message": "Du använder nu $cntIcons$ anpassade ikoner för flikar. Den fria versionen av QuickFolders stöder högst $maxFreeIcons$. Standardlicensen stöder $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} är en funktion kopplad till QuickFolders Pro. Registrera QuickFolders för att använda den permanent."

@@ -1060,7 +1060,21 @@
     "message": "Attualmente sono definiti {1} segnalibri. La versione free di QF ne consente un massimo di {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Attualmente sono definite {1} icone. La versione free di QF ne consente un massimo di {2}."
+    "message": "Ora usi le icone personalizzate $cntIcons$ per le schede. La versione gratuita di QuickFolders supporta un massimo di $maxFreeIcons$. La licenza standard supporta $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} è una caratteristica della versione Premium. Registrare QuickFolders per poterla usare permanentemente."

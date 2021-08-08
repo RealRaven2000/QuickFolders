@@ -1060,7 +1060,21 @@
     "message": "U hebt nu {1} bladwijzers gedefinieerd. De gratis versie van QuickFolders staat maximaal {2} bladwijzers toe."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "U hebt nu {1} pictogrammen gedefinieerd. De gratis versie van QuickFolders staat maximaal {2} bladwijzers toe."
+    "message": "U gebruikt nu $cntIcons$ aangepaste pictogrammen voor tabbladen. De gratis versie van QuickFolders ondersteunt maximaal $maxFreeIcons$. De standaardlicentie ondersteunt $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }   
   },
   "qf.notification.premium.text": {
     "message": "{1} is een Premium-functie; registreer QuickFolders om deze permanent te gebruiken."

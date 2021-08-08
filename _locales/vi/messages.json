@@ -1060,7 +1060,21 @@
     "message": "Bây giờ bạn đã xác định {1} dấu trang. Phiên bản miễn phí của QuickFolders cho phép tối đa {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Bây giờ bạn đã xác định {1} (các) biểu tượng. Phiên bản miễn phí của QuickFolders cho phép tối đa {2}."
+    "message": "Bây giờ bạn sử dụng $cntIcons$ biểu tượng tùy chỉnh cho các Tab. Phiên bản miễn phí của QuickFolders hỗ trợ tối đa $maxFreeIcons$. Giấy phép tiêu chuẩn hỗ trợ $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
   },
   "qf.notification.premium.text": {
     "message": "{1} là một tính năng Cao cấp, vui lòng nhận Giấy phép QuickFolders Pro để sử dụng nó."

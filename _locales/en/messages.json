@@ -1060,7 +1060,22 @@
     "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "You have now {1} icon(s) defined. The free version of QuickFolders allows a maximum of {2}."
+    "message": "You now use $cntIcons$ custom icons for Tabs. The free version of QuickFolders supports a maximum of $maxFreeIcons$. The standard license supports $maxStdIcons$.",
+    "placeholders": {
+      "cntIcons": {
+        "content": "$1",
+        "example": "10"
+      },
+      "maxFreeIcons": {
+        "content": "$2",
+        "example": "5"
+      },
+      "maxStdIcons": {
+        "content": "$3",
+        "example": "12"
+      }
+    }
+    
   },
   "qf.notification.premium.text": {
     "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it."

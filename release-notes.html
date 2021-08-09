@@ -7,6 +7,18 @@
 
 <b>Improvements</b>
 <ul>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/166">[issue 114]</a> Make QuickFolders compatible with Thunderbird 91. (ESR 2021/22)
+This is the list of issues found and fixed so far:
+<ol>
+<li> Fixed the missing (and badly styled) [Buy License] button at the bottom of the options dialog. This is done by loading a separate style sheet link element into the shadow DOM.</li>
+<li> Fixed: showing the debug settings (and other advanced settings) via a small window that filters "about:config" stopped working in Tb91. </li> 
+<li> Fixed: missing icons on sliding notification bars </li>
+<li> Removed deprecated fixIterator constructs </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/189">[issue 189]</a> Fixed: No longer able to move a message by dropping it on a quick folder tab. The function copyMessages was renamed in Tb91</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/190">[issue 190]</a> Fixed dragging the envelope from current folder toolbar (Navigation bar)
+</li>
+</ol>
+</li>
 <li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/187">[issue 187]</a> Implement a QuickFolders Standard License. There will be now 2 licenses Pro and Standard, and the unfunded version will have a few restrictions. Most importantly, no more than 10 tabs are supported without any license. This is necessary in order to fund ongoing and future work so that the Add-on won't be lost to all users when Thunderbird moves away from experimental APIs. Standard Features will be <a target="_blank" href="https://quickfolders.org/premium.html#stdfeat">listed here.</a></li>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/184">[issue 184]</a> Update Notice - [What's New] button is badly visible when using different QF theme than flat style.</li>
 <li> Ongoing work of Rewriting code to use APIs instead of Thunderbird's internal functions see <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/147">[issue 147]</a> for up to date detail.</li>
@@ -14,7 +26,6 @@
 
 <b>Bug Fixes + Miscellaneus</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/166">[issue 114]</a> Make QuickFolders compatible with Thunderbird 91. (ESR 2021/22)</li>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/166">[issue 166]</a> 3rd party themes - Current folder toolbar colors are incorrect until Refresh visible tabs command</li>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/186">[issue 186]</a> Theming make some items in options screens hard / impossible to see 
 - improved visibility of dropdowns in options screen when using dark (and third party) themes</li>

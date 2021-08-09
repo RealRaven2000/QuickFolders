@@ -137,7 +137,7 @@ addEventListener("load", async (event) => {
     let specialOffer = document.getElementById("specialOfferTxt");
     if (specialOffer) {
       let expiry = messenger.i18n.getMessage("special-offer-expiry"),
-          reduction = "30%";
+          reduction = "33%";
       // note: expiry day is set in popup.js "endSale" variable
       specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")

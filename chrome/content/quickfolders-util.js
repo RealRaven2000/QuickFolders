@@ -1288,8 +1288,12 @@ QuickFolders.Util = {
       let uType = "";
       if (QuickFolders.Util.licenseInfo.isExpired) 
         uType = "proRenew"
-      else if (util.hasValidLicense())
-        uType = "pro";
+      else if (util.hasValidLicense()) {
+        if (util.hasStandardLicense())
+          uType = "std";
+        else
+          uType = "pro";
+      }
       // make sure we can sanitize all pages for our premium users!
       if (   uType
           && URL.indexOf("user=")==-1 

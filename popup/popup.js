@@ -98,15 +98,14 @@ async function updateActions(addonName) {
         regBtn.innerText = messenger.i18n.getMessage("qf.notification.premium.btn.upgrade");
       }
     }
-  }  
-  else {
-    if (isSale) {
-      show('specialOffer');
-      hideSelectorItems('.donations');
-      hide('whyPurchase');
-      isActionList = false;
-    }
-  }  
+  }
+  
+  if (isSale && !isValid) { // not shown with Standard license either.
+    show('specialOffer');
+    hideSelectorItems('.donations');
+    hide('whyPurchase');
+    isActionList = false;
+  }
   if (!isActionList) {
     hide('actionBox');
   }

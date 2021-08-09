@@ -116,7 +116,7 @@
     "message": "Dominio degli indirizzi di email collegati alla licenza"
   },
   "domainLicense.instruct": {
-    "message": "La licenza è collegata al dominio della vostra azienda. La licenza consente agli utenti con indirizzo di posta elettronica appartenente al dominio aziendale l'utilizzo di QuickFolders Pro. Per esempio, se alla licenza viene collegato il nome di dominio 'xyz.it', utenti con indirizzo di posta elettronica quale: gianni@xyz.it, marta@xyz.it, michele@xyz.it ecc... possono usufruire della licenza. Il massimo numero di singoli utenti validi corrisponde al numero che è stato introdotto nella schermata iniziale."
+    "message": "La licenza è collegata al dominio della vostra azienda. La licenza consente agli utenti con indirizzo di posta elettronica appartenente al dominio aziendale l'utilizzo di QuickFolders Pro. Per esempio, se alla licenza viene collegato il nome di dominio 'xyz.it', utenti con indirizzo di posta elettronica quale: gianni@xyz.it, marta@xyz.it, michele@xyz.it ecc… possono usufruire della licenza. Il massimo numero di singoli utenti validi corrisponde al numero che è stato introdotto nella schermata iniziale."
   },
   "domainLicense.validate": {
     "message": "Bisogna fare molta attenzione ad inserire *esattamente* il nome di dominio dell'azienda (cioè la parte *dopo* il segno @ [at]) dell'indirizzo di posta elettronica). Infatti questa stringa sarà utilizzata da QuickFolders Pro per autorizzare gli indirizzi di posta elettronica degli utenti della vostra azienda."
@@ -1030,7 +1030,7 @@
     "message": "Non mostrare più questo messaggio"
   },
   "qf.notification.newsFlash": {
-    "message": "$addonName$ è stato aggiornato! Guarda le novità...",
+    "message": "$addonName$ è stato aggiornato! Novità importanti…",
     "placeholders": {
       "addonName": {
         "content": "$1",

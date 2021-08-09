@@ -43,18 +43,28 @@
 				}
 			}
 			
+      // new class: QuickFoldersStdUser
 			switch (user) {
+				case 'std':
+					removeClassItems('donateButton');
+					removeClassItems('QuickFoldersFreeUser');
+					removeClassItems('QuickFoldersProUser');
+				  removeClassItems('QuickFoldersProRenew');
+					break;
 				case 'pro':
 					removeClassItems('donateButton');
 					removeClassItems('QuickFoldersFreeUser');
 				  removeClassItems('QuickFoldersProRenew');
+          removeClassItems('QuickFoldersStdUser');
 					break;
 				case 'proRenew':
 					removeClassItems('donateButton');
 					removeClassItems('QuickFoldersFreeUser');
 				  removeClassItems('QuickFoldersProUser');
+          removeClassItems('QuickFoldersStdUser');
 				  break;
 				default:
+          removeClassItems('QuickFoldersStdUser');
 				  removeClassItems('QuickFoldersProRenew');
 				  removeClassItems('QuickFoldersProUser');
 			}

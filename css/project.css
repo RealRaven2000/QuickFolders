@@ -390,8 +390,10 @@ body {
   width: 75%;
 }
 
+p.QuickFoldersStdUser,
 p.QuickFoldersFreeUser,
 p.QuickFoldersProUser,
+table.QuickFoldersStdUser,
 table.QuickFoldersFreeUser,
 table.QuickFoldersProRenew,
 .flashBox  {
@@ -406,17 +408,20 @@ table.QuickFoldersProRenew,
 }
 
 .QuickFoldersProRenew,
-.QuickFoldersFreeUser {
+.QuickFoldersFreeUser,
+.QuickFoldersStdUser {
   font-size: 1.3em !important;
 }
 h3.QuickFoldersProRenew,
-h3.QuickFoldersFreeUser {
+h3.QuickFoldersFreeUser,
+h3.QuickFoldersStdUser {
   font-size: 1.6em;
 }
 
 
 .QuickFoldersProRenew em,
-.QuickFoldersFreeUser em {
+.QuickFoldersFreeUser em,
+.QuickFoldersStdUser em {
   font-weight: bold;
 }
 

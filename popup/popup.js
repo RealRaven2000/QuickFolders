@@ -13,7 +13,8 @@ async function updateActions(addonName) {
   let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
   // LICENSING FLOW
   let isExpired = licenseInfo.isExpired,
-      isValid = licenseInfo.isValid;
+      isValid = licenseInfo.isValid,
+      isStandard = (licenseInfo.keyType==2);
   
   function hide(id) {
     let el = document.getElementById(id);
@@ -52,6 +53,10 @@ async function updateActions(addonName) {
   
   let currentTime = new Date(),
       endSale = new Date("2021-08-23"); // Next Sale End Date
+      
+  let overrideSale = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug.saleDate");
+  if (overrideSale) endSale = overrideSale;
+  
   let isSale = (currentTime < endSale);
 
   hide('permissions-note');
@@ -70,7 +75,7 @@ async function updateActions(addonName) {
       hide('renewLicenseListItem');
       hide('renew');
 			let gpdays = licenseInfo.licensedDaysLeft;
-      if (gpdays < 50) { // they may have seen this popup. Only show extend License section if it is < 50 days away
+      if (gpdays < 20) { // they may have seen this popup. Only show extend License section if it is < 20 days away
         show('extendLicenseListItem');
         show('extend');
       }
@@ -86,6 +91,11 @@ async function updateActions(addonName) {
           animation.parentNode.removeChild(animation);
 
         isActionList = false;
+      }
+      if(isStandard) {
+        hide('licenseExtended');
+        let regBtn = show('register');
+        regBtn.innerText = messenger.i18n.getMessage("qf.notification.premium.btn.upgrade");
       }
     }
   }  

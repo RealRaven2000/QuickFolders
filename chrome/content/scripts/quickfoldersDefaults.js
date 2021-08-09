@@ -189,6 +189,7 @@ pref("extensions.quickfolders.debug.quickMove", false);
 pref("extensions.quickfolders.debug.recentFolders", false);
 pref("extensions.quickfolders.debug.recentFolders.detail", false);
 pref("extensions.quickfolders.debug.toolbarHiding", false);
+pref("extensions.quickfolders.debug.saleDate","");
 
 pref("extensions.quickfolders.toolbarpalette.showSmallIcons", false); // unhide "small icons" in toolbar palette
 

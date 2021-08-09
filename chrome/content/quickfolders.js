@@ -1135,6 +1135,29 @@ var QuickFolders = {
 			this.util.logDebugOptional("dnd","toolbarDragObserver.drop - " + contentType);
  			function addFolder(src) {
         if(src) {
+          let msg="", maxTabs, warnLevel;
+          if (!QuickFolders.Util.hasValidLicense()) { // max tab
+            maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
+            msg = QuickFolders.Util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
+            warnLevel = 2;
+          }
+          else if (QuickFolders.Util.hasStandardLicense()) {
+            maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
+            msg = QuickFolders.Util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
+            warnLevel = 0;
+          }
+          if (QuickFolders.Model.selectedFolders.length >= maxTabs
+              && 
+              !QuickFolders.Model.getFolderEntry(src)) {
+            if (msg) { 
+              // allow adding folder (to different category if tab already exists)
+              // otherwise, restrictions apply
+              QuickFolders.Util.popupRestrictedFeature("tabs>" + maxTabs, msg, warnLevel);
+              QuickFolders.Interface.viewSplash(msg);
+              return false;
+            }         
+          }
+          
           let cat = QuickFolders.Interface.CurrentlySelectedCategories;
           if (QuickFolders.Model.addFolder(src, cat)) {
             let s = "Added shortcut " + src + " to QuickFolders"
@@ -1142,6 +1165,7 @@ var QuickFolders = {
             try{ QuickFolders.Util.showStatusMessage(s); } catch (e) {};
           }
         }
+        return true;
 			};
 
 			QuickFolders.Util.logDebugOptional("dnd", "toolbarDragObserver.drop " + contentType);
@@ -1150,26 +1174,7 @@ var QuickFolders = {
 			switch (contentType) {
 				case "text/x-moz-folder":
 				case "text/x-moz-newsfolder":
-          {
-            let msg="", maxTabs, warnLevel;
-            if (!QuickFolders.Util.hasValidLicense()) { // max tab
-              maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
-              msg = QuickFolders.Util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
-              warnLevel = 2;
-            }
-            else if (QuickFolders.Util.hasStandardLicense()) {
-              maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
-              msg = QuickFolders.Util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
-              warnLevel = 0;
-            }
-            if (QuickFolders.Model.selectedFolders.length >= maxTabs) {
-              if (msg) {
-                QuickFolders.Util.popupRestrictedFeature("tabs>" + maxTabs, msg, warnLevel);
-                Services.prompt.alert(null, "QuickFolders", msg);
-                return;
-              }         
-            }
-          }
+
 					if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) { 
             let count = evt.dataTransfer.mozItemCount ? evt.dataTransfer.mozItemCount : 1;
             for (let i=0; i<count; i++) { // allow multiple folder drops...
@@ -1178,7 +1183,7 @@ var QuickFolders = {
                 sourceUri = msgFolder.QueryInterface(Components.interfaces.nsIMsgFolder).URI;
               else
                 sourceUri = QuickFolders.Util.getFolderUriFromDropData(evt, dragSession); // Postbox
-              addFolder(sourceUri);
+              if (!addFolder(sourceUri)) break;
             }
 					}
 					else {
@@ -1989,7 +1994,7 @@ var QuickFolders = {
             }
             if (msg) {
               util.popupRestrictedFeature("tabs>" + maxTabs, msg, 2);
-              Services.prompt.alert(null, "QuickFolders", msg);
+              QuickFolders.Interface.viewSplash(msg);
               return;
             }
           }

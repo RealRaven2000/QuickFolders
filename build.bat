@@ -10,4 +10,4 @@ rem "C:\Program Files\7-Zip\7z" a -xr!.svn quickFolders.zip install.rdf chrome.m
 echo %quickFoldersRev% > revision.txt
 move QuickFolders*.xpi "..\..\Release\_Test Versions\4.22\"
 pwsh -Command "Start-Sleep -m 150"
-rename QuickFoldersWeb.zip QuickFolders-wx-4.22.2pre%quickFoldersRev%.xpi
+rename QuickFoldersWeb.zip QuickFolders-wx-4.22.3pre%quickFoldersRev%.xpi

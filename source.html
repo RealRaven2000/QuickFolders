@@ -18,14 +18,8 @@ td.navigation-list a[href$='source.html'] {
 The quickfolders source code can be accessed through one of the following ways:
 </p>
 
-<ol id="get-the-src" class="get-src-cvs">
-<li>View the source using the <abbr title="Concurrent Versions System">CVS</abbr> <a href="http://www.mozdev.org/source/browse/quickfolders/">web interface</a></li>
-<li>Check out the source using anonymous CVS with the following commands (password is guest):
-<pre>
-cvs -d :pserver:guest@mozdev.org:/cvs login
-cvs -z3 -d :pserver:guest@mozdev.org:/cvs co quickfolders/src quickfolders/www
-</pre>
-</li>
+<ol id="get-the-src">
+  <li>View the source code <a href="https://github.com/RealRaven2000/QuickFolders">on github</a></li>
 </ol>
 
 <p id="cvs-doc">CVS client and Help Documentation links:</p>
@@ -39,55 +33,4 @@ cvs -z3 -d :pserver:guest@mozdev.org:/cvs co quickfolders/src quickfolders/www
 <li><a href="http://www.thathost.com/wincvs-howto/">WinCVS - How to Use WinCVS</a></li>
 <li><a href="http://www.devdaily.com/wincvs/HowToUseWinCVS/">WinCvs Daily Use Guide</a></li>
 </ul>
-
-<!-- Mercurial Instructions
-<ol id="get-the-src" class="get-src-hg">
-<li>View the source using the <abbr title="Mercurial">HG</abbr> <a href="http://hg.mozdev.org/quickfolders/">web interface</a></li>
-<li>Get a local copy of the source by performing the following:
-<pre>
-hg clone http://hg.mozdev.org/quickfolders/
-</pre>
-</li>
-<li>To commit to the repository you must first have commit access to the
-project.  Then be sure you are committing the SSL version of the repository. You
-can do this several ways:
-	<ol>
-	<li><pre>hg push https://hg.mozdev.org/quickfolders/</pre></li>
-	<li>edit your <samp>.hg/hgrc</samp> file to have a paths section similar
-	to the following:
-<pre>[paths]
-default = http://hg.mozdev.org/PROJECT/
-default-push = https://USER:PASS@hg.mozdev.org/PROJECT/</pre>
-	</li>
-	</ol>
-</ol>
-
-<p id="hg-doc">Mercurial client and Help Documentation links:</p>
-<ul>
-<li><a href="http://www.selenic.com/mercurial/">Mercurial</a>
-	(<a href="http://www.selenic.com/mercurial/wiki/index.cgi/QuickStart">quickstart</a>)</li>
-<li><a href="http://hgbook.red-bean.com/">Distributed Revision Control with Mercurial</a> (hgbook)</li>
-<li><a href="http://www.selenic.com/mercurial/wiki/index.cgi/OtherTools">GUI Clients and other tools</a></li>
-</ul>
--->
-
-<!-- Subversion Instructions
-<ol id="get-the-src" class="get-src-svn">
-<li>View the source using the <abbr title="Subversion">SVN</abbr> <a href="http://svnweb.mozdev.org/quickfolders/">web interface</a></li>
-<li>Get a local copy of the source by performing the following:
-<pre>
-svn co http://svn.mozdev.org/quickfolders/
-</pre>
-</li>
-</ol>
-
-<p id="svn-doc">Subversion client and Help Documentation links:</p>
-<ul>
-<li><a href="http://subversion.tigris.org/">Subversion</a>
-	(<a href="http://svnbook.red-bean.com/en/1.4/svn.intro.quickstart.html">quickstart</a>)</li>
-<li><a href="http://svnbook.org">Version Control with Subversion</a> (svnbook)</li>
-<li><a href="http://tortoisesvn.tigris.org/">TortoiseSVN</a> (client)</li>
-<li><a href="http://rapidsvn.tigris.org/">RapidSVN</a> (client)</li>
-</ul>
--->
 

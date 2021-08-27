@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "VIKTIGT: Automatiska uppdateringar kanske inte ber dig att installera när en ny tilläggsversion kräver ytterligare behörigheter. Istället ser du denna varningsikon på Thunderbird-huvudmenyknappen, som du måste klicka för att slutföra uppdateringen. Begäran om behörighet krävs för att migrera till det nya tilläggssystemet. Annars kan vi inte leverera buggfixar / nya funktioner!"
-  },
   "purchase-a-license": {
     "message": "Köp en licens."
   },
@@ -1063,7 +1060,7 @@
     "message": "Premiumlicensen ger dig dessutom en konfigurerbar kortkommando."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Du använder nu $cntIcons$ anpassade ikoner för flikar. Den fria versionen av QuickFolders stöder högst $maxFreeIcons$. Standardlicensen stöder $maxStdIcons$.",
+    "message": "Du använder nu $cntIcons$ anpassade ikoner för flikar. Den fria versionen av QuickFolders stöder högst $maxFreeIcons$. Standardlicensen stöder $maxStdIcons$. QuickFolders Pro har ingen gräns.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1725,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Uppgradera nu från QuickFolders Standard till Pro och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "22 augusti"    
+    "message": "11 september"    
   },
   "special-offer-head": {
     "message": "Gör QuickFolders framtida bevis!"
@@ -1811,7 +1821,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Gjorde QuickFolders kompatibla med Thunderbird 91. {L2} {L1} Förbättrat stöd för mörka teman och tredjeparts teman, både i alternativskärmen och för navigationsverktygsfältet. {L2} {L1} Förbättrad synlighet för [vad som är nytt] -knappen med icke -standard QuickFolders-tema {L2} {L1} Fast: Ibland återställdes sessionen vid omstart eller efter installation av andra tillägg eller uppdateringar, så att alla kategorier visades. {L2}"
+    "message": "{L1} Fixat i 5.7.1: Vid sökning efter mappar med syntaxen 'överordnad mapp/överordnad mapp/önskad mapp' beaktades inte överordnade mappar med namn med en enda teckenlängd. {L2}{L1} Gjorde QuickFolders kompatibla med Thunderbird 91. {L2} {L1} Förbättrat stöd för mörka teman och tredjeparts teman, både i alternativskärmen och för navigationsverktygsfältet. {L2} {L1} Förbättrad synlighet för [vad som är nytt] -knappen med icke -standard QuickFolders-tema {L2} {L1} Fast: Ibland återställdes sessionen vid omstart eller efter installation av andra tillägg eller uppdateringar, så att alla kategorier visades. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

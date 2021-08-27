@@ -62,7 +62,6 @@ QuickFolders.quickMove = {
 	// only pass this when search was done in the format parent/folder
   execute: function execute(targetFolderUri, parentName) {
     function showFeedback(actionCount, messageIdList, isCopy) {
-      const prefs = QuickFolders.Preferences;
       // show notification
       if (!actionCount) 
         return;
@@ -123,8 +122,7 @@ QuickFolders.quickMove = {
     }
     // isCopy should depend on modifiers while clicked (CTRL for force Control, move default)
 		const util = QuickFolders.Util,
-		      QI = QuickFolders.Interface,
-		      prefs = QuickFolders.Preferences;
+		      QI = QuickFolders.Interface;
 					
     var { PluralForm } = Components.utils.import("resource://gre/modules/PluralForm.jsm");
 					

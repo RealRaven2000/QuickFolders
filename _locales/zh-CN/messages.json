@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "重要提示：每当新的附加版本需要额外权限时，自动更新可能不会要求您安装。 相反，您将在 Thunderbird 主菜单按钮上看到此警告图标，您必须单击该按钮才能完成更新。 迁移到新的扩展系统需要请求权限。 否则我们无法提供任何错误修复/新功能！"
-  },
   "purchase-a-license": {
     "message": "购买许可证。"
   },
@@ -1063,7 +1060,7 @@
     "message": "高级许可证还为您提供了一个可配置的键盘快捷键。"
   },
   "qf.notification.premium.tabIcons": {
-    "message": "您现在为选项卡使用 $cntIcons$ 自定义图标。 QuickFolders 的免费版本最多支持 $maxFreeIcons$。 标准许可证支持 $maxStdIcons$。",
+    "message": "您现在为选项卡使用 $cntIcons$ 自定义图标。 QuickFolders 的免費版本最多支持 $maxFreeIcons$。 標准許可證支持 $maxStdIcons$。 QuickFolders Pro 沒有限制。",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1725,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "立即从 QuickFolders Standard 升级到 Pro 并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "8月22日"    
+    "message": "9月 11日"    
   },
   "special-offer-head": {
     "message": "使QuickFolders成为未来的证明！"
@@ -1811,7 +1821,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}使 QuickFolders 与 Thunderbird 91 兼容。{L2}{L1}在选项屏幕和导航工具栏中改进了对黑暗和 3rd 方主题的支持。{L2}{L1}改进了 [what's new] 按钮与非 -标准 QuickFolders 主题{L2}{L1}已修复：有时在重新启动或安装其他附加组件或更新后会重置会话，以便显示所有类别。{L2}"
+    "message": "{L1} 已在 5.7.1 中修复：搜索具有“父文件夹/父文件夹/想要的文件夹”语法的文件夹时，不考虑名称为单个字符长度的父文件夹。 {L2}{L1}使 QuickFolders 与 Thunderbird 91 兼容。{L2}{L1}在选项屏幕和导航工具栏中改进了对黑暗和 3rd 方主题的支持。{L2}{L1}改进了 [what's new] 按钮与非 -标准 QuickFolders 主题{L2}{L1}已修复：有时在重新启动或安装其他附加组件或更新后会重置会话，以便显示所有类别。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

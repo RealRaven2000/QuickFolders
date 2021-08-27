@@ -524,10 +524,8 @@ END LICENSE BLOCK */
     ## Improved icon for quickMove help
     ## [issue 179] use extensions.quickfolders.premium.findFolder.disableSpace=true to disable " " search + improve performance
     
-    -=-----------------=-    PLANNED
-    ## [issue 103] Feature Request: Support copying folders
 
-  5.7 QuickFolders Pro - WIP
+  5.7 QuickFolders Pro - 10/08/2021
     ## [issue 187] Implement a QuickFolders Standard License
     ## [issue 184] Update Notice - "What's New button" is badly visible when using different QF theme than flat style
     ## [issue 166] 3rd party themes - Current folder toolbar colors are incorrect until Refresh visible tabs command
@@ -551,7 +549,15 @@ END LICENSE BLOCK */
     ## - [issue 190] Fixed dragging the envelope from current folder toolbar (Navigation bar)
     ## TO DO: review qf.notification.premium.text (remove "using it -permanently-") 
 
+  5.7.1 QuickFolders Pro - WIP
+    ## [issue 197] Instructions on empty toolbar get duplicated on folder change https://github.com/RealRaven2000/QuickFolders/issues/197
+    ## [issue 198] Tb91 regression: Junk folder tab doesn't get focus when clicked (IMAP) - 
+    ## [issue 199] Subfolders with with length of 1 character omitted from quickJump search results
+    ## removed "workaround" experimental APIs (notifications, accounts)
+    
 
+    -=-----------------=-    PLANNED
+    ## [issue 103] Feature Request: Support copying folders
 
    	TODOs
 	=========
@@ -2457,7 +2463,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   let isSelected = false,
       forceSelect = prefs.isChangeFolderTreeViewEnabled;
   const theTreeView = gFolderTreeView;
-  QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB3)
+  
+  if (theTreeView.mode)
+    QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB78)
 
   folderIndex = theTreeView.getIndexOfFolder(msgFolder);
   if (null == folderIndex) {
@@ -2486,23 +2494,34 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
                      + Flags.MSG_FOLDER_FLAG_JUNK + Flags.MSG_FOLDER_FLAG_ARCHIVES ; 
     if (msgFolder.flags & specialFlags) {
       // is this folder a smartfolder?
-      if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && theTreeView.mode !== "smart") {
+      let isSmartView = (theTreeView.activeModes && theTreeView.activeModes.includes("smart")) ||
+                        (theTreeView.mode && theTreeView.mode=="smart");
+      
+      if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && !isSmartView) {
         util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
         // toggle to smartfolder view and reinitalize folder variable!
-        theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
+        if (theTreeView.activeModes)
+          theTreeView.activeModes.push("smart");
+        else if (theTreeView.mode)
+          theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
         //let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
         //    folderResource = rdf.GetResource(folderUri);
         msgFolder = model.getMsgFolderFromUri(folderUri);   // folderResource.QueryInterface(Ci.nsIMsgFolder);
         parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
       }
+      
+      isSmartView = (theTreeView.mode && theTreeView.mode=="smart") ||
+                    (theTreeView.activeModes && theTreeView.activeModes.includes("smart"));
 
       // a special folder, its parent is a smart folder?
-      if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL || "smart" === theTreeView.mode) {
+      if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL || isSmartView) {
         if (null === folderIndex || parentIndex > folderIndex) {
           // if the parent appears AFTER the folder, then the "real" parent is a smart folder.
           let smartIndex=0;
-          while (0x0 === (specialFlags & (theTreeView._rowMap[smartIndex]._folder.flags & msgFolder.flags)))
-          smartIndex++;
+          // we can have "non-folder" items here
+          while (!theTreeView._rowMap[smartIndex]._folder || 
+                 0x0 === (specialFlags & (theTreeView._rowMap[smartIndex]._folder.flags & msgFolder.flags)))
+            smartIndex++;
           if (!(theTreeView._rowMap[smartIndex]).open) {
             theTreeView._toggleRow(smartIndex, false);
           }
@@ -2538,7 +2557,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 
   // reset the view mode.
   if (!prefs.isChangeFolderTreeViewEnabled) {
-    
+    // this only works in Thunderbird 78 - Tb91 has the activeModes array... 
     if (QuickFolders.lastTreeViewMode !== null && theTreeView.mode !== QuickFolders.lastTreeViewMode) {
       util.logDebugOptional("folders.select","Restoring view mode to " + QuickFolders.lastTreeViewMode + "...");
       theTreeView.mode = QuickFolders.lastTreeViewMode;

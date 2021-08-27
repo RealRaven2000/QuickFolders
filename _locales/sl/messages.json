@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "POMEMBNO: Samodejne posodobitve morda ne bodo zahtevale namestitve, kadar nova različica dodatka zahteva dodatna dovoljenja. Namesto tega boste na gumbu glavnega menija Thunderbirda videli to opozorilno ikono, ki jo morate klikniti za dokončanje posodobitve. Zahteva dovoljenj je potrebna za prehod na nov sistem razširitev. V nasprotnem primeru ne moremo dostaviti nobenih popravkov napak / novih funkcij!"
-  },
   "purchase-a-license": {
     "message": "Nakup licence."
   },
@@ -1063,7 +1060,7 @@
     "message": "Premijska licenca vam poleg tega omogoča nastavljivo bližnjico na tipkovnici."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Zdaj uporabljate $cntIcons$ ikone po meri za zavihke. Brezplačna različica QuickFolders podpira največ $maxFreeIcons$. Standardna licenca podpira $maxStdIcons$.",
+    "message": "Zdaj uporabljate $cntIcons$ ikone po meri za zavihke. Brezplačna različica QuickFolders podpira največ $maxFreeIcons$. Standardna licenca podpira $maxStdIcons$. QuickFolders Pro nima omejitev.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1725,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Nadgradite zdaj iz QuickFolders Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "22. avgusta"
+    "message": "11. september"
   },
   "special-offer-head": {
     "message": "Naj bodo QuickFolders prihodnji dokaz!"
@@ -1811,7 +1821,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Izdelane QuickFolders združljive s Thunderbird 91. {L2} {L1} Izboljšana podpora temnim temam in temam drugih proizvajalcev, tako na zaslonu z možnostmi kot v orodni vrstici za krmarjenje. {L2} {L1} Izboljšana vidnost gumba [novosti] z ne -standardna tema QuickFolders {L2} {L1} Popravljeno: Včasih je bila seja ponastavljena ob ponovnem zagonu ali po namestitvi drugih dodatkov ali posodobitev, tako da so bile prikazane vse kategorije. {L2}"
+    "message": "{L1} Odpravljeno v 5.7.1: Pri iskanju map s sintakso 'nadrejena mapa/nadrejena mapa/želena mapa' starševske mape z imeni z eno dolžino znakov niso bile upoštevane. {L2} {L1} Izdelane QuickFolders združljive s Thunderbird 91. {L2} {L1} Izboljšana podpora temnim temam in temam drugih proizvajalcev, tako na zaslonu z možnostmi kot v orodni vrstici za krmarjenje. {L2} {L1} Izboljšana vidnost gumba [novosti] z ne -standardna tema QuickFolders {L2} {L1} Popravljeno: Včasih je bila seja ponastavljena ob ponovnem zagonu ali po namestitvi drugih dodatkov ali posodobitev, tako da so bile prikazane vse kategorije. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "QUAN TRỌNG: Các bản cập nhật tự động có thể không yêu cầu bạn cài đặt bất cứ khi nào phiên bản Tiện ích bổ sung mới yêu cầu quyền bổ sung. Thay vào đó, bạn sẽ thấy biểu tượng cảnh báo này trên nút menu chính của Thunderbird, bạn phải nhấp vào biểu tượng này để hoàn tất cập nhật. Yêu cầu quyền là bắt buộc để chuyển sang hệ thống tiện ích mở rộng mới. Nếu không, chúng tôi không thể cung cấp bất kỳ bản sửa lỗi / tính năng mới nào!"
-  },
   "purchase-a-license": {
     "message": "Mua giấy phép."
   },
@@ -1063,7 +1060,7 @@
     "message": "Giấy phép cao cấp cũng cung cấp cho bạn một phím tắt có thể định cấu hình."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Bây giờ bạn sử dụng $cntIcons$ biểu tượng tùy chỉnh cho các Tab. Phiên bản miễn phí của QuickFolders hỗ trợ tối đa $maxFreeIcons$. Giấy phép tiêu chuẩn hỗ trợ $maxStdIcons$.",
+    "message": "Bây giờ bạn sử dụng $cntIcons$ biểu tượng tùy chỉnh cho các Tab. Phiên bản QuickFolders không phải trả phí hỗ trợ tối đa $maxFreeIcons$. Giấy phép tiêu chuẩn hỗ trợ $maxStdIcons $. QuickFolders Pro không có giới hạn.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1725,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Nâng cấp ngay từ QuickFolders Standard lên Pro và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "Ngày 22 tháng 8"    
+    "message": "11 tháng 9"    
   },
   "special-offer-head": {
     "message": "Làm cho QuickFolders bằng chứng trong tương lai!"
@@ -1811,7 +1821,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Tạo QuickFolders tương thích với Thunderbird 91. {L2} {L1} Cải thiện hỗ trợ cho các chủ đề của bên thứ ba và tối, cả trong màn hình tùy chọn và thanh công cụ Điều hướng. {L2} {L1} Cải thiện khả năng hiển thị của nút [có gì mới] với không -chủ đề QuickFolders tiêu chuẩn {L2} {L1} Đã sửa lỗi: Đôi khi phiên được đặt lại khi khởi động lại hoặc sau khi cài đặt các tiện ích bổ sung hoặc bản cập nhật khác, để tất cả các danh mục đều được hiển thị. {L2}"
+    "message": "{L1} Đã sửa lỗi trong 5.7.1: Khi tìm kiếm các thư mục có cú pháp 'thư mục mẹ/thư mục mẹ/thư mục muốn', các thư mục mẹ có tên có độ dài một ký tự không được tính đến. {L2}{L1} Tạo QuickFolders tương thích với Thunderbird 91. {L2} {L1} Cải thiện hỗ trợ cho các chủ đề của bên thứ ba và tối, cả trong màn hình tùy chọn và thanh công cụ Điều hướng. {L2} {L1} Cải thiện khả năng hiển thị của nút [có gì mới] với không -chủ đề QuickFolders tiêu chuẩn {L2} {L1} Đã sửa lỗi: Đôi khi phiên được đặt lại khi khởi động lại hoặc sau khi cài đặt các tiện ích bổ sung hoặc bản cập nhật khác, để tất cả các danh mục đều được hiển thị. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

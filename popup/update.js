@@ -17,6 +17,12 @@ addEventListener("click", async (event) => {
     // messenger.Utilities.showLicenseDialog("splashScreen-bargainIcon");
 	}
   
+	if (event.target.id == "bargainUpgradeIcon") {
+    messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
+    window.close(); // not allowed by content script!
+	}
+  
+  
   if (event.target.id == "stdLink") {
     messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=splashScreen-standard");
   }
@@ -24,8 +30,6 @@ addEventListener("click", async (event) => {
   if (event.target.id == "compLink") {
     messenger.windows.openDefaultBrowser("https://quickfolders.org/premium.html#featureComparison");
   }
-  
-  
   
   if (event.target.id=="whatsNew") {
     messenger.Utilities.showVersionHistory();
@@ -145,6 +149,21 @@ addEventListener("load", async (event) => {
           .replace(/\{linkStart\}/, "<a id='stdLink'>")
           .replace(/\{linkEnd\}/, "</a>");
     }
+    
+    
+    let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
+    if (specialOfferUpgrade) {
+      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
+          reduction = "50%";
+      // note: expiry day is set in popup.js "endSale" variable
+      specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, reduction])
+          .replace(/\{boldStart\}/g,"<b>")
+          .replace(/\{boldEnd\}/g,"</b>")
+          .replace(/\{linkStart\}/, "<a id='stdLink'>")
+          .replace(/\{linkEnd\}/, "</a>");
+    }
+    
+    
     let featureComparison = document.getElementById("featureComparison");
     if (featureComparison) {
       featureComparison.innerHTML = messenger.i18n.getMessage("licenseComparison")

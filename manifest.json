@@ -9,7 +9,7 @@
   "author": "Axel Grude, Klaus Buecher/opto",
   "name" : "QuickFolders",
   "description" : "__MSG_extensionDescription__",
-  "version" : "5.7",
+  "version" : "5.7.1",
   "default_locale": "en",
   "developer" : {
       "name" : "Axel Grude, Klaus Buecher/opto",
@@ -19,26 +19,10 @@
     "page": "qf-background.html"
   },
   "permissions": [
+    "accountsRead",
+    "notifications"
   ],
   "experiment_apis": {
-    "ex_accounts": {
-      "schema": "chrome/content/api/ex_accounts/schema.json",
-      "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["ex_accounts"]],
-        "script": "chrome/content/api/ex_accounts/implementation.js"
-
-      }
-    },
-    "ex_notifications": {
-      "schema": "chrome/content/api/ex_notifications/schema.json",
-      "parent": {
-        "scopes": ["addon_parent"],
-        "paths": [["ex_notifications"]],
-        "script": "chrome/content/api/ex_notifications/implementation.js"
-
-      }
-    },
     "WindowListener": {
       "schema": "chrome/content/api/WindowListener/schema.json",
       "parent": {

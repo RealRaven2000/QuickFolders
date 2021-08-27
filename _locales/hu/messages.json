@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "IMPORTANT: Automatic updates might not ask you to install whenever a new Add-on version requires additional permissions. Instead you will see this warning icon on the Thunderbird main menu button, which you must click to complete the update. Requesting permissions is required for migrating to the new extension system. Otherwise we cannot deliver any bug fixes / new features!"
-  },
   "purchase-a-license": {
     "message": "Vásároljon licencet."
   },
@@ -1063,7 +1060,7 @@
     "message": "A prémium licenc ezenkívül konfigurálható billentyűparancsot is biztosít."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Most a $cntIcons$ egyéni ikonokat használja a lapokhoz. A QuickFolders ingyenes verziója legfeljebb $maxFreeIcons$ -t támogat. A szabványos licenc támogatja a $maxStdIcons$.",
+    "message": "Most a $cntIcons$ egyéni ikonokat használja a lapokhoz. A QuickFolders fizetetlen verziója legfeljebb $maxFreeIcons$ -t támogat. A szabványos licenc támogatja a $maxStdIcons$. A QuickFolders Pro -nak nincs határa.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1725,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Frissítsen most a QuickFolders Standard -ról a Pro -ra, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "Augusztus 22"    
+    "message": "Szeptember 11-én"    
   },
   "special-offer-head": {
     "message": "Jövőbeli bizonyíték QuickFolders!"
@@ -1811,7 +1821,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} A gyorsmappákat kompatibilisvé tette a Thunderbird 91-gyel. {L2} {L1} Javított a sötét és harmadik felek témáinak támogatása, mind az opciók képernyőn, mind a Navigációs eszköztáron. {L2} {L1} Az [újdonságok] gomb jobb láthatósága nem szabványos QuickFolders téma {L2} {L1} Javítva: Néha a munkamenet alaphelyzetbe állt újraindításkor vagy más kiegészítők vagy frissítések telepítése után, így minden kategória megjelenik. {L2}"
+    "message": "{L1} Javítva: 5.7.1: A 'szülőmappa / szülőmappa / keresett mappa' szintaxissal rendelkező mappák keresésekor az egyetlen karakter hosszúságú nevekkel rendelkező szülőmappákat nem vették figyelembe. {L2}{L1} A gyorsmappákat kompatibilisvé tette a Thunderbird 91-gyel. {L2} {L1} Javított a sötét és harmadik felek témáinak támogatása, mind az opciók képernyőn, mind a Navigációs eszköztáron. {L2} {L1} Az [újdonságok] gomb jobb láthatósága nem szabványos QuickFolders téma {L2} {L1} Javítva: Néha a munkamenet alaphelyzetbe állt újraindításkor vagy más kiegészítők vagy frissítések telepítése után, így minden kategória megjelenik. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

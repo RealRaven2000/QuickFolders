@@ -44,15 +44,9 @@ QuickFolders.FolderTree = {
           if (!gFolderTreeView.qfIconsEnabled) {
             return props;
           }
-					/*
-					if (folder.isServer) {
-						util.logDebugOptional('folderTree.icons',"getCellProperties(" + folder.prettyName  + ") - Custom Icons not supported on Server node.")
-						return props;
-					}
-					*/
 					
           try {
-						if (gFolderTreeView.supportsIcons) {
+						if (gFolderTreeView.supportsIcons && folder) {
 							let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
 							if (folderIcon) {
 								// save folder icon selector

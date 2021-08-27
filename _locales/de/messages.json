@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "WICHTIG: Automatische Updates werden Sie möglicherweise nicht zur Installation auffordern, wenn eine neue Add-on-Version zusätzliche Berechtigungen erfordert. Stattdessen sehen Sie dann dieses Warnsymbol auf der Thunderbird-Hauptmenüschaltfläche, auf die Sie klicken müssen, um das Update abzuschließen. Für die Migration auf das neue Erweiterungssystem ist das Anfordern von Berechtigungen erforderlich. Ansonsten können wir keine Bugfixes / neue Features liefern!"
-  },
   "purchase-a-license": {
     "message": "Kaufen Sie eine Lizenz."
   },
@@ -1063,7 +1060,7 @@
     "message": "Die Premium-Lizenz bietet Ihnen zusätzlich eine konfigurierbare Tastenkombination."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Sie verwenden jetzt $cntIcons$ benutzerdefinierte Symbole für Tabs. Die kostenlose Version von QuickFolders unterstützt maximal $maxFreeIcons$. Die Standardlizenz unterstützt $maxStdIcons$.",
+    "message": "Sie verwenden jetzt $cntIcons$ benutzerdefinierte Symbole für Tabs. Die kostenlose Version von QuickFolders unterstützt maximal $maxFreeIcons$. Die Standardlizenz unterstützt $maxStdIcons$. QuickFolders Pro hat keine Begrenzung.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1725,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Jetzt von QuickFolders Standard auf Pro upgraden und {boldStart}$reduction${boldEnd} sparen! Dieses Sonderangebot ist bis zum {boldStart}$expirydate${boldEnd} verfügbar.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "22. August"    
+    "message": "11. September"    
   },
   "special-offer-head": {
     "message": "Machen Sie QuickFolders nachhaltig"
@@ -1811,7 +1821,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}QuickFolders mit Thunderbird 91 kompatibel gemacht.{L2}{L1}Verbesserte Unterstützung für dunkle und Drittanbieter-Themen, sowohl im Optionsbildschirm als auch in der Navigationssymbolleiste.{L2}{L1}Verbesserte Sichtbarkeit der Schaltfläche [Neuigkeiten] mit nicht-standard QuickFolders Theme{L2}{L1}Behoben: Manchmal wurden bei Neustart oder nach Installation anderer Addons oder updates die Session zurückgesetzt, so das alle Kategorien angezeigt wurden.{L2}"
+    "message": "{L1} Behoben in 5.7.1: Bei der Suche nach Ordnern mit der Syntax 'übergeordneter Ordner/übergeordneter Ordner/gesuchter Ordner' wurden übergeordnete Ordner mit Namen mit einer einzigen Zeichenlänge nicht berücksichtigt.{L2} {L1}QuickFolders ist jetzt mit Thunderbird 91 kompatibel.{L2} {L1}Verbesserte Unterstützung für dunkle und Drittanbieter-Themen, sowohl im Optionsbildschirm als auch in der Navigationssymbolleiste.{L2} {L1}Verbesserte Sichtbarkeit der Schaltfläche [Neuigkeiten] mit nicht-standard QuickFolders Theme{L2} {L1}Behoben: Manchmal wurden bei Neustart oder nach Installation anderer Addons oder updates die Session zurückgesetzt, so das alle Kategorien angezeigt wurden.{L2}"
   },
   "window-title": {
     "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",

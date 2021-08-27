@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "BELANGRIJK: Automatische updates vragen u mogelijk niet om te installeren wanneer een nieuwe Add-on-versie aanvullende machtigingen vereist. In plaats daarvan ziet u dit waarschuwingspictogram op de Thunderbird-hoofdmenuknop, waarop u moet klikken om de update te voltooien. Voor het migreren naar het nieuwe uitbreidingssysteem is het aanvragen van machtigingen vereist. Anders kunnen we geen bugfixes / nieuwe functies leveren!"
-  },
   "purchase-a-license": {
     "message": "Koop een licentie."
   },
@@ -1063,7 +1060,7 @@
     "message": "De premium-licentie geeft u bovendien een configureerbare sneltoets."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "U gebruikt nu $cntIcons$ aangepaste pictogrammen voor tabbladen. De gratis versie van QuickFolders ondersteunt maximaal $maxFreeIcons$. De standaardlicentie ondersteunt $maxStdIcons$.",
+    "message": "U gebruikt nu $cntIcons$ aangepaste pictogrammen voor tabbladen. De gratis versie van QuickFolders ondersteunt maximaal $maxFreeIcons$. De standaardlicentie ondersteunt $maxStdIcons$. QuickFolders Pro heeft geen limiet.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1725,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Upgrade nu van QuickFolders Standard naar Pro en bespaar {boldStart}$reduction${boldEnd}! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "22 augustus"    
+    "message": "11 september"    
   },
   "special-offer-head": {
     "message": "Maak QuickFolders toekomstbestendig!"
@@ -1811,7 +1821,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}QuickFolders compatibel gemaakt met Thunderbird 91.{L2}{L1}Verbeterde ondersteuning voor donkere thema's en thema's van derden, zowel in het optiescherm als voor de navigatiewerkbalk.{L2}{L1}Verbeterde zichtbaarheid van de knop [wat is er nieuw] met niet -standaard QuickFolders-thema{L2}{L1}Opgelost: soms werd de sessie gereset bij het opnieuw opstarten of na het installeren van andere add-ons of updates, zodat alle categorieën werden weergegeven.{L2}"
+    "message": "{L1}Opgelost in 5.7.1: Bij het zoeken naar mappen met de syntaxis 'bovenliggende map/bovenliggende map/gewenste map' werd geen rekening gehouden met bovenliggende mappen met namen met één tekenlengte. {L2} {L1}QuickFolders compatibel gemaakt met Thunderbird 91.{L2}{L1}Verbeterde ondersteuning voor donkere thema's en thema's van derden, zowel in het optiescherm als voor de navigatiewerkbalk.{L2}{L1}Verbeterde zichtbaarheid van de knop [wat is er nieuw] met niet -standaard QuickFolders-thema{L2}{L1}Opgelost: soms werd de sessie gereset bij het opnieuw opstarten of na het installeren van andere add-ons of updates, zodat alle categorieën werden weergegeven.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

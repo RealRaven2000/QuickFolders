@@ -259,9 +259,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "IMPORTANT: és possible que les actualitzacions automàtiques no us demanin la instal·lació sempre que una nova versió del complement requereixi permisos addicionals. En lloc d'això, veureu aquesta icona d'advertència al botó del menú principal del Thunderbird, al qual heu de fer clic per completar l'actualització. Cal sol·licitar permisos per migrar al nou sistema d’extensions. En cas contrari, no podem oferir cap correcció d’errors / noves funcions."
-  },
   "purchase-a-license": {
     "message": "Compreu una llicència."
   },
@@ -1054,7 +1051,7 @@
     "message": "La llicència premium també us proporciona una drecera de teclat configurable."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Ara utilitzeu $cntIcons$ icones personalitzades per a les pestanyes. La versió gratuïta de QuickFolders admet un màxim de $maxFreeIcons$. La llicència estàndard admet $maxStdIcons$.",
+    "message": "Ara utilitzeu $cntIcons$ icones personalitzades per a les pestanyes. La versió sense pagar de QuickFolders admet un màxim de $maxFreeIcons$. La llicència estàndard admet $maxStdIcons$. QuickFolders Pro no té límit.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1708,7 +1705,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "22 d’agost"
+        "example": "11 de setembre"
       },
       "reduction": {
         "content": "$2",
@@ -1716,8 +1713,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Actualitzeu ara de QuickFolders Standard a Pro i estalvieu {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11th"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "22 d’agost"
+    "message": "11 de setembre"
   },    
   "special-offer-head": {
     "message": "Prova de futur QuickFolders!"
@@ -1802,7 +1812,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message" : "{L1}Compatibilitat amb les carpetes ràpides amb Thunderbird 91.{L2} {L1}Millora de la compatibilitat amb temes foscos i de tercers, tant a la pantalla d'opcions com a la barra d'eines de navegació. {L2} {L1}Millora de la visibilitat del botó [novetats] amb -Tema estàndard de les carpetes ràpides {L2} {L1}Corregit: de vegades la sessió es restablia quan es reiniciava o després d’instal·lar altres complements o actualitzacions, de manera que es mostraven totes les categories.{L2}"
+    "message" : "{L1} Corregit a 5.7.1: en cercar carpetes amb la sintaxi 'carpeta pare/carpeta pare/carpeta desitjada', no es van tenir en compte les carpetes pares amb noms amb una longitud de caràcter única. {L2}{L1}Compatibilitat amb les carpetes ràpides amb Thunderbird 91.{L2} {L1}Millora de la compatibilitat amb temes foscos i de tercers, tant a la pantalla d'opcions com a la barra d'eines de navegació. {L2} {L1}Millora de la visibilitat del botó [novetats] amb -Tema estàndard de les carpetes ràpides {L2} {L1}Corregit: de vegades la sessió es restablia quan es reiniciava o després d’instal·lar altres complements o actualitzacions, de manera que es mostraven totes les categories.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

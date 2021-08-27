@@ -648,13 +648,16 @@ QuickFolders.Interface = {
 				util.logDebug("{0} invalid tabs where found!\n Please check with find orphaned tabs tool.".replace("{0}", invalidCount));
 		}
     else { // no tabs defined : add instructions label
-      let label = document.createXULElement('label'),
-          txt = util.getBundleString("qf.label.dragFolderLabel");
-      label.id = "QuickFolders-Instructions-Label";
-      label.classList.add("QuickFolders-Empty-Toolbar-Label");
-      label.setAttribute("crop","end");
-      label.textContent = txt;
-      this.FoldersBox.appendChild(label);
+      let existingLabel = this.FoldersBox.querySelector("#QuickFolders-Instructions-Label");
+      if (!existingLabel) {
+        let label = document.createXULElement('label'),
+            txt = util.getBundleString("qf.label.dragFolderLabel");
+        label.id = "QuickFolders-Instructions-Label";
+        label.classList.add("QuickFolders-Empty-Toolbar-Label");
+        label.setAttribute("crop","end");
+        label.textContent = txt;
+        this.FoldersBox.appendChild(label);
+      }
     }
 
 		// [Bug 25598] highlight active tab
@@ -4693,8 +4696,8 @@ QuickFolders.Interface = {
         if (folderNameMatches.length>1) {
           folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
         }
-        if (folderNameMatches.some(a => a.startsWith(ancestors[maxLevel]) && a.length>1)) {
-
+        // [issue 199] include folders that are 1 character long!
+        if (folderNameMatches.some(a => a.startsWith(ancestors[maxLevel]) && a.length>0)) { 
 					if (maxLevel == 0 ) {  // direct parent? Add to collection in case we want to create child (slash) // pLevel==1
 						if (!parentList.includes(firstParent))
 							parentList.push(firstParent);

@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "IMPORTANT: Automatic updates might not ask you to install whenever a new Add-on version requires additional permissions. Instead you will see this warning icon on the Thunderbird main menu button, which you must click to complete the update. Requesting permissions is required for migrating to the new extension system. Otherwise we cannot deliver any bug fixes / new features!"
-  },
   "purchase-a-license": {
     "message": "Purchase a license."
   },
@@ -1063,7 +1060,7 @@
     "message": "The premium license additionally gives you a configurable keyboard shortcut."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "You now use $cntIcons$ custom icons for Tabs. The free version of QuickFolders supports a maximum of $maxFreeIcons$. The standard license supports $maxStdIcons$.",
+    "message": "You now use $cntIcons$ custom icons for Tabs. The unpaid version of QuickFolders supports a maximum of $maxFreeIcons$. The standard license supports $maxStdIcons$. QuickFolders Pro has no limit.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1078,7 +1075,6 @@
         "example": "12"
       }
     }
-    
   },
   "qf.notification.premium.text": {
     "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it."
@@ -1726,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Upgrade now from QuickFolders Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },  
   "special-offer-expiry": {
-    "message": "August 22nd"
+    "message": "September 11th"
   },
   "special-offer-head": {
     "message": "Make QuickFolders sustainable"
@@ -1812,7 +1821,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Made QuickFolders compatible with Thunderbird 91.{L2}{L1}Improved support for dark and 3rd party themes, both in options screen and for Navigation toolbar.{L2}{L1}Improved visibility of [what's new] button with non-standard QuickFolders theme{L2}{L1}Fixed: where all Categories were shown on restart or Add-on updates.{L2}"
+    "message": "{L1}Fixed in 5.7.1: When searching for folders with the syntax 'parent folder/parent folder/wanted folder', parent folders with names with a single character length were not taken into account. {L2}{L1}Made QuickFolders compatible with Thunderbird 91.{L2}{L1}Improved support for dark and 3rd party themes, both in options screen and for Navigation toolbar.{L2}{L1}Improved visibility of [what's new] button with non-standard QuickFolders theme{L2}{L1}Fixed: where all Categories were shown on restart or Add-on updates.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

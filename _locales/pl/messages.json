@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "WAŻNE: Aktualizacje automatyczne mogą nie wymagać instalacji za każdym razem, gdy nowa wersja dodatku wymaga dodatkowych uprawnień. Zamiast tego zobaczysz tę ikonę ostrzeżenia na przycisku menu głównego Thunderbirda, który musisz kliknąć, aby zakończyć aktualizację. Żądanie uprawnień jest wymagane do migracji do nowego systemu rozszerzeń. W przeciwnym razie nie możemy dostarczyć żadnych poprawek / nowych funkcji!"
-  },
   "purchase-a-license": {
     "message": "Kup licencję."
   },
@@ -1063,7 +1060,7 @@
     "message": "Licencja premium zapewnia dodatkowo konfigurowalny skrót klawiaturowy."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Teraz używasz niestandardowych ikon $cntIcons$ dla kart. Darmowa wersja QuickFolders obsługuje maksymalnie $maxFreeIcons$. Standardowa licencja obsługuje $maxStdIcons$.",
+    "message": "Teraz używasz niestandardowych ikon $cntIcons$ dla kart. Bezpłatna wersja QuickFolders obsługuje maksymalnie $maxFreeIcons$. Standardowa licencja obsługuje $maxStdIcons$. QuickFolders Pro nie ma ograniczeń.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1725,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Przejdź teraz z QuickFolders Standard na Pro i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "22 sierpnia"    
+    "message": "11 września"    
   },
   "special-offer-head": {
     "message": "Przygotuj QuickFolders na przyszłość!"
@@ -1811,7 +1821,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Uczyniono QuickFolders kompatybilnymi z Thunderbirdem 91.{L2}{L1}Poprawiona obsługa motywów ciemnych i innych firm, zarówno na ekranie opcji, jak i na pasku narzędzi Nawigacja.{L2}{L1}Poprawiona widoczność przycisku [co nowego] przy braku -standardowy motyw QuickFolders{L2}{L1}Naprawiono: Czasami sesja była resetowana po ponownym uruchomieniu lub po zainstalowaniu innych dodatków lub aktualizacji, tak że wyświetlane były wszystkie kategorie.{L2}"
+    "message": "{L1} Naprawiono w 5.7.1: Podczas wyszukiwania folderów o składni „folder nadrzędny/folder nadrzędny/folder poszukiwany”, foldery nadrzędne o nazwach składających się z jednego znaku nie były brane pod uwagę. {L2}{L1}Uczyniono QuickFolders kompatybilnymi z Thunderbirdem 91.{L2}{L1}Poprawiona obsługa motywów ciemnych i innych firm, zarówno na ekranie opcji, jak i na pasku narzędzi Nawigacja.{L2}{L1}Poprawiona widoczność przycisku [co nowego] przy braku -standardowy motyw QuickFolders{L2}{L1}Naprawiono: Czasami sesja była resetowana po ponownym uruchomieniu lub po zainstalowaniu innych dodatków lub aktualizacji, tak że wyświetlane były wszystkie kategorie.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -268,9 +268,6 @@
       }
     }
   },
-  "on-permissions": {
-    "message": "IMPORTANTE: gli aggiornamenti automatici potrebbero non richiedere l'installazione ogni volta che una nuova versione del componente aggiuntivo richiede autorizzazioni aggiuntive. Invece vedrai questa icona di avviso sul pulsante del menu principale di Thunderbird, che devi fare clic per completare l'aggiornamento. La richiesta delle autorizzazioni è necessaria per la migrazione al nuovo sistema di estensione. Altrimenti non possiamo fornire correzioni di bug/nuove funzionalità!"
-  },
   "purchase-a-license": {
     "message": "Acquista una licenza."
   },
@@ -1063,7 +1060,7 @@
     "message": "La licenza premium ti offre inoltre una scorciatoia da tastiera configurabile."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Ora usi le icone personalizzate $cntIcons$ per le schede. La versione gratuita di QuickFolders supporta un massimo di $maxFreeIcons$. La licenza standard supporta $maxStdIcons$.",
+    "message": "Ora usi le icone personalizzate $cntIcons$ per le schede. La versione gratuita di QuickFolders supporta un massimo di $maxFreeIcons$. La licenza standard supporta $maxStdIcons$. QuickFolders Pro non ha limiti.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1725,8 +1722,21 @@
       }
     }
   },
+  "special-offer-upgrade": {
+    "message": "Esegui subito l'upgrade da QuickFolders Standard a Pro e risparmia {boldStart}$reduction${boldEnd}! Questa offerta speciale sarà disponibile fino al {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  }, 
   "special-offer-expiry": {
-    "message": "22 agosto"    
+    "message": "11 settembre"    
   },
   "special-offer-head": {
     "message": "Rendi QuickFolders una prova per il futuro!"
@@ -1811,7 +1821,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Cartelle rapide rese compatibili con Thunderbird 91.{L2}{L1}Supporto migliorato per temi scuri e di terze parti, sia nella schermata delle opzioni che per la barra degli strumenti di navigazione.{L2}{L1}Visibilità migliorata del pulsante [novità] con non -standard QuickFolders theme{L2}{L1}Risolto: a volte la sessione veniva ripristinata al riavvio o dopo l'installazione di altri componenti aggiuntivi o aggiornamenti, in modo da visualizzare tutte le categorie.{L2}"
+    "message": "{L1}Risolto in 5.7.1: durante la ricerca di cartelle con la sintassi 'cartella padre/cartella padre/cartella ricercata', le cartelle padre con nomi con una lunghezza di un solo carattere non venivano prese in considerazione. {L2}{L1}QuickFolders rese compatibili con Thunderbird 91.{L2}{L1}Supporto migliorato per temi scuri e di terze parti, sia nella schermata delle opzioni che per la barra degli strumenti di navigazione.{L2}{L1}Visibilità migliorata del pulsante [novità] con non -standard QuickFolders theme{L2}{L1}Risolto: a volte la sessione veniva ripristinata al riavvio o dopo l'installazione di altri componenti aggiuntivi o aggiornamenti, in modo da visualizzare tutte le categorie.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

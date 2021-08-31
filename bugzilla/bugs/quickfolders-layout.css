@@ -572,22 +572,6 @@ menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-properties {
 	list-style-image: url("chrome://quickfolders/skin/ico/mail_generic.png");
 }
 
-/* Let's decommission these - bad idea as it breaks aero menus in Win7's default theme
-menuitem[id|="context"],
-menuitem[label],
-menuitem[tabid|="tab-item"],
-menuitem[id|="textlink"] {
-  -moz-binding: url("chrome://global/content/bindings/menu.xml#menuitem-iconic") !important;
-}
-
-menupopup menu[label],
-popup menu[label]{
-  -moz-binding: url("chrome://global/content/bindings/menu.xml#menu-iconic") !important;
-}
-*/
-
-/* instead: http://mxr.mozilla.org/comm-central/source/mail/themes/gnomestripe/mail/compose/messengercompose.css#507 */
-
 menupopup.QuickFolders-folder-popup .menu-iconic-left {
 	 visibility: visible; /* make icons always visible in gnome! */
 	 -moz-image-region: auto; /* trash inheritance */

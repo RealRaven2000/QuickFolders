@@ -1821,7 +1821,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 已在 5.7.1 中修復：搜索具有“父文件夾/父文件夾/想要的文件夾”語法的文件夾時，不考慮名稱為單個字符長度的父文件夾。 {L2} {L1}使 QuickFolders 與 Thunderbird 91 兼容。{L2}{L1}在選項屏幕和導航工具欄中改進了對黑暗和 3rd 方主題的支持。{L2}{L1}改進了 [what's new] 按鈕與非 -標準 QuickFolders 主題{L2}{L1}已修復：有時在重新啟動或安裝其他附加組件或更新後會重置會話，以便顯示所有類別。{L2}"
+    "message": "{L1}在 5.7.2 中修復：當 quickFilters 激活其助手時，選項卡左側的所有圖標都將變為白色{L2}{L1} 已在 5.7.1 中修復：搜索具有“父文件夾/父文件夾/想要的文件夾”語法的文件夾時，不考慮名稱為單個字符長度的父文件夾。 {L2} {L1}使 QuickFolders 與 Thunderbird 91 兼容。{L2}{L1}在選項屏幕和導航工具欄中改進了對黑暗和 3rd 方主題的支持。{L2}{L1}改進了 [what's new] 按鈕與非 -標準 QuickFolders 主題{L2}{L1}已修復：有時在重新啟動或安裝其他附加組件或更新後會重置會話，以便顯示所有類別。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

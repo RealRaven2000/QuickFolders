@@ -1821,7 +1821,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Fixed in 5.7.1: When searching for folders with the syntax 'parent folder/parent folder/wanted folder', parent folders with names with a single character length were not taken into account. {L2}{L1}Made QuickFolders compatible with Thunderbird 91.{L2}{L1}Improved support for dark and 3rd party themes, both in options screen and for Navigation toolbar.{L2}{L1}Improved visibility of [what's new] button with non-standard QuickFolders theme{L2}{L1}Fixed: where all Categories were shown on restart or Add-on updates.{L2}"
+    "message": "{L1}Fixed in 5.7.2: When quickFilters activates its assistant, all icons on left to the tabs will be white{L2}{L1}Fixed in 5.7.1: When searching for folders with the syntax 'parent folder/parent folder/wanted folder', parent folders with names with a single character length were not taken into account. {L2}{L1}Made QuickFolders compatible with Thunderbird 91.{L2}{L1}Improved support for dark and 3rd party themes, both in options screen and for Navigation toolbar.{L2}{L1}Improved visibility of [what's new] button with non-standard QuickFolders theme{L2}{L1}Fixed: where all Categories were shown on restart or Add-on updates.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

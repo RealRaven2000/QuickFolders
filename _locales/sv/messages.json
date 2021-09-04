@@ -1821,7 +1821,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Fixat i 5.7.1: Vid sökning efter mappar med syntaxen 'överordnad mapp/överordnad mapp/önskad mapp' beaktades inte överordnade mappar med namn med en enda teckenlängd. {L2}{L1} Gjorde QuickFolders kompatibla med Thunderbird 91. {L2} {L1} Förbättrat stöd för mörka teman och tredjeparts teman, både i alternativskärmen och för navigationsverktygsfältet. {L2} {L1} Förbättrad synlighet för [vad som är nytt] -knappen med icke -standard QuickFolders-tema {L2} {L1} Fast: Ibland återställdes sessionen vid omstart eller efter installation av andra tillägg eller uppdateringar, så att alla kategorier visades. {L2}"
+    "message": "{L1} Fixat i 5.7.2: När quickFilters aktiverar sin assistent blir alla ikoner till vänster på flikarna vita {L2}{L1} Fixat i 5.7.1: Vid sökning efter mappar med syntaxen 'överordnad mapp/överordnad mapp/önskad mapp' beaktades inte överordnade mappar med namn med en enda teckenlängd. {L2}{L1} Gjorde QuickFolders kompatibla med Thunderbird 91. {L2} {L1} Förbättrat stöd för mörka teman och tredjeparts teman, både i alternativskärmen och för navigationsverktygsfältet. {L2} {L1} Förbättrad synlighet för [vad som är nytt] -knappen med icke -standard QuickFolders-tema {L2} {L1} Fast: Ibland återställdes sessionen vid omstart eller efter installation av andra tillägg eller uppdateringar, så att alla kategorier visades. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

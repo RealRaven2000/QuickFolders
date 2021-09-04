@@ -1812,7 +1812,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message" : "{L1} Corregit a 5.7.1: en cercar carpetes amb la sintaxi 'carpeta pare/carpeta pare/carpeta desitjada', no es van tenir en compte les carpetes pares amb noms amb una longitud de caràcter única. {L2}{L1}Compatibilitat amb les carpetes ràpides amb Thunderbird 91.{L2} {L1}Millora de la compatibilitat amb temes foscos i de tercers, tant a la pantalla d'opcions com a la barra d'eines de navegació. {L2} {L1}Millora de la visibilitat del botó [novetats] amb -Tema estàndard de les carpetes ràpides {L2} {L1}Corregit: de vegades la sessió es restablia quan es reiniciava o després d’instal·lar altres complements o actualitzacions, de manera que es mostraven totes les categories.{L2}"
+    "message" : "{L1} Corregit al 5.7.2: quan QuickFilters activa el seu assistent, totes les icones de l'esquerra a les pestanyes seran blanques {L2}{L1} Corregit a 5.7.1: en cercar carpetes amb la sintaxi 'carpeta pare/carpeta pare/carpeta desitjada', no es van tenir en compte les carpetes pares amb noms amb una longitud de caràcter única. {L2}{L1}Compatibilitat amb les carpetes ràpides amb Thunderbird 91.{L2} {L1}Millora de la compatibilitat amb temes foscos i de tercers, tant a la pantalla d'opcions com a la barra d'eines de navegació. {L2} {L1}Millora de la visibilitat del botó [novetats] amb -Tema estàndard de les carpetes ràpides {L2} {L1}Corregit: de vegades la sessió es restablia quan es reiniciava o després d’instal·lar altres complements o actualitzacions, de manera que es mostraven totes les categories.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

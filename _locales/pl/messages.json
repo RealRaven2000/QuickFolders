@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Pasek QuickFolders"
   },
+  "qf.toolbarIconSize": {
+    "message": "Duże ikony na pasku narzędzi, jak przeczytano"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "Minimalna wysokość:"
   },
@@ -1821,7 +1824,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Naprawiono w 5.7.2: Gdy quickFilters aktywuje swojego asystenta, wszystkie ikony po lewej stronie kart będą białe{L2} {L1}Naprawiono w 5.7.1: Podczas wyszukiwania folderów o składni „folder nadrzędny/folder nadrzędny/folder poszukiwany”, foldery nadrzędne o nazwach składających się z jednego znaku nie były brane pod uwagę. {L2}{L1}Uczyniono QuickFolders kompatybilnymi z Thunderbirdem 91.{L2}{L1}Poprawiona obsługa motywów ciemnych i innych firm, zarówno na ekranie opcji, jak i na pasku narzędzi Nawigacja.{L2}{L1}Poprawiona widoczność przycisku [co nowego] przy braku -standardowy motyw QuickFolders{L2}{L1}Naprawiono: Czasami sesja była resetowana po ponownym uruchomieniu lub po zainstalowaniu innych dodatków lub aktualizacji, tak że wyświetlane były wszystkie kategorie.{L2}"
+    "message": "{L1}Thunderbird nie przeskakuje już do skrzynki odbiorczej podczas sprawdzania nowych wiadomości e-mail z menu kontekstowego.{L2}{L1}Obsługa dużych ikon w przyciskach paska narzędzi QuickFolders do wyświetlania w wysokiej rozdzielczości.{L2}{L1}Naprawiono: przenoszenie folderów z funkcji quickMove nie powiodło się w Tb91.{L2}{L1}Poprawki różnych układów specyficzne dla Thunderbird 91.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

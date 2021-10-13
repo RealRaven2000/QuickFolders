@@ -1293,6 +1293,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders ツールバー"
   },
+  "qf.toolbarIconSize": {
+    "message": "大きなツールバーアイコン"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "最小高さ:"
   },
@@ -1822,7 +1825,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} 5.7.2で修正済み：quickFiltersがアシスタントをアクティブにすると、タブの左側にあるすべてのアイコンが白になります{L2} {L1} 5.7.1で修正済み：構文「親フォルダー/親フォルダー/必要なフォルダー」でフォルダーを検索するときに、1文字の長さの名前を持つ親フォルダーが考慮されませんでした。 {L2} {L1}QuickFoldersをThunderbird91と互換性のあるものにしました。{L2} {L1}オプション画面とナビゲーションツールバーの両方で、ダークテーマとサードパーティテーマのサポートを改善しました。{L2} {L1}[新機能]ボタンの表示を改善しました。 -標準のQuickFoldersテーマ{L2} {L1}修正済み：再起動時、または他のアドオンやアップデートのインストール後にセッションがリセットされ、すべてのカテゴリが表示されることがありました。{L2}"
+    "message": "{L1}コンテキストメニューから新着メールをチェックするときにThunderbirdが受信トレイにジャンプしなくなりました。{L2} {L1}高解像度ディスプレイ用のQuickFoldersツールバーボタンの大きなアイコンのサポート。{L2} {L1}修正：フォルダの移動 Tb91でquickMove関数から失敗しました。{L2} {L1} Thunderbird91に固有のさまざまなレイアウトの修正。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

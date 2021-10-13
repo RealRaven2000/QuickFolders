@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Barra de herramientas de QuickFolders"
   },
+  "qf.toolbarIconSize": {
+    "message": "Iconos grandes de la barra de herramientas"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "Altura mínima:"
   },
@@ -1821,7 +1824,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Corregido en 5.7.2: Cuando quickFilters activa su asistente, todos los íconos a la izquierda de las pestañas serán blancos {L2}{L1} Corregido en 5.7.1: Al buscar carpetas con la sintaxis 'carpeta principal/carpeta principal/carpeta deseada', las carpetas principales con nombres con una longitud de un solo carácter no se tenían en cuenta. {L2} {L1} Se hizo compatible QuickFolders con Thunderbird 91. {L2} {L1} Se mejoró la compatibilidad con temas oscuros y de terceros, tanto en la pantalla de opciones como en la barra de herramientas de navegación. {L2} {L1} Visibilidad mejorada del botón [novedades] sin -Tema de QuickFolders estándar {L2} {L1} Solucionado: a veces, la sesión se restablecía al reiniciar o después de instalar otros complementos o actualizaciones, de modo que se mostraban todas las categorías. {L2}"
+    "message": "{L1} Thunderbird ya no entra en la Bandeja de entrada cuando busca nuevos correos desde el menú contextual. {L2} {L1} Soporte para íconos grandes en los botones de la barra de herramientas QuickFolders para pantallas de alta resolución. {L2} {L1} Corregido: mover carpetas de la función quickMove falló en Tb91. {L2} {L1} Varias correcciones de diseño específicas de Thunderbird 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

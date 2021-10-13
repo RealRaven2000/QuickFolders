@@ -72,9 +72,29 @@
     }
     
     #version-history div.announcement {
-      padding: 0.5em 0.8em;
-      margin: 0.5em 2em;
       border-radius: 4px;
+      margin: 0.5em 2em;
+      max-width: 835px;
+      padding: 0.5em 0.8em;
+    }
+    #reinstallInstructions img {
+      margin-top: 0.8em;
+      max-width: 720px;
+    }
+    
+    #expandInstructions {
+      display: inline-block;
+      cursor: pointer;
+      background-color: #006EB7; /* blue */
+      background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
+      border-radius: 0.6em;
+      color: white;
+      font: 10pt arial,verdana,sans-serif bold;
+      padding: 0.4em 0.3em;
+    }
+    
+    #reinstallInstructions {
+      display: none;
     }
     
 		</style>
@@ -93,6 +113,7 @@
 
   <body>
     <!-- ################### BEGIN TOP ################## -->
+
 
 
     <!-- ####################### BEGIN MAIN CONTENT ########################## -->
@@ -282,16 +303,23 @@
             that says otherwise after updating from earlier versions (Tb68 or Tb78) or <b>if QuickFolders cannot be enabled</b> with 
             the blue slider, simply remove it and reinstall it via "Find more Add-ons" on the Extensions tab of Add-ons Manager:
           </p>
-          <p> 
-            Removing the Add-on will still retain your settings:
-            <img class="screenshot" src="images/remove-qf.png" alt="remove to reinstall" /> 
-          </p>
-          <img class="screenshot" src="images/search-qf-addon.png" alt="force reinstallation via Addon Manager" /> 
-          <p>
-            Then click on the <i>Add to Thunderbird</i> button:
-          </p>
-          <img class="screenshot" src="images/install-from-atn.png" alt="Add to Thunderbird" />
+          <div id="reinstallInstructions">
+            <p> 
+              Removing the Add-on via Thunderbird the Add-ons Manager will still retain your settings:<br>
+              <img class="screenshot" src="images/remove-qf.png" alt="remove to reinstall" /> 
+            </p>
+            <p>
+              In the Search box, enter the term <i>QuickFolders</i>, and press the Enter key:<br>
+              <img class="screenshot" src="images/search-qf-addon.png" alt="force reinstallation via Addon Manager" /> 
+            </p>
+            <p>
+              Then click on the <i>Add to Thunderbird</i> button:<br>
+              <img class="screenshot" src="images/install-from-atn.png" alt="Add to Thunderbird" />
+            </p>
+          </div>
+          <div id="expandInstructions">Click to read instructions for reinstalling:</div> <br>
         </div>
+        
         <ul>
           <h4 class="inList">Improvements</h4>
           <li>
@@ -3578,4 +3606,21 @@
 		</div> <!-- CLOSE <div id="main-content-no-nav"> with the blue box -->
 		<div id="downPusher"></div><!-- push down the black main background -->
 	</body>
+  
+  <script>
+    let expandBtn = document.getElementById("expandInstructions");
+    expandBtn.addEventListener("click", function() {
+      let instruct = document.getElementById("reinstallInstructions");
+      if (instruct.style.display != "block") {
+        instruct.style.display = "block";
+        expandBtn.textContent = "Hide instructions";
+      }
+      else {
+        instruct.style.display = "none";
+        expandBtn.textContent = "Click to read instructions for reinstalling";
+      }
+    });
+    
+  </script>  
+  
 </html>

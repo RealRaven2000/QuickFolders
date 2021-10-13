@@ -71,8 +71,10 @@
       font-weight: bold;
     }
     
-    div.announcement {
+    #version-history div.announcement {
       padding: 0.5em 0.8em;
+      margin: 0.5em 2em;
+      border-radius: 4px;
     }
     
 		</style>
@@ -274,12 +276,14 @@
 				<h4>
 				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.8 - WIP</a>
 				</h4>
-        <p class="psa announcement">
-          Please note that QuickFolders is compatible with the latest version of Thunderbird (91.2) - if you get a message 
-          that says otherwise after updating from earlier versions (Tb68 or Tb78) or QuickFolders cannot be enabled with 
-          the blue slider, simply remove it and reinstall it via "Find more Add-ons" on the Extensions tab of Add-ons Manager:
+        <div class="psa announcement">
+          <p>
+            Please note that QuickFolders is compatible with the latest version of Thunderbird (91.2) - if you get a message 
+            that says otherwise after updating from earlier versions (Tb68 or Tb78) or QuickFolders cannot be enabled with 
+            the blue slider, simply remove it and reinstall it via "Find more Add-ons" on the Extensions tab of Add-ons Manager:
+          </p>
           <img class="screenshot" src="images/search-qf-addon.png" alt="force reinstallation via Addon Manager" />
-        </p>
+        </div>
         <ul>
           <h4 class="inList">Improvements</h4>
           <li>

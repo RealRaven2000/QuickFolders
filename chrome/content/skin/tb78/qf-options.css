@@ -35,10 +35,12 @@ menulist > menupopup > menuitem[_moz-menuactive="true"] {
 }
 
 
-menulist#folderCrossing,
-menulist[preference^="extensions.quickfolders"] , 
+/* menulist#folderCrossing, 
+button,
 menulist#QuickFolders-CurrentFolder-Background-Select 
+*/
+menulist[preference$=".paletteType"]
 {
-  color: var(--field-text-color) !important; 
+  color: var(--lwt-text-color,--field-text-color) !important; 
   background-color: var(--button-background) !important;
 }

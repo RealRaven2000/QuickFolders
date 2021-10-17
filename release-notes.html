@@ -11,22 +11,26 @@ You can also <a href="https://quickfolders.org/donate.html#donate">donate from h
 
 <b>Improvements</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/205">[issue 205]</a> When clicking "get Messages" from any tab, QF used to also jump into the folder. this is actually not desired behavior, as you may have filters defined that do not even require jumping into the Inbox when new mail is downloaded. </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/205">[issue 205]</a> When clicking "get Messages" from any tab, QuickFolders used to also jump into the folder. This behavior is actually not desired, as you may have filter rules defined which remove mail from the Inbox so jumping into the Inbox is not useful when new mail is downloaded. </li>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/191">[issue 191]</a> Support large icon in QuickFolders toolbar buttons for high resolution displays. </li>
 </ul>
 
 <b>Bug Fixes + Miscellaneus</b>
 <ul>
 <li>
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/203">[issue 203]</a> Fixed: When quickFilters activates its assistant, all icons on left to the tabs will be white. </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/211">[issue 211]</a> Fixed: move Folders in quickMove fails in Thunderbird 91. You can now again drag (multiple) folders from the tree to the quickMove button in order to relocate them. Or use the Shortcut Shift+M if you have a QuickFolders Pro license. </li>
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/203">[issue 203]</a> Fixed: When the quickFilters Add-on activates its assistant, all icons on left to the tabs on the QuickFolders toolbar turned white. </li>
 <li>
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/209">[issue 209]</a> Fixed: With some themes, tabs in Options Dialog become illegible in Thunderbird 91. </li>
-<li>
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/211">[issue 211]</a> Fixed: move Folders in quickMove fails in Thunderbird 91 </li>
-<li> Fixed: In Thunderbird 91, background area behind current folder toolbar does not show correct background color from lightweight theme, even when lightweight support is enabled. </li>
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/209">[issue 209]</a> Fixed: Tabs in Options Dialog become illegible in Thunderbird 91 when using dark themes with bright text. </li>
+<li>Fixed: In Thunderbird 91, background area behind current folder toolbar does not show correct background color from lightweight theme, even when lightweight support is enabled. </li>
+<li>Fixed: The History Tab was not displayed anymore when updating QuickFolders.</li>
 </ul>
 
-<b>Known unresolved issues</b>
+<b>Known unresolved issues - W.I.P.</b>
 <ul>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/204">[issue 204]</a> WIP - Thunderbird 91: Background of QuickFolders toolbar doesn't support some themes when set to transparent. </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/208">[issue 208]</a> Upgrade from TB 78 to 91.1.2 sometimes leads to invalid / "orphaned" tabs.
+For the moment, you should be able to resolve these by clicking a tab with the "broom" / invalid icon or by running the tool command "Find Orphaned tabs".
+
+Should this not give the desired results, then you can export your tabs via the license tab or on the Advanced tab using the [Copy Tabs] button and send me the file so I can help you fix this. </li>
 </ul>

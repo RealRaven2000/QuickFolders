@@ -594,7 +594,7 @@ QuickFolders.Interface = {
 				if (!this.shouldDisplayFolder(folderEntry))
 					continue;
 
-				folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false)
+				folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false);
 				countFolders++;
 				if (!folder) {
 					invalidCount++;
@@ -735,9 +735,12 @@ QuickFolders.Interface = {
 				let mw = util.$("messengerWindow");
 				if (mw) {
 					let backImage = window.getComputedStyle(mw).getPropertyValue("background-image");
-					if (backImage && prefs.getBoolPref("currentFolderBar.background.lightweight")) {
-						styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", backImage);  // was #QuickFolders-PreviewToolbarPanel
-						styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-position", "right top"); // was #QuickFolders-PreviewToolbarPanel
+					if (prefs.getBoolPref("currentFolderBar.background.lightweight")) {
+            if (backImage && backImage!="none")
+              styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", backImage);  
+            else
+              styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", "var(--lwt-header-image)", true);
+						styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-position", "right 0px top -75%"); 
 						styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "0.98");
 					}
 					else {
@@ -784,6 +787,8 @@ QuickFolders.Interface = {
 						node.collapsed = hideFolderNavigation;
 					}
 				}
+        
+        toolbar2.setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 191]
 			}
 
 		}
@@ -2407,9 +2412,14 @@ QuickFolders.Interface = {
 				}
 				else {
 					// interface speed hack: mark the button as selected right away!
-					this.onTabSelected(button);
-					QuickFolders_MySelectFolder(button.folder.URI);
-					evt.preventDefault(); // prevent opening the popup
+          if (evt.originalTarget && evt.originalTarget.tagName == "menuitem") {
+            ; // [issue 205] if the tag is a menuitem we do not call this code.
+          }
+          else {
+            this.onTabSelected(button);
+            QuickFolders_MySelectFolder(button.folder.URI);
+            evt.preventDefault(); // prevent opening the popup
+          }
 				}
 			}
 		}
@@ -2661,7 +2671,8 @@ QuickFolders.Interface = {
     let util = QuickFolders.Util,
         button = util.getPopupNode(element),
         folder = button.folder,
-        entry = QuickFolders.Model.getFolderEntry(folder.URI),
+        folderURI = folder ? folder.URI : button.getAttribute("folderURI"),
+        entry = QuickFolders.Model.getFolderEntry(folderURI),
         boxObject = button.getBoundingClientRect(),     // boxObject deprecate in Tb78
         // [issue 94] fix screen position in Tb78
         x = button.screenX,                             // boxObject.x // boxObject.screenX
@@ -6223,6 +6234,8 @@ QuickFolders.Interface = {
       styleEngine.setElementStyle(ss,"#QuickFolders-Toolbar", "-moz-box-ordinal-group", ordinalGroup.toString());
 
 			util.logDebugOptional ("css","updateUserStyles(): success");
+      
+      util.$("QuickFolders-Tools-Pane").setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 191]
 			return true;
 		}
 		catch(e) {
@@ -6682,17 +6695,33 @@ QuickFolders.Interface = {
 											 (fld.server.type == "pop3" || fld.server.type == "imap" || fld.server.type == "none")),
 						listener = null;
         if (isCopy) isMove=false; // force copy
-        let cs = Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService),
-            array = toXPCOMArray(folders, Ci.nsIMutableArray); // Tb 78
-        if (cs.CopyFolders)
+        
+        /** **/
+        var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
+        let cs = 
+          MailServices.copy ||
+          Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
+        if (cs.CopyFolders) { // Tb 78
+          QuickFolders.Util.logDebug("Calling CopyFolders() on ", targetFolder);
+          let array = (typeof toXPCOMArray !== "undefined") ? toXPCOMArray(folders, Ci.nsIMutableArray) : folders; 
           cs.CopyFolders(array,
                          targetFolder,
                          isMove,
                          listener,
                          msgWindow); // msgWindow  - global
+        }
         else { // Tb 88
-          var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
-          MailServices.copy.copyFolders(folders, targetFolder, isMove, listener, null);
+          cs = MailServices.copy;
+          if (cs.copyFolder) { // Tb 92
+            QuickFolders.Util.logDebug("Calling copyFolder() on ", targetFolder);
+            for (let f=0; f<folders.length; f++) {
+              cs.copyFolder(folders[f], targetFolder, isMove, listener, null);
+            }
+          }
+          else { // Tb 88
+            QuickFolders.Util.logDebug("Calling copyFolders() on ", targetFolder);
+            cs.copyFolders(folders, targetFolder, isMove, listener, null);
+          }
         }
 				// in case it has a Tab, fix the uri
 				//  see also OnItemRemoved

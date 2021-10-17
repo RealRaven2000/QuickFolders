@@ -43,7 +43,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 		try {
 			util.logDebug("modifyHeader(" + hdr +", " + cmd + ", " + argument + ")");
 			if (!whiteList.includes(hdr)) {
-				util.logToConsole("invalid header - no permission to modify: " + hdr);
+				util.logToConsole("Invalid header - no permission to modify: " + hdr);
 				return '';
 			}
 			// get
@@ -109,7 +109,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 							break;
 						case 'prefix':
 							// targetString = argument.toString() + ' ' + targetString; 
-							// invalid!
+							// not valid!
 							break;
 						case 'append': // append an address field (if not contained already)
 													 // also omit in Cc if already in To and vice versa

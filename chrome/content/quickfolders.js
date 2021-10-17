@@ -11,375 +11,10 @@ END LICENSE BLOCK */
   Project History
   ===============
 	
-	legacy history (0.9.3 - 3.14) moved to file: history_legacy.txt
+	legacy history (0.9.3 - 4.23) moved to file: history_legacy.txt
 
-=== 4.0 ===
-	
-  4.0 - 15/02/2015
-    ### PREMIUM FEATURES
-    ## [FR 25708] Allow customizing icons in Folder tree (Thunderbird only)
-    ## [Bug 25645] Interface for adding custom Icons (16px*16px) to Tabs
-    ## [FR 25825] quickMove feature - move mails to any folder by drag + entering name
-		## [FR 23039] Support Line breaks to force Multiple Rows of Tabs 
-		## [FR 24431] Optional Separators between tabs 
-    ### FREE IMPROVEMENTS
-    ## Allow dragging multiple folders to QuickFolders tab (Tb / SeaMonkey)
-    ## Added "Download Now" Command for unsynchronized IMAP / Exchange folders.
-		## Fixed [Bug 25697] - When clicked, tab is incorrectly flagged for invalid folder: this seemed to mainly affect Linux users on IMAP
-		## Added new mail folder command: "Explore Folder Location..."
-    ## Added prompt for subject line when sending support email
-    ## Improved large font support and spacing, especially on current folder bar.
-    ## Paint mode: holding CTRL while painting will advance to the next color, CTRL+SHIFT goes back to previous color
-    ## Fixed: Active Tab font color wasn't set reliably if active tab palette differs from uncolored / standard tabs.
-    ## Fixed [Bug 25722] Hover Tab color is overwritten when right-clicking a Tab
-    ## Fixed [Bug 25721] Drag Over Color not working in 2 Color mode
-    ## Fixed: In some cases QuickFolders loaded the default font color if the user has stored 
-              certain color value (due to wrong use of prefHasUserValue)
-	  ## Fixed: QuickFolders.Worker is undefined (quickfolders-filterWorker.js Line: 157)
-    ## Fixed: Recent folder menu shows encoded path decreasing readability
-    ## Fixed: Sometimes tabContainer.selectedIndex can be uninitialized leading to the set current folder failing (when clicking a QF tab)
-    ## Fixed [Bug 25824] In Ubuntu, QuickFolders Toolbar color cannot be set
-    ## Improved Current Folder bar in Single Message window. (Styling + moving through messages)
-    ## Feature Request [Bug 25513] Mark message as read when moving: toggle extensions.quickfolders.markAsReadOnMove to true for this behavior
-    ## Feature Request [Bug 25856] 'Display total number of messages' on a per button basis
-    ## [Bug 25941] : drag to new folder on IMAP fails
-    ## Added configuration setting for folder navigation buttons and hide by default to simplify
-    ## Show subfolders in popup menus is now activated by default (extensions.quickfolders.showSubfolders)
-    ## removed retired Thunderbird overlays (appversion<12)
-    ### VISUAL IMPROVEMENTS
-    ## Night Vision Palette for dark themes
-    ## Revised Standard and Pastel Colors
-    
-	4.0.3 QuickFolders Pro final release - 07/03/2015
-    ## [Bug 25939] Hide current folder tab in single message tab
-    ## modify "Find Folder" Icon to tie in with quickJump feature
-    ## simplify Options Icon
-    ## add option to hide prev/next/parent buttons in current Folder bar
-    ## add tooltips to current folder previous and next sibling
-    ## QuickFolders label autohide?
-    ## Add a (?) Icon and link beside the Filter button in Options to link to quickFilters!
-    ## Use UITourHighlight (http://mxr.mozilla.org/mozilla-central/source/browser/base/content/browser.xul#241)
-    ## or something similar to highlight new UI features
-    ## Investigate how Preferences.loadFolderEntries() works when the results are not assigned to Model.selectedFolders
-		
-  4.1.1 QuickFolders Pro - 17/07/2015
-    ## [Bug 26021] Postbox 4.0 Compatibility
-    ## [Bug 26019] Premium feature - Added "Reading List" for storing bookmarks for important mails
-    ## quickMove / quickJump - made shortcut less "greedy" so that CTRL+SHIFT or ALT+SHIFT do not trigger it. 
-       But also allow more areas to use the shortcut from (folder tree, accounts tree [Postbox], conversation view)
-       Improved the quickJump by accepting start text for ALL words in string (So if you type "mil" you can jump into the 
-       folder "Steve Miller" by hitting Enter instantly, provided there is only 1 find result)
-    ## Postbox / SeaMonkey - display the Icons menuitem on the QuickFolders Commands interface 
-       (this doesn't support icons in the folder tree, but on the tabs themselves)
-    ## Added Slovenian locale {thanks to Peter Klofutar - Babelzilla.org}
-    ## "Remove from current category" had a bug that showed all categories if the FIRST category was removed from a Tab
-    ## [Bug 25991] Disambiguate folders shown in quickMove Name Box 
-        - added configuration options for the quickJump / quickMove results
-        - increased default depth to 3 and include Account by default 
-    ## Changed default of recentfolders.folderPathDetail to 2 
-    ## [Bug 25864] By default, unread subfolders aren't highlighted. changing the defaults to make this simpler:
-               [x] Also display totals of subfolders - true
-               [x] Highlight Folders with new mail - true
-               [x] Display Tabs with newly arrived mail italic
-    ## Bugfix: Removed side effect that overwrites naming conventions of new filters created with quickFilters.
-    ## [Bug 26046] Thunderbird 38 does not show customized Icons in folder tree
-    ## Made highlighted new mail better readable
-    ## Fixed: when mails are "queued" for a quickMove operation, using the keyboard shortcut "quickJump" temporarily 
-       should not move the mails but navigate to the folder instead
-    ## Fixed background color selection in Postbox when palette menu is used in options screen
-    ## Added colored bottom line in Postbox in flat theme and interface to change its height.
-    ## Bling: fixed gradient colors for uncolored inactive tabs in striped mode
-       made text colors more consistent for striped tabs
-       disable transparent / striped options when appropriate
-       in striped mode, do not change color+background color when selecting a new color for inactive tab
-    ## Postbox: when opening a single message window from search results, current folder bar is not initialized correctly
-      
-  4.2 QuickFolders Pro - 20/10/2015
-    ## added support for domain licenses!
-    ## [Bug 26065] - context menu disappears; in some rare cases the popup menus which are displayed on the first drag 
-                     of a message to a QF tab will not be shown again until Thunderbird is restarted. Probably caused 
-                     by an optional debug output.
-    ## Fixed: Added support for brighttext themes - Dark Themes with [brighttext] attribute caused a 
-              QuickFolders toggle button icon to break
-    ## Support quickMove shortcuts from search results window (glodaList)
-    ## Created Shim to avoid warnings: "JavaScript 1.6's for-each-in loops are deprecated;" without crashing Postbox
-    ## [Bug 26070] = quickCopy - like quickMove but only copying an mail
-    ## [Bug 26071] = Hotkey to toggle folder pane  ( F9 )
-    ## [Bug 26088] = quickJump/quickMove Added support for searching child folders - add / search for children
-
-  4.3 QuickFolders Pro - 02/01/2016
-    ## Allow Tab Category of "Never" - Folder Aliases that only show up in quickMove / quickJump
-		## [Bug 26116] Fixed: Tab Specific properties panel always jumps to primary screen.
-    ## [Bug 25682] Allow displaying multiple categories concurrently  (Premium Feature)
-		## Advanced Tab Properties: allow setting default identity and recipients (Premium Feature)
-		## Version History doesn't show Donate reminders for Pro Users anymore 
-		   (Javascript in browser / browser tabs must be enabled)
-		## Remember last Settings Tab, even when closing window with Cancel button
-		
-  4.4.2 QuickFolders Pro - 21/02/2016
-	  ## Compatibility fixes for Thunderbird 44.0 - 46.0
-		## Increased minimum version to 34.0
-		## [Bug 25941] Implemented new method "Drag to New Folder..." on Tabs for IMAP accounts (Thunderbird only; Postbox doesn't support asynchronous tasks yet)
-		##             wrote some fix for the (timer-based) old code for Postbox
-		## [Bug 26149] New Folder should be shown in Recent Folders history
-		## Added selection box for not asking to go to next unread folder
-	  ## Stop showing donation screen on upgrade for Pro Users - the logic was reversed in previous version
-		## SeaMonkey: Fixed Error "Main is Null" when options is opened without visible mail window
-		## [Bug 26150] quickJump - create child folder command [Premium Feature]
-		## [Bug 26156] When creating a new subfolder it doesn't always show in Recent folder list
-		## [Bug 26157] Add special icon for Deleted folders in recent folders list
-		
-  4.5 QuickFolders Pro - 24/07/2016
-		## [Bug 26224] Dragging emails to quickfolder tab broken in Tb 48.0
-		## [Bug 26223] Thunderbird 45.0: Notification Window is Larger and in workspace 
-		## [Bug 26227] If none of the keyboard shortcuts in general settings are active, quickJump / quickMove keys will also not work.
-	  ## [Bug 26178] Creating a new folder using the quickMove method (POP3) doesn't add this to the top of the recent folder list
-		## [Bug 26202] Shift-[Key] shortcuts interferes with Thunderbird Conversations Addon
-		## [Bug 26258] Postbox: collapsed accounts are not switched when clicking account tab
-		
-	4.6 QuickFolders Pro -  26/11/2016
-		## [Bug 26283] add matches from quickfolders tabs for creating new subfolders
-		## Relinked to new support site at quickfolder.org
-	  ## Support copying and pasting the folder tabs definitions in order to edit them in a text editor.
-		## Support for Postbox 5
-		## Made coloring + styling (flat style) more reliable in SeaMonkey
-		## Platform modernization: replaced old dragdrop events with drop events.
-		## Ensured Compatibility with Fossamail 26.
-		## New function for opening the folder of current mail
-		
-	4.7 QuickFolders Pro - 20/02/2017
-	  ## [Bug 26313] Dragging quickfolder tabs (to re-order) broken in Tb 50.0b3
-	  ## Added autocollapse function for Categories dropdown (Options > Advanced)
-		## [Bug 25764] Add Configurable Button to Repair the Current Folder
-		## [Bug 26268] Make popup menus for quickMove path wider
-		## Completed Simplified Chinese Locale - thanks to YFdyh000 and Loviny at Babelzilla.org
-		## [Bug 26321] 'Unreachable code after return statement'
-		## [Bug 26323] Remove unnecessary padding on left of QuickFolders tab labels
-		## Added Version number to subject line in Options / Support Tab / Contact Me
-		## [Bug 26336] Confirmation to "Switch to Domain license?" is hidden behind options dialog.
-
-	4.7.1 QuickFolders Pro - 01/03/2017
-    ## [Bug 26346] On drag & drop, mouserollovered tabs' submenus do not close
-		## [Bug 26348] Striped Style was permanently disabled.
-		
-	4.8 QuickFolders Pro - 27/11/2017
-    ## [Bug 26439] Thunderbird 57 hangs on start with quickFilters enabled
-		## [Bug 26452] Moving Mail to new folder fails when the (quickFilters) Filter Assistant is enabled.
-	  ## [Bug 26372] After entering License Key Tabs are not displayed anymore
-		## [Bug 26389] Single Mail Tab: clicking the current folder on Toolbar should open it.
-		## [Bug 26387] 'Color is null' error in Linux when options window is opened.
-		## [Bug 26409] quickMove - create new subfolder not working in empty parent. 
-								   make it possible to create new subfolders using quickMove by 
-									 entering parentFolder/New Folder even if the parent Folder has 
-									 no child folders yet.
-		## [Bug 26453] Seamonkey: The last selected QuickFolders Category is not Remembered.						 
-		## ONGOING: Removing / Forking Deprecated code in preparation for the next big Thunderbird release (57+)
-		
-	4.8.1 QuickFolders Pro - 14/12/2017
-	  ## [Bug 26454] Pro License screen - account dropdown not populated
-		## [Bug 26455] Cannot paste folder tabs in Postbox
-		## (Thunderbird & Postbox only) Improved Premium Feature Notifications to always show 
-		## in a sliding notification bar on main window and not as Messagebox 
-
-	4.8.2 QuickFolders Pro - 20/12/2017
-	  ## emphasize Renew button (dark purple background, slight animation of background opacity)
-		## improved display of expiry date better, days expired in tooltip
-
-	4.8.3 QuickFolders Pro - 25/12/2017
-	  ## translation updates
-		## xmas days special sale 25% off
-		
-  4.9 QuickFolders Pro - 11/03/2018
-		## [Bug 26470] Make QuickFolders compatible with Postbox beta 5.52 (modern Gecko build)
-		## [Bug 26489] ESR 2018 readiness - Make QuickFolders compatible with Thunderbird 60
-		## tidy up (don't show) own filter notification when quickFilters is installed.
-		## Postbox: fix displaying advanced / debug settings when right-clicking some options / debug checkbox 
-		## [Bug 26473] Added toolbar button to create subfolder (within the current folder)
-		## [Bug 26474] "Tab-Specific Properties ..." Add Option to apply mail settings to subfolders
-		## [Bug 26475]  Added Navigation Button "Skip to next Unread Folder" on Current Folder Toolbar.
-		##     Leaves current folder even if it has unread 
-		##     messages and continues to the next unread message in the next unread folder.
-
-		## Allow asynchronous creation of subfolders during quickMove / quickJump in 
-		##       new Postbox builds (5.52 and later, supporting Task)
-		## Added Spanish locale {thanks to strel - Babelzilla.org}
-		## Filter Assistant: remove unnecessary notification box if quickFilters is installed
-		## Advanced Tab colors (postbox) temporary fixes with !important - see Interface.addCustomStyles()
-		## Stability fixes around Util.CurrentFolder
-		## [Bug 26481] Reading List: click on bookmarked mail should switch to already open mail Tab
-		
-	4.9.1 QuickFolders Pro - 13/03/2018
-	  ## Decided to leave button on screen but serve premium notification on use
-		## [Bug 26475] Improved toolbar icon for Tb 54.*
-		
-	4.10 QuickFolders Pro - 25/06/2018
-	  ## Improved go to next unread folder to always go to first unread email 
-		   (and not last current position in folder)
-		## [Bug 26507] Colors menu should only be available on themes supporting it
-		## [Bug 26514] Remove the QuickFolders Tab when deleting folder from its menu.
-		## Fixed version links from Options dialog to support site to avoid showing promotions to Premium Users
-		## [Bug 26517] Support moving multiple folders using Drag + Drop
-		## Moderenised icon for photon look (Thunderbird 60)
-		## Improved brighttext behavior + Apple Pills theming
-		## Automatic Sanitizing of CSS values for Tab Specific custom CSS and current folder toolbar CSS strings
-		
-		
-  4.11 QuickFolders Pro - 16/10/2018
-		## [Bug 26565] Execute quickJump / quickMove with [Enter] if unique match
-		## Added configurable shortcut for "Skip Unread Folder" (Premium Feature)
-		## Some full themes (e.g. Nuvola) do not display the check mark for advanced tab properties
-		## Redesigned (largely monochrome) toolbar icons for Photon look; includes improved brighttext support
-		## Moved links from addons.mozilla.org to addons.thunderbird.net
-		## Improved "unread email count" display by using Triangle instead of Plus sign [+]
-		## [Bug 26570] only show "Mark Folder Read" command if folder has unread mails
-		## [Bug 26571] option to hide QuickFolderes command submenu. 
-		## Added an option to disable the "Open in New Tab" function.
-		## Fixed getOrCreateFolder (creating folders asynchronously) for Thunderbird 60
-		## [Bug 26566] Thunderbird 60 doesn't show custom icons in folder tree
-		## [Bug 26575] Thunderbird 60: QF context menus broken.
-		## Removed palette color names for stability
-	
-  4.11.1 QuickFolders Pro - 29/10/2018
-	  ## [Bug 26592] 	Recent Folder items not working in Thunderbird 52 
-		## [Bug 26590] 	Broken context menu command/s (Empty Junk...)
-
-  4.12 QuickFolders Pro - 23/11/2018
-		## [Bug 26602] PREMIUM FUNCTION: quickMove - prefill last folder option
-	  ## Folder Tree Icons not shown in Thunderbird 52.9.1
-		## [Bug 26600] Newly created folders should show up in Recent folders.
-		## SeaMonkey: Added Repair Tree icons command to tools menu, changeed position of Current Folder Bar
-		
-	4.12.1	QuickFolders Pro - 03/12/2018
-	  ## [Bug 26612] Tb 60.3.2 only displays first row of tabs
-		## Russian Translation complete - thanks to Anton Pinsky and Solokot @ Babelzilla
-		
-  4.13.2 QuickFolders Pro - 25/02/2019
-		## [Bug 26616] folder tree icons of folders without tab don't persist between sessions
-		## removed code that automatically showed donation tab on update. Repurposed donate buttons for selling licenses.
-		## [Bug 26644] High CPU usage caused by "Renew License" button.
-		## fixed gradients to show correctly in Interlink Mail Client.
-		## Added logic for extending license before expiry
-		## Added platform specific style loading routine
-		## Improved license parsing to make resilient against bad line break conversions
-		
-	4.13.3 Interlink only release - 27/02/2019
-	  ## Fixed issue with legacy Iterator which is called for Application with Platform Version < 13
-		##   which caused the quickMove / quickJump search function to malfunction - Interlink Only.
-		
-  4.13.4 QuickFolders Pro - 02/03/2019
-    ## [Bug 26646] Error on Thunderbird start: ensureStyleSheetLoaded failed.
-
-	4.14 QuickFolders Pro - 25/03/2019
-	  ## [Bug 26645] Moving IMAP folders within the tree cuts off QF tabs
-		## Fixed: No context menu was shown When right-clicking the current folder tab in Thunderbird 52
-		   unless user executed double click .
-		## Improved quickMove / quickJump actions: you can now enter multiple forward slashes to determine a chain of parent folders. 
-		## Also moved "create new subfolder" entry to bottom and removed ... entry when any other entries are available.
-	  ## Show the "already have a license" button on the registration screen when the license key is expired.
-		## Tab Categories: replaced deprecated listbox with richlistbox
-		## When selecting Folder Aliases (Never Show) from the Categories box, items that are categorized "Always show" 
-		   are also displayed. from now on QuickFolders will not show the "Always" Item when "Folder Aliases" Category
-			 is selected.
-		## Support deleting multiple Categories from Category box. please only select Categories
-		   you have defined yourself - you cannot select the built in categoires (Always / Never / Uncategorized)
-			 in a multiple selection/
-		## When deleting *all* user defined categories, the categories box was not hidden. I wrote a tidy up
-		   routine that resets any tab that may lead to this problem (remove Show Always category from all tabs)
-			 
-	4.14.1 QuickFolders Pro - 24/04/2019
-	  ## [Bug 26654] quickMove shortcuts triggered during in-mail search
-		## replaced className logic with classList, where possible
-		## quickMove: Improve remembering all entered parent folders when only a single match is found
-		## Removed deprecated getCharPref: make remembering folder tabs preferences backwards 
-		   compatible for older clients (Interlink) by using getComplexValue / getStringPref instead 
-			 (getCharPref could lead to faulty characters when using extended character sets)
-		## Japanese locale completed - thanks to Masahiko Imanaka 
-		## Fixed: Message Navigation Buttons in Current Folder bar could not be hidden via options.		
-		
-	4.15 QuickFolders Pro - 21/05/2019
-	  ## Option for lightweight theme integration - current folder bar can be skinned by theme
-		## options for tweaking spacings around current folder bar
-		## [Bug 26659] Advanced Tab Props - address options falsely always applies to subfolders 
-		## [Bug 26665] quickMove: always support [Enter] to select the top item
-		## quickMove: added [Up] key for immediately jumping to bottom of the list
-		
-		## => backported features into 4.12.2 for Interlink
-		
-	4.15.1 QuickFolders Pro - 04/06/2019
-	  ## [Bug 24468] backup & restore functions
-	  ## [Bug 26670] Improved keyboard navigation: ALT+DOWN for context menu
-		
-	4.15.3 QuickFolders Pro - 17/06/2019
-	  ## [Bug 26671] Only one row of tabs after update to QuickFolders 4.15.1 - this can also lead to trailing tabs missing on screen.
-		
-	4.15.4 QuickFolders Pro - 09/07/2019
-	  ## [Bug 26680] Create subfolder command with "/" stopped working
-		
-	4.15.5 QuickFolders Pro - 14/08/2019
-		## [Bug 26681] On Current Folder Tab, "Mark Folder Read" is not displayed
-		## Thunderbird 68 - the categories dialog does not show any categories
-		   deleting the last one can make the folder tabs invisible if it is currently selected
-		## removed 1px gap under QF tabs that shows in Thunderbird 68
-		## Fixed some problems with deleting categories - 
-		## Domain license renewal gave the wrong link when the green button (renew license)  was clicked
-		   fixed to direct to https://sites.fastspring.com/quickfolders/instant/quickfoldersrenew
-			 
-	4.16 QuickFolders Pro - 01/09/2019
-	  ## [Bug 26692] Advanced tab property - Option to omit specific folders from quickMove / quickJump results
-		## Improved look of search box and current folder bar background to match standard theme backgrounds
-		## [Bug 26694] Thunderbird 68 - Subfolder menus do not expand 
-		## Thunderbird 68 - Fixed: creating new subfolders from QF menus fails because XPCOMUtils.generateQI was removed in Thunderbird 68
-		## [Issue 4] - Thunderbird 68 - Entering text in quickMove / quickJump field doesn't show suggestions while typing 
-		##             this was caused by removed xbl bindings for search boxes
-
-  4.17 QuickFolders Pro - 04/11/2019
-    ## [Bug 26703] Add option to hide mail commands popup menu
-    ## [issue 7] font color in striped mode ignored on colored tabs
-		## [Bug 26683] Advanced tab property: set moved emails to UNREAD. 
-	  ## Tb68 regression: number fields are displayed too wide after preferences.css had to he removed
-    ## The filter template dialog isn't shown properly in Thunderbird 68 - generally 
-       I would recommend to install quickFilters instead.
-       
-  4.17.1 QuickFolders Pro - 06/11/2019
-	  ## Tb68 regression: when the shortcuts combinations SHIFT+S, SHIFT+M, SHIFT+J are used in 
-       the quick filter search field, they are accidentally executed. This is because some 
-       input types have changed in Thunderbird 68 following deprecation of XUL elements.
-	  ## [Issue 11] - in 4.17, Thunderbird 60.* the quickMove / quickJump function did not
-       bring  up any search results. Caused by swapping out the type="search" attribute
-       for is="search-textbox" (usage with the newer search-textbox control)
-		
-    
-  4.17.2 QuickFolders Pro - 21/11/2019
-    ## [issue 13] Setting Mail Headers according to advanced tab settings (such as from or to address) is not working since Thunderbird 68
-       
-  4.17.3 QuickFolders Pro - 26/11/2019
-    ## [issue 14] Gray area shown below email list when starting Thunderbird in wide view
-       with Current FOlder Toolbar hidden
-    ## [issue 15] Current Folder Bar background styling is ignored in Thunderbird 68
-    ## [issue 16] Avoid showing current folder toolbar at bottom of screen in column view
-       ideally it should be shown as vertical bar between thread pane and preview.
-
-  4.17.4 QuickFolders Pro - 29/11/2019
-    ## Removed unnecessary error console warning from simplified setElementStyle() function
-    ## Added Alt + Up as navigation shortcut to go to parent folder.
-    ## Sometimes the current folder bar shows an incorrect subfolder menu (from a previously 
-       visited folder) - fixed by forcing it to rebuild every time a differnt folder is visited.
-
-  4.17.5 QuickFolders Pro - 27/12/2019
-    ## [issue 18] Allow single-key keyboard shortcuts for Navigation
-    ## [issue 3] Mark messages READ in folder and all its subfolders tree "in one click"
-    
-  4.18 QuickFolders Pro - 04/06/2020
-    ## [issue 27] Drag to Create New Subfolders from tab, folder names with space fail, (encoded as %20 / leading to duplicates) 
-    ## I also added trim() function to cut off spaces at end / start when email names are pasted
-    
-  4.18.1 QuickFolders Pro - 07/06/2020
-    ## [issue 20] Change default for QuickFolders Toolbar to be on the bottom
-    ## [issue 34] {Create Option to} make QuickFolders appear at the Bottom of Other Toolbars
-    
-  === FORKED CODE BASE FOR THUNDERBIRD 78 ===
   
-=== 5.0 ===  
+=== 5.0 - FORKED CODE BASE FOR THUNDERBIRD 78 and later ===  
     
   5.0 QuickFolders Pro - 17/11/2020
     ## [issue 8] Make QuickFolders compatible with Thunderbird 78 ESR
@@ -549,12 +184,32 @@ END LICENSE BLOCK */
     ## - [issue 190] Fixed dragging the envelope from current folder toolbar (Navigation bar)
     ## TO DO: review qf.notification.premium.text (remove "using it -permanently-") 
 
-  5.7.1 QuickFolders Pro - WIP
+  5.7.1 QuickFolders Pro - 27/08/2021
     ## [issue 197] Instructions on empty toolbar get duplicated on folder change https://github.com/RealRaven2000/QuickFolders/issues/197
     ## [issue 198] Tb91 regression: Junk folder tab doesn't get focus when clicked (IMAP) - 
     ## [issue 199] Subfolders with with length of 1 character omitted from quickJump search results
     ## removed "workaround" experimental APIs (notifications, accounts)
     
+  5.7.2 QuickFolders Pro - 04/09/2021
+    ## When quickFilters activates its assistant, all icons on left to the tabs will be white
+    ## Added max version (Thunderbird 91.*) as mandated by new policies on ATN.
+
+  5.8 QuickFolders Pro - WIP
+    ## [issue 191] Support large icon in QuickFolders toolbar buttons
+    ## [issue 203] When quickFilters activates its assistant, all icons on left to the tabs will be white
+    ## [issue 209] With some themes, tabs in Options Dialog become illegible in Thunderbird 91 
+    ## [issue 205] When clicking "get Messages" from any tab, QF also jumps to the folder
+    ## [issue 211] Thunderbird 91: move Folders in quickMove fails
+    ## some improvements for invalid tabs (when renaming / deleting folders these could be permanently 
+       marked in a way to not check their validity anymore - this flag is now cleared when reloading 
+       QuickFolders)
+    ## Thunderbird 91: background area behind current folder toolbar does not show correct background 
+       color from lightweight theme, even when lightweight support is enabled.
+    ## Fixed: QuickFolders History Tab was not displayed anymore when updating
+    ## -- unresolved / known issues / WIP
+		## [issue 204] Thunderbird 91: Background of toolbar doesn't support some themes when set to transparent
+    WORK IN PROGRESS / KNOWN:
+    ## [issue 208] Upgrade from TB 78 to 91.1.2 sometimes leads to invalid / "orphaned" tabs
 
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
@@ -573,7 +228,6 @@ END LICENSE BLOCK */
     
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
 		## [Issue 3] mark messages READ in folder and all its subfolders tree "in one click"
-		
 
     
     
@@ -751,7 +405,6 @@ var QuickFolders = {
       // add an onSelect event!
       folderTree.addEventListener("select", QuickFolders.FolderTreeSelect, false);
 			// [Bug 26566] - Folder Tree doesn't show icons
-			let vc = Cc["@mozilla.org/xpcom/version-comparator;1"].getService(Ci.nsIVersionComparator);
       let time = prefs.getIntPref('treeIconsDelay');
       util.logDebug("Repair Icons for "  + util.Application  + " " + util.ApplicationVersion + " in " + time/1000 + " sec...");
       win.setTimeout(
@@ -936,7 +589,7 @@ var QuickFolders = {
     }
 	},
 
-	init: function init() {
+	init: async function init() {
     const util = QuickFolders.Util,
 		      that = this.isQuickFolders ? this : QuickFolders,
 					QI = that.Interface, // main window Interface!
@@ -945,8 +598,8 @@ var QuickFolders = {
 		let myver = that.Util.Version, 
 		    ApVer, ApName,
         prefs = that.Preferences; 
-    try{ ApVer=that.Util.ApplicationVersion} catch(e){ApVer="?"};
-    try{ ApName=that.Util.Application} catch(e){ApName="?"};
+    try { ApVer=that.Util.ApplicationVersion } catch(e){ApVer="?"};
+    try { ApName=that.Util.Application } catch(e){ApName="?"};
 
     if (!QuickFolders.RenameFolders_Tb) {
       util.logDebug("Wrapping renameFolder...");
@@ -960,19 +613,42 @@ var QuickFolders = {
 		if (prefs && prefs.isDebug)
 			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
 
-		// moved into Version Proxy!
-		// that.Util.FirstRun.init();
 		that.addTabEventListener();
-		
 		QuickFolders.initKeyListeners();
+    
+    // [issue 208] - wait for folders to be ready to avoid "invalid" tabs - WIP
+    if (util.versionGreaterOrEqual(util.Appversion, "91")) {    
+      await new Promise(resolve => {
+        let { gMailInit } = window;
+        if (!gMailInit || !gMailInit.delayedStartupFinished) {
+          util.logDebug("delayedStartupFinished is not set yet - waiting for event to initialize folders...")
+          let obs = (finishedWindow, topic, data) => {
+            if (finishedWindow != window) {
+              return;
+            }
+            Services.obs.removeObserver(
+              obs,
+              "mail-delayed-startup-finished"
+            );
+            util.logDebug("mail-delayed-startup-finished fired!");
+            resolve();
+          };
+          Services.obs.addObserver(obs, "mail-delayed-startup-finished");
+        } else {
+          resolve();
+        }
+      });
+    }
+
 		
 		// move out to allow reload / editing feature
 		let folderEntries = prefs.loadFolderEntries();
 		this.initTabsFromEntries(folderEntries);
 		
 		// only load in main window(?)
-		if (QuickFolders.FolderTree)
+		if (QuickFolders.FolderTree) {
 			QuickFolders.FolderTree.init();
+    }
 
 		that.Util.logDebug("QuickFolders.Init() - call displayNavigationToolbar.");
 		// remember whether toolbar was shown, and make invisible or initialize if necessary
@@ -984,7 +660,7 @@ var QuickFolders = {
 		// new function to automatically main toolbar when it is not needed
 		that.Util.logDebug("call initToolbarHiding.");
 		QI.initToolbarHiding();
-		that.Util.logDebug("QF.init() ends.");
+		that.Util.logDebug("QuickFolders.init() ends.");
 		// now make it visible!
 		QuickFolders.Interface.Toolbar.style.display = '-moz-inline-box';
 		
@@ -2383,7 +2059,8 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 		let folderEntry = model.getFolderEntry(folderUri);
     if (!folderEntry) return false;
     if (folderEntry.disableValidation) {
-      ; // do nothing. a pending rename invalidated this entry
+      // do nothing. a pending rename invalidated this entry
+      util.logToConsole("This may be a folder entry pointing to an invalid folder location: \n" + folderUri);
     }
     else {
 			switch(QI.deleteFolderPrompt(folderEntry, false)) {

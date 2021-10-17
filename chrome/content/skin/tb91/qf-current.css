@@ -5,7 +5,10 @@
   margin-left: 1em;
 }
 
-
 #advancedGrid html|input[type="text"] {
   min-height: 20px;
+}
+
+.QuickFolders-folder-popup menuitem#quickFolders-folderSearchMessages {
+	list-style-image: url('chrome://messenger/skin/icons/search-folder.svg');
 }

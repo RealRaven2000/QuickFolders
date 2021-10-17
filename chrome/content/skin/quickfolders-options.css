@@ -234,10 +234,8 @@ checkbox .checkbox-label-box .checkbox-icon {
 
 #chkBookmarks .checkbox-icon {
   list-style-image: url("chrome://messenger/skin/icons/tag.svg");
-
-/*	list-style-image: url("chrome://quickfolders/content/skin/ico/fugue-bookmark.png");
-	-moz-image-region: rect(0px, 16px, 16px, 0px); */
 }
+
 #chkCategories .checkbox-icon {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/balloons.svg");
     -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
@@ -658,9 +656,15 @@ hbox.quickhelp-dbg {
 #qf-flat-toolbar:-moz-lwtheme {
 	/* --lwt-header-image defined in theme / messenger */
 	background-image: var(--lwt-header-image) !important;
-	background-position: top left;
 	background-repeat: no-repeat;
 }
+#qf-flat-toolbar:-moz-lwtheme {
+	background-position: left top;
+}
+#qf-header-container:-moz-lwtheme {
+	background-position: right top;
+}
+
 
 
 #qf-flat-toolbar #coloredtabs-label,

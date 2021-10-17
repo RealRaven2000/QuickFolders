@@ -504,7 +504,7 @@ QuickFolders.FilterWorker = {
 							}
 							break;
 						default:
-							util.alert('invalid template: ' + template);
+							util.alert('Invalid filter template: ' + template);
 							return false;
 					}
 

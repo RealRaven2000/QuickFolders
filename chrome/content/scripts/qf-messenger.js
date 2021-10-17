@@ -1,7 +1,7 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
-window.QuickFolders.WL = WL; // this will be used in initDelayed and wherever Add-on version is needed.
+window.QuickFolders.WL = WL; // this will be used wherever Add-on version is needed.
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-tablistener.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
@@ -540,7 +540,7 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["updateMainWindow"] = QI.updateMainWindow.bind(QI); // need to add a parameter here, how to?
   mylisteners["currentDeckUpdate"] = QI.currentDeckUpdate.bind(QI); 
   mylisteners["initKeyListeners"] = window.QuickFolders.initKeyListeners.bind(window.QuickFolders);
-  
+  mylisteners["firstRun"] = window.QuickFolders.Util.FirstRun.init.bind(window.QuickFolders.Util.FirstRun);
   
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}` , mylisteners[m]);

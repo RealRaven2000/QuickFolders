@@ -7,12 +7,11 @@ treechildren::-moz-tree-image(folderIconCol, folderIcon_server14_Inbox_Test) {
 */
  
 #folderPaneContext menuitem#context-quickFoldersRemoveIcon[tag="qfIconRemove"] { 
-  list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-picture-remove.png') !important;
+  list-style-image : url('chrome://quickfolders/content/skin/ico/picture-remove.svg') !important;
   -moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
-
 #folderPaneContext menuitem#context-quickFoldersIcon[tag="qfIconAdd"] { 
-  list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-picture.png') !important;
+  list-style-image : url('chrome://messenger/skin/icons/image.svg') !important;
   -moz-image-region: rect(0px, 16px, 16px, 0px);
  }

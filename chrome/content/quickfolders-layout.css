@@ -449,7 +449,9 @@ menupopup.widerMenu menucaption {
 
 
 #QuickFolders-Category-Selection.autocollapse:not(:hover) {
-	background-image: url('chrome://quickfolders/content/skin/ico/fugue-balloons.png');
+	background-image: url('chrome://quickfolders/content/skin/ico/balloons.svg');
+  -moz-context-properties: fill, stroke;
+  stroke: var(--new-highlight);
 	background-repeat: no-repeat;
 	background-position: center center;
 	max-width: 20px;
@@ -605,8 +607,8 @@ menupopup.widerMenu menucaption {
 
 toolbar#QuickFolders-CurrentFolderTools {
 	-moz-appearance: none;
-    background-color: transparent;
-    background-image: linear-gradient(hsla(0, 0%, 50%, 0.1), hsla(0, 0%, 50%, 0.1));
+  background-color: transparent;
+  background-image: linear-gradient(hsla(0, 0%, 50%, 0.1), hsla(0, 0%, 50%, 0.1));
 	box-shadow: 1px 2px 4px -1px hsla(0, 0%, 50%, 0.7);
 	border-style: solid  !important;
 	border-color: #666;
@@ -618,7 +620,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 }
 
 :root[lwt-tree-brighttext] toolbar#QuickFolders-CurrentFolderTools {
-    background-image: linear-gradient(hsla(0, 0%, 50%, 0.3), hsla(0, 0%, 50%, 0.3));
+  background-image: linear-gradient(hsla(0, 0%, 50%, 0.3), hsla(0, 0%, 50%, 0.3));
 }
 
 #QuickFolders-CurrentFolderTools toolbarbutton {
@@ -640,14 +642,23 @@ toolbar#QuickFolders-CurrentFolderTools {
 
 
 #QuickFolders-CurrentFolderTools toolbarbutton.icon:hover {
-    fill-opacity: 1;
+  fill-opacity: 1;
 }
 
 #QuickFolders-CurrentFolderTools toolbarbutton.icon > image {
-  width: 16px;
   height: 16px !important;
 	margin-right: 0;
 	margin-bottom: 0;
+}
+
+/* [issue 191] - large icon support */
+#QuickFolders-Tools-Pane[iconsize="large"] toolbarbutton image,
+#QuickFolders-CurrentFolderTools[iconsize="large"] toolbarbutton.icon > image {
+  height: 24px !important;
+}
+
+toolbar#QuickFolders-CurrentFolderTools[iconsize="large"] {
+  height: unset !important;
 }
 
 
@@ -818,7 +829,13 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 #QuickFolders-Toolbar toolbarbutton.draft.icon, #QuickFolders-CurrentFolderTools toolbarbutton.draft.icon {list-style-image: url("chrome://messenger/skin/icons/file-item.svg");}
 #QuickFolders-Toolbar toolbarbutton.news.icon, #QuickFolders-CurrentFolderTools toolbarbutton.news.icon {list-style-image: url("chrome://messenger/skin/icons/newsgroup.svg");}
 #QuickFolders-Toolbar toolbarbutton.archive.icon, #QuickFolders-CurrentFolderTools toolbarbutton.archive.icon {list-style-image: url("chrome://messenger/skin/icons/archive.svg");}
-#QuickFolders-Toolbar toolbarbutton.invalid.icon, #QuickFolders-CurrentFolderTools toolbarbutton.invalid.icon {list-style-image: url("chrome://quickfolders/content/skin/ico/broom.png");}
+#QuickFolders-Toolbar toolbarbutton.invalid, #QuickFolders-CurrentFolderTools toolbarbutton.invalid {
+  list-style-image: url("chrome://quickfolders/content/skin/ico/clean.svg");
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: currentColor;
+  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+	stroke: var(--new-highlight);
+}
 
 toolbarbutton.inbox .toolbarbutton-icon,
 toolbarbutton.junk .toolbarbutton-icon,
@@ -923,8 +940,8 @@ menuitem.cmd[tag="qfIconRemove"], menuitem.mailCmd[tag="qfIconRemove"] {
 menupopup.QuickFolders-folder-popup menuitem[tag="qfCategory"],
 menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/balloons.svg");
-    -moz-context-properties: fill, stroke;
-    stroke: var(--new-highlight);
+  -moz-context-properties: fill, stroke;
+  stroke: var(--new-highlight);
 }
 menuitem.cmd[tag="qfRemoveCategory"], menuitem.mailCmd[tag="qfRemoveCategory"] {
     list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
@@ -1049,9 +1066,7 @@ menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-rename {
 	list-style-image: url('chrome://quickfolders/content/skin/ico/folder-rename.png');
 }
 
-menupopup.QuickFolders-folder-popup menuitem#quickFolders-folderSearchMessages {
-	list-style-image: url('chrome://messenger/skin/icons/search-glass.svg');
-}
+
 menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-properties {
 	list-style-image: url('chrome://global/skin/icons/settings.svg');
 }

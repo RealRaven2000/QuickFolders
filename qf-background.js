@@ -63,6 +63,9 @@ messenger.runtime.onInstalled.addListener(async (data) => {
         function() {
           messenger.LegacyPrefs.setPref("extensions.quickfolders.hasNews", true);
           messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
+          // replacement for showing history!!
+          //   window.addEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
+          messenger.NotifyTools.notifyExperiment({event: "firstRun"});
         },
         200
       )

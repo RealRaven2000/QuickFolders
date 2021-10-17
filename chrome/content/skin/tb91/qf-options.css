@@ -18,8 +18,7 @@ menulist menupopup menuitem {
 }
 
 menulist > menupopup > menuitem:not([disabled="true"])[selected="true"] {
-  /*color: var(--item-selected-text);
-  background-color: var(--item-selected); */
+  /*color: var(--item-selected-text); background-color: var(--item-selected); */
   color: var(--highlight-color);
   background-color: var(--highlight-background);
 }
@@ -31,10 +30,32 @@ menulist > menupopup > menuitem[_moz-menuactive="true"] {
 }
 
 
-button,
-menulist#folderCrossing,
-menulist[preference^="extensions.quickfolders"] , 
-menulist#QuickFolders-CurrentFolder-Background-Select 
+#defaultColors,
+menulist[preference$=".paletteType"]
 {
-  color: var(--field-text-color) !important; 
+  color: var(--lwt-text-color,--field-text-color) !important; 
+}
+
+button:not(#defaultColors):not(#btnLicense),
+menulist#folderCrossing,
+menulist#QuickFolders-CurrentFolder-Background-Select,
+#QuickFolders-Theme-Selector {
+  background-color: var(--button-background,Menu) !important;
+  color: var(--button-color,MenuText) !important;
+}
+
+
+tab#QuickFolders-General,
+tab#QuickFolders-Advanced,
+tab#QuickFolders-Layout,
+tab#QuickFolders-Help,
+tab#QuickFolders-Support,
+tab#QuickFolders-Pro {
+  appearance: none; /* themeable */
+  color: var(--lwt-text-color, inherit) !important;
+}
+
+#QuickFolders-Options-Tabbox tabs {
+  background-image: var(--lwt-header-image) !important;
+  background-position: right -4px top 122px;
 }

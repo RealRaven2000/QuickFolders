@@ -162,7 +162,7 @@
     "message" : "Uusi lisenssi."
   },    
   "special-offer-content" : {
-    "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla QuickFolders Pro -lisenssi! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
+    "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}QuickFolders Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -220,7 +220,7 @@
         "example": "QuickFolders"
       }
     }
-  } , 
+  }, 
   "support-preference" : {
     "message": "Tämä on ensisijainen tapa tukea $addonName$.",
     "placeholders": {

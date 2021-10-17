@@ -1713,7 +1713,7 @@
     "message": "续订您的许可证。"
   },
   "special-offer-content": {
-    "message": "通过购买 QuickFolders Pro 许可证升级您的功能并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 选择标准功能。",
+    "message": "通过购买 {linkStartPro}QuickFolders Pro{linkEnd} 许可证升级您的功能并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 选择标准功能。",
     "placeholders": {
       "expirydate": {
         "content": "$1",

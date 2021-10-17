@@ -1725,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Odnów swoją licencję teraz i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Przejdź teraz z QuickFolders Standard na Pro i zaoszczędź {boldStart}$reduction${boldEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1742,10 +1755,22 @@
     "message": "31 października"    
   },
   "special-offer-head": {
-    "message": "Przygotuj QuickFolders na przyszłość!"
+    "message": "Pomóż zachować zgodność $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Drogi {name} {boldEnd}, jeśli nie masz jeszcze licencji, rozważ obsługę QuickFolders w przyszłości. Nadchodzą kolejne duże zmiany w Thunderbirdzie i potrzebuję {boldStart} Twojej pomocy {boldEnd}, aby nadążyć!"
+    "message": "{boldStart}Drogi {name}{boldEnd}, wesprzyj $addon$ poprzez uzyskanie licencji. Kod Thunderbirda stale ewoluuje i potrzebujemy {boldStart}Twojej pomocy{boldEnd}, aby nadążyć!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Jest to preferowany sposób obsługi $addonName$.",

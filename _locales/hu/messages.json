@@ -1725,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Újítsa meg most a licencét, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Frissítsen most a QuickFolders Standard -ról a Pro -ra, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
     "placeholders": {
@@ -1742,10 +1755,22 @@
     "message": "Október 31"    
   },
   "special-offer-head": {
-    "message": "Jövőbeli bizonyíték QuickFolders!"
+    "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kedves {name} {boldEnd}! Ha még nem rendelkezik licenccel, kérjük, fontolja meg a QuickFolderek támogatását a jövőben. További nagy változások jönnek a Thunderbird-en, és a lépést tartáshoz {boldStart} segítségedre van szükségem {boldEnd}!"
+    "message": "{boldStart} Kedves {name} {boldEnd}! Kérjük, támogassa a $addon$ -ot egy licenc megszerzésével. A Thunderbird kód folyamatosan fejlődik, és {boldStart} segítségére van szükségünk {boldEnd}, hogy lépést tarthassunk!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "A $addonName$ támogatásának ez a preferált módja.",

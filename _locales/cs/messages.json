@@ -156,10 +156,22 @@
     "message" : "Obnovte si licenci."
   },  
   "special-offer-head": {
-    "message": "Udělejte důkaz QuickFolders do budoucna!"
-  },    
+    "message": "Pomozte zachovat kompatibilitu $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "special-offer-intro": {
-    "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory QuickFolders pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
+    "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {boldStart} vaši pomoc {boldEnd}, abychom udrželi krok!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },  
   "special-offer-content": {
     "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením licence QuickFolders Pro! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
@@ -174,6 +186,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Obnovte si nyní licenci a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Upgradujte nyní z QuickFolders Standard na Pro a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}.",
     "placeholders": {

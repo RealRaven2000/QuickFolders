@@ -1725,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Renove sua licença agora e economize {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponível até {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Atualize agora do QuickFolders Standard para o Pro e economize {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponível até {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1742,10 +1755,22 @@
     "message": "31 de outubro"    
   },
   "special-offer-head": {
-    "message": "Faça QuickFolders à prova de futuro!"
+    "message": "Ajude a manter $addon$ compatível",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Caro {name} {boldEnd}, se você ainda não tem uma licença, considere oferecer suporte a QuickFolders no futuro. Mais grandes mudanças no Thunderbird estão chegando e eu preciso de {boldStart} sua ajuda {boldEnd} para acompanhar!"
+    "message": "{boldStart} Caro {name} {boldEnd}, apoie $addon$ obtendo uma licença. O código do Thunderbird evolui continuamente e precisamos da sua {boldStart} ajuda {boldEnd} para mantê-lo atualizado!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Esta é a forma preferida de oferecer suporte a $addonName$.",

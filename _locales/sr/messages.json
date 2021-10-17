@@ -6,8 +6,8 @@
     "message": "Изаберите налог:"
   },
   "active-version-info": {
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Сада покрећете {boldStart} верзију $addonVer$ {boldEnd} на Thunderbird $appVer$.",
+    "description": "The smartTemplatesRenew and boldEnd parts will be replaced with html tags",
+    "message": "Сада покрећете {smartTemplatesRenew} верзију $addonVer$ {boldEnd} на Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -1713,7 +1713,7 @@
     "message": "Обновите лиценцу."
   },
   "special-offer-content": {
-    "message": "Надоградите своје функције и уштедите {boldStart} $reduction$ {boldEnd} куповином лиценце КуицкФолдерс Про! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
+    "message": "Надоградите своје функције и уштедите {smartTemplatesRenew} $reduction$ {boldEnd} куповином лиценце КуицкФолдерс Про! Ова посебна понуда биће доступна до {smartTemplatesRenew} $expirydate$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1725,8 +1725,21 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Обновите лиценцу сада и уштедите {boldStart}$reduction${boldEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
-    "message": "Надоградите сада са КуицкФолдерс Стандард на Про и уштедите {boldStart}$reduction${boldEnd}! Ова посебна понуда биће доступна до {boldStart}$expirydate${boldEnd}.",
+    "message": "Надоградите сада са КуицкФолдерс Стандард на Про и уштедите {smartTemplatesRenew}$reduction${boldEnd}! Ова посебна понуда биће доступна до {smartTemplatesRenew}$expirydate${boldEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1742,10 +1755,22 @@
     "message": "31. октобра"
   },
   "special-offer-head": {
-    "message": "Нека QuickFolders буду будући доказ!"
+    "message": "Помозите да $addon$ буде компатибилан",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Поштовани {name} {boldEnd}, ако још увек немате лиценцу, размислите о подршци КуицкФолдерс-у за будућност. Долазе још велике промене на Тхундербирду и треба ми {boldStart} ваша помоћ {boldEnd} да наставим!"
+    "message": "{boldStart} Поштовани {name} {boldEnd}, подржите $addon$ кроз добијање лиценце. Тхундербирд код се непрестано развија и потребна нам је {boldStart} ваша помоћ {boldEnd} да наставимо!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Ово је преферирани начин подршке $addonName$.",

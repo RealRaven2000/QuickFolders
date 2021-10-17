@@ -1725,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Gia hạn Giấy phép của bạn ngay bây giờ và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Nâng cấp ngay từ QuickFolders Standard lên Pro và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1742,10 +1755,22 @@
     "message": "Ngày 31 tháng 10"    
   },
   "special-offer-head": {
-    "message": "Làm cho QuickFolders bằng chứng trong tương lai!"
+    "message": "Giúp giữ cho $addon$ tương thích",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kính gửi {name} {boldEnd}, nếu bạn chưa có giấy phép, vui lòng xem xét hỗ trợ QuickFolders trong tương lai. Sắp có nhiều thay đổi lớn hơn trên Thunderbird và tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!"
+    "message": "{boldStart} Kính gửi {name} {boldEnd}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép. Mã Thunderbird liên tục phát triển và chúng tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Đây là cách ưa thích để hỗ trợ $addonName$.",

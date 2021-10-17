@@ -1725,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "立即续订您的许可证并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "立即从 QuickFolders Standard 升级到 Pro 并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
     "placeholders": {
@@ -1742,10 +1755,22 @@
     "message": "10 月 31 日"    
   },
   "special-offer-head": {
-    "message": "使QuickFolders成为未来的证明！"
+    "message": "帮助保持 $addon$ 兼容",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart}尊敬的{name} {boldEnd}：如果您尚未获得许可，请考虑将来支持QuickFolders。 雷鸟的更多重大变化即将到来，我需要{boldStart}您的帮助{boldEnd}来跟上！"
+    "message": "{boldStart}亲爱的{name}{boldEnd}，请通过获得许可来支持 $addon$。 Thunderbird 代码不断发展，我们需要{boldStart}您的帮助{boldEnd}来跟上！",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "这是支持$addonName$的首选方式。",

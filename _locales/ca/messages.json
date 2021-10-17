@@ -208,7 +208,7 @@
     "message": "Gràcies per ampliar recentment la llicència o si heu donat. Com heu ajudat a provar aquest complement en un futur, només podeu tancar aquesta finestra."
   },
   "licenseComparison" : {
-    "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEdin}."
+    "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEnd}."
   },  
   "licenseHead": {
     "message": "Nou sistema de llicències"
@@ -1283,11 +1283,14 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Barra d'eines de QuickFolders"
   },
+  "qf.toolbarIconSize": {
+    "message": "Icones de barra d'eines grans"
+  },
   "qf.toolbarMinimumHeight": {
-    "message": "Minimum height:"
+    "message": "Alçada mínima:"
   },
   "qf.toolbarMinimumHeight.tooltip": {
-    "message": "For Mac systems who encounter [Bug 25021]"
+    "message": "Per a sistemes Mac que es troben amb [Bug 25021]"
   },
   "qf.toolbarPosition.tooltip": {
     "message": "0 = a sobre d'altres barres d'eines; 100 = fons. El valor alt depèn d'altres complements."
@@ -1713,6 +1716,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Renoveu la llicència ara i estalvieu reducció de {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Actualitzeu ara de QuickFolders Standard a Pro i estalvieu {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1727,13 +1743,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "11 de setembre"
+    "message": "31 d’octubre"
   },    
   "special-offer-head": {
-    "message": "Prova de futur QuickFolders!"
+    "message": "Ajudeu a mantenir $addon$ compatible",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Benvolgut {name} {boldEnd}, si encara no teniu una llicència, penseu en donar suport a QuickFolders per al futur. Hi haurà més canvis importants a Thunderbird i necessito {boldStart} la vostra ajuda {boldEnd} per estar al dia."
+    "message": "{boldStart} Benvolgut {name} {boldEnd}, donem suport a $addon$ mitjançant l'obtenció d'una llicència. El codi Thunderbird evoluciona contínuament i necessitem {boldStart} la vostra ajuda {boldEnd} per estar al dia.",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Aquesta és la forma preferida de donar suport a $addonName$.",
@@ -1812,7 +1840,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message" : "{L1} Corregit al 5.7.2: quan QuickFilters activa el seu assistent, totes les icones de l'esquerra a les pestanyes seran blanques {L2}{L1} Corregit a 5.7.1: en cercar carpetes amb la sintaxi 'carpeta pare/carpeta pare/carpeta desitjada', no es van tenir en compte les carpetes pares amb noms amb una longitud de caràcter única. {L2}{L1}Compatibilitat amb les carpetes ràpides amb Thunderbird 91.{L2} {L1}Millora de la compatibilitat amb temes foscos i de tercers, tant a la pantalla d'opcions com a la barra d'eines de navegació. {L2} {L1}Millora de la visibilitat del botó [novetats] amb -Tema estàndard de les carpetes ràpides {L2} {L1}Corregit: de vegades la sessió es restablia quan es reiniciava o després d’instal·lar altres complements o actualitzacions, de manera que es mostraven totes les categories.{L2}"
+    "message": "{L1} Thunderbird ja no salta a la safata d'entrada quan es comprova si hi ha correus electrònics nous al menú contextual. {L2} {L1} Suport per a la icona gran als botons de la barra d'eines QuickFolders per a visualitzacions d'alta resolució. {L2} {L1} Solucionat: moure carpetes de la funció quickMove ha fallat a Tb91. {L2} {L1} Diverses correccions de disseny específiques del Thunderbird 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

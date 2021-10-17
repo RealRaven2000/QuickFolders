@@ -78,6 +78,13 @@ QuickFolders.Preferences = {
 						if (f)
 							entries[i].name = f.prettyName;
 					}
+          // when loading, reset the disabled Validation!
+          if (entries[i].disableValidation) {
+            let swap = entries[i];
+            delete swap.disableValidation;
+            entries[i] = swap;
+            // entries[i].disableValidation = false;
+          }
 				}
 				return entries;
 			}

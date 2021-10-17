@@ -1,7 +1,8 @@
-<b>Release 5.7.2</b>
-In order to maintain full functionality, this Add-on had to be rewritten as a mail extension with experiment API, which will require full permissions on installation. As regards being allowed to do stuff, it is actually not different with any classic Add-on: they always had full access to all functions within Thunderbird. The modern mail extensions will have much more tightly managed permissions - eventually QuickFolders will also be able use this more modern approach - but the APIs for this have to be created and accepted by Mozilla first. This means a lot of ongoing work for the next 12 months forward - please support this by buying a license:
+<b>Release 5.8</b>
+Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (91.2)</b> - if you get a message that says otherwise after updating from earlier versions (Tb68 or Tb78) or <b>if QuickFolders cannot be enabled</b> with             the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
+            
 
-You can <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
+To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
 Or get the new cheaper <a href="http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=qf-version-page" target="_blank">QuickFolders Standard License</a>. This is the preferred way of funding all the ongoing work and improvements.
 
 Read the new <a href="premium.html#featureComparison">comparison chart</a> to see which functions you get depending on your license.
@@ -9,43 +10,28 @@ Read the new <a href="premium.html#featureComparison">comparison chart</a> to se
 You can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>.
 
 
-<b>Maintenance Release - 5.7.2</b>
+<b>Improvements</b>
 <ul>
-<li>Fixed in 5.7.2: When quickFilters activates its assistant, all icons on left to the tabs will be white</li>
-<li>Added max version (Thunderbird 91.*) as mandated by new policies on ATN.</li>
-</ul>
-
-<b>Maintenance Release - 5.7.1</b>
-<ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/199">[issue 199]</a> Fixed: when looking for parent folders using the syntax parent/parent/searchfolder, parent folder's with only a single character length name were not included.</li>
-<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/197" target="_blank">[issue 197]</a> Instructions on empty toolbar get duplicated on folder change.</li>
-<li> Removed "workaround" experimental APIs (notifications, accounts) </li>
-</ul>
-
-<b>Improvements - 5.7</b>
-<ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/166">[issue 114]</a> Make QuickFolders compatible with Thunderbird 91. (ESR 2021/22)
-This is the list of issues found and fixed so far:
-<ol>
-<li> Fixed the missing (and badly styled) [Buy License] button at the bottom of the options dialog. This is done by loading a separate style sheet link element into the shadow DOM.</li>
-<li> Fixed: showing the debug settings (and other advanced settings) via a small window that filters "about:config" stopped working in Tb91. </li> 
-<li> Fixed: missing icons on sliding notification bars </li>
-<li> Removed deprecated fixIterator constructs </li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/189">[issue 189]</a> Fixed: No longer able to move a message by dropping it on a quick folder tab. The function copyMessages was renamed in Tb91</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/190">[issue 190]</a> Fixed dragging the envelope from current folder toolbar (Navigation bar)
-</li>
-</ol>
-</li>
-<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/187">[issue 187]</a> Implement a QuickFolders Standard License. There will be now 2 licenses Pro and Standard, and the unfunded version will have a few restrictions. Most importantly, no more than 10 tabs are supported without any license. This is necessary in order to fund ongoing and future work so that the Add-on won't be lost to all users when Thunderbird moves away from experimental APIs. Standard Features will be <a target="_blank" href="https://quickfolders.org/premium.html#stdfeat">listed here.</a></li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/184">[issue 184]</a> Update Notice - [What's New] button is badly visible when using different QF theme than flat style.</li>
-<li> Ongoing work of Rewriting code to use APIs instead of Thunderbird's internal functions see <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/147">[issue 147]</a> for up to date detail.</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/205">[issue 205]</a> When clicking "get Messages" from any tab, QuickFolders used to also jump into the folder. This behavior is actually not desired, as you may have filter rules defined which remove mail from the Inbox so jumping into the Inbox is not useful when new mail is downloaded. </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/191">[issue 191]</a> Support large icon in QuickFolders toolbar buttons for high resolution displays. </li>
 </ul>
 
 <b>Bug Fixes + Miscellaneus</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/166">[issue 166]</a> 3rd party themes - Current folder toolbar colors are incorrect until Refresh visible tabs command</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/186">[issue 186]</a> Theming make some items in options screens hard / impossible to see 
-- improved visibility of dropdowns in options screen when using dark (and third party) themes</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/185">[issue 185]</a> On installation / sometimes restart or update of _other_ add-ons category is reset to "all"</li>
+<li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/211">[issue 211]</a> Fixed: move Folders in quickMove fails in Thunderbird 91. You can now again drag (multiple) folders from the tree to the quickMove button in order to relocate them. Or use the Shortcut Shift+M if you have a QuickFolders Pro license. </li>
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/203">[issue 203]</a> Fixed: When the quickFilters Add-on activates its assistant, all icons on left to the tabs on the QuickFolders toolbar turned white. </li>
+<li>
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/209">[issue 209]</a> Fixed: Tabs in Options Dialog become illegible in Thunderbird 91 when using dark themes with bright text. </li>
+<li>Fixed: In Thunderbird 91, background area behind current folder toolbar does not show correct background color from lightweight theme, even when lightweight support is enabled. </li>
+<li>Fixed: The History Tab was not displayed anymore when updating QuickFolders.</li>
 </ul>
 
+<b>Known unresolved issues - W.I.P.</b>
+<ul>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/204">[issue 204]</a> WIP - Thunderbird 91: Background of QuickFolders toolbar doesn't support some themes when set to transparent. </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/208">[issue 208]</a> Upgrade from TB 78 to 91.1.2 sometimes leads to invalid / "orphaned" tabs.
+For the moment, you should be able to resolve these by clicking a tab with the "broom" / invalid icon or by running the tool command "Find Orphaned tabs".
+
+Should this not give the desired results, then you can export your tabs via the license tab or on the Advanced tab using the [Copy Tabs] button and send me the file so I can help you fix this. </li>
+</ul>

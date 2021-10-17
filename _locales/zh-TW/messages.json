@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders 工具列"
   },
+  "qf.toolbarIconSize": {
+    "message": "大工具欄圖標"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "最小高度："
   },
@@ -1722,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "立即續訂您的許可證並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "立即從 QuickFolders Standard 升級到 Pro 並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。",
     "placeholders": {
@@ -1736,13 +1752,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "9月11日"    
+    "message": "10 月 31 日"    
   },
   "special-offer-head": {
-    "message": "使QuickFolders成為未來的證明！"
+    "message": "幫助保持 $addon$ 兼容",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart}尊敬的{name} {boldEnd}：如果您尚未獲得許可，請考慮將來支持QuickFolders。 雷鳥的更多重大變化即將到來，我需要{boldStart}您的幫助{boldEnd}來跟上！"
+    "message": "{boldStart}親愛的{name}{boldEnd}，請通過獲得許可來支持 $addon$。 Thunderbird 代碼不斷發展，我們需要{boldStart}您的幫助{boldEnd}來跟上！",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "這是支持$addonName$的首選方式。",
@@ -1821,7 +1849,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}在 5.7.2 中修復：當 quickFilters 激活其助手時，選項卡左側的所有圖標都將變為白色{L2}{L1} 已在 5.7.1 中修復：搜索具有“父文件夾/父文件夾/想要的文件夾”語法的文件夾時，不考慮名稱為單個字符長度的父文件夾。 {L2} {L1}使 QuickFolders 與 Thunderbird 91 兼容。{L2}{L1}在選項屏幕和導航工具欄中改進了對黑暗和 3rd 方主題的支持。{L2}{L1}改進了 [what's new] 按鈕與非 -標準 QuickFolders 主題{L2}{L1}已修復：有時在重新啟動或安裝其他附加組件或更新後會重置會話，以便顯示所有類別。{L2}"
+    "message": "{L1}從上下文菜單中檢查新郵件時，Thunderbird 不再跳入收件箱。{L2}{L1}支持 QuickFolders 工具欄按鈕中的大圖標以用於高分辨率顯示。{L2}{L1}已修復：移動文件夾 Tb91 中的 quickMove 功能失敗。{L2}{L1}針對 Thunderbird 91 的各種佈局修復。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

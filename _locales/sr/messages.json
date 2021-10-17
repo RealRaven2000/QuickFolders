@@ -6,8 +6,8 @@
     "message": "Изаберите налог:"
   },
   "active-version-info": {
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Сада покрећете {boldStart} верзију $addonVer$ {boldEnd} на Thunderbird $appVer$.",
+    "description": "The smartTemplatesRenew and boldEnd parts will be replaced with html tags",
+    "message": "Сада покрећете {smartTemplatesRenew} верзију $addonVer$ {boldEnd} на Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -223,7 +223,7 @@
     "message": "Нови систем лиценцирања"
   },  
   "licenseTypes": {
-    "message": "КуицкФолдерс нуди две лиценце, Стандард и Про; они су неопходни како би били у току са променама на платформи Тхундербирд и за финансирање иновација и поправки додатка. Будући да се промене које потенцијално крше функционалност проширења уводе годишње, лиценца ће важити и годину дана."
+    "message": "QuickFolders нуди две лиценце, Стандард и Про; они су неопходни како би били у току са променама на платформи Тхундербирд и за финансирање иновација и поправки додатка. Будући да се промене које потенцијално крше функционалност проширења уводе годишње, лиценца ће важити и годину дана."
   },  
   "licenseWindow.title": {
     "message": "QuickFolders Pro лиценца"
@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders трака са алаткама"
   },
+  "qf.toolbarIconSize": {
+    "message": "Велике иконе на траци са алаткама"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "Најмања висина:"
   },
@@ -1710,7 +1713,7 @@
     "message": "Обновите лиценцу."
   },
   "special-offer-content": {
-    "message": "Надоградите своје функције и уштедите {boldStart} $reduction$ {boldEnd} куповином лиценце КуицкФолдерс Про! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
+    "message": "Надоградите своје функције и уштедите {smartTemplatesRenew} $reduction$ {boldEnd} куповином лиценце КуицкФолдерс Про! Ова посебна понуда биће доступна до {smartTemplatesRenew} $expirydate$ {boldEnd}. Или изаберите стандардне функције са новом {linkStart}Стандардном лиценцом{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1722,8 +1725,21 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Обновите лиценцу сада и уштедите {boldStart}$reduction${boldEnd}! Ова посебна понуда биће доступна до {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
-    "message": "Надоградите сада са КуицкФолдерс Стандард на Про и уштедите {boldStart}$reduction${boldEnd}! Ова посебна понуда биће доступна до {boldStart}$expirydate${boldEnd}.",
+    "message": "Надоградите сада са КуицкФолдерс Стандард на Про и уштедите {smartTemplatesRenew}$reduction${boldEnd}! Ова посебна понуда биће доступна до {smartTemplatesRenew}$expirydate${boldEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1736,13 +1752,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "11. септембра"
+    "message": "31. октобра"
   },
   "special-offer-head": {
-    "message": "Нека QuickFolders буду будући доказ!"
+    "message": "Помозите да $addon$ буде компатибилан",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Поштовани {name} {boldEnd}, ако још увек немате лиценцу, размислите о подршци КуицкФолдерс-у за будућност. Долазе још велике промене на Тхундербирду и треба ми {boldStart} ваша помоћ {boldEnd} да наставим!"
+    "message": "{boldStart} Поштовани {name} {boldEnd}, подржите $addon$ кроз добијање лиценце. Тхундербирд код се непрестано развија и потребна нам је {boldStart} ваша помоћ {boldEnd} да наставимо!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Ово је преферирани начин подршке $addonName$.",
@@ -1821,7 +1849,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1} Исправљено у 5.7.2: Када куицкФилтерс активира помоћника, све иконе лево на картицама ће бити беле {L2} {L1} Исправљено у 5.7.1: Приликом тражења фасцикли са синтакси 'надређена фасцикла/надређена фасцикла/жељена фасцикла', родитељске фасцикле са именима са једном дужином знака нису узете у обзир. {L2}{L1} Направљени КуицкФолдерс компатибилни са Тхундербирд 91. {L2} {L1} Побољшана подршка за тамне теме и теме независних произвођача, како на екрану опција тако и на траци са алаткама за навигацију. {L2} {L1} Побољшана видљивост дугмета [шта је ново] са не -стандардна тема КуицкФолдерс-а {L2} {L1} Поправљено: Понекад се сесија ресетовала приликом поновног покретања или након инсталирања других додатака или ажурирања, тако да су приказане све категорије. {L2}"
+    "message": "{L1} Тхундербирд више не скаче у пријемно сандуче приликом провере нових порука из контекстног менија. {L2} {L1} Подршка за велику икону у дугмадима на траци са алаткама КуицкФолдерс за екране високе резолуције. {L2} {L1} Поправљено: померање фасцикли функција куицкМове није успела у Тб91. {L2} {L1} Исправке различитих распореда специфичне за Тхундербирд 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

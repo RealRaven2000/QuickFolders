@@ -1628,7 +1628,7 @@ QuickFolders.Util = {
   
   // All following code was added a shim Objects in earlier versions to be backwards compatible  
   FirstRun : {
-    init: function init() {
+    init: async function init() {
       const util = QuickFolders.Util,
             prefs = QuickFolders.Preferences,
             quickMoveSettings = QuickFolders.quickMove.Settings;
@@ -1687,10 +1687,6 @@ QuickFolders.Util = {
             pureVersion = util.VersionSanitized;
         util.logDebugOptional ("firstrun","finally - pureVersion=" + pureVersion);
         
-        if (pureVersion >= '3.12' && prev < "3.12") {
-          QuickFolders.Model.upgradePalette(ssPrefs);
-        }
-        
         // STORE CURRENT VERSION NUMBER!
         if (prev!=pureVersion && current!='?') {
           util.logDebugOptional ("firstrun","Store current version " + current);
@@ -1729,8 +1725,6 @@ QuickFolders.Util = {
             util.logDebugOptional ("firstrun","has premium license.");
           }
           
-          QuickFolders.Model.updatePalette();
-
           if (prev!=pureVersion) {
             util.logDebugOptional ("firstrun","prev!=current -> upgrade case.");
             // upgrade case!!
@@ -1750,20 +1744,12 @@ QuickFolders.Util = {
 
             window.setTimeout(function(){
               util.slideAlert("QuickFolders",sUpgradeMessage);
-            }, 3000);
+            }, 1000);
           }
-          
-          util.loadPlatformStylesheet(window);
-          quickMoveSettings.loadExclusions();
         }
         util.logDebugOptional ("firstrun","finally { } ends.");
       } // end finally
-
-      //window.removeEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
     }
-  // // fire this on application launch, which includes open-link-in-new-window
-  // window.addEventListener("load",function(){ QuickFolders.Util.FirstRun.init(); },true);
-
   } ,   // QuickFolders.Util.FirstRun
   
   iterateFolders: function folderIterator(folders, findItem, fnPayload) {

@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Thanh công cụ QuickFolders"
   },
+  "qf.toolbarIconSize": {
+    "message": "Các biểu tượng trên Thanh công cụ lớn"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "Minimum height:"
   },
@@ -1722,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Gia hạn Giấy phép của bạn ngay bây giờ và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Nâng cấp ngay từ QuickFolders Standard lên Pro và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1736,13 +1752,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "11 tháng 9"    
+    "message": "Ngày 31 tháng 10"    
   },
   "special-offer-head": {
-    "message": "Làm cho QuickFolders bằng chứng trong tương lai!"
+    "message": "Giúp giữ cho $addon$ tương thích",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kính gửi {name} {boldEnd}, nếu bạn chưa có giấy phép, vui lòng xem xét hỗ trợ QuickFolders trong tương lai. Sắp có nhiều thay đổi lớn hơn trên Thunderbird và tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!"
+    "message": "{boldStart} Kính gửi {name} {boldEnd}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép. Mã Thunderbird liên tục phát triển và chúng tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Đây là cách ưa thích để hỗ trợ $addonName$.",
@@ -1821,7 +1849,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Đã sửa trong 5.7.2: Khi quickFilters kích hoạt trợ lý của nó, tất cả các biểu tượng ở bên trái các tab sẽ có màu trắng {L2}{L1} Đã sửa lỗi trong 5.7.1: Khi tìm kiếm các thư mục có cú pháp 'thư mục mẹ/thư mục mẹ/thư mục muốn', các thư mục mẹ có tên có độ dài một ký tự không được tính đến. {L2}{L1} Tạo QuickFolders tương thích với Thunderbird 91. {L2} {L1} Cải thiện hỗ trợ cho các chủ đề của bên thứ ba và tối, cả trong màn hình tùy chọn và thanh công cụ Điều hướng. {L2} {L1} Cải thiện khả năng hiển thị của nút [có gì mới] với không -chủ đề QuickFolders tiêu chuẩn {L2} {L1} Đã sửa lỗi: Đôi khi phiên được đặt lại khi khởi động lại hoặc sau khi cài đặt các tiện ích bổ sung hoặc bản cập nhật khác, để tất cả các danh mục đều được hiển thị. {L2}"
+    "message": "{L1} Thunderbird không nhảy vào Inbox nữa khi kiểm tra các thư mới từ trình đơn ngữ cảnh. {L2} {L1} Hỗ trợ biểu tượng lớn trong các nút trên thanh công cụ QuickFolders để hiển thị độ phân giải cao. {L2} {L1} Đã sửa: di chuyển thư mục từ chức năng quickMove không thành công trong Tb91. {L2} {L1} Các bản sửa lỗi về Bố cục khác nhau dành riêng cho Thunderbird 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

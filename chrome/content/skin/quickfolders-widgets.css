@@ -85,8 +85,8 @@ menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
 
 tab#QuickFolders-General  {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/settings.svg");
-    fill: var(--new-highlight);
-    stroke: currentColor;
+  fill: var(--new-highlight);
+  stroke: currentColor;
 }
 
 #QuickFolders-FindPopup menuitem.quickFolder  {
@@ -100,7 +100,7 @@ tab#QuickFolders-General  {
 
 menu.dbgMenu menuitem:hover,
 menu#QuickFolders-debug, menu.dbgMenu {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/fugue-bug.png') !important;
+	list-style-image : url('chrome://quickfolders/content/skin/ico/bug.svg') !important;
 }
 
 

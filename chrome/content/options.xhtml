@@ -561,6 +561,7 @@
 						<preference id="qfpl-ButtonFontSize" name="extensions.quickfolders.buttonFontSizeN" type="int"  instantApply="true"/>
 						<preference id="qfpl-ToolbarBottom" name="extensions.quickfolders.style.Toolbar.bottomLineWidth" type="int"  instantApply="true"/>
 						<preference id="qfpl-ToolbarMinimalHeight" name="extensions.quickfolders.toolbar.minHeight" type="string"  instantApply="true"/>
+            <preference id="qfpl-ToolbarIconSize" name="extensions.quickfolders.toolbar.largeIcons" type="bool"   instantApply="true"/>
 						<preference id="qfpl-TransparentButtons" name="extensions.quickfolders.transparentButtons" type="bool"   instantApply="true"/>
 						<preference id="qfpl-TransparentToolbar" name="extensions.quickfolders.transparentToolbar" type="bool"  instantApply="true"/>
 						<preference id="qfpl-Shadows" name="extensions.quickfolders.buttonShadows" type="bool" />
@@ -743,6 +744,12 @@
 								<label value="px" />
 							</hbox>
 						</hbox>						
+            <hbox align="center">
+              <checkbox id="qf-options-shadow"
+                        label="__MSG_qf.toolbarIconSize__"
+                        preference="qfpl-ToolbarIconSize"
+                        oncommand= "return options.toggleBoolPreference(this);" />
+            </hbox>
 					</html:fieldset>
 					<html:fieldset id="qf-tweakColors">
 						<html:legend>__MSG_qf.label.colors__</html:legend>
@@ -964,7 +971,7 @@
 									</div>
 									<separator class="thin" />
 									<hbox id="qf-stateColors-defaultButton" pack="end">
-										<button label="__MSG_qf.button.defaultcolors__" oncommand="options.setDefaultColors();" />
+										<button label="__MSG_qf.button.defaultcolors__" oncommand="options.setDefaultColors();" id="defaultColors" />
 									</hbox>
 								</vbox>
 							</hbox>

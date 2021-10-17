@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Barra de ferramentas do QuickFolders"
   },
+  "qf.toolbarIconSize": {
+    "message": "Ícones grandes da barra de ferramentas"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "Altura mínima:"
   },
@@ -1722,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Renove sua licença agora e economize {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponível até {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Atualize agora do QuickFolders Standard para o Pro e economize {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponível até {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1736,13 +1752,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "11 de setembro"    
+    "message": "31 de outubro"    
   },
   "special-offer-head": {
-    "message": "Faça QuickFolders à prova de futuro!"
+    "message": "Ajude a manter $addon$ compatível",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Caro {name} {boldEnd}, se você ainda não tem uma licença, considere oferecer suporte a QuickFolders no futuro. Mais grandes mudanças no Thunderbird estão chegando e eu preciso de {boldStart} sua ajuda {boldEnd} para acompanhar!"
+    "message": "{boldStart} Caro {name} {boldEnd}, apoie $addon$ obtendo uma licença. O código do Thunderbird evolui continuamente e precisamos da sua {boldStart} ajuda {boldEnd} para mantê-lo atualizado!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Esta é a forma preferida de oferecer suporte a $addonName$.",
@@ -1821,7 +1849,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Corrigido em 5.7.2: Quando quickFilters ativa seu assistente, todos os ícones à esquerda das guias ficarão brancos {L2} {L1} Corrigido em 5.7.1: Ao pesquisar pastas com a sintaxe 'pasta pai/pasta pai/pasta desejada', pastas pai com nomes com um único comprimento de caractere não foram levadas em consideração. {L2} {L1} Tornou QuickFolders compatíveis com Thunderbird 91. {L2} {L1} Suporte aprimorado para temas escuros e de terceiros, tanto na tela de opções quanto na barra de ferramentas de navegação. {L2} {L1} Visibilidade aprimorada do botão [novidades] com não - tema QuickFolders padrão {L2} {L1} Corrigido: às vezes, a sessão era redefinida ao reiniciar ou após a instalação de outros complementos ou atualizações, para que todas as categorias fossem exibidas. {L2}"
+    "message": "{L1} O Thunderbird não pula mais para a Caixa de entrada ao verificar novos e-mails no menu de contexto. {L2} {L1} Suporte para ícones grandes nos botões da barra de ferramentas do QuickFolders para telas de alta resolução. {L2} {L1} Corrigido: pastas móveis da função QuickMove falhou em Tb91. {L2} {L1} Várias correções de layout específicas para Thunderbird 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

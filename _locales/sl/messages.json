@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Orodna vrstica QuickFolders"
   },
+  "qf.toolbarIconSize": {
+    "message": "Velike ikone orodne vrstice"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "Najmanjša višina:"
   },
@@ -1722,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Nadgradite zdaj iz QuickFolders Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1736,13 +1752,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "11. september"
+    "message": "31. oktobra"
   },
   "special-offer-head": {
-    "message": "Naj bodo QuickFolders prihodnji dokaz!"
+    "message": "Pomagajte ohraniti združljivost $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Spoštovani {name} {boldEnd}, če še nimate licence, razmislite o podpori QuickFolders za prihodnost. Prihaja še več sprememb na Thunderbirdu in za nadaljevanje potrebujem {boldStart} vašo pomoč {boldEnd}!"
+    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {boldStart} vašo pomoč {boldEnd}!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "To je najprimernejši način podpore $addonName$.",
@@ -1821,7 +1849,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Odpravljeno v 5.7.2: Ko quickFilters aktivira pomočnika, bodo vse ikone na levi strani zavihkov bele {L2} {L1} Odpravljeno v 5.7.1: Pri iskanju map s sintakso 'nadrejena mapa/nadrejena mapa/želena mapa' starševske mape z imeni z eno dolžino znakov niso bile upoštevane. {L2} {L1} Izdelane QuickFolders združljive s Thunderbird 91. {L2} {L1} Izboljšana podpora temnim temam in temam drugih proizvajalcev, tako na zaslonu z možnostmi kot v orodni vrstici za krmarjenje. {L2} {L1} Izboljšana vidnost gumba [novosti] z ne -standardna tema QuickFolders {L2} {L1} Popravljeno: Včasih je bila seja ponastavljena ob ponovnem zagonu ali po namestitvi drugih dodatkov ali posodobitev, tako da so bile prikazane vse kategorije. {L2}"
+    "message": "{L1} Thunderbird ne skoči več v mapo »Prejeto« pri preverjanju novih sporočil iz kontekstnega menija. {L2} {L1} Podpora za veliko ikono v gumbih orodne vrstice QuickFolders za zaslone z visoko ločljivostjo. {L2} {L1} Popravljeno: premikanje map iz funkcije quickMove v Tb91 ni uspelo. {L2} {L1} Različni popravki postavitve, značilni za Thunderbird 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

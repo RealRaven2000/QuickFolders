@@ -52,7 +52,7 @@ async function updateActions(addonName) {
   let isActionList = true;
   
   let currentTime = new Date(),
-      endSale = new Date("2021-09-11"); // Next Sale End Date
+      endSale = new Date("2021-10-31"); // Next Sale End Date
       
   let overrideSale = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug.saleDate");
   if (overrideSale) endSale = overrideSale;
@@ -64,6 +64,8 @@ async function updateActions(addonName) {
   if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
     hide('register');
+    hide('new-licensing'); // hide box that explains new licensing system..
+    
     if (isExpired) { // License Renewal
       hide('extendLicenseListItem');
       hide('extend');
@@ -98,10 +100,21 @@ async function updateActions(addonName) {
       }
     }
   }
+  else { // no license at all
+    
+
+  }
   
   if (isSale) {
     if (!isValid) { // not shown with Standard license either.
-      show('specialOffer');
+      if (isExpired) { 
+        if (isStandard)
+          show('specialOfferUpgrade');
+        else
+          show('specialOfferRenew');
+      }
+      else
+        show('specialOffer');
       hideSelectorItems('.donations');
       hide('whyPurchase');
       isActionList = false;

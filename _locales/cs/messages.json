@@ -156,10 +156,22 @@
     "message" : "Obnovte si licenci."
   },  
   "special-offer-head": {
-    "message": "Udělejte důkaz QuickFolders do budoucna!"
-  },    
+    "message": "Pomozte zachovat kompatibilitu $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "special-offer-intro": {
-    "message": "{boldStart} Vážený uživateli {name} {boldEnd}, pokud ještě nemáte licenci, zvažte podporu podpory QuickFolders pro budoucnost. Chystají se další velké změny v Thunderbirdu a potřebuji {boldStart} vaši pomoc {boldEnd}, abych udržel krok!"
+    "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {boldStart} vaši pomoc {boldEnd}, abychom udrželi krok!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },  
   "special-offer-content": {
     "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením licence QuickFolders Pro! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
@@ -174,6 +186,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Obnovte si nyní licenci a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Upgradujte nyní z QuickFolders Standard na Pro a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -188,7 +213,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "11. září"
+    "message": "31. října"
   },
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",
@@ -249,7 +274,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message" : "{L1} Opraveno v 5.7.2: Když quickFilters aktivuje svého asistenta, všechny ikony vlevo na kartách budou bílé {L2}{L1} Opraveno v 5.7.1: Při hledání složek se syntaxí „nadřazená složka/nadřazená složka/požadovaná složka“ nebyly vzaty v úvahu nadřazené složky se jmény o délce jednoho znaku. {L2}{L1} Vyrobeno QuickFolders kompatibilní s Thunderbirdem 91. {L2} {L1} Vylepšená podpora tmavých motivů a motivů třetích stran, a to jak na obrazovce možností, tak na panelu nástrojů Navigace. {L2} {L1} Vylepšená viditelnost tlačítka [co je nového] s -standardní téma QuickFolders {L2} {L1} Opraveno: Někdy byla relace resetována při restartu nebo po instalaci dalších doplňků nebo aktualizací, takže se zobrazily všechny kategorie.{L2}"
+    "message": "{L1} Thunderbird už při kontrole nových e -mailů z kontextové nabídky nepřeskočí do složky Doručená pošta. {L2} {L1} Podpora velké ikony v liště nástrojů QuickFolders pro zobrazení ve vysokém rozlišení. {L2} {L1} Opraveno: přesouvání složek z funkce quickMove selhala v Tb91. {L2} {L1} Různé opravy rozložení specifické pro Thunderbird 91. {L2}"
   },
   "window-title": {
     "message": "Vítejte v $addonName$",

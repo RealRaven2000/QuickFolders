@@ -174,6 +174,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Uusi lisenssi nyt ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Päivitä nyt QuickFolders Standardista Pro -versioon ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart}$expirydate${boldEnd} asti.",
     "placeholders": {
@@ -188,13 +201,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "Syyskuuta 11"
+    "message": "31. lokakuuta"
   }, 
-  "special-offer-head" : {
-    "message": "Tee QuickFoldersista tulevaisuuden todiste!"
-  } ,  
+  "special-offer-head": {
+    "message": "Auta pitämään $addon$ yhteensopivana",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "special-offer-intro" : {
-    "message": "{boldStart} Hyvä {name} {boldEnd}, jos sinulla ei vielä ole käyttöoikeutta, harkitse QuickFolder-kansioiden tukemista jatkossa. Lisää suuria muutoksia Thunderbirdiin on tulossa, ja tarvitsen {boldStart} apuasi {boldEnd} pysyäksesi mukana!"
+    "message": "{boldStart} Hei {name} {boldEnd}, tue $addon$ hankkimalla lisenssi. Thunderbird -koodi kehittyy jatkuvasti, ja tarvitsemme {boldStart} apuasi {boldEnd} pysyäksesi ajan tasalla!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   } , 
   "support-preference" : {
     "message": "Tämä on ensisijainen tapa tukea $addonName$.",
@@ -255,7 +280,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
   },
   "whats-new-list": {
-    "message" : "{L1} Korjattu kohdassa 5.7.2: Kun quickFilters aktivoi avustajansa, kaikki välilehtien vasemmalla puolella olevat kuvakkeet ovat valkoisia {L2} {L1} Korjattu kohdassa 5.7.1: Kun etsit kansioita, joiden syntaksi on 'pääkansio/vanhempi kansio/haluttu kansio', pääkansioita, joiden nimet ovat yhden merkin pituisia, ei otettu huomioon. {L2}{L1} Tehneet pikakansiot yhteensopiviksi Thunderbird 91: n kanssa. {L2} {L1} Parannettu tummien ja kolmansien osapuolten teemojen tukea sekä asetusnäytössä että navigointityökalurivillä. {L2} {L1} Parannettu [mitä uutta] -painikkeen näkyvyys muilla kuin -standardin mukainen QuickFolders-teema {L2} {L1} Korjattu: Joskus istunto nollautui uudelleenkäynnistyksen yhteydessä tai muiden lisäosien tai päivitysten asentamisen jälkeen, joten kaikki luokat näytettiin. {L2}"
+    "message": "{L1} Thunderbird ei enää siirry Inboxiin, kun kontekstivalikosta etsitään uusia viestejä. {L2} {L1} Tuki suurelle kuvakkeelle QuickFolders -työkalupalkin painikkeissa korkean resoluution näytöille. {L2} {L1} Korjattu: kansioiden siirtäminen QuickMove -toiminnosta epäonnistui Tb91: ssä. {L2} {L1} Erilaisia Thunderbird 91: n ulkoasun korjauksia. {L2}"
   },
   "window-title": {
     "message": "Tervetuloa osoitteeseen $addonName$",

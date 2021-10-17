@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders verktygsfält"
   },
+  "qf.toolbarIconSize": {
+    "message": "Stora verktygsfältikoner"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "Minimihöjd:"
   },
@@ -1722,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Förnya din licens nu och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Uppgradera nu från QuickFolders Standard till Pro och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1736,13 +1752,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "11 september"    
+    "message": "31 oktober"    
   },
   "special-offer-head": {
-    "message": "Gör QuickFolders framtida bevis!"
+    "message": "Hjälp till att hålla $addon$ kompatibel",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "Bảo vệ QuickFolders cho phiên bản Thunderbird 91 sắp ra mắt và tiết kiệm {boldStart} 40% {boldEnd} khi mua giấy phép! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} ngày 18 tháng 6 {boldEnd}."
+    "message": "{boldStart} Hej {name} {boldEnd}, stöd $addon$ genom att skaffa en licens. Thunderbird -koden utvecklas kontinuerligt och vi behöver {boldStart} din hjälp {boldEnd} för att hänga med!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Detta är det föredragna sättet att stödja $addonName$.",
@@ -1821,7 +1849,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Fixat i 5.7.2: När quickFilters aktiverar sin assistent blir alla ikoner till vänster på flikarna vita {L2}{L1} Fixat i 5.7.1: Vid sökning efter mappar med syntaxen 'överordnad mapp/överordnad mapp/önskad mapp' beaktades inte överordnade mappar med namn med en enda teckenlängd. {L2}{L1} Gjorde QuickFolders kompatibla med Thunderbird 91. {L2} {L1} Förbättrat stöd för mörka teman och tredjeparts teman, både i alternativskärmen och för navigationsverktygsfältet. {L2} {L1} Förbättrad synlighet för [vad som är nytt] -knappen med icke -standard QuickFolders-tema {L2} {L1} Fast: Ibland återställdes sessionen vid omstart eller efter installation av andra tillägg eller uppdateringar, så att alla kategorier visades. {L2}"
+    "message": "{L1} Thunderbird hoppar inte in i inkorgen längre när det letar efter nya e -postmeddelanden från snabbmenyn. {L2} {L1} Stöd för stor ikon i QuickFolders verktygsfältsknappar för högupplösta skärmar. {L2} {L1} Åtgärdad: flyttade mappar från quickMove -funktionen misslyckades i Tb91. {L2} {L1} Olika layoutkorrigeringar specifika för Thunderbird 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -314,7 +314,10 @@ QuickFolders.Model = {
   getMsgFolderFromUri:  function getMsgFolderFromUri(uri, checkFolderAttributes) {
     const util = QuickFolders.Util;
     let msgfolder = MailUtils.getExistingFolder(uri, checkFolderAttributes);
-		if (msgfolder && !msgfolder.parent && !msgfolder.isServer) return null; // invalid folder
+		if (msgfolder && !msgfolder.parent && !msgfolder.isServer) {
+      util.logToConsole(`getMsgFolderFromUri(${uri}, ${checkFolderAttributes}) could not retrieve valid folder!`, msgfolder)
+      return null; // invalid folder
+    }
     return msgfolder;
   } ,
 

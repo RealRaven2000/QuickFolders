@@ -55,6 +55,7 @@ pref("extensions.quickfolders.bookmarks.openMethod", "currentTab");
 pref("extensions.quickfolders.toolbar.minHeight", "24");
 pref("extensions.quickfolders.toolbar.hideInSingleMessage", false);
 pref("extensions.quickfolders.toolbar.ordinalPosition", 100);
+pref("extensions.quickfolders.toolbar.largeIcons", false); // [issue 191]
 pref("extensions.quickfolders.behavior.nonFolderView.openNewTab", true);
 pref("extensions.quickfolders.style.transitions", true); // changing to true because of wobbly bug
 pref("extensions.quickfolders.tooltips.parentFolder", false);

@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders eszköztár"
   },
+  "qf.toolbarIconSize": {
+    "message": "Nagy eszköztár ikonok"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "Minimális magasság:"
   },
@@ -1722,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Újítsa meg most a licencét, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Frissítsen most a QuickFolders Standard -ról a Pro -ra, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
     "placeholders": {
@@ -1736,13 +1752,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "Szeptember 11-én"    
+    "message": "Október 31"    
   },
   "special-offer-head": {
-    "message": "Jövőbeli bizonyíték QuickFolders!"
+    "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kedves {name} {boldEnd}! Ha még nem rendelkezik licenccel, kérjük, fontolja meg a QuickFolderek támogatását a jövőben. További nagy változások jönnek a Thunderbird-en, és a lépést tartáshoz {boldStart} segítségedre van szükségem {boldEnd}!"
+    "message": "{boldStart} Kedves {name} {boldEnd}! Kérjük, támogassa a $addon$ -ot egy licenc megszerzésével. A Thunderbird kód folyamatosan fejlődik, és {boldStart} segítségére van szükségünk {boldEnd}, hogy lépést tarthassunk!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "A $addonName$ támogatásának ez a preferált módja.",
@@ -1821,7 +1849,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Javítva: 5.7.2: Amikor a quickFilters aktiválja asszisztensét, a lapok bal oldalán lévő összes ikon fehér lesz {L2} {L1} Javítva: 5.7.1: A 'szülőmappa / szülőmappa / keresett mappa' szintaxissal rendelkező mappák keresésekor az egyetlen karakter hosszúságú nevekkel rendelkező szülőmappákat nem vették figyelembe. {L2}{L1} A gyorsmappákat kompatibilisvé tette a Thunderbird 91-gyel. {L2} {L1} Javított a sötét és harmadik felek témáinak támogatása, mind az opciók képernyőn, mind a Navigációs eszköztáron. {L2} {L1} Az [újdonságok] gomb jobb láthatósága nem szabványos QuickFolders téma {L2} {L1} Javítva: Néha a munkamenet alaphelyzetbe állt újraindításkor vagy más kiegészítők vagy frissítések telepítése után, így minden kategória megjelenik. {L2}"
+    "message": "{L1} A Thunderbird már nem ugrik be az Inboxba, amikor a helyi menüből új leveleket keres. {L2} {L1} Nagy ikonok támogatása a QuickFolders eszköztár gombjaiban a nagy felbontású megjelenítésekhez. {L2} {L1} Javítva: mappák mozgatása a quickMove függvényből nem sikerült a Tb91. {L2} {L1} Különféle Thunderbird 91 -es elrendezési javítások. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

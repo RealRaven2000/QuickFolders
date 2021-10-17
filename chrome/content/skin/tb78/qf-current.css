@@ -50,3 +50,6 @@ notification[value="quickfolders-proFeature"] description.messageText
 	padding-right: 1em;
 }
 
+.QuickFolders-folder-popup menuitem#quickFolders-folderSearchMessages {
+	list-style-image: url('chrome://messenger/skin/icons/search-folder.svg');
+}

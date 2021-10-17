@@ -412,7 +412,7 @@ QuickFolders.Options = {
     }
     if (backImage) {
       getElement('qf-flat-toolbar').style.setProperty('background-image', backImage);     
-      getElement('qf-flat-toolbar').style.setProperty("background-position","right bottom");
+      getElement('qf-flat-toolbar').style.setProperty("background-position","left top");
       getElement('qf-header-container').style.setProperty('background-image', backImage);
       getElement('qf-header-container').style.setProperty("background-position","right top")
     }
@@ -1223,7 +1223,7 @@ QuickFolders.Options = {
   },
   
   // doing what instantApply really should provide...
-  toggleBoolPreference: function toggleBoolPreference(cb, noUpdate) {
+  toggleBoolPreference: function toggleBoolPreference(cb, noUpdate = false) {
     const util = QuickFolders.Util;
     let prefString = cb.getAttribute("preference");
     //  using the new preference system, this attribute should be the actual full string of the pref.
@@ -1240,9 +1240,12 @@ QuickFolders.Options = {
       case "extensions.quickfolders.toolbar.hideInSingleMessage":
         QuickFolders.Util.notifyTools.notifyBackground({ func: "currentDeckUpdate" }); // QI.onDeckChange(current tab)
         return false;
+      case "extensions.quickfolders.toolbar.largeIcons":
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
+        break;
     }
     // broadcast change of current folder bar for all interested windows.
-    if (prefString.includes(".currentFolderBar.")) {
+    if (prefString.includes(".currentFolderBar.") || prefString.includes("toolbar.largeIcons")) {
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" }); 
       return true;
     }

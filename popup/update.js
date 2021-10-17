@@ -11,29 +11,32 @@ addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register")) {
     messenger.Utilities.showLicenseDialog("splashScreen");
 	}
-	if (event.target.id == "bargainIcon") {
-    // to get the bargain, go straight to offer!
-    messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=splashScreen-bargainIcon");
-    // messenger.Utilities.showLicenseDialog("splashScreen-bargainIcon");
-	}
-  
-	if (event.target.id == "bargainUpgradeIcon") {
-    messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
-    window.close(); // not allowed by content script!
-	}
-  
-  
-  if (event.target.id == "stdLink") {
-    messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=splashScreen-standard");
+  switch (event.target.id) {
+    case "bargainIcon":
+      // to get the bargain, go straight to offer!
+      messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=splashScreen-bargainIcon");
+      // messenger.Utilities.showLicenseDialog("splashScreen-bargainIcon");
+      break;
+    case "bargainRenewIcon":
+    case "bargainUpgradeIcon":
+      messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
+      window.close(); // not allowed by content script!
+      break;
+    case "stdLink":
+      messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=splashScreen-standard");
+      break;
+    case "proLink":
+      messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=splashScreen-standard");
+      break;
+    case "compLink":
+      messenger.windows.openDefaultBrowser("https://quickfolders.org/premium.html#featureComparison");
+      break;
+    case "whatsNew":
+      messenger.Utilities.showVersionHistory();
+      break;
   }
   
-  if (event.target.id == "compLink") {
-    messenger.windows.openDefaultBrowser("https://quickfolders.org/premium.html#featureComparison");
-  }
   
-  if (event.target.id=="whatsNew") {
-    messenger.Utilities.showVersionHistory();
-  }
   if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
     messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
     window.close(); // not allowed by content script!
@@ -50,6 +53,7 @@ addEventListener("load", async (event) => {
     const manifest = await messenger.runtime.getManifest(),
           browserInfo = await messenger.runtime.getBrowserInfo(),
           addonName = manifest.name,
+          userName = await messenger.Utilities.getUserName(),
           addonVer = manifest.version,
           appVer = browserInfo.version,
           remindInDays = 10;
@@ -141,13 +145,25 @@ addEventListener("load", async (event) => {
     let specialOffer = document.getElementById("specialOfferTxt");
     if (specialOffer) {
       let expiry = messenger.i18n.getMessage("special-offer-expiry"),
-          reduction = "33%";
+          reduction = "25%";
       // note: expiry day is set in popup.js "endSale" variable
       specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>")
           .replace(/\{linkStart\}/, "<a id='stdLink'>")
-          .replace(/\{linkEnd\}/, "</a>");
+          .replace(/\{linkEnd\}/g, "</a>")
+          .replace(/\{linkStartPro\}/, "<a id='proLink'>");
+    }
+    
+    let specialRenew = document.getElementById("specialOfferRenewTxt");
+    if (specialRenew) {
+      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
+          reduction = "25%";
+      // note: expiry day is set in popup.js "endSale" variable
+      specialRenew.innerHTML = 
+        messenger.i18n.getMessage("special-offer-renew", [expiry, reduction])
+          .replace(/\{boldStart\}/g,"<b>")
+          .replace(/\{boldEnd\}/g,"</b>");
     }
     
     
@@ -164,21 +180,28 @@ addEventListener("load", async (event) => {
     }
     
     
-    let featureComparison = document.getElementById("featureComparison");
-    if (featureComparison) {
-      featureComparison.innerHTML = messenger.i18n.getMessage("licenseComparison")
+    let elementsC = document.querySelectorAll(".featureComparison"),
+        txtComp = messenger.i18n.getMessage("licenseComparison")
           .replace(/\{linkStart\}/, "<a id='compLink'>")
           .replace(/\{linkEnd\}/, "</a>");
-        
-    } 
+    for (let el of elementsC) {
+      el.innerHTML = txtComp;
+    }
+    
           
-    let specialIntro = document.getElementById('specialOfferIntro');
-    if (specialIntro) {
-      let userName = await messenger.Utilities.getUserName();
-      specialIntro.innerHTML =  messenger.i18n.getMessage('special-offer-intro')
-        .replace(/\{boldStart\}/g,"<b>")
-        .replace(/\{boldEnd\}/g,"</b>")
-        .replace("{name}", userName);
+    let elements = document.querySelectorAll(".specialOfferHead"),
+        txtHead = messenger.i18n.getMessage("special-offer-head", addonName);
+    for (let el of elements) {
+      el.textContent = txtHead;
+    }	           
+    
+    let elementsSI = document.querySelectorAll(".specialOfferIntro"),
+        txtSI = messenger.i18n.getMessage('special-offer-intro', addonName)
+                .replace(/\{boldStart\}/g,"<b>")
+                .replace(/\{boldEnd\}/g,"</b>")
+                .replace("{name}", userName);
+    for (let el of elementsSI) {
+      el.innerHTML = txtSI;
     }
     
     let whatsNewLst = document.getElementById('whatsNewList');

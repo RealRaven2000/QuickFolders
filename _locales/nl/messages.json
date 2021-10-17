@@ -1292,6 +1292,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders-werkbalk"
   },
+  "qf.toolbarIconSize": {
+    "message": "Grote werkbalkpictogrammen"
+  },
   "qf.toolbarMinimumHeight": {
     "message": "Minimale hoogte:"
   },
@@ -1722,6 +1725,19 @@
       }
     }
   },
+  "special-offer-renew": {
+    "message": "Verleng nu uw licentie en bespaar {boldStart}$reduction${boldEnd}! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "September 11"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },   
   "special-offer-upgrade": {
     "message": "Upgrade nu van QuickFolders Standard naar Pro en bespaar {boldStart}$reduction${boldEnd}! Deze speciale aanbieding is geldig tot {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1736,13 +1752,25 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "11 september"    
+    "message": "31 oktober"    
   },
   "special-offer-head": {
-    "message": "Maak QuickFolders toekomstbestendig!"
+    "message": "Help $addon$ compatibel te houden",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Beste {naam} {boldEnd}, als u nog geen licentie heeft, overweeg dan om QuickFolders voor de toekomst te ondersteunen. Er komen meer grote veranderingen aan in Thunderbird en ik heb {boldStart} uw hulp {boldEnd} nodig om bij te blijven!"
+    "message": "{boldStart}Beste {name}{boldEnd}, steun alstublieft $addon$ door een licentie aan te schaffen. De Thunderbird-code evolueert voortdurend en we hebben {boldStart}uw hulp{boldEnd} nodig om bij te blijven!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Dit is de beste manier om $addonName$ te ondersteunen.",
@@ -1821,7 +1849,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Opgelost in 5.7.2: wanneer quickFilters zijn assistent activeert, zijn alle pictogrammen links van de tabbladen wit{L2} {L1}Opgelost in 5.7.1: Bij het zoeken naar mappen met de syntaxis 'bovenliggende map/bovenliggende map/gewenste map' werd geen rekening gehouden met bovenliggende mappen met namen met één tekenlengte. {L2} {L1}QuickFolders compatibel gemaakt met Thunderbird 91.{L2}{L1}Verbeterde ondersteuning voor donkere thema's en thema's van derden, zowel in het optiescherm als voor de navigatiewerkbalk.{L2}{L1}Verbeterde zichtbaarheid van de knop [wat is er nieuw] met niet -standaard QuickFolders-thema{L2}{L1}Opgelost: soms werd de sessie gereset bij het opnieuw opstarten of na het installeren van andere add-ons of updates, zodat alle categorieën werden weergegeven.{L2}"
+    "message": "{L1}Thunderbird springt niet meer in Inbox bij het controleren op nieuwe e-mails vanuit het contextmenu.{L2}{L1}Ondersteuning voor groot pictogram in werkbalkknoppen van QuickFolders voor weergaven met hoge resolutie.{L2}{L1}Opgelost: bewegende mappen van de quickMove-functie mislukt in Tb91.{L2}{L1}Verschillende lay-outcorrecties specifiek voor Thunderbird 91.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

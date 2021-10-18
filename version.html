@@ -79,12 +79,12 @@
       max-width: 835px;
       padding: 0.5em 0.8em;
     }
-    #reinstallInstructions img {
+    .reinstallInstructions img {
       margin-top: 0.8em;
       max-width: 720px;
     }
     
-    #expandInstructions {
+    .expandInstructions {
       display: inline-block;
       cursor: pointer;
       background-color: #006EB7; /* blue */
@@ -95,7 +95,7 @@
       padding: 0.4em 0.3em;
     }
     
-    #reinstallInstructions {
+    .reinstallInstructions {
       display: none;
     }
     
@@ -307,7 +307,7 @@
             that says otherwise after updating from earlier versions (Tb68 or Tb78) or <b>if QuickFolders cannot be enabled</b> with 
             the blue slider, simply remove it and reinstall it via "Find more Add-ons" on the Extensions tab of Add-ons Manager:
           </p>
-          <div id="reinstallInstructions">
+          <div class="reinstallInstructions">
             <p>First try if you can enable QuickFolders using the slider: <br>
               <img class="screenshot" src="images/enable-qf.png" alt="enable QuickFolders" /> 
             </p>
@@ -324,7 +324,7 @@
               <img class="screenshot" src="images/install-from-atn.png" alt="Add to Thunderbird" />
             </p>
           </div>
-          <div id="expandInstructions">Click to read instructions for reinstalling:</div> <br>
+          <div class="expandInstructions">Click to read instructions for reinstalling:</div> <br>
         </div>
         
 <!--        
@@ -1204,6 +1204,33 @@
 				<h4>
 				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 4.23 - WIP</a>
 				</h4>
+        
+        <div class="psa announcement">
+          <p>
+            Please note that <span class="emphasis">QuickFolders is compatible with the latest version of Thunderbird (91.2)</span> - if you get a message 
+            that says otherwise after updating from earlier versions (Tb68 or Tb78) or <b>if QuickFolders cannot be enabled</b> with 
+            the blue slider, simply remove it and reinstall it via "Find more Add-ons" on the Extensions tab of Add-ons Manager:
+          </p>
+          <div class="reinstallInstructions">
+            <p>First try if you can enable QuickFolders using the slider: <br>
+              <img class="screenshot" src="images/enable-qf.png" alt="enable QuickFolders" /> 
+            </p>
+            <p> 
+              If this doesn't work, then removing the Add-on via Thunderbird the Add-ons Manager will still retain your settings:<br>
+              <img class="screenshot" src="images/remove-qf.png" alt="remove to reinstall" /> 
+            </p>
+            <p>
+              In the Search box, enter the term <i>QuickFolders</i>, and press the Enter key:<br>
+              <img class="screenshot" src="images/search-qf-addon.png" alt="force reinstallation via Addon Manager" /> 
+            </p>
+            <p>
+              Then click on the <i>Add to Thunderbird</i> button:<br>
+              <img class="screenshot" src="images/install-from-atn.png" alt="Add to Thunderbird" />
+            </p>
+          </div>
+          <div class="expandInstructions">Click to read instructions for reinstalling:</div> <br>
+        </div>
+        
 					<ul>
 						<li> </li>
 						<li> </li>
@@ -1219,6 +1246,32 @@
 				<h4>
 				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/4.22.2" >Version 4.22.2 - 07/07/2021</a>
 				</h4>
+        
+        <div class="psa announcement">
+          <p>
+            Please note that <span class="emphasis">QuickFolders is compatible with the latest version of Thunderbird (91.2)</span> - if you get a message 
+            that says otherwise after updating from earlier versions (Tb68 or Tb78) or <b>if QuickFolders cannot be enabled</b> with 
+            the blue slider, simply remove it and reinstall it via "Find more Add-ons" on the Extensions tab of Add-ons Manager:
+          </p>
+          <div class="reinstallInstructions">
+            <p>First try if you can enable QuickFolders using the slider: <br>
+              <img class="screenshot" src="images/enable-qf.png" alt="enable QuickFolders" /> 
+            </p>
+            <p> 
+              If this doesn't work, then removing the Add-on via Thunderbird the Add-ons Manager will still retain your settings:<br>
+              <img class="screenshot" src="images/remove-qf.png" alt="remove to reinstall" /> 
+            </p>
+            <p>
+              In the Search box, enter the term <i>QuickFolders</i>, and press the Enter key:<br>
+              <img class="screenshot" src="images/search-qf-addon.png" alt="force reinstallation via Addon Manager" /> 
+            </p>
+            <p>
+              Then click on the <i>Add to Thunderbird</i> button:<br>
+              <img class="screenshot" src="images/install-from-atn.png" alt="Add to Thunderbird" />
+            </p>
+          </div>
+          <div class="expandInstructions">Click to read instructions for reinstalling:</div> <br>
+        </div>
         
 				<table class="QuickFoldersProRenew bargain"> 
 					<tr>
@@ -3634,18 +3687,23 @@
 	</body>
   
   <script>
-    let expandBtn = document.getElementById("expandInstructions");
-    expandBtn.addEventListener("click", function() {
-      let instruct = document.getElementById("reinstallInstructions");
-      if (instruct.style.display != "block") {
-        instruct.style.display = "block";
-        expandBtn.textContent = "Hide instructions";
-      }
-      else {
-        instruct.style.display = "none";
-        expandBtn.textContent = "Click to read instructions for reinstalling";
-      }
-    });
+    let expandBtns = document.querySelectorAll(".expandInstructions");
+    for (let el of expandBtns) {
+      el.addEventListener("click", function() {
+        let container = el.parentNode;
+        console.log(container);
+        let instruct = container.querySelector(".reinstallInstructions");
+        console.log(instruct);
+        if (instruct.style.display != "block") {
+          instruct.style.display = "block";
+          el.textContent = "Hide instructions";
+        }
+        else {
+          instruct.style.display = "none";
+          el.textContent = "Click to read instructions for reinstalling";
+        }
+      });
+    }    
     
   </script>  
   

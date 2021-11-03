@@ -1306,9 +1306,9 @@ QuickFolders.Util = {
           URL = URL.substr(0, x)
         }
         if (URL.indexOf("?")==-1)
-          URL = URL + "?user=" + uType;
+          URL = URL + "?user=" + uType + anchor;
         else
-          URL = URL + "&user=" + uType;
+          URL = URL + "&user=" + uType + anchor;
       }
     }
     catch(ex) {

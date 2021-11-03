@@ -10,7 +10,7 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] {
   background-color: rgb(70,70,70) !important;
   background-image: none !important;
 }
-toolbar .folderBarContainer toolbarbutton[disabled="true"] label {
+toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
   color: rgb(170,170,170) !important;
 }
 
@@ -52,12 +52,16 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] label {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/message-invalid.png");
 }
 
+#QuickFolders-ToolbarPopup menuitem image {
+  fill: var(--toolbarbutton-icon-fill, currentColor);
+  fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+}
+
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/settings.svg");
   -moz-context-properties: fill, fill-opacity, stroke;
-  fill: currentColor;
+  fill: var(--toolbarbutton-icon-fill, currentColor);
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
-  stroke: transparent;
 }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove {

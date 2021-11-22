@@ -63,6 +63,8 @@
  "icons" : {
     "32" : "chrome/content/skin/ico/QuickFolders_32.svg",
     "64" : "chrome/content/skin/ico/QuickFolders_32.svg"
+  },
+  "options_ui": {
+    "page": "html/options.html"
   }
-
 }

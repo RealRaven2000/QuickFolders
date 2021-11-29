@@ -409,7 +409,7 @@ export class Licenser {
     let accounts = await messenger.accounts.list(); // [bug 1630786] permissions prevent users from updating
     let AllowFallbackToSecondaryIdentiy = false;
     
-    if (this.key_type == 0) {
+    if (this.key_type == 0 || this.key_type == 2) {
       // Private License - Check if secondary mode is necessary (if not already enforced)
       if (this.ForceSecondaryIdentity) {
         AllowFallbackToSecondaryIdentiy = true;
@@ -425,7 +425,7 @@ export class Licenser {
         if (!hasDefaultIdentity) {
           AllowFallbackToSecondaryIdentiy = true;
           log(ADDON_NAME + " Licenser",
-              "Premium License Check: There is no account with default identity!\n" +
+              "License Check: There is no account with default identity!\n" +
               "You may want to check your account configuration as this might impact some functionality.\n" + 
               "Allowing use of secondary email addresses...");
         }
@@ -453,7 +453,8 @@ export class Licenser {
           return this.info;
         }
 
-      } else if (AllowFallbackToSecondaryIdentiy) {
+      } 
+      if (AllowFallbackToSecondaryIdentiy) {
 
         this.logDebug(ADDON_NAME + " Licenser", {
             "Iterate all identities of account" : account.name,

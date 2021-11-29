@@ -706,8 +706,8 @@
 						<html:legend>__MSG_qf.label.Toolbar__</html:legend>
 						<hbox align="center" class="toowide">
 							<label value="__MSG_qf.label.ToolbarBackground__" />
-							<html:input id="toolbar-colorpicker"
-													type="color"
+							<html:input id="toolbar-colorpicker" type="color"
+                          os="default"
 													palettename="standard"
 													style="vertical-align:middle"
 												  elementInfo="Toolbar.background-color"
@@ -770,17 +770,17 @@
 															 tooltiptext="__MSG_qf.label.UncoloredTab.tooltip__"
 															 context="QuickFolders-Options-PalettePopup"
 															 onclick="options.showPalette(this, 'standard');" />
-												<html:input id="inactive-fontcolorpicker"
-																		 type="color"
-																		 palettename="standard"
-																		 elementInfo="InactiveTab.color"
-																		 previewLabel="inactivetabs-label"
-																		 onchange="return options.styleUpdate('InactiveTab','color', this.value, 'inactivetabs-label');" />
-												<html:input id="inactive-colorpicker"
-																		 type="color"
-																		 palettename="standard"
-																		 elementInfo="InactiveTab.background-color"
-																		 onchange="return options.colorPickerTranslucent(this);" />
+												<html:input id="inactive-fontcolorpicker" type="color"
+                                    os="default"
+																		palettename="standard"
+																		elementInfo="InactiveTab.color"
+																		previewLabel="inactivetabs-label"
+																		onchange="return options.styleUpdate('InactiveTab','color', this.value, 'inactivetabs-label');" />
+												<html:input id="inactive-colorpicker" type="color"
+                                    os="default"
+																		palettename="standard"
+																		elementInfo="InactiveTab.background-color"
+																		onchange="return options.colorPickerTranslucent(this);" />
 												<menulist id="menuStandardPalette"
 																	sizetopopup="none"
 																	preference="qfpl-InactiveTab-PaletteType"

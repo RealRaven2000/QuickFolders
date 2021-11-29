@@ -211,12 +211,24 @@ END LICENSE BLOCK */
     WORK IN PROGRESS / KNOWN:
     ## [issue 208] Upgrade from TB 78 to 91.1.2 sometimes leads to invalid / "orphaned" tabs
     
-  5.8.2 QuickFolders Pro - WIP
+  5.8.2 QuickFolders Pro - 21/10/2021
     ## [issue 5] Long folders menu scroll issues in Thunderbird 68 + 78
     ## [issue 77] Folder list menu under tabs does not scroll
     ## [issue 105] list of subfolders not scrolled down
     ## [issue 67] Subfolder menu does not scroll when dragging email and list of folders is longer than fits on screen
 
+  5.8.3 QuickFolders Pro - 03/11/2021
+    ## Fixed in page links for users with licenses! Before licensed users were directed to the top of a page instead of the correct location (such as the feature comparison list or current version info)
+    ## Improved speed of license validator for Thunderbird 91.2 and later.
+    ## Improved readability for menu items on (license-) restricted tabs.
+
+  5.9 QuickFolders Pro - WIP
+    ## [issue 220] fixed alias identity support switch
+    ## 
+    ## 
+  
+  
+  
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
 

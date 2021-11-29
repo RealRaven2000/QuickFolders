@@ -1,0 +1,10 @@
+
+/* horizontal alignment */
+.hbox > * {
+  display: inline-block;
+}
+
+/* vertical alignment */
+.vbox > * {
+  display: block;
+}

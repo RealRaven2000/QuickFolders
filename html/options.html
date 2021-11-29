@@ -5,6 +5,16 @@
   <script src="../scripts/i18n/i18n.js"></script>
   <script src="../scripts/preferences/preferences.js"></script>
   <script src="options.js"></script>
+  
+  <!-- new rules for xul conversion -->
+  <link rel="stylesheet" href="../chrome/content/skin/qf-compatibility.css">
+  
+  <link rel="stylesheet" href="../chrome/content/skin/quickfolders-options.css">
+  <link rel="stylesheet" href="../chrome/content/skin/quickfolders-widgets.css">
+  <link rel="stylesheet" href="../chrome/content/skin/quickfolders-widgets64.css">
+  <!-- this is OS specific and needs to be modified! -->
+  <link rel="stylesheet" href="../chrome/content/skin/tb91/qf-options.css">
+  
 </head>
 
 <body>
@@ -13,13 +23,13 @@
     <div class="box" id="qf-header-container">
       <div class="vbox">
         <br class="spacer" flex="1">
-        <img id="qf-options-icon" src="chrome://quickfolders/content/skin/ico/quickfolders-Icon.png"
+        <img id="qf-options-icon" src="../chrome/content/skin/ico/quickfolders-Icon.png"
           onclick="options.collapseHead();">
         <br class="spacer" flex="1">
       </div>
       <div class="hbox align_center" id="qf-options-header" class="paneSelector" flex="1">
         <label id="dialogProductTitle" class="dialogheader-title" value="__MSG_qf.label.quickfolders__">
-        <img id="qf-youtube" src="chrome://quickfolders/content/skin/ico/youtube.png"
+        <img id="qf-youtube" src="../chrome/content/skin/ico/youtube.png"
           tooltiptext="__MSG_qf.youtube.tbdaily__"
           onclick="util.openLinkInBrowser(event,'https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A')">
         <br class="spacer" flex="1">
@@ -728,9 +738,9 @@
                 <radiogroup orient="horizontal" preference="qfpl-ColorTabStyleId"
                   oncommand="options.setColoredTabStyleFromRadioGroup(this);">
                   <radio id="ExampleStripedColor" label=" __MSG_qf.options.LayoutColorAppearanceStriped__" value="0"
-                    src="chrome://quickfolders/content/skin/ico/striped-example.gif" />
+                    src="../chrome/content/skin/ico/striped-example.gif" />
                   <radio id="ExampleFilledColor" label=" __MSG_qf.options.LayoutColorAppearanceFilled__" value="1"
-                    src="chrome://quickfolders/content/skin/ico/full-example.gif" />
+                    src="../chrome/content/skin/ico/full-example.gif" />
                 </radiogroup>
               </fieldset>
             </div>

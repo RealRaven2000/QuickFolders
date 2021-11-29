@@ -238,7 +238,8 @@ async function main() {
   ]);
   
   
-  messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
+  // messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
+  messenger.WindowListener.registerOptionsPage("html/options.html"); 
 
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/qf-composer.js");

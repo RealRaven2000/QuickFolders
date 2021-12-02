@@ -48,34 +48,34 @@ tab {
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
 menuitem.cmd[tagName="qfRegister"].free,
 tab#QuickFolders-Pro {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/pro.png') !important;
+	list-style-image : url('ico/pro.png') !important;
 }
 menuitem.cmd[tagName="qfRegister"].paid,
 tab#QuickFolders-Pro.paid {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/pro-paid.png') !important;
+	list-style-image : url('ico/pro-paid.png') !important;
 }
 menuitem.cmd[tagName="qfRegister"].expired,
 tab#QuickFolders-Pro.expired {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/pro-expired.png') !important;
+	list-style-image : url('ico/pro-expired.png') !important;
 }
 
 
 tab#QuickFolders-Advanced {
-	list-style-image: url("chrome://quickfolders/content/skin/ico/settings.svg");
+	list-style-image: url("ico/settings.svg");
 }
 
 tab#QuickFolders-Layout {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/smiley.svg');
+	list-style-image : url('ico/smiley.svg');
 }
 
 menuitem.cmd[tagName="qfHelp"],
 tab#QuickFolders-Help {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/help.svg') !important;
+	list-style-image : url('ico/help.svg') !important;
 }
 
 menuitem.cmd[tagName="qfSupport"],
 tab#QuickFolders-Support {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/info.svg') !important;
+	list-style-image : url('ico/info.svg') !important;
 }
 
 menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
@@ -84,23 +84,23 @@ menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
 }
 
 tab#QuickFolders-General  {
-	list-style-image: url("chrome://quickfolders/content/skin/ico/settings.svg");
+	list-style-image: url("ico/settings.svg");
   fill: var(--new-highlight);
   stroke: currentColor;
 }
 
 #QuickFolders-FindPopup menuitem.quickFolder  {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/folder-tab-small.png') !important;
+	list-style-image : url('ico/folder-tab-small.png') !important;
 }
 
 #QuickFolders-FindPopup[tag=quickMove] menuitem:hover {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/tb-anchor.png') !important;
+	list-style-image : url('ico/tb-anchor.png') !important;
 	/* text-decoration: underline; */
 }
 
 menu.dbgMenu menuitem:hover,
 menu#QuickFolders-debug, menu.dbgMenu {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/bug.svg') !important;
+	list-style-image : url('ico/bug.svg') !important;
 }
 
 
@@ -110,24 +110,24 @@ menuitem.cmd[tagName="qfFindFolder"] {
 menuitem.cmd[tagName="qfRebuild"] {
   list-style-image: url('chrome://calendar/skin/shared/icons/synchronize.svg') !important;
 }
-menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('chrome://quickfolders/content/skin/ico/clean.svg') !important; }
+menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('ico/clean.svg') !important; }
 menuitem.cmd[tagName="qfRepairTreeIcons"] {
   list-style-image: url('chrome://messenger/skin/icons/image.svg') !important;
 }
-menuitem.cmd[tagName="qfPreviewToolbar"] { list-style-image : url('chrome://quickfolders/content/skin/ico/toolbar.png') !important; }
+menuitem.cmd[tagName="qfPreviewToolbar"] { list-style-image : url('ico/toolbar.png') !important; }
 menuitem.cmd[tagName="qfOrder"] {
-  list-style-image: url('chrome://quickfolders/content/skin/ico/order.svg') !important;
+  list-style-image: url('ico/order.svg') !important;
 }
 
 /* menuitems */
 menuitem.cmd[tagName="qfSplash"] {
-  list-style-image : url('chrome://quickfolders/content/skin/ico/new.png') !important;
+  list-style-image : url('ico/new.png') !important;
 }
 
 
 toolbarbutton#QuickFolders-Options,
 menuitem.cmd[tagName="qfOptions"] .menu-iconic-icon {
-	list-style-image: url('chrome://quickfolders/content/skin/ico/settings.svg') !important;
+	list-style-image: url('ico/settings.svg') !important;
 }
 toolbarbutton#QuickFolders-Options:hover,
 menuitem.cmd[tagName="qfOptions"]:hover .menu-iconic-icon {
@@ -147,7 +147,7 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 }
 
 #quickFoldersNavToggle {
-	list-style-image: url('chrome://quickfolders/content/skin/ico/navigation-mode.svg');
+	list-style-image: url('ico/navigation-mode.svg');
 	-moz-appearance: none !important;
 	margin-left: -2px;
 	margin-right: -2px;
@@ -163,8 +163,8 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 }
 /* lets make the background invisible! */
 #quickFoldersNavToggle[checked="true"] {
-    stroke: white;
-    stroke-opacity: 1;
+  stroke: white;
+  stroke-opacity: 1;
 	background-image: none !important;
 	background-color: transparent;
 	background-size: 12px 16px !important;
@@ -189,7 +189,7 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 }
 
 #quickFoldersSkipFolder {
-    list-style-image: url("chrome://quickfolders/content/skin/ico/skip-folder.svg");
+    list-style-image: url("ico/skip-folder.svg");
     stroke: var(--green-highlight) !important;
     stroke-opacity: 0;
 }

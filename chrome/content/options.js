@@ -294,7 +294,13 @@ QuickFolders.Options = {
     getElement("qf-options-header-description").setAttribute("value", version);
     let tabbox = getElement("QuickFolders-Options-Tabbox");
     
-    getElement('chkShowRepairFolderButton').label = QI.getUIstring("qfFolderRepair","Repair Folder")
+    if (getElement('chkShowRepairFolderButton').label) {
+      getElement('chkShowRepairFolderButton').label = QI.getUIstring("qfFolderRepair","Repair Folder");
+    }
+    else { // HTML version
+      getElement('chkShowRepairFolderButton').parentNode.value=QI.getUIstring("qfFolderRepair","Repair Folder");
+    }
+    
     
     /*****  License  *****/
     options.labelLicenseBtn(getElement("btnLicense"), "buy");
@@ -401,7 +407,13 @@ QuickFolders.Options = {
         backImage = main.getComputedStyle(messengerWin).getPropertyValue("background-image"),
         newTabMenuItem = getMainElement('folderPaneContext-openNewTab');
     if (newTabMenuItem && newTabMenuItem.label) {
-      getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
+      if (getElement('qfOpenInNewTab').label) {
+        getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
+      }
+      else { // HTML conversion
+        getElement('qfOpenInNewTab').parentNode.value = newTabMenuItem.label.toString();
+      }
+      
     }
         
     // where theme styling fails.   

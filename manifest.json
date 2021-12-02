@@ -10,7 +10,7 @@
   "author": "Axel Grude, Klaus Buecher/opto",
   "name" : "QuickFolders",
   "description" : "__MSG_extensionDescription__",
-  "version" : "5.9pre12",
+  "version" : "5.9pre14",
   "default_locale": "en",
   "developer" : {
       "name" : "Axel Grude, Klaus Buecher/opto",
@@ -65,6 +65,7 @@
     "64" : "chrome/content/skin/ico/QuickFolders_32.svg"
   },
   "options_ui": {
-    "page": "html/options.html"
+    "page": "html/options.html",
+    "open_in_tab": true
   }
 }

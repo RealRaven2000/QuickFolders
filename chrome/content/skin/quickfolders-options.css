@@ -643,6 +643,7 @@ hbox.quickhelp-dbg {
 	height: 250px;
 	max-height: 250px;
 	overflow-y: scroll;
+  margin-right: 1em;
 }
 
 #mailCommandsCustomize {

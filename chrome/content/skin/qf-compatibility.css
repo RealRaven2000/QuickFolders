@@ -20,7 +20,7 @@
 
  /* Style the tab */
 .tabs {
-  border: 1px solid #ccc;
+  border-bottom: 1px solid rgba(50,50,50,0.3);
 }
 
 .tabs ul {
@@ -58,7 +58,7 @@
 .tabcontent-container section {
   display: none;
   padding: 6px 12px;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-top: none;
 } 
 

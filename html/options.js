@@ -2,43 +2,26 @@
 
 // add event listeners for tabs
 const activateTab = (event) => {
-  const tabSheets = document.querySelectorAll('.tabcontent-container section');
+  const tabSheets = document.querySelectorAll('.tabcontent-container section'),
+        tabs = document.querySelectorAll('#QuickFolders-Options-Tabbox button');
+  let btn = event.target;
   Array.from(tabSheets).forEach(tabSheet => {
     tabSheet.classList.remove("active");
-    //  tabSheet.className = tabSheet.className.replace(' active ', '').trim(); 
+  });
+  Array.from(tabs).forEach(button => {
+    button.classList.remove("active");
   });
 
   const { target: { value: activeTabSheetId = "" } } = event;
   if (activeTabSheetId) {
     document.getElementById(activeTabSheetId).classList.add("active");
+    btn.classList.add("active");
   }
 }
 
 for (button of document.querySelectorAll("#QuickFolders-Options-Tabbox button")) {
   button.addEventListener("click", activateTab);
 }
-
-
-function openTab(evt, cityName) {
-  // Declare all variables
-  var i, tabcontent, tablinks;
-
-  // Get all elements with class="tabcontent" and hide them
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-
-  // Get all elements with class="tablinks" and remove the class "active"
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-
-  // Show the current tab, and add an "active" class to the button that opened the tab
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.className += " active";
-} 
 
 
 async function savePref(event) {
@@ -50,8 +33,7 @@ async function savePref(event) {
 			await browser.LegacyPrefs.setPref(prefName, target.checked);
 		} 
     else if (target.getAttribute("type") === "text" ||
-			target.dataset.prefType === "string"
-		) {
+			target.dataset.prefType === "string") {
 			await browser.LegacyPrefs.setPref(prefName, target.value);
 		} 
     else if (target.getAttribute("type") === "number") {

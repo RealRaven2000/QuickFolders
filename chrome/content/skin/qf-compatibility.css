@@ -2,7 +2,7 @@
 
 /* horizontal alignment */
 .hbox {
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
   display: flex;
   flex-direction: row;
 }
@@ -11,7 +11,7 @@
 
 /* vertical alignment */
 .vbox {
-  border: 1px solid green;
+  /* border: 1px solid green; */
   display: flex;
   flex-direction: column;
 }
@@ -20,9 +20,13 @@
 
  /* Style the tab */
 .tabs {
-  overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
+}
+
+.tabs ul {
+  margin: 0;
+  overflow: hidden;
+  padding-left: 1em;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -33,7 +37,11 @@
   float: left;
   list-style: none;
   outline: none;
-  padding: 14px 16px;
+}
+
+.tabs button {
+  -moz-appearance: none;
+  border-radius: 0.5em 0.5em 0 0;
 }
 
 /* Change background color of buttons on hover */
@@ -43,7 +51,7 @@
 
 /* Create an active/current tablink class */
 .tabs button.active {
-  background-color: #ccc;
+  background-color: #33f !important;
 }
 
 /* Style the tab content */
@@ -56,4 +64,10 @@
 
 .tabcontent-container section.active {
   display: block;
+}
+
+.qfTabPreview {
+  line-height: unset;
+  overflow: clip;
+  text-overflow: ellipsis;
 }

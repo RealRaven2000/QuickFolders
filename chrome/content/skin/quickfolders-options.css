@@ -257,7 +257,7 @@ checkbox .checkbox-label-box .checkbox-icon {
 hbox > textbox:not([multiline="true"]) {
 	max-height: 2em;
 }
-hbox > button {
+hbox > button:not([isTab]) {
 	max-height: 3em !important;
 }
 

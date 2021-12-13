@@ -16,6 +16,8 @@ const activateTab = (event) => {
   if (activeTabSheetId) {
     document.getElementById(activeTabSheetId).classList.add("active");
     btn.classList.add("active");
+    // store last selected tab
+    browser.LegacyPrefs.setPref('extensions.quickfolders.lastSelectedOptionsTab', btn.getAttribute("tabNo"));
   }
 }
 
@@ -39,6 +41,9 @@ async function savePref(event) {
     else if (target.getAttribute("type") === "number") {
 			await browser.LegacyPrefs.setPref(prefName, parseInt(target.value, 10));
 		} 
+    else if (target.getAttribute("type") === "radio" && target.checked) {
+      await browser.LegacyPrefs.setPref(prefName, target.value);
+    }    
     else {
 			console.error("Received change event for input element with unexpected type", event);
 		}
@@ -80,6 +85,12 @@ async function loadPrefs() {
       else if (element.getAttribute("type") === "number") {
         element.value = (await browser.LegacyPrefs.getPref(prefName)).toString();
       } 
+      else if (element.getAttribute("type") === "radio") {
+        let radioVal = (await browser.LegacyPrefs.getPref(prefName)).toString();
+        if (element.value === radioVal) {
+          element.checked = true;
+        }
+      }
       else {
         console.error("Input element has unexpected type", element);
       }
@@ -102,11 +113,50 @@ async function loadPrefs() {
     
 	}  
   
+  // 
 }
 
 i18n.updateDocument();
 loadPrefs();
+preselectTab();
 
+// preselect the correct tab.
+async function preselectTab() {
+
+  let selectOptionsPane = await browser.LegacyPrefs.getPref('extensions.quickfolders.lastSelectedOptionsTab'),
+      activeTabSheetId = "QuickFolders-General";
+    // selectOptionsPane can be overwritten by URL parameter "selectedTab"
+  let optionParams = new URLSearchParams(document.location.search);
+  let selTab = optionParams.get("selectedTab");
+  if (selTab.toString() != "" && selTab .toString() != "-1") {
+    selectOptionsPane = selTab;
+  }
+  switch(parseInt(selectOptionsPane, 10)) {
+    case 0:
+      activeTabSheetId = "QuickFolders-General";
+      break;
+    case 1:
+      activeTabSheetId = "QuickFolders-Advanced";
+      break;
+    case 2:
+      activeTabSheetId = "QuickFolders-Layout";
+      break;
+    case 3:
+      activeTabSheetId = "QuickFolders-Help";
+      break;
+    case 4:
+      activeTabSheetId = "QuickFolders-Support";
+      break;
+    case 5:
+      activeTabSheetId = "QuickFolders-Pro";
+      break;
+  }
+  let tabEvent = new Event("click"),
+      selectedTabElement = document.getElementById(activeTabSheetId);
+  if (selectedTabElement) {
+    selectedTabElement.dispatchEvent(tabEvent);
+  }
+}
 
 
 

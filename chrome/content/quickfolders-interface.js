@@ -5241,6 +5241,8 @@ QuickFolders.Interface = {
           features,
           QuickFolders,
           params).focus();
+    // wx options:
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab, updateMessage });  
 	} ,
 
 	viewHelp: function viewHelp() {

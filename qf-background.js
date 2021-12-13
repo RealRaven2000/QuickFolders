@@ -190,6 +190,16 @@ async function main() {
       case "initKeyListeners":
         messenger.NotifyTools.notifyExperiment({event: "initKeyListeners"});
         break;
+        
+      case "openPrefs":
+        let params = new URLSearchParams();
+        if (data.selectedTab || data.selectedTab==0) {
+          params.append("selectedTab", data.selectedTab);
+        }
+        await messenger.windows.create(
+          { height: 600, width: 800, type: "popup", url: `/html/options.html?${params.toString()}` }
+        );
+        break;
 
       case "updateLicense":
         let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity"),

@@ -33,7 +33,10 @@ roll out all data-pref- changes to all elements.
 
 support or convert <radiogroup> !!!
 
-arndissler
-<radiogroup> doesn't exist. Replace it with a bunch of 
-<input type="radio" name="yourRadioGroupName" value="…" /> where the name attribute value 
-  contains the same for all radio buttons in one group and the value of each input element varies.
+Radiogroups wired up!
+
+TO DO:
+
+wire up color pickers
+
+convert palette dropdwons to <option> elements  

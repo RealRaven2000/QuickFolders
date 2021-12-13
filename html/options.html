@@ -46,12 +46,12 @@
 
     <nav class="tabs" id="QuickFolders-Options-Tabbox" orient="vertical">
       <ul>
-        <li><button id="QuickFolders-General" value="QuickFolders-Options-general" isTab="true" class="active">__MSG_qf.tab.general__</button></li>
-        <li><button id="QuickFolders-Advanced" value="QuickFolders-Options-advanced" isTab="true">__MSG_qf.tab.advanced__</button></li>
-        <li><button id="QuickFolders-Layout" value="QuickFolders-Options-layout" isTab="true">__MSG_qf.tab.layout__</button></li>
-        <li><button id="QuickFolders-Help" value="QuickFolders-Options-quickhelp" isTab="true">__MSG_qf.tab.quickhelp__</button></li>
-        <li><button id="QuickFolders-Support" value="QuickFolders-Options-support" isTab="true">__MSG_qf.tab.support__</button></li>
-        <li><button id="QuickFolders-Pro" value="QuickFolders-Options-goPro" class="free" isTab="true">__MSG_qf.tab.gopro__</button></li>
+        <li><button id="QuickFolders-General" value="QuickFolders-Options-general" isTab="true" class="active" tabNo="0">__MSG_qf.tab.general__</button></li>
+        <li><button id="QuickFolders-Advanced" value="QuickFolders-Options-advanced" isTab="true" tabNo="1">__MSG_qf.tab.advanced__</button></li>
+        <li><button id="QuickFolders-Layout" value="QuickFolders-Options-layout" isTab="true" tabNo="2">__MSG_qf.tab.layout__</button></li>
+        <li><button id="QuickFolders-Help" value="QuickFolders-Options-quickhelp" isTab="true" tabNo="3">__MSG_qf.tab.quickhelp__</button></li>
+        <li><button id="QuickFolders-Support" value="QuickFolders-Options-support" isTab="true" tabNo="4">__MSG_qf.tab.support__</button></li>
+        <li><button id="QuickFolders-Pro" value="QuickFolders-Options-goPro" class="free" isTab="true" tabNo="5">__MSG_qf.tab.gopro__</button></li>
       </ul>
     </nav>
 
@@ -659,14 +659,24 @@
             <div class="hbox" id="qf-individualColors" flex="1">
               <fieldset>
                 <legend>__MSG_qf.options.LayoutColorAppearance__</legend>
-                <radiogroup orient="horizontal" preference="qfpl-ColorTabStyleId"
-                  data-pref-name="extensions.quickfolders.colorTabStyle"
-                  oncommand="options.setColoredTabStyleFromRadioGroup(this);">
-                  <radio id="ExampleStripedColor" label=" __MSG_qf.options.LayoutColorAppearanceStriped__" value="0"
-                    src="../chrome/content/skin/ico/striped-example.gif" />
-                  <radio id="ExampleFilledColor" label=" __MSG_qf.options.LayoutColorAppearanceFilled__" value="1"
-                    src="../chrome/content/skin/ico/full-example.gif" />
-                </radiogroup>
+                <!-- oncommand handler: options.setColoredTabStyleFromRadioGroup(this);  -->
+                <label>
+                  <input type="radio" 
+                    id="ExampleStripedColor" 
+                    value="0"
+                    name="tabStyleGroup"
+                    data-pref-name="extensions.quickfolders.colorTabStyle"
+                    src="../chrome/content/skin/ico/striped-example.gif"> </input>__MSG_qf.options.LayoutColorAppearanceStriped__
+                </label>
+                <label>
+                  <input type="radio" 
+                    id="ExampleFilledColor" label=" __MSG_qf.options.LayoutColorAppearanceFilled__" 
+                    value="1"
+                    name="tabStyleGroup"
+                    data-pref-name="extensions.quickfolders.colorTabStyle"
+                    src="../chrome/content/skin/ico/full-example.gif"> </input>
+                  __MSG_qf.options.LayoutColorAppearanceFilled__
+                </label>
               </fieldset>
             </div>
           </div>

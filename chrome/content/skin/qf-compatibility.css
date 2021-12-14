@@ -7,15 +7,93 @@
   flex-direction: row;
 }
 
-
-
 /* vertical alignment */
 .vbox {
   /* border: 1px solid green; */
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+}
+.vbox.centered {
+  justify-content: center;
 }
 
+.vbox .separator,
+.vbox .spacer {
+  height: 10px;
+}
+
+.hbox .spacer {
+  width: 10px;
+}
+
+
+fieldset {
+  margin-right: 1em;
+  padding-left: 0.5em;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+html|legend {
+  margin-top: 0.5em;  
+}
+
+#mailCommandsCustomize {
+  margin-left: 1em;
+}
+
+/* General elements */
+#qf-options-prefpane label {
+  line-height: 1.3em;
+  font-size: 0.85em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: row;  
+}
+
+#supportgrid .button label {
+  justify-content: center;
+  font-size: 1.05em;
+}
+
+#QuickFolders-Options-support.active {
+  background-image: url("thunderbird-earlybird.png") !important;
+}
+
+#qf-options-header {
+  flex-grow: 1 !important;
+}
+
+#qf-options-header .spacer {
+  flex-grow: 1;
+}
+#qf-options-header-description {
+  border: none !important;
+}
+#qf-youtube {
+  align-self: center; 
+}
+
+#QuickFolders-General {
+  list-style-image: url("ico/settings.svg");
+}
+#QuickFolders-Advanced  {
+  list-style-image: url("ico/settings.svg");
+}
+#QuickFolders-Layout {
+  list-style-image : url("ico/smiley.svg");
+}
+#QuickFolders-Help {
+	list-style-image : url("ico/help.svg") !important;
+}
+#QuickFolders-Support {
+	list-style-image : url("ico/info.svg") !important;
+}
+#QuickFolders-Pro {
+  list-style-image : url("ico/pro.png") !important;
+}
 
 
  /* Style the tab */
@@ -52,6 +130,7 @@
 /* Create an active/current tablink class */
 .tabs button.active {
   background-color: #33f !important;
+  color: #FFFFFF !important;
 }
 
 /* Style the tab content */
@@ -70,4 +149,5 @@
   line-height: unset;
   overflow: clip;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }

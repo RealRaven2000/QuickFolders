@@ -5231,6 +5231,9 @@ QuickFolders.Interface = {
 	// selectedTab   - force a certain tab panel to be selected
 	// updateMessage - display this message when opening the dialog
 	viewOptions: function viewOptions(selectedTab, updateMessage) {
+    // wx options:
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab, updateMessage });  
+    
 		let params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null},
         //  in linux the first alwaysRaised hides the next child (config dialogs)
         features = (QuickFolders.Util.HostSystem == "linux") ?
@@ -5241,8 +5244,6 @@ QuickFolders.Interface = {
           features,
           QuickFolders,
           params).focus();
-    // wx options:
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab, updateMessage });  
 	} ,
 
 	viewHelp: function viewHelp() {

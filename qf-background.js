@@ -197,7 +197,7 @@ async function main() {
           params.append("selectedTab", data.selectedTab);
         }
         await messenger.windows.create(
-          { height: 600, width: 800, type: "popup", url: `/html/options.html?${params.toString()}` }
+          { height: 740, width: 860, type: "panel", url: `/html/options.html?${params.toString()}` }
         );
         break;
 

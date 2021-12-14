@@ -517,15 +517,15 @@ hbox.quickhelp-dbg {
 
 /* #supportgrid  button, */
 #supportgrid .button {
-	display: table-cell;
   width: 230px !important;
   max-width: 230px !important;
 	min-width: 220px !important;
 	padding: 0.5em;
 	border: 1px solid rgba(80, 80, 80, 0.4);
 	height: 55px;
-	text-align: center;
-	vertical-align: middle;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;  
 }
 /* #supportgrid button label, */
 #supportgrid .button label  {
@@ -551,6 +551,9 @@ hbox.quickhelp-dbg {
 	line-height: 1.6em;
 	margin: 0.7em 12em 0.8em 11em !important;
 	min-height: 4em;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;  
 }
 
 #L0:hover {
@@ -559,6 +562,7 @@ hbox.quickhelp-dbg {
 
 #L0 label {
   margin: 0.5em 1em;
+  font-size: 1em;
 }
 
 

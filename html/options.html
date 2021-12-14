@@ -2,9 +2,12 @@
 <html>
 
 <head>
-
+  <meta charset="UTF-8">
   <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common.css">
+  <link rel='stylesheet' type='text/css' href="chrome://global/skin/global.css">  
   <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
+  <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/shared/themeableDialog.css">
+  
 
   <!-- new rules for xul conversion -->
   <link rel="stylesheet" href="../chrome/content/skin/qf-compatibility.css">
@@ -20,11 +23,9 @@
 <body>
   <div id="qf-options-prefpane" orient="vertical">
     <div class="hbox" id="qf-header-container">
-      <div class="vbox">
-        <br class="spacer" flex="1">
+      <div class="vbox centered">
         <img id="qf-options-icon" src="../chrome/content/skin/ico/quickfolders-Icon.png"
           onclick="options.collapseHead();">
-        <div class="spacer" flex="1"> </div>
       </div>
       <div class="hbox align_center paneSelector" id="qf-options-header" flex="1">
         <label id="dialogProductTitle" class="dialogheader-title">__MSG_qf.label.quickfolders__</label>
@@ -63,7 +64,7 @@
       -->
 
 
-        <fieldset orient="horizontal">
+        <fieldset class="hbox">
           <legend>__MSG_qf.label.keyboard__</legend>
           <div class="vbox">
             <label><input type="checkbox" 
@@ -92,7 +93,7 @@
           </div>
         </fieldset>
 
-        <fieldset orient="horizontal">
+        <fieldset class="hbox">
           <legend>__MSG_qf.label.tabContent__</legend>
           <div class="vbox">
             <label><input type="checkbox" preference="qfpg-ShowUnreadFoldersBold"
@@ -250,7 +251,7 @@
             </div>
           </fieldset>
 
-          <fieldset orient="horizontal" flex="2">
+          <fieldset class="hbox" flex="2">
             <legend>__MSG_qf.label.menus__</legend>
             <div class="hbox">
               <fieldset id="mailCommandsCustomize" flex="1">
@@ -297,7 +298,7 @@
           </fieldset>
         </div>
 
-        <fieldset orient="horizontal" id="grpToolbarPosition">
+        <fieldset class="hbox" id="grpToolbarPosition">
           <legend>__MSG_qf.label.toolbarPosition__</legend>
           <div class="hbox">
             <input type="text" id="toolbarPosition" flex="1" preference="qfpa-ToolbarPosition"
@@ -307,7 +308,7 @@
           </div>
         </fieldset>
 
-        <fieldset orient="horizontal" id="grpCurrentFolderBackground">
+        <fieldset class="hbox" id="grpCurrentFolderBackground">
           <legend>__MSG_qf.caption.currentFolderBackground__</legend>
           <div class="vbox" id="currentFolderBackgroundContainer">
             <div class="hbox" flex="1" id="currentFolderStyle">
@@ -348,7 +349,7 @@
           </div>
         </fieldset>
 
-        <fieldset orient="horizontal">
+        <fieldset class="hbox">
           <legend>__MSG_qf.label.misc__</legend>
           <label><input type="checkbox" tooltiptext="__MSG_qf.checkbox.displaylabel.tooltip__"
             preference="qfpa-ShowQuickFoldersLabel"
@@ -365,7 +366,7 @@
             oncommand="options.toggleBoolPreference(this);">__MSG_qf.checkbox.enableTransitions__</label>
         </fieldset>
 
-        <separator class="thin" />
+        <span class="separator thin"> </span>
         <div class="hbox quickhelp-dbg align_center">
           <label><input type="checkbox" tooltiptext="__MSG_qf.checkbox.debug.tooltip__"
             preference="qfpa-Debug" data-pref-name="extensions.quickfolders.debug"
@@ -433,44 +434,45 @@
                 onchange="options.changeTextPreference(this);" />
               <label>px</label>
 
-              <separator style="width: 30px" />
+              <span style="width: 30px;" class="separator">&nbsp;</span>
 
               <div class="hbox align_center" id="btnHeightTweaks">
-                <label>__MSG_qf.toolbarMinimumHeight__</label>
-                <input type="number" id="buttonMinHeight" preference="qfpl-ButtonMinimalHeight" 
-                  data-pref-name="extensions.quickfolders.style.button.minHeight" class="num2digits"
-                  onchange="options.changeTextPreference(this);" />
-                <label value="px" />
-                <separator style="width: 20px" />
-                <label value="Top padding:" />
-                <input type="number" id="buttonPaddingTop" class="num2digits" preference="qfpl-ButtonTopPadding"
-                  data-pref-name="extensions.quickfolders.style.button.paddingTop"
-                  onchange="options.changeTextPreference(this);" />
-                <label value="px" />
+                <label>__MSG_qf.toolbarMinimumHeight__
+                  <input type="number" id="buttonMinHeight" preference="qfpl-ButtonMinimalHeight" 
+                    data-pref-name="extensions.quickfolders.style.button.minHeight" class="num2digits"
+                    onchange="options.changeTextPreference(this);" />
+                </label>
+                <label>px</label>
+                <span style="width:20px;" class="separator">&nbsp;</span>
+                <label>Top padding:
+                  <input type="number" id="buttonPaddingTop" class="num2digits" preference="qfpl-ButtonTopPadding"
+                    data-pref-name="extensions.quickfolders.style.button.paddingTop"
+                    onchange="options.changeTextPreference(this);" />
+                 </label>
+                <label>px</label>
               </div>
             </div>
-            <separator class="thin" />
+            <span class="separator thin"> </span>
             <div id="qf-tweakRadius" class="hbox toowide align_center">
               <label><input type="checkbox" id="chkCustomRadius"
                 preference="qfpl-CustomizedRadius" data-pref-name="extensions.quickfolders.style.corners.customizedRadius"
                 oncommand="options.toggleBoolPreference(this);">__MSG_qf.options.themes.customCornerRadius.checkbox__</label>
               <label value="__MSG_qf.options.themes.customCornerRadius.Top.label__"
-                control="QuickFolders-Options-CustomTopRadius" />
+                control="QuickFolders-Options-CustomTopRadius">
               <input type="number" id="QuickFolders-Options-CustomTopRadius" class="num1digit"
                 preference="qfpl-TopRadius" data-pref-name="extensions.quickfolders.style.corners.customizedTopRadiusN"
                 onchange="options.changeTextPreference(this);" />
-              <label value="px" />
-              <separator flex="1" />
+              </label>
+              <label>px</label>
               <label value="__MSG_qf.options.themes.customCornerRadius.Bottom.label__"
-                control="QuickFolders-Options-CustomBottomRadius" />
+                control="QuickFolders-Options-CustomBottomRadius">
               <input type="number" id="QuickFolders-Options-CustomBottomRadius" class="num1digit"
                 preference="qfpl-BottomRadius" 
                 data-pref-name="extensions.quickfolders.style.corners.customizedBottomRadiusN" 
                 onchange="options.changeTextPreference(this);" />
-              <label value="px" />
-              <separator flex="1" />
+              </label>
+              <label>px</label>
               <button oncommand="options.setDefaultButtonRadius();">__MSG_qf.button.default__</button>
-              <separator flex="2" />
             </div>
           </div>
         </fieldset>
@@ -542,7 +544,7 @@
                           oncommand="options.toggleUsePalette(this, 'standard', 3, true);">__MSG_qf.palette.night__</option>
                       </select>
                     </div>
-                    <separator class="thin" />
+                    <span class="separator thin"> </span>
                     <div class="hbox align_center">
                       <br class="spacer" flex="1">
                       <label id="coloredtabs-label"
@@ -562,7 +564,7 @@
                     </div>
                   </div>
                 </div>
-                <separator class="thin" />
+                <span class="separator thin"> </span>
                 <div class="hbox">
                   <label><input type="checkbox" id="qf-options-shadow" preference="qfpl-Shadows"
                     data-pref-name="extensions.quickfolders.buttonShadows"
@@ -649,7 +651,7 @@
 
 
                 </div>
-                <separator class="thin" />
+                <span class="separator thin"> </span>
                 <div class="hbox" id="qf-stateColors-defaultButton" pack="end">
                   <button oncommand="options.setDefaultColors();"
                     id="defaultColors">__MSG_qf.button.defaultcolors__</button>
@@ -686,7 +688,7 @@
       
       <section id="QuickFolders-Options-quickhelp" orient="vertical" class="align_center">
         <div id="quickHelpPane" flex="1"  class="vbox niceFont">
-          <separator class="thin" />
+          <span class="separator thin"> </span>
           <description id="importantNote">
             __MSG_qf.description.linkNote__
           </description>
@@ -712,7 +714,7 @@
 
 
       <section id="QuickFolders-Options-support" orient="vertical">
-        <separator class="thin" />
+        <span class="separator thin"> </span>
         <div id="supportgrid" class="grid-container niceFont">
 
           <description>__MSG_qf.youtube.description__</description>

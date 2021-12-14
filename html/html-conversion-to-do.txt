@@ -35,8 +35,13 @@ support or convert <radiogroup> !!!
 
 Radiogroups wired up!
 
+
+<fieldset orient="horizontal">  - changed to class=hbox.
+
+<separator> to <span class="separator">
+
 TO DO:
 
-wire up color pickers
+- wire up color pickers: at the moment there are no bound prefs - use a background notification for this?
 
-convert palette dropdwons to <option> elements  
+- convert palette dropdowns to <option> elements  

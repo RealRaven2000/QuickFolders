@@ -144,10 +144,29 @@ async function preselectTab() {
   selectedTabElement.dispatchEvent(tabEvent);
 }
 
+async function initVersionPanel() {
+  /* 
+  Example of a XUL function I would like to call:
+   await QuickFolders.Util.init();
+   in order to access 
+   QuickFolders.Version
+   getElement("qf-options-header-description").setAttribute("value", QuickFolders.Util.addonInfo.version);
+   QuickFolders.Util.addonInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getAddonInfo" });
+   
+   */
+  const manifest = await messenger.runtime.getManifest();
+  document.getElementById("qf-options-header-description").value = manifest.version;
+}
+
+async function initLicenseInfo() {
+  let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+  document.getElementById('txtLicenseKey').value = licenseInfo.licenseKey;
+}
+
+
 i18n.updateDocument();
 loadPrefs();
 preselectTab();
+initVersionPanel();
 
-
-
-
+ 

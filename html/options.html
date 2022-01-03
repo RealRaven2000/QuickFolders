@@ -658,19 +658,20 @@
                 </div>
               </div>
             </div>
-            <div class="hbox" id="qf-individualColors" flex="1">
-              <fieldset>
-                <legend>__MSG_qf.options.LayoutColorAppearance__</legend>
+            <fieldset>
+              <legend>__MSG_qf.options.LayoutColorAppearance__</legend>
                 <!-- oncommand handler: options.setColoredTabStyleFromRadioGroup(this);  -->
-                <label>
+              <div class="hbox" id="qf-individualColors" flex="1">
+                <label class="qfTabPreview striped">
                   <input type="radio" 
                     id="ExampleStripedColor" 
                     value="0"
                     name="tabStyleGroup"
                     data-pref-name="extensions.quickfolders.colorTabStyle"
-                    src="../chrome/content/skin/ico/striped-example.gif"> </input>__MSG_qf.options.LayoutColorAppearanceStriped__
+                    src="../chrome/content/skin/ico/striped-example.gif"> </input>
+                    __MSG_qf.options.LayoutColorAppearanceStriped__
                 </label>
-                <label>
+                <label class="qfTabPreview">
                   <input type="radio" 
                     id="ExampleFilledColor" label=" __MSG_qf.options.LayoutColorAppearanceFilled__" 
                     value="1"
@@ -679,8 +680,8 @@
                     src="../chrome/content/skin/ico/full-example.gif"> </input>
                   __MSG_qf.options.LayoutColorAppearanceFilled__
                 </label>
-              </fieldset>
-            </div>
+              </div>
+            </fieldset>
           </div>
 
         </fieldset>

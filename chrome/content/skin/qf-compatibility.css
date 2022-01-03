@@ -35,6 +35,13 @@ fieldset {
   margin-bottom: 0.5em;
 }
 
+fieldset legend {
+  margin-top: 0.3em;
+  font-size: 1em;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
 html|legend {
   margin-top: 0.5em;  
 }

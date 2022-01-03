@@ -50,6 +50,10 @@ html|legend {
   margin-left: 1em;
 }
 
+*[collapsed=true] {
+  display: none !important;
+}
+
 /* General elements */
 #qf-options-prefpane label {
   line-height: 1.3em;

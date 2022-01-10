@@ -21,7 +21,9 @@
   },
   "permissions": [
     "accountsRead",
-    "notifications"
+    "notifications",
+    "clipboardRead",
+    "clipboardWrite"
   ],
   "experiment_apis": {
     "WindowListener": {

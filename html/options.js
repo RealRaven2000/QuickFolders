@@ -447,28 +447,42 @@ async function configureBuyButton() {
       }
       else {
         if (licenseInfo.keyType==2) { // standard license
-          btnLicense.classList.add('upgrade'); // removes "pulsing" animation
+          btnLicense.classList.add("upgrade"); // removes "pulsing" animation
           btnLicense.setAttribute("collapsed",false);
           labelLicenseBtn(btnLicense, "upgrade");
         }
         else
           btnLicense.setAttribute("collapsed",true);
       }
-      replaceCssClass(proTab, 'paid');
-      replaceCssClass(btnLicense, 'paid');
+      replaceCssClass(proTab, "paid");
+      replaceCssClass(btnLicense, "paid");
       break;
     case "Expired":
       labelLicenseBtn(btnLicense, "renew");
-      replaceCssClass(proTab, 'expired');
-      replaceCssClass(btnLicense, 'expired');
+      replaceCssClass(proTab, "expired");
+      replaceCssClass(btnLicense, "expired");
       btnLicense.setAttribute("collapsed",false);
       break;
     default:
       labelLicenseBtn(btnLicense, "buy");
       btnLicense.setAttribute("collapsed",false);
-      replaceCssClass(btnLicense, 'register');
-      replaceCssClass(proTab, 'free');
+      replaceCssClass(btnLicense, "register");
+      replaceCssClass(proTab, "free");
   }
+}
+
+
+function pasteLicense() {
+  navigator.clipboard.readText().then(
+    clipText => {
+      if (clipText) {
+        let txtBox = document.getElementById('txtLicenseKey');
+        txtBox.value = clipText;
+        let finalLicense = trimLicense();
+        validateNewKey();
+      }       
+    }
+  );
 }
 
 async function validateLicenseInOptions(evt = false) {
@@ -514,6 +528,9 @@ async function validateNewKey() {
 
 function initButtons() {
   document.getElementById("btnValidateLicense").addEventListener("click", validateNewKey);
+  document.getElementById("btnPasteLicense").addEventListener("click", pasteLicense);
+  
+  // 
 }
 
 console.log("i18n.updateDocument");

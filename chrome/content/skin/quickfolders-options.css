@@ -384,7 +384,7 @@ hbox.quickhelp-dbg {
 }
 
 #copyFolders {
-	list-style-image: url("chrome://quickfolders/content/skin/ico/copy-tabs.png");
+	list-style-image: url("ico/copy-tabs.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
@@ -394,7 +394,7 @@ hbox.quickhelp-dbg {
 
 #pasteFolders {
 	min-width: 18px;
-	list-style-image: url("chrome://quickfolders/content/skin/ico/paste-tabs.png");
+	list-style-image: url("ico/paste-tabs.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 

@@ -26,6 +26,7 @@ for (button of document.querySelectorAll("#QuickFolders-Options-Tabbox button"))
 }
 
 
+
 async function savePref(event) {
   let target = event.target,
       prefName = target.dataset.prefName; // automatically added from data-pref-name
@@ -68,6 +69,7 @@ async function savePref(event) {
 }
 
 async function loadPrefs() {
+  console.log("loadPrefs");
   // use LegacyPrefs
 	const prefElements = Array.from(document.querySelectorAll("[data-pref-name]"));
 	for (const element of prefElements) {
@@ -145,15 +147,6 @@ async function preselectTab() {
 }
 
 async function initVersionPanel() {
-  /* 
-  Example of a XUL function I would like to call:
-   await QuickFolders.Util.init();
-   in order to access 
-   QuickFolders.Version
-   getElement("qf-options-header-description").setAttribute("value", QuickFolders.Util.addonInfo.version);
-   QuickFolders.Util.addonInfo = await QuickFolders.Util.notifyTools.notifyBackground({ func: "getAddonInfo" });
-   
-   */
   const manifest = await messenger.runtime.getManifest();
   document.getElementById("qf-options-header-description").value = manifest.version;
 }
@@ -161,13 +154,28 @@ async function initVersionPanel() {
 let licenseInfo;
 
 async function initLicenseInfo() {
-  debugger;
   licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
   document.getElementById('txtLicenseKey').value = licenseInfo.licenseKey;
   
   if (licenseInfo.licenseKey) {
     await validateLicenseInOptions(true);
   }
+  
+  // add an event listener for changes:
+  // window.addEventListener("QuickFolders.BackgroundUpdate", validateLicenseInOptions);
+  
+  messenger.runtime.onMessage.addListener (
+    async (data, sender) => {
+      if (data.msg=="updatedLicense") {
+        licenseInfo = data.licenseInfo;
+        updateLicenseOptionsUI(false); // we may have to switch off silent if we cause this
+        configureBuyButton();
+      }
+      return true;
+    }
+  );
+  
+
   /*
   I would now like to call the logic in the original options.js
   QuickFolders.Options.validateLicenseInOptions();
@@ -175,9 +183,9 @@ async function initLicenseInfo() {
   QuickFolders.Options.updateLicenseOptionsUI();
   
   // original code in options.load
-    if (QuickFolders.Util.licenseInfo.licenseKey) {
-      this.validateLicenseInOptions(true);      
-    }
+  if (QuickFolders.Util.licenseInfo.licenseKey) {
+    this.validateLicenseInOptions(true);      
+  }
     
   // could this be done via a background message?
   we were using the event 
@@ -186,12 +194,16 @@ async function initLicenseInfo() {
 }
 
 // make a validation message visible but also repeat a notification for screen readers.
-function showValidationMessage(el, silent=true) {
+async function showValidationMessage(el, silent=true) {
   if (el.getAttribute("collapsed") != false) {
     el.setAttribute("collapsed",false);
     if (!silent) {
       // TO DO: OS notification 
       // QuickFolders.Util.slideAlert (util.ADDON_NAME, el.textContent);
+      await messenger.runtime.sendMessage( {
+        command:"slideAlert", 
+        args: ["QuickFolders", el.textContent] 
+      } );
     }
   }
 }
@@ -407,7 +419,8 @@ function notifyBackground() {
   console.log ("to do - notify background!");
 }
 
-async function validateLicenseInOptions(evt = false) {
+// broken out from validateLicenseInOptions:
+async function configureBuyButton() {
   function replaceCssClass(el,addedClass) {
     if (!el) return;
     el.classList.add(addedClass);
@@ -415,76 +428,101 @@ async function validateLicenseInOptions(evt = false) {
     if (addedClass!='expired')  el.classList.remove('expired');
     if (addedClass!='free') el.classList.remove('free');
   }
-  /*
-    const util = QuickFolders.Util,
-          options = QuickFolders.Options,
-          */
 
-    let wd = window.document,
-        getElement = wd.getElementById.bind(wd),
-        btnLicense = getElement("btnLicense"),
-        proTab = getElement("QuickFolders-Pro"),
-        silent = (typeof evt === "object") ? false : evt; // will be an event when called from background script!
-        
-    // old call to decryptLicense was here
-    // 1 - sanitize License
-    // 2 - validate license
-    // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
-    updateLicenseOptionsUI(silent); // async!
-    // this the updating the first button on the toolbar via the main instance
-    // we use the quickfolders label to show if License needs renewal!
-    // use notify tools for updating the [QuickFolders] label 
-    
-    notifyBackground();
-    
-    // 4 - update buy / extend button or hide it.
-    let result = licenseInfo.status;
-    switch(result) {
-      case "Valid":
-        let today = new Date(),
-            later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
-            dateString = later.toISOString().substr(0, 10),
-            forceExtend = await messenger.LegacyPrefs.getPref("debug.premium.forceShowExtend");
-        // if we were a month ahead would this be expired?
-        if (licenseInfo.expiryDate < dateString || forceExtend) {
-          options.labelLicenseBtn(btnLicense, "extend");
+  let wd = window.document,
+      getElement = wd.getElementById.bind(wd),
+      btnLicense = getElement("btnLicense"),
+      proTab = getElement("QuickFolders-Pro");
+  let result = licenseInfo.status;
+  
+  switch(result) {
+    case "Valid":
+      let today = new Date(),
+          later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
+          dateString = later.toISOString().substr(0, 10),
+          forceExtend = await messenger.LegacyPrefs.getPref("debug.premium.forceShowExtend");
+      // if we were a month ahead would this be expired?
+      if (licenseInfo.expiryDate < dateString || forceExtend) {
+        labelLicenseBtn(btnLicense, "extend");
+      }
+      else {
+        if (licenseInfo.keyType==2) { // standard license
+          btnLicense.classList.add('upgrade'); // removes "pulsing" animation
+          btnLicense.setAttribute("collapsed",false);
+          labelLicenseBtn(btnLicense, "upgrade");
         }
-        else {
-          if (licenseInfo.keyType==2) { // standard license
-            btnLicense.classList.add('upgrade'); // removes "pulsing" animation
-            btnLicense.setAttribute("collapsed",false);
-            options.labelLicenseBtn(btnLicense, "upgrade");
-          }
-          else
-            btnLicense.setAttribute("collapsed",true);
-        }
-        replaceCssClass(proTab, 'paid');
-        replaceCssClass(btnLicense, 'paid');
-        break;
-      case "Expired":
-        options.labelLicenseBtn(btnLicense, "renew");
-        replaceCssClass(proTab, 'expired');
-        replaceCssClass(btnLicense, 'expired');
-        btnLicense.setAttribute("collapsed",false);
-        break;
-      default:
-        options.labelLicenseBtn(btnLicense, "buy");
-        btnLicense.setAttribute("collapsed",false);
-        replaceCssClass(btnLicense, 'register');
-        replaceCssClass(proTab, 'free');
-    }
-    
-    configExtra2Button();
-    // util.logDebug('validateLicense - result = ' + result);
+        else
+          btnLicense.setAttribute("collapsed",true);
+      }
+      replaceCssClass(proTab, 'paid');
+      replaceCssClass(btnLicense, 'paid');
+      break;
+    case "Expired":
+      labelLicenseBtn(btnLicense, "renew");
+      replaceCssClass(proTab, 'expired');
+      replaceCssClass(btnLicense, 'expired');
+      btnLicense.setAttribute("collapsed",false);
+      break;
+    default:
+      labelLicenseBtn(btnLicense, "buy");
+      btnLicense.setAttribute("collapsed",false);
+      replaceCssClass(btnLicense, 'register');
+      replaceCssClass(proTab, 'free');
+  }
+}
+
+async function validateLicenseInOptions(evt = false) {
+
+  let silent = (typeof evt === "object") ? false : evt; // will be an event when called from background script!
+      
+  // old call to decryptLicense was here
+  // 1 - sanitize License
+  // 2 - validate license
+  // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
+  updateLicenseOptionsUI(silent); // async!
+  
+  // this the updating the first button on the toolbar via the main instance
+  // we use the quickfolders label to show if License needs renewal!
+  // use notify tools for updating the [QuickFolders] label 
+  notifyBackground();
+  
+  // 4 - update buy / extend button or hide it.
+  configureBuyButton();
+  
+  configExtra2Button();
+  // util.logDebug('validateLicense - result = ' + result);
 } 
 
+trimLicense: function trimLicense() {
+  let txtBox = document.getElementById('txtLicenseKey'),
+      strLicense = txtBox.value.toString();
+  // Remove line breaks and extra spaces:
+  let trimmedLicense =  
+    strLicense.replace(/\r?\n|\r/g, ' ') // replace line breaks with spaces
+      .replace(/\s\s+/g, ' ')            // collapse multiple spaces
+      .replace('\[at\]','@')
+      .trim();
+  txtBox.value = trimmedLicense;
+  return trimmedLicense;
+} 
 
+async function validateNewKey() {
+  trimLicense();
+  // do a round trip through the background script.
+  let rv = await messenger.runtime.sendMessage({command:"updateLicense", key: document.getElementById('txtLicenseKey').value });
+}
 
+function initButtons() {
+  document.getElementById("btnValidateLicense").addEventListener("click", validateNewKey);
+}
+
+console.log("i18n.updateDocument");
 i18n.updateDocument();
+
 loadPrefs();
 preselectTab();
 initLicenseInfo();
-
 initVersionPanel();
+initButtons();
 
  

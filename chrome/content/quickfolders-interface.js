@@ -5234,6 +5234,8 @@ QuickFolders.Interface = {
     // wx options:
     QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab, updateMessage });  
     
+    if (QuickFolders.Preferences.isDebugOption("suppressXULoptions")) return; // suppress traditional options screen / for testing html only
+    
 		let params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null},
         //  in linux the first alwaysRaised hides the next child (config dialogs)
         features = (QuickFolders.Util.HostSystem == "linux") ?

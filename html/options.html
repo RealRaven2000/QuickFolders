@@ -334,16 +334,18 @@
                 data-pref-name="extensions.quickfolders.currentFolderBar.background.lightweight"
                 oncommand="options.toggleBoolPreference(this,false); options.updateNavigationBar();">__MSG_qf.checkbox.currentfolder.lightweight__</label>
               <div class="spacer" flex="1"></div>
-              <label control="leftSpacer">__MSG_qf.currentfolder.leftSpacer__</label>
-              <input id="leftSpacer" type="number" class="num1digit" preference="qfpa-flexLeft"
-                data-pref-name="extensions.quickfolders.currentFolderBar.flexLeft" 
-                data-pref-type="int"
-                onchange="options.changeTextPreference(this); options.updateNavigationBar();" />
-              <label control="rightSpacer">__MSG_qf.currentfolder.rightSpacer__</label>
-              <input id="rightSpacer" type="number" class="num1digit" preference="qfpa-flexRight"
-                data-pref-name="extensions.quickfolders.currentFolderBar.flexRight" 
-                data-pref-type="int"
-                onchange="options.changeTextPreference(this); options.updateNavigationBar();" />
+              <label>__MSG_qf.currentfolder.leftSpacer__
+                <input id="leftSpacer" type="number" class="num1digit" preference="qfpa-flexLeft"
+                  data-pref-name="extensions.quickfolders.currentFolderBar.flexLeft" 
+                  data-pref-type="int"
+                  onchange="options.changeTextPreference(this); options.updateNavigationBar();" />
+              </label>
+              <label>__MSG_qf.currentfolder.rightSpacer__
+                <input id="rightSpacer" type="number" class="num1digit" preference="qfpa-flexRight"
+                  data-pref-name="extensions.quickfolders.currentFolderBar.flexRight" 
+                  data-pref-type="int"
+                  onchange="options.changeTextPreference(this); options.updateNavigationBar();" />
+              </label>
               <div class="spacer" flex="2"></div>
             </div>
           </div>
@@ -373,9 +375,9 @@
             oncontextmenu="options.toggleBoolPreference(this,true);options.showAboutConfig(this,'quickfolders.debug',true);return false;">__MSG_qf.checkbox.debug__</label>
           <label style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;">__MSG_qf.label.initdelay__</label>
           <input type="text" id="initdelay" preference="QuickFolders-init-delay" data-pref-name="extensions.quickfolders.initDelay" />
-          <button id="copyFolders" tooltiptext="__MSG_qf.copyfolders.tooltip__" 
+          <button id="copyFolders" tooltiptext="__MSG_qf.copyfolders.tooltip__" class="iconButton"
             oncommand="options.copyFolderEntries();" >__MSG_qf.copyfolders__</button>
-          <button id="pasteFolders" tooltiptext="__MSG_qf.pastefolders.tooltip__" 
+          <button id="pasteFolders" tooltiptext="__MSG_qf.pastefolders.tooltip__"  class="iconButton"
             oncommand="options.pasteFolderEntries();" ></button>
         </div>
       </section>
@@ -392,27 +394,28 @@
             <div class="hbox toowide">
               <div class="vbox">
                 <div class="hbox align_center">
-                  <label class="textBoxLabel" control="QuickFolders-Themes">__MSG_qf.label.themes__</label>
-                  <select id="QuickFolders-Theme-Selector" sizetopopup="none" preference="qfpl-Theme"
-                    data-pref-name="extensions.quickfolders.style.theme"
-                    oncommand="options.updateMainWindow();">
-                    <!-- values in this list are QuickFolders.Themes.themes.id values -->
-                    <option id="QuickFolders-Theme-FlatStyle"
-                      originalName="Flat Style" value="flatTabs"
-                      oncommand="options.selectTheme(window.document, 'flatTabs', true);">__MSG_qf.themes.flatTabs.label__</option>
-                    <option id="QuickFolders-Theme-Pills"
-                      originalName="Apple Pills" value="applePills"
-                      oncommand="options.selectTheme(window.document, 'applePills', true);">__MSG_qf.themes.applePills.label__</option>
-                    <option id="QuickFolders-Theme-NativeTabs"
-                      originalName="Native Tabs" value="nativeTabs"
-                      oncommand="options.selectTheme(window.document, 'nativeTabs', true);">__MSG_qf.themes.nativeTabs.label__</option>
-                    <option id="QuickFolders-Theme-ButtonStyle"
-                      originalName="Flat Style" value="realButtons"
-                      oncommand="options.selectTheme(window.document, 'realButtons', true);">__MSG_qf.themes.realButtons.label__</option>
-                    <option id="QuickFolders-Theme-FlatButtons"
-                      originalName="Toolbar Buttons" value="flatButtons"
-                      oncommand="options.selectTheme(window.document, 'flatButtons', true);">__MSG_qf.themes.flatButtons.label__</option>
-                  </select>
+                  <label class="textBoxLabel">__MSG_qf.label.themes__
+                    <select id="QuickFolders-Theme-Selector" sizetopopup="none" preference="qfpl-Theme"
+                      data-pref-name="extensions.quickfolders.style.theme"
+                      oncommand="options.updateMainWindow();">
+                      <!-- values in this list are QuickFolders.Themes.themes.id values -->
+                      <option id="QuickFolders-Theme-FlatStyle"
+                        originalName="Flat Style" value="flatTabs"
+                        oncommand="options.selectTheme(window.document, 'flatTabs', true);">__MSG_qf.themes.flatTabs.label__</option>
+                      <option id="QuickFolders-Theme-Pills"
+                        originalName="Apple Pills" value="applePills"
+                        oncommand="options.selectTheme(window.document, 'applePills', true);">__MSG_qf.themes.applePills.label__</option>
+                      <option id="QuickFolders-Theme-NativeTabs"
+                        originalName="Native Tabs" value="nativeTabs"
+                        oncommand="options.selectTheme(window.document, 'nativeTabs', true);">__MSG_qf.themes.nativeTabs.label__</option>
+                      <option id="QuickFolders-Theme-ButtonStyle"
+                        originalName="Flat Style" value="realButtons"
+                        oncommand="options.selectTheme(window.document, 'realButtons', true);">__MSG_qf.themes.realButtons.label__</option>
+                      <option id="QuickFolders-Theme-FlatButtons"
+                        originalName="Toolbar Buttons" value="flatButtons"
+                        oncommand="options.selectTheme(window.document, 'flatButtons', true);">__MSG_qf.themes.flatButtons.label__</option>
+                    </select>
+                  </label>
                 </div>
               </div>
               <div class="vbox">
@@ -428,10 +431,11 @@
               data-pref-name="extensions.quickfolders.showIcons"
               oncommand="options.toggleBoolPreference(this);">__MSG_qf.checkbox.showIcons__</label>
             <div class="hbox toowide align_center">
-              <label id="button-font-size-label" value="" control="button-font-size">__MSG_qf.label.buttonFontSizeNumeric__</label>
-              <input id="button-font-size" type="number" class="num2digits" preference="qfpl-ButtonFontSize"
-                data-pref-name="extensions.quickfolders.buttonFontSizeN"
-                onchange="options.changeTextPreference(this);" />
+              <label id="button-font-size-label">__MSG_qf.label.buttonFontSizeNumeric__
+                <input id="button-font-size" type="number" class="num2digits" preference="qfpl-ButtonFontSize"
+                  data-pref-name="extensions.quickfolders.buttonFontSizeN"
+                  onchange="options.changeTextPreference(this);" />
+               </label>
               <label>px</label>
 
               <span style="width: 30px;" class="separator">&nbsp;</span>
@@ -457,19 +461,17 @@
               <label><input type="checkbox" id="chkCustomRadius"
                 preference="qfpl-CustomizedRadius" data-pref-name="extensions.quickfolders.style.corners.customizedRadius"
                 oncommand="options.toggleBoolPreference(this);">__MSG_qf.options.themes.customCornerRadius.checkbox__</label>
-              <label value="__MSG_qf.options.themes.customCornerRadius.Top.label__"
-                control="QuickFolders-Options-CustomTopRadius">
-              <input type="number" id="QuickFolders-Options-CustomTopRadius" class="num1digit"
-                preference="qfpl-TopRadius" data-pref-name="extensions.quickfolders.style.corners.customizedTopRadiusN"
-                onchange="options.changeTextPreference(this);" />
+              <label>__MSG_qf.options.themes.customCornerRadius.Top.label__
+                <input type="number" id="QuickFolders-Options-CustomTopRadius" class="num1digit"
+                  preference="qfpl-TopRadius" data-pref-name="extensions.quickfolders.style.corners.customizedTopRadiusN"
+                  onchange="options.changeTextPreference(this);" />
               </label>
               <label>px</label>
-              <label value="__MSG_qf.options.themes.customCornerRadius.Bottom.label__"
-                control="QuickFolders-Options-CustomBottomRadius">
-              <input type="number" id="QuickFolders-Options-CustomBottomRadius" class="num1digit"
-                preference="qfpl-BottomRadius" 
-                data-pref-name="extensions.quickfolders.style.corners.customizedBottomRadiusN" 
-                onchange="options.changeTextPreference(this);" />
+              <label value="__MSG_qf.options.themes.customCornerRadius.Bottom.label__">
+                <input type="number" id="QuickFolders-Options-CustomBottomRadius" class="num1digit"
+                  preference="qfpl-BottomRadius" 
+                  data-pref-name="extensions.quickfolders.style.corners.customizedBottomRadiusN" 
+                  onchange="options.changeTextPreference(this);" />
               </label>
               <label>px</label>
               <button oncommand="options.setDefaultButtonRadius();">__MSG_qf.button.default__</button>
@@ -479,21 +481,20 @@
         <fieldset>
           <legend>__MSG_qf.label.Toolbar__</legend>
           <div class="hbox toowide align_center">
-            <label>__MSG_qf.label.ToolbarBackground__</label>
+            <label>__MSG_qf.label.ToolbarBackground__
             <input id="toolbar-colorpicker" type="color" palettename="standard" style="vertical-align:middle"
               elementInfo="Toolbar.background-color" previewLabel="qf-StandardColors"
-              onchange="return options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors');">
+              onchange="return options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors');"></label>
             <label><input type="checkbox" preference="qfpl-TransparentToolbar"
               data-pref-name="extensions.quickfolders.transparentToolbar"
               oncommand="return options.toggleColorTranslucent(this, 'toolbar-colorpicker', 'qf-StandardColors', null);">__MSG_qf.checkbox.transparent__</label>
             <br class="spacer" flex="1">
             <div class="hbox align_center" id="qf-tweakToolbarBorder">
-              <label id="toolbar-bottom-label" value="__MSG_qf.label.Toolbar.bottomLine__"
-                control="toolbar-bottom-size" />
-              <input type="number" id="toolbar-bottom-size" tooltiptext="__MSG_qf.label.Toolbar.bottomLine.tip__"
-                class="num1digit" preference="qfpl-ToolbarBottom"
-                data-pref-name="extensions.quickfolders.style.Toolbar.bottomLineWidth"
-                onchange="options.changeTextPreference(this);">
+              <label id="toolbar-bottom-label" value="__MSG_qf.label.Toolbar.bottomLine__" />
+                <input type="number" id="toolbar-bottom-size" tooltiptext="__MSG_qf.label.Toolbar.bottomLine.tip__"
+                  class="num1digit" preference="qfpl-ToolbarBottom"
+                  data-pref-name="extensions.quickfolders.style.Toolbar.bottomLineWidth"
+                  onchange="options.changeTextPreference(this);">
               <label value="px" />
             </div>
             <div class="hbox align_center">
@@ -767,17 +768,17 @@
             tooltiptext="__MSG_qf.label.insertLicense.tooltip__"></textarea>
           <div class="vbox">
             <button id="btnPasteLicense" oncommand="options.pasteLicense();">__MSG_qf.button.pasteLicense__</button>
-            <button id="btnValdidateLicense" 
+            <button id="btnValidateLicense" 
               oncommand="options.validateNewKey();">__MSG_qf.button.validateLicense__</button>
           </div>
         </div>
-        <separator class="licenseSeparator" />
+        <span class="separator licenseSeparator" > </span>
         <div class="hbox align_center" id="validationDate" collapsed="true">
           <label id="licenseDateLabel">__MSG_qf.label.licenseValid__</label>
           <br class="spacer" style="width:1em">
           <label id="licenseDate" value="-" />
         </div>
-        <separator id="validationDateSpace" class="licenseSeparator" />
+        <span id="validationDateSpace" class="separator licenseSeparator" > </span>
         <div class="hbox" id="validationResults">
           <div class="vbox">
             <description id="validationPassed" class="niceFont" collapsed="true">__MSG_qf.licenseValidation.passed__
@@ -805,7 +806,7 @@
             <br class="spacer" flex="1">
           </box>
         </div>
-        <separator flex="1" />
+        <span class="separator" flex="1" > </span>
         <div class="hbox">
           <fieldset id="premiumConfig" disabled="true">
             <legend>__MSG_qf.premiumConfig__</legend>
@@ -861,23 +862,24 @@
                   class="shortCutKey" maxLength="1" disabled="true" />
               </div>
 
-              <separator />
+              <span class="separator" > </span>
               <div class="hbox align_center">
-                <label control="menuQuickMoveFormat" value="__MSG_qf.quickMove.path.format__" />
-                <select id="menuQuickMoveFormat" sizetopopup="none" preference="qfpp-QuickMove-PathType"
-                  data-pref-name="extensions.quickfolders.premium.findFolder.folderPathDetail"
-                  disabled="true" oncommand="options.selectQuickMoveFormat(this);">
-                  <option value="0">__MSG_qf.pathFormat.folderName__</option>
-                  <option value="1">__MSG_qf.pathFormat.folderAndAccount__</option>
-                  <option value="2">__MSG_qf.pathFormat.AccountAndPath__</option>
-                  <option value="3">__MSG_qf.pathFormat.PathOnly__</option>
-                  <option value="4">__MSG_qf.pathFormat.URI__</option>
-                </select>
-                <label id="button-font-size-label" control="quickmove-path-depth"
-                  value="__MSG_qf.pathFormat.maxDepth__" />
-                <input type="number" id="quickmove-path-depth" tooltiptext="__MSG_qf.pathFormat.tooltip__"
-                  class="num1digit" preference="qfpp-QuickMove-PathDepth"
-                  data-pref-name="extensions.quickfolders.premium.findFolder.maxPathItems" disabled="true" />
+                <label> __MSG_qf.quickMove.path.format__
+                  <select id="menuQuickMoveFormat" sizetopopup="none" preference="qfpp-QuickMove-PathType"
+                    data-pref-name="extensions.quickfolders.premium.findFolder.folderPathDetail"
+                    disabled="true" oncommand="options.selectQuickMoveFormat(this);">
+                    <option value="0">__MSG_qf.pathFormat.folderName__</option>
+                    <option value="1">__MSG_qf.pathFormat.folderAndAccount__</option>
+                    <option value="2">__MSG_qf.pathFormat.AccountAndPath__</option>
+                    <option value="3">__MSG_qf.pathFormat.PathOnly__</option>
+                    <option value="4">__MSG_qf.pathFormat.URI__</option>
+                  </select>
+                </label>
+                <label id="button-font-size-label">__MSG_qf.pathFormat.maxDepth__
+                  <input type="number" id="quickmove-path-depth" tooltiptext="__MSG_qf.pathFormat.tooltip__"
+                    class="num1digit" preference="qfpp-QuickMove-PathDepth"
+                    data-pref-name="extensions.quickfolders.premium.findFolder.maxPathItems" disabled="true" />
+                </label>
               </div>
 
               <div class="hbox">
@@ -921,7 +923,7 @@
             </div>
           </fieldset>
         </div>
-        <separator flex="1" />
+        <span class="separator" flex="1" > </span>
 
       </section>      
 
@@ -930,8 +932,6 @@
   </div>
 
 
-  <script src="../scripts/i18n/i18n.js"></script>
-  <script src="../scripts/preferences/preferences.js"></script>
   <script src="../chrome/content/i18n.js"></script>
   <script src="options.js"></script>
 

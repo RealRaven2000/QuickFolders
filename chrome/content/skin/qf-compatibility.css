@@ -31,6 +31,7 @@
 fieldset {
   margin-right: 1em;
   padding-left: 0.5em;
+  padding-right: 0.5em;
   padding-bottom: 0.5em;
   margin-bottom: 0.5em;
 }
@@ -86,6 +87,22 @@ html|legend {
 #qf-youtube {
   align-self: center; 
 }
+
+/* style buttons with images: */
+button[isTab], button.iconButton {
+  display: list-item;
+  list-style-position: inside;
+}
+
+/* images on buttons: */
+button::marker {
+}
+button.active,
+button.active::marker {
+  fill: white !important; /* not working yet - forcing the icon to be white */
+  stroke: white;
+}
+
 
 #QuickFolders-General {
   list-style-image: url("ico/settings.svg");

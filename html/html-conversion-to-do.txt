@@ -40,8 +40,29 @@ Radiogroups wired up!
 
 <separator> to <span class="separator">
 
+Support for collapsed attribute:
+*[collapsed=true] {
+  display: none !important;
+}
+
+
+Added a class for buttons with icons and tabs in order to add icons (behave like list icons):
+button[isTab], button.iconButton {
+  display: list-item;
+  list-style-position: inside;
+}
+
+Added test config option to suppress xul options dialog (general debug mode must also be enabled):
+extensions.quickfolders.debug.suppressXULoptions
+
+support for sliding alert (accessibility for blind peopel )
+
 TO DO:
 
 - wire up color pickers: at the moment there are no bound prefs - use a background notification for this?
 
 - convert palette dropdowns to <option> elements  
+
+
+
+-moz-image-region = seems to be without alternative.

@@ -103,12 +103,48 @@ async function main() {
   callbacks.forEach(callback => callback());
   startupFinished = true;
 
-  // listeners for splash pages
+  // listeners for splash pages [and mx code?]
   messenger.runtime.onMessage.addListener(async (data, sender) => {
     if (data.command) {
       switch (data.command) {
         case "getLicenseInfo": 
           return currentLicense.info;
+          
+        // intially, new listeners for new options.js
+        case "slideAlert":
+          util.slideAlert(...data.args);
+          break;  
+
+
+        case "updateLicense":
+          let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity"),
+              isDebugLicenser = await messenger.LegacyPrefs.getPref(legacy_root + "debug.premium.licenser");
+              
+          // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
+          let newLicense = new Licenser(data.key, { forceSecondaryIdentity, debug: isDebugLicenser });
+          await newLicense.validate();
+          // Check new license and accept if ok.
+          // You may return values here, which will be send back to the caller.
+          // return false;
+          
+          // Update background license.
+          await messenger.LegacyPrefs.setPref(legacy_root + "LicenseKey", newLicense.info.licenseKey); 
+          currentLicense = newLicense;
+          // 1. Broadcast to experiment
+          //    experimental side uses QuickFolders.BackgroundUpdate event listener
+          messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+          
+          // 2. notify options.html (new, using message API)
+          let message = {
+            msg: "updatedLicense",
+            licenseInfo: currentLicense.info
+          }
+          messenger.runtime.sendMessage(message);
+                    
+          
+          messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
+          return true; // ?      
+      
       }
     }
   });

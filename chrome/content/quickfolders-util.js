@@ -83,8 +83,8 @@ QuickFolders.Util = {
           else {
             event =  new CustomEvent(`QuickFolders.BackgroundUpdate.${data.event}`) ;
           }
-          
           window.dispatchEvent(event); 
+
         }       
       }      
     }   

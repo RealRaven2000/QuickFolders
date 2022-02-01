@@ -2064,6 +2064,8 @@ QuickFolders.Interface = {
 		);
 
 		button.folder = folder;
+    // [issue 234] API folders
+    button.apiPath = entry.apiPath;
 
 		if (null == theButton) {
 			button.setAttribute("tooltiptext", util.getFolderTooltip(folder, label));
@@ -3009,12 +3011,27 @@ QuickFolders.Interface = {
 	onNewFolder: function onNewFolder(element,evt) {
 		let util = QuickFolders.Util,
 				QI = QuickFolders.Interface,
-        folder = util.getPopupNode(element).folder;
+        folder = util.getPopupNode(element).folder, // [issue 234] to be removed for API 
+        apiPath = util.getPopupNode(element).apiPath;
+    // [issue 234] access the (api) Path
+        
     if (evt) evt.stopPropagation();
 
     util.logDebugOptional("interface", "QuickFolders.Interface.onNewFolder()");
     
+    if (apiPath) {
+      util.logDebug("Menu - create API folder - " + apiPath);
+      QI.onCreateAPIFolder(apiPath);
+    }
+    else {
+      util.logDebug("create folder (trad)")
     QI.onCreateInstantFolder(folder);  // async function
+    }
+	},
+   
+  onCreateAPIFolder: function(parentPath, folderName) {
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "createSubfolder", parentPath, folderName  })
+      .then(console.log).catch(console.error); // this will log the folder as return value is passed to callback
 	},
 
 	// * function for creating a new folder under a given parent
@@ -3069,8 +3086,8 @@ QuickFolders.Interface = {
 						QI.hideFindPopup();
 					}
 		    },
-				function failedCreateFolder(ex) {
-					util.logException("Exception in getOrCreateFolder() ", ex);
+				function failedCreateFolder(reason) {
+					util.logToConsole(`Exception in getOrCreateFolder(${newFolderUri}, ${util.FolderFlags.MSG_FOLDER_FLAG_MAIL}) `, reason);
 				}
 			);
 	},
@@ -4072,6 +4089,8 @@ QuickFolders.Interface = {
 					createFolderMenuItem.id=""; // delete existing menu
 					createFolderMenuItem.id="folderPaneContext-new"; // for styling!
 					createFolderMenuItem.folder=folder;
+          // [issue 234]
+          
 					createFolderMenuItem.setAttribute("class","menuitem-iconic");
 
 					// use parent folder URI as each starting point

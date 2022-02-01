@@ -210,6 +210,11 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
         
         return true;
+        
+      case "createSubfolder":  // [issue 234]
+        // if folderName is not given - create a popup window
+        
+        return browser.folders.create(data.parentPath, data.folderName || "test1"); // like await but returns
     }
   });
   

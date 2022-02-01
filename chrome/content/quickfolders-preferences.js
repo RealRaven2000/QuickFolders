@@ -55,6 +55,27 @@ QuickFolders.Preferences = {
 		}
 	} ,
 
+  folderURIToPath: function (accountId, uri) {
+    let server = MailServices.accounts.getAccount(accountId).incomingServer;
+    let rootURI = server.rootFolder.URI;
+    if (rootURI == uri) {
+      return "/";
+    }
+    // The .URI property of an IMAP folder doesn't have %-encoded characters, but
+    // may include literal % chars. Services.io.newURI(uri) applies encodeURI to
+    // the returned filePath, but will not encode any literal % chars, which will
+    // cause decodeURIComponent to fail (bug 1707408).
+    if (server.type == "imap") {
+      return uri.substring(rootURI.length);
+    }
+    let path = Services.io.newURI(uri).filePath;
+    return path
+      .split("/")
+      .map(decodeURIComponent)
+      .join("/");
+  } ,
+
+
 	loadFolderEntries: function loadFolderEntries() {
 		const setting = "QuickFolders.folders",
 		      util = QuickFolders.Util;
@@ -71,10 +92,18 @@ QuickFolders.Preferences = {
 				for (let i = 0; i < entries.length; i++) {
 					if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
 						entries[i].tabColor = 0;
+          // [issue 234] retrieve API location tuple (account + path)
+          let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, false);
+          // retrieve the account key:
+          let ac = MailServices.accounts.FindAccountForServer(f.server);
+          entries[i].apiPath = {
+            accountId: ac.key,
+            path: QuickFolders.Preferences.folderURIToPath(ac.key, entries[i].uri)
+          }
+          
 					// default the name!!
 					if (!entries[i].name) {
 						// retrieve the name from the folder uri (prettyName)
-						let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, false);
 						if (f)
 							entries[i].name = f.prettyName;
 					}

@@ -1006,7 +1006,7 @@
     "message": "Napraw ikony"
   },
   "qf.menuitem.quickfolders.splash" : {
-    "message": "Wyświetl ekran powitalny"
+    "message": "Najnowsze wiadomości dotyczące aktualizacji…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "Wsparcie QuickFolders…"
@@ -1713,7 +1713,7 @@
     "message": "Odnów licencję."
   },
   "special-offer-content": {
-    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując licencję QuickFolders Pro! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}. Lub wybierz standardowe funkcje dzięki nowej {linkStart}Licencji standardowej{linkEnd}.",
+    "message": "Ulepsz swoje funkcje i zaoszczędź {boldStart}$reduction${boldEnd}, kupując {linkStartPro}licencję QuickFolders Pro{linkEnd}! Ta oferta specjalna będzie dostępna do {boldStart}$expirydate${boldEnd}. Lub wybierz standardowe funkcje dzięki nowej {linkStart}Licencji standardowej{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1849,7 +1849,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Thunderbird nie przeskakuje już do skrzynki odbiorczej podczas sprawdzania nowych wiadomości e-mail z menu kontekstowego.{L2}{L1}Obsługa dużych ikon w przyciskach paska narzędzi QuickFolders do wyświetlania w wysokiej rozdzielczości.{L2}{L1}Naprawiono: przenoszenie folderów z funkcji quickMove nie powiodło się w Tb91.{L2}{L1}Poprawki różnych układów specyficzne dla Thunderbird 91.{L2}"
+    "message": "{L1}Naprawiono w wersji 5.8.2: Menu długich folderów przewija się teraz podczas przeciągania wiadomości do krawędzi ekranu.{L2}{L1}Thunderbird nie przeskakuje już do skrzynki odbiorczej podczas sprawdzania nowych wiadomości e-mail z menu kontekstowego.{L2}{L1}Obsługa dużych ikon w przyciskach paska narzędzi QuickFolders do wyświetlania w wysokiej rozdzielczości.{L2}{L1}Naprawiono: przenoszenie folderów z funkcji quickMove nie powiodło się w Tb91.{L2}{L1}Poprawki różnych układów specyficzne dla Thunderbird 91.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

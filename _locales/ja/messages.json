@@ -1006,7 +1006,7 @@
     "message": "ツリーアイコンを修復"
   },
   "qf.menuitem.quickfolders.splash" : {
-    "message": "スプラッシュ画面を表示する"
+    "message": "最新のアップデートニュース…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders サポート…"
@@ -1714,7 +1714,7 @@
     "message": "ライセンスを更新する。"
   },
   "special-offer-content": {
-    "message": "ライセンスを選択機能をアップグレードし、QuickFolders Proライセンスを購入して{boldStart} $reduction$ {boldEnd}を節約してください。 この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。 または、新しい{linkStart}標準ライセンス{linkEnd}で標準機能を選択します。",
+    "message": "ライセンスを選択機能をアップグレードし、{linkStartPro}QuickFolders Pro{linkEnd}ライセンスを購入して{boldStart} $reduction$ {boldEnd}を節約してください。 この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。 または、新しい{linkStart}標準ライセンス{linkEnd}で標準機能を選択します。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1740,7 +1740,7 @@
     }
   },   
   "special-offer-upgrade": {
-    "message": "今すぐQuickFoldersStandardからProにアップグレードして、{boldStart} $reduction$ {boldEnd}を節約してください！ この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。",
+    "message": "今すぐQuickFolders StandardからProにアップグレードして、{boldStart} $reduction$ {boldEnd}を節約してください！ この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1850,7 +1850,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1}コンテキストメニューから新着メールをチェックするときにThunderbirdが受信トレイにジャンプしなくなりました。{L2} {L1}高解像度ディスプレイ用のQuickFoldersツールバーボタンの大きなアイコンのサポート。{L2} {L1}修正：フォルダの移動 Tb91でquickMove関数から失敗しました。{L2} {L1} Thunderbird91に固有のさまざまなレイアウトの修正。{L2}"
+    "message": "{L1}バージョン5.8.2で修正済み：メールを画面の端にドラッグすると、長いフォルダメニューがスクロールするようになりました。{L2}{L1}コンテキストメニューから新着メールをチェックするときにThunderbirdが受信トレイにジャンプしなくなりました。{L2} {L1}高解像度ディスプレイ用のQuickFoldersツールバーボタンの大きなアイコンのサポート。{L2} {L1}修正：フォルダの移動 Tb91でquickMove関数から失敗しました。{L2} {L1} Thunderbird91に固有のさまざまなレイアウトの修正。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

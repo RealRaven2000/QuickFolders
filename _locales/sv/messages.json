@@ -1006,7 +1006,7 @@
     "message": "Reparera trädstruktursikoner"
   },
   "qf.menuitem.quickfolders.splash" : {
-    "message": "Visa stänkskärm"
+    "message": "Senaste uppdateringsnyheter…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders supportsektion…"
@@ -1713,7 +1713,7 @@
     "message": "Förnya din licens."
   },
   "special-offer-content": {
-    "message": "Uppgradera dina funktioner och spara {boldStart} $reduction$ {boldEnd} genom att köpa en QuickFolders Pro -licens! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}. Eller välj standardfunktionerna med den nya {linkStart}standardlicensen{linkEnd}.",
+    "message": "Uppgradera dina funktioner och spara {boldStart} $reduction$ {boldEnd} genom att köpa en {linkStartPro}QuickFolders Pro -licens{linkEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}. Eller välj standardfunktionerna med den nya {linkStart}standardlicensen{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1849,7 +1849,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Thunderbird hoppar inte in i inkorgen längre när det letar efter nya e -postmeddelanden från snabbmenyn. {L2} {L1} Stöd för stor ikon i QuickFolders verktygsfältsknappar för högupplösta skärmar. {L2} {L1} Åtgärdad: flyttade mappar från quickMove -funktionen misslyckades i Tb91. {L2} {L1} Olika layoutkorrigeringar specifika för Thunderbird 91. {L2}"
+    "message": "{L1} Fixat i version 5.8.2: Långa mapps menyer rullar nu när du drar e -postmeddelanden till skärmkanten. {L2}{L1} Thunderbird hoppar inte in i inkorgen längre när det letar efter nya e -postmeddelanden från snabbmenyn. {L2} {L1} Stöd för stor ikon i QuickFolders verktygsfältsknappar för högupplösta skärmar. {L2} {L1} Åtgärdad: flyttade mappar från quickMove -funktionen misslyckades i Tb91. {L2} {L1} Olika layoutkorrigeringar specifika för Thunderbird 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

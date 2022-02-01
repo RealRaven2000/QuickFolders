@@ -14,6 +14,7 @@ async function updateActions(addonName) {
   // LICENSING FLOW
   let isExpired = licenseInfo.isExpired,
       isValid = licenseInfo.isValid,
+      isProUser = (licenseInfo.keyType == 0 || licenseInfo.keyType == 1),
       isStandard = (licenseInfo.keyType==2);
   
   function hide(id) {

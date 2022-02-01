@@ -1006,7 +1006,7 @@
     "message": "Afficher l'écran de démarrage"
   },
   "qf.menuitem.quickfolders.splash" : {
-    "message": "Afficher l'écran de démarrage"
+    "message": "Dernières nouvelles de mise à jour…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "Support QuickFolders…"
@@ -1713,7 +1713,7 @@
     "message": "Renouvelez votre licence."
   },
   "special-offer-content": {
-    "message": "Mettez à niveau vos fonctionnalités et économisez {boldStart}$reduction${boldEnd} en achetant une licence QuickFolders Pro ! Cette offre spéciale sera disponible jusqu'au {boldStart}$expirydate${boldEnd}. Ou choisissez les fonctions standard avec la nouvelle {linkStart}Licence Standard{linkEnd}.",
+    "message": "Mettez à niveau vos fonctionnalités et économisez {boldStart}$reduction${boldEnd} en achetant une {linkStartPro}licence QuickFolders Pro{linkEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$expirydate${boldEnd}. Ou choisissez les fonctions standard avec la nouvelle {linkStart}Licence Standard{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1849,7 +1849,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Thunderbird ne saute plus dans la boîte de réception lors de la recherche de nouveaux e-mails à partir du menu contextuel.{L2}{L1}Prise en charge de la grande icône dans les boutons de la barre d'outils QuickFolders pour les affichages haute résolution.{L2}{L1}Corrigé : déplacement de dossiers de la fonction quickMove a échoué dans Tb91.{L2}{L1}Divers correctifs de mise en page spécifiques à Thunderbird 91.{L2}"
+    "message": "{L1}Corrigé dans la version 5.8.2 : les menus des dossiers longs défilent désormais lorsque vous faites glisser les e-mails vers le bord de l'écran.{L2}{L1}Thunderbird ne saute plus dans la boîte de réception lors de la recherche de nouveaux e-mails à partir du menu contextuel.{L2}{L1}Prise en charge de la grande icône dans les boutons de la barre d'outils QuickFolders pour les affichages haute résolution.{L2}{L1}Corrigé : déplacement de dossiers de la fonction quickMove a échoué dans Tb91.{L2}{L1}Divers correctifs de mise en page spécifiques à Thunderbird 91.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

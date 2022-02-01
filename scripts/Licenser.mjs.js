@@ -22,6 +22,27 @@ const LicenseStates = {
     Empty: 6,
 }
 
+const ADDON_NAME = "QuickFolders";
+
+async function getDefaultIdentity(accountId) {
+    const legacyIdentityMethod = (messenger.identities) ? false : true;
+    const _getDefaultIdentity = messenger.identities ? messenger.identities.getDefault : messenger.accounts.getDefaultIdentity;
+    try {
+      if (legacyIdentityMethod)
+        return await _getDefaultIdentity(accountId);
+      try {  // Tb 91
+        return await _getDefaultIdentity(accountId, false);  // avoid loading folders!
+      }
+      catch(ex) { // older versions don't have the second parameter
+        return await await _getDefaultIdentity(accountId);
+      }
+    }
+    catch (ex) {
+      console.log(ADDON_NAME + " Licenser - getDefaultIdentity() failed", ex);
+    }
+    return null; // should not happen
+}
+
 // format QF-EMAIL:DATE  // ;CRYPTO
 // format QS-EMAIL:DATE  // ;CRYPTO
 // example: QF-joe.bloggs@gotmail.com:2015-05-20;
@@ -29,13 +50,13 @@ function getDate(license) {
   // get mail+date portion
   let arr = license.split(';');
   if (!arr.length) {
-    log("QuickFolders Licenser", "getDate() failed - no ; found");
+    log(ADDON_NAME + " Licenser", "getDate() failed - no ; found");
     return ""; 
   }
   // get date portion
   let arr1=arr[0].split(':');
   if (arr1.length<2) {
-    log("QuickFolders Licenser", "getDate() failed - no : found");
+    log(ADDON_NAME + "Licenser", "getDate() failed - no : found");
     return '';
   }
   return arr1[1];
@@ -44,7 +65,7 @@ function getDate(license) {
 function getMail(license) {
   let arr1 = license.split(':');
   if (!arr1.length) {
-    log("QuickFolders Licenser", "getMail() failed - no : found");
+    log(ADDON_NAME + " Licenser", "getMail() failed - no : found");
     return '';
   }
   let pos = arr1[0].indexOf('-') + 1;
@@ -223,7 +244,7 @@ export class Licenser {
       }
     }
     catch (ex) {
-      log("QuickFolders Licenser\nvalidateLicense.isIdMatchedLicense() failed", ex);
+      log(ADDON_NAME + " Licenser\nvalidateLicense.isIdMatchedLicense() failed", ex);
     }
     return false;
   }
@@ -231,7 +252,7 @@ export class Licenser {
   getCrypto() {
     let arr = this.LicenseKey.split(';');
     if (arr.length<2) {
-      this.logDebug("QuickFolders Licenser","getCrypto()","failed - no ; found");
+      this.logDebug(ADDON_NAME + " Licenser","getCrypto()","failed - no ; found");
       return null;
     }
     return arr[1];
@@ -387,16 +408,15 @@ export class Licenser {
     
     let accounts = await messenger.accounts.list(); // [bug 1630786] permissions prevent users from updating
     let AllowFallbackToSecondaryIdentiy = false;
-    const getDefaultIdentity = messenger.identities ? messenger.identities.getDefault : messenger.accounts.getDefaultIdentity;
     
-    if (this.key_type == 0) {
-      // Private License - Check if secondary mode is necessarry (if not already enforced)
+    if (this.key_type == 0 || this.key_type == 2) {
+      // Private License - Check if secondary mode is necessary (if not already enforced)
       if (this.ForceSecondaryIdentity) {
         AllowFallbackToSecondaryIdentiy = true;
       } else {
         let hasDefaultIdentity = false;
         for (let account of accounts) {
-          let defaultIdentity = await getDefaultIdentity(account.id); 
+          let defaultIdentity = await getDefaultIdentity(account.id);
           if (defaultIdentity) {
             hasDefaultIdentity = true;
             break;
@@ -404,8 +424,8 @@ export class Licenser {
         }
         if (!hasDefaultIdentity) {
           AllowFallbackToSecondaryIdentiy = true;
-          log("QuickFolders Licenser",
-              "Premium License Check: There is no account with default identity!\n" +
+          log(ADDON_NAME + " Licenser",
+              "License Check: There is no account with default identity!\n" +
               "You may want to check your account configuration as this might impact some functionality.\n" + 
               "Allowing use of secondary email addresses...");
         }
@@ -414,9 +434,8 @@ export class Licenser {
     
     for (let account of accounts) {
       let defaultIdentity = await getDefaultIdentity(account.id); 
-      if (defaultIdentity && !this.ForceSecondaryIdentity) {
-
-        this.logDebug("QuickFolders Licenser", {
+      if (defaultIdentity) {
+        this.logDebug(ADDON_NAME + " Licenser", {
             "Iterate accounts" : account.name,
             "Default Identity" : defaultIdentity.id,
         });
@@ -434,9 +453,10 @@ export class Licenser {
           return this.info;
         }
 
-      } else if (AllowFallbackToSecondaryIdentiy) {
+      } 
+      if (AllowFallbackToSecondaryIdentiy) {
 
-        this.logDebug("QuickFolders Licenser", {
+        this.logDebug(ADDON_NAME + " Licenser", {
             "Iterate all identities of account" : account.name,
             "Identities" : account.identities,
         });
@@ -472,7 +492,7 @@ export class Licenser {
     if (this.debug) {
       if(!detail) {
         detail = msg;
-        msg = "QuickFolders Licenser";
+        msg = ADDON_NAME + " Licenser";
       }
       log(msg, detail);
     }

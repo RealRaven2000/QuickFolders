@@ -143,6 +143,9 @@
   "purchase-heading": {
     "message" : "Nákup licence!"
   }, 
+  "qf.menuitem.quickfolders.splash" : {
+    "message": "Nejnovější aktualizace Novinky…"
+  },
   "qf.notification.newsFlash": {
     "message": "$addonName$ bylo aktualizováno! Důležité novinky…",
     "placeholders": {
@@ -174,7 +177,7 @@
     }
   },  
   "special-offer-content": {
-    "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením licence QuickFolders Pro! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
+    "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence QuickFolders Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -274,7 +277,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
   },
   "whats-new-list": {
-    "message": "{L1} Thunderbird už při kontrole nových e -mailů z kontextové nabídky nepřeskočí do složky Doručená pošta. {L2} {L1} Podpora velké ikony v liště nástrojů QuickFolders pro zobrazení ve vysokém rozlišení. {L2} {L1} Opraveno: přesouvání složek z funkce quickMove selhala v Tb91. {L2} {L1} Různé opravy rozložení specifické pro Thunderbird 91. {L2}"
+    "message": "{L1} Opraveno ve verzi 5.8.2: Nabídky dlouhých složek se nyní posouvají při přetahování e -mailů na okraj obrazovky. {L2}{L1} Thunderbird už při kontrole nových e -mailů z kontextové nabídky nepřeskočí do složky Doručená pošta. {L2} {L1} Podpora velké ikony v liště nástrojů QuickFolders pro zobrazení ve vysokém rozlišení. {L2} {L1} Opraveno: přesouvání složek z funkce quickMove selhala v Tb91. {L2} {L1} Různé opravy rozložení specifické pro Thunderbird 91. {L2}"
   },
   "window-title": {
     "message": "Vítejte v $addonName$",

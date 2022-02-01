@@ -1006,7 +1006,7 @@
     "message": "Repair Tree Icons"
   },
   "qf.menuitem.quickfolders.splash" : {
-    "message": "Splash képernyő megjelenítése"
+    "message": "Legfrissebb hírek…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders támogatás…"
@@ -1713,7 +1713,7 @@
     "message": "Újítsa meg a licencét."
   },
   "special-offer-content": {
-    "message": "Frissítse a szolgáltatásait és spóroljon {boldStart} $reduction$ {boldEnd} a QuickFolders Pro licenc megvásárlásával! Ez a különleges ajánlat {boldStart} $expirydate$ {boldEnd} -ig érhető el. Vagy válassza ki a standard funkciókat az új {linkStart}szabványos licenc{linkEnd} segítségével.",
+    "message": "Frissítse a szolgáltatásait és spóroljon {boldStart} $reduction$ {boldEnd} a {linkStartPro}QuickFolders Pro licenc megvásárlásával{linkEnd}! Ez a különleges ajánlat {boldStart} $expirydate$ {boldEnd} -ig érhető el. Vagy válassza ki a standard funkciókat az új {linkStart}szabványos licenc{linkEnd} segítségével.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1849,7 +1849,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} A Thunderbird már nem ugrik be az Inboxba, amikor a helyi menüből új leveleket keres. {L2} {L1} Nagy ikonok támogatása a QuickFolders eszköztár gombjaiban a nagy felbontású megjelenítésekhez. {L2} {L1} Javítva: mappák mozgatása a quickMove függvényből nem sikerült a Tb91. {L2} {L1} Különféle Thunderbird 91 -es elrendezési javítások. {L2}"
+    "message": "{L1} Javítva az 5.8.2 verzióban: A hosszú mappák menüi most görgetnek, amikor a leveleket a képernyő szélére húzzák. {L2}{L1} A Thunderbird már nem ugrik be az Inboxba, amikor a helyi menüből új leveleket keres. {L2} {L1} Nagy ikonok támogatása a QuickFolders eszköztár gombjaiban a nagy felbontású megjelenítésekhez. {L2} {L1} Javítva: mappák mozgatása a quickMove függvényből nem sikerült a Tb91. {L2} {L1} Különféle Thunderbird 91 -es elrendezési javítások. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

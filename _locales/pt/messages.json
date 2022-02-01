@@ -1006,7 +1006,7 @@
     "message": "Reparar ícones da árvore"
   },
   "qf.menuitem.quickfolders.splash" : {
-    "message": "Exibir tela inicial"
+    "message": "Últimas notícias de atualização…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "Suporte…"
@@ -1713,7 +1713,7 @@
     "message": "Renove sua licença."
   },
   "special-offer-content": {
-    "message": "Atualize seus recursos e economize {boldStart} $reduction$ {boldEnd} comprando uma licença QuickFolders Pro! Esta oferta especial estará disponível até {boldStart} $expirydate$ {boldEnd}. Ou escolha as funções padrão com a nova {linkStart} Licença Padrão {linkEnd}.",
+    "message": "Atualize seus recursos e economize {boldStart} $reduction$ {boldEnd} comprando uma {linkStartPro}licença QuickFolders Pro{linkEnd}! Esta oferta especial estará disponível até {boldStart} $expirydate$ {boldEnd}. Ou escolha as funções padrão com a nova {linkStart} Licença Padrão {linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1849,7 +1849,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} O Thunderbird não pula mais para a Caixa de entrada ao verificar novos e-mails no menu de contexto. {L2} {L1} Suporte para ícones grandes nos botões da barra de ferramentas do QuickFolders para telas de alta resolução. {L2} {L1} Corrigido: pastas móveis da função QuickMove falhou em Tb91. {L2} {L1} Várias correções de layout específicas para Thunderbird 91. {L2}"
+    "message": "{L1} Corrigido na versão 5.8.2: menus de pastas longas agora rolam ao arrastar e-mails para a borda da tela. {L2}{L1} O Thunderbird não pula mais para a Caixa de entrada ao verificar novos e-mails no menu de contexto. {L2} {L1} Suporte para ícones grandes nos botões da barra de ferramentas do QuickFolders para telas de alta resolução. {L2} {L1} Corrigido: pastas móveis da função QuickMove falhou em Tb91. {L2} {L1} Várias correções de layout específicas para Thunderbird 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

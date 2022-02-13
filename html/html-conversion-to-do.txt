@@ -22,7 +22,7 @@ Completed conversion for remaining parts of options.html -
  
  Pattern:
  <checkbox /> <label value="__myText__"/>
- =?
+ =>
  <label> <input type="checkbox" >__myText__</label>
  
 Next Steps: reference conversion, replace native icons. 
@@ -44,6 +44,8 @@ Support for collapsed attribute:
 *[collapsed=true] {
   display: none !important;
 }
+
+
 
 
 Added a class for buttons with icons and tabs in order to add icons (behave like list icons):
@@ -85,3 +87,6 @@ TO DO:
 - white fill color for selected tab.
 
 -moz-image-region = seems to be without alternative. (see paste button for license)
+
+Questions for Monday:
+  how to use folder.createFolder to 

@@ -72,8 +72,8 @@ async function loadPrefs() {
   console.log("loadPrefs");
   // use LegacyPrefs
 	const prefElements = Array.from(document.querySelectorAll("[data-pref-name]"));
-	for (const element of prefElements) {
-		const prefName = element.dataset.prefName;
+	for (let element of prefElements) {
+		let prefName = element.dataset.prefName;
 		if (!prefName) {
 			console.error("Preference element has unexpected data-pref attribute", element);
 			continue;
@@ -527,10 +527,154 @@ async function validateNewKey() {
 }
 
 function initButtons() {
+  // License Tab
   document.getElementById("btnValidateLicense").addEventListener("click", validateNewKey);
   document.getElementById("btnPasteLicense").addEventListener("click", pasteLicense);
   
-  // 
+  // Support Tab
+  document.getElementById("L1").addEventListener("click", function () {
+    messenger.windows.openDefaultBrowser("https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A");
+  }); // YouTube
+  document.getElementById("L2").addEventListener("click", function () {
+    messenger.windows.openDefaultBrowser(event,"https://github.com/RealRaven2000/QuickFolders/issues");
+  }); // report bugs
+  document.getElementById("L3").addEventListener("click", function () {
+    messenger.Utilities.showVersionHistory();
+  }); // version history
+  document.getElementById("L4").addEventListener("click", function () {
+    messenger.windows.openDefaultBrowser(event,"https://github.com/RealRaven2000/QuickFolders/tree/ESR91/_locales");
+  }); // localization
+  document.getElementById("L5").addEventListener("click", function () {
+    // options.sendMail(); setTimeout(function() { window.close(); });
+  }); // contact me
+  
+}
+
+function selectTheme(wd, themeId, isUpdateUI = false) {
+  const util = QuickFolders.Util,
+        QI = QuickFolders.Interface;
+  let myTheme = QuickFolders.Themes.Theme(themeId),
+      getElement = wd.getElementById.bind(wd);
+  if (myTheme) {
+    try {
+      getElement("QuickFolders-Theme-Selector").value = themeId;
+      getElement("Quickfolders-Theme-Author").value =  myTheme.author;
+
+      // textContent wraps, value doesnt
+      let themeDescription = messenger.i18n.getMessage("qf.themes." + themeId + ".description") || "N/A";
+      getElement("Quickfolders-Theme-Description").textContent = themeDescription;
+      getElement("qf-options-icons").disabled = !(myTheme.supportsFeatures.specialIcons);
+      getElement("qf-options-shadow").disabled = !(myTheme.supportsFeatures.buttonShadows);
+      getElement("button-font-size").disabled = !(myTheme.supportsFeatures.supportsFontSize);
+      getElement("button-font-size-label").disabled = !(myTheme.supportsFeatures.supportsFontSize);
+      getElement("btnHeightTweaks").collapsed = !(myTheme.supportsFeatures.supportsHeightTweaks);
+      getElement("qf-tweakRadius").collapsed = !(myTheme.supportsFeatures.cornerRadius);
+      getElement("qf-tweakToolbarBorder").collapsed = !(myTheme.supportsFeatures.toolbarBorder);
+      getElement("qf-tweakColors").collapsed = !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors);
+      getElement("qf-individualColors").collapsed = !(myTheme.supportsFeatures.individualColors);
+      getElement("qf-StandardColors").collapsed = !(myTheme.supportsFeatures.standardTabColor);
+      getElement("buttonTransparency").collapsed = !(myTheme.supportsFeatures.tabTransparency);
+      getElement("qf-stateColors").collapsed = !(myTheme.supportsFeatures.stateColors);
+      getElement("qf-stateColors-defaultButton").collapsed = !(myTheme.supportsFeatures.stateColors);
+    }
+    catch(ex) {
+      // util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
+      console.error('Exception during QuickFolders.Options.selectTheme: ', ex); 
+    }
+
+    /******  FOR FUTURE USE ??  ******/
+    // if (myTheme.supportsFeatures.supportsFontSelection)
+    // if (myTheme.supportsFeatures.buttonInnerShadows)
+    messenger.Utilities.logDebug ('Theme [' + myTheme.Id + '] selected');
+  
+    if (isUpdateUI) {
+      window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
+    }
+    
+  }
+  
+  return myTheme;
+} 
+
+
+
+async function initBling() {
+  const getElement = document.getElementById.bind(document),
+        wd = window.document,
+        util = QuickFolders.Util; // from options-util.js
+        
+  let test = await messenger.Utilities.getUserStyle("ActiveTab","color","#FFFFFF");
+  
+  let col = util.getSystemColor(await messenger.Utilities.getUserStyle("ActiveTab","color","#FFFFFF")), 
+      bcol = util.getSystemColor(await messenger.Utilities.getUserStyle("ActiveTab","background-color","#000090"));
+  getElement("activetab-colorpicker").value = bcol;
+  getElement("activetab-fontcolorpicker").value = col;
+  getElement("activetabs-label").style.setProperty('color', col, 'important');
+  getElement("activetabs-label").style.backgroundColor = bcol;
+  
+  bcol = util.getSystemColor(await messenger.Utilities.getUserStyle("InactiveTab","background-color","buttonface"));
+  getElement("inactive-colorpicker").value = bcol;
+  
+  col = util.getSystemColor(await messenger.Utilities.getUserStyle("InactiveTab","color","buttontext"));
+  getElement("inactive-fontcolorpicker").value = col;
+  getElement("inactivetabs-label").style.setProperty('color', col, 'important');
+  
+  
+  bcol = util.getSystemColor(await messenger.Utilities.getUserStyle("HoveredTab","background-color","#FFFFFF"));
+  getElement("hover-colorpicker").value = bcol;
+  col = util.getSystemColor(await messenger.Utilities.getUserStyle("HoveredTab","color","Black"));
+  getElement("hover-fontcolorpicker").value = col;
+  getElement("hoveredtabs-label").style.setProperty('color', col, 'important');
+  getElement("hoveredtabs-label").style.backgroundColor = bcol;
+
+  bcol = util.getSystemColor(await messenger.Utilities.getUserStyle("DragTab","background-color", "#E93903"));
+  getElement("dragover-colorpicker").value = bcol;
+  col = util.getSystemColor(await messenger.Utilities.getUserStyle("DragTab","color", "White"));
+  getElement("dragover-fontcolorpicker").value = col;
+  getElement("dragovertabs-label").style.setProperty('color', col, 'important');
+  getElement("dragovertabs-label").style.backgroundColor = bcol;
+  getElement("toolbar-colorpicker").value = util.getSystemColor(await messenger.Utilities.getUserStyle("Toolbar","background-color", "White"));
+  
+  getElement("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
+  
+  
+  let currentTheme = this.selectTheme(wd, await QuickFolders.Preferences.getCurrentThemeId());
+
+  // initialize Theme Selector by adding original titles to localized versions
+  let cbo = getElement("QuickFolders-Theme-Selector"); // HTMLSelectElement
+  if (cbo.length) {
+    for (let index = 0; index<cbo.itemCount; index++) {
+      let item = cbo.options.item( index ),
+          theme = QuickFolders.Themes.Theme(item.value);
+      if (theme) {
+        if (item.label != theme.name)
+          item.label = theme.name + ' - ' + item.label
+      }
+    }  
+  }
+  
+  
+  if (false)  { // to do: build HTML palette popups
+    let menupopup = getElement("QuickFolders-Options-PalettePopup"); // doesn't exist in HTML!! 
+    // we need to rewrite this from scratch for the HTML options dialog
+    QuickFolders.Interface.buildPaletteMenu(0, menupopup, true, true);  
+    
+  }
+  
+  // customized coloring support
+  QuickFolders.Options.initPreviewTabStyles();
+      
+  
+  let paletteType = await QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType'),
+      disableStriped = !(QuickFolders.Options.stripedSupport(paletteType) || 
+                         QuickFolders.Options.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType')) ||
+                         QuickFolders.Options.stripedSupport(prefs.getIntPref('style.InactiveTab.paletteType')));
+  
+  getElement('qf-individualColors').collapsed = !currentTheme.supportsFeatures.individualColors;
+  getElement('qf-individualColors').disabled = disableStriped;
+  getElement('ExampleStripedColor').disabled = disableStriped;
+  getElement('buttonTransparency').disabled = (paletteType!=0) && disableStriped; // only with "no colors"
+  
 }
 
 console.log("i18n.updateDocument");
@@ -541,5 +685,15 @@ preselectTab();
 initLicenseInfo();
 initVersionPanel();
 initButtons();
+/*  THIS CODE CANNOT WORK "Uncaught ReferenceError: ChromeUtils is not defined"
+debugger;
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
+Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
+*/
+
+initBling();
  

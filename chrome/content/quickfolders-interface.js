@@ -5705,7 +5705,7 @@ QuickFolders.Interface = {
 					this.setPaintButtonColor(col);
 					return;
 				default:  // "QuickFolders-Options-PalettePopup" etc.
-				  if (parent.id.indexOf("QuickFolders-Options-")<0)
+				  if (!parent.id.includes("QuickFolders-Options-"))
 						continue;  //
           var options = QuickFolders.Options; // should only work when called from the options menu!
 					// options dialog case: parent is menupopup

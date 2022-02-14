@@ -483,8 +483,7 @@
           <div class="hbox toowide align_center">
             <label>__MSG_qf.label.ToolbarBackground__
             <input id="toolbar-colorpicker" type="color" palettename="standard" style="vertical-align:middle"
-              elementInfo="Toolbar.background-color" previewLabel="qf-StandardColors"
-              onchange="return options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors');"></label>
+              elementInfo="Toolbar.background-color" previewLabel="qf-StandardColors"></label>
             <label><input type="checkbox" preference="qfpl-TransparentToolbar"
               data-pref-name="extensions.quickfolders.transparentToolbar"
               oncommand="return options.toggleColorTranslucent(this, 'toolbar-colorpicker', 'qf-StandardColors', null);">__MSG_qf.checkbox.transparent__</label>
@@ -527,22 +526,15 @@
                         tooltiptext="__MSG_qf.label.UncoloredTab.tooltip__"
                         context="QuickFolders-Options-PalettePopup" onclick="options.showPalette(this, 'standard');">__MSG_qf.label.UncoloredTab__</label>
                       <input id="inactive-fontcolorpicker" type="color" palettename="standard"
-                        elementInfo="InactiveTab.color" previewLabel="inactivetabs-label"
-                        onchange="return options.styleUpdate('InactiveTab','color', this.value, 'inactivetabs-label');">
+                        elementInfo="InactiveTab.color" previewLabel="inactivetabs-label">
                       <input id="inactive-colorpicker" type="color" palettename="standard"
-                        elementInfo="InactiveTab.background-color"
-                        onchange="return options.colorPickerTranslucent(this);">
-                      <select id="menuStandardPalette" sizetopopup="none" preference="qfpl-InactiveTab-PaletteType"
-                        data-pref-name="extensions.quickfolders.style.InactiveTab.paletteType"
-                        oncommand="options.showPalettePreview(true);">
-                        <option value="0"
-                          oncommand="options.toggleUsePalette(this, 'standard', 0, true);">__MSG_qf.palette.twoColors__</option>
-                        <option value="1"
-                          oncommand="options.toggleUsePalette(this, 'standard', 1, true);">__MSG_qf.palette.standard__</option>
-                        <option value="2"
-                          oncommand="options.toggleUsePalette(this, 'standard', 2, true);">__MSG_qf.palette.pastel__</option>
-                        <option value="3"
-                          oncommand="options.toggleUsePalette(this, 'standard', 3, true);">__MSG_qf.palette.night__</option>
+                        elementInfo="InactiveTab.background-color">
+                      <select id="menuStandardPalette"  preference="qfpl-InactiveTab-PaletteType"
+                        data-pref-name="extensions.quickfolders.style.InactiveTab.paletteType">
+                        <option value="0">__MSG_qf.palette.twoColors__</option>
+                        <option value="1">__MSG_qf.palette.standard__</option>
+                        <option value="2">__MSG_qf.palette.pastel__</option>
+                        <option value="3">__MSG_qf.palette.night__</option>
                       </select>
                     </div>
                     <span class="separator thin"> </span>
@@ -552,15 +544,11 @@
                         tooltiptext="__MSG_qf.label.ColoredTabPalette.tooltip__" stylePrefKey="ColoredTab"
                         class="textBoxLabel" context="QuickFolders-Options-PalettePopup"
                         onclick="options.showPalette(this, 'colored');">__MSG_qf.label.ColoredTabPalette__</label>
-                      <select id="menuColoredPalette" sizetopopup="none" preference="qfpl-ColoredTab-PaletteType"
-                        data-pref-name="extensions.quickfolders.style.ColoredTab.paletteType"
-                        oncommand="options.showPalettePreview(true);">
-                        <option value="1"
-                          oncommand="options.toggleUsePalette(this, 'colored', 1, true);">__MSG_qf.palette.standard__</option>
-                        <option value="2"
-                          oncommand="options.toggleUsePalette(this, 'colored', 2, true);">__MSG_qf.palette.pastel__</option>
-                        <option value="3"
-                          oncommand="options.toggleUsePalette(this, 'colored', 3, true);">__MSG_qf.palette.night__</option>
+                      <select id="menuColoredPalette"  preference="qfpl-ColoredTab-PaletteType"
+                        data-pref-name="extensions.quickfolders.style.ColoredTab.paletteType">
+                        <option value="1">__MSG_qf.palette.standard__</option>
+                        <option value="2">__MSG_qf.palette.pastel__</option>
+                        <option value="3"">__MSG_qf.palette.night__</option>
                       </select>
                     </div>
                   </div>
@@ -585,23 +573,16 @@
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="ActiveTab"
                     context="QuickFolders-Options-PalettePopup" onclick="options.showPalette(this, 'active');">__MSG_qf.label.ActiveTabColor__</label>
                   <input id="activetab-fontcolorpicker" type="color" palettename="vibrant"
-                    elementInfo="ActiveTab.color" previewLabel="activetabs-label"
-                    onchange="return options.styleUpdate('ActiveTab','color', this.value, 'activetabs-label');">
+                    elementInfo="ActiveTab.color" previewLabel="activetabs-label">
                   <input id="activetab-colorpicker" type="color" palettename="standard"
-                    elementInfo="ActiveTab.background-color" previewLabel="activetabs-label"
-                    onchange="return options.styleUpdate('ActiveTab','background-color', this.value, 'activetabs-label');">
+                    elementInfo="ActiveTab.background-color" previewLabel="activetabs-label">
 
-                  <select id="menuActiveTabPalette" sizetopopup="none" preference="qfpl-ActiveTab-PaletteType"
-                    data-pref-name="extensions.quickfolders.style.ActiveTab.paletteType"
-                    oncommand="options.updateMainWindow();">
-                    <option value="0"
-                      oncommand="options.toggleUsePalette(this, 'active', 0, true);">__MSG_qf.palette.twoColors__</option>
-                    <option value="1"
-                      oncommand="options.toggleUsePalette(this, 'active', 1, true);">__MSG_qf.palette.standard__</option>
-                    <option value="2"
-                      oncommand="options.toggleUsePalette(this, 'active', 2, true);">__MSG_qf.palette.pastel__</option>
-                    <option value="3"
-                      oncommand="options.toggleUsePalette(this, 'active', 3, true);">__MSG_qf.palette.night__</option>
+                  <select id="menuActiveTabPalette"  preference="qfpl-ActiveTab-PaletteType"
+                    data-pref-name="extensions.quickfolders.style.ActiveTab.paletteType">
+                    <option value="0">__MSG_qf.palette.twoColors__</option>
+                    <option value="1">__MSG_qf.palette.standard__</option>
+                    <option value="2">__MSG_qf.palette.pastel__</option>
+                    <option value="3">__MSG_qf.palette.night__</option>
                   </select>
 
 
@@ -609,22 +590,15 @@
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="HoveredTab"
                     context="QuickFolders-Options-PalettePopup" onclick="options.showPalette(this, 'hovered');">__MSG_qf.label.HoveredTabColor__</label>
                   <input id="hover-fontcolorpicker" type="color" palettename="standard"
-                    elementInfo="HoveredTab.color" previewLabel="hoveredtabs-label"
-                    onchange="return options.styleUpdate('HoveredTab','color', this.value, 'hoveredtabs-label');">
+                    elementInfo="HoveredTab.color" previewLabel="hoveredtabs-label">
                   <input id="hover-colorpicker" type="color" palettename="standard"
-                    elementInfo="HoveredTab.background-color" previewLabel="hoveredtabs-label"
-                    onchange="return options.styleUpdate('HoveredTab','background-color', this.value, 'hoveredtabs-label');">
-                  <select id="menuHoverPalette" sizetopopup="none" preference="qfpl-HoveredTab-PaletteType"
-                    data-pref-name="extensions.quickfolders.style.HoveredTab.paletteType"
-                    oncommand="options.updateMainWindow();">
-                    <option value="0"
-                      oncommand="options.toggleUsePalette(this, 'hovered', 0, true);">__MSG_qf.palette.twoColors__</option>
-                    <option value="1"
-                      oncommand="options.toggleUsePalette(this, 'hovered', 1, true);">__MSG_qf.palette.standard__</option>
-                    <option value="2"
-                      oncommand="options.toggleUsePalette(this, 'hovered', 2, true);">__MSG_qf.palette.pastel__</option>
-                    <option value="3"
-                      oncommand="options.toggleUsePalette(this, 'hovered', 3, true);">__MSG_qf.palette.night__</option>
+                    elementInfo="HoveredTab.background-color" previewLabel="hoveredtabs-label">
+                  <select id="menuHoverPalette"  preference="qfpl-HoveredTab-PaletteType"
+                    data-pref-name="extensions.quickfolders.style.HoveredTab.paletteType">
+                    <option value="0">__MSG_qf.palette.twoColors__</option>
+                    <option value="1">__MSG_qf.palette.standard__</option>
+                    <option value="2">__MSG_qf.palette.pastel__</option>
+                    <option value="3">__MSG_qf.palette.night__</option>
                   </select>
 
 
@@ -632,22 +606,15 @@
                     stylePrefKey="DragOver" context="QuickFolders-Options-PalettePopup"
                     onclick="options.showPalette(this, 'dragOver');">__MSG_qf.label.DragOverBackground__</label>
                   <input id="dragover-fontcolorpicker" palettename="standard" type="color"
-                    elementInfo="DragTab.color" previewLabel="dragovertabs-label"
-                    onchange="return options.styleUpdate('DragTab', 'color', this.value, 'dragovertabs-label');">
+                    elementInfo="DragTab.color" previewLabel="dragovertabs-label">
                   <input id="dragover-colorpicker" type="color" palettename="standard"
-                    elementInfo="DragTab.background-color" previewLabel="dragovertabs-label"
-                    onchange="return options.styleUpdate('DragTab', 'background-color', this.value, 'dragovertabs-label');">
-                  <select id="menuDragOverPalette" sizetopopup="none" preference="qfpl-DragOver-PaletteType"
-                    data-pref-name="extensions.quickfolders.style.DragOver.paletteType"
-                    oncommand="options.updateMainWindow();">
-                    <option value="0"
-                      oncommand="options.toggleUsePalette(this, 'dragOver', 0, true);">__MSG_qf.palette.twoColors__</option>
-                    <option value="1"
-                      oncommand="options.toggleUsePalette(this, 'dragOver', 1, true);">__MSG_qf.palette.standard__</option>
-                    <option value="2"
-                      oncommand="options.toggleUsePalette(this, 'dragOver', 2, true);">__MSG_qf.palette.pastel__</option>
-                    <option value="3"
-                      oncommand="options.toggleUsePalette(this, 'dragOver', 3, true);">__MSG_qf.palette.night__</option>
+                    elementInfo="DragTab.background-color" previewLabel="dragovertabs-label">
+                  <select id="menuDragOverPalette"  preference="qfpl-DragOver-PaletteType"
+                    data-pref-name="extensions.quickfolders.style.DragOver.paletteType">
+                    <option value="0">__MSG_qf.palette.twoColors__</option>
+                    <option value="1">__MSG_qf.palette.standard__</option>
+                    <option value="2">__MSG_qf.palette.pastel__</option>
+                    <option value="3">__MSG_qf.palette.night__</option>
                   </select>
 
 

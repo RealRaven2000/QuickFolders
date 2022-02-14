@@ -34,6 +34,14 @@ QuickFolders.Interface = {
 		}
 		return "";
 	} ,
-
+  
+  applyTabStyle: function applyTabStyle(el, styleId) {
+		if (!el) return;
+    let prefs = QuickFolders.Preferences;
+    if ((styleId != prefs.TABS_STRIPED))
+      el.className = el.className.replace(/\s*striped/,"");
+    if ((styleId == prefs.TABS_STRIPED) && (el.className.indexOf("striped")<0))
+      el.className = el.className.replace(/(col[0-9]+)/,"$1striped");
+  },
   
 }

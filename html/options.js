@@ -21,10 +21,100 @@ const activateTab = (event) => {
   }
 }
 
-for (button of document.querySelectorAll("#QuickFolders-Options-Tabbox button")) {
+for (let button of document.querySelectorAll("#QuickFolders-Options-Tabbox button")) {
   button.addEventListener("click", activateTab);
 }
 
+for (let colorpicker of document.querySelectorAll("input[type=color]")) {
+  let options = QuickFolders.Options,
+      elementName, elementStyle, label,
+      isStyleUpdate = true;
+  function initParams(eN, eS, s, l) {
+    elementName=eN, elementStyle=eS, label=l
+  }
+  switch (colorpicker.id) {
+    case "toolbar-colorpicker":
+      initParams("Toolbar", "background-color", "qf-StandardColors");
+      break;
+    case "inactive-fontcolorpicker":
+      initParams('InactiveTab','color', 'inactivetabs-label');
+      break;
+    case "inactive-colorpicker":
+        isStyleUpdate = false;
+        colorpicker.addEventListener("input", function() { 
+          options.colorPickerTranslucent(this).bind(options);
+        } );
+      break;
+    case "activetab-fontcolorpicker":
+      initParams('ActiveTab','color', 'activetabs-label');
+      break;
+    case "activetab-colorpicker":
+      initParams('ActiveTab','background-color','activetabs-label');
+      break;
+    case "hover-fontcolorpicker":
+      initParams('HoveredTab','color','hoveredtabs-label');
+      break;
+    case "hover-colorpicker":
+      initParams('HoveredTab','background-color', 'hoveredtabs-label');
+      break;
+    case "dragover-fontcolorpicker":
+      initParams('DragTab', 'color', 'dragovertabs-label');
+      break;
+    case "dragover-colorpicker":
+      initParams('DragTab', 'background-color', 'dragovertabs-label');
+      break;
+    default:
+      isStyleUpdate = false;
+  }
+  if (isStyleUpdate)
+    colorpicker.addEventListener("input", function() { // used to be "oncommand"
+      options.styleUpdate(elementName, elementStyle, this.value, label);
+    } );
+}
+
+// all dropdowns that end with "paletteType"
+for (let palettepicker of document.querySelectorAll("select[data-pref-name$=paletteType]")) {
+  let buttonState;
+  // common window update
+  switch (palettepicker.id) {
+    case "menuStandardPalette":
+      buttonState = "standard";
+      palettepicker.addEventListener("change", async (event) => {
+        await QuickFolders.Options.toggleUsePalette(buttonState, event.target.value, true); //.bind(QuickFolders.Options);
+        QuickFolders.Options.showPalettePreview(true);
+      });
+      break;
+    case "menuColoredPalette":
+      buttonState = "colored";
+      palettepicker.addEventListener("change", async (event) => {
+        await QuickFolders.Options.toggleUsePalette(buttonState, event.target.value, true); //.bind(QuickFolders.Options);
+        QuickFolders.Options.showPalettePreview(true);
+      });
+      break;
+    case "menuActiveTabPalette":
+      buttonState = "active";
+      palettepicker.addEventListener("change", async (event) => {
+        await QuickFolders.Options.toggleUsePalette(buttonState, event.target.value, true); //.bind(QuickFolders.Options);
+        QuickFolders.Options.updateMainWindow();
+      });
+      break;
+    case "menuHoverPalette":
+      buttonState = "hovered";
+      palettepicker.addEventListener("change", async (event) => {
+        await QuickFolders.Options.toggleUsePalette(buttonState, event.target.value, true); //.bind(QuickFolders.Options);
+        QuickFolders.Options.updateMainWindow();
+      });
+      break;
+    case "menuDragOverPalette":
+      buttonState = "dragOver";
+      palettepicker.addEventListener("change", async (event) => {
+        await QuickFolders.Options.toggleUsePalette(buttonState, event.target.value, true); //.bind(QuickFolders.Options);
+        QuickFolders.Options.updateMainWindow();
+      });
+      break;
+  }
+  
+}
 
 
 async function savePref(event) {
@@ -68,6 +158,8 @@ async function savePref(event) {
 	}  
 }
 
+
+
 async function loadPrefs() {
   console.log("loadPrefs");
   // use LegacyPrefs
@@ -78,8 +170,6 @@ async function loadPrefs() {
 			console.error("Preference element has unexpected data-pref attribute", element);
 			continue;
 		}
-    if (element.id === "inactive-fontcolorpicker")
-      debugger;
 		if (element instanceof HTMLInputElement) {
       if (element.getAttribute("type") === "checkbox") {
         element.checked = await browser.LegacyPrefs.getPref(prefName);
@@ -414,11 +504,6 @@ function configExtra2Button() {
    // to do - OK / Cancel / donate buttons from legacy code QuickFolders.Options 
 }
 
-function notifyBackground() {
-  // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" }); 
-  console.log ("to do - notify background!");
-}
-
 // broken out from validateLicenseInOptions:
 async function configureBuyButton() {
   function replaceCssClass(el,addedClass) {
@@ -498,7 +583,7 @@ async function validateLicenseInOptions(evt = false) {
   // this the updating the first button on the toolbar via the main instance
   // we use the quickfolders label to show if License needs renewal!
   // use notify tools for updating the [QuickFolders] label 
-  notifyBackground();
+  messenger.runtime.sendMessage({ command:"updateQuickFoldersLabel" });
   
   // 4 - update buy / extend button or hide it.
   configureBuyButton();
@@ -558,7 +643,7 @@ function selectTheme(wd, themeId, isUpdateUI = false) {
   if (myTheme) {
     try {
       getElement("QuickFolders-Theme-Selector").value = themeId;
-      getElement("Quickfolders-Theme-Author").value =  myTheme.author;
+      getElement("Quickfolders-Theme-Author").textContent =  myTheme.author;
 
       // textContent wraps, value doesnt
       let themeDescription = messenger.i18n.getMessage("qf.themes." + themeId + ".description") || "N/A";
@@ -588,7 +673,8 @@ function selectTheme(wd, themeId, isUpdateUI = false) {
     messenger.Utilities.logDebug ('Theme [' + myTheme.Id + '] selected');
   
     if (isUpdateUI) {
-      window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
+      // window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
+      messenger.runtime.sendMessage({ command:"updateFoldersUI" });
     }
     
   }
@@ -601,39 +687,41 @@ function selectTheme(wd, themeId, isUpdateUI = false) {
 async function initBling() {
   const getElement = document.getElementById.bind(document),
         wd = window.document,
-        util = QuickFolders.Util; // from options-util.js
+        util = QuickFolders.Util,
+        getUserStyle = QuickFolders.Preferences.getUserStyle.bind(QuickFolders.Preferences);
         
-  let test = await messenger.Utilities.getUserStyle("ActiveTab","color","#FFFFFF");
+  let test = await messenger.Utilities.getUserStyle("ActiveTab","color","#ddFFFF"),
+      test2 = await getUserStyle("ActiveTab","color","#ddFFFF");
   
-  let col = util.getSystemColor(await messenger.Utilities.getUserStyle("ActiveTab","color","#FFFFFF")), 
-      bcol = util.getSystemColor(await messenger.Utilities.getUserStyle("ActiveTab","background-color","#000090"));
+  let col = util.getSystemColor(await getUserStyle("ActiveTab","color","#FFFFFF")), 
+      bcol = util.getSystemColor(await getUserStyle("ActiveTab","background-color","#000090"));
   getElement("activetab-colorpicker").value = bcol;
   getElement("activetab-fontcolorpicker").value = col;
   getElement("activetabs-label").style.setProperty('color', col, 'important');
   getElement("activetabs-label").style.backgroundColor = bcol;
   
-  bcol = util.getSystemColor(await messenger.Utilities.getUserStyle("InactiveTab","background-color","buttonface"));
+  bcol = util.getSystemColor(await getUserStyle("InactiveTab","background-color","buttonface"));
   getElement("inactive-colorpicker").value = bcol;
   
-  col = util.getSystemColor(await messenger.Utilities.getUserStyle("InactiveTab","color","buttontext"));
+  col = util.getSystemColor(await getUserStyle("InactiveTab","color","buttontext"));
   getElement("inactive-fontcolorpicker").value = col;
   getElement("inactivetabs-label").style.setProperty('color', col, 'important');
   
   
-  bcol = util.getSystemColor(await messenger.Utilities.getUserStyle("HoveredTab","background-color","#FFFFFF"));
+  bcol = util.getSystemColor(await getUserStyle("HoveredTab","background-color","#FFFFFF"));
   getElement("hover-colorpicker").value = bcol;
-  col = util.getSystemColor(await messenger.Utilities.getUserStyle("HoveredTab","color","Black"));
+  col = util.getSystemColor(await getUserStyle("HoveredTab","color","Black"));
   getElement("hover-fontcolorpicker").value = col;
   getElement("hoveredtabs-label").style.setProperty('color', col, 'important');
   getElement("hoveredtabs-label").style.backgroundColor = bcol;
 
-  bcol = util.getSystemColor(await messenger.Utilities.getUserStyle("DragTab","background-color", "#E93903"));
+  bcol = util.getSystemColor(await getUserStyle("DragTab","background-color", "#E93903"));
   getElement("dragover-colorpicker").value = bcol;
-  col = util.getSystemColor(await messenger.Utilities.getUserStyle("DragTab","color", "White"));
+  col = util.getSystemColor(await getUserStyle("DragTab","color", "White"));
   getElement("dragover-fontcolorpicker").value = col;
   getElement("dragovertabs-label").style.setProperty('color', col, 'important');
   getElement("dragovertabs-label").style.backgroundColor = bcol;
-  getElement("toolbar-colorpicker").value = util.getSystemColor(await messenger.Utilities.getUserStyle("Toolbar","background-color", "White"));
+  getElement("toolbar-colorpicker").value = util.getSystemColor(await getUserStyle("Toolbar","background-color", "White"));
   
   getElement("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
   
@@ -667,8 +755,8 @@ async function initBling() {
   
   let paletteType = await QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType'),
       disableStriped = !(QuickFolders.Options.stripedSupport(paletteType) || 
-                         QuickFolders.Options.stripedSupport(prefs.getIntPref('style.ColoredTab.paletteType')) ||
-                         QuickFolders.Options.stripedSupport(prefs.getIntPref('style.InactiveTab.paletteType')));
+                         QuickFolders.Options.stripedSupport(await prefs.getIntPref('style.ColoredTab.paletteType')) ||
+                         QuickFolders.Options.stripedSupport(await prefs.getIntPref('style.InactiveTab.paletteType')));
   
   getElement('qf-individualColors').collapsed = !currentTheme.supportsFeatures.individualColors;
   getElement('qf-individualColors').disabled = disableStriped;

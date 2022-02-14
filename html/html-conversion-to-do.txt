@@ -69,6 +69,9 @@ TO DO:
    - Themes dropdown
    - all number inputs
    - color pickers
+   
+   
+   
 #  Quick Help - open homepage   
 #  Support tab:
    - YouTube channel
@@ -88,5 +91,31 @@ TO DO:
 
 -moz-image-region = seems to be without alternative. (see paste button for license)
 
+remove "sizetopopup" for menus
+removed 
+
+
 Questions for Monday:
   how to use folder.createFolder to 
+  
+  
+  14/02/2022
+  
+  #  Bling / Layout
+ rewrote  initBling( ) function.
+ fixed Themes dropdowns
+ fixed color pickers
+ 
+ to do - event handlers for  all number inputs
+ 
+ create alternative color popups for selecting color choices in HTML
+ note that these can be cut off by the dialog's viewport, hence it should
+ be strictly flexible layout and needs to be placed centrally (near the dropdown select
+ element but centrally on viewport)
+ As there are 20 values, best would be 4 columns with 5 entries each.
+ 
+ 
+ 
+ 
+ 
+   

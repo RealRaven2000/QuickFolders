@@ -30,6 +30,10 @@ menulist > menupopup > menuitem[_moz-menuactive="true"] {
 }
 
 
+description, select[data-pref-name$=".paletteType"] {
+  font-size: 0.85em;
+}
+
 #defaultColors,
 menulist[preference$=".paletteType"]
 {
@@ -38,8 +42,7 @@ menulist[preference$=".paletteType"]
 
 button:not(#defaultColors):not(#btnLicense):not([isTab]),
 menulist#folderCrossing,
-menulist#QuickFolders-CurrentFolder-Background-Select,
-#QuickFolders-Theme-Selector {
+menulist#QuickFolders-CurrentFolder-Background-Select {
   background-color: var(--button-background,Menu) !important;
   color: var(--button-color,MenuText) !important;
 }
@@ -58,4 +61,8 @@ tab#QuickFolders-Pro {
 #QuickFolders-Options-Tabbox tabs {
   background-image: var(--lwt-header-image) !important;
   background-position: right -4px top 122px;
+}
+
+#qf-flat-toolbar {
+  padding: 1px 1px;
 }

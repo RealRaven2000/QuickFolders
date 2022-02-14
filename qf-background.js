@@ -105,47 +105,66 @@ async function main() {
 
   // listeners for splash pages [and mx code?]
   messenger.runtime.onMessage.addListener(async (data, sender) => {
-    if (data.command) {
-      switch (data.command) {
-        case "getLicenseInfo": 
-          return currentLicense.info;
-          
-        // intially, new listeners for new options.js
-        case "slideAlert":
-          util.slideAlert(...data.args);
-          break;  
+    switch (data.command) {
+      case "getLicenseInfo": 
+        return currentLicense.info;
+        
+      // intially, new listeners for new options.js
+      case "slideAlert":
+        util.slideAlert(...data.args);
+        break;  
 
-
-        case "updateLicense":
-          let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity"),
-              isDebugLicenser = await messenger.LegacyPrefs.getPref(legacy_root + "debug.premium.licenser");
-              
-          // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
-          let newLicense = new Licenser(data.key, { forceSecondaryIdentity, debug: isDebugLicenser });
-          await newLicense.validate();
-          // Check new license and accept if ok.
-          // You may return values here, which will be send back to the caller.
-          // return false;
-          
-          // Update background license.
-          await messenger.LegacyPrefs.setPref(legacy_root + "LicenseKey", newLicense.info.licenseKey); 
-          currentLicense = newLicense;
-          // 1. Broadcast to experiment
-          //    experimental side uses QuickFolders.BackgroundUpdate event listener
-          messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
-          
-          // 2. notify options.html (new, using message API)
-          let message = {
-            msg: "updatedLicense",
-            licenseInfo: currentLicense.info
-          }
-          messenger.runtime.sendMessage(message);
-                    
-          
-          messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
-          return true; // ?      
+      case "updateFoldersUI": // replace observer
+        messenger.NotifyTools.notifyExperiment(
+          { event: "updateFoldersUI"}
+        );
+        break;
       
-      }
+      /* duplications from notify listener */
+      case "updateLicense":
+        let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity"),
+            isDebugLicenser = await messenger.LegacyPrefs.getPref(legacy_root + "debug.premium.licenser");
+            
+        // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
+        let newLicense = new Licenser(data.key, { forceSecondaryIdentity, debug: isDebugLicenser });
+        await newLicense.validate();
+        // Check new license and accept if ok.
+        // You may return values here, which will be send back to the caller.
+        // return false;
+        
+        // Update background license.
+        await messenger.LegacyPrefs.setPref(legacy_root + "LicenseKey", newLicense.info.licenseKey); 
+        currentLicense = newLicense;
+        // 1. Broadcast to experiment
+        //    experimental side uses QuickFolders.BackgroundUpdate event listener
+        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+        
+        // 2. notify options.html (new, using message API)
+        let message = {
+          msg: "updatedLicense",
+          licenseInfo: currentLicense.info
+        }
+        messenger.runtime.sendMessage(message);
+                  
+        
+        messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
+        return true; // ?   
+
+      case "updateNavigationBar":
+        messenger.NotifyTools.notifyExperiment({event: "updateNavigationBar"});
+        break;
+
+      case "updateMainWindow": // we need to add one parameter (minimal) to pass through!
+        let isMinimal = (data.minimal) || "false";
+        messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: isMinimal});
+        break;
+
+
+      case "updateQuickFoldersLabel":
+        // Broadcast main windows to run updateQuickFoldersLabel
+        messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
+        break;          
+    
     }
   });
   
@@ -233,7 +252,7 @@ async function main() {
           params.append("selectedTab", data.selectedTab);
         }
         await messenger.windows.create(
-          { height: 740, width: 860, type: "panel", url: `/html/options.html?${params.toString()}` }
+          { height: 780, width: 920, type: "panel", url: `/html/options.html?${params.toString()}` }
         );
         break;
 

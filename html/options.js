@@ -262,13 +262,13 @@ async function initLicenseInfo() {
   // window.addEventListener("QuickFolders.BackgroundUpdate", validateLicenseInOptions);
   
   messenger.runtime.onMessage.addListener (
-    async (data, sender) => {
+    (data, sender) => {
       if (data.msg=="updatedLicense") {
         licenseInfo = data.licenseInfo;
         updateLicenseOptionsUI(false); // we may have to switch off silent if we cause this
         configureBuyButton();
+        return Promise.resolve(true); // returns a promise of "undefined"
       }
-      return true;
     }
   );
   

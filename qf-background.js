@@ -86,6 +86,7 @@ function showSplash(msg="") {
   browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
 }
 
+
 async function main() {
   const legacy_root = "extensions.quickfolders.";
   let key = await messenger.LegacyPrefs.getPref(legacy_root + "LicenseKey", ""),
@@ -103,79 +104,20 @@ async function main() {
   callbacks.forEach(callback => callback());
   startupFinished = true;
 
-  // listeners for splash pages [and mx code?]
-  messenger.runtime.onMessage.addListener(async (data, sender) => {
-    switch (data.command) {
-      case "getLicenseInfo": 
-        return currentLicense.info;
-        
-      // intially, new listeners for new options.js
-      case "slideAlert":
-        util.slideAlert(...data.args);
-        break;  
+  let msg_commands = [
+    "getLicenseInfo",
+    "slideAlert",
+    "updateFoldersUI",
+    "updateLicense",
+    "updateNavigationBar",
+    "updateMainWindow",
+    "updateQuickFoldersLabel"
+  ];
 
-      case "updateFoldersUI": // replace observer
-        messenger.NotifyTools.notifyExperiment(
-          { event: "updateFoldersUI"}
-        );
-        break;
-      
-      /* duplications from notify listener */
-      case "updateLicense":
-        let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity"),
-            isDebugLicenser = await messenger.LegacyPrefs.getPref(legacy_root + "debug.premium.licenser");
-            
-        // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
-        let newLicense = new Licenser(data.key, { forceSecondaryIdentity, debug: isDebugLicenser });
-        await newLicense.validate();
-        // Check new license and accept if ok.
-        // You may return values here, which will be send back to the caller.
-        // return false;
-        
-        // Update background license.
-        await messenger.LegacyPrefs.setPref(legacy_root + "LicenseKey", newLicense.info.licenseKey); 
-        currentLicense = newLicense;
-        // 1. Broadcast to experiment
-        //    experimental side uses QuickFolders.BackgroundUpdate event listener
-        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
-        
-        // 2. notify options.html (new, using message API)
-        let message = {
-          msg: "updatedLicense",
-          licenseInfo: currentLicense.info
-        }
-        messenger.runtime.sendMessage(message);
-                  
-        
-        messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
-        return true; // ?   
-
-      case "updateNavigationBar":
-        messenger.NotifyTools.notifyExperiment({event: "updateNavigationBar"});
-        break;
-
-      case "updateMainWindow": // we need to add one parameter (minimal) to pass through!
-        let isMinimal = (data.minimal) || "false";
-        messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: isMinimal});
-        break;
-
-
-      case "updateQuickFoldersLabel":
-        // Broadcast main windows to run updateQuickFoldersLabel
-        messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
-        break;          
-    
-    }
-  });
   
-  messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
-    let isLog = await messenger.LegacyPrefs.getPref(legacy_root + "debug.notifications");
-    if (isLog && data.func) {
-      console.log ("=========================\n" +
-                   "BACKGROUND LISTENER received: " + data.func + "\n" +
-                   "=========================");
-    }
-    switch (data.func) {
+  async function notificationHandler(data) {
+    let command = data.func || data.command;
+    switch (command) {
       case "slideAlert":
         util.slideAlert(...data.args);
         break;
@@ -280,11 +222,42 @@ async function main() {
         // Update background license.
         await messenger.LegacyPrefs.setPref(legacy_root + "LicenseKey", newLicense.info.licenseKey);
         currentLicense = newLicense;
-        // Broadcast
-        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info})
+        
+        // 1. Broadcast into Experiment
+        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+        
+        // 2. notify options.html (new, using message API)
+        let message = {
+          msg: "updatedLicense",
+          licenseInfo: currentLicense.info
+        }
+        messenger.runtime.sendMessage(message);
+        
         messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
         
         return true;
+    }
+  }
+  
+  // background listener
+  messenger.NotifyTools.onNotifyBackground.addListener((data) => {
+    messenger.LegacyPrefs.getPref(legacy_root + "debug.notifications").then(
+      isLog => {
+        if (isLog && data.func) {
+          console.log ("=========================\n" +
+                       "BACKGROUND LISTENER received: " + data.func + "\n" +
+                       "=========================");
+        }
+      }
+    );
+    return notificationHandler(data); // returns the promise for notification Handler
+  });
+  
+  // message listener - SELECTIVE!
+  // every message listener must have its unique set of messages (if it returns something)
+  messenger.runtime.onMessage.addListener((data, sender) => {
+    if (msg_commands.includes(data.command)) {
+      return notificationHandler(data, sender); // the result of this is a Promise
     }
   });
   

@@ -27,6 +27,10 @@
   width: 10px;
 }
 
+.hbox.align_center {
+  align-items: center;
+}
+
 
 fieldset {
   margin-right: 1em;

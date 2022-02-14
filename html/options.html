@@ -7,7 +7,6 @@
   <link rel='stylesheet' type='text/css' href="chrome://global/skin/global.css">  
   <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
   <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/shared/themeableDialog.css">
-  
 
   <!-- new rules for xul conversion -->
   <link rel="stylesheet" href="../chrome/content/skin/qf-compatibility.css">
@@ -395,7 +394,9 @@
               <div class="vbox">
                 <div class="hbox align_center">
                   <label class="textBoxLabel">__MSG_qf.label.themes__
-                    <select id="QuickFolders-Theme-Selector" sizetopopup="none" preference="qfpl-Theme"
+                    <select id="QuickFolders-Theme-Selector" 
+                      preference="qfpl-Theme"
+                      data-pref-type="string"
                       data-pref-name="extensions.quickfolders.style.theme"
                       oncommand="options.updateMainWindow();">
                       <!-- values in this list are QuickFolders.Themes.themes.id values -->

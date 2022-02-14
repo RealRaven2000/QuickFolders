@@ -303,6 +303,53 @@ QuickFolders.Options = {
     messenger.runtime.sendMessage({ command:"updateMainWindow", minimal: minimal ? "true" : "false" });
   },
   
+  selectTheme : function (wd, themeId, isUpdateUI = false) {
+    const util = QuickFolders.Util,
+          QI = QuickFolders.Interface;
+    let myTheme = QuickFolders.Themes.Theme(themeId),
+        getElement = wd.getElementById.bind(wd);
+    if (myTheme) {
+      try {
+        getElement("QuickFolders-Theme-Selector").value = themeId;
+        getElement("Quickfolders-Theme-Author").textContent =  myTheme.author;
+
+        // textContent wraps, value doesnt
+        let themeDescription = messenger.i18n.getMessage("qf.themes." + themeId + ".description") || "N/A";
+        getElement("Quickfolders-Theme-Description").textContent = themeDescription;
+        getElement("qf-options-icons").disabled = !(myTheme.supportsFeatures.specialIcons);
+        getElement("qf-options-shadow").disabled = !(myTheme.supportsFeatures.buttonShadows);
+        getElement("button-font-size").disabled = !(myTheme.supportsFeatures.supportsFontSize);
+        getElement("button-font-size-label").disabled = !(myTheme.supportsFeatures.supportsFontSize);
+        getElement("btnHeightTweaks").collapsed = !(myTheme.supportsFeatures.supportsHeightTweaks);
+        getElement("qf-tweakRadius").collapsed = !(myTheme.supportsFeatures.cornerRadius);
+        getElement("qf-tweakToolbarBorder").collapsed = !(myTheme.supportsFeatures.toolbarBorder);
+        getElement("qf-tweakColors").collapsed = !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors);
+        getElement("qf-individualColors").collapsed = !(myTheme.supportsFeatures.individualColors);
+        getElement("qf-StandardColors").collapsed = !(myTheme.supportsFeatures.standardTabColor);
+        getElement("buttonTransparency").collapsed = !(myTheme.supportsFeatures.tabTransparency);
+        getElement("qf-stateColors").collapsed = !(myTheme.supportsFeatures.stateColors);
+        getElement("qf-stateColors-defaultButton").collapsed = !(myTheme.supportsFeatures.stateColors);
+      }
+      catch(ex) {
+        // util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
+        console.error('Exception during QuickFolders.Options.selectTheme: ', ex); 
+      }
+
+      /******  FOR FUTURE USE ??  ******/
+      // if (myTheme.supportsFeatures.supportsFontSelection)
+      // if (myTheme.supportsFeatures.buttonInnerShadows)
+      messenger.Utilities.logDebug ('Theme [' + myTheme.Id + '] selected');
+    
+      if (isUpdateUI) {
+        // window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
+        messenger.runtime.sendMessage({ command:"updateFoldersUI" });
+      }
+    }
+    return myTheme;
+  },
+
+  
+  
   
   
 }

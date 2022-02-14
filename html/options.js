@@ -113,8 +113,14 @@ for (let palettepicker of document.querySelectorAll("select[data-pref-name$=pale
       });
       break;
   }
-  
 }
+
+// other dropdowns
+let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
+themeSelector.addEventListener("change", async (event) => {
+  let themeId = event.target.value;
+  QuickFolders.Options.selectTheme(window.document, themeId, true); //.bind(QuickFolders.Options);
+});
 
 
 async function savePref(event) {
@@ -147,7 +153,8 @@ async function savePref(event) {
 			await browser.LegacyPrefs.setPref(prefName, target.value);
 		} 
     else {
-			await browser.LegacyPrefs.setPref(prefName, parseInt(target.value, 10));
+      let v = isNaN(target.value) ? target.value : parseInt(target.value, 10);
+			await browser.LegacyPrefs.setPref(prefName, v);
 		}
 	} 
   else if (element instanceof HTMLTextAreaElement) {
@@ -635,53 +642,6 @@ function initButtons() {
   
 }
 
-function selectTheme(wd, themeId, isUpdateUI = false) {
-  const util = QuickFolders.Util,
-        QI = QuickFolders.Interface;
-  let myTheme = QuickFolders.Themes.Theme(themeId),
-      getElement = wd.getElementById.bind(wd);
-  if (myTheme) {
-    try {
-      getElement("QuickFolders-Theme-Selector").value = themeId;
-      getElement("Quickfolders-Theme-Author").textContent =  myTheme.author;
-
-      // textContent wraps, value doesnt
-      let themeDescription = messenger.i18n.getMessage("qf.themes." + themeId + ".description") || "N/A";
-      getElement("Quickfolders-Theme-Description").textContent = themeDescription;
-      getElement("qf-options-icons").disabled = !(myTheme.supportsFeatures.specialIcons);
-      getElement("qf-options-shadow").disabled = !(myTheme.supportsFeatures.buttonShadows);
-      getElement("button-font-size").disabled = !(myTheme.supportsFeatures.supportsFontSize);
-      getElement("button-font-size-label").disabled = !(myTheme.supportsFeatures.supportsFontSize);
-      getElement("btnHeightTweaks").collapsed = !(myTheme.supportsFeatures.supportsHeightTweaks);
-      getElement("qf-tweakRadius").collapsed = !(myTheme.supportsFeatures.cornerRadius);
-      getElement("qf-tweakToolbarBorder").collapsed = !(myTheme.supportsFeatures.toolbarBorder);
-      getElement("qf-tweakColors").collapsed = !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors);
-      getElement("qf-individualColors").collapsed = !(myTheme.supportsFeatures.individualColors);
-      getElement("qf-StandardColors").collapsed = !(myTheme.supportsFeatures.standardTabColor);
-      getElement("buttonTransparency").collapsed = !(myTheme.supportsFeatures.tabTransparency);
-      getElement("qf-stateColors").collapsed = !(myTheme.supportsFeatures.stateColors);
-      getElement("qf-stateColors-defaultButton").collapsed = !(myTheme.supportsFeatures.stateColors);
-    }
-    catch(ex) {
-      // util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
-      console.error('Exception during QuickFolders.Options.selectTheme: ', ex); 
-    }
-
-    /******  FOR FUTURE USE ??  ******/
-    // if (myTheme.supportsFeatures.supportsFontSelection)
-    // if (myTheme.supportsFeatures.buttonInnerShadows)
-    messenger.Utilities.logDebug ('Theme [' + myTheme.Id + '] selected');
-  
-    if (isUpdateUI) {
-      // window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
-      messenger.runtime.sendMessage({ command:"updateFoldersUI" });
-    }
-    
-  }
-  
-  return myTheme;
-} 
-
 
 
 async function initBling() {
@@ -689,9 +649,11 @@ async function initBling() {
         wd = window.document,
         util = QuickFolders.Util,
         getUserStyle = QuickFolders.Preferences.getUserStyle.bind(QuickFolders.Preferences);
-        
+
+/*  PREVIOUS METHOD vs NEW METHOD
   let test = await messenger.Utilities.getUserStyle("ActiveTab","color","#ddFFFF"),
       test2 = await getUserStyle("ActiveTab","color","#ddFFFF");
+  */
   
   let col = util.getSystemColor(await getUserStyle("ActiveTab","color","#FFFFFF")), 
       bcol = util.getSystemColor(await getUserStyle("ActiveTab","background-color","#000090"));
@@ -726,7 +688,7 @@ async function initBling() {
   getElement("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
   
   
-  let currentTheme = this.selectTheme(wd, await QuickFolders.Preferences.getCurrentThemeId());
+  let currentTheme = await QuickFolders.Options.selectTheme(wd, await QuickFolders.Preferences.getCurrentThemeId());
 
   // initialize Theme Selector by adding original titles to localized versions
   let cbo = getElement("QuickFolders-Theme-Selector"); // HTMLSelectElement
@@ -755,8 +717,8 @@ async function initBling() {
   
   let paletteType = await QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType'),
       disableStriped = !(QuickFolders.Options.stripedSupport(paletteType) || 
-                         QuickFolders.Options.stripedSupport(await prefs.getIntPref('style.ColoredTab.paletteType')) ||
-                         QuickFolders.Options.stripedSupport(await prefs.getIntPref('style.InactiveTab.paletteType')));
+                         QuickFolders.Options.stripedSupport(await QuickFolders.Preferences.getIntPref('style.ColoredTab.paletteType')) ||
+                         QuickFolders.Options.stripedSupport(await QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType')));
   
   getElement('qf-individualColors').collapsed = !currentTheme.supportsFeatures.individualColors;
   getElement('qf-individualColors').disabled = disableStriped;

@@ -743,6 +743,7 @@ textbox[type="number"] .textbox-input {
 /* grid replacement */
 .grid-container {
   align-content: start;
+  align-items: center;
   display: grid;
   grid-row-gap: 5px;
   grid-column-gap: 5px;

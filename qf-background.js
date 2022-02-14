@@ -251,9 +251,19 @@ async function main() {
         if (data.selectedTab || data.selectedTab==0) {
           params.append("selectedTab", data.selectedTab);
         }
-        await messenger.windows.create(
-          { height: 780, width: 920, type: "panel", url: `/html/options.html?${params.toString()}` }
+        
+        let title = messenger.i18n.getMessage("qf.prefwindow.quickfolders.options");
+        let optionWin = await messenger.windows.create(
+          { height: 780, 
+            width: 920, 
+            type: "panel", 
+            url: `/html/options.html?${params.toString()}`,
+            titlePreface: title,
+            allowScriptsToClose : true
+          }
         );
+        optionWin.sizeToContent() 
+        debugger;
         break;
 
       case "updateLicense":

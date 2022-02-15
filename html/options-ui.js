@@ -22,28 +22,32 @@ QuickFolders.Options = {
     // Address [Bug 25589] - when color is set from a drop down, the preference wasn't transmitted leading to wrong palette (always 1)
     if (!preference) {  
       switch(previewId) {
-        case 'inactivetabs-label':
-          preference = 'style.InactiveTab.';
+        case "inactivetabs-label":
+          preference = "style.InactiveTab.";
           break;
-        case 'activetabs-label':
-          preference = 'style.ActiveTab.';
+        case "activetabs-label":
+          preference = "style.ActiveTab.";
           break;
-        case 'hoveredtabs-label':
-          preference = 'style.HoveredTab.';
+        case "hoveredtabs-label":
+          preference = "style.HoveredTab.";
           break;
-        case 'dragovertabs-label':
-          preference = 'style.DragOver.';
+        case "dragovertabs-label":
+          preference = "style.DragOver.";
           break;
       }
     }
     let paletteKey = paletteType;
-    if (typeof paletteType == "undefined") paletteKey = await prefs.getIntPref(preference + "paletteType")
+    if (null == paletteType || typeof paletteType == "undefined") {
+      paletteKey = await prefs.getIntPref(preference + "paletteType");
+    }
     let paletteClass = await QuickFolders.Interface.getPaletteClassToken(paletteKey);
     
     
     if (paletteKey) { // use a palette
       let paletteIndex = paletteColor;
-      if (typeof paletteColor == "undefined") paletteIndex = await prefs.getIntPref(preference + 'paletteEntry');
+      if (null== paletteColor || typeof paletteColor == "undefined") {
+        paletteIndex = await prefs.getIntPref(preference + "paletteEntry");
+      }
                          
       // hide the color picker when not striped
       if (colorPicker) {
@@ -135,9 +139,9 @@ QuickFolders.Options = {
 
     let picker = getElement('inactive-colorpicker');
   
-    getElement('activetabs-label').style.backgroundColor = this.getTransparent(picker.value, isPastel);
-    QuickFolders.Preferences.setUserStyle('InactiveTab','background-color', picker.value);
-    QuickFolders.Preferences.setBoolPref('pastelColors', isPastel);
+    getElement("activetabs-label").style.backgroundColor = this.getTransparent(picker.value, isPastel);
+    QuickFolders.Preferences.setUserStyle("InactiveTab","background-color", picker.value);
+    QuickFolders.Preferences.setBoolPref("pastelColors", isPastel);
     
     this.initPreviewTabStyles();
     
@@ -167,35 +171,35 @@ QuickFolders.Options = {
   
   getButtonStatePrefId: function getButtonStatePrefId(buttonState) {
     switch(buttonState) {
-      case 'colored':
-        return 'ColoredTab';
-      case 'standard':
-        return 'InactiveTab';
-      case 'active':
-        return 'ActiveTab';
-      case 'hovered':
-        return 'HoveredTab';
-      case 'dragOver':
-        return 'DragOver';
+      case "colored":
+        return "ColoredTab";
+      case "standard":
+        return "InactiveTab";
+      case "active":
+        return "ActiveTab";
+      case "hovered":
+        return "HoveredTab";
+      case "dragOver":
+        return "DragOver";
       default:
-        throw('QuickFolders.Options.getButtonStatePrefId - Invalid buttonState: ' + buttonState); // error!
+        throw("QuickFolders.Options.getButtonStatePrefId - Invalid buttonState: " + buttonState); // error!
     }
   } ,
   
   getButtonMenuId: function getButtonMenuId(buttonState) {
     switch(buttonState) {
-      case 'colored':
-        return 'menuColoredPalette';
-      case 'standard':
-        return 'menuStandardPalette';
-      case 'active':
-        return 'menuActiveTabPalette';
-      case 'hovered':
-        return 'menuHoverPalette';
-      case 'dragOver':
-        return 'menuDragOverPalette';
+      case "colored":
+        return "menuColoredPalette";
+      case "standard":
+        return "menuStandardPalette";
+      case "active":
+        return "menuActiveTabPalette";
+      case "hovered":
+        return "menuHoverPalette";
+      case "dragOver":
+        return "menuDragOverPalette";
       default:
-        throw('QuickFolders.Options.getButtonMenuId - Invalid buttonState: ' + buttonState); // error!
+        throw("QuickFolders.Options.getButtonMenuId - Invalid buttonState: " + buttonState); // error!
     }
   } ,
     
@@ -332,13 +336,13 @@ QuickFolders.Options = {
       }
       catch(ex) {
         // util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
-        console.error('Exception during QuickFolders.Options.selectTheme: ', ex); 
+        console.error("Exception during QuickFolders.Options.selectTheme: ", ex); 
       }
 
       /******  FOR FUTURE USE ??  ******/
       // if (myTheme.supportsFeatures.supportsFontSelection)
       // if (myTheme.supportsFeatures.buttonInnerShadows)
-      messenger.Utilities.logDebug ('Theme [' + myTheme.Id + '] selected');
+      messenger.Utilities.logDebug ("Theme [" + myTheme.Id + "] selected");
     
       if (isUpdateUI) {
         // window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
@@ -348,9 +352,241 @@ QuickFolders.Options = {
     return myTheme;
   },
 
+  enablePremiumConfig : function (isEnabled) {
+    let getElement      = document.getElementById.bind(document),
+        premiumConfig   = getElement("premiumConfig"),
+        quickJump       = getElement("chkQuickJumpHotkey"),
+        quickMove       = getElement("chkQuickMoveHotkey"),
+        quickCopy       = getElement("chkQuickCopyHotkey"),
+        skipFolder      = getElement("chkSkipFolderHotkey"),
+        quickJumpTxt    = getElement("qf-QuickJumpShortcut"),
+        quickMoveTxt    = getElement("qf-QuickMoveShortcut"),
+        quickCopyTxt    = getElement("qf-QuickCopyShortcut"),
+        quickMoveAutoFill = getElement("chkQuickMoveAutoFill"),
+        skipFolderTxt   = getElement("qf-SkipFolderShortcut"),
+        quickMoveFormat = getElement("menuQuickMoveFormat"),
+        quickMoveDepth  = getElement("quickmove-path-depth"),
+        quickMoveAdvanced = getElement("quickMoveAdvanced"),
+        multiCategories = getElement("chkCategories");
+    premiumConfig.disabled = !isEnabled;
+    quickJump.disabled = !isEnabled;
+    quickMove.disabled = !isEnabled;
+    quickCopy.disabled = !isEnabled;
+    skipFolder.disabled = !isEnabled;
+    quickJumpTxt.disabled = !isEnabled;
+    quickMoveTxt.disabled = !isEnabled;
+    quickCopyTxt.disabled = !isEnabled;
+    skipFolderTxt.disabled = !isEnabled;
+    quickMoveFormat.disabled = !isEnabled;
+    quickMoveDepth.disabled = !isEnabled;
+    quickMoveAdvanced.disabled = !isEnabled;
+    multiCategories.disabled = !isEnabled;
+    quickMoveAutoFill.disabled = !isEnabled;
+    QuickFolders.Options.enableStandardConfig(isEnabled);
+  },
+
+  enableStandardConfig : function (isEnabled) {
+    let getElement      = document.getElementById.bind(document),
+        chkConfigIncludeTabs = getElement("chkConfigIncludeTabs"),
+        chkConfigGeneral= getElement("chkConfigIncludeGeneral"),
+        chkConfigLayout = getElement("chkConfigIncludeLayout"),
+        btnLoadConfig   = getElement("btnLoadConfig");
+    btnLoadConfig.disabled = !isEnabled;
+    chkConfigGeneral.disabled = !isEnabled;
+    chkConfigIncludeTabs.disabled = !isEnabled;
+    chkConfigLayout.disabled = !isEnabled;
+  },
+
+  updateLicenseOptionsUI : async function (silent = false) {
+    let getElement = document.getElementById.bind(document),
+        validationPassed       = getElement("validationPassed"),
+        validationStandard     = getElement("validationStandard"),
+        validationFailed       = getElement("validationFailed"),
+        validationInvalidAddon = getElement("validationInvalidAddon"),
+        validationExpired      = getElement("validationExpired"),
+        validationInvalidEmail = getElement("validationInvalidEmail"),
+        validationEmailNoMatch = getElement("validationEmailNoMatch"),
+        validationDate         = getElement("validationDate"),
+        validationDateSpace    = getElement("validationDateSpace"),
+        licenseDate            = getElement("licenseDate"),
+        licenseDateLabel       = getElement("licenseDateLabel"),
+        decryptedMail = licenseInfo.email , 
+        decryptedDate = licenseInfo.expiryDate,
+        result = licenseInfo.status;
+
+    validationStandard.setAttribute("collapsed",true);
+    validationPassed.setAttribute("collapsed",true);
+    validationFailed.setAttribute("collapsed",true);
+    validationExpired.setAttribute("collapsed",true);
+    validationInvalidAddon.setAttribute("collapsed",true);
+    validationInvalidEmail.setAttribute("collapsed",true);
+    validationEmailNoMatch.setAttribute("collapsed",true);
+    validationDate.setAttribute("collapsed",false);
+    validationDateSpace.setAttribute("collapsed",false);
+    QuickFolders.Options.enablePremiumConfig(false);
+    try {
+      let niceDate = decryptedDate;
+      if (decryptedDate) {
+        try { 
+          let d = new Date(decryptedDate);
+          niceDate =d.toLocaleDateString();
+        }
+        catch(ex) { niceDate = decryptedDate; }
+      }
+      licenseDate.textContent = niceDate; // invalid ??
+      switch(result) {
+        case "Valid":
+          if (licenseInfo.keyType==2) { // standard license
+            QuickFolders.Options.showValidationMessage(validationStandard, silent);
+            QuickFolders.Options.enableStandardConfig(true);
+          }
+          else {
+            QuickFolders.Options.enablePremiumConfig(true);
+            QuickFolders.Options.showValidationMessage(validationPassed, silent);
+            getElement('dialogProductTitle').value = "QuickFolders Pro";
+          }          
+          licenseDate.textContent = niceDate;
+          licenseDateLabel.value = getBundleString("qf.label.licenseValid");
+          break;
+        case "Invalid":
+          validationDate.setAttribute("collapsed",true);
+          validationDateSpace.setAttribute("collapsed",true);
+          let addonName = "";
+          switch (licenseInfo.licenseKey.substr(0,2)) {
+            case "QI":
+              addonName = "quickFilters";
+              break;
+            case "S1":
+            case "ST":
+              addonName = "SmartTemplates";
+              break;
+            case "QF":
+            case "QS":
+            default: 
+              QuickFolders.Options.showValidationMessage(validationFailed, silent);
+          }
+          if (addonName) {
+            let txt = validationInvalidAddon.textContent;
+            txt = txt.replace('{0}','QuickFolders').replace('{1}','QF'); // keys for {0} start with {1}
+            if (txt.indexOf(addonName) < 0) {
+              txt += " " + getBundleString("qf.licenseValidation.guessAddon").replace('{2}',addonName);
+            }
+            validationInvalidAddon.textContent = txt;
+            QuickFolders.Options.showValidationMessage(validationInvalidAddon, silent);
+          }
+          break;
+        case "Expired":
+          licenseDateLabel.value = getBundleString("qf.licenseValidation.expired");
+          licenseDate.textContent = niceDate;
+          QuickFolders.Options.showValidationMessage(validationExpired, false); // always show
+          break;
+        case "MailNotConfigured":
+          validationDate.setAttribute("collapsed",true);
+          validationDateSpace.setAttribute("collapsed",true);
+          validationInvalidEmail.setAttribute("collapsed",false);
+          // if mail was already replaced the string will contain [mail address] in square brackets
+          validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
+          break;
+        case "MailDifferent":
+          validationDate.setAttribute("collapsed",true);
+          validationDateSpace.setAttribute("collapsed",true);
+          QuickFolders.Options.showValidationMessage(validationFailed, true);
+          QuickFolders.Options.showValidationMessage(validationEmailNoMatch, silent);
+          break;
+        case "Empty":
+          validationDate.setAttribute("collapsed",true);
+          validationDateSpace.setAttribute("collapsed",true);
+          break;
+        default:
+          Services.prompt.alert(null,"QuickFolders",'Unknown license status: ' + result);
+          break;
+      }
+      
+    }    
+    catch(ex) {
+      // util.logException("Error in QuickFolders.Options.updateLicenseOptionsUI():\n", ex);
+      console.error("Error in updateLicenseOptionsUI():\n", ex);
+    }
+    return result;
+  },
+  
+  // make a validation message visible but also repeat a notification for screen readers.
+  showValidationMessage : async function (el, silent=true) {
+    if (el.getAttribute("collapsed") != false) {
+      el.setAttribute("collapsed",false);
+      if (!silent) {
+        // TO DO: OS notification 
+        // QuickFolders.Util.slideAlert (util.ADDON_NAME, el.textContent);
+        await messenger.runtime.sendMessage( {
+          command:"slideAlert", 
+          args: ["QuickFolders", el.textContent] 
+        } );
+      }
+    }
+  },
+    
+  
+  // put appropriate label on the license button and pass back the label text as well
+  labelLicenseBtn : function (btnLicense, validStatus) {
+    switch(validStatus) {
+      case  "extend":
+        let txtExtend = getBundleString("qf.notification.premium.btn.extendLicense");
+        btnLicense.setAttribute("collapsed",false);
+        btnLicense.label = txtExtend; // text should be extend not renew
+        btnLicense.setAttribute('tooltiptext',
+          getBundleString("qf.notification.premium.btn.extendLicense.tooltip"));
+        return txtExtend;
+      case "renew":
+        let txtRenew = getBundleString("qf.notification.premium.btn.renewLicense");
+        btnLicense.label = txtRenew;
+        return txtRenew;
+      case "buy":
+        let buyLabel = getBundleString("qf.notification.premium.btn.getLicense");
+        btnLicense.label = buyLabel;
+        return buyLabel;
+      case "upgrade":
+        let upgradeLabel = getBundleString("qf.notification.premium.btn.upgrade");
+        btnLicense.label = upgradeLabel;
+        btnLicense.classList.add('upgrade'); // stop flashing
+        return upgradeLabel;
+        
+    }
+    return "";
+  },
+  
+  trimLicense: function trimLicense() {
+    let txtBox = document.getElementById('txtLicenseKey'),
+        strLicense = txtBox.value.toString();
+    // Remove line breaks and extra spaces:
+    let trimmedLicense =  
+      strLicense.replace(/\r?\n|\r/g, ' ') // replace line breaks with spaces
+        .replace(/\s\s+/g, ' ')            // collapse multiple spaces
+        .replace('\[at\]','@')
+        .trim();
+    txtBox.value = trimmedLicense;
+    return trimmedLicense;
+  } ,
+
+  validateNewKey : async function () {
+    QuickFolders.Options.trimLicense();
+    // do a round trip through the background script.
+    let rv = await messenger.runtime.sendMessage({command:"updateLicense", key: document.getElementById('txtLicenseKey').value });
+  },
+  
+  pasteLicense : function () {
+    navigator.clipboard.readText().then(
+      clipText => {
+        if (clipText) {
+          let txtBox = document.getElementById('txtLicenseKey');
+          txtBox.value = clipText;
+          let finalLicense = trimLicense();
+          QuickFolders.Options.validateNewKey();
+        }       
+      }
+    );
+  }
   
   
   
-  
-}
+}  // QuickFolders.Options
 

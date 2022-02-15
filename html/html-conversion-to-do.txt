@@ -106,6 +106,10 @@ Questions for Monday:
  fixed Themes dropdowns
  fixed color pickers
  
+ Combined 2 listeners for notifyTools (from legacy code) and windows message listener (from html windows / API code)
+ into a single handler 
+ 
+ 
  to do - event handlers for  all number inputs
  
  create alternative color popups for selecting color choices in HTML
@@ -113,8 +117,6 @@ Questions for Monday:
  be strictly flexible layout and needs to be placed centrally (near the dropdown select
  element but centrally on viewport)
  As there are 20 values, best would be 4 columns with 5 entries each.
- 
- 
  
  
  

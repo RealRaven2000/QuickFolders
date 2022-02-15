@@ -249,7 +249,6 @@ async function initVersionPanel() {
 }
 
 let licenseInfo;
-
 async function initLicenseInfo() {
   licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
   document.getElementById('txtLicenseKey').value = licenseInfo.licenseKey;
@@ -265,7 +264,7 @@ async function initLicenseInfo() {
     (data, sender) => {
       if (data.msg=="updatedLicense") {
         licenseInfo = data.licenseInfo;
-        updateLicenseOptionsUI(false); // we may have to switch off silent if we cause this
+        QuickFolders.Options.updateLicenseOptionsUI(false); // we may have to switch off silent if we cause this
         configureBuyButton();
         return Promise.resolve(true); // returns a promise of "undefined"
       }
@@ -290,178 +289,7 @@ async function initLicenseInfo() {
   */
 }
 
-// make a validation message visible but also repeat a notification for screen readers.
-async function showValidationMessage(el, silent=true) {
-  if (el.getAttribute("collapsed") != false) {
-    el.setAttribute("collapsed",false);
-    if (!silent) {
-      // TO DO: OS notification 
-      // QuickFolders.Util.slideAlert (util.ADDON_NAME, el.textContent);
-      await messenger.runtime.sendMessage( {
-        command:"slideAlert", 
-        args: ["QuickFolders", el.textContent] 
-      } );
-    }
-  }
-}
 
-function enablePremiumConfig(isEnabled) {
-  let getElement      = document.getElementById.bind(document),
-      premiumConfig   = getElement('premiumConfig'),
-      quickJump       = getElement('chkQuickJumpHotkey'),
-      quickMove       = getElement('chkQuickMoveHotkey'),
-      quickCopy       = getElement('chkQuickCopyHotkey'),
-      skipFolder      = getElement('chkSkipFolderHotkey'),
-      quickJumpTxt    = getElement('qf-QuickJumpShortcut'),
-      quickMoveTxt    = getElement('qf-QuickMoveShortcut'),
-      quickCopyTxt    = getElement('qf-QuickCopyShortcut'),
-      quickMoveAutoFill = getElement('chkQuickMoveAutoFill'),
-      skipFolderTxt   = getElement('qf-SkipFolderShortcut'),
-      quickMoveFormat = getElement('menuQuickMoveFormat'),
-      quickMoveDepth  = getElement('quickmove-path-depth'),
-      quickMoveAdvanced = getElement('quickMoveAdvanced'),
-      multiCategories = getElement('chkCategories');
-  premiumConfig.disabled = !isEnabled;
-  quickJump.disabled = !isEnabled;
-  quickMove.disabled = !isEnabled;
-  quickCopy.disabled = !isEnabled;
-  skipFolder.disabled = !isEnabled;
-  quickJumpTxt.disabled = !isEnabled;
-  quickMoveTxt.disabled = !isEnabled;
-  quickCopyTxt.disabled = !isEnabled;
-  skipFolderTxt.disabled = !isEnabled;
-  quickMoveFormat.disabled = !isEnabled;
-  quickMoveDepth.disabled = !isEnabled;
-  quickMoveAdvanced.disabled = !isEnabled;
-  multiCategories.disabled = !isEnabled;
-  quickMoveAutoFill.disabled = !isEnabled;
-  enableStandardConfig(isEnabled);
-}
-
-function enableStandardConfig(isEnabled) {
-  let getElement      = document.getElementById.bind(document),
-      chkConfigIncludeTabs = getElement('chkConfigIncludeTabs'),
-      chkConfigGeneral= getElement('chkConfigIncludeGeneral'),
-      chkConfigLayout = getElement('chkConfigIncludeLayout'),
-      btnLoadConfig   = getElement('btnLoadConfig');
-  btnLoadConfig.disabled = !isEnabled;
-  chkConfigGeneral.disabled = !isEnabled;
-  chkConfigIncludeTabs.disabled = !isEnabled;
-  chkConfigLayout.disabled = !isEnabled;
-}
-
-async function updateLicenseOptionsUI(silent = false) {
-  let getElement = document.getElementById.bind(document),
-      validationPassed       = getElement('validationPassed'),
-      validationStandard     = getElement('validationStandard'),
-      validationFailed       = getElement('validationFailed'),
-      validationInvalidAddon = getElement('validationInvalidAddon'),
-      validationExpired      = getElement('validationExpired'),
-      validationInvalidEmail = getElement('validationInvalidEmail'),
-      validationEmailNoMatch = getElement('validationEmailNoMatch'),
-      validationDate         = getElement('validationDate'),
-      validationDateSpace    = getElement('validationDateSpace'),
-      licenseDate            = getElement('licenseDate'),
-      licenseDateLabel       = getElement('licenseDateLabel'),
-      decryptedMail = licenseInfo.email , 
-      decryptedDate = licenseInfo.expiryDate,
-      result = licenseInfo.status;
-
-  validationStandard.setAttribute("collapsed",true);
-  validationPassed.setAttribute("collapsed",true);
-  validationFailed.setAttribute("collapsed",true);
-  validationExpired.setAttribute("collapsed",true);
-  validationInvalidAddon.setAttribute("collapsed",true);
-  validationInvalidEmail.setAttribute("collapsed",true);
-  validationEmailNoMatch.setAttribute("collapsed",true);
-  validationDate.setAttribute("collapsed",false);
-  validationDateSpace.setAttribute("collapsed",false);
-  enablePremiumConfig(false);
-  try {
-    let niceDate = decryptedDate;
-    if (decryptedDate) {
-      try { 
-        let d = new Date(decryptedDate);
-        niceDate =d.toLocaleDateString();
-      }
-      catch(ex) { niceDate = decryptedDate; }
-    }
-    licenseDate.textContent = niceDate; // invalid ??
-    switch(result) {
-      case "Valid":
-        if (licenseInfo.keyType==2) { // standard license
-          showValidationMessage(validationStandard, silent);
-          enableStandardConfig(true);
-        }
-        else {
-          enablePremiumConfig(true);
-          showValidationMessage(validationPassed, silent);
-          getElement('dialogProductTitle').value = "QuickFolders Pro";
-        }          
-        licenseDate.textContent = niceDate;
-        licenseDateLabel.value = getBundleString("qf.label.licenseValid");
-        break;
-      case "Invalid":
-        validationDate.setAttribute("collapsed",true);
-        validationDateSpace.setAttribute("collapsed",true);
-        let addonName = "";
-        switch (licenseInfo.licenseKey.substr(0,2)) {
-          case "QI":
-            addonName = "quickFilters";
-            break;
-          case "S1":
-          case "ST":
-            addonName = "SmartTemplates";
-            break;
-          case "QF":
-          case "QS":
-          default: 
-            showValidationMessage(validationFailed, silent);
-        }
-        if (addonName) {
-          let txt = validationInvalidAddon.textContent;
-          txt = txt.replace('{0}','QuickFolders').replace('{1}','QF'); // keys for {0} start with {1}
-          if (txt.indexOf(addonName) < 0) {
-            txt += " " + getBundleString("qf.licenseValidation.guessAddon").replace('{2}',addonName);
-          }
-          validationInvalidAddon.textContent = txt;
-          showValidationMessage(validationInvalidAddon, silent);
-        }
-        break;
-      case "Expired":
-        licenseDateLabel.value = getBundleString("qf.licenseValidation.expired");
-        licenseDate.textContent = niceDate;
-        showValidationMessage(validationExpired, false); // always show
-        break;
-      case "MailNotConfigured":
-        validationDate.setAttribute("collapsed",true);
-        validationDateSpace.setAttribute("collapsed",true);
-        validationInvalidEmail.setAttribute("collapsed",false);
-        // if mail was already replaced the string will contain [mail address] in square brackets
-        validationInvalidEmail.textContent = validationInvalidEmail.textContent.replace(/\[.*\]/,"{1}").replace("{1}", '[' + decryptedMail + ']');
-        break;
-      case "MailDifferent":
-        validationDate.setAttribute("collapsed",true);
-        validationDateSpace.setAttribute("collapsed",true);
-        showValidationMessage(validationFailed, true);
-        showValidationMessage(validationEmailNoMatch, silent);
-        break;
-      case "Empty":
-        validationDate.setAttribute("collapsed",true);
-        validationDateSpace.setAttribute("collapsed",true);
-        break;
-      default:
-        Services.prompt.alert(null,"QuickFolders",'Unknown license status: ' + result);
-        break;
-    }
-    
-  }    
-  catch(ex) {
-    // util.logException("Error in QuickFolders.Options.updateLicenseOptionsUI():\n", ex);
-    console.error("Error in updateLicenseOptionsUI():\n", ex);
-  }
-  return result;
-}
 
 // from Util
 function getBundleString(id, substitions = []) { // moved from local copies in various modules.
@@ -479,33 +307,6 @@ function getBundleString(id, substitions = []) { // moved from local copies in v
 }
   
 
-// put appropriate label on the license button and pass back the label text as well
-function labelLicenseBtn(btnLicense, validStatus) {
-  switch(validStatus) {
-    case  "extend":
-      let txtExtend = getBundleString("qf.notification.premium.btn.extendLicense");
-      btnLicense.setAttribute("collapsed",false);
-      btnLicense.label = txtExtend; // text should be extend not renew
-      btnLicense.setAttribute('tooltiptext',
-        getBundleString("qf.notification.premium.btn.extendLicense.tooltip"));
-      return txtExtend;
-    case "renew":
-      let txtRenew = getBundleString("qf.notification.premium.btn.renewLicense");
-      btnLicense.label = txtRenew;
-      return txtRenew;
-    case "buy":
-      let buyLabel = getBundleString("qf.notification.premium.btn.getLicense");
-      btnLicense.label = buyLabel;
-      return buyLabel;
-    case "upgrade":
-      let upgradeLabel = getBundleString("qf.notification.premium.btn.upgrade");
-      btnLicense.label = upgradeLabel;
-      btnLicense.classList.add('upgrade'); // stop flashing
-      return upgradeLabel;
-      
-  }
-  return "";
-}
 
 function configExtra2Button() {
    // to do - OK / Cancel / donate buttons from legacy code QuickFolders.Options 
@@ -535,13 +336,13 @@ async function configureBuyButton() {
           forceExtend = await messenger.LegacyPrefs.getPref("debug.premium.forceShowExtend");
       // if we were a month ahead would this be expired?
       if (licenseInfo.expiryDate < dateString || forceExtend) {
-        labelLicenseBtn(btnLicense, "extend");
+        QuickFolders.Options.labelLicenseBtn(btnLicense, "extend");
       }
       else {
         if (licenseInfo.keyType==2) { // standard license
           btnLicense.classList.add("upgrade"); // removes "pulsing" animation
           btnLicense.setAttribute("collapsed",false);
-          labelLicenseBtn(btnLicense, "upgrade");
+          QuickFolders.Options.labelLicenseBtn(btnLicense, "upgrade");
         }
         else
           btnLicense.setAttribute("collapsed",true);
@@ -550,13 +351,13 @@ async function configureBuyButton() {
       replaceCssClass(btnLicense, "paid");
       break;
     case "Expired":
-      labelLicenseBtn(btnLicense, "renew");
+      QuickFolders.Options.labelLicenseBtn(btnLicense, "renew");
       replaceCssClass(proTab, "expired");
       replaceCssClass(btnLicense, "expired");
       btnLicense.setAttribute("collapsed",false);
       break;
     default:
-      labelLicenseBtn(btnLicense, "buy");
+      QuickFolders.Options.labelLicenseBtn(btnLicense, "buy");
       btnLicense.setAttribute("collapsed",false);
       replaceCssClass(btnLicense, "register");
       replaceCssClass(proTab, "free");
@@ -564,28 +365,15 @@ async function configureBuyButton() {
 }
 
 
-function pasteLicense() {
-  navigator.clipboard.readText().then(
-    clipText => {
-      if (clipText) {
-        let txtBox = document.getElementById('txtLicenseKey');
-        txtBox.value = clipText;
-        let finalLicense = trimLicense();
-        validateNewKey();
-      }       
-    }
-  );
-}
 
 async function validateLicenseInOptions(evt = false) {
-
   let silent = (typeof evt === "object") ? false : evt; // will be an event when called from background script!
       
   // old call to decryptLicense was here
   // 1 - sanitize License
   // 2 - validate license
   // 3 - update options ui with reaction messages; make expiry date visible or hide!; 
-  updateLicenseOptionsUI(silent); // async!
+  QuickFolders.Options.updateLicenseOptionsUI(silent); // async!
   
   // this the updating the first button on the toolbar via the main instance
   // we use the quickfolders label to show if License needs renewal!
@@ -599,29 +387,10 @@ async function validateLicenseInOptions(evt = false) {
   // util.logDebug('validateLicense - result = ' + result);
 } 
 
-trimLicense: function trimLicense() {
-  let txtBox = document.getElementById('txtLicenseKey'),
-      strLicense = txtBox.value.toString();
-  // Remove line breaks and extra spaces:
-  let trimmedLicense =  
-    strLicense.replace(/\r?\n|\r/g, ' ') // replace line breaks with spaces
-      .replace(/\s\s+/g, ' ')            // collapse multiple spaces
-      .replace('\[at\]','@')
-      .trim();
-  txtBox.value = trimmedLicense;
-  return trimmedLicense;
-} 
-
-async function validateNewKey() {
-  trimLicense();
-  // do a round trip through the background script.
-  let rv = await messenger.runtime.sendMessage({command:"updateLicense", key: document.getElementById('txtLicenseKey').value });
-}
-
 function initButtons() {
   // License Tab
-  document.getElementById("btnValidateLicense").addEventListener("click", validateNewKey);
-  document.getElementById("btnPasteLicense").addEventListener("click", pasteLicense);
+  document.getElementById("btnValidateLicense").addEventListener("click", QuickFolders.Options.validateNewKey);
+  document.getElementById("btnPasteLicense").addEventListener("click", QuickFolders.Options.pasteLicense);
   
   // Support Tab
   document.getElementById("L1").addEventListener("click", function () {

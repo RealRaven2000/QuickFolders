@@ -44,24 +44,47 @@ QuickFolders.Preferences = {
 		await this.setStringPref(sStyleName, sValue);
 	},
   
+  /* universal storage */
+	getIntPreference: async function getIntPreference(key) {
+		try {
+      let i = await browser.LegacyPrefs.getPref(key);
+      return parseInt(i,10);
+		}
+		catch (ex) {
+			QuickFolders.Util.logException("getIntPref(" + key + ") failed\n", ex);
+			return 0;
+		}
+	},
+
+	setIntPreference: async function setIntPreference(p, v) {
+    return await browser.LegacyPrefs.setPref(p, v);
+	},  
+  
+	setBoolPrefVerbose: async function setBoolPrefVerbose(p, v) {
+		try {
+			return await browser.LegacyPrefs.setPref(p, v);
+		} 
+    catch(e) {
+			QuickFolders.Util.logException("setBoolPrefVerbose(" + p + ") failed\n", e);
+			return false;
+		}
+	},
+  
+  /* preference setters / getters that are always prefixed with quickfolders extension namespace */
 	getIntPref: async function getIntPref(p) {
-    let key = QuickFolders.Preferences.root + p;
-    // QuickFolders.Preferences.getIntPreference(key); // parseInt(10,x) ?
-    let i = await browser.LegacyPrefs.getPref(key);
+    let key = p.startsWith(QuickFolders.Preferences.root) ? p : QuickFolders.Preferences.root + p,
+        i = await browser.LegacyPrefs.getPref(key);
 		return parseInt(i,10);
 	},
 
 	setIntPref: async function setIntPref(p, v) {
-		// return this.setIntPreference("extensions.quickfolders." + p, v);
-    let key = QuickFolders.Preferences.root + p;
-    await browser.LegacyPrefs.getPref(key);
-    return await browser.LegacyPrefs.setPref(QuickFolders.Preferences.root + p, v);
+    let key = p.startsWith(QuickFolders.Preferences.root) ? p : QuickFolders.Preferences.root + p;
+    return await browser.LegacyPrefs.setPref(key, v);
 	},  
   
 	getStringPref: async function getStringPref(p) {
     let prefString ='',
-		    key = QuickFolders.Preferences.root + p;        
-		  
+		    key = p.startsWith(QuickFolders.Preferences.root) ? p : QuickFolders.Preferences.root + p;
     try {
       prefString = await browser.LegacyPrefs.getPref(key);
     }
@@ -74,12 +97,13 @@ QuickFolders.Preferences = {
 	},
 	
 	setStringPref: async function setStringPref(p, v) {
-    return await browser.LegacyPrefs.setPref(QuickFolders.Preferences.root + p, v);
+    let key = p.startsWith(QuickFolders.Preferences.root) ? p : QuickFolders.Preferences.root + p;
+    return await browser.LegacyPrefs.setPref(key, v);
 	},
 
 	getBoolPref: async function getBoolPref(p) {
 	  let ans = false,
-		    key = QuickFolders.Preferences.root + p;        
+		    key = p.startsWith(QuickFolders.Preferences.root) ? p : QuickFolders.Preferences.root + p;
     
 	  try {
 	    ans = await browser.LegacyPrefs.getPref(key);
@@ -92,9 +116,18 @@ QuickFolders.Preferences = {
 	},
   
 	setBoolPref: async function setBoolPref(p, v) {
-		return await browser.LegacyPrefs.setPref(QuickFolders.Preferences.root + p, v);
+    let key = p.startsWith(QuickFolders.Preferences.root) ? p : QuickFolders.Preferences.root + p;
+		return await browser.LegacyPrefs.setPref(key, v);
 	},  
   
+	setShowCurrentFolderToolbar: async function setShowCurrentFolderToolbar(b, selector) {
+		let tag = "showCurrentFolderToolbar";
+		if (selector)
+			tag = tag + "." + selector;
+    let key = QuickFolders.Preferences.root + tag;
+		return await browser.LegacyPrefs.setPref(key, b);
+	},
+ 
 	getCurrentTheme: async function() {
 		let id = await this.getCurrentThemeId;
 		return QuickFolders.Themes.Theme(id);

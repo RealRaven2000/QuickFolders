@@ -2,7 +2,14 @@
 // keeping the old namespace so I know which funcitons I can retire when we convert to HTML
 
 QuickFolders.Options = {
-
+  BGCHOICE : {
+    default: 0,
+    dark: 1,
+    translucent: 2,
+    custom: 3,
+    lightweight: 4
+  },
+  
  /*********************
    * preparePreviewTab() 
    * paints a preview tab on the options window
@@ -91,7 +98,7 @@ QuickFolders.Options = {
   
   styleUpdate: async function styleUpdate(elementName, elementStyle, styleValue, label ) {
     let util = QuickFolders.Util;
-    messenger.Utilities.logDebug("styleUpdate(" + elementName + ")...");
+    util.logDebug("styleUpdate(" + elementName + ")...");
     util.logDebugOptional('interface.buttonStyles', 'styleUpdate(' + elementName + ', ' + elementStyle + ', ' + styleValue + ')');
     await QuickFolders.Preferences.setUserStyle(elementName, elementStyle, styleValue);
     if (label) {
@@ -110,6 +117,21 @@ QuickFolders.Options = {
     return true;  // return updateResult;
   },
   
+  toggleColorTranslucent: async function toggleColorTranslucent(cb, pickerId, label, userStyle) {
+    let picker = document.getElementById(pickerId);
+    document.getElementById(label).style.backgroundColor=
+      this.getTransparent(picker.value, cb.checked);
+    if (userStyle)
+      await QuickFolders.Preferences.setUserStyle(userStyle, 'background-color', picker.value);
+
+    let prefString = cb.getAttribute("data-pref-name");
+    if (prefString)
+      await QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
+    
+    // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
+    messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: "true" }); 
+    return true;
+  },  
 
   initPreviewTabStyles: function initPreviewTabStyles() {
     let getElement = document.getElementById.bind(document),
@@ -127,7 +149,7 @@ QuickFolders.Options = {
 
   // toggle pastel mode was toggleColorPastel
   // NEEDS A REWRITE FOR MULTIPLE PALETTES!
-  showPalettePreview: async function showPalettePreview(withUpdate) {
+  showPalettePreview: async function(withUpdate) {
     let defaultPalette = await QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType'),
         isPastel = (defaultPalette == 2),
         getElement = document.getElementById.bind(document);
@@ -140,8 +162,8 @@ QuickFolders.Options = {
     let picker = getElement('inactive-colorpicker');
   
     getElement("activetabs-label").style.backgroundColor = this.getTransparent(picker.value, isPastel);
-    QuickFolders.Preferences.setUserStyle("InactiveTab","background-color", picker.value);
-    QuickFolders.Preferences.setBoolPref("pastelColors", isPastel);
+    await QuickFolders.Preferences.setUserStyle("InactiveTab","background-color", picker.value);
+    await QuickFolders.Preferences.setBoolPref("pastelColors", isPastel);
     
     this.initPreviewTabStyles();
     
@@ -150,13 +172,13 @@ QuickFolders.Options = {
     }
   },
   
-  setColoredTabStyleFromRadioGroup: function setColoredTabStyleFromRadioGroup(rgroup) {
+  setColoredTabStyleFromRadioGroup: function(rgroup) {
     let styleId = parseInt(rgroup.value, 10);
     this.setColoredTabStyle(styleId, true);
   },
   
   // select: striped style / filled style
-  setColoredTabStyle: async function setColoredTabStyle(styleId, force) {
+  setColoredTabStyle: async function(styleId, force) {
     const prefs = QuickFolders.Preferences,
           QI = QuickFolders.Interface;
     if (!force && await prefs.getIntPref("colorTabStyle") == styleId)
@@ -168,6 +190,74 @@ QuickFolders.Options = {
     let inactiveTab = document.getElementById('inactivetabs-label');
     QI.applyTabStyle(inactiveTab, styleId);
   },   
+  
+  
+  // change background color for current folder bar
+  // 5 choices [string]: default, dark, custom, translucent, lightweight
+  setCurrentToolbarBackground: async function setCurrentToolbarBackground(choice, withUpdate) {
+    const util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences;
+    let setting = document.getElementById('currentFolderBackground'),
+        // store custom value, when going away from custom selection
+        backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');    
+    util.logDebugOptional ('interface','Options.setCurrentToolbarBackground');
+    if (backgroundCombo.selectedIndex == this.BGCHOICE.custom && choice != 'custom') {
+      await prefs.setStringPref('currentFolderBar.background.custom', setting.value);  
+    }
+  
+    switch (choice) {
+      case 'default':
+        backgroundCombo.selectedIndex = this.BGCHOICE.default;
+        setting.value = 'linear-gradient(to top, #FFF 7%, #BDB9BD 88%, #EEE 100%)';
+        break;
+      case 'dark':
+        backgroundCombo.selectedIndex = this.BGCHOICE.dark;
+        setting.value =  'linear-gradient(rgb(88, 88, 88), rgb(35, 35, 35) 45%, rgb(33, 33, 33) 48%, rgb(24, 24, 24))';
+        break;
+      case 'translucent':
+        backgroundCombo.selectedIndex = this.BGCHOICE.translucent;
+        setting.value = 'rgba(255, 255, 255, 0.2)';  // Gecko 1.9+
+        break;
+      case 'lightweight':
+        backgroundCombo.selectedIndex = this.BGCHOICE.lightweight;
+        setting.value = 'linear-gradient(to bottom, rgba(255, 255, 255, .4), transparent)';  
+        break;
+      case 'custom':
+        backgroundCombo.selectedIndex = this.BGCHOICE.custom;
+        // restore custom value
+        setting.value = await prefs.getStringPref('currentFolderBar.background.custom');  
+        break;
+    }
+    let styleValue = setting.value;
+    await prefs.setStringPref('currentFolderBar.background', styleValue);
+    await prefs.setStringPref('currentFolderBar.background.selection', choice);
+    /*
+    if (Preferences) {
+      Preferences.get('extensions.quickfolders.currentFolderBar.background')._value=styleValue;
+    }
+    */
+    // need to update current folder bar only
+    if (withUpdate) {
+      messenger.runtime.sendMessage({ command:"updateNavigationBar" });
+    }
+  },
+  
+  // set the custom value entered by user (only if custom is actually selected)
+  setCurrentToolbarBackgroundCustom: async function() {
+    const prefs = QuickFolders.Preferences;   
+    if (await prefs.isDebugOption('options')) debugger;
+    let setting = document.getElementById('currentFolderBackground'),
+        backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');    
+    if (backgroundCombo.selectedIndex == this.BGCHOICE.custom) {
+      // store the new setting!
+      await prefs.setStringPref('currentFolderBar.background.custom', setting.value);  
+      this.setCurrentToolbarBackground('custom', true);
+    }
+    else {
+      let item = backgroundCombo.getItemAtIndex( backgroundCombo.selectedIndex );
+      this.setCurrentToolbarBackground(item.value, true);
+    }
+  } ,  
   
   getButtonStatePrefId: function getButtonStatePrefId(buttonState) {
     switch(buttonState) {
@@ -286,6 +376,67 @@ QuickFolders.Options = {
     }
   },  
   
+  
+  changeTextPreference: function changeTextPreference(txtBox) {
+    let prefString = txtBox.getAttribute("data-pref-name");
+    
+    if (Preferences.get(prefString)) 
+      QuickFolders.Preferences.setIntPreference(prefString, txtBox.value);
+    else
+      QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
+    
+    // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
+    messenger.runtime.sendMessage({ command:"updateMainWindow", minimal: "true" });
+    return true;
+  },
+  
+  // doing what instantApply really should provide...
+  toggleBoolPreference: async function(cb, noUpdate = false) {
+    const util = QuickFolders.Util;
+    let prefString = cb.getAttribute("data-pref-name");
+    //  using the new preference system, this attribute should be the actual full string of the pref.
+    //  pref = document.getElementById(prefString);
+    
+    if (prefString)
+      await QuickFolders.Preferences.setBoolPref(prefString, cb.checked);  
+    
+    if (noUpdate) return true;
+    
+    switch (prefString) {
+      case "extensions.quickfolders.collapseCategories":
+        // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCategoryBox" });  
+        messenger.runtime.sendMessage({ command:"updateCategoryBox" });
+        return false;
+      case "extensions.quickfolders.toolbar.hideInSingleMessage":
+        // QuickFolders.Util.notifyTools.notifyBackground({ func: "currentDeckUpdate" });  
+        messenger.runtime.sendMessage({ command:"currentDeckUpdate" });
+        return false;
+      case "extensions.quickfolders.toolbar.largeIcons":
+        // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
+        messenger.runtime.sendMessage({ command:"updateMainWindow", minimal: "true" });
+        break;
+    }
+    // broadcast change of current folder bar for all interested windows.
+    if (prefString.includes(".currentFolderBar.") || prefString.includes("toolbar.largeIcons")) {
+      // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" }); 
+      messenger.runtime.sendMessage({ command:"updateNavigationBar" });
+      return true;
+    }
+    // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // force full update
+    messenger.runtime.sendMessage({ command:"updateMainWindow" });
+    return true;
+  },  
+  
+  // 3pane window only?
+  toggleNavigationBar: async function(chk, selector) {
+    let checked = chk.checked ? chk.checked : false;
+    await QuickFolders.Preferences.setShowCurrentFolderToolbar(checked, selector);
+    // we should not call displayNavigationToolbar directly but use the event broadcaster to notify all windows.
+    // QuickFolders.Util.notifyTools.notifyBackground({ func: "toggleNavigationBar" }); 
+    messenger.runtime.sendMessage({ command:"toggleNavigationBar" });
+  },
+    
+  
   stripedSupport : function(paletteType) {
     switch(parseInt(paletteType)) {
       case 1: // Standard Palette
@@ -335,14 +486,13 @@ QuickFolders.Options = {
         getElement("qf-stateColors-defaultButton").collapsed = !(myTheme.supportsFeatures.stateColors);
       }
       catch(ex) {
-        // util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
-        console.error("Exception during QuickFolders.Options.selectTheme: ", ex); 
+        util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
       }
 
       /******  FOR FUTURE USE ??  ******/
       // if (myTheme.supportsFeatures.supportsFontSelection)
       // if (myTheme.supportsFeatures.buttonInnerShadows)
-      messenger.Utilities.logDebug ("Theme [" + myTheme.Id + "] selected");
+      QuickFolders.Util.logDebug ("Theme [" + myTheme.Id + "] selected");
     
       if (isUpdateUI) {
         // window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
@@ -446,7 +596,7 @@ QuickFolders.Options = {
             getElement('dialogProductTitle').value = "QuickFolders Pro";
           }          
           licenseDate.textContent = niceDate;
-          licenseDateLabel.value = getBundleString("qf.label.licenseValid");
+          licenseDateLabel.value = QuickFolders.Util.getBundleString("qf.label.licenseValid");
           break;
         case "Invalid":
           validationDate.setAttribute("collapsed",true);
@@ -469,14 +619,14 @@ QuickFolders.Options = {
             let txt = validationInvalidAddon.textContent;
             txt = txt.replace('{0}','QuickFolders').replace('{1}','QF'); // keys for {0} start with {1}
             if (txt.indexOf(addonName) < 0) {
-              txt += " " + getBundleString("qf.licenseValidation.guessAddon").replace('{2}',addonName);
+              txt += " " + QuickFolders.Util.getBundleString("qf.licenseValidation.guessAddon").replace('{2}',addonName);
             }
             validationInvalidAddon.textContent = txt;
             QuickFolders.Options.showValidationMessage(validationInvalidAddon, silent);
           }
           break;
         case "Expired":
-          licenseDateLabel.value = getBundleString("qf.licenseValidation.expired");
+          licenseDateLabel.value = QuickFolders.Util.getBundleString("qf.licenseValidation.expired");
           licenseDate.textContent = niceDate;
           QuickFolders.Options.showValidationMessage(validationExpired, false); // always show
           break;
@@ -504,8 +654,7 @@ QuickFolders.Options = {
       
     }    
     catch(ex) {
-      // util.logException("Error in QuickFolders.Options.updateLicenseOptionsUI():\n", ex);
-      console.error("Error in updateLicenseOptionsUI():\n", ex);
+      QuickFolders.Util.logException("Error in QuickFolders.Options.updateLicenseOptionsUI():\n", ex);
     }
     return result;
   },
@@ -530,22 +679,22 @@ QuickFolders.Options = {
   labelLicenseBtn : function (btnLicense, validStatus) {
     switch(validStatus) {
       case  "extend":
-        let txtExtend = getBundleString("qf.notification.premium.btn.extendLicense");
+        let txtExtend = QuickFolders.Util.getBundleString("qf.notification.premium.btn.extendLicense");
         btnLicense.setAttribute("collapsed",false);
         btnLicense.label = txtExtend; // text should be extend not renew
         btnLicense.setAttribute('tooltiptext',
-          getBundleString("qf.notification.premium.btn.extendLicense.tooltip"));
+          QuickFolders.Util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip"));
         return txtExtend;
       case "renew":
-        let txtRenew = getBundleString("qf.notification.premium.btn.renewLicense");
+        let txtRenew = QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense");
         btnLicense.label = txtRenew;
         return txtRenew;
       case "buy":
-        let buyLabel = getBundleString("qf.notification.premium.btn.getLicense");
+        let buyLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.getLicense");
         btnLicense.label = buyLabel;
         return buyLabel;
       case "upgrade":
-        let upgradeLabel = getBundleString("qf.notification.premium.btn.upgrade");
+        let upgradeLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.upgrade");
         btnLicense.label = upgradeLabel;
         btnLicense.classList.add('upgrade'); // stop flashing
         return upgradeLabel;

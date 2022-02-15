@@ -105,3 +105,16 @@ QuickFolders.TabListener = {
     QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.moveTab()  - idx = " + idx);
   } 
 }
+
+QuickFolders.onGlobalQFCommand = (data) => {
+  if (data.event) {
+    debugger;
+    switch(data.event) {
+      case "showAboutConfig":
+        QuickFolders.Interface.showAboutConfig(data.element, data.filter, data.readOnly, data.updateUI);
+        break;
+    }
+  }
+}
+
+QuickFolders.Util.notifyTools.registerListener(QuickFolders.onGlobalQFCommand);

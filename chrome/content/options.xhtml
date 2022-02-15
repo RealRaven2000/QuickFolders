@@ -202,7 +202,7 @@
 													preference="qfpg-HideToolbarSingleMsg"
                           oncommand="options.toggleBoolPreference(this);"
 													instantApply="true"
-                          oncontextmenu="options.showAboutConfig(this,'quickfolders.toolbar',true, true); return true;"
+                          oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'quickfolders.toolbar',true, true); return true;"
                           />
 							</vbox>
 						</html:fieldset>
@@ -221,7 +221,7 @@
 													tooltiptext="__MSG_qf.checkbox.showQuickMove.tooltip__"
 													preference="qfpg-ShowQuickMove"
 													instantApply="true"
-													oncontextmenu="options.showAboutConfig(this,'quickfolders.premium.findFolder.max',true);return false;"
+													oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'quickfolders.premium.findFolder.max',true);return false;"
 													oncommand="options.toggleBoolPreference(this);" />
 								<checkbox id="chkBookmarks"
 													label="__MSG_qf.checkbox.readingList__"
@@ -229,13 +229,13 @@
 													preference="qfpg-ShowBookmarks"
 													instantApply="true"
 													oncommand="options.toggleBoolPreference(this);"
-													oncontextmenu="options.showAboutConfig(this,'quickfolders.bookmarks',true);return false;"/>
+													oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'quickfolders.bookmarks',true);return false;"/>
 								<checkbox id="chkRecent"
 													label="__MSG_qf.checkbox.showRecentTab__"
 													tooltiptext="__MSG_qf.checkbox.showRecentTab.tooltip__"
 													preference="qfpg-ShowRecentTab"
 													instantApply="true"
-													oncontextmenu="options.showAboutConfig(this,'quickfolders.recentfolders',true);return false;"
+													oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'quickfolders.recentfolders',true);return false;"
 													oncommand="options.toggleBoolPreference(this);" />
 							</vbox>
 						</html:fieldset>
@@ -329,17 +329,17 @@
 												label="__MSG_qf.checkbox.showRecentButton__"
 												tooltiptext="__MSG_qf.checkbox.showRecentTab.tooltip__"
 												preference="qfpa-ShowRecentButton"
-												oncontextmenu="options.showAboutConfig(this,'extensions.quickfolders.recentfolders',true);return false;"
+												oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'extensions.quickfolders.recentfolders',true);return false;"
 												oncommand="options.toggleBoolPreference(this);" />
 							<checkbox id="chkMsgNavigation"
 												label="__MSG_qf.checkbox.showMessageNavigation__"
 												preference="qfpa-ShowMsgNavButton"
-												oncontextmenu="options.showAboutConfig(this,'quickfolders.currentFolderBar.navigation',true);"
+												oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'quickfolders.currentFolderBar.navigation',true);"
 												oncommand="options.toggleBoolPreference(this);" />
 							<checkbox id="chkFolderNavigation"
 												label="__MSG_qf.checkbox.showFolderNavigation__"
 												preference="qfpa-ShowFolderNavButton"
-												oncontextmenu="options.showAboutConfig(this,'quickfolders.currentFolderBar.navigation',true);"
+												oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'quickfolders.currentFolderBar.navigation',true);"
 												oncommand="options.toggleBoolPreference(this);" />
 							<checkbox id="chkShowFolderMenuButton"
 												label="__MSG_qf.checkbox.showMailFolderCommands__"
@@ -393,7 +393,7 @@
 									<checkbox id="qfNewFolder"
 														label="__MSG_qf.checkbox.menus.dragToNewFolder__"
 														preference="qfpa-FolderMenu-newFolder"
-														oncontextmenu="options.showAboutConfig(this,'extensions.quickfolders.dragToCreateFolder',true);return false;" />
+														oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'extensions.quickfolders.dragToCreateFolder',true);return false;" />
 								</vbox>
 							</html:fieldset>
 
@@ -513,7 +513,7 @@
 						<checkbox label="__MSG_qf.checkbox.displaylabel__"
 											tooltiptext="__MSG_qf.checkbox.displaylabel.tooltip__"
 											preference="qfpa-ShowQuickFoldersLabel"
-											oncontextmenu="options.showAboutConfig(this,'extensions.quickfolders.textQuickfoldersLabel',true);return false;"
+											oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'extensions.quickfolders.textQuickfoldersLabel',true);return false;"
 											oncommand="options.toggleBoolPreference(this);" />
 						<checkbox label="__MSG_qf.checkbox.hideCategoryBox__"
 											tooltiptext="__MSG_qf.checkbox.hideCategoryBox.tooltip__"
@@ -530,7 +530,7 @@
 						<checkbox label="__MSG_qf.checkbox.debug__"
 											tooltiptext="__MSG_qf.checkbox.debug.tooltip__"
 											preference="qfpa-Debug"
-											oncontextmenu="options.toggleBoolPreference(this,true);options.showAboutConfig(this,'quickfolders.debug',true);return false;" />
+											oncontextmenu="options.toggleBoolPreference(this,true);QuickFolders.Interface.showAboutConfig(this,'quickfolders.debug',true);return false;" />
 						<label value="__MSG_qf.label.initdelay__"
 									 style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;" />
             <html:input
@@ -1173,7 +1173,7 @@
 														tooltiptext="__MSG_qf.checkbox.quickMove.tip__"
 														preference="qfpp-QuickMoveShortcut"
 														disabled="true" 
-														oncontextmenu="options.showAboutConfig(this,'quickfolders.quickMove',true);return false;"
+														oncontextmenu="QuickFolders.Interface.showAboutConfig(this,'quickfolders.quickMove',true);return false;"
 														/>
                   <checkbox preference="qfpp-QuickMoveShortcutShift"
                             label="__MSG_qf.checkbox.shift__+" />

@@ -128,7 +128,7 @@ QuickFolders.Util = {
     let fn = ex.fileName || "?";
     // this.logError(aMessage + "\n" + ex.message, fn, stack, ex.lineNumber, 0, 0x1);
     console.error(aMessage, ex);
-  } ,
+  },
 
   logDebug: async function (a) {
     if (QuickFolders.Preferences.isDebug) {
@@ -153,4 +153,19 @@ QuickFolders.Util = {
     }
   },
   
-}
+  getBundleString: function (id, substitions = []) { // moved from local copies in various modules.
+    // [mx-l10n]
+    let localized = browser.i18n.getMessage(id, substitions);
+    let s = "";
+    if (localized) {
+      s = localized;
+    }
+    else {
+      s = defaultText;
+      this.logToConsole ("Could not retrieve bundle string: " + id + "");
+    }
+    return s;
+  }
+    
+  
+} // QuickFolders.Util

@@ -105,12 +105,15 @@ async function main() {
   startupFinished = true;
 
   let msg_commands = [
+    "currentDeckUpdate",
     "getLicenseInfo",
+    "showAboutConfig", // new global one!
     "slideAlert",
+    "updateCategoryBox",
     "updateFoldersUI",
     "updateLicense",
-    "updateNavigationBar",
     "updateMainWindow",
+    "updateNavigationBar",
     "updateQuickFoldersLabel"
   ];
 
@@ -176,8 +179,18 @@ async function main() {
         break;
         
       case "updateMainWindow": // we need to add one parameter (minimal) to pass through!
-        let isMinimal = (data.minimal) || "false";
+        let isMinimal = (data.minimal) || false;
         messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: isMinimal});
+        break;
+        
+      case "showAboutConfig":
+        messenger.NotifyTools.notifyExperiment({
+          event: "showAboutConfig", 
+          element: null,
+          filter: data.filter,
+          readOnly: data.readOnly,
+          updateUI: data.updateUI || false
+        });
         break;
         
        case "currentDeckUpdate":
@@ -205,7 +218,6 @@ async function main() {
           }
         );
         optionWin.sizeToContent() 
-        debugger;
         break;
 
       case "updateLicense":

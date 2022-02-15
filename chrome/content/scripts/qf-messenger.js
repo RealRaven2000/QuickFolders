@@ -2,7 +2,6 @@ var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
 window.QuickFolders.WL = WL; // this will be used wherever Add-on version is needed.
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-tablistener.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-filterWorker.js", window, "UTF-8");
@@ -16,6 +15,7 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folder-category.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-listener.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-tablistener.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-scrollmenus.js", window, "UTF-8");
 
 var mylisteners = {};
@@ -196,6 +196,12 @@ async function onLoad(activatedWhileWindowOpen) {
                       class="cmd menuitem-iconic"
                       tagName="qfOptions"
                       />
+            <menuitem id="QuickFolders-ToolbarPopup-options"
+                      label="QuickFolders Options (classic)…"
+                      oncommand="QuickFolders.Interface.viewOptions(-1, null, true);" 
+                      class="cmd menuitem-iconic"
+                      tagName="qfOptions"
+                      />                      
             <menuitem id="QuickFolders-ToolbarPopup-splash"
                       label="__MSG_qf.menuitem.quickfolders.splash__"
                       oncommand="QuickFolders.Interface.viewSplash();" 
@@ -538,13 +544,15 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["toggleNavigationBar"] = QI.displayNavigationToolbar.bind(QI);
   mylisteners["updateQuickFoldersLabel"] = QI.updateQuickFoldersLabel.bind(QI);
   mylisteners["updateCategoryBox"] = QI.updateCategoryLayout.bind(QI);
-  mylisteners["updateMainWindow"] = QI.updateMainWindow.bind(QI); // need to add a parameter here, how to?
+  // function parameters in event.detail
+  mylisteners["updateMainWindow"] = 
+    (event) => QI.updateMainWindow.call(QI, event.detail ? event.detail.minimal : null); 
   mylisteners["currentDeckUpdate"] = QI.currentDeckUpdate.bind(QI); 
   mylisteners["initKeyListeners"] = window.QuickFolders.initKeyListeners.bind(window.QuickFolders);
   mylisteners["firstRun"] = window.QuickFolders.Util.FirstRun.init.bind(window.QuickFolders.Util.FirstRun);
   
   for (let m in mylisteners) {
-    window.addEventListener(`QuickFolders.BackgroundUpdate.${m}` , mylisteners[m]);
+    window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
   }
   
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!

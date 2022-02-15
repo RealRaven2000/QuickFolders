@@ -99,7 +99,7 @@ Questions for Monday:
   how to use folder.createFolder to 
   
   
-  14/02/2022
+ 14/02/2022
   
   #  Bling / Layout
  rewrote  initBling( ) function.
@@ -110,14 +110,25 @@ Questions for Monday:
  into a single handler 
  
  
+ 15/02/2022
+ 
  to do - event handlers for  all number inputs
  
- create alternative color popups for selecting color choices in HTML
+ - create alternative color popups for selecting color choices in HTML
  note that these can be cut off by the dialog's viewport, hence it should
  be strictly flexible layout and needs to be placed centrally (near the dropdown select
  element but centrally on viewport)
  As there are 20 values, best would be 4 columns with 5 entries each.
  
+ - use the management library to reopen existing settings window instead of a new one
  
- 
+  removed extensions.quickfolders.debug.suppressXULoptions and added a "classic options" menu item for now.
+  
+  added command handlers for checkboxes, most dropdowns and buttons (WIP)
+  added right-click handlers for hidden settings (about:config)
+  Added theme support through
+  <meta name="color-scheme" content="dark light">
+  
+  using a global listener in quickfolders-tablistener for "unique" commands that 
+  should only be executed once (by one of the main windows)
    

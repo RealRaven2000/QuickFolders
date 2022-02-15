@@ -115,11 +115,177 @@ for (let palettepicker of document.querySelectorAll("select[data-pref-name$=pale
   }
 }
 
+let currentFolderBackground = document.getElementById("QuickFolders-CurrentFolder-Background-Select");
+currentFolderBackground.addEventListener("change", async (event) => {
+  QuickFolders.Options.setCurrentToolbarBackground(event.target.value, true);
+});
+      
+      
+
+// add bool preference reactions
+for (let chk of document.querySelectorAll("input[type=checkbox]")) {
+  let dataPref = chk.getAttribute("data-pref-name").replace("extensions.quickfolders.","");
+  switch (dataPref) {
+    case "showShortcutNumber":
+    case "showUnreadFoldersBold":
+    case "showFoldersWithMessagesItalic":
+    case "showFoldersWithNewMailItalic":
+    case "showNewMailHighlight":
+    case "showUnreadOnButtons":
+    case "showTotalNumber":
+    case "showCountInSubFolders":
+    case "autoFocusPreview":
+    case "showSubfolders":
+    case "enableMenuAlphaSorting":
+    case "toolbar.hideInSingleMessage":
+    case "showToolIcon":
+    case "showQuickMove":
+    case "bookmarks.showButton":
+    case "showRecentTab":
+    case "currentFolderBar.showRecentButton":
+    case "currentFolderBar.navigation.showButtons":
+    case "currentFolderBar.folderNavigation.showButtons":
+    case "currentFolderBar.showFolderMenuButton":
+    case "currentFolderBar.showRepairFolderButton":
+    case "currentFolderBar.showIconButtons":
+    case "currentFolderBar.showFilterButton":
+    case "currentFolderBar.showClose":
+    case "showQuickfoldersLabel":
+    case "collapseCategories":
+    case "style.transitions":
+    case "showIcons":
+    case "style.corners.customizedRadius":
+    case "toolbar.largeIcons":
+    case "premium.categories.multiSelect":
+      chk.addEventListener("change", (event) => {
+        QuickFolders.Options.toggleBoolPreference(chk);
+      });
+      break;
+    case "currentFolderBar.background.lightweight":
+      chk.addEventListener("change", async (event) => {
+        await QuickFolders.Options.toggleBoolPreference(chk, false);
+        QuickFolders.Options.updateNavigationBar();
+      });
+      break;
+    case "restoreConfig.tabs":
+    case "restoreConfig.general":
+    case "restoreConfig.layout":
+      chk.addEventListener("change", async (event) => {
+        await QuickFolders.Options.toggleBoolPreference(chk, true);
+      });
+      break;
+    case "showCurrentFolderToolbar":
+      chk.addEventListener("change", (event) => {
+        QuickFolders.Options.toggleNavigationBar(chk,"");
+      });
+      break;
+    case "showCurrentFolderToolbar.singleMailTab":
+      chk.addEventListener("change", (event) => {
+        QuickFolders.Options.toggleNavigationBar(chk,"singleMailTab");
+      });
+      break;
+    case "showCurrentFolderToolbar.messageWindow":
+      chk.addEventListener("change", (event) => {
+        QuickFolders.Options.toggleNavigationBar(chk,"messageWindow");
+      });
+      break;
+  }
+  /* RIGHTCLICK HANDLERS */
+  // right-click show details from about:config
+  let filterConfig="", readOnly=true, retVal=null;
+  switch(dataPref) {
+    case "showRecentTab":
+      // oncontextmenu="QI.showAboutConfig(chk,'quickfolders.recentfolders',true);return false;"
+      filterConfig="quickfolders.recentfolders"; retVal=false;
+      break;
+    case "currentFolderBar.showRecentButton":
+      // oncontextmenu="QI.showAboutConfig(chk,'extensions.quickfolders.recentfolders',true);return false;"
+      filterConfig="extensions.quickfolders.recentfolders"; retVal=false;
+      break;
+    case "currentFolderBar.navigation.showButtons":
+      filterConfig="quickfolders.currentFolderBar.navigation";
+      break;
+    case "currentFolderBar.folderNavigation.showButtons":
+      filterConfig="quickfolders.currentFolderBar.navigation";
+      break;
+    case "showQuickfoldersLabel":
+      // oncontextmenu="QI.showAboutConfig(chk,'extensions.quickfolders.textQuickfoldersLabel',true);return false;"
+      filterConfig="extensions.quickfolders.textQuickfoldersLabel"; retVal=false;
+      break;
+    case "debug":
+      // + options.toggleBoolPreference(chk,true); beforehand!
+      filterConfig="quickfolders.debug"; retVal=false;
+      break;
+    case "toolbar.hideInSingleMessage":
+      filterConfig="quickfolders.toolbars"; retVal=true;
+      break;
+    case "showQuickMove":
+      filterConfig="quickfolders.premium.findFolder.max"; retVal=false;
+      break;
+    case "bookmarks.showButton":
+      filterConfig="quickfolders.bookmarks"; retVal=false;
+      break;
+    case "folderMenu.dragToNew":
+      filterConfig="extensions.quickfolders.dragToCreateFolder"; retVal=false;
+      break;
+    case "quickMove.useHotkey":
+      filterConfig="quickfolders.quickMove"; retVal=false;
+      break;
+  }
+  
+  if (filterConfig) {
+    chk.addEventListener("contextmenu", (event) => {
+      dispatchAboutConfig(filterConfig, true, true);
+      if (null!=retVal) return retVal;
+    });
+  }
+
+
+
+}
+
+// we cannot transmit the element, so removing the first parameter
+async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
+  // we put the notification listener into quickfolders-tablistener.js - should only happen in ONE main window!
+  // el - cannot be cloned! let's throw it away and get target of the event
+  messenger.runtime.sendMessage({ 
+    command: "showAboutConfig", 
+    filter: filter,
+    readOnly: readOnly,
+    updateUI: updateUI
+  });
+}
+// command buttons
+document.getElementById("btnSaveConfig").addEventListener("click", (event) => {
+  // legacy code - needs to go via background 
+  // oncommand="options.storeConfig(Preferences, options.prefMap);" 
+  throw("TO DO: options.storeConfig()");
+});
+     
+document.getElementById("btnLoadConfig").addEventListener("click", (event) => {
+  // legacy code - needs to go via background 
+  // oncommand="options.loadConfig(Preferences);" 
+  throw("TO DO: options.loadConfig()");
+});
+
+
+
+document.getElementById("btnConfigureTooltips").addEventListener("click", (event) => {
+  // oncommand="options.configureTooltips(this);return true;"
+  // this calls:
+  // QI.showAboutConfig(btn,           'extensions.quickfolders.tooltips', true, true);
+  dispatchAboutConfig("extensions.quickfolders.tooltips", true, true)
+  return true;
+});
+
+      
+     
 // other dropdowns
 let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
 themeSelector.addEventListener("change", async (event) => {
   let themeId = event.target.value;
   QuickFolders.Options.selectTheme(window.document, themeId, true); //.bind(QuickFolders.Options);
+  // QuickFolders.Options.updateMainWindow();
 });
 
 
@@ -290,24 +456,6 @@ async function initLicenseInfo() {
 }
 
 
-
-// from Util
-function getBundleString(id, substitions = []) { // moved from local copies in various modules.
-  // [mx-l10n]
-  let localized = browser.i18n.getMessage(id, substitions);
-  let s = "";
-  if (localized) {
-    s = localized;
-  }
-  else {
-    s = defaultText;
-    this.logToConsole ("Could not retrieve bundle string: " + id + "");
-  }
-  return s;
-}
-  
-
-
 function configExtra2Button() {
    // to do - OK / Cancel / donate buttons from legacy code QuickFolders.Options 
 }
@@ -409,6 +557,11 @@ function initButtons() {
     // options.sendMail(); setTimeout(function() { window.close(); });
   }); // contact me
   
+}
+
+async function initToolbarBackground() {
+  QuickFolders.Options.setCurrentToolbarBackground(
+    await QuickFolders.Preferences.getStringPref('currentFolderBar.background.selection'), false);  
 }
 
 
@@ -514,5 +667,8 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
 */
 
+
+initToolbarBackground();
 initBling();
+
  

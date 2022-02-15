@@ -1493,58 +1493,10 @@ QuickFolders.Options = {
 
   configureTooltips: function configureTooltips(btn) {
     setTimeout( function () {
-      QuickFolders.Options.showAboutConfig(btn, 'extensions.quickfolders.tooltips', true, true);
+      QuickFolders.Interface.showAboutConfig(btn, 'extensions.quickfolders.tooltips', true, true);
       } );  
   },
   
-  showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateUI = false) {
-    const name = "Preferences:ConfigManager",
-          Cc = Components.classes,
-          Ci = Components.interfaces,
-          util = QuickFolders.Util;
-    let mediator = Services.wm,
-        isTbModern = util.versionGreaterOrEqual(util.Appversion, "85"),
-        uri = (isTbModern) ? "about:config": "chrome://global/content/config.xhtml?debug";
-    
-    let w = mediator.getMostRecentWindow(name),
-        win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
-            ? clickedElement.ownerDocument.defaultView 
-            : window; // parent window
-    if (!w) {
-      let watcher = Cc["@mozilla.org/embedcomp/window-watcher;1"].getService(Ci.nsIWindowWatcher),
-          width = "750px",
-          height = "350px",
-          features = "alwaysRaised,dependent,centerscreen,chrome,resizable,width="+ width + ",height=" + height;
-      if (util.HostSystem == 'winnt')
-        w = watcher.openWindow(win, uri, name, features, null);
-      else
-        w = win.openDialog(uri, name, features);
-    }
-    if (updateUI) {
-      // make sure QuickFolders UI is updated when about:config is closed.
-      w.addEventListener('unload', function(event) { 
-        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
-      });
-    }
-    w.focus();
-    w.addEventListener('load', 
-      function () {
-        let id = (isTbModern) ? "about-config-search" : "textbox";
-        let flt = w.document.getElementById(id);
-        if (flt) {
-           flt.value=filter;
-          // make filter box readonly to prevent damage!
-           if (!readOnly)
-            flt.focus();
-           else
-            flt.setAttribute('readonly',true);
-           if (w.self.FilterPrefs) {
-            w.self.FilterPrefs();
-          }
-        }
-      });
-  },
-
   showVersionHistory: function showVersionHistory(ask) {
     let util = QuickFolders.Util,
         pureVersion=util.VersionSanitized,
@@ -1713,7 +1665,7 @@ QuickFolders.Options = {
 		if (confirm(textPrompt)) {
 			// create (non existent filter setting:
 			QuickFolders.Preferences.setBoolPrefVerbose(filter, Default);
-			QuickFolders.Options.showAboutConfig(null, filter, true, false);
+			QuickFolders.Interface.showAboutConfig(null, filter, true, false);
 		}
 	},
 	

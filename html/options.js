@@ -25,6 +25,7 @@ for (let button of document.querySelectorAll("#QuickFolders-Options-Tabbox butto
   button.addEventListener("click", activateTab);
 }
 
+
 for (let colorpicker of document.querySelectorAll("input[type=color]")) {
   let options = QuickFolders.Options,
       elementName, elementStyle, label,
@@ -115,11 +116,51 @@ for (let palettepicker of document.querySelectorAll("select[data-pref-name$=pale
   }
 }
 
+for (let el of document.querySelectorAll("input[type=number]")) {
+  let id = el.id;
+  switch (id) {
+    case "button-font-size":
+    case "buttonMinHeight":
+    case "buttonPaddingTop":
+    case "QuickFolders-Options-CustomTopRadius":
+    case "QuickFolders-Options-CustomBottomRadius":
+    case "toolbar-bottom-size":
+    case "toolbarMinHeight":
+    case "leftSpacer":
+    case "rightSpacer":
+      el.addEventListener("change", async (event) => {
+        QuickFolders.Options.changeTextPreference(el);
+        if (id == "leftSpacer" || id == "rightSpacer")
+          QuickFolders.Options.updateNavigationBar();
+      });
+      break;
+  }
+}
+
 let currentFolderBackground = document.getElementById("QuickFolders-CurrentFolder-Background-Select");
 currentFolderBackground.addEventListener("change", async (event) => {
   QuickFolders.Options.setCurrentToolbarBackground(event.target.value, true);
 });
-      
+
+// striped / filled radio toggles      
+let rb1 = document.getElementById("ExampleStripedColor");
+rb1.addEventListener("change", async (event) => {
+  QuickFolders.Options.setColoredTabStyleFromRadioGroup(event.target, true);
+});
+let rb2 = document.getElementById("ExampleFilledColor");
+rb2.addEventListener("change", async (event) => {
+  QuickFolders.Options.setColoredTabStyleFromRadioGroup(event.target, true);
+});
+
+document.getElementById("quickMoveAdvanced").addEventListener("click", async (event) => {
+  QuickFolders.Options.quickMoveAdvancedSettings();
+});
+
+document.getElementById("applyPosition").addEventListener("click", async (event) => {
+  QuickFolders.Options.updateMainWindow(true); // was applyOrdinalPosition()
+});
+
+
       
 
 // add bool preference reactions
@@ -195,11 +236,9 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
   let filterConfig="", readOnly=true, retVal=null;
   switch(dataPref) {
     case "showRecentTab":
-      // oncontextmenu="QI.showAboutConfig(chk,'quickfolders.recentfolders',true);return false;"
       filterConfig="quickfolders.recentfolders"; retVal=false;
       break;
     case "currentFolderBar.showRecentButton":
-      // oncontextmenu="QI.showAboutConfig(chk,'extensions.quickfolders.recentfolders',true);return false;"
       filterConfig="extensions.quickfolders.recentfolders"; retVal=false;
       break;
     case "currentFolderBar.navigation.showButtons":
@@ -234,7 +273,8 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
   }
   
   if (filterConfig) {
-    chk.addEventListener("contextmenu", (event) => {
+    // add right-click event to containing label
+    chk.parentNode.addEventListener("contextmenu", (event) => {
       dispatchAboutConfig(filterConfig, true, true);
       if (null!=retVal) return retVal;
     });

@@ -112,8 +112,7 @@ QuickFolders.Options = {
           break;
       }
     }
-    // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
-    messenger.runtime.sendMessage({ command:"updateFoldersUI", minimal: "true" });
+    messenger.runtime.sendMessage({ command:"updateUserStyles" }); // was "updateMainWindow"
     return true;  // return updateResult;
   },
   
@@ -129,7 +128,7 @@ QuickFolders.Options = {
       await QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
     
     // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
-    messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: "true" }); 
+    messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: true }); 
     return true;
   },  
 
@@ -156,8 +155,8 @@ QuickFolders.Options = {
     
     // we need to solve the radio element background image being displayed by setting the src attribute.
     // probably should be a CSS style instead?
-    getElement('ExampleStripedColor').src = isPastel ? "../chrome/content/skin/ico/striped-example-pastel.gif" : "../chrome/content/skin/ico/striped-example.gif";
-    getElement('ExampleFilledColor').src = isPastel ? "../chrome/content/skin/ico/full-example-pastel.gif" : "../chrome/content/skin/ico/full-example.gif";
+    getElement('ExampleStripedColor').className = "qfTabPreview plastic col6striped " + isPastel ? "pastel" : "plastic";
+    getElement('ExampleFilledColor').className = "qfTabPreview plastic col6 " + isPastel ? "pastel" : "plastic";
 
     let picker = getElement('inactive-colorpicker');
   
@@ -376,17 +375,12 @@ QuickFolders.Options = {
     }
   },  
   
-  
   changeTextPreference: function changeTextPreference(txtBox) {
     let prefString = txtBox.getAttribute("data-pref-name");
-    
-    if (Preferences.get(prefString)) 
-      QuickFolders.Preferences.setIntPreference(prefString, txtBox.value);
-    else
-      QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
+    QuickFolders.Preferences.setIntPreference(prefString, txtBox.value);
     
     // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
-    messenger.runtime.sendMessage({ command:"updateMainWindow", minimal: "true" });
+    messenger.runtime.sendMessage({ command:"updateMainWindow", minimal: false });
     return true;
   },
   
@@ -413,7 +407,7 @@ QuickFolders.Options = {
         return false;
       case "extensions.quickfolders.toolbar.largeIcons":
         // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
-        messenger.runtime.sendMessage({ command:"updateMainWindow", minimal: "true" });
+        messenger.runtime.sendMessage({ command:"updateMainWindow", minimal: true });
         break;
     }
     // broadcast change of current folder bar for all interested windows.
@@ -432,7 +426,6 @@ QuickFolders.Options = {
     let checked = chk.checked ? chk.checked : false;
     await QuickFolders.Preferences.setShowCurrentFolderToolbar(checked, selector);
     // we should not call displayNavigationToolbar directly but use the event broadcaster to notify all windows.
-    // QuickFolders.Util.notifyTools.notifyBackground({ func: "toggleNavigationBar" }); 
     messenger.runtime.sendMessage({ command:"toggleNavigationBar" });
   },
     
@@ -449,13 +442,11 @@ QuickFolders.Options = {
   },
   
   updateNavigationBar: function updateNavigationBar() {
-    // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" }); 
     messenger.runtime.sendMessage({ command:"updateNavigationBar" });
   },
   
   updateMainWindow: function updateMainWindow(minimal = false) {
-    // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
-    messenger.runtime.sendMessage({ command:"updateMainWindow", minimal: minimal ? "true" : "false" });
+    messenger.runtime.sendMessage({ command:"updateMainWindow", minimal });
   },
   
   selectTheme : function (wd, themeId, isUpdateUI = false) {
@@ -475,15 +466,15 @@ QuickFolders.Options = {
         getElement("qf-options-shadow").disabled = !(myTheme.supportsFeatures.buttonShadows);
         getElement("button-font-size").disabled = !(myTheme.supportsFeatures.supportsFontSize);
         getElement("button-font-size-label").disabled = !(myTheme.supportsFeatures.supportsFontSize);
-        getElement("btnHeightTweaks").collapsed = !(myTheme.supportsFeatures.supportsHeightTweaks);
-        getElement("qf-tweakRadius").collapsed = !(myTheme.supportsFeatures.cornerRadius);
-        getElement("qf-tweakToolbarBorder").collapsed = !(myTheme.supportsFeatures.toolbarBorder);
-        getElement("qf-tweakColors").collapsed = !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors);
-        getElement("qf-individualColors").collapsed = !(myTheme.supportsFeatures.individualColors);
-        getElement("qf-StandardColors").collapsed = !(myTheme.supportsFeatures.standardTabColor);
-        getElement("buttonTransparency").collapsed = !(myTheme.supportsFeatures.tabTransparency);
-        getElement("qf-stateColors").collapsed = !(myTheme.supportsFeatures.stateColors);
-        getElement("qf-stateColors-defaultButton").collapsed = !(myTheme.supportsFeatures.stateColors);
+        getElement("btnHeightTweaks").setAttribute("collapsed", !(myTheme.supportsFeatures.supportsHeightTweaks));
+        getElement("qf-tweakRadius").setAttribute("collapsed", !(myTheme.supportsFeatures.cornerRadius));
+        getElement("qf-tweakToolbarBorder").setAttribute("collapsed", !(myTheme.supportsFeatures.toolbarBorder));
+        getElement("qf-tweakColors").setAttribute("collapsed", !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors));
+        getElement("qf-individualColors").setAttribute("collapsed", !(myTheme.supportsFeatures.individualColors));
+        getElement("qf-StandardColors").setAttribute("collapsed", !(myTheme.supportsFeatures.standardTabColor));
+        getElement("buttonTransparency").setAttribute("collapsed", !(myTheme.supportsFeatures.tabTransparency));
+        getElement("qf-stateColors").setAttribute("collapsed", !(myTheme.supportsFeatures.stateColors));
+        getElement("qf-stateColors-defaultButton").setAttribute("collapsed", !(myTheme.supportsFeatures.stateColors));
       }
       catch(ex) {
         util.logException('Exception during QuickFolders.Options.selectTheme: ', ex); 
@@ -495,7 +486,6 @@ QuickFolders.Options = {
       QuickFolders.Util.logDebug ("Theme [" + myTheme.Id + "] selected");
     
       if (isUpdateUI) {
-        // window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); 
         messenger.runtime.sendMessage({ command:"updateFoldersUI" });
       }
     }
@@ -733,8 +723,15 @@ QuickFolders.Options = {
         }       
       }
     );
-  }
+  },
   
+  /************** LEGACY PARTS  ***********/
+  quickMoveAdvancedSettings: function() {
+    // TO DO: convert quickmove.xhtml to html
+    // for now, moved to quickfolders-tablistener as  "global command handler"
+    messenger.runtime.sendMessage({ command:"legacyAdvancedSearch" });
+  },
+    
   
   
 }  // QuickFolders.Options

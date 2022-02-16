@@ -249,7 +249,7 @@ async function onLoad(activatedWhileWindowOpen) {
             <menuitem id="QuickFolders-ToolbarPopup-refresh"
                       label="__MSG_qf.menuitem.quickfolders.repairTabs__"
                       accesskey="__MSG_qf.menuitem.quickfolders.repairTabsAccess__"
-                      oncommand="QuickFolders.Util.notifyTools.notifyBackground({ func: 'updateMainWindow', minimal: 'false' });" 
+                      oncommand="QuickFolders.Util.notifyTools.notifyBackground({ func: 'updateMainWindow', minimal: false });" 
                       class="cmd menuitem-iconic"
                       tagName="qfRebuild"
                       />

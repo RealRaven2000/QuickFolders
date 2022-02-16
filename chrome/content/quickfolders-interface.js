@@ -945,7 +945,7 @@ QuickFolders.Interface = {
 		let style =  prefs.ColoredTabStyle; // unused?
     
     // refresh main windows
-    if (!minimal) {
+    if (!minimal || "false" == minimal) {
       logCSS("updateMainWindow: update Folders UI…");
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // updates both folders - updateFolders(true, false) - and user styles
     }
@@ -5813,7 +5813,7 @@ QuickFolders.Interface = {
 							cp.value = "#FFFFFF";
 						}
 						prefs.setUserStyle(styleKey, "background-color", "rgb(255,255,255)");
-            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false });
 					}
           if (styleKey == "InactiveTab")
             this.applyTabStyle(document.getElementById("inactivetabs-label"), prefs.ColoredTabStyle);
@@ -5823,7 +5823,7 @@ QuickFolders.Interface = {
           }
           if (disableColorChangeStriped) {
             // force update as it might have been missed!
-            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: true });
           }
 					return; // early exit
 			} // end switch
@@ -7082,7 +7082,7 @@ QuickFolders.Interface = {
     else {
       // how to get last options.html window?
       // win = mediator.getMostRecentWindow(name); 
-      win = window;
+      win = null;
     }
 
     if (!w) {
@@ -7098,7 +7098,7 @@ QuickFolders.Interface = {
     if (updateUI) {
       // make sure QuickFolders UI is updated when about:config is closed.
       w.addEventListener('unload', function(event) { 
-        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false }); 
       });
     }
     w.focus();

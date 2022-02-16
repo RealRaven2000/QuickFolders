@@ -183,3 +183,19 @@ button.active::marker {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+/* right-click / tooltip support */
+.hasConfigEvent:hover {
+  background: rgba(255,0,0,0.2);
+  outline: 1px dotted rgba(85,0,0,0.5);
+  border-radius: 3px;
+}
+
+input[type=number] {
+  text-align: right;
+}
+
+.pixelAppendix {
+  margin-right: 5px;
+  margin-left: 0px;
+}

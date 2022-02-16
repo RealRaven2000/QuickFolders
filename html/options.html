@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-options.css">
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-widgets.css">
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-widgets64.css">
+  <link rel="stylesheet" href="../chrome/content/skin/quickfolders-layout.css">
   <!-- this is OS specific and needs to be modified! -->
   <link rel="stylesheet" href="../chrome/content/skin/tb91/qf-options.css">
   
@@ -137,8 +138,8 @@
                 tooltiptext="__MSG_qf.checkbox.sortMenusAlpha.tooltip__" preference="qfpg-EnableMenuSorting"
                 data-pref-name="extensions.quickfolders.enableMenuAlphaSorting"
                 instantApply="true">__MSG_qf.checkbox.sortMenusAlpha__</label>
-              <label><input type="checkbox" 
-                tooltiptext="__MSG_qf.checkbox.hideInSingleMessage.tooltip__" preference="qfpg-HideToolbarSingleMsg"
+              <label class="hasConfigEvent" tooltiptext="__MSG_qf.checkbox.hideInSingleMessage.tooltip__"><input type="checkbox" 
+                preference="qfpg-HideToolbarSingleMsg"
                 data-pref-name="extensions.quickfolders.toolbar.hideInSingleMessage"
                 instantApply="true">__MSG_qf.checkbox.hideInSingleMessage__</label>
             </div>
@@ -151,16 +152,19 @@
                 tooltiptext="__MSG_qf.checkbox.tabMenuIcon.tooltip__" preference="qfpg-ShowToolbarMenuIcon"
                 data-pref-name="extensions.quickfolders.showToolIcon"
                 instantApply="true">__MSG_qf.checkbox.tabMenuIcon__</label>
-              <label><input type="checkbox" id="chkQuickMove"
-                tooltiptext="__MSG_qf.checkbox.showQuickMove.tooltip__" preference="qfpg-ShowQuickMove"
-                data-pref-name="extensions.quickfolders.showQuickMove" 
-                instantApply="true">__MSG_qf.checkbox.showQuickMove__</label>
-              <label><input type="checkbox" id="chkBookmarks"
-                tooltiptext="__MSG_qf.checkbox.readingList.tooltip__" preference="qfpg-ShowBookmarks"
+              <label class="hasConfigEvent" tooltiptext="__MSG_qf.checkbox.showQuickMove.tooltip__">
+                <input type="checkbox" id="chkQuickMove"
+                  preference="qfpg-ShowQuickMove"
+                  data-pref-name="extensions.quickfolders.showQuickMove" 
+                  instantApply="true">
+                __MSG_qf.checkbox.showQuickMove__
+              </label>
+              <label class="hasConfigEvent" tooltiptext="__MSG_qf.checkbox.readingList.tooltip__"><input type="checkbox" id="chkBookmarks"
+                preference="qfpg-ShowBookmarks"
                 data-pref-name="extensions.quickfolders.bookmarks.showButton"
                 instantApply="true">__MSG_qf.checkbox.readingList__</label>
-              <label><input type="checkbox" id="chkRecent"
-                tooltiptext="__MSG_qf.checkbox.showRecentTab.tooltip__" preference="qfpg-ShowRecentTab"
+              <label class="hasConfigEvent" tooltiptext="__MSG_qf.checkbox.showRecentTab.tooltip__"><input type="checkbox" id="chkRecent"
+                preference="qfpg-ShowRecentTab"
                 data-pref-name="extensions.quickfolders.showRecentTab"
                 instantApply="true">__MSG_qf.checkbox.showRecentTab__</label>
             </div>
@@ -203,13 +207,13 @@
                 tooltiptext="__MSG_qf.checkbox.singleMessage.currentFolder.tooltip__"
                 preference="qfpa-ShowCurrentFolderBar-SingleMessage"
                 data-pref-name="extensions.quickfolders.showCurrentFolderToolbar.messageWindow">__MSG_qf.checkbox.singleMessage.currentFolder.show__</label>
-              <label><input type="checkbox" id="chkRecentCurrent"
-                tooltiptext="__MSG_qf.checkbox.showRecentTab.tooltip__" preference="qfpa-ShowRecentButton"
+              <label class="hasConfigEvent" tooltiptext="__MSG_qf.checkbox.showRecentTab.tooltip__" ><input type="checkbox" id="chkRecentCurrent"
+                preference="qfpa-ShowRecentButton"
                 data-pref-name="extensions.quickfolders.currentFolderBar.showRecentButton">__MSG_qf.checkbox.showRecentButton__</label>
-              <label><input type="checkbox" id="chkMsgNavigation"
+              <label class="hasConfigEvent"><input type="checkbox" id="chkMsgNavigation"
                 preference="qfpa-ShowMsgNavButton"
                 data-pref-name="extensions.quickfolders.currentFolderBar.navigation.showButtons">__MSG_qf.checkbox.showMessageNavigation__</label>
-              <label><input type="checkbox" id="chkFolderNavigation"
+              <label class="hasConfigEvent"><input type="checkbox" id="chkFolderNavigation"
                 preference="qfpa-ShowFolderNavButton"
                 data-pref-name="extensions.quickfolders.currentFolderBar.folderNavigation.showButtons">__MSG_qf.checkbox.showFolderNavigation__</label>
               <label><input type="checkbox" id="chkShowFolderMenuButton"
@@ -246,7 +250,7 @@
                     preference="qfpa-FolderMenu-markAllReadRecursive" data-pref-name="extensions.quickfolders.folderMenu.markAllReadRecursive">__MSG_qf.checkbox.menus.markAllReadRecursive__</label>
                   <label><input type="checkbox" preference="qfpa-FolderMenu-emptyJunk" data-pref-name="extensions.quickfolders.folderMenu.emptyJunk">__MSG_qf.checkbox.menus.emptyJunk__</label>
                   <label><input type="checkbox" preference="qfpa-FolderMenu-emptyTrash" data-pref-name="extensions.quickfolders.folderMenu.emptyTrash">__MSG_qf.checkbox.menus.emptyTrash__</label>
-                  <label><input type="checkbox" id="qfNewFolder" 
+                  <label class="hasConfigEvent"><input type="checkbox" id="qfNewFolder" 
                     preference="qfpa-FolderMenu-newFolder"
                     data-pref-name="extensions.quickfolders.folderMenu.dragToNew">__MSG_qf.checkbox.menus.dragToNewFolder__</label>
                 </div>
@@ -280,7 +284,7 @@
             <input type="text" id="toolbarPosition" flex="1" preference="qfpa-ToolbarPosition"
               data-pref-name="extensions.quickfolders.toolbar.ordinalPosition" 
               title="__MSG_qf.toolbarPosition.tooltip__" />
-            <button onclick="options.applyOrdinalPosition();">__MSG_qf.btn.applyPosition__</button>
+            <button id="applyPosition">__MSG_qf.btn.applyPosition__</button>
           </div>
         </fieldset>
 
@@ -312,14 +316,12 @@
               <label>__MSG_qf.currentfolder.leftSpacer__
                 <input id="leftSpacer" type="number" class="num1digit" preference="qfpa-flexLeft"
                   data-pref-name="extensions.quickfolders.currentFolderBar.flexLeft" 
-                  data-pref-type="int"
-                  onchange="options.changeTextPreference(this); options.updateNavigationBar();" />
+                  data-pref-type="int" />
               </label>
               <label>__MSG_qf.currentfolder.rightSpacer__
                 <input id="rightSpacer" type="number" class="num1digit" preference="qfpa-flexRight"
                   data-pref-name="extensions.quickfolders.currentFolderBar.flexRight" 
-                  data-pref-type="int"
-                  onchange="options.changeTextPreference(this); options.updateNavigationBar();" />
+                  data-pref-type="int" />
               </label>
               <div class="spacer" flex="2"></div>
             </div>
@@ -328,7 +330,7 @@
 
         <fieldset class="hbox">
           <legend>__MSG_qf.label.misc__</legend>
-          <label><input type="checkbox" tooltiptext="__MSG_qf.checkbox.displaylabel.tooltip__"
+          <label class="hasConfigEvent" tooltiptext="__MSG_qf.checkbox.displaylabel.tooltip__"><input type="checkbox" 
             preference="qfpa-ShowQuickFoldersLabel"
             data-pref-name="extensions.quickfolders.showQuickfoldersLabel">__MSG_qf.checkbox.displaylabel__</label>
           <label><input type="checkbox"
@@ -341,7 +343,7 @@
 
         <span class="separator thin"> </span>
         <div class="hbox quickhelp-dbg align_center">
-          <label><input type="checkbox" tooltiptext="__MSG_qf.checkbox.debug.tooltip__"
+          <label class="hasConfigEvent" tooltiptext="__MSG_qf.checkbox.debug.tooltip__"><input type="checkbox" 
             preference="qfpa-Debug" data-pref-name="extensions.quickfolders.debug"
             >__MSG_qf.checkbox.debug__</label>
           <label style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;">__MSG_qf.label.initdelay__</label>
@@ -400,8 +402,7 @@
             <div class="hbox toowide align_center">
               <label id="button-font-size-label">__MSG_qf.label.buttonFontSizeNumeric__
                 <input id="button-font-size" type="number" class="num2digits" preference="qfpl-ButtonFontSize"
-                  data-pref-name="extensions.quickfolders.buttonFontSizeN"
-                  onchange="options.changeTextPreference(this);" />
+                  data-pref-name="extensions.quickfolders.buttonFontSizeN" />
                </label>
               <label>px</label>
 
@@ -410,15 +411,13 @@
               <div class="hbox align_center" id="btnHeightTweaks">
                 <label>__MSG_qf.toolbarMinimumHeight__
                   <input type="number" id="buttonMinHeight" preference="qfpl-ButtonMinimalHeight" 
-                    data-pref-name="extensions.quickfolders.style.button.minHeight" class="num2digits"
-                    onchange="options.changeTextPreference(this);" />
+                    data-pref-name="extensions.quickfolders.style.button.minHeight" class="num2digits"/>
                 </label>
                 <label>px</label>
                 <span style="width:20px;" class="separator">&nbsp;</span>
                 <label>Top padding:
                   <input type="number" id="buttonPaddingTop" class="num2digits" preference="qfpl-ButtonTopPadding"
-                    data-pref-name="extensions.quickfolders.style.button.paddingTop"
-                    onchange="options.changeTextPreference(this);" />
+                    data-pref-name="extensions.quickfolders.style.button.paddingTop"/>
                  </label>
                 <label>px</label>
               </div>
@@ -430,16 +429,15 @@
               <label>__MSG_qf.options.themes.customCornerRadius.Top.label__
                 <input type="number" id="QuickFolders-Options-CustomTopRadius" class="num1digit"
                   preference="qfpl-TopRadius" data-pref-name="extensions.quickfolders.style.corners.customizedTopRadiusN"
-                  onchange="options.changeTextPreference(this);" />
+                  />
               </label>
-              <label>px</label>
-              <label value="__MSG_qf.options.themes.customCornerRadius.Bottom.label__">
+              <label class="pixelAppendix">px</label>
+              <label>__MSG_qf.options.themes.customCornerRadius.Bottom.label__
                 <input type="number" id="QuickFolders-Options-CustomBottomRadius" class="num1digit"
                   preference="qfpl-BottomRadius" 
-                  data-pref-name="extensions.quickfolders.style.corners.customizedBottomRadiusN" 
-                  onchange="options.changeTextPreference(this);" />
+                  data-pref-name="extensions.quickfolders.style.corners.customizedBottomRadiusN" />
               </label>
-              <label>px</label>
+              <label class="pixelAppendix">px</label>
               <button oncommand="options.setDefaultButtonRadius();">__MSG_qf.button.default__</button>
             </div>
           </div>
@@ -458,17 +456,17 @@
               <label id="toolbar-bottom-label" value="__MSG_qf.label.Toolbar.bottomLine__" />
                 <input type="number" id="toolbar-bottom-size" tooltiptext="__MSG_qf.label.Toolbar.bottomLine.tip__"
                   class="num1digit" preference="qfpl-ToolbarBottom"
-                  data-pref-name="extensions.quickfolders.style.Toolbar.bottomLineWidth"
-                  onchange="options.changeTextPreference(this);">
+                  data-pref-name="extensions.quickfolders.style.Toolbar.bottomLineWidth" >
               <label value="px" />
             </div>
             <div class="hbox align_center">
               <label tooltiptext="__MSG_qf.toolbarMinimumHeight.tooltip__"
                 href="https://www.mozdev.org/bugs/show_bug.cgi?id=25021"
                 onclick="util.openURL(event,'https://www.mozdev.org/bugs/show_bug.cgi?id=25021')"
-                style="text-decoration:underline;cursor:pointer;">__MSG_qf.toolbarMinimumHeight__</label>
-              <input type="number" id="toolbarMinHeight" class="num2digits"
-                preference="qfpl-ToolbarMinimalHeight" data-pref-name="extensions.quickfolders.toolbar.minHeight">
+                style="text-decoration:underline;cursor:pointer;">__MSG_qf.toolbarMinimumHeight__
+                <input type="number" id="toolbarMinHeight" class="num2digits"
+                  preference="qfpl-ToolbarMinimalHeight" data-pref-name="extensions.quickfolders.toolbar.minHeight">
+              </label>
               <label>px</label>
             </div>
           </div>
@@ -594,23 +592,21 @@
             <fieldset>
               <legend>__MSG_qf.options.LayoutColorAppearance__</legend>
                 <!-- oncommand handler: options.setColoredTabStyleFromRadioGroup(this);  -->
-              <div class="hbox" id="qf-individualColors" flex="1">
-                <label class="qfTabPreview striped">
+              <div class="hbox quickfolders-flat" id="qf-individualColors" flex="1">
+                <label class="qfTabPreview plastic col6striped">
                   <input type="radio" 
                     id="ExampleStripedColor" 
                     value="0"
                     name="tabStyleGroup"
-                    data-pref-name="extensions.quickfolders.colorTabStyle"
-                    src="../chrome/content/skin/ico/striped-example.gif"> </input>
+                    data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
                     __MSG_qf.options.LayoutColorAppearanceStriped__
                 </label>
-                <label class="qfTabPreview">
+                <label class="qfTabPreview plastic col6">
                   <input type="radio" 
                     id="ExampleFilledColor" label=" __MSG_qf.options.LayoutColorAppearanceFilled__" 
                     value="1"
                     name="tabStyleGroup"
-                    data-pref-name="extensions.quickfolders.colorTabStyle"
-                    src="../chrome/content/skin/ico/full-example.gif"> </input>
+                    data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
                   __MSG_qf.options.LayoutColorAppearanceFilled__
                 </label>
               </div>
@@ -754,7 +750,7 @@
                   class="shortCutKey" disabled="true" maxLength="1" />
               </div>
               <div class="hbox">
-                <label><input type="checkbox" id="chkQuickMoveHotkey"
+                <label class="hasConfigEvent"><input type="checkbox" id="chkQuickMoveHotkey"
                   tooltiptext="__MSG_qf.checkbox.quickMove.tip__" preference="qfpp-QuickMoveShortcut" disabled="true"
                   data-pref-name="extensions.quickfolders.quickMove.useHotkey">__MSG_qf.checkbox.quickMove__</label>
                 <label><input type="checkbox" 
@@ -813,8 +809,7 @@
               </div>
 
               <div class="hbox">
-                <button id="quickMoveAdvanced" 
-                  oncommand="options.quickMoveAdvancedSettings();" disabled="true">__MSG_qf.search.advanced__</button>
+                <button id="quickMoveAdvanced" disabled="true">__MSG_qf.search.advanced__</button>
               </div>
               <div class="hbox">
                 <label><input type="checkbox" id="chkCategories"

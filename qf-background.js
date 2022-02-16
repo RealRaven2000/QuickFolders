@@ -107,6 +107,7 @@ async function main() {
   let msg_commands = [
     "currentDeckUpdate",
     "getLicenseInfo",
+    "legacyAdvancedSearch", // new global one!
     "showAboutConfig", // new global one!
     "slideAlert",
     "updateCategoryBox",
@@ -114,7 +115,9 @@ async function main() {
     "updateLicense",
     "updateMainWindow",
     "updateNavigationBar",
-    "updateQuickFoldersLabel"
+    "updateQuickFoldersLabel",
+    "updateUserStyles",
+    "toggleNavigationBar"
   ];
 
   
@@ -193,7 +196,11 @@ async function main() {
         });
         break;
         
-       case "currentDeckUpdate":
+      case "legacyAdvancedSearch":
+        messenger.NotifyTools.notifyExperiment({event: "legacyAdvancedSearch"});
+        break;
+        
+      case "currentDeckUpdate":
         messenger.NotifyTools.notifyExperiment({event: "currentDeckUpdate"});
         break;
         

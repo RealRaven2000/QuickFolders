@@ -109,6 +109,7 @@ async function main() {
     "getLicenseInfo",
     "legacyAdvancedSearch", // new global one!
     "showAboutConfig", // new global one!
+    "showLicenseDialog", // new global one!
     "slideAlert",
     "updateCategoryBox",
     "updateFoldersUI",
@@ -193,6 +194,13 @@ async function main() {
           filter: data.filter,
           readOnly: data.readOnly,
           updateUI: data.updateUI || false
+        });
+        break;
+        
+      case "showLicenseDialog":
+        messenger.NotifyTools.notifyExperiment({
+          event: "showLicenseDialog", 
+          referrer: data.referrer
         });
         break;
         

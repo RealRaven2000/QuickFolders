@@ -230,6 +230,21 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
         QuickFolders.Options.toggleNavigationBar(chk,"messageWindow");
       });
       break;
+    case "transparentToolbar":
+      chk.addEventListener("change", (event) => {
+        QuickFolders.Options.toggleColorTranslucent(chk,"toolbar-colorpicker", "qf-StandardColors", null);
+      });      
+      break;
+    case "transparentButtons":
+      chk.addEventListener("change", (event) => {
+        QuickFolders.Options.toggleColorTranslucent(chk,"inactive-colorpicker", "inactivetabs-label", "InactiveTab");
+      });      
+      break;
+    case "buttonShadows":
+      chk.addEventListener("change", (event) => {
+        QuickFolders.Options.showButtonShadow(chk);
+      });      
+      break;
   }
   /* RIGHTCLICK HANDLERS */
   // right-click show details from about:config
@@ -248,7 +263,6 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       filterConfig="quickfolders.currentFolderBar.navigation";
       break;
     case "showQuickfoldersLabel":
-      // oncontextmenu="QI.showAboutConfig(chk,'extensions.quickfolders.textQuickfoldersLabel',true);return false;"
       filterConfig="extensions.quickfolders.textQuickfoldersLabel"; retVal=false;
       break;
     case "debug":
@@ -477,22 +491,6 @@ async function initLicenseInfo() {
     }
   );
   
-
-  /*
-  I would now like to call the logic in the original options.js
-  QuickFolders.Options.validateLicenseInOptions();
-  which calls
-  QuickFolders.Options.updateLicenseOptionsUI();
-  
-  // original code in options.load
-  if (QuickFolders.Util.licenseInfo.licenseKey) {
-    this.validateLicenseInOptions(true);      
-  }
-    
-  // could this be done via a background message?
-  we were using the event 
-  QuickFolders.BackgroundUpdate 
-  */
 }
 
 
@@ -582,21 +580,27 @@ function initButtons() {
   
   // Support Tab
   document.getElementById("L1").addEventListener("click", function () {
-    messenger.windows.openDefaultBrowser("https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A");
+    // messenger.windows.openDefaultBrowser("https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A");
+    messenger.windows.openDefaultBrowser("https://www.youtube.com/playlist?list=PLApv7QYQO9nR_ySMlAYd_wlhei-MRND89");
   }); // YouTube
   document.getElementById("L2").addEventListener("click", function () {
-    messenger.windows.openDefaultBrowser(event,"https://github.com/RealRaven2000/QuickFolders/issues");
+    messenger.windows.openDefaultBrowser("https://github.com/RealRaven2000/QuickFolders/issues");
   }); // report bugs
   document.getElementById("L3").addEventListener("click", function () {
     messenger.Utilities.showVersionHistory();
+    window.close();
   }); // version history
   document.getElementById("L4").addEventListener("click", function () {
-    messenger.windows.openDefaultBrowser(event,"https://github.com/RealRaven2000/QuickFolders/tree/ESR91/_locales");
+    messenger.windows.openDefaultBrowser("https://github.com/RealRaven2000/QuickFolders/tree/ESR91/_locales");
   }); // localization
   document.getElementById("L5").addEventListener("click", function () {
-    // options.sendMail(); setTimeout(function() { window.close(); });
+    QuickFolders.Options.sendMail();
   }); // contact me
   
+  // oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog('options_' + options.currentOptionsTab); window.close(); });">Buy License</button>
+  document.getElementById("btnLicense").addEventListener("click", (event) => { QuickFolders.Interface.showLicenseDialog(); });
+  document.getElementById("btnDefaultRadius").addEventListener("click", (event) => { QuickFolders.Options.setDefaultButtonRadius(); });
+
 }
 
 async function initToolbarBackground() {

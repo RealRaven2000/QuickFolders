@@ -177,7 +177,7 @@
               <label tooltiptext="__MSG_qf.label.goNextUnread.tip__">__MSG_qf.label.goNextUnread__</label>
               <select sizetopopup="none" id="folderCrossing" preference="qfpg-Thunderbird-Preference-FolderCrossing"
                 data-pref-name="mailnews.nav_crosses_folders"
-                instantApply="true" oncommand="options.selectFolderCrossing(this);">
+                instantApply="true">
                   <option value="0">__MSG_qf.goNextUnread.auto__</option>
                   <option value="1">__MSG_qf.goNextUnread.prompt__</option>
                   <option value="2">__MSG_qf.goNextUnread.none__</option>
@@ -438,7 +438,7 @@
                   data-pref-name="extensions.quickfolders.style.corners.customizedBottomRadiusN" />
               </label>
               <label class="pixelAppendix">px</label>
-              <button oncommand="options.setDefaultButtonRadius();">__MSG_qf.button.default__</button>
+              <button id="btnDefaultRadius">__MSG_qf.button.default__</button>
             </div>
           </div>
         </fieldset>
@@ -449,8 +449,7 @@
             <input id="toolbar-colorpicker" type="color" palettename="standard" style="vertical-align:middle"
               elementInfo="Toolbar.background-color" previewLabel="qf-StandardColors"></label>
             <label><input type="checkbox" preference="qfpl-TransparentToolbar"
-              data-pref-name="extensions.quickfolders.transparentToolbar"
-              oncommand="return options.toggleColorTranslucent(this, 'toolbar-colorpicker', 'qf-StandardColors', null);">__MSG_qf.checkbox.transparent__</label>
+              data-pref-name="extensions.quickfolders.transparentToolbar">__MSG_qf.checkbox.transparent__</label>
             <br class="spacer" flex="1">
             <div class="hbox align_center" id="qf-tweakToolbarBorder">
               <label id="toolbar-bottom-label" value="__MSG_qf.label.Toolbar.bottomLine__" />
@@ -519,11 +518,10 @@
                 <span class="separator thin"> </span>
                 <div class="hbox">
                   <label><input type="checkbox" id="qf-options-shadow" preference="qfpl-Shadows"
-                    data-pref-name="extensions.quickfolders.buttonShadows"
-                    oncommand="return options.showButtonShadow(!this.checked);">__MSG_qf.checkbox.shadows__</label>
+                    data-pref-name="extensions.quickfolders.buttonShadows">__MSG_qf.checkbox.shadows__</label>
                   <label><input type="checkbox" id="buttonTransparency"
-                    preference="qfpl-TransparentButtons" data-pref-name="extensions.quickfolders.transparentButtons"
-                    oncommand="return options.toggleColorTranslucent(this, 'inactive-colorpicker', 'inactivetabs-label', 'InactiveTab');">__MSG_qf.checkbox.transparent__</label>
+                    preference="qfpl-TransparentButtons" 
+                    data-pref-name="extensions.quickfolders.transparentButtons">__MSG_qf.checkbox.transparent__</label>
                 </div>
               </div>
               <br class="spacer">
@@ -648,35 +646,27 @@
         <div id="supportgrid" class="grid-container niceFont">
 
           <description>__MSG_qf.youtube.description__</description>
-          <div id="L1" class="button" tooltiptext="https://www.youtube.com/c/thunderbirddaily"
-            onclick="util.openLinkInBrowser(event,'https://www.youtube.com/playlist?list=PLApv7QYQO9nR_ySMlAYd_wlhei-MRND89')">
+          <div id="L1" class="button" tooltiptext="https://www.youtube.com/c/thunderbirddaily">
             <label>__MSG_qf.youtube.link__</label>
           </div>
 
           <description class="niceFont">__MSG_qf.description.github__</description>
-          <div id="L2" class="button" tooltiptext="quickfolders.org/bugs.html"
-            onclick="util.openURL(event,'https://quickfolders.org/bugs.html')">
+          <div id="L2" class="button" tooltiptext="github.com/RealRaven2000/QuickFolders/issues">
             <label>__MSG_qf.label.github__</label>
           </div>
 
-          <description class="niceFont"
-            oncontextmenu="options.addConfigFeature('extensions.quickfolders.hideVersionOnUpdate', true, util.getBundleString('qfVersionDisableOnUpdate','Stop displaying version history after updates?'));return false;">
-            __MSG_qf.description.versionhistory__
-          </description>
-          <div id="L3" class="button" tooltiptext="https://quickfolders.org/version.html" onclick="options.showVersionHistory(false); 
-                      setTimeout(function() { window.close(); });
-                      return true;">
+          <description class="niceFont">__MSG_qf.description.versionhistory__</description>
+          <div id="L3" class="button" tooltiptext="https://quickfolders.org/version.html">
             <label>__MSG_qf.label.versionhistory__</label>
           </div>
 
           <description class="niceFont">__MSG_qf.description.languages__</description>
-          <div id="L4" class="button"
-            onclick="util.openLinkInBrowser(event,'https://github.com/RealRaven2000/QuickFolders/tree/ESR78/_locales')">
+          <div id="L4" class="button">
             <label>__MSG_qf.label.languagesLink__</label>
           </div>
 
           <description id="contactLabel" class="niceFont">__MSG_qf.description.contactMe__</description>
-          <div id="L5" class="button" onclick="options.sendMail(); setTimeout(function() { window.close(); });">
+          <div id="L5" class="button">
             <label>__MSG_qf.label.contactLink__</label>
           </div>
 
@@ -727,10 +717,7 @@
         </div>
         <div class="vbox" height="40">
           <box class="btnLicenseContainer">
-            <br class="spacer" flex="1">
-            <button class="register" id="btnLicense" 
-              oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog('options_' + options.currentOptionsTab); window.close(); });">Buy License</button>
-            <br class="spacer" flex="1">
+            <button class="register" id="btnLicense">Buy License</button>
           </box>
         </div>
         <span class="separator" flex="1" > </span>
@@ -793,7 +780,7 @@
                 <label> __MSG_qf.quickMove.path.format__
                   <select id="menuQuickMoveFormat" sizetopopup="none" preference="qfpp-QuickMove-PathType"
                     data-pref-name="extensions.quickfolders.premium.findFolder.folderPathDetail"
-                    disabled="true" oncommand="options.selectQuickMoveFormat(this);">
+                    disabled="true">
                     <option value="0">__MSG_qf.pathFormat.folderName__</option>
                     <option value="1">__MSG_qf.pathFormat.folderAndAccount__</option>
                     <option value="2">__MSG_qf.pathFormat.AccountAndPath__</option>

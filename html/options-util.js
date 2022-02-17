@@ -1,5 +1,9 @@
 // Functions from quickfolders-util - specific to options.js
 QuickFolders.Util = {
+  ADDON_ID: "quickfolders@curious.be",
+  ADDON_NAME: "QuickFolders",
+  ADDON_SUPPORT_MAIL: "axel.grude@gmail.com",
+  
   getSystemColor : function (sColorString) {
     function hex(x) { return ("0" + parseInt(x).toString(16)).slice(-2); }
 

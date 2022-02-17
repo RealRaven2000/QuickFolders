@@ -44,4 +44,20 @@ QuickFolders.Interface = {
       el.className = el.className.replace(/(col[0-9]+)/,"$1striped");
   },
   
+  // remove animated icons for pro version
+  // at the moment this directly manipulates the style sheet, so we are going to do this via notification
+  removeAnimations: async function(styleSheetName) {
+   // needs to be done from the back end!!
+  } ,  
+  
+  // show License dialog from Options dialog:
+  showLicenseDialog: function() {
+    let optionSelected = "options_" + QuickFolders.Options.currentOptionsTab;
+    messenger.runtime.sendMessage({ 
+      command: "showLicenseDialog", 
+      referrer: optionSelected
+    });
+    window.close();
+  }
+  
 }

@@ -10,6 +10,50 @@ QuickFolders.Options = {
     lightweight: 4
   },
   
+  get currentOptionsTab() {
+    let selected = null;
+    for (let section of document.querySelectorAll("#QuickFolders-Panels section.active")) {
+      selected = section;
+    }
+    switch (selected.id) {
+      case 'QuickFolders-Options-general':
+        return 'generalTab';
+      case 'QuickFolders-Options-advanced':
+        return 'advancedTab';
+      case 'QuickFolders-Options-layout':
+        return 'defaultTab';
+      case 'QuickFolders-Options-quickhelp':
+        return 'quickhelpTab';
+      case 'QuickFolders-Options-support':
+        return 'supportTab';
+      case 'QuickFolders-Options-goPro':
+      default:
+        return 'licenseTab';
+    }
+  },
+    
+  setDefaultButtonRadius: async function setDefaultButtonRadius() {
+    const prefs = QuickFolders.Preferences;
+    document.getElementById('QuickFolders-Options-CustomTopRadius').value = "4";
+    document.getElementById('QuickFolders-Options-CustomBottomRadius').value = "0";
+    await prefs.setIntPref('style.corners.customizedTopRadiusN', 4);
+    await prefs.setIntPref('style.corners.customizedBottomRadiusN', 0);
+    messenger.runtime.sendMessage({ command:"updateUserStyles" });
+  },  
+  
+  sendMail: async function sendMail(mailto = QuickFolders.Util.ADDON_SUPPORT_MAIL) {
+    let // obsolete: title = QuickFolders.Util.getBundleString("qf.prompt.contact.title"),
+        text = QuickFolders.Util.getBundleString("qf.prompt.contact.subject"),
+        result = window.prompt(text, "");
+    if (!result) return;
+    
+    let version = await messenger.runtime.getManifest().version,
+        subjectline = "[QuickFolders] " + version + " " + result;
+    messenger.compose.beginNew({subject: subjectline, to: mailto})
+    window.close();
+  },
+   
+  
  /*********************
    * preparePreviewTab() 
    * paints a preview tab on the options window
@@ -118,8 +162,7 @@ QuickFolders.Options = {
   
   toggleColorTranslucent: async function toggleColorTranslucent(cb, pickerId, label, userStyle) {
     let picker = document.getElementById(pickerId);
-    document.getElementById(label).style.backgroundColor=
-      this.getTransparent(picker.value, cb.checked);
+    document.getElementById(label).style.backgroundColor = QuickFolders.Options.getTransparent(picker.value, cb.checked);
     if (userStyle)
       await QuickFolders.Preferences.setUserStyle(userStyle, 'background-color', picker.value);
 
@@ -128,6 +171,16 @@ QuickFolders.Options = {
       await QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
     
     // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
+    messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: true }); 
+    return true;
+  },  
+  
+  showButtonShadow: function showButtonShadow(chk) {
+    let isShadow = chk.checked
+    let el= document.getElementById('inactivetabs-label'),
+        myStyle = isShadow ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
+    el.style.boxShadow = myStyle;
+    QuickFolders.Preferences.setBoolPref('buttonShadows', isShadow);
     messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: true }); 
     return true;
   },  
@@ -587,6 +640,8 @@ QuickFolders.Options = {
           }          
           licenseDate.textContent = niceDate;
           licenseDateLabel.value = QuickFolders.Util.getBundleString("qf.label.licenseValid");
+          // remove animations / red pro icon:
+          QuickFolders.Interface.removeAnimations('quickfolders-options.css');
           break;
         case "Invalid":
           validationDate.setAttribute("collapsed",true);
@@ -693,7 +748,7 @@ QuickFolders.Options = {
     return "";
   },
   
-  trimLicense: function trimLicense() {
+  trimLicense: function() {
     let txtBox = document.getElementById('txtLicenseKey'),
         strLicense = txtBox.value.toString();
     // Remove line breaks and extra spaces:
@@ -712,13 +767,14 @@ QuickFolders.Options = {
     let rv = await messenger.runtime.sendMessage({command:"updateLicense", key: document.getElementById('txtLicenseKey').value });
   },
   
-  pasteLicense : function () {
+  
+  pasteLicense : async function () {
     navigator.clipboard.readText().then(
       clipText => {
         if (clipText) {
           let txtBox = document.getElementById('txtLicenseKey');
           txtBox.value = clipText;
-          let finalLicense = trimLicense();
+          let finalLicense = QuickFolders.Options.trimLicense();
           QuickFolders.Options.validateNewKey();
         }       
       }

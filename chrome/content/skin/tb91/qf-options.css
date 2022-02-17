@@ -34,7 +34,6 @@ description, select[data-pref-name$=".paletteType"] {
   font-size: 0.85em;
 }
 
-#defaultColors,
 menulist[preference$=".paletteType"]
 {
   color: var(--lwt-text-color,--field-text-color) !important; 
@@ -46,7 +45,7 @@ html|input[type=number] {
   color: var(--field-text-color) !important;
 }
 
-button:not(#defaultColors):not(#btnLicense):not([isTab]),
+/* button:not(#btnLicense):not([isTab]), */
 menulist#folderCrossing,
 menulist#QuickFolders-CurrentFolder-Background-Select {
   background-color: var(--button-background,Menu) !important;

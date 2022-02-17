@@ -126,7 +126,9 @@ button.active::marker {
 #QuickFolders-Pro {
   list-style-image : url("ico/pro.png") !important;
 }
-
+#QuickFolders-Pro.paid {
+  list-style-image : url("ico/pro-paid.png") !important;
+}
 
  /* Style the tab */
 .tabs {

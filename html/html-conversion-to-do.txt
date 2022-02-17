@@ -146,12 +146,22 @@ Questions for Monday:
  - fixed type for updateMainWindow parameter "minimal" (boolean instead of string)
  - [Advanced Search settings...] open xhtml dialog for now
 
+ 
+ 17/02/2022
+ - fixed layout of [Buy License] button
+ - implemented opening license dialog from buy / update license button
+ - fixed icon in License Tab (green pro icon, when paid)
+ - implemented [Defaults] button for tab radius 
+ - implemented [contact me...] button: this requires "compose" permission!
+ - implemented [Advanced search settings...] button => convert quickmove.xhtml to html next!!
+ - fixed [buy license] button must open license dialog (still xhtml)
+ - fixed close button of "current folder bar" (fill-opacity)
+ - fixed 2 broken links on support tab.
+ - fixed preview of shadow
+  
+========  
  to do: 
- - current folder bar = close button only visible on hover! 
- - change icon on license tab for licensed users
  - Backup / Restore Configuration
  - Copy / Paste Folder String
- - [Defaults] button for Appearance 
  - [Default Colors] button
- - [Advanced search settings...] button => convert quickmove.xhtml to html next!!
- - color dropdowns for preview tabs
+ - color dropdowns for preview tabs  

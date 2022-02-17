@@ -1325,7 +1325,7 @@ QuickFolders.Options = {
   showButtonShadow: function showButtonShadow(isChecked) {
     let el= document.getElementById('inactivetabs-label'),
         myStyle = !isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
-    el.style.MozBoxShadow = myStyle;
+    el.style.boxShadow = myStyle;
     QuickFolders.Preferences.setBoolPref('buttonShadows', !isChecked);
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: true }); 
     return true;

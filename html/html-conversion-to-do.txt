@@ -160,8 +160,18 @@ Questions for Monday:
  - fixed preview of shadow
   
 ========  
+
+18/02/2022
+ - fixed: version number should open history
+ - improved flex layouts + unified font sizes
+
+
  to do: 
  - Backup / Restore Configuration
  - Copy / Paste Folder String
  - [Default Colors] button
  - color dropdowns for preview tabs  
+ - inject heading image from theme?
+ - layout: make dialog less wide and safe vertical space
+ - if dialog is put to back of window, make sure it is reused / brought to foreground if possible
+ 

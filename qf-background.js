@@ -225,7 +225,7 @@ async function main() {
         let title = messenger.i18n.getMessage("qf.prefwindow.quickfolders.options");
         let optionWin = await messenger.windows.create(
           { height: 780, 
-            width: 920, 
+            width: 830, 
             type: "panel", 
             url: `/html/options.html?${params.toString()}`,
             titlePreface: title,

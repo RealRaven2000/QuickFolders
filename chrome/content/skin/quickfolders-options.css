@@ -59,11 +59,6 @@ tabpanel html|input[type="number"]::-moz-number-spin-down {
   margin-block: 4px 2px;
 }
 
-/* html input ignores flex attribute */
-#currentFolderBackground {
-  min-width: 520px;
-}
-
 #copyFolders {
   color: rgb(20,20,20) !important;
 }

@@ -600,6 +600,9 @@ function initButtons() {
   // oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog('options_' + options.currentOptionsTab); window.close(); });">Buy License</button>
   document.getElementById("btnLicense").addEventListener("click", (event) => { QuickFolders.Interface.showLicenseDialog(); });
   document.getElementById("btnDefaultRadius").addEventListener("click", (event) => { QuickFolders.Options.setDefaultButtonRadius(); });
+  document.getElementById("qf-options-header-description").addEventListener("click", (event) => { messenger.Utilities.showVersionHistory();
+    window.close(); 
+  });
 
 }
 

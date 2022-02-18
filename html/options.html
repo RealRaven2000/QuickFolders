@@ -83,12 +83,13 @@
             <div class="hbox">
               <label><input type="checkbox" id="chkRebuildAccel" 
                 data-pref-name="extensions.quickfolders.useRebuildShortcut"
-                preference="qfpg-RebuildShortcut" instantApply="true">__MSG_qf.checkbox.useRebuildShortcut__</label>
-              <input type="text" id="QuickFolders-Options-RebuildShortcutKey" 
-                preference="qfpg-RebuildShortcutKey"
-                data-pref-name="extensions.quickfolders.rebuildShortcutKey" 
-                data-pref-type="string"
-                class="shortCutKey"/>
+                preference="qfpg-RebuildShortcut" instantApply="true">__MSG_qf.checkbox.useRebuildShortcut__
+                <input type="text" id="QuickFolders-Options-RebuildShortcutKey" 
+                  preference="qfpg-RebuildShortcutKey"
+                  data-pref-name="extensions.quickfolders.rebuildShortcutKey" 
+                  data-pref-type="string"
+                  class="shortCutKey"/>
+              </label>
             </div>
             <label><input type="checkbox" preference="qfpg-NavigateShortcut"
               data-pref-name="extensions.quickfolders.useNavigateShortcuts">__MSG_qf.checkbox.useNavigationShortcuts__</label>
@@ -232,7 +233,7 @@
             </div>
           </fieldset>
 
-          <fieldset class="hbox" flex="2">
+          <fieldset class="hbox">
             <legend>__MSG_qf.label.menus__</legend>
             <div class="hbox">
               <fieldset id="mailCommandsCustomize" flex="1">
@@ -292,11 +293,9 @@
           <legend>__MSG_qf.caption.currentFolderBackground__</legend>
           <div class="vbox" id="currentFolderBackgroundContainer">
             <div class="hbox" flex="1" id="currentFolderStyle">
-              <div class="hbox" flex="2">
-                <input type="text" id="currentFolderBackground" preference="qfpa-CurrentFolder-Background"
-                  data-pref-name="extensions.quickfolders.currentFolderBar.background"
-                  onblur="options.sanitizeCSS(this);" />
-              </div>
+              <input type="text" id="currentFolderBackground" preference="qfpa-CurrentFolder-Background"
+                data-pref-name="extensions.quickfolders.currentFolderBar.background"
+                onblur="options.sanitizeCSS(this);" />
               <select id="QuickFolders-CurrentFolder-Background-Select">
                   <!-- list order must correspond with BGCHOICE enum -->
                   <option value="default">__MSG_qf.currentFolderBackground.default__</option>
@@ -510,9 +509,31 @@
                         data-pref-name="extensions.quickfolders.style.ColoredTab.paletteType">
                         <option value="1">__MSG_qf.palette.standard__</option>
                         <option value="2">__MSG_qf.palette.pastel__</option>
-                        <option value="3"">__MSG_qf.palette.night__</option>
+                        <option value="3">__MSG_qf.palette.night__</option>
                       </select>
                     </div>
+                    <fieldset>
+                      <legend>__MSG_qf.options.LayoutColorAppearance__</legend>
+                        <!-- oncommand handler: options.setColoredTabStyleFromRadioGroup(this);  -->
+                      <div class="hbox quickfolders-flat" id="qf-individualColors" flex="1">
+                        <label class="qfTabPreview plastic col6striped">
+                          <input type="radio" 
+                            id="ExampleStripedColor" 
+                            value="0"
+                            name="tabStyleGroup"
+                            data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
+                            __MSG_qf.options.LayoutColorAppearanceStriped__
+                        </label>
+                        <label class="qfTabPreview plastic col6">
+                          <input type="radio" 
+                            id="ExampleFilledColor" label=" __MSG_qf.options.LayoutColorAppearanceFilled__" 
+                            value="1"
+                            name="tabStyleGroup"
+                            data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
+                          __MSG_qf.options.LayoutColorAppearanceFilled__
+                        </label>
+                      </div>
+                    </fieldset>
                   </div>
                 </div>
                 <span class="separator thin"> </span>
@@ -587,28 +608,6 @@
                 </div>
               </div>
             </div>
-            <fieldset>
-              <legend>__MSG_qf.options.LayoutColorAppearance__</legend>
-                <!-- oncommand handler: options.setColoredTabStyleFromRadioGroup(this);  -->
-              <div class="hbox quickfolders-flat" id="qf-individualColors" flex="1">
-                <label class="qfTabPreview plastic col6striped">
-                  <input type="radio" 
-                    id="ExampleStripedColor" 
-                    value="0"
-                    name="tabStyleGroup"
-                    data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
-                    __MSG_qf.options.LayoutColorAppearanceStriped__
-                </label>
-                <label class="qfTabPreview plastic col6">
-                  <input type="radio" 
-                    id="ExampleFilledColor" label=" __MSG_qf.options.LayoutColorAppearanceFilled__" 
-                    value="1"
-                    name="tabStyleGroup"
-                    data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
-                  __MSG_qf.options.LayoutColorAppearanceFilled__
-                </label>
-              </div>
-            </fieldset>
           </div>
 
         </fieldset>
@@ -731,10 +730,11 @@
                   data-pref-name="extensions.quickfolders.quickJump.useHotkey"
                   disabled="true">__MSG_qf.checkbox.quickJump__</label>
                 <label><input type="checkbox" preference="qfpp-QuickJumpShortcutShift" 
-                  data-pref-name="extensions.quickfolders.quickJump.Hotkey.Shift" >__MSG_qf.checkbox.shift__+</label>
-                <input type="text" id="qf-QuickJumpShortcut" preference="qfpp-QuickJumpShortcutKey"
-                  data-pref-name="extensions.quickfolders.quickJump.Hotkey" 
-                  class="shortCutKey" disabled="true" maxLength="1" />
+                  data-pref-name="extensions.quickfolders.quickJump.Hotkey.Shift" >__MSG_qf.checkbox.shift__+
+                  <input type="text" id="qf-QuickJumpShortcut" preference="qfpp-QuickJumpShortcutKey"
+                    data-pref-name="extensions.quickfolders.quickJump.Hotkey" 
+                    class="shortCutKey" disabled="true" maxLength="1" />
+                </label>
               </div>
               <div class="hbox">
                 <label class="hasConfigEvent"><input type="checkbox" id="chkQuickMoveHotkey"
@@ -742,20 +742,22 @@
                   data-pref-name="extensions.quickfolders.quickMove.useHotkey">__MSG_qf.checkbox.quickMove__</label>
                 <label><input type="checkbox" 
                   preference="qfpp-QuickMoveShortcutShift" 
-                  data-pref-name="extensions.quickfolders.quickMove.Hotkey.Shift">__MSG_qf.checkbox.shift__+</label>
-                <input type="text" id="qf-QuickMoveShortcut" preference="qfpp-QuickMoveShortcutKey"
-                  data-pref-name="extensions.quickfolders.quickMove.Hotkey"
-                  class="shortCutKey" maxLength="1" disabled="true" />
+                  data-pref-name="extensions.quickfolders.quickMove.Hotkey.Shift">__MSG_qf.checkbox.shift__+
+                  <input type="text" id="qf-QuickMoveShortcut" preference="qfpp-QuickMoveShortcutKey"
+                    data-pref-name="extensions.quickfolders.quickMove.Hotkey"
+                    class="shortCutKey" maxLength="1" disabled="true" />
+                </label>
               </div>
               <div class="hbox">
                 <label><input type="checkbox" id="chkQuickCopyHotkey"
                   tooltiptext="__MSG_qf.checkbox.quickCopy.tip__" preference="qfpp-QuickCopyShortcut" 
                   data-pref-name="extensions.quickfolders.quickCopy.useHotkey" disabled="true">__MSG_qf.checkbox.quickCopy__</label>
                 <label><input type="checkbox" preference="qfpp-QuickCopyShortcutShift" 
-                  data-pref-name="extensions.quickfolders.quickCopy.Hotkey.Shift">__MSG_qf.checkbox.shift__+</label>
-                <input type="text" id="qf-QuickCopyShortcut" preference="qfpp-QuickCopyShortcutKey"
-                  data-pref-name="extensions.quickfolders.quickCopy.Hotkey"
-                  class="shortCutKey" maxLength="1" disabled="true" />
+                  data-pref-name="extensions.quickfolders.quickCopy.Hotkey.Shift">__MSG_qf.checkbox.shift__+
+                  <input type="text" id="qf-QuickCopyShortcut" preference="qfpp-QuickCopyShortcutKey"
+                    data-pref-name="extensions.quickfolders.quickCopy.Hotkey"
+                    class="shortCutKey" maxLength="1" disabled="true" />
+                </label>
               </div>
               <div class="hbox">
                 <br class="spacer" style="width: 16px;">
@@ -769,10 +771,11 @@
                 <label><input type="checkbox" id="chkSkipFolderHotkey"
                   tooltiptext="__MSG_qf.checkbox.skipFolder.tip__" preference="qfpp-skipFolderShortcut"
                   data-pref-name="extensions.quickfolders.skipFolder.useHotkey"
-                  disabled="true">__MSG_qf.checkbox.skipFolder__</label>
-                <input type="text" id="qf-SkipFolderShortcut" preference="qfpp-skipFolderShortcutKey"
-                  data-pref-name="extensions.quickfolders.skipFolder.Hotkey"
-                  class="shortCutKey" maxLength="1" disabled="true" />
+                  disabled="true">__MSG_qf.checkbox.skipFolder__
+                  <input type="text" id="qf-SkipFolderShortcut" preference="qfpp-skipFolderShortcutKey"
+                    data-pref-name="extensions.quickfolders.skipFolder.Hotkey"
+                    class="shortCutKey" maxLength="1" disabled="true" />
+                </label>
               </div>
 
               <span class="separator" > </span>

@@ -199,6 +199,48 @@ QuickFolders.Options = {
     this.preparePreviewTab('dragover-colorpicker', 'style.DragOver.', 'dragovertabs-label');
   } ,
 
+
+  /*********************  
+   *  showPalette()       
+   *  open palette popup for specific buttons state
+   *  @label              parent node  
+   *  @buttonState        'standard', 'active', 'hovered', 'dragOver'
+   *  {paletteMenuId}     'menuStandardPalette', 'menuActivePalette', 'menuHoverPalette', 'menuDragOverPalette'
+   */
+  showPalette: async function showPalette(label, buttonState) {
+    let id = label ? label.id : label.toString(),
+        paletteMenuId = this.getButtonMenuId(buttonState),
+        paletteMenu = document.getElementById(paletteMenuId);
+    const QI = QuickFolders.Interface;
+    QuickFolders.Util.logDebugOptional("interface", "Options.showPalette(" + id + ", " + buttonState + ")");
+    if (paletteMenu) {
+      if (paletteMenu.value == "0") {
+        return;  // no menu, as 2 colors / no palette is selected
+      }
+      await QuickFolders.Options.toggleUsePalette(buttonState, paletteMenu.value, false);
+      // allow overriding standard background for striped style!
+      // Now style the palette with the correct palette class
+      let context = label.getAttribute('context'),
+          menu = document.getElementById(context);
+      menu.className = 'QuickFolders-folder-popup' + await QuickFolders.Interface.getPaletteClass(QuickFolders.Options.getButtonStatePrefId(buttonState));
+      menu.setAttribute("buttonState", buttonState);
+      menu.setAttribute("targetId", id);
+      menu.setAttribute("stylePrefKey", label.getAttribute("stylePrefKey"));
+    }
+    QuickFolders.Interface.showPalette(label);
+  },
+  
+  selectColorFromPalette: function(event) {
+    let target = event.target;
+    console.log("selected color from Palette:", target);
+    let colId = target.getAttribute("selectedColor");
+    if (colId!=null) {
+      let previewTab = target.parent;
+      QuickFolders.Interface.setTabColorFromMenu(target, colId);
+    }
+    QuickFolders.Interface.hidePalette();
+  },
+  
   // toggle pastel mode was toggleColorPastel
   // NEEDS A REWRITE FOR MULTIPLE PALETTES!
   showPalettePreview: async function(withUpdate) {

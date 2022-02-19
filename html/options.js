@@ -137,6 +137,34 @@ for (let el of document.querySelectorAll("input[type=number]")) {
   }
 }
 
+for (let colPreview of document.querySelectorAll(".qfTabPreview")) {
+  let buttonState;
+  switch (colPreview.id) {
+    case "inactivetabs-label":
+      buttonState="standard";
+      break;
+    case "activetabs-label":
+      buttonState="active";
+      break;
+    case "hoveredtabs-label":
+      buttonState="hovered";
+      break;
+    case "dragovertabs-label":
+      buttonState="dragOver";
+      break;
+    default:
+      continue;
+  }
+  if (buttonState) {
+    colPreview.addEventListener("click", (event) => {QuickFolders.Options.showPalette(colPreview, buttonState)});
+  }
+}
+
+document.getElementById("QuickFolders-Options-PalettePopup").addEventListener("click", 
+  (event) => { QuickFolders.Options.selectColorFromPalette(event); }
+);
+
+
 let currentFolderBackground = document.getElementById("QuickFolders-CurrentFolder-Background-Select");
 currentFolderBackground.addEventListener("change", async (event) => {
   QuickFolders.Options.setCurrentToolbarBackground(event.target.value, true);
@@ -447,8 +475,8 @@ async function preselectTab() {
       selectedTabElement = document.getElementById("QuickFolders-General"); //default = first tab
     // selectOptionsPane can be overwritten by URL parameter "selectedTab"
   let optionParams = new URLSearchParams(document.location.search);
-  let selTab = optionParams.get("selectedTab");
-  if (selTab.toString() != "" && selTab .toString() != "-1") {
+  let selTab = optionParams ? optionParams.get("selectedTab") : "";
+  if (null!=selTab && selTab != "" && selTab != "-1") {
     selectOptionsPane = selTab;
   }
   // select the tab:
@@ -673,12 +701,10 @@ async function initBling() {
   }
   
   
-  if (false)  { // to do: build HTML palette popups
-    let menupopup = getElement("QuickFolders-Options-PalettePopup"); // doesn't exist in HTML!! 
-    // we need to rewrite this from scratch for the HTML options dialog
-    QuickFolders.Interface.buildPaletteMenu(0, menupopup, true, true);  
+  let menupopup = getElement("QuickFolders-Options-PalettePopup"); // doesn't exist in HTML!! 
+  // we need to rewrite this from scratch for the HTML options dialog
+  QuickFolders.Interface.buildPaletteMenu(0, menupopup);  
     
-  }
   
   // customized coloring support
   QuickFolders.Options.initPreviewTabStyles();

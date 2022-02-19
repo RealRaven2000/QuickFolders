@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../chrome/content/skin/qf-compatibility.css">
   
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-options.css">
+  <link rel="stylesheet" href="../chrome/content/skin/quickfolders-palettes.css" title="QuickFolderPalettes">
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-widgets.css">
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-widgets64.css">
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-layout.css">
@@ -475,6 +476,13 @@
         </fieldset>
         <fieldset id="qf-tweakColors">
           <legend>__MSG_qf.label.colors__</legend>
+          
+          <!-- new container for  -->
+          <div id="QuickFolders-Options-PalettePopup" class="previewPalette" style="display:none;">
+            <div id="paletteGrid" class="quickfolders-flat QuickFolders-folder-popup">
+            </div>
+          </div>
+          
           <div class="vbox">
             <!-- styling hacks, we need these for the rules to apply to our preview 'tabs' -->
             <div id="qf-flat-toolbar" flex="1" class='hbox quickfolders-flat'>
@@ -485,7 +493,8 @@
                     <div class="hbox align_center">
                       <label id="inactivetabs-label" class="qfTabPreview" stylePrefKey="InactiveTab"
                         tooltiptext="__MSG_qf.label.UncoloredTab.tooltip__"
-                        context="QuickFolders-Options-PalettePopup" onclick="options.showPalette(this, 'standard');">__MSG_qf.label.UncoloredTab__</label>
+                        context="QuickFolders-Options-PalettePopup" 
+                        onclick="options.showPalette(this, 'standard');">__MSG_qf.label.UncoloredTab__</label>
                       <input id="inactive-fontcolorpicker" type="color" palettename="standard"
                         elementInfo="InactiveTab.color" previewLabel="inactivetabs-label">
                       <input id="inactive-colorpicker" type="color" palettename="standard"
@@ -553,7 +562,8 @@
 
                   <label id="activetabs-label" value=""
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="ActiveTab"
-                    context="QuickFolders-Options-PalettePopup" onclick="options.showPalette(this, 'active');">__MSG_qf.label.ActiveTabColor__</label>
+                    context="QuickFolders-Options-PalettePopup" 
+                    onclick="options.showPalette(this, 'active');">__MSG_qf.label.ActiveTabColor__</label>
                   <input id="activetab-fontcolorpicker" type="color" palettename="vibrant"
                     elementInfo="ActiveTab.color" previewLabel="activetabs-label">
                   <input id="activetab-colorpicker" type="color" palettename="standard"
@@ -570,7 +580,8 @@
 
                   <label id="hoveredtabs-label"
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="HoveredTab"
-                    context="QuickFolders-Options-PalettePopup" onclick="options.showPalette(this, 'hovered');">__MSG_qf.label.HoveredTabColor__</label>
+                    context="QuickFolders-Options-PalettePopup" 
+                    onclick="options.showPalette(this, 'hovered');">__MSG_qf.label.HoveredTabColor__</label>
                   <input id="hover-fontcolorpicker" type="color" palettename="standard"
                     elementInfo="HoveredTab.color" previewLabel="hoveredtabs-label">
                   <input id="hover-colorpicker" type="color" palettename="standard"
@@ -851,6 +862,7 @@
   <script src="options-interface.js"></script>
   <script src="options-util.js"></script>
   <script src="options-ui.js"></script>
+  <script src="options-styles.js"></script>
   <script src="options.js"></script>
 
 </body>

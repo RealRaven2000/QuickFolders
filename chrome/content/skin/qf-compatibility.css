@@ -208,3 +208,37 @@ input[type=number] {
   margin-right: 5px;
   margin-left: 0px;
 }
+
+/* where can we get these system colors from? */
+#qf-flat-toolbar {
+  background-color: var(--toolbar-bgcolor);
+}
+
+/* replacement for the popup menu showing color choices */
+#QuickFolders-Options-PalettePopup {
+  display: block;
+  position: absolute;
+  border: 1px solid rgba(80,80,80,0.6);
+  box-shadow: 5px 5px 5px rgba(40,40,40,0.4);
+  top: 300px;
+  background-color: #eee;
+  padding: 5px;
+}
+
+#paletteGrid {
+  display: grid;
+	grid-auto-flow: column;
+	grid-gap: 1px;
+	grid-template-columns: repeat(4, 1fr); 
+	grid-template-rows: repeat(6, auto);    
+  grid-gap: 2px;
+  /* justify-content: space-between; */
+  color: #444;
+}
+
+#paletteGrid div {
+  outline: 1px solid rgba(80,80,80,0.3);
+  font-size: 10pt;
+  padding: 2px 5px;
+  min-width: 120px
+}

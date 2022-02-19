@@ -1,55 +1,7 @@
 // interface functions specific top options.html
 // keeping the old namespace so I know which funcitons I can retire when we convert to HTML
 
-QuickFolders.Interface = {
-  
-	getStyleSheet: function getStyleSheet(Title) {
-    for (let sheet of document.styleSheets) {
-      if (sheet.title && sheet.title === Title) {
-        return sheet;
-      }
-    }    
-    return null;
-	} ,
-  
-	getPaletteClassCss: async function getPaletteClassCss(tabStateId) {
-		let cl = await this.getPaletteClass(tabStateId);
-		return cl.replace(" ", ".");
-	} ,
-  
-	getPaletteClass: async function(tabStateId) {
-	  let paletteType = await QuickFolders.Preferences.getIntPref("style." + tabStateId + ".paletteType");
-		switch (paletteType) {
-		  case -1:
-			  if (tabStateId == "InactiveTab") {
-					return "";  // error
-				}
-				else { // get from global tab style!
-					return await this.getPaletteClass("InactiveTab");
-				}
-				break;
-			default:
-				return await this.getPaletteClassToken(paletteType);
-		}
-		return "";
-	} ,
-
-	getPaletteClassToken: async function(paletteType) {
-		switch (parseInt(paletteType, 10)) {
-		  case -1:
-			  return await this.getPaletteClassToken(this.getPaletteClass("InactiveTab")); // default
-			case 0:
-			  return "";  // none
-			case 1:
-			  return " plastic";  // default
-			case 2:
-			  return " pastel";
-      case 3:
-        return " night";
-		}
-		return "";
-	} ,
-  
+QuickFolders.Interface = {  
   getPreviewButtonId: function getPreviewButtonId(previewId) {
 		switch(previewId) {
 			case "standard":
@@ -219,16 +171,6 @@ QuickFolders.Interface = {
    // needs to be done from the back end!!
   } ,  
   
-  // show License dialog from Options dialog:
-  showLicenseDialog: function() {
-    let optionSelected = "options_" + QuickFolders.Options.currentOptionsTab;
-    messenger.runtime.sendMessage({ 
-      command: "showLicenseDialog", 
-      referrer: optionSelected
-    });
-    window.close();
-  },
-  
   showPalette: function(parentNode) {
     // shows "QuickFolders-Options-PalettePopup"
     // container for palette entries
@@ -291,6 +233,66 @@ QuickFolders.Interface = {
 		}
 
 		return existingPopupMenu;
-	} ,  
+	},  
+  
+	getStyleSheet: function getStyleSheet(Title) {
+    for (let sheet of document.styleSheets) {
+      if (sheet.title && sheet.title === Title) {
+        return sheet;
+      }
+    }    
+    return null;
+	} ,
+  
+	getPaletteClassCss: async function getPaletteClassCss(tabStateId) {
+		let cl = await this.getPaletteClass(tabStateId);
+		return cl.replace(" ", ".");
+	} ,
+  
+	getPaletteClass: async function(tabStateId) {
+	  let paletteType = await QuickFolders.Preferences.getIntPref("style." + tabStateId + ".paletteType");
+		switch (paletteType) {
+		  case -1:
+			  if (tabStateId == "InactiveTab") {
+					return "";  // error
+				}
+				else { // get from global tab style!
+					return await this.getPaletteClass("InactiveTab");
+				}
+				break;
+			default:
+				return await this.getPaletteClassToken(paletteType);
+		}
+		return "";
+	} ,
+
+	getPaletteClassToken: async function(paletteType) {
+		switch (parseInt(paletteType, 10)) {
+		  case -1:
+			  return await this.getPaletteClassToken(this.getPaletteClass("InactiveTab")); // default
+			case 0:
+			  return "";  // none
+			case 1:
+			  return " plastic";  // default
+			case 2:
+			  return " pastel";
+      case 3:
+        return " night";
+		}
+		return "";
+	} ,
+  
+  
+  // show License dialog from Options dialog:
+  showLicenseDialog: function() {
+    let optionSelected = "options_" + QuickFolders.Options.currentOptionsTab;
+    messenger.runtime.sendMessage({ 
+      command: "showLicenseDialog", 
+      referrer: optionSelected
+    });
+    window.close();
+  },
+  
+  
   
 }

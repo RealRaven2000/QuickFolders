@@ -221,7 +221,8 @@ input[type=number] {
   border: 1px solid rgba(80,80,80,0.6);
   box-shadow: 5px 5px 5px rgba(40,40,40,0.4);
   top: 300px;
-  background-color: #eee;
+  /* not sure what var is correct for dialog backgrounds in themed dialogs.. */  
+  background-color: var(--in-content-table-background);
   padding: 5px;
 }
 

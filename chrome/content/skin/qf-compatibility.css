@@ -11,8 +11,17 @@
   gap: 1.5em;
 }
 
-#grpToolbarPosition *, 
-#currentFolderStyle *
+#btnConfigureTooltips,
+#btnDefaultRadius,
+#defaultColors,
+#grpToolbarPosition, 
+#currentFolderStyle *,
+#folderCrossing,
+#initdelay,
+#copyFolders,
+#btnPasteLicense,
+#btnValidateLicense,
+#quickMoveAdvanced
  {
   font-size: 0.85em;
 }
@@ -202,7 +211,14 @@ button.active::marker {
 
 input[type=number] {
   text-align: right;
+  min-height: 22px;
 }
+
+input[type=color], select {
+  min-height: 26px;
+}
+
+
 
 .pixelAppendix {
   margin-right: 5px;

@@ -69,7 +69,7 @@ for (let colorpicker of document.querySelectorAll("input[type=color]")) {
   }
   if (isStyleUpdate)
     colorpicker.addEventListener("input", function() { // used to be "oncommand"
-      options.styleUpdate(elementName, elementStyle, this.value, label);
+      options.styleUpdate(elementName, elementStyle, this.value, colorpicker.getAttribute("previewLabel"));
     } );
 }
 
@@ -162,6 +162,10 @@ for (let colPreview of document.querySelectorAll(".qfTabPreview")) {
 
 document.getElementById("QuickFolders-Options-PalettePopup").addEventListener("click", 
   (event) => { QuickFolders.Options.selectColorFromPalette(event); }
+);
+
+document.getElementById("QuickFolders-Options-layout").addEventListener("click", 
+  (event) => {QuickFolders.Interface.hidePalette()}
 );
 
 

@@ -178,3 +178,11 @@ Questions for Monday:
  - inject heading image from theme?
  - If dialog is put to back of window, make sure it is reused / brought to foreground if possible
  - move color dropdown closer to the clicked preview tab.
+
+ 20/02/2022
+  - fixed differing font sizes and heights
+  - fixed setting font color + backgruond color on preview tab
+  - relocated palette pickers to be close to clicked tab
+  - hide palette picker when clicking outside (within bling tab settings)
+  
+ 

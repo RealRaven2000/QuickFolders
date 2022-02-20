@@ -50,7 +50,6 @@ QuickFolders.Interface = {
 					    ruleName = ".quickfolders-flat " + paletteClass + ".col" + col,
 					    disableColorChangeStriped = (styleKey=="InactiveTab" && prefs.ColoredTabStyle==prefs.TABS_STRIPED);
           
-          debugger;          
 					ssPalettes = this.getStyleSheet("QuickFolderPalettes");
           
 					let colPickId = "",
@@ -178,7 +177,22 @@ QuickFolders.Interface = {
     // QI.buildPaletteMenu(0, menupopup, true, true); // added parameter to force oncommand attributes back
     let menupopup = document.getElementById("QuickFolders-Options-PalettePopup");
     menupopup.style.display = "block";
-    // this.buildPaletteMenu(0, menupopup, true, true); 
+    // attach to top of parentNode:
+    let parentRect = parentNode.getBoundingClientRect(),
+        menuRect = menupopup.getBoundingClientRect(),
+        labelTop = parseInt(parentRect.top),
+        height = parseInt(menuRect.height),
+        newTop = labelTop - height,
+        viewPort = document.getElementsByTagName("body")[0].getBoundingClientRect();
+    menupopup.style.top = (labelTop - height).toString()+"px"        
+    if (parentRect.left + menuRect.width > viewPort.width) { // right-align menu
+      menupopup.style.left = "";
+      menupopup.style.right = "30px"
+    }
+    else {
+      menupopup.style.left = parseInt(parentRect.left).toString() + "px";
+      menupopup.style.right = ""
+    }
   },
   
   hidePalette: function() {
@@ -217,7 +231,7 @@ QuickFolders.Interface = {
           // if (currentColor == jCol)  menuitem.setAttribute("checked", true);
         }
         else {
-          label = colorText + " "+ util.getBundleString("qfMenuTabColorNone");
+          label = util.getBundleString("qfMenuTabColorNone");
         }
         menuitem.textContent = label;
         

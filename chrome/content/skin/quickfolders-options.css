@@ -60,7 +60,7 @@ tabpanel html|input[type="number"]::-moz-number-spin-down {
 }
 
 #copyFolders {
-  color: rgb(20,20,20) !important;
+ /*  color: rgb(20,20,20) !important; */
 }
 
 tabpanel input[type="color"] {

@@ -41,6 +41,47 @@ QuickFolders.Options = {
     messenger.runtime.sendMessage({ command:"updateUserStyles" });
   },  
   
+  setDefaultColors: function setDefaultColors() {
+    let util = QuickFolders.Util,
+        highlightColor = util.getSystemColor("Highlight"),
+        highlightTextColor = util.getSystemColor("HighlightText"),
+        buttonfaceColor = util.getSystemColor("buttonface"),
+        buttontextColor = util.getSystemColor("buttontext"),
+        getElement = document.getElementById.bind(document);
+        
+    // helper function as we don't use pref listeners here
+    // (data-pref-name attribute)
+    function setValueAndNotify(id, val) {
+      getElement(id).value = val;
+      getElement(id).dispatchEvent(new Event("input", {bubbles:true}));
+    }
+    // as it turns out - setting the value does not trigger change event
+    setValueAndNotify("activetab-colorpicker", highlightColor);
+    getElement("activetabs-label").style.backgroundColor = highlightColor;
+    setValueAndNotify("activetab-fontcolorpicker", highlightTextColor);
+    getElement("activetabs-label").style.color = highlightTextColor;
+
+    setValueAndNotify("hover-colorpicker", util.getSystemColor("orange"));
+    setValueAndNotify("hover-fontcolorpicker", "#FFFFFF");
+    getElement("hoveredtabs-label").style.color = "#FFFFFF";
+    getElement("hoveredtabs-label").style.backgroundColor = util.getSystemColor("orange");
+
+    setValueAndNotify("dragover-colorpicker", "#E93903");
+    setValueAndNotify("dragover-fontcolorpicker", "#FFFFFF");
+    getElement("dragovertabs-label").style.color = "#FFFFFF";
+    getElement("dragovertabs-label").style.backgroundColor = "#E93903";
+
+    getElement("toolbar-colorpicker").value = buttonfaceColor;
+    setValueAndNotify("inactive-colorpicker", buttonfaceColor);
+    
+    getElement("inactivetabs-label").style.backgroundColor = buttonfaceColor;
+    setValueAndNotify("inactive-fontcolorpicker", buttontextColor);
+    
+    getElement("inactivetabs-label").style.color = buttontextColor;
+    messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: false }); 
+    return true;
+  },  
+  
   sendMail: async function sendMail(mailto = QuickFolders.Util.ADDON_SUPPORT_MAIL) {
     let // obsolete: title = QuickFolders.Util.getBundleString("qf.prompt.contact.title"),
         text = QuickFolders.Util.getBundleString("qf.prompt.contact.subject"),
@@ -130,7 +171,7 @@ QuickFolders.Options = {
     }
   },
   
-  colorPickerTranslucent: function colorPickerTranslucent(picker) {
+  colorPickerTranslucent: function(picker) {
     document.getElementById('inactivetabs-label').style.backgroundColor=
       this.getTransparent(picker.value, document.getElementById('buttonTransparency').checked);
     this.styleUpdate('InactiveTab','background-color', picker.value);
@@ -170,7 +211,6 @@ QuickFolders.Options = {
     if (prefString)
       await QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
     
-    // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
     messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: true }); 
     return true;
   },  

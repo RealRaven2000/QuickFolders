@@ -43,7 +43,7 @@ for (let colorpicker of document.querySelectorAll("input[type=color]")) {
     case "inactive-colorpicker":
         isStyleUpdate = false;
         colorpicker.addEventListener("input", function() { 
-          options.colorPickerTranslucent(this).bind(options);
+          options.colorPickerTranslucent.call(options, colorpicker);
         } );
       break;
     case "activetab-fontcolorpicker":
@@ -68,8 +68,8 @@ for (let colorpicker of document.querySelectorAll("input[type=color]")) {
       isStyleUpdate = false;
   }
   if (isStyleUpdate)
-    colorpicker.addEventListener("input", function() { // used to be "oncommand"
-      options.styleUpdate(elementName, elementStyle, this.value, colorpicker.getAttribute("previewLabel"));
+    colorpicker.addEventListener("input", function() { // was "input"
+      options.styleUpdate(elementName, elementStyle, colorpicker.value, colorpicker.getAttribute("previewLabel"));
     } );
 }
 
@@ -632,6 +632,7 @@ function initButtons() {
   // oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog('options_' + options.currentOptionsTab); window.close(); });">Buy License</button>
   document.getElementById("btnLicense").addEventListener("click", (event) => { QuickFolders.Interface.showLicenseDialog(); });
   document.getElementById("btnDefaultRadius").addEventListener("click", (event) => { QuickFolders.Options.setDefaultButtonRadius(); });
+  document.getElementById("qf-stateColors-defaultButton").addEventListener("click", (event) => { QuickFolders.Options.setDefaultColors(); });
   document.getElementById("qf-options-header-description").addEventListener("click", (event) => { messenger.Utilities.showVersionHistory();
     window.close(); 
   });

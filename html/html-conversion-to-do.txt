@@ -166,23 +166,32 @@ Questions for Monday:
  - improved flex layouts + unified font sizes
 
 
-========   
  
  19/02/2022
  - implemented color dropdown selection panel 
  
+========   
+
+
+20/02/2022
+ - fixed differing font sizes and heights
+ - fixed setting font color + background color on preview tab
+ - relocated palette pickers to be close to clicked tab
+ - hide palette picker when clicking outside (within bling tab settings)
+ - Implemented [Default Colors] button
+  
  to do: 
  - Backup / Restore Configuration
  - Copy / Paste Folder String
- - [Default Colors] button
  - inject heading image from theme?
  - If dialog is put to back of window, make sure it is reused / brought to foreground if possible
- - move color dropdown closer to the clicked preview tab.
-
- 20/02/2022
-  - fixed differing font sizes and heights
-  - fixed setting font color + backgruond color on preview tab
-  - relocated palette pickers to be close to clicked tab
-  - hide palette picker when clicking outside (within bling tab settings)
-  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  

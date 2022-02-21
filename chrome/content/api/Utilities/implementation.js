@@ -51,8 +51,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         showLicenseDialog: function(referrer) {
           win.QuickFolders.Interface.showLicenseDialog(referrer);
         }
-  
-        // get may only return something, if a value is set
+
      }
   }
 };

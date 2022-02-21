@@ -1,0 +1,25 @@
+ul.links {
+  display: none;
+}
+
+table#titles {
+  display: block;
+}
+
+#header #subtitle {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#titles #title p::before {
+  content: "Archived Content: "
+}
+
+#titles td {
+  display: block;
+}
+
+/* use adjacent sibling operator: */
+table#attachment_table  + br + br + table {
+  display: none;
+}

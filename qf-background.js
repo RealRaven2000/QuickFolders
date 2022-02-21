@@ -223,15 +223,26 @@ async function main() {
         }
         
         let title = messenger.i18n.getMessage("qf.prefwindow.quickfolders.options");
-        let optionWin = await messenger.windows.create(
-          { height: 780, 
-            width: 830, 
-            type: "panel", 
-            url: `/html/options.html?${params.toString()}`,
-            titlePreface: title,
-            allowScriptsToClose : true
-          }
-        );
+        // to get the tab - we need the activetab permission
+        // query for url 
+        let url = browser.extension.getURL("/html/options.html") + "*";
+
+        let [oldTab] = await browser.tabs.query({url}); // dereference first 
+        if (oldTab) {
+          await browser.windows.update(oldTab.windowId, {focused:true});
+        }
+        else {
+          let optionWin = await messenger.windows.create(
+            { height: 780, 
+              width: 830, 
+              type: "panel", 
+              url: `/html/options.html?${params.toString()}`,
+              titlePreface: title,
+              allowScriptsToClose : true
+            }
+          );
+        }
+           
         optionWin.sizeToContent() 
         break;
 

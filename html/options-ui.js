@@ -869,6 +869,14 @@ QuickFolders.Options = {
     // for now, moved to quickfolders-tablistener as  "global command handler"
     messenger.runtime.sendMessage({ command:"legacyAdvancedSearch" });
   },
+  
+  copyFolderEntries: function() {
+    messenger.runtime.sendMessage({ command:"copyFolderEntries" });
+  },
+  
+  pasteFolderEntries: function() {
+    messenger.runtime.sendMessage({ command:"pasteFolderEntries" });  
+  },
     
   
   

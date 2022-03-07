@@ -4526,7 +4526,7 @@ QuickFolders.Interface = {
 	} ,
 
   // forceFind - enter key has been pressed, so we want the first match to force a jump
-	findFolderName: function findFolderName(searchBox, forceFind) {
+	findFolderName: async function findFolderName(searchBox, forceFind) {
     // make the abbreviated string for the menu item
 		function buildParentString(folder, parentCount) {
 			let pS = "", // build expanded parent string
@@ -7119,6 +7119,109 @@ QuickFolders.Interface = {
         }
       });
   },
+  
+  pasteFolderEntriesFromClipboard: function () {
+    // originally this was located in QF.options.pasteFolderEntries
+    const Cc = Components.classes,
+          Ci = Components.interfaces,
+          service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
+          util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences;
+    let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable),
+        str       = {},
+        strLength = {},
+        strFoldersPretty = '';
+
+    util.popupRestrictedFeature("pasteFolderEntries", "", 2); // standard feature
+    if (!util.hasValidLicense()) return;
+        
+    trans.addDataFlavor("text/unicode");
+    var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+    
+    if (Services.clipboard) 
+      Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+    trans.getTransferData("text/unicode", str, strLength);
+    
+    
+    if (str) {
+      let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data;
+      strFoldersPretty = pastetext.toString();
+    }
+    try {
+      let folders = strFoldersPretty.replace(/\r?\n|\r/, ''),
+          entries = JSON.parse(folders),
+          question = util.getBundleString("qf.prompt.pasteFolders");
+      if (Services.prompt.confirm(window, "QuickFolders", question.replace("{0}", entries.length))) {
+        for (let i = 0; i < entries.length; i++) {
+          if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
+            entries[i].tabColor = 0;
+          // default the name!!
+          if (!entries[i].name) {
+            // retrieve the name from the folder uri (prettyName)
+            let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, false);
+            if (f)
+              entries[i].name = f.prettyName;
+          }
+        }
+        if (!entries.length)
+          entries=[];
+        util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(entries);
+        question = util.getBundleString("qf.prompt.pasteFolders.confirm");
+        if (Services.prompt.confirm(window, "QuickFolders", question)) {
+          // store
+          prefs.storeFolderEntries(entries);
+          // tell all windows!
+          QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });
+        }
+        else {
+          // roll back
+          util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(prefs.loadFolderEntries());
+        }
+        
+      }
+    }
+    catch (ex) {
+      util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
+      Services.prompt.alert(null, "QuickFolders", util.getBundleString("qf.alert.pasteFolders.formatErr"));
+    }
+  },
+  
+  copyFolderEntriesToClipboard: function() {
+    // originally this was located in QF.options.copyFolderEntries
+    // debug function for checking users folder string (about:config has trouble with editing JSON strings)
+    const Cc = Components.classes,
+          Ci = Components.interfaces,
+          service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
+          util = QuickFolders.Util;
+
+    try {
+      let clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper),
+          sFolderString = service.getStringPref("QuickFolders.folders");
+
+      util.logToConsole("Folder String: " & sFolderString);
+      try {
+        // format the json
+        let prettyFolders = JSON.stringify(JSON.parse(sFolderString), null, '  '); 
+        clipboardhelper.copyString(prettyFolders);
+      }
+      catch (e) {
+        util.logException("Error prettifying folder string:\n", e);
+        clipboardhelper.copyString(sFolderString);
+      }
+      let out = util.getBundleString("qfAlertCopyString"),
+          mail3PaneWindow = util.getMail3PaneWindow();
+      
+      if (mail3PaneWindow && mail3PaneWindow.QuickFolders) {
+        out += " [" + mail3PaneWindow.QuickFolders.Model.selectedFolders.length + " folders]";
+      }
+      //alert(out);
+      Services.prompt.alert(null,"QuickFolders",out);
+    }
+    catch(e) {
+      //alert(e);
+      Services.prompt.alert(null,"QuickFolders",e);
+    }
+  },  
 
   
 

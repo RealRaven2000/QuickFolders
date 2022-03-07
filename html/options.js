@@ -193,7 +193,6 @@ document.getElementById("applyPosition").addEventListener("click", async (event)
 });
 
 
-      
 
 // add bool preference reactions
 for (let chk of document.querySelectorAll("input[type=checkbox]")) {
@@ -341,7 +340,21 @@ async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
     updateUI: updateUI
   });
 }
-// command buttons
+
+
+// command buttons =============
+
+document.getElementById("copyFolders").addEventListener("click", (event) => {
+  QuickFolders.Options.copyFolderEntries();
+});
+
+document.getElementById("pasteFolders").addEventListener("click", (event) => {
+  QuickFolders.Options.pasteFolderEntries();
+});
+
+
+
+
 document.getElementById("btnSaveConfig").addEventListener("click", (event) => {
   // legacy code - needs to go via background 
   // oncommand="options.storeConfig(Preferences, options.prefMap);" 

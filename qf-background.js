@@ -107,6 +107,8 @@ async function main() {
   let msg_commands = [
     "currentDeckUpdate",
     "getLicenseInfo",
+    "copyFolderEntries",
+    "pasteFolderEntries",
     "legacyAdvancedSearch", // new global one!
     "showAboutConfig", // new global one!
     "showLicenseDialog", // new global one!
@@ -243,7 +245,7 @@ async function main() {
           );
         }
            
-        optionWin.sizeToContent() 
+        // optionWin.sizeToContent() 
         break;
 
       case "updateLicense":
@@ -274,6 +276,13 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
         
         return true;
+        
+      case "copyFolderEntries":
+        messenger.NotifyTools.notifyExperiment({event: "copyFolderEntriesToClipboard"});
+        break;
+      case "pasteFolderEntries":
+        messenger.NotifyTools.notifyExperiment({event: "pasteFolderEntriesFromClipboard"});
+        break;
     }
   }
   

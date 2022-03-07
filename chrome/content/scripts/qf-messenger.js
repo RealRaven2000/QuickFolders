@@ -544,6 +544,8 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["toggleNavigationBar"] = QI.displayNavigationToolbar.bind(QI);
   mylisteners["updateQuickFoldersLabel"] = QI.updateQuickFoldersLabel.bind(QI);
   mylisteners["updateCategoryBox"] = QI.updateCategoryLayout.bind(QI);
+  mylisteners["copyFolderEntriesToClipboard"] = QI.copyFolderEntriesToClipboard.bind(QI);
+  mylisteners["pasteFolderEntriesFromClipboard"] = QI.pasteFolderEntriesFromClipboard.bind(QI);
   // function parameters in event.detail
   mylisteners["updateMainWindow"] = 
     (event) => QI.updateMainWindow.call(QI, event.detail ? event.detail.minimal : null); 

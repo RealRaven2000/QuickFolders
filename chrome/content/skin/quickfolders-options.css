@@ -389,8 +389,7 @@ hbox.quickhelp-dbg {
 
 #pasteFolders {
 	min-width: 18px;
-	list-style-image: url("ico/paste-tabs.png");
-	-moz-image-region: rect(0px, 16px, 16px, 0px);
+	list-style-image: url("ico/pasteTabs.png");
 }
 
 #pasteFolders label {
@@ -398,7 +397,7 @@ hbox.quickhelp-dbg {
 }
 
 #pasteFolders:hover {
-	-moz-image-region: rect(16px, 16px, 32px, 0px);
+	list-style-image: url("ico/pasteTabsActive.png");
 }
 
 

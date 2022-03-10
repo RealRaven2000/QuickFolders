@@ -3,11 +3,11 @@
     "message": "SPLASH+UI"
   },
   "account.label": {
-    "message": "Select account:"
+    "message": "Välj konto:"
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
+    "message": "Du kör nu {boldStart} version $addonVer$ {boldEnd} på Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -20,124 +20,124 @@
     }
   },
   "addon-authors-struggle": {
-    "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
+    "message": "För att fortsätta vara användbar måste vi tilläggsutvecklare nu finansiera de resurser som behövs för att fixa och skriva om så att våra användare kan dra nytta av den funktionalitet vi tillhandahåller."
   },
   "btn-extend-license": {
-    "message": "I want to extend my license by one year"
+    "message": "Jag vill förlänga min licens med ett år"
   },
   "btn-renew-license": {
-    "message": "I want to renew my license"
+    "message": "Jag vill förnya min licens"
   },
   "btn-want-a-license": {
-    "message": "Choose a License"
+    "message": "Välj en licens"
   },
   "btn-want-to-donate": {
-    "message": "I want to help with a one time donation."
+    "message": "Jag vill hjälpa till med en engångs donation."
   },
   "btnApply": {
-    "message": "Apply"
+    "message": "Verkställ"
   },
   "btnCategory": {
-    "message": "Categories"
+    "message": "Kategorier"
   },
   "btnCategory.tooltip": {
-    "message": "Define Tab Categories"
+    "message": "Definiera flikkategorier"
   },
   "btnReset": {
-    "message": "Reset to Defaults"
+    "message": "Återställ till standard"
   },
   "buyDomainLicense.button": {
-    "message": "Buy Domain License"
+    "message": "Köp domänlicens"
   },
   "buyDomainLicense.instruct": {
-    "message": "Need Licenses for a company with more than five users? Getting a domain license will work out cheaper:"
+    "message": "Behöver du licenser för ett företag med fler än fem användare? Det är billigare att skaffa en domänlicens:"
   },
   "buyLicense.instruct": {
-    "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
+    "message": "Behöver du en licens själv? Skaffa en licens för en person. Den associeras med din personliga e-postadress och kan användas på flera installationer."
   },
   "buyProLicense.button": {
-    "message": "Buy Pro License!"
+    "message": "Köp Pro-licens!"
   },
   "buyStandardLicense.button": {
-    "message": "Buy Standard License!"
+    "message": "Köp standardlicens!"
   },
   "buyStandardLicense.instruct": {
-    "message": "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions."
+    "message": "Har du inte råd med premiumfunktionerna? Få en mycket prisvärd standardlicens och testa premiumfunktioner."
   },
   "chkComposerSubfolders": {
-    "message": "Also apply to subfolders"
+    "message": "Tillämpa även på undermappar"
   },
   "chkHideFromQuickJump": {
-    "message": "Omit from quickJump / quickMove"
+    "message": "Uteslut från quickJump / quickMove"
   },
   "chkHideFromQuickJump.tooltip": {
-    "message": "Omit this folder and its children in quickJump / quickMove results"
+    "message": "Utelämna den här mappen och dess barn i quickJump / quickMove-resultat"
   },
   "chkIgnoreCounts": {
-    "message": "Hide Count of Mails"
+    "message": "Dölj antalet olästa meddelanden"
   },
   "chkIgnoreCounts.tooltip": {
-    "message": "Never display number of contained mails."
+    "message": "Visa aldrig antalet olästa meddelanden för mappar."
   },
   "chkIgnoreUnread": {
-    "message": "Hide Unread Status"
+    "message": "Dölj information om olästa meddelanden"
   },
   "chkIgnoreUnread.tooltip": {
-    "message": "Never display bold or any unread count even when folder contains unread mail."
+    "message": "Visa aldrig text i fetstil eller antalet olästa meddelanden även om mappen innehåller sådana."
   },
   "chkSetMailsUnread": {
-    "message": "Set mail to unread"
+    "message": "Ställ in e-post till oläst"
   },
   "chkSetMailsUnread.tooltip": {
-    "message": "If you move mail into this folder it is set to unread."
+    "message": "Om du flyttar e-post till den här mappen är den inställd på oläst."
   },
   "cost-of-independence": {
-    "message": "Software development costs time and money - unlike many platform apps, Add-ons are not written by large corporations, nor are they sponsored in any way by Mozilla."
+    "message": "Mjukvaruutveckling kostar tid och pengar - till skillnad från många plattformsappar är tillägg inte skrivna av stora företag och de sponsras inte heller på något sätt av Mozilla."
   },
   "cssBackground": {
-    "message": "Background"
+    "message": "Bakgrund"
   },
   "cssBackground.tooltip": {
-    "message": "Enter a CSS background, e.g. linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
+    "message": "Ange bakgrundsegenskaper i CSS, t.ex. 'linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)'."
   },
   "cssColor": {
-    "message": "Text color"
+    "message": "Textfärg"
   },
   "cssColor.tooltip": {
-    "message": "Enter a CSS color, e.g. rgba(100,20,20,0.8)"
+    "message": "Ange en färg i CSS, t.ex. 'rgba(100,20,20,0.8)'"
   },
   "defaultAccountAddress.value": {
-    "message": "Account Default Identity"
+    "message": "Kontots standardidentitet"
   },
   "domainLicense.email": {
-    "message": "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page."
+    "message": "Vi kommer att kontakta du med denna e-postadress för att generera din domänlicens; det kommer att ta två arbetsdagar för oss att höra av oss. Ange domännamnet för licensen på nästa sida."
   },
   "domainLicense.header": {
-    "message": "Licensed Email Domain"
+    "message": "Licensierad e-postdomän"
   },
   "domainLicense.instruct": {
-    "message": "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use QuickFolders Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen."
+    "message": "Licensen är kopplad till din företagsdomän. Licensen kommer att låta användare med e-postadresser som slutar på denna e-postdomän att använda QuickFolders Pro. D.v.s. om du anger domännamnet 'abc.com' kommer e-postanvändare som fred@abc.com, martha@abc.com, mike.doe@abc.com, etc. tillåtas använda licensen. Det maximala antalet giltiga individuella användare är antalet du anger på den första skärmen."
   },
   "domainLicense.validate": {
-    "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
+    "message": "Se till att du anger domännamnet *precis som det är* på ditt företags e-postadresser (delen *efter* @), då den kommer att användas för att auktorisera e-postadresserna för dina användare."
   },
   "donate": {
-    "message": "Help out with a one time donation."
+    "message": "Hjälp med en engångs donation."
   },
   "donate-heading": {
-    "message": "Help by Donating!"
+    "message": "Hjälp genom att donera!"
   },
   "email.label": {
-    "message": "Email:"
+    "message": "E-post:"
   },
   "enterLicenseKey.button": {
-    "message": "Enter License Key…"
+    "message": "Ange licensnyckel …"
   },
   "enterLicenseKey.tooltip": {
-    "message": "Enter the License Key code sent to you via Email."
+    "message": "Skriv in den licensnyckel du fick i ditt e-postmeddelande från oss."
   },
   "extend-your-license": {
-    "message": "Consider extending your license by a year."
+    "message": "Överväg att förlänga din licens med ett år."
   },
   "extensionDescription": {
     "description": "Description of the extension.",
@@ -148,35 +148,35 @@
     "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
-    "message": "Bookmark your favorite mail folders in Thunderbird."
+    "message": "Bokmärk dina favoritmeddelandemappar i Thunderbird."
   },
   "firstName.label": {
-    "message": "First Name:"
+    "message": "Förnamn:"
   },
   "freeLicense": {
-    "message": "If you have recently donated to the QuickFolders project or have done contributory work, such as translating or writing patches, you may be eligible for a free license key. Contact me from the support tab in QuickFolders Options."
+    "message": "Om du tidigare har donerat till QuickFolders-projektet eller har bidragit med arbetsinsatser inom projektet, t.ex. genom att översätta eller skriva korrigeringskod, så kan du vara berättigad till en gratis licensnyckel. Kontakta oss via supportfliken i QuickFolders inställningar."
   },
   "fromAddress": {
-    "message": "From:"
+    "message": "Från:"
   },
   "fromAddress.tooltip": {
-    "message": "Default Identity when composing emails"
+    "message": "Standardidentitet för att skapa e-brev"
   },
   "getQuickFolders": {
-    "message": "QuickFolders Licenses"
+    "message": "QuickFolders-licenser"
   },
   "grpComposer": {
-    "message": "Default Email Fields"
+    "message": "Standardfält för e-brev"
   },
   "grpCustomCSS": {
-    "message": "Custom CSS"
+    "message": "Egen CSS"
   },
   "grpTabBehavior": {
-    "message": "Advanced Tab Behavior"
+    "message": "Avancerat flikbeteende"
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "Successfully installed $addonName$",
+    "message": "$addonName$ installerades med framgång",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -186,7 +186,7 @@
   },
   "heading-updated": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "$addonName$ Updated Successfully",
+    "message": "$addonName$ uppdaterades med framgång",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -195,10 +195,10 @@
     }
   },
   "intro": {
-    "message": "An annual license for QuickFolders Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome."
+    "message": "En årslicens för QuickFolders Pro ger dig tillgång till alla licensbelagda funktioner under ett års tid. Det ger oss även medel, som vi kan använda för att vidareutveckla produkten."
   },
   "label-remind-me": {
-    "message": "Remind me again in $countDays$ days.",
+    "message": "Påminn mig igen om $countDays$ dagar.",
     "placeholders": {
       "countDays": {
         "content": "$1",
@@ -207,35 +207,35 @@
     }
   },
   "lastName.label": {
-    "message": "Last Name:"
+    "message": "Efternamn:"
   },
   "lblCustomPalette": {
-    "message": "Custom Palette:"
+    "message": "Egen palett:"
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
-    "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
+    "message": "Tack för att du nyligen förlängde din licens eller om du har donerat. Eftersom du har hjälpt till att framtida bevisa detta tillägg kan du helt enkelt stänga det här fönstret."
   },
   "licenseComparison": {
-    "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
+    "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
   },
   "licenseHead": {
-    "message": "New Licensing System"
+    "message": "Nytt licenssystem"
   },
   "licenseTypes": {
-    "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
+    "message": "QuickFolders erbjuder två licenser, Standard och Pro; dessa är nödvändiga för att hänga med i förändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom ändringar som eventuellt bryter tilläggsfunktioner distribueras årligen, kommer licensen också att vara giltig i 1 år."
   },
   "licenseWindow.title": {
-    "message": "QuickFolders Pro License"
+    "message": "Licens för QuickFolders Pro"
   },
   "license_restriced.std": {
-    "message": "Standard License - restricted Pro function. Find out more…"
+    "message": "Standardlicens - begränsad Pro -funktion. Få reda på mer…"
   },
   "license_restriced.unpaid": {
-    "message": "Unlicensed version - restricted function. Find out more…"
+    "message": "Olicensierad version - begränsad funktion. Få reda på mer…"
   },
   "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders needs a Pro license to support more than $maxTabs$ tabs.",
+    "message": "QuickFolders behöver en Pro -licens för att stödja mer än $maxTabs$ flikar.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -244,7 +244,7 @@
     }
   },
   "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders needs a license to support more than $maxTabs$ tabs.",
+    "message": "QuickFolders behöver en licens för att stödja mer än $maxTabs$ flikar.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -253,14 +253,14 @@
     }
   },
   "mozillas-basic-platform": {
-    "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
+    "message": "Mozilla tillhandahåller bara en grundläggande plattform för att leverera vår programvara till dig, slutanvändarna. Om vi behöver be våra användare om betalning eller support kan vi inte göra detta från addons.thunderbird.net - det är inte en 'app store' med inbyggda betalväggar eller licenshantering som iTunes eller google play."
   },
   "notificationTitle": {
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
   "ongoing-work": {
-    "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
+    "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -269,346 +269,346 @@
     }
   },
   "purchase-a-license": {
-    "message": "Purchase a license."
+    "message": "Köp en licens."
   },
   "purchase-heading": {
-    "message": "Buying a License!"
+    "message": "Att köpa en licens!"
   },
   "qf.accounts": {
-    "message": "Accounts"
+    "message": "Konton"
   },
   "qf.alert.pasteFolders.formatErr": {
-    "message": "Could not create tabs. See tools / error console for more detail."
+    "message": "Kunde inte skapa flikar. Se verktyg / felkonsol för fler detaljer."
   },
   "qf.backupAndRestore": {
-    "message": "Backup / Restore"
+    "message": "Säkerhetskopiering / återställning"
   },
   "qf.btn.applyPosition": {
-    "message": "Apply position value!"
+    "message": "Tillämpa positionsvärde!"
   },
   "qf.button.add": {
-    "message": "Add!"
+    "message": "Lägg till!"
   },
   "qf.button.configureTooltips": {
-    "message": "Configure tooltips…"
+    "message": "Konfigurera verktygstips …"
   },
   "qf.button.currentFolderBackground.set": {
-    "message": "apply"
+    "message": "använd"
   },
   "qf.button.default": {
-    "message": "Defaults"
+    "message": "Standard"
   },
   "qf.button.defaultcolors": {
-    "message": "Default Colors"
+    "message": "Standardfärger"
   },
   "qf.button.deleteselectedcategory": {
-    "message": "Delete selected category"
+    "message": "Ta bort markerad kategori"
   },
   "qf.button.down": {
-    "message": "Down"
+    "message": "Nedåt"
   },
   "qf.button.pasteLicense": {
-    "message": "paste"
+    "message": "klistra in"
   },
   "qf.button.rename": {
-    "message": "Rename"
+    "message": "Byt namn"
   },
   "qf.button.reorderButtonBottom": {
-    "message": "Move to bottom"
+    "message": "Nederst"
   },
   "qf.button.reorderButtonBottom.accessKey": {
-    "message": "b"
+    "message": "N"
   },
   "qf.button.reorderButtonBottom.toolTip": {
-    "message": "Rearrange filter so it executes after all others"
+    "message": "filtret körs sist av alla"
   },
   "qf.button.reorderButtonTop": {
-    "message": "Move to top"
+    "message": "Överst"
   },
   "qf.button.reorderButtonTop.accessKey": {
-    "message": "o"
+    "message": "e"
   },
   "qf.button.reorderButtonTop.toolTip": {
-    "message": "Rearrange filter so it executes before all others"
+    "message": "filtret körs först av alla"
   },
   "qf.button.up": {
-    "message": "Up"
+    "message": "Uppåt"
   },
   "qf.button.validateLicense": {
-    "message": "validate"
+    "message": "verifiera"
   },
   "qf.caption.currentFolderBackground": {
-    "message": "Current Folder Toolbar background"
+    "message": "Bakgrund för aktuell mapp"
   },
   "qf.categories.supportMultiple": {
-    "message": "Support selecting multiple tab categories"
+    "message": "Stöd för att välja flera flikkategorier"
   },
   "qf.categories.supportMultiple.tooltip": {
-    "message": "Use the SHIFT key in order to select more than one category on the dropdown."
+    "message": "Använd SHIFT-tangenten för att välja fler än en kategori i rullgardinslisten."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Focus on message list when changing tabs"
+    "message": "Fokusera på meddelandelistan när du byter flik"
   },
   "qf.checkbox.hideInSingleMessage": {
-    "message": "Hide QuickFolders in single message tabs"
+    "message": "Dölj QuickFolders i flikar med enstaka meddelanden"
   },
   "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Removes the QuickFolders toolbar in tabs that show a single message."
+    "message": "Tar bort QuickFolders verktygsfält i flikar som visar ett enda meddelande."
   },
   "qf.checkbox.currentFolder.closeButton": {
-    "message": "Close Button"
+    "message": "Stängknapp"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Display the Toolbar"
+    "message": "Visa verktygsfältet"
   },
   "qf.checkbox.currentfolder.lightweight": {
-    "message": "integrate with lightweight theme"
+    "message": "integrera med lättviktstema"
   },
   "qf.checkbox.debug": {
-    "message": "Debug Mode"
+    "message": "Felsökningsläge"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Right click this checkbox for advanced debug options"
+    "message": "högerklicka på den här kryssrutan för avancerade felsökningsalternativ"
   },
   "qf.checkbox.displaylabel": {
-    "message": "Display the 'QuickFolders' label in the toolbar"
+    "message": "Visa 'QuickFolders'-etiketten i verktygsfältet"
   },
   "qf.checkbox.displaylabel.tooltip": {
-    "message": "Right click to change the text of this label"
+    "message": "högerklicka för att ändra etikettexten"
   },
   "qf.checkbox.enableTransitions": {
-    "message": "Enable CSS transitions"
+    "message": "Aktivera CSS-övergångar"
   },
   "qf.checkbox.enableTransitions.tooltip": {
-    "message": "Shows smooth transitions between several aspects of tab coloring."
+    "message": "Visar mjuka övergångar mellan olika typer av flikfärgning."
   },
   "qf.checkbox.hideCategoryBox": {
-    "message": "Collapse Categories"
+    "message": "Stäng kategorier"
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
-    "message": "Minimizes the Categories menu to take up less space."
+    "message": "Minimerar kategorimenyn för att frigöra mer utrymme."
   },
   "qf.checkbox.highlightNewMail": {
-    "message": "Highlight folders with new mail"
+    "message": "Färgmarkera mappar med nya meddelanden"
   },
   "qf.checkbox.menus.dragToNewFolder": {
-    "message": "Drag to new Subfolder"
+    "message": "Dra till ny undermapp"
   },
   "qf.checkbox.menus.emptyJunk": {
-    "message": "Empty Junk"
+    "message": "Töm skräppost"
   },
   "qf.checkbox.menus.emptyTrash": {
-    "message": "Empty Trash"
+    "message": "Töm papperskorgen"
   },
   "qf.checkbox.menus.getMailForInbox": {
-    "message": "Get Messages (Mail Accounts)"
+    "message": "Hämta meddelanden (e-postkonton)"
   },
   "qf.checkbox.menus.getMailForNews": {
-    "message": "Get Messages (News Accounts)"
+    "message": "Hämta meddelanden (diskussionsgruppskonton)"
   },
   "qf.checkbox.menus.markAllRead": {
-    "message": "Mark Folder Read"
+    "message": "Märk mappen som läst"
   },
   "qf.checkbox.menus.markAllReadRecursive": {
-    "message": "Mark Folder Read (recursive)"
+    "message": "Märk mappen som läst (rekursiv)"
   },
   "qf.checkbox.quickCopy": {
-    "message": "quickCopy - Copy mail to any folder with Shortcut:"
+    "message": "quickCopy - Kopiera e-post till valfri mapp med kortkommandot:"
   },
   "qf.checkbox.quickCopy.tip": {
-    "message": "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry."
+    "message": "Kortkommando för att dra e-post till quickCopy-knappen för snabbaste kopieringen till valfri mapp via namninmatningen."
   },
   "qf.checkbox.quickJump": {
-    "message": "quickJump - Go to any folder with Shortcut:"
+    "message": "quickJump - Sök efter mappar med kortkommandot:"
   },
   "qf.checkbox.quickJump.tip": {
-    "message": "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry."
+    "message": "Kortkommando för quickJump-knappen ger snabb navigering via namnposter."
   },
   "qf.checkbox.quickMove": {
-    "message": "quickMove - Move mail to any folder with Shortcut:"
+    "message": "quickMove - Flytta e-brev till vilken mapp som helst via kortkommando:"
   },
   "qf.checkbox.quickMove.tip": {
-    "message": "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry."
+    "message": "Kortkommando för att dra e-brev till quickMove-knappen ger snabb arkivering till vilken mapp som helst via namnposter."
   },
   "qf.checkbox.quickmove.autofill": {
-    "message": "Insert last folder name executed"
+    "message": "Infoga det senast valda mappnamnet"
   },
   "qf.checkbox.quickmove.autofill.tip": {
-    "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
+    "message": "Den senast använda mappen kommer att infogas. Tryck på Enter för att använda den eller skriv över för andra platser."
   },
   "qf.checkbox.readingList": {
-    "message": "Reading List"
+    "message": "Läslista"
   },
   "qf.checkbox.readingList.tooltip": {
-    "message": "A list for mails that should be read later. Drag your important emails on this button."
+    "message": "En lista över e-post som bör läsas senare. Dra dina viktigaste e-postmeddelande till denna knapp."
   },
   "qf.checkbox.shadows": {
-    "message": "shadows"
+    "message": "skuggor"
   },
   "qf.checkbox.shift": {
-    "message": "Shift"
+    "message": "Skift"
   },
   "qf.checkbox.showCountInSubFolders": {
-    "message": "Also display totals of subfolders"
+    "message": "Visa även det totala antalet undermappar"
   },
   "qf.checkbox.showCountInSubFolders.tooltip": {
-    "message": "These are displayed separated by a '+' beside their main counts; contained unread mail will also make tab bold if option above is active"
+    "message": "Dessa visas med ett ''+' bredvid sina huvudräknare; innehåll av olästa meddelanden kommer att visa fliktexten i fetstil om alternativet ovan är aktiverat"
   },
   "qf.checkbox.showFilterButton": {
-    "message": "'Create Filters' Button"
+    "message": "Visa Skapa filter-knapp"
   },
   "qf.checkbox.showFilterButton.tooltip": {
-    "message": "You can also create Filters using the QuickFolders context menu."
+    "message": "Du kan även skapa filter via QuickFolders snabbmeny."
   },
   "qf.checkbox.showFolderNavigation": {
-    "message": "Folder Navigation buttons"
+    "message": "Mappnavigeringsknappar"
   },
   "qf.checkbox.showIconButtons": {
-    "message": "Customize Icon buttons"
+    "message": "Anpassa ikon-knappar"
   },
   "qf.checkbox.showIcons": {
-    "message": "Display Icons (Inbox, Sent, Junk, Trash, Drafts, Archived, Templates)"
+    "message": "Visa ikoner (Inkorgen, Skickat, Skräp, Papperskorgen, Utkast, Arkiverat, Mallar)"
   },
   "qf.checkbox.showMailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "E-postmappkommandon"
   },
   "qf.checkbox.showMessageNavigation": {
-    "message": "Message Navigation buttons"
+    "message": "Meddelandenavigeringsknappar"
   },
   "qf.checkbox.showNewMailItalics": {
-    "message": "Display tabs with newly arrived mail italic"
+    "message": "Visa flikar med nymottagna meddelanden med kursiverad text"
   },
   "qf.checkbox.showNonEmptyItalics": {
-    "message": "Display tabs which contain messages italic"
+    "message": "Visa knappar för mappar med meddelanden i sig i kursiv stil"
   },
   "qf.checkbox.showQuickMove": {
-    "message": "quickMove Button"
+    "message": "quickMove-knapp"
   },
   "qf.checkbox.showQuickMove.tooltip": {
-    "message": "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box."
+    "message": "quickMove-knappen kan användas för att dra e-brev till en namngiven målmapp. Du kan samla in e-brev från flera mappar. När du har samlat ihop alla e-brev du vill flytta, skriver du in målmappens namn i sökrutan."
   },
   "qf.checkbox.showRecentButton": {
-    "message": "Recent Folders Button"
+    "message": "Visa Nyligen använda mappar-knapp"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Display Recent Folders Tab"
+    "message": "Visa Nyligen använda mappar-fliken"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Right click for configuration"
+    "message": "Högerklicka för inställningar"
   },
   "qf.checkbox.showSubfolders": {
-    "message": "Expand Subfolders in popup menus"
+    "message": "Visa undermappar i popup-menyer"
   },
   "qf.checkbox.showTotalMessageCount": {
-    "message": "Display the total number of messages"
+    "message": "Visa det totala antalet meddelanden på mappknappen"
   },
   "qf.checkbox.showUnreadBold": {
-    "message": "Display tabs with unread messages in bold"
+    "message": "Visa knappar för mappar med olästa meddelanden i fetstil"
   },
   "qf.checkbox.showUnreadMessageCount": {
-    "message": "Display the number of unread messages"
+    "message": "Visa antalet olästa meddelanden på mappknappen"
   },
   "qf.checkbox.showshortcutnumber": {
-    "message": "Display shortcut number on folder labels"
+    "message": "Visa kortkommandonummer på mappetiketter"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
-    "message": "…also in Single Message windows"
+    "message": "… även i fönster med endast ett meddelande"
   },
   "qf.checkbox.singleMessage.currentFolder.tooltip": {
-    "message": "Show current folder toolbar in the window that opens when you select to open an Email in a new window"
+    "message": "Visa verktygsfält för aktuell mapp i fönstret som öppnas när du öppnar ett e-brev i ett nytt fönster."
   },
   "qf.checkbox.singleMessageTab.currentFolder.show": {
-    "message": "Toolbar in Single Message Tabs"
+    "message": "Visa verktygsfält i flikar med endast ett meddelande"
   },
   "qf.checkbox.skipFolder": {
-    "message": "Skip Unread Folder - use Shortcut: SHIFT +"
+    "message": "Hoppa över oläst mapp - använd kortkommando: SHIFT +"
   },
   "qf.checkbox.skipFolder.tip": {
-    "message": "Shortcut for jumping to the next unread folder."
+    "message": "Kortkommando för att hoppa till nästa olästa mapp."
   },
   "qf.checkbox.sortMenusAlpha": {
-    "message": "Force alphabetic sorting of menus with subfolders."
+    "message": "Tvinga alfabetisk sortering av menyer med undermappar."
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
-    "message": "Only use this option if your mail client doesn't sort the subfolders correctly."
+    "message": "Använd endast det här alternativet om din e-postklient inte sorterar undermappar korrekt."
   },
   "qf.checkbox.storeConfig.general": {
-    "message": "Include general settings"
+    "message": "Inkludera allmänna inställningar"
   },
   "qf.checkbox.storeConfig.layout": {
-    "message": "Include advanced and layout"
+    "message": "Inkludera avancerad och layout"
   },
   "qf.checkbox.storeConfig.tabs": {
-    "message": "Include QuickFolders Tabs"
+    "message": "Inkludera QuickFolders-flikar"
   },
   "qf.checkbox.tabMenuIcon": {
-    "message": "Toolbar Menu Icon"
+    "message": "Ikon för verktygsfältsmenyn"
   },
   "qf.checkbox.tabMenuIcon.tooltip": {
-    "message": "This menu can also be invoked by right-clicking the toolbar itself"
+    "message": "Denna meny kan även öppnas genom att högerklicka själva verktygsfältet"
   },
   "qf.checkbox.transparent": {
     "message": "transparent"
   },
   "qf.checkbox.useNavigationShortcuts": {
-    "message": "ALT-Left / ALT-Right for previous / next Tab"
+    "message": "Alt+vänsterpil/Alt+högerpil för föregående/nästa flik"
   },
   "qf.checkbox.usePalette": {
-    "message": "Use palette"
+    "message": "Använd palett"
   },
   "qf.checkbox.useRebuildShortcut": {
-    "message": "Rebuild Tabs with Shortcut: Ctrl + Alt +"
+    "message": "Återskapa flikar med kortkommandot: Ctrl + Alt +"
   },
   "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Use keyboard shortcuts (Alt + 1 through Alt + 9)"
+    "message": "Använd kortkommandon (Alt+1 till Alt+9)"
   },
   "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Use Ctrl instead of Alt"
+    "message": "Använd Ctrl istället för Alt"
   },
   "qf.continueFilter.label": {
-    "message": "Create Filter…"
+    "message": "Skapa filter…"
   },
   "qf.continueFilter.shortcut": {
-    "message": "F"
+    "message": "f"
   },
   "qf.copyfolders": {
-    "message": "Copy Tabs"
+    "message": "Kopiera flikar"
   },
   "qf.copyfolders.tooltip": {
-    "message": "Copy the QuickFolders Tabs configuration to the clipboard"
+    "message": "Kopierar mapparnas konfigurationssträng till Urklipp"
   },
   "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird theme"
+    "message": "Thunderbird-tema"
   },
   "qf.currentFolderBackground.custom": {
-    "message": "custom"
+    "message": "egen"
   },
   "qf.currentFolderBackground.dark": {
-    "message": "dark"
+    "message": "mörk"
   },
   "qf.currentFolderBackground.default": {
     "message": "silver"
   },
   "qf.currentFolderBackground.translucent": {
-    "message": "translucent"
+    "message": "genomskinlig"
   },
   "qf.currentfolder.leftSpacer": {
-    "message": "Left Spacer:"
+    "message": "Mellanrum till vänster:"
   },
   "qf.currentfolder.rightSpacer": {
-    "message": "Right Spacer:"
+    "message": "Mellanrum till höger:"
   },
   "qf.description.github": {
-    "message": "Please use github for all official feature requests and bug reports"
+    "message": "Var vänlig använd github för alla officiella funktionsönskemål och buggrapporter"
   },
   "qf.description.categoryusage": {
-    "message": "You can put this tab in a category (i.e. 'Work', 'Private', …)."
+    "message": "Du kan lägga det här bokmärket i en kategori (t.ex. 'Arbete', 'Privat', …)."
   },
   "qf.description.changeCategory": {
-    "message": "Right click a tab to organize it into one or several categories. Creates a filter for categories on the left of the tabs."
+    "message": "Högerklicka på ett bokmärke för att inordna det i en kategori. Du får upp en rullgardinsmeny med kategorier till vänster om fältet."
   },
   "qf.description.contactMe": {
-    "message": "You can also contact me personally at $supportMail$:",
+    "message": "Du kan också kontakta oss via $supportMail$:",
     "placeholders": {
       "supportMail": {
         "content": "$1"
@@ -616,418 +616,418 @@
     }
   },
   "qf.description.donate": {
-    "message": "If you love QuickFolders as much as we do and would like to support its development, you can donate some money towards the further development of QuickFolders."
+    "message": "Om du gillar QuickFolders lika mycket som vi gör och skulle vilja stödja dess utveckling, kan du donera lite pengar till den framtida utvecklingen av QuickFolders."
   },
   "qf.description.dragToAdd": {
-    "message": "Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias). Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). Click quickfolder to jump to mail folder."
+    "message": "Dra meddelandemappar till en tom yta i det nya verktygsfältet för att skapa en ny snabbmapp (fungerar som en genväg/ett alias). Dra meddelanden till snabbmappen för att flytta dem till motsvarande mapp (eller kopiera med låstangenten). Klicka på snabbmappen för att hoppa till meddelandemappen."
   },
   "qf.description.dragToPopup": {
-    "message": "Drag messages onto quickfolder popup menu to move messages into sub folders."
+    "message": "Dra meddelanden till snabbmappens popup-meny för att flytta dem till undermappar."
   },
   "qf.description.dragToPosition": {
-    "message": "Drag quickfolders sideways to change their positions. Right-click quickfolder for context menu; by selecting you can jump into sub folders. 'Rename tab' changes the label of the quickfolder. 'Remove tab' deletes the quickfolder (not the mail folder)."
+    "message": "Dra snabbmappar i sidled för att ändra deras inbördes positioner. Högerklicka på en snabbmapp för en snabbmeny där du kan välja undermappar att hoppa till. 'Byt namn på bokmärke' ändrar snabbmappens etikett. 'Ta bort bokmärke' tar bort snabbmappen (inte meddelandemappen)."
   },
   "qf.description.dragexplain": {
-    "message": "Tabs can also be dragged to change positions! Drop one on top of another to insert before / after it."
+    "message": "Bokmärkena kan också dras för att ändra deras inbördes positioner! Släpp ett ovanpå ett annat för att infoga före/efter det."
   },
   "qf.description.editcategory": {
-    "message": "Select an existing category by double clicking on it, or add a new category below."
+    "message": "Välj en befintlig kategori genom att dubbelklicka på den, eller lägg till en ny kategori nedan."
   },
   "qf.description.experimentalItems": {
-    "message": "The following items are experimental, they will hopefully be working in the next release!!"
+    "message": "Följande objekt är experimentella, de kommer förhoppningsvis att inkluderas i nästa version!!"
   },
   "qf.description.languages": {
-    "message": "QuickFolders supports localization - you can help by adding a translation in your language on github:"
+    "message": "QuickFolders stödjer språkanpassning - du kan hjälpa till genom att lägga till en översättning på ditt språk på github:"
   },
   "qf.description.linkNote": {
-    "message": "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:"
+    "message": "Besök QuickFolders webbplats för en utförlig användarguide, tips och FAQ:"
   },
   "qf.description.multicategory": {
-    "message": "To add a folder to more than one category: Hold down SHIFT or CONTROL while selecting items."
+    "message": "För att lägga till en mapp i fler än en kategori: Håll ned Skift eller Ctrl när du markerar objekt."
   },
   "qf.description.pulldown": {
-    "message": "The QuickFolders bar will display a pulldown, allowing you to filter your tabs by category."
+    "message": "QuickFolders-fältet kommer att visa en rullgardinsmeny, som låter dig filtrera dina bokmärken efter kategori."
   },
   "qf.description.rightClickOptions": {
-    "message": "Right-click an empty area to open the options menu. In options, you can select native style (smaller) or flat style (clearer; supports drag indicator)."
+    "message": "Högerklicka på en tom yta för att öppna alternativmenyn. Där kan du välja Systemlik stil (mindre) eller Platt stil (tydligare; stödjer dragindikator)."
   },
   "qf.description.tipMsg": {
-    "message": "Tip: If you have an extensive amount of folders, try the Nostalgy extension for keyboard driven message organizing."
+    "message": "Tips: Om du har ett mycket stort antal mappar, testa tillägget Nostalgy som erbjuder en tangentbordsbaserad meddelandehantering."
   },
   "qf.description.versionhistory": {
-    "message": "Detailed Version History at quickfolders.org"
+    "message": "Utförlig versionshistorik på quickfolders.org"
   },
   "qf.dialog.changeorder": {
-    "message": "Change the order of the tabs"
+    "message": "Ändra ordningen på dina bokmärken"
   },
   "qf.dialog.quickmove.settings": {
-    "message": "quickMove Advanced Settings"
+    "message": "quickMove Avancerade inställningar"
   },
   "qf.dialog.setcategory": {
-    "message": "Set the category for a tab"
+    "message": "Ange kategori för bokmärke"
   },
   "qf.donate.tooltip": {
-    "message": "Support Development of QuickFolders!"
+    "message": "Stöd utvecklingen av QuickFolders!"
   },
   "qf.filters.instructions": {
-    "message": "Please select a template. You can fine tune the filter rules on the next screen."
+    "message": "Välj en mall. Du kan finjustera filterreglerna i nästa steg."
   },
   "qf.filters.template.from": {
-    "message": "Based on Sender (from)"
+    "message": "Baserat på avsändare (Från:)"
   },
   "qf.filters.template.from.description": {
-    "message": "This is probably the most used pattern:  this will retrieve the sender's email address and paste it into the from and to filter conditions fields. This way complete conversations with the sender will be moved to the new folder."
+    "message": "Det här är antagligen det vanligast använda mönstret. Det hämtar avsändarens e-postadress och klistrar in den i villkorsfälten Från och Till. På så vis flyttas fullständiga konversationer med avsändaren till den nya mappen."
   },
   "qf.filters.template.list": {
-    "message": "Mailing List"
+    "message": "E-postlista"
   },
   "qf.filters.template.list.description": {
-    "message": "Similar to Based on Sender, but it doesn't fill the 'to' condition field."
+    "message": "Liknar \"Baserat på avsändare\", men fyller inte i villkorsfältet Till."
   },
   "qf.filters.template.tag": {
-    "message": "By Tags"
+    "message": "Efter etiketter"
   },
   "qf.filters.template.tag.description": {
-    "message": "Uses the tags of the email and adds them as filter conditions."
+    "message": "Använder e-brevens taggar och lägger till dem som filtreringsvillkor."
   },
   "qf.filters.template.to": {
-    "message": "Based on Recipient (to)"
+    "message": "Baserat på mottagare (Till:)"
   },
   "qf.filters.template.to.description": {
-    "message": "Similar to 'Based on Sender': use this when you mark an email you have sent to somebody else. This will retrieve the recpient's email address and paste it into the from and to filter conditions fields. This way the complete conversation with the contact will be moved to the new folder."
+    "message": "Liknar \"Baserat på avsändare\". Använd detta när du märker ett e-brev som du har skickat till någon annan. Det hämtar avsändarens e-postadress och klistrar in den i villkorsfälten Från och Till. På så vis flyttas hela konversationen med kontakten till den nya mappen."
   },
   "qf.filters.template.topic": {
-    "message": "By Subject"
+    "message": "Efter ämne"
   },
   "qf.filters.template.topic.description": {
-    "message": "This will look for special expressions in brackets, e.g. [stamp collectors] or {vegans} and create a filter condition based on these; a lot of mass email is set up using this pattern, so it is really easy to use."
+    "message": "Detta söker efter specialuttryck inom parenteser, t.ex. [filatelister] eller {veganer}, och skapar ett filter baserat på dessa. Många massutskick använder detta mönster, så det är väldigt enkelt att använda."
   },
   "qf.filters.title": {
-    "message": "Create Filters"
+    "message": "Skapa filter"
   },
   "qf.filters.toggleMessage.notificationText": {
-    "message": "Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'. To end the filter learning mode, press the filter button on the top left of the QuickFolders bar."
+    "message": "Filterinlärningsläget har startats. Närhelst du flyttar ett meddelande till QuickFolders öppnas guiden \"Skapa filterregel\". Thunderbird använder meddelandefilter för att automatiskt flytta meddelanden baserat på regler rörande t.ex. vem avsändaren är och om ett visst nyckelord finns i ämnesraden. För att avsluta filterinlärningsläget, klicka på filterknappen överst till vänster i QuickFolders-fältet."
   },
   "qf.filters.toggleMessage.title": {
-    "message": "Creating Filters"
+    "message": "Skapa filter"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
-    "message": "Customize Icon…"
+    "message": "Anpassa ikon…"
   },
   "qf.foldercontextmenu.quickfolders.removeIcon": {
-    "message": "Remove Customized Icon"
+    "message": "Ta bort anpassad ikon"
   },
   "qf.fpJsonFile": {
-    "message": "JSON File"
+    "message": "JSON-fil"
   },
   "qf.goNextUnread.auto": {
-    "message": "Go to next folder without asking (recommended)"
+    "message": "Gå till nästa mapp utan att fråga (rekommenderas)"
   },
   "qf.goNextUnread.none": {
-    "message": "Do nothing if no unread email is left in folder"
+    "message": "Gör ingenting om inga olästa e-postmeddelanden finns i mappen"
   },
   "qf.goNextUnread.prompt": {
-    "message": "Ask to go to next unread folder"
+    "message": "Fråga om att gå till nästa olästa mapp"
   },
   "qf.group.navigation": {
-    "message": "Message Navigation"
+    "message": "Meddelandenavigering"
   },
   "qf.label.ActiveTabColor": {
-    "message": "Active Tab Color:"
+    "message": "Färg på aktiv flik:"
   },
   "qf.label.ColoredTabPalette": {
-    "message": "Palette for Colored Tabs:"
+    "message": "Palett för färgade flikar:"
   },
   "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palette for tabs with a user-assigned color"
+    "message": "Palett för flikar som tilldelats en särskild färg"
   },
   "qf.label.DragOverBackground": {
-    "message": "Drag Over Color:"
+    "message": "Färg vid dra &amp; släpp över flik:"
   },
   "qf.label.HoveredTabColor": {
-    "message": "Hovered Tab Color:"
+    "message": "Färg på mushovrad flik:"
   },
   "qf.label.Toolbar": {
-    "message": "Toolbar"
+    "message": "Verktygsfält"
   },
   "qf.label.Toolbar.bottomLine": {
-    "message": "Bottom Line Width:"
+    "message": "Bredd för nedre kant:"
   },
   "qf.label.Toolbar.bottomLine.tip": {
-    "message": "The width of the line under tabs. Change its color with the Active Tab Color picker below."
+    "message": "Bredden för kanten under flikar. Ändra dess färg med färgväljare för aktiv flik nedan."
   },
   "qf.label.ToolbarBackground": {
-    "message": "Toolbar Background:"
+    "message": "Verktygsfältets bakgrund:"
   },
   "qf.label.UncoloredTab": {
-    "message": "Uncolored Tab"
+    "message": "Ofärgad flik"
   },
   "qf.label.UncoloredTab.tooltip": {
-    "message": "Look of (inactive) tabs without a specifically selected color"
+    "message": "Utseendet på flikar som inte tilldelats en särskild färg"
   },
   "qf.label.appearance": {
-    "message": "Appearance"
+    "message": "Utseende"
   },
   "qf.label.behavior": {
-    "message": "Behavior"
+    "message": "Beteende"
   },
   "qf.label.github": {
-    "message": "Report a bug / Request a feature…"
+    "message": "Rapportera en bugg / Uttryck önskemål om en ny funktion på github…"
   },
   "qf.label.buttonFontSizeNumeric": {
-    "message": "Button font size (0 for default):"
+    "message": "Textstorlek för knapp (0 för standard):"
   },
   "qf.label.cancel": {
-    "message": "Cancel"
+    "message": "Avbryt"
   },
   "qf.label.colors": {
-    "message": "Colors"
+    "message": "Färger"
   },
   "qf.label.contactLink": {
-    "message": "Contact me (English or German)…"
+    "message": "Kontakta oss (på engelska eller tyska)…"
   },
   "qf.label.currentFolderToolbar": {
-    "message": "Current Folder Toolbar"
+    "message": "Verktygsfält för aktuell mapp"
   },
   "qf.label.donate": {
-    "message": "Donate"
+    "message": "Donera"
   },
   "qf.label.donateLink": {
-    "message": "Visit the Donation Page…"
+    "message": "Gå till donationssidan…"
   },
   "qf.label.dragFolderLabel": {
-    "message": "Drag folders here to create a tab. Click the tab to go to the folder, drag messages to move/copy them there."
+    "message": "Dra mappar hit för att bokmärka dem. Klicka på bokmärket för att gå till mappen, dra och släpp meddelanden för att flytta/kopiera dem dit."
   },
   "qf.label.existingcategories": {
-    "message": "Existing categories:"
+    "message": "Befintliga kategorier:"
   },
   "qf.label.filterCountN_of_M": {
-    "message": "{0} of {1}"
+    "message": "{0} av {1}"
   },
   "qf.label.filterEntities": {
-    "message": "items"
+    "message": "objekt"
   },
   "qf.label.filterSingleEntity": {
-    "message": "1 item"
+    "message": "1 objekt"
   },
   "qf.label.getQuickFilters": {
-    "message": "For an improved and more powerful way of creating Filters please install my extension quickFilters!"
+    "message": "För ett bättre och kraftfullare sätt att skapa filter, installera mitt tillägg quickFilters!"
   },
   "qf.label.goNextUnread": {
-    "message": "Go to next unread email:"
+    "message": "Gå till nästa olästa e-postmeddelande:"
   },
   "qf.label.goNextUnread.tip": {
-    "message": "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder."
+    "message": "Vanligtvis frågar Thunderbird dig om du vill gå till nästa olästa e-postmeddelande om den behöver hoppa till en annan mapp."
   },
   "qf.label.haveLicense": {
-    "message": "Already have a License?"
+    "message": "Har du redan en licens?"
   },
   "qf.label.homePage": {
-    "message": "Find detailed information at the QuickFolders homepage at quickfolders.org…"
+    "message": "Utförlig information finns på QuickFolders webbplats på quickfolders.org…"
   },
   "qf.label.initdelay": {
-    "message": "[ms] init delay {1000 is standard}:"
+    "message": "Inledande fördröjning (ms) {standardvärdet är 1000}:"
   },
   "qf.label.insertLicense": {
-    "message": "Insert your personal License key here:"
+    "message": "Infoga din personliga licensnyckel here:"
   },
   "qf.label.insertLicense.tooltip": {
-    "message": "Your license key is contained in your order confirmation email from Fastspring."
+    "message": "Din licensnyckel finns i det orderbekräftelsemeddelande du fick från Fastspring."
   },
   "qf.label.instantApplyMsg": {
-    "message": "Note: if you only see a [Close] button below, the color settings might not work - as workaround, try right-clicking on an empty area of the quickfolders bar to select options… this will force the [Ok] button to be displayed, which should save colors."
+    "message": "OBS: Om du endast ser en [Stäng]-knapp nedan fungerar kanske inte färginställningarna. För att komma runt problemet, högerklicka på en tom yta i snabbmappsfältet och välj Inställningar… Det tvingar [OK]-knappen att visas, vilket borde spara färgerna."
   },
   "qf.label.keyboard": {
-    "message": "Keyboard Shortcuts"
+    "message": "Kortkommandon"
   },
   "qf.label.languagesLink": {
-    "message": "Add Translation…"
+    "message": "Gör en översättning…"
   },
   "qf.label.licenseValid": {
-    "message": "Your license is valid until:"
+    "message": "Din licens är giltig t.o.m.:"
   },
   "qf.label.mainToolbar": {
-    "message": "Main Toolbar Elements"
+    "message": "Element i huvudverktygsfältet"
   },
   "qf.label.menus": {
-    "message": "Menu Configuration"
+    "message": "Menykonfiguration"
   },
   "qf.label.menus.customIcon": {
-    "message": "Customize Icon"
+    "message": "Egen ikon"
   },
   "qf.label.menus.help": {
-    "message": "QuickFolders Help"
+    "message": "Hjälp om QuickFolders"
   },
   "qf.label.menus.hideQFunlessCTRL": {
-    "message": "Only display with CTRL key held"
+    "message": "Visa endast när CTRL hålls ned"
   },
   "qf.label.menus.lineBreak": {
-    "message": "Insert Line Break"
+    "message": "Infoga radbrytning"
   },
   "qf.label.menus.mailFolder": {
-    "message": "Mail Commands"
+    "message": "E-postkommandon"
   },
   "qf.label.menus.options": {
-    "message": "Options"
+    "message": "Inställningar"
   },
   "qf.label.menus.quickFolder": {
-    "message": "QuickFolders Commands"
+    "message": "QuickFolders-kommandon"
   },
   "qf.label.menus.separator": {
-    "message": "Insert Separator"
+    "message": "Infoga avgränsare"
   },
   "qf.label.menus.support": {
-    "message": "QuickFolders Support"
+    "message": "QuickFolders supporttjänst"
   },
   "qf.label.misc": {
-    "message": "Miscellaneous"
+    "message": "Övrigt"
   },
   "qf.label.newcategory": {
-    "message": "New category:"
+    "message": "Ny kategori:"
   },
   "qf.label.pixels": {
-    "message": "pixels"
+    "message": "pixlar"
   },
   "qf.label.quickFilters.link": {
-    "message": "get quickFilters!"
+    "message": "Hämta quickFilters!"
   },
   "qf.label.quickfolders": {
     "message": "QuickFolders:"
   },
   "qf.label.renameselectedcategory": {
-    "message": "Rename selected category"
+    "message": "Byt namn på markerad kategori"
   },
   "qf.label.setcolors": {
-    "message": "Set [Text Color], Background Color"
+    "message": "Ange [Textfärg], Bakgrundsfärg"
   },
   "qf.label.tabContent": {
-    "message": "Tab Content"
+    "message": "Flikinnehåll"
   },
   "qf.label.testfolder": {
-    "message": "Test Folder"
+    "message": "Testmapp"
   },
   "qf.label.testfolder2": {
-    "message": "Test Folder 2"
+    "message": "Testmapp 2"
   },
   "qf.label.themes": {
-    "message": "Themes:"
+    "message": "Teman:"
   },
   "qf.label.toolbarPosition": {
-    "message": "QuickFolders Bar Position"
+    "message": "QuickFolders verktygsfält Position"
   },
   "qf.label.versionhistory": {
-    "message": "Read Version History…"
+    "message": "Läs versionshistoriken…"
   },
   "qf.licenseValidation.expired": {
-    "message": "The license key you entered is expired. Please press the button below to renew your license."
+    "message": "Licensnyckeln du angav har förfallit. Klicka på knappen nedan för att förnya din licens."
   },
   "qf.licenseValidation.failed": {
-    "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."
+    "message": "Licensnyckeln du angav är ogiltig. Läs instruktionerna i meddelandet du fick från FastSpring. Kontakta oss via supportfliken om problemet kvarstår."
   },
   "qf.licenseValidation.guessAddon": {
-    "message": "(The key entered may be for {2})."
+    "message": "(Den angivna nyckeln kan vara för {2})."
   },
   "qf.licenseValidation.invalidAddon": {
-    "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
+    "message": "Licensnyckeln du angav kanske är till ett annat tillägg. Licensnycklar för {0} börjar med {1}."
   },
   "qf.licenseValidation.invalidMail": {
-    "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
+    "message": "E-postadressen som är knuten till licensnyckeln [{1}] är för närvarande inte listad i något av dina e-postkonton. Kontakta oss via supportfliken för assistans."
   },
   "qf.licenseValidation.notMatchedMail": {
-    "message": "Encrypted Email address does not match readable one."
+    "message": "Den krypterade e-postadressen matchar inte den läsbara adressen."
   },
   "qf.licenseValidation.passed": {
-    "message": "Thanks for registering QuickFolders Pro! All premium features are now unlocked."
+    "message": "Tack för att du registrerar QuickFolders Pro! Alla licensbelagda funktioner är nu tillgängliga."
   },
   "qf.licenseValidation.standard": {
-    "message": "Thanks for registering a QuickFolders License - You are helping the Add-on immensely! If you need more features you can always upgrade to the Pro License."
+    "message": "Tack för att du registrerade en QuickFolders -licens - Du hjälper tillägget oerhört! Om du behöver fler funktioner kan du alltid uppgradera till Pro -licensen."
   },
   "qf.loadConfig": {
-    "message": "Load Configuration…"
+    "message": "Ladda konfiguration…"
   },
   "qf.menu.Color": {
-    "message": "Color"
+    "message": "Färg"
   },
   "qf.menu.tabColor": {
-    "message": "Default Color!"
+    "message": "Ingen färg!"
   },
   "qf.menuitem.quickfolders.changeOrder": {
-    "message": "Change the order of the tabs"
+    "message": "Ändra ordningen på dina bokmärken"
   },
   "qf.menuitem.quickfolders.changeOrderAccess": {
-    "message": "C"
+    "message": "Ä"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Find orphaned Tabs"
+    "message": "Sök efter övergivna flikar"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
-    "message": "T"
+    "message": "ö"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
-    "message": "Display Current Folder Tools"
+    "message": "Visa verktyg för aktuell mapp"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
-    "message": "D"
+    "message": "V"
   },
   "qf.menuitem.quickfolders.filters": {
-    "message": "Create Message Filters…"
+    "message": "Skapa meddelandefilter…"
   },
   "qf.menuitem.quickfolders.filtersAccess": {
     "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
-    "message": "Find Folder…"
+    "message": "Sök efter mapp …"
   },
   "qf.menuitem.quickfolders.findAccess": {
-    "message": "i"
+    "message": "m"
   },
   "qf.menuitem.quickfolders.help": {
-    "message": "QuickFolders Help…"
+    "message": "QuickFolders hjälpsektion…"
   },
   "qf.menuitem.quickfolders.helpAccess": {
-    "message": "H"
+    "message": "h"
   },
   "qf.menuitem.quickfolders.options": {
-    "message": "QuickFolders Options…"
+    "message": "Inställningar för QuickFolders…"
   },
   "qf.menuitem.quickfolders.optionsAccess": {
-    "message": "O"
+    "message": "I"
   },
   "qf.menuitem.quickfolders.register": {
-    "message": "QuickFolders Pro License…"
+    "message": "Registrera QuickFolders Pro…"
   },
   "qf.menuitem.quickfolders.repairTabs": {
-    "message": "Refresh Visible Tabs!"
+    "message": "Uppdatera synliga flikar!"
   },
   "qf.menuitem.quickfolders.repairTabsAccess": {
-    "message": "V"
+    "message": "U"
   },
   "qf.menuitem.quickfolders.repairTreeIcons": {
-    "message": "Repair Tree Icons"
+    "message": "Reparera trädstruktursikoner"
   },
   "qf.menuitem.quickfolders.splash": {
-    "message": "Latest Update News…"
+    "message": "Senaste uppdateringsnyheter…"
   },
   "qf.menuitem.quickfolders.support": {
-    "message": "QuickFolders Support…"
+    "message": "QuickFolders supportsektion…"
   },
   "qf.menuitem.quickfolders.supportAccess": {
-    "message": "S"
-  },
-  "qf.menuitem.quickfolders.togglePaintMode": {
-    "message": "Paint mode"
-  },
-  "qf.menuitem.quickfolders.togglePaintModeAccess": {
     "message": "p"
   },
+  "qf.menuitem.quickfolders.togglePaintMode": {
+    "message": "Målarläge"
+  },
+  "qf.menuitem.quickfolders.togglePaintModeAccess": {
+    "message": "M"
+  },
   "qf.notification.categoryIsReadOnly": {
-    "message": "This item cannot be deleted."
+    "message": "Detta objekt kan inte raderas."
   },
   "qf.notification.dontShowAgain": {
-    "message": "Do not show this message again."
+    "message": "Visa inte detta meddelande igen."
   },
   "qf.notification.newsFlash": {
-    "message": "$addonName$ was updated! Important news…",
+    "message": "$addonName$ uppdaterades! Viktiga nyheter…",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1036,31 +1036,31 @@
     }
   },
   "qf.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
+    "message": "Förläng licens"
   },
   "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+    "message": "Detta förlänger datumet för den nuvarande licensen med 1 år. Det är vanligtvis billigare än en ny licens."
   },
   "qf.notification.premium.btn.getLicense": {
-    "message": "Buy License"
+    "message": "Skaffa en licens!"
   },
   "qf.notification.premium.btn.hotKey": {
-    "message": "L"
+    "message": "l"
   },
   "qf.notification.premium.btn.renewLicense": {
-    "message": "Renew License"
+    "message": "Förnya licens"
   },
   "qf.notification.premium.btn.upgrade": {
-    "message": "Upgrade to Pro"
+    "message": "Uppgradera till PRO"
   },
   "qf.notification.premium.readingList": {
-    "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
+    "message": "Du har nu {1} definierade bokmärken. Gratisversionen av QuickFolders tillåter maximalt {2}."
   },
   "qf.notification.premium.shortcut": {
-    "message": "The premium license additionally gives you a configurable keyboard shortcut."
+    "message": "Premiumlicensen ger dig dessutom en konfigurerbar kortkommando."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "You now use $cntIcons$ custom icons for Tabs. The unpaid version of QuickFolders supports a maximum of $maxFreeIcons$. The standard license supports $maxStdIcons$. QuickFolders Pro has no limit.",
+    "message": "Du använder nu $cntIcons$ anpassade ikoner för flikar. Den fria versionen av QuickFolders stöder högst $maxFreeIcons$. Standardlicensen stöder $maxStdIcons$. QuickFolders Pro har ingen gräns.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1077,643 +1077,643 @@
     }
   },
   "qf.notification.premium.text": {
-    "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it."
+    "message": "{1} är en Premium -funktion. Skaffa en QuickFolders Pro -licens för att använda den."
   },
   "qf.notification.premium.title": {
-    "message": "Premium Feature"
+    "message": "Licensbelagd funktion"
   },
   "qf.notification.standard.readingList": {
-    "message": "You have now {1} bookmarks defined. The standard license of QuickFolders allows a maximum of {2}."
+    "message": "Du har nu {1} bokmärken definierade. Standardlicensen för QuickFolders tillåter högst {2}."
   },
   "qf.notification.standard.text": {
-    "message": "{1} is a license restricted feature, please get a QuickFolders License for using it."
+    "message": "{1} är en licensbegränsad funktion. Skaffa en QuickFolders -licens för att använda den."
   },
   "qf.notification.standard.title": {
-    "message": "Licensed Feature"
+    "message": "Standardfunktion"
   },
   "qf.options.LayoutColorAppearance": {
-    "message": "Individual Tab Color Appearance"
+    "message": "Flikfärgsutseende"
   },
   "qf.options.LayoutColorAppearanceFilled": {
-    "message": "(filled style)"
+    "message": "(fylld stil)"
   },
   "qf.options.LayoutColorAppearanceStriped": {
-    "message": "(striped style)"
+    "message": "(randig stil)"
   },
   "qf.options.label.themeAuthor": {
-    "message": "Theme Author:"
+    "message": "Temats skapare:"
   },
   "qf.options.theme.pastelColors": {
-    "message": "Pastel Colors"
+    "message": "Pastellfärger"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
-    "message": "Bottom:"
+    "message": "Nederst:"
   },
   "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Top:"
+    "message": "Överst:"
   },
   "qf.options.themes.customCornerRadius.checkbox": {
-    "message": "Custom Corner Radius"
+    "message": "Anpassad hörnradie"
   },
   "qf.options.themes.showBorders.checkbox": {
-    "message": "Always Display Borders"
+    "message": "Visa alltid kantlinjer"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Click for version history."
+    "message": "Klicka för att visa versionshistorik."
   },
   "qf.palette.inactive": {
-    "message": "Same as inactive Tabs"
+    "message": "Som inaktiva flikar"
   },
   "qf.palette.night": {
-    "message": "Night Vision"
+    "message": "Mörkerkikare"
   },
   "qf.palette.pastel": {
-    "message": "Pastel Colors"
+    "message": "Pastellfärger"
   },
   "qf.palette.standard": {
-    "message": "Standard Palette"
+    "message": "Standardpalett"
   },
   "qf.palette.twoColors": {
-    "message": "2 Colors"
+    "message": "2 färger"
   },
   "qf.pastefolders.tooltip": {
-    "message": "Delete all QuickFolders and read new configuration from clipboard"
+    "message": "Radera alla QuickFolders och läs nya konfigurationer från urklipp"
   },
   "qf.pathFormat.AccountAndPath": {
-    "message": "Account - Folder Path"
+    "message": "Konto - Mappsökväg"
   },
   "qf.pathFormat.PathOnly": {
-    "message": "Folder Path"
+    "message": "Mappsökväg"
   },
   "qf.pathFormat.URI": {
-    "message": "Folder URI"
+    "message": "Mapp-URI"
   },
   "qf.pathFormat.folderAndAccount": {
-    "message": "Folder Name - Mail Account"
+    "message": "Mappnamn - E-postkonto"
   },
   "qf.pathFormat.folderName": {
-    "message": "Folder Name"
+    "message": "Mappnamn"
   },
   "qf.pathFormat.maxDepth": {
-    "message": "Maximum path depth:"
+    "message": "Maximalt sökvägsdjup:"
   },
   "qf.pathFormat.tooltip": {
-    "message": "Maximum number of folders displayed in folder path."
+    "message": "Maximalt antal mappar som visas i mappsökvägen."
   },
   "qf.prefwindow.quickfolders.options": {
-    "message": "QuickFolders Options"
+    "message": "Inställningar för QuickFolders"
   },
   "qf.premium.renewLicense.tooltip": {
-    "message": "Your license expired {1} days ago"
+    "message": "Din licens löpte ut {1} dagar sedan"
   },
   "qf.premiumConfig": {
-    "message": "Premium Features"
+    "message": "Premiumfunktioner"
   },
   "qf.prompt.category.deleteMultiple": {
-    "message": "Ok to delete multiple categories?"
+    "message": "Okej att radera flera kategorier?"
   },
   "qf.prompt.contact.subject": {
-    "message": "Please enter a short subject line:"
+    "message": "Ange en kort, beskrivande ämnesrubrik:"
   },
   "qf.prompt.contact.title": {
-    "message": "Contact QuickFolders Support"
+    "message": "Kontakta QuickFolders hjälpcenter"
   },
   "qf.prompt.loadFolders.confirm": {
-    "message": "Accept the loaded Tabs?"
+    "message": "Accepterar du flikarna som visas på skärmen?"
   },
   "qf.prompt.newFolder.createQFtab": {
-    "message": "Also create a QuickFolders Tab"
+    "message": "Skapa också en QuickFolders-flik"
   },
   "qf.prompt.newFolder.newChildName": {
-    "message": "Enter name for new child folder under {0}"
+    "message": "Ange namnet för den nya undermappen under {0}"
   },
   "qf.prompt.newFolder.title": {
-    "message": "New Folder"
+    "message": "Ny mapp"
   },
   "qf.prompt.pasteFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
+    "message": "Detta kommer att radera alla QuickFolders-flikar och ersättas med objekten i ditt urklipp.\n{0} element hittades i urklipp.\nÄr du säker?"
   },
   "qf.prompt.pasteFolders.confirm": {
-    "message": "Keep the displayed Tabs?"
+    "message": "Behålla de synliga flikarna?"
   },
   "qf.prompt.readingList.removeItem": {
-    "message": "Remove this item?"
+    "message": "Ta bort detta objekt?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?"
+    "message": "Kan inte hitta e-postmeddelandet, det kanske har flyttats någonstans under tiden.\n{1}\n\nVill du söka efter det?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
+    "message": "Detta tar bort alla QuickFolders-flikar och ersätter dem med objekten från filen.\n{0} poster lästes.\nErsätt flikar?"
   },
   "qf.prompt.switchDomainLicense": {
-    "message": "Switch to Domain License?"
+    "message": "Byt till domänlicens?"
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key always clears messages list."
+    "message": "Escape Key rensar meddelandelistan."
   },
   "qf.quickMove.excludeAccounts": {
-    "message": "Select any account that should be excluded from the search results:"
+    "message": "Välj vilket konto som ska uteslutas från sökresultaten:"
   },
   "qf.quickMove.lockAccount": {
-    "message": "Only show results from current mail account."
+    "message": "Visa endast resultat från aktuellt e-postkonto."
   },
   "qf.quickMove.maxResults": {
-    "message": "Maximum number of search results"
+    "message": "Maximalt antal sökresultat"
   },
   "qf.quickMove.path.format": {
-    "message": "Display Format:"
+    "message": "Visningsformat:"
   },
   "qf.quickMove.silent": {
-    "message": "Omit notifications after moving mails."
+    "message": "Ingen avisering efter flytt av e-post."
   },
   "qf.register.licenseValid.expired": {
-    "message": "Your license expired on:"
+    "message": "Din licens löpte ut:"
   },
   "qf.search.advanced": {
-    "message": "Advanced search settings…"
+    "message": "Avancerade sökinställningar…"
   },
   "qf.storeConfig": {
-    "message": "Save Configuration…"
+    "message": "Spara konfiguration…"
   },
   "qf.tab.advanced": {
-    "message": "Advanced"
+    "message": "Avancerat"
   },
   "qf.tab.general": {
-    "message": "General"
+    "message": "Allmänt"
   },
   "qf.tab.gopro": {
-    "message": "Licenses"
+    "message": "Licenser"
   },
   "qf.tab.layout": {
-    "message": "Bling My Tabs!"
+    "message": "Utseende"
   },
   "qf.tab.quickhelp": {
-    "message": "Quick Help"
+    "message": "Snabbhjälp"
   },
   "qf.tab.support": {
     "message": "Support"
   },
   "qf.textbox.searchBox.emptyText": {
-    "message": "Search filters by name…"
+    "message": "Sök filter…"
   },
   "qf.textbox.searchBox.toolTip": {
-    "message": "enter a keyword to search filters by name"
+    "message": "ange ett nyckelord för att söka bland filtren efter namn"
   },
   "qf.themes.applePills.description": {
-    "message": "A pleasant layout for our Mac users - plain and simple; with some optional color perks."
+    "message": "En tilltalande layout för Mac-användare - enkel och anspråkslös med vissa valfria färgalternativ."
   },
   "qf.themes.applePills.label": {
-    "message": "Apple Pills"
+    "message": "Äppelpiller"
   },
   "qf.themes.flatButtons.description": {
-    "message": "Standard toolbar buttons - this is the closest you can get to the look of original version 0.5!"
+    "message": "Standardverktygsfältsknappar - det här är det närmaste du kan komma originalutseendet i version 0.5!"
   },
   "qf.themes.flatButtons.label": {
-    "message": "Toolbar Buttons"
+    "message": "Verktygsfältsknappar"
   },
   "qf.themes.flatTabs.description": {
-    "message": "Modern tabbed look - fully customizable. Looks great on Windows and Linux."
+    "message": "Fullständigt anpassningsbar flikbläddringslayout - ser fantastisk ut på Windows och Linux."
   },
   "qf.themes.flatTabs.label": {
-    "message": "Flat Style"
+    "message": "Platt stil"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layout resembles the tabs of your OS - less coloring options but may look more integrated and in sync with your Mail Client Themes."
+    "message": "Layouten liknar flikarna i ditt OS - färre färgalternativ, men kan se mer integrerad ut och smälta in i dina e-postprogramsteman."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Native Tabs"
+    "message": "Ursprungliga flikar"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pushbuttons - these look like standard buttons on dialog windows"
+    "message": "Tryckknappar - ser ut som standardknappar i dialogfönster"
   },
   "qf.themes.realButtons.label": {
-    "message": "Pushbuttons"
+    "message": "Tryckknappar"
   },
   "qf.toolbar.quickfolders.toolbar": {
-    "message": "QuickFolders Toolbar"
+    "message": "QuickFolders verktygsfält"
   },
   "qf.toolbarIconSize": {
-    "message": "Large Toolbar Icons"
+    "message": "Stora verktygsfältikoner"
   },
   "qf.toolbarMinimumHeight": {
-    "message": "Minimum height:"
+    "message": "Minimihöjd:"
   },
   "qf.toolbarMinimumHeight.tooltip": {
-    "message": "For Mac systems who encounter [Bug 25021]"
+    "message": "För Mac-datorer som stöter på buggen [Bug 25021]"
   },
   "qf.toolbarPosition.tooltip": {
-    "message": "0 = on top of other toolbars; 100 = bottom. High value depends on other Add-ons."
+    "message": "0 = ovanpå andra verktygsfält; 100 = botten. Högt värde beror på andra tillägg."
   },
   "qf.tooltip.RecentFolders": {
-    "message": "Recent Folders"
+    "message": "Nyligen använda mappar"
   },
   "qf.tooltip.closeToolbar": {
-    "message": "Close this toolbar"
+    "message": "Stäng detta verktygsfält"
   },
   "qf.tooltip.conversationRead": {
-    "message": "Mark Conversation as Read and jump to next unread Email"
+    "message": "Märk konversation som läst och hoppa till nästa olästa meddelande"
   },
   "qf.tooltip.emailIcon": {
-    "message": "Current Email - drag to a QuickFolders tab to move Mail"
+    "message": "Aktuellt meddelande - dra till en QuickFolders-flik för att flytta ett meddelande"
   },
   "qf.tooltip.filterStart": {
-    "message": "Activate filter teaching. Dragging emails on a QuickFolder creates new Filters."
+    "message": "Aktivera filterinlärningsläget. Att dra meddelanden till en QuickFolders-mapp skapar nya filter."
   },
   "qf.tooltip.filters": {
-    "message": "Stop creating filters."
+    "message": "Sluta skapa filter."
   },
   "qf.tooltip.folderUp": {
-    "message": "Go to Parent Folder"
+    "message": "Gå till överordnad mapp"
   },
   "qf.tooltip.goNextFolder": {
-    "message": "Move to the next [unread] message"
+    "message": "Gå till nästa olästa meddelande"
   },
   "qf.tooltip.goPreviousFolder": {
-    "message": "Move to the previous [unread] message"
+    "message": "Gå till föregående olästa meddelande"
   },
   "qf.tooltip.mailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "E-postmappkommandon"
   },
   "qf.tooltip.mainOptions": {
-    "message": "QuickFolders options and advanced commands"
+    "message": "Inställningar och avancerade kommandon för QuickFolders"
   },
   "qf.tooltip.paintCanActive": {
-    "message": "Paint mode: click for palette, click tabs to color them, right-click tabs to extract their color"
+    "message": "Målarläge: Klicka för att öppna paletten, klicka på flikar för att färga dem, högerklicka flikar för att hämta deras färg"
   },
   "qf.tooltip.quickFoldersNavToggle": {
-    "message": "toggle navigating unread only / all mails"
+    "message": "växla navigering bland endast olästa/alla e-brev"
   },
   "qf.tooltip.quickMove": {
-    "message": "Drag an email here then enter target folder name (quickMove); or click to jump into the folder (quickJump)."
+    "message": "quickMove: dra e-brev hit och ange därefter målmappens namn"
   },
   "qf.tooltip.skipUnreadFolder": {
-    "message": "Skip to next Unread Folder"
+    "message": "Gå till nästa olästa mapp"
   },
   "qf.tooltip.threadIcon": {
-    "message": "Current Thread - drag to a QuickFolders tab to move Conversation"
+    "message": "Aktuell tråd - dra till en QuickFolders-flik för att flytta en konversation"
   },
   "qf.youtube.description": {
-    "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
+    "message": "För detaljerade videor om tillägg till Thunderbird och hur man använder QuickFolders, besök min YouTube-kanal Thunderbird Daily."
   },
   "qf.youtube.link": {
-    "message": "Watch Videos about QuickFolders…"
+    "message": "Se videor om QuickFolders…"
   },
   "qf.youtube.tbdaily": {
-    "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
+    "message": "Besök Thunderbird Daily - YouTube-kanalen för tips och guider om hur man använder QuickFolders"
   },
   "qfAlertCopyString": {
-    "message": "Folder String copied to Clipboard!"
+    "message": "Mappsträngen kopierades till Urklipp!"
   },
   "qfAlertDropFolderVirtual": {
-    "message": "You can not copy mail to a virtual folder!"
+    "message": "Du kan inte kopiera meddelanden till en virtuell mapp!"
   },
   "qfAlertUpgradeSuccess": {
-    "message": "QuickFolders was successfully upgraded to version:"
+    "message": "QuickFolders har slutfört uppgraderingen till version:"
   },
   "qfAll": {
-    "message": "(Display All)"
+    "message": "(Visa alla)"
   },
   "qfCantMoveFolder": {
-    "message": "Folder {0} cannot be moved."
+    "message": "Mappen {0} kan inte flyttas."
   },
   "qfColorPickingWIP": {
-    "message": "Sorry, this feature is still Work in Progress!"
+    "message": "Ledsen, den här funktionen är fortfarande under utveckling!"
   },
   "qfCommandAccess": {
     "message": "Q"
   },
   "qfCommandPopup": {
-    "message": "QuickFolders Commands"
+    "message": "QuickFolders-kommandon"
   },
   "qfCompactFolder": {
-    "message": "Compact Folder"
+    "message": "Komprimera mapp"
   },
   "qfCompactFolderAccess": {
-    "message": "C"
+    "message": "o"
   },
   "qfCompacted": {
-    "message": "Compacted:"
+    "message": "Komprimerad:"
   },
   "qfCompactedBytesFreed": {
-    "message": "Bytes expunged"
+    "message": "Borttagna byte"
   },
   "qfCompactedFolder": {
-    "message": "Compacted folder"
+    "message": "Komprimerade mapp"
   },
   "qfCompactedNewFolderSize": {
-    "message": "New size"
+    "message": "Ny storlek"
   },
   "qfCompactedOriginalFolderSize": {
-    "message": "Original size"
+    "message": "Originalstorlek"
   },
   "qfConfirmCopyFolder": {
-    "message": "Really copy folder {0} into {1}?"
+    "message": "Vill du verkligen kopiera mappen {0} till {1}?"
   },
   "qfConfirmMoveFolder": {
-    "message": "Really move folder {0} into {1}?"
+    "message": "Vill du verkligen flytta mappen {0} till {1}?"
   },
   "qfConfirmVersionLink": {
-    "message": "Display version history for QuickFolders"
+    "message": "Visa versionshistoriken för QuickFolders"
   },
   "qfDeadTabsCount": {
-    "message": "# orphaned tabs found:"
+    "message": "# kvarlämnade flikar hittade:"
   },
   "qfDeadTabsDeleted": {
-    "message": "# orphaned tabs removed:"
+    "message": "# kvarlämnade flikar borttagna:"
   },
   "qfDeleteFolder": {
-    "message": "Delete Folder"
+    "message": "Ta bort mapp"
   },
   "qfDeleteFolderAccess": {
-    "message": "D"
+    "message": "b"
   },
   "qfDeleteJunk": {
-    "message": "Purge Junk"
+    "message": "Töm skräppost"
   },
   "qfDown": {
-    "message": "Down"
+    "message": "Nedåt"
   },
   "qfDownloadAll": {
-    "message": "Download All"
+    "message": "Hämta alla"
   },
   "qfEditVirtual": {
-    "message": "Search Properties…"
+    "message": "Sökegenskaper…"
   },
   "qfEditVirtualAccess": {
     "message": "S"
   },
   "qfEmptiedJunk": {
-    "message": "Emptied junk and compacted folder"
+    "message": "Tömde skräppostmappen och komprimerade den"
   },
   "qfEmptiedTrash": {
-    "message": "Emptied trash."
+    "message": "Tömde papperskorgen."
   },
   "qfEmptyJunk": {
-    "message": "Empty Junk"
+    "message": "Töm skräppostmappen"
   },
   "qfEmptyJunkAccess": {
-    "message": "J"
+    "message": "ö"
   },
   "qfEmptyTrash": {
-    "message": "Empty Trash"
+    "message": "Töm papperskorgen"
   },
   "qfEmptyTrashAccess": {
-    "message": "T"
+    "message": "p"
   },
   "qfFolderAccess": {
-    "message": "F"
+    "message": "M"
   },
   "qfFolderAlreadyBookmarked": {
-    "message": "Folder already has a tab."
+    "message": "Mappen är redan bokmärkt."
   },
   "qfFolderOpenLocation": {
-    "message": "Explore Folder Location…"
+    "message": "Öppna mappsökväg…"
   },
   "qfFolderPopup": {
-    "message": "Mail Folder Commands"
+    "message": "Meddelandemappkommandon"
   },
   "qfFolderProperties": {
-    "message": "Folder Properties…"
+    "message": "Mappegenskaper…"
   },
   "qfFolderPropertiesAccess": {
-    "message": "P"
+    "message": "e"
   },
   "qfFolderRepair": {
-    "message": "Repair Folder"
+    "message": "Reparera mapp"
   },
   "qfFolderRepairAccess": {
-    "message": "F"
+    "message": "R"
   },
   "qfFolderRepairedMsg": {
-    "message": "Folder was repaired:"
+    "message": "En mapp reparerades:"
   },
   "qfGetMail": {
-    "message": "Get Messages"
+    "message": "Hämta meddelanden"
   },
   "qfGetMailAccess": {
-    "message": "G"
+    "message": "H"
   },
   "qfInsertLineBreak": {
-    "message": "Insert Line Break"
+    "message": "Infoga radbrytning"
   },
   "qfInsertSeparator": {
-    "message": "Insert Separator"
+    "message": "Infoga avgränsare"
   },
   "qfInvalidTabCount": {
-    "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
+    "message": "Hittade {0} flikar som har en ogiltig mappdestination. Du kan ta bort dessa med kommandot 'Hitta föräldralösa flikar'."
   },
   "qfMarkAllRead": {
-    "message": "Mark folder as Read"
+    "message": "Märk mappen som läst"
   },
   "qfMarkAllReadAccess": {
-    "message": "M"
+    "message": "l"
   },
   "qfMarkAllReadRecursive": {
     "message": "Mark folder + subfolders Read"
   },
   "qfMenuColor": {
-    "message": "Color"
+    "message": "Färg"
   },
   "qfMenuTabColorDisabledInTheme": {
-    "message": "Select different Theme to support coloring…"
+    "message": "Välj ett annat tema för att stödja färger…"
   },
   "qfMenuTabColorNone": {
-    "message": "Default Color!"
+    "message": "Ingen färg!"
   },
   "qfMenuTabColorPopup": {
-    "message": "Tab Color"
+    "message": "Flikfärg"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Drag folders to an empty area of the toolbar - For MOVING a folder, hold down SHIFT and drag to a Tab."
+    "message": "Dra mappar till ett tomt område i verktygsfältet - För att FLYTTA en mapp, håll ned SKIFT och dra till en flik."
   },
   "qfNavigationWrapped": {
-    "message": "No other unread folders found, continuing in {1}."
+    "message": "Inga andra olästa mappar hittades, fortsätter om {1}."
   },
   "qfNewFolder": {
-    "message": "New Subfolder…"
+    "message": "Ny undermapp…"
   },
   "qfNewFolderAccess": {
     "message": "N"
   },
   "qfNewName": {
-    "message": "Enter a new name for the tab"
+    "message": "Ange ett nytt namn för bokmärket"
   },
   "qfNewSubFolder": {
-    "message": "Create subfolder {0} » {1}…"
+    "message": "Skapa undermapp {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "No matching parent folders!"
+    "message": "Inga matchande överordnade mappar!"
   },
   "qfPaintToggle": {
-    "message": "Finish Paint Mode"
+    "message": "Avsluta målarläget"
   },
   "qfRecentFolders": {
-    "message": "Recent Folders"
+    "message": "Nyligen använda mappar"
   },
   "qfRemoveBookmark": {
-    "message": "Remove tab"
+    "message": "Ta bort bokmärke"
   },
   "qfRemoveBookmarkAccess": {
-    "message": "R"
+    "message": "T"
   },
   "qfRemoveCategory": {
-    "message": "Remove from current Category"
+    "message": "Ta bort aktuell kategori"
   },
   "qfRemoveCategoryPrompt": {
-    "message": "The category is '{1}' - Remove that?"
+    "message": "Vill du ta bort kategorin \"{1}\"?"
   },
   "qfRemoveIcon": {
-    "message": "Remove Customized Icon"
+    "message": "Ta bort ikon"
   },
   "qfRemoveLineBreak": {
-    "message": "Remove Line Break"
+    "message": "Ta bort radbrytning"
   },
   "qfRemoveSeparator": {
-    "message": "Remove Separator"
+    "message": "Ta bort avgränsare"
   },
   "qfRenameBookmark": {
-    "message": "Rename tab…"
+    "message": "Byt namn på bokmärke…"
   },
   "qfRenameBookmarkAccess": {
-    "message": "N"
+    "message": "n"
   },
   "qfRenameFolder": {
-    "message": "Rename Folder…"
+    "message": "Byt namn på mapp…"
   },
   "qfRenameFolderAccess": {
-    "message": "R"
+    "message": "y"
   },
   "qfRepairTreeIconsMissing": {
-    "message": "The following icon files do not exist:"
+    "message": "Följande ikonfiler finns inte:"
   },
   "qfSavePrompt": {
-    "message": "Save these changes?"
+    "message": "Spara dessa ändringar?"
   },
   "qfSelectIcon": {
-    "message": "Customize Icon…"
+    "message": "Ikon…"
   },
   "qfSetCategory": {
-    "message": "Set Tab Category…"
+    "message": "Ange bokmärkeskategori…"
   },
   "qfSetCategoryA": {
-    "message": "C"
+    "message": "k"
   },
   "qfShowAlways": {
-    "message": "Show Always!"
+    "message": "Visa alltid!"
   },
   "qfShowNever": {
-    "message": "Never Show (Folder Alias)"
+    "message": "Visa aldrig (mappalias)"
   },
   "qfTabAdvancedOptions": {
-    "message": "Tab-specific Properties…"
+    "message": "Flikspecifika egenskaper …"
   },
   "qfTabDeleteOption": {
-    "message": "Do this with the remaining {0} folders."
+    "message": "Gör detta med de återstående {0} -mapparna."
   },
   "qfTabDeletePrompt": {
-    "message": "Delete this Tab?"
+    "message": "Ta bort denna flik?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": This is a tab that points to an invalid folder."
+    "message": ": Det här är en flik som hänvisar till en ogiltig mapp:"
   },
   "qfTidyDeadFolders": {
-    "message": "This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
+    "message": "Det här kommer att ta bort de flikar som inte har några giltiga mappar tilldelade sig.\nDet här kan hända om en mapp tas bort eller flyttas utan att QuickFolders meddelas om ändringen."
   },
   "qfTreeIconsInvalidCount": {
-    "message": "{0} icons missing"
+    "message": "{0} ikoner saknas"
   },
   "qfTreeIconsRepairedCount": {
-    "message": "{0} tree icons repaired"
+    "message": "{0} trädikoner reparerades"
   },
   "qfUncategorized": {
-    "message": "(Uncategorized)"
+    "message": "(Okategoriserad)"
   },
   "qfUp": {
-    "message": "Up"
+    "message": "Uppåt"
   },
   "qfUpdatedThemesEngineMsg": {
-    "message": "A new theming engine for QuickFolders has been installed. Please select an item from the drop down box and click [Ok]."
+    "message": "En ny temamotor för QuickFolders har installerats. Välj ett objekt ur rullgardinslistan och klicka på [OK]."
   },
   "qfVersionDisableOnUpdate": {
-    "message": "Stop displaying version history after updates?"
+    "message": "Sluta visa versionshistoriken efter uppdateringar?"
   },
   "quickMove.help.head": {
-    "message": "Help for {1}"
+    "message": "Hjälp för {1}"
   },
   "quickMove.help.head.advanced": {
-    "message": "Advanced Features"
+    "message": "Avancerade funktioner"
   },
   "quickMove.help.l1a": {
-    "message": "Type the start of a folder name or words in it, delimited by space."
+    "message": "Skriv in början på ett mappnamn eller ord i det, avgränsat med mellanslag."
   },
   "quickMove.help.l1b": {
-    "message": "The following characters are regarded as word boundaries and don't need to be typed:"
+    "message": "Följande tecken betraktas som ordgränser och behöver inte skrivas:"
   },
   "quickMove.help.l2a": {
-    "message": "Type {1} for entering grandparent/parent/searched folder."
+    "message": "Skriv {1} för att ange far-och farförälder/förälder/sökt mapp."
   },
   "quickMove.help.l2b": {
-    "message": "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
+    "message": "De första två bokstäverna i en överordnad mapp är vanligtvis tillräckliga. Du kan också skapa nya undermappar med denna syntax."
   },
   "quickMove.help.l3a": {
-    "message": "Type {1} for skipping any folders in between."
+    "message": "Skriv {1} för att hoppa över alla mappar däremellan."
   },
   "quickMove.help.l3b": {
-    "message": "This is useful for deeper, more complicated or unknown folder hierarchies."
+    "message": "Detta är användbart för djupare, mer komplicerade eller okända mapphierarkier."
   },
   "quickMove.help.advanced": {
-    "message": "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
+    "message": "Mer avancerade funktioner som tangentbordsgenvägar för att gå till en mapp / flytta e-post eller exkludera mappar från sökresultat kan konfigureras på fliken QuickFolders Pro. För att få tillgång till dessa och andra premiumfunktioner, skaffa en Pro-licens och stödja framtiden för QuickFolders."
   },
   "quickMove.singleMessage.goNext": {
-    "message": "Display next mail after moving current one"
+    "message": "Visa nästa e-post efter att ha flyttat aktuell e-post"
   },
   "quickMove.singleMessage.reopenTab": {
-    "message": "Reopen original mail after it was moved"
+    "message": "Öppna originalpost efter att det har flyttats"
   },
   "quickMove.singleMessageTabs": {
-    "message": "Single Message Tab"
+    "message": "Fliken för enstaka meddelanden"
   },
   "quickfolders.findFolder.placeHolder": {
-    "message": "folder name"
+    "message": "Mappnamn"
   },
   "quickfolders.quickMove.menu.cancel": {
-    "message": "Cancel quickMove"
+    "message": "Avbryt snabbflyttning med quickMove"
   },
   "quickfolders.quickMove.menu.hideSearch": {
-    "message": "Hide Folder Name box"
+    "message": "Dölj mappnamnrutan"
   },
   "quickfolders.quickMove.menu.showSearch": {
-    "message": "Show Folder Name box"
+    "message": "Visa mappnamnrutan"
   },
   "quickfolders.quickMove.menu.suspend": {
-    "message": "Jump to folder (don't move mails)"
+    "message": "Hoppa till mapp (utan att flytta e-brev)"
   },
   "quickfolders.readingList.addCurrent": {
-    "message": "Add current Item"
+    "message": "Lägg till nuvarande objekt"
   },
   "quickfolders.readingList.clear": {
-    "message": "Clear Reading List"
+    "message": "Rensa läslista"
   },
   "quickfolders.readingList.tooltip": {
-    "message": "Reading List"
+    "message": "Läslista"
   },
   "quickfolders.toolbar.newsubfolder": {
-    "message": "New Subfolder…"
+    "message": "Ny undermapp…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Skip"
+    "message": "Hoppa över"
   },
   "quickfoldersQuickCopiedMails": {
-    "message": "Mail copied to folder {2};{1} mails copied to folder {2}"
+    "message": "Meddelandet har kopierats till mappen {2};{1} meddelanden har kopierats till mappen {2}"
   },
   "quickfoldersQuickMovedMails": {
-    "message": "Mail moved to folder {2};{1} mails moved to folder {2}"
+    "message": "Meddelandet har flyttats till mappen {2};{1} meddelanden har flyttats till mappen {2}"
   },
   "renew-your-license": {
-    "message": "Renew your license."
+    "message": "Förnya din licens."
   },
   "special-offer-content": {
-    "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} by buying a {linkStartPro}QuickFolders Pro license{linkEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}. Or choose the standard functions with the new {linkStart}Standard License{linkEnd}.",
+    "message": "Uppgradera dina funktioner och spara {boldStart} $reduction$ {boldEnd} genom att köpa en {linkStartPro}QuickFolders Pro -licens{linkEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}. Eller välj standardfunktionerna med den nya {linkStart}standardlicensen{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1726,7 +1726,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Förnya din licens nu och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart} $expirydate$ {boldEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1739,7 +1739,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Upgrade now from QuickFolders Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Uppgradera nu från QuickFolders Standard till Pro och spara {boldStart}$reduction${boldEnd}! Detta specialerbjudande är tillgängligt fram till {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1752,10 +1752,10 @@
     }
   },
   "special-offer-expiry": {
-    "message": "October 31st"
+    "message": "31 oktober"
   },
   "special-offer-head": {
-    "message": "Help keep $addon$ compatible",
+    "message": "Hjälp till att hålla $addon$ kompatibel",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1764,7 +1764,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Dear {name}{boldEnd}, please support $addon$ through getting a license. The Thunderbird code continuously evolves and we need {boldStart}your help{boldEnd} to keep up!",
+    "message": "{boldStart} Hej {name} {boldEnd}, stöd $addon$ genom att skaffa en licens. Thunderbird -koden utvecklas kontinuerligt och vi behöver {boldStart} din hjälp {boldEnd} för att hänga med!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1773,7 +1773,7 @@
     }
   },
   "support-preference": {
-    "message": "This is the preferred way of supporting $addonName$.",
+    "message": "Detta är det föredragna sättet att stödja $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1782,7 +1782,7 @@
     }
   },
   "support-suggestion": {
-    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
+    "message": "Så att $addonName$ förblir funktionellt och vid liv, gör det en viktig tjänst:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1791,10 +1791,10 @@
     }
   },
   "testDrive": {
-    "message": "The Standard License gives you some features that were previously flagged as premium and removes restrictions of the unfunded version. It finances the upkeep with the next Thunderbird version and conversion to a modern API based mail extension architecture."
+    "message": "Du kan testköra de licensbelagda funktionerna i gratisversionen, men de kan vara begränsade."
   },
   "thanks-for-installing-intro": {
-    "message": "Thank you for installing $addonName$.",
+    "message": "Tack för att du installerade $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1803,7 +1803,7 @@
     }
   },
   "thanks-for-updating-intro": {
-    "message": "Thank you for updating $addonName$.",
+    "message": "Tack för att du uppdaterade $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1812,7 +1812,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ requires ongoing changes in order to remain compatible with the Mozilla platform. I am constantly working to retain as much functionality as possible for future versions of Thunderbird.",
+    "message": "$addonName$ kräver pågående ändringar för att förbli kompatibel med Mozilla-plattformen. Jag arbetar ständigt med att behålla så mycket funktionalitet som möjligt för framtida versioner av Thunderbird.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1821,39 +1821,39 @@
     }
   },
   "toAddress": {
-    "message": "To:"
+    "message": "Till:"
   },
   "toAddress.tooltip": {
-    "message": "Default To Address when composing new mails"
+    "message": "Standardmottagaradress för att skapa nya e-brev"
   },
   "translated-by-google": {
     "description": "disclaimer.",
-    "message": "translations provided by google"
+    "message": "översättningar från google"
   },
   "updates.title": {
-    "message": "Updates"
+    "message": "Uppdateringar"
   },
   "updatesExpiry": {
-    "message": "QuickFolders Pro will be automatically updated via addons.thunderbird.net as usual. After the year expires you can renew the license or keep using premium features under same terms as free users. 'Premium Exclusive' features will require a valid registration key."
+    "message": "QuickFolders Pro kommer, som vanligt, att uppdateras via addons.thunderbird.net. När licensen förfaller kan du förnya den eller använda de licensbelagda funktionerna under villkoren för gratisanvändare. Exklusiva funktioner kommer att kräva en giltig licensnyckel."
   },
   "vouchers.title": {
-    "message": "Vouchers"
+    "message": "Tillgodokvitton"
   },
   "whats-new-btn": {
-    "message": "What's new?"
+    "message": "Vad är nytt?"
   },
   "whats-new-head": {
-    "message": "Important Changes"
+    "message": "Viktiga förändringar"
   },
   "whats-new-intro": {
-    "message": "Read the detailed change log here (English only):"
+    "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Fixed in version 5.8.2: Long folders menus now scroll when dragging mails to screen edge.{L2}{L1}Thunderbird doesn't jump into Inbox anymore when checking for new mails from the context menu.{L2}{L1}Support for large icon in QuickFolders toolbar buttons for high resolution displays.{L2}{L1}Fixed: moving folders from the quickMove function failed in Tb91.{L2}{L1}Various Layout fixes specific to Thunderbird 91.{L2}"
+    "message": "{L1} Fixat i version 5.8.2: Långa mapps menyer rullar nu när du drar e -postmeddelanden till skärmkanten. {L2}{L1} Thunderbird hoppar inte in i inkorgen längre när det letar efter nya e -postmeddelanden från snabbmenyn. {L2} {L1} Stöd för stor ikon i QuickFolders verktygsfältsknappar för högupplösta skärmar. {L2} {L1} Åtgärdad: flyttade mappar från quickMove -funktionen misslyckades i Tb91. {L2} {L1} Olika layoutkorrigeringar specifika för Thunderbird 91. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
-    "message": "Welcome to $addonName$",
+    "message": "Välkommen till $addonName$",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1862,21 +1862,21 @@
     }
   },
   "windowTitle": {
-    "message": "Advanced Properties"
+    "message": "Avancerade egenskaper"
   },
   "yearlyLicense.premiumFeatures": {
-    "message": "QuickFolders Pro gives you full unrestricted access to the premium features."
+    "message": "QuickFolders Pro ger dig obegränsad tillgång till de licensbelagda funktionerna."
   },
   "yearlyLicense.premiumFeatures.moreInfoLink": {
-    "message": "More about premium features."
+    "message": "Mer om licensbelagda funktioner."
   },
   "yearlyLicense.title": {
-    "message": "Annual License"
+    "message": "Årslicens"
   },
   "yearlyLicense.usageTerm": {
-    "message": "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use that address."
+    "message": "Licensen är för personligt bruk och är knuten till din e-postadress. Du kan använda den i flera e-postklienter, under förutsättning att de är konfigurerade att använda den adressen."
   },
   "yearlyLicense.usageTerm1": {
-    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
+    "message": "Några ytterligare e-postadresser är inget problem - de kräver inte en separat licens. Om du har frågor kan du nå mig via supportfliken."
   }
 }

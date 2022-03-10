@@ -3025,13 +3025,14 @@ QuickFolders.Interface = {
     }
     else {
       util.logDebug("create folder (trad)")
-    QI.onCreateInstantFolder(folder);  // async function
+      QI.onCreateInstantFolder(folder);  // async function
     }
 	},
    
   onCreateAPIFolder: function(parentPath, folderName) {
     QuickFolders.Util.notifyTools.notifyBackground({ func: "createSubfolder", parentPath, folderName  })
       .then(console.log).catch(console.error); // this will log the folder as return value is passed to callback
+      
 	},
 
 	// * function for creating a new folder under a given parent

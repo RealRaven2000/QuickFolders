@@ -213,8 +213,13 @@ async function main() {
         
       case "createSubfolder":  // [issue 234]
         // if folderName is not given - create a popup window
-        
-        return browser.folders.create(data.parentPath, data.folderName || "test1"); // like await but returns
+        let retVal = await newFolderDialog(data.folderName);
+        if (retVal.result == "ok" && retVal.folderName) {
+          return browser.folders.create(data.parentPath, retVal.folderName); // like await but returns
+        }
+        else {
+          return false; // notifyTools cannot return null!
+        }
     }
   });
   

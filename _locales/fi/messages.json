@@ -1,13 +1,13 @@
 {
   "_l10nstatus": {
-    "message": "SPLASH+UI"
+    "message": "SPLASH"
   },
   "account.label": {
     "message": "Select account:"
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
+    "message": "Käytät nyt  {boldStart} versiota $addonVer$ {boldEnd} Thunderbird $appVer$ lla.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -20,19 +20,19 @@
     }
   },
   "addon-authors-struggle": {
-    "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
+    "message": "Jatkaaksemme hyödyllisyyttä meidän lisäosakehittäjien on nyt rahoitettava korjaamiseen ja uudelleenkirjoittamiseen tarvittavat resurssit, jotta käyttäjät voivat edelleen hyötyä tarjoamistamme toiminnoista."
   },
   "btn-extend-license": {
-    "message": "I want to extend my license by one year"
+    "message": "Haluan jatkaa lisenssini vuodella"
   },
   "btn-renew-license": {
-    "message": "I want to renew my license"
+    "message": "Haluan uusia lisenssin"
   },
   "btn-want-a-license": {
-    "message": "Choose a License"
+    "message": "Valitse lisenssi"
   },
   "btn-want-to-donate": {
-    "message": "I want to help with a one time donation."
+    "message": "Haluan auttaa kertalahjoituksella."
   },
   "btnApply": {
     "message": "Apply"
@@ -92,7 +92,7 @@
     "message": "If you move mail into this folder it is set to unread."
   },
   "cost-of-independence": {
-    "message": "Software development costs time and money - unlike many platform apps, Add-ons are not written by large corporations, nor are they sponsored in any way by Mozilla."
+    "message": "Ohjelmistokehitys maksaa aikaa ja rahaa - toisin kuin monet alustasovellukset, suuret yritykset eivät ole kirjoittaneet lisäosia, eikä Mozilla tue niitä millään tavalla."
   },
   "cssBackground": {
     "message": "Background"
@@ -122,10 +122,10 @@
     "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
   },
   "donate": {
-    "message": "Help out with a one time donation."
+    "message": "Auta kertalahjoituksella."
   },
   "donate-heading": {
-    "message": "Help by Donating!"
+    "message": "Apua lahjoittamalla!"
   },
   "email.label": {
     "message": "Email:"
@@ -137,7 +137,7 @@
     "message": "Enter the License Key code sent to you via Email."
   },
   "extend-your-license": {
-    "message": "Consider extending your license by a year."
+    "message": "Harkitse lisenssin jatkamista vuodella."
   },
   "extensionDescription": {
     "description": "Description of the extension.",
@@ -176,7 +176,7 @@
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "Successfully installed $addonName$",
+    "message": "Asennus $addonName$ onnistui",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -186,7 +186,7 @@
   },
   "heading-updated": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "$addonName$ Updated Successfully",
+    "message": "$addonName$ päivitetty onnistuneesti",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -195,10 +195,10 @@
     }
   },
   "intro": {
-    "message": "An annual license for QuickFolders Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome."
+    "message": "QuickFolders Pron vuotuinen lisenssi tarjoaa sinulle kaikki premium -ominaisuudet vuodeksi. Sen avulla voimme myös tukea ja kasvattaa tuotetta entisestään ja muuttaa sen vieläkin mahtavammaksi."
   },
   "label-remind-me": {
-    "message": "Remind me again in $countDays$ days.",
+    "message": "Muistuta minua uudelleen $countDays$ päivän kuluttua.",
     "placeholders": {
       "countDays": {
         "content": "$1",
@@ -214,28 +214,28 @@
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
-    "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
+    "message": "Kiitos, että lisenssit äskettäin tai olet lahjoittanut. Koska olet auttanut todistamaan tämän lisäosan tulevaisuudessa, voit yksinkertaisesti sulkea tämän ikkunan."
   },
   "licenseComparison": {
-    "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
+    "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
   },
   "licenseHead": {
-    "message": "New Licensing System"
+    "message": "Uusi lisenssijärjestelmä"
   },
   "licenseTypes": {
-    "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
+    "message": "QuickFolders tarjoaa kaksi lisenssiä, Standard ja Pro; nämä ovat välttämättömiä Thunderbird-alustan muutosten seuraamiseksi ja lisäosan innovaatioiden ja korjausten rahoittamiseksi. Koska muutokset, jotka mahdollisesti rikkovat laajennustoiminnon, otetaan käyttöön vuosittain, lisenssi on myös voimassa yhden vuoden."
   },
   "licenseWindow.title": {
-    "message": "QuickFolders Pro License"
+    "message": "QuickFolders Pro -lisenssi"
   },
   "license_restriced.std": {
-    "message": "Standard License - restricted Pro function. Find out more…"
+    "message": "Vakiolisenssi - rajoitettu Pro -toiminto. Lue lisää…"
   },
   "license_restriced.unpaid": {
-    "message": "Unlicensed version - restricted function. Find out more…"
+    "message": "Lisensoimaton versio - rajoitettu toiminto. Lue lisää…"
   },
   "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders needs a Pro license to support more than $maxTabs$ tabs.",
+    "message": "QuickFolders tarvitsee Pro -lisenssin yli $maxTabs$ välilehtien tukemiseen.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -244,7 +244,7 @@
     }
   },
   "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders needs a license to support more than $maxTabs$ tabs.",
+    "message": "QuickFolders tarvitsee lisenssin, joka tukee yli $maxTabs$ välilehteä.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -253,14 +253,14 @@
     }
   },
   "mozillas-basic-platform": {
-    "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
+    "message": "Mozilla tarjoaa vain perusalustan ohjelmistojemme toimittamiseksi sinulle, loppukäyttäjille. Jos meidän on pyydettävä käyttäjiltämme maksua tai tukea, emme voi tehdä tätä osoitteesta addons.thunderbird.net - se ei ole '' sovelluskauppa '', jossa on sisäänrakennetut paywallit tai lisenssien hallinta, kuten iTunes tai Google Play."
   },
   "notificationTitle": {
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
   "ongoing-work": {
-    "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
+    "message": "Muutokset $addonName$ muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota 2022 on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -269,10 +269,10 @@
     }
   },
   "purchase-a-license": {
-    "message": "Purchase a license."
+    "message": "Osta lisenssi."
   },
   "purchase-heading": {
-    "message": "Buying a License!"
+    "message": "Lisenssin ostaminen!"
   },
   "qf.accounts": {
     "message": "Accounts"
@@ -1006,7 +1006,7 @@
     "message": "Repair Tree Icons"
   },
   "qf.menuitem.quickfolders.splash": {
-    "message": "Latest Update News…"
+    "message": "Viimeisimmät päivitykset…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders Support…"
@@ -1027,7 +1027,7 @@
     "message": "Do not show this message again."
   },
   "qf.notification.newsFlash": {
-    "message": "$addonName$ was updated! Important news…",
+    "message": "$addonName$ päivitettiin! Tärkeitä uutisia…",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1524,7 +1524,7 @@
     "message": "Tab Color"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Drag folders to an empty area of the toolbar - For MOVING a folder, hold down SHIFT and drag to a Tab."
+    "message": "Vedä kansiot tyhjälle alueelle työkalupalkissa - Jos haluat siirtää kansiota, pidä SHIFT-näppäintä alhaalla ja vedä välilehteen."
   },
   "qfNavigationWrapped": {
     "message": "No other unread folders found, continuing in {1}."
@@ -1710,10 +1710,10 @@
     "message": "Mail moved to folder {2};{1} mails moved to folder {2}"
   },
   "renew-your-license": {
-    "message": "Renew your license."
+    "message": "Uusi lisenssi."
   },
   "special-offer-content": {
-    "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} by buying a {linkStartPro}QuickFolders Pro license{linkEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}. Or choose the standard functions with the new {linkStart}Standard License{linkEnd}.",
+    "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}QuickFolders Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1726,7 +1726,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Uusi lisenssi nyt ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1739,7 +1739,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Upgrade now from QuickFolders Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Päivitä nyt QuickFolders Standardista Pro -versioon ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart}$expirydate${boldEnd} asti.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1752,10 +1752,10 @@
     }
   },
   "special-offer-expiry": {
-    "message": "October 31st"
+    "message": "31. lokakuuta"
   },
   "special-offer-head": {
-    "message": "Help keep $addon$ compatible",
+    "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1764,7 +1764,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Dear {name}{boldEnd}, please support $addon$ through getting a license. The Thunderbird code continuously evolves and we need {boldStart}your help{boldEnd} to keep up!",
+    "message": "{boldStart} Hei {name} {boldEnd}, tue $addon$ hankkimalla lisenssi. Thunderbird -koodi kehittyy jatkuvasti, ja tarvitsemme {boldStart} apuasi {boldEnd} pysyäksesi ajan tasalla!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1773,7 +1773,7 @@
     }
   },
   "support-preference": {
-    "message": "This is the preferred way of supporting $addonName$.",
+    "message": "Tämä on ensisijainen tapa tukea $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1782,7 +1782,7 @@
     }
   },
   "support-suggestion": {
-    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
+    "message": "Jotta $addonName$ pysyisi toiminnassa ja elossa, tee se elintärkeäksi palvelukseksi:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1794,7 +1794,7 @@
     "message": "The Standard License gives you some features that were previously flagged as premium and removes restrictions of the unfunded version. It finances the upkeep with the next Thunderbird version and conversion to a modern API based mail extension architecture."
   },
   "thanks-for-installing-intro": {
-    "message": "Thank you for installing $addonName$.",
+    "message": "Kiitos $addonName$ -asennuksesta.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1803,7 +1803,7 @@
     }
   },
   "thanks-for-updating-intro": {
-    "message": "Thank you for updating $addonName$.",
+    "message": "Kiitos $addonName$ päivittämisestä.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1812,7 +1812,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ requires ongoing changes in order to remain compatible with the Mozilla platform. I am constantly working to retain as much functionality as possible for future versions of Thunderbird.",
+    "message": "$addonName$ vaatii jatkuvia muutoksia, jotta se pysyy yhteensopivana Mozilla-alustan kanssa. Pyrin jatkuvasti säilyttämään mahdollisimman paljon toiminnallisuutta tuleville Thunderbird-versioille.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1828,7 +1828,7 @@
   },
   "translated-by-google": {
     "description": "disclaimer.",
-    "message": "translations provided by google"
+    "message": "käännökset tarjoaa google"
   },
   "updates.title": {
     "message": "Updates"
@@ -1840,20 +1840,20 @@
     "message": "Vouchers"
   },
   "whats-new-btn": {
-    "message": "What's new?"
+    "message": "Mikä on uutta?"
   },
   "whats-new-head": {
-    "message": "Important Changes"
+    "message": "Tärkeät muutokset"
   },
   "whats-new-intro": {
-    "message": "Read the detailed change log here (English only):"
+    "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Fixed in version 5.8.2: Long folders menus now scroll when dragging mails to screen edge.{L2}{L1}Thunderbird doesn't jump into Inbox anymore when checking for new mails from the context menu.{L2}{L1}Support for large icon in QuickFolders toolbar buttons for high resolution displays.{L2}{L1}Fixed: moving folders from the quickMove function failed in Tb91.{L2}{L1}Various Layout fixes specific to Thunderbird 91.{L2}"
+    "message": "{L1} Korjattu versiossa 5.8.2: Pitkien kansioiden valikot vierivät nyt, kun vedät viestejä näytön reunaan. {L2}{L1} Thunderbird ei enää siirry Inboxiin, kun kontekstivalikosta etsitään uusia viestejä. {L2} {L1} Tuki suurelle kuvakkeelle QuickFolders -työkalupalkin painikkeissa korkean resoluution näytöille. {L2} {L1} Korjattu: kansioiden siirtäminen QuickMove -toiminnosta epäonnistui Tb91: ssä. {L2} {L1} Erilaisia Thunderbird 91: n ulkoasun korjauksia. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
-    "message": "Welcome to $addonName$",
+    "message": "Tervetuloa osoitteeseen $addonName$",
     "placeholders": {
       "addonName": {
         "content": "$1",

@@ -7,7 +7,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Bạn hiện đang chạy phiên bản {boldStart} $addonVer$ {boldEnd} trên Thunderbird $appVer$.",
+    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -20,19 +20,19 @@
     }
   },
   "addon-authors-struggle": {
-    "message": "Để tiếp tục hữu ích, các nhà phát triển Tiện ích bổ sung của chúng tôi hiện cần tài trợ các tài nguyên cần thiết để sửa và viết lại để người dùng của chúng tôi có thể tiếp tục hưởng lợi từ chức năng mà chúng tôi cung cấp."
+    "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
   },
   "btn-extend-license": {
-    "message": "Tôi muốn gia hạn giấy phép của mình thêm một năm"
+    "message": "I want to extend my license by one year"
   },
   "btn-renew-license": {
-    "message": "Tôi muốn gia hạn giấy phép của mình"
+    "message": "I want to renew my license"
   },
   "btn-want-a-license": {
-    "message": "Chọn giấy phép"
+    "message": "Choose a License"
   },
   "btn-want-to-donate": {
-    "message": "Tôi muốn giúp đỡ với khoản đóng góp một lần."
+    "message": "I want to help with a one time donation."
   },
   "btnApply": {
     "message": "Apply"
@@ -41,10 +41,10 @@
     "message": "Categories"
   },
   "btnCategory.tooltip": {
-    "message": "Xác định danh mục tab"
+    "message": "Define Tab Categories"
   },
   "btnReset": {
-    "message": "Đặt lại về mặc định"
+    "message": "Reset to Defaults"
   },
   "buyDomainLicense.button": {
     "message": "Buy Domain License"
@@ -56,13 +56,13 @@
     "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
   },
   "buyProLicense.button": {
-    "message": "Mua Giấy phép Pro!"
+    "message": "Buy Pro License!"
   },
   "buyStandardLicense.button": {
-    "message": "Mua Giấy phép Tiêu chuẩn!"
+    "message": "Buy Standard License!"
   },
   "buyStandardLicense.instruct": {
-    "message": "Không có khả năng mua các chức năng cao cấp? Nhận giấy phép tiêu chuẩn có giá cả phải chăng và tiếp tục thử nghiệm các chức năng cao cấp."
+    "message": "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions."
   },
   "chkComposerSubfolders": {
     "message": "Also apply to subfolders"
@@ -92,7 +92,7 @@
     "message": "If you move mail into this folder it is set to unread."
   },
   "cost-of-independence": {
-    "message": "Việc phát triển phần mềm tốn kém thời gian và tiền bạc - không giống như nhiều ứng dụng nền tảng, Tiện ích bổ sung không được viết bởi các tập đoàn lớn, cũng như không được Mozilla tài trợ theo bất kỳ hình thức nào."
+    "message": "Software development costs time and money - unlike many platform apps, Add-ons are not written by large corporations, nor are they sponsored in any way by Mozilla."
   },
   "cssBackground": {
     "message": "Background"
@@ -122,10 +122,10 @@
     "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
   },
   "donate": {
-    "message": "Giúp đỡ với khoản đóng góp một lần."
+    "message": "Help out with a one time donation."
   },
   "donate-heading": {
-    "message": "Giúp đỡ bằng cách quyên góp!"
+    "message": "Help by Donating!"
   },
   "email.label": {
     "message": "Email:"
@@ -137,7 +137,7 @@
     "message": "Enter the License Key code sent to you via Email."
   },
   "extend-your-license": {
-    "message": "Xem xét gia hạn giấy phép của bạn thêm một năm."
+    "message": "Consider extending your license by a year."
   },
   "extensionDescription": {
     "description": "Description of the extension.",
@@ -148,7 +148,7 @@
     "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
-    "message": "Đánh dấu các thư mục yêu thích trong Thunderbird."
+    "message": "Bookmark your favorite mail folders in Thunderbird."
   },
   "firstName.label": {
     "message": "First Name:"
@@ -163,7 +163,7 @@
     "message": "Default Identity when composing emails"
   },
   "getQuickFolders": {
-    "message": "Giấy phép QuickFolders"
+    "message": "QuickFolders Licenses"
   },
   "grpComposer": {
     "message": "Default Email Fields"
@@ -176,7 +176,7 @@
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "Đã cài đặt thành công $addonName$",
+    "message": "Successfully installed $addonName$",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -186,7 +186,7 @@
   },
   "heading-updated": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "$addonName$ đã được cập nhật thành côngs",
+    "message": "$addonName$ Updated Successfully",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -198,7 +198,7 @@
     "message": "An annual license for QuickFolders Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome."
   },
   "label-remind-me": {
-    "message": "Nhắc lại tôi sau $countDays$ ngày.",
+    "message": "Remind me again in $countDays$ days.",
     "placeholders": {
       "countDays": {
         "content": "$1",
@@ -214,28 +214,28 @@
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
-    "message": "Cảm ơn bạn đã gia hạn giấy phép gần đây hoặc nếu bạn đã đóng góp. Vì bạn đã giúp chứng minh Tiện ích bổ sung này trong tương lai, bạn có thể chỉ cần đóng cửa sổ này."
+    "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
   },
-  "licenseComparison" : {
-    "message": "Để so sánh các tính năng của các phiên bản khác nhau, hãy {linkStart}đọc danh sách này{linkEnd}."
-  },  
+  "licenseComparison": {
+    "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
+  },
   "licenseHead": {
-    "message": "Hệ thống cấp phép mới"
-  },  
+    "message": "New Licensing System"
+  },
   "licenseTypes": {
-    "message": "QuickFolders cung cấp hai giấy phép, Standard và Pro; những điều này là cần thiết để theo kịp những thay đổi trong nền tảng Thunderbird và tài trợ cho Cải tiến và sửa chữa Tiện ích bổ sung. Vì những thay đổi có khả năng phá vỡ chức năng của tiện ích mở rộng được triển khai hàng năm nên giấy phép cũng sẽ có hiệu lực trong 1 năm."
-  },  
+    "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
+  },
   "licenseWindow.title": {
     "message": "QuickFolders Pro License"
   },
   "license_restriced.std": {
-    "message": "Giấy phép Tiêu chuẩn - chức năng Pro bị hạn chế. Tìm hiểu thêm…"
+    "message": "Standard License - restricted Pro function. Find out more…"
   },
   "license_restriced.unpaid": {
-    "message": "Phiên bản chưa được cấp phép - chức năng bị hạn chế. Tìm hiểu thêm…"
+    "message": "Unlicensed version - restricted function. Find out more…"
   },
   "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders cần có giấy phép Pro để hỗ trợ nhiều tab $maxTabs$.",
+    "message": "QuickFolders needs a Pro license to support more than $maxTabs$ tabs.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -244,7 +244,7 @@
     }
   },
   "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders cần có giấy phép để hỗ trợ nhiều tab $maxTabs$.",
+    "message": "QuickFolders needs a license to support more than $maxTabs$ tabs.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -253,14 +253,14 @@
     }
   },
   "mozillas-basic-platform": {
-    "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
+    "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
   },
   "notificationTitle": {
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
   "ongoing-work": {
-    "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
+    "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -269,13 +269,13 @@
     }
   },
   "purchase-a-license": {
-    "message": "Mua giấy phép."
+    "message": "Purchase a license."
   },
   "purchase-heading": {
-    "message": "Mua Giấy phép!"
+    "message": "Buying a License!"
   },
   "qf.accounts": {
-    "message": "Tài khoản"
+    "message": "Accounts"
   },
   "qf.alert.pasteFolders.formatErr": {
     "message": "Could not create tabs. See tools / error console for more detail."
@@ -284,61 +284,61 @@
     "message": "Backup / Restore"
   },
   "qf.btn.applyPosition": {
-    "message": "Áp dụng giá trị vị trí!"
+    "message": "Apply position value!"
   },
   "qf.button.add": {
-    "message": "Thêm!"
+    "message": "Add!"
   },
   "qf.button.configureTooltips": {
     "message": "Configure tooltips…"
   },
   "qf.button.currentFolderBackground.set": {
-    "message": "chọn"
+    "message": "apply"
   },
   "qf.button.default": {
     "message": "Defaults"
   },
   "qf.button.defaultcolors": {
-    "message": "Màu mặc định"
+    "message": "Default Colors"
   },
   "qf.button.deleteselectedcategory": {
-    "message": "Xóa danh mục được chọn"
+    "message": "Delete selected category"
   },
   "qf.button.down": {
-    "message": "Xuống"
+    "message": "Down"
   },
   "qf.button.pasteLicense": {
     "message": "paste"
   },
   "qf.button.rename": {
-    "message": "Đổi tên"
+    "message": "Rename"
   },
   "qf.button.reorderButtonBottom": {
-    "message": "Xuống Cuối"
+    "message": "Move to bottom"
   },
   "qf.button.reorderButtonBottom.accessKey": {
-    "message": "B"
+    "message": "b"
   },
   "qf.button.reorderButtonBottom.toolTip": {
-    "message": "chạy bộ lọc sau tất cả các thứ khác"
+    "message": "Rearrange filter so it executes after all others"
   },
   "qf.button.reorderButtonTop": {
-    "message": "Lên Đầu"
+    "message": "Move to top"
   },
   "qf.button.reorderButtonTop.accessKey": {
     "message": "o"
   },
   "qf.button.reorderButtonTop.toolTip": {
-    "message": "chạy bộ lọc trước tất cả các thứ khác"
+    "message": "Rearrange filter so it executes before all others"
   },
   "qf.button.up": {
-    "message": "Lên"
+    "message": "Up"
   },
   "qf.button.validateLicense": {
     "message": "validate"
   },
   "qf.caption.currentFolderBackground": {
-    "message": "nền của Thanh Công Cụ Thư Mục Hiện Tại"
+    "message": "Current Folder Toolbar background"
   },
   "qf.categories.supportMultiple": {
     "message": "Support selecting multiple tab categories"
@@ -347,40 +347,40 @@
     "message": "Use the SHIFT key in order to select more than one category on the dropdown."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Tập trung vào danh sách tin nhắn khi chuyển các thẻ"
+    "message": "Focus on message list when changing tabs"
   },
   "qf.checkbox.hideInSingleMessage": {
-    "message": "Ẩn QuickFolders trong một tab tin nhắn"
+    "message": "Hide QuickFolders in single message tabs"
   },
   "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Loại bỏ thanh công cụ QuickFolders trong các tab hiển thị một thông báo."
+    "message": "Removes the QuickFolders toolbar in tabs that show a single message."
   },
   "qf.checkbox.currentFolder.closeButton": {
-    "message": "Nút Đóng"
+    "message": "Close Button"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Hiển thị Thanh Công Cụ"
+    "message": "Display the Toolbar"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrate with lightweight theme"
   },
   "qf.checkbox.debug": {
-    "message": "Chế độ sửa lỗi"
+    "message": "Debug Mode"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "ấn chuột phải vào ô kiểm này cho các tùy chọn sửa lỗi nâng cao"
+    "message": "Right click this checkbox for advanced debug options"
   },
   "qf.checkbox.displaylabel": {
-    "message": "Hiển thị 'QuickFolders' trên thanh công cụ"
+    "message": "Display the 'QuickFolders' label in the toolbar"
   },
   "qf.checkbox.displaylabel.tooltip": {
-    "message": "ấn chuột phải để thay đổi chữ của nhãn này"
+    "message": "Right click to change the text of this label"
   },
   "qf.checkbox.enableTransitions": {
-    "message": "Cho phép chuyển tiếp CSS"
+    "message": "Enable CSS transitions"
   },
   "qf.checkbox.enableTransitions.tooltip": {
-    "message": "Hiển thị chuyển tiếp mượt giữa các màu sắc của thẻ."
+    "message": "Shows smooth transitions between several aspects of tab coloring."
   },
   "qf.checkbox.hideCategoryBox": {
     "message": "Collapse Categories"
@@ -389,28 +389,28 @@
     "message": "Minimizes the Categories menu to take up less space."
   },
   "qf.checkbox.highlightNewMail": {
-    "message": "Làm nổi bật các thư mục có thư mới"
+    "message": "Highlight folders with new mail"
   },
   "qf.checkbox.menus.dragToNewFolder": {
-    "message": "Kéo vào một thư mục con mới"
+    "message": "Drag to new Subfolder"
   },
   "qf.checkbox.menus.emptyJunk": {
-    "message": "Xóa hết Rác"
+    "message": "Empty Junk"
   },
   "qf.checkbox.menus.emptyTrash": {
-    "message": "Xóa hết thư rác"
+    "message": "Empty Trash"
   },
   "qf.checkbox.menus.getMailForInbox": {
-    "message": "Nhận tin nhắn (Tài khoản thư)"
+    "message": "Get Messages (Mail Accounts)"
   },
   "qf.checkbox.menus.getMailForNews": {
-    "message": "Nhận tin nhắn (Tài khoản tin tức)"
+    "message": "Get Messages (News Accounts)"
   },
   "qf.checkbox.menus.markAllRead": {
-    "message": "Đánh dấu thư mục là Đã Đọc"
+    "message": "Mark Folder Read"
   },
   "qf.checkbox.menus.markAllReadRecursive": {
-    "message": "Đánh dấu thư mục là Đã Đọc (đệ quy)"
+    "message": "Mark Folder Read (recursive)"
   },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Copy mail to any folder with Shortcut:"
@@ -443,22 +443,22 @@
     "message": "A list for mails that should be read later. Drag your important emails on this button."
   },
   "qf.checkbox.shadows": {
-    "message": "Bóng"
+    "message": "shadows"
   },
   "qf.checkbox.shift": {
     "message": "Shift"
   },
   "qf.checkbox.showCountInSubFolders": {
-    "message": "Hiển thị toàn bộ các thư mục con"
+    "message": "Also display totals of subfolders"
   },
   "qf.checkbox.showCountInSubFolders.tooltip": {
-    "message": "Chúng được hiển thị ngăn cách bởi dấu '+' bên cạnh số đếm chính; thư chưa đọc bên trong sẽ làm cho thẻ được in đậm lên nếu tùy chọn trên được kích hoạt."
+    "message": "These are displayed separated by a '+' beside their main counts; contained unread mail will also make tab bold if option above is active"
   },
   "qf.checkbox.showFilterButton": {
-    "message": "Nút 'Tạo Bộ Lọc'"
+    "message": "'Create Filters' Button"
   },
   "qf.checkbox.showFilterButton.tooltip": {
-    "message": "Bạn còn có thể tạo Bộ Lọc bằng cách sử dụng trình đơn ngữ cảnh QuickFolders."
+    "message": "You can also create Filters using the QuickFolders context menu."
   },
   "qf.checkbox.showFolderNavigation": {
     "message": "Folder Navigation buttons"
@@ -467,19 +467,19 @@
     "message": "Customize Icon buttons"
   },
   "qf.checkbox.showIcons": {
-    "message": "Hiển thị các biểu tượng (Hộp thư đến, hộp thư đi, hiện tại, thùng rác)"
+    "message": "Display Icons (Inbox, Sent, Junk, Trash, Drafts, Archived, Templates)"
   },
   "qf.checkbox.showMailFolderCommands": {
     "message": "Mail Folder Commands"
   },
   "qf.checkbox.showMessageNavigation": {
-    "message": "Nút Điều Hướng Tin Nhắn"
+    "message": "Message Navigation buttons"
   },
   "qf.checkbox.showNewMailItalics": {
     "message": "Display tabs with newly arrived mail italic"
   },
   "qf.checkbox.showNonEmptyItalics": {
-    "message": "Hiển thị các nút cho thư mục với các tin nhắn được in nghiêng"
+    "message": "Display tabs which contain messages italic"
   },
   "qf.checkbox.showQuickMove": {
     "message": "quickMove Button"
@@ -488,34 +488,34 @@
     "message": "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box."
   },
   "qf.checkbox.showRecentButton": {
-    "message": "Nút thư mục hiện tại"
+    "message": "Recent Folders Button"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Hiển thị thẻ các thư mục gần đây nhất"
+    "message": "Display Recent Folders Tab"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Nhấp chuột phải để chỉnh cấu hình"
+    "message": "Right click for configuration"
   },
   "qf.checkbox.showSubfolders": {
-    "message": "Mở rộng các thư mục con trong trình đơn tự bung"
+    "message": "Expand Subfolders in popup menus"
   },
   "qf.checkbox.showTotalMessageCount": {
-    "message": "Hiển thị tổng số tin nhắn trên nút thư mục"
+    "message": "Display the total number of messages"
   },
   "qf.checkbox.showUnreadBold": {
-    "message": "Hiển thị các nút cho thư mục với các tin nhắn chưa đọc được in đậm"
+    "message": "Display tabs with unread messages in bold"
   },
   "qf.checkbox.showUnreadMessageCount": {
-    "message": "Hiển thị số tin nhắn chưa đọc trên nút thư mục"
+    "message": "Display the number of unread messages"
   },
   "qf.checkbox.showshortcutnumber": {
-    "message": "Hiển thị số phím tắt trên nhãn thư mục"
+    "message": "Display shortcut number on folder labels"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
-    "message": "…cả trong các cửa sổ Tin Nhắn Đơn"
+    "message": "…also in Single Message windows"
   },
   "qf.checkbox.singleMessage.currentFolder.tooltip": {
-    "message": "Hiển thị thanh thư mục hiện tại trong cửa sổ khi bạn mở một Thư ở cửa sổ mới"
+    "message": "Show current folder toolbar in the window that opens when you select to open an Email in a new window"
   },
   "qf.checkbox.singleMessageTab.currentFolder.show": {
     "message": "Toolbar in Single Message Tabs"
@@ -527,10 +527,10 @@
     "message": "Shortcut for jumping to the next unread folder."
   },
   "qf.checkbox.sortMenusAlpha": {
-    "message": "Bắt buộc sắp xếp các thư mục con trên trình đơn theo thứ tự bảng chữ cái."
+    "message": "Force alphabetic sorting of menus with subfolders."
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
-    "message": "Chỉ sử dụng tùy chọn này nếu hộp thư khách hàng không sắp xếp các thư mục con theo đúng thứ tự."
+    "message": "Only use this option if your mail client doesn't sort the subfolders correctly."
   },
   "qf.checkbox.storeConfig.general": {
     "message": "Include general settings"
@@ -542,55 +542,55 @@
     "message": "Include QuickFolders Tabs"
   },
   "qf.checkbox.tabMenuIcon": {
-    "message": "Biểu tượng thanh công cụ"
+    "message": "Toolbar Menu Icon"
   },
   "qf.checkbox.tabMenuIcon.tooltip": {
-    "message": "Trình đơn này cũng có thể được gọi bằng cách kích chuột phải lên chính thanh công cụ"
+    "message": "This menu can also be invoked by right-clicking the toolbar itself"
   },
   "qf.checkbox.transparent": {
-    "message": "hiệu ứng trong suốt"
+    "message": "transparent"
   },
   "qf.checkbox.useNavigationShortcuts": {
-    "message": "Phím ALT-trái/ALT-phải để chuyển sang Thẻ phía trước/sau"
+    "message": "ALT-Left / ALT-Right for previous / next Tab"
   },
   "qf.checkbox.usePalette": {
-    "message": "Dùng bảng màu"
+    "message": "Use palette"
   },
   "qf.checkbox.useRebuildShortcut": {
-    "message": "Xây dựng lại các thẻ với phím tắt: Ctrl + Alt +"
+    "message": "Rebuild Tabs with Shortcut: Ctrl + Alt +"
   },
   "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Sử dụng phím tắt (Alt + 1 đến Alt + 9)"
+    "message": "Use keyboard shortcuts (Alt + 1 through Alt + 9)"
   },
   "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Sử dụng Ctrl thay cho Alt"
+    "message": "Use Ctrl instead of Alt"
   },
   "qf.continueFilter.label": {
-    "message": "Tạo Bộ Lọc…"
+    "message": "Create Filter…"
   },
   "qf.continueFilter.shortcut": {
-    "message": "L"
+    "message": "F"
   },
   "qf.copyfolders": {
     "message": "Copy Tabs"
   },
   "qf.copyfolders.tooltip": {
-    "message": "Sao chép chuỗi cấu hình vào bộ nhớ tạm"
+    "message": "Copy the QuickFolders Tabs configuration to the clipboard"
   },
   "qf.currentFolderBackground.lightweight": {
-    "message": "Chủ đề Thunderbird"
+    "message": "Thunderbird theme"
   },
   "qf.currentFolderBackground.custom": {
-    "message": "thay đổi"
+    "message": "custom"
   },
   "qf.currentFolderBackground.dark": {
-    "message": "tối"
+    "message": "dark"
   },
   "qf.currentFolderBackground.default": {
-    "message": "bạc"
+    "message": "silver"
   },
   "qf.currentFolderBackground.translucent": {
-    "message": "trong suốt"
+    "message": "translucent"
   },
   "qf.currentfolder.leftSpacer": {
     "message": "Left Spacer:"
@@ -599,16 +599,16 @@
     "message": "Right Spacer:"
   },
   "qf.description.github": {
-    "message": "Hãy sử dụng github cho tất cả các yêu cầu về tính năng chính thức và báo cáo lỗi"
+    "message": "Please use github for all official feature requests and bug reports"
   },
   "qf.description.categoryusage": {
-    "message": "Bạn có thể để đánh dấu này vào một danh mục (như: 'Công việc', 'Riêng tư', ...)."
+    "message": "You can put this tab in a category (i.e. 'Work', 'Private', …)."
   },
   "qf.description.changeCategory": {
-    "message": "Ấn chuột phải lên đánh dấu để xếp nó vào một danh mục. Bạn sẽ thấy các danh mục xổ xuống ở bên trái thanh."
+    "message": "Right click a tab to organize it into one or several categories. Creates a filter for categories on the left of the tabs."
   },
   "qf.description.contactMe": {
-    "message": "Bạn còn có thể liên hệ riêng với tôi tại $supportMail$:",
+    "message": "You can also contact me personally at $supportMail$:",
     "placeholders": {
       "supportMail": {
         "content": "$1"
@@ -616,106 +616,106 @@
     }
   },
   "qf.description.donate": {
-    "message": "Nếu bạn yêu thích QuickFolders như chúng tôi và muốn hỗ trợ phát triển nó, bạn có thể quyên góp tiền cho QuickFolders"
+    "message": "If you love QuickFolders as much as we do and would like to support its development, you can donate some money towards the further development of QuickFolders."
   },
   "qf.description.dragToAdd": {
-    "message": "Kéo thư mục chứa thư vào vùng trống trên thanh công cụ để tạo ra một thư mục truy cập nhanh mới (làm việc giống như một đường dẫn tắt/bí danh). Kéo các tin nhắn lên thanh thư mục truy cập nhanh để di chuyển chúng vào thư mục tương ứng (hoặc Sao chép với các phím thay đổi). Ấn vào thư mục truy cập nhanh để tới thư mục chứa thư điện tử."
+    "message": "Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias). Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). Click quickfolder to jump to mail folder."
   },
   "qf.description.dragToPopup": {
-    "message": "Kéo các tin nhắn lên trình đơn tự bung của thư mục truy cập nhanh để chuyển các tin nhắn vào các thư mục con."
+    "message": "Drag messages onto quickfolder popup menu to move messages into sub folders."
   },
   "qf.description.dragToPosition": {
-    "message": "Kéo thư mục truy cập nhanh sang bên để thay đổi vị trí của chúng. Ấn chuột phải vào thư mục truy cập nhanh để hiện trình đơn ngữ cảnh; bạn có thể chuyển tới thư mục con bằng cách chọn trong trình đơn đó. 'Đổi tên đánh dấu' thay đổi nhãn cho thư mục truy cập nhanh. 'Gỡ bỏ đánh dấu' xóa thư mục truy cập nhanh (không phải là thư mục chứa thư điện tử)."
+    "message": "Drag quickfolders sideways to change their positions. Right-click quickfolder for context menu; by selecting you can jump into sub folders. 'Rename tab' changes the label of the quickfolder. 'Remove tab' deletes the quickfolder (not the mail folder)."
   },
   "qf.description.dragexplain": {
-    "message": "Các đánh dấu còn có thể được kéo để đổi vị trí! Thả vào phía trên của một đánh dấu khác để chèn vào phía trước/sau nó."
+    "message": "Tabs can also be dragged to change positions! Drop one on top of another to insert before / after it."
   },
   "qf.description.editcategory": {
-    "message": "Chọn một danh mục đã tồn tại bằng cách nháy đúp chuột vào nó, hoặc thêm một danh mục mới dưới đây."
+    "message": "Select an existing category by double clicking on it, or add a new category below."
   },
   "qf.description.experimentalItems": {
-    "message": "Các mục dưới đây để thử nghiệm, hy vọng chúng sẽ hoạt động ở phiên bản tiếp theo!!"
+    "message": "The following items are experimental, they will hopefully be working in the next release!!"
   },
   "qf.description.languages": {
-    "message": "QuickFolders hỗ trợ ngôn ngữ - bạn có thể trợ giúp bằng cách dịch sang ngôn ngữ của bạn tại github:"
+    "message": "QuickFolders supports localization - you can help by adding a translation in your language on github:"
   },
   "qf.description.linkNote": {
-    "message": "Ghé thăm trang chủ QuickFolders để xem thêm hướng dẫn sử dụng chi tiết, các mẹo và các câu hỏi thường gặp:"
+    "message": "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:"
   },
   "qf.description.multicategory": {
-    "message": "Để thêm một thư mục vào nhiều danh mục: Ấn phím SHIFT hoặc CONTROL khi chọn các mục."
+    "message": "To add a folder to more than one category: Hold down SHIFT or CONTROL while selecting items."
   },
   "qf.description.pulldown": {
-    "message": "Thanh QuickFolders sẽ hiện một trình đơn xổ xuống, cho phép bạn lọc các đánh dấu theo danh mục."
+    "message": "The QuickFolders bar will display a pulldown, allowing you to filter your tabs by category."
   },
   "qf.description.rightClickOptions": {
-    "message": "Ấn chuột phải lên vùng trống để mở trình đơn tùy chọn. Trong này, bạn có thể lựa chọn kiểu âm bản (nhỏ hơn) hoặc kiểu phẳng (rõ ràng hơn; hỗ trợ hiển thị khi kéo)."
+    "message": "Right-click an empty area to open the options menu. In options, you can select native style (smaller) or flat style (clearer; supports drag indicator)."
   },
   "qf.description.tipMsg": {
-    "message": "Mẹo nhỏ: nếu bạn có nhiều thưc mục, hãy sử dụng thử ứng dụng mở rộng Nostalgy cho bàn phím để thực hiện việc sắp xếp tin nhắn."
+    "message": "Tip: If you have an extensive amount of folders, try the Nostalgy extension for keyboard driven message organizing."
   },
   "qf.description.versionhistory": {
-    "message": "Chi tiết về các phiên bản cũ tại quickfolders.org"
+    "message": "Detailed Version History at quickfolders.org"
   },
   "qf.dialog.changeorder": {
-    "message": "Thay đổi thứ tự các đánh dấu"
+    "message": "Change the order of the tabs"
   },
   "qf.dialog.quickmove.settings": {
-    "message": "quickMove Cài đặt nâng cao"
+    "message": "quickMove Advanced Settings"
   },
   "qf.dialog.setcategory": {
-    "message": "Lập danh mục đánh dấu"
+    "message": "Set the category for a tab"
   },
   "qf.donate.tooltip": {
-    "message": "Hỗ trợ cho sự phát triển của QuickFolders!"
+    "message": "Support Development of QuickFolders!"
   },
   "qf.filters.instructions": {
-    "message": "Hãy chọn một giao diện. Bạn có thể điều chỉnh chi tiết các quy tắc lọc ở màn hình tiếp theo."
+    "message": "Please select a template. You can fine tune the filter rules on the next screen."
   },
   "qf.filters.template.from": {
-    "message": "Dựa trên Người Gửi (từ)"
+    "message": "Based on Sender (from)"
   },
   "qf.filters.template.from.description": {
-    "message": "Đây có lẽ là mẫu được dùng nhiều nhất: nó sẽ lấy các địa chỉ thư điện tử của người gửi rồi thêm chúng vào các vùng điều kiện gửi từ và gửi đến của bộ lọc. Theo cách này, toàn bộ các hội thoại với người gửi sẽ được di chuyển vào một thư mục mới."
+    "message": "This is probably the most used pattern:  this will retrieve the sender's email address and paste it into the from and to filter conditions fields. This way complete conversations with the sender will be moved to the new folder."
   },
   "qf.filters.template.list": {
-    "message": "Danh sách thư"
+    "message": "Mailing List"
   },
   "qf.filters.template.list.description": {
-    "message": "Tương tự như Dựa trên Người Gửi, nhưng nó không điền vùng điều kiện 'gửi đến'."
+    "message": "Similar to Based on Sender, but it doesn't fill the 'to' condition field."
   },
   "qf.filters.template.tag": {
-    "message": "Bằng các nhãn"
+    "message": "By Tags"
   },
   "qf.filters.template.tag.description": {
-    "message": "Dùng các nhãn của thư và thêm chúng vào các điều kiện bộ lọc."
+    "message": "Uses the tags of the email and adds them as filter conditions."
   },
   "qf.filters.template.to": {
-    "message": "Dựa trên Người Nhận (tới)"
+    "message": "Based on Recipient (to)"
   },
   "qf.filters.template.to.description": {
-    "message": "Tương tự như 'Dựa trên Người Gửi': dùng cái này khi bạn đánh dấu một thư mà bạn đã gửi cho ai đó. Nó sẽ lấy các địa chỉ thư điện tử của người nhận rồi thêm chúng vào các vùng điều kiện gửi từ và gửi đến của bộ lọc. Theo cách này, toàn bộ hội thoại tới và từ người gửi sẽ được di chuyển vào một thư mục mới."
+    "message": "Similar to 'Based on Sender': use this when you mark an email you have sent to somebody else. This will retrieve the recpient's email address and paste it into the from and to filter conditions fields. This way the complete conversation with the contact will be moved to the new folder."
   },
   "qf.filters.template.topic": {
-    "message": "Bằng tiêu đề"
+    "message": "By Subject"
   },
   "qf.filters.template.topic.description": {
-    "message": "Nó sẽ tìm kiếm các từ ngữ trong ngoặc đơn, ví dụ: [bộ sưu tập tem] hay {ăn chay} và tạo một điều kiện bộ lọc dựa trên đó; rất nhiều thư được cài đặt dùng mẫu này, nên nó thực sự rất dễ dùng."
+    "message": "This will look for special expressions in brackets, e.g. [stamp collectors] or {vegans} and create a filter condition based on these; a lot of mass email is set up using this pattern, so it is really easy to use."
   },
   "qf.filters.title": {
-    "message": "Tạo bộ lọc"
+    "message": "Create Filters"
   },
   "qf.filters.toggleMessage.notificationText": {
-    "message": "Chế độ Filter Learning đã được bật. Bất cứ khi nào bạn di chuyển một thư điện tử vào QuickFolders, chương trình Hướng Dẫn 'Tạo Quy Tắc Bộ Lọc' sẽ khởi động. Thunderbird sử dụng các bộ lọc tin nhắn để tự động di chuyển các thư điện tử dựa trên các quy tắc như 'ai là người gửi?', 'có từ khóa nào đó trong tiêu đề hay không?'. Để tắt chế độ Filter Learning, hãy ấn nút lọc nằm ở phía trên, bên trái của thanh QuickFolders."
+    "message": "Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'. To end the filter learning mode, press the filter button on the top left of the QuickFolders bar."
   },
   "qf.filters.toggleMessage.title": {
-    "message": "Tạo các bộ lọc"
+    "message": "Creating Filters"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
-    "message": "Tùy chỉnh biểu tượng…"
+    "message": "Customize Icon…"
   },
   "qf.foldercontextmenu.quickfolders.removeIcon": {
-    "message": "Xóa biểu tượng tùy chỉnh"
+    "message": "Remove Customized Icon"
   },
   "qf.fpJsonFile": {
     "message": "JSON File"
@@ -730,133 +730,133 @@
     "message": "Ask to go to next unread folder"
   },
   "qf.group.navigation": {
-    "message": "Điều hướng tin nhắn"
+    "message": "Message Navigation"
   },
   "qf.label.ActiveTabColor": {
-    "message": "Màu của thẻ đang xem"
+    "message": "Active Tab Color:"
   },
   "qf.label.ColoredTabPalette": {
     "message": "Palette for Colored Tabs:"
   },
   "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palette for tabs with a specific color"
+    "message": "Palette for tabs with a user-assigned color"
   },
   "qf.label.DragOverBackground": {
-    "message": "Màu khi kéo qua:"
+    "message": "Drag Over Color:"
   },
   "qf.label.HoveredTabColor": {
-    "message": "Màu của thẻ khi đưa chuột lên trên thẻ"
+    "message": "Hovered Tab Color:"
   },
   "qf.label.Toolbar": {
     "message": "Toolbar"
   },
   "qf.label.Toolbar.bottomLine": {
-    "message": "Chiều rộng dòng dưới cùng:"
+    "message": "Bottom Line Width:"
   },
   "qf.label.Toolbar.bottomLine.tip": {
     "message": "The width of the line under tabs. Change its color with the Active Tab Color picker below."
   },
   "qf.label.ToolbarBackground": {
-    "message": "Nền thanh công cụ:"
+    "message": "Toolbar Background:"
   },
   "qf.label.UncoloredTab": {
     "message": "Uncolored Tab"
   },
   "qf.label.UncoloredTab.tooltip": {
-    "message": "Xem xét các tab (không hoạt động) không có màu được chọn cụ thể"
+    "message": "Look of (inactive) tabs without a specifically selected color"
   },
   "qf.label.appearance": {
-    "message": "Vẻ bề ngoài"
+    "message": "Appearance"
   },
   "qf.label.behavior": {
-    "message": "Hành vi"
+    "message": "Behavior"
   },
   "qf.label.github": {
-    "message": "Báo cáo lỗi / Yêu cầu tính năng mới bằng github…"
+    "message": "Report a bug / Request a feature…"
   },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Button font size (0 for default):"
   },
   "qf.label.cancel": {
-    "message": "Hủy bỏ"
+    "message": "Cancel"
   },
   "qf.label.colors": {
-    "message": "Màu sắc"
+    "message": "Colors"
   },
   "qf.label.contactLink": {
-    "message": "Liên hệ (sử dụng tiếng Anh hoặc tiếng Đức)…"
+    "message": "Contact me (English or German)…"
   },
   "qf.label.currentFolderToolbar": {
-    "message": "Thanh công cụ thư mục hiện tại"
+    "message": "Current Folder Toolbar"
   },
   "qf.label.donate": {
-    "message": "Quyên góp"
+    "message": "Donate"
   },
   "qf.label.donateLink": {
-    "message": "Ghé thăm trang quyên góp…"
+    "message": "Visit the Donation Page…"
   },
   "qf.label.dragFolderLabel": {
-    "message": "Kéo thư mục vào đây để đánh dấu. Ấn vào đánh dấu để tới thư mục, kéo các tin nhắn để di chuyển/sao chép chúng."
+    "message": "Drag folders here to create a tab. Click the tab to go to the folder, drag messages to move/copy them there."
   },
   "qf.label.existingcategories": {
-    "message": "Các danh mục đã tồn tại:"
+    "message": "Existing categories:"
   },
   "qf.label.filterCountN_of_M": {
-    "message": "{0} trong {1}"
+    "message": "{0} of {1}"
   },
   "qf.label.filterEntities": {
-    "message": "thứ"
+    "message": "items"
   },
   "qf.label.filterSingleEntity": {
-    "message": "1 thứ"
+    "message": "1 item"
   },
   "qf.label.getQuickFilters": {
     "message": "For an improved and more powerful way of creating Filters please install my extension quickFilters!"
   },
   "qf.label.goNextUnread": {
-    "message": "Chuyển đến email chưa đọc tiếp theo:"
+    "message": "Go to next unread email:"
   },
   "qf.label.goNextUnread.tip": {
     "message": "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder."
   },
   "qf.label.haveLicense": {
-    "message": "Đã có Giấy phép?"
+    "message": "Already have a License?"
   },
   "qf.label.homePage": {
-    "message": "Thông tin chi tiết trên trang chủ của QuickFolders tại quickfolders.org…"
+    "message": "Find detailed information at the QuickFolders homepage at quickfolders.org…"
   },
   "qf.label.initdelay": {
-    "message": "[mili giây] thời gian trễ ban đầu {1000 là chuẩn}:"
+    "message": "[ms] init delay {1000 is standard}:"
   },
   "qf.label.insertLicense": {
-    "message": "Chèn khóa cấp phép cá nhân của bạn tại đây:"
+    "message": "Insert your personal License key here:"
   },
   "qf.label.insertLicense.tooltip": {
-    "message": "Khóa cấp phép của bạn có trong email xác nhận đơn đặt hàng của bạn từ Fastspring."
+    "message": "Your license key is contained in your order confirmation email from Fastspring."
   },
   "qf.label.instantApplyMsg": {
-    "message": "Chú ý: nếu bạn chỉ thấy nút [Close] ở dưới, các thiết đặt màu có thể sẽ không hoạt động, cách giải quyết khác là hãy thử ấn chuột phải vào vùng trống của thanh thư mục truy cập nhanh để chọn các tùy chọn… làm thế sẽ bắt nút [OK] phải hiện lên và màu sắc sẽ được lưu lại."
+    "message": "Note: if you only see a [Close] button below, the color settings might not work - as workaround, try right-clicking on an empty area of the quickfolders bar to select options… this will force the [Ok] button to be displayed, which should save colors."
   },
   "qf.label.keyboard": {
-    "message": "Phím tắt"
+    "message": "Keyboard Shortcuts"
   },
   "qf.label.languagesLink": {
-    "message": "Thêm ngôn ngữ…"
+    "message": "Add Translation…"
   },
   "qf.label.licenseValid": {
-    "message": "Giấy phép của bạn có hiệu lực cho đến khi:"
+    "message": "Your license is valid until:"
   },
   "qf.label.mainToolbar": {
-    "message": "Các phần tử Thanh Công Cụ chính"
+    "message": "Main Toolbar Elements"
   },
   "qf.label.menus": {
-    "message": "Thiết lập trình đơn"
+    "message": "Menu Configuration"
   },
   "qf.label.menus.customIcon": {
     "message": "Customize Icon"
   },
   "qf.label.menus.help": {
-    "message": "Hướng dẫn"
+    "message": "QuickFolders Help"
   },
   "qf.label.menus.hideQFunlessCTRL": {
     "message": "Only display with CTRL key held"
@@ -865,28 +865,28 @@
     "message": "Insert Line Break"
   },
   "qf.label.menus.mailFolder": {
-    "message": "Các Lệnh về Thư"
+    "message": "Mail Commands"
   },
   "qf.label.menus.options": {
-    "message": "Tùy chọn"
+    "message": "Options"
   },
   "qf.label.menus.quickFolder": {
-    "message": "Các lệnh QuickFolders"
+    "message": "QuickFolders Commands"
   },
   "qf.label.menus.separator": {
     "message": "Insert Separator"
   },
   "qf.label.menus.support": {
-    "message": "Trợ giúp"
+    "message": "QuickFolders Support"
   },
   "qf.label.misc": {
-    "message": "Linh tinh"
+    "message": "Miscellaneous"
   },
   "qf.label.newcategory": {
-    "message": "Danh mục mới:"
+    "message": "New category:"
   },
   "qf.label.pixels": {
-    "message": "điểm ảnh"
+    "message": "pixels"
   },
   "qf.label.quickFilters.link": {
     "message": "get quickFilters!"
@@ -895,139 +895,139 @@
     "message": "QuickFolders:"
   },
   "qf.label.renameselectedcategory": {
-    "message": "Đổi tên danh mục được chọn"
+    "message": "Rename selected category"
   },
   "qf.label.setcolors": {
-    "message": "Chọn [Màu chữ, màu nền"
+    "message": "Set [Text Color], Background Color"
   },
   "qf.label.tabContent": {
-    "message": "Nội dung thẻ"
+    "message": "Tab Content"
   },
   "qf.label.testfolder": {
-    "message": "Thư mục thử nghiệm"
+    "message": "Test Folder"
   },
   "qf.label.testfolder2": {
-    "message": "Thư mục thử nghiệm 2"
+    "message": "Test Folder 2"
   },
   "qf.label.themes": {
     "message": "Themes:"
   },
   "qf.label.toolbarPosition": {
-    "message": "Thanh công cụ QuickFolders Vị trí"
+    "message": "QuickFolders Bar Position"
   },
   "qf.label.versionhistory": {
-    "message": "Xem phiên bản cũ…"
+    "message": "Read Version History…"
   },
   "qf.licenseValidation.expired": {
-    "message": "Khóa cấp phép bạn nhập đã hết hạn. Vui lòng nhấn nút bên dưới để gia hạn giấy phép của bạn."
+    "message": "The license key you entered is expired. Please press the button below to renew your license."
   },
   "qf.licenseValidation.failed": {
-    "message": "Khóa cấp phép bạn đã nhập không hợp lệ. Kiểm tra email của bạn từ FastSpring để biết hướng dẫn. Nếu bạn vẫn gặp sự cố, vui lòng liên hệ với tôi từ tab Hỗ trợ."
+    "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."
   },
   "qf.licenseValidation.guessAddon": {
     "message": "(The key entered may be for {2})."
   },
   "qf.licenseValidation.invalidAddon": {
-    "message": "Khóa cấp phép bạn đã nhập có thể dành cho một Tiện ích bổ sung khác. Khóa cấp phép cho {0} bắt đầu bằng {1}."
+    "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
   },
   "qf.licenseValidation.invalidMail": {
-    "message": "Địa chỉ email được liên kết với khóa cấp phép [{1}] hiện không được liệt kê trong bất kỳ tài khoản thư nào của bạn. Vui lòng liên hệ với tôi từ tab Hỗ trợ để được hỗ trợ."
+    "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
   },
   "qf.licenseValidation.notMatchedMail": {
-    "message": "Địa chỉ email được mã hóa không khớp với địa chỉ có thể đọc được."
+    "message": "Encrypted Email address does not match readable one."
   },
   "qf.licenseValidation.passed": {
-    "message": "Cảm ơn bạn đã đăng ký QuickFolders Pro! Tất cả các tính năng cao cấp hiện đã được mở khóa."
+    "message": "Thanks for registering QuickFolders Pro! All premium features are now unlocked."
   },
   "qf.licenseValidation.standard": {
-    "message": "Cảm ơn bạn đã đăng ký Giấy phép QuickFolders - Bạn đang giúp ích rất nhiều cho Tiện ích bổ sung! Nếu bạn cần nhiều tính năng hơn, bạn luôn có thể nâng cấp lên Giấy phép Pro."
-  },  
+    "message": "Thanks for registering a QuickFolders License - You are helping the Add-on immensely! If you need more features you can always upgrade to the Pro License."
+  },
   "qf.loadConfig": {
     "message": "Load Configuration…"
   },
   "qf.menu.Color": {
-    "message": "Màu sắc"
+    "message": "Color"
   },
   "qf.menu.tabColor": {
-    "message": "Không màu!"
+    "message": "Default Color!"
   },
   "qf.menuitem.quickfolders.changeOrder": {
-    "message": "Đổi thử tự các đánh dấu…"
+    "message": "Change the order of the tabs"
   },
   "qf.menuitem.quickfolders.changeOrderAccess": {
-    "message": "D"
+    "message": "C"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Tìm các thẻ mồ côi"
+    "message": "Find orphaned Tabs"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "T"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
-    "message": "Hiển thị các công cụ cho thư mục hiện tại"
+    "message": "Display Current Folder Tools"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "D"
   },
   "qf.menuitem.quickfolders.filters": {
-    "message": "Tạo Bộ Lọc Tin Nhắn…"
+    "message": "Create Message Filters…"
   },
   "qf.menuitem.quickfolders.filtersAccess": {
-    "message": "L"
+    "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
-    "message": "Tìm thư mục…"
+    "message": "Find Folder…"
   },
   "qf.menuitem.quickfolders.findAccess": {
     "message": "i"
   },
   "qf.menuitem.quickfolders.help": {
-    "message": "Trợ giúp…"
+    "message": "QuickFolders Help…"
   },
   "qf.menuitem.quickfolders.helpAccess": {
-    "message": "g"
+    "message": "H"
   },
   "qf.menuitem.quickfolders.options": {
-    "message": "Tùy chọn QuickFolders…"
+    "message": "QuickFolders Options…"
   },
   "qf.menuitem.quickfolders.optionsAccess": {
-    "message": "T"
+    "message": "O"
   },
   "qf.menuitem.quickfolders.register": {
     "message": "QuickFolders Pro License…"
   },
   "qf.menuitem.quickfolders.repairTabs": {
-    "message": "Làm mới các thẻ nhìn thấy!"
+    "message": "Refresh Visible Tabs!"
   },
   "qf.menuitem.quickfolders.repairTabsAccess": {
     "message": "V"
   },
   "qf.menuitem.quickfolders.repairTreeIcons": {
-    "message": "Biểu tượng cây sửa chữa"
+    "message": "Repair Tree Icons"
   },
-  "qf.menuitem.quickfolders.splash" : {
-    "message": "Tin tức cập nhật mới nhất…"
+  "qf.menuitem.quickfolders.splash": {
+    "message": "Latest Update News…"
   },
   "qf.menuitem.quickfolders.support": {
-    "message": "Hỗ trợ QuickFolders…"
+    "message": "QuickFolders Support…"
   },
   "qf.menuitem.quickfolders.supportAccess": {
-    "message": "Q"
+    "message": "S"
   },
   "qf.menuitem.quickfolders.togglePaintMode": {
-    "message": "Chế độ tô màu"
+    "message": "Paint mode"
   },
   "qf.menuitem.quickfolders.togglePaintModeAccess": {
     "message": "p"
   },
   "qf.notification.categoryIsReadOnly": {
-    "message": "Không thể xóa mục này."
+    "message": "This item cannot be deleted."
   },
   "qf.notification.dontShowAgain": {
-    "message": "Không hiển thị thông báo này nữa."
+    "message": "Do not show this message again."
   },
   "qf.notification.newsFlash": {
-    "message": "$addonName$ đã được cập nhật! Tin tức quan trọng…",
+    "message": "$addonName$ was updated! Important news…",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1036,31 +1036,31 @@
     }
   },
   "qf.notification.premium.btn.extendLicense": {
-    "message": "Gia hạn Giấy phép"
+    "message": "Extend License"
   },
   "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "Điều này sẽ kéo dài ngày giấy phép hiện tại thêm 1 năm. Nó thường rẻ hơn giấy phép mới."
+    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
   },
   "qf.notification.premium.btn.getLicense": {
-    "message": "Mua giấy phép"
+    "message": "Buy License"
   },
   "qf.notification.premium.btn.hotKey": {
     "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
-    "message": "Gia hạn giấy phép"
+    "message": "Renew License"
   },
   "qf.notification.premium.btn.upgrade": {
-    "message": "Nâng cấp lên Pro"
+    "message": "Upgrade to Pro"
   },
   "qf.notification.premium.readingList": {
-    "message": "Bây giờ bạn đã xác định {1} dấu trang. Phiên bản miễn phí của QuickFolders cho phép tối đa {2}."
+    "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
   },
   "qf.notification.premium.shortcut": {
-    "message": "Giấy phép cao cấp cũng cung cấp cho bạn một phím tắt có thể định cấu hình."
+    "message": "The premium license additionally gives you a configurable keyboard shortcut."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Bây giờ bạn sử dụng $cntIcons$ biểu tượng tùy chỉnh cho các Tab. Phiên bản QuickFolders không phải trả phí hỗ trợ tối đa $maxFreeIcons$. Giấy phép tiêu chuẩn hỗ trợ $maxStdIcons $. QuickFolders Pro không có giới hạn.",
+    "message": "You now use $cntIcons$ custom icons for Tabs. The unpaid version of QuickFolders supports a maximum of $maxFreeIcons$. The standard license supports $maxStdIcons$. QuickFolders Pro has no limit.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1077,52 +1077,52 @@
     }
   },
   "qf.notification.premium.text": {
-    "message": "{1} là một tính năng Cao cấp, vui lòng nhận Giấy phép QuickFolders Pro để sử dụng nó."
+    "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it."
   },
   "qf.notification.premium.title": {
-    "message": "Tính năng cao cấp"
+    "message": "Premium Feature"
   },
   "qf.notification.standard.readingList": {
-    "message": "Bây giờ bạn đã xác định {1} dấu trang. Giấy phép tiêu chuẩn của QuickFolders cho phép tối đa là {2}."
+    "message": "You have now {1} bookmarks defined. The standard license of QuickFolders allows a maximum of {2}."
   },
   "qf.notification.standard.text": {
-    "message": "{1} là một tính năng bị hạn chế giấy phép, vui lòng nhận Giấy phép QuickFolders để sử dụng nó."
+    "message": "{1} is a license restricted feature, please get a QuickFolders License for using it."
   },
   "qf.notification.standard.title": {
-    "message": "Tính năng tiêu chuẩn"
+    "message": "Licensed Feature"
   },
   "qf.options.LayoutColorAppearance": {
-    "message": "Màu riêng của từng thẻ"
+    "message": "Individual Tab Color Appearance"
   },
   "qf.options.LayoutColorAppearanceFilled": {
-    "message": "(kiểu phủ kín)"
+    "message": "(filled style)"
   },
   "qf.options.LayoutColorAppearanceStriped": {
-    "message": "(kiểu gạch sọc)"
+    "message": "(striped style)"
   },
   "qf.options.label.themeAuthor": {
-    "message": "Tác giả giao diện:"
+    "message": "Theme Author:"
   },
   "qf.options.theme.pastelColors": {
-    "message": "Phấn màu"
+    "message": "Pastel Colors"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
-    "message": "Dưới cùng:"
+    "message": "Bottom:"
   },
   "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Trên cùng:"
+    "message": "Top:"
   },
   "qf.options.themes.customCornerRadius.checkbox": {
-    "message": "Tùy chỉnh bán kính góc"
+    "message": "Custom Corner Radius"
   },
   "qf.options.themes.showBorders.checkbox": {
-    "message": "Luôn hiển thị các đường biên"
+    "message": "Always Display Borders"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Nhấp để hiển thị lịch sử phiên bản."
+    "message": "Click for version history."
   },
   "qf.palette.inactive": {
-    "message": "Giống như các Tab không hoạt động"
+    "message": "Same as inactive Tabs"
   },
   "qf.palette.night": {
     "message": "Night Vision"
@@ -1137,7 +1137,7 @@
     "message": "2 Colors"
   },
   "qf.pastefolders.tooltip": {
-    "message": "Xóa tất cả Thư mục nhanh và đọc cấu hình mới từ khay nhớ tạm"
+    "message": "Delete all QuickFolders and read new configuration from clipboard"
   },
   "qf.pathFormat.AccountAndPath": {
     "message": "Account - Folder Path"
@@ -1161,10 +1161,10 @@
     "message": "Maximum number of folders displayed in folder path."
   },
   "qf.prefwindow.quickfolders.options": {
-    "message": "Tùy chọn QuickFolders"
+    "message": "QuickFolders Options"
   },
   "qf.premium.renewLicense.tooltip": {
-    "message": "Giấy phép của bạn đã hết hạn {1} ngày trước"
+    "message": "Your license expired {1} days ago"
   },
   "qf.premiumConfig": {
     "message": "Premium Features"
@@ -1185,10 +1185,10 @@
     "message": "Also create a QuickFolders Tab"
   },
   "qf.prompt.newFolder.newChildName": {
-    "message": "Nhập tên cho thư mục con mới trong {0}"
+    "message": "Enter name for new child folder under {0}"
   },
   "qf.prompt.newFolder.title": {
-    "message": "Thư mục mới"
+    "message": "New Folder"
   },
   "qf.prompt.pasteFolders": {
     "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
@@ -1197,7 +1197,7 @@
     "message": "Keep the displayed Tabs?"
   },
   "qf.prompt.readingList.removeItem": {
-    "message": "Xóa mục này?"
+    "message": "Remove this item?"
   },
   "qf.prompt.readingList.searchMissingItem": {
     "message": "Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?"
@@ -1209,55 +1209,55 @@
     "message": "Switch to Domain License?"
   },
   "qf.quickMove.escapeClears": {
-    "message": "Phím Escape xóa danh sách tin nhắn."
+    "message": "Escape Key always clears messages list."
   },
   "qf.quickMove.excludeAccounts": {
-    "message": "Chọn bất kỳ tài khoản nào cần được loại trừ khỏi kết quả tìm kiếm:"
+    "message": "Select any account that should be excluded from the search results:"
   },
   "qf.quickMove.lockAccount": {
-    "message": "Chỉ hiển thị kết quả từ tài khoản thư hiện tại."
+    "message": "Only show results from current mail account."
   },
   "qf.quickMove.maxResults": {
-    "message": "Số lượng kết quả tìm kiếm tối đa"
+    "message": "Maximum number of search results"
   },
   "qf.quickMove.path.format": {
     "message": "Display Format:"
   },
   "qf.quickMove.silent": {
-    "message": "Không có thông báo sau khi chuyển thư."
+    "message": "Omit notifications after moving mails."
   },
   "qf.register.licenseValid.expired": {
     "message": "Your license expired on:"
   },
   "qf.search.advanced": {
-    "message": "Cài đặt tìm kiếm nâng cao…"
+    "message": "Advanced search settings…"
   },
   "qf.storeConfig": {
     "message": "Save Configuration…"
   },
   "qf.tab.advanced": {
-    "message": "Nâng cao"
+    "message": "Advanced"
   },
   "qf.tab.general": {
-    "message": "Tổng quan"
+    "message": "General"
   },
   "qf.tab.gopro": {
-    "message": "Giấy phép"
+    "message": "Licenses"
   },
   "qf.tab.layout": {
-    "message": "Sắp xếp các thẻ!"
+    "message": "Bling My Tabs!"
   },
   "qf.tab.quickhelp": {
-    "message": "Trợ giúp"
+    "message": "Quick Help"
   },
   "qf.tab.support": {
-    "message": "Hỗ trợ"
+    "message": "Support"
   },
   "qf.textbox.searchBox.emptyText": {
-    "message": "tìm bộ lọc…"
+    "message": "Search filters by name…"
   },
   "qf.textbox.searchBox.toolTip": {
-    "message": "điền một từ khóa để tìm bộ lọc theo tên"
+    "message": "enter a keyword to search filters by name"
   },
   "qf.themes.applePills.description": {
     "message": "A pleasant layout for our Mac users - plain and simple; with some optional color perks."
@@ -1269,31 +1269,31 @@
     "message": "Standard toolbar buttons - this is the closest you can get to the look of original version 0.5!"
   },
   "qf.themes.flatButtons.label": {
-    "message": "Các nút công cụ"
+    "message": "Toolbar Buttons"
   },
   "qf.themes.flatTabs.description": {
     "message": "Modern tabbed look - fully customizable. Looks great on Windows and Linux."
   },
   "qf.themes.flatTabs.label": {
-    "message": "Phong cách phẳng"
+    "message": "Flat Style"
   },
   "qf.themes.nativeTabs.description": {
     "message": "Layout resembles the tabs of your OS - less coloring options but may look more integrated and in sync with your Mail Client Themes."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Các thẻ gốc"
+    "message": "Native Tabs"
   },
   "qf.themes.realButtons.description": {
-    "message": "Nút ấn - các nút có phong cách như trên các hộp thoại chuẩn"
+    "message": "Pushbuttons - these look like standard buttons on dialog windows"
   },
   "qf.themes.realButtons.label": {
-    "message": "Nút ấn"
+    "message": "Pushbuttons"
   },
   "qf.toolbar.quickfolders.toolbar": {
-    "message": "Thanh công cụ QuickFolders"
+    "message": "QuickFolders Toolbar"
   },
   "qf.toolbarIconSize": {
-    "message": "Các biểu tượng trên Thanh công cụ lớn"
+    "message": "Large Toolbar Icons"
   },
   "qf.toolbarMinimumHeight": {
     "message": "Minimum height:"
@@ -1302,97 +1302,97 @@
     "message": "For Mac systems who encounter [Bug 25021]"
   },
   "qf.toolbarPosition.tooltip": {
-    "message": "0 = trên đầu các thanh công cụ khác; 100 = đáy. Giá trị cao phụ thuộc vào các Tiện ích bổ sung khác."
+    "message": "0 = on top of other toolbars; 100 = bottom. High value depends on other Add-ons."
   },
   "qf.tooltip.RecentFolders": {
-    "message": "Các thư mục gần đây nhất"
+    "message": "Recent Folders"
   },
   "qf.tooltip.closeToolbar": {
-    "message": "Đóng thanh công cụ này"
+    "message": "Close this toolbar"
   },
   "qf.tooltip.conversationRead": {
-    "message": "Đánh dấu Hội Thoại là Đã Đọc và chuyển tới Thư chưa đọc tiếp theo"
+    "message": "Mark Conversation as Read and jump to next unread Email"
   },
   "qf.tooltip.emailIcon": {
-    "message": "Thư hiện tại - kéo vào thẻ QuickFolders để di chuyển Thư"
+    "message": "Current Email - drag to a QuickFolders tab to move Mail"
   },
   "qf.tooltip.filterStart": {
-    "message": "Hướng dẫn kích hoạt bộ lọc. Kéo các thư điện tử vào QuickFolder để tạo các Bộ Lọc mới."
+    "message": "Activate filter teaching. Dragging emails on a QuickFolder creates new Filters."
   },
   "qf.tooltip.filters": {
-    "message": "Dừng việc tạo các bộ lọc."
+    "message": "Stop creating filters."
   },
   "qf.tooltip.folderUp": {
-    "message": "Chuyển tới thư mục mẹ"
+    "message": "Go to Parent Folder"
   },
   "qf.tooltip.goNextFolder": {
-    "message": "Chuyển đến tin nhắn [chưa đọc] tiếp theo"
+    "message": "Move to the next [unread] message"
   },
   "qf.tooltip.goPreviousFolder": {
-    "message": "Chuyển đến tin nhắn [chưa đọc] trước đó"
+    "message": "Move to the previous [unread] message"
   },
   "qf.tooltip.mailFolderCommands": {
-    "message": "Các lệnh thư mục chứa Thư"
+    "message": "Mail Folder Commands"
   },
   "qf.tooltip.mainOptions": {
-    "message": "Các tùy chọn và lệnh nâng cao của QuickFolders"
+    "message": "QuickFolders options and advanced commands"
   },
   "qf.tooltip.paintCanActive": {
-    "message": "Chế độ vẽ: nhấp chuột để mở bảng màu, nhấp chuột vào các thẻ để tô màu cho chúng, nhấp chuột phải vào các thẻ để lấy màu của chúng"
+    "message": "Paint mode: click for palette, click tabs to color them, right-click tabs to extract their color"
   },
   "qf.tooltip.quickFoldersNavToggle": {
-    "message": "Chuyển đổi giữa các thư chưa đọc / tất cả các thư"
+    "message": "toggle navigating unread only / all mails"
   },
   "qf.tooltip.quickMove": {
-    "message": "Kéo một email vào đây, sau đó nhập tên thư mục đích (quickMove); hoặc nhấp để chuyển vào thư mục (quickJump)."
+    "message": "Drag an email here then enter target folder name (quickMove); or click to jump into the folder (quickJump)."
   },
   "qf.tooltip.skipUnreadFolder": {
-    "message": "Bỏ qua thư mục chưa đọc tiếp theo"
+    "message": "Skip to next Unread Folder"
   },
   "qf.tooltip.threadIcon": {
-    "message": "Đề tài hiện tại - kéo vào thẻ QuickFolder để di chuyển Hội Thoại"
+    "message": "Current Thread - drag to a QuickFolders tab to move Conversation"
   },
   "qf.youtube.description": {
-    "message": "Để có video chi tiết về Tiện ích bổ sung Thunderbird và cách sử dụng Thư mục nhanh, hãy truy cập kênh YouTube Thunderbird Daily của tôi."
+    "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
   },
   "qf.youtube.link": {
-    "message": "Xem Video về QuickFolders…"
+    "message": "Watch Videos about QuickFolders…"
   },
   "qf.youtube.tbdaily": {
-    "message": "Truy cập Thunderbird Daily - Kênh YouTube để biết các mẹo và hướng dẫn sử dụng QuickFolders"
+    "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
   },
   "qfAlertCopyString": {
-    "message": "Tên thư mục đã được sao chép vào bộ nhớ!"
+    "message": "Folder String copied to Clipboard!"
   },
   "qfAlertDropFolderVirtual": {
-    "message": "Bạn không thể sao chép thư điện tử vào thư mục tìm kiếm!"
+    "message": "You can not copy mail to a virtual folder!"
   },
   "qfAlertUpgradeSuccess": {
-    "message": "Đã nâng cấp thành công QuickFolders lên phiên bản:"
+    "message": "QuickFolders was successfully upgraded to version:"
   },
   "qfAll": {
-    "message": "(Hiện tất cả)"
+    "message": "(Display All)"
   },
   "qfCantMoveFolder": {
-    "message": "Thư mục {0} không thể di chuyển được."
+    "message": "Folder {0} cannot be moved."
   },
   "qfColorPickingWIP": {
-    "message": "Xin lỗi, tính năng này vẫn đang được hoàn thiện!\n"
+    "message": "Sorry, this feature is still Work in Progress!"
   },
   "qfCommandAccess": {
     "message": "Q"
   },
   "qfCommandPopup": {
-    "message": "Các lệnh QuickFolders"
+    "message": "QuickFolders Commands"
   },
   "qfCompactFolder": {
-    "message": "Thu gọn thư mục"
+    "message": "Compact Folder"
   },
   "qfCompactFolderAccess": {
-    "message": "F"
+    "message": "C"
   },
   "qfCompacted": {
-    "message": "Thu gọn:"
+    "message": "Compacted:"
   },
   "qfCompactedBytesFreed": {
     "message": "Bytes expunged"
@@ -1407,85 +1407,85 @@
     "message": "Original size"
   },
   "qfConfirmCopyFolder": {
-    "message": "Thực sự sao chép thư mục {0} vào {1}?"
+    "message": "Really copy folder {0} into {1}?"
   },
   "qfConfirmMoveFolder": {
-    "message": "Bạn thực sự muốn di chuyển {0} vào {1}?"
+    "message": "Really move folder {0} into {1}?"
   },
   "qfConfirmVersionLink": {
-    "message": "Hiển thị các phiên bản trước của QuickFolders"
+    "message": "Display version history for QuickFolders"
   },
   "qfDeadTabsCount": {
-    "message": "# các thẻ mồ côi được tìm thấy:"
+    "message": "# orphaned tabs found:"
   },
   "qfDeadTabsDeleted": {
-    "message": "# các thẻ mồ côi đã bị xóa:"
+    "message": "# orphaned tabs removed:"
   },
   "qfDeleteFolder": {
-    "message": "Xóa thư mục"
+    "message": "Delete Folder"
   },
   "qfDeleteFolderAccess": {
-    "message": "X"
+    "message": "D"
   },
   "qfDeleteJunk": {
-    "message": "Xóa rác"
+    "message": "Purge Junk"
   },
   "qfDown": {
-    "message": "Xuống dưới"
+    "message": "Down"
   },
   "qfDownloadAll": {
-    "message": "Tải xuống tất cả"
+    "message": "Download All"
   },
   "qfEditVirtual": {
-    "message": "Tùy chọn tìm kiếm…"
+    "message": "Search Properties…"
   },
   "qfEditVirtualAccess": {
-    "message": "h"
+    "message": "S"
   },
   "qfEmptiedJunk": {
     "message": "Emptied junk and compacted folder"
   },
   "qfEmptiedTrash": {
-    "message": "Đã dọn sạch thùng rác."
+    "message": "Emptied trash."
   },
   "qfEmptyJunk": {
-    "message": "Xóa thư rác"
+    "message": "Empty Junk"
   },
   "qfEmptyJunkAccess": {
-    "message": "a"
+    "message": "J"
   },
   "qfEmptyTrash": {
-    "message": "Xóa thùng rác"
+    "message": "Empty Trash"
   },
   "qfEmptyTrashAccess": {
     "message": "T"
   },
   "qfFolderAccess": {
-    "message": "C"
+    "message": "F"
   },
   "qfFolderAlreadyBookmarked": {
-    "message": "Thư mục đã được đánh dấu."
+    "message": "Folder already has a tab."
   },
   "qfFolderOpenLocation": {
     "message": "Explore Folder Location…"
   },
   "qfFolderPopup": {
-    "message": "Các lệnh Thư Mục chứa thư"
+    "message": "Mail Folder Commands"
   },
   "qfFolderProperties": {
-    "message": "Các đặc tính thư mục"
+    "message": "Folder Properties…"
   },
   "qfFolderPropertiesAccess": {
     "message": "P"
   },
   "qfFolderRepair": {
-    "message": "Sửa thư mục"
+    "message": "Repair Folder"
   },
   "qfFolderRepairAccess": {
     "message": "F"
   },
   "qfFolderRepairedMsg": {
-    "message": "Thư mục đã được sửa chữa:"
+    "message": "Folder was repaired:"
   },
   "qfGetMail": {
     "message": "Get Messages"
@@ -1494,64 +1494,64 @@
     "message": "G"
   },
   "qfInsertLineBreak": {
-    "message": "Xuống dòng"
+    "message": "Insert Line Break"
   },
   "qfInsertSeparator": {
-    "message": "Thêm dấu phân cách"
+    "message": "Insert Separator"
   },
   "qfInvalidTabCount": {
     "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
   },
   "qfMarkAllRead": {
-    "message": "Đánh dấu thư mục đã đọc"
+    "message": "Mark folder as Read"
   },
   "qfMarkAllReadAccess": {
-    "message": "u"
+    "message": "M"
   },
   "qfMarkAllReadRecursive": {
     "message": "Mark folder + subfolders Read"
   },
   "qfMenuColor": {
-    "message": "Màu sắc"
+    "message": "Color"
   },
   "qfMenuTabColorDisabledInTheme": {
-    "message": "Chọn Chủ đề khác nhau để hỗ trợ tô màu…"
+    "message": "Select different Theme to support coloring…"
   },
   "qfMenuTabColorNone": {
-    "message": "Không màu!"
+    "message": "Default Color!"
   },
   "qfMenuTabColorPopup": {
-    "message": "Màu thẻ"
+    "message": "Tab Color"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Kéo các thư mục vào vùng trống của thanh công cụ - Để DI CHUYỂN một thư mục, hãy giữ phím SHIFT và kéo vào một Tab."
+    "message": "Drag folders to an empty area of the toolbar - For MOVING a folder, hold down SHIFT and drag to a Tab."
   },
   "qfNavigationWrapped": {
-    "message": "Không tìm thấy thư mục chưa đọc nào khác, đang tiếp tục trong {1}."
+    "message": "No other unread folders found, continuing in {1}."
   },
   "qfNewFolder": {
-    "message": "Tạo một thư mục con…"
+    "message": "New Subfolder…"
   },
   "qfNewFolderAccess": {
-    "message": "T"
+    "message": "N"
   },
   "qfNewName": {
-    "message": "Thêm một tên mới cho đánh dấu"
+    "message": "Enter a new name for the tab"
   },
   "qfNewSubFolder": {
     "message": "Create subfolder {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "Không có thư mục mẹ phù hợp!"
+    "message": "No matching parent folders!"
   },
   "qfPaintToggle": {
-    "message": "Hoàn tất Chế độ Tô Màu"
+    "message": "Finish Paint Mode"
   },
   "qfRecentFolders": {
-    "message": "Các thư mục gần đây nhất"
+    "message": "Recent Folders"
   },
   "qfRemoveBookmark": {
-    "message": "Bỏ đánh dấu"
+    "message": "Remove tab"
   },
   "qfRemoveBookmarkAccess": {
     "message": "R"
@@ -1563,43 +1563,43 @@
     "message": "The category is '{1}' - Remove that?"
   },
   "qfRemoveIcon": {
-    "message": "Xóa biểu tượng tùy chỉnh"
+    "message": "Remove Customized Icon"
   },
   "qfRemoveLineBreak": {
-    "message": "Bỏ xuống dòng"
+    "message": "Remove Line Break"
   },
   "qfRemoveSeparator": {
-    "message": "Bỏ dấu phân cách"
+    "message": "Remove Separator"
   },
   "qfRenameBookmark": {
-    "message": "Đổi tên đánh dấu…"
+    "message": "Rename tab…"
   },
   "qfRenameBookmarkAccess": {
     "message": "N"
   },
   "qfRenameFolder": {
-    "message": "Đổi tên thư mục"
+    "message": "Rename Folder…"
   },
   "qfRenameFolderAccess": {
-    "message": "D"
+    "message": "R"
   },
   "qfRepairTreeIconsMissing": {
     "message": "The following icon files do not exist:"
   },
   "qfSavePrompt": {
-    "message": "Có lưu các thay đổi không?"
+    "message": "Save these changes?"
   },
   "qfSelectIcon": {
     "message": "Customize Icon…"
   },
   "qfSetCategory": {
-    "message": "Lập danh mục đánh dấu…"
+    "message": "Set Tab Category…"
   },
   "qfSetCategoryA": {
     "message": "C"
   },
   "qfShowAlways": {
-    "message": "Luôn hiện!"
+    "message": "Show Always!"
   },
   "qfShowNever": {
     "message": "Never Show (Folder Alias)"
@@ -1608,16 +1608,16 @@
     "message": "Tab-specific Properties…"
   },
   "qfTabDeleteOption": {
-    "message": "Thực hiện việc này với {0} thư mục còn lại."
+    "message": "Do this with the remaining {0} folders."
   },
   "qfTabDeletePrompt": {
-    "message": "Bạn muốn xóa thẻ này chứ?"
+    "message": "Delete this Tab?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Đây là thẻ chỉ tới một thư mục hợp lệ:"
+    "message": ": This is a tab that points to an invalid folder."
   },
   "qfTidyDeadFolders": {
-    "message": "Cái này sẽ xóa bỏ những thẻ có thư mục không hợp lệ.\nĐôi khi điều này xảy ra do một thư mục nào đó đã bị xóa hoặc di chuyển mà QuickFolders không được thông báo."
+    "message": "This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} icons missing"
@@ -1626,10 +1626,10 @@
     "message": "{0} tree icons repaired"
   },
   "qfUncategorized": {
-    "message": "(Chưa được xếp danh mục)"
+    "message": "(Uncategorized)"
   },
   "qfUp": {
-    "message": "Lên trên"
+    "message": "Up"
   },
   "qfUpdatedThemesEngineMsg": {
     "message": "A new theming engine for QuickFolders has been installed. Please select an item from the drop down box and click [Ok]."
@@ -1638,40 +1638,40 @@
     "message": "Stop displaying version history after updates?"
   },
   "quickMove.help.head": {
-    "message" : "Trợ giúp cho {1}"
+    "message": "Help for {1}"
   },
   "quickMove.help.head.advanced": {
-    "message" : "Các tính năng tiên tiến"
+    "message": "Advanced Features"
   },
   "quickMove.help.l1a": {
-    "message" : "Nhập phần đầu của tên thư mục hoặc các từ trong đó, được phân cách bằng dấu cách."
-  }, 
+    "message": "Type the start of a folder name or words in it, delimited by space."
+  },
   "quickMove.help.l1b": {
-    "message" : "Các ký tự sau được coi là ranh giới từ và không cần phải nhập:"
-  }, 
+    "message": "The following characters are regarded as word boundaries and don't need to be typed:"
+  },
   "quickMove.help.l2a": {
-    "message" : "Nhập {1} để vào thư mục grandparent/parent/được tìm kiếm."
-  }, 
+    "message": "Type {1} for entering grandparent/parent/searched folder."
+  },
   "quickMove.help.l2b": {
-    "message" : "2 chữ cái đầu tiên của bất kỳ thư mục mẹ nào thường là đủ. Bạn cũng có thể tạo các thư mục con mới bằng cú pháp này."
-  }, 
+    "message": "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
+  },
   "quickMove.help.l3a": {
-    "message" : "Nhập {1} để bỏ qua bất kỳ thư mục nào ở giữa."
-  }, 
+    "message": "Type {1} for skipping any folders in between."
+  },
   "quickMove.help.l3b": {
-    "message" : "Điều này hữu ích cho các cấu trúc phân cấp thư mục sâu hơn, phức tạp hơn hoặc không xác định."
-  },   
+    "message": "This is useful for deeper, more complicated or unknown folder hierarchies."
+  },
   "quickMove.help.advanced": {
-    "message" : "Các chức năng nâng cao hơn như phím tắt để đi đến một thư mục / di chuyển thư hoặc loại trừ các thư mục khỏi kết quả tìm kiếm có thể được định cấu hình trên tab QuickFolders Pro. Để truy cập các tính năng này và các tính năng cao cấp khác, hãy nhận giấy phép Pro và hỗ trợ tương lai của QuickFolders."
-  },  
+    "message": "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
+  },
   "quickMove.singleMessage.goNext": {
-    "message": "Hiển thị thư tiếp theo sau khi chuyển thư hiện tại"
+    "message": "Display next mail after moving current one"
   },
   "quickMove.singleMessage.reopenTab": {
-    "message": "Mở lại thư gốc sau khi chuyển đi"
+    "message": "Reopen original mail after it was moved"
   },
   "quickMove.singleMessageTabs": {
-    "message": "Tab tin nhắn đơn"
+    "message": "Single Message Tab"
   },
   "quickfolders.findFolder.placeHolder": {
     "message": "folder name"
@@ -1698,7 +1698,7 @@
     "message": "Reading List"
   },
   "quickfolders.toolbar.newsubfolder": {
-    "message": "Tạo một thư mục con…"
+    "message": "New Subfolder…"
   },
   "quickfolders.toolbar.skip": {
     "message": "Skip"
@@ -1710,14 +1710,14 @@
     "message": "Mail moved to folder {2};{1} mails moved to folder {2}"
   },
   "renew-your-license": {
-    "message": "Gia hạn giấy phép của bạn."
+    "message": "Renew your license."
   },
   "special-offer-content": {
-    "message": "Nâng cấp các tính năng của bạn và tiết kiệm {boldStart} $reduction$ {boldEnd} bằng cách mua giấy phép {linkStartPro}QuickFolders Pro{linkEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}. Hoặc chọn các chức năng tiêu chuẩn với {linkStart}Giấy phép Tiêu chuẩn{linkEnd} mới.",
+    "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} by buying a {linkStartPro}QuickFolders Pro license{linkEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}. Or choose the standard functions with the new {linkStart}Standard License{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": " ngày 16 tháng 4"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1726,7 +1726,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Gia hạn Giấy phép của bạn ngay bây giờ và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} $expirydate$ {boldEnd}.",
+    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1737,9 +1737,9 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
-    "message": "Nâng cấp ngay từ QuickFolders Standard lên Pro và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}.",
+    "message": "Upgrade now from QuickFolders Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1750,12 +1750,12 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "special-offer-expiry": {
-    "message": "Ngày 31 tháng 10"    
+    "message": "October 31st"
   },
   "special-offer-head": {
-    "message": "Giúp giữ cho $addon$ tương thích",
+    "message": "Help keep $addon$ compatible",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1764,7 +1764,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kính gửi {name} {boldEnd}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép. Mã Thunderbird liên tục phát triển và chúng tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!",
+    "message": "{boldStart}Dear {name}{boldEnd}, please support $addon$ through getting a license. The Thunderbird code continuously evolves and we need {boldStart}your help{boldEnd} to keep up!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1773,16 +1773,16 @@
     }
   },
   "support-preference": {
-    "message": "Đây là cách ưa thích để hỗ trợ $addonName$.",
+    "message": "This is the preferred way of supporting $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "quickFilters"
+        "example": "QuickFolders"
       }
     }
   },
   "support-suggestion": {
-    "message": "Để $addonName$ vẫn hoạt động và tồn tại, hãy làm điều đó một cách quan trọng:",
+    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1791,10 +1791,10 @@
     }
   },
   "testDrive": {
-    "message": "You can test drive the premium features with the free version, but they might be slightly restricted."
+    "message": "The Standard License gives you some features that were previously flagged as premium and removes restrictions of the unfunded version. It finances the upkeep with the next Thunderbird version and conversion to a modern API based mail extension architecture."
   },
   "thanks-for-installing-intro": {
-    "message": "Cảm ơn bạn đã cài đặt $addonName$.",
+    "message": "Thank you for installing $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1803,7 +1803,7 @@
     }
   },
   "thanks-for-updating-intro": {
-    "message": "Cảm ơn bạn đã cập nhật $addonName$.",
+    "message": "Thank you for updating $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1812,7 +1812,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ yêu cầu các thay đổi liên tục để vẫn tương thích với nền tảng Mozilla. Tôi không ngừng làm việc để giữ lại nhiều chức năng nhất có thể cho các phiên bản Thunderbird trong tương lai.",
+    "message": "$addonName$ requires ongoing changes in order to remain compatible with the Mozilla platform. I am constantly working to retain as much functionality as possible for future versions of Thunderbird.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1828,7 +1828,7 @@
   },
   "translated-by-google": {
     "description": "disclaimer.",
-    "message": "bản dịch do google cung cấp"
+    "message": "translations provided by google"
   },
   "updates.title": {
     "message": "Updates"
@@ -1840,20 +1840,20 @@
     "message": "Vouchers"
   },
   "whats-new-btn": {
-    "message": "Có gì mới?"
+    "message": "What's new?"
   },
   "whats-new-head": {
-    "message": "Những thay đổi quan trọng"
+    "message": "Important Changes"
   },
   "whats-new-intro": {
-    "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
+    "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Đã sửa lỗi trong phiên bản 5.8.2: Các menu thư mục dài hiện cuộn khi kéo thư đến mép màn hình. {L2}{L1} Thunderbird không nhảy vào Inbox nữa khi kiểm tra các thư mới từ trình đơn ngữ cảnh. {L2} {L1} Hỗ trợ biểu tượng lớn trong các nút trên thanh công cụ QuickFolders để hiển thị độ phân giải cao. {L2} {L1} Đã sửa: di chuyển thư mục từ chức năng quickMove không thành công trong Tb91. {L2} {L1} Các bản sửa lỗi về Bố cục khác nhau dành riêng cho Thunderbird 91. {L2}"
+    "message": "{L1}Fixed in version 5.8.2: Long folders menus now scroll when dragging mails to screen edge.{L2}{L1}Thunderbird doesn't jump into Inbox anymore when checking for new mails from the context menu.{L2}{L1}Support for large icon in QuickFolders toolbar buttons for high resolution displays.{L2}{L1}Fixed: moving folders from the quickMove function failed in Tb91.{L2}{L1}Various Layout fixes specific to Thunderbird 91.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
-    "message": "Chào mừng bạn đến với $addonName$",
+    "message": "Welcome to $addonName$",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1865,18 +1865,18 @@
     "message": "Advanced Properties"
   },
   "yearlyLicense.premiumFeatures": {
-    "message": "QuickFolders Pro cung cấp cho bạn toàn quyền truy cập không hạn chế vào các tính năng cao cấp."
+    "message": "QuickFolders Pro gives you full unrestricted access to the premium features."
   },
   "yearlyLicense.premiumFeatures.moreInfoLink": {
-    "message": "Thông tin thêm về các tính năng cao cấp."
+    "message": "More about premium features."
   },
   "yearlyLicense.title": {
-    "message": "Giấy phép hàng năm"
+    "message": "Annual License"
   },
   "yearlyLicense.usageTerm": {
-    "message": "Giấy phép dành cho mục đích sử dụng cá nhân của bạn và được gắn với địa chỉ email của bạn. Bạn có thể cài đặt nó trên nhiều ứng dụng email miễn là chúng được định cấu hình để sử dụng địa chỉ đó."
+    "message": "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use that address."
   },
   "yearlyLicense.usageTerm1": {
-    "message": "Bất kỳ địa chỉ email bổ sung nào cũng không thành vấn đề - chúng không yêu cầu giấy phép riêng biệt. Trong trường hợp có thắc mắc, bạn có thể liên hệ với tôi qua tab hỗ trợ."
+    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
   }
 }

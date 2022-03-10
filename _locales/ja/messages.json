@@ -3,11 +3,11 @@
     "message": "SPLASH+UI"
   },
   "account.label": {
-    "message": "Select account:"
+    "message": "アカウント選択:"
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
+    "message": "これで、Thunderbird $appVer$ で{boldStart}バージョン $addonVer$ {boldEnd}を実行しています。",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -20,52 +20,52 @@
     }
   },
   "addon-authors-struggle": {
-    "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
+    "message": "引き続き有用であるために、アドオン開発者は、ユーザーが提供する機能の恩恵を受け続けることができるように、修正と書き換えに必要なリソースに資金を提供する必要があります。"
   },
   "btn-extend-license": {
-    "message": "I want to extend my license by one year"
+    "message": "ライセンスを 1 年延長します"
   },
   "btn-renew-license": {
-    "message": "I want to renew my license"
+    "message": "ライセンスを更新します"
   },
   "btn-want-a-license": {
-    "message": "Choose a License"
+    "message": "ライセンスを選択してください"
   },
   "btn-want-to-donate": {
-    "message": "I want to help with a one time donation."
+    "message": "1 回限りの寄付を行います"
   },
   "btnApply": {
-    "message": "Apply"
+    "message": "適用"
   },
   "btnCategory": {
-    "message": "Categories"
+    "message": "カテゴリ"
   },
   "btnCategory.tooltip": {
-    "message": "Define Tab Categories"
+    "message": "タブのカテゴリを定義します"
   },
   "btnReset": {
-    "message": "Reset to Defaults"
+    "message": "既定値にリセット"
   },
   "buyDomainLicense.button": {
-    "message": "Buy Domain License"
+    "message": "ドメインライセンスを購入"
   },
   "buyDomainLicense.instruct": {
-    "message": "Need Licenses for a company with more than five users? Getting a domain license will work out cheaper:"
+    "message": "5 人以上の企業向けにライセンスが必要なら、ドメインライセンスを取得してください。こちらのほうが安くなります:"
   },
   "buyLicense.instruct": {
-    "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
+    "message": "自分用にライセンスが必要ならパーソナルライセンスを取得してください。個人用のメールアドレス向けのライセンスを複数の端末に適用できます。"
   },
   "buyProLicense.button": {
-    "message": "Buy Pro License!"
+    "message": "プロライセンスを購入！"
   },
   "buyStandardLicense.button": {
-    "message": "Buy Standard License!"
+    "message": "標準ライセンスを購入します！"
   },
   "buyStandardLicense.instruct": {
-    "message": "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions."
+    "message": "プレミアム機能は不要ですか？標準ライセンスでは、プレミアム機能のテストを行うことができます。"
   },
   "chkComposerSubfolders": {
-    "message": "Also apply to subfolders"
+    "message": "サブフォルダにも適用する"
   },
   "chkHideFromQuickJump": {
     "message": "Omit from quickJump / quickMove"
@@ -74,16 +74,16 @@
     "message": "Omit this folder and its children in quickJump / quickMove results"
   },
   "chkIgnoreCounts": {
-    "message": "Hide Count of Mails"
+    "message": "メール数のカウンタを隠す"
   },
   "chkIgnoreCounts.tooltip": {
-    "message": "Never display number of contained mails."
+    "message": "フォルダに含まれるメールの数を表示しないようにします"
   },
   "chkIgnoreUnread": {
-    "message": "Hide Unread Status"
+    "message": "未読状態を隠す"
   },
   "chkIgnoreUnread.tooltip": {
-    "message": "Never display bold or any unread count even when folder contains unread mail."
+    "message": "フォルダに未読のメールが含まれていても、太字または未読のカウントを表示しないようにします"
   },
   "chkSetMailsUnread": {
     "message": "Set mail to unread"
@@ -92,52 +92,52 @@
     "message": "If you move mail into this folder it is set to unread."
   },
   "cost-of-independence": {
-    "message": "Software development costs time and money - unlike many platform apps, Add-ons are not written by large corporations, nor are they sponsored in any way by Mozilla."
+    "message": "ソフトウェア開発には時間とお金がかかります - 多くのプラットフォームアプリとは異なり、アドオンは大企業によって作成されているわけではなく、Mozilla による支援もありません。"
   },
   "cssBackground": {
-    "message": "Background"
+    "message": "背景"
   },
   "cssBackground.tooltip": {
-    "message": "Enter a CSS background, e.g. linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
+    "message": "背景を CSS で指定します。 linear-gradient(下方向へグラデーション rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
   },
   "cssColor": {
-    "message": "Text color"
+    "message": "テキスト色"
   },
   "cssColor.tooltip": {
-    "message": "Enter a CSS color, e.g. rgba(100,20,20,0.8)"
+    "message": "色を CSS で指定します。rgba(100,20,20,0.8)"
   },
   "defaultAccountAddress.value": {
-    "message": "Account Default Identity"
+    "message": "既定のアカウント"
   },
   "domainLicense.email": {
-    "message": "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page."
+    "message": "あなたのドメインライセンスを生成するため、このメールアドレスに問い合わせます (2 営業日以内に確認のメールが送信されます)。次のページでライセンスのドメイン名を入力してください。"
   },
   "domainLicense.header": {
-    "message": "Licensed Email Domain"
+    "message": "ライセンス登録済みのドメイン"
   },
   "domainLicense.instruct": {
-    "message": "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use QuickFolders Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen."
+    "message": "このライセンスは、あなたの団体ドメインの鍵になります。ライセンスは、QuickFolders Pro の使用をこのメールドメインが末尾に付くメールアドレスのユーザに許可します。例えば、ドメイン名に 'abc.com' と入力すると、fred@abc.com や martha@abc.com、mike.doe@abc.com などのユーザがライセンスの使用を許可されます。正規ユーザの最大数は、最初の画面で入力した数になります。"
   },
   "domainLicense.validate": {
-    "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
+    "message": "あなたの団体のメールアドレスのドメイン名 (@ 記号の後ろ部分) は「正確に入力」してください。これは、ユーザのメールアドレスを認証するのに使用されます。"
   },
   "donate": {
-    "message": "Help out with a one time donation."
+    "message": "1 回限りの寄付を行う。"
   },
   "donate-heading": {
-    "message": "Help by Donating!"
+    "message": "寄付する！"
   },
   "email.label": {
-    "message": "Email:"
+    "message": "メールアドレス:"
   },
   "enterLicenseKey.button": {
-    "message": "Enter License Key…"
+    "message": "ライセンスキーを入力..."
   },
   "enterLicenseKey.tooltip": {
-    "message": "Enter the License Key code sent to you via Email."
+    "message": "メールに書かれたライセンスキーコードを入力してください。"
   },
   "extend-your-license": {
-    "message": "Consider extending your license by a year."
+    "message": "ライセンスを 1 年延長する。"
   },
   "extensionDescription": {
     "description": "Description of the extension.",
@@ -148,35 +148,35 @@
     "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
-    "message": "Bookmark your favorite mail folders in Thunderbird."
+    "message": "Thunderbird のメールフォルダをブックマークに追加します。"
   },
   "firstName.label": {
-    "message": "First Name:"
+    "message": "名:"
   },
   "freeLicense": {
-    "message": "If you have recently donated to the QuickFolders project or have done contributory work, such as translating or writing patches, you may be eligible for a free license key. Contact me from the support tab in QuickFolders Options."
+    "message": "QuickFolders プロジェクトに最近ご寄付いただいた方や開発に貢献 (翻訳やパッチ提供) していただいている方は、無料ライセンスキーの取得資格があります。QuickFolders オプションのサポートタブからお問い合わせください。"
   },
   "fromAddress": {
-    "message": "From:"
+    "message": "差出人:"
   },
   "fromAddress.tooltip": {
-    "message": "Default Identity when composing emails"
+    "message": "メール作成時の既定のアカウントです"
   },
   "getQuickFolders": {
-    "message": "QuickFolders Licenses"
+    "message": "QuickFoldersライセンス"
   },
   "grpComposer": {
-    "message": "Default Email Fields"
+    "message": "既定のメールフィールド"
   },
   "grpCustomCSS": {
-    "message": "Custom CSS"
+    "message": "カスタム CSS"
   },
   "grpTabBehavior": {
-    "message": "Advanced Tab Behavior"
+    "message": "詳細タブ動作"
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "Successfully installed $addonName$",
+    "message": "$addonName$ が正常にインストールされました",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -186,7 +186,7 @@
   },
   "heading-updated": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "$addonName$ Updated Successfully",
+    "message": "$addonName$ が正常に更新されました",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -195,10 +195,10 @@
     }
   },
   "intro": {
-    "message": "An annual license for QuickFolders Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome."
+    "message": "QuickFolders Pro の年間ライセンスは、すべての有料機能を 1 年間使用できるようにします。これは、製品開発のサポートと改善の助けになります。"
   },
   "label-remind-me": {
-    "message": "Remind me again in $countDays$ days.",
+    "message": "$countDays$ 日後にもう一度表示します。",
     "placeholders": {
       "countDays": {
         "content": "$1",
@@ -207,35 +207,35 @@
     }
   },
   "lastName.label": {
-    "message": "Last Name:"
+    "message": "姓:"
   },
   "lblCustomPalette": {
-    "message": "Custom Palette:"
+    "message": "カスタムパレット:"
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
-    "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
+    "message": "最近ライセンスを延長するか、寄付していただきありがとうございます。 このアドオンの将来の保証に役立ったので、このウィンドウを閉じるだけです。"
   },
   "licenseComparison": {
-    "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
+    "message": "異なるバージョンの機能を比較するには、{linkStart}このリストを読んでください{linkEnd}。"
   },
   "licenseHead": {
-    "message": "New Licensing System"
+    "message": "新しいライセンスシステム"
   },
   "licenseTypes": {
-    "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
+    "message": "QuickFoldersは、StandardとProの2つのライセンスを提供します。 これらは、Thunderbirdプラットフォームの変更に対応し、アドオンのイノベーションと修理に資金を提供するために必要です。 拡張機能を壊す可能性のある変更は毎年展開されるため、ライセンスも1年間有効です。"
   },
   "licenseWindow.title": {
-    "message": "QuickFolders Pro License"
+    "message": "QuickFolders Pro ライセンス"
   },
   "license_restriced.std": {
-    "message": "Standard License - restricted Pro function. Find out more…"
+    "message": "標準ライセンス-制限付きのPro機能。 詳細はこちら…"
   },
   "license_restriced.unpaid": {
-    "message": "Unlicensed version - restricted function. Find out more…"
+    "message": "ライセンスのないバージョン-制限された機能。 詳細はこちら…"
   },
   "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders needs a Pro license to support more than $maxTabs$ tabs.",
+    "message": "QuickFoldersには、$maxTabs$を超えるタブをサポートするためのProライセンスが必要です。",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -244,7 +244,7 @@
     }
   },
   "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders needs a license to support more than $maxTabs$ tabs.",
+    "message": "QuickFoldersには、$maxTabs$を超えるタブをサポートするためのライセンスが必要です。",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -253,14 +253,14 @@
     }
   },
   "mozillas-basic-platform": {
-    "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
+    "message": "Mozilla は、エンドユーザーであるあなたにソフトウェアを提供するための基本的なプラットフォームのみを提供します。ユーザーに支払いやサポートを依頼する必要がある場合、addons.thunderbird.net からこれを行うことはできません。これは、アプリ内決済機能や、iTunes や Google Play のようなライセンス管理が組み込まれた「アプリストア」ではありません。"
   },
   "notificationTitle": {
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
   "ongoing-work": {
-    "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
+    "message": "$addonName$を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。 次の2022バージョンにはさらに多くの変更があります。 このような複雑なアドオンを使用すると、コストのかかる作業が避けられなくなります。 これで私たちを助けてください。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -269,16 +269,16 @@
     }
   },
   "purchase-a-license": {
-    "message": "Purchase a license."
+    "message": "ライセンスを購入する。"
   },
   "purchase-heading": {
-    "message": "Buying a License!"
+    "message": "ライセンスを購入する！"
   },
   "qf.accounts": {
-    "message": "Accounts"
+    "message": "アカウント"
   },
   "qf.alert.pasteFolders.formatErr": {
-    "message": "Could not create tabs. See tools / error console for more detail."
+    "message": "タブを作成できませんでした。詳細は [ツール] > [エラーコンソール] を見てください。"
   },
   "qf.backupAndRestore": {
     "message": "Backup / Restore"
@@ -287,250 +287,250 @@
     "message": "Apply position value!"
   },
   "qf.button.add": {
-    "message": "Add!"
+    "message": "追加"
   },
   "qf.button.configureTooltips": {
-    "message": "Configure tooltips…"
+    "message": "ツールチップ設定…"
   },
   "qf.button.currentFolderBackground.set": {
-    "message": "apply"
+    "message": "設定"
   },
   "qf.button.default": {
-    "message": "Defaults"
+    "message": "デフォルト"
   },
   "qf.button.defaultcolors": {
-    "message": "Default Colors"
+    "message": "既定の色"
   },
   "qf.button.deleteselectedcategory": {
-    "message": "Delete selected category"
+    "message": "選択したカテゴリを削除"
   },
   "qf.button.down": {
-    "message": "Down"
+    "message": "下へ移動"
   },
   "qf.button.pasteLicense": {
-    "message": "paste"
+    "message": "貼り付け"
   },
   "qf.button.rename": {
-    "message": "Rename"
+    "message": "名前変更"
   },
   "qf.button.reorderButtonBottom": {
-    "message": "Move to bottom"
+    "message": "一番下へ"
   },
   "qf.button.reorderButtonBottom.accessKey": {
-    "message": "b"
+    "message": "B"
   },
   "qf.button.reorderButtonBottom.toolTip": {
-    "message": "Rearrange filter so it executes after all others"
+    "message": "フィルタを最後に実行するように並べ替えます"
   },
   "qf.button.reorderButtonTop": {
-    "message": "Move to top"
+    "message": "一番上へ"
   },
   "qf.button.reorderButtonTop.accessKey": {
     "message": "o"
   },
   "qf.button.reorderButtonTop.toolTip": {
-    "message": "Rearrange filter so it executes before all others"
+    "message": "フィルタを最初に実行するように並べ替えます"
   },
   "qf.button.up": {
-    "message": "Up"
+    "message": "上へ移動"
   },
   "qf.button.validateLicense": {
-    "message": "validate"
+    "message": "認証"
   },
   "qf.caption.currentFolderBackground": {
-    "message": "Current Folder Toolbar background"
+    "message": "現在のフォルダツールバーの背景"
   },
   "qf.categories.supportMultiple": {
-    "message": "Support selecting multiple tab categories"
+    "message": "タブカテゴリの複数選択をサポートする"
   },
   "qf.categories.supportMultiple.tooltip": {
-    "message": "Use the SHIFT key in order to select more than one category on the dropdown."
+    "message": "ドロップダウン上で SHIFT キーを押して複数のカテゴリを選択します。"
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Focus on message list when changing tabs"
+    "message": "タブの変更時にメッセージリストをフォーカスする"
   },
   "qf.checkbox.hideInSingleMessage": {
-    "message": "Hide QuickFolders in single message tabs"
+    "message": "単一のメッセージタブでQuickFoldersを非表示にする"
   },
   "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Removes the QuickFolders toolbar in tabs that show a single message."
+    "message": "単一のメッセージを表示するタブのQuickFoldersツールバーを削除します。"
   },
   "qf.checkbox.currentFolder.closeButton": {
-    "message": "Close Button"
+    "message": "閉じるボタン"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Display the Toolbar"
+    "message": "ツールバーを表示"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrate with lightweight theme"
   },
   "qf.checkbox.debug": {
-    "message": "Debug Mode"
+    "message": "デバッグモード"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Right click this checkbox for advanced debug options"
+    "message": "このチェックボックスを右クリックすると詳細デバッグオプションを表示します"
   },
   "qf.checkbox.displaylabel": {
-    "message": "Display the 'QuickFolders' label in the toolbar"
+    "message": "ツールバーに 'QuickFolders' ラベルを表示する"
   },
   "qf.checkbox.displaylabel.tooltip": {
-    "message": "Right click to change the text of this label"
+    "message": "右クリックするとラベルのテキストを変更できます。"
   },
   "qf.checkbox.enableTransitions": {
-    "message": "Enable CSS transitions"
+    "message": "CSS トランジションを有効にする"
   },
   "qf.checkbox.enableTransitions.tooltip": {
-    "message": "Shows smooth transitions between several aspects of tab coloring."
+    "message": "タブの色遷移をスムースに表示します"
   },
   "qf.checkbox.hideCategoryBox": {
-    "message": "Collapse Categories"
+    "message": "カテゴリを折りたたむ"
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
-    "message": "Minimizes the Categories menu to take up less space."
+    "message": "カテゴリメニューを折りたたんで最小化します。"
   },
   "qf.checkbox.highlightNewMail": {
-    "message": "Highlight folders with new mail"
+    "message": "新着メールのあるフォルダを強調する"
   },
   "qf.checkbox.menus.dragToNewFolder": {
-    "message": "Drag to new Subfolder"
+    "message": "新しいサブフォルダにドラッグする"
   },
   "qf.checkbox.menus.emptyJunk": {
-    "message": "Empty Junk"
+    "message": "迷惑メールフォルダを空にする"
   },
   "qf.checkbox.menus.emptyTrash": {
-    "message": "Empty Trash"
+    "message": "ごみ箱を空にする"
   },
   "qf.checkbox.menus.getMailForInbox": {
-    "message": "Get Messages (Mail Accounts)"
+    "message": "メッセージを受信 (メールアカウント)"
   },
   "qf.checkbox.menus.getMailForNews": {
-    "message": "Get Messages (News Accounts)"
+    "message": "メッセージを受信 (ニュースアカウント)"
   },
   "qf.checkbox.menus.markAllRead": {
-    "message": "Mark Folder Read"
+    "message": "フォルダを既読にする"
   },
   "qf.checkbox.menus.markAllReadRecursive": {
-    "message": "Mark Folder Read (recursive)"
+    "message": "フォルダを既読にする（再帰的）"
   },
   "qf.checkbox.quickCopy": {
-    "message": "quickCopy - Copy mail to any folder with Shortcut:"
+    "message": "クイックコピー - ショートカットキーで任意のフォルダにメールをコピーする:"
   },
   "qf.checkbox.quickCopy.tip": {
-    "message": "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry."
+    "message": "クイックコピーボタンにメールをドラッグして、任意のフォルダに名前エントリ経由ですばやくコピーします。"
   },
   "qf.checkbox.quickJump": {
-    "message": "quickJump - Go to any folder with Shortcut:"
+    "message": "quickJump - 次のショートカットキーで任意のフォルダを開きます:"
   },
   "qf.checkbox.quickJump.tip": {
-    "message": "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry."
+    "message": "quickJump ボタンは、クリックすると名前エントリのどこにでもすばやく移動できるショートカットです。"
   },
   "qf.checkbox.quickMove": {
-    "message": "quickMove - Move mail to any folder with Shortcut:"
+    "message": "quickMove - 次のショートカットキーでメールを任意のフォルダへ移動します:"
   },
   "qf.checkbox.quickMove.tip": {
-    "message": "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry."
+    "message": "quickMove ボタンは、このボタンにメールをドラッグすると任意の名前エントリにメールを移動できるショートカットです。"
   },
   "qf.checkbox.quickmove.autofill": {
-    "message": "Insert last folder name executed"
+    "message": "最後に実行したフォルダ名を挿入"
   },
   "qf.checkbox.quickmove.autofill.tip": {
-    "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
+    "message": "最後に使用したフォルダが挿入されます。Enter キーを押して使用するか、他のフォルダを入力してください。"
   },
   "qf.checkbox.readingList": {
-    "message": "Reading List"
+    "message": "後で読むリスト"
   },
   "qf.checkbox.readingList.tooltip": {
-    "message": "A list for mails that should be read later. Drag your important emails on this button."
+    "message": "後で読むメールのリストです。大事なメールをこのボタンにドラッグしてください。"
   },
   "qf.checkbox.shadows": {
-    "message": "shadows"
+    "message": "影"
   },
   "qf.checkbox.shift": {
     "message": "Shift"
   },
   "qf.checkbox.showCountInSubFolders": {
-    "message": "Also display totals of subfolders"
+    "message": "サブフォルダのメッセージ数も表示する"
   },
   "qf.checkbox.showCountInSubFolders.tooltip": {
-    "message": "These are displayed separated by a '+' beside their main counts; contained unread mail will also make tab bold if option above is active"
+    "message": "「メインフォルダのメッセージ数 + サブフォルダのメッセージ数」のように表示されます。上記のオプションが有効であれば、未読を含むタブは太字で表示されます。"
   },
   "qf.checkbox.showFilterButton": {
-    "message": "'Create Filters' Button"
+    "message": "[フィルタ作成] ボタン"
   },
   "qf.checkbox.showFilterButton.tooltip": {
-    "message": "You can also create Filters using the QuickFolders context menu."
+    "message": "QuickFolders のコンテキストメニューからもフィルタを作成できます。"
   },
   "qf.checkbox.showFolderNavigation": {
-    "message": "Folder Navigation buttons"
+    "message": "フォルダナビゲーションのボタン"
   },
   "qf.checkbox.showIconButtons": {
-    "message": "Customize Icon buttons"
+    "message": "アイコンボタンのカスタマイズ"
   },
   "qf.checkbox.showIcons": {
-    "message": "Display Icons (Inbox, Sent, Junk, Trash, Drafts, Archived, Templates)"
+    "message": "アイコンを表示する (受信トレイ、送信済みトレイ、ごみ箱、下書き、アーカイブ、テンプレート)"
   },
   "qf.checkbox.showMailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "メールフォルダコマンド"
   },
   "qf.checkbox.showMessageNavigation": {
-    "message": "Message Navigation buttons"
+    "message": "メッセージナビゲーションのボタン"
   },
   "qf.checkbox.showNewMailItalics": {
-    "message": "Display tabs with newly arrived mail italic"
+    "message": "新着メールのタブを斜体で表示する"
   },
   "qf.checkbox.showNonEmptyItalics": {
-    "message": "Display tabs which contain messages italic"
+    "message": "メッセージを含むフォルダを斜体で表示する"
   },
   "qf.checkbox.showQuickMove": {
-    "message": "quickMove Button"
+    "message": "quickMove ボタン"
   },
   "qf.checkbox.showQuickMove.tooltip": {
-    "message": "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box."
+    "message": "quickMove ボタンは、メールをドラッグして目的のフォルダへ移動するのに使用します。複数のフォルダから対象のメールを集め、検索ボックスに移動先のフォルダ名を入力してください。"
   },
   "qf.checkbox.showRecentButton": {
-    "message": "Recent Folders Button"
+    "message": "最近使用したフォルダのボタン"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Display Recent Folders Tab"
+    "message": "最近開いたフォルダのタブを表示する"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Right click for configuration"
+    "message": "右クリックで設定を開きます"
   },
   "qf.checkbox.showSubfolders": {
-    "message": "Expand Subfolders in popup menus"
+    "message": "ポップアップメニューにサブフォルダを展開する"
   },
   "qf.checkbox.showTotalMessageCount": {
-    "message": "Display the total number of messages"
+    "message": "フォルダボタンにメッセージ数の合計を表示する"
   },
   "qf.checkbox.showUnreadBold": {
-    "message": "Display tabs with unread messages in bold"
+    "message": "未読メッセージ数を太字で表示する"
   },
   "qf.checkbox.showUnreadMessageCount": {
-    "message": "Display the number of unread messages"
+    "message": "フォルダボタンに未読メッセージ数を表示する"
   },
   "qf.checkbox.showshortcutnumber": {
-    "message": "Display shortcut number on folder labels"
+    "message": "フォルダのラベルにショートカット番号を表示する"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
-    "message": "…also in Single Message windows"
+    "message": "… 単体のメッセージウィンドウにも表示"
   },
   "qf.checkbox.singleMessage.currentFolder.tooltip": {
-    "message": "Show current folder toolbar in the window that opens when you select to open an Email in a new window"
+    "message": "メールを選択して開いた新しいウィンドウに現在のフォルダツールバーを表示します"
   },
   "qf.checkbox.singleMessageTab.currentFolder.show": {
-    "message": "Toolbar in Single Message Tabs"
+    "message": "単体のメッセージタブのツールバー"
   },
   "qf.checkbox.skipFolder": {
-    "message": "Skip Unread Folder - use Shortcut: SHIFT +"
+    "message": "未読フォルダをスキップ - ショートカット使用: SHIFT +"
   },
   "qf.checkbox.skipFolder.tip": {
-    "message": "Shortcut for jumping to the next unread folder."
+    "message": "次の未読フォルダへジャンプするショートカット"
   },
   "qf.checkbox.sortMenusAlpha": {
-    "message": "Force alphabetic sorting of menus with subfolders."
+    "message": "サブフォルダメニューをアルファベット順に並べ替える"
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
-    "message": "Only use this option if your mail client doesn't sort the subfolders correctly."
+    "message": "このオプションはサブフォルダが正しく並べ替えられない場合に使用してください。"
   },
   "qf.checkbox.storeConfig.general": {
     "message": "Include general settings"
@@ -542,55 +542,55 @@
     "message": "Include QuickFolders Tabs"
   },
   "qf.checkbox.tabMenuIcon": {
-    "message": "Toolbar Menu Icon"
+    "message": "ツールバーメニューアイコン"
   },
   "qf.checkbox.tabMenuIcon.tooltip": {
-    "message": "This menu can also be invoked by right-clicking the toolbar itself"
+    "message": "このメニューはツールバーを右クリックして呼び出せます"
   },
   "qf.checkbox.transparent": {
-    "message": "transparent"
+    "message": "透過"
   },
   "qf.checkbox.useNavigationShortcuts": {
-    "message": "ALT-Left / ALT-Right for previous / next Tab"
+    "message": "Alt+← / Alt+→ キーで前のタブ / 次のタブへ移動する"
   },
   "qf.checkbox.usePalette": {
-    "message": "Use palette"
+    "message": "パレットを使用"
   },
   "qf.checkbox.useRebuildShortcut": {
-    "message": "Rebuild Tabs with Shortcut: Ctrl + Alt +"
+    "message": "タブ再構築のショートカットキー: Ctrl+Alt+"
   },
   "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Use keyboard shortcuts (Alt + 1 through Alt + 9)"
+    "message": "キーボードショートカットを使用する (Alt+1 から Alt+9)"
   },
   "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Use Ctrl instead of Alt"
+    "message": "キーボードショートカットに Ctrl キーを使用する"
   },
   "qf.continueFilter.label": {
-    "message": "Create Filter…"
+    "message": "フィルタ作成…"
   },
   "qf.continueFilter.shortcut": {
     "message": "F"
   },
   "qf.copyfolders": {
-    "message": "Copy Tabs"
+    "message": "タブをコピー"
   },
   "qf.copyfolders.tooltip": {
-    "message": "Copy the QuickFolders Tabs configuration to the clipboard"
+    "message": "フォルダへのパス文字列をクリップボードにコピーします。"
   },
   "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird theme"
+    "message": "Thunderbird のテーマ"
   },
   "qf.currentFolderBackground.custom": {
-    "message": "custom"
+    "message": "カスタム"
   },
   "qf.currentFolderBackground.dark": {
-    "message": "dark"
+    "message": "ダーク"
   },
   "qf.currentFolderBackground.default": {
-    "message": "silver"
+    "message": "銀"
   },
   "qf.currentFolderBackground.translucent": {
-    "message": "translucent"
+    "message": "半透明"
   },
   "qf.currentfolder.leftSpacer": {
     "message": "Left Spacer:"
@@ -599,16 +599,16 @@
     "message": "Right Spacer:"
   },
   "qf.description.github": {
-    "message": "Please use github for all official feature requests and bug reports"
+    "message": "すべての要望とバグ報告は github へお願いします"
   },
   "qf.description.categoryusage": {
-    "message": "You can put this tab in a category (i.e. 'Work', 'Private', …)."
+    "message": "このブックマークをカテゴリに追加します (例:'仕事', 'プライベート', ...)。"
   },
   "qf.description.changeCategory": {
-    "message": "Right click a tab to organize it into one or several categories. Creates a filter for categories on the left of the tabs."
+    "message": "ブックマークを右クリックするとカテゴリに追加できます。カテゴリはバーの左端のプルダウンメニューから選択できます。"
   },
   "qf.description.contactMe": {
-    "message": "You can also contact me personally at $supportMail$:",
+    "message": "個人的な連絡は $supportMail$ まで:",
     "placeholders": {
       "supportMail": {
         "content": "$1"
@@ -616,418 +616,418 @@
     }
   },
   "qf.description.donate": {
-    "message": "If you love QuickFolders as much as we do and would like to support its development, you can donate some money towards the further development of QuickFolders."
+    "message": "QuickFolders の開発をサポートしたいときは、こちらで寄付を受け付けています:"
   },
   "qf.description.dragToAdd": {
-    "message": "Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias). Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). Click quickfolder to jump to mail folder."
+    "message": "新しいクイックフォルダ (ショートカット) を作成するには、メールフォルダをツールバー上の空いたところにドラッグします。メッセージをクイックフォルダ上にドラッグするとメッセージを移動します (Ctrl キーを押しながらドラッグでコピー)。メールフォルダを開くにはクイックフォルダをクリックします。"
   },
   "qf.description.dragToPopup": {
-    "message": "Drag messages onto quickfolder popup menu to move messages into sub folders."
+    "message": "メッセージをサブフォルダに移動するには、クイックフォルダのポップアップメニュー上にドラッグします。"
   },
   "qf.description.dragToPosition": {
-    "message": "Drag quickfolders sideways to change their positions. Right-click quickfolder for context menu; by selecting you can jump into sub folders. 'Rename tab' changes the label of the quickfolder. 'Remove tab' deletes the quickfolder (not the mail folder)."
+    "message": "クイックフォルダの位置を変更するには、フォルダを横にドラッグします。クイックフォルダを右クリックするとコンテキストメニューが表示され、サブフォルダを開くことができます。'ブックマークの名前を変更' はクイックフォルダのラベルを変更します。'ブックマークを削除' はクイックフォルダを削除します (実際のメールフォルダは削除しません)。"
   },
   "qf.description.dragexplain": {
-    "message": "Tabs can also be dragged to change positions! Drop one on top of another to insert before / after it."
+    "message": "ブックマークの位置は、ツールバー上でドラッグして変更することもできます。"
   },
   "qf.description.editcategory": {
-    "message": "Select an existing category by double clicking on it, or add a new category below."
+    "message": "既存のカテゴリをダブルクリックして選択するか、新しいカテゴリを追加してください。"
   },
   "qf.description.experimentalItems": {
-    "message": "The following items are experimental, they will hopefully be working in the next release!!"
+    "message": "以下の項目は実験段階です。将来のリリースで動作する予定です！"
   },
   "qf.description.languages": {
-    "message": "QuickFolders supports localization - you can help by adding a translation in your language on github:"
+    "message": "QuickFolders は他の言語にも対応しています。あなたの言語を追加するには github で翻訳を追加してください:"
   },
   "qf.description.linkNote": {
-    "message": "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:"
+    "message": "QuickFolders のホームページに詳しいユーザガイドとヒント、FAQ があります:"
   },
   "qf.description.multicategory": {
-    "message": "To add a folder to more than one category: Hold down SHIFT or CONTROL while selecting items."
+    "message": "フォルダを複数のカテゴリに追加するには: Shift または Ctrl キーを押しながらアイテムを選択してください。"
   },
   "qf.description.pulldown": {
-    "message": "The QuickFolders bar will display a pulldown, allowing you to filter your tabs by category."
+    "message": "QuickFolders バーにはカテゴリ表示のためのプルダウンメニューが表示されます。"
   },
   "qf.description.rightClickOptions": {
-    "message": "Right-click an empty area to open the options menu. In options, you can select native style (smaller) or flat style (clearer; supports drag indicator)."
+    "message": "オプションメニューを開くにはバーの空いたところを右クリックします。オプションでは表示スタイルをネイティブスタイル(小さめ) またはフラットスタイル(見やすい) から選択できます。"
   },
   "qf.description.tipMsg": {
-    "message": "Tip: If you have an extensive amount of folders, try the Nostalgy extension for keyboard driven message organizing."
+    "message": "ヒント: フォルダ数が非常に多い場合は、キーボードでメッセージが操作できる Nostalgy 拡張をお試しください。"
   },
   "qf.description.versionhistory": {
-    "message": "Detailed Version History at quickfolders.org"
+    "message": "バージョン履歴 (quickfolders.org)"
   },
   "qf.dialog.changeorder": {
-    "message": "Change the order of the tabs"
+    "message": "ブックマークの並び順変更"
   },
   "qf.dialog.quickmove.settings": {
-    "message": "quickMove Advanced Settings"
+    "message": "quickMove詳細設定"
   },
   "qf.dialog.setcategory": {
-    "message": "Set the category for a tab"
+    "message": "ブックマークにカテゴリを設定"
   },
   "qf.donate.tooltip": {
-    "message": "Support Development of QuickFolders!"
+    "message": "QuickFolders の開発を支援します"
   },
   "qf.filters.instructions": {
-    "message": "Please select a template. You can fine tune the filter rules on the next screen."
+    "message": "テンプレートを選択してください。次の画面でフィルタルールを設定します。"
   },
   "qf.filters.template.from": {
-    "message": "Based on Sender (from)"
+    "message": "送信者 (from) を基準にする"
   },
   "qf.filters.template.from.description": {
-    "message": "This is probably the most used pattern:  this will retrieve the sender's email address and paste it into the from and to filter conditions fields. This way complete conversations with the sender will be moved to the new folder."
+    "message": "これはよく使われるパターンです: 差出人のメールアドレスを取得し、フィルタ条件の差出人のフィールドに貼り付けます。このフィルタ条件は、特定の差出人からのメールをすべて新しいフォルダに移動できます。"
   },
   "qf.filters.template.list": {
-    "message": "Mailing List"
+    "message": "メーリングリスト"
   },
   "qf.filters.template.list.description": {
-    "message": "Similar to Based on Sender, but it doesn't fill the 'to' condition field."
+    "message": "差出人に基づくフィルタと似ていますが、宛先のフィルタ条件は指定しません。"
   },
   "qf.filters.template.tag": {
-    "message": "By Tags"
+    "message": "タグ"
   },
   "qf.filters.template.tag.description": {
-    "message": "Uses the tags of the email and adds them as filter conditions."
+    "message": "メールに付けられたタグをフィルタ条件に追加します。"
   },
   "qf.filters.template.to": {
-    "message": "Based on Recipient (to)"
+    "message": "受信者 (to) を基準にする"
   },
   "qf.filters.template.to.description": {
-    "message": "Similar to 'Based on Sender': use this when you mark an email you have sent to somebody else. This will retrieve the recpient's email address and paste it into the from and to filter conditions fields. This way the complete conversation with the contact will be moved to the new folder."
+    "message": "差出人に基づくフィルタと似ています: あなたから誰かに送信したメールにマークを付けたい場合に使用できます。宛先のメールアドレスを取得し、フィルタ条件の差出人と宛先のフィールドに貼り付けます。このフィルタ条件は、特定の差出人と宛先の会話全体を新しいフォルダに移動できます。"
   },
   "qf.filters.template.topic": {
-    "message": "By Subject"
+    "message": "件名"
   },
   "qf.filters.template.topic.description": {
-    "message": "This will look for special expressions in brackets, e.g. [stamp collectors] or {vegans} and create a filter condition based on these; a lot of mass email is set up using this pattern, so it is really easy to use."
+    "message": "これは特別な括弧 ([切手収集]や{菜食主義} など) で囲まれた文字列に基づくフィルタ条件を作成します。多くのメーリングリストなどの件名でこのような書き方がされているので、簡単に使用できます。"
   },
   "qf.filters.title": {
-    "message": "Create Filters"
+    "message": "フィルタ作成"
   },
   "qf.filters.toggleMessage.notificationText": {
-    "message": "Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'. To end the filter learning mode, press the filter button on the top left of the QuickFolders bar."
+    "message": "フィルタ学習モードを開始しました。メールを QuickFolders に移動すると 'フィルタルール作成' ウィザードが開始されます。Thunderbird は、メールの「送信者」や「件名に含まれる特定のキーワード」などをベースにしてメッセージを自動的に移動するためにフィルタを使用します。フィルタ学習モードを終了するには、QuickFolders バー左上のフィルタボタンをクリックしてください。"
   },
   "qf.filters.toggleMessage.title": {
-    "message": "Creating Filters"
+    "message": "フィルタ作成"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
-    "message": "Customize Icon…"
+    "message": "アイコンをカスタマイズ…"
   },
   "qf.foldercontextmenu.quickfolders.removeIcon": {
-    "message": "Remove Customized Icon"
+    "message": "カスタマイズしたアイコンを削除"
   },
   "qf.fpJsonFile": {
     "message": "JSON File"
   },
   "qf.goNextUnread.auto": {
-    "message": "Go to next folder without asking (recommended)"
+    "message": "確認せずに次のフォルダへ移動する (推奨)"
   },
   "qf.goNextUnread.none": {
-    "message": "Do nothing if no unread email is left in folder"
+    "message": "フォルダ内に未読メールが無い場合は何もしない"
   },
   "qf.goNextUnread.prompt": {
-    "message": "Ask to go to next unread folder"
+    "message": "次の未読フォルダへの移動を確認する"
   },
   "qf.group.navigation": {
-    "message": "Message Navigation"
+    "message": "メッセージナビゲーション"
   },
   "qf.label.ActiveTabColor": {
-    "message": "Active Tab Color:"
+    "message": "アクティブなタブの色:"
   },
   "qf.label.ColoredTabPalette": {
-    "message": "Palette for Colored Tabs:"
+    "message": "色付きタブのパレット:"
   },
   "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palette for tabs with a user-assigned color"
+    "message": "タブに特定の色を設定するパレットです"
   },
   "qf.label.DragOverBackground": {
-    "message": "Drag Over Color:"
+    "message": "タブのドラッグ中の色:"
   },
   "qf.label.HoveredTabColor": {
-    "message": "Hovered Tab Color:"
+    "message": "ポイントしたタブの色:"
   },
   "qf.label.Toolbar": {
-    "message": "Toolbar"
+    "message": "ツールバー"
   },
   "qf.label.Toolbar.bottomLine": {
-    "message": "Bottom Line Width:"
+    "message": "下線の幅:"
   },
   "qf.label.Toolbar.bottomLine.tip": {
-    "message": "The width of the line under tabs. Change its color with the Active Tab Color picker below."
+    "message": "タブの下線の幅です。アクティブカラーピッカで色を変更してください。"
   },
   "qf.label.ToolbarBackground": {
-    "message": "Toolbar Background:"
+    "message": "ツールバーの背景色:"
   },
   "qf.label.UncoloredTab": {
-    "message": "Uncolored Tab"
+    "message": "色無しのタブ"
   },
   "qf.label.UncoloredTab.tooltip": {
-    "message": "Look of (inactive) tabs without a specifically selected color"
+    "message": "タブに特定の色を設定しません"
   },
   "qf.label.appearance": {
-    "message": "Appearance"
+    "message": "外観"
   },
   "qf.label.behavior": {
-    "message": "Behavior"
+    "message": "動作"
   },
   "qf.label.github": {
-    "message": "Report a bug / Request a feature…"
+    "message": "github でバグ報告または新しい機能を要望する…"
   },
   "qf.label.buttonFontSizeNumeric": {
-    "message": "Button font size (0 for default):"
+    "message": "ボタンのフォントサイズ (既定値は 0):"
   },
   "qf.label.cancel": {
-    "message": "Cancel"
+    "message": "キャンセル"
   },
   "qf.label.colors": {
-    "message": "Colors"
+    "message": "配色"
   },
   "qf.label.contactLink": {
-    "message": "Contact me (English or German)…"
+    "message": "作者にメールする (英語またはドイツ語のみ)…"
   },
   "qf.label.currentFolderToolbar": {
-    "message": "Current Folder Toolbar"
+    "message": "現在のフォルダツールバー"
   },
   "qf.label.donate": {
-    "message": "Donate"
+    "message": "寄付"
   },
   "qf.label.donateLink": {
-    "message": "Visit the Donation Page…"
+    "message": "寄付ページを開く…"
   },
   "qf.label.dragFolderLabel": {
-    "message": "Drag folders here to create a tab. Click the tab to go to the folder, drag messages to move/copy them there."
+    "message": "フォルダをここにドラッグして追加してください。追加したブックマークをクリックするとフォルダを開き、メッセージをドラッグするとそこに移動/コピーします。"
   },
   "qf.label.existingcategories": {
-    "message": "Existing categories:"
+    "message": "既存のカテゴリ:"
   },
   "qf.label.filterCountN_of_M": {
-    "message": "{0} of {1}"
+    "message": "{0} / {1}"
   },
   "qf.label.filterEntities": {
-    "message": "items"
+    "message": "個のアイテム"
   },
   "qf.label.filterSingleEntity": {
-    "message": "1 item"
+    "message": "1 個のアイテム"
   },
   "qf.label.getQuickFilters": {
-    "message": "For an improved and more powerful way of creating Filters please install my extension quickFilters!"
+    "message": "機能が強化されたフィルタ作成には quickFilters 拡張をインストールしてください！"
   },
   "qf.label.goNextUnread": {
-    "message": "Go to next unread email:"
+    "message": "次の未読メールへ移動:"
   },
   "qf.label.goNextUnread.tip": {
-    "message": "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder."
+    "message": "次の未読メールが別のフォルダにある場合、別のフォルダへ移動してよいか Thunderbird が確認します。"
   },
   "qf.label.haveLicense": {
-    "message": "Already have a License?"
+    "message": "ライセンス登録はお済みですか？"
   },
   "qf.label.homePage": {
-    "message": "Find detailed information at the QuickFolders homepage at quickfolders.org…"
+    "message": "詳しい情報は quickfolders.org の QuickFolders ホームページにあります。"
   },
   "qf.label.initdelay": {
-    "message": "[ms] init delay {1000 is standard}:"
+    "message": "[ms] 初期遅延時間 {標準は 1000}:"
   },
   "qf.label.insertLicense": {
-    "message": "Insert your personal License key here:"
+    "message": "個人ライセンスキーをここに記入してください:"
   },
   "qf.label.insertLicense.tooltip": {
-    "message": "Your license key is contained in your order confirmation email from Fastspring."
+    "message": "ライセンスキーは FastSpring　からの支払い確認 (order confirmation) メールに含まれています。"
   },
   "qf.label.instantApplyMsg": {
-    "message": "Note: if you only see a [Close] button below, the color settings might not work - as workaround, try right-clicking on an empty area of the quickfolders bar to select options… this will force the [Ok] button to be displayed, which should save colors."
+    "message": "注意: [閉じる] ボタンしか表示されないときは、色設定は動作しません。回避策として、Quickfolders バーの空いたところを右クリックして [オプション…] を選択してください。[OK] ボタンを表示して色設定を保存します。"
   },
   "qf.label.keyboard": {
-    "message": "Keyboard Shortcuts"
+    "message": "キーボードショートカット"
   },
   "qf.label.languagesLink": {
-    "message": "Add Translation…"
+    "message": "翻訳を追加する…"
   },
   "qf.label.licenseValid": {
-    "message": "Your license is valid until:"
+    "message": "ライセンスの有効期限:"
   },
   "qf.label.mainToolbar": {
-    "message": "Main Toolbar Elements"
+    "message": "メインツールバーの要素"
   },
   "qf.label.menus": {
-    "message": "Menu Configuration"
+    "message": "メニュー設定"
   },
   "qf.label.menus.customIcon": {
-    "message": "Customize Icon"
+    "message": "アイコンをカスタマイズ"
   },
   "qf.label.menus.help": {
-    "message": "QuickFolders Help"
+    "message": "QuickFolders ヘルプ"
   },
   "qf.label.menus.hideQFunlessCTRL": {
-    "message": "Only display with CTRL key held"
+    "message": "CTRL キーを押している間だけ表示"
   },
   "qf.label.menus.lineBreak": {
-    "message": "Insert Line Break"
+    "message": "改行を挿入"
   },
   "qf.label.menus.mailFolder": {
-    "message": "Mail Commands"
+    "message": "Mail コマンド"
   },
   "qf.label.menus.options": {
-    "message": "Options"
+    "message": "オプション"
   },
   "qf.label.menus.quickFolder": {
-    "message": "QuickFolders Commands"
+    "message": "QuickFolders コマンド"
   },
   "qf.label.menus.separator": {
-    "message": "Insert Separator"
+    "message": "区切りを挿入"
   },
   "qf.label.menus.support": {
-    "message": "QuickFolders Support"
+    "message": "QuickFolders サポート"
   },
   "qf.label.misc": {
-    "message": "Miscellaneous"
+    "message": "その他"
   },
   "qf.label.newcategory": {
-    "message": "New category:"
+    "message": "新しいカテゴリ:"
   },
   "qf.label.pixels": {
-    "message": "pixels"
+    "message": "ピクセル"
   },
   "qf.label.quickFilters.link": {
-    "message": "get quickFilters!"
+    "message": "quickFilters を入手"
   },
   "qf.label.quickfolders": {
     "message": "QuickFolders:"
   },
   "qf.label.renameselectedcategory": {
-    "message": "Rename selected category"
+    "message": "選択したカテゴリを名前変更"
   },
   "qf.label.setcolors": {
-    "message": "Set [Text Color], Background Color"
+    "message": "[文字色] と背景色の設定"
   },
   "qf.label.tabContent": {
-    "message": "Tab Content"
+    "message": "タブコンテンツ"
   },
   "qf.label.testfolder": {
-    "message": "Test Folder"
+    "message": "テストフォルダ"
   },
   "qf.label.testfolder2": {
-    "message": "Test Folder 2"
+    "message": "テストフォルダ 2"
   },
   "qf.label.themes": {
-    "message": "Themes:"
+    "message": "テーマ:"
   },
   "qf.label.toolbarPosition": {
     "message": "QuickFolders Bar Position"
   },
   "qf.label.versionhistory": {
-    "message": "Read Version History…"
+    "message": "バージョン履歴を見る…"
   },
   "qf.licenseValidation.expired": {
-    "message": "The license key you entered is expired. Please press the button below to renew your license."
+    "message": "入力されたライセンスキーが有効期限切れです。下のボタンをクリックしてライセンスを更新してください。"
   },
   "qf.licenseValidation.failed": {
-    "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."
+    "message": "入力されたライセンスキーが正しくありません。FastSpring からのメールに書かれた手順を確認してください。何か問題がある場合は、サポートタブからお問い合わせください。"
   },
   "qf.licenseValidation.guessAddon": {
-    "message": "(The key entered may be for {2})."
+    "message": "(入力されたキーは {2} のものである可能性があります)"
   },
   "qf.licenseValidation.invalidAddon": {
-    "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
+    "message": "入力されたライセンスキーは正しくありません。{0} のライセンスキーは {1} から始まります。"
   },
   "qf.licenseValidation.invalidMail": {
-    "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
+    "message": "ライセンスキー [{1}] に紐付けされたメールアドレスのメールアカウントがリストに見当たりません。問題解決のため、サポートタブからお問い合わせください。"
   },
   "qf.licenseValidation.notMatchedMail": {
-    "message": "Encrypted Email address does not match readable one."
+    "message": "暗号化されたメールアドレスが読めるメールアドレスと一致しません。"
   },
   "qf.licenseValidation.passed": {
-    "message": "Thanks for registering QuickFolders Pro! All premium features are now unlocked."
+    "message": "QuickFolders Pro のご登録ありがとうございます！ すべての有料機能がロック解除されました。"
   },
   "qf.licenseValidation.standard": {
-    "message": "Thanks for registering a QuickFolders License - You are helping the Add-on immensely! If you need more features you can always upgrade to the Pro License."
+    "message": "QuickFoldersライセンスを登録していただきありがとうございます-あなたはアドオンを大いに助けています！ より多くの機能が必要な場合は、いつでもプロライセンスにアップグレードできます。"
   },
   "qf.loadConfig": {
     "message": "Load Configuration…"
   },
   "qf.menu.Color": {
-    "message": "Color"
+    "message": "色番号"
   },
   "qf.menu.tabColor": {
-    "message": "Default Color!"
+    "message": "色指定なし！"
   },
   "qf.menuitem.quickfolders.changeOrder": {
-    "message": "Change the order of the tabs"
+    "message": "ブックマークを並び替える"
   },
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "C"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Find orphaned Tabs"
+    "message": "孤立したタブを見つける"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "T"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
-    "message": "Display Current Folder Tools"
+    "message": "フォルダツールを表示"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "D"
   },
   "qf.menuitem.quickfolders.filters": {
-    "message": "Create Message Filters…"
+    "message": "メッセージフィルタを作成…"
   },
   "qf.menuitem.quickfolders.filtersAccess": {
     "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
-    "message": "Find Folder…"
+    "message": "フォルダ検索…"
   },
   "qf.menuitem.quickfolders.findAccess": {
     "message": "i"
   },
   "qf.menuitem.quickfolders.help": {
-    "message": "QuickFolders Help…"
+    "message": "QuickFolders ヘルプ…"
   },
   "qf.menuitem.quickfolders.helpAccess": {
     "message": "H"
   },
   "qf.menuitem.quickfolders.options": {
-    "message": "QuickFolders Options…"
+    "message": "QuickFolders オプション…"
   },
   "qf.menuitem.quickfolders.optionsAccess": {
     "message": "O"
   },
   "qf.menuitem.quickfolders.register": {
-    "message": "QuickFolders Pro License…"
+    "message": "QuickFolders Pro ライセンス..."
   },
   "qf.menuitem.quickfolders.repairTabs": {
-    "message": "Refresh Visible Tabs!"
+    "message": "タブを再描画する"
   },
   "qf.menuitem.quickfolders.repairTabsAccess": {
     "message": "V"
   },
   "qf.menuitem.quickfolders.repairTreeIcons": {
-    "message": "Repair Tree Icons"
+    "message": "ツリーアイコンを修復"
   },
   "qf.menuitem.quickfolders.splash": {
-    "message": "Latest Update News…"
+    "message": "最新のアップデートニュース…"
   },
   "qf.menuitem.quickfolders.support": {
-    "message": "QuickFolders Support…"
+    "message": "QuickFolders サポート…"
   },
   "qf.menuitem.quickfolders.supportAccess": {
     "message": "S"
   },
   "qf.menuitem.quickfolders.togglePaintMode": {
-    "message": "Paint mode"
+    "message": "ペイントモード"
   },
   "qf.menuitem.quickfolders.togglePaintModeAccess": {
     "message": "p"
   },
   "qf.notification.categoryIsReadOnly": {
-    "message": "This item cannot be deleted."
+    "message": "このアイテムは削除できません。"
   },
   "qf.notification.dontShowAgain": {
-    "message": "Do not show this message again."
+    "message": "今後はこのメッセージを表示しない。"
   },
   "qf.notification.newsFlash": {
-    "message": "$addonName$ was updated! Important news…",
+    "message": "$addonName$ が更新されました！ 重要なニュース…",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1036,31 +1036,31 @@
     }
   },
   "qf.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
+    "message": "ライセンスを延長"
   },
   "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+    "message": "これは、現在のライセンス有効期限を 1 年延長します。新規ライセンスよりも安くなっています。"
   },
   "qf.notification.premium.btn.getLicense": {
-    "message": "Buy License"
+    "message": "ライセンス購入"
   },
   "qf.notification.premium.btn.hotKey": {
     "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
-    "message": "Renew License"
+    "message": "ライセンスを更新"
   },
   "qf.notification.premium.btn.upgrade": {
-    "message": "Upgrade to Pro"
+    "message": "Pro にアップグレード"
   },
   "qf.notification.premium.readingList": {
-    "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
+    "message": "{1} 件のブックマークが定義されています。QuickFolders のフリー版では最大 {2} 件まで定義できます。"
   },
   "qf.notification.premium.shortcut": {
-    "message": "The premium license additionally gives you a configurable keyboard shortcut."
+    "message": "プレミアムライセンスは、構成可能なキーボードショートカットを追加で提供します。"
   },
   "qf.notification.premium.tabIcons": {
-    "message": "You now use $cntIcons$ custom icons for Tabs. The unpaid version of QuickFolders supports a maximum of $maxFreeIcons$. The standard license supports $maxStdIcons$. QuickFolders Pro has no limit.",
+    "message": "タブに$cntIcons$カスタムアイコンを使用するようになりました。 QuickFoldersの無料バージョンは、最大$maxFreeIcons$をサポートします。 標準ライセンスは$maxStdIcons$をサポートします。 QuickFoldersProに制限はありません。",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1077,385 +1077,385 @@
     }
   },
   "qf.notification.premium.text": {
-    "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it."
+    "message": "{1}はプレミアム機能です。使用するにはQuickFoldersProライセンスを取得してください。"
   },
   "qf.notification.premium.title": {
-    "message": "Premium Feature"
+    "message": "有料機能"
   },
   "qf.notification.standard.readingList": {
-    "message": "You have now {1} bookmarks defined. The standard license of QuickFolders allows a maximum of {2}."
+    "message": "これで、{1}ブックマークが定義されました。 QuickFoldersの標準ライセンスでは、最大{2}が許可されます。"
   },
   "qf.notification.standard.text": {
-    "message": "{1} is a license restricted feature, please get a QuickFolders License for using it."
+    "message": "{1}はライセンスが制限された機能です。使用するには、QuickFoldersライセンスを取得してください。"
   },
   "qf.notification.standard.title": {
-    "message": "Licensed Feature"
+    "message": "標準機能"
   },
   "qf.options.LayoutColorAppearance": {
-    "message": "Individual Tab Color Appearance"
+    "message": "タブのスタイル"
   },
   "qf.options.LayoutColorAppearanceFilled": {
-    "message": "(filled style)"
+    "message": "(塗りつぶし)"
   },
   "qf.options.LayoutColorAppearanceStriped": {
-    "message": "(striped style)"
+    "message": "(ストライプ)"
   },
   "qf.options.label.themeAuthor": {
-    "message": "Theme Author:"
+    "message": "テーマの作者:"
   },
   "qf.options.theme.pastelColors": {
-    "message": "Pastel Colors"
+    "message": "パステルカラー"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
-    "message": "Bottom:"
+    "message": "下部:"
   },
   "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Top:"
+    "message": "上部:"
   },
   "qf.options.themes.customCornerRadius.checkbox": {
-    "message": "Custom Corner Radius"
+    "message": "カスタムの角丸"
   },
   "qf.options.themes.showBorders.checkbox": {
-    "message": "Always Display Borders"
+    "message": "常に境界線を表示する"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Click for version history."
+    "message": "クリックしてバージョン履歴を表示。"
   },
   "qf.palette.inactive": {
-    "message": "Same as inactive Tabs"
+    "message": "アクティブでないタブの色"
   },
   "qf.palette.night": {
-    "message": "Night Vision"
+    "message": "夜景"
   },
   "qf.palette.pastel": {
-    "message": "Pastel Colors"
+    "message": "パステルカラー"
   },
   "qf.palette.standard": {
-    "message": "Standard Palette"
+    "message": "標準パレット"
   },
   "qf.palette.twoColors": {
-    "message": "2 Colors"
+    "message": "2 色"
   },
   "qf.pastefolders.tooltip": {
-    "message": "Delete all QuickFolders and read new configuration from clipboard"
+    "message": "すべての QuickFolder を削除し、クリップボードから新しい設定を読み込みます"
   },
   "qf.pathFormat.AccountAndPath": {
-    "message": "Account - Folder Path"
+    "message": "アカウント - フォルダのパス"
   },
   "qf.pathFormat.PathOnly": {
-    "message": "Folder Path"
+    "message": "フォルダのパス"
   },
   "qf.pathFormat.URI": {
-    "message": "Folder URI"
+    "message": "フォルダの URI"
   },
   "qf.pathFormat.folderAndAccount": {
-    "message": "Folder Name - Mail Account"
+    "message": "フォルダ名 - メールアカウント"
   },
   "qf.pathFormat.folderName": {
-    "message": "Folder Name"
+    "message": "フォルダ名"
   },
   "qf.pathFormat.maxDepth": {
-    "message": "Maximum path depth:"
+    "message": "パス最大深さ:"
   },
   "qf.pathFormat.tooltip": {
-    "message": "Maximum number of folders displayed in folder path."
+    "message": "フォルダパスに表示されるフォルダの最大数です。"
   },
   "qf.prefwindow.quickfolders.options": {
-    "message": "QuickFolders Options"
+    "message": "QuickFolders オプション"
   },
   "qf.premium.renewLicense.tooltip": {
-    "message": "Your license expired {1} days ago"
+    "message": "ライセンスの有効期限が {1} 日前に切れています"
   },
   "qf.premiumConfig": {
-    "message": "Premium Features"
+    "message": "有料機能"
   },
   "qf.prompt.category.deleteMultiple": {
-    "message": "Ok to delete multiple categories?"
+    "message": "複数のカテゴリを削除してもよろしいですか？"
   },
   "qf.prompt.contact.subject": {
-    "message": "Please enter a short subject line:"
+    "message": "件名を短く入力してください:"
   },
   "qf.prompt.contact.title": {
-    "message": "Contact QuickFolders Support"
+    "message": "QuickFolders サポートへの問い合わせ"
   },
   "qf.prompt.loadFolders.confirm": {
     "message": "Accept the loaded Tabs?"
   },
   "qf.prompt.newFolder.createQFtab": {
-    "message": "Also create a QuickFolders Tab"
+    "message": "QuickFolders タブも作成する"
   },
   "qf.prompt.newFolder.newChildName": {
-    "message": "Enter name for new child folder under {0}"
+    "message": "{0} の新しいサブフォルダの名前を入力してください"
   },
   "qf.prompt.newFolder.title": {
-    "message": "New Folder"
+    "message": "新しいフォルダ"
   },
   "qf.prompt.pasteFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
+    "message": "すべての QuickFolders タブを削除し、クリップボード内のアイテムと置き換えます。\n{0} エントリがクリップボードに見つかりました。\n本当によろしいですか？"
   },
   "qf.prompt.pasteFolders.confirm": {
-    "message": "Keep the displayed Tabs?"
+    "message": "表示中のタブを維持しますか？"
   },
   "qf.prompt.readingList.removeItem": {
-    "message": "Remove this item?"
+    "message": "このアイテムを削除しますか？"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?"
+    "message": "メールが見つかりません。検索中に別の場所へ移動された可能性があります。\n{1}\n\n再度検索しますか？"
   },
   "qf.prompt.restoreFolders": {
     "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
   },
   "qf.prompt.switchDomainLicense": {
-    "message": "Switch to Domain License?"
+    "message": "ドメインライセンスに切り替えますか？"
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key always clears messages list."
+    "message": "Escキーはメッセージリストをクリアします。"
   },
   "qf.quickMove.excludeAccounts": {
-    "message": "Select any account that should be excluded from the search results:"
+    "message": "検索結果から除外する必要があるアカウントを選択します。"
   },
   "qf.quickMove.lockAccount": {
-    "message": "Only show results from current mail account."
+    "message": "現在のメールアカウントの結果のみを表示します。"
   },
   "qf.quickMove.maxResults": {
-    "message": "Maximum number of search results"
+    "message": "検索結果の最大数"
   },
   "qf.quickMove.path.format": {
-    "message": "Display Format:"
+    "message": "表示形式:"
   },
   "qf.quickMove.silent": {
-    "message": "Omit notifications after moving mails."
+    "message": "メールを移動した後の通知を省略します。"
   },
   "qf.register.licenseValid.expired": {
-    "message": "Your license expired on:"
+    "message": "ライセンスの有効期限:"
   },
   "qf.search.advanced": {
-    "message": "Advanced search settings…"
+    "message": "高度な検索設定…"
   },
   "qf.storeConfig": {
     "message": "Save Configuration…"
   },
   "qf.tab.advanced": {
-    "message": "Advanced"
+    "message": "詳細"
   },
   "qf.tab.general": {
-    "message": "General"
+    "message": "一般"
   },
   "qf.tab.gopro": {
-    "message": "Licenses"
+    "message": "ライセンス"
   },
   "qf.tab.layout": {
-    "message": "Bling My Tabs!"
+    "message": "タブ表示"
   },
   "qf.tab.quickhelp": {
-    "message": "Quick Help"
+    "message": "簡易ヘルプ"
   },
   "qf.tab.support": {
-    "message": "Support"
+    "message": "サポート"
   },
   "qf.textbox.searchBox.emptyText": {
-    "message": "Search filters by name…"
+    "message": "フィルタを名前で検索…"
   },
   "qf.textbox.searchBox.toolTip": {
-    "message": "enter a keyword to search filters by name"
+    "message": "フィルタ名で検索するためのキーワードを入力してください"
   },
   "qf.themes.applePills.description": {
-    "message": "A pleasant layout for our Mac users - plain and simple; with some optional color perks."
+    "message": "Mac ユーザ向けのレイアウト - プレーンでシンプル、オプションの色付き。"
   },
   "qf.themes.applePills.label": {
     "message": "Apple Pills"
   },
   "qf.themes.flatButtons.description": {
-    "message": "Standard toolbar buttons - this is the closest you can get to the look of original version 0.5!"
+    "message": "標準のツールバーボタン - オリジナルのバージョン 0.5 に最も近い外観。"
   },
   "qf.themes.flatButtons.label": {
-    "message": "Toolbar Buttons"
+    "message": "ツールバーボタン"
   },
   "qf.themes.flatTabs.description": {
-    "message": "Modern tabbed look - fully customizable. Looks great on Windows and Linux."
+    "message": "モダンなタブの外観 - 完全にカスタマイズ可能。Windows と Linux に合います。"
   },
   "qf.themes.flatTabs.label": {
-    "message": "Flat Style"
+    "message": "フラットスタイル"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layout resembles the tabs of your OS - less coloring options but may look more integrated and in sync with your Mail Client Themes."
+    "message": "OS のタブに似せたレイアウト - 色オプションは少ないですが、メールクライアントのテーマと同じような外観にします。"
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Native Tabs"
+    "message": "ネイティブのタブ"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pushbuttons - these look like standard buttons on dialog windows"
+    "message": "Pushbuttons - ダイアログウィンドウの標準のボタンのような外観。"
   },
   "qf.themes.realButtons.label": {
     "message": "Pushbuttons"
   },
   "qf.toolbar.quickfolders.toolbar": {
-    "message": "QuickFolders Toolbar"
+    "message": "QuickFolders ツールバー"
   },
   "qf.toolbarIconSize": {
-    "message": "Large Toolbar Icons"
+    "message": "大きなツールバーアイコン"
   },
   "qf.toolbarMinimumHeight": {
-    "message": "Minimum height:"
+    "message": "最小高さ:"
   },
   "qf.toolbarMinimumHeight.tooltip": {
-    "message": "For Mac systems who encounter [Bug 25021]"
+    "message": "[Bug 25021] のバグに遭遇した Mac システムのユーザ向けです"
   },
   "qf.toolbarPosition.tooltip": {
     "message": "0 = on top of other toolbars; 100 = bottom. High value depends on other Add-ons."
   },
   "qf.tooltip.RecentFolders": {
-    "message": "Recent Folders"
+    "message": "最近開いたフォルダ"
   },
   "qf.tooltip.closeToolbar": {
-    "message": "Close this toolbar"
+    "message": "このツールバーを閉じます"
   },
   "qf.tooltip.conversationRead": {
-    "message": "Mark Conversation as Read and jump to next unread Email"
+    "message": "スレッドを既読にして次の未読メールへ移動します"
   },
   "qf.tooltip.emailIcon": {
-    "message": "Current Email - drag to a QuickFolders tab to move Mail"
+    "message": "現在のメール - メールを QuickFolders タブへドラッグして移動できます"
   },
   "qf.tooltip.filterStart": {
-    "message": "Activate filter teaching. Dragging emails on a QuickFolder creates new Filters."
+    "message": "フィルタ学習を開始します。メールを QuickFolder 上にドラッグすると新しいフィルタを作成します。"
   },
   "qf.tooltip.filters": {
-    "message": "Stop creating filters."
+    "message": "フィルタの作成を中止します"
   },
   "qf.tooltip.folderUp": {
-    "message": "Go to Parent Folder"
+    "message": "親フォルダへ移動"
   },
   "qf.tooltip.goNextFolder": {
-    "message": "Move to the next [unread] message"
+    "message": "次の未読メッセージへ移動します"
   },
   "qf.tooltip.goPreviousFolder": {
-    "message": "Move to the previous [unread] message"
+    "message": "前の未読メッセージへ移動します"
   },
   "qf.tooltip.mailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "メールフォルダのコマンド"
   },
   "qf.tooltip.mainOptions": {
-    "message": "QuickFolders options and advanced commands"
+    "message": "QuickFolders オプションと詳細コマンド"
   },
   "qf.tooltip.paintCanActive": {
-    "message": "Paint mode: click for palette, click tabs to color them, right-click tabs to extract their color"
+    "message": "ペイントモード: パレットをクリックしてタブをクリックすると色を付け、タブを右クリックすると色を取得します"
   },
   "qf.tooltip.quickFoldersNavToggle": {
-    "message": "toggle navigating unread only / all mails"
+    "message": "未読メールのみの表示とすべてのメールの表示を切り替えます"
   },
   "qf.tooltip.quickMove": {
-    "message": "Drag an email here then enter target folder name (quickMove); or click to jump into the folder (quickJump)."
+    "message": "quickMove: ここにメールをドラッグしてフォルダ名を入力してください"
   },
   "qf.tooltip.skipUnreadFolder": {
-    "message": "Skip to next Unread Folder"
+    "message": "次の未読フォルダへスキップします"
   },
   "qf.tooltip.threadIcon": {
-    "message": "Current Thread - drag to a QuickFolders tab to move Conversation"
+    "message": "現在のスレッド - スレッドを QuickFolders タブへドラッグして移動できます"
   },
   "qf.youtube.description": {
-    "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
+    "message": "Thunderbird アドオンと QuickFolders の使い方についての説明動画は、私の YouTube チャンネル、Thunderbird Daily でご覧ください。"
   },
   "qf.youtube.link": {
-    "message": "Watch Videos about QuickFolders…"
+    "message": "QuickFolders についての動画を観る..."
   },
   "qf.youtube.tbdaily": {
-    "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
+    "message": "Thunderbird Daily を訪れる - QuickFolders を使うためのヒントとチュートリアルを紹介する YouTube チャンネルです"
   },
   "qfAlertCopyString": {
-    "message": "Folder String copied to Clipboard!"
+    "message": "フォルダへのパスがクリップボードにコピーされました。"
   },
   "qfAlertDropFolderVirtual": {
-    "message": "You can not copy mail to a virtual folder!"
+    "message": "検索フォルダにはメールをコピーできません。"
   },
   "qfAlertUpgradeSuccess": {
-    "message": "QuickFolders was successfully upgraded to version:"
+    "message": "QuickFolders が更新されました:"
   },
   "qfAll": {
-    "message": "(Display All)"
+    "message": "(すべて表示)"
   },
   "qfCantMoveFolder": {
-    "message": "Folder {0} cannot be moved."
+    "message": "{0} フォルダは移動できません。"
   },
   "qfColorPickingWIP": {
-    "message": "Sorry, this feature is still Work in Progress!"
+    "message": "申し訳ありませんが、この機能は未完成です!\n"
   },
   "qfCommandAccess": {
     "message": "Q"
   },
   "qfCommandPopup": {
-    "message": "QuickFolders Commands"
+    "message": "QuickFolders コマンド"
   },
   "qfCompactFolder": {
-    "message": "Compact Folder"
+    "message": "フォルダを最適化"
   },
   "qfCompactFolderAccess": {
-    "message": "C"
+    "message": "F"
   },
   "qfCompacted": {
-    "message": "Compacted:"
+    "message": "最適化:"
   },
   "qfCompactedBytesFreed": {
-    "message": "Bytes expunged"
+    "message": "減らしたサイズ"
   },
   "qfCompactedFolder": {
-    "message": "Compacted folder"
+    "message": "フォルダを最適化しました"
   },
   "qfCompactedNewFolderSize": {
-    "message": "New size"
+    "message": "最適化後のサイズ"
   },
   "qfCompactedOriginalFolderSize": {
-    "message": "Original size"
+    "message": "元のサイズ"
   },
   "qfConfirmCopyFolder": {
-    "message": "Really copy folder {0} into {1}?"
+    "message": "本当にフォルダ{0}を{1}にコピーしますか？"
   },
   "qfConfirmMoveFolder": {
-    "message": "Really move folder {0} into {1}?"
+    "message": "{0} フォルダを {1} フォルダ内に移動してもよろしいですか？"
   },
   "qfConfirmVersionLink": {
-    "message": "Display version history for QuickFolders"
+    "message": "QuickFolders のバージョン履歴を表示"
   },
   "qfDeadTabsCount": {
-    "message": "# orphaned tabs found:"
+    "message": "# 孤立したタブが見つかりました:"
   },
   "qfDeadTabsDeleted": {
-    "message": "# orphaned tabs removed:"
+    "message": "# 孤立したタブを削除しました:"
   },
   "qfDeleteFolder": {
-    "message": "Delete Folder"
+    "message": "フォルダを削除"
   },
   "qfDeleteFolderAccess": {
     "message": "D"
   },
   "qfDeleteJunk": {
-    "message": "Purge Junk"
+    "message": "迷惑メールを削除"
   },
   "qfDown": {
-    "message": "Down"
+    "message": "下へ移動"
   },
   "qfDownloadAll": {
-    "message": "Download All"
+    "message": "すべてダウンロード"
   },
   "qfEditVirtual": {
-    "message": "Search Properties…"
+    "message": "プロパティを検索…"
   },
   "qfEditVirtualAccess": {
     "message": "S"
   },
   "qfEmptiedJunk": {
-    "message": "Emptied junk and compacted folder"
+    "message": "迷惑メールを削除してフォルダを最適化しました"
   },
   "qfEmptiedTrash": {
-    "message": "Emptied trash."
+    "message": "ごみ箱を空にしました"
   },
   "qfEmptyJunk": {
-    "message": "Empty Junk"
+    "message": "迷惑メールフォルダを空にする"
   },
   "qfEmptyJunkAccess": {
     "message": "J"
   },
   "qfEmptyTrash": {
-    "message": "Empty Trash"
+    "message": "ごみ箱を空にする"
   },
   "qfEmptyTrashAccess": {
     "message": "T"
@@ -1464,28 +1464,28 @@
     "message": "F"
   },
   "qfFolderAlreadyBookmarked": {
-    "message": "Folder already has a tab."
+    "message": "すでにブックマークに追加されています。"
   },
   "qfFolderOpenLocation": {
-    "message": "Explore Folder Location…"
+    "message": "フォルダの場所を探す..."
   },
   "qfFolderPopup": {
-    "message": "Mail Folder Commands"
+    "message": "メールフォルダコマンド"
   },
   "qfFolderProperties": {
-    "message": "Folder Properties…"
+    "message": "フォルダのプロパティ…"
   },
   "qfFolderPropertiesAccess": {
     "message": "P"
   },
   "qfFolderRepair": {
-    "message": "Repair Folder"
+    "message": "フォルダを修復"
   },
   "qfFolderRepairAccess": {
     "message": "F"
   },
   "qfFolderRepairedMsg": {
-    "message": "Folder was repaired:"
+    "message": "フォルダが修復されました:"
   },
   "qfGetMail": {
     "message": "Get Messages"
@@ -1494,16 +1494,16 @@
     "message": "G"
   },
   "qfInsertLineBreak": {
-    "message": "Insert Line Break"
+    "message": "改行を挿入"
   },
   "qfInsertSeparator": {
-    "message": "Insert Separator"
+    "message": "区切りを挿入"
   },
   "qfInvalidTabCount": {
     "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
   },
   "qfMarkAllRead": {
-    "message": "Mark folder as Read"
+    "message": "フォルダを既読にする"
   },
   "qfMarkAllReadAccess": {
     "message": "M"
@@ -1512,208 +1512,208 @@
     "message": "Mark folder + subfolders Read"
   },
   "qfMenuColor": {
-    "message": "Color"
+    "message": "色番号"
   },
   "qfMenuTabColorDisabledInTheme": {
-    "message": "Select different Theme to support coloring…"
+    "message": "色指定をサポートする別のテーマを選択..."
   },
   "qfMenuTabColorNone": {
-    "message": "Default Color!"
+    "message": "色指定なし！"
   },
   "qfMenuTabColorPopup": {
-    "message": "Tab Color"
+    "message": "タブの色"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Drag folders to an empty area of the toolbar - For MOVING a folder, hold down SHIFT and drag to a Tab."
+    "message": "フォルダをツールバーの空の領域にドラッグします-フォルダを移動するには、Shiftキーを押しながらタブにドラッグします。"
   },
   "qfNavigationWrapped": {
-    "message": "No other unread folders found, continuing in {1}."
+    "message": "未読フォルダーは見つかりませんでした。{1} 内で処理を続けます。"
   },
   "qfNewFolder": {
-    "message": "New Subfolder…"
+    "message": "新しいサブフォルダ…"
   },
   "qfNewFolderAccess": {
     "message": "N"
   },
   "qfNewName": {
-    "message": "Enter a new name for the tab"
+    "message": "ブックマークの新しい名前を入力してください"
   },
   "qfNewSubFolder": {
-    "message": "Create subfolder {0} » {1}…"
+    "message": "サブフォルダを作成 {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "No matching parent folders!"
+    "message": "一致する親フォルダがありません！"
   },
   "qfPaintToggle": {
-    "message": "Finish Paint Mode"
+    "message": "ペイントモードを終了"
   },
   "qfRecentFolders": {
-    "message": "Recent Folders"
+    "message": "最近開いたフォルダ"
   },
   "qfRemoveBookmark": {
-    "message": "Remove tab"
+    "message": "ブックマークを削除"
   },
   "qfRemoveBookmarkAccess": {
     "message": "R"
   },
   "qfRemoveCategory": {
-    "message": "Remove from current Category"
+    "message": "現在のカテゴリから削除"
   },
   "qfRemoveCategoryPrompt": {
-    "message": "The category is '{1}' - Remove that?"
+    "message": "カテゴリ {1} から削除しますか？"
   },
   "qfRemoveIcon": {
-    "message": "Remove Customized Icon"
+    "message": "アイコンを削除"
   },
   "qfRemoveLineBreak": {
-    "message": "Remove Line Break"
+    "message": "改行を削除"
   },
   "qfRemoveSeparator": {
-    "message": "Remove Separator"
+    "message": "区切りを削除"
   },
   "qfRenameBookmark": {
-    "message": "Rename tab…"
+    "message": "ブックマークの名前を変更…"
   },
   "qfRenameBookmarkAccess": {
     "message": "N"
   },
   "qfRenameFolder": {
-    "message": "Rename Folder…"
+    "message": "フォルダの名前を変更…"
   },
   "qfRenameFolderAccess": {
     "message": "R"
   },
   "qfRepairTreeIconsMissing": {
-    "message": "The following icon files do not exist:"
+    "message": "次のアイコンファイルがありません:"
   },
   "qfSavePrompt": {
-    "message": "Save these changes?"
+    "message": "変更を保存しますか？"
   },
   "qfSelectIcon": {
-    "message": "Customize Icon…"
+    "message": "アイコン..."
   },
   "qfSetCategory": {
-    "message": "Set Tab Category…"
+    "message": "ブックマークをカテゴリに追加…"
   },
   "qfSetCategoryA": {
     "message": "C"
   },
   "qfShowAlways": {
-    "message": "Show Always!"
+    "message": "常に表示する"
   },
   "qfShowNever": {
-    "message": "Never Show (Folder Alias)"
+    "message": "表示しない (フォルダの別名)"
   },
   "qfTabAdvancedOptions": {
-    "message": "Tab-specific Properties…"
+    "message": "タブ固有のプロパティ..."
   },
   "qfTabDeleteOption": {
     "message": "Do this with the remaining {0} folders."
   },
   "qfTabDeletePrompt": {
-    "message": "Delete this Tab?"
+    "message": "このタブを削除しますか？"
   },
   "qfThisTabIsInvalid": {
-    "message": ": This is a tab that points to an invalid folder."
+    "message": ": このタブは不正なフォルダを指しています:"
   },
   "qfTidyDeadFolders": {
-    "message": "This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
+    "message": "フォルダが正しく割り当てられていないタブを削除します。\nこれは、QuickFolders に気付かれることなくフォルダが削除されたり移動されたりした場合に起こることがあります。"
   },
   "qfTreeIconsInvalidCount": {
-    "message": "{0} icons missing"
+    "message": "{0} 個のアイコンが足りません"
   },
   "qfTreeIconsRepairedCount": {
-    "message": "{0} tree icons repaired"
+    "message": "{0} 個のツリーアイコンを修復しました"
   },
   "qfUncategorized": {
-    "message": "(Uncategorized)"
+    "message": "(未分類)"
   },
   "qfUp": {
-    "message": "Up"
+    "message": "上へ移動"
   },
   "qfUpdatedThemesEngineMsg": {
-    "message": "A new theming engine for QuickFolders has been installed. Please select an item from the drop down box and click [Ok]."
+    "message": "QuickFolders の新しいテーマエンジンがインストールされました。ドロップダウンボックスからアイテムを選択し、[OK] ボタンをクリックしてください。"
   },
   "qfVersionDisableOnUpdate": {
-    "message": "Stop displaying version history after updates?"
+    "message": "更新後のバージョン履歴の表示を止めますか？"
   },
   "quickMove.help.head": {
-    "message": "Help for {1}"
+    "message": "{1}のヘルプ"
   },
   "quickMove.help.head.advanced": {
-    "message": "Advanced Features"
+    "message": "高度な機能"
   },
   "quickMove.help.l1a": {
-    "message": "Type the start of a folder name or words in it, delimited by space."
+    "message": "スペースで区切って、フォルダー名またはフォルダー内の単語の先頭を入力します。"
   },
   "quickMove.help.l1b": {
-    "message": "The following characters are regarded as word boundaries and don't need to be typed:"
+    "message": "次の文字は単語の境界と見なされ、入力する必要はありません。"
   },
   "quickMove.help.l2a": {
-    "message": "Type {1} for entering grandparent/parent/searched folder."
+    "message": "祖父母/親/検索されたフォルダに入るには{1}と入力します。"
   },
   "quickMove.help.l2b": {
-    "message": "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
+    "message": "通常、親フォルダの最初の2文字で十分です。 この構文で新しいサブフォルダーを作成することもできます。"
   },
   "quickMove.help.l3a": {
-    "message": "Type {1} for skipping any folders in between."
+    "message": "間にあるフォルダをスキップするには、{1}と入力します。"
   },
   "quickMove.help.l3b": {
-    "message": "This is useful for deeper, more complicated or unknown folder hierarchies."
+    "message": "これは、より深く、より複雑な、または未知のフォルダー階層に役立ちます。"
   },
   "quickMove.help.advanced": {
-    "message": "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
+    "message": "フォルダーに移動したり、メールを移動したり、検索結果からフォルダーを除外したりするためのキーボードショートカットなどのより高度な機能は、QuickFoldersProタブで構成できます。 これらおよびその他のプレミアム機能にアクセスするには、Proライセンスを取得し、QuickFoldersの将来をサポートしてください。"
   },
   "quickMove.singleMessage.goNext": {
-    "message": "Display next mail after moving current one"
+    "message": "現在のメールを移動した後、次のメールを表示する"
   },
   "quickMove.singleMessage.reopenTab": {
-    "message": "Reopen original mail after it was moved"
+    "message": "移動後、元のメールを再度開く"
   },
   "quickMove.singleMessageTabs": {
-    "message": "Single Message Tab"
+    "message": "単一のメッセージタブ"
   },
   "quickfolders.findFolder.placeHolder": {
-    "message": "folder name"
+    "message": "フォルダ名"
   },
   "quickfolders.quickMove.menu.cancel": {
-    "message": "Cancel quickMove"
+    "message": "quickMove をキャンセル"
   },
   "quickfolders.quickMove.menu.hideSearch": {
-    "message": "Hide Folder Name box"
+    "message": "フォルダ名ボックスを隠す"
   },
   "quickfolders.quickMove.menu.showSearch": {
-    "message": "Show Folder Name box"
+    "message": "フォルダ名ボックスを表示"
   },
   "quickfolders.quickMove.menu.suspend": {
-    "message": "Jump to folder (don't move mails)"
+    "message": "フォルダを開く (メールは移動しません)"
   },
   "quickfolders.readingList.addCurrent": {
-    "message": "Add current Item"
+    "message": "現在のアイテムを追加"
   },
   "quickfolders.readingList.clear": {
-    "message": "Clear Reading List"
+    "message": "後で読むリストを消去"
   },
   "quickfolders.readingList.tooltip": {
-    "message": "Reading List"
+    "message": "後で読むリスト"
   },
   "quickfolders.toolbar.newsubfolder": {
-    "message": "New Subfolder…"
+    "message": "新しいサブフォルダ…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Skip"
+    "message": "スキップ"
   },
   "quickfoldersQuickCopiedMails": {
-    "message": "Mail copied to folder {2};{1} mails copied to folder {2}"
+    "message": "{1} 通のメールを {2} フォルダへコピーしました"
   },
   "quickfoldersQuickMovedMails": {
-    "message": "Mail moved to folder {2};{1} mails moved to folder {2}"
+    "message": "{1} 通のメールを {2} フォルダへ移動しました"
   },
   "renew-your-license": {
-    "message": "Renew your license."
+    "message": "ライセンスを更新する。"
   },
   "special-offer-content": {
-    "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} by buying a {linkStartPro}QuickFolders Pro license{linkEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}. Or choose the standard functions with the new {linkStart}Standard License{linkEnd}.",
+    "message": "ライセンスを選択機能をアップグレードし、{linkStartPro}QuickFolders Pro{linkEnd}ライセンスを購入して{boldStart} $reduction$ {boldEnd}を節約してください。 この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。 または、新しい{linkStart}標準ライセンス{linkEnd}で標準機能を選択します。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1726,7 +1726,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "今すぐライセンスを更新して、{boldStart}$reduction${boldEnd}を節約してください！ この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1739,7 +1739,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Upgrade now from QuickFolders Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "今すぐQuickFolders StandardからProにアップグレードして、{boldStart} $reduction$ {boldEnd}を節約してください！ この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1752,10 +1752,10 @@
     }
   },
   "special-offer-expiry": {
-    "message": "October 31st"
+    "message": "10月31日"
   },
   "special-offer-head": {
-    "message": "Help keep $addon$ compatible",
+    "message": "$addon$の互換性を維持するのに役立ちます",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1764,7 +1764,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Dear {name}{boldEnd}, please support $addon$ through getting a license. The Thunderbird code continuously evolves and we need {boldStart}your help{boldEnd} to keep up!",
+    "message": "{boldStart}親愛なる{name} {boldEnd}、ライセンスを取得して $addon$ をサポートしてください。 Thunderbirdのコードは絶えず進化しており、それに追いつくために{boldStart}あなたの助け{boldEnd}が必要です！",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1773,7 +1773,7 @@
     }
   },
   "support-preference": {
-    "message": "This is the preferred way of supporting $addonName$.",
+    "message": "これは、$addonName$ をサポートするために推奨される方法です。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1782,7 +1782,7 @@
     }
   },
   "support-suggestion": {
-    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
+    "message": "$addonName$ が機能し、存続できるように、重要なお願いがあります。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1791,10 +1791,10 @@
     }
   },
   "testDrive": {
-    "message": "The Standard License gives you some features that were previously flagged as premium and removes restrictions of the unfunded version. It finances the upkeep with the next Thunderbird version and conversion to a modern API based mail extension architecture."
+    "message": "無料バージョンでは、有料機能を試しに使うことができますが、一部の機能が制限されています。"
   },
   "thanks-for-installing-intro": {
-    "message": "Thank you for installing $addonName$.",
+    "message": "$addonName$ をインストールしていただきありがとうございます。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1803,7 +1803,7 @@
     }
   },
   "thanks-for-updating-intro": {
-    "message": "Thank you for updating $addonName$.",
+    "message": "$addonName$ を更新していただきありがとうございます。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1812,7 +1812,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ requires ongoing changes in order to remain compatible with the Mozilla platform. I am constantly working to retain as much functionality as possible for future versions of Thunderbird.",
+    "message": "$addonName$ は、Mozillaプラットフォームとの互換性を維持するために、継続的な変更が必要です。 私はThunderbirdの将来のバージョンのために可能な限り多くの機能を保持するために絶えず取り組んでいます。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1821,39 +1821,39 @@
     }
   },
   "toAddress": {
-    "message": "To:"
+    "message": "宛先:"
   },
   "toAddress.tooltip": {
-    "message": "Default To Address when composing new mails"
+    "message": "新しいメール作成時の既定の宛先アドレスです"
   },
   "translated-by-google": {
     "description": "disclaimer.",
-    "message": "translations provided by google"
+    "message": "グーグルによって提供される翻訳"
   },
   "updates.title": {
-    "message": "Updates"
+    "message": "更新について"
   },
   "updatesExpiry": {
-    "message": "QuickFolders Pro will be automatically updated via addons.thunderbird.net as usual. After the year expires you can renew the license or keep using premium features under same terms as free users. 'Premium Exclusive' features will require a valid registration key."
+    "message": "QuickFolders Pro は、addons.thunderbird.net 経由で自動的に更新されます。ライセンスの有効期限が切れた後は、ライセンスを更新するか、無料版の利用規約の下で有料機能を使用し続けることができます。'Premium Exclusive' 機能を使用するには、正しい登録キーが必要になります。"
   },
   "vouchers.title": {
-    "message": "Vouchers"
+    "message": "支払い免除"
   },
   "whats-new-btn": {
-    "message": "What's new?"
+    "message": "新着情報？"
   },
   "whats-new-head": {
-    "message": "Important Changes"
+    "message": "重要な変更"
   },
   "whats-new-intro": {
-    "message": "Read the detailed change log here (English only):"
+    "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1}Fixed in version 5.8.2: Long folders menus now scroll when dragging mails to screen edge.{L2}{L1}Thunderbird doesn't jump into Inbox anymore when checking for new mails from the context menu.{L2}{L1}Support for large icon in QuickFolders toolbar buttons for high resolution displays.{L2}{L1}Fixed: moving folders from the quickMove function failed in Tb91.{L2}{L1}Various Layout fixes specific to Thunderbird 91.{L2}"
+    "message": "{L1}バージョン5.8.2で修正済み：メールを画面の端にドラッグすると、長いフォルダメニューがスクロールするようになりました。{L2}{L1}コンテキストメニューから新着メールをチェックするときにThunderbirdが受信トレイにジャンプしなくなりました。{L2} {L1}高解像度ディスプレイ用のQuickFoldersツールバーボタンの大きなアイコンのサポート。{L2} {L1}修正：フォルダの移動 Tb91でquickMove関数から失敗しました。{L2} {L1} Thunderbird91に固有のさまざまなレイアウトの修正。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
-    "message": "Welcome to $addonName$",
+    "message": "$addonName$ へようこそ",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1862,21 +1862,21 @@
     }
   },
   "windowTitle": {
-    "message": "Advanced Properties"
+    "message": "詳細プロパティ"
   },
   "yearlyLicense.premiumFeatures": {
-    "message": "QuickFolders Pro gives you full unrestricted access to the premium features."
+    "message": "QuickFolders Pro は、有料機能へのアクセス制限をすべて解除します。"
   },
   "yearlyLicense.premiumFeatures.moreInfoLink": {
-    "message": "More about premium features."
+    "message": "有料機能についての詳細。"
   },
   "yearlyLicense.title": {
-    "message": "Annual License"
+    "message": "年間ライセンス"
   },
   "yearlyLicense.usageTerm": {
-    "message": "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use that address."
+    "message": "ライセンスは、あなたの個人使用に限り、あなたのメールアドレスが登録されます。このメールアドレスを使用するように設定すると、複数のメールクライアントにインストールできます。"
   },
   "yearlyLicense.usageTerm1": {
-    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
+    "message": "メールアドレスを追加しても問題ありません。別のライセンスは不要です。ご質問がある場合はサポートタブからお問い合わせください。"
   }
 }

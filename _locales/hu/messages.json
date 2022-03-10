@@ -1,13 +1,13 @@
 {
   "_l10nstatus": {
-    "message": "SPLASH+UI"
+    "message": "Splash+UI"
   },
   "account.label": {
-    "message": "Select account:"
+    "message": "Válassza ki a fiókot:"
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
+    "message": "Most a (z) $addonVer$ {boldEnd} verziót futtatja a Thunderbird $appVer$ alkalmazáson.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -20,97 +20,97 @@
     }
   },
   "addon-authors-struggle": {
-    "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
+    "message": "Ahhoz, hogy továbbra is hasznosak legyenek, a bővítmények fejlesztőinek most finanszírozniuk kell a javításhoz és átíráshoz szükséges erőforrásokat, hogy felhasználóink továbbra is részesülhessenek az asztalra hozott funkcionalitásból."
   },
   "btn-extend-license": {
-    "message": "I want to extend my license by one year"
+    "message": "Szeretném meghosszabbítani az engedélyemet egy évvel"
   },
   "btn-renew-license": {
-    "message": "I want to renew my license"
+    "message": "Meg akarom újítani a licencemet"
   },
   "btn-want-a-license": {
-    "message": "Choose a License"
+    "message": "Válasszon licencet"
   },
   "btn-want-to-donate": {
-    "message": "I want to help with a one time donation."
+    "message": "Egyszeri adománnyal szeretnék segíteni."
   },
   "btnApply": {
-    "message": "Apply"
+    "message": "Alkalmaz"
   },
   "btnCategory": {
-    "message": "Categories"
+    "message": "Kategóriák"
   },
   "btnCategory.tooltip": {
-    "message": "Define Tab Categories"
+    "message": "Adja meg a fülkategóriákat"
   },
   "btnReset": {
-    "message": "Reset to Defaults"
+    "message": "Visszaállítás az alapértelmezett értékekre"
   },
   "buyDomainLicense.button": {
     "message": "Buy Domain License"
   },
   "buyDomainLicense.instruct": {
-    "message": "Need Licenses for a company with more than five users? Getting a domain license will work out cheaper:"
+    "message": "Szüksége van licencekre egy ötnél több felhasználóval rendelkező vállalatnál? A domain licenc megszerzése olcsóbban fog menni:"
   },
   "buyLicense.instruct": {
-    "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
+    "message": "Szüksége van licencre magának? Szerezzen be egyetlen felhasználói licencet. Az Ön személyes e-mail címéhez van kötve, és több telepítésben is használható."
   },
   "buyProLicense.button": {
-    "message": "Buy Pro License!"
+    "message": "Vásároljon Pro License-t!"
   },
   "buyStandardLicense.button": {
-    "message": "Buy Standard License!"
+    "message": "Vásároljon Normál licencet!"
   },
   "buyStandardLicense.instruct": {
-    "message": "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions."
+    "message": "Nem engedheti meg magának a prémium funkciókat? Szerezzen be egy igen megfizethető szabványos licencet, és próbálja ki a prémium funkciókat."
   },
   "chkComposerSubfolders": {
-    "message": "Also apply to subfolders"
+    "message": "Az almappákra is vonatkozik"
   },
   "chkHideFromQuickJump": {
-    "message": "Omit from quickJump / quickMove"
+    "message": "Kihagy a quickJump / quickMove oldalról"
   },
   "chkHideFromQuickJump.tooltip": {
-    "message": "Omit this folder and its children in quickJump / quickMove results"
+    "message": "Hagyja ki ezt a mappát és gyermekeit a quickJump / quickMove találatok között"
   },
   "chkIgnoreCounts": {
-    "message": "Hide Count of Mails"
+    "message": "A levelek számának elrejtése"
   },
   "chkIgnoreCounts.tooltip": {
-    "message": "Never display number of contained mails."
+    "message": "Soha ne jelenítse meg a zárt levelek számát."
   },
   "chkIgnoreUnread": {
-    "message": "Hide Unread Status"
+    "message": "Olvasatlan állapot elrejtése"
   },
   "chkIgnoreUnread.tooltip": {
-    "message": "Never display bold or any unread count even when folder contains unread mail."
+    "message": "Soha ne jelenjen meg félkövér vagy olvasatlan szám, még akkor sem, ha a mappa olvasatlan leveleket tartalmaz."
   },
   "chkSetMailsUnread": {
-    "message": "Set mail to unread"
+    "message": "A levelek beállítása olvasatlanná"
   },
   "chkSetMailsUnread.tooltip": {
-    "message": "If you move mail into this folder it is set to unread."
+    "message": "Ha e-mailt áthelyez ebbe a mappába, az olvasatlan állapotra lesz állítva."
   },
   "cost-of-independence": {
-    "message": "Software development costs time and money - unlike many platform apps, Add-ons are not written by large corporations, nor are they sponsored in any way by Mozilla."
+    "message": "A szoftverfejlesztés időbe és pénzbe kerül - sok platformalkalmazással ellentétben a bővítményeket nem nagyvállalatok írják, és semmilyen módon nem szponzorálják őket a Mozilla."
   },
   "cssBackground": {
-    "message": "Background"
+    "message": "Háttér"
   },
   "cssBackground.tooltip": {
     "message": "Enter a CSS background, e.g. linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
   },
   "cssColor": {
-    "message": "Text color"
+    "message": "Szöveg szín"
   },
   "cssColor.tooltip": {
     "message": "Enter a CSS color, e.g. rgba(100,20,20,0.8)"
   },
   "defaultAccountAddress.value": {
-    "message": "Account Default Identity"
+    "message": "Fiók alapértelmezett azonosítója"
   },
   "domainLicense.email": {
-    "message": "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page."
+    "message": "We ezen e-mail cím használatával felveszi Önnel a kapcsolatot a domain licenc létrehozásához; kérjük, hagyjon két munkanapot a kapcsolatfelvételre. A következő oldalon adja meg a licenc domain nevét."
   },
   "domainLicense.header": {
     "message": "Licensed Email Domain"
@@ -122,36 +122,36 @@
     "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
   },
   "donate": {
-    "message": "Help out with a one time donation."
+    "message": "Segítsen egyszeri adománnyal."
   },
   "donate-heading": {
-    "message": "Help by Donating!"
+    "message": "Adományozással segítsen!"
   },
   "email.label": {
     "message": "Email:"
   },
   "enterLicenseKey.button": {
-    "message": "Enter License Key…"
+    "message": "Írja be a licenckulcsot…"
   },
   "enterLicenseKey.tooltip": {
-    "message": "Enter the License Key code sent to you via Email."
+    "message": "Írja be az e-mailben elküldött Licenckulcs kódot."
   },
   "extend-your-license": {
-    "message": "Consider extending your license by a year."
+    "message": "Fontolja meg a jogosítvány egy évvel történő meghosszabbítását."
   },
   "extensionDescription": {
     "description": "Description of the extension.",
-    "message": "Bookmark your favorite mail folders in Thunderbird."
+    "message": "Könyvjelzővel láthatja el kedvenc levelezési mappáit a Thunderbirdben."
   },
   "extensionName": {
     "description": "Name of the extension.",
     "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
-    "message": "Bookmark your favorite mail folders in Thunderbird."
+    "message": "Könyvjelzőzze a kedvenc mappáit a Thunderbirdben!"
   },
   "firstName.label": {
-    "message": "First Name:"
+    "message": "Keresztnév:"
   },
   "freeLicense": {
     "message": "If you have recently donated to the QuickFolders project or have done contributory work, such as translating or writing patches, you may be eligible for a free license key. Contact me from the support tab in QuickFolders Options."
@@ -160,13 +160,13 @@
     "message": "From:"
   },
   "fromAddress.tooltip": {
-    "message": "Default Identity when composing emails"
+    "message": "Alapértelmezett identitás az e-mailek írása során"
   },
   "getQuickFolders": {
-    "message": "QuickFolders Licenses"
+    "message": "QuickFolders licencek"
   },
   "grpComposer": {
-    "message": "Default Email Fields"
+    "message": "Alapértelmezett e-mail mezők"
   },
   "grpCustomCSS": {
     "message": "Custom CSS"
@@ -176,7 +176,7 @@
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "Successfully installed $addonName$",
+    "message": "A $addonName$ sikeresen telepítve",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -186,7 +186,7 @@
   },
   "heading-updated": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "$addonName$ Updated Successfully",
+    "message": "$addonName$ sikeresen frissítve",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -195,10 +195,10 @@
     }
   },
   "intro": {
-    "message": "An annual license for QuickFolders Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome."
+    "message": "A QuickFolders Pro éves licensze minden prémium funkciót megad egy évre. Ez lehetővé teszi számunkra, hogy támogassuk és tovább termesszük a terméket, és még fantasztikusabbá alakítsuk."
   },
   "label-remind-me": {
-    "message": "Remind me again in $countDays$ days.",
+    "message": "Emlékezzen újra $countDays$ nap múlva.",
     "placeholders": {
       "countDays": {
         "content": "$1",
@@ -207,35 +207,35 @@
     }
   },
   "lastName.label": {
-    "message": "Last Name:"
+    "message": "Vezetéknév:"
   },
   "lblCustomPalette": {
-    "message": "Custom Palette:"
+    "message": "Egyéni paletta:"
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
-    "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
+    "message": "Köszönjük, hogy nemrég meghosszabbította licencét, vagy ha adományozott. Mivel segített a kiegészítő későbbi bizonyításában, egyszerűen bezárhatja ezt az ablakot."
   },
   "licenseComparison": {
-    "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
+    "message": "A különböző verziók jellemzőinek összehasonlításához {linkStart} olvassa el ezt a listát {linkEnd}."
   },
   "licenseHead": {
-    "message": "New Licensing System"
+    "message": "Új engedélyezési rendszer"
   },
   "licenseTypes": {
-    "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
+    "message": "A QuickFolders két licencet kínál: Standard és Pro; ezek szükségesek ahhoz, hogy lépést tudjunk tartani a Thunderbird platform változásaival, és hogy finanszírozzuk a kiegészítő innovációit és javításait. Mivel a kiterjesztési funkciót esetlegesen megszakító változtatások évente bevezetésre kerülnek, a licenc 1 évig is érvényes lesz."
   },
   "licenseWindow.title": {
-    "message": "QuickFolders Pro License"
+    "message": "QuickFolders Pro licenc"
   },
   "license_restriced.std": {
-    "message": "Standard License - restricted Pro function. Find out more…"
+    "message": "Standard License - korlátozott Pro funkció. Tudj meg többet…"
   },
   "license_restriced.unpaid": {
-    "message": "Unlicensed version - restricted function. Find out more…"
+    "message": "Engedély nélküli verzió - korlátozott funkció. Tudj meg többet…"
   },
   "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders needs a Pro license to support more than $maxTabs$ tabs.",
+    "message": "A QuickFolders Pro licencre van szüksége, hogy több mint $maxTabs$ lapot támogathasson.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -244,7 +244,7 @@
     }
   },
   "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders needs a license to support more than $maxTabs$ tabs.",
+    "message": "A QuickFolders licencre van szüksége, hogy több mint $ maxTabs $ lapot támogathasson.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -260,7 +260,7 @@
     "message": "Click notification"
   },
   "ongoing-work": {
-    "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
+    "message": "A $addonName$ konvertálásának új programozási modellvé történő átalakítása hetekig tartott és költséges volt. Sokkal több változás van a következő 2022-es verzióra. Egy ilyen összetett kiegészítő mellett a drága munka elkerülhetetlenné válik. Kérem, segítsen ebben.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -269,148 +269,148 @@
     }
   },
   "purchase-a-license": {
-    "message": "Purchase a license."
+    "message": "Vásároljon licencet."
   },
   "purchase-heading": {
-    "message": "Buying a License!"
+    "message": "Licenc vásárlása!"
   },
   "qf.accounts": {
-    "message": "Accounts"
+    "message": "Fiókok"
   },
   "qf.alert.pasteFolders.formatErr": {
     "message": "Could not create tabs. See tools / error console for more detail."
   },
   "qf.backupAndRestore": {
-    "message": "Backup / Restore"
+    "message": "Biztonsági mentés visszaállítása"
   },
   "qf.btn.applyPosition": {
-    "message": "Apply position value!"
+    "message": "Alkalmazza a pozícióértéket!"
   },
   "qf.button.add": {
-    "message": "Add!"
+    "message": "Hozzáadás!"
   },
   "qf.button.configureTooltips": {
-    "message": "Configure tooltips…"
+    "message": "Konfigurálja az eszköztippeket…"
   },
   "qf.button.currentFolderBackground.set": {
-    "message": "apply"
+    "message": "alkalmaz"
   },
   "qf.button.default": {
-    "message": "Defaults"
+    "message": "Alapértelmezett"
   },
   "qf.button.defaultcolors": {
-    "message": "Default Colors"
+    "message": "Alapértelmezett színek"
   },
   "qf.button.deleteselectedcategory": {
-    "message": "Delete selected category"
+    "message": "Kijelölt kategória törlése"
   },
   "qf.button.down": {
-    "message": "Down"
+    "message": "Le"
   },
   "qf.button.pasteLicense": {
-    "message": "paste"
+    "message": "illessze"
   },
   "qf.button.rename": {
-    "message": "Rename"
+    "message": "Átnevezés"
   },
   "qf.button.reorderButtonBottom": {
-    "message": "Move to bottom"
+    "message": "Aljára"
   },
   "qf.button.reorderButtonBottom.accessKey": {
-    "message": "b"
+    "message": "a"
   },
   "qf.button.reorderButtonBottom.toolTip": {
-    "message": "Rearrange filter so it executes after all others"
+    "message": "Szűrő áthelyezése, így az összes többi után hajtódik végre"
   },
   "qf.button.reorderButtonTop": {
-    "message": "Move to top"
+    "message": "Tetejére"
   },
   "qf.button.reorderButtonTop.accessKey": {
-    "message": "o"
+    "message": "T"
   },
   "qf.button.reorderButtonTop.toolTip": {
-    "message": "Rearrange filter so it executes before all others"
+    "message": "Szűrő áthelyezése, így az összes többi előtt hajtódik végre"
   },
   "qf.button.up": {
-    "message": "Up"
+    "message": "Fel"
   },
   "qf.button.validateLicense": {
-    "message": "validate"
+    "message": "érvényesít"
   },
   "qf.caption.currentFolderBackground": {
     "message": "Current Folder Toolbar background"
   },
   "qf.categories.supportMultiple": {
-    "message": "Support selecting multiple tab categories"
+    "message": "Támogassa a több lapkategória kiválasztását"
   },
   "qf.categories.supportMultiple.tooltip": {
-    "message": "Use the SHIFT key in order to select more than one category on the dropdown."
+    "message": "A SHIFT gombbal több kategóriát is kiválaszthat a legördülő menüből."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Focus on message list when changing tabs"
+    "message": "Üzenetlista kijelölése fülek váltásakor"
   },
   "qf.checkbox.hideInSingleMessage": {
-    "message": "Hide QuickFolders in single message tabs"
+    "message": "A gyorsmappák elrejtése egyetlen üzenet fülén"
   },
   "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Removes the QuickFolders toolbar in tabs that show a single message."
+    "message": "Eltávolítja a QuickFolders eszköztárat olyan füleken, amelyek egyetlen üzenetet jelenítenek meg."
   },
   "qf.checkbox.currentFolder.closeButton": {
-    "message": "Close Button"
+    "message": "Bezárás gomb"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Display the Toolbar"
+    "message": "Eszköztár megjelenítése"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrate with lightweight theme"
   },
   "qf.checkbox.debug": {
-    "message": "Debug Mode"
+    "message": "Debug mód"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Right click this checkbox for advanced debug options"
+    "message": "kattintson jobb gombbal a jelölőnégyzetbe a debug opciókhoz"
   },
   "qf.checkbox.displaylabel": {
-    "message": "Display the 'QuickFolders' label in the toolbar"
+    "message": "'QuickFolders' címke megjelenítése az eszköztáron"
   },
   "qf.checkbox.displaylabel.tooltip": {
-    "message": "Right click to change the text of this label"
+    "message": "kattintson jobb gombbal a címke címének megváltoztatásához"
   },
   "qf.checkbox.enableTransitions": {
-    "message": "Enable CSS transitions"
+    "message": "CSS átmenetek engedélyezése"
   },
   "qf.checkbox.enableTransitions.tooltip": {
-    "message": "Shows smooth transitions between several aspects of tab coloring."
+    "message": "Sima átmeneteket jelenít meg a fülek színezésén."
   },
   "qf.checkbox.hideCategoryBox": {
-    "message": "Collapse Categories"
+    "message": "Kategóriák összecsukása"
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
-    "message": "Minimizes the Categories menu to take up less space."
+    "message": "Minimalizálja a Kategóriák menüt, hogy kevesebb helyet foglaljon el."
   },
   "qf.checkbox.highlightNewMail": {
-    "message": "Highlight folders with new mail"
+    "message": "Új üzeneteket tartalmazó mappák kiemelése"
   },
   "qf.checkbox.menus.dragToNewFolder": {
-    "message": "Drag to new Subfolder"
+    "message": "Húzza az új almappába"
   },
   "qf.checkbox.menus.emptyJunk": {
-    "message": "Empty Junk"
+    "message": "Piszkozatok kiürítése"
   },
   "qf.checkbox.menus.emptyTrash": {
-    "message": "Empty Trash"
+    "message": "Törölt elemek kiürítése"
   },
   "qf.checkbox.menus.getMailForInbox": {
-    "message": "Get Messages (Mail Accounts)"
+    "message": "Üzenetek letöltése (levelezési postafiókok)"
   },
   "qf.checkbox.menus.getMailForNews": {
-    "message": "Get Messages (News Accounts)"
+    "message": "Üzenetek letöltése (hírcsatorna fiókok)"
   },
   "qf.checkbox.menus.markAllRead": {
-    "message": "Mark Folder Read"
+    "message": "Mappa jelölése olvasottként"
   },
   "qf.checkbox.menus.markAllReadRecursive": {
-    "message": "Mark Folder Read (recursive)"
+    "message": "Mappa jelölése olvasottként (rekurzív)"
   },
   "qf.checkbox.quickCopy": {
     "message": "quickCopy - Copy mail to any folder with Shortcut:"
@@ -431,154 +431,154 @@
     "message": "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry."
   },
   "qf.checkbox.quickmove.autofill": {
-    "message": "Insert last folder name executed"
+    "message": "Helyezze be az utoljára használt mappa nevét"
   },
   "qf.checkbox.quickmove.autofill.tip": {
     "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
   },
   "qf.checkbox.readingList": {
-    "message": "Reading List"
+    "message": "Olvasási lista"
   },
   "qf.checkbox.readingList.tooltip": {
-    "message": "A list for mails that should be read later. Drag your important emails on this button."
+    "message": "A levelek listája, amelyet később el kell olvasni. Húzza a fontos e-maileket erre a gombra."
   },
   "qf.checkbox.shadows": {
-    "message": "shadows"
+    "message": "árnyékok"
   },
   "qf.checkbox.shift": {
     "message": "Shift"
   },
   "qf.checkbox.showCountInSubFolders": {
-    "message": "Also display totals of subfolders"
+    "message": "Az almappákét is jelenítse meg"
   },
   "qf.checkbox.showCountInSubFolders.tooltip": {
-    "message": "These are displayed separated by a '+' beside their main counts; contained unread mail will also make tab bold if option above is active"
+    "message": "Ezek '+' -al lesznek elválasztva a fő számtól, ha tartalmaz olvasatlan üzenetet, a fül is félkövér lesz, amennyiben a fenti opció aktív"
   },
   "qf.checkbox.showFilterButton": {
-    "message": "'Create Filters' Button"
+    "message": "'Szűrők létrehozása' gomb"
   },
   "qf.checkbox.showFilterButton.tooltip": {
-    "message": "You can also create Filters using the QuickFolders context menu."
+    "message": "Szűrőket a QuickFolders jobb gombos menüjének használatával is készíthet."
   },
   "qf.checkbox.showFolderNavigation": {
-    "message": "Folder Navigation buttons"
+    "message": "Mappa navigációs gombjai"
   },
   "qf.checkbox.showIconButtons": {
-    "message": "Customize Icon buttons"
+    "message": "Az ikonok testreszabása"
   },
   "qf.checkbox.showIcons": {
-    "message": "Display Icons (Inbox, Sent, Junk, Trash, Drafts, Archived, Templates)"
+    "message": "Ikonok megjelenítése (Beérkezett üzenetek, Elküldött üzenetek, Spam, Törölt elemek, Piszkozatok, Archívum, Sablonok)"
   },
   "qf.checkbox.showMailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "Üzenetmappa parancsok"
   },
   "qf.checkbox.showMessageNavigation": {
-    "message": "Message Navigation buttons"
+    "message": "Üzenet mozgatás gombok"
   },
   "qf.checkbox.showNewMailItalics": {
-    "message": "Display tabs with newly arrived mail italic"
+    "message": "Fülek megjelenítése az újonnan érkezett levelek dőlt betűvel"
   },
   "qf.checkbox.showNonEmptyItalics": {
-    "message": "Display tabs which contain messages italic"
+    "message": "Olvasatlan üzeneteket tartalmazó mappák megjelenítése dőlttel"
   },
   "qf.checkbox.showQuickMove": {
     "message": "quickMove Button"
   },
   "qf.checkbox.showQuickMove.tooltip": {
-    "message": "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box."
+    "message": "A quickMove gombbal húzhatja az e-maileket egy megnevezett célmappába. Több mappából gyűjthet leveleket. Miután megadta a kívánt leveleket, írja be a célmappa nevét a keresőmezőbe."
   },
   "qf.checkbox.showRecentButton": {
-    "message": "Recent Folders Button"
+    "message": "Nemrég látogatott mappák gomb"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Display Recent Folders Tab"
+    "message": "Mutassa az előző mappa fült"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Right click for configuration"
+    "message": "Kattintson jobb gombbal a beállításokhoz"
   },
   "qf.checkbox.showSubfolders": {
-    "message": "Expand Subfolders in popup menus"
+    "message": "Fülek kiterjesztése a felugró ablakokban"
   },
   "qf.checkbox.showTotalMessageCount": {
-    "message": "Display the total number of messages"
+    "message": "Az összes üzenetek számának megjelenítése a mappán"
   },
   "qf.checkbox.showUnreadBold": {
-    "message": "Display tabs with unread messages in bold"
+    "message": "Olvasatlan üzeneteket tartalmazó mappák megjelenítése félkövérrel"
   },
   "qf.checkbox.showUnreadMessageCount": {
-    "message": "Display the number of unread messages"
+    "message": "Az olvasatlan üzenetek számának megjelenítése a mappán"
   },
   "qf.checkbox.showshortcutnumber": {
-    "message": "Display shortcut number on folder labels"
+    "message": "Gyorsgomb sorszám megjelenítése a mappák címkéjén"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
-    "message": "…also in Single Message windows"
+    "message": "… az üzenetablakokban is"
   },
   "qf.checkbox.singleMessage.currentFolder.tooltip": {
-    "message": "Show current folder toolbar in the window that opens when you select to open an Email in a new window"
+    "message": "A jelenlegi mappa eszköztár megjelenítése abban az ablakban, ami az üzenet új ablakban való megjelenítésekor nyílik"
   },
   "qf.checkbox.singleMessageTab.currentFolder.show": {
-    "message": "Toolbar in Single Message Tabs"
+    "message": "Eszköztár az Egyetlen üzenet lapokon"
   },
   "qf.checkbox.skipFolder": {
-    "message": "Skip Unread Folder - use Shortcut: SHIFT +"
+    "message": "Olvasatlan mappa kihagyása - használja a Billentyűparancsot: SHIFT +"
   },
   "qf.checkbox.skipFolder.tip": {
-    "message": "Shortcut for jumping to the next unread folder."
+    "message": "Parancsikon a következő olvasatlan mappára ugráshoz."
   },
   "qf.checkbox.sortMenusAlpha": {
-    "message": "Force alphabetic sorting of menus with subfolders."
+    "message": "Almappák felsorolása ABC sorrendben a menüben"
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
-    "message": "Only use this option if your mail client doesn't sort the subfolders correctly."
+    "message": "Csak akkor használja ezt a funkciót, ha az e-mail kliense nem megfelelő sorrendben jeleníti meg az almappákat."
   },
   "qf.checkbox.storeConfig.general": {
-    "message": "Include general settings"
+    "message": "Tartalmazza az általános beállításokat"
   },
   "qf.checkbox.storeConfig.layout": {
-    "message": "Include advanced and layout"
+    "message": "Tartalmazza a speciális és az elrendezési beállításokat"
   },
   "qf.checkbox.storeConfig.tabs": {
-    "message": "Include QuickFolders Tabs"
+    "message": "Tartalmazza a QuickFolders füleket"
   },
   "qf.checkbox.tabMenuIcon": {
-    "message": "Toolbar Menu Icon"
+    "message": "Eszköztár ikon"
   },
   "qf.checkbox.tabMenuIcon.tooltip": {
-    "message": "This menu can also be invoked by right-clicking the toolbar itself"
+    "message": "A menü az eszköztáron jobb kattintással is előhívható"
   },
   "qf.checkbox.transparent": {
-    "message": "transparent"
+    "message": "átlátszó"
   },
   "qf.checkbox.useNavigationShortcuts": {
-    "message": "ALT-Left / ALT-Right for previous / next Tab"
+    "message": "Alt+Jobbra / Alt+Balra az előző / következő fülhöz"
   },
   "qf.checkbox.usePalette": {
-    "message": "Use palette"
+    "message": "Paletta használata"
   },
   "qf.checkbox.useRebuildShortcut": {
-    "message": "Rebuild Tabs with Shortcut: Ctrl + Alt +"
+    "message": "Fülek újraépítése a Ctrl + Alt + billentyűkombinációval"
   },
   "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Use keyboard shortcuts (Alt + 1 through Alt + 9)"
+    "message": "Gyorsbillentyűk használata (Alt +1 -től Alt+9 -ig)"
   },
   "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Use Ctrl instead of Alt"
+    "message": "Alt helyett Ctrl használata"
   },
   "qf.continueFilter.label": {
-    "message": "Create Filter…"
+    "message": "Szűrő létrehozása…"
   },
   "qf.continueFilter.shortcut": {
-    "message": "F"
+    "message": "S"
   },
   "qf.copyfolders": {
-    "message": "Copy Tabs"
+    "message": "Fülek másolása"
   },
   "qf.copyfolders.tooltip": {
-    "message": "Copy the QuickFolders Tabs configuration to the clipboard"
+    "message": "Mappák beállításainak másolása a vágólapra"
   },
   "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird theme"
+    "message": "Thunderbird Téma"
   },
   "qf.currentFolderBackground.custom": {
     "message": "custom"
@@ -587,7 +587,7 @@
     "message": "dark"
   },
   "qf.currentFolderBackground.default": {
-    "message": "silver"
+    "message": "ezüst"
   },
   "qf.currentFolderBackground.translucent": {
     "message": "translucent"
@@ -599,16 +599,16 @@
     "message": "Right Spacer:"
   },
   "qf.description.github": {
-    "message": "Please use github for all official feature requests and bug reports"
+    "message": "Bugok jelentéséhez és új funkciók javaslásához kérem használja a github"
   },
   "qf.description.categoryusage": {
-    "message": "You can put this tab in a category (i.e. 'Work', 'Private', …)."
+    "message": "A könyvjelzőjét hozzáadhatja egy kategóriához (pl. 'Munka', 'Személyes', stb.)."
   },
   "qf.description.changeCategory": {
-    "message": "Right click a tab to organize it into one or several categories. Creates a filter for categories on the left of the tabs."
+    "message": "Kattintson jobb gombbal a könyvjelzőre kategóriákba rendezéshez. A kategóriák listáját a bal oldalon találja."
   },
   "qf.description.contactMe": {
-    "message": "You can also contact me personally at $supportMail$:",
+    "message": "Személyesen is elérhet a $supportMail$ címen:",
     "placeholders": {
       "supportMail": {
         "content": "$1"
@@ -616,244 +616,244 @@
     }
   },
   "qf.description.donate": {
-    "message": "If you love QuickFolders as much as we do and would like to support its development, you can donate some money towards the further development of QuickFolders."
+    "message": "Ha annyira kedveli a QuickFolderst, mint mi, kérem támogassa a fejlesztését, adományozva egy kisebb összeget a QuickFolders további fejlesztéséért."
   },
   "qf.description.dragToAdd": {
-    "message": "Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias). Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). Click quickfolder to jump to mail folder."
+    "message": "Új gyorsmappa (hivatkozásként működik) létrehozásához húzza az üzenetmappát az eszköztár üres részére. Húzza az üzeneteket a gyorsmappára, hogy a megfelelő mappába mozgassa őket (vagy másolja módosító billentyűvel). Kattintson a gyorsmappára a főmappa megnyitásához."
   },
   "qf.description.dragToPopup": {
-    "message": "Drag messages onto quickfolder popup menu to move messages into sub folders."
+    "message": "Húzza az üzeneteket a gyorsmappa felugró menüjébe az almappákba való mozgatáshoz."
   },
   "qf.description.dragToPosition": {
-    "message": "Drag quickfolders sideways to change their positions. Right-click quickfolder for context menu; by selecting you can jump into sub folders. 'Rename tab' changes the label of the quickfolder. 'Remove tab' deletes the quickfolder (not the mail folder)."
+    "message": "Húzza a gyorsmappákat oldalra a helyzetük megváltoztatásához. Kattintson jobb gombbal a környezeti menü eléréséhez; kijelöléssel az almappába ugorhat. A 'könyvjelző' átnevezése megváltoztatja a gyorsmappa nevét. A 'könyvjelző eltávolítása' törli a gyorsmappát (kivéve, ha ez a főmappa)."
   },
   "qf.description.dragexplain": {
-    "message": "Tabs can also be dragged to change positions! Drop one on top of another to insert before / after it."
+    "message": "A füleket a pozíció megváltoztatásához is húzhatja! Dobjon egyet a másik tetejére, hogy beszúrja előtte / utána."
   },
   "qf.description.editcategory": {
-    "message": "Select an existing category by double clicking on it, or add a new category below."
+    "message": "Létező kategóriát kijelölheti dupla kattintással, alant új kategóriát hozhat létre:"
   },
   "qf.description.experimentalItems": {
-    "message": "The following items are experimental, they will hopefully be working in the next release!!"
+    "message": "A következő elemek fejlesztésben vannak, remélhetőleg a következő változatban működni fognak!"
   },
   "qf.description.languages": {
-    "message": "QuickFolders supports localization - you can help by adding a translation in your language on github:"
+    "message": "QuickFolders támogatja a lokalizációt - segíthet, ha lefordítja a saját nyelvére a github:"
   },
   "qf.description.linkNote": {
-    "message": "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:"
+    "message": "QuickFolders  honlap meglátogatása: részletes ismertető, tippek, és GYÍK"
   },
   "qf.description.multicategory": {
-    "message": "To add a folder to more than one category: Hold down SHIFT or CONTROL while selecting items."
+    "message": "Ha egy mappát több kategóriához szeretne sorolni, tartsa lenyomva a SHIFT vagy a CONTROL billentyűt a kijelölés közben."
   },
   "qf.description.pulldown": {
-    "message": "The QuickFolders bar will display a pulldown, allowing you to filter your tabs by category."
+    "message": "A QuickFolders eszköztár megjelenít egy legördülőt, így szűrheti a könyvjelzőket kategóriánként."
   },
   "qf.description.rightClickOptions": {
-    "message": "Right-click an empty area to open the options menu. In options, you can select native style (smaller) or flat style (clearer; supports drag indicator)."
+    "message": "Kattintson jobb gombbal egy üres helyre az opciók menü előhívásához. Itt választhat alap stílust (kisebb) vagy lapos stílust (áttekinthetőbb)."
   },
   "qf.description.tipMsg": {
-    "message": "Tip: If you have an extensive amount of folders, try the Nostalgy extension for keyboard driven message organizing."
+    "message": "Tipp: ha rengeteg mappája van, próbálja ki a Nostalgy kiegészítőt, mellyel a billentyűzettel rendezheti az üzeneteit!"
   },
   "qf.description.versionhistory": {
-    "message": "Detailed Version History at quickfolders.org"
+    "message": "Részletes verziótörténet a quickfolders.org -on"
   },
   "qf.dialog.changeorder": {
-    "message": "Change the order of the tabs"
+    "message": "Könyvjelzők sorrendjének megváltoztatása"
   },
   "qf.dialog.quickmove.settings": {
-    "message": "quickMove Advanced Settings"
+    "message": "quickMove Speciális beállítások"
   },
   "qf.dialog.setcategory": {
-    "message": "Set the category for a tab"
+    "message": "Könyvjelző kategorizálása"
   },
   "qf.donate.tooltip": {
-    "message": "Support Development of QuickFolders!"
+    "message": "Kérem támogassa a QuickFolders fejlesztését!"
   },
   "qf.filters.instructions": {
-    "message": "Please select a template. You can fine tune the filter rules on the next screen."
+    "message": "Kérem válasszon ki egy sablont. Tovább finomíthatja a szűrő szabályokat a következő képernyőn."
   },
   "qf.filters.template.from": {
-    "message": "Based on Sender (from)"
+    "message": "A feladó alapján (kitől)"
   },
   "qf.filters.template.from.description": {
-    "message": "This is probably the most used pattern:  this will retrieve the sender's email address and paste it into the from and to filter conditions fields. This way complete conversations with the sender will be moved to the new folder."
+    "message": "Valószínűleg ez a leggyakrabban használt formula: lekéri a feladó címét és beilleszti a 'feladó' és 'címzett' szűrési feltétel mezőkbe. Így ezzel a feladóval folytatott teljes beszélgetések át lesznek helyezve az új mappába."
   },
   "qf.filters.template.list": {
-    "message": "Mailing List"
+    "message": "Levelezési lista"
   },
   "qf.filters.template.list.description": {
-    "message": "Similar to Based on Sender, but it doesn't fill the 'to' condition field."
+    "message": "Hasonló a 'Feladó alapján' - hoz, de nem tölti ki a 'címzett' feltételi mezőt."
   },
   "qf.filters.template.tag": {
-    "message": "By Tags"
+    "message": "Címkék szerint"
   },
   "qf.filters.template.tag.description": {
-    "message": "Uses the tags of the email and adds them as filter conditions."
+    "message": "A levelek címkéit használja és hozzáadja azokat a szűrési feltételekhez."
   },
   "qf.filters.template.to": {
-    "message": "Based on Recipient (to)"
+    "message": "A címzett alapján (kinek)"
   },
   "qf.filters.template.to.description": {
-    "message": "Similar to 'Based on Sender': use this when you mark an email you have sent to somebody else. This will retrieve the recpient's email address and paste it into the from and to filter conditions fields. This way the complete conversation with the contact will be moved to the new folder."
+    "message": "Hasonló a 'Feladó alapján' - hoz: akkor használja ezt, ha azért akarja jelölni a levelet, mert azt másnak szeretné elküldeni. Lekéri a címzett e-mail címét és beilleszti a 'feladó' és 'címzett' szűrési feltétel mezőkbe. Ezáltal a másik féllel folytatott teljes beszélgetés az új mappába kerül."
   },
   "qf.filters.template.topic": {
-    "message": "By Subject"
+    "message": "Tárgy szerint"
   },
   "qf.filters.template.topic.description": {
-    "message": "This will look for special expressions in brackets, e.g. [stamp collectors] or {vegans} and create a filter condition based on these; a lot of mass email is set up using this pattern, so it is really easy to use."
+    "message": "Speciális kifejezéseket keres a zárójelek között, pl. [bélyeggyűjtők] vagy {vegetáriánusok} és egy új szűrőt készít ezek alapján; rengeteg tömeges levél ilyen formulákat használ, így ez nagyon könnyen használható."
   },
   "qf.filters.title": {
-    "message": "Create Filters"
+    "message": "Szűrők létrehozása"
   },
   "qf.filters.toggleMessage.notificationText": {
-    "message": "Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'. To end the filter learning mode, press the filter button on the top left of the QuickFolders bar."
+    "message": "A szűrő tanuló mód elindult. Amikor csak áthelyez egy e-mailt a QuickFolders - be, a \"Szűrő Szabály Létrehozása\" varázsló fog elindulni. A Thunderbird szűrőket használ az e-mailek szabályok szerinti automatikus áthelyezéséhez, mint például \"ki a feladó?\", \"egy bizonyos kulcsszót tartalmaz a tárgy?\". Ha ki akarja kapcsolni a szűrő tanuló módot, kattintson a szűrő gombra a QuickFolders eszköztár bal felső sarkában."
   },
   "qf.filters.toggleMessage.title": {
-    "message": "Creating Filters"
+    "message": "Szűrők létrehozása"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
-    "message": "Customize Icon…"
+    "message": "Az ikon testreszabása…"
   },
   "qf.foldercontextmenu.quickfolders.removeIcon": {
-    "message": "Remove Customized Icon"
+    "message": "Távolítsa el a testreszabott ikont"
   },
   "qf.fpJsonFile": {
     "message": "JSON File"
   },
   "qf.goNextUnread.auto": {
-    "message": "Go to next folder without asking (recommended)"
+    "message": "Kérés nélkül lépjen a következő mappába (ajánlott)"
   },
   "qf.goNextUnread.none": {
-    "message": "Do nothing if no unread email is left in folder"
+    "message": "Ne tegyen semmit, ha nem marad olvasatlan e-mail a mappában"
   },
   "qf.goNextUnread.prompt": {
-    "message": "Ask to go to next unread folder"
+    "message": "Kérje meg a következő olvasatlan mappát"
   },
   "qf.group.navigation": {
-    "message": "Message Navigation"
+    "message": "Üzenet navigáció"
   },
   "qf.label.ActiveTabColor": {
-    "message": "Active Tab Color:"
+    "message": "Aktív fül színe:"
   },
   "qf.label.ColoredTabPalette": {
-    "message": "Palette for Colored Tabs:"
+    "message": "Paletta színes lapokhoz:"
   },
   "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palette for tabs with a user-assigned color"
+    "message": "Paletta a felhasználó által meghatározott színű lapokhoz"
   },
   "qf.label.DragOverBackground": {
-    "message": "Drag Over Color:"
+    "message": "Ráhúzott fül színe:"
   },
   "qf.label.HoveredTabColor": {
-    "message": "Hovered Tab Color:"
+    "message": "Fókuszban lévő fül színe"
   },
   "qf.label.Toolbar": {
-    "message": "Toolbar"
+    "message": "Eszköztár"
   },
   "qf.label.Toolbar.bottomLine": {
-    "message": "Bottom Line Width:"
+    "message": "Alsó sor szélessége:"
   },
   "qf.label.Toolbar.bottomLine.tip": {
-    "message": "The width of the line under tabs. Change its color with the Active Tab Color picker below."
+    "message": "A fülek alatti vonal szélessége. Színét az alábbi Aktív lap színválasztóval módosíthatja."
   },
   "qf.label.ToolbarBackground": {
-    "message": "Toolbar Background:"
+    "message": "Eszköztár háttérszíne:"
   },
   "qf.label.UncoloredTab": {
-    "message": "Uncolored Tab"
+    "message": "Színtelen fül"
   },
   "qf.label.UncoloredTab.tooltip": {
-    "message": "Look of (inactive) tabs without a specifically selected color"
+    "message": "Az (inaktív) fülek megjelenése a felhasználó által kiválasztott szín nélkül"
   },
   "qf.label.appearance": {
-    "message": "Appearance"
+    "message": "Megjelenés"
   },
   "qf.label.behavior": {
-    "message": "Behavior"
+    "message": "Viselkedés"
   },
   "qf.label.github": {
-    "message": "Report a bug / Request a feature…"
+    "message": "Bug jelentése / Új funkció javaslása a github"
   },
   "qf.label.buttonFontSizeNumeric": {
-    "message": "Button font size (0 for default):"
+    "message": "Gomb betűmérete (alapértelmezés szerint 0):"
   },
   "qf.label.cancel": {
-    "message": "Cancel"
+    "message": "Mégse"
   },
   "qf.label.colors": {
-    "message": "Colors"
+    "message": "Színek"
   },
   "qf.label.contactLink": {
-    "message": "Contact me (English or German)…"
+    "message": "Lépjen kapcsolatba velem (angolul vagy németül)…"
   },
   "qf.label.currentFolderToolbar": {
-    "message": "Current Folder Toolbar"
+    "message": "Jelenlegi mappa eszköztár"
   },
   "qf.label.donate": {
-    "message": "Donate"
+    "message": "Támogatás"
   },
   "qf.label.donateLink": {
-    "message": "Visit the Donation Page…"
+    "message": "Adományozási honlap megtekintése…"
   },
   "qf.label.dragFolderLabel": {
-    "message": "Drag folders here to create a tab. Click the tab to go to the folder, drag messages to move/copy them there."
+    "message": "Húzza a mappát ide könyvjelzőzéshez. Kattintson a könyvjelzőre a mappára ugráshoz, húzza rá üzeneteket a mappába való mozgatáshoz."
   },
   "qf.label.existingcategories": {
-    "message": "Existing categories:"
+    "message": "Létező kategóriák:"
   },
   "qf.label.filterCountN_of_M": {
-    "message": "{0} of {1}"
+    "message": "{0} a(z) {1} - ból"
   },
   "qf.label.filterEntities": {
-    "message": "items"
+    "message": "elem"
   },
   "qf.label.filterSingleEntity": {
-    "message": "1 item"
+    "message": "egy elem"
   },
   "qf.label.getQuickFilters": {
-    "message": "For an improved and more powerful way of creating Filters please install my extension quickFilters!"
+    "message": "A szűrők létrehozásának jobb és hatékonyabb módja érdekében telepítse a quickFilters bővítményemet!"
   },
   "qf.label.goNextUnread": {
-    "message": "Go to next unread email:"
+    "message": "Ugrás a következő olvasatlan e-mailre:"
   },
   "qf.label.goNextUnread.tip": {
-    "message": "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder."
+    "message": "Általában a Thunderbird azt kérdezi, amikor a következő olvasatlan levélre lép, ha más mappára kell ugrania."
   },
   "qf.label.haveLicense": {
-    "message": "Already have a License?"
+    "message": "Már van licenced?"
   },
   "qf.label.homePage": {
-    "message": "Find detailed information at the QuickFolders homepage at quickfolders.org…"
+    "message": "További információ az új QuickFolders honlapon a quickfolders.org -on..."
   },
   "qf.label.initdelay": {
-    "message": "[ms] init delay {1000 is standard}:"
+    "message": "[ms] kezdési késleltetés (1000 az alapértelmezett):"
   },
   "qf.label.insertLicense": {
-    "message": "Insert your personal License key here:"
+    "message": "Helyezze ide a személyes licenckulcsát:"
   },
   "qf.label.insertLicense.tooltip": {
-    "message": "Your license key is contained in your order confirmation email from Fastspring."
+    "message": "Az Ön licenckulcsát a Fastspring megrendelés-visszaigazoló e-mailje tartalmazza."
   },
   "qf.label.instantApplyMsg": {
-    "message": "Note: if you only see a [Close] button below, the color settings might not work - as workaround, try right-clicking on an empty area of the quickfolders bar to select options… this will force the [Ok] button to be displayed, which should save colors."
+    "message": "Megjegyzés: Ha csak egy [Bezárás] gombot lát alant, a színbeállítások valószínűleg nem működnek, próbáljon jobb gombbal kattintani a gyorsmappa eszköztár üres területén, így megjelenik az [Ok] gomb, mellyel elmentheti a színbeállításokat."
   },
   "qf.label.keyboard": {
-    "message": "Keyboard Shortcuts"
+    "message": "Billentyű kombinációk"
   },
   "qf.label.languagesLink": {
-    "message": "Add Translation…"
+    "message": "Fordítás hozzáadása…"
   },
   "qf.label.licenseValid": {
-    "message": "Your license is valid until:"
+    "message": "Az Ön engedélye a következő időpontig érvényes:"
   },
   "qf.label.mainToolbar": {
-    "message": "Main Toolbar Elements"
+    "message": "Fő eszköztár elemek"
   },
   "qf.label.menus": {
-    "message": "Menu Configuration"
+    "message": "Menü konfiguráció"
   },
   "qf.label.menus.customIcon": {
-    "message": "Customize Icon"
+    "message": "Az ikon testreszabása"
   },
   "qf.label.menus.help": {
     "message": "QuickFolders Help"
@@ -862,31 +862,31 @@
     "message": "Only display with CTRL key held"
   },
   "qf.label.menus.lineBreak": {
-    "message": "Insert Line Break"
+    "message": "Helyezze be a sortörést"
   },
   "qf.label.menus.mailFolder": {
-    "message": "Mail Commands"
+    "message": "Mail Parancsok"
   },
   "qf.label.menus.options": {
-    "message": "Options"
+    "message": "Opciók"
   },
   "qf.label.menus.quickFolder": {
-    "message": "QuickFolders Commands"
+    "message": "QuickFolders Parancsok"
   },
   "qf.label.menus.separator": {
-    "message": "Insert Separator"
+    "message": "Helyezze be az elválasztót"
   },
   "qf.label.menus.support": {
     "message": "QuickFolders Support"
   },
   "qf.label.misc": {
-    "message": "Miscellaneous"
+    "message": "Egyéb"
   },
   "qf.label.newcategory": {
-    "message": "New category:"
+    "message": "Új kategória:"
   },
   "qf.label.pixels": {
-    "message": "pixels"
+    "message": "pixelek"
   },
   "qf.label.quickFilters.link": {
     "message": "get quickFilters!"
@@ -895,139 +895,139 @@
     "message": "QuickFolders:"
   },
   "qf.label.renameselectedcategory": {
-    "message": "Rename selected category"
+    "message": "Kijelölt kategória átnevezése"
   },
   "qf.label.setcolors": {
-    "message": "Set [Text Color], Background Color"
+    "message": "Szöveg színének, háttér színének beállítása"
   },
   "qf.label.tabContent": {
-    "message": "Tab Content"
+    "message": "Fül tartalom"
   },
   "qf.label.testfolder": {
-    "message": "Test Folder"
+    "message": "Teszt Mappa"
   },
   "qf.label.testfolder2": {
-    "message": "Test Folder 2"
+    "message": "Teszt Mappa 2"
   },
   "qf.label.themes": {
-    "message": "Themes:"
+    "message": "Témák:"
   },
   "qf.label.toolbarPosition": {
-    "message": "QuickFolders Bar Position"
+    "message": "A QuickFolders eszköztár pozíciója"
   },
   "qf.label.versionhistory": {
-    "message": "Read Version History…"
+    "message": "Verziótörténet"
   },
   "qf.licenseValidation.expired": {
-    "message": "The license key you entered is expired. Please press the button below to renew your license."
+    "message": "A megadott licenckulcs lejárt. Kérjük, nyomja meg az alábbi gombot a licenc megújításához."
   },
   "qf.licenseValidation.failed": {
-    "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."
+    "message": "A megadott licenckulcs érvénytelen. Ellenőrizze a FastSpring e-mailjét az utasításokért. Ha továbbra is problémái vannak, vegye fel a kapcsolatot a Támogatás fülön keresztül."
   },
   "qf.licenseValidation.guessAddon": {
-    "message": "(The key entered may be for {2})."
+    "message": "(Lehetséges, hogy a megadott kulcs a következőre vonatkozik: {2})."
   },
   "qf.licenseValidation.invalidAddon": {
-    "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
+    "message": "Lehet, hogy a megadott licenckulcs egy másik kiegészítőhöz tartozik. A (z) {0} licenckulcsai a következővel kezdődnek: {1}."
   },
   "qf.licenseValidation.invalidMail": {
-    "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
+    "message": "A licenckulcshoz [{1}] kötött e-mail cím jelenleg nem szerepel egyik e-mail fiókjában sem. Kérjük, forduljon hozzám a Támogatás fülön segítségért."
   },
   "qf.licenseValidation.notMatchedMail": {
-    "message": "Encrypted Email address does not match readable one."
+    "message": "A titkosított e-mail cím nem egyezik az olvasható címmel."
   },
   "qf.licenseValidation.passed": {
-    "message": "Thanks for registering QuickFolders Pro! All premium features are now unlocked."
+    "message": "Köszönjük a QuickFolders Pro regisztrálását! Az összes prémium funkció fel van oldva."
   },
   "qf.licenseValidation.standard": {
-    "message": "Thanks for registering a QuickFolders License - You are helping the Add-on immensely! If you need more features you can always upgrade to the Pro License."
+    "message": "Köszönjük, hogy regisztrálta a QuickFolders licencet - Rendkívül sokat segít a bővítményen! Ha további funkciókra van szüksége, mindig frissíthet Pro licencre."
   },
   "qf.loadConfig": {
-    "message": "Load Configuration…"
+    "message": "Konfiguráció betöltése…"
   },
   "qf.menu.Color": {
-    "message": "Color"
+    "message": "Szín"
   },
   "qf.menu.tabColor": {
-    "message": "Default Color!"
+    "message": "Nincs szín!"
   },
   "qf.menuitem.quickfolders.changeOrder": {
-    "message": "Change the order of the tabs"
+    "message": "Könyvjelzők sorrendjének megváltoztatása"
   },
   "qf.menuitem.quickfolders.changeOrderAccess": {
-    "message": "C"
+    "message": "m"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Find orphaned Tabs"
+    "message": "Törölt fülek keresése"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
-    "message": "T"
+    "message": "k"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
-    "message": "Display Current Folder Tools"
+    "message": "Jelenlegi mappa eszközök megjelenítése"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
-    "message": "D"
+    "message": "J"
   },
   "qf.menuitem.quickfolders.filters": {
-    "message": "Create Message Filters…"
+    "message": "Üzenetszűrők létrehozása…"
   },
   "qf.menuitem.quickfolders.filtersAccess": {
-    "message": "F"
+    "message": "l"
   },
   "qf.menuitem.quickfolders.find": {
-    "message": "Find Folder…"
+    "message": "Mappa keresése…"
   },
   "qf.menuitem.quickfolders.findAccess": {
-    "message": "i"
+    "message": "k"
   },
   "qf.menuitem.quickfolders.help": {
-    "message": "QuickFolders Help…"
+    "message": "QuickFolders súgó…"
   },
   "qf.menuitem.quickfolders.helpAccess": {
-    "message": "H"
+    "message": "Q"
   },
   "qf.menuitem.quickfolders.options": {
-    "message": "QuickFolders Options…"
+    "message": "QuickFolders beállítások…"
   },
   "qf.menuitem.quickfolders.optionsAccess": {
-    "message": "O"
+    "message": "b"
   },
   "qf.menuitem.quickfolders.register": {
     "message": "QuickFolders Pro License…"
   },
   "qf.menuitem.quickfolders.repairTabs": {
-    "message": "Refresh Visible Tabs!"
+    "message": "Látható fülek frissítése"
   },
   "qf.menuitem.quickfolders.repairTabsAccess": {
-    "message": "V"
+    "message": "f"
   },
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Repair Tree Icons"
   },
   "qf.menuitem.quickfolders.splash": {
-    "message": "Latest Update News…"
+    "message": "Legfrissebb hírek…"
   },
   "qf.menuitem.quickfolders.support": {
-    "message": "QuickFolders Support…"
+    "message": "QuickFolders támogatás…"
   },
   "qf.menuitem.quickfolders.supportAccess": {
-    "message": "S"
+    "message": "t"
   },
   "qf.menuitem.quickfolders.togglePaintMode": {
-    "message": "Paint mode"
+    "message": "Színezési mód"
   },
   "qf.menuitem.quickfolders.togglePaintModeAccess": {
-    "message": "p"
+    "message": "S"
   },
   "qf.notification.categoryIsReadOnly": {
-    "message": "This item cannot be deleted."
+    "message": "Ez az elem nem törölhető."
   },
   "qf.notification.dontShowAgain": {
-    "message": "Do not show this message again."
+    "message": "Ne mutassa újra ezt az üzenetet."
   },
   "qf.notification.newsFlash": {
-    "message": "$addonName$ was updated! Important news…",
+    "message": "$addonName$ frissítve! Fontos hírek…",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1036,13 +1036,13 @@
     }
   },
   "qf.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
+    "message": "Bővítse a licencet"
   },
   "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+    "message": "Ez 1 évvel meghosszabbítja a jelenlegi engedély dátumát. Általában olcsóbb, mint egy új licenc."
   },
   "qf.notification.premium.btn.getLicense": {
-    "message": "Buy License"
+    "message": "Vásároljon licencet"
   },
   "qf.notification.premium.btn.hotKey": {
     "message": "L"
@@ -1051,16 +1051,16 @@
     "message": "Renew License"
   },
   "qf.notification.premium.btn.upgrade": {
-    "message": "Upgrade to Pro"
+    "message": "Frissítés Pro verzióra"
   },
   "qf.notification.premium.readingList": {
     "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
   },
   "qf.notification.premium.shortcut": {
-    "message": "The premium license additionally gives you a configurable keyboard shortcut."
+    "message": "A prémium licenc ezenkívül konfigurálható billentyűparancsot is biztosít."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "You now use $cntIcons$ custom icons for Tabs. The unpaid version of QuickFolders supports a maximum of $maxFreeIcons$. The standard license supports $maxStdIcons$. QuickFolders Pro has no limit.",
+    "message": "Most a $cntIcons$ egyéni ikonokat használja a lapokhoz. A QuickFolders fizetetlen verziója legfeljebb $maxFreeIcons$ -t támogat. A szabványos licenc támogatja a $maxStdIcons$. A QuickFolders Pro -nak nincs határa.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1077,52 +1077,52 @@
     }
   },
   "qf.notification.premium.text": {
-    "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it."
+    "message": "A {1} prémium szolgáltatás, használatához szerezzen be QuickFolders Pro licencet."
   },
   "qf.notification.premium.title": {
-    "message": "Premium Feature"
+    "message": "Prémium funkció"
   },
   "qf.notification.standard.readingList": {
-    "message": "You have now {1} bookmarks defined. The standard license of QuickFolders allows a maximum of {2}."
+    "message": "Most {1} könyvjelző van definiálva. A QuickFolders szabványos licence legfeljebb {2} engedélyezhető."
   },
   "qf.notification.standard.text": {
-    "message": "{1} is a license restricted feature, please get a QuickFolders License for using it."
+    "message": "A {1} licenckorlátozott szolgáltatás, kérjük, szerezzen be egy QuickFolders licencet a használatához."
   },
   "qf.notification.standard.title": {
-    "message": "Licensed Feature"
+    "message": "Standard funkció"
   },
   "qf.options.LayoutColorAppearance": {
-    "message": "Individual Tab Color Appearance"
+    "message": "Egyéni fül szín megjelenítés"
   },
   "qf.options.LayoutColorAppearanceFilled": {
-    "message": "(filled style)"
+    "message": "(kitöltött stílus)"
   },
   "qf.options.LayoutColorAppearanceStriped": {
-    "message": "(striped style)"
+    "message": "(csíkos stílus)"
   },
   "qf.options.label.themeAuthor": {
-    "message": "Theme Author:"
+    "message": "Téma szerzője:"
   },
   "qf.options.theme.pastelColors": {
-    "message": "Pastel Colors"
+    "message": "Pasztell színek"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
-    "message": "Bottom:"
+    "message": "Alsó:"
   },
   "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Top:"
+    "message": "Felső:"
   },
   "qf.options.themes.customCornerRadius.checkbox": {
-    "message": "Custom Corner Radius"
+    "message": "Egyedi corner radius"
   },
   "qf.options.themes.showBorders.checkbox": {
-    "message": "Always Display Borders"
+    "message": "Mindig jelenítse meg a szegélyeket"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Click for version history."
+    "message": "Kattintson a verzióelőzmények megjelenítéséhez."
   },
   "qf.palette.inactive": {
-    "message": "Same as inactive Tabs"
+    "message": "Like inactive Tabs"
   },
   "qf.palette.night": {
     "message": "Night Vision"
@@ -1137,7 +1137,7 @@
     "message": "2 Colors"
   },
   "qf.pastefolders.tooltip": {
-    "message": "Delete all QuickFolders and read new configuration from clipboard"
+    "message": "Törölje az összes gyorsmappát, és olvassa el az új konfigurációt a vágólapról"
   },
   "qf.pathFormat.AccountAndPath": {
     "message": "Account - Folder Path"
@@ -1155,37 +1155,37 @@
     "message": "Folder Name"
   },
   "qf.pathFormat.maxDepth": {
-    "message": "Maximum path depth:"
+    "message": "Maximális pályamélység:"
   },
   "qf.pathFormat.tooltip": {
-    "message": "Maximum number of folders displayed in folder path."
+    "message": "A mappák elérési útjában megjelenített mappák maximális száma."
   },
   "qf.prefwindow.quickfolders.options": {
-    "message": "QuickFolders Options"
+    "message": "QuickFolders Beállítások"
   },
   "qf.premium.renewLicense.tooltip": {
-    "message": "Your license expired {1} days ago"
+    "message": "A licenced {1} napja lejárt"
   },
   "qf.premiumConfig": {
-    "message": "Premium Features"
+    "message": "Prémium funkciók"
   },
   "qf.prompt.category.deleteMultiple": {
-    "message": "Ok to delete multiple categories?"
+    "message": "Rendben több kategória törlése?"
   },
   "qf.prompt.contact.subject": {
-    "message": "Please enter a short subject line:"
+    "message": "Írjon be egy rövid tárgyat:"
   },
   "qf.prompt.contact.title": {
-    "message": "Contact QuickFolders Support"
+    "message": "Vegye fel a kapcsolatot a QuickFolders ügyfélszolgálatával"
   },
   "qf.prompt.loadFolders.confirm": {
-    "message": "Accept the loaded Tabs?"
+    "message": "Elfogadja a betöltött füleket?"
   },
   "qf.prompt.newFolder.createQFtab": {
-    "message": "Also create a QuickFolders Tab"
+    "message": "Hozzon létre egy QuickFolders lapot is"
   },
   "qf.prompt.newFolder.newChildName": {
-    "message": "Enter name for new child folder under {0}"
+    "message": "Írja be az új gyermekmappa nevét a {0} mezőbe"
   },
   "qf.prompt.newFolder.title": {
     "message": "New Folder"
@@ -1194,163 +1194,163 @@
     "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
   },
   "qf.prompt.pasteFolders.confirm": {
-    "message": "Keep the displayed Tabs?"
+    "message": "Megtartja a megjelenített füleket?"
   },
   "qf.prompt.readingList.removeItem": {
-    "message": "Remove this item?"
+    "message": "Eltávolítja ezt az elemet?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?"
+    "message": "A levél nem található, lehet, hogy időközben máshova került.\n{1}\n\nMeg akarja keresni?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
+    "message": "Taz ő törli az összes QuickFolders lapot, és lecseréli a fájl elemeire.\n{0} entries were read.\nReplace tabs?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Switch to Domain License?"
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key always clears messages list."
+    "message": "Az Escape gomb törli az üzenetek listáját."
   },
   "qf.quickMove.excludeAccounts": {
-    "message": "Select any account that should be excluded from the search results:"
+    "message": "Válassza ki azokat a fiókokat, amelyeket ki kell zárni a keresési eredmények közül:"
   },
   "qf.quickMove.lockAccount": {
-    "message": "Only show results from current mail account."
+    "message": "Csak az aktuális e-mail fiók eredményeit jelenítse meg."
   },
   "qf.quickMove.maxResults": {
-    "message": "Maximum number of search results"
+    "message": "A keresési eredmények maximális száma"
   },
   "qf.quickMove.path.format": {
     "message": "Display Format:"
   },
   "qf.quickMove.silent": {
-    "message": "Omit notifications after moving mails."
+    "message": "Nincsenek értesítések a levelek áthelyezése után."
   },
   "qf.register.licenseValid.expired": {
-    "message": "Your license expired on:"
+    "message": "A licenced lejárt:"
   },
   "qf.search.advanced": {
-    "message": "Advanced search settings…"
+    "message": "Speciális keresési beállítások…"
   },
   "qf.storeConfig": {
-    "message": "Save Configuration…"
+    "message": "Konfiguráció mentése…"
   },
   "qf.tab.advanced": {
-    "message": "Advanced"
+    "message": "Haladó"
   },
   "qf.tab.general": {
-    "message": "General"
+    "message": "Általános"
   },
   "qf.tab.gopro": {
-    "message": "Licenses"
+    "message": "Engedélyek"
   },
   "qf.tab.layout": {
-    "message": "Bling My Tabs!"
+    "message": "Spécizze fel a füleket!"
   },
   "qf.tab.quickhelp": {
-    "message": "Quick Help"
+    "message": "Gyorssegéd"
   },
   "qf.tab.support": {
-    "message": "Support"
+    "message": "Támogatás"
   },
   "qf.textbox.searchBox.emptyText": {
-    "message": "Search filters by name…"
+    "message": "Szűrők keresése név alapján…"
   },
   "qf.textbox.searchBox.toolTip": {
-    "message": "enter a keyword to search filters by name"
+    "message": "Adjon meg egy kulcsszót a szűrők név szerinti kereséséhez"
   },
   "qf.themes.applePills.description": {
-    "message": "A pleasant layout for our Mac users - plain and simple; with some optional color perks."
+    "message": "Egy kellemes téma Mac felhasználóknak - letisztult és egyszerű, pár opcionális színnel."
   },
   "qf.themes.applePills.label": {
     "message": "Apple Pills"
   },
   "qf.themes.flatButtons.description": {
-    "message": "Standard toolbar buttons - this is the closest you can get to the look of original version 0.5!"
+    "message": "Szabványos eszköztár gombok - ez áll a legközelebb az eredeti 0.5 verzió kinézetéhez!"
   },
   "qf.themes.flatButtons.label": {
-    "message": "Toolbar Buttons"
+    "message": "Eszköztár gombok"
   },
   "qf.themes.flatTabs.description": {
-    "message": "Modern tabbed look - fully customizable. Looks great on Windows and Linux."
+    "message": "Modern kinézet - teljesen testre szabható. Nagyszerűen mutat Windowson és Linuxon."
   },
   "qf.themes.flatTabs.label": {
     "message": "Flat Style"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layout resembles the tabs of your OS - less coloring options but may look more integrated and in sync with your Mail Client Themes."
+    "message": "Ez a kinézet az operációs rendszer témájához hasonlít - kevesebb színezési beállítás, de jobban integráltnak tűnik és szinkronban van az e-mail kliens témájával."
   },
   "qf.themes.nativeTabs.label": {
     "message": "Native Tabs"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pushbuttons - these look like standard buttons on dialog windows"
+    "message": "Nyomógombok - úgy néznek ki, mint a szabványos gombok a dialógusablakokon"
   },
   "qf.themes.realButtons.label": {
-    "message": "Pushbuttons"
+    "message": "Nyomógombok"
   },
   "qf.toolbar.quickfolders.toolbar": {
-    "message": "QuickFolders Toolbar"
+    "message": "QuickFolders eszköztár"
   },
   "qf.toolbarIconSize": {
-    "message": "Large Toolbar Icons"
+    "message": "Nagy eszköztár ikonok"
   },
   "qf.toolbarMinimumHeight": {
-    "message": "Minimum height:"
+    "message": "Minimális magasság:"
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "For Mac systems who encounter [Bug 25021]"
   },
   "qf.toolbarPosition.tooltip": {
-    "message": "0 = on top of other toolbars; 100 = bottom. High value depends on other Add-ons."
+    "message": "0 = más eszköztárak tetején; 100 = alsó. A magas érték más kiegészítőktől függ."
   },
   "qf.tooltip.RecentFolders": {
-    "message": "Recent Folders"
+    "message": "Előző mappák"
   },
   "qf.tooltip.closeToolbar": {
-    "message": "Close this toolbar"
+    "message": "Eszköztár bezárása"
   },
   "qf.tooltip.conversationRead": {
-    "message": "Mark Conversation as Read and jump to next unread Email"
+    "message": "Beszélgetés megjelölése olvasottként és ugrás a következő olvasatlan e-mailre"
   },
   "qf.tooltip.emailIcon": {
-    "message": "Current Email - drag to a QuickFolders tab to move Mail"
+    "message": "Aktuális email - húzza egy QuickFolders fülre a mail áthelyezéséhez"
   },
   "qf.tooltip.filterStart": {
-    "message": "Activate filter teaching. Dragging emails on a QuickFolder creates new Filters."
+    "message": "Szűrő tanuló mód aktív. Az e-mail áthúzása egy gyorsmappára új szűrőket generál."
   },
   "qf.tooltip.filters": {
-    "message": "Stop creating filters."
+    "message": "Ne készítsen szűrőket."
   },
   "qf.tooltip.folderUp": {
-    "message": "Go to Parent Folder"
+    "message": "Ugrás a szülő mappába"
   },
   "qf.tooltip.goNextFolder": {
-    "message": "Move to the next [unread] message"
+    "message": "Ugrás a következő olvasatlan üzenetre"
   },
   "qf.tooltip.goPreviousFolder": {
-    "message": "Move to the previous [unread] message"
+    "message": "Ugrás az előző olvasatlan üzenetre"
   },
   "qf.tooltip.mailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "Üzenetmappa parancsok"
   },
   "qf.tooltip.mainOptions": {
-    "message": "QuickFolders options and advanced commands"
+    "message": "QuickFolders beállítások és haladó parancsok"
   },
   "qf.tooltip.paintCanActive": {
-    "message": "Paint mode: click for palette, click tabs to color them, right-click tabs to extract their color"
+    "message": "Színezési mód: kattintson a palettához, kattintson a fülekre a kiszínezésükhöz, kattintson jobb gombbal a fülekre, hogy lekérdezze azok színét."
   },
   "qf.tooltip.quickFoldersNavToggle": {
-    "message": "toggle navigating unread only / all mails"
+    "message": "váltás az olvasatlan / összes levél közti navigálás között"
   },
   "qf.tooltip.quickMove": {
-    "message": "Drag an email here then enter target folder name (quickMove); or click to jump into the folder (quickJump)."
+    "message": "quickMove: drag an email here then enter folder name"
   },
   "qf.tooltip.skipUnreadFolder": {
     "message": "Skip to next Unread Folder"
   },
   "qf.tooltip.threadIcon": {
-    "message": "Current Thread - drag to a QuickFolders tab to move Conversation"
+    "message": "Jelenlegi beszélgetés - húzza egy QuickFolders fülre a beszélgetés áthelyezéséhez"
   },
   "qf.youtube.description": {
     "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
@@ -1362,199 +1362,199 @@
     "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
   },
   "qfAlertCopyString": {
-    "message": "Folder String copied to Clipboard!"
+    "message": "A mappa neve másolva a vágólapra!"
   },
   "qfAlertDropFolderVirtual": {
-    "message": "You can not copy mail to a virtual folder!"
+    "message": "Nem másolhat üzenetet virtuális mappába!"
   },
   "qfAlertUpgradeSuccess": {
-    "message": "QuickFolders was successfully upgraded to version:"
+    "message": "QuickFolders frissítve a lett a következő verzióra:"
   },
   "qfAll": {
-    "message": "(Display All)"
+    "message": "(Mindent mutasson)"
   },
   "qfCantMoveFolder": {
-    "message": "Folder {0} cannot be moved."
+    "message": "A {0} mappa nem áthelyezhető."
   },
   "qfColorPickingWIP": {
-    "message": "Sorry, this feature is still Work in Progress!"
+    "message": "Elnézést, de ez a funkció még nincs kész!"
   },
   "qfCommandAccess": {
     "message": "Q"
   },
   "qfCommandPopup": {
-    "message": "QuickFolders Commands"
+    "message": "QuickFolders parancsok"
   },
   "qfCompactFolder": {
-    "message": "Compact Folder"
+    "message": "Tömörített mappa"
   },
   "qfCompactFolderAccess": {
-    "message": "C"
+    "message": "T"
   },
   "qfCompacted": {
-    "message": "Compacted:"
+    "message": "Tömörített:"
   },
   "qfCompactedBytesFreed": {
-    "message": "Bytes expunged"
+    "message": "Felszabadított byte-ok"
   },
   "qfCompactedFolder": {
-    "message": "Compacted folder"
+    "message": "Tömörített mappa"
   },
   "qfCompactedNewFolderSize": {
-    "message": "New size"
+    "message": "Új méret"
   },
   "qfCompactedOriginalFolderSize": {
-    "message": "Original size"
+    "message": "Eredeti méret"
   },
   "qfConfirmCopyFolder": {
-    "message": "Really copy folder {0} into {1}?"
+    "message": "Valóban másolja a {0} mappát a {1} mappába?"
   },
   "qfConfirmMoveFolder": {
-    "message": "Really move folder {0} into {1}?"
+    "message": "Valóban áthelyez a {0} mappát a {1} -ba?"
   },
   "qfConfirmVersionLink": {
-    "message": "Display version history for QuickFolders"
+    "message": "Programváltozatok előzményeinek megtekintése"
   },
   "qfDeadTabsCount": {
-    "message": "# orphaned tabs found:"
+    "message": "# elárvult fül található:"
   },
   "qfDeadTabsDeleted": {
-    "message": "# orphaned tabs removed:"
+    "message": "# elárvult fülek eltávolítva:"
   },
   "qfDeleteFolder": {
-    "message": "Delete Folder"
+    "message": "Mappa törlése"
   },
   "qfDeleteFolderAccess": {
-    "message": "D"
+    "message": "r"
   },
   "qfDeleteJunk": {
     "message": "Purge Junk"
   },
   "qfDown": {
-    "message": "Down"
+    "message": "Le"
   },
   "qfDownloadAll": {
     "message": "Download All"
   },
   "qfEditVirtual": {
-    "message": "Search Properties…"
+    "message": "Keresés a tulajdonságokban"
   },
   "qfEditVirtualAccess": {
-    "message": "S"
+    "message": "j"
   },
   "qfEmptiedJunk": {
-    "message": "Emptied junk and compacted folder"
+    "message": "Kuka ürítve és mappa tömörítve"
   },
   "qfEmptiedTrash": {
-    "message": "Emptied trash."
+    "message": "Törölt elemek ürítve."
   },
   "qfEmptyJunk": {
-    "message": "Empty Junk"
+    "message": "Spam kiürítése"
   },
   "qfEmptyJunkAccess": {
-    "message": "J"
+    "message": "S"
   },
   "qfEmptyTrash": {
-    "message": "Empty Trash"
+    "message": "Lomtár kiürítése"
   },
   "qfEmptyTrashAccess": {
-    "message": "T"
+    "message": "L"
   },
   "qfFolderAccess": {
-    "message": "F"
+    "message": "m"
   },
   "qfFolderAlreadyBookmarked": {
-    "message": "Folder already has a tab."
+    "message": "A mappa már könyvjelzőzve van."
   },
   "qfFolderOpenLocation": {
     "message": "Explore Folder Location…"
   },
   "qfFolderPopup": {
-    "message": "Mail Folder Commands"
+    "message": "E-mail mappa parancsok"
   },
   "qfFolderProperties": {
-    "message": "Folder Properties…"
+    "message": "Mappa tulajdonságai…"
   },
   "qfFolderPropertiesAccess": {
-    "message": "P"
+    "message": "d"
   },
   "qfFolderRepair": {
-    "message": "Repair Folder"
+    "message": "Mappa javítása"
   },
   "qfFolderRepairAccess": {
-    "message": "F"
+    "message": "v"
   },
   "qfFolderRepairedMsg": {
-    "message": "Folder was repaired:"
+    "message": "Mappa javítva:"
   },
   "qfGetMail": {
-    "message": "Get Messages"
+    "message": "Üzenetek letöltése"
   },
   "qfGetMailAccess": {
-    "message": "G"
+    "message": "ö"
   },
   "qfInsertLineBreak": {
-    "message": "Insert Line Break"
+    "message": "Helyezze be a sortörést"
   },
   "qfInsertSeparator": {
-    "message": "Insert Separator"
+    "message": "Helyezze be az elválasztót"
   },
   "qfInvalidTabCount": {
     "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
   },
   "qfMarkAllRead": {
-    "message": "Mark folder as Read"
+    "message": "Mappa olvasottnak jelölése"
   },
   "qfMarkAllReadAccess": {
-    "message": "M"
+    "message": "o"
   },
   "qfMarkAllReadRecursive": {
-    "message": "Mark folder + subfolders Read"
+    "message": "Mappa + almappák megjelölése olvasottként"
   },
   "qfMenuColor": {
-    "message": "Color"
+    "message": "Szín"
   },
   "qfMenuTabColorDisabledInTheme": {
-    "message": "Select different Theme to support coloring…"
+    "message": "Válasszon másik témát a színezés támogatásához…"
   },
   "qfMenuTabColorNone": {
-    "message": "Default Color!"
+    "message": "Nincs szín!"
   },
   "qfMenuTabColorPopup": {
-    "message": "Tab Color"
+    "message": "Fül szín"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Drag folders to an empty area of the toolbar - For MOVING a folder, hold down SHIFT and drag to a Tab."
+    "message": "Húzza a mappákat az eszköztár üres területére - Egy mappa áthelyezéséhez tartsa lenyomva a SHIFT billentyűt, és húzza a Fülre."
   },
   "qfNavigationWrapped": {
     "message": "No other unread folders found, continuing in {1}."
   },
   "qfNewFolder": {
-    "message": "New Subfolder…"
+    "message": "Új almappa"
   },
   "qfNewFolderAccess": {
-    "message": "N"
+    "message": "a"
   },
   "qfNewName": {
-    "message": "Enter a new name for the tab"
+    "message": "Írja be a könyvjelző új nevét"
   },
   "qfNewSubFolder": {
     "message": "Create subfolder {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "No matching parent folders!"
+    "message": "Nincsenek megfelelő szülőmappák!"
   },
   "qfPaintToggle": {
-    "message": "Finish Paint Mode"
+    "message": "Színezési mód befejezése"
   },
   "qfRecentFolders": {
-    "message": "Recent Folders"
+    "message": "Előző mappák"
   },
   "qfRemoveBookmark": {
-    "message": "Remove tab"
+    "message": "Könyvjelzők eltávolítása"
   },
   "qfRemoveBookmarkAccess": {
-    "message": "R"
+    "message": "e"
   },
   "qfRemoveCategory": {
     "message": "Remove from current Category"
@@ -1572,34 +1572,34 @@
     "message": "Remove Separator"
   },
   "qfRenameBookmark": {
-    "message": "Rename tab…"
+    "message": "Könyvjelző átnevezése…"
   },
   "qfRenameBookmarkAccess": {
-    "message": "N"
+    "message": "n"
   },
   "qfRenameFolder": {
-    "message": "Rename Folder…"
+    "message": "Mappa átnevezése…"
   },
   "qfRenameFolderAccess": {
-    "message": "R"
+    "message": "z"
   },
   "qfRepairTreeIconsMissing": {
     "message": "The following icon files do not exist:"
   },
   "qfSavePrompt": {
-    "message": "Save these changes?"
+    "message": "Változtatások mentése?"
   },
   "qfSelectIcon": {
     "message": "Customize Icon…"
   },
   "qfSetCategory": {
-    "message": "Set Tab Category…"
+    "message": "Könyvjelző kategóriájának beállítása…"
   },
   "qfSetCategoryA": {
-    "message": "C"
+    "message": "k"
   },
   "qfShowAlways": {
-    "message": "Show Always!"
+    "message": "Mindig mutassa!"
   },
   "qfShowNever": {
     "message": "Never Show (Folder Alias)"
@@ -1611,13 +1611,13 @@
     "message": "Do this with the remaining {0} folders."
   },
   "qfTabDeletePrompt": {
-    "message": "Delete this Tab?"
+    "message": "Törölje a fület?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": This is a tab that points to an invalid folder."
+    "message": ": Ez a fül egy érvénytelen mappára mutat:"
   },
   "qfTidyDeadFolders": {
-    "message": "This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
+    "message": "Ez eltávolítja a füleket, amelyek nincsenek érvényes mappához rendelve.\nEz néha akkor történik, ha egy mappát törölnek vagy mozgatnak a QuickFolders értesítése nélkül."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} icons missing"
@@ -1626,52 +1626,52 @@
     "message": "{0} tree icons repaired"
   },
   "qfUncategorized": {
-    "message": "(Uncategorized)"
+    "message": "(nincs kategorizálva)"
   },
   "qfUp": {
-    "message": "Up"
+    "message": "Fel"
   },
   "qfUpdatedThemesEngineMsg": {
-    "message": "A new theming engine for QuickFolders has been installed. Please select an item from the drop down box and click [Ok]."
+    "message": "Egy új téma lett telepítve a QuickFolders-hez. Kérem válasszon ki egy elemet a legördülő menüből, és kattintson az [Ok] gombra."
   },
   "qfVersionDisableOnUpdate": {
     "message": "Stop displaying version history after updates?"
   },
   "quickMove.help.head": {
-    "message": "Help for {1}"
+    "message": "Segítség a következőhöz: {1}"
   },
   "quickMove.help.head.advanced": {
-    "message": "Advanced Features"
+    "message": "Speciális funkciók"
   },
   "quickMove.help.l1a": {
-    "message": "Type the start of a folder name or words in it, delimited by space."
+    "message": "Írja be a mappa nevének vagy szavainak elejét szóközzel elválasztva."
   },
   "quickMove.help.l1b": {
-    "message": "The following characters are regarded as word boundaries and don't need to be typed:"
+    "message": "A következő karaktereket szóhatárnak tekintik, és nem kell begépelni:"
   },
   "quickMove.help.l2a": {
-    "message": "Type {1} for entering grandparent/parent/searched folder."
+    "message": "Írja be a {1} szót a nagyszülő / szülő / keresett mappa megadásához."
   },
   "quickMove.help.l2b": {
-    "message": "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
+    "message": "Bármely szülő mappa első 2 betűje általában elegendő. Ezzel a szintaxissal új almappákat is létrehozhat."
   },
   "quickMove.help.l3a": {
-    "message": "Type {1} for skipping any folders in between."
+    "message": "Írja be a (z) {1} parancsot a mappák átugrásához."
   },
   "quickMove.help.l3b": {
-    "message": "This is useful for deeper, more complicated or unknown folder hierarchies."
+    "message": "Ez hasznos mélyebb, bonyolultabb vagy ismeretlen mappahierarchiák esetén."
   },
   "quickMove.help.advanced": {
-    "message": "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
+    "message": "A QuickFolders Pro fülön konfigurálhatók olyan fejlettebb funkciók, mint például egy mappa eléréséhez szükséges gyorsbillentyűk / levelek áthelyezése vagy a mappák kizárása a keresési eredményekből. Ezen és egyéb prémium funkciók eléréséhez szerezzen be egy Pro licencet, és támogassa a QuickFolders jövőjét."
   },
   "quickMove.singleMessage.goNext": {
-    "message": "Display next mail after moving current one"
+    "message": "A következő levél megjelenítése az aktuális áthelyezése után"
   },
   "quickMove.singleMessage.reopenTab": {
-    "message": "Reopen original mail after it was moved"
+    "message": "Nyissa meg újra az eredeti levelet, miután áthelyezte"
   },
   "quickMove.singleMessageTabs": {
-    "message": "Single Message Tab"
+    "message": "Egyetlen üzenet fül"
   },
   "quickfolders.findFolder.placeHolder": {
     "message": "folder name"
@@ -1698,7 +1698,7 @@
     "message": "Reading List"
   },
   "quickfolders.toolbar.newsubfolder": {
-    "message": "New Subfolder…"
+    "message": "Új almappa…"
   },
   "quickfolders.toolbar.skip": {
     "message": "Skip"
@@ -1710,10 +1710,10 @@
     "message": "Mail moved to folder {2};{1} mails moved to folder {2}"
   },
   "renew-your-license": {
-    "message": "Renew your license."
+    "message": "Újítsa meg a licencét."
   },
   "special-offer-content": {
-    "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} by buying a {linkStartPro}QuickFolders Pro license{linkEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}. Or choose the standard functions with the new {linkStart}Standard License{linkEnd}.",
+    "message": "Frissítse a szolgáltatásait és spóroljon {boldStart} $reduction$ {boldEnd} a {linkStartPro}QuickFolders Pro licenc megvásárlásával{linkEnd}! Ez a különleges ajánlat {boldStart} $expirydate$ {boldEnd} -ig érhető el. Vagy válassza ki a standard funkciókat az új {linkStart}szabványos licenc{linkEnd} segítségével.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1726,7 +1726,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Újítsa meg most a licencét, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1739,7 +1739,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Upgrade now from QuickFolders Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Frissítsen most a QuickFolders Standard -ról a Pro -ra, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1752,10 +1752,10 @@
     }
   },
   "special-offer-expiry": {
-    "message": "October 31st"
+    "message": "Október 31"
   },
   "special-offer-head": {
-    "message": "Help keep $addon$ compatible",
+    "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1764,7 +1764,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Dear {name}{boldEnd}, please support $addon$ through getting a license. The Thunderbird code continuously evolves and we need {boldStart}your help{boldEnd} to keep up!",
+    "message": "{boldStart} Kedves {name} {boldEnd}! Kérjük, támogassa a $addon$ -ot egy licenc megszerzésével. A Thunderbird kód folyamatosan fejlődik, és {boldStart} segítségére van szükségünk {boldEnd}, hogy lépést tarthassunk!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1773,7 +1773,7 @@
     }
   },
   "support-preference": {
-    "message": "This is the preferred way of supporting $addonName$.",
+    "message": "A $addonName$ támogatásának ez a preferált módja.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1782,7 +1782,7 @@
     }
   },
   "support-suggestion": {
-    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
+    "message": "Annak érdekében, hogy a $addonName$ működőképes és életben maradjon, kérjük, tegye meg ezt a szívességet:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1791,10 +1791,10 @@
     }
   },
   "testDrive": {
-    "message": "The Standard License gives you some features that were previously flagged as premium and removes restrictions of the unfunded version. It finances the upkeep with the next Thunderbird version and conversion to a modern API based mail extension architecture."
+    "message": "A Szabványos licenc néhány olyan szolgáltatást nyújt, amelyeket korábban prémiumként jelölt meg, és megszünteti a nem finanszírozott verzió korlátozásait. Finanszírozza a karbantartást a következő Thunderbird verzióval és az átalakítást egy modern API alapú levelezőbővítmény -architektúrává."
   },
   "thanks-for-installing-intro": {
-    "message": "Thank you for installing $addonName$.",
+    "message": "Köszönjük, hogy telepítette a $addonName$ alkalmazást.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1803,7 +1803,7 @@
     }
   },
   "thanks-for-updating-intro": {
-    "message": "Thank you for updating $addonName$.",
+    "message": "Köszönjük, hogy frissítette a $addonName$ fájlt.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1812,7 +1812,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ requires ongoing changes in order to remain compatible with the Mozilla platform. I am constantly working to retain as much functionality as possible for future versions of Thunderbird.",
+    "message": "A $addonName$ folyamatos változtatásokat igényel annak érdekében, hogy kompatibilisek maradjanak a Mozilla platformmal. Folyamatosan azon dolgozom, hogy a lehető legtöbb funkciót megtartsam a Thunderbird jövőbeli verziói számára.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1821,17 +1821,17 @@
     }
   },
   "toAddress": {
-    "message": "To:"
+    "message": "Nak nek:"
   },
   "toAddress.tooltip": {
-    "message": "Default To Address when composing new mails"
+    "message": "Alapértelmezett 'Cím' cím új levelek összeállításakor"
   },
   "translated-by-google": {
     "description": "disclaimer.",
-    "message": "translations provided by google"
+    "message": "a google által biztosított fordítások"
   },
   "updates.title": {
-    "message": "Updates"
+    "message": "Frissítések"
   },
   "updatesExpiry": {
     "message": "QuickFolders Pro will be automatically updated via addons.thunderbird.net as usual. After the year expires you can renew the license or keep using premium features under same terms as free users. 'Premium Exclusive' features will require a valid registration key."
@@ -1840,20 +1840,20 @@
     "message": "Vouchers"
   },
   "whats-new-btn": {
-    "message": "What's new?"
+    "message": "Mi újság?"
   },
   "whats-new-head": {
-    "message": "Important Changes"
+    "message": "Fontos változások"
   },
   "whats-new-intro": {
-    "message": "Read the detailed change log here (English only):"
+    "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1}Fixed in version 5.8.2: Long folders menus now scroll when dragging mails to screen edge.{L2}{L1}Thunderbird doesn't jump into Inbox anymore when checking for new mails from the context menu.{L2}{L1}Support for large icon in QuickFolders toolbar buttons for high resolution displays.{L2}{L1}Fixed: moving folders from the quickMove function failed in Tb91.{L2}{L1}Various Layout fixes specific to Thunderbird 91.{L2}"
+    "message": "{L1} Javítva az 5.8.2 verzióban: A hosszú mappák menüi most görgetnek, amikor a leveleket a képernyő szélére húzzák. {L2}{L1} A Thunderbird már nem ugrik be az Inboxba, amikor a helyi menüből új leveleket keres. {L2} {L1} Nagy ikonok támogatása a QuickFolders eszköztár gombjaiban a nagy felbontású megjelenítésekhez. {L2} {L1} Javítva: mappák mozgatása a quickMove függvényből nem sikerült a Tb91. {L2} {L1} Különféle Thunderbird 91 -es elrendezési javítások. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
-    "message": "Welcome to $addonName$",
+    "message": "Üdvözöljük a $addonName$ oldalon",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1862,21 +1862,21 @@
     }
   },
   "windowTitle": {
-    "message": "Advanced Properties"
+    "message": "Speciális tulajdonságok"
   },
   "yearlyLicense.premiumFeatures": {
-    "message": "QuickFolders Pro gives you full unrestricted access to the premium features."
+    "message": "A QuickFolders Pro teljes korlátlan hozzáférést biztosít a prémium funkciókhoz."
   },
   "yearlyLicense.premiumFeatures.moreInfoLink": {
-    "message": "More about premium features."
+    "message": "További információ a prémium funkciókról."
   },
   "yearlyLicense.title": {
-    "message": "Annual License"
+    "message": "Éves engedély"
   },
   "yearlyLicense.usageTerm": {
-    "message": "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use that address."
+    "message": "A licenc személyes használatra készült, és az Ön e-mail címéhez van kötve. Telepítheti több e-mail kliensre, amennyiben be vannak állítva az adott cím használatára."
   },
   "yearlyLicense.usageTerm1": {
-    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
+    "message": "A további e-mail címek nem jelentenek problémát - nem igényelnek külön licencet. Kérdések esetén a támogatási fülön keresztül fordulhat hozzám."
   }
 }

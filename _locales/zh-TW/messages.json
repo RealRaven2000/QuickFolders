@@ -3,11 +3,11 @@
     "message": "SPLASH+UI"
   },
   "account.label": {
-    "message": "Select account:"
+    "message": "選擇一個帳號："
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
+    "message": "您現在在Thunderbird $appVer$ 上運行{boldStart}版本 $addonVer$ {boldEnd}。",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -20,124 +20,124 @@
     }
   },
   "addon-authors-struggle": {
-    "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
+    "message": "為了繼續發揮作用，我們的附加組件開發人員現在需要資助修復和重寫所需的資源，以便我們的用戶可以繼續從我們提供的功能中受益。"
   },
   "btn-extend-license": {
-    "message": "I want to extend my license by one year"
+    "message": "我想將我的執照延長一年"
   },
   "btn-renew-license": {
-    "message": "I want to renew my license"
+    "message": "我想續簽我的許可證"
   },
   "btn-want-a-license": {
-    "message": "Choose a License"
+    "message": "選擇許可證"
   },
   "btn-want-to-donate": {
-    "message": "I want to help with a one time donation."
+    "message": "我想提供一次捐款。"
   },
   "btnApply": {
-    "message": "Apply"
+    "message": "套用"
   },
   "btnCategory": {
-    "message": "Categories"
+    "message": "分類"
   },
   "btnCategory.tooltip": {
-    "message": "Define Tab Categories"
+    "message": "定義分頁分類"
   },
   "btnReset": {
-    "message": "Reset to Defaults"
+    "message": "回復到預設值"
   },
   "buyDomainLicense.button": {
-    "message": "Buy Domain License"
+    "message": "購買範圍授權(domain license)！"
   },
   "buyDomainLicense.instruct": {
-    "message": "Need Licenses for a company with more than five users? Getting a domain license will work out cheaper:"
+    "message": "需要公司內超過5人的授權？取得範圍授權(domain license)價格上將比較優惠！"
   },
   "buyLicense.instruct": {
-    "message": "Need a license for yourself? Get a single user license. It is bound to your personal Email address and can be used in multiple installations."
+    "message": "需要自己的一份授權？取得一份個人使用者授權。它會跟你個人E-mail做連結，並且能使用在多處安裝上。"
   },
   "buyProLicense.button": {
-    "message": "Buy Pro License!"
+    "message": "購買專業版許可證！"
   },
   "buyStandardLicense.button": {
-    "message": "Buy Standard License!"
+    "message": "购买标准许可证！"
   },
   "buyStandardLicense.instruct": {
-    "message": "Can't afford the premium functions? Get a highly affordable standard license and keep testing premium functions."
+    "message": "买不起高级功能？ 获得更便宜的标准许可证并继续测试高级功能。"
   },
   "chkComposerSubfolders": {
-    "message": "Also apply to subfolders"
+    "message": "也適用到子目錄"
   },
   "chkHideFromQuickJump": {
-    "message": "Omit from quickJump / quickMove"
+    "message": "從 quickJump / quickMove 捨棄"
   },
   "chkHideFromQuickJump.tooltip": {
-    "message": "Omit this folder and its children in quickJump / quickMove results"
+    "message": "在 quickJump / quickMove 結果中捨棄這個資料夾及其子目錄"
   },
   "chkIgnoreCounts": {
-    "message": "Hide Count of Mails"
+    "message": "隱藏郵件數量"
   },
   "chkIgnoreCounts.tooltip": {
-    "message": "Never display number of contained mails."
+    "message": "永不顯示包含的郵件數量"
   },
   "chkIgnoreUnread": {
-    "message": "Hide Unread Status"
+    "message": "隱藏未讀狀態"
   },
   "chkIgnoreUnread.tooltip": {
-    "message": "Never display bold or any unread count even when folder contains unread mail."
+    "message": "即使資料夾包含未讀郵件，永不顯示粗體或任何未讀數量。"
   },
   "chkSetMailsUnread": {
-    "message": "Set mail to unread"
+    "message": "把信件標記成未讀"
   },
   "chkSetMailsUnread.tooltip": {
-    "message": "If you move mail into this folder it is set to unread."
+    "message": "如果你移動信件到這個資料夾，將會把它標記成未讀。"
   },
   "cost-of-independence": {
-    "message": "Software development costs time and money - unlike many platform apps, Add-ons are not written by large corporations, nor are they sponsored in any way by Mozilla."
+    "message": "軟件開發花費時間和金錢-與許多平台應用程序不同，附加組件不是由大公司編寫的，也不是由Mozilla以任何方式贊助的。"
   },
   "cssBackground": {
-    "message": "Background"
+    "message": "背景"
   },
   "cssBackground.tooltip": {
-    "message": "Enter a CSS background, e.g. linear-gradient(to bottom, rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%)"
+    "message": "輸入一個CSS背景，例如線性梯度（到底部，rgba(254,252,234,1) 0%,rgba(241,218,54,1) 100%）"
   },
   "cssColor": {
-    "message": "Text color"
+    "message": "文字顏色"
   },
   "cssColor.tooltip": {
-    "message": "Enter a CSS color, e.g. rgba(100,20,20,0.8)"
+    "message": "輸入一個CSS色彩，例如rgba(100,20,20,0.8)"
   },
   "defaultAccountAddress.value": {
-    "message": "Account Default Identity"
+    "message": "預設的E-mail帳號"
   },
   "domainLicense.email": {
-    "message": "We will contact you using this email address to generate your domain license; please allow two business days for us to get in touch. Enter the domain name for the license on the next page."
+    "message": "我們將使用此電子郵件地址來與您聯繫，並由此產生您的網域授權。 ；我們將在兩個工作日內跟您聯繫。請在下一個頁面輸入授權的網域名稱。"
   },
   "domainLicense.header": {
-    "message": "Licensed Email Domain"
+    "message": "註冊的 E-mail 網域"
   },
   "domainLicense.instruct": {
-    "message": "The license is keyed to your company domain. The license will allow users with email addresses ending on this email domain to use QuickFolders Pro. E.g. if you enter the domain name 'abc.com' then mail users like fred@abc.com, martha@abc.com, mike.doe@abc.com etc. are allowed to use the license. The maximum number of valid individual users is the number you have entered on the initial screen."
+    "message": "授權將對應到貴公司的網域名稱。授權將允許使用者以E-mail位址@後方的網域名稱來使用QuickFolders Pro。例如，如果你輸入網域名稱 “abc.com”，那麼郵件使用者，像是 fred@abc.com、martha@abc.com、mike.doe@abc.com等都被允許使用該授權。有效的使用者最大數目，將取決於你一開始在螢幕上輸入的數字。"
   },
   "domainLicense.validate": {
-    "message": "Make sure you enter the domain name *exactly as it is* on your Company's email addresses (the part *after* the @ sign), as it will be used to authorize the email addresses of your users."
+    "message": "請確認您輸入網域的名稱 *是正確的* 是您公司的電子郵件地址（在@符號*後面* 的部分），因為它會使用在授權使用者的E-mail位址上。"
   },
   "donate": {
-    "message": "Help out with a one time donation."
+    "message": "一次性捐款幫助。"
   },
   "donate-heading": {
-    "message": "Help by Donating!"
+    "message": "捐贈幫助！"
   },
   "email.label": {
-    "message": "Email:"
+    "message": "E-mail:"
   },
   "enterLicenseKey.button": {
-    "message": "Enter License Key…"
+    "message": "輸入購買證明密碼..."
   },
   "enterLicenseKey.tooltip": {
-    "message": "Enter the License Key code sent to you via Email."
+    "message": "輸入透過E-mail寄送給您的購買證明密碼。"
   },
   "extend-your-license": {
-    "message": "Consider extending your license by a year."
+    "message": "考慮將您的許可證延長一年。"
   },
   "extensionDescription": {
     "description": "Description of the extension.",
@@ -148,35 +148,35 @@
     "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
-    "message": "Bookmark your favorite mail folders in Thunderbird."
+    "message": "在Thunderbird中將你喜愛的信件資料夾標記起來。"
   },
   "firstName.label": {
-    "message": "First Name:"
+    "message": "名："
   },
   "freeLicense": {
-    "message": "If you have recently donated to the QuickFolders project or have done contributory work, such as translating or writing patches, you may be eligible for a free license key. Contact me from the support tab in QuickFolders Options."
+    "message": "如果您最近贊助QuickFolders計畫或分擔一些工作，像是翻譯或撰寫修補程式，您將可以獲得一個免費的購買證明金鑰。請從QuickFolders選項中的支援分頁跟我聯絡。"
   },
   "fromAddress": {
-    "message": "From:"
+    "message": "從："
   },
   "fromAddress.tooltip": {
-    "message": "Default Identity when composing emails"
+    "message": "當撰寫新郵件時，使用預設的帳號"
   },
   "getQuickFolders": {
-    "message": "QuickFolders Licenses"
+    "message": "QuickFolders 許可證"
   },
   "grpComposer": {
-    "message": "Default Email Fields"
+    "message": "預設的E-mail範圍"
   },
   "grpCustomCSS": {
-    "message": "Custom CSS"
+    "message": "自訂CSS"
   },
   "grpTabBehavior": {
-    "message": "Advanced Tab Behavior"
+    "message": "進階分頁風格"
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "Successfully installed $addonName$",
+    "message": "$addonName$ 已成功安裝",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -186,7 +186,7 @@
   },
   "heading-updated": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
-    "message": "$addonName$ Updated Successfully",
+    "message": "$addonName$ 已成功更新",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -195,10 +195,10 @@
     }
   },
   "intro": {
-    "message": "An annual license for QuickFolders Pro gives you all premium features for a year. It also enables us to support and grow the product further and turn it into something even more awesome."
+    "message": "購買一年份的QuickFolders專業版，可以提供您所有特殊功能的一年使用期間。這也支持我們能夠進一步地改善產品的功能。"
   },
   "label-remind-me": {
-    "message": "Remind me again in $countDays$ days.",
+    "message": "在$countDays$天后再次提醒我。",
     "placeholders": {
       "countDays": {
         "content": "$1",
@@ -207,35 +207,35 @@
     }
   },
   "lastName.label": {
-    "message": "Last Name:"
+    "message": "姓："
   },
   "lblCustomPalette": {
-    "message": "Custom Palette:"
+    "message": "自訂調色盤："
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
-    "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
+    "message": "感謝您最近延長許可證或捐贈。 當您幫助將來對該插件進行驗證時，只需關閉此窗口即可。"
   },
   "licenseComparison": {
-    "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
+    "message": "要比較不同版本的功能，請{linkStart}閱讀此列表{linkEnd}。"
   },
   "licenseHead": {
-    "message": "New Licensing System"
+    "message": "新的許可製度"
   },
   "licenseTypes": {
-    "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
+    "message": "QuickFolders 提供兩種許可證，Standard 和 Pro； 這些對於跟上 Thunderbird 平台的變化以及為插件的創新和修復提供資金是必要的。 由於可能破壞擴展功能的更改每年都會部署，因此許可證的有效期也為 1 年。"
   },
   "licenseWindow.title": {
-    "message": "QuickFolders Pro License"
+    "message": "QuickFolders 專業版購買證明"
   },
   "license_restriced.std": {
-    "message": "Standard License - restricted Pro function. Find out more…"
+    "message": "標准許可證 - 受限 Pro 功能。 了解更多…"
   },
   "license_restriced.unpaid": {
-    "message": "Unlicensed version - restricted function. Find out more…"
+    "message": "未授權版本 - 受限功能。 了解更多…"
   },
   "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders needs a Pro license to support more than $maxTabs$ tabs.",
+    "message": "QuickFolders 需要 Pro 許可證才能支持多個 $maxTabs$ 選項卡。",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -244,7 +244,7 @@
     }
   },
   "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders needs a license to support more than $maxTabs$ tabs.",
+    "message": "QuickFolders 需要一個許可證來支持多個 $maxTabs$ 選項卡。",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -253,14 +253,14 @@
     }
   },
   "mozillas-basic-platform": {
-    "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
+    "message": "Mozilla僅提供一個基本平台，用於向您（最終用戶）交付我們的軟件。 如果我們需要向我們的用戶付款或提供支持，則不能通過addons.thunderbird.net進行操作-這不是內置付費界面或許可證管理（如iTunes或Google Play）的“應用商店”。"
   },
   "notificationTitle": {
     "description": "Title of the click notification.",
     "message": "Click notification"
   },
   "ongoing-work": {
-    "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
+    "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -269,346 +269,346 @@
     }
   },
   "purchase-a-license": {
-    "message": "Purchase a license."
+    "message": "購買許可證。"
   },
   "purchase-heading": {
-    "message": "Buying a License!"
+    "message": "購買許可證！"
   },
   "qf.accounts": {
-    "message": "Accounts"
+    "message": "帐目"
   },
   "qf.alert.pasteFolders.formatErr": {
-    "message": "Could not create tabs. See tools / error console for more detail."
+    "message": "無法建立分頁。檢視工具/錯誤主控台來瞭解更多細節。"
   },
   "qf.backupAndRestore": {
-    "message": "Backup / Restore"
+    "message": "備份 / 還原"
   },
   "qf.btn.applyPosition": {
-    "message": "Apply position value!"
+    "message": "套用位置數值！"
   },
   "qf.button.add": {
-    "message": "Add!"
+    "message": "增加！"
   },
   "qf.button.configureTooltips": {
-    "message": "Configure tooltips…"
+    "message": "設定工具提示…"
   },
   "qf.button.currentFolderBackground.set": {
-    "message": "apply"
+    "message": "設定"
   },
   "qf.button.default": {
-    "message": "Defaults"
+    "message": "預設值"
   },
   "qf.button.defaultcolors": {
-    "message": "Default Colors"
+    "message": "預設顏色"
   },
   "qf.button.deleteselectedcategory": {
-    "message": "Delete selected category"
+    "message": "刪除所選擇的分類"
   },
   "qf.button.down": {
-    "message": "Down"
+    "message": "下移"
   },
   "qf.button.pasteLicense": {
-    "message": "paste"
+    "message": "貼上"
   },
   "qf.button.rename": {
-    "message": "Rename"
+    "message": "更名"
   },
   "qf.button.reorderButtonBottom": {
-    "message": "Move to bottom"
+    "message": "往下"
   },
   "qf.button.reorderButtonBottom.accessKey": {
-    "message": "b"
+    "message": "B"
   },
   "qf.button.reorderButtonBottom.toolTip": {
-    "message": "Rearrange filter so it executes after all others"
+    "message": "在執行其他動作後才過濾"
   },
   "qf.button.reorderButtonTop": {
-    "message": "Move to top"
+    "message": "往上"
   },
   "qf.button.reorderButtonTop.accessKey": {
     "message": "o"
   },
   "qf.button.reorderButtonTop.toolTip": {
-    "message": "Rearrange filter so it executes before all others"
+    "message": "在執行其他動作前先過濾"
   },
   "qf.button.up": {
-    "message": "Up"
+    "message": "上移"
   },
   "qf.button.validateLicense": {
-    "message": "validate"
+    "message": "確認購買證明"
   },
   "qf.caption.currentFolderBackground": {
-    "message": "Current Folder Toolbar background"
+    "message": "現在資料夾工具列背景"
   },
   "qf.categories.supportMultiple": {
-    "message": "Support selecting multiple tab categories"
+    "message": "支援選擇多個分頁分類"
   },
   "qf.categories.supportMultiple.tooltip": {
-    "message": "Use the SHIFT key in order to select more than one category on the dropdown."
+    "message": "按住 Shift 鍵以在下拉式選單中選取多個分類。"
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Focus on message list when changing tabs"
+    "message": "當改變標籤時聚焦於信件清單"
   },
   "qf.checkbox.hideInSingleMessage": {
-    "message": "Hide QuickFolders in single message tabs"
+    "message": "在單個消息選項卡中隱藏 QuickFolders"
   },
   "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Removes the QuickFolders toolbar in tabs that show a single message."
+    "message": "在顯示單個消息的選項卡中刪除 QuickFolders 工具欄。"
   },
   "qf.checkbox.currentFolder.closeButton": {
-    "message": "Close Button"
+    "message": "關閉按鈕"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Display the Toolbar"
+    "message": "顯示工具列"
   },
   "qf.checkbox.currentfolder.lightweight": {
-    "message": "integrate with lightweight theme"
+    "message": "整合輕量佈景主題"
   },
   "qf.checkbox.debug": {
-    "message": "Debug Mode"
+    "message": "除錯模式"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Right click this checkbox for advanced debug options"
+    "message": "以滑鼠右鍵選取進階除錯選項"
   },
   "qf.checkbox.displaylabel": {
-    "message": "Display the 'QuickFolders' label in the toolbar"
+    "message": "在工具列顯示「Quick Folders」的標籤"
   },
   "qf.checkbox.displaylabel.tooltip": {
-    "message": "Right click to change the text of this label"
+    "message": "以滑鼠右鍵點選來改變標籤的文字"
   },
   "qf.checkbox.enableTransitions": {
-    "message": "Enable CSS transitions"
+    "message": "開啟CSS transitions"
   },
   "qf.checkbox.enableTransitions.tooltip": {
-    "message": "Shows smooth transitions between several aspects of tab coloring."
+    "message": "在分頁色彩各面向間平滑顯示transitions"
   },
   "qf.checkbox.hideCategoryBox": {
-    "message": "Collapse Categories"
+    "message": "損壞的分類"
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
-    "message": "Minimizes the Categories menu to take up less space."
+    "message": "縮小分類選單來降低佔用空間"
   },
   "qf.checkbox.highlightNewMail": {
-    "message": "Highlight folders with new mail"
+    "message": "有新郵件時資料夾高亮度顯示"
   },
   "qf.checkbox.menus.dragToNewFolder": {
-    "message": "Drag to new Subfolder"
+    "message": "拖曳到新的子資料夾"
   },
   "qf.checkbox.menus.emptyJunk": {
-    "message": "Empty Junk"
+    "message": "清空垃圾郵件"
   },
   "qf.checkbox.menus.emptyTrash": {
-    "message": "Empty Trash"
+    "message": "清空垃圾桶"
   },
   "qf.checkbox.menus.getMailForInbox": {
-    "message": "Get Messages (Mail Accounts)"
+    "message": "取得信件（信箱帳號）"
   },
   "qf.checkbox.menus.getMailForNews": {
-    "message": "Get Messages (News Accounts)"
+    "message": "取得訊息（新聞帳號）"
   },
   "qf.checkbox.menus.markAllRead": {
-    "message": "Mark Folder Read"
+    "message": "標記資料夾為已讀取"
   },
   "qf.checkbox.menus.markAllReadRecursive": {
-    "message": "Mark Folder Read (recursive)"
+    "message": "標記資料夾為已讀取（递归）"
   },
   "qf.checkbox.quickCopy": {
-    "message": "quickCopy - Copy mail to any folder with Shortcut:"
+    "message": "quickCopy - 使用快速鍵 複製信件到任何的資料夾"
   },
   "qf.checkbox.quickCopy.tip": {
-    "message": "Shortcut for dragging mails to the quickCopy button for fastest copying to any folder via name entry."
+    "message": "拖曳信件到quickCopy按鈕上，可快速地透過選擇信件夾名稱來複製。"
   },
   "qf.checkbox.quickJump": {
-    "message": "quickJump - Go to any folder with Shortcut:"
+    "message": "quickJump - 使用快捷鍵來跳到任何資料夾："
   },
   "qf.checkbox.quickJump.tip": {
-    "message": "Shortcut for clicking the quickJump button for fastest navigation anywhere via name entry."
+    "message": "透過點選資料夾名稱的quickJump按鈕捷徑快速地來瀏覽任何資料夾"
   },
   "qf.checkbox.quickMove": {
-    "message": "quickMove - Move mail to any folder with Shortcut:"
+    "message": "quickMove - 使用快捷鍵來將信件移動到任何資料夾："
   },
   "qf.checkbox.quickMove.tip": {
-    "message": "Shortcut for dragging mails to the quickMove button for fastest filing to any folder via name entry."
+    "message": "透過資料夾名稱的quickMove按鈕捷徑來快速地來拖曳信件到任何資料夾"
   },
   "qf.checkbox.quickmove.autofill": {
-    "message": "Insert last folder name executed"
+    "message": "插入最後執行資料夾名稱"
   },
   "qf.checkbox.quickmove.autofill.tip": {
-    "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
+    "message": "將插入最後成功使用的資料夾。按Enter來使用，或簡單打字來選擇其他目的地。"
   },
   "qf.checkbox.readingList": {
-    "message": "Reading List"
+    "message": "閱讀清單"
   },
   "qf.checkbox.readingList.tooltip": {
-    "message": "A list for mails that should be read later. Drag your important emails on this button."
+    "message": "計畫稍後閱讀的郵件清單。拉動你的重要郵件到這個按鈕上。"
   },
   "qf.checkbox.shadows": {
-    "message": "shadows"
+    "message": "陰影"
   },
   "qf.checkbox.shift": {
     "message": "Shift"
   },
   "qf.checkbox.showCountInSubFolders": {
-    "message": "Also display totals of subfolders"
+    "message": "同時顯示子資料夾內郵件的數目"
   },
   "qf.checkbox.showCountInSubFolders.tooltip": {
-    "message": "These are displayed separated by a '+' beside their main counts; contained unread mail will also make tab bold if option above is active"
+    "message": "在主資料夾郵件數目旁以+隔開；如果上面的選項有選取的話，未讀的郵件將以粗體顯示"
   },
   "qf.checkbox.showFilterButton": {
-    "message": "'Create Filters' Button"
+    "message": "「建立過濾器」按鈕"
   },
   "qf.checkbox.showFilterButton.tooltip": {
-    "message": "You can also create Filters using the QuickFolders context menu."
+    "message": "你也可以使用QuickFolders內文選單來建立過濾器。"
   },
   "qf.checkbox.showFolderNavigation": {
-    "message": "Folder Navigation buttons"
+    "message": "資料夾導航按鈕"
   },
   "qf.checkbox.showIconButtons": {
-    "message": "Customize Icon buttons"
+    "message": "自訂圖示按鈕"
   },
   "qf.checkbox.showIcons": {
-    "message": "Display Icons (Inbox, Sent, Junk, Trash, Drafts, Archived, Templates)"
+    "message": "顯示圖示（收件匣、寄件備份、垃圾信、垃圾桶、草稿、備存、模組）"
   },
   "qf.checkbox.showMailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "信件資料夾命令"
   },
   "qf.checkbox.showMessageNavigation": {
-    "message": "Message Navigation buttons"
+    "message": "訊息導航按鈕"
   },
   "qf.checkbox.showNewMailItalics": {
-    "message": "Display tabs with newly arrived mail italic"
+    "message": "在收到新郵件時以斜體顯示分頁"
   },
   "qf.checkbox.showNonEmptyItalics": {
-    "message": "Display tabs which contain messages italic"
+    "message": "在標籤上以斜體顯示有郵件的資料夾"
   },
   "qf.checkbox.showQuickMove": {
-    "message": "quickMove Button"
+    "message": "quickMove 按鈕"
   },
   "qf.checkbox.showQuickMove.tooltip": {
-    "message": "The quickMove button can be used to drag emails to a named destination folder. You can gather mails from multiple folders. Once you have the desired mails in it, enter the destination folder name in the search box."
+    "message": "quickMove 按鈕可以使用在拖曳E-mail至已命名的目標資料夾。你可以從不同的資料夾來收集E-mail。當你有想找的E-mail，在搜尋列中輸入目標的資料夾名稱。"
   },
   "qf.checkbox.showRecentButton": {
-    "message": "Recent Folders Button"
+    "message": "最近的資料夾按鈕"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Display Recent Folders Tab"
+    "message": "顯示最近使用的資料夾標籤"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Right click for configuration"
+    "message": "以滑鼠右鍵點選來確認"
   },
   "qf.checkbox.showSubfolders": {
-    "message": "Expand Subfolders in popup menus"
+    "message": "在彈出式選單中顯示子資料夾"
   },
   "qf.checkbox.showTotalMessageCount": {
-    "message": "Display the total number of messages"
+    "message": "在資料夾標籤上以粗體顯示所有郵件的數目"
   },
   "qf.checkbox.showUnreadBold": {
-    "message": "Display tabs with unread messages in bold"
+    "message": "在資料夾標籤上以粗體顯示未讀郵件的數目"
   },
   "qf.checkbox.showUnreadMessageCount": {
-    "message": "Display the number of unread messages"
+    "message": "在資料夾標籤上顯示未讀郵件的數目"
   },
   "qf.checkbox.showshortcutnumber": {
-    "message": "Display shortcut number on folder labels"
+    "message": "在資料夾標籤上顯示快捷鍵數字"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
-    "message": "…also in Single Message windows"
+    "message": "…也在單一信件視窗"
   },
   "qf.checkbox.singleMessage.currentFolder.tooltip": {
-    "message": "Show current folder toolbar in the window that opens when you select to open an Email in a new window"
+    "message": "當你選擇以一個新視窗來開啟E-mail時，在開啟時於視窗中顯示現在資料夾工具列"
   },
   "qf.checkbox.singleMessageTab.currentFolder.show": {
-    "message": "Toolbar in Single Message Tabs"
+    "message": "在單一郵件分頁的工具列"
   },
   "qf.checkbox.skipFolder": {
-    "message": "Skip Unread Folder - use Shortcut: SHIFT +"
+    "message": "略過未讀的資料夾 - 使用快捷鍵: SHIFT +"
   },
   "qf.checkbox.skipFolder.tip": {
-    "message": "Shortcut for jumping to the next unread folder."
+    "message": "跳到下一個未讀資料夾的捷徑"
   },
   "qf.checkbox.sortMenusAlpha": {
-    "message": "Force alphabetic sorting of menus with subfolders."
+    "message": "強制使用字母順序來排列子資料夾"
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
-    "message": "Only use this option if your mail client doesn't sort the subfolders correctly."
+    "message": "在你的郵件程式未正確排列子資料夾時才使用。"
   },
   "qf.checkbox.storeConfig.general": {
-    "message": "Include general settings"
+    "message": "包括一般設定"
   },
   "qf.checkbox.storeConfig.layout": {
-    "message": "Include advanced and layout"
+    "message": "包括進階和外觀"
   },
   "qf.checkbox.storeConfig.tabs": {
-    "message": "Include QuickFolders Tabs"
+    "message": "包括 QuickFolders  分頁"
   },
   "qf.checkbox.tabMenuIcon": {
-    "message": "Toolbar Menu Icon"
+    "message": "工具列選單圖示"
   },
   "qf.checkbox.tabMenuIcon.tooltip": {
-    "message": "This menu can also be invoked by right-clicking the toolbar itself"
+    "message": "也能以點選右鍵的方式，點選工具列本身來開啟此選單！"
   },
   "qf.checkbox.transparent": {
-    "message": "transparent"
+    "message": "透明"
   },
   "qf.checkbox.useNavigationShortcuts": {
-    "message": "ALT-Left / ALT-Right for previous / next Tab"
+    "message": "ALT-方向左鍵 / ALT-方向右鍵 來移至 前一個 / 下一個 頁籤"
   },
   "qf.checkbox.usePalette": {
-    "message": "Use palette"
+    "message": "使用調色盤"
   },
   "qf.checkbox.useRebuildShortcut": {
-    "message": "Rebuild Tabs with Shortcut: Ctrl + Alt +"
+    "message": "以捷徑重新建立頁籤：Ctrl + Alt +"
   },
   "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Use keyboard shortcuts (Alt + 1 through Alt + 9)"
+    "message": "使用鍵盤快捷鍵（Alt+1到Alt+9）"
   },
   "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Use Ctrl instead of Alt"
+    "message": "使用Ctrl鍵取代Alt鍵"
   },
   "qf.continueFilter.label": {
-    "message": "Create Filter…"
+    "message": "建立過濾器…"
   },
   "qf.continueFilter.shortcut": {
     "message": "F"
   },
   "qf.copyfolders": {
-    "message": "Copy Tabs"
+    "message": "複製分頁"
   },
   "qf.copyfolders.tooltip": {
-    "message": "Copy the QuickFolders Tabs configuration to the clipboard"
+    "message": "複製資料夾設定於剪貼簿中"
   },
   "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird theme"
+    "message": "Thunderbird 主題"
   },
   "qf.currentFolderBackground.custom": {
-    "message": "custom"
+    "message": "自訂"
   },
   "qf.currentFolderBackground.dark": {
-    "message": "dark"
+    "message": "暗黑"
   },
   "qf.currentFolderBackground.default": {
-    "message": "silver"
+    "message": "銀"
   },
   "qf.currentFolderBackground.translucent": {
-    "message": "translucent"
+    "message": "半透明"
   },
   "qf.currentfolder.leftSpacer": {
-    "message": "Left Spacer:"
+    "message": "左邊間隔："
   },
   "qf.currentfolder.rightSpacer": {
-    "message": "Right Spacer:"
+    "message": "右邊間隔："
   },
   "qf.description.github": {
-    "message": "Please use github for all official feature requests and bug reports"
+    "message": "請使用github來提供特色需求與錯誤回報"
   },
   "qf.description.categoryusage": {
-    "message": "You can put this tab in a category (i.e. 'Work', 'Private', …)."
+    "message": "你能將此標籤放進分類裡（像是工作、私人等）。"
   },
   "qf.description.changeCategory": {
-    "message": "Right click a tab to organize it into one or several categories. Creates a filter for categories on the left of the tabs."
+    "message": "滑鼠右鍵點選標籤能選擇一個適當分類。你能在工具列左側的下拉式選單中選擇一個分類。"
   },
   "qf.description.contactMe": {
-    "message": "You can also contact me personally at $supportMail$:",
+    "message": "您也能與我個人聯絡$supportMail$：",
     "placeholders": {
       "supportMail": {
         "content": "$1"
@@ -616,418 +616,418 @@
     }
   },
   "qf.description.donate": {
-    "message": "If you love QuickFolders as much as we do and would like to support its development, you can donate some money towards the further development of QuickFolders."
+    "message": "如果你非常喜愛QuickFolders，您可以藉由小額捐助支持它的開發。"
   },
   "qf.description.dragToAdd": {
-    "message": "Drag mail folders onto an empty area of the new toolbar to create a new quickfolder (works like a shortcut/alias). Drag Messages onto quickfolder to move them into the corresponding folder (or Copy with modifier key). Click quickfolder to jump to mail folder."
+    "message": "拖曳信件資料夾到新工具列上能產生一個快捷資料夾（就像是捷徑一樣）。拖曳信件至快捷資料夾上，能將它們移動至相對應的資料夾上（或經由設定來複製過去）。點選快捷資料夾能移至該信件資料夾。"
   },
   "qf.description.dragToPopup": {
-    "message": "Drag messages onto quickfolder popup menu to move messages into sub folders."
+    "message": "拖曳信件至快捷資料夾的彈出式選單，能將其移動至子資料夾。"
   },
   "qf.description.dragToPosition": {
-    "message": "Drag quickfolders sideways to change their positions. Right-click quickfolder for context menu; by selecting you can jump into sub folders. 'Rename tab' changes the label of the quickfolder. 'Remove tab' deletes the quickfolder (not the mail folder)."
+    "message": "側面地拖曳快捷資料夾能移動它們的位置。在快捷資料夾上以滑鼠右鍵點選能顯示選單；藉由點選你能移動至子資料夾；更改標籤名稱；更改快捷資料夾的顏色；刪除標籤；刪除快捷資料夾（並不會移除信件資料夾）。"
   },
   "qf.description.dragexplain": {
-    "message": "Tabs can also be dragged to change positions! Drop one on top of another to insert before / after it."
+    "message": "標籤也能藉由拖曳來改變位置！拖曳頂部的標籤來放到某個前或後的位置。"
   },
   "qf.description.editcategory": {
-    "message": "Select an existing category by double clicking on it, or add a new category below."
+    "message": "藉由在其上點選兩次來選擇一個存在的分類，或在下面選擇一個新分類。"
   },
   "qf.description.experimentalItems": {
-    "message": "The following items are experimental, they will hopefully be working in the next release!!"
+    "message": "下面的選項是測試中的，它們希望在接下來的改版中能正式運作！"
   },
   "qf.description.languages": {
-    "message": "QuickFolders supports localization - you can help by adding a translation in your language on github:"
+    "message": "QuickFolders支援在地語言 - 你能在github上協助翻譯成你的語言："
   },
   "qf.description.linkNote": {
-    "message": "Visit the homepage of QuickFolders for a detailed user guide, Tips and FAQ:"
+    "message": "參觀QuickFolders的首頁，以便進一步瞭解詳細的使用說明、技巧和問答集："
   },
   "qf.description.multicategory": {
-    "message": "To add a folder to more than one category: Hold down SHIFT or CONTROL while selecting items."
+    "message": "增加一個資料夾到一個以上的分類：當選擇物件時按住SHIFT或CONTROL鍵"
   },
   "qf.description.pulldown": {
-    "message": "The QuickFolders bar will display a pulldown, allowing you to filter your tabs by category."
+    "message": "QuickFolders工具列能顯示下拉式選單，允許你來分類標籤。"
   },
   "qf.description.rightClickOptions": {
-    "message": "Right-click an empty area to open the options menu. In options, you can select native style (smaller) or flat style (clearer; supports drag indicator)."
+    "message": "滑鼠右鍵點選空白區域能顯示選項選單。在選項選單中，你能選擇標籤的樣式與顏色。"
   },
   "qf.description.tipMsg": {
-    "message": "Tip: If you have an extensive amount of folders, try the Nostalgy extension for keyboard driven message organizing."
+    "message": "技巧：如果有為數不少的資料夾，建議您使用Nostalgy附加元件來協助整理信件。"
   },
   "qf.description.versionhistory": {
-    "message": "Detailed Version History at quickfolders.org"
+    "message": "詳細的版本歷史在quickfolders.org"
   },
   "qf.dialog.changeorder": {
-    "message": "Change the order of the tabs"
+    "message": "改變標籤的順序"
   },
   "qf.dialog.quickmove.settings": {
-    "message": "quickMove Advanced Settings"
+    "message": "quickMove高级设置"
   },
   "qf.dialog.setcategory": {
-    "message": "Set the category for a tab"
+    "message": "設定標籤的分類"
   },
   "qf.donate.tooltip": {
-    "message": "Support Development of QuickFolders!"
+    "message": "支援QuickFolders的開發！"
   },
   "qf.filters.instructions": {
-    "message": "Please select a template. You can fine tune the filter rules on the next screen."
+    "message": "請選擇一個模組。 你可以在下一個視窗中微調過濾規則。"
   },
   "qf.filters.template.from": {
-    "message": "Based on Sender (from)"
+    "message": "以寄件者為基礎（來自）"
   },
   "qf.filters.template.from.description": {
-    "message": "This is probably the most used pattern:  this will retrieve the sender's email address and paste it into the from and to filter conditions fields. This way complete conversations with the sender will be moved to the new folder."
+    "message": "這可能是最好用的模式：它將收集寄件者的E-mail位址，並且把它貼到過濾條件中。這個方式將把與寄件者的完整對話移到新的資料夾中。"
   },
   "qf.filters.template.list": {
-    "message": "Mailing List"
+    "message": "郵寄清單"
   },
   "qf.filters.template.list.description": {
-    "message": "Similar to Based on Sender, but it doesn't fill the 'to' condition field."
+    "message": "跟「以寄件者為基礎」相似，但他不會填入「到」的過濾條件中。"
   },
   "qf.filters.template.tag": {
-    "message": "By Tags"
+    "message": "根據標籤"
   },
   "qf.filters.template.tag.description": {
-    "message": "Uses the tags of the email and adds them as filter conditions."
+    "message": "使用郵件的標籤，並將它們增加到過濾條件。"
   },
   "qf.filters.template.to": {
-    "message": "Based on Recipient (to)"
+    "message": "以收件者為基礎（到）"
   },
   "qf.filters.template.to.description": {
-    "message": "Similar to 'Based on Sender': use this when you mark an email you have sent to somebody else. This will retrieve the recpient's email address and paste it into the from and to filter conditions fields. This way the complete conversation with the contact will be moved to the new folder."
+    "message": "跟「以寄件者為基礎」相似：在你標記寄給某人的E-mail時使用它。它將收集收件者的E-mail位址並且把它貼入過濾條件中。這個方式會將與聯絡人的完整對話移到新的資料夾。"
   },
   "qf.filters.template.topic": {
-    "message": "By Subject"
+    "message": "根據主旨"
   },
   "qf.filters.template.topic.description": {
-    "message": "This will look for special expressions in brackets, e.g. [stamp collectors] or {vegans} and create a filter condition based on these; a lot of mass email is set up using this pattern, so it is really easy to use."
+    "message": "這將尋找在括弧中的特定句子，例如：[郵票收藏者]或{素食者}並且以此為基礎建立過濾條件; 許多郵件可以設定來使用這個模式，它相當簡單易用。"
   },
   "qf.filters.title": {
-    "message": "Create Filters"
+    "message": "建立過濾器"
   },
   "qf.filters.toggleMessage.notificationText": {
-    "message": "Filter Learning mode started. Whenever you move an email into QuickFolders a 'Create Filter Rule' Wizard will start. Thunderbird uses message filters for automatically moving emails based on rules such as 'who is the sender?', 'is a certain keyword in the subject line?'. To end the filter learning mode, press the filter button on the top left of the QuickFolders bar."
+    "message": "過濾器學習模式啟動。每當你移動一封E-mail到QuickFolders，「建立過濾器精靈」會啟動。ThunderBird會根據此訊息所建立的過濾規則，像是「寄件者是誰？」、「主旨列是否有特定關鍵字？」來自動地搬移郵件。若要結束過濾器學習模式，按下在QuickFolders工具列左上方的過濾按鈕。"
   },
   "qf.filters.toggleMessage.title": {
-    "message": "Creating Filters"
+    "message": "建立過濾器"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
-    "message": "Customize Icon…"
+    "message": "自訂圖示..."
   },
   "qf.foldercontextmenu.quickfolders.removeIcon": {
-    "message": "Remove Customized Icon"
+    "message": "移除自訂的圖示"
   },
   "qf.fpJsonFile": {
-    "message": "JSON File"
+    "message": "JSON  檔案"
   },
   "qf.goNextUnread.auto": {
-    "message": "Go to next folder without asking (recommended)"
+    "message": "跳至下一個資料夾而不詢問（建議）"
   },
   "qf.goNextUnread.none": {
-    "message": "Do nothing if no unread email is left in folder"
+    "message": "如果在資料夾中沒有未讀郵件，將不進行動作"
   },
   "qf.goNextUnread.prompt": {
-    "message": "Ask to go to next unread folder"
+    "message": "跳至下一個資料夾但要詢問"
   },
   "qf.group.navigation": {
-    "message": "Message Navigation"
+    "message": "訊息瀏覽"
   },
   "qf.label.ActiveTabColor": {
-    "message": "Active Tab Color:"
+    "message": "使用中標籤顏色："
   },
   "qf.label.ColoredTabPalette": {
-    "message": "Palette for Colored Tabs:"
+    "message": "上色分頁的調色盤："
   },
   "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palette for tabs with a user-assigned color"
+    "message": "特定顏色分頁調色盤"
   },
   "qf.label.DragOverBackground": {
-    "message": "Drag Over Color:"
+    "message": "拖曳的標籤顏色："
   },
   "qf.label.HoveredTabColor": {
-    "message": "Hovered Tab Color:"
+    "message": "停留的標籤顏色："
   },
   "qf.label.Toolbar": {
-    "message": "Toolbar"
+    "message": "工具列"
   },
   "qf.label.Toolbar.bottomLine": {
-    "message": "Bottom Line Width:"
+    "message": "底線寬度："
   },
   "qf.label.Toolbar.bottomLine.tip": {
-    "message": "The width of the line under tabs. Change its color with the Active Tab Color picker below."
+    "message": "在分頁下方的線寬度。使用下方的「使用中分頁顏色點選器」來改變它的顏色。"
   },
   "qf.label.ToolbarBackground": {
-    "message": "Toolbar Background:"
+    "message": "工具列背景："
   },
   "qf.label.UncoloredTab": {
-    "message": "Uncolored Tab"
+    "message": "未上色的分頁"
   },
   "qf.label.UncoloredTab.tooltip": {
-    "message": "Look of (inactive) tabs without a specifically selected color"
+    "message": "未特別選定顏色的（未作用中）分頁外觀"
   },
   "qf.label.appearance": {
-    "message": "Appearance"
+    "message": "外觀"
   },
   "qf.label.behavior": {
-    "message": "Behavior"
+    "message": "特性"
   },
   "qf.label.github": {
-    "message": "Report a bug / Request a feature…"
+    "message": "以 github 回報錯誤與新的特色需求"
   },
   "qf.label.buttonFontSizeNumeric": {
-    "message": "Button font size (0 for default):"
+    "message": "按鈕字型大小（0為預設值）："
   },
   "qf.label.cancel": {
-    "message": "Cancel"
+    "message": "取消"
   },
   "qf.label.colors": {
-    "message": "Colors"
+    "message": "顏色"
   },
   "qf.label.contactLink": {
-    "message": "Contact me (English or German)…"
+    "message": "與我聯絡（英文或德文）…"
   },
   "qf.label.currentFolderToolbar": {
-    "message": "Current Folder Toolbar"
+    "message": "現在資料夾工具列"
   },
   "qf.label.donate": {
-    "message": "Donate"
+    "message": "捐助"
   },
   "qf.label.donateLink": {
-    "message": "Visit the Donation Page…"
+    "message": "參觀捐助網頁…"
   },
   "qf.label.dragFolderLabel": {
-    "message": "Drag folders here to create a tab. Click the tab to go to the folder, drag messages to move/copy them there."
+    "message": "拖曳資料夾來這裡讓其變成標籤。點選標籤能移至這個資料夾，拖曳信件於此能移動/複製它們。"
   },
   "qf.label.existingcategories": {
-    "message": "Existing categories:"
+    "message": "已設定的分類："
   },
   "qf.label.filterCountN_of_M": {
-    "message": "{0} of {1}"
+    "message": "{1}之{0}"
   },
   "qf.label.filterEntities": {
-    "message": "items"
+    "message": "物件"
   },
   "qf.label.filterSingleEntity": {
-    "message": "1 item"
+    "message": "1 個物件"
   },
   "qf.label.getQuickFilters": {
-    "message": "For an improved and more powerful way of creating Filters please install my extension quickFilters!"
+    "message": "想建立更多有著完善與增強功能的過濾器，請安裝我另外一個擴充套件quickFilters！"
   },
   "qf.label.goNextUnread": {
-    "message": "Go to next unread email:"
+    "message": "跳至下一封未讀E-mail:"
   },
   "qf.label.goNextUnread.tip": {
-    "message": "Usually Thunderbird asks when you go to next unread mail if it needs to jump to a different folder."
+    "message": "一般來說，Thunderbird會在您跳至下一封未讀郵件，且為不同資料夾時詢問。"
   },
   "qf.label.haveLicense": {
-    "message": "Already have a License?"
+    "message": "已經擁有授權？"
   },
   "qf.label.homePage": {
-    "message": "Find detailed information at the QuickFolders homepage at quickfolders.org…"
+    "message": "詳細的資訊於quickfolders.org網站上的QuickFolders頁面都找得到…"
   },
   "qf.label.initdelay": {
-    "message": "[ms] init delay {1000 is standard}:"
+    "message": "初始延遲（1000是預設值）[毫秒]："
   },
   "qf.label.insertLicense": {
-    "message": "Insert your personal License key here:"
+    "message": "在這裡輸入您個人的購買證明金鑰："
   },
   "qf.label.insertLicense.tooltip": {
-    "message": "Your license key is contained in your order confirmation email from Fastspring."
+    "message": "您的購買證明金鑰是在Fastspring發出的確認購買E-mail內容中。"
   },
   "qf.label.instantApplyMsg": {
-    "message": "Note: if you only see a [Close] button below, the color settings might not work - as workaround, try right-clicking on an empty area of the quickfolders bar to select options… this will force the [Ok] button to be displayed, which should save colors."
+    "message": "注意：如果您只在下面看到「關閉」的按鈕，表示色彩的設定未能正常運作，解決方法是，試著以滑鼠右鍵點選快捷資料夾工具列的空白區域來選擇選項，這能使「確定」按鈕顯示，以便儲存顏色設定。"
   },
   "qf.label.keyboard": {
-    "message": "Keyboard Shortcuts"
+    "message": "鍵盤捷徑"
   },
   "qf.label.languagesLink": {
-    "message": "Add Translation…"
+    "message": "增加翻譯…"
   },
   "qf.label.licenseValid": {
-    "message": "Your license is valid until:"
+    "message": "您的購買證明在此日期之前有效："
   },
   "qf.label.mainToolbar": {
-    "message": "Main Toolbar Elements"
+    "message": "主要工具列元件"
   },
   "qf.label.menus": {
-    "message": "Menu Configuration"
+    "message": "選單設定"
   },
   "qf.label.menus.customIcon": {
-    "message": "Customize Icon"
+    "message": "自訂圖示"
   },
   "qf.label.menus.help": {
-    "message": "QuickFolders Help"
+    "message": "QuickFolders 說明"
   },
   "qf.label.menus.hideQFunlessCTRL": {
-    "message": "Only display with CTRL key held"
+    "message": "只有在按住 CTRL 鍵時顯示"
   },
   "qf.label.menus.lineBreak": {
-    "message": "Insert Line Break"
+    "message": "插入斷行"
   },
   "qf.label.menus.mailFolder": {
-    "message": "Mail Commands"
+    "message": "信件指令"
   },
   "qf.label.menus.options": {
-    "message": "Options"
+    "message": "選項"
   },
   "qf.label.menus.quickFolder": {
-    "message": "QuickFolders Commands"
+    "message": "QuickFolders 指令"
   },
   "qf.label.menus.separator": {
-    "message": "Insert Separator"
+    "message": "插入間隔"
   },
   "qf.label.menus.support": {
-    "message": "QuickFolders Support"
+    "message": "QuickFolders 支援"
   },
   "qf.label.misc": {
-    "message": "Miscellaneous"
+    "message": "雜項"
   },
   "qf.label.newcategory": {
-    "message": "New category:"
+    "message": "新分類："
   },
   "qf.label.pixels": {
-    "message": "pixels"
+    "message": "像素"
   },
   "qf.label.quickFilters.link": {
-    "message": "get quickFilters!"
+    "message": "取得quickFilters！"
   },
   "qf.label.quickfolders": {
-    "message": "QuickFolders:"
+    "message": "QuickFolders："
   },
   "qf.label.renameselectedcategory": {
-    "message": "Rename selected category"
+    "message": "更改選擇分類的名稱"
   },
   "qf.label.setcolors": {
-    "message": "Set [Text Color], Background Color"
+    "message": "設定文字、背景顏色"
   },
   "qf.label.tabContent": {
-    "message": "Tab Content"
+    "message": "分頁內容"
   },
   "qf.label.testfolder": {
-    "message": "Test Folder"
+    "message": "測試資料夾"
   },
   "qf.label.testfolder2": {
-    "message": "Test Folder 2"
+    "message": "測試資料夾2"
   },
   "qf.label.themes": {
-    "message": "Themes:"
+    "message": "佈景主題："
   },
   "qf.label.toolbarPosition": {
-    "message": "QuickFolders Bar Position"
+    "message": "QuickFolders 橫條位置"
   },
   "qf.label.versionhistory": {
-    "message": "Read Version History…"
+    "message": "閱讀版本歷史"
   },
   "qf.licenseValidation.expired": {
-    "message": "The license key you entered is expired. Please press the button below to renew your license."
+    "message": "您輸入的購買證明金鑰過期了。請按下面的按鈕來更新您的購買證明。"
   },
   "qf.licenseValidation.failed": {
-    "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."
+    "message": "您輸入無效的購買證明金鑰。請確認您從FastSpring收到的E-mail內容。如果您還有問題，請從支援分頁中跟我聯繫。"
   },
   "qf.licenseValidation.guessAddon": {
-    "message": "(The key entered may be for {2})."
+    "message": "輸入的金鑰或許是適用在{2}"
   },
   "qf.licenseValidation.invalidAddon": {
-    "message": "The license key you entered may be for a different Add-on. License keys for {0} start with {1}."
+    "message": "你輸入的註冊金鑰或許是是用不同的附加元件。{0}註冊金鑰從{1}開始。"
   },
   "qf.licenseValidation.invalidMail": {
-    "message": "The email address that is bound to the license key [{1}] is currently not listed in any of your mail accounts. Please contact me from the Support tab for assistance."
+    "message": "這個跟購買證明[{1}]連結的E-mail信箱，並沒有列於任何您現在的信箱帳號中。請從支援分頁內容中跟我聯絡來尋求幫助。"
   },
   "qf.licenseValidation.notMatchedMail": {
-    "message": "Encrypted Email address does not match readable one."
+    "message": "加密的E-mail位址無法符合辨識。"
   },
   "qf.licenseValidation.passed": {
-    "message": "Thanks for registering QuickFolders Pro! All premium features are now unlocked."
+    "message": "感謝購買QuickFolders專業版！所有的進階功能現在都將開啟。"
   },
   "qf.licenseValidation.standard": {
-    "message": "Thanks for registering a QuickFolders License - You are helping the Add-on immensely! If you need more features you can always upgrade to the Pro License."
+    "message": "感謝您註冊 QuickFolders 許可證 - 您正在極大地幫助附加組件！ 如果您需要更多功能，您可以隨時升級到 Pro 許可證。"
   },
   "qf.loadConfig": {
-    "message": "Load Configuration…"
+    "message": "讀取設定..."
   },
   "qf.menu.Color": {
-    "message": "Color"
+    "message": "顏色"
   },
   "qf.menu.tabColor": {
-    "message": "Default Color!"
+    "message": "沒有顏色！"
   },
   "qf.menuitem.quickfolders.changeOrder": {
-    "message": "Change the order of the tabs"
+    "message": "改變標籤的順序"
   },
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "C"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Find orphaned Tabs"
+    "message": "尋找孤立標籤"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "T"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
-    "message": "Display Current Folder Tools"
+    "message": "顯示現在資料夾的工具"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "D"
   },
   "qf.menuitem.quickfolders.filters": {
-    "message": "Create Message Filters…"
+    "message": "建立信件過濾器…"
   },
   "qf.menuitem.quickfolders.filtersAccess": {
     "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
-    "message": "Find Folder…"
+    "message": "尋找資料夾…"
   },
   "qf.menuitem.quickfolders.findAccess": {
     "message": "i"
   },
   "qf.menuitem.quickfolders.help": {
-    "message": "QuickFolders Help…"
+    "message": "QuickFolders說明…"
   },
   "qf.menuitem.quickfolders.helpAccess": {
     "message": "H"
   },
   "qf.menuitem.quickfolders.options": {
-    "message": "QuickFolders Options…"
+    "message": "QuickFolders選項…"
   },
   "qf.menuitem.quickfolders.optionsAccess": {
     "message": "O"
   },
   "qf.menuitem.quickfolders.register": {
-    "message": "QuickFolders Pro License…"
+    "message": "註冊 QuickFolders 專業版..."
   },
   "qf.menuitem.quickfolders.repairTabs": {
-    "message": "Refresh Visible Tabs!"
+    "message": "更新可見的標籤！"
   },
   "qf.menuitem.quickfolders.repairTabsAccess": {
     "message": "V"
   },
   "qf.menuitem.quickfolders.repairTreeIcons": {
-    "message": "Repair Tree Icons"
+    "message": "修復樹狀目錄圖示"
   },
   "qf.menuitem.quickfolders.splash": {
-    "message": "Latest Update News…"
+    "message": "最新更新新聞…"
   },
   "qf.menuitem.quickfolders.support": {
-    "message": "QuickFolders Support…"
+    "message": "QuickFolders支援…"
   },
   "qf.menuitem.quickfolders.supportAccess": {
     "message": "S"
   },
   "qf.menuitem.quickfolders.togglePaintMode": {
-    "message": "Paint mode"
+    "message": "繪圖模式"
   },
   "qf.menuitem.quickfolders.togglePaintModeAccess": {
     "message": "p"
   },
   "qf.notification.categoryIsReadOnly": {
-    "message": "This item cannot be deleted."
+    "message": "這個項目不能被刪除。"
   },
   "qf.notification.dontShowAgain": {
-    "message": "Do not show this message again."
+    "message": "不再顯示這個訊息。"
   },
   "qf.notification.newsFlash": {
-    "message": "$addonName$ was updated! Important news…",
+    "message": "$addonName$ 已更新！重要消息……",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1036,31 +1036,31 @@
     }
   },
   "qf.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
+    "message": "展延購買憑證"
   },
   "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
+    "message": "這將展延現在的購買憑證有效日期1年。它通常比購買1個新憑證便宜。"
   },
   "qf.notification.premium.btn.getLicense": {
-    "message": "Buy License"
+    "message": "取得購買證明！"
   },
   "qf.notification.premium.btn.hotKey": {
     "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
-    "message": "Renew License"
+    "message": "展延授權"
   },
   "qf.notification.premium.btn.upgrade": {
-    "message": "Upgrade to Pro"
+    "message": "升級到專業版"
   },
   "qf.notification.premium.readingList": {
-    "message": "You have now {1} bookmarks defined. The free version of QuickFolders allows a maximum of {2}."
+    "message": "您現在有{1}個已定義的書籤。免費版本的QuickFolders最多只允許{2}個。"
   },
   "qf.notification.premium.shortcut": {
-    "message": "The premium license additionally gives you a configurable keyboard shortcut."
+    "message": "高級許可證還為您提供了一個可配置的鍵盤快捷鍵。"
   },
   "qf.notification.premium.tabIcons": {
-    "message": "You now use $cntIcons$ custom icons for Tabs. The unpaid version of QuickFolders supports a maximum of $maxFreeIcons$. The standard license supports $maxStdIcons$. QuickFolders Pro has no limit.",
+    "message": "您現在為選項卡使用 $cntIcons$ 自定義圖標。 QuickFolders 的免費版本最多支持 $maxFreeIcons$。 標准許可證支持 $maxStdIcons$。",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1077,385 +1077,385 @@
     }
   },
   "qf.notification.premium.text": {
-    "message": "{1} is a Premium feature, please get a QuickFolders Pro License for using it."
+    "message": "{1} 是一項高級功能，請獲得 QuickFolders Pro 許可才能使用它。"
   },
   "qf.notification.premium.title": {
-    "message": "Premium Feature"
+    "message": "獨特的功能"
   },
   "qf.notification.standard.readingList": {
-    "message": "You have now {1} bookmarks defined. The standard license of QuickFolders allows a maximum of {2}."
+    "message": "您現在已經定義了 {1} 個書籤。 QuickFolders 的標准許可最多允許 {2}。"
   },
   "qf.notification.standard.text": {
-    "message": "{1} is a license restricted feature, please get a QuickFolders License for using it."
+    "message": "{1} 是一項許可限制功能，請獲得 QuickFolders 許可才能使用它。"
   },
   "qf.notification.standard.title": {
-    "message": "Licensed Feature"
+    "message": "標準功能"
   },
   "qf.options.LayoutColorAppearance": {
-    "message": "Individual Tab Color Appearance"
+    "message": "個別標籤顏色樣式"
   },
   "qf.options.LayoutColorAppearanceFilled": {
-    "message": "(filled style)"
+    "message": "填滿樣式"
   },
   "qf.options.LayoutColorAppearanceStriped": {
-    "message": "(striped style)"
+    "message": "條紋樣式"
   },
   "qf.options.label.themeAuthor": {
-    "message": "Theme Author:"
+    "message": "佈景主題作者："
   },
   "qf.options.theme.pastelColors": {
-    "message": "Pastel Colors"
+    "message": "淡雅的色彩"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
-    "message": "Bottom:"
+    "message": "下："
   },
   "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Top:"
+    "message": "上："
   },
   "qf.options.themes.customCornerRadius.checkbox": {
-    "message": "Custom Corner Radius"
+    "message": "自訂角度"
   },
   "qf.options.themes.showBorders.checkbox": {
-    "message": "Always Display Borders"
+    "message": "總是顯示邊界"
   },
   "qf.options.versionnumber.tooltip": {
-    "message": "Click for version history."
+    "message": "單擊以顯示版本歷史記錄"
   },
   "qf.palette.inactive": {
-    "message": "Same as inactive Tabs"
+    "message": "像非作用中分頁"
   },
   "qf.palette.night": {
-    "message": "Night Vision"
+    "message": "夜視模式"
   },
   "qf.palette.pastel": {
-    "message": "Pastel Colors"
+    "message": "粉蠟筆色系"
   },
   "qf.palette.standard": {
-    "message": "Standard Palette"
+    "message": "標準調色盤"
   },
   "qf.palette.twoColors": {
-    "message": "2 Colors"
+    "message": "雙色"
   },
   "qf.pastefolders.tooltip": {
-    "message": "Delete all QuickFolders and read new configuration from clipboard"
+    "message": "刪除所有QuickFolders並且從剪貼簿讀取新的設定值"
   },
   "qf.pathFormat.AccountAndPath": {
-    "message": "Account - Folder Path"
+    "message": "帳號 - 資料夾路徑"
   },
   "qf.pathFormat.PathOnly": {
-    "message": "Folder Path"
+    "message": "資料夾路徑"
   },
   "qf.pathFormat.URI": {
-    "message": "Folder URI"
+    "message": "資料夾 URI"
   },
   "qf.pathFormat.folderAndAccount": {
-    "message": "Folder Name - Mail Account"
+    "message": "資料夾名稱 - 信件帳號"
   },
   "qf.pathFormat.folderName": {
-    "message": "Folder Name"
+    "message": "資料夾名稱"
   },
   "qf.pathFormat.maxDepth": {
-    "message": "Maximum path depth:"
+    "message": "最大路徑深度："
   },
   "qf.pathFormat.tooltip": {
-    "message": "Maximum number of folders displayed in folder path."
+    "message": "在資料夾路徑中所顯示的最大資料夾數目："
   },
   "qf.prefwindow.quickfolders.options": {
-    "message": "QuickFolders Options"
+    "message": "QuickFolders選項"
   },
   "qf.premium.renewLicense.tooltip": {
-    "message": "Your license expired {1} days ago"
+    "message": "您的購買憑證在{1}天前到期"
   },
   "qf.premiumConfig": {
-    "message": "Premium Features"
+    "message": "特殊功能"
   },
   "qf.prompt.category.deleteMultiple": {
-    "message": "Ok to delete multiple categories?"
+    "message": "Ok 來刪除重複分類？"
   },
   "qf.prompt.contact.subject": {
-    "message": "Please enter a short subject line:"
+    "message": "請輸入簡要主旨："
   },
   "qf.prompt.contact.title": {
-    "message": "Contact QuickFolders Support"
+    "message": "與 QuickFolders 支援聯絡"
   },
   "qf.prompt.loadFolders.confirm": {
-    "message": "Accept the loaded Tabs?"
+    "message": "接受載入的分頁？"
   },
   "qf.prompt.newFolder.createQFtab": {
-    "message": "Also create a QuickFolders Tab"
+    "message": "也建立一個 QuickFolders 分頁"
   },
   "qf.prompt.newFolder.newChildName": {
-    "message": "Enter name for new child folder under {0}"
+    "message": "輸入一個在{0}下新的子資料名稱"
   },
   "qf.prompt.newFolder.title": {
-    "message": "New Folder"
+    "message": "新資料夾"
   },
   "qf.prompt.pasteFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items in your clipboard.\n{0} entries were found in clipboard.\nReplace tabs?"
+    "message": "這將刪除所有QuickFolders分頁，並從你的剪貼簿中置換項目。在剪貼簿中發現\n{0} 項目，你確定嗎？"
   },
   "qf.prompt.pasteFolders.confirm": {
-    "message": "Keep the displayed Tabs?"
+    "message": "保持顯示的分頁？"
   },
   "qf.prompt.readingList.removeItem": {
-    "message": "Remove this item?"
+    "message": "移除這個項目？"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Cannot find the mail, it might have been moved elsewhere in the meantime.\n{1}\n\nDo you want to search for it?"
+    "message": "不能找到該封信件，或許是因為它在某個時候被移動到另外的地方。\n{1}\n\n您想要搜尋這封郵件嗎？"
   },
   "qf.prompt.restoreFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
+    "message": "這將刪除所有 QuickFolders 分頁並且置換檔案中的項目。讀取到  \n{0} 項目。 \n 置換分頁？"
   },
   "qf.prompt.switchDomainLicense": {
-    "message": "Switch to Domain License?"
+    "message": "切換到主要的授權？"
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key always clears messages list."
+    "message": "退出键清除消息列表。"
   },
   "qf.quickMove.excludeAccounts": {
-    "message": "Select any account that should be excluded from the search results:"
+    "message": "选择应从搜索结果中排除的任何帐户："
   },
   "qf.quickMove.lockAccount": {
-    "message": "Only show results from current mail account."
+    "message": "仅显示当前邮件帐户的结果。"
   },
   "qf.quickMove.maxResults": {
-    "message": "Maximum number of search results"
+    "message": "最大搜索结果数"
   },
   "qf.quickMove.path.format": {
-    "message": "Display Format:"
+    "message": "顯示格式："
   },
   "qf.quickMove.silent": {
-    "message": "Omit notifications after moving mails."
+    "message": "移动邮件后无通知。"
   },
   "qf.register.licenseValid.expired": {
-    "message": "Your license expired on:"
+    "message": "您的購買憑證將在後面的日期到期："
   },
   "qf.search.advanced": {
-    "message": "Advanced search settings…"
+    "message": "进阶搜寻设定..."
   },
   "qf.storeConfig": {
-    "message": "Save Configuration…"
+    "message": "儲存設定..."
   },
   "qf.tab.advanced": {
-    "message": "Advanced"
+    "message": "進階"
   },
   "qf.tab.general": {
-    "message": "General"
+    "message": "一般"
   },
   "qf.tab.gopro": {
-    "message": "Licenses"
+    "message": "執照"
   },
   "qf.tab.layout": {
-    "message": "Bling My Tabs!"
+    "message": "外觀"
   },
   "qf.tab.quickhelp": {
-    "message": "Quick Help"
+    "message": "說明"
   },
   "qf.tab.support": {
-    "message": "Support"
+    "message": "支援"
   },
   "qf.textbox.searchBox.emptyText": {
-    "message": "Search filters by name…"
+    "message": "尋找過濾器…"
   },
   "qf.textbox.searchBox.toolTip": {
-    "message": "enter a keyword to search filters by name"
+    "message": "輸入關鍵字以名稱來尋找過濾器"
   },
   "qf.themes.applePills.description": {
-    "message": "A pleasant layout for our Mac users - plain and simple; with some optional color perks."
+    "message": "針對Mac使用者的美麗佈置 - 平實並且簡單；並且可選擇另外的顏色。"
   },
   "qf.themes.applePills.label": {
-    "message": "Apple Pills"
+    "message": "蘋果風格"
   },
   "qf.themes.flatButtons.description": {
-    "message": "Standard toolbar buttons - this is the closest you can get to the look of original version 0.5!"
+    "message": "標準工具列按鈕 - 這是最接近原始0.5版本的外觀！"
   },
   "qf.themes.flatButtons.label": {
-    "message": "Toolbar Buttons"
+    "message": "工具列按鈕"
   },
   "qf.themes.flatTabs.description": {
-    "message": "Modern tabbed look - fully customizable. Looks great on Windows and Linux."
+    "message": "現代感分頁外觀 - 完全自訂的。在視窗和Linux系統上美觀。"
   },
   "qf.themes.flatTabs.label": {
-    "message": "Flat Style"
+    "message": "平面風格"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layout resembles the tabs of your OS - less coloring options but may look more integrated and in sync with your Mail Client Themes."
+    "message": "跟您系統的分頁佈置相似 - 較少顏色的選項，但是看起來較為整體並且跟您的郵件程式佈景主題同步。"
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Native Tabs"
+    "message": "原始分頁"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pushbuttons - these look like standard buttons on dialog windows"
+    "message": "推按鈕 - 看起來像是在對話視窗中的標準按鈕"
   },
   "qf.themes.realButtons.label": {
-    "message": "Pushbuttons"
+    "message": "推按鈕"
   },
   "qf.toolbar.quickfolders.toolbar": {
-    "message": "QuickFolders Toolbar"
+    "message": "QuickFolders 工具列"
   },
   "qf.toolbarIconSize": {
-    "message": "Large Toolbar Icons"
+    "message": "大工具欄圖標"
   },
   "qf.toolbarMinimumHeight": {
-    "message": "Minimum height:"
+    "message": "最小高度："
   },
   "qf.toolbarMinimumHeight.tooltip": {
-    "message": "For Mac systems who encounter [Bug 25021]"
+    "message": "針對遇到[Bug 25021]的Mac系統使用者"
   },
   "qf.toolbarPosition.tooltip": {
-    "message": "0 = on top of other toolbars; 100 = bottom. High value depends on other Add-ons."
+    "message": "0 = 其他工具列上方 ; 100 = 下方。 高數值取決於其他附加元件。"
   },
   "qf.tooltip.RecentFolders": {
-    "message": "Recent Folders"
+    "message": "最近使用的資料夾"
   },
   "qf.tooltip.closeToolbar": {
-    "message": "Close this toolbar"
+    "message": "關閉這個工具列"
   },
   "qf.tooltip.conversationRead": {
-    "message": "Mark Conversation as Read and jump to next unread Email"
+    "message": "將對話標記為已閱讀並且跳到下一個未讀E-mail"
   },
   "qf.tooltip.emailIcon": {
-    "message": "Current Email - drag to a QuickFolders tab to move Mail"
+    "message": "現在的E-mail - 拖曳至QuickFolders分頁來移動信件"
   },
   "qf.tooltip.filterStart": {
-    "message": "Activate filter teaching. Dragging emails on a QuickFolder creates new Filters."
+    "message": "開啟過濾器教學。拖曳郵件到QuickFolder上，來建立一個新的篩選規則。"
   },
   "qf.tooltip.filters": {
-    "message": "Stop creating filters."
+    "message": "停止建立過濾器"
   },
   "qf.tooltip.folderUp": {
-    "message": "Go to Parent Folder"
+    "message": "移動到上一層的資料夾"
   },
   "qf.tooltip.goNextFolder": {
-    "message": "Move to the next [unread] message"
+    "message": "移動到下一個未讀郵件"
   },
   "qf.tooltip.goPreviousFolder": {
-    "message": "Move to the previous [unread] message"
+    "message": "移動到前一個未讀郵件"
   },
   "qf.tooltip.mailFolderCommands": {
-    "message": "Mail Folder Commands"
+    "message": "信件資料夾命令列"
   },
   "qf.tooltip.mainOptions": {
-    "message": "QuickFolders options and advanced commands"
+    "message": "QuickFolders 選項和進階命令列"
   },
   "qf.tooltip.paintCanActive": {
-    "message": "Paint mode: click for palette, click tabs to color them, right-click tabs to extract their color"
+    "message": "繪圖模式：點選調色盤、點選標籤來將他們上色、右鍵點選標籤來使它們有顏色"
   },
   "qf.tooltip.quickFoldersNavToggle": {
-    "message": "toggle navigating unread only / all mails"
+    "message": "鎖定導覽未讀 / 所有郵件"
   },
   "qf.tooltip.quickMove": {
-    "message": "Drag an email here then enter target folder name (quickMove); or click to jump into the folder (quickJump)."
+    "message": "quickMove：拖曳E-mail並且輸入資料夾的名稱"
   },
   "qf.tooltip.skipUnreadFolder": {
-    "message": "Skip to next Unread Folder"
+    "message": "忽略下一個未讀目錄"
   },
   "qf.tooltip.threadIcon": {
-    "message": "Current Thread - drag to a QuickFolders tab to move Conversation"
+    "message": "現在的主題郵件串 - 拖曳至QuickFolders分頁來移動對話串"
   },
   "qf.youtube.description": {
-    "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
+    "message": "關於 Thunderbird Add-ons 的詳細影片，以及如何使用 QuickFolders ，請前往觀賞我的 YouTube 頻道 Thunderbird Daily 。"
   },
   "qf.youtube.link": {
-    "message": "Watch Videos about QuickFolders…"
+    "message": "觀看關於 QuickFolders 的影片..."
   },
   "qf.youtube.tbdaily": {
-    "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
+    "message": "參觀 Thunderbird Daily - 在 YouTube 頻道上介紹使用 QuickFolders 的技巧跟說明"
   },
   "qfAlertCopyString": {
-    "message": "Folder String copied to Clipboard!"
+    "message": "資料夾設定已複製到剪貼簿！"
   },
   "qfAlertDropFolderVirtual": {
-    "message": "You can not copy mail to a virtual folder!"
+    "message": "你不能將信件複製到虛擬資料夾中！"
   },
   "qfAlertUpgradeSuccess": {
-    "message": "QuickFolders was successfully upgraded to version:"
+    "message": "QuickFolders成功地更新到下列版本："
   },
   "qfAll": {
-    "message": "(Display All)"
+    "message": "（全部顯示）"
   },
   "qfCantMoveFolder": {
-    "message": "Folder {0} cannot be moved."
+    "message": "資料夾 {0} 不能被移動。"
   },
   "qfColorPickingWIP": {
-    "message": "Sorry, this feature is still Work in Progress!"
+    "message": "抱歉，這個功能仍在測試中！"
   },
   "qfCommandAccess": {
     "message": "Q"
   },
   "qfCommandPopup": {
-    "message": "QuickFolders Commands"
+    "message": "QuickFolders指令"
   },
   "qfCompactFolder": {
-    "message": "Compact Folder"
+    "message": "壓縮資料夾"
   },
   "qfCompactFolderAccess": {
-    "message": "C"
+    "message": "F"
   },
   "qfCompacted": {
-    "message": "Compacted:"
+    "message": "壓縮的："
   },
   "qfCompactedBytesFreed": {
-    "message": "Bytes expunged"
+    "message": "節省的位元組"
   },
   "qfCompactedFolder": {
-    "message": "Compacted folder"
+    "message": "壓縮資料夾"
   },
   "qfCompactedNewFolderSize": {
-    "message": "New size"
+    "message": "最終的大小"
   },
   "qfCompactedOriginalFolderSize": {
-    "message": "Original size"
+    "message": "原來大小"
   },
   "qfConfirmCopyFolder": {
-    "message": "Really copy folder {0} into {1}?"
+    "message": "真的将文件夹{0}复制到{1}吗？"
   },
   "qfConfirmMoveFolder": {
-    "message": "Really move folder {0} into {1}?"
+    "message": "真的要將資料夾從 {0} 移動到 {1} ？"
   },
   "qfConfirmVersionLink": {
-    "message": "Display version history for QuickFolders"
+    "message": "顯示QuickFolders的版本歷史"
   },
   "qfDeadTabsCount": {
-    "message": "# orphaned tabs found:"
+    "message": "#找到的孤立標籤："
   },
   "qfDeadTabsDeleted": {
-    "message": "# orphaned tabs removed:"
+    "message": "#已移除的孤立標籤："
   },
   "qfDeleteFolder": {
-    "message": "Delete Folder"
+    "message": "刪除資料夾"
   },
   "qfDeleteFolderAccess": {
     "message": "D"
   },
   "qfDeleteJunk": {
-    "message": "Purge Junk"
+    "message": "清除垃圾"
   },
   "qfDown": {
-    "message": "Down"
+    "message": "下"
   },
   "qfDownloadAll": {
-    "message": "Download All"
+    "message": "下載全部"
   },
   "qfEditVirtual": {
-    "message": "Search Properties…"
+    "message": "搜尋特性…"
   },
   "qfEditVirtualAccess": {
     "message": "S"
   },
   "qfEmptiedJunk": {
-    "message": "Emptied junk and compacted folder"
+    "message": "清空垃圾郵件並壓縮資料夾"
   },
   "qfEmptiedTrash": {
-    "message": "Emptied trash."
+    "message": "清空垃圾桶。"
   },
   "qfEmptyJunk": {
-    "message": "Empty Junk"
+    "message": "清空垃圾郵件"
   },
   "qfEmptyJunkAccess": {
     "message": "J"
   },
   "qfEmptyTrash": {
-    "message": "Empty Trash"
+    "message": "清空垃圾桶"
   },
   "qfEmptyTrashAccess": {
     "message": "T"
@@ -1464,28 +1464,28 @@
     "message": "F"
   },
   "qfFolderAlreadyBookmarked": {
-    "message": "Folder already has a tab."
+    "message": "資料夾已在標籤中。"
   },
   "qfFolderOpenLocation": {
-    "message": "Explore Folder Location…"
+    "message": "找尋資料夾位置..."
   },
   "qfFolderPopup": {
-    "message": "Mail Folder Commands"
+    "message": "信件資料夾指令"
   },
   "qfFolderProperties": {
-    "message": "Folder Properties…"
+    "message": "資料夾性質…"
   },
   "qfFolderPropertiesAccess": {
     "message": "P"
   },
   "qfFolderRepair": {
-    "message": "Repair Folder"
+    "message": "修復資料夾"
   },
   "qfFolderRepairAccess": {
     "message": "F"
   },
   "qfFolderRepairedMsg": {
-    "message": "Folder was repaired:"
+    "message": "已經修復的資料夾："
   },
   "qfGetMail": {
     "message": "Get Messages"
@@ -1494,226 +1494,226 @@
     "message": "G"
   },
   "qfInsertLineBreak": {
-    "message": "Insert Line Break"
+    "message": "插入斷行符號"
   },
   "qfInsertSeparator": {
-    "message": "Insert Separator"
+    "message": "插入分隔符號"
   },
   "qfInvalidTabCount": {
-    "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
+    "message": "發現 {0} 分頁有無效的資料夾。你可以使用「發現失效分頁」指令來移除它們。"
   },
   "qfMarkAllRead": {
-    "message": "Mark folder as Read"
+    "message": "將資料夾標記為已讀"
   },
   "qfMarkAllReadAccess": {
     "message": "M"
   },
   "qfMarkAllReadRecursive": {
-    "message": "Mark folder + subfolders Read"
+    "message": "標記 資料夾 + 子資料夾 為已讀"
   },
   "qfMenuColor": {
-    "message": "Color"
+    "message": "顏色"
   },
   "qfMenuTabColorDisabledInTheme": {
-    "message": "Select different Theme to support coloring…"
+    "message": "選擇不同的佈景主題來支援外觀..."
   },
   "qfMenuTabColorNone": {
-    "message": "Default Color!"
+    "message": "沒有顏色！"
   },
   "qfMenuTabColorPopup": {
-    "message": "Tab Color"
+    "message": "標籤顏色"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Drag folders to an empty area of the toolbar - For MOVING a folder, hold down SHIFT and drag to a Tab."
+    "message": "拖曳資料夾到工具列的空白區域 - 如果想移動資料夾，在拖曳時按下SHIFT鍵。"
   },
   "qfNavigationWrapped": {
-    "message": "No other unread folders found, continuing in {1}."
+    "message": "沒有發現其他未讀目錄，繼續在{1}"
   },
   "qfNewFolder": {
-    "message": "New Subfolder…"
+    "message": "新子資料夾…"
   },
   "qfNewFolderAccess": {
     "message": "N"
   },
   "qfNewName": {
-    "message": "Enter a new name for the tab"
+    "message": "鍵入標籤的新名稱"
   },
   "qfNewSubFolder": {
-    "message": "Create subfolder {0} » {1}…"
+    "message": "新增子資料夾 {0} » {1}..."
   },
   "qfNoFolderMatch": {
-    "message": "No matching parent folders!"
+    "message": "沒有匹配的父文件夾！"
   },
   "qfPaintToggle": {
-    "message": "Finish Paint Mode"
+    "message": "結束繪圖模式"
   },
   "qfRecentFolders": {
-    "message": "Recent Folders"
+    "message": "最近使用的資料夾"
   },
   "qfRemoveBookmark": {
-    "message": "Remove tab"
+    "message": "移除標籤"
   },
   "qfRemoveBookmarkAccess": {
     "message": "R"
   },
   "qfRemoveCategory": {
-    "message": "Remove from current Category"
+    "message": "從現有分類中移除"
   },
   "qfRemoveCategoryPrompt": {
-    "message": "The category is '{1}' - Remove that?"
+    "message": "分類是 「{1}」 - 要移除它嗎？"
   },
   "qfRemoveIcon": {
-    "message": "Remove Customized Icon"
+    "message": "移除圖示"
   },
   "qfRemoveLineBreak": {
-    "message": "Remove Line Break"
+    "message": "移除斷行符號"
   },
   "qfRemoveSeparator": {
-    "message": "Remove Separator"
+    "message": "移除分隔符號"
   },
   "qfRenameBookmark": {
-    "message": "Rename tab…"
+    "message": "標籤更名.."
   },
   "qfRenameBookmarkAccess": {
     "message": "N"
   },
   "qfRenameFolder": {
-    "message": "Rename Folder…"
+    "message": "資料夾更名…"
   },
   "qfRenameFolderAccess": {
     "message": "R"
   },
   "qfRepairTreeIconsMissing": {
-    "message": "The following icon files do not exist:"
+    "message": "下列的圖示檔案並未存在："
   },
   "qfSavePrompt": {
-    "message": "Save these changes?"
+    "message": "儲存這些更改？"
   },
   "qfSelectIcon": {
-    "message": "Customize Icon…"
+    "message": "圖示…"
   },
   "qfSetCategory": {
-    "message": "Set Tab Category…"
+    "message": "設定標籤分類…"
   },
   "qfSetCategoryA": {
     "message": "C"
   },
   "qfShowAlways": {
-    "message": "Show Always!"
+    "message": "總是顯示！"
   },
   "qfShowNever": {
-    "message": "Never Show (Folder Alias)"
+    "message": "永不顯示（資料夾別名）"
   },
   "qfTabAdvancedOptions": {
-    "message": "Tab-specific Properties…"
+    "message": "（分頁專一）的屬性..."
   },
   "qfTabDeleteOption": {
-    "message": "Do this with the remaining {0} folders."
+    "message": "這還是維持 {0} 個資料夾。"
   },
   "qfTabDeletePrompt": {
-    "message": "Delete this Tab?"
+    "message": "刪除這個標籤？"
   },
   "qfThisTabIsInvalid": {
-    "message": ": This is a tab that points to an invalid folder."
+    "message": "：這是一個指向不正確資料夾的標籤："
   },
   "qfTidyDeadFolders": {
-    "message": "This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."
+    "message": "這將移除那些指向不正確資料夾的標籤。\n 這有時候發生在QuickFolders沒有注意到一個已經刪除或移動的資料夾。"
   },
   "qfTreeIconsInvalidCount": {
-    "message": "{0} icons missing"
+    "message": "{0} 圖示遺失"
   },
   "qfTreeIconsRepairedCount": {
-    "message": "{0} tree icons repaired"
+    "message": "{0} 樹狀目錄圖示修復"
   },
   "qfUncategorized": {
-    "message": "(Uncategorized)"
+    "message": "（未分類）"
   },
   "qfUp": {
-    "message": "Up"
+    "message": "上"
   },
   "qfUpdatedThemesEngineMsg": {
-    "message": "A new theming engine for QuickFolders has been installed. Please select an item from the drop down box and click [Ok]."
+    "message": "新的QuickFolders佈景主題引擎已經安裝。請從下拉式選單選擇，並且點選[確定]。"
   },
   "qfVersionDisableOnUpdate": {
-    "message": "Stop displaying version history after updates?"
+    "message": "在更新之後停止顯示版本記錄？"
   },
   "quickMove.help.head": {
-    "message": "Help for {1}"
+    "message": "{1} 的幫助"
   },
   "quickMove.help.head.advanced": {
-    "message": "Advanced Features"
+    "message": "高級功能"
   },
   "quickMove.help.l1a": {
-    "message": "Type the start of a folder name or words in it, delimited by space."
+    "message": "鍵入文件夾名稱的開頭或其中的單詞，以空格分隔。"
   },
   "quickMove.help.l1b": {
-    "message": "The following characters are regarded as word boundaries and don't need to be typed:"
+    "message": "以下字符被視為單詞邊界，不需要鍵入："
   },
   "quickMove.help.l2a": {
-    "message": "Type {1} for entering grandparent/parent/searched folder."
+    "message": "輸入 {1} 以輸入祖父/父/搜索文件夾。"
   },
   "quickMove.help.l2b": {
-    "message": "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
+    "message": "任何父文件夾的前 2 個字母通常就足夠了。 您還可以使用此語法創建新的子文件夾。"
   },
   "quickMove.help.l3a": {
-    "message": "Type {1} for skipping any folders in between."
+    "message": "鍵入 {1} 以跳過其間的任何文件夾。"
   },
   "quickMove.help.l3b": {
-    "message": "This is useful for deeper, more complicated or unknown folder hierarchies."
+    "message": "這對於更深、更複雜或未知的文件夾層次結構很有用。"
   },
   "quickMove.help.advanced": {
-    "message": "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
+    "message": "可以在 QuickFolders Pro 選項卡上配置更高級的功能，例如轉到文件夾/移動郵件的鍵盤快捷鍵或從搜索結果中排除文件夾。 要訪問這些和其他高級功能，請獲取 Pro 許可證並支持 QuickFolders 的未來。"
   },
   "quickMove.singleMessage.goNext": {
-    "message": "Display next mail after moving current one"
+    "message": "在移动当前一封邮件后显示下一封邮件"
   },
   "quickMove.singleMessage.reopenTab": {
-    "message": "Reopen original mail after it was moved"
+    "message": "移动原始邮件后，请重新打开"
   },
   "quickMove.singleMessageTabs": {
-    "message": "Single Message Tab"
+    "message": "单个消息选项卡"
   },
   "quickfolders.findFolder.placeHolder": {
-    "message": "folder name"
+    "message": "資料夾名稱"
   },
   "quickfolders.quickMove.menu.cancel": {
-    "message": "Cancel quickMove"
+    "message": "取消quickMove功能"
   },
   "quickfolders.quickMove.menu.hideSearch": {
-    "message": "Hide Folder Name box"
+    "message": "隱藏資料夾名稱方塊"
   },
   "quickfolders.quickMove.menu.showSearch": {
-    "message": "Show Folder Name box"
+    "message": "顯示資料夾名稱方塊"
   },
   "quickfolders.quickMove.menu.suspend": {
-    "message": "Jump to folder (don't move mails)"
+    "message": "跳至資料夾（不要移動信件）"
   },
   "quickfolders.readingList.addCurrent": {
-    "message": "Add current Item"
+    "message": "增加現在的項目"
   },
   "quickfolders.readingList.clear": {
-    "message": "Clear Reading List"
+    "message": "清空閱讀清單"
   },
   "quickfolders.readingList.tooltip": {
-    "message": "Reading List"
+    "message": "閱讀清單"
   },
   "quickfolders.toolbar.newsubfolder": {
-    "message": "New Subfolder…"
+    "message": "新子資料夾…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Skip"
+    "message": "跳過"
   },
   "quickfoldersQuickCopiedMails": {
-    "message": "Mail copied to folder {2};{1} mails copied to folder {2}"
+    "message": "信件複製到資料夾{2};{1}信件複製到資料夾{2}"
   },
   "quickfoldersQuickMovedMails": {
-    "message": "Mail moved to folder {2};{1} mails moved to folder {2}"
+    "message": "信件移動到資料夾{2};{1}信件移動到資料夾{2}"
   },
   "renew-your-license": {
-    "message": "Renew your license."
+    "message": "續訂您的許可證。"
   },
   "special-offer-content": {
-    "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} by buying a {linkStartPro}QuickFolders Pro license{linkEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}. Or choose the standard functions with the new {linkStart}Standard License{linkEnd}.",
+    "message": "通過購買 {linkStartPro}QuickFolders Pro{linkEnd} 許可證升級您的功能並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。 或者使用新的 {linkStart}Standard License{linkEnd} 選擇標準功能。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1726,7 +1726,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "立即續訂您的許可證並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1739,7 +1739,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Upgrade now from QuickFolders Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "立即從 QuickFolders Standard 升級到 Pro 並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1752,10 +1752,10 @@
     }
   },
   "special-offer-expiry": {
-    "message": "October 31st"
+    "message": "10 月 31 日"
   },
   "special-offer-head": {
-    "message": "Help keep $addon$ compatible",
+    "message": "幫助保持 $addon$ 兼容",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1764,7 +1764,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Dear {name}{boldEnd}, please support $addon$ through getting a license. The Thunderbird code continuously evolves and we need {boldStart}your help{boldEnd} to keep up!",
+    "message": "{boldStart}親愛的{name}{boldEnd}，請通過獲得許可來支持 $addon$。 Thunderbird 代碼不斷發展，我們需要{boldStart}您的幫助{boldEnd}來跟上！",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1773,7 +1773,7 @@
     }
   },
   "support-preference": {
-    "message": "This is the preferred way of supporting $addonName$.",
+    "message": "這是支持$addonName$的首選方式。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1782,7 +1782,7 @@
     }
   },
   "support-suggestion": {
-    "message": "So that $addonName$ stays functional and alive, please do it a vital favor:",
+    "message": "為了使$addonName$保持功能性和活躍性，請務必這樣做：",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1791,10 +1791,10 @@
     }
   },
   "testDrive": {
-    "message": "The Standard License gives you some features that were previously flagged as premium and removes restrictions of the unfunded version. It finances the upkeep with the next Thunderbird version and conversion to a modern API based mail extension architecture."
+    "message": "您也能在免費版本下試用這些特殊功能，但它們會受到一些限制。"
   },
   "thanks-for-installing-intro": {
-    "message": "Thank you for installing $addonName$.",
+    "message": "感謝您安裝 $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1803,7 +1803,7 @@
     }
   },
   "thanks-for-updating-intro": {
-    "message": "Thank you for updating $addonName$.",
+    "message": "感謝您更新 $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1812,7 +1812,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ requires ongoing changes in order to remain compatible with the Mozilla platform. I am constantly working to retain as much functionality as possible for future versions of Thunderbird.",
+    "message": "$addonName$ 需要進行不斷的更改，以保持與Mozilla平台的兼容性。 我一直在努力為Thunderbird的未來版本保留盡可能多的功能。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1821,39 +1821,39 @@
     }
   },
   "toAddress": {
-    "message": "To:"
+    "message": "到："
   },
   "toAddress.tooltip": {
-    "message": "Default To Address when composing new mails"
+    "message": "當撰寫新郵件時，預設移動到E-mail Address欄位"
   },
   "translated-by-google": {
     "description": "disclaimer.",
-    "message": "translations provided by google"
+    "message": "谷歌提供的翻譯"
   },
   "updates.title": {
-    "message": "Updates"
+    "message": "更新"
   },
   "updatesExpiry": {
-    "message": "QuickFolders Pro will be automatically updated via addons.thunderbird.net as usual. After the year expires you can renew the license or keep using premium features under same terms as free users. 'Premium Exclusive' features will require a valid registration key."
+    "message": "通常QuickFolders專業版將會自動透過addons.thunderbird.net來進行更新。當購買證明失效後，您可以繼續購買或是使用在免費版本中的特殊功能。僅限於專業版的特殊功能將需要一個有效的註冊金鑰。"
   },
   "vouchers.title": {
-    "message": "Vouchers"
+    "message": "優惠券"
   },
   "whats-new-btn": {
-    "message": "What's new?"
+    "message": "什麼是新的？"
   },
   "whats-new-head": {
-    "message": "Important Changes"
+    "message": "重要變化"
   },
   "whats-new-intro": {
-    "message": "Read the detailed change log here (English only):"
+    "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}Fixed in version 5.8.2: Long folders menus now scroll when dragging mails to screen edge.{L2}{L1}Thunderbird doesn't jump into Inbox anymore when checking for new mails from the context menu.{L2}{L1}Support for large icon in QuickFolders toolbar buttons for high resolution displays.{L2}{L1}Fixed: moving folders from the quickMove function failed in Tb91.{L2}{L1}Various Layout fixes specific to Thunderbird 91.{L2}"
+    "message": "{L1}在 5.8.2 版中修復：現在將郵件拖到屏幕邊緣時，長文件夾菜單會滾動。{L2}{L1}從上下文菜單中檢查新郵件時，Thunderbird 不再跳入收件箱。{L2}{L1}支持 QuickFolders 工具欄按鈕中的大圖標以用於高分辨率顯示。{L2}{L1}已修復：移動文件夾 Tb91 中的 quickMove 功能失敗。{L2}{L1}針對 Thunderbird 91 的各種佈局修復。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
-    "message": "Welcome to $addonName$",
+    "message": "歡迎使用 $addonName$",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1862,21 +1862,21 @@
     }
   },
   "windowTitle": {
-    "message": "Advanced Properties"
+    "message": "進階屬性"
   },
   "yearlyLicense.premiumFeatures": {
-    "message": "QuickFolders Pro gives you full unrestricted access to the premium features."
+    "message": "QuickFolders專業版提供您完整、未受限制的特殊功能。"
   },
   "yearlyLicense.premiumFeatures.moreInfoLink": {
-    "message": "More about premium features."
+    "message": "更多關於專業版功能的說明。"
   },
   "yearlyLicense.title": {
-    "message": "Annual License"
+    "message": "年度購買證明"
   },
   "yearlyLicense.usageTerm": {
-    "message": "The license is for your personal use and is tied to your email address. You can install it on multiple email clients as long as they are configured to use that address."
+    "message": "購買證明僅屬於您個人使用，並且跟您的E-mail綁定在一起。您可以在不同的郵件程式上設定此E-mail位址，即可使用。"
   },
   "yearlyLicense.usageTerm1": {
-    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
+    "message": "任何其他電子郵件地址都沒有問題 - 它們不需要另外的購買憑證。如有疑問，您可以透過支援分頁與我聯繫。"
   }
 }

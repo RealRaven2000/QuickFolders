@@ -277,6 +277,11 @@ async function main() {
         
         return true;
         
+      case "createSubfolder":  // [issue 234]
+        // if folderName is not given - create a popup window
+        
+        return browser.folders.create(data.parentPath, data.folderName || "test1"); // like await but returns
+        
       case "copyFolderEntries":
         messenger.NotifyTools.notifyExperiment({event: "copyFolderEntriesToClipboard"});
         break;
@@ -324,7 +329,7 @@ async function main() {
       tbVer = getThunderbirdVersion();
   if (tbVer.major>=91)
     ver = "91";
-  console.log("Detected Thunderbird version:", tbVer)
+  // console.log("Detected Thunderbird version:", tbVer);
   
   
   messenger.WindowListener.registerChromeUrl([ 

@@ -2008,8 +2008,8 @@ QuickFolders.Options = {
                 function readSuccess(data) {
                   readFunction(data);
                 },
-                function readFailed(ex) {
-                  util.logDebug ('read() - Failure: ' + ex);
+                function readFailed(reason) {
+                  util.logDebug ('read() - Failure: ' + reason);
                 }
               )
               break;

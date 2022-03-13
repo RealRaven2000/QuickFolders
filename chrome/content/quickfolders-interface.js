@@ -3010,13 +3010,14 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
 				QI = QuickFolders.Interface,
         folder = util.getPopupNode(element).folder;
+        
     if (evt) evt.stopPropagation();
 
     util.logDebugOptional("interface", "QuickFolders.Interface.onNewFolder()");
     
     QI.onCreateInstantFolder(folder);  // async function
 	},
-
+   
 	// * function for creating a new folder under a given parent
 	// see http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2359
 	onCreateInstantFolder: function onCreateInstantFolder(parentFolder, folderName) {
@@ -3069,8 +3070,8 @@ QuickFolders.Interface = {
 						QI.hideFindPopup();
 					}
 		    },
-				function failedCreateFolder(ex) {
-					util.logException("Exception in getOrCreateFolder() ", ex);
+				function failedCreateFolder(reason) {
+					util.logToConsole(`Exception in getOrCreateFolder(${newFolderUri}, ${util.FolderFlags.MSG_FOLDER_FLAG_MAIL}) `, reason);
 				}
 			);
 	},
@@ -4020,7 +4021,6 @@ QuickFolders.Interface = {
 
 	addSubMenuEventListener: function addSubMenuEventListener(subMenu, url) {
 		// url is specific to this function context so it should be snapshotted from here
-		// we need this workaround as TB2 does not support the 'let' keyword
 		subMenu.addEventListener("click",
 			function(evt) {
 				QuickFolders.Interface.onSelectParentFolder(url, evt);
@@ -4072,6 +4072,7 @@ QuickFolders.Interface = {
 					createFolderMenuItem.id=""; // delete existing menu
 					createFolderMenuItem.id="folderPaneContext-new"; // for styling!
 					createFolderMenuItem.folder=folder;
+          
 					createFolderMenuItem.setAttribute("class","menuitem-iconic");
 
 					// use parent folder URI as each starting point
@@ -4238,7 +4239,14 @@ QuickFolders.Interface = {
           if (eventType) {
             // [Bug 26575]
             util.logDebugOptional("popupmenus.items","add " + eventType + " event attribute for menuitem " + menuitem.getAttribute("label") + " onSelectSubFolder(" + subfolder.URI+ ")");
-            this.setEventAttribute(menuitem, eventType,"QuickFolders.Interface.onSelectSubFolder('" + subfolder.URI + "',event)");
+            if (isDrag && isRecentFolderList) {
+              // QuickFolders.popupDragObserver.drop(event);              
+              let parentString = "";
+              this.setEventAttribute(menuitem, eventType,`QuickFolders.quickMove.execute("${subfolder.URI}","${parentString}");event.preventDefault();`); // [issue 242] allow moving with recent folder [=] shorcut
+            }
+            else {
+              this.setEventAttribute(menuitem, eventType,`QuickFolders.Interface.onSelectSubFolder('${subfolder.URI}',event)`);
+            }
           }
 					if (isRecentFolderList)
 						util.logDebugOptional("popupmenus", "Added " + eventType + " event to " + menuLabel + " for " + subfolder.URI );
@@ -4324,7 +4332,7 @@ QuickFolders.Interface = {
 					popupMenu.insertBefore(subMenu,menuitem)
 					subPopup.appendChild(menuitem); // move parent menu entry
 
-					this.addSubFoldersPopup(subPopup, subfolder, isDrag); // populate the sub menu
+					this.addSubFoldersPopup(subPopup, subfolder, isDrag, isRecentFolderList); // populate the sub menu
 
 					subPopup.removeChild(menuitem);
 				}
@@ -4337,7 +4345,7 @@ QuickFolders.Interface = {
 	} ,
 
 	// add all subfolders (1st level, non recursive) of folder to popupMenu
-	addSubFoldersPopup: function addSubFoldersPopup(popupMenu, folder, isDrag) {
+	addSubFoldersPopup: function addSubFoldersPopup(popupMenu, folder, isDrag, isRecentFolderList = false) {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
 		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopup(" + folder.prettyName + ", drag=" + isDrag + ")" );
@@ -4361,7 +4369,7 @@ QuickFolders.Interface = {
         subfolders = folder.subFolders; // Tb 87
 
 			let isAlphaSorted = prefs.isSortSubfolderMenus;
-			this.addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, isAlphaSorted, false);
+			this.addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, isAlphaSorted, isRecentFolderList);
 		}
 
 		// append the "Create New Folder" menu item!
@@ -5005,15 +5013,26 @@ QuickFolders.Interface = {
 		util.logDebugOptional("interface.findFolder", "showPopup:");
 
 		menupopup.setAttribute("ignorekeys", "true");
-		if (typeof menupopup.openPopup == "undefined")
-			menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
-		else
-			menupopup.openPopup(searchBox,"after_start", 0, -1,true,false);  // ,evt
+    
+    // [issue 241] force the last URI if popup not shown
+    let forceSingleURI;
+    if(menupopup.state=="closed" && forceFind && matches.length) {
+      forceSingleURI = prefs.getStringPref("quickMove.lastFolderURI");
+      if (!matches.find(e => e.uri == forceSingleURI))
+        forceSingleURI = "";
+    } 
+    
+    if (!forceSingleURI) {
+      if (typeof menupopup.openPopup == "undefined")
+        menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
+      else
+        menupopup.openPopup(searchBox,"after_start", 0, -1,true,false);  // ,evt
+    }
 		                           //                v-- [Bug 26665] support VK_ENTER even with multiple matches
 		if (matches.length == 1 || (matches.length>0 && forceFind) ) {
 			util.logDebugOptional("quickMove", forceFind ? "Enter key forces match" : "single match found…");
       if (wordStartMatch(matches[0].lname, searchFolderName) && forceFind) {
-				let finalURI = matches[0].uri;
+				let finalURI = forceSingleURI || matches[0].uri;
 				if (!isFiling) {
 					// go to folder
 					isSelected = QuickFolders_MySelectFolder(finalURI);
@@ -5441,7 +5460,7 @@ QuickFolders.Interface = {
         // now we got the toolbar panel let us move the whole lot
         let rect = panel.getBoundingClientRect();
         if (!rect.width) {
-          QuickFolders.Util.logDebug("Parent panel {" + panel.id + "} is not on screen; moving current folder button for tabMode: " + tabMode);
+          // QuickFolders.Util.logDebug("Parent panel {" + panel.id + "} is not on screen; moving current folder button for tabMode: " + tabMode);
           if (panel.id) {
 /*
             // find multimessage browser element and check if it is visible

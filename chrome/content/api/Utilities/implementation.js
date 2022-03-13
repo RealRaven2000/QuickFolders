@@ -50,9 +50,16 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         
         showLicenseDialog: function(referrer) {
           win.QuickFolders.Interface.showLicenseDialog(referrer);
-        }
+        },
   
         // get may only return something, if a value is set
+        /* Useful stuff from QF.Preferences */
+        getUserStyle: async function(id, type, defaultTxt) {
+          // lazy workaround for now because messenger is not defined:
+          // when calling from options - wo do not have it because we need to load in a "browser" window
+          let retVal = win.QuickFolders.Preferences.getUserStyle(id, type, defaultTxt);
+          return retVal;
+        }
      }
   }
 };

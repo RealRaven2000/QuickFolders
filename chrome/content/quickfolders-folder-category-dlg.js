@@ -40,6 +40,7 @@ var CatWin = {
 				CatWin.setSelectedCategory(); 
 				var rv= window.arguments[2]; 
 				rv.btnClicked='ok';
+        window.close();
 			});
 		
 	} ,  
@@ -88,10 +89,14 @@ var CatWin = {
 		listBox.currentIndex = listBox.selectedIndex;
 	} ,
 
-  
+  removeSpecialCats: function(categories) {
+    let cats = categories.split("|");
+    let c = cats.filter(a => !["__ALWAYS","__NEVER","__UNCATEGORIZED"].includes(a));
+    return c.join("|");
+  },
   
 	// select Category into model
-	setSelectedCategory: function setSelectedCategory() {
+	setSelectedCategory: function setSelectedCategory(newCat) {
 		const util = QuickFolders.Util;
 		try {
 			let listBox = this.CategoriesListBox,
@@ -101,19 +106,29 @@ var CatWin = {
 			sel = listBox.getSelectedItem(i)
 			// build a | delimited string of categories
 			while (sel) {
-			   category = category
-						+ ((category.length) ? '|' : '')
-						+ sel.value;
-			   i++;
-			   sel=listBox.getSelectedItem(i);
+        if (category.length && sel.value==QuickFolders.FolderCategory.UNCATEGORIZED)
+        { /* NOP */ }
+        else {
+          category = category
+              + ((category.length) ? '|' : '')
+              + sel.value;
+        }
+			  i++;
+			  sel=listBox.getSelectedItem(i);
 			}
+      if (newCat) {
+        category = CatWin.removeSpecialCats(category);
+        category = category
+                + ((category.length) ? '|' : '')
+                + newCat;
+      }
+      
+      
 			util.logDebugOptional("categories","set Selected Category for " + this.folder.prettyName + ": " + category + "...");
 
 			QuickFolders.Model.setFolderCategory(this.folder.URI, category);
 		}
 		catch(e) {util.logDebug(e); }
-
-		this.window.close();
 	},
 
 	setColor: function setColor(picker) {
@@ -167,7 +182,7 @@ var CatWin = {
 			i = listBox.selectedItems.length-1;
 
       // Remove from all 'real' Categories
-			if (category == "" || category == FC.ALWAYS || category == FC.NEVER) {  // this.UNCATEGORIZED
+			if (category == "" || category == FC.ALWAYS || category == FC.NEVER || category == FC.UNCATEGORIZED) {  // this.UNCATEGORIZED
 				sel = listBox.getSelectedItem(i);
 				while (sel) {
 					if (sel.value != category)
@@ -197,9 +212,10 @@ var CatWin = {
 		
 		if(!categoryName) return; // do nothing to avoid accidentally removing category box if only one category is defined.
 
-		model.setFolderCategory(this.folder.URI, categoryName);
+    CatWin.setSelectedCategory(categoryName);
+		// model.setFolderCategory(this.folder.URI, categoryName);
 		//add new category to listbox
-		this.CategoriesListBox.appendItem(categoryName, categoryName);
+		// this.CategoriesListBox.appendItem(categoryName, categoryName);
 
 		model.resetCategories();
 		this.populateCategories();

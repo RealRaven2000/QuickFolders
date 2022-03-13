@@ -227,7 +227,7 @@ async function main() {
         let title = messenger.i18n.getMessage("qf.prefwindow.quickfolders.options");
         // to get the tab - we need the activetab permission
         // query for url 
-        let url = browser.extension.getURL("/html/options.html") + "*";
+        let url = browser.runtime.getURL("/html/options.html") + "*";
 
         let [oldTab] = await browser.tabs.query({url}); // dereference first 
         if (oldTab) {

@@ -51,7 +51,31 @@
         "type": "function",
         "async": true,
         "parameters": []
+      },
+      
+      {
+        "name": "getUserStyle",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "description": "type of style - first part of identifier"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "description": "name of style - 2nd part of identifier"
+          },
+          {
+            "name": "defaultVal",
+            "type": "string",
+            "description": "default value"
+          }
+        ]
       }
+      
    ]
   }
 ]

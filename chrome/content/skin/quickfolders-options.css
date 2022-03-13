@@ -1,9 +1,13 @@
-@import url('chrome://quickfolders/content/quickfolders-layout.css');
-@import url('chrome://quickfolders/content/skin/quickfolders-palettes.css');
-@import url('chrome://quickfolders/content/contribute.css');
-@import url('chrome://quickfolders/content/license.css');
+@import url('../quickfolders-layout.css');
+/* @import url('../skin/quickfolders-palettes.css');  */
+@import url('../contribute.css');
+@import url('../license.css');
 
-/******* start thunderbird 78 fixes  *********/
+/* extra lines to fix the legacy options dialog, for now... 
+@import url('chrome://quickfolders/content/quickfolders-layout.css');
+*/
+@import url('chrome://quickfolders/content/skin/quickfolders-palettes.css');
+
 /******* start thunderbird 78 fixes  *********/
 /* platform specific styling */
 :root {
@@ -55,13 +59,8 @@ tabpanel html|input[type="number"]::-moz-number-spin-down {
   margin-block: 4px 2px;
 }
 
-/* html input ignores flex attribute */
-#currentFolderBackground {
-  min-width: 520px;
-}
-
 #copyFolders {
-  color: rgb(20,20,20) !important;
+ /*  color: rgb(20,20,20) !important; */
 }
 
 tabpanel input[type="color"] {
@@ -252,7 +251,7 @@ checkbox .checkbox-label-box .checkbox-icon {
 hbox > textbox:not([multiline="true"]) {
 	max-height: 2em;
 }
-hbox > button {
+hbox > button:not([isTab]) {
 	max-height: 3em !important;
 }
 
@@ -380,7 +379,7 @@ hbox.quickhelp-dbg {
 }
 
 #copyFolders {
-	list-style-image: url("chrome://quickfolders/content/skin/ico/copy-tabs.png");
+	list-style-image: url("ico/copy-tabs.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
@@ -390,8 +389,7 @@ hbox.quickhelp-dbg {
 
 #pasteFolders {
 	min-width: 18px;
-	list-style-image: url("chrome://quickfolders/content/skin/ico/paste-tabs.png");
-	-moz-image-region: rect(0px, 16px, 16px, 0px);
+	list-style-image: url("ico/pasteTabs.png");
 }
 
 #pasteFolders label {
@@ -399,7 +397,7 @@ hbox.quickhelp-dbg {
 }
 
 #pasteFolders:hover {
-	-moz-image-region: rect(16px, 16px, 32px, 0px);
+	list-style-image: url("ico/pasteTabsActive.png");
 }
 
 
@@ -480,10 +478,10 @@ hbox.quickhelp-dbg {
   background-color: rgba(255, 255, 255, 0.7);
 }
 
-
 #validationPassed {
   color: rgb(0,120,0);
 }
+
 
 /* improve visibility on dark themes */
 
@@ -513,15 +511,15 @@ hbox.quickhelp-dbg {
 
 /* #supportgrid  button, */
 #supportgrid .button {
-	display: table-cell;
   width: 230px !important;
   max-width: 230px !important;
 	min-width: 220px !important;
 	padding: 0.5em;
 	border: 1px solid rgba(80, 80, 80, 0.4);
 	height: 55px;
-	text-align: center;
-	vertical-align: middle;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;  
 }
 /* #supportgrid button label, */
 #supportgrid .button label  {
@@ -547,6 +545,9 @@ hbox.quickhelp-dbg {
 	line-height: 1.6em;
 	margin: 0.7em 12em 0.8em 11em !important;
 	min-height: 4em;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;  
 }
 
 #L0:hover {
@@ -555,6 +556,7 @@ hbox.quickhelp-dbg {
 
 #L0 label {
   margin: 0.5em 1em;
+  font-size: 1em;
 }
 
 
@@ -638,6 +640,7 @@ hbox.quickhelp-dbg {
 	height: 250px;
 	max-height: 250px;
 	overflow-y: scroll;
+  margin-right: 1em;
 }
 
 #mailCommandsCustomize {
@@ -734,6 +737,7 @@ textbox[type="number"] .textbox-input {
 /* grid replacement */
 .grid-container {
   align-content: start;
+  align-items: center;
   display: grid;
   grid-row-gap: 5px;
   grid-column-gap: 5px;

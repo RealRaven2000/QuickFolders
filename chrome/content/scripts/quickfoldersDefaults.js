@@ -36,6 +36,7 @@ pref("extensions.quickfolders.quickMove.useHotkey", true);
 pref("extensions.quickfolders.quickMove.Hotkey", 'M');
 pref("extensions.quickfolders.quickMove.Hotkey.Shift", true);
 pref("extensions.quickfolders.quickMove.lastFolderName","");
+pref("extensions.quickfolders.quickMove.lastFolderURI","");
 pref("extensions.quickfolders.quickMove.autoFill",true);
 pref("extensions.quickfolders.quickMove.folderLabel", true);
 pref("extensions.quickfolders.quickMove.reopenMsgTabAfterMove", false); // [issue 132] disable reopening moved mail in single message tab

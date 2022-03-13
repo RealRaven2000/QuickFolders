@@ -1,0 +1,197 @@
+QuickFolders Options conversion project
+========================================
+
+<label  />
+==> 
+<label  for="idOfElement"> </label>
+
+
+<button />  
+==>
+<button> 
+
+
+https://www.w3schools.com/howto/howto_js_tabs.asp
+
+
+- label make closing tabs and replace values
+
+30/11/2021
+Completed conversion for remaining parts of options.html -
+ buttons and checkbox labels, i18n, de-chrome (most) icon paths
+ 
+ Pattern:
+ <checkbox /> <label value="__myText__"/>
+ =>
+ <label> <input type="checkbox" >__myText__</label>
+ 
+Next Steps: reference conversion, replace native icons. 
+- Can icons from Thunderbird still be accessed by a html page? or do we need to supply copied versions...
+
+
+roll out all data-pref- changes to all elements.
+
+support or convert <radiogroup> !!!
+
+Radiogroups wired up!
+
+
+<fieldset orient="horizontal">  - changed to class=hbox.
+
+<separator> to <span class="separator">
+
+Support for collapsed attribute:
+*[collapsed=true] {
+  display: none !important;
+}
+
+
+
+
+Added a class for buttons with icons and tabs in order to add icons (behave like list icons):
+button[isTab], button.iconButton {
+  display: list-item;
+  list-style-position: inside;
+}
+
+Added test config option to suppress xul options dialog (general debug mode must also be enabled):
+extensions.quickfolders.debug.suppressXULoptions
+
+support for sliding alert (accessibility for blind people)
+
+TO DO:
+
+- wiring up events:
+#  Version number - open version history
+
+#  Bling / Layout
+   initBling( ) function.
+   - Themes dropdown
+   - all number inputs
+   - color pickers
+   
+   
+   
+#  Quick Help - open homepage   
+#  Support tab:
+   - YouTube channel
+   - bug report
+   - 
+#  License tab: 
+   - Save Configuration / Load Configuration
+   - Advanced Seach settings (opens new window)
+
+- reuse existing options window, is this possible?
+
+- wire up color pickers: at the moment there are no bound prefs - use a background notification for this?
+
+- convert palette dropdowns to <option> elements  
+
+- white fill color for selected tab.
+
+-moz-image-region = seems to be without alternative. (see paste button for license)
+
+remove "sizetopopup" for menus
+removed 
+
+
+Questions for Monday:
+  how to use folder.createFolder to 
+  
+  
+========    
+ 14/02/2022
+  
+  #  Bling / Layout
+ rewrote  initBling( ) function.
+ fixed Themes dropdowns
+ fixed color pickers
+ 
+ Combined 2 listeners for notifyTools (from legacy code) and windows message listener (from html windows / API code)
+ into a single handler 
+ 
+ 
+========    
+ 15/02/2022
+ 
+ to do - event handlers for  all number inputs
+ 
+ - create alternative color popups for selecting color choices in HTML
+ note that these can be cut off by the dialog's viewport, hence it should
+ be strictly flexible layout and needs to be placed centrally (near the dropdown select
+ element but centrally on viewport)
+ As there are 20 values, best would be 4 columns with 5 entries each.
+ 
+ - use the management library to reopen existing settings window instead of a new one
+ 
+  removed extensions.quickfolders.debug.suppressXULoptions and added a "classic options" menu item for now.
+  
+  added command handlers for checkboxes, most dropdowns and buttons (WIP)
+  added right-click handlers for hidden settings (about:config)
+  Added theme support through
+  <meta name="color-scheme" content="dark light">
+  
+  using a global listener in quickfolders-tablistener for "unique" commands that 
+  should only be executed once (by one of the main windows)
+   
+========    
+ 16/02/2022
+ 
+ - fixed relative css paths for preview tabs
+ - highlight options with right-click events (on hover, used a class on the containing label) 
+ - TODO: add tooltip text to elements with right-click handlers (somehow)
+ - fixed switch between striped and filled style: layout and update UI . 
+   to do: fix bad font coloring on colored tabs when switching back to filled style
+ - fixed toggle for navigation (current folder) bar
+ - implemented [Apply position value]
+ - theme selector: fixed hiding / showing configuration elements depending on
+ - wired up handlers for all numeric controls
+ - fixed type for updateMainWindow parameter "minimal" (boolean instead of string)
+ - [Advanced Search settings...] open xhtml dialog for now
+
+ 
+========    
+ 17/02/2022
+ - fixed layout of [Buy License] button
+ - implemented opening license dialog from buy / update license button
+ - fixed icon in License Tab (green pro icon, when paid)
+ - implemented [Defaults] button for tab radius 
+ - implemented [contact me...] button: this requires "compose" permission!
+ - implemented [Advanced search settings...] button => convert quickmove.xhtml to html next!!
+ - fixed [buy license] button must open license dialog (still xhtml)
+ - fixed close button of "current folder bar" (fill-opacity)
+ - fixed 2 broken links on support tab.
+ - fixed preview of shadow
+  
+
+========    
+18/02/2022
+ - fixed: version number should open history
+ - improved flex layouts + unified font sizes
+
+
+========    
+ 19/02/2022
+ - implemented color dropdown selection panel 
+ 
+======
+  20/02/2022
+  
+ - moved color dropdown closer to the clicked preview tab.
+ - [Default Colors] button
+  
+  
+======
+  21/02/2022  
+ - IMplemented: If dialog is put to back of window, make sure it is reused / brought to foreground if possible
+  
+  
+ to do: 
+ - Copy / Paste Folder String
+ - inject heading image from theme?
+ - Backup / Restore Configuration
+  
+======
+  07/03/2022
+  
+ - Copy / Paste Folder String  (to do: translate button "Paste Tabs")

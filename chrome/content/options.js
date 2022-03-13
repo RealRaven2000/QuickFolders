@@ -294,7 +294,13 @@ QuickFolders.Options = {
     getElement("qf-options-header-description").setAttribute("value", version);
     let tabbox = getElement("QuickFolders-Options-Tabbox");
     
-    getElement('chkShowRepairFolderButton').label = QI.getUIstring("qfFolderRepair","Repair Folder")
+    if (getElement('chkShowRepairFolderButton').label) {
+      getElement('chkShowRepairFolderButton').label = QI.getUIstring("qfFolderRepair","Repair Folder");
+    }
+    else { // HTML version
+      getElement('chkShowRepairFolderButton').parentNode.value=QI.getUIstring("qfFolderRepair","Repair Folder");
+    }
+    
     
     /*****  License  *****/
     options.labelLicenseBtn(getElement("btnLicense"), "buy");
@@ -401,7 +407,13 @@ QuickFolders.Options = {
         backImage = main.getComputedStyle(messengerWin).getPropertyValue("background-image"),
         newTabMenuItem = getMainElement('folderPaneContext-openNewTab');
     if (newTabMenuItem && newTabMenuItem.label) {
-      getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
+      if (getElement('qfOpenInNewTab').label) {
+        getElement('qfOpenInNewTab').label = newTabMenuItem.label.toString();
+      }
+      else { // HTML conversion
+        getElement('qfOpenInNewTab').parentNode.value = newTabMenuItem.label.toString();
+      }
+      
     }
         
     // where theme styling fails.   
@@ -745,7 +757,7 @@ QuickFolders.Options = {
   },
   
   updateMainWindow: function updateMainWindow() {
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false });
   },
   
   // send new key to background page for validation
@@ -969,7 +981,7 @@ QuickFolders.Options = {
   
   applyOrdinalPosition: function applyOrdinalPosition() {
     // refresh the toolbar button in main window(s)
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: true }); 
   } ,
   
   // change background color for current folder bar
@@ -1036,7 +1048,7 @@ QuickFolders.Options = {
           break;
       }
     }
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: true });
     return true;  // return updateResult;
   },
 
@@ -1052,7 +1064,7 @@ QuickFolders.Options = {
     if (!force && prefs.getIntPref("colorTabStyle") == styleId)
       return; // no change!
     prefs.setIntPref("colorTabStyle", styleId); // 0 striped 1 filled
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false }); 
     
     let inactiveTab = document.getElementById('inactivetabs-label');
     QI.applyTabStyle(inactiveTab, styleId);
@@ -1218,7 +1230,7 @@ QuickFolders.Options = {
     else
       QuickFolders.Util.logToConsole('changeTextPreference could not find pref string: '  + prefString); 
     
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false });
     return true;
   },
   
@@ -1241,7 +1253,7 @@ QuickFolders.Options = {
         QuickFolders.Util.notifyTools.notifyBackground({ func: "currentDeckUpdate" }); // QI.onDeckChange(current tab)
         return false;
       case "extensions.quickfolders.toolbar.largeIcons":
-        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: true });
         break;
     }
     // broadcast change of current folder bar for all interested windows.
@@ -1249,7 +1261,7 @@ QuickFolders.Options = {
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" }); 
       return true;
     }
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // force full update
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false }); // force full update
     return true;
   },
   
@@ -1264,7 +1276,7 @@ QuickFolders.Options = {
     if (prefString)
       QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
     
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: true }); 
     return true;
   },
   
@@ -1313,9 +1325,9 @@ QuickFolders.Options = {
   showButtonShadow: function showButtonShadow(isChecked) {
     let el= document.getElementById('inactivetabs-label'),
         myStyle = !isChecked ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
-    el.style.MozBoxShadow = myStyle;
+    el.style.boxShadow = myStyle;
     QuickFolders.Preferences.setBoolPref('buttonShadows', !isChecked);
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" }); 
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: true }); 
     return true;
   },
 
@@ -1349,7 +1361,7 @@ QuickFolders.Options = {
     getElement("inactivetabs-label").style.backgroundColor = buttonfaceColor;
     getElement("inactive-fontcolorpicker").value = buttontextColor;
     getElement("inactivetabs-label").style.color = buttontextColor;
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false }); 
     return true;
   },
 
@@ -1481,58 +1493,10 @@ QuickFolders.Options = {
 
   configureTooltips: function configureTooltips(btn) {
     setTimeout( function () {
-      QuickFolders.Options.showAboutConfig(btn, 'extensions.quickfolders.tooltips', true, true);
+      QuickFolders.Interface.showAboutConfig(btn, 'extensions.quickfolders.tooltips', true, true);
       } );  
   },
   
-  showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateUI = false) {
-    const name = "Preferences:ConfigManager",
-          Cc = Components.classes,
-          Ci = Components.interfaces,
-          util = QuickFolders.Util;
-    let mediator = Services.wm,
-        isTbModern = util.versionGreaterOrEqual(util.Appversion, "85"),
-        uri = (isTbModern) ? "about:config": "chrome://global/content/config.xhtml?debug";
-    
-    let w = mediator.getMostRecentWindow(name),
-        win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
-            ? clickedElement.ownerDocument.defaultView 
-            : window; // parent window
-    if (!w) {
-      let watcher = Cc["@mozilla.org/embedcomp/window-watcher;1"].getService(Ci.nsIWindowWatcher),
-          width = "750px",
-          height = "350px",
-          features = "alwaysRaised,dependent,centerscreen,chrome,resizable,width="+ width + ",height=" + height;
-      if (util.HostSystem == 'winnt')
-        w = watcher.openWindow(win, uri, name, features, null);
-      else
-        w = win.openDialog(uri, name, features);
-    }
-    if (updateUI) {
-      // make sure QuickFolders UI is updated when about:config is closed.
-      w.addEventListener('unload', function(event) { 
-        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
-      });
-    }
-    w.focus();
-    w.addEventListener('load', 
-      function () {
-        let id = (isTbModern) ? "about-config-search" : "textbox";
-        let flt = w.document.getElementById(id);
-        if (flt) {
-           flt.value=filter;
-          // make filter box readonly to prevent damage!
-           if (!readOnly)
-            flt.focus();
-           else
-            flt.setAttribute('readonly',true);
-           if (w.self.FilterPrefs) {
-            w.self.FilterPrefs();
-          }
-        }
-      });
-  },
-
   showVersionHistory: function showVersionHistory(ask) {
     let util = QuickFolders.Util,
         pureVersion=util.VersionSanitized,
@@ -1701,7 +1665,7 @@ QuickFolders.Options = {
 		if (confirm(textPrompt)) {
 			// create (non existent filter setting:
 			QuickFolders.Preferences.setBoolPrefVerbose(filter, Default);
-			QuickFolders.Options.showAboutConfig(null, filter, true, false);
+			QuickFolders.Interface.showAboutConfig(null, filter, true, false);
 		}
 	},
 	
@@ -2044,8 +2008,8 @@ QuickFolders.Options = {
                 function readSuccess(data) {
                   readFunction(data);
                 },
-                function readFailed(ex) {
-                  util.logDebug ('read() - Failure: ' + ex);
+                function readFailed(reason) {
+                  util.logDebug ('read() - Failure: ' + reason);
                 }
               )
               break;

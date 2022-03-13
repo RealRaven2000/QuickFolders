@@ -50,7 +50,8 @@ QuickFolders.quickMove = {
       let fld = (URIorFolder.name) ? URIorFolder : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
           sRememberFolder = (parentName) ? parentName + "/" + fld.prettyName : fld.prettyName;
       prefs.setStringPref("quickMove.lastFolderName", sRememberFolder);
-      util.logDebugOptional('quickMove',"Storing: " + sRememberFolder);
+      prefs.setStringPref("quickMove.lastFolderURI", fld.URI);
+      util.logDebugOptional('quickMove',"Storing: " + sRememberFolder + " - " + fld.URI);
     }
     catch (ex) {
       util.logException("rememberLastFolder( " + URIorFolder + ", " + parentName + ")", ex);

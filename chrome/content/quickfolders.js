@@ -224,9 +224,11 @@ END LICENSE BLOCK */
 
   5.9 QuickFolders Pro - WIP
     ## [issue 220] fixed alias identity support switch
-    ## 
-    ## 
-  
+    ## [issue 232] fixed: When Adding a category to a tab, another category may be replaced
+    ## [issue 235] quickJump may fail if "Compact mode" in folder tree is enabled.
+    ## [issue 241] using quickJump / quickMove via shortcut - hitting Enter will now always select the last successful location (even when the name is ambiguous) 
+                   and not the top item of the menu. This is only used on Enter if the menu is visible. (user needs to type or hit Arrow down)
+    ## [issue 242] Using '=' key for recent folders - now also support quickMove
   
   
     -=-----------------=-    PLANNED
@@ -595,7 +597,7 @@ var QuickFolders = {
 			util.logException('init: folderEntries', ex);
 		}
     finally {
-      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false }); 
       // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
       // make sure tabs not in active category are hidden - this at least doesn't happen if we load the extension from the debugging tab
       if (QI.currentActiveCategories) {
@@ -1121,8 +1123,8 @@ var QuickFolders = {
                 moveOrCopy(fld, currentURI);
                 
               },
-              function failedCreateFolder(ex) {
-                util.logException('getOrCreateFolder() ', ex);	
+              function failedCreateFolder(reason) {
+                util.logToConsole('getOrCreateFolder() ', reason);	
                 util.alert("Something unforeseen happened trying to create the folder, for detailed info please check tools / developer tools / error console!\n"
                   + "To add more detail, enable debug mode in QuickFolders advanced settings.");
               }
@@ -2158,16 +2160,31 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   let isSelected = false,
       forceSelect = prefs.isChangeFolderTreeViewEnabled;
   const theTreeView = gFolderTreeView;
+  let isCompact = theTreeView.toggleCompactMode ? (theTreeView._tree.getAttribute("compact") == "true") : false;
+
   
-  if (theTreeView.mode)
+  if (theTreeView.mode) {
     QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB78)
+  }
+  if (theTreeView._activeModes) {
+    QuickFolders.activeTreeViewModes = theTreeView._activeModes; // backup array of view modes.
+  }
 
   folderIndex = theTreeView.getIndexOfFolder(msgFolder);
   if (null == folderIndex) {
     util.logDebugOptional("folders.select","theTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
     isSelected = theTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
     folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+    if (null == folderIndex && isCompact) {
+      theTreeView.toggleCompactMode(false);
+      isSelected = theTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
+    }
+    folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+    if (isCompact) {
+      theTreeView.toggleCompactMode(true);
+    }
   }
+  
   util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
   
   if (msgFolder.parent) {

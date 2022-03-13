@@ -267,7 +267,7 @@ QuickFolders.AdvancedTab = {
 		
     // refresh the model
     // QuickFolders.Interface.updateFolders(false, true);
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); 
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false }); 
     this.MainQuickFolders.Model.store(); 
 		this.updateCSSpreview();
   } ,
@@ -292,7 +292,6 @@ QuickFolders.AdvancedTab = {
   
   resize: function resize(wd) {
 		const util = QuickFolders.Util;
-		if (util.isDebug) debugger;
     // make sure the window is placed below the referenced Tab, but not clipped by screen edge
     let x = wd.screenX,
         y = wd.screenY,

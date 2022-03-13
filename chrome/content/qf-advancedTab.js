@@ -292,7 +292,6 @@ QuickFolders.AdvancedTab = {
   
   resize: function resize(wd) {
 		const util = QuickFolders.Util;
-		if (util.isDebug) debugger;
     // make sure the window is placed below the referenced Tab, but not clipped by screen edge
     let x = wd.screenX,
         y = wd.screenY,

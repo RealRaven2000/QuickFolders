@@ -21,6 +21,8 @@
   },
   "permissions": [
     "accountsRead",
+    "accountsFolders",
+    "notifications"
     "compose",
     "notifications",
     "clipboardRead",

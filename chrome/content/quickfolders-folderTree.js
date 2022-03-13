@@ -44,7 +44,6 @@ QuickFolders.FolderTree = {
           if (!gFolderTreeView.qfIconsEnabled) {
             return props;
           }
-					
           try {
 						if (gFolderTreeView.supportsIcons && folder) {
 							let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
@@ -53,8 +52,9 @@ QuickFolders.FolderTree = {
 								props += " " + folderIcon;
 							}
 						}
-						else
-							util.logToConsole("treeView.supportsIcons = false!")
+						else {
+							util.logDebugOptional('folderTree', "treeView.supportsIcons = false!");
+            }
           }
           catch(ex) {
             if (QuickFolders) {

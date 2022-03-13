@@ -76,14 +76,15 @@ QuickFolders.Util = {
             `onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.${data.event}\n` +
             `into ${window.document.location.href.toString()}`);
           let event;
-          if (data.detail) {
+          let n = { ...data}; // shallow copy using spread syntax
+          delete n["event"]; // remove event from the copy and forward the rest on.
+          if (Object.keys(n).length) { // 
             // use CustomEvent.detail for transporting function parameters?
-            event = new CustomEvent(`QuickFolders.BackgroundUpdate.${data.event}`, {detail: data.detail}) 
+            event = new CustomEvent(`QuickFolders.BackgroundUpdate.${data.event}`, {detail: n} ) 
           }
           else {
             event =  new CustomEvent(`QuickFolders.BackgroundUpdate.${data.event}`) ;
           }
-          
           window.dispatchEvent(event); 
         }       
       }      

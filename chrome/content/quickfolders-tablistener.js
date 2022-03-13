@@ -105,3 +105,28 @@ QuickFolders.TabListener = {
     QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.moveTab()  - idx = " + idx);
   } 
 }
+
+QuickFolders.onGlobalQFCommand = (data) => {
+  if (data.event) {
+    switch(data.event) {
+      case "showAboutConfig":
+        QuickFolders.Interface.showAboutConfig(data.element, data.filter, data.readOnly, data.updateUI);
+        break;
+      case "showLicenseDialog":
+        QuickFolders.Interface.showLicenseDialog(data.referrer);
+        break;
+      case "legacyAdvancedSearch":
+      {
+        let params = {inn:{mode:"allOptions", instance: QuickFolders}, out:null},
+            win = window.openDialog('chrome://quickfolders/content/quickmove.xhtml',
+              'quickfolders-search-options',
+              'chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply',
+              QuickFolders,
+              params).focus();
+      }          
+        break;
+    }
+  }
+}
+
+QuickFolders.Util.notifyTools.registerListener(QuickFolders.onGlobalQFCommand);

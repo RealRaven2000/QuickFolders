@@ -945,7 +945,7 @@ QuickFolders.Interface = {
 		let style =  prefs.ColoredTabStyle; // unused?
     
     // refresh main windows
-    if (!minimal) {
+    if (!minimal || "false" == minimal) {
       logCSS("updateMainWindow: update Folders UI…");
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // updates both folders - updateFolders(true, false) - and user styles
     }
@@ -4526,7 +4526,7 @@ QuickFolders.Interface = {
 	} ,
 
   // forceFind - enter key has been pressed, so we want the first match to force a jump
-	findFolderName: function findFolderName(searchBox, forceFind) {
+	findFolderName: async function findFolderName(searchBox, forceFind) {
     // make the abbreviated string for the menu item
 		function buildParentString(folder, parentCount) {
 			let pS = "", // build expanded parent string
@@ -5230,7 +5230,13 @@ QuickFolders.Interface = {
 
 	// selectedTab   - force a certain tab panel to be selected
 	// updateMessage - display this message when opening the dialog
-	viewOptions: function viewOptions(selectedTab, updateMessage) {
+	viewOptions: function viewOptions(selectedTab, updateMessage, isClassic=false) {
+    // wx options:
+    if (!isClassic) {
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab, updateMessage });  
+      return;
+    }
+    
 		let params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null},
         //  in linux the first alwaysRaised hides the next child (config dialogs)
         features = (QuickFolders.Util.HostSystem == "linux") ?
@@ -5700,7 +5706,7 @@ QuickFolders.Interface = {
 					this.setPaintButtonColor(col);
 					return;
 				default:  // "QuickFolders-Options-PalettePopup" etc.
-				  if (parent.id.indexOf("QuickFolders-Options-")<0)
+				  if (!parent.id.includes("QuickFolders-Options-"))
 						continue;  //
           var options = QuickFolders.Options; // should only work when called from the options menu!
 					// options dialog case: parent is menupopup
@@ -5807,7 +5813,7 @@ QuickFolders.Interface = {
 							cp.value = "#FFFFFF";
 						}
 						prefs.setUserStyle(styleKey, "background-color", "rgb(255,255,255)");
-            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false });
 					}
           if (styleKey == "InactiveTab")
             this.applyTabStyle(document.getElementById("inactivetabs-label"), prefs.ColoredTabStyle);
@@ -5817,7 +5823,7 @@ QuickFolders.Interface = {
           }
           if (disableColorChangeStriped) {
             // force update as it might have been missed!
-            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
+            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: true });
           }
 					return; // early exit
 			} // end switch
@@ -7055,7 +7061,169 @@ QuickFolders.Interface = {
   quickMoveHelpRemove: function() {
     let overlay = document.getElementById("quickMoveHelpOverlay");
     if (overlay) overlay.parentNode.removeChild(overlay);
-  } 
+  } ,
+  
+  // moved from QuickFolders.Options!
+  showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateUI = false) {
+    const name = "Preferences:ConfigManager",
+          Cc = Components.classes,
+          Ci = Components.interfaces,
+          util = QuickFolders.Util;
+    let mediator = Services.wm,
+        isTbModern = util.versionGreaterOrEqual(util.Appversion, "85"),
+        uri = (isTbModern) ? "about:config": "chrome://global/content/config.xhtml?debug";
+    
+    let w = mediator.getMostRecentWindow(name), win;
+    if (clickedElement) {
+      win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
+          ? clickedElement.ownerDocument.defaultView 
+          : window; // parent window
+    }
+    else {
+      // how to get last options.html window?
+      // win = mediator.getMostRecentWindow(name); 
+      win = null;
+    }
+
+    if (!w) {
+      let watcher = Cc["@mozilla.org/embedcomp/window-watcher;1"].getService(Ci.nsIWindowWatcher),
+          width = "750px",
+          height = "350px",
+          features = "alwaysRaised,dependent,centerscreen,chrome,resizable,width="+ width + ",height=" + height;
+      if (util.HostSystem == 'winnt')
+        w = watcher.openWindow(win, uri, name, features, null);
+      else
+        w = win.openDialog(uri, name, features);
+    }
+    if (updateUI) {
+      // make sure QuickFolders UI is updated when about:config is closed.
+      w.addEventListener('unload', function(event) { 
+        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false }); 
+      });
+    }
+    w.focus();
+    w.addEventListener('load', 
+      function () {
+        let id = (isTbModern) ? "about-config-search" : "textbox";
+        let flt = w.document.getElementById(id);
+        if (flt) {
+           flt.value=filter;
+          // make filter box readonly to prevent damage!
+           if (!readOnly)
+            flt.focus();
+           else
+            flt.setAttribute('readonly',true);
+           if (w.self.FilterPrefs) {
+            w.self.FilterPrefs();
+          }
+        }
+      });
+  },
+  
+  pasteFolderEntriesFromClipboard: function () {
+    // originally this was located in QF.options.pasteFolderEntries
+    const Cc = Components.classes,
+          Ci = Components.interfaces,
+          service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
+          util = QuickFolders.Util,
+          prefs = QuickFolders.Preferences;
+    let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable),
+        str       = {},
+        strLength = {},
+        strFoldersPretty = '';
+
+    util.popupRestrictedFeature("pasteFolderEntries", "", 2); // standard feature
+    if (!util.hasValidLicense()) return;
+        
+    trans.addDataFlavor("text/unicode");
+    var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
+    
+    if (Services.clipboard) 
+      Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
+    trans.getTransferData("text/unicode", str, strLength);
+    
+    
+    if (str) {
+      let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data;
+      strFoldersPretty = pastetext.toString();
+    }
+    try {
+      let folders = strFoldersPretty.replace(/\r?\n|\r/, ''),
+          entries = JSON.parse(folders),
+          question = util.getBundleString("qf.prompt.pasteFolders");
+      if (Services.prompt.confirm(window, "QuickFolders", question.replace("{0}", entries.length))) {
+        for (let i = 0; i < entries.length; i++) {
+          if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
+            entries[i].tabColor = 0;
+          // default the name!!
+          if (!entries[i].name) {
+            // retrieve the name from the folder uri (prettyName)
+            let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, false);
+            if (f)
+              entries[i].name = f.prettyName;
+          }
+        }
+        if (!entries.length)
+          entries=[];
+        util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(entries);
+        question = util.getBundleString("qf.prompt.pasteFolders.confirm");
+        if (Services.prompt.confirm(window, "QuickFolders", question)) {
+          // store
+          prefs.storeFolderEntries(entries);
+          // tell all windows!
+          QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });
+        }
+        else {
+          // roll back
+          util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(prefs.loadFolderEntries());
+        }
+        
+      }
+    }
+    catch (ex) {
+      util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
+      Services.prompt.alert(null, "QuickFolders", util.getBundleString("qf.alert.pasteFolders.formatErr"));
+    }
+  },
+  
+  copyFolderEntriesToClipboard: function() {
+    // originally this was located in QF.options.copyFolderEntries
+    // debug function for checking users folder string (about:config has trouble with editing JSON strings)
+    const Cc = Components.classes,
+          Ci = Components.interfaces,
+          service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
+          util = QuickFolders.Util;
+
+    try {
+      let clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper),
+          sFolderString = service.getStringPref("QuickFolders.folders");
+
+      util.logToConsole("Folder String: " & sFolderString);
+      try {
+        // format the json
+        let prettyFolders = JSON.stringify(JSON.parse(sFolderString), null, '  '); 
+        clipboardhelper.copyString(prettyFolders);
+      }
+      catch (e) {
+        util.logException("Error prettifying folder string:\n", e);
+        clipboardhelper.copyString(sFolderString);
+      }
+      let out = util.getBundleString("qfAlertCopyString"),
+          mail3PaneWindow = util.getMail3PaneWindow();
+      
+      if (mail3PaneWindow && mail3PaneWindow.QuickFolders) {
+        out += " [" + mail3PaneWindow.QuickFolders.Model.selectedFolders.length + " folders]";
+      }
+      //alert(out);
+      Services.prompt.alert(null,"QuickFolders",out);
+    }
+    catch(e) {
+      //alert(e);
+      Services.prompt.alert(null,"QuickFolders",e);
+    }
+  },  
+
+  
 
 }; // Interface
 

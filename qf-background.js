@@ -86,6 +86,7 @@ function showSplash(msg="") {
   browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
 }
 
+
 async function main() {
   const legacy_root = "extensions.quickfolders.";
   let key = await messenger.LegacyPrefs.getPref(legacy_root + "LicenseKey", ""),
@@ -103,24 +104,29 @@ async function main() {
   callbacks.forEach(callback => callback());
   startupFinished = true;
 
-  // listeners for splash pages
-  messenger.runtime.onMessage.addListener(async (data, sender) => {
-    if (data.command) {
-      switch (data.command) {
-        case "getLicenseInfo": 
-          return currentLicense.info;
-      }
-    }
-  });
+  let msg_commands = [
+    "currentDeckUpdate",
+    "getLicenseInfo",
+    "copyFolderEntries",
+    "pasteFolderEntries",
+    "legacyAdvancedSearch", // new global one!
+    "showAboutConfig", // new global one!
+    "showLicenseDialog", // new global one!
+    "slideAlert",
+    "updateCategoryBox",
+    "updateFoldersUI",
+    "updateLicense",
+    "updateMainWindow",
+    "updateNavigationBar",
+    "updateQuickFoldersLabel",
+    "updateUserStyles",
+    "toggleNavigationBar"
+  ];
+
   
-  messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
-    let isLog = await messenger.LegacyPrefs.getPref(legacy_root + "debug.notifications");
-    if (isLog && data.func) {
-      console.log ("=========================\n" +
-                   "BACKGROUND LISTENER received: " + data.func + "\n" +
-                   "=========================");
-    }
-    switch (data.func) {
+  async function notificationHandler(data) {
+    let command = data.func || data.command;
+    switch (command) {
       case "slideAlert":
         util.slideAlert(...data.args);
         break;
@@ -179,16 +185,67 @@ async function main() {
         break;
         
       case "updateMainWindow": // we need to add one parameter (minimal) to pass through!
-        let isMinimal = (data.minimal) || "false";
+        let isMinimal = (data.minimal) || false;
         messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: isMinimal});
         break;
         
-       case "currentDeckUpdate":
+      case "showAboutConfig":
+        messenger.NotifyTools.notifyExperiment({
+          event: "showAboutConfig", 
+          element: null,
+          filter: data.filter,
+          readOnly: data.readOnly,
+          updateUI: data.updateUI || false
+        });
+        break;
+        
+      case "showLicenseDialog":
+        messenger.NotifyTools.notifyExperiment({
+          event: "showLicenseDialog", 
+          referrer: data.referrer
+        });
+        break;
+        
+      case "legacyAdvancedSearch":
+        messenger.NotifyTools.notifyExperiment({event: "legacyAdvancedSearch"});
+        break;
+        
+      case "currentDeckUpdate":
         messenger.NotifyTools.notifyExperiment({event: "currentDeckUpdate"});
         break;
         
       case "initKeyListeners":
         messenger.NotifyTools.notifyExperiment({event: "initKeyListeners"});
+        break;
+        
+      case "openPrefs":
+        let params = new URLSearchParams();
+        if (data.selectedTab || data.selectedTab==0) {
+          params.append("selectedTab", data.selectedTab);
+        }
+        
+        let title = messenger.i18n.getMessage("qf.prefwindow.quickfolders.options");
+        // to get the tab - we need the activetab permission
+        // query for url 
+        let url = browser.runtime.getURL("/html/options.html") + "*";
+
+        let [oldTab] = await browser.tabs.query({url}); // dereference first 
+        if (oldTab) {
+          await browser.windows.update(oldTab.windowId, {focused:true});
+        }
+        else {
+          let optionWin = await messenger.windows.create(
+            { height: 780, 
+              width: 830, 
+              type: "panel", 
+              url: `/html/options.html?${params.toString()}`,
+              titlePreface: title,
+              allowScriptsToClose : true
+            }
+          );
+        }
+           
+        // optionWin.sizeToContent() 
         break;
 
       case "updateLicense":
@@ -205,11 +262,49 @@ async function main() {
         // Update background license.
         await messenger.LegacyPrefs.setPref(legacy_root + "LicenseKey", newLicense.info.licenseKey);
         currentLicense = newLicense;
-        // Broadcast
-        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info})
+        
+        // 1. Broadcast into Experiment
+        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+        
+        // 2. notify options.html (new, using message API)
+        let message = {
+          msg: "updatedLicense",
+          licenseInfo: currentLicense.info
+        }
+        messenger.runtime.sendMessage(message);
+        
         messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
         
         return true;
+        
+      case "copyFolderEntries":
+        messenger.NotifyTools.notifyExperiment({event: "copyFolderEntriesToClipboard"});
+        break;
+      case "pasteFolderEntries":
+        messenger.NotifyTools.notifyExperiment({event: "pasteFolderEntriesFromClipboard"});
+        break;
+    }
+  }
+  
+  // background listener
+  messenger.NotifyTools.onNotifyBackground.addListener((data) => {
+    messenger.LegacyPrefs.getPref(legacy_root + "debug.notifications").then(
+      isLog => {
+        if (isLog && data.func) {
+          console.log ("=========================\n" +
+                       "BACKGROUND LISTENER received: " + data.func + "\n" +
+                       "=========================");
+        }
+      }
+    );
+    return notificationHandler(data); // returns the promise for notification Handler
+  });
+  
+  // message listener - SELECTIVE!
+  // every message listener must have its unique set of messages (if it returns something)
+  messenger.runtime.onMessage.addListener((data, sender) => {
+    if (msg_commands.includes(data.command)) {
+      return notificationHandler(data, sender); // the result of this is a Promise
     }
   });
   
@@ -238,7 +333,8 @@ async function main() {
   ]);
   
   
-  messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
+  // messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
+  // messenger.WindowListener.registerOptionsPage("html/options.html"); 
 
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/qf-composer.js");

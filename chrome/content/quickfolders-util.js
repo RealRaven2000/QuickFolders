@@ -400,12 +400,27 @@ QuickFolders.Util = {
     
       util.logDebugOptional("premium", "notifyBox.appendNotification()…");
       const imgSrc = "chrome://quickfolders/content/skin/ico/proFeature.png";
-      let newNotification = 
-        notifyBox.appendNotification( theText, 
-          notificationKey, 
-          imgSrc, 
-          notifyBox.PRIORITY_INFO_HIGH, 
-          nbox_buttons ); 
+      let newNotification;
+
+      if (notifyBox.shown) { // new notification format (Post Tb 99)
+        newNotification = 
+          notifyBox.appendNotification( 
+            notificationKey, // "String identifier that can uniquely identify the type of the notification."
+            {
+              priority: notifyBox.PRIORITY_INFO_HIGH,
+              label: theText 
+            },
+            nbox_buttons // no buttons
+          );
+      }
+      else {
+        newNotification = 
+          notifyBox.appendNotification( theText, 
+            notificationKey, 
+            imgSrc, 
+            notifyBox.PRIORITY_INFO_HIGH, 
+            nbox_buttons ); 
+      }
           
       // setting img was removed in Tb91  
       if (newNotification.messageImage.tagName == "span") {

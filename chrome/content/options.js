@@ -25,13 +25,13 @@ QuickFolders.Options = {
 
   // save space, for visually impaired
   collapseHead: function collapseHead() {
-    let hdr = document.getElementById('qf-header-container');
-    hdr.setAttribute('collapsed', true);
-    let panels = document.getElementById('QuickFolders-Panels');
-    panels.style.minHeight = '';
-    panels.style.overflowY = 'scroll';
-    let prefpane = document.getElementById('qf-options-prefpane');
-    prefpane.style.overflowY = 'scroll';;
+    let hdr = document.getElementById("qf-header-container");
+    hdr.setAttribute("collapsed", true);
+    let panels = document.getElementById("QuickFolders-Panels");
+    panels.style.minHeight = "";
+    panels.style.overflowY = "scroll";
+    let prefpane = document.getElementById("qf-options-prefpane");
+    prefpane.style.overflowY = "scroll";;
   },
   
   rememberLastTab: function rememberLastTab() {
@@ -72,12 +72,12 @@ QuickFolders.Options = {
 
       prefs.setUserStyle("Toolbar","background-color",
               getElement("toolbar-colorpicker").value);
-      prefs.setIntPref('style.corners.customizedTopRadiusN',
+      prefs.setIntPref("style.corners.customizedTopRadiusN",
               getElement("QuickFolders-Options-CustomTopRadius").value);
-      prefs.setIntPref('style.corners.customizedBottomRadiusN',
+      prefs.setIntPref("style.corners.customizedBottomRadiusN",
               getElement("QuickFolders-Options-CustomBottomRadius").value);
 
-      prefs.setStringPref('currentFolderBar.background', 
+      prefs.setStringPref("currentFolderBar.background", 
                 getElement("currentFolderBackground").value);
       // QuickFolders.Interface.setPaintButtonColor(-1);
       QuickFolders.Util.notifyTools.notifyBackground({ func: "initKeyListeners" }); // QuickFolders.initKeyListeners();

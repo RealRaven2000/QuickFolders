@@ -83,13 +83,26 @@ QuickFolders.FilterWorker = {
           ];
 					
 				
-					notifyBox.appendNotification(theText, 
-							notificationKey , 
-							"chrome://quickfolders/content/skin/ico/filterTemplate.png" , 
-							notifyBox.PRIORITY_INFO_LOW, 
-								nbox_buttons,
-								function(eventType) { util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
-								); 
+          if (notifyBox.shown) { // new notification format (Post Tb 99)
+            notifyBox.appendNotification( 
+              notificationKey, // "String identifier that can uniquely identify the type of the notification."
+              {
+                priority: notifyBox.PRIORITY_INFO_LOW,
+                label: theText,
+                eventCallback: eventType => { util.onCloseNotification(eventType, notifyBox, notificationKey); } 
+              },
+              nbox_buttons // no buttons
+            );
+          }
+          else {
+            notifyBox.appendNotification(theText, 
+                notificationKey , 
+                "chrome://quickfolders/content/skin/ico/filterTemplate.png" , 
+                notifyBox.PRIORITY_INFO_LOW, 
+                  nbox_buttons,
+                  eventType => { util.onCloseNotification(eventType, notifyBox, notificationKey); } // eventCallback
+            ); 
+          }
 							
 				}
 				else {

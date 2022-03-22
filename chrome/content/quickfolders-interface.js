@@ -3008,7 +3008,7 @@ QuickFolders.Interface = {
 		this.rebuildSummary(folder);
 	} ,
 
-	onNewFolder: function onNewFolder(element,evt) {
+	onNewFolder: async function onNewFolder(element,evt) {
 		let util = QuickFolders.Util,
 				QI = QuickFolders.Interface,
         folder = util.getPopupNode(element).folder, // [issue 234] to be removed for API 
@@ -3021,23 +3021,23 @@ QuickFolders.Interface = {
     
     if (apiPath) {
       util.logDebug("Menu - create API folder - " + apiPath);
-      QI.onCreateAPIFolder(apiPath);
+      return QI.onCreateAPIFolder(apiPath);
     }
     else {
       util.logDebug("create folder (trad)")
-      QI.onCreateInstantFolder(folder);  // async function
+      return QI.onCreateInstantFolder(folder);  // async function
     }
 	},
    
   onCreateAPIFolder: function(parentPath, folderName) {
-    QuickFolders.Util.notifyTools.notifyBackground({ func: "createSubfolder", parentPath, folderName  })
-      .then(console.log).catch(console.error); // this will log the folder as return value is passed to callback
+    return QuickFolders.Util.notifyTools.notifyBackground({ func: "createSubfolder", parentPath, folderName  });
+     // .then(console.log).catch(console.error); // this will log the folder as return value is passed to callback
       
 	},
 
 	// * function for creating a new folder under a given parent
 	// see http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2359
-	onCreateInstantFolder: function onCreateInstantFolder(parentFolder, folderName) {
+	onCreateInstantFolder: async function onCreateInstantFolder(parentFolder, folderName) {
 		const util = QuickFolders.Util,
 					QI = QuickFolders.Interface,
 		      Ci = Components.interfaces,
@@ -3066,31 +3066,29 @@ QuickFolders.Interface = {
 		let newFolderUri = parentFolder.URI + "/" + encodeURI(input.value);
 
 		// this asynchronous function is in quickfolders-shim as Postbox doesn't support the new syntax
-		util.getOrCreateFolder(
-		  newFolderUri,
-		  util.FolderFlags.MSG_FOLDER_FLAG_MAIL).then(  // avoiding nsMsgFolderFlags for postbox...
-			  function createFolderCallback() {
-					// create QuickFolders Tab?
-					if (check.value) {
-						let cat = QI.CurrentlySelectedCategories;
-						QuickFolders.Model.addFolder(newFolderUri, cat);
-					}
-					// move emails or jump to folder after creation
-					if (isQuickMove) {
-						QuickFolders.quickMove.execute(newFolderUri, parentFolder.name);
-					}
-					else if (isFindFolder) { // quickJump (we do not jump into folder when "New Subfolder" button is clicked)
-						QuickFolders_MySelectFolder(newFolderUri, true);
-					}
-					if (isFindFolder) { // tidy up quickMove menu
-						QI.findFolder(false);
-						QI.hideFindPopup();
-					}
-		    },
-				function failedCreateFolder(reason) {
-					util.logToConsole(`Exception in getOrCreateFolder(${newFolderUri}, ${util.FolderFlags.MSG_FOLDER_FLAG_MAIL}) `, reason);
-				}
-			);
+    try {
+      let newFolder = await util.getOrCreateFolder(newFolderUri, util.FolderFlags.MSG_FOLDER_FLAG_MAIL);
+      // create QuickFolders Tab?
+      if (check.value) {
+        let cat = QI.CurrentlySelectedCategories;
+        QuickFolders.Model.addFolder(newFolderUri, cat);
+      }
+      // move emails or jump to folder after creation
+      if (isQuickMove) {
+        QuickFolders.quickMove.execute(newFolderUri, parentFolder.name);
+      }
+      else if (isFindFolder) { // quickJump (we do not jump into folder when "New Subfolder" button is clicked)
+        QuickFolders_MySelectFolder(newFolderUri, true);
+      }
+      if (isFindFolder) { // tidy up quickMove menu
+        QI.findFolder(false);
+        QI.hideFindPopup();
+      }
+      return newFolder; // returns a [fulfilled] promise (because getOrCreateFolder is awaited already)
+    }
+    catch(reason) {
+      util.logToConsole(`Exception in getOrCreateFolder(${newFolderUri}, ${util.FolderFlags.MSG_FOLDER_FLAG_MAIL}) `, reason);
+    }
 	},
 
 	onSearchMessages: function onSearchMessages(element) {

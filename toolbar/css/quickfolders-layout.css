@@ -1,0 +1,1189 @@
+
+/* broke out palette piece for custom configurations */
+@import url('quickfolders-widgets.css');
+/* version specific styling 
+  @import url('../chrome/content/quickfolders-mods.css');
+*/
+
+
+/*
+  element replacements:
+  toolbar = div.customtoolbar
+  toolbarbutton = button
+*/  
+  
+
+/* without standard license */
+.customtoolbar .folderBarContainer button[disabled="true"] {
+  background-color: rgb(70,70,70) !important;
+  background-image: none !important;
+}
+.customtoolbar .folderBarContainer button[disabled="true"] > label {
+  color: rgb(170,170,170) !important;
+}
+
+
+
+#QuickFolders-Toolbar button.popupButton {
+	background: transparent !important;
+	border-style: none !important;
+	min-height: 16px;
+	height: 16px !important;
+	background-size: 16px 16px !important;
+	padding-top: 0;
+	padding-bottom: 0;
+	padding-right: 1px;
+}
+
+#QuickFolders-quickMoveMenu .msgUri,
+#QuickFolders-readingListMenu .msgUri {
+	list-style-image: url("../chrome/content/skin/ico/message-mail.png");
+}
+#QuickFolders-quickMoveMenu .msgCopy {
+	list-style-image: url("../chrome/content/skin/ico/message-copy.png") !important;
+}
+
+#QuickFolders-quickMoveMenu .folderUri {
+  list-style-image: url("chrome://messenger/skin/icons/folder.svg");
+}
+
+#QuickFolders-quickMoveMenu .folderCopy {
+  list-style-image: url('../chrome/content/skin/ico/folder-add.svg') !important;
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: currentColor;
+  fill-opacity: var(--button-icon-fill-opacity);
+  stroke: var(--green-highlight);
+}
+
+#QuickFolders-quickMoveMenu .msgUri.invalid,
+#QuickFolders-readingListMenu .msgUri.invalid {
+	list-style-image: url("../chrome/content/skin/ico/message-invalid.png");
+}
+
+#QuickFolders-ToolbarPopup menuitem image {
+  fill: var(--button-icon-fill, currentColor);
+  fill-opacity: var(--button-icon-fill-opacity);
+}
+
+#QuickFolders-Toolbar button#QuickFolders-mainPopup {
+	list-style-image: url("../chrome/content/skin/ico/settings.svg");
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: var(--button-icon-fill, currentColor);
+  fill-opacity: var(--button-icon-fill-opacity);
+}
+
+#QuickFolders-Toolbar button#QuickFolders-quickMove {
+	list-style-image: url("../chrome/content/skin/ico/move.svg");
+  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+  fill: currentColor;
+  fill-opacity: var(--button-icon-fill-opacity);
+	stroke: var(--new-highlight);
+  stroke-opacity: 1;
+}
+
+#QuickFolders-Toolbar button#QuickFolders-readingList {
+	list-style-image: url("chrome://messenger/skin/icons/tag.svg");
+  -moz-context-properties: fill;
+  fill: currentColor;
+}
+
+/* buttons with "counts" beside them */
+#QuickFolders-quickMove > label,
+#QuickFolders-readingList > label {
+  font-family: Verdana,"DejaVu Sans",sans-serif;
+	font-size: 7pt !important;
+	font-weight: bold;
+}
+#QuickFolders-quickMove[label=''] > label,
+#QuickFolders-readingList[label=''] > label {
+  padding:0;
+  width: 0;
+	border-width: 0 !important;
+}
+
+#QuickFolders-quickMove > label, #QuickFolders-readingList > label {
+  border-radius: 4px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96) inset !important;
+  padding: 0px 2px;
+}
+
+#QuickFolders-quickMove > label {
+  background-color: rgba(220, 0, 0, 0.9);
+	color: #ffffff !important;
+	border: 1px solid rgba(128,128,128,0.5);
+  margin-left: 2px !important;
+  text-decoration: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96), 0px 0px 3px rgba(0, 0, 0, 0.8), 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+#QuickFolders-readingList > label {
+  background-color: rgba(180, 180, 180, 0.9);
+	color: white !important;
+	border: 1px solid rgba(128,128,128,0.5);
+	margin-left: 0px;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.96), 0px 0px 3px rgba(0, 0, 0, 0.8), 0px 0px 4px rgba(0, 0, 0, 0.5);
+}
+
+#QuickFolders-readingList:-moz-drag-over > label,
+#QuickFolders-readingList.dragover > label {
+  background-color: rgba(0, 140, 20, 0.75) !important;
+  text-shadow: none;
+}
+
+#QuickFolders-readingList:hover > label {
+  background-color: rgba(50, 190, 255, 0.9) !important;
+  color: #ffffff !important;
+}
+
+#QuickFolders-quickMove:hover > label {
+  background-color: #ffffff;
+	border: 1px solid rgba(120, 0, 0, 0.9);
+  color: rgba(120, 0, 0, 0.9) !important;
+  text-shadow: none;
+}
+
+#QuickFolders-quickMove:not([label='']):-moz-drag-over > label,
+#QuickFolders-quickMove:not([label='']).dragover > label {
+  background-color: yellow;
+	border: 1px solid rgb(120, 0, 0);
+	box-shadow:inset 0px 0px 1px 1px rgba(120, 0, 0, 0.7); /* simulate fat border without object growing */
+  color: rgba(120, 0, 0, 0.9) !important;
+  text-shadow: none;
+}
+
+/* allow extra long paths. default is 42em  #QuickFolders-quickMoveMenu */
+menupopup.widerMenu menu,
+menupopup.widerMenu menuitem,
+menupopup.widerMenu menucaption {
+	max-width: 100em !important;
+}
+
+
+#QuickFolders-FoldersBox-PushDown {
+  max-height: 12px !important;
+	min-height: 1px;
+}
+
+
+#QuickFolders-oneButtonPanel {
+	height: 24px !important;  /* attempted linux squashed height fixes */
+	vertical-align: middle;
+}
+#QuickFolders-FindFolder {
+	margin-bottom: 0px;
+	margin-top: 0px;
+	min-height: 20px !important;
+	width: -moz-min-content;
+  /* Tb 70+ */
+  min-width: 50px;
+}
+
+#QuickFolders-FindFolder.quickMove,
+#QuickFolders-FindFolder.quickMove[type="search"] {
+  -moz-appearance:none; /* overwrite the hardcoded backgrounds of moz-binding textbox.xml#search-textbox */
+  background: linear-gradient(to bottom, rgba(242,94,94,1) 0%,rgba(206,9,6,1) 43%,rgba(150,30,30,1) 100%) !important;
+	background-color: rgba(229,132,117,1) !important;
+	color: rgb(255,255,255) !important;
+}
+
+/* help button */
+#QuickFolders-FindFolder-Help {
+  list-style-image: url("../chrome/content/skin/ico/help-search.svg");
+  -moz-context-properties: fill;
+  fill: #0079ef; /* currentColor; */
+  padding-left: 0;
+  margin-left: -5px;
+}
+
+#QuickFolders-FindFolder-Help > image.button-icon {
+  height:21px;
+  transition: height 0.2s;
+}
+
+#QuickFolders-FindFolder-Help:hover {
+  /* margin-right: -4px; */
+}
+
+#QuickFolders-FindFolder-Help:hover > image.button-icon {
+  height:25px;
+}
+
+
+#quickMoveHelpOverlay.overlay {
+  position: fixed;
+  inset: 5px 0 0 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 1;           /* was zero */
+  pointer-events: none; /* click through */
+  z-index: 100;         /* folderpane_splitter and threadpane-splitter are 10! */
+}
+
+
+#quickMoveHelp {
+  background: #fff;
+  border: 1px solid rgba(120,120,120,0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(30,30,30,0.4);  
+  background-color: #ffffff;
+}
+
+
+#quickMoveHelp.popup {
+  border-radius: 5px;
+  float: left; /* may be needed, but really I want to shrink-wrap */
+  font-size: 1.1em;
+  margin-right: 20px;
+  max-width: 60%;
+  padding: 5px 16px;
+  pointer-events: all; /* re-activate click on close button */
+  position: relative;
+  transition: all 5s ease-in-out;
+  width: auto;
+  transform: translate3d(0, 0, 0); /* to "integrate" the arrow */
+}
+
+/* arrow on top */
+#quickMoveHelp.popup:after {
+  background: #f00;
+  border-top: 1px solid rgba(120,120,120,0.9);
+  content: "";
+  width: 13px;
+  height: 13px;
+  transform: rotate(-45deg);
+  background: #fff;
+  position: absolute;
+  z-index: -1;
+  top: -7px;
+  left: 3em;
+}
+
+
+#quickMoveHelp.popup .close {
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0px 6px 4px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  transition: all 200ms;
+  text-decoration: none;
+}
+
+#quickMoveHelp.popup .close:hover {
+  background-color: rgba(30,30,40,0.85);
+  border-radius: 4px;
+  color: #eeeeee;
+}
+
+
+#quickMoveHelp * {
+  color: rgb(80,80,80);
+  text-align: left;
+}
+
+#quickMoveHelp h3 {
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+#quickMoveHelp code {
+  display: inline;
+  padding: 1px 3px;
+  font-family: consolas, Courier, monospace;
+  font-size: 11px;
+  color: rgb(20,20,20);
+  background-color: rgb(210,210,210);
+  border-radius: 2px;
+  margin: 0 3px;
+}
+
+#QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { height:16px !important; }
+
+#QuickFolders-Toolbar button#QuickFolders-mainPopup:hover {
+    fill: var(--new-highlight);
+	stroke: currentColor;
+}
+
+#QuickFolders-Toolbar {
+	min-height: 24px ;
+/* line-height: 24px; */
+	margin: 0;
+	padding: 0;
+}
+
+#QuickFolders-Tools-Pane {
+	vertical-align:top;
+}
+
+#QuickFolders-FoldersBox button[biffState-NewItalics].has-unread > label,
+#QuickFolders-FoldersBox button[biffState-NewItalics].has-unreadSubOnly > label,
+#QuickFolders-FoldersBox menu[biffState-NewMail].hasUnread,
+#QuickFolders-FoldersBox menuitem[biffState-NewMail].hasUnread
+{
+	font-style: italic;
+}
+
+#QuickFolders-FoldersBox button[biffState-NewMail].has-unread > label,
+#QuickFolders-FoldersBox button[biffState-NewMail].has-unreadSubOnly > label {
+	border-radius: 3px;
+	color: #fff;
+	box-shadow: inset 0 0 6px #080808;
+	text-shadow: 1px 1px 1px rgba(40, 40, 40, 0.9);
+	padding: 0 3px;
+	border-style: dotted;
+	border-color: #aaa;
+	border-width: 1px;
+}
+
+#QuickFolders-FoldersBox button[biffState-NewMail].has-unread,
+#QuickFolders-FoldersBox button[biffState-NewMail].has-unreadSubOnly,
+#QuickFolders-FoldersBox menu[biffState-NewMail].hasUnread,
+#QuickFolders-FoldersBox menuitem[biffState-NewMail].hasUnread
+{
+	list-style-image: url("../chrome/content/skin/ico/newUnread.png") !important;
+}
+#QuickFolders-FoldersBox menu[biffState-NewMail].hasUnread ,
+#QuickFolders-FoldersBox menuitem[biffState-NewMail].hasUnread
+{
+	border: 1px dotted #aaa !important;
+	box-shadow: 1px 1px 2px 1px #111;
+	border-radius: 2px;
+}
+
+/* fix wrong padding in Noia & other themes */
+#QuickFolders-FoldersBox button {
+	background-repeat: repeat-x;
+  display: inline-block;
+	height: auto; /* was 19px */
+	padding-top: 0px;
+	padding-bottom: 0px;
+	vertical-align:top;
+}
+
+.quickfolders-flat #QuickFolders-FoldersBox button,
+.quickfolders-flat #QuickFolders-FoldersBox button[checked="true"]:not(.button-1) {
+	padding-right: 4px !important; /* was 0.4em = 4.4px */
+	padding-left:  4px !important;
+	/* padding-top: 0px !important; Noia Extreme Fix */
+}
+.quickfolders-flat #QuickFolders-FoldersBox button:not([checked="true"]) {
+	margin-bottom: 0px !important;
+}
+.quickfolders-flat #QuickFolders-FoldersBox button[checked="true"]:not(.button-1) {
+	box-shadow: 2px 2px 1px 0px rgba(50, 50, 50, 0.4) inset;
+}
+
+#QuickFolders-Toolbar button[collapsed="true"],
+#QuickFolders-filterActive[collapsed="true"],
+#QuickFolders-mainPopup[collapsed="true"],
+#QuickFolders-quickMove[collapsed="true"]
+{
+	margin: 0 !important;
+	padding: 0 !important;
+	min-height:0; max-height:0; height:0;
+}
+
+#QuickFolders-Toolbar button.selected-folder > label {
+	text-decoration: underline;
+}
+
+#QuickFolders-Toolbar button.has-unread,
+#QuickFolders-Toolbar button.has-unreadSubOnly {
+	font-weight: bold;
+}
+
+#QuickFolders-Toolbar button.has-messages {
+	font-style: italic;
+}
+
+
+/* container for categories drop down*/
+#QuickFolders-Category-Box {
+	display: -moz-inline-box;
+	margin: 0;
+	padding: 0;
+	/* float:left; [Bug 25432] */
+	vertical-align: middle;
+	overflow-y: visible;
+	/* max-height: 24px; */
+	margin-top: 0;
+}
+
+#QuickFolders-Category-Box[mode="filter"] #QuickFolders-filterActive {
+	background-image: linear-gradient(rgba(251, 28, 3, 0.5) 0%, rgba(161, 26, 11, 0.5) 42%, rgba(138, 18, 4, 0.5) 51%, rgba(199, 24, 5,0.5) 100%);
+	color:white !important;
+  border-radius: 0 !important;
+}
+
+#QuickFolders-Category-Box[mode="filter"] button {
+	border: 1px solid #D00;
+}
+
+#QuickFolders-Category-Box > button {
+	vertical-align: middle;
+	margin-top: 0px;
+	/* try to fix icon problems in linux */
+	min-height:16px;
+	height:16px !important;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+}
+
+/*#QuickFolders-Category-Box > menulist,
+#QuickFolders-Category-Box > button {
+	display: -moz-inline-box;
+}*/
+
+.quickfolders-flat #QuickFolders-Category-Selection {
+  margin-bottom: 0; /* avoid extra space under toolbarbuttons */
+}
+
+#QuickFolders-Category-Selection {
+	margin-right: 1px;
+	margin-left:  3px;
+	padding: 0;
+}
+
+#QuickFolders-Category-Selection.autocollapse:hover {
+	max-width: 60em; /* try to force transition */
+}
+
+#QuickFolders-Category-Selection.autocollapse,
+#QuickFolders-Category-Selection.autocollapse:hover {
+	transition: max-width 0.5s, width 0.7s;
+}
+
+#QuickFolders-Category-Selection.autocollapse:not(:hover) .menulist-dropmarker {
+	display: none;
+}
+
+
+#QuickFolders-Category-Selection.autocollapse:not(:hover) {
+	background-image: url('../chrome/content/skin/ico/balloons.svg');
+  -moz-context-properties: fill, stroke;
+  stroke: var(--new-highlight);
+	background-repeat: no-repeat;
+	background-position: center center;
+	max-width: 20px;
+}
+
+#QuickFolders-LabelBox {
+	display: -moz-box; /* -moz-inline-box; */
+	/* float: left; */
+	border: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	min-width: 0px !important;
+}
+
+#QuickFolders-Toolbar #QuickFolders-title-label {
+	-moz-appearance: none !important;
+  appearance: none !important;
+	background: transparent !important;
+	border-radius: 0.4em !important;
+	font-weight: bold;
+	line-height: 24px;
+}
+
+/** notifications **/
+@keyframes quickfoldersRenew {
+	to {box-shadow: 0 0 0 10px rgba(100, 100, 100, 0.20);}
+}
+
+@keyframes quickfoldersRenewBright {
+	to {box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.25);}
+}
+
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash,
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
+	background-color: #006EB7 !important; /* blue */
+	background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
+  border-radius: 2px !important;
+}
+#QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+#QuickFolders-LabelBox #QuickFolders-title-label.expired {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash label, 
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired label {
+	color: rgb(255,255,255) !important;
+  font-size: 1.1em;
+}
+
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash:hover {
+	background-color: #ffd65e !important; /* yellow */
+	background-image: linear-gradient(to bottom, #fff65e 0%,#febf04 100%) !important;
+}
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash:hover label {
+	color: rgb(60,0,0) !important;
+}
+
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
+	animation: quickfoldersRenew 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);
+	box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.0);
+	margin: 0 4px 1px 7px;
+}
+
+#QuickFolders-Toolbar[brighttext="true"] #QuickFolders-title-label.expired  {
+	animation: quickfoldersRenewBright 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+#QuickFolders-Toolbar #QuickFolders-title-label.expired:hover {
+	animation-play-state: paused;
+	opacity: 1;
+}
+
+#QuickFolders-Toolbar #QuickFolders-title-label.expired:hover > label {
+	color: rgb(255,250,205) !important; /* lemon chiffon */
+}
+
+
+
+#QuickFolders-Toolbar #QuickFolders-title-label:hover,
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired:hover:not(.newsflash) {
+  /* bright green */
+	border-color: rgb(255, 255, 255);
+	background-image: linear-gradient(to bottom, rgb(184, 211, 27) 0%, rgb(122, 166, 18) 50%, rgb(92, 138, 0) 51%, rgb(135, 181, 19) 100%) !important;
+	color: rgb(255, 255, 255);
+}
+
+#QuickFolders-title-label:hover .button-text {
+	color: rgb(255, 255, 255) !important;
+}
+
+
+#QuickFolders-FoldersBox {
+	/* display: inline-box;  - Tb68 only */
+  display: block; /* was inline-box, wrong! */
+	float:right;
+	max-height:25em;
+	margin-bottom: 0px;
+}
+
+.QuickFolders-Empty-Toolbar-Label {
+	max-height:28px;
+	min-width: 85%;
+}
+
+.quickfolders-toolbarbuttons button
+{
+	-moz-appearance: button !important;
+}
+
+.quickfolders-pills button {
+	-moz-appearance: none !important;
+}
+
+/* CURRENT FOLDER TOOLBAR */
+/* Styles for Message Preview Navigation */
+/*
+#QuickFolders-PreviewToolbarPanel,
+#QuickFolders-PreviewToolbarPanel-ConversationView
+*/
+.QuickFolders-NavigationPanel {
+	/* background-color: transparent; */
+	background-color: var(--toolbar-bgcolor);
+  color: var(--lwt-text-color, --lwt-toolbar-field-color); /* fallbck was black */
+	margin-bottom: -3px;
+	overflow-y: visible !important;
+	padding-top: 0 !important;
+	padding-bottom: 1px;
+	vertical-align: top;
+	width: 100%;
+}
+
+#QuickFoldersCurrentFolder {
+	background-repeat: repeat-x;
+	border-color: rgba(120, 120, 120, 0.5);
+	border-width: 1px !important;
+	border-style: solid !important;
+  box-shadow: 1px -1px 1px threedshadow inset;
+/*	background-color: #fff;
+  color: black; */
+	padding: 0 0.5em;
+	vertical-align: top;
+	-moz-appearance: none !important;
+	border-radius: 0px 0px 4px 4px !important;
+	min-width: 16em;
+}
+
+#QuickFoldersCurrentFolder label.button-text {
+	text-align: center;
+}
+
+.customtoolbar#QuickFolders-CurrentFolderTools {
+	-moz-appearance: none;
+  background-color: transparent;
+  background-image: linear-gradient(hsla(0, 0%, 50%, 0.1), hsla(0, 0%, 50%, 0.1));
+	box-shadow: 1px 2px 4px -1px hsla(0, 0%, 50%, 0.7);
+	border-style: solid  !important;
+	border-color: #666;
+	height: 1.8em; /* large font support, test on Mac / Linux! */
+	min-height: 22px;
+	overflow: visible;
+	padding: 0 2px 1px 2px;
+	border-width: 0px 1px 1px 1px !important;
+}
+
+:root[lwt-tree-brighttext] .customtoolbar#QuickFolders-CurrentFolderTools {
+  background-image: linear-gradient(hsla(0, 0%, 50%, 0.3), hsla(0, 0%, 50%, 0.3));
+}
+
+#QuickFolders-CurrentFolderTools button {
+	-moz-box-align: center;
+	-moz-box-pack: center;
+	padding: 0px 2px 0 2px;/* avoid stretching/compressing of some themes */
+/*	min-height: 22px; */
+}
+
+
+#QuickFolders-CurrentFolderTools button.icon {
+	-moz-appearance: none !important;
+	margin: 0 1px !important;
+  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+  fill: currentColor;
+  fill-opacity: 0.7;
+  stroke: transparent;
+}
+
+
+#QuickFolders-CurrentFolderTools button.icon:hover {
+  fill-opacity: 1;
+}
+
+#QuickFolders-CurrentFolderTools button.icon > image {
+  height: 16px !important;
+	margin-right: 0;
+	margin-bottom: 0;
+}
+
+/* [issue 191] - large icon support */
+#QuickFolders-Tools-Pane[iconsize="large"] button image,
+#QuickFolders-CurrentFolderTools[iconsize="large"] button.icon > image {
+  height: 24px !important;
+}
+
+.customtoolbar#QuickFolders-CurrentFolderTools[iconsize="large"] {
+  height: unset !important;
+}
+
+
+/*********************************
+**           THEMES             **
+*********************************/
+
+/* NATIVE TABS */
+.quickfolders-realTabs button
+{
+	-moz-appearance: tab;
+}
+
+/* NATIVE BUTTONS */
+.quickfolders-realbuttons button
+{
+	-moz-appearance: button !important;
+	height: auto !important;
+}
+
+/* main toolbar */
+.quickfolders-pills,
+#QuickFolders-Toolbar.quickfolders-realTabs,
+#QuickFolders-Toolbar.toolbar-button
+{
+	background-color: transparent;
+}
+
+/** FLAT TABS **/
+.customtoolbar.quickfolders-flat {
+	display: -moz-inline-box;
+	margin: 0;
+	padding: 0;
+	border: 1px solid transparent;
+}
+
+
+.customtoolbar.quickfolders-flat #QuickFolders-Folders-Pane {
+	border-bottom-width: 3px; /* overwrite in options: style.Toolbar.bottomLineWidth */
+	border-bottom-style: solid !important;
+}
+
+.quickfolders-flat .folderBarContainer button {
+	-moz-appearance: none !important;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-color: rgba(120,120,120,0.5);
+	border-width: 1px !important;
+	border-style: solid;
+	background-repeat: repeat-x;
+	height: auto;
+	margin-right: 2px; /* 0.15em  */
+	margin-left: 2px;  /* 0.15em; */
+	margin-top : 1px;
+
+
+
+	/* height: 1.5em !important; */ /*large font support */
+	vertical-align: top;
+	/* disable text shadow in tt deepdark QF */
+	text-shadow: none;
+}
+
+.quickfolders-flat button.dragover {
+	background-image: none !important;
+}
+
+.quickfolders-flat .folderBarContainer button:hover
+  {
+	border-bottom-width: 0px !important; /* (instead of border-bottom none) leads to Tb60 closing menus prematurely when nouse is dragged into popup menu */
+	/*
+	border-collapse: collapse;
+	height: 22px; */
+	margin-top: 1px;
+	margin-bottom: -1px;
+}
+
+.quickfolders-flat .folderBarContainer button.selected-folder:not(hover) {
+	border-bottom: none !important;
+	/* make selected tab 'slide down' */
+	min-height: 21px;
+	margin-top: 2px;
+	margin-bottom: -1px ;
+	background-repeat: repeat-x;
+	box-shadow: 1px 1px 1px threedshadow inset;
+}
+
+/** DRAG TOOLBARBUTTONS **/
+
+#QuickFolders-FoldersBox.folderBarContainer button.dragRIGHT.dragover,
+#QuickFolders-FoldersBox.folderBarContainer button.dragRIGHT.pastel.dragover,
+#QuickFolders-FoldersBox.folderBarContainer button[label].dragRIGHT.dragover,
+#QuickFolders-FoldersBox.folderBarContainer button[label].dragRIGHT.pastel.dragover
+{
+	background-image: url("../chrome/content/skin/ico/dropRight.gif") !important;
+	background-position: right center !important;
+	background-repeat: no-repeat !important;
+}
+
+#QuickFolders-FoldersBox button.dragLEFT.dragover {
+	list-style-image: url("../chrome/content/skin/ico/dropLeft.gif") !important;
+}
+
+
+#QuickFolders-FoldersBox button.icon .button-icon,
+#QuickFolders-CurrentFolderTools button.icon .button-icon {
+  margin-right: 0.2em;
+  margin-left: 0.2em;
+	/* give enough space to icons even in smaller themes */
+	box-sizing: content-box;
+	min-height: 16px;
+}
+
+#QuickFolders-FoldersBox button:not(.icon) .button-icon {
+  margin-right: 0 !important;
+	-moz-margin-end: 0;
+}
+
+#QuickFolders-FoldersBox.quickfolders-pills button .button-icon {
+  margin-left: 0px;
+}
+
+/** SPECIAL FOLDER ICONS **/
+#QuickFolders-CurrentFolderTools button:hover {
+  background-color: hsla(0, 0%, 50%, 0.2);
+  border-radius: 2px;
+  box-shadow: inset 0 0 2px rgba(50,50,50,0.5);
+}
+
+#QuickFolders-CurrentFolderTools button#QuickFolders-Close:hover {
+  box-shadow: none;
+  background-color: unset;
+}
+
+#QuickFolders-CurrentFolderTools[theme="default"] > button.icon {
+  fill: rgb(30,30,30); /* silver background */
+}
+
+#QuickFolders-Toolbar button.icon,
+#QuickFolders-CurrentFolderTools button.icon,
+#QuickFolders-paintBucketActive .button-icon,
+#QuickFolders-PalettePopup .menu-iconic-icon,
+#qfTabColorMenu menuitem .menu-iconic-icon {
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: currentColor;
+  fill-opacity: var(--button-icon-fill-opacity);
+}
+
+#QuickFolders-Toolbar button.recent.icon {
+	list-style-image: url("../chrome/content/skin/ico/history.svg");
+    stroke: currentColor;
+}
+
+#QuickFolders-CurrentFolderTools button.recent.icon {
+	list-style-image: url("../chrome/content/skin/ico/history.svg");
+    stroke: #e9a400;
+}
+
+#QuickFolders-Toolbar button.inbox.icon, #QuickFolders-CurrentFolderTools button.inbox.icon {list-style-image: url("chrome://messenger/skin/icons/inbox.svg");}
+#QuickFolders-Toolbar button.sent.icon, #QuickFolders-CurrentFolderTools button.sent.icon {list-style-image: url("chrome://messenger/skin/icons/sent.svg");}
+#QuickFolders-Toolbar button.trash.icon, #QuickFolders-CurrentFolderTools button.trash.icon {list-style-image: url("chrome://messenger/skin/icons/delete.svg");}
+#QuickFolders-Toolbar button.junk.icon, #QuickFolders-CurrentFolderTools button.junk.icon {list-style-image: url("chrome://messenger/skin/icons/junk.svg");}
+#QuickFolders-Toolbar button.template.icon, #QuickFolders-CurrentFolderTools button.template.icon {list-style-image: url("chrome://messenger/skin/icons/template.svg");}
+#QuickFolders-Toolbar button.outbox.icon, #QuickFolders-CurrentFolderTools button.outbox.icon {list-style-image: url("chrome://messenger/skin/icons/outbox.svg");}
+#QuickFolders-Toolbar button.virtual.icon, #QuickFolders-CurrentFolderTools button.virtual.icon {list-style-image: url("chrome://messenger/skin/icons/search-folder.svg");}
+#QuickFolders-Toolbar button.draft.icon, #QuickFolders-CurrentFolderTools button.draft.icon {list-style-image: url("chrome://messenger/skin/icons/file-item.svg");}
+#QuickFolders-Toolbar button.news.icon, #QuickFolders-CurrentFolderTools button.news.icon {list-style-image: url("chrome://messenger/skin/icons/newsgroup.svg");}
+#QuickFolders-Toolbar button.archive.icon, #QuickFolders-CurrentFolderTools button.archive.icon {list-style-image: url("chrome://messenger/skin/icons/archive.svg");}
+#QuickFolders-Toolbar button.invalid, #QuickFolders-CurrentFolderTools button.invalid {
+  list-style-image: url("../chrome/content/skin/ico/clean.svg");
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: currentColor;
+  fill-opacity: var(--button-icon-fill-opacity);
+	stroke: var(--new-highlight);
+}
+
+button.inbox .button-icon,
+button.junk .button-icon,
+button.trash .button-icon,
+button.news .button-icon {
+	pointer-events:visible;
+}
+button.inbox .button-icon:hover,
+button.junk .button-icon:hover,
+button.trash .button-icon:hover,
+button.news .button-icon:hover {
+	cursor:pointer;
+	width: 20px !important;
+	height: 20px !important;
+	box-shadow: 0 0 1px 2px rgba(200,200,200,0.4);
+}
+
+button.inbox .button-icon:active,
+button.junk .button-icon:active,
+button.trash .button-icon:active,
+button.news .button-icon:active {
+	cursor:pointer;
+	width: 16px !important;
+	height: 16px !important;
+	box-shadow: 0 0 1px 1px rgba(200,200,200,0.8);
+}
+
+
+/* make sure list image icons are shown in Postbox / SeaMonkey */
+#QuickFolders-Toolbar button[list-style-image].icon
+{
+	-moz-image-region: rect(0px, 16px, 16px, 0) !important;
+	background-position: 3px top;
+}
+
+.QuickFolders-folder-popup .hasUnread
+{
+	font-weight: bold !important;
+}
+
+menupopup.QuickFolders-folder-popup {
+	margin-top: 0px !important;
+}
+
+menupopup.QuickFolders-folder-popup menuitem.color {
+	background-position: 4px 0px  !important;
+	background-repeat: repeat-x !important;
+	border: 1px solid #444 !important;
+	border-radius: 5px 5px 0 0;
+}
+
+menupopup.QuickFolders-folder-popup menuitem.color,
+menupopup.QuickFolders-folder-popup menu.menu-iconic[tag="qfTabColorMenu"] {
+	list-style-image: url('chrome://mozapps/skin/extensions/category-themes.svg') !important;
+}
+
+menupopup.QuickFolders-folder-popup menuitem.color:hover,
+menupopup.QuickFolders-folder-popup menuitem.color:focus
+{
+	background-color: transparent !important;
+	border: 1px solid #FFF !important;
+	font-style: italic !important;
+	border-radius: 5px;
+}
+
+#QuickFolders-Tools-Pane button {
+  /* eliminate padding in Linux as it leads to squashed icons*/
+  -moz-appearance: none;
+}
+
+#QuickFolders-oneButtonPanel button:not(#QuickFolders-paintBucketActive) {
+  color: inherit !important;
+}
+
+/* the hardcoded to white texts need dark shadows */
+.quickfolders-flat #QuickFoldersCurrentFolder,
+.quickfolders-flat button,
+.quickfolders-pills button {
+	background-position: 0px 0px;
+	background-clip: padding-box;
+}
+
+/** MAIL COMMANDS + CONTEXT MENU ITEMS **/
+.mailCmd {
+    -moz-context-properties: fill, stroke;
+    fill: currentColor;
+    stroke: currentColor;
+}
+
+menuitem.cmd[tag="qfRename"], menuitem.mailCmd[tag="qfRename"] {
+    list-style-image: url('../chrome/content/skin/ico/rename.gif') !important;
+}
+menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] {
+    list-style-image: url('../chrome/content/skin/ico/compact.svg') !important;
+}
+menuitem.cmd[tag="qfIconAdd"], menuitem.mailCmd[tag="qfIconAdd"] {
+    list-style-image: url('chrome://messenger/skin/icons/image.svg') !important;
+}
+menuitem.cmd[tag="qfIconRemove"], menuitem.mailCmd[tag="qfIconRemove"] {
+    list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
+}
+menupopup.QuickFolders-folder-popup menuitem[tag="qfCategory"],
+menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] {
+	list-style-image: url("../chrome/content/skin/ico/balloons.svg");
+  -moz-context-properties: fill, stroke;
+  stroke: var(--new-highlight);
+}
+menuitem.cmd[tag="qfRemoveCategory"], menuitem.mailCmd[tag="qfRemoveCategory"] {
+    list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
+}
+menuitem.cmd[tag="qfRemove"], menuitem.mailCmd[tag="qfRemove"] {
+    list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
+}
+menuitem.cmd[tag="qfBreak"],
+menuitem.cmd[tag="qfBreakDel"] {
+    list-style-image: url('../chrome/content/skin/ico/line-break.svg') !important;
+    -moz-context-properties: fill, stroke, stroke-opacity;
+    stroke: red;
+    stroke-opacity: 0;
+}
+menuitem.cmd[tag="qfBreakDel"] {
+    stroke-opacity: 1;
+}
+menuitem.cmd[tag="qfSeparator"],
+menuitem.cmd[tag="qfSeparatorDel"] {
+    list-style-image: url('../chrome/content/skin/ico/separator.svg') !important;
+    -moz-context-properties: fill, stroke, stroke-opacity;
+    stroke: red;
+    stroke-opacity: 0;
+}
+menuitem.cmd[tag="qfSeparatorDel"] {
+    stroke-opacity: 1;
+}
+menuitem.mailCmd[tag="qfFolderRepair"],
+#QuickFolders-RepairFolderBtn {
+    list-style-image: url('../chrome/content/skin/ico/repairFolder.svg') !important;
+    stroke: var(--new-highlight) !important;
+}
+
+#QuickFolders-FoldersBox toolbarseparator {
+  display: inline-block;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  min-height: 15px;
+  vertical-align: top;
+}
+.quickfolders-flat #QuickFolders-FoldersBox toolbarseparator {
+  margin-left: 2px;
+  margin-left: 1px;
+}
+
+.quickfolders-realTabs #QuickFolders-FoldersBox toolbarseparator,
+.quickfolders-pills #QuickFolders-FoldersBox toolbarseparator,
+.quickfolders-realbuttons #QuickFolders-FoldersBox toolbarseparator,
+.quickfolders-toolbarbuttons #QuickFolders-FoldersBox toolbarseparator {
+  margin-left: 1px;
+  margin-right: 4px;
+}
+.quickfolders-toolbarbuttons #QuickFolders-FoldersBox toolbarseparator {
+  margin-top: 6px !important;
+}
+
+
+#quickFoldersCommands,
+#quickFoldersMailFolderCommands {
+	list-style-image : url('../chrome/content/skin/ico/folderCommand.svg');
+    -moz-context-properties: fill, fill-opacity, stroke !important;
+    stroke: var(--new-highlight) !important;
+}
+
+#QuickFolders-paintBucketActive menuitem,
+#QuickFolders-paintBucketActive menu,
+menuitem.color
+{
+	-moz-appearance: none !important;
+}
+
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
+menupopup.QuickFolders-folder-popup menu:-moz-drag-over,
+menupopup.QuickFolders-folder-popup menuitem.dragover,
+menupopup.QuickFolders-folder-popup menu.dragover
+{
+/*	-moz-appearance: none !important; */
+	background-repeat: repeat-x;
+}
+
+menupopup.QuickFolders-folder-popup menu.QuickFolders-folder-popup:-moz-drag-over,
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
+	list-style-image : url('../chrome/content/skin/ico/tb-anchor.png') !important;
+}
+
+menupopup.QuickFolders-folder-popup menu.QuickFolders-folder-popup:-moz-drag-over > label,
+menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over > label
+{
+	text-decoration: underline;
+}
+
+
+#QuickFolders-currentFolderMailFolderCommands {
+	list-style-image : url('../chrome/content/skin/ico/folderCommand.svg');
+    -moz-context-properties: fill, fill-opacity, stroke !important;
+    stroke: var(--new-highlight) !important;
+}
+
+#folderPaneContext-downloadAll {
+    list-style-image: url('chrome://messenger/skin/icons/getmsg.svg');
+}
+
+menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-new ,
+menuitem#folderPaneContext-new.dragover,
+menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-new.dragover {
+	list-style-image: url('../chrome/content/skin/ico/folder-add.svg') !important;
+  -moz-context-properties: fill, fill-opacity, stroke;
+  fill: currentColor;
+  fill-opacity: var(--button-icon-fill-opacity);
+  stroke: var(--green-highlight);
+}
+
+menupopup.QuickFolders-folder-popup menuitem.cmd[tag="openNewTab"] {
+  list-style-image: url('../chrome/content/skin/ico/new-tab.svg');
+}
+
+menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-remove {
+	list-style-image: url('chrome://messenger/skin/icons/delete.svg');
+}
+
+menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-rename {
+	list-style-image: url('../chrome/content/skin/ico/folder-rename.png');
+}
+
+
+menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-properties {
+	list-style-image: url('chrome://global/skin/icons/settings.svg');
+}
+
+menupopup.QuickFolders-folder-popup menuitem#quickFolders-openFolderLocation {
+	list-style-image: url("chrome://messenger/skin/icons/folder.svg");
+}
+
+.draggable:active {
+	cursor: -moz-grabbing;
+	background-color: transparent;
+	border: none !important;
+}
+
+.draggable {
+	cursor: -moz-grab;
+	height: 18px !important;
+}
+
+#QuickFolders-Close {
+	list-style-image: url(chrome://global/skin/icons/close.svg);
+	fill-opacity: 0.5 !important;
+}
+
+#QuickFolders-Close:hover {
+  fill: currentColor !important;
+	fill-opacity: 0.7 !important;
+}
+
+#QuickFolders-Close:hover:active {
+  fill-opacity: 0.9 !important;
+}
+
+#QuickFolders-NavigateUp {
+	list-style-image: url("../chrome/content/skin/ico/goup.svg");
+}
+
+#QuickFolders-NavigateLeft {
+	list-style-image: url("../chrome/content/skin/ico/goback.svg");
+}
+
+#QuickFolders-NavigateRight {
+	list-style-image: url("../chrome/content/skin/ico/goforward.svg");
+}
+
+#QuickFolders-SelectIcon {
+  list-style-image: url("chrome://messenger/skin/icons/image.svg");
+}
+#QuickFolders-RemoveIcon {
+  list-style-image: url("../chrome/content/skin/ico/picture-remove.svg");
+}
+
+#QuickFolders-NavigateLeft[disabled="true"],
+#QuickFolders-NavigateRight[disabled="true"],
+#QuickFolders-NavigateUp[disabled="true"],
+#QuickFolders-SelectIcon[disabled=true],
+#QuickFolders-RemoveIcon[disabled=true] {
+	fill-opacity: 0.5 !important;
+}
+
+/* button for future use: mark thread as read; drag thread to a location */
+/* 	display: none; */
+#QuickFolders-CurrentThread {
+	list-style-image: url("../chrome/content/skin/ico/next-conversation.svg");
+    stroke: var(--green-highlight) !important;
+    stroke-opacity: 0;
+}
+#QuickFolders-CurrentThread:hover,
+#QuickFolders-CurrentThread[hasUnread="true"] {
+    stroke-opacity: 0.5;
+}
+
+#QuickFolders-CurrentThread[disabled="true"] {
+	fill-opacity: 0.5 !important;
+}
+
+#QuickFolders-CurrentMail {
+	list-style-image: url("chrome://messenger/skin/icons/message.svg");
+}
+
+/* [Bug 26570] only show mark folder read if it has unread items in it */
+button:not(.has-unread) #folderPaneContext-markMailFolderAllRead,
+button:not(.has-unread):not(.has-unreadSubOnly) #folderPaneContext-markMailFolderAllReadRecursive,
+button:not(.has-unreadSubOnly):not(.has-unreadSub) #folderPaneContext-markMailFolderAllReadRecursive {
+	display: none;
+}
+
+/* Let's decommission these - bad idea as it breaks aero menus in Win7's default theme
+menuitem[id|="context"],
+menuitem[label],
+menuitem[tabid|="tab-item"],
+menuitem[id|="textlink"] {
+  -moz-binding: url("chrome://global/content/bindings/menu.xml#menuitem-iconic") !important;
+}
+
+menupopup menu[label],
+popup menu[label]{
+  -moz-binding: url("chrome://global/content/bindings/menu.xml#menu-iconic") !important;
+}
+*/
+
+/* instead: http://mxr.mozilla.org/comm-central/source/mail/themes/gnomestripe/mail/compose/messengercompose.css#507 */
+
+menupopup.QuickFolders-folder-popup .menu-iconic-left {
+	 visibility: visible; /* make icons always visible in gnome! */
+	 -moz-image-region: auto; /* trash inheritance */
+}
+

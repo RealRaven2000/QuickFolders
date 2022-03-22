@@ -1,0 +1,261 @@
+
+
+/* horizontal alignment */
+.hbox {
+  /* border: 1px solid yellow; */
+  display: flex;
+  flex-direction: row;
+}
+
+#QuickFolders-Options-general .hbox {
+  gap: 1.5em;
+}
+
+#btnConfigureTooltips,
+#btnDefaultRadius,
+#defaultColors,
+#grpToolbarPosition, 
+#currentFolderStyle *,
+#folderCrossing,
+#initdelay,
+#copyFolders,
+#btnPasteLicense,
+#btnValidateLicense,
+#quickMoveAdvanced
+ {
+  font-size: 0.85em;
+}
+
+/* vertical alignment */
+.vbox {
+  /* 1px dotted rgba(255,255,0,0.8)*/
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.vbox.centered {
+  justify-content: center;
+}
+
+.vbox .separator,
+.vbox .spacer {
+  height: 10px;
+}
+
+.hbox .spacer {
+  width: 10px;
+}
+
+.hbox.align_center {
+  align-items: center;
+}
+
+
+fieldset {
+  margin: 0.5em;
+  padding: 0 0.2em 0.2em;
+}
+
+fieldset legend {
+  margin-top: 0.3em;
+  font-size: 1em;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+html|legend {
+  margin-top: 0.5em;  
+}
+
+#mailCommandsCustomize {
+  margin-left: 1em;
+}
+
+*[collapsed=true] {
+  display: none !important;
+}
+
+/* General elements */
+#qf-options-prefpane label {
+  line-height: 1.3em;
+  font-size: 0.85em;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: row;  
+}
+
+#supportgrid .button label {
+  justify-content: center;
+  font-size: 1.05em;
+}
+
+#QuickFolders-Options-support.active {
+  background-image: url("thunderbird-earlybird.png") !important;
+}
+
+#qf-options-header {
+  flex-grow: 1 !important;
+}
+
+#qf-options-header .spacer {
+  flex-grow: 1;
+}
+#qf-options-header-description {
+  border: none !important;
+}
+#qf-youtube {
+  align-self: center; 
+}
+
+/* style buttons with images: */
+button[isTab], button.iconButton {
+  display: list-item;
+  list-style-position: inside;
+}
+
+/* images on buttons: */
+button::marker {
+}
+button.active,
+button.active::marker {
+  fill: white !important; /* not working yet - forcing the icon to be white */
+  stroke: white;
+}
+
+
+#QuickFolders-General {
+  list-style-image: url("ico/settings.svg");
+}
+#QuickFolders-Advanced  {
+  list-style-image: url("ico/settings.svg");
+}
+#QuickFolders-Layout {
+  list-style-image : url("ico/smiley.svg");
+}
+#QuickFolders-Help {
+	list-style-image : url("ico/help.svg") !important;
+}
+#QuickFolders-Support {
+	list-style-image : url("ico/info.svg") !important;
+}
+#QuickFolders-Pro {
+  list-style-image : url("ico/pro.png") !important;
+}
+#QuickFolders-Pro.paid {
+  list-style-image : url("ico/pro-paid.png") !important;
+}
+
+ /* Style the tab */
+.tabs {
+  border-bottom: 1px solid rgba(50,50,50,0.3);
+}
+
+.tabs ul {
+  margin: 0;
+  overflow: hidden;
+  padding-left: 1em;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tabs li {
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+  float: left;
+  list-style: none;
+  outline: none;
+}
+
+.tabs button {
+  -moz-appearance: none;
+  border-radius: 0.5em 0.5em 0 0;
+}
+
+/* Change background color of buttons on hover */
+.tabs button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tabs button.active {
+  background-color: #33f !important;
+  color: #FFFFFF !important;
+}
+
+/* Style the tab content */
+.tabcontent-container section {
+  display: none;
+  padding: 6px 12px;
+  /* border: 1px solid #ccc; */
+  border-top: none;
+} 
+
+.tabcontent-container section.active {
+  display: block;
+}
+
+.qfTabPreview {
+  line-height: unset;
+  overflow: clip;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* right-click / tooltip support */
+.hasConfigEvent:hover {
+  background: rgba(255,0,0,0.2);
+  outline: 1px dotted rgba(85,0,0,0.5);
+  border-radius: 3px;
+}
+
+input[type=number] {
+  text-align: right;
+  min-height: 22px;
+}
+
+input[type=color], select {
+  min-height: 26px;
+}
+
+
+
+.pixelAppendix {
+  margin-right: 5px;
+  margin-left: 0px;
+}
+
+/* where can we get these system colors from? */
+#qf-flat-toolbar {
+  background-color: var(--toolbar-bgcolor);
+}
+
+/* replacement for the popup menu showing color choices */
+#QuickFolders-Options-PalettePopup {
+  display: block;
+  position: absolute;
+  border: 1px solid rgba(80,80,80,0.6);
+  box-shadow: 5px 5px 5px rgba(40,40,40,0.4);
+  top: 300px;
+  /* not sure what var is correct for dialog backgrounds in themed dialogs.. */  
+  background-color: var(--in-content-table-background);
+  padding: 5px;
+}
+
+#paletteGrid {
+  display: grid;
+	grid-auto-flow: column;
+	grid-gap: 1px;
+	grid-template-columns: repeat(4, 1fr); 
+	grid-template-rows: repeat(6, auto);    
+  grid-gap: 2px;
+  /* justify-content: space-between; */
+  color: #444;
+}
+
+#paletteGrid div {
+  outline: 1px solid rgba(80,80,80,0.3);
+  font-size: 10pt;
+  padding: 2px 5px;
+  min-width: 120px
+}

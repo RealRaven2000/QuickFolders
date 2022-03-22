@@ -1,0 +1,151 @@
+[
+  {
+    "namespace": "ex_customui",
+    "description": "Permits WebExtension code to add custom UI components to native Thunderbird features.",
+    "types": [
+      {
+        "id": "LocationOptions",
+        "type": "object",
+        "description": "Additional options how the UI shall be loaded in a given location. Which properties are supported may vary depending on the location the UI is registered for.",
+        "properties": {
+          "height": {
+            "type": "integer",
+            "optional": "true",
+            "description": "Desired total height of the custom UI component, in pixels. The actual available height may differ (and change dynamically)."
+          },
+          "width": {
+            "type": "integer",
+            "optional": "true",
+            "description": "Desired total width of the custom UI component, in pixels. The actual available height may differ (and change dynamically)."
+          },
+          "hidden": {
+            "type": "boolean",
+            "optional": "true",
+            "description": "If set to true, the custom UI component will not be visible (and thus not take up any screen space). This field is useful to selectively show or hide a component using local options."
+          }
+        }
+      }
+    ],
+    "functions": [
+      {
+        "name": "add",
+        "description": "Registers a HTML document to be displayed within as part of a native Thunderbird feature. Registering an already registered document will cause a reload of the document.",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "location",
+            "type": "string",
+            "description": "A string uniquely defining the native UI to extend (see LOCATION_* constants)."
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "URL to a HTML document that contains UI to add to the given location. The URL will be treated as relative to the add-on's root, specifying URLs outside of the add-on is not necessarily permitted."
+          },
+          {
+            "name": "options",
+            "$ref": "LocationOptions",
+            "optional": "true",
+            "description": "Additional options how the UI shall be loaded."
+          }
+        ]
+      },
+      {
+        "name": "remove",
+        "description": "Unregisters a HTML document previously registered (the method will succeed even if the document was not registered).",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "location",
+            "type": "string",
+            "description": "A string uniquely defining the native UI to no longer extend (see defined constants)."
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "URL to a HTML document that was registered for the given location via add."
+          }
+        ]
+      },
+      {
+        "name": "getContext",
+        "description": "If called from within a document loaded as custom UI through this API, this method will return an object with a 'location' value set to the lication the UI was registered for, and potentially additional members describing the state of the location the document is embedded into. Otherwise, the method will fail.",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "setLocalOptions",
+        "description": "If called from within a document loaded as custom UI through this API, this method can be used to supply location options for the current document only.",
+        "type": "function",
+        "async": "true",
+        "parameters": [
+          {
+            "name": "options",
+            "$ref": "LocationOptions",
+            "description": "Additional options how the UI shall be loaded, overriding the ones set at registration time."
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "name": "onEvent",
+        "description": "Within documents loaded as custom UI through this API, this event will fire for locaiton-specific events and whenever the context changes (with type = 'context' and details = ). on a location that defined one or multiple UI events, the event will fire whenever one of these events is triggered. In other situations, it will never fire. For events that expect a result, the listener may generate that result asynchronously and return a promise (if multiple listeners return a truthy value, the implementation will select one of those). Note that implementations usually impose a short time limit for the result to become available.",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "type",
+            "type": "string",
+            "description": "A string uniquely defining the event (see documentation for each location constant)."
+          },
+          {
+            "name": "details",
+            "type": "any",
+            "description": "Event-specific additional data (see documentation for each location constant), or null."
+          }
+        ]
+      }
+    ],
+    "properties": {
+      "LOCATION_ADDRESSBOOK": {
+        "value": "addressbook",
+        "description": "String identifying an area permanently visible alongside address book features of Thunderbird (currently in the address book window, below the list of address books)"
+      },
+      "LOCATION_ADDRESSBOOK_CONTACT_EDIT": {
+        "value": "addressbook_contact_edit",
+        "description": "String identifying an area associated with the process of creating or modifying a contact (currently in the contact editing window's miscelaneous tab). The context for this location contains a member 'id' with the id of the contact to edit or null for new contacts and a member 'parentid' with the id of the address book the dialog is operating in (note that 'parentid' may change during the lifetime of the dialog). Furthermore, an 'apply' event will be triggered with the updated contact's properties object as details before saving the contact. The contact's data can be altered before saving by returning an object with updated properties from that event handler (if multiple event handlers in the same document return different truthy values, the implementation will pick one to apply)."
+      },
+      "LOCATION_ADDRESSBOOK_CONTACT_EDIT_HOME": {
+        "value": "addressbook_contact_edit_home",
+        "description": "String identifying an area associated with the process of creating or modifying a contact's private information (currently in the contact editing window's home tab). The context for this location contains a member 'id' with the id of the contact to edit or null for new contacts and a member 'parentid' with the id of the address book the dialog is operating in (note that 'parentid' may change during the lifetime of the dialog). Furthermore, an 'apply' event will be triggered with the updated contact's properties object as details before saving the contact. The contact's data can be altered before saving by returning an object with updated properties from that event handler (if multiple event handlers in the same document return different truthy values, the implementation will pick one to apply)."
+      },
+      "LOCATION_ADDRESSBOOK_CONTACT_EDIT_WORK": {
+        "value": "addressbook_contact_edit_work",
+        "description": "String identifying an area associated with the process of creating or modifying a contact's work-related information (currently in the contact editing window's work tab). The context for this location contains a member 'id' with the id of the contact to edit or null for new contacts and a member 'parentid' with the id of the address book the dialog is operating in (note that 'parentid' may change during the lifetime of the dialog). Furthermore, an 'apply' event will be triggered with the updated contact's properties object as details before saving the contact. The contact's data can be altered before saving by returning an object with updated properties from that event handler (if multiple event handlers in the same document return different truthy values, the implementation will pick one to apply)."
+      },
+      "LOCATION_CALENDAR": {
+        "value": "calendar",
+        "description": "String identifying an area permanently visisble alongside calendar features of Thunderbird (currently in the calendar tab, below the list of calendars)"
+      },
+      "LOCATION_CALENDAR_EVENT_EDIT": {
+        "value": "calendar_event_edit",
+        "description": "String identifying an area associated with the process of creating or modifying an event (currently directly in the event editing window / tab). The location is intended to eventually match the address book edit locations – once there is a calendar API in Thunderbird – but until then the context for this location contains a member 'id' with the native id of the event to edit or null for new contacts and a member 'parentid' with the native id of the calendar the dialog is operating in. It is expected that this will change in the future."
+      },
+      "LOCATION_COMPOSE": {
+        "value": "compose",
+        "description": "String identifying an area associated with the process of composing a message (currently a sidebar in the message compose window)"
+      },
+      "LOCATION_MESSAGING": {
+        "value": "messaging",
+        "description": "String identifying an area permanently visible alongside messaging features of Thunderbird (currently a sidebar in the messaging tab)"
+      },
+      "LOCATION_UNKNOWN_FILE_ACTION": {
+        "value": "unknown_file_action",
+        "description": "String identifying an area visible at the bottom of the unknown file action dialog (open or save prompt). The context for this location contains the members 'url' with the file's URL, 'filename' with a suggested filename and 'type' with the MIME type of the file."
+      }
+    }
+  }
+]

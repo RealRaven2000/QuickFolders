@@ -39,12 +39,18 @@
         ]
       },
 
-     
+      {
+        "name": "getCurrentFolder",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },      
+      
       {
         "name": "showVersionHistory",
         "type": "function",
         "parameters": []
-      },      
+      },  
       
       {
         "name": "getUserName",

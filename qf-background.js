@@ -331,6 +331,8 @@ async function main() {
     ver = "91";
   // console.log("Detected Thunderbird version:", tbVer);
   
+  // Register custom UI for the contact editing window
+  await messenger.ex_customui.add(messenger.ex_customui.LOCATION_MESSAGING, "toolbar/quickfolders-toolbar.html", {height: 30});  
   
   messenger.WindowListener.registerChromeUrl([ 
       ["content", "quickfolders", "chrome/content/"],

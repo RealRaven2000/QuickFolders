@@ -22,6 +22,7 @@
   "permissions": [
     "accountsRead",
     "accountsFolders",
+    "activeTab",
     "compose",
     "clipboardRead",
     "clipboardWrite",
@@ -63,7 +64,20 @@
         "script": "chrome/content/api/Utilities/implementation.js"
 
        }
-    }
+    },
+    "ex_customui": {
+      "schema": "chrome/content/api/CustomUI/api.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["ex_customui"]],
+        "script": "chrome/content/api/CustomUI/parent.js"
+      },
+      "child": {
+        "scopes": ["addon_child"],
+        "paths": [["ex_customui"]],
+        "script": "chrome/content/api/CustomUI/child.js"
+      }
+    }    
   },
  "icons" : {
     "32" : "chrome/content/skin/ico/QuickFolders_32.svg",

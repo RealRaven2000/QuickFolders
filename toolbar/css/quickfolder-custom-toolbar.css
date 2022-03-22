@@ -1,0 +1,6 @@
+
+/* custom UI toolbar rules */
+
+div#QuickFolders-LabelBox, #QuickFolders-Tools-Pane, #QuickFolders-oneButtonPanel {
+  display: inline-block;
+}

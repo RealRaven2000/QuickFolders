@@ -18,8 +18,19 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
     return {
       Utilities: {
 
-        logDebug (text) {
+        logDebug: function(text) {
           win.QuickFolders.Util.logDebug(text);
+        },
+        
+        getCurrentFolder : async function() {
+          try {
+            debugger;
+            let f = await context.extension.folderManager.convert(win.QuickFolders.CurrentFolder);
+            return f;
+          }
+          catch(ex) {
+            return null;
+          }
         },
         
         getUserName : function () {

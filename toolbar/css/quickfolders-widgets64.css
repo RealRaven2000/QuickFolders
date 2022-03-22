@@ -1,0 +1,26 @@
+
+#QuickFolders-Panels menulist {
+	padding-top: 2px;
+	padding-bottom: 3px;
+}
+
+/* groupbox fix Tb 64+ */
+groupbox {
+	margin-bottom: 9px;
+  border: 2px groove ThreeDFace;
+  border-radius: 3px;
+  margin: 3px;
+  margin-bottom: 7px;
+  padding: 6px 3px 6px;
+}
+
+groupbox label.groupbox-caption {
+	background-color: -moz-field;
+	font-weight: normal;
+	margin-top: -12px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom:	6px;
+	padding-left: 5px;
+}
+

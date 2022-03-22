@@ -10,6 +10,22 @@ QuickFolders.Util = {
   ADDON_ID: "quickfolders@curious.be",
   ADDON_NAME: "QuickFolders",
   ADDON_SUPPORT_MAIL: "axel.grude@gmail.com",
+  ADVANCED_FLAGS: {
+    NONE : 0x0000,
+    SUPPRESS_UNREAD : 0x0001,
+    SUPPRESS_COUNTS : 0x0002,
+    EMAIL_RECURSIVE : 0x0004,
+    CUSTOM_CSS :      0x0100,
+    CUSTOM_PALETTE :  0x0200,
+    IGNORE_QUICKJUMP: 0x0400,
+    SETMAIL_UNREAD:   0x0800         // [Bug 26683]
+  } , 
+  
+  init: async function() {
+    // mx // TO DO
+    QuickFolders.Util.licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+    
+  },
   
   getSystemColor : function (sColorString) {
     function hex(x) { return ("0" + parseInt(x).toString(16)).slice(-2); }
@@ -100,7 +116,23 @@ QuickFolders.Util = {
     }
   },  
   
-  
+  clearChildren: function clearChildren(element, withCategories) {
+    if (!element) return;
+    QuickFolders.Util.logDebugOptional ("events","clearChildren(withCategories= " + withCategories + ")");
+    if (withCategories)
+      while(element.children.length > 0) {
+        element.removeChild(element.children[0]);
+      }
+    else {
+      let nCount=0; // skip removal of category selection box
+      while(element.children.length > nCount) {
+        if (element.children[nCount].id=='QuickFolders-Category-Box')
+          nCount++;
+        else
+          element.removeChild(element.children[nCount]);
+      }
+    }
+  } ,  
   
   $: function(id) {
     // get an element from the custom folder UI for manipulating
@@ -185,6 +217,7 @@ QuickFolders.Util = {
     }
   },
   
+///// 1365  
   getBundleString: function (id, substitions = []) { // moved from local copies in various modules.
     // [mx-l10n]
     let localized = browser.i18n.getMessage(id, substitions);
@@ -197,8 +230,96 @@ QuickFolders.Util = {
       this.logToConsole ("Could not retrieve bundle string: " + id + "");
     }
     return s;
-  }
+  },
+  
+  
+///// 1398  
+  getFolderTooltip: function getFolderTooltip(folder, btnLabel) {
+    // tooltip - see also Attributes section of
+    // https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
+    // and docs for nsIMsgIncomingServer
+    let getPref = function(arg) { return QuickFolders.Preferences.getBoolPref('tooltips.' + arg); },
+        sVirtual = folder && (folder.type == "virtual") ? " (virtual)" : "",
+        baseFolder = '',
+        srvName = '',
+        tooltip = '',
+        folderName = '',
+        flags = '';
+    if (!folder) {
+      if (btnLabel)
+        return "No Folder for [" + btnLabel + "] - try the 'Find Orphaned Tabs' command.";
+      return "Missing Folder - try the 'Find Orphaned Tabs' command.";
+    }
     
+    try {
+      folderName = folder.name;
+    }
+    catch(ex) {
+      folderName = 'no name?';
+      this.logException('No folder.name for folder:' + folder.toString() + '!', ex);
+    }
+    
+    try {
+      try {
+        let srv = folder.server;
+        if (getPref('serverName')) {
+          if (srv) {
+            try {srvName = ' [' + srv.hostName + ']';}
+            catch(e) { };
+          }
+        }
+      }
+      catch(ex) {
+        this.logException('No folder.server for folder:' + folderName + '!', ex);
+      }
+      
+      if (getPref('baseFolder')) {
+        try {
+          if (folder.rootFolder) {
+            try {baseFolder = ' - ' + folder.rootFolder.name;}
+            catch(e) { };
+          }
+          else
+            this.logDebug('getFolderTooltip() - No rootFolder on: ' + folderName + '!');
+        }
+        catch(e) { 
+          this.logDebug('getFolderTooltip() - No rootFolder on: ' + folderName + '!');
+        };
+      }
+      
+      if (getPref('msgFolderFlags')) { // no flags available
+        flags = ' ' + folder.type;
+      }
+    
+      if (getPref('parentFolder')) {
+        let parent = folder.parent;
+        if (parent && !parent.isServer) {
+          tooltip += parent.name+'/';
+        }
+      }
+    } // outer try for "foreign" objects, such as localfolders
+    catch(ex) {
+      this.logDebug('could not retrieve tooltip data for a folder');
+    }
+    
+    tooltip += folderName + baseFolder + srvName + flags;
+    tooltip += getPref('virtualFlag') ? sVirtual : '';
+
+    return tooltip;
+  },
+
+//////1591
+
+  getAnonymousNodes(doc,el) {
+    let aN = [];
+    for (let i = el.childNodes.length-1; i>0; i--) {
+      let c = el.childNodes[i];
+      if (!c.getAttribute("id") && !c.getAttribute("name"))
+        aN.push(c);
+    }
+    return aN;
+  } ,
+      
   
 } // QuickFolders.Util
 

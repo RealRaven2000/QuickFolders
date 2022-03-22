@@ -26,11 +26,11 @@ QuickFolders.Preferences = {
           case "string":
             item.type="string";
             break;
-          case "int":
-            item.type="int";
+          case "number":
+            item.type="number";
             break;
-          case "bool":
-            item.type="bool";
+          case "boolean":
+            item.type="boolean";
             break;
           default:
             item.type="unknown";
@@ -130,13 +130,33 @@ QuickFolders.Preferences = {
       "debug.recentFolders.detail",
       "debug.saleDate",
       "debug.toolbarHiding",
+      
       "enableMenuAlphaSorting", 
       "files.path",
       "hasNews",
       "lastActiveCategories",
       "lastSelectedOptionsTab",
+      "license.gracePeriodDate",
+      "LicenseKey",
+      "licenser.forceSecondaryIdentity",
+      "licenseType",
       "markAsReadOnMove",
+      "menuMessageList.maxSubjectLength", 
       "pastelColors", 
+      "premium.advancedTabProperties.usage", 
+      "premium.bookmarks.usage",
+      "premium.categories.multiSelect",
+      "premium.findFolder.disableSpace", 
+      "premium.findFolder.folderPathDetail",
+      "premium.findFolder.maxParentLevel",
+      "premium.findFolder.maxPathItems",
+      "premium.findFolder.usage", 
+      "premium.lineBreaks.usage", 
+      "premium.pasteFolderEntries.usage",
+      "premium.quickMove.usage", 
+      "premium.skipUnreadFolder.usage", 
+      "premium.tabIcons.usage", 
+      "premium.tabSeparator.usage", 
       "queuedFolderUpdateDelay",
       "quickCopy.Hotkey", 
       "quickCopy.Hotkey.Shift", 
@@ -146,28 +166,39 @@ QuickFolders.Preferences = {
       "quickJump.useHotkey", 
       "quickMove.autoFill",
       "quickMove.createFolderOnTop",
-      "quickMove.gotoNextMsgAfterMove",
       "quickMove.folderLabel",
+      "quickMove.gotoNextMsgAfterMove",
       "quickMove.Hotkey", 
       "quickMove.Hotkey.Shift", 
       "quickMove.lastFolderName",
       "quickMove.lastFolderURI",
+      "quickMove.maxResults", 
+      "quickMove.premium.escapeClearsLi+st",
+      "quickMove.premium.excludedAccounts", 
+      "quickMove.premium.lockInAccount", 
+      "quickMove.premium.silentMode", 
       "quickMove.reopenMsgTabAfterMove",
       "quickMove.useHotkey", 
       "rebuildShortcutKey", 
       "recentfolders.color", 
+      "recentfolders.folderPathDetail", 
+      "recentfolders.itemCount",
+      "recentfolders.maxPathItems", 
+      "recentfolders.showIcon",
+      "recentfolders.showLabel",
+      "recentfolders.showTimeStamp",
+      "recentfolders.sortAlphabetical", 
       "showCategoryCounts",
       "showCountInSubFolders", 
       "showCurrentFolderToolbar",
       "showCurrentFolderToolbar.messageWindow",
       "showCurrentFolderToolbar.singleMailTab",
-      
       "showFoldersWithMessagesItalic", 
       "showFoldersWithNewMailItalic",
       "showIcons", 
       "showNewMailHighlight",
-      "showQuickMove", 
       "showQuickfoldersLabel",
+      "showQuickMove", 
       "showRecentTab", , 
       "showShortcutNumber", 
       "showSubfolders",
@@ -178,12 +209,16 @@ QuickFolders.Preferences = {
       "skipFolder.Hotkey", 
       "skipFolder.Hotkey.Shift",
       "skipFolder.useHotkey", 
-      
       "style.ActiveTab.background-color", 
       "style.ActiveTab.color",
       "style.ActiveTab.paletteEntry",
       "style.ActiveTab.paletteType",
+      "style.button.minHeight",
+      "style.button.paddingTop",
       "style.ColoredTab.paletteType", 
+      "style.corners.customizedBottomRadiusN",
+      "style.corners.customizedRadius",
+      "style.corners.customizedTopRadiusN",
       "style.DragOver.background-color",
       "style.DragOver.color",
       "style.DragOver.paletteEntry",
@@ -198,36 +233,30 @@ QuickFolders.Preferences = {
       "style.InactiveTab.color", 
       "style.InactiveTab.paletteEntry", 
       "style.InactiveTab.paletteType", 
+      "style.palette.version",
+      "style.theme",
       "style.Toolbar.background-color",
       "style.Toolbar.bottomLineWidth",
-      "style.button.minHeight",
-      "style.button.paddingTop",
-      "style.corners.customizedBottomRadiusN",
-      "style.corners.customizedRadius",
-      "style.corners.customizedTopRadiusN",
-      "style.palette.version",
       "style.transitions", 
-      "style.theme",
-      
       "textQuickfoldersLabel",
-      "toolbar.minHeight",
       "toolbar.hideInSingleMessage",
-      "toolbar.ordinalPosition", 
       "toolbar.largeIcons",
-      "tooltips.parentFolder",
+      "toolbar.minHeight",
+      "toolbar.ordinalPosition", 
       "tooltips.baseFolder", 
+      "tooltips.msgFolderFlags", 
+      "tooltips.parentFolder",
       "tooltips.serverName", 
       "tooltips.virtualFlag", 
-      "tooltips.msgFolderFlags", 
-      "transparentToolbar",
       "transparentButtons",
+      "transparentToolbar",
       "treeIconsDelay",
-      
       "update.disableMinimal", 
       "useKeyboardShortcutCTRL", 
       "useKeyboardShortcuts", 
       "useNavigateShortcuts", 
       "useRebuildShortcut", 
+
     ]
     for (let i of myPrefs) {
       addPref(i);
@@ -324,7 +353,7 @@ QuickFolders.Preferences = {
     return await browser.LegacyPrefs.setPref(key, v);
 	},  
   
-	getStringPref: async function getStringPref(p) {
+	getStringPref: function getStringPref(p) {
     let key = p.startsWith(QuickFolders.Preferences.root) ? p.replace(QuickFolders.Preferences.root,"") : p;
     let item = QuickFolders.Preferences.cachedPrefs.find(e => e.key == key);
     let prefString = "";
@@ -344,7 +373,7 @@ QuickFolders.Preferences = {
     return await browser.LegacyPrefs.setPref(key, v);
 	},
 
-	getBoolPref: async function getBoolPref(p) {
+	getBoolPref: function getBoolPref(p) {
     let key = p.startsWith(QuickFolders.Preferences.root) ? p.replace(QuickFolders.Preferences.root,"") : p;
     let item = QuickFolders.Preferences.cachedPrefs.find(e => e.key == key);
     let ans = false;
@@ -375,29 +404,6 @@ QuickFolders.Preferences = {
   get supportsCustomIcon() {
     return true; // may be forbidden in future Thunderbird versions? 91+
   },
-  
-  getMsgFolderFromUri:  function getMsgFolderFromUri(uri, checkFolderAttributes) {
-    console.error("MX CODE - DON'T USE getMsgFolderFromUri - USE getMsgFolderFromEntry INSTEAD!");
-    return  null;
-  } ,
-
-  // MX compatible version  
-  getMsgFolderFromEntry: async function(entry, checkFolderAttributes) {
-    let apiPath = entry.apiPath;
-    let realFolder;
-    if (!apiPath) return null;
-    let parents = await messenger.folder.getParentFolders(entry.apiPath, false);
-    if (parents) {
-      let kids = await messenger.folder.getSubFolders(parents[0], false);
-      realFolder = kids.find(x => x.path == apiPath.path);
-    }
-    else {
-      let ac = await messenger.accounts.get(apiPath.accountId, true);
-      realFolder = // context.extension.folderManager.get(apiPath.accountId, apiPath.path);
-        ac.folders.find(x => x.path == apiPath.path);
-    }
-    return realFolder;
-  } ,
   
   loadFolderEntries: async function loadFolderEntries() {
 		const setting = "QuickFolders.folders",

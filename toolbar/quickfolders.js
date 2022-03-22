@@ -18,12 +18,11 @@ var QuickFolders = {
 			QuickFolders.Model.selectedFolders = folderEntries;  // that.Model
 			QuickFolders.Interface.updateUserStyles();
 
-      debugger;
-			let tab = await browser.tabs.getCurrent(),
+			let cats,
+          tab = await browser.tabs.getCurrent(), // not working from HTML content!! we need to ask a background script.
           tabMode = tab ? tab.type : ""; 
 			if (tab) {
 				// is this a new Thunderbird window?
-				let cats;
 				if (typeof (tab.QuickFoldersCategory) == 'undefined') {
 					let lc = QuickFolders.Preferences.lastActiveCats;
 					// if (currentFolder) {
@@ -38,19 +37,22 @@ var QuickFolders = {
 				else
 				  cats = tab.QuickFoldersCategory;
 				
-				util.logDebug("init: setting categories to " + cats);
+				util.logDebug("initTabsFromEntries: setting categories to " + cats);
 				if (tabMode == "folder" || tabMode == "message") {
 					// restore categories of first tab; set to "all" if not set
 					QuickFolders.Interface.currentActiveCategories = cats;
 				}
 			}
 			else {
-				util.logDebug('init: could not retrieve tab / tabMode\n tab=' + tab);
+        debugger;  // mx // TO DO:
+        cats = QuickFolders.Preferences.lastActiveCats || QuickFolders.FolderCategory.ALL;
+				util.logDebug('initTabsFromEntries: could not retrieve tab / tabMode\n Defaulting to category ' + cats);
+        QuickFolders.Interface.currentActiveCategories = cats;
       }
 				
 		}
 		catch(ex) {
-			util.logException('init: folderEntries', ex);
+			util.logException('initTabsFromEntries', ex);
 		}
     finally {
       QuickFolders.Interface.updateMainWindow(false);

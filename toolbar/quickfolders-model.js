@@ -15,6 +15,29 @@ QuickFolders.Model = {
   selectedFolders: [],
   categoriesList: [],
   
+  getMsgFolderFromUri:  function getMsgFolderFromUri(uri, checkFolderAttributes) {
+    console.error("MX CODE - DON'T USE getMsgFolderFromUri - USE getMsgFolderFromEntry INSTEAD!");
+    return  null;
+  } ,
+
+  // MX compatible version  
+  getMsgFolderFromEntry: async function(entry, checkFolderAttributes) {
+    let apiPath = entry.apiPath;
+    let realFolder;
+    if (!apiPath) return null;
+    let parents = await messenger.folders.getParentFolders(entry.apiPath, false);
+    if (parents && parents.length) {
+      let kids = await messenger.folders.getSubFolders(parents[0], false);
+      realFolder = kids.find(x => x.path == apiPath.path);
+    }
+    else {
+      let ac = await messenger.accounts.get(apiPath.accountId, true);
+      realFolder = // context.extension.folderManager.get(apiPath.accountId, apiPath.path);
+        ac.folders.find(x => x.path == apiPath.path);
+    }
+    return realFolder;
+  } ,
+  
   
   
 }

@@ -24,9 +24,9 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         
         getCurrentFolder : async function() {
           try {
-            debugger;
-            let f = await context.extension.folderManager.convert(win.QuickFolders.CurrentFolder);
-            return f;
+            let f = win.QuickFolders.Util.CurrentFolder,
+                nf = context.extension.folderManager.convert(f);
+            return nf;
           }
           catch(ex) {
             return null;

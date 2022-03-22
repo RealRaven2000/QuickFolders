@@ -11,13 +11,15 @@
   <body>
   
   
-  <div class="customtoolbar quickfolders-flat" contextmenu="new-context-menu">
+  <div id="QuickFolders-Toolbar" class="customtoolbar quickfolders-flat" contextmenu="new-context-menu">
    
     <menu id="new-context-menu" type="context">
       <menuitem>Hello World</menuitem>
     </menu>
    
-    <div id="QuickFolders-LabelBox" class="vbox">QuickFolders</div>
+    <div id="QuickFolders-LabelBox" class="vbox">
+      <button id="QuickFolders-title-label">QuickFolders</button>
+    </div>
     <div id="QuickFolders-Tools-Pane" class="vbox"> 
       <div id="QuickFolders-oneButtonPanel" class="hbox">
         <button id="QuickFolders-mainPopup">Load</button>
@@ -49,6 +51,8 @@
   <script type="application/javascript" src="quickfolders-model.js"></script>
   <script type="application/javascript" src="quickfolders-styles.js"></script>
   <script type="application/javascript" src="quickfolders-toolbar.js"></script>
+  <script type="application/javascript" src="quickfolders-filterWorker.js"></script>
+
   
   <script type="application/javascript" src="../chrome/content/i18n.js"></script>    
   

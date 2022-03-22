@@ -15,6 +15,7 @@ async function initToolbox() {
     "click",
     async function () { // test
       await QuickFolders.Preferences.initPrefsCache();
+      await QuickFolders.Util.init(); // license object
       let entries = await QuickFolders.Preferences.loadFolderEntries();
       QuickFolders.initTabsFromEntries(entries); // this on is async, too.
     }

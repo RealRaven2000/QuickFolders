@@ -21,8 +21,13 @@
       <button id="QuickFolders-title-label">QuickFolders</button>
     </div>
     <div id="QuickFolders-Tools-Pane" class="vbox"> 
-      <div id="QuickFolders-oneButtonPanel" class="hbox">
-        <button id="QuickFolders-mainPopup">Load</button>
+      <div id="QuickFolders-Category-Box" class="hbox">
+      <!-- !!! select dropdowns do not support multiple selections - they need to be listboxes in this case  -->
+        <select id="QuickFolders-Category-Selection" collapsed="true" size=1>
+        </select>
+        <div id="QuickFolders-oneButtonPanel" class="hbox">
+          <button id="QuickFolders-mainPopup">Load</button>
+        </div>
       </div>
     </div>
     <div id="QuickFolders-Folders-Pane" class="vbox">

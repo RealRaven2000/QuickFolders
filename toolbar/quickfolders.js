@@ -63,7 +63,7 @@ var QuickFolders = {
         util.logDebugOptional('categories', "forcing selectCategory");
         let bkCat = QuickFolders.Interface.currentActiveCategories; // force redraw by deleting it
         QuickFolders.Interface._selectedCategories = null;
-        QuickFolders.Interface.selectCategory(bkCat);
+        QuickFolders.Interface.selectCategory(bkCat, true);
       }
     }
 	},

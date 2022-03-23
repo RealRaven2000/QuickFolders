@@ -156,7 +156,6 @@ QuickFolders.Interface = {
 		// force label when there are no folders or license is in expired state!
 		try {
       util.logDebug("updateQuickFoldersLabel()");
-      debugger;
 			let showLabelBox = prefs.isShowQuickFoldersLabel || QuickFolders.Util.licenseInfo.isExpired  || (0==QuickFolders.Model.selectedFolders.length),
 					quickFoldersLabel = this.TitleLabel,
 					qfLabelBox = this.TitleLabelBox;
@@ -243,7 +242,6 @@ QuickFolders.Interface = {
 			}
 			else
 			{
-        debugger; // mx //
 				let rtab = QuickFolders.Interface.createRecentTab(null, false, null);
 				if (rtab) {
 					QuickFolders.Interface.FoldersBox.appendChild(rtab);
@@ -374,11 +372,134 @@ QuickFolders.Interface = {
 	} ,
   
   updateCategoryLayout: function updateCategoryLayout() {
-    QuickFolders.Util.logToConsole("// mx // TO DO: implement updateCategoryLayout");
+    const prefs = QuickFolders.Preferences,
+					util = QuickFolders.Util,
+					FCat = QuickFolders.FolderCategory,
+					model = QuickFolders.Model;
+		let select = this.CategoryMenu,
+		    showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
+		if (select) {
+			// don't show if ALWAYS and NEVER are the only ones that are references by tabs
+			let catArray = model.Categories,
+			    isCustomCat = false;
+			for (let i=0; i<catArray.length; i++) {
+				if (FCat.isSelectableUI(catArray[i])) {
+					isCustomCat = true;
+					break;
+				}
+			}
+			select.style.display = (showToolIcon || isCustomCat) ? "inline-box" : "none";
+      if (isCustomCat) {
+        select.removeAttribute("collapsed");
+      }
+      else {
+        select.setAttribute("collapsed", true);
+      }
+      
+      if (this.currentActiveCategories) {
+        if (this.currentActiveCategories == FCat.UNCATEGORIZED) // [issue 72] Category "_Uncategorized" will show all categories after moving a folder to another
+          this.selectCategory(FCat.UNCATEGORIZED);
+        else {
+          // [issue 101] If multiple categories are selected, closing QuickFolders settings reverts to "Show All"
+          let cats = this.currentActiveCategories ? this.currentActiveCategories.split("|") : [],
+              newCats = [];
+          
+          // remove invalid categories
+          for (let selCat of cats) {
+            if (catArray.includes(selCat)) {
+              newCats.push(selCat);
+            }
+          }
+          if (!newCats.length) {
+            // make sure all tabs are visible in case we delete the last category!
+            this.selectCategory(FCat.ALL);
+          }
+          else if (cats.length > newCats.length) {
+            QuickFolders.Interface.selectCategory(newCats.join("|"),false);
+          }
+        }
+      }
+
+			if (prefs.getBoolPref("collapseCategories"))
+				select.classList.add("autocollapse");
+			else
+				select.classList.remove ("autocollapse");
+	  }
   },
   
+///// 853  
   updateCategories: function updateCategories() {
-    QuickFolders.Util.logToConsole("// mx // TO DO: implement updateCategories");
+    const util = QuickFolders.Util,
+		      model = QuickFolders.Model,
+					prefs = QuickFolders.Preferences,
+          FCat = QuickFolders.FolderCategory;    
+    model.resetCategories();
+    
+		let bookmarkCategories = model.Categories, // this getter rebuilds the array from model.entries
+		    lCatCount = bookmarkCategories ? bookmarkCategories.length : 0,
+		    select = this.CategoryMenu;
+		    
+		util.logDebug("updateCategories() - [" + lCatCount + " Categories]");
+		if (prefs.isDebugOption("categories")) debugger;
+    
+    try {
+      if (lCatCount > 0 && select) {
+				let activeCatsList = this.currentActiveCategories,
+				    cats = activeCatsList ? activeCatsList.split("|") : [],
+            isMultiCategories = prefs.getBoolPref("premium.categories.multiSelect")
+            
+        // empty categories dropdown
+        while(select.options.length) {
+          select.remove(0);
+        }
+        
+        select.add(new Option(this.getUIstring("qfAll"), FCat.ALL)); // menuitem-iconic
+        for (let i = 0; i < lCatCount; i++) {
+          let category = bookmarkCategories[i];
+          if (category!=FCat.ALWAYS && category!=FCat.NEVER) {
+            let isSelected = false;
+            // if (isMultiCategories) {
+            if (cats.includes(category)) isSelected = true;
+            // }
+            let option = new Option(category, category, isSelected);
+            select.add(option);
+          }
+        }
+				// iterate all entries to see if we have any uncategorized / show never types:
+				let isUncat = false,
+				    isNever = false;
+				for (let i = 0; i < model.selectedFolders.length; i++) {
+					// test mail folder for existence
+					let folderEntry = model.selectedFolders[i];
+					if (folderEntry.category == FCat.NEVER)
+						isNever = true; // at least one folder alias exists
+					if (!folderEntry.category)
+						isUncat = true; // at least one folder without category exists
+				}
+
+				/* the following category items are only shown when necessary */
+        // mx // TO DO
+				// if (isUncat || isNever) {
+					// menuPopup.appendChild(this.createIconicElement("menuseparator","*"));
+				// }
+				if (isUncat) {
+					let isSelected = (cats.includes(FCat.UNCATEGORIZED) && isMultiCategories);
+          select.add(new Option(this.getUIstring("qfUncategorized"), FCat.UNCATEGORIZED, isSelected));
+				}
+				if (isNever) {
+          select.add(new Option(this.getUIstring("qfShowNever"), FCat.NEVER));
+				}
+
+        select.ariaLabel = activeCatsList || FCat.ALL; // revise this for MULTI SELECTS
+      }
+      else {
+        util.logDebug("No Categories defined, hiding Categories box.");
+      }
+    }
+    catch (ex) {
+      util.logException("updateCategories()", ex);
+    }
+		QuickFolders.Interface.updateCategoryLayout(); // hide or show.    
   },
   
   updateMainWindow: function updateMainWindow(minimal) {
@@ -392,24 +513,20 @@ QuickFolders.Interface = {
   set currentActiveCategories(v) {
 		const util = QuickFolders.Util;
     this._selectedCategories = v; // set menuitem value?
-    let menulist = this.CategoryMenu,
+    // see https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement
+    let select = this.CategoryMenu,
         cats = v.split("|"),
 				txtDebug = "";
 		try {
-			if (menulist) {
-				menulist.value = v;
+			if (select) {
+				select.value = v;
 				// if multiple select, check all boxes
-				for (let i=0; i<menulist.itemCount; i++) {
-					let it = menulist.getItemAtIndex(i);
+        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/options
+				for (let i=0; i<select.options.length; i++) {
+					let it = select.options[i];
           if (it.tagName!="menuitem") continue;
 					let isSelected = (cats.includes(it.value));
-					if (isSelected) {
-						txtDebug += "Check menuitem: " + it.value + "\n";
-						it.setAttribute("checked", isSelected); // check selected value
-					}
-					else {
-						it.removeAttribute("checked");
-					}
+          it.selected = isSelected;
 				}
 			}
 			util.logDebugOptional("categories","set currentActiveCategories()\n" + txtDebug);
@@ -450,10 +567,8 @@ QuickFolders.Interface = {
 	// see implementation in http://mxr.mozilla.org/comm-central/source/mail/base/content/mailTabs.js#166
 	// mailTabType.modes["folder"].persistTab -> needs to point to our own wrapper function.
 	// mailTabType.modes["folder"].restoreTab -> needs to point to our own wrapper function.
-  // dropdown = if this is passed we can now set the checkbox and select multple categories or just one
-  //            depending on the exact click target; also fill event
   // return true if updateFolders was called.
-	selectCategory: async function (categoryName, rebuild, dropdown, event) {
+	selectCategory: async function (categoryName, rebuild, event) {
     const util = QuickFolders.Util,
 					QI = QuickFolders.Interface,
           FCat = QuickFolders.FolderCategory,
@@ -497,7 +612,7 @@ QuickFolders.Interface = {
     // this.styleSelectedTab(selectedButton);
 
 		try {
-			let cs = document.getElementById("QuickFolders-Category-Selection");
+			let cs = this.CategoryMenu;
 			cs.setAttribute("label", QI.currentActiveCategories.split("|").join(" + "));
 		}
 		catch(ex) {
@@ -1249,6 +1364,13 @@ QuickFolders.Interface = {
 	} ,
 
 
+///// 5494
+	/* INITIALIZES CURRENT FOLDER TAB AND ELEMENTS OF NAVIGATION TOOLBAR */
+	initCurrentFolderTab: function initCurrentFolderTab(currentFolderTab, folder, selectedButton, tabInfo) {
+    QuickFolders.Util.logToConsole("// mx // TO DO: implement initCurrentFolderTab");
+	} ,
+
+
   
 ///// 5608  
 	getButtonColorClass: function getButtonColorClass(col, noStripe) {
@@ -1292,6 +1414,8 @@ QuickFolders.Interface = {
 		return true;
 	} ,
   
+  
+///// 5648
 	initElementPaletteClass: function initElementPaletteClass(element, targetElement, isUncolored) {
 		if (!element)
 			return;
@@ -1324,6 +1448,9 @@ QuickFolders.Interface = {
 		}
 	} ,
 
+  
+  
+  
   
 ////// 5894
   
@@ -1577,6 +1704,7 @@ QuickFolders.Interface = {
 		}
 	} ,
   
+///// 6134  
 	// Get all blingable elements and make them look user defined.
 	updateUserStyles: async function updateUserStyles() {
     const util = QuickFolders.Util,

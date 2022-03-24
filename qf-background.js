@@ -112,6 +112,8 @@ async function main() {
     "legacyAdvancedSearch", // new global one!
     "showAboutConfig", // new global one!
     "showLicenseDialog", // new global one!
+    "loadConfig",
+    "storeConfig",
     "slideAlert",
     "updateCategoryBox",
     "updateFoldersUI",
@@ -152,7 +154,6 @@ async function main() {
         // Broadcast main windows to run updateQuickFoldersLabel
         messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
         break;
-        
 
       case "updateUserStyles":
         // Broadcast main windows to update their styles (and maybe single message windows???)
@@ -160,9 +161,7 @@ async function main() {
         break;
         
       case "updateFoldersUI": // replace observer
-        messenger.NotifyTools.notifyExperiment(
-          { event: "updateFoldersUI"}
-        );
+        messenger.NotifyTools.notifyExperiment({event: "updateFoldersUI"});
         break;
         
       case "updateAllTabs": 
@@ -199,6 +198,14 @@ async function main() {
         });
         break;
         
+      case "loadConfig":
+        messenger.NotifyTools.notifyExperiment({ event: "loadConfigLegacy" });
+        break;
+        
+      case "storeConfig":
+        messenger.NotifyTools.notifyExperiment({ event: "storeConfigLegacy", storedObj: data.storedObj });
+        break;
+      
       case "showLicenseDialog":
         messenger.NotifyTools.notifyExperiment({
           event: "showLicenseDialog", 

@@ -552,6 +552,11 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["currentDeckUpdate"] = QI.currentDeckUpdate.bind(QI); 
   mylisteners["initKeyListeners"] = window.QuickFolders.initKeyListeners.bind(window.QuickFolders);
   mylisteners["firstRun"] = window.QuickFolders.Util.FirstRun.init.bind(window.QuickFolders.Util.FirstRun);
+  // store and load config
+  const model =  window.QuickFolders.Model;
+  mylisteners["loadConfigLegacy"] = (event) => model.loadConfig.call(model, event);
+  mylisteners["storeConfigLegacy"] = (event) => model.storeConfig.call(model, event);
+  
   
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);

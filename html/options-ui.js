@@ -675,11 +675,14 @@ QuickFolders.Options = {
         chkConfigIncludeTabs = getElement("chkConfigIncludeTabs"),
         chkConfigGeneral= getElement("chkConfigIncludeGeneral"),
         chkConfigLayout = getElement("chkConfigIncludeLayout"),
-        btnLoadConfig   = getElement("btnLoadConfig");
+        btnLoadConfig   = getElement("btnLoadConfig"),
+        fldBackupRestore = getElement("backupRestore");
     btnLoadConfig.disabled = !isEnabled;
     chkConfigGeneral.disabled = !isEnabled;
     chkConfigIncludeTabs.disabled = !isEnabled;
     chkConfigLayout.disabled = !isEnabled;
+    if (isEnabled) { backupRestore.removeAttribute("disabled"); }
+    else { backupRestore.setAttribute("disabled",true); }
   },
 
   updateLicenseOptionsUI : async function (silent = false) {
@@ -887,6 +890,8 @@ QuickFolders.Options = {
   pasteFolderEntries: function() {
     messenger.runtime.sendMessage({ command:"pasteFolderEntries" });  
   },
+    
+    
     
   
   

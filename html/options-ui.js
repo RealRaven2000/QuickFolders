@@ -179,6 +179,7 @@ QuickFolders.Options = {
       }
       
     }
+    return previewTab;
   },
   
   colorPickerTranslucent: function(picker) {
@@ -460,26 +461,26 @@ QuickFolders.Options = {
         isStripable = null,
         isTransparentSupport = false;
     switch(buttonState) {
-      case 'colored':
-        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(await prefs.getIntPref('style.ColoredTab.paletteType'));
+      case "colored":
+        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(await prefs.getIntPref("style.ColoredTab.paletteType"));
         break;
-      case 'standard':
-        idPreview = 'inactivetabs-label';
-        colorPicker = 'inactive-colorpicker';
-        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(await prefs.getIntPref('style.ColoredTab.paletteType'));
+      case "standard":
+        idPreview = "inactivetabs-label";
+        colorPicker = "inactive-colorpicker";
+        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(await prefs.getIntPref("style.ColoredTab.paletteType"));
         isTransparentSupport = (paletteType==0);
         break;
-      case 'active':
-        idPreview = 'activetabs-label';
-        colorPicker = 'activetab-colorpicker';
+      case "active":
+        idPreview = "activetabs-label";
+        colorPicker = "activetab-colorpicker";
         break;
-      case 'hovered':
-        idPreview = 'hoveredtabs-label';
-        colorPicker = 'hover-colorpicker';
+      case "hovered":
+        idPreview = "hoveredtabs-label";
+        colorPicker = "hover-colorpicker";
         break;
-      case 'dragOver':
-        idPreview = 'dragovertabs-label';
-        colorPicker = 'dragover-colorpicker';
+      case "dragOver":
+        idPreview = "dragovertabs-label";
+        colorPicker = "dragover-colorpicker";
         break;
     }
     if (isStripable && paletteType==3) isStripable = false;
@@ -503,7 +504,7 @@ QuickFolders.Options = {
     // preparePreviewTab(id, preference, previewId)
     await prefs.setIntPref('style.' + stylePref + '.paletteType', paletteType);
     if (colorPicker) {
-      this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, null, paletteType);
+      let preview = this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, null, paletteType);
       // we need to force reselect the palette entry of the button
       // to update font & background color
       if (isUpdatePanelColor) {
@@ -512,6 +513,10 @@ QuickFolders.Options = {
           // if (!m.targetNode)
           m.targetNode = (buttonState == 'colored') ? 
                          null : getElement(QI.getPreviewButtonId(buttonState));
+          // as we share the same menu between all preview elements, we need to overwrite targetId.
+          let thePicker = getElement(colorPicker);
+          m.setAttribute("targetId", thePicker.getAttribute("previewLabel"));
+          m.setAttribute("stylePrefKey", preview.getAttribute("stylePrefKey"));
           // retrieve palette index
           let col = await prefs.getIntPref('style.' + stylePref + '.paletteEntry');
           QI.setTabColorFromMenu(m.firstChild, col.toString()); // simulate a menu item! 155 lines of LEGACY code ...
@@ -891,7 +896,29 @@ QuickFolders.Options = {
     messenger.runtime.sendMessage({ command:"pasteFolderEntries" });  
   },
     
-    
+  getColorPickerVars: function(colPickId) {
+    switch (colPickId) {
+      case "toolbar-colorpicker":
+        return {name: "Toolbar", style: "background-color", preview: "qf-StandardColors"};
+      case "inactive-fontcolorpicker":
+        return {name: "InactiveTab", style: "color", preview: "inactivetabs-label"};
+        break;
+      case "activetab-fontcolorpicker":
+        return {name: "ActiveTab", style: "color", preview: "activetabs-label"};
+      case "activetab-colorpicker":
+        return {name: "ActiveTab", style: "background-color", preview: "activetabs-label"};
+      case "hover-fontcolorpicker":
+        return {name: "HoveredTab", style: "color", preview: "hoveredtabs-label"};
+      case "hover-colorpicker":
+        return {name: "HoveredTab", style: "background-color", preview: "hoveredtabs-label"};
+      case "dragover-fontcolorpicker":
+        return {name: "DragTab", style: "color", preview: "dragovertabs-label"};
+      case "dragover-colorpicker":
+        return {name: "DragTab", style: "background-color", preview: "dragovertabs-label"};
+      default:
+        return {name:null, style: null, preview: null};
+    }
+  },
     
   
   

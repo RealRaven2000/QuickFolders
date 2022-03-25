@@ -61,50 +61,19 @@ for (let button of document.querySelectorAll("#QuickFolders-Options-Tabbox butto
 
 
 for (let colorpicker of document.querySelectorAll("input[type=color]")) {
-  let options = QuickFolders.Options,
-      elementName, elementStyle, label,
-      isStyleUpdate = true;
-  function initParams(eN, eS, s, l) {
-    elementName=eN, elementStyle=eS, label=l
+  let {name, style, label} = QuickFolders.Options.getColorPickerVars(colorpicker.id);
+  if (!name) {
+    if (colorpicker.id == "inactive-colorpicker") {
+      colorpicker.addEventListener("input", function() { 
+        QuickFolders.Options.colorPickerTranslucent.call(QuickFolders.Options, colorpicker);
+      } );
+    }
   }
-  switch (colorpicker.id) {
-    case "toolbar-colorpicker":
-      initParams("Toolbar", "background-color", "qf-StandardColors");
-      break;
-    case "inactive-fontcolorpicker":
-      initParams("InactiveTab","color", "inactivetabs-label");
-      break;
-    case "inactive-colorpicker":
-        isStyleUpdate = false;
-        colorpicker.addEventListener("input", function() { 
-          options.colorPickerTranslucent.call(options, colorpicker);
-        } );
-      break;
-    case "activetab-fontcolorpicker":
-      initParams("ActiveTab","color", "activetabs-label");
-      break;
-    case "activetab-colorpicker":
-      initParams("ActiveTab","background-color","activetabs-label");
-      break;
-    case "hover-fontcolorpicker":
-      initParams("HoveredTab","color","hoveredtabs-label");
-      break;
-    case "hover-colorpicker":
-      initParams("HoveredTab","background-color", "hoveredtabs-label");
-      break;
-    case "dragover-fontcolorpicker":
-      initParams("DragTab", "color", "dragovertabs-label");
-      break;
-    case "dragover-colorpicker":
-      initParams("DragTab", "background-color", "dragovertabs-label");
-      break;
-    default:
-      isStyleUpdate = false;
-  }
-  if (isStyleUpdate)
+  else {
     colorpicker.addEventListener("input", function() { // was "input"
-      options.styleUpdate(elementName, elementStyle, colorpicker.value, colorpicker.getAttribute("previewLabel"));
+      QuickFolders.Options.styleUpdate(name, style, colorpicker.value, colorpicker.getAttribute("previewLabel"));
     } );
+  }
 }
 
 // all dropdowns that end with "paletteType"
@@ -456,8 +425,24 @@ document.getElementById("btnLoadConfig").addEventListener("click", async (event)
   // legacy code - moved to experiment api (utilities)
   let config = await messenger.Utilities.loadConfig();  
   if (config) {
-    debugger;
-    loadPrefs();
+    const colorpickers = Array.from(document.querySelectorAll("input[type=color]"));      
+    for (let i=0; i<config.length; i++) {
+      let item = config[i];
+      // { key: it.getAttribute("data-pref-name"), val: value, originalId: it.getAttribute("preference") }
+      if (item.key) {
+        await browser.LegacyPrefs.setPref(item.key, item.val);
+      }
+      else if (item.elementInfo) {
+        let colPick = colorpickers.find(e => e.getAttribute("elementInfo") == item.elementInfo);
+        if (colPick) {
+          colPick.value = item.val;
+          let {name, style, label} = QuickFolders.Options.getColorPickerVars(colPick.id);
+          QuickFolders.Options.styleUpdate(name, style, item.val, colPick.getAttribute("previewLabel"));
+        }
+      }
+    }
+    await loadPrefs();
+    QuickFolders.Options.initPreviewTabStyles();
   }
 });
 

@@ -295,7 +295,14 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                     changedRecords.push(data.layout[i]);
                   }
                   isLayoutModified = true;
+                  
+                  for (let i=0; i<data.userStyle.length; i++) {
+                    changedRecords.push(data.userStyle[i]);
+                  }
+                  
+                  
                 }
+                
                 if (data.advanced) {
                   for (let i=0; i<data.advanced.length; i++) {
                     changedRecords.push(data.advanced[i]);

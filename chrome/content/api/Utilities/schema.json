@@ -52,6 +52,29 @@
         "async": true,
         "parameters": []
       },
+
+      {
+        "name": "storeConfig",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "config",
+            "type": "object",
+            "description": "deserialized json structure holding configuration",
+            "additionalProperties": true
+          }
+        ]
+        
+      },
+      
+      {
+        "name": "loadConfig",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      
       
       {
         "name": "getUserStyle",

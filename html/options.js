@@ -449,13 +449,14 @@ document.getElementById("btnSaveConfig").addEventListener("click", async (event)
     storedObj.userStyle.push(node);
   }  
   
-  return await messenger.runtime.sendMessage({command:"storeConfig", storedObj});  
+  return await messenger.Utilities.storeConfig(storedObj);  
 });
      
 document.getElementById("btnLoadConfig").addEventListener("click", async (event) => {
-  // legacy code - needs to go via background 
-  let result = await messenger.runtime.sendMessage({command:"loadConfig", document});  
-  if (result) {
+  // legacy code - moved to experiment api (utilities)
+  let config = await messenger.Utilities.loadConfig();  
+  if (config) {
+    debugger;
     loadPrefs();
   }
 });

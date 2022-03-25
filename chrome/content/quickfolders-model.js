@@ -630,7 +630,7 @@ QuickFolders.Model = {
   // removed from options.js
   // the parameters will be empty when called from HTML
   // because there is no Preferences object in the HTML namespace
-	storeConfig: async function(evt, par2) {
+	storeConfig: async function(preferences, prefMap) {
 		// see options.copyFolderEntries
     const Cc = Components.classes,
           Ci = Components.interfaces,
@@ -654,53 +654,42 @@ QuickFolders.Model = {
     util.logDebug("Storing configuration...")
 
     // LEGACY BRANCH - if called from background this will contain the event
-		if (evt && !evt.target) {
-      let preferences = evt;
-      let prefMap = par2;
-			let prefInfos = preferences.getAll();
-			for (let info of prefInfos) {
-        let originId = prefMap[info.id];
-				let node = { key: info.id, val: info.value, originalId: originId };
-        if (originId) {
-          switch (originId.substr(0,5)) {
-            case 'qfpg-':  // general
-              storedObj.general.push(node);
-              break;
-            case 'qfpa-':  // advanced
-              storedObj.advanced.push(node);
-              break;
-            case 'qfpl-':  // layout
-              storedObj.layout.push(node);
-              break;
-            case 'qfpp-':  // premium - make sure not to import the License without confirmation!
-              if (isLicense)
-                storedObj.premium.push(node);
-              break;
-            default:
-              util.logDebug("Not storing - unknown preference category: " + node.key);
-          }
+    let prefInfos = preferences.getAll();
+    for (let info of prefInfos) {
+      let originId = prefMap[info.id];
+      let node = { key: info.id, val: info.value, originalId: originId };
+      if (originId) {
+        switch (originId.substr(0,5)) {
+          case 'qfpg-':  // general
+            storedObj.general.push(node);
+            break;
+          case 'qfpa-':  // advanced
+            storedObj.advanced.push(node);
+            break;
+          case 'qfpl-':  // layout
+            storedObj.layout.push(node);
+            break;
+          case 'qfpp-':  // premium - make sure not to import the License without confirmation!
+            if (isLicense)
+              storedObj.premium.push(node);
+            break;
+          default:
+            util.logDebug("Not storing - unknown preference category: " + node.key);
         }
-        else {
-          util.logDebug("Not found - map entry for " + info.id);
-        }
-			}
-      
-      // now save all color pickers.
-      let elements = document.querySelectorAll("[type=color]"); //getElementsByTagName('html:input');
-      for (let i=0; i<elements.length; i++) {
-        let element = elements[i];
-        let node = { elementInfo: element.getAttribute("elementInfo"), val: element.value };
-        storedObj.userStyle.push(node);
       }
-        
+      else {
+        util.logDebug("Not found - map entry for " + info.id);
+      }
     }
-    else { // html branch - we do not use PReferences or prefmap
-      let SO = evt.detail.storedObj;
-      storedObj.general = SO.general;
-      storedObj.advanced = SO.advanced;
-      storedObj.layout = SO.layout;
-      storedObj.userStyle = SO.userStyle;
+    
+    // now save all color pickers.
+    let elements = document.querySelectorAll("[type=color]"); //getElementsByTagName('html:input');
+    for (let i=0; i<elements.length; i++) {
+      let element = elements[i];
+      let node = { elementInfo: element.getAttribute("elementInfo"), val: element.value };
+      storedObj.userStyle.push(node);
     }
+      
     
     // [issue 115] store selection for background dropdown
     const bgKey = 'currentFolderBar.background.selection';
@@ -722,12 +711,12 @@ QuickFolders.Model = {
 				  util = QuickFolders.Util;
 
 		function changePref(pref) {
-			let p = preferences.get(pref.key);
-			if (p) {
-				if (p._value != pref.val) {
+      let p = preferences.get(pref.key);
+      if (p) {
+        if (p._value != pref.val) {
           // [issue 115] fix restoring of config values
-					util.logDebug("Changing [" + p.id + "] " + pref.originalId + " : " + pref.val);
-					p._value = pref.val;
+          util.logDebug("Changing [" + p.id + "] " + pref.originalId + " : " + pref.val);
+          p._value = pref.val;
           let e = foundElements[pref.key];
           if (e) {
             switch(e.tagName) {
@@ -759,17 +748,6 @@ QuickFolders.Model = {
                 break;
             }
           }
-				}
-			}
-      else {
-        switch(pref.key) {
-          case 'extensions.quickfolders.currentFolderBar.background.selection':
-            if (pref.val && prefs.getStringPref(pref.key) != pref.val) {
-              options.setCurrentToolbarBackground(pref.val, true);
-            }
-            break;
-          default:
-            util.logDebug("loadConfig - unhandled preference: " + pref.key);
         }
       }
 		}
@@ -786,6 +764,7 @@ QuickFolders.Model = {
 				    entries = data.folders,
             isLayoutModified = false,
 						question = util.getBundleString("qf.prompt.restoreFolders");
+            
 				if (prefs.getBoolPref('restoreConfig.tabs')
 				   && Services.prompt.confirm(window, "QuickFolders", question.replace("{0}", entries.length))) {
 					for (let ent of entries) {
@@ -859,7 +838,8 @@ QuickFolders.Model = {
           }
           // load custom colors and restore color pickers
           // options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors')
-          if (data.userStyle) {
+          
+          if (data.userStyle) { // legacy
             let elements = document.getElementsByTagName('html:input');
             for (let i=0; i<elements.length; i++) {
               let element = elements[i];
@@ -902,18 +882,19 @@ QuickFolders.Model = {
         
 			}
 			catch (ex) {
-				util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
+				util.logException("Error in QuickFolders.Model.readData():\n", ex);
 				Services.prompt.alert(null,"QuickFolders", util.getBundleString("qf.alert.pasteFolders.formatErr"));
 			}
 		}
     
     // find all controls with bound preferences
     let myprefElements = document.querySelectorAll("[preference]"),
-		    foundElements = {};
-		for (let myprefElement of myprefElements) {
+        foundElements = {};
+    for (let myprefElement of myprefElements) {
       let prefName = myprefElement.getAttribute("preference");
-			foundElements[prefName] = myprefElement;
-		}	
+      foundElements[prefName] = myprefElement;
+    }	
+    
 		QuickFolders.Model.fileConfig('load', null, null, readData); // load does the reading itself?
     return true;
 	} ,

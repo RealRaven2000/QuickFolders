@@ -199,7 +199,9 @@ async function main() {
         break;
         
       case "loadConfig":
-        messenger.NotifyTools.notifyExperiment({ event: "loadConfigLegacy" });
+        results = await messenger.NotifyTools.notifyExperiment({ event: "loadConfigLegacy" });
+        debugger;
+        return results;
         break;
         
       case "storeConfig":

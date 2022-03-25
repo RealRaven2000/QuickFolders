@@ -302,6 +302,26 @@
 				<a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.9 - WIP</a>
 				</h4>
         <ul>
+          <h4 class="inList">Improvements</h4>
+          <li>
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/241">[issue 241]</a>
+            using quickJump / quickMove via shortcut - hitting Enter will now always select the last successful 
+            location (even when the name is ambiguous) and not the top item of the menu. This is only used on 
+            Enter if the menu is visible. (user needs to type or hit Arrow down)
+          </li>
+          <li>
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/242">[issue 242]</a>
+            Using '=' key for recent quickJump folders - now also support quickMove
+          </li>
+          <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/236">[issue 236]</a> 
+            Convert options dialog to pure HTML. Amon other things, this fixes the color pickers that have stopped
+            working on Mac. Long term, all Dialogs and User Interfaces need to be converted to HTML
+            to become future proof and pure API based. There are still things that cannot be done with HTML
+            right now (such as folder dropdowns that aren't cut off at the toolbar borders), so this is 
+            an ongoing effort for the predictable future.
+          </li>
+          
+          <h4 class="inList">Bug Fixes</h4>
           <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/232">[issue 232]</a> 
             Fixed: When Adding a category to a tab, another category may be replaced
           </li>

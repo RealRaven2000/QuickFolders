@@ -229,6 +229,13 @@ QuickFolders.Interface = {
 		    prefs = QuickFolders.Preferences,
         util = QuickFolders.Util;
 		util.logDebugOptional("recentFolders","createRecentPopup(passedPopup:" + passedPopup + ", isDrag:"+ isDrag +", isCreate:" + isCreate + ")");
+    
+    // purge old menus
+    for (let p of document.querySelectorAll("#" + popupId)) {
+      if (p!=passedPopup)
+        p.parentNode.removeChild(p);
+    }
+
 
  		if (passedPopup) {
  			// clear old folders...
@@ -254,8 +261,27 @@ QuickFolders.Interface = {
 		let recentFolders,
 		    FoldersArray = []; // Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
 
-    // moved out to shim b/c for..of not liked by Postbox
-    recentFolders = util.generateMRUlist(gFolderTreeView);
+    if (popupId == "QuickFolders-FindFolder-popup-Recent") {
+      recentFolders = [];
+      for (let i=0; i<QuickFolders.quickMove.history.length; i++) {
+        let item = QuickFolders.quickMove.history[i];
+        let f = QuickFolders.Model.getMsgFolderFromUri(item);
+        if (f) recentFolders.push({_folder:f});
+      }
+/*      
+      if (recentFolders.length < QuickFolders.quickMove.MAX_LOGGED) { 
+        // not enough entries? Fill up with recent entries.
+        let mru =  util.generateMRUlist(gFolderTreeView);
+        for (let j=0; j<mru.length && recentFolders.length < QuickFolders.quickMove.MAX_LOGGED; j++) {
+          recentFolders.push(mru[j]); // these have an invalid event listener - won't remember last folder!
+        }
+      }
+      */
+      
+    }
+    else {
+      recentFolders = util.generateMRUlist(gFolderTreeView);
+    }
 
     let debugText = "";
 		for (let i = 0; i < recentFolders.length; i++) {
@@ -4450,7 +4476,18 @@ QuickFolders.Interface = {
 			}
 		}
 		catch (ex) { util.logToConsole(ex); };
-		QuickFolders_MySelectFolder (folderUri);
+		let res = QuickFolders_MySelectFolder(folderUri);
+    // remember the folder if event comes from QuickFolders-FindFolder-popup-Recent
+    if (res && evt) {
+      let t = evt.target;
+      while (t && t.parentNode && !t.parentNode.tagName.includes("button")) {
+        t = t.parentNode;
+        if (t.id && t.id=="QuickFolders-FindFolder-popup-Recent") {
+          QuickFolders.quickMove.addToHistory( QuickFolders.Model.getMsgFolderFromUri(folderUri));
+          t = null;
+        }
+      }
+    }
 	} ,
 
 	// on down press reopen QuickFolders-FindPopup menu with ignorekeys="false"
@@ -7056,6 +7093,12 @@ QuickFolders.Interface = {
     l3.appendChild(document.createElement("br"));
     l3.appendChild(document.createTextNode(util.getBundleString("quickMove.help.l3b")));
     ul.appendChild(l3);
+    
+    let l4 = document.createElement("li");
+    txt = util.getBundleString("quickMove.help.l4a");
+    l4.insertAdjacentHTML("beforeend", txt.replace("{1}","<code>=</code>"));
+    ul.appendChild(l4);
+
     box.appendChild(ul);
     
     // 

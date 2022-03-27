@@ -826,21 +826,21 @@ QuickFolders.Options = {
       case  "extend":
         let txtExtend = QuickFolders.Util.getBundleString("qf.notification.premium.btn.extendLicense");
         btnLicense.setAttribute("collapsed",false);
-        btnLicense.label = txtExtend; // text should be extend not renew
+        btnLicense.textContent = txtExtend; // text should be extend not renew
         btnLicense.setAttribute('tooltiptext',
           QuickFolders.Util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip"));
         return txtExtend;
       case "renew":
         let txtRenew = QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense");
-        btnLicense.label = txtRenew;
+        btnLicense.textContent = txtRenew;
         return txtRenew;
       case "buy":
         let buyLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.getLicense");
-        btnLicense.label = buyLabel;
+        btnLicense.textContent = buyLabel;
         return buyLabel;
       case "upgrade":
         let upgradeLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.upgrade");
-        btnLicense.label = upgradeLabel;
+        btnLicense.textContent = upgradeLabel;
         btnLicense.classList.add('upgrade'); // stop flashing
         return upgradeLabel;
         

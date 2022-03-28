@@ -100,7 +100,6 @@ QuickFolders.Util = {
       browserInfo: QuickFolders.Util.browserInfo,
       addonInfo: QuickFolders.Util.addonInfo,
     });
-    QuickFolders.quickMove.initLog();
   },
   
   $: function(id) {

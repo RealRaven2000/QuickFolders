@@ -488,12 +488,20 @@ menupopup.widerMenu menucaption {
 	to {box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.25);}
 }
 
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash,
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
 	background-color: #006EB7 !important; /* blue */
 	background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   border-radius: 2px !important;
 }
+
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
+  background-color: #b80015 !important; /* red */
+  background: linear-gradient(to bottom, #890219 0%,#b80015 100%) !important; 
+  color: white !important;
+}
+
+
+
 #QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
   padding-left: 1em;
   padding-right: 1em;

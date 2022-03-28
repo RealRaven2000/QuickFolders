@@ -262,17 +262,23 @@ QuickFolders.Interface = {
 		    FoldersArray = []; // Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
 
     if (popupId == "QuickFolders-FindFolder-popup-Recent") {
+      let maxLen = QuickFolders.quickMove.history.length;
+      if (util.hasStandardLicense() || !util.hasValidLicense()) {
+        if (maxLen>QuickFolders.quickMove.MAX_HISTORY_STD) {
+          maxLen = QuickFolders.quickMove.MAX_HISTORY_STD;
+        }
+      }
       recentFolders = [];
-      for (let i=0; i<QuickFolders.quickMove.history.length; i++) {
+      for (let i=0; i<maxLen; i++) {
         let item = QuickFolders.quickMove.history[i];
         let f = QuickFolders.Model.getMsgFolderFromUri(item);
         if (f) recentFolders.push({_folder:f});
       }
 /*      
-      if (recentFolders.length < QuickFolders.quickMove.MAX_LOGGED) { 
+      if (recentFolders.length < QuickFolders.quickMove.MAX_HISTORY) { 
         // not enough entries? Fill up with recent entries.
         let mru =  util.generateMRUlist(gFolderTreeView);
-        for (let j=0; j<mru.length && recentFolders.length < QuickFolders.quickMove.MAX_LOGGED; j++) {
+        for (let j=0; j<mru.length && recentFolders.length < QuickFolders.quickMove.MAX_HISTORY; j++) {
           recentFolders.push(mru[j]); // these have an invalid event listener - won't remember last folder!
         }
       }
@@ -519,6 +525,7 @@ QuickFolders.Interface = {
       }
 			else if (QuickFolders.Util.licenseInfo.isExpired) {
 				quickFoldersLabel.classList.add("expired");
+				quickFoldersLabel.classList.remove("newsflash");
 				let txtExpired =
 				  util.getBundleString("qf.premium.renewLicense.tooltip").replace("{1}", QuickFolders.Util.licenseInfo.expiredDays);
 				quickFoldersLabel.setAttribute("tooltiptext", txtExpired);
@@ -4817,7 +4824,8 @@ QuickFolders.Interface = {
 		if (!searchString)
 			return;
     if (searchString=== "=") { // recent folder token
-      // QuickFolders.Interface.onClickRecent(searchBox, null, true); // we need to focus on the popup menu as well, also hide the search box.
+      // QuickFolders.Interface.onClickRecent(searchBox, null, true); PROTOTYPE
+      // we need to focus on the popup menu as well, also hide the search box.
       let isDrag = isFiling; // see isFiling below
       //                                                      (popup, drag, isCreate, isCurrentFolderButton)
       let menupopup = QuickFolders.Interface.createRecentPopup(null, isDrag, false, "QuickFolders-FindFolder-popup-Recent");

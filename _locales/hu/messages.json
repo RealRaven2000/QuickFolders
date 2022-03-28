@@ -1852,7 +1852,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Javítva az 5.8.2 verzióban: A hosszú mappák menüi most görgetnek, amikor a leveleket a képernyő szélére húzzák. {L2}{L1} A Thunderbird már nem ugrik be az Inboxba, amikor a helyi menüből új leveleket keres. {L2} {L1} Nagy ikonok támogatása a QuickFolders eszköztár gombjaiban a nagy felbontású megjelenítésekhez. {L2} {L1} Javítva: mappák mozgatása a quickMove függvényből nem sikerült a Tb91. {L2} {L1} Különféle Thunderbird 91 -es elrendezési javítások. {L2}"
+    "message": "{L1}Új {=} gomb a QuickMove-hoz a QuickMove / QuickJump által használt legutóbbi mappák listázásához.{L2} {L1}A quickJump alapértelmezett értéke mostantól mindig az utolsó mappát használja. Lehetőség volt más javaslatok egyeztetésére az utolsó mappa hely helyett, ha azonos mappanevek találhatók.{L2} {L1}A beállítások párbeszédablakot HTML formátumba konvertáltuk – ez egy fontos lépés a QuickFolders számára a tisztán API alapú levelezés felé. bővítmény kísérleti engedélyek nélkül a jövőben.{L2} {L1}Eltávolítottuk a QuickJump problémáit kompakt módú mappafában.{L2} {L1}Továbbfejlesztett kategóriaszerkesztő párbeszédpanel.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

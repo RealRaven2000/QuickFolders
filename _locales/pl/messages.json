@@ -1852,7 +1852,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Naprawiono w wersji 5.8.2: Menu długich folderów przewija się teraz podczas przeciągania wiadomości do krawędzi ekranu.{L2}{L1}Thunderbird nie przeskakuje już do skrzynki odbiorczej podczas sprawdzania nowych wiadomości e-mail z menu kontekstowego.{L2}{L1}Obsługa dużych ikon w przyciskach paska narzędzi QuickFolders do wyświetlania w wysokiej rozdzielczości.{L2}{L1}Naprawiono: przenoszenie folderów z funkcji quickMove nie powiodło się w Tb91.{L2}{L1}Poprawki różnych układów specyficzne dla Thunderbird 91.{L2}"
+    "message": "{L1}Nowy {=} klawisz dla quickMove, aby wyświetlić listę najnowszych folderów, które były używane przez quickMove / quickJump.{L2} {L1}Domyślna wartość quickJump teraz zawsze używa ostatniego folderu. Istniała możliwość dopasowania innych sugestii zamiast ostatniej lokalizacji folderu, jeśli znaleziono identyczne nazwy folderów.{L2} {L1}Okno dialogowe opcji zostało przekonwertowane na HTML — jest to ważny krok dla QuickFolders w kierunku przekształcenia się w pocztę opartą wyłącznie na interfejsie API rozszerzenie bez eksperymentalnych uprawnień w przyszłości.{L2} {L1}Usunięto problemy z szybkim skokiem w drzewie folderów w trybie kompaktowym.{L2} {L1}Ulepszone okno edycji kategorii.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

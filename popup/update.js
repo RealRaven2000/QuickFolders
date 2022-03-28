@@ -208,7 +208,8 @@ addEventListener("load", async (event) => {
     if (whatsNewLst) {
       whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
         .replace(/\{L1\}/g,"<li>")
-        .replace(/\{L2\}/g,"</li>");
+        .replace(/\{L2\}/g,"</li>")
+        .replace(/\{=\}/g,"<code>=</code>");
     }
 
     let ongoing = document.getElementById('ongoing-work');

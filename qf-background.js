@@ -232,6 +232,9 @@ async function main() {
         if (data.selectedTab || data.selectedTab==0) {
           params.append("selectedTab", data.selectedTab);
         }
+        if (data.mode) {
+          params.append("mode", data.mode);
+        }
         
         let title = messenger.i18n.getMessage("qf.prefwindow.quickfolders.options");
         // to get the tab - we need the activetab permission

@@ -572,8 +572,20 @@ async function preselectTab() {
     // selectOptionsPane can be overwritten by URL parameter "selectedTab"
   let optionParams = new URLSearchParams(document.location.search);
   let selTab = optionParams ? optionParams.get("selectedTab") : "";
+  let mode = optionParams ? optionParams.get("mode") : "";
   if (null!=selTab && selTab != "" && selTab != "-1") {
     selectOptionsPane = selTab;
+  }
+  switch (mode) {
+    case "helpOnly":
+      selectOptionsPane = 3;
+      break;
+    case "supportOnly":
+      selectOptionsPane = 4;
+      break;
+    case "licenseKey":
+      selectOptionsPane = 5;
+      break;
   }
   // select the tab:
   let tabs = document.querySelectorAll("#QuickFolders-Options-Tabbox button");

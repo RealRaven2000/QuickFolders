@@ -198,7 +198,7 @@ async function onLoad(activatedWhileWindowOpen) {
                       />
             <menuitem id="QuickFolders-ToolbarPopup-options"
                       label="QuickFolders Options (classic)…"
-                      oncommand="QuickFolders.Interface.viewOptions(-1, null, true);" 
+                      oncommand="QuickFolders.Interface.viewOptionsLegacy(-1, null);" 
                       class="cmd menuitem-iconic"
                       tagName="qfOptions"
                       />                      

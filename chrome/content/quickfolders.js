@@ -230,6 +230,7 @@ END LICENSE BLOCK */
     ## [issue 220] fixed alias identity support switch
     ## [issue 232] fixed: When Adding a category to a tab, another category may be replaced
     ## [issue 235] quickJump may fail if "Compact mode" in folder tree is enabled.
+    ## fixed "change order" dialog
   
   
     -=-----------------=-    PLANNED

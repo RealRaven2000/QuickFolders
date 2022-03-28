@@ -3150,7 +3150,6 @@ QuickFolders.Interface = {
 				let menuitem = this.createIconicElement("menuitem","*");
 				menuitem.setAttribute("label",this.getUIstring("qfMenuTabColorDisabledInTheme"));
 				// open "bling my tabs"
-				// this.setEventAttribute(menuitem, "oncommand","QuickFolders.Interface.viewOptions(2)");
 				menuitem.addEventListener("command", function(event) { QI.viewOptions(2); }, false);
 				menuColorPopup.appendChild(menuitem);
 			}
@@ -5283,17 +5282,9 @@ QuickFolders.Interface = {
   getThreadTree: function getThreadTree()  {
     return document.getElementById("threadTree")
   } ,
-
-	// selectedTab   - force a certain tab panel to be selected
-	// updateMessage - display this message when opening the dialog
-	viewOptions: function viewOptions(selectedTab, updateMessage, isClassic=false) {
-    // wx options:
-    if (!isClassic) {
-      QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab, updateMessage });  
-      return;
-    }
-    
-		let params = {inn:{mode:"allOptions",tab:selectedTab, message: updateMessage, instance: QuickFolders}, out:null},
+  
+  viewOptionsLegacy: function(selectedTab) {
+		let params = {inn:{mode:"allOptions",tab:selectedTab, instance: QuickFolders}, out:null},
         //  in linux the first alwaysRaised hides the next child (config dialogs)
         features = (QuickFolders.Util.HostSystem == "linux") ?
           "chrome,titlebar,centerscreen,resizable,dependent,instantApply" :
@@ -5303,23 +5294,24 @@ QuickFolders.Interface = {
           features,
           QuickFolders,
           params).focus();
+  } ,
+
+	// selectedTab   - force a certain tab panel to be selected
+	// updateMessage - display this message when opening the dialog
+	viewOptions: function viewOptions(selectedTab, mode="") {
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab, mode });  
 	} ,
 
 	viewHelp: function viewHelp() {
-		let params = {inn:{mode:"helpOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
-		window.openDialog("chrome://quickfolders/content/options.xhtml","quickfolders-options","chrome,titlebar,centerscreen,resizable,alwaysRaised ",QuickFolders,params).focus();
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab:-1, mode:"helpOnly" }); 
 	} ,
 
 	viewSupport: function viewSupport() {
-		let params = {inn:{mode:"supportOnly",tab:-1, message: "", instance: QuickFolders}, out:null};
-		window.openDialog("chrome://quickfolders/content/options.xhtml","quickfolders-options","chrome,titlebar,centerscreen,resizable,alwaysRaised ",QuickFolders,params).focus();
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab:-1, mode:"supportOnly" }); 
 	} ,
 
   viewLicense: function viewLicense() {
-		let win = QuickFolders.Util.getMail3PaneWindow(),
-        params = {inn:{mode:"licenseKey",tab:-1, message: "", instance: win.QuickFolders}, out:null};
-
-    win.openDialog("chrome://quickfolders/content/options.xhtml","quickfolders-options","chrome,titlebar,centerscreen,resizable,alwaysRaised ",QuickFolders,params).focus();
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab:-1, mode:"licenseKey" }); 
   } ,
 
 	viewChangeOrder: function viewChangeOrder() {

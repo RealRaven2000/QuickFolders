@@ -1661,6 +1661,9 @@
   "quickMove.help.l3b": {
     "message" : "To je uporabno za globlje, bolj zapletene ali neznane hierarhije map."
   },   
+  "quickMove.help.l4a": {
+    "message" : "Vnesite {1}, da dobite seznam nedavno uporabljenih map."
+  }, 
   "quickMove.help.advanced": {
     "message" : "Naprednejše funkcije, kot so bližnjice na tipkovnici za prehod v mapo / premikanje pošte ali izključitev map iz rezultatov iskanja, lahko nastavite na zavihku QuickFolders Pro. Če želite dostopati do teh in drugih premium funkcij, pridobite licenco Pro in podprite prihodnost QuickFolders."
   },  
@@ -1752,7 +1755,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "31. oktobra"
+    "message": "15. aprila"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -1849,7 +1852,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Popravljeno v različici 5.8.2: meniji dolgih map se zdaj pomikajo, ko povlečete e -pošto na rob zaslona. {L2}{L1} Thunderbird ne skoči več v mapo »Prejeto« pri preverjanju novih sporočil iz kontekstnega menija. {L2} {L1} Podpora za veliko ikono v gumbih orodne vrstice QuickFolders za zaslone z visoko ločljivostjo. {L2} {L1} Popravljeno: premikanje map iz funkcije quickMove v Tb91 ni uspelo. {L2} {L1} Različni popravki postavitve, značilni za Thunderbird 91. {L2}"
+    "message": "{L1}Nov ključ [=] za quickMove za seznam najnovejših map, ki jih je uporabil quickMove / quickJump.{L2} {L1}Privzeta vrednost quickJump zdaj vedno uporablja zadnjo mapo. Če bi bilo mogoče najti enaka imena map, je obstajala možnost ujemanja z drugimi predlogi in ne z lokacijo zadnje mape.{L2} {L1}Pogovorno okno z možnostmi je bilo pretvorjeno v HTML – to je pomemben korak za QuickFolders, da postanejo čista pošta, ki temelji na API-ju. razširitev brez poskusnih dovoljenj v prihodnosti.{L2} {L1}Odstranjene težave s hitrim skokom v drevesu map v kompaktnem načinu.{L2} {L1}Izboljšano pogovorno okno za urejanje kategorij.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

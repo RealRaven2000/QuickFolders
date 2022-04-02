@@ -1661,6 +1661,9 @@
   "quickMove.help.l3b": {
     "message" : "Esto es útil para jerarquías de carpetas más profundas, más complicadas o desconocidas."
   },   
+  "quickMove.help.l4a": {
+    "message" : "Escriba {1} para obtener una lista de carpetas usadas recientemente."
+  }, 
   "quickMove.help.advanced": {
     "message" : "Las funciones más avanzadas, como los atajos de teclado para ir a una carpeta / mover correo o excluir carpetas de los resultados de búsqueda, se pueden configurar en la pestaña QuickFolders Pro. Para acceder a estas y otras funciones premium, obtenga una licencia Pro y respalde el futuro de QuickFolders."
   },  
@@ -1752,7 +1755,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "31 de octubre"    
+    "message": "15 de abril"    
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1849,7 +1852,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Se corrigió en la versión 5.8.2: los menús de carpetas largas ahora se desplazan al arrastrar correos al borde de la pantalla. {L2}{L1} Thunderbird ya no entra en la Bandeja de entrada cuando busca nuevos correos desde el menú contextual. {L2} {L1} Soporte para íconos grandes en los botones de la barra de herramientas QuickFolders para pantallas de alta resolución. {L2} {L1} Corregido: mover carpetas de la función quickMove falló en Tb91. {L2} {L1} Varias correcciones de diseño específicas de Thunderbird 91. {L2}"
+    "message": "{L1}Nueva clave [=] para quickMove para enumerar las carpetas más recientes que fueron usadas por quickMove / quickJump.{L2} {L1}El valor predeterminado de quickJump ahora siempre usa la última carpeta. Existía la posibilidad de hacer coincidir otras sugerencias en lugar de la ubicación de la última carpeta si se podían encontrar nombres de carpeta idénticos.{L2} {L1}El cuadro de diálogo de opciones se convirtió a HTML; este es un paso importante para que QuickFolders se convierta en un correo puro basado en API. extensión sin permisos experimentales en el futuro.{L2} {L1}Problemas eliminados con QuickJump en el árbol de carpetas en modo compacto.{L2} {L1}Diálogo de edición de categoría mejorado.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

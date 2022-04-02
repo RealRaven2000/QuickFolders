@@ -35,6 +35,7 @@ pref("extensions.quickfolders.quickMove.createFolderOnTop", false);
 pref("extensions.quickfolders.quickMove.useHotkey", true);
 pref("extensions.quickfolders.quickMove.Hotkey", 'M');
 pref("extensions.quickfolders.quickMove.Hotkey.Shift", true);
+pref("extensions.quickfolders.quickMove.history","[]");
 pref("extensions.quickfolders.quickMove.lastFolderName","");
 pref("extensions.quickfolders.quickMove.lastFolderURI","");
 pref("extensions.quickfolders.quickMove.autoFill",true);

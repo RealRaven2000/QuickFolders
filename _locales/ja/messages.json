@@ -1662,6 +1662,9 @@
   "quickMove.help.l3b": {
     "message" : "これは、より深く、より複雑な、または未知のフォルダー階層に役立ちます。"
   },   
+  "quickMove.help.l4a": {
+    "message" : "{1}と入力して、最近使用したフォルダのリストを取得します。"
+  }, 
   "quickMove.help.advanced": {
     "message" : "フォルダーに移動したり、メールを移動したり、検索結果からフォルダーを除外したりするためのキーボードショートカットなどのより高度な機能は、QuickFoldersProタブで構成できます。 これらおよびその他のプレミアム機能にアクセスするには、Proライセンスを取得し、QuickFoldersの将来をサポートしてください。"
   },  
@@ -1753,7 +1756,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "10月31日"    
+    "message": "4月15日"    
   },
   "special-offer-head": {
     "message": "$addon$の互換性を維持するのに役立ちます",
@@ -1850,7 +1853,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1}バージョン5.8.2で修正済み：メールを画面の端にドラッグすると、長いフォルダメニューがスクロールするようになりました。{L2}{L1}コンテキストメニューから新着メールをチェックするときにThunderbirdが受信トレイにジャンプしなくなりました。{L2} {L1}高解像度ディスプレイ用のQuickFoldersツールバーボタンの大きなアイコンのサポート。{L2} {L1}修正：フォルダの移動 Tb91でquickMove関数から失敗しました。{L2} {L1} Thunderbird91に固有のさまざまなレイアウトの修正。{L2}"
+    "message": "{L1} quickMoveの新しい[=]キーは、quickMove/quickJumpによって使用された最新のフォルダーを一覧表示します。{L2}{L1}quickJumpのデフォルト値は、常に最後のフォルダーを使用するようになりました。 同一のフォルダ名が見つかった場合、最後のフォルダの場所ではなく、他の提案と一致する可能性がありました。{L2} {L1}オプションダイアログがHTMLに変換されました-これは、QuickFoldersが純粋なAPIベースのメールになるための重要なステップです 将来的に実験的な許可のない拡張機能。{L2}{L1}コンパクトモードのフォルダツリーでのquickJumpの問題を削除しました。{L2}{L1}カテゴリ編集ダイアログを改善しました。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

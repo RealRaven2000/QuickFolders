@@ -1661,6 +1661,9 @@
   "quickMove.help.l3b": {
     "message" : "Dit is handig voor diepere, meer gecompliceerde of onbekende mappenhiërarchieën."
   },   
+  "quickMove.help.l4a": {
+    "message" : "Typ {1} om een lijst met recent gebruikte mappen te krijgen."
+  }, 
   "quickMove.help.advanced": {
     "message" : "Meer geavanceerde functies zoals sneltoetsen om naar een map te gaan / e-mail te verplaatsen of mappen uit te sluiten van zoekresultaten kunnen worden geconfigureerd op het tabblad QuickFolders Pro. Om toegang te krijgen tot deze en andere premiumfuncties, moet u een Pro-licentie aanschaffen en de toekomst van QuickFolders ondersteunen."
   },  
@@ -1752,7 +1755,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "31 oktober"    
+    "message": "15 april"    
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1849,7 +1852,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Opgelost in versie 5.8.2: Lange mappenmenu's scrollen nu wanneer e-mails naar de schermrand worden gesleept.{L2}{L1}Thunderbird springt niet meer in Inbox bij het controleren op nieuwe e-mails vanuit het contextmenu.{L2}{L1}Ondersteuning voor groot pictogram in werkbalkknoppen van QuickFolders voor weergaven met hoge resolutie.{L2}{L1}Opgelost: bewegende mappen van de quickMove-functie mislukt in Tb91.{L2}{L1}Verschillende lay-outcorrecties specifiek voor Thunderbird 91.{L2}"
+    "message": "{L1}Nieuwe [=]-sleutel voor quickMove om de meest recente mappen weer te geven die werden gebruikt door quickMove / quickJump.{L2} {L1}De standaardwaarde van quickJump gebruikt nu altijd de laatste map. Er was een mogelijkheid om andere suggesties te matchen in plaats van de laatste maplocatie als identieke mapnamen gevonden konden worden.{L2} {L1}Het optievenster is geconverteerd naar HTML - dit is een belangrijke stap voor QuickFolders om een pure API-gebaseerde e-mail te worden extensie zonder experimentele machtigingen in de toekomst.{L2} {L1}Problemen met quickJump in mappenstructuur in compacte modus verwijderd.{L2} {L1}Verbeterde dialoog voor het bewerken van categorieën.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

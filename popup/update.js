@@ -7,6 +7,10 @@ For details, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
+const REDUCTION_RENEW = "25%",
+      REDUCTION_PRO = "33%";
+
+
 addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register")) {
     messenger.Utilities.showLicenseDialog("splashScreen");
@@ -145,7 +149,7 @@ addEventListener("load", async (event) => {
     let specialOffer = document.getElementById("specialOfferTxt");
     if (specialOffer) {
       let expiry = messenger.i18n.getMessage("special-offer-expiry"),
-          reduction = "25%";
+          reduction = REDUCTION_PRO;
       // note: expiry day is set in popup.js "endSale" variable
       specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")
@@ -158,7 +162,7 @@ addEventListener("load", async (event) => {
     let specialRenew = document.getElementById("specialOfferRenewTxt");
     if (specialRenew) {
       let expiry = messenger.i18n.getMessage("special-offer-expiry"),
-          reduction = "25%";
+          reduction = REDUCTION_RENEW;
       // note: expiry day is set in popup.js "endSale" variable
       specialRenew.innerHTML = 
         messenger.i18n.getMessage("special-offer-renew", [expiry, reduction])
@@ -208,7 +212,8 @@ addEventListener("load", async (event) => {
     if (whatsNewLst) {
       whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
         .replace(/\{L1\}/g,"<li>")
-        .replace(/\{L2\}/g,"</li>");
+        .replace(/\{L2\}/g,"</li>")
+        .replace(/\[(.)\]/g,"<code>$1</code>");
     }
 
     let ongoing = document.getElementById('ongoing-work');

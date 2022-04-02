@@ -198,7 +198,7 @@ async function onLoad(activatedWhileWindowOpen) {
                       />
             <menuitem id="QuickFolders-ToolbarPopup-options"
                       label="QuickFolders Options (classic)…"
-                      oncommand="QuickFolders.Interface.viewOptions(-1, null, true);" 
+                      oncommand="QuickFolders.Interface.viewOptionsLegacy(-1, null);" 
                       class="cmd menuitem-iconic"
                       tagName="qfOptions"
                       />                      
@@ -534,6 +534,7 @@ async function onLoad(activatedWhileWindowOpen) {
   // Enable the global notify notifications from background.
   window.QuickFolders.Util.notifyTools.enable();
   await window.QuickFolders.Util.init();
+  window.QuickFolders.quickMove.initLog();
   window.addEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
   const QI = window.QuickFolders.Interface;
   
@@ -552,6 +553,11 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["currentDeckUpdate"] = QI.currentDeckUpdate.bind(QI); 
   mylisteners["initKeyListeners"] = window.QuickFolders.initKeyListeners.bind(window.QuickFolders);
   mylisteners["firstRun"] = window.QuickFolders.Util.FirstRun.init.bind(window.QuickFolders.Util.FirstRun);
+  // store and load config
+  const model =  window.QuickFolders.Model;
+  mylisteners["loadConfigLegacy"] = (event) => model.loadConfig.call(model, event);
+  mylisteners["storeConfigLegacy"] = (event) => model.storeConfig.call(model, event);
+  
   
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);

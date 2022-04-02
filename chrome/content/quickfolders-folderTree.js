@@ -39,31 +39,33 @@ QuickFolders.FolderTree = {
           return null; // avoid "impossible" recursion?
         }
         let props = QuickFolders.FolderTree.GetCellProperties(row, col);
-        if (col.id == "folderNameCol") {
+        if (col && col.id && col.id == "folderNameCol") {
           let folder = gFolderTreeView.getFolderForIndex(row);
           if (!gFolderTreeView.qfIconsEnabled) {
             return props;
           }
           try {
-						if (gFolderTreeView.supportsIcons && folder) {
+            // Tb 99 - exclude servers, they will throw when asked for this property!
+						if (gFolderTreeView.supportsIcons && folder && !folder.isServer) {
 							let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
 							if (folderIcon) {
+                util.logDebugOptional("folderTree",folderIcon);
 								// save folder icon selector
 								props += " " + folderIcon;
 							}
 						}
-						else {
-							util.logDebugOptional('folderTree', "treeView.supportsIcons = false!");
-            }
           }
           catch(ex) {
             if (QuickFolders) {
 							let txt;
 							try {
-								txt = "returning unchanged props for folder [" + folder.prettyName + "] : " + props;
+								txt = "returning unchanged props for folder [" + folder.prettyName + "] : ";
+                if (props) console.log(props);
 							}
-							catch(x) { txt="problem with reading props for folder " + folder.prettyName; }
-              util.logException('QuickFolders.FolderTree.getCellProperties()\n' + txt, ex);
+							catch(x) { 
+                txt = "problem with reading props for folder " + folder.prettyName; 
+              }
+              util.logException(`QuickFolders.FolderTree.getCellProperties(${row},${col})\n  ${txt}`, ex);
 						}
           }
         }
@@ -392,7 +394,7 @@ QuickFolders.FolderTree = {
     }
     
     // disable updating recent folders
-    let touch = util.touch;
+    let touch = util.touch; // back up.
     util.touch = function () {
       
     }

@@ -1661,6 +1661,9 @@
   "quickMove.help.l3b": {
     "message" : "Điều này hữu ích cho các cấu trúc phân cấp thư mục sâu hơn, phức tạp hơn hoặc không xác định."
   },   
+  "quickMove.help.l4a": {
+    "message" : "Nhập {1} để nhận danh sách các thư mục được sử dụng gần đây."
+  }, 
   "quickMove.help.advanced": {
     "message" : "Các chức năng nâng cao hơn như phím tắt để đi đến một thư mục / di chuyển thư hoặc loại trừ các thư mục khỏi kết quả tìm kiếm có thể được định cấu hình trên tab QuickFolders Pro. Để truy cập các tính năng này và các tính năng cao cấp khác, hãy nhận giấy phép Pro và hỗ trợ tương lai của QuickFolders."
   },  
@@ -1752,7 +1755,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "Ngày 31 tháng 10"    
+    "message": "15 tháng 4"    
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -1849,7 +1852,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Đã sửa lỗi trong phiên bản 5.8.2: Các menu thư mục dài hiện cuộn khi kéo thư đến mép màn hình. {L2}{L1} Thunderbird không nhảy vào Inbox nữa khi kiểm tra các thư mới từ trình đơn ngữ cảnh. {L2} {L1} Hỗ trợ biểu tượng lớn trong các nút trên thanh công cụ QuickFolders để hiển thị độ phân giải cao. {L2} {L1} Đã sửa: di chuyển thư mục từ chức năng quickMove không thành công trong Tb91. {L2} {L1} Các bản sửa lỗi về Bố cục khác nhau dành riêng cho Thunderbird 91. {L2}"
+    "message": "Phím {L1} New [=] cho quickMove để liệt kê các thư mục gần đây nhất được quickMove / quickJump sử dụng. {L2} {L1} Giá trị mặc định của quickJump hiện luôn sử dụng thư mục cuối cùng. Có khả năng khớp với các đề xuất khác thay vì vị trí thư mục cuối cùng nếu có thể tìm thấy các tên thư mục giống hệt nhau. {L2} {L1} Hộp thoại tùy chọn đã được chuyển đổi thành HTML - đây là một bước quan trọng để QuickFolders hướng tới việc trở thành một thư dựa trên API thuần túy tiện ích mở rộng không có quyền thử nghiệm trong tương lai. {L2} {L1} Đã xóa các vấn đề với cây thư mục quickJump trong chế độ thu gọn. {L2} {L1} Cải thiện hộp thoại chỉnh sửa danh mục. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

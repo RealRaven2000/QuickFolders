@@ -40,9 +40,26 @@ vbox#myscrollbox {
   border: 1px solid black;
 }
 
-grid#QuickFolders-change-order-grid {
-  max-height:1000px !important;
 
+
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.col.Label {
+  flex: 0 50%;
+}
+.col.Btn {
+  flex: 0 10%;
+}
+
+
+
+
+grid#QuickFolders-change-order-grid {
+  display: grid;
+  max-height:1000px !important;
 }
 
 hbox.drag-image {

@@ -1661,6 +1661,9 @@
   "quickMove.help.l3b": {
     "message" : "Ceci est utile pour les hiérarchies de dossiers plus profondes, plus compliquées ou inconnues."
   },   
+  "quickMove.help.l4a": {
+    "message" : "Tapez {1} pour obtenir une liste des dossiers récemment utilisés."
+  }, 
   "quickMove.help.advanced": {
     "message" : "Des fonctions plus avancées telles que les raccourcis clavier pour accéder à un dossier/déplacer le courrier ou exclure des dossiers des résultats de recherche peuvent être configurées dans l'onglet QuickFolders Pro. Pour accéder à ces fonctionnalités et à d'autres fonctionnalités premium, obtenez une licence Pro et prenez en charge l'avenir de QuickFolders."
   },  
@@ -1752,7 +1755,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "31 octobre"    
+    "message": "15 avril"    
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1849,7 +1852,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Corrigé dans la version 5.8.2 : les menus des dossiers longs défilent désormais lorsque vous faites glisser les e-mails vers le bord de l'écran.{L2}{L1}Thunderbird ne saute plus dans la boîte de réception lors de la recherche de nouveaux e-mails à partir du menu contextuel.{L2}{L1}Prise en charge de la grande icône dans les boutons de la barre d'outils QuickFolders pour les affichages haute résolution.{L2}{L1}Corrigé : déplacement de dossiers de la fonction quickMove a échoué dans Tb91.{L2}{L1}Divers correctifs de mise en page spécifiques à Thunderbird 91.{L2}"
+    "message": "{L1}Nouvelle clé [=] pour quickMove pour lister les dossiers les plus récents qui ont été utilisés par quickMove / quickJump.{L2} {L1}La valeur par défaut de quickJump utilise désormais toujours le dernier dossier. Il était possible de faire correspondre d'autres suggestions plutôt que le dernier emplacement de dossier si des noms de dossier identiques pouvaient être trouvés.{L2} {L1}La boîte de dialogue des options a été convertie en HTML ; il s'agit d'une étape importante pour QuickFolders en vue de devenir une messagerie purement basée sur l'API extension sans autorisations expérimentales à l'avenir.{L2} {L1}Suppression des problèmes avec quickJump dans l'arborescence de dossiers en mode compact.{L2} {L1}Amélioration de la boîte de dialogue d'édition de catégorie.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

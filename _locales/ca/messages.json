@@ -491,7 +491,7 @@
     "message": "Botó de Carpetes Recents"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Mostra les Últimes Carpetes"
+    "message": "Pestanya Carpetes recents"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "Botó dret per configurar"
@@ -1655,6 +1655,9 @@
   "quickMove.help.l3b": {
     "message" : "Això és útil per a jerarquies de carpetes més profundes, més complicades o desconegudes."
   },   
+  "quickMove.help.l4a": {
+    "message" : "Escriviu {1} per obtenir una llista de les carpetes utilitzades recentment."
+  }, 
   "quickMove.help.advanced": {
     "message" : "A la pestanya QuickFolders Pro es poden configurar funcions més avançades, com ara dreceres de teclat per anar a una carpeta / moure correu o excloure carpetes dels resultats de cerca. Per accedir a aquestes i altres funcions premium, obtingueu una llicència Pro i doneu suport al futur de QuickFolders."
   },  
@@ -1746,7 +1749,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "31 d’octubre"
+    "message": "15 d'abril"
   },    
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
@@ -1843,7 +1846,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Corregit a la versió 5.8.2: els menús de carpetes llargues ara es desplacen quan arrossegueu els correus al límit de la pantalla. {L2}{L1} Thunderbird ja no salta a la safata d'entrada quan es comprova si hi ha correus electrònics nous al menú contextual. {L2} {L1} Suport per a la icona gran als botons de la barra d'eines QuickFolders per a visualitzacions d'alta resolució. {L2} {L1} Solucionat: moure carpetes de la funció quickMove ha fallat a Tb91. {L2} {L1} Diverses correccions de disseny específiques del Thunderbird 91. {L2}"
+    "message": "{L1}Nova clau [=] per a quickMove per llistar les carpetes més recents que van utilitzar quickMove/quickJump.{L2} {L1}El valor predeterminat de quickJump ara fa servir sempre l'última carpeta. Hi havia la possibilitat de fer coincidir altres suggeriments en comptes de la ubicació de l'última carpeta si es podien trobar noms de carpetes idèntics.{L2} {L1}El diàleg d'opcions es va convertir a HTML; aquest és un pas important per a QuickFolders per convertir-se en un correu pur basat en API. extensió sense permisos experimentals en el futur.{L2} {L1}S'han eliminat els problemes amb quickJump a l'arbre de carpetes en mode compacte.{L2} {L1}S'ha millorat el diàleg d'edició de categories.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

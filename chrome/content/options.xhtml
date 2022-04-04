@@ -35,6 +35,7 @@
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/qf-styles.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-quickMove.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/options.js" />
@@ -1285,13 +1286,13 @@
 								<hbox>
 									<button id="btnSaveConfig" 
 													label="__MSG_qf.storeConfig__"
-													oncommand="options.storeConfig(Preferences, options.prefMap);" />
+													oncommand="QuickFolders.Model.storeConfig(Preferences, options.prefMap);" />
 									<spacer flex="1" />
 								</hbox>
 								<hbox>
 									<button id="btnLoadConfig" 
 													label="__MSG_qf.loadConfig__"
-													oncommand="options.loadConfig(Preferences);"
+													oncommand="QuickFolders.Model.loadConfig(Preferences);"
 													disabled="true" />
 									<spacer flex="1" />
 								</hbox>

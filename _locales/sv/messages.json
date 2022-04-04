@@ -491,7 +491,7 @@
     "message": "Visa Nyligen använda mappar-knapp"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Visa Nyligen använda mappar-fliken"
+    "message": "Fliken Senaste mappar"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "Högerklicka för inställningar"
@@ -1661,6 +1661,9 @@
   "quickMove.help.l3b": {
     "message" : "Detta är användbart för djupare, mer komplicerade eller okända mapphierarkier."
   },   
+  "quickMove.help.l4a": {
+    "message" : "Skriv {1} för att få en lista över nyligen använda mappar."
+  }, 
   "quickMove.help.advanced": {
     "message" : "Mer avancerade funktioner som tangentbordsgenvägar för att gå till en mapp / flytta e-post eller exkludera mappar från sökresultat kan konfigureras på fliken QuickFolders Pro. För att få tillgång till dessa och andra premiumfunktioner, skaffa en Pro-licens och stödja framtiden för QuickFolders."
   },  
@@ -1752,7 +1755,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "31 oktober"    
+    "message": "15 april"    
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1849,7 +1852,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Fixat i version 5.8.2: Långa mapps menyer rullar nu när du drar e -postmeddelanden till skärmkanten. {L2}{L1} Thunderbird hoppar inte in i inkorgen längre när det letar efter nya e -postmeddelanden från snabbmenyn. {L2} {L1} Stöd för stor ikon i QuickFolders verktygsfältsknappar för högupplösta skärmar. {L2} {L1} Åtgärdad: flyttade mappar från quickMove -funktionen misslyckades i Tb91. {L2} {L1} Olika layoutkorrigeringar specifika för Thunderbird 91. {L2}"
+    "message": "{L1}Ny [=]-nyckel för quickMove för att lista de senaste mapparna som användes av quickMove / quickJump.{L2} {L1}Standardvärdet för quickJump använder nu alltid den sista mappen. Det fanns en möjlighet att matcha andra förslag snarare än den sista mappplatsen om identiska mappnamn kunde hittas.{L2} {L1}Alternativdialogrutan konverterades till HTML - detta är ett viktigt steg för QuickFolders mot att bli en ren API-baserad e-post tillägg utan experimentbehörighet i framtiden.{L2} {L1}Ta bort problem med quickJump i mappträdet i kompakt läge.{L2} {L1}Förbättrad dialogruta för kategoriredigering.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

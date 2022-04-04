@@ -223,12 +223,14 @@ END LICENSE BLOCK */
     ## Improved readability for menu items on (license-) restricted tabs.
 
   5.9 QuickFolders Pro - WIP
+    ## [issue 241] using quickJump / quickMove via shortcut - hitting Enter will now always select the last successful location (even when the name is ambiguous) 
+                   and not the top item of the menu. This is only used on Enter if the menu is visible. (user needs to type or hit Arrow down)
+    ## [issue 242] Use '=' key for folders from recent quickMove / quickJump operations
+    ## [issue 236] Convert options dialog to pure HTML
     ## [issue 220] fixed alias identity support switch
     ## [issue 232] fixed: When Adding a category to a tab, another category may be replaced
     ## [issue 235] quickJump may fail if "Compact mode" in folder tree is enabled.
-    ## [issue 241] using quickJump / quickMove via shortcut - hitting Enter will now always select the last successful location (even when the name is ambiguous) 
-                   and not the top item of the menu. This is only used on Enter if the menu is visible. (user needs to type or hit Arrow down)
-    ## [issue 242] Using '=' key for recent folders - now also support quickMove
+    ## fixed "change order" dialog
   
   
     -=-----------------=-    PLANNED

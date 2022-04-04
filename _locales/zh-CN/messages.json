@@ -491,7 +491,7 @@
     "message": "最近文件夹按钮"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "显示最近访问的文件夹"
+    "message": "最近的文件夹选项卡"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "点击鼠标右键可配置选项"
@@ -1661,6 +1661,9 @@
   "quickMove.help.l3b": {
     "message" : "这对于更深、更复杂或未知的文件夹层次结构很有用。"
   },   
+  "quickMove.help.l4a": {
+    "message" : "输入 {1} 以获取最近使用的文件夹列表。"
+  }, 
   "quickMove.help.advanced": {
     "message" : "可以在 QuickFolders Pro 选项卡上配置更高级的功能，例如转到文件夹/移动邮件的键盘快捷键或从搜索结果中排除文件夹。 要访问这些和其他高级功能，请获取 Pro 许可证并支持 QuickFolders 的未来。"
   },  
@@ -1752,7 +1755,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "10 月 31 日"    
+    "message": "4月15日"    
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1849,7 +1852,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}在 5.8.2 版中修复：现在将邮件拖到屏幕边缘时，长文件夹菜单会滚动。{L2}{L1}从上下文菜单中检查新邮件时，Thunderbird 不再跳入收件箱。{L2}{L1}支持 QuickFolders 工具栏按钮中的大图标以用于高分辨率显示。{L2}{L1}已修复：移动文件夹 Tb91 中的 quickMove 功能失败。{L2}{L1}针对 Thunderbird 91 的各种布局修复。{L2}"
+    "message": "{L1}新的 [=] 键让 quickMove 列出 quickMove / quickJump 最近使用的文件夹。{L2} {L1}quickJump 的默认值现在总是使用最后一个文件夹。 如果可以找到相同的文件夹名称，则有可能匹配其他建议而不是最后一个文件夹位置。{L2} {L1}选项对话框已转换为 HTML - 这是 QuickFolders 成为纯基于 API 的邮件的重要一步 将来没有实验权限的扩展。{L2} {L1}删除了紧凑模式文件夹树中快速跳转的问题。{L2} {L1}改进了类别编辑对话框。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

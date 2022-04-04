@@ -491,7 +491,7 @@
     "message": "Letzte Ordner Schaltfläche"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Letzte Ordner Tab anzeigen"
+    "message": "Zuletzt verwendete Ordner Tab"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "Rechtsklick für weitere Konfiguration"
@@ -1664,6 +1664,9 @@
   "quickMove.help.l3b": {
     "message" : "Dies ist nützlich für tiefere, kompliziertere oder unbekannte Ordnerhierarchien."
   },   
+  "quickMove.help.l4a": {
+    "message" : "Drücken Sie {1}, um eine Liste der zuletzt verwendeten Ordner zu erhalten."
+  }, 
   "quickMove.help.advanced": {
     "message" : "Auf der Registerkarte QuickFolders Pro können erweiterte Funktionen wie Tastaturkürzel zum Aufrufen eines Ordners / Verschieben von E-Mails oder das Ausschließen von Ordnern aus den Suchergebnissen konfiguriert werden. Um auf diese und andere Premium-Funktionen zuzugreifen, erwerben Sie eine Pro-Lizenz und unterstützen Sie die Zukunft von QuickFolders."
   },  
@@ -1755,7 +1758,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "31. Oktober"    
+    "message": "15. April"    
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1852,7 +1855,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}In Version 5.8.2 behoben: Lange Ordnermenüs scrollen jetzt, wenn E-Mails an den Bildschirmrand gezogen werden.{L2}{L1}Thunderbird springt nicht mehr in den Posteingang, wenn über das Kontextmenü nach neuen E-Mails gesucht wird.{L2}{L1}Unterstützung für große Symbole in QuickFolder-Symbolleistenschaltflächen für hochauflösende Anzeigen.{L2}{L1}Behoben: Ordner verschieben von der quickMove-Funktion in Tb91 schlug fehl.{L2}{L1}Verschiedene Layout-Fixes speziell für Thunderbird 91.{L2}"
+    "message": "{L1}Neue [=] Taste für quickMove, um die zuletzt von quickMove / quickJump verwendeten Ordner aufzulisten.{L2} {L1}Der Standardwert von quickJump verwendet jetzt immer den letzten Ordner. Es bestand die Möglichkeit, andere Vorschläge anstelle des letzten Ordnerspeicherorts abzugleichen, wenn identische Ordnernamen gefunden werden konnten.{L2} {L1}Der Optionsdialog wurde auf HTML umgestellt - dies ist ein wichtiger Schritt für QuickFolders hin zu einer reinen API-basierten Mail Erweiterung ohne experimentelle Berechtigungen in der Zukunft.{L2} {L1}Probleme mit QuickJump in der Ordnerstruktur im Kompaktmodus behoben.{L2} {L1}Verbesserter Dialog zum Bearbeiten von Kategorien.{L2}"
   },
   "window-title": {
     "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",

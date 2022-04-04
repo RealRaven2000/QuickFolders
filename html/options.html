@@ -283,7 +283,7 @@
         <fieldset class="hbox" >
           <legend>__MSG_qf.label.toolbarPosition__</legend>
           <div class="hbox" id="grpToolbarPosition">
-            <input type="text" id="toolbarPosition" flex="1" preference="qfpa-ToolbarPosition"
+            <input type="number" id="toolbarPosition" flex="1" preference="qfpa-ToolbarPosition"
               data-pref-name="extensions.quickfolders.toolbar.ordinalPosition" 
               title="__MSG_qf.toolbarPosition.tooltip__" />
             <button id="applyPosition">__MSG_qf.btn.applyPosition__</button>
@@ -526,6 +526,7 @@
                             id="ExampleStripedColor" 
                             value="0"
                             name="tabStyleGroup"
+                            preference="qfpl-ColorTabStyleId"
                             data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
                             __MSG_qf.options.LayoutColorAppearanceStriped__
                         </label>
@@ -534,6 +535,7 @@
                             id="ExampleFilledColor" label=" __MSG_qf.options.LayoutColorAppearanceFilled__" 
                             value="1"
                             name="tabStyleGroup"
+                            preference="qfpl-ColorTabStyleId"
                             data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
                           __MSG_qf.options.LayoutColorAppearanceFilled__
                         </label>

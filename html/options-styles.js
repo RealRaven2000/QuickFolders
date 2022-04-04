@@ -7,8 +7,6 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
-
-
 QuickFolders.Styles = {
 	getElementStyle: function(ss, rule, attribute) {
 		const util = QuickFolders.Util;

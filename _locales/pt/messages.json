@@ -491,7 +491,7 @@
     "message": "Botão de pastas recentes"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Exibir aba de pastas recentes"
+    "message": "Aba Pastas Recentes"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "Botão direito do mouse para configuração"
@@ -1661,6 +1661,9 @@
   "quickMove.help.l3b": {
     "message" : "Isso é útil para hierarquias de pastas mais profundas, complicadas ou desconhecidas."
   },   
+  "quickMove.help.l4a": {
+    "message" : "Digite {1} para obter uma lista de pastas usadas recentemente."
+  }, 
   "quickMove.help.advanced": {
     "message" : "Funções mais avançadas, como atalhos de teclado para ir para uma pasta / mover e-mail ou excluir pastas dos resultados da pesquisa, podem ser configuradas na guia QuickFolders Pro. Para acessar esses e outros recursos premium, obtenha uma licença Pro e suporte o futuro de QuickFolders."
   },  
@@ -1752,7 +1755,7 @@
     }
   }, 
   "special-offer-expiry": {
-    "message": "31 de outubro"    
+    "message": "15 de abril"    
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
@@ -1849,7 +1852,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Corrigido na versão 5.8.2: menus de pastas longas agora rolam ao arrastar e-mails para a borda da tela. {L2}{L1} O Thunderbird não pula mais para a Caixa de entrada ao verificar novos e-mails no menu de contexto. {L2} {L1} Suporte para ícones grandes nos botões da barra de ferramentas do QuickFolders para telas de alta resolução. {L2} {L1} Corrigido: pastas móveis da função QuickMove falhou em Tb91. {L2} {L1} Várias correções de layout específicas para Thunderbird 91. {L2}"
+    "message": "{L1}Nova tecla [=] para quickMove para listar as pastas mais recentes que foram usadas por quickMove / quickJump.{L2} {L1}O valor padrão de quickJump agora sempre usa a última pasta. Havia a possibilidade de combinar outras sugestões em vez da última localização da pasta se nomes de pasta idênticos pudessem ser encontrados.{L2} {L1}A caixa de diálogo de opções foi convertida para HTML - este é um passo importante para o QuickFolders se tornar um e-mail baseado em API puro extensão sem permissões experimentais no futuro.{L2} {L1}Removidos problemas com quickJump na árvore de pastas do modo compacto.{L2} {L1}Diálogo de edição de categoria aprimorado.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

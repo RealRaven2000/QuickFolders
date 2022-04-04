@@ -37,25 +37,23 @@
     </hbox>
 
     <vbox id="myscrollbox" flex="1">
+    
+      <div class="flex-grid" id="QuickFolders-change-order">
+        <div class="col Label">__MSG_qf.label.testfolder__</div>
+        <div class="col Btn">__MSG_qf.button.up__</div>
+        <div class="col Btn">__MSG_qf.button.down__</div>
+      </div>
+      
+      
+      
 	    <grid flex="1" id="QuickFolders-change-order-grid">
 		   	<columns>
 	    		<column flex="5" />
 	    		<column flex="1" />
 	    		<column flex="1" />
 	    	</columns>
-
-	    	<rows id="QuickFolders-change-order-grid-rows" style="overflow: auto;">
-	    		<row>
-		    		<label>__MSG_qf.label.testfolder__</label>
-		    		<button label="__MSG_qf.button.up__" class="order-button-up" />
-		    		<button label="__MSG_qf.button.down__" class="order-button-down" />
-		    	</row>
-		    	<row>
-		    		<label>__MSG_qf.label.testfolder2__</label>
-		    		<button label="__MSG_qf.button.up__" class="order-button-up" />
-		    		<button label="__MSG_qf.button.down__" class="order-button-down" />
-		    	</row>
-	    	</rows>
 	    </grid>
+
+      
     </vbox>
 </dialog>

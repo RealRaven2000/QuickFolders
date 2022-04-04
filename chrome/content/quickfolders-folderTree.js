@@ -394,7 +394,7 @@ QuickFolders.FolderTree = {
     }
     
     // disable updating recent folders
-    let touch = util.touch;
+    let touch = util.touch; // back up.
     util.touch = function () {
       
     }

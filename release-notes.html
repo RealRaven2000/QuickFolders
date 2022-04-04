@@ -1,5 +1,5 @@
 <b>Release 5.9</b>
-Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (91.5.1)</b> - if you get a message that says otherwise after updating from earlier versions (Tb68 or Tb78) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
+Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (91.7)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb78) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
             
 
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
@@ -9,21 +9,25 @@ Read the new <a href="premium.html#featureComparison">comparison chart</a> to se
 
 You can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>.
 
-
-<b>Bug Fixes + Miscellaneus</b>
+<b>Improvements</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/232">[issue 232]</a> Fixed: When Adding a category to a tab, another category may be replaced.</li>
 <li>
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/235">[issue 235]</a>Fixed: quickJump may fail if "Compact mode" in folder tree is enabled.</li>
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/241">[issue 241]</a> using quickJump / quickMove via shortcut - hitting Enter will now always select the last successful location (even when the name is ambiguous) and not the top item of the menu. To use the first item of the menu using Enter the menu hast to be visible - either by starting to type or pressing arrow-down. 
+</li>
+<li>
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/242">[issue 242]</a> Use '=' key for folders from recent quickMove / quickJump operations
+
+When using the quickMove or quickJump search box you can now access folders of its previous jump / move operations by typing "=" as the first character.
+</li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/236">[issue 236]</a> Convert options dialog to pure HTML. Amon other things, this fixes the color pickers that have stopped working on Mac. Long term, all Dialogs and User Interfaces need to be converted to HTML
+to become future proof and pure API based. There are still things that cannot be done with HTML right now (such as folder dropdowns that aren't cut off at the toolbar borders), so this is an ongoing effort for the predictable future.
+</li>
+</ul>
+
+<b>Bug Fixes</b>
+<ul><li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/232">[issue 232]</a> Fixed: When Adding a category to a tab, another category may be replaced </li>
+<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/235">[issue 235]</a> Fixed: quickJump may fail if "Compact mode" in folder tree is enabled.</li>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/220">[issue 220]</a> Fixed an issue with license validation (alias identity support). </li>
+<li> Fixed "change order" dialog. </li>
 </ul>
 
-<b>Known unresolved issues - Work In Progress</b>
-<ul>
-<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/234">[issue 234]</a> WIP - mx-conversion - use folder API to create new folders rather than experimental code</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/204">[issue 204]</a> WIP - Thunderbird 91: Background of QuickFolders toolbar doesn't support some themes when set to transparent. </li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/208">[issue 208]</a> Upgrade from TB 78 to 91.1.2 sometimes leads to invalid / "orphaned" tabs.
-For the moment, you should be able to resolve these by clicking a tab with the "broom" / invalid icon or by running the tool command "Find Orphaned tabs".
-
-Should this not give the desired results, then you can export your tabs via the license tab or on the Advanced tab using the [Copy Tabs] button and send me the file so I can help you fix this. </li>
-</ul>

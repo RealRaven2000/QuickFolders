@@ -132,6 +132,8 @@ function onLoad(activatedWhileWindowOpen) {
   // window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
   window.QuickFolders.Util.notifyTools.enable();
   window.QuickFolders.Util.init();
+  window.QuickFolders.quickMove.initLog();
+
   const QI = window.QuickFolders.Interface;
   mylisteners["updateUserStyles"] = QI.updateUserStyles.bind(QI);
   mylisteners["updateNavigationBar"] = QI.updateNavigationBar.bind(QI);

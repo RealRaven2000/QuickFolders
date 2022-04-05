@@ -468,6 +468,38 @@
         
         
         <ul>
+          <h4 class="inList">5.9.1 - Maintenance Fixes - WIP</h4>
+          <p>This maintenance version will be released shortly.</p>
+          <li> 
+            Improved recent folders behavior for keyboard only operation.
+            <p>
+              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/254">[issue 254]</a>
+              The new "=" key of quickMove/quickJump shows an arrow to visit child folders which means that the
+              folder itself cannot be opened with keyboard only (by pressing the enter key), which forces the 
+              user to use the mouse, impeding the workflow.
+            </p>
+            <p>
+              I have decided to instead not show subfolders for these recent folders as it doesn't add much value
+              for what essentially should be a repeat operation. I have also extended this to the other recent 
+              folders menus (e.g. on the recent folders tab). 
+            </p>
+            <p> 
+              One can still restore the old behavior (of showing subfolders) by setting the config setting
+              <tt>extensions.quickfolders.recentfolders.subfolders = true</tt>:<br>
+              <img class="screenshot" src="images/recent-config-settings.png" alt="advanced recent settings"/>
+            </p>
+          </li>
+          <li> 
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/252">[issue 252]</a>
+            Fixed: Tabs with invalid folder addresss can break search results. This can happen if you exclude
+            accounts from the search after recreating a profile with different spelling.
+          </li>
+          <li> 
+            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/255">[issue 255]</a>
+            Fixed: CTRL Right-clicking on the active folder can create multiple versions of the folder 
+            commands submenu.
+          </li>
+        
           <h4 class="inList">Improvements</h4>
           <li>
             <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/241">[issue 241]</a>

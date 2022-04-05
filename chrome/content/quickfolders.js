@@ -222,7 +222,7 @@ END LICENSE BLOCK */
     ## Improved speed of license validator for Thunderbird 91.2 and later.
     ## Improved readability for menu items on (license-) restricted tabs.
 
-  5.9 QuickFolders Pro - WIP
+  5.9 QuickFolders Pro - 30/03/2022
     ## [issue 241] using quickJump / quickMove via shortcut - hitting Enter will now always select the last successful location (even when the name is ambiguous) 
                    and not the top item of the menu. This is only used on Enter if the menu is visible. (user needs to type or hit Arrow down)
     ## [issue 242] Use '=' key for folders from recent quickMove / quickJump operations
@@ -231,7 +231,11 @@ END LICENSE BLOCK */
     ## [issue 232] fixed: When Adding a category to a tab, another category may be replaced
     ## [issue 235] quickJump may fail if "Compact mode" in folder tree is enabled.
     ## fixed "change order" dialog
-  
+    
+  5.9.1 QuickFolders Pro - WIP
+    ## [issue 252] tabs with invalid folders can break search results 
+    ## [issue 255] CTRL Right-clicking on current folder multiplies folder commands
+    ## [issue 254] "=" key of QuickMove/Jump "Enter" won't operate on folders that have subfolders
   
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders

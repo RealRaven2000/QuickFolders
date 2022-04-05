@@ -1,4 +1,4 @@
-<b>Release 5.9</b>
+<b>Release 5.9.1</b>
 Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (91.7)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb78) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
             
 
@@ -9,7 +9,25 @@ Read the new <a href="premium.html#featureComparison">comparison chart</a> to se
 
 You can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>.
 
-<b>Improvements</b>
+
+<b>5.9.1 Maintenance Improvments</b>
+<li> Simplified recent folders menu behavior for keyboard navigation.
+
+<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/254">[issue 254]</a> The new "=" key of quickMove/quickJump shows an arrow to visit child folders which means that the folder itself cannot be opened with keyboard only (by pressing the enter key), which forced the  user to use the mouse, impeding the workflow.
+
+I have decided to instead not show subfolders for these recent folders as it doesn't add much value for what essentially should be a repeat operation. I have also extended this to the other recent folders menus (e.g. on the recent folders tab). 
+
+The old behavior (of showing subfolders) can still be restores by setting the config setting <tt>extensions.quickfolders.recentfolders.subfolders = true</tt>
+</li>
+<li> 
+  <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/252">[issue 252]</a> Fixed: Tabs with invalid folder address can break search results. This can happen if you exclude accounts from the search after recreating a profile with different spelling.
+</li>
+<li> 
+  <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/255">[issue 255]</a> Fixed: CTRL Right-clicking on the active folder can create multiple instances of the folder commands submenu.
+</li>
+        
+
+<b>Improvements - 5.9</b>
 <ul>
 <li>
 <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/241">[issue 241]</a> using quickJump / quickMove via shortcut - hitting Enter will now always select the last successful location (even when the name is ambiguous) and not the top item of the menu. To use the first item of the menu using Enter the menu hast to be visible - either by starting to type or pressing arrow-down. 
@@ -24,7 +42,7 @@ to become future proof and pure API based. There are still things that cannot be
 </li>
 </ul>
 
-<b>Bug Fixes</b>
+<b>Bug Fixes - 5.9</b>
 <ul><li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/232">[issue 232]</a> Fixed: When Adding a category to a tab, another category may be replaced </li>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/235">[issue 235]</a> Fixed: quickJump may fail if "Compact mode" in folder tree is enabled.</li>
 <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/220">[issue 220]</a> Fixed an issue with license validation (alias identity support). </li>

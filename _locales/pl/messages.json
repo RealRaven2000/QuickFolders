@@ -1662,7 +1662,7 @@
     "message" : "Jest to przydatne w przypadku głębszych, bardziej skomplikowanych lub nieznanych hierarchii folderów."
   },   
   "quickMove.help.l4a": {
-    "message" : "Wpisz {1}, aby uzyskać listę ostatnio używanych folderów."
+    "message" : "Wpisz {1}, aby uzyskać listę ostatnio wprowadzonych folderów. Liczba wyników zależy od poziomu licencji."
   }, 
   "quickMove.help.advanced": {
     "message" : "Bardziej zaawansowane funkcje, takie jak skróty klawiaturowe umożliwiające przejście do folderu/przenoszenie poczty lub wykluczanie folderów z wyników wyszukiwania, można skonfigurować na karcie QuickFolders Pro. Aby uzyskać dostęp do tych i innych funkcji premium, uzyskaj licencję Pro i wesprzyj przyszłość QuickFolders."
@@ -1852,7 +1852,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Nowy [=] klawisz dla quickMove, aby wyświetlić listę najnowszych folderów, które były używane przez quickMove / quickJump.{L2} {L1}Domyślna wartość quickJump teraz zawsze używa ostatniego folderu. Istniała możliwość dopasowania innych sugestii zamiast ostatniej lokalizacji folderu, jeśli znaleziono identyczne nazwy folderów.{L2} {L1}Okno dialogowe opcji zostało przekonwertowane na HTML — jest to ważny krok dla QuickFolders w kierunku przekształcenia się w pocztę opartą wyłącznie na interfejsie API rozszerzenie bez eksperymentalnych uprawnień w przyszłości.{L2} {L1}Usunięto problemy z szybkim skokiem w drzewie folderów w trybie kompaktowym.{L2} {L1}Ulepszone okno edycji kategorii.{L2}"
+    "message": "{L1}Wersja 5.9.1: Uproszczone zachowanie menu ostatnich folderów do nawigacji za pomocą klawiatury.{L2}{L1}Nowy [=] klawisz dla quickMove, aby wyświetlić listę najnowszych folderów, które były używane przez quickMove / quickJump.{L2} {L1}Domyślna wartość quickJump teraz zawsze używa ostatniego folderu. Istniała możliwość dopasowania innych sugestii zamiast ostatniej lokalizacji folderu, jeśli znaleziono identyczne nazwy folderów.{L2} {L1}Okno dialogowe opcji zostało przekonwertowane na HTML — jest to ważny krok dla QuickFolders w kierunku przekształcenia się w pocztę opartą wyłącznie na interfejsie API rozszerzenie bez eksperymentalnych uprawnień w przyszłości.{L2} {L1}Usunięto problemy z szybkim skokiem w drzewie folderów w trybie kompaktowym.{L2} {L1}Ulepszone okno edycji kategorii.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

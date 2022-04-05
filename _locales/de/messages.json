@@ -1665,7 +1665,7 @@
     "message" : "Dies ist nützlich für tiefere, kompliziertere oder unbekannte Ordnerhierarchien."
   },   
   "quickMove.help.l4a": {
-    "message" : "Drücken Sie {1}, um eine Liste der zuletzt verwendeten Ordner zu erhalten."
+    "message" : "Drücken Sie {1}, um eine Liste der zuletzt eingegebenen Ordner zu erhalten. Die Anzahl der Ergebnisse hängt von Ihrer Lizenzstufe ab."
   }, 
   "quickMove.help.advanced": {
     "message" : "Auf der Registerkarte QuickFolders Pro können erweiterte Funktionen wie Tastaturkürzel zum Aufrufen eines Ordners / Verschieben von E-Mails oder das Ausschließen von Ordnern aus den Suchergebnissen konfiguriert werden. Um auf diese und andere Premium-Funktionen zuzugreifen, erwerben Sie eine Pro-Lizenz und unterstützen Sie die Zukunft von QuickFolders."
@@ -1855,7 +1855,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Neue [=] Taste für quickMove, um die zuletzt von quickMove / quickJump verwendeten Ordner aufzulisten.{L2} {L1}Der Standardwert von quickJump verwendet jetzt immer den letzten Ordner. Es bestand die Möglichkeit, andere Vorschläge anstelle des letzten Ordnerspeicherorts abzugleichen, wenn identische Ordnernamen gefunden werden konnten.{L2} {L1}Der Optionsdialog wurde auf HTML umgestellt - dies ist ein wichtiger Schritt für QuickFolders hin zu einer reinen API-basierten Mail Erweiterung ohne experimentelle Berechtigungen in der Zukunft.{L2} {L1}Probleme mit QuickJump in der Ordnerstruktur im Kompaktmodus behoben.{L2} {L1}Verbesserter Dialog zum Bearbeiten von Kategorien.{L2}"
+    "message": "{L1}Version 5.9.1: Vereinfachtes Verhalten des Menüs „Zuletzt verwendete Ordner“ für Tastaturnavigation.{L2}{L1}Neue [=] Taste für quickMove, um die zuletzt von quickMove / quickJump verwendeten Ordner aufzulisten.{L2} {L1}Der Standardwert von quickJump verwendet jetzt immer den letzten Ordner. Es bestand die Möglichkeit, andere Vorschläge anstelle des letzten Ordnerspeicherorts abzugleichen, wenn identische Ordnernamen gefunden werden konnten.{L2} {L1}Der Optionsdialog wurde auf HTML umgestellt - dies ist ein wichtiger Schritt für QuickFolders hin zu einer reinen API-basierten Mail Erweiterung ohne experimentelle Berechtigungen in der Zukunft.{L2} {L1}Probleme mit QuickJump in der Ordnerstruktur im Kompaktmodus behoben.{L2} {L1}Verbesserter Dialog zum Bearbeiten von Kategorien.{L2}"
   },
   "window-title": {
     "description": "Seitentitel. Der erste placeholder wird durch den Add-on Namen ersetzt",

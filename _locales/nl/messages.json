@@ -1662,7 +1662,7 @@
     "message" : "Dit is handig voor diepere, meer gecompliceerde of onbekende mappenhiërarchieën."
   },   
   "quickMove.help.l4a": {
-    "message" : "Typ {1} om een lijst met recent gebruikte mappen te krijgen."
+    "message" : "Typ {1} om een lijst met mappen te krijgen die het meest recent zijn ingevoerd. Het aantal resultaten is afhankelijk van uw licentieniveau."
   }, 
   "quickMove.help.advanced": {
     "message" : "Meer geavanceerde functies zoals sneltoetsen om naar een map te gaan / e-mail te verplaatsen of mappen uit te sluiten van zoekresultaten kunnen worden geconfigureerd op het tabblad QuickFolders Pro. Om toegang te krijgen tot deze en andere premiumfuncties, moet u een Pro-licentie aanschaffen en de toekomst van QuickFolders ondersteunen."
@@ -1852,7 +1852,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Nieuwe [=]-sleutel voor quickMove om de meest recente mappen weer te geven die werden gebruikt door quickMove / quickJump.{L2} {L1}De standaardwaarde van quickJump gebruikt nu altijd de laatste map. Er was een mogelijkheid om andere suggesties te matchen in plaats van de laatste maplocatie als identieke mapnamen gevonden konden worden.{L2} {L1}Het optievenster is geconverteerd naar HTML - dit is een belangrijke stap voor QuickFolders om een pure API-gebaseerde e-mail te worden extensie zonder experimentele machtigingen in de toekomst.{L2} {L1}Problemen met quickJump in mappenstructuur in compacte modus verwijderd.{L2} {L1}Verbeterde dialoog voor het bewerken van categorieën.{L2}"
+    "message": "{L1}Versie 5.9.1: Vereenvoudigd menugedrag van recente mappen voor toetsenbordnavigatie.{L2}{L1}Nieuwe [=]-sleutel voor quickMove om de meest recente mappen weer te geven die werden gebruikt door quickMove / quickJump.{L2} {L1}De standaardwaarde van quickJump gebruikt nu altijd de laatste map. Er was een mogelijkheid om andere suggesties te matchen in plaats van de laatste maplocatie als identieke mapnamen gevonden konden worden.{L2} {L1}Het optievenster is geconverteerd naar HTML - dit is een belangrijke stap voor QuickFolders om een pure API-gebaseerde e-mail te worden extensie zonder experimentele machtigingen in de toekomst.{L2} {L1}Problemen met quickJump in mappenstructuur in compacte modus verwijderd.{L2} {L1}Verbeterde dialoog voor het bewerken van categorieën.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

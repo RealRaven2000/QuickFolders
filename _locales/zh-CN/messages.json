@@ -1662,7 +1662,7 @@
     "message" : "这对于更深、更复杂或未知的文件夹层次结构很有用。"
   },   
   "quickMove.help.l4a": {
-    "message" : "输入 {1} 以获取最近使用的文件夹列表。"
+    "message" : "键入 {1} 以获取最近输入的文件夹列表。 结果的数量取决于您的许可证级别。"
   }, 
   "quickMove.help.advanced": {
     "message" : "可以在 QuickFolders Pro 选项卡上配置更高级的功能，例如转到文件夹/移动邮件的键盘快捷键或从搜索结果中排除文件夹。 要访问这些和其他高级功能，请获取 Pro 许可证并支持 QuickFolders 的未来。"
@@ -1852,7 +1852,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}新的 [=] 键让 quickMove 列出 quickMove / quickJump 最近使用的文件夹。{L2} {L1}quickJump 的默认值现在总是使用最后一个文件夹。 如果可以找到相同的文件夹名称，则有可能匹配其他建议而不是最后一个文件夹位置。{L2} {L1}选项对话框已转换为 HTML - 这是 QuickFolders 成为纯基于 API 的邮件的重要一步 将来没有实验权限的扩展。{L2} {L1}删除了紧凑模式文件夹树中快速跳转的问题。{L2} {L1}改进了类别编辑对话框。{L2}"
+    "message": "{L1}5.9.1 版：简化了用于键盘导航的最近文件夹菜单行为。{L2}{L1}新的 [=] 键让 quickMove 列出 quickMove / quickJump 最近使用的文件夹。{L2} {L1}quickJump 的默认值现在总是使用最后一个文件夹。 如果可以找到相同的文件夹名称，则有可能匹配其他建议而不是最后一个文件夹位置。{L2} {L1}选项对话框已转换为 HTML - 这是 QuickFolders 成为纯基于 API 的邮件的重要一步 将来没有实验权限的扩展。{L2} {L1}删除了紧凑模式文件夹树中快速跳转的问题。{L2} {L1}改进了类别编辑对话框。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

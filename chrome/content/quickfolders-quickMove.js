@@ -21,6 +21,7 @@ QuickFolders.quickMove = {
   history: [],
   MAX_HISTORY: 25, // maximum storage for quickMove / quickJump targets
   MAX_HISTORY_STD: 10,
+  MAX_HISTORY_FREE: 5,
   
   get isActive() {
     return (this.isMoveActive && !this.suspended)  // QuickFolders.quickMoveUris.length>0

@@ -232,10 +232,18 @@ END LICENSE BLOCK */
     ## [issue 235] quickJump may fail if "Compact mode" in folder tree is enabled.
     ## fixed "change order" dialog
     
-  5.9.1 QuickFolders Pro - WIP
+  5.9.1 QuickFolders Pro - 05/04/2022
     ## [issue 252] tabs with invalid folders can break search results 
     ## [issue 255] CTRL Right-clicking on current folder multiplies folder commands
     ## [issue 254] "=" key of QuickMove/Jump "Enter" won't operate on folders that have subfolders
+    
+  5.10 QuickFolders Pro - WIP
+    ## [issue 262] Recent folders on Navigation Bar (Current folder toolbar) outdated when dragging emails
+    ## remove legacy settings menu & dialog
+    ## [issue 263] If Preferences are open in inactive Tab, clicking the options button does not activate it
+    ## Fixed: add title to preferences tab
+    ## Fixed: support mail to... description in options dialog
+    ## removed legacy code (supportsMap)
   
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
@@ -1426,12 +1434,13 @@ var QuickFolders = {
 						else { // special folderbutton: recent
               if (button.id == 'QuickFolders-Recent-CurrentFolderTool' || button.id == 'QuickFolders-Recent') {
                 popupId = 'moveTo_QuickFolders-folder-popup-Recent';
-                if(QuickFolders_globalHidePopupId !== popupId) {
-                  menupopup.setAttribute('id', popupId);
-                  popupset.appendChild(menupopup);
+                // [issue 262] avoid "stale" drag-to recent menu
+                menupopup.setAttribute('id', popupId);
+                popupset.appendChild(menupopup);
+                if(QuickFolders_globalHidePopupId && QuickFolders_globalHidePopupId !== popupId) {
                   removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
-                  QI.createRecentTab(menupopup, true, button);
                 }
+                QI.createRecentTab(menupopup, true, button);
               }
               else {
                 if (prefs.isShowRecentTab)

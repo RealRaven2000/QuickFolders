@@ -190,10 +190,6 @@ QuickFolders.Util = {
     Services.prompt.alert(null, caption, msg);
   },
 
-  get supportsMap() {
-    return (typeof Map == "function");
-  } ,
-
   get Version() {
     // this used to call VersionProxy() which opened quickfolders.init
     QuickFolders.Util.logDebug("Version() getter. addonInfo:", QuickFolders.Util.addonInfo);
@@ -272,21 +268,7 @@ QuickFolders.Util = {
 
   slideAlert: function slideAlert(title, text, icon) {
     /*  omit mx method until permissions issue is solved: */
-    // QuickFolders.Util.notifyTools.notifyBackground({ func: "slideAlert", args: [title, text, icon] });
-		const util = QuickFolders.Util;
-		util.logDebug('slideAlert (legacy): ' + text);
-		setTimeout(function() {
-				try {
-					if (!icon)  
-						icon = "chrome://quickfolders/content/skin/ico/QuickFolders_32.svg";
-					Components.classes['@mozilla.org/alerts-service;1'].
-								getService(Components.interfaces.nsIAlertsService).
-								showAlertNotification(icon, title, text, false, '', null, 'quickfolders-alert');
-				} catch(e) {
-				// prevents runtime error on platforms that don't implement nsIAlertsService
-				}
-			} , 0);
-      
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "slideAlert", args: [title, text, icon] });
   } ,
   
 //  disableFeatureNotification: function disableFeatureNotification(featureName) {

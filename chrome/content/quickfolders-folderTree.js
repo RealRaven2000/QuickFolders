@@ -96,9 +96,7 @@ QuickFolders.FolderTree = {
     }
     // if (prefs.isDebugOption('folderTree.icons')) debugger;
     if (!this.dictionary) return;
-    let len = util.supportsMap ?
-      this.dictionary.size :
-      this.dictionary.listitems().length;
+    let len = this.dictionary.size;
 	  if (!len)  {
       util.logDebugOptional('folderTree.icons', 'dictionary empty?');
       return;
@@ -108,17 +106,12 @@ QuickFolders.FolderTree = {
 		let styleEngine = QuickFolders.Styles,
 		    ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
     util.logDebugOptional('folderTree.icons', 'iterate Dictionary: ' + len + ' items…');
-    if (util.supportsMap) { 
-		  // should be for..of
-      this.dictionary.forEach(
-        function(value, key, map) {
-          iterate(key,value);
-        }
-      );
-    }
-    else {
-			util.iterateDictionary(this.dictionary, iterate);
-    }
+    // should be for..of
+    this.dictionary.forEach(
+      function(value, key, map) {
+        iterate(key,value);
+      }
+    );
 		this.forceRedraw();
 	} ,
 	
@@ -169,7 +162,7 @@ QuickFolders.FolderTree = {
           debug = prefs.isDebugOption('folderTree');
 		util.logDebugOptional('folderTree,folderTree.icons', 'QuickFolders.FolderTree.loadDictionary()');
     
-    this.dictionary = util.supportsMap ? new Map() : new Dict(); // Tb / ES6 = Map; Postbox ES5 = dictionary		
+    this.dictionary = new Map(); 
 		let txtList = 'Folders without Icon\n',
 		    txtWithIcon = 'Folders with Icon\n',
 		    iCount = 0,
@@ -227,16 +220,9 @@ QuickFolders.FolderTree = {
 			return;
 		}
 	  let txt = "QuickFolders.FolderTree - Dictionary Contents";
-    if (util.supportsMap) 
-      this.dictionary.forEach( function(value, key, map) {
-        txt += '\n' + key + ': ' + value;
-      });
-    else {
-			var t;
-			t.txt = "";
-			util.iterateDictionaryObject(this.dictionary, appendKeyValue, t);
-			txt += t.txt;
-		}
+    this.dictionary.forEach( function(value, key, map) {
+      txt += '\n' + key + ': ' + value;
+    });
 		
 	  util.logDebugOptional('folderTree', txt);
 		if (withAlert) util.alert(txt);
@@ -247,10 +233,7 @@ QuickFolders.FolderTree = {
 	} ,
 	
 	removeItem: function(key) {
-    if (QuickFolders.Util.supportsMap)
-      this.dictionary.delete(key);
-    else
-      this.dictionary.del(key);
+    this.dictionary.delete(key);
 	} ,
 
 	makeSelector: function(propName) {

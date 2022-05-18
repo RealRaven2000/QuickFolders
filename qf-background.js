@@ -241,9 +241,16 @@ async function main() {
         // query for url 
         let url = browser.runtime.getURL("/html/options.html") + "*";
 
-        let [oldTab] = await browser.tabs.query({url}); // dereference first 
-        if (oldTab) {
-          await browser.windows.update(oldTab.windowId, {focused:true});
+        let oldTabs = await browser.tabs.query({url}); // destructure first 
+        if (oldTabs.length) {
+          // get current windowId
+          let currentWin = await browser.windows.getCurrent();
+          let found = oldTabs.find( w => w.windowId == currentWin.id);
+          if (!found) {
+            [found] = oldTabs; // destructure first element
+            await browser.windows.update(found.windowId, {focused:true});
+          }
+          await browser.tabs.update(found.id, {active:true});
         }
         else {
           let optionWin = await messenger.windows.create(

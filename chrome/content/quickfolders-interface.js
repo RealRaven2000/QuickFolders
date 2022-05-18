@@ -7007,7 +7007,6 @@ QuickFolders.Interface = {
 			QuickFolders_globalHidePopupId = "";
 
 	}	,
-
   
   showLicenseDialog: function showLicenseDialog(featureName) {
 		let params = {
@@ -7017,7 +7016,11 @@ QuickFolders.Interface = {
       }, 
       out:null
     };
-    window.openDialog("chrome://quickfolders/content/register.xhtml",
+    let win = window;
+    if (win.closed) { // notifications caused by a close parent window will fail!
+      win = quickFilters.Util.getMail3PaneWindow();
+    }    
+    win.openDialog("chrome://quickfolders/content/register.xhtml",
       "quickfolders-register","chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply",
       QuickFolders,
       params).focus();

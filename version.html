@@ -313,9 +313,39 @@
       
 			-->
 
-      
-			<a name="5.9">&nbsp;</a>
-			<a name="5.9.1">&nbsp;</a>
+    <a name="5.10">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.10 - WIP</a>
+      </h4>
+      <ul>
+        <li> 
+          <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/262">[issue 262]</a> 
+          Recent folders on Navigation Bar (Current folder toolbar) outdated when dragging emails
+        </li>
+        <li> 
+          <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/264">[issue 263]</a> 
+          If Preferences are open in inactive Tab, clicking the options button does not activate it
+        </li>
+        <li> 
+          <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/265">[issue 265]</a> 
+          Reading list: Cannot find the mail, it might have been moved elsewhere in the meantime
+        </li>
+        <li> Fixed: add title to preferences tab
+        </li>
+        <li> Fixed: support mail to... description in options dialog
+        </li>
+        <li> 
+          Remove legacy settings menu & dialog
+        </li>
+        <li> 
+          Removed legacy code (supportsMap)      
+        </li>
+      </ul>
+    </li>    
+    
+    <a name="5.9">&nbsp;</a>
+    <a name="5.9.1">&nbsp;</a>
 		<li>
 				<h4>
 				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.9.1">Version 5.9.1 - 05/04/2022</a>
@@ -474,11 +504,11 @@
           <li> 
             Simplified recent folders menu behavior for keyboard navigation.
             <p>
-              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/254">[issue 254]</a>
-              The new "=" key of quickMove/quickJump shows an arrow to visit child folders which means that the
-              folder itself cannot be opened with keyboard only (by pressing the enter key), which forced the 
-              user to use the mouse, impeding the workflow.
+              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/254">[issue 254]</a> 
+              The new [=] shortcut key of quickMove/quickJump showed an arrow to visit child folders, which meant that the 
+              folder itself could not be opened without mouse, which impeded the workflow.
             </p>
+
             <p>
               I have decided to instead not show subfolders for these recent folders as it doesn't add much value
               for what essentially should be a repeat operation. I have also extended this to the other recent 
@@ -486,7 +516,10 @@
             </p>
             <p> 
               One can still restore the old behavior (of showing subfolders) by setting the config setting
-              <tt>extensions.quickfolders.recentfolders.subfolders = true</tt>:<br>
+              <tt>extensions.quickfolders.recentfolders.subfolders = true</tt>.
+              To do this you can open QuickFolders <i>General Settings</i> and right-click the 
+              <i>Recent Folder Tabs</i> checkbox:<br>
+
               <img class="screenshot" src="images/recent-config-settings.png" alt="advanced recent settings"/>
             </p>
           </li>
@@ -2858,7 +2891,7 @@
 							Fixed <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26372">[Bug 26372]</a>
 						    After entering License Key Tabs are not displayed anymore.
 						</li>
-						<li>
+            <li>
 							Fixed <a href="https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=26389">[Bug 26389]</a>
 						    Single Mail Tab: clicking the current folder on Toolbar should open it.
 						</li>

@@ -1,1 +1,3 @@
-files: []
+files:
+  - source: /_locales/en/messages.json
+    translation: /_locales/%osx_locale%/%original_file_name%

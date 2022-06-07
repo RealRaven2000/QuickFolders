@@ -3,112 +3,103 @@
     "message": "SPLASH"
   },
   "active-version-info": {
-    "message": "Nyní používáte {boldStart} verzi $addonVer$ {boldEnd} na Thunderbirdu $appVer$.",
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Nyní používáte {boldStart} verzi $addonVer$ {boldEnd} na Thunderbirdu $appVer$.",
     "placeholders": {
       "addonVer": {
-        "content" : "$1", 
-        "example" : "Version 1.1"
+        "content": "$1",
+        "example": "Version 1.1"
       },
       "appVer": {
-        "content" : "$2",
-        "example" : "78.0b4"
+        "content": "$2",
+        "example": "78.0b4"
       }
-      
     }
-  },  
+  },
   "addon-authors-struggle": {
-    "message" : "Abychom byli i nadále užiteční, musíme nyní vývojáři doplňků financovat prostředky potřebné k opravě a přepsání, aby naši uživatelé mohli nadále těžit z funkcí, které poskytujeme."
+    "message": "Abychom byli i nadále užiteční, musíme nyní vývojáři doplňků financovat prostředky potřebné k opravě a přepsání, aby naši uživatelé mohli nadále těžit z funkcí, které poskytujeme."
   },
   "btn-extend-license": {
-    "message" : "Chci prodloužit licenci o jeden rok"
+    "message": "Chci prodloužit licenci o jeden rok"
   },
   "btn-renew-license": {
-    "message" : "Chci si obnovit licenci"
+    "message": "Chci si obnovit licenci"
   },
   "btn-want-a-license": {
-    "message" : "Vyberte licenci"
+    "message": "Vyberte licenci"
   },
   "btn-want-to-donate": {
-    "message" : "Chci pomoci s jednorázovým darem."
+    "message": "Chci pomoci s jednorázovým darem."
   },
   "cost-of-independence": {
-    "message" : "Vývoj softwaru stojí čas a peníze - na rozdíl od mnoha aplikací na platformě nejsou doplňky napsány velkými korporacemi, ani nejsou žádným způsobem sponzorovány společností Mozilla."
+    "message": "Vývoj softwaru stojí čas a peníze - na rozdíl od mnoha aplikací na platformě nejsou doplňky napsány velkými korporacemi, ani nejsou žádným způsobem sponzorovány společností Mozilla."
   },
   "donate": {
-    "message" : "Pomozte s jednorázovým darem."
-  },   
+    "message": "Pomozte s jednorázovým darem."
+  },
   "donate-heading": {
-    "message" : "Pomozte darováním!"
+    "message": "Pomozte darováním!"
   },
   "extend-your-license": {
-    "message" : "Zvažte prodloužení licence o rok."
-  },  
-  "extensionName": {
-    "message": "QuickFolders",
-    "description": "Name of the extension."
+    "message": "Zvažte prodloužení licence o rok."
   },
-  "extensionDescription": {
-    "message": "Bookmark your favorite mail folders in Thunderbird.",
-    "description": "Description of the extension."
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "Úspěšně nainstalován $addonName$",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ Úspěšně aktualizováno",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
     "placeholders": {
       "addonName": {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },  
-  "heading-installed": {
-    "message": "Úspěšně nainstalován $addonName$",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
-    "placeholders": {
-      "addonName": {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
   },
-  "label-remind-me" : {
+  "label-remind-me": {
     "message": "Připomenout znovu za $countDays$ dní.",
     "placeholders": {
-      "countDays" : {
-        "content" : "$1", 
-        "example" : "10"
-      }    
-    }    
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
-    "message": "Děkujeme, že jste nedávno prodloužili licenci nebo jste darovali. Jelikož jste pomohli doložit tento doplněk do budoucna, můžete toto okno jednoduše zavřít.",
-    "description": "Shown if license expires more than a year from now"
+    "description": "Shown if license expires more than a year from now",
+    "message": "Děkujeme, že jste nedávno prodloužili licenci nebo jste darovali. Jelikož jste pomohli doložit tento doplněk do budoucna, můžete toto okno jednoduše zavřít."
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
   },
   "licenseHead": {
     "message": "Nový licenční systém"
-  },  
+  },
   "licenseTypes": {
     "message": "QuickFolders nabízí dvě licence, Standard a Pro; jsou nezbytné k udržení kroku se změnami na platformě Thunderbird a k financování inovací a oprav doplňku. Protože změny, které potenciálně narušují funkce rozšíření, jsou vydávány každoročně, licence bude také platná po dobu 1 roku."
-  },  
+  },
   "licenseWindow.title": {
     "message": "Licence QuickFolders Pro"
   },
-  "license_restriced.unpaid": {
-    "message": "Nelicencovaná verze - omezená funkce. Zjistit více…"
-  },
   "license_restriced.std": {
     "message": "Standardní licence - omezená funkce Pro. Zjistit více…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Nelicencovaná verze - omezená funkce. Zjistit více…"
   },
   "license_restriced.standard.maxtabs": {
     "message": "QuickFolders potřebuje licenci Pro na podporu více než $maxTabs$ karet.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
-        "example": "10"
+        "example": "25"
       }
     }
   },
@@ -120,30 +111,26 @@
         "example": "10"
       }
     }
-  },  
-  "mozillas-basic-platform": {
-    "message" : "Mozilla poskytuje pouze základní platformu pro doručování našeho softwaru vám, koncovým uživatelům. Pokud potřebujeme požádat naše uživatele o platbu nebo podporu, nemůžeme to udělat z addons.thunderbird.net - nejedná se o „obchod s aplikacemi“ s vestavěnými paywally nebo správou licencí, jako je iTunes nebo Google Play."
   },
-  "notificationTitle": {
-    "message": "Click notification",
-    "description": "Title of the click notification."
+  "mozillas-basic-platform": {
+    "message": "Mozilla poskytuje pouze základní platformu pro doručování našeho softwaru vám, koncovým uživatelům. Pokud potřebujeme požádat naše uživatele o platbu nebo podporu, nemůžeme to udělat z addons.thunderbird.net - nejedná se o „obchod s aplikacemi“ s vestavěnými paywally nebo správou licencí, jako je iTunes nebo Google Play."
   },
   "ongoing-work": {
     "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",
     "placeholders": {
       "addonName": {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
   },
   "purchase-a-license": {
-    "message" : "Kupte si licenci."
-  }, 
+    "message": "Kupte si licenci."
+  },
   "purchase-heading": {
-    "message" : "Nákup licence!"
-  }, 
-  "qf.menuitem.quickfolders.splash" : {
+    "message": "Nákup licence!"
+  },
+  "qf.menuitem.quickfolders.splash": {
     "message": "Nejnovější aktualizace Novinky…"
   },
   "qf.notification.newsFlash": {
@@ -156,32 +143,14 @@
     }
   },
   "renew-your-license": {
-    "message" : "Obnovte si licenci."
-  },  
-  "special-offer-head": {
-    "message": "Pomozte zachovat kompatibilitu $addon$",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
+    "message": "Obnovte si licenci."
   },
-  "special-offer-intro": {
-    "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {boldStart} vaši pomoc {boldEnd}, abychom udrželi krok!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },  
   "special-offer-content": {
     "message": "Vylepšete své funkce a ušetřete {boldStart} $reduction$ {boldEnd} zakoupením {linkStartPro}licence QuickFolders Pro{linkEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}. Nebo vyberte standardní funkce s novou {linkStart}standardní licencí{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "16. Dubna"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -201,7 +170,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Upgradujte nyní z QuickFolders Standard na Pro a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -214,79 +183,97 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "special-offer-expiry": {
     "message": "15. dubna"
+  },
+  "special-offer-head": {
+    "message": "Pomozte zachovat kompatibilitu $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {boldStart} vaši pomoc {boldEnd}, abychom udrželi krok!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",
     "placeholders": {
       "addonName": {
-        "content" : "$1", 
-        "example" : "quickFilters"
-      }    
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  }, 
+  },
   "support-suggestion": {
     "message": "Aby $addonName$ zůstalo funkční a živé, udělejte to zásadní laskavost:",
     "placeholders": {
       "addonName": {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "thanks-for-installing-intro": {
+    "message": "Děkujeme, že jste nainstalovali $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
   },
   "thanks-for-updating-intro": {
     "message": "Děkujeme za aktualizaci $addonName$.",
     "placeholders": {
       "addonName": {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },  
-  "thanks-for-installing-intro": {
-    "message": "Děkujeme, že jste nainstalovali $addonName$.",
-    "placeholders": {
-      "addonName": {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },  
-  "time-and-effort": { 
+  },
+  "time-and-effort": {
     "message": "$addonName$ vyžaduje průběžné změny, aby zůstal kompatibilní s platformou Mozilla. Neustále pracuji na zachování co největší funkčnosti pro budoucí verze Thunderbirdu.",
     "placeholders": {
       "addonName": {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
   },
   "translated-by-google": {
-    "message": "překlady poskytované google",
-    "description": "disclaimer."
+    "description": "disclaimer.",
+    "message": "překlady poskytované google"
   },
   "whats-new-btn": {
     "message": "Co je nového?"
-  }, 
+  },
   "whats-new-head": {
     "message": "Důležité změny"
   },
   "whats-new-intro": {
-    "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):" 
+    "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Nová klávesa [=] pro quickMove pro seznam nejnovějších složek, které byly použity quickMove / quickJump.{L2} {L1}Výchozí hodnota quickJump nyní vždy používá poslední složku. Pokud by bylo možné najít identické názvy složek, bylo možné přiřadit jiné návrhy místo posledního umístění složky.{L2} {L1}Dialogové okno možností bylo převedeno do HTML – toto je důležitý krok pro QuickFolders k tomu, aby se stala poštou založenou čistě na rozhraní API. rozšíření bez experimentálních oprávnění v budoucnu.{L2} {L1}Odstraněny problémy s quickJump ve stromu složek v kompaktním režimu.{L2} {L1}Vylepšený dialog pro úpravy kategorií.{L2}"
+    "message": "{L1}Verze 5.9.1: Zjednodušené chování nabídky posledních složek pro navigaci pomocí klávesnice.{L2}{L1}Nová klávesa [=] pro quickMove pro seznam nejnovějších složek, které byly použity quickMove / quickJump.{L2} {L1}Výchozí hodnota quickJump nyní vždy používá poslední složku. Pokud by bylo možné najít identické názvy složek, bylo možné přiřadit jiné návrhy místo posledního umístění složky.{L2} {L1}Dialogové okno možností bylo převedeno do HTML – toto je důležitý krok pro QuickFolders k tomu, aby se stala poštou založenou čistě na rozhraní API. rozšíření bez experimentálních oprávnění v budoucnu.{L2} {L1}Odstraněny problémy s quickJump ve stromu složek v kompaktním režimu.{L2} {L1}Vylepšený dialog pro úpravy kategorií.{L2}"
   },
   "window-title": {
-    "message": "Vítejte v $addonName$",
     "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Vítejte v $addonName$",
     "placeholders": {
       "addonName": {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  }  
+  }
 }

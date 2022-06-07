@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "account.label": {
     "message": "Choix du compte :"
   },
@@ -139,14 +136,6 @@
   "extend-your-license": {
     "message": "Pensez à prolonger votre licence d'un an."
   },
-  "extensionDescription": {
-    "description": "Description of the extension.",
-    "message": "Bookmark your favorite mail folders in Thunderbird."
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "QuickFolders"
-  },
   "extensions.quickfolders@curious.be.description": {
     "message": "Créez des raccourcis de vos dossiers courriel favoris dans Thunderbird."
   },
@@ -216,15 +205,15 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Merci d'avoir récemment prolongé votre licence ou si vous avez fait un don. Comme vous avez contribué à la pérennité de cet add-on, vous pouvez simplement fermer cette fenêtre."
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "Pour comparer les fonctionnalités des différentes versions, {linkStart}lisez cette liste{linkEd}.sur{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nouveau système de licence"
-  },  
+  },
   "licenseTypes": {
     "message": "QuickFolders propose deux licences, Standard et Pro ; ceux-ci sont nécessaires pour suivre les changements de la plate-forme Thunderbird et pour financer les innovations et les réparations de l'Add-on. Étant donné que les modifications susceptibles d'interrompre la fonctionnalité d'extension sont déployées chaque année, la licence sera également valide pendant 1 an."
-  },  
+  },
   "licenseWindow.title": {
     "message": "Licence QuickFolders Pro"
   },
@@ -239,7 +228,7 @@
     "placeholders": {
       "maxTabs": {
         "content": "$1",
-        "example": "10"
+        "example": "25"
       }
     }
   },
@@ -248,16 +237,12 @@
     "placeholders": {
       "maxTabs": {
         "content": "$1",
-        "example": "25"
+        "example": "10"
       }
     }
   },
   "mozillas-basic-platform": {
     "message": "Mozilla fournit uniquement une plate-forme de base pour vous fournir nos logiciels, les utilisateurs finaux. Si nous avons besoin de demander à nos utilisateurs un paiement ou une assistance, nous ne pouvons pas le faire à partir de addons.thunderbird.net - ce n'est pas un `` magasin d'applications '' avec des paywalls intégrés ou une gestion des licences comme iTunes ou Google Play."
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Les modifications pour convertir $addonName$ au nouveau modèle de programmation ont pris des semaines et étaient coûteuses. Il y a beaucoup plus de changements pour la prochaine version 2022. Avec un module complémentaire complexe comme celui-ci, un travail coûteux devient inévitable. Merci de nous aider.",
@@ -315,9 +300,6 @@
   },
   "qf.button.reorderButtonBottom": {
     "message": "Vers le bas"
-  },
-  "qf.button.reorderButtonBottom.accessKey": {
-    "message": "b"
   },
   "qf.button.reorderButtonBottom.toolTip": {
     "message": "exécute le filtre après tous les autres"
@@ -547,9 +529,6 @@
   "qf.checkbox.tabMenuIcon.tooltip": {
     "message": "Ce menu peut-être également affiché via un clic droit sur la barre d'outils elle-même"
   },
-  "qf.checkbox.transparent": {
-    "message": "transparent"
-  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "Alt-flèche gauche / Alt-flèche droite pour onglet précédent / suivant"
   },
@@ -567,9 +546,6 @@
   },
   "qf.continueFilter.label": {
     "message": "Créer un filtre…"
-  },
-  "qf.continueFilter.shortcut": {
-    "message": "F"
   },
   "qf.copyfolders": {
     "message": "Copier les onglets"
@@ -867,9 +843,6 @@
   "qf.label.menus.mailFolder": {
     "message": "Commandes courriel"
   },
-  "qf.label.menus.options": {
-    "message": "Options"
-  },
   "qf.label.menus.quickFolder": {
     "message": "Commandes QuickFolders"
   },
@@ -884,9 +857,6 @@
   },
   "qf.label.newcategory": {
     "message": "Nouvelle catégorie :"
-  },
-  "qf.label.pixels": {
-    "message": "pixels"
   },
   "qf.label.quickFilters.link": {
     "message": "Obtenir quickFilters !"
@@ -941,7 +911,7 @@
   },
   "qf.licenseValidation.standard": {
     "message": "Merci d'avoir enregistré une licence QuickFolders - Vous aidez énormément le module complémentaire ! Si vous avez besoin de plus de fonctionnalités, vous pouvez toujours passer à la licence Pro."
-  },  
+  },
   "qf.loadConfig": {
     "message": "Charger la configuration…"
   },
@@ -972,9 +942,6 @@
   "qf.menuitem.quickfolders.filters": {
     "message": "Créer un filtre…"
   },
-  "qf.menuitem.quickfolders.filtersAccess": {
-    "message": "F"
-  },
   "qf.menuitem.quickfolders.find": {
     "message": "Rechercher un dossier…"
   },
@@ -990,35 +957,23 @@
   "qf.menuitem.quickfolders.options": {
     "message": "Options QuickFolders"
   },
-  "qf.menuitem.quickfolders.optionsAccess": {
-    "message": "O"
-  },
   "qf.menuitem.quickfolders.register": {
     "message": "S'abonner à QuickFolders Pro…"
   },
   "qf.menuitem.quickfolders.repairTabs": {
     "message": "Actualiser les onglets visibles !"
   },
-  "qf.menuitem.quickfolders.repairTabsAccess": {
-    "message": "V"
-  },
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Afficher l'écran de démarrage"
   },
-  "qf.menuitem.quickfolders.splash" : {
+  "qf.menuitem.quickfolders.splash": {
     "message": "Dernières nouvelles de mise à jour…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "Support QuickFolders…"
   },
-  "qf.menuitem.quickfolders.supportAccess": {
-    "message": "S"
-  },
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "Mote peinture"
-  },
-  "qf.menuitem.quickfolders.togglePaintModeAccess": {
-    "message": "p"
   },
   "qf.notification.categoryIsReadOnly": {
     "message": "Cet élément ne peut être supprimé."
@@ -1250,9 +1205,6 @@
   "qf.tab.quickhelp": {
     "message": "Aide rapide"
   },
-  "qf.tab.support": {
-    "message": "Support"
-  },
   "qf.textbox.searchBox.emptyText": {
     "message": "rechercher des filtres…"
   },
@@ -1379,17 +1331,11 @@
   "qfColorPickingWIP": {
     "message": "Désolé, cette fonctionnalité est encore en cours de développement !"
   },
-  "qfCommandAccess": {
-    "message": "Q"
-  },
   "qfCommandPopup": {
     "message": "Commandes QuickFolders"
   },
   "qfCompactFolder": {
     "message": "Compacter le dossier"
-  },
-  "qfCompactFolderAccess": {
-    "message": "C"
   },
   "qfCompacted": {
     "message": "Compacté :"
@@ -1475,9 +1421,6 @@
   "qfFolderProperties": {
     "message": "Propriétés du dossier…"
   },
-  "qfFolderPropertiesAccess": {
-    "message": "P"
-  },
   "qfFolderRepair": {
     "message": "Réparer le dossier"
   },
@@ -1505,12 +1448,6 @@
   "qfMarkAllRead": {
     "message": "Marquer le dossier comme lu"
   },
-  "qfMarkAllReadAccess": {
-    "message": "M"
-  },
-  "qfMarkAllReadRecursive": {
-    "message": "Mark folder + subfolders Read"
-  },
   "qfMenuColor": {
     "message": "Couleur"
   },
@@ -1531,9 +1468,6 @@
   },
   "qfNewFolder": {
     "message": "Nouveau sous-dossier…"
-  },
-  "qfNewFolderAccess": {
-    "message": "N"
   },
   "qfNewName": {
     "message": "Indiquer un nouveau nom pour le raccourci"
@@ -1579,9 +1513,6 @@
   },
   "qfRenameFolder": {
     "message": "Renommer le dossier…"
-  },
-  "qfRenameFolderAccess": {
-    "message": "R"
   },
   "qfRepairTreeIconsMissing": {
     "message": "Les fichiers icônes suivant n'existent pas :"
@@ -1638,35 +1569,35 @@
     "message": "Ne plus afficher l'historique de version après les mises à jour ?"
   },
   "quickMove.help.head": {
-    "message" : "Aide pour {1}"
+    "message": "Aide pour {1}"
   },
   "quickMove.help.head.advanced": {
-    "message" : "Fonctionnalités avancées"
+    "message": "Fonctionnalités avancées"
   },
   "quickMove.help.l1a": {
-    "message" : "Tapez le début d'un nom de dossier ou des mots dedans, délimités par un espace."
-  }, 
+    "message": "Tapez le début d'un nom de dossier ou des mots dedans, délimités par un espace."
+  },
   "quickMove.help.l1b": {
-    "message" : "Les caractères suivants sont considérés comme des limites de mots et n'ont pas besoin d'être tapés :"
-  }, 
+    "message": "Les caractères suivants sont considérés comme des limites de mots et n'ont pas besoin d'être tapés :"
+  },
   "quickMove.help.l2a": {
-    "message" : "Tapez {1} pour entrer dans le dossier grand-parent/parent/recherché."
-  }, 
+    "message": "Tapez {1} pour entrer dans le dossier grand-parent/parent/recherché."
+  },
   "quickMove.help.l2b": {
-    "message" : "Les 2 premières lettres de tout dossier parent sont généralement suffisantes. Vous pouvez également créer de nouveaux sous-dossiers avec cette syntaxe."
-  }, 
+    "message": "Les 2 premières lettres de tout dossier parent sont généralement suffisantes. Vous pouvez également créer de nouveaux sous-dossiers avec cette syntaxe."
+  },
   "quickMove.help.l3a": {
-    "message" : "Tapez {1} pour sauter tous les dossiers entre les deux."
-  }, 
+    "message": "Tapez {1} pour sauter tous les dossiers entre les deux."
+  },
   "quickMove.help.l3b": {
-    "message" : "Ceci est utile pour les hiérarchies de dossiers plus profondes, plus compliquées ou inconnues."
-  },   
+    "message": "Ceci est utile pour les hiérarchies de dossiers plus profondes, plus compliquées ou inconnues."
+  },
   "quickMove.help.l4a": {
-    "message" : "Tapez {1} pour obtenir une liste des dossiers récemment utilisés."
-  }, 
+    "message": "Tapez {1} pour obtenir une liste des dossiers entrés le plus récemment. Le nombre de résultats dépend de votre niveau de licence."
+  },
   "quickMove.help.advanced": {
-    "message" : "Des fonctions plus avancées telles que les raccourcis clavier pour accéder à un dossier/déplacer le courrier ou exclure des dossiers des résultats de recherche peuvent être configurées dans l'onglet QuickFolders Pro. Pour accéder à ces fonctionnalités et à d'autres fonctionnalités premium, obtenez une licence Pro et prenez en charge l'avenir de QuickFolders."
-  },  
+    "message": "Des fonctions plus avancées telles que les raccourcis clavier pour accéder à un dossier/déplacer le courrier ou exclure des dossiers des résultats de recherche peuvent être configurées dans l'onglet QuickFolders Pro. Pour accéder à ces fonctionnalités et à d'autres fonctionnalités premium, obtenez une licence Pro et prenez en charge l'avenir de QuickFolders."
+  },
   "quickMove.singleMessage.goNext": {
     "message": "Afficher le courrier suivant après avoir déplacé le courrier actuel"
   },
@@ -1740,7 +1671,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Passez maintenant de QuickFolders Standard à Pro et économisez {boldStart}$reduction${boldEnd} ! Cette offre spéciale sera disponible jusqu'au {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1753,9 +1684,9 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "special-offer-expiry": {
-    "message": "15 avril"    
+    "message": "15 avril"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1780,7 +1711,7 @@
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "quickFilters"
+        "example": "QuickFolders"
       }
     }
   },
@@ -1852,7 +1783,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Nouvelle clé [=] pour quickMove pour lister les dossiers les plus récents qui ont été utilisés par quickMove / quickJump.{L2} {L1}La valeur par défaut de quickJump utilise désormais toujours le dernier dossier. Il était possible de faire correspondre d'autres suggestions plutôt que le dernier emplacement de dossier si des noms de dossier identiques pouvaient être trouvés.{L2} {L1}La boîte de dialogue des options a été convertie en HTML ; il s'agit d'une étape importante pour QuickFolders en vue de devenir une messagerie purement basée sur l'API extension sans autorisations expérimentales à l'avenir.{L2} {L1}Suppression des problèmes avec quickJump dans l'arborescence de dossiers en mode compact.{L2} {L1}Amélioration de la boîte de dialogue d'édition de catégorie.{L2}"
+    "message": "{L1}Version 5.9.1 : Comportement simplifié du menu des dossiers récents pour la navigation au clavier.{L2}{L1}Nouvelle clé [=] pour quickMove pour lister les dossiers les plus récents qui ont été utilisés par quickMove / quickJump.{L2} {L1}La valeur par défaut de quickJump utilise désormais toujours le dernier dossier. Il était possible de faire correspondre d'autres suggestions plutôt que le dernier emplacement de dossier si des noms de dossier identiques pouvaient être trouvés.{L2} {L1}La boîte de dialogue des options a été convertie en HTML ; il s'agit d'une étape importante pour QuickFolders en vue de devenir une messagerie purement basée sur l'API extension sans autorisations expérimentales à l'avenir.{L2} {L1}Suppression des problèmes avec quickJump dans l'arborescence de dossiers en mode compact.{L2} {L1}Amélioration de la boîte de dialogue d'édition de catégorie.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

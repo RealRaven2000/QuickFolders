@@ -259,7 +259,7 @@ QuickFolders.Interface = {
 		util.logDebugOptional("recentFolders","Creating Popup Set for Recent Folders tab");
 
 		let recentFolders,
-		    FoldersArray = []; // Cc["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
+		    FoldersArray = []; 
 
     if (popupId == "QuickFolders-FindFolder-popup-Recent") {
       let maxLen = QuickFolders.quickMove.history.length;
@@ -2146,6 +2146,8 @@ QuickFolders.Interface = {
 						function(event) {
 						  // right-click is already handled by contextmenu event
 						  if (event.button == 0) {
+                // [issue 268] make a fresh popupId!
+                let popupId = QI.makePopupId(event.target.folder, buttonId)
 								QI.showPopup(button,popupId,event);
 								event.preventDefault();
 								event.stopPropagation();
@@ -2975,6 +2977,7 @@ QuickFolders.Interface = {
     // global objects: msgWindow
 		const Ci = Components.interfaces,
 					Cc = Components.classes;
+    QuickFolders.Util.logDebug(`rebuildSummary(${folder.prettyName}) started... `);
 		let isCurrent=false;
 		// taken from http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2087
 		if (folder.locked) {
@@ -2988,15 +2991,9 @@ QuickFolders.Interface = {
 				offlineStore.remove(false);
 		}
 		if (typeof gFolderDisplay !="undefined") {
-			if (gFolderDisplay.view) { // Tb3
-				if (gFolderDisplay.view.displayedFolder == folder) {
-					gFolderDisplay.view.close();
-					isCurrent = true;
-				}
-			}
-			else if(gFolderDisplay.displayedFolder == folder) {  // SeaMonkey
-				// gFolderDisplay.view.close();
+			if(gFolderDisplay.displayedFolder == folder) {
 				isCurrent = true;
+        gFolderDisplay.view.close();
 			}
 
 			// Send a notification that we are triggering a database rebuild.
@@ -3004,7 +3001,14 @@ QuickFolders.Interface = {
 				Cc["@mozilla.org/messenger/msgnotificationservice;1"]
 						.getService(Ci.nsIMsgFolderNotificationService);
 
-			notifier.notifyItemEvent(folder, "FolderReindexTriggered", null, null);
+      if (notifier.notifyFolderReindexTriggered) { // Tb 102
+        notifier.notifyFolderReindexTriggered(folder);
+      }
+      else {
+        // Tb 78
+        notifier.notifyItemEvent(folder, "FolderReindexTriggered", null, null);
+      }
+     
 			folder.msgDatabase.summaryValid = false;
 
 			let msgDB = folder.msgDatabase;
@@ -3790,7 +3794,7 @@ QuickFolders.Interface = {
     menupopup.setAttribute("id", popupId);
     menupopup.setAttribute("position", "after_start"); //
     // [Bug 26575] (safety?) - seems to be only triggered on non folder commands
-    this.setEventAttribute(menupopup, "onclick","QuickFolders.Interface.clickHandler(event,this);");
+    // this.setEventAttribute(menupopup, "onclick","QuickFolders.Interface.clickHandler(event,this);");
     this.setEventAttribute(menupopup, "oncommand","QuickFolders.Interface.clickHandler(event,this);");
     menupopup.className = "QuickFolders-folder-popup";
     menupopup.folder = folder;
@@ -4208,9 +4212,7 @@ QuickFolders.Interface = {
     let isDisableSubfolders = (isRecentFolderList && !prefs.getBoolPref("recentfolders.subfolders"));
 
 		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopupFromList(..)");
-    // change subfolders from nsIMutableArray to Array
     for (subfolder of subfolders) {
-		// while (!done) 
 			try {
 				this.debugPopupItems++;
 				let menuitem = this.createIconicElement("menuitem","*"),
@@ -4382,21 +4384,7 @@ QuickFolders.Interface = {
 
 		if (folder.hasSubFolders) {
 			util.logDebugOptional("popupmenus.subfolders", "Adding folders…");
-			let subfolders;
-      if (folder.subFolders.hasMoreElements) {
-        // Tb78 and older - uses nsIMutableArray
-        subfolders = [];
-        let x = 250;
-        var subFolders = folder.subFolders;
-				while (subFolders.hasMoreElements()) {
-					let sf = subFolders.getNext().QueryInterface(Ci.nsIMsgFolder);
-          subfolders.push(sf);          
-          if (--x==0) break; // safety
-        }
-			}      
-      else
-        subfolders = folder.subFolders; // Tb 87
-
+			let subfolders = folder.subFolders;
 			let isAlphaSorted = prefs.isSortSubfolderMenus;
 			this.addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, isAlphaSorted, isRecentFolderList);
 		}
@@ -5289,19 +5277,6 @@ QuickFolders.Interface = {
     return document.getElementById("threadTree")
   } ,
   
-  viewOptionsLegacy: function(selectedTab) {
-		let params = {inn:{mode:"allOptions",tab:selectedTab, instance: QuickFolders}, out:null},
-        //  in linux the first alwaysRaised hides the next child (config dialogs)
-        features = (QuickFolders.Util.HostSystem == "linux") ?
-          "chrome,titlebar,centerscreen,resizable,dependent,instantApply" :
-          "chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply",
-		    win = window.openDialog("chrome://quickfolders/content/options.xhtml",
-          "quickfolders-options",
-          features,
-          QuickFolders,
-          params).focus();
-  } ,
-
 	// selectedTab   - force a certain tab panel to be selected
 	// updateMessage - display this message when opening the dialog
 	viewOptions: function viewOptions(selectedTab, mode="") {
@@ -5762,124 +5737,7 @@ QuickFolders.Interface = {
 				default:  // "QuickFolders-Options-PalettePopup" etc.
 				  if (!parent.id.includes("QuickFolders-Options-"))
 						continue;  //
-          var options = QuickFolders.Options; // should only work when called from the options menu!
-					// options dialog case: parent is menupopup
-					//   showPopup should have set this as "targetNode"
-					let targetNode = parent.targetNode;
-					// now paint the button
-				  options.preparePreviewTab(null, null, targetNode.id, col); // [Bug 25589]
-				  //options.preparePreviewPastel(prefs.getBoolPref('pastelColors'));
-					//   retrieve about config key to persist setting;
-					let styleKey =  targetNode.getAttribute("stylePrefKey"),
-				      stylePref = "style." + styleKey + ".",
-              userStyleKey = (styleKey == "DragOver") ? "DragTab" : styleKey; // fix naming inconsistency
-				  if (stylePref)
-					  prefs.setIntPref(stylePref + "paletteEntry", col);
-
-					// special rule: if this is the Active Tab Color, let's also determine the active BG (bottom pixel of gradient!)
-					let paletteClass = this.getPaletteClassCss(styleKey),
-					    ruleName = ".quickfolders-flat " + paletteClass + ".col" + col,
-					    engine = QuickFolders.Styles,
-              disableColorChangeStriped = (styleKey=="InactiveTab" && prefs.ColoredTabStyle==prefs.TABS_STRIPED);
-					ssPalettes = ssPalettes ? ssPalettes : this.getStyleSheet(engine, QI.PaletteStyleSheet, "QuickFolderPalettes");
-					let colPickId = "",
-					    selectedFontColor = engine.getElementStyle(ssPalettes, ruleName, "color"),
-					    previewTab;
-					if (selectedFontColor !== null) {
-						switch(styleKey) {
-							case "DragOver":
-							  previewTab = "dragovertabs-label";
-								colPickId = "dragover-fontcolorpicker";
-								break;
-							case "InactiveTab":
-							  previewTab = "inactivetabs-label";
-								colPickId = "inactive-fontcolorpicker";
-								break;
-							case "ActiveTab":
-							  previewTab = "activetabs-label";
-								colPickId = "activetab-fontcolorpicker";
-								break;
-							case "HoveredTab":
-							  previewTab = "hoveredtabs-label";
-								colPickId = "hover-fontcolorpicker";
-								break;
-						}
-						// transfer color to font color picker for non-palette mode.
-						let cp = document.getElementById(colPickId);
-						if (cp && !disableColorChangeStriped) {
-							// cp.color = selectedFontColor;
-							cp.value = util.getSystemColor(selectedFontColor); // convert to hex value
-							prefs.setUserStyle(userStyleKey, "color", selectedFontColor);
-							options.styleUpdate(userStyleKey, "color", selectedFontColor, previewTab);
-						}
-					}
-
-					// find out the last (=main) gradient color and set as background color!
-					let selectedGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image"),
-              resultBackgroundColor = "";
-					if (selectedGradient !== null) {
-						// get last gradient point (bottom) to determine background color
-						// all gradients should be defined top down
-						util.logDebugOptional("css.palette", "selectedGradient = " + selectedGradient);
-						let f = selectedGradient.lastIndexOf("rgb");
-						if (f>=0) {
-							let rgb = selectedGradient.substr(f);
-							f = rgb.indexOf(")");
-							rgb = rgb.substr(0, f + 1); // this is our rule
-							if (rgb) {
-								switch(styleKey) {
-									case "DragOver":
-										colPickId = "dragover-colorpicker";
-										break;
-									case "InactiveTab":
-										colPickId = "inactive-colorpicker";
-										break;
-									case "ActiveTab":
-										colPickId = "activetab-colorpicker";
-										break;
-									case "HoveredTab":
-										colPickId = "hover-colorpicker";
-										break;
-								}
-								// transfer color to background color picker for non-palette mode.
-								let cp = document.getElementById(colPickId);
-								if (cp && !disableColorChangeStriped) {
-                  // don't do it with inactive tab in striped mode!!
-                  // cp.color = rgb;
-									cp.value = util.getSystemColor(rgb);
-                  prefs.setUserStyle(userStyleKey, "background-color", rgb);
-								}
-                resultBackgroundColor = rgb;
-							}
-						}
-					}
-
-					// if no color is selected in inactive tab, switch on transparent:
-					if (styleKey == "InactiveTab" && col == 0) {
-						let chkTransparent = window.document.getElementById("buttonTransparency");
-						if (chkTransparent && !chkTransparent.checked) {
-							chkTransparent.checked = true;
-							options.toggleColorTranslucent(chkTransparent, "inactive-colorpicker", "inactivetabs-label", styleKey);
-						}
-						let cp = document.getElementById("inactive-colorpicker");
-						if (cp) {
-						  // cp.color = "rgb(255,255,255)";
-							cp.value = "#FFFFFF";
-						}
-						prefs.setUserStyle(styleKey, "background-color", "rgb(255,255,255)");
-            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false });
-					}
-          if (styleKey == "InactiveTab")
-            this.applyTabStyle(document.getElementById("inactivetabs-label"), prefs.ColoredTabStyle);
-          // immediate update of background color for bottom border
-          if (styleKey == "ActiveTab" && resultBackgroundColor) {
-            options.styleUpdate("ActiveTab","background-color", resultBackgroundColor, "activetabs-label");
-          }
-          if (disableColorChangeStriped) {
-            // force update as it might have been missed!
-            QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: true });
-          }
-					return; // early exit
+          throw("invalid legacy code: setTabColorFromMenu from " + parent.id);
 			} // end switch
 		}
 		// or... paint a quickFolders tab
@@ -6735,6 +6593,7 @@ QuickFolders.Interface = {
 		try {
 			let toCount = arrCount || 1,
           countChanges = 0; 
+      var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 			for (let i = 0; i < toCount; i++) {
         // break up into single actions!
 				let folders = new Array,
@@ -6757,31 +6616,9 @@ QuickFolders.Interface = {
         if (isCopy) isMove=false; // force copy
         
         /** **/
-        var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
-        let cs = 
-          MailServices.copy ||
-          Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService);
-        if (cs.CopyFolders) { // Tb 78
-          QuickFolders.Util.logDebug("Calling CopyFolders() on ", targetFolder);
-          let array = (typeof toXPCOMArray !== "undefined") ? toXPCOMArray(folders, Ci.nsIMutableArray) : folders; 
-          cs.CopyFolders(array,
-                         targetFolder,
-                         isMove,
-                         listener,
-                         msgWindow); // msgWindow  - global
-        }
-        else { // Tb 88
-          cs = MailServices.copy;
-          if (cs.copyFolder) { // Tb 92
-            QuickFolders.Util.logDebug("Calling copyFolder() on ", targetFolder);
-            for (let f=0; f<folders.length; f++) {
-              cs.copyFolder(folders[f], targetFolder, isMove, listener, null);
-            }
-          }
-          else { // Tb 88
-            QuickFolders.Util.logDebug("Calling copyFolders() on ", targetFolder);
-            cs.copyFolders(folders, targetFolder, isMove, listener, null);
-          }
+        QuickFolders.Util.logDebug("Calling copyFolder() on ", targetFolder);
+        for (let f=0; f<folders.length; f++) {
+          MailServices.copy.copyFolder(folders[f], targetFolder, isMove, listener, null);
         }
 				// in case it has a Tab, fix the uri
 				//  see also OnItemRemoved
@@ -7244,8 +7081,8 @@ QuickFolders.Interface = {
       }
     }
     catch (ex) {
-      util.logException("Error in QuickFolders.Options.pasteFolderEntries():\n", ex);
-      Services.prompt.alert(null, "QuickFolders", util.getBundleString("qf.alert.pasteFolders.formatErr"));
+      util.logException("Error in QuickFolders.Util.pasteFolderEntries():\n", ex);
+      Services.prompt.alert(null, "QuickFolders", QuickFolders.Util.getBundleString("qf.alert.pasteFolders.formatErr"));
     }
   },
   

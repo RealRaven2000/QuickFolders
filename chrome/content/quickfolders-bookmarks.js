@@ -54,16 +54,23 @@ QuickFolders.bookmarks = {
 			return a.replace(/.*<(\S+)>.*/g, "$1");
 		}    
     let getFolder = QuickFolders.Model.getMsgFolderFromUri,
-        folder = getFolder(entry.FolderUri),
+        folder = getFolder(entry.FolderUri) || QuickFolders.Util.CurrentFolder, // [issue 265] fallback
         util = QuickFolders.Util,
         searchSession = Cc["@mozilla.org/messenger/searchSession;1"].createInstance(Ci.nsIMsgSearchSession),
         searchTerms = [],
-        offlineScope = (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_OFFLINE) ? nsMsgSearchScope.offlineMail : nsMsgSearchScope.onlineManual, // Postbox doesn't like nsMsgFolderFlags.Offline?
-        serverScope = (folder.server ? folder.server.searchScope : null),
+        offlineScope = nsMsgSearchScope.onlineManual,
+        serverScope = null,
         preferredUri = QuickFolders.Preferences.getStringPref('bookmarks.searchUri'),
-        targetFolder = (preferredUri ? getFolder(preferredUri) : null)  // preferred start point for finding missing emails. could be localhost.
+        preferredStartFolder = preferredUri ? getFolder(preferredUri) : null;
+
+    // [issue 265] make sure it works if no valid folder can be found
+    if (folder)    {
+      offlineScope = (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_OFFLINE) ? nsMsgSearchScope.offlineMail : nsMsgSearchScope.onlineManual;
+      serverScope = (folder.server ? folder.server.searchScope : null);
+    }
+    let targetFolder = (preferredUri ? getFolder(preferredUri) : null)  // preferred start point for finding missing emails. could be localhost.
                        ||               
-                       (folder.server ? folder.server.rootFolder : folder);
+                       (folder ? (folder.server ? folder.server.rootFolder : folder) : null);
     util.logDebug("Search messages @ folder URI: " + targetFolder.URI + " … ");
     searchSession.addScopeTerm(serverScope, targetFolder);
     

@@ -1470,9 +1470,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "április 15"
-  },
   "special-offer-head": {
     "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
     "placeholders": {
@@ -1560,9 +1557,6 @@
   },
   "whats-new-intro": {
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
-  },
-  "whats-new-list": {
-    "message": "{L1}5.9.1-es verzió: Egyszerűsített legutóbbi mappák menü működése a billentyűzet navigációjához.{L2}{L1}Új [=] gomb a QuickMove-hoz a QuickMove / QuickJump által használt legutóbbi mappák listázásához.{L2} {L1}A quickJump alapértelmezett értéke mostantól mindig az utolsó mappát használja. Lehetőség volt más javaslatok egyeztetésére az utolsó mappa hely helyett, ha azonos mappanevek találhatók.{L2} {L1}A beállítások párbeszédablakot HTML formátumba konvertáltuk – ez egy fontos lépés a QuickFolders számára a tisztán API alapú levelezés felé. bővítmény kísérleti engedélyek nélkül a jövőben.{L2} {L1}Eltávolítottuk a QuickJump problémáit kompakt módú mappafában.{L2} {L1}Továbbfejlesztett kategóriaszerkesztő párbeszédpanel.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

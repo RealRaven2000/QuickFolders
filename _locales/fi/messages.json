@@ -266,6 +266,9 @@
   "whats-new-intro": {
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
+  "whats-new-list": {
+    "message": "{L1}QuickFolders on nyt yhteensopiva Thunderbird 102:n kanssa. Otettu käyttöön uusi FolderListener, \"korjaa kansio\" -toiminto ja verkkolinkit asetuksissa.{L2} {L1}Korjattu: Navigointipalkin (nykyisen kansion työkalurivin) viimeisimmät kansiot näyttivät vanhentuneita tuloksia, kun sitä napsautettiin tai vetää sähköpostit siihen.{L2} {L1}Korjattu: lukulista – jos sähköpostia ei löydy virheellisen/poistetun kansion vuoksi, QuickFolders ei näyttänyt hakuikkunaa.{L2} {L1}Korjattu: lisää otsikko Asetukset-välilehteen.{L2} {L1}Vanhat asetusten valintaikkuna ja valikkokohdat poistettiin.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Tervetuloa osoitteeseen $addonName$",

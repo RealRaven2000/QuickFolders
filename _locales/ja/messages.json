@@ -1668,6 +1668,9 @@
   "whats-new-intro": {
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
+  "whats-new-list": {
+    "message": "{L1}QuickFoldersはThunderbird102と互換性があります。設定に新しいFolderListener、「フォルダの修復」機能、およびWebリンクを実装しました。{L2} {L1}修正：ナビゲーションバー（現在のフォルダツールバー）の最近のフォルダをクリックすると、古い結果が表示されました またはメールをドラッグします。{L2}{L1}修正済み：閲覧リスト-無効な/削除されたフォルダが原因でメールが見つからない場合、QuickFoldersは検索ダイアログを表示しませんでした。{L2} {L1}修正済み：タイトルを追加 [設定]タブに移動します。{L2}{L1}レガシー設定ダイアログとメニュー項目が削除されました。{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ へようこそ",

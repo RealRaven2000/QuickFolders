@@ -1739,6 +1739,9 @@
   "whats-new-intro": {
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
+  "whats-new-list": {
+    "message": "{L1}QuickFolders ara és compatible amb Thunderbird 102. S'ha implementat FolderListener nou, la funció de \"reparació de la carpeta\" i enllaços web a la configuració.{L2} {L1}Corregit: les carpetes recents de la barra de navegació (barra d'eines de la carpeta actual) mostraven resultats obsolets en fer-hi clic. o arrossegant-hi correus electrònics.{L2} {L1}Corregit: Llista de lectura: si no es troba un correu electrònic a causa d'una carpeta no vàlida/suprimida, QuickFolders no mostrava el diàleg de cerca.{L2} {L1}Corregit: afegeix un títol a la pestanya de preferències.{L2} {L1}El diàleg de configuració heretat i els elements del menú s'han eliminat.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Benvingut a $addonName$",

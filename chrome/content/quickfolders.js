@@ -238,12 +238,20 @@ END LICENSE BLOCK */
     ## [issue 254] "=" key of QuickMove/Jump "Enter" won't operate on folders that have subfolders
     
   5.10 QuickFolders Pro - WIP
-    ## [issue 262] Recent folders on Navigation Bar (Current folder toolbar) outdated when dragging emails
-    ## remove legacy settings menu & dialog
-    ## [issue 263] If Preferences are open in inactive Tab, clicking the options button does not activate it
+    ## Tb 102 Compatibility Fixes
+    ##   - Fixed repair folder code.
+    ##   - Fixed links in Options Dialog
+    ##   - [issue 272] Implemented new folder listener interface.
+    ## Fixed: [issue 262] Recent folders on Navigation Bar (Current folder toolbar) outdated when dragging emails
+    ## [issue 263] If Preferences are open in inactive Tab, clicking the options button did not activate it
+    ## [issue 265] Improved Reading list: Cannot find the mail, it might have been moved elsewhere in the meantime
     ## Fixed: add title to preferences tab
     ## Fixed: support mail to... description in options dialog
-    ## removed legacy code (supportsMap)
+    ## Fixed: Context Menus duplicated executing Mail / QF Commands
+    ## [issue 268] "Current Folder Bar" doesn't show current subfolders when left-clicked
+    ## Set minimum version to 91.0
+    ## Removed legacy code (supportsMap, nsIMutableArray,  MailServices.copy.CopyFolders)
+    ## Removed legacy settings menu & dialog
   
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
@@ -2363,48 +2371,41 @@ QuickFolders.FolderListener = {
       try{QuickFolders.Util.logToConsole("Error: " + msg);} catch(e) {;};
     };
 	},
-
-	OnItemAdded: function fldListen_OnItemAdded(parent, item, viewString) {
-		try {
-			if (!QuickFolders) return;
+  
+  // Tb102 - new folder listener interface
+  onFolderAdded: function(parent, item) {
+    try {
+      if (!QuickFolders) return;
       const util = QuickFolders.Util,
-            Ci = Components.interfaces,
-            Model = QuickFolders.Model,
-            ADVANCED_FLAGS = util.ADVANCED_FLAGS;
-            
-      if (item.hasOwnProperty('folderURL')) {
-        let f = item.QueryInterface(Ci.nsIMsgFolder);
-        util.logDebugOptional("listeners.folder", "OnItemAdded\n" + f.prettyName + "\n"  + f.URI);
-        let fld = Model.getMsgFolderFromUri(f.URI, true);
-        if (!parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
-          util.touch(fld || f); // set MRUTime, unless folder was deleted.
-        }
-        QuickFolders.FolderListener.lastAdded = f;
+            Ci = Components.interfaces;
+      let f = item.QueryInterface(Ci.nsIMsgFolder);
+      util.logDebugOptional("listeners.folder", "onFolderAdded\n" + f.prettyName + "\n"  + f.URI);
+      let fld = QuickFolders.Model.getMsgFolderFromUri(f.URI, true);
+      if (!parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
+        util.touch(fld || f); // set MRUTime, unless folder was deleted.
       }
-      
-      // [Bug 26683] flag to set moved mail to unread.
-      if (item.hasOwnProperty('subject')) {
-        let m = item.QueryInterface(Components.interfaces.nsIMsgDBHdr),
-            tabEntry = Model.getFolderEntry(parent.folderURL);
-            
-        if (tabEntry &&  tabEntry.flags & ADVANCED_FLAGS.SETMAIL_UNREAD) {
-          let messageList;
-          if (util.versionGreaterOrEqual(util.ApplicationVersion, "85")) {
-            messageList = [item];
-          }
-          else {
-            messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-            messageList.appendElement(item , false);
-          }
-          parent.markMessagesRead(messageList, false);
-        }
-        
+      QuickFolders.FolderListener.lastAdded = f;
+    }
+    catch(e) { };     
+  },
+
+  // Tb102 - new folder listener interface
+  onMessageAdded: function(parent, item) {
+    try {
+      if (!QuickFolders) return;
+      let m = item.QueryInterface(Components.interfaces.nsIMsgDBHdr),
+          tabEntry = QuickFolders.Model.getFolderEntry(parent.folderURL);
+          
+      if (tabEntry &&  tabEntry.flags & QuickFolders.Util.ADVANCED_FLAGS.SETMAIL_UNREAD) {
+        let messageList = [item];
+        parent.markMessagesRead(messageList, false);
       }
 		}
-		catch(e) { };
-	},
-
-	OnItemRemoved: function fldListen_OnItemRemoved(parent, item, viewString) {
+		catch(e) { };    
+  },
+  
+  // Tb102 - new folder listener interface
+  onFolderRemoved: function(parent, item) {
 		try {
 			if (!QuickFolders)
 				return;
@@ -2414,15 +2415,15 @@ QuickFolders.FolderListener = {
 						QI = QuickFolders.Interface;
 			let f = item.QueryInterface(Components.interfaces.nsIMsgFolder),
 			    fromURI = f.URI,
-			    toURI = listener.lastAdded ? listener.lastAdded.URI : "",
+			    toURI = QuickFolders.FolderListener.lastAdded ? QuickFolders.FolderListener.lastAdded.URI : "",
           logDebug = util.logDebug.bind(util),
           logDebugOptional = util.logDebugOptional.bind(util),
           logToConsole = util.logToConsole.bind(util);
 			logDebugOptional("listeners.folder", "OnItemRemoved\n" + f.prettyName + "\nFROM " + fromURI);
-			listener.lastRemoved = f;
+			QuickFolders.FolderListener.lastRemoved = f;
 			// check if QuickFolders references this message folder:
 			if (fromURI !== toURI && toURI) {
-				if (listener.lastAdded && (f.name === listener.lastAdded.name)) {
+				if (QuickFolders.FolderListener.lastAdded && (f.name === QuickFolders.FolderListener.lastAdded.name)) {
 					// the folder was moved, we need to make sure to update any corresponding quickfolder:
 					if (toURI)  {
 						// we should not do this when deleting, we need to delete the Tab!
@@ -2450,18 +2451,12 @@ QuickFolders.FolderListener = {
 					}
 				}
 			}
-			listener.lastAdded = null;
-      // listener.lastRemoved = null;
+			QuickFolders.FolderListener.lastAdded = null;      
 		}
-		catch(e) { };
-	},
+		catch(e) { };    
+  },
 
-	// parent, item, viewString
-	OnItemPropertyChanged: function fldListen_OnItemPropertyChanged(item, property, oldValue, newValue) {
-		//var x=property.toString();
-	},
-
-	OnItemIntPropertyChanged: function fldListen_OnItemIntPropertyChanged(item, property, oldValue, newValue) {
+  onFolderIntPropertyChanged: function(item, property, oldValue, newValue) {
 		function add1000Separators( sValue ) {
 			let sRegExp = new RegExp('(-?[0-9]+)([0-9]{3})');
 			while(sRegExp.test(sValue.toString())) { sValue = sValue.replace(sRegExp, '$1,$2'); }
@@ -2474,7 +2469,7 @@ QuickFolders.FolderListener = {
 			let prop = property ? property.toString() : '',
           log = util.logDebugOptional.bind(util),
           isTouch = false;
-			log("listeners.folder", "OnItemIntPropertyChanged - property = " + prop);
+			log("listeners.folder", "onFolderIntPropertyChanged - property = " + prop);
 			if (prop === "TotalUnreadMessages" ||
 				(QuickFolders.Preferences.isShowTotalCount && prop === "TotalMessages")) {
 					QuickFolders.Interface.setFolderUpdateTimer(item);
@@ -2544,13 +2539,14 @@ QuickFolders.FolderListener = {
 				} catch(e) {;};
 			}
 		}
-		catch(e) {this.ELog("Exception in Item OnItemIntPropertyChanged - TotalUnreadMessages: " + e);};
-	},
-	OnItemBoolPropertyChanged: function fldListen_OnItemBoolPropertyChanged(item, property, oldValue, newValue) {},
-	OnItemUnicharPropertyChanged: function fldListen_OnItemUnicharPropertyChanged(item, property, oldValue, newValue) {},
-	OnItemPropertyFlagChanged: function fldListen_OnItemPropertyFlagChanged(item, property, oldFlag, newFlag) {},
-	OnItemEvent: function fldListen_OnItemEvent(item, event) {
-    const listener = QuickFolders.FolderListener;
+		catch(e) {this.ELog("Exception in Item onFolderIntPropertyChanged - TotalUnreadMessages: " + e);};    
+  },
+  
+  onFolderBoolPropertyChanged: function(folder, property, oldValue, newValue) {},
+  onFolderUnicharPropertyChanged: function(folder, property, oldValue, newValue) {},
+  onFolderPropertyFlagChanged: function(msg, property, oldFlag, newFlag) {},
+  
+  onFolderEvent: function(item, event) {
 		let eString = event.toString();
 		try {
 			if (!QuickFolders || !QuickFolders.Util)
@@ -2558,13 +2554,13 @@ QuickFolders.FolderListener = {
       let util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           log = util.logDebugOptional.bind(util);
-			log("listeners.folder", "OnItemEvent - evt = " + eString);
+			log("listeners.folder", "onFolderEvent - evt = " + eString);
 			switch (eString) {
         // a better option might be to hok into 
         // folderTree.onSelect 
         // which in Tb calls FolderPaneSelectionChange()
         // which uses GetSelectedMsgFolders()
-				case "FolderLoaded": // DeleteOrMoveMsgCompleted
+				case "FolderLoaded": 
 					try {
             log("events","event: " + eString + " item:" + item.prettyName);
 						if (QI) {
@@ -2582,32 +2578,34 @@ QuickFolders.FolderListener = {
               // use shim to avoid foreach warning
             }
 					}
-					catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + event + "} during calling onTabSelected:\n" + e)};
+					catch(e) {
+            QuickFolders.FolderListener.ELog("Exception in FolderListener.onFolderEvent {" + event + "} during calling onTabSelected:\n" + e)
+          };
 					break;
 				case "RenameCompleted":
 					// item.URI;=> is this the old folder uri ? - what's the new one.
           
-          let newFolderName = listener.newFolderName || '',
-              oldUri = listener.oldFolderUri;
+          let newFolderName = QuickFolders.FolderListener.newFolderName || '',
+              oldUri = QuickFolders.FolderListener.oldFolderUri;
 					if (!item || (item.URI == oldUri && newFolderName)) {
 						log("events,listeners.folder","event: " + eString + 
 								"\nNEW item.URI = " + (item && item.URI ? item.URI : "?") +
 								"\nold URI = " + oldUri +
 								"\nstored newFolderName = " + newFolderName);
 						QuickFolders.Model.moveFolderURI(oldUri, newFolderName);
-            listener.newFolderName = null;
-            listener.oldFolderUri = null;
+            QuickFolders.FolderListener.newFolderName = null;
+            QuickFolders.FolderListener.oldFolderUri = null;
 					}
 					else { // [Bug 26645]  moving folders in IMAP tree - check referential integrity of model
-					  let movedFolder = listener.lastRemoved || item;
+					  let movedFolder = QuickFolders.FolderListener.lastRemoved || item;
 						if (movedFolder) {
 							// if folder was moved, the prettyName is the same:
 							// if (movedFolder.prettyName == item.prettyName ) { // && item.server.type=='imap'
 								QuickFolders.Model.moveFolderURI(movedFolder.URI, item.URI);
 							// }
 						}
-						listener.lastRemoved = null;
-						listener.oldFolderUri = null;
+						QuickFolders.FolderListener.lastRemoved = null;
+						QuickFolders.FolderListener.oldFolderUri = null;
 					}
 					break;
         default:
@@ -2615,15 +2613,51 @@ QuickFolders.FolderListener = {
           break;
 			}
 		}
-		catch(e) {this.ELog("Exception in FolderListener.OnItemEvent {" + eString + "}:\n" + e)};
+		catch(e) {
+      QuickFolders.FolderListener.ELog("Exception in FolderListener.onFolderEvent {" + eString + "}:\n" + e)
+    };
+  },
+  
+  /**********************        legacy parts - Thunderbird 91 specific   *****************************************/
+	OnItemAdded: function fldListen_OnItemAdded(parent, item, viewString) {
+		try {
+			if (!QuickFolders) return;
+
+      if (item.hasOwnProperty('folderURL')) {
+        QuickFolders.FolderListener.onFolderAdded(parent, item);
+      }
+      
+      // [Bug 26683] flag to set moved mail to unread.
+      if (item.hasOwnProperty('subject')) {
+        QuickFolders.FolderListener.onMessageAdded(parent, item);        
+      }
+		}
+		catch(e) { };
 	},
-	OnFolderLoaded: function fldListen_OnFolderLoaded(aFolder) { 
-    let log = QuickFolders.Util.logDebugOptional.bind(QuickFolders.Util);
-		log("listeners.folder", "OnFolderLoaded - folder = " + aFolder.prettyName);
+
+	OnItemRemoved: function fldListen_OnItemRemoved(parent, item, viewString) {
+		try {
+			if (!QuickFolders)
+				return;
+      QuickFolders.FolderListener.onFolderRemoved(parent, item);
+		}
+		catch(e) { };
 	},
-	OnDeleteOrMoveMessagesCompleted: function fldListen_OnDeleteOrMoveMessagesCompleted(aFolder) {
-    let log = QuickFolders.Util.logDebugOptional.bind(QuickFolders.Util);
-		log("listeners.folder", "OnDeleteOrMoveMessagesCompleted - folder = " + aFolder.prettyName);
+
+	// parent, item, viewString
+	OnItemPropertyChanged: function fldListen_OnItemPropertyChanged(item, property, oldValue, newValue) {
+		//var x=property.toString();
+	},
+
+	OnItemIntPropertyChanged: function fldListen_OnItemIntPropertyChanged(item, property, oldValue, newValue) {
+    QuickFolders.FolderListener.onFolderIntPropertyChanged(item, property, oldValue, newValue);
+	},
+  
+	OnItemBoolPropertyChanged: function fldListen_OnItemBoolPropertyChanged(item, property, oldValue, newValue) {},
+	OnItemUnicharPropertyChanged: function fldListen_OnItemUnicharPropertyChanged(item, property, oldValue, newValue) {},
+	OnItemPropertyFlagChanged: function fldListen_OnItemPropertyFlagChanged(item, property, oldFlag, newFlag) {},
+	OnItemEvent: function fldListen_OnItemEvent(item, event) {
+    QuickFolders.FolderListener.onFolderEvent(item, event);
 	}
 }
 
@@ -2635,17 +2669,33 @@ QuickFolders.CopyListener = {
   },
   OnStopCopy: function copyLst_OnStopCopy(status) { // in nsresult aStatus
     if (QuickFolders.bookmarks && Components.isSuccessCode(status)) {
-      let bm = QuickFolders.bookmarks;
-      if (bm.dirty) {
+      if (QuickFolders.bookmarks.dirty) {
         let invalidCount = 0;
-        for (let i=0; i<bm.Entries.length; i++) {
-          let entry = bm.Entries[i];
-          if (entry.invalid) {
-            invalidCount++;
+        for (let i=0; i<QuickFolders.bookmarks.Entries.length; i++) {
+          let entry = QuickFolders.bookmarks.Entries[i];
+          try {
+            if (entry.invalid) {
+              var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+              // [issue 265] try to fix the bookmark URI
+              if (entry.messageId) {
+                let msg = MailUtils.getMsgHdrForMsgId(entry.messageId);
+                if (msg) {
+                  let newUri = msg.folder.getUriForMsg(msg);
+                  if (newUri) {
+                    entry.Uri = newUri;
+                    entry.invalid = false;
+                  }
+                }
+              }
+            }
+          }
+          catch(ex) {
+            QuickFolders.Util.logException("Trying to fix a reading list entry - failed", ex);
           }
         }
-        if (invalidCount)
-          bm.persist();  // save & update menu with new Uris (we flagged them as invalid during Util.moveMessages!)
+        if (invalidCount) {
+          QuickFolders.bookmarks.persist();  // save & update menu with new Uris (we flagged them as invalid during Util.moveMessages!)
+        }
       }
     }
   }

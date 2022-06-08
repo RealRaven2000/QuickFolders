@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "account.label": {
     "message": "Izberite račun:"
   },
@@ -67,12 +64,6 @@
   "chkComposerSubfolders": {
     "message": "Uveljavi tudi za podmape"
   },
-  "chkHideFromQuickJump": {
-    "message": "Omit from quickJump / quickMove"
-  },
-  "chkHideFromQuickJump.tooltip": {
-    "message": "Omit this folder and its children in quickJump / quickMove results"
-  },
   "chkIgnoreCounts": {
     "message": "Skrij števce pošte"
   },
@@ -84,12 +75,6 @@
   },
   "chkIgnoreUnread.tooltip": {
     "message": "Nikoli ne prikaži števila v krepkem slogu ali št. neprebranih, tudi če mapa vsebuje neprebrano pošto."
-  },
-  "chkSetMailsUnread": {
-    "message": "Set mail to unread"
-  },
-  "chkSetMailsUnread.tooltip": {
-    "message": "If you move mail into this folder it is set to unread."
   },
   "cost-of-independence": {
     "message": "Razvoj programske opreme stane čas in denar - v nasprotju s številnimi platformnimi aplikacijami dodatkov ne pišejo velike korporacije niti jih Mozilla na noben način ne sponzorira."
@@ -138,14 +123,6 @@
   },
   "extend-your-license": {
     "message": "Razmislite o podaljšanju licence za eno leto."
-  },
-  "extensionDescription": {
-    "description": "Description of the extension.",
-    "message": "Bookmark your favorite mail folders in Thunderbird."
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
     "message": "Svoje priljubljene poštne mape v Thunderbirdu dodajte med zaznamke."
@@ -216,15 +193,15 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Zahvaljujemo se vam za nedavno podaljšanje licence ali če ste prispevali. Ker ste pomagali pri prihodnjem preverjanju tega dodatka, lahko preprosto zaprete to okno."
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam{linkEdin}."
-  },  
+  },
   "licenseHead": {
     "message": "Nov sistem licenciranja"
-  },  
+  },
   "licenseTypes": {
     "message": "QuickFolders ponuja dve licenci, Standardno in Pro; ti so potrebni za spremljanje sprememb na platformi Thunderbird in za financiranje inovacij in popravil dodatka. Ker se spremembe, ki bi potencialno motile funkcionalnost razširitve, uvedejo letno, bo licenca veljala tudi 1 leto."
-  },  
+  },
   "licenseWindow.title": {
     "message": "Dovoljenje QuickFolders Pro"
   },
@@ -254,10 +231,6 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla ponuja samo osnovno platformo za dostavo naše programske opreme vam, končnim uporabnikom. Če moramo uporabnike prositi za plačilo ali podporo, tega ne moremo storiti z addons.thunderbird.net - to ni 'trgovina z aplikacijami' z vgrajenimi plačilnimi zidovi ali upravljanjem licenc, kot sta iTunes ali google play."
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
@@ -361,9 +334,6 @@
   "qf.checkbox.currentFolder.show": {
     "message": "Prikaži orodno vrstico"
   },
-  "qf.checkbox.currentfolder.lightweight": {
-    "message": "integrate with lightweight theme"
-  },
   "qf.checkbox.debug": {
     "message": "Razhroščevalni način"
   },
@@ -433,9 +403,6 @@
   "qf.checkbox.quickmove.autofill": {
     "message": "Vstavi ime iskane zadnje mape"
   },
-  "qf.checkbox.quickmove.autofill.tip": {
-    "message": "The last folder successfully used will be inserted. Hit Enter to use it, or simply type over it for other destinations."
-  },
   "qf.checkbox.readingList": {
     "message": "Bralni seznam"
   },
@@ -444,9 +411,6 @@
   },
   "qf.checkbox.shadows": {
     "message": "Osenčenje"
-  },
-  "qf.checkbox.shift": {
-    "message": "Shift"
   },
   "qf.checkbox.showCountInSubFolders": {
     "message": "Prikaži tudi skupno število sporočil v podmapah"
@@ -532,15 +496,6 @@
   "qf.checkbox.sortMenusAlpha.tooltip": {
     "message": "To možnost uporabite samo, če poštni odjemalec ne razvršča podmap pravilno."
   },
-  "qf.checkbox.storeConfig.general": {
-    "message": "Include general settings"
-  },
-  "qf.checkbox.storeConfig.layout": {
-    "message": "Include advanced and layout"
-  },
-  "qf.checkbox.storeConfig.tabs": {
-    "message": "Include QuickFolders Tabs"
-  },
   "qf.checkbox.tabMenuIcon": {
     "message": "Ikona menija orodne vrstice"
   },
@@ -591,12 +546,6 @@
   },
   "qf.currentFolderBackground.translucent": {
     "message": "Prosojno"
-  },
-  "qf.currentfolder.leftSpacer": {
-    "message": "Left Spacer:"
-  },
-  "qf.currentfolder.rightSpacer": {
-    "message": "Right Spacer:"
   },
   "qf.description.github": {
     "message": "Uporabite github za vse uradne zahteve po značilnostih in poročilih o hroščih"
@@ -660,9 +609,6 @@
   "qf.dialog.changeorder": {
     "message": "Spremeni vrstni red zavihkov"
   },
-  "qf.dialog.quickmove.settings": {
-    "message": "quickMove Advanced Settings"
-  },
   "qf.dialog.setcategory": {
     "message": "Nastavite kategorijo zavihka"
   },
@@ -716,9 +662,6 @@
   },
   "qf.foldercontextmenu.quickfolders.removeIcon": {
     "message": "Odstrani ikono po meri"
-  },
-  "qf.fpJsonFile": {
-    "message": "JSON File"
   },
   "qf.goNextUnread.auto": {
     "message": "Pojdi na drugo mapo brez vprašanja (priporočljivo)"
@@ -858,9 +801,6 @@
   "qf.label.menus.help": {
     "message": "Pomoč QuickFolders"
   },
-  "qf.label.menus.hideQFunlessCTRL": {
-    "message": "Only display with CTRL key held"
-  },
   "qf.label.menus.lineBreak": {
     "message": "Vstavi prelom vrstice"
   },
@@ -941,7 +881,7 @@
   },
   "qf.licenseValidation.standard": {
     "message": "Hvala za registracijo licence QuickFolders - Izjemno pomagate dodatku! Če potrebujete več funkcij, lahko vedno nadgradite na licenco Pro."
-  },  
+  },
   "qf.loadConfig": {
     "message": "Naloži konfiguracijo…"
   },
@@ -1005,7 +945,7 @@
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Popravi ikone drevesa"
   },
-  "qf.menuitem.quickfolders.splash" : {
+  "qf.menuitem.quickfolders.splash": {
     "message": "Najnovejše novice o posodobitvah…"
   },
   "qf.menuitem.quickfolders.support": {
@@ -1034,12 +974,6 @@
         "example": "QuickFolders"
       }
     }
-  },
-  "qf.notification.premium.btn.extendLicense": {
-    "message": "Extend License"
-  },
-  "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "This will extend the current license date by 1 year. It's typically cheaper than a new license."
   },
   "qf.notification.premium.btn.getLicense": {
     "message": "Kupi dovoljenje"
@@ -1169,17 +1103,11 @@
   "qf.premiumConfig": {
     "message": "Značilnosti Premium"
   },
-  "qf.prompt.category.deleteMultiple": {
-    "message": "Ok to delete multiple categories?"
-  },
   "qf.prompt.contact.subject": {
     "message": "Vnesite kratko vrstico zadeve:"
   },
   "qf.prompt.contact.title": {
     "message": "Naveži stik s podporo QuickFolders"
-  },
-  "qf.prompt.loadFolders.confirm": {
-    "message": "Accept the loaded Tabs?"
   },
   "qf.prompt.newFolder.createQFtab": {
     "message": "Ustvari tudi zavihek s hitrimi mapami"
@@ -1201,9 +1129,6 @@
   },
   "qf.prompt.readingList.searchMissingItem": {
     "message": "Pošte ni mogoče najti, morda je bila med tem premaknjena drugam .\n{1}\n\nAli jo želite poiskati?"
-  },
-  "qf.prompt.restoreFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Preklopi na domensko dovoljenje?"
@@ -1352,12 +1277,6 @@
   "qf.tooltip.threadIcon": {
     "message": "Trenutna nit - povlecite na zavihek hitrih map, da premaknete pogovor"
   },
-  "qf.youtube.description": {
-    "message": "For detailed videos on Thunderbird Add-ons and how to use QuickFolders visit my YouTube channel Thunderbird Daily."
-  },
-  "qf.youtube.link": {
-    "message": "Watch Videos about QuickFolders…"
-  },
   "qf.youtube.tbdaily": {
     "message": "Obiščite kanal na Youtubu Thunderbird Daily glede nasvetov in vodnikov za uporabo dodatka QuickFolders"
   },
@@ -1378,9 +1297,6 @@
   },
   "qfColorPickingWIP": {
     "message": "Ta značilnost je še v razvoju!"
-  },
-  "qfCommandAccess": {
-    "message": "Q"
   },
   "qfCommandPopup": {
     "message": "Ukazi QuickFolders"
@@ -1499,23 +1415,14 @@
   "qfInsertSeparator": {
     "message": "Vstavi ločilo"
   },
-  "qfInvalidTabCount": {
-    "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
-  },
   "qfMarkAllRead": {
     "message": "Označi mapo kot prebrano"
   },
   "qfMarkAllReadAccess": {
     "message": "O"
   },
-  "qfMarkAllReadRecursive": {
-    "message": "Mark folder + subfolders Read"
-  },
   "qfMenuColor": {
     "message": "Barva"
-  },
-  "qfMenuTabColorDisabledInTheme": {
-    "message": "Select different Theme to support coloring…"
   },
   "qfMenuTabColorNone": {
     "message": "Brez barve!"
@@ -1531,9 +1438,6 @@
   },
   "qfNewFolder": {
     "message": "Nova podmapa"
-  },
-  "qfNewFolderAccess": {
-    "message": "N"
   },
   "qfNewName": {
     "message": "Vnesite novo me za zavihek"
@@ -1607,9 +1511,6 @@
   "qfTabAdvancedOptions": {
     "message": "Lastnosti za posamezne zavihke …"
   },
-  "qfTabDeleteOption": {
-    "message": "Do this with the remaining {0} folders."
-  },
   "qfTabDeletePrompt": {
     "message": "Izbriši to mapo?"
   },
@@ -1638,35 +1539,35 @@
     "message": "Ustavi prikaz zgodovine različic po posodobitvah?"
   },
   "quickMove.help.head": {
-    "message" : "Pomoč za {1}"
+    "message": "Pomoč za {1}"
   },
   "quickMove.help.head.advanced": {
-    "message" : "Napredne funkcije"
+    "message": "Napredne funkcije"
   },
   "quickMove.help.l1a": {
-    "message" : "Vnesite začetek imena mape ali besed v njej, ločenih s presledkom."
-  }, 
+    "message": "Vnesite začetek imena mape ali besed v njej, ločenih s presledkom."
+  },
   "quickMove.help.l1b": {
-    "message" : "Naslednji znaki so meje besed in jih ni treba vnašati:"
-  }, 
+    "message": "Naslednji znaki so meje besed in jih ni treba vnašati:"
+  },
   "quickMove.help.l2a": {
-    "message" : "Vnesite {1} za vnos mape starih staršev/staršev/iskane strani."
-  }, 
+    "message": "Vnesite {1} za vnos mape starih staršev/staršev/iskane strani."
+  },
   "quickMove.help.l2b": {
-    "message" : "Običajno zadoščata prvi dve črki katere koli nadrejene mape. S to sintakso lahko ustvarite tudi nove podmape."
-  }, 
+    "message": "Običajno zadoščata prvi dve črki katere koli nadrejene mape. S to sintakso lahko ustvarite tudi nove podmape."
+  },
   "quickMove.help.l3a": {
-    "message" : "Vnesite {1}, če želite preskočiti mape vmes."
-  }, 
+    "message": "Vnesite {1}, če želite preskočiti mape vmes."
+  },
   "quickMove.help.l3b": {
-    "message" : "To je uporabno za globlje, bolj zapletene ali neznane hierarhije map."
-  },   
+    "message": "To je uporabno za globlje, bolj zapletene ali neznane hierarhije map."
+  },
   "quickMove.help.l4a": {
-    "message" : "Vnesite {1}, da dobite seznam nedavno uporabljenih map."
-  }, 
+    "message": "Vnesite {1}, da dobite seznam map, ki so bile nazadnje vnesene. Število rezultatov je odvisno od vaše licence."
+  },
   "quickMove.help.advanced": {
-    "message" : "Naprednejše funkcije, kot so bližnjice na tipkovnici za prehod v mapo / premikanje pošte ali izključitev map iz rezultatov iskanja, lahko nastavite na zavihku QuickFolders Pro. Če želite dostopati do teh in drugih premium funkcij, pridobite licenco Pro in podprite prihodnost QuickFolders."
-  },  
+    "message": "Naprednejše funkcije, kot so bližnjice na tipkovnici za prehod v mapo / premikanje pošte ali izključitev map iz rezultatov iskanja, lahko nastavite na zavihku QuickFolders Pro. Če želite dostopati do teh in drugih premium funkcij, pridobite licenco Pro in podprite prihodnost QuickFolders."
+  },
   "quickMove.singleMessage.goNext": {
     "message": "Prikaže naslednje sporočilo po premikanju trenutnega"
   },
@@ -1703,9 +1604,6 @@
   "quickfolders.toolbar.newsubfolder": {
     "message": "Nova podmapa…"
   },
-  "quickfolders.toolbar.skip": {
-    "message": "Skip"
-  },
   "quickfoldersQuickCopiedMails": {
     "message": "Pošta kopirana v mapo {2};{1} sporočil kopiranih v mapo {2}"
   },
@@ -1720,7 +1618,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "16. aprila"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1740,7 +1638,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Nadgradite zdaj iz QuickFolders Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1753,7 +1651,7 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "special-offer-expiry": {
     "message": "15. aprila"
   },
@@ -1780,7 +1678,7 @@
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "quickFilters"
+        "example": "QuickFolders"
       }
     }
   },
@@ -1852,7 +1750,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Nov ključ [=] za quickMove za seznam najnovejših map, ki jih je uporabil quickMove / quickJump.{L2} {L1}Privzeta vrednost quickJump zdaj vedno uporablja zadnjo mapo. Če bi bilo mogoče najti enaka imena map, je obstajala možnost ujemanja z drugimi predlogi in ne z lokacijo zadnje mape.{L2} {L1}Pogovorno okno z možnostmi je bilo pretvorjeno v HTML – to je pomemben korak za QuickFolders, da postanejo čista pošta, ki temelji na API-ju. razširitev brez poskusnih dovoljenj v prihodnosti.{L2} {L1}Odstranjene težave s hitrim skokom v drevesu map v kompaktnem načinu.{L2} {L1}Izboljšano pogovorno okno za urejanje kategorij.{L2}"
+    "message": "{L1}Različica 5.9.1: poenostavljeno obnašanje menija nedavnih map za navigacijo s tipkovnico.{L2}{L1}Nov ključ [=] za quickMove za seznam najnovejših map, ki jih je uporabil quickMove / quickJump.{L2} {L1}Privzeta vrednost quickJump zdaj vedno uporablja zadnjo mapo. Če bi bilo mogoče najti enaka imena map, je obstajala možnost ujemanja z drugimi predlogi in ne z lokacijo zadnje mape.{L2} {L1}Pogovorno okno z možnostmi je bilo pretvorjeno v HTML – to je pomemben korak za QuickFolders, da postanejo čista pošta, ki temelji na API-ju. razširitev brez poskusnih dovoljenj v prihodnosti.{L2} {L1}Odstranjene težave s hitrim skokom v drevesu map v kompaktnem načinu.{L2} {L1}Izboljšano pogovorno okno za urejanje kategorij.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
@@ -1878,8 +1776,5 @@
   },
   "yearlyLicense.usageTerm": {
     "message": "Dovoljenje je za vašo osebno uporabo in je vezano na vaš e-poštni naslov. Namestite ga lahko na več e-poštnih odjemalcih, dokler so nastavljeni za uporabo tega e-poštnega naslova."
-  },
-  "yearlyLicense.usageTerm1": {
-    "message": "Any additional email addresses are no problem - they do not require a separate license. In case of questions you can reach me via the support tab."
   }
 }

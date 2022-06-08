@@ -196,12 +196,6 @@ async function onLoad(activatedWhileWindowOpen) {
                       class="cmd menuitem-iconic"
                       tagName="qfOptions"
                       />
-            <menuitem id="QuickFolders-ToolbarPopup-options"
-                      label="QuickFolders Options (classic)…"
-                      oncommand="QuickFolders.Interface.viewOptionsLegacy(-1, null);" 
-                      class="cmd menuitem-iconic"
-                      tagName="qfOptions"
-                      />                      
             <menuitem id="QuickFolders-ToolbarPopup-splash"
                       label="__MSG_qf.menuitem.quickfolders.splash__"
                       oncommand="QuickFolders.Interface.viewSplash();" 

@@ -1785,6 +1785,9 @@
   "whats-new-intro": {
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
+  "whats-new-list": {
+    "message": "{L1}QuickFolders è ora compatibile con Thunderbird 102. Implementati il nuovo FolderListener, la funzione \"ripara cartella\" e i collegamenti Web nelle impostazioni.{L2} {L1}Risolto: le cartelle recenti sulla barra di navigazione (barra degli strumenti della cartella corrente) mostravano risultati obsoleti quando si faceva clic su di essa o trascinando le e-mail su di essa.{L2} {L1}Risolto: Elenco di lettura: se non è possibile trovare un'e-mail a causa di una cartella non valida/eliminata, QuickFolders non visualizzava la finestra di ricerca.{L2} {L1}Risolto: aggiungi titolo alla scheda delle preferenze.{L2} {L1}La finestra di dialogo delle impostazioni precedenti e le voci di menu sono state rimosse.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Benvenuto in $addonName$",

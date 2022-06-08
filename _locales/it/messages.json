@@ -1691,9 +1691,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "15 aprile"
-  },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
     "placeholders": {
@@ -1787,9 +1784,6 @@
   },
   "whats-new-intro": {
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
-  },
-  "whats-new-list": {
-    "message": "{L1}Versione 5.9.1: comportamento del menu delle cartelle recenti semplificato per la navigazione tramite tastiera.{L2}{L1}Nuovo tasto [=] per QuickMove per elencare le cartelle più recenti utilizzate da quickMove / quickJump.{L2} {L1}Il valore predefinito di quickJump ora utilizza sempre l'ultima cartella. C'era la possibilità di abbinare altri suggerimenti piuttosto che l'ultima posizione della cartella se fosse possibile trovare nomi di cartelle identici.{L2} {L1}La finestra di dialogo delle opzioni è stata convertita in HTML: questo è un passo importante per QuickFolders per diventare una posta basata su API pura estensione senza autorizzazioni sperimentali in futuro.{L2} {L1}Rimossi problemi con quickJump nell'albero delle cartelle in modalità compatta.{L2} {L1}Finestra di dialogo di modifica delle categorie migliorata.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

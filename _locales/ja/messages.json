@@ -1574,9 +1574,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "4月15日"
-  },
   "special-offer-head": {
     "message": "$addon$の互換性を維持するのに役立ちます",
     "placeholders": {
@@ -1670,9 +1667,6 @@
   },
   "whats-new-intro": {
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
-  },
-  "whats-new-list": {
-    "message": "{L1}バージョン5.9.1：キーボードナビゲーションの最近のフォルダメニューの動作を簡略化しました。{L2}{L1} quickMoveの新しい[=]キーは、quickMove/quickJumpによって使用された最新のフォルダーを一覧表示します。{L2}{L1}quickJumpのデフォルト値は、常に最後のフォルダーを使用するようになりました。 同一のフォルダ名が見つかった場合、最後のフォルダの場所ではなく、他の提案と一致する可能性がありました。{L2} {L1}オプションダイアログがHTMLに変換されました-これは、QuickFoldersが純粋なAPIベースのメールになるための重要なステップです 将来的に実験的な許可のない拡張機能。{L2}{L1}コンパクトモードのフォルダツリーでのquickJumpの問題を削除しました。{L2}{L1}カテゴリ編集ダイアログを改善しました。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

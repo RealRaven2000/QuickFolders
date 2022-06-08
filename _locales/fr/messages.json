@@ -1685,9 +1685,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "15 avril"
-  },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
     "placeholders": {
@@ -1781,9 +1778,6 @@
   },
   "whats-new-intro": {
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
-  },
-  "whats-new-list": {
-    "message": "{L1}Version 5.9.1 : Comportement simplifié du menu des dossiers récents pour la navigation au clavier.{L2}{L1}Nouvelle clé [=] pour quickMove pour lister les dossiers les plus récents qui ont été utilisés par quickMove / quickJump.{L2} {L1}La valeur par défaut de quickJump utilise désormais toujours le dernier dossier. Il était possible de faire correspondre d'autres suggestions plutôt que le dernier emplacement de dossier si des noms de dossier identiques pouvaient être trouvés.{L2} {L1}La boîte de dialogue des options a été convertie en HTML ; il s'agit d'une étape importante pour QuickFolders en vue de devenir une messagerie purement basée sur l'API extension sans autorisations expérimentales à l'avenir.{L2} {L1}Suppression des problèmes avec quickJump dans l'arborescence de dossiers en mode compact.{L2} {L1}Amélioration de la boîte de dialogue d'édition de catégorie.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

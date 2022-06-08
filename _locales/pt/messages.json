@@ -1676,9 +1676,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "15 de abril"
-  },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
     "placeholders": {
@@ -1772,9 +1769,6 @@
   },
   "whats-new-intro": {
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
-  },
-  "whats-new-list": {
-    "message": "{L1}Versão 5.9.1: Comportamento simplificado do menu de pastas recentes para navegação pelo teclado.{L2}{L1}Nova tecla [=] para quickMove para listar as pastas mais recentes que foram usadas por quickMove / quickJump.{L2} {L1}O valor padrão de quickJump agora sempre usa a última pasta. Havia a possibilidade de combinar outras sugestões em vez da última localização da pasta se nomes de pasta idênticos pudessem ser encontrados.{L2} {L1}A caixa de diálogo de opções foi convertida para HTML - este é um passo importante para o QuickFolders se tornar um e-mail baseado em API puro extensão sem permissões experimentais no futuro.{L2} {L1}Removidos problemas com quickJump na árvore de pastas do modo compacto.{L2} {L1}Diálogo de edição de categoria aprimorado.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

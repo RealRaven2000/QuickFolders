@@ -1695,9 +1695,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "15. April"
-  },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
     "placeholders": {
@@ -1787,9 +1784,6 @@
   },
   "whats-new-intro": {
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
-  },
-  "whats-new-list": {
-    "message": "{L1}Version 5.9.1: Vereinfachtes Verhalten des Menüs „Zuletzt verwendete Ordner“ für Tastaturnavigation.{L2}{L1}Neue [=] Taste für quickMove, um die zuletzt von quickMove / quickJump verwendeten Ordner aufzulisten.{L2} {L1}Der Standardwert von quickJump verwendet jetzt immer den letzten Ordner. Es bestand die Möglichkeit, andere Vorschläge anstelle des letzten Ordnerspeicherorts abzugleichen, wenn identische Ordnernamen gefunden werden konnten.{L2} {L1}Der Optionsdialog wurde auf HTML umgestellt - dies ist ein wichtiger Schritt für QuickFolders hin zu einer reinen API-basierten Mail Erweiterung ohne experimentelle Berechtigungen in der Zukunft.{L2} {L1}Probleme mit QuickJump in der Ordnerstruktur im Kompaktmodus behoben.{L2} {L1}Verbesserter Dialog zum Bearbeiten von Kategorien.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

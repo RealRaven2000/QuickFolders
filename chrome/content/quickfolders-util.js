@@ -750,15 +750,7 @@ QuickFolders.Util = {
         return null;
       }
       step = 1;
-
-      let messageList,
-          isListArray = util.versionGreaterOrEqual(util.ApplicationVersion, "85"); // [issue 96]
-          
-      if (isListArray) 
-        messageList = [];
-      else
-        messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-        
+      let messageList = []; // nsIMutableArray was removed in v85
       step = 2;
 
       // copy what we need...
@@ -785,14 +777,12 @@ QuickFolders.Util = {
               + 'Reading List item marked as invalid.');
             entry.FolderUri = targetFolder.URI; 
             entry.invalid = true;
+            entry.messageId = Message.messageId; // preserve MessagId as entry.Uri will be always WRONG
           }
         }
 
         messageIdList.push(Message.messageId); 
-        if (isListArray) 
-          messageList.push(Message);
-        else
-          messageList.appendElement(Message , false);
+        messageList.push(Message);
         // [issue 23]  quick move from search list fails if first mail is already in target folder
         //  What to do if we have "various" source folders?
         if (Message.folder.QueryInterface(Ci.nsIMsgFolder) != targetFolder) {

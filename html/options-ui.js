@@ -917,8 +917,12 @@ QuickFolders.Options = {
         return {name:null, style: null, preview: null};
     }
   },
-    
-  
+
+  // save space, for visually impaired
+  collapseHead: function collapseHead() {
+    let hdr = document.getElementById("qf-header-container");
+    hdr.setAttribute("collapsed", true);
+  },  
   
 }  // QuickFolders.Options
 

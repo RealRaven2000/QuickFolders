@@ -756,3 +756,16 @@ html|fieldset > vbox {
 .toowide {
   min-width: 650px;
 }
+
+
+label.url {
+  text-decoration:underline;
+}
+label.url:hover {
+  font-weight: bold;
+}
+.url {
+  cursor:pointer;
+}
+
+

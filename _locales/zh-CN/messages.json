@@ -1594,6 +1594,9 @@
   "whats-new-intro": {
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
+  "whats-new-list": {
+    "message": "{L1}QuickFolders 现在与 Thunderbird 102 兼容。在设置中实现了新的 FolderListener、“修复文件夹”功能和 Web 链接。{L2} {L1}修复：导航栏（当前文件夹工具栏）上的最近文件夹在单击时显示过时的结果 或在其上拖动电子邮件。{L2} {L1}已修复：阅读列表 - 如果由于无效/已删除的文件夹而无法找到电子邮件，则 QuickFolders 不会显示搜索对话框。{L2} {L1}已修复：添加标题 到首选项选项卡。{L2} {L1}旧版设置对话框和菜单项已删除。{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "欢迎使用 $addonName$",

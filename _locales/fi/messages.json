@@ -190,9 +190,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "15. huhtikuuta"
-  },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -268,9 +265,6 @@
   },
   "whats-new-intro": {
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
-  },
-  "whats-new-list": {
-    "message": "{L1}Versio 5.9.1: Yksinkertaistettu viimeisimmät kansiot -valikon toiminta näppäimistöllä liikkumista varten.{L2}{L1}Uusi [=] QuickMoven näppäin luetteloi viimeisimmät QuickMoven/quickJumpin käyttämät kansiot.{L2} {L1}QuickJumpin oletusarvo käyttää nyt aina viimeistä kansiota. Jos identtiset kansionimet löytyivät, oli mahdollista yhdistää muita ehdotuksia kansion viimeisen sijainnin sijasta.{L2} {L1}Asetukset-valintaikkuna muutettiin HTML-muotoon - tämä on tärkeä askel QuickFoldersille kohti puhdasta API-pohjaista postia. laajennus ilman kokeellisia käyttöoikeuksia tulevaisuudessa.{L2} {L1}Poistettu QuickJumpin ongelmat kompaktin tilan kansiopuussa.{L2} {L1}Parannettu luokkien muokkausikkuna.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

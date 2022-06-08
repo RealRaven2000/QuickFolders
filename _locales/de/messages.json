@@ -77,10 +77,10 @@
     "message": "Die Anzahl enthaltener Mails wird nicht dargestellt."
   },
   "chkIgnoreUnread": {
-    "message": "Status ungelesener emails unterdrücken"
+    "message": "Status ungelesener Emails unterdrücken"
   },
   "chkIgnoreUnread.tooltip": {
-    "message": "Tabs mit ungelesenen mails werden nie fett dargestellt oder gezählt."
+    "message": "Tabs mit ungelesenen Mails werden nie fett dargestellt oder gezählt."
   },
   "chkSetMailsUnread": {
     "message": "Emails als ungelesen markieren"
@@ -333,7 +333,7 @@
     "message": "Mit der UMSCHALT Taste kann man zusätzliche Kategorien aus dem Menü wählen."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Bei Verzeichniswechsel Eingabefokus auf EMail-Liste"
+    "message": "Bei Verzeichniswechsel Eingabefokus auf Email-Liste"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "QuickFolders in Einzelnachtrichten-Tabs ausblenden"
@@ -393,25 +393,25 @@
     "message": "Nachrichten abrufen (Newskonto)"
   },
   "qf.checkbox.menus.markAllRead": {
-    "message": "Ordner as gelesen markieren"
+    "message": "Ordner als gelesen markieren"
   },
   "qf.checkbox.menus.markAllReadRecursive": {
-    "message": "Ordner as gelesen markieren (rekursiv)"
+    "message": "Ordner als gelesen markieren (rekursiv)"
   },
   "qf.checkbox.quickCopy": {
-    "message": "quickCopy - Kopiere Mails in beliebiges Ziel mit "
+    "message": "quickCopy - Kopiere Mails in beliebiges Ziel mit:"
   },
   "qf.checkbox.quickCopy.tip": {
     "message": "Schnelltaste um Emails per Eingabe des Verzeichnisnamen in einen beliebigen Ordner zu kopieren."
   },
   "qf.checkbox.quickJump": {
-    "message": "quickJump - Springe in beliebiges Verzeichnis mit "
+    "message": "quickJump - Springe in beliebiges Verzeichnis mit:"
   },
   "qf.checkbox.quickJump.tip": {
     "message": "Schnelltaste für den Sprung in ein beliebiges Verzeichnis per Namenseingabe."
   },
   "qf.checkbox.quickMove": {
-    "message": "quickMove - Verschiebe Mails in beliebiges Ziel mit "
+    "message": "quickMove - Verschiebe Mails in beliebiges Ziel mit:"
   },
   "qf.checkbox.quickMove.tip": {
     "message": "Schnelltaste um Emails per Eingabe des Verzeichnisnamen in einen beliebigen Ordner zu verschieben."
@@ -459,7 +459,7 @@
     "message": "Verzeichnis-Befehle"
   },
   "qf.checkbox.showMessageNavigation": {
-    "message": "Schaltflächen zum Navigieren der EMails"
+    "message": "Schaltflächen zum Navigieren der Emails"
   },
   "qf.checkbox.showNewMailItalics": {
     "message": "Tabs mit neu eingetroffenen Emails kursiv darstellen"
@@ -620,7 +620,7 @@
     "message": "Die folgenden Einstellungen sind experimentell - werden in den nächsten Versionen verbessert."
   },
   "qf.description.languages": {
-    "message": "QuickFolders unterstützt Lokalisierung - helfen Sie mit Ihrer Übersetzung auf Babelzilla:"
+    "message": "QuickFolders unterstützt Lokalisierung - helfen Sie mit Ihrer Übersetzung auf github:"
   },
   "qf.description.linkNote": {
     "message": "Besuchen Sie die homepage von QuickFolders für ein detailiertes Handbuch, Tips und FAQ:"
@@ -638,7 +638,7 @@
     "message": "Tip: Falls Sie sehr viele Verzeichnisse haben, probieren Sie auch die Nostalgy extension."
   },
   "qf.description.versionhistory": {
-    "message": "Detailierte Versionsgeschichte bei quickfolders.org"
+    "message": "Detaillierte Versionsgeschichte bei quickfolders.org"
   },
   "qf.dialog.changeorder": {
     "message": "Tab Reihenfolge ändern"
@@ -716,7 +716,7 @@
     "message": "Mail Navigations Verhalten"
   },
   "qf.label.ActiveTabColor": {
-    "message": "Farbe Aktives Tab:"
+    "message": "Farbe aktives Tab:"
   },
   "qf.label.ColoredTabPalette": {
     "message": "Palette für individuelle Farben:"
@@ -818,10 +818,10 @@
     "message": "Der Lizenzschlüssel wird Ihnen von Fastspring zugeschickt."
   },
   "qf.label.instantApplyMsg": {
-    "message": "Wichtig: Falls hier nur eine Schaltfläche [Schließen] statt [Ok] zu sehen ist, kann es sein dass die Farb-Einstellungen nicht übernommen werden - wenn Sie die Optionen durch rechts-klick auf den quickfolder bar öffnen, sollte es klappen."
+    "message": "Wichtig: Falls hier nur eine Schaltfläche [Schließen] statt [Ok] zu sehen ist, kann es sein dass die Farb-Einstellungen nicht übernommen werden - wenn Sie die Optionen durch rechts-klick auf die Quickfolders Leiste öffnen, sollte es klappen."
   },
   "qf.label.keyboard": {
-    "message": "Hotkeys"
+    "message": "Tastaturkürzel"
   },
   "qf.label.languagesLink": {
     "message": "Neue Übersetzung…"
@@ -866,7 +866,7 @@
     "message": "Neue Kategorie:"
   },
   "qf.label.pixels": {
-    "message": "pixel"
+    "message": "Pixel"
   },
   "qf.label.quickFilters.link": {
     "message": "quickFilters holen!"
@@ -905,7 +905,7 @@
     "message": "Der eingegebene Lizenzschlüssel könnte für ein anderes Add-on sein. Lizenzen für {0} beginnen mit {1}."
   },
   "qf.licenseValidation.invalidMail": {
-    "message": "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Konten vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support tab."
+    "message": "Die Email-Adresse welche im Lizenzschlüssel verknüpft ist [{1}] ist derzeit in keinem Ihrer Email-Konten vorhanden. Für Hilfe damit kontaktieren Sie mich bitte über den Support Reiter."
   },
   "qf.licenseValidation.notMatchedMail": {
     "message": "Die verschlüsselte Email Adresse stimmt nicht mit der lesbaren überein."
@@ -1153,7 +1153,7 @@
     "message": "Neues Verzeichnis"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Zwischenablage.\nEs wurden {0} Einträge gefunden.\nSind Sie sicher?"
+    "message": "Löscht alle QuickFolders Tabs und erzeugt neue aus der Zwischenablage.\nEs wurden {0} Einträge gefunden.\nSind Sie sicher?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Die angezeigten Tabs beibehalten?"
@@ -1165,13 +1165,13 @@
     "message": "Diese Email kann nicht gefunden werden, sie wurde vielleicht in ein anderes Verzeichnis verschoben.\n{1}\n\nDanach suchen?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Löscht all QuickFolder Tabs und erzeugt neue aus der Datei.\nEs wurden {0} Einträge gefunden.\nTabs ersetzen?"
+    "message": "Löscht alle QuickFolder Tabs und erzeugt neue aus der Datei.\nEs wurden {0} Einträge gefunden.\nTabs ersetzen?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Domänenlizenz aktivieren?"
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key löscht die Nachrichtenliste."
+    "message": "Escape Taste löscht die Nachrichtenliste."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Selektieren Sie alle Konten, die aus den Suchergebnissen ausgeschlossen werden sollen:"
@@ -1267,7 +1267,7 @@
     "message": "Aktuelle Email - auf einen QuickFolders Tab ziehen um die Email zu verschieben"
   },
   "qf.tooltip.filterStart": {
-    "message": "Den Filter Lernmodus starten. Dafür Emails auf die QuickFolder tabs ziehen."
+    "message": "Den Filter Lernmodus starten. Dafür Emails auf die QuickFolders Reiter ziehen."
   },
   "qf.tooltip.filters": {
     "message": "Stoppt den Filter Lernmodus."
@@ -1288,7 +1288,7 @@
     "message": "QuickFolders Einstellungen und Kommandos für Fortgeschrittene"
   },
   "qf.tooltip.paintCanActive": {
-    "message": "Farb modus: anklicken für Palette, tabs anklicken zum einfärben, rechts-klick um die Farbe zu kopieren"
+    "message": "Farbmodus: anklicken für Palette, tabs anklicken zum einfärben, rechts-klick um die Farbe zu kopieren"
   },
   "qf.tooltip.quickFoldersNavToggle": {
     "message": "Navigation umschalten zwischen ungelesener / aller Email"
@@ -1303,7 +1303,7 @@
     "message": "Aktuelles Thema - auf einen QuickFolders Tab ziehen um den Themenbaum zu verschieben"
   },
   "qf.youtube.description": {
-    "message": "Für detailierte Videos über Thunderbird Add-ons und die Nutzung von QuickFolders besuchen Sie meinen YouTube Kanal Thunderbird Daily."
+    "message": "Für detaillierte Videos über Thunderbird Add-ons und die Nutzung von QuickFolders besuchen Sie meinen YouTube Kanal Thunderbird Daily."
   },
   "qf.youtube.link": {
     "message": "Videos über QuickFolders ansehen…"
@@ -1318,7 +1318,7 @@
     "message": "Emails können nicht in virtuelle Ordner kopiert werden!"
   },
   "qfAlertUpgradeSuccess": {
-    "message": "QuickFolders wurde erfolgreich upgedated auf Version:"
+    "message": "QuickFolders wurde erfolgreich aktualisiert auf Version:"
   },
   "qfAll": {
     "message": "(Alle Anzeigen)"
@@ -1360,7 +1360,7 @@
     "message": "Das Verzeichnis {0} nach {1} verschieben?"
   },
   "qfConfirmVersionLink": {
-    "message": "Versiongeschichte für QuickFolders anzeigen, Version"
+    "message": "Versionsgeschichte für QuickFolders anzeigen, Version"
   },
   "qfDeadTabsCount": {
     "message": "# ungültige Tabs gefunden:"
@@ -1390,7 +1390,7 @@
     "message": "E"
   },
   "qfEmptiedJunk": {
-    "message": "Junk gelöscht und Verzeichnis kompaktifiziert -"
+    "message": "Junk gelöscht und Verzeichnis kompaktifiziert."
   },
   "qfEmptiedTrash": {
     "message": "Papierkorb geleert."
@@ -1558,7 +1558,7 @@
     "message": ": Dieser Tab verweist auf ein ungültiges Verzeichnis."
   },
   "qfTidyDeadFolders": {
-    "message": "Löscht die Tabs die keinem gültigen Verzeichnis zugehören.\nDies kann passieren, wenn ein Verzeichnis gelöscht oder verschoben wird ohne daß QuickFolders dies erkennt."
+    "message": "Löscht die Tabs, die keinem gültigen Verzeichnis zugehören.\nDies kann passieren, wenn ein Verzeichnis gelöscht oder verschoben wird, ohne dass QuickFolders dies erkennt."
   },
   "qfTreeIconsInvalidCount": {
     "message": "{0} fehlende Symbole"
@@ -1645,7 +1645,7 @@
     "message": "Neuer Unterordner…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Überspringen "
+    "message": "Überspringen"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Email in das Verzeichnis {2} kopiert;{1} Emails in das Verzeichnis {2} kopiert"

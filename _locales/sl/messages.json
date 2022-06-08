@@ -1652,9 +1652,6 @@
       }
     }
   },
-  "special-offer-expiry": {
-    "message": "15. aprila"
-  },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
     "placeholders": {
@@ -1748,9 +1745,6 @@
   },
   "whats-new-intro": {
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
-  },
-  "whats-new-list": {
-    "message": "{L1}Različica 5.9.1: poenostavljeno obnašanje menija nedavnih map za navigacijo s tipkovnico.{L2}{L1}Nov ključ [=] za quickMove za seznam najnovejših map, ki jih je uporabil quickMove / quickJump.{L2} {L1}Privzeta vrednost quickJump zdaj vedno uporablja zadnjo mapo. Če bi bilo mogoče najti enaka imena map, je obstajala možnost ujemanja z drugimi predlogi in ne z lokacijo zadnje mape.{L2} {L1}Pogovorno okno z možnostmi je bilo pretvorjeno v HTML – to je pomemben korak za QuickFolders, da postanejo čista pošta, ki temelji na API-ju. razširitev brez poskusnih dovoljenj v prihodnosti.{L2} {L1}Odstranjene težave s hitrim skokom v drevesu map v kompaktnem načinu.{L2} {L1}Izboljšano pogovorno okno za urejanje kategorij.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

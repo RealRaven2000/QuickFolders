@@ -808,6 +808,10 @@ async function initBling() {
 console.log("i18n.updateDocument");
 i18n.updateDocument();
 
+let supportLabel = document.getElementById("contactLabel"),
+    supportString = QuickFolders.Util.getBundleString("qf.description.contactMe", [QuickFolders.Util.ADDON_SUPPORT_MAIL]); // substitution parameter
+supportLabel.textContent = supportString;
+
 loadPrefs();
 preselectTab();
 initLicenseInfo();

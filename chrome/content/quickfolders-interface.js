@@ -263,27 +263,24 @@ QuickFolders.Interface = {
 
     if (popupId == "QuickFolders-FindFolder-popup-Recent") {
       let maxLen = QuickFolders.quickMove.history.length;
-      if (util.hasStandardLicense() || !util.hasValidLicense()) {
+      if (!util.hasValidLicense()) {
+        if (maxLen>QuickFolders.quickMove.MAX_HISTORY_FREE) {
+          maxLen = QuickFolders.quickMove.MAX_HISTORY_FREE;
+        }
+      } else if (util.hasStandardLicense()) {
         if (maxLen>QuickFolders.quickMove.MAX_HISTORY_STD) {
           maxLen = QuickFolders.quickMove.MAX_HISTORY_STD;
         }
       }
       recentFolders = [];
-      for (let i=0; i<maxLen; i++) {
+      for (let i=0; i<QuickFolders.quickMove.history.length; i++) {
         let item = QuickFolders.quickMove.history[i];
         let f = QuickFolders.Model.getMsgFolderFromUri(item);
-        if (f) recentFolders.push({_folder:f});
-      }
-/*      
-      if (recentFolders.length < QuickFolders.quickMove.MAX_HISTORY) { 
-        // not enough entries? Fill up with recent entries.
-        let mru =  util.generateMRUlist(gFolderTreeView);
-        for (let j=0; j<mru.length && recentFolders.length < QuickFolders.quickMove.MAX_HISTORY; j++) {
-          recentFolders.push(mru[j]); // these have an invalid event listener - won't remember last folder!
+        if (f) {
+          recentFolders.push({_folder:f});
+          if (recentFolders.length>=maxLen) break;
         }
       }
-      */
-      
     }
     else {
       recentFolders = util.generateMRUlist(gFolderTreeView);
@@ -1857,7 +1854,9 @@ QuickFolders.Interface = {
           let nodes = p.children;
           for (let i=0; i<nodes.length; i++) {
             if(nodes[i].id == "quickFoldersMailFolderCommands") {
-              menupopup.insertBefore(nodes[i], menupopup.firstChild);
+              if ("quickFoldersMailFolderCommands" != menupopup.firstChild.id) { // [issue 255] avoid duplication
+                menupopup.insertBefore(nodes[i], menupopup.firstChild);
+              }
               break;
             }
           }
@@ -4206,6 +4205,7 @@ QuickFolders.Interface = {
           ? prefs.getIntPref("recentfolders.folderPathDetail")
           : 0,
         maxPathItems = prefs.getIntPref("recentfolders.maxPathItems");
+    let isDisableSubfolders = (isRecentFolderList && !prefs.getBoolPref("recentfolders.subfolders"));
 
 		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopupFromList(..)");
     // change subfolders from nsIMutableArray to Array
@@ -4243,8 +4243,9 @@ QuickFolders.Interface = {
 				let numUnread = subfolder.getNumUnread(false),
 				    numUnreadInSubFolders = subfolder.getNumUnread(true) - numUnread,
 				    sCount = " (" + ((numUnread>0) ? numUnread : "") ;
-				if (numUnread + numUnreadInSubFolders == 0)
+				if (numUnread + numUnreadInSubFolders == 0) {
 					sCount = "";
+        }
 
 				const triangleDown = "\u25be".toString();
 
@@ -4260,14 +4261,11 @@ QuickFolders.Interface = {
 						menuitem.setAttribute("biffState-NewMail","true");
 					menuitem.setAttribute("label", menuLabel + sCount);
 				}
-				else
+				else {
 					menuitem.setAttribute("class","menuitem-iconic");
-				if (! (subfolder.hasSubFolders && prefs.isShowRecursiveFolders)) {
-
-					// additional click event for safety in Thunderbird 60
-					let vc = Cc["@mozilla.org/xpcom/version-comparator;1"].getService(Ci.nsIVersionComparator),
-					    eventType;
-          eventType = prefs.getStringPref("debug.popupmenus.folderEventType"); // "onclick" or "oncommand" - default is onclick
+        }
+				if (isRecentFolderList || !(subfolder.hasSubFolders && prefs.isShowRecursiveFolders)) { //  [issue 254] allow enter on parent folder nodes.
+					let eventType = prefs.getStringPref("debug.popupmenus.folderEventType"); // "onclick" or "oncommand" - default is onclick
           if (eventType) {
             // [Bug 26575]
             util.logDebugOptional("popupmenus.items","add " + eventType + " event attribute for menuitem " + menuitem.getAttribute("label") + " onSelectSubFolder(" + subfolder.URI+ ")");
@@ -4280,8 +4278,9 @@ QuickFolders.Interface = {
               this.setEventAttribute(menuitem, eventType,`QuickFolders.Interface.onSelectSubFolder('${subfolder.URI}',event)`);
             }
           }
-					if (isRecentFolderList)
+					if (isRecentFolderList) {
 						util.logDebugOptional("popupmenus", "Added " + eventType + " event to " + menuLabel + " for " + subfolder.URI );
+          }
 				}
 
 				menuitem.folder = subfolder;
@@ -4322,9 +4321,7 @@ QuickFolders.Interface = {
 				else
 					popupMenu.appendChild(menuitem);
 
-
-				if (subfolder.hasSubFolders && prefs.isShowRecursiveFolders)
-				{
+				if (!isDisableSubfolders && subfolder.hasSubFolders && prefs.isShowRecursiveFolders) {
 					this.debugPopupItems++;
 					let subMenu = this.createIconicElement("menu","*");
 					subMenu.setAttribute("label", menuLabel + sCount);
@@ -4866,6 +4863,7 @@ QuickFolders.Interface = {
 					  continue;  // skip if not starting with single letter
 				}
 				let fld = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri);
+        if (!fld) continue; // invalid tabs lead to search failing
         if (excludedServers.includes(fld.server.key))
           continue;
         if (isLockAccount &&  fld.server && currentFolder.server && fld.server.key!=currentFolder.server.key)
@@ -7009,7 +7007,6 @@ QuickFolders.Interface = {
 			QuickFolders_globalHidePopupId = "";
 
 	}	,
-
   
   showLicenseDialog: function showLicenseDialog(featureName) {
 		let params = {
@@ -7019,7 +7016,11 @@ QuickFolders.Interface = {
       }, 
       out:null
     };
-    window.openDialog("chrome://quickfolders/content/register.xhtml",
+    let win = window;
+    if (win.closed) { // notifications caused by a close parent window will fail!
+      win = quickFilters.Util.getMail3PaneWindow();
+    }    
+    win.openDialog("chrome://quickfolders/content/register.xhtml",
       "quickfolders-register","chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply",
       QuickFolders,
       params).focus();

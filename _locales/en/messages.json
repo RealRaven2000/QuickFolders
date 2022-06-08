@@ -1665,7 +1665,7 @@
     "message" : "This is useful for deeper, more complicated or unknown folder hierarchies."
   },
   "quickMove.help.l4a": {
-    "message" : "Type {1} to get a list of recently used folders."
+    "message" : "Type {1} to get a list of folders that were entered most recently. The number of results depends on your license level."
   }, 
   "quickMove.help.advanced": {
     "message" : "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
@@ -1758,7 +1758,7 @@
     }
   },  
   "special-offer-expiry": {
-    "message": "April 15th"
+    "message": "July 1st"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1855,7 +1855,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}New [=] key for quickMove to list most recent folders that were used by quickMove / quickJump.{L2} {L1}The default value of quickJump now always uses the last folder. There was a possibility of matching other suggestions rather than the last folder location if identical folder names could be found.{L2} {L1}The options dialog was converted to HTML - this is an important step for QuickFolders towards becoming a pure API based mail extension without experimental permissions in the future.{L2} {L1}Removed problems with quickJump in compact mode folder tree.{L2} {L1}Improved category editing dialog.{L2}"
+    "message": "{L1}QuickFolders is now compatible with Thunderbird 102. Implemented new FolderListener, 'repair folder' function and web links in settings.{L2} {L1}Fixed: Recent folders on Navigation Bar (Current folder toolbar) displayed outdated results when clicking it or dragging emails on it.{L2} {L1}Fixed:  Reading list - if an email cannot be found due to an invalid / deleted folder, QuickFolders wasn't displaying the search dialog.{L2} {L1}Fixed: add title to preferences tab.{L2} {L1}Legacy settings dialog & menu items were removed.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1422,6 +1422,9 @@
   "qfFolderPropertiesAccess": {
     "message": "E"
   },
+  "qfFolderRepair": {
+    "message": "Ordner reparieren"
+  },
   "qfFolderRepairAccess": {
     "message": "R"
   },
@@ -1692,6 +1695,9 @@
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "1. Juli"
+  },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
     "placeholders": {
@@ -1781,6 +1787,9 @@
   },
   "whats-new-intro": {
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
+  },
+  "whats-new-list": {
+    "message": "{L1}QuickFolders ist jetzt {boldStart}mit Thunderbird 102 kompatibel{boldEnd}. Neuer FolderListener, Funktion {italicStart}Ordner reparieren{italicEnd} und Weblinks in den Einstellungen implementiert.{L2} {L1}Behoben: Zuletzt verwendete Ordner in der Navigationsleiste (Symbolleiste des aktuellen Ordners) zeigen beim Ziehen von E-Mails oder anklicken eine veraltete Liste an.{L2} {L1}Behoben: Leseliste – wenn eine E-Mail aufgrund eines ungültigen/gelöschten Ordners nicht gefunden werden konnte, zeigte QuickFolders den Suchdialog nicht an.{L2} {L1}Behoben: Titel zur Registerkarte „Einstellungen“ hinzufügen. {L2} {L1}Alter Einstellungsdialog und Menüelemente wurden entfernt.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

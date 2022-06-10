@@ -1394,6 +1394,9 @@
   "qfFolderPropertiesAccess": {
     "message": "L"
   },
+  "qfFolderRepair": {
+    "message": "Popravi mapo"
+  },
   "qfFolderRepairAccess": {
     "message": "P"
   },
@@ -1649,6 +1652,9 @@
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "1. julij"
+  },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
     "placeholders": {
@@ -1742,6 +1748,9 @@
   },
   "whats-new-intro": {
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
+  },
+  "whats-new-list": {
+    "message": "{L1}QuickFolders je zdaj {boldStart}združljiv s Thunderbird 102{boldEnd}. Implementiran nov FolderListener, funkcija {italicStart}»Popravi mapo«{italicEnd} in spletne povezave v nastavitvah.{L2} {L1}Popravljeno: nedavne mape v navigacijski vrstici (orodna vrstica trenutne mape) so ob kliku prikazovale zastarele rezultate ali vlečenje e-poštnih sporočil nanjo.{L2} {L1}Popravljeno: seznam za branje – če e-pošte ni mogoče najti zaradi neveljavne/izbrisane mape, QuickFolders ni prikazoval pogovornega okna za iskanje.{L2} {L1}Popravljeno: dodaj naslov na zavihek z nastavitvami.{L2} {L1}Pogovorno okno in elementi menija za starejše nastavitve so bili odstranjeni.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

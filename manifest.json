@@ -3,14 +3,14 @@
   "applications" : {
     "gecko" : {
       "id" : "quickfolders@curious.be",
-      "strict_min_version" : "78.0",
-      "strict_max_version" : "102.0"
+      "strict_min_version" : "91.0",
+      "strict_max_version" : "102.*"
     }
   },
   "author": "Axel Grude, Klaus Buecher/opto",
   "name" : "QuickFolders",
   "description" : "__MSG_extensionDescription__",
-  "version" : "5.10pre8",
+  "version" : "5.10pre46",
   "default_locale": "en",
   "developer" : {
       "name" : "Axel Grude, Klaus Buecher/opto",

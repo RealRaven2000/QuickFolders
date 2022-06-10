@@ -154,8 +154,6 @@ addEventListener("load", async (event) => {
       specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>")
-          .replace(/\{italicStart\}/g,"<i>")
-          .replace(/\{italicEnd\}/g,"</i>")
           .replace(/\{linkStart\}/, "<a id='stdLink'>")
           .replace(/\{linkEnd\}/g, "</a>")
           .replace(/\{linkStartPro\}/, "<a id='proLink'>");
@@ -213,6 +211,10 @@ addEventListener("load", async (event) => {
     let whatsNewLst = document.getElementById('whatsNewList');
     if (whatsNewLst) {
       whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>")
+        .replace(/\{italicStart\}/g,"<i>")
+        .replace(/\{italicEnd\}/g,"</i>")
         .replace(/\{L1\}/g,"<li>")
         .replace(/\{L2\}/g,"</li>")
         .replace(/\[(.)\]/g,"<code>$1</code>");

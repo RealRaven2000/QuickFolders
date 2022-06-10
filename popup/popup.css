@@ -23,7 +23,8 @@
 #innerwrapper p,
 #innerwrapper ul,
 #innerwrapper li,
-#innerwrapper span {
+#innerwrapper span,
+#innerwrapper i {
   background-color: transparent;
 }
 
@@ -118,7 +119,8 @@ canvas[collapsed=true] {
 
 .importantInfo p, 
 .importantInfo ul, 
-.importantInfo li {
+.importantInfo li,
+.importantInfo i {
   color: white;
 }
 

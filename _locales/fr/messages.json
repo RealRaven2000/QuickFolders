@@ -1421,9 +1421,6 @@
   "qfFolderProperties": {
     "message": "Propriétés du dossier…"
   },
-  "qfFolderRepair": {
-    "message": "Réparer le dossier"
-  },
   "qfFolderRepairAccess": {
     "message": "D"
   },
@@ -1778,9 +1775,6 @@
   },
   "whats-new-intro": {
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
-  },
-  "whats-new-list": {
-    "message": "{L1}QuickFolders est désormais compatible {boldStart}avec Thunderbird 102{boldEnd}. Implémentation du nouveau FolderListener, de la fonction {italicStart}Réparer le dossier{italicEnd} et des liens Web dans les paramètres.{L2} {L1}Corrigé : les dossiers récents de la barre de navigation (barre d'outils du dossier actuel) affichaient des résultats obsolètes lorsque vous cliquez dessus ou en faisant glisser des e-mails dessus.{L2} {L1}Corrigé : liste de lecture - si un e-mail est introuvable en raison d'un dossier invalide/supprimé, QuickFolders n'affichait pas la boîte de dialogue de recherche.{L2} {L1}Corrigé : ajouter un titre à l'onglet Préférences.{L2} {L1}Les anciens éléments de dialogue et de menu des paramètres ont été supprimés.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

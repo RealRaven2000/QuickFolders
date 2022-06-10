@@ -112,8 +112,6 @@ async function main() {
     "legacyAdvancedSearch", // new global one!
     "showAboutConfig", // new global one!
     "showLicenseDialog", // new global one!
-    "loadConfig",
-    "storeConfig",
     "slideAlert",
     "updateCategoryBox",
     "updateFoldersUI",
@@ -198,16 +196,6 @@ async function main() {
         });
         break;
         
-      case "loadConfig":
-        results = await messenger.NotifyTools.notifyExperiment({ event: "loadConfigLegacy" });
-        debugger;
-        return results;
-        break;
-        
-      case "storeConfig":
-        messenger.NotifyTools.notifyExperiment({ event: "storeConfigLegacy", storedObj: data.storedObj });
-        break;
-      
       case "showLicenseDialog":
         messenger.NotifyTools.notifyExperiment({
           event: "showLicenseDialog", 

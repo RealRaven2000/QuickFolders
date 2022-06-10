@@ -184,6 +184,9 @@
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "1. července"
+  },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
     "placeholders": {
@@ -259,6 +262,9 @@
   },
   "whats-new-intro": {
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
+  },
+  "whats-new-list": {
+    "message": "{L1}QuickFolders je nyní {boldStart}kompatibilní s Thunderbirdem 102{/boldEnd}. Implementován nový FolderListener, funkce {italicStart}Opravit složku{italicEnd} a webové odkazy v nastavení.{L2} {L1}Opraveno: Nedávné složky na navigační liště (panel nástrojů Aktuální složka) zobrazovaly při kliknutí zastaralé výsledky nebo na něj přetahovat e-maily.{L2} {L1}Opraveno: Seznam čtení – pokud nelze najít e-mail kvůli neplatné / smazané složce, QuickFolders nezobrazovalo dialogové okno pro vyhledávání.{L2} {L1}Opraveno: přidat název na kartu předvoleb.{L2} {L1}Byly odstraněny starší položky dialogového okna a nabídky nastavení.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

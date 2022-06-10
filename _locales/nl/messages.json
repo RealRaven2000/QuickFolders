@@ -1430,6 +1430,9 @@
   "qfFolderPropertiesAccess": {
     "message": "p"
   },
+  "qfFolderRepair": {
+    "message": "Map repareren"
+  },
   "qfFolderRepairAccess": {
     "message": "r"
   },
@@ -1700,6 +1703,9 @@
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "1 juli"
+  },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
     "placeholders": {
@@ -1790,6 +1796,9 @@
   },
   "whats-new-intro": {
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
+  },
+  "whats-new-list": {
+    "message": "{L1}QuickFolders is nu {boldStart}compatibel met Thunderbird 102{boldEnd}. Nieuwe FolderListener, {italicStart}Map repareren{italicEnd}-functie en weblinks in instellingen geïmplementeerd.{L2} {L1}Opgelost: Recente mappen op de navigatiebalk (huidige mapwerkbalk) vertoonden verouderde resultaten wanneer erop werd geklikt of er e-mails naartoe sleept.{L2} {L1}Opgelost: leeslijst - als een e-mail niet kan worden gevonden vanwege een ongeldige/verwijderde map, gaf QuickFolders het zoekvenster niet weer.{L2} {L1}Opgelost: titel toevoegen naar het tabblad voorkeuren.{L2} {L1}Oudere instellingendialoogvenster en menu-items zijn verwijderd.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

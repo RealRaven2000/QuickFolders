@@ -266,6 +266,9 @@
   "qf.accounts": {
     "message": "帳目"
   },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "无法创建选项卡。 有关更多详细信息，请参阅工具/错误控制台。"
+  },
   "qf.backupAndRestore": {
     "message": "备份/还原"
   },
@@ -431,6 +434,9 @@
   "qf.checkbox.showFilterButton": {
     "message": "“创建过滤器”按钮"
   },
+  "qf.checkbox.showFilterButton.tooltip": {
+    "message": "您还可以使用 QuickFolders 上下文菜单创建过滤器。"
+  },
   "qf.checkbox.showFolderNavigation": {
     "message": "文件夹导航按钮"
   },
@@ -485,6 +491,9 @@
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "…也在单个消息窗口中"
   },
+  "qf.checkbox.singleMessage.currentFolder.tooltip": {
+    "message": "在您选择在新窗口中打开电子邮件时打开的窗口中显示当前文件夹工具栏"
+  },
   "qf.checkbox.singleMessageTab.currentFolder.show": {
     "message": "单个消息选项卡中的工具栏"
   },
@@ -521,6 +530,9 @@
   "qf.checkbox.useNavigationShortcuts": {
     "message": "使用 ALT+左方向键/ALT+右方向键 向前/向后 切换导航卡"
   },
+  "qf.checkbox.usePalette": {
+    "message": "使用调色板"
+  },
   "qf.checkbox.useRebuildShortcut": {
     "message": "重建导航卡使用快捷键: Ctrl + Alt +"
   },
@@ -553,6 +565,12 @@
   },
   "qf.currentFolderBackground.translucent": {
     "message": "透明"
+  },
+  "qf.currentfolder.leftSpacer": {
+    "message": "左垫片："
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "右垫片："
   },
   "qf.description.github": {
     "message": "请使用 github 向官方提交功能请求和问题反馈"
@@ -631,19 +649,40 @@
   "qf.filters.template.from": {
     "message": "基于发送者 (from)"
   },
+  "qf.filters.template.from.description": {
+    "message": "这可能是最常用的模式：这将检索发件人的电子邮件地址并将其粘贴到 from 和 to 过滤条件字段中。 这样，与发件人的完整对话将被移至新文件夹。"
+  },
   "qf.filters.template.list": {
     "message": "邮件列表"
+  },
+  "qf.filters.template.list.description": {
+    "message": "类似于基于发件人，但它不填写“收件人”条件字段。"
   },
   "qf.filters.template.tag": {
     "message": "按标签"
   },
+  "qf.filters.template.tag.description": {
+    "message": "这使用电子邮件的标签并将它们添加为过滤条件。"
+  },
   "qf.filters.template.to": {
     "message": "基于收件人 (to)"
+  },
+  "qf.filters.template.to.description": {
+    "message": "类似于“基于发件人”：当您标记已发送给其他人的电子邮件时使用此选项。 这将检索收件人的电子邮件地址并将其粘贴到 from 和 to filter 条件字段中。 这样，与联系人的完整对话将被移至新文件夹。"
   },
   "qf.filters.template.topic": {
     "message": "按主题"
   },
+  "qf.filters.template.topic.description": {
+    "message": "这将在括号中查找特殊表达式，例如 [stamp collectors] 或 {vegans} 并基于这些创建过滤条件； 很多群发邮件都是使用这种模式设置的，所以真的很容易使用。"
+  },
   "qf.filters.title": {
+    "message": "创建过滤器"
+  },
+  "qf.filters.toggleMessage.notificationText": {
+    "message": "过滤器学习模式已启动。 每当您将电子邮件移入 QuickFolders 时，都会启动“创建过滤规则”向导。 Thunderbird 使用消息过滤器根据规则自动移动电子邮件，例如“谁是发件人？”、“主题行中的某个关键字吗？”。 要结束过滤器学习模式，请按 QuickFolders 栏左上角的过滤器按钮。"
+  },
+  "qf.filters.toggleMessage.title": {
     "message": "创建过滤器"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
@@ -690,6 +729,9 @@
   },
   "qf.label.ToolbarBackground": {
     "message": "工具栏背景:"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "无色标签"
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "没有用户定义颜色的（非活动）选项卡的布局"
@@ -786,6 +828,9 @@
   },
   "qf.label.menus.help": {
     "message": "QuickFolders 帮助"
+  },
+  "qf.label.menus.hideQFunlessCTRL": {
+    "message": "仅在按住 CTRL 键时显示"
   },
   "qf.label.menus.lineBreak": {
     "message": "插入换行符"
@@ -886,6 +931,9 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "显示文件夹工具栏(D)"
   },
+  "qf.menuitem.quickfolders.filters": {
+    "message": "创建消息过滤器..."
+  },
   "qf.menuitem.quickfolders.find": {
     "message": "查找文件夹…"
   },
@@ -895,14 +943,23 @@
   "qf.menuitem.quickfolders.options": {
     "message": "选项(O)…"
   },
+  "qf.menuitem.quickfolders.register": {
+    "message": "QuickFolders Pro 许可证..."
+  },
   "qf.menuitem.quickfolders.repairTabs": {
     "message": "刷新显示的导航卡(V)"
+  },
+  "qf.menuitem.quickfolders.repairTreeIcons": {
+    "message": "修复文件夹树图标"
   },
   "qf.menuitem.quickfolders.splash": {
     "message": "最新更新新闻…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "支持(S)…"
+  },
+  "qf.menuitem.quickfolders.togglePaintMode": {
+    "message": "绘画模式"
   },
   "qf.notification.categoryIsReadOnly": {
     "message": "此项目无法删除。"
@@ -1005,11 +1062,50 @@
   "qf.palette.inactive": {
     "message": "Like inactive Tabs"
   },
+  "qf.palette.night": {
+    "message": "黑暗模式"
+  },
+  "qf.palette.pastel": {
+    "message": "柔和的颜色"
+  },
+  "qf.palette.standard": {
+    "message": "标准调色板"
+  },
+  "qf.pastefolders": {
+    "message": "从剪贴板粘贴标签"
+  },
   "qf.pastefolders.tooltip": {
     "message": "删除所有 QuickFolders 并从剪贴板读取新配置"
   },
+  "qf.pathFormat.AccountAndPath": {
+    "message": "帐户 - 文件夹路径"
+  },
+  "qf.pathFormat.PathOnly": {
+    "message": "文件夹路径"
+  },
+  "qf.pathFormat.folderAndAccount": {
+    "message": "文件夹名称 - 邮件帐户"
+  },
+  "qf.pathFormat.folderName": {
+    "message": "文件夹名称"
+  },
+  "qf.pathFormat.maxDepth": {
+    "message": "最大路径深度："
+  },
+  "qf.pathFormat.tooltip": {
+    "message": "文件夹路径中显示的最大文件夹数。"
+  },
   "qf.prefwindow.quickfolders.options": {
     "message": "目录导航卡选项"
+  },
+  "qf.premium.renewLicense.tooltip": {
+    "message": "您的许可在 {1} 天前过期"
+  },
+  "qf.premiumConfig": {
+    "message": "高级功能"
+  },
+  "qf.prompt.category.deleteMultiple": {
+    "message": "确定删除多个类别？"
   },
   "qf.prompt.contact.subject": {
     "message": "请输入简明的主题行："
@@ -1029,11 +1125,20 @@
   "qf.prompt.newFolder.title": {
     "message": "新建文件夹"
   },
+  "qf.prompt.pasteFolders": {
+    "message": "这将删除所有 QuickFolders 选项卡并替换为剪贴板中的项目。\n在剪贴板中找到 {0} 个条目。\n替换标签？"
+  },
+  "qf.prompt.pasteFolders.confirm": {
+    "message": "保留显示的标签？"
+  },
   "qf.prompt.readingList.removeItem": {
     "message": "移除此项？"
   },
   "qf.prompt.readingList.searchMissingItem": {
     "message": "无法找到该邮件，它可能已被移动到别处。\n{1}\n\n您想搜索它吗？"
+  },
+  "qf.prompt.restoreFolders": {
+    "message": "这将删除所有 QuickFolders 选项卡并替换为文件中的项目。\n已读取 {0} 个条目。\n替换标签？"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "切换到域授权？"
@@ -1050,6 +1155,9 @@
   "qf.quickMove.maxResults": {
     "message": "最大搜索結果數"
   },
+  "qf.quickMove.path.format": {
+    "message": "显示格式："
+  },
   "qf.quickMove.silent": {
     "message": "移動郵件後無通知。"
   },
@@ -1061,6 +1169,9 @@
   },
   "qf.storeConfig": {
     "message": "保存配置…"
+  },
+  "qf.tab.advanced": {
+    "message": "先进的"
   },
   "qf.tab.general": {
     "message": "常规"
@@ -1122,6 +1233,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "有关 Mac 系统 [Bug 25021]"
   },
+  "qf.toolbarPosition.tooltip": {
+    "message": "0 = 在其他工具栏的顶部； 100 = 底部。 高价值取决于其他附加组件。"
+  },
   "qf.tooltip.RecentFolders": {
     "message": "最近的文件夹"
   },
@@ -1133,6 +1247,12 @@
   },
   "qf.tooltip.emailIcon": {
     "message": "当前邮件 - 拖曳至导航卡可移动邮件"
+  },
+  "qf.tooltip.filterStart": {
+    "message": "激活过滤器教学。 在 QuickFolder 上拖动电子邮件会创建新的过滤器。"
+  },
+  "qf.tooltip.filters": {
+    "message": "停止创建过滤器。"
   },
   "qf.tooltip.folderUp": {
     "message": "转至上一级"
@@ -1146,6 +1266,15 @@
   "qf.tooltip.mailFolderCommands": {
     "message": "邮件文件夹命令"
   },
+  "qf.tooltip.mainOptions": {
+    "message": "QuickFolders 选项和高级命令"
+  },
+  "qf.tooltip.paintCanActive": {
+    "message": "绘画模式：单击调色板，单击选项卡为其着色，右键单击选项卡以提取其颜色"
+  },
+  "qf.tooltip.quickFoldersNavToggle": {
+    "message": "在浏览未读/所有邮件之间切换"
+  },
   "qf.tooltip.quickMove": {
     "message": "将电子邮件拖到此处，然后输入目标文件夹名称（quickMove）； 或单击以跳入该文件夹（quickJump）."
   },
@@ -1157,6 +1286,12 @@
   },
   "qf.youtube.description": {
     "message": "有关Thunderbird附加组件以及如何使用QuickFolders的详细视频，请访问我的YouTube频道Thunderbird Daily。"
+  },
+  "qf.youtube.link": {
+    "message": "观看有关 QuickFolders 的视频…"
+  },
+  "qf.youtube.tbdaily": {
+    "message": "访问 Thunderbird Daily - YouTube 频道，获取使用 QuickFolders 的提示和教程"
   },
   "qfAlertCopyString": {
     "message": "文件夹代码串已复制到剪贴板中！"
@@ -1253,6 +1388,9 @@
   },
   "qfFolderProperties": {
     "message": "文件夹属性…"
+  },
+  "qfFolderRepair": {
+    "message": "修复文件夹"
   },
   "qfFolderRepairedMsg": {
     "message": "已修复文件夹:"
@@ -1497,6 +1635,9 @@
       }
     }
   },
+  "special-offer-expiry": {
+    "message": "7月1日"
+  },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
     "placeholders": {
@@ -1590,6 +1731,9 @@
   },
   "whats-new-intro": {
     "message": "在此处阅读详细的更改日志（仅英语）："
+  },
+  "whats-new-list": {
+    "message": "{L1}QuickFolders 现在与 {boldStart}Thunderbird 102{boldEnd} 兼容。在设置中实现了新的 FolderListener、“修复文件夹” 功能和 Web 链接。{L2} {L1}修复：导航栏（当前文件夹工具栏）上的最近文件夹在单击时显示过时的结果 或在其上拖动电子邮件。{L2} {L1}已修复：阅读列表 - 如果由于无效/已删除的文件夹而无法找到电子邮件，则 QuickFolders 不会显示搜索对话框。{L2} {L1}已修复：添加标题 到首选项选项卡。{L2} {L1}旧版设置对话框和菜单项已删除。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

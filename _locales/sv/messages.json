@@ -1791,6 +1791,15 @@
     "description": "disclaimer.",
     "message": "översättningar från google"
   },
+  "update.tooltip": {
+    "message": "Klicka här en gång för att läsa vad som är nytt i $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Uppdateringar"
   },

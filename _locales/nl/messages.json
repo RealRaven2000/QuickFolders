@@ -1782,6 +1782,18 @@
     "description": "disclaimer.",
     "message": "vertalingen geleverd door Google"
   },
+  "update.tooltip": {
+    "message": "Klik hier eenmaal om te lezen wat er nieuw is in $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "updates.title": {
+    "message": "Updaten"
+  },
   "updatesExpiry": {
     "message": "QuickFolders Pro wordt zoals gewoonlijk automatisch bijgewerkt via addons.thunderbird.net. Na het verstrijken van het jaar kunt u de licentie vernieuwen of de premiumfuncties blijven gebruiken onder dezelfde voorwaarden als voor gratis gebruikers. Exclusieve premiumfuncties vereisen een geldige licentiesleutel."
   },

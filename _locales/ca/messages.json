@@ -1724,6 +1724,15 @@
     "description": "disclaimer.",
     "message": "traduccions proporcionades per google"
   },
+  "update.tooltip": {
+    "message": "Feu clic aquí una vegada per llegir les novetats de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Actualitzacions"
   },

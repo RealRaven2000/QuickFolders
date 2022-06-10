@@ -1731,6 +1731,15 @@
     "description": "disclaimer.",
     "message": "prevode, ki jih google"
   },
+  "update.tooltip": {
+    "message": "Kliknite tukaj enkrat, če želite prebrati, kaj je novega v $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Posodobitve"
   },

@@ -1773,6 +1773,15 @@
     "description": "disclaimer.",
     "message": "tłumaczenia dostarczone przez Google"
   },
+  "update.tooltip": {
+    "message": "Kliknij tutaj raz, aby przeczytać, co nowego w $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Aktualizacje"
   },

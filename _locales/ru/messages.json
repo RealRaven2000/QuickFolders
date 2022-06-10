@@ -1812,6 +1812,15 @@
     "description": "disclaimer.",
     "message": "переводы предоставлены google"
   },
+  "update.tooltip": {
+    "message": "Нажмите здесь один раз, чтобы прочитать, что нового в $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Обновления"
   },

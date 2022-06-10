@@ -260,6 +260,15 @@
     "description": "disclaimer.",
     "message": "käännökset tarjoaa google"
   },
+  "update.tooltip": {
+    "message": "Napsauta tätä kerran lukeaksesi mitä uutta kohteessa $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "whats-new-btn": {
     "message": "Mikä on uutta?"
   },

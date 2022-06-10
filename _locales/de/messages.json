@@ -1770,6 +1770,15 @@
   "toAddress.tooltip": {
     "message": "Standardadresse für neue Emails"
   },
+  "update.tooltip": {
+    "message": "Bitte einmal klicken, um zu lesen, was es Neues in $addonName$ gibt.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Aktualisierung"
   },

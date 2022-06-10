@@ -518,7 +518,7 @@ QuickFolders.Interface = {
 			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
       if (prefs.getBoolPref("hasNews")) {
 				quickFoldersLabel.classList.add("newsflash");
-				quickFoldersLabel.setAttribute("tooltiptext", "Show the Splash screen once!");
+				quickFoldersLabel.setAttribute("tooltiptext", util.getBundleString("update.tooltip",["QuickFolders"]));
       }
 			else if (QuickFolders.Util.licenseInfo.isExpired) {
 				quickFoldersLabel.classList.add("expired");

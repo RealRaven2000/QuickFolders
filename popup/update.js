@@ -154,6 +154,8 @@ addEventListener("load", async (event) => {
       specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>")
+          .replace(/\{italicStart\}/g,"<i>")
+          .replace(/\{italicEnd\}/g,"</i>")
           .replace(/\{linkStart\}/, "<a id='stdLink'>")
           .replace(/\{linkEnd\}/g, "</a>")
           .replace(/\{linkStartPro\}/, "<a id='proLink'>");

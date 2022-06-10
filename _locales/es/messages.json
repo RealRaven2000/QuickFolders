@@ -1792,7 +1792,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}QuickFolders ahora es compatible con Thunderbird 102. Se implementó el nuevo FolderListener, la función \"reparar carpeta\" y los enlaces web en la configuración.{L2} {L1}Reparado: las carpetas recientes en la barra de navegación (barra de herramientas de la carpeta actual) mostraban resultados obsoletos al hacer clic en ella o arrastrando correos electrónicos sobre él.{L2} {L1}Corregido: Lista de lectura: si no se puede encontrar un correo electrónico debido a una carpeta no válida o eliminada, QuickFolders no mostraba el cuadro de diálogo de búsqueda.{L2} {L1}Corregido: agregar título a la pestaña de preferencias.{L2} {L1}Se eliminaron los elementos de menú y diálogo de configuración heredados.{L2}"
+    "message": "{L1}QuickFolders ahora es compatible con Thunderbird 102. Se implementó el nuevo FolderListener, la función {italicStart}Reparar carpeta{italicEnd} y los enlaces web en la configuración.{L2} {L1}Reparado: las carpetas recientes en la barra de navegación (barra de herramientas de la carpeta actual) mostraban resultados obsoletos al hacer clic en ella o arrastrando correos electrónicos sobre él.{L2} {L1}Corregido: Lista de lectura: si no se puede encontrar un correo electrónico debido a una carpeta no válida o eliminada, QuickFolders no mostraba el cuadro de diálogo de búsqueda.{L2} {L1}Corregido: agregar título a la pestaña de preferencias.{L2} {L1}Se eliminaron los elementos de menú y diálogo de configuración heredados.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1608,6 +1608,15 @@
     "description": "disclaimer.",
     "message": "преводи које пружа гоогле"
   },
+  "update.tooltip": {
+    "message": "Кликните овде једном да бисте прочитали шта је ново у $аддонНаме$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Ажурирања"
   },

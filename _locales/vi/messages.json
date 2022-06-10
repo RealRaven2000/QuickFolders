@@ -1290,6 +1290,21 @@
     "description": "disclaimer.",
     "message": "bản dịch do google cung cấp"
   },
+  "update.tooltip": {
+    "message": "Nhấp vào đây một lần để đọc có gì mới trong $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "updates.title": {
+    "message": "Cập nhật"
+  },
+  "updatesExpiry": {
+    "message": "QuickFolders Pro sẽ được cập nhật tự động thông qua addons.thunderbird.net như thường lệ. Sau khi hết hạn năm, bạn có thể gia hạn giấy phép hoặc tiếp tục sử dụng các tính năng cao cấp theo các điều khoản tương tự như người dùng miễn phí. Các tính năng 'Premium Exclusive' sẽ yêu cầu khóa đăng ký hợp lệ."
+  },
   "whats-new-btn": {
     "message": "Có gì mới?"
   },

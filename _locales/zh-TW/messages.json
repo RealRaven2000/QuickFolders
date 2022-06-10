@@ -1728,6 +1728,15 @@
     "description": "disclaimer.",
     "message": "谷歌提供的翻譯"
   },
+  "update.tooltip": {
+    "message": "單擊此處一次以閱讀 $addonName$ 中的新功能。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "更新"
   },

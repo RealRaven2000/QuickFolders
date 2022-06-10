@@ -1549,6 +1549,15 @@
     "description": "disclaimer.",
     "message": "a google által biztosított fordítások"
   },
+  "update.tooltip": {
+    "message": "Kattintson ide egyszer, hogy elolvassa a $addonName$ újdonságait.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Frissítések"
   },

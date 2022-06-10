@@ -1653,6 +1653,15 @@
     "description": "disclaimer.",
     "message": "グーグルによって提供される翻訳"
   },
+  "update.tooltip": {
+    "message": "$addonName$ の新機能を読むには、ここをクリックしてください。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "更新について"
   },

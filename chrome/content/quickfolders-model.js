@@ -707,7 +707,6 @@ QuickFolders.Model = {
 
 	loadConfig: async function(preferences) {
     const prefs = QuickFolders.Preferences,
-          options = QuickFolders.Options,
 				  util = QuickFolders.Util;
 
 		function changePref(pref) {
@@ -730,7 +729,8 @@ QuickFolders.Model = {
               case 'html:textarea':
                 e.value = pref.val;
                 if (e.id == "currentFolderBackground") {
-                  options.setCurrentToolbarBackgroundCustom();
+                  QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" });
+                  // this will call QuickFolders.Interface.updateNavigationBar()
                 }
                 break;
               case 'menulist':
@@ -855,12 +855,16 @@ QuickFolders.Model = {
                         element.value = jnode.val; // change color picker itself
                         util.logDebug("Changing [" + elementInfo + "] : " + jnode.val);
                         let info = jnode.elementInfo.split('.');
-                        if (info.length == 2)
+                        if (info.length == 2) {
+                          // global Options object doesn't exist anymore!
+                          /*
                           options.styleUpdate(
                             info[0],   // element name e..g. ActiveTab
                             info[1],   // element style (color / background-color)
                             jnode.val,
                             element.getAttribute('previewLabel')); // preview tab / label
+                            */
+                        }
                       }
                       break;
                     }

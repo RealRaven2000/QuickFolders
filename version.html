@@ -476,6 +476,13 @@
         <li>
           Increasing maximum TB version for next ESR - Thunderbird 102.* is planned to be supported from now on.
           Also increased minimum version to 92.0 - because of new APIs 78 will not be supported with new features / bugfixes.
+          
+          <div class="psa announcement">
+            If you consider updating to Thunderbird 102 please make a backup of your prefs.js - Thunderbird 
+            can potentially generate invalid tabs, and this can be repaired much more easily by knowing certain
+            server settings that are stored in prefs.js preceding migration. 
+            See <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a> for detailed information!
+          </div>
         </li>
         <li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/272">[issue 272]</a>
           Implemented new folder listener interface. The new version of Thunderbird implements a different 
@@ -523,7 +530,14 @@
         <li> 
           Removed legacy code (supportsMap)      
         </li>
-
+        
+        <h4 class="inList">Known Issues</h4>
+        <li>
+          <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a>
+          Updating to Thunderbird 102 can generate invalid tabs - make sure to backup
+          prefs.js before updating in order to correct this problem more easily.
+          Some accounts in your profile may be affected, so it is a good idea to mitigate this problem.         
+        </li>
       </ul>
     </li>    
     

@@ -314,9 +314,10 @@
 			-->
 
     <a name="5.10">&nbsp;</a>
+    <a name="5.10.1">&nbsp;</a>
     <li>
       <h4>
-      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.10 - 13/06/2022</a>
+      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.10.1 - 05/07/2022</a>
       </h4>
       
         <a name="tb102-compatibility"> </a>
@@ -473,6 +474,14 @@
       </p>
       <ul>
         <h4 class="inList">Thunderbird 102 Specific changes</h4>
+        <li>
+          <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a>
+          5.10.1 - this maintenance fix stores the account id for every tab. 
+          When upgrading to Thunderbird 102, this can potentially rename the servers due to 
+          <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1573690">bug  1573690</a>
+          - then the account can be used for reconstruction of invalid folders.
+        </li>
+        
         <li>
           Increasing maximum TB version for next ESR - Thunderbird 102.* is planned to be supported from now on.
           Also increased minimum version to 92.0 - because of new APIs 78 will not be supported with new features / bugfixes.

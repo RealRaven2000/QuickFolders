@@ -1800,9 +1800,6 @@
   "whats-new-intro": {
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
-  "whats-new-list": {
-    "message": "{L1}QuickFolders jest teraz {boldStart}kompatybilne z Thunderbirdem 102{boldEnd}. Zaimplementowano nowy FolderListener, funkcję {italicStart}Napraw folder{italicEnd} i łącza internetowe w ustawieniach.{L2} {L1}Naprawiono: Ostatnie foldery na pasku nawigacyjnym (pasek narzędzi bieżącego folderu) wyświetlały nieaktualne wyniki po kliknięciu lub przeciąganie na nią wiadomości e-mail.{L2} {L1}Naprawiono: Lista do przeczytania – jeśli nie można znaleźć wiadomości e-mail z powodu nieprawidłowego/usuniętego folderu, QuickFolders nie wyświetlało okna wyszukiwania.{L2} {L1}Naprawiono: dodaj tytuł do zakładki preferencji.{L2} {L1}Okno dialogowe ustawień starszego typu i elementy menu zostały usunięte.{L2}"
-  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Witamy w $addonName$",

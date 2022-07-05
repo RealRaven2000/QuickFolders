@@ -1570,9 +1570,6 @@
   "whats-new-intro": {
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
-  "whats-new-list": {
-    "message": "{L1}A QuickFolders már {boldStart}kompatibilis a Thunderbird 102-vel{boldEnd}. Bevezetett új FolderListener, {italicStart}Mappa javítása{italicEnd} funkció és webes hivatkozások a beállításokban.{L2} {L1}Javítva: A navigációs sáv legutóbbi mappái (Aktuális mappa eszköztár) elavult eredményeket jelenítettek meg, amikor rákattintottak. vagy húzza rá az e-maileket.{L2} {L1}Javítva: Olvasólista – ha egy e-mail nem található érvénytelen/törölt mappa miatt, a QuickFolders nem jelenítette meg a keresési párbeszédpanelt.{L2} {L1}Javítva: cím hozzáadása a beállítások lapra.{L2} {L1}A régi beállítások párbeszédpanel és a menüelemek eltávolítva.{L2}"
-  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Üdvözöljük a $addonName$ oldalon",

@@ -1782,9 +1782,6 @@
   "whats-new-intro": {
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
-  "whats-new-list": {
-    "message": "{L1}QuickFolders agora é {boldStart}compatível com Thunderbird 102{boldEnd}. Implementado novo FolderListener, função {italicStart}Reparar pasta{italicEnd} e links da web nas configurações.{L2} {L1}Corrigido: pastas recentes na barra de navegação (barra de ferramentas da pasta atual) exibiam resultados desatualizados ao clicar nela ou arrastando e-mails nele.{L2} {L1}Corrigido: lista de leitura - se um e-mail não puder ser encontrado devido a uma pasta inválida/excluída, o QuickFolders não estava exibindo a caixa de diálogo de pesquisa.{L2} {L1}Corrigido: adicionar título para a guia de preferências.{L2} {L1}A caixa de diálogo de configurações herdadas e os itens de menu foram removidos.{L2}"
-  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bem-vindo a $addonName$",

@@ -256,6 +256,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 // LEGACY MAIN WINDOW HACK FOR PREVIEW
                 let mainWin = util.getMail3PaneWindow();
                 mainWin.QuickFolders.initTabsFromEntries(entries);
+                mainWin.QuickFolders.Model.correctFolderEntries(entries, false);
                 let invalidCount = 0,
                     modelEntries = mainWin.QuickFolders.Model.selectedFolders;
                 // updateFolders() will append "invalid" property into entry of main model if folder URL cannot be found

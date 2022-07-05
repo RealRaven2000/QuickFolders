@@ -1,0 +1,13 @@
+/* tb 102, fix wonky menu item icons: */
+
+menuitem.menuitem-iconic .menu-iconic-left,
+.QuickFolders-folder-popup .menu-iconic-left
+ {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+
+.QuickFolders-folder-popup .menu-iconic > .menu-iconic-left, 
+.QuickFolders-folder-popup .menuitem-iconic > .menu-iconic-left {
+  appearance: unset;
+}

@@ -321,7 +321,7 @@ async function main() {
   });
   
   
-  let browserInfo = await messenger.runtime.getBrowserInfo()
+  let browserInfo = await messenger.runtime.getBrowserInfo();
   // Init WindowListener.
   function getThunderbirdVersion() {
     let parts = browserInfo.version.split(".");
@@ -345,17 +345,12 @@ async function main() {
   ]);
   
   
-  // messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
-  // messenger.WindowListener.registerOptionsPage("html/options.html"); 
-
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/qf-composer.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/SearchDialog.xhtml", "chrome/content/scripts/qf-searchDialog.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/qf-customizetoolbar.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/qf-messageWindow.js");  
 
-  // messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");
-  // messenger.WindowListener.registerShutdownScript("chrome/content/scripts/qf-shutdown.js");
 
  /*
   * Start listening for opened windows. Whenever a window is opened, the registered

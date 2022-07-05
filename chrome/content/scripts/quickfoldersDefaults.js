@@ -138,6 +138,8 @@ pref("extensions.quickfolders.style.InactiveTab.paletteEntry", 20);
 pref("extensions.quickfolders.style.InactiveTab.paletteType", 0); // InactiveTab = "uncolored tab" default to none, but is set on upgradePalette
 pref("extensions.quickfolders.style.ColoredTab.paletteType", 1); // default to none, but is set on upgradePalette
 
+
+// pref("extensions.quickfolders.accounts", "[]"); //  json string with accounts matching with folders array
 // Debugging Options
 pref("extensions.quickfolders.debug.firstrun", false);
 pref("extensions.quickfolders.debug.buttonStyle", false);

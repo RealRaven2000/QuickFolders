@@ -7052,6 +7052,7 @@ QuickFolders.Interface = {
           entries = JSON.parse(folders),
           question = util.getBundleString("qf.prompt.pasteFolders");
       if (Services.prompt.confirm(window, "QuickFolders", question.replace("{0}", entries.length))) {
+        QuickFolders.Model.correctFolderEntries(entries, false);
         for (let i = 0; i < entries.length; i++) {
           if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
             entries[i].tabColor = 0;

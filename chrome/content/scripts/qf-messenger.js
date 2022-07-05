@@ -21,6 +21,7 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-scrollmenu
 var mylisteners = {};
 
 async function onLoad(activatedWhileWindowOpen) {
+  window.QuickFolders.Util.logDebug(`qf-messenger.js onLoad(${activatedWhileWindowOpen})`);
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
   layout.setAttribute("title", "QuickFolderStyles");
   
@@ -34,6 +35,7 @@ async function onLoad(activatedWhileWindowOpen) {
   WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
+  
 
   WL.injectElements(`
 
@@ -177,6 +179,11 @@ async function onLoad(activatedWhileWindowOpen) {
                                       oncommand="QuickFolders.Util.loadPlatformStylesheet();"
                                       class="menuitem-iconic"
                                       />
+                <menuitem id="QuickFolders-ToolbarPopup-dbg5"
+                            label="Test mail notification popup"
+                                      oncommand="MailNotificationManager.something();"
+                                      class="menuitem-iconic"
+                                      />                                      
 
 
               </menupopup>
@@ -528,6 +535,10 @@ async function onLoad(activatedWhileWindowOpen) {
   // Enable the global notify notifications from background.
   window.QuickFolders.Util.notifyTools.enable();
   await window.QuickFolders.Util.init();
+  if (window.QuickFolders.Util.versionGreaterOrEqual(window.QuickFolders.Util.Appversion, "102")) {
+    WL.injectCSS("chrome://quickfolders/content/skin/qf-102.css");
+  }
+  
   window.QuickFolders.quickMove.initLog();
   window.addEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
   const QI = window.QuickFolders.Interface;

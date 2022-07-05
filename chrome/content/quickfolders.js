@@ -237,7 +237,7 @@ END LICENSE BLOCK */
     ## [issue 255] CTRL Right-clicking on current folder multiplies folder commands
     ## [issue 254] "=" key of QuickMove/Jump "Enter" won't operate on folders that have subfolders
     
-  5.10 QuickFolders Pro - WIP
+  5.10 QuickFolders Pro - 12/06/2022
     ## Tb 102 Compatibility Fixes
     ##   - Fixed repair folder code.
     ##   - Fixed links in Options Dialog
@@ -252,6 +252,10 @@ END LICENSE BLOCK */
     ## Set minimum version to 91.0
     ## Removed legacy code (supportsMap, nsIMutableArray,  MailServices.copy.CopyFolders)
     ## Removed legacy settings menu & dialog
+    
+  5.11 QuickFolders Pro - WIP
+    ## fix icon distances on popup menus (Tb102)
+    
   
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
@@ -685,6 +689,8 @@ var QuickFolders = {
 		
 		// move out to allow reload / editing feature
 		let folderEntries = prefs.loadFolderEntries();
+    // issue 189 - prepare conversion for account specific relative path storage
+    QuickFolders.Model.correctFolderEntries(folderEntries);
 		this.initTabsFromEntries(folderEntries);
 		
 		// only load in main window(?)

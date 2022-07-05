@@ -35,7 +35,6 @@ QuickFolders.FolderTree = {
       gFolderTreeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
       gFolderTreeView.getCellProperties = function QuickFolders_getCellProperties(row, col) {
         if (QuickFolders.FolderTree.GetCellProperties == gFolderTreeView.getCellProperties) {
-          debugger;
           return null; // avoid "impossible" recursion?
         }
         let props = QuickFolders.FolderTree.GetCellProperties(row, col);
@@ -56,6 +55,7 @@ QuickFolders.FolderTree = {
 						}
           }
           catch(ex) {
+            /*
             if (QuickFolders) {
 							let txt;
 							try {
@@ -65,8 +65,9 @@ QuickFolders.FolderTree = {
 							catch(x) { 
                 txt = "problem with reading props for folder " + folder.prettyName; 
               }
-              util.logException(`QuickFolders.FolderTree.getCellProperties(${row},${col})\n  ${txt}`, ex);
+              // util.logException(`QuickFolders.FolderTree.getCellProperties(${row},${col})\n  ${txt}`, ex);
 						}
+            */
           }
         }
         return props;

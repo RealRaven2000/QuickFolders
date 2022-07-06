@@ -2104,12 +2104,14 @@ QuickFolders.Interface = {
 			// this.setEventAttribute(button, "oncommand","QuickFolders.Interface.onButtonClick(event.target, event, true);");
 			button.addEventListener("click",
 				function(event) {
-					QI.onButtonClick(event.target, event, true);
 					event.stopPropagation();
+					QI.onButtonClick(event.target, event, true);
 				},
 				false);
 			button.addEventListener("command",
 				function(event) {
+          // avoid duplication when clicking buttons themselves:
+          if (event.target.tagName == "toolbarbutton") return;
 					QI.onButtonClick(event.target, event, true);
 				},
 				false);
@@ -2464,7 +2466,6 @@ QuickFolders.Interface = {
 				// force select folder on invalid URI - this will suggest to delete the folder.
 				let uri = button.getAttribute("folderURI");
 				if (uri) {
-					debugger;
 					QuickFolders_MySelectFolder(uri);
 				}
 			}

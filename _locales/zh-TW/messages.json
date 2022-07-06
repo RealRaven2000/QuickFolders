@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "account.label": {
     "message": "選擇一個帳號："
   },
@@ -139,14 +136,6 @@
   "extend-your-license": {
     "message": "考慮將您的許可證延長一年。"
   },
-  "extensionDescription": {
-    "description": "Description of the extension.",
-    "message": "Bookmark your favorite mail folders in Thunderbird."
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "QuickFolders"
-  },
   "extensions.quickfolders@curious.be.description": {
     "message": "在Thunderbird中將你喜愛的信件資料夾標記起來。"
   },
@@ -216,15 +205,15 @@
     "description": "Shown if license expires more than a year from now",
     "message": "感謝您最近延長許可證或捐贈。 當您幫助將來對該插件進行驗證時，只需關閉此窗口即可。"
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "要比較不同版本的功能，請{linkStart}閱讀此列表{linkEnd}。"
-  },  
+  },
   "licenseHead": {
     "message": "新的許可製度"
-  },  
+  },
   "licenseTypes": {
     "message": "QuickFolders 提供兩種許可證，Standard 和 Pro； 這些對於跟上 Thunderbird 平台的變化以及為插件的創新和修復提供資金是必要的。 由於可能破壞擴展功能的更改每年都會部署，因此許可證的有效期也為 1 年。"
-  },  
+  },
   "licenseWindow.title": {
     "message": "QuickFolders 專業版購買證明"
   },
@@ -254,10 +243,6 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla僅提供一個基本平台，用於向您（最終用戶）交付我們的軟件。 如果我們需要向我們的用戶付款或提供支持，則不能通過addons.thunderbird.net進行操作-這不是內置付費界面或許可證管理（如iTunes或Google Play）的“應用商店”。"
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",
@@ -324,9 +309,6 @@
   },
   "qf.button.reorderButtonTop": {
     "message": "往上"
-  },
-  "qf.button.reorderButtonTop.accessKey": {
-    "message": "o"
   },
   "qf.button.reorderButtonTop.toolTip": {
     "message": "在執行其他動作前先過濾"
@@ -445,9 +427,6 @@
   "qf.checkbox.shadows": {
     "message": "陰影"
   },
-  "qf.checkbox.shift": {
-    "message": "Shift"
-  },
   "qf.checkbox.showCountInSubFolders": {
     "message": "同時顯示子資料夾內郵件的數目"
   },
@@ -491,7 +470,7 @@
     "message": "最近的資料夾按鈕"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "顯示最近使用的資料夾標籤"
+    "message": "最近的文件夾選項卡"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "以滑鼠右鍵點選來確認"
@@ -567,9 +546,6 @@
   },
   "qf.continueFilter.label": {
     "message": "建立過濾器…"
-  },
-  "qf.continueFilter.shortcut": {
-    "message": "F"
   },
   "qf.copyfolders": {
     "message": "複製分頁"
@@ -941,7 +917,7 @@
   },
   "qf.licenseValidation.standard": {
     "message": "感謝您註冊 QuickFolders 許可證 - 您正在極大地幫助附加組件！ 如果您需要更多功能，您可以隨時升級到 Pro 許可證。"
-  },  
+  },
   "qf.loadConfig": {
     "message": "讀取設定..."
   },
@@ -954,44 +930,23 @@
   "qf.menuitem.quickfolders.changeOrder": {
     "message": "改變標籤的順序"
   },
-  "qf.menuitem.quickfolders.changeOrderAccess": {
-    "message": "C"
-  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "尋找孤立標籤"
-  },
-  "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
-    "message": "T"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "顯示現在資料夾的工具"
   },
-  "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
-    "message": "D"
-  },
   "qf.menuitem.quickfolders.filters": {
     "message": "建立信件過濾器…"
-  },
-  "qf.menuitem.quickfolders.filtersAccess": {
-    "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
     "message": "尋找資料夾…"
   },
-  "qf.menuitem.quickfolders.findAccess": {
-    "message": "i"
-  },
   "qf.menuitem.quickfolders.help": {
     "message": "QuickFolders說明…"
   },
-  "qf.menuitem.quickfolders.helpAccess": {
-    "message": "H"
-  },
   "qf.menuitem.quickfolders.options": {
     "message": "QuickFolders選項…"
-  },
-  "qf.menuitem.quickfolders.optionsAccess": {
-    "message": "O"
   },
   "qf.menuitem.quickfolders.register": {
     "message": "註冊 QuickFolders 專業版..."
@@ -999,26 +954,17 @@
   "qf.menuitem.quickfolders.repairTabs": {
     "message": "更新可見的標籤！"
   },
-  "qf.menuitem.quickfolders.repairTabsAccess": {
-    "message": "V"
-  },
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "修復樹狀目錄圖示"
   },
-  "qf.menuitem.quickfolders.splash" : {
+  "qf.menuitem.quickfolders.splash": {
     "message": "最新更新新聞…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders支援…"
   },
-  "qf.menuitem.quickfolders.supportAccess": {
-    "message": "S"
-  },
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "繪圖模式"
-  },
-  "qf.menuitem.quickfolders.togglePaintModeAccess": {
-    "message": "p"
   },
   "qf.notification.categoryIsReadOnly": {
     "message": "這個項目不能被刪除。"
@@ -1043,9 +989,6 @@
   },
   "qf.notification.premium.btn.getLicense": {
     "message": "取得購買證明！"
-  },
-  "qf.notification.premium.btn.hotKey": {
-    "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "展延授權"
@@ -1379,9 +1322,6 @@
   "qfColorPickingWIP": {
     "message": "抱歉，這個功能仍在測試中！"
   },
-  "qfCommandAccess": {
-    "message": "Q"
-  },
   "qfCommandPopup": {
     "message": "QuickFolders指令"
   },
@@ -1424,9 +1364,6 @@
   "qfDeleteFolder": {
     "message": "刪除資料夾"
   },
-  "qfDeleteFolderAccess": {
-    "message": "D"
-  },
   "qfDeleteJunk": {
     "message": "清除垃圾"
   },
@@ -1439,9 +1376,6 @@
   "qfEditVirtual": {
     "message": "搜尋特性…"
   },
-  "qfEditVirtualAccess": {
-    "message": "S"
-  },
   "qfEmptiedJunk": {
     "message": "清空垃圾郵件並壓縮資料夾"
   },
@@ -1451,17 +1385,8 @@
   "qfEmptyJunk": {
     "message": "清空垃圾郵件"
   },
-  "qfEmptyJunkAccess": {
-    "message": "J"
-  },
   "qfEmptyTrash": {
     "message": "清空垃圾桶"
-  },
-  "qfEmptyTrashAccess": {
-    "message": "T"
-  },
-  "qfFolderAccess": {
-    "message": "F"
   },
   "qfFolderAlreadyBookmarked": {
     "message": "資料夾已在標籤中。"
@@ -1475,23 +1400,11 @@
   "qfFolderProperties": {
     "message": "資料夾性質…"
   },
-  "qfFolderPropertiesAccess": {
-    "message": "P"
-  },
   "qfFolderRepair": {
     "message": "修復資料夾"
   },
-  "qfFolderRepairAccess": {
-    "message": "F"
-  },
   "qfFolderRepairedMsg": {
     "message": "已經修復的資料夾："
-  },
-  "qfGetMail": {
-    "message": "Get Messages"
-  },
-  "qfGetMailAccess": {
-    "message": "G"
   },
   "qfInsertLineBreak": {
     "message": "插入斷行符號"
@@ -1504,9 +1417,6 @@
   },
   "qfMarkAllRead": {
     "message": "將資料夾標記為已讀"
-  },
-  "qfMarkAllReadAccess": {
-    "message": "M"
   },
   "qfMarkAllReadRecursive": {
     "message": "標記 資料夾 + 子資料夾 為已讀"
@@ -1532,9 +1442,6 @@
   "qfNewFolder": {
     "message": "新子資料夾…"
   },
-  "qfNewFolderAccess": {
-    "message": "N"
-  },
   "qfNewName": {
     "message": "鍵入標籤的新名稱"
   },
@@ -1552,9 +1459,6 @@
   },
   "qfRemoveBookmark": {
     "message": "移除標籤"
-  },
-  "qfRemoveBookmarkAccess": {
-    "message": "R"
   },
   "qfRemoveCategory": {
     "message": "從現有分類中移除"
@@ -1574,14 +1478,8 @@
   "qfRenameBookmark": {
     "message": "標籤更名.."
   },
-  "qfRenameBookmarkAccess": {
-    "message": "N"
-  },
   "qfRenameFolder": {
     "message": "資料夾更名…"
-  },
-  "qfRenameFolderAccess": {
-    "message": "R"
   },
   "qfRepairTreeIconsMissing": {
     "message": "下列的圖示檔案並未存在："
@@ -1594,9 +1492,6 @@
   },
   "qfSetCategory": {
     "message": "設定標籤分類…"
-  },
-  "qfSetCategoryA": {
-    "message": "C"
   },
   "qfShowAlways": {
     "message": "總是顯示！"
@@ -1638,35 +1533,35 @@
     "message": "在更新之後停止顯示版本記錄？"
   },
   "quickMove.help.head": {
-    "message" : "{1} 的幫助"
+    "message": "{1} 的幫助"
   },
   "quickMove.help.head.advanced": {
-    "message" : "高級功能"
+    "message": "高級功能"
   },
   "quickMove.help.l1a": {
-    "message" : "鍵入文件夾名稱的開頭或其中的單詞，以空格分隔。"
-  }, 
+    "message": "鍵入文件夾名稱的開頭或其中的單詞，以空格分隔。"
+  },
   "quickMove.help.l1b": {
-    "message" : "以下字符被視為單詞邊界，不需要鍵入："
-  }, 
+    "message": "以下字符被視為單詞邊界，不需要鍵入："
+  },
   "quickMove.help.l2a": {
-    "message" : "輸入 {1} 以輸入祖父/父/搜索文件夾。"
-  }, 
+    "message": "輸入 {1} 以輸入祖父/父/搜索文件夾。"
+  },
   "quickMove.help.l2b": {
-    "message" : "任何父文件夾的前 2 個字母通常就足夠了。 您還可以使用此語法創建新的子文件夾。"
-  }, 
+    "message": "任何父文件夾的前 2 個字母通常就足夠了。 您還可以使用此語法創建新的子文件夾。"
+  },
   "quickMove.help.l3a": {
-    "message" : "鍵入 {1} 以跳過其間的任何文件夾。"
-  }, 
+    "message": "鍵入 {1} 以跳過其間的任何文件夾。"
+  },
   "quickMove.help.l3b": {
-    "message" : "這對於更深、更複雜或未知的文件夾層次結構很有用。"
-  },   
+    "message": "這對於更深、更複雜或未知的文件夾層次結構很有用。"
+  },
   "quickMove.help.l4a": {
-    "message" : "輸入 {1} 以獲取最近使用的文件夾列表。"
-  }, 
+    "message": "鍵入 {1} 以獲取最近輸入的文件夾列表。 結果的數量取決於您的許可證級別。"
+  },
   "quickMove.help.advanced": {
-    "message" : "可以在 QuickFolders Pro 選項卡上配置更高級的功能，例如轉到文件夾/移動郵件的鍵盤快捷鍵或從搜索結果中排除文件夾。 要訪問這些和其他高級功能，請獲取 Pro 許可證並支持 QuickFolders 的未來。"
-  },  
+    "message": "可以在 QuickFolders Pro 選項卡上配置更高級的功能，例如轉到文件夾/移動郵件的鍵盤快捷鍵或從搜索結果中排除文件夾。 要訪問這些和其他高級功能，請獲取 Pro 許可證並支持 QuickFolders 的未來。"
+  },
   "quickMove.singleMessage.goNext": {
     "message": "在移动当前一封邮件后显示下一封邮件"
   },
@@ -1720,7 +1615,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "4月16日"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1740,7 +1635,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "立即從 QuickFolders Standard 升級到 Pro 並節省 {boldStart}$reduction${boldEnd}！ 此特別優惠將持續到 {boldStart}$expirydate${boldEnd}。",
     "placeholders": {
@@ -1753,9 +1648,9 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "special-offer-expiry": {
-    "message": "4月15日"    
+    "message": "7月1日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1780,7 +1675,7 @@
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "quickFilters"
+        "example": "QuickFolders"
       }
     }
   },
@@ -1833,6 +1728,15 @@
     "description": "disclaimer.",
     "message": "谷歌提供的翻譯"
   },
+  "update.tooltip": {
+    "message": "單擊此處一次以閱讀 $addonName$ 中的新功能。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "更新"
   },
@@ -1852,7 +1756,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}新的 [=] 鍵讓 quickMove 列出 quickMove / quickJump 最近使用的文件夾。{L2} {L1}quickJump 的默認值現在總是使用最後一個文件夾。 如果可以找到相同的文件夾名稱，則有可能匹配其他建議而不是最後一個文件夾位置。{L2} {L1}選項對話框已轉換為 HTML - 這是 QuickFolders 成為純基於 API 的郵件的重要一步 將來沒有實驗權限的擴展。{L2} {L1}刪除了緊湊模式文件夾樹中快速跳轉的問題。{L2} {L1}改進了類別編輯對話框。{L2}"
+    "message": "{L1}5.10.1 - 此維護修復存儲每個選項卡的帳戶 ID。 由於補丁，升級到 Thunderbird 102 可能會重命名服務器 - 然後該帳戶可用於重建無效文件夾。{L2}{L1}QuickFolders 現在與 {boldStart}Thunderbird 102{boldEnd} 兼容。在設置中實現了新的 FolderListener、“修復資料夾” 功能和 Web 鏈接。{L2} {L1}修復：導航欄（當前文件夾工具欄）上的最近文件夾在單擊時顯示過時的結果 或在其上拖動電子郵件。{L2} {L1}已修復：閱讀列表 - 如果由於無效/已刪除的文件夾而無法找到電子郵件，則 QuickFolders 不會顯示搜索對話框。{L2} {L1}已修復：添加標題 到首選項選項卡。{L2} {L1}舊版設置對話框和菜單項已刪除。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

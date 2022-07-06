@@ -179,6 +179,12 @@ QuickFolders.Util = {
       this.logToConsole ("Could not retrieve bundle string: " + id + "");
     }
     return s;
+  },
+  
+  openLinkInTab: function(uri) {
+    browser.tabs.create(
+      {active:true, url: uri}
+    );
   }
     
   

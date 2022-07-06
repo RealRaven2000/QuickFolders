@@ -64,22 +64,27 @@ QuickFolders.Preferences = {
 
 		try {
 			const PS = this.service;
+      // fill the array of accounts:
+      
 			let folders = PS.getStringPref(setting);
 			if(folders) {
 				folders = folders.replace(/\r?\n|\r/, ''); // remove all line breaks
 				let entries = JSON.parse(folders);
 				for (let i = 0; i < entries.length; i++) {
-					if (typeof entries[i].tabColor ==='undefined' || entries[i].tabColor ==='undefined')
-						entries[i].tabColor = 0;
+          let e = entries[i];
+          
+					if (typeof e.tabColor ==='undefined' || e.tabColor ==='undefined') {
+						e.tabColor = 0;
+          }
 					// default the name!!
-					if (!entries[i].name) {
+					if (!e.name) {
 						// retrieve the name from the folder uri (prettyName)
-						let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, false);
+						let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
 						if (f)
-							entries[i].name = f.prettyName;
+							e.name = f.prettyName;
 					}
           // when loading, reset the disabled Validation!
-          if (entries[i].disableValidation) {
+          if (e.disableValidation) {
             let swap = entries[i];
             delete swap.disableValidation;
             entries[i] = swap;

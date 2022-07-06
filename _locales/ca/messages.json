@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "account.label": {
     "message": "Trieu un compte:"
   },
@@ -143,10 +140,6 @@
     "description": "Description of the extension.",
     "message": "Marqueu les vostres carpetes de correu preferides al Thunderbird."
   },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "QuickFolders"
-  },
   "extensions.quickfolders@curious.be.description": {
     "message": "Marqueu vostres carpetes de correu preferides al Thunderbird."
   },
@@ -216,15 +209,15 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Gràcies per ampliar recentment la llicència o si heu donat. Com heu ajudat a provar aquest complement en un futur, només podeu tancar aquesta finestra."
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nou sistema de llicències"
-  },  
+  },
   "licenseTypes": {
     "message": "QuickFolders ofereix dues llicències, Standard i Pro; són necessaris per estar al dia dels canvis a la plataforma Thunderbird i per finançar innovacions i reparacions del complement. Com que els canvis que poden trencar la funcionalitat de l'extensió es presenten anualment, la llicència també serà vàlida durant un any."
-  },  
+  },
   "licenseWindow.title": {
     "message": "Llicència QuickFolders Pro"
   },
@@ -324,9 +317,6 @@
   },
   "qf.button.reorderButtonTop": {
     "message": "Al Damunt"
-  },
-  "qf.button.reorderButtonTop.accessKey": {
-    "message": "o"
   },
   "qf.button.reorderButtonTop.toolTip": {
     "message": "executa aquest filtre abans que tots els altres"
@@ -491,7 +481,7 @@
     "message": "Botó de Carpetes Recents"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Mostra les Últimes Carpetes"
+    "message": "Pestanya Carpetes recents"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "Botó dret per configurar"
@@ -544,9 +534,6 @@
   "qf.checkbox.tabMenuIcon.tooltip": {
     "message": "Aquest menú també pot obrir-se amb un clic al botó dret a la mateixa barra d'eines"
   },
-  "qf.checkbox.transparent": {
-    "message": "transparent"
-  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "ALT-Esquerra/ALT-Dreta per a l'anterior/següent Pestanya"
   },
@@ -564,9 +551,6 @@
   },
   "qf.continueFilter.label": {
     "message": "Crea Filtre…"
-  },
-  "qf.continueFilter.shortcut": {
-    "message": "F"
   },
   "qf.copyfolders": {
     "message": "Copiar pestanyes"
@@ -777,9 +761,6 @@
   "qf.label.cancel": {
     "message": "Cancel·lar"
   },
-  "qf.label.colors": {
-    "message": "Colors"
-  },
   "qf.label.contactLink": {
     "message": "Contacteu-me (Anglès o Alemany)…"
   },
@@ -888,9 +869,6 @@
   "qf.label.quickFilters.link": {
     "message": "obtenir quickFilters!"
   },
-  "qf.label.quickfolders": {
-    "message": "QuickFolders:"
-  },
   "qf.label.renameselectedcategory": {
     "message": "Reanomenar la categoria seleccionada"
   },
@@ -938,12 +916,9 @@
   },
   "qf.licenseValidation.standard": {
     "message": "Gràcies per registrar una llicència QuickFolders: esteu ajudant enormement el complement. Si necessiteu més funcions, sempre podeu actualitzar a la llicència Pro."
-  },  
+  },
   "qf.loadConfig": {
     "message": "Carrega la configuració…"
-  },
-  "qf.menu.Color": {
-    "message": "Color"
   },
   "qf.menu.tabColor": {
     "message": "Sense Color!"
@@ -951,44 +926,23 @@
   "qf.menuitem.quickfolders.changeOrder": {
     "message": "Canvia l'ordre dels preferits"
   },
-  "qf.menuitem.quickfolders.changeOrderAccess": {
-    "message": "C"
-  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Cerca Pestanyes orfes"
-  },
-  "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
-    "message": "T"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Mostra Eines de la Carpeta Actual"
   },
-  "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
-    "message": "D"
-  },
   "qf.menuitem.quickfolders.filters": {
     "message": "Crear Filtres de Missatge…"
-  },
-  "qf.menuitem.quickfolders.filtersAccess": {
-    "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
     "message": "Cerca Carpeta…"
   },
-  "qf.menuitem.quickfolders.findAccess": {
-    "message": "i"
-  },
   "qf.menuitem.quickfolders.help": {
     "message": "Ajuda de QuickFolders…"
   },
-  "qf.menuitem.quickfolders.helpAccess": {
-    "message": "H"
-  },
   "qf.menuitem.quickfolders.options": {
     "message": "Opcions de QuickFolders"
-  },
-  "qf.menuitem.quickfolders.optionsAccess": {
-    "message": "O"
   },
   "qf.menuitem.quickfolders.register": {
     "message": "Registrar QuickFolders Pro…"
@@ -996,26 +950,17 @@
   "qf.menuitem.quickfolders.repairTabs": {
     "message": "Actualitza les Pestanyes Visibles!"
   },
-  "qf.menuitem.quickfolders.repairTabsAccess": {
-    "message": "V"
-  },
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Repara les icones de l'arbre"
   },
-  "qf.menuitem.quickfolders.splash" : {
+  "qf.menuitem.quickfolders.splash": {
     "message": "Últimes actualitzacions de notícies…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "Servei Tècnic de QuickFolders…"
   },
-  "qf.menuitem.quickfolders.supportAccess": {
-    "message": "S"
-  },
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "Mode Pintura"
-  },
-  "qf.menuitem.quickfolders.togglePaintModeAccess": {
-    "message": "p"
   },
   "qf.notification.categoryIsReadOnly": {
     "message": "Aquest element no es pot suprimir."
@@ -1040,9 +985,6 @@
   },
   "qf.notification.premium.btn.getLicense": {
     "message": "Obtenir Llicència!"
-  },
-  "qf.notification.premium.btn.hotKey": {
-    "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renova la llicència"
@@ -1238,9 +1180,6 @@
   "qf.tab.advanced": {
     "message": "Avançat"
   },
-  "qf.tab.general": {
-    "message": "General"
-  },
   "qf.tab.gopro": {
     "message": "Llicències"
   },
@@ -1379,9 +1318,6 @@
   "qfColorPickingWIP": {
     "message": "Ho sentim, aquesta funcinalitat encara no està acabada!"
   },
-  "qfCommandAccess": {
-    "message": "Q"
-  },
   "qfCommandPopup": {
     "message": "Accions de QuickFolders"
   },
@@ -1424,9 +1360,6 @@
   "qfDeleteFolder": {
     "message": "Esborrar Carpeta"
   },
-  "qfDeleteFolderAccess": {
-    "message": "D"
-  },
   "qfDeleteJunk": {
     "message": "Purga brossa"
   },
@@ -1439,9 +1372,6 @@
   "qfEditVirtual": {
     "message": "Propietats de la Cerca"
   },
-  "qfEditVirtualAccess": {
-    "message": "S"
-  },
   "qfEmptiedJunk": {
     "message": "Brossa esborrada i carpeta compactada"
   },
@@ -1451,17 +1381,8 @@
   "qfEmptyJunk": {
     "message": "Buida Correu Brossa"
   },
-  "qfEmptyJunkAccess": {
-    "message": "J"
-  },
   "qfEmptyTrash": {
     "message": "Buida la Paperera"
-  },
-  "qfEmptyTrashAccess": {
-    "message": "T"
-  },
-  "qfFolderAccess": {
-    "message": "F"
   },
   "qfFolderAlreadyBookmarked": {
     "message": "La carpeta ja és als marcadors."
@@ -1475,20 +1396,14 @@
   "qfFolderProperties": {
     "message": "Propietats de la carpeta…"
   },
-  "qfFolderPropertiesAccess": {
-    "message": "P"
-  },
   "qfFolderRepair": {
-    "message": "Carpeta de reparació"
+    "message": "Repara la carpeta"
   },
   "qfFolderRepairedMsg": {
     "message": "S'ha reparat la carpeta:"
   },
   "qfGetMail": {
     "message": "Recupera Missatges"
-  },
-  "qfGetMailAccess": {
-    "message": "G"
   },
   "qfInsertLineBreak": {
     "message": "Insereix un salt de línia"
@@ -1501,9 +1416,6 @@
   },
   "qfMarkAllRead": {
     "message": "Marca la Carpeta com a LLegida"
-  },
-  "qfMarkAllReadAccess": {
-    "message": "M"
   },
   "qfMarkAllReadRecursive": {
     "message": "Marca carpeta + subcarpetes com a llegit"
@@ -1526,9 +1438,6 @@
   "qfNewFolder": {
     "message": "Nova subcarpeta…"
   },
-  "qfNewFolderAccess": {
-    "message": "N"
-  },
   "qfNewName": {
     "message": "Entreu un nom per al marcador"
   },
@@ -1546,9 +1455,6 @@
   },
   "qfRemoveBookmark": {
     "message": "Esborrar marcador"
-  },
-  "qfRemoveBookmarkAccess": {
-    "message": "R"
   },
   "qfRemoveCategory": {
     "message": "Esborrar de la categoria actual"
@@ -1568,14 +1474,8 @@
   "qfRenameBookmark": {
     "message": "Reanomenar marcador…"
   },
-  "qfRenameBookmarkAccess": {
-    "message": "N"
-  },
   "qfRenameFolder": {
     "message": "Reanomenar Carpeta"
-  },
-  "qfRenameFolderAccess": {
-    "message": "R"
   },
   "qfRepairTreeIconsMissing": {
     "message": "No existeixen els fitxers d’icones següents:"
@@ -1588,9 +1488,6 @@
   },
   "qfSetCategory": {
     "message": "Seleccionar la categoria del marcador…"
-  },
-  "qfSetCategoryA": {
-    "message": "C"
   },
   "qfShowAlways": {
     "message": "Mostrar Sempre!"
@@ -1632,35 +1529,35 @@
     "message": "No mostrar més l'historial de versions després de les actualitzacions?"
   },
   "quickMove.help.head": {
-    "message" : "Ajuda per a {1}"
+    "message": "Ajuda per a {1}"
   },
   "quickMove.help.head.advanced": {
-    "message" : "Funcions avançades"
+    "message": "Funcions avançades"
   },
   "quickMove.help.l1a": {
-    "message" : "Escriviu l'inici d'un nom de carpeta o de paraules, delimitades per l'espai."
-  }, 
+    "message": "Escriviu l'inici d'un nom de carpeta o de paraules, delimitades per l'espai."
+  },
   "quickMove.help.l1b": {
-    "message" : "Els caràcters següents es consideren límits de paraules i no cal que els escriviu:"
-  }, 
+    "message": "Els caràcters següents es consideren límits de paraules i no cal que els escriviu:"
+  },
   "quickMove.help.l2a": {
-    "message" : "Escriviu {1} per introduir la carpeta de avis/pares/cercats."
-  }, 
+    "message": "Escriviu {1} per introduir la carpeta de avis/pares/cercats."
+  },
   "quickMove.help.l2b": {
-    "message" : "Les dues primeres lletres de qualsevol pare solen ser suficients. També podeu crear subcarpetes noves amb aquesta sintaxi."
-  }, 
+    "message": "Les dues primeres lletres de qualsevol pare solen ser suficients. També podeu crear subcarpetes noves amb aquesta sintaxi."
+  },
   "quickMove.help.l3a": {
-    "message" : "Escriviu {1} per ometre cap carpeta entremig."
-  }, 
+    "message": "Escriviu {1} per ometre cap carpeta entremig."
+  },
   "quickMove.help.l3b": {
-    "message" : "Això és útil per a jerarquies de carpetes més profundes, més complicades o desconegudes."
-  },   
+    "message": "Això és útil per a jerarquies de carpetes més profundes, més complicades o desconegudes."
+  },
   "quickMove.help.l4a": {
-    "message" : "Escriviu {1} per obtenir una llista de les carpetes utilitzades recentment."
-  }, 
+    "message": "Escriviu {1} per obtenir una llista de les carpetes que s'han introduït més recentment. El nombre de resultats depèn del vostre nivell de llicència."
+  },
   "quickMove.help.advanced": {
-    "message" : "A la pestanya QuickFolders Pro es poden configurar funcions més avançades, com ara dreceres de teclat per anar a una carpeta / moure correu o excloure carpetes dels resultats de cerca. Per accedir a aquestes i altres funcions premium, obtingueu una llicència Pro i doneu suport al futur de QuickFolders."
-  },  
+    "message": "A la pestanya QuickFolders Pro es poden configurar funcions més avançades, com ara dreceres de teclat per anar a una carpeta / moure correu o excloure carpetes dels resultats de cerca. Per accedir a aquestes i altres funcions premium, obtingueu una llicència Pro i doneu suport al futur de QuickFolders."
+  },
   "quickMove.singleMessage.goNext": {
     "message": "Mostra el següent missatge després de moure'n l'actual"
   },
@@ -1710,7 +1607,7 @@
     "message": "Renoveu la llicència."
   },
   "special-offer-content": {
-    "message": "Actualitzeu les funcions i estalvieu {boldStart}$reduction${boldEnd} comprant una llicència QuickFolders Pro. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}. O bé escolliu les funcions estàndard amb la nova {linkStart}Llicència estàndard{linkEnd}.",    
+    "message": "Actualitzeu les funcions i estalvieu {boldStart}$reduction${boldEnd} comprant una llicència QuickFolders Pro. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}. O bé escolliu les funcions estàndard amb la nova {linkStart}Llicència estàndard{linkEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1734,7 +1631,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Actualitzeu ara de QuickFolders Standard a Pro i estalvieu {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1747,10 +1644,10 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "special-offer-expiry": {
-    "message": "15 d'abril"
-  },    
+    "message": "1 de juliol"
+  },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
     "placeholders": {
@@ -1807,7 +1704,7 @@
         "example": "QuickFolders"
       }
     }
-  },  
+  },
   "time-and-effort": {
     "message": "$addonName$ requereix canvis en curs per seguir sent compatible amb la plataforma Mozilla. Treballo constantment per conservar la màxima funcionalitat possible per a futures versions de Thunderbird.",
     "placeholders": {
@@ -1826,6 +1723,15 @@
   "translated-by-google": {
     "description": "disclaimer.",
     "message": "traduccions proporcionades per google"
+  },
+  "update.tooltip": {
+    "message": "Feu clic aquí una vegada per llegir les novetats de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "updates.title": {
     "message": "Actualitzacions"
@@ -1846,7 +1752,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Nova clau [=] per a quickMove per llistar les carpetes més recents que van utilitzar quickMove/quickJump.{L2} {L1}El valor predeterminat de quickJump ara fa servir sempre l'última carpeta. Hi havia la possibilitat de fer coincidir altres suggeriments en comptes de la ubicació de l'última carpeta si es podien trobar noms de carpetes idèntics.{L2} {L1}El diàleg d'opcions es va convertir a HTML; aquest és un pas important per a QuickFolders per convertir-se en un correu pur basat en API. extensió sense permisos experimentals en el futur.{L2} {L1}S'han eliminat els problemes amb quickJump a l'arbre de carpetes en mode compacte.{L2} {L1}S'ha millorat el diàleg d'edició de categories.{L2}"
+    "message": "{L1}5.10.1: aquesta correcció de manteniment emmagatzema l'identificador del compte per a cada pestanya. L'actualització a Thunderbird 102 pot canviar el nom dels servidors a causa d'un pedaç; llavors el compte es pot utilitzar per a la reconstrucció de carpetes no vàlides.{L2}{L1}QuickFolders ara és {boldStart}compatible amb Thunderbird 102{boldEnd}. S'ha implementat FolderListener nou, la funció de {italicStart}Repara la carpeta{italicEnd} i enllaços web a la configuració.{L2} {L1}Corregit: les carpetes recents de la barra de navegació (barra d'eines de la carpeta actual) mostraven resultats obsolets en fer-hi clic. o arrossegant-hi correus electrònics.{L2} {L1}Corregit: Llista de lectura: si no es troba un correu electrònic a causa d'una carpeta no vàlida/suprimida, QuickFolders no mostrava el diàleg de cerca.{L2} {L1}Corregit: afegeix un títol a la pestanya de preferències.{L2} {L1}El diàleg de configuració heretat i els elements del menú s'han eliminat.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

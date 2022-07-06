@@ -211,6 +211,10 @@ addEventListener("load", async (event) => {
     let whatsNewLst = document.getElementById('whatsNewList');
     if (whatsNewLst) {
       whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
+        .replace(/\{boldStart\}/g,"<b>")
+        .replace(/\{boldEnd\}/g,"</b>")
+        .replace(/\{italicStart\}/g,"<i>")
+        .replace(/\{italicEnd\}/g,"</i>")
         .replace(/\{L1\}/g,"<li>")
         .replace(/\{L2\}/g,"</li>")
         .replace(/\[(.)\]/g,"<code>$1</code>");

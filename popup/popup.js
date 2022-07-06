@@ -9,7 +9,7 @@ END LICENSE BLOCK */
 /* shared module for installation popups */
 
 async function updateActions(addonName) { 
-  let endSale = new Date("2022-04-15"), // Next Sale End Date
+  let endSale = new Date("2022-07-01"), // Next Sale End Date
       currentTime = new Date();
       
   // Currently we do not notify this page if the license information is updated in the background.

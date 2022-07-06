@@ -1,7 +1,4 @@
 {
-  "_l10nstatus": {
-    "message": "SPLASH+UI"
-  },
   "account.label": {
     "message": "アカウント選択:"
   },
@@ -67,12 +64,6 @@
   "chkComposerSubfolders": {
     "message": "サブフォルダにも適用する"
   },
-  "chkHideFromQuickJump": {
-    "message": "Omit from quickJump / quickMove"
-  },
-  "chkHideFromQuickJump.tooltip": {
-    "message": "Omit this folder and its children in quickJump / quickMove results"
-  },
   "chkIgnoreCounts": {
     "message": "メール数のカウンタを隠す"
   },
@@ -84,12 +75,6 @@
   },
   "chkIgnoreUnread.tooltip": {
     "message": "フォルダに未読のメールが含まれていても、太字または未読のカウントを表示しないようにします"
-  },
-  "chkSetMailsUnread": {
-    "message": "Set mail to unread"
-  },
-  "chkSetMailsUnread.tooltip": {
-    "message": "If you move mail into this folder it is set to unread."
   },
   "cost-of-independence": {
     "message": "ソフトウェア開発には時間とお金がかかります - 多くのプラットフォームアプリとは異なり、アドオンは大企業によって作成されているわけではなく、Mozilla による支援もありません。"
@@ -138,14 +123,6 @@
   },
   "extend-your-license": {
     "message": "ライセンスを 1 年延長する。"
-  },
-  "extensionDescription": {
-    "description": "Description of the extension.",
-    "message": "Bookmark your favorite mail folders in Thunderbird."
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
     "message": "Thunderbird のメールフォルダをブックマークに追加します。"
@@ -216,15 +193,15 @@
     "description": "Shown if license expires more than a year from now",
     "message": "最近ライセンスを延長するか、寄付していただきありがとうございます。 このアドオンの将来の保証に役立ったので、このウィンドウを閉じるだけです。"
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "異なるバージョンの機能を比較するには、{linkStart}このリストを読んでください{linkEnd}。"
-  },  
+  },
   "licenseHead": {
     "message": "新しいライセンスシステム"
-  },  
+  },
   "licenseTypes": {
     "message": "QuickFoldersは、StandardとProの2つのライセンスを提供します。 これらは、Thunderbirdプラットフォームの変更に対応し、アドオンのイノベーションと修理に資金を提供するために必要です。 拡張機能を壊す可能性のある変更は毎年展開されるため、ライセンスも1年間有効です。"
-  },  
+  },
   "licenseWindow.title": {
     "message": "QuickFolders Pro ライセンス"
   },
@@ -255,10 +232,6 @@
   "mozillas-basic-platform": {
     "message": "Mozilla は、エンドユーザーであるあなたにソフトウェアを提供するための基本的なプラットフォームのみを提供します。ユーザーに支払いやサポートを依頼する必要がある場合、addons.thunderbird.net からこれを行うことはできません。これは、アプリ内決済機能や、iTunes や Google Play のようなライセンス管理が組み込まれた「アプリストア」ではありません。"
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "$addonName$を新しいプログラミングモデルに変換するための変更には数週間かかり、費用がかかりました。 次の2022バージョンにはさらに多くの変更があります。 このような複雑なアドオンを使用すると、コストのかかる作業が避けられなくなります。 これで私たちを助けてください。",
     "placeholders": {
@@ -279,12 +252,6 @@
   },
   "qf.alert.pasteFolders.formatErr": {
     "message": "タブを作成できませんでした。詳細は [ツール] > [エラーコンソール] を見てください。"
-  },
-  "qf.backupAndRestore": {
-    "message": "Backup / Restore"
-  },
-  "qf.btn.applyPosition": {
-    "message": "Apply position value!"
   },
   "qf.button.add": {
     "message": "追加"
@@ -325,9 +292,6 @@
   "qf.button.reorderButtonTop": {
     "message": "一番上へ"
   },
-  "qf.button.reorderButtonTop.accessKey": {
-    "message": "o"
-  },
   "qf.button.reorderButtonTop.toolTip": {
     "message": "フィルタを最初に実行するように並べ替えます"
   },
@@ -360,9 +324,6 @@
   },
   "qf.checkbox.currentFolder.show": {
     "message": "ツールバーを表示"
-  },
-  "qf.checkbox.currentfolder.lightweight": {
-    "message": "integrate with lightweight theme"
   },
   "qf.checkbox.debug": {
     "message": "デバッグモード"
@@ -445,9 +406,6 @@
   "qf.checkbox.shadows": {
     "message": "影"
   },
-  "qf.checkbox.shift": {
-    "message": "Shift"
-  },
   "qf.checkbox.showCountInSubFolders": {
     "message": "サブフォルダのメッセージ数も表示する"
   },
@@ -491,7 +449,7 @@
     "message": "最近使用したフォルダのボタン"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "最近開いたフォルダのタブを表示する"
+    "message": "[最近のフォルダ]タブ"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "右クリックで設定を開きます"
@@ -532,15 +490,6 @@
   "qf.checkbox.sortMenusAlpha.tooltip": {
     "message": "このオプションはサブフォルダが正しく並べ替えられない場合に使用してください。"
   },
-  "qf.checkbox.storeConfig.general": {
-    "message": "Include general settings"
-  },
-  "qf.checkbox.storeConfig.layout": {
-    "message": "Include advanced and layout"
-  },
-  "qf.checkbox.storeConfig.tabs": {
-    "message": "Include QuickFolders Tabs"
-  },
   "qf.checkbox.tabMenuIcon": {
     "message": "ツールバーメニューアイコン"
   },
@@ -568,9 +517,6 @@
   "qf.continueFilter.label": {
     "message": "フィルタ作成…"
   },
-  "qf.continueFilter.shortcut": {
-    "message": "F"
-  },
   "qf.copyfolders": {
     "message": "タブをコピー"
   },
@@ -591,12 +537,6 @@
   },
   "qf.currentFolderBackground.translucent": {
     "message": "半透明"
-  },
-  "qf.currentfolder.leftSpacer": {
-    "message": "Left Spacer:"
-  },
-  "qf.currentfolder.rightSpacer": {
-    "message": "Right Spacer:"
   },
   "qf.description.github": {
     "message": "すべての要望とバグ報告は github へお願いします"
@@ -716,9 +656,6 @@
   },
   "qf.foldercontextmenu.quickfolders.removeIcon": {
     "message": "カスタマイズしたアイコンを削除"
-  },
-  "qf.fpJsonFile": {
-    "message": "JSON File"
   },
   "qf.goNextUnread.auto": {
     "message": "確認せずに次のフォルダへ移動する (推奨)"
@@ -891,9 +828,6 @@
   "qf.label.quickFilters.link": {
     "message": "quickFilters を入手"
   },
-  "qf.label.quickfolders": {
-    "message": "QuickFolders:"
-  },
   "qf.label.renameselectedcategory": {
     "message": "選択したカテゴリを名前変更"
   },
@@ -911,9 +845,6 @@
   },
   "qf.label.themes": {
     "message": "テーマ:"
-  },
-  "qf.label.toolbarPosition": {
-    "message": "QuickFolders Bar Position"
   },
   "qf.label.versionhistory": {
     "message": "バージョン履歴を見る…"
@@ -941,9 +872,6 @@
   },
   "qf.licenseValidation.standard": {
     "message": "QuickFoldersライセンスを登録していただきありがとうございます-あなたはアドオンを大いに助けています！ より多くの機能が必要な場合は、いつでもプロライセンスにアップグレードできます。"
-  },  
-  "qf.loadConfig": {
-    "message": "Load Configuration…"
   },
   "qf.menu.Color": {
     "message": "色番号"
@@ -954,44 +882,23 @@
   "qf.menuitem.quickfolders.changeOrder": {
     "message": "ブックマークを並び替える"
   },
-  "qf.menuitem.quickfolders.changeOrderAccess": {
-    "message": "C"
-  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "孤立したタブを見つける"
-  },
-  "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
-    "message": "T"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "フォルダツールを表示"
   },
-  "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
-    "message": "D"
-  },
   "qf.menuitem.quickfolders.filters": {
     "message": "メッセージフィルタを作成…"
-  },
-  "qf.menuitem.quickfolders.filtersAccess": {
-    "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
     "message": "フォルダ検索…"
   },
-  "qf.menuitem.quickfolders.findAccess": {
-    "message": "i"
-  },
   "qf.menuitem.quickfolders.help": {
     "message": "QuickFolders ヘルプ…"
   },
-  "qf.menuitem.quickfolders.helpAccess": {
-    "message": "H"
-  },
   "qf.menuitem.quickfolders.options": {
     "message": "QuickFolders オプション…"
-  },
-  "qf.menuitem.quickfolders.optionsAccess": {
-    "message": "O"
   },
   "qf.menuitem.quickfolders.register": {
     "message": "QuickFolders Pro ライセンス..."
@@ -999,26 +906,17 @@
   "qf.menuitem.quickfolders.repairTabs": {
     "message": "タブを再描画する"
   },
-  "qf.menuitem.quickfolders.repairTabsAccess": {
-    "message": "V"
-  },
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "ツリーアイコンを修復"
   },
-  "qf.menuitem.quickfolders.splash" : {
+  "qf.menuitem.quickfolders.splash": {
     "message": "最新のアップデートニュース…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "QuickFolders サポート…"
   },
-  "qf.menuitem.quickfolders.supportAccess": {
-    "message": "S"
-  },
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "ペイントモード"
-  },
-  "qf.menuitem.quickfolders.togglePaintModeAccess": {
-    "message": "p"
   },
   "qf.notification.categoryIsReadOnly": {
     "message": "このアイテムは削除できません。"
@@ -1043,9 +941,6 @@
   },
   "qf.notification.premium.btn.getLicense": {
     "message": "ライセンス購入"
-  },
-  "qf.notification.premium.btn.hotKey": {
-    "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "ライセンスを更新"
@@ -1075,7 +970,6 @@
         "example": "12"
       }
     }
-    
   },
   "qf.notification.premium.text": {
     "message": "{1}はプレミアム機能です。使用するにはQuickFoldersProライセンスを取得してください。"
@@ -1179,9 +1073,6 @@
   "qf.prompt.contact.title": {
     "message": "QuickFolders サポートへの問い合わせ"
   },
-  "qf.prompt.loadFolders.confirm": {
-    "message": "Accept the loaded Tabs?"
-  },
   "qf.prompt.newFolder.createQFtab": {
     "message": "QuickFolders タブも作成する"
   },
@@ -1202,9 +1093,6 @@
   },
   "qf.prompt.readingList.searchMissingItem": {
     "message": "メールが見つかりません。検索中に別の場所へ移動された可能性があります。\n{1}\n\n再度検索しますか？"
-  },
-  "qf.prompt.restoreFolders": {
-    "message": "This will delete all QuickFolders tabs and replace with the items from the file.\n{0} entries were read.\nReplace tabs?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "ドメインライセンスに切り替えますか？"
@@ -1233,9 +1121,6 @@
   "qf.search.advanced": {
     "message": "高度な検索設定…"
   },
-  "qf.storeConfig": {
-    "message": "Save Configuration…"
-  },
   "qf.tab.advanced": {
     "message": "詳細"
   },
@@ -1263,9 +1148,6 @@
   "qf.themes.applePills.description": {
     "message": "Mac ユーザ向けのレイアウト - プレーンでシンプル、オプションの色付き。"
   },
-  "qf.themes.applePills.label": {
-    "message": "Apple Pills"
-  },
   "qf.themes.flatButtons.description": {
     "message": "標準のツールバーボタン - オリジナルのバージョン 0.5 に最も近い外観。"
   },
@@ -1287,9 +1169,6 @@
   "qf.themes.realButtons.description": {
     "message": "Pushbuttons - ダイアログウィンドウの標準のボタンのような外観。"
   },
-  "qf.themes.realButtons.label": {
-    "message": "Pushbuttons"
-  },
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders ツールバー"
   },
@@ -1301,9 +1180,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "[Bug 25021] のバグに遭遇した Mac システムのユーザ向けです"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = on top of other toolbars; 100 = bottom. High value depends on other Add-ons."
   },
   "qf.tooltip.RecentFolders": {
     "message": "最近開いたフォルダ"
@@ -1380,9 +1256,6 @@
   "qfColorPickingWIP": {
     "message": "申し訳ありませんが、この機能は未完成です!\n"
   },
-  "qfCommandAccess": {
-    "message": "Q"
-  },
   "qfCommandPopup": {
     "message": "QuickFolders コマンド"
   },
@@ -1425,9 +1298,6 @@
   "qfDeleteFolder": {
     "message": "フォルダを削除"
   },
-  "qfDeleteFolderAccess": {
-    "message": "D"
-  },
   "qfDeleteJunk": {
     "message": "迷惑メールを削除"
   },
@@ -1440,9 +1310,6 @@
   "qfEditVirtual": {
     "message": "プロパティを検索…"
   },
-  "qfEditVirtualAccess": {
-    "message": "S"
-  },
   "qfEmptiedJunk": {
     "message": "迷惑メールを削除してフォルダを最適化しました"
   },
@@ -1452,17 +1319,8 @@
   "qfEmptyJunk": {
     "message": "迷惑メールフォルダを空にする"
   },
-  "qfEmptyJunkAccess": {
-    "message": "J"
-  },
   "qfEmptyTrash": {
     "message": "ごみ箱を空にする"
-  },
-  "qfEmptyTrashAccess": {
-    "message": "T"
-  },
-  "qfFolderAccess": {
-    "message": "F"
   },
   "qfFolderAlreadyBookmarked": {
     "message": "すでにブックマークに追加されています。"
@@ -1476,23 +1334,11 @@
   "qfFolderProperties": {
     "message": "フォルダのプロパティ…"
   },
-  "qfFolderPropertiesAccess": {
-    "message": "P"
-  },
   "qfFolderRepair": {
     "message": "フォルダを修復"
   },
-  "qfFolderRepairAccess": {
-    "message": "F"
-  },
   "qfFolderRepairedMsg": {
     "message": "フォルダが修復されました:"
-  },
-  "qfGetMail": {
-    "message": "Get Messages"
-  },
-  "qfGetMailAccess": {
-    "message": "G"
   },
   "qfInsertLineBreak": {
     "message": "改行を挿入"
@@ -1500,17 +1346,8 @@
   "qfInsertSeparator": {
     "message": "区切りを挿入"
   },
-  "qfInvalidTabCount": {
-    "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
-  },
   "qfMarkAllRead": {
     "message": "フォルダを既読にする"
-  },
-  "qfMarkAllReadAccess": {
-    "message": "M"
-  },
-  "qfMarkAllReadRecursive": {
-    "message": "Mark folder + subfolders Read"
   },
   "qfMenuColor": {
     "message": "色番号"
@@ -1533,9 +1370,6 @@
   "qfNewFolder": {
     "message": "新しいサブフォルダ…"
   },
-  "qfNewFolderAccess": {
-    "message": "N"
-  },
   "qfNewName": {
     "message": "ブックマークの新しい名前を入力してください"
   },
@@ -1553,9 +1387,6 @@
   },
   "qfRemoveBookmark": {
     "message": "ブックマークを削除"
-  },
-  "qfRemoveBookmarkAccess": {
-    "message": "R"
   },
   "qfRemoveCategory": {
     "message": "現在のカテゴリから削除"
@@ -1575,14 +1406,8 @@
   "qfRenameBookmark": {
     "message": "ブックマークの名前を変更…"
   },
-  "qfRenameBookmarkAccess": {
-    "message": "N"
-  },
   "qfRenameFolder": {
     "message": "フォルダの名前を変更…"
-  },
-  "qfRenameFolderAccess": {
-    "message": "R"
   },
   "qfRepairTreeIconsMissing": {
     "message": "次のアイコンファイルがありません:"
@@ -1596,9 +1421,6 @@
   "qfSetCategory": {
     "message": "ブックマークをカテゴリに追加…"
   },
-  "qfSetCategoryA": {
-    "message": "C"
-  },
   "qfShowAlways": {
     "message": "常に表示する"
   },
@@ -1607,9 +1429,6 @@
   },
   "qfTabAdvancedOptions": {
     "message": "タブ固有のプロパティ..."
-  },
-  "qfTabDeleteOption": {
-    "message": "Do this with the remaining {0} folders."
   },
   "qfTabDeletePrompt": {
     "message": "このタブを削除しますか？"
@@ -1639,35 +1458,35 @@
     "message": "更新後のバージョン履歴の表示を止めますか？"
   },
   "quickMove.help.head": {
-    "message" : "{1}のヘルプ"
+    "message": "{1}のヘルプ"
   },
   "quickMove.help.head.advanced": {
-    "message" : "高度な機能"
+    "message": "高度な機能"
   },
   "quickMove.help.l1a": {
-    "message" : "スペースで区切って、フォルダー名またはフォルダー内の単語の先頭を入力します。"
-  }, 
+    "message": "スペースで区切って、フォルダー名またはフォルダー内の単語の先頭を入力します。"
+  },
   "quickMove.help.l1b": {
-    "message" : "次の文字は単語の境界と見なされ、入力する必要はありません。"
-  }, 
+    "message": "次の文字は単語の境界と見なされ、入力する必要はありません。"
+  },
   "quickMove.help.l2a": {
-    "message" : "祖父母/親/検索されたフォルダに入るには{1}と入力します。"
-  }, 
+    "message": "祖父母/親/検索されたフォルダに入るには{1}と入力します。"
+  },
   "quickMove.help.l2b": {
-    "message" : "通常、親フォルダの最初の2文字で十分です。 この構文で新しいサブフォルダーを作成することもできます。"
-  }, 
+    "message": "通常、親フォルダの最初の2文字で十分です。 この構文で新しいサブフォルダーを作成することもできます。"
+  },
   "quickMove.help.l3a": {
-    "message" : "間にあるフォルダをスキップするには、{1}と入力します。"
-  }, 
+    "message": "間にあるフォルダをスキップするには、{1}と入力します。"
+  },
   "quickMove.help.l3b": {
-    "message" : "これは、より深く、より複雑な、または未知のフォルダー階層に役立ちます。"
-  },   
+    "message": "これは、より深く、より複雑な、または未知のフォルダー階層に役立ちます。"
+  },
   "quickMove.help.l4a": {
-    "message" : "{1}と入力して、最近使用したフォルダのリストを取得します。"
-  }, 
+    "message": "{1}と入力して、最後に入力されたフォルダーのリストを取得します。 結果の数は、ライセンスレベルによって異なります。"
+  },
   "quickMove.help.advanced": {
-    "message" : "フォルダーに移動したり、メールを移動したり、検索結果からフォルダーを除外したりするためのキーボードショートカットなどのより高度な機能は、QuickFoldersProタブで構成できます。 これらおよびその他のプレミアム機能にアクセスするには、Proライセンスを取得し、QuickFoldersの将来をサポートしてください。"
-  },  
+    "message": "フォルダーに移動したり、メールを移動したり、検索結果からフォルダーを除外したりするためのキーボードショートカットなどのより高度な機能は、QuickFoldersProタブで構成できます。 これらおよびその他のプレミアム機能にアクセスするには、Proライセンスを取得し、QuickFoldersの将来をサポートしてください。"
+  },
   "quickMove.singleMessage.goNext": {
     "message": "現在のメールを移動した後、次のメールを表示する"
   },
@@ -1721,7 +1540,7 @@
     "placeholders": {
       "expirydate": {
         "content": "$1",
-        "example": "8月22日"
+        "example": "August 22"
       },
       "reduction": {
         "content": "$2",
@@ -1741,7 +1560,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "今すぐQuickFolders StandardからProにアップグレードして、{boldStart} $reduction$ {boldEnd}を節約してください！ この特別オファーは、{boldStart} $expirydate$ {boldEnd}までご利用いただけます。",
     "placeholders": {
@@ -1754,9 +1573,9 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "special-offer-expiry": {
-    "message": "4月15日"    
+    "message": "7月1日"
   },
   "special-offer-head": {
     "message": "$addon$の互換性を維持するのに役立ちます",
@@ -1781,7 +1600,7 @@
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "quickFilters"
+        "example": "QuickFolders"
       }
     }
   },
@@ -1834,6 +1653,15 @@
     "description": "disclaimer.",
     "message": "グーグルによって提供される翻訳"
   },
+  "update.tooltip": {
+    "message": "$addonName$ の新機能を読むには、ここをクリックしてください。",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "更新について"
   },
@@ -1853,7 +1681,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} quickMoveの新しい[=]キーは、quickMove/quickJumpによって使用された最新のフォルダーを一覧表示します。{L2}{L1}quickJumpのデフォルト値は、常に最後のフォルダーを使用するようになりました。 同一のフォルダ名が見つかった場合、最後のフォルダの場所ではなく、他の提案と一致する可能性がありました。{L2} {L1}オプションダイアログがHTMLに変換されました-これは、QuickFoldersが純粋なAPIベースのメールになるための重要なステップです 将来的に実験的な許可のない拡張機能。{L2}{L1}コンパクトモードのフォルダツリーでのquickJumpの問題を削除しました。{L2}{L1}カテゴリ編集ダイアログを改善しました。{L2}"
+    "message": "{L1} 5.10.1-このメンテナンス修正により、すべてのタブのアカウントIDが保存されます。 Thunderbird 102にアップグレードすると、パッチが原因でサーバーの名前が変更される可能性があります。その場合、アカウントは無効なフォルダの再構築に使用できます。{L2}{L1}QuickFoldersはThunderbird102と互換性があります。設定に新しいFolderListener、「フォルダの修復」機能、およびWebリンクを実装しました。{L2} {L1}修正：ナビゲーションバー（現在のフォルダツールバー）の最近のフォルダをクリックすると、古い結果が表示されました またはメールをドラッグします。{L2}{L1}修正済み：閲覧リスト-無効な/削除されたフォルダが原因でメールが見つからない場合、QuickFoldersは検索ダイアログを表示しませんでした。{L2} {L1}修正済み：タイトルを追加 [設定]タブに移動します。{L2}{L1}レガシー設定ダイアログとメニュー項目が削除されました。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

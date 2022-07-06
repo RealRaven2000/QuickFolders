@@ -710,10 +710,26 @@ function initButtons() {
   // oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog("options_" + options.currentOptionsTab); window.close(); });">Buy License</button>
   document.getElementById("btnLicense").addEventListener("click", (event) => { QuickFolders.Interface.showLicenseDialog(); });
   document.getElementById("btnDefaultRadius").addEventListener("click", (event) => { QuickFolders.Options.setDefaultButtonRadius(); });
-  document.getElementById("qf-stateColors-defaultButton").addEventListener("click", (event) => { QuickFolders.Options.setDefaultColors(); });
-  document.getElementById("qf-options-header-description").addEventListener("click", (event) => { messenger.Utilities.showVersionHistory();
+  document.getElementById("defaultColors").addEventListener("click", (event) => { QuickFolders.Options.setDefaultColors(); });
+  document.getElementById("qf-options-header-description").addEventListener("click", (event) => { 
+    messenger.Utilities.showVersionHistory();
     window.close(); 
   });
+  document.getElementById("qf-options-icon").addEventListener("click", (event) => { QuickFolders.Options.collapseHead(); });
+  document.getElementById("qf-youtube").addEventListener("click", (event) => {
+    messenger.windows.openDefaultBrowser("https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A");
+  });
+  document.getElementById("applyCurrentBackground").addEventListener("click", (event) => { 
+    QuickFolders.Options.setCurrentToolbarBackgroundCustom(); 
+  });
+  document.getElementById("minHeightFix").addEventListener("click", (event) => { 
+    QuickFolders.Util.openLinkInTab("https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25021"); 
+  });
+  document.getElementById("L0").addEventListener("click", (event) => { 
+    QuickFolders.Util.openLinkInTab("https://quickfolders.org/"); 
+    window.close(); 
+  });  
+
 
 }
 
@@ -808,21 +824,15 @@ async function initBling() {
 console.log("i18n.updateDocument");
 i18n.updateDocument();
 
+let supportLabel = document.getElementById("contactLabel"),
+    supportString = QuickFolders.Util.getBundleString("qf.description.contactMe", [QuickFolders.Util.ADDON_SUPPORT_MAIL]); // substitution parameter
+supportLabel.textContent = supportString;
+
 loadPrefs();
 preselectTab();
 initLicenseInfo();
 initVersionPanel();
 initButtons();
-/*  THIS CODE CANNOT WORK "Uncaught ReferenceError: ChromeUtils is not defined"
-debugger;
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
-*/
-
 
 initToolbarBackground();
 initBling();

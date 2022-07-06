@@ -2,107 +2,95 @@
   "_l10nstatus": {
     "message": "SPLASH"
   },
-  "active-version-info" : {
-    "message": "Käytät nyt  {boldStart} versiota $addonVer$ {boldEnd} Thunderbird $appVer$ lla.",
+  "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Käytät nyt  {boldStart} versiota $addonVer$ {boldEnd} Thunderbird $appVer$ lla.",
     "placeholders": {
-      "addonVer" : {
-        "content" : "$1", 
-        "example" : "Version 1.1"
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
       },
-      "appVer" : {
-        "content" : "$2",
-        "example" : "78.0b4"
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
       }
-      
     }
-  },    
-  "addon-authors-struggle" : {
-    "message" : "Jatkaaksemme hyödyllisyyttä meidän lisäosakehittäjien on nyt rahoitettava korjaamiseen ja uudelleenkirjoittamiseen tarvittavat resurssit, jotta käyttäjät voivat edelleen hyötyä tarjoamistamme toiminnoista."
-  } , 
+  },
+  "addon-authors-struggle": {
+    "message": "Jatkaaksemme hyödyllisyyttä meidän lisäosakehittäjien on nyt rahoitettava korjaamiseen ja uudelleenkirjoittamiseen tarvittavat resurssit, jotta käyttäjät voivat edelleen hyötyä tarjoamistamme toiminnoista."
+  },
   "btn-extend-license": {
-    "message" : "Haluan jatkaa lisenssini vuodella"
-  } ,
+    "message": "Haluan jatkaa lisenssini vuodella"
+  },
   "btn-renew-license": {
-    "message" : "Haluan uusia lisenssin"
-  } ,
+    "message": "Haluan uusia lisenssin"
+  },
   "btn-want-a-license": {
-    "message" : "Valitse lisenssi"
-  } ,
-  "btn-want-to-donate" : {
-    "message" : "Haluan auttaa kertalahjoituksella."
-  } ,  
-  "cost-of-independence" : {
-    "message" : "Ohjelmistokehitys maksaa aikaa ja rahaa - toisin kuin monet alustasovellukset, suuret yritykset eivät ole kirjoittaneet lisäosia, eikä Mozilla tue niitä millään tavalla."
-  } ,  
-  "donate" : {
-    "message" : "Auta kertalahjoituksella."
-  },      
-  "donate-heading" : {
-    "message" : "Apua lahjoittamalla!"
-  } ,
-  "extend-your-license" : {
-    "message" : "Harkitse lisenssin jatkamista vuodella."
-  },        
-  "extensionName": {
-    "message": "QuickFolders",
-    "description": "Name of the extension."
+    "message": "Valitse lisenssi"
   },
-  "extensionDescription": {
-    "message": "Bookmark your favorite mail folders in Thunderbird.",
-    "description": "Description of the extension."
+  "btn-want-to-donate": {
+    "message": "Haluan auttaa kertalahjoituksella."
   },
-  "qfMoveFolderOrNewTab": {
-    "message": "Vedä kansiot tyhjälle alueelle työkalupalkissa - Jos haluat siirtää kansiota, pidä SHIFT-näppäintä alhaalla ja vedä välilehteen."
+  "cost-of-independence": {
+    "message": "Ohjelmistokehitys maksaa aikaa ja rahaa - toisin kuin monet alustasovellukset, suuret yritykset eivät ole kirjoittaneet lisäosia, eikä Mozilla tue niitä millään tavalla."
+  },
+  "donate": {
+    "message": "Auta kertalahjoituksella."
+  },
+  "donate-heading": {
+    "message": "Apua lahjoittamalla!"
+  },
+  "extend-your-license": {
+    "message": "Harkitse lisenssin jatkamista vuodella."
   },
   "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Asennus $addonName$ onnistui",
-    "description": "page heading. first placeholder will be replaced with Add-on name",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },  
+  },
   "heading-updated": {
-    "message": "$addonName$ päivitetty onnistuneesti",
     "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "$addonName$ päivitetty onnistuneesti",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },  
+  },
   "intro": {
     "message": "QuickFolders Pron vuotuinen lisenssi tarjoaa sinulle kaikki premium -ominaisuudet vuodeksi. Sen avulla voimme myös tukea ja kasvattaa tuotetta entisestään ja muuttaa sen vieläkin mahtavammaksi."
   },
-  "label-remind-me" : {
+  "label-remind-me": {
     "message": "Muistuta minua uudelleen $countDays$ päivän kuluttua.",
     "placeholders": {
-      "countDays" : {
-        "content" : "$1", 
-        "example" : "10"
-      }    
-    }    
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
-  "license-is-extended" : {
-    "message": "Kiitos, että lisenssit äskettäin tai olet lahjoittanut. Koska olet auttanut todistamaan tämän lisäosan tulevaisuudessa, voit yksinkertaisesti sulkea tämän ikkunan.",
-    "description": "Shown if license expires more than a year from now"
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Kiitos, että lisenssit äskettäin tai olet lahjoittanut. Koska olet auttanut todistamaan tämän lisäosan tulevaisuudessa, voit yksinkertaisesti sulkea tämän ikkunan."
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
   },
   "licenseHead": {
     "message": "Uusi lisenssijärjestelmä"
-  },  
+  },
   "licenseTypes": {
     "message": "QuickFolders tarjoaa kaksi lisenssiä, Standard ja Pro; nämä ovat välttämättömiä Thunderbird-alustan muutosten seuraamiseksi ja lisäosan innovaatioiden ja korjausten rahoittamiseksi. Koska muutokset, jotka mahdollisesti rikkovat laajennustoiminnon, otetaan käyttöön vuosittain, lisenssi on myös voimassa yhden vuoden."
-  },  
+  },
   "licenseWindow.title": {
     "message": "QuickFolders Pro -lisenssi"
-  },  
+  },
   "license_restriced.std": {
     "message": "Vakiolisenssi - rajoitettu Pro -toiminto. Lue lisää…"
   },
@@ -114,7 +102,7 @@
     "placeholders": {
       "maxTabs": {
         "content": "$1",
-        "example": "10"
+        "example": "25"
       }
     }
   },
@@ -123,33 +111,29 @@
     "placeholders": {
       "maxTabs": {
         "content": "$1",
-        "example": "25"
+        "example": "10"
       }
     }
   },
-  "mozillas-basic-platform" : {
-    "message" : "Mozilla tarjoaa vain perusalustan ohjelmistojemme toimittamiseksi sinulle, loppukäyttäjille. Jos meidän on pyydettävä käyttäjiltämme maksua tai tukea, emme voi tehdä tätä osoitteesta addons.thunderbird.net - se ei ole '' sovelluskauppa '', jossa on sisäänrakennetut paywallit tai lisenssien hallinta, kuten iTunes tai Google Play."
-  } ,  
-  "notificationTitle": {
-    "message": "Click notification",
-    "description": "Title of the click notification."
-  },  
+  "mozillas-basic-platform": {
+    "message": "Mozilla tarjoaa vain perusalustan ohjelmistojemme toimittamiseksi sinulle, loppukäyttäjille. Jos meidän on pyydettävä käyttäjiltämme maksua tai tukea, emme voi tehdä tätä osoitteesta addons.thunderbird.net - se ei ole '' sovelluskauppa '', jossa on sisäänrakennetut paywallit tai lisenssien hallinta, kuten iTunes tai Google Play."
+  },
   "ongoing-work": {
     "message": "Muutokset $addonName$ muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota 2022 on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä.",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },  
-  "purchase-a-license" : {
-    "message" : "Osta lisenssi."
-  },       
-  "purchase-heading" : {
-    "message" : "Lisenssin ostaminen!"
-  }, 
-  "qf.menuitem.quickfolders.splash" : {
+  },
+  "purchase-a-license": {
+    "message": "Osta lisenssi."
+  },
+  "purchase-heading": {
+    "message": "Lisenssin ostaminen!"
+  },
+  "qf.menuitem.quickfolders.splash": {
     "message": "Viimeisimmät päivitykset…"
   },
   "qf.notification.newsFlash": {
@@ -160,11 +144,14 @@
         "example": "QuickFolders"
       }
     }
-  },  
-  "renew-your-license" : {
-    "message" : "Uusi lisenssi."
-  },    
-  "special-offer-content" : {
+  },
+  "qfMoveFolderOrNewTab": {
+    "message": "Vedä kansiot tyhjälle alueelle työkalupalkissa - Jos haluat siirtää kansiota, pidä SHIFT-näppäintä alhaalla ja vedä välilehteen."
+  },
+  "renew-your-license": {
+    "message": "Uusi lisenssi."
+  },
+  "special-offer-content": {
     "message": "Päivitä ominaisuudet ja säästä {boldStart} $reduction$ {boldEnd} ostamalla {linkStartPro}QuickFolders Pro -lisenssi{linkEnd}! Tämä erikoistarjous on voimassa {boldStart} $expirydate$ {boldEnd} asti. Tai valitse vakiotoiminnot uudella {linkStart}vakiolisenssillä{linkEnd}.",
     "placeholders": {
       "expirydate": {
@@ -189,7 +176,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "Päivitä nyt QuickFolders Standardista Pro -versioon ja säästä {boldStart}$reduction${boldEnd}! Tämä erikoistarjous on voimassa {boldStart}$expirydate${boldEnd} asti.",
     "placeholders": {
@@ -202,10 +189,10 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "special-offer-expiry": {
-    "message": "15. huhtikuuta"
-  }, 
+    "message": "1. heinäkuuta"
+  },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {
@@ -215,7 +202,7 @@
       }
     }
   },
-  "special-offer-intro" : {
+  "special-offer-intro": {
     "message": "{boldStart} Hei {name} {boldEnd}, tue $addon$ hankkimalla lisenssi. Thunderbird -koodi kehittyy jatkuvasti, ja tarvitsemme {boldStart} apuasi {boldEnd} pysyäksesi ajan tasalla!",
     "placeholders": {
       "addon": {
@@ -223,77 +210,85 @@
         "example": "QuickFolders"
       }
     }
-  }, 
-  "support-preference" : {
+  },
+  "support-preference": {
     "message": "Tämä on ensisijainen tapa tukea $addonName$.",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "quickFilters"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  }, 
-  "support-suggestion" : {
+  },
+  "support-suggestion": {
     "message": "Jotta $addonName$ pysyisi toiminnassa ja elossa, tee se elintärkeäksi palvelukseksi:",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },  
-  "thanks-for-updating-intro": {
-    "message": "Kiitos $addonName$ päivittämisestä.",
-    "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
-    }
-  },  
+  },
   "thanks-for-installing-intro": {
     "message": "Kiitos $addonName$ -asennuksesta.",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },    
-  "time-and-effort": { 
+  },
+  "thanks-for-updating-intro": {
+    "message": "Kiitos $addonName$ päivittämisestä.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "time-and-effort": {
     "message": "$addonName$ vaatii jatkuvia muutoksia, jotta se pysyy yhteensopivana Mozilla-alustan kanssa. Pyrin jatkuvasti säilyttämään mahdollisimman paljon toiminnallisuutta tuleville Thunderbird-versioille.",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
-  },  
-  "translated-by-google" : {
-    "message": "käännökset tarjoaa google",
-    "description": "disclaimer."
-  }, 
-  "whats-new-btn" : {
+  },
+  "translated-by-google": {
+    "description": "disclaimer.",
+    "message": "käännökset tarjoaa google"
+  },
+  "update.tooltip": {
+    "message": "Napsauta tätä kerran lukeaksesi mitä uutta kohteessa $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "whats-new-btn": {
     "message": "Mikä on uutta?"
-  },  
-  "whats-new-head" : {
+  },
+  "whats-new-head": {
     "message": "Tärkeät muutokset"
-  },  
-  "whats-new-intro" : {
-    "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):" 
+  },
+  "whats-new-intro": {
+    "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Uusi [=] QuickMoven näppäin luetteloi viimeisimmät QuickMoven/quickJumpin käyttämät kansiot.{L2} {L1}QuickJumpin oletusarvo käyttää nyt aina viimeistä kansiota. Jos identtiset kansionimet löytyivät, oli mahdollista yhdistää muita ehdotuksia kansion viimeisen sijainnin sijasta.{L2} {L1}Asetukset-valintaikkuna muutettiin HTML-muotoon - tämä on tärkeä askel QuickFoldersille kohti puhdasta API-pohjaista postia. laajennus ilman kokeellisia käyttöoikeuksia tulevaisuudessa.{L2} {L1}Poistettu QuickJumpin ongelmat kompaktin tilan kansiopuussa.{L2} {L1}Parannettu luokkien muokkausikkuna.{L2}"
+    "message": "{L1}5.10.1 – tämä huoltokorjaus tallentaa tilitunnuksen jokaiselle välilehdelle. Päivittäminen Thunderbird 102:een saattaa nimetä palvelimet uudelleen korjaustiedoston takia. Tällöin tiliä voidaan käyttää virheellisten kansioiden rekonstruoimiseen.{L2}{L1}QuickFolders on nyt yhteensopiva Thunderbird 102:n kanssa. Otettu käyttöön uusi FolderListener, {italicStart}Korjaa kansio{italicEnd} -toiminto ja verkkolinkit asetuksissa.{L2} {L1}Korjattu: Navigointipalkin (nykyisen kansion työkalurivin) viimeisimmät kansiot näyttivät vanhentuneita tuloksia, kun sitä napsautettiin tai vetää sähköpostit siihen.{L2} {L1}Korjattu: lukulista – jos sähköpostia ei löydy virheellisen/poistetun kansion vuoksi, QuickFolders ei näyttänyt hakuikkunaa.{L2} {L1}Korjattu: lisää otsikko Asetukset-välilehteen.{L2} {L1}Vanhat asetusten valintaikkuna ja valikkokohdat poistettiin.{L2}"
   },
   "window-title": {
-    "message": "Tervetuloa osoitteeseen $addonName$",
     "description": "page title. first placeholder will be replaced with Add-on name",
+    "message": "Tervetuloa osoitteeseen $addonName$",
     "placeholders": {
-      "addonName" : {
-        "content" : "$1", 
-        "example" : "QuickFolders"
-      }    
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
   }
- 
 }

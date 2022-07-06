@@ -578,8 +578,7 @@ QuickFolders.Options = {
     // we should not call displayNavigationToolbar directly but use the event broadcaster to notify all windows.
     messenger.runtime.sendMessage({ command:"toggleNavigationBar" });
   },
-    
-  
+
   stripedSupport : function(paletteType) {
     switch(parseInt(paletteType)) {
       case 1: // Standard Palette
@@ -818,8 +817,7 @@ QuickFolders.Options = {
       }
     }
   },
-    
-  
+
   // put appropriate label on the license button and pass back the label text as well
   labelLicenseBtn : function (btnLicense, validStatus) {
     switch(validStatus) {
@@ -919,8 +917,12 @@ QuickFolders.Options = {
         return {name:null, style: null, preview: null};
     }
   },
-    
-  
+
+  // save space, for visually impaired
+  collapseHead: function collapseHead() {
+    let hdr = document.getElementById("qf-header-container");
+    hdr.setAttribute("collapsed", true);
+  },  
   
 }  // QuickFolders.Options
 

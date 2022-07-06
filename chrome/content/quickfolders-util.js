@@ -190,10 +190,6 @@ QuickFolders.Util = {
     Services.prompt.alert(null, caption, msg);
   },
 
-  get supportsMap() {
-    return (typeof Map == "function");
-  } ,
-
   get Version() {
     // this used to call VersionProxy() which opened quickfolders.init
     QuickFolders.Util.logDebug("Version() getter. addonInfo:", QuickFolders.Util.addonInfo);
@@ -272,21 +268,7 @@ QuickFolders.Util = {
 
   slideAlert: function slideAlert(title, text, icon) {
     /*  omit mx method until permissions issue is solved: */
-    // QuickFolders.Util.notifyTools.notifyBackground({ func: "slideAlert", args: [title, text, icon] });
-		const util = QuickFolders.Util;
-		util.logDebug('slideAlert (legacy): ' + text);
-		setTimeout(function() {
-				try {
-					if (!icon)  
-						icon = "chrome://quickfolders/content/skin/ico/QuickFolders_32.svg";
-					Components.classes['@mozilla.org/alerts-service;1'].
-								getService(Components.interfaces.nsIAlertsService).
-								showAlertNotification(icon, title, text, false, '', null, 'quickfolders-alert');
-				} catch(e) {
-				// prevents runtime error on platforms that don't implement nsIAlertsService
-				}
-			} , 0);
-      
+    QuickFolders.Util.notifyTools.notifyBackground({ func: "slideAlert", args: [title, text, icon] });
   } ,
   
 //  disableFeatureNotification: function disableFeatureNotification(featureName) {
@@ -768,15 +750,7 @@ QuickFolders.Util = {
         return null;
       }
       step = 1;
-
-      let messageList,
-          isListArray = util.versionGreaterOrEqual(util.ApplicationVersion, "85"); // [issue 96]
-          
-      if (isListArray) 
-        messageList = [];
-      else
-        messageList = Components.classes["@mozilla.org/array;1"].createInstance(Ci.nsIMutableArray);
-        
+      let messageList = []; // nsIMutableArray was removed in v85
       step = 2;
 
       // copy what we need...
@@ -803,14 +777,12 @@ QuickFolders.Util = {
               + 'Reading List item marked as invalid.');
             entry.FolderUri = targetFolder.URI; 
             entry.invalid = true;
+            entry.messageId = Message.messageId; // preserve MessagId as entry.Uri will be always WRONG
           }
         }
 
         messageIdList.push(Message.messageId); 
-        if (isListArray) 
-          messageList.push(Message);
-        else
-          messageList.appendElement(Message , false);
+        messageList.push(Message);
         // [issue 23]  quick move from search list fails if first mail is already in target folder
         //  What to do if we have "various" source folders?
         if (Message.folder.QueryInterface(Ci.nsIMsgFolder) != targetFolder) {

@@ -471,6 +471,41 @@
         <a href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-version-page">buy a QuickFolders Pro license</a>
       </p>
       <ul>
+        <h4 class="inList">Maintenance Version 5.10.2 - 06/07/2022</h4>
+        <li>
+          <p>
+            <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a>
+            5.10.2 - this maintenance is able to reconstruct tabs after upgrading from 
+            Thunderbird 91 to 102 even if the server and username have been modified due to 
+            <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1573690">bug 1573690</a>.
+            Automatic reconstruction (and avoiding invalid tabs) in this case is only possible
+            if 5.10.1 was previously run on an unmodified profile (Thunderbird 91.11 or older)
+          </p>
+          <p>
+            If the folder URIs were already disconnected by upgrading to Thundebird 102 beforehand,
+            you can now get troubleshooting information via right-click <i>QuickFolders Commands / 
+            Tab Specific Properties...</i> This will copy the assumed account and the (invalid) folder URI
+            to the clipboard.<br>
+            <img class="screenshot" src="images/troubleshoot-invalidtab-info.png" alt="invalid tab info">
+          </p>
+          <p>
+            For reference you can click on any real folder in the folder tree and then SHIFT+Click
+            on the QuickFolders tool icon, then select <i>Debug / Copy current folder info!</i>
+            This will copy the account and correct expected URI to the clipboard.
+            By comparison of these data points it I can fix your folders through exporting 
+            the folder configuration and then text search+replace the differing URIs 
+            (or by simply inserting the correct account)<br>
+            <img class="screenshot" src="images/troubleshoot-currenfolder-info.png" alt="show folder uri info">
+          </p>
+        </li>
+        <li>
+          Fixed the missing icon on the advanced tab properties panel, which is hidden by style changes in Thunderbird 102
+        </li>
+        <li>
+          Fixed icon coloring for the tools menu in dark mode (Thunderbird 102).
+        </li>
+        
+        
         <h4 class="inList">Maintenance Version 5.10.1 - 05/07/2022</h4>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a>
@@ -478,6 +513,7 @@
           When upgrading to Thunderbird 102, this can potentially rename the servers due to 
           <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1573690">bug  1573690</a>
           - then the account can be used for reconstruction of invalid folders.
+          I am currently working on code that can help in fixing this problem automatically.
         </li>
         <li>
           Fixed icon spacings in folder popup menus in Tb102.

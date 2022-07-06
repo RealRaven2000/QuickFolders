@@ -23,7 +23,7 @@ var mylisteners = {};
 async function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.Util.logDebug(`qf-messenger.js onLoad(${activatedWhileWindowOpen})`);
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
-  layout.setAttribute("title", "QuickFolderStyles");
+  // layout.setAttribute("title", "QuickFolderStyles");
   
   // version specific:
   WL.injectCSS("chrome://quickfolders-skins/content/qf-current.css");  
@@ -152,6 +152,11 @@ async function onLoad(activatedWhileWindowOpen) {
                   label="Debug">
               <menupopup class="dbgMenu">
               
+                <menuitem id="QuickFolders-ToolbarPopup-dbg0"
+                            label="Copy current folder info!"
+                            oncommand="QuickFolders.Interface.copyCurrentFolderInfo();"
+                            class="menuitem-iconic"
+                            />                                      
                   <menuitem id="QuickFolders-ToolbarPopup-dbg1"
                                       label="Test Tree only Icons"
                                       oncommand="QuickFolders.Interface.testTreeIcons();" 
@@ -179,11 +184,6 @@ async function onLoad(activatedWhileWindowOpen) {
                                       oncommand="QuickFolders.Util.loadPlatformStylesheet();"
                                       class="menuitem-iconic"
                                       />
-                <menuitem id="QuickFolders-ToolbarPopup-dbg5"
-                            label="Test mail notification popup"
-                                      oncommand="MailNotificationManager.something();"
-                                      class="menuitem-iconic"
-                                      />                                      
 
 
               </menupopup>

@@ -72,6 +72,7 @@ QuickFolders.Model = {
           iconURI = null;
       if (typeof gFilterTreeView !== "undefined" 
           && gFolderTreeView.supportsIcons
+          && folder
 					&& folder.getStringProperty) {
         try {
           iconURI =  unpackURI(folder.getStringProperty("iconURL"));
@@ -468,6 +469,7 @@ QuickFolders.Model = {
   
   correctFolderEntries: function (entries, withStorage = true) {
     let needsPatch = false;
+    let is102 = QuickFolders.Util.versionGreaterOrEqual(QuickFolders.Util.Appversion, "102");
     
     for (let i=0; i<entries.length; i++) {
       let e = entries[i];
@@ -496,6 +498,45 @@ QuickFolders.Model = {
             e.account = "?server";
           }
         }
+      }
+      // Thunderbird 102 correction: read valid! account attribute, then try to match the folder to the account.
+      else if (is102) {
+        if (e.account && e.account.startsWith("acc")) {
+          let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
+          if (!f) {
+            let ac = MailServices.accounts.getAccount(e.account);
+            if (ac && ac.incomingServer) {
+              let serverStart = e.uri.indexOf("//");
+              let fullPath;
+              if (serverStart>0) {
+                fullPath = e.uri.substring(serverStart+2);
+              }
+              // find first slash
+              let pathStart = fullPath.indexOf("/");
+              if (pathStart>0) {
+                let relativePath = fullPath.substring(pathStart); // starts with a "/"
+                let newUri = ac.incomingServer.serverURI + relativePath;
+                f = QuickFolders.Model.getMsgFolderFromUri(newUri, false);
+                if (f) {
+                  needsPatch = true;
+                  console.log(`QuickFolders\nSuccessfully fixed URI for folder ${f.prettyName}:\n%c${newUri}`, "background: blue; color:white;");
+                  e.uri = newUri;
+                  delete e.invalid;
+                }
+                else {
+                  console.log(`QuickFolders\nCannot find folder path in ${e.account}:\n%c${relativePath}`, "background: rgb(120,0,0); color:white;");
+                }
+              }
+            }
+          }
+          else {
+            // folder was found, clear invalid flag!
+            if (e.invalid) {
+              delete e.invalid;
+            }
+          }
+        }
+        
       }
     }
     if (needsPatch && withStorage) {

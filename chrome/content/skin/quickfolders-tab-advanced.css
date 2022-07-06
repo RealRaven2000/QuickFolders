@@ -19,9 +19,21 @@
 }
 
 #btnClose {
-  -moz-appearance: -moz-window-button-close;
-	margin-top: -4px;
+  /*-moz-appearance: -moz-window-button-close;
+	margin-top: -4px;*/
+  border: 1px transparent;
+  width: 18px;
+  height: 18px;
 }
+
+#btnClose.close-icon {
+  display: -moz-box !important;
+}
+
+#btnClose.close-icon:hover {
+  border: 1px solid rgba(80,80,80,0.4);
+	box-shadow: 2px 2px 3px rgba(80,80,80,0.4) inset;
+} 
 
 @keyframes qfIconRotateY {
   from {

@@ -139,14 +139,6 @@
   "extend-your-license": {
     "message": "Considere extender su licencia por un año."
   },
-  "extensionDescription": {
-    "description": "Description of the extension.",
-    "message": "Bookmark your favorite mail folders in Thunderbird."
-  },
-  "extensionName": {
-    "description": "Name of the extension.",
-    "message": "QuickFolders"
-  },
   "extensions.quickfolders@curious.be.description": {
     "message": "Marca tus carpetas favoritas en Thunderbird."
   },
@@ -207,23 +199,23 @@
     "description": "Shown if license expires more than a year from now",
     "message": "Gracias por extender su licencia recientemente o si ha donado. Como ha ayudado a preparar este complemento para el futuro, simplemente puede cerrar esta ventana."
   },
-  "licenseComparison" : {
+  "licenseComparison": {
     "message": "Para comparar las características de las diferentes versiones, {linkStart}lea esta lista{linkEnd}."
-  },  
+  },
   "licenseHead": {
     "message": "Nuevo sistema de licencias"
-  },  
+  },
   "licenseTypes": {
     "message": "QuickFolders ofrece dos licencias, Standard y Pro; estos son necesarios para mantenerse al día con los cambios en la plataforma Thunderbird y para financiar innovaciones y reparaciones del complemento. Debido a que los cambios que potencialmente rompen la funcionalidad de la extensión se implementan anualmente, la licencia también será válida por 1 año."
-  },  
+  },
   "licenseWindow.title": {
     "message": "Licencia de QuickFolders Pro"
   },
-  "license_restriced.unpaid": {
-    "message": "Versión sin licencia - función restringida. Saber más…"
-  },
   "license_restriced.std": {
     "message": "Licencia estándar: función Pro restringida. Saber más…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Versión sin licencia - función restringida. Saber más…"
   },
   "license_restriced.standard.maxtabs": {
     "message": "QuickFolders necesita una licencia Pro para admitir más de $maxTabs$ tabs.",
@@ -245,10 +237,6 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla solo proporciona una plataforma básica para entregar nuestro software a ustedes, los usuarios finales. Si necesitamos pedir a nuestros usuarios un pago o asistencia, no podemos hacerlo desde addons.thunderbird.net; no es una 'tienda de aplicaciones' con muros de pago integrados o administración de licencias como iTunes o Google Play."
-  },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
   },
   "ongoing-work": {
     "message": "Las modificaciones para convertir $addonName$ al nuevo modelo de programación tomaron semanas y resultaron costosas. Hay muchos más cambios para la próxima versión 2022. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto.",
@@ -482,7 +470,7 @@
     "message": "Botón de carpetas recientes"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Mostrar pestaña de carpetas recientes"
+    "message": "Pestaña de carpetas recientes"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "Clic derecho para configurar"
@@ -558,9 +546,6 @@
   },
   "qf.continueFilter.label": {
     "message": "Crear Filtro"
-  },
-  "qf.continueFilter.shortcut": {
-    "message": "F"
   },
   "qf.copyfolders": {
     "message": "Copiar pestañas"
@@ -882,9 +867,6 @@
   "qf.label.quickFilters.link": {
     "message": "¡Consigue qickFilters!"
   },
-  "qf.label.quickfolders": {
-    "message": "QuickFolders:"
-  },
   "qf.label.renameselectedcategory": {
     "message": "Cambiar el nombre de la categoría seleccionada"
   },
@@ -932,12 +914,9 @@
   },
   "qf.licenseValidation.standard": {
     "message": "Gracias por registrar una licencia de QuickFolders. ¡Está ayudando enormemente al complemento! Si necesita más funciones, siempre puede actualizar a la licencia Pro."
-  },  
+  },
   "qf.loadConfig": {
     "message": "Cargar la configuración…"
-  },
-  "qf.menu.Color": {
-    "message": "Color"
   },
   "qf.menu.tabColor": {
     "message": "¡Sin Color!"
@@ -945,14 +924,8 @@
   "qf.menuitem.quickfolders.changeOrder": {
     "message": "Cambiar el orden de los marcadores"
   },
-  "qf.menuitem.quickfolders.changeOrderAccess": {
-    "message": "C"
-  },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Encontrar pesTañas huérfanas"
-  },
-  "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
-    "message": "T"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Mostrar herramientas de la carpeta actual"
@@ -962,9 +935,6 @@
   },
   "qf.menuitem.quickfolders.filters": {
     "message": "Crear filtros de mensajes."
-  },
-  "qf.menuitem.quickfolders.filtersAccess": {
-    "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
     "message": "Encontrar carpeta…"
@@ -981,29 +951,20 @@
   "qf.menuitem.quickfolders.options": {
     "message": "Opciones de QuickFolders"
   },
-  "qf.menuitem.quickfolders.optionsAccess": {
-    "message": "O"
-  },
   "qf.menuitem.quickfolders.register": {
     "message": "Registrar QuickFolders Pro..."
   },
   "qf.menuitem.quickfolders.repairTabs": {
     "message": "Actualizar pestañas Visibles"
   },
-  "qf.menuitem.quickfolders.repairTabsAccess": {
-    "message": "V"
-  },
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Reparar los íconos (árbol)"
   },
-  "qf.menuitem.quickfolders.splash" : {
+  "qf.menuitem.quickfolders.splash": {
     "message": "Últimas noticias de actualizacións…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "Soporte para QuickFolders…"
-  },
-  "qf.menuitem.quickfolders.supportAccess": {
-    "message": "S"
   },
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "Modo de dibujo"
@@ -1034,9 +995,6 @@
   },
   "qf.notification.premium.btn.getLicense": {
     "message": "¡Obtener una licencia!"
-  },
-  "qf.notification.premium.btn.hotKey": {
-    "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Renovar licencia"
@@ -1229,9 +1187,6 @@
   "qf.tab.advanced": {
     "message": "Avanzado"
   },
-  "qf.tab.general": {
-    "message": "General"
-  },
   "qf.tab.gopro": {
     "message": "Licencias"
   },
@@ -1370,9 +1325,6 @@
   "qfColorPickingWIP": {
     "message": "Lo siento, Esta característica no está terminada"
   },
-  "qfCommandAccess": {
-    "message": "Q"
-  },
   "qfCommandPopup": {
     "message": "Comandos de QuickFolders"
   },
@@ -1451,9 +1403,6 @@
   "qfEmptyTrashAccess": {
     "message": "V"
   },
-  "qfFolderAccess": {
-    "message": "F"
-  },
   "qfFolderAlreadyBookmarked": {
     "message": "La carpeta ya está marcada."
   },
@@ -1466,9 +1415,6 @@
   "qfFolderProperties": {
     "message": "Propiedades de carpeta"
   },
-  "qfFolderPropertiesAccess": {
-    "message": "P"
-  },
   "qfFolderRepair": {
     "message": "Reparar carpeta"
   },
@@ -1477,12 +1423,6 @@
   },
   "qfFolderRepairedMsg": {
     "message": "La carpeta fue reparada:"
-  },
-  "qfGetMail": {
-    "message": "Get Messages"
-  },
-  "qfGetMailAccess": {
-    "message": "G"
   },
   "qfInsertLineBreak": {
     "message": "Insertar salto de línea"
@@ -1502,9 +1442,6 @@
   "qfMarkAllReadRecursive": {
     "message": "Marcar esta carpeta y sus subcarpetas como leídas"
   },
-  "qfMenuColor": {
-    "message": "Color"
-  },
   "qfMenuTabColorDisabledInTheme": {
     "message": "Selecciona un Tema diferente que maneje colores…"
   },
@@ -1522,9 +1459,6 @@
   },
   "qfNewFolder": {
     "message": "Nueva Subcarpeta…"
-  },
-  "qfNewFolderAccess": {
-    "message": "N"
   },
   "qfNewName": {
     "message": "Nuevo nombre para el marcador"
@@ -1565,14 +1499,8 @@
   "qfRenameBookmark": {
     "message": "Cambiar nombre al marcador…"
   },
-  "qfRenameBookmarkAccess": {
-    "message": "N"
-  },
   "qfRenameFolder": {
     "message": "Renombrar…"
-  },
-  "qfRenameFolderAccess": {
-    "message": "R"
   },
   "qfRepairTreeIconsMissing": {
     "message": "Los siguientes archivos de íconos no existen:"
@@ -1629,32 +1557,35 @@
     "message": "¿Dejar de mostrar el historial de versiones después de las actualizaciones?"
   },
   "quickMove.help.head": {
-    "message" : "Ayuda para {1}"
+    "message": "Ayuda para {1}"
   },
   "quickMove.help.head.advanced": {
-    "message" : "Características avanzadas"
+    "message": "Características avanzadas"
   },
   "quickMove.help.l1a": {
-    "message" : "Escriba el inicio de un nombre de carpeta o palabras en él, delimitado por espacio."
-  }, 
+    "message": "Escriba el inicio de un nombre de carpeta o palabras en él, delimitado por espacio."
+  },
   "quickMove.help.l1b": {
-    "message" : "Los siguientes caracteres se consideran límites de palabras y no es necesario escribirlos:"
-  }, 
+    "message": "Los siguientes caracteres se consideran límites de palabras y no es necesario escribirlos:"
+  },
   "quickMove.help.l2a": {
-    "message" : "Escriba {1} para ingresar a la carpeta abuelo / padre / búsqueda."
-  }, 
+    "message": "Escriba {1} para ingresar a la carpeta abuelo / padre / búsqueda."
+  },
   "quickMove.help.l2b": {
-    "message" : "Las primeras 2 letras de cualquier carpeta principal suelen ser suficientes. También puede crear nuevas subcarpetas con esta sintaxis."
-  }, 
+    "message": "Las primeras 2 letras de cualquier carpeta principal suelen ser suficientes. También puede crear nuevas subcarpetas con esta sintaxis."
+  },
   "quickMove.help.l3a": {
-    "message" : "Kirjoita {1}, jos haluat ohittaa kaikki kansiot välissä."
-  }, 
+    "message": "Kirjoita {1}, jos haluat ohittaa kaikki kansiot välissä."
+  },
   "quickMove.help.l3b": {
-    "message" : "Esto es útil para jerarquías de carpetas más profundas, más complicadas o desconocidas."
-  },   
+    "message": "Esto es útil para jerarquías de carpetas más profundas, más complicadas o desconocidas."
+  },
+  "quickMove.help.l4a": {
+    "message": "Escriba {1} para obtener una lista de las carpetas que se ingresaron más recientemente. El número de resultados depende de su nivel de licencia."
+  },
   "quickMove.help.advanced": {
-    "message" : "Las funciones más avanzadas, como los atajos de teclado para ir a una carpeta / mover correo o excluir carpetas de los resultados de búsqueda, se pueden configurar en la pestaña QuickFolders Pro. Para acceder a estas y otras funciones premium, obtenga una licencia Pro y respalde el futuro de QuickFolders."
-  },  
+    "message": "Las funciones más avanzadas, como los atajos de teclado para ir a una carpeta / mover correo o excluir carpetas de los resultados de búsqueda, se pueden configurar en la pestaña QuickFolders Pro. Para acceder a estas y otras funciones premium, obtenga una licencia Pro y respalde el futuro de QuickFolders."
+  },
   "quickMove.singleMessage.goNext": {
     "message": "Mostrar el siguiente correo después de mover el actual"
   },
@@ -1728,7 +1659,7 @@
         "example": "50%"
       }
     }
-  },   
+  },
   "special-offer-upgrade": {
     "message": "¡Actualice ahora de QuickFolders Standard a Pro y ahorre {boldStart}$reduction${boldEnd}! Esta oferta especial estará disponible hasta el {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
@@ -1741,9 +1672,9 @@
         "example": "50%"
       }
     }
-  }, 
+  },
   "special-offer-expiry": {
-    "message": "31 de octubre"
+    "message": "1 de julio"
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1768,7 +1699,7 @@
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "quickFilters"
+        "example": "QuickFolders"
       }
     }
   },
@@ -1821,6 +1752,15 @@
     "description": "disclaimer.",
     "message": "traducciones proporcionadas por google"
   },
+  "update.tooltip": {
+    "message": "Haga clic aquí una vez para leer las novedades de $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Actualizaciones"
   },
@@ -1840,7 +1780,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Se corrigió en la versión 5.8.2: los menús de carpetas largas ahora se desplazan al arrastrar correos al borde de la pantalla. {L2}{L1} Thunderbird ya no entra en la Bandeja de entrada cuando busca nuevos correos desde el menú contextual. {L2} {L1} Soporte para íconos grandes en los botones de la barra de herramientas QuickFolders para pantallas de alta resolución. {L2} {L1} Corregido: mover carpetas de la función quickMove falló en Tb91. {L2} {L1} Varias correcciones de diseño específicas de Thunderbird 91. {L2}"
+    "message": "{L1}5.10.1: esta solución de mantenimiento almacena la identificación de la cuenta para cada pestaña. Actualizar a Thunderbird 102 potencialmente cambia el nombre de los servidores debido a un parche; luego, la cuenta se puede usar para reconstruir carpetas no válidas.{L2}{L1}QuickFolders ahora es compatible con Thunderbird 102. Se implementó el nuevo FolderListener, la función {italicStart}Reparar carpeta{italicEnd} y los enlaces web en la configuración.{L2} {L1}Reparado: las carpetas recientes en la barra de navegación (barra de herramientas de la carpeta actual) mostraban resultados obsoletos al hacer clic en ella o arrastrando correos electrónicos sobre él.{L2} {L1}Corregido: Lista de lectura: si no se puede encontrar un correo electrónico debido a una carpeta no válida o eliminada, QuickFolders no mostraba el cuadro de diálogo de búsqueda.{L2} {L1}Corregido: agregar título a la pestaña de preferencias.{L2} {L1}Se eliminaron los elementos de menú y diálogo de configuración heredados.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

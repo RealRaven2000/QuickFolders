@@ -35,6 +35,7 @@
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-interface.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/qf-styles.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-util.js" />
+	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-quickMove.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-model.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders-themes.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/options.js" />
@@ -138,7 +139,7 @@
                   type="text"
                   id="QuickFolders-Options-RebuildShortcutKey"
 												 preference="qfpg-RebuildShortcutKey"
-												 class = "shortCutKey"
+												 class="shortCutKey"
 												 instantApply="true" />
 							</hbox>
 							<checkbox label="__MSG_qf.checkbox.useNavigationShortcuts__"
@@ -250,7 +251,7 @@
 											 tooltiptext="__MSG_qf.label.goNextUnread.tip__"
 											 />
 								<menulist sizetopopup="none"
-                          id = "folderCrossing"
+                          id="folderCrossing"
 													preference="qfpg-Thunderbird-Preference-FolderCrossing"
 													instantApply="true"
 													oncommand="options.selectFolderCrossing(this);">
@@ -737,7 +738,7 @@
 											 tooltiptext="__MSG_qf.toolbarMinimumHeight.tooltip__"
 											 href="https://www.mozdev.org/bugs/show_bug.cgi?id=25021"
 											 onclick="util.openURL(event,'https://www.mozdev.org/bugs/show_bug.cgi?id=25021')"
-											 style = "text-decoration:underline;cursor:pointer;" />
+											 style="text-decoration:underline;cursor:pointer;" />
 								<html:input 
 												 type="number"
                          id="toolbarMinHeight"
@@ -1124,7 +1125,7 @@
             <spacer style="width:1em"/>
 						<label id="licenseDate" value="-" />
 					</hbox>
-					<separator id="validationDateSpace" class = "licenseSeparator" />
+					<separator id="validationDateSpace" class="licenseSeparator" />
 					<hbox id="validationResults">
 					  <vbox>
 							<description id="validationPassed" class="niceFont" collapsed="true">__MSG_qf.licenseValidation.passed__</description>
@@ -1206,7 +1207,7 @@
 								<hbox>
 									<spacer style="width: 16px;" />
 									<checkbox id="chkQuickMoveAutoFill"
-														label = "__MSG_qf.checkbox.quickmove.autofill__"
+														label="__MSG_qf.checkbox.quickmove.autofill__"
 														tooltiptext="__MSG_qf.checkbox.quickmove.autofill.tip__"
 														preference="qfpp-QuickMoveAutoFill" 
 														disabled="true"
@@ -1285,13 +1286,13 @@
 								<hbox>
 									<button id="btnSaveConfig" 
 													label="__MSG_qf.storeConfig__"
-													oncommand="options.storeConfig(Preferences, options.prefMap);" />
+													oncommand="QuickFolders.Model.storeConfig(Preferences, options.prefMap);" />
 									<spacer flex="1" />
 								</hbox>
 								<hbox>
 									<button id="btnLoadConfig" 
 													label="__MSG_qf.loadConfig__"
-													oncommand="options.loadConfig(Preferences);"
+													oncommand="QuickFolders.Model.loadConfig(Preferences);"
 													disabled="true" />
 									<spacer flex="1" />
 								</hbox>

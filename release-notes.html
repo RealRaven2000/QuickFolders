@@ -1,5 +1,5 @@
-<b>Release 5.9</b>
-Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (91.5.1)</b> - if you get a message that says otherwise after updating from earlier versions (Tb68 or Tb78) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
+<b>Release 5.10</b>
+Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (102.0)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb91) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
             
 
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
@@ -10,20 +10,45 @@ Read the new <a href="premium.html#featureComparison">comparison chart</a> to se
 You can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>.
 
 
-<b>Bug Fixes + Miscellaneus</b>
+<b>Maintenance Version 5.10.1 - 05/07/2022</b>
 <ul>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/232">[issue 232]</a> Fixed: When Adding a category to a tab, another category may be replaced.</li>
-<li>
-<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/235">[issue 235]</a>Fixed: quickJump may fail if "Compact mode" in folder tree is enabled.</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/220">[issue 220]</a> Fixed an issue with license validation (alias identity support). </li>
+<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a> 5.10.1 - this maintenance fix stores the account id for every tab. 
+
+When upgrading to Thunderbird 102, this can potentially rename the servers due to  <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1573690">bug  1573690</a> - then the account can be used for reconstruction of invalid folders. I am currently working on code that can help in fixing this problem automatically.</li>
+<li> Fixed icon spacings in folder popup menus in Tb102. </li>
 </ul>
 
-<b>Known unresolved issues - Work In Progress</b>
+<b>Thunderbird 102 Specific changes</b>
 <ul>
-<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/234">[issue 234]</a> WIP - mx-conversion - use folder API to create new folders rather than experimental code</li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/204">[issue 204]</a> WIP - Thunderbird 91: Background of QuickFolders toolbar doesn't support some themes when set to transparent. </li>
-<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/208">[issue 208]</a> Upgrade from TB 78 to 91.1.2 sometimes leads to invalid / "orphaned" tabs.
-For the moment, you should be able to resolve these by clicking a tab with the "broom" / invalid icon or by running the tool command "Find Orphaned tabs".
+<b>Known Issue:</h4>
+<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a> Updating to Thunderbird 102 can generate invalid tabs - make sure to backup prefs.js before updating in order to correct this problem more easily. Some accounts in your profile may be affected, so it is a good idea to mitigate this problem.</li>
 
-Should this not give the desired results, then you can export your tabs via the license tab or on the Advanced tab using the [Copy Tabs] button and send me the file so I can help you fix this. </li>
+
+
+<li>Increasing maximum TB version for next ESR - Thunderbird 102.* is planned to be supported from now on. Also increased minimum version to 91.0 - because of new APIs 78 will not be supported with new features / bugfixes.</li>      
+<li>Fixed repair folder code.</li>
+<li>Fixed support site links in Options Dialog.</li>
+<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/272">[issue 272]</a>Implemented new folder listener interface. The new version of Thunderbird implements a different folder listener interface. This meant a lot of functions (such as updating URLs when renaming folders and updating their connected tabs or updating unread counts on the tabs) were broken.</li>
 </ul>
+
+<b>Improvements</b>
+<ul>
+<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/264">[issue 263]</a> If Preferences are open in inactive Tab, clicking the options button now activates it.</li>
+<li> Added title to preferences tab.</li>
+</ul>
+
+<b>Bug Fixes</b>
+<ul>
+<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/265">[issue 265]</a> Reading list: If an email cannot be found due to an invalid / deleted folder, QuickFolders wasn't displaying the search dialog.</li>
+<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/262">[issue 262]</a> Fixed: Recent folders on Navigation Bar (Current folder toolbar) outdated when dragging emails</li>
+<li>Fixed: support mail to... description in options dialog</li>
+<li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/268">[issue 268]</a> Fixed: Current Folder Bar" doesn't show updated subfolders when left-clicked</li>
+</ul>
+
+<b>Miscellaneous</b>
+<ul>
+<li>Removed legacy settings dialog and associated menu item </li>
+<li>Removed legacy code (supportsMap, nsIMutableArray,  MailServices.copy.CopyFolders)</li>
+</ul>
+
+

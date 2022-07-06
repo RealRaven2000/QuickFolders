@@ -1,3 +1,13 @@
+"use strict";
+/* BEGIN LICENSE BLOCK
+
+QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+For details, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK */
+
+
 // Functions from quickfolders-util - specific to options.js
 QuickFolders.Util = {
   ADDON_ID: "quickfolders@curious.be",
@@ -169,6 +179,12 @@ QuickFolders.Util = {
       this.logToConsole ("Could not retrieve bundle string: " + id + "");
     }
     return s;
+  },
+  
+  openLinkInTab: function(uri) {
+    browser.tabs.create(
+      {active:true, url: uri}
+    );
   }
     
   

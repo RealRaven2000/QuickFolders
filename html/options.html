@@ -20,25 +20,20 @@
   <!-- this is OS specific and needs to be modified! -->
   <link rel="stylesheet" href="../chrome/content/skin/tb91/qf-options.css">
   
-  
+  <title>__MSG_qf.prefwindow.quickfolders.options__</title>
 </head>
 
 <body>
   <div id="qf-options-prefpane" orient="vertical">
     <div class="hbox" id="qf-header-container">
       <div class="vbox centered">
-        <img id="qf-options-icon" src="../chrome/content/skin/ico/quickfolders-Icon.png"
-          onclick="options.collapseHead();">
+        <img id="qf-options-icon" src="../chrome/content/skin/ico/quickfolders-Icon.png">
       </div>
       <div class="hbox align_center paneSelector" id="qf-options-header" flex="1">
         <label id="dialogProductTitle" class="dialogheader-title">__MSG_qf.label.quickfolders__</label>
-        <img id="qf-youtube" src="../chrome/content/skin/ico/youtube.png"
-          tooltiptext="__MSG_qf.youtube.tbdaily__"
-          onclick="util.openLinkInBrowser(event,'https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A')">
+        <img id="qf-youtube" src="../chrome/content/skin/ico/youtube.png" tooltiptext="__MSG_qf.youtube.tbdaily__">
         <div class="spacer" flex="1"></div>
-        <input type="button" id="qf-options-header-description"
-          onclick="if (options.showVersionHistory(true)) setTimeout(function() { window.close(); });return false;"
-          tooltiptext="__MSG_qf.options.versionnumber.tooltip__">
+        <input type="button" id="qf-options-header-description" tooltiptext="__MSG_qf.options.versionnumber.tooltip__">
       </div>
     </div>
 
@@ -283,7 +278,7 @@
         <fieldset class="hbox" >
           <legend>__MSG_qf.label.toolbarPosition__</legend>
           <div class="hbox" id="grpToolbarPosition">
-            <input type="text" id="toolbarPosition" flex="1" preference="qfpa-ToolbarPosition"
+            <input type="number" id="toolbarPosition" flex="1" preference="qfpa-ToolbarPosition"
               data-pref-name="extensions.quickfolders.toolbar.ordinalPosition" 
               title="__MSG_qf.toolbarPosition.tooltip__" />
             <button id="applyPosition">__MSG_qf.btn.applyPosition__</button>
@@ -305,8 +300,7 @@
                   <option value="custom">__MSG_qf.currentFolderBackground.custom__</option>
                   <option value="lightweight">__MSG_qf.currentFolderBackground.lightweight__</option>
               </select>
-              <button class="narrow"
-                onclick="options.setCurrentToolbarBackgroundCustom();">__MSG_qf.button.currentFolderBackground.set__</button>
+              <button class="narrow" id="applyCurrentBackground">__MSG_qf.button.currentFolderBackground.set__</button>
             </div>
             <div class="hbox align_center" flex="1">
               <label><input type="checkbox"
@@ -458,9 +452,7 @@
             </div>
             <div class="hbox align_center">
               <label tooltiptext="__MSG_qf.toolbarMinimumHeight.tooltip__"
-                href="https://www.mozdev.org/bugs/show_bug.cgi?id=25021"
-                onclick="util.openURL(event,'https://www.mozdev.org/bugs/show_bug.cgi?id=25021')"
-                style="text-decoration:underline;cursor:pointer;">__MSG_qf.toolbarMinimumHeight__
+                id="minHeightFix" class="url">__MSG_qf.toolbarMinimumHeight__
                 <input type="number" id="toolbarMinHeight" class="num2digits"
                   preference="qfpl-ToolbarMinimalHeight" data-pref-name="extensions.quickfolders.toolbar.minHeight">
               </label>
@@ -491,8 +483,7 @@
                     <div class="hbox align_center">
                       <label id="inactivetabs-label" class="qfTabPreview" stylePrefKey="InactiveTab"
                         tooltiptext="__MSG_qf.label.UncoloredTab.tooltip__"
-                        context="QuickFolders-Options-PalettePopup" 
-                        onclick="options.showPalette(this, 'standard');">__MSG_qf.label.UncoloredTab__</label>
+                        context="QuickFolders-Options-PalettePopup" >__MSG_qf.label.UncoloredTab__</label>
                       <input id="inactive-fontcolorpicker" type="color" palettename="standard"
                         elementInfo="InactiveTab.color" previewLabel="inactivetabs-label">
                       <input id="inactive-colorpicker" type="color" palettename="standard"
@@ -510,8 +501,7 @@
                       <br class="spacer" flex="1">
                       <label id="coloredtabs-label"
                         tooltiptext="__MSG_qf.label.ColoredTabPalette.tooltip__" stylePrefKey="ColoredTab"
-                        class="textBoxLabel" context="QuickFolders-Options-PalettePopup"
-                        onclick="options.showPalette(this, 'colored');">__MSG_qf.label.ColoredTabPalette__</label>
+                        class="textBoxLabel" context="QuickFolders-Options-PalettePopup">__MSG_qf.label.ColoredTabPalette__</label>
                       <select id="menuColoredPalette"  preference="qfpl-ColoredTab-PaletteType"
                         data-pref-name="extensions.quickfolders.style.ColoredTab.paletteType">
                         <option value="1">__MSG_qf.palette.standard__</option>
@@ -528,6 +518,7 @@
                             id="ExampleStripedColor" 
                             value="0"
                             name="tabStyleGroup"
+                            preference="qfpl-ColorTabStyleId"
                             data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
                             __MSG_qf.options.LayoutColorAppearanceStriped__
                         </label>
@@ -536,6 +527,7 @@
                             id="ExampleFilledColor" label=" __MSG_qf.options.LayoutColorAppearanceFilled__" 
                             value="1"
                             name="tabStyleGroup"
+                            preference="qfpl-ColorTabStyleId"
                             data-pref-name="extensions.quickfolders.colorTabStyle"> </input>
                           __MSG_qf.options.LayoutColorAppearanceFilled__
                         </label>
@@ -560,8 +552,7 @@
 
                   <label id="activetabs-label" value=""
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="ActiveTab"
-                    context="QuickFolders-Options-PalettePopup" 
-                    onclick="options.showPalette(this, 'active');">__MSG_qf.label.ActiveTabColor__</label>
+                    context="QuickFolders-Options-PalettePopup">__MSG_qf.label.ActiveTabColor__</label>
                   <input id="activetab-fontcolorpicker" type="color" palettename="vibrant"
                     elementInfo="ActiveTab.color" previewLabel="activetabs-label">
                   <input id="activetab-colorpicker" type="color" palettename="standard"
@@ -578,8 +569,7 @@
 
                   <label id="hoveredtabs-label"
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="HoveredTab"
-                    context="QuickFolders-Options-PalettePopup" 
-                    onclick="options.showPalette(this, 'hovered');">__MSG_qf.label.HoveredTabColor__</label>
+                    context="QuickFolders-Options-PalettePopup">__MSG_qf.label.HoveredTabColor__</label>
                   <input id="hover-fontcolorpicker" type="color" palettename="standard"
                     elementInfo="HoveredTab.color" previewLabel="hoveredtabs-label">
                   <input id="hover-colorpicker" type="color" palettename="standard"
@@ -595,7 +585,7 @@
 
                   <label id="dragovertabs-label" class="qfTabPreview"
                     stylePrefKey="DragOver" context="QuickFolders-Options-PalettePopup"
-                    onclick="options.showPalette(this, 'dragOver');">__MSG_qf.label.DragOverBackground__</label>
+                    >__MSG_qf.label.DragOverBackground__</label>
                   <input id="dragover-fontcolorpicker" palettename="standard" type="color"
                     elementInfo="DragTab.color" previewLabel="dragovertabs-label">
                   <input id="dragover-colorpicker" type="color" palettename="standard"
@@ -612,8 +602,7 @@
                 </div>
                 <span class="separator thin"> </span>
                 <div class="hbox" id="qf-stateColors-defaultButton" pack="end">
-                  <button oncommand="options.setDefaultColors();"
-                    id="defaultColors">__MSG_qf.button.defaultcolors__</button>
+                  <button id="defaultColors">__MSG_qf.button.defaultcolors__</button>
                 </div>
               </div>
             </div>
@@ -629,8 +618,7 @@
             __MSG_qf.description.linkNote__
           </description>
           <div class="vbox" height="70">
-            <div id="L0" class="button" href="https://quickfolders.org/" tooltiptext="quickfolders.org"
-              onclick="util.openURL(event,'https://quickfolders.org/'); setTimeout(function() { window.close(); });">
+            <div id="L0" class="button" tooltiptext="quickfolders.org">
               <label width="270">__MSG_qf.label.homePage__</label>
             </div>
           </div>

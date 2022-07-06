@@ -152,7 +152,6 @@ async function main() {
         // Broadcast main windows to run updateQuickFoldersLabel
         messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});
         break;
-        
 
       case "updateUserStyles":
         // Broadcast main windows to update their styles (and maybe single message windows???)
@@ -160,9 +159,7 @@ async function main() {
         break;
         
       case "updateFoldersUI": // replace observer
-        messenger.NotifyTools.notifyExperiment(
-          { event: "updateFoldersUI"}
-        );
+        messenger.NotifyTools.notifyExperiment({event: "updateFoldersUI"});
         break;
         
       case "updateAllTabs": 
@@ -223,15 +220,25 @@ async function main() {
         if (data.selectedTab || data.selectedTab==0) {
           params.append("selectedTab", data.selectedTab);
         }
+        if (data.mode) {
+          params.append("mode", data.mode);
+        }
         
         let title = messenger.i18n.getMessage("qf.prefwindow.quickfolders.options");
         // to get the tab - we need the activetab permission
         // query for url 
         let url = browser.runtime.getURL("/html/options.html") + "*";
 
-        let [oldTab] = await browser.tabs.query({url}); // dereference first 
-        if (oldTab) {
-          await browser.windows.update(oldTab.windowId, {focused:true});
+        let oldTabs = await browser.tabs.query({url}); // destructure first 
+        if (oldTabs.length) {
+          // get current windowId
+          let currentWin = await browser.windows.getCurrent();
+          let found = oldTabs.find( w => w.windowId == currentWin.id);
+          if (!found) {
+            [found] = oldTabs; // destructure first element
+            await browser.windows.update(found.windowId, {focused:true});
+          }
+          await browser.tabs.update(found.id, {active:true});
         }
         else {
           let optionWin = await messenger.windows.create(
@@ -314,7 +321,7 @@ async function main() {
   });
   
   
-  let browserInfo = await messenger.runtime.getBrowserInfo()
+  let browserInfo = await messenger.runtime.getBrowserInfo();
   // Init WindowListener.
   function getThunderbirdVersion() {
     let parts = browserInfo.version.split(".");
@@ -338,17 +345,12 @@ async function main() {
   ]);
   
   
-  // messenger.WindowListener.registerOptionsPage("chrome://quickfolders/content/options.xhtml"); 
-  // messenger.WindowListener.registerOptionsPage("html/options.html"); 
-
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/qf-composer.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/SearchDialog.xhtml", "chrome/content/scripts/qf-searchDialog.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/qf-customizetoolbar.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/qf-messageWindow.js");  
 
-  // messenger.WindowListener.registerStartupScript("chrome/content/scripts/qf-startup.js");
-  // messenger.WindowListener.registerShutdownScript("chrome/content/scripts/qf-shutdown.js");
 
  /*
   * Start listening for opened windows. Whenever a window is opened, the registered

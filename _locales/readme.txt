@@ -24,7 +24,7 @@ So you would have only translated the remaining readable words above. Also, if y
 
 Finally, there is are 2 entries that I regularly have to update when I release new versions of QuickFolders, which are:
 
-"whats-new-list" - this is a bullet point list of the most important changes in the new version. I am using a pair of {L1}...content of the item goes here...{L2} for each point which I replace with the HTML code <li>  .. </li> . So again do not modify the {L1} and {L2} parts.
+'whats-new-list' - this is a bullet point list of the most important changes in the new version. I am using a pair of {L1}...content of the item goes here...{L2} for each point which I replace with the HTML code <li>  .. </li> . So again do not modify the {L1} and {L2} parts.
 
 "special-offer-expiry" - this is the date when I schedule cheaper licenses on the online shop to encourage some sales.
 

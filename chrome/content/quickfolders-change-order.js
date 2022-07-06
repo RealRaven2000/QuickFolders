@@ -43,55 +43,46 @@ var ChangeOrder = {
   } ,
 
 	showFolders: function() {
-		let rows = this.$('QuickFolders-change-order-grid-rows');
-		QuickFolders.Util.clearChildren(rows);
+		let grid = this.$("QuickFolders-change-order");
+		QuickFolders.Util.clearChildren(grid);
 
 		for (let i = 0; i < QuickFolders.Model.selectedFolders.length; i++) {
 			let folderEntry = QuickFolders.Model.selectedFolders[i],
 			    folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false);
 
 			if (folder != undefined) {
-				this.addFolderButton(folder, folderEntry.name)
+				// this.addFolderButton(folder, folderEntry.name); // legacy
+        this.addFolderRow(folder, folderEntry.name);
 			}
 		}
 	} ,
-
-	addFolderButton: function(folder, useName) {
-		let label = (useName && useName.length) ? useName : folder.name;
-
-		if (this.upString=="")
-			this.upString = this.getUIstring("qfUp");
-		if (this.downString=="")
-			this.downString = this.getUIstring("qfDown");
-
-		let rows = this.$('QuickFolders-change-order-grid-rows'),
-		    row = document.createXULElement("row"),
-		    folderLabel = document.createXULElement("label");
+  
+  addFolderRow: function(folder, useName) {
+    let label = (useName && useName.length) ? useName : folder.name;
+    let grid = this.$("QuickFolders-change-order");
+    let folderLabel = document.createXULElement("label");
 		folderLabel.appendChild(document.createTextNode(label));
-		row.appendChild(folderLabel);
-
-		let buttonUp = document.createXULElement("button");
-		buttonUp.className = "order-button-up";
-		buttonUp.setAttribute("label", this.upString);
+    folderLabel.className="col Label";
     
-		buttonUp.linkedFolder = folder;
+		let buttonUp = document.createXULElement("button");
+		buttonUp.className = "order-button-up col Btn";
+		buttonUp.setAttribute("label", this.upString);
+    buttonUp.linkedFolder = folder;
 		QuickFolders.Interface.setEventAttribute(buttonUp, "oncommand","ChangeOrder.onButtonClick(event.target, 'up','"+folder.URI+"');");
-		row.appendChild(buttonUp);
+
 
 		let buttonDown = document.createXULElement("button");
-		buttonDown.className = "order-button-down";
+		buttonDown.className = "order-button-down col Btn";
 		buttonDown.setAttribute("label", this.downString);
     
 		buttonDown.linkedFolder = folder;
 		QuickFolders.Interface.setEventAttribute(buttonDown, "oncommand","ChangeOrder.onButtonClick(event.target, 'down','"+folder.URI+"');");
-		row.appendChild(buttonDown);
-    try {
-      rows.appendChild(row);
-    }
-    catch (ex) {
-      ;
-    }
-	} ,
+     
+    grid.appendChild(folderLabel);
+    grid.appendChild(buttonUp);
+    grid.appendChild(buttonDown);
+    
+  },
 
 	onButtonClick: function(button, direction, folderURI) {
 		let modelSelection = QuickFolders.Model.selectedFolders,

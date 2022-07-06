@@ -255,10 +255,6 @@
   "mozillas-basic-platform": {
     "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Click notification"
-  },
   "ongoing-work": {
     "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
     "placeholders": {
@@ -491,7 +487,7 @@
     "message": "Recent Folders Button"
   },
   "qf.checkbox.showRecentTab": {
-    "message": "Display Recent Folders Tab"
+    "message": "Recent Folders Tab"
   },
   "qf.checkbox.showRecentTab.tooltip": {
     "message": "Right click for configuration"
@@ -1482,7 +1478,7 @@
     "message": "P"
   },
   "qfFolderRepair": {
-    "message": "Repair Folder"
+    "message": "Repair folder"
   },
   "qfFolderRepairAccess": {
     "message": "F"
@@ -1664,6 +1660,9 @@
   "quickMove.help.l3b": {
     "message" : "This is useful for deeper, more complicated or unknown folder hierarchies."
   },
+  "quickMove.help.l4a": {
+    "message" : "Type {1} to get a list of folders that were entered most recently. The number of results depends on your license level."
+  }, 
   "quickMove.help.advanced": {
     "message" : "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
   },
@@ -1755,7 +1754,7 @@
     }
   },  
   "special-offer-expiry": {
-    "message": "October 31st"
+    "message": "July 1st"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1833,6 +1832,15 @@
     "description": "disclaimer.",
     "message": "translations provided by google"
   },
+  "update.tooltip": {
+    "message": "Click here once to read what's new in $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "updates.title": {
     "message": "Updates"
   },
@@ -1852,7 +1860,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Fixed in version 5.8.2: Long folders menus now scroll when dragging mails to screen edge.{L2}{L1}Thunderbird doesn't jump into Inbox anymore when checking for new mails from the context menu.{L2}{L1}Support for large icon in QuickFolders toolbar buttons for high resolution displays.{L2}{L1}Fixed: moving folders from the quickMove function failed in Tb91.{L2}{L1}Various Layout fixes specific to Thunderbird 91.{L2}"
+    "message": "{L1}5.10.1 - this maintenance fix stores the account id for every tab. Upgrading to Thunderbird 102 potentially renames the servers due to a patch - then the account can be used for reconstruction of invalid folders.{L2}{L1}QuickFolders is now compatible with Thunderbird 102. Implemented new FolderListener, {italicStart}Repair folder{italicEnd} function and web links in settings.{L2} {L1}Fixed: Recent folders on Navigation Bar (Current folder toolbar) displayed outdated results when clicking it or dragging emails on it.{L2} {L1}Fixed:  Reading list - if an email cannot be found due to an invalid / deleted folder, QuickFolders wasn't displaying the search dialog.{L2} {L1}Fixed: add title to preferences tab.{L2} {L1}Legacy settings dialog & menu items were removed.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

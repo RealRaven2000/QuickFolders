@@ -18,6 +18,10 @@ QuickFolders.quickMove = {
   folders: [],
   IsCopy: [],    // copy flag, false for move, this is synced to the list of messages / folders.
   Origins: [],   // source folder array
+  history: [],
+  MAX_HISTORY: 25, // maximum storage for quickMove / quickJump targets
+  MAX_HISTORY_STD: 10,
+  MAX_HISTORY_FREE: 5,
   
   get isActive() {
     return (this.isMoveActive && !this.suspended)  // QuickFolders.quickMoveUris.length>0
@@ -39,6 +43,32 @@ QuickFolders.quickMove = {
     }
   },
   
+  initLog: function() {
+    let stored = QuickFolders.Preferences.getStringPref("quickMove.history");    
+    let parsed = JSON.parse(stored);
+    QuickFolders.quickMove.history = [];
+    for (let i=0; i<parsed.length; i++) {
+      QuickFolders.quickMove.history.push(parsed[i]);
+    }
+  },
+  
+  addToHistory: function(fld) {
+    let uri = fld.URI;
+    QuickFolders.Util.logDebugOptional("quickMove","addToHistory()", fld);
+    if (uri) {
+      if (QuickFolders.quickMove.history[0] == uri) return;
+      let newLogged = [];
+      newLogged.push(uri);
+      for (let i=0; i<QuickFolders.quickMove.history.length; i++) {
+        if (QuickFolders.quickMove.history[i] == uri) continue;
+        if (i>QuickFolders.quickMove.MAX_HISTORY) continue;
+        newLogged.push(QuickFolders.quickMove.history[i]); // append the rest
+      }
+      QuickFolders.quickMove.history = newLogged; // discard old array.#
+      let stored = JSON.stringify(newLogged);
+      QuickFolders.Preferences.setStringPref("quickMove.history", stored);
+    }
+  },  
 	
 	rememberLastFolder: function rememberLastFolder(URIorFolder, parentName) {
 		const prefs = QuickFolders.Preferences,
@@ -51,7 +81,8 @@ QuickFolders.quickMove = {
           sRememberFolder = (parentName) ? parentName + "/" + fld.prettyName : fld.prettyName;
       prefs.setStringPref("quickMove.lastFolderName", sRememberFolder);
       prefs.setStringPref("quickMove.lastFolderURI", fld.URI);
-      util.logDebugOptional('quickMove',"Storing: " + sRememberFolder + " - " + fld.URI);
+      util.logDebugOptional("quickMove", "Storing: " + sRememberFolder + " - " + fld.URI);
+      QuickFolders.quickMove.addToHistory(fld);
     }
     catch (ex) {
       util.logException("rememberLastFolder( " + URIorFolder + ", " + parentName + ")", ex);

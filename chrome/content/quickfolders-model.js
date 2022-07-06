@@ -70,14 +70,26 @@ QuickFolders.Model = {
     else {
       let folder = this.getMsgFolderFromUri(uri, false),
           iconURI = null;
-      // SeaMonkey: GetFolderTree().view
       if (typeof gFilterTreeView !== "undefined" 
           && gFolderTreeView.supportsIcons
 					&& folder.getStringProperty) {
-        iconURI =  unpackURI(folder.getStringProperty("iconURL"));
+        try {
+          iconURI =  unpackURI(folder.getStringProperty("iconURL"));
+        }
+        catch(ex) {;}
+      }
+      // [issue 281]
+      let ac = MailServices.accounts.FindAccountForServer(folder.server);
+      let account = "";
+      if (ac) {
+        account = ac.key;
+      }
+      else {
+        account = "?account";
       }
 
       this.selectedFolders.push({
+        account: account,
         uri: uri,
         name: (folder==null) ? '' : folder.prettyName,
         category: categories,
@@ -454,6 +466,43 @@ QuickFolders.Model = {
     return 'unknown color: ' + id;
   } ,
   
+  correctFolderEntries: function (entries, withStorage = true) {
+    let needsPatch = false;
+    
+    for (let i=0; i<entries.length; i++) {
+      let e = entries[i];
+      if (!e.account) {
+        needsPatch = true;
+        // [issue 281] - convert to new format
+        if (e.uri) {
+          // determine path+server from uri
+          let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false); // nsIMsgFolder
+          if (!f ) {
+            e.account = "?uri";
+          } else if (f.server) {
+            // store the account
+            let ac = MailServices.accounts.FindAccountForServer(f.server);
+            if (ac) {
+              e.account = ac.key;
+              if (e.invalid) {
+                delete e.invalid;
+              }
+            }
+            else  {
+              e.account = "?account";
+            }
+          }
+          else {
+            e.account = "?server";
+          }
+        }
+      }
+    }
+    if (needsPatch && withStorage) {
+      QuickFolders.Preferences.storeFolderEntries(entries);
+    }
+  },
+  
   // new palette indices
   updatePalette: function updatePalette() {
     // we only do this ONCE
@@ -624,6 +673,29 @@ QuickFolders.Model = {
 			QuickFolders.Model.update(); // update folders!
 		}
 		return true;
-   }  
+   }
+   
 }  // Model
+
+  // cache accounts for speed??
+  /*
+  let folderAccounts = [],
+      Accounts = MailServices.accounts,
+  for (let a=0; a<Accounts.length; a++) {
+    let account = Accounts[a]; // nsIMsgAccount
+    let fA = folderAccounts.find(e => e.key == account.key);
+    if (!fA && account.defaultIdentity) {
+      folderAccounts.push (
+        {
+          key: account.key,
+          name: account.incomingServer.prettyName,
+          idName: account.defaultIdentity.fullName,
+          serverKey: account.incomingServer.key,
+          hostName: account.incomingServer.hostName,
+          username: account.incomingServer.username
+        }
+      )
+    }
+  }
+  */
 

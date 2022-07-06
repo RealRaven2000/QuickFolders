@@ -1,9 +1,18 @@
+"use strict";
+/* BEGIN LICENSE BLOCK
+
+QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+For details, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK */
+
 
 
 // add event listeners for tabs
 const activateTab = (event) => {
-  const tabSheets = document.querySelectorAll('.tabcontent-container section'),
-        tabs = document.querySelectorAll('#QuickFolders-Options-Tabbox button');
+  const tabSheets = document.querySelectorAll(".tabcontent-container section"),
+        tabs = document.querySelectorAll("#QuickFolders-Options-Tabbox button");
   let btn = event.target;
   Array.from(tabSheets).forEach(tabSheet => {
     tabSheet.classList.remove("active");
@@ -17,9 +26,34 @@ const activateTab = (event) => {
     document.getElementById(activeTabSheetId).classList.add("active");
     btn.classList.add("active");
     // store last selected tab
-    browser.LegacyPrefs.setPref('extensions.quickfolders.lastSelectedOptionsTab', btn.getAttribute("tabNo"));
+    browser.LegacyPrefs.setPref("extensions.quickfolders.lastSelectedOptionsTab", btn.getAttribute("tabNo"));
   }
 }
+
+var licenseInfo;
+async function initLicenseInfo() {
+  licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+  document.getElementById("txtLicenseKey").value = licenseInfo.licenseKey;
+  
+  if (licenseInfo.licenseKey) {
+    await validateLicenseInOptions(true);
+  }
+  
+  // add an event listener for changes:
+  // window.addEventListener("QuickFolders.BackgroundUpdate", validateLicenseInOptions);
+  
+  messenger.runtime.onMessage.addListener (
+    (data, sender) => {
+      if (data.msg=="updatedLicense") {
+        licenseInfo = data.licenseInfo;
+        QuickFolders.Options.updateLicenseOptionsUI(false); // we may have to switch off silent if we cause this
+        configureBuyButton();
+        return Promise.resolve(true); // returns a promise of "undefined"
+      }
+    }
+  );
+}
+
 
 for (let button of document.querySelectorAll("#QuickFolders-Options-Tabbox button")) {
   button.addEventListener("click", activateTab);
@@ -27,50 +61,19 @@ for (let button of document.querySelectorAll("#QuickFolders-Options-Tabbox butto
 
 
 for (let colorpicker of document.querySelectorAll("input[type=color]")) {
-  let options = QuickFolders.Options,
-      elementName, elementStyle, label,
-      isStyleUpdate = true;
-  function initParams(eN, eS, s, l) {
-    elementName=eN, elementStyle=eS, label=l
+  let {name, style, label} = QuickFolders.Options.getColorPickerVars(colorpicker.id);
+  if (!name) {
+    if (colorpicker.id == "inactive-colorpicker") {
+      colorpicker.addEventListener("input", function() { 
+        QuickFolders.Options.colorPickerTranslucent.call(QuickFolders.Options, colorpicker);
+      } );
+    }
   }
-  switch (colorpicker.id) {
-    case "toolbar-colorpicker":
-      initParams("Toolbar", "background-color", "qf-StandardColors");
-      break;
-    case "inactive-fontcolorpicker":
-      initParams('InactiveTab','color', 'inactivetabs-label');
-      break;
-    case "inactive-colorpicker":
-        isStyleUpdate = false;
-        colorpicker.addEventListener("input", function() { 
-          options.colorPickerTranslucent.call(options, colorpicker);
-        } );
-      break;
-    case "activetab-fontcolorpicker":
-      initParams('ActiveTab','color', 'activetabs-label');
-      break;
-    case "activetab-colorpicker":
-      initParams('ActiveTab','background-color','activetabs-label');
-      break;
-    case "hover-fontcolorpicker":
-      initParams('HoveredTab','color','hoveredtabs-label');
-      break;
-    case "hover-colorpicker":
-      initParams('HoveredTab','background-color', 'hoveredtabs-label');
-      break;
-    case "dragover-fontcolorpicker":
-      initParams('DragTab', 'color', 'dragovertabs-label');
-      break;
-    case "dragover-colorpicker":
-      initParams('DragTab', 'background-color', 'dragovertabs-label');
-      break;
-    default:
-      isStyleUpdate = false;
-  }
-  if (isStyleUpdate)
+  else {
     colorpicker.addEventListener("input", function() { // was "input"
-      options.styleUpdate(elementName, elementStyle, colorpicker.value, colorpicker.getAttribute("previewLabel"));
+      QuickFolders.Options.styleUpdate(name, style, colorpicker.value, colorpicker.getAttribute("previewLabel"));
     } );
+  }
 }
 
 // all dropdowns that end with "paletteType"
@@ -324,9 +327,6 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       if (null!=retVal) return retVal;
     });
   }
-
-
-
 }
 
 // we cannot transmit the element, so removing the first parameter
@@ -352,19 +352,98 @@ document.getElementById("pasteFolders").addEventListener("click", (event) => {
   QuickFolders.Options.pasteFolderEntries();
 });
 
-
-
-
-document.getElementById("btnSaveConfig").addEventListener("click", (event) => {
+document.getElementById("btnSaveConfig").addEventListener("click", async (event) => {
   // legacy code - needs to go via background 
-  // oncommand="options.storeConfig(Preferences, options.prefMap);" 
-  throw("TO DO: options.storeConfig()");
+  let storedObj = {
+    general : [],
+    advanced: [],
+    layout: [],
+    userStyle: []
+  }
+  let isLicense = (licenseInfo.isExpired || licenseInfo.isValidated)
+  for (let it of document.querySelectorAll("[data-pref-name]")) {
+    let value;
+    if (it.tagName == "SELECT") {
+      let p = it.getAttribute("preference");
+      if (p.includes("PaletteType") || p.includes("folderPathDetail")) { value = parseInt(it.value,10); }
+      else { value = it.value; }
+    }
+    else  switch(it.type) {
+      case "checkbox":
+        value = it.checked;
+        break;
+      case "text": case "color":
+        value = it.value;
+        break;
+      case "number": 
+        value = parseInt(it.value,10);
+        break;
+      case "radio": 
+        if (!it.checked) continue;
+        value = it.value;
+        break;
+      default: 
+        continue;
+    }
+    
+    let node = { key: it.getAttribute("data-pref-name"), val: value, originalId: it.getAttribute("preference") };
+    if(node.originalId) {
+      switch (node.originalId.substr(0,5)) {
+        case 'qfpg-':  // general
+          storedObj.general.push(node);
+          break;
+        case 'qfpa-':  // advanced
+          storedObj.advanced.push(node);
+          break;
+        case 'qfpl-':  // layout
+          storedObj.layout.push(node);
+          break;
+        case 'qfpp-':  // premium - make sure not to import the License without confirmation!
+          if (isLicense)
+            storedObj.premium.push(node);
+          break;
+        default:
+          console.log("Not storing - unknown preference ", node);
+      }
+    }
+    else {
+      console.log(node);
+    }
+  }  
+  
+  let elements = document.querySelectorAll("[type=color]"); //getElementsByTagName('html:input');
+  for (let i=0; i<elements.length; i++) {
+    let element = elements[i];
+    let node = { elementInfo: element.getAttribute("elementInfo"), val: element.value };
+    storedObj.userStyle.push(node);
+  }  
+  
+  return await messenger.Utilities.storeConfig(storedObj);  
 });
      
-document.getElementById("btnLoadConfig").addEventListener("click", (event) => {
-  // legacy code - needs to go via background 
-  // oncommand="options.loadConfig(Preferences);" 
-  throw("TO DO: options.loadConfig()");
+document.getElementById("btnLoadConfig").addEventListener("click", async (event) => {
+  // legacy code - moved to experiment api (utilities)
+  let config = await messenger.Utilities.loadConfig();  
+  if (config) {
+    const colorpickers = Array.from(document.querySelectorAll("input[type=color]"));      
+    for (let i=0; i<config.length; i++) {
+      let item = config[i];
+      // { key: it.getAttribute("data-pref-name"), val: value, originalId: it.getAttribute("preference") }
+      if (item.key) {
+        await browser.LegacyPrefs.setPref(item.key, item.val);
+      }
+      else if (item.elementInfo) {
+        let colPick = colorpickers.find(e => e.getAttribute("elementInfo") == item.elementInfo);
+        if (colPick) {
+          colPick.value = item.val;
+          let {name, style, label} = QuickFolders.Options.getColorPickerVars(colPick.id);
+          QuickFolders.Options.styleUpdate(name, style, item.val, colPick.getAttribute("previewLabel"));
+        }
+      }
+    }
+    await loadPrefs();
+    QuickFolders.Options.initPreviewTabStyles();
+  }
 });
 
 
@@ -372,7 +451,7 @@ document.getElementById("btnLoadConfig").addEventListener("click", (event) => {
 document.getElementById("btnConfigureTooltips").addEventListener("click", (event) => {
   // oncommand="options.configureTooltips(this);return true;"
   // this calls:
-  // QI.showAboutConfig(btn,           'extensions.quickfolders.tooltips', true, true);
+  // QI.showAboutConfig(btn,           "extensions.quickfolders.tooltips", true, true);
   dispatchAboutConfig("extensions.quickfolders.tooltips", true, true)
   return true;
 });
@@ -488,16 +567,28 @@ async function loadPrefs() {
 
 // preselect the correct tab.
 async function preselectTab() {
-  let selectOptionsPane = await browser.LegacyPrefs.getPref('extensions.quickfolders.lastSelectedOptionsTab'),
+  let selectOptionsPane = await browser.LegacyPrefs.getPref("extensions.quickfolders.lastSelectedOptionsTab"),
       selectedTabElement = document.getElementById("QuickFolders-General"); //default = first tab
     // selectOptionsPane can be overwritten by URL parameter "selectedTab"
   let optionParams = new URLSearchParams(document.location.search);
   let selTab = optionParams ? optionParams.get("selectedTab") : "";
+  let mode = optionParams ? optionParams.get("mode") : "";
   if (null!=selTab && selTab != "" && selTab != "-1") {
     selectOptionsPane = selTab;
   }
+  switch (mode) {
+    case "helpOnly":
+      selectOptionsPane = 3;
+      break;
+    case "supportOnly":
+      selectOptionsPane = 4;
+      break;
+    case "licenseKey":
+      selectOptionsPane = 5;
+      break;
+  }
   // select the tab:
-  let tabs = document.querySelectorAll('#QuickFolders-Options-Tabbox button');
+  let tabs = document.querySelectorAll("#QuickFolders-Options-Tabbox button");
   Array.from(tabs).forEach(button => {
     if (button.getAttribute("tabNo").toString() == selectOptionsPane.toString()) {
       selectedTabElement = button;
@@ -513,32 +604,6 @@ async function initVersionPanel() {
   document.getElementById("qf-options-header-description").value = manifest.version;
 }
 
-let licenseInfo;
-async function initLicenseInfo() {
-  licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
-  document.getElementById('txtLicenseKey').value = licenseInfo.licenseKey;
-  
-  if (licenseInfo.licenseKey) {
-    await validateLicenseInOptions(true);
-  }
-  
-  // add an event listener for changes:
-  // window.addEventListener("QuickFolders.BackgroundUpdate", validateLicenseInOptions);
-  
-  messenger.runtime.onMessage.addListener (
-    (data, sender) => {
-      if (data.msg=="updatedLicense") {
-        licenseInfo = data.licenseInfo;
-        QuickFolders.Options.updateLicenseOptionsUI(false); // we may have to switch off silent if we cause this
-        configureBuyButton();
-        return Promise.resolve(true); // returns a promise of "undefined"
-      }
-    }
-  );
-  
-}
-
-
 function configExtra2Button() {
    // to do - OK / Cancel / donate buttons from legacy code QuickFolders.Options 
 }
@@ -548,9 +613,9 @@ async function configureBuyButton() {
   function replaceCssClass(el,addedClass) {
     if (!el) return;
     el.classList.add(addedClass);
-    if (addedClass!='paid') el.classList.remove('paid');
-    if (addedClass!='expired')  el.classList.remove('expired');
-    if (addedClass!='free') el.classList.remove('free');
+    if (addedClass!="paid") el.classList.remove("paid");
+    if (addedClass!="expired")  el.classList.remove("expired");
+    if (addedClass!="free") el.classList.remove("free");
   }
 
   let wd = window.document,
@@ -615,7 +680,7 @@ async function validateLicenseInOptions(evt = false) {
   configureBuyButton();
   
   configExtra2Button();
-  // util.logDebug('validateLicense - result = ' + result);
+  // util.logDebug("validateLicense - result = " + result);
 } 
 
 function initButtons() {
@@ -642,19 +707,35 @@ function initButtons() {
     QuickFolders.Options.sendMail();
   }); // contact me
   
-  // oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog('options_' + options.currentOptionsTab); window.close(); });">Buy License</button>
+  // oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog("options_" + options.currentOptionsTab); window.close(); });">Buy License</button>
   document.getElementById("btnLicense").addEventListener("click", (event) => { QuickFolders.Interface.showLicenseDialog(); });
   document.getElementById("btnDefaultRadius").addEventListener("click", (event) => { QuickFolders.Options.setDefaultButtonRadius(); });
-  document.getElementById("qf-stateColors-defaultButton").addEventListener("click", (event) => { QuickFolders.Options.setDefaultColors(); });
-  document.getElementById("qf-options-header-description").addEventListener("click", (event) => { messenger.Utilities.showVersionHistory();
+  document.getElementById("defaultColors").addEventListener("click", (event) => { QuickFolders.Options.setDefaultColors(); });
+  document.getElementById("qf-options-header-description").addEventListener("click", (event) => { 
+    messenger.Utilities.showVersionHistory();
     window.close(); 
   });
+  document.getElementById("qf-options-icon").addEventListener("click", (event) => { QuickFolders.Options.collapseHead(); });
+  document.getElementById("qf-youtube").addEventListener("click", (event) => {
+    messenger.windows.openDefaultBrowser("https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A");
+  });
+  document.getElementById("applyCurrentBackground").addEventListener("click", (event) => { 
+    QuickFolders.Options.setCurrentToolbarBackgroundCustom(); 
+  });
+  document.getElementById("minHeightFix").addEventListener("click", (event) => { 
+    QuickFolders.Util.openLinkInTab("https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25021"); 
+  });
+  document.getElementById("L0").addEventListener("click", (event) => { 
+    QuickFolders.Util.openLinkInTab("https://quickfolders.org/"); 
+    window.close(); 
+  });  
+
 
 }
 
 async function initToolbarBackground() {
   QuickFolders.Options.setCurrentToolbarBackground(
-    await QuickFolders.Preferences.getStringPref('currentFolderBar.background.selection'), false);  
+    await QuickFolders.Preferences.getStringPref("currentFolderBar.background.selection"), false);  
 }
 
 
@@ -674,7 +755,7 @@ async function initBling() {
       bcol = util.getSystemColor(await getUserStyle("ActiveTab","background-color","#000090"));
   getElement("activetab-colorpicker").value = bcol;
   getElement("activetab-fontcolorpicker").value = col;
-  getElement("activetabs-label").style.setProperty('color', col, 'important');
+  getElement("activetabs-label").style.setProperty("color", col, "important");
   getElement("activetabs-label").style.backgroundColor = bcol;
   
   bcol = util.getSystemColor(await getUserStyle("InactiveTab","background-color","buttonface"));
@@ -682,21 +763,21 @@ async function initBling() {
   
   col = util.getSystemColor(await getUserStyle("InactiveTab","color","buttontext"));
   getElement("inactive-fontcolorpicker").value = col;
-  getElement("inactivetabs-label").style.setProperty('color', col, 'important');
+  getElement("inactivetabs-label").style.setProperty("color", col, "important");
   
   
   bcol = util.getSystemColor(await getUserStyle("HoveredTab","background-color","#FFFFFF"));
   getElement("hover-colorpicker").value = bcol;
   col = util.getSystemColor(await getUserStyle("HoveredTab","color","Black"));
   getElement("hover-fontcolorpicker").value = col;
-  getElement("hoveredtabs-label").style.setProperty('color', col, 'important');
+  getElement("hoveredtabs-label").style.setProperty("color", col, "important");
   getElement("hoveredtabs-label").style.backgroundColor = bcol;
 
   bcol = util.getSystemColor(await getUserStyle("DragTab","background-color", "#E93903"));
   getElement("dragover-colorpicker").value = bcol;
   col = util.getSystemColor(await getUserStyle("DragTab","color", "White"));
   getElement("dragover-fontcolorpicker").value = col;
-  getElement("dragovertabs-label").style.setProperty('color', col, 'important');
+  getElement("dragovertabs-label").style.setProperty("color", col, "important");
   getElement("dragovertabs-label").style.backgroundColor = bcol;
   getElement("toolbar-colorpicker").value = util.getSystemColor(await getUserStyle("Toolbar","background-color", "White"));
   
@@ -713,7 +794,7 @@ async function initBling() {
           theme = QuickFolders.Themes.Theme(item.value);
       if (theme) {
         if (item.label != theme.name)
-          item.label = theme.name + ' - ' + item.label
+          item.label = theme.name + " - " + item.label
       }
     }  
   }
@@ -728,36 +809,30 @@ async function initBling() {
   QuickFolders.Options.initPreviewTabStyles();
       
   
-  let paletteType = await QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType'),
+  let paletteType = await QuickFolders.Preferences.getIntPref("style.InactiveTab.paletteType"),
       disableStriped = !(QuickFolders.Options.stripedSupport(paletteType) || 
-                         QuickFolders.Options.stripedSupport(await QuickFolders.Preferences.getIntPref('style.ColoredTab.paletteType')) ||
-                         QuickFolders.Options.stripedSupport(await QuickFolders.Preferences.getIntPref('style.InactiveTab.paletteType')));
+                         QuickFolders.Options.stripedSupport(await QuickFolders.Preferences.getIntPref("style.ColoredTab.paletteType")) ||
+                         QuickFolders.Options.stripedSupport(await QuickFolders.Preferences.getIntPref("style.InactiveTab.paletteType")));
   
-  getElement('qf-individualColors').collapsed = !currentTheme.supportsFeatures.individualColors;
-  getElement('qf-individualColors').disabled = disableStriped;
-  getElement('ExampleStripedColor').disabled = disableStriped;
-  getElement('buttonTransparency').disabled = (paletteType!=0) && disableStriped; // only with "no colors"
+  getElement("qf-individualColors").collapsed = !currentTheme.supportsFeatures.individualColors;
+  getElement("qf-individualColors").disabled = disableStriped;
+  getElement("ExampleStripedColor").disabled = disableStriped;
+  getElement("buttonTransparency").disabled = (paletteType!=0) && disableStriped; // only with "no colors"
   
 }
 
 console.log("i18n.updateDocument");
 i18n.updateDocument();
 
+let supportLabel = document.getElementById("contactLabel"),
+    supportString = QuickFolders.Util.getBundleString("qf.description.contactMe", [QuickFolders.Util.ADDON_SUPPORT_MAIL]); // substitution parameter
+supportLabel.textContent = supportString;
+
 loadPrefs();
 preselectTab();
 initLicenseInfo();
 initVersionPanel();
 initButtons();
-/*  THIS CODE CANNOT WORK "Uncaught ReferenceError: ChromeUtils is not defined"
-debugger;
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
-*/
-
 
 initToolbarBackground();
 initBling();

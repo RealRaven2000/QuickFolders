@@ -1,3 +1,13 @@
+"use strict";
+/* BEGIN LICENSE BLOCK
+
+QuickFolders is released under the Creative Commons (CC BY-ND 4.0)
+Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) 
+For details, please refer to license.txt in the root folder of this extension
+
+END LICENSE BLOCK */
+
+
 // parts from the old options interface that are specific for the options dialog UI
 // keeping the old namespace so I know which funcitons I can retire when we convert to HTML
 
@@ -169,6 +179,7 @@ QuickFolders.Options = {
       }
       
     }
+    return previewTab;
   },
   
   colorPickerTranslucent: function(picker) {
@@ -450,26 +461,26 @@ QuickFolders.Options = {
         isStripable = null,
         isTransparentSupport = false;
     switch(buttonState) {
-      case 'colored':
-        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(await prefs.getIntPref('style.ColoredTab.paletteType'));
+      case "colored":
+        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(await prefs.getIntPref("style.ColoredTab.paletteType"));
         break;
-      case 'standard':
-        idPreview = 'inactivetabs-label';
-        colorPicker = 'inactive-colorpicker';
-        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(await prefs.getIntPref('style.ColoredTab.paletteType'));
+      case "standard":
+        idPreview = "inactivetabs-label";
+        colorPicker = "inactive-colorpicker";
+        isStripable = this.stripedSupport(paletteType) || this.stripedSupport(await prefs.getIntPref("style.ColoredTab.paletteType"));
         isTransparentSupport = (paletteType==0);
         break;
-      case 'active':
-        idPreview = 'activetabs-label';
-        colorPicker = 'activetab-colorpicker';
+      case "active":
+        idPreview = "activetabs-label";
+        colorPicker = "activetab-colorpicker";
         break;
-      case 'hovered':
-        idPreview = 'hoveredtabs-label';
-        colorPicker = 'hover-colorpicker';
+      case "hovered":
+        idPreview = "hoveredtabs-label";
+        colorPicker = "hover-colorpicker";
         break;
-      case 'dragOver':
-        idPreview = 'dragovertabs-label';
-        colorPicker = 'dragover-colorpicker';
+      case "dragOver":
+        idPreview = "dragovertabs-label";
+        colorPicker = "dragover-colorpicker";
         break;
     }
     if (isStripable && paletteType==3) isStripable = false;
@@ -493,7 +504,7 @@ QuickFolders.Options = {
     // preparePreviewTab(id, preference, previewId)
     await prefs.setIntPref('style.' + stylePref + '.paletteType', paletteType);
     if (colorPicker) {
-      this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, null, paletteType);
+      let preview = this.preparePreviewTab(colorPicker, 'style.' + stylePref + '.', idPreview, null, paletteType);
       // we need to force reselect the palette entry of the button
       // to update font & background color
       if (isUpdatePanelColor) {
@@ -502,6 +513,10 @@ QuickFolders.Options = {
           // if (!m.targetNode)
           m.targetNode = (buttonState == 'colored') ? 
                          null : getElement(QI.getPreviewButtonId(buttonState));
+          // as we share the same menu between all preview elements, we need to overwrite targetId.
+          let thePicker = getElement(colorPicker);
+          m.setAttribute("targetId", thePicker.getAttribute("previewLabel"));
+          m.setAttribute("stylePrefKey", preview.getAttribute("stylePrefKey"));
           // retrieve palette index
           let col = await prefs.getIntPref('style.' + stylePref + '.paletteEntry');
           QI.setTabColorFromMenu(m.firstChild, col.toString()); // simulate a menu item! 155 lines of LEGACY code ...
@@ -563,8 +578,7 @@ QuickFolders.Options = {
     // we should not call displayNavigationToolbar directly but use the event broadcaster to notify all windows.
     messenger.runtime.sendMessage({ command:"toggleNavigationBar" });
   },
-    
-  
+
   stripedSupport : function(paletteType) {
     switch(parseInt(paletteType)) {
       case 1: // Standard Palette
@@ -665,11 +679,14 @@ QuickFolders.Options = {
         chkConfigIncludeTabs = getElement("chkConfigIncludeTabs"),
         chkConfigGeneral= getElement("chkConfigIncludeGeneral"),
         chkConfigLayout = getElement("chkConfigIncludeLayout"),
-        btnLoadConfig   = getElement("btnLoadConfig");
+        btnLoadConfig   = getElement("btnLoadConfig"),
+        fldBackupRestore = getElement("backupRestore");
     btnLoadConfig.disabled = !isEnabled;
     chkConfigGeneral.disabled = !isEnabled;
     chkConfigIncludeTabs.disabled = !isEnabled;
     chkConfigLayout.disabled = !isEnabled;
+    if (isEnabled) { backupRestore.removeAttribute("disabled"); }
+    else { backupRestore.setAttribute("disabled",true); }
   },
 
   updateLicenseOptionsUI : async function (silent = false) {
@@ -800,29 +817,28 @@ QuickFolders.Options = {
       }
     }
   },
-    
-  
+
   // put appropriate label on the license button and pass back the label text as well
   labelLicenseBtn : function (btnLicense, validStatus) {
     switch(validStatus) {
       case  "extend":
         let txtExtend = QuickFolders.Util.getBundleString("qf.notification.premium.btn.extendLicense");
         btnLicense.setAttribute("collapsed",false);
-        btnLicense.label = txtExtend; // text should be extend not renew
+        btnLicense.textContent = txtExtend; // text should be extend not renew
         btnLicense.setAttribute('tooltiptext',
           QuickFolders.Util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip"));
         return txtExtend;
       case "renew":
         let txtRenew = QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense");
-        btnLicense.label = txtRenew;
+        btnLicense.textContent = txtRenew;
         return txtRenew;
       case "buy":
         let buyLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.getLicense");
-        btnLicense.label = buyLabel;
+        btnLicense.textContent = buyLabel;
         return buyLabel;
       case "upgrade":
         let upgradeLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.upgrade");
-        btnLicense.label = upgradeLabel;
+        btnLicense.textContent = upgradeLabel;
         btnLicense.classList.add('upgrade'); // stop flashing
         return upgradeLabel;
         
@@ -878,7 +894,35 @@ QuickFolders.Options = {
     messenger.runtime.sendMessage({ command:"pasteFolderEntries" });  
   },
     
-  
+  getColorPickerVars: function(colPickId) {
+    switch (colPickId) {
+      case "toolbar-colorpicker":
+        return {name: "Toolbar", style: "background-color", preview: "qf-StandardColors"};
+      case "inactive-fontcolorpicker":
+        return {name: "InactiveTab", style: "color", preview: "inactivetabs-label"};
+        break;
+      case "activetab-fontcolorpicker":
+        return {name: "ActiveTab", style: "color", preview: "activetabs-label"};
+      case "activetab-colorpicker":
+        return {name: "ActiveTab", style: "background-color", preview: "activetabs-label"};
+      case "hover-fontcolorpicker":
+        return {name: "HoveredTab", style: "color", preview: "hoveredtabs-label"};
+      case "hover-colorpicker":
+        return {name: "HoveredTab", style: "background-color", preview: "hoveredtabs-label"};
+      case "dragover-fontcolorpicker":
+        return {name: "DragTab", style: "color", preview: "dragovertabs-label"};
+      case "dragover-colorpicker":
+        return {name: "DragTab", style: "background-color", preview: "dragovertabs-label"};
+      default:
+        return {name:null, style: null, preview: null};
+    }
+  },
+
+  // save space, for visually impaired
+  collapseHead: function collapseHead() {
+    let hdr = document.getElementById("qf-header-container");
+    hdr.setAttribute("collapsed", true);
+  },  
   
 }  // QuickFolders.Options
 

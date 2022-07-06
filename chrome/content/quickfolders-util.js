@@ -1556,9 +1556,25 @@ QuickFolders.Util = {
   } ,
   
   alertButtonNoFolder: function alertButtonNoFolder(button) {
-    let txt = button ? button.getAttribute('folderURI') : "";
-    alert("This folder doesn't exist! Function not available.." 
-      + txt ? "\nFolder URI = " + txt : "");
+    let detail = "";
+    if (button) {
+      let el = QuickFolders.Model.selectedFolders.find(e => (e.uri == button.getAttribute("folderURI")));
+      if (el) {
+        detail = `QuickFolders Tab: [${el.name}]\n`
+            + `account: ${el.account}\n`
+            + `URI: ${el.uri}`;
+        let clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+        clipboardhelper.copyString("Invalid Tab:\n" + detail);
+        detail += "\nDebug information was copied to clipboard. If you have many invalid tabs, this information will be helpful to support.";
+      }
+      else {
+        detail = "button.folderURI = " + button.getAttribute("folderURI");
+      }
+    }
+    else {
+      detail = button.toString();
+    }
+    alert("This tab points to an invalid folder.\n" + detail);
   } ,
   
   getAnonymousNodes(doc,el) {

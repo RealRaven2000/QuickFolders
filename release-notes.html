@@ -1,4 +1,4 @@
-<b>Release 5.10</b>
+<b>Release 5.10.2</b>
 Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (102.0)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb91) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
             
 
@@ -9,6 +9,15 @@ Read the new <a href="premium.html#featureComparison">comparison chart</a> to se
 
 You can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>.
 
+<b>Maintenance Version 5.10.2 - 07/07/2022</b>
+<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a> 5.10.2 - this maintenance version will be able to reconstruct tabs after upgrading from Thunderbird 91 to 102 even if the server and username have been modified due to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1573690">bug 1573690</a>. To successfully reconstruct (and avoiding invalid tabs) is only possible if <b>5.10.1 was previously run on an older profile (Thunderbird 91 or older)</b>
+
+If you already upgraded to Thunderbird 102 previously and experience invalid tabs, you can now generate troubleshooting information via right-click <i>QuickFolders Commands / Tab Specific Properties...</i> This will copy the assumed account and the (invalid) folder URI to the clipboard.
+
+For reference you can click on any real folder in the folder tree and then SHIFT+Click on the QuickFolders tool icon, then select <i>Debug / Copy current folder info!</i> This will copy the account and correct expected URI to the clipboard. By comparison of these data points it I can fix your folders through exporting the folder configuration and then text search+replace the differing URIs (or by simply inserting the correct account)
+</li>
+<li> Fixed the missing icon on the advanced tab properties panel, which is hidden by style changes in Thunderbird 102.</li>
+<li> Fixed icon coloring for the tools and QuickFolders Command menus in dark mode (Thunderbird 102).</li>
 
 <b>Maintenance Version 5.10.1 - 05/07/2022</b>
 <ul>

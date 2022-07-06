@@ -384,8 +384,13 @@ QuickFolders.AdvancedTab = {
 			case 1: // middle button
 			  break;
 			case 2: // right button
-				clipboardhelper.copyString(this.folder.URI);
-			  util.slideAlert("QuickFolders", "Copied folder URI to clipboard\n" + this.folder.URI);
+        let infoTxt = "URI: " + this.folder.URI;
+        if (this.entry) {
+          infoTxt += `\nTab [${this.entry.name}]`
+            + `\nAccount (from tab): ${this.entry.account}`;
+        }
+				clipboardhelper.copyString(infoTxt);
+			  util.slideAlert("QuickFolders", "Copied folder Info to clipboard\n" + infoTxt);
 			  break;
 		}
 	}

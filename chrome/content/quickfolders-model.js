@@ -471,74 +471,87 @@ QuickFolders.Model = {
     let needsPatch = false;
     let is102 = QuickFolders.Util.versionGreaterOrEqual(QuickFolders.Util.Appversion, "102");
     
-    for (let i=0; i<entries.length; i++) {
+    function addAccountKey(e) {
+      // [issue 281] - convert to new format
+      if (!e.uri) {
+        return;
+      }
+      let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false); // nsIMsgFolder
+      if (!f) {
+        e.account = "?uri";
+        return false;
+      }
+      if (!f.server) {
+        e.account = "?server";
+        return false;
+      }
+      let ac = MailServices.accounts.FindAccountForServer(f.server);
+      if (!ac) {
+        e.account = "?account";
+        return false;
+      }
+      e.account = ac.key;
+      if (e.invalid) {
+        delete e.invalid;
+      }
+      return true;
+    }
+    
+    function reconstructUri(e) {
+      let ac = MailServices.accounts.getAccount(e.account);
+      if (ac && ac.incomingServer) {
+        let oldUri = Services.io.newURI(e.uri); // generate a fresh URI to retrieve path portion
+        // or oldUri.filePath - not sure whether query params make sense or are allowed for  folder URIS
+        return ac.incomingServer.serverURI + oldUri.pathQueryRef; 
+      }
+      throw new Error(`Failed to reconstruct URL for ${e.uri} of account ${e.account}`);
+    }
+
+    for (let i = 0; i < entries.length; i++) {
       let e = entries[i];
       if (!e.account) {
         needsPatch = true;
-        // [issue 281] - convert to new format
-        if (e.uri) {
-          // determine path+server from uri
-          let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false); // nsIMsgFolder
-          if (!f ) {
-            e.account = "?uri";
-          } else if (f.server) {
-            // store the account
-            let ac = MailServices.accounts.FindAccountForServer(f.server);
-            if (ac) {
-              e.account = ac.key;
-              if (e.invalid) {
-                delete e.invalid;
-              }
-            }
-            else  {
-              e.account = "?account";
-            }
-          }
-          else {
-            e.account = "?server";
-          }
-        }
+        addAccountKey(e);
       }
       // Thunderbird 102 correction: read valid! account attribute, then try to match the folder to the account.
-      else if (is102) {
-        if (e.account && e.account.startsWith("acc")) {
-          let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
-          if (!f) {
-            let ac = MailServices.accounts.getAccount(e.account);
-            if (ac && ac.incomingServer) {
-              let serverStart = e.uri.indexOf("//");
-              let fullPath;
-              if (serverStart>0) {
-                fullPath = e.uri.substring(serverStart+2);
-              }
-              // find first slash
-              let pathStart = fullPath.indexOf("/");
-              if (pathStart>0) {
-                let relativePath = fullPath.substring(pathStart); // starts with a "/"
-                let newUri = ac.incomingServer.serverURI + relativePath;
-                f = QuickFolders.Model.getMsgFolderFromUri(newUri, false);
-                if (f) {
-                  needsPatch = true;
-                  console.log(`QuickFolders\nSuccessfully fixed URI for folder ${f.prettyName}:\n%c${newUri}`, "background: blue; color:white;");
-                  e.uri = newUri;
-                  delete e.invalid;
-                }
-                else {
-                  console.log(`QuickFolders\nCannot find folder path in ${e.account}:\n%c${relativePath}`, "background: rgb(120,0,0); color:white;");
-                }
-              }
-            }
-          }
-          else {
-            // folder was found, clear invalid flag!
+      if (is102 && e.uri) {
+        let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
+        if (e.account && !e.account.startsWith("?")) {
+          if (f) {
+            // The folder was found, clear invalid flag!
             if (e.invalid) {
               delete e.invalid;
             }
+            continue;
           }
+          // Folder uri is invalid, reconstruct!
+          try {
+            let newUri = reconstructUri(e);
+            // Validate the reconstructed uri.
+            f = QuickFolders.Model.getMsgFolderFromUri(newUri, false);
+            if (!f) {
+              throw new Error(`Reconstructed URL ${newUri} for ${e.uri} of account ${e.account} is invalid`);
+            }
+            needsPatch = true;
+            console.log(`QuickFolders\nSuccessfully fixed URI for folder ${f.prettyName}:\n%c${newUri}`, "background: blue; color:white;");
+            e.uri = newUri;
+            delete e.invalid;
+          } catch (ex) {
+            console.log(`QuickFolders\n${ex.message}`, "background: rgb(120,0,0); color:white;");
+          }
+        } else {
+          if (f && (e.account.startsWith("?") || e.invalid)) {
+            // The folder was found, add account key once again!
+            if (addAccountKey(e)) { // account was corrected with a real accountname
+              needsPatch = true;
+            }
+          }
+          // No valid account, matching magic!
+          // TO DO LATER.
         }
-        
       }
     }
+    
     if (needsPatch && withStorage) {
       QuickFolders.Preferences.storeFolderEntries(entries);
     }

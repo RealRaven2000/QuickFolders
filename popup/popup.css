@@ -110,6 +110,10 @@ canvas[collapsed=true] {
   background-color: transparent;
 }
 
+#changesList ul hr {
+  color: lightyellow !important;
+}
+
 .importantInfo a {
   background-color: transparent;
   color: lightyellow;

@@ -213,6 +213,7 @@ addEventListener("load", async (event) => {
       whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
         .replace(/\{boldStart\}/g,"<b>")
         .replace(/\{boldEnd\}/g,"</b>")
+        .replace(/\{hr\}/g,"<hr>")
         .replace(/\{italicStart\}/g,"<i>")
         .replace(/\{italicEnd\}/g,"</i>")
         .replace(/\{L1\}/g,"<li>")

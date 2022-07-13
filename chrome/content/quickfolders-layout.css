@@ -52,6 +52,12 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/message-invalid.png");
 }
 
+#QuickFolders-ToolbarPopup menuitem {
+  fill: currentColor;
+  -moz-context-properties: fill;
+}
+
+
 #QuickFolders-ToolbarPopup menuitem image {
   fill: var(--toolbarbutton-icon-fill, currentColor);
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
@@ -1014,8 +1020,9 @@ menuitem.mailCmd[tag="qfFolderRepair"],
 #quickFoldersCommands,
 #quickFoldersMailFolderCommands {
 	list-style-image : url('chrome://quickfolders/content/skin/ico/folderCommand.svg');
-    -moz-context-properties: fill, fill-opacity, stroke !important;
-    stroke: var(--new-highlight) !important;
+  -moz-context-properties: fill, fill-opacity, stroke !important;
+  stroke: var(--new-highlight) !important;
+  fill: currentColor;
 }
 
 #QuickFolders-paintBucketActive menuitem,

@@ -2034,10 +2034,12 @@ QuickFolders.Interface = {
       }
     }
     catch(ex) {
+      /*
       util.logToConsole("Error in addFolderButton: " + "folder getStringProperty is missing.\n"
                         + "Entry: " + (entry ? entry.name : " invalid entry") + "\n"
                         + "URI: " + (folder.URI || "missing"));
       util.logException("Error in addFolderButton", ex);
+      */
     }
     if (!theButton) isMinimal=false; // if we create new buttons from scratch, then we need a full creation including menu
 
@@ -2102,12 +2104,14 @@ QuickFolders.Interface = {
 			// this.setEventAttribute(button, "oncommand","QuickFolders.Interface.onButtonClick(event.target, event, true);");
 			button.addEventListener("click",
 				function(event) {
-					QI.onButtonClick(event.target, event, true);
 					event.stopPropagation();
+					QI.onButtonClick(event.target, event, true);
 				},
 				false);
 			button.addEventListener("command",
 				function(event) {
+          // avoid duplication when clicking buttons themselves:
+          if (event.target.tagName == "toolbarbutton") return;
 					QI.onButtonClick(event.target, event, true);
 				},
 				false);
@@ -2462,7 +2466,6 @@ QuickFolders.Interface = {
 				// force select folder on invalid URI - this will suggest to delete the folder.
 				let uri = button.getAttribute("folderURI");
 				if (uri) {
-					debugger;
 					QuickFolders_MySelectFolder(uri);
 				}
 			}
@@ -7060,8 +7063,9 @@ QuickFolders.Interface = {
           if (!entries[i].name) {
             // retrieve the name from the folder uri (prettyName)
             let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, false);
-            if (f)
+            if (f) {
               entries[i].name = f.prettyName;
+            }
           }
         }
         if (!entries.length)
@@ -7122,8 +7126,25 @@ QuickFolders.Interface = {
       //alert(e);
       Services.prompt.alert(null,"QuickFolders",e);
     }
-  },  
-
+  },
+ 
+  copyCurrentFolderInfo: function() {
+    try {
+      let folder = QuickFolders.Util.CurrentFolder;
+      let clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+      let account = MailServices.accounts.FindAccountForServer(folder.server).key;
+      let txt = `Folder ${folder.prettyName}\n`
+        + `On ${account}\n`
+        + `URI: ${folder.URI}`;
+      clipboardhelper.copyString(txt);
+      let msg = `Folder information for ${folder.prettyName} was copied to clipboard!`;
+      console.log(msg + "\n" + txt);
+      Services.prompt.alert(null,"QuickFolders",msg);
+    }
+    catch(ex) {
+      QuickFolders.Util.logException("QuickFolders.Interface.copyCurrentFolderInfo failed", ex);
+    }
+  }
   
 
 }; // Interface

@@ -253,6 +253,17 @@ END LICENSE BLOCK */
     ## Removed legacy code (supportsMap, nsIMutableArray,  MailServices.copy.CopyFolders)
     ## Removed legacy settings menu & dialog
     
+  5.10.1 QuickFolders Pro - 06/07/2022
+    ## [issue 281] - Updating to Thunderbird 102 can generate invalid tabs
+    ##         Step 1: wrote some mitigating code to determine account for each folder uri and store in TB91
+    ##
+    
+  5.10.2 QuickFolders Pro - WIP
+    ## [issue 281] - Updating to Thunderbird 102 can generate invalid tabs
+    ##         Step 2: code for auto-fixing URLs using the data generated in Tb91 (step1)
+    ##                 added a diagnostic function (debug menu) to copy account + folder URI of current folder.
+  
+  
   5.11 QuickFolders Pro - WIP
     ## fix icon distances on popup menus (Tb102)
     

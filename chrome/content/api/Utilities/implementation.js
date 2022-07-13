@@ -255,14 +255,15 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 // the following function calls this.updateMainWindow() which calls this.updateFolders()
                 // LEGACY MAIN WINDOW HACK FOR PREVIEW
                 let mainWin = util.getMail3PaneWindow();
-                mainWin.QuickFolders.initTabsFromEntries(entries);
                 mainWin.QuickFolders.Model.correctFolderEntries(entries, false);
+                mainWin.QuickFolders.initTabsFromEntries(entries);
                 let invalidCount = 0,
                     modelEntries = mainWin.QuickFolders.Model.selectedFolders;
                 // updateFolders() will append "invalid" property into entry of main model if folder URL cannot be found
                 for (let i=0; i<modelEntries.length; i++) {
-                  if (modelEntries[i].invalid)
+                  if (modelEntries[i].invalid) {
                     invalidCount++;
+                  }
                 }
 
                 question = util.getBundleString("qf.prompt.loadFolders.confirm");
@@ -275,7 +276,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                   // store
                   prefs.storeFolderEntries(entries);
                   // notify all windows
-                  QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });
+                  util.notifyTools.notifyBackground({ func: "updateAllTabs" });
                 }
                 else {
                   // roll back

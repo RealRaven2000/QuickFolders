@@ -1879,81 +1879,51 @@ QuickFolders.Util = {
     return folder;
   },
   
-  generateMRUlist: function qfu_generateMRUlist(ftv) { 
-    // generateMap: function ftv_recent_generateMap(ftv)
+  generateMRUlist: function(ftv) { 
     const util = QuickFolders.Util,
-          prefs = QuickFolders.Preferences;
+          prefs = QuickFolders.Preferences,
+          isDebugDetail = prefs.isDebugOption("recentFolders.detail"),
+          isTb102 = QuickFolders.Util.versionGreaterOrEqual(QuickFolders.Util.Appversion, "102");
+          
     let oldestTime = 0,
         recent = [],
         items = [],
         MAXRECENT = QuickFolders.Preferences.getIntPref("recentfolders.itemCount");
-    function sorter(a, b) {
-      return Number(a.getStringProperty("MRUTime")) < Number(b.getStringProperty("MRUTime"));
-    }
-    
-    function addIfRecent(aFolder) {
-      let time = 0;
-      if (typeof aFolder.getStringProperty != 'undefined') {
-        try {
-          time = Number(aFolder.getStringProperty("MRUTime")) || 0;
-        } catch (ex) {return;}
-        if (time <= oldestTime)
-          return -time;
-        if (recent.length == MAXRECENT) {
-          recent.sort(sorter);
-          recent.pop();
-          let oldestFolder = recent[recent.length - 1];
-          oldestTime = Number(oldestFolder.getStringProperty("MRUTime"));
-        }
-        recent.push(aFolder);
-      }
-      return time;
-    }
 
     util.logDebugOptional("interface,recentFolders", "generateMRUlist()");
     try {
-      /**
-       * Sorts our folders by their recent-times.
-       */
-
-      /**
-       * This function will add a folder to the recentFolders array if it
-       * is among the 15 most recent.  If we exceed 15 folders, it will pop
-       * the oldest folder, ensuring that we end up with the right number
-       *
-       * @param aFolder the folder to check
-       */
-
-      let debugTxt = prefs.isDebugOption('recentFolders.detail') ? 'Recent Folders List\n' : '';
-      for (let folder of ftv._enumerateFolders) {
-        let t = addIfRecent(folder);
-        if (debugTxt) {
-          if (t>0)
-            debugTxt += '--- ADDED: ' + folder.prettyName.padEnd(23, " ") + ' - : time = ' + t + ' = ' + util.getMruTime(folder) + '\n';
-          else
-            debugTxt += 'NOT ADDED: '  + folder.prettyName.padEnd(25, " ") + ' : time = ' + (-t) + ' = ' + util.getMruTime(folder) + '\n';;
-        }
+      // tb102 do the work
+      let recentFolders;
+      if (isTb102) {
+        var { FolderUtils } = ChromeUtils.import("resource:///modules/FolderUtils.jsm");
+        recentFolders = FolderUtils.getMostRecentFolders(
+          ftv._enumerateFolders,
+          MAXRECENT,
+          "MRUTime",
+          null
+        );
       }
-      if (debugTxt)
-        util.logDebug(debugTxt);
-        
-
-      recent.sort(sorter);
-
+      else {
+        var { getMostRecentFolders }  = ChromeUtils.import("resource:///modules/folderUtils.jsm");
+        recentFolders = getMostRecentFolders(
+          ftv._enumerateFolders,
+          MAXRECENT,
+          "MRUTime",
+          null
+        );
+      }
+      
       // remove legacy syntax:
       // https://bugzilla.mozilla.org/show_bug.cgi?id=1220564
       //items = [new ftvItem(f) for each (f in recent)];
-      for (let f of recent) { 
-        if (typeof ftvItem == "function") 
-          items.push(new ftvItem(f)); // Tb78 and older
-        else
-          items.push(new FtvItem(f));
+      for (let f of recentFolders) { 
+        items.push(new FtvItem(f));
       };
       
       // There are no children in this view! flatten via empty array
-      for (let folder of items)
+      for (let folder of items) {
         folder.__defineGetter__("children", function() { return [];});
-
+      }
     }
     catch(ex) {
       util.logException('Exception during generateMRUlist: ', ex);

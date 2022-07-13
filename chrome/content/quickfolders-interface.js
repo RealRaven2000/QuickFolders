@@ -258,7 +258,7 @@ QuickFolders.Interface = {
 
 		util.logDebugOptional("recentFolders","Creating Popup Set for Recent Folders tab");
 
-		let recentFolders,
+		let recentFolders,  // an array of foldertreeview items (or dummies with a _folder property)
 		    FoldersArray = []; 
 
     if (popupId == "QuickFolders-FindFolder-popup-Recent") {
@@ -1177,6 +1177,10 @@ QuickFolders.Interface = {
 					{OS} = (typeof ChromeUtils.import == "undefined") ?
 						Cu.import("resource://gre/modules/osfile.jsm", {}) :
 						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+
+  	if (QuickFolders.FolderTree) {
+			QuickFolders.FolderTree.loadDictionary();
+    }
 
     let missingIcons = [],
         ctRepaired = 0, ctMissing = 0;
@@ -4212,6 +4216,7 @@ QuickFolders.Interface = {
           ? prefs.getIntPref("recentfolders.folderPathDetail")
           : 0,
         maxPathItems = prefs.getIntPref("recentfolders.maxPathItems");
+    const isTreeIcons = prefs.getBoolPref('folderTree.icons');
     let isDisableSubfolders = (isRecentFolderList && !prefs.getBoolPref("recentfolders.subfolders"));
 
 		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopupFromList(..)");
@@ -4231,20 +4236,23 @@ QuickFolders.Interface = {
 
 				menuitem.setAttribute("label", menuLabel); //+ subfolder.URI
 				menuitem.setAttribute("tag","sub");
-
-				try {
-					let iconURL = subfolder.parent && (subfolder.parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)
-						? "url('chrome://quickfolders/content/skin/ico/folder-trash-gnome-qf.png')"
-						: ((typeof subfolder.getStringProperty != "undefined") ? subfolder.getStringProperty("iconURL") : null);
-					if (iconURL) {
-						menuitem.style.setProperty("list-style-image", iconURL, "");
-					}
-				}
-				catch(ex) {
-          if (prefs.isDebug)
-            util.logException("Error in addSubFoldersPopupFromList", ex);
+        
+        if (isTreeIcons) {
+          try {
+            let iconURL = subfolder.parent && (subfolder.parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH)
+              ? "url('chrome://quickfolders/content/skin/ico/folder-trash-gnome-qf.png')"
+              : ((typeof subfolder.getStringProperty != "undefined") ? subfolder.getStringProperty("iconURL") : null);
+            if (iconURL) {
+              menuitem.style.setProperty("list-style-image", iconURL, "");
+            }
+          }
+          catch(ex) {
+            if (prefs.isDebug) {
+              util.logException("Error in addSubFoldersPopupFromList", ex);
+            }
+          }
         }
-
+        
 				let numUnread = subfolder.getNumUnread(false),
 				    numUnreadInSubFolders = subfolder.getNumUnread(true) - numUnread,
 				    sCount = " (" + ((numUnread>0) ? numUnread : "") ;

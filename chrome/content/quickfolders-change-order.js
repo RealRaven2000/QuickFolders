@@ -51,7 +51,6 @@ var ChangeOrder = {
 			    folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false);
 
 			if (folder != undefined) {
-				// this.addFolderButton(folder, folderEntry.name); // legacy
         this.addFolderRow(folder, folderEntry.name);
 			}
 		}

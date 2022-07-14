@@ -345,6 +345,7 @@
     <a name="5.10">&nbsp;</a>
     <a name="5.10.1">&nbsp;</a>
     <a name="5.10.2">&nbsp;</a>
+    <a name="5.10.3">&nbsp;</a>
     <li>
       <h4>
       <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.10.2">Version 5.10.2 - 07/07/2022</a>
@@ -501,7 +502,44 @@
         <a href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-version-page">buy a QuickFolders Pro license</a>
       </p>
       <ul>
-        <h4 class="inList">Maintenance Version 5.10.2 - 06/07/2022</h4>
+        <h4 class="inList">Maintenance Version 5.10.3 - 14/07/2022</h4>
+        <li>
+          <p>
+            <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a> this maintenance 
+            version will be able to reconstruct tabs after upgrading from Thunderbird 91 to 102 even if the server 
+            and username have been modified due to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1573690">bug 1573690</a>. 
+            The previous version failed with reconstructing these on IMAP folders.
+          </p>
+          <p>
+            To automatically rebuild (and avoiding invalid tabs) is only possible if 
+            <b>5.10.1 was previously run on an older profile (Thunderbird 91 or older)</b>
+          </p>
+          <p>
+            If you already upgraded to Thunderbird 102 previously and experience invalid tabs,
+            you can now generate troubleshooting information via right-click <i>QuickFolders Commands / 
+            Tab Specific Properties...</i> This will copy the assumed account and the (invalid) folder URI
+            to the clipboard.<br>
+            <img class="screenshot" src="images/troubleshoot-invalidtab-info.png" alt="invalid tab info">
+          </p>
+          <p>
+            For reference you can click on any real folder in the folder tree and then SHIFT+Click
+            on the QuickFolders tool icon, then select <i>Debug / Copy current folder info!</i>
+            This will copy the account and correct expected URI to the clipboard.
+            By comparison of these data points it I can fix your folders through exporting 
+            the folder configuration and then text search+replace the differing URIs 
+            (or by simply inserting the correct account)<br>
+            <img class="screenshot" src="images/troubleshoot-currenfolder-info.png" alt="show folder uri info">
+          </p>
+        </li>
+        <h4 class="inList">Known Issue</h4>
+        <li>
+        <li><a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/283">[issue 283]</a>
+          Thunderbird 102 is severely slowing down compared to Thunderbrid 91 with QuickFolders installed.
+          I am currently working on a permanent solution - if you would like to test preview versions
+          you can download them at the Github issue linked above.
+        </li>
+      
+        <h4 class="inList">Maintenance Version 5.10.2 - 07/07/2022</h4>
         <li>
           <p>
             <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a>

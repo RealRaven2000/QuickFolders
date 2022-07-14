@@ -258,13 +258,18 @@ END LICENSE BLOCK */
     ##         Step 1: wrote some mitigating code to determine account for each folder uri and store in TB91
     ##
     
-  5.10.2 QuickFolders Pro - WIP
+  5.10.2 QuickFolders Pro - 07/07/2022
+    ## [issue 281] - Updating to Thunderbird 102 can generate invalid tabs
     ##         Step 2: code for auto-fixing URLs using the data generated in Tb91 (step1)
     ##                 added a diagnostic function (debug menu) to copy account + folder URI of current folder.
   
+  5.10.3 QuickFolders Pro - 14/07
+    ## [issue 281] - auto-repair invalid folder uris starting with "imap://" 
+  
   
   5.11 QuickFolders Pro - WIP
-    ## [issue 281] - Updating to Thunderbird 102 can generate invalid tabs
+    ## [issue 283] Slowdown of Thunderbird 102
+    ## [issue 279] Current category is not remembered / selected on startup
     ## fix icon distances on popup menus (Tb102)
     ## removed Postbox code (tabOwners)
     

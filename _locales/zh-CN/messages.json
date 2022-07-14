@@ -1742,7 +1742,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}5.10.1 - 此维护修复存储每个选项卡的帐户 ID。 由于补丁，升级到 Thunderbird 102 可能会重命名服务器 - 然后该帐户可用于重建无效文件夹。{L2}{L1}5.10.2 - 允许在 Thunderbird 102 中{boldStart}自动恢复无效标签{boldEnd} - 如果以前的版本 (5.10.1) 至少在 Thunderbird 91 或更早版本上运行过一次，它就可以工作。{L2}{hr}{L1}QuickFolders 现在与 {boldStart}Thunderbird 102{boldEnd} 兼容。在设置中实现了新的 FolderListener、“修复文件夹” 功能和 Web 链接。{L2} {L1}修复：导航栏（当前文件夹工具栏）上的最近文件夹在单击时显示过时的结果 或在其上拖动电子邮件。{L2} {L1}已修复：阅读列表 - 如果由于无效/已删除的文件夹而无法找到电子邮件，则 QuickFolders 不会显示搜索对话框。{L2} {L1}已修复：添加标题 到首选项选项卡。{L2} {L1}旧版设置对话框和菜单项已删除。{L2}"
+    "message": "{L1}此版本的 QuickFolders 能够修复 Thunderbird 102 中的无效标签，前提是您在 Thunderbird 91 中运行了之前的版本 (5.10.2)。这些无效标签可能是由于将旧邮件配置文件升级到 Thunderbird 102 造成的； 有关详细信息，请参阅 [issue 281]。{L2} {L1}如果您仍然遇到无效 QuickFolder-Tabs 的问题，请通过 QuickFolders 设置上的支持选项卡给我发送电子邮件，我将能够帮助您恢复它们。 {L2}{hr} {L1}我目前正在处理的 Thunderbird 102 的速度存在一些问题，请参阅 [issue 283]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

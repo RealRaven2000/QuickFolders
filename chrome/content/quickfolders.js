@@ -259,13 +259,14 @@ END LICENSE BLOCK */
     ##
     
   5.10.2 QuickFolders Pro - WIP
-    ## [issue 281] - Updating to Thunderbird 102 can generate invalid tabs
     ##         Step 2: code for auto-fixing URLs using the data generated in Tb91 (step1)
     ##                 added a diagnostic function (debug menu) to copy account + folder URI of current folder.
   
   
   5.11 QuickFolders Pro - WIP
+    ## [issue 281] - Updating to Thunderbird 102 can generate invalid tabs
     ## fix icon distances on popup menus (Tb102)
+    ## removed Postbox code (tabOwners)
     
   
     -=-----------------=-    PLANNED
@@ -590,6 +591,8 @@ var QuickFolders = {
     const util = QuickFolders.Util,
 		      that = this.isQuickFolders ? this : QuickFolders,
 					QI = that.Interface; // main window Interface!
+          
+    let tabMode = null; 
 		
     util.logDebug("initTabsFromEntries()");
 		if (folderEntries.length) try {
@@ -599,8 +602,8 @@ var QuickFolders = {
 
 			let tabmail = document.getElementById("tabmail"),
 					idx = QuickFolders.tabContainer.selectedIndex || 0,
-			    tab = util.getTabInfoByIndex(tabmail, idx),
-          tabMode = null; 
+			    tab = util.getTabInfoByIndex(tabmail, idx);
+          
 			if (tab) {
 				tabMode = util.getTabMode(tab);
 				// is this a new Thunderbird window?
@@ -637,7 +640,8 @@ var QuickFolders = {
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false }); 
       // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
       // make sure tabs not in active category are hidden - this at least doesn't happen if we load the extension from the debugging tab
-      if (QI.currentActiveCategories) {
+      // [issue 283][issue 279] avoid selecting category here - test in 91 too!
+      if (tabMode == "folder" && QI.currentActiveCategories!=QuickFolders.FolderCategory.INIT) {
         util.logDebugOptional('categories', "forcing selectCategory");
         let bkCat = QI.currentActiveCategories; // force redraw by deleting it
         QI._selectedCategories = null;

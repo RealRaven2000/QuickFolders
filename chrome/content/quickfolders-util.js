@@ -57,6 +57,8 @@ QuickFolders.Util = {
   mPlatformVer: null,
   mExtensionVer: null,
   lastTime: 0,
+  stopWatchtime: new Map(),
+  stopWatchtime_Summed: new Map(),
   
   // Utils is used to keep contact with the background and will request the current state of
   // some values during init and will update them if the background does a broadcast.
@@ -1081,6 +1083,46 @@ QuickFolders.Util = {
       str += prop + " => " + value[prop] + "\r\n";
     }
     this.logDebug(str);
+  },
+  
+  
+  /**
+  * stopWatch() 
+	*  function for profiling performance of certain functions 
+	* @cmd sets a stopwatch status
+	*      "start" : start a timer 
+  *      "stop"  : measure time since last start or stop event
+  *      "all"   : measure time since start altogether
+  *      "reset" : reset timer
+  * @map unique id for a stopwatch
+  */
+  stopWatch: function(cmd, map="default") {
+    if (!this.stopWatchtime.has(map)) {
+      this.stopWatchtime.set(map, 0);
+      this.stopWatchtime_Summed.set(map,0);
+    }
+      
+    let timePassed = '',
+        endTime = new Date().getTime();
+    try { // AG added time logging for test
+      if (this.stopWatchtime.get(map)==0 || cmd=="reset" || cmd=="start") {
+        this.stopWatchtime.set(map, endTime);
+        this.stopWatchtime_Summed.set(map,0);
+        return "[init stopWatch]"
+      }
+      let elapsed = endTime - this.stopWatchtime.get(map); //  time in milliseconds
+      if (cmd=="stop" || cmd=="all") {
+        this.stopWatchtime_Summed.set(map, this.stopWatchtime_Summed.get(map) + elapsed);
+      }
+      timePassed = '[' + elapsed + ' ms]   ';
+      this.stopWatchtime.set(map,endTime); // remember last time
+    }
+    catch(e) {;}
+    if (cmd=="reset" || cmd=="all") {
+      timePassed = "[" + this.stopWatchtime_Summed.get(map) + " ms]";
+      this.stopWatchtime_Summed.set(map,0);
+    }
+    return timePassed;
   },
 
   logTime: function logTime() {

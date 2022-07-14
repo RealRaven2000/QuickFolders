@@ -500,9 +500,10 @@ QuickFolders.Model = {
     function reconstructUri(e) {
       let ac = MailServices.accounts.getAccount(e.account);
       if (ac && ac.incomingServer) {
-        let oldUri = Services.io.newURI(e.uri); // generate a fresh URI to retrieve path portion
+        let oldUri = e.uri.replace("imap://", "http://"); // non-existent imap URIs throw!!
+        let tempUri = Services.io.newURI(oldUri); // generate a fresh URI to retrieve path portion
         // or oldUri.filePath - not sure whether query params make sense or are allowed for  folder URIS
-        return ac.incomingServer.serverURI + oldUri.pathQueryRef; 
+        return ac.incomingServer.serverURI + tempUri.pathQueryRef; 
       }
       throw new Error(`Failed to reconstruct URL for ${e.uri} of account ${e.account}`);
     }
@@ -537,7 +538,7 @@ QuickFolders.Model = {
             e.uri = newUri;
             delete e.invalid;
           } catch (ex) {
-            console.log(`QuickFolders\n${ex.message}`, "background: rgb(120,0,0); color:white;");
+            console.log(`QuickFolders\n%c${ex.message}`, "background: rgb(120,0,0); color:white;");
           }
         } else {
           if (f && (e.account.startsWith("?") || e.invalid)) {

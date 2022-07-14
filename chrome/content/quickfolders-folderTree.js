@@ -46,13 +46,15 @@ QuickFolders.FolderTree = {
         
         if (col && col.id && col.id == "folderNameCol") {
           let folder = gFolderTreeView.getFolderForIndex(row);
-          if (!gFolderTreeView.qfIconsEnabled) {
+          if (!gFolderTreeView.qfIconsEnabled || !folder) {
             return props;
           }
           try {
             // Tb 99 - exclude servers, they will throw when asked for this property!
-						if (gFolderTreeView.supportsIcons && folder && !folder.isServer) {
-							let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
+						if (gFolderTreeView.supportsIcons && folder) {
+              // suggestion by TbSync to avoid getStringProperty - use heuristics to always generate a URI
+              let folderIcon = QuickFolders.FolderTree.makeSelectorGUID(folder, "folderIcon_");
+							// let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
 							if (folderIcon) {
                 util.logDebugOptional("folderTree", folderIcon);
 								// save folder icon selector
@@ -271,6 +273,17 @@ QuickFolders.FolderTree = {
 			util.logException('forceRedraw', ex);
 		}
 	} ,
+  
+  // [issue 283] optimisation: method to always generate a CSS selectable attribute (based on folder uri), 
+  //             to avoid folder.getStringProperty()
+  makeSelectorGUID: function(folder, prefix) {
+    let names = folder.URI.split("/"),
+		    serverKey = folder.server.key,
+		    GUID = serverKey + "_" + names[names.length-2] + "_" + names[names.length-1];
+    let rv = 
+      prefix + GUID.replace(/[\s\,\?\!\:\.\@\%\[\]\{\}\(\)\|\/\+\&\^]/g,'_');
+    return rv;
+  },
 	/*									 
 	Adds following styles to a folder tree item:
 	treechildren::-moz-tree-image(folderIconCol, folderIcon_mail_inbox) {
@@ -292,15 +305,11 @@ QuickFolders.FolderTree = {
 		}
 		let fileURL, fileSpec,
 		    ss = QI.getStyleSheet(styleEngine, "qf-foldertree.css", "QuickFolderFolderTreeStyles"),
-		    names = folder.URI.split("/"),
-		    serverKey = folder.server.key,
-		    GUID = serverKey + "_" + names[names.length-2] + "_" + names[names.length-1],
         // always update current folder toolbar icon?
         currentFolderTab = QI.CurrentFolderTab;
-		GUID = GUID.replace(/[\s\,\?\!\:\.\@\%\[\]\{\}\(\)\|\/\+\&\^]/g,'_');
-		// GUID = GUID.replace(/\_/g,'');// removed replacement with _; instead replace with ''
-		let prefix = "folderIcon_",
-		    propName = prefix + GUID, 
+    
+    // [issue 283] - avoid folder.getStringProperty and create hardcoded selector
+		let propName = this.makeSelectorGUID(folder, "folderIcon_"), 
 		    selector = this.makeSelector(propName);
 		try {
 		  if (iconURI) {
@@ -313,9 +322,9 @@ QuickFolders.FolderTree = {
 					      tri = " \u25B9 ";
 					parts.shift(); // remove 1st (empty?) item
 					while (parts.length>3) parts.shift(); // remove first element.
-					shortenedPath = start + tri + " \u2026 " + tri + parts.join(tri);
+					shortenedPath = start + "/" + " \u2026 " + "/" + parts.join("/");
 				}
-				util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + "," + shortenedPath + ")");
+				util.logDebugOptional("folderTree.icons", "FolderTree.setFolderTreeIcon(" + folder.prettyName + "," + shortenedPath + ")");
 				fileSpec = fileURL.asciiSpec;
 				folder.setStringProperty("folderIcon", propName);
 				let cssUri = "url(" + fileSpec + ")";
@@ -324,7 +333,7 @@ QuickFolders.FolderTree = {
 					+ "fileURL:    " + fPath + "\n"
 					+ "propName:   " + propName + "\n"
 					+ "cssUri:     " + cssUri + "\n"
-					+ "GUID:       " + GUID);
+					+ "GUID:       " + propName);
 				util.logDebugOptional("folderTree.icons", "ADDING:\n" + selector + " {\n" + "list-style-image:" + cssUri + "\n}");
 				folder.setStringProperty("iconURL", cssUri);
 				
@@ -342,6 +351,7 @@ QuickFolders.FolderTree = {
 				}
 			}
 			else {
+        // when do we force this to be executed?
 			  util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + ", empty)");
 				util.logDebugOptional('folderTree.icons', 'REMOVING:\n' + selector + ' {\n' + 'list-style-image\n}');
 				styleEngine.removeElementStyle(ss, 'treechildren::-moz-tree-image(folderNameCol,' + propName + ')','list-style-image');
@@ -354,7 +364,8 @@ QuickFolders.FolderTree = {
 	    this.storeDictionary();
 			this.debugDictionary(); // test dictionary, just for now
 			this.forceRedraw();
-			QI.updateFolders(false, true);  // forces rebuilding subfolder menus
+      // [issue 283] - do not force update during setFolderTreeIcon
+			// QI.updateFolders(false, true);  forces rebuilding subfolder menus
 		}
 		catch (ex) {
 		  util.logException('setFolderTreeIcon',ex);

@@ -15,7 +15,6 @@ pref("extensions.quickfolders.useKeyboardShortcutCTRL", false);
 pref("extensions.quickfolders.showTotalNumber", false);
 pref("extensions.quickfolders.showFoldersWithMessagesItalic", false);
 pref("extensions.quickfolders.showFoldersWithNewMailItalic", true); // Bug 25864
-pref("extensions.quickfolders.showCategoryCounts", false);
 pref("extensions.quickfolders.showNewMailHighlight", true); // better visibility of new mail
 pref("extensions.quickfolders.showRecentTab", false);
 pref("extensions.quickfolders.showQuickMove", true);
@@ -193,8 +192,9 @@ pref("extensions.quickfolders.debug.premium.rsa", false);
 pref("extensions.quickfolders.debug.quickMove", false);
 pref("extensions.quickfolders.debug.recentFolders", false);
 pref("extensions.quickfolders.debug.recentFolders.detail", false);
-pref("extensions.quickfolders.debug.toolbarHiding", false);
 pref("extensions.quickfolders.debug.saleDate","");
+pref("extensions.quickfolders.debug.toolbarHiding", false);
+pref("extensions.quickfolders.debug.updateFolders", false);
 
 pref("extensions.quickfolders.toolbarpalette.showSmallIcons", false); // unhide "small icons" in toolbar palette
 

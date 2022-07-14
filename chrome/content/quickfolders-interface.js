@@ -545,6 +545,13 @@ QuickFolders.Interface = {
 	updateFolders: function updateFolders(rebuildCategories, minimalUpdate) {
     const prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util;
+    const profileThis = (prefs.isDebugOption("updateFolders")),
+          profileStyle = "background-color: rgb(0,180,50); color:white;";
+    if (profileThis) {
+      util.stopWatch("start","updateFolders");
+      
+      console.log(`%cStarting updateFolders - Active Categories: ${QuickFolders.Interface.currentActiveCategories}`, profileStyle);
+    }
 		util.logDebugOptional("interface", "updateFolders(rebuildCategories=" + rebuildCategories + ", minimalUpdate=" + minimalUpdate + ")");
 		this.TimeoutID=0;
 
@@ -703,11 +710,14 @@ QuickFolders.Interface = {
 		// current thread dragging; let's piggyback "isThread"...
 		// use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
 		button = util.$("QuickFolders-CurrentThread");
-		if (button)
+		if (button) {
 			this.setEventAttribute(button, "ondragstart","event.isThread=true; QuickFolders.messageDragObserver.startDrag(event,true)");
-		if (prefs.isShowCategoryNewCount) {
+    }
+    if (profileThis) {
+      let time = util.stopWatch("all","updateFolders");
+      console.log(`%cQuickFolders.Interface.updateFolders(rebuildCat = ${rebuildCategories}, minimal = ${minimalUpdate})\n ${countFolders} folders took: ${time}`, profileStyle);
+    }
 
-		}
 	} ,
 
   // update visible tabs after folders were changed / tabs renamed or deleted.
@@ -2196,7 +2206,13 @@ QuickFolders.Interface = {
 
     if (!isMinimal) {
       // popupset is NOT re-done on minimal update - save time!
-      this.addPopupSet({popupId:popupId, folder:folder, entry:entry, offset:offset, button:button, noCommands:false, event:null});
+      setTimeout (
+        // make this async
+        function () {
+          QuickFolders.Interface.addPopupSet({popupId:popupId, folder:folder, entry:entry, offset:offset, button:button, noCommands:false, event:null});
+        } ,
+        20
+      );
     }
 
 		if (!theButton) {
@@ -3785,6 +3801,10 @@ QuickFolders.Interface = {
           util = QuickFolders.Util,
 					showCommandsSubmenus = !(noCommands),
 					QI = QuickFolders.Interface;
+          
+    const isProfiling = prefs.isDebugOption("popupmenus");
+    if (isProfiling) { QuickFolders.Util.stopWatch("reset","addPopupSet"); } 
+          
 		let xp = document.getElementById(popupId);
     if (!entry && folder)
       entry = QuickFolders.Model.getFolderEntry(folder.URI);
@@ -3809,7 +3829,7 @@ QuickFolders.Interface = {
         isRootMenu=false,
         fi = null,
         isHideMailCommands = evt ? (!evt.ctrlKey && prefs.getBoolPref("folderMenu.CTRL")) : false;
-
+    
 
     if (folder) {
       util.logDebugOptional("popupmenus","Creating Popup Set for " + folder.name + "\nId: " + popupId);
@@ -3833,7 +3853,9 @@ QuickFolders.Interface = {
       
     }
 
-
+    if (isProfiling) { console.log(`Creating child folders submenu for ${popupId} took:\n` + QuickFolders.Util.stopWatch("stop","addPopupSet")); } 
+    
+    // between 1-5ms
     if (showCommandsSubmenus) {
       // [Bug 26703] Add option to hide mail commands popup menu
       if (folder) {
@@ -3898,6 +3920,7 @@ QuickFolders.Interface = {
       }
     }
 
+
     // 3. APPEND SUBFOLDERS
     //moved this out of addSubFoldersPopup for recursive menus
     if (fi && fi.hasSubFolders) {
@@ -3909,6 +3932,8 @@ QuickFolders.Interface = {
         this.addSubFoldersPopup(menupopup, folder, false);
       util.logDebugOptional("popupmenus","Created Menu " + folder.name + ": " + this.debugPopupItems + " items.\n-------------------------");
     }
+
+    if (isProfiling) { console.log(`Appending subfolders took:\n` + QuickFolders.Util.stopWatch("stop","addPopupSet")); } 
 
     if (offset>=0) {
       // should we discard the old one if it exists?
@@ -3924,8 +3949,12 @@ QuickFolders.Interface = {
     if (menupopup.children && menupopup.children.length) {
       button.appendChild(menupopup);
     }
-
-
+    if (isProfiling) { 
+      let time= QuickFolders.Util.stopWatch("all","addPopupSet");
+      let pId = popupId.replace("%20", " ");
+      console.log(`%cComplete FUNCTION addPopupSet(${pId}) took: %c${time}%c\n===============`, popupSetInfo,
+                  "background: blue; color:yellow;", ""); 
+    } 
 	} ,
 
 	// append a button with mail folder commands (onclick)
@@ -4045,7 +4074,7 @@ QuickFolders.Interface = {
 		return el;
 	} ,
 
-	 /**
+	/**
 	* Sorts the passed in array of folder items using the folder sort key
 	*
 	* @param aFolders - the array of ftvItems to sort.
@@ -4220,6 +4249,8 @@ QuickFolders.Interface = {
     let isDisableSubfolders = (isRecentFolderList && !prefs.getBoolPref("recentfolders.subfolders"));
 
 		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopupFromList(..)");
+    const isProfiling = false; //  prefs.isDebugOption("folderTree.icons");
+    if (isProfiling) { QuickFolders.Util.stopWatch("reset","addSubFoldersPopupFromList"); } 
     for (subfolder of subfolders) {
 			try {
 				this.debugPopupItems++;
@@ -4228,6 +4259,8 @@ QuickFolders.Interface = {
 				    maxDetail = 4;
 				if (displayFolderPathDetail > maxDetail)
 					displayFolderPathDetail = maxDetail;
+        
+        if (isProfiling) { QuickFolders.Util.stopWatch("start","addSubFoldersPopupFromList"); }
         menuLabel = this.folderPathLabel(displayFolderPathDetail, subfolder, maxPathItems);
 
 				if (isRecentFolderList && prefs.getBoolPref("recentfolders.showTimeStamp"))  {
@@ -4250,6 +4283,10 @@ QuickFolders.Interface = {
             if (prefs.isDebug) {
               util.logException("Error in addSubFoldersPopupFromList", ex);
             }
+          }
+          if (isProfiling) {  
+            let time = QuickFolders.Util.stopWatch("stop","addSubFoldersPopupFromList");
+            console.log(`Setting icon took: ${time} ms`);
           }
         }
         
@@ -4384,6 +4421,10 @@ QuickFolders.Interface = {
         done = true;
       }
 		}
+    if (isProfiling) {  
+      let time = QuickFolders.Util.stopWatch("all","addSubFoldersPopupFromList");
+      console.log(`Setting icons in addSubFoldersPopupFromList altogether took: ${time}`);
+    }
 	} ,
 
 	// add all subfolders (1st level, non recursive) of folder to popupMenu
@@ -5560,9 +5601,8 @@ QuickFolders.Interface = {
         // search mode: get title of tab after a short delay
         setTimeout(function() {
           let tabmail = document.getElementById("tabmail"),
-              idx = QuickFolders.tabContainer.selectedIndex;
-          idx = idx ? idx : 0;
-          let tabs = tabmail.tabInfo ? tabmail.tabInfo : tabmail.tabOwners,
+              idx = QuickFolders.tabContainer.selectedIndex || 0;
+          let tabs = tabmail.tabInfo,
               tabInfo = util.getTabInfoByIndex(tabmail, idx);
           currentFolderTab.setAttribute("label", tabInfo.title ? tabInfo.title : "?");
         }, 250);

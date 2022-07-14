@@ -126,10 +126,6 @@ QuickFolders.Preferences = {
 		return this.getBoolPref("showSubfolders");
 	} ,
 
-	get isShowCategoryNewCount() {
-		return this.getBoolPref("showCategoryCounts");
-	} ,
-	
 	get isKeyboardListeners() {
 		return this.isUseNavigateShortcuts 
 		    || this.isUseKeyboardShortcuts 

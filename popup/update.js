@@ -39,6 +39,12 @@ addEventListener("click", async (event) => {
       messenger.Utilities.showVersionHistory();
       break;
   }
+  if (event.target.classList.contains("issue")) {
+    let issueId = event.target.getAttribute("no");
+    if (issueId) {
+      messenger.windows.openDefaultBrowser(`https://github.com/RealRaven2000/QuickFolders/issues/${issueId}`);
+    }
+  }    
   
   
   if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
@@ -218,7 +224,8 @@ addEventListener("load", async (event) => {
         .replace(/\{italicEnd\}/g,"</i>")
         .replace(/\{L1\}/g,"<li>")
         .replace(/\{L2\}/g,"</li>")
-        .replace(/\[(.)\]/g,"<code>$1</code>");
+        .replace(/\[(.)\]/g,"<code>$1</code>")
+        .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>");
     }
 
     let ongoing = document.getElementById('ongoing-work');

@@ -321,23 +321,44 @@
       <ul>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/279">[issue 279]</a>
-          WIP: Thunderbird 102 - current category is not remembered / selected
+          Fixed: Thunderbird 102 - current category is not remembered / selected; in this solution 
+          I store the current category of each tab (folder and messages) whenever a tab is opened / moved
+          or closed. Information is only stored for one single window, so it might get confused if you open 
+          multiple windows with different categories per tab. It works reasonably for most 
+          general uses of QuickFolder categories.
         </li>
         <li>
+          <p>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/283">[issue 283]</a>
-          WIP: Slowdown of Thunderbird 102 with QuickFolders
+            Slowdown of Thunderbird 102 with QuickFolders
+          </p>
+          <p>
+            There is some inefficiency in the Thunderbird code base for the folder tree
+            which can be exascerbated by QuickFolders. I have removed as many function
+            calls as I could find without impacting on functionality.
+            On startup some right-click menus have to be generated to make drag+drop, these are now 
+            generated at a later stage to yield some time to the User Interface.
+          </p>
         </li>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/280">[issue 280]</a>
-          WIP: Updating to Thunderbird 102 can generate invalid tabs - Thunderbird 102
+          Updating to Thunderbird 102 can generate invalid tabs - Thunderbird 102.
+          While this is still an issue, QuickFolders should be able to recover the information
+          in most cases as long as any version after 5.10.1 has ran on Thundebird 91 to store
+          recovery information. Should you still encounter invalid tabs you can remove them 
+          with the tool menu (find orphaned tabs) or reach out to support to help you repair them.
         </li>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/281">[issue 281]</a>
-          WIP: folder tree icons do not work independently of tabs - Thunderbird 102
+          WIP: folder tree icons do not work independently of tabs in Thunderbird 102
+          I am currently working on a permanent solution that doesn't impact on performance,
+          or a way to bypass them altogether.
         </li>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/284">[issue 284]</a>
           WIP: Recent folders menu doesn't show or takes a very long time - Thunderbird 102
+          There is some inefficent code in Thunderbird 102 at the moment, so I have started 
+          to use their internal function to generate this. 
         </li>
       </ul>
     </li>      

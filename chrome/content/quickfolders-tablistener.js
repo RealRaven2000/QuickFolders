@@ -18,10 +18,9 @@ QuickFolders.TabListener = {
             idx = QuickFolders.tabContainer.selectedIndex;
         idx = idx || 0;
         util.logDebugOptional("listeners.tabmail,categories", "TabListener.select() - tab index = " + idx);
-				let tabs = tabmail.tabInfo || tabmail.tabOwners, // Pb: tabOwners
-            info = util.getTabInfoByIndex(tabmail, idx);  // tabs[idx]
-				if (!info)
-					return;
+				let info = util.getTabInfoByIndex(tabmail, idx);  // tabmail.tabInfo[idx]
+				if (!info) { return; }
+					
         let tabMode = util.getTabMode(info);
 				
 				let isToggleToolbar = false,
@@ -35,15 +34,34 @@ QuickFolders.TabListener = {
 					toolbarElement.collapsed = isCollapsed;
 				}
 				
+        let wasRestored = false;
+        if (tabMode == "folder" && QuickFolders.Preferences.isDebugOption("listeners.tabmail") && typeof info.QuickFoldersCategory == "undefined") {
+          // need to retrieve the info from the session store!
+          console.log("{LISTENERS.TABMAIL}\nMissing QuickFoldersCategory in tabInfo:", info);
+          let lastCats = QuickFolders.Preferences.getStringPref("lastActiveCategories"); // last one looked at
+          if (lastCats) {
+            console.log(`{LISTENERS.TABMAIL} select category ${lastCats}`);
+            QI.selectCategory(lastCats, false);
+            wasRestored = true;
+          }
+          // tabmail.restoreTab(tabmail.tabs[idx]);
+          // Tb102 needs a new method for persisting categories.
+          console.log("{LISTENERS.TABMAIL}\nRESTORE FROM SESSION OR LOCAL STORAGE??", info);
+        }        
+        
          // restore the category
         if (info.QuickFoldersCategory) {
-          util.logDebugOptional("listeners.tabmail,categories", "tab info - setting QuickFolders category: " + info.QuickFoldersCategory);
-          let isFolderUpdated = QI.selectCategory(info.QuickFoldersCategory, false);
-          util.logDebugOptional("listeners.tabmail", "After QuickFoldersCategory - isFolderUpdated =" + isFolderUpdated );
+          let isFolderUpdated = false;
+          if (!wasRestored) {
+            util.logDebugOptional("listeners.tabmail,categories", "tab info - setting QuickFolders category: " + info.QuickFoldersCategory);
+            isFolderUpdated = QI.selectCategory(info.QuickFoldersCategory, false);
+            util.logDebugOptional("listeners.tabmail", `After selectCategory(${info.QuickFoldersCategory}) - isFolderUpdated =${isFolderUpdated}`);
+          }
           // do not select folder if selectCategory had to be done
           if (!isFolderUpdated)
             QI.setFolderSelectTimer();	
         }
+
         
         if (tabMode == 'message') {
           let msg = null, fld = null;
@@ -70,8 +88,9 @@ QuickFolders.TabListener = {
             }
             else {
               // should we initialize the (navigation) buttons on CurrentFolderTab in case this is a search folder?
-              if (!QI.CurrentFolderTab.collapsed)
+              if (!QI.CurrentFolderTab.collapsed && tabMode !="contentTab") {
                 QI.initCurrentFolderTab(QI.CurrentFolderTab, null, null, info);
+              }
             }
           }
         }
@@ -89,6 +108,7 @@ QuickFolders.TabListener = {
     let tabmail = document.getElementById("tabmail");
     let idx = QuickFolders.tabContainer.selectedIndex;
     QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.closeTab() - idx = " + idx);
+    QuickFolders.Interface.storeTabSession("remove");
   } ,
   
   newTab: function(evt) {
@@ -96,6 +116,7 @@ QuickFolders.TabListener = {
     let idx = QuickFolders.tabContainer.selectedIndex;
     idx = idx || 0;
     QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.newTab()  - idx = " + idx);
+    QuickFolders.Interface.storeTabSession();
   } ,
   
   moveTab: function(evt) {
@@ -103,6 +124,7 @@ QuickFolders.TabListener = {
     let idx = QuickFolders.tabContainer.selectedIndex;
     idx = idx || 0;
     QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.moveTab()  - idx = " + idx);
+    QuickFolders.Interface.storeTabSession();
   } 
 }
 

@@ -25,11 +25,17 @@ QuickFolders.Preferences = {
 	},
 
 	isDebugOption: function(option) { // granular debugging
-		if(!this.isDebug) return false;
-		try {return this.getBoolPref("debug." + option);}
-		catch(e) { 
-      return true; // more info is probably better in this case - this is an illegal value after all.
+		if (!this.isDebug) return false;
+    let options = option.split(",");
+    for (let o of options) {
+      try {
+        if (this.getBoolPref("debug." + o)) return true;
+      }
+      catch(e) { 
+        
+      }
     }
+    return false;
 	},
 	
 	setDebugOption: function setDebugOption(option, val) {

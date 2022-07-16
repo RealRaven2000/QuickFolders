@@ -269,7 +269,7 @@ END LICENSE BLOCK */
   
   5.11 QuickFolders Pro - WIP
     ## [issue 283] Slowdown of Thunderbird 102
-    ## [issue 279] Current category is not remembered / selected on startup
+    ## [issue 279] Current category is not remembered / selected on startup. fixed for most cases.
     ## fix icon distances on popup menus (Tb102)
     ## removed Postbox code (tabOwners)
     
@@ -646,11 +646,12 @@ var QuickFolders = {
       // selectCategory already called updateFolders!  was that.Interface.updateFolders(true,false)
       // make sure tabs not in active category are hidden - this at least doesn't happen if we load the extension from the debugging tab
       // [issue 283][issue 279] avoid selecting category here - test in 91 too!
+      
       if (tabMode == "folder" && QI.currentActiveCategories!=QuickFolders.FolderCategory.INIT) {
         util.logDebugOptional('categories', "forcing selectCategory");
         let bkCat = QI.currentActiveCategories; // force redraw by deleting it
         QI._selectedCategories = null;
-        QI.selectCategory(bkCat);
+        QI.selectCategory(bkCat, false);
       }
     }
 	},
@@ -678,6 +679,11 @@ var QuickFolders = {
     
 		if (prefs && prefs.isDebug)
 			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
+
+    if (QuickFolders.Util.versionGreaterOrEqual(QuickFolders.Util.Appversion, "102")) {
+      QI.loadTabSession();
+    }    
+
 
 		that.addTabEventListener();
 		QuickFolders.initKeyListeners();
@@ -712,6 +718,7 @@ var QuickFolders = {
     // issue 189 - prepare conversion for account specific relative path storage
     QuickFolders.Model.correctFolderEntries(folderEntries);
 		this.initTabsFromEntries(folderEntries);
+    
 		
 		// only load in main window(?)
 		if (QuickFolders.FolderTree) {
@@ -1984,7 +1991,7 @@ QuickFolders.prepareSessionStore = function () {
       txt = aPersistedState.QuickFoldersCategory || "(no category)";
     } catch(ex) {;}
     // let folder = model.getMsgFolderFromUri(aPersistedState.folderURI); 
-    util.logDebug("restore tab: QuickFoldersCategory = " + txt + " persisted State = ", aPersistedState);
+    util.logDebug("Restore tabs: QuickFoldersCategory = " + txt + " persisted State = ", aPersistedState);
     if (aPersistedState.QuickFoldersCategory) {
       let tabInfo, theUri;
       // Thunderbird only code, so it is fine to use tabInfo here:
@@ -1996,7 +2003,7 @@ QuickFolders.prepareSessionStore = function () {
             // util.logDebug("restore category to tabInfo folder [" + theUri + "] + " +  aPersistedState.QuickFoldersCategory);
             let cat = aPersistedState.QuickFoldersCategory;
             if (cat) {
-              util.logDebug("Restored category " + cat);
+              util.logDebug(`Tab[${i}] Restored category ${cat}`);
               tabInfo.QuickFoldersCategory = aPersistedState.QuickFoldersCategory;
             }
             return;

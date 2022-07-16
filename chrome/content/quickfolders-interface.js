@@ -545,7 +545,7 @@ QuickFolders.Interface = {
 	updateFolders: function updateFolders(rebuildCategories, minimalUpdate) {
     const prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util;
-    const profileThis = (prefs.isDebugOption("updateFolders")),
+    const profileThis = (prefs.isDebugOption("updateFolders,performance")),
           profileStyle = "background-color: rgb(0,180,50); color:white;";
     if (profileThis) {
       util.stopWatch("start","updateFolders");
@@ -874,7 +874,7 @@ QuickFolders.Interface = {
           }
           if (!newCats.length) {
             // make sure all tabs are visible in case we delete the last category!
-            this.selectCategory(FCat.ALL);
+            this.selectCategory(FCat.ALL,false);
           }
           else if (cats.length > newCats.length) {
             QuickFolders.Interface.selectCategory(newCats.join("|"),false);
@@ -1293,8 +1293,9 @@ QuickFolders.Interface = {
 				}
 			}
 			util.logDebugOptional("categories","set currentActiveCategories()\n" + txtDebug);
-			if (v!=null)
+			if (v!=null) {
 				QuickFolders.Preferences.lastActiveCats = v; // store in pref
+      }
 		}
 		catch (ex) {
 			util.logException("Error in setter: currentActiveCategories", ex);
@@ -1323,6 +1324,80 @@ QuickFolders.Interface = {
 			QuickFolders.Interface.selectCategory(categories, false);
 		}
 	} ,
+  
+  storeTabSession: function(cmd) {
+    let tabmail = document.getElementById("tabmail"),
+        tabInfo = tabmail.tabInfo,
+        idx = QuickFolders.tabContainer.selectedIndex || 0; // current tab index
+        
+    let cdx = 0,
+        tabSession = [];
+        
+    for (let i=0; i<tabInfo.length; i++) {
+      let info = tabInfo[i];
+      let type = info.mode.type;
+      if (i == idx) {
+        if (cmd == "remove") {
+          continue; // skip this one, the tab is being deleted.
+        }
+        info.QuickFoldersCategory = QuickFolders.Interface.currentActiveCategories;
+      }
+      if (type=="folder" || type=="message") {
+        let entry = 
+          {
+            mode: type,
+            categories: info.QuickFoldersCategory || ""
+          }
+        if (QuickFolders.Preferences.isDebug) {
+          entry.title = info.title;
+        }
+        tabSession.push(entry);
+        cdx++;
+      }
+    }
+    // store tabSession
+    // let tabSession = JSON.parse(QuickFolders.Preferences.getStringPref(sessionCategories)); // [] array tabs with visible tabs
+    let flatSession = JSON.stringify(tabSession);
+    QuickFolders.Preferences.setStringPref("sessionCategories", flatSession);
+    QuickFolders.Util.logDebug("=================================\n" +
+      "storeTabSession()\n" + JSON.stringify(JSON.parse(flatSession), null, "  "));
+    
+  },
+  
+  loadTabSession: function() {
+    let stored = QuickFolders.Preferences.getStringPref("sessionCategories") || "[]",
+        tabSession = JSON.parse(stored);
+    if (!Array.isArray(tabSession)) {
+       QuickFolders.Util.logDebug(`loadTabSession()\nInvalid sessionCategories string: ${stored}`);
+       return;
+    }
+    QuickFolders.Util.logDebug("=================================\n" +
+      "loadTabSession()\n" + JSON.stringify(tabSession, null, "  "), null, "  ");
+    if (tabSession.length) {
+      let tabmail = document.getElementById("tabmail"),
+          tabInfo = tabmail.tabInfo,
+          idx = QuickFolders.tabContainer.selectedIndex || 0, // current tab index
+          s = 0; 
+      QuickFolders.Util.logDebug(`loadTabSession iterate ${tabInfo.length} tabInfo entries...`); 
+      for (let i=0; i<tabInfo.length; i++) {
+        let info = tabInfo[i];
+        let mode = info.mode.type;
+        if (i == idx) {
+          info.QuickFoldersCategory = QuickFolders.Interface.currentActiveCategories;
+        }
+        // try to match all existing entries
+        if (mode=="folder" || mode=="message") {
+          let catInfo = tabSession[s];
+          if (catInfo.mode == mode) {
+            info.QuickFoldersCategory = catInfo.categories
+            s++
+          }
+          if (s>=tabSession.length) break;
+        }
+      }
+      QuickFolders.Util.logDebug(`loadTabSession restored ${s} tab categories...`);      
+    }
+  },
 
 	// For Category Session persistance,
 	// we have to overwrite tab.mode.persistTab || tab.mode.tabType.persistTab
@@ -1340,6 +1415,7 @@ QuickFolders.Interface = {
 					prefs = QuickFolders.Preferences,
 					isShift = (event && event.shiftKey) || false;
     util.logDebugOptional("categories", "selectCategory(" + categoryName + ", " + rebuild + ")");
+    
 		// early exit. category is selected already! SPEED!
     if (QI.currentActiveCategories == categoryName)
       return false;
@@ -1389,7 +1465,7 @@ QuickFolders.Interface = {
 			let tabmail = document.getElementById("tabmail");
 			idx = QuickFolders.tabContainer.selectedIndex || 0;
 			// let's only store this if this is the first tab...
-			let tab = util.getTabInfoByIndex(tabmail, idx), // in Sm, this can return null!
+			let tab = util.getTabInfoByIndex(tabmail, idx),
 			    tabMode = util.getTabMode(tab);
 			if (tab &&
 			    (tabMode == "folder" || tabMode == "message")) {
@@ -1398,10 +1474,12 @@ QuickFolders.Interface = {
 				//if (sessionStoreManager.setTabValue)
 				//	sessionStoreManager.setTabValue(tab, "QuickFoldersCategory", selectedCat);
 				//
+        // build our own session store - OOOOOOOOFF
+        QI.storeTabSession();
 			}
 		}
 		catch(e) {
-		  util.logDebugOptional("listeners.tabmail"," selectCategory failed; " + e);
+		  util.logException(" selectCategory failed; ", e);
 		}
 		util.logDebugOptional("categories", "Successfully selected Category: " + QI.currentActiveCategories + " on mail tab [" + idx + "]");
     return true;

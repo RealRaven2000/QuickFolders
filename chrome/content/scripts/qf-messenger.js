@@ -184,7 +184,12 @@ async function onLoad(activatedWhileWindowOpen) {
                                       oncommand="QuickFolders.Util.loadPlatformStylesheet();"
                                       class="menuitem-iconic"
                                       />
-
+                                      
+                <menuitem id="QuickFolders-ToolbarPopup-dbg5"
+                            label="Load tab Session (restore Categories)"
+                                      oncommand="QuickFolders.Interface.loadTabSession();"
+                                      class="menuitem-iconic"
+                                      />
 
               </menupopup>
             </menu>
@@ -523,7 +528,8 @@ async function onLoad(activatedWhileWindowOpen) {
 `);
 
   // remove category to force selection when loading new version
-  window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.ALL;
+  // [issue 279]
+  window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.INIT;
   window.QuickFolders.prepareSessionStore();
   // window.QuickFolders.initDocAndWindow(window);
   

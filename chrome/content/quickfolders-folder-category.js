@@ -13,6 +13,7 @@ QuickFolders.FolderCategory = {
   NEVER: "__NEVER",
 	UNCATEGORIZED: "__UNCATEGORIZED",
 	ALL: "__ALL",
+  INIT: "",
   
 
   // whether the category can be selected in the Categoires dropdown (excludes ALWAYS, NEVER)

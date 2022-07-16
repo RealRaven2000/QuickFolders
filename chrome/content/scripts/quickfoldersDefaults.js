@@ -3,6 +3,7 @@
 // Model
 pref("extensions.quickfolders.lastSelectedOptionsTab",0);
 pref("extensions.quickfolders.lastActiveCategories","");
+pref("extensions.quickfolders.sessionCategories","[]");
 // General Prefs
 pref("extensions.quickfolders.showShortcutNumber", false);
 pref("extensions.quickfolders.showUnreadOnButtons", true);
@@ -184,6 +185,7 @@ pref("extensions.quickfolders.debug.popupmenus.subfolders", false);
 pref("extensions.quickfolders.debug.popupmenus.items", false);
 pref("extensions.quickfolders.debug.popupmenus.collapse", false);
 pref("extensions.quickfolders.debug.popupmenus.drag", false);
+pref("extensions.quickfolders.debug.performance", false);
 pref("extensions.quickfolders.debug.premium", false);
 pref("extensions.quickfolders.debug.premium.quickJump", false);
 pref("extensions.quickfolders.debug.premium.licenser", false);

@@ -194,38 +194,10 @@ QuickFolders.Styles = {
                 st.setProperty(attribute, value, ((important) ?	"important" : ""));
                 foundRule = true;
               }
-              
-              /*
-              logDebug ("=============\Current attribute: " + st.item(k) + " ====================="
-                + "\noriginal value=" + origProperty
-                + "\ntheRule.style[" + k +"]     = " + theRule.style[k]
-                + "\n                .parentRule = " + theRule.style.parentRule
-                + "\n                 Priority   = " + theRule.style.getPropertyPriority(attribute)
-                + "\n.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute));      
-              else
-                for (let k = 0; k < st.length; k++) {  //iterate rules!
-                  try {
-                    if (attribute == st.item(k)) {
-                      foundRule = true;
-                      logDebug ("=============\Current attribute: " + st.item(k) + " ====================="
-                              + "\ntheRule.style[" + k +"]     = " + theRule.style[k]
-                              + "\n                .parentRule = " + theRule.style.parentRule
-                              + "\n                 Priority   = " + theRule.style.getPropertyPriority(attribute)
-                              + "\n.getPropertyValue(" + attribute + "):" + st.getPropertyValue(attribute));
-                      st.removeProperty(attribute);
-                      if (null!=value) {
-                        st.setProperty(attribute,value,((important) ?	"important" : ""));
-                      }
-                      break;
-                    }
-                  }
-                  catch (e) { util.logToConsole ("(error) " + e) };
-                  break;
-                }
-                */
 						}
-						if (foundRule) // keep searching if exact rule was not found!
+						if (foundRule && value!=null) { // keep searching if exact rule was not found! but remove duplicates.
 							return true; // if rule found, early exit
+            }
 						break;
 					default: // other rules: unknown, media, page, font_face, charset 
 						// don't do anything here

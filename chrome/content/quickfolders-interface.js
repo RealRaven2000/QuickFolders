@@ -1224,7 +1224,7 @@ QuickFolders.Interface = {
         if (fileSpec && folder) {
 					localFile = null; // in case this locks the file?
           let uri = ios.newURI(fileSpec, null, null);
-          QuickFolders.FolderTree.setFolderTreeIcon(folder, uri);
+          QuickFolders.FolderTree.setFolderTreeIcon(folder, uri, true); // silent
           ctRepaired++;
         }
         if (earlyExit) return;

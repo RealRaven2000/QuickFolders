@@ -94,10 +94,14 @@ QuickFolders.FolderTree = {
 	restoreStyles: function() {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
-          makeSelector = this.makeSelector;
+          makeSelector = this.makeSelector,
+          isIcons = prefs.getBoolPref('folderTree.icons'),
+          isInjectCSS = prefs.getBoolPref('folderTree.icons.injectCSS'),
+          debugIcons = prefs.isDebugOption('folderTree.icons');
+          
     function iterate (key,value) {
 			let selector = makeSelector(key);
-      util.logDebugOptional('folderTree.icons', 'made selector: ' + selector + '\nvalue: ' + value);
+      if (debugIcons) { util.logDebugOptional('folderTree.icons', 'made selector: ' + selector + '\nvalue: ' + value); }
 			// the folder properties are (or should be) restored by the msf file automatically.
 			styleEngine.setElementStyle(ss, selector, 'list-style-image', value); 
 			styleEngine.setElementStyle(ss, selector, '-moz-image-region',  'rect(0px, 16px, 16px, 0px)'); 
@@ -108,11 +112,11 @@ QuickFolders.FolderTree = {
     if (!this.dictionary) return;
     let len = this.dictionary.size;
 	  if (!len)  {
-      util.logDebugOptional('folderTree.icons', 'dictionary empty?');
+      if (debugIcons) { util.logDebugOptional('folderTree.icons', 'dictionary empty?'); }
       return;
     }
-    if (!prefs.getBoolPref('folderTree.icons')) return;
-    if (!prefs.getBoolPref('folderTree.icons.injectCSS')) return;
+    if (!isIcons) return;
+    if (!isInjectCSS) return;
 		let styleEngine = QuickFolders.Styles,
 		    ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
     util.logDebugOptional('folderTree.icons', 'iterate Dictionary: ' + len + ' items…');
@@ -252,7 +256,8 @@ QuickFolders.FolderTree = {
 	} ,
 
 	makeSelector: function(propName) {
-	  return  'treechildren::-moz-tree-image(folderNameCol,'+ propName + ')';
+    // cssRules inserts a space so we need to do it too - otherwise we will end up with duplicates
+	  return  "treechildren::-moz-tree-image(folderNameCol, "+ propName + ")";
 	} ,
 	
 	forceRedraw: function() {
@@ -291,16 +296,20 @@ QuickFolders.FolderTree = {
 		list-style-image: url("...");
 	}	
 	*/								 
-	setFolderTreeIcon: function(folder, iconURI) {
+	setFolderTreeIcon: function(folder, iconURI, silent=false) {
 	  // https://developer.mozilla.org/en-US/docs/XUL/Tutorial/Styling_a_Tree
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
 					prefs = QuickFolders.Preferences,
-          styleEngine = QuickFolders.Styles;
-    if (!prefs.getBoolPref('folderTree.icons.injectCSS')) {
+          styleEngine = QuickFolders.Styles,
+          debugIcons = prefs.isDebugOption('folderTree.icons'),
+          isIcons = prefs.getBoolPref('folderTree.icons'),
+          isInjectCSS = prefs.getBoolPref('folderTree.icons.injectCSS');
+          
+    if (!isInjectCSS) {
 			util.logDebug("Folder Tree Icons are disabled! \n" +
-			  "extensions.quickfolders.folderTree.icons=" + prefs.getBoolPref('folderTree.icons') + '\n' +
-				"extensions.quickfolders.folderTree.icons.injectCSS=" + prefs.getBoolPref('folderTree.icons.injectCSS'));
+			  "extensions.quickfolders.folderTree.icons=" + isIcons + '\n' +
+				"extensions.quickfolders.folderTree.icons.injectCSS=" + isInjectCSS);
 			return;
 		}
 		let fileURL, fileSpec,
@@ -346,7 +355,7 @@ QuickFolders.FolderTree = {
 				if (prefs.isDebugOption('folderTree.icons')) {
 					util.logDebug("DOUBLE CHECK FOLDER STRING PROPS HAVE BEEN SET:\n" +
 					  "iconURL = " + folder.getStringProperty("iconURL") + "\n" +
-					  "folderIcon = " + folder.getStringProperty("folderIcon")
+					  "folderIcon = [" + folder.getStringProperty("folderIcon") + "]"
 					);
 				}
 			}
@@ -354,16 +363,17 @@ QuickFolders.FolderTree = {
         // when do we force this to be executed?
 			  util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + ", empty)");
 				util.logDebugOptional('folderTree.icons', 'REMOVING:\n' + selector + ' {\n' + 'list-style-image\n}');
-				styleEngine.removeElementStyle(ss, 'treechildren::-moz-tree-image(folderNameCol,' + propName + ')','list-style-image');
+				styleEngine.removeElementStyle(ss, "treechildren::-moz-tree-image(folderNameCol, " + propName + ")","list-style-image");
 			  folder.setStringProperty("folderIcon", "noIcon");
 				folder.setStringProperty("iconURL", "");
 			  folder.setForcePropertyEmpty("folderIcon", false); // remove property
         if (QuickFolders.FolderTree.dictionary)
           this.removeItem(propName);
 			}
-	    this.storeDictionary();
-			this.debugDictionary(); // test dictionary, just for now
-			this.forceRedraw();
+      if (!silent) {
+        this.debugDictionary(); // test dictionary, just for now
+        this.forceRedraw();
+      }
       // [issue 283] - do not force update during setFolderTreeIcon
 			// QI.updateFolders(false, true);  forces rebuilding subfolder menus
 		}
@@ -385,6 +395,11 @@ QuickFolders.FolderTree = {
           ImapNoselect    = 0x01000000; // thrown by performExpand if offline!
     let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),
         iCount = 0;
+        
+    let isProfiling = QuickFolders.Preferences.isDebugOption("folderTree,performance");
+    if (isProfiling) {
+      util.stopWatch("start","refreshTree");
+    }
     
     function countSubfolders(parentFolder) {
       let childFolders;
@@ -462,6 +477,12 @@ QuickFolders.FolderTree = {
       }, 10000);
       util.logDebug("refreshTree() iterated all accessible (" + iCount + ") folders.");
     }
+    
+    if (isProfiling) {
+      let time = util.stopWatch("all","refreshTree");
+      console.log(`%cRunning refreshTree() took: ${time}`, "background-color: rgb(0,160,40); color:white;");
+    }
+    
   }
 } ;
 

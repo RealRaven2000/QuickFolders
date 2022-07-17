@@ -158,38 +158,46 @@ async function onLoad(activatedWhileWindowOpen) {
                             class="menuitem-iconic"
                             />                                      
                   <menuitem id="QuickFolders-ToolbarPopup-dbg1"
-                                      label="Test Tree only Icons"
-                                      oncommand="QuickFolders.Interface.testTreeIcons();" 
-                                      class="menuitem-iconic"
-                                      />
+                            label="Test Tree only Icons"
+                            oncommand="QuickFolders.Interface.testTreeIcons();" 
+                            class="menuitem-iconic"
+                            />
                                       
                   <menuitem id="QuickFolders-ToolbarPopup-dbg2"
-                                      label="Load FolderTree Dictionary"
-                                      oncommand="QuickFolders.FolderTree.loadDictionary();" 
-                                      class="menuitem-iconic"
-                                      />														
-                <menuitem id="QuickFolders-ToolbarPopup-dbg2"
-                                    label="Force Tree Refresh"
-                                    oncommand="QuickFolders.FolderTree.refreshTree();" 
-                                    class="menuitem-iconic"
-                                    />
+                            label="Load FolderTree Dictionary"
+                            oncommand="QuickFolders.FolderTree.loadDictionary();" 
+                            class="menuitem-iconic"
+                            />														
+                  <menuitem id="QuickFolders-ToolbarPopup-dbg2"
+                            label="Force Tree Refresh"
+                            oncommand="QuickFolders.FolderTree.refreshTree();" 
+                            class="menuitem-iconic"
+                            />
+                            
+                  <menuitem id="QuickFolders-ToolbarPopup-dbg6"
+                            label="Foldertree.init()"
+                            oncommand="QuickFolders.FolderTree.init();" 
+                            class="menuitem-iconic"
+                            />
+                            
                                     
-                <menuitem id="QuickFolders-ToolbarPopup-dbg3"
+                  <menuitem id="QuickFolders-ToolbarPopup-dbg3"
                             label="Platform info - aboutHost()"
-                                      oncommand="QuickFolders.Util.aboutHost();"
-                                      class="menuitem-iconic"
-                                      />
-                <menuitem id="QuickFolders-ToolbarPopup-dbg4"
+                            oncommand="QuickFolders.Util.aboutHost();"
+                            class="menuitem-iconic"
+                            />
+
+                  <menuitem id="QuickFolders-ToolbarPopup-dbg4"
                             label="Load Platform CSS"
-                                      oncommand="QuickFolders.Util.loadPlatformStylesheet();"
-                                      class="menuitem-iconic"
-                                      />
+                            oncommand="QuickFolders.Util.loadPlatformStylesheet();"
+                            class="menuitem-iconic"
+                            />
                                       
-                <menuitem id="QuickFolders-ToolbarPopup-dbg5"
+                  <menuitem id="QuickFolders-ToolbarPopup-dbg5"
                             label="Load tab Session (restore Categories)"
-                                      oncommand="QuickFolders.Interface.loadTabSession();"
-                                      class="menuitem-iconic"
-                                      />
+                            oncommand="QuickFolders.Interface.loadTabSession();"
+                            class="menuitem-iconic"
+                            />
 
               </menupopup>
             </menu>

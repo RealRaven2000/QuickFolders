@@ -224,6 +224,8 @@ addEventListener("load", async (event) => {
         .replace(/\{italicEnd\}/g,"</i>")
         .replace(/\{L1\}/g,"<li>")
         .replace(/\{L2\}/g,"</li>")
+        .replace(/\{P1\}/g,"<p>")
+        .replace(/\{P2\}/g,"</p>")
         .replace(/\[(.)\]/g,"<code>$1</code>")
         .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>");
     }

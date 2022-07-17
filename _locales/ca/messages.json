@@ -1752,7 +1752,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Aquesta versió de QuickFolders és capaç de solucionar pestanyes no vàlides a Thunderbird 102, sempre que hàgiu executat la versió anterior (5.10.2) a Thunderbird 91. Aquestes pestanyes no vàlides es poden produir si actualitzeu perfils de correu més antics a Thunderbird 102; per obtenir informació detallada, consulteu [issue 281].{L2} {L1}Si encara teniu problemes amb les pestanyes QuickFolder-Tabs no vàlides, envieu-me un correu electrònic mitjançant la pestanya d'assistència a la configuració de QuickFolders i podré ajudar-vos a restaurar-les.{L2}{hr}{L1}Hi ha alguns problemes de velocitat a Thunderbird 102 en els quals estic treballant actualment, vegeu [issue 283]{L2}"
+    "message": "{P1}Aquesta versió de QuickFolders conté diverses correccions específiques de Thunderbird 102{P2}{L1}Hi va haver problemes fonamentals amb la velocitat a Thunderbird 102 causats per un codi ineficient a l'arbre de carpetes. Aquests ara estan resolts majoritàriament. [issue 283]{L2}{L1}Les categories de QuickFolders ara es tornen a restaurar correctament, assegureu-vos que només teniu una finestra de correu oberta quan tanqueu el Thunderbird. [issue 279]{L2}{L1}S'han solucionat les icones personalitzades a l'arbre de carpetes.{L2}{L1}S'han solucionat els menús de carpetes recents.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

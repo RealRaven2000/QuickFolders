@@ -279,7 +279,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Tämä QuickFolders-versio pystyy korjaamaan virheelliset välilehdet Thunderbird 102:ssa, jos olet suorittanut edellisen version (5.10.2) Thunderbird 91:ssä. Nämä virheelliset välilehdet voivat johtua vanhempien sähköpostiprofiilien päivittämisestä Thunderbird 102:een. Katso tarkemmat tiedot numerosta [issue 281].{L2} {L1}Jos sinulla on edelleen ongelmia virheellisten QuickFolder-välilehtien kanssa, lähetä minulle sähköpostia QuickFolders-asetusten tuki-välilehden kautta, niin voin auttaa sinua palauttamaan ne. {L2}{hr}{L1}Thunderbird 102:ssa on joitain nopeuteen liittyviä ongelmia, joita käsittelen parhaillaan, katso [issue 283]{L2}"
+    "message": "{P1}Tämä QuickFolders-versio sisältää useita Thunderbird 102:een liittyviä korjauksia{P2}{L1}Thunderbird 102:ssa oli perustavanlaatuisia nopeuteen liittyviä ongelmia, jotka johtuivat kansiopuun tehottomasta koodista. Nämä on nyt pääosin ratkaistu. [issue 283]{L2}{L1}QuickFolders-luokat on nyt palautettu oikein. Varmista, että sinulla on vain yksi postiikkuna auki, kun suljet Thunderbirdin. [issue 279]{L2}{L1}Korjattu mukautetut kuvakkeet kansiopuussa.{L2}{L1}Korjattu viimeaikaisten kansioiden valikot.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1801,7 +1801,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Ta wersja QuickFolders jest w stanie naprawić nieprawidłowe zakładki w Thunderbirdzie 102, pod warunkiem, że poprzednia wersja (5.10.2) została uruchomiona w Thunderbirdzie 91. Te nieprawidłowe zakładki mogą być spowodowane aktualizacją starszych profili poczty do Thunderbird 102; aby uzyskać szczegółowe informacje, zobacz [issue 281].{L2} {L1}Jeśli nadal masz problemy z nieprawidłowymi zakładkami QuickFolder-Tab, wyślij mi wiadomość e-mail za pośrednictwem zakładki pomocy w ustawieniach QuickFolder, a pomogę Ci je odzyskać.{L2}{hr}{L1}Wystąpiły pewne problemy z szybkością w Thunderbird 102, nad którymi aktualnie pracuję, zobacz [issue 283]{L2}"
+    "message": "{P1}Ta wersja QuickFolders zawiera wiele poprawek specyficznych dla Thunderbirda 102{P2}{L1}Wystąpiły fundamentalne problemy z szybkością w Thunderbird 102 spowodowane nieefektywnym kodem w drzewie folderów. Te są teraz w większości rozwiązane. [issue 283]{L2}{L1}Kategorie szybkich folderów są teraz ponownie prawidłowo przywracane, upewnij się, że masz otwarte tylko jedno okno poczty, gdy wyłączasz Thunderbirda. [issue 279]{L2}{L1}Poprawiono niestandardowe ikony w drzewie folderów.{L2}{L1}Poprawiono menu ostatnich folderów.{L2}.1 - poprawka dla funkcji 'Oznacz foldery + podfoldery jako przeczytane'{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

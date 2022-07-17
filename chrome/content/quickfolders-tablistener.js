@@ -106,17 +106,25 @@ QuickFolders.TabListener = {
   
   closeTab: function(evt) {
     let tabmail = document.getElementById("tabmail");
-    let idx = QuickFolders.tabContainer.selectedIndex;
-    QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.closeTab() - idx = " + idx);
-    QuickFolders.Interface.storeTabSession("remove");
+    if (["folder","message"].includes(evt.detail.tabInfo.mode.type)) {
+      let info = evt.detail.tabInfo;
+      QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.closeTab() - " + info.title);
+      QuickFolders.Interface.storeTabSession("remove", info);
+    }
   } ,
   
   newTab: function(evt) {
     let tabmail = document.getElementById("tabmail");
-    let idx = QuickFolders.tabContainer.selectedIndex;
-    idx = idx || 0;
-    QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.newTab()  - idx = " + idx);
-    QuickFolders.Interface.storeTabSession();
+    // evt.detail.tabInfo.tabId 
+    if (["folder","message"].includes(evt.detail.tabInfo.mode.type)) {
+      let newIndex = evt.detail.tabInfo.tabId;
+      QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.newTab()  - newIndex = " + newIndex);
+      let newTabInfo = tabmail.tabInfo.find(e => e == evt.detail.tabInfo);
+      if (newTabInfo) {
+        newTabInfo.QuickFoldersCategory = QuickFolders.Interface.currentActiveCategories;
+        QuickFolders.Interface.storeTabSession();
+      }
+    }
   } ,
   
   moveTab: function(evt) {

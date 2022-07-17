@@ -1798,7 +1798,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Questa versione di QuickFolders è in grado di correggere le schede non valide in Thunderbird 102, a condizione che tu abbia eseguito la versione precedente (5.10.2) in Thunderbird 91. Queste schede non valide possono essere causate dall'aggiornamento dei profili di posta precedenti a Thunderbird 102; per informazioni dettagliate, vedere [issue 281].{L2} {L1}Se hai ancora problemi con schede QuickFolder non valide, inviami un'e-mail tramite la scheda di supporto in Impostazioni QuickFolders e sarò in grado di aiutarti a ripristinarle. {L2}{hr}{L1}Ci sono alcuni problemi con la velocità in Thunderbird 102 su cui sto attualmente lavorando, vedi [issue 283]{L2}"
+    "message": "{P1}Questa versione di QuickFolders contiene più correzioni specifiche per Thunderbird 102{P2}{L1}Si sono verificati problemi fondamentali con la velocità in Thunderbird 102 causati da codice inefficiente nell'albero delle cartelle. Questi ora sono per lo più risolti. [issue 283]{L2}{L1}Le categorie QuickFolders ora sono state ripristinate correttamente, assicurati di avere una sola finestra di posta aperta quando spegni Thunderbird. [issue 279]{L2}{L1}Risolti i problemi con le icone personalizzate nell'albero delle cartelle.{L2}{L1}Risolti i menu delle cartelle recenti.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

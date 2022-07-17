@@ -1315,7 +1315,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Phiên bản QuickFolders này có thể sửa các tab không hợp lệ trong Thunderbird 102, miễn là bạn đã chạy phiên bản trước (5.10.2) trong Thunderbird 91. Các tab không hợp lệ này có thể do nâng cấp cấu hình thư cũ hơn lên Thunderbird 102; để biết thông tin chi tiết, hãy xem [issue 281]. {L2} {L1} Nếu bạn vẫn gặp sự cố với QuickFolder-Tabs không hợp lệ, vui lòng gửi email cho tôi qua tab hỗ trợ trên Cài đặt QuickFolders và tôi sẽ có thể giúp bạn khôi phục chúng. {L2}{hr}{L1} Có một số vấn đề về tốc độ trong Thunderbird 102 mà tôi hiện đang giải quyết, hãy xem [issue 283] {L2}"
+    "message": "{P1} Phiên bản QuickFolders này có nhiều bản sửa lỗi dành riêng cho Thunderbird 102 {P2} {L1} Có một số vấn đề cơ bản về tốc độ trong Thunderbird 102 do mã không hợp lệ trong cây thư mục. Những điều này hiện đã được giải quyết gần hết. [issue 283] {L2} {L1} Danh mục QuickFolders hiện đã được khôi phục lại chính xác, hãy đảm bảo rằng bạn chỉ mở một cửa sổ thư duy nhất khi tắt Thunderbird. [issue 279] {L2} {L1} Đã sửa các biểu tượng tùy chỉnh trong cây thư mục. {L2} {L1} Đã sửa các menu thư mục gần đây. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

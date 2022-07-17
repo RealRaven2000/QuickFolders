@@ -1571,7 +1571,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1}A QuickFolders ezen verziója képes kijavítani az érvénytelen lapokat a Thunderbird 102-ben, feltéve, hogy az előző verziót (5.10.2) a Thunderbird 91-ben futtatta. Ezeket az érvénytelen lapokat a régebbi levelezési profilok Thunderbird 102-re való frissítése okozhatja; részletes információért lásd a [issue 281].{L2} {L1}Ha továbbra is problémái vannak az érvénytelen QuickFolder-Tab-okkal, kérjük, küldjön egy e-mailt a QuickFolders beállításainak támogatási lapján, és tudok segíteni a visszaállításukban.{L2}{hr}{L1}Van néhány sebességprobléma a Thunderbird 102-ben, amelyeken jelenleg dolgozom, lásd: [issue 283]{L2}"
+    "message": "{P1}A QuickFolders ezen verziója több, a Thunderbird 102-re jellemző javítást tartalmaz.{P2}{L1}A Thunderbird 102 sebességével kapcsolatban alapvető problémák merültek fel, amelyeket a mappafában lévő nem megfelelő kód okozott. Ezek mára többnyire megoldódtak. [issue 283]{L2}{L1}A QuickFolders kategóriák most ismét megfelelően visszaállnak. Győződjön meg arról, hogy a Thunderbird leállításakor csak egyetlen levelezőablak van nyitva. [issue 279]{L2}{L1}Egyéni ikonok kijavítása a mappafában.{L2}{L1}A legutóbbi mappák menüi javítva.{L2}.5.1 – gyorsjavítás a „Mappák és almappák megjelölése olvasottként” funkcióhoz{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

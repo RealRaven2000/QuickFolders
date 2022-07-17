@@ -1325,7 +1325,7 @@ QuickFolders.Interface = {
 		}
 	} ,
   
-  storeTabSession: function(cmd) {
+  storeTabSession: function(cmd, whichInfo=null) {
     let tabmail = document.getElementById("tabmail"),
         tabInfo = tabmail.tabInfo,
         idx = QuickFolders.tabContainer.selectedIndex || 0; // current tab index
@@ -1336,7 +1336,7 @@ QuickFolders.Interface = {
     for (let i=0; i<tabInfo.length; i++) {
       let info = tabInfo[i];
       let type = info.mode.type;
-      if (i == idx) {
+      if (info == whichInfo) {
         if (cmd == "remove") {
           continue; // skip this one, the tab is being deleted.
         }

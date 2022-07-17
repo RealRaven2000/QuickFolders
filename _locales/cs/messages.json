@@ -264,7 +264,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Tato verze QuickFolders je schopna opravit neplatné karty v Thunderbirdu 102 za předpokladu, že jste spustili předchozí verzi (5.10.2) v Thunderbirdu 91. Tyto neplatné karty mohou být způsobeny upgradem starších poštovních profilů na Thunderbird 102; podrobné informace naleznete v [issue 281].{L2} {L1}Pokud máte stále problémy s neplatnými kartami QuickFolder-Tabs, pošlete mi prosím e-mail přes kartu podpory v nastavení QuickFolders a já vám pomohu je obnovit.{L2}{hr}{L1}V Thunderbirdu 102 jsou nějaké problémy s rychlostí, na kterých právě pracuji, viz [issue 283]{L2}"
+    "message": "{P1}Tato verze QuickFolders obsahuje několik oprav specifických pro Thunderbird 102{P2}{L1}V Thunderbirdu 102 byly zásadní problémy s rychlostí způsobené neefektivním kódem ve stromu složek. Ty jsou nyní většinou vyřešeny. [issue 283]{L2}{L1}Kategorie QuickFolders jsou nyní znovu správně obnoveny, ujistěte se, že máte při vypnutí Thunderbirdu otevřené pouze jedno poštovní okno. [issue 279]{L2}{L1}Opraveny vlastní ikony ve stromu složek.{L2}{L1}Opraveny nabídky posledních složek.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

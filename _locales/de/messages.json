@@ -1798,7 +1798,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Diese Version von QuickFolders kann ungültige Tabs in Thunderbird 102 reparieren, vorausgesetzt, Sie haben die vorherige Version (5.10.2) in Thunderbird 91 ausgeführt. Diese ungültigen Tabs können durch ein Upgrade älterer E-Mail-Profile auf Thunderbird 102 verursacht werden; Ausführliche Informationen finden Sie unter [issue 281].{L2} {L1}Wenn Sie weiterhin Probleme mit ungültigen QuickFolder-Tabs haben, senden Sie mir bitte eine E-Mail über den Support-Tab in den QuickFolders-Einstellungen, und ich kann Ihnen bei der Wiederherstellung behilflich sein.{L2}{hr}{L1}Es gibt einige Geschwindigkeitsprobleme in Thunderbird 102, an denen ich gerade arbeite, siehe [issue 283]{L2}"
+    "message": "{P1}Diese Version von QuickFolders enthält mehrere Änderungen speziell für Thunderbird 102{P2}{L1}Es gab grundlegende Probleme mit der Geschwindigkeit in Thunderbird 102, die durch ineffizienten Code in der Ordnerstruktur verursacht wurden. Diese sind nun größtenteils behoben. [issue 283]{L2}{L1}QuickFolders-Kategorien werden jetzt wieder korrekt wiederhergestellt, stellen Sie sicher, dass Sie nur ein einziges Mail-Fenster geöffnet haben, wenn Sie Thunderbird beenden. [issue 279]{L2}{L1}Benutzerdefinierte Symbole in der Ordnerstruktur korrigiert.{L2}{L1}Menüs der Chronik-Ordner korrigiert.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

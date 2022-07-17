@@ -1860,7 +1860,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}This version of QuickFolders is able to fix invalid tabs in Thunderbird 102, provided you have ran the previous version (5.10.2) in Thunderbird 91. These invalid tabs can be caused by upgrading older mail profiles to Thunderbird 102; for detailed information see [issue 281].{L2} {L1}If you still have problems with invalid QuickFolder-Tabs, please send me an email via the support tab on QuickFolders Settings and I will be able to help you retore them.{L2}{hr}{L1}There are some problems with speed in Thunderbird 102 that I am currently working on, see [issue 283]{L2}"
+    "message": "{P1}This version of QuickFolders contains multiple fixes specific to Thunderbird 102{P2}{L1}There were fundamental problems with speed in Thunderbird 102 caused by ineffient code in folder tree. These are now mostly resolved. [issue 283]{L2}{L1}QuickFolders Categories are now restored correctly again, make sure you only have a single mail window open when you shut down Thunderbird. [issue 279]{L2}{L1}Fixed custom icons in folder tree.{L2}{L1}Fixed recent folders menus.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

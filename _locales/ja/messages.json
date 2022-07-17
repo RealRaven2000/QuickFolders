@@ -1681,7 +1681,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1}このバージョンのQuickFoldersは、Thunderbird 91で以前のバージョン（5.10.2）を実行している場合、Thunderbird 102の無効なタブを修正できます。これらの無効なタブは、古いメールプロファイルをThunderbird102にアップグレードすることで発生する可能性があります。 詳細については、[issue 281]を参照してください。{L2}{L1}それでも無効なQuickFolder-Tabsで問題が発生する場合は、QuickFolders設定のサポートタブからメールを送ってください。 {L2}{hr}{L1}現在取り組んでいるThunderbird102の速度に問題があります。[issue 283]{L2}を参照してください。"
+    "message": "{P1}このバージョンのQuickFoldersには、Thunderbird102に固有の複数の修正が含まれています{P2}{L1}フォルダツリーの非効率的なコードが原因で、Thunderbird102の速度に根本的な問題がありました。 これらは現在ほとんど解決されています。 [issue 283] {L2} {L1} QuickFoldersカテゴリが再び正しく復元されるようになりました。Thunderbirdをシャットダウンするときに、メールウィンドウが1つだけ開いていることを確認してください。 [issue 279]{L2}{L1}フォルダツリーのカスタムアイコンを修正しました。{L2}{L1}最近のフォルダメニューを修正しました。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

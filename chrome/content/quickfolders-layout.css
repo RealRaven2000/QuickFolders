@@ -1,8 +1,8 @@
 
-/* broke out palette piece for custom configurations */
-@import url('chrome://quickfolders/content/skin/quickfolders-widgets.css');
-/* version specific styling */
-@import url('chrome://quickfolders/content/quickfolders-mods.css');
+/* broke out palette piece for custom configurations - removed chrome://quickfolders/content/ */
+@import url('skin/quickfolders-widgets.css');
+/* version specific styling - removed chrome://quickfolders/content/*/
+@import url('quickfolders-mods.css'); 
 
 
 /* without standard license */

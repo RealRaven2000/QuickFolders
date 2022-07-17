@@ -1,4 +1,4 @@
-@import url('chrome://quickfolders/content/skin/quickfolders-widgets.css');
+@import url('skin/quickfolders-widgets.css'); /* removed chrome://quickfolders/content/ */
 
 /* donate button (extra2) */
 .dialog-button-box button[dlgtype="extra2"] label {

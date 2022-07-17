@@ -3,11 +3,6 @@
 @import url('../contribute.css');
 @import url('../license.css');
 
-/* extra lines to fix the legacy options dialog, for now... 
-@import url('chrome://quickfolders/content/quickfolders-layout.css');
-*/
-@import url('chrome://quickfolders/content/skin/quickfolders-palettes.css');
-
 /******* start thunderbird 78 fixes  *********/
 /* platform specific styling */
 :root {

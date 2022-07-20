@@ -1797,7 +1797,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1}Cette version de QuickFolders contient plusieurs correctifs spécifiques à Thunderbird 102{P2}{L1}Il y avait des problèmes fondamentaux de vitesse dans Thunderbird 102 causés par un code inefficace dans l'arborescence des dossiers. Celles-ci sont maintenant pour la plupart résolues. [issue 283]{L2}{L1}Les catégories QuickFolders sont à nouveau restaurées correctement, assurez-vous que vous n'avez qu'une seule fenêtre de messagerie ouverte lorsque vous fermez Thunderbird. [issue 279]{L2}{L1}Correction des icônes personnalisées dans l'arborescence des dossiers.{L2}{L1}Correction des menus des dossiers récents.{L2}"
+    "message": "{P1}Cette version de QuickFolders contient plusieurs correctifs spécifiques à Thunderbird 102. {P2} {L1}Il y avait des problèmes fondamentaux de vitesse dans Thunderbird 102 causés par un code inefficace dans l'arborescence des dossiers. Celles-ci sont maintenant pour la plupart résolues - voir [issue 283] {L2} {L1}Les catégories QuickFolders sont à nouveau restaurées correctement, assurez-vous que vous n'avez qu'une seule fenêtre de messagerie ouverte lorsque vous fermez Thunderbird. Voir [issue 279]{L2} {L1}Correction des icônes personnalisées dans l'arborescence des dossiers.{L2} {L1}Correction des menus des dossiers récents.{L2}{L1}Routine réparée pour supprimer les onglets invalides{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

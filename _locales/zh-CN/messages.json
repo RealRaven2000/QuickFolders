@@ -1750,7 +1750,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{P1}此版本的 QuickFolders 包含多个特定于 Thunderbird 102 的修复程序{P2}{L1}Thunderbird 102 的速度存在根本问题，原因是文件夹树中的代码效率低下。 这些现在大部分都解决了。 [issue 283]{L2}{L1}QuickFolders 类别现在再次正确恢复，请确保在关闭 Thunderbird 时只打开一个邮件窗口。 [issue 279]{L2}{L1}修复了文件夹树中的自定义图标。{L2}{L1}修复了最近的文件夹菜单。{L2}"
+    "message": "{P1}此版本的 QuickFolders 包含多个特定于 Thunderbird 102 的修复程序。{P2} {L1}由于文件夹树中的代码效率低下，Thunderbird 102 的速度存在根本问题。 这些现在大部分都已解决 - 请参阅 [issue 283] {L2} {L1}QuickFolders 类别现在再次正确恢复，请确保在关闭 Thunderbird 时只打开一个邮件窗口。 请参阅 [issue 279]{L2} {L1}修复了文件夹树中的自定义图标。{L2} {L1}修复了最近的文件夹菜单。{L2}{L1}修复了删除无效标签的例程{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

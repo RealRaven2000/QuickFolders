@@ -1824,7 +1824,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1}Denna version av QuickFolders innehåller flera korrigeringar som är specifika för Thunderbird 102{P2}{L1}Det fanns grundläggande problem med hastigheten i Thunderbird 102 orsakade av ineffektiv kod i mappträdet. Dessa är nu till största delen lösta. [issue 283]{L2}{L1}QuickFolders-kategorier återställs nu korrekt igen, se till att du bara har ett enda e-postfönster öppet när du stänger av Thunderbird. [issue 279]{L2}{L1}Fixade anpassade ikoner i mappträdet.{L2}{L1}Lättade senaste mappmenyer.{L2}"
+    "message": "{P1}Den här versionen av QuickFolders innehåller flera korrigeringar som är specifika för Thunderbird 102. {P2} {L1}Det fanns grundläggande problem med hastigheten i Thunderbird 102 orsakade av ineffektiv kod i mappträdet. Dessa är nu för det mesta lösta - se [issue 283] {L2} {L1}QuickFolders-kategorier har nu återställts korrekt igen, se till att du bara har ett enda e-postfönster öppet när du stänger av Thunderbird. Se [issue 279]{L2} {L1}Fixade anpassade ikoner i mappträdet.{L2} {L1}Fixade senaste mappmenyer.{L2}{L1}Reparerad rutin för att ta bort ogiltiga flikar{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

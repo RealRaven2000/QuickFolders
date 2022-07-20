@@ -1815,7 +1815,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{P1}Deze versie van QuickFolders bevat meerdere oplossingen die specifiek zijn voor Thunderbird 102{P2}{L1}Er waren fundamentele problemen met de snelheid in Thunderbird 102, veroorzaakt door inefficiënte code in de mappenboom. Deze zijn nu grotendeels opgelost. [issue 283]{L2}{L1}QuickFolders-categorieën zijn nu weer correct hersteld, zorg ervoor dat je maar één e-mailvenster open hebt wanneer je Thunderbird afsluit. [issue 279]{L2}{L1}Aangepaste pictogrammen in mappenstructuur opgelost.{L2}{L1}Recente mappenmenu's opgelost.{L2}"
+    "message": "{P1}Deze versie van QuickFolders bevat meerdere oplossingen die specifiek zijn voor Thunderbird 102. {P2} {L1}Er waren fundamentele problemen met de snelheid in Thunderbird 102, veroorzaakt door inefficiënte code in de mappenboom. Deze zijn nu grotendeels opgelost - zie [issue 283] {L2} {L1}QuickFolders-categorieën zijn nu weer correct hersteld, zorg ervoor dat u slechts één e-mailvenster open heeft wanneer u Thunderbird afsluit. Zie [issue 279]{L2} {L1}Vaste aangepaste pictogrammen in mappenstructuur.{L2} {L1}Recente mappenmenu's opgelost.{L2}{L1}Repareerde routine voor het verwijderen van ongeldige tabbladen{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

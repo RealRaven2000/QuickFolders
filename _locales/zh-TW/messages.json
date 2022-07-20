@@ -1755,6 +1755,9 @@
   "whats-new-intro": {
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
+  "whats-new-list": {
+    "message": "{L1}此版本的 QuickFolders 能夠修復 Thunderbird 102 中的無效標籤，前提是您在 Thunderbird 91 中運行了之前的版本 (5.10.2)。這些無效標籤可能是由於將舊郵件配置文件升級到 Thunderbird 102 造成的； 有關詳細信息，請參閱 [issue 281]。{L2} {L1}如果您仍然遇到無效 QuickFolder-Tabs 的問題，請通過 QuickFolders 設置上的支持選項卡給我發送電子郵件，我將能夠幫助您恢復它們。 {L2}{hr}{L1}我目前正在處理的 Thunderbird 102 存在一些速度問題，請參閱 [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "歡迎使用 $addonName$",

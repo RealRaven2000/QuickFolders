@@ -1779,6 +1779,9 @@
   "whats-new-intro": {
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
+  "whats-new-list": {
+    "message": "{L1}Esta versión de QuickFolders puede corregir pestañas no válidas en Thunderbird 102, siempre que haya ejecutado la versión anterior (5.10.2) en Thunderbird 91. Estas pestañas no válidas pueden deberse a la actualización de perfiles de correo antiguos a Thunderbird 102; para obtener información detallada, consulte [issue 281].{L2} {L1}Si todavía tiene problemas con las pestañas de QuickFolder no válidas, envíeme un correo electrónico a través de la pestaña de soporte en Configuración de QuickFolders y podré ayudarlo a restaurarlas.{L2}{hr}{L1}Hay algunos problemas con la velocidad en Thunderbird 102 en los que estoy trabajando actualmente, consulte [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenido a $addonName$",

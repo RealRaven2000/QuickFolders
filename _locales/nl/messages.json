@@ -1809,6 +1809,9 @@
   "whats-new-intro": {
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
+  "whats-new-list": {
+    "message": "{L1}Deze versie van QuickFolders kan ongeldige tabbladen in Thunderbird 102 herstellen, op voorwaarde dat u de vorige versie (5.10.2) in Thunderbird 91 hebt uitgevoerd. Deze ongeldige tabbladen kunnen worden veroorzaakt door het upgraden van oudere e-mailprofielen naar Thunderbird 102; voor gedetailleerde informatie zie [issue 281].{L2} {L1}Als je nog steeds problemen hebt met ongeldige QuickFolder-Tabs, stuur me dan een e-mail via het tabblad Ondersteuning op de QuickFolders-instellingen en ik zal je kunnen helpen deze te herstellen.{L2}{hr}{L1}Er zijn wat snelheidsproblemen in Thunderbird 102 waar ik momenteel aan werk, zie [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Welkom bij $addonName$",

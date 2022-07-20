@@ -1797,6 +1797,9 @@
   "whats-new-intro": {
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
+  "whats-new-list": {
+    "message": "{L1}Questa versione di QuickFolders è in grado di correggere le schede non valide in Thunderbird 102, a condizione che tu abbia eseguito la versione precedente (5.10.2) in Thunderbird 91. Queste schede non valide possono essere causate dall'aggiornamento dei profili di posta precedenti a Thunderbird 102; per informazioni dettagliate, vedere [issue 281].{L2} {L1}Se hai ancora problemi con schede QuickFolder non valide, inviami un'e-mail tramite la scheda di supporto in Impostazioni QuickFolders e sarò in grado di aiutarti a ripristinarle. {L2}{hr}{L1}Ci sono alcuni problemi con la velocità in Thunderbird 102 su cui sto attualmente lavorando, vedi [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Benvenuto in $addonName$",

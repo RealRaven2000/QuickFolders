@@ -1650,8 +1650,11 @@
       }
     }
   },
+  "special-offer-upgrade-condition": {
+    "message": "Quan actualitzeu des de Standard, obteniu un període de llicència d'un any complet a partir de la data de compra, independentment de la data de caducitat de la vostra llicència anterior."
+  },
   "special-offer-expiry": {
-    "message": "1 de juliol"
+    "message": "7 d'agost"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
@@ -1757,7 +1760,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{P1}Aquesta versió de QuickFolders conté diverses correccions específiques de Thunderbird 102. {P2} {L1}Hi va haver problemes fonamentals amb la velocitat a Thunderbird 102 causats per un codi ineficient a l'arbre de carpetes. Ara s'han resolt majoritàriament; vegeu [issue 283] {L2} {L1}Les categories de Carpetes ràpides ara es tornen a restaurar correctament, assegureu-vos que només teniu una finestra de correu oberta quan tanqueu el Thunderbird. Vegeu [issue 279]{L2} {L1}S'han solucionat les icones personalitzades a l'arbre de carpetes.{L2} {L1}S'han solucionat els menús de carpetes recents.{L2}{L1}S'ha reparat la rutina per eliminar pestanyes no vàlides{L2}"
+    "message": "{P1}Aquesta versió de QuickFolders soluciona {boldStart}problemes importants{boldEnd} específics del Thunderbird 102. {P2} {L1}Hi va haver problemes fonamentals amb la velocitat a Thunderbird 102 causats per un codi ineficient a l'arbre de carpetes. Ara s'han resolt majoritàriament; vegeu [issue 283] {L2} {L1}Les categories de Carpetes ràpides ara es tornen a restaurar correctament, assegureu-vos que només teniu una finestra de correu oberta quan tanqueu el Thunderbird. Vegeu [issue 279]{L2} {L1}S'han solucionat les icones personalitzades a l'arbre de carpetes.{L2} {L1}S'han solucionat els menús de carpetes recents.{L2}{L1}S'ha reparat la rutina per eliminar pestanyes no vàlides{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -184,8 +184,11 @@
       }
     }
   },
+  "special-offer-upgrade-condition": {
+    "message": "Když upgradujete ze Standardu, získáte licenční období na jeden celý rok od data nákupu bez ohledu na datum vypršení platnosti vaší předchozí licence."
+  },
   "special-offer-expiry": {
-    "message": "1. července"
+    "message": "7. srpna"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -264,7 +267,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{P1}Tato verze QuickFolders obsahuje několik oprav specifických pro Thunderbird 102. {P2} {L1}V Thunderbirdu 102 byly zásadní problémy s rychlostí způsobené neefektivním kódem ve stromu složek. Ty jsou nyní většinou vyřešeny – viz [issue 283] {L2} {L1}Kategorie QuickFolders jsou nyní znovu správně obnoveny, ujistěte se, že máte po vypnutí Thunderbirdu otevřené pouze jedno poštovní okno. Viz [issue 279]{L2} {L1}Opravené vlastní ikony ve stromu složek.{L2} {L1}Opravené nabídky posledních složek.{L2}{L1}Opravená rutina pro odstraňování neplatných karet{L2}"
+    "message": "{P1}Tato verze QuickFolders opravuje {boldStart}hlavní důležité problémy{boldEnd} specifické pro Thunderbird 102. {P2} {L1}V Thunderbirdu 102 byly zásadní problémy s rychlostí způsobené neefektivním kódem ve stromu složek. Ty jsou nyní většinou vyřešeny – viz [issue 283] {L2} {L1}Kategorie QuickFolders jsou nyní znovu správně obnoveny, ujistěte se, že máte po vypnutí Thunderbirdu otevřené pouze jedno poštovní okno. Viz [issue 279]{L2} {L1}Opravené vlastní ikony ve stromu složek.{L2} {L1}Opravené nabídky posledních složek.{L2}{L1}Opravená rutina pro odstraňování neplatných karet{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

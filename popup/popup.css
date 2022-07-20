@@ -14,8 +14,8 @@
 #innerwrapper {
   position: relative;
   background-color: white;
-  padding-left: 10%;
-  padding-right: 10%;
+  padding-left: 7%;
+  padding-right: 7%;
   /*  border: 1px solid rgba(120,120,120,0.3);  test */
 }
 
@@ -124,7 +124,8 @@ canvas[collapsed=true] {
 .importantInfo p, 
 .importantInfo ul, 
 .importantInfo li,
-.importantInfo i {
+.importantInfo i,
+.importantInfo span {
   color: white;
 }
 
@@ -190,6 +191,12 @@ canvas[collapsed=true] {
 
 #specialBox .specialOffer {
   background: transparent !important;
+}
+
+.offerConditions {
+  font-style: italic;
+  background: transparent !important;
+  color: rgb(160,180,200) !important; /*lighter gray*/
 }
 
 #purchaseLicenseListItem { /* test */

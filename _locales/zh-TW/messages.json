@@ -1654,8 +1654,11 @@
       }
     }
   },
+  "special-offer-upgrade-condition": {
+    "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
+  },
   "special-offer-expiry": {
-    "message": "7月1日"
+    "message": "8月7日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1761,7 +1764,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1}此版本的 QuickFolders 包含多個特定於 Thunderbird 102 的修復程序。{P2} {L1}由於文件夾樹中的代碼效率低下，Thunderbird 102 的速度存在根本問題。 這些現在大部分都已解決 - 請參閱 [issue 283] {L2} {L1}QuickFolders 類別現在再次正確恢復，請確保在關閉 Thunderbird 時只打開一個郵件窗口。 請參閱 [issue 279]{L2} {L1}修復了文件夾樹中的自定義圖標。{L2} {L1}修復了最近使用的文件夾菜單。{L2}{L1}修復了刪除無效標籤的例程{L2}"
+    "message": "{P1}此版本的 QuickFolders 修復了 Thunderbird 102 特有的{boldStart}重大問題{boldEnd}。{P2} {L1}由於文件夾樹中的代碼效率低下，Thunderbird 102 的速度存在根本問題。 這些現在大部分都已解決 - 請參閱 [issue 283] {L2} {L1}QuickFolders 類別現在再次正確恢復，請確保在關閉 Thunderbird 時只打開一個郵件窗口。 請參閱 [issue 279]{L2} {L1}修復了文件夾樹中的自定義圖標。{L2} {L1}修復了最近使用的文件夾菜單。{L2}{L1}修復了刪除無效標籤的例程{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

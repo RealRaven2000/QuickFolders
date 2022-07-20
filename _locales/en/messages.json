@@ -1758,8 +1758,11 @@
       }
     }
   },  
+  "special-offer-upgrade-condition": {
+    "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
+  },
   "special-offer-expiry": {
-    "message": "July 1st"
+    "message": "August 7th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1865,7 +1868,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{P1}This version of QuickFolders contains multiple fixes specific to Thunderbird 102. {P2} {L1}There were fundamental problems with speed in Thunderbird 102 caused by inefficient code in folder tree. These are now mostly resolved - see [issue 283] {L2} {L1}QuickFolders Categories are now restored correctly again, make sure you only have a single mail window open when you shut down Thunderbird. See [issue 279]{L2} {L1}Fixed custom icons in folder tree.{L2} {L1}Fixed recent folders menus.{L2} {L1}Repaired routine for removing invalid tabs{L2}"
+    "message": "{P1}This version of QuickFolders fixes {boldStart}significant problems{boldEnd} specific to Thunderbird 102. {P2} {L1}There were fundamental problems with speed in Thunderbird 102 caused by inefficient code in folder tree. These are now mostly resolved - see [issue 283] {L2} {L1}QuickFolders Categories are now restored correctly again, make sure you only have a single mail window open when you shut down Thunderbird. See [issue 279]{L2} {L1}Fixed custom icons in folder tree.{L2} {L1}Fixed recent folders menus.{L2} {L1}Repaired routine for removing invalid tabs{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

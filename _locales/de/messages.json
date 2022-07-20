@@ -1700,8 +1700,11 @@
       }
     }
   },
+  "special-offer-upgrade-condition": {
+    "message": "Wenn Sie von Standard upgraden, erhalten Sie eine einjährige Lizenzlaufzeit ab Kaufdatum, unabhängig vom Ablaufdatum Ihrer vorherigen Lizenz."
+  },
   "special-offer-expiry": {
-    "message": "1. Juli"
+    "message": "7. August"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1803,7 +1806,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1}Diese Version von QuickFolders enthält mehrere Änderungen speziell für Thunderbird 102{P2}{L1}Es gab grundlegende Probleme mit der Geschwindigkeit in Thunderbird 102, die durch ineffizienten Code in der Ordnerstruktur verursacht wurden. Diese sind nun größtenteils behoben. [issue 283]{L2}{L1}QuickFolders-Kategorien werden jetzt wieder korrekt wiederhergestellt, stellen Sie sicher, dass Sie nur ein einziges Mail-Fenster geöffnet haben, wenn Sie Thunderbird beenden. [issue 279]{L2}{L1}Benutzerdefinierte Symbole in der Ordnerstruktur korrigiert.{L2}{L1}Menüs der Chronik-Ordner korrigiert.{L2} {L1}Routine zum Entfernen ungültiger Tabs repariert.{L2}"
+    "message": "{P1}Diese Version von QuickFolders behebt {boldStart}signifikante Probleme{boldEnd} speziell für Thunderbird 102.{P2}{L1}Es gab grundlegende Probleme mit der Geschwindigkeit in Thunderbird 102, die durch ineffizienten Code in der Ordnerstruktur verursacht wurden. Diese sind nun größtenteils behoben. [issue 283]{L2}{L1}QuickFolders-Kategorien werden jetzt wieder korrekt wiederhergestellt, stellen Sie sicher, dass Sie nur ein einziges Mail-Fenster geöffnet haben, wenn Sie Thunderbird beenden. [issue 279]{L2}{L1}Benutzerdefinierte Symbole in der Ordnerstruktur korrigiert.{L2}{L1}Menüs der Chronik-Ordner korrigiert.{L2} {L1}Routine zum Entfernen ungültiger Tabs repariert.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

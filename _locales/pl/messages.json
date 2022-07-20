@@ -1699,8 +1699,11 @@
       }
     }
   },
+  "special-offer-upgrade-condition": {
+    "message": "Po uaktualnieniu z wersji Standard otrzymujesz jeden pełny rok okresu licencji od daty zakupu, niezależnie od daty wygaśnięcia poprzedniej licencji."
+  },
   "special-offer-expiry": {
-    "message": "1 lipca"
+    "message": "7 sierpnia"
   },
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
@@ -1806,7 +1809,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{P1}Ta wersja QuickFolders zawiera wiele poprawek specyficznych dla Thunderbird 102. {P2} {L1}Wystąpiły fundamentalne problemy z szybkością w Thunderbird 102 spowodowane nieefektywnym kodem w drzewie folderów. Są one teraz w większości rozwiązane – patrz [issue 283] {L2} {L1}Kategorie szybkich folderów są teraz ponownie poprawnie przywracane, upewnij się, że masz otwarte tylko jedno okno poczty po zamknięciu Thunderbirda. Zobacz [issue 279]{L2} {L1}Naprawiono niestandardowe ikony w drzewie folderów.{L2} {L1}Naprawiono menu ostatnich folderów.{L2}{L1}Naprawiono procedurę usuwania nieprawidłowych kart{L2}"
+    "message": "{P1}Ta wersja QuickFolders rozwiązuje {boldStart}poważne problemy{boldEnd} specyficzne dla Thunderbird 102. {P2} {L1}Wystąpiły fundamentalne problemy z szybkością w Thunderbird 102 spowodowane nieefektywnym kodem w drzewie folderów. Są one teraz w większości rozwiązane – patrz [issue 283] {L2} {L1}Kategorie szybkich folderów są teraz ponownie poprawnie przywracane, upewnij się, że masz otwarte tylko jedno okno poczty po zamknięciu Thunderbirda. Zobacz [issue 279]{L2} {L1}Naprawiono niestandardowe ikony w drzewie folderów.{L2} {L1}Naprawiono menu ostatnich folderów.{L2}{L1}Naprawiono procedurę usuwania nieprawidłowych kart{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

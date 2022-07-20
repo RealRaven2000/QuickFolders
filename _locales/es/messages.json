@@ -1702,8 +1702,11 @@
       }
     }
   },
+  "special-offer-upgrade-condition": {
+    "message": "Cuando actualiza desde Estándar, obtiene un período de licencia de un año completo a partir de la fecha de compra, independientemente de la fecha de vencimiento de su licencia anterior."
+  },
   "special-offer-expiry": {
-    "message": "1 de julio"
+    "message": "7 de agosto"
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1809,7 +1812,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{P1}Esta versión de QuickFolders contiene varias correcciones específicas para Thunderbird 102. {P2} {L1}Había problemas fundamentales con la velocidad en Thunderbird 102 causados por un código ineficaz en el árbol de carpetas. Ahora están resueltos en su mayoría: consulte [issue 283] {L2} {L1}Las categorías de QuickFolders ahora se restauran correctamente nuevamente, asegúrese de tener solo una ventana de correo abierta cuando cierra Thunderbird. Consulte [issue 279]{L2} {L1}Se corrigieron los iconos personalizados en el árbol de carpetas.{L2} {L1}Se corrigieron los menús de carpetas recientes.{L2}{L1}Se reparó la rutina para eliminar pestañas no válidas{L2}"
+    "message": "{P1}Esta versión de QuickFolders soluciona {boldStart}problemas importantes{boldEnd} específicos de Thunderbird 102. {P2} {L1}Había problemas fundamentales con la velocidad en Thunderbird 102 causados por un código ineficaz en el árbol de carpetas. Ahora están resueltos en su mayoría: consulte [issue 283] {L2} {L1}Las categorías de QuickFolders ahora se restauran correctamente nuevamente, asegúrese de tener solo una ventana de correo abierta cuando cierra Thunderbird. Consulte [issue 279]{L2} {L1}Se corrigieron los iconos personalizados en el árbol de carpetas.{L2} {L1}Se corrigieron los menús de carpetas recientes.{L2}{L1}Se reparó la rutina para eliminar pestañas no válidas{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

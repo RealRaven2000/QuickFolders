@@ -1681,8 +1681,11 @@
       }
     }
   },
+  "special-offer-upgrade-condition": {
+    "message": "Ao atualizar do Standard, você obtém um período de licença de um ano inteiro a partir da data de compra, independentemente da data de expiração de sua licença anterior."
+  },
   "special-offer-expiry": {
-    "message": "1º de julho"
+    "message": "7 de agosto"
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
@@ -1788,7 +1791,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{P1}Esta versão do QuickFolders contém várias correções específicas para o Thunderbird 102. {P2} {L1}Ocorreram problemas fundamentais com velocidade no Thunderbird 102 causados por código ineficiente na árvore de pastas. A maioria deles está agora resolvida - veja [issue 283] {L2} {L1}As categorias do QuickFolders agora foram restauradas corretamente novamente, certifique-se de ter apenas uma única janela de e-mail aberta ao desligar o Thunderbird. Consulte [issue 279]{L2} {L1}Corrigido ícones personalizados na árvore de pastas.{L2} {L1}Corrigido menus de pastas recentes.{L2}{L1}Reparação de rotina para remover abas inválidas{L2}"
+    "message": "{P1}Esta versão do QuickFolders corrige {boldStart}problemas significativos{boldEnd} específicos do Thunderbird 102. {P2} {L1}Ocorreram problemas fundamentais com velocidade no Thunderbird 102 causados por código ineficiente na árvore de pastas. A maioria deles está agora resolvida - veja [issue 283] {L2} {L1}As categorias do QuickFolders agora foram restauradas corretamente novamente, certifique-se de ter apenas uma única janela de e-mail aberta ao desligar o Thunderbird. Consulte [issue 279]{L2} {L1}Corrigido ícones personalizados na árvore de pastas.{L2} {L1}Corrigido menus de pastas recentes.{L2}{L1}Reparação de rotina para remover abas inválidas{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

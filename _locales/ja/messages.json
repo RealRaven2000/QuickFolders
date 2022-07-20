@@ -1582,8 +1582,11 @@
       }
     }
   },
+  "special-offer-upgrade-condition": {
+    "message": "Standardからアップグレードすると、以前のライセンスの有効期限に関係なく、購入日から1年間のライセンス期間が与えられます。"
+  },
   "special-offer-expiry": {
-    "message": "7月1日"
+    "message": "8月7日"
   },
   "special-offer-head": {
     "message": "$addon$の互換性を維持するのに役立ちます",
@@ -1689,7 +1692,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{P1}このバージョンのQuickFoldersには、Thunderbird102に固有の複数の修正が含まれています。{P2}{L1}フォルダツリーの非効率的なコードが原因で、Thunderbird102の速度に根本的な問題がありました。 これらはほぼ解決されました。[issue283]{L2}{L1} QuickFoldersカテゴリが再び正しく復元されるようになりました。Thunderbirdをシャットダウンするときに、メールウィンドウが1つだけ開いていることを確認してください。 [issue 279]{L2}{L1}フォルダツリーのカスタムアイコンを修正しました。{L2}{L1}最近のフォルダメニューを修正しました。{L2}{L1}無効なタブを削除するためのルーチンを修正しました{L2}"
+    "message": "{P1}このバージョンのQuickFoldersは、Thunderbird102に固有の{boldStart}重大な問題{boldEnd}を修正します。{P2}{L1}フォルダツリーの非効率的なコードが原因で、Thunderbird102の速度に根本的な問題がありました。 これらはほぼ解決されました。[issue283]{L2}{L1} QuickFoldersカテゴリが再び正しく復元されるようになりました。Thunderbirdをシャットダウンするときに、メールウィンドウが1つだけ開いていることを確認してください。 [issue 279]{L2}{L1}フォルダツリーのカスタムアイコンを修正しました。{L2}{L1}最近のフォルダメニューを修正しました。{L2}{L1}無効なタブを削除するためのルーチンを修正しました{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

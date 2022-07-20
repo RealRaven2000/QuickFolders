@@ -1696,8 +1696,11 @@
       }
     }
   },
+  "special-offer-upgrade-condition": {
+    "message": "Quando esegui l'upgrade da Standard, ricevi un anno intero di licenza dalla data di acquisto, indipendentemente dalla data di scadenza della tua licenza precedente."
+  },
   "special-offer-expiry": {
-    "message": "1 luglio"
+    "message": "7 agosto"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
@@ -1803,7 +1806,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{P1}Questa versione di QuickFolders contiene diverse correzioni specifiche per Thunderbird 102. {P2} {L1}Si sono verificati problemi fondamentali con la velocità in Thunderbird 102 causati da codice inefficiente nell'albero delle cartelle. Questi sono ora per lo più risolti - vedi [issue 283] {L2} {L1}Le categorie QuickFolders ora sono state ripristinate correttamente di nuovo, assicurati di avere una sola finestra di posta aperta quando spegni Thunderbird. Vedi [issue 279]{L2} {L1}Risolte le icone personalizzate nell'albero delle cartelle.{L2} {L1}Risolti i menu delle cartelle recenti.{L2}{L1}Routine riparata per la rimozione delle schede non valide{L2}"
+    "message": "{P1}Questa versione di QuickFolders risolve {boldStart}problemi significativi{boldEnd} specifici di Thunderbird 102. {P2} {L1}Si sono verificati problemi fondamentali con la velocità in Thunderbird 102 causati da codice inefficiente nell'albero delle cartelle. Questi sono ora per lo più risolti - vedi [issue 283] {L2} {L1}Le categorie QuickFolders ora sono state ripristinate correttamente di nuovo, assicurati di avere una sola finestra di posta aperta quando spegni Thunderbird. Vedi [issue 279]{L2} {L1}Risolte le icone personalizzate nell'albero delle cartelle.{L2} {L1}Risolti i menu delle cartelle recenti.{L2}{L1}Routine riparata per la rimozione delle schede non valide{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

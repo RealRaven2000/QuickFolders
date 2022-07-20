@@ -1758,6 +1758,9 @@
   "whats-new-intro": {
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
+  "whats-new-list": {
+    "message": "{L1}Ta različica QuickFolders lahko popravi neveljavne zavihke v Thunderbird 102, če ste zagnali prejšnjo različico (5.10.2) v Thunderbird 91. Te neveljavne zavihke lahko povzroči nadgradnja starejših poštnih profilov na Thunderbird 102; za podrobne informacije glejte [issue 281].{L2} {L1}Če imate še vedno težave z neveljavnimi zavihki QuickFolder-Tabs, mi prosim pošljite e-pošto prek zavihka za podporo v nastavitvah QuickFolders in pomagal vam jih bom obnoviti.{L2}{hr}{L1}V Thunderbird 102 je nekaj težav s hitrostjo, na katerih trenutno delam, glejte [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Dobrodošli v $addonName$",

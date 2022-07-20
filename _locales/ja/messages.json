@@ -1680,6 +1680,9 @@
   "whats-new-intro": {
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
+  "whats-new-list": {
+    "message": "{L1}このバージョンのQuickFoldersは、Thunderbird 91で以前のバージョン（5.10.2）を実行している場合、Thunderbird 102の無効なタブを修正できます。これらの無効なタブは、古いメールプロファイルをThunderbird102にアップグレードすることで発生する可能性があります。 詳細については、[issue 281]を参照してください。{L2}{L1}それでも無効なQuickFolder-Tabsで問題が発生する場合は、QuickFolders設定のサポートタブからメールを送ってください。 {L2}{hr}{L1}現在取り組んでいるThunderbird102の速度に問題があります。[issue 283]{L2}を参照してください。"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "$addonName$ へようこそ",

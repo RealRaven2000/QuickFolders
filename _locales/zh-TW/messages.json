@@ -931,7 +931,7 @@
     "message": "改變標籤的順序"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "尋找孤立標籤"
+    "message": "刪除無效標籤"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "顯示現在資料夾的工具"
@@ -1413,7 +1413,7 @@
     "message": "插入分隔符號"
   },
   "qfInvalidTabCount": {
-    "message": "發現 {0} 分頁有無效的資料夾。你可以使用「發現失效分頁」指令來移除它們。"
+    "message": "找到 {0} 個具有無效文件夾目標的標籤。 您可以使用 QuickFolders 工具菜單中的“{1}”命令刪除這些文件。"
   },
   "qfMarkAllRead": {
     "message": "將資料夾標記為已讀"
@@ -1509,7 +1509,12 @@
     "message": "刪除這個標籤？"
   },
   "qfThisTabIsInvalid": {
-    "message": "：這是一個指向不正確資料夾的標籤："
+    "message": "$tabName$ 是具有無效文件夾目標的選項卡。 此問題可能是由刪除的文件夾或修改的服務器詳細信息引起的。",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "這將移除那些指向不正確資料夾的標籤。\n 這有時候發生在QuickFolders沒有注意到一個已經刪除或移動的資料夾。"

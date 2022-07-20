@@ -934,7 +934,7 @@
     "message": "M"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Trova le schede orfane"
+    "message": "Rimuovi le schede non valide"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Visualizza gli strumenti della scheda corrente"
@@ -1449,7 +1449,7 @@
     "message": "Inserisci separatore"
   },
   "qfInvalidTabCount": {
-    "message": "Trovate {0} schede che hanno una cartella di destinazione non valida. È possibile rimuoverle usando il comando 'Trova le schede orfane'."
+    "message": "Trovate {0} schede con una destinazione di cartella non valida. Puoi rimuoverli utilizzando il comando '{1}' dal menu degli strumenti di QuickFolders."
   },
   "qfMarkAllRead": {
     "message": "Segna la cartella come già letta"
@@ -1551,7 +1551,12 @@
     "message": "Eliminare questa scheda?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Questa è una scheda che fa riferimento a una cartella non valida."
+    "message": "$tabName$ è una scheda con destinazione cartella non valida. Questo problema può essere causato da una cartella rimossa o da dettagli del server modificati.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Questa operazione rimuove le schede che non corrispondono a cartelle valide.\nQuesto può accadere se viene eliminata o spostata una cartella senza che QuickFolders ne sia informato."

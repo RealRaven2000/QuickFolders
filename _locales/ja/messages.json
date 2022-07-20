@@ -883,7 +883,7 @@
     "message": "ブックマークを並び替える"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "孤立したタブを見つける"
+    "message": "無効なタブを削除する"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "フォルダツールを表示"
@@ -1346,6 +1346,9 @@
   "qfInsertSeparator": {
     "message": "区切りを挿入"
   },
+  "qfInvalidTabCount": {
+    "message": "無効なフォルダの宛先を持つ{0}タブが見つかりました。 これらは、QuickFoldersツールメニューの「{1}」コマンドを使用して削除できます。"
+  },
   "qfMarkAllRead": {
     "message": "フォルダを既読にする"
   },
@@ -1434,7 +1437,12 @@
     "message": "このタブを削除しますか？"
   },
   "qfThisTabIsInvalid": {
-    "message": ": このタブは不正なフォルダを指しています:"
+    "message": "$tabName$ は、フォルダの宛先が無効なタブです。 この問題は、フォルダの削除またはサーバーの詳細の変更が原因である可能性があります。",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "フォルダが正しく割り当てられていないタブを削除します。\nこれは、QuickFolders に気付かれることなくフォルダが削除されたり移動されたりした場合に起こることがあります。"

@@ -269,7 +269,9 @@ END LICENSE BLOCK */
   
   5.11 QuickFolders Pro - WIP
     ## [issue 283] Slowdown of Thunderbird 102
-    ## [issue 279] Current category is not remembered / selected on startup. fixed for most cases.
+    ## [issue 279] Current category is not remembered / selected on startup. Fixed for most cases.
+    ## [issue 280] Fix folder tree icons in Tb102
+    ## [issue 287] Removal of invalid (orphaned) tabs from menu not successful
     ## fix icon distances on popup menus (Tb102)
     ## removed Postbox code (tabOwners)
     

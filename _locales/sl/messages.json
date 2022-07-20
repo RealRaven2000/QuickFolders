@@ -898,7 +898,7 @@
     "message": "S"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Najdi opuščene zavihke"
+    "message": "Odstranite neveljavne zavihke"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "a"
@@ -1415,6 +1415,9 @@
   "qfInsertSeparator": {
     "message": "Vstavi ločilo"
   },
+  "qfInvalidTabCount": {
+    "message": "Najdenih {0} zavihkov z neveljavno destinacijo mape. Te lahko odstranite z ukazom '{1}' v meniju orodij QuickFolders."
+  },
   "qfMarkAllRead": {
     "message": "Označi mapo kot prebrano"
   },
@@ -1515,7 +1518,12 @@
     "message": "Izbriši to mapo?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": To je zavihek, ki kaže na neveljavno mapo:"
+    "message": "$tabName$ je zavihek z neveljavno destinacijo mape. To težavo lahko povzroči odstranjena mapa ali spremenjene podrobnosti strežnika.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "To bo odstranilo zavihke, ki nimajo dodeljenih veljavnih map.\nTo se včasih zgodi, če je mapa izbrisana ali premaknjena brez obveščanja razširitve QuickFolders."

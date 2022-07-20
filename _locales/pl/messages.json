@@ -931,7 +931,7 @@
     "message": "K"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Znajdź nieprzypisane zakładki"
+    "message": "Usuń nieprawidłowe karty"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "Z"
@@ -1446,7 +1446,7 @@
     "message": "Wstaw separator"
   },
   "qfInvalidTabCount": {
-    "message": "Znaleziono {0} kart, które mają nieprawidłowy folder docelowy. Możesz je usunąć za pomocą polecenia „Znajdź osierocone karty”."
+    "message": "Znaleziono {0} karty, które mają nieprawidłowe miejsce docelowe folderu. Możesz je usunąć za pomocą polecenia „{1}” z menu narzędzi QuickFolders."
   },
   "qfMarkAllRead": {
     "message": "Oznacz folder jako przeczytany"
@@ -1554,7 +1554,12 @@
     "message": "Usunąć tę zakładkę?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Ta zakładka odnosi się do niewłaściwego folderu:"
+    "message": "$tabName$ to karta z nieprawidłowym folderem docelowym. Przyczyną tego problemu może być usunięty folder lub zmodyfikowane dane serwera.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Spowoduje to usunięcie kart, które nie mają przypisanych właściwych folderów.\nDzieje się tak czasami, jeśli folder zostanie usunięty lub przeniesiony bez powiadomienia QuickFolders."

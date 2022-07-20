@@ -934,7 +934,7 @@
     "message": "Ä"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Sök efter övergivna flikar"
+    "message": "Ta bort ogiltiga flikar"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "ö"
@@ -1464,7 +1464,7 @@
     "message": "Infoga avgränsare"
   },
   "qfInvalidTabCount": {
-    "message": "Hittade {0} flikar som har en ogiltig mappdestination. Du kan ta bort dessa med kommandot 'Hitta föräldralösa flikar'."
+    "message": "Hittade {0} flikar som har en ogiltig mappdestination. Du kan ta bort dessa med kommandot '{1}' från QuickFolders verktygsmeny."
   },
   "qfMarkAllRead": {
     "message": "Märk mappen som läst"
@@ -1572,7 +1572,12 @@
     "message": "Ta bort denna flik?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Det här är en flik som hänvisar till en ogiltig mapp:"
+    "message": "$tabName$ är en flik med ogiltig mappdestination. Det här problemet kan orsakas av en borttagen mapp eller modifierade serverdetaljer.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Det här kommer att ta bort de flikar som inte har några giltiga mappar tilldelade sig.\nDet här kan hända om en mapp tas bort eller flyttas utan att QuickFolders meddelas om ändringen."

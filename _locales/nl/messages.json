@@ -919,7 +919,7 @@
     "message": "w"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Zwevende tabbladen zoeken"
+    "message": "Ongeldige tabbladen verwijderen"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "t"
@@ -1452,7 +1452,7 @@
     "message": "Scheidingsteken invoegen"
   },
   "qfInvalidTabCount": {
-    "message": "{0} tabbladen gevonden zonder geldige doelmap. U kunt deze verwijderen met de opdracht ‘Zwevende tabbladen zoeken’."
+    "message": "{0} Tabbladen gevonden met een ongeldige mapbestemming. U kunt deze verwijderen met de opdracht '{1}' in het QuickFolders-hulpprogrammamenu."
   },
   "qfMarkAllRead": {
     "message": "Map als gelezen markeren"
@@ -1563,7 +1563,12 @@
     "message": "Dit tabblad verwijderen?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Dit tabblad verwijst naar een ongeldige map."
+    "message": "$tabName$ is een tabblad met een ongeldige mapbestemming. Dit probleem kan worden veroorzaakt door een verwijderde map of gewijzigde servergegevens.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Dit verwijdert de tabbladen waaraan geen geldige mappen zijn toegewezen.\nDit gebeurt soms als een map wordt verwijderd of verplaatst zonder dat QuickFolders hiervan op de hoogte wordt gesteld."

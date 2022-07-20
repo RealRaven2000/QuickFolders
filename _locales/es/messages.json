@@ -934,7 +934,7 @@
     "message": "Cambiar el orden de las pestañas"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Buscar pestañas huérfanas"
+    "message": "Eliminar pestañas no válidas"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "h"
@@ -1458,7 +1458,7 @@
     "message": "Insertar separador"
   },
   "qfInvalidTabCount": {
-    "message": "Se encontraron {0} pestañas que tienen un destino de carpeta no válido. Puede eliminarlos con el comando 'Buscar pestañas huérfanas'."
+    "message": "Se encontraron {0} pestañas que tienen un destino de carpeta no válido. Puede eliminarlos con el comando '{1}' del menú de herramientas de QuickFolders."
   },
   "qfMarkAllRead": {
     "message": "Marcar carpeta como leída"
@@ -1557,7 +1557,12 @@
     "message": "¿Borrar esta pestaña?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Esto es una pestaña que apunta a una carpeta no válida:"
+    "message": "$tabName$ es una pestaña con un destino de carpeta no válido. Este problema puede deberse a una carpeta eliminada o detalles del servidor modificados.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Esto eliminará las Pestañas que no tienen carpetas válidas asignadas.\nEsto ocurre a veces si una carpeta se borra o mueve sin que QuickFolders sea notificado."

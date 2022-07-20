@@ -954,7 +954,7 @@
     "message": "C"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Find orphaned Tabs"
+    "message": "Remove invalid Tabs"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "T"
@@ -1499,7 +1499,7 @@
     "message": "Insert Separator"
   },
   "qfInvalidTabCount": {
-    "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the 'Find orphaned Tabs' command."
+    "message": "Found {0} Tabs that have an invalid folder destination. You can remove these using the '{1}' command from QuickFolders tools menu."
   },
   "qfMarkAllRead": {
     "message": "Mark folder as Read"
@@ -1613,7 +1613,12 @@
     "message": "Delete this Tab?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": This is a tab that points to an invalid folder."
+    "message": "$tabName$ is a tab with invalid folder destination. This problem can be caused by a removed folder or modified server details.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }    
   },
   "qfTidyDeadFolders": {
     "message": "This will remove the Tabs that have no valid folders assigned.\nThis sometimes happens if a folder is deleted or moved without QuickFolders being notified."

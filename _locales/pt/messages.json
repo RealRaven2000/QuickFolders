@@ -925,7 +925,7 @@
     "message": "M"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Encontrar abas órfãs"
+    "message": "Remover guias inválidas"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "F"
@@ -1443,7 +1443,7 @@
     "message": "Inserir separador"
   },
   "qfInvalidTabCount": {
-    "message": "Encontradas {0} abas com atreladas a pastas inválidas. Você pode removê-las usando co comando 'Procurar abas órfãs'."
+    "message": "Encontrado {0} guias que têm um destino de pasta inválido. Você pode removê-los usando o comando '{1}' do menu de ferramentas do QuickFolders."
   },
   "qfMarkAllRead": {
     "message": "Marcar pasta como lida"
@@ -1536,7 +1536,12 @@
     "message": "Apagar esta aba?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Esta é uma aba que aponta para uma pasta inválida:"
+    "message": "$tabName$ é uma guia com destino de pasta inválido. Esse problema pode ser causado por uma pasta removida ou detalhes do servidor modificados.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Isto irá remover as abas que não têm pastas válidas atribuídas.\nÀs vezes acontece quando uma pasta é excluída ou movida sem que o QuickFolders seja notificado."

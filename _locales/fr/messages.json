@@ -928,7 +928,7 @@
     "message": "M"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Trouver les onglets orphelins"
+    "message": "Supprimer les onglets invalides"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "O"
@@ -1443,7 +1443,7 @@
     "message": "Insérer un séparateur"
   },
   "qfInvalidTabCount": {
-    "message": "{0} onglets trouvés ayant une destination de dossier non valide. Vous pouvez les supprimer à l'aide de la commande \"Rechercher des onglets orphelins\"."
+    "message": "{0} onglets trouvés avec une destination de dossier non valide. Vous pouvez les supprimer à l'aide de la commande '{1}' du menu des outils QuickFolders."
   },
   "qfMarkAllRead": {
     "message": "Marquer le dossier comme lu"
@@ -1545,7 +1545,12 @@
     "message": "Supprimer cet onglet ?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Ceci est un onglet pointant vers un dossier invalide :"
+    "message": "$tabName$ est un onglet avec une destination de dossier non valide. Ce problème peut être causé par un dossier supprimé ou des détails de serveur modifiés.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Cela supprimera les onglets qui ne sont associés à aucun dossier valide.\nCela arrive parfois lorsqu'un dossier est supprimé ou déplacé sans que QuickFolders ne s'en aperçoive."

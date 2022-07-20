@@ -927,7 +927,7 @@
     "message": "Canvia l'ordre dels preferits"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Cerca Pestanyes orfes"
+    "message": "Elimina les pestanyes no vàlides"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Mostra Eines de la Carpeta Actual"
@@ -1412,7 +1412,7 @@
     "message": "Insereix el separador"
   },
   "qfInvalidTabCount": {
-    "message": "S'han trobat {0} pestanyes que tenen una destinació de carpeta no vàlida. Podeu eliminar-los mitjançant l'ordre \"Troba pestanyes òrfenes\"."
+    "message": "S'han trobat {0} pestanyes que tenen una destinació de carpeta no vàlida. Podeu eliminar-los mitjançant l'ordre '{1}' del menú d'eines de QuickFolders."
   },
   "qfMarkAllRead": {
     "message": "Marca la Carpeta com a LLegida"
@@ -1505,7 +1505,12 @@
     "message": "Voleu suprimir aquesta pestanya?"
   },
   "qfThisTabIsInvalid": {
-    "message": "Aquesta és una pestanya que apunta a una carpeta no vàlida:"
+    "message": "$tabName$ és una pestanya amb una destinació de carpeta no vàlida. Aquest problema pot ser causat per una carpeta eliminada o per detalls modificats del servidor.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Això eliminarà les pestanyes que no tenen carpetes vàlides assignades.\nAixò de vegades passa si una carpeta s'elimina o es mou sense que QuickFolders no es notifique."

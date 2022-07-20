@@ -845,7 +845,7 @@
     "message": "m"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Törölt fülek keresése"
+    "message": "Távolítsa el az érvénytelen lapokat"
   },
   "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
     "message": "k"
@@ -1296,6 +1296,9 @@
   "qfInsertSeparator": {
     "message": "Helyezze be az elválasztót"
   },
+  "qfInvalidTabCount": {
+    "message": "{0} olyan lapot találtunk, amelyeknek érvénytelen a mappája. Ezeket a QuickFolders eszközök menüjének „{1}” parancsával távolíthatja el."
+  },
   "qfMarkAllRead": {
     "message": "Mappa olvasottnak jelölése"
   },
@@ -1372,7 +1375,12 @@
     "message": "Törölje a fület?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Ez a fül egy érvénytelen mappára mutat:"
+    "message": "A(z) $tabName$ egy olyan lap, amelynek helye érvénytelen. Ezt a problémát egy eltávolított mappa vagy a kiszolgáló módosított adatai okozhatják.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Ez eltávolítja a füleket, amelyek nincsenek érvényes mappához rendelve.\nEz néha akkor történik, ha egy mappát törölnek vagy mozgatnak a QuickFolders értesítése nélkül."

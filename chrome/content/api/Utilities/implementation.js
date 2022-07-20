@@ -268,9 +268,9 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
                 question = util.getBundleString("qf.prompt.loadFolders.confirm");
                 if (invalidCount) {
-                  let wrn =
-                    util.getBundleString("qfInvalidTabCount");
-                  question = wrn.replace("{0}", invalidCount) + "\n" + question;
+                  let wrn = util.getBundleString("qfInvalidTabCount"),
+                      deleteInvalid = util.getBundleString("qf.menuitem.quickfolders.deleteDeadTabs");
+                  question = wrn.replace("{0}", invalidCount).replace("{1}", deleteInvalid) + "\n" + question;
                 }
                 if (Services.prompt.confirm(win, "QuickFolders", question)) {
                   // store

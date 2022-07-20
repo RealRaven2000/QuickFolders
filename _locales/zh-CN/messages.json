@@ -926,7 +926,7 @@
     "message": "排序(C)…"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "检查孤立的导航卡(T)"
+    "message": "删除无效标签(T)"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "显示文件夹工具栏(D)"
@@ -1404,6 +1404,9 @@
   "qfInsertSeparator": {
     "message": "插入分隔符"
   },
+  "qfInvalidTabCount": {
+    "message": "找到 {0} 个具有无效文件夹目标的标签。 您可以使用 QuickFolders 工具菜单中的“{1}”命令删除这些文件。"
+  },
   "qfMarkAllRead": {
     "message": "标记文件夹为已读"
   },
@@ -1498,7 +1501,12 @@
     "message": "删除该导航卡？"
   },
   "qfThisTabIsInvalid": {
-    "message": ": 这是一个指向无效文件夹的导航卡:"
+    "message": "$tabName$ 是具有无效文件夹目标的选项卡。 此问题可能是由删除的文件夹或修改的服务器详细信息引起的。",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "该操作将移除没有文件夹关联的无效导航卡。\n当文件夹被删除或移动而组件没有收到通知时可能会发生这种情况。"

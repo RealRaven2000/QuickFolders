@@ -655,7 +655,7 @@
     "message": "D"
   },
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Tìm các thẻ mồ côi"
+    "message": "Xóa các tab không hợp lệ"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Hiển thị các công cụ cho thư mục hiện tại"
@@ -1043,6 +1043,9 @@
   "qfInsertSeparator": {
     "message": "Thêm dấu phân cách"
   },
+  "qfInvalidTabCount": {
+    "message": "Đã tìm thấy {0} các tab có đích thư mục không hợp lệ. Bạn có thể xóa chúng bằng lệnh '{1}' từ menu công cụ QuickFolders."
+  },
   "qfMarkAllRead": {
     "message": "Đánh dấu thư mục đã đọc"
   },
@@ -1122,7 +1125,12 @@
     "message": "Bạn muốn xóa thẻ này chứ?"
   },
   "qfThisTabIsInvalid": {
-    "message": ": Đây là thẻ chỉ tới một thư mục hợp lệ:"
+    "message": "$tabName$ là một tab có thư mục đích không hợp lệ. Sự cố này có thể do thư mục bị xóa hoặc chi tiết máy chủ đã sửa đổi.",
+    "placeholders": {
+      "tabName": {
+        "content": "$1"
+      }
+    }
   },
   "qfTidyDeadFolders": {
     "message": "Cái này sẽ xóa bỏ những thẻ có thư mục không hợp lệ.\nĐôi khi điều này xảy ra do một thư mục nào đó đã bị xóa hoặc di chuyển mà QuickFolders không được thông báo."

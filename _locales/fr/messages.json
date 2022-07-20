@@ -1791,6 +1791,9 @@
   "whats-new-intro": {
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
+  "whats-new-list": {
+    "message": "{L1}Cette version de QuickFolders est capable de corriger les onglets invalides dans Thunderbird 102, à condition que vous ayez exécuté la version précédente (5.10.2) dans Thunderbird 91. Ces onglets invalides peuvent être causés par la mise à niveau d'anciens profils de messagerie vers Thunderbird 102 ; pour des informations détaillées, voir [issue 281].{L2} {L1}Si vous rencontrez toujours des problèmes avec des onglets QuickFolder invalides, veuillez m'envoyer un e-mail via l'onglet d'assistance sur les paramètres QuickFolders et je pourrai vous aider à les restaurer.{L2}{hr}{L1}Il y a quelques problèmes de vitesse dans Thunderbird 102 sur lesquels je travaille actuellement, voir [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenue sur $addonName$",

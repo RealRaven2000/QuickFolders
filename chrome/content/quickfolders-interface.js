@@ -592,8 +592,9 @@ QuickFolders.Interface = {
 
 			this.updateQuickFoldersLabel();
 
-			if (rebuildCategories || null==this.CategoryMenu)
+			if (rebuildCategories || null==this.CategoryMenu) {
 				this.updateCategories();
+      }
 		}
 
 
@@ -959,6 +960,16 @@ QuickFolders.Interface = {
       }
       else {
         util.logDebug("No Categories defined, hiding Categories box.");
+        this.currentActiveCategories = QuickFolders.FolderCategory.ALL; // remember "all"
+        try {
+        let tabmail = document.getElementById("tabmail"),
+            idx = QuickFolders.tabContainer.selectedIndex || 0;
+          util.getTabInfoByIndex(tabmail, idx).QuickFoldersCategory = QuickFolders.FolderCategory.ALL;
+          util.logDebug("Set category for tab [${idx}] to ${this.currentActiveCategories}");
+        }
+        catch (ex) {
+          util.logException("updateCategories() Failed trying to default category to all", ex);
+        }
       }
     }
     catch (ex) {
@@ -1011,7 +1022,7 @@ QuickFolders.Interface = {
 		let noCheckbox = {value: false};
 		// button = prompts.confirmEx(null, "Title of this Dialog", "What do you want to do?",
 													 // flags, "button 0", "Button 1", "button 2", "check message", let check = {value: false});
-		let text = folderEntry.name + this.getUIstring("qfThisTabIsInvalid") + "\n"
+		let text = this.getUIstring("qfThisTabIsInvalid",[folderEntry.name]) + "\n"
 									+ folderEntry.uri + "\n"
 									+ this.getUIstring("qfTabDeletePrompt"),
 				checkText = check ?
@@ -1098,7 +1109,9 @@ QuickFolders.Interface = {
 						if (check.value) isContinue = true;
 					  countDeleted++;
 						// update UI
-						QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // this.updateFolders(true, false);
+            // this.updateFolders(true, false);
+            QuickFolders.Interface.updateFolders(true, false);
+						// QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" });  // wrong this loads it from prefs
 						i--; // array is spliced, so we need to go back one!
 					  break;
 					case 0:  // not deleted
@@ -1336,13 +1349,24 @@ QuickFolders.Interface = {
     for (let i=0; i<tabInfo.length; i++) {
       let info = tabInfo[i];
       let type = info.mode.type;
+      
       if (info == whichInfo) {
         if (cmd == "remove") {
           continue; // skip this one, the tab is being deleted.
         }
         info.QuickFoldersCategory = QuickFolders.Interface.currentActiveCategories;
       }
+      
       if (type=="folder" || type=="message") {
+        let cats = info.QuickFoldersCategory.split("|"),
+            validCats = cats.filter(c => QuickFolders.FolderCategory.isValidCategory(c)),
+            newCatString = validCats.join("|");
+            
+        if (info.QuickFoldersCategory != newCatString) {
+          QuickFolders.Util.logDebugOptional("categories", `correcting category for tab ${info.title}\n` + 
+            `from ${info.QuickFoldersCategory} to ${newCatString}`)
+          info.QuickFoldersCategory = newCatString;
+        }
         let entry = 
           {
             mode: type,
@@ -1415,6 +1439,16 @@ QuickFolders.Interface = {
 					prefs = QuickFolders.Preferences,
 					isShift = (event && event.shiftKey) || false;
     util.logDebugOptional("categories", "selectCategory(" + categoryName + ", " + rebuild + ")");
+    
+    let catA = categoryName.split("|"),
+    // remove invalid categories that may have been deleted in the meantime:
+        catR = catA.filter(c => QuickFolders.FolderCategory.isValidCategory(c));
+    if (!catR.length) {
+      categoryName = QuickFolders.FolderCategory.ALL;
+    }
+    else if (catA.length != catR.length) {
+      categoryName = catR.join("|");
+    }
     
 		// early exit. category is selected already! SPEED!
     if (QI.currentActiveCategories == categoryName)
@@ -5486,12 +5520,13 @@ QuickFolders.Interface = {
 			if (!gFolderTreeView) return;
 
       // used to be: GetFirstSelectedMsgFolder() - but doesn't work in Sm
-      if (forceButton)
+      if (forceButton) {
         folder = forceButton.folder;
-      else if (forceFolder)
+      } else if (forceFolder) {
         folder = forceFolder;
-      else
+      } else {
         folder = QI.getCurrentTabMailFolder();
+      }
 
       util.logDebugOptional("interface", "onTabSelected("
 			  + (forceButton || "") + ")\n folder = "

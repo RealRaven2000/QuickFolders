@@ -1782,6 +1782,9 @@
   "whats-new-intro": {
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
+  "whats-new-list": {
+    "message": "{L1}Esta versão do QuickFolders é capaz de corrigir guias inválidas no Thunderbird 102, desde que você tenha executado a versão anterior (5.10.2) no Thunderbird 91. Essas guias inválidas podem ser causadas pela atualização de perfis de e-mail mais antigos para o Thunderbird 102; para obter informações detalhadas, consulte [issue 281].{L2} {L1}Se você ainda tiver problemas com guias QuickFolder inválidas, envie-me um e-mail pela guia de suporte nas configurações do QuickFolders e poderei ajudá-lo a restaurá-los.{L2}{hr}{L1}Há alguns problemas de velocidade no Thunderbird 102 em que estou trabalhando no momento, consulte [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bem-vindo a $addonName$",

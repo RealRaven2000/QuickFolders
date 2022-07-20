@@ -1570,6 +1570,9 @@
   "whats-new-intro": {
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
+  "whats-new-list": {
+    "message": "{L1}A QuickFolders ezen verziója képes kijavítani az érvénytelen lapokat a Thunderbird 102-ben, feltéve, hogy az előző verziót (5.10.2) a Thunderbird 91-ben futtatta. Ezeket az érvénytelen lapokat a régebbi levelezési profilok Thunderbird 102-re való frissítése okozhatja; részletes információért lásd a [issue 281].{L2} {L1}Ha továbbra is problémái vannak az érvénytelen QuickFolder-Tab-okkal, kérjük, küldjön egy e-mailt a QuickFolders beállításainak támogatási lapján, és tudok segíteni a visszaállításukban.{L2}{hr}{L1}Van néhány sebességprobléma a Thunderbird 102-ben, amelyeken jelenleg dolgozom, lásd: [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Üdvözöljük a $addonName$ oldalon",

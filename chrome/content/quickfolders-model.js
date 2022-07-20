@@ -498,14 +498,17 @@ QuickFolders.Model = {
     }
     
     function reconstructUri(e) {
-      let ac = MailServices.accounts.getAccount(e.account);
+      let ac = MailServices.accounts.getAccount(e.account), acType = "N/A";
       if (ac && ac.incomingServer) {
-        let oldUri = e.uri.replace("imap://", "http://"); // non-existent imap URIs throw!!
-        let tempUri = Services.io.newURI(oldUri); // generate a fresh URI to retrieve path portion
-        // or oldUri.filePath - not sure whether query params make sense or are allowed for  folder URIS
-        return ac.incomingServer.serverURI + tempUri.pathQueryRef; 
+        acType = ac.incomingServer.type || "unknown";
+        if (acType!="im") { // do not reconnect to chat accounts - these are not supported.
+          let oldUri = e.uri.replace("imap://", "http://"); // non-existent imap URIs throw!!
+          let tempUri = Services.io.newURI(oldUri); // generate a fresh URI to retrieve path portion
+          // or oldUri.filePath - not sure whether query params make sense or are allowed for  folder URIS
+          return ac.incomingServer.serverURI + tempUri.pathQueryRef; 
+        }
       }
-      throw new Error(`Failed to reconstruct URL for ${e.uri} of account ${e.account}`);
+      throw new Error(`Failed to reconstruct URL for ${e.uri} of account ${e.account} - account type ${acType}`);
     }
 
     for (let i = 0; i < entries.length; i++) {

@@ -1800,6 +1800,9 @@
   "whats-new-intro": {
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
+  "whats-new-list": {
+    "message": "{L1}Ta wersja QuickFolders jest w stanie naprawić nieprawidłowe zakładki w Thunderbirdzie 102, pod warunkiem, że poprzednia wersja (5.10.2) została uruchomiona w Thunderbirdzie 91. Te nieprawidłowe zakładki mogą być spowodowane aktualizacją starszych profili poczty do Thunderbird 102; aby uzyskać szczegółowe informacje, zobacz [issue 281].{L2} {L1}Jeśli nadal masz problemy z nieprawidłowymi zakładkami QuickFolder-Tab, wyślij mi wiadomość e-mail za pośrednictwem zakładki pomocy w ustawieniach QuickFolder, a pomogę Ci je odzyskać.{L2}{hr}{L1}Wystąpiły pewne problemy z szybkością w Thunderbird 102, nad którymi aktualnie pracuję, zobacz [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Witamy w $addonName$",

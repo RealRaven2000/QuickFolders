@@ -1747,6 +1747,9 @@
   "whats-new-intro": {
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
+  "whats-new-list": {
+    "message": "{L1}Aquesta versió de QuickFolders és capaç de solucionar pestanyes no vàlides a Thunderbird 102, sempre que hàgiu executat la versió anterior (5.10.2) a Thunderbird 91. Aquestes pestanyes no vàlides es poden produir si actualitzeu perfils de correu més antics a Thunderbird 102; per obtenir informació detallada, consulteu [issue 281].{L2} {L1}Si encara teniu problemes amb les pestanyes QuickFolder-Tabs no vàlides, envieu-me un correu electrònic mitjançant la pestanya d'assistència a la configuració de QuickFolders i podré ajudar-vos a restaurar-les.{L2}{hr}{L1}Hi ha alguns problemes de velocitat a Thunderbird 102 en els quals estic treballant actualment, vegeu [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Benvingut a $addonName$",

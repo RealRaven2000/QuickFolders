@@ -1818,6 +1818,9 @@
   "whats-new-intro": {
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
+  "whats-new-list": {
+    "message": "{L1}Denna version av QuickFolders kan fixa ogiltiga flikar i Thunderbird 102, förutsatt att du har kört den tidigare versionen (5.10.2) i Thunderbird 91. Dessa ogiltiga flikar kan orsakas av uppgradering av äldre e-postprofiler till Thunderbird 102; för detaljerad information se [issue 281].{L2} {L1}Om du fortfarande har problem med ogiltiga QuickFolder-Tabs, skicka mig ett e-postmeddelande via supportfliken i QuickFolders Settings så kan jag hjälpa dig att återställa dem.{L2}{hr}{L1}Det finns några problem med hastigheten i Thunderbird 102 som jag för närvarande arbetar med, se [issue 283]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Välkommen till $addonName$",

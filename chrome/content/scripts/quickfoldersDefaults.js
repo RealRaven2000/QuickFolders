@@ -66,7 +66,7 @@ pref("extensions.quickfolders.tooltips.serverName", true);
 pref("extensions.quickfolders.tooltips.virtualFlag", true);
 pref("extensions.quickfolders.tooltips.msgFolderFlags", false);
 pref("extensions.quickfolders.autoValidateFolders", true); // check if folder exists when clicking a tab
-pref("extensions.quickfolders.treeIconsDelay", 7500); // repair icons [Bug 26566]
+pref("extensions.quickfolders.treeIconsDelay", 7500); // repair icons [Bug 26566] - deprecated from TB102
 // Current Folder Toolbar
 pref("extensions.quickfolders.showCurrentFolderToolbar", true);
 pref("extensions.quickfolders.showCurrentFolderToolbar.messageWindow", false);

@@ -67,6 +67,7 @@ async function updateActions(addonName) {
     hide('new-licensing'); // hide box that explains new licensing system..
     
     if (isExpired) { // License Renewal
+      hide('purchaseHeader');
       hide('extendLicenseListItem');
       hide('extend');
       show('renewLicenseListItem');

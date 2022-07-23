@@ -469,16 +469,19 @@ var QuickFolders = {
       let folderTree = QuickFolders.mailFolderTree;
       // add an onSelect event!
       folderTree.addEventListener("select", QuickFolders.FolderTreeSelect, false);
-			// [Bug 26566] - Folder Tree doesn't show icons
-      let time = prefs.getIntPref('treeIconsDelay');
-      util.logDebug("Repair Icons for "  + util.Application  + " " + util.ApplicationVersion + " in " + time/1000 + " sec...");
-      win.setTimeout(
-        function () {
-          util.logDebug("Repair Icons:");
-          QI.repairTreeIcons(true); // silently
-        }, time
-      );
-			
+      
+      if (QuickFolders.Util.versionSmaller(QuickFolders.Util.Appversion, "102")) {
+        // [Bug 26566] - Folder Tree doesn't show icons
+        let time = prefs.getIntPref('treeIconsDelay');
+        util.logDebug("Repair Icons for "  + util.Application  + " " + util.ApplicationVersion + " in " + time/1000 + " sec...");
+        win.setTimeout(
+          function () {
+            util.logDebug("Repair Icons:");
+            QI.repairTreeIcons(true); // silently
+          }, time
+        );
+      }
+
       util.logDebug("Adding Search Input event handler...");
       let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder
       if (findFolderBox) {

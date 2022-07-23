@@ -516,12 +516,15 @@ QuickFolders.Interface = {
 
 			quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
 			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
+      if (QuickFolders.Util.licenseInfo.isExpired) {
+				quickFoldersLabel.classList.add("expired");
+      }
+      
       if (prefs.getBoolPref("hasNews")) {
 				quickFoldersLabel.classList.add("newsflash");
 				quickFoldersLabel.setAttribute("tooltiptext", util.getBundleString("update.tooltip",["QuickFolders"]));
       }
 			else if (QuickFolders.Util.licenseInfo.isExpired) {
-				quickFoldersLabel.classList.add("expired");
 				quickFoldersLabel.classList.remove("newsflash");
 				let txtExpired =
 				  util.getBundleString("qf.premium.renewLicense.tooltip").replace("{1}", QuickFolders.Util.licenseInfo.expiredDays);

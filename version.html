@@ -319,10 +319,11 @@
       <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.11 - WIP</a>
       </h4>
       <ul>
+        <h4 class="inList">Improvements</h4>
         <li>
           <p>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/283">[issue 283]</a>
-            Slowdown of Thunderbird 102 with QuickFolders
+            Fixed: Significant slowdown of Thunderbird 102 with QuickFolders
           </p>
           <p>
             There is some inefficiency in the Thunderbird code base for the folder tree
@@ -332,6 +333,7 @@
             generated at a later stage to yield some time to the User Interface.
           </p>
         </li>
+        <h4 class="inList">Bugs Fixed</h4>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/279">[issue 279]</a>
           Fixed: Thunderbird 102 - current category is not remembered / selected; in this solution 
@@ -342,19 +344,20 @@
         </li>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/280">[issue 280]</a>
-          WIP: folder tree icons do not work independently of tabs in Thunderbird 102
-          I am currently working on a permanent solution that doesn't impact on performance,
-          or a way to bypass them altogether.
+          Customized folder tree icons stopped to  work independently of QuickFolders tabs with icons.
+          Custom icons are now back!
         </li>
+        <li>
+          <a href="https://github.com/RealRaven2000/QuickFolders/issues/287">[issue 287]</a>
+          Fixed the removal of invalid (orphaned) tabs through the tool menu command "remove invalid tabs".
+          Also renamed it for clarity: this used to be called "find orphaned tabs"
+        </li>
+        <h4 class="inList">Known Issues / Work in Progress</h4>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/284">[issue 284]</a>
           WIP: Recent folders menu doesn't show or takes a very long time - Thunderbird 102
           There is some inefficent code in Thunderbird 102 at the moment, so I have started 
           to use their internal function to generate this. 
-        </li>
-        <li>
-          <a href="https://github.com/RealRaven2000/QuickFolders/issues/287">[issue 287]</a>
-          Fixed the deleting of invalid (orphaned) tabs through the tool menu command "remove invalid tabs".
         </li>
       </ul>
     </li>      

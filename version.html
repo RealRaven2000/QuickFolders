@@ -471,25 +471,24 @@
             Fixed: Significant slowdown of Thunderbird 102 with QuickFolders
           </p>
           <p>
-            There is some inefficiency in the Thunderbird code base for the folder tree
-            which can be exascerbated by QuickFolders. I have removed as many function
-            calls as I could find without impacting on functionality.
-            On startup some right-click menus have to be generated to make drag+drop, these are now 
-            generated at a later stage to yield some time to the User Interface.
+            There is some inefficiency in Thunderbird code for the folder tree
+            which can be exacerbated by QuickFolders. I have removed as many function calls as 
+            possible without impacting on functionality. On startup some context menus 
+            have to be generated for efficient drag+drop; this is now postponed to a later stage to 
+            yield some processing time to the User Interface.
           </p>
         </li>
         <h4 class="inList">Bugs Fixed</h4>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/279">[issue 279]</a>
-          Fixed: Thunderbird 102 - current category is not remembered / selected; in this solution 
-          I store the current category of each tab (folder and messages) whenever a tab is opened / moved
-          or closed. Information is only stored for one single window, so it might get confused if you open 
-          multiple windows with different categories per tab. It works reasonably for most 
-          general uses of QuickFolder categories.
-        </li>
+          Fixed: Thunderbird 102 - current category is not remembered / selected; in this 
+          solution I store the current category of each tab (folder and messages) whenever 
+          a tab is opened / moved or closed. 
+          
+          This information is only stored for the last Thunderbird  window that is closed.        </li>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/280">[issue 280]</a>
-          Customized folder tree icons stopped to  work independently of QuickFolders tabs with icons.
+          Customized folder tree icons stopped to work independently of QuickFolders tabs with icons.
           Custom icons are now back!
         </li>
         <li>
@@ -500,9 +499,11 @@
         <h4 class="inList">Known Issues / Work in Progress</h4>
         <li>
           <a href="https://github.com/RealRaven2000/QuickFolders/issues/284">[issue 284]</a>
-          WIP: Recent folders menu doesn't show or takes a very long time - Thunderbird 102
+          Recent folders menu doesn't show or takes a very long time in Thunderbird 102 - 
           There is some inefficent code in Thunderbird 102 at the moment, so I have started 
-          to use their internal function to generate this. 
+          to use their own internal function to generate this; I am hoping there will be 
+          some improvement added in Thunderbird itself in a later version and will remind 
+          the core team.
         </li>
       </ul>
     </li>      

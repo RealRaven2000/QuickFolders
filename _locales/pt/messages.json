@@ -1476,7 +1476,7 @@
     "message": "Criar subpasta {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "Nenhuma pasta pai correspondente!"
+    "message": "Nenhuma subpasta encontrada com pai correspondente."
   },
   "qfPaintToggle": {
     "message": "Finalizar modo de desenho"
@@ -1791,7 +1791,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{P1}Esta versão do QuickFolders corrige {boldStart}problemas significativos{boldEnd} específicos do Thunderbird 102. {P2} {L1}Ocorreram problemas fundamentais com velocidade no Thunderbird 102 causados por código ineficiente na árvore de pastas. A maioria deles está agora resolvida - veja [issue 283] {L2} {L1}As categorias do QuickFolders agora foram restauradas corretamente novamente, certifique-se de ter apenas uma única janela de e-mail aberta ao desligar o Thunderbird. Consulte [issue 279]{L2} {L1}Corrigido ícones personalizados na árvore de pastas.{L2} {L1}Corrigido menus de pastas recentes.{L2}{L1}Reparação de rotina para remover abas inválidas{L2}"
+    "message": "{L1}Adicionado suporte para licenciamento de contas do Exchange (usando Exquilla / Owl) do Thunderbird 98 em diante. {L2} {L1}Depois de usar a tecla [=] para exibir as pastas recentes do QuickJump, a caixa de pesquisa agora é recolhida automaticamente.{L2} {L1}Aprimoramento na digitação de pesquisa para pastas pai com espaços ou delimitadores de palavras no nome. [issue 297]{L2} {L1}Suporte ao comando do menu de contexto do correio 'mover para a pasta novamente'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

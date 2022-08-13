@@ -1467,7 +1467,7 @@
     "message": "Crear subcarpeta {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "¡No hay carpetas principales que coincidan!"
+    "message": "No se encontraron subcarpetas con la carpeta principal coincidente."
   },
   "qfPaintToggle": {
     "message": "Terminar modo de dibujo"
@@ -1788,7 +1788,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{P1}Esta versión de QuickFolders soluciona {boldStart}problemas importantes{boldEnd} específicos de Thunderbird 102. {P2} {L1}Había problemas fundamentales con la velocidad en Thunderbird 102 causados por un código ineficaz en el árbol de carpetas. Ahora están resueltos en su mayoría: consulte [issue 283] {L2} {L1}Las categorías de QuickFolders ahora se restauran correctamente nuevamente, asegúrese de tener solo una ventana de correo abierta cuando cierra Thunderbird. Consulte [issue 279]{L2} {L1}Se corrigieron los iconos personalizados en el árbol de carpetas.{L2} {L1}Se corrigieron los menús de carpetas recientes.{L2}{L1}Se reparó la rutina para eliminar pestañas no válidas{L2}"
+    "message": "{L1}Se agregó soporte para licencias de cuentas de Exchange (usando Exquilla/Owl) desde Thunderbird 98 en adelante. {L2} {L1}Después de usar la tecla [=] para mostrar las carpetas recientes de QuickJump, el cuadro de búsqueda ahora se contrae automáticamente.{L2} {L1}Se mejoró la búsqueda de ingreso de carpetas principales con espacios o delimitadores de palabras en el nombre. [issue 297]{L2} {L1}Admite el comando del menú contextual de correo 'mover a la carpeta de nuevo'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

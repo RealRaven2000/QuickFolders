@@ -282,7 +282,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1}Tämä QuickFolders-versio korjaa Thunderbird 102:n {boldStart}merkittävät ongelmat{boldEnd}. {P2} {L1}Thunderbird 102:ssa oli perustavanlaatuisia nopeuden ongelmia, jotka johtuivat kansiopuun tehottomasta koodista. Nämä ovat nyt suurimmaksi osaksi ratkaistu - katso [issue 283] {L2} {L1}QuickFolders-luokat on nyt palautettu oikein. Varmista, että sinulla on vain yksi postiikkuna auki, kun sammutat Thunderbirdin. Katso [issue 279]{L2} {L1}Korjattu mukautetut kuvakkeet kansiopuussa.{L2} {L1}Korjattu viimeaikaisten kansioiden valikot.{L2}{L1}Korjattu virheellisten välilehtien poistamisrutiini{L2}"
+    "message": "{L1}Lisätty tuki Exchange-tilien lisensoinnille (Exquilla/Owl-sovelluksella) Thunderbird 98:sta eteenpäin. {L2} {L1}Kun olet käyttänyt [=]-näppäintä näyttääksesi viimeisimmät QuickJump-kansiot, hakukenttä kutistuu nyt automaattisesti.{L2} {L1}Parannettu pääkansioiden haun syöttäminen, jonka nimessä on välilyöntejä tai sanaerottimia. [issue 297]{L2} {L1}Tue sähköpostin kontekstivalikon komentoa 'siirrä uudelleen kansioon'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

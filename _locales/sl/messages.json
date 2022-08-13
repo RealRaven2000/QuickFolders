@@ -1449,7 +1449,7 @@
     "message": "Ustvari podmapo {0} » {1} …"
   },
   "qfNoFolderMatch": {
-    "message": "Ni ujemajočih se nadrejenih map!"
+    "message": "Podmape z ujemajočim se nadrejenim elementom niso bile najdene."
   },
   "qfPaintToggle": {
     "message": "Končaj način slikanja"
@@ -1770,7 +1770,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{P1}Ta različica QuickFolders odpravlja {boldStart}pomembne težave{boldEnd}, značilne za Thunderbird 102. {P2} {L1}V Thunderbird 102 so bile temeljne težave s hitrostjo, ki jih je povzročila neučinkovita koda v drevesu map. Te so zdaj večinoma rešene – glejte [issue 283] {L2} {L1}Kategorije QuickFolders so zdaj spet pravilno obnovljene, poskrbite, da imate odprto samo eno poštno okno, ko zaustavite Thunderbird. Glejte [issue 279]{L2} {L1}Popravljene ikone po meri v drevesu map.{L2} {L1}Popravljeni nedavni meniji map.{L2}{L1}Popravljena rutina za odstranjevanje neveljavnih zavihkov{L2}"
+    "message": "{L1}Dodana podpora za licenciranje računov Exchange (z uporabo Exquilla / Owl) od Thunderbird 98 naprej. {L2} {L1}Po uporabi tipke [=] za prikaz nedavnih map QuickJump se iskalno polje zdaj samodejno strne.{L2} {L1}Izboljšano vnašanje iskanja za nadrejene mape s presledki ali ločili besed v imenu. [issue 297]{L2} {L1}Podpora ukazu poštnega kontekstnega menija 'znova premakni v mapo'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

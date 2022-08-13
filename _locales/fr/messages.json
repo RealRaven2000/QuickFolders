@@ -1476,7 +1476,7 @@
     "message": "Créer le sous-dossier {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "Aucun dossier parent correspondant!"
+    "message": "Aucun sous-dossier trouvé avec le parent correspondant."
   },
   "qfPaintToggle": {
     "message": "Ressortir du mode peinture"
@@ -1800,7 +1800,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1}Cette version de QuickFolders corrige des {boldStart}problèmes importants{boldEnd} spécifiques à Thunderbird 102. {P2} {L1}Il y avait des problèmes fondamentaux de vitesse dans Thunderbird 102 causés par un code inefficace dans l'arborescence des dossiers. Celles-ci sont maintenant pour la plupart résolues - voir [issue 283] {L2} {L1}Les catégories QuickFolders sont à nouveau restaurées correctement, assurez-vous que vous n'avez qu'une seule fenêtre de messagerie ouverte lorsque vous fermez Thunderbird. Voir [issue 279]{L2} {L1}Correction des icônes personnalisées dans l'arborescence des dossiers.{L2} {L1}Correction des menus des dossiers récents.{L2}{L1}Routine réparée pour supprimer les onglets invalides{L2}"
+    "message": "{L1}Ajout de la prise en charge des licences des comptes Exchange (à l'aide d'Exquilla/Owl) à partir de Thunderbird 98. {L2} {L1}Après avoir utilisé la touche [=] pour afficher les dossiers quickJump récents, la zone de recherche se réduit désormais automatiquement.{L2} {L1}Amélioration de la recherche des dossiers parents avec des espaces ou des délimiteurs de mots dans le nom. [problème 297]{L2} {L1}Prise en charge de la commande du menu contextuel de messagerie « déplacer à nouveau vers le dossier ».{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

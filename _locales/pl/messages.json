@@ -1485,7 +1485,7 @@
     "message": "Utwórz folder podrzędny {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "Brak pasujących folderów nadrzędnych!"
+    "message": "Nie znaleziono podfolderów z pasującym rodzicem."
   },
   "qfPaintToggle": {
     "message": "Zakończ tryb malowania"
@@ -1809,7 +1809,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{P1}Ta wersja QuickFolders rozwiązuje {boldStart}poważne problemy{boldEnd} specyficzne dla Thunderbird 102. {P2} {L1}Wystąpiły fundamentalne problemy z szybkością w Thunderbird 102 spowodowane nieefektywnym kodem w drzewie folderów. Są one teraz w większości rozwiązane – patrz [issue 283] {L2} {L1}Kategorie szybkich folderów są teraz ponownie poprawnie przywracane, upewnij się, że masz otwarte tylko jedno okno poczty po zamknięciu Thunderbirda. Zobacz [issue 279]{L2} {L1}Naprawiono niestandardowe ikony w drzewie folderów.{L2} {L1}Naprawiono menu ostatnich folderów.{L2}{L1}Naprawiono procedurę usuwania nieprawidłowych kart{L2}"
+    "message": "{L1}Dodano obsługę licencjonowania kont Exchange (przy użyciu Exquilla / Owl) od Thunderbird 98 do przodu. {L2} {L1}Po użyciu klawisza [=] w celu wyświetlenia ostatnich folderów szybkiego skoku, pole wyszukiwania jest teraz zwijane automatycznie.{L2} {L1}Ulepszono wpisywanie wyszukiwania folderów nadrzędnych ze spacjami lub ogranicznikami wyrazów w nazwie. [problem 297]{L2} {L1}Obsługa polecenia menu kontekstowego poczty 'przenieś ponownie do folderu'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

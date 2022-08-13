@@ -1080,7 +1080,7 @@
     "message": "Thêm một tên mới cho đánh dấu"
   },
   "qfNoFolderMatch": {
-    "message": "Không có thư mục mẹ phù hợp!"
+    "message": "Không tìm thấy thư mục con nào có thư mục mẹ phù hợp."
   },
   "qfPaintToggle": {
     "message": "Hoàn tất Chế độ Tô Màu"
@@ -1326,7 +1326,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1} Phiên bản QuickFolders này khắc phục {boldStart} các vấn đề nghiêm trọng {boldEnd} cụ thể đối với Thunderbird 102. {P2} {L1} Có vấn đề cơ bản về tốc độ trong Thunderbird 102 do mã trong cây thư mục không hiệu quả. Các vấn đề này hiện đã được giải quyết gần hết - xem [issue 283] {L2} {L1} Danh mục QuickFolders hiện đã được khôi phục lại chính xác, hãy đảm bảo rằng bạn chỉ mở một cửa sổ thư duy nhất khi tắt Thunderbird. Xem [issue 279] {L2} {L1} Đã sửa các biểu tượng tùy chỉnh trong cây thư mục. {L2} {L1} Đã sửa lỗi các menu thư mục gần đây. {L2} {L1} Đã sửa chữa quy trình xóa các tab không hợp lệ {L2}"
+    "message": "{L1} Đã thêm hỗ trợ cấp phép tài khoản Exchange (sử dụng Exquilla / Owl) từ Thunderbird 98 trở đi. {L2} {L1} Sau khi sử dụng phím [=] để hiển thị các thư mục quickJump gần đây, hộp tìm kiếm hiện tự động thu gọn. {L2} {L1} Cải thiện tính năng nhập tìm kiếm các thư mục mẹ có dấu cách hoặc dấu phân cách từ trong tên. [issue 297] {L2} {L1} Hỗ trợ lệnh menu ngữ cảnh thư 'chuyển lại vào thư mục'. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1380,7 +1380,7 @@
     "message": "サブフォルダを作成 {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "一致する親フォルダがありません！"
+    "message": "一致する親を持つサブフォルダーが見つかりません。"
   },
   "qfPaintToggle": {
     "message": "ペイントモードを終了"
@@ -1692,7 +1692,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{P1}このバージョンのQuickFoldersは、Thunderbird102に固有の{boldStart}重大な問題{boldEnd}を修正します。{P2}{L1}フォルダツリーの非効率的なコードが原因で、Thunderbird102の速度に根本的な問題がありました。 これらはほぼ解決されました。[issue283]{L2}{L1} QuickFoldersカテゴリが再び正しく復元されるようになりました。Thunderbirdをシャットダウンするときに、メールウィンドウが1つだけ開いていることを確認してください。 [issue 279]{L2}{L1}フォルダツリーのカスタムアイコンを修正しました。{L2}{L1}最近のフォルダメニューを修正しました。{L2}{L1}無効なタブを削除するためのルーチンを修正しました{L2}"
+    "message": "{L1}Thunderbird 98 以降、Exchange アカウントのライセンス (Exquilla / Owl を使用) のサポートを追加しました。 {L2} {L1}[=] キーを使用して最近の QuickJump フォルダーを表示した後、検索ボックスが自動的に折りたたまれるようになりました。{L2} {L1}名前にスペースまたは単語の区切り記号が含まれる親フォルダーの検索入力が改善されました。 [issue 297]{L2} {L1}メール コンテキスト メニュー コマンド「もう一度フォルダに移動」をサポートします。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

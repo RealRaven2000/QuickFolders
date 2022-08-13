@@ -1483,7 +1483,7 @@
     "message": "Neues Unterverzeichnis {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "Keine passenden Elternverzeichnisse!"
+    "message": "Keine Unterordner mit passenden Elternverzeichnis gefunden."
   },
   "qfPaintToggle": {
     "message": "Farbmodus beenden"
@@ -1806,7 +1806,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1}Diese Version von QuickFolders behebt {boldStart}signifikante Probleme{boldEnd} speziell für Thunderbird 102.{P2}{L1}Es gab grundlegende Probleme mit der Geschwindigkeit in Thunderbird 102, die durch ineffizienten Code in der Ordnerstruktur verursacht wurden. Diese sind nun größtenteils behoben. [issue 283]{L2}{L1}QuickFolders-Kategorien werden jetzt wieder korrekt wiederhergestellt, stellen Sie sicher, dass Sie nur ein einziges Mail-Fenster geöffnet haben, wenn Sie Thunderbird beenden. [issue 279]{L2}{L1}Benutzerdefinierte Symbole in der Ordnerstruktur korrigiert.{L2}{L1}Menüs der Chronik-Ordner korrigiert.{L2} {L1}Routine zum Entfernen ungültiger Tabs repariert.{L2}"
+    "message": "{L1}Unterstützung für die Lizenzierung von Exchange-Konten (unter Verwendung von Exquilla / Owl) ab Thunderbird 98 hinzugefügt. {L2} {L1}Nach der Schnelltaste [=] schließt das Suchfeld sich automatisch, um die Chronik der quickJump-Ordner anzuzeigen.{L2} {L1}Verbesserte Suche für übergeordnete Ordner bei Eingabe von Namen mit Leerzeichen oder Worttrennzeichen im Namen [issue 297].{L2} {L1}Unterstützung den Mail-Kontextmenübefehl 'erneut in Ordner verschieben'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

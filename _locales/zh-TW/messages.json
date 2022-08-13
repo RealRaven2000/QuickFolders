@@ -1449,7 +1449,7 @@
     "message": "新增子資料夾 {0} » {1}..."
   },
   "qfNoFolderMatch": {
-    "message": "沒有匹配的父文件夾！"
+    "message": "未找到具有匹配父項的子文件夾。"
   },
   "qfPaintToggle": {
     "message": "結束繪圖模式"
@@ -1764,7 +1764,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1}此版本的 QuickFolders 修復了 Thunderbird 102 特有的{boldStart}重大問題{boldEnd}。{P2} {L1}由於文件夾樹中的代碼效率低下，Thunderbird 102 的速度存在根本問題。 這些現在大部分都已解決 - 請參閱 [issue 283] {L2} {L1}QuickFolders 類別現在再次正確恢復，請確保在關閉 Thunderbird 時只打開一個郵件窗口。 請參閱 [issue 279]{L2} {L1}修復了文件夾樹中的自定義圖標。{L2} {L1}修復了最近使用的文件夾菜單。{L2}{L1}修復了刪除無效標籤的例程{L2}"
+    "message": "{L1}從 Thunderbird 98 開始，增加了對許可 Exchange 帳戶（使用 Exquilla / Owl）的支持。 {L2} {L1}使用 [=] 鍵顯示最近的 quickJump 文件夾後，搜索框現在會自動折疊。{L2} {L1}改進了名稱中包含空格或單詞分隔符的父文件夾的輸入搜索。 [問題 297]{L2} {L1}支持郵件上下文菜單命令“再次移動到文件夾”。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

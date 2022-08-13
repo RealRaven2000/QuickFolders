@@ -1333,7 +1333,7 @@
     "message": "Írja be a könyvjelző új nevét"
   },
   "qfNoFolderMatch": {
-    "message": "Nincsenek megfelelő szülőmappák!"
+    "message": "Nem található almappa a megfelelő szülővel."
   },
   "qfPaintToggle": {
     "message": "Színezési mód befejezése"
@@ -1582,7 +1582,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{P1}A QuickFolders ezen verziója kijavítja a Thunderbird 102-re jellemző {boldStart}jelentős problémákat{boldEnd}. {P2} {L1}A Thunderbird 102 sebességével kapcsolatban alapvető problémák adódtak a mappafában lévő nem hatékony kód miatt. Ezek mára többnyire megoldódtak – lásd: [issue 283] {L2} {L1}A QuickFolders kategóriák ismét megfelelően visszaállnak. Győződjön meg arról, hogy csak egyetlen levelezőablak van nyitva a Thunderbird leállításakor. Lásd: [issue 279]{L2} {L1}Egyéni ikonok javítása a mappafában.{L2} {L1}A legutóbbi mappák menüi javítva.{L2}{L1}Az érvénytelen lapok eltávolítására szolgáló rutin javítása{L2}"
+    "message": "{L1}Támogatás hozzáadva az Exchange-fiókok licenceléséhez (Exquilla / Owl használatával) a Thunderbird 98-tól. {L2} {L1}Miután az [=] billentyűt használta a legutóbbi QuickJump mappák megjelenítéséhez, a keresőmező most automatikusan összecsukódik.{L2} {L1}Javított a szülőmappák keresésének megadása szóközökkel vagy szóhatárolókkal a névben. [297-es kiadás]{L2} {L1}Támogatja a mail helyi menü \"áthelyezés újra mappába\" parancsát.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

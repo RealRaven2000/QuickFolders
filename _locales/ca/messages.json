@@ -1445,7 +1445,7 @@
     "message": "Crea una subcarpeta {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "No hi ha cap carpeta pare coincident."
+    "message": "No s'han trobat subcarpetes amb el pare principal coincident."
   },
   "qfPaintToggle": {
     "message": "Acaba el mode Pintura"
@@ -1760,7 +1760,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{P1}Aquesta versió de QuickFolders soluciona {boldStart}problemes importants{boldEnd} específics del Thunderbird 102. {P2} {L1}Hi va haver problemes fonamentals amb la velocitat a Thunderbird 102 causats per un codi ineficient a l'arbre de carpetes. Ara s'han resolt majoritàriament; vegeu [issue 283] {L2} {L1}Les categories de Carpetes ràpides ara es tornen a restaurar correctament, assegureu-vos que només teniu una finestra de correu oberta quan tanqueu el Thunderbird. Vegeu [issue 279]{L2} {L1}S'han solucionat les icones personalitzades a l'arbre de carpetes.{L2} {L1}S'han solucionat els menús de carpetes recents.{L2}{L1}S'ha reparat la rutina per eliminar pestanyes no vàlides{L2}"
+    "message": "{L1}S'ha afegit compatibilitat per a l'obtenció de llicències de comptes Exchange (utilitzant Exquilla/Owl) des del Thunderbird 98 en endavant. {L2} {L1}Després d'utilitzar la tecla [=] per mostrar les carpetes QuickJump recents, ara el quadre de cerca es replega automàticament.{L2} {L1}S'ha millorat la cerca de les carpetes principals amb espais o delimitadors de paraules al nom. [issue 297]{L2} {L1}Admet l'ordre del menú contextual del correu 'torna a moure a la carpeta'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

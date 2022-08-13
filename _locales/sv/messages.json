@@ -1500,7 +1500,7 @@
     "message": "Skapa undermapp {0} » {1}…"
   },
   "qfNoFolderMatch": {
-    "message": "Inga matchande överordnade mappar!"
+    "message": "IInga undermappar hittades med matchande överordnad."
   },
   "qfPaintToggle": {
     "message": "Avsluta målarläget"
@@ -1827,7 +1827,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1}Den här versionen av QuickFolders fixar {boldStart}betydande problem{boldEnd} som är specifika för Thunderbird 102. {P2} {L1}Det fanns grundläggande problem med hastigheten i Thunderbird 102 orsakade av ineffektiv kod i mappträdet. Dessa är nu för det mesta lösta - se [issue 283] {L2} {L1}QuickFolders-kategorier har nu återställts korrekt igen, se till att du bara har ett enda e-postfönster öppet när du stänger av Thunderbird. Se [issue 279]{L2} {L1}Fixade anpassade ikoner i mappträdet.{L2} {L1}Fixade senaste mappmenyer.{L2}{L1}Reparerad rutin för att ta bort ogiltiga flikar{L2}"
+    "message": "{L1}Lägg till stöd för licensiering av Exchange-konton (med Exquilla / Owl) från Thunderbird 98 och framåt. {L2} {L1}Efter att ha använt [=]-tangenten för att visa de senaste quickJump-mappar, komprimeras nu sökrutan automatiskt.{L2} {L1}Förbättrad sökning efter överordnade mappar med mellanslag eller ordavgränsare i namnet. [utgåva 297]{L2} {L1}Stöd e-postkontextmenykommandot 'flytta till mapp igen'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -835,10 +835,19 @@ QuickFolders.Util = {
       let currentTab = tabmail.selectedTab;
       
 
-      if (cs.copyMessages)
+      if (cs.copyMessages) {
         cs.copyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, mw, true);
-      else
+      } else {
         cs.CopyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, mw, true);
+      }
+      // support move / copy to XXX again
+      try {
+        Services.prefs.setCharPref("mail.last_msg_movecopy_target_uri", targetFolder.URI);
+        Services.prefs.setBoolPref("mail.last_msg_movecopy_was_move", isMove);
+      }
+      catch(ex) {
+        util.logException("Setting 'move to folder X again' failed", ex);
+      }
       
       step = 8;
       util.touch(targetFolder); // set MRUTime
@@ -1925,6 +1934,7 @@ QuickFolders.Util = {
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences,
           isDebugDetail = prefs.isDebugOption("recentFolders.detail"),
+          isDebugPerformance = prefs.isDebugOption("performance"),
           isTb102 = QuickFolders.Util.versionGreaterOrEqual(QuickFolders.Util.Appversion, "102");
           
     let oldestTime = 0,
@@ -1936,6 +1946,12 @@ QuickFolders.Util = {
     try {
       // tb102 do the work
       let recentFolders;
+      if (isDebugPerformance) {
+        util.stopWatch("start","getMostRecentFolders");
+      }
+      // see  _populateSpecialSubmenu() at
+      // https://searchfox.org/comm-esr102/source/mailnews/base/content/folder-menupopup.js#560
+      // this isn't called every time, so Tb does use a cached menu
       if (isTb102) {
         var { FolderUtils } = ChromeUtils.import("resource:///modules/FolderUtils.jsm");
         recentFolders = FolderUtils.getMostRecentFolders(
@@ -1953,6 +1969,10 @@ QuickFolders.Util = {
           "MRUTime",
           null
         );
+      }
+      if (isDebugPerformance) {
+        let time = util.stopWatch("all","getMostRecentFolders");
+        console.log(`%cRunning getMostRecentFolders() took: ${time}`, "background-color: rgb(0,140,180); color:white;");
       }
       
       // remove legacy syntax:

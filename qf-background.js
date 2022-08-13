@@ -88,13 +88,13 @@ function showSplash(msg="") {
 
 
 async function main() {
+    
   const legacy_root = "extensions.quickfolders.";
   let key = await messenger.LegacyPrefs.getPref(legacy_root + "LicenseKey", ""),
       forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(legacy_root + "licenser.forceSecondaryIdentity") || false,
       isDebug = await messenger.LegacyPrefs.getPref(legacy_root + "debug")  || false,
       isDebugLicenser = await messenger.LegacyPrefs.getPref(legacy_root + "debug.premium.licenser")  || false;
 
-      
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();
   
@@ -359,6 +359,28 @@ async function main() {
   * the parameter of startListening(). This object also contains an extension member.
   */
   messenger.WindowListener.startListening(); 
+  
+  // [issue 296] Exchange account validation
+  if (tbVer.major>=98) {
+    messenger.accounts.onCreated.addListener( async(id, account) => {
+      if (currentLicense.info.status == "MailNotConfigured") {
+        // redo license validation!
+        if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
+        currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
+        await currentLicense.validate();
+        if(currentLicense.info.status != "MailNotConfigured") {
+          if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
+          messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+          messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: false});
+        }
+        if (isDebugLicenser) console.log("QF license info:", currentLicense.info); // test
+      }
+      else {
+        if (isDebugLicenser) console.log("QF license state after adding account:", currentLicense.info)
+      }
+    });
+  }
+
 }
 
 main();

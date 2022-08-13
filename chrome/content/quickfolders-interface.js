@@ -201,7 +201,7 @@ QuickFolders.Interface = {
 
           util.logDebug("setFolderUpdateTimer(item):" + item.prettyName);
         }
-				if (!nDelay>0) nDelay = 750;
+				if (!nDelay>0) nDelay = 500;
 				//this.TimeoutID = setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
 				QI.TimeoutID = setTimeout(function() { QuickFolders.Interface.queuedFolderUpdate(); }, nDelay);
 				util.logDebug("Folder Tab Select Timer ID: " + QI.TimeoutID);
@@ -228,6 +228,11 @@ QuickFolders.Interface = {
 		let menupopup,
 		    prefs = QuickFolders.Preferences,
         util = QuickFolders.Util;
+    let isProfiling = QuickFolders.Preferences.isDebugOption("performance");
+    if (isProfiling ) {
+      util.stopWatch("start","createRecentPopup");
+    }
+        
 		util.logDebugOptional("recentFolders","createRecentPopup(passedPopup:" + passedPopup + ", isDrag:"+ isDrag +", isCreate:" + isCreate + ")");
     
     // purge old menus
@@ -298,9 +303,19 @@ QuickFolders.Interface = {
 		util.logDebugOptional("recentFolders.detail","Recent Folders Array appended: " +  debugText);
 
 		let isAlphaSorted =  prefs.getBoolPref("recentfolders.sortAlphabetical");
+    if (isProfiling) {
+      let time = util.stopWatch("stop","createRecentPopup");
+      console.log(`createRecentPopup - Before calling %caddSubFoldersPopupFromList() ${time} ms`, "background-color: rgb(0,160,40); color:white;");
+    }
 		this.addSubFoldersPopupFromList(FoldersArray, menupopup, isDrag, isAlphaSorted, true);
 		util.logDebugOptional("recentFolders","=============================\n"
 			+ "createRecentPopup Finished!");
+      
+    if (isProfiling) {
+      let time = util.stopWatch("all","createRecentPopup");
+      console.log(`%cRunning createRecentPopup(${popupId}) took: ${time}`, "background-color: rgb(0,160,40); color:white;");
+    }
+      
 		return menupopup;
 	} ,
 
@@ -549,7 +564,7 @@ QuickFolders.Interface = {
     const prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util;
     const profileThis = (prefs.isDebugOption("updateFolders,performance")),
-          profileStyle = "background-color: rgb(0,180,50); color:white;";
+          profileStyle = "background-color: rgb(194, 82, 131); color:white;"; // Bashful pink
     if (profileThis) {
       util.stopWatch("start","updateFolders");
       
@@ -1175,13 +1190,19 @@ QuickFolders.Interface = {
 			util.logDebug(separator + "Iterating all folders…");
 			for (let folder of util.allFoldersIterator(false)) {
 				//let folder = allFolders[i];
-				let folderIcon = folder.getStringProperty("folderIcon"),
-						iconURL =folder.getStringProperty("iconURL");
-				if (folderIcon || iconURL) {
-					affected++;
-					util.logDebug(folder.prettyName + "\nfolderIcon: " + folderIcon + "\niconURL: " + iconURL);
-				}
-				f++;
+        let folderIcon, iconURL;
+        try {
+				  folderIcon = folder.getStringProperty("folderIcon"),
+					iconURL = folder.getStringProperty("iconURL");
+          if (folderIcon || iconURL) {
+            affected++;
+            util.logDebug(folder.prettyName + "\nfolderIcon: " + folderIcon + "\niconURL: " + iconURL);
+          }
+          f++;
+        }
+        catch(e) { 
+          util.logDebug(folder.prettyName + "\n - getStringProperty() threw error.");
+        }
 				// folder.setForcePropertyEmpty("folderIcon", false); // remove property
 			}
 			util.logDebug(separator + "…testTreeIcons() ENDS\nIterated " + f + " folders with " + affected + " having a folderIcon property.\n" + separator);
@@ -2173,10 +2194,8 @@ QuickFolders.Interface = {
     if (!theButton) isMinimal=false; // if we create new buttons from scratch, then we need a full creation including menu
 
 		util.logDebugOptional("interface.tabs", "addFolderButton() label=" + label + ", offset=" + offset + ", col=" + tabColor + ", id=" + buttonId + ", fillStyle=" + fillStyle);
-		let button = (theButton) ? theButton :
-		  (document.createXULElement ? document.createXULElement("toolbarbutton") : document.createElement("toolbarbutton")); // create the button!
+		let button =  theButton || document.createXULElement("toolbarbutton");
 		button.setAttribute("label", label);
-		//button.setAttribute("class",ToolbarStyle); // was toolbar-height!
 
 		// find out whether this is a special button and add specialFolderType
 		// for (optional) icon display
@@ -4395,7 +4414,7 @@ QuickFolders.Interface = {
             }
           }
           catch(ex) {
-            if (prefs.isDebug) {
+            if ((ex.result!=0x80550007) &&  prefs.isDebug) { // nsIMsgFolder.getStringProperty
               util.logException("Error in addSubFoldersPopupFromList", ex);
             }
           }
@@ -4550,10 +4569,21 @@ QuickFolders.Interface = {
 		let isDragNew = isDrag && prefs.getBoolPref("folderMenu.dragToNew");
 
 		if (folder.hasSubFolders) {
+      let isProfiling = QuickFolders.Preferences.isDebugOption("performance");
+      if (isProfiling ) {
+        util.stopWatch("start","addSubFoldersPopup");
+      }
+      
+      
 			util.logDebugOptional("popupmenus.subfolders", "Adding folders…");
 			let subfolders = folder.subFolders;
 			let isAlphaSorted = prefs.isSortSubfolderMenus;
 			this.addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, isAlphaSorted, isRecentFolderList);
+      if (isProfiling) {
+        let time = util.stopWatch("all","addSubFoldersPopup");
+        let fName = folder ? (folder.prettyName || "[missing folder name]") : "[missing folder]";
+        console.log(`%caddSubFoldersPopup(${fName}) - Creating addSubFoldersPopupFromList() took: ${time}`, "background-color: rgb(0,160,40); color:white;");
+      }
 		}
 
 		// append the "Create New Folder" menu item!
@@ -4803,7 +4833,7 @@ QuickFolders.Interface = {
         if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
           return;          // add unless already matched:
         let sArray = searchFolderName.split(" "),
-            fArray = folderNameSearched.split(/[\-_@+&. ]+/); // use these as possible delimiters
+            fArray = folderNameSearched.split(/[\-_@+&. ]+/); // use these as possible word boundaries
         while (sArray.length) {
           let search = sArray.shift(),
               foundEl = false;
@@ -4911,7 +4941,22 @@ QuickFolders.Interface = {
           folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
         }
         // [issue 199] include folders that are 1 character long!
-        if (folderNameMatches.some(a => a.startsWith(ancestors[maxLevel]) && a.length>0)) { 
+        let parentHasSpace = ancestors[maxLevel].includes (" ");
+        if (folderNameMatches.some(a => 
+           { 
+            if (a.startsWith(ancestors[maxLevel])) return true;
+            if (parentHasSpace) { // [issue 297] Parent folder with space in name not shown
+              let m = (ancestors[maxLevel].split(" "));
+              if (m.length>folderNameMatches.length) return false;
+              for (let mm=0; mm<m.length && mm<folderNameMatches.length; mm++) {
+                if (!folderNameMatches[mm].startsWith(m[mm]))
+                  return false;
+              }
+              return true;
+            }
+            return false;
+           }
+          )) { 
 					if (maxLevel == 0 ) {  // direct parent? Add to collection in case we want to create child (slash) // pLevel==1
 						if (!parentList.includes(firstParent))
 							parentList.push(firstParent);
@@ -5176,10 +5221,13 @@ QuickFolders.Interface = {
 					}, false
 				);
 				menuitem.className = "menuitem-iconic deferred"; // use "deferred" to avoid selectFound handler
-				if (f.getStringProperty("isQuickFolder")) {
-					f.setStringProperty("isQuickFolder", ""); // remove this temporary property
-					menuitem.classList.add("quickFolder");
-				}
+        try {
+          if (f.getStringProperty("isQuickFolder")) {
+            f.setStringProperty("isQuickFolder", ""); // remove this temporary property
+            menuitem.classList.add("quickFolder");
+          }
+        }
+        catch(ex) {;}
 
 				if (menupopup.firstChild && isInsertNewFolderTop)
 					menupopup.insertBefore(menuitem, menupopup.firstChild);
@@ -5264,8 +5312,9 @@ QuickFolders.Interface = {
 			this.findFolder(false);
 			this.hideFindPopup();
 		}
-		else
+		else {
 			searchBox.focus();
+    }
 
  	} ,
 
@@ -5320,7 +5369,9 @@ QuickFolders.Interface = {
     else {
 			util.logDebugOptional("quickMove","selectFound: quickMove End…");
       isSelected = QuickFolders_MySelectFolder(URI, true);
-			QuickFolders.quickMove.rememberLastFolder(URI, parentName);
+      if (isSelected) {
+        QuickFolders.quickMove.rememberLastFolder(URI, parentName);
+      }
 		}
 		if (isSelected) {
 			// success: collapses the search box!
@@ -6923,13 +6974,17 @@ QuickFolders.Interface = {
   quickMoveButtonClick: function quickMoveButtonClick(evt, el) {
 		const QI = QuickFolders.Interface;
 	  let searchBox = QI.FindFolderBox;
-    if (searchBox && !searchBox.collapsed && evt.button==0)  // hide only on left click
+    if (evt.target.tagName == "menuitem") { // [issue 292] Close quickJump box after using the "="
+      return;
+    }
+    if (searchBox && !searchBox.collapsed && evt.button==0)  { // hide only on left click
       QuickFolders.quickMove.hideSearch(); // hide search box if shown
-    else {
-      if (QuickFolders.quickMove.hasMails)
+    } else {
+      if (QuickFolders.quickMove.hasMails) {
         QI.showPopup(el,"QuickFolders-quickMoveMenu");
-      else
+      } else {
         QI.findFolder(true,"quickJump"); // show jump to folder box
+      }
     }
   },
 

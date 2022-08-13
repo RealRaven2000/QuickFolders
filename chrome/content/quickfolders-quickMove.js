@@ -200,7 +200,7 @@ QuickFolders.quickMove = {
 			this.update();
 			QI.hideFindPopup();
 		}
-		catch(ex) { logException('quickMove.execute()', ex); }
+		catch(ex) { util.logException('quickMove.execute()', ex); }
 		finally {
       setTimeout(function(){
         util.touch(fld); // update MRUTime

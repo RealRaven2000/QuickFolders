@@ -263,17 +263,24 @@ END LICENSE BLOCK */
     ##         Step 2: code for auto-fixing URLs using the data generated in Tb91 (step1)
     ##                 added a diagnostic function (debug menu) to copy account + folder URI of current folder.
   
-  5.10.3 QuickFolders Pro - 14/07
+  5.10.3 QuickFolders Pro - 14/07/2022
     ## [issue 281] - auto-repair invalid folder uris starting with "imap://" 
   
   
-  5.11 QuickFolders Pro - WIP
+  5.11 QuickFolders Pro - 25/07/2022
     ## [issue 283] Slowdown of Thunderbird 102
     ## [issue 279] Current category is not remembered / selected on startup. Fixed for most cases.
     ## [issue 280] Fix folder tree icons in Tb102
     ## [issue 287] Removal of invalid (orphaned) tabs from menu not successful
     ## fix icon distances on popup menus (Tb102)
     ## removed Postbox code (tabOwners)
+    
+  5.12 QuickFolders Pro - WIP
+    ## [issue 291] Update TB's "Move to Again" and "Copy to Again" menu item with move and copy onto a QuickFolders tab
+    ## [issue 292] Close quickJump box after using the "=" shortcut (to display recent folders)
+    ## [issue 296] Allow Exchange account validation (from Thunderbird 98 forward)
+    ## [issue 297] quickMove: Parent folder with space in name not shown
+    
     
   
     -=-----------------=-    PLANNED
@@ -1127,7 +1134,7 @@ var QuickFolders = {
 						sourceFolder = msgHdr.folder;
 					}
 				}
-				let msgList = util.moveMessages(newFolder, messageUriList, isCopy)
+				let msgList = util.moveMessages(newFolder, messageUriList, isCopy);
 
 				// have the filter created with a delay so that filters can adapt to the new folder!!
 				if (QFFW.FilterMode) {

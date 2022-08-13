@@ -19,6 +19,7 @@ QuickFolders.FolderTree = {
   init: function() {
     const util = QuickFolders.Util;
     let testDebug = true;
+    let testSelector = QuickFolders.Preferences.isDebugOption("folderTree.selector");
     // you need to restart QuickFolders to bypass
     let isEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons')
     try {
@@ -36,6 +37,7 @@ QuickFolders.FolderTree = {
       //gFolderTreeView.getCellPropsWithoutIcons = gFolderTreeView.getCellProperties;  
       gFolderTreeView.qfIconsEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons');
       gFolderTreeView.getCellProperties = function QuickFolders_getCellProperties(row, col) {
+        /** WARNING: DO NOT SET BREAKPOINTS IN THIS FUNCTION - IT CRASHES THUNDERBIRD!! **/
         if (QuickFolders.FolderTree.GetCellProperties == gFolderTreeView.getCellProperties) {
           return null; // avoid "impossible" recursion?
         }
@@ -54,29 +56,15 @@ QuickFolders.FolderTree = {
 						if (gFolderTreeView.supportsIcons && folder) {
               // suggestion by TbSync to avoid getStringProperty - use heuristics to always generate a URI
               let folderIcon = QuickFolders.FolderTree.makeSelectorGUID(folder, "folderIcon_");
-							// let folderIcon = (typeof folder.getStringProperty != 'undefined') ? folder.getStringProperty("folderIcon") : null;
 							if (folderIcon) {
-                util.logDebugOptional("folderTree", folderIcon);
+                if (testSelector) { util.logDebugOptional("folderTree.selector", folderIcon); }
 								// save folder icon selector
                 return props + " " + folderIcon;
 							}
 						}
           }
           catch(ex) {
-            if (testDebug) console.log(`folderTree`, ex);
-            /*
-            if (QuickFolders) {
-							let txt;
-							try {
-								txt = "returning unchanged props for folder [" + folder.prettyName + "] : ";
-                if (props) console.log(props);
-							}
-							catch(x) { 
-                txt = "problem with reading props for folder " + folder.prettyName; 
-              }
-              // util.logException(`QuickFolders.FolderTree.getCellProperties(${row},${col})\n  ${txt}`, ex);
-						}
-            */
+            if (testDebug) console.log("folderTree - getCellProperties throws:", ex);
           }
         }
         return props;
@@ -126,7 +114,6 @@ QuickFolders.FolderTree = {
         iterate(key,value);
       }
     );
-		this.forceRedraw();
 	} ,
 	
   hasTreeItemFolderIcon: function(folder) {
@@ -175,12 +162,18 @@ QuickFolders.FolderTree = {
 					prefs = QuickFolders.Preferences,
           debug = prefs.isDebugOption("folderTree");
 		util.logDebugOptional("folderTree,folderTree.icons", "QuickFolders.FolderTree.loadDictionary()");
+    let isProfiling = QuickFolders.Preferences.isDebugOption("performance");
+    if (isProfiling ) {
+      util.stopWatch("start","loadDictionary");
+    }
     
     this.dictionary = new Map(); 
-		let txtList = "Folders without Icon\n",
-		    txtWithIcon = "Folders with Icon\n",
+		let txtList = "",
+		    txtWithIcon = "",
 		    iCount = 0,
-		    iIcons = 0;
+		    iIcons = 0,
+        iNoIcon = 0,
+        iErrors = 0;
 		for (let folder of util.allFoldersIterator()) { 
 		  iCount++;
 			if (typeof folder.getStringProperty == 'undefined') continue;
@@ -198,22 +191,39 @@ QuickFolders.FolderTree = {
         }
         else { // folder w/o icon
           if (debug) txtList += iCount.toString() + " - " + folder.server.hostName + " - " + folder.prettyName + "\n";
+          iNoIcon++;
         }
       }
       catch (ex) {
-        util.logException(`QuickFolders.FolderTree.loadDictionary() - ${folder.prettyName}`, ex);
+        if (ex.result != 0x80550007) {
+          util.logException(`QuickFolders.FolderTree.loadDictionary() - ${folder.prettyName}`, ex);
+        }
+        else {
+          // likely thrown by nsIMsgFolder.getStringProperty
+          iErrors++;
+        }
+        iNoIcon++;
       }
 		}
-		util.logDebugOptional("folderTree", txtList);
-		util.logDebugOptional("folderTree", txtWithIcon);
-		util.logDebugOptional("folderTree", "Total Number of Folders:" + iCount + "\nFolders with Icon:" + iIcons);
+		util.logDebugOptional("folderTree", "Total Number of Folders:" + iCount + "\nFolders with Icon:" + iIcons + `\nErrors thrown by Tb: ${iErrors}`);
+		util.logDebugOptional("folderTree", `${iNoIcon} Folders without Icon\n`, txtList);
+		util.logDebugOptional("folderTree", `${iIcons} Folders WITH Icon\n`, txtWithIcon);
 		
-	  let service = prefs.service;
+    if (isProfiling) {
+      let time = util.stopWatch("stop","loadDictionary");
+      console.log(`%cFolderTree.loadDictionary() - after creating dictionary ${time} `, "background-color: rgb(0,80,140); color:white;");
+    }
+    
 
 		if (debug) {
 			this.debugDictionary();
     }
 		this.restoreStyles();
+    if (isProfiling) {
+      let time = util.stopWatch("all","loadDictionary");
+      console.log(`%cFolderTree.loadDictionary() - Ends, altogether took: ${time}`, "background-color: rgb(0,80,140); color:white;");
+    }
+    
     util.logDebugOptional("folderTree.icons","loadDictionary() finished.");
 	} ,
 	
@@ -260,25 +270,6 @@ QuickFolders.FolderTree = {
 	  return  "treechildren::-moz-tree-image(folderNameCol, "+ propName + ")";
 	} ,
 	
-	forceRedraw: function() {
-		// force redrawing the folder pane
-		const util = QuickFolders.Util;
-		// nsITreeBoxObject will be deprecated from Tb69
-		try {
-      const box = document.getElementById("folderTree").boxObject; // not working in Thunderbird 78
-      if(!box) return;
-			if (Components.interfaces.nsITreeBoxObject) {
-				box.QueryInterface(Components.interfaces.nsITreeBoxObject);
-				box.invalidate();
-			}
-			else 
-				box.element.invalidate();
-		}
-		catch (ex) {
-			util.logException('forceRedraw', ex);
-		}
-	} ,
-  
   // [issue 283] optimisation: method to always generate a CSS selectable attribute (based on folder uri), 
   //             to avoid folder.getStringProperty()
   makeSelectorGUID: function(folder, prefix) {
@@ -372,7 +363,6 @@ QuickFolders.FolderTree = {
 			}
       if (!silent) {
         this.debugDictionary(); // test dictionary, just for now
-        this.forceRedraw();
       }
       // [issue 283] - do not force update during setFolderTreeIcon
 			// QI.updateFolders(false, true);  forces rebuilding subfolder menus

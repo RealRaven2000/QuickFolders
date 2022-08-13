@@ -158,6 +158,7 @@ pref("extensions.quickfolders.debug.events", false);
 pref("extensions.quickfolders.debug.events.keyboard", false);
 pref("extensions.quickfolders.debug.filters", false);
 pref("extensions.quickfolders.debug.folderTree", false);
+pref("extensions.quickfolders.debug.folderTree.selector", false);
 pref("extensions.quickfolders.debug.folderTree.icons", false);
 pref("extensions.quickfolders.debug.folders", false);
 pref("extensions.quickfolders.debug.folders.select", false);

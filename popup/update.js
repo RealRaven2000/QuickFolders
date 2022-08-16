@@ -8,7 +8,8 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
 const REDUCTION_RENEW = "25%",
-      REDUCTION_PRO = "33%";
+      REDUCTION_PRO = "33%",
+      REDUCTION_UPGRADE = "40%";
 
 
 addEventListener("click", async (event) => {
@@ -179,10 +180,9 @@ addEventListener("load", async (event) => {
     
     let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
     if (specialOfferUpgrade) {
-      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
-          reduction = "50%";
+      let expiry = messenger.i18n.getMessage("special-offer-expiry");
       // note: expiry day is set in popup.js "endSale" variable
-      specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, reduction])
+      specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, REDUCTION_UPGRADE])
           .replace(/\{boldStart\}/g,"<b>")
           .replace(/\{boldEnd\}/g,"</b>")
           .replace(/\{linkStart\}/, "<a id='stdLink'>")

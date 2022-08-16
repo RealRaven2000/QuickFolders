@@ -1760,7 +1760,7 @@
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
   "special-offer-expiry": {
-    "message": "August 7th"
+    "message": "August 31st"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1866,7 +1866,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Added support for licensing Exchange accounts (using Exquilla / Owl) from Thunderbird 98 forward. {L2} {L1}After using the [=] key to display recent quickJump folders, the search box now collapses automatically.{L2} {L1}Improved entering search for parent folders with spaces or word delimiters in the name. [issue 297]{L2} {L1}Support the mail context menu command 'move to folder again'.{L2}"
+    "message": "{P1}This version of QuickFolders fixes additional problems {boldStart}specific to Thunderbird 102{boldEnd}; we are also actively pushing for performance improvements in the coming releases of Thunderbird.{P2} {L1}Added support for licensing Exchange accounts (using Exquilla / Owl) from Thunderbird 98 forward. {L2} {L1}After using the [=] key to display recent quickJump folders, the search box now collapses automatically.{L2} {L1}Improved entering search for parent folders with spaces or word delimiters in the name. [issue 297]{L2} {L1}Support the mail context menu command 'move to folder again'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

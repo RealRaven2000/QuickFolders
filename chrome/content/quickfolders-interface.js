@@ -2204,33 +2204,35 @@ QuickFolders.Interface = {
         // if the tab is colored, use the new palette setting "ColoredTab"
         // if it is uncolored use the old "InActiveTab"
 		    paletteClass = (tabColor!="0") ? this.getPaletteClass("ColoredTab") : this.getPaletteClass("InactiveTab");
-    if (entry && entry.customPalette)
+    if (entry && entry.customPalette) {
       paletteClass = this.getPaletteClassToken(entry.customPalette);
+    }
 
 		// use folder flags instead!
 		if (folder) {
-			if (folder.flags & FLAGS.MSG_FOLDER_FLAG_INBOX)
+			if (folder.flags & FLAGS.MSG_FOLDER_FLAG_INBOX) {
 				specialFolderType="inbox" + sDisplayIcons;
-			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_SENTMAIL)
+			} else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_SENTMAIL) {
 				specialFolderType="sent" + sDisplayIcons;
-			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_TRASH)
+			} else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_TRASH) {
 				specialFolderType="trash" + sDisplayIcons;
-			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_JUNK)
+			} else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_JUNK) {
 				specialFolderType="junk" + sDisplayIcons;
-			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_TEMPLATES)
+			} else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_TEMPLATES) {
 				specialFolderType="template" + sDisplayIcons;
-			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_QUEUE)
+			} else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_QUEUE) {
 				specialFolderType="outbox" + sDisplayIcons;
-			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_DRAFTS)
+			} else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_DRAFTS) {
 				specialFolderType="draft" + sDisplayIcons;
-			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_NEWSGROUP)
+			} else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_NEWSGROUP) {
 				specialFolderType="news" + sDisplayIcons;
-			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_ARCHIVES) // Dillinger Bug
+			} else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_ARCHIVES) {// Dillinger Bug
 				specialFolderType="archive" + sDisplayIcons;
-			else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_VIRTUAL)
+			} else if (folder.flags & FLAGS.MSG_FOLDER_FLAG_VIRTUAL) {
 				specialFolderType="virtual" + sDisplayIcons; // all other virtual folders (except smart which were alreadyhandled above)
-			else if (tabIcon)
+			} else if (tabIcon) {
 				specialFolderType="icon"; // independant of option, customized icons are always shown
+      } 
 		}
 		else {
 			specialFolderType="invalid icon";
@@ -4935,7 +4937,7 @@ QuickFolders.Interface = {
         if (!firstParent) firstParent = f;
 
         // [issue 135] allow in-string search for parents using delimiters: _ . and space!
-        let folderNameMatches = f.prettyName.toLowerCase().split(/[_ \.]/);
+        let folderNameMatches = f.prettyName.toLowerCase().split(/[\-_@+&. ]/);
         // [issue 148] splitting prevents full name to be matched!
         if (folderNameMatches.length>1) {
           folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string

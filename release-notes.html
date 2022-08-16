@@ -1,5 +1,5 @@
-<b>Release 5.11</b>
-Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (102.0)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb91) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
+<b>Release 5.12</b>
+Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (102)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb91) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
             
 
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
@@ -11,16 +11,14 @@ You can also <a href="https://quickfolders.org/donate.html#donate">donate from h
 
 <b>Improvements</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/283">[issue 283]</a> Slowdown of Thunderbird 102 with QuickFolders
-
-There is some inefficiency in the Thunderbird code base for the folder tree which can be exascerbated by QuickFolders. I have removed as many function calls as I could find without impacting on functionality. On startup some right-click menus have to be generated to make drag+drop, these are now generated at a later stage to yield some time to the User Interface.</li>
+<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/292">[issue 292]</a> Close quickJump box after using the <code>=</code> shortcut key (to display recent folders).</li>
+<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/291">[issue 291]</a> Update Thunderbird's "Move to Again" and "Copy to Again" menu items when moving or copying mail through a QuickFolders method.</li>
+<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/296">[issue 296]</a> Exchange account validation - you can now validate a license key even if the licensed email is configured for an Exchange account via 3rd party Add-ons such as Owl or Exquilla. This works from Thunderbird 98 forward. </li>
 </ul>
+      
 <b>Bugs Fixed</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/279">[issue 279]</a> Fixed: Thunderbird 102 - current category is not remembered / selected; in this solution I store the current category of each tab (folder and messages) whenever a tab is opened / moved or closed. Information is only stored for one single window, so it might get confused if you open multiple windows with different categories per tab. It works reasonably for most general uses of QuickFolder categories.</li>
-<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/280">[issue 280]</a> Folder tree icons did not work independently of tabs in Thunderbird 102.</li>
 <li>
-<a href="https://github.com/RealRaven2000/QuickFolders/issues/284">[issue 284]</a> Recent folders menu doesn't show or takes a very long time in Thunderbird 102 - There is some inefficent code in Thunderbird 102 at the moment, so I have started to use their own internal function to generate this. </li>
-<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/287">[issue 287]</a> Fixed the removal of invalid (orphaned) tabs through the tool menu command "remove invalid tabs". Also renamed it for clarity: this used to be called "find orphaned tabs" </li>
-</ul>        
-
+<a href="https://github.com/RealRaven2000/QuickFolders/issues/297">[issue 297]</a> When using the search box during quickMove / quickJump and looking for parent folders you can now enter composite names by tying the start of each word delimited by a space. For Example you can now enter "mu fl/" to list all subfolders of a folder "Munson-Fletcher". Valid delimiters of existing folder names are <code>-</code> <code>_</code> <code>@</code> <code>+</code> <code>&amp;</code> <code>.</code> and <code>space</code>.
+</li>
+</ul>

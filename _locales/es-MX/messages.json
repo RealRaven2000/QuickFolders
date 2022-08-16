@@ -1682,7 +1682,7 @@
     "message": "Cuando actualiza desde Estándar, obtiene un período de licencia de un año completo a partir de la fecha de compra, independientemente de la fecha de vencimiento de su licencia anterior."
   },
   "special-offer-expiry": {
-    "message": "7 de agosto"
+    "message": "31 de agosto"
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1788,7 +1788,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Se agregó soporte para licencias de cuentas de Exchange (usando Exquilla/Owl) desde Thunderbird 98 en adelante. {L2} {L1}Después de usar la tecla [=] para mostrar las carpetas recientes de QuickJump, el cuadro de búsqueda ahora se contrae automáticamente.{L2} {L1}Se mejoró la búsqueda de ingreso de carpetas principales con espacios o delimitadores de palabras en el nombre. [issue 297]{L2} {L1}Admite el comando del menú contextual de correo 'mover a la carpeta de nuevo'.{L2}"
+    "message": "{P1}Esta versión de QuickFolders corrige problemas adicionales {boldStart}específicos de Thunderbird 102{boldEnd}; también estamos presionando activamente para mejorar el rendimiento en las próximas versiones de Thunderbird.{P2} {L1}Se agregó soporte para licencias de cuentas de Exchange (usando Exquilla/Owl) desde Thunderbird 98 en adelante. {L2} {L1}Después de usar la tecla [=] para mostrar las carpetas recientes de QuickJump, el cuadro de búsqueda ahora se contrae automáticamente.{L2} {L1}Se mejoró la búsqueda de ingreso de carpetas principales con espacios o delimitadores de palabras en el nombre. [issue 297]{L2} {L1}Admite el comando del menú contextual de correo 'mover a la carpeta de nuevo'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

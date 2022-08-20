@@ -932,6 +932,12 @@
   "qf.tooltip.threadIcon": {
     "message": "Đề tài hiện tại - kéo vào thẻ QuickFolder để di chuyển Hội Thoại"
   },
+  "qf.update.title" : {
+    "message": "Cập nhật"
+  },
+  "qf.update.hideVersionHistory" : {
+    "message": "Không mở tab có lịch sử phiên bản"
+  },
   "qf.youtube.description": {
     "message": "Để có video chi tiết về Tiện ích bổ sung Thunderbird và cách sử dụng Thư mục nhanh, hãy truy cập kênh YouTube Thunderbird Daily của tôi."
   },
@@ -1326,7 +1332,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1} Phiên bản QuickFolders này khắc phục các sự cố bổ sung {boldStart} cụ thể cho Thunderbird 102 {boldEnd}; chúng tôi cũng đang tích cực thúc đẩy các cải tiến về hiệu suất trong các phiên bản sắp tới của Thunderbird. {P2}{L1} Đã thêm hỗ trợ cấp phép tài khoản Exchange (sử dụng Exquilla / Owl) từ Thunderbird 98 trở đi. {L2} {L1} Sau khi sử dụng phím [=] để hiển thị các thư mục quickJump gần đây, hộp tìm kiếm hiện tự động thu gọn. {L2} {L1} Cải thiện tính năng nhập tìm kiếm các thư mục mẹ có dấu cách hoặc dấu phân cách từ trong tên. [issue 297] {L2} {L1} Hỗ trợ lệnh menu ngữ cảnh thư 'chuyển lại vào thư mục'. {L2}"
+    "message": "{L1} 5.12.1 - Không mở tab lịch sử phiên bản theo mặc định. Bạn có thể khôi phục hành vi cũ trong cài đặt nâng cao. {L2} {P1} Phiên bản QuickFolders này khắc phục các sự cố bổ sung {boldStart} cụ thể cho Thunderbird 102 {boldEnd}; chúng tôi cũng đang tích cực thúc đẩy các cải tiến về hiệu suất trong các phiên bản sắp tới của Thunderbird. {P2}{L1} Đã thêm hỗ trợ cấp phép tài khoản Exchange (sử dụng Exquilla / Owl) từ Thunderbird 98 trở đi. {L2} {L1} Sau khi sử dụng phím [=] để hiển thị các thư mục quickJump gần đây, hộp tìm kiếm hiện tự động thu gọn. {L2} {L1} Cải thiện tính năng nhập tìm kiếm các thư mục mẹ có dấu cách hoặc dấu phân cách từ trong tên. [issue 297] {L2} {L1} Hỗ trợ lệnh menu ngữ cảnh thư 'chuyển lại vào thư mục'. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -275,16 +275,29 @@
           </fieldset>
         </div>
 
-        <fieldset class="hbox" >
-          <legend>__MSG_qf.label.toolbarPosition__</legend>
-          <div class="hbox" id="grpToolbarPosition">
-            <input type="number" id="toolbarPosition" flex="1" preference="qfpa-ToolbarPosition"
-              data-pref-name="extensions.quickfolders.toolbar.ordinalPosition" 
-              title="__MSG_qf.toolbarPosition.tooltip__" />
-            <button id="applyPosition">__MSG_qf.btn.applyPosition__</button>
-          </div>
-        </fieldset>
-
+        <table style="width:100%"> <tr>
+          <td>
+            <fieldset class="hbox" >
+              <legend>__MSG_qf.label.toolbarPosition__</legend>
+              <div class="hbox" id="grpToolbarPosition">
+                <input type="number" id="toolbarPosition" flex="1" preference="qfpa-ToolbarPosition"
+                  data-pref-name="extensions.quickfolders.toolbar.ordinalPosition" 
+                  title="__MSG_qf.toolbarPosition.tooltip__"
+                  style="max-width: 3.5em"                  />
+                <button id="applyPosition">__MSG_qf.btn.applyPosition__</button>
+              </div>
+            </fieldset>
+          </td>
+          <td style="display:flex;">
+            <fieldset class="hbox" style="flex: 1 1 max-content;">
+              <legend>__MSG_qf.update.title__</legend>
+              <label><input type="checkbox" 
+                preference="qfpa-hideVersionHistory"
+                data-pref-name="extensions.quickfolders.hideVersionOnUpdate">__MSG_qf.update.hideVersionHistory__</label>              
+            </fieldset>
+          </td>
+        </tr></table>
+          
         <fieldset class="hbox" id="grpCurrentFolderBackground">
           <legend>__MSG_qf.caption.currentFolderBackground__</legend>
           <div class="vbox" id="currentFolderBackgroundContainer">

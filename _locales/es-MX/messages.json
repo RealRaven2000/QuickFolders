@@ -1298,6 +1298,12 @@
   "qf.tooltip.threadIcon": {
     "message": "Para mover la conversación, arrástrala a una carpeta de QuickFolders"
   },
+  "qf.update.title" : {
+    "message": "Päivitykset"
+  },
+  "qf.update.hideVersionHistory" : {
+    "message": "No abrir página con historial de versiones"
+  },
   "qf.youtube.description": {
     "message": "Para videos detallados de adiciones a Thunderbird y sobre como utilizar QuickFolders visita mi canal de Thunderbird en YouTube diariamente."
   },
@@ -1788,7 +1794,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{P1}Esta versión de QuickFolders corrige problemas adicionales {boldStart}específicos de Thunderbird 102{boldEnd}; también estamos presionando activamente para mejorar el rendimiento en las próximas versiones de Thunderbird.{P2} {L1}Se agregó soporte para licencias de cuentas de Exchange (usando Exquilla/Owl) desde Thunderbird 98 en adelante. {L2} {L1}Después de usar la tecla [=] para mostrar las carpetas recientes de QuickJump, el cuadro de búsqueda ahora se contrae automáticamente.{L2} {L1}Se mejoró la búsqueda de ingreso de carpetas principales con espacios o delimitadores de palabras en el nombre. [issue 297]{L2} {L1}Admite el comando del menú contextual de correo 'mover a la carpeta de nuevo'.{L2}"
+    "message": "{L1}5.12.1: no abre una pestaña de historial de versiones de forma predeterminada. Puede restaurar el comportamiento anterior en la configuración avanzada.{L2} {P1}Esta versión de QuickFolders corrige problemas adicionales {boldStart}específicos de Thunderbird 102{boldEnd}; también estamos presionando activamente para mejorar el rendimiento en las próximas versiones de Thunderbird.{P2} {L1}Se agregó soporte para licencias de cuentas de Exchange (usando Exquilla/Owl) desde Thunderbird 98 en adelante. {L2} {L1}Después de usar la tecla [=] para mostrar las carpetas recientes de QuickJump, el cuadro de búsqueda ahora se contrae automáticamente.{L2} {L1}Se mejoró la búsqueda de ingreso de carpetas principales con espacios o delimitadores de palabras en el nombre. [issue 297]{L2} {L1}Admite el comando del menú contextual de correo 'mover a la carpeta de nuevo'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

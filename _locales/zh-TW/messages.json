@@ -1295,6 +1295,12 @@
   "qf.tooltip.threadIcon": {
     "message": "現在的主題郵件串 - 拖曳至QuickFolders分頁來移動對話串"
   },
+  "qf.update.title" : {
+    "message": "更新"
+  },
+  "qf.update.hideVersionHistory" : {
+    "message": "不要打開帶有版本歷史記錄的選項卡"
+  },
   "qf.youtube.description": {
     "message": "關於 Thunderbird Add-ons 的詳細影片，以及如何使用 QuickFolders ，請前往觀賞我的 YouTube 頻道 Thunderbird Daily 。"
   },
@@ -1764,7 +1770,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1}此版本的 QuickFolders 修復了特定於 Thunderbird 102 的其他問題； 我們也在積極推動即將發布的 Thunderbird 版本的性能改進。{P2} {L1}從 Thunderbird 98 開始，增加了對許可 Exchange 帳戶（使用 Exquilla / Owl）的支持。 {L2} {L1}使用 [=] 鍵顯示最近的 quickJump 文件夾後，搜索框現在會自動折疊。{L2} {L1}改進了名稱中包含空格或單詞分隔符的父文件夾的輸入搜索。 [問題 297]{L2} {L1}支持郵件上下文菜單命令“再次移動到文件夾”。{L2}"
+    "message": "{L1}5.12.1 - 默認情況下不打開版本歷史選項卡。 您可以在高級設置中恢復舊行為。{L2} {P1}此版本的 QuickFolders 修復了特定於 Thunderbird 102 的其他問題； 我們也在積極推動即將發布的 Thunderbird 版本的性能改進。{P2} {L1}從 Thunderbird 98 開始，增加了對許可 Exchange 帳戶（使用 Exquilla / Owl）的支持。 {L2} {L1}使用 [=] 鍵顯示最近的 quickJump 文件夾後，搜索框現在會自動折疊。{L2} {L1}改進了名稱中包含空格或單詞分隔符的父文件夾的輸入搜索。 [問題 297]{L2} {L1}支持郵件上下文菜單命令“再次移動到文件夾”。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

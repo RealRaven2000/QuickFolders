@@ -1302,6 +1302,12 @@
   "qf.tooltip.threadIcon": {
     "message": "Aktuelles Thema - auf einen QuickFolders Tab ziehen um den Themenbaum zu verschieben"
   },
+  "qf.update.title" : {
+    "message": "Aktualisierung / Updates"
+  },
+  "qf.update.hideVersionHistory" : {
+    "message": "Seite mit Versionsverlauf nicht anzeigen"
+  },
   "qf.youtube.description": {
     "message": "Für detaillierte Videos über Thunderbird Add-ons und die Nutzung von QuickFolders besuchen Sie meinen YouTube Kanal Thunderbird Daily."
   },
@@ -1806,7 +1812,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1}Diese Version von QuickFolders behebt zusätzliche Probleme {boldStart}spezifisch für Thunderbird 102{boldEnd}; Wir drängen auch aktiv auf Leistungsverbesserungen in den kommenden Versionen von Thunderbird.{P2}{L1}Unterstützung für die Lizenzierung von Exchange-Konten (unter Verwendung von Exquilla / Owl) ab Thunderbird 98 hinzugefügt. {L2} {L1}Nach der Schnelltaste [=] schließt das Suchfeld sich automatisch, um die Chronik der quickJump-Ordner anzuzeigen.{L2} {L1}Verbesserte Suche für übergeordnete Ordner bei Eingabe von Namen mit Leerzeichen oder Worttrennzeichen im Namen [issue 297].{L2} {L1}Unterstützung den Mail-Kontextmenübefehl 'erneut in Ordner verschieben'.{L2}"
+    "message": "{L1}5.12.1 – Die Seite mit dem Versionsverlauf wird nicht mehr automatisch geöffnet. Das alte Verhalten kann in erweiterten Einstellungen wiederhergestellt werden.{L2}{P1}Diese Version von QuickFolders behebt zusätzliche Probleme {boldStart}spezifisch für Thunderbird 102{boldEnd}; Wir drängen auch aktiv auf Leistungsverbesserungen in den kommenden Versionen von Thunderbird.{P2}{L1}Unterstützung für die Lizenzierung von Exchange-Konten (unter Verwendung von Exquilla / Owl) ab Thunderbird 98 hinzugefügt. {L2} {L1}Nach der Schnelltaste [=] schließt das Suchfeld sich automatisch, um die Chronik der quickJump-Ordner anzuzeigen.{L2} {L1}Verbesserte Suche für übergeordnete Ordner bei Eingabe von Namen mit Leerzeichen oder Worttrennzeichen im Namen [issue 297].{L2} {L1}Unterstützung den Mail-Kontextmenübefehl 'erneut in Ordner verschieben'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

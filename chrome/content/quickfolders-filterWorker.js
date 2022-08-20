@@ -579,8 +579,13 @@ QuickFolders.FilterWorker = {
     let util = QuickFolders.Util;
     util.logDebugOptional ("filters", "createFilterAsync()");
 		if (QuickFolders.win.quickFilters && QuickFolders.win.quickFilters.Worker) {
-      util.logDebugOptional ("filters", "redirecting to quickFilters createFilterAsync()...");
-			QuickFolders.win.quickFilters.Worker.createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow);
+      try {
+        util.logDebugOptional ("filters", "redirecting to quickFilters createFilterAsync()...");
+        QuickFolders.win.quickFilters.Worker.createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow);
+      }
+      catch(ex) {
+        util.logException("Error: QuickFolders.FilterWorker.createFilterAsync called quickFilters createFilterAsync(), which failed.", ex);
+      }
 			return;
 		}
 		

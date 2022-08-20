@@ -1291,6 +1291,12 @@
   "qf.tooltip.threadIcon": {
     "message": "Conversa Actual - arrossega cap a una pestanaya de QuickFolders per moure la Conversa"
   },
+  "qf.update.title" : {
+    "message": "Actualitzacions"
+  },
+  "qf.update.hideVersionHistory" : {
+    "message": "No obriu la pestanya amb l'historial de versions"
+  },
   "qf.youtube.description": {
     "message": "Per obtenir vídeos detallats sobre els complements de Thunderbird i com utilitzar QuickFolders, visiteu el meu canal de YouTube Thunderbird Daily."
   },
@@ -1760,7 +1766,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{P1}Aquesta versió de QuickFolders soluciona problemes addicionals {boldStart}específics de Thunderbird 102{boldEnd}; també estem pressionant activament per millorar el rendiment en les properes versions de Thunderbird.{P2}{L1}S'ha afegit compatibilitat per a l'obtenció de llicències de comptes Exchange (utilitzant Exquilla/Owl) des del Thunderbird 98 en endavant. {L2} {L1}Després d'utilitzar la tecla [=] per mostrar les carpetes QuickJump recents, ara el quadre de cerca es replega automàticament.{L2} {L1}S'ha millorat la cerca de les carpetes principals amb espais o delimitadors de paraules al nom. [issue 297]{L2} {L1}Admet l'ordre del menú contextual del correu 'torna a moure a la carpeta'.{L2}"
+    "message": "{L1}5.12.1: no obre una pestanya d'historial de versions de manera predeterminada. Podeu restaurar el comportament antic a la configuració avançada.{L2} {P1}Aquesta versió de QuickFolders soluciona problemes addicionals {boldStart}específics de Thunderbird 102{boldEnd}; també estem pressionant activament per millorar el rendiment en les properes versions de Thunderbird.{P2}{L1}S'ha afegit compatibilitat per a l'obtenció de llicències de comptes Exchange (utilitzant Exquilla/Owl) des del Thunderbird 98 en endavant. {L2} {L1}Després d'utilitzar la tecla [=] per mostrar les carpetes QuickJump recents, ara el quadre de cerca es replega automàticament.{L2} {L1}S'ha millorat la cerca de les carpetes principals amb espais o delimitadors de paraules al nom. [issue 297]{L2} {L1}Admet l'ordre del menú contextual del correu 'torna a moure a la carpeta'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

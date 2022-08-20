@@ -1307,6 +1307,12 @@
   "qf.tooltip.threadIcon": {
     "message": "Huidige conversatie - sleep naar een QuickFolders-tabblad om conversatie te verplaatsen"
   },
+  "qf.update.title" : {
+    "message": "Updates"
+  },
+  "qf.update.hideVersionHistory" : {
+    "message": "Tabblad met versiegeschiedenis niet openen"
+  },
   "qf.youtube.description": {
     "message": "Bezoek voor gedetailleerde video’s over Thunderbird-add-ons en hoe u QuickFolders kunt gebruiken mijn YouTube-kanaal ‘Thunderbird Daily’."
   },
@@ -1818,7 +1824,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{P1}Deze versie van QuickFolders lost extra problemen op {boldStart}specifiek voor Thunderbird 102{boldEnd}; we streven ook actief naar prestatieverbeteringen in de komende releases van Thunderbird.{P2} {L1}Ondersteuning toegevoegd voor het licentiëren van Exchange-accounts (met Exquilla / Owl) vanaf Thunderbird 98 en later. {L2} {L1}Na het gebruik van de [=]-toets om recente quickJump-mappen weer te geven, wordt het zoekvak nu automatisch samengevouwen.{L2} {L1}Verbeterde invoer van zoeken naar bovenliggende mappen met spaties of scheidingstekens voor woorden in de naam. [uitgave 297]{L2} {L1}Ondersteun het e-mailcontextmenu-commando 'opnieuw naar map verplaatsen'.{L2}"
+    "message": "{L1}5.12.1 - Opent standaard geen tabblad met versiegeschiedenis. U kunt het oude gedrag herstellen in de geavanceerde instellingen.{L2} {P1}Deze versie van QuickFolders lost extra problemen op {boldStart}specifiek voor Thunderbird 102{boldEnd}; we streven ook actief naar prestatieverbeteringen in de komende releases van Thunderbird.{P2} {L1}Ondersteuning toegevoegd voor het licentiëren van Exchange-accounts (met Exquilla / Owl) vanaf Thunderbird 98 en later. {L2} {L1}Na het gebruik van de [=]-toets om recente quickJump-mappen weer te geven, wordt het zoekvak nu automatisch samengevouwen.{L2} {L1}Verbeterde invoer van zoeken naar bovenliggende mappen met spaties of scheidingstekens voor woorden in de naam. [uitgave 297]{L2} {L1}Ondersteun het e-mailcontextmenu-commando 'opnieuw naar map verplaatsen'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

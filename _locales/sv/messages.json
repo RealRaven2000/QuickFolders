@@ -1322,6 +1322,12 @@
   "qf.tooltip.threadIcon": {
     "message": "Aktuell tråd - dra till en QuickFolders-flik för att flytta en konversation"
   },
+  "qf.update.title" : {
+    "message": "Uppdateringar"
+  },
+  "qf.update.hideVersionHistory" : {
+    "message": "Öppna inte fliken med versionshistorik"
+  },
   "qf.youtube.description": {
     "message": "För detaljerade videor om tillägg till Thunderbird och hur man använder QuickFolders, besök min YouTube-kanal Thunderbird Daily."
   },
@@ -1827,7 +1833,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1}Denna version av QuickFolders fixar ytterligare problem {boldStart}specifika för Thunderbird 102{boldEnd}; vi driver också aktivt på för prestandaförbättringar i de kommande utgåvorna av Thunderbird.{P2} {L1}Lägg till stöd för licensiering av Exchange-konton (med Exquilla / Owl) från Thunderbird 98 och framåt. {L2} {L1}Efter att ha använt [=]-tangenten för att visa de senaste quickJump-mappar, komprimeras nu sökrutan automatiskt.{L2} {L1}Förbättrad sökning efter överordnade mappar med mellanslag eller ordavgränsare i namnet. [utgåva 297]{L2} {L1}Stöd e-postkontextmenykommandot 'flytta till mapp igen'.{L2}"
+    "message": "{L1}5.12.1 – Öppnar inte en versionshistorikflik som standard. Du kan återställa det gamla beteendet i avancerade inställningar.{L2} {P1}Denna version av QuickFolders fixar ytterligare problem {boldStart}specifika för Thunderbird 102{boldEnd}; vi driver också aktivt på för prestandaförbättringar i de kommande utgåvorna av Thunderbird.{P2} {L1}Lägg till stöd för licensiering av Exchange-konton (med Exquilla / Owl) från Thunderbird 98 och framåt. {L2} {L1}Efter att ha använt [=]-tangenten för att visa de senaste quickJump-mappar, komprimeras nu sökrutan automatiskt.{L2} {L1}Förbättrad sökning efter överordnade mappar med mellanslag eller ordavgränsare i namnet. [utgåva 297]{L2} {L1}Stöd e-postkontextmenykommandot 'flytta till mapp igen'.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

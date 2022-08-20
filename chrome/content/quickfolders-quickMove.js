@@ -280,7 +280,7 @@ QuickFolders.quickMove = {
     // add folder items to menu
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
     if (!initialCount)
-      menu.appendChild(document.createXULElement ? document.createXULElement('menuseparator') : document.createElement('menuseparator'));
+      menu.appendChild(document.createXULElement('menuseparator'));
     for (let f of foldersArray) {
       if (this.folders.includes(f)) {
         util.logDebug("Omitting folder " + f.prettyname + " as it is already on the list!")
@@ -289,7 +289,7 @@ QuickFolders.quickMove = {
       this.folders.push(f);
       this.IsCopy.push(isCopy);
       let label = f.prettyName,
-          menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
+          menuitem = document.createXULElement("menuitem");
       menuitem.setAttribute("label", label);
       menuitem.classList.add(isCopy ? 'folderCopy' : 'folderUri');
       menuitem.classList.add('menuitem-iconic');
@@ -318,13 +318,14 @@ QuickFolders.quickMove = {
       this.Origins.push(sourceFolder);
       // now add to menu!
       let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
-      if (this.Uris.length==1)
-        menu.appendChild(document.createXULElement ? document.createXULElement('menuseparator') : document.createElement('menuseparator'));
+      if (this.Uris.length==1) {
+        menu.appendChild(document.createXULElement('menuseparator'));
+      }
       let hdr = messenger.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
       if (hdr) {
         try {
           let label = QuickFolders.Util.getFriendlyMessageLabel(hdr),
-              menuitem = document.createXULElement ? document.createXULElement("menuitem") : document.createElement("menuitem");
+              menuitem = document.createXULElement("menuitem");
           if (showFolder && sourceFolder)
             label = sourceFolder.prettyName + chevron + label;
           menuitem.setAttribute("label", label);

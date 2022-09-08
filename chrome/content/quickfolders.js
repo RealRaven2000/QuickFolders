@@ -275,12 +275,16 @@ END LICENSE BLOCK */
     ## fix icon distances on popup menus (Tb102)
     ## removed Postbox code (tabOwners)
     
-  5.12 QuickFolders Pro - WIP
+  5.12.1 QuickFolders Pro - 20/08/2022
     ## [issue 291] Update TB's "Move to Again" and "Copy to Again" menu item with move and copy onto a QuickFolders tab
     ## [issue 292] Close quickJump box after using the "=" shortcut (to display recent folders)
     ## [issue 296] Allow Exchange account validation (from Thunderbird 98 forward)
     ## [issue 297] quickMove: Parent folder with space in name not shown
+    ## 5.12.1 - do not open history tab automatically & add an option for this.
     
+  5.12.2 QuickFolders Pro - WIP
+    ## [issue 306] option to restore unread or force read status on messages when dragging them to folders
+    ## toolbar position number control too narrow, various layout fixes in settings dialog
     
   
     -=-----------------=-    PLANNED

@@ -961,6 +961,24 @@
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "绘画模式"
   },
+  "qf.moveMailStatus.action.none": {
+    "message": "没做什么"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "将邮件标记为未读"
+  },
+  "qf.moveMailStatus.action.read": {
+    "message": "将邮件标记为已读"
+  },
+  "qf.moveMailStatus.label": {
+    "message": "将邮件移动到 QuickFolder 时："
+  },
+  "qf.moveMailStatus.quickMove": {
+    "message": "使用 quickMove 时也适用于邮件。"
+  },
+  "qf.moveMailStatus.title": {
+    "message": "移动邮件状态"
+  },
   "qf.notification.categoryIsReadOnly": {
     "message": "此项目无法删除。"
   },

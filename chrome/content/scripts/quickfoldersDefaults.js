@@ -25,7 +25,7 @@ pref("extensions.quickfolders.showSubfolders", true);
 pref("extensions.quickfolders.disableFolderSwitching", false);
 pref("extensions.quickfolders.showCountInSubFolders", true); // Bug 25864
 pref("extensions.quickfolders.enableMenuAlphaSorting", false);
-pref("extensions.quickfolders.markAsReadOnMove", false);
+// pref("extensions.quickfolders.markAsReadOnMove", false); // see moveMailStatus instead!
 pref("extensions.quickfolders.useRebuildShortcut", false);
 pref("extensions.quickfolders.rebuildShortcutKey", 'F');
 pref("extensions.quickfolders.quickJump.useHotkey", true);
@@ -49,6 +49,8 @@ pref("extensions.quickfolders.skipFolder.useHotkey", false);
 pref("extensions.quickfolders.skipFolder.Hotkey", 'S');
 pref("extensions.quickfolders.skipFolder.Hotkey.Shift", true);
 pref("extensions.quickfolders.showToolIcon", true);
+pref("extensions.quickfolders.moveMailStatus.set",0); // [issue 306]
+pref("extensions.quickfolders.moveMailStatus.quickMove",false); // [issue 306]
 pref("extensions.quickfolders.bookmarks.folderLabel", true);
 pref("extensions.quickfolders.bookmarks.showButton", true);
 pref("extensions.quickfolders.bookmarks.maxEntries", 100);

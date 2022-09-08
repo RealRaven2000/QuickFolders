@@ -999,6 +999,24 @@
   "qf.menuitem.quickfolders.togglePaintModeAccess": {
     "message": "р"
   },
+  "qf.moveMailStatus.action.none": {
+    "message": "Ничего не делать"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Отметить почту как непрочитанную"
+  },
+  "qf.moveMailStatus.action.read": {
+    "message": "Отметить почту как прочитанную"
+  },
+  "qf.moveMailStatus.label": {
+    "message": "При перемещении почты в QuickFolder:"
+  },
+  "qf.moveMailStatus.quickMove": {
+    "message": "Также применяется к почте при использовании quickMove."
+  },
+  "qf.moveMailStatus.title": {
+    "message": "Статус перемещенной почты"
+  },
   "qf.notification.categoryIsReadOnly": {
     "message": "Эту категорию удалить нельзя."
   },

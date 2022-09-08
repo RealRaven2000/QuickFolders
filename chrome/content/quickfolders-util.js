@@ -757,7 +757,10 @@ QuickFolders.Util = {
 
       // copy what we need...
       let messageIdList = [],
-          isMarkAsRead = QuickFolders.Preferences.getBoolPref('markAsReadOnMove'),
+          readStatus = QuickFolders.Preferences.getIntPref("moveMailStatus.set"),
+          isStatusQuickMove = QuickFolders.Preferences.getBoolPref("moveMailStatus.quickMove"),
+          isQuickMove = QuickFolders.quickMove.isActive,
+          // isMarkAsRead = QuickFolders.Preferences.getBoolPref('markAsReadOnMove'),
           bookmarks = QuickFolders.bookmarks,
           isTargetDifferent = false,
           sourceFolder;
@@ -765,8 +768,15 @@ QuickFolders.Util = {
         let messageUri = messageUris[i],
             Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri),
             bookmarked = bookmarks.indexOfEntry(messageUri);
-        if(isMarkAsRead) {
-          Message.markRead(true);
+        if (!isQuickMove || isQuickMove && isStatusQuickMove) {
+          switch (readStatus) {
+            case 1:
+              Message.markRead(false);
+              break;
+            case 2:
+              Message.markRead(true);
+              break;
+          }
         }
         step = 3;
         // if we move, check our reading list!

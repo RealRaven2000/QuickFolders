@@ -62,7 +62,7 @@
       -->
 
 
-        <fieldset class="hbox">
+        <fieldset class="hbox multiCol">
           <legend>__MSG_qf.label.keyboard__</legend>
           <div class="vbox">
             <label><input type="checkbox" 
@@ -92,7 +92,7 @@
           </div>
         </fieldset>
 
-        <fieldset class="hbox">
+        <fieldset class="hbox multiCol">
           <legend>__MSG_qf.label.tabContent__</legend>
           <div class="vbox">
             <label><input type="checkbox" preference="qfpg-ShowUnreadFoldersBold"
@@ -166,6 +166,27 @@
                 instantApply="true">__MSG_qf.checkbox.showRecentTab__</label>
             </div>
           </fieldset>
+            
+          <fieldset orient="vertical" flex="2">
+            <legend>__MSG_qf.moveMailStatus.title__</legend>
+            
+            <label>__MSG_qf.moveMailStatus.label__</label>
+            
+            <select sizetopopup="none" id="moveMailOptions" preference="qfpg-moveMailStatus" disabled="true"
+              data-pref-name="extensions.quickfolders.moveMailStatus.set">
+                <option value="0">__MSG_qf.moveMailStatus.action.none__</option>
+                <option value="1">__MSG_qf.moveMailStatus.action.unread__</option>
+                <option value="2">__MSG_qf.moveMailStatus.action.read__</option>
+            </select>
+
+            <label><input type="checkbox" 
+                id="moveMailOptions-quickMove"
+                preference="qfpg-moveMailStatus-quickMove"
+                disabled="true"
+                data-pref-name="extensions.quickfolders.moveMailStatus.quickMove">__MSG_qf.moveMailStatus.quickMove__</label>
+              
+          </fieldset>
+          
         </div>
         <div class="hbox">
           <fieldset flex="2">
@@ -283,7 +304,7 @@
                 <input type="number" id="toolbarPosition" flex="1" preference="qfpa-ToolbarPosition"
                   data-pref-name="extensions.quickfolders.toolbar.ordinalPosition" 
                   title="__MSG_qf.toolbarPosition.tooltip__"
-                  style="max-width: 3.5em"                  />
+                  style="max-width: 6.5em"                  />
                 <button id="applyPosition">__MSG_qf.btn.applyPosition__</button>
               </div>
             </fieldset>

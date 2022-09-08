@@ -250,9 +250,9 @@ hbox > button:not([isTab]) {
 	max-height: 3em !important;
 }
 
-button.narrow {
+#applyCurrentBackground {
   width:auto;
-  min-width: 4em;
+  min-width: 5em;
 }
 
 #chkCogWheel .checkbox-icon {
@@ -762,5 +762,3 @@ label.url:hover {
 .url {
   cursor:pointer;
 }
-
-

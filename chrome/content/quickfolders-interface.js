@@ -983,7 +983,7 @@ QuickFolders.Interface = {
         let tabmail = document.getElementById("tabmail"),
             idx = QuickFolders.tabContainer.selectedIndex || 0;
           util.getTabInfoByIndex(tabmail, idx).QuickFoldersCategory = QuickFolders.FolderCategory.ALL;
-          util.logDebug("Set category for tab [${idx}] to ${this.currentActiveCategories}");
+          util.logDebug(`Set category for tab [${idx}] to ${this.currentActiveCategories}`);
         }
         catch (ex) {
           util.logException("updateCategories() Failed trying to default category to all", ex);

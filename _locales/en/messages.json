@@ -1016,6 +1016,24 @@
   "qf.menuitem.quickfolders.togglePaintModeAccess": {
     "message": "p"
   },
+  "qf.moveMailStatus.action.none": {
+    "message": "Do nothing"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Mark mail as unread"
+  },
+  "qf.moveMailStatus.action.read": {
+    "message": "Mark mail as read"
+  },
+  "qf.moveMailStatus.label": {
+    "message": "When moving mail to a QuickFolder:"
+  },
+  "qf.moveMailStatus.quickMove": {
+    "message": "Also apply to mails when using quickMove."
+  },
+  "qf.moveMailStatus.title": {
+    "message": "Moved Mail Status"
+  },
   "qf.notification.categoryIsReadOnly": {
     "message": "This item cannot be deleted."
   },

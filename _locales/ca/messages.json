@@ -962,6 +962,24 @@
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "Mode Pintura"
   },
+  "qf.moveMailStatus.action.none": {
+    "message": "No fer res"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Marca el correu com a no llegit"
+  },
+  "qf.moveMailStatus.action.read": {
+    "message": "Marca el correu com a llegit"
+  },
+  "qf.moveMailStatus.label": {
+    "message": "Quan es mou el correu a una QuickFolder:"
+  },
+  "qf.moveMailStatus.quickMove": {
+    "message": "També s'aplica als correus electrònics quan utilitzeu quickMove."
+  },
+  "qf.moveMailStatus.title": {
+    "message": "Estat del correu mogut"
+  },
   "qf.notification.categoryIsReadOnly": {
     "message": "Aquest element no es pot suprimir."
   },

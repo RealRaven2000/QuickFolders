@@ -990,6 +990,24 @@
   "qf.menuitem.quickfolders.togglePaintModeAccess": {
     "message": "c"
   },
+  "qf.moveMailStatus.action.none": {
+    "message": "Hacer nada"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Marcar correo como no leído"
+  },
+  "qf.moveMailStatus.action.read": {
+    "message": "Marcar correo como leído"
+  },
+  "qf.moveMailStatus.label": {
+    "message": "Al mover el correo a una carpeta rápida:"
+  },
+  "qf.moveMailStatus.quickMove": {
+    "message": "También se aplica a los correos cuando se usa QuickMove."
+  },
+  "qf.moveMailStatus.title": {
+    "message": "Estado de correo movido"
+  },
   "qf.notification.categoryIsReadOnly": {
     "message": "Este elemento no se puede borrar."
   },

@@ -246,7 +246,6 @@ async function main() {
               width: 830, 
               type: "panel", 
               url: `/html/options.html?${params.toString()}`,
-              titlePreface: title,
               allowScriptsToClose : true
             }
           );

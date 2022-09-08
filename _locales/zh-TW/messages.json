@@ -966,6 +966,24 @@
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "繪圖模式"
   },
+  "qf.moveMailStatus.action.none": {
+    "message": "沒做什麼"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "將郵件標記為未讀"
+  },
+  "qf.moveMailStatus.action.read": {
+    "message": "將郵件標記為已讀"
+  },
+  "qf.moveMailStatus.label": {
+    "message": "將郵件移動到 QuickFolder 時："
+  },
+  "qf.moveMailStatus.quickMove": {
+    "message": "使用 quickMove 時也適用於郵件。"
+  },
+  "qf.moveMailStatus.title": {
+    "message": "移動郵件狀態"
+  },
   "qf.notification.categoryIsReadOnly": {
     "message": "這個項目不能被刪除。"
   },

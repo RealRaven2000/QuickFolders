@@ -7,8 +7,14 @@
   flex-direction: row;
 }
 
-#QuickFolders-Options-general .hbox {
-  gap: 1.5em;
+fieldset.multiCol {
+  column-gap: 1.5em;
+}
+
+select {
+  padding-top: 1px !important;
+  padding-bottom: 1px !important;
+  line-height: 1.6em !important;;
 }
 
 #btnConfigureTooltips,

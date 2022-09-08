@@ -640,51 +640,35 @@ QuickFolders.Options = {
     }
     return myTheme;
   },
+  
+  enableElement: function (id, isEnabled) {
+    let el = document.getElementById(id);
+    if (el) {
+      el.disabled = !isEnabled;
+    }
+    else {
+      QuickFolders.Util.logDebug("Couldn't find element: " + id);
+    }
+  },
 
   enablePremiumConfig : function (isEnabled) {
-    let getElement      = document.getElementById.bind(document),
-        premiumConfig   = getElement("premiumConfig"),
-        quickJump       = getElement("chkQuickJumpHotkey"),
-        quickMove       = getElement("chkQuickMoveHotkey"),
-        quickCopy       = getElement("chkQuickCopyHotkey"),
-        skipFolder      = getElement("chkSkipFolderHotkey"),
-        quickJumpTxt    = getElement("qf-QuickJumpShortcut"),
-        quickMoveTxt    = getElement("qf-QuickMoveShortcut"),
-        quickCopyTxt    = getElement("qf-QuickCopyShortcut"),
-        quickMoveAutoFill = getElement("chkQuickMoveAutoFill"),
-        skipFolderTxt   = getElement("qf-SkipFolderShortcut"),
-        quickMoveFormat = getElement("menuQuickMoveFormat"),
-        quickMoveDepth  = getElement("quickmove-path-depth"),
-        quickMoveAdvanced = getElement("quickMoveAdvanced"),
-        multiCategories = getElement("chkCategories");
-    premiumConfig.disabled = !isEnabled;
-    quickJump.disabled = !isEnabled;
-    quickMove.disabled = !isEnabled;
-    quickCopy.disabled = !isEnabled;
-    skipFolder.disabled = !isEnabled;
-    quickJumpTxt.disabled = !isEnabled;
-    quickMoveTxt.disabled = !isEnabled;
-    quickCopyTxt.disabled = !isEnabled;
-    skipFolderTxt.disabled = !isEnabled;
-    quickMoveFormat.disabled = !isEnabled;
-    quickMoveDepth.disabled = !isEnabled;
-    quickMoveAdvanced.disabled = !isEnabled;
-    multiCategories.disabled = !isEnabled;
-    quickMoveAutoFill.disabled = !isEnabled;
+    let elements = ["premiumConfig", "chkQuickJumpHotkey", "chkQuickJumpHotkey", "chkQuickMoveHotkey", "chkQuickCopyHotkey",
+                    "chkSkipFolderHotkey", "qf-QuickJumpShortcut", "qf-QuickMoveShortcut", "qf-QuickCopyShortcut",
+                    "chkQuickMoveAutoFill", "qf-SkipFolderShortcut", "menuQuickMoveFormat", "quickmove-path-depth",
+                    "quickMoveAdvanced", "chkCategories", "moveMailOptions", "moveMailOptions-quickMove"];
+    for (let e of elements) {
+      QuickFolders.Options.enableElement(e, isEnabled);
+    }
     QuickFolders.Options.enableStandardConfig(isEnabled);
   },
 
   enableStandardConfig : function (isEnabled) {
-    let getElement      = document.getElementById.bind(document),
-        chkConfigIncludeTabs = getElement("chkConfigIncludeTabs"),
-        chkConfigGeneral= getElement("chkConfigIncludeGeneral"),
-        chkConfigLayout = getElement("chkConfigIncludeLayout"),
-        btnLoadConfig   = getElement("btnLoadConfig"),
-        fldBackupRestore = getElement("backupRestore");
-    btnLoadConfig.disabled = !isEnabled;
-    chkConfigGeneral.disabled = !isEnabled;
-    chkConfigIncludeTabs.disabled = !isEnabled;
-    chkConfigLayout.disabled = !isEnabled;
+    let getElement = document.getElementById.bind(document),
+        elements = ["chkConfigIncludeTabs", "chkConfigIncludeGeneral", "chkConfigIncludeLayout", "btnLoadConfig"],
+        backupRestore = getElement("backupRestore");
+    for (let e of elements) {
+      QuickFolders.Options.enableElement(e, isEnabled);
+    }
     if (isEnabled) { backupRestore.removeAttribute("disabled"); }
     else { backupRestore.setAttribute("disabled",true); }
   },

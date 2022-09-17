@@ -411,8 +411,13 @@ menupopup.widerMenu menucaption {
 
 #QuickFolders-Category-Box[mode="filter"] #QuickFolders-filterActive {
 	background-image: linear-gradient(rgba(251, 28, 3, 0.5) 0%, rgba(161, 26, 11, 0.5) 42%, rgba(138, 18, 4, 0.5) 51%, rgba(199, 24, 5,0.5) 100%);
-	color:white !important;
+	color: white !important;
   border-radius: 0 !important;
+}
+
+#QuickFolders-filterActive image {
+  fill: white !important;
+  -moz-context-properties: fill !important;
 }
 
 #QuickFolders-Category-Box[mode="filter"] toolbarbutton {

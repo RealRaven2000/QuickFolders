@@ -5087,9 +5087,9 @@ QuickFolders.Interface = {
       searchFolderName = searchString.substr(parentPos+1);
 			enteredSearch = enteredSearch.substr(parentPos+1); // original mixed case for subfolder creation; include placeholder for account
 			parentCount = parentString.split(/[\/>]/).length + 1; // original entry for parent
-    }
-    else 
+    } else {
       searchFolderName = searchString;
+    }
 
     // if quickMove is active we need to suppress matches from newsgroups (as we can't move mail to them)
 		// "parent/" no name given, only lists the direct children
@@ -5179,19 +5179,22 @@ QuickFolders.Interface = {
 			}
 
 			let isInsertNewFolderTop = prefs.getBoolPref("quickMove.createFolderOnTop");
-			if (parents.length)
+			if (parents.length) {
 				util.logDebugOptional("interface.findFolder", "/ create subfolder entries ");
+      }
 
 			// create new subfolder case - let's omit for ">" case for now
       if (!searchString.includes(">")) while (parents.length) {
-
 				let f = parents.pop();
 
-				if (util.doesMailUriExist(f.URI + "/" + enteredSearch.replace(">","/")))
-					continue; // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
+        // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
+				if (util.doesMailUriExist(f.URI + "/" + enteredSearch.replace(">","/"))) continue; 
+        // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
 				if (matches.length &&
-					  matches[0].uri.toLocaleLowerCase() == (f.URI + "/" + enteredSearch.replace(">","/")).toLocaleLowerCase())
-					continue; // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
+					  matches[0].uri.toLocaleLowerCase() == (f.URI + "/" + enteredSearch.replace(">","/")).toLocaleLowerCase()) {
+          continue; 
+        }
+            
 				let menuitem = this.createIconicElement("menuitem","*"),
 				    label = this.getUIstring("qfNewSubFolder");
 

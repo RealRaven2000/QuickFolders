@@ -734,7 +734,7 @@ QuickFolders.Util = {
   } ,
 
   // change: let's pass back the messageList that was moved / copied
-  moveMessages: function moveMessages(targetFolder, messageUris, makeCopy) {
+  moveMessages: async function moveMessages(targetFolder, messageUris, makeCopy) {
     const Ci = Components.interfaces,
           util = QuickFolders.Util,
           prefs = QuickFolders.Preferences; 
@@ -752,7 +752,7 @@ QuickFolders.Util = {
         return null;
       }
       step = 1;
-      let messageList = []; // nsIMutableArray was removed in v85
+      let messageList = [];
       step = 2;
 
       // copy what we need...
@@ -764,6 +764,7 @@ QuickFolders.Util = {
           bookmarks = QuickFolders.bookmarks,
           isTargetDifferent = false,
           sourceFolder;
+      util.logDebug(`moveMessages  with readStatus = ${readStatus}`);
       for (let i = 0; i < messageUris.length; i++) {
         let messageUri = messageUris[i],
             Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri),
@@ -772,14 +773,16 @@ QuickFolders.Util = {
           switch (readStatus) {
             case 1:
               Message.markRead(false);
+              util.logDebug(`setting message '${Message.mime2DecodedSubject}' to Status [unread].`);
               break;
             case 2:
               Message.markRead(true);
+              util.logDebug(`setting message '${Message.mime2DecodedSubject}' to Status [read].`);
               break;
           }
         }
         step = 3;
-        // if we move, check our reading list!
+        // if we move emails, check our reading list and invalidate matching items!
         if (!makeCopy && bookmarked>=0) {
           let entry = bookmarks.Entries[bookmarked];
           // overwrite the folder URI: we will hope to find it here after being moved
@@ -792,9 +795,36 @@ QuickFolders.Util = {
             entry.messageId = Message.messageId; // preserve MessagId as entry.Uri will be always WRONG
           }
         }
-
         messageIdList.push(Message.messageId); 
         messageList.push(Message);
+        
+        // https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-messages.js#1029
+        // add a folderlistener for each message!
+              
+        let folderListener = {
+          onMessageAdded(parentItem, msgHdr) {
+            if (targetFolder.URI != msgHdr.folder.URI) {
+              return;
+            }
+            let idx = messageIdList.indexOf(msgHdr.messageId);
+            if (idx>=0) {
+              finish(msgHdr);
+              // messageIdList[idx] = msgHdr.messageId; // overwrite id to pass back
+            }
+          },
+        };
+        
+        MailServices.mailSession.AddFolderListener(
+          folderListener,
+          Ci.nsIFolderListener.added
+        );
+        
+        let finish = msgHdr => {
+          MailServices.mailSession.RemoveFolderListener(folderListener);
+        };              
+
+        // how to remove listeners for mails that couldn't be moved??
+
         // [issue 23]  quick move from search list fails if first mail is already in target folder
         //  What to do if we have "various" source folders?
         if (Message.folder.QueryInterface(Ci.nsIMsgFolder) != targetFolder) {
@@ -826,30 +856,94 @@ QuickFolders.Util = {
       
       step = 5;
       
-      const cs = MailServices.copy  // Tb91
-        || Cc["@mozilla.org/messenger/messagecopyservice;1"].getService(Ci.nsIMsgCopyService); // older
-        
       step = 6;
       targetFolder = targetFolder.QueryInterface(Ci.nsIMsgFolder);
       step = 7;
-      let isMove = (!makeCopy), // mixed!
+      let isMove = (!makeCopy), 
           mw = msgWindow; // msgWindow  - global
-      util.logDebugOptional('dnd,quickMove,dragToNew', 'calling CopyMessages (\n' +
-        'sourceFolder = ' + sourceFolder.prettyName + '\n'+
-        'messages = ' + messageList + '\n' +
-        'destinationFolder = ' + targetFolder.prettyName + '\n' + 
-        'isMove = (various)\n' + 
-        'listener = QuickFolders.CopyListener\n' +
-        'window = ' + mw + '\n' +
-        'allowUndo = true)'); 
+      // util.logDebugOptional('dnd,quickMove,dragToNew', ...)
+      if (QuickFolders.Preferences.isDebugOption("dnd,quickMove,dragToNew")) {
+        console.log(
+        `QuickFolders.Util.moveMessages()
+  calling CopyMessages (
+sourceFolder = ${sourceFolder.prettyName} ,
+messages = ${messageList} ,
+destinationFolder = ${targetFolder.prettyName} ,
+isMove = ${isMove} 
+listener = ${QuickFolders.CopyListener} ,
+window = ${mw} ,
+allowUndo = true)`
+        ); 
+      }
       let currentTab = tabmail.selectedTab;
       
-
-      if (cs.copyMessages) {
-        cs.copyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, mw, true);
-      } else {
-        cs.CopyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, mw, true);
+      // workaround to sync imap server: 
+      // if (targetFolder.server.type == "imap") {..}
+      if (!isQuickMove || isQuickMove && isStatusQuickMove) try {
+        if (readStatus) {
+          let isRead;
+          switch (readStatus) {
+            case 1:
+              isRead = false;
+              util.logDebug(`Setting ${messageList.length} messages to Status [unread].`);
+              break;
+            case 2:
+              isRead = true;
+              util.logDebug(`Setting ${messageList.length} messages to Status [read].`);
+              break;
+          }
+          // Problem: in quickMove, array may contain mails from multiple source folders!
+          sourceFolder.markMessagesRead(messageList, isRead);
+        }
       }
+      catch(ex) {
+        util.logException("sync Read status", ex);
+      }
+      
+      // original code (not async):
+      // MailServices.copy.copyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, mw, true);
+      
+      
+      // from https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-messages.js#195
+      try {
+        let promises = [];
+        let msgHeaders = messageList;
+        promises.push(
+            new Promise((resolve, reject) => {
+              MailServices.copy.copyMessages(
+                sourceFolder,
+                msgHeaders,
+                targetFolder,
+                isMove && sourceFolder.canDeleteMessages,
+                {
+                  OnStartCopy() {},
+                  OnProgress(progress, progressMax) {},
+                  SetMessageKey(key) {},
+                  GetMessageId(messageId) {},
+                  OnStopCopy(status) {
+                    if (status == Cr.NS_OK) {
+                      resolve();
+                      // fix bookmarks
+                      QuickFolders.CopyListener.OnStopCopy(status); 
+                    } else {
+                      reject(status);
+                    }
+                  },
+                },
+                mw,  // msgWindow
+                true   // allowUndo
+              );
+            })
+          );
+        await Promise.allSettled(promises);
+      } catch (ex) {
+        Cu.reportError(ex);
+        throw new ExtensionError(
+          `Error ${isMove ? "moving" : "copying"} message: ${ex.message}`
+        );
+      }
+      
+      
       // support move / copy to XXX again
       try {
         Services.prefs.setCharPref("mail.last_msg_movecopy_target_uri", targetFolder.URI);
@@ -1331,8 +1425,14 @@ QuickFolders.Util = {
   
   // appends user=pro OR user=proRenew if user has a valid / expired license
   makeUriPremium: function makeUriPremium(URL) {
-    const util = QuickFolders.Util,
-          isPremiumLicense = util.hasValidLicense() || QuickFolders.Util.licenseInfo.isExpired;
+    const util = QuickFolders.Util;
+    let isPremiumLicense;
+    try {
+      isPremiumLicense = util.hasValidLicense() || QuickFolders.Util.licenseInfo.isExpired;
+    }
+    catch (ex) {
+      return URL;
+    }
     try {
       let uType = "";
       if (QuickFolders.Util.licenseInfo.isExpired) 

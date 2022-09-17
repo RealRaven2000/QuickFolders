@@ -92,7 +92,7 @@ QuickFolders.quickMove = {
   // move or copy mails (or both at the same time!)
 	// parentName = optional parameter for remembering for autofill - 
 	// only pass this when search was done in the format parent/folder
-  execute: function execute(targetFolderUri, parentName) {
+  execute: async function execute(targetFolderUri, parentName) {
     function showFeedback(actionCount, messageIdList, isCopy) {
       // show notification
       if (!actionCount) 
@@ -126,11 +126,14 @@ QuickFolders.quickMove = {
 			if (!QuickFolders.quickMove.Settings.isSilent)
 				util.slideAlert("QuickFolders",notify);
     }
-    function copyList(uris, origins, isCopy) {
+    async function copyList(uris, origins, isCopy) {
       if (!uris.length) return;
       actionCount = 0;
+      
       // Move / Copy Messages
-      let messageIdList = util.moveMessages(fld, uris, isCopy);
+      let messageIdList = await util.moveMessages(fld, uris, isCopy);
+
+
       // should return an array of message ids...
       if (messageIdList) { 
         // ...which we should match before deleting our URIs?
@@ -174,7 +177,9 @@ QuickFolders.quickMove = {
     }
         
     util.logDebugOptional('quickMove', 'quickMove.execute() , tabMode = ' + tabMode);
-
+    
+    // ========================================
+    // folder moving - separate
 		try {
       if (this.folders.length) { // [issue 75] move folders instead
         QI.moveFolders(this.folders, this.IsCopy, fld);
@@ -193,8 +198,8 @@ QuickFolders.quickMove = {
             originMove.push(this.Origins[j]);
           }
         }
-        copyList(uriCopy, originCopy, true);
-        copyList(uriMove, originMove, false);
+        await copyList(uriCopy, originCopy, true);
+        await copyList(uriMove, originMove, false);
       }
 			this.resetList();
 			this.update();

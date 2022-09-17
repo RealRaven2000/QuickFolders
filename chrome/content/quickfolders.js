@@ -282,10 +282,13 @@ END LICENSE BLOCK */
     ## [issue 297] quickMove: Parent folder with space in name not shown
     ## 5.12.1 - do not open history tab automatically & add an option for this.
     
-  5.12.2 QuickFolders Pro - WIP
-    ## [issue 306] option to restore unread or force read status on messages when dragging them to folders
+  5.13 QuickFolders Pro - WIP
+    ## [issue 308] When moving mail to IMAP folder, quickFilters assistant fails to create filters
+    ## [issue 309] Create Filters dialog - link to "get quickFilters!" doesn't work
+    ## [issue 306] New option to restore unread or force read status on messages when dragging them to folders
+    ## Fixed color of built in create message filters icon (when filter creation is active)
     ## toolbar position number control too narrow, various layout fixes in settings dialog
-    
+    ## increased max version to 106.0    
   
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
@@ -1105,7 +1108,7 @@ var QuickFolders = {
 
 		// drop mails on popup: move mail, like in buttondragobserver
 		// NOT USED DURING MESSAGE DROPS! IT IS USING THE buttonDragObserver.drop INSTEAD!
-		drop: function menuObs_drop(evt, dropData, dragSession) {
+		drop: async function menuObs_drop(evt, dropData, dragSession) {
 			const Ci = Components.interfaces,
             Cc = Components.classes,
 				    util = QuickFolders.Util,
@@ -1124,7 +1127,7 @@ var QuickFolders = {
           contentType = types[0];
           
 					
-			let moveOrCopy = function moveOrCopy(newFolder, sourceURI) {
+			let moveOrCopy = async function moveOrCopy(newFolder, sourceURI) {
 				let sourceFolder,
 				   	step='3. ' + (isCopy ? 'copy' : 'move') + ' messages: ' + newFolder.URI + ' thread:' + isThread;
 				util.logDebugOptional("dragToNew", step);
@@ -1138,7 +1141,7 @@ var QuickFolders = {
 						sourceFolder = msgHdr.folder;
 					}
 				}
-				let msgList = util.moveMessages(newFolder, messageUriList, isCopy);
+				let msgList = await util.moveMessages(newFolder, messageUriList, isCopy);
 
 				// have the filter created with a delay so that filters can adapt to the new folder!!
 				if (QFFW.FilterMode) {
@@ -1666,7 +1669,7 @@ var QuickFolders = {
 			}
 		} ,
 
-		drop: function btnObs_drop(evt){
+		drop: async function btnObs_drop(evt){
 			const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           prefs = QuickFolders.Preferences,
@@ -1859,10 +1862,10 @@ var QuickFolders = {
           
 					try {
 						util.logDebugOptional("dnd", "drop: " + messageUris.length + " messageUris to " + targetFolder.URI);
-						if(messageUris.length > 0) {
+						if (messageUris.length > 0) {
 							
 							lastAction = "moveMessages";
-							let msgList = util.moveMessages(
+							let msgList = await util.moveMessages(
 								targetFolder,
 								messageUris,
 								dragSession.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY

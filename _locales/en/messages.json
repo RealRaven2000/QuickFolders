@@ -1890,7 +1890,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 - Does not open a version history tab by default. You can restore the old behavior in advanced settings.{L2} {P1}This version of QuickFolders fixes additional problems {boldStart}specific to Thunderbird 102{boldEnd}; we are also actively pushing for performance improvements in the coming releases of Thunderbird.{P2} {L1}Added support for licensing Exchange accounts (using Exquilla / Owl) from Thunderbird 98 forward. {L2} {L1}After using the [=] key to display recent quickJump folders, the search box now collapses automatically.{L2} {L1}Improved entering search for parent folders with spaces or word delimiters in the name. [issue 297]{L2} {L1}Support the mail context menu command 'move to folder again'.{L2}"
+    "message": "{P1}This version of QuickFolders addresses problems specific to {boldStart}IMAP accounts{boldEnd}.{P2} {L1}New option to automatically mark emails as read or unread when dragging them to a QuickFolder. {L2} {L1}With quickFilters assistant generating new filter rules will not fail anymore when moving mail to IMAP folders.{L2} {L1}Fixed link to get quickFilters in filter creation dialog.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

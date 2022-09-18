@@ -1830,7 +1830,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 - Non apre una scheda della cronologia delle versioni per impostazione predefinita. Puoi ripristinare il vecchio comportamento nelle impostazioni avanzate.{L2} {P1}Questa versione di QuickFolders risolve problemi aggiuntivi {boldStart}specifici per Thunderbird 102{boldEnd}; stiamo anche attivamente spingendo per miglioramenti delle prestazioni nelle prossime versioni di Thunderbird.{P2} {L1}Si sono verificati problemi fondamentali con la velocità in Thunderbird 102 causati da codice inefficiente nell'albero delle cartelle. Questi sono ora per lo più risolti - vedi [issue 283] {L2} {L1}Le categorie QuickFolders ora sono state ripristinate correttamente di nuovo, assicurati di avere una sola finestra di posta aperta quando spegni Thunderbird. Vedi [issue 279]{L2} {L1}Risolte le icone personalizzate nell'albero delle cartelle.{L2} {L1}Risolti i menu delle cartelle recenti.{L2}{L1}Routine riparata per la rimozione delle schede non valide{L2}"
+    "message": "{P1}Questa versione di QuickFolders risolve problemi specifici degli {boldStart}account IMAP{boldEnd}.{P2} {L1}Nuova opzione per contrassegnare automaticamente le email come lette o non lette quando le trascini in una QuickFolder. {L2} {L1}Con l'assistente QuickFilters, la generazione di nuove regole di filtro non fallirà più quando si sposta la posta nelle cartelle IMAP.{L2} {L1}Corretto il collegamento per ottenere QuickFilters nella finestra di dialogo di creazione del filtro.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

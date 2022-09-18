@@ -1784,7 +1784,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1: no obre una pestanya d'historial de versions de manera predeterminada. Podeu restaurar el comportament antic a la configuració avançada.{L2} {P1}Aquesta versió de QuickFolders soluciona problemes addicionals {boldStart}específics de Thunderbird 102{boldEnd}; també estem pressionant activament per millorar el rendiment en les properes versions de Thunderbird.{P2}{L1}S'ha afegit compatibilitat per a l'obtenció de llicències de comptes Exchange (utilitzant Exquilla/Owl) des del Thunderbird 98 en endavant. {L2} {L1}Després d'utilitzar la tecla [=] per mostrar les carpetes QuickJump recents, ara el quadre de cerca es replega automàticament.{L2} {L1}S'ha millorat la cerca de les carpetes principals amb espais o delimitadors de paraules al nom. [issue 297]{L2} {L1}Admet l'ordre del menú contextual del correu 'torna a moure a la carpeta'.{L2}"
+    "message": "{P1}Aquesta versió de QuickFolders soluciona problemes específics dels comptes {boldStart}IMAP{boldEnd}.{P2} {L1}Nova opció per marcar automàticament els correus electrònics com a llegits o no llegits quan els arrossegueu a una carpeta ràpida. {L2} {L1}Amb l'assistent de quickFilters que genera noves regles de filtre ja no fallarà quan es mou el correu a carpetes IMAP.{L2} {L1}S'ha corregit l'enllaç per obtenir quickFilters al diàleg de creació de filtres.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

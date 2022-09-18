@@ -1777,7 +1777,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 - 默认情况下不打开版本历史选项卡。 您可以在高级设置中恢复旧行为。{L2} {P1}此版本的 QuickFolders 修复了特定于 Thunderbird 102 的其他问题； 我们也在积极推动即将发布的 Thunderbird 版本的性能改进。{P2} {L1}从 Thunderbird 98 开始，增加了对许可 Exchange 帐户（使用 Exquilla / Owl）的支持。 {L2} {L1}使用 [=] 键显示最近的 quickJump 文件夹后，搜索框现在会自动折叠。{L2} {L1}改进了名称中包含空格或单词分隔符的父文件夹的输入搜索。 [问题 297]{L2} {L1}支持邮件上下文菜单命令“再次移动到文件夹”。{L2}"
+    "message": "{L1}5.12.1 - 默认情况下不打开版本历史选项卡。 您可以在高级设置中恢复旧行为。{L2} {P1}此版本的 QuickFolders 修复了特定于 {P1}此版本的 QuickFolders 解决了特定于 {boldStart}IMAP 帐户{boldEnd} 的问题。{P2} {L1}新选项可在将电子邮件拖到 QuickFolder 时自动将其标记为已读或未读。 {L2} {L1}使用 quickFilters 助手将邮件移动到 IMAP 文件夹时不会再失败。{L2} {L1}修复了在过滤器创建对话框中获取 quickFilters 的链接。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

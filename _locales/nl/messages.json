@@ -1842,7 +1842,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 - Opent standaard geen tabblad met versiegeschiedenis. U kunt het oude gedrag herstellen in de geavanceerde instellingen.{L2} {P1}Deze versie van QuickFolders lost extra problemen op {boldStart}specifiek voor Thunderbird 102{boldEnd}; we streven ook actief naar prestatieverbeteringen in de komende releases van Thunderbird.{P2} {L1}Ondersteuning toegevoegd voor het licentiëren van Exchange-accounts (met Exquilla / Owl) vanaf Thunderbird 98 en later. {L2} {L1}Na het gebruik van de [=]-toets om recente quickJump-mappen weer te geven, wordt het zoekvak nu automatisch samengevouwen.{L2} {L1}Verbeterde invoer van zoeken naar bovenliggende mappen met spaties of scheidingstekens voor woorden in de naam. [uitgave 297]{L2} {L1}Ondersteun het e-mailcontextmenu-commando 'opnieuw naar map verplaatsen'.{L2}"
+    "message": "{L1}5.12.1 - Opent standaard geen tabblad met versiegeschiedenis. U kunt het oude gedrag herstellen in de geavanceerde{P1}Deze versie van QuickFolders lost problemen op die specifiek zijn voor {boldStart}IMAP-accounts{boldEnd}.{P2} {L1}Nieuwe optie om e-mails automatisch als gelezen of ongelezen te markeren wanneer ze naar een QuickFolder worden gesleept. {L2} {L1}Met de quickFilters-assistent zal het genereren van nieuwe filterregels niet meer mislukken bij het verplaatsen van e-mail naar IMAP-mappen.{L2} {L1}Vaste link om quickFilters te krijgen in het dialoogvenster voor het maken van filters.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

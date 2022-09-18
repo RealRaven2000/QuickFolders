@@ -1824,7 +1824,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 - N'ouvre pas d'onglet d'historique des versions par défaut. Vous pouvez restaurer l'ancien comportement dans les paramètres avancés.{L2} {P1}Cette version de QuickFolders corrige des problèmes supplémentaires {boldStart}spécifiques à Thunderbird 102{boldEnd} ; nous recherchons également activement des améliorations de performances dans les prochaines versions de Thunderbird.{P2}{L1}Ajout de la prise en charge des licences des comptes Exchange (à l'aide d'Exquilla/Owl) à partir de Thunderbird 98. {L2} {L1}Après avoir utilisé la touche [=] pour afficher les dossiers quickJump récents, la zone de recherche se réduit désormais automatiquement.{L2} {L1}Amélioration de la recherche des dossiers parents avec des espaces ou des délimiteurs de mots dans le nom. [issue 297]{L2} {L1}Prise en charge de la commande du menu contextuel de messagerie « déplacer à nouveau vers le dossier ».{L2}"
+    "message": "{P1}Cette version de QuickFolders résout les problèmes spécifiques aux {boldStart}comptes IMAP{boldEnd}.{P2} {L1}Nouvelle option pour marquer automatiquement les e-mails comme lus ou non lus lorsque vous les faites glisser vers un QuickFolder. {L2} {L1}Avec l'assistant quickFilters, la génération de nouvelles règles de filtrage n'échouera plus lors du déplacement de courrier vers des dossiers IMAP.{L2} {L1}Correction du lien pour obtenir des filtres rapides dans la boîte de dialogue de création de filtre.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

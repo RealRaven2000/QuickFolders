@@ -1851,7 +1851,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 – Öppnar inte en versionshistorikflik som standard. Du kan återställa det gamla beteendet i avancerade inställningar.{L2} {P1}Denna version av QuickFolders fixar ytterligare problem {boldStart}specifika för Thunderbird 102{boldEnd}; vi driver också aktivt på för prestandaförbättringar i de kommande utgåvorna av Thunderbird.{P2} {L1}Lägg till stöd för licensiering av Exchange-konton (med Exquilla / Owl) från Thunderbird 98 och framåt. {L2} {L1}Efter att ha använt [=]-tangenten för att visa de senaste quickJump-mappar, komprimeras nu sökrutan automatiskt.{L2} {L1}Förbättrad sökning efter överordnade mappar med mellanslag eller ordavgränsare i namnet. [utgåva 297]{L2} {L1}Stöd e-postkontextmenykommandot 'flytta till mapp igen'.{L2}"
+    "message": "{P1}Den här versionen av QuickFolders löser problem som är specifika för {boldStart}IMAP-konton{boldEnd}.{P2} {L1}Nytt alternativ för att automatiskt markera e-postmeddelanden som lästa eller olästa när du drar dem till en QuickFolder. {L2} {L1}Med quickFilters-assistenten kommer det inte att misslyckas längre att generera nya filterregler när e-post flyttas till IMAP-mappar.{L2} {L1}Fixad länk för att få quickFilters i dialogrutan för att skapa filter.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

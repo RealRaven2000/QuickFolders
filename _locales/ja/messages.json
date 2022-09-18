@@ -1716,7 +1716,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 - デフォルトではバージョン履歴タブを開きません。 詳細設定で以前の動作を復元できます。{L2} {P1}このバージョンの QuickFolders では、{boldStart}Thunderbird 102 固有の問題{boldEnd}が修正されています。 また、Thunderbird の今後のリリースでパフォーマンスの改善を積極的に推進しています。{P2} {L1}Thunderbird 98 以降、Exchange アカウントのライセンス (Exquilla / Owl を使用) のサポートを追加しました。 {L2} {L1}[=] キーを使用して最近の QuickJump フォルダーを表示した後、検索ボックスが自動的に折りたたまれるようになりました。{L2} {L1}名前にスペースまたは単語の区切り記号が含まれる親フォルダーの検索入力が改善されました。 [issue 297]{L2} {L1}メール コンテキスト メニュー コマンド「もう一度フォルダに移動」をサポートします。{L2}"
+    "message": "{P1}このバージョンの QuickFolders は、{boldStart}IMAP アカウント{boldEnd} に固有の問題に対処しています。{P2} {L1}電子メールを QuickFolder にドラッグすると、電子メールを自動的に既読または未読としてマークする新しいオプション。 {L2} {L1}quickFilters アシスタントを使用すると、メールを IMAP フォルダに移動するときに、新しいフィルタ ルールの生成が失敗しなくなりました。{L2} {L1}フィルタ作成ダイアログで quickFilters を取得するためのリンクを修正しました。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

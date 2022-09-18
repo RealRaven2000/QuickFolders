@@ -1830,7 +1830,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 – Die Seite mit dem Versionsverlauf wird nicht mehr automatisch geöffnet. Das alte Verhalten kann in erweiterten Einstellungen wiederhergestellt werden.{L2}{P1}Diese Version von QuickFolders behebt zusätzliche Probleme {boldStart}spezifisch für Thunderbird 102{boldEnd}; Wir drängen auch aktiv auf Leistungsverbesserungen in den kommenden Versionen von Thunderbird.{P2}{L1}Unterstützung für die Lizenzierung von Exchange-Konten (unter Verwendung von Exquilla / Owl) ab Thunderbird 98 hinzugefügt. {L2} {L1}Nach der Schnelltaste [=] schließt das Suchfeld sich automatisch, um die Chronik der quickJump-Ordner anzuzeigen.{L2} {L1}Verbesserte Suche für übergeordnete Ordner bei Eingabe von Namen mit Leerzeichen oder Worttrennzeichen im Namen [issue 297].{L2} {L1}Unterstützung den Mail-Kontextmenübefehl 'erneut in Ordner verschieben'.{L2}"
+    "message": "{P1}Diese Version von QuickFolders behebt spezifische Probleme mit {boldStart}IMAP-Konten{boldEnd}.{P2} {L1}Neue Option zum automatischen Markieren von E-Mails als gelesen oder ungelesen, wenn sie in einen QuickFolder gezogen werden. {L2} {L1}Mit dem QuickFilters-Assistenten schlägt das Generieren neuer Filterregeln nicht mehr fehl, wenn E-Mails in IMAP-Ordner verschoben werden.{L2} {L1}Link zum Abrufen von QuickFilters im Filtererstellungsdialogfeld korrigiert.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

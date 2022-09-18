@@ -1833,7 +1833,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 — Domyślnie nie otwiera karty historii wersji. Możesz przywrócić stare zachowanie w ustawieniach zaawansowanych.{L2} {P1}Ta wersja QuickFolders rozwiązuje dodatkowe problemy {boldStart}specyficzne dla Thunderbird 102{boldEnd}; aktywnie pracujemy również nad ulepszeniami wydajności w nadchodzących wydaniach Thunderbirda.{P2} {L1}Dodano obsługę licencjonowania kont Exchange (przy użyciu Exquilla / Owl) od Thunderbird 98 do przodu. {L2} {L1}Po użyciu klawisza [=] w celu wyświetlenia ostatnich folderów szybkiego skoku, pole wyszukiwania jest teraz zwijane automatycznie.{L2} {L1}Ulepszono wpisywanie wyszukiwania folderów nadrzędnych ze spacjami lub ogranicznikami wyrazów w nazwie. [problem 297]{L2} {L1}Obsługa polecenia menu kontekstowego poczty 'przenieś ponownie do folderu'.{L2}"
+    "message": "{P1}Ta wersja QuickFolders rozwiązuje problemy specyficzne dla {boldStart}kont IMAP{boldEnd}.{P2} {L1}Nowa opcja automatycznego oznaczania wiadomości e-mail jako przeczytanych lub nieprzeczytanych podczas przeciągania ich do QuickFolder. {L2} {L1}Dzięki asystentowi quickFilters generowanie nowych reguł filtrowania nie zawiedzie już przy przenoszeniu poczty do folderów IMAP.{L2} {L1}Poprawiono link do szybkiego filtrowania w oknie tworzenia filtrów.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

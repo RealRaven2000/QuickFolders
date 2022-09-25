@@ -530,7 +530,7 @@ QuickFolders.Model = {
           }
           // Folder uri is invalid, reconstruct!
           try {
-            let newUri = reconstructUri(e);
+            let newUri = reconstructUri(e); // this should make a new uri based on the current account key and remaining path
             // Validate the reconstructed uri.
             f = QuickFolders.Model.getMsgFolderFromUri(newUri, false);
             if (!f) {

@@ -535,8 +535,9 @@ menupopup.widerMenu menucaption {
 	color: rgb(60,0,0) !important;
 }
 
+/* increase delay for pulsing shadow to 30mins */
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
-	animation: quickfoldersRenew 2s 60s infinite cubic-bezier(0.66, 0, 0, 1);
+	animation: quickfoldersRenew 2s 1800s infinite cubic-bezier(0.66, 0, 0, 1);
 	box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.0);
 	margin: 0 4px 1px 7px;
 }

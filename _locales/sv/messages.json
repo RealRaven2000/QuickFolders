@@ -1851,7 +1851,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1}Den här versionen av QuickFolders löser problem som är specifika för {boldStart}IMAP-konton{boldEnd}.{P2} {L1}Nytt alternativ för att automatiskt markera e-postmeddelanden som lästa eller olästa när du drar dem till en QuickFolder. {L2} {L1}Med quickFilters-assistenten kommer det inte att misslyckas längre att generera nya filterregler när e-post flyttas till IMAP-mappar.{L2} {L1}Fixad länk för att få quickFilters i dialogrutan för att skapa filter.{L2}"
+    "message": "{P1}Den här versionen av QuickFolders löser problem som är specifika för {boldStart}IMAP-konton{boldEnd}.{P2} {L1}Nytt alternativ för att automatiskt markera e-postmeddelanden som lästa eller olästa när du drar dem till en QuickFolder. {L2} {L1}Med quickFilters-assistenten kommer det inte att misslyckas längre att generera nya filterregler när e-post flyttas till IMAP-mappar.{L2} {L1}Fixad länk för att få quickFilters i dialogrutan för att skapa filter.{L2} {L1}5.13.1 Fixat ett problem med dubblerade e-postmeddelanden när du drar e-post till en undermenymapp. [issue 312]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -748,7 +748,7 @@ QuickFolders.Util = {
       catch(e) { util.alert('QuickFolders.Util.moveMessages:' + e); }
 
       if (targetFolder.flags & this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL) {
-        util.slideAlert (util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
+        util.slideAlert ("QuickFolders moveMessages()", util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
         return null;
       }
       step = 1;

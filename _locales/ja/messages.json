@@ -1716,7 +1716,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{P1}このバージョンの QuickFolders は、{boldStart}IMAP アカウント{boldEnd} に固有の問題に対処しています。{P2} {L1}電子メールを QuickFolder にドラッグすると、電子メールを自動的に既読または未読としてマークする新しいオプション。 {L2} {L1}quickFilters アシスタントを使用すると、メールを IMAP フォルダに移動するときに、新しいフィルタ ルールの生成が失敗しなくなりました。{L2} {L1}フィルタ作成ダイアログで quickFilters を取得するためのリンクを修正しました。{L2}"
+    "message": "{P1}このバージョンの QuickFolders は、{boldStart}IMAP アカウント{boldEnd} に固有の問題に対処しています。{P2} {L1}電子メールを QuickFolder にドラッグすると、電子メールを自動的に既読または未読としてマークする新しいオプション。 {L2} {L1}quickFilters アシスタントを使用すると、メールを IMAP フォルダに移動するときに、新しいフィルタ ルールの生成が失敗しなくなりました。{L2} {L1}フィルタ作成ダイアログで quickFilters を取得するためのリンクを修正しました。{L2} {L1}5.13.1 メールをサブメニュー フォルダにドラッグすると、メールが重複する問題が修正されました。 [issue 312]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

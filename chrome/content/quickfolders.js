@@ -282,13 +282,18 @@ END LICENSE BLOCK */
     ## [issue 297] quickMove: Parent folder with space in name not shown
     ## 5.12.1 - do not open history tab automatically & add an option for this.
     
-  5.13 QuickFolders Pro - WIP
+  5.13 QuickFolders Pro - 26/09/2022
     ## [issue 308] When moving mail to IMAP folder, quickFilters assistant fails to create filters
     ## [issue 309] Create Filters dialog - link to "get quickFilters!" doesn't work
     ## [issue 306] New option to restore unread or force read status on messages when dragging them to folders
     ## Fixed color of built in create message filters icon (when filter creation is active)
     ## toolbar position number control too narrow, various layout fixes in settings dialog
     ## increased max version to 106.0    
+
+  5.13.1 QuickFolders Pro - WIP
+    ## [issue 312] Unwanted copy of Email when moving to a QuickFolders submenu
+    ## Make sure warning is actually displayed when attempting to drag emails to a virtual folder (which isn't possible)
+
   
     -=-----------------=-    PLANNED
     ## [issue 103] Feature Request: Support copying folders
@@ -1703,6 +1708,8 @@ var QuickFolders = {
           isMoveFolderQuickMove = false;
 			switch (contentType) {
 				case  "text/x-moz-folder": 
+          evt.preventDefault();
+          evt.stopPropagation();
           // [issue 75] support moving folders through quickMove
           if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
             isMoveFolderQuickMove = true;
@@ -1758,7 +1765,9 @@ var QuickFolders = {
 							txtUris ='',
 							dt = evt.dataTransfer,
 					    types = dt.mozTypesAt(0);
-              
+          evt.preventDefault();
+          evt.stopPropagation();
+        
           if (DropTarget.getAttribute("disabled")) {
             let msg="", maxTabs;
             if (!util.hasValidLicense()) { // max tab
@@ -1894,6 +1903,8 @@ var QuickFolders = {
 					break;
         case "text/plain":    // newsgroup names
 				case "text/unicode":  // dropping another tab on this tab inserts it before
+          evt.preventDefault();
+          evt.stopPropagation();
           // let buttonURI = dropData.data;
           let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
 					QuickFolders.Model.insertAtPosition(buttonURI, DropTarget.folder.URI, "");
@@ -1901,10 +1912,7 @@ var QuickFolders = {
         default:
           isPreventDefault = false;
 			}
-      if (isPreventDefault) {
-        evt.preventDefault();
-        evt.stopPropagation();
-      }
+      util.logDebugOptional('dnd',"completed buttonDragObserver.drop() !\n==========================");
 		},
 
 		// new handler for starting drag of buttons (re-order)

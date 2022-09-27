@@ -1836,7 +1836,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{P1}Esta versión de QuickFolders soluciona problemas específicos de las {boldStart}cuentas IMAP{boldEnd}.{P2} {L1}Nueva opción para marcar automáticamente los correos electrónicos como leídos o no leídos al arrastrarlos a una QuickFolder. {L2} {L1}Con el asistente de QuickFilters, la generación de nuevas reglas de filtro ya no fallará al mover el correo a las carpetas IMAP.{L2} {L1}Se corrigió el enlace para obtener QuickFilters en el cuadro de diálogo de creación de filtros.{L2}"
+    "message": "{P1}Esta versión de QuickFolders soluciona problemas específicos de las {boldStart}cuentas IMAP{boldEnd}.{P2} {L1}Nueva opción para marcar automáticamente los correos electrónicos como leídos o no leídos al arrastrarlos a una QuickFolder. {L2} {L1}Con el asistente de QuickFilters, la generación de nuevas reglas de filtro ya no fallará al mover el correo a las carpetas IMAP.{L2} {L1}Se corrigió el enlace para obtener QuickFilters en el cuadro de diálogo de creación de filtros.{L2} {L1}5.13.1 Se solucionó un problema de correos electrónicos duplicados al arrastrar el correo a una carpeta de submenú. [issue 312]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

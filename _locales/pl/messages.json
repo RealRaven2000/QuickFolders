@@ -1833,7 +1833,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{P1}Ta wersja QuickFolders rozwiązuje problemy specyficzne dla {boldStart}kont IMAP{boldEnd}.{P2} {L1}Nowa opcja automatycznego oznaczania wiadomości e-mail jako przeczytanych lub nieprzeczytanych podczas przeciągania ich do QuickFolder. {L2} {L1}Dzięki asystentowi quickFilters generowanie nowych reguł filtrowania nie zawiedzie już przy przenoszeniu poczty do folderów IMAP.{L2} {L1}Poprawiono link do szybkiego filtrowania w oknie tworzenia filtrów.{L2}"
+    "message": "{P1}Ta wersja QuickFolders rozwiązuje problemy specyficzne dla {boldStart}kont IMAP{boldEnd}.{P2} {L1}Nowa opcja automatycznego oznaczania wiadomości e-mail jako przeczytanych lub nieprzeczytanych podczas przeciągania ich do QuickFolder. {L2} {L1}Dzięki asystentowi quickFilters generowanie nowych reguł filtrowania nie zawiedzie już przy przenoszeniu poczty do folderów IMAP.{L2} {L1}Poprawiono link do szybkiego filtrowania w oknie tworzenia filtrów.{L2} {L1}5.13.1 Naprawiono problem zduplikowanych wiadomości e-mail podczas przeciągania poczty do folderu podmenu. [issue 312]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

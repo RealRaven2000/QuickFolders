@@ -1788,7 +1788,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1}此版本的 QuickFolders 解決了特定於 {boldStart}IMAP 帳戶{boldEnd} 的問題。{P2} {L1}新選項可在將電子郵件拖到 QuickFolder 時自動將其標記為已讀或未讀。 {L2} {L1}使用 quickFilters 助手將郵件移動到 IMAP 文件夾時不會再失敗。{L2} {L1}修復了在過濾器創建對話框中獲取 quickFilters 的鏈接。{L2}"
+    "message": "{P1}此版本的 QuickFolders 解決了特定於 {boldStart}IMAP 帳戶{boldEnd} 的問題。{P2} {L1}新選項可在將電子郵件拖到 QuickFolder 時自動將其標記為已讀或未讀。 {L2} {L1}使用 quickFilters 助手將郵件移動到 IMAP 文件夾時不會再失敗。{L2} {L1}修復了在過濾器創建對話框中獲取 quickFilters 的鏈接。{L2} {L1}5.13.1 修復了將郵件拖到子菜單文件夾時重複電子郵件的問題。 [issue 312]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

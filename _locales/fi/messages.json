@@ -282,7 +282,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1}Tämä QuickFolders-versio korjaa {boldStart}IMAP-tileihin{boldEnd} liittyviä ongelmia.{P2} {L1}Uusi vaihtoehto merkitä sähköpostit automaattisesti luetuiksi tai lukemattomiksi, kun ne vedetään QuickFolderiin. {L2} {L1}QuickFilters-avustajan avulla uusien suodatussääntöjen luominen ei enää epäonnistu, kun postia siirretään IMAP-kansioihin.{L2} {L1}Korjattu linkki QuickFilters-sovellukseen suodattimen luontiikkunassa.{L2}"
+    "message": "{P1}Tämä QuickFolders-versio korjaa {boldStart}IMAP-tileihin{boldEnd} liittyviä ongelmia.{P2} {L1}Uusi vaihtoehto merkitä sähköpostit automaattisesti luetuiksi tai lukemattomiksi, kun ne vedetään QuickFolderiin. {L2} {L1}QuickFilters-avustajan avulla uusien suodatussääntöjen luominen ei enää epäonnistu, kun postia siirretään IMAP-kansioihin.{L2} {L1}Korjattu linkki QuickFilters-sovellukseen suodattimen luontiikkunassa.{L2} {L1}5.13.1 Korjattu päällekkäisten sähköpostien ongelma vedettäessä postia alivalikon kansioon. [issue 312]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

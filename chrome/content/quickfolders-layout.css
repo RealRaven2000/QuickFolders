@@ -300,7 +300,7 @@ menupopup.widerMenu menucaption {
 #QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { height:16px !important; }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
-    fill: var(--new-highlight);
+  fill: var(--new-highlight);
 	stroke: currentColor;
 }
 
@@ -535,9 +535,9 @@ menupopup.widerMenu menucaption {
 	color: rgb(60,0,0) !important;
 }
 
-/* increase delay for pulsing shadow to 30mins */
+/* increase delay for pulsing shadow to 60mins */
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
-	animation: quickfoldersRenew 2s 1800s infinite cubic-bezier(0.66, 0, 0, 1);
+	animation: quickfoldersRenew 2s 3600s infinite cubic-bezier(0.66, 0, 0, 1);
 	box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.0);
 	margin: 0 4px 1px 7px;
 }
@@ -635,12 +635,14 @@ toolbar#QuickFolders-CurrentFolderTools {
   background-image: linear-gradient(hsla(0, 0%, 50%, 0.1), hsla(0, 0%, 50%, 0.1));
 	box-shadow: 1px 2px 4px -1px hsla(0, 0%, 50%, 0.7);
 	border-style: solid  !important;
+	border-width: 0px 1px 1px 1px !important;
 	border-color: #666;
+  position: relative; /* compact headers */
 	height: 1.8em; /* large font support, test on Mac / Linux! */
 	min-height: 22px;
 	overflow: visible;
 	padding: 0 2px 1px 2px;
-	border-width: 0px 1px 1px 1px !important;
+  z-index: 10; /* compact headers */
 }
 
 :root[lwt-tree-brighttext] toolbar#QuickFolders-CurrentFolderTools {
@@ -657,11 +659,15 @@ toolbar#QuickFolders-CurrentFolderTools {
 
 #QuickFolders-CurrentFolderTools toolbarbutton.icon {
 	-moz-appearance: none !important;
-	margin: 0 1px !important;
   -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
   fill: currentColor;
   fill-opacity: 0.7;
+	margin: 0 1px !important;
   stroke: transparent;
+}
+
+#QuickFolders-CurrentFolderTools[theme="custom"] toolbarbutton.icon {
+  fill-opacity: 0.9;
 }
 
 
@@ -820,11 +826,14 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 }
 
 #QuickFolders-CurrentFolderTools[theme="default"] > toolbarbutton.icon {
-  fill: rgb(30,30,30); /* silver background */
+  fill: rgb(30,30,30); 
+}
+
+#QuickFolders-CurrentFolderTools[theme="dark"] > toolbarbutton.icon {
+  fill: #ffffff; 
 }
 
 #QuickFolders-Toolbar toolbarbutton.icon,
-#QuickFolders-CurrentFolderTools toolbarbutton.icon,
 #QuickFolders-paintBucketActive .toolbarbutton-icon,
 #QuickFolders-PalettePopup .menu-iconic-icon,
 #qfTabColorMenu menuitem .menu-iconic-icon {
@@ -853,7 +862,8 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 #QuickFolders-Toolbar toolbarbutton.draft.icon, #QuickFolders-CurrentFolderTools toolbarbutton.draft.icon {list-style-image: url("chrome://messenger/skin/icons/file-item.svg");}
 #QuickFolders-Toolbar toolbarbutton.news.icon, #QuickFolders-CurrentFolderTools toolbarbutton.news.icon {list-style-image: url("chrome://messenger/skin/icons/newsgroup.svg");}
 #QuickFolders-Toolbar toolbarbutton.archive.icon, #QuickFolders-CurrentFolderTools toolbarbutton.archive.icon {list-style-image: url("chrome://messenger/skin/icons/archive.svg");}
-#QuickFolders-Toolbar toolbarbutton.invalid, #QuickFolders-CurrentFolderTools toolbarbutton.invalid {
+
+#QuickFolders-Toolbar toolbarbutton.invalid {
   list-style-image: url("chrome://quickfolders/content/skin/ico/clean.svg");
   -moz-context-properties: fill, fill-opacity, stroke;
   fill: currentColor;

@@ -448,7 +448,20 @@ QuickFolders.Interface = {
   },
 
 	onClickThreadTools: function onClickThreadTools(button, evt) {
-		goDoCommand("cmd_markThreadAsRead");
+    // [issue 320] use CTRL modifier to 
+    // mark folder as read and jump to next unread folder
+    if (evt.ctrlKey) {
+      if (QuickFolders.Util.licenseInfo.status == "Valid" && QuickFolders.Util.licenseInfo.keyType!=2) {
+        QuickFolders.Util.CurrentFolder.markAllMessagesRead(msgWindow);
+      }
+      else {
+        let featureText = QuickFolders.Util.getBundleString("qfMarkAllRead.next")
+        QuickFolders.Util.popupRestrictedFeature("markFolderReadAndSkip", `(${featureText})`);
+      }
+    }
+    else {
+      goDoCommand("cmd_markThreadAsRead");
+    }
 		evt.stopPropagation();
 		goDoCommand("button_next");
     this.ensureCurrentFolder();
@@ -491,7 +504,7 @@ QuickFolders.Interface = {
 
 		if (!util.hasValidLicense()) {
       let txt = util.getBundleString("qf.notification.premium.shortcut");
-			util.popupRestrictedFeature("skipUnreadFolder",txt,2);
+			util.popupRestrictedFeature("skipUnreadFolder", txt, 2);
     }
 
 		if (prefs.isDebugOption("navigation")) debugger;
@@ -700,8 +713,9 @@ QuickFolders.Interface = {
 
 			let sDoneWhat = minimalUpdate ? "refreshed on toolbar [minimalUpdate]." : "rebuilt [minimalUpdate=false].";
 			util.logDebug(countFolders + " of " + QuickFolders.Model.selectedFolders.length + " tabs " + sDoneWhat);
-			if (invalidCount)
-				util.logDebug("{0} invalid tabs where found!\n Please check with find orphaned tabs tool.".replace("{0}", invalidCount));
+			if (invalidCount) {
+				util.logDebug("{0} invalid tabs where found!\n Please check with 'Remove Invalid tabs' from the QuickFolders tools menu.".replace("{0}", invalidCount));
+      }
 		}
     else { // no tabs defined : add instructions label
       let existingLabel = this.FoldersBox.querySelector("#QuickFolders-Instructions-Label");
@@ -807,6 +821,14 @@ QuickFolders.Interface = {
 						styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "1.0");
 					}
 				}
+        
+        
+        let ftCol = 
+          prefs.getBoolPref("currentFolderBar.iconcolor.custom") ?
+          prefs.getStringPref("currentFolderBar.iconcolor") :
+          "currentColor";
+        styleEngine.setElementStyle(ss,"#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.icon", "fill", ftCol);
+        styleEngine.setElementStyle(ss, "#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.col0 .toolbarbutton-text", "color", ftCol);
 
 				// find (and move) button if necessary
 				let cF = this.CurrentFolderTab,
@@ -816,8 +838,9 @@ QuickFolders.Interface = {
 				rightSpace.setAttribute("flex",prefs.getIntPref("currentFolderBar.flexRight"));
 
 				// add styling to current folder via a fake container
-				if (cF && cF.parentNode)
+				if (cF && cF.parentNode) {
 					cF.parentNode.className = theme.cssToolbarClassName;
+        }
 
 				// support larger fonts - should have a knock-on effect for min-height
 				let fontSize = prefs.ButtonFontSize;
@@ -1093,14 +1116,21 @@ QuickFolders.Interface = {
 			let folderEntry = model.selectedFolders[i],
 			    folder = null;
 			backupTabs.push (folderEntry);
+      
+      if (folderEntry.uri.startsWith("mailbox://nobody@smart%20mailboxes/") && !gFolderTreeView.activeModes.includes("smart")) {
+        gFolderTreeView.activeModes = "smart"; // this setter will not set but _add_ the missing mode!
+                                               // it should also rebuild the treeview accordingly
+      }
+      
 			try {
 				folder = model.getMsgFolderFromUri(folderEntry.uri, false);
 			}
 			catch(ex) {
 				;
 			}
-			if (!folder || !util.doesMailFolderExist(folder))
+			if (!folder || !util.doesMailFolderExist(folder)) {
 				countOrphans++;
+      }
 		}
 		countRemaining = countOrphans;
 
@@ -1116,10 +1146,12 @@ QuickFolders.Interface = {
 				util.logException("GetMsgFolderFromUri failed with uri:" + folderEntry.uri, ex);
 			}
 			countTabs++;
+      
 
 			if (!folder || !util.doesMailFolderExist(folder)) {
-				if (!isContinue)
+				if (!isContinue) {
 					lastAnswer = this.deleteFolderPrompt(folderEntry, true, check, countRemaining);
+        }
 				switch (lastAnswer) {
 				  case 1:  // deleted
 					  if (isContinue) // delete the remaining ones:

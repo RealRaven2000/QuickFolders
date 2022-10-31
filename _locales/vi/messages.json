@@ -1076,6 +1076,9 @@
   "qfMarkAllReadAccess": {
     "message": "u"
   },
+  "qfMarkAllRead.next": {
+    "message": "Đánh dấu thư mục là Đã đọc và chuyển đến thư mục chưa đọc tiếp theo"
+  },
   "qfMenuColor": {
     "message": "Màu sắc"
   },
@@ -1350,7 +1353,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1} Phiên bản QuickFolders này giải quyết các vấn đề cụ thể đối với {boldStart} tài khoản IMAP {boldEnd}. {P2} {L1} Tùy chọn mới để tự động đánh dấu email là đã đọc hoặc chưa đọc khi kéo chúng vào QuickFolder. {L2} {L1} Với trợ lý quickFilters, việc tạo các quy tắc lọc mới sẽ không bị lỗi nữa khi chuyển thư đến các thư mục IMAP. {L2} {L1} Đã sửa liên kết để tải quickFilters trong hộp thoại tạo bộ lọc. {L2} {L1}5.13.1 Đã khắc phục sự cố Email bị trùng lặp khi kéo thư vào thư mục menu con. [issue 312]{L2}"
+    "message": "{L1} Cải tiến: Bây giờ bạn có thể đặt màu biểu tượng cho thanh công cụ thư mục hiện tại tùy chỉnh. {L2} {L1} Đã khắc phục: Tiện ích bổ sung Tiêu đề thu gọn được vẽ trên các biểu tượng trong thanh công cụ Thư mục Hiện tại {L2} {L1} Đã khắc phục sự cố thiếu các nút quickFilters trên thanh công cụ Thư mục Hiện tại. Điều này yêu cầu quickFilters phải được cập nhật lên phiên bản 5.6. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

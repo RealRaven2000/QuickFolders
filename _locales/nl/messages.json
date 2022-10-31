@@ -1487,6 +1487,9 @@
   "qfMarkAllReadRecursive": {
     "message": "Map + submappen als gelezen markeren"
   },
+  "qfMarkAllRead.next": {
+    "message": "Markeer de map als gelezen en spring naar de volgende ongelezen map"
+  },
   "qfMenuColor": {
     "message": "Kleur"
   },
@@ -1842,7 +1845,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 - Opent standaard geen tabblad met versiegeschiedenis. U kunt het oude gedrag herstellen in de geavanceerde{P1}Deze versie van QuickFolders lost problemen op die specifiek zijn voor {boldStart}IMAP-accounts{boldEnd}.{P2} {L1}Nieuwe optie om e-mails automatisch als gelezen of ongelezen te markeren wanneer ze naar een QuickFolder worden gesleept. {L2} {L1}Met de quickFilters-assistent zal het genereren van nieuwe filterregels niet meer mislukken bij het verplaatsen van e-mail naar IMAP-mappen.{L2} {L1}Vaste link om quickFilters te krijgen in het dialoogvenster voor het maken van filters.{L2} {L1}5.13.1 Probleem opgelost van dubbele e-mails bij het slepen van e-mail naar een submenumap. [issue 312]{L2}"
+    "message": "{L1}Verbetering: u kunt nu de pictogramkleur instellen voor de aangepaste werkbalk van de huidige map.{L2} {L1}Opgelost: de Compact Headers-add-on is over de pictogrammen in de werkbalk van de huidige map heen geschilderd {L2} {L1}Er is een probleem opgelost met ontbrekende quickFilters-knoppen op de werkbalk Huidige map. Dit vereist dat quickFilters updates zijn naar versie 5.6.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

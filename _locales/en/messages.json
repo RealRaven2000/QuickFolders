@@ -1534,6 +1534,9 @@
   "qfMarkAllReadRecursive": {
     "message": "Mark folder + subfolders Read"
   },
+  "qfMarkAllRead.next": {
+    "message": "Mark folder as Read and jump to next unread folder"
+  },
   "qfMenuColor": {
     "message": "Color"
   },
@@ -1890,7 +1893,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{P1}This version of QuickFolders addresses problems specific to {boldStart}IMAP accounts{boldEnd}.{P2} {L1}New option to automatically mark emails as read or unread when dragging them to a QuickFolder. {L2} {L1}With quickFilters assistant generating new filter rules will not fail anymore when moving mail to IMAP folders.{L2} {L1}Fixed link to get quickFilters in filter creation dialog.{L2}{L1}5.13.1 Fixed a problem of duplicated Emails when dragging mail to a submenu folder. [issue 312]{L2}"
+    "message": "{L1}Enhancement: You can now set the icon color for custom current folder toolbar.{L2} {L1}Fixed: The Compact Headers Add-on painted over icons in Current Folder toolbar {L2} {L1}Fixed a problem with missing quickFilters buttons on Current Folder toolbar. This requires quickFilters to be updates to version 5.6.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

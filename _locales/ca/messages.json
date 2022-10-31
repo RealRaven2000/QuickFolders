@@ -1444,6 +1444,9 @@
   "qfMarkAllReadRecursive": {
     "message": "Marca carpeta + subcarpetes com a llegit"
   },
+  "qfMarkAllRead.next": {
+    "message": "Marqueu la carpeta com a llegida i aneu a la següent carpeta no llegida"
+  },
   "qfMenuTabColorDisabledInTheme": {
     "message": "Seleccioneu un tema diferent per activar el color…"
   },
@@ -1784,7 +1787,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{P1}Aquesta versió de QuickFolders soluciona problemes específics dels comptes {boldStart}IMAP{boldEnd}.{P2} {L1}Nova opció per marcar automàticament els correus electrònics com a llegits o no llegits quan els arrossegueu a una carpeta ràpida. {L2} {L1}Amb l'assistent de quickFilters que genera noves regles de filtre ja no fallarà quan es mou el correu a carpetes IMAP.{L2} {L1}S'ha corregit l'enllaç per obtenir quickFilters al diàleg de creació de filtres.{L2}{L1}5.13.1 S'ha solucionat un problema de correus electrònics duplicats en arrossegar el correu a una carpeta de submenú.[issue 312]{L2}"
+    "message": "{L1}Millora: ara podeu definir el color de la icona per a la barra d'eines de la carpeta actual personalitzada.{L2} {L1}Corregit: el complement de capçaleres compactes pintat sobre les icones de la barra d'eines de la carpeta actual {L2} {L1}S'ha solucionat un problema amb la falta botons quickFilters a la barra d'eines Carpeta actual. Això requereix que els quickFilters siguin actualitzacions a la versió 5.6.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

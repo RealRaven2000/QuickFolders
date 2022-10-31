@@ -1326,6 +1326,9 @@
   "qfMarkAllReadRecursive": {
     "message": "Mappa + almappák megjelölése olvasottként"
   },
+  "qfMarkAllRead.next": {
+    "message": "Jelölje meg a mappát Olvasottként, és ugorjon a következő olvasatlan mappára"
+  },
   "qfMenuColor": {
     "message": "Szín"
   },
@@ -1600,7 +1603,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{P1}A QuickFolders ezen verziója az {boldStart}IMAP-fiókok{boldEnd} sajátos problémáit oldja meg.{P2} {L1}Új lehetőség az e-mailek automatikus olvasottként vagy olvasatlanként való megjelölésére, amikor egy QuickFolderbe húzza őket. {L2} {L1}A quickFilters segítségével az új szűrőszabályok létrehozása többé nem sikerül, amikor a leveleket IMAP-mappákba helyezi át.{L2} {L1}Javítva a hivatkozás a QuickFilters megjelenítéséhez a szűrőlétrehozási párbeszédpanelen.{L2} {L1}5.13.1 Kijavítottuk a duplikált e-mailek problémáját, amikor a leveleket egy almenü mappába húzták. [issue 312]{L2}"
+    "message": "{L1}Bővítés: Mostantól beállíthatja az ikonszínt az egyéni aktuális mappa eszköztárhoz.{L2} {L1}Javítva: A Compact Headers bővítmény az Aktuális mappa eszköztár ikonjaira festett {L2} {L1}A hiányzó probléma javítása QuickFilters gombok az Aktuális mappa eszköztáron. Ehhez frissíteni kell a QuickFilters 5.6-os verzióját.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

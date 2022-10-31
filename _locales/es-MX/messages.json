@@ -1448,6 +1448,12 @@
   "qfFolderRepairedMsg": {
     "message": "La carpeta fue reparada:"
   },
+  "qfGetMail": {
+    "message": "Obtener mensajes"
+  },
+  "qfGetMailAccess": {
+    "message": "O"
+  },
   "qfInsertLineBreak": {
     "message": "Insertar salto de línea"
   },
@@ -1465,6 +1471,9 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Marcar esta carpeta y sus subcarpetas como leídas"
+  },
+  "qfMarkAllRead.next": {
+    "message": "Marque la carpeta como Leída y salte a la siguiente carpeta no leída"
   },
   "qfMenuTabColorDisabledInTheme": {
     "message": "Selecciona un Tema diferente que maneje colores…"

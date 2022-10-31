@@ -1442,6 +1442,9 @@
   "qfMarkAllReadAccess": {
     "message": "O"
   },
+  "qfMarkAllRead.next": {
+    "message": "Označite mapo kot prebrano in skočite na naslednjo neprebrano mapo"
+  },
   "qfMenuColor": {
     "message": "Barva"
   },
@@ -1788,7 +1791,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{P1}Ta različica QuickFolders obravnava težave, specifične za {boldStart}račune IMAP{boldEnd}.{P2} {L1}Nova možnost za samodejno označevanje e-poštnih sporočil kot prebranih ali neprebranih, ko jih povlečete v QuickFolder. {L2} {L1}S pomočnikom za hitre filtre ustvarjanje novih pravil filtrov ne bo več spodletelo pri premikanju pošte v mape IMAP.{L2} {L1}Popravljena povezava za pridobivanje hitrih filtrov v pogovornem oknu za ustvarjanje filtrov.{L2} {L1}5.13.1 Odpravljena je težava s podvojenimi e-poštnimi sporočili pri vlečenju pošte v podmenijsko mapo. [issue 312]{L2}"
+    "message": "{L1}Izboljšava: Zdaj lahko nastavite barvo ikon za orodno vrstico trenutne mape po meri.{L2} {L1}Popravljeno: dodatek za kompaktne glave je prebarval ikone v orodni vrstici trenutne mape {L2} {L1}Odpravljena težava z manjkajočimi gumbi hitrih filtrov v orodni vrstici Trenutna mapa. To zahteva, da so hitri filtri posodobljeni na različico 5.6.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

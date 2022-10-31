@@ -267,7 +267,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{P1}Tato verze QuickFolders řeší problémy specifické pro {boldStart}účty IMAP{boldEnd}.{P2} {L1}Nová možnost automatického označování e-mailů jako přečtených nebo nepřečtených při jejich přetažení do QuickFolder. {L2} {L1}S asistentem quickFilters již nebude generování nových pravidel filtru selhávat při přesouvání pošty do složek IMAP.{L2} {L1}Opraven odkaz na získání quickFilters v dialogovém okně vytváření filtrů.{L2}{L1}5.13.1  [issue 312]{L2}"
+    "message": "{L1}Vylepšení: Nyní můžete nastavit barvu ikon pro vlastní panel nástrojů aktuální složky.{L2} {L1}Opraveno: Doplněk Compact Headers překryl ikony na panelu nástrojů aktuální složky {L2} {L1}Opraven problém s chybějícími tlačítka quickFilters na panelu nástrojů Aktuální složka. To vyžaduje, aby byly rychlé filtry aktualizovány na verzi 5.6.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

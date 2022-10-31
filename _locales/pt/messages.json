@@ -1472,6 +1472,9 @@
   "qfMarkAllRead": {
     "message": "Marcar pasta como lida"
   },
+  "qfMarkAllRead.next": {
+    "message": "Marcar a pasta como lida e pular para a próxima pasta não lida"
+  },
   "qfMenuColor": {
     "message": "Cor"
   },
@@ -1815,7 +1818,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{P1}Esta versão do QuickFolders aborda problemas específicos de {boldStart}contas IMAP{boldEnd}.{P2} {L1}Nova opção para marcar automaticamente os e-mails como lidos ou não lidos ao arrastá-los para um QuickFolder. {L2} {L1}Com o assistente quickFilters, a geração de novas regras de filtro não falhará mais ao mover e-mails para pastas IMAP.{L2} {L1}Corrigido link para obter quickFilters na caixa de diálogo de criação de filtro.{L2} {L1}5.13.1 Corrigido um problema de e-mails duplicados ao arrastar e-mails para uma pasta de submenu. [issue 312]{L2}"
+    "message": "{L1}Aprimoramento: agora você pode definir a cor do ícone para a barra de ferramentas da pasta atual personalizada.{L2} {L1}Corrigido: o complemento de cabeçalhos compactos pintado sobre ícones na barra de ferramentas da pasta atual {L2} {L1}Corrigido um problema com falta botões quickFilters na barra de ferramentas Pasta Atual. Isso requer que os quickFilters sejam atualizações para a versão 5.6.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

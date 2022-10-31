@@ -1437,6 +1437,9 @@
   "qfMarkAllReadRecursive": {
     "message": "标记文件夹+子文件夹为已读"
   },
+  "qfMarkAllRead.next": {
+    "message": "将文件夹标记为已读并跳转到下一个未读文件夹"
+  },
   "qfMenuColor": {
     "message": "颜色"
   },
@@ -1777,7 +1780,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}5.12.1 - 默认情况下不打开版本历史选项卡。 您可以在高级设置中恢复旧行为。{L2} {P1}此版本的 QuickFolders 修复了特定于 {P1}此版本的 QuickFolders 解决了特定于 {boldStart}IMAP 帐户{boldEnd} 的问题。{P2} {L1}新选项可在将电子邮件拖到 QuickFolder 时自动将其标记为已读或未读。 {L2} {L1}使用 quickFilters 助手将邮件移动到 IMAP 文件夹时不会再失败。{L2} {L1}修复了在过滤器创建对话框中获取 quickFilters 的链接。{L2} {L1}5.13.1 修复了将邮件拖到子菜单文件夹时重复电子邮件的问题。 [issue 312]{L2}"
+    "message": "{L1}增强：您现在可以设置自定义当前文件夹工具栏的图标颜色。{L2} {L1}修复：在当前文件夹工具栏中的图标上绘制的紧凑标题插件 {L2} {L1}修复了丢失的问题 当前文件夹工具栏上的快速过滤器按钮。 这需要 quickFilters 更新到 5.6 版。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

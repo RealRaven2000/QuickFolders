@@ -1,4 +1,7 @@
 {
+  "_l10nstatus": {
+    "message": "UI"
+  },
   "account.label": {
     "message": "Seleccionar cuenta:"
   },
@@ -1486,6 +1489,12 @@
   },
   "qfMarkAllRead": {
     "message": "Marcar carpeta como leída"
+  },
+  "qfMarkAllReadRecursive": {
+    "message": "Marcar esta carpeta y sus subcarpetas como leídas"
+  },
+  "qfMarkAllRead.next": {
+    "message": "Marque la carpeta como Leída y salte a la siguiente carpeta no leída"
   },
   "qfMenuTabColorDisabledInTheme": {
     "message": "Seleccione un tema diferente para apoyar la coloración"

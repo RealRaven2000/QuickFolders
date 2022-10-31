@@ -1484,6 +1484,9 @@
   "qfMarkAllReadRecursive": {
     "message": "Segna la cartella e le sottocartelle come già lette"
   },
+  "qfMarkAllRead.next": {
+    "message": "Contrassegna la cartella come letta e passa alla successiva cartella non letta"
+  },
   "qfMenuColor": {
     "message": "Colore"
   },
@@ -1830,7 +1833,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{P1}Questa versione di QuickFolders risolve problemi specifici degli {boldStart}account IMAP{boldEnd}.{P2} {L1}Nuova opzione per contrassegnare automaticamente le email come lette o non lette quando le trascini in una QuickFolder. {L2} {L1}Con l'assistente QuickFilters, la generazione di nuove regole di filtro non fallirà più quando si sposta la posta nelle cartelle IMAP.{L2} {L1}Corretto il collegamento per ottenere QuickFilters nella finestra di dialogo di creazione del filtro.{L2} {L1}5.13.1 Risolto un problema di e-mail duplicate durante il trascinamento della posta in una cartella di sottomenu. [issue 312]{L2}"
+    "message": "{L1}Miglioramento: ora puoi impostare il colore dell'icona per la barra degli strumenti della cartella corrente personalizzata.{L2} {L1}Risolto: il componente aggiuntivo Compact Headers dipinta sulle icone nella barra degli strumenti della cartella corrente {L2} {L1}Risolto un problema con la mancanza pulsanti QuickFilters sulla barra degli strumenti della cartella corrente. Ciò richiede che QuickFilters sia aggiornato alla versione 5.6.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

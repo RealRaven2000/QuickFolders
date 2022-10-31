@@ -1472,6 +1472,9 @@
   "qfMarkAllRead": {
     "message": "Marquer le dossier comme lu"
   },
+  "qfMarkAllRead.next": {
+    "message": "Marquer le dossier comme lu et passer au prochain dossier non lu"
+  },
   "qfMenuColor": {
     "message": "Couleur"
   },
@@ -1824,7 +1827,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1}Cette version de QuickFolders résout les problèmes spécifiques aux {boldStart}comptes IMAP{boldEnd}.{P2} {L1}Nouvelle option pour marquer automatiquement les e-mails comme lus ou non lus lorsque vous les faites glisser vers un QuickFolder. {L2} {L1}Avec l'assistant quickFilters, la génération de nouvelles règles de filtrage n'échouera plus lors du déplacement de courrier vers des dossiers IMAP.{L2} {L1}Correction du lien pour obtenir des filtres rapides dans la boîte de dialogue de création de filtre.{L2} {L1}5.13.1 Correction d'un problème d'e-mails en double lors du déplacement d'e-mails vers un dossier de sous-menu. [issue 312]{L2}"
+    "message": "{L1}Amélioration : vous pouvez désormais définir la couleur de l'icône pour la barre d'outils personnalisée du dossier actuel.{L2} {L1}Corrigé : le module complémentaire d'en-têtes compacts peint sur les icônes de la barre d'outils du dossier actuel {L2} {L1}Correction d'un problème de manque boutons QuickFilters de la barre d'outils Dossier actuel. Cela nécessite que les quickFilters soient mis à jour vers la version 5.6.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

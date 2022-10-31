@@ -1479,6 +1479,9 @@
   "qfMarkAllReadRecursive": {
     "message": "Verzeichnis + Unterverzeichnisse als gelesen markieren"
   },
+  "qfMarkAllRead.next": {
+    "message": "Ordner als gelesen markieren und zum nächsten ungelesenen Ordner springen"
+  },
   "qfMenuColor": {
     "message": "Farbe"
   },
@@ -1830,7 +1833,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1}Diese Version von QuickFolders behebt spezifische Probleme mit {boldStart}IMAP-Konten{boldEnd}.{P2} {L1}Neue Option zum automatischen Markieren von E-Mails als gelesen oder ungelesen, wenn sie in einen QuickFolder gezogen werden. {L2} {L1}Mit dem QuickFilters-Assistenten schlägt das Generieren neuer Filterregeln nicht mehr fehl, wenn E-Mails in IMAP-Ordner verschoben werden.{L2} {L1}Link zum Abrufen von QuickFilters im Filtererstellungsdialogfeld korrigiert.{L2}{L1}5.13.1 Ein Problem mit duplizierten E-Mails beim Ziehen in einen Untermenüordner wurde behoben. [issue 312]{L2}"
+    "message": "{L1}Verbesserung: Sie können jetzt die Symbolfarbe für die benutzerdefinierte Symbolleiste des aktuellen Ordners festlegen.{L2} {L1}Behoben: Das Compact Headers Add-on übermalte Symbole in der Symbolleiste des Aktiv-Verzeichnis.{L2} {L1}Ein Problem mit fehlenden quickFilters-Schaltflächen in der Symbolleiste Aktiv-Verzeichnis wurde behoben. Dazu muss quickFilters auf Version 5.6 aktualisiert werden.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -170,7 +170,7 @@ async function main() {
         break;
         
       case "updateNavigationBar":
-        messenger.NotifyTools.notifyExperiment({event: "updateNavigationBar"});
+        await messenger.NotifyTools.notifyExperiment({event: "updateNavigationBar"});
         break;
 
       case "toggleNavigationBar":
@@ -293,6 +293,10 @@ async function main() {
         break;
       case "pasteFolderEntries":
         messenger.NotifyTools.notifyExperiment({event: "pasteFolderEntriesFromClipboard"});
+        break;
+        
+      case "updateQuickFilters":
+        messenger.runtime.sendMessage("quickFilters@axelg.com", { command: "injectButtonsQFNavigationBar" });
         break;
     }
   }

@@ -36,7 +36,7 @@ async function onLoad(activatedWhileWindowOpen) {
   WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
   
-
+  // -- main toolbar+palette
   WL.injectElements(`
 
     <keyset>
@@ -461,8 +461,11 @@ async function onLoad(activatedWhileWindowOpen) {
 `);
 
 
+
+
+
   //-----------------------------
-  // qf-tools69.xul
+  // search panel & mini toolbar in QF toolbar
   WL.injectElements(`
     
 <hbox id="QuickFolders-left">
@@ -522,8 +525,8 @@ async function onLoad(activatedWhileWindowOpen) {
                  collapsed="true"
                  placeholder="__MSG_quickfolders.findFolder.placeHolder__"/>
         <toolbarbutton id="QuickFolders-FindFolder-Help"
-                       class = "popupButton"
-                       label = ""
+                       class="popupButton"
+                       label=""
                        tooltiptext="help with search"
                        collapsed="true"
                        onclick="QuickFolders.Interface.quickMoveHelp(this);"
@@ -552,6 +555,10 @@ async function onLoad(activatedWhileWindowOpen) {
   if (window.QuickFolders.Util.versionGreaterOrEqual(window.QuickFolders.Util.Appversion, "102")) {
     WL.injectCSS("chrome://quickfolders/content/skin/qf-102.css");
   }
+  
+  // -- now we have the current folder toolbar, tell quickFilters to inject its buttons:
+  window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFilters" });
+  
   
   window.QuickFolders.quickMove.initLog();
   window.addEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
@@ -587,6 +594,21 @@ function onUnload(isAddOnShutDown) {
 
   for (let m in mylisteners) {
     window.removeEventListener(`QuickFolders.BackgroundUpdate.${m}` , mylisteners[m]);
+  }
+  
+  // if quickFilters buttons are in the UI, move them back to the hidden panel in the toolbar!
+  function stashQuickFiltersButton(id, toParent) {
+    let el=document.getElementById(id);
+    if (el) {
+      toParent.appendChild(el);
+    }
+  }
+  let stashBox = document.getElementById("quickFilters-injected");
+  if (stashBox) {
+    stashQuickFiltersButton("quickfilters-current-listbutton", stashBox);
+    stashQuickFiltersButton("quickfilters-current-searchfilterbutton", stashBox);
+    stashQuickFiltersButton("quickfilters-current-runbutton", stashBox);
+    stashQuickFiltersButton("quickfilters-current-msg-runbutton", stashBox);
   }
   
   // restore global overwritten functions 

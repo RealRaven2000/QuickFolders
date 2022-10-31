@@ -1540,9 +1540,10 @@ allowUndo = true)`
         folderName = '',
         flags = '';
     if (!folder) {
-      if (btnLabel)
-        return "No Folder for [" + btnLabel + "] - try the 'Find Orphaned Tabs' command.";
-      return "Missing Folder - try the 'Find Orphaned Tabs' command.";
+      if (btnLabel) {
+        return "No Folder for [" + btnLabel + "] - try the 'Remove Invalid Tabs' command.";
+      }
+      return "Missing Folder - try the 'Remove Invalid Tabs' command.";
     }
     
     try {
@@ -1645,8 +1646,9 @@ allowUndo = true)`
       QuickFolders.Util.logDebug('doesMailFolderExist() msgFolder.filePath missing! - returning false');
       return false;
     }
-    if (msgFolder.flags & FLAGS.MSG_FOLDER_FLAG_NEWSGROUP)
+    if (msgFolder.flags & FLAGS.MSG_FOLDER_FLAG_NEWSGROUP) {
       return true; // we do not validate nntp folders
+    }
     if (msgFolder.filePath.exists()) {
       return true;
     }
@@ -1654,11 +1656,17 @@ allowUndo = true)`
       // jcranmer's method. Just check for the parent, and we are done.
       // empty folder:
       let p = msgFolder.parent;
-      if(!p) return false;
-      if (p.flags & FLAGS.MSG_FOLDER_FLAG_TRASH)
+      if(!p) {
+        console.log("Invalid folder? No parent folder found:", msgFolder);
+        return false;
+      }
+      if (p.flags & FLAGS.MSG_FOLDER_FLAG_TRASH) {
+        console.log(`Invalid tab: the folder ${msgFolder.prettyName} has been deleted and is currently in the Trash folder.`, msgFolder);
         return false; // empty folder, in trash
+      }
       return true; // msgFolder.parent != null;
     }
+    console.log("Invalid folder? doesMailFolderExist() fall through to end.", msgFolder);
     return false;
   },
   

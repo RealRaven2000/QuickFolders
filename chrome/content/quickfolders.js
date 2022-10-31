@@ -290,9 +290,16 @@ END LICENSE BLOCK */
     ## toolbar position number control too narrow, various layout fixes in settings dialog
     ## increased max version to 106.0    
 
-  5.13.1 QuickFolders Pro - WIP
+  5.13.1 QuickFolders Pro - 27/09/2022
     ## [issue 312] Unwanted copy of Email when moving to a QuickFolders submenu
     ## Make sure warning is actually displayed when attempting to drag emails to a virtual folder (which isn't possible)
+
+  5.14  QuickFolders Pro - WIP
+    ## [issue 320] Mark Folder as Read and jump to next
+    ## [issue 317] Enhancement: Customizable icon color for custom current folder toolbar
+    ## [issue 314] Compact Headers paints over Current Folder (Navigation) toolbar
+    ## [issue 316] quickFilters integration: quickFilters buttons on Current Folder toolbar may be missing
+    ## [issue 322] Tabs for Unified folders can falsely be reported as invalid
 
   
     -=-----------------=-    PLANNED
@@ -2243,28 +2250,28 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   let isSelected = false,
       forceSelect = prefs.isChangeFolderTreeViewEnabled;
   const theTreeView = gFolderTreeView;
-  let isCompact = theTreeView.toggleCompactMode ? (theTreeView._tree.getAttribute("compact") == "true") : false;
+  let isCompact = gFolderTreeView.toggleCompactMode ? (gFolderTreeView._tree.getAttribute("compact") == "true") : false;
 
   
-  if (theTreeView.mode) {
-    QuickFolders.lastTreeViewMode = theTreeView.mode; // backup of view mode. (TB78)
+  if (gFolderTreeView.mode) {
+    QuickFolders.lastTreeViewMode = gFolderTreeView.mode; // backup of view mode. (TB78)
   }
-  if (theTreeView._activeModes) {
-    QuickFolders.activeTreeViewModes = theTreeView._activeModes; // backup array of view modes.
+  if (gFolderTreeView._activeModes) {
+    QuickFolders.activeTreeViewModes = gFolderTreeView._activeModes; // backup array of view modes.
   }
 
-  folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+  folderIndex = gFolderTreeView.getIndexOfFolder(msgFolder);
   if (null == folderIndex) {
-    util.logDebugOptional("folders.select","theTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
-    isSelected = theTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
-    folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+    util.logDebugOptional("folders.select","gFolderTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
+    isSelected = gFolderTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
+    folderIndex = gFolderTreeView.getIndexOfFolder(msgFolder);
     if (null == folderIndex && isCompact) {
-      theTreeView.toggleCompactMode(false);
-      isSelected = theTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
+      gFolderTreeView.toggleCompactMode(false);
+      isSelected = gFolderTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
     }
-    folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+    folderIndex = gFolderTreeView.getIndexOfFolder(msgFolder);
     if (isCompact) {
-      theTreeView.toggleCompactMode(true);
+      gFolderTreeView.toggleCompactMode(true);
     }
   }
   
@@ -2277,11 +2284,11 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
     if (null==folderIndex) {
       util.logDebugOptional("folders.select","ensureNormalFolderView()");
       util.ensureNormalFolderView();
-      folderIndex = theTreeView.getIndexOfFolder(msgFolder);
+      folderIndex = gFolderTreeView.getIndexOfFolder(msgFolder);
       util.logDebugOptional("folders.select","folderIndex = " + folderIndex);
     }
 
-    let parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
+    let parentIndex = gFolderTreeView.getIndexOfFolder(msgFolder.parent);
     util.logDebugOptional("folders.select","parent index: " + parentIndex);
     // flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
     let specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL 
@@ -2289,16 +2296,17 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
                      + Flags.MSG_FOLDER_FLAG_JUNK + Flags.MSG_FOLDER_FLAG_ARCHIVES ; 
     if (msgFolder.flags & specialFlags) {
       // is this folder a smartfolder?
-      let isSmartView = (theTreeView.activeModes && theTreeView.activeModes.includes("smart")) ||
-                        (theTreeView.mode && theTreeView.mode=="smart");
+      let isSmartView = (gFolderTreeView.activeModes && gFolderTreeView.activeModes.includes("smart")) ||
+                        (gFolderTreeView.mode && gFolderTreeView.mode=="smart");
       
       if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && !isSmartView) {
         util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
         // toggle to smartfolder view and reinitalize folder variable!
-        if (theTreeView.activeModes)
-          theTreeView.activeModes.push("smart");
-        else if (theTreeView.mode)
-          theTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
+        if (gFolderTreeView.activeModes) {
+          gFolderTreeView.activeModes = "smart"; // this is a SETTER which will ADD the mode and rebuild treeview if necessary!
+        } else if (gFolderTreeView.mode) {
+          gFolderTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
+        }
         //let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
         //    folderResource = rdf.GetResource(folderUri);
         msgFolder = model.getMsgFolderFromUri(folderUri);   // folderResource.QueryInterface(Ci.nsIMsgFolder);

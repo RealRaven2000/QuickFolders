@@ -342,7 +342,7 @@
               <label><input type="checkbox"
                 preference="qfpa-CurrentFolder-Lightweight"
                 data-pref-name="extensions.quickfolders.currentFolderBar.background.lightweight">__MSG_qf.checkbox.currentfolder.lightweight__</label>
-              <div class="spacer" flex="1"></div>
+              <div class="spacer" style="flex:1%;"></div>
               <label>__MSG_qf.currentfolder.leftSpacer__
                 <input id="leftSpacer" type="number" class="num1digit" preference="qfpa-flexLeft"
                   data-pref-name="extensions.quickfolders.currentFolderBar.flexLeft" 
@@ -353,7 +353,12 @@
                   data-pref-name="extensions.quickfolders.currentFolderBar.flexRight" 
                   data-pref-type="int" />
               </label>
-              <div class="spacer" flex="2"></div>
+              <div class="spacer" style="flex:20%"></div>
+              <label id="customCurrentIconColor"><input type="checkbox"
+                preference="qfpa-CurrentFolder-CustomIconColor"
+                data-pref-name="extensions.quickfolders.currentFolderBar.iconcolor.custom">icon color</label>
+              <input id="currentfolder-icons-colorpicker" type="color" style="vertical-align:middle" elementInfo="Toolbar.icon-color"
+                data-pref-name="extensions.quickfolders.currentFolderBar.iconcolor">
             </div>
           </div>
         </fieldset>

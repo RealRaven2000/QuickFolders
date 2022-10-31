@@ -89,6 +89,8 @@ pref("extensions.quickfolders.currentFolderBar.flexLeft", 3);
 pref("extensions.quickfolders.currentFolderBar.flexRight", 6);
 // off the wall German flag style:
 pref("extensions.quickfolders.currentFolderBar.background.custom","linear-gradient(140deg, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 12%,rgba(0,0,0,1) 14%,rgba(214,40,40,1) 24%,rgba(255,231,50,1) 32%,rgba(255,231,50,0.0) 34%,rgba(0,0,0,0) 100%)"); 
+pref("extensions.quickfolders.currentFolderBar.iconcolor.custom",false);
+pref("extensions.quickfolders.currentFolderBar.iconcolor","#FFFFFF");
 // backup / restore
 pref("extensions.quickfolders.files.path", "");
 pref("extensions.quickfolders.restoreConfig.general", true);

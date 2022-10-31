@@ -61,6 +61,15 @@ for (let button of document.querySelectorAll("#QuickFolders-Options-Tabbox butto
 
 
 for (let colorpicker of document.querySelectorAll("input[type=color]")) {
+  if (colorpicker.id == "currentfolder-icons-colorpicker") {
+    colorpicker.addEventListener("input", async (event) => { 
+      // change color in prefs in real time.
+      await messenger.LegacyPrefs.setPref("extensions.quickfolders.currentFolderBar.iconcolor", event.target.value);
+      QuickFolders.Options.updateNavigationBar();
+    });
+    continue;
+  }
+  
   let {name, style, label} = QuickFolders.Options.getColorPickerVars(colorpicker.id);
   if (!name) {
     if (colorpicker.id == "inactive-colorpicker") {
@@ -236,6 +245,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
         QuickFolders.Options.toggleBoolPreference(chk);
       });
       break;
+    case "currentFolderBar.iconcolor.custom": // fall-through
     case "currentFolderBar.background.lightweight":
       chk.addEventListener("change", async (event) => {
         await QuickFolders.Options.toggleBoolPreference(chk, false);

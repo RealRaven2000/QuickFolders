@@ -342,6 +342,7 @@ QuickFolders.Options = {
   setCurrentToolbarBackground: async function setCurrentToolbarBackground(choice, withUpdate) {
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences;
+    let isCustomStyle = false;
     let setting = document.getElementById('currentFolderBackground'),
         // store custom value, when going away from custom selection
         backgroundCombo = document.getElementById('QuickFolders-CurrentFolder-Background-Select');    
@@ -368,11 +369,15 @@ QuickFolders.Options = {
         setting.value = 'linear-gradient(to bottom, rgba(255, 255, 255, .4), transparent)';  
         break;
       case 'custom':
+        isCustomStyle = true;
         backgroundCombo.selectedIndex = this.BGCHOICE.custom;
         // restore custom value
         setting.value = await prefs.getStringPref('currentFolderBar.background.custom');  
         break;
     }
+    document.getElementById("customCurrentIconColor").disabled = !isCustomStyle;
+    document.getElementById("currentfolder-icons-colorpicker").disabled = !isCustomStyle;
+    
     let styleValue = setting.value;
     await prefs.setStringPref('currentFolderBar.background', styleValue);
     await prefs.setStringPref('currentFolderBar.background.selection', choice);
@@ -541,8 +546,9 @@ QuickFolders.Options = {
     //  using the new preference system, this attribute should be the actual full string of the pref.
     //  pref = document.getElementById(prefString);
     
-    if (prefString)
+    if (prefString) {
       await QuickFolders.Preferences.setBoolPref(prefString, cb.checked);  
+    }
     
     if (noUpdate) return true;
     

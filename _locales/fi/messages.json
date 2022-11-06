@@ -194,7 +194,7 @@
     "message": "Kun päivität Standard-versiosta, saat yhden täyden vuoden lisenssikauden ostopäivästä lukien edellisen lisenssisi päättymispäivästä riippumatta."
   },
   "special-offer-expiry": {
-    "message": "lokakuun 2. päivä"
+    "message": "30. marraskuuta"
   },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
@@ -282,7 +282,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Parannus: Voit nyt määrittää mukautetun nykyisen kansion työkalupalkin kuvakkeen värin.{L2} {L1}Korjattu: Compact Headers -lisäosa maalasi nykyisen kansion työkalupalkin kuvakkeiden päälle {L2} {L1}Korjattu puuttuva ongelma QuickFilters-painikkeet Nykyinen kansio -työkalurivillä. Tämä edellyttää, että QuickFilters päivitetään versioon 5.6.{L2}"
+    "message": "{L1}Parannus: Voit nyt määrittää nykyisen kansion työkalupalkin kuvakkeen värin mukautetulla taustalla. [issue 317]{L2} {L1}Uusi Pro-ominaisuus: Merkitse kansio luetuksi ja siirry seuraavaan lukemattomaan kansioon. [issue 320]{L2} {L1}Korjattu: Compact Headers -lisäosa maalasi nykyisen kansion työkalupalkin kuvakkeiden päälle {L2} {L1}Korjattu ongelma, joka koski puuttuvia quickFilters-painikkeita Nykyisen kansion työkalupalkista. Tämä edellyttää, että quickFilters on päivitettävä versioon 5.6.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -300,6 +300,7 @@ END LICENSE BLOCK */
     ## [issue 314] Compact Headers paints over Current Folder (Navigation) toolbar
     ## [issue 316] quickFilters integration: quickFilters buttons on Current Folder toolbar may be missing
     ## [issue 322] Tabs for Unified folders can falsely be reported as invalid
+    ## Added message for Russian users to get in touch to receive a license.
 
   
     -=-----------------=-    PLANNED

@@ -430,13 +430,6 @@ var QuickFolders = {
 	compactLastFolderSize: 0,
 	compactLastFolderUri: null,
 	selectedOptionsTab : -1,// preselect a tab -1 = default; remember last viewed tab!
-
-	//for testing
-	debug_log: function debug_log(ev) {
-    const prefs = QuickFolders.Preferences;
-    if (prefs.isDebug)
-      console.log("DnD " + ev);
-	},
   
 	// helper function to do init from options dialog!
 	initDocAndWindow: function initDocAndWindow(win) {
@@ -820,18 +813,12 @@ var QuickFolders = {
 		QuickFolders.Util.alert("Hello from QuickFolders");
 	} ,
 
-	// handler for dropping folder shortcuts
+	// handler for dropping folder shortcuts (and emails!)
 	toolbarDragObserver: {
 		get util() { return  QuickFolders.Util; } ,
 		get prefs() { return QuickFolders.Preferences; } ,
 		win: QuickFolders_getWindow(),
 		doc: QuickFolders_getDocument(),
-		debug_log: function debug_log(ev) {
-      let type = ev.type || "",
-          id = ev.target ? (ev.target.id || "") : "no target",
-          txt  = ev ? (type + " " + id) : "";
-			console.log("toolbarDragObserver:DnD " + txt, ev) ;
-		},
 	
 		canHandleMultipleItems: false,
 		
@@ -846,8 +833,6 @@ var QuickFolders = {
 		
 
 		dragExit: function dragExit(evt) {
-      if (!evt)
-        debugger;
 			this.util.logDebugOptional("dnd","toolbarDragObserver.dragExit");
 			if (QuickFolders_globalHidePopupId) {
 				QuickFolders.Interface.removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
@@ -883,7 +868,7 @@ var QuickFolders = {
         debugger;
       evt.preventDefault();
 	  
-	  let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+      let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 
 			let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
@@ -1105,8 +1090,9 @@ var QuickFolders = {
 		} ,
 
 		dragOver: function menuObs_dragOver(evt, flavour, dragSession){
-      if (!dragSession) 
+      if (!dragSession) {
         dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+      }
       
       let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
@@ -1337,9 +1323,9 @@ var QuickFolders = {
 		dragOverTimer: null,
 
 		dragEnter: function btnObs_dragEnter(evt, dragSession) {
-      if (!evt) debugger;
-      
-      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
+      if (!dragSession) {
+        dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
+      }
       
       const util = QuickFolders.Util,
 						prefs = QuickFolders.Preferences,

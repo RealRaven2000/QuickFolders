@@ -1454,10 +1454,8 @@ allowUndo = true)`
           anchor = URL.substr(x);
           URL = URL.substr(0, x)
         }
-        if (URL.indexOf("?")==-1)
-          URL = URL + "?user=" + uType + anchor;
-        else
-          URL = URL + "&user=" + uType + anchor;
+        if (URL.indexOf("?")==-1) { URL = URL + "?user=" + uType + anchor; }
+        else { URL = URL + "&user=" + uType + anchor; }
       }
     }
     catch(ex) {

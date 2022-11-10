@@ -74,7 +74,6 @@ async function onLoad(activatedWhileWindowOpen) {
             class="toolbar-primary contentTabToolbar"
             ondragover="(QuickFolders.toolbarDragObserver).dragOver(event);"
             ondrop="(QuickFolders.toolbarDragObserver).drop(event);"
-            ondragenter="QuickFolders.toolbarDragObserver.debug_log(event);"
             dragdroparea="QuickFolders-FoldersBox"
             customizable="false"
             context="QuickFolders-ToolbarPopup"

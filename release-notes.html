@@ -1,5 +1,5 @@
-<b>Release 5.13.1</b>
-Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (102.2)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb91) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
+<b>Release 5.14</b>
+Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (102.4.2)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb91) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
             
 
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
@@ -9,35 +9,18 @@ Read the new <a href="premium.html#featureComparison">comparison chart</a> to se
 
 You can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>.
 
-<b>Maintenance Fixes</b>
-<ul>
-<li><a href="https://github.com/RealRaven2000/QuickFolders/issues/312">[issue 312]</a> Fixed in 5.13.1: When moving an email to a submenu via the popup folder that shows direct child folders this can generate an empty duplicate without subject line.
-</li>
-</ul>
-
-<b>Improvements</b>
-<ul>
-<li> 
-<a href="https://github.com/RealRaven2000/QuickFolders/issues/306">[issue 306]</a>
-New option to restore unread or force read status on messages when dragging them to QuickFolders.<br></li>
-</ul>
 
 <b>Bugs Fixed</b>
 <ul>
-<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/308">[issue 308]</a> quickFilters assistant will not fail anymore when moving mail to QuickFolders on IMAP. There used to be a problem with synchronisation while waiting for the IMAP server to complete the mail move operation.
-<ol>
-<li> With the <a href="https://addons.thunderbird.net/thunderbird/addon/quickfilters/">Add-on quickFilters installed</a>, click on the button in the toolbar to activate its assistant. </li>
-<li> Drop an email to a QuickFolders tab (or use the quickMove button). </li>
-<li> The quickFilters assistant will show up and give you a choice for creating rules to automatically
-move similar mails.</li>
-</ol>
-</li>
-<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/309">[issue 309]</a> Create Filters dialog - link to 'get quickFilters!' did not work.</li>
+<li> Enhancement: You can now set the icon color on the current folder with the custom background. This can be used to address coloring problems with third party Thunderbird themes. <a href="https://github.com/RealRaven2000/QuickFolders/issues/317">[issue 317]</a>. </li>
+<li> New Function for QuickFolders Pro users to mark folder as read and jump to next unread folder. <a href="https://github.com/RealRaven2000/QuickFolders/issues/320">[issue 320]</a> Hold down <keystroke>CTRL</keystroke> while clicking on the button "Mark Conversation as Read and jump to the next unread Email".</li>
 </ul>
 
 <b>Miscellaneous</b>
 <ul>
-<li> Increased max version to 106.0</li>
+<li> Fixed: The Compact Headers Add-on painted over icons in Current Folder toolbar. <a href="https://github.com/RealRaven2000/QuickFolders/issues/314">[issue 314]</a> </li>
+<li> Fixed a problem with missing quickFilters buttons on Current Folder toolbar. This requires quickFilters to be updated to version 5.6. <a href="https://github.com/RealRaven2000/QuickFolders/issues/316">[issue 316]</a> </li>
+<li> Fixed: Tabs for Unified folders can falsely be reported as invalid, unless Unified folders are currently visible in folder tree. <a href="https://github.com/RealRaven2000/QuickFolders/issues/322">[issue 322]</a></li>
 </ul>
 
 

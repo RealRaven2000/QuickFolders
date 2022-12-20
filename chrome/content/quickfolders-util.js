@@ -738,6 +738,9 @@ QuickFolders.Util = {
     const Ci = Components.interfaces,
           util = QuickFolders.Util,
           prefs = QuickFolders.Preferences; 
+          
+    let mw = msgWindow; // global
+    let isMove = (!makeCopy);
     let step = 0;
     if (!messageUris) 
       return null;
@@ -751,7 +754,6 @@ QuickFolders.Util = {
         util.slideAlert ("QuickFolders moveMessages()", util.getBundleString ("qfAlertDropFolderVirtual", "you can not drop messages to a search folder"));
         return null;
       }
-      step = 1;
       let messageList = [];
       step = 2;
 
@@ -795,41 +797,56 @@ QuickFolders.Util = {
             entry.messageId = Message.messageId; // preserve MessagId as entry.Uri will be always WRONG
           }
         }
-        messageIdList.push(Message.messageId); 
         messageList.push(Message);
         
-        // https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-messages.js#1029
-        // add a folderlistener for each message!
-              
-        let folderListener = {
-          onMessageAdded(parentItem, msgHdr) {
-            if (targetFolder.URI != msgHdr.folder.URI) {
-              return;
-            }
-            let idx = messageIdList.indexOf(msgHdr.messageId);
-            if (idx>=0) {
-              finish(msgHdr);
-              // messageIdList[idx] = msgHdr.messageId; // overwrite id to pass back
-            }
-          },
-        };
-        
-        MailServices.mailSession.AddFolderListener(
-          folderListener,
-          Ci.nsIFolderListener.added
-        );
-        
-        let finish = msgHdr => {
-          MailServices.mailSession.RemoveFolderListener(folderListener);
-        };              
-
-        // how to remove listeners for mails that couldn't be moved??
+        // [TbSync adds a folderlistener for each message] see:
+        // https://searchfox.org/comm-central/rev/fcc92f7c9ace528bfeeacc9b07518e54d52b111e/mail/components/extensions/parent/ext-messages.js#1311
 
         // [issue 23]  quick move from search list fails if first mail is already in target folder
         //  What to do if we have "various" source folders?
         if (Message.folder.QueryInterface(Ci.nsIMsgFolder) != targetFolder) {
           sourceFolder = Message.folder.QueryInterface(Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
           isTargetDifferent = true;
+        }
+        
+        // from https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-messages.js#195
+        try {
+          // [issue 328] function only supports moving mail from a single source folder! => hence moved into for..loop
+          let msgHeaders = [Message]; // messageList;
+          let originalId = Message.messageId;
+          let p = await new Promise((resolve, reject) => {
+              MailServices.copy.copyMessages(
+                sourceFolder,
+                msgHeaders,
+                targetFolder,
+                isMove && sourceFolder.canDeleteMessages,
+                {
+                  OnStartCopy() {},
+                  OnProgress(progress, progressMax) {},
+                  SetMessageKey(key) {},
+                  GetMessageId(messageId) {},
+                  OnStopCopy(status) {
+                    if (status == Cr.NS_OK) {
+                      resolve(); // returns to await
+                    } else {
+                      reject(status); // this throws !
+                    }
+                  },
+                },
+                mw,  // msgWindow
+                true   // allowUndo
+              );
+            });
+          // we get here only after success!
+          // fix bookmarks
+          messageIdList.push(originalId);  // <= successfully moved / copied
+          QuickFolders.CopyListener.OnStopCopy(status); 
+          
+        } catch (ex) {
+          Cu.reportError(ex);
+          throw new ExtensionError(
+            `Error ${isMove ? "moving" : "copying"} message: ${ex.message}`
+          );
         }
       }
 
@@ -854,13 +871,9 @@ QuickFolders.Util = {
         document.getElementById('messagepane').focus();
       }
       
-      step = 5;
-      
       step = 6;
       targetFolder = targetFolder.QueryInterface(Ci.nsIMsgFolder);
       step = 7;
-      let isMove = (!makeCopy), 
-          mw = msgWindow; // msgWindow  - global
       // util.logDebugOptional('dnd,quickMove,dragToNew', ...)
       if (QuickFolders.Preferences.isDebugOption("dnd,quickMove,dragToNew")) {
         console.log(
@@ -900,50 +913,6 @@ allowUndo = true)`
         util.logException("sync Read status", ex);
       }
       
-      // original code (not async):
-      // MailServices.copy.copyMessages(sourceFolder, messageList, targetFolder, isMove, QuickFolders.CopyListener, mw, true);
-      
-      
-      // from https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-messages.js#195
-      try {
-        let promises = [];
-        let msgHeaders = messageList;
-        promises.push(
-            new Promise((resolve, reject) => {
-              MailServices.copy.copyMessages(
-                sourceFolder,
-                msgHeaders,
-                targetFolder,
-                isMove && sourceFolder.canDeleteMessages,
-                {
-                  OnStartCopy() {},
-                  OnProgress(progress, progressMax) {},
-                  SetMessageKey(key) {},
-                  GetMessageId(messageId) {},
-                  OnStopCopy(status) {
-                    if (status == Cr.NS_OK) {
-                      resolve();
-                      // fix bookmarks
-                      QuickFolders.CopyListener.OnStopCopy(status); 
-                    } else {
-                      reject(status);
-                    }
-                  },
-                },
-                mw,  // msgWindow
-                true   // allowUndo
-              );
-            })
-          );
-        await Promise.allSettled(promises);
-      } catch (ex) {
-        Cu.reportError(ex);
-        throw new ExtensionError(
-          `Error ${isMove ? "moving" : "copying"} message: ${ex.message}`
-        );
-      }
-      
-      
       // support move / copy to XXX again
       try {
         Services.prefs.setCharPref("mail.last_msg_movecopy_target_uri", targetFolder.URI);
@@ -981,9 +950,9 @@ allowUndo = true)`
       if (folder.flags & 
             (FLAGS.MSG_FOLDER_FLAG_TRASH | FLAGS.MSG_FOLDER_FLAG_SENTMAIL | FLAGS.MSG_FOLDER_FLAG_QUEUE | 
              FLAGS.MSG_FOLDER_FLAG_JUNK  | FLAGS.MSG_FOLDER_FLAG_ARCHIVES | FLAGS.MSG_FOLDER_FLAG_DRAFTS)) return;
-      if (folder.SetMRUTime)
+      if (folder.SetMRUTime) {
         folder.SetMRUTime();
-      else {
+      } else {
         let ct = parseInt(new Date().getTime() / 1000); // current time in secs
         folder.setStringProperty("MRUTime", ct);
       }

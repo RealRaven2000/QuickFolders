@@ -1189,11 +1189,12 @@ QuickFolders.Interface = {
 		}
 		// restore / cancel refreshes the toolbar so no need for displaying a summary.
 		if (countDeleted || !isRollback) {
-			let sLabelFound = this.getUIstring("qfDeadTabsCount"),
-					sLabelDeleted = this.getUIstring("qfDeadTabsDeleted"),
-					sResults = sLabelFound + " " + countOrphans + "\n";
-			if (countDeleted)
-				sResults +=  sLabelDeleted + " " + countDeleted;
+			let sLabelFound = this.getUIstring("qfDeadTabsCount").replace("#", countOrphans),
+					sResults = sLabelFound + "\n";
+			if (countDeleted) {
+        let sLabelDeleted = this.getUIstring("qfDeadTabsDeleted").replace("#", countDeleted);
+				sResults += sLabelDeleted;
+      }
 			Services.prompt.alert(null,"QuickFolders", sResults);
 		}
 	} ,
@@ -4488,7 +4489,6 @@ QuickFolders.Interface = {
             // [Bug 26575]
             util.logDebugOptional("popupmenus.items","add " + eventType + " event attribute for menuitem " + menuitem.getAttribute("label") + " onSelectSubFolder(" + subfolder.URI+ ")");
             if (isDrag && isRecentFolderList) {
-              // QuickFolders.popupDragObserver.drop(event);              
               let parentString = "";
               this.setEventAttribute(menuitem, eventType,`QuickFolders.quickMove.execute("${subfolder.URI}","${parentString}");event.preventDefault();`); // [issue 242] allow moving with recent folder [=] shorcut
             }

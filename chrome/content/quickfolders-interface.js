@@ -1987,11 +1987,12 @@ QuickFolders.Interface = {
         QI.addPopupSet( {popupId:popupId, folder:folder, entry:entry, offset:offset, button:button, noCommands:noCommands, event:evt} );
       }
     }
-    else
+    else {
       util.logDebugOptional("interface,popupmenus", "showPopup(" + button.id + ", " + popupId + ", NO EVENT)");
+    }
 
 		let p = button.ownerDocument.getElementById(popupId);
-		if(!p) p=button.firstChild;
+		if (!p) p=button.firstChild;
 
 		if (p) {
 			document.popupNode = button;
@@ -2069,18 +2070,12 @@ QuickFolders.Interface = {
 				}
 			}
 
-
 			util.logDebugOptional("popupmenus", "Open popup menu: " + p.tagName + "\nid: " + p.id);
 			// make it easy to find calling button / label / target element
 			p.targetNode = button;
 
-			let verticalOffset = QI.verticalMenuOffset; // was -1, Tb60 now -2
-			// if (prefs.isDebugOption("popupmenus")) debugger;
-			var isContextMenu = true; // was true; test for [Bug 26575]
-			if (p.openPopup)
-				p.openPopup(button, "after_start", 0, verticalOffset, isContextMenu, false, evt);
-			else
-				p.showPopup(button, 0, verticalOffset, "context", "bottomleft", "topleft"); // deprecated method
+			let verticalOffset = QI.verticalMenuOffset; 
+			p.openPopup(button, "after_start", 0, verticalOffset, true, false, evt);
 		}
 
     // Alt+Down highlight the first folder
@@ -3984,7 +3979,7 @@ QuickFolders.Interface = {
 		}
 
 		// else { ...see below...  }
-    let menupopup = document.createXULElement ? document.createXULElement("menupopup") : document.createElement("menupopup"),
+    let menupopup = document.createXULElement("menupopup"),
         menuitem;
 
     menupopup.setAttribute("id", popupId);
@@ -4233,7 +4228,7 @@ QuickFolders.Interface = {
 	// create menu items / elements anbd force inject XUL to deal with menu problems.
 	// @cl: [class] use wildcard * for omitting classname (the exception)
 	createIconicElement: function createIconicElement(tagName, cl) {
-		let el = document.createXULElement ? document.createXULElement(tagName) : document.createElement(tagName);
+		let el = document.createXULElement(tagName);
 		el.setAttribute("xmlns", "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 		if (cl != "*") {
 			if (!cl)
@@ -4748,10 +4743,8 @@ QuickFolders.Interface = {
           // remove and add the popup to register ignorekeys removal
           menupopup = palette.appendChild(palette.removeChild(menupopup));
 					let searchBox = QI.FindFolderBox;
-					if (typeof menupopup.openPopup == "undefined")
-						menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
-					else
-						menupopup.openPopup(searchBox,"after_start", 0, -1, true, false);
+          menupopup.openPopup(searchBox,"after_start", 0, -1, true, false);
+					// menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
 
 					if (event.preventDefault) event.preventDefault();
 					if (event.stopPropagation) event.stopPropagation();
@@ -5305,10 +5298,8 @@ QuickFolders.Interface = {
     } 
     
     if (!forceSingleURI) {
-      if (typeof menupopup.openPopup == "undefined")
-        menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
-      else
-        menupopup.openPopup(searchBox,"after_start", 0, -1,true,false);  // ,evt
+      //  menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
+      menupopup.openPopup(searchBox,"after_start", 0, -1,true,false);  // ,evt
     }
 		                           //                v-- [Bug 26665] support VK_ENTER even with multiple matches
 		if (matches.length == 1 || (matches.length>0 && forceFind) ) {
@@ -6325,6 +6316,13 @@ QuickFolders.Interface = {
 				styleEngine.setElementStyle(ss, btnSelector
 				  + "[background-image].selected-folder","border-bottom-color", colActiveBG, true);
 			}
+      
+      // =============
+      // MENU FONT SIZE 
+      // [issue 329] inconsistent menu font size
+      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup * > label", "font-size", prefs.ButtonFontSize + "px");
+      styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", prefs.ButtonFontSize + "px");
+      
 
 			// =================
 			// CUSTOM RADIUS

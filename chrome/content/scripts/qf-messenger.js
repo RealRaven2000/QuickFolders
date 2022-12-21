@@ -86,21 +86,7 @@ async function onLoad(activatedWhileWindowOpen) {
           </vbox>
         </hbox>
         
-        <popupset id="QuickFolders-Palette" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
-          <menupopup id="QuickFolders-PalettePopup" 
-                     class="QuickFolders-folder-popup" 
-                               xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-                               onclick="QuickFolders.Interface.clickHandler(event,this);">
-          </menupopup>
-          <menupopup id="QuickFolders-FindPopup" 
-                     class="menu-iconic widerMenu" 
-                     position="after_start"
-                     oncommand="QuickFolders.Interface.selectFound(this, event);"
-                     onkeypress="QuickFolders.Interface.foundInput(this, event);"
-                     onblur="QuickFolders.Interface.findPopupBlur(this, event);"
-                     ignorekeys="false">
-          </menupopup>
-        </popupset>
+
 
         <popupset id="QuickFolders-QuickMovePopupSet">
           <menupopup id="QuickFolders-quickMoveMenu">
@@ -531,6 +517,22 @@ async function onLoad(activatedWhileWindowOpen) {
                        onclick="QuickFolders.Interface.quickMoveHelp(this);"
                        />
        </hbox>
+       
+      <popupset id="QuickFolders-Palette" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+        <menupopup id="QuickFolders-PalettePopup" 
+                   class="QuickFolders-folder-popup" 
+                             xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+                             onclick="QuickFolders.Interface.clickHandler(event,this);">
+        </menupopup>
+        <menupopup id="QuickFolders-FindPopup" 
+                   class="menu-iconic widerMenu" 
+                   position="after_start"
+                   oncommand="QuickFolders.Interface.selectFound(this, event);"
+                   onkeypress="QuickFolders.Interface.foundInput(this, event);"
+                   onblur="QuickFolders.Interface.findPopupBlur(this, event);"
+                   ignorekeys="false">
+        </menupopup>
+      </popupset>       
     </hbox>
   </vbox>
 </hbox>

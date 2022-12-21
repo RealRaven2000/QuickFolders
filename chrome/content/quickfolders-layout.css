@@ -57,6 +57,15 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
   -moz-context-properties: fill;
 }
 
+#QuickFolders-FoldersBox .QuickFolders-folder-popup * > label {
+  font-size: 12px;
+}
+
+#QuickFolders-Category-Box popupset * > label {
+  font-size: 12px;
+}
+
+
 
 #QuickFolders-ToolbarPopup menuitem image {
   fill: var(--toolbarbutton-icon-fill, currentColor);

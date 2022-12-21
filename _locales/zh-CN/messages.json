@@ -1674,7 +1674,7 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "11月30日"
+    "message": "1月8日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1780,7 +1780,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}增强：您现在可以使用自定义背景设置当前文件夹工具栏的图标颜色。 [issue 317]{L2} {L1}Pro 新功能：将文件夹标记为已读并跳转到下一个未读文件夹。 [issue 320]{L2} {L1}已修复：在当前文件夹工具栏中的图标上绘制的紧凑标题插件 {L2} {L1}修复了当前文件夹工具栏上缺少 quickFilters 按钮的问题。 这需要将 quickFilters 更新到 5.6 版。{L2}"
+    "message": "{L1}已修复：通过快速移动从不同文件夹移动邮件不会从菜单中删除这些邮件。 [issue 328]{L2} {L1}在按钮上自定义字体大小，子菜单在拖动邮件时也具有一致的字体大小 [issue 329]{L2} {L1}修改内部代码以触发 quickFilters 过滤器助手。 5.7 及更高版本的 quickFilters 插件需要进行这些更改。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

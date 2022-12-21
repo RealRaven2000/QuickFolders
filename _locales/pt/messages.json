@@ -1712,7 +1712,7 @@
     "message": "Ao atualizar do Standard, você obtém um período de licença de um ano inteiro a partir da data de compra, independentemente da data de expiração de sua licença anterior."
   },
   "special-offer-expiry": {
-    "message": "30 de novembro"
+    "message": "8 de janeiro"
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
@@ -1818,7 +1818,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Melhoria: agora você pode definir a cor do ícone da barra de ferramentas da pasta atual com o plano de fundo personalizado. [issue 317]{L2} {L1}Novo recurso Pro: marque a pasta como lida e pule para a próxima pasta não lida. [issue 320]{L2} {L1}Corrigido: O complemento Compact Headers pintado sobre ícones na barra de ferramentas da Pasta Atual {L2} {L1}Corrigido um problema com a falta de botões QuickFilters na barra de ferramentas da Pasta Atual. Isso requer que os quickFilters sejam atualizados para a versão 5.6.{L2}"
+    "message": "{L1}Corrigido: Mover e-mails de pastas diferentes via quickMove não os removia do menu. [issue 328]{L2} {L1}Com tamanho de fonte personalizado nos botões, os submenus também têm tamanho de fonte consistente ao arrastar e-mail [issue 329]{L2} {L1}Modificações no código interno para acionar o assistente de filtro quickFilters. Essas alterações serão exigidas pelo complemento quickFilters da versão 5.7 e superior.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

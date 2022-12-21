@@ -1727,7 +1727,7 @@
     "message": "Quando esegui l'upgrade da Standard, ricevi un anno intero di licenza dalla data di acquisto, indipendentemente dalla data di scadenza della tua licenza precedente."
   },
   "special-offer-expiry": {
-    "message": "30 novembre"
+    "message": "8 gennaio"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
@@ -1833,7 +1833,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Javítás: Mostantól beállíthatja az ikonszínt az aktuális mappa eszköztárához az egyéni háttérrel. [issue 317]{L2} {L1}Új Pro-funkció: Mappa megjelölése olvasottként, és ugrás a következő olvasatlan mappára. [issue 320]{L2} {L1}Javítva: A Compact Headers-bővítmény átfestette az ikonokat az Aktuális mappa eszköztáron {L2} {L1}Javítva lett az Aktuális mappa eszköztárról hiányzó quickFilters gombokkal kapcsolatos probléma. Ehhez frissíteni kell a quickFilters 5.6-os verzióját.{L2}"
+    "message": "{L1}Risolto: lo spostamento di messaggi da cartelle diverse tramite QuickMove non li rimuoveva dal menu. [issue 328]{L2} {L1}Con la dimensione del carattere personalizzata sui pulsanti, anche i sottomenu hanno dimensioni del carattere coerenti durante il trascinamento della posta [issue 329]{L2} {L1}Modifiche al codice interno per l'attivazione dell'assistente filtro quickFilters. Queste modifiche saranno richieste dal componente aggiuntivo quickFilters dalla versione 5.7 e successive.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

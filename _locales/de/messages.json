@@ -1731,7 +1731,7 @@
     "message": "Wenn Sie von Standard upgraden, erhalten Sie eine einjährige Lizenzlaufzeit ab Kaufdatum, unabhängig vom Ablaufdatum Ihrer vorherigen Lizenz."
   },
   "special-offer-expiry": {
-    "message": "30. November"
+    "message": "8. Januar"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1833,7 +1833,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Verbesserung: Sie können jetzt die Symbolfarbe für die Aktiv-Verzeichnis Symbolleiste festlegen - (benutzerdefinierter Hintergund). [issue 317]{L2} {L1}Neue Pro-Funktion: Ordner als gelesen markieren und zum nächsten ungelesenen Ordner springen. [issue 320]{L2}{L1}Behoben: Das Compact Headers Add-on übermalte Symbole in der Symbolleiste des Aktiv-Verzeichnis.{L2} {L1}Ein Problem mit fehlenden quickFilters-Schaltflächen in der Aktiv-Verzeichnis Symbolleiste wurde behoben. Dazu muss quickFilters auf Version 5.6 aktualisiert werden.{L2}"
+    "message": "{L1}Behoben: Das Verschieben von Mails aus verschiedenen Ordnern per quickMove hat sie nicht aus dem Menü entfernt. [issue 328]{L2} {L1}Mit benutzerdefinierter Schriftgröße auf Schaltflächen haben Untermenüs auch eine einheitliche Schriftgröße beim Ziehen von E-Mails [issue 329]{L2} {L1}Änderungen am internen Code zum Auslösen des QuickFilters-Filterassistenten. Diese Änderungen werden von der QuickFilters-Add-on-Version 5.7 und höher benötigt.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1721,7 +1721,7 @@
     "message": "Lorsque vous effectuez une mise à niveau à partir de Standard, vous bénéficiez d'une durée de licence d'un an à compter de la date d'achat, quelle que soit la date d'expiration de votre licence précédente."
   },
   "special-offer-expiry": {
-    "message": "30 novembre"
+    "message": "8 janvier"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1827,7 +1827,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Amélioration : vous pouvez désormais définir la couleur de l'icône de la barre d'outils du dossier actuel avec l'arrière-plan personnalisé. [issue 317]{L2} {L1}Nouvelle fonctionnalité Pro : Marquer le dossier comme lu et passer au dossier non lu suivant. [issue 320]{L2} {L1}Corrigé : le module complémentaire d'en-têtes compacts peint sur les icônes de la barre d'outils du dossier actuel {L2} {L1}Correction d'un problème avec les boutons quickFilters manquants sur la barre d'outils du dossier actuel. Cela nécessite que quickFilters soit mis à jour vers la version 5.6.{L2}"
+    "message": "{L1}Corrigé : le déplacement d'e-mails à partir de différents dossiers via quickMove ne les supprimait pas du menu. [issue 328]{L2} {L1}Avec une taille de police personnalisée sur les boutons, les sous-menus ont également une taille de police cohérente lors du déplacement du courrier [issue 329]{L2} {L1}Modifications du code interne pour déclencher l'assistant de filtrage quickFilters. Ces modifications seront requises par le module complémentaire quickFilters à partir de la version 5.7 et des versions ultérieures.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

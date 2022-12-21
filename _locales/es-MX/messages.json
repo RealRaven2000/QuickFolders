@@ -1715,7 +1715,7 @@
     "message": "Cuando actualiza desde Estándar, obtiene un período de licencia de un año completo a partir de la fecha de compra, independientemente de la fecha de vencimiento de su licencia anterior."
   },
   "special-offer-expiry": {
-    "message": "30 de noviembre"
+    "message": "8 de enero"
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1821,7 +1821,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Mejora: ahora puede configurar el color del icono para la barra de herramientas de la carpeta actual con el fondo personalizado. [issue 317]{L2} {L1}Nueva función Pro: marca la carpeta como leída y salta a la siguiente carpeta no leída. [issue 320]{L2} {L1}Corregido: El complemento de encabezados compactos pintaba sobre los iconos en la barra de herramientas de la carpeta actual {L2} {L1}Corregido un problema con la falta de botones de quickFilters en la barra de herramientas de la carpeta actual. Esto requiere que quickFilters se actualice a la versión 5.6.{L2}"
+    "message": "{L1}Corregido: Mover correos de diferentes carpetas a través de QuickMove no los eliminaba del menú. [issue 328]{L2} {L1}Con un tamaño de fuente personalizado en los botones, los submenús también tienen un tamaño de fuente uniforme al arrastrar el correo [issue 329]{L2} {L1}Modificaciones en el código interno para activar el asistente de filtros QuickFilters. Estos cambios serán requeridos por el complemento QuickFilters de la versión 5.7 y superior.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

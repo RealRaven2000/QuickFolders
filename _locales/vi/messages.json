@@ -1256,7 +1256,7 @@
     "message": "Khi bạn nâng cấp từ Standard, bạn sẽ nhận được thời hạn giấy phép cả năm kể từ ngày mua bất kể ngày hết hạn của giấy phép trước đó của bạn."
   },
   "special-offer-expiry": {
-    "message": "Ngày 30 tháng 11"
+    "message": "ngày 8 tháng 1"
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -1353,7 +1353,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Cải tiến: Bây giờ bạn có thể đặt màu biểu tượng cho thanh công cụ của thư mục hiện tại với nền tùy chỉnh. [issue 317] {L2} {L1} Tính năng Pro mới: Đánh dấu thư mục là đã đọc và chuyển đến thư mục chưa đọc tiếp theo. [issue 320] {L2} {L1} Đã khắc phục: Tiện ích bổ sung Tiêu đề thu gọn được vẽ trên các biểu tượng trong thanh công cụ Thư mục Hiện tại {L2} {L1} Đã khắc phục sự cố thiếu các nút quickFilters trên thanh công cụ Thư mục Hiện tại. Điều này yêu cầu quickFilters phải được cập nhật lên phiên bản 5.6. {L2}"
+    "message": "{L1}Đã sửa lỗi: Di chuyển thư từ các thư mục khác nhau qua quickMove không xóa những thư này khỏi trình đơn. [issue 328]{L2} {L1}Với kích thước phông chữ tùy chỉnh trên các nút, menu con cũng có kích thước phông chữ nhất quán khi kéo thư [issue 329]{L2} {L1}Sửa đổi đối với mã nội bộ để kích hoạt hỗ trợ bộ lọc quickFilters. Những thay đổi này sẽ được yêu cầu bởi Tiện ích bổ sung quickFilters từ phiên bản 5.7 trở lên.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

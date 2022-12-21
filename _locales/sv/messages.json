@@ -1748,7 +1748,7 @@
     "message": "När du uppgraderar från Standard får du ett helt års licensperiod från inköpsdatumet oavsett utgångsdatum för din tidigare licens."
   },
   "special-offer-expiry": {
-    "message": "30 november"
+    "message": "8 januari"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1854,7 +1854,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Förbättring: Du kan nu ställa in ikonfärgen för det aktuella mappverktygsfältet med den anpassade bakgrunden. [issue 317]{L2} {L1}Ny Pro-funktion: Markera mapp som läst och hoppa till nästa olästa mapp. [issue 320]{L2} {L1}Fast: Tillägget Compact Headers målat över ikoner i verktygsfältet Current Folder {L2} {L1}Fast ett problem med saknade quickFilters-knappar i verktygsfältet Current Folder. Detta kräver att quickFilters uppdateras till version 5.6.{L2}"
+    "message": "{L1}Fast: Flytta e-post från olika mappar via quickMove tog inte bort dessa från menyn. [issue 328]{L2} {L1}Med anpassad teckenstorlek på knappar har undermenyer också konsekvent teckenstorlek när du drar e-post [issue 329]{L2} {L1}Ändringar av intern kod för att trigga filterassistenten quickFilters. Dessa ändringar kommer att krävas av quickFilters-tillägget från version 5.7 och senare.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -13,6 +13,7 @@ QuickFolders.FilterWorker = {
 
   bundle: null,
 	FilterMode: false,
+  FilterModeLegacy: false,
 	reRunCount: 0,  // avoid endless loop
 	TemplateSelected: null,
 	SelectedValue: '',
@@ -46,6 +47,7 @@ QuickFolders.FilterWorker = {
 		util.logDebugOptional ("filters", "toggle_FilterMode(" + active + ")");
 		
 		if (!isQuickFilters) { // if quickFilters is installed, we omit all notifications and leave it to that Add-on to handle
+      QuickFolders.FilterWorker.FilterModeLegacy = true;
       if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { // Tb 68
         notifyBox = specialTabs.msgNotificationBar;
       }
@@ -118,6 +120,16 @@ QuickFolders.FilterWorker = {
 				}
 			}
 		}
+    else {
+      if (typeof window.quickFilters.isNewAssistantMode == 'undefined') {
+        QuickFolders.FilterWorker.FilterModeLegacy = true;
+      }
+      else {
+        // setting this flag to false - avoids calling createFilter explicitely and leaves it to the 
+        // new MsgFolderListener.msgsMoveCopyCompleted handler...
+        QuickFolders.FilterWorker.FilterModeLegacy = !(window.quickFilters.isNewAssistantMode);
+      }      
+    }
 
 		QuickFolders.FilterWorker.FilterMode = active;
 		
@@ -229,7 +241,7 @@ QuickFolders.FilterWorker = {
   } ,
 	
   // folder is the target folder - we might also need the source folder
-	createFilter: function createFilter(sourceFolder, targetFolder, messageList, isCopy) {
+	createFilterQF: async function(sourceFolder, targetFolder, messageList, isCopy) {
 		let Ci = Components.interfaces,
         msg,
         util = QuickFolders.Util;
@@ -268,9 +280,9 @@ QuickFolders.FilterWorker = {
 				QuickFolders.FilterWorker.reRunCount=0;
 				return 0;
 			}
-			window.setTimeout(function() {
-						let filtered = QuickFolders.FilterWorker.createFilter(sourceFolder, targetFolder, messageList, isCopy);
-            util.logDebug('createFilter returned: ' + filtered);
+			window.setTimeout(async function() {
+						let filtered = await QuickFolders.FilterWorker.createFilterQF(sourceFolder, targetFolder, messageList, isCopy);
+            util.logDebug('createFilterQF returned: ' + filtered);
 					}, 400);
 			return 0;
 		}
@@ -373,7 +385,7 @@ QuickFolders.FilterWorker = {
 
 				try {
 				util.logDebugOptional ("filters",
-						"createFilter(target folder="+ targetFolder.prettyName
+						"createFilterQF(target folder="+ targetFolder.prettyName
 							+ ", messageId=" + msg.messageId
 							+ ", author=" + msg.mime2DecodedAuthor + "\n"
 							+ ", subject=" + msg.mime2DecodedSubject + "\n"
@@ -568,20 +580,23 @@ QuickFolders.FilterWorker = {
 			return 1;
 		}
 		catch(e) {
-			util.alert("Exception in QuickFolders.FilterWorker.createFilter: " + e.message);
+			util.alert("Exception in QuickFolders.FilterWorker.createFilterQF: " + e.message);
 			return -1;
 		}
 		return null;
 
 	} ,
 
-	createFilterAsync: function createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow) {
+  // [legacy] direct call of filter creation - but only applies with quickFilters 5.6 and older
+  // where isNewAssistantMode is not defined (or false)
+  // going forward this will be handled by quickFilters.MsgFolderListener.msgsMoveCopyCompleted instead.
+	createFilterAsync: async function createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow) {
     let util = QuickFolders.Util;
     util.logDebugOptional ("filters", "createFilterAsync()");
 		if (QuickFolders.win.quickFilters && QuickFolders.win.quickFilters.Worker) {
       try {
         util.logDebugOptional ("filters", "redirecting to quickFilters createFilterAsync()...");
-        QuickFolders.win.quickFilters.Worker.createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow);
+        await QuickFolders.win.quickFilters.Worker.createFilterAsync(sourceFolder, targetFolder, messageList, isCopy, isSlow);
       }
       catch(ex) {
         util.logException("Error: QuickFolders.FilterWorker.createFilterAsync called quickFilters createFilterAsync(), which failed.", ex);
@@ -591,8 +606,8 @@ QuickFolders.FilterWorker = {
 		
 		let delay = isSlow ? 1200 : 300; // wait for the filter dialog to be updated with the new folder if drag to new
     util.logDebugOptional ("filters", "Preparing filter creation with delay: " + delay + "ms...");
-		window.setTimeout(function() {
-			let filtered = QuickFolders.FilterWorker.createFilter(sourceFolder, targetFolder, messageList, isCopy);
+		window.setTimeout(async function() {
+			let filtered = await QuickFolders.FilterWorker.createFilterQF(sourceFolder, targetFolder, messageList, isCopy);
 		}, delay);
 		
 	},

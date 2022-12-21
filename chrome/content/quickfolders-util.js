@@ -2114,16 +2114,15 @@ allowUndo = true)`
       if (isDebug) 
         util.logDebugOptional('getOrCreateFolder', text);
     }     
-    // Thunderbird 68
-    var { XPCOMUtils } = ChromeUtils.import("resource://gre/modules/XPCOMUtils.jsm");
     
     logDebug('getOrCreateFolder (' + aUrl + ', ' + aFlags + ')');
     
     let fls = Cc["@mozilla.org/mail/folder-lookup;1"].getService(
       Ci.nsIFolderLookupService
     );
-    if (fls)
+    if (fls) {
       folder = fls.getOrCreateFolderForURL(aUrl); 
+    }
 
 
     logDebug('folder = ' + folder);   
@@ -2172,8 +2171,7 @@ allowUndo = true)`
               else
                 reject(aExitCode);
             },
-            QueryInterface:  // Tb 68 XPCOMUtils.generateQI doesn't exist anymore
-            ChromeUtils.generateQI([Ci.nsIUrlListener])
+            QueryInterface: ChromeUtils.generateQI([Ci.nsIUrlListener])
           };
    
           // If any error happens, it will throw--causing the outer promise to

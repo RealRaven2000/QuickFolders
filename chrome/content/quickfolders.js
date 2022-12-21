@@ -294,34 +294,26 @@ END LICENSE BLOCK */
     ## [issue 312] Unwanted copy of Email when moving to a QuickFolders submenu
     ## Make sure warning is actually displayed when attempting to drag emails to a virtual folder (which isn't possible)
 
-  5.14  QuickFolders Pro - WIP
+  5.14 QuickFolders Pro - 14/11/2022
     ## [issue 320] Mark Folder as Read and jump to next
     ## [issue 317] Enhancement: Customizable icon color for custom current folder toolbar
     ## [issue 314] Compact Headers paints over Current Folder (Navigation) toolbar
     ## [issue 316] quickFilters integration: quickFilters buttons on Current Folder toolbar may be missing
     ## [issue 322] Tabs for Unified folders can falsely be reported as invalid
     ## Added message for Russian users to get in touch to receive a license.
-
-  
-    -=-----------------=-    PLANNED
-    ## [issue 103] Feature Request: Support copying folders
-
-   	TODOs
-	=========
-	qf-messenger: 68 load tools.xul, 78: load tools69 
-	platform-css copy to content (not content/skin/something)
-	CSS: textbox replace with html:input
-	js: get by tag: replace textbox
     
+  5.15 QuickFolders Pro - WIP
+    ## [issue 328] quickMove: Moving emails from different source folders doesn't remove them from the queue
+    ## [issue 315] Remove the term 'Orphaned Tabs' in all User Interface texts
+    ## Modifications to code for triggering filter assistant to avoid "monkey patching" 
+    ##    (overwriting) Thunderbird internal functions.
+  
+
 	Future Work
 	===========
-  
-    ## [issue 20] Add option to show QuickFolders tabs below main toolbar
-    
+    ## [issue 103] Feature Request: Support copying folders
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
-		## [Issue 3] mark messages READ in folder and all its subfolders tree "in one click"
 
-    
     
 	Known Issues
 	============
@@ -840,8 +832,6 @@ var QuickFolders = {
 		} ,
 		
 		dragEnter: function qftoolbar_dragEnter(evt) {
-      if (!evt)
-        debugger;
 			let t = evt.currentTarget,
           dTxt = "target: " + t.nodeName + "  '" + t.id + "'",
           ot = evt.originalTarget;
@@ -864,8 +854,6 @@ var QuickFolders = {
 		},
 
 		dragOver: function qftoolbar_dragOver(evt){
-      if (!evt)
-        debugger;
       evt.preventDefault();
 	  
       let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
@@ -894,12 +882,9 @@ var QuickFolders = {
 		},
 
 		drop: function drop(evt, dragSession) {
-      if (!evt) debugger;
-      
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			if (this.prefs.isDebugOption('dnd')) {
-        debugger;
         QuickFolders.Util.logToConsole("toolbarDragObserver.drop() - dragSession = ", dragSession);
       }
 			// let contentType = dropData.flavour ? dropData.flavour.contentType : dragSession.dataTransfer.items[0].type;
@@ -1017,7 +1002,6 @@ var QuickFolders = {
 		dragOverTimer: null,
     
 		dragEnter: function menuObs_dragEnter(evt, dragSession) {
-      if (!evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 
 
@@ -1060,8 +1044,9 @@ var QuickFolders = {
 						psib = psib.previousSibling;
 					}
 					// only show popup if they have at least one menu item!
-					if (pchild.children && pchild.children.length > 0)
-						pchild.openPopup(popupStart, 'end_before', 0, -1, "context", false);  // showPopup() has been deprecated ages ago!!
+					if (pchild.children && pchild.children.length > 0) {
+						pchild.openPopup(popupStart, 'end_before', 0, -1, "context", false);  
+          }
 					util.logDebugOptional("dnd","Displayed popup " + popupStart.getAttribute('label'));
 				}
 			}
@@ -1074,7 +1059,6 @@ var QuickFolders = {
 		dragExit: function menuObs_dragExit(evt, dragSession) {
 			const util = QuickFolders.Util;
 			let popupStart = evt.target;
-      if (!evt) debugger;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			// find parent node!
@@ -1143,9 +1127,9 @@ var QuickFolders = {
 				let msgList = await util.moveMessages(newFolder, messageUriList, isCopy);
 
 				// have the filter created with a delay so that filters can adapt to the new folder!!
-				if (QFFW.FilterMode) {
+				if (QFFW.FilterMode && QFFW.FilterModeLegacy) {
 					// if user has quickFilters installed, use that instead!!
-					QFFW.createFilterAsync(sourceFolder, newFolder, msgList, isCopy, true);
+					await QFFW.createFilterAsync(sourceFolder, newFolder, msgList, isCopy, true);
 				}
 
 				util.logDebugOptional("dragToNew", "4. updateFolders...");
@@ -1194,7 +1178,6 @@ var QuickFolders = {
               function createFolderCallback(f) {
                 let fld = f || model.getMsgFolderFromUri(newFolderUri, true);
                 moveOrCopy(fld, currentURI);
-                
               },
               function failedCreateFolder(reason) {
                 util.logToConsole('getOrCreateFolder() ', reason);	
@@ -1460,8 +1443,8 @@ var QuickFolders = {
 						// haven't found a way to tidy these up, yet (should be done in onDragExit?)
 						// Maybe they have to be created at the same time as the "full menus" and part of another menu array like menuPopupsByOffset
 						// no menus necessary for folders without subfolders!
-						let popupset = this.doc.createXULElement ? this.doc.createXULElement('popupset') : this.doc.createElement('popupset'),
-						    menupopup = this.doc.createXULElement ? this.doc.createXULElement('menupopup') : this.doc.createElement('menupopup'),
+						let popupset = this.doc.createXULElement('popupset'),
+						    menupopup = this.doc.createXULElement('menupopup'),
 						    popupId;
 						QI.FoldersBox.appendChild(popupset);
             
@@ -1502,16 +1485,14 @@ var QuickFolders = {
                 QI.createRecentTab(menupopup, true, button);
               }
               else {
-                if (prefs.isShowRecentTab)
+                if (prefs.isShowRecentTab) {
                   removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', this.doc);
+                }
               }
 						}
             if (!popupId)
               return;
 
-						// a bug in showPopup when used with coordinates makes it start from the wrong origin
-						//document.getElementById(popupId).showPopup(button, button.boxObject.screenX, Number(button.boxObject.screenY) + Number(button.boxObject.height));
-						// AG fixed, 19/11/2008 - showPopup is deprecated in FX3!
 						util.logDebugOptional("dnd", "showPopup with id " + popupId );
 						let p =  this.doc.getElementById(popupId);
 						if (!p) {
@@ -1544,16 +1525,14 @@ var QuickFolders = {
 							}
 						
 							this.doc.popupNode = button;
-							if (p.openPopup) {
-                if (isShift) {
-                  p.openPopup(button,'end_before', 0,-1,"context",false);
-                }
-                else {
-                  p.openPopup(button,'after_start', 0,-1,"context",false);
-                }
-              }
-							else
-								p.showPopup(button, -1,-1,"context","bottomleft","topleft"); // deprecated
+              let position = isShift ? "end_before" : "after_start";
+              p.targetNode = button;
+              p.openPopup(button, // anchor element
+                          position, 
+                          0,      // x
+                          -1,     // y
+                          true,   // isContextMenu
+                          false); // attributesOverride
 							
 							util.logDebugOptional("dnd", "set global popup id = " + popupId);
 							QuickFolders_globalHidePopupId = popupId;
@@ -1574,8 +1553,6 @@ var QuickFolders = {
 		
 		// deal with old folder popups
 		dragExit: function btnObs_dragExit(event, dragSession) {
-      if (!event) debugger;
-      
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 			const util = QuickFolders.Util;
 			util.logDebugOptional("dnd", "buttonDragObserver.dragExit\n" + 
@@ -1648,8 +1625,6 @@ var QuickFolders = {
 
 
 		dragOver: function btnObs_dragOver(evt, flavour, dragSession){
-      if (!evt) debugger;
-      
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 			//QuickFolders.Util.logDebug("buttonDragObserver.dragOver flavour=" + flavour.contentType);
 			// dragSession.canDrop = true;
@@ -1873,9 +1848,9 @@ var QuickFolders = {
 								messageUris,
 								dragSession.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY
 							);
-							if (QuickFolders.FilterWorker.FilterMode) {
+							if (QuickFolders.FilterWorker.FilterMode && QuickFolders.FilterWorker.FilterModeLegacy) {
                 lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
-                QuickFolders.FilterWorker.createFilterAsync(sourceFolder, targetFolder, msgList, false);
+                await QuickFolders.FilterWorker.createFilterAsync(sourceFolder, targetFolder, msgList, false);
 							}
 						}
 
@@ -2402,7 +2377,6 @@ QuickFolders.FolderTreeSelect = function FolderTreeSelect(event) {
   catch(ex) {
     logEx('FolderTreeSelect failed', ex);
   }
-  
 };
 
 // set up the folder listener to point to the above function

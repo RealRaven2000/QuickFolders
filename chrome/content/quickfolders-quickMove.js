@@ -133,11 +133,11 @@ QuickFolders.quickMove = {
       // Move / Copy Messages
       let messageIdList = await util.moveMessages(fld, uris, isCopy);
 
-
       // should return an array of message ids...
       if (messageIdList) { 
         // ...which we should match before deleting our URIs?
-        if (QuickFolders.FilterWorker.FilterMode) {
+        // use new flag FilterModeLegacy to avoid multiple assistant triggers.
+        if (QuickFolders.FilterWorker.FilterMode && QuickFolders.FilterWorker.FilterModeLegacy) {
           let sourceFolder = origins.length ? origins[0] : null;
           for (let i=0; i<origins.length; i++) {
             if (sourceFolder!=origins[i]) {
@@ -146,7 +146,7 @@ QuickFolders.quickMove = {
               break;
             }
           }
-          QuickFolders.FilterWorker.createFilterAsync(sourceFolder, fld, messageIdList, isCopy, true);
+          await QuickFolders.FilterWorker.createFilterAsync(sourceFolder, fld, messageIdList, isCopy, true);
         }
         actionCount = messageIdList.length;
       }

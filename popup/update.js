@@ -9,7 +9,7 @@ END LICENSE BLOCK */
 
 const REDUCTION_RENEW = "25%",
       REDUCTION_PRO = "33%",
-      REDUCTION_UPGRADE = "40%";
+      REDUCTION_UPGRADE = "33%";
 
 
 addEventListener("click", async (event) => {

@@ -6320,8 +6320,9 @@ QuickFolders.Interface = {
       // =============
       // MENU FONT SIZE 
       // [issue 329] inconsistent menu font size
-      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup * > label", "font-size", prefs.ButtonFontSize + "px");
-      styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", prefs.ButtonFontSize + "px");
+      let newFontSize = prefs.ButtonFontSize || 12; // default value, 0!
+      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup * > label", "font-size", newFontSize + "px");
+      styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", newFontSize + "px");
       
 
 			// =================

@@ -302,11 +302,14 @@ END LICENSE BLOCK */
     ## [issue 322] Tabs for Unified folders can falsely be reported as invalid
     ## Added message for Russian users to get in touch to receive a license.
     
-  5.15 QuickFolders Pro - WIP
+  5.15 QuickFolders Pro - 22/12/2022
     ## [issue 328] quickMove: Moving emails from different source folders doesn't remove them from the queue
     ## [issue 315] Remove the term 'Orphaned Tabs' in all User Interface texts
     ## Modifications to code for triggering filter assistant to avoid "monkey patching" 
     ##    (overwriting) Thunderbird internal functions.
+    
+  5.15.1 QuickFolders Pro - 22/12/2022
+    ## [issue 333] (regression from #328) All Text in popup menus (subfolders / commands) is missing
   
 
 	Future Work

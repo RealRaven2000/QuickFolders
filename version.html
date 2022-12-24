@@ -328,6 +328,7 @@
     
     <a name="5.15">&nbsp;</a>
     <a name="5.15.1">&nbsp;</a>
+    <a name="5.15.2">&nbsp;</a>
     <li>
       <h4>
       <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.15.1">Version 5.15.1 - 22/12/2022</a>
@@ -449,11 +450,24 @@
       </table>
       
       <ul>
-        <h4 class="inList">Maintenance Fixes - 5.15.1</h4>
+        <h4 class="inList">Maintenance Fixes</h4>
         <li>
-          <a href="https://github.com/RealRaven2000/QuickFolders/issues/333">[issue 333]</a>
-          A regression caused all text in popup menus (subfolders / commands) to appear missing for most users.
-          This was because of the default size of 0 being falsely applied as a literal value.
+          <b>Version 5.15.1 </b> (published 22/12/2022):
+          <p>
+            A regression in v5.15 caused all text in popup menus (subfolders / commands) to appear missing for most users.
+            This was because of the default size of 0 being falsely applied as a literal value.
+            <a href="https://github.com/RealRaven2000/QuickFolders/issues/333">[issue 333]</a>
+          </p>
+        </li>
+        <li>
+          <b>Version 5.15.2</b> (Awaiting review):
+          <p>
+            The quickFilters assistant was triggered multiple times when dropping multiple mails to tab
+            or multiple mails are moved using quickMove. This new version will move emails together,
+            as long as they come from an identical source folder. This should prevent multiple assistant
+            windows in the majority of use cases.
+            <a href="https://github.com/RealRaven2000/QuickFolders/issues/335">[issue 335]</a>
+          </p>
         </li>
         
         <h4 class="inList">Improvements</h4>

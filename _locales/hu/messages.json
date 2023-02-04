@@ -1603,7 +1603,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1}Javítva: A különböző mappákból származó levelek QuickMove segítségével történő áthelyezése nem távolította el ezeket a menüből. [issue 328]{L2} {L1}A gombok egyéni betűméretével az almenük is konzisztens betűmérettel rendelkeznek az e-mailek áthúzásakor [issue 329]{L2} {L1}A belső kód módosításai a quickFilters szűrősegéd aktiválásához. Ezeket a változtatásokat az 5.7-es és újabb verziójú quickFilters-bővítmény teszi szükségessé.{L2}"
+    "message": "{L1}5.15.2 többé nem aktiválja többször a QuickFilters segédprogramot, ha több levelet dob egy lapra.{L2}{L1}Javítva: A különböző mappákból származó levelek QuickMove segítségével történő áthelyezése nem távolította el ezeket a menüből. [issue 328]{L2} {L1}A gombok egyéni betűméretével az almenük is konzisztens betűmérettel rendelkeznek az e-mailek áthúzásakor [issue 329]{L2} {L1}A belső kód módosításai a quickFilters szűrősegéd aktiválásához. Ezeket a változtatásokat az 5.7-es és újabb verziójú quickFilters-bővítmény teszi szükségessé.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

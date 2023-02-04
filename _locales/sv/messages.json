@@ -1854,7 +1854,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Fast: Flytta e-post från olika mappar via quickMove tog inte bort dessa från menyn. [issue 328]{L2} {L1}Med anpassad teckenstorlek på knappar har undermenyer också konsekvent teckenstorlek när du drar e-post [issue 329]{L2} {L1}Ändringar av intern kod för att trigga filterassistenten quickFilters. Dessa ändringar kommer att krävas av quickFilters-tillägget från version 5.7 och senare.{L2}"
+    "message": "{L1}5.15.2 kommer inte att utlösa quickFilters-assistenten flera gånger längre när flera e-postmeddelanden släpps till en flik.{L2}{L1}Fast: Flytta e-post från olika mappar via quickMove tog inte bort dessa från menyn. [issue 328]{L2} {L1}Med anpassad teckenstorlek på knappar har undermenyer också konsekvent teckenstorlek när du drar e-post [issue 329]{L2} {L1}Ändringar av intern kod för att trigga filterassistenten quickFilters. Dessa ändringar kommer att krävas av quickFilters-tillägget från version 5.7 och senare.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

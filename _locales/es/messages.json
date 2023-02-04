@@ -1845,7 +1845,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Corregido: Mover correos de diferentes carpetas a través de QuickMove no los eliminaba del menú. [issue 328]{L2} {L1}Con un tamaño de fuente personalizado en los botones, los submenús también tienen un tamaño de fuente uniforme al arrastrar el correo [issue 329]{L2} {L1}Modificaciones en el código interno para activar el asistente de filtros QuickFilters. Estos cambios serán requeridos por el complemento QuickFilters de la versión 5.7 y superior.{L2}"
+    "message": "{L1}5.15.2 ya no activará el asistente QuickFilters varias veces al colocar varios correos en una pestaña.{L2}{L1}Corregido: Mover correos de diferentes carpetas a través de QuickMove no los eliminaba del menú. [issue 328]{L2} {L1}Con un tamaño de fuente personalizado en los botones, los submenús también tienen un tamaño de fuente uniforme al arrastrar el correo [issue 329]{L2} {L1}Modificaciones en el código interno para activar el asistente de filtros QuickFilters. Estos cambios serán requeridos por el complemento QuickFilters de la versión 5.7 y superior.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

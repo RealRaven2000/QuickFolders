@@ -1893,7 +1893,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Fixed: Moving mails from different folders via quickMove did not remove these from the menu. [issue 328]{L2} {L1}With custom font size on buttons, submenus also have consistent font size when dragging mail [issue 329]{L2} {L1}Modifications to internal code for triggering the quickFilters filter assistant. These changes will be required by the quickFilters Add-on from version 5.7 and higher.{L2}"
+    "message": "{L1}5.15.2 will not trigger quickFilters assistant multiple times anymore when dropping multiple mails to a tab.{L2}{L1}Fixed: Moving mails from different folders via quickMove did not remove these from the menu. [issue 328]{L2} {L1}With custom font size on buttons, submenus also have consistent font size when dragging mail [issue 329]{L2} {L1}Modifications to internal code for triggering the quickFilters filter assistant. These changes will be required by the quickFilters Add-on from version 5.7 and higher.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

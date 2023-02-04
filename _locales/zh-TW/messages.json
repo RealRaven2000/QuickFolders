@@ -1791,7 +1791,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}已修復：通過快速移動從不同文件夾移動郵件不會從菜單中刪除這些郵件。 [issue 328]{L2} {L1}在按鈕上自定義字體大小，子菜單在拖動郵件時也具有一致的字體大小 [issue 329]{L2} {L1}修改內部代碼以觸發 quickFilters 過濾器助手。 5.7 及更高版本的 quickFilters 插件需要進行這些更改。{L2}"
+    "message": "{L1}5.15.2 將多個郵件拖放到一個選項卡時，不會再多次觸發 quickFilters 助手。{L2}{L1}已修復：通過快速移動從不同文件夾移動郵件不會從菜單中刪除這些郵件。 [issue 328]{L2} {L1}在按鈕上自定義字體大小，子菜單在拖動郵件時也具有一致的字體大小 [issue 329]{L2} {L1}修改內部代碼以觸發 quickFilters 過濾器助手。 5.7 及更高版本的 quickFilters 插件需要進行這些更改。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

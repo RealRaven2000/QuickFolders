@@ -1353,7 +1353,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}Đã sửa lỗi: Di chuyển thư từ các thư mục khác nhau qua quickMove không xóa những thư này khỏi trình đơn. [issue 328]{L2} {L1}Với kích thước phông chữ tùy chỉnh trên các nút, menu con cũng có kích thước phông chữ nhất quán khi kéo thư [issue 329]{L2} {L1}Sửa đổi đối với mã nội bộ để kích hoạt hỗ trợ bộ lọc quickFilters. Những thay đổi này sẽ được yêu cầu bởi Tiện ích bổ sung quickFilters từ phiên bản 5.7 trở lên.{L2}"
+    "message": "{L1}5.15.2 sẽ không kích hoạt trợ lý quickFilters nhiều lần nữa khi thả nhiều thư vào một tab.{L2}{L1}Đã sửa lỗi: Di chuyển thư từ các thư mục khác nhau qua quickMove không xóa những thư này khỏi trình đơn. [issue 328]{L2} {L1}Với kích thước phông chữ tùy chỉnh trên các nút, menu con cũng có kích thước phông chữ nhất quán khi kéo thư [issue 329]{L2} {L1}Sửa đổi đối với mã nội bộ để kích hoạt hỗ trợ bộ lọc quickFilters. Những thay đổi này sẽ được yêu cầu bởi Tiện ích bổ sung quickFilters từ phiên bản 5.7 trở lên.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

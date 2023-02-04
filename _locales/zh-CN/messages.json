@@ -1780,7 +1780,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}已修复：通过快速移动从不同文件夹移动邮件不会从菜单中删除这些邮件。 [issue 328]{L2} {L1}在按钮上自定义字体大小，子菜单在拖动邮件时也具有一致的字体大小 [issue 329]{L2} {L1}修改内部代码以触发 quickFilters 过滤器助手。 5.7 及更高版本的 quickFilters 插件需要进行这些更改。{L2}"
+    "message": "{L1}5.15.2 将多个邮件拖放到一个选项卡时，不会再多次触发 quickFilters 助手。{L2}{L1}已修复：通过快速移动从不同文件夹移动邮件不会从菜单中删除这些邮件。 [issue 328]{L2} {L1}在按钮上自定义字体大小，子菜单在拖动邮件时也具有一致的字体大小 [issue 329]{L2} {L1}修改内部代码以触发 quickFilters 过滤器助手。 5.7 及更高版本的 quickFilters 插件需要进行这些更改。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

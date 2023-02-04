@@ -1836,7 +1836,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Naprawiono: przenoszenie wiadomości e-mail z różnych folderów za pomocą funkcji QuickMove nie usuwało ich z menu. [issue 328]{L2} {L1}Dzięki niestandardowemu rozmiarowi czcionki na przyciskach podmenu mają również stały rozmiar czcionki podczas przeciągania wiadomości [issue 329]{L2} {L1}Modyfikacje wewnętrznego kodu uruchamiającego asystenta filtrowania quickFilters. Zmiany te będą wymagane przez dodatek quickFilters od wersji 5.7 i nowszych.{L2}"
+    "message": "{L1}5.15.2 nie będzie już wielokrotnie uruchamiał asystenta quickFilters podczas upuszczania wielu wiadomości e-mail na kartę.{L2}{L1}Naprawiono: przenoszenie wiadomości e-mail z różnych folderów za pomocą funkcji QuickMove nie usuwało ich z menu. [issue 328]{L2} {L1}Dzięki niestandardowemu rozmiarowi czcionki na przyciskach podmenu mają również stały rozmiar czcionki podczas przeciągania wiadomości [issue 329]{L2} {L1}Modyfikacje wewnętrznego kodu uruchamiającego asystenta filtrowania quickFilters. Zmiany te będą wymagane przez dodatek quickFilters od wersji 5.7 i nowszych.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1818,7 +1818,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Corrigido: Mover e-mails de pastas diferentes via quickMove não os removia do menu. [issue 328]{L2} {L1}Com tamanho de fonte personalizado nos botões, os submenus também têm tamanho de fonte consistente ao arrastar e-mail [issue 329]{L2} {L1}Modificações no código interno para acionar o assistente de filtro quickFilters. Essas alterações serão exigidas pelo complemento quickFilters da versão 5.7 e superior.{L2}"
+    "message": "{L1}5.15.2 não acionará mais o assistente do quickFilters várias vezes ao soltar vários e-mails em uma guia.{L2}{L1}Corrigido: Mover e-mails de pastas diferentes via quickMove não os removia do menu. [issue 328]{L2} {L1}Com tamanho de fonte personalizado nos botões, os submenus também têm tamanho de fonte consistente ao arrastar e-mail [issue 329]{L2} {L1}Modificações no código interno para acionar o assistente de filtro quickFilters. Essas alterações serão exigidas pelo complemento quickFilters da versão 5.7 e superior.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

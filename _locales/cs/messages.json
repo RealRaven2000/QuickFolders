@@ -267,7 +267,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Opraveno: Přesouvání e-mailů z různých složek pomocí quickMove je neodstranilo z nabídky. [issue 328]{L2} {L1}S vlastní velikostí písma na tlačítkách mají podnabídky také konzistentní velikost písma při přetahování pošty [issue 329]{L2} {L1}Úpravy interního kódu pro spouštění asistenta filtrování quickFilters. Tyto změny bude vyžadovat doplněk quickFilters od verze 5.7 a vyšší.{L2}"
+    "message": "{L1}5.15.2 již při přesouvání více e-mailů na kartu vícekrát nespustí asistenta quickFilters.{L2}{L1}Opraveno: Přesouvání e-mailů z různých složek pomocí quickMove je neodstranilo z nabídky. [issue 328]{L2} {L1}S vlastní velikostí písma na tlačítkách mají podnabídky také konzistentní velikost písma při přetahování pošty [issue 329]{L2} {L1}Úpravy interního kódu pro spouštění asistenta filtrování quickFilters. Tyto změny bude vyžadovat doplněk quickFilters od verze 5.7 a vyšší.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

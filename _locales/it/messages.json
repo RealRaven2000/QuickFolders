@@ -1833,7 +1833,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Risolto: lo spostamento di messaggi da cartelle diverse tramite QuickMove non li rimuoveva dal menu. [issue 328]{L2} {L1}Con la dimensione del carattere personalizzata sui pulsanti, anche i sottomenu hanno dimensioni del carattere coerenti durante il trascinamento della posta [issue 329]{L2} {L1}Modifiche al codice interno per l'attivazione dell'assistente filtro quickFilters. Queste modifiche saranno richieste dal componente aggiuntivo quickFilters dalla versione 5.7 e successive.{L2}"
+    "message": "{L1}5.15.2 non attiverà più l'assistente quickFilters più volte quando si rilasciano più messaggi in una scheda.{L2}{L1}Risolto: lo spostamento di messaggi da cartelle diverse tramite quickMove non li rimuoveva dal menu. [issue 328]{L2} {L1}Con la dimensione del carattere personalizzata sui pulsanti, anche i sottomenu hanno dimensioni del carattere coerenti durante il trascinamento della posta [issue 329]{L2} {L1}Modifiche al codice interno per l'attivazione dell'assistente filtro quickFilters. Queste modifiche saranno richieste dal componente aggiuntivo quickFilters dalla versione 5.7 e successive.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

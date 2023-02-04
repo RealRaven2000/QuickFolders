@@ -1827,7 +1827,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Corrigé : le déplacement d'e-mails à partir de différents dossiers via quickMove ne les supprimait pas du menu. [issue 328]{L2} {L1}Avec une taille de police personnalisée sur les boutons, les sous-menus ont également une taille de police cohérente lors du déplacement du courrier [issue 329]{L2} {L1}Modifications du code interne pour déclencher l'assistant de filtrage quickFilters. Ces modifications seront requises par le module complémentaire quickFilters à partir de la version 5.7 et des versions ultérieures.{L2}"
+    "message": "{L1}5.15.2 ne déclenchera plus plusieurs fois l'assistant quickFilters lors du dépôt de plusieurs e-mails dans un onglet.{L2}{L1}Corrigé : le déplacement d'e-mails à partir de différents dossiers via quickMove ne les supprimait pas du menu. [issue 328]{L2} {L1}Avec une taille de police personnalisée sur les boutons, les sous-menus ont également une taille de police cohérente lors du déplacement du courrier [issue 329]{L2} {L1}Modifications du code interne pour déclencher l'assistant de filtrage quickFilters. Ces modifications seront requises par le module complémentaire quickFilters à partir de la version 5.7 et des versions ultérieures.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -9,9 +9,7 @@ QuickFolders.AdvancedTab = {
     return window.arguments[1];
   } ,
   get MainQuickFolders() {
-    let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-				.getService(Components.interfaces.nsIWindowMediator)
-				.getMostRecentWindow("mail:3pane");  
+    let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");  
     return mail3PaneWindow.QuickFolders;
   } ,
   
@@ -312,9 +310,7 @@ QuickFolders.AdvancedTab = {
   } ,
   
   configureCategory: function configureCategory() {
-    let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-				.getService(Components.interfaces.nsIWindowMediator)
-				.getMostRecentWindow("mail:3pane");  
+    let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");  
     QuickFolders.Interface.configureCategory(this.folder, mail3PaneWindow.QuickFolders); // should actually get the "parent" QuickFolders
     let lbl = document.getElementById('lblCategories');
     lbl.value = this.entry.category + " *";

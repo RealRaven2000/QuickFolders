@@ -123,8 +123,9 @@ QuickFolders.quickMove = {
           }
         }
       }
-			if (!QuickFolders.quickMove.Settings.isSilent)
-				util.slideAlert("QuickFolders",notify);
+			if (!QuickFolders.quickMove.Settings.isSilent) {
+				util.slideAlert("QuickFolders", notify);
+      }
     }
     async function copyList(uris, origins, isCopy) {
       if (!uris.length) return;

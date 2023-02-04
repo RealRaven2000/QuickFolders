@@ -383,8 +383,7 @@ QuickFolders.FolderTree = {
           theTreeView = gFolderTreeView,
           NS_MSG_ERROR_OFFLINE = 0x80550014,
           ImapNoselect    = 0x01000000; // thrown by performExpand if offline!
-    let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),
-        iCount = 0;
+    let iCount = 0;
         
     let isProfiling = QuickFolders.Preferences.isDebugOption("folderTree,performance");
     if (isProfiling) {
@@ -413,7 +412,7 @@ QuickFolders.FolderTree = {
     }
     
     try {
-      let result = prompts.confirm(window, "QuickFolders.FolderTree", "Rebuild the tree for IMAP?\n" +
+      let result = Services.prompt.confirm(window, "QuickFolders.FolderTree", "Rebuild the tree for IMAP?\n" +
         "This may take a long time, depending on the number of folders on the server."); 
       if (!result) return;
       util.ensureNormalFolderView();

@@ -10,9 +10,6 @@
 
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
-if (!QuickFolders.StringBundle)
-	QuickFolders.StringBundle = Components.classes["@mozilla.org/intl/stringbundle;1"].getService(Components.interfaces.nsIStringBundleService);
-
 QuickFolders.Interface = {
 	PaintModeActive: false,
 	TimeoutID: 0,
@@ -1054,14 +1051,12 @@ QuickFolders.Interface = {
 	} ,
 
 	deleteFolderPrompt: function deleteFolderPrompt(folderEntry, withCancel, check, remaining) {
-		let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
-													.getService(Components.interfaces.nsIPromptService),
-		    flags = prompts.BUTTON_POS_0 * prompts.BUTTON_TITLE_YES +
-								prompts.BUTTON_POS_1 * prompts.BUTTON_TITLE_NO;
+		let flags = Services.prompt.BUTTON_POS_0 * Services.prompt.BUTTON_TITLE_YES +
+								Services.prompt.BUTTON_POS_1 * Services.prompt.BUTTON_TITLE_NO;
 		if (withCancel)
-			flags += prompts.BUTTON_POS_2 * prompts.BUTTON_TITLE_CANCEL;
+			flags += Services.prompt.BUTTON_POS_2 * Services.prompt.BUTTON_TITLE_CANCEL;
 		let noCheckbox = {value: false};
-		// button = prompts.confirmEx(null, "Title of this Dialog", "What do you want to do?",
+		// button = Services.prompt.confirmEx(null, "Title of this Dialog", "What do you want to do?",
 													 // flags, "button 0", "Button 1", "button 2", "check message", let check = {value: false});
 		let text = this.getUIstring("qfThisTabIsInvalid",[folderEntry.name]) + "\n"
 									+ folderEntry.uri + "\n"
@@ -1070,7 +1065,7 @@ QuickFolders.Interface = {
 				              this.getUIstring("qfTabDeleteOption").replace("{0}", remaining) :
 										  null;
 
-		let answer = prompts.confirmEx( null,
+		let answer = Services.prompt.confirmEx( null,
 																		"QuickFolders",
 																		text,
 																		flags,
@@ -1209,7 +1204,6 @@ QuickFolders.Interface = {
 		try {
 			const winType = "global:console";
 			prefs.setBoolPref("debug.folderTree.icons",true);
-			// Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService).clear();
 			toOpenWindowByType(winType, "chrome://console2/content/console2.xhtml");  //TODO chrome://console2/content/console2.xhtml does not exist??
 			let win = Services.wm.getMostRecentWindow(winType);
 			// win.clearConsole();
@@ -3162,9 +3156,9 @@ QuickFolders.Interface = {
 
 	rebuildSummary: function rebuildSummary(folder) {
     // global objects: msgWindow
-		const Ci = Components.interfaces,
-					Cc = Components.classes;
     QuickFolders.Util.logDebug(`rebuildSummary(${folder.prettyName}) started... `);
+    
+    var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 		let isCurrent=false;
 		// taken from http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2087
 		if (folder.locked) {
@@ -3184,9 +3178,7 @@ QuickFolders.Interface = {
 			}
 
 			// Send a notification that we are triggering a database rebuild.
-			let notifier =
-				Cc["@mozilla.org/messenger/msgnotificationservice;1"]
-						.getService(Ci.nsIMsgFolderNotificationService);
+			let notifier = MailServices.mfn;  // nsIMsgFolderNotificationService
 
       if (notifier.notifyFolderReindexTriggered) { // Tb 102
         notifier.notifyFolderReindexTriggered(folder);
@@ -3245,10 +3237,8 @@ QuickFolders.Interface = {
 	// see http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2359
 	onCreateInstantFolder: function onCreateInstantFolder(parentFolder, folderName) {
 		const util = QuickFolders.Util,
-					QI = QuickFolders.Interface,
-		      Ci = Components.interfaces,
-					Cc = Components.classes,
-          prompts = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+					QI = QuickFolders.Interface;
+
 		let isQuickMove = (QuickFolders.quickMove.isActive),
 				isFindFolder = true;  // flag for coming from the quickMove / quickJump popup menu
 
@@ -3266,7 +3256,7 @@ QuickFolders.Interface = {
         checkBoxText = util.getBundleString("qf.prompt.newFolder.createQFtab"),
         input = { value: folderName },
         check = { value: false },
-        result = prompts.prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
+        result = Services.prompt.prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
     if (!result) return;
     if (!parentFolder.canCreateSubfolders) throw ("cannot create a subfolder for: " + parentFolder.prettyName);
 		let newFolderUri = parentFolder.URI + "/" + encodeURI(input.value);
@@ -5192,7 +5182,7 @@ QuickFolders.Interface = {
 				}
 
 				//
-				if (matchPos == 0 && prefs.isDebugOption("quickMove")) debugger;
+				// if (matchPos == 0 && prefs.isDebugOption("quickMove")) debugger;
 				if (matchPos == 0
 				   &&
 				   !parents.some(p => (p.uri == folderEntry.uri))) {  
@@ -5326,7 +5316,8 @@ QuickFolders.Interface = {
         // make it easy to hit return to jump into folder instead:
         // isSelected = QuickFolders_MySelectFolder(matches[0].uri);
         setTimeout( function() {
-            let fm = Components.classes["@mozilla.org/focus-manager;1"].getService(Ci.nsIFocusManager);
+            var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
+            let fm = Services.focus;
             fm.setFocus(menupopup, fm.MOVEFOCUS_FIRST + fm.FLAG_SHOWRING);
             let fC = menupopup.firstChild;
             fm.setFocus(fC, fm.FLAG_BYMOUSE + fm.FLAG_SHOWRING);
@@ -5845,10 +5836,9 @@ QuickFolders.Interface = {
         removeAlwaysShow = false;
     // see if it is set to "show always" and show a prompt allowing to remove
     if (cats.indexOf(QuickFolders.FolderCategory.ALWAYS) >= 0) {
-      let promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService),
-          text = QuickFolders.Util.getBundleString("qfRemoveCategoryPrompt");
+      let text = QuickFolders.Util.getBundleString("qfRemoveCategoryPrompt");
       text = text.replace("{1}", QuickFolders.Util.getBundleString("qfShowAlways"));
-      if (promptService.confirm(window, "QuickFolders", text))
+      if (Services.prompt.confirm(window, "QuickFolders", text))
         removeAlwaysShow = true;
     }
 
@@ -6841,8 +6831,7 @@ QuickFolders.Interface = {
 
 		sPrompt = sPrompt.replace("{0}", whatIsMoved);
 		sPrompt = sPrompt.replace("{1}", targetFolder.prettyName);
-		let promptService = Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
-		if (!promptService.confirm(window, "QuickFolders", sPrompt)) return;
+		if (!Services.prompt.confirm(window, "QuickFolders", sPrompt)) return;
 
 		try {
 			let toCount = arrCount || 1,
@@ -7244,7 +7233,7 @@ QuickFolders.Interface = {
     }
 
     if (!w) {
-      let watcher = Cc["@mozilla.org/embedcomp/window-watcher;1"].getService(Ci.nsIWindowWatcher),
+      let watcher = Services.ww,
           width = "750px",
           height = "350px",
           features = "alwaysRaised,dependent,centerscreen,chrome,resizable,width="+ width + ",height=" + height;
@@ -7282,7 +7271,6 @@ QuickFolders.Interface = {
     // originally this was located in QF.options.pasteFolderEntries
     const Cc = Components.classes,
           Ci = Components.interfaces,
-          service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
           util = QuickFolders.Util,
           prefs = QuickFolders.Preferences;
     let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable),
@@ -7351,12 +7339,11 @@ QuickFolders.Interface = {
     // debug function for checking users folder string (about:config has trouble with editing JSON strings)
     const Cc = Components.classes,
           Ci = Components.interfaces,
-          service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
           util = QuickFolders.Util;
 
     try {
       let clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper),
-          sFolderString = service.getStringPref("QuickFolders.folders");
+          sFolderString = Services.prefs.getStringPref("QuickFolders.folders");
 
       util.logToConsole("Folder String: " & sFolderString);
       try {

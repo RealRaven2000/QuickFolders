@@ -109,12 +109,9 @@ QuickFolders.FilterWorker = {
 				}
 				else {
 					// fallback for systems that do not support notification (currently: SeaMonkey)
-					let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]  
-																	.getService(Components.interfaces.nsIPromptService);  
-						
 					let check = {value: false};   // default the checkbox to true  
 						
-					let result = prompts.alertCheck(null, title, theText, dontShow, check);
+					let result = Services.prompt.alertCheck(null, title, theText, dontShow, check);
 					if (check.value==true)
 						QuickFolders.FilterWorker.showMessage(false);
 				}
@@ -171,8 +168,7 @@ QuickFolders.FilterWorker = {
 	
   openFilterList: function openFilterList(isRefresh, sourceFolder) {
     try {
-			let mediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator);
-			let w = mediator.getMostRecentWindow('mailnews:filterlist');
+			let w = Services.wm.getMostRecentWindow('mailnews:filterlist');
 	    
 	    // [Bug 25203] "Error when adding a filter if Message Filters window is already open"
 	    // Thunderbird bug - if the filter list is already open and refresh is true
@@ -245,6 +241,7 @@ QuickFolders.FilterWorker = {
 		let Ci = Components.interfaces,
         msg,
         util = QuickFolders.Util;
+    var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 		function getMailKeyword(subject) {
 			let topicFilter = subject,
 			    left,right;
@@ -300,9 +297,8 @@ QuickFolders.FilterWorker = {
       messageHeader = messageDb.getMsgHdrForMessageID(messageId);
     }
     else { // Postbox ??
-      // let globalIndex = Cc['@mozilla.org/msg-global-index;1'].getService(Components.interfaces.nsIMsgGlobalIndex);
       try {
-        // see nsMsgFilleTextIndexer
+        // see nsMsgFileTextIndexer
         messageDb = targetFolder.getMsgDatabase(null); //GetMsgFolderFromUri(currentFolderURI, false)
         messageHeader = messageDb.getMsgHdrForMessageID(messageId);
       }
@@ -359,7 +355,7 @@ QuickFolders.FilterWorker = {
 				
 				util.logDebugOptional ("filters","got msg; key=" + key);
 
-				let headerParser = Components.classes["@mozilla.org/messenger/headerparser;1"].getService(Components.interfaces.nsIMsgHeaderParser);
+				let headerParser = MailServices.headerParser;  // nsIMsgHeaderParser
 				if (headerParser) {
 					util.logDebugOptional ("filters","parsing msg header...");
 					if (headerParser.extractHeaderAddressMailboxes) {
@@ -483,9 +479,7 @@ QuickFolders.FilterWorker = {
 						// 4th Filter Template: Based on a Tag
 						case 'tag':
 							// get the list of known tags
-							let tagService = Components.classes["@mozilla.org/messenger/tagservice;1"]
-							        .getService(Components.interfaces.nsIMsgTagService),
-							    tagArray = tagService.getAllTags({}),
+							let tagArray = MailServices.tags.getAllTags({}), // nsIMsgTagService
 							    tagKeys = {};
 							// remove for..each
               for (let ti=0; ti<tagArray.length; ti++) {

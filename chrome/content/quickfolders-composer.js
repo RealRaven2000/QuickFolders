@@ -10,9 +10,7 @@
 Object.defineProperty(QuickFolders, "MainQuickFolders", 
 { get : function QF_getMainInstance() {
 	if (QuickFolders.ComposerMainInstance) return QuickFolders.ComposerMainInstance;
-	let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-			.getService(Components.interfaces.nsIWindowMediator)
-			.getMostRecentWindow("mail:3pane"),
+	let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane"),
 			QF = mail3PaneWindow.QuickFolders;
 	QuickFolders.ComposerMainInstance = QF;
 	return mail3PaneWindow.QuickFolders;

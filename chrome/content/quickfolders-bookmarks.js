@@ -397,13 +397,12 @@ QuickFolders.bookmarks = {
 		      Cc = Components.classes,
 					util = QuickFolders.Util,
 					interfaceType = Ci.nsIDOMWindow;
-    let mediator = Cc["@mozilla.org/appshell/window-mediator;1"].getService(Ci.nsIWindowMediator),
-        browsers = null,
+    let browsers = null,
         DomWindow = null,
         theBrowser = null;
 
     try{
-      let getWindowEnumerator = mediator.getEnumerator;
+      let getWindowEnumerator = Services.wm.getEnumerator;
       if (browsers) {
         theBrowser = browsers.getNext();
         if (theBrowser) {

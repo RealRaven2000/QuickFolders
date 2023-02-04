@@ -155,9 +155,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         showXhtmlPage: function(uri) {
-          let mail3PaneWindow = Components.classes["@mozilla.org/appshell/window-mediator;1"]
-            .getService(Components.interfaces.nsIWindowMediator)
-            .getMostRecentWindow("mail:3pane");  
+          let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");  
           mail3PaneWindow.openDialog(uri);
         },
         
@@ -178,10 +176,9 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           // see options.copyFolderEntries
           const Cc = Components.classes,
                 Ci = Components.interfaces,
-                service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
                 util = win.QuickFolders.Util,
                 prefs = win.QuickFolders.Preferences,
-                sFolderString = service.getStringPref("QuickFolders.folders");
+                sFolderString = Services.prefs.getStringPref("QuickFolders.folders");
           let obj = JSON.parse(sFolderString),
               storedObj = { 
                 folders: obj,
@@ -224,7 +221,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           function readData(dataString) {
             const Cc = Components.classes,
                   Ci = Components.interfaces,
-                  service = Cc["@mozilla.org/preferences-service;1"].getService(Ci.nsIPrefBranch),
                   QI = win.QuickFolders.Interface;
             let changedRecords = [];
             

@@ -11,7 +11,7 @@
 
 //export  {QuickFolders.Preferences};
 QuickFolders.Preferences = {
-	service: Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch),
+	service: Services.prefs,
 
 	get isDebug() {
 		return this.getBoolPref("debug");

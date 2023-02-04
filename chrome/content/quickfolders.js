@@ -311,11 +311,21 @@ END LICENSE BLOCK */
   5.15.1 QuickFolders Pro - 22/12/2022
     ## [issue 333] (regression from #328) All Text in popup menus (subfolders / commands) is missing
   
+  5.15.2 QuickFolders Pro - 24/12/2022
+    ## [issue 335] quickFilters assistant triggered multiple times when dropping mails to tab
+    
+  5.16 QuickFolders Pro - WIP
+    ## Removed Service wrappers for nsIWindowMediator, nsIWindowWatcher, nsIPromptService, nsIPrefBranch, nsIFocusManager,
+    ##                              nsIStringBundleService, nsIXULAppInfo, nsIConsoleService, nsIVersionComparator,
+    ##       MailServices wrappers: nsIMsgHeaderParser, nsIMsgTagService, nsIMsgFolderNotificationService,
+    ##                              nsIMsgMailSession, nsIFolderLookupService
+
 
 	Future Work
 	===========
     ## [issue 103] Feature Request: Support copying folders
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
+    ## [issue 56] Folders intermittently displayed as invalid / non existent (on startup)
 
     
 	Known Issues
@@ -376,12 +386,10 @@ if (typeof DeferredTask == "undefined")
 
 	
 /* GLOBAL VARIABLES */
-var QuickFolders_globalHidePopupId="",
-    QuickFolders_globalLastChildPopup=null,
-    QuickFolders_globalWin=Components.classes["@mozilla.org/appshell/window-mediator;1"]
-				.getService(Components.interfaces.nsIWindowMediator)
-				.getMostRecentWindow("mail:3pane"),
-    QuickFolders_globalDoc=document;
+var QuickFolders_globalHidePopupId = "",
+    QuickFolders_globalLastChildPopup = null,
+    QuickFolders_globalWin = Services.wm.getMostRecentWindow("mail:3pane"),
+    QuickFolders_globalDoc = document;
 
 var QuickFolders_getWindow = function() {
 	return QuickFolders_globalWin;
@@ -2272,8 +2280,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
         } else if (gFolderTreeView.mode) {
           gFolderTreeView.mode="smart"; // after changing the view, we need to get a new parent!!
         }
-        //let rdf = Cc['@mozilla.org/rdf/rdf-service;1'].getService(Ci.nsIRDFService),
-        //    folderResource = rdf.GetResource(folderUri);
+
         msgFolder = model.getMsgFolderFromUri(folderUri);   // folderResource.QueryInterface(Ci.nsIMsgFolder);
         parentIndex = theTreeView.getIndexOfFolder(msgFolder.parent);
       }
@@ -2392,10 +2399,7 @@ QuickFolders.FolderListener = {
     try {
       try {Components.utils.reportError(msg);}
       catch(e) {
-        let Cc = Components.classes,
-            Ci = Components.interfaces,
-            cserv = Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService);
-        cserv.logStringMessage("QuickFolders:" + msg);
+        Services.console.logStringMessage("QuickFolders:" + msg);
       }
     }
     catch(e) {
@@ -2735,9 +2739,6 @@ QuickFolders.CopyListener = {
 }
 
 QuickFolders.LocalErrorLogger = function(msg) {
-	let Cc = Components.classes,
-	    Ci = Components.interfaces,
-	    cserv = Cc["@mozilla.org/consoleservice;1"].getService(Ci.nsIConsoleService);
-	cserv.logStringMessage("QuickFolders:" + msg);
+	Services.console.logStringMessage("QuickFolders:" + msg);
 }
 

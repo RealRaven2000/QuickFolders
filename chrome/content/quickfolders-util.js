@@ -133,8 +133,7 @@ QuickFolders.Util = {
   } ,
 
   get ApplicationVersion() {
-    let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
-            .getService(Components.interfaces.nsIXULAppInfo);
+    let appInfo = Services.appinfo;
     return appInfo.version;
   },
 
@@ -148,8 +147,7 @@ QuickFolders.Util = {
 
   get Application() {
     if (null==this.mAppName) {
-      let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
-            .getService(Components.interfaces.nsIXULAppInfo);
+      let appInfo = Services.appinfo;
       const THUNDERBIRD_ID = "{3550f703-e582-4d05-9a08-453d09bdfdc6}";
       const SEAMONKEY_ID = "{92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a}";
       const POSTBOX_ID = "postbox@postbox-inc.com";
@@ -214,28 +212,23 @@ QuickFolders.Util = {
   },
   
   versionGreaterOrEqual: function(a, b) {
-    let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
-                            .getService(Components.interfaces.nsIVersionComparator);
+    let versionComparator = Services.vc;
     return (versionComparator.compare(a, b) >= 0);
   } ,
 
   versionSmaller: function(a, b) {
-    let versionComparator = Components.classes["@mozilla.org/xpcom/version-comparator;1"]
-                            .getService(Components.interfaces.nsIVersionComparator);
-     return (versionComparator.compare(a, b) < 0);
+    let versionComparator = Services.vc;
+    return (versionComparator.compare(a, b) < 0);
   } , 
     
   
   getMail3PaneWindow: function getMail3PaneWindow() {
-    let windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1']
-        .getService(Components.interfaces.nsIWindowMediator),
-        win3pane = windowManager.getMostRecentWindow("mail:3pane");
+    let win3pane = Services.wm.getMostRecentWindow("mail:3pane");
     return win3pane;
   } ,
   
   getSingleMessageWindow: function getSingleMessageWindow() {
-    let winMediator = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator),
-        singleMessageWindow = winMediator.getMostRecentWindow("mail:messageWindow");
+    let singleMessageWindow = Services.wm.getMostRecentWindow("mail:messageWindow");
     return singleMessageWindow;
   } ,
   
@@ -258,8 +251,7 @@ QuickFolders.Util = {
   get PlatformVersion() {
     if (null==this.mPlatformVer)
       try {
-        let appInfo = Components.classes["@mozilla.org/xre/app-info;1"]
-                                .getService(Components.interfaces.nsIXULAppInfo);
+        let appInfo = Services.appinfo;
         this.mPlatformVer = parseFloat(appInfo.platformVersion);
       }
       catch(ex) {
@@ -431,12 +423,11 @@ QuickFolders.Util = {
       // code should not be called, on SM we would have a sliding notification for now
       // fallback for systems that do not support notification (currently: SeaMonkey)
       util.logDebugOptional("premium", "fallback for systems without notification-box…");
-      let prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]  
-                              .getService(Components.interfaces.nsIPromptService),
+      let result = Services.prompt.alert(null, title, theText);
           // check = {value: false},   // default the checkbox to true  
           // dontShow = util.getBundleString("qf.notification.dontShowAgain",
           //            "Do not show this message again.") + ' [' + featureName + ']',
-          result = prompts.alert(null, title, theText);
+          
       //if (check.value==true)
       //  util.disableFeatureNotification(featureName);
     }
@@ -746,7 +737,7 @@ QuickFolders.Util = {
       return null;
     try {
       try {
-        util.logDebugOptional('dnd,quickMove', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettyName + ', makeCopy=' + makeCopy);
+        util.logDebugOptional('dnd,quickMove,moveCopy', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettyName + ', makeCopy=' + makeCopy);
       }
       catch(e) { util.alert('QuickFolders.Util.moveMessages:' + e); }
 
@@ -767,10 +758,32 @@ QuickFolders.Util = {
           isTargetDifferent = false,
           sourceFolder;
       util.logDebug(`moveMessages  with readStatus = ${readStatus}`);
+      let segmentedMsgArray = [], // group messages by source folder...
+          segmentIndex = -1;
+          
+          
+          
       for (let i = 0; i < messageUris.length; i++) {
         let messageUri = messageUris[i],
             Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri),
             bookmarked = bookmarks.indexOfEntry(messageUri);
+        
+        let segment = segmentedMsgArray.find(e => e.folder == Message.folder);
+        if (segment) {
+          // if a source folder is already found, add info to messages array.
+          let newMsgs = segment.messages;
+          newMsgs.push({msg: Message, uri: messageUri});
+          segment.messages = newMsgs;
+        }
+        else {
+          // create new segment
+          let newMsgs = [{msg: Message, uri: messageUri}];
+          segmentedMsgArray.push({
+            folder: Message.folder,
+            messages: newMsgs
+          });
+        }
+        
         if (!isQuickMove || isQuickMove && isStatusQuickMove) {
           switch (readStatus) {
             case 1:
@@ -798,22 +811,33 @@ QuickFolders.Util = {
           }
         }
         messageList.push(Message);
+      }
+        
+      for (let j = 0; j < segmentedMsgArray.length; j++) {
+        let segment = segmentedMsgArray[j]; // [issue 335] - avoid triggering multiple times from same folder.
         
         // [TbSync adds a folderlistener for each message] see:
         // https://searchfox.org/comm-central/rev/fcc92f7c9ace528bfeeacc9b07518e54d52b111e/mail/components/extensions/parent/ext-messages.js#1311
-
         // [issue 23]  quick move from search list fails if first mail is already in target folder
-        //  What to do if we have "various" source folders?
-        if (Message.folder.QueryInterface(Ci.nsIMsgFolder) != targetFolder) {
-          sourceFolder = Message.folder.QueryInterface(Ci.nsIMsgFolder); // force nsIMsgFolder interface for postbox 2.1
+        
+        sourceFolder = segment.folder.QueryInterface(Ci.nsIMsgFolder); 
+        if (sourceFolder != targetFolder) {
           isTargetDifferent = true;
         }
+        util.logDebugOptional("moveCopy", 
+          `Copying/Moving ${segment.messages.length} messages from ${sourceFolder.prettyName} to ${targetFolder.prettyName} `
+        );
         
         // from https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-messages.js#195
         try {
           // [issue 328] function only supports moving mail from a single source folder! => hence moved into for..loop
-          let msgHeaders = [Message]; // messageList;
-          let originalId = Message.messageId;
+          let msgHeaders = []; // = segment.messages.map(({ msg }) => msg);
+          let origIds = []; // segment.messages.map(({ msg }) => msg.messageId);
+          for (let m = 0; m<segment.messages.length; m++) {
+            msgHeaders.push(segment.messages[m].msg);
+            origIds.push(segment.messages[m].msg.messageId);
+          }          
+          
           let p = await new Promise((resolve, reject) => {
               MailServices.copy.copyMessages(
                 sourceFolder,
@@ -839,7 +863,8 @@ QuickFolders.Util = {
             });
           // we get here only after success!
           // fix bookmarks
-          messageIdList.push(originalId);  // <= successfully moved / copied
+          
+          messageIdList.push(origIds);  // <= successfully moved / copied
           QuickFolders.CopyListener.OnStopCopy(status); 
           
         } catch (ex) {
@@ -1243,13 +1268,11 @@ allowUndo = true)`
   // exceptionFlag  0x2   An exception was thrown for this case - exception-aware hosts can ignore this.
   // strictFlag     0x4
   logError: function logError(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags) {
-    let consoleService = Components.classes["@mozilla.org/consoleservice;1"]
-                                   .getService(Components.interfaces.nsIConsoleService),
-        aCategory = '',
+    let aCategory = '',
         scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
     try {
       scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
-      consoleService.logMessage(scriptError);
+      Services.console.logMessage(scriptError);
     }
     catch(ex) {
       alert('logError failed: ' + aMessage);
@@ -1775,8 +1798,7 @@ allowUndo = true)`
       let prev = -1, firstrun = true,
           showFirsts = true, debugFirstRun = false,
           prefBranchString = "extensions.quickfolders.",
-          svc = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService),
-          ssPrefs = svc.getBranch(prefBranchString);
+          ssPrefs = Services.prefs.getBranch(prefBranchString); // nsIPrefService
 
       try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstrun")); } 
       catch (e) { debugFirstRun = false; }
@@ -2116,10 +2138,8 @@ allowUndo = true)`
     }     
     
     logDebug('getOrCreateFolder (' + aUrl + ', ' + aFlags + ')');
-    
-    let fls = Cc["@mozilla.org/mail/folder-lookup;1"].getService(
-      Ci.nsIFolderLookupService
-    );
+    var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
+    let fls = MailServices.folderLookup; // nsIFolderLookupService
     if (fls) {
       folder = fls.getOrCreateFolderForURL(aUrl); 
     }

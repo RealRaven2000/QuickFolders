@@ -1,4 +1,4 @@
-<b>Release 5.15.1</b>
+<b>Release 5.15.2</b>
 Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (102.6.1)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb91) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
             
 
@@ -10,6 +10,18 @@ Read the new <a href="premium.html#featureComparison">comparison chart</a> to se
 You can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>.
 
 
+<b> Maintenance Fixes </b>
+<li> Version 5.15.2:
+
+will not trigger quickFilters assistant multiple times anymore when dropping multiple mails to a tab.</li>
+<li> Version 5.15.1:
+
+A regression in v5.15 caused all text in popup menus (subfolders / commands) to appear missing for most users. This was because of the default size of 0 being falsely applied as a literal value. <a href="https://github.com/RealRaven2000/QuickFolders/issues/333">[issue 333]</a></li>
+<li> Version 5.15.2 (WIP):
+
+The quickFilters assistant was triggered multiple times when dropping multiple mails to tab or multiple mails are moved using quickMove. This new version will move emails together, as long as they come from an identical source folder. This should prevent multiple assistant windows in the majority of use cases. <a href="https://github.com/RealRaven2000/QuickFolders/issues/335">[issue 335]</a>
+</li>
+        
 <b>Enhancements</b>
 <ul>
 <li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/315">[issue 315]</a> Remove the term 'Orphaned Tabs' in all User Interface texts</li>
@@ -20,6 +32,7 @@ You can also <a href="https://quickfolders.org/donate.html#donate">donate from h
 <b>Bugs Fixed</b>
 <ul>
 <li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/328">[issue 328]</a> Fixed: Using quickMove to move emails from different source folders didn't remove them from the menu </li>
+<li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/329">[issue 329]</a> Fixed inconsistent menu font size when dragging mail to a subfolders of a QuickFolder</li>
 <li> <a href="https://github.com/RealRaven2000/QuickFolders/issues/333">[issue 333]</a> 5.15.1 A regression caused all text in popup menus (subfolders / commands) to appear missing for most users. This was because of the default size of 0 being falsely applied as a literal value. </li>
 </ul>
 

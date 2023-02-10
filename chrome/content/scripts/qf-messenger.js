@@ -1,4 +1,5 @@
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
 window.QuickFolders.WL = WL; // this will be used wherever Add-on version is needed.
@@ -14,7 +15,6 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folderTree.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-folder-category.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-styles.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-listener.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-tablistener.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-scrollmenus.js", window, "UTF-8");
 
@@ -548,7 +548,7 @@ async function onLoad(activatedWhileWindowOpen) {
   
   // add listeners
   window.QuickFolders.Util.logDebug('Adding Folder Listener...');
-  window.QuickFolders_mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
+  MailServices.mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
   
   // Enable the global notify notifications from background.
   window.QuickFolders.Util.notifyTools.enable();
@@ -623,7 +623,7 @@ function onUnload(isAddOnShutDown) {
   // remove all listeners
   try {
     window.QuickFolders.Interface.removeToolbarHiding.call(window.QuickFolders.Interface);
-    window.QuickFolders_mailSession.RemoveFolderListener(window.QuickFolders.FolderListener);
+    MailServices.mailSession.RemoveFolderListener(window.QuickFolders.FolderListener);
     window.QuickFolders.removeTabEventListener.call(window.QuickFolders);
     window.QuickFolders.removeFolderPaneListener.call(window.QuickFolders);
   }

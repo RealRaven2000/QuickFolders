@@ -740,6 +740,14 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 	border-bottom-style: solid !important;
 }
 
+.folderBarContainer toolbarbutton .toolbarbutton-text {
+  display: -moz-inline-box; /* Tb110 beta */
+}
+
+.folderBarContainer toolbarbutton .toolbarbutton-icon {
+  display: -moz-inline-box;
+}
+
 .quickfolders-flat .folderBarContainer toolbarbutton {
 	-moz-appearance: none !important;
 	border-top-left-radius: 4px;

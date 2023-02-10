@@ -315,10 +315,14 @@ END LICENSE BLOCK */
     ## [issue 335] quickFilters assistant triggered multiple times when dropping mails to tab
     
   5.16 QuickFolders Pro - WIP
-    ## Removed Service wrappers for nsIWindowMediator, nsIWindowWatcher, nsIPromptService, nsIPrefBranch, nsIFocusManager,
-    ##                              nsIStringBundleService, nsIXULAppInfo, nsIConsoleService, nsIVersionComparator,
-    ##       MailServices wrappers: nsIMsgHeaderParser, nsIMsgTagService, nsIMsgFolderNotificationService,
-    ##                              nsIMsgMailSession, nsIFolderLookupService
+    ## [issue 341] Removed Service wrappers:
+    ##   Services: nsIWindowMediator, nsIWindowWatcher, nsIPromptService, nsIPrefBranch, nsIFocusManager,
+    ##             nsIStringBundleService, nsIXULAppInfo, nsIConsoleService, nsIVersionComparator,
+    ##   MailServices: nsIMsgHeaderParser, nsIMsgTagService, nsIMsgFolderNotificationService,
+    ##                 nsIMsgMailSession, nsIFolderLookupService
+    ## 
+    ## 
+    ## 
 
 
 	Future Work
@@ -377,13 +381,7 @@ END LICENSE BLOCK */
 
 */
 
-
-// not sure whether (and how) to use defineModuleGetter() - does it work in Tb68??
-if (typeof DeferredTask == "undefined")
-  var {DeferredTask} = ChromeUtils.import("resource://gre/modules/DeferredTask.jsm");  
-if (typeof DeferredTask == "undefined")
-  var {Task} = ChromeUtils.import("resource://gre/modules/Task.jsm");  
-
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 	
 /* GLOBAL VARIABLES */
 var QuickFolders_globalHidePopupId = "",

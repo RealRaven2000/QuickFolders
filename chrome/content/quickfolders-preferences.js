@@ -10,9 +10,9 @@
 */
 
 //export  {QuickFolders.Preferences};
-QuickFolders.Preferences = {
-	service: Services.prefs,
+var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
+QuickFolders.Preferences = {
 	get isDebug() {
 		return this.getBoolPref("debug");
 	},
@@ -45,7 +45,7 @@ QuickFolders.Preferences = {
 	storeFolderEntries: function storeFolderEntries(folderEntries) {
 		try {
 			const util = QuickFolders.Util,
-			      PS = this.service;
+			      PS = Services.prefs;
 			let json = JSON.stringify(folderEntries),
 					str = Components.classes["@mozilla.org/supports-string;1"]
 				.createInstance(Components.interfaces.nsISupportsString);
@@ -64,12 +64,12 @@ QuickFolders.Preferences = {
 	loadFolderEntries: function loadFolderEntries() {
 		const setting = "QuickFolders.folders",
 		      util = QuickFolders.Util;
-		if (!this.service.prefHasUserValue(setting)) {
+		if (!Services.prefs.prefHasUserValue(setting)) {
 			return [];
 		}
 
 		try {
-			const PS = this.service;
+			const PS = Services.prefs;
       // fill the array of accounts:
       
 			let folders = PS.getStringPref(setting);
@@ -291,9 +291,8 @@ QuickFolders.Preferences = {
       overrideLabel = util.getBundleString("qf.notification.premium.btn.renewLicense");
     
 		try { // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
-		  const url = "extensions.quickfolders.textQuickfoldersLabel",
-					  PS = this.service;
-			let customTitle = PS.getStringPref(url);
+		  const url = "extensions.quickfolders.textQuickfoldersLabel";
+			let customTitle = Services.prefs.getStringPref(url);
 			return overrideLabel || customTitle;
 		}
 		catch(e) { 
@@ -316,9 +315,9 @@ QuickFolders.Preferences = {
 
 	existsCharPref: function existsCharPref(pref) {
 		try {
-			if(this.service.prefHasUserValue(pref))
+			if(Services.prefs.prefHasUserValue(pref))
 				return true;
-			if (this.service.getStringPref(pref))
+			if (Services.prefs.getStringPref(pref))
 				return true;
 		}
 		catch (e) {return false; }
@@ -327,9 +326,9 @@ QuickFolders.Preferences = {
 
 	existsBoolPref: function existsBoolPref(pref) {
 		try {
-			if(this.service.prefHasUserValue(pref))
+			if(Services.prefs.prefHasUserValue(pref))
 				return true;
-			if (this.service.getBoolPref(pref))
+			if (Services.prefs.getBoolPref(pref))
 				return true;
 		}
 		catch (e) {return false; }
@@ -346,8 +345,8 @@ QuickFolders.Preferences = {
     try {
 			let localPref = 
         (typeof sDefault == "string") ?
-        this.service.getStringPref(sStyleName) :
-        this.service.getIntPref(sStyleName);
+        Services.prefs.getStringPref(sStyleName) :
+        Services.prefs.getIntPref(sStyleName);
 			if (localPref || (localPref===0))
 				sReturnValue = localPref;
 			else
@@ -364,12 +363,12 @@ QuickFolders.Preferences = {
 
 	setUserStyle: function setUserStyle(sId, sType, sValue) {
 		let sStyleName = 'extensions.quickfolders.style.' + sId + '.' + sType;
-		this.service.setStringPref(sStyleName, sValue);
+		Services.prefs.setStringPref(sStyleName, sValue);
 	},
 
 	getIntPreference: function getIntPreference(p) {
 		try {
-			return this.service.getIntPref(p);
+			return Services.prefs.getIntPref(p);
 		}
 		catch (ex) {
 			QuickFolders.Util.logException("getIntPref(" + p + ") failed\n", ex);
@@ -378,12 +377,12 @@ QuickFolders.Preferences = {
 	},
 
 	setIntPreference: function setIntPreference(p, v) {
-		return this.service.setIntPref(p, v);
+		return Services.prefs.setIntPref(p, v);
 	},
 
 	getBoolPrefSilent: function getBoolPrefSilent(p) {
 		try {
-			return this.service.getBoolPref(p);
+			return Services.prefs.getBoolPref(p);
 		}
 		catch(e) {
 			return false;
@@ -392,7 +391,7 @@ QuickFolders.Preferences = {
 
 	getBoolPrefVerbose: function getBoolPrefVerbose(p) {
 		try {
-			return this.service.getBoolPref(p);
+			return Services.prefs.getBoolPref(p);
 		}
 		catch(e) {
 			QuickFolders.Util.logException("getBoolPrefVerbose(" + p + ") failed\n", e);
@@ -403,7 +402,7 @@ QuickFolders.Preferences = {
 	getBoolPref: function getBoolPref(p) {
 	  let ans;
 	  try {
-	    ans = this.service.getBoolPref("extensions.quickfolders." + p);
+	    ans = Services.prefs.getBoolPref("extensions.quickfolders." + p);
 		}
 		catch(ex) {
 		  QuickFolders.Util.logException("getBoolPref("  + p +") failed\n", ex);
@@ -413,7 +412,7 @@ QuickFolders.Preferences = {
 	},
 
 	setBoolPref: function setBoolPref(p, v) {
-		return this.service.setBoolPref("extensions.quickfolders." + p, v);
+		return Services.prefs.setBoolPref("extensions.quickfolders." + p, v);
 	},
 	
   // reading prefs across extensions will be forbidden, check:
@@ -421,7 +420,7 @@ QuickFolders.Preferences = {
 	getFiltersBoolPref: function getFiltersBoolPref(p, defaultV) {
 	  let ans;
 	  try {
-	    ans = this.service.getBoolPref("extensions.quickfilters." + p);
+	    ans = Services.prefs.getBoolPref("extensions.quickfilters." + p);
 		}
 		catch(ex) {
 		  QuickFolders.Util.logException("getFiltersBoolPref("  + p +") failed\ndefaulting to " + defaultV, ex);
@@ -436,7 +435,7 @@ QuickFolders.Preferences = {
 		  
     try {
 		  const Ci = Components.interfaces, Cc = Components.classes;
-			prefString = this.service.getStringPref(key);
+			prefString = Services.prefs.getStringPref(key);
     }
     catch(ex) {
       QuickFolders.Util.logDebug("Could not retrieve string pref: " + p + "\n" + ex.message);
@@ -447,8 +446,8 @@ QuickFolders.Preferences = {
 	},
 	
 	setStringPref: function setStringPref(p, v) {
-		if (this.service.setStringPref)
-			return this.service.setStringPref("extensions.quickfolders." + p, v);
+		if (Services.prefs.setStringPref)
+			return Services.prefs.setStringPref("extensions.quickfolders." + p, v);
 		else {
 		  const Ci = Components.interfaces, 
 			      Cc = Components.classes;
@@ -471,7 +470,7 @@ QuickFolders.Preferences = {
 		let tag = "showCurrentFolderToolbar";
 		if (selector)
 			tag = tag + "." + selector;
-		return this.service.setBoolPref("extensions.quickfolders." + tag, b);
+		return Services.prefs.setBoolPref("extensions.quickfolders." + tag, b);
 	},
 
 	isShowCurrentFolderToolbar: function isShowCurrentFolderToolbar(selector) {
@@ -483,7 +482,7 @@ QuickFolders.Preferences = {
 
 	setBoolPrefVerbose: function setBoolPrefVerbose(p, v) {
 		try {
-			return this.service.setBoolPref(p, v);
+			return Services.prefs.setBoolPref(p, v);
 		} 
     catch(e) {
 			let s="Err:" +e;

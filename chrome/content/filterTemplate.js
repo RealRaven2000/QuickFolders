@@ -7,7 +7,7 @@
     For details, please refer to license.txt in the root folder of this extension
 
   END LICENSE BLOCK */
-
+var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 var FilterTemplate = {
     loadTemplate : function loadTemplate() {
@@ -16,7 +16,7 @@ var FilterTemplate = {
         util = QuickFolders.Util;
         element.value = QuickFolders.FilterWorker.getCurrentFilterTemplate();
         try {
-          let loc = Services.locale.requestedLocales[0]; // QuickFolders.Preferences.service.getStringPref("general.useragent.locale");
+          let loc = Services.locale.requestedLocales[0]; 
           if (loc) {
             util.logDebug('Locale found: ' + loc);
             if (loc.indexOf('en')!=0) {

@@ -9,6 +9,7 @@
 
 
 var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 QuickFolders.Interface = {
 	PaintModeActive: false,
@@ -3158,7 +3159,6 @@ QuickFolders.Interface = {
     // global objects: msgWindow
     QuickFolders.Util.logDebug(`rebuildSummary(${folder.prettyName}) started... `);
     
-    var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 		let isCurrent=false;
 		// taken from http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2087
 		if (folder.locked) {
@@ -6836,7 +6836,6 @@ QuickFolders.Interface = {
 		try {
 			let toCount = arrCount || 1,
           countChanges = 0; 
-      var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 			for (let i = 0; i < toCount; i++) {
         // break up into single actions!
 				let folders = new Array,

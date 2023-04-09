@@ -1,6 +1,9 @@
 {
   "_l10nstatus": {
-    "message": "SPLASH"
+    "message": "SPLASH+LICENSE"
+  },
+  "account.label": {
+    "message": "Vyberte účet:"
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
@@ -31,6 +34,24 @@
   "btn-want-to-donate": {
     "message": "Chci pomoci s jednorázovým darem."
   },
+  "buyDomainLicense.button": {
+    "message": "Koupit licenci na domény"
+  },
+  "buyDomainLicense.instruct": {
+    "message": "Potřebujete Pro Licence pro společnost s více než pěti uživateli? Získání licence na domény bude fungovat levněji:"
+  },
+  "buyLicense.instruct": {
+    "message": "Chcete používat všechny prémiové funkce bez omezení? Získejte licenci quickFilters Pro. Je vázán na vaši osobní e-mailovou adresu a lze jej použít ve více instalacích."
+  },
+  "buyProLicense.button": {
+    "message": "Koupit licenci Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Koupit standardní licenci!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Nemůžete si dovolit prémiové funkce? Získejte vysoce dostupnou standardní licenci a pokračujte v testování prémiových funkcí."
+  },
   "cost-of-independence": {
     "message": "Vývoj softwaru stojí čas a peníze - na rozdíl od mnoha aplikací na platformě nejsou doplňky napsány velkými korporacemi, ani nejsou žádným způsobem sponzorovány společností Mozilla."
   },
@@ -40,9 +61,24 @@
   "donate-heading": {
     "message": "Pomozte darováním!"
   },
+  "email.label": {
+    "message": "e-mailem:"
+  },
+  "enterLicenseKey.button": {
+    "message": "Zadejte licenční klíč…"
+  },
+  "enterLicenseKey.tooltip": {
+    "message": "Zadejte kód licenčního klíče, který vám byl zaslán prostřednictvím e-mailu."
+  },  
   "extend-your-license": {
     "message": "Zvažte prodloužení licence o rok."
   },
+  "firstName.label": {
+    "message": "Jméno:"
+  },
+  "getQuickFolders": {
+    "message": "Licence QuickFolders"
+  },  
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
     "message": "Úspěšně nainstalován $addonName$",
@@ -63,6 +99,12 @@
       }
     }
   },
+  "intro": {
+    "message": "Roční licence pro QuickFolders Pro vám poskytuje všechny prémiové funkce za rok. To nám také umožňuje další podporu a růst produktu a proměnit ho v něco, co je ještě úžasnější."
+  },
+  "lastName.label": {
+    "message": "Příjmení:"
+  },  
   "label-remind-me": {
     "message": "Připomenout znovu za $countDays$ dní.",
     "placeholders": {
@@ -124,12 +166,27 @@
       }
     }
   },
+  "pricing.section": {
+    "message": "Chcete-li zjistit svou cenu, vyberte nejprve jednu z následujících možností. Otevře se samostatné okno prohlížeče, kde můžete dokončit nákup v internetovém obchodě."
+  },
+  "pricing.section.hint": {
+    "message": "Poznámka: Cena se liší v závislosti na modelu licence, zemi, sazbě DPH, aktuálních slevách nebo již zakoupených licencích."
+  },
+  "pricing.title": {
+    "message": "Ceny"
+  },  
   "purchase-a-license": {
     "message": "Kupte si licenci."
   },
   "purchase-heading": {
     "message": "Nákup licence!"
   },
+  "qf.label.haveLicense": {
+    "message": "Už máte licenci?"
+  },
+  "qf.label.licenseValid": {
+    "message": "Vaše licence je platná do:"
+  },  
   "qf.menuitem.quickfolders.splash": {
     "message": "Nejnovější aktualizace Novinky…"
   },
@@ -142,6 +199,22 @@
       }
     }
   },
+  "qf.notification.premium.btn.extendLicense": {
+    "message": "Rozšířit licenci"
+  },
+  "qf.notification.premium.btn.extendLicense.tooltip": {
+    "message": "Tím se prodlouží aktuální licenční datum o 1 rok. Je to obvykle levnější než nová licence."
+  },
+  "qf.notification.premium.btn.getLicense": {
+    "message": "Koupit licenci"
+  },
+  "qf.notification.premium.btn.renewLicense": {
+    "message": "Obnovit licenci"
+  },
+  "qf.notification.premium.btn.upgrade": {
+    "message": "Upgradujte na Pro"
+  },
+
   "renew-your-license": {
     "message": "Obnovte si licenci."
   },
@@ -226,6 +299,9 @@
       }
     }
   },
+  "testDrive": {
+    "message": "Standardní licence vám poskytuje některé funkce, které byly dříve označeny jako prémiové, a odstraňuje omezení nefinancované verze. Financuje údržbu s další verzí Thunderbirdu a převod na moderní architekturu rozšíření pošty založenou na API."
+  },  
   "thanks-for-installing-intro": {
     "message": "Děkujeme, že jste nainstalovali $addonName$.",
     "placeholders": {
@@ -257,6 +333,12 @@
     "description": "disclaimer.",
     "message": "překlady poskytované google"
   },
+  "updates.title": {
+    "message": "Aktualizace"
+  },
+  "updatesExpiry": {
+    "message": "QuickFolders Pro bude automaticky aktualizován jako obvykle pomocí addons.thunderbird.net. Po uplynutí roku můžete obnovit licenci nebo zachovat používání prémiových funkcí za stejných podmínek jako uživatelé, kteří jsou zdarma. Funkce „Premium Exclusive“ budou vyžadovat platný registrační klíč."
+  },  
   "whats-new-btn": {
     "message": "Co je nového?"
   },
@@ -278,5 +360,20 @@
         "example": "QuickFolders"
       }
     }
-  }
+  },
+  "yearlyLicense.premiumFeatures": {
+    "message": "QuickFolders Pro vám poskytuje neomezený přístup k prémiovým funkcím."
+  },
+  "yearlyLicense.premiumFeatures.moreInfoLink": {
+    "message": "Další informace o prémiových funkcích."
+  },
+  "yearlyLicense.title": {
+    "message": "Roční licence"
+  },
+  "yearlyLicense.usageTerm": {
+    "message": "Licence je určena pro vaše osobní použití a je vázána na vaši e-mailovou adresu. Můžete ji nainstalovat na více e-mailových klientů, pokud jsou nakonfigurováni pro použití této adresy."
+  },
+  "yearlyLicense.usageTerm1": {
+    "message": "Jakékoliv další e-mailové adresy nejsou problém - nevyžadují samostatnou licenci. V případě dotazů mě můžete kontaktovat na záložce Podpora."
+  }  
 }

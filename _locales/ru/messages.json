@@ -945,6 +945,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "И"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Проверить статус лицензии…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Удалить недействительные вкладки"
   },
@@ -1168,6 +1171,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Настройки QuickFolders"
+  },
+  "qf.premium.renew": {
+    "message": "Срок действия лицензии истекает через $daysLeft$ дн.",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Ваша лицензия истекла уже {1} дней"

@@ -853,6 +853,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "m"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Ellenőrizze a licenc állapotát…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Távolítsa el az érvénytelen lapokat"
   },
@@ -1034,6 +1037,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders Beállítások"
+  },
+  "qf.premium.renew": {
+    "message": "Az engedély $daysLeft$ napon belül lejár",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "A licenced {1} napja lejárt"

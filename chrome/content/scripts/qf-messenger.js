@@ -23,6 +23,7 @@ var mylisteners = {};
 async function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.Util.logDebug(`qf-messenger.js onLoad(${activatedWhileWindowOpen})`);
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
+  let layout2 = WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
   // layout.setAttribute("title", "QuickFolderStyles");
   
   // version specific:
@@ -47,7 +48,7 @@ async function onLoad(activatedWhileWindowOpen) {
     <toolbarpalette id="MailToolbarPalette">
       <toolbarbutton id="QuickFolders-toolbar-button" 
             class="toolbarbutton-1 chromeclass-toolbar-additional"
-            label="__MSG_qf.toolbar.quickfolders.toolbar__" 
+            label="QuickFolders" 
             tooltiptext="__MSG_qf.toolbar.quickfolders.toolbar__"
             oncommand="QuickFolders.Interface.toggleToolbar(this);"
             checked="true"
@@ -192,6 +193,13 @@ async function onLoad(activatedWhileWindowOpen) {
                       oncommand="QuickFolders.Interface.findFolder(true,'quickJump');" 
                       class="cmd menuitem-iconic"
                       tagName="qfFindFolder"
+                      collapsed="true"
+                      />
+            <menuitem id="QuickFolders-ToolbarPopup-checkLicense"
+                      label="__MSG_qf.menuitem.quickfolders.checkLicense__"
+                      oncommand="QuickFolders.Interface.viewLicense();" 
+                      class="cmd menuitem-iconic"
+                      tagName="qfCheckLicense"
                       collapsed="true"
                       />
             <menuitem id="QuickFolders-ToolbarPopup-options"

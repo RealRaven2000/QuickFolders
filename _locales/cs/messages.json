@@ -187,6 +187,9 @@
   "qf.label.licenseValid": {
     "message": "Vaše licence je platná do:"
   },  
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Zkontrolujte stav licence…"
+  },
   "qf.menuitem.quickfolders.splash": {
     "message": "Nejnovější aktualizace Novinky…"
   },
@@ -214,7 +217,14 @@
   "qf.notification.premium.btn.upgrade": {
     "message": "Upgradujte na Pro"
   },
-
+  "qf.premium.renew": {
+    "message": "Platnost licence vyprší za $daysLeft$ dní",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
+  },
   "renew-your-license": {
     "message": "Obnovte si licenci."
   },

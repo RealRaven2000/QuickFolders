@@ -250,6 +250,15 @@
       }
     }
   },
+  "pricing.section": {
+    "message": "Aby poznać swoją cenę, najpierw wybierz jedną z poniższych opcji. Spowoduje to otwarcie osobnego okna przeglądarki, w którym można dokonać zakupu w sklepie internetowym."
+  },
+  "pricing.section.hint": {
+    "message": "Uwaga: Cena różni się w zależności od modelu licencji, kraju, stawki VAT, aktualnych rabatów lub już zakupionych licencji."
+  },  
+  "pricing.title": {
+    "message": "cennik"
+  },
   "purchase-a-license": {
     "message": "Kup licencję."
   },
@@ -930,6 +939,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "K"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Sprawdź stan licencji…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Usuń nieprawidłowe karty"
   },
@@ -1147,6 +1159,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders – ustawienia"
+  },
+  "qf.premium.renew": {
+    "message": "Licencja wygasa za $daysLeft$ dni",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Twoja licencja wygasła {1} dni temu"

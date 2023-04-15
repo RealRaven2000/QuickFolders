@@ -906,6 +906,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "S"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Preverite status licence…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Odstranite neveljavne zavihke"
   },
@@ -1123,6 +1126,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Možnosti QuickFolders"
+  },
+  "qf.premium.renew": {
+    "message": "Licenca poteče čez $daysLeft$ dni",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Vaše dovoljenje je poteklo pred {1}-imi dnevi"

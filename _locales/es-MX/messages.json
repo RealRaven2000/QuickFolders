@@ -933,6 +933,9 @@
   "qf.menuitem.quickfolders.changeOrder": {
     "message": "Cambiar el orden de los marcadores"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Verifique el estado de la licencia …"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Eliminar pestañas no válidas"
   },
@@ -1138,6 +1141,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Opciones de QuickFolders"
+  },
+  "qf.premium.renew": {
+    "message": "La licencia caduca en $daysLeft$ días",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Su licencia expiró hace {1} días"

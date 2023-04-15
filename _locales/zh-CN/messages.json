@@ -934,6 +934,9 @@
   "qf.menuitem.quickfolders.changeOrder": {
     "message": "排序(C)…"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "检查许可证状态..."
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "删除无效标签(T)"
   },
@@ -1124,6 +1127,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "目录导航卡选项"
+  },
+  "qf.premium.renew": {
+    "message": "许可证在 $daysLeft$ 天后到期",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "您的许可在 {1} 天前过期"

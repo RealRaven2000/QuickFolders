@@ -397,7 +397,8 @@ export class Licenser {
     } else {
       let today = new Date(),
           licDate = new Date(this.decryptedDate);
-      this.LicensedDaysLeft = parseInt((licDate - today) / (1000 * 60 * 60 * 24)); 
+      // Always round up!
+      this.LicensedDaysLeft = Math.ceil((licDate - today) / (1000 * 60 * 60 * 24)); 
       this.ExpiredDays = 0;
     }
 

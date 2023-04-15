@@ -936,6 +936,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "M"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Vérifier l'état de la licence…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Supprimer les onglets invalides"
   },
@@ -1144,6 +1147,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Options de QuickFolders"
+  },
+  "qf.premium.renew": {
+    "message": "La licence expire dans $daysLeft$ jours",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Votre licence a expiré il y a {1} jours"

@@ -320,9 +320,12 @@ END LICENSE BLOCK */
     ##             nsIStringBundleService, nsIXULAppInfo, nsIConsoleService, nsIVersionComparator,
     ##   MailServices: nsIMsgHeaderParser, nsIMsgTagService, nsIMsgFolderNotificationService,
     ##                 nsIMsgMailSession, nsIFolderLookupService
-    ## 
-    ## 
-    ## 
+    ## To encourage license renewals: Show bargain section in splash screen if <=10 days to expiry
+    ## Added Czech translation to licensing dialog
+    ## Added pricing section to licensing dialog
+    ## [issue 350] Add visible warning about license 10 days before expiry
+    ## [issue 352] Correct the Number of days left in license by rounding up
+
 
 
 	Future Work

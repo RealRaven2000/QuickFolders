@@ -933,6 +933,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "M"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Verifique o status da licença…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Remover guias inválidas"
   },
@@ -1141,6 +1144,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Opções do QuickFolders"
+  },
+  "qf.premium.renew": {
+    "message": "A licença expira em $daysLeft$ dias",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Sua licença expirou há {1} dias"

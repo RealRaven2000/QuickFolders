@@ -536,7 +536,8 @@ QuickFolders.Interface = {
 		// force label when there are no folders or license is in expired state!
 		try {
       util.logDebug("updateQuickFoldersLabel()");
-			let showLabelBox = prefs.isShowQuickFoldersLabel || QuickFolders.Util.licenseInfo.isExpired  || (0==QuickFolders.Model.selectedFolders.length),
+			let isRenew = (QuickFolders.Util.licenseInfo.isValid && QuickFolders.Util.licenseInfo.licensedDaysLeft<=10),
+			    showLabelBox = isRenew || prefs.isShowQuickFoldersLabel || QuickFolders.Util.licenseInfo.isExpired  || (0==QuickFolders.Model.selectedFolders.length),
 					quickFoldersLabel = this.TitleLabel,
 					qfLabelBox = this.TitleLabelBox;
 
@@ -544,13 +545,25 @@ QuickFolders.Interface = {
 			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
       if (QuickFolders.Util.licenseInfo.isExpired) {
 				quickFoldersLabel.classList.add("expired");
-      }
+      } 
       
-      if (prefs.getBoolPref("hasNews")) {
+			let checkMenu = document.getElementById("QuickFolders-ToolbarPopup-checkLicense");
+			if (checkMenu) {
+				checkMenu.collapsed = !isRenew;
+			}
+			if (isRenew) {
+				quickFoldersLabel.classList.remove("expired");
+				quickFoldersLabel.classList.add("renew");
+				quickFoldersLabel.classList.remove("newsflash");
+				let txtRenew = util.getBundleString("qf.premium.renew", QuickFolders.Util.licenseInfo.licensedDaysLeft);
+				quickFoldersLabel.label = txtRenew;
+			}
+      else if (prefs.getBoolPref("hasNews")) {
 				quickFoldersLabel.classList.add("newsflash");
 				quickFoldersLabel.setAttribute("tooltiptext", util.getBundleString("update.tooltip",["QuickFolders"]));
       }
 			else if (QuickFolders.Util.licenseInfo.isExpired) {
+				quickFoldersLabel.classList.remove("renew");
 				quickFoldersLabel.classList.remove("newsflash");
 				let txtExpired =
 				  util.getBundleString("qf.premium.renewLicense.tooltip").replace("{1}", QuickFolders.Util.licenseInfo.expiredDays);
@@ -558,9 +571,10 @@ QuickFolders.Interface = {
 			}
 			else {
 				quickFoldersLabel.removeAttribute("tooltiptext");
+				quickFoldersLabel.classList.remove("renew");
 				quickFoldersLabel.classList.remove("expired");
 				quickFoldersLabel.classList.remove("newsflash");
-			}
+			} 
 			qfLabelBox.collapsed = !showLabelBox;
 			qfLabelBox.style.width = showLabelBox ? "auto" : "0px";
 		}

@@ -20,6 +20,9 @@ var removedItems = [];
 	}
 
 	function removeClassItems(name, replaceItem) {
+		if (removedItems.includes(name)) { // already removed?
+			return;
+		}
 		var dbuttons = document.getElementsByClassName(name);
 		for (var i=dbuttons.length-1; i>=0; i--) {
 			if (replaceItem) {

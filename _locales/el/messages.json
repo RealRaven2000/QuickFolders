@@ -1,1 +1,49 @@
-{}
+{
+  "account.label": {
+    "message": "Επιλέξτε λογαριασμό:"
+  },
+  "active-version-info": {
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Εκτελείτε την {boldStart} έκδοση $addonVer$ {boldEnd} στο Thunderbird $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
+    }
+  },
+  "addon-authors-struggle": {
+    "message": "Για να συνεχίσουμε να είμαστε χρήσιμοι, οι προγραμματιστές πρόσθετων πρέπει τώρα να χρηματοδοτούμε οι ίδιοι τους πόρους που απαιτούνται για τη διόρθωση και συγγραφή κώδικα, ώστε οι χρήστες μας να μπορούν να συνεχίσουν να επωφελούνται από τη λειτουργικότητα που προσθέτουμε στην εφαρμογή."
+  },
+  "btn-extend-license": {
+    "message": "Θέλω να παρατείνω την άδειά μου κατά ένα έτος"
+  },
+  "btn-renew-license": {
+    "message": "Θέλω να ανανεώσω την άδειά μου"
+  },
+  "btn-want-a-license": {
+    "message": "Επιλέξτε μια άδεια χρήσης"
+  },
+  "btn-want-to-donate": {
+    "message": "Θέλω να βοηθήσω με μια εφάπαξ δωρεά."
+  },
+  "btnApply": {
+    "message": "Εφάρμοσε"
+  },
+  "btnCategory": {
+    "message": "Κατηγορίες"
+  },
+  "btnCategory.tooltip": {
+    "message": "Ορίστε Κατηγορίες Καρτελών"
+  },
+  "btnReset": {
+    "message": "Αρχικοποίησε στα Εξ Ορισμού"
+  },
+  "buyDomainLicense.button": {
+    "message": "Αγοράστε Άδεια Τομέα"
+  }
+}

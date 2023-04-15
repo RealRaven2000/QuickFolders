@@ -176,43 +176,59 @@
 			<h2 class="page-header">Version History</h2>
 			<br />
 
-			<a name="news" > </a>
-			<h3>Latest News (29/10/2021) - Thunderbird 102 Compatibility</h3>
-			<p>
-        QuickFolders <a href="#5.15.2">5.15.2</a> is <b>fully compatible</b> with Thunderbird 102. 
-        In rare cases there may be problems when updating from older versions of Thunderbird, 
-        see their <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1732515" target=_blank>bug 1732515</a>.
-        If there are issues when installing, please <a href="#tb102-compatibility">read the instructions here</a>.
-      </p>
-			<p>
-        Thunderbird 102 is using the same system for permissions as the previous versions, and QuickFolders still
-        has to use experimental APIs to achieve its full functionality. So you will see
-        a message asking for full permissions. There is an 
-        <a href="https://support.mozilla.org/en-US/kb/permission-request-messages-thunderbird-extensions#w_have-full-unrestricted-access-to-thunderbird-and-your-computer">article on Mozilla support</a> explaining the detail.
-        In order to become long term sustainable I am introducing the new 2-tier Licensing system
-        from this platform onwards. Read the new <a href="premium.html#featureComparison">comparison chart</a> to see 
-        which functions you get depending on your license.
-      </p>
-      <p>
-        In short: As Thunderbird  follows Firefox which moves toward web extensions, a 
-        new technology has emerged that restricts Add-ons to use only 
-        managed entry points (APIs) for adding functionality - these are still largely
-        incomplete as regards the many things Add-ons can actually add to the application. That's 
-        why Thunderbird allows using "experimental APIs", which is essentially a wrapper technology
-        that allows (substantially modified) classic extensions to run on this system.
-      </p>   
-      <p>
-       This also meant splitting the code base for the older versions and having separate releases
-       (it's not possible to combine both system in a single Add-on). Essentially new functionality
-       will go into the newer versions of QuickFolders (5.0 and higher) whereas I back-port bug fixes and some 
-       selected functionality to the legacy versions of QuickFolders (4.18 and higher).
-       Both versions will automatically update the correct user base as usual.
-      </p>
-      <p>
-       For the list of latest changes <a href="#latest">click here</a>.
-       For Thunderbird 68, <a href="#latestlegacy">click here</a>.
-			</p>
-      
+<section>
+	<p>
+		For the list of latest changes <a href="#latest">click here</a>.
+		For Thunderbird 68, <a href="#latestlegacy">click here</a>.
+	 </p>	
+	<a name="news" > </a>
+	<h3>Latest News (15/04/2023) - Thunderbird 115 Compatibility</h3>
+	<p>
+		QuickFolders <a href="#5.15.2">5.15.2</a>  is fully compatible with the latest version
+		of Thunderbird (102.10) - and currently supports up to version 110 beta 4.
+		I am currently working on 
+		<a href="https://github.com/RealRaven2000/quickFilters/issues/351">fundamental changes for Thunderbird 115</a> 
+		which will be released in summer 2023 and has a completely 
+		<a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">new 
+		user interface "Supernova"</a>.
+		This requires considerable work of <b>rewriting all elements interacting with the main page</b> 
+		(3pane) of Thunderbird (toolbar buttons, menus, folder tree) - this also includes drag and drop.
+	</p>
+	<p>
+		In my estimation, this work will take around 6 man-weeks. So it is very important that 
+		it can be funded via my Add-on licenses. There are 2 license levels - please
+		read the <a href="premium.html#featureComparison">comparison chart</a> to see 
+		which additional functions you get depending on your license.
+		To download preview versions for Thunderbird betas or be informed about ongoing development
+		on the new branch please leave feedback (or click the emoji button) at the
+		<a href="https://github.com/RealRaven2000/quickFilters/issues/351">Github issue 351</a>.
+		I am also discussing necessary changes to the UI, so please have your say there.
+	</p>
+	<p>
+		Thunderbird 115 is using the same system for permissions as the previous versions, and QuickFolders still
+		has to use experimental APIs to achieve its full functionality. So you will see
+		a message asking for full permissions. There is an 
+		<a href="https://support.mozilla.org/en-US/kb/permission-request-messages-thunderbird-extensions#w_have-full-unrestricted-access-to-thunderbird-and-your-computer">article on 
+			Mozilla support</a> explaining the detail.
+	</p>
+	<p>
+		In short: As Thunderbird  follows Firefox which moves toward web extensions, a 
+		new technology has emerged that restricts Add-ons to use only 
+		managed entry points (APIs) for adding functionality - these are still largely
+		incomplete as regards the many things Add-ons can actually add to the application. That's 
+		why Thunderbird allows using "experimental APIs", which is essentially a wrapper technology
+		that allows (substantially modified) classic extensions to run on this system.
+	</p>   
+	<p>
+	 This also meant yet again splitting the code base for the older versions and having separate releases
+	 (it's not possible to combine both system in a single Add-on). Essentially new functionality
+	 will go into the newer versions of QuickFolders (6.0 and higher) whereas I back-port bug fixes and some 
+	 selected functionality to the older versions of QuickFolders (5.15 and higher).
+	 Both versions will automatically update the correct user base as usual.
+	</p>
+</section>			
+
+<section>
       <h4>Thunderbird 68 support has ended on thunderbird.net</h4>
       <p>
         Unfortunately thunderbird.net does not accept updates for legacy versions anymore - they only support the new "Mail extension" format and our "mail extension with experimental APIs" which is a workaround for missing advanced features.  
@@ -220,38 +236,13 @@
       <p>
         From of version <a href="#4.23">4.23 forward</a> you have to install such legacy versions from the 
         <a href="https://github.com/RealRaven2000/quickfolders/releases">github releases page</a>. 
-      </p>
+      </p>	
+</section>
+      
+<section>
+		<h3>Major Features</h3><br>
 
-      
-      
-      <h4>Some Highlights</h4>
-			<ul>
-        <li>
-          [5.2] [4.19.1] Support moving folders with the quickMove function. Very handy for re-organizing your folders tree.
-				</li>
-				<li>
-          [5.1] Improvements in license handling and many regression fixes for Thunderbird 78.
-				</li>
-				<li>
-          [5.0] First version compatible with Thunderbird 78.
-				</li>
-				<li>
-          [4.18.2] Fixes for Recent Folders and Skip unread folders functions.
-				</li>
-				<li>
-          [4.17.5 - 4.17.1] Single-key shortcuts for navigation. Fixed many regressions Tb 68 vs Tb 60.
-          Many locale fixes for various translations.
-				</li>
-				<li>
-          [4.16] Subfolder menus do not expand - A regression has caused subfolders (2nd and higher level) 
-          not to be expanded on the drag / click context menus of the folder tabs.
-          The quickMove / quickJump  box had stopped working. 4.16 fixed it and brings back the automatic suggestions
-					that are shown during typing a folder name.
-          Fixed: creating new subfolders from QF menus fails because XPCOMUtils.generateQI was removed.
-        </li>
-			</ul>
-      
-			<a name="quickJump"> </a>
+		<a name="quickJump"> </a>
 			<h4>Premium Feature: quickJump</h4>
 			<p>A super quick way to find folders and Tabs by entering part of their name:</p>
 			<p>Click on the quickJump button (or use the configurable keyboard shortcut SHIFT+J 
@@ -264,7 +255,7 @@
 							 Selecting the folder (or tab) name will jump to the folder.<br>
 							 Select Find Folder from the menu again if you want to hide the search box.
 			</p>
-			<a name="quickMove"> </a>
+		<a name="quickMove"> </a>
 			<h4>Premium Feature: quickMove</h4>
 			<p>Uses the same button for moving mails to any folder:</p>
 			<p>Simply drag some mails up to the quickJump button (or use the configurable keyboard shortcut SHIFT+M in 
@@ -292,7 +283,6 @@
 				 You can open the emails in a tab by clicking them.
 			</p>	 
 
-			<h3>Major Features</h3><br>
 
 			<h4>Palette Types</h4>
 			<p>It is now possible to select independent palettes for the different tab states 
@@ -303,6 +293,7 @@
 				 stick out so it can be located much more easily.</p>
 			<p>Also the new architecture of palette options makes it easier to add different 
 				 palettes in future versions.</p> 
+</section>
 
 			<hr />
 
@@ -315,7 +306,8 @@
 			<ul id="version-history">
 
 
-    <!--
+				<a name="latest">&nbsp;</a>
+				<!--
     <a name="5.*">&nbsp;</a>
     <li>
       <h4>
@@ -329,6 +321,7 @@
     </li>
     
     -->
+
     
     <a name="5.15">&nbsp;</a>
     <a name="5.15.1">&nbsp;</a>
@@ -504,8 +497,6 @@
       <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.14">Version 5.14 - 14/11/2022</a>
       </h4>
       
-    
-      
       <ul>
         <h4 class="inList">Improvements</h4>
         <li>
@@ -514,7 +505,7 @@
             This can be used to address coloring problems with third party Thunderbird themes.
             <a href="https://github.com/RealRaven2000/QuickFolders/issues/317">[issue 317]</a>.
           </p>
-          <img src="images/custom-icon-col.png" alt="custom icon color" class="screenshots"/>
+          <img src="images/custom-icon-col.png" alt="custom icon color" class="screenshot"/>
         </li>
         <li>
           <p>
@@ -522,7 +513,7 @@
             <a href="https://github.com/RealRaven2000/QuickFolders/issues/320">[issue 320]</a>
             Hold down <keystroke>CTRL</keystroke> while clicking on the button "Mark Conversation as Read and jump to the next unread Email":
           </p>
-          <img src="images/mark-folder-read-skip.png" alt="mark folder read and move on" class="screenshots"/>
+          <img src="images/mark-folder-read-skip.png" alt="mark folder read and move on" class="screenshot"/>
         </li>
         <h4 class="inList">Bugs Fixed</h4>
         <li>
@@ -541,8 +532,6 @@
       </ul>
     </li>
         
-<a name="latest">&nbsp;</a>
-    
     <a name="5.13">&nbsp;</a>
     <a name="5.13.1">&nbsp;</a>
     <a name="5.12.2">&nbsp;</a>

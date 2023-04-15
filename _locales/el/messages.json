@@ -1,1 +1,184 @@
-{}
+{
+  "account.label": {
+    "message": "Επιλέξτε λογαριασμό:"
+  },
+  "active-version-info": {
+    "description": "The boldStart and boldEnd parts will be replaced with html tags",
+    "message": "Εκτελείτε την {boldStart} έκδοση $addonVer$ {boldEnd} στο Thunderbird $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Version 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
+    }
+  },
+  "addon-authors-struggle": {
+    "message": "Για να συνεχίσουμε να είμαστε χρήσιμοι, οι προγραμματιστές πρόσθετων πρέπει τώρα να χρηματοδοτούμε οι ίδιοι τους πόρους που απαιτούνται για τη διόρθωση και συγγραφή κώδικα, ώστε οι χρήστες μας να μπορούν να συνεχίσουν να επωφελούνται από τη λειτουργικότητα που προσθέτουμε στην εφαρμογή."
+  },
+  "btn-extend-license": {
+    "message": "Θέλω να παρατείνω την άδειά μου κατά ένα έτος"
+  },
+  "btn-renew-license": {
+    "message": "Θέλω να ανανεώσω την άδειά μου"
+  },
+  "btn-want-a-license": {
+    "message": "Επιλέξτε μια άδεια χρήσης"
+  },
+  "btn-want-to-donate": {
+    "message": "Θέλω να βοηθήσω με μια εφάπαξ δωρεά."
+  },
+  "btnApply": {
+    "message": "Εφάρμοσε"
+  },
+  "btnCategory": {
+    "message": "Κατηγορίες"
+  },
+  "btnCategory.tooltip": {
+    "message": "Ορίστε Κατηγορίες Καρτελών"
+  },
+  "btnReset": {
+    "message": "Αρχικοποίησε στα Εξ Ορισμού"
+  },
+  "buyDomainLicense.button": {
+    "message": "Αγοράστε Άδεια Τομέα"
+  },
+  "buyDomainLicense.instruct": {
+    "message": "Χρειάζεστε άδειες για εταιρεία με περισσότερους από πέντε χρήστες; Η απόκτηση άδειας τομέα θα είναι οικονομικότερη:"
+  },
+  "buyLicense.instruct": {
+    "message": "Χρειάζεστε μια άδεια για τον εαυτό σας; Πάρτε μιά ατομική άδεια χρήσης. Είναι συνδεδεμένη με το προσωπικό σας email και μπορεί να χρησιμοποιηθεί σε πολλαπλές εγκαταστάσεις."
+  },
+  "buyProLicense.button": {
+    "message": "Αγοράστε Άδεια Pro!"
+  },
+  "buyStandardLicense.button": {
+    "message": "Αγοράστε την Τυπική Άδεια!"
+  },
+  "buyStandardLicense.instruct": {
+    "message": "Σας φαίνεται ακριβή η άδεια για τις premium λειτουργίες; Αποκτήστε μια εξαιρετικά προσιτή τυπική άδεια χρήσης και διατηρήστε το δικαίωμα δοκιμαστικής χρήσης premium λειτουργιών."
+  },
+  "chkComposerSubfolders": {
+    "message": "Εφάρμοσε και σε υποφακέλους"
+  },
+  "chkSetMailsUnread": {
+    "message": "Ορισμός ως μη αναγνωσμένο"
+  },
+  "chkSetMailsUnread.tooltip": {
+    "message": "Εάν μετακινήσετε μηνύματα σε αυτόν τον φάκελο θα οριστεί ως μη αναγνωσμένο."
+  },
+  "cssBackground": {
+    "message": "Φόντο"
+  },
+  "cssColor": {
+    "message": "Χρώμα κειμένου"
+  },
+  "defaultAccountAddress.value": {
+    "message": "Εξ ορισμού ταυτότητα λογαριασμού"
+  },
+  "domainLicense.email": {
+    "message": "Θα επικοινωνήσουμε μαζί σας χρησιμοποιώντας αυτή τη διεύθυνση ηλεκτρονικού ταχυδρομείου για να δημιουργήσουμε την άδεια χρήσης για τον τομέα σας. Παρακαλούμε δώστε μας δύο εργάσιμες ημέρες για να έρθουμε σε επαφή. Εισάγετε το όνομα τομέα για την άδεια χρήσης στην επόμενη σελίδα."
+  },
+  "domainLicense.header": {
+    "message": "Αδειοδοτημένος Τομέας Email"
+  },
+  "domainLicense.instruct": {
+    "message": "Η άδεια είναι αντιστοιχισμένη στον τομέα της εταιρείας σας. Η άδεια θα επιτρέπει στους χρήστες με διευθύνσεις ηλεκτρονικού ταχυδρομείου που τελειώνουν σε αυτόν τον τομέα email να χρησιμοποιούν το QuickFolders Pro. Π.χ. αν εισάγετε το όνομα τομέα 'abc.com', τότε χρήστες email όπως fred@abc.com, martha@abc.com, mike.doe@abc.com κλπ. θα επιτρέπεται να χρησιμοποιούν την άδεια. Ο μέγιστος αριθμός έγκυρων μεμονωμένων χρηστών είναι ο αριθμός που εισάγατε στην αρχική οθόνη."
+  },
+  "domainLicense.validate": {
+    "message": "Βεβαιωθείτε ότι εισάγετε το όνομα τομέα *ακριβώς όπως είναι* στις διευθύνσεις email της Εταιρείας σας (το τμήμα *μετά* το σύμβολο @), καθώς θα χρησιμοποιηθεί για την επικύρωση των διευθύνσεων ηλεκτρονικού ταχυδρομείου των χρηστών σας."
+  },
+  "donate": {
+    "message": "Βοηθήστε με μια εφάπαξ δωρεά."
+  },
+  "donate-heading": {
+    "message": "Βοηθήστε με μία Δωρεά!"
+  },
+  "email.label": {
+    "message": "Email:"
+  },
+  "enterLicenseKey.button": {
+    "message": "Εισάγετε κλειδί άδειας χρήσης…"
+  },
+  "enterLicenseKey.tooltip": {
+    "message": "Εισάγετε τον κωδικό κλειδιού άδειας χρήσης που σας απεστάλη μέσω email."
+  },
+  "extend-your-license": {
+    "message": "Εξετάστε το ενδεχόμενο επέκτασης της άδειας χρήσης σας κατά ένα έτος."
+  },
+  "firstName.label": {
+    "message": "Όνομα:"
+  },
+  "freeLicense": {
+    "message": "Αν έχετε πρόσφατα δωρίσει στο έργο QuickFolders ή έχετε συνεισφέρει μέσω εργασίας όπως μετάφρασης ή συγγραφής διορθώσεων, μπορεί να δικαιούστε ένα δωρεάν κλειδί αδείας. Επικοινωνήστε μαζί μου από την καρτέλα υποστήριξης στις Επιλογές QuickFolders."
+  },
+  "fromAddress": {
+    "message": "Από:"
+  },
+  "getQuickFolders": {
+    "message": "Άδειες χρήσης QuickFolders"
+  },
+  "grpComposer": {
+    "message": "Εξ ορισμού Πεδία Email"
+  },
+  "grpCustomCSS": {
+    "message": "Προσαρμοσμένο CSS"
+  },
+  "grpTabBehavior": {
+    "message": "Συμπεριφορά Καρτέλας Προηγμένων Χαρακτηριστικών"
+  },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "To $addonName$ εγκαταστάθηκε με επιτυχία",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "Το $addonName$ ενημερώθηκε με επιτυχία",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "intro": {
+    "message": "Μια ετήσια άδεια για το QuickFolders Pro σας δίνει όλα τα premium χαρακτηριστικά για ένα έτος. Μας δίνει επίσης τη δυνατότητα να υποστηρίξουμε και να αναπτύξουμε περαιτέρω το προϊόν και να το μετατρέψουμε σε κάτι ακόμα πιο εκπληκτικό."
+  },
+  "label-remind-me": {
+    "message": "Θύμισέ μου ξανά σε $countDays$ ημέρες.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "lastName.label": {
+    "message": "Επώνυμο:"
+  },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Σας ευχαριστούμε για την πρόσφατη επέκταση της άδειας χρήσης σας ή για τη δωρεά σας. Καθώς έχετε ήδη βοηθήσει στη μελλοντική εξέλιξη του Προσθέτου, μπορείτε απλά να κλείσετε αυτό το παράθυρο."
+  },
+  "licenseComparison": {
+    "message": "Για να συγκρίνετε τα χαρακτηριστικά των διαφορετικών εκδόσεων, {linkStart}διαβάστε αυτή τη λίστα{linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Νέο Σύστημα Αδειοδότησης"
+  },
+  "licenseTypes": {
+    "message": "Το QuickFolders προσφέρει δύο άδειες, την Standard και την Pro• είναι απαραίτητο να υπάρχουν, προκειμένου να μπορούμε να ακολουθούμε τις εξελίξεις στην πλατφόρμα Thunderbird και να χρηματοδοτούμε νέες καινοτομίες και διορθώσεις του Προσθέτου. Επειδή περίπου μία φορά το χρόνο εισάγονται αλλαγές που δυνητικά σπάνε τη συμβατότητα των προσθέτων, η άδεια χρήσης θα έχει επίσης ισχύ για 1 έτος."
+  },
+  "licenseWindow.title": {
+    "message": "Άδεια Χρήσης QuickFolders"
+  }
+}

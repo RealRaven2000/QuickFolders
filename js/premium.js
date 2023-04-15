@@ -1,6 +1,13 @@
 
 /* functions that remove elements depending on the user type (from user=pro querystring ) */
 
+var removableItems = [
+	"QuickFoldersFreeUser",
+	"QuickFoldersProUser",
+	"QuickFoldersProRenew"
+];
+var removedItems = [];
+
 	function getQueryVariable(variable)	{
 		var query = window.location.search.substring(1),
 				vars = query.split("&");
@@ -22,9 +29,11 @@
 				renewButton.innerHTML = "Renew License";
 				dbuttons[i].replaceWith(renewButton); // replace anchor tag (containing donate button)
 			}
-			else
+			else {
 				dbuttons[i].parentNode.removeChild(dbuttons[i]);
+			}
 		}
+		removedItems.push(name);
 	}
 	
 	document.addEventListener("DOMContentLoaded", function(event) { 
@@ -68,8 +77,20 @@
 				  removeClassItems('QuickFoldersProRenew');
 				  removeClassItems('QuickFoldersProUser');
 			}
-			
 		}
+		// remove sales stuff
+		if (sales_end && new Date() > sales_end) {
+			removableItems.forEach(
+				(e) => {
+					if (!removedItems.includes(e)) {
+						removeClassItems(e);
+						removedItems.push(e);
+					}
+				}
+			)
+
+		}
+
 	});
 	
 	

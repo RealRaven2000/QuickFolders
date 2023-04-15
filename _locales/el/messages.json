@@ -105,5 +105,80 @@
   },
   "enterLicenseKey.tooltip": {
     "message": "Εισάγετε τον κωδικό κλειδιού άδειας χρήσης που σας απεστάλη μέσω email."
+  },
+  "extend-your-license": {
+    "message": "Εξετάστε το ενδεχόμενο επέκτασης της άδειας χρήσης σας κατά ένα έτος."
+  },
+  "firstName.label": {
+    "message": "Όνομα:"
+  },
+  "freeLicense": {
+    "message": "Αν έχετε πρόσφατα δωρίσει στο έργο QuickFolders ή έχετε συνεισφέρει μέσω εργασίας όπως μετάφρασης ή συγγραφής διορθώσεων, μπορεί να δικαιούστε ένα δωρεάν κλειδί αδείας. Επικοινωνήστε μαζί μου από την καρτέλα υποστήριξης στις Επιλογές QuickFolders."
+  },
+  "fromAddress": {
+    "message": "Από:"
+  },
+  "getQuickFolders": {
+    "message": "Άδειες χρήσης QuickFolders"
+  },
+  "grpComposer": {
+    "message": "Εξ ορισμού Πεδία Email"
+  },
+  "grpCustomCSS": {
+    "message": "Προσαρμοσμένο CSS"
+  },
+  "grpTabBehavior": {
+    "message": "Συμπεριφορά Καρτέλας Προηγμένων Χαρακτηριστικών"
+  },
+  "heading-installed": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "To $addonName$ εγκαταστάθηκε με επιτυχία",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "heading-updated": {
+    "description": "page heading. first placeholder will be replaced with Add-on name",
+    "message": "Το $addonName$ ενημερώθηκε με επιτυχία",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "intro": {
+    "message": "Μια ετήσια άδεια για το QuickFolders Pro σας δίνει όλα τα premium χαρακτηριστικά για ένα έτος. Μας δίνει επίσης τη δυνατότητα να υποστηρίξουμε και να αναπτύξουμε περαιτέρω το προϊόν και να το μετατρέψουμε σε κάτι ακόμα πιο εκπληκτικό."
+  },
+  "label-remind-me": {
+    "message": "Θύμισέ μου ξανά σε $countDays$ ημέρες.",
+    "placeholders": {
+      "countDays": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "lastName.label": {
+    "message": "Επώνυμο:"
+  },
+  "license-is-extended": {
+    "description": "Shown if license expires more than a year from now",
+    "message": "Σας ευχαριστούμε για την πρόσφατη επέκταση της άδειας χρήσης σας ή για τη δωρεά σας. Καθώς έχετε ήδη βοηθήσει στη μελλοντική εξέλιξη του Προσθέτου, μπορείτε απλά να κλείσετε αυτό το παράθυρο."
+  },
+  "licenseComparison": {
+    "message": "Για να συγκρίνετε τα χαρακτηριστικά των διαφορετικών εκδόσεων, {linkStart}διαβάστε αυτή τη λίστα{linkEnd}."
+  },
+  "licenseHead": {
+    "message": "Νέο Σύστημα Αδειοδότησης"
+  },
+  "licenseTypes": {
+    "message": "Το QuickFolders προσφέρει δύο άδειες, την Standard και την Pro• είναι απαραίτητο να υπάρχουν, προκειμένου να μπορούμε να ακολουθούμε τις εξελίξεις στην πλατφόρμα Thunderbird και να χρηματοδοτούμε νέες καινοτομίες και διορθώσεις του Προσθέτου. Επειδή περίπου μία φορά το χρόνο εισάγονται αλλαγές που δυνητικά σπάνε τη συμβατότητα των προσθέτων, η άδεια χρήσης θα έχει επίσης ισχύ για 1 έτος."
+  },
+  "licenseWindow.title": {
+    "message": "Άδεια Χρήσης QuickFolders"
   }
 }

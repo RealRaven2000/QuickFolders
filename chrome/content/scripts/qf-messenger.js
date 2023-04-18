@@ -65,9 +65,14 @@ async function onLoad(activatedWhileWindowOpen) {
             oncommand="QuickFolders.Interface.onSkipFolder(null);"
           />
     </toolbarpalette>
+`);
 
+  console.log("Adding QuickFolders toolbar ...")
+  debugger;  
 
-    <toolbox id="mail-toolbox">
+  WL.injectElements(`
+
+    <toolbox id="navigation-toolbox">
       <toolbar
             id="QuickFolders-Toolbar"
             toolbarname="QuickFolders Toolbar"
@@ -86,8 +91,6 @@ async function onLoad(activatedWhileWindowOpen) {
           </vbox>
         </hbox>
         
-
-
         <popupset id="QuickFolders-QuickMovePopupSet">
           <menupopup id="QuickFolders-quickMoveMenu">
             <menuitem id="QuickFolders-quickMove-suspend"
@@ -294,7 +297,9 @@ async function onLoad(activatedWhileWindowOpen) {
         </vbox>
       </toolbar>
     </toolbox>
-    
+    `);
+
+  WL.injectElements(`
     
   <popup id="folderPaneContext">
     <menuitem id="context-quickFoldersIcon"
@@ -549,6 +554,18 @@ async function onLoad(activatedWhileWindowOpen) {
   // add listeners
   window.QuickFolders.Util.logDebug('Adding Folder Listener...');
   MailServices.mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
+
+  // Thunderbird 115
+  // iterate all mail tabs!
+  window.gTabmail.tabInfo.filter(t => t.mode.name == "mail3PaneTab").forEach(tabInfo => {
+    const QuickFolders = window.QuickFolders;
+    // const callBackCommands = tabInfo.chromeBrowser.contentWindow.commandController._callbackCommands;
+    // backup wrapped functions:
+    // callBackCommands.quickFilters_cmd_moveMessage = callBackCommands.cmd_moveMessage; 
+    // monkey foldertree patch drop method
+    QuickFolders.patchFolderTree(tabInfo);
+  });
+
   
   // Enable the global notify notifications from background.
   window.QuickFolders.Util.notifyTools.enable();
@@ -584,6 +601,10 @@ async function onLoad(activatedWhileWindowOpen) {
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
   }
+
+
+
+
   
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!
 }

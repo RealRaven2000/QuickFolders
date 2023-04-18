@@ -9,6 +9,7 @@ END LICENSE BLOCK */
 //QuickFolders.Util.logDebug('Defining QuickFolders.bookmarks...');
 var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
+var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 
 // drop target - persistable "reading list"
@@ -113,7 +114,7 @@ QuickFolders.bookmarks = {
         method = forceMethod || prefs.getStringPref('bookmarks.openMethod'),
         msgHdr;
     try {
-      msgHdr = messenger.messageServiceFromURI(entry.Uri).messageURIToMsgHdr(entry.Uri);
+      msgHdr = MailServices.messageServiceFromURI(entry.Uri).messageURIToMsgHdr(entry.Uri);
       if (!msgHdr) return false;
       if ((msgHdr.messageId.toString() + msgHdr.author + msgHdr.subject) == '' 
           && msgHdr.messageSize==0) // invalid message
@@ -127,7 +128,7 @@ QuickFolders.bookmarks = {
       switch (method) {
         case 'currentTab':
           let mode = QuickFolders.Interface.CurrentTabMode,
-              isInTab = (mode == "3pane" || mode == "folder");
+              isInTab = (mode == "mail3PaneTab" || mode == "folder");
 					
           // [Bug 26481] make sure to switch to another tab if that folder is open:
           if (util.CurrentFolder!=msgHdr.folder)
@@ -283,7 +284,7 @@ QuickFolders.bookmarks = {
     if (this.indexOfEntry(newUri) == -1) { // avoid duplicates!
       let chevron = ' ' + "\u00BB".toString() + ' ',
           showFolder = prefs.getBoolPref('bookmarks.folderLabel'),
-          hdr = messenger.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
+          hdr = MailServices.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
       if (hdr) {
         try {
           let label = util.getFriendlyMessageLabel(hdr);
@@ -528,47 +529,32 @@ QuickFolders.bookmarks = {
               // find out about currently viewed message
               try {
                 // are multiple mails selected?
+                let selectedMessageUris = [] ; 
+                let selectedMessages = quickFilters.Util.getSelectedMessages(selectedMessageUris);
+                let selectionCount = selectedMessages.length;
+                /*
                 let selectionCount =
                   (tab.messageDisplay && gFolderDisplay) ? gFolderDisplay.selectedIndices.length : 0;
+                  */
                 util.logDebugOptional("bookmarks", "selectionCount: " + selectionCount);
                 if (selectionCount>=1) { 
-                  let selectedMessages = gFolderDisplay.selectedMessages; 
+                  // let selectedMessages = gFolderDisplay.selectedMessages; 
                   let uriObjects = [];
                   for (let j=0; j<selectedMessages.length; j++) {
                     let msg = selectedMessages[j];
-                    let uriObject = 
+                    uriObjects.push(
                       {
-                        url: msg.folder.generateMessageURI(msg.messageKey),
+                        url: selectedMessageUris[j] , // msg.folder.generateMessageURI(msg.messageKey)
                         label: msg.mime2DecodedSubject.substring(0, 70), 
                         bookmarkType: 'msgUri', 
                         folder:msg.folder,
                         threadId: msg.threadId,
                         threadParent: msg.threadParent
                       }
-                    uriObjects.push(uriObject);
+                    );
                   }
                   return uriObjects;
                 }
-                // let msg = null;
-                // if (tab.folderDisplay) {
-                  // msg = tab.folderDisplay.selectedMessage;
-                // }
-                // else {
-                  // if (tab.messageDisplay && tab.messageDisplay.selectedCount==1) {
-                    // msg = tab.messageDisplay.displayedMessage;
-                  // }
-                  // else {
-                    // let msgUri = this.alternativeGetSelectedMessageURI (browser);
-                    // if (msgUri) {
-                      // msg = browser.messenger.messageServiceFromURI(msgUri).messageURIToMsgHdr(msgUri);
-                    // }
-                  // }
-                // }
-                // if (!msg) return '';
-                // currentURI = msg.folder.generateMessageURI(msg.messageKey) 
-                // currentLabel = msg.mime2DecodedSubject.substring(0, 70);
-                // currentType = 'msgUri';
-                // currentFolder = msg.folder;
               }
               catch(ex) { 
                 util.logException("Could not retrieve message from context menu", ex);

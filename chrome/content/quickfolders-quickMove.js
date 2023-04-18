@@ -6,6 +6,7 @@
 	For details, please refer to license.txt in the root folder of this extension
 
   END LICENSE BLOCK */
+  var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 // drop target which defers a move to a quickJump operation
 QuickFolders.quickMove = {
@@ -327,7 +328,7 @@ QuickFolders.quickMove = {
       if (this.Uris.length==1) {
         menu.appendChild(document.createXULElement('menuseparator'));
       }
-      let hdr = messenger.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
+      let hdr = MailServices.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
       if (hdr) {
         try {
           let label = QuickFolders.Util.getFriendlyMessageLabel(hdr),

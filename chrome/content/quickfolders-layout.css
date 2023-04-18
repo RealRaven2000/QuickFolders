@@ -741,11 +741,11 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 }
 
 .folderBarContainer toolbarbutton .toolbarbutton-text {
-  display: -moz-inline-box; /* Tb110 beta */
+	display: inline-flex;  /* Tb113 beta */
 }
 
 .folderBarContainer toolbarbutton .toolbarbutton-icon {
-  display: -moz-inline-box;
+  display: inline-flex; /* Tb113 beta */
 }
 
 .quickfolders-flat .folderBarContainer toolbarbutton {

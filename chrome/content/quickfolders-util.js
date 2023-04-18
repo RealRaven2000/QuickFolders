@@ -765,7 +765,7 @@ QuickFolders.Util = {
           
       for (let i = 0; i < messageUris.length; i++) {
         let messageUri = messageUris[i],
-            Message = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri),
+            Message = MailServices.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri),
             bookmarked = bookmarks.indexOfEntry(messageUri);
         
         let segment = segmentedMsgArray.find(e => e.folder == Message.folder);
@@ -884,7 +884,7 @@ QuickFolders.Util = {
       // [issue 132] Shift-M opens a new tab after moving the message...
       // if we move the email and are in a single message window, we need to jump to the next unread mail first!
       let tabmail = document.getElementById("tabmail"),
-          currentTabId = tabmail.currentTabInfo.tabId,  //  currentTabInfo = tabmail.tabInfo[QuickFolders.tabContainer.selectedIndex]
+          currentTabId = tabmail.currentTabInfo.tabId,  //  currentTabInfo = tabmail.tabInfo[QuickFolders.tabContainer.tabbox.selectedIndex]
           moveFromSingleMailTab = false;
       if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "message") { 
         moveFromSingleMailTab = true;
@@ -1007,7 +1007,7 @@ allowUndo = true)`
   getTabInfoLength: function getTabInfoLength(tabmail) {
     if (tabmail.tabInfo)
       return tabmail.tabInfo.length;
-    return null;
+    return 0;
   } ,
   
   getTabInfoByIndex: function getTabInfoByIndex(tabmail, idx) {
@@ -1025,16 +1025,19 @@ allowUndo = true)`
     return "";
   },
   
-  // of folder is deleted we should not throw an error!
+  // if folder is deleted we should not throw an error!
   get CurrentFolder() {
     const util = QuickFolders.Util;
     let aFolder,
         currentURI = null;
-    if (gFolderDisplay && gFolderDisplay.displayedFolder)
+    if (gTabmail && gTabmail.currentTabInfo) {
+      aFolder = gTabmail.currentTabInfo.folder || null;
+      return aFolder;
+    }        
+    if (typeof gFolderDisplay != "undefined" && gFolderDisplay.displayedFolder)
       currentURI = gFolderDisplay.displayedFolder.URI;
     // in search result folders, there is no current URI!
-    if (!currentURI)
-      return null;
+    if (!currentURI) { return null; }
     try {
       aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
     }
@@ -1094,15 +1097,25 @@ allowUndo = true)`
     return suggestion;
   } ,
 
-  getSelectedMsgUris: function getSelectedMsgUris() {
-    let messages;
-    if (typeof gFolderDisplay !='undefined') {
-      messages = gFolderDisplay.selectedMessageUris;
-      gFolderDisplay.hintAboutToDeleteMessages();
+  getSelectedMessages: function(selectedMessageUris) {
+    if (!selectedMessageUris) selectedMessageUris = [];
+    let selectedMessages = [];
+    let treeView = gTabmail.currentTabInfo.chromeBrowser.contentWindow.threadTree.view;
+    if (treeView) {
+      selectedMessages = treeView.getSelectedMsgHdrs();
+      // we can also read message.properties (list of property ids)
+      // read with message.getStringProperty("subject")
+      selectedMessages.forEach(hdr => {
+        selectedMessageUris.push(hdr.folder.getUriForMsg(hdr));
+      });
     }
-    if (!messages)
-      return null;
-    return messages;
+    return selectedMessages;
+  },
+
+  getSelectedMsgUris: function getSelectedMsgUris() {
+    let messageUris = [];
+    this.getSelectedMessages(messageUris);
+    return messageUris;
   },
   
   getFriendlyMessageLabel: function getFriendlyMessageLabel(hdr) {
@@ -1143,21 +1156,12 @@ allowUndo = true)`
     let summary = '';
     for (let i in messageUris) {
       let message = messageUris[i];
-      let msgUrl;
       // copy message URLs:
-      let msgService = messenger.messageServiceFromURI(message),
-          spec;
-      if (msgService.getUrlForUri) { // Tb91
-        msgUrl = msgService.getUrlForUri(message);
-        spec = msgUrl.spec;
-      }
-      else { // Tb78
-        msgUrl = {};
-        msgService.GetUrlForUri(message, msgUrl, null);
-        spec = msgUrl.value.spec;
-      }
+      let msgService = MailServices.messageServiceFromURI(message),
+          msgUrl = msgService.getUrlForUri(message),
+          spec = msgUrl.spec;
       aEvent.dataTransfer.mozSetDataAt("text/x-moz-message", message, i);
-      let header = messenger.messageServiceFromURI(message).messageURIToMsgHdr(message),
+      let header = MailServices.messageServiceFromURI(message).messageURIToMsgHdr(message),
           subject = header.mime2DecodedSubject;
       uniqueFileName = newUF ?
         this.suggestUniqueFileName(subject.substr(0,124), ".eml", fileNames) :
@@ -1260,6 +1264,11 @@ allowUndo = true)`
   logToConsole: function logToConsole(a) {
     let msg = "QuickFolders " + QuickFolders.Util.logTime() + "\n";
     console.log(msg, ...arguments);
+  },
+
+  // log a To Do item for issure 351 - Thunderbird 115 compatibility gap.
+  logTb115: function(txt) {
+    console.log(`%c[issue 351] TB115 - to do: %c${txt}`, "color:blue;", "background: blue; color:yellow;");
   },
 
   // flags
@@ -1676,7 +1685,7 @@ allowUndo = true)`
   // open an email in a new tab
   openMessageTabFromUri: function openMessageTabFromUri(messageUri) {
     try {
-      let hdr = messenger.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
+      let hdr = MailServices.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
       if (!hdr || hdr.messageId==0) {
         return false;
       }

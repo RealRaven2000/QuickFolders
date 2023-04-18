@@ -1,4 +1,5 @@
 
+
 /* functions that remove elements depending on the user type (from user=pro querystring ) */
 
 var removableItems = [
@@ -90,8 +91,7 @@ var removedItems = [];
 						removedItems.push(e);
 					}
 				}
-			)
-
+			);
 		}
 
 	});

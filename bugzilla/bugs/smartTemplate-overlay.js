@@ -23,6 +23,9 @@
 // -------------------------------------------------------------------
 // this class uses 2 "global" variables:
 // 1. branch = smartTemplate4  the branch from the preferences
+
+var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); 
+
 SmartTemplate4.classPref = function()
 {
 
@@ -256,7 +259,7 @@ StreamListenerST4.prototype.open = function(messageURI)
 
   let messenger = Components.classes["@mozilla.org/messenger;1"].
       createInstance(Components.interfaces.nsIMessenger);
-  let messageService = messenger.messageServiceFromURI(messageURI);
+  let messageService = MailServices.messageServiceFromURI(messageURI);
 
   var messageURL = { value: null };
   messageService.GetUrlForUri(messageURI, messageURL, null);

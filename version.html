@@ -288,7 +288,7 @@
 			<h4>Palette Types</h4>
 			<p>It is now possible to select independent palettes for the different tab states 
 				 selected / hover / dragover / uncolored.: <br>
-				 <img src="images/palette/PaletteOptions.png" alt="new palette selections" class="screenshots"/>
+				 <img src="images/palette/PaletteOptions.png" alt="new palette selections" class="screenshot"/>
 				 </p>
 			<p>this way the signalling of important states (such as the current folder)	 can be made to 
 				 stick out so it can be located much more easily.</p>
@@ -329,28 +329,41 @@
       <h4>
       <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.16 - WIP</a>
       </h4>
-			<p>
-				I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird 
-				<a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">User Interface 'Supernova'</a>.
-				This will be implemented in the next major version of Thunderbird 115 in Summer 2023.
-				It requires  considerable work of <b>rewriting all elements interacting with the main page</b> 
-				(3pane) of Thunderbird (toolbar buttons, menus, folder tree).
-			</p>
-			<p>
-				You can read up on the current progress of this work here:
-				<a href="https://github.com/RealRaven2000/QuickFolders/issues/351">issue 351</a>
-				This work is exclusively funded by the sale of license so if you are interested
-				in using QuickFolders in the future, please consider buying a license or renewing your license.
-				Unlike a Windows Application, frequent work on the code of experimental Add-ons like QuickFolders
-				is inevitable. I have kept this project alive for 14 years now and I would like to
-				continue doing so in the future. Thank you for your kind attention.
-			</p>
+			<div class="psa announcement">
+				<p>
+					I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird 
+					<a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">User Interface 'Supernova'</a>.
+					This will be implemented in the next major version of Thunderbird 115 in Summer 2023.
+					It requires  considerable work of <b>rewriting all elements interacting with the main page</b> 
+					(3pane) of Thunderbird (toolbar buttons, menus, folder tree).
+				</p>
+				<p>
+					You can read up on the current progress of this work here:
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/351">issue 351</a>
+					This work is exclusively funded by the sale of license so if you are interested
+					in using QuickFolders in the future, please consider buying a license or renewing your license.
+					Unlike a Windows Application, frequent work on the code of experimental Add-ons like QuickFolders
+					is inevitable. I have kept this project alive for 14 years now and I would like to
+					continue doing so in the future. Thank you for your kind attention.
+				</p>
+			</div>
 
       <ul>
-        <li> Added visible warning about license 10 days before expiry. [issue 350]</li>
-        <li> Corrected the Number of days left in license by rounding up. </li>
+        <h4 class="inList">Improvements</h4>
+        <li> 
+					Added visible warning about license 10 days before expiry. [issue 350]
+				</li>
+				<li> 
+					<p>
+						News button will not be shown unless at least minor version number of QuickFolders is increased. 
+						But you can always read up on the latest changes via the tools menu item 
+						"Latest Update News..." - and used to be titled "View Splash Screen".
+					</p>
+					<img src="images/tools-show-news.png" alt="renew QuickFolders license" class="screenshot"/>
+				</li>
+				<h4 class="inList">Bugs Fixed</h4>
         <li> Fixed "Compact Folder" on current folder submenu.</li>
-				<li> News button is not shown unless at least minor version number of QuickFolders is increased. </li>
+        <li> Corrected the Number of days left in license by rounding up. </li>
       </ul>
     </li>
     		
@@ -393,7 +406,7 @@
           </td>
           <td>
             <p>
-              <img src="images/renew-license.png" alt="renew QuickFolders license" class="screenshots"/>
+              <img src="images/renew-license.png" alt="renew QuickFolders license" class="screenshot"/>
             </p>
           </td>
         </tr>

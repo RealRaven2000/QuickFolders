@@ -2192,7 +2192,8 @@ QuickFolders.Interface = {
 
   makePopupId: function makePopupId(folder, buttonId) {
 		this.IdUnique++;
-    return "QuickFolders-folder-popup-" + (buttonId || folder ? folder.URI : this.IdUnique); // + "-" + this.IdUnique;
+		// avoid "folder is undefined"
+    return "QuickFolders-folder-popup-" + (buttonId || (folder ? folder.URI : this.IdUnique)); // + "-" + this.IdUnique;
   },
 
 	addFolderButton: function addFolderButton(folder, entry, offset, theButton, buttonId, fillStyle, isFirst, isMinimal) {
@@ -5627,8 +5628,7 @@ QuickFolders.Interface = {
 		// new window: won't have active categories
 		if (QI.currentActiveCategories == null) {
 			let lc = prefs.lastActiveCats;
-			if (lc)
-				QI.currentActiveCategories = lc;
+			if (lc) QI.currentActiveCategories = lc;
 		}
 		if (null == folder) return null; // cut out lots of unneccessary processing!
 		selectedButton = forceButton || QI.getButtonByFolder(folder);
@@ -5656,8 +5656,9 @@ QuickFolders.Interface = {
 			button.className = button.className.replace(/\s*selected-folder/,"");
 			// button.className = button.className.replace(/(cActive[0-9]+)/,""); // remove active coloring
 			// remove "selected" attribute of tab look
-			if (button.hasAttribute("selected"))
+			if (button.hasAttribute("selected")) {
 				button.removeAttribute("selected");
+			}
 			if (button.folder) {
 				if (showNewMail) {
 					if (button.getAttribute("biffState-NewMail")) {

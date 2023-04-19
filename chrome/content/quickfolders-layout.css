@@ -72,12 +72,22 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
 }
 
+/* tools menu button */
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/settings.svg");
   -moz-context-properties: fill, fill-opacity, stroke;
   fill: var(--toolbarbutton-icon-fill, currentColor);
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+	stroke: var(--new-highlight); /* the tab in front of the wheel */
 }
+#QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { 
+	height:16px !important; 
+}
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
+  fill: var(--new-highlight);
+	stroke: currentColor;
+}
+
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/move.svg");
@@ -173,15 +183,17 @@ menupopup.widerMenu menucaption {
 
 #QuickFolders-oneButtonPanel {
 	height: 24px !important;  /* attempted linux squashed height fixes */
-	vertical-align: middle;
+	display: flex;
+	align-items: center;
 }
 #QuickFolders-FindFolder {
 	margin-bottom: 0px;
 	margin-top: 0px;
 	min-height: 20px !important;
 	width: -moz-min-content;
-  /* Tb 70+ */
   min-width: 50px;
+	background-color: var(--lwt-toolbar-field-background-color, hsla(0,0%,100%,.8)) !important;
+  color: var(--lwt-toolbar-field-color, black) !important;
 }
 
 #QuickFolders-FindFolder.quickMove,
@@ -306,22 +318,15 @@ menupopup.widerMenu menucaption {
   margin: 0 3px;
 }
 
-#QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { height:16px !important; }
-
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
-  fill: var(--new-highlight);
-	stroke: currentColor;
-}
-
 #QuickFolders-Toolbar {
 	min-height: 24px ;
-/* line-height: 24px; */
 	margin: 0;
 	padding: 0;
 }
 
 #QuickFolders-Tools-Pane {
-	vertical-align:top;
+	display: flex;
+	align-items: flex-start; /* = top as this is a vbox */
 }
 
 #QuickFolders-FoldersBox toolbarbutton[biffState-NewItalics].has-unread > label,
@@ -359,21 +364,20 @@ menupopup.widerMenu menucaption {
 	border-radius: 2px;
 }
 
-/* fix wrong padding in Noia & other themes */
 #QuickFolders-FoldersBox toolbarbutton {
-	background-repeat: repeat-x;
-  display: inline-block;
+/*	background-repeat: repeat-x; */
+	display: inline-flex;
+	align-items: center;
 	height: auto; /* was 19px */
 	padding-top: 0px;
 	padding-bottom: 0px;
-	vertical-align:top;
+	text-shadow: none;
 }
 
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton,
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
-	padding-right: 4px !important; /* was 0.4em = 4.4px */
+	padding-right: 4px !important; 
 	padding-left:  4px !important;
-	/* padding-top: 0px !important; Noia Extreme Fix */
 }
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton:not([checked="true"]) {
 	margin-bottom: 0px !important;
@@ -450,6 +454,7 @@ menupopup.widerMenu menucaption {
 
 .quickfolders-flat #QuickFolders-Category-Selection {
   margin-bottom: 0; /* avoid extra space under toolbarbuttons */
+	margin-top: 0 !important;
 }
 
 #QuickFolders-Category-Selection {
@@ -511,11 +516,11 @@ menupopup.widerMenu menucaption {
 
 
 #QuickFolders-FoldersBox {
-	/* display: inline-box;  - Tb68 only */
-  display: block; /* was inline-box, wrong! */
-	float:right;
+	display: flex;
+	flex-wrap: wrap;
 	max-height:25em;
-	margin-bottom: 0px;
+	margin-bottom: -1px;
+	overflow-y: scroll;
 }
 
 .QuickFolders-Empty-Toolbar-Label {
@@ -680,25 +685,15 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 }
 
 .quickfolders-flat .folderBarContainer toolbarbutton {
-	-moz-appearance: none !important;
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
-	border-bottom-left-radius: 0px;
-	border-bottom-right-radius: 0px;
+	appearance: none !important;
+	border-radius: 4px 4px 0px 0px;
 	border-color: rgba(120,120,120,0.5);
 	border-width: 1px !important;
 	border-style: solid;
-	background-repeat: repeat-x;
 	height: auto;
 	margin-right: 2px; /* 0.15em  */
 	margin-left: 2px;  /* 0.15em; */
 	margin-top : 1px;
-
-
-
-	/* height: 1.5em !important; */ /*large font support */
-	vertical-align: top;
-	/* disable text shadow in tt deepdark QF */
 	text-shadow: none;
 }
 

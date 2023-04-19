@@ -891,6 +891,9 @@
   "qf.menuitem.quickfolders.changeOrder": {
     "message": "ブックマークを並び替える"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "ライセンスのステータスを確認…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "無効なタブを削除する"
   },
@@ -1084,6 +1087,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders オプション"
+  },
+  "qf.premium.renew": {
+    "message": "ライセンスは $daysLeft$ 日後に期限切れになります",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "ライセンスの有効期限が {1} 日前に切れています"

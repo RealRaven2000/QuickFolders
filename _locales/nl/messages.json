@@ -927,6 +927,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "w"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Licentiestatus controleren…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Ongeldige tabbladen verwijderen"
   },
@@ -1147,6 +1150,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders-opties"
+  },
+  "qf.premium.renew": {
+    "message": "Licentie verloopt over $daysLeft$ dagen",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Uw licentie is {1} dagen geleden verlopen"

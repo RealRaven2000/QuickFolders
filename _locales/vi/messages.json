@@ -654,6 +654,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "D"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Kiểm tra trạng thái giấy phép…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Xóa các tab không hợp lệ"
   },
@@ -823,6 +826,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Tùy chọn QuickFolders"
+  },
+  "qf.premium.renew": {
+    "message": "Giấy phép hết hạn sau $daysLeft$ ngày",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Giấy phép của bạn đã hết hạn {1} ngày trước"

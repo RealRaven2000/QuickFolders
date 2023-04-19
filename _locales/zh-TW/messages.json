@@ -939,6 +939,9 @@
   "qf.menuitem.quickfolders.changeOrder": {
     "message": "改變標籤的順序"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "檢查許可證狀態..."
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "刪除無效標籤"
   },
@@ -1132,6 +1135,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders選項"
+  },
+  "qf.premium.renew": {
+    "message": "許可證在 $daysLeft$ 天后到期",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "您的購買憑證在{1}天前到期"

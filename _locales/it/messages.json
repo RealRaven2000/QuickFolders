@@ -250,6 +250,15 @@
       }
     }
   },
+  "pricing.section": {
+    "message": "Per scoprire il tuo prezzo, seleziona prima una delle seguenti opzioni. Si apre una finestra separata del browser in cui è possibile completare l'acquisto nel negozio online."
+  },
+  "pricing.section.hint": {
+    "message": "Nota: il prezzo varia a seconda del modello di licenza, del paese, dell'aliquota IVA, degli sconti in corso o delle licenze già acquistate."
+  },  
+  "pricing.title": {
+    "message": "Prezzi"
+  },
   "purchase-a-license": {
     "message": "Acquista una licenza."
   },
@@ -933,6 +942,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "M"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Controlla lo stato della licenza…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Rimuovi le schede non valide"
   },
@@ -1138,6 +1150,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Opzioni di QuickFolders"
+  },
+  "qf.premium.renew": {
+    "message": "La licenza scade tra $daysLeft$ giorni",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "La licenza è scaduta {1} giorni fa"

@@ -942,6 +942,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "Ä"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Kontrollera licensstatus…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Ta bort ogiltiga flikar"
   },
@@ -1162,6 +1165,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Inställningar för QuickFolders"
+  },
+  "qf.premium.renew": {
+    "message": "Licensen löper ut om $daysLeft$ dagar",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Din licens löpte ut {1} dagar sedan"

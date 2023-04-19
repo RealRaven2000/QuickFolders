@@ -16,6 +16,7 @@ var mylisteners = {};
 function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
   layout.setAttribute("title", "QuickFolderStyles");
+  let layout2 = WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
   
   // version specific:
   WL.injectCSS("chrome://quickfolders-skins/content/qf-current.css");

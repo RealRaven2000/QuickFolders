@@ -935,6 +935,9 @@
   "qf.menuitem.quickfolders.changeOrder": {
     "message": "Canvia l'ordre dels preferits"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Comprova l'estat de la llicència…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Elimina les pestanyes no vàlides"
   },
@@ -1131,6 +1134,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Opcions de QuickFolders"
+  },
+  "qf.premium.renew": {
+    "message": "La llicència caduca en $daysLeft$ dies",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "La vostra llicència va caducar fa {1} dies"

@@ -109,10 +109,12 @@ async function updateActions(addonName) {
   if (isSale) {
     if (!isValid) { // not shown with Standard license either.
       if (isExpired) { 
-        if (isStandard)
+        if (isStandard) {
           show('specialOfferUpgrade');
-        else
+        }
+        else {
           show('specialOfferRenew');
+        }
       }
       else
         show('specialOffer');
@@ -125,6 +127,9 @@ async function updateActions(addonName) {
       hideSelectorItems('.donations');
       hide('whyPurchase');
       isActionList = false;
+    } else if (licenseInfo.licensedDaysLeft<=10) {
+      show('specialOfferRenew');
+      hide('purchaseSection');
     }
   }
 

@@ -940,6 +940,9 @@
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "R"
   },
+  "qf.menuitem.quickfolders.checkLicense": {
+    "message": "Lizenzstatus prüfen…"
+  },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
     "message": "Ungültige Tabs entfernen"
   },
@@ -1151,6 +1154,14 @@
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders Einstellungen"
+  },
+  "qf.premium.renew": {
+    "message": "Lizenz läuft ab in $daysLeft$ Tagen",
+    "placeholders": {
+      "daysLeft": {
+        "content": "$1"
+      }
+    }
   },
   "qf.premium.renewLicense.tooltip": {
     "message": "Ihre Lizenz lief ab vor {1} Tagen"

@@ -5,7 +5,8 @@
 var removableItems = [
 	"QuickFoldersFreeUser",
 	"QuickFoldersProUser",
-	"QuickFoldersProRenew"
+	"QuickFoldersProRenew",
+	"QuickFoldersStdUser"
 ];
 var removedItems = [];
 

@@ -24,12 +24,11 @@ QuickFolders.TabListener = {
         let tabMode = util.getTabMode(info);
 				
 				let isToggleToolbar = false,
-				    toolbarElement = isToggleToolbar ? QuickFolders.Toolbar : null;
+				    toolbarElement = isToggleToolbar ? QuickFolders.Interface.Toolbar : null;
         util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode + "\nisToggleToolbar = " + isToggleToolbar);
 				
 				if (isToggleToolbar) {
-					let isCollapsed = 
-						!(tabMode == 'message' || tabMode == 'folder' || tabMode == '3pane' || tabMode == 'glodaList');
+					let isCollapsed = !(["message", "folder", "3pane", "glodaList"].includes(tabMode));
 					util.logDebugOptional("listeners.tabmail", "Setting Toolbar collapsed to " + isCollapsed);
 					toolbarElement.collapsed = isCollapsed;
 				}

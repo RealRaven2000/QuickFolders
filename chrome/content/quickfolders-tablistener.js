@@ -15,7 +15,7 @@ QuickFolders.TabListener = {
         let util = QuickFolders.Util,
             QI = QuickFolders.Interface,
             tabmail = document.getElementById("tabmail"),
-            idx = QuickFolders.tabContainer.selectedIndex;
+            idx = QuickFolders.tabContainer.tabbox.selectedIndex;
         idx = idx || 0;
         util.logDebugOptional("listeners.tabmail,categories", "TabListener.select() - tab index = " + idx);
 				let info = util.getTabInfoByIndex(tabmail, idx);  // tabmail.tabInfo[idx]
@@ -24,18 +24,18 @@ QuickFolders.TabListener = {
         let tabMode = util.getTabMode(info);
 				
 				let isToggleToolbar = false,
-				    toolbarElement = isToggleToolbar ? QuickFolders.Toolbar : null;
+				    toolbarElement = isToggleToolbar ? QuickFolders.Interface.Toolbar : null;
         util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode + "\nisToggleToolbar = " + isToggleToolbar);
 				
 				if (isToggleToolbar) {
 					let isCollapsed = 
-						!(tabMode == 'message' || tabMode == 'folder' || tabMode == '3pane' || tabMode == 'glodaList');
+						!(["message", "folder", "3pane", "glodaList", "mail3PaneTab"].includes(tabMode));
 					util.logDebugOptional("listeners.tabmail", "Setting Toolbar collapsed to " + isCollapsed);
 					toolbarElement.collapsed = isCollapsed;
 				}
 				
         let wasRestored = false;
-        if (tabMode == "folder" && QuickFolders.Preferences.isDebugOption("listeners.tabmail") && typeof info.QuickFoldersCategory == "undefined") {
+        if (tabMode == "mail3PaneTab" && QuickFolders.Preferences.isDebugOption("listeners.tabmail") && typeof info.QuickFoldersCategory == "undefined") {
           // need to retrieve the info from the session store!
           console.log("{LISTENERS.TABMAIL}\nMissing QuickFoldersCategory in tabInfo:", info);
           let lastCats = QuickFolders.Preferences.getStringPref("lastActiveCategories"); // last one looked at
@@ -63,7 +63,7 @@ QuickFolders.TabListener = {
         }
 
         
-        if (tabMode == 'message') {
+        if (tabMode == "message") {
           let msg = null, fld = null;
           if (info.messageDisplay)
             msg = info.messageDisplay.displayedMessage;
@@ -82,7 +82,7 @@ QuickFolders.TabListener = {
         {
           // Do not switch to current folder's category, if current tab has another selected!
           if (!info.QuickFoldersCategory) {
-            if (tabMode == "folder") {
+            if (tabMode == "mail3PaneTab") {
               // there is no need for this if it is not a mail tab.
               QI.setTabSelectTimer();
             }
@@ -97,7 +97,7 @@ QuickFolders.TabListener = {
         
         // for non-folder tabs: reset lastTabSelected to force refresh of current folder 
         // when we go back to a folder tab
-        if (tabMode != "folder")
+        if (tabMode != "mail3PaneTab")
           QI.lastTabSelected = null;
       }
     }
@@ -129,7 +129,7 @@ QuickFolders.TabListener = {
   
   moveTab: function(evt) {
     let tabmail = document.getElementById("tabmail");
-    let idx = QuickFolders.tabContainer.selectedIndex;
+    let idx = QuickFolders.tabContainer.tabbox.selectedIndex;
     idx = idx || 0;
     QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.moveTab()  - idx = " + idx);
     QuickFolders.Interface.storeTabSession();

@@ -280,7 +280,7 @@ label.text-link[href]:hover {
 
 button.debug {
 	border-radius: 2px !important;
-	-moz-appearance: none !important;
+	appearance: none !important;
 	background-color: #B00;
 	color: #FFF;
 	border: 1px solid gray;
@@ -524,7 +524,7 @@ hbox.quickhelp-dbg {
 }
 
 #L0, #L1, #L2, #L3, #L4, #L5 {
-  -moz-appearance: none !important;
+  appearance: none !important;
 	border-radius: 0.5em;
 	box-shadow: 2px 2px 3px -1px rgba(0,0,0,0.7);
 	font-style: normal;
@@ -627,7 +627,7 @@ hbox.quickhelp-dbg {
 }
 
 #currentFolderCustomize {
-	/* -moz-appearance: listbox; */
+	/* appearance: listbox; */
 	/* for textured themes */
 	background-color: rgba(255, 255, 255, 0.4);
 	backface-visibility: visible;

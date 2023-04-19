@@ -198,7 +198,7 @@ menupopup.widerMenu menucaption {
 
 #QuickFolders-FindFolder.quickMove,
 #QuickFolders-FindFolder.quickMove[type="search"] {
-  -moz-appearance:none; /* overwrite the hardcoded backgrounds of moz-binding textbox.xml#search-textbox */
+  appearance:none; /* overwrite the hardcoded backgrounds of moz-binding textbox.xml#search-textbox */
   background: linear-gradient(to bottom, rgba(242,94,94,1) 0%,rgba(206,9,6,1) 43%,rgba(150,30,30,1) 100%) !important;
 	background-color: rgba(229,132,117,1) !important;
 	color: rgb(255,255,255) !important;
@@ -496,7 +496,7 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-Toolbar #QuickFolders-title-label {
-	-moz-appearance: none !important;
+	appearance: none !important;
   appearance: none !important;
 	background: transparent !important;
 	border-radius: 0.4em !important;
@@ -513,14 +513,12 @@ menupopup.widerMenu menucaption {
 	to {box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.25);}
 }
 
-
-
 #QuickFolders-FoldersBox {
 	display: flex;
 	flex-wrap: wrap;
 	max-height:25em;
 	margin-bottom: -1px;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .QuickFolders-Empty-Toolbar-Label {
@@ -530,11 +528,11 @@ menupopup.widerMenu menucaption {
 
 .quickfolders-toolbarbuttons toolbarbutton
 {
-	-moz-appearance: toolbarbutton !important;
+	appearance: toolbarbutton !important;
 }
 
 .quickfolders-pills toolbarbutton {
-	-moz-appearance: none !important;
+	appearance: none !important;
 }
 
 /* CURRENT FOLDER TOOLBAR */
@@ -565,7 +563,7 @@ menupopup.widerMenu menucaption {
   color: black; */
 	padding: 0 0.5em;
 	vertical-align: top;
-	-moz-appearance: none !important;
+	appearance: none !important;
 	border-radius: 0px 0px 4px 4px !important;
 	min-width: 16em;
 }
@@ -575,7 +573,7 @@ menupopup.widerMenu menucaption {
 }
 
 toolbar#QuickFolders-CurrentFolderTools {
-	-moz-appearance: none;
+	appearance: none;
   background-color: transparent;
   background-image: linear-gradient(hsla(0, 0%, 50%, 0.1), hsla(0, 0%, 50%, 0.1));
 	box-shadow: 1px 2px 4px -1px hsla(0, 0%, 50%, 0.7);
@@ -603,7 +601,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 
 
 #QuickFolders-CurrentFolderTools toolbarbutton.icon {
-	-moz-appearance: none !important;
+	appearance: none !important;
   -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
   fill: currentColor;
   fill-opacity: 0.7;
@@ -644,13 +642,13 @@ toolbar#QuickFolders-CurrentFolderTools[iconsize="large"] {
 /* NATIVE TABS */
 .quickfolders-realTabs toolbarbutton
 {
-	-moz-appearance: tab;
+	appearance: tab;
 }
 
 /* NATIVE BUTTONS */
 .quickfolders-realbuttons toolbarbutton
 {
-	-moz-appearance: button !important;
+	appearance: button !important;
 	height: auto !important;
 }
 
@@ -880,7 +878,7 @@ menupopup.QuickFolders-folder-popup menuitem.color:focus
 
 #QuickFolders-Tools-Pane toolbarbutton {
   /* eliminate padding in Linux as it leads to squashed icons*/
-  -moz-appearance: none;
+  appearance: none;
 }
 
 #QuickFolders-oneButtonPanel toolbarbutton:not(#QuickFolders-paintBucketActive) {
@@ -988,7 +986,7 @@ menuitem.mailCmd[tag="qfFolderRepair"],
 #QuickFolders-paintBucketActive menu,
 menuitem.color
 {
-	-moz-appearance: none !important;
+	appearance: none !important;
 }
 
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over,
@@ -996,7 +994,7 @@ menupopup.QuickFolders-folder-popup menu:-moz-drag-over,
 menupopup.QuickFolders-folder-popup menuitem.dragover,
 menupopup.QuickFolders-folder-popup menu.dragover
 {
-/*	-moz-appearance: none !important; */
+/*	appearance: none !important; */
 	background-repeat: repeat-x;
 }
 

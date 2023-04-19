@@ -67,7 +67,7 @@ hbox.drag-image {
 }
 
 #QuickFolders-change-order-grid button {
-  -moz-appearance: none;
+  appearance: none;
   border: 1px solid darkgray !important;
   border-radius: 3px;
   padding-left: 1.5em;

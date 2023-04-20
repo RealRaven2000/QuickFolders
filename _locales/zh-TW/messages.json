@@ -208,9 +208,6 @@
   "licenseComparison": {
     "message": "要比較不同版本的功能，請{linkStart}閱讀此列表{linkEnd}。"
   },
-  "licenseHead": {
-    "message": "新的許可製度"
-  },
   "licenseTypes": {
     "message": "QuickFolders 提供兩種許可證，Standard 和 Pro； 這些對於跟上 Thunderbird 平台的變化以及為插件的創新和修復提供資金是必要的。 由於可能破壞擴展功能的更改每年都會部署，因此許可證的有效期也為 1 年。"
   },
@@ -243,6 +240,12 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla僅提供一個基本平台，用於向您（最終用戶）交付我們的軟件。 如果我們需要向我們的用戶付款或提供支持，則不能通過addons.thunderbird.net進行操作-這不是內置付費界面或許可證管理（如iTunes或Google Play）的“應用商店”。"
+  },
+  "newsHead": {
+    "message": "最新消息"
+  },
+  "newsSection": {
+    "message": "{P1}我目前正在為新的 Thunderbird SuperNova UI 轉換 QuickFolders Addon。 這將在 2023 年夏季的 Thunderbird 115 的下一個主要版本中實現。{P2} {P1}您可以在此處閱讀有關這項工作的當前進度：[issue 351]{P2} {P1} 這項工作是獨家資助的 通過出售許可證，如果您有興趣在未來使用 QuickFolders，請考慮購買許可證或更新之前的許可證{P2}"
   },
   "ongoing-work": {
     "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",
@@ -1705,7 +1708,7 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "1月8日"
+    "message": "5月8日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1811,7 +1814,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 將多個郵件拖放到一個選項卡時，不會再多次觸發 quickFilters 助手。{L2}{L1}已修復：通過快速移動從不同文件夾移動郵件不會從菜單中刪除這些郵件。 [issue 328]{L2} {L1}在按鈕上自定義字體大小，子菜單在拖動郵件時也具有一致的字體大小 [issue 329]{L2} {L1}修改內部代碼以觸發 quickFilters 過濾器助手。 5.7 及更高版本的 quickFilters 插件需要進行這些更改。{L2}"
+    "message": "{L1}在到期前 10 天添加關於許可證的可見警告。{L2} {L1}更正了 通過四捨五入獲得許可證的剩余天數。{L2} {L1}修復了當前文件夾子菜單上的“壓縮文件夾”。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

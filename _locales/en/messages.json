@@ -219,9 +219,6 @@
   "licenseComparison" : {
     "message": "To compare the features of the different versions, {linkStart}read this list{linkEnd}."
   },
-  "licenseHead": {
-    "message": "New Licensing System"
-  },  
   "licenseTypes": {
     "message": "QuickFolders offers two licenses, Standard and Pro; these are necessary to keep up with the changes in the Thunderbird platform and to finance Innovations and repairs of the Add-on. Because changes that potentially break extension functionality are rolled out annually, the license will also be valid for 1 year."
   },  
@@ -254,6 +251,12 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
+  },
+  "newsHead": {
+    "message": "Latest News"
+  },  
+  "newsSection": {
+    "message": "{P1}I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird SuperNova UI. This will be implemented in the next major version of Thunderbird 115 in Summer 2023.{P2} {P1}You can read up on the current progress of this work here: [issue 351]{P2} {P1}As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using QuickFolders in the future{P2}"
   },
   "ongoing-work": {
     "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
@@ -1808,7 +1811,7 @@
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
   "special-offer-expiry": {
-    "message": "January 8th"
+    "message": "May 8th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1914,7 +1917,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 will not trigger quickFilters assistant multiple times anymore when dropping multiple mails to a tab.{L2}{L1}Fixed: Moving mails from different folders via quickMove did not remove these from the menu. [issue 328]{L2} {L1}With custom font size on buttons, submenus also have consistent font size when dragging mail [issue 329]{L2} {L1}Modifications to internal code for triggering the quickFilters filter assistant. These changes will be required by the quickFilters Add-on from version 5.7 and higher.{L2}"
+    "message": "{L1}Added visible warning about license 10 days before expiry.{L2} {L1}Corrected the Number of days left in license by rounding up.{L2} {L1}Fixed 'Compact Folder' on current folder submenu.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

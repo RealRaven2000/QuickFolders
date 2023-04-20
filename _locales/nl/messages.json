@@ -208,9 +208,6 @@
   "licenseComparison": {
     "message": "Om de kenmerken van de verschillende versies te vergelijken, {linkStart}lees deze lijst{linkEnd}."
   },
-  "licenseHead": {
-    "message": "Nieuw licentiesysteem"
-  },
   "licenseTypes": {
     "message": "QuickFolders biedt twee licenties, Standard en Pro; deze zijn nodig om de veranderingen in het Thunderbird-platform bij te houden en om Innovaties en reparaties van de Add-on te financieren. Omdat wijzigingen die mogelijk de extensiefunctionaliteit verbreken jaarlijks worden uitgerold, is de licentie ook 1 jaar geldig."
   },
@@ -243,6 +240,12 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla biedt alleen een basisplatform om onze software aan u, de eindgebruikers, te leveren. Als we onze gebruikers om betaling of ondersteuning moeten vragen, kunnen we dit niet doen vanaf addons.thunderbird.net - het is geen 'app store' met ingebouwde paywalls of licentiebeheer zoals iTunes of Google Play."
+  },
+  "newsHead": {
+    "message": "Laatste nieuws"
+  },
+  "newsSection": {
+    "message": "{P1}Ik werk momenteel aan de conversie van de QuickFolders-add-on voor de nieuwe Thunderbird SuperNova-gebruikersinterface. Dit zal worden geïmplementeerd in de volgende hoofdversie van Thunderbird 115 in de zomer van 2023.{P2} {P1}U kunt de huidige voortgang van dit werk hier lezen: [issue 351]{P2} {P1} Dit werk wordt exclusief gefinancierd door de verkoop van licenties, overweeg een licentie te kopen of uw vorige licentie te verlengen als u geïnteresseerd bent in het gebruik van QuickFolders in de toekomst{P2}"
   },
   "ongoing-work": {
     "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
@@ -1759,7 +1762,7 @@
     "message": "Wanneer u upgradet van Standard, krijgt u een licentietermijn van één jaar vanaf de aankoopdatum, ongeacht de vervaldatum van uw vorige licentie."
   },
   "special-offer-expiry": {
-    "message": "8 januari"
+    "message": "8 mei"
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1865,7 +1868,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 activeert de quickFilters-assistent niet meerdere keren meer wanneer meerdere e-mails naar een tabblad worden gedropt.{L2}{L1}Opgelost: het verplaatsen van e-mails uit verschillende mappen via QuickMove heeft deze niet uit het menu verwijderd. [issue 328]{L2} {L1}Met aangepaste lettergrootte op knoppen hebben submenu's ook een consistente lettergrootte bij het verslepen van e-mail [issue 329]{L2} {L1}Aanpassingen aan interne code voor het activeren van de quickFilters-filterassistent. Deze wijzigingen zijn vereist door de add-on quickFilters vanaf versie 5.7 en hoger.{L2}"
+    "message": "{L1}Toegevoegde zichtbare waarschuwing over licentie 10 dagen voor de vervaldatum.{L2} {L1}Corrigeerde de Aantal resterende dagen in licentie door naar boven af te ronden.{L2} {L1}Fixed 'Compact Folder' in submenu huidige map.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

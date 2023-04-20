@@ -58,7 +58,20 @@ addEventListener("click", async (event) => {
 	}
 });
 
-
+function formatAll(id) {
+  return messenger.i18n.getMessage(id)
+  .replace(/\{boldStart\}/g,"<b>")
+  .replace(/\{boldEnd\}/g,"</b>")
+  .replace(/\{hr\}/g,"<hr>")
+  .replace(/\{italicStart\}/g,"<i>")
+  .replace(/\{italicEnd\}/g,"</i>")
+  .replace(/\{L1\}/g,"<li>")
+  .replace(/\{L2\}/g,"</li>")
+  .replace(/\{P1\}/g,"<p>")
+  .replace(/\{P2\}/g,"</p>")
+  .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>")
+  .replace(/\[(.)\]/g,"<code>$1</code>");
+};
 
 addEventListener("load", async (event) => {
     const manifest = await messenger.runtime.getManifest(),
@@ -97,10 +110,11 @@ addEventListener("load", async (event) => {
     let h1 = document.getElementById("heading-updated");
     if (h1) {
       // this api function can do replacements for us
-      if (!hasMsg)
+      if (!hasMsg) {
         h1.innerText = messenger.i18n.getMessage("heading-updated", addonName);
-      else
+      } else {
         h1.innerText = "License Supported Feature";
+      }
     }
     
     if (hasMsg) {
@@ -112,10 +126,11 @@ addEventListener("load", async (event) => {
     
     let introMsg = document.getElementById('intro-msg');
     if (introMsg) {
-      if (!hasMsg)
+      if (!hasMsg) {
         introMsg.innerText = messenger.i18n.getMessage("thanks-for-updating-intro", addonName);
-      else
+      } else {
         introMsg.innerText = msg;
+      }
     }
     
     let verInfo = document.getElementById('active-version-info');
@@ -123,9 +138,9 @@ addEventListener("load", async (event) => {
       // use the i18n API      
       // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
       // for multiple replacements, pass an array
-      if (hasMsg)
+      if (hasMsg) {
         verInfo.setAttribute("collapsed",true);
-      else {
+      } else {
         verInfo.innerHTML = messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
           .replace("{boldStart}","<b class='versionnumber'>")
           .replace("{boldEnd}","</b>");
@@ -213,21 +228,15 @@ addEventListener("load", async (event) => {
     for (let el of elementsSI) {
       el.innerHTML = txtSI;
     }
-    
+
     let whatsNewLst = document.getElementById('whatsNewList');
     if (whatsNewLst) {
-      whatsNewLst.innerHTML =  messenger.i18n.getMessage('whats-new-list')
-        .replace(/\{boldStart\}/g,"<b>")
-        .replace(/\{boldEnd\}/g,"</b>")
-        .replace(/\{hr\}/g,"<hr>")
-        .replace(/\{italicStart\}/g,"<i>")
-        .replace(/\{italicEnd\}/g,"</i>")
-        .replace(/\{L1\}/g,"<li>")
-        .replace(/\{L2\}/g,"</li>")
-        .replace(/\{P1\}/g,"<p>")
-        .replace(/\{P2\}/g,"</p>")
-        .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>")
-        .replace(/\[(.)\]/g,"<code>$1</code>");
+      whatsNewLst.innerHTML =  formatAll("whats-new-list");
+    }
+
+    let newsSection = document.getElementById('newsDetail');
+    if (newsSection) {
+      newsSection.innerHTML = formatAll("newsSection");
     }
 
     let ongoing = document.getElementById('ongoing-work');

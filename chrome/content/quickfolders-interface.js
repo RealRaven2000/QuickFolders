@@ -1598,7 +1598,7 @@ QuickFolders.Interface = {
 			if (currentCat == FCat.NEVER && folderCat != FCat.NEVER) {
 				return false;
 			}
-			if (currentCat == null || currentCat == FCat.ALL) {
+			if (!currentCat || currentCat == FCat.ALL) {
 				return true;
 			}
 			else if (currentCat == FCat.UNCATEGORIZED  && !folderCat) {

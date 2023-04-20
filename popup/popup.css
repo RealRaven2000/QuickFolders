@@ -11,6 +11,24 @@
   font-weight: bold;
 }
 
+#compLink {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #8f0222;
+  padding: 0.1em 0.4em;
+  margin-left: -0.3em;
+  margin-right: -0.3em;
+  border-radius: 4px;
+}
+.importantInfo #compLink:not(:hover) {
+  color: lightyellow;
+}
+
+#compLink:hover {
+  background-image: linear-gradient(45deg, #6d0019b0 0%,#8f0222b0 34%,#e20425c0 100%);
+  color: white;
+}
+
 #innerwrapper {
   position: relative;
   background-color: white;
@@ -59,6 +77,7 @@ ul.actions {
 }
 
 .actionlinks {
+  margin-top: 2em;
   text-align: center;
 }
 
@@ -78,7 +97,8 @@ ul.actions {
   padding: 5px 8px;
 }
 
-.actionlinks a:hover {
+.actionlinks a:hover,
+#specialOfferTxt a:hover {
   background-image: linear-gradient(to bottom, #6d0019 0%,#8f0222 34%,#e20425 100%);
 }
 
@@ -116,9 +136,18 @@ canvas[collapsed=true] {
 
 .importantInfo a {
   background-color: transparent;
+  border-radius: 4px;
   color: lightyellow;
-  text-decoration: underline;
   cursor: pointer;
+  padding: 0.1em 0.4em;
+  margin-left: -0.3em;
+  margin-right: -0.3em;
+  text-decoration: underline;
+}
+
+.importantInfo a.issue:hover {
+  background-color: lightyellow;
+  color:rgba(115, 3, 85, 0.9);
 }
 
 .importantInfo p, 
@@ -135,9 +164,13 @@ canvas[collapsed=true] {
   background-color: transparent;
 }
 
-#new-licensing.announcement {
-  background-color: rgba(0,0,50,0.9); 
+#newsSection.announcement {
+  background-color: rgba(6, 6, 112, 0.9); 
+  background-image: linear-gradient(55deg, rgba(6, 6, 112, 0.9) 0%, rgba(115, 3, 85, 0.9) 100%);
   margin-bottom: 1.2em;
+}
+#newsDetail {
+  background-color: transparent;
 }
 
 #specialBox,
@@ -149,14 +182,10 @@ canvas[collapsed=true] {
 }
 
 #specialBox h2,
-#new-licensing h2  {
+#newsSection h2  {
   background: none !important;
   margin-top: 16px;
-  text-shadow:
-     -1px -1px 0 #EEE,  
-      1px -1px 0 #EEE,
-      -1px 1px 0 #EEE,
-       1px 1px 0 #EEE !important;
+  color: white;
   
 }
 
@@ -197,6 +226,11 @@ canvas[collapsed=true] {
   font-style: italic;
   background: transparent !important;
   color: rgb(160,180,200) !important; /*lighter gray*/
+}
+
+p.featureComparison {
+  margin-top: 2em;
+  text-align: center;
 }
 
 #purchaseLicenseListItem { /* test */
@@ -247,15 +281,6 @@ h1, h2, h3, h4 {
   color: rgba(20,30,50,0.6);
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  
-  text-shadow:
-       3px 3px 0 #EEE,
-     -1px -1px 0 #EEE,  
-      1px -1px 0 #EEE,
-      -1px 1px 0 #EEE,
-       1px 1px 0 #EEE;
-          
-  text-stroke: 1px lightblue;
 }
 
 #innerwrapper[os=linux] h1, 

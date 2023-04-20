@@ -182,9 +182,6 @@
   "licenseComparison": {
     "message": "A különböző verziók jellemzőinek összehasonlításához {linkStart} olvassa el ezt a listát {linkEnd}."
   },
-  "licenseHead": {
-    "message": "Új engedélyezési rendszer"
-  },
   "licenseTypes": {
     "message": "A QuickFolders két licencet kínál: Standard és Pro; ezek szükségesek ahhoz, hogy lépést tudjunk tartani a Thunderbird platform változásaival, és hogy finanszírozzuk a kiegészítő innovációit és javításait. Mivel a kiterjesztési funkciót esetlegesen megszakító változtatások évente bevezetésre kerülnek, a licenc 1 évig is érvényes lesz."
   },
@@ -214,6 +211,12 @@
         "example": "10"
       }
     }
+  },
+  "newsHead": {
+    "message": "Legfrissebb hírek"
+  },
+  "newsSection": {
+    "message": "{P1}Jelenleg a QuickFolders Addon konvertálásán dolgozom az új Thunderbird SuperNova UI-hoz. Ezt a Thunderbird 115 következő nagyobb verziójában, 2023 nyarán implementálják.{P2} {P1}A munka jelenlegi állásáról itt olvashat: [issue 351]{P2} {P1} Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást{P2}"
   },
   "ongoing-work": {
     "message": "A $addonName$ konvertálásának új programozási modellvé történő átalakítása hetekig tartott és költséges volt. Sokkal több változás van a következő 2022-es verzióra. Egy ilyen összetett kiegészítő mellett a drága munka elkerülhetetlenné válik. Kérem, segítsen ebben.",
@@ -1523,7 +1526,7 @@
     "message": "A Standard verzióra való frissítéskor a vásárlás dátumától számítva egy teljes év licencidőt kap, függetlenül az előző licenc lejárati dátumától."
   },
   "special-offer-expiry": {
-    "message": "január 8"
+    "message": "május 8"
   },
   "special-offer-head": {
     "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
@@ -1623,7 +1626,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 többé nem aktiválja többször a QuickFilters segédprogramot, ha több levelet dob egy lapra.{L2}{L1}Javítva: A különböző mappákból származó levelek QuickMove segítségével történő áthelyezése nem távolította el ezeket a menüből. [issue 328]{L2} {L1}A gombok egyéni betűméretével az almenük is konzisztens betűmérettel rendelkeznek az e-mailek áthúzásakor [issue 329]{L2} {L1}A belső kód módosításai a quickFilters szűrősegéd aktiválásához. Ezeket a változtatásokat az 5.7-es és újabb verziójú quickFilters-bővítmény teszi szükségessé.{L2}"
+    "message": "{L1}Látható figyelmeztetés hozzáadva a licenccel kapcsolatban 10 nappal a lejárat előtt.{L2} {L1}Javítottuk a A licencből hátralévő napok száma felfelé kerekítve.{L2} {L1}A 'Compact Folder' javítása a jelenlegi mappa almenüben.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

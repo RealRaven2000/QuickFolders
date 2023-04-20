@@ -82,9 +82,6 @@
   "licenseComparison": {
     "message": "Voit verrata eri versioiden ominaisuuksia {linkStart} lukemalla tämän luettelon {linkEnd}."
   },
-  "licenseHead": {
-    "message": "Uusi lisenssijärjestelmä"
-  },
   "licenseTypes": {
     "message": "QuickFolders tarjoaa kaksi lisenssiä, Standard ja Pro; nämä ovat välttämättömiä Thunderbird-alustan muutosten seuraamiseksi ja lisäosan innovaatioiden ja korjausten rahoittamiseksi. Koska muutokset, jotka mahdollisesti rikkovat laajennustoiminnon, otetaan käyttöön vuosittain, lisenssi on myös voimassa yhden vuoden."
   },
@@ -117,6 +114,12 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla tarjoaa vain perusalustan ohjelmistojemme toimittamiseksi sinulle, loppukäyttäjille. Jos meidän on pyydettävä käyttäjiltämme maksua tai tukea, emme voi tehdä tätä osoitteesta addons.thunderbird.net - se ei ole '' sovelluskauppa '', jossa on sisäänrakennetut paywallit tai lisenssien hallinta, kuten iTunes tai Google Play."
+  },
+  "newsHead": {
+    "message": "Uusimmat uutiset"
+  },
+  "newsSection": {
+    "message": "{P1}Työstän parhaillaan QuickFolders Addonin muuntamista uutta Thunderbird SuperNova -käyttöliittymää varten. Tämä otetaan käyttöön Thunderbird 115:n seuraavassa suuressa versiossa kesällä 2023.{P2} {P1}Voit lukea tämän työn edistymisestä täältä: [issue 351]{P2} {P1} Tämä työ on yksinomaan rahoitettu lisenssien myynnin vuoksi, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään QuickFolderia tulevaisuudessa{P2}"
   },
   "ongoing-work": {
     "message": "Muutokset $addonName$ muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota 2022 on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä.",
@@ -203,7 +206,7 @@
     "message": "Kun päivität Standard-versiosta, saat yhden täyden vuoden lisenssikauden ostopäivästä lukien edellisen lisenssisi päättymispäivästä riippumatta."
   },
   "special-offer-expiry": {
-    "message": "tammikuuta 8"
+    "message": "8. toukokuuta"
   },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
@@ -291,7 +294,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 ei enää käynnistä QuickFilters-avustajaa useita kertoja, kun useita viestejä pudotetaan välilehdelle.{L2}{L1}Korjattu: Sähköpostien siirtäminen eri kansioista QuickMoven avulla ei poistanut niitä valikosta. [issue 328]{L2} {L1}Kun painikkeissa on mukautettu kirjasinkoko, alivalikoissa on myös yhtenäinen kirjasinkoko, kun postia vedetään [issue 329]{L2} {L1}Sisäisen koodin muutokset QuickFilters-suodatinapurin käynnistämiseksi. QuickFilters-lisäosa versiosta 5.7 ja uudemmista edellyttää näitä muutoksia.{L2}"
+    "message": "{L1}Lisätty näkyvä varoitus lisenssistä 10 päivää ennen voimassaolon päättymistä.{L2} {L1}Korjattu Lisenssin jäljellä olevien päivien määrä pyöristämällä ylöspäin.{L2} {L1}Korjattu 'Compact Folder' nykyisessä kansion alivalikossa.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

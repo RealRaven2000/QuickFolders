@@ -121,9 +121,6 @@
   "licenseComparison": {
     "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
   },
-  "licenseHead": {
-    "message": "Nový licenční systém"
-  },
   "licenseTypes": {
     "message": "QuickFolders nabízí dvě licence, Standard a Pro; jsou nezbytné k udržení kroku se změnami na platformě Thunderbird a k financování inovací a oprav doplňku. Protože změny, které potenciálně narušují funkce rozšíření, jsou vydávány každoročně, licence bude také platná po dobu 1 roku."
   },
@@ -156,6 +153,12 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla poskytuje pouze základní platformu pro doručování našeho softwaru vám, koncovým uživatelům. Pokud potřebujeme požádat naše uživatele o platbu nebo podporu, nemůžeme to udělat z addons.thunderbird.net - nejedná se o „obchod s aplikacemi“ s vestavěnými paywally nebo správou licencí, jako je iTunes nebo Google Play."
+  },
+  "newsHead": {
+    "message": "Poslední zprávy"
+  },
+  "newsSection": {
+    "message": "{P1}V současné době pracuji na převodu doplňku QuickFolders pro nové uživatelské rozhraní Thunderbird SuperNova. To bude implementováno v další hlavní verzi Thunderbirdu 115 v létě 2023.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 351]{P2} {P1} Tato práce je výhradně financována prodejem licencí, zvažte prosím nákup licence nebo obnovení předchozí, pokud máte zájem používat QuickFolders v budoucnu{P2}"
   },
   "ongoing-work": {
     "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",
@@ -271,7 +274,7 @@
     "message": "Když upgradujete ze Standardu, získáte licenční období na jeden celý rok od data nákupu bez ohledu na datum vypršení platnosti vaší předchozí licence."
   },
   "special-offer-expiry": {
-    "message": "8. ledna"
+    "message": "8. května"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -359,7 +362,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 již při přesouvání více e-mailů na kartu vícekrát nespustí asistenta quickFilters.{L2}{L1}Opraveno: Přesouvání e-mailů z různých složek pomocí quickMove je neodstranilo z nabídky. [issue 328]{L2} {L1}S vlastní velikostí písma na tlačítkách mají podnabídky také konzistentní velikost písma při přetahování pošty [issue 329]{L2} {L1}Úpravy interního kódu pro spouštění asistenta filtrování quickFilters. Tyto změny bude vyžadovat doplněk quickFilters od verze 5.7 a vyšší.{L2}"
+    "message": "{L1}Přidáno viditelné upozornění na licenci 10 dní před vypršením platnosti.{L2} {L1}Opraveno Počet dní zbývajících v licenci zaokrouhlením nahoru.{L2} {L1}Opravena „Kompaktní složka“ v podnabídce aktuální složky.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

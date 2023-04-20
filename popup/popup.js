@@ -9,7 +9,7 @@ END LICENSE BLOCK */
 /* shared module for installation popups */
 
 async function updateActions(addonName) { 
-  let endSale = new Date("2023-01-08"), // Next Sale End Date
+  let endSale = new Date("2023-05-08"), // Next Sale End Date
       currentTime = new Date();
       
   // Currently we do not notify this page if the license information is updated in the background.
@@ -55,16 +55,25 @@ async function updateActions(addonName) {
   
   let isActionList = true;
   let overrideSale = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug.saleDate");
-  if (overrideSale) endSale = overrideSale;
+  if (overrideSale) { 
+    endSale = new Date (overrideSale); 
+    console.log("Debugging sales date - overwriting with test value from debug.saleDate:" + endSale);
+  }
   
   let isSale = (currentTime < endSale);
 
+  if (overrideSale) {
+    console.log("isSale = " + isSale);
+  }
+
   hideSelectorItems('.donations');
-  
+  if (isProUser) {
+    hideSelectorItems(".noPro");
+  }
+
   if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
     hide('register');
-    hide('new-licensing'); // hide box that explains new licensing system..
     
     if (isExpired) { // License Renewal
       hide('purchaseHeader');
@@ -115,9 +124,12 @@ async function updateActions(addonName) {
         else {
           show('specialOfferRenew');
         }
+        document.getElementById("purchaseHeader").setAttribute("collapsed",true);
+        hide('whyPurchase');
       }
-      else
+      else {
         show('specialOffer');
+      }
       hideSelectorItems('.donations');
       hide('whyPurchase');
       isActionList = false;
@@ -130,11 +142,14 @@ async function updateActions(addonName) {
     } else if (licenseInfo.licensedDaysLeft<=10) {
       show('specialOfferRenew');
       hide('purchaseSection');
-    }
+      document.getElementById("purchaseHeader").setAttribute("collapsed",true);
+      hide('whyPurchase');
+  }
   }
 
   if (!isActionList) {
     hide('actionBox');
+    hide('purchaseHeader');
   }
 
   // resize to contents if necessary...

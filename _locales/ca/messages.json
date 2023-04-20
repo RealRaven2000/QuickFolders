@@ -212,9 +212,6 @@
   "licenseComparison": {
     "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEnd}."
   },
-  "licenseHead": {
-    "message": "Nou sistema de llicències"
-  },
   "licenseTypes": {
     "message": "QuickFolders ofereix dues llicències, Standard i Pro; són necessaris per estar al dia dels canvis a la plataforma Thunderbird i per finançar innovacions i reparacions del complement. Com que els canvis que poden trencar la funcionalitat de l'extensió es presenten anualment, la llicència també serà vàlida durant un any."
   },
@@ -251,6 +248,12 @@
   "notificationTitle": {
     "description": "Title of the click notification.",
     "message": "Feu clic a notificació"
+  },
+  "newsHead": {
+    "message": "Últimes notícies"
+  },
+  "newsSection": {
+    "message": ""
   },
   "ongoing-work": {
     "message": "Les modificacions per convertir $addonName$ al nou model de programació van trigar setmanes i van ser costoses. Hi ha molts més canvis per a la propera versió del 2022. Amb un complement complex com aquest, es fa inevitable un treball car. Ajudeu-nos amb això.",
@@ -1701,7 +1704,7 @@
     "message": "Quan actualitzeu des de Standard, obteniu un període de llicència d'un any complet a partir de la data de compra, independentment de la data de caducitat de la vostra llicència anterior."
   },
   "special-offer-expiry": {
-    "message": "8 de gener"
+    "message": "8 de maig"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",

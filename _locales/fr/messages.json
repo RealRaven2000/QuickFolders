@@ -208,9 +208,6 @@
   "licenseComparison": {
     "message": "Pour comparer les fonctionnalités des différentes versions, {linkStart}lisez cette liste{linkEd}.sur{linkEnd}."
   },
-  "licenseHead": {
-    "message": "Nouveau système de licence"
-  },
   "licenseTypes": {
     "message": "QuickFolders propose deux licences, Standard et Pro ; ceux-ci sont nécessaires pour suivre les changements de la plate-forme Thunderbird et pour financer les innovations et les réparations de l'Add-on. Étant donné que les modifications susceptibles d'interrompre la fonctionnalité d'extension sont déployées chaque année, la licence sera également valide pendant 1 an."
   },
@@ -243,6 +240,12 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla fournit uniquement une plate-forme de base pour vous fournir nos logiciels, les utilisateurs finaux. Si nous avons besoin de demander à nos utilisateurs un paiement ou une assistance, nous ne pouvons pas le faire à partir de addons.thunderbird.net - ce n'est pas un `` magasin d'applications '' avec des paywalls intégrés ou une gestion des licences comme iTunes ou Google Play."
+  },
+  "newsHead": {
+    "message": "Dernières nouvelles"
+  },
+  "newsSection": {
+    "message": "{P1}Je travaille actuellement sur la conversion de l'extension QuickFolders pour la nouvelle interface utilisateur Thunderbird SuperNova. Cela sera implémenté dans la prochaine version majeure de Thunderbird 115 à l'été 2023.{P2} {P1}Vous pouvez lire l'état d'avancement actuel de ce travail ici : [issue 351]{P2} {P1} Ce travail est exclusivement financé par la vente de licences, veuillez envisager d'acheter une licence ou de renouveler la précédente si vous souhaitez utiliser QuickFolders à l'avenir{P2}"
   },
   "ongoing-work": {
     "message": "Les modifications pour convertir $addonName$ au nouveau modèle de programmation ont pris des semaines et étaient coûteuses. Il y a beaucoup plus de changements pour la prochaine version 2022. Avec un module complémentaire complexe comme celui-ci, un travail coûteux devient inévitable. Merci de nous aider.",
@@ -1741,7 +1744,7 @@
     "message": "Lorsque vous effectuez une mise à niveau à partir de Standard, vous bénéficiez d'une durée de licence d'un an à compter de la date d'achat, quelle que soit la date d'expiration de votre licence précédente."
   },
   "special-offer-expiry": {
-    "message": "8 janvier"
+    "message": "8 mai"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1847,7 +1850,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 ne déclenchera plus plusieurs fois l'assistant quickFilters lors du dépôt de plusieurs e-mails dans un onglet.{L2}{L1}Corrigé : le déplacement d'e-mails à partir de différents dossiers via quickMove ne les supprimait pas du menu. [issue 328]{L2} {L1}Avec une taille de police personnalisée sur les boutons, les sous-menus ont également une taille de police cohérente lors du déplacement du courrier [issue 329]{L2} {L1}Modifications du code interne pour déclencher l'assistant de filtrage quickFilters. Ces modifications seront requises par le module complémentaire quickFilters à partir de la version 5.7 et des versions ultérieures.{L2}"
+    "message": "{L1}Ajout d'un avertissement visible concernant la licence 10 jours avant l'expiration.{L2} {L1}Corrigé le Nombre de jours restants dans la licence en arrondissant.{L2} {L1}Correction du 'Dossier compact' dans le sous-menu du dossier actuel.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

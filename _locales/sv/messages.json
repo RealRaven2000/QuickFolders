@@ -208,9 +208,6 @@
   "licenseComparison": {
     "message": "För att jämföra funktionerna i de olika versionerna, {linkStart}läs den här listan{linkEnd}."
   },
-  "licenseHead": {
-    "message": "Nytt licenssystem"
-  },
   "licenseTypes": {
     "message": "QuickFolders erbjuder två licenser, Standard och Pro; dessa är nödvändiga för att hänga med i förändringarna i Thunderbird-plattformen och för att finansiera innovationer och reparationer av tillägget. Eftersom ändringar som eventuellt bryter tilläggsfunktioner distribueras årligen, kommer licensen också att vara giltig i 1 år."
   },
@@ -243,6 +240,12 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla tillhandahåller bara en grundläggande plattform för att leverera vår programvara till dig, slutanvändarna. Om vi behöver be våra användare om betalning eller support kan vi inte göra detta från addons.thunderbird.net - det är inte en 'app store' med inbyggda betalväggar eller licenshantering som iTunes eller google play."
+  },
+  "newsHead": {
+    "message": "Senaste nytt"
+  },
+  "newsSection": {
+    "message": "{P1}Jag arbetar för närvarande med konverteringen av QuickFolders-tillägget för det nya Thunderbird SuperNova-gränssnittet. Detta kommer att implementeras i nästa stora version av Thunderbird 115 sommaren 2023.{P2} {P1}Du kan läsa om det aktuella arbetet med detta arbete här: [issue 351]{P2} {P1} Detta arbete är exklusivt finansierat genom försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda QuickFolders i framtiden{P2}"
   },
   "ongoing-work": {
     "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
@@ -1768,7 +1771,7 @@
     "message": "När du uppgraderar från Standard får du ett helt års licensperiod från inköpsdatumet oavsett utgångsdatum för din tidigare licens."
   },
   "special-offer-expiry": {
-    "message": "8 januari"
+    "message": "8 maj"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1874,7 +1877,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 kommer inte att utlösa quickFilters-assistenten flera gånger längre när flera e-postmeddelanden släpps till en flik.{L2}{L1}Fast: Flytta e-post från olika mappar via quickMove tog inte bort dessa från menyn. [issue 328]{L2} {L1}Med anpassad teckenstorlek på knappar har undermenyer också konsekvent teckenstorlek när du drar e-post [issue 329]{L2} {L1}Ändringar av intern kod för att trigga filterassistenten quickFilters. Dessa ändringar kommer att krävas av quickFilters-tillägget från version 5.7 och senare.{L2}"
+    "message": "{L1}Lägg till en synlig varning om licensen 10 dagar före utgången.{L2} {L1}Rättade Antal dagar kvar i licensen genom att avrunda uppåt.{L2} {L1}Fastad 'Kompakt mapp' på aktuell mapp-undermeny.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -196,9 +196,6 @@
   "licenseComparison": {
     "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam{linkEdin}."
   },
-  "licenseHead": {
-    "message": "Nov sistem licenciranja"
-  },
   "licenseTypes": {
     "message": "QuickFolders ponuja dve licenci, Standardno in Pro; ti so potrebni za spremljanje sprememb na platformi Thunderbird in za financiranje inovacij in popravil dodatka. Ker se spremembe, ki bi potencialno motile funkcionalnost razširitve, uvedejo letno, bo licenca veljala tudi 1 leto."
   },
@@ -231,6 +228,12 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla ponuja samo osnovno platformo za dostavo naše programske opreme vam, končnim uporabnikom. Če moramo uporabnike prositi za plačilo ali podporo, tega ne moremo storiti z addons.thunderbird.net - to ni 'trgovina z aplikacijami' z vgrajenimi plačilnimi zidovi ali upravljanjem licenc, kot sta iTunes ali google play."
+  },
+  "newsHead": {
+    "message": "Zadnje novice"
+  },
+  "newsSection": {
+    "message": "{P1}Trenutno delam na pretvorbi dodatka QuickFolders za novi uporabniški vmesnik Thunderbird SuperNova. To bo implementirano v naslednji večji različici Thunderbird 115 poleti 2023.{P2} {P1}Tukaj si lahko preberete o trenutnem napredku tega dela: [issue 351]{P2} {P1} To delo je izključno financirano s prodajo licenc razmislite o nakupu licence ali obnovitvi prejšnje, če vas zanima uporaba QuickFolders v prihodnosti{P2}"
   },
   "ongoing-work": {
     "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
@@ -1705,7 +1708,7 @@
     "message": "Ko nadgradite s standardnega, prejmete eno celoletno licenčno obdobje od datuma nakupa, ne glede na datum poteka vaše prejšnje licence."
   },
   "special-offer-expiry": {
-    "message": "8. januar"
+    "message": "8. maj"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",
@@ -1811,7 +1814,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 ne bo več večkrat sprožil pomočnika quickFilters, ko na zavihek spusti več e-poštnih sporočil.{L2}{L1}Popravljeno: premikanje e-pošte iz različnih map prek QuickMove teh ni odstranilo iz menija. [issue 328]{L2} {L1}Z velikostjo pisave po meri na gumbih imajo podmeniji tudi dosledno velikost pisave pri vlečenju pošte [issue 329]{L2} {L1}Spremembe notranje kode za sprožitev pomočnika za filtre quickFilters. Te spremembe bo zahteval dodatek quickFilters od različice 5.7 naprej.{L2}"
+    "message": "{L1}Dodano vidno opozorilo o licenci 10 dni pred potekom.{L2} {L1}Popravljeno Število preostalih dni v licenci z zaokroževanjem.{L2} {L1}Popravljena 'Strnjena mapa' v podmeniju trenutne mape.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

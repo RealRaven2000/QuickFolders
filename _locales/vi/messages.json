@@ -97,9 +97,6 @@
   "licenseComparison": {
     "message": "Để so sánh các tính năng của các phiên bản khác nhau, hãy {linkStart}đọc danh sách này{linkEnd}."
   },
-  "licenseHead": {
-    "message": "Hệ thống cấp phép mới"
-  },
   "licenseTypes": {
     "message": "QuickFolders cung cấp hai giấy phép, Standard và Pro; những điều này là cần thiết để theo kịp những thay đổi trong nền tảng Thunderbird và tài trợ cho Cải tiến và sửa chữa Tiện ích bổ sung. Vì những thay đổi có khả năng phá vỡ chức năng của tiện ích mở rộng được triển khai hàng năm nên giấy phép cũng sẽ có hiệu lực trong 1 năm."
   },
@@ -129,6 +126,12 @@
   },
   "mozillas-basic-platform": {
     "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
+  },
+  "newsHead": {
+    "message": "Tin mới nhất"
+  },
+  "newsSection": {
+    "message": "{P1}Tôi hiện đang tiến hành chuyển đổi Tiện ích bổ trợ QuickFolders cho giao diện người dùng Thunderbird SuperNova mới. Điều này sẽ được triển khai trong phiên bản chính tiếp theo của Thunderbird 115 vào Mùa hè năm 2023.{P2} {P1}Bạn có thể đọc về tiến độ hiện tại của công việc này tại đây: [issue 351]{P2} {P1} Công việc này được tài trợ độc quyền bằng cách bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép trước đó nếu bạn quan tâm đến việc sử dụng QuickFolders trong tương lai{P2}"
   },
   "ongoing-work": {
     "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
@@ -1267,7 +1270,7 @@
     "message": "Khi bạn nâng cấp từ Standard, bạn sẽ nhận được thời hạn giấy phép cả năm kể từ ngày mua bất kể ngày hết hạn của giấy phép trước đó của bạn."
   },
   "special-offer-expiry": {
-    "message": "ngày 8 tháng 1"
+    "message": "ngày 8 tháng 5"
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",
@@ -1364,7 +1367,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 sẽ không kích hoạt trợ lý quickFilters nhiều lần nữa khi thả nhiều thư vào một tab.{L2}{L1}Đã sửa lỗi: Di chuyển thư từ các thư mục khác nhau qua quickMove không xóa những thư này khỏi trình đơn. [issue 328]{L2} {L1}Với kích thước phông chữ tùy chỉnh trên các nút, menu con cũng có kích thước phông chữ nhất quán khi kéo thư [issue 329]{L2} {L1}Sửa đổi đối với mã nội bộ để kích hoạt hỗ trợ bộ lọc quickFilters. Những thay đổi này sẽ được yêu cầu bởi Tiện ích bổ sung quickFilters từ phiên bản 5.7 trở lên.{L2}"
+    "message": "{L1}Đã thêm cảnh báo hiển thị về giấy phép 10 ngày trước khi hết hạn.{L2} {L1}Đã sửa lỗi Số ngày còn lại trong giấy phép bằng cách làm tròn.{L2} {L1}Đã sửa lỗi 'Thư mục nhỏ gọn' trên menu con thư mục hiện tại.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

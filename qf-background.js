@@ -61,11 +61,11 @@ messenger.runtime.onInstalled.addListener(async (data) => {
       // set a flag which will be cleared by clicking the [QuickFolders] button once
       setTimeout(
         async function() {
-          let ver = await messenger.LegacyPrefs.getPref("extensions.quickfolders.version","0");
+          let origVer = await messenger.LegacyPrefs.getPref("extensions.quickfolders.version","0");
           const manifest = await messenger.runtime.getManifest();
           // get pure version number / remove pre123 indicator
-          let installedVersion = manifest.version.replace(/pre*./,""); 
-          if (ver > installedVersion) {
+          let installedVersion = manifest.version.replace(/pre.*/,""); 
+          if (installedVersion > origVer) {
             messenger.LegacyPrefs.setPref("extensions.quickfolders.hasNews", true);
           }
           messenger.NotifyTools.notifyExperiment({event: "updateQuickFoldersLabel"});

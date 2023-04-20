@@ -68,12 +68,11 @@ async function onLoad(activatedWhileWindowOpen) {
     </toolbarpalette>
 `);
 
-  console.log("Adding QuickFolders toolbar ...")
-  debugger;  
-
+  console.log("Adding QuickFolders toolbar ...");
   WL.injectElements(`
 
-    <toolbox id="navigation-toolbox">
+  <toolbox id="navigation-toolbox">
+    <vbox id="titlebar">
       <toolbar
             id="QuickFolders-Toolbar"
             toolbarname="QuickFolders Toolbar"
@@ -304,8 +303,9 @@ async function onLoad(activatedWhileWindowOpen) {
         <!-- 		-->		
         </vbox>
       </toolbar>
-    </toolbox>
-    `);
+    </vbox>
+  </toolbox>
+  `);
 
   WL.injectElements(`
     

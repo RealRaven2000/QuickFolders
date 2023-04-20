@@ -314,16 +314,26 @@ END LICENSE BLOCK */
   5.15.2 QuickFolders Pro - 24/12/2022
     ## [issue 335] quickFilters assistant triggered multiple times when dropping mails to tab
     
-  6.0 QuickFolders Pro - WIP
+  5.16 - Merged changes (no need to include in version history)
     ## [issue 341] Removed Service wrappers:
     ##   Services: nsIWindowMediator, nsIWindowWatcher, nsIPromptService, nsIPrefBranch, nsIFocusManager,
     ##             nsIStringBundleService, nsIXULAppInfo, nsIConsoleService, nsIVersionComparator,
     ##   MailServices: nsIMsgHeaderParser, nsIMsgTagService, nsIMsgFolderNotificationService,
     ##                 nsIMsgMailSession, nsIFolderLookupService
+    ## Added Czech translation to licensing dialog
+    ## Added pricing section to licensing dialog
+    ## [issue 350] Add visible warning about license 10 days before expiry
+    ## [issue 352] Correct the Number of days left in license by rounding up
+    ## do not trigger "news" unless min ver changes at least.
+    ## Clicking Compact Folder on current folder submenu only throws "Uncaught TypeError: folder is undefined"
+    ##  (triggered in makePopupId)
+    
+  6.0 QuickFolders Pro - WIP
     ## [issue 351] Compatibity with Thunderbird 115 (ESR 2023/24)
     ## - TO DO: new browser action button
     ## - messageServiceFromURI moved to MailServices
     ## - rewrote QI.rebuildSummary() function
+    
 
 
 	Future Work

@@ -325,6 +325,10 @@ END LICENSE BLOCK */
     ## Added pricing section to licensing dialog
     ## [issue 350] Add visible warning about license 10 days before expiry
     ## [issue 352] Correct the Number of days left in license by rounding up
+    ## do not trigger "news" unless min ver changes at least.
+    ## Clicking Compact Folder on current folder submenu only throws "Uncaught TypeError: folder is undefined"
+    ##  (triggered in makePopupId)
+
 
 
 

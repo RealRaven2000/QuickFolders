@@ -4,6 +4,7 @@
 	background-color: #006EB7 !important; /* blue */
 	background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   border-radius: 2px !important;
+	font-weight: normal;
 }
 
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
@@ -17,7 +18,6 @@
   padding-left: 1em;
   padding-right: 1em;
 	font-weight: normal !important;
-
 }
 #QuickFolders-LabelBox #QuickFolders-title-label.expired {
   padding-left: 2em;

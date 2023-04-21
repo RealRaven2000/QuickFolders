@@ -653,7 +653,7 @@ var QuickFolders = {
 				  cats = tab.QuickFoldersCategory;
 				
 				util.logDebug("init: setting categories to " + cats);
-				if (tabMode == "folder" || tabMode == "message") {
+				if (["folder","message","mail3PaneTab"].includes(tabMode)) {
 					// restore categories of first tab; set to "all" if not set
 					QI.currentActiveCategories = cats;
 				}
@@ -672,7 +672,7 @@ var QuickFolders = {
       // make sure tabs not in active category are hidden - this at least doesn't happen if we load the extension from the debugging tab
       // [issue 283][issue 279] avoid selecting category here - test in 91 too!
       
-      if (tabMode == "folder" && QI.currentActiveCategories!=QuickFolders.FolderCategory.INIT) {
+      if ((tabMode == "folder" || tabMode == "mail3PaneTab") && QI.currentActiveCategories!=QuickFolders.FolderCategory.INIT) {
         util.logDebugOptional('categories', "forcing selectCategory");
         let bkCat = QI.currentActiveCategories; // force redraw by deleting it
         QI._selectedCategories = null;
@@ -867,7 +867,9 @@ var QuickFolders = {
 			let types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
 			// [Bug 26560] add text/plain
-			if (contentType=="text/x-moz-folder" || contentType=="text/unicode" || contentType=="text/plain" || contentType=="text/x-moz-newsfolder" || contentType=="text/currentfolder") { // only allow folders or  buttons!
+      // only allow folders or  buttons!
+			if (["text/x-moz-folder", "text/x-moz-newsfolder", "text/currentfolder", 
+          "text/unicode",  "text/plain"].includes (contentType))  { 
 				dragSession.canDrop = true;
 			}
 			else {
@@ -1348,7 +1350,6 @@ var QuickFolders = {
 				// somehow, this creates a duplication in linux
 				// delete previous drag folders popup!
         if (button.id && button.id =="QuickFolders-quickMove" || button.id =="QuickFolders-readingList") {
-					if (prefs.isDebugOption('dnd')) debugger;
 					dragSession.canDrop = false;
 					if (dragSession.dataTransfer.items.length) {
 						let firstItem = dragSession.dataTransfer.items[0];
@@ -1363,15 +1364,19 @@ var QuickFolders = {
         }
 
 				if (button.tagName === "toolbarbutton") {
+          let node = dragSession.sourceNode;
+          let isDragButton = node && node.tagName=="toolbarbutton";
           // new quickMove
 					// highlight drop target
 					if (dragSession.numDropItems==1) {
-						if (dragSession.isDataFlavorSupported("text/unicode")
-							  ||
-							  dragSession.isDataFlavorSupported("text/plain")) {
+            // dragging buttons onlY?
+            if (isDragButton &&
+                  (dragSession.isDataFlavorSupported("text/unicode")
+                  ||
+                  dragSession.isDataFlavorSupported("text/plain"))
+                ) {
               // show reordering target position!
               // right or left of current button! (try styling button with > OR < to show on which side the drop will happen)
-              let node = dragSession.sourceNode;
 
               // find out whether drop target button is right or left from source button:
               if (node && node.hasAttributes()) {
@@ -1436,7 +1441,7 @@ var QuickFolders = {
 					if(isFlavorMail || isFlavorFolder)  // MOVE FOLDER support
 					try {
 						//close any other context menus
-						if (isFlavorUnicode) {
+						if (isDragButton) { // was isFlavorUnicode
 							removeLastPopup(QuickFolders_globalHidePopupId, this.doc);
 							return;  // don't show popup when reordering tabs
 						}
@@ -1665,36 +1670,142 @@ var QuickFolders = {
 					lastAction = "",
 					types = Array.from(evt.dataTransfer.mozTypesAt(0)),
           contentType = types[0];
-          
+
+      const isDropMail = (types.includes("text/x-moz-message"));
+      const isDropFolder = (types.includes("text/x-moz-folder"));
+      const isDropButton = (evt.targetNode && evt.targetNode.tagName=="toolbarbutton");
+    
       // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
       if (DropTarget) {
         DropTarget.classList.remove("dragover");
-      }      
-
-          
+      }
+      
 			if (prefs.isDebugOption("dnd")) debugger;
       try {
-        util.logDebugOptional("dnd", "buttonDragObserver.drop flavour=" + contentType);
+        util.logDebugOptional("dnd", "buttonDragObserver.drop flavour (types[0])=" + contentType);
         util.logToConsole("dragSession = ", dragSession);
       } catch(ex) { util.logDebugOptional("dnd", ex); }
 			QuickFolders_globalHidePopupId = "";
 
-      let isPreventDefault = true,
-          isMoveFolderQuickMove = false;
-			switch (contentType) {
-				case  "text/x-moz-folder": 
-          evt.preventDefault();
-          evt.stopPropagation();
-          // [issue 75] support moving folders through quickMove
-          if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
-            isMoveFolderQuickMove = true;
+      let isMoveFolderQuickMove = false;
+
+      if (isDropMail || isDropFolder) {
+        evt.preventDefault();
+        evt.stopPropagation();
+      }
+
+      if (isDropMail) {
+        // check license restrictions...
+        if (DropTarget.getAttribute("disabled")) {
+          let msg="", maxTabs;
+          if (!util.hasValidLicense()) { // max tab
+            maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
+            msg = util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
           }
-					if (!isShift && !isMoveFolderQuickMove) {
-            let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
-                "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
-            util.alert(sPrompt);
-            break;
-					}
+          else if (util.hasStandardLicense()) {
+            maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
+            msg = util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
+          }
+          if (msg) {
+            util.popupRestrictedFeature("tabs>" + maxTabs, msg, 2);
+            QuickFolders.Interface.viewSplash(msg);
+            return; // early exit
+          }
+        }
+        // =========== mail processing
+        let messageUris = [],
+        sourceFolder = null,
+        txtUris ='';
+        if (types.includes("text/x-moz-message")) {
+          lastAction = "get data from event.dataTransfer"
+          for (let i=0; i < evt.dataTransfer.mozItemCount; i++) {
+            let messageUri = evt.dataTransfer.mozGetDataAt("text/x-moz-message", i);
+            txtUris += 'dataTransfer [' + i + '] ' + messageUri + '\n';
+            messageUris.push(messageUri);
+          }
+          util.logDebugOptional('dnd', txtUris);
+        }
+        
+        lastAction = "Determine sourceFolder from 1st dropped mail";
+        // note: get CurrentFolder fails when we are in a search results window!!
+        // [Bug 25204] => fixed in 3.10
+        
+        let msgHdr = messenger.msgHdrFromURI(messageUris[0].toString());
+        sourceFolder = msgHdr.folder;
+        //let virtual = util.isVirtual(sourceFolder);
+        if (!sourceFolder) { sourceFolder = util.CurrentFolder; }
+        
+        // handler for dropping messages
+        lastAction = "drop action payload";
+        // quickMove menu
+        if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
+          util.logDebugOptional("dnd", "drop: quickMove button - added " + messageUris.length + " message URIs");
+          // copy message list into "holding area"
+          while (messageUris.length) {
+            let newUri = messageUris.pop();
+            QuickFolders.quickMove.add(newUri, sourceFolder, evt.ctrlKey); // CTRL = copy
+          }
+          QuickFolders.quickMove.update();
+          return;
+        }
+        
+        // reading List menu
+        if (DropTarget.id && DropTarget.id =="QuickFolders-readingList") {
+          let bm = QuickFolders.bookmarks;
+          util.logDebugOptional("dnd", "drop: readingList button - added " + messageUris.length + " message URIs");
+          // copy message list 
+          while (messageUris.length) {
+            let newUri = messageUris.pop();
+            // addMail can cause removal of an invalid item (sets bookmarks.dirty = true)
+            // this will cause a reload in order to rebuild the menu
+            bm.addMail(newUri, sourceFolder);
+          }
+          bm.persist(); // only 1 save is more efficient.
+          return;
+        }
+        
+        try {
+          util.logDebugOptional("dnd", "drop: " + messageUris.length + " messageUris to " + targetFolder.URI);
+          if (messageUris.length > 0) {
+            
+            lastAction = "moveMessages";
+            let msgList = await util.moveMessages(
+              targetFolder,
+              messageUris,
+              dragSession.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY
+            );
+            if (QuickFolders.FilterWorker.FilterMode && QuickFolders.FilterWorker.FilterModeLegacy) {
+              lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
+              await QuickFolders.FilterWorker.createFilterAsync(sourceFolder, targetFolder, msgList, false);
+            }
+          }
+
+        }
+        catch(e) {QuickFolders.LocalErrorLogger("Exception in drop -" + lastAction + "... " + e); };
+        // close any top level menu items after message drop!
+
+        //hide popup's menus!
+        util.logDebug ("buttonDragObserver.drop DropTarget = " + DropTarget.tagName + 
+          + (DropTarget.id ? '[' + DropTarget.id + ']' : '')
+          + '  Target Folder:' + targetFolder.name );
+
+        QI.collapseParentMenus(DropTarget);
+
+        if (evt.shiftKey) {
+          QuickFolders_MySelectFolder(targetFolder.URI);
+        }
+  
+      } else if (isDropFolder) {
+        // was "text/x-moz-folder"
+        // [issue 75] support moving folders through quickMove
+        if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
+          isMoveFolderQuickMove = true;
+        }
+        if (!isShift && !isMoveFolderQuickMove) {
+          let sPrompt = util.getBundleString("qfMoveFolderOrNewTab", 
+              "Please drag new folders to an empty area of the toolbar! If you want to MOVE the folder, please hold down SHIFT while dragging.");
+          util.alert(sPrompt);
+        } else {
 					// handler for dropping folders
 					try {
 						if (evt.dataTransfer && evt.dataTransfer.mozGetDataAt) { 
@@ -1730,163 +1841,14 @@ var QuickFolders = {
 					}
 					catch(e) {
             QuickFolders.LocalErrorLogger("Exception in QuickFolders.drop:" + e); 
-           };
-					break;
-				case  "text/x-moz-message":
-				  // use dropData to retrieve the messages!
-					// http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#823
-					let messageUris = [],
-							sourceFolder = null,
-							txtUris ='',
-							dt = evt.dataTransfer,
-					    types = dt.mozTypesAt(0);
-          evt.preventDefault();
-          evt.stopPropagation();
-        
-          if (DropTarget.getAttribute("disabled")) {
-            let msg="", maxTabs;
-            if (!util.hasValidLicense()) { // max tab
-              maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
-              msg = util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
-            }
-            else if (util.hasStandardLicense()) {
-              maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
-              msg = util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
-            }
-            if (msg) {
-              util.popupRestrictedFeature("tabs>" + maxTabs, msg, 2);
-              QuickFolders.Interface.viewSplash(msg);
-              return;
-            }
-          }
-							
-					if (types.contains("text/x-moz-message")) {
-					  lastAction = "get data from event.dataTransfer"
-						for (let i=0; i < dt.mozItemCount; i++) {
-							let messageUri = dt.mozGetDataAt("text/x-moz-message", i);
-							txtUris += 'dataTransfer [' + i + '] ' + messageUri + '\n';
-							messageUris.push(messageUri);
-						}
-						util.logDebugOptional('dnd', txtUris);
-					}
-					else {  // legacy code
-						util.logDebugOptional('dnd', 'LEGACY drag+drop code: using dragSession!');
-						let trans = Cc["@mozilla.org/widget/transferable;1"].createInstance(Ci.nsITransferable);
-					  lastAction = "iterate dragSession"
-						//alert('trans.addDataFlavor: trans=' + trans + '\n numDropItems=' + dragSession.numDropItems);
-						trans.addDataFlavor("text/x-moz-message");
+          };
+        }
+      } else if (isDropButton) {  // reordering button positions
+        // was "text/unicode"
+        let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
+        QuickFolders.Model.insertAtPosition(buttonURI, DropTarget.folder.URI, "");        
 
-						for (let i = 0; i < dragSession.numDropItems; i++) {
-							//alert('dragSession.getData ... '+(i+1));
-							dragSession.getData (trans, i);
-							let dataObj = new Object(),
-									flavour = new Object(),
-									len = new Object();
-							if (debugDragging ) util.alert('trans.getAnyTransferData ... '+(i+1));
-							try {
-								trans.getAnyTransferData(flavour, dataObj, len);
-
-								if (flavour.value === "text/x-moz-message" && dataObj) {
-
-									dataObj = dataObj.value.QueryInterface(Ci.nsISupportsString);
-									if (debugDragging ) util.alert('getting data from dataObj...');
-									let messageUri = dataObj.data.substring(0, len.value);
-
-									if (debugDragging ) util.alert('messageUris.push: messageUri=' + messageUri) ;
-									messageUris.push(messageUri);
-								}
-							}
-							catch (e) {
-								QuickFolders.LocalErrorLogger("Exception in drop item " + i + " of " + dragSession.numDropItems + "\nException: " + e);
-							}
-						}
-					}
-          
-          lastAction = "Determine sourceFolder from 1st dropped mail";
-          // note: get CurrentFolder fails when we are in a search results window!!
-          // [Bug 25204] => fixed in 3.10
-          
-          let msgHdr = messenger.msgHdrFromURI(messageUris[0].toString());
-          sourceFolder = msgHdr.folder;
-          //let virtual = util.isVirtual(sourceFolder);
-          if (!sourceFolder) {
-            sourceFolder = util.CurrentFolder;
-          }
-          
-					// handler for dropping messages
-					lastAction = "drop action payload";
-          
-          // quickMove menu
-          if (DropTarget.id && DropTarget.id =="QuickFolders-quickMove") {
-            util.logDebugOptional("dnd", "drop: quickMove button - added " + messageUris.length + " message URIs");
-            // copy message list into "holding area"
-            while (messageUris.length) {
-              let newUri = messageUris.pop();
-              QuickFolders.quickMove.add(newUri, sourceFolder, evt.ctrlKey); // CTRL = copy
-            }
-            QuickFolders.quickMove.update();
-            return;
-          }
-          
-          // reading List menu
-          if (DropTarget.id && DropTarget.id =="QuickFolders-readingList") {
-            let bm = QuickFolders.bookmarks;
-            util.logDebugOptional("dnd", "drop: readingList button - added " + messageUris.length + " message URIs");
-            // copy message list 
-            while (messageUris.length) {
-              let newUri = messageUris.pop();
-              // addMail can cause removal of an invalid item (sets bookmarks.dirty = true)
-              // this will cause a reload in order to rebuild the menu
-              bm.addMail(newUri, sourceFolder);
-            }
-            bm.persist(); // only 1 save is more efficient.
-            
-            return;
-          }
-          
-					try {
-						util.logDebugOptional("dnd", "drop: " + messageUris.length + " messageUris to " + targetFolder.URI);
-						if (messageUris.length > 0) {
-							
-							lastAction = "moveMessages";
-							let msgList = await util.moveMessages(
-								targetFolder,
-								messageUris,
-								dragSession.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY
-							);
-							if (QuickFolders.FilterWorker.FilterMode && QuickFolders.FilterWorker.FilterModeLegacy) {
-                lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
-                await QuickFolders.FilterWorker.createFilterAsync(sourceFolder, targetFolder, msgList, false);
-							}
-						}
-
-					}
-					catch(e) {QuickFolders.LocalErrorLogger("Exception in drop -" + lastAction + "... " + e); };
-					// close any top level menu items after message drop!
-
-					//hide popup's menus!
-					util.logDebug ("buttonDragObserver.drop DropTarget = " + DropTarget.tagName + 
-            + (DropTarget.id ? '[' + DropTarget.id + ']' : '')
-            + '  Target Folder:' + targetFolder.name );
-
-					QI.collapseParentMenus(DropTarget);
-
-					if (evt.shiftKey) {
-						QuickFolders_MySelectFolder(targetFolder.URI);
-					}
-
-					break;
-        case "text/plain":    // newsgroup names
-				case "text/unicode":  // dropping another tab on this tab inserts it before
-          evt.preventDefault();
-          evt.stopPropagation();
-          // let buttonURI = dropData.data;
-          let buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
-					QuickFolders.Model.insertAtPosition(buttonURI, DropTarget.folder.URI, "");
-					break;
-        default:
-          isPreventDefault = false;
-			}
+      }
       util.logDebugOptional('dnd',"completed buttonDragObserver.drop() !\n==========================");
 		},
 

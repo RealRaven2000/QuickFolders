@@ -583,7 +583,7 @@ QuickFolders.Util = {
       if (tab) {
         let tabMode = this.getTabMode(tab);
         util.logDebugOptional ("mailTabs", "ensureFolderViewTab - current tab mode: " + tabMode);
-        if (tabMode != "folder") { 
+        if (tabMode != "folder" && tabMode != "mail3PaneTab") { 
           // move focus to a messageFolder view instead!! otherwise TB3 would close the current message tab
           // switchToTab
           // iterate tabs

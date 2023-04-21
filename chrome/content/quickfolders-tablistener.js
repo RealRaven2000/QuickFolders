@@ -106,7 +106,7 @@ QuickFolders.TabListener = {
   
   closeTab: function(evt) {
     let tabmail = document.getElementById("tabmail");
-    if (["folder","message"].includes(evt.detail.tabInfo.mode.type)) {
+    if (["folder","message","mail3PaneTab"].includes(evt.detail.tabInfo.mode.type)) {
       let info = evt.detail.tabInfo;
       QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.closeTab() - " + info.title);
       QuickFolders.Interface.storeTabSession("remove", info);
@@ -116,7 +116,7 @@ QuickFolders.TabListener = {
   newTab: function(evt) {
     let tabmail = document.getElementById("tabmail");
     // evt.detail.tabInfo.tabId 
-    if (["folder","message"].includes(evt.detail.tabInfo.mode.type)) {
+    if (["folder","message","mail3PaneTab"].includes(evt.detail.tabInfo.mode.type)) {
       let newIndex = evt.detail.tabInfo.tabId;
       QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.newTab()  - newIndex = " + newIndex);
       let newTabInfo = tabmail.tabInfo.find(e => e == evt.detail.tabInfo);

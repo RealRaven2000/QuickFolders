@@ -288,8 +288,9 @@ QuickFolders.bookmarks = {
       if (hdr) {
         try {
           let label = util.getFriendlyMessageLabel(hdr);
-          if (showFolder && sourceFolder)
+          if (showFolder && sourceFolder) {
             label = sourceFolder.prettyName + chevron + label;
+          }
           let entry = 
             { 
               Uri:newUri, 

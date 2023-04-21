@@ -1476,7 +1476,7 @@ QuickFolders.Interface = {
           info.QuickFoldersCategory = QuickFolders.Interface.currentActiveCategories;
         }
         // try to match all existing entries
-        if (mode=="folder" || mode=="message") {
+        if (["message", "folder", "mail3PaneTab"].includes(mode)) {
           let catInfo = tabSession[s];
           if (catInfo.mode == mode) {
             info.QuickFoldersCategory = catInfo.categories
@@ -1568,7 +1568,7 @@ QuickFolders.Interface = {
 			let tab = util.getTabInfoByIndex(tabmail, idx),
 			    tabMode = util.getTabMode(tab);
 			if (tab &&
-			    (tabMode == "folder" || tabMode == "message")) {
+			    (["message", "folder", "mail3PaneTab"].includes (tabMode) )) {
 				tab.QuickFoldersCategory = QI.currentActiveCategories; // store list!
 				// setTabValue does not exist (yet)
 				//if (sessionStoreManager.setTabValue)
@@ -7270,15 +7270,18 @@ QuickFolders.Interface = {
     util.popupRestrictedFeature("pasteFolderEntries", "", 2); // standard feature
     if (!util.hasValidLicense()) return;
         
+    trans.init(null);
     trans.addDataFlavor("text/unicode");
+    trans.addDataFlavor("text/plain");
     var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
     
-    if (Services.clipboard) 
+    if (Services.clipboard) {
       Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);
-    trans.getTransferData("text/unicode", str, strLength);
+			trans.getTransferData("text/plain", str, strLength);
+		}
     
     
-    if (str) {
+    if (str && str.value) { // make sure object is not empty
       let pastetext = str.value.QueryInterface(Components.interfaces.nsISupportsString).data;
       strFoldersPretty = pastetext.toString();
     }

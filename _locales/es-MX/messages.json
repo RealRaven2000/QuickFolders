@@ -239,7 +239,10 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1}Actualmente estoy trabajando en la conversión del complemento QuickFolders para la nueva interfaz de usuario de Thunderbird SuperNova. Esto se implementará en la próxima versión principal de Thunderbird 115 en el verano de 2023.{P2} {P1}Puede leer sobre el progreso actual de este trabajo aquí: [issue 351]{P2} {P1} Este trabajo está financiado exclusivamente por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar QuickFolders en el futuro{P2}"
+    "message": "{P1}Actualmente estoy trabajando en la conversión del complemento QuickFolders para la nueva interfaz de usuario de Thunderbird SuperNova. Esto se implementará en la próxima versión principal de Thunderbird 115 en el verano de 2023.{P2} {P1}Puede leer sobre el progreso actual de este trabajo aquí: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Este trabajo está financiado exclusivamente por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar QuickFolders en el futuro"
   },
   "ongoing-work": {
     "message": "Las modificaciones para convertir $addonName$ al nuevo modelo de programación tomaron semanas y resultaron costosas. Hay muchos más cambios para la próxima versión 2022. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto.",

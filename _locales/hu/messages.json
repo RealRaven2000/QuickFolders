@@ -216,7 +216,10 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1}Jelenleg a QuickFolders Addon konvertálásán dolgozom az új Thunderbird SuperNova UI-hoz. Ezt a Thunderbird 115 következő nagyobb verziójában, 2023 nyarán implementálják.{P2} {P1}A munka jelenlegi állásáról itt olvashat: [issue 351]{P2} {P1} Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást{P2}"
+    "message": "{P1}Jelenleg a QuickFolders Addon konvertálásán dolgozom az új Thunderbird SuperNova UI-hoz. Ezt a Thunderbird 115 következő nagyobb verziójában, 2023 nyarán implementálják.{P2} {P1}A munka jelenlegi állásáról itt olvashat: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást."
   },
   "ongoing-work": {
     "message": "A $addonName$ konvertálásának új programozási modellvé történő átalakítása hetekig tartott és költséges volt. Sokkal több változás van a következő 2022-es verzióra. Egy ilyen összetett kiegészítő mellett a drága munka elkerülhetetlenné válik. Kérem, segítsen ebben.",

@@ -233,7 +233,10 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}Trenutno delam na pretvorbi dodatka QuickFolders za novi uporabniški vmesnik Thunderbird SuperNova. To bo implementirano v naslednji večji različici Thunderbird 115 poleti 2023.{P2} {P1}Tukaj si lahko preberete o trenutnem napredku tega dela: [issue 351]{P2} {P1} To delo je izključno financirano s prodajo licenc razmislite o nakupu licence ali obnovitvi prejšnje, če vas zanima uporaba QuickFolders v prihodnosti{P2}"
+    "message": "{P1}Trenutno delam na pretvorbi dodatka QuickFolders za novi uporabniški vmesnik Thunderbird SuperNova. To bo implementirano v naslednji večji različici Thunderbird 115 poleti 2023.{P2} {P1}Tukaj si lahko preberete o trenutnem napredku tega dela: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "To delo je izključno financirano s prodajo licenc razmislite o nakupu licence ali obnovitvi prejšnje, če vas zanima uporaba QuickFolders v prihodnosti."
   },
   "ongoing-work": {
     "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",

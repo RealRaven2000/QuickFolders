@@ -256,7 +256,10 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1}I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird SuperNova UI. This will be implemented in the next major version of Thunderbird 115 in Summer 2023.{P2} {P1}You can read up on the current progress of this work here: [issue 351]{P2} {P1}As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using QuickFolders in the future{P2}"
+    "message": "{P1}I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird SuperNova UI. This will be implemented in the next major version of Thunderbird 115 in Summer 2023.{P2} {P1}You can read up on the current progress of this work here: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using QuickFolders in the future."
   },
   "ongoing-work": {
     "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",

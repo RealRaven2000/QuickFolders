@@ -54,13 +54,9 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           util.logDebug("Storing Path: " + lastPath);
           prefs.setStringPref('files.path', lastPath);
 
-          const {OS} = (typeof ChromeUtils.import == "undefined") ?
-            Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-            ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
-
           //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           try {
-            return OS.File.read(path, { encoding: "utf-8" }); //  returns promise for Uint8Array
+            return IOUtils.read(path, { encoding: "utf-8" }); //  returns promise for Uint8Array
           }
           catch(reason) {
             util.logDebug ('read() - Failure: ' + reason);
@@ -81,20 +77,16 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           util.logDebug("Storing Path: " + lastPath);
           prefs.setStringPref('files.path', lastPath);
 
-          const {OS} = (typeof ChromeUtils.import == "undefined") ?
-            Components.utils.import("resource://gre/modules/osfile.jsm", {}) :
-            ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
-
           //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           // if (aResult == Ci.nsIFilePicker.returnReplace)
           try {
-            let promiseDelete = await OS.File.remove(path);
+            let promiseDelete = await IOUtils.remove(path);
             util.logDebug ('saveJSON()…');
             // force appending correct file extension!
             if (!path.toLowerCase().endsWith('.json')) {
               path += '.json';
             }
-            let promiseWrite = await OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});
+            let promiseWrite = await IOUtils.writeJSON(path, jsonData, { encoding: "utf-8"});
             util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
           }
           catch(reason) {

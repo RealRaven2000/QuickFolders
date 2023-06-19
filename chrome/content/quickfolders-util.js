@@ -221,6 +221,16 @@ QuickFolders.Util = {
     return (versionComparator.compare(a, b) < 0);
   } , 
     
+  get folderPane() {
+		try {
+      const tabMail = tabmail || document.getElementById("tabmail"),
+      about3Pane = tabMail.currentAbout3Pane;
+      return about3Pane.folderPane; 
+    }
+    catch (ex) {
+      return null;
+    }
+  },
   
   getMail3PaneWindow: function getMail3PaneWindow() {
     let win3pane = Services.wm.getMostRecentWindow("mail:3pane");
@@ -2046,28 +2056,31 @@ allowUndo = true)`
     return folder;
   },
   
-  generateMRUlist: function(ftv) { 
+  generateMRUlist: function() { 
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences,
-          isDebugDetail = prefs.isDebugOption("recentFolders.detail"),
           isDebugPerformance = prefs.isDebugOption("performance"),
-          isTb102 = QuickFolders.Util.versionGreaterOrEqual(QuickFolders.Util.Appversion, "102");
+          MAXRECENT = QuickFolders.Preferences.getIntPref("recentfolders.itemCount");
           
-    let oldestTime = 0,
-        recent = [],
-        items = [],
-        MAXRECENT = QuickFolders.Preferences.getIntPref("recentfolders.itemCount");
+    let items = []
 
     util.logDebugOptional("interface,recentFolders", "generateMRUlist()");
     try {
       // tb102 do the work
-      let recentFolders;
       if (isDebugPerformance) {
         util.stopWatch("start","getMostRecentFolders");
       }
       // see  _populateSpecialSubmenu() at
       // https://searchfox.org/comm-esr102/source/mailnews/base/content/folder-menupopup.js#560
       // this isn't called every time, so Tb does use a cached menu
+
+      let recentFolders = FolderUtils.getMostRecentFolders(
+        MailServices.accounts.allFolders,
+        MAXRECENT,
+        "MRUTime"
+      );
+      /*
+
       if (isTb102) {
         var { FolderUtils } = ChromeUtils.import("resource:///modules/FolderUtils.jsm");
         recentFolders = FolderUtils.getMostRecentFolders(
@@ -2102,6 +2115,9 @@ allowUndo = true)`
       for (let folder of items) {
         folder.__defineGetter__("children", function() { return [];});
       }
+      */
+      items = recentFolders;
+
     }
     catch(ex) {
       util.logException('Exception during generateMRUlist: ', ex);

@@ -104,12 +104,6 @@ QuickFolders.Interface = {
 
 	} ,
 
-	get globalTreeController() {
-		if (typeof gFolderTreeController !== "undefined")
-			return gFolderTreeController;
-		return QuickFolders.Util.getMail3PaneWindow().gFolderTreeController; // fallback
-	} ,
-
 	getUIstring: function getUIstring(id, substitions) {
     return QuickFolders.Util.getBundleString(id, substitions);
 	},
@@ -286,19 +280,10 @@ QuickFolders.Interface = {
       }
     }
     else {
-      recentFolders = util.generateMRUlist(gFolderTreeView);
+      recentFolders = util.generateMRUlist();
     }
 
-    let debugText = "";
-		for (let i = 0; i < recentFolders.length; i++) {
-			let f = recentFolders[i]._folder;
-      FoldersArray.push(f);
-			// FoldersArray.appendElement(f, false);
-      if (prefs.isDebugOption("recentFolders.detail")) {
-        debugText += "\n" + i + ". appended " +  f.prettyName.padEnd(25, " ") + " " + f.URI;
-      }
-		}
-		util.logDebugOptional("recentFolders.detail","Recent Folders Array appended: " +  debugText);
+		FoldersArray = recentFolders;
 
 		let isAlphaSorted =  prefs.getBoolPref("recentfolders.sortAlphabetical");
     if (isProfiling) {
@@ -1258,14 +1243,10 @@ QuickFolders.Interface = {
     // does not need to be high performance, hence we do file check synchronously
     const util = QuickFolders.Util,
           Cc = Components.classes,
-          Cu = Components.utils,
           Ci = Components.interfaces,
 					NSIFILE = Ci.nsILocalFile || Ci.nsIFile,
           model = QuickFolders.Model,
-          ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
-					{OS} = (typeof ChromeUtils.import == "undefined") ?
-						Cu.import("resource://gre/modules/osfile.jsm", {}) :
-						ChromeUtils.import("resource://gre/modules/osfile.jsm", {});
+          ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
 
   	if (QuickFolders.FolderTree) {
 			QuickFolders.FolderTree.loadDictionary();
@@ -1284,10 +1265,11 @@ QuickFolders.Interface = {
         continue;
 			try {
 				folder = model.getMsgFolderFromUri(folderEntry.uri, false);
-        let fileSpec = folderEntry.icon,
-            path = OS.Path.fromFileURI(fileSpec),
-            localFile = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-			  localFile.initWithPath(path);
+				let fileSpec = folderEntry.icon,
+						// path = OS.Path.fromFileURI(fileSpec),
+						localFile = // Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
+						  Services.io.newURI(fileSpec).QueryInterface(Ci.nsIFileURL).file
+				localFile.initWithPath(path);
 			  if (!localFile.exists())  {
           missingIcons.push({path:path, name:this.folderPathLabel(1, folder, 2)} );
           ctMissing++;
@@ -1950,8 +1932,7 @@ QuickFolders.Interface = {
     // If the evt argument is given, we know that a QuickFolder Tab was clicked
     // we can now refresh the popup menu!
     const util = QuickFolders.Util,
-          QI = QuickFolders.Interface,
-					prefs = QuickFolders.Preferences;
+          QI = QuickFolders.Interface;
     let folder = button ? (button.folder || null)  : null;
     if (evt) {
       let evtText;
@@ -2989,14 +2970,14 @@ QuickFolders.Interface = {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
     let folderButton = util.getPopupNode(element),
-		    uri = folderButton.folder.URI,
-				parent = folderButton.folder.parent,
-		    result = null;
+				parent = folderButton.folder.parent;
 
     util.logDebugOptional("interface", "QuickFolders.Interface.onDeleteFolder()");
-    this.globalTreeController.deleteFolder(folderButton.folder);
-		if (parent)
-			QuickFolders_MySelectFolder(parent.URI)
+		const folderPane = util.folderPane;
+		folderPane.deleteFolder(folderButton.folder);
+		if (parent) {
+			QuickFolders_MySelectFolder(parent.URI);
+		}
 
 		// if folder is gone, delete quickFolder [Bug 26514]
 		// if (!QuickFolders.Model.getMsgFolderFromUri(uri, false))
@@ -3008,7 +2989,8 @@ QuickFolders.Interface = {
         folder = util.getPopupNode(element).folder,
 		    theURI = folder.URI;
     util.logDebugOptional("interface", "QuickFolders.Interface.onRenameFolder()");
-    this.globalTreeController.renameFolder(folder);
+    const folderPane = util.folderPane;
+		folderPane.renameFolder(folder);
 	} ,
 
 	onEmptyTrash: function onEmptyTrash(element) {
@@ -3018,7 +3000,8 @@ QuickFolders.Interface = {
 		QuickFolders.compactLastFolderSize = folder.sizeOnDisk;
 		QuickFolders.compactLastFolderUri = folder.URI;
 		QuickFolders.compactReportCommandType = "emptyTrash";
-    this.globalTreeController.emptyTrash(folder);
+    const folderPane = util.folderPane;
+		folderPane.emptyTrash(folder);
     
 		QuickFolders.compactReportFolderCompacted = true; // activates up onIntPropertyChanged event listener
 	} ,
@@ -3027,7 +3010,8 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyJunk()");
-    this.globalTreeController.emptyJunk(folder);
+		const folderPane = util.folderPane;
+		folderPane.emptyJunk(folder);
     this.compactFolder(folder, "emptyJunk");
 	} ,
 
@@ -3035,17 +3019,15 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onDeleteJunk()");
-		if (this.globalTreeController && this.globalTreeController.deleteJunk)
-			this.globalTreeController.deleteJunk(folder);
-		else
-			deleteJunkInFolder();
+		window.deleteJunkInFolder(folder);
 	} ,
 
 	onEditVirtualFolder: function onEditVirtualFolder(element) {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEditVirtualFolder()");
-    this.globalTreeController.editVirtualFolder(folder);
+		const folderPane = util.folderPane;
+		folderPane.editVirtualFolder(folder);
 	} ,
 
 	onFolderProperties: function onFolderProperties(element) {
@@ -3058,8 +3040,8 @@ QuickFolders.Interface = {
 			util.alertButtonNoFolder(btn);
 			return;
 		}
-
-    this.globalTreeController.editFolder(null,folder);
+		const folderPane = util.folderPane;
+		folderPane.editFolder(folder);
 	} ,
 
 	openExternal: function openExternal(aFile) {

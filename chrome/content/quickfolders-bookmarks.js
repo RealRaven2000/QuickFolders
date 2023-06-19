@@ -614,21 +614,16 @@ QuickFolders.bookmarks = {
 
   readStringFile: function readStringFile() {
     // To read content from file
-		const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm");		
-    // To read & write content to file
-    // const {TextDecoder, TextEncoder, OS} = Cu.import("resource://gre/modules/osfile.jsm", {});  
-    
-    let profileDir = OS.Constants.Path.profileDir,
-        path = OS.Path.join(profileDir, "extensions", "quickFoldersBookmarks.json"),
-        // decoder = new TextDecoder(),        // This decoder can be reused for several reads
-        promise = OS.File.read(path, { encoding: "utf-8" }); // Read the complete file as an array - returns Uint8Array 
+    let profileDir = PathUtils.profileDir,
+        path = PathUtils.join(profileDir, "extensions", "quickFoldersBookmarks.json"),
+        promise = IOUtils.readJSON(path, { encoding: "utf-8" }); // Read the complete file as an array - returns Uint8Array 
     return promise;
   } ,
   
   readBookmarksFromJson: function readJson(data) {
     let util = QuickFolders.Util,
         bookmarks = QuickFolders.bookmarks,
-        entries = JSON.parse(data);
+        entries = data;
     util.logDebug ('parsed ' + entries.length + ' entries'); 
     // empty list.
     bookmarks.resetList(false);
@@ -716,21 +711,19 @@ QuickFolders.bookmarks = {
     let util = QuickFolders.Util;
     util.logDebug("bookmarks.save()…");
     try {
-			const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm");		
-
       let bookmarks = this, // closure this
-          profileDir = OS.Constants.Path.profileDir,
-          path = OS.Path.join(profileDir, "extensions", "quickFoldersBookmarks.json"),
-          backPath = OS.Path.join(profileDir, "extensions", "quickFoldersBookmarks.json.bak"),
-          promiseDelete = OS.File.remove(backPath),  // only if it exists
+          profileDir = PathUtils.profileDir,
+          path = PathUtils.join(profileDir, "extensions", "quickFoldersBookmarks.json"),
+          backPath = PathUtils.join(profileDir, "extensions", "quickFoldersBookmarks.json.bak"),
+          promiseDelete = IOUtils.remove(backPath),  // only if it exists
           promiseBackup = promiseDelete.then(
         function () { 
-          util.logDebug ('OS.File.move is next…'); 
-          OS.File.move(path, backPath); 
+          util.logDebug ('IOUtils.move is next…'); 
+          IOUtils.move(path, backPath); 
         },
         function failedDelete(fileError) { 
-          util.logDebug ('OS.File.remove failed for reason:' + fileError); 
-          OS.File.move(path, backPath); 
+          util.logDebug ('IOUtils.remove failed for reason:' + fileError); 
+          IOUtils.move(path, backPath); 
         }
       );
 
@@ -740,7 +733,7 @@ QuickFolders.bookmarks = {
           let outString = JSON.stringify(entity, null, '  '); // prettify
           try {
             // let theArray = new Uint8Array(outString);
-            let promise = OS.File.writeAtomic(path, outString, { encoding: "utf-8"});
+            let promise = IOUtils.writeJSON(path, outString, { encoding: "utf-8"});
             promise.then(
               function saveSuccess(byteCount) {
                 util.logDebug ('successfully saved ' + bookmarks.Entries.length + ' bookmarks [' + byteCount + ' bytes] to file');

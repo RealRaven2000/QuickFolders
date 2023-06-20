@@ -310,7 +310,7 @@
 		<ul id="version-history">
 			<a name="latest">&nbsp;</a>
 				<!--
-    <a name="5.*">&nbsp;</a>
+    <a name="6.*">&nbsp;</a>
     <li>
       <h4>
       <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.* - WIP</a>
@@ -323,6 +323,70 @@
     </li>
     
     -->
+
+    <a name="6.0">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.0 - WIP</a>
+      </h4>
+			<div class="psa announcement">
+				<p>
+					I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird 
+					<a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">User Interface 'Supernova'</a>.
+					This has been implemented in the next major version of Thunderbird 115, which is planned
+					to go public in July 2023.
+					It requires  considerable work of <b>rewriting all elements interacting with the main page</b> 
+					(3pane) of Thunderbird (toolbar buttons, menus, folder tree).
+				</p>
+				<p>
+					You can read up on the current progress of this work here:
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/351">issue 351</a>
+					This work is exclusively funded by the sale of license so if you are interested
+					in using QuickFolders in the future, please consider buying a license or renewing your license.
+					Unlike a Windows Application, frequent work on the code of experimental Add-ons like QuickFolders
+					is inevitable. I have kept this project alive for 14 years now and I would like to
+					continue doing so in the future. Thank you for your kind attention.
+				</p>
+			</div>			
+      <ul>
+        <h4 class="inList">Functionality converted to Thunderbird 115</h4>				
+        <li> 
+					Rewritten QuickFolders toolbar to show in a different element (SuperNove wants all buttons 
+					displayed in their new Unified toolbar). All Folder menus remain as xul items for now as they 
+				  are difficult to recreate in HTML. The new main styling including custom icons in the 
+					QuickFolders tab has been implemented.
+				</li>
+        <li> Recent Folders had to be rewritten. </li>
+        <li> Drag &amp; Drop was broken and had to be fixed. </li>
+
+
+        <h4 class="inList">Issues / Open Points</h4>				
+        <li>
+					 New CSS rules for folder tree icons: as the folder tree has been rewritten as HTML list, 
+					 we cannot use the foldertreeitem.getProperties function to store this information anymore.
+					 Instead we need an new method to store this information separately - and then rules for styling
+					 the folders have to be recreated. This may take a little while - I am considering writing
+					 a tool to extract the information from older versions of Thunderbird (91 or 102) so they can
+					 be migrated to 115 later.
+				</li>
+        <li> 
+					Event listeners in folder tree (drag and drop)
+				</li>
+        <li>
+					Implement main toolbar buttons (Skip Folder, show toolbar, ) as Unified toolbar action buttons
+				</li>
+				<li>
+					Storage of QuickFolders category per tab cannot be done via the session anymore. We are 
+					working on an alternative method of storing this.
+			  </li>
+				<li>
+					The current folder bar needs to be reinjected into the main window (above message header).
+				</li>
+				<li>
+					When a QuickFolders Tab is selected, Thunderbird still needs to scroll the folder tree to that folder.
+				</li>
+      </ul>
+    </li>		
 
     <a name="5.16">&nbsp;</a>
     <a name="5.16.1">&nbsp;</a>
@@ -445,25 +509,6 @@
           </td>            
         </tr>
       </table>
-
-			<div class="psa announcement">
-				<p>
-					I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird 
-					<a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">User Interface 'Supernova'</a>.
-					This will be implemented in the next major version of Thunderbird 115 in Summer 2023.
-					It requires  considerable work of <b>rewriting all elements interacting with the main page</b> 
-					(3pane) of Thunderbird (toolbar buttons, menus, folder tree).
-				</p>
-				<p>
-					You can read up on the current progress of this work here:
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/351">issue 351</a>
-					This work is exclusively funded by the sale of license so if you are interested
-					in using QuickFolders in the future, please consider buying a license or renewing your license.
-					Unlike a Windows Application, frequent work on the code of experimental Add-ons like QuickFolders
-					is inevitable. I have kept this project alive for 14 years now and I would like to
-					continue doing so in the future. Thank you for your kind attention.
-				</p>
-			</div>
 
       <ul>
         <h4 class="inList">Improvements</h4>

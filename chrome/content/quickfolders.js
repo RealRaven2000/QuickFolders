@@ -392,8 +392,6 @@ END LICENSE BLOCK */
 
 */
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-	
 /* GLOBAL VARIABLES */
 var QuickFolders_globalHidePopupId = "",
     QuickFolders_globalLastChildPopup = null,

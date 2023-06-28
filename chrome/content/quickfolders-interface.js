@@ -8,7 +8,6 @@
   END LICENSE BLOCK */
 
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 QuickFolders.Interface = {
@@ -5289,7 +5288,6 @@ QuickFolders.Interface = {
         // make it easy to hit return to jump into folder instead:
         // isSelected = QuickFolders_MySelectFolder(matches[0].uri);
         setTimeout( function() {
-            var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
             let fm = Services.focus;
             fm.setFocus(menupopup, fm.MOVEFOCUS_FIRST + fm.FLAG_SHOWRING);
             let fC = menupopup.firstChild;
@@ -7255,7 +7253,6 @@ QuickFolders.Interface = {
     trans.init(null);
     trans.addDataFlavor("text/unicode");
     trans.addDataFlavor("text/plain");
-    var {Services} = ChromeUtils.import('resource://gre/modules/Services.jsm');
     
     if (Services.clipboard) {
       Services.clipboard.getData(trans, Services.clipboard.kGlobalClipboard);

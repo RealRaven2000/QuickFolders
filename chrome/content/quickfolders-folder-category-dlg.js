@@ -8,8 +8,6 @@
 
   END LICENSE BLOCK */
 
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-  
 var QuickFolders = window.arguments[0];
 
 var CatWin = {

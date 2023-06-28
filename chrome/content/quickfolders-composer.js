@@ -6,8 +6,6 @@
 
   END LICENSE BLOCK */
 
-var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
 // adding getter for main instance as a property
 Object.defineProperty(QuickFolders, "MainQuickFolders", 
 { get : function QF_getMainInstance() {

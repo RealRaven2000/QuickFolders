@@ -1,7 +1,5 @@
 "use strict";
 
-var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
 QuickFolders.AdvancedTab = {
   ADVANCED_FLAGS: QuickFolders.Util.ADVANCED_FLAGS,
   get folder() {

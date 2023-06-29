@@ -612,12 +612,12 @@ QuickFolders.bookmarks = {
     if (btn) btn.collapsed = !isActive;
   } ,
 
-  readStringFile: function readStringFile() {
-    // To read content from file
+  readStringFile: async function readStringFile() {
     let profileDir = PathUtils.profileDir,
-        path = PathUtils.join(profileDir, "extensions", "quickFoldersBookmarks.json"),
-        promise = IOUtils.readJSON(path, { encoding: "utf-8" }); // Read the complete file as an array - returns Uint8Array 
-    return promise;
+        path = PathUtils.join(profileDir, "extensions", "quickFoldersBookmarks.json");
+    if (!(await IOUtils.exists(path))) return null;
+    let data = await IOUtils.readJSON(path, { encoding: "utf-8" }); // Read the complete file as an array - returns Uint8Array 
+    return data;
   } ,
   
   readBookmarksFromJson: function readJson(data) {
@@ -658,53 +658,33 @@ QuickFolders.bookmarks = {
     bookmarks.update();
   } ,
     
-  load: function load() {
+  load: async function load() {
     let util = QuickFolders.Util,
-        bookmarks = QuickFolders.bookmarks; // "this" didn't work
+        bookmarks = QuickFolders.bookmarks; 
     util.logDebug ('bookmarks.load…'); 
-    
-    let promise3;
     try {
-      let promise2 = bookmarks.readStringFile().then (
-        function onSuccess(data) {
-          // populate the bookmarks
-          util.logDebug ('readStringFile() - Success'); 
-          // bookmarks.clearList(); -- clear menu would be better here.
-          bookmarks.readBookmarksFromJson(data);
-        },
-        function onFailure(ex) {
-          util.logDebug ('readStringFile() - Failure: ' + ex); 
-          if (ex.becauseNoSuchFile) {
-            // File does not exist);
-          }
-          else {
-            // Some other error
-            Services.prompt.alert(null, 'QuickFolders - loadCustomMenu', 'Reading the bookmarks file failed\n' + ex);
-          }     
-          // no changes to Entries array
-        }
-      );
-      
-      promise3 = promise2.then(
-        function populateMenu() {
-          util.logDebug ('populateMenu() …'); 
-          let win = QuickFolders.Util.getMail3PaneWindow(),
-              doc = win.document;
-          // QuickFolders.populateMenu(doc);
-          return promise2; // make loadCustomMenu chainable
-        },
-        function onFail(ex) {
-          util.logDebug ('promise2 onFail():\n' + ex); 
-          let win = QuickFolders.Util.getMail3PaneWindow();
-          Services.prompt.alert(null, 'QuickFolders - promise2.then', 'Did not load main menu\n' + ex);
-          return promise2; // make loadCustomMenu chainable
-        }
-      );
+      let data = await bookmarks.readStringFile();
+      if (data) {
+        // populate the bookmarks
+        util.logDebug ("readStringFile() - Success"); 
+        bookmarks.readBookmarksFromJson(data);
+      } else {
+        util.logDebug ("readStringFile() - no data - file doesn't exist"); 
+      }
+      return true;
+    } catch(ex) {
+      if (ex.becauseNoSuchFile) {
+        // File does not exist);
+        util.logDebug ("readStringFile() - exception.becauseNoSuchFile"); 
+      }
+      else {
+        // Some other error
+        Services.prompt.alert(null, 'QuickFolders - loadCustomMenu', 'Reading the bookmarks file failed\n' + ex);
+        // no changes to Entries array
+        util.logException('bookmarks.load()', ex);
+      }     
     }
-    catch(ex) {
-      util.logException('QuickFolders.bookmarks.load()', ex);
-    }
-    return promise3;
+    return false;
   } ,
 
   save: function save()  {
@@ -718,11 +698,11 @@ QuickFolders.bookmarks = {
           promiseDelete = IOUtils.remove(backPath),  // only if it exists
           promiseBackup = promiseDelete.then(
         function () { 
-          util.logDebug ('IOUtils.move is next…'); 
+          util.logDebug ('Backup - IOUtils.move is next…'); 
           IOUtils.move(path, backPath); 
         },
         function failedDelete(fileError) { 
-          util.logDebug ('IOUtils.remove failed for reason:' + fileError); 
+          util.logDebug ('IOUtils.remove failed for reason: ' + fileError); 
           IOUtils.move(path, backPath); 
         }
       );

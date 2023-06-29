@@ -8,7 +8,6 @@
   END LICENSE BLOCK */
 
  
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm"); 
 
 var QuickFolders_ConsoleService = null;
@@ -1397,7 +1396,6 @@ allowUndo = true)`
   
   findMailTab: function findMailTab(tabmail, URL) {
     const util = QuickFolders.Util;
-    var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
     // mail: tabmail.tabInfo[n].browser   
     let baseURL = util.getBaseURI(URL),
         numTabs = util.getTabInfoLength(tabmail);
@@ -2338,7 +2336,6 @@ var QuickFolders_TabURIopener = {
 
 // the following adds the notifyTools API as a util method to communicate with the background page
 // this mechanism will be used to replace legacy code with API calls.
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
 QuickFolders.Util.extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
 Services.scriptloader.loadSubScript(

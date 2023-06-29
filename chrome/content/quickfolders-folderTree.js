@@ -8,8 +8,6 @@
 
   END LICENSE BLOCK */
 	
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
-
 // we shall use a dictionary for the folder customization (minimum version Thunderbird 19 for JSON support)
 
 

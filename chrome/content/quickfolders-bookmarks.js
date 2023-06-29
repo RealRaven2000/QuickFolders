@@ -7,7 +7,6 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 //QuickFolders.Util.logDebug('Defining QuickFolders.bookmarks...');
-var {Services} = ChromeUtils.import("resource://gre/modules/Services.jsm");
 var { MailUtils } = ChromeUtils.import("resource:///modules/MailUtils.jsm");
 var {MailServices} = ChromeUtils.import("resource:///modules/MailServices.jsm");
 

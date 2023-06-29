@@ -10,7 +10,6 @@
 */
 
 //export  {QuickFolders.Preferences};
-var { Services } = ChromeUtils.import("resource://gre/modules/Services.jsm");
 
 QuickFolders.Preferences = {
 	get isDebug() {

@@ -32,14 +32,6 @@ QuickFolders.Interface = {
 	set verticalMenuOffset(o) { this._verticalMenuOffset = o; QuickFolders.Preferences.setIntPref("debug.popupmenus.verticalOffset", o)},
 	get CategoryBox() { return  QuickFolders.Util.$("QuickFolders-Category-Box"); },
 	get FilterToggleButton() { return QuickFolders.Util.$("QuickFolders-filterActive"); },
-	get CurrentFolderTab() {
-    // retrieves the Visible current folder tab - might have to move it in Tb for conversation view
-    return QuickFolders.Util.$("QuickFoldersCurrentFolder");
-  },
-	get CurrentFolderRemoveIconBtn() { return QuickFolders.Util.$("QuickFolders-RemoveIcon");},
-  get CurrentFolderSelectIconBtn() { return QuickFolders.Util.$("QuickFolders-SelectIcon");},
-	get CurrentFolderBar() { return QuickFolders.Util.$("QuickFolders-CurrentFolderTools");},
-	get CurrentFolderFilterToggleButton() { return QuickFolders.Util.$("QuickFolders-currentFolderFilterActive"); },
 	get CogWheelPopupButton () { return QuickFolders.Util.$("QuickFolders-mainPopup"); },
 	get QuickMoveButton () { return QuickFolders.Util.$("QuickFolders-quickMove"); },
   get ReadingListButton () { return QuickFolders.Util.$("QuickFolders-readingList"); },
@@ -53,6 +45,19 @@ QuickFolders.Interface = {
 	get PalettePopup() { return QuickFolders.Util.$("QuickFolders-PalettePopup");},
 	get FindFolderBox() { return QuickFolders.Util.$("QuickFolders-FindFolder");},
   get FindFolderHelp() { return QuickFolders.Util.$("QuickFolders-FindFolder-Help");},
+	
+	// CURRENT FOLDER ELEMENTS
+	get CurrentFolderRemoveIconBtn() { return QuickFolders.Util.document3pane.getElementById("QuickFolders-RemoveIcon");},
+  get CurrentFolderSelectIconBtn() { return QuickFolders.Util.document3pane.getElementById("QuickFolders-SelectIcon");},
+	get CurrentFolderTab() { // visible current folder tab - might have to move it in Tb for conversation view
+    return QuickFolders.Util.document3pane.getElementById ("QuickFoldersCurrentFolder");
+  },
+	get CurrentFolderBar() { 
+		return QuickFolders.Util.document3pane.getElementById ("QuickFolders-CurrentFolderTools");
+	},
+	get CurrentFolderFilterToggleButton() { 
+		return QuickFolders.Util.document3pane.getElementById("QuickFolders-currentFolderFilterActive"); 
+	},
 
   getPreviewButtonId: function getPreviewButtonId(previewId) {
 		switch(previewId) {
@@ -766,7 +771,8 @@ QuickFolders.Interface = {
 
 	updateNavigationBar: function updateNavigationBar(styleSheet) {
     const util = QuickFolders.Util,
-		      prefs = QuickFolders.Preferences;
+		      prefs = QuickFolders.Preferences,
+					styleEngine = QuickFolders.Styles;
           
     let isEvent = styleSheet && typeof styleSheet.target != "undefined"; // did we call this from a event listener?
     if (isEvent) styleSheet = null; // throw away the parameter, it's not what we need!
@@ -792,11 +798,12 @@ QuickFolders.Interface = {
 			if (repairBtn && repairBtn.getAttribute("collapsed")=="false")
 			  repairBtn.setAttribute("tooltiptext", this.getUIstring("qfFolderRepair"));
 
+			// In Thunderbird 115 the style sheet is in a separate document.
 			let toolbar2 = this.CurrentFolderBar;
 			if (toolbar2) {
 				let theme = prefs.CurrentTheme,
-						styleEngine = QuickFolders.Styles,
-						ss = styleSheet || this.getStyleSheet(styleEngine, "quickfolders-layout.css", "QuickFolderStyles"),
+						doc3pane = QuickFolders.Util.document3pane,
+						ss = this.getStyleSheet(doc3pane, "quickfolders-layout.css", "QuickFolderStyles"),
 						background = prefs.getStringPref("currentFolderBar.background"),
             presetChoice = prefs.getStringPref("currentFolderBar.background.selection"); // needed for fill!
 				styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools", "background-image", background, true);
@@ -877,9 +884,25 @@ QuickFolders.Interface = {
 
 	} ,
 
+	liftNavigationbar: function () {
+    // access all browsers in 3pane:
+		debugger;
+		QuickFolders.Util.logDebug("liftNavigationbar()");
+		
+		// let messagePane = document3pane.querySelector("#messagePane");
+		let document3pane = QuickFolders.Util.document3pane;
+		let navigationContainer = document3pane.getElementById("QuickFolders-PreviewToolbarPanel");
+		//  document3pane.querySelector("#threadPane");
+		let threadPane = QuickFolders.Util.threadPane;
+		threadPane.append(navigationContainer);
+		// in "Vertical View" layout, we should inject the toolbar as first element of the threadPane instead:
+		// threadPane.prepend(navigationContainer);
+
+
+	},
+
 	updateCategoryLayout: function updateCategoryLayout() {
     const prefs = QuickFolders.Preferences,
-					util = QuickFolders.Util,
 					FCat = QuickFolders.FolderCategory,
 					model = QuickFolders.Model;
 		let cat = this.CategoryMenu,
@@ -1016,7 +1039,6 @@ QuickFolders.Interface = {
 		QuickFolders.Interface.updateCategoryLayout(); // hide or show.
 	} ,
 
-	// moved from options.js!
 	updateMainWindow: function updateMainWindow(minimal) {
 		function logCSS(txt) {
 			util.logDebugOptional("css", txt);
@@ -1870,10 +1892,12 @@ QuickFolders.Interface = {
             let offset = prefs.isShowRecentTab ? shortcut+1 : shortcut,
                 button = this.buttonsByOffset[offset - 1];
             if(button) {
-              if(isShift)
+              if(isShift) {
                 MsgMoveMessage(button.folder);
-              else
+							}
+              else {
                 this.onButtonClick(button,e,false);
+							}
             }
           }
         }
@@ -2651,7 +2675,8 @@ QuickFolders.Interface = {
     util.logDebugOptional("interface", "QuickFolders.Interface.openFolderInNewTab()");
 		if (tabmail) {
 		  let tabName = folder.name;
-      tabmail.openTab("folder", {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
+			// was: tabmail.openTab("folder", {folder: folder, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
+      tabmail.openTab("mail3PaneTab", {folderURI:folder.URI, messagePaneVisible: true, background: false, disregardOpener: true, title: tabName} );
 		}
 	} ,
 
@@ -3259,12 +3284,26 @@ QuickFolders.Interface = {
 			);
 	},
 
-	onSearchMessages: function onSearchMessages(element) {
-		let util = QuickFolders.Util,
-        folder = util.getPopupNode(element).folder;
-    util.logDebugOptional("interface", "QuickFolders.Interface.onSearchMessages() folder = " + folder.prettyName);
+	onSearchMessages: async function onSearchMessages(element) {
+		let folder = QuickFolders.Util.getPopupNode(element).folder;
+		QuickFolders.Util.logDebugOptional("interface", "QuickFolders.Interface.onSearchMessages() folder = " + folder.prettyName);
 		// Tb:  // gFolderTreeController.searchMessages();
-		MsgSearchMessages(folder);
+		// MsgSearchMessages(folder);
+		let cmdController = top.controllers.getControllerForCommand("cmd_searchMessages");
+		// cmdController?.doCommand("cmd_searchMessages", folder); // why is folder parameter not transmitted??
+		// QuickFolders.Util.logTb115("onSearchMessages()");
+		
+		top.openDialog(
+			"chrome://messenger/content/SearchDialog.xhtml",
+			"_blank",
+			"chrome,resizable,status,centerscreen,dialog=no",
+			{ folder }
+		);
+
+		// TEST: Get a MailFolder from an nsIMsgFolder:
+		// we cannot pass this object directly. Can we convert it?
+		// let mf = await messenger.Utilities.getMailFolder(folder);
+		// QuickFolders.Util.notifyTools.notifyBackground({ func: "searchMessages", folder: mf });
 	} ,
 
 	// forceOnCommand use the "old" way of oncommand attribute for QF options dialog
@@ -5916,8 +5955,8 @@ QuickFolders.Interface = {
 		// ==> must become palette type aware as well!
     if (this.PaintModeActive) {
       this.initHoverStyle(
-               this.getStyleSheet(QuickFolders.Styles, "quickfolders-layout.css", "QuickFolderStyles"),
-               this.getStyleSheet(QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes"),
+               this.getStyleSheet(document, QuickFolders.Styles, "quickfolders-layout.css", "QuickFolderStyles"),
+               this.getStyleSheet(document, QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes"),
                true);
     }
 	} ,
@@ -5962,14 +6001,14 @@ QuickFolders.Interface = {
       el.className = el.className.replace(/(col[0-9]+)/,"$1striped");
   },
 
-	ensureStyleSheetLoaded: function ensureStyleSheetLoaded(Name, Title)	{
+	ensureStyleSheetLoaded: function ensureStyleSheetLoaded(doc, Name, Title)	{
     const Cc = Components.classes,
 		      Ci = Components.interfaces,
 					util = QuickFolders.Util;
 		try {
 			util.logDebugOptional("css","ensureStyleSheetLoaded(Name: " + Name + ", Title: " + Title + ")" );
 
-			QuickFolders.Styles.getMyStyleSheet(Name, Title); // just to log something in console window
+			QuickFolders.Styles.getMyStyleSheet(doc, Name, Title); // just to log something in console window
 
 			let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(Ci.nsIStyleSheetService),
 			    ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
@@ -5988,15 +6027,15 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	getStyleSheet: function getStyleSheet(engine, Name, Title) {
-		let sheet = QuickFolders.Styles.getMyStyleSheet(Name, Title); // ignore engine
+	getStyleSheet: function (doc, Name, Title) {
+		let sheet = QuickFolders.Styles.getMyStyleSheet(doc, Name, Title); 
 		if (!sheet) {
-			QuickFolders.Interface.ensureStyleSheetLoaded(Name, Title);
-			sheet = QuickFolders.Styles.getMyStyleSheet(Name, Title);
+			QuickFolders.Interface.ensureStyleSheetLoaded(doc, Name, Title);
+			sheet = QuickFolders.Styles.getMyStyleSheet(doc, Name, Title);
 		}
 
 		if (!sheet) {
-			sheet = QuickFolders.Styles.getMyStyleSheet(Name, Title);
+			sheet = QuickFolders.Styles.getMyStyleSheet(doc, Name, Title);
 			QuickFolders.Util.logToConsole("ensureStyleSheetLoaded() - missing style sheet '" +  Name + "' - not found = not attempting any style modifications.");
 		}
 		return sheet;
@@ -6240,17 +6279,17 @@ QuickFolders.Interface = {
 	// Get all blingable elements and make them look user defined.
 	updateUserStyles: function updateUserStyles() {
     const util = QuickFolders.Util,
-		      prefs = QuickFolders.Preferences;
+		      prefs = QuickFolders.Preferences,
+					styleEngine = QuickFolders.Styles;
 		try {
 			util.logDebugOptional ("interface","updateUserStyles() " + window.location);
 			// get MAIN STYLE SHEET
-			let styleEngine = QuickFolders.Styles,
-			    ss = this.getStyleSheet(styleEngine, "quickfolders-layout.css", "QuickFolderStyles");
+			let ss = this.getStyleSheet(document, "quickfolders-layout.css", "QuickFolderStyles");
 
 			if (!ss) return false;
 
 			// get PALETTE STYLE SHEET
-			let ssPalettes = this.getStyleSheet(styleEngine, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes");
+			let ssPalettes = this.getStyleSheet(document, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes");
       ssPalettes = ssPalettes ? ssPalettes : ss; // if this fails, use main style sheet.
 			let theme = prefs.CurrentTheme,
 			    tabStyle = prefs.ColoredTabStyle;
@@ -6938,8 +6977,8 @@ QuickFolders.Interface = {
 			}
 		}
 		this.initHoverStyle(
-		         this.getStyleSheet(QuickFolders.Styles, "quickfolders-layout.css", "QuickFolderStyles"),
-		         this.getStyleSheet(QuickFolders.Styles, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes"),
+		         this.getStyleSheet(document, "quickfolders-layout.css", "QuickFolderStyles"),
+		         this.getStyleSheet(document, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes"),
 		         this.PaintModeActive);
 
 		// set cursor!
@@ -6990,12 +7029,11 @@ QuickFolders.Interface = {
 
   // remove animated icons for pro version
   removeAnimations: function removeAnimations(styleSheetName) {
-    const util = QuickFolders.Util,
-          QI = QuickFolders.Interface,
+    const QI = QuickFolders.Interface,
           styleEngine = QuickFolders.Styles;
     
     styleSheetName = styleSheetName || "quickfolders-layout.css";
-    let ss = QI.getStyleSheet(styleEngine, styleSheetName),  // rules are imported from *-widgets.css
+    let ss = QI.getStyleSheet(document, styleSheetName),  // rules are imported from *-widgets.css
         iconSelector = 'menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon, #QuickFolders-Pro .tab-icon';
     styleEngine.removeElementStyle(ss,
                                    iconSelector,

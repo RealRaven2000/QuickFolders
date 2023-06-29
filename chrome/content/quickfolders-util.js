@@ -231,6 +231,14 @@ QuickFolders.Util = {
       return null;
     }
   },
+
+  get document3pane() {
+    return window[3].document;
+  } ,
+
+  get threadPane() {
+    return this.document3pane.querySelector("#threadPane");
+  } ,
   
   getMail3PaneWindow: function getMail3PaneWindow() {
     let win3pane = Services.wm.getMostRecentWindow("mail:3pane");
@@ -1476,7 +1484,6 @@ allowUndo = true)`
     }
   } ,
 
-  // moved from options.js
   // use this to follow a href that did not trigger the browser to open (from a XUL file)
   openLinkInBrowser: function openLinkInBrowser(evt, linkURI) {
     const Cc = Components.classes,
@@ -1496,7 +1503,6 @@ allowUndo = true)`
     }
   },
 
-  // moved from options.js (then called
   openURL: function openURL(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
     if (QuickFolders_TabURIopener.openURLInTab(URL) && null!=evt) {
       if (evt.preventDefault)  evt.preventDefault();
@@ -2278,9 +2284,6 @@ Object.defineProperty(QuickFolders.Util, "Accounts",
   }
 });
 
-/*****************************************************
-// code moved from options.js
-/****************************************************/
 var QuickFolders_TabURIregexp = {
   get _thunderbirdRegExp() {
     delete this._thunderbirdRegExp;
@@ -2331,7 +2334,6 @@ var QuickFolders_TabURIopener = {
     return true;
   }
 };
-/**************** - from options.js ]]] *************/
 
 
 // the following adds the notifyTools API as a util method to communicate with the background page

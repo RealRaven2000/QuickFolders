@@ -304,6 +304,9 @@ async function main() {
       case "updateQuickFilters":
         messenger.runtime.sendMessage("quickFilters@axelg.com", { command: "injectButtonsQFNavigationBar" });
         break;
+      case "searchMessages": // test
+        messenger.messages.list(data.folder);
+        break;
     }
   }
   
@@ -341,20 +344,16 @@ async function main() {
     }
   }  
   
-  let ver = "78",
-      tbVer = getThunderbirdVersion();
-  if (tbVer.major>=91)
-    ver = "91";
-  // console.log("Detected Thunderbird version:", tbVer);
-  
-  
   messenger.WindowListener.registerChromeUrl([ 
       ["content", "quickfolders", "chrome/content/"],
-      ["content", "quickfolders-skins", "chrome/content/skin/tb" + ver + "/"]
+      ["content", "quickfolders-skins", "chrome/content/skin/tb91/"]
   ]);
   
   
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
+  // inject a separate script for current folder toolbar!
+  messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
+
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/qf-composer.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/SearchDialog.xhtml", "chrome/content/scripts/qf-searchDialog.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/qf-customizetoolbar.js");
@@ -369,26 +368,24 @@ async function main() {
   */
   messenger.WindowListener.startListening(); 
   
-  // [issue 296] Exchange account validation
-  if (tbVer.major>=98) {
-    messenger.accounts.onCreated.addListener( async(id, account) => {
-      if (currentLicense.info.status == "MailNotConfigured") {
-        // redo license validation!
-        if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
-        currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
-        await currentLicense.validate();
-        if(currentLicense.info.status != "MailNotConfigured") {
-          if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
-          messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
-          messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: false});
-        }
-        if (isDebugLicenser) console.log("QF license info:", currentLicense.info); // test
+  // [issue 296] Exchange account validation (supported since TB98)
+  messenger.accounts.onCreated.addListener( async(id, account) => {
+    if (currentLicense.info.status == "MailNotConfigured") {
+      // redo license validation!
+      if (isDebugLicenser) console.log("Account added, redoing license validation", id, account); // test
+      currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
+      await currentLicense.validate();
+      if(currentLicense.info.status != "MailNotConfigured") {
+        if (isDebugLicenser) console.log("notify experiment code of new license status: " + currentLicense.info.status);
+        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+        messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: false});
       }
-      else {
-        if (isDebugLicenser) console.log("QF license state after adding account:", currentLicense.info)
-      }
-    });
-  }
+      if (isDebugLicenser) console.log("QF license info:", currentLicense.info); // test
+    }
+    else {
+      if (isDebugLicenser) console.log("QF license state after adding account:", currentLicense.info)
+    }
+  });
 
 }
 

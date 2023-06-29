@@ -8,7 +8,7 @@ END LICENSE BLOCK */
 
 
 QuickFolders.Styles = {
-	getMyStyleSheet: function(Name, Title) {
+	getMyStyleSheet: function(doc, Name, Title) {
     function checkMatch(sheet, href) {
       return (Title && sheet.title == Title)
                 ||
@@ -40,7 +40,7 @@ QuickFolders.Styles = {
     let href, // closured
 		    ssFirstMatch = null, // closured
 		    sList = '',
-		    styleSheetList = document.styleSheets;
+		    styleSheetList = doc.styleSheets;
 		for (let i = 0; i < styleSheetList.length; i++) {
 			let ss = styleSheetList[i];
 			href = ss.href || "";
@@ -60,19 +60,19 @@ QuickFolders.Styles = {
         }
       }
 		}
-    if (ssFirstMatch)
+    if (ssFirstMatch) {
       QuickFolders.Util.logDebugOptional("css.styleSheets",
           "============================================\n"
         + "getMyStyleSheet (" + Name + "," + Title + ") [" + ssFirstMatch.title + "] =" + href
-        + "\nwin.doc.title   =" + window.document.title
-        + "\ndoc.title       =" + document.title
-        + "\nwindow.location =" + window.location
+        + "\ndoc.title       =" + doc.title
+        + "\ndoc.documentURI=" + document.documentURI
         + "\n============================================");
-    else
+		} else {
 			QuickFolders.Util.logDebug("Can not find style sheet: " + Name + " - " + Title + " in "
 			  + (window.closed ? "closed window" : window.location)
-				+ "\nwin.doc.title=" + window.document.title
+        + "\ndoc.title       =" + doc.title
 				+ "\ndoc.documentURI=" + document.documentURI);
+		}
         
 		QuickFolders.Util.logDebugOptional("css.styleSheets", styleSheetList.length + " StyleSheets found:\n" + sList);
 

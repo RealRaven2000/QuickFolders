@@ -22,6 +22,36 @@ QuickFolders.FolderTree = {
     // you need to restart QuickFolders to bypass
     let isEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons')
     try {
+      // Thunderbird 115 uses FolderUtils.getFolderIcon(gFolder); - see about3Pane.js
+
+      /*
+        to overwrite the icon, we can inject a new variable --icon-folder into the contained div.icon element.
+        by default, this is defined in aboutPane3.css with the rule
+
+        #folderTree .icon {
+          background-image: var(--icon-folder);
+        }
+
+        Default folders are defined in
+        https://searchfox.org/comm-central/source/mail/themes/shared/mail/icons.css
+
+        https://searchfox.org/comm-central/rev/ac4e80d2c9e871bec25b5694412933127ca0dd22/mail/base/content/about3Pane.js#3640
+        FolderTreeRow.setIconColor()
+
+        LIST ALL ICON NODES:
+        temp0.querySelectorAll("[is=folder-tree-row] .icon")
+
+        the id contains the full URI: (modeName = {"all" , "smart" , "unread", "favorite", "recent", "tags"})
+                
+        _setURI(uri) {
+          this.id = `${this.modeName}-${btoa(
+            MailStringUtils.stringToByteString(uri)
+          )}`;
+          this.uri = uri;
+          this.setIconColor();
+        }
+
+      */
       // override getCellProperties()
       util.logDebugOptional('folderTree', `QuickFolders.FolderTree.init() Icons enabled = ${isEnabled}`);
       let treeView;
@@ -90,8 +120,8 @@ QuickFolders.FolderTree = {
 			let selector = makeSelector(key);
       if (debugIcons) { util.logDebugOptional('folderTree.icons', 'made selector: ' + selector + '\nvalue: ' + value); }
 			// the folder properties are (or should be) restored by the msf file automatically.
-			styleEngine.setElementStyle(ss, selector, 'list-style-image', value); 
-			styleEngine.setElementStyle(ss, selector, '-moz-image-region',  'rect(0px, 16px, 16px, 0px)'); 
+			QuickFolders.Styles.setElementStyle(ss, selector, 'list-style-image', value); 
+			QuickFolders.Styles.setElementStyle(ss, selector, '-moz-image-region',  'rect(0px, 16px, 16px, 0px)'); 
       // -moz-tree-row: Use this to set the background color of a row.
       // -moz-tree-cell-text: the text in a cell. Use this to set the font and text color.
     }
@@ -104,8 +134,7 @@ QuickFolders.FolderTree = {
     }
     if (!isIcons) return;
     if (!isInjectCSS) return;
-		let styleEngine = QuickFolders.Styles,
-		    ss = QuickFolders.Interface.getStyleSheet(styleEngine, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
+		let ss = QuickFolders.Interface.getStyleSheet(document, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
     util.logDebugOptional('folderTree.icons', 'iterate Dictionary: ' + len + ' items…');
     // should be for..of
     this.dictionary.forEach(
@@ -291,8 +320,6 @@ QuickFolders.FolderTree = {
     const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
 					prefs = QuickFolders.Preferences,
-          styleEngine = QuickFolders.Styles,
-          debugIcons = prefs.isDebugOption('folderTree.icons'),
           isIcons = prefs.getBoolPref('folderTree.icons'),
           isInjectCSS = prefs.getBoolPref('folderTree.icons.injectCSS');
           
@@ -303,7 +330,7 @@ QuickFolders.FolderTree = {
 			return;
 		}
 		let fileURL, fileSpec,
-		    ss = QI.getStyleSheet(styleEngine, "qf-foldertree.css", "QuickFolderFolderTreeStyles"),
+		    ss = QI.getStyleSheet(document,  "qf-foldertree.css", "QuickFolderFolderTreeStyles"),
         // always update current folder toolbar icon?
         currentFolderTab = QI.CurrentFolderTab;
     
@@ -337,8 +364,8 @@ QuickFolders.FolderTree = {
 				folder.setStringProperty("iconURL", cssUri);
 				
 				// overwrite messenger/skin/folderPane.css
-				styleEngine.setElementStyle(ss, selector, 'list-style-image', cssUri, true);  // add !important
-				styleEngine.setElementStyle(ss, selector, '-moz-image-region',  'rect(0px, 16px, 16px, 0px)'); 
+				QuickFolders.Styles.setElementStyle(ss, selector, 'list-style-image', cssUri, true);  // add !important
+				QuickFolders.Styles.setElementStyle(ss, selector, '-moz-image-region',  'rect(0px, 16px, 16px, 0px)'); 
         if (QuickFolders.FolderTree.dictionary) {
           this.addItem(propName, cssUri);
         }
@@ -353,7 +380,7 @@ QuickFolders.FolderTree = {
         // when do we force this to be executed?
 			  util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + ", empty)");
 				util.logDebugOptional('folderTree.icons', 'REMOVING:\n' + selector + ' {\n' + 'list-style-image\n}');
-				styleEngine.removeElementStyle(ss, "treechildren::-moz-tree-image(folderNameCol, " + propName + ")","list-style-image");
+				QuickFolders.Styles.removeElementStyle(ss, "treechildren::-moz-tree-image(folderNameCol, " + propName + ")","list-style-image");
 			  folder.setStringProperty("folderIcon", "noIcon");
 				folder.setStringProperty("iconURL", "");
 			  folder.setForcePropertyEmpty("folderIcon", false); // remove property

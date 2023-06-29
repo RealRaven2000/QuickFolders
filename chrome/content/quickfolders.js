@@ -333,6 +333,11 @@ END LICENSE BLOCK */
     ## - TO DO: new browser action button
     ## - messageServiceFromURI moved to MailServices
     ## - rewrote QI.rebuildSummary() function
+    ## replace deprecated {OS}
+    ## TO DO: find replacement for OS.Path.fromFileURI() - see repairTreeIcons()
+    ## replace IOUtils.read with IOUtils.readJSON where appropriate
+    ## moved navigation bar into 3pane document. (Util.document3pane)
+
     
 
 
@@ -2168,8 +2173,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   // find out if parent folder is smart and collapsed (bug in TB3!)
   // in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
   // therefore, ensureRowIsVisible does not work!
-  let isSelected = false,
-      forceSelect = prefs.isChangeFolderTreeViewEnabled;
+  let forceSelect = prefs.isChangeFolderTreeViewEnabled;
 
   // TB 115
   gTabmail.currentTabInfo.chromeBrowser.contentWindow.displayFolder(folderUri);
@@ -2196,19 +2200,6 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   if (!folderRow) {  // null == folderIndex
     util.logDebugOptional("folders.select","gFolderTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
     about3Pane.displayFolder(folderUri);
-/*
-    let isCompact = folderPane.isCompact;
-    isSelected = gFolderTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
-    folderIndex = gFolderTreeView.getIndexOfFolder(msgFolder);
-    if (null == folderIndex && isCompact) {
-      gFolderTreeView.toggleCompactMode(false);
-      isSelected = gFolderTreeView.selectFolder(msgFolder, forceSelect); // forceSelect
-    }
-    folderIndex = gFolderTreeView.getIndexOfFolder(msgFolder);
-    if (isCompact) {
-      gFolderTreeView.toggleCompactMode(true);
-    }
-    */
   }
   
   util.logDebugOptional("folders.select","folderRow = " + folderRow);
@@ -2286,11 +2277,12 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
       util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..\n" +
         msgFolder.URI);
       // added forceSelect = true
-      gTabmail.currentTabInfo.chromeBrowser.contentWindow.displayFolder(msgFolder.URI);
+      // gTabmail.currentTabInfo.chromeBrowser.contentWindow.displayFolder(msgFolder.URI);
+      // John: gTabmail.currentTabInfo.folder is a setter/getter for the current folder
+      gTabmail.currentTabInfo.folder = msgFolder;
 
       // theTreeView.selectFolder (msgFolder, true);
       QuickFolders.Util.logTb115("ensureRowIsVisible()..");
-      
       // theTreeView._treeElement.treeBoxObject.ensureRowIsVisible(folderIndex);
     }
     catch(e) { util.logException("Exception selecting via treeview: ", e);};

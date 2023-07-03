@@ -72,10 +72,6 @@ notificationbox xbl-notification[value="quickfolders-filter"] {
 	height: auto;
 }
 
-#displayDeck {
-
-}
-
 /* fix some accidental truncations */
 #mail-notification-box notification[value="quickfolders-filter"],
 #pbSearchThresholdNotifcationBar notification[value="quickfolders-filter"] {

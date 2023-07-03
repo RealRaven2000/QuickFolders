@@ -39,7 +39,6 @@
         ]
       },
 
-     
       {
         "name": "showVersionHistory",
         "type": "function",
@@ -97,7 +96,21 @@
             "description": "default value"
           }
         ]
+      },
+
+      {
+        "name": "getMailFolder",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "folder",
+            "type": "object",
+            "description": "nsIMsgFolder"
+          }
+        ]
       }
+
       
    ]
   }

@@ -326,6 +326,14 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             return readData(config);
           else
             return null;
+        },
+
+        // A test function for folder conversion. We need to pass in a nsIMsgFolder
+        // Q: where can this function be called from? We need to pass in a nsIMsgFolder
+        getMailFolder: function(folder) {
+          // convert an nsIMsgFolder to a MailFolder.
+          // see https://webextension-api.thunderbird.net/en/stable/how-to/experiments.html#using-folder-and-message-types
+          return context.extension.folderManager.convert(folder);
         }
        
      }

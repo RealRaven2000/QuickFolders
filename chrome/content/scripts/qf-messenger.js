@@ -141,7 +141,7 @@ async function onLoad(activatedWhileWindowOpen) {
               
                 <menuitem id="QuickFolders-ToolbarPopup-dbg7"
                   label="Lift up Navigation bar"
-                  oncommand="QuickFolders.Interface.liftNavigationbar();" 
+                  oncommand="QuickFolders.Interface.liftNavigationbar(window.gTabmail.currentTabInfo.chromeBrowser.contentDocument);" 
                   class="menuitem-iconic"
                   />
 

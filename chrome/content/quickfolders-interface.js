@@ -230,9 +230,11 @@ QuickFolders.Interface = {
     }
         
 		util.logDebugOptional("recentFolders","createRecentPopup(passedPopup:" + passedPopup + ", isDrag:"+ isDrag +", isCreate:" + isCreate + ")");
+
+		let doc = (popupId == "QuickFolders-folder-popup-Recent-CurrentFolderTool") ? util.document3pane : document;
     
     // purge old menus
-    for (let p of document.querySelectorAll("#" + popupId)) {
+    for (let p of doc.querySelectorAll("#" + popupId)) {
       if (p!=passedPopup)
         p.parentNode.removeChild(p);
     }
@@ -246,7 +248,7 @@ QuickFolders.Interface = {
 			menupopup = passedPopup;
  		}
  		else {
-			menupopup = this.createIconicElement("menupopup","*");
+			menupopup = this.createIconicElement("menupopup","*", doc);
  			menupopup.setAttribute("id",popupId);
  		}
 
@@ -294,7 +296,7 @@ QuickFolders.Interface = {
       let time = util.stopWatch("stop","createRecentPopup");
       console.log(`createRecentPopup - Before calling %caddSubFoldersPopupFromList() ${time} ms`, "background-color: rgb(0,160,40); color:white;");
     }
-		this.addSubFoldersPopupFromList(FoldersArray, menupopup, isDrag, isAlphaSorted, true);
+		this.addSubFoldersPopupFromList(FoldersArray, menupopup, isDrag, isAlphaSorted, true, doc);
 		util.logDebugOptional("recentFolders","=============================\n"
 			+ "createRecentPopup Finished!");
       
@@ -315,7 +317,9 @@ QuickFolders.Interface = {
 				+ ")");
 			let isFolderUpdate = false, //	need this to know if we are creating a fresh button (true) or just rebuild the folders menu on click/drag (false)
 			    isCurrentFolderButton = (passedButton == null ? false : (passedButton.id=="QuickFolders-Recent-CurrentFolderTool")),
-			    button = passedButton || document.createXULElement("toolbarbutton") ;
+					doc = isCurrentFolderButton ? QuickFolders.Util.document3pane : document,
+			    button = passedButton || doc.createXULElement("toolbarbutton");
+
 			if (!passedButton) {
 				isFolderUpdate = true;
 				let recentLabel = QuickFolders.Preferences.getBoolPref("recentfolders.showLabel") ? this.getUIstring("qfRecentFolders") : "";
@@ -422,7 +426,7 @@ QuickFolders.Interface = {
   // in single folder view!
   ensureCurrentFolder: function ensureCurrentFolder() {
     let util = QuickFolders.Util,
-        currentFolderTab = document.getElementById("QuickFoldersCurrentFolder"),
+        currentFolderTab = QuickFolders.Interface.CurrentFolderTab , 
         existsMsgDisplay = (typeof gMessageDisplay != "undefined") ,
         current = !existsMsgDisplay ? null : gMessageDisplay.displayedMessage.folder;
     if (!existsMsgDisplay) {
@@ -450,25 +454,27 @@ QuickFolders.Interface = {
       goDoCommand("cmd_markThreadAsRead");
     }
 		evt.stopPropagation();
-		goDoCommand("button_next");
+		goDoCommand("cmd_nextUnreadMsg");
     this.ensureCurrentFolder();
 	} ,
 
 	onGoPreviousMsg: function onGoPreviousMsg(button, isSingleMessage) {
-		if (button.nextSibling.checked)
+		if (button.nextSibling.checked) {
 			goDoCommand("cmd_previousMsg");
-		else
-			goDoCommand("button_previous");
+		} else {
+			goDoCommand("cmd_previousUnreadMsg");
+		}
 		if (isSingleMessage) {
       this.ensureCurrentFolder();
     }
 	} ,
 
 	onGoNextMsg: function onGoNextMsg(button, isSingleMessage) {
-		if (button.previousSibling.checked)
+		if (button.previousSibling.checked) {
 			goDoCommand("cmd_nextMsg");
-		else
-			goDoCommand("button_next");
+		}	else {
+			goDoCommand("cmd_nextUnreadMsg");
+		}
     // mailTabs.js =>  DefaultController.doCommand(aCommand, aTab);
     // GoNextMessage(nsMsgNavigationType.nextMessage, false);
     // this will eventually call folderDisplay.navigate()
@@ -515,7 +521,7 @@ QuickFolders.Interface = {
 			// GoNextMessage is defined  in msgViewNavigation.js
 			// GoNextMessage(1, true); // nsMsgNavigationType.firstMessage
 			// GoNextMessage(7, true); // nsMsgNavigationType.nextUnreadMessage
-			goDoCommand("button_next");
+			goDoCommand("cmd_nextMsg");
 		}
 	} ,
 
@@ -768,16 +774,18 @@ QuickFolders.Interface = {
 		QuickFolders.Interface.updateUserStyles();
   },
 
-	updateNavigationBar: function updateNavigationBar(styleSheet) {
+	// @doc optional 3pane document. if not passed we need to iterate _all_ 3pane documents
+	updateNavigationBar: function updateNavigationBar(doc3pane) {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					styleEngine = QuickFolders.Styles;
           
-    let isEvent = styleSheet && typeof styleSheet.target != "undefined"; // did we call this from a event listener?
-    if (isEvent) styleSheet = null; // throw away the parameter, it's not what we need!
-    
+		if (!doc3pane || doc3pane.target) { // if called from background, this will be an event
+			doc3pane = QuickFolders.Util.document3pane;  // wrong, but hack for now to use 1st folder tab
+		}
+
 		function collapseConfigItem(id, isShownSetting, checkParent) {
-			let element = util.$(id);
+			let element = doc3pane.getElementById(id);
 			// safeguard for copied ids (such as button-previous / button-next)
 			if (checkParent && element.parentNode.id.indexOf("QuickFolders") < 0)
 				return;
@@ -798,10 +806,10 @@ QuickFolders.Interface = {
 			  repairBtn.setAttribute("tooltiptext", this.getUIstring("qfFolderRepair"));
 
 			// In Thunderbird 115 the style sheet is in a separate document.
-			let toolbar2 = this.CurrentFolderBar;
+			let toolbar2 = // this.CurrentFolderBar
+										 doc3pane.getElementById ("QuickFolders-CurrentFolderTools");
 			if (toolbar2) {
 				let theme = prefs.CurrentTheme,
-						doc3pane = QuickFolders.Util.document3pane,
 						ss = this.getStyleSheet(doc3pane, "quickfolders-layout.css", "QuickFolderStyles"),
 						background = prefs.getStringPref("currentFolderBar.background"),
             presetChoice = prefs.getStringPref("currentFolderBar.background.selection"); // needed for fill!
@@ -835,8 +843,8 @@ QuickFolders.Interface = {
 
 				// find (and move) button if necessary
 				let cF = this.CurrentFolderTab,
-				    leftSpace = document.getElementById("QF-CurrentLeftSpacer"),
-				    rightSpace = document.getElementById("QF-CurrentRightSpacer");
+				    leftSpace = doc3pane.getElementById("QF-CurrentLeftSpacer"),
+				    rightSpace = doc3pane.getElementById("QF-CurrentRightSpacer");
 				leftSpace.setAttribute("flex",prefs.getIntPref("currentFolderBar.flexLeft"));
 				rightSpace.setAttribute("flex",prefs.getIntPref("currentFolderBar.flexRight"));
 
@@ -883,20 +891,18 @@ QuickFolders.Interface = {
 
 	} ,
 
-	liftNavigationbar: function () {
+	liftNavigationbar: function (document3pane) {
     // access all browsers in 3pane:
-		debugger;
 		QuickFolders.Util.logDebug("liftNavigationbar()");
 		
 		// let messagePane = document3pane.querySelector("#messagePane");
-		let document3pane = QuickFolders.Util.document3pane;
+		let test3pane = QuickFolders.Util.document3pane;
 		let navigationContainer = document3pane.getElementById("QuickFolders-PreviewToolbarPanel");
-		//  document3pane.querySelector("#threadPane");
-		let threadPane = QuickFolders.Util.threadPane;
+		let threadPane = document3pane.querySelector("#threadPane");
 		threadPane.append(navigationContainer);
 		// in "Vertical View" layout, we should inject the toolbar as first element of the threadPane instead:
 		// threadPane.prepend(navigationContainer);
-
+		this.updateNavigationBar(document3pane);
 
 	},
 
@@ -1822,10 +1828,10 @@ QuickFolders.Interface = {
               // let folderEntry = QuickFolders.Model.getFolderEntry(f.URI);
               let btn = QI.getButtonByFolder(f);
               if (!btn) {
-                // trigger the context menu of current folder button, if it  is on screen
-                let toolpanel = document.getElementById("QuickFolders-CurrentFolderTools");
+                // trigger the context menu of current folder button, if it is on screen
+                let toolpanel = QI.CurrentFolderBar;
                 if (toolpanel && toolpanel.parentNode.style["display"]!="none") {
-                  btn = document.getElementById("QuickFoldersCurrentFolder");
+                  btn = QuickFolders.Interface.CurrentFolderTab;
                 }
               }
               if (btn) {
@@ -4226,10 +4232,13 @@ QuickFolders.Interface = {
 		return menuitem;
 	} ,
 
-	// create menu items / elements anbd force inject XUL to deal with menu problems.
+	// create menu items / elements and force inject XUL to deal with menu problems.
 	// @cl: [class] use wildcard * for omitting classname (the exception)
-	createIconicElement: function createIconicElement(tagName, cl) {
-		let el = document.createXULElement(tagName);
+	createIconicElement: function createIconicElement(tagName, cl, doc) {
+		if (!doc) {
+			doc = document; // allow overwriting for 3pane!
+		}
+		let el = doc.createXULElement(tagName);
 		el.setAttribute("xmlns", "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 		if (cl != "*") {
 			if (!cl)
@@ -4371,7 +4380,7 @@ QuickFolders.Interface = {
   } ,
 
 	// isDrag: if this is set to true, then the command items are not included
-	addSubFoldersPopupFromList: function addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, forceAlphaSort, isRecentFolderList) {
+	addSubFoldersPopupFromList: function addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, forceAlphaSort, isRecentFolderList, doc) {
     function splitPath(path, maxAtoms) {
       let parts = path.split("/"),
           firstP = parts.length - maxAtoms,
@@ -4383,6 +4392,7 @@ QuickFolders.Interface = {
       }
       return pathComponents;
     }
+		if (!doc) { doc = document}
     const tr = {"\xE0":"a", "\xE1":"a", "\xE2":"a", "\xE3":"a", "\xE4":"ae", "\xE5":"ae", "\xE6":"a",
 						  "\xE8":"e", "\xE9":"e", "\xEA":"e", "\xEB":"e",
 						  "\xF2":"o", "\xF3":"o", "\xF4":"o", "\xF5":"o", "\xF6":"oe",
@@ -4419,7 +4429,7 @@ QuickFolders.Interface = {
     for (subfolder of subfolders) {
 			try {
 				this.debugPopupItems++;
-				let menuitem = this.createIconicElement("menuitem","*"),
+				let menuitem = this.createIconicElement("menuitem", "*", doc),
 				    menuLabel,
 				    maxDetail = 4;
 				if (displayFolderPathDetail > maxDetail)
@@ -6051,8 +6061,7 @@ QuickFolders.Interface = {
 		    hoverBackColor = prefs.getUserStyle("HoveredTab","background-color","#F90"),
 		    tabStyle = prefs.ColoredTabStyle,
 		    noColorClass = (tabStyle != prefs.TABS_STRIPED) ? "col0" : "col0striped",
-		    hoverColor = prefs.getUserStyle(templateTabClass, "color", "#000000"),
-        avoidCurrentFolder = ":not(#QuickFoldersCurrentFolder)";
+		    hoverColor = prefs.getUserStyle(templateTabClass, "color", "#000000");
 
 		// default hover colors: (not sure if we even need them during paint mode)
 		engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:hover","background-color", hoverBackColor,true);
@@ -6085,7 +6094,6 @@ QuickFolders.Interface = {
 			// picked hover color (from paint mode)
 			//let hc = engine.getElementStyle(ssPalettes, ruleName, "color");
 			//hoverColor = hc ? hc : hoverColor;
-      // tb + avoidCurrentFolder
 			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:hover","color", hoverColor, true);
 			engine.setElementStyle(ss, '.quickfolders-flat toolbarbutton[buttonover="true"]',"color", hoverColor, true);
 		}
@@ -6223,8 +6231,7 @@ QuickFolders.Interface = {
 		    paletteClass = this.getPaletteClassCss("InactiveTab"),
     // only plastic & pastel support striped style:
         isTabsStriped = (tabStyle == prefs.TABS_STRIPED) && prefs.getIntPref("style.InactiveTab.paletteType")<3,
-		    noColorClass = (isTabsStriped) ? "col0striped" : "col0",
-		    avoidCurrentFolder = ""; // = ':not(#QuickFoldersCurrentFolder)'; // we omit paletteClass for uncolored tabs:
+		    noColorClass = (isTabsStriped) ? "col0striped" : "col0";
 
 		// transparent buttons: means translucent background! :))
 		if (prefs.getBoolPref("transparentButtons"))
@@ -6387,7 +6394,7 @@ QuickFolders.Interface = {
       let tbBottom = prefs.getUserStyle("Toolbar","bottomLineWidth", 3) + "px";
       styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane", "border-bottom-width", tbBottom, true);
 
-			this.updateNavigationBar(ss);
+			this.updateNavigationBar();
 
       // change to numeric
 			let minToolbarHeight = prefs.getStringPref("toolbar.minHeight");
@@ -6785,16 +6792,18 @@ QuickFolders.Interface = {
     // QuickFolders-PreviewToolbarPanel
     // QuickFolders-PreviewToolbarPanel-ConversationView: in Thunderbird this is shown in single message tabs as well
     let singleMessageCurrentFolderPanel = document.getElementById("QuickFolders-PreviewToolbarPanel");
-    if (isMailSingleMessageTab) {
-      let visible = prefs.isShowCurrentFolderToolbar("singleMailTab");
-      util.logDebugOptional("toolbarHiding", " isMailSingleMessageTab - setting display=none for QuickFolders-PreviewToolbarPanel");
-      singleMessageCurrentFolderPanel.style.display= visible ? "-moz-box" : "none";
-    }
-    else if (["mail3PaneTab", "3pane", "folder"].includes(mode)) {
-      util.logDebugOptional("toolbarHiding", " isMailSingleMessageTab - setting display=-moz-box for QuickFolders-PreviewToolbarPanel");
-      let visible = prefs.isShowCurrentFolderToolbar("");
-      singleMessageCurrentFolderPanel.style.display= visible ? "-moz-box" : "none";
-    }
+		if (singleMessageCurrentFolderPanel) {
+			if (isMailSingleMessageTab) {
+				let visible = prefs.isShowCurrentFolderToolbar("singleMailTab");
+				util.logDebugOptional("toolbarHiding", " isMailSingleMessageTab - setting display=none for QuickFolders-PreviewToolbarPanel");
+				singleMessageCurrentFolderPanel.style.display= visible ? "-moz-box" : "none";
+			}
+			else if (["mail3PaneTab", "3pane", "folder"].includes(mode)) {
+				util.logDebugOptional("toolbarHiding", " isMailSingleMessageTab - setting display=-moz-box for QuickFolders-PreviewToolbarPanel");
+				let visible = prefs.isShowCurrentFolderToolbar("");
+				singleMessageCurrentFolderPanel.style.display= visible ? "-moz-box" : "none";
+			}
+		}
 	} ,
 
 	toggle_FilterMode: function toggle_FilterMode(active) {

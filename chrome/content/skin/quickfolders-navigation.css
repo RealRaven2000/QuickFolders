@@ -1,0 +1,119 @@
+/* CURRENT FOLDER TOOLBAR */
+/* Styles for Message Preview Navigation */
+/*
+#QuickFolders-PreviewToolbarPanel,
+#QuickFolders-PreviewToolbarPanel-ConversationView
+*/
+.QuickFolders-NavigationPanel {
+	/* background-color: transparent; */
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	background-color: var(--toolbar-bgcolor);
+  color: var(--lwt-text-color, --lwt-toolbar-field-color);
+	margin-bottom: -3px;
+	overflow-y: visible !important;
+	padding-top: 0 !important;
+	padding-bottom: 1px;
+	width: 100%;
+}
+
+#QuickFoldersCurrentFolder {
+	background-repeat: repeat-x;
+	border-color: rgba(120, 120, 120, 0.5);
+	border-width: 1px !important;
+	border-style: solid !important;
+  box-shadow: 1px -1px 1px threedshadow inset;
+	padding: 0 0.5em;
+	vertical-align: top;
+	appearance: none !important;
+	border-radius: 0px 0px 4px 4px !important;
+	min-width: 16em;
+}
+
+#QuickFoldersCurrentFolder label.toolbarbutton-text {
+	text-align: center;
+}
+
+toolbar#QuickFolders-CurrentFolderTools {
+	appearance: none;
+  background-color: transparent;
+  background-image: linear-gradient(hsla(0, 0%, 50%, 0.1), hsla(0, 0%, 50%, 0.1));
+	box-shadow: 1px 2px 4px -1px hsla(0, 0%, 50%, 0.7);
+	border-style: solid  !important;
+	border-width: 0px 1px 1px 1px !important;
+	border-color: #666;
+  position: relative; /* compact headers */
+	height: 1.8em; /* large font support, test on Mac / Linux! */
+	min-height: 22px;
+	overflow: visible;
+	padding: 0 2px 1px 2px;
+  z-index: 10; /* compact headers */
+}
+
+:root[lwt-tree-brighttext] toolbar#QuickFolders-CurrentFolderTools {
+  background-image: linear-gradient(hsla(0, 0%, 50%, 0.3), hsla(0, 0%, 50%, 0.3));
+}
+
+#QuickFolders-CurrentFolderTools toolbarbutton {
+	-moz-box-align: center;
+	-moz-box-pack: center;
+	padding: 0px 2px 0 2px;/* avoid stretching/compressing of some themes */
+/*	min-height: 22px; */
+}
+
+
+#QuickFolders-CurrentFolderTools toolbarbutton.icon {
+	appearance: none !important;
+  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+  fill: currentColor;
+  fill-opacity: 0.7;
+	margin: 0 1px !important;
+  stroke: transparent;
+}
+
+#QuickFolders-CurrentFolderTools[theme="custom"] toolbarbutton.icon {
+  fill-opacity: 0.9;
+}
+
+
+#QuickFolders-CurrentFolderTools toolbarbutton.icon:hover {
+  fill-opacity: 1;
+}
+
+#QuickFolders-CurrentFolderTools toolbarbutton.icon > image {
+  height: 16px !important;
+	margin-right: 0;
+	margin-bottom: 0;
+}
+
+toolbar#QuickFolders-CurrentFolderTools[iconsize="large"] {
+  height: unset !important;
+}
+
+
+
+/** SPECIAL FOLDER ICONS **/
+#QuickFolders-CurrentFolderTools toolbarbutton:hover {
+  background-color: hsla(0, 0%, 50%, 0.2);
+  border-radius: 2px;
+  box-shadow: inset 0 0 2px rgba(50,50,50,0.5);
+}
+
+#QuickFolders-CurrentFolderTools toolbarbutton#QuickFolders-Close:hover {
+  box-shadow: none;
+  background-color: unset;
+}
+
+#QuickFolders-CurrentFolderTools[theme="default"] > toolbarbutton.icon {
+  fill: rgb(30,30,30); 
+}
+
+#QuickFolders-CurrentFolderTools[theme="dark"] > toolbarbutton.icon {
+  fill: #ffffff; 
+}
+
+#QuickFolders-CurrentFolderTools toolbarbutton.recent.icon {
+	list-style-image: url("chrome://quickfolders/content/skin/ico/history.svg");
+    stroke: #e9a400;
+}

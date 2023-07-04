@@ -232,7 +232,6 @@ QuickFolders.Util = {
   },
 
   get document3pane() {
-    let x = window[3].document;
     return window.gTabmail.currentTabInfo.chromeBrowser.contentDocument;
   } ,
 

@@ -261,17 +261,17 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       break;
     case "showCurrentFolderToolbar":
       chk.addEventListener("change", (event) => {
-        QuickFolders.Options.toggleNavigationBar(chk,"");
+        QuickFolders.Options.toggleNavigationBars(chk,"");
       });
       break;
     case "showCurrentFolderToolbar.singleMailTab":
       chk.addEventListener("change", (event) => {
-        QuickFolders.Options.toggleNavigationBar(chk,"singleMailTab");
+        QuickFolders.Options.toggleNavigationBars(chk,"singleMailTab");
       });
       break;
     case "showCurrentFolderToolbar.messageWindow":
       chk.addEventListener("change", (event) => {
-        QuickFolders.Options.toggleNavigationBar(chk,"messageWindow");
+        QuickFolders.Options.toggleNavigationBars(chk,"messageWindow");
       });
       break;
     case "transparentToolbar":

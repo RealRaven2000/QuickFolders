@@ -475,8 +475,9 @@ QuickFolders.Preferences = {
 
 	isShowCurrentFolderToolbar: function isShowCurrentFolderToolbar(selector) {
 		let tag = "showCurrentFolderToolbar";
-		if (selector)
+		if (selector) {
 			tag = tag + "." + selector;
+		}
 		return QuickFolders.Preferences.getBoolPref(tag, false);
 	},
 

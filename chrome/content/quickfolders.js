@@ -541,7 +541,13 @@ var QuickFolders = {
 
       if (wt === 'mail:messageWindow') {
         util.logDebug("QuickFolders.initSingleMsg() - Calling displayNavigationToolbar()");
-        QuickFolders.Interface.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'));
+        QuickFolders.Interface.displayNavigationToolbar(
+          {
+            display: prefs.isShowCurrentFolderToolbar("messageWindow"),
+            doc : win.gTabmail.currentTabInfo.chromeBrowser.contentWindow,
+            selector : "messageWindow"
+          }          
+        );
         // set current folder tab label
         if (win.arguments) {
           let args = win.arguments,
@@ -744,23 +750,15 @@ var QuickFolders = {
     // issue 189 - prepare conversion for account specific relative path storage
     QuickFolders.Model.correctFolderEntries(folderEntries);
 		this.initTabsFromEntries(folderEntries);
-    
 		
 		// only load in main window(?)
 		if (QuickFolders.FolderTree) {
 			QuickFolders.FolderTree.init();
     }
 
-		that.Util.logDebug("QuickFolders.Init() - call displayNavigationToolbar.");
-		// remember whether toolbar was shown, and make invisible or initialize if necessary
-    // default to folder view
-		QI.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar(), ''); 
-		// single Message
-		QI.displayNavigationToolbar(prefs.isShowCurrentFolderToolbar('messageWindow'), 'messageWindow');
+		// add tab listeners to automatically main toolbar when it is not needed
+		QuickFolders.Interface.initToolbarTabListener();
 
-		// new function to automatically main toolbar when it is not needed
-		that.Util.logDebug("call initToolbarHiding.");
-		QI.initToolbarHiding();
 		that.Util.logDebug("QuickFolders.init() ends.");
 		// now make it visible!
 		QuickFolders.Interface.Toolbar.style.display = '-moz-inline-box';

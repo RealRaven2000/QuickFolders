@@ -14,25 +14,14 @@ QuickFolders.TabListener = {
       if (QuickFolders) {
         let util = QuickFolders.Util,
             QI = QuickFolders.Interface,
-            tabmail = document.getElementById("tabmail"),
-            idx = QuickFolders.tabContainer.tabbox.selectedIndex;
-        idx = idx || 0;
-        util.logDebugOptional("listeners.tabmail,categories", "TabListener.select() - tab index = " + idx);
-				let info = util.getTabInfoByIndex(tabmail, idx);  // tabmail.tabInfo[idx]
+            tabmail = document.getElementById("tabmail");
+        util.logDebugOptional("listeners.tabmail,categories", "TabListener.select() - ");
+				let info = tabmail.currentTabInfo;
 				if (!info) { return; }
 					
-        let tabMode = util.getTabMode(info);
+        let tabMode = QI.CurrentTabMode; // util.getTabMode(info);
 				
-				let isToggleToolbar = false,
-				    toolbarElement = isToggleToolbar ? QuickFolders.Interface.Toolbar : null;
-        util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode + "\nisToggleToolbar = " + isToggleToolbar);
-				
-				if (isToggleToolbar) {
-					let isCollapsed = 
-						!(["message", "folder", "3pane", "glodaList", "mail3PaneTab"].includes(tabMode));
-					util.logDebugOptional("listeners.tabmail", "Setting Toolbar collapsed to " + isCollapsed);
-					toolbarElement.collapsed = isCollapsed;
-				}
+        util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode, info );
 				
         let wasRestored = false;
         if (tabMode == "mail3PaneTab" && QuickFolders.Preferences.isDebugOption("listeners.tabmail") && typeof info.QuickFoldersCategory == "undefined") {
@@ -44,7 +33,6 @@ QuickFolders.TabListener = {
             QI.selectCategory(lastCats, false);
             wasRestored = true;
           }
-          // tabmail.restoreTab(tabmail.tabs[idx]);
           // Tb102 needs a new method for persisting categories.
           console.log("{LISTENERS.TABMAIL}\nRESTORE FROM SESSION OR LOCAL STORAGE??", info);
         }        
@@ -58,15 +46,15 @@ QuickFolders.TabListener = {
             util.logDebugOptional("listeners.tabmail", `After selectCategory(${info.QuickFoldersCategory}) - isFolderUpdated =${isFolderUpdated}`);
           }
           // do not select folder if selectCategory had to be done
-          if (!isFolderUpdated)
-            QI.setFolderSelectTimer();	
+          if (!isFolderUpdated) {
+            QI.setFolderSelectTimer();
+          }
         }
 
         
-        if (tabMode == "message") {
+        if (tabMode == "message" || tabMode == "mailMessageTab") { // "mailMessageTab"
           let msg = null, fld = null;
-          if (info.messageDisplay)
-            msg = info.messageDisplay.displayedMessage;
+          msg = info.message || info.messageDisplay ? info.messageDisplay.displayedMessage : null;
           if (msg) fld = msg.folder;
           if (fld) {
             // reflect in current folder toolbar!
@@ -75,22 +63,27 @@ QuickFolders.TabListener = {
             QI.lastTabSelected = null;
             QI.setTabSelectTimer();
           }
-          else 
+          else {
             util.logDebug("TabListener single message - could not determine currently displayed Message.");
+          }
         }
         else
         {
           // Do not switch to current folder's category, if current tab has another selected!
           if (!info.QuickFoldersCategory) {
-            if (tabMode == "mail3PaneTab") {
-              // there is no need for this if it is not a mail tab.
-              QI.setTabSelectTimer();
-            }
-            else {
-              // should we initialize the (navigation) buttons on CurrentFolderTab in case this is a search folder?
-              if (!QI.CurrentFolderTab.collapsed && tabMode !="contentTab") {
-                QI.initCurrentFolderTab(QI.CurrentFolderTab, null, null, info);
-              }
+            switch(tabMode) {
+              case "mail3PaneTab":
+                // there is no need for this if it is not a mail tab.
+                QI.setTabSelectTimer();
+                break;
+              case "contentTab":
+                break;
+              default:
+                // should we initialize the (navigation) buttons on CurrentFolderTab in case this is a search folder?
+                if (!QI.CurrentFolderTab.collapsed) {
+                  QI.initCurrentFolderTab(QI.CurrentFolderTab, null, null, info);
+                }
+                break;
             }
           }
         }
@@ -114,12 +107,8 @@ QuickFolders.TabListener = {
   } ,
   
   newTab: function(evt) {
-    let tabmail = document.getElementById("tabmail");
-    // evt.detail.tabInfo.tabId 
-    if (["folder","message","mail3PaneTab"].includes(evt.detail.tabInfo.mode.type)) {
-      let newIndex = evt.detail.tabInfo.tabId;
-      QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.newTab()  - newIndex = " + newIndex);
-      let newTabInfo = tabmail.tabInfo.find(e => e == evt.detail.tabInfo);
+    if (["folder","message","mail3PaneTab"].includes(evt.detail.tabInfo.mode.name)) { // ,"mailMessageTab"
+      let newTabInfo = evt.detail.tabInfo;
       if (newTabInfo) {
         newTabInfo.QuickFoldersCategory = QuickFolders.Interface.currentActiveCategories;
         QuickFolders.Interface.storeTabSession();

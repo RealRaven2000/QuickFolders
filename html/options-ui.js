@@ -541,7 +541,6 @@ QuickFolders.Options = {
   
   // doing what instantApply really should provide...
   toggleBoolPreference: async function(cb, noUpdate = false) {
-    const util = QuickFolders.Util;
     let prefString = cb.getAttribute("data-pref-name");
     //  using the new preference system, this attribute should be the actual full string of the pref.
     //  pref = document.getElementById(prefString);
@@ -578,11 +577,12 @@ QuickFolders.Options = {
   },  
   
   // 3pane window only?
-  toggleNavigationBar: async function(chk, selector) {
+  toggleNavigationBars: async function(chk, selector) {
     let checked = chk.checked ? chk.checked : false;
+    QuickFolders.Util.logDebugOptional("interface.currentFolderBar", `toggleNavigationBars(${chk}, ${selector})`);
     await QuickFolders.Preferences.setShowCurrentFolderToolbar(checked, selector);
     // we should not call displayNavigationToolbar directly but use the event broadcaster to notify all windows.
-    messenger.runtime.sendMessage({ command:"toggleNavigationBar" });
+    messenger.runtime.sendMessage({ command:"toggleNavigationBars" });
   },
 
   stripedSupport : function(paletteType) {

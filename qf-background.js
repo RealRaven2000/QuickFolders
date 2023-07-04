@@ -126,7 +126,7 @@ async function main() {
     "updateNavigationBar",
     "updateQuickFoldersLabel",
     "updateUserStyles",
-    "toggleNavigationBar"
+    "toggleNavigationBars"
   ];
 
   
@@ -179,8 +179,8 @@ async function main() {
         await messenger.NotifyTools.notifyExperiment({event: "updateNavigationBar"});
         break;
 
-      case "toggleNavigationBar":
-        messenger.NotifyTools.notifyExperiment({event: "toggleNavigationBar"});
+      case "toggleNavigationBars": // toggles _all_ navigation bars (from options window)
+        messenger.NotifyTools.notifyExperiment({event: "toggleNavigationBars"});
         break;
         
       case "updateCategoryBox":
@@ -304,6 +304,7 @@ async function main() {
       case "updateQuickFilters":
         messenger.runtime.sendMessage("quickFilters@axelg.com", { command: "injectButtonsQFNavigationBar" });
         break;
+                
       case "searchMessages": // test
         messenger.messages.list(data.folder);
         break;

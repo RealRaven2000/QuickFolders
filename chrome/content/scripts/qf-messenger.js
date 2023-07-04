@@ -285,7 +285,7 @@ async function onLoad(activatedWhileWindowOpen) {
             <menuitem id="QuickFolders-ToolbarPopup-displayPreviewToolbar"
                       label="__MSG_qf.menuitem.quickfolders.displayPreviewToolbar__"
                       accesskey="__MSG_qf.menuitem.quickfolders.displayPreviewToolbarAccessKey__"
-                      oncommand="QuickFolders.Interface.displayNavigationToolbar(true);"
+                      oncommand="QuickFolders.Interface.displayNavigationToolbar({display:true});"
                       class="cmd menuitem-iconic"
                       tagName="qfPreviewToolbar" 
                       />
@@ -460,10 +460,6 @@ async function onLoad(activatedWhileWindowOpen) {
     WL.injectCSS("chrome://quickfolders/content/skin/qf-102.css");
   }
   
-  // -- now we have the current folder toolbar, tell quickFilters to inject its buttons:
-  window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFilters" });
-  
-  
   window.QuickFolders.quickMove.initLog();
   window.addEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);
   const QI = window.QuickFolders.Interface;
@@ -472,7 +468,7 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["updateAllTabs"] = QI.updateAllTabs.bind(QI);
   mylisteners["updateUserStyles"] = QI.updateUserStyles.bind(QI);
   mylisteners["updateNavigationBar"] = QI.updateNavigationBar.bind(QI);
-  mylisteners["toggleNavigationBar"] = QI.displayNavigationToolbar.bind(QI);
+  mylisteners["toggleNavigationBars"] = QI.displayNavigationToolbar.bind(QI);
   mylisteners["updateQuickFoldersLabel"] = QI.updateQuickFoldersLabel.bind(QI);
   mylisteners["updateCategoryBox"] = QI.updateCategoryLayout.bind(QI);
   mylisteners["copyFolderEntriesToClipboard"] = QI.copyFolderEntriesToClipboard.bind(QI);

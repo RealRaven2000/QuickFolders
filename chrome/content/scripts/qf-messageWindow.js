@@ -160,7 +160,7 @@ function onLoad(activatedWhileWindowOpen) {
   const prefs = window.QuickFolders.Preferences;
   let messageDoc = window.messageBrowser.contentDocument; // messagePaneBox
   // relocate to make it visible (bottom of thread)
-  win.QuickFolders.Interface.liftNavigationbar(messageDoc);    // passes HTMLDocument "about:message"
+  window.QuickFolders.Interface.liftNavigationbar(messageDoc);    // passes HTMLDocument "about:message"
 
   // single Message
   window.QuickFolders.Interface.displayNavigationToolbar(
@@ -170,7 +170,7 @@ function onLoad(activatedWhileWindowOpen) {
       selector: "messageWindow"
     }
   ); 
-  win.QuickFolders.Interface.updateNavigationBar(doc);
+  window.QuickFolders.Interface.updateNavigationBar(messageDoc);
   // should we allow the "run filters on selected messages" button ?
   // window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFilters" });
 

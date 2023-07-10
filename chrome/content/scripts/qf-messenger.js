@@ -36,7 +36,8 @@ async function onLoad(activatedWhileWindowOpen) {
   // WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
   
-  // -- main toolbar+palette
+  // -- main toolbar+palette (LEGACY)
+  /*
   WL.injectElements(`
 
     <keyset>
@@ -66,6 +67,7 @@ async function onLoad(activatedWhileWindowOpen) {
           />
     </toolbarpalette>
 `);
+    */
 
   console.log("Adding QuickFolders toolbar ...");
   WL.injectElements(`
@@ -331,8 +333,7 @@ async function onLoad(activatedWhileWindowOpen) {
   </popup>	
 `);
 
-
-
+  
 
   //-----------------------------
   // search panel & mini toolbar in QF toolbar
@@ -459,6 +460,7 @@ async function onLoad(activatedWhileWindowOpen) {
   if (window.QuickFolders.Util.versionGreaterOrEqual(window.QuickFolders.Util.Appversion, "102")) {
     WL.injectCSS("chrome://quickfolders/content/skin/qf-102.css");
   }
+  window.QuickFolders.Util.notifyTools.notifyBackground({ func: "initActionButton" });
   
   window.QuickFolders.quickMove.initLog();
   window.addEventListener("QuickFolders.BackgroundUpdate", window.QuickFolders.initLicensedUI);

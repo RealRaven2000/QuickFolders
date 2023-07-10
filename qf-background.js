@@ -308,6 +308,11 @@ async function main() {
       case "searchMessages": // test
         messenger.messages.list(data.folder);
         break;
+
+      case "initActionButton": // initialize toggle toolbar button
+        messenger.Utilities.toggleToolbarAction(true); // patch action button (toolbar toggle)
+        break;
+
     }
   }
   
@@ -354,6 +359,7 @@ async function main() {
   messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
   // inject a separate script for current folder toolbar!
   messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
+  messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
 
   messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/qf-composer.js");
   messenger.WindowListener.registerWindow("chrome://messenger/content/SearchDialog.xhtml", "chrome/content/scripts/qf-searchDialog.js");

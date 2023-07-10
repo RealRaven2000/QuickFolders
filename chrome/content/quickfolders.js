@@ -434,7 +434,6 @@ var QuickFolders = {
 		return this._tabContainer;
 	},
 	currentURI: '',
-	lastTreeViewMode: null,
 	initDone: false,
 	compactReportFolderCompacted: false,
 	compactReportCommandType: '',
@@ -1674,7 +1673,7 @@ var QuickFolders = {
 
       const isDropMail = (types.includes("text/x-moz-message"));
       const isDropFolder = (types.includes("text/x-moz-folder"));
-      const isDropButton = (evt.targetNode && evt.targetNode.tagName=="toolbarbutton");
+      const isDropButton = (DropTarget && DropTarget.tagName=="toolbarbutton");
     
       // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
       if (DropTarget) {
@@ -1690,7 +1689,7 @@ var QuickFolders = {
 
       let isMoveFolderQuickMove = false;
 
-      if (isDropMail || isDropFolder) {
+      if (isDropMail || isDropFolder || isDropButton) {
         evt.preventDefault();
         evt.stopPropagation();
       }
@@ -1898,7 +1897,7 @@ var QuickFolders = {
 	addTabEventListener: function addTabEventListener() {
 		try {
 		  let tabContainer = QuickFolders.tabContainer;
-      this.TabEventListeners["select"] = function(event) { QuickFolders.TabListener.select(event); }
+      this.TabEventListeners["TabSelect"] = function(event) { QuickFolders.TabListener.selectTab(event); }
       this.TabEventListeners["TabClose"] = function(event) { QuickFolders.TabListener.closeTab(event); }
       this.TabEventListeners["TabOpen"] = function(event) { QuickFolders.TabListener.newTab(event); }
       this.TabEventListeners["TabMove"] = function(event) { QuickFolders.TabListener.moveTab(event); }
@@ -1987,54 +1986,6 @@ QuickFolders.restoreSessionStore = function() {
 }
 
 
-function QuickFolders_MyEnsureFolderIndex(tree, msgFolder) {
-	// try to get the index of the folder in the tree
-	try {
-		let index ;
-
-		if (typeof tree.getIndexOfFolder !== 'undefined')
-			index = tree.getIndexOfFolder(msgFolder);
-		else
-			if (typeof tree.builderView !== 'undefined' && typeof tree.builderView.getIndexOfResource !== 'undefined')
-				index = tree.builderView.getIndexOfResource(msgFolder);
-			else
-				if (typeof EnsureFolderIndex !== 'undefined')
-					index = EnsureFolderIndex(msgFolder);
-				else
-					return -1;
-
-		QuickFolders.Util.logDebugOptional ("folders.select", "QuickFolders_MyEnsureFolderIndex - index of " + msgFolder.name + ": " + index);
-
-		if (index === -1) {
-			if (null==msgFolder.parent)
-				return -1;
-			let parentIndex = QuickFolders_MyEnsureFolderIndex(tree, msgFolder.parent);
-
-			// if we couldn't find the folder, open the parent
-			if (parentIndex !== -1 && !tree.builderView.isContainerOpen(parentIndex)) {
-				tree.builderView.toggleOpenState(parentIndex);
-			}
-
-			if (typeof tree.getIndexOfFolder !== 'undefined')
-				index = tree.getIndexOfFolder(msgFolder);
-			else
-				if (tree.builderView !== 'undefined')
-					index = tree.builderView.getIndexOfResource(msgFolder);
-				else
-					if (typeof EnsureFolderIndex !== 'undefined')
-						index = EnsureFolderIndex(msgFolder);
-					else
-						return -1;
-		}
-		return index;
-	}
-	catch(e) {
-		QuickFolders.Util.logException('Exception in QuickFolders_MyEnsureFolderIndex', e);
-		return -1;
-	}
-
-}
-
 function QuickFolders_MyChangeSelection(tree, newIndex) {
   if(newIndex >= 0)
   {
@@ -2076,7 +2027,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   // should we support "mailMessageTab"  ??
   if (!["mail3PaneTab"].includes( window.gTabmail.currentTabInfo.mode.name)) {
     QuickFolders.Util.logDebug("QuickFolders_MySelectFolder exit, because of tabMode: " + window.gTabmail.currentTabInfo.mode.name);
-    return;
+    return false;
   }
 
 	let folderTree = window.gTabmail.currentTabInfo.chromeBrowser.contentDocument.getElementById('folderTree'), // QuickFolders.mailFolderTree,
@@ -2118,8 +2069,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	}
 	QuickFolders.currentURI = folderUri;
 	
-	let folderIndex, i,
-	    isExistFolderInTab = false,
+	let i, isExistFolderInTab = false,
 	    tabmail = document.getElementById("tabmail");
 	if (tabmail) {
     util.logDebugOptional("folders.select","try to find open tab with folder...");
@@ -2166,13 +2116,12 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 
   util.logDebugOptional("folders.select", "folder [" +  msgFolder.prettyName  + "] flags = " + msgFolder.flags
 	  + (isRoot ? "\nThis is a ROOT folder" : ""));
-  // find out if parent folder is smart and collapsed (bug in TB3!)
-  // in this case getIndexOfFolder returns a faulty index (the parent node of the inbox = the mailbox account folder itself)
-  // therefore, ensureRowIsVisible does not work!
+
   let forceSelect = prefs.isChangeFolderTreeViewEnabled;
 
-  // TB 115
-  gTabmail.currentTabInfo.chromeBrowser.contentWindow.displayFolder(folderUri);
+  // TB 115 - this will not select the folder if it is not contained in the current view!
+  gTabmail.currentTabInfo.folder = msgFolder;
+  // gTabmail.currentTabInfo.chromeBrowser.contentWindow.displayFolder(folderUri);
 
   // ############################
   // ############################
@@ -2189,46 +2138,46 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
     QuickFolders.activeTreeViewModes = folderPane.activeModes; // backup array of view modes.
   }
 
+  let folderRow; 
+  try { folderRow = folderPane.getRowForFolder(msgFolder); }
+  catch(ex) {
 
-  // folderPane.getRowForFolder(msgFolder, ["all"]);
-  let folderRow = folderPane.getRowForFolder(msgFolder, ["all"]);
-  // folderIndex = gFolderTreeView.getIndexOfFolder(msgFolder);
+  }
+  util.logDebugOptional("folders.select","folderRow = " + folderRow);
   if (!folderRow) {  // null == folderIndex
-    util.logDebugOptional("folders.select","gFolderTreeView.selectFolder(" + msgFolder.prettyName + ", " + forceSelect + ")");
+    util.ensureNormalFolderView() // make sure "all" is displayed!
     about3Pane.displayFolder(folderUri);
   }
   
-  util.logDebugOptional("folders.select","folderRow = " + folderRow);
-  
   if (msgFolder.parent) {
     util.logDebugOptional("folders.select","ensureFolderViewTab()");
-    util.ensureFolderViewTab(); // let's always do this when a folder is clicked!
 
     if (!folderRow) {
       util.logDebugOptional("folders.select","ensureNormalFolderView()");
-      util.ensureNormalFolderView();
       folderRow = folderPane.getRowForFolder(msgFolder, ["all"]);
-      util.logDebugOptional("folders.select","folderRow = " + folderRow);
+      util.logDebugOptional("folders.select","folderRow[all] = ", folderRow);
     }
 
-    let parentIndex = folderPane.getRowForFolder(msgFolder.parent);
-    util.logDebugOptional("folders.select","parent index: " + parentIndex);
+    let parentRow = folderPane.getRowForFolder(msgFolder.parent);
+    util.logDebugOptional("folders.select","parent row: ", parentRow); // was parentIndex
     // flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
     let specialFlags = Flags.MSG_FOLDER_FLAG_INBOX + Flags.MSG_FOLDER_FLAG_QUEUE + Flags.MSG_FOLDER_FLAG_SENTMAIL 
                      + Flags.MSG_FOLDER_FLAG_TRASH + Flags.MSG_FOLDER_FLAG_DRAFTS + Flags.MSG_FOLDER_FLAG_TEMPLATES 
                      + Flags.MSG_FOLDER_FLAG_JUNK + Flags.MSG_FOLDER_FLAG_ARCHIVES ; 
     if (msgFolder.flags & specialFlags) {
       // is this folder a smartfolder?
-      let isSmartView = (folderPane.activeModes && folderPane.includes("smart"));
+      let isSmartView = (folderPane.activeModes && folderPane.activeModes.includes("smart"));
       
-      if (folderUri.indexOf("nobody@smart")>0 && null==parentIndex && !isSmartView) {
+      if (folderUri.indexOf("nobody@smart")>0 && !parentRow && !isSmartView) {
         util.logDebugOptional("folders.select","smart folder detected, switching treeview mode...");
         // toggle to smartfolder view and reinitalize folder variable!
         if (!folderPane.activeModes.includes("smart")) {
-          folderPane.activeModes.push("smart"); // ? not sur whether this is legal ? TB115
+          let modes = folderPane.activeModes;
+          modes.push("smart");
+          folderPane.activeModes = modes; // ? not sur whether this is legal ? TB115
         }
         msgFolder = model.getMsgFolderFromUri(folderUri);   // folderResource.QueryInterface(Ci.nsIMsgFolder);
-        parentIndex = folderPane.getRowForFolder(msgFolder.parent);
+        parentRow = folderPane.getRowForFolder(msgFolder.parent);
       }
       
       isSmartView = (folderPane.activeModes.includes("smart"));
@@ -2252,9 +2201,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
         */
       }
       else { // all other views:
-        if (null !== parentIndex) {
+        if (null !== parentRow) {
           QuickFolders.Util.logTb115(
-            `QuickFolders_MySelectFolder(): toggleRow for parent folder: ${parentIndex} `
+            `QuickFolders_MySelectFolder(): toggleRow for parent folder: ${parentRow} `
           );
           /*
           if (!(theTreeView._rowMap[parentIndex]).open)
@@ -2284,34 +2233,33 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
     catch(e) { util.logException("Exception selecting via treeview: ", e);};
   }
 
-  // Restore last the view mode.
+  // Restore last the view mode (?)
   if (!prefs.isChangeFolderTreeViewEnabled) {
     // this only works in Thunderbird 78 - Tb91 has the activeModes array... 
     QuickFolders.Util.logTb115("Restore last view mode.. (folderPane.activeModes?)");
     // do something with folderPane.activeModes
-/*
-    if (QuickFolders.lastTreeViewMode !== null && theTreeView.mode !== QuickFolders.lastTreeViewMode) {
-      util.logDebugOptional("folders.select","Restoring view mode to " + QuickFolders.lastTreeViewMode + "...");
-      theTreeView.mode = QuickFolders.lastTreeViewMode;
-    }
-*/    
+    // folderPane.activeModes = QuickFolders.activeTreeViewModes;
   }
 
-  //folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); // folderTree.currentIndex
-  if ((msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL)) // || folderUri.indexOf("nobody@smart")>0
+  //folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); 
+  if ((msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL)) { // || folderUri.indexOf("nobody@smart")>0
     QuickFolders.Interface.onTabSelected();
+  }
 	
 	// could not find folder!
-	if (null == folderIndex || folderIndex<0) {
-    util.logDebugOptional("folders.select", 'Could not find folder in tree (folderIndex = ' + folderIndex + ')');
+	if (!folderRow) {
+    util.logDebugOptional("folders.select", 'Could not find folder in tree (folderRow = ' + folderRow + ')');
 		return false;
 	}
 
-	if (prefs.isFocusPreview && !(QuickFolders.Interface.getThreadPane().collapsed)) {
+	if (prefs.isFocusPreview && (QuickFolders.Interface.getThreadPane())) {
     util.logDebugOptional("folders.select", 'setFocusThreadPane()');
 		QuickFolders.Interface.setFocusThreadPane();
-		document.commandDispatcher.advanceFocus();
-		document.commandDispatcher.rewindFocus();
+    let doc = QuickFolders.Util.document3pane;
+    if (doc) {
+      doc.commandDispatcher.advanceFocus();
+      doc.commandDispatcher.rewindFocus();
+    }
 	}
 	
 	// speed up the highlighting... - is this only necessary on MAC ?

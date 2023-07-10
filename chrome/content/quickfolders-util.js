@@ -558,10 +558,11 @@ QuickFolders.Util = {
     else {
       let nCount=0; // skip removal of category selection box
       while(element.children.length > nCount) {
-        if (element.children[nCount].id=='QuickFolders-Category-Box')
+        if (element.children[nCount].id=='QuickFolders-Category-Box') {
           nCount++;
-        else
+        } else {
           element.removeChild(element.children[nCount]);
+        }
       }
     }
   } ,
@@ -571,15 +572,13 @@ QuickFolders.Util = {
   ensureNormalFolderView: function ensureNormalFolderView() {
     try {
       //default folder view to "All folders", so we can select it
-      if (typeof gFolderTreeView != 'undefined') {
-        let theTreeView;
-        theTreeView = gFolderTreeView;
-        theTreeView.mode="all";
-        this.logDebug("switched TreeView mode= " + theTreeView.mode);
+      var tabmail = document.getElementById("tabmail");
+      const folderPane = tabmail.currentAbout3Pane.folderPane;
+      if (!folderPane.activeModes.includes("all")) { // Force showing all!
+        let modes = folderPane.activeModes;
+        modes.push("all");
+        folderPane.activeModes = modes;
       }
-      else
-        if (typeof loadFolderView !='undefined')
-          loadFolderView(0);
     }
     catch(ex) {
       //loadFolderView() might be undefined at certain times, ignore this problem

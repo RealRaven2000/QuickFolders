@@ -902,7 +902,6 @@ QuickFolders.Interface = {
 		let containerSelector;
 		let threadPane;
 
-
 		switch(contentDoc.URL) {
 			case "about:3pane":
 				containerSelector = "#threadPane";
@@ -1959,13 +1958,21 @@ QuickFolders.Interface = {
 		return null;
 	} ,
 
-	toggleToolbar: function toggleToolbar(button) {
+	toggleToolbar: function (button, keepState = false) {
 		QuickFolders.Util.logDebugOptional("interface", "toggleToolbar(" + button.checked + ")");
 		let toolbar = this.Toolbar,
-		    // toolbar.style.display = "-moz-inline-box";
-		    makeVisible = !(toolbar.collapsed);
-		toolbar.setAttribute("collapsed", makeVisible);
-		button.checked = !makeVisible;
+		    // toolbar.style.display = "flex";  // was:   -moz-inline-box 
+		    isVisible = !(toolbar.collapsed),
+				makeVisible = keepState ? isVisible : !isVisible;
+		toolbar.setAttribute("collapsed", !makeVisible);
+		let theButton = button.querySelector("button");
+		theButton.classList.add("check-button");
+		theButton.classList.add("button");
+		let WAIT = 250; // a hack until we get native checkbox support
+		setTimeout(
+		  () => { theButton.setAttribute("aria-pressed",makeVisible); },
+			WAIT
+		)
 		return makeVisible;
 	} ,
 
@@ -5537,18 +5544,24 @@ QuickFolders.Interface = {
 		}
 	}	,
 
-	getThreadPane: function getThreadPane() {
-	  return document.getElementById("threadPaneBox");  // need this for Postbox.
+	getThreadPane: function() {
+    let doc = QuickFolders.Util.document3pane;
+		if (!doc) return null;
+	  return doc.getElementById("threadPaneBox");  
 	} ,
 
 	setFocusThreadPane: function setFocusThreadPane() {
     let threadTree = this.getThreadTree();
-		if (threadTree)
+		if (threadTree) {
 			threadTree.focus();
+			// tabmail.currentAbout3Pane.threadTree.table.body.focus();
+		}
   } ,
 
-  getThreadTree: function getThreadTree()  {
-    return document.getElementById("threadTree")
+  getThreadTree: function()  {
+    let doc = QuickFolders.Util.document3pane;
+		if (!doc) return null;
+    return doc.getElementById("threadTree");
   } ,
   
 	// selectedTab   - force a certain tab panel to be selected

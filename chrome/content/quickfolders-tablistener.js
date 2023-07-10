@@ -9,7 +9,7 @@
 
 ///// tab listener watches tabmail (mail tabs)
 QuickFolders.TabListener = {
-  select: function(evt){
+  selectTab: function(evt){
     try {
       if (QuickFolders) {
         let util = QuickFolders.Util,

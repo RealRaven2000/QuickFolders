@@ -1,14 +1,21 @@
 
 
 async function onLoad(activatedWhileWindowOpen) {
-  let WAIT_FOR_3PANE = 1000;
+  const WAIT_FOR_3PANE = 1000;
   // const win = window;
   console.log("qf-3pane.js - onLoad()");
+  if (window.parent && window.parent.document  && window.parent.document.URL == "about:3pane") {
+    // parent document should already be patched!
+    return;
+  }
+
   window.QuickFolders = window.parent.QuickFolders;
+  window.QuickFolders.WLM = WL; // closre a separate instace of the WindowListener that works in messagepange
   // let's make sure 3Pane is really ready (we might want to attach this to a window.DOMContentLoaded event instead)
   window.setTimeout( 
     (win = window) => {
-      console.log("QuickFolders: injecting 3pane");
+      console.log("QuickFolders: injecting current folder");
+      const contentDoc = win.document;
       win.QuickFolders.Util.logDebug(`============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`);
       let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
       let layout2 = WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
@@ -21,13 +28,8 @@ async function onLoad(activatedWhileWindowOpen) {
 
 
       //------------------------------------ overlay current folder (navigation bar)
-      // inject into <vbox id="messagepanebox"> !!
-
-
-      WL.injectElements(`
-
-    <div id="threadPane">
-      
+      let INJECTED_ELEMENTS =
+`
       <hbox id="QuickFolders-PreviewToolbarPanel" 
             class="QuickFolders-NavigationPanel">
         <span flex="5" id="QF-CurrentLeftSpacer"> </span>
@@ -137,8 +139,27 @@ async function onLoad(activatedWhileWindowOpen) {
         
         <span flex="5" id="QF-CurrentRightSpacer"> </span>
       </hbox>
-    </div>
-      `);
+`;
+
+
+      switch(contentDoc.URL) {
+        case "about:3pane":    // inject into thread pane (bottom)
+          WL.injectElements(`
+          <div id="threadPane">`
+      + INJECTED_ELEMENTS + `   
+          </div>
+          `);
+          break;
+        case "about:message":      // inject into messagepane (on top)
+          WL.injectElements(`
+          <vbox id="messagepanebox">`
+      + INJECTED_ELEMENTS + `   
+          </vbox>
+          `);
+          break;
+      }
+
+
   /*
   <!-- if conversation view (extension) is active ?? then the browser element multimessage will be visible
       in this case we need to move the toolbar panel into the messagepanebox before multimessage
@@ -150,7 +171,7 @@ async function onLoad(activatedWhileWindowOpen) {
       // main window: win.parent
 
       // relocate to make it visible (bottom of thread)
-      win.QuickFolders.Interface.liftNavigationbar(win.document);    // passes HTMLDocument "about:3pane"
+      win.QuickFolders.Interface.liftNavigationbar(contentDoc);    // passes HTMLDocument "about:3pane"
       
       // remember whether toolbar was shown, and make invisible or initialize if necessary
       // default to folder view
@@ -158,11 +179,11 @@ async function onLoad(activatedWhileWindowOpen) {
       win.QuickFolders.Interface.displayNavigationToolbar(
         {
           display: prefs.isShowCurrentFolderToolbar(),
-          doc : win.document,
+          doc : contentDoc,
           selector : null
         }
       ); 
-      win.QuickFolders.Interface.updateNavigationBar(win.document);
+      win.QuickFolders.Interface.updateNavigationBar(contentDoc);
       // -- now we have the current folder toolbar, tell quickFilters to inject its buttons:
       window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFilters" });
 

@@ -479,8 +479,23 @@ var QuickFolders = {
     // from the time we passed in the window as win
     let win = window;
     
-    if (WLorig)
+    if (WLorig) {
       QuickFolders.WL = WLorig;
+    }
+
+    // iterate all tabs
+    QuickFolders.Util.logDebug("restore categories from tab session")
+    let tabmail = document.getElementById("tabmail");
+    if (tabmail) {
+      let tabInfoCount = util.getTabInfoLength(tabmail);
+      for (let i = 0; i < tabInfoCount; i++) {
+        let info = util.getTabInfoByIndex(tabmail, i);
+        if (info && util.getTabMode(info) == "mail3PaneTab") {
+          let cats = await QuickFolders.Interface.readTabCategorySession(info);
+          info.QuickFoldersCategory = cats;
+        }
+      }
+    }
       
     let sWinLocation,
 	      nDelay = prefs.getIntPref('initDelay');
@@ -656,9 +671,9 @@ var QuickFolders = {
 						else
 							cats = QuickFolders.FolderCategory.ALL; // retrieve list!
 					// }
-				}
-				else
+				} else {
 				  cats = tab.QuickFoldersCategory;
+        }
 				
 				util.logDebug("init: setting categories to " + cats);
 				if (["folder","message","mail3PaneTab"].includes(tabMode)) {
@@ -712,11 +727,6 @@ var QuickFolders = {
     
 		if (prefs && prefs.isDebug)
 			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
-
-    if (QuickFolders.Util.versionGreaterOrEqual(QuickFolders.Util.Appversion, "102")) {
-      QI.loadTabSession();
-    }    
-
 
 		that.addTabEventListener();
 		QuickFolders.initKeyListeners();
@@ -2030,8 +2040,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
     return false;
   }
 
-	let folderTree = window.gTabmail.currentTabInfo.chromeBrowser.contentDocument.getElementById('folderTree'), // QuickFolders.mailFolderTree,
-	    msgFolder,
+	let msgFolder,
 	    isInvalid = false;
 	try {
 	  msgFolder = model.getMsgFolderFromUri(folderUri, true);  

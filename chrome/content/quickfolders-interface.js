@@ -46,8 +46,6 @@ QuickFolders.Interface = {
   get FindFolderHelp() { return QuickFolders.Util.$("QuickFolders-FindFolder-Help");},
 	
 	// CURRENT FOLDER ELEMENTS
-	get CurrentFolderRemoveIconBtn() { return QuickFolders.Util.document3pane.getElementById("QuickFolders-RemoveIcon");},
-  get CurrentFolderSelectIconBtn() { return QuickFolders.Util.document3pane.getElementById("QuickFolders-SelectIcon");},
 	get CurrentFolderTab() { // visible current folder tab - might have to move it in Tb for conversation view
     return QuickFolders.Util.document3pane.getElementById ("QuickFoldersCurrentFolder");
   },
@@ -775,16 +773,15 @@ QuickFolders.Interface = {
 		QuickFolders.Interface.updateUserStyles();
   },
 
-	// @doc optional 3pane document. if not passed we need to iterate _all_ 3pane documents
-	updateNavigationBar: function updateNavigationBar(doc3pane) {
+	// @doc3pane optional 3pane document. if not passed we need to iterate _all_ 3pane documents
+	// @tabInfo  optional (current tab, or the new tab if called from selectTab)
+	// this function initializes all buttons on the Navigation toolbar (Current folder bar)
+	updateNavigationBar: function(doc3pane, tabInfo) {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					styleEngine = QuickFolders.Styles;
+		let isSingleMessageWindow = false;
           
-		if (!doc3pane || doc3pane.target) { // if called from background, this will be an event
-			doc3pane = QuickFolders.Util.document3pane;  // wrong, but hack for now to use 1st folder tab
-		}
-
 		function collapseConfigItem(id, isShownSetting, checkParent) {
 			let element = doc3pane.getElementById(id);
 			// safeguard for copied ids (such as button-previous / button-next)
@@ -795,8 +792,21 @@ QuickFolders.Interface = {
 			return element;
 		}
 
-		util.logDebugOptional("interface.currentFolderBar", "updateNavigationBar() - " + window.location);
+		util.logDebugOptional("interface.currentFolderBar", "updateNavigationBar() - " + window.location, doc3pane);
 		try {
+			let tabMode = tabInfo ? QuickFolders.Util.getTabMode(tabInfo) : QuickFolders.Interface.CurrentTabMode;
+			if (!doc3pane || doc3pane.target) { // if called from background, this will be an event
+				if (!["mail:3pane","mail3PaneTab", "mailMessageTab" ].includes(tabMode)) {
+					// no curent folder tab here!
+					util.logDebugOptional("interface.currentFolderBar",`Early Exit: no current folder bar in tab mode ${tabMode} !`);
+					return false;
+				}
+				doc3pane = QuickFolders.Util.document3pane;  // wrong, but hack for now to use 1st folder tab
+				util.logDebugOptional("interface.currentFolderBar", "Fallback to global document3pane!", doc3pane);
+			}
+			if (!tabMode) { isSingleMessageWindow = true ;}
+			
+
 			collapseConfigItem("QuickFolders-Close", "currentFolderBar.showClose");
 			collapseConfigItem("QuickFolders-currentFolderFilterActive", "currentFolderBar.showFilterButton");
 			collapseConfigItem("QuickFolders-Recent-CurrentFolderTool", "currentFolderBar.showRecentButton");
@@ -814,33 +824,38 @@ QuickFolders.Interface = {
 						ss = this.getStyleSheet(doc3pane, "quickfolders-layout.css", "QuickFolderStyles"),
 						background = prefs.getStringPref("currentFolderBar.background"),
             presetChoice = prefs.getStringPref("currentFolderBar.background.selection"); // needed for fill!
-				styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools", "background-image", background, true);
         toolbar2.setAttribute("theme",presetChoice);
+				if (ss) try {
+					styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools", "background-image", background, true);
 
-				let mw = util.$("messengerWindow");
-				if (mw) {
-					let backImage = window.getComputedStyle(mw).getPropertyValue("background-image");
-					if (prefs.getBoolPref("currentFolderBar.background.lightweight")) {
-            if (backImage && backImage!="none")
-              styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", backImage);  
-            else
-              styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", "var(--lwt-header-image)", true);
-						styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-position", "right 0px top -75%"); 
-						styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "0.98");
+					let mw = util.$("messengerWindow");
+					if (mw) {
+						let backImage = window.getComputedStyle(mw).getPropertyValue("background-image");
+						if (prefs.getBoolPref("currentFolderBar.background.lightweight")) {
+							if (backImage && backImage!="none") {
+								styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", backImage);  
+							} else {
+								styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", "var(--lwt-header-image)", true);
+							}
+							styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-position", "right 0px top -75%"); 
+							styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "0.98");
+						}
+						else {
+							styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", "none"); // was #QuickFolders-PreviewToolbarPanel
+							styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "1.0");
+						}
 					}
-					else {
-						styleEngine.setElementStyle(ss,".QuickFolders-NavigationPanel", "background-image", "none"); // was #QuickFolders-PreviewToolbarPanel
-						styleEngine.setElementStyle(ss, "toolbar#QuickFolders-CurrentFolderTools","opacity", "1.0");
-					}
+					let ftCol = 
+						prefs.getBoolPref("currentFolderBar.iconcolor.custom") ?
+						prefs.getStringPref("currentFolderBar.iconcolor") :
+						"currentColor";
+					styleEngine.setElementStyle(ss,"#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.icon", "fill", ftCol);
+					styleEngine.setElementStyle(ss, "#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.col0 .toolbarbutton-text", "color", ftCol);
+				} catch (ex) {
+					util.logDebugOptional("interface.currentFolderBar", "no style sheet.");
 				}
         
         
-        let ftCol = 
-          prefs.getBoolPref("currentFolderBar.iconcolor.custom") ?
-          prefs.getStringPref("currentFolderBar.iconcolor") :
-          "currentColor";
-        styleEngine.setElementStyle(ss,"#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.icon", "fill", ftCol);
-        styleEngine.setElementStyle(ss, "#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.col0 .toolbarbutton-text", "color", ftCol);
 
 				// find (and move) button if necessary
 				let cF = toolbar2.querySelector("[id=QuickFoldersCurrentFolder]"),
@@ -863,8 +878,11 @@ QuickFolders.Interface = {
 				toolbar2.style.fontSize = fontSize;
 				cF.style.fontSize = fontSize;
 
+				
+				const isNoFolderMode = (tabMode !="mail3PaneTab");
+
 				let hideMsgNavigation = !prefs.getBoolPref("currentFolderBar.navigation.showButtons"),
-						hideFolderNavigation = !prefs.getBoolPref("currentFolderBar.folderNavigation.showButtons");
+						hideFolderNavigation = isNoFolderMode ||  !prefs.getBoolPref("currentFolderBar.folderNavigation.showButtons");
 						// retired currentFolderBar.navigation.showToggle
 				util.logDebugOptional("interface",
           "Current Folder Bar - Collapsing optional Navigation Elements:\n" +
@@ -879,7 +897,7 @@ QuickFolders.Interface = {
 					if (special && special=="qfMsgFolderNavigation") {
 						node.collapsed = hideMsgNavigation;
 					}
-					else if (node.id && node.id.indexOf("QuickFolders-Navigate")==0) {
+					else if (node.id && node.id.startsWith("QuickFolders-Navigate")) {
 						// hide QuickFolders-NavigateUp, QuickFolders-NavigateLeft, QuickFolders-NavigateRight
 						node.collapsed = hideFolderNavigation;
 					}
@@ -891,13 +909,18 @@ QuickFolders.Interface = {
 		}
     catch (ex) {
       util.logException("updateNavigationBar()", ex);
+			return false;
     }
+		return true;
 
 	} ,
 
 	liftNavigationbar: function (contentDoc) {
-    // access all browsers in 3pane:
+    // access all browsers in 3pane: window.messageBrowser.contentWindow.gMessage
+		// contentDocument.defaultView = contentWindow
+		// message contentWindow.gMessage
 		const navigationContainer = contentDoc.getElementById("QuickFolders-PreviewToolbarPanel");
+		const tabOrWindow = contentDoc.defaultView.tabOrWindow;
 		QuickFolders.Util.logDebug("liftNavigationbar()");
 		let containerSelector;
 		let threadPane;
@@ -918,12 +941,17 @@ QuickFolders.Interface = {
 		// let messagePane = document3pane.querySelector("#messagePane");
 		
 		// in "Vertical View" layout, we should inject the toolbar as first element of the threadPane instead:
-		this.updateNavigationBar(contentDoc);
+		this.updateNavigationBar(contentDoc, tabOrWindow ? tabOrWindow.tabNode : null);
+		let isSingleMsgWindow = false;
+		try {
+		  isSingleMsgWindow = (window.location.href.endsWith("messageWindow.xhtml"));
+		} catch(ex) {;}
 		let currentFolderTab = contentDoc.getElementById ("QuickFoldersCurrentFolder"),
 		    folder = contentDoc.defaultView.gFolder,
-				tabNode = contentDoc.defaultView.tabOrWindow.tabNode;
-		this.initCurrentFolderTab(currentFolderTab, folder, null, tabNode);
-
+				tabNode = tabOrWindow.tabNode || null;
+		if (currentFolderTab && folder) {
+			this.initCurrentFolderTab(currentFolderTab, folder, null, tabNode);
+		}
 	},
 
 	updateCategoryLayout: function updateCategoryLayout() {
@@ -1422,113 +1450,27 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	// this is used on session restore currently only by Postbox
-	restoreCategories: function restoreCategories(tabIndex, categories) {
-    const util = QuickFolders.Util;
-		let tabmail = document.getElementById("tabmail"),
-		    info = util.getTabInfoByIndex(tabmail, tabIndex);
-		info.QuickFoldersCategory = categories;
-		let tab = tabmail.selectedTab;
-		if (tab == info) {
-			// current Tab:
-			QuickFolders.Interface.selectCategory(categories, false);
-		}
-	} ,
-  
-  storeTabSession: function(cmd, whichInfo=null) {
-    let tabmail = document.getElementById("tabmail"),
-        tabInfo = tabmail.tabInfo,
-        idx = QuickFolders.tabContainer.tabbox.selectedIndex || 0; // current tab index
-        
-    let cdx = 0,
-        tabSession = [];
-        
-    for (let i=0; i<tabInfo.length; i++) {
-      let info = tabInfo[i];
-      let type = info.mode.type;
-      
-      if (info == whichInfo) {
-        if (cmd == "remove") {
-          continue; // skip this one, the tab is being deleted.
-        }
-        info.QuickFoldersCategory = QuickFolders.Interface.currentActiveCategories;
-      }
-      
-      if (type=="folder" || type=="message") {
-        let cats = info.QuickFoldersCategory.split("|"),
-            validCats = cats.filter(c => QuickFolders.FolderCategory.isValidCategory(c)),
-            newCatString = validCats.join("|");
-            
-        if (info.QuickFoldersCategory != newCatString) {
-          QuickFolders.Util.logDebugOptional("categories", `correcting category for tab ${info.title}\n` + 
-            `from ${info.QuickFoldersCategory} to ${newCatString}`)
-          info.QuickFoldersCategory = newCatString;
-        }
-        let entry = 
-          {
-            mode: type,
-            categories: info.QuickFoldersCategory || ""
-          }
-        if (QuickFolders.Preferences.isDebug) {
-          entry.title = info.title;
-        }
-        tabSession.push(entry);
-        cdx++;
-      }
-    }
-    // store tabSession
-    // let tabSession = JSON.parse(QuickFolders.Preferences.getStringPref(sessionCategories)); // [] array tabs with visible tabs
-    let flatSession = JSON.stringify(tabSession);
-    QuickFolders.Preferences.setStringPref("sessionCategories", flatSession);
-    QuickFolders.Util.logDebug("=================================\n" +
-      "storeTabSession()\n" + JSON.stringify(JSON.parse(flatSession), null, "  "));
-    
-  },
-  
-  loadTabSession: function() {
-    let stored = QuickFolders.Preferences.getStringPref("sessionCategories") || "[]",
-        tabSession = JSON.parse(stored);
-    if (!Array.isArray(tabSession)) {
-       QuickFolders.Util.logDebug(`loadTabSession()\nInvalid sessionCategories string: ${stored}`);
-       return;
-    }
-    QuickFolders.Util.logDebug("=================================\n" +
-      "loadTabSession()\n" + JSON.stringify(tabSession, null, "  "), null, "  ");
-    if (tabSession.length) {
-      let tabmail = document.getElementById("tabmail"),
-          tabInfo = tabmail.tabInfo,
-          idx = QuickFolders.tabContainer.selectedIndex || 0, // current tab index
-          s = 0; 
-      QuickFolders.Util.logDebug(`loadTabSession iterate ${tabInfo.length} tabInfo entries...`); 
-      for (let i=0; i<tabInfo.length; i++) {
-        let info = tabInfo[i];
-        let mode = info.mode.type;
-        if (i == idx) {
-          info.QuickFoldersCategory = QuickFolders.Interface.currentActiveCategories;
-        }
-        // try to match all existing entries
-        if (["message", "folder", "mail3PaneTab"].includes(mode)) {
-          let catInfo = tabSession[s];
-          if (catInfo.mode == mode) {
-            info.QuickFoldersCategory = catInfo.categories
-            s++
-          }
-          if (s>=tabSession.length) break;
-        }
-      }
-      QuickFolders.Util.logDebug(`loadTabSession restored ${s} tab categories...`);      
-    }
-  },
+	storeTabCategorySession: function(cats) {
+	  // bridge to API code!
+		let tabmail = document.getElementById("tabmail");
+		if (!tabmail) return false;
+		let tabInfo = tabmail.currentTabInfo;
+		let extTabId = QuickFolders.WL.extension.tabManager.getWrapper(tabInfo).id;
+		QuickFolders.Util.notifyTools.notifyBackground({ func: "storeCategories", tabId: extTabId, categories: cats});
+		return true;
+	},
 
-	// For Category Session persistance,
-	// we have to overwrite tab.mode.persistTab || tab.mode.tabType.persistTab
-	// persistFunc has 2 parameters:  tabState = persistFunc.call(tab.mode.tabType, tab);
-	// see implementation in http://mxr.mozilla.org/comm-central/source/mail/base/content/mailTabs.js#166
-	// mailTabType.modes["folder"].persistTab -> needs to point to our own wrapper function.
-	// mailTabType.modes["folder"].restoreTab -> needs to point to our own wrapper function.
-  // dropdown = if this is passed we can now set the checkbox and select multple categories or just one
-  //            depending on the exact click target; also fill event
-  // return true if updateFolders was called.
+	readTabCategorySession: async function(tabInfo) {
+		try {
+			let extTabId = QuickFolders.WL.extension.tabManager.getWrapper(tabInfo).id;
+			let rv = await QuickFolders.Util.notifyTools.notifyBackground({ func: "readCategories", tabId: extTabId});
+			return rv;
+		}
+		catch(ex) {
+			QuickFolders.Util.logException("readTabCategorySession()", ex);
+		}
+	},
+  
 	selectCategory: function selectCategory(categoryName, rebuild, dropdown, event) {
     const util = QuickFolders.Util,
 					QI = QuickFolders.Interface,
@@ -1542,15 +1484,15 @@ QuickFolders.Interface = {
         catR = catA.filter(c => QuickFolders.FolderCategory.isValidCategory(c));
     if (!catR.length) {
       categoryName = QuickFolders.FolderCategory.ALL;
-    }
-    else if (catA.length != catR.length) {
+    } else if (catA.length != catR.length) {
       categoryName = catR.join("|");
     }
     
 		// early exit. category is selected already! SPEED!
-    if (QI.currentActiveCategories == categoryName)
+    if (QI.currentActiveCategories == categoryName) {
       return false;
-    // QI.currentActiveCategories = categoryName ? categoryName : FCat.UNCATEGORIZED ;
+		}
+
 		if (categoryName == FCat.ALWAYS) // invalid
 			return false;
 		// add support for multiple categories
@@ -1606,7 +1548,7 @@ QuickFolders.Interface = {
 				//	sessionStoreManager.setTabValue(tab, "QuickFoldersCategory", selectedCat);
 				//
         // build our own session store - OOOOOOOOFF
-        QI.storeTabSession();
+        QI.storeTabCategorySession(QI.currentActiveCategories);
 			}
 		}
 		catch(e) {
@@ -5732,7 +5674,7 @@ QuickFolders.Interface = {
 	} ,
 
 	// LIKELY OBSOLETE
-  hoistCurrentFolderBar: function hoistCurrentFolderBar(currentFolderTab, tabInfo) {
+  hoistCurrentFolderBar: function(currentFolderTab, tabInfo) {
     let util = QuickFolders.Util,
         tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode,
         rect0 = currentFolderTab.getBoundingClientRect();
@@ -5801,10 +5743,19 @@ QuickFolders.Interface = {
 		      prefs = QuickFolders.Preferences,
 					doc = currentFolderTab.ownerDocument;
     try {
-      if (!QuickFolders.tabContainer) debugger;  // test
+      // there is no tabContainer in a single message window.
+			let tabIdx = "n/a";
       let tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode;
-      util.logDebugOptional("interface.currentFolderBar", "initCurrentFolderTab(" + (folder ? folder.prettyName : "null") + ")\n"
-                            + "tabMode: " + tabMode, tabInfo);
+			try {
+				if (tabMode) {
+					tabIdx = tabInfo.parentElement.parentElement.selectedIndex;
+				}
+			} catch (ex) {}
+
+      util.logDebugOptional("interface.currentFolderBar", 
+			                      "initCurrentFolderTab(" + (folder ? folder.prettyName : "null") + ")\n"
+                            + "tabMode: " + tabMode + " -  tabIndex: " + tabIdx, tabInfo
+														);
       this.hoistCurrentFolderBar(currentFolderTab, tabInfo);
 
       if (folder) {
@@ -5813,18 +5764,20 @@ QuickFolders.Interface = {
           currentFolderTab.className = selectedButton.className; // else : "icon";
         }
         QuickFolders.Interface.addFolderButton(folder, entry, -1, currentFolderTab, "QuickFoldersCurrentFolder", prefs.ColoredTabStyle, true, false);
-        if (QuickFolders.FolderTree && this.CurrentFolderRemoveIconBtn) {
+				const CurrentFolderRemoveIconBtn = doc.getElementById("QuickFolders-RemoveIcon");
+				const CurrentFolderSelectIconBtn = doc.getElementById("QuickFolders-SelectIcon");
+        if (QuickFolders.FolderTree && CurrentFolderRemoveIconBtn) {
           if (!prefs.supportsCustomIcon) {
-            this.CurrentFolderSelectIconBtn.collapsed = true;
-            this.CurrentFolderRemoveIconBtn.collapsed = true;
+            CurrentFolderSelectIconBtn.collapsed = true;
+            CurrentFolderRemoveIconBtn.collapsed = true;
           }
           else {
             let hasIcon =
               prefs.getBoolPref("currentFolderBar.folderTreeIcon")
               ? QuickFolders.FolderTree.addFolderIconToElement(currentFolderTab, folder)  // add icon from folder tree
               : QuickFolders.FolderTree.hasTreeItemFolderIcon(folder);
-            this.CurrentFolderRemoveIconBtn.collapsed = !hasIcon;
-            this.CurrentFolderSelectIconBtn.collapsed = hasIcon; // hide select icon for tidier experience.
+            CurrentFolderRemoveIconBtn.collapsed = !hasIcon;
+            CurrentFolderSelectIconBtn.collapsed = hasIcon; // hide select icon for tidier experience.
           }
         }
         disableNavigation(false);
@@ -6040,7 +5993,7 @@ QuickFolders.Interface = {
       el.className = el.className.replace(/(col[0-9]+)/,"$1striped");
   },
 
-	ensureStyleSheetLoaded: function ensureStyleSheetLoaded(doc, Name, Title)	{
+	ensureStyleSheetLoaded: function(doc, Name, Title)	{
     const Cc = Components.classes,
 		      Ci = Components.interfaces,
 					util = QuickFolders.Util;
@@ -6072,10 +6025,8 @@ QuickFolders.Interface = {
 			QuickFolders.Interface.ensureStyleSheetLoaded(doc, Name, Title);
 			sheet = QuickFolders.Styles.getMyStyleSheet(doc, Name, Title);
 		}
-
 		if (!sheet) {
-			sheet = QuickFolders.Styles.getMyStyleSheet(doc, Name, Title);
-			QuickFolders.Util.logToConsole("ensureStyleSheetLoaded() - missing style sheet '" +  Name + "' - not found = not attempting any style modifications.");
+			QuickFolders.Util.logToConsole(`ensureStyleSheetLoaded() - missing style sheet '${Name}' - not found\n not attempting any style modifications.`, doc);
 		}
 		return sheet;
 	} ,
@@ -6425,7 +6376,7 @@ QuickFolders.Interface = {
       let tbBottom = prefs.getUserStyle("Toolbar","bottomLineWidth", 3) + "px";
       styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane", "border-bottom-width", tbBottom, true);
 
-			this.updateNavigationBar();
+			// this.updateNavigationBar(); // not working here in Tb 115!
 
       // change to numeric
 			let minToolbarHeight = prefs.getStringPref("toolbar.minHeight");
@@ -6739,9 +6690,14 @@ QuickFolders.Interface = {
 			"mail3PaneTab" - single message window
 			"glodaFacet" - search results
 		*/		
-    const util = QuickFolders.Util;
 		let tabMode = null,
-		    tabmail = gTabmail || util.$("tabmail");
+		    tabmail = QuickFolders.Util.$("tabmail");
+
+		if (!tabmail) {
+			// doc.ownerGlobal.parent.location.toString().endsWith("messageWindow.xhtml")  -- no tabmail!
+			if (typeof gTabMail == "undefined") return "";
+			tabmail = gTabMail;
+		}
 
 		if (tabmail) {
 			tabMode = QuickFolders.Util.getTabMode(tabmail.currentTabInfo);
@@ -6985,8 +6941,9 @@ QuickFolders.Interface = {
 			if (this.CategoryBox)
 				this.CategoryBox.setAttribute("mode", active ? "paint" : "");
 
-			if (this.CurrentFolderFilterToggleButton)
+			if (this.CurrentFolderFilterToggleButton) {
 				this.CurrentFolderFilterToggleButton.setAttribute("mode", "");
+			}
 			this.PaintModeActive = active;
 
 			toolbar = this.Toolbar;

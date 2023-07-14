@@ -12,7 +12,7 @@ QuickFolders.Styles = {
     function checkMatch(sheet, href) {
       return (Title && sheet.title == Title)
                 ||
-              (href && href.indexOf(Name)>=0);
+              (href && href.includes(Name));
     }
     function makeDebugEntry(cnt, ss, href) {
       return  cnt + '. ' + href
@@ -68,10 +68,10 @@ QuickFolders.Styles = {
         + "\ndoc.documentURI=" + document.documentURI
         + "\n============================================");
 		} else {
-			QuickFolders.Util.logDebug("Can not find style sheet: " + Name + " - " + Title + " in "
-			  + (window.closed ? "closed window" : window.location)
-        + "\ndoc.title       =" + doc.title
-				+ "\ndoc.documentURI=" + document.documentURI);
+			QuickFolders.Util.logDebugOptional("css",`Can not find style sheet: ${Name} - ${Title} in 
+ (${window.closed ? "closed window" : window.location})
+ doc.title       = ${doc.title}
+ doc.documentURI= ${document.documentURI}`);
 		}
         
 		QuickFolders.Util.logDebugOptional("css.styleSheets", styleSheetList.length + " StyleSheets found:\n" + sList);

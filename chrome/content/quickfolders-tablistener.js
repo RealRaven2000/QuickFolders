@@ -94,7 +94,9 @@ QuickFolders.TabListener = {
           QI.lastTabSelected = null;
       }
     }
-    catch(e) {QuickFolders.LocalErrorLogger("Exception in Item event - calling mailTabSelected:\n" + e)};
+    catch(e) {
+      QuickFolders.LocalErrorLogger("Exception in Item event - calling mailTabSelected:\n" + e)
+    };
   },
   
   closeTab: function(evt) {

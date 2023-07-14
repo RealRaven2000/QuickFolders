@@ -334,6 +334,18 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           // convert an nsIMsgFolder to a MailFolder.
           // see https://webextension-api.thunderbird.net/en/stable/how-to/experiments.html#using-folder-and-message-types
           return context.extension.folderManager.convert(folder);
+        },
+
+        toggleToolbarAction: function(keepState = false) {
+          const util = win.QuickFolders.Util;
+          let btn = win.document.querySelector("[item-id='ext-quickfolders@curious.be']");
+          if (btn) {
+            util.logDebug("toggleToolbarAction()");
+            console.log(btn);
+            win.QuickFolders.Interface.toggleToolbar(btn, keepState);
+          }
+          
+
         }
        
      }

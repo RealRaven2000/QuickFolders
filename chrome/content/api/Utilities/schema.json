@@ -109,6 +109,18 @@
             "description": "nsIMsgFolder"
           }
         ]
+      },
+
+      {
+        "name": "toggleToolbarAction",
+        "type": "function",
+        "parameters": [
+          {
+            "name": "keepState",
+            "type": "boolean",
+            "description": "keep toggle status, and patch only"
+          }          
+        ]
       }
 
       

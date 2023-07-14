@@ -532,7 +532,6 @@ menupopup.widerMenu menucaption {
 }
 
 
-
 /* [issue 191] - large icon support */
 #QuickFolders-Tools-Pane[iconsize="large"] toolbarbutton image,
 #QuickFolders-CurrentFolderTools[iconsize="large"] toolbarbutton.icon > image {
@@ -1031,3 +1030,8 @@ menupopup.QuickFolders-folder-popup .menu-iconic-left {
 	 -moz-image-region: auto; /* trash inheritance */
 }
 
+/* hide dropdown until Tb supports checkbuttons */
+li[item-id="ext-quickfolders@curious.be"] button.unified-toolbar-button[popup] {
+  padding-inline-end: 0;
+  background-image: none !important; 
+}

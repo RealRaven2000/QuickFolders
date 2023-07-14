@@ -27,10 +27,7 @@ function onLoad(activatedWhileWindowOpen) {
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
   
 
-  WL.injectElements(`
-
-  <vbox id="messagepanebox">
-      
+  WL.injectElements(`<vbox id="messagepanebox">
       <hbox id="QuickFolders-PreviewToolbarPanel" 
             class="QuickFolders-NavigationPanel">
         <span flex="5" id="QF-CurrentLeftSpacer"> </span>
@@ -140,8 +137,7 @@ function onLoad(activatedWhileWindowOpen) {
         
         <span flex="5" id="QF-CurrentRightSpacer"> </span>
       </hbox>
-  </vbox>
-      `);
+  </vbox>`);
         
   window.QuickFolders.Util.logDebug('Adding messageWindow...');
   window.QuickFolders.Util.notifyTools.enable();

@@ -486,10 +486,6 @@ async function onLoad(activatedWhileWindowOpen) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
   }
 
-
-
-
-  
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!
 }
 

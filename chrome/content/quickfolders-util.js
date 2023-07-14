@@ -1297,7 +1297,8 @@ allowUndo = true)`
         scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
     try {
       scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
-      Services.console.logMessage(scriptError);
+      // Services.console.logMessage(scriptError);  => no output!!
+      console.warn(scriptError.toString()) 
     }
     catch(ex) {
       alert('logError failed: ' + aMessage);

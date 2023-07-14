@@ -126,6 +126,8 @@ async function main() {
     "updateNavigationBar",
     "updateQuickFoldersLabel",
     "updateUserStyles",
+    "storeCategories",
+    "readCategories",
     "toggleNavigationBars"
   ];
 
@@ -313,6 +315,19 @@ async function main() {
         messenger.Utilities.toggleToolbarAction(true); // patch action button (toolbar toggle)
         break;
 
+      case "storeCategories": // store category in session
+        await messenger.sessions.setTabValue(data.tabId, "QuickFolders_Categories", data.categories);
+        break;
+
+      case "readCategories": // read category from tabsession
+      {
+        let cats = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_Categories");
+        return cats;
+      }
+        
+        
+
+
     }
   }
   
@@ -373,6 +388,9 @@ async function main() {
   * an object inside the global window. The name of that object can be specified via
   * the parameter of startListening(). This object also contains an extension member.
   */
+  // make sure session has loaded all tabs.
+  let [ mailTab ] = await browser.mailTabs.query({});
+  await browser.mailTabs.get(mailTab.id)
   messenger.WindowListener.startListening(); 
   
   // [issue 296] Exchange account validation (supported since TB98)

@@ -491,7 +491,17 @@ var QuickFolders = {
         if (info && util.getTabMode(info) == "mail3PaneTab") {
           // read from tab session (wx API 115)
           let cats = await QuickFolders.Interface.readTabCategorySession(info);
-          info.QuickFoldersCategory = cats;
+          // the session is currently deleted 
+          if (typeof cats == "undefined") {
+            QuickFolders.Util.logDebug("no session info for tab category...");
+            if (info.QuickFoldersCategory) {
+              // re-store for next Tb restart
+              await QuickFolders.Interface.storeTabCategorySession(info.QuickFoldersCategory, info);
+            }
+          }
+          else {
+            info.QuickFoldersCategory = cats; // restore from session
+          }
         }
       }
     }

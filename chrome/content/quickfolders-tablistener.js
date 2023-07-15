@@ -104,7 +104,6 @@ QuickFolders.TabListener = {
     if (["folder","message","mail3PaneTab"].includes(evt.detail.tabInfo.mode.type)) {
       let info = evt.detail.tabInfo;
       QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.closeTab() - " + info.title);
-      QuickFolders.Interface.storeTabSession("remove", info);
     }
   } ,
   
@@ -113,17 +112,14 @@ QuickFolders.TabListener = {
       let newTabInfo = evt.detail.tabInfo;
       if (newTabInfo) {
         newTabInfo.QuickFoldersCategory = QuickFolders.Interface.currentActiveCategories;
-        QuickFolders.Interface.storeTabSession();
       }
     }
   } ,
   
   moveTab: function(evt) {
-    let tabmail = document.getElementById("tabmail");
     let idx = QuickFolders.tabContainer.tabbox.selectedIndex;
     idx = idx || 0;
     QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.moveTab()  - idx = " + idx);
-    QuickFolders.Interface.storeTabSession();
   } 
 }
 

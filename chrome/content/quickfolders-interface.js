@@ -1448,11 +1448,14 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	storeTabCategorySession: function(cats) {
+	// @tabInfo - optional parameter for iterating all tabs. use current tab else
+	storeTabCategorySession: function(cats, tabInfo) {
 	  // bridge to API code!
-		let tabmail = document.getElementById("tabmail");
-		if (!tabmail) return false;
-		let tabInfo = tabmail.currentTabInfo;
+		if (!tabInfo) {
+			let tabmail = document.getElementById("tabmail");
+			if (!tabmail) return false;
+			tabInfo = tabmail.currentTabInfo;
+		}
 		let extTabId = QuickFolders.WL.extension.tabManager.getWrapper(tabInfo).id;
 		QuickFolders.Util.notifyTools.notifyBackground({ func: "storeCategories", tabId: extTabId, categories: cats});
 		return true;
@@ -1460,8 +1463,10 @@ QuickFolders.Interface = {
 
 	readTabCategorySession: async function(tabInfo) {
 		try {
+			QuickFolders.Util.logHighlight("readTabCategorySession()");
 			let extTabId = QuickFolders.WL.extension.tabManager.getWrapper(tabInfo).id;
 			let rv = await QuickFolders.Util.notifyTools.notifyBackground({ func: "readCategories", tabId: extTabId});
+			QuickFolders.Util.logDebug(`readTabCategorySession - for tabId[${extTabId}] returned ${rv}`);
 			return rv;
 		}
 		catch(ex) {

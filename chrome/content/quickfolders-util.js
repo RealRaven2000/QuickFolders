@@ -1287,6 +1287,13 @@ allowUndo = true)`
     console.log(`%c[issue 351] TB115 - to do: %c${txt}`, "color:blue;", "background: blue; color:yellow;");
   },
 
+	// optional logging for important points in flow.
+	logHighlight: function(txt, color="white", background="rgb(80,0,0)", ...args) {
+		if (QuickFolders.Preferences.isDebug) {
+			console.log(`QuickFolders %c${txt}`, `color: ${color}; background: ${background}`, ...args);
+		}
+	},  
+
   // flags
   // errorFlag    0x0   Error messages. A pseudo-flag for the default, error case.
   // warningFlag    0x1   Warning messages.

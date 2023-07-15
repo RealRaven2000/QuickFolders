@@ -4,13 +4,13 @@
     "gecko" : {
       "id" : "quickfolders@curious.be",
       "strict_min_version" : "111.0",
-      "strict_max_version" : "115.*"
+      "strict_max_version" : "115.0.2"
     }
   },
   "author": "Axel Grude",
   "name" : "QuickFolders",
   "description" : "__MSG_extensionDescription__",
-  "version" : "6.0pre149",
+  "version" : "6.0pre224",
   "default_locale": "en",
   "developer" : {
       "name" : "Axel Grude",
@@ -26,8 +26,18 @@
     "clipboardRead",
     "clipboardWrite",
     "notifications",
-    "tabs"
+    "tabs", 
+    "sessions"
   ],
+  "browser_action": {
+    "default_icon": {
+      "19": "chrome/content/skin/ico/QuickFolders_32.svg"
+    },
+    "default_title": "QuickFolders",
+    "default_popup": "html/quickfolders_action_popup.html",
+    "default_windows": [ "normal", "messageDisplay" ],
+    "type": "button"
+  },  
   "experiment_apis": {
     "WindowListener": {
       "schema": "chrome/content/api/WindowListener/schema.json",

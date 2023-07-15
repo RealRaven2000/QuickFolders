@@ -469,9 +469,7 @@ var QuickFolders = {
 	},
 
 	initDelayed: async function initDelayed(WLorig) {
-    const Cc = Components.classes,
-					Ci = Components.interfaces,
-					prefs = QuickFolders.Preferences,
+    const prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util,
 					QI = QuickFolders.Interface;
 	  if (this.initDone) return;
@@ -483,7 +481,7 @@ var QuickFolders = {
       QuickFolders.WL = WLorig;
     }
 
-    // iterate all tabs
+    // iterate all tabs, Tb115
     QuickFolders.Util.logDebug("restore categories from tab session")
     let tabmail = document.getElementById("tabmail");
     if (tabmail) {
@@ -491,6 +489,7 @@ var QuickFolders = {
       for (let i = 0; i < tabInfoCount; i++) {
         let info = util.getTabInfoByIndex(tabmail, i);
         if (info && util.getTabMode(info) == "mail3PaneTab") {
+          // read from tab session (wx API 115)
           let cats = await QuickFolders.Interface.readTabCategorySession(info);
           info.QuickFoldersCategory = cats;
         }
@@ -1930,71 +1929,6 @@ var QuickFolders = {
 
 
 // wrap function for session store: persist / restore categories	
-QuickFolders.prepareSessionStore = function () {
-	const util = QuickFolders.Util,
-        model = QuickFolders.Model,
-		    CI = Components.interfaces;
-  util.logDebug("=============================\nPreparing Session Store - for QuickFolders Categories...\n========================");
-	if (!util) {
-		return;
-	}
-	if (typeof mailTabType == "undefined") { // Thunderbird - defined in mailTab.js
-    return;
-  }
-  
-  if (mailTabType.QuickFolders_SessionStore) return; // avoid multiple modifications.
-  mailTabType.QuickFolders_SessionStore = {};
-  // overwrite persist 
-  let orgPersist = mailTabType.modes["folder"].persistTab;
-  mailTabType.QuickFolders_SessionStore.persistTab = orgPersist;
-  mailTabType.modes["folder"].persistTab = function(aTab) {
-    let retval = orgPersist(aTab);
-    if (retval) {
-      retval.QuickFoldersCategory = aTab.QuickFoldersCategory; // add category from the tab to persisted info object
-      util.logDebug("Persisted tab category: " + aTab.QuickFoldersCategory);
-    }
-    return retval; 
-  }
-  // overwrite restoreTab
-  let orgRestore = mailTabType.modes["folder"].restoreTab;
-  mailTabType.QuickFolders_SessionStore.restoreTab = orgRestore;
-  mailTabType.modes["folder"].restoreTab = function(aTabmail, aPersistedState) {
-    orgRestore(aTabmail, aPersistedState);
-    let txt;
-    try {
-      txt = aPersistedState.QuickFoldersCategory || "(no category)";
-    } catch(ex) {;}
-    // let folder = model.getMsgFolderFromUri(aPersistedState.folderURI); 
-    util.logDebug("Restore tabs: QuickFoldersCategory = " + txt + " persisted State = ", aPersistedState);
-    if (aPersistedState.QuickFoldersCategory) {
-      let tabInfo, theUri;
-      // Thunderbird only code, so it is fine to use tabInfo here:
-      for (let i = 0; i < aTabmail.tabInfo.length; i++) {
-        tabInfo = aTabmail.tabInfo[i];
-        if (tabInfo && tabInfo.folderDisplay && tabInfo.folderDisplay.view && tabInfo.folderDisplay.view.displayedFolder) {
-          theUri = tabInfo.folderDisplay.view.displayedFolder.URI;
-          if (theUri == aPersistedState.folderURI) {
-            // util.logDebug("restore category to tabInfo folder [" + theUri + "] + " +  aPersistedState.QuickFoldersCategory);
-            let cat = aPersistedState.QuickFoldersCategory;
-            if (cat) {
-              util.logDebug(`Tab[${i}] Restored category ${cat}`);
-              tabInfo.QuickFoldersCategory = aPersistedState.QuickFoldersCategory;
-            }
-            return;
-          }
-        }
-      }
-    }
-  }
-	
-};
-
-QuickFolders.restoreSessionStore = function() {
-  if (!mailTabType.QuickFolders_SessionStore) return;
-  mailTabType.modes["folder"].persistTab = mailTabType.QuickFolders_SessionStore.persistTab;
-  mailTabType.modes["folder"].restoreTab = mailTabType.QuickFolders_SessionStore.restoreTab;
-}
-
 
 function QuickFolders_MyChangeSelection(tree, newIndex) {
   if(newIndex >= 0)

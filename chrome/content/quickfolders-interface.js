@@ -36,7 +36,6 @@ QuickFolders.Interface = {
   get ReadingListButton () { return QuickFolders.Util.$("QuickFolders-readingList"); },
 	get CategoryMenu() { return QuickFolders.Util.$("QuickFolders-Category-Selection"); },
 	get PaintButton() { return QuickFolders.Util.$("QuickFolders-paintBucketActive"); },
-	get MailButton() { return QuickFolders.Util.$("QuickFolders-CurrentMail"); },
 	get TitleLabel() { return QuickFolders.Util.$("QuickFolders-title-label"); },
 	get TitleLabelBox() { return QuickFolders.Util.$("QuickFolders-LabelBox"); },
 	get FoldersBox() { return QuickFolders.Util.$("QuickFolders-FoldersBox"); },
@@ -741,17 +740,6 @@ QuickFolders.Interface = {
       this.lastTabSelected = null;  // reset to force highlight active tab
 		this.onTabSelected();
 
-		// current message dragging
-		let button = this.MailButton;
-		if (button)
-			this.setEventAttribute(button, "ondragstart","QuickFolders.messageDragObserver.startDrag(event,true)");
-
-		// current thread dragging; let's piggyback "isThread"...
-		// use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
-		button = util.$("QuickFolders-CurrentThread");
-		if (button) {
-			this.setEventAttribute(button, "ondragstart","event.isThread=true; QuickFolders.messageDragObserver.startDrag(event,true)");
-    }
     if (profileThis) {
       let time = util.stopWatch("all","updateFolders");
       console.log(`%cQuickFolders.Interface.updateFolders(rebuildCat = ${rebuildCategories}, minimal = ${minimalUpdate})\n ${countFolders} folders took: ${time}`, profileStyle);
@@ -813,13 +801,23 @@ QuickFolders.Interface = {
 			collapseConfigItem("QuickFolders-currentFolderMailFolderCommands", "currentFolderBar.showFolderMenuButton");
 			collapseConfigItem("QuickFolders-currentFolderIconCommands", "currentFolderBar.showIconButtons");
 			let repairBtn = collapseConfigItem("QuickFolders-RepairFolderBtn", "currentFolderBar.showRepairFolderButton");
-			if (repairBtn && repairBtn.getAttribute("collapsed")=="false")
+			if (repairBtn && repairBtn.getAttribute("collapsed")=="false") {
 			  repairBtn.setAttribute("tooltiptext", this.getUIstring("qfFolderRepair"));
+			}
+
 
 			// In Thunderbird 115 the style sheet is in a separate document.
 			let toolbar2 = // this.CurrentFolderBar
 										 doc3pane.getElementById ("QuickFolders-CurrentFolderTools");
 			if (toolbar2) {
+				// selected or current message / (FUTURE) thread dragging; let's piggyback "isThread"...
+				// FUTURE: use getThreadContainingMsgHdr(in nsIMsgDBHdr msgHdr) ;
+				//         this.setEventAttribute(button, "ondragstart","event.isThread=true; QuickFolders.messageDragObserver.startDrag(event,true)");
+				let button = toolbar2.querySelector("#QuickFolders-CurrentMail");
+				if (button) {
+					this.setEventAttribute(button, "ondragstart","QuickFolders.messageDragObserver.startDrag(event,true)");
+				}			
+				
 				let theme = prefs.CurrentTheme,
 						ss = this.getStyleSheet(doc3pane, "quickfolders-layout.css", "QuickFolderStyles"),
 						background = prefs.getStringPref("currentFolderBar.background"),

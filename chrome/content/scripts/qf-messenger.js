@@ -33,7 +33,6 @@ async function onLoad(activatedWhileWindowOpen) {
   WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
   WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
-  // WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
   
   // -- main toolbar+palette (LEGACY)
@@ -428,13 +427,7 @@ async function onLoad(activatedWhileWindowOpen) {
   // remove category to force selection when loading new version
   // [issue 279]
   window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.INIT;
-  try {
-    window.QuickFolders.prepareSessionStore();
-  }
-  catch (ex) {
-    window.QuickFolders.Util.logException("QuickFolders.prepareSessionStore()",ex);
-  }
-  
+
   // window.QuickFolders.initDocAndWindow(window);
   
   
@@ -513,14 +506,6 @@ function onUnload(isAddOnShutDown) {
     stashQuickFiltersButton("quickfilters-current-msg-runbutton", stashBox);
   }
   
-  // restore global overwritten functions 
-  try {
-    // window.QuickFolders.restoreSessionStore();
-  }
-  catch(ex) {
-    console.log(ex);
-  }
-    
   // remove all listeners
   try {
     window.QuickFolders.Interface.removeToolbarHiding.call(window.QuickFolders.Interface);

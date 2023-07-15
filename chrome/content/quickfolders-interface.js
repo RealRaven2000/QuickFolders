@@ -1540,12 +1540,8 @@ QuickFolders.Interface = {
 			    tabMode = util.getTabMode(tab);
 			if (tab &&
 			    (["message", "folder", "mail3PaneTab"].includes (tabMode) )) {
-				tab.QuickFoldersCategory = QI.currentActiveCategories; // store list!
-				// setTabValue does not exist (yet)
-				//if (sessionStoreManager.setTabValue)
-				//	sessionStoreManager.setTabValue(tab, "QuickFoldersCategory", selectedCat);
-				//
-        // build our own session store - OOOOOOOOFF
+				tab.QuickFoldersCategory = QI.currentActiveCategories; 
+				// use wx session API:
         QI.storeTabCategorySession(QI.currentActiveCategories);
 			}
 		}

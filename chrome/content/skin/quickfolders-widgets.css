@@ -98,8 +98,8 @@ tab#QuickFolders-General  {
 	/* text-decoration: underline; */
 }
 
-menu.dbgMenu menuitem:hover,
-menu#QuickFolders-debug, menu.dbgMenu {
+menu.dbgMenu:not([collapsed=true]) menuitem:hover,
+menu.dbgMenu:not([collapsed=true]) {
 	list-style-image : url('ico/bug.svg') !important;
 }
 

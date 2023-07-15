@@ -1113,22 +1113,26 @@ allowUndo = true)`
     return suggestion;
   } ,
 
+  // Fills the passed in array with the uris of all currently selected messages.
   getSelectedMessages: function(selectedMessageUris) {
     if (!selectedMessageUris) selectedMessageUris = [];
     let selectedMessages = [];
-    let treeView = gTabmail.currentTabInfo.chromeBrowser.contentWindow.threadTree.view;
-    if (treeView) {
-      selectedMessages = treeView.getSelectedMsgHdrs();
-      // we can also read message.properties (list of property ids)
-      // read with message.getStringProperty("subject")
-      selectedMessages.forEach(hdr => {
-        selectedMessageUris.push(hdr.folder.getUriForMsg(hdr));
-      });
+    let contentWin = gTabmail.currentTabInfo.chromeBrowser.contentWindow;
+    if (contentWin.gMessage) {
+      selectedMessages = [contentWin.gMessage];
     }
+    else if (contentWin.gDBView) {
+      selectedMessages = contentWin.gDBView.getSelectedMsgHdrs()
+    }    
+    // we can also read message.properties (list of property ids)
+    // read with message.getStringProperty("subject")
+    selectedMessages.forEach(hdr => {
+      selectedMessageUris.push(hdr.folder.getUriForMsg(hdr));
+    });
     return selectedMessages;
   },
 
-  getSelectedMsgUris: function getSelectedMsgUris() {
+  getSelectedMsgUris: function() {
     let messageUris = [];
     this.getSelectedMessages(messageUris);
     return messageUris;
@@ -1150,7 +1154,7 @@ allowUndo = true)`
     return fromName + ': ' + (subject ? (subject + ' - ') : '') + date;    
   } ,
   
-  threadPaneOnDragStart: function threadPaneOnDragStart(aEvent) {
+  threadPaneOnDragStart: function(aEvent) {
     QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart(" + aEvent.originalTarget.localName
       + (aEvent.isThread ? ",thread=true" : "")
       + ")");

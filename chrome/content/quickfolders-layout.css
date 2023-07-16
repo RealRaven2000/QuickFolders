@@ -511,10 +511,15 @@ menupopup.widerMenu menucaption {
 
 #QuickFolders-FoldersBox {
 	display: flex;
+  flex-flow: row wrap;
 	flex-wrap: wrap;
 	max-height:25em;
 	margin-bottom: -1px;
-	overflow-y: auto;
+}
+
+#QuickFolders-FoldersBox div.break {
+  flex-basis: 100% !important;
+  height: 0;
 }
 
 .QuickFolders-Empty-Toolbar-Label {
@@ -522,8 +527,7 @@ menupopup.widerMenu menucaption {
 	min-width: 85%;
 }
 
-.quickfolders-toolbarbuttons toolbarbutton
-{
+.quickfolders-toolbarbuttons toolbarbutton {
 	appearance: toolbarbutton !important;
 }
 
@@ -797,12 +801,11 @@ menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] {
   -moz-context-properties: fill, stroke;
   stroke: var(--new-highlight);
 }
-menuitem.cmd[tag="qfRemoveCategory"], menuitem.mailCmd[tag="qfRemoveCategory"] {
-    list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
-}
+menuitem.cmd[tag="qfRemoveCategory"], menuitem.mailCmd[tag="qfRemoveCategory"],
 menuitem.cmd[tag="qfRemove"], menuitem.mailCmd[tag="qfRemove"] {
-    list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
+  list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
 }
+
 menuitem.cmd[tag="qfBreak"],
 menuitem.cmd[tag="qfBreakDel"] {
     list-style-image: url('chrome://quickfolders/content/skin/ico/line-break.svg') !important;

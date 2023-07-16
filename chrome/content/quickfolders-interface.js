@@ -2335,7 +2335,8 @@ QuickFolders.Interface = {
 		  // line break?
 			if (entry && entry.breakBefore && !isFirst) { // no line break if this is the first button on a line
 			  // without explicitely adding this namespace, the break doesnt show up!
-			  let LF = doc.createElementNS("http://www.w3.org/1999/xhtml", "br");
+			  let LF = doc.createElement("div");
+				LF.classList.add("break");
 			  this.FoldersBox.appendChild(LF);
 			}
 

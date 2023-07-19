@@ -446,9 +446,6 @@ async function onLoad(activatedWhileWindowOpen) {
     QuickFolders.patchFolderTree(tabInfo);
   });
 
-  
-  // Enable the global notify notifications from background.
-  window.QuickFolders.Util.notifyTools.enable();
   await window.QuickFolders.Util.init();
   if (window.QuickFolders.Util.versionGreaterOrEqual(window.QuickFolders.Util.Appversion, "102")) {
     WL.injectCSS("chrome://quickfolders/content/skin/qf-102.css");

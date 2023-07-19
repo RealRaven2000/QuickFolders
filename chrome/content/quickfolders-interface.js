@@ -6553,8 +6553,10 @@ QuickFolders.Interface = {
 
   /**
    * toggles visibility of current folder toolbar
-   * @visibleOrEvent {bool}: visibility tag - or an event if called from notification tools
-   * @selectorIn    {string} : "" - determine which one to close from current window / tab context
+	 * @param optionsOrEvent { [isFromWindow], [display], [doc], selector }
+   *        display {bool}: visibility tag - or an event if called from notification tools
+	 *        doc: document containing toolbar
+   *        selector {string} : "" - determine which one to close from current window / tab context
    *                           "singleMailTab" - a single message (conversation) tab
    *                           "messageWindow" - a single mail window
    **/
@@ -6567,10 +6569,10 @@ QuickFolders.Interface = {
 
       // first parameter may be an event - coming from notification!
       const isEvent = optionsOrEvent && (typeof optionsOrEvent["target"] !== "undefined");
-					
-			const isCurrent = !isEvent && (typeof optionsOrEvent.display == "boolean"); // from a dropdown menu
+			const isFromWindow = optionsOrEvent["isFromWindow"] || false;
+			const isCurrent = !isEvent && !isFromWindow && (typeof optionsOrEvent.display == "boolean")  && !(optionsOrEvent.doc); // toggle, from a dropdown menu
 
-			let selector = isCurrent ? null : optionsOrEvent.selector;
+			let selector = typeof (optionsOrEvent.selector == "string") ? optionsOrEvent.selector : "";
 
       // determine selector from context
       const windowType = document.getElementById("messengerWindow").getAttribute("windowtype");
@@ -6589,9 +6591,8 @@ QuickFolders.Interface = {
       } 			
 
       if (!isEvent) {
-        isVisible = optionsOrEvent.display; // passed in directly
-      }
-      else {
+        isVisible = optionsOrEvent.display; // visibility status passed as param
+      } else {
         isVisible = QuickFolders.Preferences.isShowCurrentFolderToolbar(selector);
       }
 
@@ -6627,7 +6628,7 @@ QuickFolders.Interface = {
 				doc = optionsOrEvent.doc;
 			}
       
-      util.logDebugOptional("interface.currentFolderBar", "win=" + win.document.URL + "\ndocument=" + doc.URL);
+      util.logDebugOptional("interface.currentFolderBar", "win=" + win.document.URL + "\ndocument=" + doc ? doc.URL : "n/a");
       if (!doc) {
         util.logDebugOptional("interface.currentFolderBar", 
             "|================================================|" + "\n" 
@@ -6636,36 +6637,18 @@ QuickFolders.Interface = {
         return;
       }
 
-      let tabMode = QuickFolders.Interface.CurrentTabMode,
-          currentFolderBar = doc.getElementById(
-                               (selector=="messageWindow") ?
-                               "QuickFolders-PreviewToolbarPanel-Single" :
-                               "QuickFolders-PreviewToolbarPanel"
-                             );
+			let toolbarId = "QuickFolders-PreviewToolbarPanel"; // (selector=="messageWindow") ? "QuickFolders-PreviewToolbarPanel-Single" : 
+      let currentFolderBar = doc.getElementById(toolbarId);
       if (currentFolderBar) {
         util.logDebugOptional("interface.currentFolderBar", 
             "|===========================================================|" + "\n" 
           + "| currentFolderBar.style.display = " + currentFolderBar.style.display  + "\n" 
           + "|===========================================================|" + "\n" 
-          + "tabMode = " + tabMode + "\n" 
           + "visible = " + isVisible);
-        if (selector == "singleMailTab" && tabMode =="message"
-            ||
-            selector == "" // && tabMode == "folder"
-            ||
-            selector == "messageWindow"
-           ) {
-          
+        if (["","singleMailTab","messageWindow"].includes(selector)) {          
           currentFolderBar.collapsed = !isVisible;
           currentFolderBar.style.display = isVisible ? "flex" : "none";
           util.logDebugOptional("interface.currentFolderBar", "Effected display of current folder bar =" + currentFolderBar.style.display);
-					/*
-          if (isVisible && selector != "messageWindow") {
-            let rect = currentFolderBar.getBoundingClientRect();
-            if (!rect.width)
-              this.hoistCurrentFolderBar(this.CurrentFolderTab);
-          }
-					*/
         }
       }
       else {

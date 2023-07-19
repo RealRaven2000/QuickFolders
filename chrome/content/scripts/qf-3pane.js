@@ -1,4 +1,35 @@
 
+let windowMode = "";
+
+async function notificationHandler(data) {
+  let command = data.func || data.command || data.event;
+  const isEvent = (data.event);
+  const contentDoc = window.document;
+
+  switch (command) {
+    case "updateNavigationBar":
+      let tabInfo;
+      try {
+        tabInfo = contentDoc.defaultView.tabOrWindow.tabNode;
+      } catch(ex) {;}      
+      window.QuickFolders.Interface.updateNavigationBar(window.document, tabInfo);
+      break;
+
+    case "toggleNavigationBars": // toggles _all_ navigation bars (comes from options window)
+      let displayDefault = window.QuickFolders.Preferences.isShowCurrentFolderToolbar(windowMode);
+      let isDisplay = isEvent ? displayDefault : 
+        (typeof data.display == "boolean" ? data.display : displayDefault) ;
+      window.QuickFolders.Interface.displayNavigationToolbar(
+        {
+          display: isDisplay,
+          doc: contentDoc,
+          selector: data.selector || windowMode
+        }
+      );
+      break;
+  }
+}
+
 
 async function onLoad(activatedWhileWindowOpen) {
   const WAIT_FOR_3PANE = 1000;
@@ -8,6 +39,7 @@ async function onLoad(activatedWhileWindowOpen) {
     // parent document should already be patched!
     return;
   }
+
 
   window.QuickFolders = window.parent.QuickFolders;
   window.QuickFolders.WLM = WL; // closre a separate instace of the WindowListener that works in messagepange
@@ -138,7 +170,6 @@ async function onLoad(activatedWhileWindowOpen) {
   <span flex="5" id="QF-CurrentRightSpacer"> </span>
 </hbox>`;
 
-
       switch(contentDoc.URL) {
         case "about:3pane":    // inject into thread pane (bottom)
           WL.injectElements(`
@@ -146,6 +177,7 @@ async function onLoad(activatedWhileWindowOpen) {
       + INJECTED_ELEMENTS + `   
           </div>
           `);
+          windowMode = "";
           break;
         case "about:message":      // inject into messagepane (on top)
           WL.injectElements(`
@@ -153,9 +185,14 @@ async function onLoad(activatedWhileWindowOpen) {
       + INJECTED_ELEMENTS + `   
           </vbox>
           `);
+          if (window.parent.document.URL.endsWith("messageWindow.xhtml")) {
+            windowMode = "messageWindow";
+          } else {
+            windowMode = "singleMailTab";
+          } 
           break;
       }
-
+  // when to set windowMode = "messageWindow" ??
 
   /*
   <!-- if conversation view (extension) is active ?? then the browser element multimessage will be visible
@@ -175,9 +212,10 @@ async function onLoad(activatedWhileWindowOpen) {
       const prefs = win.QuickFolders.Preferences;
       win.QuickFolders.Interface.displayNavigationToolbar(
         {
-          display: prefs.isShowCurrentFolderToolbar(),
+          isFromWindow: true,
+          display: prefs.isShowCurrentFolderToolbar(windowMode),
           doc : contentDoc,
-          selector : null
+          selector : windowMode
         }
       ); 
       let tabInfo;
@@ -192,6 +230,24 @@ async function onLoad(activatedWhileWindowOpen) {
     },
     WAIT_FOR_3PANE
   );
+
+
+  // the following adds the notifyTools API to communicate with the background page
+  var { ExtensionParent } = ChromeUtils.import("resource://gre/modules/ExtensionParent.jsm");
+  let ext = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
+  Services.scriptloader.loadSubScript(
+    ext.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
+    this,
+    "UTF-8"
+  );
+
+  this.notifyTools.setAddOnId("quickfolders@curious.be");
+
+  this.notifyTools.addListener((data) => {
+    return notificationHandler(data);
+  });
+
+
 }
 
 function onUnload(isAddOnShutown) {

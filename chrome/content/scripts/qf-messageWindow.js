@@ -26,9 +26,9 @@ function onLoad(activatedWhileWindowOpen) {
   WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
   
-
+  /*
   WL.injectElements(`<vbox id="messagepanebox">
-      <hbox id="QuickFolders-PreviewToolbarPanel" 
+      <hbox id="QuickFolders-PreviewToolbarPanel-Single" 
             class="QuickFolders-NavigationPanel">
         <span flex="5" id="QF-CurrentLeftSpacer"> </span>
         <toolbar id="QuickFolders-CurrentFolderTools" class="contentTabToolbar" iconsize="small">
@@ -138,6 +138,7 @@ function onLoad(activatedWhileWindowOpen) {
         <span flex="5" id="QF-CurrentRightSpacer"> </span>
       </hbox>
   </vbox>`);
+  */
         
   window.QuickFolders.Util.logDebug('Adding messageWindow...');
   window.QuickFolders.Util.notifyTools.enable();
@@ -146,8 +147,6 @@ function onLoad(activatedWhileWindowOpen) {
 
   const QI = window.QuickFolders.Interface;
   mylisteners["updateUserStyles"] = QI.updateUserStyles.bind(QI);
-  mylisteners["updateNavigationBar"] = QI.updateNavigationBar.bind(QI);
-  mylisteners["toggleNavigationBars"] = QI.displayNavigationToolbar.bind(QI);
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
   }

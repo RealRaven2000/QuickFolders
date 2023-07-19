@@ -85,7 +85,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             if (!path.toLowerCase().endsWith('.json')) {
               path += '.json';
             }
-            let promiseWrite = await IOUtils.writeJSON(path, jsonData, { encoding: "utf-8"});
+            let promiseWrite = await IOUtils.writeUTF8(path, jsonData);
             util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
           }
           catch(reason) {

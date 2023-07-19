@@ -712,7 +712,7 @@ QuickFolders.bookmarks = {
           let outString = JSON.stringify(entity, null, '  '); // prettify
           try {
             // let theArray = new Uint8Array(outString);
-            let promise = IOUtils.writeJSON(path, outString, { encoding: "utf-8"});
+            let promise = IOUtils.writeUTF8(path, outString);
             promise.then(
               function saveSuccess(byteCount) {
                 util.logDebug ('successfully saved ' + bookmarks.Entries.length + ' bookmarks [' + byteCount + ' bytes] to file');

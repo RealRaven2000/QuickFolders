@@ -13,6 +13,15 @@
   color: white !important;
 }
 
+menuitem.cmd[tag="qfTabAdvanced"][type="checkbox"]:not([checked=true]) {
+  list-style-image: square !important;
+}
+
+menuitem.cmd[tag="qfTabAdvanced"][type="checkbox"] .menu-iconic-left {
+  width: 1.45em; /* unset for the invisible one breaks the leftmost distance */
+}
+
+
 
 #QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
   padding-left: 1em;

@@ -471,6 +471,7 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["currentDeckUpdate"] = QI.currentDeckUpdate.bind(QI); 
   mylisteners["initKeyListeners"] = window.QuickFolders.initKeyListeners.bind(window.QuickFolders);
   mylisteners["firstRun"] = window.QuickFolders.Util.FirstRun.init.bind(window.QuickFolders.Util.FirstRun);
+  mylisteners["toggleFolderTree"] = window.QuickFolders.Interface.toggleFolderTree.bind(window.QuickFolders.Interface);
   
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);

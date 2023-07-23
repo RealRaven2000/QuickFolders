@@ -79,6 +79,19 @@ messenger.runtime.onInstalled.addListener(async (data) => {
     break;
   // see below
   }    
+
+
+  let toggleFolderLabel = messenger.i18n.getMessage("commands.toggleFolderTree");
+  await messenger.commands.update({name:"toggle-foldertree", description: toggleFolderLabel });   
+
+  messenger.commands.onCommand.addListener((command) => {
+    switch (command) {
+      case "toggle-foldertree":
+        messenger.NotifyTools.notifyExperiment({event: "toggleFolderTree"});
+        break;
+      }
+  });
+
 });
 
 // display splash screen

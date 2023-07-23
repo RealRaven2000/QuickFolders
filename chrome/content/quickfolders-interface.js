@@ -7037,7 +7037,7 @@ QuickFolders.Interface = {
     styleEngine.setElementStyle(ss,
                                 'menuitem.cmd[tagName="qfRegister"], tab#QuickFolders-Pro',
                                 "list-style-image",
-                                "url('chrome://quickfolders/content/skin/ico/pro-16.png')",
+                                "url('chrome://quickfolders/content/skin/ico/pro-paid.svg')",
                                 true);
   } ,
 

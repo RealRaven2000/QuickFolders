@@ -11,8 +11,6 @@
 menuitem.cmd[tagName="qfRegister"].free .menu-iconic-icon,
 #QuickFolders-Pro.free .tab-icon {
   animation: qfIconRotateY 3s linear 0.3s infinite;
-	height: 19px;
-	width: 30px;
 }
 
 
@@ -48,15 +46,15 @@ tab {
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
 menuitem.cmd[tagName="qfRegister"].free,
 tab#QuickFolders-Pro {
-	list-style-image : url('ico/pro.png') !important;
+	list-style-image : url('ico/pro-default.svg') !important;
 }
 menuitem.cmd[tagName="qfRegister"].paid,
 tab#QuickFolders-Pro.paid {
-	list-style-image : url('ico/pro-paid.png') !important;
+	list-style-image : url('ico/pro-paid.svg') !important;
 }
 menuitem.cmd[tagName="qfRegister"].expired,
 tab#QuickFolders-Pro.expired {
-	list-style-image : url('ico/pro-expired.png') !important;
+	list-style-image : url('ico/pro-expired.svg') !important;
 }
 
 
@@ -79,8 +77,8 @@ tab#QuickFolders-Support {
 }
 
 menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
-	margin-left: -7px;
-	margin-right: -7px;
+/*	margin-left: -7px;
+	margin-right: -7px; */
 }
 
 tab#QuickFolders-General  {
@@ -108,7 +106,7 @@ menuitem.cmd[tagName="qfFindFolder"] {
   list-style-image: url('chrome://messenger/skin/icons/search-glass.svg') !important;
 }
 menuitem.cmd[tagName="qfRebuild"] {
-  list-style-image: url('chrome://calendar/skin/shared/icons/synchronize.svg') !important;
+  list-style-image: url('ico/synchronize.svg') !important;
 }
 menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('ico/clean.svg') !important; }
 menuitem.cmd[tagName="qfRepairTreeIcons"] {

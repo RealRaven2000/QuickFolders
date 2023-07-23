@@ -47,7 +47,7 @@
 button.proFeature {
 	-moz-appearance: none;
   animation: qfIconRotateY 2s linear 0.3s infinite;
-	background-image: url('chrome://quickfolders/content/skin/ico/pro.png') !important;
+	background-image: url('chrome://quickfolders/content/skin/ico/pro-default.svg') !important;
 	border: none;
 	display: inline-block;
 	height: 19px;

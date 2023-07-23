@@ -121,8 +121,7 @@ button[isTab], button.iconButton {
 }
 
 /* images on buttons: */
-button::marker {
-}
+
 button.active,
 button.active::marker {
   fill: white !important; /* not working yet - forcing the icon to be white */
@@ -146,11 +145,99 @@ button.active::marker {
 	list-style-image : url("ico/info.svg") !important;
 }
 #QuickFolders-Pro {
-  list-style-image : url("ico/pro.png") !important;
+  list-style-image : url("ico/pro-default.svg") !important;
 }
 #QuickFolders-Pro.paid {
-  list-style-image : url("ico/pro-paid.png") !important;
+  list-style-image : url("ico/pro-paid.svg") !important;
 }
+
+.themeable {
+	padding-left: 18px;
+  fill: currentColor;
+  -moz-context-properties: fill, stroke;
+}
+
+.msgNavigation {
+  background: url("ico/msgNavigate.png") no-repeat;
+}
+.folderNavigation {
+  background: url("ico/goup.svg") no-repeat;
+}
+.showIconButton {
+  background:url("chrome://messenger/skin/icons/image.svg") no-repeat;
+	padding-left: 18px;
+}
+.navigationBar {
+  background:url("ico/navigation-bar.svg") no-repeat;
+}
+.showFolderMenuButton  {
+  -moz-context-properties: fill, fill-opacity, stroke !important;
+  background: url("ico/folderCommand.svg") no-repeat;
+  stroke: var(--new-highlight) !important;
+}
+.recentTab,
+.recentNavigation {
+  background:url("ico/history.svg") no-repeat;
+	padding-left: 18px;  
+  stroke: #e9a400;  
+}
+.repairFolder {
+  background:url("ico/repairFolder.svg") no-repeat;
+  -moz-context-properties: fill, stroke !important;
+  stroke: var(--new-highlight) !important;
+}
+.createFilter {
+  background:url("ico/filter-add.svg") no-repeat;
+}
+.closeButton {
+  background:url("ico/close.svg") no-repeat;
+  fill-opacity: 0.5;
+}
+.bookmarks {
+  background: url("chrome://messenger/skin/icons/tag.svg") no-repeat;
+}
+.toolbarMenu{
+  background: url("ico/settings.svg") no-repeat;
+	padding-left: 18px;  
+  stroke: #0488d5;
+  stroke-opacity: 1;
+}
+
+.quickMove {
+  background: url("ico/move.svg") no-repeat;
+  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+  fill-opacity: 1;
+  stroke: #0488d5;
+  stroke-opacity: 1;
+}
+
+.quickCopy {
+	background:url("ico/quick-copy.svg") no-repeat;
+  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
+  fill-opacity: 1;
+  stroke: #0488d5;
+  stroke-opacity: 1;
+}
+
+.rebuildFolders {
+  background: url("ico/synchronize.svg") no-repeat;
+}
+.skipFolder {
+  background: url("ico/skip-folder.svg") no-repeat;
+}
+.categories {
+  background: url("ico/balloons.svg") no-repeat;
+  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
+  fill-opacity: 1;
+  stroke: var(--new-highlight);
+  stroke-opacity: 1;
+}
+.newTab {
+  background: url("ico/new-tab.svg") no-repeat;
+	padding-left: 18px;  
+}
+
+
 
  /* Style the tab */
 .tabs {
@@ -210,7 +297,7 @@ button.active::marker {
 
 /* right-click / tooltip support */
 .hasConfigEvent:hover {
-  background: rgba(255,0,0,0.2);
+  background-color: rgba(255,0,0,0.2);
   outline: 1px dotted rgba(85,0,0,0.5);
   border-radius: 3px;
 }

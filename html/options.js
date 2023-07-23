@@ -791,8 +791,7 @@ async function initBling() {
   getElement("dragovertabs-label").style.backgroundColor = bcol;
   getElement("toolbar-colorpicker").value = util.getSystemColor(await getUserStyle("Toolbar","background-color", "White"));
   
-  getElement("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
-  
+  document.querySelector(".showIconButton").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
   
   let currentTheme = await QuickFolders.Options.selectTheme(wd, await QuickFolders.Preferences.getCurrentThemeId());
 

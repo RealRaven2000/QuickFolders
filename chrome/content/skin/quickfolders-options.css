@@ -125,9 +125,9 @@ tabpanel input[type="color"] div {
 
 /* version number */
 #qf-options-header-description {
-	background-color: rgba(60, 60, 60, 0.4); /* darken */
+	background-color: rgba(60, 60, 60, 0.8); /* darken */
 	border-radius: 3px;
-	color: white !important;
+	color: #00e5ff;
 	font-size: 11pt;
 	margin-bottom: 7px;
   padding: 4px 8px !important;
@@ -136,7 +136,8 @@ tabpanel input[type="color"] div {
 
 #qf-options-header-description:hover {
 	cursor: pointer;
-	background-color: rgba(180,200,220,0.25);
+	color: #FFF;
+	background-color: rgba(13, 127, 242, 0.95);
 	border: 1px solid rgba(255,255,255,0.6);
 }
 
@@ -546,8 +547,9 @@ hbox.quickhelp-dbg {
 	box-shadow: 1px 1px 1px threedshadow inset;
 	height: 250px;
 	max-height: 250px;
-	overflow-y: scroll;
   margin-right: 1em;
+	overflow-y: scroll;
+	padding-right: 5px;
 }
 
 #mailCommandsCustomize {

@@ -178,6 +178,10 @@ button.active::marker {
 .navigationBar {
   background:url("ico/navigation-bar.svg") no-repeat;
 }
+
+.navigationBar .indent {
+  margin-inline-start: 36px;
+}
 .showFolderMenuButton  {
   -moz-context-properties: fill, fill-opacity, stroke !important;
   background: url("ico/folderCommand.svg") no-repeat;
@@ -207,6 +211,10 @@ button.active::marker {
 .toolbarMenu{
   background: url("ico/settings.svg") no-repeat;
   stroke: var(--new-highlight,#0488d5);
+}
+
+#premiumConfig label {
+  background-position-y: center;
 }
 
 .quickJump, .quickMove {

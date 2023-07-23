@@ -84,11 +84,15 @@ menuitem.cmd[tagName="qfFindFolder"] {
 menuitem.cmd[tagName="qfRebuild"] {
   list-style-image: url('ico/synchronize.svg') !important;
 }
-menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('ico/clean.svg') !important; }
+menuitem.cmd[tagName="qfTidyTabs"] { 
+	list-style-image : url('ico/clean.svg') !important; 
+}
 menuitem.cmd[tagName="qfRepairTreeIcons"] {
   list-style-image: url('chrome://messenger/skin/icons/image.svg') !important;
 }
-menuitem.cmd[tagName="qfPreviewToolbar"] { list-style-image : url('ico/toolbar.png') !important; }
+menuitem.cmd[tagName="qfPreviewToolbar"] { 
+	list-style-image : url('ico/navigation-bar.svg') !important; 
+}
 menuitem.cmd[tagName="qfOrder"] {
   list-style-image: url('ico/order.svg') !important;
 }

@@ -327,7 +327,7 @@
     <a name="6.0">&nbsp;</a>
     <li>
       <h4>
-      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.0 - WIP</a>
+      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 6.0 - WIP</a>
       </h4>
 			<div class="psa announcement">
 				<p>
@@ -356,9 +356,32 @@
 				  are difficult to recreate in HTML. The new main styling including custom icons in the 
 					QuickFolders tab has been implemented.
 				</li>
-        <li> Recent Folders had to be rewritten. </li>
-        <li> Drag &amp; Drop was broken and had to be fixed. </li>
-
+        <li> 
+					Recent Folders had to be rewritten. 
+				</li>
+        <li>
+					 Drag &amp; Drop was broken and had to be fixed. 
+				</li>
+        <li> 
+					Rewritten the event listeners in folder tree (drag and drop)
+				</li>
+				<li> 
+					The Navigation toolbar (a.k.a. Current Folder Bar) in center screen had to be reimplemented
+					because there are now multiple 3pane documents / windows (one for each Thunderbird tab)
+					Also I am now hiding unnecesary elements of the toolbar when it is displayed
+					in the single message tab or single message window.
+				</li>
+        <li>
+					Implemented main toolbar buttons (Show QuickFolders toolbar) as Unified toolbar action button.
+					Unfortunately
+				</li>
+				<li>
+					Storage of QuickFolders category per tab is now implemented with the new tab sessions API.
+			  </li>
+				<li>
+					Most of the icons in the options window have been redesigned as svg graphics 
+					for a modernized look and feel. Also, dark theme support has been improved.
+				</li>
 
         <h4 class="inList">Issues / Open Points</h4>				
         <li>
@@ -369,18 +392,9 @@
 					 a tool to extract the information from older versions of Thunderbird (91 or 102) so they can
 					 be migrated to 115 later.
 				</li>
-        <li> 
-					Event listeners in folder tree (drag and drop)
-				</li>
-        <li>
-					Implement main toolbar buttons (Create folder, Skip Folder, Show QuickFolders toolbar) as Unified toolbar action buttons
-				</li>
 				<li>
-					Storage of QuickFolders category per tab cannot be done via the session anymore. We are 
-					working on an alternative method of storing this.
-			  </li>
-				<li>
-					The current folder bar needs to be reinjected into the main window (above message header).
+					Toolbar buttons Create folder, Skip Folder can currently not be added (because the mail toolbar is gone
+					and unified toolbar only allows noe single button per Add-on)
 				</li>
 				<li>
 					When a QuickFolders Tab is selected, Thunderbird still needs to scroll the folder tree to that folder.

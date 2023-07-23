@@ -177,6 +177,7 @@
 /* Styles for Message Preview Navigation */
 #QuickFolders-PreviewToolbarPanel,
 #QuickFolders-PreviewToolbarPanel-ConversationView {
+	display: flex;
 	background-color:transparent;
 	height: 2.4em !important;
 	max-height:2.4em !important;

@@ -44,47 +44,23 @@ tab {
 }
 
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
-menuitem.cmd[tagName="qfRegister"].free,
-tab#QuickFolders-Pro {
+menuitem.cmd[tagName="qfRegister"].free {
 	list-style-image : url('ico/pro-default.svg') !important;
 }
-menuitem.cmd[tagName="qfRegister"].paid,
-tab#QuickFolders-Pro.paid {
+menuitem.cmd[tagName="qfRegister"].paid {
 	list-style-image : url('ico/pro-paid.svg') !important;
 }
-menuitem.cmd[tagName="qfRegister"].expired,
-tab#QuickFolders-Pro.expired {
+menuitem.cmd[tagName="qfRegister"].expired {
 	list-style-image : url('ico/pro-expired.svg') !important;
 }
 
 
-tab#QuickFolders-Advanced {
-	list-style-image: url("ico/settings.svg");
-}
-
-tab#QuickFolders-Layout {
-	list-style-image : url('ico/smiley.svg');
-}
-
-menuitem.cmd[tagName="qfHelp"],
-tab#QuickFolders-Help {
+menuitem.cmd[tagName="qfHelp"] {
 	list-style-image : url('ico/help.svg') !important;
 }
 
-menuitem.cmd[tagName="qfSupport"],
-tab#QuickFolders-Support {
+menuitem.cmd[tagName="qfSupport"] {
 	list-style-image : url('ico/info.svg') !important;
-}
-
-menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
-/*	margin-left: -7px;
-	margin-right: -7px; */
-}
-
-tab#QuickFolders-General  {
-	list-style-image: url("ico/settings.svg");
-  fill: var(--new-highlight);
-  stroke: currentColor;
 }
 
 #QuickFolders-FindPopup menuitem.quickFolder  {

@@ -128,28 +128,36 @@ button.active::marker {
   stroke: white;
 }
 
+#QuickFolders-Options-Tabbox li button {
+  fill: currentColor;
+  -moz-context-properties: fill, stroke;
+  stroke: var(--lwt-text-color, inherit);
+}
 
-#QuickFolders-General {
+.quickFoldersGeneral button, .quickFoldersAdvanced button  {
   list-style-image: url("ico/settings.svg");
+  fill: var(--new-highlight);
+  stroke: var(--new-highlight, #4874c6) !important;
 }
-#QuickFolders-Advanced  {
-  list-style-image: url("ico/settings.svg");
+.qfLayout button {
+  list-style-image: url("ico/smiley.svg");
 }
-#QuickFolders-Layout {
-  list-style-image : url("ico/smiley.svg");
+.qfHelp button {
+  list-style-image: url("ico/help.svg");
 }
-#QuickFolders-Help {
-	list-style-image : url("ico/help.svg") !important;
+.qfSupport button {
+  list-style-image: url("ico/info.svg");
 }
-#QuickFolders-Support {
-	list-style-image : url("ico/info.svg") !important;
+.qfLicenses button {
+  list-style-image: url("ico/pro-default.svg");
 }
-#QuickFolders-Pro {
-  list-style-image : url("ico/pro-default.svg") !important;
+.qfLicenses button.paid {
+  list-style-image: url("ico/pro-paid.svg");
 }
-#QuickFolders-Pro.paid {
-  list-style-image : url("ico/pro-paid.svg") !important;
+.qfLicenses button.expired {
+  list-style-image: url("ico/pro-expired.svg");
 }
+
 
 .themeable {
 	padding-left: 18px;
@@ -198,12 +206,10 @@ button.active::marker {
 }
 .toolbarMenu{
   background: url("ico/settings.svg") no-repeat;
-	padding-left: 18px;  
-  stroke: #0488d5;
-  stroke-opacity: 1;
+  stroke: var(--new-highlight,#0488d5);
 }
 
-.quickMove {
+.quickJump, .quickMove {
   background: url("ico/move.svg") no-repeat;
   -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
   fill-opacity: 1;

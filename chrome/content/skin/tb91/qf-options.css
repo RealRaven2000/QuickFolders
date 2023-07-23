@@ -53,16 +53,6 @@ menulist#QuickFolders-CurrentFolder-Background-Select {
 }
 
 
-tab#QuickFolders-General,
-tab#QuickFolders-Advanced,
-tab#QuickFolders-Layout,
-tab#QuickFolders-Help,
-tab#QuickFolders-Support,
-tab#QuickFolders-Pro {
-  appearance: none; /* themeable */
-  color: var(--lwt-text-color, inherit) !important;
-}
-
 #QuickFolders-Options-Tabbox tabs {
   background-image: var(--lwt-header-image) !important;
   background-position: right -4px top 122px;

@@ -40,6 +40,29 @@ body {
   text-align: justify;
 }
 
+.wrapper a[href], .wrapper a[href]:visited {
+  font-weight: bold !important;
+  color: rgb(103, 37, 2);
+  padding: 0 4px;
+  border-radius: 4px;
+  border: 1px solid white;
+}
+
+.wrapper a[href]:hover  {
+  color: rgb(229, 80, 0);
+  background-color: rgb(37, 26, 6);
+  /*font-size: 1.2em;
+  margin: -0.2em;*/
+
+
+}
+.wrapper a[href]:active {
+
+}
+
+.salutation {
+  font-size: 1.5em;
+}
 .recipient {
   font-weight: bold;
 }
@@ -47,6 +70,7 @@ body {
 .twoColumn {
   display: flex;
   flex-direction: row;
+  gap: 20px;
 }
 .column {
   /* border: 1px beige dotted; */
@@ -66,12 +90,6 @@ body {
 .contact {
   font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
 }
-.contact div.separator {
-  margin-left: 4em;
-  margin-right: 4em;
-  border: 6px solid black;
-  border-radius: 8px;
-  box-shadow: 16px 6px 2px rgb(171, 158, 15);}
 
 .video {
   text-align: center;
@@ -79,12 +97,43 @@ body {
 .lastImage {
   width: 600px;
 }
+
 .lastImage img {
   width: 100%;
 }
+
+img.shadow {
+  box-shadow: 6px 6px 3px rgba(40, 40, 40, 0.3);
+  border-radius: 8px;
+}
+
+.contact h1 {
+  margin: 0.35em 0;
+}
+
 .contact p {
   text-align: center;
+  margin: 0.4em 0;
 }
+
+.contact div.separator {
+  margin-left: 4em;
+  margin-right: 4em;
+  border: 6px solid black;
+  border-radius: 8px;
+  box-shadow: 16px 6px 2px rgb(171, 158, 15);
+}
+
+hr.separator {
+  border:none;
+ 	width: 60%;
+	height: 60px;
+	border-bottom: 1px solid #1f1209;
+	box-shadow: 0 20px 20px -20px #333;
+  margin: -60px auto 30px; 
+}
+
+
 
 p.social {
   text-align: center;

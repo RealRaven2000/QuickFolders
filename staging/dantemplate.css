@@ -1,0 +1,87 @@
+@media  {
+
+}
+
+body {
+  background-color: rgb(49, 33, 15);
+}
+
+.outer {
+  width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0px;
+  background-color: #DCB;
+}
+
+.header, .footer {
+  width: 100%;
+}
+.header img, .footer img {
+  width: 680px;
+}
+
+.wrapper {
+  margin-left: 40px;
+  margin-right: 40px;
+  width: 600px;
+  background-color: #DCB;
+  color: rgba(10,10,10,0.9);
+  font-family: font-family: Optima, Candara, 'Noto Sans', source-sans-pro, sans-serif;
+  font-size: 18px;
+}
+
+.wrapper h1, .wrapper h2 {
+  text-align: center;
+}
+
+.wrapper p {
+  margin: 1.1em 0;
+  text-align: justify;
+}
+
+.twoColumn {
+  display: flex;
+  flex-direction: row;
+}
+.column {
+  /* border: 1px beige dotted; */
+  width: 50%;
+  max-width: 300px;
+  display: flex-child;
+  font-size: 0.9em
+}
+.column p {
+  margin-top: 0;
+  margin-bottom: 0.9em;
+}
+.column img {
+  max-width: 290px;
+}
+
+.contact {
+  font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+}
+.contact div.separator {
+  margin-left: 4em;
+  margin-right: 4em;
+  border: 6px solid black;
+  border-radius: 8px;
+  box-shadow: 16px 6px 2px rgb(171, 158, 15);}
+
+.video {
+  text-align: center;
+}
+.lastImage {
+  width: 600px;
+}
+.lastImage img {
+  width: 100%;
+}
+.contact p {
+  text-align: center;
+}
+
+p.social {
+  text-align: center;
+}

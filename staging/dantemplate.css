@@ -40,6 +40,13 @@ body {
   text-align: justify;
 }
 
+.salutation {
+  font-size: 1.5em;
+}
+.recipient {
+  font-weight: bold;
+}
+
 .twoColumn {
   display: flex;
   flex-direction: row;

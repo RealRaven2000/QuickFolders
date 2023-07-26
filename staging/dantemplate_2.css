@@ -1,5 +1,28 @@
-@media  {
+@media screen and (max-width:600px) {
+  .wrapper {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 1em !important;
+    padding-right: 1em !important;
+  }
+}
 
+@media screen and (max-width:679px) {
+  .twoColumn  { 
+    flex-direction: column !important;
+  }
+  .twoColumn .column  { 
+    width: 100% !important;
+    font-size: 1em;
+  }
+  .outer {
+    width:100vw !important;
+  }
+  .wrapper {
+    width: 100vw !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important; 
+  }
 }
 
 body {
@@ -7,7 +30,7 @@ body {
 }
 
 .outer {
-  width: 680px;
+  max-width: 680px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 0px;
@@ -18,7 +41,12 @@ body {
   width: 100%;
 }
 .header img, .footer img {
-  width: 680px;
+  width: 100%;
+}
+.footer {
+  padding-bottom: 0;
+  margin-bottom: 10px;
+  background-color: rgb(49, 33, 15);
 }
 
 .wrapper {
@@ -27,12 +55,18 @@ body {
   width: 600px;
   background-color: #DCB;
   color: rgba(10,10,10,0.9);
-  font-family: font-family: Optima, Candara, 'Noto Sans', source-sans-pro, sans-serif;
+  font-family: Optima, Candara, 'Noto Sans', source-sans-pro, sans-serif;
   font-size: 18px;
 }
 
 .wrapper h1, .wrapper h2 {
   text-align: center;
+}
+
+h2.phoneLarge {
+  font-weight: normal;
+  font-size: 2em;
+  margin: 13px auto;
 }
 
 .wrapper p {
@@ -76,9 +110,7 @@ body {
 .column {
   /* border: 1px beige dotted; */
   width: 50%;
-  max-width: 300px;
-  display: flex-child;
-  font-size: 0.9em
+  font-size: 0.9em;
 }
 .column p {
   margin-top: 0;
@@ -95,9 +127,24 @@ body {
 .video {
   text-align: center;
 }
+.video img {
+  border: 4px solid rgb(120,60,60);
+}
+.video img:hover {
+  border: 4px solid rgb(200,60,60);
+  transform:  accumulatematrix
+}
 .lastImage {
   width: 600px;
 }
+.zoom {
+  transition: transform .4s, border-color .4s; /* Animation */
+  margin: 0 auto;
+}
+.zoom:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
 
 .lastImage img {
   width: 100%;
@@ -134,7 +181,10 @@ hr.separator {
   margin: -60px auto 30px; 
 }
 
-
+.video {
+  width: 560;
+  height: 960;
+}
 
 p.social {
   text-align: center;

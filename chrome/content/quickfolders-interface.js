@@ -7204,7 +7204,7 @@ QuickFolders.Interface = {
     
     
     container.appendChild(box);
-    let mBox = document.getElementById("messengerBox");
+    let mBox = document.getElementById("tabmail-container");
     mBox.appendChild(container);
     container.style.setProperty("visibility","visible");
     

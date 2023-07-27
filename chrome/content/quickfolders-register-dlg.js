@@ -145,20 +145,20 @@ var Register = {
     getElement('qfLicenseTerm').classList.remove('expired');
 		switch(licenseInfo.status) {
 			case "Expired":
-			  getElement("licenseDateLabel").value = util.getBundleString("qf.register.licenseValid.expired")
+			  getElement("licenseDateLabel").textContent = util.getBundleString("qf.register.licenseValid.expired")
 				getElement("qfLicenseTerm").classList.add("expired");
 			  break;
 			case "Valid":
 			  btnProLicense.classList.remove("register"); // remove the "pulsing effect" if license is valid.
-        getElement("licenseDateLabel").value = util.getBundleString("qf.label.licenseValid");
+        getElement("licenseDateLabel").textContent = util.getBundleString("qf.label.licenseValid");
 			  break;
 			case "Empty":
 			case "NotValidated":
-				getElement("licenseDateLabel").value = " ";
+				getElement("licenseDateLabel").textContent = " ";
 			  break;
 			default: // default class=register will animate the button
         let txt = "License Status: " + licenseInfo.description;
-			  getElement("licenseDateLabel").value = txt;
+			  getElement("licenseDateLabel").textContent = txt;
         util.logToConsole("Registration Problem\n" + txt + "\nDecrypted part: " + licenseInfo.decryptedPart);
         
 		}

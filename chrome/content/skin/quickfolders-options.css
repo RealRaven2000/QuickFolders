@@ -249,9 +249,7 @@ label.text-link, label.text-link[visited="true"] {
 }
 
 #QuickFolders-Options-quickhelp {
-/* (Teo) this is redundant because tabpanel id="QuickFolders-Options-quickhelp" is orient="vertical"
-   and align="center" so all elements inside will be centered vertically*/
-/* (Axel) the padding is here because there is a lot of text and it is too wide to be legible */
+/*  the padding is here because there is a lot of text and it is too wide to be legible */
   padding-left: 20px;
   padding-right: 20px;
 	text-align: justify;
@@ -272,6 +270,9 @@ label.text-link, label.text-link[visited="true"] {
 description#importantNote {
 	font-weight: bold;
 	color: #A00 !important;
+	background-color: #EEE;
+	padding: 0.2em 1em;
+	border-radius: 0.4em;
 }
 
 hbox.quickhelp-dbg {

@@ -8,7 +8,7 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
 const REDUCTION_RENEW = "25%",
-      REDUCTION_PRO = "33%",
+      REDUCTION_PRO = "40%",
       REDUCTION_UPGRADE = "33%";
 
 
@@ -169,9 +169,9 @@ addEventListener("load", async (event) => {
     }
     
     let specialOffer = document.getElementById("specialOfferTxt");
+    let expiry = messenger.i18n.getMessage("special-offer-expiry"); // date of sales end.
     if (specialOffer) {
-      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
-          reduction = REDUCTION_PRO;
+      let reduction = REDUCTION_PRO;
       // note: expiry day is set in popup.js "endSale" variable
       specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
           .replace(/\{boldStart\}/g,"<b>")
@@ -183,8 +183,7 @@ addEventListener("load", async (event) => {
     
     let specialRenew = document.getElementById("specialOfferRenewTxt");
     if (specialRenew) {
-      let expiry = messenger.i18n.getMessage("special-offer-expiry"),
-          reduction = REDUCTION_RENEW;
+      let reduction = REDUCTION_RENEW;
       // note: expiry day is set in popup.js "endSale" variable
       specialRenew.innerHTML = 
         messenger.i18n.getMessage("special-offer-renew", [expiry, reduction])
@@ -195,7 +194,6 @@ addEventListener("load", async (event) => {
     
     let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
     if (specialOfferUpgrade) {
-      let expiry = messenger.i18n.getMessage("special-offer-expiry");
       // note: expiry day is set in popup.js "endSale" variable
       specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, REDUCTION_UPGRADE])
           .replace(/\{boldStart\}/g,"<b>")

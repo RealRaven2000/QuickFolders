@@ -129,14 +129,13 @@ button.active::marker {
 }
 
 #QuickFolders-Options-Tabbox li button {
-  fill: currentColor;
+  fill: var(--in-content-icon-color, currentColor);
   -moz-context-properties: fill, stroke;
   stroke: var(--lwt-text-color, inherit);
 }
 
 .quickFoldersGeneral button, .quickFoldersAdvanced button  {
   list-style-image: url("ico/settings.svg");
-  fill: var(--new-highlight);
   stroke: var(--new-highlight, #4874c6) !important;
 }
 .qfLayout button {

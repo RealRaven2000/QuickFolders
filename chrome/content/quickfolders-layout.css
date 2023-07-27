@@ -492,9 +492,8 @@ menupopup.widerMenu menucaption {
 }
 
 #QuickFolders-Toolbar #QuickFolders-title-label {
-	appearance: none !important;
   appearance: none !important;
-	background: transparent !important;
+	background-image: transparent;
 	border-radius: 0.4em !important;
 	font-weight: bold;
 	line-height: 24px;

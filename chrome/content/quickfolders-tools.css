@@ -9,7 +9,7 @@
 
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
   background-color: #b80015 !important; /* red */
-  background: linear-gradient(to bottom, #890219 0%,#b80015 100%) !important; 
+  background-image: linear-gradient(to bottom, #890219 0%,#b80015 100%) !important; 
   color: white !important;
 }
 

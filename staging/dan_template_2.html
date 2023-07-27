@@ -3,17 +3,18 @@
   <link rel="stylesheet" href="dantemplate_2.css?v=1" type="text/css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   %style(dantemplate_2.css)%
+  %header.set(subject,"Agent of the Wild")%
 </head>
 <body>
   
   <div class="outer">
-    <div class="header"><img src="Agentofthewildheaderfootergraphic.jpg"/></div>
+    <div class="header"><img src="img/Agentofthewildheaderfootergraphic.jpg"/></div>
 
     <div class="wrapper">
     
       <div class="intro">
         <p class="salutation">
-          Dear <span class="recipient">Johnny Blogger</span>,
+          Dear <span class="recipient">%recipient(name)%</span>,
         </p>
 
         <p>
@@ -43,7 +44,7 @@
       </div>
       <hr class="separator"/>
       <div class="twoColumn">
-        <div class="column"><img src="GarrettZoller.jpg" class="shadow"/></div>
+        <div class="column"><img src="img/GarrettZoller.jpg" class="shadow"/></div>
         <div class="column">
           <p>
             "Dan's not afraid of working dawn till dusk and in all climates to produce the 
@@ -62,7 +63,7 @@
       <h1>Take A Moment To Watch This Short Film Highlighting Some Of My Work</h1>
       <div class="video">
         <a href="https://youtu.be/mK4xEZUVaoo">
-          <img src="youtube-thumbnail.jpg" class="zoom"/>
+          <img src="img/youtube-thumbnail.jpg" class="zoom"/>
         </a>
       </div>
       <div class="thankyou">
@@ -84,7 +85,7 @@
       </div>
       <div class="end">
         <div class="lastImage">
-          <img src="Portraitfooter.jpg" class="shadow"/>
+          <img src="img/Portraitfooter.jpg" class="shadow"/>
         </div>
         <div class="contact">
           <h1>Dan Amos</h1>
@@ -101,6 +102,6 @@
       </div>
     
     </div>
-    <div class="footer"><img src="Agentofthewildheaderfootergraphic.jpg"/></div>
+    <div class="footer"><img src="img/Agentofthewildheaderfootergraphic.jpg"/></div>
   <div>
 </body>

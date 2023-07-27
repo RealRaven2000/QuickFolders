@@ -248,7 +248,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}我目前正在為新的 Thunderbird SuperNova UI 轉換 QuickFolders Addon。 這將在 2023 年夏季的 Thunderbird 115 的下一個主要版本中實現。{P2} {P1}您可以在此處閱讀有關這項工作的當前進度：[issue 351]{P2} {P1} 這項工作是獨家資助的 通過出售許可證，如果您有興趣在未來使用 QuickFolders，請考慮購買許可證或更新之前的許可證{P2}"
+    "message": "{P1}QuickFolders 現在與最新版本的 Thunderbird 兼容。 這需要{boldStart}重寫和測試{boldEnd}與 Thunderbird 主頁（3pane）交互的所有元素（工具欄按鈕、菜單、文件夾樹、拖放）進行大量工作。{P2}{P1}Thunderbird 115 於 7 月 11 日首次發布，並擁有一個名為“SuperNova”的全新用戶界面。 {P2} {P1}您仍然可以在此處關注這項工作的持續進展：[issue 351]{P2} {P1}由於這項工作完全由銷售許可證資助，因此如果您將來有興趣使用 QuickFolders，請考慮購買許可證或續訂之前的許可證。{P2}"
   },
   "ongoing-work": {
     "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",

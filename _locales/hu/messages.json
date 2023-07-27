@@ -219,7 +219,7 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1}Jelenleg a QuickFolders Addon konvertálásán dolgozom az új Thunderbird SuperNova UI-hoz. Ezt a Thunderbird 115 következő nagyobb verziójában, 2023 nyarán implementálják.{P2} {P1}A munka jelenlegi állásáról itt olvashat: [issue 351]{P2} {P1} Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást{P2}"
+    "message": "{P1}A QuickFolders mostantól kompatibilis a Thunderbird legújabb verziójával. Ehhez jelentős munkára volt szükség a Thunderbird főoldalával (3 panel) kölcsönhatásba lépő összes elem (eszköztár gombjai, menüi, mappafa, drag and drop) {boldStart}újraírása és tesztelése{boldEnd}.{P2} {P1}A Thunderbird 115 először július 11-én jelent meg, és teljesen új felhasználói felülettel rendelkezik, „SuperNova” néven. {P2} {P1}Itt továbbra is nyomon követheti ennek a munkának a folyamatát: [issue 351]{P2} {P1}Mivel ezt a munkát kizárólag licencek értékesítéséből finanszírozzák, kérjük, fontolja meg egy licenc megvásárlását vagy a korábbi licenc megújítását, ha a QuickFolders jövőbeni használata iránt érdeklődik.{P2}"
   },
   "ongoing-work": {
     "message": "A $addonName$ konvertálásának új programozási modellvé történő átalakítása hetekig tartott és költséges volt. Sokkal több változás van a következő 2022-es verzióra. Egy ilyen összetett kiegészítő mellett a drága munka elkerülhetetlenné válik. Kérem, segítsen ebben.",

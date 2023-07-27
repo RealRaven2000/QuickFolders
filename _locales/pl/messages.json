@@ -245,7 +245,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}Obecnie pracuję nad konwersją dodatku QuickFolders do nowego interfejsu użytkownika programu Thunderbird SuperNova. Zostanie to zaimplementowane w następnej głównej wersji Thunderbirda 115 latem 2023 r.{P2} {P1}O obecnym postępie prac można przeczytać tutaj: [issue 351]{P2} {P1} Ta praca jest finansowana wyłącznie poprzez sprzedaż licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli jesteś zainteresowany korzystaniem z QuickFolders w przyszłości{P2}"
+    "message": "{P1}QuickFolders jest teraz kompatybilny z najnowszą wersją Thunderbirda. Wymagało to znacznej pracy polegającej na {boldStart}przepisaniu i przetestowaniu{boldEnd} wszystkich elementów wchodzących w interakcję ze stroną główną (3panel) Thunderbirda (przyciski paska narzędzi, menu, drzewo folderów, przeciąganie i upuszczanie).{P2} {P1}Thunderbird 115 został wydany po raz pierwszy 11 lipca i ma zupełnie nowy interfejs użytkownika o nazwie „SuperNova”. {P2} {P1}Możesz nadal śledzić postęp prac tutaj: [issue 351]{P2} {P1}Ponieważ ta praca jest finansowana wyłącznie ze sprzedaży licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli chcesz korzystać z QuickFolders w przyszłości.{P2}"
   },
   "ongoing-work": {
     "message": "Modyfikacje mające na celu konwersję $addonName$ do nowego modelu programowania zajęły tygodnie i były kosztowne. W następnej wersji 2022 jest znacznie więcej zmian. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym.",

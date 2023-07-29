@@ -71,7 +71,8 @@
     }
     
     #version-history div.announcement {
-      background: rgba(40,30,30,.85) !important;
+			background-color: rgba(6, 6, 112, 0.9); 
+			background-image: linear-gradient(55deg, rgba(6, 6, 112, 0.9) 0%, rgba(115, 3, 85, 0.9) 100%);
       border-radius: 4px;
       box-shadow: inset 0.5em 0.5em 10px rgba(0,0,0,0.7);
       margin: 0.5em 2em 2em;
@@ -464,6 +465,20 @@
 				  are difficult to recreate in HTML. The new main styling including custom icons in the 
 					QuickFolders tab has been implemented.
 				</li>
+				<li>
+					<p>
+						Following the Firefox model, Thunderbird 115 allows only one single action button (I am 
+						currently negotiating with the thunderbird team to allow more optional buttons)
+						I decided to add the toolbar toggle button to the unified toolbar. With this 
+						the QuickFolders toolbar can be hidden temporarily:
+					</p>
+					<img src="images/qf-toolbar-toggle-actionbtn.png" alt="toolbar button" class="screenshot"/>
+					<p>
+						When you install QuickFolders in Tb115 for the first time, all Add-on buttons are added on 
+						the top right - you may  move it by right-clicking the unified toolbar and selecting customize:
+					</p>
+					<img src="images/toolbar-customize.png" alt="customize toolbar" class="screenshot"/>
+				</li>
         <li> 
 					Recent Folders had to be rewritten. 
 				</li>
@@ -715,7 +730,7 @@
       </h4>
       
         <a name="tb102-compatibility"> </a>
-        <div class="psa announcement">
+        <div class="psa">
           <p>
             Please note that <span class="emphasis">QuickFolders is compatible with the latest version of Thunderbird 
             (102)</span> - if you get a message  that says otherwise after updating from earlier versions 

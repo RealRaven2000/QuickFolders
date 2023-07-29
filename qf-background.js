@@ -107,6 +107,11 @@ function showSplash(msg="") {
   browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
 }
 
+function showInstalled() {
+  let url = browser.runtime.getURL("popup/installed.html");
+  browser.windows.create({ url, type: "popup", width: 910, height: 800, allowScriptsToClose: true });
+}
+
 
 async function main() {
     
@@ -157,6 +162,10 @@ async function main() {
       case "splashScreen":
         let splashMessage = data.msg || "";
         showSplash(splashMessage);
+        break;
+
+      case "splashInstalled":
+        showInstalled();
         break;
         
       case "getLicenseInfo": 

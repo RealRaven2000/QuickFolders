@@ -5557,6 +5557,10 @@ QuickFolders.Interface = {
     QuickFolders.Util.notifyTools.notifyBackground({ func: "splashScreen", msg });
   } ,
 
+	viewInstalled: function() {
+		QuickFolders.Util.notifyTools.notifyBackground({ func: "splashInstalled" });
+	} ,
+
   lastTabSelected: null,
   styleSelectedTab: function styleSelectedTab(selectedButton) {
 		if(!(selectedButton))  return;

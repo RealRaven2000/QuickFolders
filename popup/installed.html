@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="popup.css" type="text/css">
     <script type="application/javascript" src="popup.js"></script>
     <script type="application/javascript" src="animation.js"></script>
+		<script type="application/javascript" src="specialoffers.js"></script>
     <script type="application/javascript" src="installed.js"></script>
     <script type="application/javascript" src="../chrome/content/i18n.js"></script>
   
@@ -14,52 +15,81 @@
   <body>
     <div id="innerwrapper">
       <h1 id="heading-installed">__MSG_heading-installed__</h1>
-        <p>
-          <span id="thanks-for-installing-intro">__MSG_thanks-for-installing-intro__</span>
-          <span id="active-version-info">__MSG_active-version-info__</span>
-        </p>
-        
-        <p id="licenseExtended">
-          __MSG_license-is-extended__
-        </p>
-        
-        <p id="support-suggestion">
-          __MSG_support-suggestion__
-        </p>
-        <ul class="actions">
-          <li id="purchaseLicenseListItem" > __MSG_purchase-a-license__ </li>
-          <li id="renewLicenseListItem" collapsed="true"> __MSG_renew-your-license__ </li>
-          <li id="extendLicenseListItem" collapsed="true"> __MSG_extend-your-license__ </li>
-          <li> __MSG_donate__</li>
-        </ul>
-          
-        <h2>__MSG_purchase-heading__</h2>
+      <p>
+        <span id="thanks-for-installing-intro">__MSG_thanks-for-installing-intro__</span>
+        <span id="active-version-info">__MSG_active-version-info__</span>
+      </p>
       
-        <p>
-          <span id="support-preference">__MSG_support-preference__</span>
-          <span id="ongoing-work">__MSG_ongoing-work__</span>
-        </p>
-          
-        <p class="actionlinks">
-          <a id="register">__MSG_btn-want-a-license__</a>
-          <a id="extend" collapsed="true">__MSG_btn-extend-license__</a>
-          <a id="renew" collapsed="true">__MSG_btn-renew-license__</a>
-        </p>  
-       
-          
-        <h2>__MSG_donate-heading__</h2>
+      <p id="licenseExtended">
+        __MSG_license-is-extended__
+      </p>
+      
+      <p id="support-suggestion">
+        __MSG_support-suggestion__
+      </p>
+      <ul class="actions">
+        <li id="purchaseLicenseListItem" > __MSG_purchase-a-license__ </li>
+        <li id="renewLicenseListItem" collapsed="true"> __MSG_renew-your-license__ </li>
+        <li id="extendLicenseListItem" collapsed="true"> __MSG_extend-your-license__ </li>
+        <li class="donations"> __MSG_donate__</li>
+      </ul>
+
+      <div id="specialBox" class="importantInfo">
+        <div id="specialOffer" class="specialOffer" collapsed="true">
+          <img id="bargainIcon" class="bargainIcon" src="bargain40.png" />
+          <h2 class="specialOfferHead">__MSG_special-offer-head__</h2>
+          <p class="specialOfferIntro">__MSG_special-offer-intro__</p>
+          <p id="specialOfferTxt">__MSG_special-offer-content__</p>
+        </div>
         
-        <p>
-          __MSG_cost-of-independence__
-          __MSG_mozillas-basic-platform__
-        </p>
-        
-        <p> __MSG_addon-authors-struggle__ </p>
+        <div id="specialOfferUpgrade" class="specialOffer" collapsed="true">
+          <img id="bargainUpgradeIcon" class="bargainIcon" src="bargainUpgrade33.png" />
+          <h2 class="specialOfferHead">__MSG_special-offer-head__</h2>
+          <p>
+            <span id="specialOfferUpgradeTxt">__MSG_special-offer-upgrade__</span>
+            <br>
+            <span class="offerConditions">(__MSG_special-offer-upgrade-condition__)</span>
+          </p>
           
-        <p class="actionlinks">
-          <a id="donate">__MSG_btn-want-to-donate__</a>
-        </p>
+          <p class="featureComparison">__MSG_licenseComparison__</p>
+        </div>
+        
+        <div id="specialOfferRenew" class="specialOffer" collapsed="true">
+          <img id="bargainRenewIcon" class="bargainIcon" src="bargain25.png" />
+          <h2 class="specialOfferHead">__MSG_special-offer-head__</h2>
+          <p class="specialOfferIntro">__MSG_special-offer-intro__</p>
+          <p id="specialOfferRenewTxt">__MSG_special-offer-renew__</p>
+        </div>
+      </div>
+
+        
+      <h2>__MSG_purchase-heading__</h2>
     
+      <p>
+        <span id="support-preference">__MSG_support-preference__</span>
+        <span id="ongoing-work">__MSG_ongoing-work__</span>
+      </p>
+        
+      <p class="actionlinks">
+        <a id="register">__MSG_btn-want-a-license__</a>
+        <a id="extend" collapsed="true">__MSG_btn-extend-license__</a>
+        <a id="renew" collapsed="true">__MSG_btn-renew-license__</a>
+      </p>  
+      
+        
+      <h2>__MSG_donate-heading__</h2>
+      
+      <p>
+        __MSG_cost-of-independence__
+        __MSG_mozillas-basic-platform__
+      </p>
+      
+      <p> __MSG_addon-authors-struggle__ </p>
+        
+      <p class="actionlinks">
+        <a id="donate">__MSG_btn-want-to-donate__</a>
+      </p>
+
 
     </div>
   </body>

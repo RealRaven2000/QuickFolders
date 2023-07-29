@@ -8,7 +8,7 @@ END LICENSE BLOCK */
 
 /* shared module for installation popups */
 
-async function updateActions(addonName) { 
+async function updateActions() { 
   let endSale = new Date("2023-08-13"), // Next Sale End Date
       currentTime = new Date();
       
@@ -42,12 +42,7 @@ async function updateActions(addonName) {
     }
     return null;
   }
-  function showSelectorItems(cId) {
-    let elements = document.querySelectorAll(cId);
-		for (let el of elements) {
-      el.setAttribute('collapsed',false);
-    }
-  }
+
   // renew-your-license - already collapsed
   // renewLicenseListItem - already collapsed
   // purchaseLicenseListItem - not collapsed
@@ -103,12 +98,13 @@ async function updateActions(addonName) {
 
         isActionList = false;
       }
-      if(isStandard) {
-        hide('licenseExtended');
-        let regBtn = show('register');
-        regBtn.innerText = messenger.i18n.getMessage("qf.notification.premium.btn.upgrade");
-      }
     }
+    if(isStandard) {
+      hide('licenseExtended');
+      let regBtn = show('register');
+      regBtn.innerText = messenger.i18n.getMessage("qf.notification.premium.btn.upgrade");
+    }
+
   }
   else { // no license at all
     

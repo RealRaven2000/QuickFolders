@@ -7,32 +7,11 @@ For details, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 // Script for splash screen displayed when updating this Extension
 
-const REDUCTION_RENEW = "25%",
-      REDUCTION_PRO = "40%",
-      REDUCTION_UPGRADE = "33%";
-
-
 addEventListener("click", async (event) => {
 	if (event.target.id.startsWith("register")) {
     messenger.Utilities.showLicenseDialog("splashScreen");
 	}
   switch (event.target.id) {
-    case "bargainIcon":
-      // to get the bargain, go straight to offer!
-      messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=splashScreen-bargainIcon");
-      // messenger.Utilities.showLicenseDialog("splashScreen-bargainIcon");
-      break;
-    case "bargainRenewIcon":
-    case "bargainUpgradeIcon":
-      messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
-      window.close(); // not allowed by content script!
-      break;
-    case "stdLink":
-      messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=splashScreen-standard");
-      break;
-    case "proLink":
-      messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=splashScreen-standard");
-      break;
     case "compLink":
       messenger.windows.openDefaultBrowser("https://quickfolders.org/premium.html#featureComparison");
       break;
@@ -77,7 +56,6 @@ addEventListener("load", async (event) => {
     const manifest = await messenger.runtime.getManifest(),
           browserInfo = await messenger.runtime.getBrowserInfo(),
           addonName = manifest.name,
-          userName = await messenger.Utilities.getUserName(),
           addonVer = manifest.version,
           appVer = browserInfo.version,
           remindInDays = 10;
@@ -168,64 +146,8 @@ addEventListener("load", async (event) => {
       remind.innerText = messenger.i18n.getMessage("label-remind-me", remindInDays);
     }
     
-    let specialOffer = document.getElementById("specialOfferTxt");
-    let expiry = messenger.i18n.getMessage("special-offer-expiry"); // date of sales end.
-    if (specialOffer) {
-      let reduction = REDUCTION_PRO;
-      // note: expiry day is set in popup.js "endSale" variable
-      specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
-          .replace(/\{boldStart\}/g,"<b>")
-          .replace(/\{boldEnd\}/g,"</b>")
-          .replace(/\{linkStart\}/, "<a id='stdLink'>")
-          .replace(/\{linkEnd\}/g, "</a>")
-          .replace(/\{linkStartPro\}/, "<a id='proLink'>");
-    }
     
-    let specialRenew = document.getElementById("specialOfferRenewTxt");
-    if (specialRenew) {
-      let reduction = REDUCTION_RENEW;
-      // note: expiry day is set in popup.js "endSale" variable
-      specialRenew.innerHTML = 
-        messenger.i18n.getMessage("special-offer-renew", [expiry, reduction])
-          .replace(/\{boldStart\}/g,"<b>")
-          .replace(/\{boldEnd\}/g,"</b>");
-    }
-    
-    
-    let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
-    if (specialOfferUpgrade) {
-      // note: expiry day is set in popup.js "endSale" variable
-      specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, REDUCTION_UPGRADE])
-          .replace(/\{boldStart\}/g,"<b>")
-          .replace(/\{boldEnd\}/g,"</b>")
-          .replace(/\{linkStart\}/, "<a id='stdLink'>")
-          .replace(/\{linkEnd\}/, "</a>");
-    }
-    
-    
-    let elementsC = document.querySelectorAll(".featureComparison"),
-        txtComp = messenger.i18n.getMessage("licenseComparison")
-          .replace(/\{linkStart\}/, "<a id='compLink'>")
-          .replace(/\{linkEnd\}/, "</a>");
-    for (let el of elementsC) {
-      el.innerHTML = txtComp;
-    }
-    
-          
-    let elements = document.querySelectorAll(".specialOfferHead"),
-        txtHead = messenger.i18n.getMessage("special-offer-head", addonName);
-    for (let el of elements) {
-      el.textContent = txtHead;
-    }	           
-    
-    let elementsSI = document.querySelectorAll(".specialOfferIntro"),
-        txtSI = messenger.i18n.getMessage('special-offer-intro', addonName)
-                .replace(/\{boldStart\}/g,"<b>")
-                .replace(/\{boldEnd\}/g,"</b>")
-                .replace("{name}", userName);
-    for (let el of elementsSI) {
-      el.innerHTML = txtSI;
-    }
+    updateSpecialOffersFields(addonName);
 
     let whatsNewLst = document.getElementById('whatsNewList');
     if (whatsNewLst) {
@@ -245,16 +167,13 @@ addEventListener("load", async (event) => {
     let title = document.getElementById('window-title');
     title.innerText = messenger.i18n.getMessage("window-title", addonName);
            
-    updateActions(addonName);
+    updateActions();
 
     // addAnimation('body');
   });  
 
   addEventListener("unload", async (event) => {
-
-	let remindMe = document.getElementById("remind").checked;
-
-
+    let remindMe = document.getElementById("remind").checked;
   });  
 
 

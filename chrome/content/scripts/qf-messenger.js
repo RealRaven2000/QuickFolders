@@ -146,6 +146,12 @@ async function onLoad(activatedWhileWindowOpen) {
                   class="menuitem-iconic"
                   />
 
+                <menuitem id="QuickFolders-ToolbarPopup-dbg8"
+                  label="Show Installation Popup"
+                  oncommand="QuickFolders.Interface.viewInstalled();" 
+                  class="cmd menuitem-iconic"
+                  />                  
+
                 <menuitem id="QuickFolders-ToolbarPopup-dbg0"
                   label="Copy current folder info!"
                   oncommand="QuickFolders.Interface.copyCurrentFolderInfo();"

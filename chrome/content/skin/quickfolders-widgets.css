@@ -99,7 +99,7 @@ menuitem.cmd[tagName="qfOrder"] {
 
 /* menuitems */
 menuitem.cmd[tagName="qfSplash"] {
-  list-style-image : url('ico/new.png') !important;
+  list-style-image : url('ico/new.svg') !important;
 }
 
 
@@ -125,8 +125,8 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 }
 
 #quickFoldersNavToggle {
-	list-style-image: url('ico/navigation-mode.svg');
 	-moz-appearance: none !important;
+	list-style-image: url('ico/navigation-mode.svg');
 	margin-left: -2px;
 	margin-right: -2px;
 	min-width: 12px; /* fix Nautipolis etc */

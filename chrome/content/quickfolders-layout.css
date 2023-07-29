@@ -66,10 +66,14 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 }
 
 
-
 #QuickFolders-ToolbarPopup menuitem image {
   fill: var(--toolbarbutton-icon-fill, currentColor);
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+  transition: transform .3s;
+}
+
+#QuickFolders-ToolbarPopup menuitem:hover image {
+  transform: scale(1.5);
 }
 
 /* tools menu button */
@@ -83,10 +87,16 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 #QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { 
 	height:16px !important; 
 }
+#QuickFolders-ToolbarPopup-options:not(:hover) image {
+  stroke: green !important;
+  -moz-context-properties: stroke, fill;
+}
+
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
   fill: var(--new-highlight);
 	stroke: currentColor;
 }
+
 
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove {

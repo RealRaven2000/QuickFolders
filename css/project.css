@@ -337,6 +337,11 @@ code {
 	/* make sure background expands to edge of main-content-no-nav wrapper! */
 	margin: -35px -20px;
   padding: 35px 20px;
+	background-image: url("/images/QuickFolders_Icon.svg") !important;
+	background-position: right 1em bottom 1.5em;
+	background-repeat: no-repeat;
+	background-size: 100px;
+	
 /*	position: fixed;
 	z-index:1000; */
 }

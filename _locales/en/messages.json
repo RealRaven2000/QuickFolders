@@ -1920,7 +1920,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Added visible warning about license 10 days before expiry.{L2} {L1}Corrected the Number of days left in license by rounding up.{L2} {L1}Fixed 'Compact Folder' on current folder submenu.{L2}"
+    "message": "{L1}I reimplemented all toolbars to work with Thunderbird 115.{L2}{L1}Added timer to update license period at midnight.{L2} {L1}Currently, there is no support for custom icons in the folder tree. This will be added at a later stage.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

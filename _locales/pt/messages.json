@@ -1844,7 +1844,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Adicionado aviso visível sobre a licença 10 dias antes do vencimento.{L2} {L1}Corrigido o Número de dias restantes na licença arredondando para cima.{L2} {L1}Corrigido 'Pasta compactada' no submenu da pasta atual.{L2}"
+    "message": "{L1}Reimplementei todas as barras de ferramentas para funcionar com o Thunderbird 115.{L2}{L1}Adicionado cronômetro para dias licenciados atualizados a cada meia-noite.{L2} {L1}Atualmente, não há suporte para ícones personalizados na árvore de pastas. Isso será adicionado posteriormente.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

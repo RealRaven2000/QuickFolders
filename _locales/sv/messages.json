@@ -1880,7 +1880,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Lägg till en synlig varning om licensen 10 dagar före utgången.{L2} {L1}Rättade Antal dagar kvar i licensen genom att avrunda uppåt.{L2} {L1}Fastad 'Kompakt mapp' på aktuell mapp-undermeny.{L2}"
+    "message": "{L1}Jag implementerade om alla verktygsfält för att fungera med Thunderbird 115.{L2}{L1}Lagde till timer för uppdaterade licensdagar varje midnatt.{L2} {L1}För närvarande finns det inget stöd för anpassade ikoner i mappträdet. Detta kommer att läggas till i ett senare skede.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

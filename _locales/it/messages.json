@@ -1859,7 +1859,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Aggiunto avviso visibile sulla licenza 10 giorni prima della scadenza.{L2} {L1}Corretto il problema Numero di giorni rimanenti nella licenza arrotondando per eccesso.{L2} {L1}Corretto 'Cartella compatta' nel sottomenu della cartella corrente.{L2}s read'{L2}"
+    "message": "{L1}Ho reimplementato tutte le barre degli strumenti in modo che funzionino con Thunderbird 115.{L2}{L1}Aggiunto il timer ai giorni di licenza aggiornati ogni mezzanotte.{L2} {L1}Attualmente, non c'è supporto per le icone personalizzate nell'albero delle cartelle. Questo verrà aggiunto in un secondo momento.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

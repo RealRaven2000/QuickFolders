@@ -1813,7 +1813,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 ja no activarà l'assistent de quickFilters diverses vegades en deixar anar diversos correus a una pestanya.{L2}{L1}Corregit: moure correus de diferents carpetes mitjançant quickMove no els eliminava del menú. [issue 328]{L2} {L1}Amb la mida de lletra personalitzada als botons, els submenús també tenen una mida de lletra coherent en arrossegar el correu [issue 329]{L2} {L1}Modificacions al codi intern per activar l'assistent de filtres quickFilters. Aquests canvis els requerirà el complement quickFilters a partir de la versió 5.7.{L2}"
+    "message": "{L1}He tornat a implementar totes les barres d'eines per treballar amb Thunderbird 115.{L2}{L1}S'ha afegit un temporitzador per actualitzar el període de llicència a mitjanit.{L2} {L1}Actualment, no hi ha suport per a icones personalitzades a l'arbre de carpetes. Això s'afegirà més endavant.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1847,7 +1847,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Se agregó una advertencia visible sobre la licencia 10 días antes del vencimiento.{L2} {L1}Se corrigió la Número de días que quedan en la licencia redondeando hacia arriba.{L2} {L1}Se corrigió 'Carpeta compacta' en el submenú de la carpeta actual.{L2}"
+    "message": "{L1}Reimplementé todas las barras de herramientas para que funcionen con Thunderbird 115.{L2}{L1}Se agregó un temporizador para actualizar los días con licencia cada medianoche.{L2} {L1}Actualmente, no hay soporte para íconos personalizados en el árbol de carpetas. Esto se agregará en una etapa posterior.{L2}"
    },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -330,10 +330,11 @@ END LICENSE BLOCK */
     
   6.0 QuickFolders Pro - WIP
     ## [issue 351] Compatibity with Thunderbird 115 (ESR 2023/24)
+    ## Update "# licensed days left" at midnight. 
     ## - TO DO: new browser action button
     ## - messageServiceFromURI moved to MailServices
     ## - rewrote QI.rebuildSummary() function
-    ## replace deprecated {OS}
+    ## replaced deprecated {OS}
     ## TO DO: find replacement for OS.Path.fromFileURI() - see repairTreeIcons()
     ## replace IOUtils.read with IOUtils.readJSON where appropriate
     ## moved navigation bar into 3pane document. (Util.document3pane)

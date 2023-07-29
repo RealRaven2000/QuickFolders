@@ -6,6 +6,8 @@
 import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
 
+const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
+
 var currentLicense;
 var startupFinished = false;
 var callbacks = [];
@@ -301,9 +303,19 @@ async function main() {
         messenger.runtime.sendMessage(message);
         
         messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
-        
+
+        messenger.runtime.sendMessage(QUICKFILTERS_APPNAME, 
+          { command: "updateQuickFoldersLicense", 
+            license: { status: currentLicense.info.status, keyType: currentLicense.info.keyType } });
         return true;
         
+      case "updateLicenseTimer":
+        await currentLicense.updateLicenseDates();
+
+        messenger.NotifyTools.notifyExperiment({licenseInfo: currentLicense.info});
+        messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: false});          
+        break;
+
       case "createSubfolder":  // [issue 234]
         // if folderName is not given - create a popup window
         
@@ -317,7 +329,13 @@ async function main() {
         break;
         
       case "updateQuickFilters":
-        messenger.runtime.sendMessage("quickFilters@axelg.com", { command: "injectButtonsQFNavigationBar" });
+        {
+          let licenseStatus = currentLicense.info.status,
+          licenseType = currentLicense.info.keyType;
+          messenger.runtime.sendMessage(QUICKFILTERS_APPNAME, 
+            { command: "injectButtonsQFNavigationBar", 
+              license: { status: licenseStatus, keyType: licenseType } });
+        }
         break;
                 
       case "searchMessages": // test
@@ -377,6 +395,18 @@ async function main() {
       revision: parts.length > 2 ? parseInt(parts[2]) : 0,
     }
   }  
+
+  messenger.runtime.onMessageExternal.addListener( async  (message, sender) =>  
+  {
+    switch(message.command) {
+      case "queryQuickFoldersLicense": 
+        return { 
+          status: currentLicense.info.status,
+          keyType: currentLicense.info.keyType
+        }
+        break;
+    }
+  });  
   
   messenger.WindowListener.registerChromeUrl([ 
       ["content", "quickfolders", "chrome/content/"],

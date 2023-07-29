@@ -802,7 +802,7 @@ QuickFolders.Options = {
         // QuickFolders.Util.slideAlert (util.ADDON_NAME, el.textContent);
         await messenger.runtime.sendMessage( {
           command:"slideAlert", 
-          args: ["QuickFolders", el.textContent] 
+          args: ["QuickFolders", el.textContent.trim()] 
         } );
       }
     }

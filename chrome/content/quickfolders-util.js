@@ -2271,7 +2271,19 @@ allowUndo = true)`
         }
     }
     return segmentsA.length - segmentsB.length;
-  }
+  },
+
+  setMidnightTimer: function() {
+		let today = new Date(),
+		    tomorrow = new Date(today.getFullYear(),today.getMonth(),today.getDate()+1),
+		    timeToMidnight = (tomorrow-today);
+		setTimeout(
+			() => {
+				QuickFolders.Util.notifyTools.notifyBackground({ func: "updateLicenseTimer" }); 
+				QuickFolders.Util.setMidnightTimer();
+			},
+			timeToMidnight);
+	}
 
   
   

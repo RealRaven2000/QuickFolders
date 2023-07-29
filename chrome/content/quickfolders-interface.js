@@ -922,19 +922,42 @@ QuickFolders.Interface = {
 		QuickFolders.Util.logDebug("liftNavigationbar()");
 		let containerSelector;
 		let threadPane;
+		let viewMode;
+
 
 		switch(contentDoc.URL) {
 			case "about:3pane":
 				containerSelector = "#threadPane";
 				threadPane = contentDoc.querySelector(containerSelector);
-				threadPane.append(navigationContainer);
+				viewMode="classic";
+				let clist = threadPane.parentElement.classList;
+				if (clist.contains("layout-vertical")) {
+					viewMode="vertical";
+				} else if (clist.contains("layout-wide")) {
+					viewMode="wide";
+				}
+				// interestingly layout is global, and not per tab.
+				// we need to create an event when this is switched.
+				switch (viewMode) {
+					case "classic": // fall-through
+					case "wide":
+						threadPane.append(navigationContainer);
+						break;
+					case "vertical":
+						// not quite what we want, but prepending into div#messagePane
+						// BREAKS its functionality!
+						threadPane.prepend(navigationContainer);
+						break;
+				}
 				break;
 			case "about:message":
 				containerSelector = "#messagepanebox";
 				threadPane = contentDoc.querySelector(containerSelector);
 				threadPane.prepend(navigationContainer);
+				viewMode="message";
 				break;
 		}
+
 		
 		// let messagePane = document3pane.querySelector("#messagePane");
 		

@@ -1510,9 +1510,10 @@ var QuickFolders = {
                 if (isDisabled) {
                   let mi = QI.createMenuItem_disabled();
                   menupopup.appendChild(mi);
-                }
-                else
+                } else {
                   QI.addSubFoldersPopup(menupopup, targetFolder, true);
+                }
+                  
 							}
 						}
 						else { // special folderbutton: recent

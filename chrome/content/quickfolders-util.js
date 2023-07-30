@@ -2283,7 +2283,23 @@ allowUndo = true)`
 				QuickFolders.Util.setMidnightTimer();
 			},
 			timeToMidnight);
-	}
+	},
+
+  folderFlagFromName: function(folderName) {
+    const Ci = Components.interfaces,
+          folderTypes = [
+      { flag: Ci.nsMsgFolderFlags.Inbox, name: "Inbox" },
+      { flag: Ci.nsMsgFolderFlags.Drafts, name: "Drafts" },
+      { flag: Ci.nsMsgFolderFlags.Templates, name: "Templates" },
+      { flag: Ci.nsMsgFolderFlags.SentMail, name: "Sent" },
+      { flag: Ci.nsMsgFolderFlags.Archive, name: "Archives" },
+      { flag: Ci.nsMsgFolderFlags.Junk, name: "Junk" },
+      { flag: Ci.nsMsgFolderFlags.Trash, name: "Trash" }
+    ]
+    if (!folderName) return null;
+    let folderType = folderTypes.find(el=>(el.name==folderName));
+    return folderType ? folderType.flag : null;
+  }
 
   
   

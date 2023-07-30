@@ -3954,6 +3954,7 @@ QuickFolders.Interface = {
         noCommands = popupSetInfo.noCommands,
         evt = popupSetInfo.event || null; // new for [Bug 26703]
     let isDisabled = button ? (button.getAttribute("disabled") || false) : false;
+		let isUnifiedFolder = false;
 
 		const prefs = QuickFolders.Preferences,
 		      Ci = Components.interfaces,
@@ -4010,6 +4011,17 @@ QuickFolders.Interface = {
       if (isDisabled) {
         menupopup.appendChild(this.createMenuItem_disabled());
       }
+
+			if (!fi.hasSubFolders
+				  &&
+				  (fi.flags & util.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL)
+					&&
+					fi.URI.startsWith("mailbox://nobody@smart%20mailboxes/")) {
+				let specialName = fi.URI.substr(fi.URI.lastIndexOf("/")+1); // Inbox, Draft etc.
+				if (util.folderFlagFromName(specialName)) {
+					isUnifiedFolder = true;
+				}
+			}
       
     }
 
@@ -4018,7 +4030,7 @@ QuickFolders.Interface = {
     // between 1-5ms
     if (showCommandsSubmenus) {
       // [Bug 26703] Add option to hide mail commands popup menu
-      if (folder) {
+      if (folder && !isUnifiedFolder) {
         /***  MAIL FOLDER COMMANDS	 ***/
         // 0. BUILD MAIL FOLDER COMMANDS
         this.appendMailFolderCommands(MailCommands, fi, isRootMenu, button, menupopup);
@@ -4092,7 +4104,34 @@ QuickFolders.Interface = {
         this.addSubFoldersPopup(menupopup, folder, false);
 			}
       util.logDebugOptional("popupmenus","Created Menu " + folder.name + ": " + this.debugPopupItems + " items.\n-------------------------");
-    }
+    } else if (isUnifiedFolder) {
+			// [issue 370] allow access to all special folders of this type.
+			// unified folder?
+			let specialName = fi.URI.substr(fi.URI.lastIndexOf("/")+1);
+			let smartRoot = fi.parent.rootFolder.QueryInterface(Ci.nsIMsgLocalMailFolder);
+
+			util.logDebugOptional("popupmenus",`Parent could be a Unified folder: ${specialName}`);
+			let folderFlag = util.folderFlagFromName(specialName);
+			isUnifiedFolder = !(!(folderFlag));
+			if (isUnifiedFolder) {
+				let folder = smartRoot.getChildWithURI(
+					`${smartRoot.URI}/${specialName}`,
+					false,
+					true
+				);
+				if (folder) {
+					let FoldersArray=[];
+					for (let server of MailServices.accounts.allServers) {
+						for (let f of server.rootFolder.getFoldersWithFlags(
+							folderFlag
+						)) {
+							FoldersArray.push(f);
+						}
+					}
+					this.addSubFoldersPopupFromList(FoldersArray, menupopup, false, false, false, doc, isUnifiedFolder);
+				}
+			}
+		}
 
     if (isProfiling) { console.log(`Appending subfolders took:\n` + QuickFolders.Util.stopWatch("stop","addPopupSet")); } 
 
@@ -4331,7 +4370,7 @@ QuickFolders.Interface = {
   // 2 - account - folder path
   // 3 - folder path
   // 4 - folder.URI  [for debugging]
-  folderPathLabel : function folderPathLabel(detailType, folder, maxPathItems) {
+  folderPathLabel : function folderPathLabel(detailType, folder, maxPathItems, isUnified = false) {
     function folderPath(folder, maxAtoms, includeServer) {
       let pathComponents = "",
           chevron = " " + "\u00BB".toString() + " ";
@@ -4352,7 +4391,7 @@ QuickFolders.Interface = {
     let hostString;
     switch (detailType) {
       case 0: // folder name
-        return folder.name;
+        return isUnified ? folder.server.prettyName : folder.name;
       case 1: // folder name - account name
         hostString = folder.rootFolder.name;
         return folder.name + " - " + hostString;
@@ -4362,14 +4401,14 @@ QuickFolders.Interface = {
             fullPath = f ? folder.URI.substr(f+3) : folder.URI;
         return hostString + " - " + folderPath(folder,  maxPathItems, false);
       case 3:
-        return folderPath(folder,  maxPathItems, false);
+        return folderPath(folder, maxPathItems, false);
       case 4: // for debugging
         return folder.URI;
     }
   } ,
 
 	// isDrag: if this is set to true, then the command items are not included
-	addSubFoldersPopupFromList: function (subfolders, popupMenu, isDrag, forceAlphaSort, isRecentFolderList, doc) {
+	addSubFoldersPopupFromList: function (subfolders, popupMenu, isDrag, forceAlphaSort, isRecentFolderList, doc, isUnifiedFolder=false) {
     function splitPath(path, maxAtoms) {
       let parts = path.split("/"),
           firstP = parts.length - maxAtoms,
@@ -4424,7 +4463,8 @@ QuickFolders.Interface = {
 					displayFolderPathDetail = maxDetail;
         
         if (isProfiling) { QuickFolders.Util.stopWatch("start","addSubFoldersPopupFromList"); }
-        menuLabel = this.folderPathLabel(displayFolderPathDetail, subfolder, maxPathItems);
+
+				menuLabel = this.folderPathLabel(displayFolderPathDetail, subfolder, maxPathItems, isUnifiedFolder);
 
 				if (isRecentFolderList && prefs.getBoolPref("recentfolders.showTimeStamp"))  {
 					menuLabel = util.getMruTime(subfolder) + " - " + menuLabel;

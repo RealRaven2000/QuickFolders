@@ -468,7 +468,7 @@ QuickFolders.bookmarks = {
 		}
 	},  
   
-  getActiveUri: function getActiveUri() {
+  getActiveUri: function() {
     let util = QuickFolders.Util,
         browser = this.getBrowser(),
         tabmail = document.getElementById("tabmail"),
@@ -487,17 +487,17 @@ QuickFolders.bookmarks = {
               theMode = tab.mode ? tab.mode.name : tab.getAttribute("type");
           if (!browser)
             browser = tab.browser;
-          if (theMode == 'folder') {
+          if (theMode == "mail3PaneTab") {
             // if we are in folder mode we might have a message selected
-            if (tab.folderDisplay && tab.folderDisplay.focusedPane && tab.folderDisplay.focusedPane.id =='threadTree') {
-              theMode = 'message';
-            }
+            // if (tab.folderDisplay && tab.folderDisplay.focusedPane && tab.folderDisplay.focusedPane.id =='threadTree') {
+              theMode = "message"; // mailMessageTab - single tab
+            // }
           }
           
           currentType = theMode;
           util.logDebugOptional("bookmarks", "bookmarks.getActiveUri() - Selected Tab Type: " + theMode);
           switch (theMode) {
-            case 'folder':
+            case "mail3PaneTab":
               try {
                 let currentFolder = util.CurrentFolder;
                 currentURI = currentFolder.server.hostName; // password manager shows the host name
@@ -525,7 +525,8 @@ QuickFolders.bookmarks = {
             case 'glodaFacet':         // fall through
             case 'glodaSearch-result': // fall through
             case 'glodaList':          // fall through
-            case 'message':            // fall through => type = msgUri
+            case 'message':            // fall through => type = msgUri (special mode by me)
+            case 'mailMessageTab':
               // find out about currently viewed message
               try {
                 // are multiple mails selected?

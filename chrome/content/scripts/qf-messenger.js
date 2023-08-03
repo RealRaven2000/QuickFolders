@@ -140,66 +140,67 @@ async function onLoad(activatedWhileWindowOpen) {
                   label="Debug">
               <menupopup class="dbgMenu">
               
-                <menuitem id="QuickFolders-ToolbarPopup-dbg7"
+                <menuitem id="QuickFolders-ToolbarPopup-dbg0"
                   label="Lift up Navigation bar"
                   oncommand="QuickFolders.Interface.liftNavigationbar(window.gTabmail.currentTabInfo.chromeBrowser.contentDocument);" 
                   class="menuitem-iconic"
                   />
 
-                <menuitem id="QuickFolders-ToolbarPopup-dbg8"
+                <menuitem id="QuickFolders-ToolbarPopup-dbg1"
+                  label="Set News flag"
+                  oncommand="QuickFolders.Preferences.setBoolPref('hasNews', true); QuickFolders.Util.notifyTools.notifyBackground({ func: 'updateQuickFoldersLabel' });"
+                  class="menuitem-iconic"
+                  />                                      
+
+
+                <menuitem id="QuickFolders-ToolbarPopup-dbg2"
                   label="Show Installation Popup"
                   oncommand="QuickFolders.Interface.viewInstalled();" 
                   class="cmd menuitem-iconic"
                   />                  
 
-                <menuitem id="QuickFolders-ToolbarPopup-dbg0"
+                <menuitem id="QuickFolders-ToolbarPopup-dbg3"
                   label="Copy current folder info!"
                   oncommand="QuickFolders.Interface.copyCurrentFolderInfo();"
                   class="menuitem-iconic"
                   />
 
-                <menuitem id="QuickFolders-ToolbarPopup-dbg1"
+                <menuitem id="QuickFolders-ToolbarPopup-dbg4"
                   label="Test Tree only Icons"
                   oncommand="QuickFolders.Interface.testTreeIcons();" 
                   class="menuitem-iconic"
                   />
                                       
-                <menuitem id="QuickFolders-ToolbarPopup-dbg2"
+                <menuitem id="QuickFolders-ToolbarPopup-dbg5"
                   label="Load FolderTree Dictionary"
                   oncommand="QuickFolders.FolderTree.loadDictionary();" 
                   class="menuitem-iconic"
                   />
 
-                <menuitem id="QuickFolders-ToolbarPopup-dbg2"
+                <menuitem id="QuickFolders-ToolbarPopup-dbg6"
                   label="Force Tree Refresh"
                   oncommand="QuickFolders.FolderTree.refreshTree();" 
                   class="menuitem-iconic"
                   />
                     
-                <menuitem id="QuickFolders-ToolbarPopup-dbg6"
+                <menuitem id="QuickFolders-ToolbarPopup-dbg7"
                   label="Foldertree.init()"
                   oncommand="QuickFolders.FolderTree.init();" 
                   class="menuitem-iconic"
                   />
                                   
-                <menuitem id="QuickFolders-ToolbarPopup-dbg3"
+                <menuitem id="QuickFolders-ToolbarPopup-dbg8"
                   label="Platform info - aboutHost()"
                   oncommand="QuickFolders.Util.aboutHost();"
                   class="menuitem-iconic"
                   />
 
-                <menuitem id="QuickFolders-ToolbarPopup-dbg4"
+                <menuitem id="QuickFolders-ToolbarPopup-dbg9"
                   label="Load Platform CSS"
                   oncommand="QuickFolders.Util.loadPlatformStylesheet();"
                   class="menuitem-iconic"
                   />
                                     
-                <menuitem id="QuickFolders-ToolbarPopup-dbg5"
-                  label="Load tab Session (restore Categories)"
-                  oncommand="QuickFolders.Interface.loadTabSession();"
-                  class="menuitem-iconic"
-                  />
-
               </menupopup>
             </menu>
             <menuitem id="QuickFolders-ToolbarPopup-find"

@@ -30,7 +30,7 @@ menulist > menupopup > menuitem[_moz-menuactive="true"] {
 }
 
 
-description, select[data-pref-name$=".paletteType"] {
+select[data-pref-name$=".paletteType"] {
   font-size: 0.85em;
 }
 
@@ -60,4 +60,8 @@ menulist#QuickFolders-CurrentFolder-Background-Select {
 
 #qf-flat-toolbar {
   padding: 1px 1px;
+}
+
+label.themeable {
+  -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;  
 }

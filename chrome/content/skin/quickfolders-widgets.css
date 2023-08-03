@@ -11,8 +11,6 @@
 menuitem.cmd[tagName="qfRegister"].free .menu-iconic-icon,
 #QuickFolders-Pro.free .tab-icon {
   animation: qfIconRotateY 3s linear 0.3s infinite;
-	height: 19px;
-	width: 30px;
 }
 
 
@@ -46,48 +44,25 @@ tab {
 }
 
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
-menuitem.cmd[tagName="qfRegister"].free,
-tab#QuickFolders-Pro {
-	list-style-image : url('ico/pro.png') !important;
+menuitem.cmd[tagName="qfRegister"].free {
+	list-style-image : url('ico/pro-default.svg') !important;
 }
-menuitem.cmd[tagName="qfRegister"].paid,
-tab#QuickFolders-Pro.paid {
-	list-style-image : url('ico/pro-paid.png') !important;
+menuitem.cmd[tagName="qfRegister"].paid {
+	list-style-image : url('ico/pro-paid.svg') !important;
 }
-menuitem.cmd[tagName="qfRegister"].expired,
-tab#QuickFolders-Pro.expired {
-	list-style-image : url('ico/pro-expired.png') !important;
+menuitem.cmd[tagName="qfRegister"].expired {
+	list-style-image : url('ico/pro-expired.svg') !important;
 }
 
 
-tab#QuickFolders-Advanced {
-	list-style-image: url("ico/settings.svg");
-}
-
-tab#QuickFolders-Layout {
-	list-style-image : url('ico/smiley.svg');
-}
-
-menuitem.cmd[tagName="qfHelp"],
-tab#QuickFolders-Help {
+menuitem.cmd[tagName="qfHelp"] {
 	list-style-image : url('ico/help.svg') !important;
 }
 
-menuitem.cmd[tagName="qfSupport"],
-tab#QuickFolders-Support {
+menuitem.cmd[tagName="qfSupport"] {
 	list-style-image : url('ico/info.svg') !important;
 }
 
-menuitem.cmd[tagName="qfRegister"] .menu-iconic-icon {
-	margin-left: -7px;
-	margin-right: -7px;
-}
-
-tab#QuickFolders-General  {
-	list-style-image: url("ico/settings.svg");
-  fill: var(--new-highlight);
-  stroke: currentColor;
-}
 
 #QuickFolders-FindPopup menuitem.quickFolder  {
 	list-style-image : url('ico/folder-tab-small.png') !important;
@@ -98,8 +73,8 @@ tab#QuickFolders-General  {
 	/* text-decoration: underline; */
 }
 
-menu.dbgMenu menuitem:hover,
-menu#QuickFolders-debug, menu.dbgMenu {
+menu.dbgMenu:not([collapsed=true]) menuitem:hover,
+menu.dbgMenu:not([collapsed=true]) {
 	list-style-image : url('ico/bug.svg') !important;
 }
 
@@ -108,7 +83,7 @@ menuitem.cmd[tagName="qfFindFolder"] {
   list-style-image: url('chrome://messenger/skin/icons/search-glass.svg') !important;
 }
 menuitem.cmd[tagName="qfRebuild"] {
-  list-style-image: url('chrome://calendar/skin/shared/icons/synchronize.svg') !important;
+  list-style-image: url('ico/synchronize.svg') !important;
 }
 menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('ico/clean.svg') !important; }
 menuitem.cmd[tagName="qfRepairTreeIcons"] {

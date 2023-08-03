@@ -52,6 +52,7 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/message-invalid.png");
 }
 
+#QuickFolders-ToolbarPopup menu,
 #QuickFolders-ToolbarPopup menuitem {
   fill: currentColor;
   -moz-context-properties: fill;
@@ -70,13 +71,32 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 #QuickFolders-ToolbarPopup menuitem image {
   fill: var(--toolbarbutton-icon-fill, currentColor);
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+  transition: transform .3s;
 }
 
+#QuickFolders-ToolbarPopup menuitem:hover image {
+  transform: scale(1.5);
+}
+
+/* tools menu button */
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/settings.svg");
   -moz-context-properties: fill, fill-opacity, stroke;
   fill: var(--toolbarbutton-icon-fill, currentColor);
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+	stroke: var(--new-highlight); /* the tab in front of the wheel */
+}
+#QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { 
+	height:16px !important; 
+}
+#QuickFolders-ToolbarPopup-options:not(:hover) image {
+  stroke: green !important;
+  -moz-context-properties: stroke, fill;
+}
+
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
+  fill: var(--new-highlight);
+	stroke: currentColor;
 }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-quickMove {
@@ -180,8 +200,9 @@ menupopup.widerMenu menucaption {
 	margin-top: 0px;
 	min-height: 20px !important;
 	width: -moz-min-content;
-  /* Tb 70+ */
   min-width: 50px;
+	background-color: var(--lwt-toolbar-field-background-color, hsla(0,0%,100%,.8)) !important;
+  color: var(--lwt-toolbar-field-color, black) !important;
 }
 
 #QuickFolders-FindFolder.quickMove,
@@ -206,9 +227,6 @@ menupopup.widerMenu menucaption {
   transition: height 0.2s;
 }
 
-#QuickFolders-FindFolder-Help:hover {
-  /* margin-right: -4px; */
-}
 
 #QuickFolders-FindFolder-Help:hover > image.toolbarbutton-icon {
   height:25px;
@@ -306,16 +324,8 @@ menupopup.widerMenu menucaption {
   margin: 0 3px;
 }
 
-#QuickFolders-mainPopup image, #QuickFolders-quickMove image, #filterActive image { height:16px !important; }
-
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopup:hover {
-  fill: var(--new-highlight);
-	stroke: currentColor;
-}
-
 #QuickFolders-Toolbar {
 	min-height: 24px ;
-/* line-height: 24px; */
 	margin: 0;
 	padding: 0;
 }
@@ -359,7 +369,6 @@ menupopup.widerMenu menucaption {
 	border-radius: 2px;
 }
 
-/* fix wrong padding in Noia & other themes */
 #QuickFolders-FoldersBox toolbarbutton {
 	background-repeat: repeat-x;
   display: inline-block;
@@ -367,13 +376,13 @@ menupopup.widerMenu menucaption {
 	padding-top: 0px;
 	padding-bottom: 0px;
 	vertical-align:top;
+	text-shadow: none;
 }
 
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton,
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
-	padding-right: 4px !important; /* was 0.4em = 4.4px */
+	padding-right: 4px !important; 
 	padding-left:  4px !important;
-	/* padding-top: 0px !important; Noia Extreme Fix */
 }
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton:not([checked="true"]) {
 	margin-bottom: 0px !important;
@@ -493,7 +502,8 @@ menupopup.widerMenu menucaption {
 #QuickFolders-Toolbar #QuickFolders-title-label {
 	-moz-appearance: none !important;
   appearance: none !important;
-	background: transparent !important;
+  background-color: transparent;
+	background-image: none;
 	border-radius: 0.4em !important;
 	font-weight: bold;
 	line-height: 24px;

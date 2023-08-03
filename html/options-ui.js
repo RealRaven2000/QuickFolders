@@ -530,7 +530,7 @@ QuickFolders.Options = {
     }
   },  
   
-  changeTextPreference: function changeTextPreference(txtBox) {
+  changeTextPreference: function(txtBox) {
     let prefString = txtBox.getAttribute("data-pref-name");
     QuickFolders.Preferences.setIntPreference(prefString, txtBox.value);
     

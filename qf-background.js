@@ -1,8 +1,3 @@
-/*
- * Documentation:
- * https://github.com/thundernest/addon-developer-support/wiki/Using-the-WindowListener-API-to-convert-a-Legacy-Overlay-WebExtension-into-a-MailExtension-for-Thunderbird-78
- */
-
 import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
 
@@ -11,6 +6,18 @@ const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 var currentLicense;
 var startupFinished = false;
 var callbacks = [];
+
+
+
+// [issue 371] Remove console error “receiving end does not exist”
+function logReceptionError(x) {
+  if (x.message.includes("Receiving end does not exist.")) {
+    // no need to log - quickFilters is not installed or disabled.
+  } else { 
+    console.log(x); 
+  }  
+}
+
   /* startupFinished: There is a general race condition between onInstall and our main() startup:
    * - onInstall needs to be registered upfront (otherwise we might miss it)
    * - but onInstall needs to wait with its execution until our main function has
@@ -94,6 +101,10 @@ messenger.runtime.onInstalled.addListener(async (data) => {
       }
   });
 
+  browser.browserAction.onClicked.addListener((cmd) => {
+    messenger.Utilities.toggleToolbarAction(false);
+  }) ;
+  
 });
 
 // display splash screen
@@ -146,8 +157,10 @@ async function main() {
     "updateNavigationBar",
     "updateQuickFoldersLabel",
     "updateUserStyles",
-    "storeCategories",
     "readCategories",
+    "storeCategories",
+    "readToolbarStatus",
+    "storeToolbarStatus",
     "toggleNavigationBars"
   ];
 
@@ -312,10 +325,11 @@ async function main() {
         messenger.runtime.sendMessage(message);
         
         messenger.NotifyTools.notifyExperiment({event: "updateAllTabs"});
-
+        // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
         messenger.runtime.sendMessage(QUICKFILTERS_APPNAME, 
           { command: "updateQuickFoldersLicense", 
-            license: { status: currentLicense.info.status, keyType: currentLicense.info.keyType } });
+            license: { status: currentLicense.info.status, keyType: currentLicense.info.keyType } }).catch(logReceptionError);
+        // }
         return true;
         
       case "updateLicenseTimer":
@@ -341,9 +355,12 @@ async function main() {
         {
           let licenseStatus = currentLicense.info.status,
           licenseType = currentLicense.info.keyType;
+          // require management permission to check if qF is installed
+          // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
           messenger.runtime.sendMessage(QUICKFILTERS_APPNAME, 
             { command: "injectButtonsQFNavigationBar", 
-              license: { status: licenseStatus, keyType: licenseType } });
+              license: { status: licenseStatus, keyType: licenseType } }).catch(logReceptionError);
+          // }
         }
         break;
                 
@@ -365,7 +382,15 @@ async function main() {
         return cats;
       }
         
-        
+      case "storeToolbarStatus": // store toolbar visibilities in tabsession
+        await messenger.sessions.setTabValue(data.tabId, "QuickFolders_ToolbarStatus", data.status);
+        break;
+
+      case "readToolbarStatus": // store toolbar visibilities in tabsession
+      {
+        let status = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_ToolbarStatus");
+        return status
+      }
 
 
     }

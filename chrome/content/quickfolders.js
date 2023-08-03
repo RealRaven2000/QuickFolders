@@ -314,7 +314,7 @@ END LICENSE BLOCK */
   5.15.2 QuickFolders Pro - 24/12/2022
     ## [issue 335] quickFilters assistant triggered multiple times when dropping mails to tab
     
-  5.16 QuickFolders Pro - WIP
+  5.16.1 QuickFolders Pro - 23/04/2023
     ## [issue 341] Removed Service wrappers:
     ##   Services: nsIWindowMediator, nsIWindowWatcher, nsIPromptService, nsIPrefBranch, nsIFocusManager,
     ##             nsIStringBundleService, nsIXULAppInfo, nsIConsoleService, nsIVersionComparator,
@@ -329,7 +329,12 @@ END LICENSE BLOCK */
     ## Clicking Compact Folder on current folder submenu only throws "Uncaught TypeError: folder is undefined"
     ##  (triggered in makePopupId)
 
-
+  5.16.2 - WIP
+    ## [issue 371] Fixed: Console error “receiving end does not exist” - caused by quickFilters not running.
+    ## [issue 372] Fixed: Changing 'minimum height' opens help topic (bug 25021)
+    ## [issue 370] support showing contained folders of a Tab representing unified folders.
+    ## Updated some icons to svg
+    ##
 
 
 	Future Work
@@ -1410,18 +1415,24 @@ var QuickFolders = {
 					//show context menu if dragged over a button which has subfolders
 					let targetFolder = button.folder || null,
 					    otherPopups = QI.menuPopupsByOffset;
-					for (let i = 0; i < otherPopups.length; i++) {
-						if (otherPopups[i].folder) {
-							if (otherPopups[i].folder !== targetFolder && otherPopups[i].hidePopup)
-								otherPopups[i].hidePopup();
-						}
-						else if (targetFolder) { // there is a targetfolder but the other popup doesn't have one (special tab!).
-							if (otherPopups[i].hidePopup)
-								otherPopups[i].hidePopup();
-							else
-								util.logDebug("otherPopups[" + i + "] (" + otherPopups[i].id + ") does not have a hidePopup method!");
-						}
-					}
+          try {
+            for (let i = 0; i < otherPopups.length; i++) {
+              if (otherPopups[i].folder) {
+                if (otherPopups[i].folder !== targetFolder && otherPopups[i].hidePopup) {
+                  otherPopups[i].hidePopup();
+                }
+              }
+              else if (targetFolder) { // there is a targetfolder but the other popup doesn't have one (special tab!).
+                if (otherPopups[i].hidePopup) {
+                  otherPopups[i].hidePopup();
+                } else {
+                  util.logDebug("otherPopups[" + i + "] (" + otherPopups[i].id + ") does not have a hidePopup method!");
+                }
+              }
+            }
+          } catch (ex) {
+            util.logDebug("Error during dragOver - hiding popups", ex);
+          };
 
 					let dt = evt.dataTransfer,
 					    types = dt.mozTypesAt(0);

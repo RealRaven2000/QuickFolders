@@ -839,6 +839,11 @@ QuickFolders.Util = {
           }          
           
           let p = await new Promise((resolve, reject) => {
+              if (targetFolder == sourceFolder) {
+                throw new ExtensionError(
+                  `Error ${isMove ? "moving" : "copying"} nothing to do: target and source are the same.`
+                );                
+              }
               MailServices.copy.copyMessages(
                 sourceFolder,
                 msgHeaders,
@@ -850,7 +855,7 @@ QuickFolders.Util = {
                   SetMessageKey(key) {},
                   GetMessageId(messageId) {},
                   OnStopCopy(status) {
-                    if (status == Cr.NS_OK) {
+                    if (status == Cr.NS_OK) { // 0
                       resolve(); // returns to await
                     } else {
                       reject(status); // this throws !
@@ -865,11 +870,11 @@ QuickFolders.Util = {
           // fix bookmarks
           
           messageIdList.push(origIds);  // <= successfully moved / copied
-          QuickFolders.CopyListener.OnStopCopy(status); 
+          QuickFolders.CopyListener.OnStopCopy(0);  // OK
           
         } catch (ex) {
           Cu.reportError(ex);
-          throw new ExtensionError(
+          throw new Error(
             `Error ${isMove ? "moving" : "copying"} message: ${ex.message}`
           );
         }
@@ -1261,6 +1266,14 @@ allowUndo = true)`
     let msg = "QuickFolders " + QuickFolders.Util.logTime() + "\n";
     console.log(msg, ...arguments);
   },
+
+	// optional logging for important points in flow.
+	logHighlight: function(txt, color="white", background="rgb(80,0,0)", ...args) {
+		if (QuickFolders.Preferences.isDebug) {
+			console.log(`QuickFolders %c${txt}`, `color: ${color}; background: ${background}`, ...args);
+		}
+	},  
+
 
   // flags
   // errorFlag    0x0   Error messages. A pseudo-flag for the default, error case.
@@ -2231,6 +2244,29 @@ allowUndo = true)`
         }
     }
     return segmentsA.length - segmentsB.length;
+  },
+
+  folderFlagFromName: function(folderName) {
+    const Ci = Components.interfaces,
+          folderTypes = [
+      { flag: Ci.nsMsgFolderFlags.Inbox, name: "Inbox" },
+      { flag: Ci.nsMsgFolderFlags.Drafts, name: "Drafts" },
+      { flag: Ci.nsMsgFolderFlags.Templates, name: "Templates" },
+      { flag: Ci.nsMsgFolderFlags.SentMail, name: "Sent" },
+      { flag: Ci.nsMsgFolderFlags.Archive, name: "Archives" },
+      { flag: Ci.nsMsgFolderFlags.Junk, name: "Junk" },
+      { flag: Ci.nsMsgFolderFlags.Trash, name: "Trash" }
+    ]
+    if (!folderName) return null;
+    let folderType = folderTypes.find(el=>(el.name==folderName));
+    return folderType ? folderType.flag : null;
+  },
+
+  isFolderUnified: function(f) {
+    if (!f || !f.URI) {
+      return false;
+    } 
+    return (f.URI.startsWith("mailbox://nobody@smart%20mailboxes/"));
   }
 
   

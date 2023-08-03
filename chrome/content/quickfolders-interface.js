@@ -1935,10 +1935,6 @@ QuickFolders.Interface = {
 		return makeVisible;
 	} ,
 
-	get SpecialToolbar() {
-		return QuickFolders.Util.$("Quickfolders-SpecialTools");
-	} ,
-
 	endsWith: function endsWith(sURI, sFolder) {
 		if (sFolder.length == sURI.length - sURI.indexOf(sFolder))
 			return true;
@@ -2535,38 +2531,6 @@ QuickFolders.Interface = {
       }
     }
   },
-
-	addSpecialButton: function addSpecialButton(SpecialFunction, SpecialId, Offset, tooltip) {
-		let button = document.createXULElement ? document.createXULElement("toolbarbutton") : document.createElement("toolbarbutton"),
-		    image = "",
-		    lbl = ""; // for testing
-		switch (SpecialId) {
-			case "Thread":
-				image = "url('chrome://quickfolders/content/thread.png')"; // "thread.png" ; //
-				lbl = ""; // Thread
-				break;
-			case "Trash":
-				image = "url('chrome://quickfolders/content/skin/ico/folder-trash-gnome-qf.png')";
-				lbl = "trash";
-				break;
-			default:
-				break;
-		}
-		button.setAttribute("label", lbl);
-		button.setAttribute("class","specialButton");
-		button.setAttribute("list-style-image", image);
-		button.setAttribute("dir", "normal");
-		button.setAttribute("orient", "horizontal");
-		button.setAttribute("validate", "always");
-		button.setAttribute("tooltiptext", tooltip);
-		button.setAttribute("id", SpecialId);
-
-		this.setEventAttribute(button, "ondragenter","QuickFolders.buttonDragObserver.dragEnter(event);");
-		this.setEventAttribute(button, "ondragover","QuickFolders.buttonDragObserver.dragOver(event);");
-		this.setEventAttribute(button, "ondragleave","QuickFolders.buttonDragObserver.dragExit(event);");
-		this.setEventAttribute(button, "ondrop","QuickFolders.buttonDragObserver.drop(event);");
-		this.SpecialToolbar.appendChild(button);
-	} ,
 
 	onButtonClick: function onButtonClick(button, evt, isMouseClick) {
     let util = QuickFolders.Util,
@@ -3955,7 +3919,7 @@ QuickFolders.Interface = {
   } ,
 
 	// noCommands suppress all command menu items + submenus
-	addPopupSet: function addPopupSet(popupSetInfo) {
+	addPopupSet: function (popupSetInfo) {
     let folder = popupSetInfo.folder,
         popupId = popupSetInfo.popupId,
         entry = popupSetInfo.entry,
@@ -3964,6 +3928,7 @@ QuickFolders.Interface = {
         noCommands = popupSetInfo.noCommands,
         evt = popupSetInfo.event || null; // new for [Bug 26703]
     let isDisabled = button ? (button.getAttribute("disabled") || false) : false;
+		let isUnifiedFolder = false;
 
 		const prefs = QuickFolders.Preferences,
 		      Ci = Components.interfaces,
@@ -4019,6 +3984,13 @@ QuickFolders.Interface = {
       if (isDisabled) {
         menupopup.appendChild(this.createMenuItem_disabled());
       }
+
+			if (!fi.hasSubFolders && util.isFolderUnified(fi)) {
+				let specialName = fi.URI.substr(fi.URI.lastIndexOf("/")+1); // Inbox, Draft etc.
+				if (util.folderFlagFromName(specialName)) {
+					isUnifiedFolder = true;
+				}
+			}			
       
     }
 
@@ -4027,7 +3999,7 @@ QuickFolders.Interface = {
     // between 1-5ms
     if (showCommandsSubmenus) {
       // [Bug 26703] Add option to hide mail commands popup menu
-      if (folder) {
+      if (folder && !isUnifiedFolder) {
         /***  MAIL FOLDER COMMANDS	 ***/
         // 0. BUILD MAIL FOLDER COMMANDS
         this.appendMailFolderCommands(MailCommands, fi, isRootMenu, button, menupopup);
@@ -4077,7 +4049,7 @@ QuickFolders.Interface = {
       }
 
       // 3. APPEND MAIL FOLDER COMMANDS
-      if (folder && menupopup != MailCommands && !isHideMailCommands) {
+      if (folder && menupopup != MailCommands && !isHideMailCommands && !isUnifiedFolder) {
         // Append the Mail Folder Context Menu...
         let MailFolderCmdMenu = this.createIconicElement("menu");
         MailFolderCmdMenu.setAttribute("id","quickFoldersMailFolderCommands");
@@ -4100,7 +4072,34 @@ QuickFolders.Interface = {
       if (!isDisabled)
         this.addSubFoldersPopup(menupopup, folder, false);
       util.logDebugOptional("popupmenus","Created Menu " + folder.name + ": " + this.debugPopupItems + " items.\n-------------------------");
-    }
+    } else if (isUnifiedFolder) {
+			// [issue 370] allow access to all special folders of this type.
+			// unified folder?
+			let specialName = fi.URI.substr(fi.URI.lastIndexOf("/")+1);
+			let smartRoot = fi.parent.rootFolder.QueryInterface(Ci.nsIMsgLocalMailFolder);
+
+			util.logDebugOptional("popupmenus",`Parent could be a Unified folder: ${specialName}`);
+			let folderFlag = util.folderFlagFromName(specialName);
+			isUnifiedFolder = !(!(folderFlag));
+			if (isUnifiedFolder) {
+				let folder = smartRoot.getChildWithURI(
+					`${smartRoot.URI}/${specialName}`,
+					false,
+					true
+				);
+				if (folder) {
+					let FoldersArray=[];
+					for (let server of MailServices.accounts.allServers) {
+						for (let f of server.rootFolder.getFoldersWithFlags(
+							folderFlag
+						)) {
+							FoldersArray.push(f);
+						}
+					}
+					this.addSubFoldersPopupFromList(FoldersArray, menupopup, false, false, false, document, isUnifiedFolder);
+				}
+			}
+		}
 
     if (isProfiling) { console.log(`Appending subfolders took:\n` + QuickFolders.Util.stopWatch("stop","addPopupSet")); } 
 
@@ -4337,7 +4336,7 @@ QuickFolders.Interface = {
   // 2 - account - folder path
   // 3 - folder path
   // 4 - folder.URI  [for debugging]
-  folderPathLabel : function folderPathLabel(detailType, folder, maxPathItems) {
+  folderPathLabel : function folderPathLabel(detailType, folder, maxPathItems, isUnified = false) {
     function folderPath(folder, maxAtoms, includeServer) {
       let pathComponents = "",
           chevron = " " + "\u00BB".toString() + " ";
@@ -4358,7 +4357,7 @@ QuickFolders.Interface = {
     let hostString;
     switch (detailType) {
       case 0: // folder name
-        return folder.name;
+        return isUnified ? folder.server.prettyName : folder.name;
       case 1: // folder name - account name
         hostString = folder.rootFolder.name;
         return folder.name + " - " + hostString;
@@ -4375,7 +4374,7 @@ QuickFolders.Interface = {
   } ,
 
 	// isDrag: if this is set to true, then the command items are not included
-	addSubFoldersPopupFromList: function addSubFoldersPopupFromList(subfolders, popupMenu, isDrag, forceAlphaSort, isRecentFolderList) {
+	addSubFoldersPopupFromList: function (subfolders, popupMenu, isDrag, forceAlphaSort, isRecentFolderList, isUnifiedFolder=false) {
     function splitPath(path, maxAtoms) {
       let parts = path.split("/"),
           firstP = parts.length - maxAtoms,
@@ -4430,7 +4429,7 @@ QuickFolders.Interface = {
 					displayFolderPathDetail = maxDetail;
         
         if (isProfiling) { QuickFolders.Util.stopWatch("start","addSubFoldersPopupFromList"); }
-        menuLabel = this.folderPathLabel(displayFolderPathDetail, subfolder, maxPathItems);
+        menuLabel = this.folderPathLabel(displayFolderPathDetail, subfolder, maxPathItems, isUnifiedFolder);
 
 				if (isRecentFolderList && prefs.getBoolPref("recentfolders.showTimeStamp"))  {
 					menuLabel = util.getMruTime(subfolder) + " - " + menuLabel;
@@ -7046,7 +7045,7 @@ QuickFolders.Interface = {
     styleEngine.setElementStyle(ss,
                                 'menuitem.cmd[tagName="qfRegister"], tab#QuickFolders-Pro',
                                 "list-style-image",
-                                "url('chrome://quickfolders/content/skin/ico/pro-16.png')",
+                                "url('chrome://quickfolders/content/skin/ico/pro-paid.svg')",
                                 true);
   } ,
 

@@ -64,8 +64,9 @@ QuickFolders.TabListener = {
         
         if (tabMode == 'message') {
           let msg = null, fld = null;
-          if (info.messageDisplay)
+          if (info.messageDisplay) {
             msg = info.messageDisplay.displayedMessage;
+          }
           if (msg) fld = msg.folder;
           if (fld) {
             // reflect in current folder toolbar!

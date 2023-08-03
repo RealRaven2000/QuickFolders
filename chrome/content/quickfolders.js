@@ -328,7 +328,9 @@ END LICENSE BLOCK */
     ## Clicking Compact Folder on current folder submenu only throws "Uncaught TypeError: folder is undefined"
     ##  (triggered in makePopupId)
     
-  6.0 QuickFolders Pro - WIP
+=== 6.0 - FORKED CODE BASE FOR THUNDERBIRD 115 and later ===  
+    
+  6.0 QuickFolders Pro - 30/07/2023
     ## [issue 351] Compatibity with Thunderbird 115 (ESR 2023/24)
     ## Update "# licensed days left" at midnight. 
     ## - TO DO: new browser action button
@@ -340,6 +342,17 @@ END LICENSE BLOCK */
     ## moved navigation bar into 3pane document. (Util.document3pane)
 
     
+  6.1  QuickFolders Pro - WIP
+    ## [issue 371] Deal with Console error “receiving end does not exist”
+    ## [issue 372] Changing 'minimum height'  opens help topic (bug 25021)
+    ## [issue 374] Fixed integration of main toolbar with single message tab 
+    ## [issue 376] Bookmarks: in Thunderbird 115 "Add current item" not working
+    ## [issue 381] New subfolder while dragging to tab throws error
+    ## [issue 382] quickJump shortcut '=' to show most recent used folders broken
+    ## Various improvements of navigation behavior in single message tab and single mail window
+    ## [issue 375] Added configuration Option to close tab after mail is moved from single message view
+    ## eliminated <description> tags from options.html
+
 
 
 	Future Work
@@ -489,7 +502,8 @@ var QuickFolders = {
       let tabInfoCount = util.getTabInfoLength(tabmail);
       for (let i = 0; i < tabInfoCount; i++) {
         let info = util.getTabInfoByIndex(tabmail, i);
-        if (info && util.getTabMode(info) == "mail3PaneTab") {
+        if (info && (util.getTabMode(info) == "mail3PaneTab" || util.getTabMode(info) =="mailMessageTab") ) {
+          /******* RESTORE CATEGORIES PER TAB   **********/
           // read from tab session (wx API 115)
           let cats = await QuickFolders.Interface.readTabCategorySession(info);
           // the session is currently deleted 
@@ -502,6 +516,10 @@ var QuickFolders = {
           }
           else {
             info.QuickFoldersCategory = cats; // restore from session
+          }
+          let status = await QuickFolders.Interface.readTabToolbarSession(info);
+          if (status && typeof status != "undefined") {
+            info.QuickFolders_ToolbarStatus = status;
           }
         }
       }
@@ -1174,7 +1192,7 @@ var QuickFolders = {
               isEncodeUri = prefs.getBoolPref("newFolderCallback.encodeURI");
               
         
-				let step = '',
+				let step = '0 - determine folder URI',
 				    isManyFolders = false,
 				    sourceFolder = null;
             
@@ -1190,10 +1208,10 @@ var QuickFolders = {
 						aFolder = model.getMsgFolderFromUri(FolderParam, true).QueryInterface(Ci.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
 					}
 					else {
-						if (gFolderDisplay.displayedFolder)
-							currentURI = gFolderDisplay.displayedFolder.URI;
-						else
-							isManyFolders = true;
+						// [issue 381]
+						currentURI = QuickFolders.Util.CurrentFolder.URI;
+						//else -- TO DO - once Thunderbird 115 supports selecting multiple folders, we need to figure this out
+						//	isManyFolders = true;
 						aFolder = FolderParam.QueryInterface(Ci.nsIMsgFolder);
 					}
           
@@ -1429,19 +1447,24 @@ var QuickFolders = {
 					//show context menu if dragged over a button which has subfolders
 					let targetFolder = button.folder || null,
 					    otherPopups = QI.menuPopupsByOffset;
-					for (let i = 0; i < otherPopups.length; i++) {
-						if (otherPopups[i].folder) {
-							if (otherPopups[i].folder !== targetFolder && otherPopups[i].hidePopup)
-								otherPopups[i].hidePopup();
-						}
-						else if (targetFolder) { // there is a targetfolder but the other popup doesn't have one (special tab!).
-							if (otherPopups[i].hidePopup)
-								otherPopups[i].hidePopup();
-							else
-								util.logDebug("otherPopups[" + i + "] (" + otherPopups[i].id + ") does not have a hidePopup method!");
-						}
-					}
-
+          try {
+            for (let i = 0; i < otherPopups.length; i++) {
+              if (otherPopups[i].folder) {
+                if (otherPopups[i].folder !== targetFolder && otherPopups[i].hidePopup) {
+                  otherPopups[i].hidePopup();
+                }
+              }
+              else if (targetFolder) { // there is a targetfolder but the other popup doesn't have one (special tab!).
+                if (otherPopups[i].hidePopup) {
+                  otherPopups[i].hidePopup();
+                } else {
+                  util.logDebug("otherPopups[" + i + "] (" + otherPopups[i].id + ") does not have a hidePopup method!");
+                }              
+              }
+            }
+          } catch (ex) {
+            util.logDebug("Error during dragOver - hiding popups", ex);
+          };
 					let dt = evt.dataTransfer,
 					    types = dt.mozTypesAt(0);
 					if (prefs.isDebugOption('dnd')) {
@@ -1512,8 +1535,7 @@ var QuickFolders = {
                   menupopup.appendChild(mi);
                 } else {
                   QI.addSubFoldersPopup(menupopup, targetFolder, true);
-                }
-                  
+                }                  
 							}
 						}
 						else { // special folderbutton: recent

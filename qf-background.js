@@ -302,7 +302,15 @@ async function main() {
         break;
         
       case "updateQuickFilters":
-        messenger.runtime.sendMessage("quickFilters@axelg.com", { command: "injectButtonsQFNavigationBar" });
+        messenger.runtime.sendMessage("quickFilters@axelg.com", { command: "injectButtonsQFNavigationBar" }).catch(
+          (x) => {
+            if (x.message.includes("Receiving end does not exist.")) {
+              // no need to log - quickFilters is not installed or disabled.
+            } else { 
+              console.log(x); 
+            }
+          }
+        );
         break;
     }
   }

@@ -265,6 +265,7 @@ pref("extensions.quickfolders.quickMove.premium.escapeClearsList", false); // [i
 pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");
 pref("extensions.quickfolders.quickMove.premium.lockInAccount", false);
 pref("extensions.quickfolders.quickMove.maxResults", 25);
+pref("extensions.quickfolders.quickMove.singleTab.autoClose",false); // [issue 375] close single msg tab after moving mails
 
 /* popupRestrictedFeature( ) counts how often these features are used */
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);

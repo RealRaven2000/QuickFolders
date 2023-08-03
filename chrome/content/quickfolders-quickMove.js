@@ -171,11 +171,14 @@ QuickFolders.quickMove = {
 				
 		this.rememberLastFolder(fld, parentName);
     
-    let hasMove = (this.IsCopy.indexOf(false)>=0); // are any message moved, close in case this is a single message tab
-    if (tabMode == 'message' && !hasMove) {
-      // close currentTab!
-      if (currentTab.canClose)
-        tabmail.closeTab(currentTab);
+    let hasMove = (this.IsCopy.includes(false)); // are any message moved, close in case this is a single message tab
+    if (tabMode == "mailMessageTab" && hasMove) {
+      if (QuickFolders.Preferences.getBoolPref("quickMove.singleTab.autoClose")) {
+        // close currentTab!
+        if (currentTab.canClose) {
+          tabmail.closeTab(currentTab);
+        }
+      }
     }
         
     util.logDebugOptional('quickMove', 'quickMove.execute() , tabMode = ' + tabMode);

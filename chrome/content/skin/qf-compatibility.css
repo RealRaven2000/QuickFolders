@@ -129,8 +129,8 @@ button.active::marker {
 }
 
 #QuickFolders-Options-Tabbox li button {
+  -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
   fill: var(--in-content-icon-color, currentColor);
-  -moz-context-properties: fill, stroke;
   stroke: var(--lwt-text-color, inherit);
 }
 
@@ -159,9 +159,9 @@ button.active::marker {
 
 
 .themeable {
+  -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;  
 	padding-left: 18px;
   fill: currentColor;
-  -moz-context-properties: fill, stroke;
 }
 
 .msgNavigation {
@@ -349,6 +349,7 @@ input[type=color], select {
 }
 
 #paletteGrid {
+  cursor: pointer;
   display: grid;
 	grid-auto-flow: column;
 	grid-gap: 1px;

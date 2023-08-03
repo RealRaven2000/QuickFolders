@@ -38,9 +38,9 @@ button[dlgtype=extra2],
 }
 
 tab {
-    -moz-context-properties: fill, stroke;
-    fill: currentColor;
-    stroke: transparent;
+	-moz-context-properties: fill, stroke !important;
+	fill: currentColor;
+	stroke: transparent;
 }
 
 /* ICON RULE TO OVERWRITE IN PRO VERSION */
@@ -126,6 +126,7 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 
 #quickFoldersNavToggle {
 	-moz-appearance: none !important;
+	-moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
 	list-style-image: url('ico/navigation-mode.svg');
 	margin-left: -2px;
 	margin-right: -2px;
@@ -133,11 +134,10 @@ menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
 	padding: 0 !important;
 	width: 12px !important;
 	height: 20px;
-    -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
-    fill: currentColor;
-    fill-opacity: var(--toolbarbutton-icon-fill-opacity);
+	fill: currentColor;
+	fill-opacity: var(--toolbarbutton-icon-fill-opacity);
 	stroke: var(--green-highlight);
-    stroke-opacity: 1;
+	stroke-opacity: 1;
 }
 /* lets make the background invisible! */
 #quickFoldersNavToggle[checked="true"] {

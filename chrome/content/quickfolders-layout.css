@@ -40,8 +40,8 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 }
 
 #QuickFolders-quickMoveMenu .folderCopy {
-  list-style-image: url('chrome://quickfolders/content/skin/ico/folder-add.svg') !important;
   -moz-context-properties: fill, fill-opacity, stroke;
+  list-style-image: url('chrome://quickfolders/content/skin/ico/folder-add.svg') !important;
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
   stroke: var(--green-highlight);
@@ -52,9 +52,10 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/message-invalid.png");
 }
 
+#QuickFolders-ToolbarPopup menu,
 #QuickFolders-ToolbarPopup menuitem {
-  fill: currentColor;
   -moz-context-properties: fill;
+  fill: currentColor;
 }
 
 #QuickFolders-FoldersBox .QuickFolders-folder-popup * > label {
@@ -501,9 +502,10 @@ menupopup.widerMenu menucaption {
 	min-width: 0px !important;
 }
 
-#QuickFolders-Toolbar #QuickFolders-title-label {
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-title-label {
   appearance: none !important;
-	background-image: transparent;
+  background-color: transparent;
+	background-image: none;
 	border-radius: 0.4em !important;
 	font-weight: bold;
 	line-height: 24px;

@@ -1046,20 +1046,26 @@ allowUndo = true)`
     const util = QuickFolders.Util;
     let aFolder,
         currentURI = null;
-    if (gTabmail && gTabmail.currentTabInfo) {
+    if (typeof gTabmail !="undefined" && gTabmail.currentTabInfo) {
       aFolder = gTabmail.currentTabInfo.folder || null;
       return aFolder;
     }        
-    if (typeof gFolderDisplay != "undefined" && gFolderDisplay.displayedFolder)
+    if (typeof gFolderDisplay != "undefined" && gFolderDisplay.displayedFolder) {
       currentURI = gFolderDisplay.displayedFolder.URI;
-    // in search result folders, there is no current URI!
-    if (!currentURI) { return null; }
-    try {
-      aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+      // in search result folders, there is no current URI!
+      if (!currentURI) { return null; }
+      try {
+        aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(Components.interfaces.nsIMsgFolder); // inPB case this is just the URI, not the folder itself??
+      }
+      catch(ex) {
+        util.logException(ex, "QuickFolders.Util.CurrentFolder (getter) failed.");
+        return null;
+      }
     }
-    catch(ex) {
-      util.logException(ex, "QuickFolders.Util.CurrentFolder (getter) failed.");
-      return null;
+    else {
+      if (window.messageBrowser) { // single message window
+        aFolder = window.messageBrowser.contentDocument.defaultView.gMessage.folder; 
+      }
     }
     return aFolder;
   } ,
@@ -1309,7 +1315,7 @@ allowUndo = true)`
     try {
       scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
       // Services.console.logMessage(scriptError);  => no output!!
-      console.warn(scriptError.toString()) 
+      console.warn(scriptError) 
     }
     catch(ex) {
       alert('logError failed: ' + aMessage);
@@ -2094,45 +2100,8 @@ allowUndo = true)`
         MAXRECENT,
         "MRUTime"
       );
-      /*
 
-      if (isTb102) {
-        var { FolderUtils } = ChromeUtils.import("resource:///modules/FolderUtils.jsm");
-        recentFolders = FolderUtils.getMostRecentFolders(
-          ftv._enumerateFolders,
-          MAXRECENT,
-          "MRUTime",
-          null
-        );
-      }
-      else {
-        var { getMostRecentFolders }  = ChromeUtils.import("resource:///modules/folderUtils.jsm");
-        recentFolders = getMostRecentFolders(
-          ftv._enumerateFolders,
-          MAXRECENT,
-          "MRUTime",
-          null
-        );
-      }
-      if (isDebugPerformance) {
-        let time = util.stopWatch("all","getMostRecentFolders");
-        console.log(`%cRunning getMostRecentFolders() took: ${time}`, "background-color: rgb(0,140,180); color:white;");
-      }
-      
-      // remove legacy syntax:
-      // https://bugzilla.mozilla.org/show_bug.cgi?id=1220564
-      //items = [new ftvItem(f) for each (f in recent)];
-      for (let f of recentFolders) { 
-        items.push(new FtvItem(f));
-      };
-      
-      // There are no children in this view! flatten via empty array
-      for (let folder of items) {
-        folder.__defineGetter__("children", function() { return [];});
-      }
-      */
       items = recentFolders;
-
     }
     catch(ex) {
       util.logException('Exception during generateMRUlist: ', ex);
@@ -2299,6 +2268,13 @@ allowUndo = true)`
     if (!folderName) return null;
     let folderType = folderTypes.find(el=>(el.name==folderName));
     return folderType ? folderType.flag : null;
+  },
+
+  isFolderUnified: function(f) {
+    if (!f || !f.URI) {
+      return false;
+    } 
+    return (f.URI.startsWith("mailbox://nobody@smart%20mailboxes/"));
   }
 
   

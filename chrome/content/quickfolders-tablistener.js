@@ -24,17 +24,19 @@ QuickFolders.TabListener = {
         util.logDebugOptional("listeners.tabmail", "tabMode = " + tabMode, info );
 				
         let wasRestored = false;
-        if (tabMode == "mail3PaneTab" && QuickFolders.Preferences.isDebugOption("listeners.tabmail") && typeof info.QuickFoldersCategory == "undefined") {
+        if ((tabMode == "mail3PaneTab" || tabMode == "mailMessageTab")
+             && typeof info.QuickFoldersCategory == "undefined") {
           // need to retrieve the info from the session store!
-          console.log("{LISTENERS.TABMAIL}\nMissing QuickFoldersCategory in tabInfo:", info);
+          if (QuickFolders.Preferences.isDebugOption("listeners.tabmail")) {
+            console.log("{LISTENERS.TABMAIL}\nMissing QuickFoldersCategory in tabInfo:", info);
+          }
+
           let lastCats = QuickFolders.Preferences.getStringPref("lastActiveCategories"); // last one looked at
           if (lastCats) {
             console.log(`{LISTENERS.TABMAIL} select category ${lastCats}`);
             QI.selectCategory(lastCats, false);
             wasRestored = true;
           }
-          // Tb102 needs a new method for persisting categories.
-          console.log("{LISTENERS.TABMAIL}\nRESTORE FROM SESSION OR LOCAL STORAGE??", info);
         }        
         
          // restore the category
@@ -54,7 +56,7 @@ QuickFolders.TabListener = {
         
         if (tabMode == "message" || tabMode == "mailMessageTab") { // "mailMessageTab"
           let msg = null, fld = null;
-          msg = info.message || info.messageDisplay ? info.messageDisplay.displayedMessage : null;
+          msg = info.message || (info.messageDisplay ? info.messageDisplay.displayedMessage : null);
           if (msg) fld = msg.folder;
           if (fld) {
             // reflect in current folder toolbar!

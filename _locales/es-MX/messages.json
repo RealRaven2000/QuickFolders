@@ -242,7 +242,10 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders ahora es compatible con la última versión de Thunderbird. Esto requirió un trabajo considerable de {boldStart}reescribir y probar{boldEnd} todos los elementos que interactúan con la página principal (panel 3) de Thunderbird (botones de la barra de herramientas, menús, árbol de carpetas, arrastrar y soltar).{P2} {P1} Thunderbird 115 se lanzó por primera vez el 11 de julio y tiene una interfaz de usuario completamente nueva llamada 'SuperNova'. {P2} {P1}Todavía puede seguir el progreso continuo de este trabajo aquí: [issue 351] {P2} {P1}Como este trabajo se financia exclusivamente con la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar QuickFolders en el futuro.{P2}"
+    "message": "{P1}Hay disponible una versión completamente reescrita de QuickFolders para la nueva interfaz de usuario de Thunderbird SuperNova. Thunderbird 115 se implementará para todos los usuarios que tengan las actualizaciones habilitadas durante las próximas semanas, y QuickFolders se actualizará automáticamente.{P2} {P1}Puede leer sobre el progreso y la cantidad de cambios para este trabajo aquí: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Este trabajo está financiado exclusivamente por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar QuickFolders en el futuro"
   },
   "ongoing-work": {
     "message": "Las modificaciones para convertir $addonName$ al nuevo modelo de programación tomaron semanas y resultaron costosas. Hay muchos más cambios para la próxima versión 2022. Con un complemento complejo como este, el trabajo costoso se vuelve inevitable. Ayúdanos con esto.",
@@ -1847,7 +1850,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Reimplementé todas las barras de herramientas para que funcionen con Thunderbird 115.{L2}{L1}Se agregó un temporizador para actualizar los días con licencia cada medianoche.{L2} {L1}Actualmente, no hay soporte para íconos personalizados en el árbol de carpetas. Esto se agregará en una etapa posterior.{L2}"
+    "message": "{L1}Las pestañas que representan carpetas unificadas (como la Bandeja de entrada unificada) ahora muestran las carpetas contenidas, renombradas a sus nombres de cuenta.{L2} {L1}Se corrigieron varios problemas en el cuadro de diálogo de opciones.{L2} {L1}Iconos de menú rediseñados{L2 } {L1}Selector de color fijo para colores personalizados en la barra de herramientas de la carpeta actual.{L2}"
    },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

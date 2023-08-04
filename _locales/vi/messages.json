@@ -134,7 +134,10 @@
     "message": "Tin mới nhất"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders hiện tương thích với phiên bản Thunderbird mới nhất. Điều này đòi hỏi công việc {boldStart}viết lại và kiểm tra{boldEnd} đáng kể tất cả các thành phần tương tác với trang chính (3 ngăn) của Thunderbird (các nút trên thanh công cụ, trình đơn, cây thư mục, kéo và thả).{P2}{P1} Thunderbird 115 được phát hành lần đầu tiên vào ngày 11 tháng 7 và có giao diện người dùng hoàn toàn mới được gọi là 'SuperNova'. {P2} {P1}Bạn vẫn có thể theo dõi tiến trình đang diễn ra của công việc này tại đây: [issue 351]{P2} {P1}Vì công việc này được tài trợ độc quyền bằng việc bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép trước đó nếu bạn quan tâm đến việc sử dụng QuickFolders trong tương lai.{P2}"
+    "message": "{P1}Hiện đã có phiên bản viết lại hoàn toàn của QuickFolders cho giao diện người dùng Thunderbird SuperNova mới. Thunderbird 115 sẽ được triển khai cho tất cả người dùng đã bật cập nhật trong những tuần tới và QuickFolders sau đó sẽ được cập nhật tự động.{P2} {P1}Bạn có thể đọc tiến trình và số lượng thay đổi cho công việc này tại đây: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Công việc này được tài trợ độc quyền bằng cách bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép trước đó nếu bạn quan tâm đến việc sử dụng QuickFolders trong tương lai."
   },
   "ongoing-work": {
     "message": "Các thay đổi để chuyển $addonName$ sang mô hình lập trình mới mất hàng tuần và tốn kém. Có nhiều thay đổi nữa cho phiên bản 2022 tiếp theo. Với một Add-on phức tạp như thế này, việc tốn kém trở thành điều tất yếu. Xin hãy giúp chúng tôi với điều này.",
@@ -1370,7 +1373,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}Đã thêm cảnh báo hiển thị về giấy phép 10 ngày trước khi hết hạn.{L2} {L1}Đã sửa lỗi Số ngày còn lại trong giấy phép bằng cách làm tròn.{L2} {L1}Đã sửa lỗi 'Thư mục nhỏ gọn' trên menu con thư mục hiện tại.{L2}"
+    "message": "{L1}Các tab đại diện cho các thư mục hợp nhất (chẳng hạn như Hộp thư đến hợp nhất) hiện hiển thị các thư mục chứa, được đổi tên thành tên tài khoản của chúng.{L2} {L1}Đã khắc phục nhiều sự cố trong hộp thoại tùy chọn.{L2} {L1}Các biểu tượng menu được thiết kế lại{L2 } {L1}Đã sửa lỗi bộ chọn màu cho các màu tùy chỉnh trên thanh công cụ của thư mục hiện tại.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

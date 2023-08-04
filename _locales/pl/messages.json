@@ -245,7 +245,10 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders jest teraz kompatybilny z najnowszą wersją Thunderbirda. Wymagało to znacznej pracy polegającej na {boldStart}przepisaniu i przetestowaniu{boldEnd} wszystkich elementów wchodzących w interakcję ze stroną główną (3panel) Thunderbirda (przyciski paska narzędzi, menu, drzewo folderów, przeciąganie i upuszczanie).{P2} {P1}Thunderbird 115 został wydany po raz pierwszy 11 lipca i ma zupełnie nowy interfejs użytkownika o nazwie „SuperNova”. {P2} {P1}Możesz nadal śledzić postęp prac tutaj: [issue 351]{P2} {P1}Ponieważ ta praca jest finansowana wyłącznie ze sprzedaży licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli chcesz korzystać z QuickFolders w przyszłości.{P2}"
+    "message": "{P1}Dostępna jest całkowicie przepisana wersja programu QuickFolders dla nowego interfejsu użytkownika programu Thunderbird SuperNova. Thunderbird 115 zostanie wdrożony u wszystkich użytkowników, którzy mają włączone aktualizacje, w ciągu najbliższych tygodni, a następnie QuickFolders zostaną automatycznie zaktualizowane.{P2} {P1}Możesz przeczytać o postępie i ilości zmian w tej pracy tutaj: [issue 351] {P2}"
+  },
+  "newsSection.license": {
+    "message": "Ta praca jest finansowana wyłącznie poprzez sprzedaż licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli jesteś zainteresowany korzystaniem z QuickFolders w przyszłości"
   },
   "ongoing-work": {
     "message": "Modyfikacje mające na celu konwersję $addonName$ do nowego modelu programowania zajęły tygodnie i były kosztowne. W następnej wersji 2022 jest znacznie więcej zmian. Z tak złożonym dodatkiem, kosztowna praca staje się nieunikniona. Proszę, pomóż nam w tym.",
@@ -1862,7 +1865,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Ponownie zaimplementowałem wszystkie paski narzędzi, aby działały z Thunderbirdem 115.{L2}{L1}Dodałem licznik czasu do aktualizowanych licencjonowanych dni o północy.{L2} {L1}Obecnie nie ma obsługi niestandardowych ikon w drzewie folderów. Zostanie to dodane na późniejszym etapie.{L2}"
+    "message": "{L1}Zakładki reprezentujące ujednolicone foldery (takie jak ujednolicona skrzynka odbiorcza) pokazują teraz zawarte foldery, których nazwy zostały zmienione na nazwy ich kont.{L2} {L1}Naprawiono różne problemy w oknie dialogowym opcji.{L2} {L1}Przeprojektowane ikony menu{L2 } {L1}Naprawiono próbnik kolorów dla niestandardowych kolorów na pasku narzędzi bieżącego folderu.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

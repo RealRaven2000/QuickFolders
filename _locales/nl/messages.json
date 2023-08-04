@@ -248,7 +248,10 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders is nu compatibel met de nieuwste versie van Thunderbird. Dit vereiste veel {boldStart}herschrijven en testen{boldEnd} van alle elementen die interactie hebben met de hoofdpagina (3pane) van Thunderbird (werkbalkknoppen, menu's, mappenstructuur, slepen en neerzetten).{P2} {P1}Thunderbird 115 werd voor het eerst uitgebracht op 11 juli en heeft een geheel nieuwe gebruikersinterface genaamd 'SuperNova'. {P2} {P1}Je kunt de voortgang van dit werk hier nog steeds volgen: [issue 351]{P2} {P1}Aangezien dit werk uitsluitend wordt gefinancierd door de verkoop van licenties, kunt u overwegen een licentie te kopen of uw vorige te verlengen als u geïnteresseerd bent in het gebruik van QuickFolders in de toekomst.{P2}"
+    "message": "{P1}Er is een volledig herschreven versie van QuickFolders beschikbaar voor de nieuwe gebruikersinterface van Thunderbird SuperNova. Thunderbird 115 zal in de komende weken worden uitgerold naar alle gebruikers die updates hebben ingeschakeld, en QuickFolders zal dan automatisch worden bijgewerkt.{P2} {P1}U kunt hier meer lezen over de voortgang en het aantal wijzigingen voor dit werk: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Dit werk wordt exclusief gefinancierd door de verkoop van licenties, overweeg een licentie te kopen of uw vorige licentie te verlengen als u geïnteresseerd bent in het gebruik van QuickFolders in de toekomst"
   },
   "ongoing-work": {
     "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
@@ -1871,7 +1874,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Ik heb alle werkbalken opnieuw geïmplementeerd om te werken met Thunderbird 115.{L2}{L1}Toegevoegde timer aan bijgewerkte gelicentieerde dagen om middernacht.{L2} {L1}Momenteel is er geen ondersteuning voor aangepaste pictogrammen in de mappenboom. Dit wordt in een later stadium toegevoegd.{L2}"
+    "message": "{L1}Tabbladen die uniforme mappen vertegenwoordigen (zoals Unified Inbox) tonen nu de daarin opgenomen mappen, hernoemd naar hun accountnamen.{L2} {L1}Verschillende problemen opgelost in het optiedialoogvenster.{L2} {L1}Herontworpen menupictogrammen{L2} {L1}Vaste kleurenkiezer voor aangepaste kleuren in de werkbalk van de huidige map.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

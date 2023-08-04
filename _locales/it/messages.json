@@ -245,7 +245,10 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders è ora compatibile con l'ultima versione di Thunderbird. Ciò ha richiesto un notevole lavoro di {boldStart}riscrittura e test{boldEnd} di tutti gli elementi che interagiscono con la pagina principale (3 riquadri) di Thunderbird (pulsanti della barra degli strumenti, menu, albero delle cartelle, trascinamento della selezione).{P2} {P1}Thunderbird 115 è stato rilasciato per la prima volta l'11 luglio e ha un'interfaccia utente completamente nuova chiamata 'SuperNova'.{P2} {P1}Puoi ancora seguire lo stato di avanzamento di questo lavoro qui: [issue 351]{P2} {P1}Poiché questo lavoro è finanziato esclusivamente dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare QuickFolders in futuro.{P2}"
+    "message": "{P1}È disponibile una versione completamente riscritta di QuickFolders per la nuova interfaccia utente di Thunderbird SuperNova. Thunderbird 115 verrà distribuito a tutti gli utenti che hanno gli aggiornamenti abilitati nelle prossime settimane e QuickFolders verrà quindi aggiornato automaticamente.{P2} {P1}Puoi leggere l'avanzamento e la quantità di modifiche per questo lavoro qui: [issue 351]{P2} "
+  },
+  "newsSection.license": {
+    "message": "Questo lavoro è finanziato esclusivamente dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare QuickFolders in futuro."
   },
   "ongoing-work": {
     "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
@@ -1859,7 +1862,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Ho reimplementato tutte le barre degli strumenti in modo che funzionino con Thunderbird 115.{L2}{L1}Aggiunto il timer ai giorni di licenza aggiornati ogni mezzanotte.{L2} {L1}Attualmente, non c'è supporto per le icone personalizzate nell'albero delle cartelle. Questo verrà aggiunto in un secondo momento.{L2}"
+    "message": "{L1}Le schede che rappresentano le cartelle unificate (come Posta in arrivo unificata) ora mostrano le cartelle contenute, rinominate con i nomi degli account.{L2} {L1}Risolti vari problemi nella finestra di dialogo delle opzioni.{L2} {L1}Icone del menu ridisegnate{L2 } {L1}Risolto il problema con il selettore di colori per i colori personalizzati nella barra degli strumenti della cartella corrente.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

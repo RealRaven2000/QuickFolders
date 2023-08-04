@@ -252,7 +252,10 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders 现在与最新版本的 Thunderbird 兼容。 这需要{boldStart}重写和测试{boldEnd}与 Thunderbird 主页（3pane）交互的所有元素（工具栏按钮、菜单、文件夹树、拖放）进行大量工作。{P2}{P1}Thunderbird 115 于 7 月 11 日首次发布，并拥有一个名为“SuperNova”的全新用户界面。 {P2} {P1}您仍然可以在此处关注这项工作的持续进展：[issue 351]{P2} {P1}由于这项工作完全由销售许可证资助，因此如果您将来有兴趣使用 QuickFolders，请考虑购买许可证或续订之前的许可证。{P2}"
+    "message": "{P1}完全重写的 QuickFolders 版本可用于新的 Thunderbird SuperNova UI。 Thunderbird 115 将在接下来的几周内向所有启用更新的用户推出，然后 QuickFolders 将自动更新。{P2} {P1}您可以在此处了解这项工作的进度和更改量：[issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "这项工作是独家资助的 通过出售许可证，如果您有兴趣在未来使用 QuickFolders，请考虑购买许可证或更新之前的许可证。"
   },
   "ongoing-work": {
     "message": "将 $addonName$ 转换为新编程模型的更改花费了数周时间，而且成本很高。 下一个2022版本将有更多更改。 有了这样复杂的附加组件，昂贵的工作就变得不可避免。 请帮助我们。",
@@ -1806,7 +1809,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}在到期前 10 天添加关于许可证的可见警告。{L2} {L1}更正了 通过四舍五入获得许可证的剩余天数。{L2} {L1}修复了当前文件夹子菜单上的“压缩文件夹”。{L2}"
+    "message": "{L1}代表统一文件夹（例如统一收件箱）的选项卡现在显示所包含的文件夹，并重命名为其帐户名称。{L2} {L1}修复了选项对话框中的各种问题。{L2} {L1}重新设计了菜单图标{L2 {L1}修复了当前文件夹工具栏中自定义颜色的颜色选择器。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

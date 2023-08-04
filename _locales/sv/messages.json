@@ -248,7 +248,10 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders är nu kompatibel med den senaste versionen av Thunderbird. Detta krävde avsevärt arbete med att {boldStart}skriva om och testa{boldEnd} alla element som interagerar med huvudsidan (3 panel) i Thunderbird (verktygsfältsknappar, menyer, mappträd, dra och släpp).{P2} {P1}Thunderbird 115 släpptes först den 11 juli och har ett helt nytt användargränssnitt som heter 'SuperNova'. {P2} {P1}Du kan fortfarande följa det pågående arbetet med detta arbete här: [issue 351]{P2} {P1}Eftersom detta arbete uteslutande finansieras av försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda QuickFolders i framtiden.{P2}"
+    "message": "{P1}En helt omskriven version av QuickFolders är tillgänglig för det nya Thunderbird SuperNova-gränssnittet. Thunderbird 115 kommer att rullas ut till alla användare som har uppdateringar aktiverade under de kommande veckorna, och QuickFolders kommer då att uppdateras automatiskt.{P2} {P1}Du kan läsa om framstegen och antalet ändringar för detta arbete här: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Detta arbete är exklusivt finansierat genom försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda QuickFolders i framtiden."
   },
   "ongoing-work": {
     "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
@@ -1880,7 +1883,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Jag implementerade om alla verktygsfält för att fungera med Thunderbird 115.{L2}{L1}Lagde till timer för uppdaterade licensdagar varje midnatt.{L2} {L1}För närvarande finns det inget stöd för anpassade ikoner i mappträdet. Detta kommer att läggas till i ett senare skede.{L2}"
+    "message": "{L1}Flikar som representerar förenade mappar (som Unified Inbox) visar nu de inneslutna mapparna, omdöpta till deras kontonamn.{L2} {L1}Lättade olika problem i alternativdialogrutan.{L2} {L1}Omdesignade menyikoner{L2} {L1}Fastad färgväljare för anpassade färger i det aktuella mappverktygsfältet.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

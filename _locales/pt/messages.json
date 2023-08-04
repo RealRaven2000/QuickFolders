@@ -245,7 +245,10 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders agora é compatível com a versão mais recente do Thunderbird. Isso exigiu um trabalho considerável de {boldStart}reescrever e testar{boldEnd} todos os elementos que interagem com a página principal (3pane) do Thunderbird (botões da barra de ferramentas, menus, árvore de pastas, arrastar e soltar).{P2} {P1}Thunderbird 115 foi lançado pela primeira vez em 11 de julho e tem uma interface de usuário completamente nova chamada 'SuperNova'. {P2} {P1}Você ainda pode acompanhar o andamento deste trabalho aqui: [issue 351]{P2} {P1}Como este trabalho é financiado exclusivamente pela venda de licenças, considere comprar uma licença ou renovar a anterior se estiver interessado em usar o QuickFolders no futuro.{P2}"
+    "message": "{P1}Uma versão totalmente reescrita do QuickFolders está disponível para a nova interface do usuário do Thunderbird SuperNova. O Thunderbird 115 será lançado para todos os usuários que tiverem atualizações habilitadas nas próximas semanas, e os QuickFolders serão atualizados automaticamente.{P2} {P1}Você pode ler sobre o progresso e a quantidade de alterações para este trabalho aqui: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Este trabalho é financiado exclusivamente pela venda de licenças, considere comprar uma licença ou renovar a anterior se estiver interessado em usar QuickFolders no futuro."
   },
   "ongoing-work": {
     "message": "As alterações para converter $addonName$ para o novo modelo de programação demoraram semanas e custaram caro. Existem muitas outras mudanças para a próxima versão de 2022. Com um complemento complexo como esse, o trabalho caro se torna inevitável. Por favor nos ajude com isso.",
@@ -1844,7 +1847,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Reimplementei todas as barras de ferramentas para funcionar com o Thunderbird 115.{L2}{L1}Adicionado cronômetro para dias licenciados atualizados a cada meia-noite.{L2} {L1}Atualmente, não há suporte para ícones personalizados na árvore de pastas. Isso será adicionado posteriormente.{L2}"
+    "message": "{L1}As guias que representam pastas unificadas (como a Caixa de entrada unificada) agora mostram as pastas contidas, renomeadas para seus nomes de conta.{L2} {L1}Vários problemas corrigidos na caixa de diálogo de opções.{L2} {L1}Ícones de menu redesenhados{L2 } {L1}Selecionador de cores fixo para cores personalizadas na barra de ferramentas da pasta atual.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

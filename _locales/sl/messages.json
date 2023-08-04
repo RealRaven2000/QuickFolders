@@ -236,7 +236,10 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders je zdaj združljiv z najnovejšo različico Thunderbird. To je zahtevalo veliko dela {boldStart}ponovnega pisanja in testiranja{boldEnd} vseh elementov, ki so v interakciji z glavno stranjo (3pane) Thunderbirda (gumbi orodne vrstice, meniji, drevo map, povleci in spusti).{P2} {P1}Thunderbird 115 je bil prvič izdan 11. julija in ima popolnoma nov uporabniški vmesnik, imenovan 'SuperNova'. {P2} {P1}Tukaj lahko še vedno spremljate tekoči napredek tega dela: [issue 351]{P2}{P1}Ker se to delo financira izključno s prodajo licenc, razmislite o nakupu licence ali obnovitvi prejšnje, če vas zanima uporaba QuickFolders v prihodnosti.{P2}"
+    "message": "{P1}Popolnoma prepisana različica QuickFolders je na voljo za nov uporabniški vmesnik Thunderbird SuperNova. Thunderbird 115 bo v naslednjih tednih uveden vsem uporabnikom, ki imajo omogočene posodobitve, QuickFolders pa bodo nato samodejno posodobljeni.{P2} {P1}O napredku in količini sprememb za to delo lahko preberete tukaj: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "To delo je izključno financirano s prodajo licenc razmislite o nakupu licence ali obnovitvi prejšnje, če vas zanima uporaba QuickFolders v prihodnosti."
   },
   "ongoing-work": {
     "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
@@ -1817,7 +1820,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Znova sem implementiral vse orodne vrstice za delo s Thunderbird 115.{L2}{L1}Dodan časovnik posodobljenim licenčnim dnevom vsako polnoč.{L2} {L1}Trenutno ni podpore za ikone po meri v drevesu map. To bo dodano pozneje.{L2}"
+    "message": "{L1}Zavihki, ki predstavljajo poenotene mape (kot je poenotena mapa »Prejeto«), zdaj prikazujejo vsebovane mape, preimenovane v njihova imena računov.{L2} {L1}Odpravljene različne težave v pogovornem oknu z možnostmi.{L2} {L1}Prenovljene ikone menija{L2 } {L1}Popravljen izbirnik barv za barve po meri v orodni vrstici trenutne mape.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

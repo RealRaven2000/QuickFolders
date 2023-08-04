@@ -122,7 +122,10 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders on nyt yhteensopiva Thunderbirdin uusimman version kanssa. Tämä vaati paljon työtä kaikkien Thunderbirdin pääsivun (3-ruudun) kanssa vuorovaikutuksessa olevien elementtien (työkalupalkin painikkeet, valikot, kansiopuu, vedä ja pudota) {boldStart}uudelleenkirjoittaminen ja testaaminen{boldEnd}.{P2} {P1}Thunderbird 115 julkaistiin ensimmäisen kerran heinäkuun 11. päivänä, ja siinä on täysin uusi käyttöliittymä nimeltä 'SuperNova'. {P2} {P1}Voit edelleen seurata tämän työn edistymistä täältä: [issue 351]{P2} {P1}Koska tämä työ rahoitetaan yksinomaan lisenssien myynnistä, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään QuickFolderia tulevaisuudessa.{P2}"
+    "message": "{P1}Täysin uudelleen kirjoitettu versio QuickFoldersista on saatavilla uudelle Thunderbird SuperNova -käyttöliittymälle. Thunderbird 115 julkaistaan kaikille käyttäjille, joilla on päivitykset käytössä seuraavien viikkojen aikana, ja QuickFolders päivitetään sitten automaattisesti.{P2} {P1}Voit lukea tämän työn edistymisestä ja muutosten määrästä täältä: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Tämä työ on yksinomaan rahoitettu lisenssien myynnin vuoksi, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään QuickFolderia tulevaisuudessa"
   },
   "ongoing-work": {
     "message": "Muutokset $addonName$ muuntamiseksi uudeksi ohjelmointimalliksi kesti viikkoja ja olivat kalliita. Seuraavaa versiota 2022 on paljon enemmän. Tällaisen monimutkaisen lisäosan avulla kalliista työstä tulee väistämätöntä. Auta meitä tässä.",
@@ -297,7 +300,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Osoitin kaikki työkalupalkit uudelleen toimimaan Thunderbird 115:n kanssa.{L2}{L1}Lisäsin ajastimen päivitettyihin lisensoituihin päiviin joka keskiyö.{L2} {L1}Tällä hetkellä kansiopuussa ei ole tukea mukautetuille kuvakkeille. Tämä lisätään myöhemmässä vaiheessa.{L2}"
+    "message": "{L1}Yhdistettyjä kansioita (kuten Unified Inbox) edustavat välilehdet näyttävät nyt kansiot, jotka on nimetty uudelleen tilien nimiin.{L2} {L1}Asetusvalintaikkunassa on korjattu useita ongelmia.{L2} {L1}Uudelleensuunnitellut valikon kuvakkeet{L2 } {L1}Korjattu värivalitsin mukautettuja värejä varten nykyisessä kansiossa työkalupalkissa.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

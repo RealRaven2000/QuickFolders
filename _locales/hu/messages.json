@@ -219,7 +219,10 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1}A QuickFolders mostantól kompatibilis a Thunderbird legújabb verziójával. Ehhez jelentős munkára volt szükség a Thunderbird főoldalával (3 panel) kölcsönhatásba lépő összes elem (eszköztár gombjai, menüi, mappafa, drag and drop) {boldStart}újraírása és tesztelése{boldEnd}.{P2} {P1}A Thunderbird 115 először július 11-én jelent meg, és teljesen új felhasználói felülettel rendelkezik, „SuperNova” néven. {P2} {P1}Itt továbbra is nyomon követheti ennek a munkának a folyamatát: [issue 351]{P2} {P1}Mivel ezt a munkát kizárólag licencek értékesítéséből finanszírozzák, kérjük, fontolja meg egy licenc megvásárlását vagy a korábbi licenc megújítását, ha a QuickFolders jövőbeni használata iránt érdeklődik.{P2}"
+    "message": "{P1}A QuickFolders teljesen átírt verziója elérhető az új Thunderbird SuperNova UI-hoz. A következő hetekben a Thunderbird 115 minden olyan felhasználó számára elérhető lesz, akinél engedélyezték a frissítéseket, és a QuickFolders automatikusan frissül.{P2} {P1}A munka előrehaladásáról és a módosítások mennyiségéről itt olvashat: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást."
   },
   "ongoing-work": {
     "message": "A $addonName$ konvertálásának új programozási modellvé történő átalakítása hetekig tartott és költséges volt. Sokkal több változás van a következő 2022-es verzióra. Egy ilyen összetett kiegészítő mellett a drága munka elkerülhetetlenné válik. Kérem, segítsen ebben.",
@@ -1629,7 +1632,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1}Az összes eszköztárat újratelepítettem, hogy működjön a Thunderbird 115.{L2}{L1}Időzítőt adtam a frissített licencnapokhoz minden éjfélkor.{L2} {L1}Jelenleg nem támogatja az egyéni ikonokat a mappafában. Ezt egy későbbi szakaszban adjuk hozzá.{L2}"
+    "message": "{L1}Az egyesített mappákat jelző lapok (például az Egységes Beérkezett üzenetek) mostantól a benne lévő mappákat jelenítik meg fióknevükre átnevezve.{L2} {L1}Különböző problémák javítása a beállítások párbeszédpanelen.{L2} {L1}Újratervezett menüikonok{L2 } {L1}Rögzített színválasztó egyéni színekhez az aktuális mappa eszköztárában.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

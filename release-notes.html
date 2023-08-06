@@ -1,29 +1,26 @@
-<b>Release 5.16</b>
+<b>Release 5.17</b>
             
-I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird SuperNova UI. This will be implemented in the next major version of Thunderbird 115 in Summer 2023.
+QuickFolders for Thunderbird 115 has been released, and I am currently fixing important regressions.
 
 You can read up on the current progress of this work here: <a href="https://github.com/RealRaven2000/QuickFolders/issues/351">[issue 351]</a>
 
-
 As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using QuickFolders in the future
 
-<b>Maintenance Fixes 5.16.1</b>
-<ul>
-<li>fixed Catalan locale (newsSection).</li>
-<li>improved layout on Renew / Extend button</li>
-</ul>
-
 <b>Enhancements</b>
-<ul>
-<li> Added visible warning about license 10 days before expiry. <a href="https://github.com/RealRaven2000/QuickFolders/issues/350">[issue 350]</a></li>
-<li> News button will not be shown unless at least minor version number of QuickFolders is increased. But you can always read up on the latest changes via the tools menu item "Latest Update News..." - and used to be titled "View Splash Screen". </li>
-<li> Added pricing section to the buy license dialog. This explains that prices can be looked up via the browser without necessarily buying, by clicking the appropriate button on the screen. </li>
+<li> Tabs for unified folders (such as Unified Inbox) now support showing the  actual folders,  renamed to their account names.</li>
+<li> Redesigned menu icons and fixed a number of issues in the options screen - icons had  some problems changing to dark themes.If you experience missing colors in QuickFolders settings, you can enable the about:config setting <tt> svg.context-properties.content.enabled = true </tt></li>
+<li> Automatically back up the custom folder icons for future restauration in Thunderbird 115.
+
+On startup, QuickFolders will automatically backup custom icons on the folder tree (all folder URLs and the locations of their icons) in the file quickFolders-FolderTree.json which will be stored in the profile/extensions folder. This will be only done once automatically. 
+
+The backup function can be also invoked manually via the QuickFolders debug menu - to access, click on QuickFolders tools button while holding down SHIFT, and then select <i>Debug / Backup folder tree icons</i>.</li>
 </ul>
 
 <b>Bugs Fixed</b>
 <ul>
-<li> Fixed "Compact Folder" on current folder submenu.</li>
-<li> Corrected the Number of days left in license by rounding up. </li>
+<li> Fixed the color picker for custom colors in current folder toolbar.</li>
+<li> Fixed: Changing 'minimum height' opens help topic instead. <a href="https://github.com/RealRaven2000/QuickFolders/issues/372"></a>[issue 372]</a></li>
+<li> Fixed: Custom navigation bar icon color picker doesn't work and could lead to unreadable current folder button. <a href="https://github.com/RealRaven2000/QuickFolders/issues/383"></a>[issue 383]</a></li>
 </ul>
 
 

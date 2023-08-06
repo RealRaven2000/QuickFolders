@@ -375,9 +375,14 @@ QuickFolders.Options = {
         setting.value = await prefs.getStringPref('currentFolderBar.background.custom');  
         break;
     }
-    document.getElementById("customCurrentIconColor").disabled = !isCustomStyle;
-    document.getElementById("currentfolder-icons-colorpicker").disabled = !isCustomStyle;
-    
+    if (isCustomStyle) {
+      document.getElementById("customCurrentIconColor").firstChild.removeAttribute("disabled");
+      document.getElementById("currentfolder-icons-colorpicker").removeAttribute("disabled");
+    } else {
+      document.getElementById("customCurrentIconColor").firstChild.setAttribute("disabled", true);
+      document.getElementById("currentfolder-icons-colorpicker").setAttribute("disabled", true);
+    }
+
     let styleValue = setting.value;
     await prefs.setStringPref('currentFolderBar.background', styleValue);
     await prefs.setStringPref('currentFolderBar.background.selection', choice);

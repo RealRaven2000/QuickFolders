@@ -889,8 +889,9 @@ QuickFolders.Interface = {
 						prefs.getBoolPref("currentFolderBar.iconcolor.custom") ?
 						prefs.getStringPref("currentFolderBar.iconcolor") :
 						"currentColor";
-					styleEngine.setElementStyle(ss,"#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.icon", "fill", ftCol);
-					styleEngine.setElementStyle(ss, "#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.col0 .toolbarbutton-text", "color", ftCol);
+					styleEngine.setElementStyle(ss,"#QuickFolders-CurrentFolderTools[theme=custom] > toolbarbutton.icon", "fill", ftCol);
+					// don't overwrite the navigation button as it leads to illegible text!
+					// styleEngine.setElementStyle(ss, "#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.col0 .toolbarbutton-text", "color", ftCol);
 				} catch (ex) {
 					util.logDebugOptional("interface.currentFolderBar", "no style sheet.");
 				}
@@ -6884,13 +6885,18 @@ QuickFolders.Interface = {
 		    action = "",
 				isButtonPressed = null;
 
-		// session value (caused by user pushing the button previously)
-		let tabmail = document.getElementById("tabmail");
-		if (tabmail && tabmail.currentTabInfo) {
-			let info = tabmail.currentTabInfo;
-			if (info.QuickFolders_ToolbarStatus) {
-				isButtonPressed = info.QuickFolders_ToolbarStatus.mainVisibleState;
+		if (isMailPanel || isMailSingleMessageTab) {
+			// session value (caused by user pushing the button previously)
+			let tabmail = document.getElementById("tabmail");
+			if (tabmail && tabmail.currentTabInfo) {
+				let info = tabmail.currentTabInfo;
+				if (info.QuickFolders_ToolbarStatus) { // only if it is stored for this tab, we set a value
+					isButtonPressed = info.QuickFolders_ToolbarStatus.mainVisibleState;
+				}
 			}
+		}
+		else {
+			isButtonPressed = false;
 		}
 		// default value according to settings
 		if (isButtonPressed == null) {
@@ -7357,8 +7363,6 @@ QuickFolders.Interface = {
     let p =  document.createElement("p");
     p.textContent = util.getBundleString("quickMove.help.advanced");
     box.appendChild(p);
-
-    
     
     
     container.appendChild(box);

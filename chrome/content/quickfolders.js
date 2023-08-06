@@ -346,12 +346,15 @@ END LICENSE BLOCK */
     ## [issue 371] Deal with Console error “receiving end does not exist”
     ## [issue 372] Changing 'minimum height'  opens help topic (bug 25021)
     ## [issue 374] Fixed integration of main toolbar with single message tab 
+    ##             select current folder in toolbar when switching to single mail tab
     ## [issue 376] Bookmarks: in Thunderbird 115 "Add current item" not working
     ## [issue 381] New subfolder while dragging to tab throws error
     ## [issue 382] quickJump shortcut '=' to show most recent used folders broken
+    ## [issue 370] support showing contained folders of a Tab representing unified folders.
     ## Various improvements of navigation behavior in single message tab and single mail window
     ## [issue 375] Added configuration Option to close tab after mail is moved from single message view
     ## eliminated <description> tags from options.html
+    ## [issue 383] Custom navigation bar icon color picker doesn't work and may lead to unreadable current folder button
 
 
 

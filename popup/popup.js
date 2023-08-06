@@ -86,6 +86,7 @@ async function updateActions() {
         show('extend');
       }
       else {
+        hide('news-license');
         show('licenseExtended');
         hide('time-and-effort');
         hide('purchaseHeader');

@@ -161,7 +161,10 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders je nyní kompatibilní s nejnovější verzí Thunderbirdu. To vyžadovalo značnou práci {boldStart}přepsání a testování{boldEnd} všech prvků interagujících s hlavní stránkou (3panel) Thunderbirdu (tlačítka na panelu nástrojů, nabídky, strom složek, přetažení).{P2} {P1}Thunderbird 115 byl poprvé vydán 11. července a má zcela nové uživatelské rozhraní nazvané 'SuperNova'. {P2} {P1}Probíhající postup těchto prací můžete stále sledovat zde: [issue 351]{P2} {P1}Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat QuickFolders v budoucnu.{P2}"
+    "message": "{P1}QuickFolders je nyní kompatibilní s nejnovější verzí Thunderbirdu. To vyžadovalo značnou práci {boldStart}přepsání a testování{boldEnd} všech prvků interagujících s hlavní stránkou (3panel) Thunderbirdu (tlačítka na panelu nástrojů, nabídky, strom složek, přetažení).{P2} {P1}Thunderbird 115 byl poprvé vydán 11. července a má zcela nové uživatelské rozhraní nazvané 'SuperNova'. {P2} {P1}Probíhající postup těchto prací můžete stále sledovat zde: [issue 351]{P2}"
+  },
+  "newsSection.license": {
+    "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat QuickFolders v budoucnu."
   },
   "ongoing-work": {
     "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",

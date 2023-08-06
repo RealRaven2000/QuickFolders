@@ -18,6 +18,7 @@ function logReceptionError(x) {
   }  
 }
 
+
   /* startupFinished: There is a general race condition between onInstall and our main() startup:
    * - onInstall needs to be registered upfront (otherwise we might miss it)
    * - but onInstall needs to wait with its execution until our main function has
@@ -30,6 +31,12 @@ messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfolde
 
 
 messenger.runtime.onInstalled.addListener(async (data) => {
+
+  messenger.browserAction.onClicked.addListener((tab, info) => {
+    console.log("browserAction.click!");
+    messenger.Utilities.toggleToolbarAction(false);
+  });
+  
   let { reason, temporary } = data,
       isDebug = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug");
   
@@ -90,6 +97,10 @@ messenger.runtime.onInstalled.addListener(async (data) => {
   }    
 
 
+  if (isDebug) {
+    console.log ("QuickFolders: add toggle-foldertree command... ")
+  }
+
   let toggleFolderLabel = messenger.i18n.getMessage("commands.toggleFolderTree");
   await messenger.commands.update({name:"toggle-foldertree", description: toggleFolderLabel });   
 
@@ -101,10 +112,9 @@ messenger.runtime.onInstalled.addListener(async (data) => {
       }
   });
 
-  browser.browserAction.onClicked.addListener((cmd) => {
-    messenger.Utilities.toggleToolbarAction(false);
-  }) ;
-  
+  if (isDebug) {
+    console.log ("QuickFolders: messenger.runtime.onInstalled finished!")
+  }
 });
 
 // display splash screen

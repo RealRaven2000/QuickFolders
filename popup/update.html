@@ -7,6 +7,7 @@
   	<link rel="stylesheet" href="popup.css" type="text/css">
 		<script type="application/javascript" src="popup.js"></script>
     <script type="application/javascript" src="animation.js"></script>
+		<script type="application/javascript" src="specialoffers.js"></script>
 		<script type="application/javascript" src="update.js"></script>
     <script type="application/javascript" src="../chrome/content/i18n.js"></script>
     
@@ -27,13 +28,15 @@
       
       <div id="specialBox" class="importantInfo">
 	      <div id="specialOffer" class="specialOffer" collapsed="true">
-	        <img id="bargainIcon" class="bargainIcon" src="bargain30.png" />
+	        <img id="bargainIcon" class="bargainIcon" src="bargain40.png" />
+	        <h2 class="specialOfferHead">__MSG_special-offer-head__</h2>
 	        <p class="specialOfferIntro">__MSG_special-offer-intro__</p>
 	        <p id="specialOfferTxt">__MSG_special-offer-content__</p>
 				</div>
         
         <div id="specialOfferUpgrade" class="specialOffer" collapsed="true">
 	        <img id="bargainUpgradeIcon" class="bargainIcon" src="bargainUpgrade33.png" />
+	        <h2 class="specialOfferHead">__MSG_special-offer-head__</h2>
 	        <p>
             <span id="specialOfferUpgradeTxt">__MSG_special-offer-upgrade__</span>
             <br>
@@ -45,6 +48,7 @@
         
         <div id="specialOfferRenew" class="specialOffer" collapsed="true">
 	        <img id="bargainRenewIcon" class="bargainIcon" src="bargain25.png" />
+	        <h2 class="specialOfferHead">__MSG_special-offer-head__</h2>
 	        <p class="specialOfferIntro">__MSG_special-offer-intro__</p>
 	        <p id="specialOfferRenewTxt">__MSG_special-offer-renew__</p>
         </div>
@@ -97,8 +101,6 @@
         <a id="renew" collapsed="true">__MSG_btn-renew-license__</a>
       </p>  
 
-<!--      <p class="featureComparison noPro" collapsed="true">__MSG_licenseComparison__</p>  -->
-        
       <div  class="donations">
         <h2>__MSG_donate-heading__</h2>
         

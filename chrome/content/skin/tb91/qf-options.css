@@ -29,11 +29,6 @@ menulist > menupopup > menuitem[_moz-menuactive="true"] {
   color: var(--popup-item-hover-text, --box-text-color);
 }
 
-
-select[data-pref-name$=".paletteType"] {
-  font-size: 0.85em;
-}
-
 menulist[preference$=".paletteType"]
 {
   color: var(--lwt-text-color,--field-text-color) !important; 
@@ -64,4 +59,5 @@ menulist#QuickFolders-CurrentFolder-Background-Select {
 
 label.themeable {
   -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;  
+  background-position: left center;
 }

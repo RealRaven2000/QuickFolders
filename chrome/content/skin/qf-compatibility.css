@@ -4,8 +4,9 @@
     --hovercolor: #113e6a;
     --hoverbackground: #ffffffcb;
     --selectedbackground:#1d3e7dad;
+    --clickedbackground:var(--selectedbackground);
     --selectedcolor: #FFFFFF;
-    --activecolor: #7cebf1d9;
+    --activecolor: #a5f7fcd9;
   }  
 }
 
@@ -14,6 +15,7 @@
     --hovercolor: #ffffffcb;
     --hoverbackground: #113e6a;
     --selectedbackground: #1d3e7dad;
+    --clickedbackground:var(--selectedbackground);
     --activecolor: #FFFFFF;
   }
 }
@@ -32,24 +34,19 @@ fieldset.multiCol {
 }
 
 select {
-  padding-top: 1px !important;
+/*  padding-top: 1px !important;
   padding-bottom: 1px !important;
-  line-height: 1.6em !important;;
+  line-height: 1.6em !important;; */
 }
 
-#btnConfigureTooltips,
-#btnDefaultRadius,
-#defaultColors,
-#grpToolbarPosition, 
-#currentFolderStyle *,
-#folderCrossing,
-#initdelay,
-#copyFolders,
-#btnPasteLicense,
-#btnValidateLicense,
-#quickMoveAdvanced
- {
-  font-size: 0.85em;
+
+select[data-pref-name$=".paletteType"] {
+  font-size: 1em;
+}
+
+
+#folderCrossing {
+  font-size: 0.9em;
 }
 
 /* vertical alignment */
@@ -111,6 +108,7 @@ html|legend {
   flex-direction: row;  
 }
 
+
 #supportgrid .button label {
   justify-content: center;
   font-size: 1.05em;
@@ -150,7 +148,7 @@ button.active::marker {
 #QuickFolders-Options-Tabbox li button {
   -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
   fill: var(--in-content-icon-color, currentColor);
-  stroke: var(var(--new-highlight, #4874c6),inherit) !important;
+  stroke: var(--new-highlight, #4874c6) !important;
 }
 #QuickFolders-Options-Tabbox li button:not(.active):hover {
   -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
@@ -163,27 +161,33 @@ button.active::marker {
   color: var(--activecolor) !important;
 }
 
+
+.tabs button {
+  background-position: 5px center;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
 .quickFoldersGeneral button, .quickFoldersAdvanced button  {
-  list-style-image: url("ico/settings.svg");
+  background-image: url("ico/settings.svg");
   stroke: var(--new-highlight, #4874c6) !important;
 }
 .qfLayout button {
-  list-style-image: url("ico/smiley.svg");
+  background-image: url("ico/smiley.svg");
 }
 .qfHelp button {
-  list-style-image: url("ico/help.svg");
+  background-image: url("ico/help.svg");
 }
 .qfSupport button {
-  list-style-image: url("ico/info.svg");
+  background-image: url("ico/info.svg");
 }
 .qfLicenses button {
-  list-style-image: url("ico/pro-default.svg");
+  background-image: url("ico/pro-default.svg");
 }
 .qfLicenses button.paid {
-  list-style-image: url("ico/pro-paid.svg");
+  background-image: url("ico/pro-paid.svg");
 }
 .qfLicenses button.expired {
-  list-style-image: url("ico/pro-expired.svg");
+  background-image: url("ico/pro-expired.svg");
 }
 
 
@@ -260,6 +264,7 @@ button.active::marker {
 
 .rebuildFolders {
   background: url("ico/synchronize.svg") no-repeat;
+  background-position: left center;
 }
 .skipFolder {
   background: url("ico/skip-folder.svg") no-repeat;
@@ -284,6 +289,7 @@ button.active::marker {
 }
 
 .tabs ul {
+  display: flex;
   margin: 0;
   overflow: hidden;
   padding-left: 1em;
@@ -294,7 +300,6 @@ button.active::marker {
   background-color: inherit;
   border: none;
   cursor: pointer;
-  float: left;
   list-style: none;
   outline: none;
 }
@@ -309,12 +314,16 @@ button.active::marker {
   background-color: var(--hoverbackground);
 }
 
+.tabs li:hover:active button {
+  background-color: var(--clickedbackground, rgb(9, 9, 45));
+}
 
 
 /* Create an active/current tablink class */
 .tabs button.active {
   background-color: var(--selectedbackground, #33f) !important;
   color: var(--activecolor, #FFFFFF) !important;
+  fill: var(--activecolor, #FFFFFF) !important;
 }
 
 /* Style the tab content */
@@ -348,7 +357,7 @@ input[type=number] {
   min-height: 22px;
 }
 
-input[type=color], select {
+input[type=color] {
   min-height: 26px;
 }
 

@@ -221,10 +221,10 @@
               <label class="navigationBar themeable"><input type="checkbox" 
                 preference="qfpa-ShowCurrentFolderBar" 
                 data-pref-name="extensions.quickfolders.showCurrentFolderToolbar">__MSG_qf.checkbox.currentFolder.show__</label>
-              <label class="navigationBar"><input type="checkbox" class="indent"
+              <label class="navigationBar themeable"><input type="checkbox" class="indent"
                 preference="qfpa-ShowCurrentFolderBar-MsgTab"
                 data-pref-name="extensions.quickfolders.showCurrentFolderToolbar.singleMailTab">__MSG_qf.checkbox.singleMessageTab.currentFolder.show__</label>
-              <label class="navigationBar"><input type="checkbox" class="indent"
+              <label class="navigationBar themeable"><input type="checkbox" class="indent"
                 title="__MSG_qf.checkbox.singleMessage.currentFolder.tooltip__"
                 preference="qfpa-ShowCurrentFolderBar-SingleMessage"
                 data-pref-name="extensions.quickfolders.showCurrentFolderToolbar.messageWindow">__MSG_qf.checkbox.singleMessage.currentFolder.show__</label>
@@ -401,25 +401,23 @@
             <div class="hbox toowide">
               <div class="vbox">
                 <div class="hbox align_center">
-                  <label class="textBoxLabel">__MSG_qf.label.themes__
-                    <select id="QuickFolders-Theme-Selector" 
-                      preference="qfpl-Theme"
-                      data-pref-type="string"
-                      data-pref-name="extensions.quickfolders.style.theme"
-                      >
-                      <!-- values in this list are QuickFolders.Themes.themes.id values -->
-                      <option id="QuickFolders-Theme-FlatStyle"
-                        originalName="Flat Style" value="flatTabs">__MSG_qf.themes.flatTabs.label__</option>
-                      <option id="QuickFolders-Theme-Pills"
-                        originalName="Apple Pills" value="applePills">__MSG_qf.themes.applePills.label__</option>
-                      <option id="QuickFolders-Theme-NativeTabs"
-                        originalName="Native Tabs" value="nativeTabs">__MSG_qf.themes.nativeTabs.label__</option>
-                      <option id="QuickFolders-Theme-ButtonStyle"
-                        originalName="Flat Style" value="realButtons">__MSG_qf.themes.realButtons.label__</option>
-                      <option id="QuickFolders-Theme-FlatButtons"
-                        originalName="Toolbar Buttons" value="flatButtons">__MSG_qf.themes.flatButtons.label__</option>
-                    </select>
-                  </label>
+                  <label class="textBoxLabel">__MSG_qf.label.themes__</label>
+                  <select id="QuickFolders-Theme-Selector" 
+                    preference="qfpl-Theme"
+                    data-pref-type="string"
+                    data-pref-name="extensions.quickfolders.style.theme"
+                    >
+                    <option id="QuickFolders-Theme-FlatStyle"
+                      originalName="Flat Style" value="flatTabs">__MSG_qf.themes.flatTabs.label__</option>
+                    <option id="QuickFolders-Theme-Pills"
+                      originalName="Apple Pills" value="applePills">__MSG_qf.themes.applePills.label__</option>
+                    <option id="QuickFolders-Theme-NativeTabs"
+                      originalName="Native Tabs" value="nativeTabs">__MSG_qf.themes.nativeTabs.label__</option>
+                    <option id="QuickFolders-Theme-ButtonStyle"
+                      originalName="Flat Style" value="realButtons">__MSG_qf.themes.realButtons.label__</option>
+                    <option id="QuickFolders-Theme-FlatButtons"
+                      originalName="Toolbar Buttons" value="flatButtons">__MSG_qf.themes.flatButtons.label__</option>
+                  </select>
                 </div>
               </div>
               <div class="vbox">

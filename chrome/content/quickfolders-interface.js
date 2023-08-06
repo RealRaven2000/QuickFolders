@@ -839,8 +839,8 @@ QuickFolders.Interface = {
           prefs.getBoolPref("currentFolderBar.iconcolor.custom") ?
           prefs.getStringPref("currentFolderBar.iconcolor") :
           "currentColor";
-        styleEngine.setElementStyle(ss,"#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.icon", "fill", ftCol);
-        styleEngine.setElementStyle(ss, "#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.col0 .toolbarbutton-text", "color", ftCol);
+        styleEngine.setElementStyle(ss,"#QuickFolders-CurrentFolderTools[theme=custom] > toolbarbutton.icon", "fill", ftCol);
+        // styleEngine.setElementStyle(ss, "#QuickFolders-CurrentFolderTools[theme=custom] toolbarbutton.col0 .toolbarbutton-text", "color", ftCol);
 
 				// find (and move) button if necessary
 				let cF = this.CurrentFolderTab,

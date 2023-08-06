@@ -89,14 +89,14 @@ menuitem.cmd[tagName="qfTidyTabs"] { list-style-image : url('ico/clean.svg') !im
 menuitem.cmd[tagName="qfRepairTreeIcons"] {
   list-style-image: url('chrome://messenger/skin/icons/image.svg') !important;
 }
-menuitem.cmd[tagName="qfPreviewToolbar"] { list-style-image : url('ico/toolbar.png') !important; }
+menuitem.cmd[tagName="qfPreviewToolbar"] { list-style-image : url('ico/navigation-bar.svg') !important; }
 menuitem.cmd[tagName="qfOrder"] {
   list-style-image: url('ico/order.svg') !important;
 }
 
 /* menuitems */
 menuitem.cmd[tagName="qfSplash"] {
-  list-style-image : url('ico/new.png') !important;
+  list-style-image : url('ico/new.svg') !important;
 }
 
 

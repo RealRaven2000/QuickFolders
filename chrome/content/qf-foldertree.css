@@ -5,13 +5,17 @@ treechildren::-moz-tree-image(folderIconCol, folderIcon_server14_Inbox_Test) {
 	list-style-image: url(file:///E:/Dev/Mozilla/Icons/test.png);
 }	
 */
- 
+#folderPaneContext menuitem#context-quickFoldersIcon hbox,
+#folderPaneContext menuitem#context-quickFoldersRemoveIcon hbox{
+  -moz-context-properties: fill, fill-opacity; 
+  fill: var(--lwt-text-color, --lwt-toolbar-field-color) !important;
+}
+
+
 #folderPaneContext menuitem#context-quickFoldersRemoveIcon[tag="qfIconRemove"] { 
   list-style-image : url('chrome://quickfolders/content/skin/ico/picture-remove.svg') !important;
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
 #folderPaneContext menuitem#context-quickFoldersIcon[tag="qfIconAdd"] { 
   list-style-image : url('chrome://messenger/skin/icons/image.svg') !important;
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
- }
+}

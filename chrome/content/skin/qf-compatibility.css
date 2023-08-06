@@ -1,3 +1,21 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hovercolor: #113e6a;
+    --hoverbackground: #ffffffcb;
+    --selectedbackground:#1d3e7dad;
+    --selectedcolor: #FFFFFF;
+    --activecolor: #7cebf1d9;
+  }  
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --hovercolor: #ffffffcb;
+    --hoverbackground: #113e6a;
+    --selectedbackground: #1d3e7dad;
+    --activecolor: #FFFFFF;
+  }
+}
 
 
 /* horizontal alignment */
@@ -123,18 +141,23 @@ button[isTab], button.iconButton {
 /* images on buttons: */
 button.active,
 button.active::marker {
-  fill: white !important; /* not working yet - forcing the icon to be white */
-  stroke: white;
+  fill: var(--selectedcolor) !important; 
 }
 
 
 #QuickFolders-Options-Tabbox li button {
-  fill: var(--in-content-icon-color,currentColor);
-  -moz-context-properties: fill, stroke;
-  stroke: var(--lwt-text-color, inherit);
+  -moz-context-properties: fill, stroke,stroke-opacity, fill-opacity !important;
+  fill: var(--in-content-icon-color, currentColor);
+  stroke: var(var(--new-highlight, #4874c6),inherit) !important;
 }
-#QuickFolders-Options-Tabbox li button::marker {
-  background-color: var(--in-content-icon-color,currentColor); /* test  */
+#QuickFolders-Options-Tabbox li button:not(.active):hover {
+  -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
+  fill: var(--hovercolor);
+  color: var(--hovercolor) !important;
+}
+#QuickFolders-Options-Tabbox li button:active:hover {
+  fill: var(--activecolor);
+  color: var(--activecolor) !important;
 }
 
 .quickFoldersGeneral button, .quickFoldersAdvanced button  {
@@ -183,9 +206,6 @@ button.active::marker {
   background:url("ico/navigation-bar.svg") no-repeat;
 }
 
-.navigationBar .indent {
-  margin-inline-start: 36px;
-}
 .showFolderMenuButton  {
   -moz-context-properties: fill, fill-opacity, stroke !important;
   background: url("ico/folderCommand.svg") no-repeat;

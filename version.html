@@ -333,13 +333,7 @@
 					is inevitable. I have kept this project alive for 14 years now and I would like to
 					continue doing so in the future. Thank you for your kind attention.
 				</p>
-				<p>
-					Prerelease version: you can already download the latest version 
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/351#issuecomment-1656473436">
-						6.0 pre 323
-					</a>
-					from my Github.
-				</p>
+
 			</div>		
 			
       <table class="QuickFoldersProRenew bargain"> 
@@ -491,7 +485,7 @@
 				<li> 
 					The Navigation toolbar (a.k.a. Current Folder Bar) in center screen had to be reimplemented
 					because there are now multiple 3pane documents / windows (one for each Thunderbird tab)
-					Also I am now hiding unnecesary elements of the toolbar when it is displayed
+					Also I am now hiding unneccessary elements of the toolbar when it is displayed
 					in the single message tab or single message window.
 				</li>
         <li>
@@ -525,6 +519,52 @@
       </ul>
     </li>		
 
+
+    <a name="5.17">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.16.2 - WIP</a>
+      </h4>
+      <ul>				
+        <li> 
+					<p>
+						Tabs for unified folders (such as Unified Inbox) now show the contained folders, 
+						renamed to their account names:
+					</p>
+				</li>
+        <li> 
+					Redesigned menu icons abd Fixed a number of issues in the options screen - icons had 
+					some problems changing to dark themes.
+					If you experience missing colors in QuickFolders settings, you can enable the about:config 
+					setting <tt> svg.context-properties.content.enabled = true </tt>
+				</li>
+        <li>
+					Fixed the color picker for custom colors in current folder toolbar.
+				</li>
+				<li>
+					Fixed: Changing 'minimum height' opens help topic instead. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/372"></a>[issue 372]</li>
+				</li>
+				<li>
+					Fixed: Custom navigation bar icon color picker doesn't work and could lead to unreadable 
+					current folder button. <a href="https://github.com/RealRaven2000/QuickFolders/issues/383"></a>[issue 383]</li>
+				</li>
+				<li>
+					Automatically back up the custom folder icons for future restauration in Thunderbird 115.
+					<p>
+						On startup, QuickFolders will automatically backup custom icons on the folder tree (all folder URLs and the locations of 
+						their icons) in the file quickFolders-FolderTree.json which will be stored in the profile/extensions folder. 
+						This will be only done once automatically. 
+						The backup function can be also invoked manually via the QuickFolders debug menu - to access, click on QuickFolders 
+						tools button while holding down SHIFT, and then select <i>Debug / Backup folder tree icons</i>
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/384"></a>[issue 384]</li>
+					</p>
+					<img src="images/backup-icons.png" alt="manual backup of folder icons" class="screenshot"/>
+				</li>
+      </ul>
+    </li>
+    		
+
     <a name="5.16">&nbsp;</a>
     <a name="5.16.1">&nbsp;</a>
     <li>
@@ -539,7 +579,8 @@
         
         <li> 
 					<p>
-            QuickFolders now warns about license expiry 10 days beforehand. <a href="https://github.com/RealRaven2000/QuickFolders/issues/350">[issue 350]</a>.
+            QuickFolders now warns about license expiry 10 days beforehand. 
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/350">[issue 350]</a>.
           </p>
 					<img src="images/license-warning.png" alt="license warning" class="screenshot"/>
 				</li>

@@ -141,9 +141,12 @@ for (let el of document.querySelectorAll("input[type=number]")) {
     case "leftSpacer":
     case "rightSpacer":
       el.addEventListener("change", async (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         QuickFolders.Options.changeTextPreference(el);
-        if (id == "leftSpacer" || id == "rightSpacer")
+        if (id == "leftSpacer" || id == "rightSpacer") {
           QuickFolders.Options.updateNavigationBar();
+        }
       });
       break;
   }
@@ -733,6 +736,9 @@ function initButtons() {
     QuickFolders.Options.setCurrentToolbarBackgroundCustom(); 
   });
   document.getElementById("minHeightFix").addEventListener("click", (event) => { 
+    // [issue 372] numeral textbox event bubbled up?
+    if (event.target.tagName=="INPUT" || event.target.id=="toolbarMinHeight") return;
+    QuickFolders.Util.logHighlight("minHeightFix event","white","rgb(120,0,0)", event);
     QuickFolders.Util.openLinkInTab("https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25021"); 
   });
   document.getElementById("L0").addEventListener("click", (event) => { 
@@ -791,7 +797,7 @@ async function initBling() {
   getElement("dragovertabs-label").style.backgroundColor = bcol;
   getElement("toolbar-colorpicker").value = util.getSystemColor(await getUserStyle("Toolbar","background-color", "White"));
   
-  getElement("chkShowIconButtons").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
+  document.querySelector(".showIconButton").collapsed = !QuickFolders.Preferences.supportsCustomIcon; 
   
   
   let currentTheme = await QuickFolders.Options.selectTheme(wd, await QuickFolders.Preferences.getCurrentThemeId());

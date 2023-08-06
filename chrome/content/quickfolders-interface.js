@@ -710,16 +710,20 @@ QuickFolders.Interface = {
 					}
 				}
         
-        if (!hasLicense) {
-          if (countValidTabs>QuickFolders.Model.MAX_UNPAID_TABS) { // no license restriction
-            button.setAttribute("disabled",true);
-          }          
-        } 
-        else if (util.licenseInfo.keyType == 2) { // Standard License restriction
-          if (countValidTabs>QuickFolders.Model.MAX_STANDARD_TABS) {
-            button.setAttribute("disabled",true);
-          }          
-        }
+				if (button) {
+					if (!hasLicense) {
+						if (countValidTabs>QuickFolders.Model.MAX_UNPAID_TABS) { // no license restriction
+							button.setAttribute("disabled",true);
+						}          
+					} 
+					else if (util.licenseInfo.keyType == 2) { // Standard License restriction
+						if (countValidTabs>QuickFolders.Model.MAX_STANDARD_TABS) {
+							button.setAttribute("disabled",true);
+						}          
+					}
+				} else {
+					debugger;  // what happend?
+				}
 			}
 
 
@@ -1209,8 +1213,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-
-	testTreeIcons: function testTreeIcons() {
+	testTreeIcons: function () {
     const util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences,
 					Cc = Components.classes,
@@ -1252,8 +1255,9 @@ QuickFolders.Interface = {
 
 
 	},
+
 	// workaround for [Bug 26566]
-  repairTreeIcons: function repairTreeIcons(silent) {
+  repairTreeIcons: function (silent) {
     // repair all tree icons based on Tab Icons
     // does not need to be high performance, hence we do file check synchronously
     const util = QuickFolders.Util,
@@ -1333,6 +1337,10 @@ QuickFolders.Interface = {
     if (ctMissing)
       model.store();
   } ,
+
+	backupTreeIcons: function () {
+		QuickFolders.FolderTree.backupTreeIcons();
+	},
 
 	createMenuItem: function createMenuItem(value, label, className) {
 		let menuItem = this.createIconicElement("menuitem", className || "*");
@@ -2706,7 +2714,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	onSelectIcon: function onSelectIcon(element,event) {
+	onSelectIcon: function (element,event) {
 		const Ci = Components.interfaces,
           Cc = Components.classes,
           nsIFilePicker = Ci.nsIFilePicker,

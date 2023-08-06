@@ -72,6 +72,10 @@ QuickFolders.FolderTree = {
       // now we need to iterate all Folders and find matches in our dictionary,
       // then inject the style rules for the icons...
       this.loadDictionary();
+      if (!QuickFolders.Preferences.getBoolPref("folderTree.icons.backup")) {
+        this.backupTreeIcons();
+        QuickFolders.Preferences.setBoolPref("folderTree.icons.backup", true);
+      }
     }
     catch(ex) { 
 			util.logException('QuickFolders.FolderTree.init()',ex); 
@@ -160,6 +164,7 @@ QuickFolders.FolderTree = {
     const util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences,
           debug = prefs.isDebugOption("folderTree");
+    let allIcons=[];
 		util.logDebugOptional("folderTree,folderTree.icons", "QuickFolders.FolderTree.loadDictionary()");
     let isProfiling = QuickFolders.Preferences.isDebugOption("performance");
     if (isProfiling ) {
@@ -182,6 +187,15 @@ QuickFolders.FolderTree = {
       
         if (key && key!="noIcon" && url) {
           this.addItem(key, url);
+          allIcons.push(
+            {
+              folderURI: folder.URI,
+              cssKey: key,
+              iconURL: url,
+            }
+          );
+
+
           if (debug) {
             txtWithIcon += iCount.toString() + " - " + folder.server.hostName + " - " + folder.prettyName;
             txtWithIcon += "   " + key + ": " + url + "\n";
@@ -224,6 +238,7 @@ QuickFolders.FolderTree = {
     }
     
     util.logDebugOptional("folderTree.icons","loadDictionary() finished.");
+    return allIcons;
 	} ,
 	
 	storeDictionary: function() {
@@ -237,7 +252,29 @@ QuickFolders.FolderTree = {
 		// QuickFolders.Preferences.getStringPref("folderIcons", myJson);
 		this.debugDictionary();
 	} ,
-	
+
+	backupTreeIcons: async function () {
+		let folderIcons = QuickFolders.FolderTree.loadDictionary();
+    if (folderIcons.length) {
+      debugger;
+      const {OS} = ChromeUtils.import("resource://gre/modules/osfile.jsm");	
+
+      let jsonData = JSON.stringify(folderIcons, null, "  ");
+      let profileDir = OS.Constants.Path.profileDir,
+          path = OS.Path.join(profileDir, "extensions", "quickFolders-FolderTree.json");
+
+      try {
+        await OS.File.writeAtomic(path, jsonData, { encoding: "utf-8"});          
+        console.log(`Backed up ${folderIcons.length} folder tree icons to ${path}`);
+      }
+      catch (ex) {
+        QuickFolders.Util.logException("Saving Folder Tree icons failed", ex);
+      }
+    } else {
+      console.log("QuickFolders.FolderTree: nothing to back up.");
+    }
+	},
+
 	debugDictionary: function(withAlert) {
 		function appendKeyValue(key,value,t) {
 			t.txt += '\n' + key + ': ' + value;

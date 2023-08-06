@@ -143,47 +143,58 @@ async function onLoad(activatedWhileWindowOpen) {
                             oncommand="QuickFolders.Interface.copyCurrentFolderInfo();"
                             class="menuitem-iconic"
                             />                                      
-                  <menuitem id="QuickFolders-ToolbarPopup-dbg1"
-                            label="Test Tree only Icons"
-                            oncommand="QuickFolders.Interface.testTreeIcons();" 
+                <menuitem id="QuickFolders-ToolbarPopup-dbg8"
+                            label="Set News flag"
+                            oncommand="QuickFolders.Preferences.setBoolPref('hasNews', true); QuickFolders.Util.notifyTools.notifyBackground({ func: 'updateQuickFoldersLabel' });"
                             class="menuitem-iconic"
-                            />
-                                      
-                  <menuitem id="QuickFolders-ToolbarPopup-dbg2"
-                            label="Load FolderTree Dictionary"
-                            oncommand="QuickFolders.FolderTree.loadDictionary();" 
+                            /> 
+                <menuitem id="QuickFolders-ToolbarPopup-dbg9"
+                            label="Backup folder tree icons!"
+                            oncommand="QuickFolders.Interface.backupTreeIcons();"
                             class="menuitem-iconic"
-                            />														
-                  <menuitem id="QuickFolders-ToolbarPopup-dbg2"
-                            label="Force Tree Refresh"
-                            oncommand="QuickFolders.FolderTree.refreshTree();" 
-                            class="menuitem-iconic"
-                            />
-                            
-                  <menuitem id="QuickFolders-ToolbarPopup-dbg6"
-                            label="Foldertree.init()"
-                            oncommand="QuickFolders.FolderTree.init();" 
-                            class="menuitem-iconic"
-                            />
-                            
+                            />                                                                 
+                      
+                <menuitem id="QuickFolders-ToolbarPopup-dbg1"
+                          label="Test Tree only Icons"
+                          oncommand="QuickFolders.Interface.testTreeIcons();" 
+                          class="menuitem-iconic"
+                          />
                                     
-                  <menuitem id="QuickFolders-ToolbarPopup-dbg3"
-                            label="Platform info - aboutHost()"
-                            oncommand="QuickFolders.Util.aboutHost();"
-                            class="menuitem-iconic"
-                            />
+                <menuitem id="QuickFolders-ToolbarPopup-dbg2"
+                          label="Load FolderTree Dictionary"
+                          oncommand="QuickFolders.FolderTree.loadDictionary();" 
+                          class="menuitem-iconic"
+                          />														
+                <menuitem id="QuickFolders-ToolbarPopup-dbg3"
+                          label="Force Tree Refresh"
+                          oncommand="QuickFolders.FolderTree.refreshTree();" 
+                          class="menuitem-iconic"
+                          />
+                            
+                <menuitem id="QuickFolders-ToolbarPopup-dbg4"
+                          label="Foldertree.init()"
+                          oncommand="QuickFolders.FolderTree.init();" 
+                          class="menuitem-iconic"
+                          />
+                          
+                                  
+                <menuitem id="QuickFolders-ToolbarPopup-dbg5"
+                          label="Platform info - aboutHost()"
+                          oncommand="QuickFolders.Util.aboutHost();"
+                          class="menuitem-iconic"
+                          />
 
-                  <menuitem id="QuickFolders-ToolbarPopup-dbg4"
-                            label="Load Platform CSS"
-                            oncommand="QuickFolders.Util.loadPlatformStylesheet();"
-                            class="menuitem-iconic"
-                            />
-                                      
-                  <menuitem id="QuickFolders-ToolbarPopup-dbg5"
-                            label="Load tab Session (restore Categories)"
-                            oncommand="QuickFolders.Interface.loadTabSession();"
-                            class="menuitem-iconic"
-                            />
+                <menuitem id="QuickFolders-ToolbarPopup-dbg6"
+                          label="Load Platform CSS"
+                          oncommand="QuickFolders.Util.loadPlatformStylesheet();"
+                          class="menuitem-iconic"
+                          />
+                                    
+                <menuitem id="QuickFolders-ToolbarPopup-dbg7"
+                          label="Load tab Session (restore Categories)"
+                          oncommand="QuickFolders.Interface.loadTabSession();"
+                          class="menuitem-iconic"
+                          />
 
               </menupopup>
             </menu>

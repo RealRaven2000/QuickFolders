@@ -248,6 +248,7 @@ pref("extensions.quickfolders.commandMenu.help", true);
 pref("extensions.quickfolders.hasNews", false); /* splash screen status after update */
 pref("extensions.quickfolders.hideVersionOnUpdate", true);
 pref("extensions.quickfolders.folderTree.icons", true);
+pref("extensions.quickfolders.folderTree.icons.backup", false); // we do this once only. remember whether was auto-backed up!
 pref("extensions.quickfolders.folderTree.icons.injectCSS", true);
 
 // Filter Template

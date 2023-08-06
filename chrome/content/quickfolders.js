@@ -329,12 +329,16 @@ END LICENSE BLOCK */
     ## Clicking Compact Folder on current folder submenu only throws "Uncaught TypeError: folder is undefined"
     ##  (triggered in makePopupId)
 
-  5.16.2 - WIP
+  5.17 - WIP
     ## [issue 371] Fixed: Console error “receiving end does not exist” - caused by quickFilters not running.
     ## [issue 372] Fixed: Changing 'minimum height' opens help topic (bug 25021)
     ## [issue 370] support showing contained folders of a Tab representing unified folders.
     ## Updated some icons to svg
-    ##
+    ## to make the icons visible in 102 you may have to turn on svg.context-properties.content.enabled
+    ## [issue 383] Custom navigation bar icon color picker doesn't work and may lead to unreadable current folder button
+    ## Routine: backup folder tree icons for Pro users
+    ## [issue 384] Back up the configuration of folder tree icons for later in the file quickFolders-FolderTree.json
+    ##             can be used later (in Tb115) to restore icons in THunderbird 115 (once the feature is implemented there)
 
 
 	Future Work
@@ -757,7 +761,6 @@ var QuickFolders = {
     QuickFolders.Model.correctFolderEntries(folderEntries);
 		this.initTabsFromEntries(folderEntries);
     
-		
 		// only load in main window(?)
 		if (QuickFolders.FolderTree) {
 			QuickFolders.FolderTree.init();

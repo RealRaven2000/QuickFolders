@@ -245,7 +245,7 @@
     "message": "Dernières nouvelles"
   },
   "newsSection": {
-    "message": "{P1}Je travaille actuellement sur la conversion de l'extension QuickFolders pour la nouvelle interface utilisateur Thunderbird SuperNova. Cela sera implémenté dans la prochaine version majeure de Thunderbird 115 à l'été 2023.{P2} {P1}Vous pouvez lire l'état d'avancement actuel de ce travail ici : [issue 351]{P2}"
+    "message": "{P1}Une version entièrement réécrite de QuickFolders est disponible pour la nouvelle interface utilisateur Thunderbird SuperNova. Thunderbird 115 sera déployé pour tous les utilisateurs dont les mises à jour sont activées au cours des prochaines semaines, et QuickFolders sera ensuite mis à jour automatiquement.{P2} {P1}Vous pouvez lire la progression et la quantité de modifications pour ce travail ici : [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "Ce travail est exclusivement financé par la vente de licences, veuillez envisager d'acheter une licence ou de renouveler la précédente si vous souhaitez utiliser QuickFolders à l'avenir"
@@ -1747,7 +1747,7 @@
     "message": "Lorsque vous effectuez une mise à niveau à partir de Standard, vous bénéficiez d'une durée de licence d'un an à compter de la date d'achat, quelle que soit la date d'expiration de votre licence précédente."
   },
   "special-offer-expiry": {
-    "message": "8 mai"
+    "message": "13 août"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1853,7 +1853,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1}Ajout d'un avertissement visible concernant la licence 10 jours avant l'expiration.{L2} {L1}Corrigé le Nombre de jours restants dans la licence en arrondissant.{L2} {L1}Correction du 'Dossier compact' dans le sous-menu du dossier actuel.{L2}"
+    "message": "{L1}Les onglets représentant les dossiers unifiés (tels que la boîte de réception unifiée) affichent désormais les dossiers contenus, renommés en leurs noms de compte.{L2} {L1}Résolution de divers problèmes dans la boîte de dialogue des options.{L2} {L1}Icônes de menu repensées{L2 } {L1} Correction du sélecteur de couleurs pour les couleurs personnalisées dans la barre d'outils du dossier actuel.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

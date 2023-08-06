@@ -253,7 +253,7 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1}Actualment estic treballant en la conversió del complement QuickFolders per a la nova interfície d'usuari de Thunderbird SuperNova. Això s'implementarà a la propera versió principal de Thunderbird 115 l'estiu de 2023.{P2} {P1}Podeu llegir el progrés actual d'aquest treball aquí: [issue 351]{P2}"
+    "message": "{P1}Una versió completament reescrita de QuickFolders està disponible per a la nova interfície d'usuari de Thunderbird SuperNova. Thunderbird 115 es llançarà a tots els usuaris que tinguin les actualitzacions activades durant les properes setmanes, i les Carpetes ràpides s'actualitzaran automàticament.{P2} {P1}Podeu llegir el progrés i la quantitat de canvis d'aquest treball aquí: [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "Com que aquest treball és exclusivament finançat per la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessat a utilitzar QuickFolders en el futur."
@@ -1707,7 +1707,7 @@
     "message": "Quan actualitzeu des de Standard, obteniu un període de llicència d'un any complet a partir de la data de compra, independentment de la data de caducitat de la vostra llicència anterior."
   },
   "special-offer-expiry": {
-    "message": "8 de maig"
+    "message": "13 d'agost"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
@@ -1813,7 +1813,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}5.15.2 ja no activarà l'assistent de quickFilters diverses vegades en deixar anar diversos correus a una pestanya.{L2}{L1}Corregit: moure correus de diferents carpetes mitjançant quickMove no els eliminava del menú. [issue 328]{L2} {L1}Amb la mida de lletra personalitzada als botons, els submenús també tenen una mida de lletra coherent en arrossegar el correu [issue 329]{L2} {L1}Modificacions al codi intern per activar l'assistent de filtres quickFilters. Aquests canvis els requerirà el complement quickFilters a partir de la versió 5.7.{L2}"
+    "message": "{L1}Les pestanyes que representen carpetes unificades (com ara la safata d'entrada unificada) ara mostren les carpetes contingudes, canviades de nom amb els seus noms de compte.{L2} {L1}S'han solucionat diversos problemes al diàleg d'opcions.{L2} {L1}Icones de menú redissenyades{L2 } {L1}S'ha corregit el selector de colors per a colors personalitzats a la barra d'eines de la carpeta actual.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

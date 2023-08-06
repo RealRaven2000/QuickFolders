@@ -256,7 +256,7 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1}I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird SuperNova UI. This will be implemented in the next major version of Thunderbird 115 in Summer 2023.{P2} {P1}You can read up on the current progress of this work here: [issue 351]{P2}"
+    "message": "{P1}A completely rewritten version of QuickFolders is available for the new Thunderbird SuperNova UI. Thunderbird 115 will be rolled out to all users that have updates enabled over the next weeks, and QuickFolders will then be updated automatically.{P2} {P1}You can read up on the progress and amount of changes for this work here: [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using QuickFolders in the future."
@@ -1814,7 +1814,7 @@
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
   "special-offer-expiry": {
-    "message": "May 8th"
+    "message": "August 13th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1920,7 +1920,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Added visible warning about license 10 days before expiry.{L2} {L1}Corrected the Number of days left in license by rounding up.{L2} {L1}Fixed 'Compact Folder' on current folder submenu.{L2}"
+    "message": "{L1}Tabs for unified folders (such as Unified Inbox) now show the contained folders, renamed to their account names.{L2} {L1}Fixed a number of issues in the options screen.{L2} {L1}Redesigned menu icons{L2} {L1}Fixed color picker for custom colors in current folder toolbar.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

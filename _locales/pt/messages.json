@@ -242,7 +242,7 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}Atualmente, estou trabalhando na conversão do complemento QuickFolders para a nova interface do usuário do Thunderbird SuperNova. Isso será implementado na próxima versão principal do Thunderbird 115 no verão de 2023.{P2} {P1}Você pode ler sobre o progresso atual deste trabalho aqui: [issue 351]{P2}"
+    "message": "{P1}Uma versão totalmente reescrita do QuickFolders está disponível para a nova interface do usuário do Thunderbird SuperNova. O Thunderbird 115 será lançado para todos os usuários que tiverem atualizações habilitadas nas próximas semanas, e os QuickFolders serão atualizados automaticamente.{P2} {P1}Você pode ler sobre o progresso e a quantidade de alterações para este trabalho aqui: [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "Este trabalho é financiado exclusivamente pela venda de licenças, considere comprar uma licença ou renovar a anterior se estiver interessado em usar QuickFolders no futuro."
@@ -1738,7 +1738,7 @@
     "message": "Ao atualizar do Standard, você obtém um período de licença de um ano inteiro a partir da data de compra, independentemente da data de expiração de sua licença anterior."
   },
   "special-offer-expiry": {
-    "message": "8 de maio"
+    "message": "13 de agosto"
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
@@ -1844,7 +1844,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}Adicionado aviso visível sobre a licença 10 dias antes do vencimento.{L2} {L1}Corrigido o Número de dias restantes na licença arredondando para cima.{L2} {L1}Corrigido 'Pasta compactada' no submenu da pasta atual.{L2}"
+    "message": "{L1}As guias que representam pastas unificadas (como a Caixa de entrada unificada) agora mostram as pastas contidas, renomeadas para seus nomes de conta.{L2} {L1}Vários problemas corrigidos na caixa de diálogo de opções.{L2} {L1}Ícones de menu redesenhados{L2 } {L1}Selecionador de cores fixo para cores personalizadas na barra de ferramentas da pasta atual.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

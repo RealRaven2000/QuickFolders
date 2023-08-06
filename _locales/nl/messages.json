@@ -245,7 +245,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1}Ik werk momenteel aan de conversie van de QuickFolders-add-on voor de nieuwe Thunderbird SuperNova-gebruikersinterface. Dit zal worden geïmplementeerd in de volgende hoofdversie van Thunderbird 115 in de zomer van 2023.{P2} {P1}U kunt de huidige voortgang van dit werk hier lezen: [issue 351]{P2}"
+    "message": "{P1}Er is een volledig herschreven versie van QuickFolders beschikbaar voor de nieuwe gebruikersinterface van Thunderbird SuperNova. Thunderbird 115 zal in de komende weken worden uitgerold naar alle gebruikers die updates hebben ingeschakeld, en QuickFolders zal dan automatisch worden bijgewerkt.{P2} {P1}U kunt hier meer lezen over de voortgang en het aantal wijzigingen voor dit werk: [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "Dit werk wordt exclusief gefinancierd door de verkoop van licenties, overweeg een licentie te kopen of uw vorige licentie te verlengen als u geïnteresseerd bent in het gebruik van QuickFolders in de toekomst"
@@ -1765,7 +1765,7 @@
     "message": "Wanneer u upgradet van Standard, krijgt u een licentietermijn van één jaar vanaf de aankoopdatum, ongeacht de vervaldatum van uw vorige licentie."
   },
   "special-offer-expiry": {
-    "message": "8 mei"
+    "message": "13 augustus"
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1871,7 +1871,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Toegevoegde zichtbare waarschuwing over licentie 10 dagen voor de vervaldatum.{L2} {L1}Corrigeerde de Aantal resterende dagen in licentie door naar boven af te ronden.{L2} {L1}Fixed 'Compact Folder' in submenu huidige map.{L2}"
+    "message": "{L1}Tabbladen die uniforme mappen vertegenwoordigen (zoals Unified Inbox) tonen nu de daarin opgenomen mappen, hernoemd naar hun accountnamen.{L2} {L1}Verschillende problemen opgelost in het optiedialoogvenster.{L2} {L1}Herontworpen menupictogrammen{L2} {L1}Vaste kleurenkiezer voor aangepaste kleuren in de werkbalk van de huidige map.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -245,7 +245,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}我目前正在為新的 Thunderbird SuperNova UI 轉換 QuickFolders Addon。 這將在 2023 年夏季的 Thunderbird 115 的下一個主要版本中實現。{P2} {P1}您可以在此處閱讀有關這項工作的當前進度：[issue 351]{P2}"
+    "message": "{P1}完全重寫的 QuickFolders 版本可用於新的 Thunderbird SuperNova UI。 Thunderbird 115 將在接下來的幾週內向所有啟用更新的用戶推出，然後 QuickFolders 將自動更新。{P2} {P1}您可以在此處了解這項工作的進度和更改量：[issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "這項工作是獨家資助的 通過出售許可證，如果您有興趣在未來使用 QuickFolders，請考慮購買許可證或更新之前的許可證。"
@@ -1711,7 +1711,7 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "5月8日"
+    "message": "8月13日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1817,7 +1817,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1}在到期前 10 天添加關於許可證的可見警告。{L2} {L1}更正了 通過四捨五入獲得許可證的剩余天數。{L2} {L1}修復了當前文件夾子菜單上的“壓縮文件夾”。{L2}"
+    "message": "{L1}代表統一文件夾（例如統一收件箱）的選項卡現在顯示所包含的文件夾，並重命名為其帳戶名稱。{L2} {L1}修復了選項對話框中的各種問題。{ L2} {L1}重新設計了菜單圖標{L2 {L1}修復了當前文件夾工具欄中自定義顏色的顏色選擇器。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

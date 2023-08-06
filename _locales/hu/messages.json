@@ -216,7 +216,7 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1}Jelenleg a QuickFolders Addon konvertálásán dolgozom az új Thunderbird SuperNova UI-hoz. Ezt a Thunderbird 115 következő nagyobb verziójában, 2023 nyarán implementálják.{P2} {P1}A munka jelenlegi állásáról itt olvashat: [issue 351]{P2}"
+    "message": "{P1}A QuickFolders teljesen átírt verziója elérhető az új Thunderbird SuperNova UI-hoz. A következő hetekben a Thunderbird 115 minden olyan felhasználó számára elérhető lesz, akinél engedélyezték a frissítéseket, és a QuickFolders automatikusan frissül.{P2} {P1}A munka előrehaladásáról és a módosítások mennyiségéről itt olvashat: [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást."
@@ -1529,7 +1529,7 @@
     "message": "A Standard verzióra való frissítéskor a vásárlás dátumától számítva egy teljes év licencidőt kap, függetlenül az előző licenc lejárati dátumától."
   },
   "special-offer-expiry": {
-    "message": "május 8"
+    "message": "augusztus 13"
   },
   "special-offer-head": {
     "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
@@ -1629,7 +1629,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1}Látható figyelmeztetés hozzáadva a licenccel kapcsolatban 10 nappal a lejárat előtt.{L2} {L1}Javítottuk a A licencből hátralévő napok száma felfelé kerekítve.{L2} {L1}A 'Compact Folder' javítása a jelenlegi mappa almenüben.{L2}"
+    "message": "{L1}Az egyesített mappákat jelző lapok (például az Egységes Beérkezett üzenetek) mostantól a benne lévő mappákat jelenítik meg fióknevükre átnevezve.{L2} {L1}Különböző problémák javítása a beállítások párbeszédpanelen.{L2} {L1}Újratervezett menüikonok{L2 } {L1}Rögzített színválasztó egyéni színekhez az aktuális mappa eszköztárában.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

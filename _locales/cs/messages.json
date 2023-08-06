@@ -158,7 +158,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}V současné době pracuji na převodu doplňku QuickFolders pro nové uživatelské rozhraní Thunderbird SuperNova. To bude implementováno v další hlavní verzi Thunderbirdu 115 v létě 2023.{P2} {P1}O aktuálním postupu této práce si můžete přečíst zde: [issue 351]{P2}"
+    "message": "{P1}Pro nové uživatelské rozhraní Thunderbird SuperNova je k dispozici zcela přepsaná verze QuickFolders. Thunderbird 115 bude v průběhu příštích týdnů zpřístupněn všem uživatelům, kteří mají povoleny aktualizace, a QuickFolders se poté aktualizují automaticky.{P2} {P1}Postup a množství změn pro tuto práci si můžete přečíst zde: [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "Tato práce je výhradně financována prodejem licencí, zvažte prosím nákup licence nebo obnovení předchozí, pokud máte zájem používat QuickFolders v budoucnu."
@@ -277,7 +277,7 @@
     "message": "Když upgradujete ze Standardu, získáte licenční období na jeden celý rok od data nákupu bez ohledu na datum vypršení platnosti vaší předchozí licence."
   },
   "special-offer-expiry": {
-    "message": "8. května"
+    "message": "13. srpna"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -365,7 +365,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1}Přidáno viditelné upozornění na licenci 10 dní před vypršením platnosti.{L2} {L1}Opraveno Počet dní zbývajících v licenci zaokrouhlením nahoru.{L2} {L1}Opravena „Kompaktní složka“ v podnabídce aktuální složky.{L2}"
+    "message": "{L1}Na kartách představujících sjednocené složky (jako je Sjednocená doručená pošta) se nyní zobrazují obsažené složky přejmenované na názvy účtů.{L2} {L1}Opraveny různé problémy v dialogovém okně možností.{L2} {L1}Upravené ikony nabídky{L2 } {L1}Opraven výběr barev pro vlastní barvy na panelu nástrojů aktuální složky.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

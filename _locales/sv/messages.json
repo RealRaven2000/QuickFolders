@@ -245,7 +245,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}Jag arbetar för närvarande med konverteringen av QuickFolders-tillägget för det nya Thunderbird SuperNova-gränssnittet. Detta kommer att implementeras i nästa stora version av Thunderbird 115 sommaren 2023.{P2} {P1}Du kan läsa om det aktuella arbetet med detta arbete här: [issue 351]{P2}"
+    "message": "{P1}En helt omskriven version av QuickFolders är tillgänglig för det nya Thunderbird SuperNova-gränssnittet. Thunderbird 115 kommer att rullas ut till alla användare som har uppdateringar aktiverade under de kommande veckorna, och QuickFolders kommer då att uppdateras automatiskt.{P2} {P1}Du kan läsa om framstegen och antalet ändringar för detta arbete här: [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "Detta arbete är exklusivt finansierat genom försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda QuickFolders i framtiden."
@@ -1774,7 +1774,7 @@
     "message": "När du uppgraderar från Standard får du ett helt års licensperiod från inköpsdatumet oavsett utgångsdatum för din tidigare licens."
   },
   "special-offer-expiry": {
-    "message": "8 maj"
+    "message": "13 augusti"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1880,7 +1880,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Lägg till en synlig varning om licensen 10 dagar före utgången.{L2} {L1}Rättade Antal dagar kvar i licensen genom att avrunda uppåt.{L2} {L1}Fastad 'Kompakt mapp' på aktuell mapp-undermeny.{L2}"
+    "message": "{L1}Flikar som representerar förenade mappar (som Unified Inbox) visar nu de inneslutna mapparna, omdöpta till deras kontonamn.{L2} {L1}Lättade olika problem i alternativdialogrutan.{L2} {L1}Omdesignade menyikoner{L2} {L1}Fastad färgväljare för anpassade färger i det aktuella mappverktygsfältet.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

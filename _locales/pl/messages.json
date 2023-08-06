@@ -242,7 +242,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}Obecnie pracuję nad konwersją dodatku QuickFolders do nowego interfejsu użytkownika programu Thunderbird SuperNova. Zostanie to zaimplementowane w następnej głównej wersji Thunderbirda 115 latem 2023 r.{P2} {P1}O obecnym postępie prac można przeczytać tutaj: [issue 351]{P2}"
+    "message": "{P1}Dostępna jest całkowicie przepisana wersja programu QuickFolders dla nowego interfejsu użytkownika programu Thunderbird SuperNova. Thunderbird 115 zostanie wdrożony u wszystkich użytkowników, którzy mają włączone aktualizacje, w ciągu najbliższych tygodni, a następnie QuickFolders zostaną automatycznie zaktualizowane.{P2} {P1}Możesz przeczytać o postępie i ilości zmian w tej pracy tutaj: [issue 351] {P2}"
   },
   "newsSection.license": {
     "message": "Ta praca jest finansowana wyłącznie poprzez sprzedaż licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli jesteś zainteresowany korzystaniem z QuickFolders w przyszłości"
@@ -1756,7 +1756,7 @@
     "message": "Po uaktualnieniu z wersji Standard otrzymujesz jeden pełny rok okresu licencji od daty zakupu, niezależnie od daty wygaśnięcia poprzedniej licencji."
   },
   "special-offer-expiry": {
-    "message": "8 maja"
+    "message": "13 sierpnia"
   },
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
@@ -1862,7 +1862,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Dodano widoczne ostrzeżenie o licencji na 10 dni przed wygaśnięciem.{L2} {L1}Poprawiono Liczba dni pozostałych licencji zaokrąglona w górę.{L2} {L1}Naprawiono „Kompaktowy folder” w podmenu bieżącego folderu.{L2}"
+    "message": "{L1}Zakładki reprezentujące ujednolicone foldery (takie jak ujednolicona skrzynka odbiorcza) pokazują teraz zawarte foldery, których nazwy zostały zmienione na nazwy ich kont.{L2} {L1}Naprawiono różne problemy w oknie dialogowym opcji.{L2} {L1}Przeprojektowane ikony menu{L2 } {L1}Naprawiono próbnik kolorów dla niestandardowych kolorów na pasku narzędzi bieżącego folderu.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

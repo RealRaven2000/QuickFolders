@@ -246,7 +246,7 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1}Ich arbeite derzeit an der Konvertierung des QuickFolders-Addons für die neue Thunderbird SuperNova-Benutzeroberfläche. Diese wird in der nächsten Hauptversion von Thunderbird 115 im Sommer 2023 implementiert.{P2} {P1}Den aktuellen Fortschritt dieser Arbeiten können Sie hier verfolgen: [issue 351]{P2}"
+    "message": "{P1}Für die neue Thunderbird SuperNova-Benutzeroberfläche ist eine komplett neu geschriebene Version von QuickFolders verfügbar. Thunderbird 115 wird in den nächsten Wochen für alle Benutzer bereitgestellt, die Updates aktiviert haben, und QuickFolders wird dann automatisch aktualisiert.{P2} {P1}Über den Fortschritt und den Umfang der Änderungen dieser Arbeit können Sie hier nachlesen: [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "Diese Arbeit wird ausschließlich durch den Verkauf von Lizenzen finanziert. Bitte erwägen Sie den Kauf einer Lizenz oder die Verlängerung Ihrer vorigen Lizenz, wenn Sie daran interessiert sind, QuickFolders in Zukunft zu verwenden."
@@ -1757,7 +1757,7 @@
     "message": "Wenn Sie von Standard upgraden, erhalten Sie eine einjährige Lizenzlaufzeit ab Kaufdatum, unabhängig vom Ablaufdatum Ihrer vorherigen Lizenz."
   },
   "special-offer-expiry": {
-    "message": "8. Mai"
+    "message": "13. August"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1859,7 +1859,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Sichtbare Warnung 10 Tage vor Ablauf der Lizenz hinzugefügt.{L2} {L1}Die Anzahl der verbleibender Tage in der Lizenz durch Aufrunden korrigiert.{L2} {L1}Die „Komprimieren“-Funktion im Untermenü des aktuellen Ordners korrigiert.{L2}"
+    "message": "{L1}Registerkarten mit Gruppierten Ordnern (z. B. der gruppierter Posteingang), zeigen jetzt die enthaltenen Ordner an, die in ihre Kontonamen umbenannt wurden.{L2} {L1}Verschiedene Probleme im Optionsdialog wurden behoben.{L2} {L1}Menüsymbole wurden neu gestaltet. {L2} {L1}Farbauswahl für benutzerdefinierte Farben in der Symbolleiste des aktuellen Ordners korrigiert.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

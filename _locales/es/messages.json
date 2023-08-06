@@ -248,7 +248,7 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1}Actualmente estoy trabajando en la conversión del complemento QuickFolders para la nueva interfaz de usuario de Thunderbird SuperNova. Esto se implementará en la próxima versión principal de Thunderbird 115 en el verano de 2023.{P2} {P1}Puede leer sobre el progreso actual de este trabajo aquí: [issue 351]{P2}"
+    "message": "{P1}Hay disponible una versión completamente reescrita de QuickFolders para la nueva interfaz de usuario de Thunderbird SuperNova. Thunderbird 115 se implementará para todos los usuarios que tengan las actualizaciones habilitadas durante las próximas semanas, y QuickFolders se actualizará automáticamente.{P2} {P1}Puede leer sobre el progreso y la cantidad de cambios para este trabajo aquí: [issue 351]{P2}"
   },
   "newsSection.license": {
     "message": "Este trabajo está financiado exclusivamente por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar QuickFolders en el futuro."
@@ -1765,7 +1765,7 @@
     "message": "Cuando actualiza desde Estándar, obtiene un período de licencia de un año completo a partir de la fecha de compra, independientemente de la fecha de vencimiento de su licencia anterior."
   },
   "special-offer-expiry": {
-    "message": "8 de mayo"
+    "message": "13 de agosto"
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1871,7 +1871,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1}Se agregó una advertencia visible sobre la licencia 10 días antes del vencimiento.{L2} {L1}Se corrigió la Número de días que quedan en la licencia redondeando hacia arriba.{L2} {L1}Se corrigió 'Carpeta compacta' en el submenú de la carpeta actual.{L2}"
+    "message": "{L1}Las pestañas que representan carpetas unificadas (como la Bandeja de entrada unificada) ahora muestran las carpetas contenidas, renombradas a sus nombres de cuenta.{L2} {L1}Se corrigieron varios problemas en el cuadro de diálogo de opciones.{L2} {L1}Iconos de menú rediseñados{L2 } {L1}Selector de color fijo para colores personalizados en la barra de herramientas de la carpeta actual.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

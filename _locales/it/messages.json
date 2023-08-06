@@ -242,7 +242,7 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1}Attualmente sto lavorando alla conversione del componente aggiuntivo QuickFolders per la nuova interfaccia utente di Thunderbird SuperNova. Questo sarà implementato nella prossima versione principale di Thunderbird 115 nell'estate 2023.{P2} {P1}Puoi leggere l'attuale stato di avanzamento di questo lavoro qui: [issue 351]{P2} "
+    "message": "{P1}È disponibile una versione completamente riscritta di QuickFolders per la nuova interfaccia utente di Thunderbird SuperNova. Thunderbird 115 verrà distribuito a tutti gli utenti che hanno gli aggiornamenti abilitati nelle prossime settimane e QuickFolders verrà quindi aggiornato automaticamente.{P2} {P1}Puoi leggere l'avanzamento e la quantità di modifiche per questo lavoro qui: [issue 351]{P2} "
   },
   "newsSection.license": {
     "message": "Questo lavoro è finanziato esclusivamente dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare QuickFolders in futuro."
@@ -1753,7 +1753,7 @@
     "message": "Quando esegui l'upgrade da Standard, ricevi un anno intero di licenza dalla data di acquisto, indipendentemente dalla data di scadenza della tua licenza precedente."
   },
   "special-offer-expiry": {
-    "message": "8 maggio"
+    "message": "13 agosto"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
@@ -1859,7 +1859,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Aggiunto avviso visibile sulla licenza 10 giorni prima della scadenza.{L2} {L1}Corretto il problema Numero di giorni rimanenti nella licenza arrotondando per eccesso.{L2} {L1}Corretto 'Cartella compatta' nel sottomenu della cartella corrente.{L2}s read'{L2}"
+    "message": "{L1}Le schede che rappresentano le cartelle unificate (come Posta in arrivo unificata) ora mostrano le cartelle contenute, rinominate con i nomi degli account.{L2} {L1}Risolti vari problemi nella finestra di dialogo delle opzioni.{L2} {L1}Icone del menu ridisegnate{L2 } {L1}Risolto il problema con il selettore di colori per i colori personalizzati nella barra degli strumenti della cartella corrente.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

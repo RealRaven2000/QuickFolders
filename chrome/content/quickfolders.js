@@ -355,11 +355,14 @@ END LICENSE BLOCK */
     ## [issue 375] Added configuration Option to close tab after mail is moved from single message view
     ## eliminated <description> tags from options.html
     ## [issue 383] Custom navigation bar icon color picker doesn't work and may lead to unreadable current folder button
+    ## Numerous layout improvements in settings screen including dark theme support
+    ## Moved [F9] command to toggle folder pane to [F10]
 
 
 
 	Future Work
 	===========
+    ## [issue 354] Add permanent notifications for messages moved.
     ## [issue 103] Feature Request: Support copying folders
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
     ## [issue 56] Folders intermittently displayed as invalid / non existent (on startup)

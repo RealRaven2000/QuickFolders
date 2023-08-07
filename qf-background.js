@@ -105,6 +105,7 @@ messenger.runtime.onInstalled.addListener(async (data) => {
   await messenger.commands.update({name:"toggle-foldertree", description: toggleFolderLabel });   
 
   messenger.commands.onCommand.addListener((command) => {
+    if (isDebug) { console.log("command listener received", command); }
     switch (command) {
       case "toggle-foldertree":
         messenger.NotifyTools.notifyExperiment({event: "toggleFolderTree"});

@@ -10,7 +10,7 @@
   "author": "Axel Grude",
   "name" : "QuickFolders",
   "description" : "__MSG_extensionDescription__",
-  "version" : "6.1pre72",
+  "version" : "6.1pre117",
   "default_locale": "en",
   "developer" : {
       "name" : "Axel Grude",
@@ -40,7 +40,7 @@
   "commands": {
     "toggle-foldertree": {
       "suggested_key": {
-        "default": "F9"
+        "default": "F10"
       },
       "description": "Toggle Folder tree visibility"
     }

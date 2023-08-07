@@ -533,13 +533,9 @@ QuickFolders.bookmarks = {
                 let selectedMessageUris = [] ; 
                 let selectedMessages = quickFilters.Util.getSelectedMessages(selectedMessageUris);
                 let selectionCount = selectedMessages.length;
-                /*
-                let selectionCount =
-                  (tab.messageDisplay && gFolderDisplay) ? gFolderDisplay.selectedIndices.length : 0;
-                  */
+
                 util.logDebugOptional("bookmarks", "selectionCount: " + selectionCount);
                 if (selectionCount>=1) { 
-                  // let selectedMessages = gFolderDisplay.selectedMessages; 
                   let uriObjects = [];
                   for (let j=0; j<selectedMessages.length; j++) {
                     let msg = selectedMessages[j];

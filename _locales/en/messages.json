@@ -262,7 +262,7 @@
     "message": "{P1}QuickFolders is now compatible with the latest version of Thunderbird. This required considerable work of {boldStart}rewriting and testing{boldEnd} all elements interacting with the main page (3pane) of Thunderbird (toolbar buttons, menus, folder tree, drag and drop).{P2}{P1}Thunderbird 115 has been released on July 11th and has a completely new user interface called 'SuperNova'. {P2} {P1}You can still follow the ongoing progress of this work here: [issue 351]{P2}"
   },
   "newsSection.license": {
-    "message": "As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using SmartTemplates in the future."
+    "message": "As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using QuickFolders in the future."
   },  
   "ongoing-work": {
     "message": "The alterations to convert $addonName$ to the new programming model took weeks and were costly. There are many more changes for the next 2022 version. With a complex Add-on like this, expensive work becomes inevitable. Please help us with this.",
@@ -1923,7 +1923,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Tabs for unified folders (such as Unified Inbox) now show the contained folders, renamed to their account names.{L2} {L1}Fixed a number of issues in the options screen.{L2} {L1}Redesigned menu icons{L2} {L1}Fixed color picker for custom colors in current folder toolbar.{L2}"
+    "message": "{L1}Tabs for unified folders (such as Unified Inbox) now show the contained folders.{L2} {L1}Fixed a number of issues in the options screen.{L2} {L1}Redesigned menu icons{L2} {L1}Fixed color picker for custom colors in current folder toolbar.{L2}  {L1} The [=] key in quickJump to display last used folders works again.{L2} {L1} You can once again create new subfolder by dragging mails to a QuickFolder Tab.{L2} {L1} Default shortcut for toggling the folder pane had to be changed to [F10].{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -49,7 +49,8 @@ function formatAll(id) {
   .replace(/\{P1\}/g,"<p>")
   .replace(/\{P2\}/g,"</p>")
   .replace(/\[issue (\d*)\]/g,"<a class=issue no=$1>[issue $1]</a>")
-  .replace(/\[(.)\]/g,"<code>$1</code>");
+  .replace(/\[(.)\]/g,"<code class='keystroke'>$1</code>")     // single keys
+  .replace(/\[(F\d*)\]/g,"<code class='keystroke'>$1</code>"); // F10
 };
 
 addEventListener("load", async (event) => {

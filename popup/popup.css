@@ -71,6 +71,10 @@ code {
   padding: 1px 4px;
 }
  
+code.keystroke {
+  box-shadow: 2px 2px 1px rgba(140,120,80,0.9) !important;
+  background-color: rgb(80,75,60) !important;
+}
 
 ul.actions {
   

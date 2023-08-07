@@ -6244,10 +6244,11 @@ QuickFolders.Interface = {
 		    avoidCurrentFolder = ""; // = ':not(#QuickFoldersCurrentFolder)'; // we omit paletteClass for uncolored tabs:
 
 		// transparent buttons: means translucent background! :))
-		if (prefs.getBoolPref("transparentButtons"))
+		if (prefs.getBoolPref("transparentButtons")) {
 			inactiveBackground = util.getRGBA(inactiveBackground, 0.25) ;
+		}
 
-		engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton","background-color", inactiveBackground, true);
+		engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton","background-color", inactiveBackground, false);
 		engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton#QuickFoldersCurrentFolder","background-color", inactiveBackground, true);
 
 		// INACTIVE STATE (PALETTE) FOR UNCOLORED TABS ONLY

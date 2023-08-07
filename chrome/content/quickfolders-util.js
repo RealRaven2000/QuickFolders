@@ -869,7 +869,7 @@ QuickFolders.Util = {
           // we get here only after success!
           // fix bookmarks
           
-          messageIdList.push(origIds);  // <= successfully moved / copied
+          messageIdList.push(...origIds);  // issue 385] [issue 354]
           QuickFolders.CopyListener.OnStopCopy(0);  // OK
           
         } catch (ex) {

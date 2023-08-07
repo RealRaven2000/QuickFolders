@@ -339,6 +339,9 @@ END LICENSE BLOCK */
     ## Routine: backup folder tree icons for Pro users
     ## [issue 384] Back up the configuration of folder tree icons for later in the file quickFolders-FolderTree.json
     ##             can be used later (in Tb115) to restore icons in THunderbird 115 (once the feature is implemented there)
+    ## [issue 385] Moving multiple messages via quickMove - fails the filter assistant 
+    ## [issue 354] Display correct number of moved mails (after quickMove)
+    ## fixed background color of "QuickFolders" label in toolbar.
 
 
 	Future Work
@@ -1879,7 +1882,7 @@ var QuickFolders = {
 								dragSession.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY
 							);
 							if (QuickFolders.FilterWorker.FilterMode && QuickFolders.FilterWorker.FilterModeLegacy) {
-                lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
+                lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList : "no Messages returned!") + ")";
                 await QuickFolders.FilterWorker.createFilterAsync(sourceFolder, targetFolder, msgList, false);
 							}
 						}

@@ -31,12 +31,6 @@ messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfolde
 
 
 messenger.runtime.onInstalled.addListener(async (data) => {
-
-  messenger.browserAction.onClicked.addListener((tab, info) => {
-    console.log("browserAction.click!");
-    messenger.Utilities.toggleToolbarAction(false);
-  });
-  
   let { reason, temporary } = data,
       isDebug = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug");
   
@@ -98,22 +92,6 @@ messenger.runtime.onInstalled.addListener(async (data) => {
 
 
   if (isDebug) {
-    console.log ("QuickFolders: add toggle-foldertree command... ")
-  }
-
-  let toggleFolderLabel = messenger.i18n.getMessage("commands.toggleFolderTree");
-  await messenger.commands.update({name:"toggle-foldertree", description: toggleFolderLabel });   
-
-  messenger.commands.onCommand.addListener((command) => {
-    if (isDebug) { console.log("command listener received", command); }
-    switch (command) {
-      case "toggle-foldertree":
-        messenger.NotifyTools.notifyExperiment({event: "toggleFolderTree"});
-        break;
-      }
-  });
-
-  if (isDebug) {
     console.log ("QuickFolders: messenger.runtime.onInstalled finished!")
   }
 });
@@ -145,7 +123,7 @@ async function main() {
 
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();
-  
+
   // All important stuff has been done.
   // resolve all promises on the stack
   if (isDebug) console.log("Finished setting up license startup code");
@@ -500,7 +478,30 @@ async function main() {
     }
   });
 
-}
+  if (isDebug) {
+    console.log ("QuickFolders: add toggle-foldertree command... ")
+  }
+
+  let toggleFolderLabel = messenger.i18n.getMessage("commands.toggleFolderTree");
+  await messenger.commands.update({name:"toggle-foldertree", description: toggleFolderLabel });   
+
+  messenger.commands.onCommand.addListener((command) => {
+    if (isDebug) { console.log("command listener received", command); }
+    switch (command) {
+      case "toggle-foldertree":
+        messenger.NotifyTools.notifyExperiment({event: "toggleFolderTree"});
+        break;
+      }
+  });
+
+  messenger.browserAction.onClicked.addListener((tab, info) => {
+    console.log("browserAction.click!");
+    messenger.Utilities.toggleToolbarAction(false);
+  });
+
+    
+
+} // main
 
 main();
 

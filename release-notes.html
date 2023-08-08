@@ -18,12 +18,13 @@ As this work is exclusively funded by the sale of licenses, please consider buyi
 <li> Tabs for unified folders (such as Unified Inbox) now support showing the actual folders, renamed to their account names.</li>
 <li> Redesigned menu icons and fixed a number of issues in the options screen - icons had  some problems changing to dark themes.If you experience missing colors in QuickFolders settings, you can enable the about:config setting <tt> svg.context-properties.content.enabled = true </tt></li>
 <li> Automatically back up the custom folder icons for future restauration in Thunderbird 115.
+  
+  On startup, QuickFolders will automatically backup custom icons on the folder tree (all folder URLs and the locations of their icons) in the file quickFolders-FolderTree.json which will be stored in the profile/extensions folder. This will be only done once automatically. 
+
+  The backup function can be also invoked manually via the QuickFolders debug menu - to access, click on QuickFolders tools button while holding down SHIFT, and then select <i>Debug / Backup folder tree icons</i>.</li>
+  </li>
 </ul>
 
-On startup, QuickFolders will automatically backup custom icons on the folder tree (all folder URLs and the locations of their icons) in the file quickFolders-FolderTree.json which will be stored in the profile/extensions folder. This will be only done once automatically. 
-
-The backup function can be also invoked manually via the QuickFolders debug menu - to access, click on QuickFolders tools button while holding down SHIFT, and then select <i>Debug / Backup folder tree icons</i>.</li>
-</ul>
 
 <b>Bugs Fixed</b>
 <ul>

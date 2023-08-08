@@ -35,6 +35,9 @@
     get isReopen() {
       return prefs.getBoolPref('quickMove.reopenMsgTabAfterMove');
     },
+    get isSingleTabAutoClose() {
+      return prefs.getBoolPref('quickMove.singleTab.autoClose');
+    },
     
     
     loadExclusions: function loadExclusions() {

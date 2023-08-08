@@ -173,7 +173,8 @@ QuickFolders.quickMove = {
     
     let hasMove = (this.IsCopy.includes(false)); // are any message moved, close in case this is a single message tab
     if (tabMode == "mailMessageTab" && hasMove) {
-      if (QuickFolders.Preferences.getBoolPref("quickMove.singleTab.autoClose")) {
+      
+      if (QuickFolders.quickMove.Settings.isSingleTabAutoClose) {
         // close currentTab!
         if (currentTab.canClose) {
           tabmail.closeTab(currentTab);

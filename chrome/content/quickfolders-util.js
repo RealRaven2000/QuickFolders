@@ -880,7 +880,7 @@ QuickFolders.Util = {
           // we get here only after success!
           // fix bookmarks
           
-          messageIdList.push(origIds);  // <= successfully moved / copied
+          messageIdList.push(...origIds);  // [issue 385] do not wrap array in array!
           QuickFolders.CopyListener.OnStopCopy(status); 
           
         } catch (ex) {

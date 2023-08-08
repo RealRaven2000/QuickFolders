@@ -442,8 +442,8 @@
       </table>
 
 
-			<h4 class="inList">Improvements</h4>
 			<ul>
+				<h4 class="inList">Improvements</h4>
 				<li> 
 					<p>
 						Tabs for unified folders (such as Unified Inbox) now support showing the 
@@ -457,16 +457,6 @@
 					colors in QuickFolders settings, you can enable the about:config setting 
 					<tt> svg.context-properties.content.enabled = true </tt>
 				</li>
-				<li> 
-					<p>
-						QuickFolders 5.17.1 has implemented an automatic backup routine for custom icons.
-					</p>
-					<p>
-						In that version, when starting up, QuickFolders automatically backs up custom icons on the folder tree. 
-						Future versions of QuickFolders 6.* may use this data to restore the tree layout 
-						and load those icons back, once the customisation is implemented for Thunderbird 115
-					</p>
-				</li>
 				<li>
 					Added internal configuration Option to close tab after mail is moved from single message view. 
 					To activate the new option, set <tt>extensions.quickfolders.quickMove.singleTab.autoClose</tt>
@@ -478,8 +468,8 @@
 				</li>
 			</ul>
 			
-			<h4 class="inList">Bug Fixes</h4>
       <ul>
+				<h4 class="inList">Bug Fixes</h4>
 				<li>
 					Fixed: Create new subfolder while dragging to tab throws error.
 				</li>
@@ -511,8 +501,8 @@
 				</li>
       </ul>
 
-			<h4 class="inList">Known Issues</h4>
 			<ul>
+				<h4 class="inList">Known Issues</h4>
 				<li>
 					Skip to next unread folder button - this still needs some fixing as it may 
 					skip unread mails in the next unread folder. 
@@ -527,9 +517,16 @@
 					</p>
 					<p>
 						Instead we need an new method to store this information separately - and 
-						then rules for styling the folders have to be recreated. This may take a little while 
-						-  however if you have ran 5.17.1 before, then your icon information has been stored
-						into a separate file, so it can be recovered later!
+						then rules for styling the folders have to be recreated. This may take a little while.
+					</p>
+					<p>
+						In the meantime, QuickFolders 5.17.1 has implemented an automatic backup routine for custom icons.
+					</p>
+					<p>
+						In that version, when starting up, QuickFolders automatically backs up custom icons on the folder tree. 
+						Future versions of QuickFolders 6.* may use this data to restore the tree layout 
+						and load those icons back. So if you have ran 5.17.1 before, then your icon information 
+						likely has been stored into a separate file, so it can be recovered later!
 					</p>
 				</li>
 			</ul>

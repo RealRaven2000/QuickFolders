@@ -357,6 +357,8 @@ END LICENSE BLOCK */
     ## [issue 383] Custom navigation bar icon color picker doesn't work and may lead to unreadable current folder button
     ## Numerous layout improvements in settings screen including dark theme support
     ## Moved [F9] command to toggle folder pane to [F10]
+    ## [issue 385] Moving multiple messages via quickMove - fails the filter assistant 
+    ## [issue 354] Display correct number of moved mails (after quickMove)
 
 
 

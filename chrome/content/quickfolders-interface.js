@@ -7,6 +7,8 @@
 
   END LICENSE BLOCK */
 
+/* import-globals-from folderDisplay.js */ 
+//  we need gFolderDisplay.navigate !!!!
 
 var { MailServices } = ChromeUtils.import("resource:///modules/MailServices.jsm");
 
@@ -510,7 +512,7 @@ QuickFolders.Interface = {
 	} ,
 
 	// exit unread folder skip to next...
-	onSkipFolder: function onSkipFolder(button, isSingleMessage = false) {
+	onSkipFolder: function (button, isSingleMessage = false) {
 		const util = QuickFolders.Util,
 				  prefs = QuickFolders.Preferences,
 					Ci = Components.interfaces;
@@ -539,17 +541,19 @@ QuickFolders.Interface = {
 				}
 				if (unreadMsg) {
 					console.log(`found unread message in next unread folder ${folder}`, msg);
-					GoNextMessage(Ci.nsMsgNavigationType.firstMessage, false);
+					// GoNextMessage(Ci.nsMsgNavigationType.firstMessage, false);
+					if (typeof gFolderDisplay != "undefined") {
+          	gFolderDisplay.navigate(Ci.nsMsgNavigationType.firstNew);
+					}
 				}
 			}
 			else {
 				QuickFolders_MySelectFolder(folder.URI);
 			}
 			// we need to jump to the top (first mail) for the
-			if (GoNextMessage) {
-				GoNextMessage(Ci.nsMsgNavigationType.firstMessage, false);
-			} else {
-				ScrollToMessage(Ci.nsMsgNavigationType.firstMessage, true, true); // SeaMonkey
+			// if (GoNextMessage) { GoNextMessage(Ci.nsMsgNavigationType.firstMessage, false); }
+			if (typeof gFolderDisplay != "undefined") {
+				gFolderDisplay.navigate(Ci.nsMsgNavigationType.firstNew);
 			}
 
 			if (currentFolder == folder) { // wrap around case
@@ -561,7 +565,7 @@ QuickFolders.Interface = {
 			// GoNextMessage is defined  in msgViewNavigation.js
 			// GoNextMessage(1, true); // nsMsgNavigationType.firstMessage
 			// GoNextMessage(7, true); // nsMsgNavigationType.nextUnreadMessage
-			goDoCommand("cmd_nextMsg");
+			goDoCommand("cmd_nextUnreadMsg");
 		}
 	} ,
 
@@ -5691,10 +5695,11 @@ QuickFolders.Interface = {
       }
     }
     let fD = info.folderDisplay;
-    if (fD && fD.view && fD.view.displayedFolder)  // Tb
+    if (fD && fD.view && fD.view.displayedFolder) { // Tb
       folder = fD.view.displayedFolder
-    else   // Postbox
+		} else {  // Postbox
       folder = GetFirstSelectedMsgFolder();
+		}
     QuickFolders.Util.logDebugOptional("mailTabs", "getCurrentTabMailFolder() returns: " + (folder ? folder.prettyName : "n/a"));
     return folder;
   },

@@ -290,10 +290,6 @@ button.active::marker {
 
 
  /* Style the tab */
-.tabs {
-  border-bottom: 1px solid rgba(50,50,50,0.3);
-}
-
 .tabs ul {
   display: flex;
   margin: 0;

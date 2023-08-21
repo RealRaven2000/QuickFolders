@@ -76,7 +76,7 @@ async function onLoad(activatedWhileWindowOpen) {
       <toolbar
             id="QuickFolders-Toolbar"
             toolbarname="QuickFolders Toolbar"
-            class="toolbar-primary contentTabToolbar"
+            class="toolbar-primary contentTabToolbar quickFoldersToolbar"
             ondragover="(QuickFolders.toolbarDragObserver).dragOver(event);"
             ondrop="(QuickFolders.toolbarDragObserver).drop(event);"
             dragdroparea="QuickFolders-FoldersBox"

@@ -58,9 +58,12 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
   fill: currentColor;
 }
 
-#QuickFolders-FoldersBox .QuickFolders-folder-popup menu label,
-#QuickFolders-FoldersBox .QuickFolders-folder-popup menuitem label,
-#QuickFolders-Category-Box popupset * > label {
+
+.quickFoldersToolbar menuitem label {
+	font-size: 12px;
+}
+
+.quickFoldersToolbar menu label {
   font-size: 12px;
 }
 

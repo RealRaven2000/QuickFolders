@@ -658,6 +658,7 @@ QuickFolders.Interface = {
 		    theme = prefs.CurrentTheme;
 		toolbar.className = theme.cssToolbarClassName; //  + " chromeclass-toolbar" [Bug 26612]
     toolbar.classList.add("contentTabToolbar"); // Linux
+		toolbar.classList.add("quickFoldersToolbar"); // simplify styling, [issue 394]
 
 		this.FoldersBox.className = "folderBarContainer " + theme.cssToolbarClassName; // [Bug 26575]
 
@@ -807,6 +808,19 @@ QuickFolders.Interface = {
 		QuickFolders.Interface.updateUserStyles();
   },
 
+	updateSharedToolbarStyles(ss) {
+		const prefs = QuickFolders.Preferences,
+					styleEngine = QuickFolders.Styles;
+      // =============
+      // MENU FONT SIZE 
+      // [issue 329] inconsistent menu font size
+			// [issue 394] make configurable
+			let menuFontSize = prefs.MenuFontSize;
+			menuFontSize = menuFontSize ? (menuFontSize+"px") : "12px"; // default size 12px with value 0
+      styleEngine.setElementStyle(ss, ".quickFoldersToolbar menuitem label", "font-size", menuFontSize, true);
+      styleEngine.setElementStyle(ss, ".quickFoldersToolbar menu label", "font-size", menuFontSize, true);      
+	} ,
+
 	// @doc3pane optional 3pane document. if not passed we need to iterate _all_ 3pane documents
 	// @tabInfo  optional (current tab, or the new tab if called from selectTab)
 	// this function initializes all buttons on the Navigation toolbar (Current folder bar)
@@ -918,11 +932,11 @@ QuickFolders.Interface = {
 				
 
 				// support larger fonts - should have a knock-on effect for min-height
-				let fontSize = prefs.ButtonFontSize;
-				fontSize = fontSize ? (fontSize+"px") : "12px"; // default size
-				toolbar2.style.fontSize = fontSize;
-				cF.style.fontSize = fontSize;
+				let fontSize = prefs.ButtonFontSize || 12; // default size
+				toolbar2.style.fontSize = `${fontSize}px`;
+				cF.style.fontSize = `${fontSize}px`;
 
+				QuickFolders.Interface.updateSharedToolbarStyles(ss);				
 				
 				const isNoFolderMode = (tabMode !="mail3PaneTab");
 
@@ -6453,17 +6467,7 @@ QuickFolders.Interface = {
 				styleEngine.setElementStyle(ss, btnSelector
 				  + "[background-image].selected-folder","border-bottom-color", colActiveBG, true);
 			}
-      
-      // =============
-      // MENU FONT SIZE 
-      // [issue 329] inconsistent menu font size
-			// [issue 394] make configurable
-			let menuFontSize = prefs.MenuFontSize;
-			menuFontSize = menuFontSize ? (menuFontSize+"px") : "12px"; // default size 12px with value 0
-      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup menu label", "font-size", menuFontSize + "px", true);
-      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup menuitem label", "font-size", menuFontSize + "px", true);
-      styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", menuFontSize + "px");
-      
+			QuickFolders.Interface.updateSharedToolbarStyles(ss);
 
 			// =================
 			// CUSTOM RADIUS

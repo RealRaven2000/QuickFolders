@@ -61,9 +61,9 @@ async function onLoad(activatedWhileWindowOpen) {
 
       //------------------------------------ overlay current folder (navigation bar)
       let INJECTED_ELEMENTS =
-`<hbox id="QuickFolders-PreviewToolbarPanel" class="QuickFolders-NavigationPanel">
+`<hbox id="QuickFolders-PreviewToolbarPanel" class="QuickFolders-NavigationPanel quickFoldersToolbar">
   <span flex="5" id="QF-CurrentLeftSpacer"> </span>
-  <toolbar id="QuickFolders-CurrentFolderTools" class="contentTabToolbar" iconsize="small">
+  <toolbar id="QuickFolders-CurrentFolderTools" class="contentTabToolbar quickFoldersToolbar" iconsize="small">
     <toolbarbutton id="QuickFolders-CurrentMail"
       class="icon draggable"
       tooltiptext="__MSG_qf.tooltip.emailIcon__" />

@@ -70,15 +70,9 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
   fill: currentColor;
 }
 
-#QuickFolders-FoldersBox .QuickFolders-folder-popup menu label,
-#QuickFolders-FoldersBox .QuickFolders-folder-popup menuitem label {
+.quickFoldersToolbar menuitem label, .quickFoldersToolbar menu label {
   font-size: 12px;
 }
-
-#QuickFolders-Category-Box popupset * > label {
-  font-size: 12px;
-}
-
 
 #QuickFolders-ToolbarPopup menuitem image {
   fill: var(--toolbarbutton-icon-fill, currentColor);

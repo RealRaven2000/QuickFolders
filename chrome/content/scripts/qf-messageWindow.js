@@ -37,7 +37,7 @@ function onLoad(activatedWhileWindowOpen) {
   <vbox id="messagepanebox">
     <hbox id="QuickFolders-PreviewToolbarPanel-Single" insertbefore="singlemessage" style="display:none;" class="QuickFolders-NavigationPanel">
       <spacer flex="5" id="QF-CurrentLeftSpacer" style="min-width:5px;" />
-      <toolbar id="QuickFolders-CurrentFolderTools" iconsize="small">
+      <toolbar id="QuickFolders-CurrentFolderTools quickFoldersToolbar" iconsize="small">
         <toolbarbutton id="QuickFolders-CurrentMail"
                        class="icon draggable"
                        tooltiptext="__MSG_qf.tooltip.emailIcon__" />

@@ -72,7 +72,7 @@ async function onLoad(activatedWhileWindowOpen) {
       <toolbar
             id="QuickFolders-Toolbar"
             toolbarname="QuickFolders Toolbar"
-            class="toolbar-primary contentTabToolbar"
+            class="toolbar-primary contentTabToolbar quickFoldersToolbar"
             ondragover="(QuickFolders.toolbarDragObserver).dragOver(event);"
             ondrop="(QuickFolders.toolbarDragObserver).drop(event);"
             dragdroparea="QuickFolders-FoldersBox"
@@ -347,10 +347,10 @@ async function onLoad(activatedWhileWindowOpen) {
     <hbox id="QuickFolders-PreviewToolbarPanel" 
           position="1"
           insertbefore="multimessage"
-          class="QuickFolders-NavigationPanel"
+          class="QuickFolders-NavigationPanel quickFoldersToolbar"
           style="display:none;">
       <spacer flex="5" id="QF-CurrentLeftSpacer"/>
-      <toolbar id="QuickFolders-CurrentFolderTools" class="contentTabToolbar" iconsize="small">
+      <toolbar id="QuickFolders-CurrentFolderTools" class="contentTabToolbar quickFoldersToolbar" iconsize="small">
         <toolbarbutton id="QuickFolders-CurrentMail"
                        class="icon draggable"
                        tooltiptext="__MSG_qf.tooltip.emailIcon__" />

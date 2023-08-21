@@ -619,6 +619,7 @@ QuickFolders.Interface = {
 		    theme = prefs.CurrentTheme;
 		toolbar.className = theme.cssToolbarClassName; //  + " chromeclass-toolbar" [Bug 26612]
     toolbar.classList.add("contentTabToolbar"); // Linux
+		toolbar.classList.add("quickFoldersToolbar"); // simplify styling, [issue 394]
 
 		this.FoldersBox.className = "folderBarContainer " + theme.cssToolbarClassName; // [Bug 26575]
 
@@ -6337,9 +6338,9 @@ QuickFolders.Interface = {
 			// [issue 394] make configurable
 			let menuFontSize = prefs.MenuFontSize;
 			menuFontSize = menuFontSize ? (menuFontSize+"px") : "12px"; // default size 12px with value 0
-      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup menu label", "font-size", menuFontSize + "px", true);
-      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup menuitem label", "font-size", menuFontSize + "px", true);
-      styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", menuFontSize + "px");
+      styleEngine.setElementStyle(ss, ".quickFoldersToolbar menuitem label", "font-size", menuFontSize, true);
+      styleEngine.setElementStyle(ss, ".quickFoldersToolbar menu label", "font-size", menuFontSize, true);
+      // styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", menuFontSize);
       
 
 			// =================

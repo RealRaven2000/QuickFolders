@@ -919,7 +919,7 @@ QuickFolders.Interface = {
 
 				// support larger fonts - should have a knock-on effect for min-height
 				let fontSize = prefs.ButtonFontSize;
-				fontSize = fontSize ? (fontSize+"px") : "11px"; // default size
+				fontSize = fontSize ? (fontSize+"px") : "12px"; // default size
 				toolbar2.style.fontSize = fontSize;
 				cF.style.fontSize = fontSize;
 
@@ -1742,17 +1742,16 @@ QuickFolders.Interface = {
         && (
           (tag
             &&
-            (tag == "textarea"  // Postbox quick reply
-            ||
-            tag == "textbox"    // any textbox
-            ||
-            tag == "input"      // Thunderbird 68 textboxes.
-						||
-						tag == "html:input"      // Thunderbird 78 textboxes.
-						||
-            tag == "search-textbox" // Thunderbird 78 search boxes 
-            ||
-						tag == "findbar")   // [Bug 26654] in-mail search
+						[
+							"textarea",        			// Postbox quick reply
+							"textbox",         			// any textbox
+							"input",           			// Thunderbird 68 textboxes.
+							"html:input",      			// Thunderbird 78 textboxes.
+							"search-textbox", 		 	// Thunderbird 78 search boxes 
+							"xul:search-textbox",  	// Thunderbird 115 search boxes  [issue ]
+							"global-search-bar",     // Thunderbird 115 global search [issue ]
+							"findbar"              	// [Bug 26654] in-mail search
+						].includes(tag)
           )
 					||
 					(eventTarget.baseURI
@@ -1954,7 +1953,10 @@ QuickFolders.Interface = {
                 button = this.buttonsByOffset[offset - 1];
             if(button) {
               if(isShift) {
-                MsgMoveMessage(button.folder);
+								// replacing MsgMoveMessage() function
+								const makeCopy = false;
+								let uris = QuickFolders.Util.getSelectedMsgUris();
+								QuickFolders.Util.moveMessages(button.folder, uris, makeCopy);
 							}
               else {
                 this.onButtonClick(button,e,false);
@@ -4794,6 +4796,13 @@ QuickFolders.Interface = {
 				let tabmail = document.getElementById("tabmail");
 				if (tabmail) {
           tabmail.openTab("mail3PaneTab", {folder: folderUri, messagePaneVisible:true } );
+					setTimeout(
+						() => {
+							QuickFolders_MySelectFolder(folderUri);
+						},
+						200
+					); 
+					return;
 				}
 			}
 		}
@@ -5615,16 +5624,26 @@ QuickFolders.Interface = {
 	}	,
 
 	getThreadPane: function() {
-    let doc = QuickFolders.Util.document3pane;
-		if (!doc) return null;
-	  return doc.getElementById("threadPaneBox");  
+		if (!QuickFolders.Util.document3pane) return null;
+	  return QuickFolders.Util.threadPane;
 	} ,
 
 	setFocusThreadPane: function setFocusThreadPane() {
     let threadTree = this.getThreadTree();
 		if (threadTree) {
-			threadTree.focus();
-			// tabmail.currentAbout3Pane.threadTree.table.body.focus();
+			// find the selected row, focus that.
+			setTimeout(
+				() => {
+					let firstSelectedMailRow = threadTree.table.body.querySelector("[aria-selected=true]");
+					if (firstSelectedMailRow) {
+						firstSelectedMailRow.focus();
+					} else {
+						threadTree.focus();
+					}
+				},
+				200
+			);
+			
 		}
   } ,
 
@@ -6438,9 +6457,12 @@ QuickFolders.Interface = {
       // =============
       // MENU FONT SIZE 
       // [issue 329] inconsistent menu font size
-      let newFontSize = prefs.ButtonFontSize || 12; // default value, 0!
-      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup * > label", "font-size", newFontSize + "px");
-      styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", newFontSize + "px");
+			// [issue 394] make configurable
+			let menuFontSize = prefs.MenuFontSize;
+			menuFontSize = menuFontSize ? (menuFontSize+"px") : "12px"; // default size 12px with value 0
+      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup menu label", "font-size", menuFontSize + "px", true);
+      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup menuitem label", "font-size", menuFontSize + "px", true);
+      styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", menuFontSize + "px");
       
 
 			// =================
@@ -6520,8 +6542,8 @@ QuickFolders.Interface = {
       }
 
       // main toolbar position
-      let ordinalGroup = prefs.getIntPref("toolbar.ordinalPosition") || 0;
-      styleEngine.setElementStyle(ss,"#QuickFolders-Toolbar", "-moz-box-ordinal-group", ordinalGroup.toString());
+      // let ordinalGroup = prefs.getIntPref("toolbar.ordinalPosition") || 0;
+      // styleEngine.setElementStyle(ss,"#QuickFolders-Toolbar", "-moz-box-ordinal-group", ordinalGroup.toString());
 
 			util.logDebugOptional ("css","updateUserStyles(): success");
       

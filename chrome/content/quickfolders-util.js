@@ -2175,8 +2175,9 @@ allowUndo = true)`
     }
 
     // Now set the folder flags if we need to.
-    if (aFlags)
+    if (aFlags) {
       folder.setFlag(aFlags);
+    }
 
     // If we are not a valid folder, we need to create the storage to validate
     // the existence of the folder. Unfortunately, the creation code is

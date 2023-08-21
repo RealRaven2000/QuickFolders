@@ -149,6 +149,7 @@ button.active::marker {
   -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
   fill: var(--in-content-icon-color, currentColor);
   stroke: var(--new-highlight, #4874c6) !important;
+  margin-block-end: 0; /* align to bottom so we have a colored line, more like a tab strip */
 }
 #QuickFolders-Options-Tabbox li button:not(.active):hover {
   -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
@@ -159,6 +160,11 @@ button.active::marker {
 #QuickFolders-Options-Tabbox li button:active:hover {
   fill: var(--activecolor);
   color: var(--activecolor) !important;
+}
+
+#QuickFolders-Panels {
+  border-top: 4px solid var(--selectedbackground, #33f);
+  margin-inline: 1em;
 }
 
 

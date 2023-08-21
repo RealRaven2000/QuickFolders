@@ -342,7 +342,7 @@ END LICENSE BLOCK */
     ## moved navigation bar into 3pane document. (Util.document3pane)
 
     
-  6.1  QuickFolders Pro - WIP
+  6.1  QuickFolders Pro - 08/08/2023
     ## [issue 371] Deal with Console error “receiving end does not exist”
     ## [issue 372] Changing 'minimum height'  opens help topic (bug 25021)
     ## [issue 374] Fixed integration of main toolbar with single message tab 
@@ -359,6 +359,21 @@ END LICENSE BLOCK */
     ## Moved [F9] command to toggle folder pane to [F10]
     ## [issue 385] Moving multiple messages via quickMove - fails the filter assistant 
     ## [issue 354] Display correct number of moved mails (after quickMove)
+
+  6.1.1 QuickFolders Pro - 08/08/2023
+    ## [issue 386] Toggle toolbar button and toggle folder pane only work after install, 
+    ##                                                           not next session issue 
+
+
+  6.1.2 QuickFolders Pro - WIP
+    ## [issue 389] quickJump switches to matching single mail tab instead of jumping to Folder in current tab
+    ## [issue 392] Keyboard collision with quick filter toolbar
+    ## [issue 387] Number shortcuts not working - move mail with Option+Shift+Number
+    ## [issue 391] Display license expiry date in registration dialog as local date (not as YYYY-MM-DD)
+    ## [issue 380] Retired option to set QuickFolders toolbar position
+    ## Repaired: set keyboard focus back to thread pane after quickmove
+    ## [issue 394] Make menu font size configurable - setting separate font size for all popup menus
+    ## Support setting tab font size in "Apple Pills" theme
 
 
 
@@ -2073,6 +2088,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	if (tabmail) {
     util.logDebugOptional("folders.select","try to find open tab with folder...");
     for (let info of gTabmail.tabInfo) {  
+      if (info.mode.name != "mail3PaneTab") { // [issue 389]
+        continue;
+      }
       let tabURI = getTabURI(info);
       if (!tabURI) continue; 
       if (folderUri == tabURI && info != gTabmail.currentTabInfo ) {
@@ -2120,7 +2138,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 
   // TB 115 - this will not select the folder if it is not contained in the current view!
   gTabmail.currentTabInfo.folder = msgFolder;
-  // gTabmail.currentTabInfo.chromeBrowser.contentWindow.displayFolder(folderUri);
+  
 
   // ############################
   // ############################
@@ -2221,7 +2239,6 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
       util.logDebugOptional("folders.select","Selecting folder via treeview.select(" + msgFolder.prettyName + ")..\n" +
         msgFolder.URI);
       // added forceSelect = true
-      // gTabmail.currentTabInfo.chromeBrowser.contentWindow.displayFolder(msgFolder.URI);
       // John: gTabmail.currentTabInfo.folder is a setter/getter for the current folder
       gTabmail.currentTabInfo.folder = msgFolder;
 

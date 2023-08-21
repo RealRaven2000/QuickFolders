@@ -283,9 +283,6 @@
   "qf.backupAndRestore": {
     "message": "Restauração de backup"
   },
-  "qf.btn.applyPosition": {
-    "message": "Aplique o valor da posição!"
-  },
   "qf.button.add": {
     "message": "Adicionar!"
   },
@@ -897,9 +894,6 @@
   "qf.label.themes": {
     "message": "Temas:"
   },
-  "qf.label.toolbarPosition": {
-    "message": "Posição da barra de ferramentas do QuickFolders"
-  },
   "qf.label.versionhistory": {
     "message": "Leia o histórico de versões…"
   },
@@ -1296,9 +1290,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Para sistemas Mac que encontrarem o [Bug 25021]"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = em cima de outras barras de ferramentas; 100 = fundo. O valor alto depende de outros complementos."
   },
   "qf.tooltip.RecentFolders": {
     "message": "Pastas recentes"
@@ -1847,7 +1838,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1}As guias que representam pastas unificadas (como a Caixa de entrada unificada) agora mostram as pastas contidas, renomeadas para seus nomes de conta.{L2} {L1}Vários problemas corrigidos na caixa de diálogo de opções.{L2} {L1}Ícones de menu redesenhados{L2} {L1}Selecionador de cores fixo para cores personalizadas na barra de ferramentas da pasta atual.{L2}{L1} A tecla [=] no quickJump para exibir as últimas pastas usadas funciona novamente.{L2} {L1} Você pode criar novamente uma nova subpasta arrastando e-mails para uma guia QuickFolder.{L2} {L1} Atalho padrão para alternar o painel de pasta teve que ser alterado para [F10]. {L2}{L1} Você pode usar novamente o assistente de filtro para criar regras de filtro com o quickMove.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Corrigido: quickJump altera para uma única guia de mensagem em vez de saltar para uma pasta na guia atual do Thunderbird. [issue 389] {L2} {L1} Corrigido: Conflito de teclado com a barra de ferramentas de filtro rápido. {L2} {L1} Corrigido: Atalhos de números não funcionam - mover correio com Option+Shift+Número. Uma vez que os atalhos [CTRL]+Número estão reservados pelo Thunderbird, é necessário usar sempre o modificador [ALT] para esses atalhos. [issue 387] {L2} {L1} Mostrar a data de expiração da licença na caixa de diálogo de registro como data local. {L2} {L1} Opção removida para definir a posição da barra de ferramentas QuickFolders. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

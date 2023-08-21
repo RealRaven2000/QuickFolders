@@ -157,9 +157,6 @@
   "qf.accounts": {
     "message": "Tài khoản"
   },
-  "qf.btn.applyPosition": {
-    "message": "Áp dụng giá trị vị trí!"
-  },
   "qf.button.add": {
     "message": "Thêm!"
   },
@@ -624,9 +621,6 @@
   "qf.label.testfolder2": {
     "message": "Thư mục thử nghiệm 2"
   },
-  "qf.label.toolbarPosition": {
-    "message": "Thanh công cụ QuickFolders Vị trí"
-  },
   "qf.label.versionhistory": {
     "message": "Xem phiên bản cũ…"
   },
@@ -918,9 +912,6 @@
   },
   "qf.toolbarIconSize": {
     "message": "Các biểu tượng trên Thanh công cụ lớn"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = trên đầu các thanh công cụ khác; 100 = đáy. Giá trị cao phụ thuộc vào các Tiện ích bổ sung khác."
   },
   "qf.tooltip.RecentFolders": {
     "message": "Các thư mục gần đây nhất"
@@ -1373,7 +1364,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1}Các tab đại diện cho các thư mục hợp nhất (chẳng hạn như Hộp thư đến hợp nhất) hiện hiển thị các thư mục chứa, được đổi tên thành tên tài khoản của chúng.{L2} {L1}Đã khắc phục nhiều sự cố trong hộp thoại tùy chọn.{L2} {L1}Các biểu tượng menu được thiết kế lại{L2} {L1}Đã sửa lỗi bộ chọn màu cho các màu tùy chỉnh trên thanh công cụ của thư mục hiện tại.{L2}{L1} Phím [=] trong quickJump để hiển thị các thư mục được sử dụng gần đây nhất đã hoạt động trở lại.{L2} {L1} Một lần nữa, bạn có thể tạo thư mục con mới bằng cách kéo thư vào Tab QuickFolder.{L2} {L1} Phím tắt mặc định để chuyển đổi ngăn thư mục phải được thay đổi thành [F10]. {L2}{L1} Một lần nữa, bạn có thể sử dụng công cụ hỗ trợ bộ lọc để tạo quy tắc lọc bằng quickMove.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Sửa lỗi: quickJump chuyển sang một tab tin nhắn duy nhất thay vì nhảy vào một thư mục trong tab Thunderbird hiện tại. [issue 389] {L2} {L1} Sửa lỗi: Xung đột bàn phím với thanh công cụ bộ lọc nhanh. {L2} {L1} Sửa lỗi: Phím tắt số không hoạt động - di chuyển thư bằng Option+Shift+Số. Vì các phím tắt [CTRL]+Số đã được dành riêng cho Thunderbird, chúng ta luôn phải sử dụng bộ biến [ALT] cho các phím tắt này. [issue 387] {L2} {L1} Hiển thị ngày hết hạn của giấy phép trong hộp thoại đăng ký như ngày địa phương. {L2} {L1} Tùy chọn để đặt vị trí thanh công cụ QuickFolders đã bị loại bỏ. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

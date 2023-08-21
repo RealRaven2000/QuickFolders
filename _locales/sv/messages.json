@@ -286,9 +286,6 @@
   "qf.backupAndRestore": {
     "message": "Säkerhetskopiering / återställning"
   },
-  "qf.btn.applyPosition": {
-    "message": "Tillämpa positionsvärde!"
-  },
   "qf.button.add": {
     "message": "Lägg till!"
   },
@@ -906,9 +903,6 @@
   "qf.label.themes": {
     "message": "Teman:"
   },
-  "qf.label.toolbarPosition": {
-    "message": "QuickFolders verktygsfält Position"
-  },
   "qf.label.versionhistory": {
     "message": "Läs versionshistoriken…"
   },
@@ -1317,9 +1311,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "För Mac-datorer som stöter på buggen [Bug 25021]"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = ovanpå andra verktygsfält; 100 = botten. Högt värde beror på andra tillägg."
   },
   "qf.tooltip.RecentFolders": {
     "message": "Nyligen använda mappar"
@@ -1883,7 +1874,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1}Flikar som representerar förenade mappar (som Unified Inbox) visar nu de inneslutna mapparna, omdöpta till deras kontonamn.{L2} {L1}Lättade olika problem i alternativdialogrutan.{L2} {L1}Omdesignade menyikoner{L2} {L1}Fastad färgväljare för anpassade färger i det aktuella mappverktygsfältet.{L2} {L1} [=]-tangenten i quickJump för att visa senast använda mappar fungerar igen.{L2} {L1} Du kan återigen skapa en ny undermapp genom att dra e-postmeddelanden till en QuickFolder-flik.{L2} {L1} Standardgenväg för att växla mapprutan måste ändras till [F10]. {L2}{L1} Du kan återigen använda filterassistenten för att skapa filterregler med quickMove.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Åtgärdat: quickJump växlar till en enskild meddelande-flik istället för att hoppa till en mapp i aktuell Thunderbird-flik. [issue 389] {L2} {L1} Åtgärdat: Tangentbordskrock med snabba filterverktygsraden. {L2} {L1} Åtgärdat: Nummersnabbkommandon fungerar inte - flytta mail med Option+Shift+Nummer. Eftersom [CTRL]+Nummer-snabbkommandon är reserverade av Thunderbird måste vi alltid använda modifieraren [ALT] för dessa snabbkommandon. [issue 387] {L2} {L1} Visa licensens utgångsdatum i registreringsdialogen som lokal datum. {L2} {L1} Alternativet för att ställa in positionen för QuickFolders verktygsrad har tagits bort. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

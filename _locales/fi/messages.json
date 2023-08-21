@@ -300,7 +300,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1}Yhdistettyjä kansioita (kuten Unified Inbox) edustavat välilehdet näyttävät nyt kansiot, jotka on nimetty uudelleen tilien nimiin.{L2} {L1}Asetusvalintaikkunassa on korjattu useita ongelmia.{L2} {L1}Uudelleensuunnitellut valikon kuvakkeet{L2} {L1}Korjattu värivalitsin mukautettuja värejä varten nykyisessä kansiossa työkalupalkissa.{L2} {L1} QuickJumpin [=]-näppäin näyttää viimeksi käytetyt kansiot toimii taas.{L2} {L1} Voit jälleen luoda uuden alikansion vetämällä sähköpostit QuickFolder-välilehteen.{L2} {L1} Oletuspikanäppäin kansioruutu oli vaihdettava arvoon [F10]. {L2}{L1} Voit jälleen käyttää suodatinavustajaa suodatussääntöjen luomiseen quickMoven avulla.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Korjattu: quickJump vaihtaa yksittäiseen viestilehteen sen sijaan, että siirtyisi kansion sisälle nykyisessä Thunderbird-välilehdessä. [issue 389] {L2} {L1} Korjattu: Näppäimistön törmäys pikasuodatin-työkalurivin kanssa. {L2} {L1} Korjattu: Numeropikakomennot eivät toimi - postin siirtäminen käyttämällä Option+Shift+Numero. Koska [CTRL]+Numero-pikakomennot ovat varattuja Thunderbirdissa, meidän on aina käytettävä modifioijaa [ALT] näille pikakomennoille. [issue 387] {L2} {L1} Näytä lisenssin vanhenemispäivä rekisteröinti-ikkunassa paikallisena päivämääränä. {L2} {L1} Vaihtoehto QuickFolders-työkalurivin sijainnin asettamiseen on poistettu. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

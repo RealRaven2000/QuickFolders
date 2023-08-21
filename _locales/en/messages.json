@@ -297,9 +297,6 @@
   "qf.backupAndRestore": {
     "message": "Backup / Restore"
   },
-  "qf.btn.applyPosition": {
-    "message": "Apply position value!"
-  },
   "qf.button.add": {
     "message": "Add!"
   },
@@ -863,6 +860,9 @@
   "qf.label.mainToolbar": {
     "message": "Main Toolbar Elements"
   },
+  "qf.label.menuFontSizeNumeric": {
+    "message": "Menu font size (0 for default):"
+  },  
   "qf.label.menus": {
     "message": "Menu Configuration"
   },
@@ -925,9 +925,6 @@
   },
   "qf.label.themes": {
     "message": "Themes:"
-  },
-  "qf.label.toolbarPosition": {
-    "message": "QuickFolders Bar Position"
   },
   "qf.label.versionhistory": {
     "message": "Read Version History…"
@@ -1347,9 +1344,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "For Mac systems who encounter [Bug 25021]"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = on top of other toolbars; 100 = bottom. High value depends on other Add-ons."
   },
   "qf.tooltip.RecentFolders": {
     "message": "Recent Folders"
@@ -1923,7 +1917,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}Tabs for unified folders (such as Unified Inbox) now show the contained folders.{L2} {L1}Fixed a number of issues in the options screen.{L2} {L1}Redesigned menu icons{L2} {L1}Fixed color picker for custom colors in current folder toolbar.{L2}  {L1} The [=] key in quickJump to display last used folders works again.{L2} {L1} You can once again create new subfolder by dragging mails to a QuickFolder Tab.{L2} {L1} Default shortcut for toggling the folder pane had to be changed to [F10].{L2}{L1} You can once again use the filter assistant to create filter rules with quickMove.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Fixed: quickJump switches to a single message tab instead of jumping to a folder in the current Thunderbird tab. [issue 389] {L2} {L1} Fixed: Keyboard collision with quick filter toolbar. {L2} {L1} Fixed: Number shortcuts not working - move mail with Option+Shift+Number. Since [CTRL]+Number shortcuts are reserved by Thunderbird we need to always use the modifier [ALT] for these shortcuts. [issue 387] {L2} {L1} Display license expiry date in registration dialog as local date. {L2}  {L1} Retired option to set QuickFolders toolbar position. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

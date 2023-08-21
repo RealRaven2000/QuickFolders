@@ -294,9 +294,6 @@
   "qf.backupAndRestore": {
     "message": "Còpia de seguretat / restauració"
   },
-  "qf.btn.applyPosition": {
-    "message": "Apliqueu el valor de la posició"
-  },
   "qf.button.add": {
     "message": "Afegir!"
   },
@@ -905,9 +902,6 @@
   "qf.label.themes": {
     "message": "Temes:"
   },
-  "qf.label.toolbarPosition": {
-    "message": "Posició de la barra d'eines QuickFolders"
-  },
   "qf.label.versionhistory": {
     "message": "Historial de Versions…"
   },
@@ -1286,9 +1280,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Per a sistemes Mac que es troben amb [Bug 25021]"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = a sobre d'altres barres d'eines; 100 = fons. El valor alt depèn d'altres complements."
   },
   "qf.tooltip.RecentFolders": {
     "message": "Carpetes Recents"
@@ -1816,7 +1807,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1}Les pestanyes que representen carpetes unificades (com ara la safata d'entrada unificada) ara mostren les carpetes contingudes, canviades de nom amb els seus noms de compte.{L2} {L1}S'han solucionat diversos problemes al diàleg d'opcions.{L2} {L1}Icones de menú redissenyades{L2} {L1}S'ha corregit el selector de colors per a colors personalitzats a la barra d'eines de la carpeta actual.{L2}{L1} La tecla [=] de quickJump per mostrar les darreres carpetes utilitzades torna a funcionar.{L2} {L1} Podeu tornar a crear una subcarpeta arrossegant els correus a una pestanya QuickFolder.{L2} {L1} Drecera predeterminada per canviar la carpeta El panell de carpetes s'havia de canviar a [F10]. {L2}{L1} Podeu tornar a utilitzar l'assistent de filtre per crear regles de filtre amb quickMove.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Solucionat: quickJump canvia a una sola pestanya de missatge en comptes de saltar a una carpeta en la pestanya actual de Thunderbird. [issue 389] {L2} {L1} Solucionat: Col·lisió del teclat amb la barra de filtres ràpids. {L2} {L1} Solucionat: Les dreceres de números no funcionen - moure correu amb Opció+Majúscules+Número. Com que les dreceres [CTRL]+Número estan reservades per Thunderbird, sempre hem d'utilitzar el modificador [ALT] per a aquestes dreceres. [issue 387] {L2} {L1} Mostra la data d'expiració de la llicència al quadre de diàleg de registre com a data local. {L2} {L1} Opció retirada per establir la posició de la barra d'eines QuickFolders. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

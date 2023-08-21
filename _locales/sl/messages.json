@@ -274,9 +274,6 @@
   "qf.backupAndRestore": {
     "message": "Varnostno kopiranje / obnovitev"
   },
-  "qf.btn.applyPosition": {
-    "message": "Uporabi vrednost položaja!"
-  },
   "qf.button.add": {
     "message": "Dodaj!"
   },
@@ -870,9 +867,6 @@
   "qf.label.themes": {
     "message": "Teme:"
   },
-  "qf.label.toolbarPosition": {
-    "message": "Položaj orodne vrstice QuickFolders"
-  },
   "qf.label.versionhistory": {
     "message": "Beri zgodovino različic …"
   },
@@ -1272,9 +1266,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Za sisteme Mac, ki naletijo na [Hrošča 25021]"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = na vrhu drugih orodij; 100 = dno. Visoka vrednost je odvisna od drugih dodatkov."
   },
   "qf.tooltip.RecentFolders": {
     "message": "Nedavne mape"
@@ -1820,7 +1811,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1}Znova sem implementiral vse orodne vrstice za delo s Thunderbird 115.{L2}{L1}Dodan časovnik posodobljenim licenčnim dnevom vsako polnoč.{L2} {L1}Trenutno ni podpore za ikone po meri v drevesu map. To bo dodano pozneje.{L2}{L1} Tipka [=] v QuickJumpu za prikaz zadnjih uporabljenih map spet deluje.{L2} {L1} Ponovno lahko ustvarite novo podmapo tako, da povlečete e-pošto na zavihek QuickFolder.{L2} {L1} Privzeta bližnjica za preklapljanje podokno mape je bilo treba spremeniti v [F10]. {L2}{L1} Pomočnika za filtre lahko znova uporabite za ustvarjanje pravil filtrov s quickMove.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Popravljeno: quickJump preklopi na posamezno zavihku sporočila namesto skoka v mapo v trenutnem zavihku Thunderbird. [issue 389] {L2} {L1} Popravljeno: Konflikt tipkovnice s hitro vrstico filtrov. {L2} {L1} Popravljeno: Spremenljivke z zankami ne delujejo - premikanje pošte z Option+Shift+Številka. Ker so bližnjice [CTRL]+Številka rezervirane za Thunderbird, je za te bližnjice vedno treba uporabiti spremenljivko [ALT]. [issue 387] {L2} {L1} Prikaz datuma poteka licence v pogovornem oknu za registracijo kot lokalni datum. {L2} {L1} Možnost za določanje položaja orodne vrstice QuickFolders je odstranjena. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

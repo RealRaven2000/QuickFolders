@@ -283,9 +283,6 @@
   "qf.backupAndRestore": {
     "message": "Back-up / Herstel"
   },
-  "qf.btn.applyPosition": {
-    "message": "Positiewaarde toepassen!"
-  },
   "qf.button.add": {
     "message": "Toevoegen!"
   },
@@ -891,9 +888,6 @@
   "qf.label.themes": {
     "message": "Thema’s:"
   },
-  "qf.label.toolbarPosition": {
-    "message": "Positie van QuickFolders-balk"
-  },
   "qf.label.versionhistory": {
     "message": "Versiegeschiedenis lezen…"
   },
@@ -1302,9 +1296,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Voor Mac-systemen die te maken hebben met [Bug 25021]"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = boven andere werkbalken; 100 = onder. Hoge waarde hangt af van andere add-ons."
   },
   "qf.tooltip.RecentFolders": {
     "message": "Recente mappen"
@@ -1874,7 +1865,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1}Tabbladen die uniforme mappen vertegenwoordigen (zoals Unified Inbox) tonen nu de daarin opgenomen mappen, hernoemd naar hun accountnamen.{L2} {L1}Verschillende problemen opgelost in het optiedialoogvenster.{L2} {L1}Herontworpen menupictogrammen{L2} {L1}Vaste kleurenkiezer voor aangepaste kleuren in de werkbalk van de huidige map.{L2}{L1} De [=]-toets in quickJump om de laatst gebruikte mappen weer te geven, werkt weer.{L2} {L1} Je kunt weer een nieuwe submap maken door e-mails naar een QuickFolder-tabblad te slepen.{L2} {L1} Standaard snelkoppeling voor het schakelen tussen mappenvenster moest worden gewijzigd in [F10]. {L2}{L1} U kunt de filterassistent opnieuw gebruiken om filterregels te maken met quickMove.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Opgelost: quickJump schakelt over naar een enkel berichttabblad in plaats van naar een map te springen in het huidige Thunderbird-tabblad. [issue 389] {L2} {L1} Opgelost: Toetsenbordconflict met de snel filter werkbalk. {L2} {L1} Opgelost: Sneltoetsen met nummers werken niet - verplaats e-mail met Option+Shift+Nummer. Omdat [CTRL]+Nummer sneltoetsen zijn gereserveerd door Thunderbird, moeten we altijd de [ALT]-modificator gebruiken voor deze sneltoetsen. [issue 387] {L2} {L1} Toon de vervaldatum van de licentie in het registratiedialoogvenster als lokale datum. {L2} {L1} Optie verwijderd om de positie van de QuickFolders werkbalk in te stellen. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

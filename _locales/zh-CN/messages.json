@@ -290,9 +290,6 @@
   "qf.backupAndRestore": {
     "message": "备份/还原"
   },
-  "qf.btn.applyPosition": {
-    "message": "应用头寸价值！"
-  },
   "qf.button.add": {
     "message": "新建"
   },
@@ -901,9 +898,6 @@
   "qf.label.themes": {
     "message": "主题:"
   },
-  "qf.label.toolbarPosition": {
-    "message": "QuickFolders工具栏位置"
-  },
   "qf.label.versionhistory": {
     "message": "查看历史版本…"
   },
@@ -1279,9 +1273,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "有关 Mac 系统 [Bug 25021]"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = 在其他工具栏的顶部； 100 = 底部。 高价值取决于其他附加组件。"
   },
   "qf.tooltip.RecentFolders": {
     "message": "最近的文件夹"
@@ -1809,7 +1800,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1}代表统一文件夹（例如统一收件箱）的选项卡现在显示所包含的文件夹，并重命名为其帐户名称。{L2} {L1}修复了选项对话框中的各种问题。{L2} {L1}重新设计了菜单图标{L2} {L1}修复了当前文件夹工具栏中自定义颜色的颜色选择器。{L2}{L1} quickJump 中用于显示上次使用的文件夹的 [=] 键再次起作用。{L2} {L1} 您可以通过将邮件拖动到 QuickFolder 选项卡来再次创建新的子文件夹。{L2} {L1} 用于切换文件夹的默认快捷方式 文件夹窗格必须更改为 [F10]。{L2}{L1} 您可以再次使用过滤助手通过 quickMove 创建过滤规则。[issue 385]+[issue 354]{L2}{L1} 您可以再次使用過濾助手通過 quickMove 創建過濾規則。[issue 385]+[issue 354]{L2}"
+    "message": "{L1} 修复：quickJump 切换到单个消息选项卡，而不是跳转到当前 Thunderbird 选项卡中的文件夹。[issue 389] {L2} {L1} 修复：与快速过滤工具栏冲突的键盘冲突。 {L2} {L1} 修复：数字快捷键不起作用 - 使用 Option+Shift+数字 移动邮件。由于 [CTRL]+数字 快捷键由 Thunderbird 预留，我们必须始终为这些快捷键使用修饰符 [ALT]。 [issue 387] {L2} {L1} 将许可证到期日期显示为本地日期在注册对话框中。 {L2} {L1} 删除设置 QuickFolders 工具栏位置的选项。 [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -287,9 +287,6 @@
   "qf.backupAndRestore": {
     "message": "Datensicherung / Wiederherstellen"
   },
-  "qf.btn.applyPosition": {
-    "message": "Positionswert anwenden!"
-  },
   "qf.button.add": {
     "message": "Hinzufügen!"
   },
@@ -904,9 +901,6 @@
   "qf.label.testfolder2": {
     "message": "Test Verzeichnis"
   },
-  "qf.label.toolbarPosition": {
-    "message": "Position der QuickFolders Leiste"
-  },
   "qf.label.versionhistory": {
     "message": "Versionsgeschichte lesen…"
   },
@@ -1297,9 +1291,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Für Mac System die von [Bug 25021] betroffen sind"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = oberhalb anderer Werkzeugleisten; 100 = unterhalb. Der höhere Wert hängt von anderen Add-ons ab."
   },
   "qf.tooltip.RecentFolders": {
     "message": "Kürzlich benutzte Verzeichnisse"
@@ -1862,7 +1853,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1}Registerkarten mit Gruppierten Ordnern (z. B. der gruppierter Posteingang), zeigen jetzt die enthaltenen Ordner an, die in ihre Kontonamen umbenannt wurden.{L2} {L1}Verschiedene Probleme im Optionsdialog wurden behoben.{L2} {L1}Menüsymbole wurden neu gestaltet. {L2} {L1}Farbauswahl für benutzerdefinierte Farben in der Symbolleiste des aktuellen Ordners korrigiert.{L2} {L1} Die [=]-Taste in quickJump zum Anzeigen der zuletzt verwendeten Ordner funktioniert wieder.{L2} {L1} Sie können wieder neue Unterordner erstellen, indem Sie E-Mails in einen QuickFolder-Tab ziehen.{L2} {L1} Standardverknüpfung zum Umschalten Der Ordnerbereich musste auf [F10] geändert werden.{L2}{L1} Sie können wieder den Filterassistenten verwenden, um Filterregeln mit quickMove zu erstellen.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Behoben: quickJump wechselte zu einem einzelnen Nachrichten-Tab, anstatt zu einem Ordner im aktuellen Thunderbird-Tab zu springen. [issue 389] {L2} {L1} Behoben: Tastaturkonflikt mit der Schnellfilter-Symbolleiste. {L2} {L1} Behoben: Nummernkurzbefehle funktionieren nicht - Verschieben von E-Mails mit Option+Umschalt+Nummer. Da [STRG]+Nummernkurzbefehle von Thunderbird reserviert sind, müssen wir für diese Kurzbefehle immer den [ALT]-Modifier verwenden. [issue 387] {L2} {L1} Lizenz-Ablaufdatum im Registrierungsdialog als lokales Datum anzeigen. {L2} {L1} Option zur Festlegung der Position der QuickFolders-Symbolleiste entfernt. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

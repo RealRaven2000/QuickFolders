@@ -283,9 +283,6 @@
   "qf.backupAndRestore": {
     "message": "Backup/Ripristi"
   },
-  "qf.btn.applyPosition": {
-    "message": "Inserire un valore relativo alla posizione!"
-  },
   "qf.button.add": {
     "message": "Aggiungi!"
   },
@@ -906,9 +903,6 @@
   "qf.label.themes": {
     "message": "Temi:"
   },
-  "qf.label.toolbarPosition": {
-    "message": "Posizione della barra di QuickFolders"
-  },
   "qf.label.versionhistory": {
     "message": "Leggi la cronologia delle versioni…"
   },
@@ -1305,9 +1299,6 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Per i MacOS soggetti al [Bug 25021]"
-  },
-  "qf.toolbarPosition.tooltip": {
-    "message": "0 = sopra tutte le altre barre degli strumenti; 100 = sotto a tutte. L'attribuzione di un valore elevato è funzione della presenza di altre estensioni."
   },
   "qf.tooltip.RecentFolders": {
     "message": "Cartelle recenti"
@@ -1862,7 +1853,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1}Le schede che rappresentano le cartelle unificate (come Posta in arrivo unificata) ora mostrano le cartelle contenute, rinominate con i nomi degli account.{L2} {L1}Risolti vari problemi nella finestra di dialogo delle opzioni.{L2} {L1}Icone del menu ridisegnate{L2} {L1}Risolto il problema con il selettore di colori per i colori personalizzati nella barra degli strumenti della cartella corrente.{L2}{L1} Il tasto [=] in quickJump per visualizzare le ultime cartelle utilizzate funziona di nuovo.{L2} {L1} Puoi creare nuovamente una nuova sottocartella trascinando i messaggi in una scheda QuickFolder.{L2} {L1} Scorciatoia predefinita per attivare o disattivare il riquadro delle cartelle doveva essere cambiato in [F10]. {L2}{L1} È possibile utilizzare ancora una volta l'assistente filtro per creare regole di filtro con quickMove.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Corretto: quickJump passa a una singola scheda di messaggio invece di saltare in una cartella nella scheda Thunderbird corrente. [issue 389] {L2} {L1} Corretto: Collisione della tastiera con la barra dei filtri rapidi. {L2} {L1} Corretto: Scorciatoie numeriche non funzionanti - spostamento delle email con Option+Shift+Numero. Poiché le scorciatoie [CTRL]+Numero sono riservate da Thunderbird, dobbiamo sempre usare il modificatore [ALT] per queste scorciatoie. [issue 387] {L2} {L1} Mostra la data di scadenza della licenza nella finestra di registrazione come data locale. {L2} {L1} Opzione rimossa per impostare la posizione della barra degli strumenti QuickFolders. [issue 380] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

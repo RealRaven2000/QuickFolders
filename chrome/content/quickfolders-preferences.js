@@ -280,6 +280,10 @@ QuickFolders.Preferences = {
 		return this.getIntPref("buttonFontSizeN");
 	} ,
 
+	get MenuFontSize() {
+		return this.getIntPref("menuFontSize");
+	} ,
+
 	get TextQuickfoldersLabel() {
     let overrideLabel = "";
     // extend this for delivering the news splash when updated!

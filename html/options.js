@@ -132,6 +132,7 @@ for (let el of document.querySelectorAll("input[type=number]")) {
   let id = el.id;
   switch (id) {
     case "button-font-size":
+    case "menu-font-size":
     case "buttonMinHeight":
     case "buttonPaddingTop":
     case "QuickFolders-Options-CustomTopRadius":
@@ -202,11 +203,6 @@ rb2.addEventListener("change", async (event) => {
 document.getElementById("quickMoveAdvanced").addEventListener("click", async (event) => {
   QuickFolders.Options.quickMoveAdvancedSettings();
 });
-
-document.getElementById("applyPosition").addEventListener("click", async (event) => {
-  QuickFolders.Options.updateMainWindow(true); // was applyOrdinalPosition()
-});
-
 
 
 // add bool preference reactions

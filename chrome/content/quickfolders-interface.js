@@ -860,9 +860,10 @@ QuickFolders.Interface = {
 
 				// support larger fonts - should have a knock-on effect for min-height
 				let fontSize = prefs.ButtonFontSize;
-				fontSize = fontSize ? (fontSize+"px") : "11px"; // default size
+				fontSize = fontSize ? (fontSize+"px") : "12px"; // default size
 				toolbar2.style.fontSize = fontSize;
 				cF.style.fontSize = fontSize;
+
 
 				let hideMsgNavigation = !prefs.getBoolPref("currentFolderBar.navigation.showButtons"),
 						hideFolderNavigation = !prefs.getBoolPref("currentFolderBar.folderNavigation.showButtons");
@@ -6333,9 +6334,12 @@ QuickFolders.Interface = {
       // =============
       // MENU FONT SIZE 
       // [issue 329] inconsistent menu font size
-      let newFontSize = prefs.ButtonFontSize || 12; // default value, 0!
-      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup * > label", "font-size", newFontSize + "px");
-      styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", newFontSize + "px");
+			// [issue 394] make configurable
+			let menuFontSize = prefs.MenuFontSize;
+			menuFontSize = menuFontSize ? (menuFontSize+"px") : "12px"; // default size 12px with value 0
+      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup menu label", "font-size", menuFontSize + "px", true);
+      styleEngine.setElementStyle(ss, "#QuickFolders-FoldersBox .QuickFolders-folder-popup menuitem label", "font-size", menuFontSize + "px", true);
+      styleEngine.setElementStyle(ss, "#QuickFolders-Category-Box popupset * > label", "font-size", menuFontSize + "px");
       
 
 			// =================

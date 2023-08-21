@@ -100,6 +100,7 @@ pref("extensions.quickfolders.restoreConfig.layout", true);
 // Layout
 pref("extensions.quickfolders.style.theme", "flatTabs");
 pref("extensions.quickfolders.buttonFontSizeN", 0);
+pref("extensions.quickfolders.menuFontSize", 0); // [issue 394]
 pref("extensions.quickfolders.showIcons", true);
 pref("extensions.quickfolders.debug", false);
 pref("extensions.quickfolders.initDelay", 250);

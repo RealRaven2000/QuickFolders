@@ -132,6 +132,7 @@ for (let el of document.querySelectorAll("input[type=number]")) {
   let id = el.id;
   switch (id) {
     case "button-font-size":
+    case "menu-font-size":
     case "buttonMinHeight":
     case "buttonPaddingTop":
     case "QuickFolders-Options-CustomTopRadius":

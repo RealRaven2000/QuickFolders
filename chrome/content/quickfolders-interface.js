@@ -2033,7 +2033,6 @@ QuickFolders.Interface = {
 						if(nodes[i].id == "quickFoldersCommands") {
 							nodes = nodes[i].getElementsByTagName("menupopup");
 							menupopup = nodes[0]; // .cloneNode(true); // Get first menupop = QuickFolders Commands // omit cloning!
-							// menupopup.classList.add( "QuickFolders-folder-popup"); // retain styling
 							menupopup.folder = button.folder;
 							menupopup.setAttribute("tag", "quickFoldersCommands");
 							button.appendChild(menupopup);
@@ -3711,7 +3710,7 @@ QuickFolders.Interface = {
 		QuickFolderCmdMenu.setAttribute("id","quickFoldersCommands");
 		QuickFolderCmdMenu.setAttribute("label",this.getUIstring("qfCommandPopup"));
 		QuickFolderCmdMenu.setAttribute("accesskey",this.getUIstring("qfCommandAccess"));
-		QuickFolderCmdMenu.className="cmd menu-iconic"; //  QuickFolders-folder-popup ?
+		QuickFolderCmdMenu.className="cmd menu-iconic"; 
 		QuickFolderCmdMenu.appendChild(QFcommandPopup);
 		// [Bug 26571] Add Option to hide QF command submenu
 		if (prefs.getBoolPref("commandMenu.CTRL")) {
@@ -5827,9 +5826,6 @@ QuickFolders.Interface = {
         currentFolderTab.setAttribute("tooltiptext", "");
       }
 
-      let currentFolderId = "QuickFolders-folder-popup-currentFolder";
-      //if (!currentFolderTab.ownerDocument.getElementById(currentFolderId))
-      //  QuickFolders.Interface.addPopupSet(currentFolderId, folder, null, -1, currentFolderTab);
       currentFolderTab.className = currentFolderTab.className.replace("striped", "");
       currentFolderTab.classList.remove("selected-folder");
     }

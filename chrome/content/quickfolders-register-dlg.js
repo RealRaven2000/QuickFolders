@@ -59,6 +59,12 @@ var Register = {
 			}
 				
       getElement('licenseDate').value = decryptedDate; // invalid ??
+      if (decryptedDate) { // [issue 391]
+        let d = new Date(decryptedDate);
+        let ds = d.toLocaleDateString();
+        if (ds) { getElement('licenseDate').value = ds; }
+      }
+
 			if (licenseInfo.status == "Expired" || licenseInfo.status == "Valid") {
 				let btnDomainLicense = getElement('btnDomainLicense'),
 				    btnStdLicense = getElement('btnStdLicense');

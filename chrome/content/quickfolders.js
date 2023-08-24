@@ -365,7 +365,11 @@ END LICENSE BLOCK */
     ##                                                           not next session issue 
 
 
-  6.1.2 QuickFolders Pro - WIP
+  6.2 QuickFolders Pro - WIP
+    ## [issue 395] Fix navigation bar (current folder bar) positioning when switching between classic and vertical layout
+    ## [issue 396] Add 'compact density' support
+    ## improved "Apple Pills" theme
+    ## Make sure current folder tab is changed when different theme is selected.
     ## [issue 389] quickJump switches to matching single mail tab instead of jumping to Folder in current tab
     ## [issue 392] Keyboard collision with quick filter toolbar
     ## [issue 387] Number shortcuts not working - move mail with Option+Shift+Number
@@ -373,7 +377,11 @@ END LICENSE BLOCK */
     ## [issue 380] Retired option to set QuickFolders toolbar position
     ## Repaired: set keyboard focus back to thread pane after quickmove
     ## [issue 394] Make menu font size configurable - setting separate font size for all popup menus
-    ## Support setting tab font size in "Apple Pills" theme
+    ## Allow setting tab font size in "Apple Pills" theme
+    ## Improved coloring & Layout for Apple theme
+    ## After the license was viewed via the menu "check license status", now reset 
+          the "renew license" button for the day and return to normal toolbar icon 
+          (remove special coloring / message)
 
 
 
@@ -1423,8 +1431,9 @@ var QuickFolders = {
 							removeLastPopup(QuickFolders_globalHidePopupId, doc);
 						}
 					}
-          if (prefs.isShowRecentTab)
+          if (prefs.isShowRecentTab) {
             removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', doc);
+          }
           return;
         }
 
@@ -2162,7 +2171,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   }
   util.logDebugOptional("folders.select","folderRow = " + folderRow);
   if (!folderRow) {  // null == folderIndex
-    util.ensureNormalFolderView() // make sure "all" is displayed!
+    util.ensureNormalFolderView(); // make sure "all" is displayed!
     about3Pane.displayFolder(folderUri);
   }
   

@@ -647,6 +647,7 @@ QuickFolders.Options = {
     
       if (isUpdateUI) {
         messenger.runtime.sendMessage({ command:"updateFoldersUI" });
+        messenger.runtime.sendMessage({ command:"updateNavigationBar" }); /* update style of current folder tab! */
       }
     }
     return myTheme;

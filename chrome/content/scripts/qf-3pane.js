@@ -1,6 +1,26 @@
 
 let windowMode = "";
 
+var viewLayoutObserver = function () {
+  const WAIT_FOR_VIEWSWITCH = 250;
+  try {
+    // if this gets implemented as a "per-tab setting", only execute on active tab:
+    //   window.parent.gTabmail.currentTabInfo.tabId == window.tabOrWindow.tabId
+    const isLayoutGlobal = true;
+    if (isLayoutGlobal) {
+      window.setTimeout( 
+        () => {
+          window.QuickFolders.Interface.liftNavigationbar(window.document);
+        },
+        WAIT_FOR_VIEWSWITCH
+      );
+    }
+  }
+  catch(ex) {
+    window.QuickFolders.Util.logException("viewLayoutObserver", ex);
+  }
+}
+
 async function notificationHandler(data) {
   let command = data.func || data.command || data.event;
   const isEvent = (data.event);
@@ -42,7 +62,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
 
   window.QuickFolders = window.parent.QuickFolders;
-  window.QuickFolders.WLM = WL; // closre a separate instace of the WindowListener that works in messagepange
+  window.QuickFolders.WLM = WL; // closure a separate instace of the WindowListener that works in messagepange
   // let's make sure 3Pane is really ready (we might want to attach this to a window.DOMContentLoaded event instead)
   window.setTimeout( 
     (win = window) => {
@@ -226,6 +246,8 @@ async function onLoad(activatedWhileWindowOpen) {
       // -- now we have the current folder toolbar, tell quickFilters to inject its buttons:
       window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFilters" });
 
+      // add a listener for switching the view
+      Services.prefs.addObserver("mail.pane_config.dynamic", viewLayoutObserver);
     
     },
     WAIT_FOR_3PANE
@@ -247,11 +269,12 @@ async function onLoad(activatedWhileWindowOpen) {
     return notificationHandler(data);
   });
 
-
 }
 
 function onUnload(isAddOnShutown) {
   let document3pane = window.document;
+  Services.prefs.removeObserver("mail.pane_config.dynamic", viewLayoutObserver);
+
   threadPane = document3pane.querySelector("#threadPane");
 				
   function removeBtn(id) {

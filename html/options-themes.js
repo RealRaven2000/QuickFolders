@@ -49,7 +49,7 @@ QuickFolders.Themes = {
 				,buttonShadows: false
 				,buttonInnerShadows: true
 				,supportsFontSelection: false
-				,supportsFontSize: false
+				,supportsFontSize: true
 				,supportsHeightTweaks: false
         ,toolbarBorder: false
 				,cornerRadius: false

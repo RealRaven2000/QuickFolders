@@ -1,3 +1,22 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --QF_pillShadowColor: rgba(30,30,30,0.8);
+		--QF_pillActiveBackgroundColor: rgba(200,200,200,0.4);
+		--QF_pillFocusBorderColor: rgba(30,30,30,0.6);
+		--QF_selectedFolderColor: rgba(1, 80, 185, 0.767);
+  }  
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --QF_pillShadowColor: rgba(30,30,30,0.5);
+		--QF_pillActiveBackgroundColor: transparent;
+		--QF_pillFocusBorderColor: rgba(40,50,60,0.6);
+		--QF_selectedFolderColor: rgba(1, 80, 185, 0.767);
+	}
+}
+
+
 /* broken out background image pieces for customzed color support */
 
 /* 1st rule is for #QuickFolders-CurrentFolderTools 2nd for main toolbar */
@@ -660,7 +679,7 @@
 .quickfolders-pills toolbarbutton#QuickFoldersCurrentFolder {
 	border-radius: 1.8em !important;
 	border-width: 1px !important;
-	-moz-box-sizing:   border-box; /* draw borders on inside; gecko 29 without prefix */
+	box-sizing:   border-box; /*  draw borders on inside; gecko 29 without prefix */
 	/* text: bold, near-black, dark-silver shadow */
 	/* the font and font size to use on Mac for the bar is Lucida Grande size 11px */
 	font-size: 11px;
@@ -668,7 +687,7 @@
 	font-weight: bold;
 	/* the correct padding for mac-style buttons 0 10 0 10 */
 	/* correction for label margin-start 6px and label margin-end 5px */
-	padding: 0px 0.75em 1px; 
+	padding-inline: 0.6em; 
 	margin-top: 1px ;
 	margin-bottom: 1px;
 	min-height: 19px;
@@ -678,8 +697,17 @@
 .quickfolders-pills toolbarbutton:active,
 .quickfolders-pills toolbarbutton.selected-folder {
 	border: 1px inset;
-	color: rgb(40, 40, 40); /* will be overwritten by color classes if needed */
+	/* will be overwritten by color classes if needed: */
+	border-color: var(--QF_pillFocusBorderColor, rgb(40, 40, 40)); 
+	color: var(--button-primary-text-color,--QF_selectedFolderColor);
+
 }
+
+.quickfolders-pills toolbarbutton.selected-folder {
+	box-shadow: inset 0 0 0.5em var(--QF_pillShadowColor);  
+	background-color: var(--QF_pillActiveBackgroundColor);
+}
+
 
 
 .quickfolders-pills toolbarbutton:active {

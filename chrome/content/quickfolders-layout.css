@@ -74,6 +74,14 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
   font-size: 12px;
 }
 
+/* [issue 396]  Add 'compact density' support */
+:root[uidensity="compact"] .QuickFolders-folder-popup menuitem,
+:root[uidensity="compact"] .QuickFolders-folder-popup menu {
+  min-height: 1.1rem;
+  padding-block: 0.112rem;
+}
+
+
 #QuickFolders-ToolbarPopup menuitem image {
   fill: var(--toolbarbutton-icon-fill, currentColor);
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);

@@ -130,7 +130,7 @@ async function onLoad(activatedWhileWindowOpen) {
         </popupset>	
         
         <popupset id="QuickFolders-MainPopupSet">
-          <menupopup id="QuickFolders-ToolbarPopup" class="QuickFolders-folder-popup">
+          <menupopup id="QuickFolders-ToolbarPopup">
             <!-- debug submenu -->
             <menu class="menu-iconic dbgMenu"  
                   collapsed="true"

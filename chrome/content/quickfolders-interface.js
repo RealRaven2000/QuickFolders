@@ -569,16 +569,24 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	updateQuickFoldersLabel: function updateQuickFoldersLabel() {
+	updateQuickFoldersLabel: function() {
     const prefs = QuickFolders.Preferences,
 					util = QuickFolders.Util;
+		function wasLicenseViewedInSession() {
+			if (typeof util.licenseInfo.isLicenseViewed == "undefined") {
+				return false;
+			}
+			return util.licenseInfo.isLicenseViewed;
+		}					
 		// force label when there are no folders or license is in expired state!
+
 		try {
       util.logDebug("updateQuickFoldersLabel()");
 			let isRenew = (QuickFolders.Util.licenseInfo.isValid && QuickFolders.Util.licenseInfo.licensedDaysLeft<=10),
 			    showLabelBox = isRenew || prefs.isShowQuickFoldersLabel || QuickFolders.Util.licenseInfo.isExpired  || (0==QuickFolders.Model.selectedFolders.length),
 					quickFoldersLabel = this.TitleLabel,
-					qfLabelBox = this.TitleLabelBox;
+					qfLabelBox = this.TitleLabelBox,
+					isLicenseNotChecked = !wasLicenseViewedInSession();
 
 			quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
 			quickFoldersLabel.collapsed = !showLabelBox; // force Renew QuickFolders to be visible!
@@ -590,7 +598,7 @@ QuickFolders.Interface = {
 			if (checkMenu) {
 				checkMenu.collapsed = !isRenew;
 			}
-			if (isRenew) {
+			if (isRenew && isLicenseNotChecked) {
 				quickFoldersLabel.classList.remove("expired");
 				quickFoldersLabel.classList.add("renew");
 				quickFoldersLabel.classList.remove("newsflash");
@@ -601,7 +609,7 @@ QuickFolders.Interface = {
 				quickFoldersLabel.classList.add("newsflash");
 				quickFoldersLabel.setAttribute("tooltiptext", util.getBundleString("update.tooltip",["QuickFolders"]));
       }
-			else if (QuickFolders.Util.licenseInfo.isExpired) {
+			else if (QuickFolders.Util.licenseInfo.isExpired && isLicenseNotChecked) {
 				quickFoldersLabel.classList.remove("renew");
 				quickFoldersLabel.classList.remove("newsflash");
 				let txtExpired =
@@ -978,6 +986,12 @@ QuickFolders.Interface = {
     // access all browsers in 3pane: window.messageBrowser.contentWindow.gMessage
 		// contentDocument.defaultView = contentWindow
 		// message contentWindow.gMessage
+    // this function should also be called when the commands are issued:
+		// cmd_viewClassicMailLayout  => sets mail.pane_config.dynamic = 0
+		// cmd_viewWideMailLayout     => sets mail.pane_config.dynamic = 1
+		// cmd_viewVerticalMailLayout => sets mail.pane_config.dynamic = 2
+		// Services.prefs.addObserver("mail.pane_config.dynamic", this);
+
 		const navigationContainer = contentDoc.getElementById("QuickFolders-PreviewToolbarPanel");
 		const tabOrWindow = contentDoc.defaultView.tabOrWindow;
 		QuickFolders.Util.logDebug("liftNavigationbar()");
@@ -2124,7 +2138,6 @@ QuickFolders.Interface = {
 						if(nodes[i].id == "quickFoldersCommands") {
 							nodes = nodes[i].getElementsByTagName("menupopup");
 							menupopup = nodes[0]; // .cloneNode(true); // Get first menupop = QuickFolders Commands // omit cloning!
-							// menupopup.classList.add( "QuickFolders-folder-popup"); // retain styling
 							menupopup.folder = button.folder;
 							menupopup.setAttribute("tag", "quickFoldersCommands");
 							button.appendChild(menupopup);
@@ -3665,7 +3678,7 @@ QuickFolders.Interface = {
 
 	} ,
 
-	buildQuickFoldersCommands: function buildQuickFoldersCommands(vars) {
+	buildQuickFoldersCommands: function(vars) {
 		const { util, prefs, entry, folder, button } = vars,
 		      doc = button.ownerDocument;
 		/***  QUICKFOLDERS COMMANDS   ***/
@@ -3823,7 +3836,7 @@ QuickFolders.Interface = {
 		QuickFolderCmdMenu.setAttribute("id","quickFoldersCommands");
 		QuickFolderCmdMenu.setAttribute("label",this.getUIstring("qfCommandPopup"));
 		QuickFolderCmdMenu.setAttribute("accesskey",this.getUIstring("qfCommandAccess"));
-		QuickFolderCmdMenu.className="cmd menu-iconic"; //  QuickFolders-folder-popup ?
+		QuickFolderCmdMenu.className="cmd menu-iconic";
 		QuickFolderCmdMenu.appendChild(QFcommandPopup);
 		// [Bug 26571] Add Option to hide QF command submenu
 		if (prefs.getBoolPref("commandMenu.CTRL")) {
@@ -5681,7 +5694,11 @@ QuickFolders.Interface = {
     QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab:-1, mode:"supportOnly" }); 
 	} ,
 
-  viewLicense: function viewLicense() {
+  viewLicense: function () {
+    if (!QuickFolders.Util.licenseInfo.isLicenseViewed) {
+      QuickFolders.Util.licenseInfo.isLicenseViewed = true; // session variable to mark license stuff as "seen".
+      QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel"}); 
+    }		
     QuickFolders.Util.notifyTools.notifyBackground({ func: "openPrefs", selectedTab:-1, mode:"licenseKey" }); 
   } ,
 
@@ -5968,9 +5985,6 @@ QuickFolders.Interface = {
         currentFolderTab.setAttribute("tooltiptext", "");
       }
 
-      let currentFolderId = "QuickFolders-folder-popup-currentFolder";
-      //if (!currentFolderTab.ownerDocument.getElementById(currentFolderId))
-      //  QuickFolders.Interface.addPopupSet(currentFolderId, folder, null, -1, currentFolderTab);
       currentFolderTab.className = currentFolderTab.className.replace("striped", "");
       currentFolderTab.classList.remove("selected-folder");
     }
@@ -7256,7 +7270,7 @@ QuickFolders.Interface = {
     goDoCommand("cmd_toggleFolderPane");
   } ,
 
-	clickTitleLabel: function clickTitleLabel(btn) {
+	clickTitleLabel: function(btn) {
 	  const util = QuickFolders.Util;
     if (QuickFolders.Preferences.getBoolPref("hasNews")) {
       QuickFolders.Interface.viewSplash();
@@ -7265,6 +7279,10 @@ QuickFolders.Interface = {
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" }); 
     }
 		else if (QuickFolders.Util.licenseInfo.isExpired) {
+			if (!QuickFolders.Util.licenseInfo.isLicenseViewed) {
+				QuickFolders.Util.licenseInfo.isLicenseViewed = true; // session variable to mark license stuff as "seen".
+				QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel"}); 
+			}		
 			QuickFolders.Interface.showLicenseDialog("mainLabelRenewal");
 		}
 		else { // get context Menu as normal

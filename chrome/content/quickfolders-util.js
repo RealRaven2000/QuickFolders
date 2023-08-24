@@ -2249,6 +2249,7 @@ allowUndo = true)`
 		    timeToMidnight = (tomorrow-today);
 		setTimeout(
 			() => {
+        QuickFolders.Util.licenseInfo.isLicenseViewed = false;
 				QuickFolders.Util.notifyTools.notifyBackground({ func: "updateLicenseTimer" }); 
 				QuickFolders.Util.setMidnightTimer();
 			},

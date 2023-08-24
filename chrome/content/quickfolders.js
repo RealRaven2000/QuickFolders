@@ -329,7 +329,7 @@ END LICENSE BLOCK */
     ## Clicking Compact Folder on current folder submenu only throws "Uncaught TypeError: folder is undefined"
     ##  (triggered in makePopupId)
 
-  5.17 - WIP
+  5.17 QuickFolders Pro - 06/08/2023
     ## [issue 371] Fixed: Console error “receiving end does not exist” - caused by quickFilters not running.
     ## [issue 372] Fixed: Changing 'minimum height' opens help topic (bug 25021)
     ## [issue 370] support showing contained folders of a Tab representing unified folders.
@@ -339,9 +339,17 @@ END LICENSE BLOCK */
     ## Routine: backup folder tree icons for Pro users
     ## [issue 384] Back up the configuration of folder tree icons for later in the file quickFolders-FolderTree.json
     ##             can be used later (in Tb115) to restore icons in THunderbird 115 (once the feature is implemented there)
+
+  5.17.1 QuickFolders Pro - 07/08/2023
     ## [issue 385] Moving multiple messages via quickMove - fails the filter assistant 
     ## [issue 354] Display correct number of moved mails (after quickMove)
     ## fixed background color of "QuickFolders" label in toolbar.
+
+  5.18 QuickFolders Pro - WIP
+    ## [issue 394] Make menu font size configurable - setting separate font size for all popup menus
+    ## Allow setting tab font size in "Apple Pills" theme
+    ## Improved coloring & Layout for Apple theme
+    ## [issue 391] Display license expiry date in registration dialog as local date (not as YYYY-MM-DD)
 
 
 	Future Work
@@ -1502,8 +1510,9 @@ var QuickFolders = {
                   let mi = QI.createMenuItem_disabled();
                   menupopup.appendChild(mi);
                 }
-                else
+                else {
                   QI.addSubFoldersPopup(menupopup, targetFolder, true);
+                }
 							}
 						}
 						else { // special folderbutton: recent

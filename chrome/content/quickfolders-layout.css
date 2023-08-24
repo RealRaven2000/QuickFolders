@@ -67,6 +67,18 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
   font-size: 12px;
 }
 
+/* avoid arrow panels inheriting space of toolbar button font: */
+.quickFoldersToolbar  menupopup > menu::after {
+	font-size: initial !important;
+}
+
+/* [issue 396]  Add 'compact density' support */
+:root[uidensity="compact"] .QuickFolders-folder-popup menuitem,
+:root[uidensity="compact"] .QuickFolders-folder-popup menu {
+  min-height: 1.1rem;
+  padding-block: 0.112rem;
+}
+
 
 #QuickFolders-ToolbarPopup menuitem image {
   fill: var(--toolbarbutton-icon-fill, currentColor);
@@ -384,14 +396,26 @@ menupopup.widerMenu menucaption {
 
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton,
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
-	padding-right: 4px !important; 
-	padding-left:  4px !important;
+	padding-block: 0.2rem;   /* vertical */
+	padding-inline: 0.5rem;  /* horizontal */
 }
+
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton:not([checked="true"]) {
 	margin-bottom: 0px !important;
 }
 .quickfolders-flat #QuickFolders-FoldersBox toolbarbutton[checked="true"]:not(.toolbarbutton-1) {
 	box-shadow: 2px 2px 1px 0px rgba(50, 50, 50, 0.4) inset;
+}
+
+.quickfolders-pills #QuickFolders-FoldersBox toolbarbutton, .quickfolders-pills toolbarbutton#QuickFoldersCurrentFolder {
+	padding-block: 0.12rem 0.10rem;  /* vertical */
+	padding-inline: 0.75rem; 				 /* horizontal */	
+	min-height: 1.9rem;
+}
+
+/* make sure button covers splitter bar */
+toolbarbutton#QuickFoldersCurrentFolder {
+	z-index: calc(var(--splitter-z-index,1)+1);
 }
 
 #QuickFolders-Toolbar toolbarbutton[collapsed="true"],
@@ -951,7 +975,7 @@ menupopup.QuickFolders-folder-popup menuitem#quickFolders-openFolderLocation {
 
 .draggable {
 	cursor: -moz-grab;
-	height: 18px !important;
+/*	height: 18px !important; */
 }
 
 #QuickFolders-Close {

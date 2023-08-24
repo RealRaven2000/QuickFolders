@@ -24,11 +24,12 @@
 	border-width: 1px !important;
 	border-style: solid !important;
   box-shadow: 1px -1px 1px threedshadow inset;
-	padding: 0 0.5em;
-	vertical-align: top;
 	appearance: none !important;
 	border-radius: 0px 0px 4px 4px !important;
 	min-width: 16em;
+}
+#QuickFoldersCurrentFolder label {
+	padding: 0.2rem 0.5rem !important;
 }
 
 #QuickFoldersCurrentFolder label.toolbarbutton-text {
@@ -58,7 +59,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 #QuickFolders-CurrentFolderTools toolbarbutton {
 	-moz-box-align: center;
 	-moz-box-pack: center;
-	padding: 0px 2px 0 2px;/* avoid stretching/compressing of some themes */
+	/*! padding: 0px 2px 0 2px; *//* avoid stretching/compressing of some themes */
 /*	min-height: 22px; */
 }
 

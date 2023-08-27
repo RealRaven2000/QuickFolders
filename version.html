@@ -299,7 +299,10 @@
     <a name="6.*">&nbsp;</a>
     <li>
       <h4>
-      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 6.* - WIP</a>
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.*" 
+			   onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">
+				 Version 6.* - WIP
+		  </a>
       </h4>
       <ul>
 				<h4 class="inList">Improvements</h4>
@@ -321,368 +324,10 @@
     <a name="6.2">&nbsp;</a>
     <li>
       <h4>
-      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 6.2 - WIP</a>
-      </h4>
-      <ul>
-				<h4 class="inList">Improvements</h4>
-				<li> 
-					<p>
-						The menu font size can now be changed - this is now independent of 
-						the button label for all popup menus. 
-						<a href="https://github.com/RealRaven2000/QuickFolders/issues/372">[issue 394]</a> 
-					</p>
-					<img src="images/menu-font-size.png" alt="menu font size setting" class="screenshot"/>
-					<p>
-						This may more folders can be fit in the popup menus:<br>
-						<img src="images/compact-density-example.png" alt="menu font size setting" class="screenshot"/>
-					</p>
-				</li>
-				<li> 
-					You can now also change the font size of the folder tabs in 'Apple Pills' theme.
-				</li>
-				<li> 
-					<p>
-						Folder menus now support Thunderbird compact density - this will be helpful for tabs 
-					  with many subfolders. 
-						<a href="https://github.com/RealRaven2000/QuickFolders/issues/396">[issue 396]</a>
-					</p>
-					<p>
-						In Thunderbird115, Density can be set directly in the Application menu:
-					</p>	
-					<img src="images/thunderbird-compact-mode.png" alt="switching on compact density in Tb 115" class="screenshot"/>
-				</li>
-				<li> 
-					Improved coloring and layout for Apple theme. 
-				</li>
-				<li> 
-					Display localized license expiry date in registration dialog (not as YYYY-MM-DD).
-				</li>
-      </ul>
-
-      <ul>
-				<h4 class="inList">Bug Fixes</h4>
-        <li> </li>
-        <li> </li>
-        <li> </li>
-      </ul>
-    </li>		
-
-
-    <a name="6.1">&nbsp;</a>
-    <a name="6.1.1">&nbsp;</a>
-    <li>
-      <h4>
-      <a href="#" onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 6.1.1 - 09/08/2023</a>
-      </h4>
-
-			<ul>
-				<h4 class="inList">Improvements</h4>
-				<li> 
-					<p>
-						Tabs for unified folders (such as Unified Inbox) now support showing the 
-						actual folders, renamed to their account names.
-					</p>
-					<img src="https://quickfolders.org/images/unified-folder-popup.png" alt="unified folder popup" class="screenshot"/>
-				</li>
-				<li> 
-					Redesigned menu icons and fixed a number of issues in the options screen - 
-					icons had  some problems changing to dark themes. If you experience missing 
-					colors in QuickFolders settings, you can enable the about:config setting 
-					<tt> svg.context-properties.content.enabled = true </tt>
-				</li>
-				<li>
-					Added internal configuration Option to close tab after mail is moved from single message view. 
-					To activate the new option, set <tt>extensions.quickfolders.quickMove.singleTab.autoClose</tt>
-					in configuration database.  <a href="https://github.com/RealRaven2000/QuickFolders/issues/375">[issue 375]</a>
-				</li>
-				<li>
-					Moved <keystroke>[F9]</keystroke> keyboard shortcut to toggle folder pane to <keystroke>[F10]</keystroke>, as F9 was reserved by Thunderbird. 
-					This can be changed from the Add-ons Manager via the tools menu.
-				</li>
-			</ul>
-			
-      <ul>
-				<h4 class="inList">Bug Fixes</h4>
-				<li>
-					Fixed: Create new subfolder while dragging to tab throws error.
-				</li>
-				<li>
-					Fixed: quickJump shortcut <keystroke>=</keystroke> to show most recent used folders broken.
-				</li>
-				<li>
-					Bookmarks: in Thunderbird 115 "Add current item" was not working 
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/376">[issue 376]</a>
-				</li>
-				<li>
-					You can once again use the filter assistant to create filter 
-					rules with quickMove. <a href="https://github.com/RealRaven2000/QuickFolders/issues/385">[issue 385]</a>
-				</li>
-				<li> 
-					Fixed the color picker for custom colors in current folder toolbar.
-				</li>
-				<li> 
-					Fixed: Changing 'minimum height' opens help topic instead. 
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/372">[issue 372]</a>
-				</li>
-				<li> 
-					Fixed: Custom navigation bar icon color picker doesn't work and could lead to unreadable current folder button. 
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/383"></a>[issue 383]</a>
-				</li>
-				<li>
-					Corrected the reported number of messages moved when using 
-					quickMove. <a href="https://github.com/RealRaven2000/QuickFolders/issues/354">[issue 354]</a>
-				</li>
-				<li>
-					Fixed in 6.1.1: Toggle toolbar button and toggle folder pane only work after install, not next session
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/386">[issue 386]</a>
-				</li>				
-      </ul>
-
-			<ul>
-				<h4 class="inList">Known Issues</h4>
-				<li>
-					Skip to next unread folder button - this still needs some fixing as it may 
-					skip unread mails in the next unread folder. 
-					We are looking for a replacement function for "jump to first message" - something 
-					that isn't accessible to the Add-on Code in Thunderbird 115 anymore.
-				</li>
-				<li> 
-					<p>
-						New CSS rules for folder tree icons: as the folder tree has been rewritten as 
-						HTML list, we cannot use the foldertreeitem.getProperties function to store this 
-						information anymore. 
-					</p>
-					<p>
-						Instead we need an new method to store this information separately - and 
-						then rules for styling the folders have to be recreated. This may take a little while.
-					</p>
-					<p>
-						In the meantime, QuickFolders 5.17.1 has implemented an automatic backup routine for custom icons.
-					</p>
-					<p>
-						In that version, when starting up, QuickFolders automatically backs up custom icons on the folder tree. 
-						Future versions of QuickFolders 6.* may use this data to restore the tree layout 
-						and load those icons back. So if you have ran 5.17.1 before, then your icon information 
-						likely has been stored into a separate file, so it can be recovered later!
-					</p>
-				</li>
-			</ul>
-    </li>
-
-
-    <a name="6.0">&nbsp;</a>
-    <li>
-      <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.0">Version 6.0 - 29/07/2023</a>
-      </h4>
-			<div class="psa announcement">
-				<p>
-					I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird 
-					<a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">User Interface 'Supernova'</a>.
-					This has been implemented in the next major version of Thunderbird 115, which is planned
-					to go public in July 2023.
-					It required considerable work of <b>rewriting all elements interacting with the main page</b> 
-					(3pane) of Thunderbird (toolbar buttons, menus, folder tree).
-				</p>
-				<p>
-					You can read up on the current progress of this work here:
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/351">issue 351</a>
-					This work is exclusively funded by the sale of license so if you are interested
-					in using QuickFolders in the future, please consider buying a license or renewing your license.
-					Unlike a Windows Application, frequent work on the code of experimental Add-ons like QuickFolders
-					is inevitable. I have kept this project alive for 14 years now and I would like to
-					continue doing so in the future. Thank you for your kind attention.
-				</p>
-			</div>		
-			
-      <table class="QuickFoldersProRenew bargain"> 
-        <tr>
-          <td style="vertical-align:top;" colspan="2">
-            <p class="emphasis">If you can see this box then your QuickFolders Pro license has expired!</p>
-            <h3 class="shillBox">QUICKFOLDERS PRO - SUMMER SALE - RENEW FOR <u>25% OFF</u></h3>
-            <p>Catch this 2023 sale offer which reduces a quarter from the price from
-							<span class="emphasis">July 29th</span> to <span class="emphasis">August 13th</span>!
-               Renew or extend your license and pay 7.50$ instead of 10$ for your renewed QuickFolders Pro license.
-            </p> 
-          </td>
-          <td style="vertical-align:top; max-width:0;" rowspan="3">
-            <a class="nohover tooltip" href="">
-              <img id="bargainStar" src="images/bargain-renew-pro.png" />
-              <span > 
-              <img class="callout" src="images/callout_black.gif" />
-              You can extend or renew your license directly from QuickFolders - it will transmit your existing license key in order to 
-              create the new license. Simply use QuickFolders Options » QuickFolders Pro tab and the Extend License button.</span>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align:top;">
-            <p>
-              Support the future of QuickFolders and keep enjoying unlimited <a href="premium.html">Premium Features</a>. 
-              Simply click on <i>Renew License</i> on the QuickFolders toolbar. 
-            </p>
-          </td>
-          <td>
-            <p>
-              <img src="images/renew-license.png" alt="renew QuickFolders license" class="screenshot"/>
-            </p>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align:top;">
-            <p>
-              You can also <i>extend your license</i> (without losing a single day) by clicking on the <i>Extend License</i>
-              button on the QuickFolders Pro tab up to 30 days prior to your previous license expiry.
-            </p>
-            <p> 
-              As a thank you for my loyal supporters: if you missed the expiry date I will still give you a whole year 
-              in the renewal even if your expiry date is in the past.
-            </p>
-          </td>
-        </tr>
-      </table>
-      
-      <table class="QuickFoldersFreeUser bargain"> 
-        <tr>
-          <td style="vertical-align:top;">
-            <h3 class="shillBox">QUICKFOLDERS PRO - SUPER SUMMER SALE</h3>
-           <p><span class="emphasis">Save 40%</span> on the regular price and support the QuickFolders project from
-						<span class="emphasis">July 29th</span> to <span class="emphasis">August 13th</span>! 
-             This deal will only be offered for this limited time period, to give you too a chance to support the QuickFolders Project.
-             QuickFolders needs to payroll improvements for Thunderbird 115 to be as fast and efficient as possible.
-           </p>
-            <p>
-              Support the future of QuickFolders and enjoy unlimited <a href="premium.html">Premium Features</a>. 
-              You can purchase a license from QuickFolders options, using the Licenses tab. 
-              It's super easy and helps future proof this Add-on. 
-              Use QuickFolders Pro on as many Thunderbird installations as you like as long as it has your 
-              licensed email address as a Default Identity. 
-            </p>
-            <p>
-              Install the 
-              <a target="_blank" href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/">latest QuickFolders version</a> and then click the <i>Buy License</i> item from the QuickFolders Pro tab on the Options dialog.
-                If you prefer, you can also buy a license on the web shop directly: 
-                <a href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-version-page">FastSpring Web Shop</a>
-            </p>
-          </td>
-          <td><img src="images/menus/QuickFoldersProMenu-78.png" 
-              alt="quickfolders pro" style="width:180px; height:auto; margin-left:20px;"/>
-          </td>
-        
-          <td style="vertical-align:top; max-width:0;">
-            <a class="nohover" href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-versionpage-bargain">
-              <img id="bargainStar" src="images/bargain-40-pro.png" />
-            </a>
-          </td>
-        </tr>
-      </table> 
-      
-      <table class="QuickFoldersStdUser bargain">
-        <tr>
-          <td>
-            <h3 class="shillBox">Go Pro! - SUPER UPGRADE OFFER</h3><br>
-            <p>
-              <span class="emphasis">Save 33%</span> on the upgrade price and support the QuickFolders project from
-              <span class="emphasis">July 29th</span> to <span class="emphasis">August 13th</span>! 
-              QuickFolders needs to payroll improvements for Thunderbird 115 to be as fast and efficient as possible.
-              This deal is only available to QuickFolders Standard users within this limited time period.
-
-              Treat yourself to the <a href="https://quickfolders.org/premium.html">premium functions</a>
-              and help financing QuickFolders' future compatible with Thunderbird 115.
-            </p>
-            <p>
-              The regular upgrade price is around $9.00 plus taxes, this reduced price is $6.00 - check the
-              shop site for your personal price depending on your region.
-              Just for this short time, it is the same price as buying or renewing a standard  license!
-            </p>
-            <p>
-              As a Standard license owner, you can upgrade your license to Pro level by clicking on the "Upgrade to Pro" button
-               in QuickFolders Settings on the License tab:<br>
-               <img class="screenshot" src="images/upgrade-button.png" style="margin-top: 5px; height:220px;"/> 
-               <br>
-              For a feature comparison between Standard and Pro please check 
-              this <a href="premium.html#featureComparison">comparison chart</a>.
-            </p>
-          </td>
-          <td style="vertical-align:top; max-width:0;">
-            <img id="bargainStar" src="images/bargain-upgrade-tb115.png" />
-          </td>            
-        </tr>
-      </table>
-
-      <ul>
-        <h4 class="inList">Functionality converted to Thunderbird 115</h4>				
-        <li> 
-					Rewritten QuickFolders toolbar to show in a different element (SuperNove wants all buttons 
-					displayed in their new Unified toolbar). All Folder menus remain as xul items for now as they 
-				  are difficult to recreate in HTML. The new main styling including custom icons in the 
-					QuickFolders tab has been implemented.
-				</li>
-				<li>
-					<p>
-						Following the Firefox model, Thunderbird 115 allows only one single action button (I am 
-						currently negotiating with the thunderbird team to allow more optional buttons)
-						I decided to add the toolbar toggle button to the unified toolbar. With this 
-						the QuickFolders toolbar can be hidden temporarily:
-					</p>
-					<img src="images/qf-toolbar-toggle-actionbtn.png" alt="toolbar button" class="screenshot"/>
-					<p>
-						When you install QuickFolders in Tb115 for the first time, all Add-on buttons are added on 
-						the top right - you may  move it by right-clicking the unified toolbar and selecting customize:
-					</p>
-					<img src="images/toolbar-customize.png" alt="customize toolbar" class="screenshot"/>
-				</li>
-        <li> 
-					Recent Folders had to be rewritten. 
-				</li>
-        <li>
-					 Drag &amp; Drop was broken and had to be fixed. 
-				</li>
-        <li> 
-					Rewritten the event listeners in folder tree (drag and drop)
-				</li>
-				<li> 
-					The Navigation toolbar (a.k.a. Current Folder Bar) in center screen had to be reimplemented
-					because there are now multiple 3pane documents » windows (one for each Thunderbird tab)
-					Also I am now hiding unneccessary elements of the toolbar when it is displayed
-					in the single message tab or single message window.
-				</li>
-        <li>
-					Implemented main toolbar buttons (Show QuickFolders toolbar) as Unified toolbar action button.
-					Unfortunately
-				</li>
-				<li>
-					Storage of QuickFolders category per tab is now implemented with the new tab sessions API.
-			  </li>
-				<li>
-					Most of the icons in the options window have been redesigned as svg graphics 
-					for a modernized look and feel. Also, dark theme support has been improved.
-				</li>
-
-        <h4 class="inList">Issues » Open Points</h4>				
-        <li>
-					 New CSS rules for folder tree icons: as the folder tree has been rewritten as HTML list, 
-					 we cannot use the foldertreeitem.getProperties function to store this information anymore.
-					 Instead we need an new method to store this information separately - and then rules for styling
-					 the folders have to be recreated. This may take a little while - I am considering writing
-					 a tool to extract the information from older versions of Thunderbird (91 or 102) so they can
-					 be migrated to 115 later.
-				</li>
-				<li>
-					Toolbar buttons Create folder, Skip Folder can currently not be added (because the mail toolbar is gone
-					and unified toolbar only allows noe single button per Add-on)
-				</li>
-				<li>
-					When a QuickFolders Tab is selected, Thunderbird still needs to scroll the folder tree to that folder.
-				</li>
-      </ul>
-    </li>		
-
-    <a name="5.18">&nbsp;</a>
-    <li>
-      <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.18" 
-			   onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">Version 5.18 - 27/08/2023</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.2"
+					onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">
+					Version 6.2 - WIP
+				</a>
       </h4>
 
       <table class="QuickFoldersProRenew bargain"> 
@@ -806,7 +451,410 @@
 					<p>
 						The menu font size can now be changed - this is now independent of 
 						the button label for all popup menus. 
-						<a href="https://github.com/RealRaven2000/QuickFolders/issues/372">[issue 394]</a> 
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/394">[issue 394]</a> 
+					</p>
+					<img src="images/menu-font-size.png" alt="menu font size setting" class="screenshot"/>
+					<p>
+						This may be done so that more subfolders can be fit in the popup menu:<br>
+						<img src="images/compact-density-example.png" alt="menu font size setting" class="screenshot"/>
+					</p>
+				</li>
+				<li> 
+					You can now also change the font size of the folder tabs in 'Apple Pills' theme.
+				</li>
+				<li> 
+					<p>
+						Folder menus now support Thunderbird compact density - this will be helpful for tabs 
+					  with many subfolders. 
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/396">[issue 396]</a>
+					</p>
+					<p>
+						In Thunderbird115, Density can be set directly in the Application menu:
+					</p>	
+					<img src="images/thunderbird-compact-mode.png" alt="switching on compact density in Tb 115" class="screenshot"/>
+				</li>
+				<li> 
+					Improved coloring and layout for Apple theme. 
+				</li>
+				<li> 
+					Display localized license expiry date in registration dialog (not as YYYY-MM-DD).
+				</li>
+      </ul>
+
+      <ul>
+				<h4 class="inList">Bug Fixes</h4>
+        <li> Fixed: quickJump switched to matching single mail tab instead of jumping to 
+					Folder in current tab. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/389">[issue 389]</a>
+				</li>
+				<li> Fixed navigation bar (current folder bar) positioning when switching between 
+					classic and vertical layout. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/395">[issue 395]</a> 
+				</li>
+				<li> Also made sure that current folder tab layout is changed when a different 
+					theme is selected.
+				</li>
+				<li> 
+					Fixed: Keyboard collision with quick filter toolbar; typing [Shift]+[F] and [Shift]+[M] in the search bar triggered the quickJump search.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/392">[issue 392]</a>
+				</li>
+				<li>Number shortcuts not working - move mail with Option+Shift+Number (Note that
+					 [ALT] shortcuts are already taken by Thunderbird, so we need to use 
+					 CTRL (Windows, Linux) or OPTION (Apple) as modifier to activate tabs.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/387">[issue 387]</a>
+				</li>
+				<li> 
+					Repaired: set keyboard focus back to thread pane after quickmove.
+				</li>
+      </ul>
+
+      <ul>
+				<h4 class="inList">Miscellaneus</h4>
+				<li>
+					Retired option to set QuickFolders toolbar position. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/380">[issue 380]</a></li>
+				<li> 
+					After the license was viewed via the menu "check license status", now reset 
+					the "renew license" button for the day and return to normal toolbar icon 
+					(remove special coloring / message)
+				</li>
+        <li>
+					Skip to next unread folder - this still needs some fixing as it may skip unread 
+					mails in the next unread folder. We are looking for a replacement function for 
+					something that isn't accessible in Thunderbird 115 anymore.</li>
+      </ul>		
+		</li>		
+
+
+    <a name="6.1">&nbsp;</a>
+    <a name="6.1.1">&nbsp;</a>
+    <li>
+      <h4>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.1.1">
+					Version 6.1.1 - 09/08/2023
+				</a>
+      </h4>
+
+			<ul>
+				<h4 class="inList">Improvements</h4>
+				<li> 
+					<p>
+						Tabs for unified folders (such as Unified Inbox) now support showing the 
+						actual folders, renamed to their account names.
+					</p>
+					<img src="https://quickfolders.org/images/unified-folder-popup.png" alt="unified folder popup" class="screenshot"/>
+				</li>
+				<li> 
+					Redesigned menu icons and fixed a number of issues in the options screen - 
+					icons had  some problems changing to dark themes. If you experience missing 
+					colors in QuickFolders settings, you can enable the about:config setting 
+					<tt> svg.context-properties.content.enabled = true </tt>
+				</li>
+				<li>
+					Added internal configuration Option to close tab after mail is moved from single message view. 
+					To activate the new option, set <tt>extensions.quickfolders.quickMove.singleTab.autoClose</tt>
+					in configuration database.  <a href="https://github.com/RealRaven2000/QuickFolders/issues/375">[issue 375]</a>
+				</li>
+				<li>
+					Moved <keystroke>[F9]</keystroke> keyboard shortcut to toggle folder pane to <keystroke>[F10]</keystroke>, as F9 was reserved by Thunderbird. 
+					This can be changed from the Add-ons Manager via the tools menu.
+				</li>
+			</ul>
+			
+      <ul>
+				<h4 class="inList">Bug Fixes</h4>
+				<li>
+					Fixed: Create new subfolder while dragging to tab throws error.
+				</li>
+				<li>
+					Fixed: quickJump shortcut <keystroke>=</keystroke> to show most recent used folders broken.
+				</li>
+				<li>
+					Bookmarks: in Thunderbird 115 "Add current item" was not working 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/376">[issue 376]</a>
+				</li>
+				<li>
+					You can once again use the filter assistant to create filter 
+					rules with quickMove. <a href="https://github.com/RealRaven2000/QuickFolders/issues/385">[issue 385]</a>
+				</li>
+				<li> 
+					Fixed the color picker for custom colors in current folder toolbar.
+				</li>
+				<li> 
+					Fixed: Changing 'minimum height' opens help topic instead. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/372">[issue 372]</a>
+				</li>
+				<li> 
+					Fixed: Custom navigation bar icon color picker doesn't work and could lead to unreadable current folder button. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/383"></a>[issue 383]</a>
+				</li>
+				<li>
+					Corrected the reported number of messages moved when using 
+					quickMove. <a href="https://github.com/RealRaven2000/QuickFolders/issues/354">[issue 354]</a>
+				</li>
+				<li>
+					Fixed in 6.1.1: Toggle toolbar button and toggle folder pane only work after install, not next session
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/386">[issue 386]</a>
+				</li>				
+      </ul>
+
+			<ul>
+				<h4 class="inList">Known Issues</h4>
+				<li>
+					Skip to next unread folder button - this still needs some fixing as it may 
+					skip unread mails in the next unread folder. 
+					We are looking for a replacement function for "jump to first message" - something 
+					that isn't accessible to the Add-on Code in Thunderbird 115 anymore.
+				</li>
+				<li> 
+					<p>
+						New CSS rules for folder tree icons: as the folder tree has been rewritten as 
+						HTML list, we cannot use the foldertreeitem.getProperties function to store this 
+						information anymore. 
+					</p>
+					<p>
+						Instead we need an new method to store this information separately - and 
+						then rules for styling the folders have to be recreated. This may take a little while.
+					</p>
+					<p>
+						In the meantime, QuickFolders 5.17.1 has implemented an automatic backup routine for custom icons.
+					</p>
+					<p>
+						In that version, when starting up, QuickFolders automatically backs up custom icons on the folder tree. 
+						Future versions of QuickFolders 6.* may use this data to restore the tree layout 
+						and load those icons back. So if you have ran 5.17.1 before, then your icon information 
+						likely has been stored into a separate file, so it can be recovered later!
+					</p>
+				</li>
+			</ul>
+    </li>
+
+
+    <a name="6.0">&nbsp;</a>
+    <li>
+      <h4>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.0">
+					Version 6.0 - 29/07/2023
+				</a>
+      </h4>
+			<div class="psa announcement">
+				<p>
+					I am currently working on the conversion of the QuickFolders Addon for the new Thunderbird 
+					<a target="_blank" href="https://blog.thunderbird.net/2023/02/thunderbird-115-supernova-preview-the-new-folder-pane/">User Interface 'Supernova'</a>.
+					This has been implemented in the next major version of Thunderbird 115, which is planned
+					to go public in July 2023.
+					It required considerable work of <b>rewriting all elements interacting with the main page</b> 
+					(3pane) of Thunderbird (toolbar buttons, menus, folder tree).
+				</p>
+				<p>
+					You can read up on the current progress of this work here:
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/351">issue 351</a>
+					This work is exclusively funded by the sale of license so if you are interested
+					in using QuickFolders in the future, please consider buying a license or renewing your license.
+					Unlike a Windows Application, frequent work on the code of experimental Add-ons like QuickFolders
+					is inevitable. I have kept this project alive for 14 years now and I would like to
+					continue doing so in the future. Thank you for your kind attention.
+				</p>
+			</div>		
+
+      <ul>
+        <h4 class="inList">Functionality converted to Thunderbird 115</h4>				
+        <li> 
+					Rewritten QuickFolders toolbar to show in a different element (SuperNove wants all buttons 
+					displayed in their new Unified toolbar). All Folder menus remain as xul items for now as they 
+				  are difficult to recreate in HTML. The new main styling including custom icons in the 
+					QuickFolders tab has been implemented.
+				</li>
+				<li>
+					<p>
+						Following the Firefox model, Thunderbird 115 allows only one single action button (I am 
+						currently negotiating with the thunderbird team to allow more optional buttons)
+						I decided to add the toolbar toggle button to the unified toolbar. With this 
+						the QuickFolders toolbar can be hidden temporarily:
+					</p>
+					<img src="images/qf-toolbar-toggle-actionbtn.png" alt="toolbar button" class="screenshot"/>
+					<p>
+						When you install QuickFolders in Tb115 for the first time, all Add-on buttons are added on 
+						the top right - you may  move it by right-clicking the unified toolbar and selecting customize:
+					</p>
+					<img src="images/toolbar-customize.png" alt="customize toolbar" class="screenshot"/>
+				</li>
+        <li> 
+					Recent Folders had to be rewritten. 
+				</li>
+        <li>
+					 Drag &amp; Drop was broken and had to be fixed. 
+				</li>
+        <li> 
+					Rewritten the event listeners in folder tree (drag and drop)
+				</li>
+				<li> 
+					The Navigation toolbar (a.k.a. Current Folder Bar) in center screen had to be reimplemented
+					because there are now multiple 3pane documents » windows (one for each Thunderbird tab)
+					Also I am now hiding unneccessary elements of the toolbar when it is displayed
+					in the single message tab or single message window.
+				</li>
+        <li>
+					Implemented main toolbar buttons (Show QuickFolders toolbar) as Unified toolbar action button.
+					Unfortunately
+				</li>
+				<li>
+					Storage of QuickFolders category per tab is now implemented with the new tab sessions API.
+			  </li>
+				<li>
+					Most of the icons in the options window have been redesigned as svg graphics 
+					for a modernized look and feel. Also, dark theme support has been improved.
+				</li>
+
+        <h4 class="inList">Issues » Open Points</h4>				
+        <li>
+					 New CSS rules for folder tree icons: as the folder tree has been rewritten as HTML list, 
+					 we cannot use the foldertreeitem.getProperties function to store this information anymore.
+					 Instead we need an new method to store this information separately - and then rules for styling
+					 the folders have to be recreated. This may take a little while - I am considering writing
+					 a tool to extract the information from older versions of Thunderbird (91 or 102) so they can
+					 be migrated to 115 later.
+				</li>
+				<li>
+					Toolbar buttons Create folder, Skip Folder can currently not be added (because the mail toolbar is gone
+					and unified toolbar only allows noe single button per Add-on)
+				</li>
+				<li>
+					When a QuickFolders Tab is selected, Thunderbird still needs to scroll the folder tree to that folder.
+				</li>
+      </ul>
+    </li>		
+
+    <a name="5.18">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.18">
+				Version 5.18 - 27/08/2023
+			</a>
+      </h4>
+
+      <table class="QuickFoldersProRenew bargain"> 
+        <tr>
+          <td style="vertical-align:top;" colspan="2">
+            <p class="emphasis">If you can see this box then your QuickFolders Pro license has expired!</p>
+            <h3 class="shillBox">QUICKFOLDERS PRO - SEPTEMBER SALE - RENEW FOR <u>25% OFF</u></h3>
+            <p>Catch this 2023 sale offer which reduces a quarter from the price from
+							<span class="emphasis">August 28th</span> to <span class="emphasis">September 12th</span>!
+               Renew or extend your license and pay 7.50$ instead of 10$ for your renewed QuickFolders Pro license.
+            </p> 
+          </td>
+          <td style="vertical-align:top; max-width:0;" rowspan="3">
+            <a class="nohover tooltip" href="">
+              <img id="bargainStar" src="images/bargain-renew-pro.png" />
+              <span > 
+              <img class="callout" src="images/callout_black.gif" />
+              You can extend or renew your license directly from QuickFolders - it will transmit your existing license key in order to 
+              create the new license. Simply use QuickFolders Options » QuickFolders Pro tab and the Extend License button.</span>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">
+            <p>
+              Support the future of QuickFolders and keep enjoying unlimited <a href="premium.html">Premium Features</a>. 
+              Simply click on <i>Renew License</i> on the QuickFolders toolbar. 
+            </p>
+          </td>
+          <td>
+            <p>
+              <img src="images/renew-license.png" alt="renew QuickFolders license" class="screenshot"/>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">
+            <p>
+              You can also <i>extend your license</i> (without losing a single day) by clicking on the <i>Extend License</i>
+              button on the QuickFolders Pro tab up to 30 days prior to your previous license expiry.
+            </p>
+            <p> 
+              As a thank you for my loyal supporters: if you missed the expiry date I will still give you a whole year 
+              in the renewal even if your expiry date is in the past.
+            </p>
+          </td>
+        </tr>
+      </table>
+      
+      <table class="QuickFoldersFreeUser bargain"> 
+        <tr>
+          <td style="vertical-align:top;">
+            <h3 class="shillBox">QUICKFOLDERS PRO - SEPTEMBER SALE</h3>
+           <p><span class="emphasis">Save 40%</span> on the regular price and support the QuickFolders project from
+						<span class="emphasis">August 28th</span> to <span class="emphasis">September 12th</span>!
+             This deal will only be offered for this limited time period, to give you too a chance to support the QuickFolders Project.
+             QuickFolders needs to payroll improvements for Thunderbird 115 to be as fast and efficient as possible.
+           </p>
+            <p>
+              Support the future of QuickFolders and enjoy unlimited <a href="premium.html">Premium Features</a>. 
+              You can purchase a license from QuickFolders options, using the Licenses tab. 
+              It's super easy and helps future proof this Add-on. 
+              Use QuickFolders Pro on as many Thunderbird installations as you like as long as it has your 
+              licensed email address as a Default Identity. 
+            </p>
+            <p>
+              Install the 
+              <a target="_blank" href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/">latest QuickFolders version</a> and then click the <i>Buy License</i> item from the QuickFolders Pro tab on the Options dialog.
+                If you prefer, you can also buy a license on the web shop directly: 
+                <a href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-version-page">FastSpring Web Shop</a>
+            </p>
+          </td>
+          <td><img src="images/menus/QuickFoldersProMenu-78.png" 
+              alt="quickfolders pro" style="width:180px; height:auto; margin-left:20px;"/>
+          </td>
+        
+          <td style="vertical-align:top; max-width:0;">
+            <a class="nohover" href="https://sites.fastspring.com/quickfolders/instant/quickfolders?referrer=qf-versionpage-bargain">
+              <img id="bargainStar" src="images/bargain-40-pro.png" />
+            </a>
+          </td>
+        </tr>
+      </table> 
+      
+      <table class="QuickFoldersStdUser bargain">
+        <tr>
+          <td>
+            <h3 class="shillBox">Go Pro! - UPGRADE OFFER</h3><br>
+            <p>
+              <span class="emphasis">Save 33%</span> on the upgrade price and support the QuickFolders project from
+              <span class="emphasis">August 28th</span> to <span class="emphasis">September 12th</span>!
+              QuickFolders needs to payroll improvements for Thunderbird 115 to be as fast and efficient as possible.
+              This deal is only available to QuickFolders Standard users within this limited time period.
+
+              Treat yourself to the <a href="https://quickfolders.org/premium.html">premium functions</a>
+              and help financing QuickFolders' future compatible with Thunderbird 115.
+            </p>
+            <p>
+              The regular upgrade price is around $9.00 plus taxes, this reduced price is $6.00 - check the
+              shop site for your personal price depending on your region.
+              Just for this short time, it is the same price as buying or renewing a standard  license!
+            </p>
+            <p>
+              As a Standard license owner, you can upgrade your license to Pro level by clicking on the "Upgrade to Pro" button
+               in QuickFolders Settings on the License tab:<br>
+               <img class="screenshot" src="images/upgrade-button.png" style="margin-top: 5px; height:220px;"/> 
+               <br>
+              For a feature comparison between Standard and Pro please check 
+              this <a href="premium.html#featureComparison">comparison chart</a>.
+            </p>
+          </td>
+          <td style="vertical-align:top; max-width:0;">
+            <img id="bargainStar" src="images/bargain-upgrade-tb115.png" />
+          </td>            
+        </tr>
+      </table>
+
+      <ul>
+				<h4 class="inList">Improvements</h4>
+				<li> 
+					<p>
+						The menu font size can now be changed - this is now independent of 
+						the button label for all popup menus. 
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/394">[issue 394]</a> 
 					</p>
 					<img src="images/menu-font-size.png" alt="menu font size setting" class="screenshot"/>
 				</li>
@@ -839,7 +887,9 @@
     <a name="5.17.1">&nbsp;</a>
     <li>
       <h4>
-				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.17.1">Version 5.17.1 - 07/08/2023</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.17.1">
+					Version 5.17.1 - 07/08/2023
+				</a>
       </h4>
 
       <ul>				
@@ -896,7 +946,9 @@
     <a name="5.16.1">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.16.1" >Version 5.16.1 - 23/04/2023</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.16.1">
+					Version 5.16.1 - 23/04/2023
+				</a>
       </h4>
 
       <ul>
@@ -943,7 +995,9 @@
     <a name="5.15.2">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.15.2">Version 5.15.2 - 24/12/2022</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.15.2">
+					Version 5.15.2 - 24/12/2022
+				</a>
       </h4>
       
       <ul>
@@ -994,7 +1048,9 @@
     <a name="5.14">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.14">Version 5.14 - 14/11/2022</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.14">
+					Version 5.14 - 14/11/2022
+				</a>
       </h4>
       
       <ul>
@@ -1037,7 +1093,9 @@
     <a name="5.12.2">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.13.1">Version 5.13.1 - 28/09/2022</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.13.1">
+					Version 5.13.1 - 28/09/2022
+				</a>
       </h4>
       
       
@@ -1092,7 +1150,9 @@
     <a name="5.12.1">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.12" >Version 5.12 - 17/08/2022</a>
+      	<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.12">
+					Version 5.12 - 17/08/2022
+				</a>
       </h4>
       
         <a name="tb102-compatibility"> </a>
@@ -1164,7 +1224,9 @@
     <a name="5.11">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.11">Version 5.11 - 24/07/2022</a>
+      	<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.11">
+					Version 5.11 - 24/07/2022
+				</a>
       </h4>
       
         <a name="tb102-compatibility"> </a>
@@ -1246,7 +1308,9 @@
     <a name="5.10.3">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.10.3">Version 5.10.3 - 14/07/2022</a>
+      	<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.10.3">
+					Version 5.10.3 - 14/07/2022
+				</a>
       </h4>
     
       <p>
@@ -1405,86 +1469,87 @@
     <a name="5.9">&nbsp;</a>
     <a name="5.9.1">&nbsp;</a>
 		<li>
-				<h4>
-				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.9.1">Version 5.9.1 - 05/04/2022</a>
-				</h4>
-        
-        <ul>
-          <h4 class="inList">5.9.1 - Maintenance Fixes - 05/April/2022</h4>
-          <p>This maintenance version will be released shortly.</p>
-          <li> 
-            Simplified recent folders menu behavior for keyboard navigation.
-            <p>
-              <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/254">[issue 254]</a> 
-              The new [=] shortcut key of quickMove/quickJump showed an arrow to visit child folders, which meant that the 
-              folder itself could not be opened without mouse, which impeded the workflow.
-            </p>
+			<h4>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.9.1">
+					Version 5.9.1 - 05/04/2022
+				</a>
+			</h4>
+			
+			<ul>
+				<h4 class="inList">5.9.1 - Maintenance Fixes - 05/April/2022</h4>
+				<p>This maintenance version will be released shortly.</p>
+				<li> 
+					Simplified recent folders menu behavior for keyboard navigation.
+					<p>
+						<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/254">[issue 254]</a> 
+						The new [=] shortcut key of quickMove/quickJump showed an arrow to visit child folders, which meant that the 
+						folder itself could not be opened without mouse, which impeded the workflow.
+					</p>
 
-            <p>
-              I have decided to instead not show subfolders for these recent folders as it doesn't add much value
-              for what essentially should be a repeat operation. I have also extended this to the other recent 
-              folders menus (e.g. on the recent folders tab). 
-            </p>
-            <p> 
-              One can still restore the old behavior (of showing subfolders) by setting the config setting
-              <tt>extensions.quickfolders.recentfolders.subfolders = true</tt>.
-              To do this you can open QuickFolders <i>General Settings</i> and right-click the 
-              <i>Recent Folder Tabs</i> checkbox:<br>
+					<p>
+						I have decided to instead not show subfolders for these recent folders as it doesn't add much value
+						for what essentially should be a repeat operation. I have also extended this to the other recent 
+						folders menus (e.g. on the recent folders tab). 
+					</p>
+					<p> 
+						One can still restore the old behavior (of showing subfolders) by setting the config setting
+						<tt>extensions.quickfolders.recentfolders.subfolders = true</tt>.
+						To do this you can open QuickFolders <i>General Settings</i> and right-click the 
+						<i>Recent Folder Tabs</i> checkbox:<br>
 
-              <img class="screenshot" src="images/recent-config-settings.png" alt="advanced recent settings"/>
-            </p>
-          </li>
-          <li> 
-            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/252">[issue 252]</a>
-            Fixed: Tabs with invalid folder address can break search results. This can happen if you exclude
-            accounts from the search after recreating a profile with different spelling.
-          </li>
-          <li> 
-            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/255">[issue 255]</a>
-            Fixed: CTRL Right-clicking on the active folder can create multiple instances  of the folder 
-            commands submenu.
-          </li>
-        
-          <h4 class="inList">Improvements - 30/03/2022</h4>
-          <li>
-            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/241">[issue 241]</a>
-            using quickJump » quickMove via shortcut - hitting Enter will now always select the last successful 
-            location (even when the name is ambiguous) and not the top item of the menu. 
-            To use the first item of the menu using Enter the menu hast to be visible - either by 
-            starting to type or pressing arrow-down. 
-          </li>
-          <li>
-            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/242">[issue 242]</a>
-            <p>Use '=' key for recalling folders from recent quickMove » quickJump operations</p>
-            <p>When using the quickMove or quickJump search box you can now access folders of its
-              previous jump » move operations by typing "=" as the first character.
-            </p>
-          </li>
-          <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/236">[issue 236]</a> 
-            Convert options dialog to pure HTML. Amon other things, this fixes the color pickers that have stopped
-            working on Mac. Long term, all Dialogs and User Interfaces need to be converted to HTML
-            to become future proof and pure API based. There are still things that cannot be done with HTML
-            right now (such as folder dropdowns that aren't cut off at the toolbar borders), so this is 
-            an ongoing effort for the predictable future.
-          </li>
-          
-          <h4 class="inList">Bug Fixes - 30/03/2022</h4>
-          <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/232">[issue 232]</a> 
-            Fixed: When Adding a category to a tab, another category may be replaced
-          </li>
-          <li>
-            <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/235">[issue 235]</a>
-            Fixed: quickJump may fail if "Compact mode" in folder tree is enabled.
-          </li>
-          <li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/220">[issue 220]</a> 
-            Fixed an issue with license validation (alias identity support). 
-          </li>
-          <li>
-            Fixed "change order" dialog.
-          </li>
-        </ul>
+						<img class="screenshot" src="images/recent-config-settings.png" alt="advanced recent settings"/>
+					</p>
+				</li>
+				<li> 
+					<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/252">[issue 252]</a>
+					Fixed: Tabs with invalid folder address can break search results. This can happen if you exclude
+					accounts from the search after recreating a profile with different spelling.
+				</li>
+				<li> 
+					<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/255">[issue 255]</a>
+					Fixed: CTRL Right-clicking on the active folder can create multiple instances  of the folder 
+					commands submenu.
+				</li>
+			
+				<h4 class="inList">Improvements - 30/03/2022</h4>
+				<li>
+					<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/241">[issue 241]</a>
+					using quickJump » quickMove via shortcut - hitting Enter will now always select the last successful 
+					location (even when the name is ambiguous) and not the top item of the menu. 
+					To use the first item of the menu using Enter the menu hast to be visible - either by 
+					starting to type or pressing arrow-down. 
+				</li>
+				<li>
+					<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/242">[issue 242]</a>
+					<p>Use '=' key for recalling folders from recent quickMove » quickJump operations</p>
+					<p>When using the quickMove or quickJump search box you can now access folders of its
+						previous jump » move operations by typing "=" as the first character.
+					</p>
+				</li>
+				<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/236">[issue 236]</a> 
+					Convert options dialog to pure HTML. Amon other things, this fixes the color pickers that have stopped
+					working on Mac. Long term, all Dialogs and User Interfaces need to be converted to HTML
+					to become future proof and pure API based. There are still things that cannot be done with HTML
+					right now (such as folder dropdowns that aren't cut off at the toolbar borders), so this is 
+					an ongoing effort for the predictable future.
+				</li>
+				
+				<h4 class="inList">Bug Fixes - 30/03/2022</h4>
+				<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/232">[issue 232]</a> 
+					Fixed: When Adding a category to a tab, another category may be replaced
+				</li>
+				<li>
+					<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/235">[issue 235]</a>
+					Fixed: quickJump may fail if "Compact mode" in folder tree is enabled.
+				</li>
+				<li> <a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/220">[issue 220]</a> 
+					Fixed an issue with license validation (alias identity support). 
+				</li>
+				<li>
+					Fixed "change order" dialog.
+				</li>
+			</ul>
 		</li>      
-
       
 		<a name="5.8">&nbsp;</a>
 		<a name="5.8.1">&nbsp;</a>
@@ -1492,7 +1557,9 @@
 		<a name="5.8.3">&nbsp;</a>
 		<li>
 			<h4>
-			<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.8.3">Version 5.8.3 - 03/11/2021</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.8.3">
+					Version 5.8.3 - 03/11/2021
+				</a>
 			</h4>
 			
 			<ul>
@@ -1583,7 +1650,9 @@
 		<a name="5.7.2">&nbsp;</a>
 		<li>
 			<h4>
-			<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.7.2">Version 5.7.2 - 04/09/2021</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.7.2">
+					Version 5.7.2 - 04/09/2021
+				</a>
 			</h4>
 
 			<ul>
@@ -1677,7 +1746,9 @@
 		<a name="5.6.6">&nbsp;</a>
 		<li>
 			<h4>
-			<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.6.6">Version 5.6.6 - 11/07/2021</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.6.6">
+					Version 5.6.6 - 11/07/2021
+				</a>
 			</h4>
 			
 			<ul>
@@ -1806,7 +1877,9 @@
 		<a name="5.5.2">&nbsp;</a>
 		<li>
 			<h4>
-			<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.5.2">Version 5.5.2 - 28/04/2021</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.5.2">
+					Version 5.5.2 - 28/04/2021
+				</a>
 			</h4>
 			
 			<ul>
@@ -1898,7 +1971,9 @@
 		<a name="5.4.2">&nbsp;</a>
 		<li>
 			<h4>
-			<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.4.2">Version 5.4.2 - 29/03/2021</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.4.2">
+					Version 5.4.2 - 29/03/2021
+				</a>
 			</h4>
 			
 				<ul>
@@ -1975,7 +2050,9 @@
 		<a name="5.3">&nbsp;</a>
 		<li>
 			<h4>
-			<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.3">Version 5.3 - 23/02/2021</a>
+				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/5.3">
+					Version 5.3 - 23/02/2021
+				</a>
 			</h4>
 							
 				<ul>

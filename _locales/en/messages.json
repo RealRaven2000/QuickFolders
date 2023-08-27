@@ -1817,7 +1817,7 @@
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
   "special-offer-expiry": {
-    "message": "August 13th"
+    "message": "September 12th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1923,7 +1923,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1}5.17.1 You can once again use the filter assistant to create filter rules with quickMove.[issue 385]+[issue 354]{L2}{L1}Tabs for unified folders (such as Unified Inbox) now show the contained folders.{L2} {L1}Fixed a number of issues in the options screen.{L2} {L1}Redesigned menu icons{L2} {L1}Fixed color picker for custom colors in current folder toolbar.{L2} {L1}QuickFolders will automatically back up your current custom icons, so they can be restored easier once Thunderbird 115 supports custom icons in its folder pane.{L2}"
+    "message": "{L1} The menu font size can now be changed - this is now independent of the button label for all popup menus. [issue 394] {L2} {L1} You can now also change the font size of the folder tabs in 'Apple Pills' theme.{L2} {L1} Improved coloring and layout for Apple theme. {L2} {L1} Display localized license expiry date in registration dialog (not as YYYY-MM-DD).{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

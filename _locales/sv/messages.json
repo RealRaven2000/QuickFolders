@@ -1777,7 +1777,7 @@
     "message": "När du uppgraderar från Standard får du ett helt års licensperiod från inköpsdatumet oavsett utgångsdatum för din tidigare licens."
   },
   "special-offer-expiry": {
-    "message": "13 augusti"
+    "message": "12 september"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1883,7 +1883,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.17.1 Du kan återigen använda filterassistenten för att skapa filterregler med quickMove.[issue 385]+[issue 354]{L2}{L1} Flikar för enhetliga mappar (som Unified Inbox) från och med nu visar de inneslutna mapparna. {L2} {L1}Lättade olika problem i alternativdialogrutan.{L2} {L1}Omdesignade menyikoner{L2} {L1}Fastad färgväljare för anpassade färger i det aktuella mappverktygsfältet.{L2} {L1}QuickFolders kommer automatiskt att säkerhetskopiera dina nuvarande anpassade ikoner, så att de kan återställas enklare när Thunderbird 115 stöder anpassade ikoner i mapprutan.{L2}"
+    "message": "{L1} Menyens textstorlek kan nu ändras - detta är nu oberoende av knappens etikett för alla popup-menyer. [issue 394] {L2} {L1} Du kan nu också ändra textstorleken på mappflikarna i temat 'Apple Pills'.{L2} {L1} Förbättrad färgsättning och layout för Apple-tema. {L2} {L1} Visa lokaliserat licens utgångsdatum i registreringsdialogen (inte som ÅÅÅÅ-MM-DD).{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

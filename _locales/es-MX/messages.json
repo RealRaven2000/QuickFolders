@@ -1744,7 +1744,7 @@
     "message": "Cuando actualiza desde Estándar, obtiene un período de licencia de un año completo a partir de la fecha de compra, independientemente de la fecha de vencimiento de su licencia anterior."
   },
   "special-offer-expiry": {
-    "message": "13 de agosto"
+    "message": "12 de septiembre"
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1850,8 +1850,8 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} 5.17.1 Una vez más, puede usar el asistente de filtro para crear reglas de filtro con quickMove.[issue 385]+[issue 354]{L2}{L1} Las pestañas para carpetas unificadas (como la Bandeja de entrada unificada) ahora muestran las carpetas contenidas. {L2} {L1}Se corrigieron varios problemas en el cuadro de diálogo de opciones.{L2} {L1}Iconos de menú rediseñados{L2} {L1}Selector de color fijo para colores personalizados en la barra de herramientas de la carpeta actual.{L2} {L1}QuickFolders realizará automáticamente una copia de seguridad de sus iconos personalizados actuales, para que puedan restaurarse más fácilmente una vez que Thunderbird 115 admita iconos personalizados en su panel de carpetas.{L2}"
-   },
+    "message": "{L1} Ahora se puede cambiar el tamaño de la fuente del menú; esto es independiente de la etiqueta del botón para todos los menús emergentes. [issue 394] {L2} {L1} Ahora también puedes cambiar el tamaño de la fuente de las pestañas de carpetas en el tema 'Apple Pills'.{L2} {L1} Mejora de la coloración y el diseño para el tema de Apple. {L2} {L1} Mostrar la fecha de caducidad de la licencia localizada en el diálogo de registro (no como AAAA-MM-DD).{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenido a $addonName$",

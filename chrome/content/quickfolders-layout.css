@@ -199,12 +199,6 @@ menupopup.widerMenu menucaption {
 }
 
 
-#QuickFolders-FoldersBox-PushDown {
-  max-height: 12px !important;
-	min-height: 1px;
-}
-
-
 #QuickFolders-oneButtonPanel {
 	height: 24px !important;  /* attempted linux squashed height fixes */
 	display: flex;
@@ -550,7 +544,6 @@ toolbarbutton#QuickFoldersCurrentFolder {
   flex-flow: row wrap;
 	flex-wrap: wrap;
 	max-height:25em;
-	margin-bottom: -1px;
 }
 
 #QuickFolders-FoldersBox div.break {

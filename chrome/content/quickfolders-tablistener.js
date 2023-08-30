@@ -68,32 +68,18 @@ QuickFolders.TabListener = {
           else {
             util.logDebug("TabListener single message - could not determine currently displayed Message.");
           }
-        }
-        else
-        {
+        } else {
           // Do not switch to current folder's category, if current tab has another selected!
-          if (!info.QuickFoldersCategory) {
-            switch(tabMode) {
-              case "mail3PaneTab":
-                // there is no need for this if it is not a mail tab.
-                QI.setTabSelectTimer();
-                break;
-              case "contentTab":
-                break;
-              default:
-                // should we initialize the (navigation) buttons on CurrentFolderTab in case this is a search folder?
-                if (!QI.CurrentFolderTab.collapsed) {
-                  QI.initCurrentFolderTab(QI.CurrentFolderTab, null, null, info);
-                }
-                break;
-            }
+          if (tabMode=="mail3PaneTab" && !info.QuickFoldersCategory) {
+            QI.setTabSelectTimer(); // there is no need for this if it is not a mail tab.
           }
         }
         
         // for non-folder tabs: reset lastTabSelected to force refresh of current folder 
         // when we go back to a folder tab
-        if (tabMode != "mail3PaneTab")
+        if (tabMode != "mail3PaneTab") {
           QI.lastTabSelected = null;
+        }
       }
     }
     catch(e) {

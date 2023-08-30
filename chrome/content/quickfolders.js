@@ -370,6 +370,7 @@ END LICENSE BLOCK */
     ## [issue 396] Add 'compact density' support
     ## improved "Apple Pills" theme
     ## Make sure current folder tab is changed when different theme is selected.
+    ## [issue 397] Fixed:  Filter Assistant Auto-start not working with quickMove function 
     ## [issue 389] quickJump switches to matching single mail tab instead of jumping to Folder in current tab
     ## [issue 392] Keyboard collision with quick filter toolbar
     ## [issue 387] Number shortcuts not working - move mail with Option+Shift+Number
@@ -582,8 +583,21 @@ var QuickFolders = {
         util.logDebug("element not found: QuickFolders-FindFolder");
       }
 			
+      // [issue 397] Filter Assistant Auto-start not working with quickMove function 
+      if (prefs.getFiltersBoolPref("autoStart") && typeof window.quickFilters == "object") {
+        // quickFilters started before QF and automatically started assistant mode
+        // but didn't toggle the QuickFolders assistant mode!
+        if (!QuickFolders.FilterWorker.FilterMode) {
+          if (window.quickFilters.Util.AssistantActive) {
+            QuickFolders.FilterWorker.toggle_FilterMode(true);
+          }
+        }
+      }
+
 			this.initDone=true;
 		}
+
+    
 	} ,
 
   patchFolderTree: function (tabInfo) {

@@ -23,7 +23,6 @@ function onLoad(activatedWhileWindowOpen) {
   layout1.setAttribute("title", "QuickFolderPalettes");
   
   WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
-  WL.injectCSS("chrome://quickfolders/content/quickfolders-68.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
   
   window.QuickFolders.Util.logDebug('Adding messageWindow...');

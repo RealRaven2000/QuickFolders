@@ -28,7 +28,7 @@ QuickFolders.FilterWorker = {
 	* 
 	* @param {bool} start or stop filter mode
 	*/  
-	toggle_FilterMode: function toggle_FilterMode(active) {
+	toggle_FilterMode: function(active) {
     function removeOldNotification(box, active, id) {
       if (!active && box) {
         let item = box.getNotificationWithValue(id);
@@ -130,18 +130,23 @@ QuickFolders.FilterWorker = {
 		QuickFolders.FilterWorker.FilterMode = active;
 		
     /* Configure Optional buttons on Toolbar */
-		if (QI.CogWheelPopupButton)
+		if (QI.CogWheelPopupButton) {
 			QI.CogWheelPopupButton.collapsed = active || !prefs.isShowToolIcon;
-    if (QI.ReadingListButton)
+		}
+    if (QI.ReadingListButton) {
       QI.ReadingListButton.collapsed = !prefs.isShowReadingList;
-		if (QI.FilterToggleButton)
+		}
+		if (QI.FilterToggleButton){
 			QI.FilterToggleButton.collapsed = !active;
-		if (QI.CategoryBox)
+		}
+		if (QI.CategoryBox) {
 			QI.CategoryBox.setAttribute('mode', active ? 'filter' : '');
+		}
+		// this needs to be moved into 3pane:
 		let btnFilterToggle = QI.CurrentFolderFilterToggleButton;
-		if (btnFilterToggle)
+		if (btnFilterToggle) {
 			btnFilterToggle.setAttribute('mode', active ? 'filter' : '');
-      
+		}
 			
 		if (!isQuickFilters) {
 			// tidy up notifications

@@ -330,7 +330,7 @@
       <h4>
 				<a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.2"
 					onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">
-					Version 6.2 - WIP
+					Version 6.2 - 30/08/2023
 				</a>
       </h4>
 
@@ -499,7 +499,13 @@
 					theme is selected.
 				</li>
 				<li> 
-					Fixed: Keyboard collision with quick filter toolbar; typing [Shift]+[F] and [Shift]+[M] in the search bar triggered the quickJump search.
+					Fixed: quickFilters Filter assistant mode is not detected when configured to 
+					  automatically start with Thunderbird
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/397">[issue 397]</a>
+				</li>
+				<li> 
+					Fixed: Keyboard collision with quick filter toolbar; typing [Shift]+[F] and [Shift]+[M] 
+					in the search bar triggered the quickJump search.
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/392">[issue 392]</a>
 				</li>
 				<li>Number shortcuts not working - move mail with 
@@ -510,6 +516,11 @@
 				</li>
 				<li> 
 					Repaired: set keyboard focus back to thread pane after quickmove.
+				</li>
+				<li> 
+					QuickFolders did not detect if quickFilters assistant started automatically. 
+					This is now working even if quickFilters gets restarted from extension manager. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/397">[issue 397]</a>
 				</li>
       </ul>
 

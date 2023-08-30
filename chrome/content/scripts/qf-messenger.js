@@ -307,14 +307,10 @@ async function onLoad(activatedWhileWindowOpen) {
         </popupset>
 
 
-        <!-- 		-->		
         <vbox id="QuickFolders-Folders-Pane"  flex="1">
-          <spacer flex="4" id="QuickFolders-FoldersBox-PushDown"/>
-          
           <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer">
             <label class="QuickFolders-Empty-Toolbar-Label" crop="end">Initialising QuickFolders…</label>
           </box>
-        <!-- 		-->		
         </vbox>
       </toolbar>
     </vbox>

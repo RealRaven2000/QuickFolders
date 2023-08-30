@@ -232,11 +232,23 @@ QuickFolders.Util = {
   },
 
   get document3pane() {
-    return window.gTabmail.currentTabInfo.chromeBrowser.contentDocument;
+    try {
+      return window.gTabmail.currentTabInfo.chromeBrowser.contentDocument;
+    }
+    catch (ex) {
+      QuickFolders.Util.logException("get document3pane()", ex);
+      return null;
+    }
+
   } ,
 
   get threadPane() {
-    return this.document3pane.querySelector("#threadPane");
+    let doc = this.document3pane;
+    if (!doc) {
+      QuickFolders.Util.logHighlight("No threadPane() in this context.")
+      return null;
+    }
+    return doc.querySelector("#threadPane");
   } ,
   
   getMail3PaneWindow: function getMail3PaneWindow() {

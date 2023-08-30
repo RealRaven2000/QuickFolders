@@ -421,7 +421,7 @@ QuickFolders.Preferences = {
 	
   // reading prefs across extensions will be forbidden, check:
   // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessageExternal
-	getFiltersBoolPref: function getFiltersBoolPref(p, defaultV) {
+	getFiltersBoolPref: function (p, defaultV) {
 	  let ans;
 	  try {
 	    ans = Services.prefs.getBoolPref("extensions.quickfilters." + p);

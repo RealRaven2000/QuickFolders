@@ -48,12 +48,24 @@ QuickFolders.Interface = {
 	
 	// CURRENT FOLDER ELEMENTS
 	get CurrentFolderTab() { // visible current folder tab - might have to move it in Tb for conversation view
+		if (!QuickFolders.Util.document3pane) {
+			QuickFolders.Util.logHighlight("no CurrentFolderTab in this context.");
+			return null;
+		}
     return QuickFolders.Util.document3pane.getElementById ("QuickFoldersCurrentFolder");
   },
 	get CurrentFolderBar() { 
+		if (!QuickFolders.Util.document3pane) {
+			QuickFolders.Util.logHighlight("no CurrentFolderBar in this context.");
+			return null;
+		}
 		return QuickFolders.Util.document3pane.getElementById ("QuickFolders-CurrentFolderTools");
 	},
 	get CurrentFolderFilterToggleButton() { 
+		if (!QuickFolders.Util.document3pane) {
+			QuickFolders.Util.logHighlight("no CurrentFolderFilterToggleButton in this context.");
+			return null;
+		}
 		return QuickFolders.Util.document3pane.getElementById("QuickFolders-currentFolderFilterActive"); 
 	},
 	get ToggleToolbarButton() {
@@ -6863,7 +6875,7 @@ QuickFolders.Interface = {
 		return tabMode ? tabMode.toString() : "";
 	} ,
 
-	initToolbarTabListener: function initToolbarTabListener() {
+	initToolbarTabListener: function() {
 		QuickFolders.Util.logDebugOptional("toolbarHiding", "initToolbarTabListener");
 		let tabmail = QuickFolders.Util.$("tabmail");
 		if (tabmail) {
@@ -7003,7 +7015,7 @@ QuickFolders.Interface = {
 		*/
 	} ,
 
-	toggle_FilterMode: function toggle_FilterMode(active) {
+	toggle_FilterMode: function (active) {
 		QuickFolders.Util.logDebugOptional("interface", "toggle_FilterMode(" + active + ")");
 		QuickFolders.FilterWorker.toggle_FilterMode(active);
 	} ,

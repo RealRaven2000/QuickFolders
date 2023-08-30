@@ -195,6 +195,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "Atualmente, o Thunderbird não permite que os complementos substituam esses atalhos. Estamos tentando implementar uma solução alternativa em breve."
+  },
   "lastName.label": {
     "message": "Último nome:"
   },
@@ -1735,7 +1738,7 @@
     "message": "Ao atualizar do Standard, você obtém um período de licença de um ano inteiro a partir da data de compra, independentemente da data de expiração de sua licença anterior."
   },
   "special-offer-expiry": {
-    "message": "13 de agosto"
+    "message": "12 de setembro"
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",
@@ -1841,7 +1844,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Corrigido: quickJump altera para uma única guia de mensagem em vez de saltar para uma pasta na guia atual do Thunderbird. [issue 389] {L2} {L1} Corrigido: Conflito de teclado com a barra de ferramentas de filtro rápido. {L2} {L1} Corrigido: Atalhos de números não funcionam - mover correio com Option+Shift+Número. Uma vez que os atalhos [CTRL]+Número estão reservados pelo Thunderbird, é necessário usar sempre o modificador [ALT] para esses atalhos. [issue 387] {L2} {L1} Mostrar a data de expiração da licença na caixa de diálogo de registro como data local. {L2} {L1} Opção removida para definir a posição da barra de ferramentas QuickFolders. [issue 380] {L2}"
+    "message": "{L1} Agora é possível alterar o tamanho da letra do menu para todos os menus de pop-up, independentemente do tamanho da letra dos botões. [issue 394] {L2} {L1} Agora também é possível alterar o tamanho da letra das abas das pastas no tema 'Apple Pills'.{L2} {L1} Melhoria na coloração e no layout para o tema Apple. {L2} {L1} Mostra a data de expiração da licença localizada na caixa de diálogo de registo (não como AAAA-MM-DD).{L2}{L1} Resolvido o conflito do teclado com a barra de ferramentas de filtro rápido; escrever [Shift]+[F] e [Shift]+[M] na barra de pesquisa ativava a pesquisa quickJump. {L2}{L1} Em alguns casos, o quickJump ativava de forma errática as abas das mensagens individuais. {L2}{L1} A barra de navegação será agora sempre posicionada no topo ao alternar entre o layout clássico e o vertical. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -199,6 +199,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "Derzeit erlaubt Thunderbird Add-ons nicht, diese Tastenkürzel zu überschreiben. Wir versuchen bald eine Lösung dafür zu implementieren."
+  },
   "lastName.label": {
     "message": "Nachname:"
   },
@@ -1754,7 +1757,7 @@
     "message": "Wenn Sie von Standard upgraden, erhalten Sie eine einjährige Lizenzlaufzeit ab Kaufdatum, unabhängig vom Ablaufdatum Ihrer vorherigen Lizenz."
   },
   "special-offer-expiry": {
-    "message": "13. August"
+    "message": "12. September"
   },
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
@@ -1856,7 +1859,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Behoben: quickJump wechselte zu einem einzelnen Nachrichten-Tab, anstatt zu einem Ordner im aktuellen Thunderbird-Tab zu springen. [issue 389] {L2} {L1} Behoben: Tastaturkonflikt mit der Schnellfilter-Symbolleiste. {L2} {L1} Behoben: Nummernkurzbefehle funktionieren nicht - Verschieben von E-Mails mit Option+Umschalt+Nummer. Da [STRG]+Nummernkurzbefehle von Thunderbird reserviert sind, müssen wir für diese Kurzbefehle immer den [ALT]-Modifier verwenden. [issue 387] {L2} {L1} Lizenz-Ablaufdatum im Registrierungsdialog als lokales Datum anzeigen. {L2} {L1} Option zur Festlegung der Position der QuickFolders-Symbolleiste entfernt. [issue 380] {L2}"
+    "message": "{L1} Die Schriftgröße des Menüs kann nun für alle Popup-Menüs unabhängig von der Schriftgröße der Schaltflächen geändert werden. [issue 394] {L2} {L1} Sie können jetzt auch die Schriftgröße der Ordnerregisterkarten im 'Apple Pills'-Design ändern.{L2} {L1} Verbesserte Farbgebung und Layout für das Apple-Design. {L2} {L1} Anzeige des lokalisierten Ablaufdatums der Lizenz im Registrierungsdialog (nicht als JJJJ-MM-TT).{L2}{L1} Gelöst: Tastaturkonflikt mit der Schnellfilter-Symbolleiste; Das Tippen von [Shift]+[F] und [Shift]+[M] in der Suchleiste löste die quickJump-Suche aus. {L2}{L1} In einigen Fällen wurde quickJump erratisch in Einzel-Nachrichten-Registerkarten aktiviert. {L2}{L1} Die Navigationsleiste wird nun beim Wechsel zwischen klassischem und vertikalem Layout immer nach oben verschoben. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -195,6 +195,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "Obecnie Thunderbird nie pozwala na nadpisywanie tych skrótów przez dodatki, wkrótce postaramy się wprowadzić tymczasowe rozwiązanie."
+  },
   "lastName.label": {
     "message": "Nazwisko:"
   },
@@ -1753,7 +1756,7 @@
     "message": "Po uaktualnieniu z wersji Standard otrzymujesz jeden pełny rok okresu licencji od daty zakupu, niezależnie od daty wygaśnięcia poprzedniej licencji."
   },
   "special-offer-expiry": {
-    "message": "13 sierpnia"
+    "message": "12 września"
   },
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",
@@ -1859,7 +1862,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1}Zakładki reprezentujące ujednolicone foldery (takie jak ujednolicona skrzynka odbiorcza) pokazują teraz zawarte foldery, których nazwy zostały zmienione na nazwy ich kont.{L2} {L1}Naprawiono różne problemy w oknie dialogowym opcji.{L2} {L1}Przeprojektowane ikony menu{L2} {L1}Naprawiono próbnik kolorów dla niestandardowych kolorów na pasku narzędzi bieżącego folderu.{L2}{L1} Klawisz [=] w quickJump, aby wyświetlić ostatnio używane foldery, znów działa.{L2} {L1} Możesz ponownie utworzyć nowy podfolder, przeciągając wiadomości do zakładki QuickFolder.{L2} {L1} Domyślny skrót do przełączania panel folderów musiał zostać zmieniony na [F10]. {L2}L1} Możesz ponownie użyć asystenta filtrów do tworzenia reguł filtrowania za pomocą quickMove.[issue 385]+[issue 354]{L2}"
+    "message": "{L1} Teraz można zmieniać rozmiar czcionki menu dla wszystkich menu typu popup, niezależnie od rozmiaru czcionki przycisków. [issue 394] {L2} {L1} Teraz można także zmieniać rozmiar czcionki kartotek folderów w motywie „Pigułki Apple”.{L2} {L1} Poprawiono kolorystykę i układ dla motywu Apple. {L2} {L1} Wyświetl datę wygaśnięcia zlokalizowanej licencji w oknie dialogowym rejestracji (nie jako RRRR-MM-DD).{L2}{L1} Rozwiązane zagadnienie konfliktu klawiatury z paskiem narzędzi szybkiego filtrowania; wpisanie [Shift]+[F] i [Shift]+[M] w polu wyszukiwania aktywowało wyszukiwanie quickJump. {L2}{L1} W niektórych przypadkach quickJump aktywowało zakładki pojedynczych wiadomości w sposób niewłaściwy. {L2}{L1} Pasek nawigacji będzie teraz zawsze umieszczany u góry przy przełączaniu się między układem klasycznym a pionowym. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -209,6 +209,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "Currently Thunderbird doesn't allow Add-ons to overwrite these shortcuts, we are trying to implement a workaround soon."
+  },
   "lastName.label": {
     "message": "Last Name:"
   },
@@ -1811,7 +1814,7 @@
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
   "special-offer-expiry": {
-    "message": "August 13th"
+    "message": "September 12th"
   },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
@@ -1917,7 +1920,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Fixed: quickJump switches to a single message tab instead of jumping to a folder in the current Thunderbird tab. [issue 389] {L2} {L1} Fixed: Keyboard collision with quick filter toolbar. {L2} {L1} Fixed: Number shortcuts not working - move mail with Option+Shift+Number. Since [CTRL]+Number shortcuts are reserved by Thunderbird we need to always use the modifier [ALT] for these shortcuts. [issue 387] {L2} {L1} Display license expiry date in registration dialog as local date. {L2}  {L1} Retired option to set QuickFolders toolbar position. [issue 380] {L2}"
+    "message": "{L1} The menu font size can now be changed for all popup menus, independently of the button font. [issue 394] {L2} {L1} You can now also change the font size of the folder tabs in 'Apple Pills' theme.{L2} {L1} Improved coloring and layout for Apple theme. {L2} {L1} Display localized license expiry date in registration dialog (not as YYYY-MM-DD).{L2}{L1} Resolved keyboard collision with quick filter toolbar; typing [Shift]+[F] and [Shift]+[M] in the search bar triggered the quickJump search. {L2}{L1} In some cases, quickJump erratically activated single message tabs. {L2}{L1} The navigation bar will now always be moved to the top when switching between classic and vertical layout. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

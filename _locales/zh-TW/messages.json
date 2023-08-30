@@ -198,6 +198,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "目前 Thunderbird 不允許外掛程式覆蓋這些快速鍵，我們會儘快找到解決方案。"
+  },
   "lastName.label": {
     "message": "姓："
   },
@@ -1708,7 +1711,7 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "8月13日"
+    "message": "9月12日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",
@@ -1814,7 +1817,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 修復：quickJump 切換至單一訊息分頁，而非跳至當前 Thunderbird 分頁中的資料夾。[issue 389] {L2} {L1} 修復：與快速篩選工具列衝突的鍵盤衝突。 {L2} {L1} 修復：數字快捷鍵無法運作 - 使用 Option+Shift+數字 移動郵件。由於 [CTRL]+數字 快捷鍵被 Thunderbird 保留，我們必須始終使用修飾符 [ALT] 來使用這些快捷鍵。 [issue 387] {L2} {L1} 在註冊對話方塊中將許可證到期日期顯示為本地日期。 {L2} {L1} 刪除設定 QuickFolders 工具列位置的選項。 [issue 380] {L2}"
+    "message": "{L1} 現在您可以獨立於按鈕字型更改所有彈出式選單的選單字型大小。[issue 394] {L2} {L1} 您還可以在'Apple Pills'主題中更改資料夾標籤的字型大小。{L2} {L1} 改進了Apple主題的上色和版面配置。 {L2} {L1} 在註冊對話框中顯示本地化的許可到期日期（不以YYYY-MM-DD的格式）。{L2}{L1} 解決了與快速篩選工具列的鍵盤衝突；在搜尋列中輸入[Shift]+[F]和[Shift]+[M]會觸發quickJump搜尋。 {L2}{L1} 在某些情況下，quickJump會不穩定地啟動單一訊息標籤。 {L2}{L1} 切換經典佈局和垂直佈局時，導航列將始終移至頂部。[issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

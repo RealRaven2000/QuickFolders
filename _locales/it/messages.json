@@ -195,6 +195,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "Attualmente Thunderbird non consente ai componenti aggiuntivi di sovrascrivere queste scorciatoie, stiamo cercando di implementare una soluzione alternativa al più presto."
+  },
   "lastName.label": {
     "message": "Cognome:"
   },
@@ -1750,7 +1753,7 @@
     "message": "Quando esegui l'upgrade da Standard, ricevi un anno intero di licenza dalla data di acquisto, indipendentemente dalla data di scadenza della tua licenza precedente."
   },
   "special-offer-expiry": {
-    "message": "13 agosto"
+    "message": "12 settembre"
   },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
@@ -1856,7 +1859,7 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} Corretto: quickJump passa a una singola scheda di messaggio invece di saltare in una cartella nella scheda Thunderbird corrente. [issue 389] {L2} {L1} Corretto: Collisione della tastiera con la barra dei filtri rapidi. {L2} {L1} Corretto: Scorciatoie numeriche non funzionanti - spostamento delle email con Option+Shift+Numero. Poiché le scorciatoie [CTRL]+Numero sono riservate da Thunderbird, dobbiamo sempre usare il modificatore [ALT] per queste scorciatoie. [issue 387] {L2} {L1} Mostra la data di scadenza della licenza nella finestra di registrazione come data locale. {L2} {L1} Opzione rimossa per impostare la posizione della barra degli strumenti QuickFolders. [issue 380] {L2}"
+    "message": "{L1} Ora è possibile cambiare la dimensione del carattere del menu per tutti i menu a comparsa, indipendentemente dalla dimensione del carattere del pulsante. [issue 394] {L2} {L1} Ora è possibile anche cambiare la dimensione del carattere delle schede delle cartelle nel tema 'Apple Pills'.{L2} {L1} Migliorato il colore e il layout per il tema Apple. {L2} {L1} Mostra la data di scadenza della licenza localizzata nella finestra di dialogo di registrazione (non come AAAA-MM-GG).{L2}{L1} Risolto il conflitto della tastiera con la barra degli strumenti del filtro rapido; digitare [Shift]+[F] e [Shift]+[M] nella barra di ricerca attivava la ricerca quickJump. {L2}{L1} In alcuni casi, quickJump attivava in modo erratico le schede dei messaggi singoli. {L2}{L1} La barra di navigazione verrà ora sempre spostata in alto durante il passaggio tra il layout classico e quello verticale. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

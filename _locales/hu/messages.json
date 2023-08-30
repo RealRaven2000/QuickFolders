@@ -172,6 +172,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "Jelenleg a Thunderbird nem engedi a kiegészítőknek, hogy felülírják ezeket a gyorsbillentyűket, hamarosan próbálunk egy megoldást végrehajtani."
+  },
   "lastName.label": {
     "message": "Vezetéknév:"
   },
@@ -1526,7 +1529,7 @@
     "message": "A Standard verzióra való frissítéskor a vásárlás dátumától számítva egy teljes év licencidőt kap, függetlenül az előző licenc lejárati dátumától."
   },
   "special-offer-expiry": {
-    "message": "augusztus 13"
+    "message": "szeptember 12."
   },
   "special-offer-head": {
     "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
@@ -1626,7 +1629,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Javítva: A quickJump egyetlen üzenet fülre vált át, ahelyett hogy egy mappába ugrana a jelenlegi Thunderbird fülön. [issue 389] {L2} {L1} Javítva: Billentyű ütközés a gyors szűrő eszköztárral. {L2} {L1} Javítva: A szám gyorsbillentyűk nem működnek - levél mozgatása Option+Shift+Szám. Mivel a [CTRL]+Szám gyorsbillentyűk le vannak foglalva a Thunderbirdben, mindig az [ALT] módosítót kell használnunk ezekhez a billentyűparancsokhoz. [issue 387] {L2} {L1} A licenc lejárati dátumának megjelenítése a regisztrációs ablakban helyi dátumként. {L2} {L1} Opció eltávolítva a QuickFolders eszköztár pozíciójának beállításához. [issue 380] {L2}"
+    "message": "{L1} Mostantól a menü betűmérete megváltoztatható az összes felugró menüben a gomb betűméretétől függetlenül. [issue 394] {L2} {L1} Mostantól megváltoztathatod a mappa fülök betűméretét az 'Apple Pills' témában.{L2} {L1} Jobb színhasználat és elrendezés az Apple témához. {L2} {L1} A lokalizált licenc lejárati dátuma megjelenik a regisztrációs ablakban (nem mint ÉÉÉÉ-HH-NN).{L2}{L1} Megoldva a billentyűzet ütközés a gyors szűrő eszköztárral; [Shift]+[F] és [Shift]+[M] begépelése a keresőmezőbe elindította a quickJump keresést. {L2}{L1} Néhány esetben a quickJump tévesen aktiválta az egyetlen üzenet füleket. {L2}{L1} A navigációs sáv most mindig felülre kerül át a klasszikus és függőleges elrendezés között váltáskor. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

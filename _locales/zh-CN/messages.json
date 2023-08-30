@@ -202,6 +202,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "目前 Thunderbird 不允许插件覆盖这些快捷键，我们会尽快实现一种解决方案。"
+  },
   "lastName.label": {
     "message": "姓氏"
   },
@@ -1697,7 +1700,7 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "8月13日"
+    "message": "9月12日"
   },
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
@@ -1803,7 +1806,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 修复：quickJump 切换到单个消息选项卡，而不是跳转到当前 Thunderbird 选项卡中的文件夹。[issue 389] {L2} {L1} 修复：与快速过滤工具栏冲突的键盘冲突。 {L2} {L1} 修复：数字快捷键不起作用 - 使用 Option+Shift+数字 移动邮件。由于 [CTRL]+数字 快捷键由 Thunderbird 预留，我们必须始终为这些快捷键使用修饰符 [ALT]。 [issue 387] {L2} {L1} 将许可证到期日期显示为本地日期在注册对话框中。 {L2} {L1} 删除设置 QuickFolders 工具栏位置的选项。 [issue 380] {L2}"
+    "message": "{L1} 现在您可以独立于按钮字体更改所有弹出菜单的菜单字体大小。[issue 394] {L2} {L1} 您还可以在'Apple Pills'主题中更改文件夹选项卡的字体大小。{L2} {L1} 改进了Apple主题的着色和布局。 {L2} {L1} 在注册对话框中显示本地化的许可到期日期（不以YYYY-MM-DD的格式）。{L2}{L1} 解决了与快速过滤工具栏的键盘冲突；在搜索栏中输入[Shift]+[F]和[Shift]+[M]会触发quickJump搜索。 {L2}{L1} 在某些情况下，quickJump会不稳定地激活单个消息选项卡。 {L2}{L1} 切换经典布局和垂直布局时，导航栏将始终移至顶部。[issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

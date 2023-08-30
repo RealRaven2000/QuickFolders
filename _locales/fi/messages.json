@@ -212,7 +212,7 @@
     "message": "Kun päivität Standard-versiosta, saat yhden täyden vuoden lisenssikauden ostopäivästä lukien edellisen lisenssisi päättymispäivästä riippumatta."
   },
   "special-offer-expiry": {
-    "message": "13 elokuuta"
+    "message": "12. syyskuuta"
   },
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
@@ -300,7 +300,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Korjattu: quickJump vaihtaa yksittäiseen viestilehteen sen sijaan, että siirtyisi kansion sisälle nykyisessä Thunderbird-välilehdessä. [issue 389] {L2} {L1} Korjattu: Näppäimistön törmäys pikasuodatin-työkalurivin kanssa. {L2} {L1} Korjattu: Numeropikakomennot eivät toimi - postin siirtäminen käyttämällä Option+Shift+Numero. Koska [CTRL]+Numero-pikakomennot ovat varattuja Thunderbirdissa, meidän on aina käytettävä modifioijaa [ALT] näille pikakomennoille. [issue 387] {L2} {L1} Näytä lisenssin vanhenemispäivä rekisteröinti-ikkunassa paikallisena päivämääränä. {L2} {L1} Vaihtoehto QuickFolders-työkalurivin sijainnin asettamiseen on poistettu. [issue 380] {L2}"
+    "message": "{L1} Nyt valikon fonttikokoisuus voidaan muuttaa kaikille ponnahdusvalikoille erikseen napin fonttikoosta riippumatta. [issue 394] {L2} {L1} Nyt voit myös muuttaa kansioiden välilehtien fonttikokoa 'Apple Pills' -teemassa.{L2} {L1} Parannettu väritys ja asettelu Apple-teemalle. {L2} {L1} Näytä paikallistettu lisenssin vanhentumispäivämäärä rekisteröinti-ikkunassa (ei muodossa VVVV-KK-PP).{L2}{L1} Ratkaistu näppäimistökonflikti pikasuodatus-työkalurivin kanssa; kirjoittaminen [Shift]+[F] ja [Shift]+[M] hakukenttään laukaisi quickJump-haun. {L2}{L1} Joissain tapauksissa quickJump aktivoi yksittäisten viestien välilehdet virheellisesti. {L2}{L1} Navigointipalkki siirretään nyt aina ylös vaihdettaessa klassisen ja pystysuuntaisen asettelun välillä. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

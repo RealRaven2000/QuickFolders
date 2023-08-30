@@ -202,6 +202,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "Actualment, Thunderbird no permet que les complements sobreescriuen aquests dreceres, estem intentant implementar una solució temporal aviat."
+  },
   "lastName.label": {
     "message": "Cognoms:"
   },
@@ -1704,7 +1707,7 @@
     "message": "Quan actualitzeu des de Standard, obteniu un període de llicència d'un any complet a partir de la data de compra, independentment de la data de caducitat de la vostra llicència anterior."
   },
   "special-offer-expiry": {
-    "message": "13 d'agost"
+    "message": "12 de setembre"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",
@@ -1810,7 +1813,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Solucionat: quickJump canvia a una sola pestanya de missatge en comptes de saltar a una carpeta en la pestanya actual de Thunderbird. [issue 389] {L2} {L1} Solucionat: Col·lisió del teclat amb la barra de filtres ràpids. {L2} {L1} Solucionat: Les dreceres de números no funcionen - moure correu amb Opció+Majúscules+Número. Com que les dreceres [CTRL]+Número estan reservades per Thunderbird, sempre hem d'utilitzar el modificador [ALT] per a aquestes dreceres. [issue 387] {L2} {L1} Mostra la data d'expiració de la llicència al quadre de diàleg de registre com a data local. {L2} {L1} Opció retirada per establir la posició de la barra d'eines QuickFolders. [issue 380] {L2}"
+    "message": "{L1} La mida de la font del menú ara es pot canviar per a tots els menús emergents, independentment de la font del botó. [issue 394] {L2} {L1} Ara també podeu canviar la mida de la font de les pestanyes de carpeta al tema 'Píndoles d'Apple'.{L2} {L1} Millora de la coloració i el disseny per al tema d'Apple. {L2} {L1} Mostra la data d'expiració de la llicència localitzada al quadre de diàleg de registre (no com a AAAA-MM-DD).{L2}{L1} Resolt el conflicte del teclat amb la barra d'eines de filtre ràpid; escriure [Shift]+[F] i [Shift]+[M] a la barra de cerca activava la cerca de quickJump. {L2}{L1} En alguns casos, quickJump activava de manera erràtica les pestanyes de missatges únics. {L2}{L1} La barra de navegació ara sempre es mourà a la part superior en canviar entre el disseny clàssic i vertical. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

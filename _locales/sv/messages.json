@@ -198,6 +198,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "För närvarande tillåter inte Thunderbird tillägg att skriva över dessa genvägar, vi försöker implementera en lösning snart."
+  },
   "lastName.label": {
     "message": "Efternamn:"
   },
@@ -1771,7 +1774,7 @@
     "message": "När du uppgraderar från Standard får du ett helt års licensperiod från inköpsdatumet oavsett utgångsdatum för din tidigare licens."
   },
   "special-offer-expiry": {
-    "message": "13 augusti"
+    "message": "12 september"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",
@@ -1877,7 +1880,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Åtgärdat: quickJump växlar till en enskild meddelande-flik istället för att hoppa till en mapp i aktuell Thunderbird-flik. [issue 389] {L2} {L1} Åtgärdat: Tangentbordskrock med snabba filterverktygsraden. {L2} {L1} Åtgärdat: Nummersnabbkommandon fungerar inte - flytta mail med Option+Shift+Nummer. Eftersom [CTRL]+Nummer-snabbkommandon är reserverade av Thunderbird måste vi alltid använda modifieraren [ALT] för dessa snabbkommandon. [issue 387] {L2} {L1} Visa licensens utgångsdatum i registreringsdialogen som lokal datum. {L2} {L1} Alternativet för att ställa in positionen för QuickFolders verktygsrad har tagits bort. [issue 380] {L2}"
+    "message": "{L1} Nu kan du ändra menyns teckenstorlek för alla popup-menyer, oberoende av storleken på knapparnas tecken. [issue 394] {L2} {L1} Nu kan du också ändra teckenstorleken på mappflikarna i temat 'Apple Pills'.{L2} {L1} Förbättrad färgsättning och layout för Apple-temat. {L2} {L1} Visa det lokaliseras licensens utgångsdatum i registreringsdialogen (inte som ÅÅÅÅ-MM-DD).{L2}{L1} Löst tangentbordskonflikten med snabbfilterverktygsfältet; att skriva [Shift]+[F] och [Shift]+[M] i sökfältet aktiverade quickJump-sökningen. {L2}{L1} I vissa fall aktiverade quickJump flikar för enskilda meddelanden på ett felaktigt sätt. {L2}{L1} Navigeringsfältet kommer nu alltid att flyttas uppåt vid växling mellan klassisk och vertikal layout. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

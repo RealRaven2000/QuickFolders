@@ -105,6 +105,9 @@
   "intro": {
     "message": "Roční licence pro QuickFolders Pro vám poskytuje všechny prémiové funkce za rok. To nám také umožňuje další podporu a růst produktu a proměnit ho v něco, co je ještě úžasnější."
   },
+  "keyshortcuts.news": {
+    "message": "V současné době Thunderbird nedovoluje doplňkům přepsat tyto zkratky, brzy se pokusíme implementovat provizorní řešení."
+  },
   "lastName.label": {
     "message": "Příjmení:"
   },  
@@ -280,7 +283,7 @@
     "message": "Když upgradujete ze Standardu, získáte licenční období na jeden celý rok od data nákupu bez ohledu na datum vypršení platnosti vaší předchozí licence."
   },
   "special-offer-expiry": {
-    "message": "13. srpna"
+    "message": "12. září"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",
@@ -368,7 +371,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Opraveno: quickJump přepne na záložku jednoho zprávy místo přeskočení do složky v aktuální záložce Thunderbirda. [issue 389] {L2} {L1} Opraveno: Kolize klávesnice s panelovým nástrojem rychlých filtrů. {L2} {L1} Opraveno: Nekompatibilní zkratky s čísly - přesunutí pošty s Option+Shift+Číslo. Protože zkratky [CTRL]+Číslo jsou v Thunderbirdu rezervovány, musíme pro tyto zkratky vždy používat modifikátor [ALT]. [issue 387] {L2} {L1} Zobrazení data vypršení licence v dialogovém okně registrace jako místní datum. {L2} {L1} Odebrána možnost nastavení pozice panelu QuickFolders. [issue 380] {L2}"
+    "message": "{L1} Nyní lze změnit velikost písma nabídek všech vyskakovacích menu, nezávisle na písmu tlačítek. [problém 394] {L2} {L1} Nyní lze také změnit velikost písma záložek složek v tématu 'Jablečné pilulky'.{L2} {L1} Vylepšené zbarvení a rozvržení pro téma Apple. {L2} {L1} Zobrazit lokalizované datum vypršení platnosti licence v dialogovém okně registrace (nikoli ve formátu RRRR-MM-DD).{L2}{L1} Vyřešen konflikt klávesnice s panelovým nástrojem rychlého filtru; psaní [Shift]+[F] a [Shift]+[M] do vyhledávacího pole spouštělo rychlé vyhledávání. {L2}{L1} V některých případech quickJump nepravidelně aktivovával karty jednotlivých zpráv. {L2}{L1} Navigační panel bude nyní vždy přesunut nahoru při přepínání mezi klasickým a vertikálním uspořádáním. [problém 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

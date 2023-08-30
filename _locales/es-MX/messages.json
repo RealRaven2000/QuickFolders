@@ -192,6 +192,9 @@
   "intro": {
     "message": "Una licencia anual de QuickFolders Pro le proporciona todas las características Premium por un año. También permite apoyar, hacer crecer el producto y convertirlo en algo aún más impresionante."
   },
+  "keyshortcuts.news": {
+    "message": "Actualmente Thunderbird no permite que los complementos sobrescriban estos atajos, estamos tratando de implementar una solución en breve."
+  },
   "lastName.label": {
     "message": "Apellido:"
   },
@@ -1738,7 +1741,7 @@
     "message": "Cuando actualiza desde Estándar, obtiene un período de licencia de un año completo a partir de la fecha de compra, independientemente de la fecha de vencimiento de su licencia anterior."
   },
   "special-offer-expiry": {
-    "message": "13 de agosto"
+    "message": "12 de septiembre"
   },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
@@ -1844,8 +1847,8 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Corregido: quickJump cambia a una sola pestaña de mensaje en lugar de saltar a una carpeta en la pestaña actual de Thunderbird. [issue 389] {L2} {L1} Corregido: Colisión de teclado con la barra de filtros rápidos. {L2} {L1} Corregido: Atajos de números que no funcionan - mover correo con Opción+Mayús+Número. Dado que los atajos [CTRL]+Número están reservados por Thunderbird, siempre debemos usar el modificador [ALT] para estos atajos. [issue 387] {L2} {L1} Mostrar la fecha de expiración de la licencia en el diálogo de registro como fecha local. {L2} {L1} Opción retirada para establecer la posición de la barra de herramientas QuickFolders. [issue 380] {L2}"
-   },
+    "message": "{L1} Ahora es posible cambiar el tamaño de la fuente del menú para todos los menús emergentes, independientemente del tamaño de fuente de los botones. [issue 394] {L2} {L1} Ahora también puedes cambiar el tamaño de fuente de las pestañas de carpetas en el tema 'Píldoras de Apple'.{L2} {L1} Mejora en la coloración y diseño para el tema de Apple. {L2} {L1} Mostrar la fecha de vencimiento de la licencia localizada en el cuadro de diálogo de registro (no como AAAA-MM-DD).{L2}{L1} Resuelta la colisión del teclado con la barra de herramientas de filtro rápido; escribir [Shift]+[F] y [Shift]+[M] en la barra de búsqueda activaba la búsqueda de quickJump. {L2}{L1} En algunos casos, quickJump activaba de manera errática las pestañas de mensajes individuales. {L2}{L1} La barra de navegación ahora siempre se colocará en la parte superior al cambiar entre el diseño clásico y el vertical. [issue 395]{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenido a $addonName$",

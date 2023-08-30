@@ -198,6 +198,9 @@
       }
     }
   },
+  "keyshortcuts.news": {
+    "message": "Op dit moment staat Thunderbird niet toe dat add-ons deze snelkoppelingen overschrijven. We proberen binnenkort een oplossing te implementeren."
+  },
   "lastName.label": {
     "message": "Achternaam:"
   },
@@ -1762,7 +1765,7 @@
     "message": "Wanneer u upgradet van Standard, krijgt u een licentietermijn van één jaar vanaf de aankoopdatum, ongeacht de vervaldatum van uw vorige licentie."
   },
   "special-offer-expiry": {
-    "message": "13 augustus"
+    "message": "12 september"
   },
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
@@ -1868,7 +1871,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Opgelost: quickJump schakelt over naar een enkel berichttabblad in plaats van naar een map te springen in het huidige Thunderbird-tabblad. [issue 389] {L2} {L1} Opgelost: Toetsenbordconflict met de snel filter werkbalk. {L2} {L1} Opgelost: Sneltoetsen met nummers werken niet - verplaats e-mail met Option+Shift+Nummer. Omdat [CTRL]+Nummer sneltoetsen zijn gereserveerd door Thunderbird, moeten we altijd de [ALT]-modificator gebruiken voor deze sneltoetsen. [issue 387] {L2} {L1} Toon de vervaldatum van de licentie in het registratiedialoogvenster als lokale datum. {L2} {L1} Optie verwijderd om de positie van de QuickFolders werkbalk in te stellen. [issue 380] {L2}"
+    "message": "{L1} De lettergrootte van het menu kan nu worden gewijzigd voor alle pop-upmenu's, onafhankelijk van de knoplettergrootte. [issue 394] {L2} {L1} U kunt nu ook de lettergrootte van de maptabbladen wijzigen in het 'Apple Pills'-thema.{L2} {L1} Verbeterde kleur en lay-out voor het Apple-thema. {L2} {L1} Toon de gelokaliseerde vervaldatum van de licentie in het registratievenster (niet als JJJJ-MM-DD).{L2}{L1} Opgelost toetsenbordconflict met de snelfilterwerkbalk; typen van [Shift]+[F] en [Shift]+[M] in de zoekbalk activeerde de quickJump-zoekopdracht. {L2}{L1} In sommige gevallen activeerde quickJump willekeurig enkele berichttabbladen. {L2}{L1} De navigatiebalk wordt nu altijd naar boven verplaatst bij het overschakelen tussen de klassieke en verticale lay-out. [issue 395]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

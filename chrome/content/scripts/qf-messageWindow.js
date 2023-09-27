@@ -35,25 +35,7 @@ function onLoad(activatedWhileWindowOpen) {
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
   }
-
-
-  const prefs = window.QuickFolders.Preferences;
-  let messageDoc = window.messageBrowser.contentDocument; // messagePaneBox
-  // relocate to make it visible (bottom of thread)
-  window.QuickFolders.Interface.liftNavigationbar(messageDoc);    // passes HTMLDocument "about:message"
-
-  // single Message
-  window.QuickFolders.Interface.displayNavigationToolbar(
-    {
-      display: prefs.isShowCurrentFolderToolbar("messageWindow"),
-      doc: messageDoc,
-      selector: "messageWindow"
-    }
-  ); 
-  window.QuickFolders.Interface.updateNavigationBar(messageDoc);
-  // should we allow the "run filters on selected messages" button ?
-  // window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFilters" });
-
+  // [issue 404] removed duplicate code from qf-3pane.js!
 }
 
 function onUnload(isAddOnShutDown) {

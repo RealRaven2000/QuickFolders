@@ -123,13 +123,13 @@ async function onLoad(activatedWhileWindowOpen) {
       special="qfMsgFolderNavigation" 
       oncommand="QuickFolders.Interface.onSkipFolder(this);"
       tooltiptext="__MSG_qf.tooltip.skipUnreadFolder__" />
-    <toolbarseparator id="QuickFolders-Navigate-Separator" />
+    <toolbarseparator id="QuickFolders-Navigate-Separator" class="qf_navigation"/>
     <toolbarbutton id="QuickFolders-NavigateUp"
-      class="icon"
+      class="icon qf_navigation"
       onclick="QuickFolders.Interface.goUpFolder();"
       tooltiptext="__MSG_qf.tooltip.folderUp__"/>
     <toolbarbutton id="QuickFolders-NavigateLeft"
-      class="icon"
+      class="icon qf_navigation"
       onclick="QuickFolders.Interface.goPreviousSiblingFolder();"/>
 
     <hbox class="folderBarContainer">
@@ -141,9 +141,9 @@ async function onLoad(activatedWhileWindowOpen) {
     </hbox>
 
     <toolbarbutton id="QuickFolders-NavigateRight"
-      class="icon"
+      class="icon qf_navigation"
       onclick="QuickFolders.Interface.goNextSiblingFolder();"/>
-    <toolbarseparator id="QuickFolders-Navigate-Separator2" />
+    <toolbarseparator id="QuickFolders-Navigate-Separator2" class="qf_navigation"/>
     <toolbarbutton id="QuickFolders-currentFolderMailFolderCommands"
       class="icon"
       tooltiptext="__MSG_qf.tooltip.mailFolderCommands__"
@@ -202,14 +202,24 @@ async function onLoad(activatedWhileWindowOpen) {
         case "about:message":      // inject into messagepane (on top)
           WL.injectElements(`
           <vbox id="messagepanebox">`
-      + INJECTED_ELEMENTS + `   
+      + INJECTED_ELEMENTS + `
           </vbox>
           `);
           if (window.parent.document.URL.endsWith("messageWindow.xhtml")) {
             windowMode = "messageWindow";
+            let ft = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
+            if (ft) { // remove obsolete navigation elements!
+              let navs = ft.querySelectorAll(".qf_navigation");
+              for (let navElement of navs) {
+                navElement.remove();
+              }
+            }
+            let fa = contentDoc.getElementById("QuickFolders-currentFolderFilterActive");
+            if (fa) { fa.remove(); }
           } else {
             windowMode = "singleMailTab";
           } 
+          
           break;
       }
   // when to set windowMode = "messageWindow" ??

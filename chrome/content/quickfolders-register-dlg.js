@@ -40,6 +40,39 @@ var Register = {
     this.updateLicenseUI();
     window.addEventListener("QuickFolders.BackgroundUpdate", this.updateLicenseUI.bind(this));
   },
+
+  toggleTerms: function(btn) {
+    let termsBox = document.getElementById("licenseTerms");
+    let collapsed = termsBox.getAttribute("collapsed");
+    let label;
+    if (collapsed) {
+      termsBox.removeAttribute("collapsed");
+      label = "licenseTerms.hide";
+      btn.classList.add("continue");
+    } else {
+      termsBox.setAttribute("collapsed", "true")
+      label = "licenseTerms.show";
+      btn.classList.remove("continue");
+    }
+    btn.label = QuickFolders.Util.getBundleString(label);
+    let form = document.querySelector("hbox.form");
+    if (form) {
+      if (collapsed) {
+        form.setAttribute("collapsed", "true")
+      } else {
+        form.removeAttribute("collapsed");
+      }
+    }
+    let buy = document.getElementById("buyBox");
+    if (buy) {
+      if (collapsed) {
+        buy.setAttribute("collapsed", "true")
+      } else {
+        buy.removeAttribute("collapsed");
+      }
+    }   
+    window.sizeToContent();    
+  },
   
   updateLicenseUI: async function updateLicenseUI() {
     const licenseInfo = QuickFolders.Util.licenseInfo,
@@ -168,6 +201,7 @@ var Register = {
         util.logToConsole("Registration Problem\n" + txt + "\nDecrypted part: " + licenseInfo.decryptedPart);
         
 		}
+    window.sizeToContent();
 			
   } ,
   

@@ -365,7 +365,7 @@ END LICENSE BLOCK */
     ##                                                           not next session issue 
 
 
-  6.2 QuickFolders Pro - WIP
+  6.2 QuickFolders Pro - 30/08/3023
     ## [issue 395] Fix navigation bar (current folder bar) positioning when switching between classic and vertical layout
     ## [issue 396] Add 'compact density' support
     ## improved "Apple Pills" theme
@@ -384,10 +384,26 @@ END LICENSE BLOCK */
           the "renew license" button for the day and return to normal toolbar icon 
           (remove special coloring / message)
 
+  6.3 - WIP
+    ## [issue 398] Fixed: Open folder from QF Tab while viewing a message 
+    ## [issue 400] Make registration screen less tall / easily resizable
+    ## [issue 404] Fixed toolbar issues in Single Message window: "null" element 
+    ## [issue 409] Navigation Bar: Avoid horizontal overflow in columns view
+    ## [issue 407] Support svg icons in tabs - make icon size configurable
+    ## [issue 408] Tab specific properties panel cut off at bottom
+    ## [issue 406] Fixed: "Empty Junk" command intermittently hidden from context menus
+    ## [issue 412] Dragging mail to Current Folder tab does not open subfolders popup
+    ## [issue 417] Message list scrolls to top when switching folders
+    ## === WIP ===
+    ## [issue 399] Add custom icons in folder tree in Thunderbird 115
+    
+
 
 
 	Future Work
 	===========
+    ## [issue ]
+    ## [issue ]
     ## [issue 354] Add permanent notifications for messages moved.
     ## [issue 103] Feature Request: Support copying folders
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
@@ -834,9 +850,12 @@ var QuickFolders = {
 		this.initTabsFromEntries(folderEntries);
 		
 		// only load in main window(?)
+    // [issue 399] needs to be moved to the 3pane document code!!!!!!!!!!!!!!
+    /*
 		if (QuickFolders.FolderTree) {
 			QuickFolders.FolderTree.init();
     }
+    */
 
 		// add tab listeners to automatically main toolbar when it is not needed
 		QuickFolders.Interface.initToolbarTabListener();
@@ -849,7 +868,7 @@ var QuickFolders = {
 			if (QuickFolders.Interface.FilterToggleButton)
 				QuickFolders.Interface.FilterToggleButton.collapsed=true;
 		}
-    QuickFolders.addFolderPaneListener();
+    // QuickFolders.addFolderPaneListener();
     
     // Reading list
     if (QuickFolders.bookmarks) {
@@ -1069,6 +1088,23 @@ var QuickFolders = {
 						}
 					}
 					break;
+        default:
+          let errText = "";
+          if (typeof contentType == "string") {
+            errText = `Dropped object has unsupported content type: [${contentType}]\n`;
+          } else {
+            errText = `Cannot determine what was dropped, contentType is [${typeof contentType}]\n`;
+          }
+          QuickFolders.Util.logHighlight(
+            "toolbarDragObserver.drop FAILED\n",
+            "white", 
+            "rgb(80,0,0)",
+            errText,
+            "dataTransfer Object: ",
+            evt.dataTransfer,
+            "\ncontained items:",
+            evt.dataTransfer? evt.dataTransfer.items : "n\a");
+        break;
 			}
 		}
 	} ,
@@ -1101,7 +1137,7 @@ var QuickFolders = {
 			const prefs = QuickFolders.Preferences,
 			      util = QuickFolders.Util;
       
-			util.logDebugOptional("dnd","popupDragObserver.dragEnter " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+			util.logDebugOptional("dnd.detail","popupDragObserver.dragEnter " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
 				evt.preventDefault(); // fix layout issues in TB3 + Postbox!
 
@@ -1154,7 +1190,7 @@ var QuickFolders = {
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			// find parent node!
-			util.logDebugOptional("dnd","popupDragObserver.dragExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+			util.logDebugOptional("dnd.detail","popupDragObserver.dragExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
 				if (popupStart.nodeName=='menu') {
 					QuickFolders_globalLastChildPopup = popupStart; // remember to destroy!
@@ -1190,6 +1226,7 @@ var QuickFolders = {
             model = QuickFolders.Model,
             QI = QuickFolders.Interface,
             QFFW = QuickFolders.FilterWorker;
+      util.logDebugOptional("dnd","popupDragObserver.drop", evt);
       if (!dragSession) {
         dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
       }
@@ -1427,7 +1464,9 @@ var QuickFolders = {
 					dragSession.canDrop=false;
 					return;
 				}
-				let button = evt.target;
+				let button = evt.target,
+            buttonId = button.id || "";
+
 				
         // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
         if (button) {
@@ -1436,7 +1475,7 @@ var QuickFolders = {
         
 				// somehow, this creates a duplication in linux
 				// delete previous drag folders popup!
-        if (button.id && button.id =="QuickFolders-quickMove" || button.id =="QuickFolders-readingList") {
+        if (buttonId =="QuickFolders-quickMove" || buttonId =="QuickFolders-readingList") {
 					dragSession.canDrop = false;
 					if (dragSession.dataTransfer.items.length) {
 						let firstItem = dragSession.dataTransfer.items[0];
@@ -1449,6 +1488,9 @@ var QuickFolders = {
             removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', doc);
           }
           return;
+        }
+        if (buttonId == "QuickFolders-oneButtonPanel") {
+          removeLastPopup(QuickFolders_globalHidePopupId, doc);
         }
 
 				if (button.tagName === "toolbarbutton") {
@@ -1551,10 +1593,14 @@ var QuickFolders = {
 						let popupset = doc.createXULElement('popupset'),
 						    menupopup = doc.createXULElement('menupopup'),
 						    popupId;
-            if (evt.target.parentElement.classList.contains("contentTabToolbar")) {
+            if (evt.target.parentElement.classList.contains("contentTabToolbar")) { 
               evt.target.parentElement.appendChild(popupset);
+            } else if (evt.target.id && evt.target.id=="QuickFoldersCurrentFolder") {
+              // [issue 412] button needs to be parent of popupset 
+              //             in order to trigger drop even of button dragObserver!
+              evt.target.appendChild(popupset);
             } else {
-              if (evt.target.ownerDocument.location.toString().endsWith("messenger.xhtml")) {
+              if (evt.target.ownerDocument.location.toString().endsWith("messenger.xhtml")) { 
                 QI.FoldersBox.appendChild(popupset);
               }
             }
@@ -1577,15 +1623,13 @@ var QuickFolders = {
 								removeLastPopup(QuickFolders_globalHidePopupId, doc);
                 
                 if (isDisabled) {
-                  let mi = QI.createMenuItem_disabled();
-                  menupopup.appendChild(mi);
                 } else {
                   QI.addSubFoldersPopup(menupopup, targetFolder, true);
                 }                  
 							}
 						}
 						else { // special folderbutton: recent
-              if (button.id == 'QuickFolders-Recent-CurrentFolderTool' || button.id == 'QuickFolders-Recent') {
+              if (buttonId == 'QuickFolders-Recent-CurrentFolderTool' || buttonId == 'QuickFolders-Recent') {
                 popupId = 'moveTo_QuickFolders-folder-popup-Recent';
                 // [issue 262] avoid "stale" drag-to recent menu
                 menupopup.setAttribute('id', popupId);
@@ -1601,17 +1645,20 @@ var QuickFolders = {
                 }
               }
 						}
-            if (!popupId)
+            if (!popupId) {
               return;
+            }
 
 						util.logDebugOptional("dnd", "showPopup with id " + popupId );
-						let p =  doc.getElementById(popupId);
+						let p = doc.getElementById(popupId);
+            // [issue 412] popupId not found. should be this instead:
+            // QuickFolders-folder-popup-QuickFoldersCurrentFolder
+            // [#QuickFoldersCurrentFolder]
 						if (!p) {
               util.logDebug('Document did not return the popup: ' + popupId);
             }
 						// avoid showing empty popup
 						if (p && p.children && p.children.length) {
-						
 							// from a certain size, make sure to shift menu to right to allow clicking the tab
 							let minRealign = prefs.getIntPref("folderMenu.realignMinTabs"),
                   isShift = false;
@@ -1634,6 +1681,8 @@ var QuickFolders = {
                     "count = " + c +"\nminRealign = " + minRealign + "\nisShift = " + isShift);
 								}
 							}
+
+              removeLastPopup(QuickFolders_globalHidePopupId,doc);
 						
 							doc.popupNode = button;
               let position = isShift ? "end_before" : "after_start";
@@ -1647,7 +1696,12 @@ var QuickFolders = {
 							
 							util.logDebugOptional("dnd", "set global popup id = " + popupId);
 							QuickFolders_globalHidePopupId = popupId;
-						}
+						} else {
+              if (QuickFolders.Preferences.isDebugOption("dnd")) {
+                console.log ("QF(dnd) - no additional popup data",p,popupId)
+              }
+            }
+
 
 						// if (popupId==QuickFolders_globalHidePopupId) QuickFolders_globalHidePopupId=""; // avoid hiding "itself". QuickFolders_globalHidePopupId is not cleared if previous drag cancelled.
 
@@ -1666,7 +1720,7 @@ var QuickFolders = {
 		dragExit: function btnObs_dragExit(event, dragSession) {
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 			const util = QuickFolders.Util;
-			util.logDebugOptional("dnd", "buttonDragObserver.dragExit\n" + 
+			util.logDebugOptional("dnd.detail", "buttonDragObserver.dragExit\n" + 
 			  "sourceNode=" + (dragSession ? dragSession.sourceNode : "[no dragSession]\n") +
 				"event.target=" + event.target || "[none]");
 			let button = event.target;
@@ -1686,7 +1740,7 @@ var QuickFolders = {
 			}
 			try {
 				let src = dragSession.sourceNode.nodeName || "unnamed node";
-				util.logDebugOptional("dnd", "buttonDragObserver.dragExit - sourceNode = " + src);
+				util.logDebugOptional("dnd.detail", "buttonDragObserver.dragExit - sourceNode = " + src);
 			} catch(e) { util.logDebugOptional("dnd", "buttonDragObserver.dragExit - " + e); }
       
 			if (dragSession.sourceNode.nodeName === 'toolbarpaletteitem') {
@@ -1732,7 +1786,7 @@ var QuickFolders = {
       const util = QuickFolders.Util;
       // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
       if (button) {
-        util.logDebugOptional("dnd", "dragLeave event!");
+        util.logDebugOptional("dnd.detail", "dragLeave event!");
         button.classList.remove("dragover");
       }      
     } ,
@@ -1961,7 +2015,7 @@ var QuickFolders = {
 			let button = event.target;
 			util.logDebugOptional('dnd', 'buttonDragObserver.startDrag\n' 
 			                           + 'button.folder=' + button.folder + '\n' 
-																 + 'button.id=' + button.id);
+																 + 'button.id=' + button.id || "n/a");
 			if(!button.folder)
 				 return;
 			// transferData.data = new TransferData();
@@ -1978,6 +2032,7 @@ var QuickFolders = {
 
 	},
 
+  /*
   addFolderPaneListener: function addFolderPaneListener() {
     if (!this.folderPaneListen) {
       let menu = document.getElementById('folderPaneContext');
@@ -1994,6 +2049,7 @@ var QuickFolders = {
       menu.removeEventListener("popupshowing", QuickFolders.Interface.folderPanePopup);
     }
   },
+  */
   
   TabEventListeners: {},
 
@@ -2057,13 +2113,12 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
 	}
   //during QuickFolders_MySelectFolder, disable the listener for tabmail "select"
 	util.logDebugOptional("folders.select", "QuickFolders_MySelectFolder: " + folderUri);
- 	if (prefs.isDebugOption("folders.select")) debugger;
 	
 	if (!folderUri) return false;
 
   // TB 115
   // should we support "mailMessageTab"  ??
-  if (!["mail3PaneTab"].includes( window.gTabmail.currentTabInfo.mode.name)) {
+  if (!["mail3PaneTab", "mailMessageTab"].includes( window.gTabmail.currentTabInfo.mode.name)) {
     QuickFolders.Util.logDebug("QuickFolders_MySelectFolder exit, because of tabMode: " + window.gTabmail.currentTabInfo.mode.name);
     return false;
   }
@@ -2136,7 +2191,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
   }
 	// new behavior: OPEN NEW TAB
 	// if single message is shown, open folder in a new Tab...
-	if (QI.CurrentTabMode == 'message' || QI.CurrentTabMode =='glodaList') {
+	if (QI.CurrentTabMode == "mailMessageTab" || QI.CurrentTabMode =="glodaList") {
 	  if (!isExistFolderInTab) {
 		  if (prefs.getBoolPref('behavior.nonFolderView.openNewTab')) {
         util.logDebugOptional("folders.select", "calling openFolderInNewTab()");
@@ -2280,9 +2335,10 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
     // folderPane.activeModes = QuickFolders.activeTreeViewModes;
   }
 
+  let isTabSelected = false;
   //folderTree.treeBoxObject.ensureRowIsVisible(gFolderTreeView.selection.currentIndex); 
   if ((msgFolder.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL)) { // || folderUri.indexOf("nobody@smart")>0
-    QuickFolders.Interface.onTabSelected();
+    isTabSelected = true;
   }
 	
 	// could not find folder!
@@ -2290,26 +2346,31 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst) {
     util.logDebugOptional("folders.select", 'Could not find folder in tree (folderRow = ' + folderRow + ')');
 		return false;
 	}
-
-	if (prefs.isFocusPreview && (QuickFolders.Interface.getThreadPane())) {
-    util.logDebugOptional("folders.select", 'setFocusThreadPane()');
-		QuickFolders.Interface.setFocusThreadPane();
-    let doc = QuickFolders.Util.document3pane;
-    if (doc) {
-      doc.commandDispatcher.advanceFocus();
-      doc.commandDispatcher.rewindFocus();
-    }
-	}
 	
 	// speed up the highlighting... - is this only necessary on MAC ?
 	if (highlightTabFirst) {
 	  let entry = model.getFolderEntry(folderUri);
 		if (entry) {
       util.logDebugOptional("folders.select", 'onTabSelected() - highlighting speed hack');
-		  QuickFolders.Interface.onTabSelected();  
+		  isTabSelected = true;
 		}
 	}	
-	
+  
+  if (isTabSelected) {
+    QuickFolders.Interface.onTabSelected();
+  }
+
+	if (prefs.isFocusPreview && (QuickFolders.Interface.getThreadPane())) {
+    util.logDebugOptional("folders.select", 'setFocusThreadPane()');
+		QuickFolders.Interface.setFocusThreadPane();
+    /* [issue 417] Message list scrolls to top when switching folders
+    let doc = QuickFolders.Util.document3pane;
+    if (doc) {
+      doc.commandDispatcher.advanceFocus();
+      doc.commandDispatcher.rewindFocus();
+    }
+    */
+	}	
 	return true;
 }; // MySelectFolder
 

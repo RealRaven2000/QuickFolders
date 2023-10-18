@@ -2,6 +2,7 @@ import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
 
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
+const TOGGLEICON_ID = "toggleQuickFoldersIcon";
 
 var currentLicense;
 var startupFinished = false;
@@ -112,6 +113,43 @@ function showInstalled() {
   browser.windows.create({ url, type: "popup", width: 910, height: 800, allowScriptsToClose: true });
 }
 
+// future function for icon support  [issue 399]
+async function addFolderPaneMenu() {
+  // replaces code from QuickFolders.Interface.folderPanePopup()
+  let isDebug = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug"),
+      txtAddIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.customizeIcon"),
+      txtRemoveIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.removeIcon");
+  if (isDebug) {
+    console.log("QuickFolders: addFolderPaneMenu()");
+  }
+  let menuLabel = txtAddIcon; // we need to add some logic here to determine current state...
+  let menuProps = {
+    contexts: ["folder_pane"],
+    onclick: async (event) => {    
+      if (isDebug) {
+        console.log("QuickFolders folderpane context menu", event);
+      }
+      const menuItem = { id: TOGGLEICON_ID };   // fake menu item to pass to doCommand
+      let currentTab = await messenger.mailTabs.getCurrent();
+
+      messenger.NotifyTools.notifyExperiment( 
+        { event: "toggleQuickFoldersIcon", 
+          detail: { commandItem: menuItem, windowId: currentTab.windowId, tabId: currentTab.id } 
+        } 
+      );
+    },
+    icons: {
+      "16": "'chrome://messenger/skin/icons/image.svg"
+    } ,
+    enabled: true,
+    id: TOGGLEICON_ID,
+    title: menuLabel
+  }
+  if (isDebug) {
+    console.log(`quickFilters adding the folder tree context menu item ${menuLabel} ...`, menuProps);
+  }
+  messenger.menus.create(menuProps);
+}
 
 async function main() {
     
@@ -380,6 +418,10 @@ async function main() {
         let status = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_ToolbarStatus");
         return status
       }
+
+      case "addFolderPaneMenu":
+        addFolderPaneMenu();
+        break;
 
 
     }

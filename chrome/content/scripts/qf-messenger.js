@@ -18,6 +18,7 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-scrollmenus.js", window, "UTF-8");
 
 var mylisteners = {};
+var toggleIcon;
 
 async function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.Util.logDebug(`============INJECT==========\nqf-messenger.js onLoad(${activatedWhileWindowOpen})`);
@@ -31,42 +32,8 @@ async function onLoad(activatedWhileWindowOpen) {
   let tb = WL.injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
   
   WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
-  WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
-  
-  // -- main toolbar+palette (LEGACY)
-  /*
-  WL.injectElements(`
-
-    <keyset>
-      <key id="quickFolders-ToggleTree" keycode="VK_F9" oncommand="QuickFolders.Interface.toggleFolderTree();"/>
-    </keyset>
-
-    <!-- Thunderbird & SeaMonkey -->
-    <toolbarpalette id="MailToolbarPalette">
-      <toolbarbutton id="QuickFolders-toolbar-button" 
-            class="toolbarbutton-1 chromeclass-toolbar-additional"
-            label="QuickFolders" 
-            tooltiptext="__MSG_qf.toolbar.quickfolders.toolbar__"
-            oncommand="QuickFolders.Interface.toggleToolbar(this);"
-            checked="true"
-            />
-      <toolbarbutton id="QuickFolders-createfolder" 
-            class="toolbarbutton-1 chromeclass-toolbar-additional"
-            label="__MSG_quickfolders.toolbar.newsubfolder__" 
-            tooltiptext="__MSG_quickfolders.toolbar.newsubfolder__" 
-            oncommand="QuickFolders.Interface.onCreateInstantFolder();"
-          />
-      <toolbarbutton id="QuickFolders-skipfolder"
-            class="toolbarbutton-1 chromeclass-toolbar-additional"
-            label="__MSG_quickfolders.toolbar.skip__" 
-            tooltiptext="__MSG_qf.tooltip.skipUnreadFolder__" 
-            oncommand="QuickFolders.Interface.onSkipFolder(null);"
-          />
-    </toolbarpalette>
-`);
-    */
 
   console.log("Adding QuickFolders toolbar ...");
   WL.injectElements(`
@@ -152,7 +119,6 @@ async function onLoad(activatedWhileWindowOpen) {
                   class="menuitem-iconic"
                   />                                      
 
-
                 <menuitem id="QuickFolders-ToolbarPopup-dbg2"
                   label="Show Installation Popup"
                   oncommand="QuickFolders.Interface.viewInstalled();" 
@@ -173,19 +139,19 @@ async function onLoad(activatedWhileWindowOpen) {
                                       
                 <menuitem id="QuickFolders-ToolbarPopup-dbg5"
                   label="Load FolderTree Dictionary"
-                  oncommand="QuickFolders.FolderTree.loadDictionary();" 
+                  oncommand="QuickFolders.FolderTree.loadDictionary.call(QuickFolders.FolderTree, QuickFolders.Util.document3pane);" 
                   class="menuitem-iconic"
                   />
 
                 <menuitem id="QuickFolders-ToolbarPopup-dbg6"
                   label="Force Tree Refresh"
-                  oncommand="QuickFolders.FolderTree.refreshTree();" 
+                  oncommand="QuickFolders.FolderTree.refreshTree.call(QuickFolders.FolderTree);" 
                   class="menuitem-iconic"
                   />
                     
                 <menuitem id="QuickFolders-ToolbarPopup-dbg7"
                   label="Foldertree.init()"
-                  oncommand="QuickFolders.FolderTree.init();" 
+                  oncommand="QuickFolders.FolderTree.init.call(QuickFolders.FolderTree);" 
                   class="menuitem-iconic"
                   />
                                   
@@ -200,6 +166,13 @@ async function onLoad(activatedWhileWindowOpen) {
                   oncommand="QuickFolders.Util.loadPlatformStylesheet();"
                   class="menuitem-iconic"
                   />
+
+                <menuitem id="QuickFolders-ToolbarPopup-dbgA"
+                  label="Focus thread pane."
+                  oncommand="QuickFolders.Interface.setFocusThreadPane();"
+                  class="menuitem-iconic"
+                  />
+                  
                                     
               </menupopup>
             </menu>
@@ -317,6 +290,7 @@ async function onLoad(activatedWhileWindowOpen) {
   </toolbox>
   `);
 
+  /* [issue 399]
   WL.injectElements(`
     
   <popup id="folderPaneContext">
@@ -324,7 +298,7 @@ async function onLoad(activatedWhileWindowOpen) {
               label="__MSG_qf.foldercontextmenu.quickfolders.customizeIcon__"
               tag="qfIconAdd"
               class="menuitem-iconic"
-              insertafter="folderPaneContext-properties"
+              insertafter="QF_folderPaneContext-properties"
               oncommand="QuickFolders.Interface.onSelectIcon(this,event);"/>
     <menuitem id="context-quickFoldersRemoveIcon"
               label="__MSG_qf.foldercontextmenu.quickfolders.removeIcon__"
@@ -333,8 +307,8 @@ async function onLoad(activatedWhileWindowOpen) {
               insertafter="context-quickFoldersIcon"
               oncommand="QuickFolders.Interface.onRemoveIcon(this,event);"/>
   </popup>	
-`);
-
+  `);
+  */
   
 
   //-----------------------------
@@ -389,11 +363,10 @@ async function onLoad(activatedWhileWindowOpen) {
                        ondragover="QuickFolders.buttonDragObserver.dragOver(event);"
                        context="QuickFolders-quickMoveMenu"
                        />
-        <!-- removed searchbutton=true so pressing [Enter] is not necessary-->
         <search-textbox id="QuickFolders-FindFolder" 
                  oncommand="QuickFolders.Interface.findFolderName(this);"
                  onkeypress="QuickFolders.Interface.findFolderKeyPress(event);"
-                 class="searchBox"
+                 class="searchBox input-sizer"
                  type="search"
                  collapsed="true"
                  placeholder="__MSG_quickfolders.findFolder.placeHolder__"/>
@@ -424,19 +397,32 @@ async function onLoad(activatedWhileWindowOpen) {
     </hbox>
   </vbox>
 </hbox>
-
-`);
+  `);
 
   // remove category to force selection when loading new version
   // [issue 279]
   window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.INIT;
 
   // window.QuickFolders.initDocAndWindow(window);
+  // [issue 378]
+  /*
+  let searchbox = document.getElementById("QuickFolders-FindFolder");
+  if (searchbox) {
+    // these child nodes are in #shadow-root!
+    let searchInput = searchbox.querySelector("input");
+    if (searchInput) {
+      searchInput.addEventListener("input", searchbox.dataset.value = searchInput.value);
+    }
+  }
+  */
   
   
   // add listeners
   window.QuickFolders.Util.logDebug('Adding Folder Listener...');
   MailServices.mailSession.AddFolderListener(window.QuickFolders.FolderListener, Components.interfaces.nsIFolderListener.all);
+
+  // call on background page to implement folder pane listener
+  window.QuickFolders.Util.notifyTools.notifyBackground({ func: "addFolderPaneMenu" });   
 
   // Thunderbird 115
   // iterate all mail tabs!
@@ -475,6 +461,18 @@ async function onLoad(activatedWhileWindowOpen) {
   mylisteners["initKeyListeners"] = window.QuickFolders.initKeyListeners.bind(window.QuickFolders);
   mylisteners["firstRun"] = window.QuickFolders.Util.FirstRun.init.bind(window.QuickFolders.Util.FirstRun);
   mylisteners["toggleFolderTree"] = window.QuickFolders.Interface.toggleFolderTree.bind(window.QuickFolders.Interface);
+
+  toggleIcon = (event) => {
+    window.QuickFolders.Util.logDebug("listener_doCommand()", event.detail); 
+    debugger;
+    let element = {
+      id: "context-quickFoldersIcon"
+    }
+    window.QuickFolders.Interface.onSelectIcon(element,event);
+  }
+  mylisteners["toggleQuickFoldersIcon"] = toggleIcon;
+
+
   
   for (let m in mylisteners) {
     window.addEventListener(`QuickFolders.BackgroundUpdate.${m}`, mylisteners[m]);
@@ -513,7 +511,7 @@ function onUnload(isAddOnShutDown) {
     window.QuickFolders.Interface.removeToolbarHiding.call(window.QuickFolders.Interface);
     MailServices.mailSession.RemoveFolderListener(window.QuickFolders.FolderListener);
     window.QuickFolders.removeTabEventListener.call(window.QuickFolders);
-    window.QuickFolders.removeFolderPaneListener.call(window.QuickFolders);
+   //  window.QuickFolders.removeFolderPaneListener.call(window.QuickFolders);
   }
   catch(ex) {
     console.log(ex);

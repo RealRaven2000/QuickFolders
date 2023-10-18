@@ -59,6 +59,7 @@ async function onLoad(activatedWhileWindowOpen) {
     // parent document should already be patched!
     return;
   }
+  WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css"); // we need this here.
 
 
   window.QuickFolders = window.parent.QuickFolders;
@@ -71,6 +72,7 @@ async function onLoad(activatedWhileWindowOpen) {
       win.QuickFolders.Util.logDebug(`============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`);
       let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
       let layout2 = WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
+
       // current folder bar specific styling
       let layout3 = WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-navigation.css"); 
       WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
@@ -236,7 +238,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
       // relocate to make it visible (bottom of thread)
       win.QuickFolders.Interface.liftNavigationbar(contentDoc);    // passes HTMLDocument "about:3pane"
-      
+
       // remember whether toolbar was shown, and make invisible or initialize if necessary
       // default to folder view
       const prefs = win.QuickFolders.Preferences;
@@ -255,6 +257,12 @@ async function onLoad(activatedWhileWindowOpen) {
       win.QuickFolders.Interface.updateNavigationBar(contentDoc, tabInfo);
       // -- now we have the current folder toolbar, tell quickFilters to inject its buttons:
       window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFilters" });
+
+      // initialise custom icons in folder tree (only 3pane tabs)
+      if (windowMode=="" && win.QuickFolders.FolderTree) {
+        win.QuickFolders.FolderTree.init(contentDoc);
+      }      
+
 
       // add a listener for switching the view
       Services.prefs.addObserver("mail.pane_config.dynamic", viewLayoutObserver);

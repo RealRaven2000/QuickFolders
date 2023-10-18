@@ -4,6 +4,11 @@
 /* version specific styling - removed chrome://quickfolders/content/*/
 @import url('quickfolders-mods.css'); 
 
+:root {
+	--qf-tabiconsize: 16px;
+	--qf-treeiconsize: 16px;
+} 
+
 
 /* without standard license */
 toolbar .folderBarContainer toolbarbutton[disabled="true"] {
@@ -571,6 +576,19 @@ toolbarbutton#QuickFoldersCurrentFolder {
   height: 24px !important;
 }
 
+/* [issue 407] - svg support */
+/*
+toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
+	max-height: 16px;
+}
+toolbar.quickFoldersToolbar[iconsize="large"] toolbarbutton.icon .toolbarbutton-icon {
+	max-height: 24px;
+}
+*/
+
+toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
+  height: var(--qf-tabiconsize,16px);
+}
 
 /*********************************
 **           THEMES             **
@@ -925,13 +943,13 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over > label
     stroke: var(--new-highlight) !important;
 }
 
-#folderPaneContext-downloadAll {
+#QF_folderPaneContext-downloadAll {
     list-style-image: url('chrome://messenger/skin/icons/getmsg.svg');
 }
 
-menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-new ,
-menuitem#folderPaneContext-new.dragover,
-menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-new.dragover {
+menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-new ,
+menuitem#QF_folderPaneContext-new.dragover,
+menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-new.dragover {
 	list-style-image: url('chrome://quickfolders/content/skin/ico/folder-add.svg') !important;
   -moz-context-properties: fill, fill-opacity, stroke;
   fill: currentColor;
@@ -943,16 +961,16 @@ menupopup.QuickFolders-folder-popup menuitem.cmd[tag="openNewTab"] {
   list-style-image: url('chrome://quickfolders/content/skin/ico/new-tab.svg');
 }
 
-menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-remove {
+menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-remove {
 	list-style-image: url('chrome://messenger/skin/icons/delete.svg');
 }
 
-menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-rename {
+menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-rename {
 	list-style-image: url('chrome://quickfolders/content/skin/ico/folder-rename.png');
 }
 
 
-menupopup.QuickFolders-folder-popup menuitem#folderPaneContext-properties {
+menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-properties {
 	list-style-image: url('chrome://global/skin/icons/settings.svg');
 }
 
@@ -1033,9 +1051,9 @@ menupopup.QuickFolders-folder-popup menuitem#quickFolders-openFolderLocation {
 }
 
 /* [Bug 26570] only show mark folder read if it has unread items in it */
-toolbarbutton:not(.has-unread) #folderPaneContext-markMailFolderAllRead,
-toolbarbutton:not(.has-unread):not(.has-unreadSubOnly) #folderPaneContext-markMailFolderAllReadRecursive,
-toolbarbutton:not(.has-unreadSubOnly):not(.has-unreadSub) #folderPaneContext-markMailFolderAllReadRecursive {
+toolbarbutton:not(.has-unread) #QF_folderPaneContext-markMailFolderAllRead,
+toolbarbutton:not(.has-unread):not(.has-unreadSubOnly) #QF_folderPaneContext-markMailFolderAllReadRecursive,
+toolbarbutton:not(.has-unreadSubOnly):not(.has-unreadSub) #QF_folderPaneContext-markMailFolderAllReadRecursive {
 	display: none;
 }
 

@@ -204,6 +204,11 @@ document.getElementById("quickMoveAdvanced").addEventListener("click", async (ev
   QuickFolders.Options.quickMoveAdvancedSettings();
 });
 
+let icSize = document.getElementById("customIconSize");
+icSize.addEventListener("change", async (event) => {
+  messenger.runtime.sendMessage({ command:"updateUserStyles" });
+});
+
 
 // add bool preference reactions
 for (let chk of document.querySelectorAll("input[type=checkbox]")) {
@@ -313,7 +318,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       filterConfig="quickfolders.debug"; retVal=false;
       break;
     case "toolbar.hideInSingleMessage":
-      filterConfig="quickfolders.toolbars"; retVal=true;
+      filterConfig="quickfolders.toolbar"; retVal=true;
       break;
     case "showQuickMove":
       filterConfig="quickfolders.premium.findFolder.max"; retVal=false;

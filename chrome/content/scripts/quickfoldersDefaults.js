@@ -58,6 +58,7 @@ pref("extensions.quickfolders.bookmarks.openMethod", "currentTab");
 pref("extensions.quickfolders.toolbar.minHeight", "24");
 pref("extensions.quickfolders.toolbar.hideInSingleMessage", false);
 pref("extensions.quickfolders.toolbar.largeIcons", false); // [issue 191]
+pref("extensions.quickfolders.toolbar.customIconSize", 16); // [issue 407]
 pref("extensions.quickfolders.behavior.nonFolderView.openNewTab", true);
 pref("extensions.quickfolders.style.transitions", true); // changing to true because of wobbly bug
 pref("extensions.quickfolders.tooltips.parentFolder", false);
@@ -156,6 +157,7 @@ pref("extensions.quickfolders.debug.css.styleSheets", false);
 pref("extensions.quickfolders.debug.css.palette.styleSheets", false);
 pref("extensions.quickfolders.debug.css.palette", false);
 pref("extensions.quickfolders.debug.dnd", false);
+pref("extensions.quickfolders.debug.dnd.detail", false);
 pref("extensions.quickfolders.debug.dragToNew", false);
 pref("extensions.quickfolders.debug.events", false);
 pref("extensions.quickfolders.debug.events.keyboard", false);

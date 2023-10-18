@@ -526,7 +526,7 @@ QuickFolders.bookmarks = {
             case 'glodaSearch-result': // fall through
             case 'glodaList':          // fall through
             case 'message':            // fall through => type = msgUri (special mode by me)
-            case 'mailMessageTab':
+            case 'mailMessageTab':     // Tb 115
               // find out about currently viewed message
               try {
                 // are multiple mails selected?

@@ -13,6 +13,7 @@
   color: var(--lwt-text-color, --lwt-toolbar-field-color);
 	margin-bottom: -3px;
 	overflow-y: visible !important;
+	overflow-x: clip;
 	padding-top: 0 !important;
 	padding-bottom: 1px;
 	width: 100%;

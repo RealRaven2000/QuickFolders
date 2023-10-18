@@ -207,7 +207,7 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
             let actMgr = MailServices.accounts,
                 allIdentities = actMgr.allIdentities;
             for (let i=0; i<allIdentities.length; i++) {
-              let identity =  allIdentities[i].QueryInterface(Ci.nsIMsgIdentity); //    allIdentities.queryElementAt(i, Ci.nsIMsgIdentity);  //TB78 replace queryElementAt with array[index].QueryInterface?
+              let identity = allIdentities[i].QueryInterface(Ci.nsIMsgIdentity); 
               if (identity.key == entry.fromIdentity) {
                 util.logDebugOptional('composer', dbg.replace('{2}',"identity") + "\n" + (identity.identityName || identity.email ));
                 options.identity = identity; // use the object, not the string [entry.fromIdentity is only a string]

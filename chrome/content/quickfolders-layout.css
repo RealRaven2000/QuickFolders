@@ -835,10 +835,10 @@ menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] {
     list-style-image: url('chrome://quickfolders/content/skin/ico/compact.svg') !important;
 }
 menuitem.cmd[tag="qfIconAdd"], menuitem.mailCmd[tag="qfIconAdd"] {
-    list-style-image: url('chrome://messenger/skin/icons/image.svg') !important;
+    list-style-image: url('chrome://quickfolders/content/skin/ico/image.svg') !important;
 }
 menuitem.cmd[tag="qfIconRemove"], menuitem.mailCmd[tag="qfIconRemove"] {
-    list-style-image: url('chrome://messenger/skin/icons/delete.svg') !important;
+    list-style-image: url('chrome://quickfolders/content/skin/ico/picture-remove.svg') !important;
 }
 menupopup.QuickFolders-folder-popup menuitem[tag="qfCategory"],
 menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] {

@@ -4,6 +4,21 @@
 #QuickFolders-PreviewToolbarPanel,
 #QuickFolders-PreviewToolbarPanel-ConversationView
 */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+		--QuickFolders-icon: rgba(255,255,255,0.9);
+    --QuickFolders-focusColor: #25ee06;
+  }  
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+		--QuickFolders-icon: rgba(0,0,0,0.9);
+    --QuickFolders-focusColor: #0f6f00;
+  }
+}
+
 .QuickFolders-NavigationPanel {
 	/* background-color: transparent; */
 	display: flex;
@@ -117,3 +132,17 @@ toolbar#QuickFolders-CurrentFolderTools[iconsize="large"] {
 	list-style-image: url("chrome://quickfolders/content/skin/ico/history.svg");
     stroke: #e9a400;
 }
+
+
+#quickfolders_curious_be-menuitem-_removeQuickFoldersIcon,
+#quickfolders_curious_be-menuitem-_toggleQuickFoldersIcon {
+  -moz-context-properties: fill;
+}
+
+#quickfolders_curious_be-menuitem-_removeQuickFoldersIcon hbox,
+#quickfolders_curious_be-menuitem-_toggleQuickFoldersIcon hbox {
+	background-position-y: 1px;
+	background-repeat: no-repeat;
+  fill: var(--lwt-text-color,--QuickFolders-icon);
+}
+

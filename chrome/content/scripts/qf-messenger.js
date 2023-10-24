@@ -18,7 +18,7 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-scrollmenus.js", window, "UTF-8");
 
 var mylisteners = {};
-var toggleIcon;
+var toggleIcon, removeIcon;
 
 async function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.Util.logDebug(`============INJECT==========\nqf-messenger.js onLoad(${activatedWhileWindowOpen})`);
@@ -290,27 +290,6 @@ async function onLoad(activatedWhileWindowOpen) {
   </toolbox>
   `);
 
-  /* [issue 399]
-  WL.injectElements(`
-    
-  <popup id="folderPaneContext">
-    <menuitem id="context-quickFoldersIcon"
-              label="__MSG_qf.foldercontextmenu.quickfolders.customizeIcon__"
-              tag="qfIconAdd"
-              class="menuitem-iconic"
-              insertafter="QF_folderPaneContext-properties"
-              oncommand="QuickFolders.Interface.onSelectIcon(this,event);"/>
-    <menuitem id="context-quickFoldersRemoveIcon"
-              label="__MSG_qf.foldercontextmenu.quickfolders.removeIcon__"
-              tag="qfIconRemove"
-              class="menuitem-iconic"
-              insertafter="context-quickFoldersIcon"
-              oncommand="QuickFolders.Interface.onRemoveIcon(this,event);"/>
-  </popup>	
-  `);
-  */
-  
-
   //-----------------------------
   // search panel & mini toolbar in QF toolbar
   WL.injectElements(`
@@ -464,13 +443,21 @@ async function onLoad(activatedWhileWindowOpen) {
 
   toggleIcon = (event) => {
     window.QuickFolders.Util.logDebug("listener_doCommand()", event.detail); 
-    debugger;
     let element = {
       id: "context-quickFoldersIcon"
     }
-    window.QuickFolders.Interface.onSelectIcon(element,event);
+    window.QuickFolders.Interface.onSelectIcon(element, event.detail);
   }
+  removeIcon = (event) => {
+    window.QuickFolders.Util.logDebug("listener_doCommand()", event.detail); 
+    let element = {
+      id: "context-quickFoldersRemoveIcon"
+    }
+    window.QuickFolders.Interface.onRemoveIcon(element, event.detail);
+  }
+
   mylisteners["toggleQuickFoldersIcon"] = toggleIcon;
+  mylisteners["removeQuickFoldersIcon"] = removeIcon;
 
 
   

@@ -121,7 +121,48 @@
             "description": "keep toggle status, and patch only"
           }          
         ]
+      },
+
+      {
+        "name": "getFolderIcon",
+        "type": "function",
+        "async": true,
+        "description": "returns custom icon data for a folder / account",
+        "parameters": [
+          {
+            "name": "accountId",
+            "type": "string",
+            "description": "account key"
+          },
+          {
+            "name": "path",
+            "type": "string",
+            "optional": true,
+            "description": "path of the API folder"
+          }
+        ]
+      },
+
+      {
+        "name": "getFolderUri",
+        "type": "function",
+        "async": true,
+        "description": "returns legacy URI for a folder / account",
+        "parameters": [
+          {
+            "name": "accountId",
+            "type": "string",
+            "description": "account key"
+          },
+          {
+            "name": "path",
+            "type": "string",
+            "optional": true,
+            "description": "path of the API folder"
+          }
+        ]
       }
+
 
       
    ]

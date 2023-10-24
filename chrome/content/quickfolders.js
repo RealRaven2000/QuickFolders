@@ -385,6 +385,7 @@ END LICENSE BLOCK */
           (remove special coloring / message)
 
   6.3 - WIP
+    ## [issue 399] Add custom icons in folder tree in Thunderbird 115
     ## [issue 398] Fixed: Open folder from QF Tab while viewing a message 
     ## [issue 400] Make registration screen less tall / easily resizable
     ## [issue 404] Fixed toolbar issues in Single Message window: "null" element 
@@ -394,11 +395,6 @@ END LICENSE BLOCK */
     ## [issue 406] Fixed: "Empty Junk" command intermittently hidden from context menus
     ## [issue 412] Dragging mail to Current Folder tab does not open subfolders popup
     ## [issue 417] Message list scrolls to top when switching folders
-    ## === WIP ===
-    ## [issue 399] Add custom icons in folder tree in Thunderbird 115
-    
-
-
 
 	Future Work
 	===========

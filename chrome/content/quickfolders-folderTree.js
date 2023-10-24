@@ -334,7 +334,7 @@ QuickFolders.FolderTree = {
     // cssRules inserts a space so we need to do it too - otherwise we will end up with duplicates
     let uriAscII = btoa(folder.URI);
     // the id starts with "modeName-"" we want to eliminate modeName and use the "endsWith" operator
-    let rv = `#folderTree li[id$='${uriAscII}'] > .container > .icon`; // set background-image
+    let rv = `#folderTree li[id$="${uriAscII}"] > .container > .icon`; // set background-image
     return rv;
 	} ,
 	
@@ -379,10 +379,6 @@ QuickFolders.FolderTree = {
     let ss = styleSheet || QI.getStyleSheet(doc,  "qf-foldertree.css", "QuickFolderFolderTreeStyles");
     
     // [issue 283] - avoid folder.getStringProperty and create hardcoded selector
-    /*
-		let propName = this.makeSelectorGUID(folder, "folderIcon_"), 
-		    selector = this.makeSelector(propName);
-        */
     if (!ss) {
       QuickFolders.Util.logDebug("setFolderTreeIcon() early exit - Couldn't retrieve style sheet!", doc);
     }
@@ -450,10 +446,6 @@ QuickFolders.FolderTree = {
 			  folder.setStringProperty("folderIcon", "noIcon");
 				folder.setStringProperty("iconURL", "");
 			  folder.setForcePropertyEmpty("folderIcon", false); // remove property
-        if (QuickFolders.FolderTree.dictionary) {
-          // this.removeItem(propName);
-        }
-          
 			}
       if (!silent) {
         this.debugDictionary(); // test dictionary, just for now

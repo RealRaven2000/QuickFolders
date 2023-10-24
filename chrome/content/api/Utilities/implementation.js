@@ -344,8 +344,55 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             console.log(btn);
             win.QuickFolders.Interface.toggleToolbar(btn, keepState);
           }
-          
+        },
 
+        getFolderIcon: async function(accountId, path = null) {
+          try {
+            let retVal = null;
+            if (path) {
+              let folder = context.extension.folderManager.get(accountId, path);
+              if (!folder) return null;
+              retVal = win.QuickFolders.FolderTree.customIcons.find(e => e.folderURI == folder.URI);
+            } else { // this is an account.
+              for (let account of win.QuickFolders.Util.Accounts) { 
+                if (account.key == accountId) {
+                  win.QuickFolders.Util.logDebug(`found account: ${accountId}`, account.incomingServer?.prettyName);
+                  let rootUri = account.incomingServer?.rootFolder.URI;
+                  retVal = win.QuickFolders.FolderTree.customIcons.find(e => e.folderURI == rootUri);
+                  break;
+                }
+              }
+            }
+            return retVal;
+          }
+          catch(ex) {
+            win.QuickFolders.Util.logException("Utilities.getFolderIcon()", ex);
+            return null;
+          }
+        },
+
+        getFolderUri: async function(accountId, path = null) {
+          try {
+            let retVal = null;
+            if (path) {
+              let folder = context.extension.folderManager.get(accountId, path);
+              if (!folder) return null;
+              retVal = folder.URI;
+            } else { // this is an account.
+              for (let account of win.QuickFolders.Util.Accounts) { 
+                if (account.key == accountId) {
+                  win.QuickFolders.Util.logDebug(`found account: ${accountId}`, account.incomingServer?.prettyName);
+                  retVal = account.incomingServer?.rootFolder.URI;
+                  break;
+                }
+              }
+            }
+            return retVal;
+          }
+          catch(ex) {
+            win.QuickFolders.Util.logException("Utilities.getFolderUri()", ex);
+            return null;
+          }
         }
        
      }

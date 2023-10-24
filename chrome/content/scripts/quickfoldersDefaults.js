@@ -178,6 +178,7 @@ pref("extensions.quickfolders.debug.listeners.tabmail", false);
 pref("extensions.quickfolders.debug.interface.tabs", false);
 pref("extensions.quickfolders.debug.interface.update",false);
 pref("extensions.quickfolders.debug.mailTabs", false);
+pref("extensions.quickfolders.debug.tbmenus", false);
 pref("extensions.quickfolders.debug.mouseclicks", false);
 pref("extensions.quickfolders.debug.moveCopy", false);
 pref("extensions.quickfolders.debug.navigation", false);

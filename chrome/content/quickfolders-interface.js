@@ -2791,7 +2791,7 @@ QuickFolders.Interface = {
 		try { util.showStatusMessage(msg, true); } catch(e) {;};
 	} ,
 
-	onRemoveIcon: function onRemoveIcon(element) {
+	onRemoveIcon: function(element, event) {
     let folderButton, entry,
         util = QuickFolders.Util,
         model = QuickFolders.Model;
@@ -2799,7 +2799,18 @@ QuickFolders.Interface = {
 		if (element.id == "context-quickFoldersRemoveIcon" // folder tree icon
 		    ||
 				element.id == "QuickFolders-RemoveIcon") { // current folder bar
-			let folders = GetSelectedMsgFolders();
+
+			let folders;
+			switch(element.id) {
+				case "QuickFolders-RemoveIcon": // current folder bar
+				folders = GetSelectedMsgFolders();
+				break;
+			case "context-quickFoldersRemoveIcon": // style a folder tree icon - retrieve folder from event.detail
+				util.logDebugOptional("folderTree.icons", event.detail);
+				let fld = QuickFolders.Model.getMsgFolderFromUri(event.detail?.folderURI);
+				folders = fld ? [fld] : [];
+				break;				
+			}
 			let isChanged = false;
 			if (folders) {
 				for (let i=0; i<folders.length; i++) {
@@ -2841,7 +2852,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	onSelectIcon: function onSelectIcon(element,event) {
+	onSelectIcon: function (element, event) {
 		const Ci = Components.interfaces,
           Cc = Components.classes,
           nsIFilePicker = Ci.nsIFilePicker,
@@ -2858,8 +2869,9 @@ QuickFolders.Interface = {
         maximumIcons = model.MAX_STANDARD_ICONS;
         isRestricted = true;
       }
-      else
+      else {
         maximumIcons = 10000;
+			}
     }
       
           
@@ -2867,16 +2879,18 @@ QuickFolders.Interface = {
 		    folders = null,
         QI = QuickFolders.Interface;
     util.logDebugOptional("interface", "QuickFolders.Interface.onSelectIcon()");
-		if (element.id == "context-quickFoldersIcon" // style a folder tree icon
-		    ||
-				element.id == "QuickFolders-SelectIcon")  // current folder bar
-		{
-		  // get selected folder (form event?)
-			folders = GetSelectedMsgFolders();
-		}
-		else {
-			folderButton = util.getPopupNode(element);
-			entry = model.getButtonEntry(folderButton);
+		switch(element.id) {
+			case "QuickFolders-SelectIcon": // current folder bar
+				folders = GetSelectedMsgFolders();
+				break;
+			case "context-quickFoldersIcon": // style a folder tree icon - retrieve folder from event.detail
+			  util.logDebugOptional("folderTree.icons", event.detail);
+				let fld = QuickFolders.Model.getMsgFolderFromUri(event.detail?.folderURI);
+				folders = fld ? [fld] : [];
+				break;
+			default:
+				folderButton = util.getPopupNode(element);
+				entry = model.getButtonEntry(folderButton);
 		}
     let entries = model.selectedFolders,
         countIcons = 0;
@@ -3964,10 +3978,10 @@ QuickFolders.Interface = {
 						QI.onSeparatorToggle(menuitem);
 						break;
 					case "qfIconAdd":
-						QI.onSelectIcon(menuitem,evt);
+						QI.onSelectIcon(menuitem, evt);
 					  break;
 					case "qfIconRemove":
-						QI.onRemoveIcon(menuitem,evt);
+						QI.onRemoveIcon(menuitem, evt);
 					  break;
 					case "qfTabAdvanced":
 					  QI.onAdvancedProperties(evt, menuitem);

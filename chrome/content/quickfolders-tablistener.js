@@ -88,10 +88,10 @@ QuickFolders.TabListener = {
   },
   
   closeTab: function(evt) {
-    let tabmail = document.getElementById("tabmail");
-    if (["folder","message","mail3PaneTab"].includes(evt.detail.tabInfo.mode.type)) {
+    if (["folder","message","mail3PaneTab"].includes(evt.detail.tabInfo.mode.name)) {
       let info = evt.detail.tabInfo;
       QuickFolders.Util.logDebugOptional("listeners.tabmail", "TabListener.closeTab() - " + info.title);
+      QuickFolders.FolderTree.release(info); // remove tab from monitored array
     }
   } ,
   

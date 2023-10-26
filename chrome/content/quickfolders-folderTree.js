@@ -14,8 +14,8 @@
 QuickFolders.FolderTree = {
   dictionary: null,
   customIcons: [], // new array
-  document: null,
-  init: function(doc) {
+  documents: [],
+  init: function(doc, tabOrWindow) {
     // you need to restart QuickFolders to bypass
     let isEnabled = QuickFolders.Preferences.getBoolPref('folderTree.icons')
     try {
@@ -51,7 +51,7 @@ QuickFolders.FolderTree = {
       QuickFolders.Util.logDebugOptional('folderTree', `QuickFolders.FolderTree.init()\nIcons enabled = ${isEnabled}`);
       // now we need to iterate all Folders and find matches in our dictionary,
       // then inject the style rules for the icons...
-      QuickFolders.FolderTree.document = doc;
+      QuickFolders.FolderTree.documents.push({document: doc, tabOrWindow: tabOrWindow});
       this.loadDictionary(doc);
     }
     catch(ex) { 
@@ -59,7 +59,21 @@ QuickFolders.FolderTree = {
 		};
   } ,
 	
-	restoreStyles: function() {
+  // remove references to closed tab
+  // pass in a tabInfo object (which has tabId)
+  release: function(tabOrWindow) {
+    if (tabOrWindow.tabId) {
+      let id = tabOrWindow.tabId;
+      let d = this.documents.find (e => e.tabOrWindow.tabId == id);
+      if (d) {
+        let idx = this.documents.indexOf(d),
+            removed = this.documents.splice(idx, 1);
+        QuickFolders.Util.logDebugOptional('folderTree.icons', `released tab [${tabOrWindow.tabId}] `, ...removed);
+      }
+    }
+  },
+
+	restoreStyles: function(doc) {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
           makeSelector = this.makeSelector,
@@ -96,7 +110,7 @@ QuickFolders.FolderTree = {
     if (!isInjectCSS) {
       return logEarlyExit("folderTree.icons.injectCSS = false!"); 
     }
-		let ss = QuickFolders.Interface.getStyleSheet(this.document, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
+		let ss = QuickFolders.Interface.getStyleSheet(doc, 'qf-foldertree.css', 'QuickFolderFolderTreeStyles');
     util.logDebugOptional('folderTree.icons', 'iterate Dictionary: ' + len + ' items…');
     // should be for..of
     this.dictionary.forEach(
@@ -112,6 +126,15 @@ QuickFolders.FolderTree = {
       return false;
     return true;
   } ,
+
+  hasFolderCustomIcon: function(fld) {
+    if (!fld) return false;
+    let entry = QuickFolders.FolderTree.customIcons.find(e => e.folderURI == fld.URI);
+    if (entry) {
+      return true;
+    }
+    return false;
+  },
   
 	// returns whether element has icon or not
 	addFolderIconToElement: function(element, folder) {
@@ -149,9 +172,6 @@ QuickFolders.FolderTree = {
 	
 	loadDictionary: async function(doc) {
 	  // https://developer.mozilla.org/en-US/docs/Mozilla/JavaScript_code_modules/Dict.jsm
-    if (doc) {
-      QuickFolders.FolderTree.document = doc;
-    }
     const util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences,
           debug = prefs.isDebugOption("folderTree");
@@ -169,11 +189,13 @@ QuickFolders.FolderTree = {
 		util.logDebugOptional("folderTree,folderTree.icons", "QuickFolders.FolderTree.loadDictionary()");
 
     let styleSheet = QuickFolders.Interface.getStyleSheet(doc,  "qf-foldertree.css", "QuickFolderFolderTreeStyles");
+    let fileSpec;
+
     for (let i=0; i<filedIcons.length; i++) {
       let item = filedIcons[i];
       let fld = QuickFolders.Model.getMsgFolderFromUri( item.folderURI );
       if (fld) {
-        let fileSpec = item.iconURL;
+        fileSpec = item.iconURL;
         QuickFolders.FolderTree.setFolderTreeIcon(fld, fileSpec, true, styleSheet);
       }
     }
@@ -238,7 +260,7 @@ QuickFolders.FolderTree = {
 		if (debug) {
 			this.debugDictionary();
     }
-		this.restoreStyles();
+		this.restoreStyles(doc);
     if (isProfiling) {
       let time = util.stopWatch("all","loadDictionary");
       console.log(`%cFolderTree.loadDictionary() - Ends, altogether took: ${time}`, "background-color: rgb(0,80,140); color:white;");
@@ -371,98 +393,121 @@ QuickFolders.FolderTree = {
 				"extensions.quickfolders.folderTree.icons.injectCSS=" + isInjectCSS);
 			return false;
 		}
-    
-    let doc = this.document || document; // 3pane doc
-		let fileURL, fileSpec,        
-        currentFolderTab = QI.CurrentFolderTab; // always update current folder toolbar icon?
-
-    let ss = styleSheet || QI.getStyleSheet(doc,  "qf-foldertree.css", "QuickFolderFolderTreeStyles");
-    
-    // [issue 283] - avoid folder.getStringProperty and create hardcoded selector
-    if (!ss) {
-      QuickFolders.Util.logDebug("setFolderTreeIcon() early exit - Couldn't retrieve style sheet!", doc);
-    }
 
     let existingItem = QuickFolders.FolderTree.customIcons.find(e => e.folderURI == folder.URI);
     let selector = this.makeSelector(folder);
     let iconGUID = this.makeSelectorGUID(folder); // folderIcon_ property
-		try {
-		  if (iconURI) {
-        let cssUri;
-        if (typeof iconURI == "string")  {
-          fileSpec = iconURI;
-          cssUri = fileSpec;
-        } else {
-          fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI);
-          let fPath = fileURL.filePath || fileURL.path,
-              parts = fPath.split('/'),
-              shortenedPath = fPath;
-          if (parts.length>4) { // buid shortened path.
-            const start = parts[0] || parts[1],  // if path starts with /
-                  tri = " \u25B9 ";
-            parts.shift(); // remove 1st (empty?) item
-            while (parts.length>3) parts.shift(); // remove first element.
-            shortenedPath = start + "/" + " \u2026 " + "/" + parts.join("/");
-          }
-          util.logDebugOptional("folderTree.icons", "FolderTree.setFolderTreeIcon(" + folder.prettyName + "," + shortenedPath + ")");
-          fileSpec = fileURL.asciiSpec;
-          cssUri = "url(" + fileSpec + ")";
-        }
+    let cssUri;
+    let fileSpec;
 
-				// folder.setStringProperty("folderIcon", propName);
-				util.logDebugOptional("folderTree.icons", "setFolderTreeIcon()\n"
-					+ "folder.URI: " + folder.URI + "\n"
-					+ "cssUri:     " + cssUri);
-				util.logDebugOptional("folderTree.icons", "ADDING:\n" + selector + " {\n" + "background-image:" + cssUri + "\n}");
-				folder.setStringProperty("iconURL", cssUri);
-				
-				// overwrite messenger/skin/folderPane.css
-				QuickFolders.Styles.setElementStyle(ss, selector, 'background-image', cssUri, true);  // add !important
-        // let key = folder.getStringProperty("folderIcon"); // "folderIcon_" + selector ??
-        if (existingItem) {
-          existingItem.cssKey = iconGUID;
-          existingItem.iconURL = cssUri;
-        } else {
-          QuickFolders.FolderTree.customIcons.push({
-            folderURI: folder.URI,
-            cssKey: iconGUID,
-            iconURL: cssUri,
-          });
-
+    if (iconURI) {
+      let fileURL;
+      if (typeof iconURI == "string")  {
+        fileSpec = iconURI;
+        cssUri = fileSpec;
+      } else {
+        fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI);
+        let fPath = fileURL.filePath || fileURL.path,
+            parts = fPath.split('/'),
+            shortenedPath = fPath;
+        if (parts.length>4) { // buid shortened path.
+          const start = parts[0] || parts[1],  // if path starts with /
+                tri = " \u25B9 ";
+          parts.shift(); // remove 1st (empty?) item
+          while (parts.length>3) parts.shift(); // remove first element.
+          shortenedPath = start + "/" + " \u2026 " + "/" + parts.join("/");
         }
-        folder.setStringProperty("folderIcon", iconGUID);
-				if (prefs.isDebugOption('folderTree.icons')) {
-					util.logDebug("DOUBLE CHECK FOLDER STRING PROPS HAVE BEEN SET:\n" +
-					  "iconURL = " + folder.getStringProperty("iconURL") + "\n" +
-					  "folderIcon = [" + folder.getStringProperty("folderIcon") + "]"
-					);
-				}
-			}
-			else {
-        // when do we force this to be executed?
-			  util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + ", empty)");
-				util.logDebugOptional('folderTree.icons', 'REMOVING:\n' + selector + ' {\nbackground-image\n}');
-				QuickFolders.Styles.removeElementStyle(ss, selector,'background-image');
-			  folder.setStringProperty("folderIcon", "noIcon");
-				folder.setStringProperty("iconURL", "");
-			  folder.setForcePropertyEmpty("folderIcon", false); // remove property
-			}
-      if (!silent) {
-        this.debugDictionary(); // test dictionary, just for now
+        util.logDebugOptional("folderTree.icons", "FolderTree.setFolderTreeIcon(" + folder.prettyName + "," + shortenedPath + ")");
+        fileSpec = fileURL.asciiSpec;
+        cssUri = "url(" + fileSpec + ")";
       }
-      // [issue 283] - do not force update during setFolderTreeIcon
-			// QI.updateFolders(false, true);  forces rebuilding subfolder menus
-		}
-		catch (ex) {
-		  util.logException('setFolderTreeIcon',ex);
-      return false;
-		}
-    finally {
-      if (currentFolderTab && currentFolderTab.folder && currentFolderTab.folder.URI == folder.URI) {
-        QuickFolders.Interface.initCurrentFolderTab(currentFolderTab, currentFolderTab.folder);
+      try {
+        folder.setStringProperty("iconURL", cssUri);
+      } catch (ex) {
+        util.logException('setFolderTreeIcon', ex);
+        // should we exit?
       }
-      return true;
+    } else {
+      let removeIdx = QuickFolders.FolderTree.customIcons.indexOf(existingItem);
+      if (removeIdx>=0) {
+        QuickFolders.FolderTree.customIcons.splice(removeIdx, 1);
+      }
     }
+
+    // need to do this for ALL 3pane tabs!
+    // let doc = || this.document document; // 3pane doc
+    // need to iterate this.documents!
+    for (let docInfo of this.documents) {
+      // make sure this tab still exists
+      let doc = docInfo.document;
+      // check if tab is illegal (was closed in the meantim)
+      if (!docInfo.tabOrWindow.chromeBrowser) continue;
+
+      // this needs to be retrieved from the correct document!
+      // QI.CurrentFolderTab; // always update current folder toolbar icon?
+      let currentFolderTab = doc.getElementById ("QuickFoldersCurrentFolder");
+
+      let ss = styleSheet || QI.getStyleSheet(doc,  "qf-foldertree.css", "QuickFolderFolderTreeStyles");
+      
+      // [issue 283] - avoid folder.getStringProperty and create hardcoded selector
+      if (!ss) {
+        QuickFolders.Util.logDebug("setFolderTreeIcon() early exit - Couldn't retrieve style sheet!", doc);
+      }
+      try {
+        if (iconURI) {
+          // folder.setStringProperty("folderIcon", propName);
+          util.logDebugOptional("folderTree.icons", "setFolderTreeIcon()\n"
+            + "folder.URI: " + folder.URI + "\n"
+            + "cssUri:     " + cssUri);
+          util.logDebugOptional("folderTree.icons", "ADDING:\n" + selector + " {\n" + "background-image:" + cssUri + "\n}");
+          
+          // overwrite messenger/skin/folderPane.css
+          QuickFolders.Styles.setElementStyle(ss, selector, 'background-image', cssUri, true);  // add !important
+          // let key = folder.getStringProperty("folderIcon"); // "folderIcon_" + selector ??
+          if (existingItem) {
+            existingItem.cssKey = iconGUID;
+            existingItem.iconURL = cssUri;
+          } else {
+            QuickFolders.FolderTree.customIcons.push({
+              folderURI: folder.URI,
+              cssKey: iconGUID,
+              iconURL: cssUri,
+            });
+
+          }
+          folder.setStringProperty("folderIcon", iconGUID);
+          if (prefs.isDebugOption('folderTree.icons')) {
+            util.logDebug("DOUBLE CHECK FOLDER STRING PROPS HAVE BEEN SET:\n" +
+              "iconURL = " + folder.getStringProperty("iconURL") + "\n" +
+              "folderIcon = [" + folder.getStringProperty("folderIcon") + "]"
+            );
+          }
+        } else {
+          // when do we force this to be executed?
+          util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + ", empty)");
+          util.logDebugOptional('folderTree.icons', 'REMOVING:\n' + selector + ' {\nbackground-image\n}');
+          QuickFolders.Styles.removeElementStyle(ss, selector,'background-image');
+          folder.setStringProperty("folderIcon", "noIcon");
+          folder.setStringProperty("iconURL", "");
+          folder.setForcePropertyEmpty("folderIcon", false); // remove property
+        }
+        if (!silent) {
+          this.debugDictionary(); // test dictionary, just for now
+        }
+        // [issue 283] - do not force update during setFolderTreeIcon
+        // QI.updateFolders(false, true);  forces rebuilding subfolder menus
+      }
+      catch (ex) {
+        util.logException('setFolderTreeIcon',ex);
+        return false;
+      }
+      finally {
+        if (currentFolderTab && currentFolderTab.folder && currentFolderTab.folder.URI == folder.URI) {
+          QuickFolders.Interface.initCurrentFolderTab(currentFolderTab, currentFolderTab.folder);
+        }        
+      }
+    } // iterate folder pane documents
+    return true;
 	},
   
   refreshTree: function() {

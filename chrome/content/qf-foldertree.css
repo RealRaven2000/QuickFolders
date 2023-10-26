@@ -1,18 +1,9 @@
 /** Folder Tree Icons  **/
-/*									 
-treechildren::-moz-tree-image(folderIconCol, folderIcon_server14_Inbox_Test) {
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
-	list-style-image: url(file:///E:/Dev/Mozilla/Icons/test.png);
-}	
-*/
- 
 /* [issue 399] - use an attribute instead! */
 #folderPaneContext menuitem#context-quickFoldersRemoveIcon[tag="qfIconRemove"] { 
   list-style-image : url('chrome://quickfolders/content/skin/ico/picture-remove.svg') !important;
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
 #folderPaneContext menuitem#context-quickFoldersIcon[tag="qfIconAdd"] { 
   list-style-image : url('chrome://messenger/skin/icons/image.svg') !important;
-  -moz-image-region: rect(0px, 16px, 16px, 0px);
- }
+}

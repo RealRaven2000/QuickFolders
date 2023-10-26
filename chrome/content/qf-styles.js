@@ -191,8 +191,8 @@ QuickFolders.Styles = {
               }
               else {
                 // if (origProperty=="");
-                st.setProperty(attribute, value, ((important) ?	"important" : ""));
-                foundRule = true;
+                // st.setProperty(attribute, value, ((important) ?	"important" : ""));
+                foundRule = false;
               }
 						}
 						if (foundRule && value!=null) { // keep searching if exact rule was not found! but remove duplicates.

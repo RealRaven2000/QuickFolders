@@ -260,7 +260,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
       // initialise custom icons in folder tree (only 3pane tabs)
       if (windowMode=="" && win.QuickFolders.FolderTree) {
-        win.QuickFolders.FolderTree.init(contentDoc);
+        win.QuickFolders.FolderTree.init(contentDoc, win.tabOrWindow);
       }      
 
 

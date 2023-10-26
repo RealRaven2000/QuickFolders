@@ -48,11 +48,16 @@ QuickFolders.Interface = {
 	
 	// CURRENT FOLDER ELEMENTS
 	get CurrentFolderTab() { // visible current folder tab - might have to move it in Tb for conversation view
-		if (!QuickFolders.Util.document3pane) {
-			QuickFolders.Util.logHighlight("no CurrentFolderTab in this context.");
+		try {
+			if (!QuickFolders.Util?.document3pane) {
+				QuickFolders.Util.logHighlight("no CurrentFolderTab in this context.");
+				return null;
+			}
+			return QuickFolders.Util.document3pane.getElementById ("QuickFoldersCurrentFolder");
+		}
+		catch (ex) {
 			return null;
 		}
-    return QuickFolders.Util.document3pane.getElementById ("QuickFoldersCurrentFolder");
   },
 	get CurrentFolderBar() { 
 		if (!QuickFolders.Util.document3pane) {
@@ -1451,7 +1456,7 @@ QuickFolders.Interface = {
 				folder = model.getMsgFolderFromUri(folderEntry.uri, false);
 				let fileSpec = folderEntry.icon,
 						localFile = // Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-						  Services.io.newURI(fileSpec).QueryInterface(Ci.nsIFileURL).file
+						  Services.io.newURI(fileSpec).QueryInterface(Ci.nsIFileURL).file;
 				localFile.initWithPath(path);
 			  if (!localFile.exists())  {
           missingIcons.push({path:path, name:this.folderPathLabel(1, folder, 2)} );
@@ -2956,6 +2961,7 @@ QuickFolders.Interface = {
       }
     };
 
+
     fp.init(window, "Select an icon file", nsIFilePicker.modeOpen);
     fp.appendFilters(nsIFilePicker.filterImages);
 		// needs to be initialized with something that makes sense (UserProfile/QuickFolders)
@@ -3745,8 +3751,9 @@ QuickFolders.Interface = {
 
 		if (entry) {
 			// SelectColor
-			if (folder)
+			if (folder) {
 				util.logDebugOptional("popupmenus","Creating Colors Menu for " + folder.name + "…");
+			}
 			let menuColorPopup = this.buildPaletteMenu(entry.tabColor ? entry.tabColor : 0);
 			colorMenu.appendChild(menuColorPopup);
 		}
@@ -3819,13 +3826,13 @@ QuickFolders.Interface = {
 			menuitem.setAttribute("label",this.getUIstring("qfSelectIcon"));
       QFcommandPopup.appendChild(menuitem);
 
-      menuitem = this.createIconicElement("menuitem", "cmd menuitem-iconic", doc);
-			menuitem.setAttribute("tag", "qfIconRemove");
-			menuitem.setAttribute("label",this.getUIstring("qfRemoveIcon"));
-      if (!entry.icon)
-				menuitem.collapsed = true;
-			QFcommandPopup.appendChild(menuitem);
-
+			if (entry.icon || QuickFolders.FolderTree.hasFolderCustomIcon(folder)) {
+				menuitem = this.createIconicElement("menuitem", "cmd menuitem-iconic", doc);
+				menuitem.setAttribute("tag", "qfIconRemove");
+				menuitem.setAttribute("label",this.getUIstring("qfRemoveIcon"));
+	
+				QFcommandPopup.appendChild(menuitem);
+			}
 		}
 
     menuitem = this.createIconicElement("menuitem", "cmd menuitem-iconic", doc);
@@ -3836,8 +3843,9 @@ QuickFolders.Interface = {
 		if (entry.flags || entry.toAddress || entry.fromIdentity) {
 			menuitem.setAttribute("checked", "true");
 		}
-		else
+		else {
 			menuitem.setAttribute("checked", "false");
+		}
 
 		// we want the coordinates, therefore using click event:
     QFcommandPopup.appendChild(menuitem);
@@ -4473,12 +4481,16 @@ QuickFolders.Interface = {
 					}
 			}
 
+			// [issue 420] create "new subfolder" item from scratch...
 			// New Folder... submenu items
-			let folderPaneContext = document.getElementById("folderPaneContext");
+			let doc = QuickFolders.Util.document3pane; 
+			let folderPaneContext = doc.getElementById("folderPaneContext");
 			if (folderPaneContext) {
-				let newMenuItem = document.getElementById("QF_folderPaneContext-new");
+				let newMenuItem = folderPaneContext.querySelector("#folderPaneContext-new");
 				if (newMenuItem) {
-					let createFolderMenuItem=newMenuItem.cloneNode(true);
+					let createFolderMenuItem =  this.createIconicElement("menuitem","*"); // newMenuItem.cloneNode(true);
+					createFolderMenuItem.setAttribute("label", newMenuItem.getAttribute("label"));
+					createFolderMenuItem.setAttribute("accesskey", newMenuItem.getAttribute("accesskey"));
 					if (folder.hasSubFolders) {
 						let sep = this.createIconicElement("menuseparator","*", popupMenu.ownerDocument);
 						popupMenu.appendChild(sep);
@@ -4494,10 +4506,11 @@ QuickFolders.Interface = {
 					this.setEventAttribute(createFolderMenuItem, "ondrop","QuickFolders.popupDragObserver.drop(event);");  // only case where we use the dedicated observer of the popup!
 
 					// [Bug 26425] option to put 'create new subfolder' on top
-					if (prefs.getBoolPref("dragToCreateFolder.menutop"))
+					if (prefs.getBoolPref("dragToCreateFolder.menutop")) {
 						popupMenu.insertBefore(createFolderMenuItem, popupMenu.firstChild);
-					else
+					} else {
 						popupMenu.appendChild(createFolderMenuItem);
+					}
 				}
 			}
 

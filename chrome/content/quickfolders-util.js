@@ -641,7 +641,7 @@ QuickFolders.Util = {
           // if it can't find a tab with folders ideally it should call openTab to display a new folder tab
           for (let i=0;(!found) && i < tabInfoCount; i++) {
             let info = util.getTabInfoByIndex(tabmail, i);
-            if (info && util.getTabMode(info)!='message') { // SM: tabmail.tabInfo[i].getAttribute("type")!='message'
+            if (info && util.getTabMode(info)!="mailMessageTab") { 
               util.logDebugOptional ("mailTabs","Could not find folder tab - switching to msg tab: " + info.title);
               tabmail.switchToTab(i);
               break;
@@ -914,7 +914,7 @@ QuickFolders.Util = {
       let tabmail = document.getElementById("tabmail"),
           currentTabId = tabmail.currentTabInfo.tabId,  //  currentTabInfo = tabmail.tabInfo[QuickFolders.tabContainer.tabbox.selectedIndex]
           moveFromSingleMailTab = false;
-      if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "message") { 
+      if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "mailMessageTab") { 
         moveFromSingleMailTab = true;
         // either go to the next mail... or close the tab
         if (QuickFolders.quickMove.Settings.isGoNext) {
@@ -1321,13 +1321,13 @@ allowUndo = true)`
   // warningFlag    0x1   Warning messages.
   // exceptionFlag  0x2   An exception was thrown for this case - exception-aware hosts can ignore this.
   // strictFlag     0x4
-  logError: function logError(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags) {
+  logError: function(aMessage, aSourceName, stack, aLineNumber, aColumnNumber, aFlags) {
     let aCategory = '',
         scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(Components.interfaces.nsIScriptError);
     try {
-      scriptError.init(aMessage, aSourceName, aSourceLine, aLineNumber, aColumnNumber, aFlags, aCategory);
+      scriptError.init(aMessage, aSourceName, stack, aLineNumber, aColumnNumber, aFlags, aCategory);
       // Services.console.logMessage(scriptError);  => no output!!
-      console.warn(scriptError) 
+      console.warn(aMessage, `aSourceName: ${aSourceName}, line: ${aLineNumber}, copl: ${aColumnNumber}, flg: ${aFlags}`, stack);
     }
     catch(ex) {
       alert('logError failed: ' + aMessage);
@@ -1340,7 +1340,7 @@ allowUndo = true)`
       stack= ex.stack.replace("@","\n  ");
     // let's display a caught exception as a warning.
     let fn = ex.fileName || "?";
-    this.logError(aMessage + "\n" + ex.message, fn, stack, ex.lineNumber, 0, 0x1);
+    this.logError(aMessage + "\n" + ex.message + "\n", fn, stack, ex.lineNumber, 0, 0x1);
   } ,
 
   logDebug: function (a) {
@@ -1616,8 +1616,9 @@ allowUndo = true)`
             try {baseFolder = ' - ' + folder.rootFolder.name;}
             catch(e) { };
           }
-          else
+          else {
             this.logDebug('getFolderTooltip() - No rootFolder on: ' + folderName + '!');
+          }
         }
         catch(e) { 
           this.logDebug('getFolderTooltip() - No rootFolder on: ' + folderName + '!');
@@ -1722,7 +1723,7 @@ allowUndo = true)`
     let util = QuickFolders.Util,
         tabmail = util.$("tabmail");
     // TO DO - do sanity check on msgHdr (does the message still exist) and throw!
-    tabmail.openTab('message', {msgHdr: hdr, background: false}); 
+    tabmail.openTab("mailMessageTab", {msgHdr: hdr, background: false}); 
   },
   
   // open an email in a new tab

@@ -93,7 +93,7 @@ QuickFolders.quickMove = {
   // move or copy mails (or both at the same time!)
 	// parentName = optional parameter for remembering for autofill - 
 	// only pass this when search was done in the format parent/folder
-  execute: async function execute(targetFolderUri, parentName) {
+  execute: async function(targetFolderUri, parentName) {
     function showFeedback(actionCount, messageIdList, isCopy) {
       // show notification
       if (!actionCount) 
@@ -106,7 +106,7 @@ QuickFolders.quickMove = {
       let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", fld.prettyName);
       
       // if we are in single message mode we now have to jump into the folder and reselect the message!
-      if (tabMode == 'message' && messageIdList.length) {
+      if (tabMode == "mailMessageTab" && messageIdList.length) {
         let theMessage = messageIdList[0];
         //let treeView = (typeof gFolderTreeView!='undefined') ? gFolderTreeView : GetFolderTree().view; 
         //treeView.selectFolder(fld);

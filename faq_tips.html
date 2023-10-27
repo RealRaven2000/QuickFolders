@@ -80,21 +80,21 @@ to your mail client. These apply to all supported Mozilla based mail clients suc
 </P>
 
 <h2 class="newsflash"><a name="TB541052">Important News Flash!</a></h2>
-<p>The new QuickFolders version for Thunderbird78 is currently in
-  prerelease, you can download the current beta from here:</p>
-<p><a class="moz-txt-link-freetext"
-href="https://github.com/RealRaven2000/QuickFolders/releases/tag/5.0pre71"
-    moz-do-not-send="true">https://github.com/RealRaven2000/QuickFolders/releases/tag/5.0pre71</a><br>
+<p>QuickFolders is fully comp[atible with Thunderbird 115</p>
+<p>
+  The latest edition of QuickFOlders v6.3 finally restores the beloved custom icon feature
+  to work with the completely recreated folder tree of Thunderbird 115.
+</p> 
+<p>
+  With this you can add custom icons to any folder. Please reference the 
+  <a href="premium.html#featureComparison">feature comparison page</a> on any license restricions. 
 </p>
 
-<p>If you have interest or comments in the conversion project
-    please visit the QuickFolders github:</p>
-  <p><a href="https://github.com/RealRaven2000/QuickFolders/issues/8">issue 8 - make QuickFolders 
-     compatible with Thunderbird 78 - for God's sake!</a></p>
-  <p>Please do not manually upgrade to Thunderbird78 until the issue
-    is resolved. Better yet, wait for the automatic update pushed by
-    Mozilla.<br>
-  </p>
+<p>
+  If you are interested or comments in ongoing work on keeping QuickFolders
+  compatible with Thunderbird please visit the QuickFolders github:
+  <a href="https://github.com/RealRaven2000/QuickFolders/issues">Github Issues tracker</a>
+</p>
 
 
 
@@ -160,6 +160,67 @@ href="https://github.com/RealRaven2000/QuickFolders/releases/tag/5.0pre71"
 	<dd>Yes, any feedback regarding QuickFolders is strongly encouraged - the easiest way is from the options / support dialog:<br><br>
 	<img src="images/Contact_Me.png" alt="Contact Me" />
 	</dd>
+
+	<dt>Some Tb 115 I am missing your toolbar buttons!</dt>
+	<dd>
+    <p>
+      In Windows, Thunderbird 115 squishes all toolbar buttons into the window title-bar,
+      which can lead to missing toolbar buttons (they are cut off at the right).
+      There are 2 ways to work around this.
+    </p>
+    <ul>
+      <li>
+        <p>
+          Show the buttons as icons only (recommended). You can do this by 
+          right-clicking the toolbar then selecting customize and then choose icons only 
+          on the bottom. You can also use this page for re-ordering your most important buttons 
+          (after upgrade from v102,  Thunderbird 115 simply adds all new Add-ons 
+          on the top right! So you're missing stuff here.)
+        </p>
+        <p>
+          To configure the toolbar, right-click it and select <i>Customize</i> from the drop-down menu
+        </p>
+        <img src="images/toolbar-customize.png" alt="customize toolbar"  class="screenshots" />
+        <p>
+          <i>Icons only</i> mode is best for people with diverse needs and many Add-ons:
+        </p>
+        <img src="images/toolbar-icons-only.png" alt="icons only mode" class="screenshots" />
+        
+        <p>
+          Use the spacers <img src="images/toolbar-spacer.png" /> to structure your toolbar 
+          in a useful way:
+        </p>
+        <img src="images/toolbar-layout-example-QF.png" alt="layout example" class="screenshots"/>
+        <p>
+          Once done, click Save. Below is an example on what it could look like.
+        </p>
+        <img src="images/toolbar-example.png" alt="layout example" class="screenshots"/>
+        <p>
+          Note that I moved the <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/" target="_blank">SmartTemplates</a> button 
+          (Add-on for replying with Templates) into a group with the reply / forward 
+          buttons. Add-ons for Tags and filters are more to the right, closer to the search tools.
+        </p>
+      </li>
+      <li>
+        <p>
+          Also nice (closer to Tb102) - show the toolbar in a separate area from the title bar. 
+          This is a global Thunderbird setting. This will give you some extra horizonal space 
+          for your tools, but of course takes a little extra vertical space. Open Thunderbird 
+          settings, General tab. Under Language & Appearance, disable "Hide system window titlebar":
+        </p>
+        <img src="images/toolbar-system-titlebar.png" alt="toolbar integration" class="screenshots"/>
+
+      </li>
+      
+
+
+
+once done, click Save. To give you inspiration, this is the way I have set up mine:
+    </ul>
+
+
+	</dd>
+
 
 	<dt>I can see no colors on my Folder Tabs. Why is this?</dt>
 	<dd>In Options, on the "Bling my Tabs!" page, activate the "Flat Style" theme and make sure not to select "Native Tabs".

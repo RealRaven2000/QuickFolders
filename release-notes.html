@@ -1,6 +1,6 @@
-<b>Release 6.2</b>
+<b>Release 6.3</b>
 
-Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (115.1)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb91) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
+Please note that <b>QuickFolders is compatible with the latest version of Thunderbird (115.3.2)</b> - if you get a message that says otherwise after updating from earlier versions (e.g. Tb91) or <b>if QuickFolders cannot be enabled</b> with the blue slider, simply remove it and reinstall it via "Find more Add-ons" search box on the Extensions tab of Add-ons Manager.
             
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
 Or get the new cheaper <a href="http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=qf-version-page" target="_blank">QuickFolders Standard License</a>. This is the preferred way of funding all the ongoing work and improvements.
@@ -13,37 +13,42 @@ You can also <a href="https://quickfolders.org/donate.html#donate">donate from h
 
 <b>Enhancements</b>
 <ul>
-  <li> The menu font size can now be changed for all popup menus, independently of the button font. <a href="https://github.com/RealRaven2000/QuickFolders/issues/394">[issue 394]</a> </li>
-  <li> Folder menus now support Thunderbird compact mode - this will be helpful for tabs with many subfolders. <a href="https://github.com/RealRaven2000/QuickFolders/issues/396">[issue 396]</a></li>
-  <li> You can now also change the font size of the folder tabs in 'Apple Pills' theme.</li>
-  <li> Improved coloring and layout for Apple theme. </li>
-  <li> Display localized license expiry date in registration dialog (not as YYYY-MM-DD).</li>
+  <li>
+    Added custom icons in folder tree in Thunderbird 115. <a href="https://github.com/RealRaven2000/QuickFolders/issues/399">[issue 399]</a> 
+    To do: add filter to file open, find a way to remove or change icon with a single menu item(?)
+  </li>
+  <li> 
+    Made registration screen less tall / easily resizable  <a href="https://github.com/RealRaven2000/QuickFolders/issues/400">[issue 400]</a>
+  </li>
+  <li> 
+    Support svg icons in tabs - make icon size configurable. <a href="https://github.com/RealRaven2000/QuickFolders/issues/407">[issue 407]</a>
+  </li>
+
 </ul>
 
 <b>Bugfixes</b>
 <ul>
-<li> Fixed: quickJump switched to matching single mail tab instead of jumping to Folder in current tab. 
-  <a href="https://github.com/RealRaven2000/QuickFolders/issues/389">[issue 389]</a></li>
-<li> Fixed navigation bar (current folder bar) positioning when switching between classic and vertical layout. 
-  <a href="https://github.com/RealRaven2000/QuickFolders/issues/395">[issue 395]</a> </li>
-<li> Also made sure that current folder tab layout is changed when a different theme is selected.</li>
-<li> Resolved keyboard collision with quick filter toolbar; typing [Shift]+[F] and [Shift]+[M] in the search bar triggered the quickJump search.
-  <a href="https://github.com/RealRaven2000/QuickFolders/issues/392">[issue 392]</a></li>
-
-<li> Repaired: set keyboard focus back to thread pane after quickmove</li>
-<li> QuickFolders did not detect if quickFilters assistant started automatically. This is now working even if quickFilters gets restarted from extension manager. <a href="https://github.com/RealRaven2000/QuickFolders/issues/397">[issue 397]</a></li>
-</ul>
-
-<b>Miscellaneous</b>
-<ul>
-  <li> Retired option to set QuickFolders toolbar position. <a href="https://github.com/RealRaven2000/QuickFolders/issues/380">[issue 380]</a></li>
-  <li> After the license was viewed via the menu "check license status", now reset the "renew license" button for the day and return to normal toolbar icon (remove special coloring / message)</li>
-</ul>
-
-
-<b>Known Issues</b>
-<ul>
-<li>Number shortcuts not working - move mail with Option+Shift+Number (Note that [ALT] shortcuts are already taken by Thunderbird, so we need to use CTRL (Windows, Linux) or OPTION (Apple) as modifier to activate tabs.
-  <a href="https://github.com/RealRaven2000/QuickFolders/issues/387">[issue 387]</a></li>
+  <li> Fixed: Open folder from QF Tab while viewing a message <a href="https://github.com/RealRaven2000/QuickFolders/issues/398">[issue 398]</a>
+  </li>
+  <li> Fixed toolbar issues in Single Message window: "null" element <a href="https://github.com/RealRaven2000/QuickFolders/issues/404">[issue 404]</a> 
+  </li>
+  <li> The Navigation Bar now avoids horizontal overflow in columns view <a href="https://github.com/RealRaven2000/QuickFolders/issues/409">[issue 409]</a>
+  </li>
+  <li>
+    Tab specific properties panel was cut off at bottom <a href="https://github.com/RealRaven2000/QuickFolders/issues/408">[issue 408]</a>
+  </li>
+  <li>
+    Fixed: the 'Empty Junk' commands were intermittently hidden from context menus in folder tree <a href="https://github.com/RealRaven2000/QuickFolders/issues/406">[issue 406]</a>
+  </li>
+  <li>
+    Dragging mail to Current Folder tab did not open subfolders popup <a href="https://github.com/RealRaven2000/QuickFolders/issues/412">[issue 412]</a>
+  </li>
+  <li>
+    Message list scrolls to top when switching folders <a href="https://github.com/RealRaven2000/QuickFolders/issues/417">[issue 417]</a>
+  </li>
+  <li>
+    'Create new subfolder' menuitem was missing when dragging mail to a QuickFolders Tab
+    <a href="https://github.com/RealRaven2000/QuickFolders/issues/417">[issue 420]</a>
+  </li>
 </ul>
 

@@ -4449,7 +4449,7 @@ QuickFolders.Interface = {
 			}, false);
 	} ,
 
-	addDragToNewFolderItem: function addDragToNewFolderItem(popupMenu, folder) {
+	addDragToNewFolderItem: function(popupMenu, folder) {
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					Ci = Components.interfaces;
@@ -4486,13 +4486,14 @@ QuickFolders.Interface = {
 			let doc = QuickFolders.Util.document3pane; 
 			let folderPaneContext = doc.getElementById("folderPaneContext");
 			if (folderPaneContext) {
+				let targetDocument = popupMenu.ownerDocument;
 				let newMenuItem = folderPaneContext.querySelector("#folderPaneContext-new");
 				if (newMenuItem) {
-					let createFolderMenuItem =  this.createIconicElement("menuitem","*"); // newMenuItem.cloneNode(true);
+					let createFolderMenuItem =  this.createIconicElement("menuitem","*", targetDocument); // newMenuItem.cloneNode(true);
 					createFolderMenuItem.setAttribute("label", newMenuItem.getAttribute("label"));
 					createFolderMenuItem.setAttribute("accesskey", newMenuItem.getAttribute("accesskey"));
 					if (folder.hasSubFolders) {
-						let sep = this.createIconicElement("menuseparator","*", popupMenu.ownerDocument);
+						let sep = this.createIconicElement("menuseparator","*", targetDocument);
 						popupMenu.appendChild(sep);
 					}
 					createFolderMenuItem.id=""; // delete existing menu
@@ -4563,17 +4564,6 @@ QuickFolders.Interface = {
 
 	// isDrag: if this is set to true, then the command items are not included
 	addSubFoldersPopupFromList: function (subfolders, popupMenu, isDrag, forceAlphaSort, isRecentFolderList, doc, isUnifiedFolder=false) {
-    function splitPath(path, maxAtoms) {
-      let parts = path.split("/"),
-          firstP = parts.length - maxAtoms,
-          pathComponents = "",
-          chevron=" " + "\u00BB".toString() + " "; // double angle quotation mark
-      firstP = firstP>0 ? firstP : 1; // throw away account name
-      for (let i=firstP; i<parts.length; i++) {
-        pathComponents += ((i>firstP) ? chevron : "") + parts[i];
-      }
-      return pathComponents;
-    }
 		if (!doc) { 
 			doc = popupMenu ? (popupMenu.ownerDocument || document ) : document;
 		}
@@ -5718,6 +5708,7 @@ QuickFolders.Interface = {
 	} ,
 
 	setFocusThreadPane: function() {
+		window.gTabmail?.currentAboutMessage?.document.getElementById("messagepane").focus();
     let threadTree = this.getThreadTree();
 		if (threadTree) {
 			// find the selected row, focus that.

@@ -7,3 +7,41 @@
 }
 
 
+/** [issue 378]
+
+.input-sizer {
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  min-width: 50px;
+  // height: 1.8em; 
+  // border: solid 1px;
+  // padding: .25em .5em; 
+}
+
+.input-sizer::after {
+  content: attr(data-value) ' ';
+  visibility: hidden;
+}
+*/
+
+
+/* the following elements are in #shadow-root! 
+.input-sizer input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font: inherit;
+  padding: inherit;
+  margin: 0;
+  appearance: none;
+  border: none;
+}
+*/
+
+/* 
+  image.textbox-search-sign = 14px
+	deck.textbox-search-icons = 14px
+*/

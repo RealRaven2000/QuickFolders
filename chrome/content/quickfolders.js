@@ -395,6 +395,7 @@ END LICENSE BLOCK */
     ## [issue 406] Fixed: "Empty Junk" command intermittently hidden from context menus
     ## [issue 412] Dragging mail to Current Folder tab does not open subfolders popup
     ## [issue 417] Message list scrolls to top when switching folders
+    ## [issue 420] Drag to new subfolder command missing
 
 	Future Work
 	===========
@@ -847,11 +848,7 @@ var QuickFolders = {
 		
 		// only load in main window(?)
     // [issue 399] needs to be moved to the 3pane document code!!!!!!!!!!!!!!
-    /*
-		if (QuickFolders.FolderTree) {
-			QuickFolders.FolderTree.init();
-    }
-    */
+
 
 		// add tab listeners to automatically main toolbar when it is not needed
 		QuickFolders.Interface.initToolbarTabListener();

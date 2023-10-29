@@ -322,8 +322,8 @@ QuickFolders.quickMove = {
       while (this.folders.length) this.folders.pop();
     }
     if (this.Uris.indexOf(newUri) == -1) { // avoid duplicates!
-      let chevron = ' ' + "\u00BB".toString() + ' ',
-          showFolder = QuickFolders.Preferences.getBoolPref('quickMove.folderLabel'); 
+      const Chevron = ' ' + "\u00BB".toString() + ' ',
+            showFolder = QuickFolders.Preferences.getBoolPref('quickMove.folderLabel'); 
       this.Uris.push(newUri);
       this.IsCopy.push(isCopy);
       this.Origins.push(sourceFolder);
@@ -338,7 +338,7 @@ QuickFolders.quickMove = {
           let label = QuickFolders.Util.getFriendlyMessageLabel(hdr),
               menuitem = document.createXULElement("menuitem");
           if (showFolder && sourceFolder)
-            label = sourceFolder.prettyName + chevron + label;
+            label = sourceFolder.prettyName + Chevron + label;
           menuitem.setAttribute("label", label);
           menuitem.className='msgUri menuitem-iconic' + (isCopy ? ' msgCopy' : '');
           QuickFolders.Interface.setEventAttribute(menuitem, "oncommand","QuickFolders.Util.openMessageTabFromUri('" + newUri + "');");

@@ -245,7 +245,13 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders je zdaj združljiv z najnovejšo različico Thunderbird. To je zahtevalo veliko dela {boldStart}ponovnega pisanja in testiranja{boldEnd} vseh elementov, ki so v interakciji z glavno stranjo (3pane) Thunderbirda (gumbi orodne vrstice, meniji, drevo map, povleci in spusti).{P2} {P1}Thunderbird 115 je bil prvič izdan 11. julija in ima popolnoma nov uporabniški vmesnik, imenovan 'SuperNova'. {P2} {P1}Tukaj lahko še vedno spremljate tekoči napredek tega dela: [issue 351]{P2}"
+    "message": "{P1} Najnovejša različica $addonName$ končno obnovi priljubljeno funkcijo prilagojenih ikon, da deluje z v celoti prenovljenim drevesom map v Thunderbirdu 115. {P2}{P1} Zdaj lahko dodate prilagojene ikone katerikoli mapi. Desni klik na katerikoli mapo omogoča dodajanje prilagojene ikone iz datoteke. Oglejte si primerjavo funkcij spodaj glede morebitnih licenčnih omejitev. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "newsSection.license": {
     "message": "To delo je izključno financirano s prodajo licenc razmislite o nakupu licence ali obnovitvi prejšnje, če vas zanima uporaba QuickFolders v prihodnosti."
@@ -1823,8 +1829,8 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Zdaj lahko spremenite velikost pisave menija za vsa pojavna okna menijev, ne glede na velikost pisave gumbov. [issue 394] {L2} {L1} Spremenite lahko tudi velikost pisave zavihkov map v temi 'Apple Pills'.{L2} {L1} Izboljšano barvanje in postavitev za temo Apple. {L2} {L1} Prikaže lokalizirani datum poteka licence v pogovornem oknu za registracijo (ne kot LLLL-MM-DD).{L2}{L1} Rešena je bila konflikt tipkovnice s hitrim filtrovskim orodjem; tipkanje [Shift]+[F] in [Shift]+[M] v iskalno vrstico je sprožilo iskanje quickJump. {L2}{L1} V nekaterih primerih je quickJump napačno aktiviral zavihke posameznih sporočil. {L2}{L1} Navigacijska vrstica bo zdaj vedno premaknjena navzgor ob preklopu med klasično in navpično postavitvijo. [issue 395]{L2}"
-  },
+    "message": "{L1} Dodane prilagojene ikone v drevo map v programu Thunderbird 115. [issue 399] {L2} {L1} Zmanjšana višina zaslona za registracijo.{L2} {L1} QuickFolders zdaj podpira ikone SVG na zavihkih. [issue 407] {L2} {L1} Popravljeno: Odpiranje mape iz zavihka QF med ogledom sporočila.{L2}{L1} Navigacijska vrstica sedaj preprečuje vodoravni preliv v prikazu stolpcev. {L2}{L1} Popravljeno: ukazi 'Izprazni Nezaželeno' so bili občasno skriti v kontekstnem meniju drevesa map [issue 406]{L2}{L1} Povleci in spusti pošto na zavihku 'Trenutna mapa' ni odprlo pojavno okno s podmapami.{L2}{L1} Manjkala je možnost 'Ustvari novo podmapo' pri povlečenju pošte na zavihek QuickFolders. [issue 420]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Dobrodošli v $addonName$",

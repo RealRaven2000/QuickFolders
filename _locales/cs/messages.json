@@ -170,8 +170,14 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders je nyní kompatibilní s nejnovější verzí Thunderbirdu. To vyžadovalo značnou práci {boldStart}přepsání a testování{boldEnd} všech prvků interagujících s hlavní stránkou (3panel) Thunderbirdu (tlačítka na panelu nástrojů, nabídky, strom složek, přetažení).{P2} {P1}Thunderbird 115 byl poprvé vydán 11. července a má zcela nové uživatelské rozhraní nazvané 'SuperNova'. {P2} {P1}Probíhající postup těchto prací můžete stále sledovat zde: [issue 351]{P2}"
-  },
+    "message": "{P1} Tato nejnovější edice $addonName$ konečně obnovuje oblíbenou funkci vlastní ikony pro použití s plně znovu vytvořeným stromem složek ve Thunderbirdu 115. {P2}{P1} S tímto můžete přidat vlastní ikony do libovolné složky. Klikněte pravým tlačítkem myši na jakoukoli složku a přidejte vlastní ikonu z souboru. Podívejte se na srovnání funkcí níže ohledně omezení licence. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },  
   "newsSection.license": {
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat QuickFolders v budoucnu."
   },
@@ -377,7 +383,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Nyní lze změnit velikost písma nabídek všech vyskakovacích menu, nezávisle na písmu tlačítek. [problém 394] {L2} {L1} Nyní lze také změnit velikost písma záložek složek v tématu 'Jablečné pilulky'.{L2} {L1} Vylepšené zbarvení a rozvržení pro téma Apple. {L2} {L1} Zobrazit lokalizované datum vypršení platnosti licence v dialogovém okně registrace (nikoli ve formátu RRRR-MM-DD).{L2}{L1} Vyřešen konflikt klávesnice s panelovým nástrojem rychlého filtru; psaní [Shift]+[F] a [Shift]+[M] do vyhledávacího pole spouštělo rychlé vyhledávání. {L2}{L1} V některých případech quickJump nepravidelně aktivovával karty jednotlivých zpráv. {L2}{L1} Navigační panel bude nyní vždy přesunut nahoru při přepínání mezi klasickým a vertikálním uspořádáním. [problém 395]{L2}"
+    "message": "{L1} Přidány vlastní ikony do stromu složek v Thunderbirdu 115. [issue 399] {L2} {L1} Zmenšena výška registrační obrazovky.{L2} {L1} QuickFolders nyní podporuje ikony SVG v záložkách. [issue 407] {L2} {L1} Opraveno: Otevírání složky z QF karty při prohlížení zprávy.{L2}{L1} Navigační panel nyní předejde horizontálnímu přetečení v režimu sloupců. {L2}{L1} Opraveno: Příkazy 'Vyprázdnit spam' byly dočasně skryty v kontextových nabídkách v seznamu složek [issue 406]{L2}{L1} Přetahování emailu na kartu Aktuální složky neotevře vyskakovací okno s podsložkami.{L2}{L1} Chyběla položka 'Vytvořit novou podsložku' při přetahování emailu na kartu QuickFolders. [issue 420]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

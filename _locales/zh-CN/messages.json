@@ -261,7 +261,13 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}完全重写的 QuickFolders 版本可用于新的 Thunderbird SuperNova UI。 Thunderbird 115 将在接下来的几周内向所有启用更新的用户推出，然后 QuickFolders 将自动更新。{P2} {P1}您可以在此处了解这项工作的进度和更改量：[issue 351]{P2}"
+    "message": "{P1} 此最新版本的 $addonName$ 终于使得深受喜爱的自定义图标功能能够与 Thunderbird 115 完全重建的文件夹树配合使用。{P2}{P1} 使用此功能，您可以将自定义图标添加到任何文件夹。右键单击任何文件夹以从文件添加自定义图标。请参阅下方有关任何许可限制的功能比较。{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "newsSection.license": {
     "message": "这项工作是独家资助的 通过出售许可证，如果您有兴趣在未来使用 QuickFolders，请考虑购买许可证或更新之前的许可证。"
@@ -1812,8 +1818,8 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 现在您可以独立于按钮字体更改所有弹出菜单的菜单字体大小。[issue 394] {L2} {L1} 您还可以在'Apple Pills'主题中更改文件夹选项卡的字体大小。{L2} {L1} 改进了Apple主题的着色和布局。 {L2} {L1} 在注册对话框中显示本地化的许可到期日期（不以YYYY-MM-DD的格式）。{L2}{L1} 解决了与快速过滤工具栏的键盘冲突；在搜索栏中输入[Shift]+[F]和[Shift]+[M]会触发quickJump搜索。 {L2}{L1} 在某些情况下，quickJump会不稳定地激活单个消息选项卡。 {L2}{L1} 切换经典布局和垂直布局时，导航栏将始终移至顶部。[issue 395]{L2}"
-  },
+    "message": "{L1} 在 Thunderbird 115 中的文件夹树中添加自定义图标。[问题 399] {L2} {L1} 减小注册屏幕的高度。{L2} {L1} QuickFolders 现在支持标签中的 SVG 图标。[问题 407] {L2} {L1} 修复：在查看消息时从 QF 选项卡中打开文件夹。{L2}{L1} 导航栏现在避免在列视图中发生水平溢出。{L2}{L1} 修复：'清空垃圾' 命令有时会从文件夹树中的上下文菜单中隐藏 [问题 406]。{L2}{L1} 将邮件拖到“当前文件夹”选项卡上不会打开子文件夹弹出窗口。{L2}{L1} 在将邮件拖到 QuickFolders 选项卡上时缺少“创建新子文件夹”菜单项。[问题 420]{L2}"
+  },    
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "欢迎使用 $addonName$",

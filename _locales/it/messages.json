@@ -254,8 +254,14 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1}È disponibile una versione completamente riscritta di QuickFolders per la nuova interfaccia utente di Thunderbird SuperNova. Thunderbird 115 verrà distribuito a tutti gli utenti che hanno gli aggiornamenti abilitati nelle prossime settimane e QuickFolders verrà quindi aggiornato automaticamente.{P2} {P1}Puoi leggere l'avanzamento e la quantità di modifiche per questo lavoro qui: [issue 351]{P2} "
-  },
+    "message": "{P1} Questa ultima edizione di $addonName$ finalmente ripristina la tanto amata funzione di icona personalizzata per funzionare con l'albero delle cartelle completamente ricreato di Thunderbird 115. {P2}{P1} Con questa funzionalità puoi aggiungere icone personalizzate a qualsiasi cartella. Fai clic destro su una cartella per aggiungere un'icona personalizzata da un file. Vedi il confronto delle funzionalità di seguito sulle restrizioni di licenza. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },  
   "newsSection.license": {
     "message": "Questo lavoro è finanziato esclusivamente dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare QuickFolders in futuro."
   },
@@ -1865,8 +1871,8 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} Ora è possibile cambiare la dimensione del carattere del menu per tutti i menu a comparsa, indipendentemente dalla dimensione del carattere del pulsante. [issue 394] {L2} {L1} Ora è possibile anche cambiare la dimensione del carattere delle schede delle cartelle nel tema 'Apple Pills'.{L2} {L1} Migliorato il colore e il layout per il tema Apple. {L2} {L1} Mostra la data di scadenza della licenza localizzata nella finestra di dialogo di registrazione (non come AAAA-MM-GG).{L2}{L1} Risolto il conflitto della tastiera con la barra degli strumenti del filtro rapido; digitare [Shift]+[F] e [Shift]+[M] nella barra di ricerca attivava la ricerca quickJump. {L2}{L1} In alcuni casi, quickJump attivava in modo erratico le schede dei messaggi singoli. {L2}{L1} La barra di navigazione verrà ora sempre spostata in alto durante il passaggio tra il layout classico e quello verticale. [issue 395]{L2}"
-  },
+    "message": "{L1} Aggiunte icone personalizzate nell'albero delle cartelle in Thunderbird 115. [issue 399] {L2} {L1} Abbassato l'altezza della schermata di registrazione.{L2} {L1} QuickFolders ora supporta icone SVG nelle schede. [issue 407] {L2} {L1} Risolto: Apertura cartella dalla scheda QF durante la visualizzazione di un messaggio.{L2}{L1} La Barra di Navigazione ora evita l'overflow orizzontale nella vista a colonne. {L2}{L1} Risolto: i comandi 'Svuota spam' erano occasionalmente nascosti nei menu contestuali nell'albero delle cartelle [issue 406]{L2}{L1} Il trascinamento delle email sulla scheda Cartella Corrente non apriva la finestra delle sottocartelle.{L2}{L1} Mancava la voce 'Crea nuova sottocartella' quando si trascinava una email su una scheda QuickFolders. [issue 420]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Benvenuto in $addonName$",

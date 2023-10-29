@@ -268,7 +268,13 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1}QuickFolders is now compatible with the latest version of Thunderbird. This required considerable work of {boldStart}rewriting and testing{boldEnd} all elements interacting with the main page (3pane) of Thunderbird (toolbar buttons, menus, folder tree, drag and drop).{P2}{P1}Thunderbird 115 has been released on July 11th and has a completely new user interface called 'SuperNova'. {P2} {P1}You can still follow the ongoing progress of this work here: [issue 351]{P2}"
+    "message": "{P1} This latest edition of $addonName$ finally restores the beloved custom icon feature to work with the completely recreated folder tree of Thunderbird 115. {P2}{P1} With this you can add custom icons to any folder. Right-click any folder to add a custom icon from a file. See the feature comparison below on any license restrictions. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "newsSection.license": {
     "message": "As this work is exclusively funded by the sale of licenses, please consider buying a license or renewing your previous one if you are interested in using QuickFolders in the future."
@@ -1926,7 +1932,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} The menu font size can now be changed for all popup menus, independently of the button font. [issue 394] {L2} {L1} You can now also change the font size of the folder tabs in 'Apple Pills' theme.{L2} {L1} Improved coloring and layout for Apple theme. {L2} {L1} Display localized license expiry date in registration dialog (not as YYYY-MM-DD).{L2}{L1} Resolved keyboard collision with quick filter toolbar; typing [Shift]+[F] and [Shift]+[M] in the search bar triggered the quickJump search. {L2}{L1} In some cases, quickJump erratically activated single message tabs. {L2}{L1} The navigation bar will now always be moved to the top when switching between classic and vertical layout. [issue 395]{L2}"
+    "message": "{L1} Added custom icons in folder tree in Thunderbird 115. [issue 399] {L2} {L1} Made registration screen less tall.{L2} {L1} QuickFolders now supports svg icons in tabs. [issue 407] {L2} {L1} Fixed: Open folder from QF Tab while viewing a message.{L2}{L1} The Navigation Bar now avoids horizontal overflow in columns view. {L2}{L1} Fixed: the 'Empty Junk' commands were intermittently hidden from context menus in folder tree [issue 406]{L2}{L1} Dragging mail to Current Folder tab did not open subfolders popup.{L2}{L1}'Create new subfolder' menuitem was missing when dragging mail to a QuickFolders Tab. [issue 420]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -260,8 +260,14 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1}Hay disponible una versión completamente reescrita de QuickFolders para la nueva interfaz de usuario de Thunderbird SuperNova. Thunderbird 115 se implementará para todos los usuarios que tengan las actualizaciones habilitadas durante las próximas semanas, y QuickFolders se actualizará automáticamente.{P2} {P1}Puede leer sobre el progreso y la cantidad de cambios para este trabajo aquí: [issue 351]{P2}"
-  },
+    "message": "{P1} Esta última edición de $addonName$ finalmente restaura la querida característica de iconos personalizados para funcionar con el árbol de carpetas completamente recreado de Thunderbird 115. {P2}{P1} Con esto, puedes agregar iconos personalizados a cualquier carpeta. Haz clic derecho en cualquier carpeta para agregar un icono personalizado desde un archivo. Consulta la comparación de características a continuación sobre restricciones de licencia. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },  
   "newsSection.license": {
     "message": "Este trabajo está financiado exclusivamente por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar QuickFolders en el futuro."
   },
@@ -1877,8 +1883,8 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Ahora es posible cambiar el tamaño de la fuente del menú para todos los menús emergentes, independientemente del tamaño de fuente de los botones. [issue 394] {L2} {L1} Ahora también puedes cambiar el tamaño de fuente de las pestañas de carpetas en el tema 'Píldoras de Apple'.{L2} {L1} Mejora en la coloración y diseño para el tema de Apple. {L2} {L1} Mostrar la fecha de vencimiento de la licencia localizada en el cuadro de diálogo de registro (no como AAAA-MM-DD).{L2}{L1} Resuelta la colisión del teclado con la barra de herramientas de filtro rápido; escribir [Shift]+[F] y [Shift]+[M] en la barra de búsqueda activaba la búsqueda de quickJump. {L2}{L1} En algunos casos, quickJump activaba de manera errática las pestañas de mensajes individuales. {L2}{L1} La barra de navegación ahora siempre se colocará en la parte superior al cambiar entre el diseño clásico y el vertical. [issue 395]{L2}"
-  },
+    "message": "{L1} Agregados iconos personalizados en el árbol de carpetas en Thunderbird 115. [issue 399] {L2} {L1} Se redujo la altura de la pantalla de registro.{L2} {L1} QuickFolders ahora admite iconos SVG en las pestañas. [issue 407] {L2} {L1} Corregido: Abrir carpeta desde una pestaña de QF mientras se visualiza un mensaje.{L2}{L1} La Barra de Navegación ahora evita desbordamientos horizontales en la vista de columnas. {L2}{L1} Corregido: los comandos 'Vaciar Basura' a veces se ocultaban en los menús contextuales del árbol de carpetas [issue 406]{L2}{L1} Arrastrar un correo a la pestaña Carpeta Actual no abría el menú emergente de subcarpetas.{L2}{L1} Faltaba el elemento de menú 'Crear nueva subcarpeta' al arrastrar un correo a una pestaña de QuickFolders. [issue 420]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenido a $addonName$",

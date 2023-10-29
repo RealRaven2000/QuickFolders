@@ -257,7 +257,13 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1}完全重寫的 QuickFolders 版本可用於新的 Thunderbird SuperNova UI。 Thunderbird 115 將在接下來的幾週內向所有啟用更新的用戶推出，然後 QuickFolders 將自動更新。{P2} {P1}您可以在此處了解這項工作的進度和更改量：[issue 351]{P2}"
+    "message": "{P1} 這個最新版本的 $addonName$ 最終恢復了深受喜愛的自訂圖示功能，可與 Thunderbird 115 完全重建的資料夾樹一起使用。{P2}{P1} 您現在可以將自訂圖示添加到任何資料夾。右鍵點擊任何資料夾以從檔案添加自訂圖示。請參閱下方有關任何授權限制的功能比較。{P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "newsSection.license": {
     "message": "這項工作是獨家資助的 通過出售許可證，如果您有興趣在未來使用 QuickFolders，請考慮購買許可證或更新之前的許可證。"

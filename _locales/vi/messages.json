@@ -140,7 +140,13 @@
     "message": "Tin mới nhất"
   },
   "newsSection": {
-    "message": "{P1}Hiện đã có phiên bản viết lại hoàn toàn của QuickFolders cho giao diện người dùng Thunderbird SuperNova mới. Thunderbird 115 sẽ được triển khai cho tất cả người dùng đã bật cập nhật trong những tuần tới và QuickFolders sau đó sẽ được cập nhật tự động.{P2} {P1}Bạn có thể đọc tiến trình và số lượng thay đổi cho công việc này tại đây: [issue 351]{P2}"
+    "message": "{P1} Phiên bản mới nhất của $addonName$ cuối cùng đã khôi phục tính năng biểu tượng tùy chỉnh yêu thích để hoạt động với cây thư mục hoàn toàn được tạo lại của Thunderbird 115. {P2}{P1} Với điều này, bạn có thể thêm biểu tượng tùy chỉnh vào bất kỳ thư mục nào. Nhấp chuột phải vào bất kỳ thư mục nào để thêm biểu tượng tùy chỉnh từ tệp. Xem so sánh tính năng bên dưới về bất kỳ hạn chế cấp phép nào. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Công việc này được tài trợ độc quyền bằng cách bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép trước đó nếu bạn quan tâm đến việc sử dụng QuickFolders trong tương lai."
@@ -1373,8 +1379,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Bây giờ bạn có thể thay đổi kích thước chữ của menu cho tất cả các menu hiển thị, độc lập với kích thước chữ của nút. [issue 394] {L2} {L1} Bây giờ bạn cũng có thể thay đổi kích thước chữ của các tab thư mục trong chủ đề 'Apple Pills'.{L2} {L1} Cải thiện màu sắc và bố cục cho chủ đề Apple. {L2} {L1} Hiển thị ngày hết hạn giấy phép đã dịch trong hộp thoại đăng ký (không phải dạng NĂM-THÁNG-NGÀY).{L2}{L1} Khắc phục xung đột bàn phím với thanh công cụ lọc nhanh; việc nhập [Shift]+[F] và [Shift]+[M] vào thanh tìm kiếm kích hoạt tìm kiếm quickJump. {L2}{L1} Trong một số trường hợp, quickJump đã kích hoạt tab tin nhắn đơn một cách không đúng đắn. {L2}{L1} Thanh điều hướng sẽ luôn được di chuyển lên phía trên khi chuyển đổi giữa bố cục cổ điển và dọc. [issue 395]{L2}"
-  },
+    "message": "{L1} Thêm biểu tượng tùy chỉnh trong cây thư mục trong Thunderbird 115. [issue 399] {L2} {L1} Giảm chiều cao màn hình đăng ký.{L2} {L1} QuickFolders hiện hỗ trợ biểu tượng SVG trên tab. [issue 407] {L2} {L1} Sửa lỗi: Mở thư mục từ tab QF khi xem một thông báo.{L2}{L1} Thanh điều hướng hiện tránh tràn ngang trong chế độ xem cột. {L2}{L1} Sửa lỗi: Các lệnh 'Làm trống thùng rác' thỉnh thoảng bị ẩn khỏi menu ngữ cảnh trong cây thư mục [issue 406]{L2}{L1} Kéo thư đi tới tab Thư mục Hiện tại không mở cửa sổ con thư mục.{L2}{L1} 'Tạo thư mục con mới' bị thiếu khi kéo thư tới tab QuickFolders. [issue 420]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

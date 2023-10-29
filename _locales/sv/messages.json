@@ -257,7 +257,13 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1}En helt omskriven version av QuickFolders är tillgänglig för det nya Thunderbird SuperNova-gränssnittet. Thunderbird 115 kommer att rullas ut till alla användare som har uppdateringar aktiverade under de kommande veckorna, och QuickFolders kommer då att uppdateras automatiskt.{P2} {P1}Du kan läsa om framstegen och antalet ändringar för detta arbete här: [issue 351]{P2}"
+    "message": "{P1} Den senaste utgåvan av $addonName$ återställer äntligen den omtyckta funktionen för anpassade ikoner så att den fungerar med den helt återskapade mappträdet i Thunderbird 115. {P2}{P1} Med detta kan du lägga till anpassade ikoner i vilken mapp som helst. Högerklicka på vilken mapp som helst för att lägga till en anpassad ikon från en fil. Se funktionsjämförelsen nedan för eventuella licensbegränsningar. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Detta arbete är exklusivt finansierat genom försäljning av licenser, överväg att köpa en licens eller förnya din tidigare om du är intresserad av att använda QuickFolders i framtiden."
@@ -1886,8 +1892,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Nu kan du ändra menyns teckenstorlek för alla popup-menyer, oberoende av storleken på knapparnas tecken. [issue 394] {L2} {L1} Nu kan du också ändra teckenstorleken på mappflikarna i temat 'Apple Pills'.{L2} {L1} Förbättrad färgsättning och layout för Apple-temat. {L2} {L1} Visa det lokaliseras licensens utgångsdatum i registreringsdialogen (inte som ÅÅÅÅ-MM-DD).{L2}{L1} Löst tangentbordskonflikten med snabbfilterverktygsfältet; att skriva [Shift]+[F] och [Shift]+[M] i sökfältet aktiverade quickJump-sökningen. {L2}{L1} I vissa fall aktiverade quickJump flikar för enskilda meddelanden på ett felaktigt sätt. {L2}{L1} Navigeringsfältet kommer nu alltid att flyttas uppåt vid växling mellan klassisk och vertikal layout. [issue 395]{L2}"
-  },
+    "message": "{L1} Lade till anpassade ikoner i mappträdet i Thunderbird 115. [issue 399] {L2} {L1} Minskade höjden på registreringsskärmen.{L2} {L1} QuickFolders stödjer nu SVG-ikoner i flikar. [issue 407] {L2} {L1} Åtgärdat: Öppna mapp från QF-flik när du visar ett meddelande.{L2}{L1} Navigeringsfältet undviker nu horisontell överlappning i kolumnvy. {L2}{L1} Åtgärdat: Kommandona 'Töm Skräp' dolde sig ibland i snabbmenyer i mappträdet [issue 406]{L2}{L1} Dra e-post till fliken Aktuell mapp öppnade inte undermappsfönstret.{L2}{L1} 'Skapa ny undermapp' i menyn saknades när du drog e-post till en QuickFolders-flik. [issue 420]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Välkommen till $addonName$",

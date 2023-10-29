@@ -258,11 +258,14 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1}QuickFolders ist jetzt mit der neuesten Version von Thunderbird kompatibel. Dies erforderte erhebliche Arbeit beim {boldStart}Neuschreiben und Testen{boldEnd} aller Elemente, die mit der Hauptseite (3pane) von Thunderbird interagieren (Symbolleistenschaltflächen, Menüs, Ordnerbaum, Drag & Drop).{P2} {P1}Thunderbird 115 wurde erstmals am 11. Juli veröffentlicht und verfügt über eine völlig neue Benutzeroberfläche namens „SuperNova“.{P2} {P1}Sie können den laufenden Fortschritt dieser Arbeit weiterhin auf [issue 351] verfolgen. {P2}"
-  },
-  "newsSection.license": {
-    "message": "Da diese Arbeit ausschließlich durch den Verkauf von Lizenzen finanziert wird, erwägen Sie bitte den Kauf einer Lizenz oder die Erneuerung Ihrer alten Lizenz, wenn Sie daran interessiert sind, QuickFolders in Zukunft zu verwenden."
-  },
+    "message": "{P1} Diese neueste Ausgabe von $addonName$ stellt endlich die beliebte benutzerdefinierte Symbolfunktion wieder her und funktioniert mit dem vollständig neu erstellten Ordnerbaum von Thunderbird 115. {P2}{P1} Damit können Sie benutzerdefinierte Symbole zu jedem Ordner hinzufügen. Klicken Sie mit der rechten Maustaste auf einen Ordner, um ein benutzerdefiniertes Symbol aus einer Datei hinzuzufügen. Siehe den Funktionsvergleich unten für Lizenzbeschränkungen. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },  
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
     "placeholders": {
@@ -1533,7 +1536,7 @@
     "message": "Keine weiteren ungelesenen Ordner, fahre fort in {1}."
   },
   "qfNewFolder": {
-    "message": "Neuer Unterordner…"
+    "message": "Neues Unterverzeichnis…"
   },
   "qfNewName": {
     "message": "Neuer Name für den Tab"
@@ -1865,7 +1868,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Die Schriftgröße des Menüs kann nun für alle Popup-Menüs unabhängig von der Schriftgröße der Schaltflächen geändert werden. [issue 394] {L2} {L1} Sie können jetzt auch die Schriftgröße der Ordnerregisterkarten im 'Apple Pills'-Design ändern.{L2} {L1} Verbesserte Farbgebung und Layout für das Apple-Design. {L2} {L1} Anzeige des lokalisierten Ablaufdatums der Lizenz im Registrierungsdialog (nicht als JJJJ-MM-TT).{L2}{L1} Gelöst: Tastaturkonflikt mit der Schnellfilter-Symbolleiste; Das Tippen von [Shift]+[F] und [Shift]+[M] in der Suchleiste löste die quickJump-Suche aus. {L2}{L1} In einigen Fällen wurde quickJump erratisch in Einzel-Nachrichten-Registerkarten aktiviert. {L2}{L1} Die Navigationsleiste wird nun beim Wechsel zwischen klassischem und vertikalem Layout immer nach oben verschoben. [issue 395]{L2}"
+    "message": "{L1} Benutzerdefinierte Symbole im Ordnerbaum in Thunderbird 115 hinzugefügt. [issue 399] {L2} {L1} Die Registrierungsbildschirmhöhe wurde verringert.{L2} {L1} QuickFolders unterstützt jetzt SVG-Symbole in Registerkarten. [issue 407] {L2} {L1} Behoben: Ordner aus QF-Registerkarte öffnen, während eine Nachricht angezeigt wird.{L2}{L1} Die Navigationsleiste vermeidet jetzt horizontales Überlaufen in der Spaltenansicht. {L2}{L1} Behoben: Die 'Leeren des Junk-Ordners'-Befehle wurden gelegentlich aus den Kontextmenüs im Ordnerbaum ausgeblendet [issue 406]{L2}{L1} Das Ziehen von E-Mails auf die Registerkarte 'Aktueller Ordner' öffnete das Popup für Unterordner nicht.{L2}{L1} Das Menüelement 'Neuen Unterordner erstellen' fehlte, wenn E-Mails auf eine QuickFolders-Registerkarte gezogen wurden. [issue 420]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

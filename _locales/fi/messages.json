@@ -128,8 +128,14 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1}Täysin uudelleen kirjoitettu versio QuickFoldersista on saatavilla uudelle Thunderbird SuperNova -käyttöliittymälle. Thunderbird 115 julkaistaan kaikille käyttäjille, joilla on päivitykset käytössä seuraavien viikkojen aikana, ja QuickFolders päivitetään sitten automaattisesti.{P2} {P1}Voit lukea tämän työn edistymisestä ja muutosten määrästä täältä: [issue 351]{P2}"
-  },
+    "message": "{P1} Tämä uusin versio $addonName$-lisäosasta palauttaa viimein rakastetun mukautetun kuvakkeen ominaisuuden toimimaan täysin uudelleen luodun Thunderbird 115 -kansiorakenteen kanssa. {P2}{P1} Voit lisätä mukautettuja kuvakkeita mihin tahansa kansioon. Klikkaa oikealla kansiota lisätäksesi mukautetun kuvakkeen tiedostosta. Katso alla oleva ominaisuusvertailu lisenssirajoituksista. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },   
   "newsSection.license": {
     "message": "Tämä työ on yksinomaan rahoitettu lisenssien myynnin vuoksi, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään QuickFolderia tulevaisuudessa"
   },
@@ -306,8 +312,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} Nyt valikon fonttikokoisuus voidaan muuttaa kaikille ponnahdusvalikoille erikseen napin fonttikoosta riippumatta. [issue 394] {L2} {L1} Nyt voit myös muuttaa kansioiden välilehtien fonttikokoa 'Apple Pills' -teemassa.{L2} {L1} Parannettu väritys ja asettelu Apple-teemalle. {L2} {L1} Näytä paikallistettu lisenssin vanhentumispäivämäärä rekisteröinti-ikkunassa (ei muodossa VVVV-KK-PP).{L2}{L1} Ratkaistu näppäimistökonflikti pikasuodatus-työkalurivin kanssa; kirjoittaminen [Shift]+[F] ja [Shift]+[M] hakukenttään laukaisi quickJump-haun. {L2}{L1} Joissain tapauksissa quickJump aktivoi yksittäisten viestien välilehdet virheellisesti. {L2}{L1} Navigointipalkki siirretään nyt aina ylös vaihdettaessa klassisen ja pystysuuntaisen asettelun välillä. [issue 395]{L2}"
-  },
+    "message": "{L1} Lisätty mukautettuja kuvakkeita kansiorakenteeseen Thunderbirdissä 115. [issue 399] {L2} {L1} Pienennetty rekisteröintinäytön korkeutta.{L2} {L1} QuickFolders tukee nyt svg-kuvakkeita välilehdissä. [issue 407] {L2} {L1} Korjattu: Kansion avaaminen QF-välilehdeltä viestiä katsottaessa.{L2}{L1} Navigointipalkki välttää nyt vaakasuoran ylivuodon sarakenäkymässä. {L2}{L1} Korjattu: 'Tyhjennä roskaposti' -komennot piiloutuivat satunnaisesti kontekstivalikoista kansiorakenteessa [issue 406]{L2}{L1} Viestin vetäminen Nykyisen kansion välilehdelle ei avannut alikansioiden ponnahdusikkunaa.{L2}{L1} 'Luo uusi alikansio' -valikkokohta puuttui vetäessä viestiä QuickFolders-välilehdelle. [issue 420]{L2}"
+  },   
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Tervetuloa osoitteeseen $addonName$",

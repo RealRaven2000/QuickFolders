@@ -254,8 +254,14 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1}Dostępna jest całkowicie przepisana wersja programu QuickFolders dla nowego interfejsu użytkownika programu Thunderbird SuperNova. Thunderbird 115 zostanie wdrożony u wszystkich użytkowników, którzy mają włączone aktualizacje, w ciągu najbliższych tygodni, a następnie QuickFolders zostaną automatycznie zaktualizowane.{P2} {P1}Możesz przeczytać o postępie i ilości zmian w tej pracy tutaj: [issue 351] {P2}"
-  },
+    "message": "{P1} Ta najnowsza edycja $addonName$ w końcu przywraca ulubioną funkcję niestandardowych ikon, działając z całkowicie odtworzonym drzewem folderów w Thunderbird 115. {P2}{P1} Dzięki temu możesz dodawać niestandardowe ikony do dowolnego folderu. Kliknij prawym przyciskiem myszy na dowolnym folderze, aby dodać niestandardową ikonę z pliku. Zobacz poniższe porównanie funkcji dotyczące ograniczeń licencji. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },  
   "newsSection.license": {
     "message": "Ta praca jest finansowana wyłącznie poprzez sprzedaż licencji, rozważ zakup licencji lub odnowienie poprzedniej, jeśli jesteś zainteresowany korzystaniem z QuickFolders w przyszłości"
   },
@@ -1868,8 +1874,8 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Teraz można zmieniać rozmiar czcionki menu dla wszystkich menu typu popup, niezależnie od rozmiaru czcionki przycisków. [issue 394] {L2} {L1} Teraz można także zmieniać rozmiar czcionki kartotek folderów w motywie „Pigułki Apple”.{L2} {L1} Poprawiono kolorystykę i układ dla motywu Apple. {L2} {L1} Wyświetl datę wygaśnięcia zlokalizowanej licencji w oknie dialogowym rejestracji (nie jako RRRR-MM-DD).{L2}{L1} Rozwiązane zagadnienie konfliktu klawiatury z paskiem narzędzi szybkiego filtrowania; wpisanie [Shift]+[F] i [Shift]+[M] w polu wyszukiwania aktywowało wyszukiwanie quickJump. {L2}{L1} W niektórych przypadkach quickJump aktywowało zakładki pojedynczych wiadomości w sposób niewłaściwy. {L2}{L1} Pasek nawigacji będzie teraz zawsze umieszczany u góry przy przełączaniu się między układem klasycznym a pionowym. [issue 395]{L2}"
-  },
+    "message": "{L1} Dodano niestandardowe ikony w drzewie folderów w Thunderbird 115. [issue 399] {L2} {L1} Zmniejszono wysokość ekranu rejestracji.{L2} {L1} QuickFolders obsługuje teraz ikony SVG w kartach. [issue 407] {L2} {L1} Naprawiono: Otwieranie folderu z karty QF podczas przeglądania wiadomości.{L2}{L1} Pasek Nawigacji teraz unika poziomego przepełnienia w widoku kolumn. {L2}{L1} Naprawiono: 'Opróżnij folder spam' były czasami ukryte w menu kontekstowym w strukturze folderów [issue 406]{L2}{L1} Przenoszenie wiadomości do karty Bieżący folder nie otwierało okna podręcznego z podfolderami.{L2}{L1} Brakowało opcji 'Utwórz nowy podfolder' podczas przeciągania wiadomości na kartę QuickFolders. [issue 420]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Witamy w $addonName$",

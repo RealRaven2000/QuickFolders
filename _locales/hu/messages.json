@@ -228,8 +228,14 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1}A QuickFolders teljesen átírt verziója elérhető az új Thunderbird SuperNova UI-hoz. A következő hetekben a Thunderbird 115 minden olyan felhasználó számára elérhető lesz, akinél engedélyezték a frissítéseket, és a QuickFolders automatikusan frissül.{P2} {P1}A munka előrehaladásáról és a módosítások mennyiségéről itt olvashat: [issue 351]{P2}"
-  },
+    "message": "{P1} Ez a legújabb kiadás a $addonName$ végül visszaállítja a népszerű testreszabott ikon funkciót a Thunderbird 115 teljesen újratervezett mappafájával való munkához. {P2}{P1} Ezzel testreszabott ikonokat adhatsz hozzá bármely mappához. Jobb gombbal kattints bármely mappára, hogy testreszabott ikont adj hozzá egy fájlból. Nézd meg az alábbi funkció összehasonlítást a licenc korlátozásokról. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },  
   "newsSection.license": {
     "message": "Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást."
   },
@@ -1635,8 +1641,8 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Mostantól a menü betűmérete megváltoztatható az összes felugró menüben a gomb betűméretétől függetlenül. [issue 394] {L2} {L1} Mostantól megváltoztathatod a mappa fülök betűméretét az 'Apple Pills' témában.{L2} {L1} Jobb színhasználat és elrendezés az Apple témához. {L2} {L1} A lokalizált licenc lejárati dátuma megjelenik a regisztrációs ablakban (nem mint ÉÉÉÉ-HH-NN).{L2}{L1} Megoldva a billentyűzet ütközés a gyors szűrő eszköztárral; [Shift]+[F] és [Shift]+[M] begépelése a keresőmezőbe elindította a quickJump keresést. {L2}{L1} Néhány esetben a quickJump tévesen aktiválta az egyetlen üzenet füleket. {L2}{L1} A navigációs sáv most mindig felülre kerül át a klasszikus és függőleges elrendezés között váltáskor. [issue 395]{L2}"
-  },
+    "message": "{L1} Egyedi ikonok hozzáadva a mappafa közé Thunderbird 115-ben. [issue 399] {L2} {L1} A regisztrációs képernyő magassága csökkent.{L2} {L1} A QuickFolders most támogatja az SVG ikonokat a lapokon. [issue 407] {L2} {L1} Javítva: Mappa megnyitása a QF Lapról egy üzenet megtekintése közben.{L2}{L1} A Navigációs sáv most megakadályozza a vízszintes túlcsordulást oszlopnézetben. {L2}{L1} Javítva: Az 'Üres spam' parancsok időnként elrejtve voltak a kontextusmenükben a mappafa nézetben [issue 406]{L2}{L1} Az aktuális mappa lapon való levélhúzás nem nyitotta meg az al-mappák felugró ablakát.{L2}{L1} 'Új almappa létrehozása' menüelem hiányzott, amikor levelet húztak egy QuickFolders lapra. [issue 420]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Üdvözöljük a $addonName$ oldalon",

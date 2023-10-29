@@ -257,8 +257,14 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1}Er is een volledig herschreven versie van QuickFolders beschikbaar voor de nieuwe gebruikersinterface van Thunderbird SuperNova. Thunderbird 115 zal in de komende weken worden uitgerold naar alle gebruikers die updates hebben ingeschakeld, en QuickFolders zal dan automatisch worden bijgewerkt.{P2} {P1}U kunt hier meer lezen over de voortgang en het aantal wijzigingen voor dit werk: [issue 351]{P2}"
-  },
+    "message": "{P1} Deze nieuwste editie van $addonName$ herstelt eindelijk de geliefde functie voor aangepaste pictogrammen om te werken met de volledig opnieuw gecreëerde mapstructuur van Thunderbird 115. {P2}{P1} Hiermee kunt u aangepaste pictogrammen toevoegen aan elke map. Klik met de rechtermuisknop op een map om een aangepast pictogram toe te voegen vanuit een bestand. Zie de functievergelijking hieronder voor eventuele licentiebeperkingen. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },  
   "newsSection.license": {
     "message": "Dit werk wordt exclusief gefinancierd door de verkoop van licenties, overweeg een licentie te kopen of uw vorige licentie te verlengen als u geïnteresseerd bent in het gebruik van QuickFolders in de toekomst"
   },
@@ -1877,8 +1883,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} De lettergrootte van het menu kan nu worden gewijzigd voor alle pop-upmenu's, onafhankelijk van de knoplettergrootte. [issue 394] {L2} {L1} U kunt nu ook de lettergrootte van de maptabbladen wijzigen in het 'Apple Pills'-thema.{L2} {L1} Verbeterde kleur en lay-out voor het Apple-thema. {L2} {L1} Toon de gelokaliseerde vervaldatum van de licentie in het registratievenster (niet als JJJJ-MM-DD).{L2}{L1} Opgelost toetsenbordconflict met de snelfilterwerkbalk; typen van [Shift]+[F] en [Shift]+[M] in de zoekbalk activeerde de quickJump-zoekopdracht. {L2}{L1} In sommige gevallen activeerde quickJump willekeurig enkele berichttabbladen. {L2}{L1} De navigatiebalk wordt nu altijd naar boven verplaatst bij het overschakelen tussen de klassieke en verticale lay-out. [issue 395]{L2}"
-  },
+    "message": "{L1} Aangepaste pictogrammen toegevoegd aan de mappenstructuur in Thunderbird 115. [issue 399] {L2} {L1} De registratieschermhoogte is verlaagd.{L2} {L1} QuickFolders ondersteunt nu SVG-pictogrammen in tabbladen. [issue 407] {L2} {L1} Opgelost: Map openen vanuit een QF-tabblad terwijl u een bericht bekijkt.{L2}{L1} De Navigatiebalk vermijdt nu horizontale overloop in kolomweergave. {L2}{L1} Opgelost: de opdrachten 'Leegmaken van ongewenste e-mail' waren soms verborgen in contextmenu's in de mappenstructuur [issue 406]{L2}{L1} Slepen van e-mail naar het tabblad Huidige map opende geen pop-up met submappen.{L2}{L1} Het menu-item 'Nieuwe submap maken' ontbrak bij het slepen van e-mail naar een QuickFolders-tabblad. [issue 420]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Welkom bij $addonName$",

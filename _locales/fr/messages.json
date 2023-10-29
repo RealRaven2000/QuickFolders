@@ -265,8 +265,14 @@
     "message": "Dernières nouveautés"
   },
   "newsSection": {
-    "message": "{P1}Une version entièrement réécrite de QuickFolders est disponible pour la nouvelle interface utilisateur Thunderbird SuperNova. Thunderbird 115 sera déployé pour tous les utilisateurs dont les mises à jour sont activées au cours des prochaines semaines, et QuickFolders sera ensuite mis à jour automatiquement.{P2} {P1}Vous pouvez lire la progression et la quantité de modifications pour ce travail ici : [issue 351]{P2}"
-  },
+    "message": "{P1} Cette dernière édition de $addonName$ restaure enfin la fonctionnalité d'icônes personnalisées tant aimée pour fonctionner avec l'arborescence des dossiers complètement recréée de Thunderbird 115. {P2}{P1} Vous pouvez désormais ajouter des icônes personnalisées à n'importe quel dossier. Faites un clic droit sur n'importe quel dossier pour ajouter une icône personnalisée à partir d'un fichier. Consultez la comparaison des fonctionnalités ci-dessous concernant d'éventuelles restrictions de licence. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },  
   "newsSection.license": {
     "message": "Ce travail est exclusivement financé par la vente de licences, veuillez envisager d'acheter une licence ou de renouveler la précédente si vous souhaitez utiliser QuickFolders à l'avenir"
   },
@@ -1793,7 +1799,7 @@
     "message": "Lorsque vous effectuez une mise à niveau à partir de Standard, vous bénéficiez d'une durée de licence d'un an à compter de la date d'achat, quelle que soit la date d'expiration de votre licence précédente."
   },
   "special-offer-expiry": {
-    "message": "12 septembre"
+    "message": "12 novembre"
   },
   "special-offer-head": {
     "message": "Aidez à garder $addon$ compatible",
@@ -1899,8 +1905,8 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} La taille de la police de menu peut désormais être modifiée pour tous les menus contextuels, indépendamment de la taille de la police des boutons. [issue 394] {L2} {L1} Vous pouvez maintenant également modifier la taille de la police des onglets de dossier dans le thème 'Pilules Apple'.{L2} {L1} Amélioration de la coloration et de la mise en page pour le thème Apple. {L2} {L1} Affichage de la date d'expiration de la licence localisée dans la boîte de dialogue d'inscription (pas au format AAAA-MM-JJ).{L2}{L1} Résolution de la collision du clavier avec la barre d'outils de filtre rapide ; taper [Shift]+[F] et [Shift]+[M] dans la barre de recherche déclenchait la recherche quickJump. {L2}{L1} Dans certains cas, quickJump activait de manière erratique les onglets de messages individuels. {L2}{L1} La barre de navigation sera maintenant toujours déplacée en haut lors du passage entre la disposition classique et la disposition verticale. [issue 395]{L2}"
-  },
+    "message": "{L1} Ajout d'icônes personnalisées dans l'arborescence des dossiers de Thunderbird 115. [issue 399] {L2} {L1} Réduction de la hauteur de l'écran d'inscription.{L2} {L1} Prise en charge des icônes SVG dans les onglets.  [issue 407] {L2} {L1} Corrigé : Ouvrir un dossier depuis un onglet QuickFolders tout en visualisant un message.{L2}{L1} La barre de navigation évite désormais le débordement horizontal en mode colonnes. {L2}{L1} Corrigé : Les commandes 'Vider la corbeille' étaient occasionnellement masquées dans les menus contextuels de l'arborescence des dossiers [issue 406]{L2}{L1} Glisser un e-mail sur l'onglet Dossier actuel n'ouvrait pas la fenêtre contextuelle des sous-dossiers.{L2}{L1} L'élément de menu 'Créer un nouveau sous-dossier' était manquant lors du glissement d'e-mails vers un onglet QuickFolders. [issue 420]{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenue sur $addonName$",

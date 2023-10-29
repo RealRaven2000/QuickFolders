@@ -1,0 +1,483 @@
+{
+  "folders": [
+    {
+      "account": "account4",
+      "uri": "mailbox://nobody@smart%20mailboxes/tags/follow_up",
+      "name": "Follow up",
+      "category": null,
+      "tabColor": 0,
+      "icon": null
+    },
+    {
+      "account": "account2",
+      "uri": "mailbox://nobody@Local%20Folders/Newsletters",
+      "name": "Newsletters",
+      "category": null,
+      "tabColor": 0,
+      "icon": null
+    }
+  ],
+  "general": [
+    {
+      "key": "extensions.quickfolders.useKeyboardShortcuts",
+      "val": true,
+      "originalId": "qfpg-UseKeyboardShortcuts"
+    },
+    {
+      "key": "extensions.quickfolders.showShortcutNumber",
+      "val": false,
+      "originalId": "qfpg-ShowShortcutNumber"
+    },
+    {
+      "key": "extensions.quickfolders.useKeyboardShortcutCTRL",
+      "val": false,
+      "originalId": "qfpg-UseKeyboardShortcutCTRL"
+    },
+    {
+      "key": "extensions.quickfolders.useRebuildShortcut",
+      "val": false,
+      "originalId": "qfpg-RebuildShortcut"
+    },
+    {
+      "key": "extensions.quickfolders.rebuildShortcutKey",
+      "val": "F",
+      "originalId": "qfpg-RebuildShortcutKey"
+    },
+    {
+      "key": "extensions.quickfolders.useNavigateShortcuts",
+      "val": true,
+      "originalId": "qfpg-NavigateShortcut"
+    },
+    {
+      "key": "extensions.quickfolders.showUnreadFoldersBold",
+      "val": true,
+      "originalId": "qfpg-ShowUnreadFoldersBold"
+    },
+    {
+      "key": "extensions.quickfolders.showFoldersWithMessagesItalic",
+      "val": false,
+      "originalId": "qfpg-ShowFoldersWithMessagesItalic"
+    },
+    {
+      "key": "extensions.quickfolders.showFoldersWithNewMailItalic",
+      "val": false,
+      "originalId": "qfpg-ShowFoldersWithNewMailItalic"
+    },
+    {
+      "key": "extensions.quickfolders.showNewMailHighlight",
+      "val": true,
+      "originalId": "qfpg-ShowNewMail"
+    },
+    {
+      "key": "extensions.quickfolders.showUnreadOnButtons",
+      "val": true,
+      "originalId": "qfpg-ShowUnread"
+    },
+    {
+      "key": "extensions.quickfolders.showTotalNumber",
+      "val": false,
+      "originalId": "qfpg-ShowTotalNumber"
+    },
+    {
+      "key": "extensions.quickfolders.showCountInSubFolders",
+      "val": true,
+      "originalId": "qfpg-ShowCountInSubFolders"
+    },
+    {
+      "key": "extensions.quickfolders.autoFocusPreview",
+      "val": true,
+      "originalId": "qfpg-FocusPreview"
+    },
+    {
+      "key": "extensions.quickfolders.showSubfolders",
+      "val": true,
+      "originalId": "qfpg-ShowSubFolders"
+    },
+    {
+      "key": "extensions.quickfolders.enableMenuAlphaSorting",
+      "val": false,
+      "originalId": "qfpg-EnableMenuSorting"
+    },
+    {
+      "key": "extensions.quickfolders.toolbar.hideInSingleMessage",
+      "val": false,
+      "originalId": "qfpg-HideToolbarSingleMsg"
+    },
+    {
+      "key": "extensions.quickfolders.showToolIcon",
+      "val": true,
+      "originalId": "qfpg-ShowToolbarMenuIcon"
+    },
+    {
+      "key": "extensions.quickfolders.showQuickMove",
+      "val": true,
+      "originalId": "qfpg-ShowQuickMove"
+    },
+    {
+      "key": "extensions.quickfolders.bookmarks.showButton",
+      "val": true,
+      "originalId": "qfpg-ShowBookmarks"
+    },
+    {
+      "key": "extensions.quickfolders.showRecentTab",
+      "val": false,
+      "originalId": "qfpg-ShowRecentTab"
+    },
+    {
+      "key": "extensions.quickfolders.moveMailStatus.set",
+      "val": "0",
+      "originalId": "qfpg-moveMailStatus"
+    },
+    {
+      "key": "extensions.quickfolders.moveMailStatus.quickMove",
+      "val": false,
+      "originalId": "qfpg-moveMailStatus-quickMove"
+    },
+    {
+      "key": "mailnews.nav_crosses_folders",
+      "val": "0",
+      "originalId": "qfpg-Thunderbird-Preference-FolderCrossing"
+    }
+  ],
+  "advanced": [
+    {
+      "key": "extensions.quickfolders.showCurrentFolderToolbar",
+      "val": true,
+      "originalId": "qfpa-ShowCurrentFolderBar"
+    },
+    {
+      "key": "extensions.quickfolders.showCurrentFolderToolbar.singleMailTab",
+      "val": true,
+      "originalId": "qfpa-ShowCurrentFolderBar-MsgTab"
+    },
+    {
+      "key": "extensions.quickfolders.showCurrentFolderToolbar.messageWindow",
+      "val": false,
+      "originalId": "qfpa-ShowCurrentFolderBar-SingleMessage"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.showRecentButton",
+      "val": true,
+      "originalId": "qfpa-ShowRecentButton"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.navigation.showButtons",
+      "val": true,
+      "originalId": "qfpa-ShowMsgNavButton"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.folderNavigation.showButtons",
+      "val": false,
+      "originalId": "qfpa-ShowFolderNavButton"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.showFolderMenuButton",
+      "val": false,
+      "originalId": "qfpa-ShowFolderMenuButton"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.showRepairFolderButton",
+      "val": false,
+      "originalId": "qfpa-ShowRepairFolderButton"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.showIconButtons",
+      "val": true,
+      "originalId": "qfpa-ShowIconButtons"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.showFilterButton",
+      "val": true,
+      "originalId": "qfpa-ShowFilterButton"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.showClose",
+      "val": false,
+      "originalId": "qfpa-ShowCloseButton"
+    },
+    {
+      "key": "extensions.quickfolders.folderMenu.CTRL",
+      "val": false,
+      "originalId": "qfpa-FolderMenu-CTRL"
+    },
+    {
+      "key": "extensions.quickfolders.folderMenu.openNewTab",
+      "val": false,
+      "originalId": "qfpa-FolderMenu-openNewTab"
+    },
+    {
+      "key": "extensions.quickfolders.folderMenu.getMessagesForInbox",
+      "val": true,
+      "originalId": "qfpa-FolderMenu-getMailForInbox"
+    },
+    {
+      "key": "extensions.quickfolders.folderMenu.getMessagesForNews",
+      "val": true,
+      "originalId": "qfpa-FolderMenu-getMailForNews"
+    },
+    {
+      "key": "extensions.quickfolders.folderMenu.markAllRead",
+      "val": true,
+      "originalId": "qfpa-FolderMenu-markAllRead"
+    },
+    {
+      "key": "extensions.quickfolders.folderMenu.markAllReadRecursive",
+      "val": false,
+      "originalId": "qfpa-FolderMenu-markAllReadRecursive"
+    },
+    {
+      "key": "extensions.quickfolders.folderMenu.emptyJunk",
+      "val": true,
+      "originalId": "qfpa-FolderMenu-emptyJunk"
+    },
+    {
+      "key": "extensions.quickfolders.folderMenu.emptyTrash",
+      "val": true,
+      "originalId": "qfpa-FolderMenu-emptyTrash"
+    },
+    {
+      "key": "extensions.quickfolders.folderMenu.dragToNew",
+      "val": true,
+      "originalId": "qfpa-FolderMenu-newFolder"
+    },
+    {
+      "key": "extensions.quickfolders.commandMenu.CTRL",
+      "val": false,
+      "originalId": "qfpa-CommandMenu-CTRL"
+    },
+    {
+      "key": "extensions.quickfolders.commandMenu.separator",
+      "val": true,
+      "originalId": "qfpa-CommandMenu-Separator"
+    },
+    {
+      "key": "extensions.quickfolders.commandMenu.lineBreak",
+      "val": true,
+      "originalId": "qfpa-CommandMenu-LineBreak"
+    },
+    {
+      "key": "extensions.quickfolders.commandMenu.icon",
+      "val": false,
+      "originalId": "qfpa-CommandMenu-Icons"
+    },
+    {
+      "key": "extensions.quickfolders.commandMenu.help",
+      "val": true,
+      "originalId": "qfpa-CommandMenu-Help"
+    },
+    {
+      "key": "extensions.quickfolders.commandMenu.support",
+      "val": true,
+      "originalId": "qfpa-CommandMenu-Support"
+    },
+    {
+      "key": "extensions.quickfolders.commandMenu.options",
+      "val": true,
+      "originalId": "qfpa-CommandMenu-Options"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.background",
+      "val": "linear-gradient(to top, #FFF 7%, #BDB9BD 88%, #EEE 100%)",
+      "originalId": "qfpa-CurrentFolder-Background"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.background.lightweight",
+      "val": true,
+      "originalId": "qfpa-CurrentFolder-Lightweight"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.flexLeft",
+      "val": 3,
+      "originalId": "qfpa-flexLeft"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.flexRight",
+      "val": 6,
+      "originalId": "qfpa-flexRight"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.iconcolor.custom",
+      "val": false,
+      "originalId": "qfpa-CurrentFolder-CustomIconColor"
+    },
+    {
+      "key": "extensions.quickfolders.showQuickfoldersLabel",
+      "val": true,
+      "originalId": "qfpa-ShowQuickFoldersLabel"
+    },
+    {
+      "key": "extensions.quickfolders.collapseCategories",
+      "val": false,
+      "originalId": "qfpa-CollapseCategory"
+    },
+    {
+      "key": "extensions.quickfolders.style.transitions",
+      "val": true,
+      "originalId": "qfpa-Transitions"
+    },
+    {
+      "key": "extensions.quickfolders.hideVersionOnUpdate",
+      "val": true,
+      "originalId": "qfpa-hideVersionHistory"
+    },
+    {
+      "key": "extensions.quickfolders.debug",
+      "val": false,
+      "originalId": "qfpa-Debug"
+    }
+  ],
+  "layout": [
+    {
+      "key": "extensions.quickfolders.style.theme",
+      "val": "flatTabs",
+      "originalId": "qfpl-Theme"
+    },
+    {
+      "key": "extensions.quickfolders.showIcons",
+      "val": true,
+      "originalId": "qfpl-ShowIcons"
+    },
+    {
+      "key": "extensions.quickfolders.buttonFontSizeN",
+      "val": 0,
+      "originalId": "qfpl-ButtonFontSize"
+    },
+    {
+      "key": "extensions.quickfolders.style.button.minHeight",
+      "val": 20,
+      "originalId": "qfpl-ButtonMinimalHeight"
+    },
+    {
+      "key": "extensions.quickfolders.style.button.paddingTop",
+      "val": 1,
+      "originalId": "qfpl-ButtonTopPadding"
+    },
+    {
+      "key": "extensions.quickfolders.menuFontSize",
+      "val": 0,
+      "originalId": "qfpl-MenuFontSize"
+    },
+    {
+      "key": "extensions.quickfolders.style.corners.customizedRadius",
+      "val": false,
+      "originalId": "qfpl-CustomizedRadius"
+    },
+    {
+      "key": "extensions.quickfolders.style.corners.customizedTopRadiusN",
+      "val": 4,
+      "originalId": "qfpl-TopRadius"
+    },
+    {
+      "key": "extensions.quickfolders.style.corners.customizedBottomRadiusN",
+      "val": 0,
+      "originalId": "qfpl-BottomRadius"
+    },
+    {
+      "key": "extensions.quickfolders.transparentToolbar",
+      "val": true,
+      "originalId": "qfpl-TransparentToolbar"
+    },
+    {
+      "key": "extensions.quickfolders.style.Toolbar.bottomLineWidth",
+      "val": 3,
+      "originalId": "qfpl-ToolbarBottom"
+    },
+    {
+      "key": "extensions.quickfolders.toolbar.minHeight",
+      "val": 24,
+      "originalId": "qfpl-ToolbarMinimalHeight"
+    },
+    {
+      "key": "extensions.quickfolders.toolbar.largeIcons",
+      "val": false,
+      "originalId": "qfpl-ToolbarIconSize"
+    },
+    {
+      "key": "extensions.quickfolders.style.InactiveTab.paletteType",
+      "val": 0,
+      "originalId": "qfpl-InactiveTab-PaletteType"
+    },
+    {
+      "key": "extensions.quickfolders.style.ColoredTab.paletteType",
+      "val": 1,
+      "originalId": "qfpl-ColoredTab-PaletteType"
+    },
+    {
+      "key": "extensions.quickfolders.colorTabStyle",
+      "val": "0",
+      "originalId": "qfpl-ColorTabStyleId"
+    },
+    {
+      "key": "extensions.quickfolders.buttonShadows",
+      "val": false,
+      "originalId": "qfpl-Shadows"
+    },
+    {
+      "key": "extensions.quickfolders.transparentButtons",
+      "val": false,
+      "originalId": "qfpl-TransparentButtons"
+    },
+    {
+      "key": "extensions.quickfolders.style.ActiveTab.paletteType",
+      "val": 0,
+      "originalId": "qfpl-ActiveTab-PaletteType"
+    },
+    {
+      "key": "extensions.quickfolders.style.HoveredTab.paletteType",
+      "val": 2,
+      "originalId": "qfpl-HoveredTab-PaletteType"
+    },
+    {
+      "key": "extensions.quickfolders.style.DragOver.paletteType",
+      "val": 1,
+      "originalId": "qfpl-DragOver-PaletteType"
+    },
+    {
+      "key": "extensions.quickfolders.currentFolderBar.background.selection",
+      "val": "default",
+      "originalId": "qfpa-CurrentFolder-Selection"
+    }
+  ],
+  "userStyle": [
+    {
+      "elementInfo": "Toolbar.icon-color",
+      "val": "#ffffff"
+    },
+    {
+      "elementInfo": "Toolbar.background-color",
+      "val": "#000000"
+    },
+    {
+      "elementInfo": "InactiveTab.color",
+      "val": "#000000"
+    },
+    {
+      "elementInfo": "InactiveTab.background-color",
+      "val": "#e9e9ed"
+    },
+    {
+      "elementInfo": "ActiveTab.color",
+      "val": "#feffff"
+    },
+    {
+      "elementInfo": "ActiveTab.background-color",
+      "val": "#3471d2"
+    },
+    {
+      "elementInfo": "HoveredTab.color",
+      "val": "#ffffff"
+    },
+    {
+      "elementInfo": "HoveredTab.background-color",
+      "val": "#20447e"
+    },
+    {
+      "elementInfo": "DragTab.color",
+      "val": "#ffffff"
+    },
+    {
+      "elementInfo": "DragTab.background-color",
+      "val": "#e93903"
+    }
+  ]
+}

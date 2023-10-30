@@ -453,9 +453,31 @@
       <ul>
 				<h4 class="inList">Improvements</h4>
         <li>
-					Add custom icons in folder tree in Thunderbird 115.
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/399">[issue 399]</a> 
-					To do: add filter to file open, find a way to remove or change icon with a single menu item(?)
+					Added custom icons in folder tree in Thunderbird 115. 
+					<p>
+						These were supported in previous versions and QuickFolders will be able to load your 
+						previous settings if you used v5.17.1 or 5.18 on Thunderbird 102 or an earlier version.
+						To display the menu right-click any folder in the folder tree. We use the official menus 
+						API, which only allows a single Add-on command that is
+						automatically appended to the bottom of the folder pane menu.
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/399">[issue 399]</a> 
+					</p>
+					<p>
+						If the folder has no custom icon the command <i>Customize Icon...</i>
+						will be shown:
+					</p>
+					<img class="screenshot" src="images/folder-tree-iconmenu.png" alt="customize icon menu"/>
+					<p>
+						If the folder already has an icon there will be a choice of replacing or
+						removing the icon in a <i>QuickFolders</i> popup menu.
+					</p>
+					<img class="screenshot" src="images/folder-tree-iconpopup.png" alt="foldertree popup menu"/>
+					<p>
+						The maximum number of configurable icons is determined 
+						<a href="premium.html#featureComparison">by license type</a>.
+						Icons should ideally be not bigger than 18*18px, you can get a bunch of examples
+						<a href="premium.html#icons">from here</a>.
+					</p>
 				</li>
         <li> 
 					Made registration screen less tall / easily resizable

@@ -1,4 +1,7 @@
 {
+    "_l10nstatus": {
+  "message": "SPLASH+UI"
+},
   "account.label": {
     "message": "Choix du compte :"
   },
@@ -292,7 +295,7 @@
     "message": "Remarque : Le prix varie en fonction du modèle de licence, du pays, du taux de TVA, des remises en cours ou des licences déjà achetées."
   },  
   "pricing.title": {
-    "message": "Tarification"
+    "message": "Tarifs"
   },
   "purchase-a-license": {
     "message": "Achetez une licence."
@@ -720,7 +723,7 @@
     "message": "Basé sur le destinataire (pour)"
   },
   "qf.filters.template.to.description": {
-    "message": "Similaire à « Basé sur l'expéditeur » : utilisez ceci lorsque vous marquez un courriel que vous avez envoyé à quelqu'un d'autre. Cela récupèrera l'adresse électronique du destinataire et la collera dans les champs conditionnels de filtre « De » et « Pour ». Ainsi, les discussions avec le contact terminées seront déplacées vers le nouveau dossier."
+    "message": "Similaire à « Basé sur l'expéditeur » : utilisez ceci lorsque vous marquez un message que vous avez envoyé à quelqu'un d'autre. Cela récupèrera l'adresse électronique du destinataire et la collera dans les champs conditionnels de filtre « De » et « Pour ». Ainsi, les discussions avec le contact terminées seront déplacées vers le nouveau dossier."
   },
   "qf.filters.template.topic": {
     "message": "Par sujet"
@@ -732,7 +735,7 @@
     "message": "Créer des filtres"
   },
   "qf.filters.toggleMessage.notificationText": {
-    "message": "Apprentissage de filtres démarré. Lorsque vous déplacez un courriel dans un dossier QuickFolders, un assistant de création de règle de filtre se lancera. Thunderbird utilise des filtres de message pour déplacer automatiquement des courriels en se basant sur des règles comme « Qui est l'expéditeur ? », « Le sujet du message comporte-t-il un certain mot ? ». Pour mettre fin au mode d'apprentissage de filtres, appuyez sur le bouton « filtre » en haut à gauche de la barre QuickFolders."
+    "message": "Apprentissage de filtres démarré. Lorsque vous déplacez un courriel dans un dossier QuickFolders, un assistant de création de règle de filtre se lancera. Thunderbird utilise des filtres de message pour déplacer automatiquement des messages en se basant sur des règles comme « Qui est l'expéditeur ? », « Le sujet du message comporte-t-il un certain mot ? ». Pour mettre fin au mode d'apprentissage de filtres, appuyez sur le bouton « filtre » en haut à gauche de la barre QuickFolders."
   },
   "qf.filters.toggleMessage.title": {
     "message": "Création de filtres"
@@ -957,7 +960,7 @@
     "message": "La clé de licence que vous avez entrée semble être pour un module complémentaire différent. La clé pour {0} commence par {1}."
   },
   "qf.licenseValidation.invalidMail": {
-    "message": "L'adresse électronique associée à la clé de licence [{1}] n'est pas listée dans un de vos comptes courriel. Veuillez me contacter à partir de l'onglet d'aide."
+    "message": "L'adresse électronique associée à la clé de licence [{1}] n'est pas listée dans un de vos comptes de messagerie. Veuillez me contacter à partir de l'onglet d'aide."
   },
   "qf.licenseValidation.notMatchedMail": {
     "message": "Une adresse électronique chiffrée ne peut être reconnue."
@@ -1019,11 +1022,17 @@
   "qf.menuitem.quickfolders.options": {
     "message": "Options QuickFolders"
   },
+  "qf.menuitem.quickfolders.optionsAccess": {
+    "message": "O"
+  },
   "qf.menuitem.quickfolders.register": {
     "message": "S'abonner à QuickFolders Pro…"
   },
   "qf.menuitem.quickfolders.repairTabs": {
     "message": "Actualiser les onglets visibles !"
+  },
+  "qf.menuitem.quickfolders.repairTabsAccess": {
+    "message": "V"
   },
   "qf.menuitem.quickfolders.repairTreeIcons": {
     "message": "Afficher l'écran de démarrage"
@@ -1034,8 +1043,14 @@
   "qf.menuitem.quickfolders.support": {
     "message": "Support QuickFolders…"
   },
+  "qf.menuitem.quickfolders.supportAccess": {
+    "message": "S"
+  },
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "Mode peinture"
+  },
+  "qf.menuitem.quickfolders.togglePaintModeAccess": {
+    "message": "p"
   },
   "qf.moveMailStatus.action.none": {
     "message": "Ne rien faire"

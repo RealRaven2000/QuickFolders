@@ -505,16 +505,4 @@ function onUnload(isAddOnShutDown) {
   }
   
   
-  // remove icon patch
-  let treeView = window.gFolderTreeView;
-  if (treeView) {
-    // remove  custom flags!
-    delete treeView["supportsIcons"];  
-    delete treeView["qfIconsEnabled"];
-    // remove my opwn function and restore the original
-    if (window.QuickFolders.FolderTree.GetCellProperties) {
-      window.gFolderTreeView.getCellProperties = window.QuickFolders.FolderTree.GetCellProperties;
-      delete window.QuickFolders.FolderTree["GetCellProperties"];
-    }
-  }
 }

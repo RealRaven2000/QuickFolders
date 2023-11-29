@@ -219,6 +219,8 @@ async function addFolderPaneMenu() {
     if (!isServer && !selectedFolder) {
       await messenger.menus.update(idToggle, {visible: false});
       await messenger.menus.update(idRemove, {visible: false});
+    } else {
+      await messenger.menus.update(idToggle, {visible: true});
     }
 
     messenger.menus.refresh();    
@@ -400,6 +402,25 @@ async function main() {
         }
            
         // optionWin.sizeToContent() 
+        break;
+
+      case "openAdvancedProps":
+        {
+          let params = new URLSearchParams();
+          const x = parseInt(data.x,10), y = parseInt(data.y,10);
+          params.append("folderURI", data.folderURI ); // to do: pass folder or url in event
+          params.append("x", x);
+          params.append("y", y);
+          let window = await messenger.windows.create({
+            left: x,
+            top: y,
+            type: "popup",
+            allowScriptsToClose: true,
+            url:  `/html/quickfolders-tab-props.html?${params.toString()}`,
+          });
+          // focused: true,
+
+        }
         break;
 
       case "updateLicense":

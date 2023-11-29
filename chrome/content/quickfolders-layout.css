@@ -319,6 +319,7 @@ menupopup.widerMenu menucaption {
 #quickMoveHelp * {
   color: rgb(80,80,80);
   text-align: left;
+  text-shadow: none;
 }
 
 #quickMoveHelp h3 {

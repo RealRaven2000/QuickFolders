@@ -155,7 +155,7 @@ addEventListener("load", async (event) => {
 
     let whatsNewLst = document.getElementById('whatsNewList');
     if (whatsNewLst) {
-      whatsNewLst.innerHTML =  formatAll("whats-new-list");
+      whatsNewLst.innerHTML = formatAll("whats-new-list");
     }
 
     let newsSection = document.getElementById('newsDetail');

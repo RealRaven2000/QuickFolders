@@ -150,12 +150,13 @@ async function updateActions() {
   }
 
   // resize to contents if necessary...
-  let win = await browser.windows.getCurrent(),
-      wrapper = document.getElementById('innerwrapper'),
+  let win = await browser.windows.getCurrent();
+  let wrapper = document.getElementById('innerwrapper'),
       r = wrapper.getBoundingClientRect(),
       newHeight = Math.round(r.height) + 80,
       maxHeight = window.screen.height;
 
+  
   let { os } = await messenger.runtime.getPlatformInfo(); // mac / win / linux
   wrapper.setAttribute("os", os);
      

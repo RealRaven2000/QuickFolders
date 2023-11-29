@@ -55,7 +55,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
           //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           try {
-            return IOUtils.read(path, { encoding: "utf-8" }); //  returns promise for Uint8Array
+            return IOUtils.readJSON(path, { encoding: "utf-8" }); //  returns promise for Uint8Array
           }
           catch(reason) {
             util.logDebug ('read() - Failure: ' + reason);
@@ -210,31 +210,30 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 util = win.QuickFolders.Util;
           
           function readData(dataString) {
-            const Cc = Components.classes,
-                  Ci = Components.interfaces,
-                  QI = win.QuickFolders.Interface;
             let changedRecords = [];
             
             try {
               // removes prettyfication:
-              let config = dataString.replace(/\r?\n|\r/, ''),
-                  data = JSON.parse(config),
+              let // config = dataString.replace(/\r?\n|\r/, ''),
+                  data = dataString,  // dataString
                   entries = data.folders,
                   isLayoutModified = false,
                   question = util.getBundleString("qf.prompt.restoreFolders");
               if (prefs.getBoolPref('restoreConfig.tabs')
                  && Services.prompt.confirm(win, "QuickFolders", question.replace("{0}", entries.length))) {
                 for (let ent of entries) {
-                  if (typeof ent.tabColor ==='undefined' || ent.tabColor ==='undefined')
+                  if (typeof ent.tabColor ==='undefined' || ent.tabColor ==='undefined') {
                     ent.tabColor = 0;
+                  }
                   // default the name!!
                   if (!ent.name) {
                     // retrieve the name from the folder uri (prettyName)
                     let f = win.QuickFolders.Model.getMsgFolderFromUri(ent.uri, false);
-                    if (f)
+                    if (f) {
                       ent.name = f.prettyName;
-                    else
+                    } else {
                       ent.name = util.getNameFromURI(ent.uri);
+                    }
                   }
                 }
                 if (!entries.length)

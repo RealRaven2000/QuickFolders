@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<!--  tb 59 -->
+<!-- Tb 115 -->
 <?xml-stylesheet href="chrome://messenger/skin/preferences/preferences.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://global/skin/xul.css" type="text/css"?>
+<?xml-stylesheet href="chrome://global/skin/in-content/common.css" ?>
+<?xml-stylesheet href="chrome://messenger/skin/messenger.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://messenger/skin/colors.css" ?>
+<?xml-stylesheet href="chrome://messenger/skin/themeableDialog.css" ?>
+
+<!-- new rules for xul conversion -->
+<?xml-stylesheet href="hrome://quickfolders/content/skin/qf-compatibility.css" ?>
+  
 <?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-tab-advanced.css" title="QuickFolderAdvancedStyles" type="text/css"?>
 <?xml-stylesheet href="chrome://quickfolders-skins/content/qf-current.css" type="text/css"?>
+
 
 <dialog 
 	id="qf-tabproperties"
@@ -47,13 +58,16 @@
 		  <toolbarbutton label="__MSG_btnCategory__:"
 						oncommand="QuickFolders.AdvancedTab.configureCategory();"
 						tooltiptext="__MSG_btnCategory.tooltip__"
+						class="categorySelector"
 		  />
 		  <label id="lblCategories"></label>
 		  <spacer />
 		</hbox>
 	
-		<groupbox>
-		  <caption label="__MSG_grpComposer__"/>
+		<groupbox class="hbox">
+
+			<html:legend class="caption">__MSG_grpComposer__</html:legend>
+
 			<div id="advancedGrid" class="grid-container">
 
 						<label value="__MSG_fromAddress__"
@@ -88,8 +102,8 @@
 			</div>
 		</groupbox>
 		
-		<groupbox>
-		  <caption label="__MSG_grpTabBehavior__"/>
+		<groupbox class="vbox">
+			<html:legend class="caption">__MSG_grpTabBehavior__</html:legend>
 			<hbox>
 				<checkbox
 					id="chkIgnoreUnread"
@@ -117,69 +131,69 @@
 				/>	
       </hbox>
 		</groupbox>
-		<groupbox>
-		  <caption label="__MSG_grpCustomCSS__"/>
-		  <hbox>
-			  
-			  <checkbox id="chkCustomCSS"
-				          onclick="setTimeout(function() { QuickFolders.AdvancedTab.updateCSSpreview(); });"
+
+		<groupbox class="vbox">
+			<html:legend class="caption">__MSG_grpCustomCSS__</html:legend>
+			
+			<div id="styleGrid" class="grid-container">
+				<checkbox id="chkCustomCSS" class="customCssGridToggle"
+									onclick="setTimeout(function() { QuickFolders.AdvancedTab.updateCSSpreview(); });"
 									/>	
-			  
-			  <div id="styleGrid" class="grid-container">
-          <button label="__MSG_cssBackground__"
-                  oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
-                  class="textLink"/>	
-          <html:input
-                type="text"
-                id="txtBackground" 
-                tooltiptext="__MSG_cssBackground.tooltip__"
-                onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);" />
-          
-          
-          <button label="__MSG_cssColor__"
-                 oncommand="QuickFolders.AdvancedTab.getCssColor(event);"
-                 class="textLink"/>
-          <hbox>
-            <html:input
-                type="text"
-                id="txtColor" 
-                tooltiptext="__MSG_cssColor.tooltip__"
-                onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);QuickFolders.AdvancedTab.updatePicker(this);"/>
-            <html:input 
-                id="txtColorPicker" 
-                type="color"
-                onchange="return QuickFolders.AdvancedTab.pickColor(this.value);"/>
-            <spacer flex="1"/>
-            <label id="cssPreview" 
-                   value="Preview"
-                   tooltiptext="Current selected folder colors will always override this."/>
-          </hbox>
-			  </div>
-		    </hbox>
+				<button label="__MSG_cssBackground__"
+								oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
+								class="textLink"/>	
+				<html:input
+							type="text"
+							id="txtBackground" 
+							tooltiptext="__MSG_cssBackground.tooltip__"
+							onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);" />
+				
+				
+				<button label="__MSG_cssColor__"
+								oncommand="QuickFolders.AdvancedTab.getCssColor(event);"
+								class="textLink"/>
+				<hbox class="grpHorizontalFlex">
+					<html:input
+							type="text"
+							id="txtColor" 
+							tooltiptext="__MSG_cssColor.tooltip__"
+							onblur="QuickFolders.AdvancedTab.sanitizeCSS(this);QuickFolders.AdvancedTab.updatePicker(this);"/>
+					<html:input 
+							id="txtColorPicker" 
+							type="color"
+							onchange="return QuickFolders.AdvancedTab.pickColor(this.value);"/>
+					<spacer flex="1"/>
+					<label id="cssPreview" 
+									value="Preview"
+									tooltiptext="Current selected folder colors will always override this."/>
+				</hbox>
+			</div>
+
+			<hbox class="grpHorizontalFlex">
+				<checkbox id="chkCustomPalette"
+										label="__MSG_lblCustomPalette__"/>
+				<menulist id="menuCustomTabPalette"
+							sizetopopup="none"
+							oncommand="QuickFolders.AdvancedTab.updatePalette(this);"
+							>
+					<menupopup>
+						<menuitem label="__MSG_qf.palette.twoColors__"
+									oncommand="QuickFolders.AdvancedTab.selectPalette(this, 0);"
+									value="0"/>
+						<menuitem label="__MSG_qf.palette.standard__"
+									oncommand="QuickFolders.AdvancedTab.selectPalette(this, 1);"
+									value="1"/>
+						<menuitem label="__MSG_qf.palette.pastel__"
+									oncommand="QuickFolders.AdvancedTab.selectPalette(this, 2);"
+									value="2"/>
+						<menuitem label="__MSG_qf.palette.night__"
+									oncommand="QuickFolders.AdvancedTab.selectPalette(this, 3);"
+									value="3"/>
+					</menupopup>
+				</menulist>		  
+			</hbox>		
 		</groupbox>
-		<hbox>
-			<checkbox id="chkCustomPalette"
-		              label="__MSG_lblCustomPalette__"/>
-			<menulist id="menuCustomTabPalette"
-					  sizetopopup="none"
-					  oncommand="QuickFolders.AdvancedTab.updatePalette(this);"
-					  >
-				<menupopup>
-					<menuitem label="__MSG_qf.palette.twoColors__"
-							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 0);"
-							  value="0"/>
-					<menuitem label="__MSG_qf.palette.standard__"
-							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 1);"
-							  value="1"/>
-					<menuitem label="__MSG_qf.palette.pastel__"
-							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 2);"
-							  value="2"/>
-					<menuitem label="__MSG_qf.palette.night__"
-							  oncommand="QuickFolders.AdvancedTab.selectPalette(this, 3);"
-							  value="3"/>
-				</menupopup>
-			</menulist>		  
-		</hbox>
+
 		
 	</vbox>
 

@@ -3056,11 +3056,15 @@ QuickFolders.Interface = {
 		if (isHTMLprops) {
 			QuickFolders.Util.notifyTools.notifyBackground({ func: "openAdvancedProps", folderURI, x, y }); // rect.left, rect.top
 		} else {
+			let winProps = `chrome,left=${x},top=${y},width=490`;
+			if (!isMacPlatform) { // avoid color popups being hidden on Mac
+			  winProps +=",popup=yes,alwaysRaised";
+			}
 			// the window may correct its x position if cropped by screen's right edge
 			let win = window.openDialog(
 				"chrome://quickfolders/content/quickfolders-advanced-tab-props.xhtml",
 				"quickfolders-advanced",
-				`chrome,alwaysRaised,left=${x},top=${y},popup=yes,width=490`, 
+				winProps, 
 				folder, entry); //
 			win.focus();
 			// win.addEventListener("blur", (event) => {});

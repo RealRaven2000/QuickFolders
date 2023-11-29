@@ -7,6 +7,7 @@
   END LICENSE BLOCK */
 
 // adding getter for main instance as a property
+
 Object.defineProperty(QuickFolders, "MainQuickFolders", 
 { get : function QF_getMainInstance() {
 	if (QuickFolders.ComposerMainInstance) return QuickFolders.ComposerMainInstance;
@@ -18,20 +19,15 @@ Object.defineProperty(QuickFolders, "MainQuickFolders",
 
 
 	// -------------------------------------------------------------------
-	// A handler to add template message
+	// A handler to change headers in composer
 	// -------------------------------------------------------------------
-QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
+QuickFolders.notifyComposeBodyReady = function(evt) {
 	const Ci = Components.interfaces,
 	      dbg = 'QuickFolders.notifyComposeBodyReady()',
 	      util = QuickFolders.MainQuickFolders.Util,
 				preferences = QuickFolders.MainQuickFolders.Preferences;
 	util.logDebug(dbg);
-	// Add template message
-	/* if (evt && evt.type && evt.type =="stationery-template-loaded") {;} */
-	// guard against this being called multiple times from stationery
-	// avoid this being called multiple times
-	let editor = GetCurrentEditor().QueryInterface(Ci.nsIEditor),		
-	    root = editor.rootElement;
+	// let editor = GetCurrentEditor().QueryInterface(Ci.nsIEditor);
 			
 	function modifyHeader(hdr, cmd, argument) {
 		const whiteList = ["subject","to","from","cc","bcc","reply-to"],
@@ -230,7 +226,6 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 	// check for advanced properties (rules) for overriding To: or Identity (From:)
 	try {
 		let currentFolder = util.CurrentFolder,
-		    entry,
 				options = {
 				  identity: null,
 					toAddress: ''
@@ -238,10 +233,12 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 		if (preferences.isDebugOption('composer')) debugger;
 		
 		// we need to check all parent folders for entries as well.
-		if (currentFolder && currentFolder.URI)
+		if (currentFolder && currentFolder.URI) {
 			setMailHeaders(currentFolder, options, true);
-		else 
+		}
+		else {
 			return;
+		}
 		
 		if (options.toAddress)
 			modifyHeader('to', 'set', options.toAddress);
@@ -270,43 +267,25 @@ QuickFolders.notifyComposeBodyReady = function QF_notifyComposeBodyReady(evt) {
 };
 
 
-QuickFolders.stateListener = {
-	NotifyComposeFieldsReady: function() {
-		QuickFolders.MainQuickFolders.Util.logDebugOptional('composer', 'NotifyComposeFieldsReady');
-	},
-	NotifyComposeBodyReady: function() {
-		QuickFolders.MainQuickFolders.Util.logDebugOptional('composer', 'NotifyComposeBodyReady');
+// replace notifyComposeBodyReady with startup function (like in SmartTemplates)
+QuickFolders.composer = {
+	startup: async () => {
+		const util = QuickFolders.Util,
+		      logOptions = {color:"yellow", background:"rgb(0,0,130)"};
+		util.logHighlight("quickfolders-composer.js - startup",logOptions);
+		
+		// block running code until editor is ready:
+		await new Promise(resolve => {
+			if (window.composeEditorReady) {
+				resolve();
+				return;
+			}
+			window.addEventListener("compose-editor-ready", resolve, {
+				once: true,
+			});
+		});  
 		QuickFolders.notifyComposeBodyReady();
-	},
-	ComposeProcessDone: function(aResult) {
-		QuickFolders.MainQuickFolders.Util.logDebugOptional('composer', 'ComposeProcessDone');
-	},
-	SaveInFolderDone: function(folderURI) {
-		QuickFolders.MainQuickFolders.Util.logDebugOptional('composer', 'SaveInFolderDone');
+		util.logHighlight("quickfolders-composer.js - end",logOptions, "(after QuickFolders.notifyComposeBodyReady())");
+
 	}
 };
-
-QuickFolders.initComposeListener = function QF_initListener() {
-	let util = QuickFolders.MainQuickFolders.Util,
-			log = util.logDebugOptional.bind(util),
-			notifyComposeBodyReady = QuickFolders.notifyComposeBodyReady.bind(QuickFolders);
-	log('composer', 'Registering State Listener...');
-	try {
-		gMsgCompose.RegisterStateListener(QuickFolders.stateListener);
-	}
-	catch (ex) {
-		util.logException("Could not register status listener", ex);
-	}
-};
-
-// window.setTimeout ( function() 
-{
-  let util = QuickFolders.MainQuickFolders.Util,
-      logDebugOptional = util.logDebugOptional.bind(util);
-	// QuickFolders.init();
-	// the starting point of this listener is triggered by composers
-  logDebugOptional('composer', "Adding initComposeListener for msgcomposeWindow...");
-  let composer = document.getElementById("msgcomposeWindow");
-  composer.addEventListener("compose-window-init", QuickFolders.initComposeListener, false);
-}
-// ,10 );

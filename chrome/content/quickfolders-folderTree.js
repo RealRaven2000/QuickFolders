@@ -96,7 +96,7 @@ QuickFolders.FolderTree = {
       return false;
     }
     if (debugIcons) {
-      QuickFolders.Util.logHighlight("folderTree.restoreStyles()","#FFFFCC","#994C00");
+      QuickFolders.Util.logHighlight("folderTree.restoreStyles()",{color:"#FFFFCC",background:"#994C00"});
     }
     // if (prefs.isDebugOption('folderTree.icons')) debugger;
     if (!this.dictionary) return;

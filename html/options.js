@@ -739,7 +739,7 @@ function initButtons() {
   document.getElementById("minHeightFix").addEventListener("click", (event) => { 
     // [issue 372] numeral textbox event bubbled up?
     if (event.target.tagName=="INPUT" || event.target.id=="toolbarMinHeight") return;
-    QuickFolders.Util.logHighlight("minHeightFix event","white","rgb(120,0,0)", event);
+    QuickFolders.Util.logDebug("minHeightFix event", event);
     QuickFolders.Util.openLinkInTab("https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25021"); 
   });
   document.getElementById("L0").addEventListener("click", (event) => { 

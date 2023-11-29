@@ -1291,6 +1291,9 @@ QuickFolders.Interface = {
 				backupTabs = [],
 				isRollback = false;
 
+		const tabmail = document.getElementById("tabmail"),
+					activeModes = tabmail.currentAbout3Pane.folderPane.activeModes;
+
 		// tally up everything
 		for (let i = 0; i < model.selectedFolders.length; i++) {
 			// test mail folder for existence
@@ -1298,9 +1301,9 @@ QuickFolders.Interface = {
 			    folder = null;
 			backupTabs.push (folderEntry);
 
-      if (util.isFolderUnified(folderEntry) && !gFolderTreeView.activeModes.includes("smart")) {
-        gFolderTreeView.activeModes = "smart"; // this setter will not set but _add_ the missing mode!
-                                               // it should also rebuild the treeview accordingly
+      if (util.isFolderUnified(folderEntry) && !activeModes.includes("smart")) {
+        activeModes = "smart"; // this setter will not set but _add_ the missing mode!
+                               // it should also rebuild the treeview accordingly
       }
       
 			try {
@@ -1867,7 +1870,7 @@ QuickFolders.Interface = {
               // is the folder tree highlighted?
               // [issue 75] support moving folders through quickMove
               if (eventTarget && eventTarget.getAttribute("id") == "folderTree") {
-                let folders = gFolderTreeView.getSelectedFolders();
+                let folders = GetSelectedMsgFolders(); // [issue 436]
                 if (folders.length) { 
                   QuickMove.addFolders(folders, iscopy);
                   QuickMove.update();
@@ -2020,7 +2023,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	getButtonByFolder: function getButtonByFolder(folder) {
+	getButtonByFolder: function(folder) {
 		for (let i = 0; i < this.buttonsByOffset.length; i++) {
 			let button = this.buttonsByOffset[i];
 			try {
@@ -2028,7 +2031,6 @@ QuickFolders.Interface = {
 				if(button.folder && button.folder.URI == folder.URI) {
 					return button;
 				}
-
 			}
 			catch(e) {
 				QuickFolders.Util.logDebug("getButtonByFolder: could not match " + button.folder.URI + " error: " + e);
@@ -2474,7 +2476,8 @@ QuickFolders.Interface = {
 						}, false);
 					button.hasClickEventListener = true;
 					this.setEventAttribute(button, "ondragstart","QuickFolders.buttonDragObserver.startDrag(event, true)");
-					this.setEventAttribute(button, "ondragleave","QuickFolders.buttonDragObserver.dragExit(event, true)");
+					this.setEventAttribute(button, "ondragleave","QuickFolders.buttonDragObserver.dragLeave(event, true)"); // can be swallowed when moving fast
+					this.setEventAttribute(button, "ondragexit","QuickFolders.buttonDragObserver.dragLeave(event, true)");
 				}
       }
     }
@@ -2498,7 +2501,9 @@ QuickFolders.Interface = {
 				this.setEventAttribute(button, "ondragenter", "QuickFolders.buttonDragObserver.dragEnter(event);");
 				this.setEventAttribute(button, "ondragover", "QuickFolders.buttonDragObserver.dragOver(event);");
 				this.setEventAttribute(button, "ondrop", "QuickFolders.buttonDragObserver.drop(event);");
-				this.setEventAttribute(button, "ondragleave", "QuickFolders.buttonDragObserver.dragExit(event);");
+				this.setEventAttribute(button, "ondragleave", "QuickFolders.buttonDragObserver.dragLeave(event);"); // can be omitted when moving fast
+				this.setEventAttribute(button, "ondragexit","QuickFolders.buttonDragObserver.dragLeave(event)");
+
 			}
 			// button.setAttribute("flex",100);
 		}
@@ -2520,7 +2525,7 @@ QuickFolders.Interface = {
 			// AG add dragging of buttons
 			this.setEventAttribute(button, "ondragstart","QuickFolders.buttonDragObserver.startDrag(event, true)");
 			// this.setEventAttribute(button, "ondragexit","nsDragAndDrop.dragExit(event,QuickFolders.buttonDragObserver)");
-			this.setEventAttribute(button, "ondragleave","QuickFolders.buttonDragObserver.dragExit(event)");
+			this.setEventAttribute(button, "ondragleave","QuickFolders.buttonDragObserver.dragLeave(event)");
 			util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
 		}
 
@@ -3024,16 +3029,15 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-  onAdvancedProperties: function onAdvancedProperties(evt, element) {
+  onAdvancedProperties: function(evt, element) {
     let util = QuickFolders.Util,
         button = util.getPopupNode(element),
         folder = button.folder,
         folderURI = folder ? folder.URI : button.getAttribute("folderURI"),
         entry = QuickFolders.Model.getFolderEntry(folderURI),
-        boxObject = button.getBoundingClientRect(),     // boxObject deprecate in Tb78
-        // [issue 94] fix screen position in Tb78
-        x = button.screenX,                             // boxObject.x // boxObject.screenX
-        y = button.screenY + boxObject.height;          // boxObject.y  + button.boxObject.height // button.boxObject.screenY + button.boxObject.height 
+        rect = button.getBoundingClientRect(),     // was boxObject
+        x = button.screenX,                            
+        y = button.screenY + rect.height;          // boxObject.screenY + boxObject.height 
 		if (!folder) {
 			util.alertButtonNoFolder(button);
 			return;
@@ -3045,15 +3049,26 @@ QuickFolders.Interface = {
 			util.popupRestrictedFeature("advancedTabProperties");}
 		);
 
-    // the window may correct its x position if cropped by screen's right edge
-    let win = window.openDialog(
-      "chrome://quickfolders/content/quickfolders-advanced-tab-props.xhtml",
-      "quickfolders-advanced",
-			`chrome,close=no,alwaysRaised,titlebar=no,left=${x},top=${y},popup=yes`,
-      folder, entry); //
-    win.focus();
+		const isMacPlatform = QuickFolders.Util.platformInfo.os == "mac",
+		      isHTMLprops = evt.shiftKey; // || isMacPlatform default for the next version!
+
+		QuickFolders.Util.logDebug(rect);
+		if (isHTMLprops) {
+			QuickFolders.Util.notifyTools.notifyBackground({ func: "openAdvancedProps", folderURI, x, y }); // rect.left, rect.top
+		} else {
+			// the window may correct its x position if cropped by screen's right edge
+			let win = window.openDialog(
+				"chrome://quickfolders/content/quickfolders-advanced-tab-props.xhtml",
+				"quickfolders-advanced",
+				`chrome,alwaysRaised,left=${x},top=${y},popup=yes,width=490`, 
+				folder, entry); //
+			win.focus();
+			// win.addEventListener("blur", (event) => {});
+		}
+
 		evt.stopPropagation();
 		evt.preventDefault();
+
   } ,
 
 	compactFolder: function compactFolder(folder, command) {
@@ -4686,7 +4701,7 @@ QuickFolders.Interface = {
         })
 				this.setEventAttribute(menuitem, "ondragover","QuickFolders.popupDragObserver.dragOver(event)"); // okay
 				this.setEventAttribute(menuitem, "ondrop","QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
-				this.setEventAttribute(menuitem, "ondragleave","QuickFolders.popupDragObserver.dragExit(event);");
+				this.setEventAttribute(menuitem, "ondragleave","QuickFolders.popupDragObserver.dragLeave(event);");
 
 				if (forceAlphaSort) {
 					// alpha sorting by starting from end of menu up to separator!
@@ -4745,7 +4760,7 @@ QuickFolders.Interface = {
 
 					this.setEventAttribute(subMenu, "ondragenter","QuickFolders.popupDragObserver.dragEnter(event);");
 					this.setEventAttribute(subMenu, "ondrop","QuickFolders.buttonDragObserver.drop(event);"); // use same as buttondragobserver for mail drop!
-					this.setEventAttribute(subMenu, "ondragleave","QuickFolders.popupDragObserver.dragExit(event);");
+					this.setEventAttribute(subMenu, "ondragleave","QuickFolders.popupDragObserver.dragLeave(event);");
 
 					// 11/08/2010 - had forgotten the possibility of _opening_ the folder popup node's folder!! :)
 					//subMenu.allowEvents=true;
@@ -4826,8 +4841,8 @@ QuickFolders.Interface = {
 					if (p.tagName == "menupopup" && p.hidePopup) {
 						util.logDebugOptional ("popupmenus.collapse", "Try hide parent Popup " + p.getAttribute("label"));
 						p.hidePopup();
-						}
 					}
+				}
 				break;
 
 			case "toolbarbutton":
@@ -4835,7 +4850,7 @@ QuickFolders.Interface = {
 				util.logDebugOptional ("popupmenus.collapse", "set QuickFolders_globalHidePopupId to " + QuickFolders_globalHidePopupId);
 
 				let popup = document.getElementById(QuickFolders_globalHidePopupId);
-				if (popup)
+				if (popup) {
 					try {
 						popup.parentNode.removeChild(popup); //was popup.hidePopup()
 						QuickFolders_globalHidePopupId = "";
@@ -4843,6 +4858,7 @@ QuickFolders.Interface = {
 					catch(e) {
 						util.logDebugOptional ("popupmenus.collapse", "Could not remove popup of " + QuickFolders_globalHidePopupId );
 					}
+				}
 				break;
 		}
 	} ,
@@ -5683,7 +5699,7 @@ QuickFolders.Interface = {
 					// move focus away!
 					let threadPane = this.getThreadPane();
 					if (!threadPane.collapsed) {
-						this.setFocusThreadPane();
+						this.setFocusThreadPane(true);
 					}
 					else {
 						let fTree = GetFolderTree();
@@ -5707,7 +5723,7 @@ QuickFolders.Interface = {
 	  return QuickFolders.Util.threadPane;
 	} ,
 
-	setFocusThreadPane: function() {
+	setFocusThreadPane: function(isDelay=false) {
 		window.gTabmail?.currentAboutMessage?.document.getElementById("messagepane").focus();
     let threadTree = this.getThreadTree();
 		if (threadTree) {
@@ -5723,7 +5739,7 @@ QuickFolders.Interface = {
 						threadTree.table.body.focus();
 					}
 				},
-				1000
+				isDelay ? 1000 : 0
 			);
 			
 		}

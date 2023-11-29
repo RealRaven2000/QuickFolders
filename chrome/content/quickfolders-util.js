@@ -1310,11 +1310,18 @@ allowUndo = true)`
   },
 
 	// optional logging for important points in flow.
-	logHighlight: function(txt, color="white", background="rgb(80,0,0)", ...args) {
+	logHighlight: function(txt, options={color:"white", background:"rgb(80,0,0)"}, ...args) {
+    let txt2 = null;
+    if (typeof options == "string") {
+      args.unshift(options); // insert as top = add as first additional args element
+      options = {color:"white", background:"rgb(80,0,0)"}; // set color again
+    }
 		if (QuickFolders.Preferences.isDebug) {
-			console.log(`QuickFolders %c${txt}`, `color: ${color}; background: ${background}`, ...args);
+			console.log(`QuickFolders %c${txt}`, 
+      `color: ${options.color}; background: ${options.background}`, 
+      ...args);
 		}
-	},  
+	},
 
   // flags
   // errorFlag    0x0   Error messages. A pseudo-flag for the default, error case.

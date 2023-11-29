@@ -427,7 +427,7 @@ QuickFolders.Preferences = {
 	    ans = Services.prefs.getBoolPref("extensions.quickfilters." + p);
 		}
 		catch(ex) {
-		  QuickFolders.Util.logException("getFiltersBoolPref("  + p +") failed\ndefaulting to " + defaultV, ex);
+		  QuickFolders.Util.logDebug(`getFiltersBoolPref(${p}) didn't retrieve a setting from quickFilters (probably this companion Add-on is not installed).\nDefaulting to ${defaultV}`);
 			ans = defaultV;
 		}
 		return ans;

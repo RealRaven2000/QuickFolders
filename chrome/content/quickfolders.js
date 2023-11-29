@@ -384,7 +384,7 @@ END LICENSE BLOCK */
           the "renew license" button for the day and return to normal toolbar icon 
           (remove special coloring / message)
 
-  6.3 - WIP
+  6.3 QuickFolders Pro - 30/10/2023
     ## [issue 399] Add custom icons in folder tree in Thunderbird 115
     ## [issue 398] Fixed: Open folder from QF Tab while viewing a message 
     ## [issue 400] Make registration screen less tall / easily resizable
@@ -397,10 +397,23 @@ END LICENSE BLOCK */
     ## [issue 417] Message list scrolls to top when switching folders
     ## [issue 420] Drag to new subfolder command missing
 
+  6.4 QuickFolders Pro - WIP
+    ## [issue 425] Load configuration doesn't work
+    ## [issue 427] Removed unwanted text shadow in quickJump help panel
+    ## [issue 428] Popup menus not removed when dragging across QuickFolders tabs
+    ## [issue 410] Dragging mail to quickMove Button leaves folder popup menu hanging on first tab
+    ## [issue 430] Fixed disappearing 'Customize Icon' context menu item
+    ## [issue 434] quickfilter search box loses focus 1 second after clicking a QF tab
+    ## [issue 436] Shift-M shortcut not working for folders in version 6.3 of QF and 115 of TB.
+    ## [issue 437] Advanced Properties - default to / from fields not working in Tb115
+    ## [issue 433] Problems in tab-specific properties panel on Mac
+
 	Future Work
 	===========
     ## [issue ]
     ## [issue ]
+    ## [issue ]
+    ## [issue 433] (Mac) Unusable Transparent Popup for Tab-Specific-Properties After Update to Supernova 115.4.3 
     ## [issue 354] Add permanent notifications for messages moved.
     ## [issue 103] Feature Request: Support copying folders
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window
@@ -474,7 +487,6 @@ var QuickFolders = {
 	doc: null,
 	win: null,
 	WL: {},
-  RenameFolders_Tb: null,
 	isQuickFolders: true, // to verify this
 	get mailFolderTree() {
     return document.getElementById('folderTree');
@@ -591,13 +603,12 @@ var QuickFolders = {
             QI.findFolderName(findFolderBox);
           }
         );
-      }
-      else {
+      } else {
         util.logDebug("element not found: QuickFolders-FindFolder");
       }
 			
       // [issue 397] Filter Assistant Auto-start not working with quickMove function 
-      if (prefs.getFiltersBoolPref("autoStart") && typeof window.quickFilters == "object") {
+      if (prefs.getFiltersBoolPref("autoStart", false) && typeof window.quickFilters == "object") {
         // quickFilters started before QF and automatically started assistant mode
         // but didn't toggle the QuickFolders assistant mode!
         if (!QuickFolders.FilterWorker.FilterMode) {
@@ -683,7 +694,8 @@ var QuickFolders = {
 		catch(e) { return false; }
 	} ,
   
-  // rename folder - Thunderbird
+  // rename folder - Thunderbird 
+  /*  DEPRECATED MONKEY PATCH CODE
   renameFolder: function qf_rename(aFolder) {
     let folder = aFolder || null; // gFolderTreeView.getSelectedFolders()[0];
 
@@ -707,6 +719,7 @@ var QuickFolders = {
                        okCallback: renameCallback, 
                        name: folder.prettyName});
   },
+  */
      
 	initKeyListeners: function () {
 			const win = window,
@@ -802,15 +815,6 @@ var QuickFolders = {
     try { ApVer=that.Util.ApplicationVersion } catch(e){ApVer="?"};
     try { ApName=that.Util.Application } catch(e){ApName="?"};
 
-    if (!QuickFolders.RenameFolders_Tb) {
-      util.logDebug("Wrapping renameFolder...");
-      // overwrite original function - we won't actualy use or restore this
-			if (typeof gFolderTreeController !== 'undefined' && gFolderTreeController.renameFolder) {
-				QuickFolders.RenameFolders_Tb = gFolderTreeController.renameFolder; 
-				gFolderTreeController.renameFolder = QuickFolders.renameFolder.bind(gFolderTreeController);
-			}
-    }
-    
 		if (prefs && prefs.isDebug)
 			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
 
@@ -925,15 +929,15 @@ var QuickFolders = {
 		},
 		
 
-		dragExit: function dragExit(evt) {
-			this.util.logDebugOptional("dnd","toolbarDragObserver.dragExit");
+		dragLeave: function(evt) {
+			this.util.logDebugOptional("dnd","toolbarDragObserver.dragLeave");
 			if (QuickFolders_globalHidePopupId) {
         let doc = evt.target.ownerDocument || this.doc;
 				QuickFolders.Interface.removeLastPopup(QuickFolders_globalHidePopupId, doc);
 			}
 		} ,
 		
-		dragEnter: function qftoolbar_dragEnter(evt) {
+		dragEnter: function (evt) {
 			let t = evt.currentTarget,
           dTxt = "target: " + t.nodeName + "  '" + t.id + "'",
           ot = evt.originalTarget;
@@ -955,7 +959,7 @@ var QuickFolders = {
 			return false;
 		},
 
-		dragOver: function qftoolbar_dragOver(evt){
+		dragOver: function (evt){
       evt.preventDefault();
 	  
       let dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
@@ -965,15 +969,14 @@ var QuickFolders = {
 			// [Bug 26560] add text/plain
       // only allow folders or  buttons!
 			if (["text/x-moz-folder", "text/x-moz-newsfolder", "text/currentfolder", 
-          "text/unicode",  "text/plain"].includes (contentType))  { 
+          "text/unicode", "text/plain"].includes (contentType))  { 
 				dragSession.canDrop = true;
-			}
-			else {
+			} else {
 				dragSession.canDrop = false;
 			}
 		},
 		
-		canDrop: function canDropHelper(e,s) {
+		canDrop: function (e,s) {
 			try {
 				// this.util.logDebugOptional("dnd","toolbarDragObserver.canDrop - Session.canDrop = " +  s.canDrop);
 				if (this.prefs.isDebugOption('dnd') && (!s || s && !s.canDrop)) debugger;
@@ -985,7 +988,7 @@ var QuickFolders = {
 			return true;
 		},
 
-		drop: function drop(evt, dragSession) {
+		drop: function (evt, dragSession) {
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			if (this.prefs.isDebugOption('dnd')) {
@@ -1090,8 +1093,7 @@ var QuickFolders = {
           }
           QuickFolders.Util.logHighlight(
             "toolbarDragObserver.drop FAILED\n",
-            "white", 
-            "rgb(80,0,0)",
+            {color: "white", background: "rgb(80,0,0)"},
             errText,
             "dataTransfer Object: ",
             evt.dataTransfer,
@@ -1122,7 +1124,7 @@ var QuickFolders = {
     
 		dragOverTimer: null,
     
-		dragEnter: function menuObs_dragEnter(evt, dragSession) {
+		dragEnter: function (evt, dragSession) {
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 
 
@@ -1177,24 +1179,24 @@ var QuickFolders = {
 		},
 
 		// deal with old folder popups
-		dragExit: function menuObs_dragExit(evt, dragSession) {
+		dragLeave: function (evt, dragSession) {
 			const util = QuickFolders.Util;
 			let popupStart = evt.target;
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       
 			// find parent node!
-			util.logDebugOptional("dnd.detail","popupDragObserver.dragExit " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
+			util.logDebugOptional("dnd.detail","popupDragObserver.dragLeave " + popupStart.nodeName + " - " + popupStart.getAttribute('label'));
 			try {
 				if (popupStart.nodeName=='menu') {
 					QuickFolders_globalLastChildPopup = popupStart; // remember to destroy!
 				}
 			}
 			catch (e) {
-				util.logDebugOptional("dnd","CATCH popupDragObserver.dragExit: \n" + e);
+				util.logDebugOptional("dnd","CATCH popupDragObserver.dragLeave: \n" + e);
 			}
 		} ,
 
-		dragOver: function menuObs_dragOver(evt, flavour, dragSession){
+		dragOver: function (evt, flavour, dragSession){
       if (!dragSession) {
         dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
       }
@@ -1212,7 +1214,7 @@ var QuickFolders = {
 
 		// drop mails on popup: move mail, like in buttondragobserver
 		// NOT USED DURING MESSAGE DROPS! IT IS USING THE buttonDragObserver.drop INSTEAD!
-		drop: async function menuObs_drop(evt, dropData, dragSession) {
+		drop: async function (evt, dropData, dragSession) {
 			const Ci = Components.interfaces,
             Cc = Components.classes,
 				    util = QuickFolders.Util,
@@ -1372,14 +1374,6 @@ var QuickFolders = {
 				}
 
 
-/**
- http://mozilla-xp.com/mozilla.dev.apps.thunderbird/How-To-Get-Highlighted-Folder-in-TB3
- As a general rule,
- anything to do with the folder pane is an attribute of gFolderTreeView,
- anything to do with the thread pane is an attribute of gFolderDisplay,
- and anything to do with the message pane is an attribute of gMessageDisplay.
-**/
-
 				let dualUseFolders = true;
 				if (targetFolder.server instanceof Ci.nsIImapIncomingServer)
 					dualUseFolders = targetFolder.server.dualUseFolders;
@@ -1398,7 +1392,7 @@ var QuickFolders = {
 	},
  
 	messageDragObserver: {
-		getSupportedFlavours : function msgObs_getSupportedFlavours() {
+		getSupportedFlavours : function () {
 			let flavours = new FlavourSet();
 			flavours.appendFlavour("text/x-moz-message"); // emails only (find out whether a thread is covered by this)
 			return flavours;
@@ -1415,7 +1409,7 @@ var QuickFolders = {
 	buttonDragObserver: {
 		win: QuickFolders_getWindow(),
 		doc: QuickFolders_getDocument(),
-		getSupportedFlavours : function btnObs_getFlavors() {
+		getSupportedFlavours : function() {
 			let flavours = new FlavourSet();
 			flavours.appendFlavour("text/x-moz-message"); // emails
 			flavours.appendFlavour("text/unicode");  // tabs
@@ -1427,7 +1421,7 @@ var QuickFolders = {
 
 		dragOverTimer: null,
 
-		dragEnter: function btnObs_dragEnter(evt, dragSession) {
+		dragEnter: function (evt, dragSession) {
       if (!dragSession) {
         dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
       }
@@ -1465,6 +1459,11 @@ var QuickFolders = {
         if (button) {
           button.classList.add("dragover");
         }
+        const isToolPanel = button?.parentElement?.id == "QuickFolders-oneButtonPanel";
+
+        if (isToolPanel) {
+          removeLastPopup(QuickFolders_globalHidePopupId, doc);
+        }
         
 				// somehow, this creates a duplication in linux
 				// delete previous drag folders popup!
@@ -1472,18 +1471,16 @@ var QuickFolders = {
 					dragSession.canDrop = false;
 					if (dragSession.dataTransfer.items.length) {
 						let firstItem = dragSession.dataTransfer.items[0];
-						if (firstItem.type == "text/x-moz-message") {
+						if (["text/x-moz-message", "text/plain"].includes(firstItem.type)) { 
+              // [issue 410]
 							dragSession.canDrop=true;
-							removeLastPopup(QuickFolders_globalHidePopupId, doc);
+							if (!isToolPanel) { removeLastPopup(QuickFolders_globalHidePopupId, doc); }
 						}
 					}
           if (prefs.isShowRecentTab) {
             removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', doc);
           }
           return;
-        }
-        if (buttonId == "QuickFolders-oneButtonPanel") {
-          removeLastPopup(QuickFolders_globalHidePopupId, doc);
         }
 
 				if (button.tagName === "toolbarbutton") {
@@ -1710,11 +1707,14 @@ var QuickFolders = {
 		} ,
 		
 		// deal with old folder popups
-		dragExit: function btnObs_dragExit(event, dragSession) {
-      if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+		dragLeave: function (event, dragSession) {
 			const util = QuickFolders.Util;
-			util.logDebugOptional("dnd.detail", "buttonDragObserver.dragExit\n" + 
-			  "sourceNode=" + (dragSession ? dragSession.sourceNode : "[no dragSession]\n") +
+      util.logDebug("buttonDragObserver.dragLeave!");
+      if (!dragSession) {
+        dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
+      }
+			util.logDebugOptional("dnd", "buttonDragObserver.dragLeave\n" + 
+			  "sourceNode=" + (dragSession?.sourceNode || "[no dragSession]\n") +
 				"event.target=" + event.target || "[none]");
 			let button = event.target;
 
@@ -1726,15 +1726,15 @@ var QuickFolders = {
       }      
         
 			if (!dragSession.sourceNode) { 
-				util.logDebugOptional("dnd", "buttonDragObserver.dragExit - session without sourceNode! exiting dragExit handler...");
+				util.logDebugOptional("dnd", "buttonDragObserver.dragLeave - session without sourceNode! exiting dragLeave handler...");
 				if (!dragSession.dataTransfer)
 				  event.preventDefault();
 				return; 
 			}
 			try {
 				let src = dragSession.sourceNode.nodeName || "unnamed node";
-				util.logDebugOptional("dnd.detail", "buttonDragObserver.dragExit - sourceNode = " + src);
-			} catch(e) { util.logDebugOptional("dnd", "buttonDragObserver.dragExit - " + e); }
+				util.logDebugOptional("dnd.detail", "buttonDragObserver.dragLeave - sourceNode = " + src);
+			} catch(e) { util.logDebugOptional("dnd", "buttonDragObserver.dragLeave - " + e); }
       
 			if (dragSession.sourceNode.nodeName === 'toolbarpaletteitem') {
 				util.logDebugOptional("dnd", "trying to drag a toolbar palette item - ignored.");
@@ -1774,7 +1774,7 @@ var QuickFolders = {
 			}
 		} ,
     
-    dragLeave: function btnObs_dragLeave(event) {
+    dragLeave: function (event) {
 			let button = event.target;
       const util = QuickFolders.Util;
       // [issue 79] dragover colors not working to deprecated -moz-drag-over pseudoclass
@@ -1785,7 +1785,7 @@ var QuickFolders = {
     } ,
 
 
-		dragOver: function btnObs_dragOver(evt, flavour, dragSession){
+		dragOver: function (evt, flavour, dragSession){
       if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession();
 			//QuickFolders.Util.logDebug("buttonDragObserver.dragOver flavour=" + flavour.contentType);
 			// dragSession.canDrop = true;
@@ -1804,7 +1804,7 @@ var QuickFolders = {
 			}
 		} ,
 
-		drop: async function btnObs_drop(evt){
+		drop: async function (evt){
 			const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           prefs = QuickFolders.Preferences,
@@ -1814,7 +1814,6 @@ var QuickFolders = {
           
 			let isShift = evt.shiftKey,
           isCtrl = evt.ctrlKey,
-			    debugDragging = false,
 			    DropTarget = evt.target,
 			    targetFolder = DropTarget.folder,
 					lastAction = "",
@@ -2003,7 +2002,7 @@ var QuickFolders = {
 		},
 
 		// new handler for starting drag of buttons (re-order)
-		startDrag: function btnObs_startDrag(event, transferData, action) {
+		startDrag: function (event, transferData, action) {
 			const util = QuickFolders.Util;
 			let button = event.target;
 			util.logDebugOptional('dnd', 'buttonDragObserver.startDrag\n' 
@@ -2046,7 +2045,7 @@ var QuickFolders = {
   
   TabEventListeners: {},
 
-	addTabEventListener: function addTabEventListener() {
+	addTabEventListener: function () {
 		try {
 		  let tabContainer = QuickFolders.tabContainer;
       this.TabEventListeners["TabSelect"] = function(event) { QuickFolders.TabListener.selectTab(event); }

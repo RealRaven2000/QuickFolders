@@ -10,7 +10,6 @@
   };
   
   var	REPEAT_DELAY_MS = 50,
-      REPEAT_RE = /arrowscrollbox$/i,
       tsLastRepeat,
       fnRepeat;
   var BookmarksMenuDNDObserver = QuickFolders.popupDragObserver;
@@ -58,7 +57,7 @@
     var el = evt.originalTarget, hierarchyLimit = 3;
     while (el &&
        (el.nodeName!="toolbarbutton" ||
-       el.id!="scrollbutton-down" && el.id!="scrollbutton-up")) {  // scrollbutton-down // !REPEAT_RE.test(el.nodeName)
+       el.id!="scrollbutton-down" && el.id!="scrollbutton-up")) {  // scrollbutton-down 
       el = (--hierarchyLimit && el.parentNode);
     }
     if (el) {

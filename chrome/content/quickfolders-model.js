@@ -71,10 +71,7 @@ QuickFolders.Model = {
     else {
       let folder = this.getMsgFolderFromUri(uri, false),
           iconURI = null;
-      if (typeof gFilterTreeView !== "undefined" 
-          && gFolderTreeView.supportsIcons
-          && folder
-					&& folder.getStringProperty) {
+      if (folder && folder.getStringProperty) {
         try {
           iconURI =  unpackURI(folder.getStringProperty("iconURL"));
         }

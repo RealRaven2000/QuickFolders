@@ -78,7 +78,7 @@ QuickFolders.Model = {
         catch(ex) {;}
       }
       // [issue 281]
-      let ac = MailServices.accounts.FindAccountForServer(folder.server);
+      let ac = (MailServices.accounts.FindAccountForServer || MailServices.accounts.findAccountForServer)(folder.server);
       let account = "";
       if (ac) {
         account = ac.key;
@@ -438,7 +438,7 @@ QuickFolders.Model = {
         e.account = "?server";
         return false;
       }
-      let ac = MailServices.accounts.FindAccountForServer(f.server);
+      let ac = (MailServices.accounts.FindAccountForServer || MailServices.accounts.findAccountForServer)(f.server);
       if (!ac) {
         e.account = "?account";
         return false;

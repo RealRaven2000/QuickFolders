@@ -3052,13 +3052,20 @@ QuickFolders.Interface = {
 		const isMacPlatform = QuickFolders.Util.platformInfo.os == "mac",
 		      isHTMLprops = evt.shiftKey; // || isMacPlatform default for the next version!
 
+		let forcePopup = false; // for debugging on Mac
+		let forceRaised = false; // for testing alwaysRaised
+		debugger;
+
 		QuickFolders.Util.logDebug(rect);
 		if (isHTMLprops) {
 			QuickFolders.Util.notifyTools.notifyBackground({ func: "openAdvancedProps", folderURI, x, y }); // rect.left, rect.top
 		} else {
 			let winProps = `chrome,left=${x},top=${y},width=490`;
-			if (!isMacPlatform) { // avoid color popups being hidden on Mac
-			  winProps +=",popup=yes,alwaysRaised";
+			if (!isMacPlatform || forcePopup) { // avoid color popups being hidden on Mac
+			  winProps +=",popup=yes";
+			}
+			if (forceRaised) {
+				winProps +=",alwaysRaised"; // only for testing. we don't use it anymore.
 			}
 			// the window may correct its x position if cropped by screen's right edge
 			let win = window.openDialog(
@@ -3067,7 +3074,9 @@ QuickFolders.Interface = {
 				winProps, 
 				folder, entry); //
 			win.focus();
-			// win.addEventListener("blur", (event) => {});
+			win.addEventListener("blur", (event) => {
+				console.log("advanced tab lost focus:", event);
+			});
 		}
 
 		evt.stopPropagation();
@@ -7673,7 +7682,7 @@ QuickFolders.Interface = {
     try {
       let folder = QuickFolders.Util.CurrentFolder;
       let clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
-      let account = MailServices.accounts.FindAccountForServer(folder.server).key;
+      let account = (MailServices.accounts.FindAccountForServer || MailServices.accounts.findAccountForServer)(folder.server).key;
       let txt = `Folder ${folder.prettyName}\n`
         + `On ${account}\n`
         + `URI: ${folder.URI}`;

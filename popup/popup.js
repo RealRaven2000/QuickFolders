@@ -72,11 +72,11 @@ async function updateActions() {
     hide('register');
     
     if (isExpired) { // License Renewal
-      hide('purchaseHeader');
       hide('extendLicenseListItem');
       hide('extend');
       show('renewLicenseListItem');
       show('renew');
+      hide('purchaseHeader');
     }
     else { // License Extension
       hide('renewLicenseListItem');

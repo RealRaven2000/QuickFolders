@@ -1932,7 +1932,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} Added custom icons in folder tree in Thunderbird 115. [issue 399] {L2} {L1} Made registration screen less tall.{L2} {L1} QuickFolders now supports svg icons in tabs. [issue 407] {L2} {L1} Fixed: Open folder from QF Tab while viewing a message.{L2}{L1} The Navigation Bar now avoids horizontal overflow in columns view. {L2}{L1} Fixed: the 'Empty Junk' commands were intermittently hidden from context menus in folder tree [issue 406]{L2}{L1} Dragging mail to Current Folder tab did not open subfolders popup.{L2}{L1}'Create new subfolder' menuitem was missing when dragging mail to a QuickFolders Tab. [issue 420]{L2}"
+    "message": "{L1} Additional settings for QuickFolders are now accessible to all operating systems. These are now accessed with a little sprocket icon beside the main option.{L2}{L1} Loading the configuration from settings works again [issue 425] {L2} {L1} Removed unwanted text shadows in some parts of UI.{L2} {L1} Fixed various problems with hanging folder submenus. {L2} {L1} Improved tab-specific properties panel{L2} {L1}The folder context menu item 'customize icon' doesn't disappear anymore.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

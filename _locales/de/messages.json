@@ -1868,8 +1868,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} Benutzerdefinierte Symbole im Ordnerbaum in Thunderbird 115 hinzugefügt. [issue 399] {L2} {L1} Die Registrierungsbildschirmhöhe wurde verringert.{L2} {L1} QuickFolders unterstützt jetzt SVG-Symbole in Registerkarten. [issue 407] {L2} {L1} Behoben: Ordner aus QF-Registerkarte öffnen, während eine Nachricht angezeigt wird.{L2}{L1} Die Navigationsleiste vermeidet jetzt horizontales Überlaufen in der Spaltenansicht. {L2}{L1} Behoben: Die 'Leeren des Junk-Ordners'-Befehle wurden gelegentlich aus den Kontextmenüs im Ordnerbaum ausgeblendet [issue 406]{L2}{L1} Das Ziehen von E-Mails auf die Registerkarte 'Aktueller Ordner' öffnete das Popup für Unterordner nicht.{L2}{L1} Das Menüelement 'Neuen Unterordner erstellen' fehlte, wenn E-Mails auf eine QuickFolders-Registerkarte gezogen wurden. [issue 420]{L2}"
-  },
+    "message": "{L1} Zusätzliche Einstellungen für QuickFolders sind nun für alle Betriebssysteme zugänglich. Diese werden jetzt über ein kleines Rädchen neben der Hauptoption aufgerufen.{L2}{L1} Das Laden der Konfiguration aus den Einstellungen funktioniert wieder [issue 425] {L2} {L1} Unerwünschte Textschatten in einigen Teilen der Benutzeroberfläche wurden entfernt.{L2} {L1} Verschiedene Probleme mit hängenden Ordner-Untermenüs wurden behoben. {L2} {L1} Verbessertes Registerkarten-spezifisches Eigenschaftenfenster{L2} {L1} Der Kontextmenüpunkt 'Symbol anpassen' verschwindet nicht mehr.{L2}"
+  },   
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Willkommen bei $addonName$",

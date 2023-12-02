@@ -1892,8 +1892,8 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} Lade till anpassade ikoner i mappträdet i Thunderbird 115. [issue 399] {L2} {L1} Minskade höjden på registreringsskärmen.{L2} {L1} QuickFolders stödjer nu SVG-ikoner i flikar. [issue 407] {L2} {L1} Åtgärdat: Öppna mapp från QF-flik när du visar ett meddelande.{L2}{L1} Navigeringsfältet undviker nu horisontell överlappning i kolumnvy. {L2}{L1} Åtgärdat: Kommandona 'Töm Skräp' dolde sig ibland i snabbmenyer i mappträdet [issue 406]{L2}{L1} Dra e-post till fliken Aktuell mapp öppnade inte undermappsfönstret.{L2}{L1} 'Skapa ny undermapp' i menyn saknades när du drog e-post till en QuickFolders-flik. [issue 420]{L2}"
-  },  
+    "message": "{L1} Ytterligare inställningar för QuickFolders är nu tillgängliga för alla operativsystem. Dessa nås nu med en liten kugghjulsikon bredvid huvudalternativet.{L2}{L1} Laddning av konfiguration från inställningar fungerar igen [issue 425] {L2} {L1} Borttagning av oönskade textskuggor på vissa delar av gränssnittet.{L2} {L1} Åtgärdade olika problem med hängande mapp-undermenyer. {L2} {L1} Förbättrad flik-specifik egenskapspanel{L2} {L1} Kontextmenyn 'anpassa ikon' försvinner inte längre.{L2}"
+  }, 
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Välkommen till $addonName$",

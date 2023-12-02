@@ -1829,8 +1829,8 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Dodane prilagojene ikone v drevo map v programu Thunderbird 115. [issue 399] {L2} {L1} Zmanjšana višina zaslona za registracijo.{L2} {L1} QuickFolders zdaj podpira ikone SVG na zavihkih. [issue 407] {L2} {L1} Popravljeno: Odpiranje mape iz zavihka QF med ogledom sporočila.{L2}{L1} Navigacijska vrstica sedaj preprečuje vodoravni preliv v prikazu stolpcev. {L2}{L1} Popravljeno: ukazi 'Izprazni Nezaželeno' so bili občasno skriti v kontekstnem meniju drevesa map [issue 406]{L2}{L1} Povleci in spusti pošto na zavihku 'Trenutna mapa' ni odprlo pojavno okno s podmapami.{L2}{L1} Manjkala je možnost 'Ustvari novo podmapo' pri povlečenju pošte na zavihek QuickFolders. [issue 420]{L2}"
-  },  
+    "message": "{L1} Dodatne nastavitve za QuickFolders so zdaj dostopne vsem operacijskim sistemom. Do njih se zdaj dostopa s pomočjo majhne ikone zobnika poleg glavne možnosti.{L2}{L1} Nalaganje konfiguracije iz nastavitev spet deluje [issue 425] {L2} {L1} Odstranjeni neželeni tekstovni senci v nekaterih delih uporabniškega vmesnika.{L2} {L1} Odpravljene različne težave s podmeniji, ki visijo. {L2} {L1} Izboljšana plošča s posebnimi lastnostmi za posamezne zavihke{L2} {L1} Element kontekstnega menija 'prilagodi ikono' več ne izgine.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Dobrodošli v $addonName$",

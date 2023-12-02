@@ -1883,8 +1883,9 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} Agregados iconos personalizados en el árbol de carpetas en Thunderbird 115. [issue 399] {L2} {L1} Se redujo la altura de la pantalla de registro.{L2} {L1} QuickFolders ahora admite iconos SVG en las pestañas. [issue 407] {L2} {L1} Corregido: Abrir carpeta desde una pestaña de QF mientras se visualiza un mensaje.{L2}{L1} La Barra de Navegación ahora evita desbordamientos horizontales en la vista de columnas. {L2}{L1} Corregido: los comandos 'Vaciar Basura' a veces se ocultaban en los menús contextuales del árbol de carpetas [issue 406]{L2}{L1} Arrastrar un correo a la pestaña Carpeta Actual no abría el menú emergente de subcarpetas.{L2}{L1} Faltaba el elemento de menú 'Crear nueva subcarpeta' al arrastrar un correo a una pestaña de QuickFolders. [issue 420]{L2}"
-  },  
+    "message": "{L1} Se han añadido ajustes adicionales para QuickFolders y ahora son accesibles en todos los sistemas operativos. Estos se acceden ahora con un pequeño icono de piñón junto a la opción principal.{L2}{L1} La carga de la configuración desde los ajustes funciona de nuevo [issue 425] {L2} {L1} Se han eliminado sombras de texto no deseadas en algunas partes de la interfaz de usuario.{L2} {L1} Se han solucionado varios problemas con los submenús colgantes de carpetas. {L2} {L1} Se ha mejorado el panel de propiedades específico de la pestaña{L2} {L1} El elemento del menú contextual 'personalizar icono' ya no desaparece.{L2}"
+  },
+   
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenido a $addonName$",

@@ -1379,8 +1379,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} Thêm biểu tượng tùy chỉnh trong cây thư mục trong Thunderbird 115. [issue 399] {L2} {L1} Giảm chiều cao màn hình đăng ký.{L2} {L1} QuickFolders hiện hỗ trợ biểu tượng SVG trên tab. [issue 407] {L2} {L1} Sửa lỗi: Mở thư mục từ tab QF khi xem một thông báo.{L2}{L1} Thanh điều hướng hiện tránh tràn ngang trong chế độ xem cột. {L2}{L1} Sửa lỗi: Các lệnh 'Làm trống thùng rác' thỉnh thoảng bị ẩn khỏi menu ngữ cảnh trong cây thư mục [issue 406]{L2}{L1} Kéo thư đi tới tab Thư mục Hiện tại không mở cửa sổ con thư mục.{L2}{L1} 'Tạo thư mục con mới' bị thiếu khi kéo thư tới tab QuickFolders. [issue 420]{L2}"
-  },  
+    "message": "{L1} Các cài đặt bổ sung cho QuickFolders hiện có sẵn cho tất cả các hệ điều hành. Chúng có thể truy cập bằng biểu tượng bánh răng nhỏ bên cạnh tùy chọn chính.{L2}{L1} Việc tải cấu hình từ cài đặt lại hoạt động [issue 425] {L2} {L1} Loại bỏ bóng đen văn bản không mong muốn ở một số phần của UI.{L2} {L1} Sửa các vấn đề khác nhau với các menu con thư mục treo. {L2} {L1} Bảng thuộc tính cụ thể cho tab được cải thiện{L2} {L1} Mục menu ngữ cảnh 'tùy chỉnh biểu tượng' không biến mất nữa.{L2}"
+  }, 
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Chào mừng bạn đến với $addonName$",

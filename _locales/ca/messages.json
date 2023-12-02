@@ -1825,8 +1825,8 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} Afegit icones personalitzades a l'arbre de carpetes a Thunderbird 115. [issue 399] {L2} {L1} S'ha reduït l'alçada de la pantalla de registre.{L2} {L1} QuickFolders ara suporta icones SVG a les pestanyes. [issue 407] {L2} {L1} Solucionat: Obrir carpeta des de la pestanya QF mentre es visualitza un missatge.{L2}{L1} La Barra de Navegació ara evita l'overflow horitzontal en la vista de columnes. {L2}{L1} Solucionat: Les comandes 'Buidar brossa' es van amagar intermitentment als menús contextuals a l'arbre de carpetes [issue 406]{L2}{L1} Arrossegar correu a la pestanya Carpeta Actual no obrirà la finestra emergent de carpetes. {L2}{L1} Faltava l'opció 'Crear subcarpeta' en arrossegar correu a una pestanya de QuickFolders. [issue 420]{L2}"
-  },
+    "message": "{L1} Ara es poden accedir a la configuració addicional de QuickFolders des de tots els sistemes operatius. Ara s'accedeix amb un petit icona de rodet a banda de l'opció principal.{L2}{L1} La càrrega de la configuració des de la configuració ja funciona de nou [issue 425] {L2} {L1} S'ha eliminat l'ombra de text no desitjada en algunes parts de la interfície d'usuari.{L2} {L1} S'han resolt diversos problemes amb els submenús de carpetes penjades. {L2} {L1} Millorada la pestanya del panell de propietats específiques{L2} {L1} L'element del menú contextual de la carpeta 'personalitzar icona' ja no desapareix.{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Benvingut a $addonName$",

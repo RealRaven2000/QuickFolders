@@ -383,8 +383,8 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} Přidány vlastní ikony do stromu složek v Thunderbirdu 115. [issue 399] {L2} {L1} Zmenšena výška registrační obrazovky.{L2} {L1} QuickFolders nyní podporuje ikony SVG v záložkách. [issue 407] {L2} {L1} Opraveno: Otevírání složky z QF karty při prohlížení zprávy.{L2}{L1} Navigační panel nyní předejde horizontálnímu přetečení v režimu sloupců. {L2}{L1} Opraveno: Příkazy 'Vyprázdnit spam' byly dočasně skryty v kontextových nabídkách v seznamu složek [issue 406]{L2}{L1} Přetahování emailu na kartu Aktuální složky neotevře vyskakovací okno s podsložkami.{L2}{L1} Chyběla položka 'Vytvořit novou podsložku' při přetahování emailu na kartu QuickFolders. [issue 420]{L2}"
-  },
+    "message": "{L1} Pro QuickFolders jsou nyní dostupná další nastavení přístupná pro všechny operační systémy. Nyní jsou dostupná pomocí ikony malého ozubeného kola vedle hlavní možnosti.{L2}{L1} Načítání konfigurace ze nastavení opět funguje [issue 425] {L2} {L1} Odstraněn nechtěný textový stín v některých částech uživatelského rozhraní.{L2} {L1} Opraveny různé problémy s visícími podnabídkami složek. {L2} {L1} Vylepšen panel s vlastnostmi specifickými pro záložku{L2} {L1} Položka kontextového menu složky 'přizpůsobit ikonu' už nezmizí.{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Vítejte v $addonName$",

@@ -1920,7 +1920,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} Ajout d'icônes personnalisées dans l'arborescence des dossiers de Thunderbird 115. [issue 399] {L2} {L1} Réduction de la hauteur de l'écran d'inscription.{L2} {L1} Prise en charge des icônes SVG dans les onglets.  [issue 407] {L2} {L1} Corrigé : Ouvrir un dossier depuis un onglet QuickFolders tout en visualisant un message.{L2}{L1} La barre de navigation évite désormais le débordement horizontal en mode colonnes. {L2}{L1} Corrigé : Les commandes 'Vider la corbeille' étaient occasionnellement masquées dans les menus contextuels de l'arborescence des dossiers [issue 406]{L2}{L1} Glisser un e-mail sur l'onglet Dossier actuel n'ouvrait pas la fenêtre contextuelle des sous-dossiers.{L2}{L1} L'élément de menu 'Créer un nouveau sous-dossier' était manquant lors du glissement d'e-mails vers un onglet QuickFolders. [issue 420]{L2}"
+    "message": "{L1} Des paramètres supplémentaires pour QuickFolders sont désormais accessibles sur tous les systèmes d'exploitation. Ils sont désormais accessibles avec une petite icône de pignon à côté de l'option principale.{L2}{L1} Le chargement de la configuration depuis les paramètres fonctionne à nouveau [issue 425] {L2} {L1} Les ombres de texte indésirables dans certaines parties de l'interface ont été supprimées.{L2} {L1} Résolution de divers problèmes avec les sous-menus suspendus des dossiers. {L2} {L1} Amélioration du panneau des propriétés spécifiques à l'onglet{L2} {L1} L'élément de menu contextuel 'personnaliser l'icône' ne disparaît plus.{L2}"
   },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1850,8 +1850,8 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{L1} Adicionados ícones personalizados na estrutura de pastas no Thunderbird 115. [issue 399] {L2} {L1} Reduzida a altura da tela de registro.{L2} {L1} O QuickFolders agora suporta ícones SVG em abas. [issue 407] {L2} {L1} Corrigido: Abrir pasta a partir de um guia QF enquanto visualiza uma mensagem.{L2}{L1} A Barra de Navegação agora evita o estouro horizontal na visualização de colunas. {L2}{L1} Corrigido: os comandos 'Esvaziar Lixo' eram ocasionalmente ocultados nos menus de contexto na estrutura de pastas [issue 406]{L2}{L1} Arrastar e soltar e-mails na guia Pasta Atual não abria a janela pop-up de subpastas.{L2}{L1} Estava em falta o item de menu 'Criar nova subpasta' ao arrastar e-mails para uma guia do QuickFolders. [issue 420]{L2}"
-  },
+    "message": "{L1} Configurações adicionais para o QuickFolders estão agora acessíveis a todos os sistemas operativos. Estas são agora acedidas com um pequeno ícone de engrenagem ao lado da opção principal.{L2}{L1} O carregamento da configuração a partir das definições funciona novamente [issue 425] {L2} {L1} Foram removidas sombras de texto indesejadas em algumas partes da interface.{L2} {L1} Resolvidos vários problemas com submenus pendentes de pastas. {L2} {L1} Melhorado o painel de propriedades específico do separador{L2} {L1} O item do menu de contexto 'personalizar ícone' já não desaparece.{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bem-vindo a $addonName$",

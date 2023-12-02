@@ -1874,7 +1874,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} Dodano niestandardowe ikony w drzewie folderów w Thunderbird 115. [issue 399] {L2} {L1} Zmniejszono wysokość ekranu rejestracji.{L2} {L1} QuickFolders obsługuje teraz ikony SVG w kartach. [issue 407] {L2} {L1} Naprawiono: Otwieranie folderu z karty QF podczas przeglądania wiadomości.{L2}{L1} Pasek Nawigacji teraz unika poziomego przepełnienia w widoku kolumn. {L2}{L1} Naprawiono: 'Opróżnij folder spam' były czasami ukryte w menu kontekstowym w strukturze folderów [issue 406]{L2}{L1} Przenoszenie wiadomości do karty Bieżący folder nie otwierało okna podręcznego z podfolderami.{L2}{L1} Brakowało opcji 'Utwórz nowy podfolder' podczas przeciągania wiadomości na kartę QuickFolders. [issue 420]{L2}"
+    "message": "{L1} Dodatkowe ustawienia dla QuickFolders są teraz dostępne dla wszystkich systemów operacyjnych. Teraz można je uzyskać za pomocą małej ikony zębatki obok głównej opcji.{L2}{L1} Ładowanie konfiguracji ze ustawień działa ponownie [issue 425] {L2} {L1} Usunięte niechciane cienie tekstu w niektórych częściach interfejsu.{L2} {L1} Naprawione różne problemy z zawieszającymi się podmenu folderów. {L2} {L1} Ulepszony panel właściwości specyficzny dla zakładek{L2} {L1} Element menu kontekstowego 'dostosuj ikonę' nie znika już.{L2}"
   },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1829,7 +1829,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{L1} 現在您可以獨立於按鈕字型更改所有彈出式選單的選單字型大小。[issue 394] {L2} {L1} 您還可以在'Apple Pills'主題中更改資料夾標籤的字型大小。{L2} {L1} 改進了Apple主題的上色和版面配置。 {L2} {L1} 在註冊對話框中顯示本地化的許可到期日期（不以YYYY-MM-DD的格式）。{L2}{L1} 解決了與快速篩選工具列的鍵盤衝突；在搜尋列中輸入[Shift]+[F]和[Shift]+[M]會觸發quickJump搜尋。 {L2}{L1} 在某些情況下，quickJump會不穩定地啟動單一訊息標籤。 {L2}{L1} 切換經典佈局和垂直佈局時，導航列將始終移至頂部。[issue 395]{L2}"
+    "message": "{L1} QuickFolders 的其他設定現在可在所有操作系統上訪問。這些現在可以透過主選項旁邊的小齒輪圖標訪問。{L2}{L1} 再次從設置中加載配置 [issue 425] {L2} {L1} 刪除了 UI 某些部分中不需要的文本陰影.{L2} {L1} 解決了與懸掛文件夾子菜單相關的各種問題。 {L2} {L1} 改進了特定標籤屬性面板{L2} {L1} 文件夾上下文菜單項'自定義圖標'不再消失.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

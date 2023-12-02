@@ -1883,8 +1883,8 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} Aangepaste pictogrammen toegevoegd aan de mappenstructuur in Thunderbird 115. [issue 399] {L2} {L1} De registratieschermhoogte is verlaagd.{L2} {L1} QuickFolders ondersteunt nu SVG-pictogrammen in tabbladen. [issue 407] {L2} {L1} Opgelost: Map openen vanuit een QF-tabblad terwijl u een bericht bekijkt.{L2}{L1} De Navigatiebalk vermijdt nu horizontale overloop in kolomweergave. {L2}{L1} Opgelost: de opdrachten 'Leegmaken van ongewenste e-mail' waren soms verborgen in contextmenu's in de mappenstructuur [issue 406]{L2}{L1} Slepen van e-mail naar het tabblad Huidige map opende geen pop-up met submappen.{L2}{L1} Het menu-item 'Nieuwe submap maken' ontbrak bij het slepen van e-mail naar een QuickFolders-tabblad. [issue 420]{L2}"
-  },  
+    "message": "{L1} Extra instellingen voor QuickFolders zijn nu toegankelijk voor alle besturingssystemen. Deze zijn nu te bereiken met een klein tandwielicoon naast de hoofdoptie.{L2}{L1} Het laden van de configuratie vanuit de instellingen werkt weer [issue 425] {L2} {L1} Onnodige tekstschaduwen in sommige delen van de UI zijn verwijderd.{L2} {L1} Diverse problemen met hangende submenu's van mappen zijn verholpen. {L2} {L1} Verbeterd eigenschappenpaneel specifiek voor tabbladen{L2} {L1} Het contextmenu-item 'pictogram aanpassen' verdwijnt niet meer.{L2}"
+  },    
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Welkom bij $addonName$",

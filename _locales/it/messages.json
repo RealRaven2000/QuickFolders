@@ -1871,8 +1871,8 @@
     "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
   },
   "whats-new-list": {
-    "message": "{L1} Aggiunte icone personalizzate nell'albero delle cartelle in Thunderbird 115. [issue 399] {L2} {L1} Abbassato l'altezza della schermata di registrazione.{L2} {L1} QuickFolders ora supporta icone SVG nelle schede. [issue 407] {L2} {L1} Risolto: Apertura cartella dalla scheda QF durante la visualizzazione di un messaggio.{L2}{L1} La Barra di Navigazione ora evita l'overflow orizzontale nella vista a colonne. {L2}{L1} Risolto: i comandi 'Svuota spam' erano occasionalmente nascosti nei menu contestuali nell'albero delle cartelle [issue 406]{L2}{L1} Il trascinamento delle email sulla scheda Cartella Corrente non apriva la finestra delle sottocartelle.{L2}{L1} Mancava la voce 'Crea nuova sottocartella' quando si trascinava una email su una scheda QuickFolders. [issue 420]{L2}"
-  },  
+    "message": "{L1} Ulteriori impostazioni per QuickFolders sono ora accessibili su tutti i sistemi operativi. Queste sono ora accessibili con una piccola icona a pignone accanto all'opzione principale.{L2}{L1} Il caricamento della configurazione dalle impostazioni funziona di nuovo [issue 425] {L2} {L1} Rimossi ombre di testo indesiderate in alcune parti dell'interfaccia utente.{L2} {L1} Risolti vari problemi con i sottomenu delle cartelle sospese. {L2} {L1} Migliorato il pannello delle proprietà specifiche della scheda{L2} {L1} La voce del menu contestuale 'personalizza icona' non scompare più.{L2}"
+  },   
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Benvenuto in $addonName$",

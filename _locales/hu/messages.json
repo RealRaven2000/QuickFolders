@@ -1641,8 +1641,8 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} Egyedi ikonok hozzáadva a mappafa közé Thunderbird 115-ben. [issue 399] {L2} {L1} A regisztrációs képernyő magassága csökkent.{L2} {L1} A QuickFolders most támogatja az SVG ikonokat a lapokon. [issue 407] {L2} {L1} Javítva: Mappa megnyitása a QF Lapról egy üzenet megtekintése közben.{L2}{L1} A Navigációs sáv most megakadályozza a vízszintes túlcsordulást oszlopnézetben. {L2}{L1} Javítva: Az 'Üres spam' parancsok időnként elrejtve voltak a kontextusmenükben a mappafa nézetben [issue 406]{L2}{L1} Az aktuális mappa lapon való levélhúzás nem nyitotta meg az al-mappák felugró ablakát.{L2}{L1} 'Új almappa létrehozása' menüelem hiányzott, amikor levelet húztak egy QuickFolders lapra. [issue 420]{L2}"
-  },  
+    "message": "{L1} További beállítások hozzáadva a QuickFolders-hez, most már elérhetők minden operációs rendszeren. Ezek most egy kis fogaskerék ikonnal érhetők el a fő opció mellett.{L2}{L1} A beállítások betöltése ismét működik [issue 425] {L2} {L1} Eltávolítva a nem kívánt szövegárnyékok bizonyos részein.{L2} {L1} Javítva a függő mappa almenükkel kapcsolatos különféle problémákat. {L2} {L1} Javított fül-specifikus tulajdonságok panel{L2} {L1} A mappa kontextusmenü pontja, az 'ikon testreszabása' többé nem tűnik el.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Üdvözöljük a $addonName$ oldalon",

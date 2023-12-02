@@ -143,19 +143,24 @@ to your mail client. These apply to all supported Mozilla based mail clients suc
      Do not activate all of them because you will be flooded with messages, if in doubt
      you can contact me for suggestions for relevant ones for a specific problem.
 	</dd>
+
   <dt>Does QuickFolders work with the current beta of Thunderbird?</dt>
-  <dd>After version 72, Thunderbird is making some fundamental changes that require 
-    classic add-ons to be adapted in order to prepare for a rewrite as web extension.
-    Since many APIs are missing / incomplete to achieve what classic Add-ons are currently
-    allowed to do using XUL and XPCOM, the interim step will be to create a
-    "web-experiment" versions of the Add-ons. These versions will not be compatible
-    with the current (or previous) versions of Thunderbird (68 and below).
-    <br>
-    For the moment I recommend staying with Thunderbird 68.* until I announce the new version
-    via <a href="http://addons.thunderbird.net/" target="_blank">ATN</a> / automatic update / on my web pages.
-    If you have a Pro license, I will notify you as soon as a version for Thunderbird 78 
-    becomes available.
-    </dd>
+  <dd>
+    The answer is most likely "yes". 
+    Although changes in Thunderbird are getting more brutal every year for us
+    "experimental" Add-on developers, this is exactly what I am financing through 
+    licenses: keeping up to date with the changes in Thunderbird even if many of
+    the functions in QuickFolders are not supported through APIs.
+    I am always compatible with the ESR (currently all versions starting with 115)
+    and also try to bump up the version number for Thunderbird beta users.
+    <p>
+      If you find any issues in the current Thunderbird beta, please
+      report the problem on the <a href="https://github.com/RealRaven2000/QuickFolders/issues">Github issue tracker</a>. 
+      I don't constantly test with that but I am very quick with fixing regressions
+      caused by the beta, because it will reduce my workload on the annual
+      ESR major version bump.
+    </p>
+  </dd>
   
   
 	<dt>Can I contact you directly?</dt>
@@ -225,6 +230,12 @@ once done, click Save. To give you inspiration, this is the way I have set up mi
 
 	</dd>
 
+  <dt>Can I transfer my QuickFOlders and Settings to another machine?</dt>
+  <dd>
+    Yes there is a way to do this for all users with licenses, see 
+    <a href="https://github.com/RealRaven2000/QuickFolders/issues/442#issuecomment-1837145845">Github issue 442</a> 
+    for detailed instructions.
+  </dd>
 
 	<dt>I can see no colors on my Folder Tabs. Why is this?</dt>
 	<dd>In Options, on the "Bling my Tabs!" page, activate the "Flat Style" theme and make sure not to select "Native Tabs".

@@ -1460,17 +1460,17 @@ allowUndo = true)`
   
   // dedicated function for email clients which don't support tabs
   // and for secured pages (donation page).
-  openLinkInBrowserForced: function openLinkInBrowserForced(linkURI) {
-    let Ci = Components.interfaces;
+  openBrowserForced: function (linkURI) {
+    const Ci = Components.interfaces;
     try {
-      this.logDebug("openLinkInBrowserForced (" + linkURI + ")");
+      this.logDebug("openBrowserForced (" + linkURI + ")");
       let service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
           ioservice = Components.classes["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
           uri = ioservice.newURI(linkURI, null, null);
       service.loadURI(uri);
     }
     catch(e) { 
-      this.logDebug("openLinkInBrowserForced (" + linkURI + ") " + e.toString()); 
+      this.logDebug("openBrowserForced (" + linkURI + ") " + e.toString()); 
       // failed to open link in browser, try to open in tab
       QuickFolders_TabURIopener.openURLInTab(linkURI);
     }
@@ -1528,12 +1528,13 @@ allowUndo = true)`
       let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
           ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
       service.loadURI(ioservice.newURI(linkURI, null, null));
-      if (null!=evt)
+      if (null!=evt) {
         evt.stopPropagation();
+      }
     }
     catch(e) { 
       this.logDebug("openLinkInBrowser (" + linkURI + ") " + e.toString()); 
-      this.openLinkInBrowserForced(linkURI);
+      this.openBrowserForced(linkURI);
     }
   },
 

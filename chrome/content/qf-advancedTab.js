@@ -317,11 +317,11 @@ QuickFolders.AdvancedTab = {
   } ,
   
   getCssGradient: function getCssGradient(evt) {
-    this.MainQuickFolders.Util.openURL(evt,'http://www.colorzilla.com/gradient-editor');
+    this.MainQuickFolders.Util.openLinkInBrowser(evt,'http://www.colorzilla.com/gradient-editor');
   } ,
   
   getCssColor: function getCssColor(evt) {
-    this.MainQuickFolders.Util.openURL(evt,'https://developer.mozilla.org/en-US/docs/Web/CSS/color');
+    this.MainQuickFolders.Util.openLinkInBrowser(evt,'https://developer.mozilla.org/en-US/docs/Web/CSS/color');
   } ,
   
   pickColor: function pickColor(color) {

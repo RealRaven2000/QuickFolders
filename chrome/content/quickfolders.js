@@ -398,6 +398,7 @@ END LICENSE BLOCK */
     ## [issue 420] Drag to new subfolder command missing
 
   6.4 QuickFolders Pro - WIP
+    ## [issue 441] Make advanced settings for QuickFolders Settings accessible to all operating systems
     ## [issue 425] Load configuration doesn't work
     ## [issue 427] Removed unwanted text shadow in quickJump help panel
     ## [issue 428] Popup menus not removed when dragging across QuickFolders tabs
@@ -406,14 +407,14 @@ END LICENSE BLOCK */
     ## [issue 434] quickfilter search box loses focus 1 second after clicking a QF tab
     ## [issue 436] Shift-M shortcut not working for folders in version 6.3 of QF and 115 of TB.
     ## [issue 437] Advanced Properties - default to / from fields not working in Tb115
-    ## [issue 433] Problems in tab-specific properties panel on Mac
+    ## [issue 433] Problems in tab-specific properties panel on Mac (Tb 115)
+    ## [issue 439] Thunderbird 122 beta - cannot add new tabs to toolbar
 
 	Future Work
 	===========
     ## [issue ]
     ## [issue ]
     ## [issue ]
-    ## [issue 433] (Mac) Unusable Transparent Popup for Tab-Specific-Properties After Update to Supernova 115.4.3 
     ## [issue 354] Add permanent notifications for messages moved.
     ## [issue 103] Feature Request: Support copying folders
 	  ## [Bug 26400] Option to show QuickFolders toolbar at bottom of mail window

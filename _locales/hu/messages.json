@@ -228,14 +228,14 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} Ez a legújabb kiadás a $addonName$ végül visszaállítja a népszerű testreszabott ikon funkciót a Thunderbird 115 teljesen újratervezett mappafájával való munkához. {P2}{P1} Ezzel testreszabott ikonokat adhatsz hozzá bármely mappához. Jobb gombbal kattints bármely mappára, hogy testreszabott ikont adj hozzá egy fájlból. Nézd meg az alábbi funkció összehasonlítást a licenc korlátozásokról. {P2}",
+    "message": "{P1} A $addonName$ legújabb kiadása kijavítja a fejlett lap tulajdonságokat, például az automatikus címzést lapenként az új levél írásakor. {P2}{P1} Emellett még sok más funkciót is tartalmaz, amelyek most már elérhetők Mac-en és Linux-on is. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
-  },  
+  }, 
   "newsSection.license": {
     "message": "Ezt a munkát kizárólagosan finanszírozzák. Licencek eladása miatt fontolja meg a licenc megvásárlását vagy a korábbi megújítását, ha a jövőben szeretné használni a QuickFolders alkalmazást."
   },
@@ -1541,7 +1541,7 @@
     "message": "A Standard verzióra való frissítéskor a vásárlás dátumától számítva egy teljes év licencidőt kap, függetlenül az előző licenc lejárati dátumától."
   },
   "special-offer-expiry": {
-    "message": "november 12."
+    "message": "december 18"
   },  
   "special-offer-head": {
     "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",

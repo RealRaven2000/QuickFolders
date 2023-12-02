@@ -260,14 +260,14 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1} Esta última edición de $addonName$ finalmente restaura la querida característica de iconos personalizados para funcionar con el árbol de carpetas completamente recreado de Thunderbird 115. {P2}{P1} Con esto, puedes agregar iconos personalizados a cualquier carpeta. Haz clic derecho en cualquier carpeta para agregar un icono personalizado desde un archivo. Consulta la comparación de características a continuación sobre restricciones de licencia. {P2}",
+    "message": "{P1} Esta última edición de $addonName$ soluciona propiedades avanzadas de pestañas como la dirección automática por pestaña al redactar un nuevo correo. {P2}{P1} También tiene muchas más características que ahora son accesibles en Mac y Linux. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
-  },  
+  }, 
   "newsSection.license": {
     "message": "Este trabajo está financiado exclusivamente por la venta de licencias, considere comprar una licencia o renovar la anterior si está interesado en usar QuickFolders en el futuro."
   },
@@ -1777,8 +1777,8 @@
     "message": "Cuando actualiza desde Estándar, obtiene un período de licencia de un año completo a partir de la fecha de compra, independientemente de la fecha de vencimiento de su licencia anterior."
   },
   "special-offer-expiry": {
-    "message": "12 de noviembre"
-  },  
+    "message": "18 de diciembre"
+  },
   "special-offer-head": {
     "message": "Ayuda a mantener $addon$ compatible",
     "placeholders": {

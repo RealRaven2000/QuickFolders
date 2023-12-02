@@ -245,14 +245,14 @@
     "message": "最新ニュース"
   },
   "newsSection": {
-    "message": "{P1} この最新版の$addonName$は、ついにThunderbird 115の完全に再作成されたフォルダツリーと共に愛されたカスタムアイコン機能を復元します。 {P2}{P1} これにより、任意のフォルダにカスタムアイコンを追加できます。 ファイルからカスタムアイコンを追加するには、フォルダを右クリックしてください。 ライセンス制限に関する以下の機能比較をご覧ください。 {P2}",
+    "message": "{P1} この最新の$addonName$のバージョンでは、新しいメールを書く際のタブごとの自動アドレッシングなど、高度なタブプロパティが修正されています。 {P2}{P1} さらに、MacおよびLinuxでアクセスできるようになった多くの新機能もあります。 {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
-  },  
+  }, 
   "newsSection.license": {
     "message": "この作業は独占的に資金提供されています。 ライセンスの販売により、将来的に QuickFolders を使用することに関心がある場合は、ライセンスを購入するか、以前のライセンスを更新することを検討してください。"
   },
@@ -1660,8 +1660,8 @@
     "message": "Standardからアップグレードすると、以前のライセンスの有効期限に関係なく、購入日から1年間のライセンス期間が与えられます。"
   },
   "special-offer-expiry": {
-    "message": "11月12日"
-  },
+    "message": "12月18日"
+  },  
   "special-offer-head": {
     "message": "$addon$の互換性を維持するのに役立ちます",
     "placeholders": {

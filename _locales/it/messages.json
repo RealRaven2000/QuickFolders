@@ -254,14 +254,14 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1} Questa ultima edizione di $addonName$ finalmente ripristina la tanto amata funzione di icona personalizzata per funzionare con l'albero delle cartelle completamente ricreato di Thunderbird 115. {P2}{P1} Con questa funzionalità puoi aggiungere icone personalizzate a qualsiasi cartella. Fai clic destro su una cartella per aggiungere un'icona personalizzata da un file. Vedi il confronto delle funzionalità di seguito sulle restrizioni di licenza. {P2}",
+    "message": "{P1} Quest'ultima edizione di $addonName$ corregge le proprietà avanzate della scheda, come l'indirizzamento automatico per scheda durante la scrittura di una nuova email. {P2}{P1} Ha anche molte altre funzionalità ora accessibili su Mac e Linux. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
-  },  
+  },
   "newsSection.license": {
     "message": "Questo lavoro è finanziato esclusivamente dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare QuickFolders in futuro."
   },
@@ -1765,8 +1765,8 @@
     "message": "Quando esegui l'upgrade da Standard, ricevi un anno intero di licenza dalla data di acquisto, indipendentemente dalla data di scadenza della tua licenza precedente."
   },
   "special-offer-expiry": {
-    "message": "12 novembre"
-  },  
+    "message": "18 dicembre"
+  },
   "special-offer-head": {
     "message": "Aiutaci a mantenere la compatibilità con $addon$",
     "placeholders": {

@@ -258,14 +258,14 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Diese neueste Ausgabe von $addonName$ stellt endlich die beliebte benutzerdefinierte Symbolfunktion wieder her und funktioniert mit dem vollständig neu erstellten Ordnerbaum von Thunderbird 115. {P2}{P1} Damit können Sie benutzerdefinierte Symbole zu jedem Ordner hinzufügen. Klicken Sie mit der rechten Maustaste auf einen Ordner, um ein benutzerdefiniertes Symbol aus einer Datei hinzuzufügen. Siehe den Funktionsvergleich unten für Lizenzbeschränkungen. {P2}",
+    "message": "{P1} Diese neueste Ausgabe von $addonName$ behebt erweiterte Tab-Eigenschaften wie automatische Adressierung pro Tab beim Verfassen neuer E-Mails. {P2}{P1} Sie hat auch viele weitere Funktionen, die jetzt auf Mac und Linux zugänglich sind. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
-  },  
+  }, 
   "ongoing-work": {
     "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
     "placeholders": {
@@ -1766,8 +1766,8 @@
     "message": "Wenn Sie von Standard upgraden, erhalten Sie eine einjährige Lizenzlaufzeit ab Kaufdatum, unabhängig vom Ablaufdatum Ihrer vorherigen Lizenz."
   },
   "special-offer-expiry": {
-    "message": "12. November"
-  },
+    "message": "18. Dezember"
+  },  
   "special-offer-head": {
     "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
     "placeholders": {

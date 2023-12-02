@@ -257,12 +257,12 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 這個最新版本的 $addonName$ 最終恢復了深受喜愛的自訂圖示功能，可與 Thunderbird 115 完全重建的資料夾樹一起使用。{P2}{P1} 您現在可以將自訂圖示添加到任何資料夾。右鍵點擊任何資料夾以從檔案添加自訂圖示。請參閱下方有關任何授權限制的功能比較。{P2}",
+    "message": "{P1} 這個最新版本的$addonName$修復了高級選項卡屬性，例如在撰寫新郵件時每個選項卡的自動 addressing。 {P2}{P1} 它還具有在Mac和Linux上現在可以訪問的許多其他功能。 {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
   },
   "newsSection.license": {
@@ -1723,7 +1723,7 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "11月12日"
+    "message": "12月18日"
   },
   "special-offer-head": {
     "message": "幫助保持 $addon$ 兼容",

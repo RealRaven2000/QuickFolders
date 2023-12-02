@@ -254,7 +254,13 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1}Uma versão totalmente reescrita do QuickFolders está disponível para a nova interface do usuário do Thunderbird SuperNova. O Thunderbird 115 será lançado para todos os usuários que tiverem atualizações habilitadas nas próximas semanas, e os QuickFolders serão atualizados automaticamente.{P2} {P1}Você pode ler sobre o progresso e a quantidade de alterações para este trabalho aqui: [issue 351]{P2}"
+    "message": "{P1} Esta última edição do $addonName$ corrige propriedades avançadas de guias, como o endereçamento automático por guia ao escrever um novo e-mail. {P2}{P1} Também possui muitos mais recursos agora acessíveis no Mac e Linux. {P2}",
+    "placeholders": {
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
+    }
   },
   "newsSection.license": {
     "message": "Este trabalho é financiado exclusivamente pela venda de licenças, considere comprar uma licença ou renovar a anterior se estiver interessado em usar QuickFolders no futuro."
@@ -1744,7 +1750,7 @@
     "message": "Ao atualizar do Standard, você obtém um período de licença de um ano inteiro a partir da data de compra, independentemente da data de expiração de sua licença anterior."
   },
   "special-offer-expiry": {
-    "message": "12 de novembro"
+    "message": "18 de dezembro"
   },
   "special-offer-head": {
     "message": "Ajude a manter $addon$ compatível",

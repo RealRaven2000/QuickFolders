@@ -261,12 +261,12 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 此最新版本的 $addonName$ 终于使得深受喜爱的自定义图标功能能够与 Thunderbird 115 完全重建的文件夹树配合使用。{P2}{P1} 使用此功能，您可以将自定义图标添加到任何文件夹。右键单击任何文件夹以从文件添加自定义图标。请参阅下方有关任何许可限制的功能比较。{P2}",
+    "message": "{P1} 这个最新版本的$addonName$修复了高级选项卡属性，例如在撰写新邮件时每个选项卡的自动 addressing。 {P2}{P1} 它还具有在Mac和Linux上现在可以访问的许多其他功能。 {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
   },
   "newsSection.license": {
@@ -1712,8 +1712,8 @@
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
   },
   "special-offer-expiry": {
-    "message": "11月12日"
-  },
+    "message": "12月18日"
+  },  
   "special-offer-head": {
     "message": "帮助保持 $addon$ 兼容",
     "placeholders": {

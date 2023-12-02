@@ -265,14 +265,14 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1} Aquesta última edició de $addonName$ finalment restaura la característica de la icona personalitzada, tant estimada, per funcionar amb l'arbre de carpetes completament recreat del Thunderbird 115. {P2}{P1} Amb això, podeu afegir icones personalitzades a qualsevol carpeta. Feu clic amb el botó dret a sobre de qualsevol carpeta per afegir una icona personalitzada d'un fitxer. Consulteu la comparació de característiques a continuació per a qualsevol restricció de llicència. {P2}",
+    "message": "{P1} Aquesta darrera edició de $addonName$ soluciona propietats avançades de les pestanyes com l'adreça automàtica per pestanya quan redactes un correu nou. {P2}{P1} També inclou moltes més funcionalitats ara accessibles a Mac i Linux. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
-  },  
+  },
   "newsSection.license": {
     "message": "Com que aquest treball es finança exclusivament amb la venda de llicències, considereu comprar una llicència o renovar-ne l'anterior si esteu interessats a utilitzar QuickFolders en el futur."
   },
@@ -1719,7 +1719,7 @@
     "message": "Quan actualitzeu des de Standard, obteniu un període de llicència d'un any complet a partir de la data de compra, independentment de la data de caducitat de la vostra llicència anterior."
   },
   "special-offer-expiry": {
-    "message": "12 de novembre"
+    "message": "18 de diciembre"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",

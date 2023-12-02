@@ -128,14 +128,14 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1} Tämä uusin versio $addonName$-lisäosasta palauttaa viimein rakastetun mukautetun kuvakkeen ominaisuuden toimimaan täysin uudelleen luodun Thunderbird 115 -kansiorakenteen kanssa. {P2}{P1} Voit lisätä mukautettuja kuvakkeita mihin tahansa kansioon. Klikkaa oikealla kansiota lisätäksesi mukautetun kuvakkeen tiedostosta. Katso alla oleva ominaisuusvertailu lisenssirajoituksista. {P2}",
+    "message": "{P1} Tämä $addonName$ -lisäosan uusin versio korjaa edistyneitä välilehtiominaisuuksia, kuten automaattista osoittamista välilehteä kohden kirjoittaessa uutta sähköpostia. {P2}{P1} Siinä on myös paljon muita ominaisuuksia, jotka ovat nyt käytettävissä Mac- ja Linux-ympäristöissä. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
-  },   
+  },
   "newsSection.license": {
     "message": "Tämä työ on yksinomaan rahoitettu lisenssien myynnin vuoksi, harkitse lisenssin ostamista tai edellisen uusimista, jos olet kiinnostunut käyttämään QuickFolderia tulevaisuudessa"
   },
@@ -224,8 +224,8 @@
     "message": "Kun päivität Standard-versiosta, saat yhden täyden vuoden lisenssikauden ostopäivästä lukien edellisen lisenssisi päättymispäivästä riippumatta."
   },
   "special-offer-expiry": {
-    "message": "12. marraskuuta"
-  },
+    "message": "18. joulukuuta"
+  },  
   "special-offer-head": {
     "message": "Auta pitämään $addon$ yhteensopivana",
     "placeholders": {

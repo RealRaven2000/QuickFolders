@@ -245,12 +245,12 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1} Najnovejša različica $addonName$ končno obnovi priljubljeno funkcijo prilagojenih ikon, da deluje z v celoti prenovljenim drevesom map v Thunderbirdu 115. {P2}{P1} Zdaj lahko dodate prilagojene ikone katerikoli mapi. Desni klik na katerikoli mapo omogoča dodajanje prilagojene ikone iz datoteke. Oglejte si primerjavo funkcij spodaj glede morebitnih licenčnih omejitev. {P2}",
+    "message": "{P1} Najnovejša izdaja $addonName$ odpravlja napredne lastnosti zavihkov, kot je samodejno naslavljanje na zavihku pri pisanju nove pošte. {P2}{P1} Ima tudi veliko več funkcij, ki so zdaj dostopne na Macu in Linuxu. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
   },
   "newsSection.license": {
@@ -1723,7 +1723,7 @@
     "message": "Ko nadgradite s standardnega, prejmete eno celoletno licenčno obdobje od datuma nakupa, ne glede na datum poteka vaše prejšnje licence."
   },
   "special-offer-expiry": {
-    "message": "12. november"
+    "message": "18. december"
   },
   "special-offer-head": {
     "message": "Pomagajte ohraniti združljivost $addon$",

@@ -9,16 +9,16 @@ END LICENSE BLOCK */
 /* shared module for installation popups */
 
 async function updateActions() { 
-  let endSale = new Date("2023-11-12"), // Next Sale End Date
+  let endSale = new Date("2023-12-18"), // Next Sale End Date
       currentTime = new Date();
       
   // Currently we do not notify this page if the license information is updated in the background.
   let licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
   // LICENSING FLOW
-  let isExpired = licenseInfo.isExpired,
-      isValid = licenseInfo.isValid,
+  let isStandard = (licenseInfo.keyType==2),
       isProUser = (licenseInfo.keyType == 0 || licenseInfo.keyType == 1),
-      isStandard = (licenseInfo.keyType==2);
+      isExpired = licenseInfo.isExpired,
+      isValid = licenseInfo.isValid;
   
   function hide(id) {
     let el = document.getElementById(id);
@@ -68,6 +68,7 @@ async function updateActions() {
 
   if (isValid || isExpired) {
     hide('purchaseLicenseListItem');
+    hideSelectorItems('.donations');
     hide('register');
     
     if (isExpired) { // License Renewal

@@ -170,14 +170,14 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1} Tato nejnovější edice $addonName$ konečně obnovuje oblíbenou funkci vlastní ikony pro použití s plně znovu vytvořeným stromem složek ve Thunderbirdu 115. {P2}{P1} S tímto můžete přidat vlastní ikony do libovolné složky. Klikněte pravým tlačítkem myši na jakoukoli složku a přidejte vlastní ikonu z souboru. Podívejte se na srovnání funkcí níže ohledně omezení licence. {P2}",
+    "message": "{P1} Tato nejnovější verze $addonName$ opravuje pokročilé vlastnosti karet, jako je automatické adresování na kartu při psaní nové pošty. {P2}{P1} Obsahuje také mnoho dalších funkcí, které jsou nyní dostupné na Mac a Linux. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
-  },  
+}, 
   "newsSection.license": {
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat QuickFolders v budoucnu."
   },
@@ -295,7 +295,7 @@
     "message": "Když upgradujete ze Standardu, získáte licenční období na jeden celý rok od data nákupu bez ohledu na datum vypršení platnosti vaší předchozí licence."
   },
   "special-offer-expiry": {
-    "message": "12. listopadu"
+    "message": "18. prosince"
   },
   "special-offer-head": {
     "message": "Pomozte zachovat kompatibilitu $addon$",

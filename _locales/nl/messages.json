@@ -257,12 +257,12 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1} Deze nieuwste editie van $addonName$ herstelt eindelijk de geliefde functie voor aangepaste pictogrammen om te werken met de volledig opnieuw gecreëerde mapstructuur van Thunderbird 115. {P2}{P1} Hiermee kunt u aangepaste pictogrammen toevoegen aan elke map. Klik met de rechtermuisknop op een map om een aangepast pictogram toe te voegen vanuit een bestand. Zie de functievergelijking hieronder voor eventuele licentiebeperkingen. {P2}",
+    "message": "{P1} Deze nieuwste editie van $addonName$ lost geavanceerde tabblad eigenschappen op, zoals automatisch adresseren per tabblad bij het schrijven van een nieuwe e-mail. {P2}{P1} Het heeft ook veel meer functies die nu toegankelijk zijn op Mac en Linux. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
   },  
   "newsSection.license": {
@@ -1777,8 +1777,8 @@
     "message": "Wanneer u upgradet van Standard, krijgt u een licentietermijn van één jaar vanaf de aankoopdatum, ongeacht de vervaldatum van uw vorige licentie."
   },
   "special-offer-expiry": {
-    "message": "12 november"
-  },
+    "message": "18 december"
+  },  
   "special-offer-head": {
     "message": "Help $addon$ compatibel te houden",
     "placeholders": {

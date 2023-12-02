@@ -268,7 +268,7 @@
     "message": "Latest News"
   },  
   "newsSection": {
-    "message": "{P1} This latest edition of $addonName$ finally restores the beloved custom icon feature to work with the completely recreated folder tree of Thunderbird 115. {P2}{P1} With this you can add custom icons to any folder. Right-click any folder to add a custom icon from a file. See the feature comparison below on any license restrictions. {P2}",
+    "message": "{P1} This latest edition of $addonName$ fixes advanced tab properties such as automatic addressing per tab when writing new mail. {P2}{P1} It also has many more features that are now accessible on Mac and Linux. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1826,8 +1826,8 @@
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
   "special-offer-expiry": {
-    "message": "November 12th"
-  },
+    "message": "December 18th"
+  }, 
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
     "placeholders": {

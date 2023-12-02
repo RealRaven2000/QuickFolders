@@ -140,12 +140,12 @@
     "message": "Tin mới nhất"
   },
   "newsSection": {
-    "message": "{P1} Phiên bản mới nhất của $addonName$ cuối cùng đã khôi phục tính năng biểu tượng tùy chỉnh yêu thích để hoạt động với cây thư mục hoàn toàn được tạo lại của Thunderbird 115. {P2}{P1} Với điều này, bạn có thể thêm biểu tượng tùy chỉnh vào bất kỳ thư mục nào. Nhấp chuột phải vào bất kỳ thư mục nào để thêm biểu tượng tùy chỉnh từ tệp. Xem so sánh tính năng bên dưới về bất kỳ hạn chế cấp phép nào. {P2}",
+    "message": "{P1} Bản cập nhật mới nhất của $addonName$ sửa chữa các thuộc tính tab tiên tiến như địa chỉ tự động mỗi tab khi viết thư mới. {P2}{P1} Nó cũng có nhiều tính năng khác có thể truy cập ngay bây giờ trên Mac và Linux. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
   },
   "newsSection.license": {
@@ -1282,7 +1282,7 @@
     "message": "Khi bạn nâng cấp từ Standard, bạn sẽ nhận được thời hạn giấy phép cả năm kể từ ngày mua bất kể ngày hết hạn của giấy phép trước đó của bạn."
   },
   "special-offer-expiry": {
-    "message": "12 tháng 11"
+    "message": "18 tháng 12"
   },
   "special-offer-head": {
     "message": "Giúp giữ cho $addon$ tương thích",

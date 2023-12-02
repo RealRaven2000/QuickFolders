@@ -254,12 +254,12 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1} Ta najnowsza edycja $addonName$ w końcu przywraca ulubioną funkcję niestandardowych ikon, działając z całkowicie odtworzonym drzewem folderów w Thunderbird 115. {P2}{P1} Dzięki temu możesz dodawać niestandardowe ikony do dowolnego folderu. Kliknij prawym przyciskiem myszy na dowolnym folderze, aby dodać niestandardową ikonę z pliku. Zobacz poniższe porównanie funkcji dotyczące ograniczeń licencji. {P2}",
+    "message": "{P1} Ta najnowsza edycja $addonName$ naprawia zaawansowane właściwości karty, takie jak automatyczne adresowanie na kartę przy pisaniu nowej poczty. {P2}{P1} Posiada również wiele innych funkcji, które teraz są dostępne na Macu i Linuxie. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
   },  
   "newsSection.license": {
@@ -1768,7 +1768,7 @@
     "message": "Po uaktualnieniu z wersji Standard otrzymujesz jeden pełny rok okresu licencji od daty zakupu, niezależnie od daty wygaśnięcia poprzedniej licencji."
   },
   "special-offer-expiry": {
-    "message": "12 września"
+    "message": "18 grudnia"
   },
   "special-offer-head": {
     "message": "Pomóż zachować zgodność $addon$",

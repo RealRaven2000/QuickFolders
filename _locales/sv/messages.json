@@ -257,12 +257,12 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1} Den senaste utgåvan av $addonName$ återställer äntligen den omtyckta funktionen för anpassade ikoner så att den fungerar med den helt återskapade mappträdet i Thunderbird 115. {P2}{P1} Med detta kan du lägga till anpassade ikoner i vilken mapp som helst. Högerklicka på vilken mapp som helst för att lägga till en anpassad ikon från en fil. Se funktionsjämförelsen nedan för eventuella licensbegränsningar. {P2}",
+    "message": "{P1} Denna senaste upplaga av $addonName$ åtgärdar avancerade flikegenskaper, såsom automatisk adressering per flik vid skrivande av ny e-post. {P2}{P1} Den har också många fler funktioner som nu är tillgängliga på Mac och Linux. {P2}",
     "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
+        "addonName": {
+            "content": "$1",
+            "example": "QuickFolders"
+        }
     }
   },
   "newsSection.license": {
@@ -1786,7 +1786,7 @@
     "message": "När du uppgraderar från Standard får du ett helt års licensperiod från inköpsdatumet oavsett utgångsdatum för din tidigare licens."
   },
   "special-offer-expiry": {
-    "message": "12 november"
+    "message": "18 december"
   },
   "special-offer-head": {
     "message": "Hjälp till att hålla $addon$ kompatibel",

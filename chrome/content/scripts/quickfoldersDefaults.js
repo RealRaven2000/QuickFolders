@@ -81,7 +81,7 @@ pref("extensions.quickfolders.currentFolderBar.showRepairFolderButton", false);
 pref("extensions.quickfolders.currentFolderBar.navigation.showButtons", true);
 pref("extensions.quickfolders.currentFolderBar.folderNavigation.showButtons", false);
 pref("extensions.quickfolders.currentFolderBar.background","linear-gradient(to top, #FFF 7%, rgb(189,185,189) 88%, #EEE 100%)");
-pref("extensions.quickfolders.currentFolderBar.background.selection","default");
+pref("extensions.quickfolders.currentFolderBar.background.selection","lightweight");
 pref("extensions.quickfolders.currentFolderBar.background.lightweight", true);
 pref("extensions.quickfolders.currentFolderBar.folderTreeIcon", true);
 pref("extensions.quickfolders.currentFolderBar.flexLeft", 3);
@@ -203,6 +203,7 @@ pref("extensions.quickfolders.debug.quickMove", false);
 pref("extensions.quickfolders.debug.recentFolders", false);
 pref("extensions.quickfolders.debug.recentFolders.detail", false);
 pref("extensions.quickfolders.debug.saleDate","");
+pref("extensions.quickfolders.debug.advancedTabProperties.forcePopup",false);// force popup mode in LInux + Mac
 pref("extensions.quickfolders.debug.toolbarHiding", false);
 pref("extensions.quickfolders.debug.updateFolders", false);
 

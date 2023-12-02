@@ -2996,7 +2996,7 @@ QuickFolders.Interface = {
     QuickFolders.Model.setTabSeparator (entry, !entry.separatorBefore);
 	} ,
 
-	onRenameBookmark: function onRenameBookmark(element) {
+	onRenameBookmark: function(element) {
 		let util = QuickFolders.Util,
         folderButton = util.getPopupNode(element),
 		    sOldName = folderButton.label; //	this.getButtonByFolder(popupNode.folder).label;
@@ -3050,9 +3050,10 @@ QuickFolders.Interface = {
 		);
 
 		const isMacPlatform = QuickFolders.Util.platformInfo.os == "mac",
+		      isLinuxPlatform = QuickFolders.Util.platformInfo.os == "linux",
 		      isHTMLprops = evt.shiftKey; // || isMacPlatform default for the next version!
 
-		let forcePopup = false; // for debugging on Mac
+		let forcePopup = QuickFolders.Preferences.isDebugOption("advancedTabProperties.forcePopup"); // for debugging on Mac
 		let forceRaised = false; // for testing alwaysRaised
 		debugger;
 
@@ -3061,7 +3062,7 @@ QuickFolders.Interface = {
 			QuickFolders.Util.notifyTools.notifyBackground({ func: "openAdvancedProps", folderURI, x, y }); // rect.left, rect.top
 		} else {
 			let winProps = `chrome,left=${x},top=${y},width=490`;
-			if (!isMacPlatform || forcePopup) { // avoid color popups being hidden on Mac
+			if ((!isLinuxPlatform && !isMacPlatform) || forcePopup) { // avoid color popups being hidden on Mac
 			  winProps +=",popup=yes";
 			}
 			if (forceRaised) {
@@ -7517,7 +7518,7 @@ QuickFolders.Interface = {
   } ,
   
   // moved from QuickFolders.Options!
-  showAboutConfig: function showAboutConfig(clickedElement, filter, readOnly, updateUI = false) {
+  showAboutConfig: function(clickedElement, filter, readOnly, updateUI = false) {
     const name = "Preferences:ConfigManager",
           Cc = Components.classes,
           Ci = Components.interfaces,
@@ -7542,11 +7543,12 @@ QuickFolders.Interface = {
       let watcher = Services.ww,
           width = "750px",
           height = "350px",
-          features = "alwaysRaised,dependent,centerscreen,chrome,resizable,width="+ width + ",height=" + height;
-      if (util.HostSystem == 'winnt')
+          features = `alwaysRaised,dependent,centerscreen,chrome,resizable,width=${width},height=${height}`;
+      if (util.HostSystem == 'winnt') {
         w = watcher.openWindow(win, uri, name, features, null);
-      else
-        w = win.openDialog(uri, name, features);
+			} else {
+        w = (win || window).openDialog(uri, name, features);
+			}
     }
     if (updateUI) {
       // make sure QuickFolders UI is updated when about:config is closed.

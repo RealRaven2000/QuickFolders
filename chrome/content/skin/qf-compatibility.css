@@ -7,6 +7,7 @@
     --clickedbackground:var(--selectedbackground);
     --selectedcolor: #FFFFFF;
     --activecolor: #a5f7fcd9;
+    --configColor: rgba(250,40,80, 0.85);
   }  
 }
 
@@ -17,6 +18,7 @@
     --selectedbackground: #1d3e7dad;
     --clickedbackground:var(--selectedbackground);
     --activecolor: #FFFFFF;
+    --configColor: rgb(140,0,0);
   }
 }
 
@@ -33,20 +35,16 @@ fieldset.multiCol {
   column-gap: 1.5em;
 }
 
-select {
-/*  padding-top: 1px !important;
-  padding-bottom: 1px !important;
-  line-height: 1.6em !important;; */
-}
 
-
+/* dropdowns are just too big */
+button, 
+#moveMailOptions, #folderCrossing,
 select[data-pref-name$=".paletteType"] {
-  font-size: 1em;
+  font-size: 0.9em;
 }
 
-
-#folderCrossing {
-  font-size: 0.9em;
+html|input[type="color"] {
+  max-height: 1em;
 }
 
 /* vertical alignment */
@@ -307,7 +305,7 @@ button.active::marker {
 }
 
 .tabs button {
-  -moz-appearance: none;
+  appearance: none;
   border-radius: 0.5em 0.5em 0 0;
 }
 
@@ -404,4 +402,30 @@ input[type=color] {
   font-size: 10pt;
   padding: 2px 5px;
   min-width: 120px
+}
+
+
+.hasConfigEvent button.configSettings {
+  -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+  display: list-item;
+  fill: currentColor;
+  list-style-image: url('ico/settings-simple.svg') !important;
+  list-style-position: inside;
+  margin: 0 3px 0 auto;  
+  min-width: 24px !important;
+  padding: 3px 3px 0 3px;
+  width: 24px;
+}
+
+.hasConfigEvent button.configSettings:hover {
+	fill: var(--configColor);
+	stroke: var(--configColor);
+  stroke-width: 3px;
+}
+
+.hasConfigEvent button[disabled="true"].configSettings:hover {
+	filter: grayscale(70%); /* desaturate because disabled! */
 }

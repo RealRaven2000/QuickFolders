@@ -336,8 +336,18 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
   
   if (filterConfig) {
     // add right-click event to containing label
-    chk.parentNode.addEventListener("contextmenu", (event) => {
-      dispatchAboutConfig(filterConfig, true, true);
+    let eventNode = chk.parentNode.querySelector(".configSettings");
+    let eventType;
+    if (eventNode) {
+      eventType = "click";
+    } else {
+      eventNode = chk.parentNode;
+      eventType = "contextmenu";
+    }
+    eventNode.addEventListener(eventType, async(event) =>  {
+      event.preventDefault();
+      event.stopPropagation();
+      await dispatchAboutConfig(filterConfig, true, true);
       if (null!=retVal) return retVal;
     });
   }

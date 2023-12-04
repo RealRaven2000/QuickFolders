@@ -76,9 +76,6 @@ code.keystroke {
   background-color: rgb(80,75,60) !important;
 }
 
-ul.actions {
-  
-}
 
 .actionlinks {
   margin-top: 2em;
@@ -236,14 +233,6 @@ p.featureComparison {
   margin-top: 2em;
   text-align: center;
 }
-
-#purchaseLicenseListItem { /* test */
-/*
-  background-color: lightyellow;
-  color: rgb(120,0,0);
-  */
-}
-
 
 body, body * {
   background-color: white;

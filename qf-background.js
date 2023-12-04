@@ -386,14 +386,16 @@ async function main() {
           let found = oldTabs.find( w => w.windowId == currentWin.id);
           if (!found) {
             [found] = oldTabs; // destructure first element
-            await browser.windows.update(found.windowId, {focused:true});
+            await browser.windows.update(found.windowId, {focused:true, drawAttention: true});
+            // activate the license tab!
+            messenger.NotifyTools.notifyExperiment({event: "activatePrefsPage", data});
+          } else {
+            await browser.tabs.update(found.id, {active:true});
           }
-          await browser.tabs.update(found.id, {active:true});
-        }
-        else {
-          let optionWin = await messenger.windows.create(
-            { height: 780, 
-              width: 830, 
+        } else {
+          let optionsWin = await messenger.windows.create(
+            { height: 720, 
+              width: 840, 
               type: "panel", 
               url: `/html/options.html?${params.toString()}`,
               allowScriptsToClose : true

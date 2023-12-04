@@ -352,34 +352,30 @@
           </div>
         </fieldset>
 
-        <table style="width:100%"> <tr>
-          <td>
-            <fieldset class="vbox">
-              <legend>__MSG_qf.label.misc__</legend>
-              <label class="hasConfigEvent" ><input type="checkbox" title="__MSG_qf.checkbox.displaylabel.tooltip__"
-                preference="qfpa-ShowQuickFoldersLabel"
-                data-pref-name="extensions.quickfolders.showQuickfoldersLabel">__MSG_qf.checkbox.displaylabel__
-                <button class="configSettings"></button>
-              </label>
-              <label><input type="checkbox"
-                title="__MSG_qf.checkbox.hideCategoryBox.tooltip__" preference="qfpa-CollapseCategory"
-                data-pref-name="extensions.quickfolders.collapseCategories">__MSG_qf.checkbox.hideCategoryBox__</label>
-              <label><input type="checkbox"
-                title="__MSG_qf.checkbox.enableTransitions.tooltip__" preference="qfpa-Transitions"
-                data-pref-name="extensions.quickfolders.style.transitions">__MSG_qf.checkbox.enableTransitions__</label>
-            </fieldset>
-          </td>
-          <td style="display:flex;">
-            <fieldset class="hbox" style="flex: 1 1 max-content;">
-              <legend>__MSG_qf.update.title__</legend>
-              <label><input type="checkbox" 
-                preference="qfpa-hideVersionHistory"
-                data-pref-name="extensions.quickfolders.hideVersionOnUpdate">__MSG_qf.update.hideVersionHistory__</label>              
-            </fieldset>
-          </td>
-        </tr></table>
+        <div class="hbox misc">
+          <fieldset class="vbox">
+            <legend>__MSG_qf.label.misc__</legend>
+            <label class="hasConfigEvent" ><input type="checkbox" title="__MSG_qf.checkbox.displaylabel.tooltip__"
+              preference="qfpa-ShowQuickFoldersLabel"
+              data-pref-name="extensions.quickfolders.showQuickfoldersLabel">__MSG_qf.checkbox.displaylabel__
+              <button class="configSettings"></button>
+            </label>
+            <label><input type="checkbox"
+              title="__MSG_qf.checkbox.hideCategoryBox.tooltip__" preference="qfpa-CollapseCategory"
+              data-pref-name="extensions.quickfolders.collapseCategories">__MSG_qf.checkbox.hideCategoryBox__</label>
+            <label><input type="checkbox"
+              title="__MSG_qf.checkbox.enableTransitions.tooltip__" preference="qfpa-Transitions"
+              data-pref-name="extensions.quickfolders.style.transitions">__MSG_qf.checkbox.enableTransitions__</label>
+          </fieldset>
 
+          <fieldset class="vbox" style="flex: 1 1 max-content;">
+            <legend>__MSG_qf.update.title__</legend>
+            <label><input type="checkbox" 
+              preference="qfpa-hideVersionHistory"
+              data-pref-name="extensions.quickfolders.hideVersionOnUpdate">__MSG_qf.update.hideVersionHistory__</label>              
+          </fieldset>
 
+        </div>
 
         <span class="separator thin"> </span>
         <div class="hbox quickhelp-dbg align_center">

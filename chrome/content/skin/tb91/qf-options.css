@@ -61,3 +61,8 @@ label.themeable {
   -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;  
   background-position: left center;
 }
+
+div.misc {
+  display: flex;
+  gap: 2em;
+}

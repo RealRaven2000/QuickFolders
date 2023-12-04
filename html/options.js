@@ -30,6 +30,13 @@ const activateTab = (event) => {
   }
 }
 
+function activatePrefsPage(params) {
+  debugger;
+  console.log("activatePrefsPage", params);
+}
+
+window.addEventListener("QuickFolders.BackgroundUpdate.activatePrefsPage", activatePrefsPage);
+
 var licenseInfo;
 async function initLicenseInfo() {
   licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});

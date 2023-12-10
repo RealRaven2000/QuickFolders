@@ -397,7 +397,7 @@ END LICENSE BLOCK */
     ## [issue 417] Message list scrolls to top when switching folders
     ## [issue 420] Drag to new subfolder command missing
 
-  6.4 QuickFolders Pro - WIP
+  6.4 QuickFolders Pro - 04/12/2023
     ## [issue 441] Make advanced settings for QuickFolders Settings accessible to all operating systems
     ## [issue 425] Load configuration doesn't work
     ## [issue 427] Removed unwanted text shadow in quickJump help panel
@@ -409,6 +409,10 @@ END LICENSE BLOCK */
     ## [issue 437] Advanced Properties - default to / from fields not working in Tb115
     ## [issue 433] Problems in tab-specific properties panel on Mac (Tb 115)
     ## [issue 439] Thunderbird 122 beta - cannot add new tabs to toolbar
+
+  6.4.1 QuickFolders Pro - WIP    
+    ## Improvement: activate the correct settings page (license check, Support or help) if the 
+    ##   settings dialog or tab is already open
 
 	Future Work
 	===========

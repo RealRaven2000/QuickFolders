@@ -8,4 +8,4 @@ powershell -Command "(gc -en UTF8 manifest.json) -replace 'pre%oldRev%', 'pre%qu
 echo %quickFoldersRev% > revision.txt
 move QuickFolders*.xpi "..\..\..\Release\_Test Versions\6.4\"
 powershell -Command "Start-Sleep -m 150"
-rename QuickFoldersWeb.zip QuickFolders-mx-6.4pre%quickFoldersRev%.xpi
+rename QuickFoldersWeb.zip QuickFolders-mx-6.4.1pre%quickFoldersRev%.xpi

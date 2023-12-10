@@ -30,12 +30,39 @@ const activateTab = (event) => {
   }
 }
 
-function activatePrefsPage(params) {
-  debugger;
-  console.log("activatePrefsPage", params);
+
+/**
+ * Add a handler for communication with other parts of the extension,
+ * like our messageDisplayScript.
+ *
+ * 👉 There should be only one handler in the background script
+ *    for all incoming messages
+ *    
+ * 👉 Handle the received message by filtering for a distinct property and select
+ *    the appropriate handler
+ */
+browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message && message.hasOwnProperty("activatePrefsPage")) {
+    // If we have a command, return a promise from the command handler.
+    return doHandleCommand(message, sender);
+  }
+  return false;
+});
+
+const doHandleCommand = async (message, sender) => {
+  const { activatePrefsPage } = message; // destructuring a property of the message
+  /*
+  const {
+    tab: { id: tabId },
+  } = sender;
+  */
+
+  console.log("activatePrefsPage", {activatePrefsPage, message, sender} );
+
+  // select the correct page - use mode!!
+  preselectTab(activatePrefsPage);
 }
 
-window.addEventListener("QuickFolders.BackgroundUpdate.activatePrefsPage", activatePrefsPage);
 
 var licenseInfo;
 async function initLicenseInfo() {
@@ -596,14 +623,18 @@ async function loadPrefs() {
 	}  
 }
 
+
 // preselect the correct tab.
-async function preselectTab() {
+// force a mode "helpOnly" "supportOnly" "licenseKey"
+async function preselectTab(mode=null) {
   let selectOptionsPane = await browser.LegacyPrefs.getPref("extensions.quickfolders.lastSelectedOptionsTab"),
       selectedTabElement = document.getElementById("QuickFolders-General"); //default = first tab
     // selectOptionsPane can be overwritten by URL parameter "selectedTab"
   let optionParams = new URLSearchParams(document.location.search);
   let selTab = optionParams ? optionParams.get("selectedTab") : "";
-  let mode = optionParams ? optionParams.get("mode") : "";
+  if (!mode) {
+    mode = optionParams ? optionParams.get("mode") : "";
+  }
   if (null!=selTab && selTab != "" && selTab != "-1") {
     selectOptionsPane = selTab;
   }
@@ -617,6 +648,10 @@ async function preselectTab() {
     case "licenseKey":
       selectOptionsPane = 5;
       break;
+    default:
+      if (mode) {
+        console.log(`preselectTab() unknown mode: {mode}`)
+      }
   }
   // select the tab:
   let tabs = document.querySelectorAll("#QuickFolders-Options-Tabbox button");

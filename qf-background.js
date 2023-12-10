@@ -337,6 +337,7 @@ async function main() {
         break;
         
       case "showAboutConfig":
+        // to do: create an API for this one
         messenger.NotifyTools.notifyExperiment({
           event: "showAboutConfig", 
           element: null,
@@ -387,11 +388,19 @@ async function main() {
           if (!found) {
             [found] = oldTabs; // destructure first element
             await browser.windows.update(found.windowId, {focused:true, drawAttention: true});
-            // activate the license tab!
-            messenger.NotifyTools.notifyExperiment({event: "activatePrefsPage", data});
+
           } else {
             await browser.tabs.update(found.id, {active:true});
           }
+
+          // activate the license tab!
+          if (data.mode) {
+            await browser.runtime.sendMessage({
+              activatePrefsPage: data.mode,
+            });
+          }
+          
+
         } else {
           let optionsWin = await messenger.windows.create(
             { height: 720, 

@@ -4,7 +4,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Stai ora eseguendo la {boldStart} versione $addonVer$ {boldEnd} su Thunderbird $appVer$.",
+    "message": "Stai eseguendo la {boldStart} versione $addonVer$ {boldEnd} su Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -17,10 +17,10 @@
     }
   },
   "addon-authors-struggle": {
-    "message": "Per continuare ad essere utili, noi sviluppatori di componenti aggiuntivi dobbiamo ora finanziare le risorse necessarie per correggere e riscrivere in modo che i nostri utenti possano continuare a beneficiare delle funzionalità che forniamo."
+    "message": "Per proseguire il lavoro, gli sviluppatori delle estensioni debbono ora disporre di risorse finanziarie necessarie per poterle correggere e/o riscrivere così che gli utenti possano continuare a usufruire delle loro funzionalità."
   },
   "btn-extend-license": {
-    "message": "Voglio estendere la mia licenza di un anno"
+    "message": "Voglio estendere di un anno la mia licenza"
   },
   "btn-renew-license": {
     "message": "Voglio rinnovare la mia licenza"
@@ -29,7 +29,7 @@
     "message": "Scegli una licenza"
   },
   "btn-want-to-donate": {
-    "message": "Voglio aiutare con una donazione una tantum."
+    "message": "Voglio sostenere il progetto con una donazione una tantum."
   },
   "btnApply": {
     "message": "Applica"
@@ -41,91 +41,94 @@
     "message": "Definisce le categorie della scheda"
   },
   "btnReset": {
-    "message": "Ritorna ai valori predefiniti"
+    "message": "Ritorno ai valori predefiniti"
   },
   "buyDomainLicense.button": {
     "message": "Acquista una licenza di dominio"
   },
   "buyDomainLicense.instruct": {
-    "message": "Avete bisogno di una licenza per un'azienda con più di cinque utilizzatori? Se acquisite una licenza di dominio ciò risulterà più conveniente:"
+    "message": "Avete bisogno di una licenza per un'azienda con più di cinque utilizzatori? L'acquisto di una licenza di dominio risulterà più conveniente!"
   },
   "buyLicense.instruct": {
-    "message": "Avete bisogno di una licenza solo per voi stessi? Acquisite una licenza per uso personale. Essa viene collegata ad un vostro account di posta elettronica e può essere utilizzata per installazioni multiple."
+    "message": "Avete bisogno di un'unica licenza? Acquistate una licenza per uso personale da collegare a un vostro account di posta elettronica.  Può essere utilizzata in tutte quelle installazioni che utilizzano quell'account."
   },
   "buyProLicense.button": {
-    "message": "Acquista la licenza Pro!"
+    "message": "Acquista una licenza \"Pro\""
   },
   "buyStandardLicense.button": {
-    "message": "Acquista una licenza Standard!"
+    "message": "Acquista una licenza \"Standard\""
   },
   "buyStandardLicense.instruct": {
-    "message": "Non ci si può permettere le caratteristiche Premium? Si acquisti una licenza Standard in modo di avere comunque la possibilità di testarele caratteristiche Premium."
+    "message": "Non ci si possono permettere tutte le funzioni Premium? Acquistando una licenza Standard è comunque possibile usufruirne in modalità limitata."
   },
   "chkComposerSubfolders": {
-    "message": "Si applica anche alle sottocartelle"
+    "message": "Valido anche per le sottocartelle"
   },
   "chkHideFromQuickJump": {
-    "message": "Esclusione da quickJump/quickMove"
+    "message": "Escludi da quickJump/quickMove"
   },
   "chkHideFromQuickJump.tooltip": {
-    "message": "Esclude questa cartella e le relative sottocartelle da risultati di quickJump/quickMove"
+    "message": "Esclude questa cartella e le sue sottocartelle da quickJump/quickMove"
   },
   "chkIgnoreCounts": {
-    "message": "Numero di messaggi nascosto"
+    "message": "Nascondi il numero di messaggi"
   },
   "chkIgnoreCounts.tooltip": {
-    "message": "Il numero dei messaggi presenti non viene mai mostrato."
+    "message": "Non mostrare mai il numero dei messaggi presenti."
   },
   "chkIgnoreUnread": {
-    "message": "Stato di 'Messaggio non letto' nascosto"
+    "message": "Nascondi stato di \"Messaggio non letto\""
   },
   "chkIgnoreUnread.tooltip": {
-    "message": "Anche se la cartella contiene messaggi non letti, non usa mai né il carattere grassetto, né qualsiasi numero."
+    "message": "Anche se la cartella contiene dei messaggi non letti, non ne mostra mai il numero, né usa il carattere grassetto."
   },
   "chkSetMailsUnread": {
-    "message": "Segna i messaggi come 'Non letti'"
+    "message": "Segna i messaggi come \"Non letti\""
   },
   "chkSetMailsUnread.tooltip": {
-    "message": "Se si spostano messaggi in questa cartella vengono segnati come 'Non letti'."
+    "message": "Se si spostano dei messaggi in questa cartella, vengono segnati come \"Non letti\"."
   },
   "commands.toggleFolderTree": {
-    "message": "Attiva/disattiva la visibilità dell'albero delle cartelle"
+    "message": "Attiva/disattiva visibilità albero delle cartelle"
   },
   "cost-of-independence": {
-    "message": "Lo sviluppo del software costa tempo e denaro: a differenza di molte app della piattaforma, i componenti aggiuntivi non sono scritti da grandi aziende, né sono sponsorizzati in alcun modo da Mozilla."
+    "message": "Lo sviluppo del software costa tempo e denaro: a differenza di molti programmi, i componenti aggiuntivi non sono creati da grandi aziende, né sono sponsorizzati in alcun modo da Mozilla."
   },
   "cssBackground": {
     "message": "Sfondo"
   },
   "cssBackground.tooltip": {
-    "message": "Inserisce uno sfondo del CSS - per esempio un gradiente lineare (to bottom, rgba(254,252,234,1) 0%, rgba(241,218,54,1) 100%)"
+    "message": "Inserisce uno sfondo CSS - per es.: linear-gradient(to bottom, rgba(254,252,234,1) 0%, rgba(241,218,54,1) 100%)"
   },
   "cssColor": {
     "message": "Colore testo"
   },
   "cssColor.tooltip": {
-    "message": "Inserisce un colore del CSS - per es. rgba(100,20,20,8)"
+    "message": "Inserisce un colore CSS - per es. rgba(100,20,20,0.8)"
   },
   "defaultAccountAddress.value": {
-    "message": "Identità predefinita dell'account"
+    "message": "Identità predefinita degli account"
   },
   "domainLicense.email": {
-    "message": "Vi contatteremo usando questo indirizzo di posta elettronica per generare la vostra licenza di dominio; lo faremo entro due giorni lavorativi. Nella pagina successiva, inserire il nome del dominio da collegare alla licenza."
+    "message": "Per generare la vostra licenza di dominio, vi contatteremo usando questo indirizzo di posta elettronica; lo faremo entro due giorni lavorativi. Nella pagina successiva inserire il nome del dominio che si vuole collegare alla licenza."
   },
   "domainLicense.header": {
-    "message": "Dominio degli indirizzi di email collegati alla licenza"
+    "message": "Dominio email autorizzato"
   },
   "domainLicense.instruct": {
-    "message": "La licenza è collegata al dominio della vostra azienda. La licenza consente agli utenti con indirizzo di posta elettronica appartenente al dominio aziendale l'utilizzo di QuickFolders Pro. Per esempio, se alla licenza viene collegato il nome di dominio 'xyz.it', utenti con indirizzo di posta elettronica quale: gianni@xyz.it, marta@xyz.it, michele@xyz.it ecc… possono usufruire della licenza. Il massimo numero di singoli utenti validi corrisponde al numero che è stato introdotto nella schermata iniziale."
+    "message": "La licenza è collegata al dominio della vostra azienda. La licenza consente agli utenti aventi indirizzo di posta elettronica appartenente al dominio aziendale l'utilizzo di QuickFolders Pro. Per esempio, se alla licenza viene collegato il nome di dominio \"xyz.it\", utenti con indirizzo di posta elettronica quale: gianni@xyz.it, marta@xyz.it, michele@xyz.it ecc… possono usufruire della licenza. Il massimo numero di utenti consentito corrisponde al numero introdotto nella schermata iniziale."
   },
   "domainLicense.validate": {
-    "message": "Bisogna fare molta attenzione ad inserire *esattamente* il nome di dominio dell'azienda (cioè la parte *dopo* il segno @ [at]) dell'indirizzo di posta elettronica. Infatti questa stringa sarà utilizzata da QuickFolders Pro per autorizzare gli indirizzi di posta elettronica degli utenti della vostra azienda."
+    "message": "Bisogna fare molta attenzione ad inserire *esattamente* il nome di dominio dell'azienda (cioè la parte *dopo* il segno @ [chiocciola]) dell'indirizzo di posta elettronica. Infatti questa stringa sarà utilizzata da QuickFolders Pro per autorizzare gli indirizzi di posta elettronica degli utenti della vostra azienda."
   },
   "donate": {
-    "message": "Aiutaci con una donazione una tantum."
+    "message": "Aiutaci donando \"una tantum\"."
   },
   "donate-heading": {
-    "message": "Aiuta donando!"
+    "message": "Aiuta donando"
+  },
+  "email.label": {
+    "message": "Email:"
   },
   "enterLicenseKey.button": {
     "message": "Inserire la chiave della licenza…"
@@ -134,34 +137,42 @@
     "message": "Inserire il codice della chiave della licenza inviato per posta elettronica."
   },
   "extend-your-license": {
-    "message": "Valuta di estendere la tua licenza di un anno."
+    "message": "Vàluta se estendere la tua licenza di un anno."
+  },
+  "extensionDescription": {
+    "description": "Description of the extension.",
+    "message": "Segnate le vostre cartelle di posta preferite in Thunderbird."
+  },
+  "extensionName": {
+    "description": "Name of the extension.",
+    "message": "QuickFolders"
   },
   "extensions.quickfolders@curious.be.description": {
-    "message": "Segna le cartelle di posta preferite di Thunderbird."
+    "message": "Segnate le vostre cartelle di posta preferite in Thunderbird."
   },
   "firstName.label": {
     "message": "Nome:"
   },
   "freeLicense": {
-    "message": "Se si è effettuata recentemente una donazione a favore del progetto QuickFolders o se si è dato un contributo al suo sviluppo (per esempio traducendolo o creando delle patch), si è idonei a ricevere una chiave di registrazione gratuita. Contattatemi tramite la scheda 'Supporto' presente nelle Opzioni di QuickFolders."
+    "message": "Se si è effettuata recentemente una donazione a favore del progetto QuickFolders o se si è dato un contributo al suo sviluppo (per es. traducendolo o creando delle patch), si è idonei a ricevere una chiave di registrazione gratuita. Contattatemi tramite la scheda \"Supporto\" presente nelle \"Opzioni di QuickFolders\"."
   },
   "fromAddress": {
     "message": "Da:"
   },
   "fromAddress.tooltip": {
-    "message": "Quando si compongono messaggi di posta elettronica usa l'identità predefinita"
+    "message": "Identità predefinita quando si compongono i messaggi"
   },
   "getQuickFolders": {
-    "message": "Licenze QuickFolders"
+    "message": "Licenze di QuickFolders"
   },
   "grpComposer": {
-    "message": "Campi predefiniti del messaggio di posta elettronica"
+    "message": "Campi predefiniti dei messaggi di posta"
   },
   "grpCustomCSS": {
     "message": "CSS personalizzato"
   },
   "grpTabBehavior": {
-    "message": "Scheda in modalità avanzata"
+    "message": "Comportamento avanzato scheda"
   },
   "heading-installed": {
     "description": "page heading. first placeholder will be replaced with Add-on name",
@@ -184,10 +195,10 @@
     }
   },
   "intro": {
-    "message": "Una licenza annuale per QuickFolders Pro ti offre tutte le funzionalità premium per un anno. Ci consente inoltre di supportare e far crescere ulteriormente il prodotto e trasformarlo in qualcosa di ancora più straordinario."
+    "message": "La licenza annuale di QuickFolders Pro ti consente di disporre di tutte le caratteristiche Premium per un anno. Inoltre, i ricavi che ne derivano ci permettono di manutenere e di migliorare ulteriormente il prodotto trasformandolo in qualcosa di ancor più straordinario."
   },
   "label-remind-me": {
-    "message": "Ricordamelo di nuovo tra $countDays$ giorni.",
+    "message": "Ricordamelo nuovamente tra $countDays$ giorni.",
     "placeholders": {
       "countDays": {
         "content": "$1",
@@ -196,7 +207,7 @@
     }
   },
   "keyshortcuts.news": {
-    "message": "Attualmente Thunderbird non consente ai componenti aggiuntivi di sovrascrivere queste scorciatoie, stiamo cercando di implementare una soluzione alternativa al più presto."
+    "message": "ATTENZIONE: Attualmente Thunderbird non consente alle estensioni di utilizzare queste scorciatoie; stiamo cercando di implementare quanto prima una soluzione alternativa."
   },
   "lastName.label": {
     "message": "Cognome:"
@@ -206,31 +217,31 @@
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
-    "message": "Grazie per aver recentemente esteso la tua licenza o se hai donato. Poiché hai contribuito a rendere questo componente aggiuntivo a prova di futuro, puoi semplicemente chiudere questa finestra."
+    "message": "Grazie per aver recentemente prolungato la tua licenza o per la tua donazione. Poiché hai contribuito a rendere questa estensione a prova di futuro, puoi semplicemente chiudere questa finestra."
   },
-  "licenseComparison": {
-    "message": "Per confrontare le caratteristiche delle diverse versioni, {linkStart}leggi questo elenco{linkEnd}."
+  "licenseComparison" : {
+    "message": "Si consiglia di consultare {linkStart}questo elenco{linkEnd} per confrontare le caratteristiche delle diverse licenze (in inglese)."
   },
-  "licenseTerms.hide": {
-    "message": "🡇 Continua con la selezione della licenza 🡇"
+  "licenseTerms.hide" : {
+    "message": "🡇 Va alla selezione delle Licenze 🡇"
   },
-  "licenseTerms.show": {
-    "message": "Mostra i termini della licenza"
+  "licenseTerms.show" : {
+    "message": "Mostra le condizioni della licenza"
   },
   "licenseTypes": {
-    "message": "QuickFolders offre due licenze, Standard e Pro; questi sono necessari per stare al passo con i cambiamenti nella piattaforma Thunderbird e per finanziare Innovazioni e riparazioni dell'Add-on. Poiché le modifiche che potenzialmente interrompono la funzionalità dell'estensione vengono implementate ogni anno, la licenza sarà valida anche per 1 anno."
+    "message": "QuickFolders offre due tipi di licenza: Standard e Pro. Ciò risulta necessario per poter stare al passo con i cambiamenti che vengono continuamente introdotti nella piattaforma Thunderbird finanziando così quelle innovazioni e correzioni necessarie per migliorare e mantenere questa estensione compatibile. Poiché le modifiche che Thunderbird introduce e che possono potenzialmente corrompere talune funzionalità di QuickFolders, vengono implementate da Thunderbird una volta all'anno circa, anche la licenza è valida per un anno."
   },
   "licenseWindow.title": {
-    "message": "Licenza di QuickFolders Pro"
+    "message": "Licenza Pro di QuickFolders"
   },
   "license_restriced.std": {
-    "message": "Licenza standard - funzione Pro limitata. Scopri di più…"
+    "message": "Licenza Standard - funzioni Pro limitate. Scopri di più…"
   },
   "license_restriced.unpaid": {
-    "message": "Versione senza licenza - funzione limitata. Scopri di più…"
+    "message": "Versione senza licenza - funzioni limitate. Scopri di più…"
   },
   "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders necessita di una licenza Pro per supportare più di schede $maxTabs$.",
+    "message": "QuickFolders necessita di una licenza Pro per supportare più di $maxTabs$ schede.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -239,7 +250,7 @@
     }
   },
   "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders necessita di una licenza per supportare più di schede $maxTabs$.",
+    "message": "QuickFolders necessita di una licenza per supportare più di $maxTabs$ schede.",
     "placeholders": {
       "maxTabs": {
         "content": "$1",
@@ -248,25 +259,25 @@
     }
   },
   "mozillas-basic-platform": {
-    "message": "Mozilla fornisce solo una piattaforma di base per fornire il nostro software a voi, utenti finali. Se abbiamo bisogno di chiedere ai nostri utenti il pagamento o il supporto non possiamo farlo da addons.thunderbird.net - non è un 'app store' con paywall integrati o gestione delle licenze come iTunes o Google Play."
+    "message": "Mozilla fornisce solo una piattaforma minimale per distribuire il nostro software agli utenti finali. Se vogliamo richiedere ai nostri utenti un pagamento o fornire loro supporto, non possiamo farlo tramite addons.thunderbird.net - questo infatti non è un \"App store\" che integra le funzioni di pagamento o di gestione delle licenze come iTunes o Google Play."
   },
   "newsHead": {
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1} Quest'ultima edizione di $addonName$ corregge le proprietà avanzate della scheda, come l'indirizzamento automatico per scheda durante la scrittura di una nuova email. {P2}{P1} Ha anche molte altre funzionalità ora accessibili su Mac e Linux. {P2}",
+    "message": "{P1} Quest'ultima versione di $addonName$ corregge le proprietà avanzate delle schede quali l'indirizzamento automatico alla scheda quando si sta scrivendo un nuovo messaggio. {P2}{P1} Vi sono anche molte altre caratteristiche che ora sono accessibili da Mac e Linux. {P2}",
     "placeholders": {
-        "addonName": {
-            "content": "$1",
-            "example": "QuickFolders"
-        }
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
   },
   "newsSection.license": {
-    "message": "Questo lavoro è finanziato esclusivamente dalla vendita di licenze, prendi in considerazione l'acquisto di una licenza o il rinnovo di quella precedente se sei interessato a utilizzare QuickFolders in futuro."
+    "message": "Poiché questo lavoro si finanzia unicamente con gli introiti derivanti dalla vendita delle licenze, se si è interessati a usare QuickFolders anche in futuro, vogliate prendere in considerazione l'idea di acquistare o di rinnovare una licenza."
   },
   "ongoing-work": {
-    "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane ed erano costose. Ci sono molte altre modifiche per la prossima versione del 2022. Con un add-on complesso come questo, il lavoro costoso diventa inevitabile. Per favore aiutaci con questo.",
+    "message": "Le modifiche per convertire $addonName$ al nuovo modello di programmazione hanno richiesto settimane e sono state costose. Ci sono molte altre modifiche previste per la prossima versione del 2022. Con un compoente aggiuntivo così complesso come questo, è inevitabile che il lavoro diventi economicamente assai oneroso. Per favore aiutateci!",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -275,10 +286,10 @@
     }
   },
   "pricing.section": {
-    "message": "Per scoprire il tuo prezzo, seleziona prima una delle seguenti opzioni. Si apre una finestra separata del browser in cui è possibile completare l'acquisto nel negozio online."
+    "message": "Per scoprire il costo della licenza, facendo clic sul pulsante sottostante \"Va alla selezione delle Licenze\" compare l'elenco delle opzioni disponibili. Selezionare quella di vostro interesse. Si apre un'altra finestra del browser ove è possibile completare l'acquisto online."
   },
   "pricing.section.hint": {
-    "message": "Nota: il prezzo varia a seconda del modello di licenza, del paese, dell'aliquota IVA, degli sconti in corso o delle licenze già acquistate."
+    "message": "Nota: il prezzo varia a seconda del tipo di licenza, del paese, dell'aliquota IVA, degli sconti in corso o di licenze già acquistate."
   },  
   "pricing.title": {
     "message": "Prezzi"
@@ -287,25 +298,25 @@
     "message": "Acquista una licenza."
   },
   "purchase-heading": {
-    "message": "Acquisto di una licenza!"
+    "message": "Sto acquistando una licenza"
   },
   "qf.accounts": {
-    "message": "Conti"
+    "message": "Account"
   },
   "qf.alert.pasteFolders.formatErr": {
-    "message": "Impossibile creare schede. Vedere strumenti/console errori per maggiori dettagli."
+    "message": "Impossibile creare schede. Per maggiori dettagli andare su Strumenti/Console degli errori."
   },
   "qf.backupAndRestore": {
-    "message": "Backup/Ripristi"
+    "message": "Backup / Ripristino"
   },
   "qf.button.add": {
-    "message": "Aggiungi!"
+    "message": "Aggiungi"
   },
   "qf.button.configureTooltips": {
-    "message": "Configura suggerimenti…"
+    "message": "Configura i suggerimenti…"
   },
   "qf.button.currentFolderBackground.set": {
-    "message": "Configurazione"
+    "message": "Applica"
   },
   "qf.button.default": {
     "message": "Predefiniti"
@@ -314,7 +325,7 @@
     "message": "Colori predefiniti"
   },
   "qf.button.deleteselectedcategory": {
-    "message": "Elimina la categoria selezionata"
+    "message": "Elimina categoria selezionata"
   },
   "qf.button.down": {
     "message": "Giù"
@@ -329,40 +340,40 @@
     "message": "Ultimo"
   },
   "qf.button.reorderButtonBottom.accessKey": {
-    "message": "u"
+    "message": "U"
   },
   "qf.button.reorderButtonBottom.toolTip": {
-    "message": "Esegue il filtro selezionato per ultimo"
+    "message": "Esegue per ultimo il filtro selezionato"
   },
   "qf.button.reorderButtonTop": {
     "message": "Primo"
   },
   "qf.button.reorderButtonTop.accessKey": {
-    "message": "p"
+    "message": "P"
   },
   "qf.button.reorderButtonTop.toolTip": {
-    "message": "Esegue il filtro selezionato per primo"
+    "message": "Esegue per primo il filtro selezionato"
   },
   "qf.button.up": {
     "message": "Su"
   },
   "qf.button.validateLicense": {
-    "message": "convalida"
+    "message": "Convalida"
   },
   "qf.caption.currentFolderBackground": {
-    "message": "Sfondo della barra degli strumenti della cartella corrente"
+    "message": "Sfondo della barra di navigazione della cartella corrente"
   },
   "qf.categories.supportMultiple": {
-    "message": "Supporto della selezione delle schede di più categorie"
+    "message": "Includi anche schede appartenenti a più categorie"
   },
   "qf.categories.supportMultiple.tooltip": {
-    "message": "Utilizzare il tasto MAIUSC per selezionare più di una categoria nell'elenco a discesa."
+    "message": "Utilizzare il tasto Maiusc (Shift) per selezionare più di una categoria dall'elenco a discesa."
   },
   "qf.checkbox.autoFocusPreview": {
     "message": "Cambiando scheda si porta in primo piano l'elenco dei messaggi"
   },
   "qf.checkbox.hideInSingleMessage": {
-    "message": "Nascondi QuickFolders nelle schede dei singoli messaggi"
+    "message": "Nasconde QuickFolders nelle schede con singoli messaggi"
   },
   "qf.checkbox.hideInSingleMessage.tooltip": {
     "message": "Rimuove la barra degli strumenti QuickFolders nelle schede che mostrano un singolo messaggio."
@@ -371,46 +382,46 @@
     "message": "Pulsante di chiusura"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Visualizza la barra degli strumenti"
+    "message": "Visualizza la barra di navigazione"
   },
   "qf.checkbox.currentfolder.lightweight": {
-    "message": "integra in un tema 'leggero'"
+    "message": "integrato in un tema \"leggero\""
   },
   "qf.checkbox.debug": {
     "message": "Modalità di debug"
   },
   "qf.checkbox.debug.tooltip": {
-    "message": "Fare clic con il pulsante destro del mouse su questa casella di controllo per opzioni di debug avanzate"
+    "message": "Fare clic con il pulsante dx del mouse su questa casella di controllo per le opzioni avanzate di debug"
   },
   "qf.checkbox.displaylabel": {
-    "message": "Visualizza l'etichetta 'QuickFolders' sulla sua barra degli strumenti"
+    "message": "Visualizza l'etichetta \"QuickFolders\" sulla barra degli strumenti"
   },
   "qf.checkbox.displaylabel.tooltip": {
-    "message": "Per modificare il testo di questa etichetta fare clic col pulsante destro del mouse"
+    "message": "Per modificare il testo di questa etichetta fare clic col pulsante dx del mouse"
   },
   "qf.checkbox.enableTransitions": {
     "message": "Abilita le transizioni dei CSS"
   },
   "qf.checkbox.enableTransitions.tooltip": {
-    "message": "Mostra transizioni regolari tra i molti aspetti di colorazione delle schede."
+    "message": "Mostra transizioni \"dolci\" tra i diversi aspetti di colorazione delle schede."
   },
   "qf.checkbox.hideCategoryBox": {
-    "message": "Contrazione Categorie"
+    "message": "Minimizza il menu Categorie"
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "Minimizza il menu delle Categorie per occupare meno spazio."
   },
   "qf.checkbox.highlightNewMail": {
-    "message": "Evidenzia le cartelle contenenti nuovi messaggi"
+    "message": "Evidenzia le cartelle con nuovi messaggi"
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Trascina nella nuova sottocartella"
   },
   "qf.checkbox.menus.emptyJunk": {
-    "message": "Svuota posta indesiderata"
+    "message": "Svuota Posta indesiderata"
   },
   "qf.checkbox.menus.emptyTrash": {
-    "message": "Svuota cestino"
+    "message": "Svuota Cestino"
   },
   "qf.checkbox.menus.getMailForInbox": {
     "message": "Scarica messaggi (Account di posta)"
@@ -425,34 +436,34 @@
     "message": "Segna la cartella come già letta (modalità ricorsiva)"
   },
   "qf.checkbox.quickCopy": {
-    "message": "quickCopy - copia dei messaggi di posta in qualsiasi cartella mediante la scorciatoia:"
+    "message": "quickCopy: copia i messaggi di posta in qualsiasi cartella - Usa la scorciatoia:"
   },
   "qf.checkbox.quickCopy.tip": {
-    "message": "Scorciatoia per trascinare i messaggi di posta sul pulsante quickCopy che consente una loro copia in qualsiasi cartella alla massima velocità in base al nome."
+    "message": "Scorciatoia per trascinare i messaggi di posta sul pulsante quickCopy che ne consente la copia alla massima velocità in qualsiasi cartella di cui si fornisce il nome."
   },
   "qf.checkbox.quickJump": {
-    "message": "quickJump - spostamento in qualsiasi cartella mediante la scorciatoia:"
+    "message": "quickJump: spostamento in qualsiasi cartella - Usa la scorciatoia:"
   },
   "qf.checkbox.quickJump.tip": {
-    "message": "Scorciatoia per attivare il pulsante quickJump che consente di spostarsi ovunque alla massima velocità in base al nome."
+    "message": "Scorciatoia che attiva il pulsante quickJump che consente di spostarsi alla massima velocità in una qualsiasi cartella di cui si fornisce il nome."
   },
   "qf.checkbox.quickMove": {
-    "message": "quickMove - spostamento dei messaggi di posta in qualsiasi cartella mediante la scorciatoia:"
+    "message": "quickMove: spostamento dei messaggi di posta in qualsiasi cartella - Usa la scorciatoia:"
   },
   "qf.checkbox.quickMove.tip": {
-    "message": "Scorciatoia per trascinare i messaggi di posta sul pulsante quickMove che consente una loro archiviazione in qualsiasi cartella alla massima velocità in base al nome."
+    "message": "Scorciatoia per trascinare i messaggi di posta sul pulsante quickMove che consente la loro archiviazione alla massima velocità in una qualsiasi cartella di cui si fornisce il nome."
   },
   "qf.checkbox.quickmove.autofill": {
-    "message": "Inserisce il nome dell'ultima cartella usata"
+    "message": "Inserisce nella casella il nome dell'ultima cartella usata"
   },
   "qf.checkbox.quickmove.autofill.tip": {
-    "message": "Verrà inserita l'ultima cartella usata con successo. Premere il tasto Invio per usarla o sovrascrivere il nome per usare altre cartelle"
+    "message": "Verrà inserita l'ultima cartella usata con successo. Per utilizzarla, premere il tasto <Invio>. Per scegliere altre cartelle-destinazione, sovrascrivere il nome presente."
   },
   "qf.checkbox.readingList": {
-    "message": "Da leggere"
+    "message": "Messaggi importanti"
   },
   "qf.checkbox.readingList.tooltip": {
-    "message": "Elenco di messaggi di posta elettronica da leggere successivamente. Trascinare i propri messaggi di posta elettronica importanti su questo pulsante."
+    "message": "Elenco di messaggi da tenere in evidenza e/o leggere successivamente. Trascinare tali messaggi su questo pulsante."
   },
   "qf.checkbox.shadows": {
     "message": "Ombreggiato"
@@ -464,22 +475,22 @@
     "message": "Visualizza anche i totali delle sottocartelle"
   },
   "qf.checkbox.showCountInSubFolders.tooltip": {
-    "message": "Questi sono visualizzati separati da un '+' a fianco delle loro conte principali; se questa opzione è attiva, una scheda che contenga al suo interno dei messaggi non letti viene visualizzata in grassetto"
+    "message": "Questi sono visualizzati separati da un '+' a fianco dei loro conteggi principali; inoltre la scheda viene visualizzata in grassetto se contiene messaggi non letti e se l'opzione è attiva"
   },
   "qf.checkbox.showFilterButton": {
-    "message": "Pulsante 'Crea Filtri'"
+    "message": "Pulsante \"Crea Filtri\""
   },
   "qf.checkbox.showFilterButton.tooltip": {
-    "message": "Si possono creare filtri anche usando il menu contestuale di QuickFolders."
+    "message": "È possibile creare filtri anche usando il menu contestuale di QuickFolders."
   },
   "qf.checkbox.showFolderNavigation": {
     "message": "Pulsanti per la navigazione tra le cartelle"
   },
   "qf.checkbox.showIconButtons": {
-    "message": "Personalizza pulsanti delle icone"
+    "message": "Personalizza l'icona dei pulsanti"
   },
   "qf.checkbox.showIcons": {
-    "message": "Visualizza le icone (Posta in arrivo, Posta inviata, Indesiderata, Cestino, Bozze, Archiviata, Modelli)"
+    "message": "Visualizza le icone (Posta in arrivo, Posta inviata, Indesiderata, Cestino, Bozze, Archivi, Modelli)"
   },
   "qf.checkbox.showMailFolderCommands": {
     "message": "Comandi della cartella di posta"
@@ -488,67 +499,67 @@
     "message": "Pulsanti per la navigazione tra i messaggi"
   },
   "qf.checkbox.showNewMailItalics": {
-    "message": "Visualizza in corsivo le schede contenenti nuovi messaggi"
+    "message": "Visualizza in corsivo le schede con nuovi messaggi"
   },
   "qf.checkbox.showNonEmptyItalics": {
-    "message": "Visualizza in corsivo le schede delle cartelle contenenti messaggi"
+    "message": "Visualizza in corsivo le schede con messaggi"
   },
   "qf.checkbox.showQuickMove": {
     "message": "Pulsante quickMove"
   },
   "qf.checkbox.showQuickMove.tooltip": {
-    "message": "Il pulsante quickMove serve per trascinare messaggi di posta elettronica in una specifica cartella-destinazione. Si possono raccogliere messaggi provenienti da diverse cartelle. Una volta eseguita la raccolta, bisogna inserire nella casella di ricerca il nome della cartella-destinazione."
+    "message": "Il pulsante quickMove serve per spostare messaggi di posta in una cartella-destinazione specifica tramite il loro trascinanamento sul pulsante stesso. È possibile anche prelevare messaggi provenienti da diverse cartelle. Una volta terminata la raccolta, bisogna inserire il nome della cartella-destinazione nella casella di ricerca posta accanto."
   },
   "qf.checkbox.showRecentButton": {
-    "message": "Pulsante delle cartelle recenti"
+    "message": "Pulsante delle Cartelle recenti"
   },
   "qf.checkbox.showRecentTab": {
     "message": "Scheda Cartelle recenti"
   },
   "qf.checkbox.showRecentTab.tooltip": {
-    "message": "Fare clic col pulsante destro del mouse per la configurazione"
+    "message": "Per effettuare la configurazione, fare clic col pulsante dx del mouse"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Espande le sottocartelle in un menu a pop-up"
   },
   "qf.checkbox.showTotalMessageCount": {
-    "message": "Visualizza il numero totale dei messaggi sul pulsante delle cartelle"
+    "message": "Visualizza il numero totale dei messaggi"
   },
   "qf.checkbox.showUnreadBold": {
-    "message": "Visualizza in grassetto le schede delle cartelle contenenti messaggi non letti"
+    "message": "Visualizza in grassetto le schede con messaggi non letti"
   },
   "qf.checkbox.showUnreadMessageCount": {
-    "message": "Visualizza il numero di messaggi non letti sul pulsante delle cartelle"
+    "message": "Visualizza il numero di messaggi non letti"
   },
   "qf.checkbox.showshortcutnumber": {
     "message": "Visualizza il numero di scorciatoia sulle etichette delle cartelle"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
-    "message": "…anche nelle finestre contenenti un solo messaggio"
+    "message": "…anche in finestre con un solo messaggio"
   },
   "qf.checkbox.singleMessage.currentFolder.tooltip": {
-    "message": "Mostra la barra degli strumenti della cartella corrente nella finestra che appare quando si apre un messaggio in una nuova finestra"
+    "message": "Mostra la barra di navigazione della cartella corrente nella finestra in cui viene aperto un messaggio ad essa appartenente"
   },
   "qf.checkbox.singleMessageTab.currentFolder.show": {
-    "message": "Barra degli strumenti per schede contenenti un solo messaggio"
+    "message": "Barra di navigazione per schede con un solo messaggio"
   },
   "qf.checkbox.skipFolder": {
-    "message": "Salta cartella non letta - usa il tasto di scelta rapida: MAIUSC +"
+    "message": "Salta Cartella non letta - Usa la scorciatoia: Maiusc+"
   },
   "qf.checkbox.skipFolder.tip": {
     "message": "Scorciatoia per saltare alla successiva cartella non letta."
   },
   "qf.checkbox.sortMenusAlpha": {
-    "message": "Forza l'ordinamento alfabetico del menu contenente sottocartelle."
+    "message": "Forza l'ordinamento alfabetico del menu con sottocartelle."
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
-    "message": "Usa questa opzione solo se il programma di posta elettronica non ordina correttamente le sottocartelle."
+    "message": "Usare questa opzione solo se il programma di posta elettronica non ordina correttamente le sottocartelle."
   },
   "qf.checkbox.storeConfig.general": {
-    "message": "Includi le impostazioni generali"
+    "message": "Includi le Impostazioni generali"
   },
   "qf.checkbox.storeConfig.layout": {
-    "message": "Includi impostazioni avanzate e layout"
+    "message": "Includi le Impostazioni avanzate e il layout"
   },
   "qf.checkbox.storeConfig.tabs": {
     "message": "Includi le schede QuickFolders"
@@ -557,28 +568,31 @@
     "message": "Icona del menu della barra degli strumenti"
   },
   "qf.checkbox.tabMenuIcon.tooltip": {
-    "message": "Questo menu può essere invocato anche facendo clic col pulsante destro del mouse direttamente sulla barra degli strumenti"
+    "message": "Si può richiamare questo menu anche facendo clic col pulsante dx del mouse direttamente sulla barra degli strumenti"
   },
   "qf.checkbox.transparent": {
     "message": "Trasparente"
   },
   "qf.checkbox.useNavigationShortcuts": {
-    "message": "ALT-Freccia sinistra/ALT-Freccia destra vanno alla scheda precedente/successiva"
+    "message": "Alt+Freccia sx/Alt+Freccia dx vanno alla scheda precedente/successiva"
   },
   "qf.checkbox.usePalette": {
     "message": "Usa tavolozza"
   },
   "qf.checkbox.useRebuildShortcut": {
-    "message": "Ricostruisci le schede con il tasto di scelta rapida: Ctrl + Alt +"
+    "message": "Ricostruisci le schede con la scorciatoia: Ctrl+Alt+"
   },
   "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Usa le scorciatoie da tastiera (combinazione tasti ALT+1 … ALT+9)"
+    "message": "Usa le scorciatoie da tastiera (combinazione tasti Alt+1 … Alt+9)"
   },
   "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Usa CTRL invece di ALT"
+    "message": "Usa tasto Ctrl invece di Alt"
   },
   "qf.continueFilter.label": {
     "message": "Crea filtro…"
+  },
+  "qf.continueFilter.shortcut": {
+    "message": "F"
   },
   "qf.copyfolders": {
     "message": "Copia schede"
@@ -590,34 +604,34 @@
     "message": "Tema Thunderbird"
   },
   "qf.currentFolderBackground.custom": {
-    "message": "personalizzata"
+    "message": "Personalizzato"
   },
   "qf.currentFolderBackground.dark": {
-    "message": "scura"
+    "message": "Scuro"
   },
   "qf.currentFolderBackground.default": {
-    "message": "argento"
+    "message": "Argento"
   },
   "qf.currentFolderBackground.translucent": {
-    "message": "traslucida"
+    "message": "Opaco"
   },
   "qf.currentfolder.leftSpacer": {
-    "message": "Spaziatore sinistro:"
+    "message": "Spazio a sx:"
   },
   "qf.currentfolder.rightSpacer": {
-    "message": "Spaziatore destro:"
+    "message": "Spazio a dx:"
   },
   "qf.description.github": {
-    "message": "Usa github per richiedere l'aggiunta di nuove caratteristiche e per segnalare bug"
+    "message": "Usa github per richiedere ufficialmente nuove funzionalità e per segnalare bug."
   },
   "qf.description.categoryusage": {
-    "message": "Si può inserire questa scheda in una categoria (per es. 'Lavoro', 'Personale' ecc…)."
+    "message": "Questa scheda può essere inserita in una categoria (per es. \"Lavoro\", \"Personale\" ecc…)."
   },
   "qf.description.changeCategory": {
-    "message": "Fare clic col pulsante destro del mouse su di una scheda per assegnarla ad una o più categorie. Si crea così un filtro per le categorie posizionato a sinistra delle schede."
+    "message": "Fare clic col pulsante dx del mouse su di una scheda per assegnarla ad una o più categorie. Si crea così un filtro per le categorie posizionato a sx delle schede."
   },
   "qf.description.contactMe": {
-    "message": "Puoi anche contattarmi personalmente all'indirizzo $supportMail$:",
+    "message": "È possibile anche contattarmi personalmente all'indirizzo $supportMail$.",
     "placeholders": {
       "supportMail": {
         "content": "$1"
@@ -628,37 +642,37 @@
     "message": "Se QuickFolders ti piace e vuoi contribuire al suo mantenimento, puoi donare qualche euro da dedicare al suo ulteriore sviluppo"
   },
   "qf.description.dragToAdd": {
-    "message": "Trascinare le cartelle di posta in un'area vuota della nuova barra degli strumenti per creare un nuovo 'QuickFolder' (di seguito anche abbreviato in 'QF') che funziona come una scorciatoia/alias. Trascinare dei messaggi in un QF per spostarli (o copiarli) nella cartella corrispondente. Fare clic su di un QF per saltare alla cartella di posta."
+    "message": "Trascinare le cartelle di posta in un'area vuota della nuova barra degli strumenti per creare una nuova scheda QuickFolder (QF) che funziona come scorciatoia/alias. Trascinare dei messaggi su di una scheda per spostarli/copiarli all'interno. Fare clic su una scheda per saltare alla corrispondente cartella di posta."
   },
   "qf.description.dragToPopup": {
-    "message": "Per spostare dei messaggi all'interno delle sottocartelle, trascinarli sul menu a pop-up di un QF."
+    "message": "Per spostare dei messaggi all'interno delle sottocartelle, trascinarli sul menu a pop-up delle schede QF."
   },
   "qf.description.dragToPosition": {
-    "message": "Trascinare lateralmente e rilasciare i QF per modificare le loro posizioni. Facendo clic col pulsante destro del mouse su di un QF compare un menu contestuale: selezionandone un elemento ci si può spostare direttamente nelle sottocartelle. Inoltre: 'Rinomina scheda' = cambia l'etichetta del QF. 'Rimuovi scheda' = cancella il QF ma non la cartella di posta."
+    "message": "Trascinare lateralmente e rilasciare le schede QF per modificarne la posizione. Facendo clic col pulsante dx del mouse su una scheda QF compare un menu contestuale: selezionandone un elemento ci si può spostare direttamente nelle sottocartelle. Rinomina scheda: cambia l'etichetta del QF. Rimuovi scheda: cancella il QF ma NON la cartella di posta."
   },
   "qf.description.dragexplain": {
     "message": "Le schede possono anche essere trascinate per cambiarne la posizione relativa. Per inserire una scheda prima o dopo un'altra, trascinarla e rilasciarla davanti o dietro a quest'ultima."
   },
   "qf.description.editcategory": {
-    "message": "Selezionare una categoria esistente mediante un doppio clic o aggiungere una nuova categoria."
+    "message": "Doppio clic per selezionare una categoria esistente o per aggiungere sotto una nuova categoria."
   },
   "qf.description.experimentalItems": {
     "message": "I seguenti elementi sono sperimentali. È auspicabile che funzionino nella prossima versione!"
   },
   "qf.description.languages": {
-    "message": "QuickFolders supporta le localizzazioni - si può dare un aiuto aggiungendo su github la traduzione nella propria lingua:"
+    "message": "QuickFolders supporta le localizzazioni - È possibile fornire un aiuto aggiungendo su github la traduzione nella propria lingua"
   },
   "qf.description.linkNote": {
-    "message": "Per una guida utente dettagliata, per eventuali suggerimenti e per le FAQ visita il sito web di QuickFolders:"
+    "message": "Per disporre di una guida-utente dettagliata, per eventuali suggerimenti e per le FAQ visita il sito web di QuickFolders."
   },
   "qf.description.multicategory": {
-    "message": "Per aggiungere una cartella a più di una categoria tenere premuto il tasto MAIUSC (SHIFT) o CTRL mentre si selezionano gli elementi in questione."
+    "message": "Per aggiungere una scheda a più di una categoria, tenere premuto il tasto Maiusc (Shift) o Ctrl mentre si selezionano gli elementi in questione."
   },
   "qf.description.pulldown": {
-    "message": "La barra QuickFolders visualizzerà un menu a discesa che consente di filtrare le schede per categoria."
+    "message": "La barra QuickFolders visualizza un menu a discesa che consente di filtrare le schede per categoria."
   },
   "qf.description.rightClickOptions": {
-    "message": "Fare clic con il pulsante destro del mouse su un'area vuota per aprire il menu delle opzioni. Nelle opzioni, puoi selezionare lo stile nativo (più piccolo) o lo stile piatto (più chiaro; supporta l'indicatore di trascinamento)."
+    "message": "Fare clic con il pulsante dx del mouse su un'area vuota per aprire il menu delle opzioni. Qui si può selezionare lo \"stile nativo\" (più piccolo) o lo \"stile uniforme\" (più chiaro e che supporta l'indicatore di trascinamento)."
   },
   "qf.description.tipMsg": {
     "message": "Suggerimento: qualora si abbia un elevato numero di cartelle, si può provare l'estensione Nostalgy per disporre di un'organizzazione dei messaggi guidata da tastiera."
@@ -673,52 +687,52 @@
     "message": "Impostazioni avanzate di quickMove"
   },
   "qf.dialog.setcategory": {
-    "message": "Imposta la categoria di una scheda"
+    "message": "Imposta categoria della scheda"
   },
   "qf.donate.tooltip": {
     "message": "Supporta lo sviluppo di QuickFolders!"
   },
   "qf.filters.instructions": {
-    "message": "Selezionare una tipologia. Puoi mettere a punto le regole del filtro nella schermata successiva."
+    "message": "Selezionare un modello. Nella schermata successiva si possono mettere a punto le regole del filtro."
   },
   "qf.filters.template.from": {
     "message": "Basati sul mittente (Da:)"
   },
   "qf.filters.template.from.description": {
-    "message": "Questo è probabilmente lo schema più usato: si seleziona l'indirizzo di posta elettronica del mittente e lo si incolla nei campi 'Da' e 'A' delle condizioni dei filtri. In questo modo tutti i dialoghi con il mittente vengono spostati nella nuova cartella"
+    "message": "Questo è probabilmente lo schema più usato: si seleziona l'indirizzo di posta elettronica del mittente e lo si incolla nei campi \"Da:\" e \"A:\" delle condizioni dei filtri. In questo modo tutte le conversazioni con quel mittente vengono spostate nella nuova cartella."
   },
   "qf.filters.template.list": {
     "message": "Lista di distribuzione"
   },
   "qf.filters.template.list.description": {
-    "message": "Simile a 'Basato sul mittente' ma non riempie il campo delle condizioni 'A:'"
+    "message": "Simile a \"Basati sul mittente\" ma qui il campo \"A:\" delle condizioni non viene riempito."
   },
   "qf.filters.template.tag": {
     "message": "Per etichetta"
   },
   "qf.filters.template.tag.description": {
-    "message": "Usa le etichette del messaggio e le aggiunge come condizioni del filtro"
+    "message": "Usa le etichette del messaggio e le aggiunge come condizioni del filtro."
   },
   "qf.filters.template.to": {
     "message": "Basati sul destinatario (A:)"
   },
   "qf.filters.template.to.description": {
-    "message": "Simile a 'Basato sul mittente': va usato quando si segna un messaggio inviato a qualcun altro. In questo modo si recupera l'indirizzo di posta elettronica del destinatario e lo si incolla nei campi 'Da:' e 'A:' delle condizioni dei filtri. In questo modo tutti i dialoghi con il mittente vengono spostati nella nuova cartella."
+    "message": "Simile a \"Basati sul mittente\": da usare quando si segna un messaggio inviato a qualcuno. Ciò consente di recuperare l'indirizzo di posta elettronica del destinatario e se lo si incolla nei campi \"Da:\" e \"A:\" delle condizioni del filtro, tutte le conversazioni con quel contatto verranno spostate nella nuova cartella."
   },
   "qf.filters.template.topic": {
     "message": "Per oggetto"
   },
   "qf.filters.template.topic.description": {
-    "message": "Questo modello ricerca particolari espressioni comprese fra parentesi quadre o graffe, per esempio [collezionisti di francobolli] o {vegani} e crea un filtro basato su di esse; usando questo schema si riorganizza una gran quantità di messaggi, per cui risulta di facile utilizzo."
+    "message": "Questo modello cerca particolari espressioni comprese fra parentesi quadre o graffe; per es: [collezionisti di francobolli] o {vegani} e crea un filtro basato su tali condizioni. Usando questo schema è possibile riorganizzare una grande quantità di messaggi pur essendo di facile utilizzo."
   },
   "qf.filters.title": {
-    "message": "Crea filtri"
+    "message": "Creazione filtri"
   },
   "qf.filters.toggleMessage.notificationText": {
-    "message": "È stata avviata la modalità di apprendimento per il filtri. Ogni volta che si muove una email in una scheda QF inizia una procedura guidata che consente la creazione di una regola per i filtri. Thunderbird usa filtrare i messaggi per spostare automaticamente le email in base a regole quali 'Chi è il mittente?', 'Nell'oggetto del messaggio c'è una una parola-chiave?'. Per terminare la modalità di apprendimento per i filtri, premere il pulsante dei filtri in alto a sinistra sulla barra di Quick Folders"
+    "message": "È stata avviata la modalità di apprendimento per il filtri. Ogni volta che si sposta un messaggio in una scheda QF inizia una \"Procedura guidata per la creazione di filtri\". Thunderbird usa filtrare i messaggi per spostarli automaticamente in base a regole quali \"Chi è il mittente?\", \"Nell'oggetto del messaggio è presente una una parola-chiave?\" - Per terminare la modalità di apprendimento, premere il pulsante dei filtri in alto a sx sulla barra di Quick Folders."
   },
   "qf.filters.toggleMessage.title": {
-    "message": "Sto creando i filtri"
+    "message": "Creazione filtri"
   },
   "qf.foldercontextmenu.quickfolders.customizeIcon": {
     "message": "Personalizza icona…"
@@ -733,10 +747,10 @@
     "message": "Va alla cartella successiva senza chiedere (scelta consigliata)"
   },
   "qf.goNextUnread.none": {
-    "message": "Non fare nulla qualora non ci siano messaggi non letti nella cartella"
+    "message": "Non fare nulla se non sono rimasti messaggi non letti nella cartella"
   },
   "qf.goNextUnread.prompt": {
-    "message": "Chiedi di andare al messaggio non letto successivo"
+    "message": "Chiedi di andare alla cartella successiva con messaggi non letti"
   },
   "qf.group.navigation": {
     "message": "Navigazione fra i messaggi"
@@ -748,22 +762,22 @@
     "message": "Tavolozza per le schede colorate:"
   },
   "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Tavolozza per le schede con colore specifico"
+    "message": "Tavolozza per le schede con colore assegnato dall'utente"
   },
   "qf.label.DragOverBackground": {
     "message": "Colore scheda trascinata:"
   },
   "qf.label.HoveredTabColor": {
-    "message": "Colore scheda ove si muove il mouse:"
+    "message": "Colore scheda su cui passa il mouse:"
   },
   "qf.label.Toolbar": {
     "message": "Barra degli strumenti"
   },
   "qf.label.Toolbar.bottomLine": {
-    "message": "Ampiezza della riga inferiore:"
+    "message": "Ampiezza dell'ultima linea:"
   },
   "qf.label.Toolbar.bottomLine.tip": {
-    "message": "Ampiezza della riga sotto le schede. È possibile modificarne il colore con il selettore del colore della scheda attiva sottostante."
+    "message": "Ampiezza della linea sottostante le schede. È possibile modificarne il colore con il sottostante selettore del colore della scheda attiva."
   },
   "qf.label.ToolbarBackground": {
     "message": "Sfondo della barra degli strumenti:"
@@ -772,7 +786,7 @@
     "message": "Scheda non colorata"
   },
   "qf.label.UncoloredTab.tooltip": {
-    "message": "Aspetto delle schede (inattive) senza un colore specifico selezionato"
+    "message": "Aspetto delle schede (inattive) prive di un colore selezionato specificamente"
   },
   "qf.label.appearance": {
     "message": "Aspetto"
@@ -781,10 +795,10 @@
     "message": "Comportamento"
   },
   "qf.label.github": {
-    "message": "Segnala un bug / Richiedi una nuova caratteristica tramite github…"
+    "message": "Segnala un bug / Richiedi nuove caratteristiche…"
   },
   "qf.label.buttonFontSizeNumeric": {
-    "message": "Pulsante dimensione caratteri (valore predefinito 0):"
+    "message": "Dimensione caratteri pulsante (valore predefinito 0):"
   },
   "qf.label.cancel": {
     "message": "Annulla"
@@ -793,10 +807,10 @@
     "message": "Colori"
   },
   "qf.label.contactLink": {
-    "message": "Contattami (in lingua inglese o tedesca)…"
+    "message": "Contattatemi (in inglese o in tedesco)…"
   },
   "qf.label.currentFolderToolbar": {
-    "message": "Barra degli strumenti della cartella corrente"
+    "message": "Barra di navigazione della cartella corrente"
   },
   "qf.label.donate": {
     "message": "Dona"
@@ -820,7 +834,7 @@
     "message": "1 elemento"
   },
   "qf.label.getQuickFilters": {
-    "message": "Per creare filtri migliori e più potenti, si consiglia l'installazione della mia estensione quickFilters!"
+    "message": "Per creare dei filtri più sofisticati si consiglia l'installazione dell'estensione quickFilters."
   },
   "qf.label.goNextUnread": {
     "message": "Va al messaggio non letto successivo:"
@@ -829,22 +843,22 @@
     "message": "Quando si va al messaggio non letto successivo, solitamente Thunderbird chiede se è necessario spostarsi su un'altra cartella"
   },
   "qf.label.haveLicense": {
-    "message": "Avete già una licenza?"
+    "message": "Si possiede già una licenza?"
   },
   "qf.label.homePage": {
-    "message": "Informazioni dettagliate nel nuovo sito web di QuickFolders ospitato da quickfolders.org…"
+    "message": "Informazioni dettagliate nella Homepage di QuickFolders sul sito quickfolders.org…"
   },
   "qf.label.initdelay": {
     "message": "[ms] di ritardo iniziale {1000 è lo standard}:"
   },
   "qf.label.insertLicense": {
-    "message": "Inserire la propria chiave di licenza qui:"
+    "message": "Inserire qui la propria chiave di licenza:"
   },
   "qf.label.insertLicense.tooltip": {
-    "message": "La chiave di licenza è contenuta nel messaggio di email di conferma dell'ordine proveniente da Fastspring."
+    "message": "La chiave di licenza è contenuta nel messaggio di conferma dell'ordine proveniente da Fastspring."
   },
   "qf.label.instantApplyMsg": {
-    "message": "Nota: se in basso si visualizza solo il pulsante [Chiudi], le impostazioni dei colori potrebbero non funzionare. Si può ovviare provando a fare clic col pulsante destro del mouse in un'area vuota della barra 'QuickFolders' per selezionare 'Opzioni di QuickFolders…' Ciò forza la comparsa del pulsante [Ok] il che dovrebbe consentire il salvataggio dei colori."
+    "message": "Nota: se in basso si visualizza solo il pulsante [Chiudi], le impostazioni dei colori potrebbero non funzionare. Si può ovviare provando a fare clic col pulsante dx del mouse in un'area vuota della barra \"QuickFolders\" per selezionare \"Opzioni di QuickFolders…\". Ciò forza la comparsa del pulsante [Ok] il che dovrebbe consentire il salvataggio dei colori."
   },
   "qf.label.keyboard": {
     "message": "Scorciatoie da tastiera"
@@ -859,19 +873,19 @@
     "message": "Elementi della barra degli strumenti principale"
   },
   "qf.label.menuFontSizeNumeric": {
-    "message": "Dimensione del carattere del menu (0 per impostazione predefinita):"
+    "message": "Dimensioni caratteri del menu (valore predefinito 0):"
   },
   "qf.label.menus": {
     "message": "Configurazione menu"
   },
   "qf.label.menus.customIcon": {
-    "message": "Personalizza icone"
+    "message": "Personalizza icona"
   },
   "qf.label.menus.help": {
-    "message": "Guida di Quick Folders"
+    "message": "Aiuto per Quick Folders"
   },
   "qf.label.menus.hideQFunlessCTRL": {
-    "message": "Visibile solo tenendo premuto il tasto CTRL"
+    "message": "Visibili solo tenendo premuto il tasto Ctrl"
   },
   "qf.label.menus.lineBreak": {
     "message": "Inserisci interruzione di riga"
@@ -895,7 +909,7 @@
     "message": "Varie"
   },
   "qf.label.newcategory": {
-    "message": "Nuova categoria:"
+    "message": "Aggiungi nuova categoria"
   },
   "qf.label.pixels": {
     "message": "pixel"
@@ -903,11 +917,14 @@
   "qf.label.quickFilters.link": {
     "message": "Scarica quickFilters!"
   },
+  "qf.label.quickfolders": {
+    "message": "QuickFolders:"
+  },
   "qf.label.renameselectedcategory": {
-    "message": "Rinomina la categoria selezionata:"
+    "message": "Rinomina categoria selezionata"
   },
   "qf.label.setcolors": {
-    "message": "Configurazione [Colore testo], Colore sfondo"
+    "message": "Configura [Colore testo], [Colore sfondo]"
   },
   "qf.label.tabContent": {
     "message": "Contenuto delle schede"
@@ -928,37 +945,37 @@
     "message": "La chiave di licenza inserita è scaduta. Premere il pulsante sottostante per rinnovare la licenza."
   },
   "qf.licenseValidation.failed": {
-    "message": "La chiave di licenza inserita non è valida. Controllare il messaggio di email proveniente da FastSpring per avere istruzioni al riguardo. Se permanessero dei problemi, contattatemi tramite la scheda 'Supporto'."
+    "message": "La chiave di licenza inserita non è valida. Controllare il messaggio proveniente da FastSpring per avere istruzioni al riguardo. Se permanessero dei problemi, contattatemi tramite la scheda \"Supporto\"."
   },
   "qf.licenseValidation.guessAddon": {
-    "message": "(La chiave inserita potrebbe essere relativa a {2})"
+    "message": "(La chiave inserita potrebbe essere relativa a {2})."
   },
   "qf.licenseValidation.invalidAddon": {
-    "message": "La chiave di licenza inserita potrebbe essere relativa a un'altra estensione. Le chiavi di licenza per {0} iniziano con  {1}"
+    "message": "La chiave di licenza inserita potrebbe essere relativa a un'altra estensione. Le chiavi di licenza per {0} iniziano con {1}"
   },
   "qf.licenseValidation.invalidMail": {
-    "message": "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account. Per avere assistenza, contattatemi tramite la scheda 'Supporto'."
+    "message": "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account di posta elettronica. Per assistenza, contattatemi tramite la scheda \"Supporto\"."
   },
   "qf.licenseValidation.notMatchedMail": {
     "message": "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro"
   },
   "qf.licenseValidation.passed": {
-    "message": "Grazie per aver registrato QuickFolders Pro. Tutte le caratteristiche della versione Premium sono ora disponibili."
+    "message": "Grazie per aver registrato QuickFolders Pro. Tutte le caratteristiche Premium sono ora disponibili."
   },
   "qf.licenseValidation.standard": {
-    "message": "Grazie per aver registrato una licenza QuickFolders - Stai aiutando immensamente il componente aggiuntivo! Se hai bisogno di più funzionalità puoi sempre aggiornare alla Licenza Pro."
+    "message": "Grazie per aver registrato una licenza QuickFolders - Così aiutate immensamente questo componente aggiuntivo! Se si necessita di ulteriori caratteristiche è sempre possibile aggiornare alla Licenza Pro."
   },
   "qf.loadConfig": {
-    "message": "Carica la configurazione…"
+    "message": "Carica configurazione…"
   },
   "qf.menu.Color": {
     "message": "Colore"
   },
   "qf.menu.tabColor": {
-    "message": "Nessun colore"
+    "message": "Colore predefinito"
   },
   "qf.menuitem.quickfolders.changeOrder": {
-    "message": "Modifica l'ordine delle schede…"
+    "message": "Modifica ordine delle schede…"
   },
   "qf.menuitem.quickfolders.changeOrderAccess": {
     "message": "M"
@@ -967,16 +984,22 @@
     "message": "Controlla lo stato della licenza…"
   },  
   "qf.menuitem.quickfolders.deleteDeadTabs": {
-    "message": "Rimuovi le schede non valide"
+    "message": "Rimuovi schede non valide"
+  },
+  "qf.menuitem.quickfolders.deleteDeadTabsAccess": {
+    "message": "S"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
-    "message": "Visualizza gli strumenti della scheda corrente"
+    "message": "Visualizza barra di navigazione per la scheda corrente"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "C"
   },
   "qf.menuitem.quickfolders.filters": {
     "message": "Crea filtri per i messaggi…"
+  },
+  "qf.menuitem.quickfolders.filtersAccess": {
+    "message": "F"
   },
   "qf.menuitem.quickfolders.find": {
     "message": "Trova cartella…"
@@ -985,28 +1008,37 @@
     "message": "T"
   },
   "qf.menuitem.quickfolders.help": {
-    "message": "Guida di QuickFolders…"
+    "message": "Aiuto per QuickFolders…"
   },
   "qf.menuitem.quickfolders.helpAccess": {
-    "message": "G"
+    "message": "A"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "Opzioni di QuickFolders…"
+  },
+  "qf.menuitem.quickfolders.optionsAccess": {
+    "message": "O"
   },
   "qf.menuitem.quickfolders.register": {
     "message": "Registra QuickFolders Pro…"
   },
   "qf.menuitem.quickfolders.repairTabs": {
-    "message": "Aggiorna le schede visibili!"
+    "message": "Aggiorna schede visibili"
+  },
+  "qf.menuitem.quickfolders.repairTabsAccess": {
+    "message": "V"
   },
   "qf.menuitem.quickfolders.repairTreeIcons": {
-    "message": "Riparazione delle icone della struttura delle cartelle"
+    "message": "Ripara icone dell'albero delle schede"
   },
   "qf.menuitem.quickfolders.splash": {
-    "message": "Ultimi aggiornamenti notizie…"
+    "message": "Notizie sugli ultimi aggiornamenti…"
   },
   "qf.menuitem.quickfolders.support": {
     "message": "Supporto di QuickFolders…"
+  },
+  "qf.menuitem.quickfolders.supportAccess": {
+    "message": "Q"
   },
   "qf.menuitem.quickfolders.togglePaintMode": {
     "message": "Modalità Paint"
@@ -1015,7 +1047,7 @@
     "message": "P"
   },
   "qf.moveMailStatus.action.none": {
-    "message": "Fare niente"
+    "message": "Non fare nulla"
   },
   "qf.moveMailStatus.action.unread": {
     "message": "Contrassegna la posta come non letta"
@@ -1024,22 +1056,22 @@
     "message": "Contrassegna la posta come letta"
   },
   "qf.moveMailStatus.label": {
-    "message": "Quando si sposta la posta in una QuickFolder:"
+    "message": "Quando si sposta la posta in una scheda QF:"
   },
   "qf.moveMailStatus.quickMove": {
-    "message": "Si applica anche alle e-mail quando si utilizza quickMove."
+    "message": "Valido anche per i messaggi quando si utilizza quickMove."
   },
   "qf.moveMailStatus.title": {
-    "message": "Stato posta spostato"
+    "message": "Stato della posta spostata"
   },
   "qf.notification.categoryIsReadOnly": {
-    "message": "Questo elemento non può essere eliminato"
+    "message": "Questo elemento non può essere eliminato."
   },
   "qf.notification.dontShowAgain": {
-    "message": "Non mostrare più questo messaggio"
+    "message": "Non mostrare più questo messaggio."
   },
   "qf.notification.newsFlash": {
-    "message": "$addonName$ è stato aggiornato! Novità importanti…",
+    "message": "$addonName$ è stato aggiornato! Notizie importanti…",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1048,13 +1080,16 @@
     }
   },
   "qf.notification.premium.btn.extendLicense": {
-    "message": "Estendi licenza"
+    "message": "Estendi la licenza"
   },
   "qf.notification.premium.btn.extendLicense.tooltip": {
-    "message": "Questa modalità proroga di un anno la scadenza dell'attuale licenza, il che risulta economicamente più conveniente rispetto a sottostcivere una nuova licenza."
+    "message": "Questa modalità estende di un anno la scadenza dell'attuale licenza, il che risulta economicamente più conveniente rispetto alla sottoscrizione di una nuova licenza."
   },
   "qf.notification.premium.btn.getLicense": {
     "message": "Acquista la licenza"
+  },
+  "qf.notification.premium.btn.hotKey": {
+    "message": "L"
   },
   "qf.notification.premium.btn.renewLicense": {
     "message": "Rinnova la licenza"
@@ -1063,13 +1098,13 @@
     "message": "Aggiorna a Pro"
   },
   "qf.notification.premium.readingList": {
-    "message": "Attualmente sono definiti {1} segnalibri. La versione free di QuickFolders ne consente un massimo di {2}."
+    "message": "Attualmente sono definiti {1} segnalibri. La versione gratuita di QuickFolders ne consente un massimo di {2}."
   },
   "qf.notification.premium.shortcut": {
-    "message": "La licenza premium ti offre inoltre una scorciatoia da tastiera configurabile."
+    "message": "Le caratteristiche Premium sono pienamente disponibili sottoscrivendo la licenza Pro."
   },
   "qf.notification.premium.tabIcons": {
-    "message": "Ora usi le icone personalizzate $cntIcons$ per le schede. La versione gratuita di QuickFolders supporta un massimo di $maxFreeIcons$. La licenza standard supporta $maxStdIcons$. QuickFolders Pro non ha limiti.",
+    "message": "Si stanno usando $cntIcons$ icone personalizzate per le schede. La versione gratuita di QuickFolders supporta un massimo di $maxFreeIcons$. La licenza Standard supporta $maxStdIcons$. QuickFolders Pro non ha limiti.",
     "placeholders": {
       "cntIcons": {
         "content": "$1",
@@ -1086,19 +1121,19 @@
     }
   },
   "qf.notification.premium.text": {
-    "message": "{1} è una funzione Premium, per utilizzarla ottieni una licenza QuickFolders Pro."
+    "message": "{1} è una caratteristica Premium, per utilizzarla acquista una licenza Pro."
   },
   "qf.notification.premium.title": {
-    "message": "Caratteristica della versione Premium"
+    "message": "Caratteristica Premium"
   },
   "qf.notification.standard.readingList": {
-    "message": "Ora hai definito {1} segnalibri. La licenza standard di QuickFolders consente un massimo di {2}."
+    "message": "Hai definito {1} segnalibri. La licenza Standard di QuickFolders ne consente un massimo di {2}."
   },
   "qf.notification.standard.text": {
-    "message": "{1} è una funzionalità con limitazioni di licenza, ottenere una licenza QuickFolders per utilizzarla."
+    "message": "{1} è una caratteristica disponibile solo con la sottoscrizione di una licenza. Acquistare una licenza QuickFolders per poterla utilizzare."
   },
   "qf.notification.standard.title": {
-    "message": "Caratteristica standard"
+    "message": "Caratteristica legata alla licenza"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Aspetto del colore della singola scheda"
@@ -1122,7 +1157,7 @@
     "message": "Alto:"
   },
   "qf.options.themes.customCornerRadius.checkbox": {
-    "message": "Personalizzazione del raggio angolare"
+    "message": "Raggio angolare personalizzato"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "Mostra sempre i bordi"
@@ -1144,6 +1179,9 @@
   },
   "qf.palette.twoColors": {
     "message": "2 colori"
+  },
+  "qf.pastefolders": {
+    "message": "Incolla schede"
   },
   "qf.pastefolders.tooltip": {
     "message": "Cancella tutte le schede di QF e recupera la nuova configurazione dagli Appunti"
@@ -1167,7 +1205,7 @@
     "message": "Massima profondità percorso:"
   },
   "qf.pathFormat.tooltip": {
-    "message": "Massimo numero di cartelle visualizzate nel percorso della cartella."
+    "message": "Massimo numero di cartelle visualizzate nel percorso delle cartelle."
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Opzioni di QuickFolders"
@@ -1176,7 +1214,8 @@
     "message": "La licenza scade tra $daysLeft$ giorni",
     "placeholders": {
       "daysLeft": {
-        "content": "$1"
+        "content": "$1",
+        "example": "9"
       }
     }
   },
@@ -1202,13 +1241,13 @@
     "message": "Creare anche una scheda QuickFolders"
   },
   "qf.prompt.newFolder.newChildName": {
-    "message": "Inserisci il nome della cartella figlia di {0}"
+    "message": "Inserire il nome della cartella-figlia di {0}"
   },
   "qf.prompt.newFolder.title": {
     "message": "Nuova cartella"
   },
   "qf.prompt.pasteFolders": {
-    "message": "Questa azione cancellerà tutte le schede di QuickFolders e le rimpiazzerà con quanto presente negli Appunti.\nSono stati trovati {0} elementi negli Appunti.\nSi è veramente sicuri?"
+    "message": "Questa azione cancellerà tutte le schede di QuickFolders e le rimpiazzerà con quanto presente negli Appunti.\nSono stati trovati {0} elementi negli Appunti.\nRimpiazzare le schede?"
   },
   "qf.prompt.pasteFolders.confirm": {
     "message": "Mantenere le schede visualizzate?"
@@ -1217,31 +1256,31 @@
     "message": "Rimuovere questo elemento?"
   },
   "qf.prompt.readingList.searchMissingItem": {
-    "message": "Non è possibile trovare il messaggio. Nel frattempo potrebbe essere stato spostato da qualche altra parte\n{1}\n\nLo si vuol cercare?"
+    "message": "Non riesco a trovare il messaggio. Nel frattempo potrebbe essere stato spostato da qualche altra parte\n{1}\n\nLo si vuol cercare?"
   },
   "qf.prompt.restoreFolders": {
-    "message": "Questo cancellerà tutte le schede QuickFolders e le rimpiazzerà con gli elementi presenti nel file\n{0}. Si vuol procedere?"
+    "message": "Ciò cancellerà tutte le schede QuickFolders e le rimpiazzerà con gli elementi presenti nel file\n{0}. Si vuol procedere?"
   },
   "qf.prompt.switchDomainLicense": {
     "message": "Si vuol passare alla licenza di dominio?"
   },
   "qf.quickMove.escapeClears": {
-    "message": "Il tasto Esc cancella l'elenco dei messaggi."
+    "message": "Il tasto Esc svuota l'elenco dei messaggi."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Seleziona gli account da escludere dai risultati della ricerca:"
   },
   "qf.quickMove.lockAccount": {
-    "message": "Mostra solo i risultati dall'account di posta corrente."
+    "message": "Mostra solo i risultati dell'account di posta corrente."
   },
   "qf.quickMove.maxResults": {
-    "message": "Numero massimo di risultati di ricerca"
+    "message": "Numero massimo di risultati della ricerca"
   },
   "qf.quickMove.path.format": {
     "message": "Formato di visualizzazione:"
   },
   "qf.quickMove.silent": {
-    "message": "Ometti le notifiche dopo aver spostato i messaggi."
+    "message": "Non notificare l'avvenuto spostamento dei messaggi."
   },
   "qf.register.licenseValid.expired": {
     "message": "La licenza scadrà il giorno:"
@@ -1250,7 +1289,7 @@
     "message": "Impostazioni di ricerca avanzate…"
   },
   "qf.storeConfig": {
-    "message": "Salva la configurazione…"
+    "message": "Salva configurazione…"
   },
   "qf.tab.advanced": {
     "message": "Avanzate"
@@ -1259,10 +1298,10 @@
     "message": "Generali"
   },
   "qf.tab.gopro": {
-    "message": "Licenze"
+    "message": "Licenza"
   },
   "qf.tab.layout": {
-    "message": "Arrichisci le mie schede!"
+    "message": "Ostenta le mie schede!"
   },
   "qf.tab.quickhelp": {
     "message": "Guida rapida"
@@ -1271,37 +1310,37 @@
     "message": "Supporto"
   },
   "qf.textbox.searchBox.emptyText": {
-    "message": "Cerca filtri per nome…"
+    "message": "Cerca i filtri per nome…"
   },
   "qf.textbox.searchBox.toolTip": {
     "message": "Inserire una parola-chiave per ricercare i filtri per nome"
   },
   "qf.themes.applePills.description": {
-    "message": "Layout piacevole creato per gli utenti Mac - semplice e uniforme; dotato di alcuni colori opzionali in più"
+    "message": "Layout gradevole creato per gli utenti Mac - Semplice e uniforme; possiede alcuni vantaggi riguardanti i colori."
   },
   "qf.themes.applePills.label": {
     "message": "Pillole di Apple"
   },
   "qf.themes.flatButtons.description": {
-    "message": "Pulsanti della barra degli strumenti standard - si tratta dell'aspetto più simile a quello della iniziale versione 0.5"
+    "message": "Pulsanti standard della barra degli strumenti - È il più simile a quello della prima versione di QF."
   },
   "qf.themes.flatButtons.label": {
     "message": "Pulsanti della barra degli strumenti"
   },
   "qf.themes.flatTabs.description": {
-    "message": "Moderno aspetto a schede - totalmente personalizzabile. Dà il meglio di sé in Windows e Linux"
+    "message": "Moderno aspetto a schede - Totalmente personalizzabile. Dà il meglio di sé in Windows e Linux."
   },
   "qf.themes.flatTabs.label": {
     "message": "Stile uniforme"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layout simile a quello delle schede del sistema operativo - meno opzioni di colorazione ma l'aspetto appare più integrato e in sintonia con i temi del programma di posta elettronica"
+    "message": "Layout simile a quello delle schede del proprio OS - Meno opzioni di colorazione ma l'aspetto è più integrato e in sintonia con i temi del programma di posta elettronica."
   },
   "qf.themes.nativeTabs.label": {
     "message": "Schede native"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pulsanti - hanno l'aspetto dei normali pulsanti presenti nelle finestre di dialogo"
+    "message": "Pulsanti - Stesso aspetto dei pulsanti presenti nelle finestre di dialogo"
   },
   "qf.themes.realButtons.label": {
     "message": "Pulsanti"
@@ -1310,28 +1349,28 @@
     "message": "Barra degli strumenti QuickFolders"
   },
   "qf.toolbarIconSize": {
-    "message": "Icone grandi della barra degli strumenti"
+    "message": "Icone grandi nella barra degli strumenti"
   },
   "qf.toolbarMinimumHeight": {
-    "message": "Altezza massima:"
+    "message": "Altezza minima:"
   },
   "qf.toolbarMinimumHeight.tooltip": {
-    "message": "Per i MacOS soggetti al [Bug 25021]"
+    "message": "Per i sistemi Mac soggetti al [Bug 25021]"
   },
   "qf.tooltip.RecentFolders": {
     "message": "Cartelle recenti"
   },
   "qf.tooltip.closeToolbar": {
-    "message": "Chiudi questa barra degli strumenti"
+    "message": "Chiudi questa barra di navigazione"
   },
   "qf.tooltip.conversationRead": {
-    "message": "Segna la conversazione come già letta e salta al successivo messaggio di posta elettronca non letto"
+    "message": "Segna la conversazione come già letta e salta al successivo messaggio non letto"
   },
   "qf.tooltip.emailIcon": {
-    "message": "Messaggio di posta elettronica corrente - trascinarlo su una scheda QuickFolders per spostarlo"
+    "message": "Messaggio di posta corrente: per spostarlo, trascinarlo su una scheda QuickFolders"
   },
   "qf.tooltip.filterStart": {
-    "message": "Attiva la modalità di apprendimento per i filtri. Il trascinamento dei messaggi di posta elettronica su una scheda QuickFolders crea nuovi filtri."
+    "message": "Attiva la modalità di apprendimento per i filtri. Per creare nuovi filtri trascina i messaggi su una scheda QF."
   },
   "qf.tooltip.filters": {
     "message": "Arresta la creazione dei filtri."
@@ -1352,13 +1391,13 @@
     "message": "Opzioni di QuickFolders e comandi avanzati"
   },
   "qf.tooltip.paintCanActive": {
-    "message": "Modalità pittura: fare clic per la tavolozza, fare clic sulle schede per colorarle, fare clic con il pulsante destro del mouse sulle schede per estrarne il colore"
+    "message": "Modalità Paint: fare clic per la tavolozza, fare clic sulle schede per colorarle, fare clic con il pulsante dx del mouse sulle schede per prelevarne il colore"
   },
   "qf.tooltip.quickFoldersNavToggle": {
     "message": "Attiva/disattiva la navigazione fra messaggi non letti/tutti i messaggi"
   },
   "qf.tooltip.quickMove": {
-    "message": "Trascinare un messaggio di posta elettronica qui e poi inserire il nome della cartella-destinazione (quickMove); oppure fare clic per andare direttamente alla cartella (quickJump)"
+    "message": "Trascinare un messaggio qui e poi inserire il nome della cartella-destinazione [quickMove]; oppure fare clic per andare direttamente dentro a una cartella [quickJump]."
   },
   "qf.tooltip.skipUnreadFolder": {
     "message": "Salta alla cartella successiva non letta"
@@ -1373,25 +1412,25 @@
     "message": "Non aprire la scheda con la cronologia delle versioni"
   },
   "qf.youtube.description": {
-    "message": "Per trovare dei video dettagliati riguardanti le estensioni di Thunderbird e come usare QuickFolders visitate il mio canale YouTube 'Thunderbird Daily'"
+    "message": "Per trovare dei video sulle estensioni di Thunderbird e su come usare QuickFolders, visitare il mio canale YouTube Thunderbird Daily."
   },
   "qf.youtube.link": {
-    "message": "Guarda i video su QuickFolders…"
+    "message": "Guarda i video di QuickFolders…"
   },
   "qf.youtube.tbdaily": {
-    "message": "Visitare il canale YouTube 'Thunderbird Daily' per trovare suggerimenti e una guida introduttiva a QuickFolders"
+    "message": "Per avere suggerimenti e per una guida introduttiva a QuickFolders, visitare il canale YouTube \"Thunderbird Daily\"."
   },
   "qfAlertCopyString": {
-    "message": "Valore dei contenuti della cartella QuickFolders copiato negli appunti!"
+    "message": "Nomi di tutte le schede QF copiati negli appunti"
   },
   "qfAlertDropFolderVirtual": {
-    "message": "Non si possono copiare messaggi in una cartella virtuale!"
+    "message": "Non è possibile copiare messaggi in una cartella virtuale!"
   },
   "qfAlertUpgradeSuccess": {
     "message": "QuickFolders è stato aggiornato con successo alla versione:"
   },
   "qfAll": {
-    "message": "(Visualizza tutte)"
+    "message": "Visualizza tutto"
   },
   "qfCantMoveFolder": {
     "message": "La cartella {0} non può essere spostata."
@@ -1399,17 +1438,23 @@
   "qfColorPickingWIP": {
     "message": "Spiacente, questa caratteristica non è ancora disponibile!"
   },
+  "qfCommandAccess": {
+    "message": "Q"
+  },
   "qfCommandPopup": {
     "message": "Comandi di QuickFolders"
   },
   "qfCompactFolder": {
-    "message": "Compatta la cartella"
+    "message": "Compatta cartella"
+  },
+  "qfCompactFolderAccess": {
+    "message": "C"
   },
   "qfCompacted": {
-    "message": "Compattato/a:"
+    "message": "Compattata:"
   },
   "qfCompactedBytesFreed": {
-    "message": "Byte eliminati"
+    "message": "Byte cancellati"
   },
   "qfCompactedFolder": {
     "message": "Cartella compattata"
@@ -1424,7 +1469,7 @@
     "message": "Copiare davvero la cartella {0} in {1}?"
   },
   "qfConfirmMoveFolder": {
-    "message": "Veramente si vuole spostare la cartella {0} nella {1}?"
+    "message": "Si vuole davvero spostare la cartella {0} nella {1}?"
   },
   "qfConfirmVersionLink": {
     "message": "Visualizza la cronologia delle versioni di QuickFolders"
@@ -1442,7 +1487,7 @@
     "message": "E"
   },
   "qfDeleteJunk": {
-    "message": "Elimina posta indesiderata"
+    "message": "Svuota Posta Indesiderata"
   },
   "qfDown": {
     "message": "Giù"
@@ -1457,19 +1502,19 @@
     "message": "P"
   },
   "qfEmptiedJunk": {
-    "message": "Posta indesiderata svuotata e cartella compattata"
+    "message": "Posta Indesiderata svuotata e cartella compattata"
   },
   "qfEmptiedTrash": {
     "message": "Cestino svuotato."
   },
   "qfEmptyJunk": {
-    "message": "Svuota posta indesiderata"
+    "message": "Svuota Posta Indesiderata"
   },
   "qfEmptyJunkAccess": {
     "message": "I"
   },
   "qfEmptyTrash": {
-    "message": "Svuota cestino"
+    "message": "Svuota Cestino"
   },
   "qfEmptyTrashAccess": {
     "message": "S"
@@ -1481,16 +1526,19 @@
     "message": "La cartella ha già una scheda."
   },
   "qfFolderOpenLocation": {
-    "message": "Esplora la posizione della cartella…"
+    "message": "Esplora posizione della cartella…"
   },
   "qfFolderPopup": {
     "message": "Comandi della cartella di posta"
   },
   "qfFolderProperties": {
-    "message": "Proprietà della cartella…"
+    "message": "Proprietà cartella…"
+  },
+  "qfFolderPropertiesAccess": {
+    "message": "P"
   },
   "qfFolderRepair": {
-    "message": "Ripara la cartella"
+    "message": "Ripara cartella"
   },
   "qfFolderRepairAccess": {
     "message": "L"
@@ -1511,7 +1559,7 @@
     "message": "Inserisci separatore"
   },
   "qfInvalidTabCount": {
-    "message": "Trovate {0} schede con una destinazione di cartella non valida. Puoi rimuoverli utilizzando il comando '{1}' dal menu degli strumenti di QuickFolders."
+    "message": "Trovate {0} schede aventi cartella-destinazione non valida. È possibile rimuoverle usando il comando '{1}' dal menu degli strumenti di QuickFolders."
   },
   "qfMarkAllRead": {
     "message": "Segna la cartella come già letta"
@@ -1523,13 +1571,13 @@
     "message": "Segna la cartella e le sottocartelle come già lette"
   },
   "qfMarkAllRead.next": {
-    "message": "Contrassegna la cartella come letta e passa alla successiva cartella non letta"
+    "message": "Segna la cartella come letta e passa alla successiva cartella non letta"
   },
   "qfMenuColor": {
     "message": "Colore"
   },
   "qfMenuTabColorDisabledInTheme": {
-    "message": "Selezionare un tema differente per supportare la colorazione…"
+    "message": "Per consentire la colorazione seleziona un tema differente…"
   },
   "qfMenuTabColorNone": {
     "message": "Nessun colore!"
@@ -1538,13 +1586,16 @@
     "message": "Colore scheda"
   },
   "qfMoveFolderOrNewTab": {
-    "message": "Trascina le cartelle in un'area vuota della barra degli strumenti - Per SPOSTARE una cartella, tieni premuto MAIUSC e trascina su una scheda."
+    "message": "Trascinare le cartelle in un'area vuota della barra degli strumenti - Per spostare una cartella, tener premuto il tasto Maiusc (Shift) e trascinarla su una scheda."
   },
   "qfNavigationWrapped": {
-    "message": "Non è stata trovata nessun'altra cartella. Proseguo in  {1}."
+    "message": "Non è stata trovata alcuna cartella non letta. Continuo in {1}."
   },
   "qfNewFolder": {
     "message": "Nuova sottocartella…"
+  },
+  "qfNewFolderAccess": {
+    "message": "N"
   },
   "qfNewName": {
     "message": "Inserisci un nuovo nome per la scheda"
@@ -1564,6 +1615,9 @@
   "qfRemoveBookmark": {
     "message": "Rimuovi scheda"
   },
+  "qfRemoveBookmarkAccess": {
+    "message": "R"
+  },
   "qfRemoveCategory": {
     "message": "Rimuovi dalla categoria corrente"
   },
@@ -1571,7 +1625,7 @@
     "message": "Rimuovere la categoria denominata '{1}'?"
   },
   "qfRemoveIcon": {
-    "message": "Rimuovi icona"
+    "message": "Rimuovi icona personalizzata"
   },
   "qfRemoveLineBreak": {
     "message": "Elimina interruzione di riga"
@@ -1582,8 +1636,14 @@
   "qfRenameBookmark": {
     "message": "Rinomina scheda…"
   },
+  "qfRenameBookmarkAccess": {
+    "message": "N"
+  },
   "qfRenameFolder": {
     "message": "Rinomina cartella…"
+  },
+  "qfRenameFolderAccess": {
+    "message": "R"
   },
   "qfRepairTreeIconsMissing": {
     "message": "I seguenti file di icone non esistono:"
@@ -1592,10 +1652,10 @@
     "message": "Salvare queste modifiche?"
   },
   "qfSelectIcon": {
-    "message": "Icona…"
+    "message": "Personalizza icona…"
   },
   "qfSetCategory": {
-    "message": "Imposta la categoria della scheda…"
+    "message": "Imposta categoria scheda…"
   },
   "qfSetCategoryA": {
     "message": "I"
@@ -1610,13 +1670,13 @@
     "message": "Proprietà scheda-specifiche…"
   },
   "qfTabDeleteOption": {
-    "message": "Fai questo con le {0} rimanenti cartelle."
+    "message": "Fa questo con le {0} restanti cartelle."
   },
   "qfTabDeletePrompt": {
     "message": "Eliminare questa scheda?"
   },
   "qfThisTabIsInvalid": {
-    "message": "$tabName$ è una scheda con destinazione cartella non valida. Questo problema può essere causato da una cartella rimossa o da dettagli del server modificati.",
+    "message": "$tabName$ è una scheda con cartella-destinazione non valida. Questo problema può essere causato da una cartella rimossa o da modifiche al server.",
     "placeholders": {
       "tabName": {
         "content": "$1"
@@ -1630,55 +1690,55 @@
     "message": "{0} icone mancanti"
   },
   "qfTreeIconsRepairedCount": {
-    "message": "Riparata/e {0} icona/e della struttura delle cartelle"
+    "message": "Riparate {0} icone dell'albero delle cartelle"
   },
   "qfUncategorized": {
-    "message": "(Categoria non assegnata)"
+    "message": "Categoria non assegnata"
   },
   "qfUp": {
     "message": "Su"
   },
   "qfUpdatedThemesEngineMsg": {
-    "message": "È stato installato un nuovo motore per i temi di QuickFolders. Selezionare un elemento dal menu a discesa e fare clic su [Ok]."
+    "message": "È stato installato un nuovo motore per i temi di QuickFolders. Selezionare un elemento dal menu a discesa e fare clic su [OK]."
   },
   "qfVersionDisableOnUpdate": {
-    "message": "Evitare la visualizzazione della cronologia delle versioni dopo gli aggiornamenti?"
+    "message": "Evitare di visualizzare la cronologia delle versioni dopo gli aggiornamenti?"
   },
   "quickMove.help.head": {
-    "message": "Aiuto per {1}"
+    "message": "Guida per {1}"
   },
   "quickMove.help.head.advanced": {
-    "message": "Funzionalità avanzate"
+    "message": "Caratteristiche avanzate"
   },
   "quickMove.help.l1a": {
-    "message": "Digita l'inizio del nome di una cartella o delle parole al suo interno, delimitate da uno spazio."
+    "message": "Digita le lettere iniziali del nome di una cartella (o di parole in esso contenute), delimitate da uno spazio."
   },
   "quickMove.help.l1b": {
-    "message": "I seguenti caratteri sono considerati limiti di parola e non devono essere digitati:"
+    "message": "I seguenti caratteri sono considerati di 'confine' tra le parole e non è necessario digitarli:"
   },
   "quickMove.help.l2a": {
-    "message": "Digitare {1} per inserire la cartella nonni/genitori/cercati."
+    "message": "Digitare {1} per poter inserire la cartella \"nonno/genitore/cartella cercata\"."
   },
   "quickMove.help.l2b": {
-    "message": "Di solito sono sufficienti le prime 2 lettere di qualsiasi cartella principale. Puoi anche creare nuove sottocartelle con questa sintassi."
+    "message": "Di solito sono sufficienti i primi due caratteri di qualsiasi cartella \"genitore\". Con questa sintassi è anche possibile creare nuove sottocartelle."
   },
   "quickMove.help.l3a": {
-    "message": "Digita {1} per saltare le cartelle intermedie."
+    "message": "Digitare {1} per saltare le cartelle intermedie."
   },
   "quickMove.help.l3b": {
-    "message": "Questo è utile per gerarchie di cartelle più profonde, più complicate o sconosciute."
+    "message": "Ciò risulta utile nel caso di gerarchie di cartelle aventi percorso più lungo, complesso o sconosciuto."
   },
   "quickMove.help.l4a": {
-    "message": "Digitare {1} per ottenere un elenco delle cartelle che sono state inserite più di recente. Il numero di risultati dipende dal tuo livello di licenza."
+    "message": "Digitare {1} per ottenere l'elenco delle cartelle inserite più recentemente. Il numero di risultati dipende dal tipo di licenza."
   },
   "quickMove.help.advanced": {
-    "message": "Funzioni più avanzate come le scorciatoie da tastiera per andare in una cartella/spostare la posta o escludere le cartelle dai risultati della ricerca possono essere configurate nella scheda QuickFolders Pro. Per accedere a queste e ad altre funzionalità premium, ottieni una licenza Pro e supporta il futuro di QuickFolders."
+    "message": "Nelle schede QuickFolders Pro è possibile configurare funzioni più avanzate come le scorciatoie da tastiera per spostarsi in una specifica cartella, per spostare la posta o per escludere delle cartelle dai risultati di ricerca. Per accedere a queste e ad altre caratteristiche Premium, bisogna acquistare una licenza Pro supportando così il futuro di QuickFolders."
   },
   "quickMove.singleMessage.goNext": {
-    "message": "Visualizza la posta successiva dopo aver spostato quella corrente"
+    "message": "Visualizza il messaggio successivo dopo aver spostato quello corrente"
   },
   "quickMove.singleMessage.reopenTab": {
-    "message": "Riapri la posta originale dopo che è stata spostata"
+    "message": "Riapri il messaggio originale dopo che è stato spostato"
   },
   "quickMove.singleMessageTabs": {
     "message": "Scheda messaggio singolo"
@@ -1696,16 +1756,16 @@
     "message": "Mostra la casella con il nome della cartella"
   },
   "quickfolders.quickMove.menu.suspend": {
-    "message": "Vai alla cartella (senza spostare messaggi)"
+    "message": "Vai alla cartella senza spostare messaggi"
   },
   "quickfolders.readingList.addCurrent": {
     "message": "Aggiungi elemento corrente"
   },
   "quickfolders.readingList.clear": {
-    "message": "Svuota 'Da leggere'"
+    "message": "Svuota l'elenco dei messaggi importanti"
   },
   "quickfolders.readingList.tooltip": {
-    "message": "Da leggere"
+    "message": "Lista dei messaggi importanti"
   },
   "quickfolders.toolbar.newsubfolder": {
     "message": "Nuova sottocartella…"
@@ -1720,14 +1780,13 @@
     "message": "Messaggio spostato nella cartella {2}; {1} messaggi spostati nella cartella {2}"
   },
   "renew-your-license": {
-    "message": "Renouvelez votre licence."
+    "message": "Rinnova la tua licenza."
   },
   "special-offer-content": {
-    "message": "Aggiorna le tue funzionalità e risparmia {boldStart}$reduction${boldEnd} acquistando una licenza {linkStartPro}QuickFolders Pro{linkEnd}! Questa offerta speciale sarà disponibile fino al {boldStart}$expirydate${boldEnd}. Oppure scegli le funzioni standard con la nuova {linkStart}Licenza Standard{linkEnd}.",
+    "message": "Aggiorna le caratteristiche a disposizione e risparmia {boldStart}$reduction${boldEnd} acquistando una licenza {linkStartPro}QuickFolders Pro{linkEnd}! Questa offerta speciale sarà disponibile fino a {boldStart}$expirydate${boldEnd}. Oppure scegli le funzioni standard sottoscrivendo la nuova {linkStart}Licenza Standard{linkEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "August 22"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",
@@ -1736,7 +1795,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Rinnova ora la tua licenza e risparmia {boldStart}$reduction${boldEnd}! Questa offerta speciale sarà disponibile fino al {boldStart}$expirydate${boldEnd}.",
+    "message": "Rinnova ora la tua licenza e risparmia {boldStart}$reduction${boldEnd}! Questa offerta speciale sarà disponibile fino a {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1749,11 +1808,10 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Esegui subito l'upgrade da QuickFolders Standard a Pro e risparmia {boldStart}$reduction${boldEnd}! Questa offerta speciale sarà disponibile fino al {boldStart}$expirydate${boldEnd}.",
+    "message": "Esegui subito l'aggiornamento da QuickFolders Standard a Pro e risparmia {boldStart}$reduction${boldEnd}! Questa offerta speciale sarà disponibile fino a {boldStart}$expirydate${boldEnd}.",
     "placeholders": {
       "expirydate": {
-        "content": "$1",
-        "example": "September 11"
+        "content": "$1"
       },
       "reduction": {
         "content": "$2",
@@ -1762,13 +1820,13 @@
     }
   },
   "special-offer-upgrade-condition": {
-    "message": "Quando esegui l'upgrade da Standard, ricevi un anno intero di licenza dalla data di acquisto, indipendentemente dalla data di scadenza della tua licenza precedente."
+    "message": "Quando si esegue l'aggiornamento dalla licenza Standard, si ottiene un anno intero di licenza a partire dalla data di acquisto, indipendentemente dalla data di scadenza della licenza precedente."
   },
   "special-offer-expiry": {
     "message": "18 dicembre"
   },
   "special-offer-head": {
-    "message": "Aiutaci a mantenere la compatibilità con $addon$",
+    "message": "Aiutaci a mantenere $addon$ compatibile",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1777,7 +1835,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Gentile {name}{boldEnd}, supporta $addon$ ottenendo una licenza. Il codice di Thunderbird si evolve continuamente e abbiamo bisogno del {boldStart}tuo aiuto{boldEnd} per stare al passo!",
+    "message": "{boldStart}Gentile {name}{boldEnd}, supporta $addon$ sottoscrivendo una licenza. Il codice-programma di Thunderbird si evolve continuamente e abbiamo bisogno del {boldStart}tuo aiuto{boldEnd} per stare al passo!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1804,7 +1862,7 @@
     }
   },
   "testDrive": {
-    "message": "È possibile provare le caratteristiche della versione Premium usando la versione gratuita di QuickFolders,. Le funzionalità però sono leggermente ridotte."
+    "message": "La Licenza Standard fornisce alcune caratteristiche che in precedenza erano considerate Premium, rimuovendo talune delle restrizioni presenti nella versione gratuita. Sottoscrivendo una licenza Standard aiuti a manutenere il prodotto, adeguandolo alle novità che Thunderbird introduce e che mirano ad integrare il programma con le relative estensioni tramite l'uso di un'architettura in continua evoluzione. Ciò richiede alle estensioni di aggiornarsi continuamente per potersi mantenere funzionanti."
   },
   "thanks-for-installing-intro": {
     "message": "Grazie per aver installato $addonName$.",
@@ -1825,7 +1883,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ richiede modifiche continue per rimanere compatibile con la piattaforma Mozilla. Lavoro costantemente per mantenere il maggior numero di funzionalità possibile per le future versioni di Thunderbird.",
+    "message": "$addonName$ richiede modifiche continue per rimanere compatibile con la piattaforma Mozilla. Lavoro costantemente per mantenere compatibile il maggior numero possibile di funzionalità con le prossime versioni di Thunderbird.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1837,14 +1895,14 @@
     "message": "A:"
   },
   "toAddress.tooltip": {
-    "message": "Quando si compoongono nuovi messaggi di posta elettronica usa il destinatario predefinito"
+    "message": "Destinatario predefinito quando si compongono nuovi messaggi di posta elettronica"
   },
   "translated-by-google": {
     "description": "disclaimer.",
-    "message": "traduzioni fornite da google"
+    "message": "traduzioni fornite da Google"
   },
   "update.tooltip": {
-    "message": "Fai clic qui una volta per leggere le novità di $addonName$.",
+    "message": "Fare clic qui per leggere le novità di $addonName$.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1856,23 +1914,23 @@
     "message": "Aggiornamenti"
   },
   "updatesExpiry": {
-    "message": "QuickFolders Pro viene automaticamente aggiornato tramite addons.thunderbird.net. È possibile rinnovare la licenza alla scadenza annuale o decidere di mantenere l'uso delle caratteristiche della versione Premium alle stesse condizioni degli utilizzatori della versione gratuita. Le caratteristiche 'Premium exclusive' richiedono una chiave di registrazione valida."
+    "message": "Le caratteristiche di QuickFolders Pro verranno aggiornate automaticamente quando disponibili, tramite addons.thunderbird.net. Alla scadenza annuale è possibile rinnovare la licenza o decidere di usare le caratteristiche \"Premium\" con le stesse restrizioni degli utenti privi di licenza. L'utilizzo completo delle caratteristiche \"Premium\" infatti richiede una chiave di registrazione valida."
   },
   "vouchers.title": {
     "message": "Buoni"
   },
   "whats-new-btn": {
-    "message": "Cosa c'è di nuovo?"
+    "message": "Novità"
   },
   "whats-new-head": {
     "message": "Cambiamenti importanti"
   },
   "whats-new-intro": {
-    "message": "Leggi il registro delle modifiche dettagliato qui (solo in inglese):"
+    "message": "Leggi qui (in inglese) l'elenco dettagliato delle modifiche:"
   },
   "whats-new-list": {
-    "message": "{L1} 6.4.1: Qualsiasi voce di menu degli strumenti (come supporto o licenza) attiva ora la pagina delle impostazioni corretta anche quando le impostazioni sono già visualizzate.{L2}{L1} Ulteriori impostazioni per QuickFolders sono ora accessibili su tutti i sistemi operativi. Queste sono ora accessibili con una piccola icona a pignone accanto all'opzione principale.{L2}{L1} Il caricamento della configurazione dalle impostazioni funziona di nuovo [issue 425] {L2} {L1} Rimossi ombre di testo indesiderate in alcune parti dell'interfaccia utente.{L2} {L1} Risolti vari problemi con i sottomenu delle cartelle sospese. {L2} {L1} Migliorato il pannello delle proprietà specifiche della scheda{L2} {L1} La voce del menu contestuale 'personalizza icona' non scompare più.{L2}"
-  },   
+    "message": "{L1}Aggiunto un avvertimento visivo 10 giorni prima della scadenza della licenza.{L2} {L1}Corretto il numero di giorni di licenza rimanenti arrotondandolo per eccesso.{L2} {L1}Corretta la \"Compattazione cartella\" nel sottomenu della cartella corrente.{L2}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Benvenuto in $addonName$",
@@ -1887,18 +1945,18 @@
     "message": "Proprietà avanzate"
   },
   "yearlyLicense.premiumFeatures": {
-    "message": "QuickFolders Pro consente un accesso completo alle caratteristiche della versione Premium."
+    "message": "QuickFolders Pro consente un accesso senza restrizioni alle caratteristiche Premium."
   },
   "yearlyLicense.premiumFeatures.moreInfoLink": {
-    "message": "Informazioni addizionali sulle caratteristiche della versione Premium."
+    "message": "Informazioni addizionali sulle caratteristiche Premium."
   },
   "yearlyLicense.title": {
     "message": "Licenza annuale"
   },
   "yearlyLicense.usageTerm": {
-    "message": "La licenza è per uso personale ed è collegata all'indirizzo di posta elettronica. È possibiile utilizzarla in molteplici installazioni di client di posta elettronica, sempre che questi siano configurati per utilizzare tale indirizzo di email."
+    "message": "La licenza è per uso personale ed è collegata all'indirizzo di posta elettronica. È possibiile utilizzarla in molteplici installazioni del client di posta elettronica, sempre che queste siano configurate per utilizzare tale indirizzo di posta elettronica."
   },
   "yearlyLicense.usageTerm1": {
-    "message": "Eventuali indirizzi e-mail aggiuntivi non sono un problema: non richiedono una licenza separata. In caso di domande puoi contattarmi tramite la scheda di supporto."
+    "message": "Eventuali indirizzi di posta elettronica aggiuntivi non rappresentano un problema: essi non richiedono una licenza separata. Nel caso vi fossero dei problemi, è possibile contattarmi tramite la scheda di supporto."
   }
 }

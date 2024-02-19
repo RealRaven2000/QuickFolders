@@ -283,6 +283,9 @@
   "qf.checkbox.showIcons": {
     "message": "Hiển thị các biểu tượng (Hộp thư đến, hộp thư đi, hiện tại, thùng rác)"
   },
+  "qf.checkbox.showIconButtons": {
+    "message": "Tùy chỉnh biểu tượng"
+  },  
   "qf.checkbox.showMessageNavigation": {
     "message": "Nút Điều Hướng Tin Nhắn"
   },
@@ -625,7 +628,7 @@
     "message": "Đổi tên danh mục được chọn"
   },
   "qf.label.setcolors": {
-    "message": "Chọn [Màu chữ, màu nền"
+    "message": "Chọn [Màu chữ], [màu nền]"
   },
   "qf.label.tabContent": {
     "message": "Nội dung thẻ"
@@ -772,7 +775,7 @@
     "message": "Bây giờ bạn đã xác định {1} dấu trang. Phiên bản miễn phí của QuickFolders cho phép tối đa {2}."
   },
   "qf.notification.premium.shortcut": {
-    "message": "Giấy phép cao cấp cũng cung cấp cho bạn một phím tắt có thể định cấu hình."
+    "message": "Giấy phép Pro cung cấp thêm một phím tắt có thể cấu hình."
   },
   "qf.notification.premium.tabIcons": {
     "message": "Bây giờ bạn sử dụng $cntIcons$ biểu tượng tùy chỉnh cho các Tab. Phiên bản QuickFolders không phải trả phí hỗ trợ tối đa $maxFreeIcons$. Giấy phép tiêu chuẩn hỗ trợ $maxStdIcons $. QuickFolders Pro không có giới hạn.",

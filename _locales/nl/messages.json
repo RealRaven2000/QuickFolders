@@ -295,6 +295,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "Kon tabbladen niet aanmaken. Zie Extra > Foutconsole voor meer details."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Momenteel niet-ondersteund bladwijzertype: $bookmarkType$ {NewLine}Selecteer minstens één bericht of sleep gewoon e-mails over de knop",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },
   "qf.backupAndRestore": {
     "message": "Back-up / Herstel"
   },
@@ -867,6 +875,9 @@
   "qf.label.menus.mailFolder": {
     "message": "E-mailopdrachten"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Openen in nieuw tabblad"
+  },
   "qf.label.menus.options": {
     "message": "Opties"
   },
@@ -1306,6 +1317,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders-werkbalk"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Aangepaste pictogramgrootte"
+  },  
   "qf.toolbarIconSize": {
     "message": "Grote werkbalkpictogrammen"
   },
@@ -1315,6 +1329,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Voor Mac-systemen die te maken hebben met [Bug 25021]"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Bovenste opvulling"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Recente mappen"
   },
@@ -1501,6 +1518,9 @@
   "qfFolderRepairedMsg": {
     "message": "Map is gerepareerd:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Berichten zoeken"
+  },  
   "qfGetMail": {
     "message": "Berichten ophalen"
   },

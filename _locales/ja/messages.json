@@ -286,6 +286,17 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "タブを作成できませんでした。詳細は [ツール] > [エラーコンソール] を見てください。"
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "現在未対応のブックマークタイプ：$bookmarkType$ {NewLine}メッセージを少なくとも1つ選択するか、単にボタンの上にメールをドラッグしてください",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
+  "qf.backupAndRestore": {
+    "message": "復元する"
+  },
   "qf.button.add": {
     "message": "追加"
   },
@@ -840,6 +851,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Mail コマンド"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "新しいタブで開く"
+  },
   "qf.label.menus.options": {
     "message": "オプション"
   },
@@ -1237,6 +1251,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders ツールバー"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "カスタムアイコンサイズ"
+  },
   "qf.toolbarIconSize": {
     "message": "大きなツールバーアイコン"
   },
@@ -1246,6 +1263,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "[Bug 25021] のバグに遭遇した Mac システムのユーザ向けです"
   },
+  "qf.toolbarTopPadding": {
+    "message": "上の余白"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "最近開いたフォルダ"
   },
@@ -1411,6 +1431,9 @@
   "qfFolderRepairedMsg": {
     "message": "フォルダが修復されました:"
   },
+  "qfFolderSearchMessages": {
+    "message": "メッセージを検索"
+  },  
   "qfInsertLineBreak": {
     "message": "改行を挿入"
   },

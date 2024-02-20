@@ -169,6 +169,20 @@
   "qf.accounts": {
     "message": "Tài khoản"
   },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Không thể tạo tab. Xem công cụ/bảng điều khiển lỗi để biết thêm chi tiết."
+  },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Loại đánh dấu hiện tại không được hỗ trợ: $bookmarkType$ {NewLine}Chọn ít nhất một tin nhắn hoặc chỉ cần kéo thư vào trên nút",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
+  "qf.backupAndRestore": {
+    "message": "Sao lưu / Khôi phục"
+  },  
   "qf.button.add": {
     "message": "Thêm!"
   },
@@ -606,6 +620,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Các Lệnh về Thư"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Mở trong tab mới"
+  },
   "qf.label.menus.options": {
     "message": "Tùy chọn"
   },
@@ -928,9 +945,15 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Thanh công cụ QuickFolders"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Kích thước biểu tượng tùy chỉnh"
+  },  
   "qf.toolbarIconSize": {
     "message": "Các biểu tượng trên Thanh công cụ lớn"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Lề trên"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Các thư mục gần đây nhất"
   },

@@ -309,6 +309,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "Could not create tabs. See tools / error console for more detail."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Currently unsupported bookmark type: $bookmarkType$ {NewLine}Select at least one message or just drag mails on top of the button",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }    
+  },
   "qf.backupAndRestore": {
     "message": "Backup / Restore"
   },
@@ -896,6 +904,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Mail Commands"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Open in New Tab"
+  },
   "qf.label.menus.options": {
     "message": "Options"
   },
@@ -1351,6 +1362,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders Toolbar"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Custom Icon Size"
+  },
   "qf.toolbarIconSize": {
     "message": "Large Toolbar Icons"
   },
@@ -1359,6 +1373,9 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "For Mac systems who encounter [Bug 25021]"
+  },
+  "qf.toolbarTopPadding": {
+    "message": "Top Padding"
   },
   "qf.tooltip.RecentFolders": {
     "message": "Recent Folders"
@@ -1548,6 +1565,9 @@
   },
   "qfFolderRepairedMsg": {
     "message": "Folder was repaired:"
+  },
+  "qfFolderSearchMessages":{
+    "message": "Search Messages"
   },
   "qfGetMail": {
     "message": "Get Messages"

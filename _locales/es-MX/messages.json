@@ -292,6 +292,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "No se pueden crear pestañas. Vea Herramientas | Consola de error para mayores detalles."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Tipo de marcador actualmente no compatible: $bookmarkType$ {NewLine}Seleccione al menos un mensaje o simplemente arrastre los correos electrónicos sobre el botón",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Respaldo / Restauración"
   },
@@ -876,6 +884,12 @@
   "qf.label.menus.mailFolder": {
     "message": "Comandos de Correo"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Abrir en una nueva pestaña"
+  },
+  "qf.toolbarIcon.customSize": {
+    "message": "Tamaño de icono personalizado"
+  },  
   "qf.label.menus.options": {
     "message": "Opciones"
   },
@@ -1306,6 +1320,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Para equipos MAC que encuentren el [BUG 25021]"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Relleno superior"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Carpetas recientes"
   },
@@ -1486,6 +1503,9 @@
   "qfFolderRepairedMsg": {
     "message": "La carpeta fue reparada:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Buscar mensajes"
+  },  
   "qfGetMail": {
     "message": "Obtener mensajes"
   },

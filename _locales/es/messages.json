@@ -301,6 +301,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "No se pudieron crear pestañas. Vea 'Herramientas / Consola de errores' para más detalles"
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Tipo de marcador actualmente no compatible: $bookmarkType$ {NewLine}Seleccione al menos un mensaje o simplemente arrastre los correos electrónicos sobre el botón",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Copia de seguridad de restauracion"
   },
@@ -888,6 +896,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Comandos de correo"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Abrir en una nueva pestaña"
+  },
   "qf.label.menus.options": {
     "message": "Opciones"
   },
@@ -1318,6 +1329,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Barra de herramientas de QuickFolders"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Tamaño de icono personalizado"
+  },
   "qf.toolbarIconSize": {
     "message": "Iconos grandes de la barra de herramientas"
   },
@@ -1327,6 +1341,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Para sistemas Mac que se encuentren con el [Bug 25021]"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Relleno superior"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Carpetas recientes"
   },
@@ -1510,6 +1527,9 @@
   "qfFolderRepairedMsg": {
     "message": "La carpeta fue reparada:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Buscar mensajes"
+  },  
   "qfGetMail": {
     "message": "Obtener mensajes"
   },

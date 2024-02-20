@@ -295,6 +295,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "Nie możliwe było utworzenie zakładek. Aby dowiedzieć się więcej sprawdź konsolę narzędzia/błędy."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Obecnie nieobsługiwany typ zakładki: $bookmarkType$ {NewLine}Wybierz przynajmniej jedną wiadomość lub po prostu przeciągnij e-maile na przycisk",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Przywracania kopii zapasowej"
   },
@@ -876,6 +884,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Polecenia w menu wiadomości"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Otwórz w nowej karcie"
+  },
   "qf.label.menus.options": {
     "message": "Opcje"
   },
@@ -1303,6 +1314,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Pasek QuickFolders"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Niestandardowy rozmiar ikony"
+  },
   "qf.toolbarIconSize": {
     "message": "Duże ikony na pasku narzędzi, jak przeczytano"
   },
@@ -1312,6 +1326,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Dla systemów Mac, jeśli występuje błąd [Bug 25021]"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Górny margines"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Ostatnio otwierane"
   },
@@ -1495,6 +1512,9 @@
   "qfFolderRepairedMsg": {
     "message": "Katalog został naprawiony:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Szukaj wiadomości"
+  },  
   "qfGetMail": {
     "message": "Pobierz wiadomości"
   },

@@ -298,6 +298,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "Не удалось создать закладки. См. «Инструменты» → «Консоль ошибок» для подробной информации."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Текущий не поддерживаемый тип закладки: $bookmarkType$ {NewLine}Выберите хотя бы одно сообщение или просто перетащите письма на кнопку",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Восстановления резервной копии"
   },
@@ -882,6 +890,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Команды сообщений"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Открыть в новой вкладке"
+  },
   "qf.label.menus.options": {
     "message": "Настройки"
   },
@@ -1330,6 +1341,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Панель инструментов QuickFolders"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Пользовательский размер значка"
+  },  
   "qf.toolbarIconSize": {
     "message": "Большие значки панели инструментов"
   },
@@ -1339,6 +1353,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Для Mac систем страдающих от [ошибка 25021]"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Верхний отступ"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Последние папки"
   },
@@ -1528,6 +1545,9 @@
   "qfFolderRepairedMsg": {
     "message": "Починили папку:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Поиск сообщений"
+  },  
   "qfGetMail": {
     "message": "Получить сообщения"
   },

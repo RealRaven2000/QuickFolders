@@ -286,6 +286,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "Zavihkov ni bilo mogoče ustvariti. Za več podrobnosti glejte konzolo orodja/konzolo za napake."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Trenutno nesprejeti tip zaznamka: $bookmarkType$ {NewLine}Izberite vsaj eno sporočilo ali preprosto povlecite e-pošto na gumb",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Varnostno kopiranje / obnovitev"
   },
@@ -840,6 +848,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Poštni ukazi"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Odpri v novem zavihku"
+  },
   "qf.label.menus.options": {
     "message": "Možnosti"
   },
@@ -1276,6 +1287,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Orodna vrstica QuickFolders"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Prilagojena velikost ikone"
+  },  
   "qf.toolbarIconSize": {
     "message": "Velike ikone orodne vrstice"
   },
@@ -1285,6 +1299,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Za sisteme Mac, ki naletijo na [Hrošča 25021]"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Vrhnji rob"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Nedavne mape"
   },
@@ -1459,6 +1476,9 @@
   "qfFolderRepairedMsg": {
     "message": "Mapa je bila popravljena:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Iskanje sporočil"
+  },  
   "qfGetMail": {
     "message": "Prejmi sporočila"
   },

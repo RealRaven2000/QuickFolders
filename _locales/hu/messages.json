@@ -266,6 +266,14 @@
   "qf.accounts": {
     "message": "Fiókok"
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Jelenleg nem támogatott könyvjelző típus: $bookmarkType$ {NewLine}Válasszon ki legalább egy üzenetet, vagy csak húzza az e-maileket a gombra",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Biztonsági mentés visszaállítása"
   },
@@ -796,6 +804,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Mail Parancsok"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Megnyitás új lapon"
+  },
   "qf.label.menus.options": {
     "message": "Opciók"
   },
@@ -1175,11 +1186,17 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders eszköztár"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Egyéni ikonméret"
+  },  
   "qf.toolbarIconSize": {
     "message": "Nagy eszköztár ikonok"
   },
   "qf.toolbarMinimumHeight": {
     "message": "Minimális magasság:"
+  },
+  "qf.toolbarTopPadding": {
+    "message": "Felső kitöltés"
   },
   "qf.tooltip.RecentFolders": {
     "message": "Előző mappák"
@@ -1340,6 +1357,9 @@
   "qfFolderRepairedMsg": {
     "message": "Mappa javítva:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Üzenetek keresése"
+  },  
   "qfGetMail": {
     "message": "Üzenetek letöltése"
   },

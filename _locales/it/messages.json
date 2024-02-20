@@ -306,6 +306,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "Impossibile creare schede. Per maggiori dettagli andare su Strumenti/Console degli errori."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Tipo di segnalibro attualmente non supportato: $bookmarkType$ {NewLine}Seleziona almeno un messaggio o trascina semplicemente le email sopra il pulsante",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Backup / Ripristino"
   },
@@ -893,6 +901,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Comandi per la Posta"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Apri in una nuova scheda"
+  },
   "qf.label.menus.options": {
     "message": "Opzioni"
   },
@@ -1348,6 +1359,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Barra degli strumenti QuickFolders"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Dimensione icona personalizzata"
+  },  
   "qf.toolbarIconSize": {
     "message": "Icone grandi nella barra degli strumenti"
   },
@@ -1357,6 +1371,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Per i sistemi Mac soggetti al [Bug 25021]"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Padding superiore"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Cartelle recenti"
   },
@@ -1546,6 +1563,9 @@
   "qfFolderRepairedMsg": {
     "message": "La cartella è stata riparata:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Cerca messaggi"
+  },  
   "qfGetMail": {
     "message": "Scarica messaggi"
   },

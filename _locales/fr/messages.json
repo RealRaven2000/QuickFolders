@@ -309,6 +309,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "Impossible de créer les onglets. Consultez la console outils / erreurs pour plus de détails."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Type de marque-page actuellement non pris en charge : $bookmarkType$ {NewLine}Sélectionnez au moins un message ou faites simplement glisser les e-mails sur le bouton",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Sauvegarde : Restauration"
   },
@@ -899,7 +907,10 @@
   "qf.label.menus.mailFolder": {
     "message": "Commandes courriel"
   },
-      "qf.label.menus.options": {
+  "qf.label.menus.openInNewTab": {
+    "message": "Ouvrir dans un nouvel onglet"
+  },
+  "qf.label.menus.options": {
       "message": "Options"
   },
   "qf.label.menus.quickFolder": {
@@ -1353,6 +1364,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Barre d'outils QuickFolders"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Taille personnalisée de l'icône"
+  },  
   "qf.toolbarIconSize": {
     "message": "Grandes icônes de la barre d'outils"
   },
@@ -1362,6 +1376,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Pour les systèmes Mac rencontrant le bogue 25021"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Marge supérieure"
+  },    
   "qf.tooltip.RecentFolders": {
     "message": "Dossiers récents"
   },
@@ -1542,6 +1559,9 @@
   "qfFolderRepairedMsg": {
     "message": "Le dossier a été réparé :"
   },
+  "qfFolderSearchMessages": {
+    "message": "Rechercher des messages"
+  },  
   "qfGetMail": {
     "message": "Relever les messages"
   },

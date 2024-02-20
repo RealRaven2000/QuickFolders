@@ -306,6 +306,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "No s'han pogut crear les pestanyes. Vegeu eines/consola d'errors per a més detalls."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Tipus de marcador actualment no compatible: $bookmarkType$ {NewLine}Seleccioneu almenys un missatge o simplement arrossegueu els correus electrònics sobre el botó",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Còpia de seguretat / restauració"
   },
@@ -878,6 +886,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Ordres de correu"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Obrir en una pestanya nova"
+  },
   "qf.label.menus.options": {
     "message": "Opcions"
   },
@@ -1290,6 +1301,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Barra d'eines de QuickFolders"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Mida de la icona personalitzada"
+  },
   "qf.toolbarIconSize": {
     "message": "Icones de barra d'eines grans"
   },
@@ -1298,6 +1312,9 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Per a sistemes Mac que es troben amb [Bug 25021]"
+  },
+  "qf.toolbarTopPadding": {
+    "message": "Espai superior"
   },
   "qf.tooltip.RecentFolders": {
     "message": "Carpetes Recents"
@@ -1464,6 +1481,9 @@
   "qfFolderRepairedMsg": {
     "message": "S'ha reparat la carpeta:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Cerca missatges"
+  },  
   "qfGetMail": {
     "message": "Recupera Missatges"
   },

@@ -298,6 +298,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "Kunde inte skapa flikar. Se verktyg / felkonsol för fler detaljer."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "För närvarande stöds inte bokmärkestypen: $bookmarkType$ {NewLine}Välj minst ett meddelande eller dra bara e-postmeddelanden över knappen",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Säkerhetskopiering / återställning"
   },
@@ -879,6 +887,9 @@
   "qf.label.menus.mailFolder": {
     "message": "E-postkommandon"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Öppna i ny flik"
+  },
   "qf.label.menus.options": {
     "message": "Inställningar"
   },
@@ -1321,6 +1332,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders verktygsfält"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Anpassad ikonstorlek"
+  },  
   "qf.toolbarIconSize": {
     "message": "Stora verktygsfältikoner"
   },
@@ -1329,6 +1343,9 @@
   },
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "För Mac-datorer som stöter på buggen [Bug 25021]"
+  },
+  "qf.toolbarTopPadding": {
+    "message": "Övre stoppning"
   },
   "qf.tooltip.RecentFolders": {
     "message": "Nyligen använda mappar"
@@ -1513,6 +1530,9 @@
   "qfFolderRepairedMsg": {
     "message": "En mapp reparerades:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Sök meddelanden"
+  },  
   "qfGetMail": {
     "message": "Hämta meddelanden"
   },

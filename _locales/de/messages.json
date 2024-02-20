@@ -296,6 +296,14 @@
   "qf.alert.pasteFolders.formatErr": {
     "message": "Konnte Tabs nicht erzeugen. Mehr Informationen in Extras / Fehlerkonsole."
   },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Derzeit nicht unterstützter Lesezeichen-Typ: $bookmarkType$ {NewLine}Wählen Sie mindestens eine Nachricht aus oder ziehen Sie E-Mails einfach über die Schaltfläche",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }
+  },  
   "qf.backupAndRestore": {
     "message": "Datensicherung / Wiederherstellen"
   },
@@ -880,6 +888,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Email Kommandos"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "In neuem Tab öffnen"
+  },
   "qf.label.menus.options": {
     "message": "Optionen"
   },
@@ -1298,6 +1309,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders Werkzeugleiste"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Benutzerdefinierte Symbolgröße"
+  },
   "qf.toolbarIconSize": {
     "message": "Große Symbolleistensymbole"
   },
@@ -1307,6 +1321,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "Für Mac System die von [Bug 25021] betroffen sind"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Oberer Abstand"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Kürzlich benutzte Verzeichnisse"
   },
@@ -1489,6 +1506,9 @@
   },
   "qfFolderRepairedMsg": {
     "message": "Verzeichnis wurde repariert:"
+  },
+  "qfFolderSearchMessages": {
+    "message": "Nachrichten suchen"
   },
   "qfGetMail": {
     "message": "Nachrichten abrufen"

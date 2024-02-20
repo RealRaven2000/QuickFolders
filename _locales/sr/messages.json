@@ -253,6 +253,20 @@
   "qf.accounts": {
     "message": "Рачуни"
   },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Није могуће креирати картице. Погледајте алате/конзолу грешака за више детаља."
+  },
+  "qf.alert.bookmarks.unsupportedType": {
+    "message": "Тренутно неподржани тип обележивача: $bookmarkType$ {NewLine} Изаберите најмање једну поруку или само превуците мејлове на врх дугмета",
+    "placeholders": {
+      "bookmarkType": {
+        "content": "$1"
+      }
+    }    
+  },
+  "qf.backupAndRestore": {
+    "message": "Бацкуп / Ресторе"
+  },  
   "qf.button.add": {
     "message": "Додај!"
   },
@@ -768,6 +782,9 @@
   "qf.label.menus.mailFolder": {
     "message": "Наредбе поште"
   },
+  "qf.label.menus.openInNewTab": {
+    "message": "Отвори у новом језичку"
+  },
   "qf.label.menus.options": {
     "message": "Опције"
   },
@@ -1160,6 +1177,9 @@
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders трака са алаткама"
   },
+  "qf.toolbarIcon.customSize": {
+    "message": "Prilagođena veličina ikone"
+  },  
   "qf.toolbarIconSize": {
     "message": "Велике иконе на траци са алаткама"
   },
@@ -1169,6 +1189,9 @@
   "qf.toolbarMinimumHeight.tooltip": {
     "message": "За кориснике Mac система који имају проблем са [Bug 25021]"
   },
+  "qf.toolbarTopPadding": {
+    "message": "Gornja ivica"
+  },  
   "qf.tooltip.RecentFolders": {
     "message": "Недавне фасцикле"
   },
@@ -1340,6 +1363,9 @@
   "qfFolderRepairedMsg": {
     "message": "Фасцикла је поправљена:"
   },
+  "qfFolderSearchMessages": {
+    "message": "Pretraži poruke"
+  },  
   "qfGetMail": {
     "message": "Прими поруке"
   },

@@ -154,7 +154,7 @@ async function onLoad(activatedWhileWindowOpen) {
       collapsed="true"/>
     <toolbarbutton id="QuickFolders-RepairFolderBtn"
       class="icon"
-      tooltiptext="Repair Folder..."
+      tooltiptext="__MSG_qfFolderRepair__"
       oncommand="QuickFolders.Interface.onRepairFolder(null);"
       tag="qfIconRepairFolders"
       collapsed="true"/>

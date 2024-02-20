@@ -370,8 +370,8 @@ QuickFolders.bookmarks = {
           this.addMenuItem(entry);
           break;
         default:
-          util.alert('Currently unsupported bookmark type: ' + uriObject.bookmarkType + '\n'
-                + 'Select at least one message or just drag mails on the button');
+          let msg = util.getBundleString("qf.alert.bookmarks.unsupportedType", uriObject.bookmarkType);
+          util.alert(msg.replace("{NewLine}","\n"));
           return;
       }
       if (earlyExit) break;

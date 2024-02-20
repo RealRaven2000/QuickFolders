@@ -1500,8 +1500,10 @@ QuickFolders.Interface = {
         invalidTxt = util.getBundleString("qfTreeIconsInvalidCount"),
         msg = repairedTxt.replace("{0}", ctRepaired) + "\n"
             + invalidTxt.replace("{0}", ctMissing);
-		if (!silent)
-			util.slideAlert("repairTreeIcons()", msg);
+		if (!silent) {
+			util.slideAlert("QuickFolders", msg);
+		}
+			
     // store icons in entry
     if (ctMissing)
       model.store();
@@ -3003,8 +3005,9 @@ QuickFolders.Interface = {
 		// strip shortcut numbers
 		if(QuickFolders.Preferences.isShowShortcutNumbers) {
 			let i = sOldName.indexOf(". ");
-			if (i<3 && i>0)
+			if (i<3 && i>0) {
 				sOldName = sOldName.substring(i+2,sOldName.length);
+			}
 		}
 		// find if trhere is a number of total messages / unread message in the label, and strip them from renaming!!
 		if (QuickFolders.Preferences.isShowTotalCount || QuickFolders.Preferences.isShowUnreadCount) {
@@ -3741,7 +3744,7 @@ QuickFolders.Interface = {
 
 		// Search Messages
 		let srchMenu = util.getMail3PaneWindow().document.getElementById("QF_folderPaneContext-searchMessages");
-		let searchLabel = srchMenu ? srchMenu.getAttribute("label") : "Search Messages…";
+		let searchLabel = srchMenu ? srchMenu.getAttribute("label") : (this.getUIstring("qfFolderSearchMessages") + "…");
 		menuitem = createMailCmdMenuItem("quickFolders-folderSearchMessages", searchLabel, "qfFolderSearch");
 		if (srchMenu) {
 			let ak = srchMenu.getAttribute("accesskey");
@@ -4407,8 +4410,7 @@ QuickFolders.Interface = {
 
 	createMenuItem_GetMail: function(folder, doc) {
     let server = "?";
-		const QI = QuickFolders.Interface,
-		      id = "QF_folderPaneContext-getMessages"; // uses Thunderbird css
+		const id = "QF_folderPaneContext-getMessages"; // uses Thunderbird css
 		try {
 			// find out the server name
 			// let's clone it ?
@@ -7669,7 +7671,7 @@ QuickFolders.Interface = {
           mail3PaneWindow = util.getMail3PaneWindow();
       
       if (mail3PaneWindow && mail3PaneWindow.QuickFolders) {
-        out += " [" + mail3PaneWindow.QuickFolders.Model.selectedFolders.length + " folders]";
+        out += " [" + mail3PaneWindow.QuickFolders.Model.selectedFolders.length + " tabs]";
       }
       //alert(out);
       Services.prompt.alert(null,"QuickFolders",out);

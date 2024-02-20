@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<!-- replacement file  for quickfolders-advanced-tab-props.xhtml --> 
+  <head>
+    <meta charset="UTF-8">    
+    <!-- theme support -->
+    <meta name="color-scheme" content="dark light">
+    <link rel='stylesheet' type='text/css' href="chrome://global/skin/in-content/common.css">
+    <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/preferences/preferences.css">
+    <link rel='stylesheet' type='text/css' href="chrome://messenger/skin/shared/themeableDialog.css">
+
+    <!-- new rules for xul conversion -->
+    <link rel="stylesheet" href="../chrome/content/skin/qf-compatibility.css">
+    <link rel="stylesheet" href="../chrome/content/skin/quickfolders-tab-advanced.css">
+    <!-- TO DO chrome://quickfolders-skins/content/qf-current.css -->
+    
+
+  </head>
+
+  <body>
+
+    <label id="defaultAccountAddress" collapsed="true">__MSG_defaultAccountAddress.value__</label>  
+    <div class="vbox">
+      <div class="hbox align_center">
+        <div class="hbox align_center" 
+          title="__MSG_windowTitle__" 
+          defaultTitle="__MSG_windowTitle__" 
+          description="[Tab Name]"
+          id="myHeader"
+          flex="1">
+          <label class="dialogheader-title">__MSG_windowTitle__</label>
+          <div class="spacer" flex="1" ></div>
+          <label class="dialogheader-description" id="tabName">[Tab Name]</label> 
+        </div>
+        <button class="close-icon" id="btnClose">x</button>
+      </div>
+  
+      <div class="hbox align_center">
+        <button id="btnCategory" title="__MSG_btnCategory.tooltip__" class="categorySelector">__MSG_btnCategory__:</button> 
+        <label id="lblCategories"></label>
+        <div class="spacer" ></div>
+      </div>
+    
+      <fieldset class="hbox">
+  
+        <legend>__MSG_grpComposer__</legend>
+  
+        <div id="advancedGrid" class="grid-container">
+  
+              <label control="mailIdentity">__MSG_fromAddress__</label>
+              <select id="mailIdentity"
+                        sizetopopup="none"
+                        oncommand="QuickFolders.AdvancedTab.selectIdentity(this);"
+                        tooltiptext="__MSG_fromAddress.tooltip__">									 
+              </select>
+  
+              <label control="txtToAddress">__MSG_toAddress__</label> 
+              <input
+                    type="text"
+                    id="txtToAddress" 
+                    tooltiptext="__MSG_toAddress.tooltip__"/>
+  
+            <!-- span the whole width -->
+            <div class="hbox align_center" style="grid-column: 1 / span 2;">
+              <label>
+                <input type="checkbox" id="chkComposerSubFolders">__MSG_chkComposerSubfolders__
+              </label>
+              <button class="proFeature" 
+                      id="proRecursiveIcon" 
+                      collapsed="true" 
+                      tooltiptext="">    </button>
+            </div>
+        </div>
+      </fieldset>
+      
+      <fieldset class="vbox">
+        <legend>__MSG_grpTabBehavior__</legend>
+        <div class="hbox align_center">
+          <label><input type="checkbox" id="chkIgnoreUnread" title="__MSG_chkIgnoreUnread.tooltip__">
+            __MSG_chkIgnoreUnread__</label>
+          <label><input type="checkbox" id="chkIgnoreCounts"
+            title="__MSG_chkIgnoreCounts.tooltip__">
+            __MSG_chkIgnoreCounts__</label>
+        </div>
+        <div class="hbox align_center">
+          <label>
+            <input type="checkbox" id="chkHideFromQuickJump" title="__MSG_chkHideFromQuickJump.tooltip__">
+            __MSG_chkHideFromQuickJump__
+          </label>
+        </div>
+        <div class="hbox align_center">
+          <label>
+            <input type="checkbox" id="chkSetMailsUnread" title="__MSG_chkSetMailsUnread.tooltip__">
+            __MSG_chkSetMailsUnread__</label>	
+        </div>
+      </fieldset>
+  
+      <fieldset class="vbox">
+        <legend>__MSG_grpCustomCSS__</legend>
+        
+        <div id="styleGrid" class="grid-container">
+          <label class="customCssGridToggle"><input type="checkbox" id="chkCustomCSS"></label>
+          <button oncommand="QuickFolders.AdvancedTab.getCssGradient(event);"
+                  class="textLink">__MSG_cssBackground__</button>
+          <input type="text"
+                id="txtBackground" 
+                tooltiptext="__MSG_cssBackground.tooltip__"/>
+          
+          
+          <button oncommand="QuickFolders.AdvancedTab.getCssColor(event);"
+                  class="textLink">__MSG_cssColor__</button>
+          <div class="hbox align_center grpHorizontalFlex">
+            <input
+                type="text"
+                id="txtColor" 
+                tooltiptext="__MSG_cssColor.tooltip__"/>
+            <input 
+                id="txtColorPicker" 
+                type="color"/>
+            <div class="spacer" flex="1"></div>
+            <label id="cssPreview" tooltiptext="Current selected folder colors will always override this.">Preview</label>
+          </div>
+        </div>
+        <div class="hbox grpHorizontalFlex">
+          <label><input type="checkbox" id="chkCustomPalette">__MSG_lblCustomPalette__</label>
+          <select id="menuCustomTabPalette"
+                sizetopopup="none"
+                oncommand="QuickFolders.AdvancedTab.updatePalette(this);"
+                >
+              <option value="0"
+                    oncommand="QuickFolders.AdvancedTab.selectPalette(this, 0);"
+                    >__MSG_qf.palette.twoColors__</option>
+              <option value="1"
+                    oncommand="QuickFolders.AdvancedTab.selectPalette(this, 1);"
+                    >__MSG_qf.palette.standard__</option>
+              <option value="2"
+                    oncommand="QuickFolders.AdvancedTab.selectPalette(this, 2);"
+                    >__MSG_qf.palette.pastel__</option>
+              <option value="3"
+                    oncommand="QuickFolders.AdvancedTab.selectPalette(this, 3);"
+                    >__MSG_qf.palette.night__</option>
+          </select>		  
+        </div>      
+      </fieldset>
+      
+    </div>
+
+    <script src="../chrome/content/i18n.js"></script>
+    <script src="tab-props-qf.js"></script>
+
+    <script src="tab-props.js"></script>
+
+
+    
+  </body>
+
+</html>

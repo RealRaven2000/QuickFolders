@@ -261,22 +261,6 @@ QuickFolders.Util = {
     return singleMessageWindow;
   } ,
   
-  // safe wrapper to get member from account.identities array
-  getIdentityByIndex: function getIdentityByIndex(ids, index) {
-    const Ci = Components.interfaces;
-    if (!ids) return null;
-    try {
-      // replace queryElementAt with array[index].QueryInterface!
-      if (ids[index])
-        return ids[index].QueryInterface(Ci.nsIMsgIdentity);
-      return null;
-    }
-    catch(ex) {
-      QuickFolders.Util.logDebug('Exception in getIdentityByIndex(ids,' + index + ') \n' + ex.toString());
-    }
-    return null;
-  } ,
-  
   get PlatformVersion() {
     if (null==this.mPlatformVer)
       try {

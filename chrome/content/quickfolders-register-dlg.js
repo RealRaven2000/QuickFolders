@@ -208,7 +208,9 @@ var Register = {
   updateUI: async function updateUI() {
     const getElement = document.getElementById.bind(document),
           util = QuickFolders.Util,
-          prefs = QuickFolders.Preferences;
+          prefs = QuickFolders.Preferences,
+          Ci = Components.interfaces;
+
         
     let dropdownCount = 0;
     function appendIdentity(dropdown, id, account) {
@@ -245,13 +247,22 @@ var Register = {
     }
 		
     // iterate accounts
+    const isAllowAlias = QuickFolders.Preferences.getBoolPref("licenser.forceSecondaryIdentity"); // QuickFolders.Util.licenseInfo.ForceSecondaryIdentity;
     let idSelector = getElement('mailIdentity'),
         popup = idSelector.menupopup,
         myAccounts = util.Accounts,
-        acCount = myAccounts.length;
+        acCount = myAccounts.length,
+        aliasIdentity = null;
+
     util.logDebugOptional('identities', 'iterating accounts: (' + acCount + ')…');
     for (let a=0; a < myAccounts.length; a++) { 
       let ac = myAccounts[a];
+      if (isAllowAlias && !aliasIdentity) {
+        let aliasIdentity = ac.identities.find(id => id.email == QuickFolders.Util.licenseInfo.email);
+        if (aliasIdentity && (aliasIdentity != ac.defaultIdentity)) {
+          appendIdentity(popup, aliasIdentity, ac);
+        }
+      }
       if (ac.defaultIdentity) {
         util.logDebugOptional('identities', ac.key + ': appending default identity…');
         appendIdentity(popup, ac.defaultIdentity, ac);
@@ -260,11 +271,10 @@ var Register = {
       let ids = ac.identities; // array of nsIMsgIdentity
       if (ids) {
         let idCount = ids ? ids.length : 0;
-        util.logDebugOptional('identities', ac.key + ': iterate ' + idCount + ' identities…');
+        util.logDebugOptional('identities', `${ac.key} : iterate ${idCount} identities…`);
         for (let i=0; i<idCount; i++) {
-          // use ac.defaultIdentity ??
           // populate the dropdown with nsIMsgIdentity details
-          let id = util.getIdentityByIndex(ids, i);
+          let id = ids[i].QueryInterface(Ci.nsIMsgIdentity);
           if (!id) continue;
           appendIdentity(popup, id, ac);
         }

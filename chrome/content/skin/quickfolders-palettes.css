@@ -1,7 +1,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
-    --QF_shadowColor:  1px 2px 2px rgba(20, 60, 250, 0.4);
-		--QF_selectedFolderColor: rgba(1, 80, 185, 0.767);
+    --QF_shadowColor:  1px 2px 2px rgba(60, 60, 60, 0.9);
+		--QF_selectedFolderColor: rgba(180, 240, 255, 1);
 		--QF_selectedFolderBackground: rgb(40,40,40);
     --QF_pillShadowColor: rgba(30,30,30,0.75);
 		--QF_pillActiveBackgroundColor: rgba(200,200,200,0.4);
@@ -11,8 +11,8 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --QF_shadowColor:   1px 2px 2px rgba(250, 250, 30, 0.4);
-		--QF_selectedFolderColor: rgba(1, 80, 185, 0.767);
+    --QF_shadowColor:   1px 2px 2px rgba(250, 250, 250, 0.4);
+		--QF_selectedFolderColor: rgba(0, 10, 120, 0.9);
 		--QF_selectedFolderBackground: rgb(240,240,240);
     --QF_pillShadowColor: rgba(30,30,30,0.4);
 		--QF_pillActiveBackgroundColor: transparent;
@@ -684,7 +684,7 @@
 .quickfolders-pills toolbarbutton#QuickFoldersCurrentFolder {
 	border-radius: 1.8em !important;
 	border-width: 1px !important;
-	-moz-box-sizing: border-box; /* draw borders on inside; gecko 29 without prefix */
+	box-sizing: border-box; /* draw borders on inside; gecko 29 without prefix */
 	/* text: bold, near-black, dark-silver shadow */
 	/* the font and font size to use on Mac for the bar is Lucida Grande size 11px */
 	font-size: 11px;
@@ -697,14 +697,21 @@
 	margin-bottom: 1px;
 }
 
+#QuickFolders-title-label {
+	text-shadow: none !important;
+}
 .quickfolders-pills toolbarbutton:hover,
 .quickfolders-pills toolbarbutton:active,
 .quickfolders-pills toolbarbutton.selected-folder {
-	border: 1px inset;
+	border: 1px inset; 
 	/* will be overwritten by color classes if needed */
 	background-color: var(--button-primary-background-color);
-	color: var(--button-primary-text-color,--QF_selectedFolderColor);
+	color: var(--QF_selectedFolderColor,--button-primary-text-color);
 	border-color: var(--QF_pillFocusBorderColor, --button-primary-border-color); 
+}
+.quickfolders-pills #QuickFolders-title-label:hover, 
+.quickfolders-pills #QuickFolders-title-label:active {
+	border: none !important;
 }
 
 .quickfolders-pills toolbarbutton.selected-folder  {

@@ -1,10 +1,13 @@
 {
+  "_l10nstatus": {
+    "message": "SPLASH+UI"
+  },
   "account.label": {
     "message": "Seleziona un account:"
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Stai eseguendo la {boldStart} versione $addonVer$ {boldEnd} su Thunderbird $appVer$.",
+    "message": "Stai eseguendo la {boldStart} versione $addonVer$ {boldEnd} in Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -26,10 +29,10 @@
     "message": "Voglio rinnovare la mia licenza"
   },
   "btn-want-a-license": {
-    "message": "Scegli una licenza"
+    "message": "Voglio acquistare una licenza"
   },
   "btn-want-to-donate": {
-    "message": "Voglio sostenere il progetto con una donazione una tantum."
+    "message": "Voglio sostenere il progetto con una donazione \"una tantum\"."
   },
   "btnApply": {
     "message": "Applica"
@@ -50,7 +53,7 @@
     "message": "Avete bisogno di una licenza per un'azienda con più di cinque utilizzatori? L'acquisto di una licenza di dominio risulterà più conveniente!"
   },
   "buyLicense.instruct": {
-    "message": "Avete bisogno di un'unica licenza? Acquistate una licenza per uso personale da collegare a un vostro account di posta elettronica.  Può essere utilizzata in tutte quelle installazioni che utilizzano quell'account."
+    "message": "C'è bisogno di un'unica licenza? Acquistate una licenza per uso personale da collegare a un vostro account di posta elettronica. Può essere utilizzata in tutte quelle installazioni che utilizzano quell'account."
   },
   "buyProLicense.button": {
     "message": "Acquista una licenza \"Pro\""
@@ -137,7 +140,7 @@
     "message": "Inserire il codice della chiave della licenza inviato per posta elettronica."
   },
   "extend-your-license": {
-    "message": "Vàluta se estendere la tua licenza di un anno."
+    "message": "Vàluta se estendere di un anno la tua licenza."
   },
   "extensionDescription": {
     "description": "Description of the extension.",
@@ -277,7 +280,7 @@
     "message": "Poiché questo lavoro si finanzia unicamente con gli introiti derivanti dalla vendita delle licenze, se si è interessati a usare QuickFolders anche in futuro, vogliate prendere in considerazione l'idea di acquistare o di rinnovare una licenza."
   },
   "ongoing-work": {
-    "message": "Le modifiche per convertire $addonName$ al nuovo modello di programmazione hanno richiesto settimane e sono state costose. Ci sono molte altre modifiche previste per la prossima versione del 2022. Con un compoente aggiuntivo così complesso come questo, è inevitabile che il lavoro diventi economicamente assai oneroso. Per favore aiutateci!",
+    "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane e sono state costose. Ci sono molte altre modifiche previste per la prossima versione. Con una estensione complessa come questa, il lavoro diventa molto oneroso in termini economici. Per favore aiutaci!",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -298,7 +301,7 @@
     "message": "Acquista una licenza."
   },
   "purchase-heading": {
-    "message": "Sto acquistando una licenza"
+    "message": "Acquisto di una licenza"
   },
   "qf.accounts": {
     "message": "Account"
@@ -411,7 +414,7 @@
     "message": "Abilita le transizioni dei CSS"
   },
   "qf.checkbox.enableTransitions.tooltip": {
-    "message": "Mostra transizioni \"dolci\" tra i diversi aspetti di colorazione delle schede."
+    "message": "Mostra transizioni \"morbide\" tra i diversi aspetti di colorazione delle schede."
   },
   "qf.checkbox.hideCategoryBox": {
     "message": "Minimizza il menu Categorie"
@@ -701,43 +704,43 @@
     "message": "Supporta lo sviluppo di QuickFolders!"
   },
   "qf.filters.instructions": {
-    "message": "Selezionare un modello. Nella schermata successiva si possono mettere a punto le regole del filtro."
+    "message": "Selezionare una tipologia. Nella schermata successiva si possono mettere a punto le regole del filtro."
   },
   "qf.filters.template.from": {
-    "message": "Basati sul mittente (Da:)"
+    "message": "Basati sul mittente (Mittente/Da:)"
   },
   "qf.filters.template.from.description": {
-    "message": "Questo è probabilmente lo schema più usato: si seleziona l'indirizzo di posta elettronica del mittente e lo si incolla nei campi \"Da:\" e \"A:\" delle condizioni dei filtri. In questo modo tutte le conversazioni con quel mittente vengono spostate nella nuova cartella."
+    "message": "Questo tipo di filtri è probabilmente quello  più usato: preleva l'indirizzo di posta elettronica del mittente e lo incolla nei campi \"Mittente/Da:\" e \"A:\" delle regole del filtro. In tal modo tutta la corrispondenza con quel mittente viene trasferita nella nuova cartella."
   },
   "qf.filters.template.list": {
     "message": "Lista di distribuzione"
   },
   "qf.filters.template.list.description": {
-    "message": "Simile a \"Basati sul mittente\" ma qui il campo \"A:\" delle condizioni non viene riempito."
+    "message": "Utile per liste di distribuzione con \"List-Id\". Se questo non è configurato, al suo posto verrà usato l'indirizzo del mittente"
   },
   "qf.filters.template.tag": {
     "message": "Per etichetta"
   },
   "qf.filters.template.tag.description": {
-    "message": "Usa le etichette del messaggio e le aggiunge come condizioni del filtro."
+    "message": "Questo tipo di filtri utilizza come regola per la creazione del filtro le etichette con cui si possono contrassegnare i messaggi."
   },
   "qf.filters.template.to": {
-    "message": "Basati sul destinatario (A:)"
+    "message": "Basati sul destinatario (\"A:\")"
   },
   "qf.filters.template.to.description": {
-    "message": "Simile a \"Basati sul mittente\": da usare quando si segna un messaggio inviato a qualcuno. Ciò consente di recuperare l'indirizzo di posta elettronica del destinatario e se lo si incolla nei campi \"Da:\" e \"A:\" delle condizioni del filtro, tutte le conversazioni con quel contatto verranno spostate nella nuova cartella."
+    "message": "Simile a \"Basati sul mittente\": da usare quando si segna un messaggio che si è inviato a qualcun altro. Ciò consente di recuperarne l'indirizzo di posta elettronica e di incollarlo nei campi \"Da:\" e \"A:\" delle regole del filtro. Tutta la corrispondenza con quel contatto verrà spostata nella nuova cartella."
   },
   "qf.filters.template.topic": {
     "message": "Per oggetto"
   },
   "qf.filters.template.topic.description": {
-    "message": "Questo modello cerca particolari espressioni comprese fra parentesi quadre o graffe; per es: [collezionisti di francobolli] o {vegani} e crea un filtro basato su tali condizioni. Usando questo schema è possibile riorganizzare una grande quantità di messaggi pur essendo di facile utilizzo."
+    "message": "Questo tipo di filtri cerca nel campo \"Oggetto\" particolari espressioni comprese fra parentesi quadre o graffe: per es. [collezionisti di francobolli] o {vegani} e crea un filtro basato su di esse. Usando questo tipo di filtri è facile riorganizzare una grande quantità di messaggi."
   },
   "qf.filters.title": {
     "message": "Creazione filtri"
   },
   "qf.filters.toggleMessage.notificationText": {
-    "message": "È stata avviata la modalità di apprendimento per il filtri. Ogni volta che si sposta un messaggio in una scheda QF inizia una \"Procedura guidata per la creazione di filtri\". Thunderbird usa filtrare i messaggi per spostarli automaticamente in base a regole quali \"Chi è il mittente?\", \"Nell'oggetto del messaggio è presente una una parola-chiave?\" - Per terminare la modalità di apprendimento, premere il pulsante dei filtri in alto a sx sulla barra di Quick Folders."
+    "message": "È stata avviata la \"Procedura guidata per la creazione di filtri\". Ogni volta che si sposta un messaggio in una scheda QF inizia tale procedura. Thunderbird usa filtrare i messaggi per spostarli automaticamente in base a regole quali \"Chi è il mittente?\", \"Nell'oggetto del messaggio è presente una una parola-chiave?\" - Per terminare la Procedura guidata, premere il pulsante in alto a sx sulla barra di Quick Folders."
   },
   "qf.filters.toggleMessage.title": {
     "message": "Creazione filtri"
@@ -863,7 +866,7 @@
     "message": "Inserire qui la propria chiave di licenza:"
   },
   "qf.label.insertLicense.tooltip": {
-    "message": "La chiave di licenza è contenuta nel messaggio di conferma dell'ordine proveniente da Fastspring."
+    "message": "La chiave di licenza è contenuta nel messaggio di conferma dell'ordine proveniente da FastSpring."
   },
   "qf.label.instantApplyMsg": {
     "message": "Nota: se in basso si visualizza solo il pulsante [Chiudi], le impostazioni dei colori potrebbero non funzionare. Si può ovviare provando a fare clic col pulsante dx del mouse in un'area vuota della barra \"QuickFolders\" per selezionare \"Opzioni di QuickFolders…\". Ciò forza la comparsa del pulsante [Ok] il che dovrebbe consentire il salvataggio dei colori."
@@ -968,7 +971,7 @@
     "message": "L'indirizzo di posta elettronica collegato alla chiave di licenza [{1}] non è attualmente presente tra gli account di posta elettronica. Per assistenza, contattatemi tramite la scheda \"Supporto\"."
   },
   "qf.licenseValidation.notMatchedMail": {
-    "message": "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro"
+    "message": "L'indirizzo di posta elettronica crittografato non corrisponde a quello in chiaro."
   },
   "qf.licenseValidation.passed": {
     "message": "Grazie per aver registrato QuickFolders Pro. Tutte le caratteristiche Premium sono ora disponibili."
@@ -1387,7 +1390,7 @@
     "message": "Messaggio di posta corrente: per spostarlo, trascinarlo su una scheda QuickFolders"
   },
   "qf.tooltip.filterStart": {
-    "message": "Attiva la modalità di apprendimento per i filtri. Per creare nuovi filtri trascina i messaggi su una scheda QF."
+    "message": "Attiva la procedura guidata per i filtri. Per creare nuovi filtri trascina i messaggi su una scheda QF."
   },
   "qf.tooltip.filters": {
     "message": "Arresta la creazione dei filtri."
@@ -1429,10 +1432,10 @@
     "message": "Non aprire la scheda con la cronologia delle versioni"
   },
   "qf.youtube.description": {
-    "message": "Per trovare dei video sulle estensioni di Thunderbird e su come usare QuickFolders, visitare il mio canale YouTube Thunderbird Daily."
+    "message": "Per trovare dei video sulle estensioni di Thunderbird e su come usare QuickFolders, visitare il mio canale YouTube \"Thunderbird Daily\"."
   },
   "qf.youtube.link": {
-    "message": "Guarda i video di QuickFolders…"
+    "message": "Guarda i video di QuickFolders su \"Thunderbird Daily\"…"
   },
   "qf.youtube.tbdaily": {
     "message": "Per avere suggerimenti e per una guida introduttiva a QuickFolders, visitare il canale YouTube \"Thunderbird Daily\"."
@@ -1873,7 +1876,7 @@
     }
   },
   "support-suggestion": {
-    "message": "Affinché $addonName$ rimanga funzionante e attivo, ti preghiamo di fare un favore fondamentale:",
+    "message": "Affinché $addonName$ rimanga funzionante e attivo, ti preghiamo di aiutare il progetto:",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1903,7 +1906,7 @@
     }
   },
   "time-and-effort": {
-    "message": "$addonName$ richiede modifiche continue per rimanere compatibile con la piattaforma Mozilla. Lavoro costantemente per mantenere compatibile il maggior numero possibile di funzionalità con le prossime versioni di Thunderbird.",
+    "message": "$addonName$ richiede modifiche continue per rimanere compatibile con la piattaforma Mozilla. Lavoriamo costantemente per mantenere compatibile il maggior numero possibile di funzionalità con le prossime versioni di Thunderbird.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1977,6 +1980,6 @@
     "message": "La licenza è per uso personale ed è collegata all'indirizzo di posta elettronica. È possibiile utilizzarla in molteplici installazioni del client di posta elettronica, sempre che queste siano configurate per utilizzare tale indirizzo di posta elettronica."
   },
   "yearlyLicense.usageTerm1": {
-    "message": "Eventuali indirizzi di posta elettronica aggiuntivi non rappresentano un problema: essi non richiedono una licenza separata. Nel caso vi fossero dei problemi, è possibile contattarmi tramite la scheda di supporto."
+    "message": "Eventuali indirizzi di posta elettronica aggiuntivi non rappresentano un problema: essi non richiedono una licenza separata. Per qualsiasi problema potete contattarmi tramite la scheda di supporto."
   }
 }

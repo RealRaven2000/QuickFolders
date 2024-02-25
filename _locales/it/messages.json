@@ -310,7 +310,7 @@
     "message": "Impossibile creare schede. Per maggiori dettagli andare su Strumenti/Console degli errori."
   },
   "qf.alert.bookmarks.unsupportedType": {
-    "message": "Tipo di segnalibro attualmente non supportato: $bookmarkType$ {NewLine}Seleziona almeno un messaggio o trascina semplicemente le email sopra il pulsante",
+    "message": "Tipo di segnalibro: $bookmarkType$ attualmente non supportato.{NewLine}Selezionare almeno un messaggio o trascinare semplicemente i messaggi sopra il pulsante",
     "placeholders": {
       "bookmarkType": {
         "content": "$1"
@@ -1363,7 +1363,7 @@
     "message": "Barra degli strumenti QuickFolders"
   },
   "qf.toolbarIcon.customSize": {
-    "message": "Dimensione icona personalizzata"
+    "message": "Dimensione personalizzata icone"
   },  
   "qf.toolbarIconSize": {
     "message": "Icone grandi nella barra degli strumenti"
@@ -1375,7 +1375,7 @@
     "message": "Per i sistemi Mac soggetti al [Bug 25021]"
   },
   "qf.toolbarTopPadding": {
-    "message": "Padding superiore"
+    "message": "Spazio dal margine superiore"
   },  
   "qf.tooltip.RecentFolders": {
     "message": "Cartelle recenti"
@@ -1590,6 +1590,9 @@
   "qfMarkAllReadAccess": {
     "message": "L"
   },
+  "qfMarkAllReadNews": {
+    "message": "Segna tutte le notizie come lette"
+  },  
   "qfMarkAllReadRecursive": {
     "message": "Segna la cartella e le sottocartelle come già lette"
   },

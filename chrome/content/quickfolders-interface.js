@@ -2679,7 +2679,7 @@ QuickFolders.Interface = {
 		try {
 			let tag = button.tagName || null;
 			if (tag == "menuitem" && button.parentElement.getAttribute("tag") == "quickFoldersCommands") {
-				QI.clickHandler(evt, el);
+				QI.clickHandler(evt, button); // [issue 459]
 				return;
 			}
 		}
@@ -3112,7 +3112,7 @@ QuickFolders.Interface = {
 		this.compactFolder(folder, command);
 	} ,
 
-	onMarkAllRead: function onMarkAllRead(element,evt,recursive) {
+	onMarkAllRead: function (element,evt,recursive) {
     let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     // check whether f has folder as parent
@@ -3149,6 +3149,20 @@ QuickFolders.Interface = {
 		catch(e) {
 			util.logToConsole("QuickFolders.Interface.onMarkAllRead " + e);
 		}
+	} ,
+
+	onMarkAllReadNewsGroup: function (element, evt) {
+    let util = QuickFolders.Util,
+        folder = util.getPopupNode(element).folder,
+				topChromeWindow = window.browsingContext.topChromeWindow
+
+		if (folder.flags & Ci.nsMsgFolderFlags.Virtual) {
+			topChromeWindow.MsgMarkAllRead(
+				VirtualFolderHelper.wrapVirtualFolder(folder).searchFolders
+			);
+		} else { // shouldn't happen here
+			topChromeWindow.MsgMarkAllRead([folder]);
+		}				
 	} ,
 
 	onDeleteFolder: function onDeleteFolder(element) {
@@ -3634,10 +3648,15 @@ QuickFolders.Interface = {
         &&
         !(folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_JUNK))
       {
+				// isVirtual will disable the command.
         let isVirtual = (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL)==true;
         if (prefs.getBoolPref("folderMenu.markAllRead")) // && folder.getNumUnread(false)>0
         {
-          menuitem = this.createMenuItem_MarkAllRead(isVirtual, doc);
+					if (folder.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) {
+          	menuitem = this.createMenuItem_MarkAllRead_NewsGroup(isVirtual, doc);
+					} else {
+          	menuitem = this.createMenuItem_MarkAllRead(isVirtual, doc);
+					}
           menupopup.appendChild(menuitem);
           topShortCuts ++ ;
         }
@@ -3962,15 +3981,14 @@ QuickFolders.Interface = {
 	} ,
 
 
-	clickHandler: function clickHandler(evt, element) {
+	clickHandler: function (evt, element) {
 		const prefs = QuickFolders.Preferences,
           util = QuickFolders.Util,
 					QI = QuickFolders.Interface;
 		let msg = evt.type + " event from popup - QI.clickHandler()";
 		if (prefs.isDebugOption("popupmenus")) debugger;
 		if (evt.target) {
-			let isHandled = false,
-			    isTagHandler = true,
+			let isTagHandler = true,
 					isIdHandler = true,
 			    menuitem = element,
 			    cmd = evt.target.getAttribute("oncommand"),
@@ -4054,6 +4072,9 @@ QuickFolders.Interface = {
 					case "QF_folderPaneContext-markMailFolderAllReadRecursive":
 					  QI.onMarkAllRead(menuitem, evt, true);
 					  break;
+					case "QF_folderPaneContext-markMailFolderAllReadNewsGroup":
+					  QI.onMarkAllReadNewsGroup(menuitem, evt);
+						break;
 					case "deleteJunk":
 						QI.onDeleteJunk(menuitem);
 						break;
@@ -4451,6 +4472,16 @@ QuickFolders.Interface = {
     );
     if (!recursive)
       menuitem.setAttribute("accesskey",this.getUIstring("qfMarkAllReadAccess"));
+		if (disabled)
+			menuitem.setAttribute("disabled", true);
+		return menuitem;
+	} ,
+
+	createMenuItem_MarkAllRead_NewsGroup: function(disabled, doc) { // [issue 458]
+		const id = "QF_folderPaneContext-markMailFolderAllReadNewsGroup";
+    let menuitem = this.createIconicElement("menuitem", null, doc);
+		menuitem.setAttribute("id", id);
+		menuitem.setAttribute("label", this.getUIstring("qfMarkAllReadNews"));
 		if (disabled)
 			menuitem.setAttribute("disabled", true);
 		return menuitem;
@@ -7413,7 +7444,7 @@ QuickFolders.Interface = {
     };
     let win = window;
     if (win.closed) { // notifications caused by a close parent window will fail!
-      win = quickFilters.Util.getMail3PaneWindow();
+      win = QuickFolders.Util.getMail3PaneWindow();
     }    
     win.openDialog("chrome://quickfolders/content/register.xhtml",
       "quickfolders-register","chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply",

@@ -531,7 +531,7 @@ QuickFolders.bookmarks = {
               try {
                 // are multiple mails selected?
                 let selectedMessageUris = [] ; 
-                let selectedMessages = quickFilters.Util.getSelectedMessages(selectedMessageUris);
+                let selectedMessages = QuickFolders.Util.getSelectedMessages(selectedMessageUris); // [issue 455]
                 let selectionCount = selectedMessages.length;
 
                 util.logDebugOptional("bookmarks", "selectionCount: " + selectionCount);

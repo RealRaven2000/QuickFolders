@@ -28,6 +28,21 @@
 			}
 		</style>
 
+		<style>
+			.BZ-table td:first-child {
+				white-space: nowrap;
+			}
+
+			.github_issue[href] {
+				color: #fff !important;
+				background-color: rgb(31, 111, 235);
+				border-radius: 0.375rem;
+				font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+				font-size: 14px;
+				margin-inline: 0.5em;
+			}
+		</style>		
+
   </head>  
 
   <body>
@@ -79,7 +94,7 @@
               publish patched prerelease versions by attaching them to their relevant bugs.
 						</p>
 						<p>
-              When <a href="bugs.html">submitting new bug reports</a>, please search first whether the bug
+              When submitting new bug reports, please search first whether the bug
               is already submitted to avoid yours being marked as duplicate.
             </p>
 				</div>
@@ -100,8 +115,9 @@
         and directly influence the creation of new functionality.
 			</p>
 			<p>
-			  If you have found a bug it may be helpful to <a href="support.html">create an error log</a> using 
-        Thunderbird's built in error console. See the <a href="support.html">troubleshooting section</a> for details on this.
+			  If you have found a bug it may be helpful to create an error log using 
+        Thunderbird's built in error console. See the <a href="support.html">troubleshooting section</a> 
+				for details on this.
 			</p>
 			
 			<div class="flashBox">
@@ -120,176 +136,30 @@
 	</p>
 	<h4>Latest Issues on github</h4>
 
-	<style>
-		.BZ-table td:first-child {
-			white-space: nowrap;
-		}
-	</style>
-
+	<p id="summary">
+		Here are the most recent changes...
+	</p>
+	
 	<table class="BZ-table">
 		<thead>
 			<tr>
 			<th class="BZ-th-bug">Issue #</th><th class="BZ-th-desc">Description</th>
 			</tr>
 		</thead>
-		<tbody>
-<!-- template    
-		<tr>
-			<td>
-				<span class="BZ-assigned" title="ASSIGNED">
-				<a id="issue_XX_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/XX">issue XX</a>
-				</span>
-			</td>
-			<td>
-				description 
-			</td>
-		</tr> 
--->
+	</table>	
+	
+	<p>
+		To see all items, please go to
+		<a href="https://github.com/RealRaven2000/QuickFolders/issues">QuickFolders Github issues</a>.
+		Once you are there, you can click on 
+		<a class="github_issue" target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/new/choose">New Issue</a>
+		to request a feature or report a bug.
+	</p>
 
-		<tr>
-			<td>
-				<span class="BZ-resolved-fixed BZ-strike" title="FIXED">
-				<a id="issue_14_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/14">issue 14</a>
-				</span>
-			</td>
-			<td>
-				(fixed) Gray area shown below email list when starting Thunderbird in wide view with Current 
-        Folder Toolbar hidden. 
-			</td>
-		</tr>    
 
-		<tr>
-			<td>
-				<span class="BZ-resolved-fixed BZ-strike" title="FIXED">
-				<a id="issue_15_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/15">issue 15</a>
-				</span>
-			</td>
-			<td>
-				(fixed) Current Folder Bar background styling is ignored in Thunderbird 68 
-			</td>
-		</tr>    
-
-		<tr>
-			<td>
-				<span class="BZ-resolved-fixed BZ-strike" title="FIXED">
-				<a id="issue_16_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/16">issue 16</a>
-				</span>
-			</td>
-			<td>
-				(fixed) Avoid showing current folder toolbar at bottomn of screen in column view. Ideally it should be 
-        shown as vertical bar between thread pane and preview. 
-			</td>
-		</tr>    
-    
-		<tr>
-			<td>
-				<span class="BZ-resolved-fixed BZ-strike" title="FIXED">
-				<a id="issue_13_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/13">issue 13</a>
-				</span>
-			</td>
-			<td>
-				(fixed) Thunderbird 68 regression: Cannot modify From and To addresses using Advanced Tab Properties.
-			</td>
-		</tr>    
-
-		<tr>
-			<td>
-				<span class="BZ-resolved-fixed BZ-strike" title="FIXED">
-				<a id="issue_11_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/11">issue 11</a>
-				</span>
-			</td>
-			<td>
-				(fixed) Thunderbird 60 regression: 4.17 - No results are shown in quickJump / quickMove when typing in Thunderbird 60.9 
-			</td>
-		</tr>    
-    
-		<tr>
-			<td>
-				<span class="BZ-resolved-fixed BZ-strike" title="FIXED">
-				<a id="issue_10_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/10">issue 10</a>
-				</span>
-			</td>
-			<td>
-         (fixed) QuickFolders 4.16 doesn't validate the license if no default identity is defined.
-         Normally we will see an error message but in this case we only see messages in 
-         the JavaScript error console.
-			</td>
-		</tr>    
-    
-		<tr>
-			<td>
-				<span class="BZ-resolved-fixed BZ-strike" title="FIXED">
-				<a id="issue_9_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/9">issue 9</a>
-				</span>
-			</td>
-			<td>
-				(fixed) Tb 68 regression: quickMove shortcut combinations are accidentally executed 
-        when typing in the quick filter search field
-			</td>
-		</tr>    
-    
-		<tr>
-			<td>
-				<span class="BZ-assigned" title="ASSIGNED">
-				<a id="issue_8_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/8">issue 8</a>
-				</span>
-			</td>
-			<td>
-				In Thunderbird 70, the label is removed on right-clicking a tab. 
-        Other Thunderbird 70+ regressions.
-			</td>
-		</tr> 
-
-		<tr>
-			<td>
-				<span class="BZ-resolved-fixed BZ-strike" title="FIXED">
-				<a id="issue_7_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/7">issue 7</a>
-				</span>
-			</td>
-			<td>
-				(fixed) Font color in striped mode ignored on colored tabs. 
-			</td>
-		</tr> 
-
-		<tr>
-			<td>
-				<span class="BZ-resolved-fixed BZ-strike" title="FIXED">
-				<a id="issue_4_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/4">issue 4</a>
-				</span>
-			</td>
-			<td>
-				(fixed) Entering text in quickMove / quickJump field doesn't show suggestions while typing.
-			</td>
-		</tr>     
-      
-		<tr>
-			<td>
-				<span class="BZ-assigned" title="ASSIGNED">
-				<a id="issue_3_link" target="_blank" class="link-gray-dark v-align-middle no-underline h4 js-navigation-open"
-				   href="https://github.com/RealRaven2000/QuickFolders/issues/3">issue 3</a>
-				</span>
-			</td>
-			<td>
-				Feature request: mark messages READ in folder and all its subfolders tree "in one click" 
-			</td>
-		</tr>
-		</tbody>
-	</table>			
-
-			<h3>Bug Reports (deprecated section).</h3>
-      <p>Below are older bugs using the outdated bugzilla system; for new ones please <a href="https://github.com/RealRaven2000/quickfolders/issues">use github</a> instead.
-			<h4 id="BZ-h4">Bugs from Bugzilla (QF's older bug database)</h4>
+	<h3>Bug Reports (deprecated section).</h3>
+	<p>Below are older bugs using the outdated bugzilla system; for new ones please <a href="https://github.com/RealRaven2000/quickfolders/issues">use github</a> instead.
+	<h4 id="BZ-h4">Bugs from Bugzilla (QF's older bug database)</h4>
 
 <table class="BZ-table" cellspacing="0" cellpadding="0" border="0">
 	<thead>
@@ -686,5 +556,45 @@
 
         </div> <!-- CLOSE <div id="main-content-no-nav"> with the blue box -->
         <div id="downPusher"></div><!-- push down the black main background -->
+
+
       </body>
+
+<script type="text/javascript">
+
+	var urlToGetAllOpenBugs = "https://api.github.com/repos/RealRaven2000/QuickFolders/issues?state=open&sort=updated-desc";
+	var baseGithubURL = "https://github.com/RealRaven2000/QuickFolders";
+	var maxCount = 15;
+	
+	$(document).ready(function() {
+		var count = 0;
+		$.getJSON(urlToGetAllOpenBugs, function(allIssues) {
+			let summary=`Found ${allIssues.length} issues - sorted by most recent changes</br>
+			Here are the first ${Math.min(maxCount, allIssues.length)}:`
+	
+			$("#summary").html(summary);
+	
+			$.each(allIssues, function(i, issue) {
+				if (count > maxCount) return;
+				let markup = `<tr>
+				<td class="nowrap"><a target=_blank href="${baseGithubURL}/issues/${issue.number}">
+				issue ${issue.number}</a>
+				</td>
+				<td>
+					${issue.title} <br>
+					created: issue.created_at
+	
+				</td>
+			</tr>
+		`;
+				$(".BZ-table")
+					.append(markup);
+				count++;    
+			});
+		});
+	});
+	
+	
+	</script>
+
     </html>

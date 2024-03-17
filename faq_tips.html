@@ -18,7 +18,7 @@
     <script src="js/premium.js"> </script>
 
     <link rel="stylesheet" href="css/index.css?v=8" type="text/css">
-		<link rel="stylesheet" href="css/faq.css?v=3" type="text/css">
+		<link rel="stylesheet" href="css/faq.css?v=4" type="text/css">
 
   </head>  
 
@@ -129,6 +129,31 @@ to your mail client. These apply to all supported Mozilla based mail clients suc
 	<dd>There are numerous debug options that cause more information message in the javascript error console.
   Error console can be shown using the shortcut Ctrl+Shift+J or via the Thunderbird <i>tools</i> menu 
   under <i>Developer Tools</i> &laquo; <i>Error Console</i>. 
+
+  <dt>Can I change the order of toolbars?</dt>
+  <dd> 
+    Yes, add the following lines to userChrome.css and also make sure the Thunderbird 
+    configuration setting <tt>toolkit.legacyUserProfileCustomizations.stylesheets</tt> is enabled.
+
+    <div class="code">
+      #toolbar-menubar {
+        order: 1;             
+      }
+      
+      #tabs-toolbar {
+        order: 2;              
+      }
+      
+      unified-toolbar, #mail-bar3 {
+        order: 3;             
+      }
+      
+      #QuickFolders-Toolbar {
+        order: 4;
+      }
+    </div>
+
+  </dd>
   
   <br>
   The additional debug options for QuickFolders can be set 

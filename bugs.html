@@ -570,7 +570,7 @@
 	$(document).ready(function() {
 		var count = 0;
 		$.getJSON(urlToGetAllOpenBugs, function(allIssues) {
-			let summary=`Found ${allIssues.length} issues - sorted by most recent changes</br>
+			let summary=`Retrieved ${allIssues.length} open issues - sorted by most recent changes</br>
 			Here are the first ${Math.min(maxCount, allIssues.length)}:`
 	
 			$("#summary").html(summary);

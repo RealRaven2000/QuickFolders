@@ -2,12 +2,12 @@
 .cssCode {
 	background: linear-gradient(from bottom, rgba(242,246,248,1) 0%, rgba(216,225,231,1) 50%, rgba(224,239,249,1) 100%);
 	border: #DDD 1px solid;
-	font-family: Courier New;
-	font-size: small;
+  font-family: Consolas, monaco, monospace; 
+  font-size: 0.8rem;
 	margin: 1em 3em 1em 0em;
 	padding: 0.7em;
 	overflow-x: scroll;
-	white-space: pre;
+  white-space: pre-wrap;
 	-moz-border-radius: 2px;
 }
 

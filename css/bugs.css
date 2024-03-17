@@ -1,8 +1,8 @@
 
 .cssCode {
-  font-family: Courier New;
-  font-size: small;
-  white-space: pre;
+  font-family: Consolas, monaco, monospace; 
+  font-size: 0.8rem;
+  white-space: pre-wrap;
 }
 
 /**  Bugs Table **/

@@ -293,7 +293,7 @@ once done, click Save. To give you inspiration, this is the way I have set up mi
 
 <h2><a name="Tweaks">Layout Tweaks</a></h2>
 <P>In order to style QuickFolders to your needs, above and beyond the options available on the
-"Pimp my Tabs" page, you can edit the userChrome file and add some style rules.
+"Pimp my Tabs" page, you can edit the <a href="#UserChrome">userChrome</a>  file and add some style rules.
 If you know about CSS then you might find the following diagram helpful:
 <br>
 <img class="screenshot" src="images/Toolbar-Legend.png" alt="Toolbar Legend">
@@ -381,6 +381,27 @@ Add any of the following CSS rules to your userChrome.css file. For the geeks, t
   <div class=cssCode>#QuickFolders-Toolbar   {
   text-align:center !important;
 } </div>
+
+
+<li><a name="toolbar-order">Modify vertical order of toolbars</a><br>
+  The code below works from Thunderbird 115.* :
+  <div class="cssCode">
+  #toolbar-menubar {
+    order: 1;             
+  }
+  
+  #tabs-toolbar {
+    order: 2;              
+  }
+  
+  unified-toolbar, #mail-bar3 {
+    order: 3;             
+  }
+  
+  #QuickFolders-Toolbar {
+    order: 4;
+  }
+</div>
 
 
 </ul>

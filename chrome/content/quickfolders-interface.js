@@ -5063,19 +5063,17 @@ QuickFolders.Interface = {
             p=parts.pop();
           par = par.parent;
         }
+				return pS;
       }
-      else {
-        for (let i=countParents; i>0; i--) {
-          if (!par || par.isServer) break; // do not add server here
-          if (!pS)  {
-            pS = par.prettyName;
-          }
-          else {
-            pS = par.prettyName + "/" + pS;
-          }
-          par = par.parent;
-        }
-      }
+			for (let i=countParents; i>0; i--) {
+				if (!par || par.isServer) break; // do not add server here
+				if (!pS)  {
+					pS = par.prettyName;
+				} else {
+					pS = par.prettyName + "/" + pS;
+				}
+				par = par.parent;
+			}
 			return pS;
 		}
 
@@ -5105,9 +5103,21 @@ QuickFolders.Interface = {
 
     // folder name match algorithm -at the heart of quickMove / quickJump. searchString should be trimmed
 		function addMatchingFolder(matches, folder) {
+			function addMatch() {
+				let pS = buildParentString(folder, parentCount),
+						maxFindSearch = QuickFolders.Preferences.getIntPref("premium.findFolder.maxPathItems"),
+						detail = QuickFolders.Preferences.getIntPref("premium.findFolder.folderPathDetail");
+
+				// let ct = pS.split("/").length + 1, // count parent folders parts including final name
+				// ct should be max(pLevel) from isParentMatch, and not length of the _complete_ path
+				// if (parentCount) maxFindSearch = Math.max(ct, maxFindSearch); 
+				
+				let fName = QuickFolders.Interface.folderPathLabel(detail, folder, maxFindSearch);
+				matches.push( { name:fName, lname:folderNameSearched, uri:folder.URI, rank:rank, type:"folder", folder:folder, parentString: pS } );
+			}
+
 			let folderNameSearched = folder.prettyName.toLocaleLowerCase(),
 			    matchPos = folderNameSearched.indexOf(searchFolderName),
-          isMatch = false,
           rank = 0,
           enableMultiWordMatch = !QuickFolders.Preferences.getBoolPref("premium.findFolder.disableSpace");  // [issue 179] option to disable multi word matching
           
@@ -5137,46 +5147,31 @@ QuickFolders.Interface = {
           if (!foundEl) return;
         }
         
-        isMatch = true;
-      }
-      else {
-        // add all child folders if "parentName/" entered
-        if (searchFolderName=="" && parentString!="") matchPos = 0;
-        if (matchPos >= 0) {
-          // only add to matches if not already there
-          if (!matches.some( function(a) { return (a.uri == folder.URI); })) {
-            rank = 1; // searchString.length - folder.prettyName.length;
-            if (searchFolderName.length == folder.prettyName.length) rank += 7;  // full match - promote
-            if (matchPos == 0) rank += 3; // promote the rank if folder name starts with this string
-            if (searchFolderName.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
-              // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
-              if (" .-,_+&@".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
-                return;  // skip if not starting with single letter
-            }
-
-            // [Bug 26692] skip if they are flagged for ignoring
-            if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
-              return;
-            
-            isMatch = true;
-
-          }
-        }        
-      }
-      if (isMatch) {
-        let pS = buildParentString(folder, parentCount),
-            ct = pS.split("/").length + 1, // count parent folders parts including final name
-            maxFindSearch = QuickFolders.Preferences.getIntPref("premium.findFolder.maxPathItems"),
-            detail = QuickFolders.Preferences.getIntPref("premium.findFolder.folderPathDetail");
-        
-        // ct should be max(pLevel) from isParentMatch, and not length of the _complete_ path
-        // if (parentCount) maxFindSearch = Math.max(ct, maxFindSearch); 
-        
-        let fName = QuickFolders.Interface.folderPathLabel(detail, folder, maxFindSearch);
-
-        matches.push( { name:fName, lname:folderNameSearched, uri:folder.URI, rank:rank, type:"folder", folder:folder, parentString: pS } );
+        addMatch();
+				return;
       }
 
+			// add all child folders if "parentName/" entered
+			if (searchFolderName=="" && parentString!="") matchPos = 0;
+			if (matchPos >= 0) {
+				// only add to matches if not already there
+				if (!matches.some( function(a) { return (a.uri == folder.URI); })) {
+					rank = 1; // searchString.length - folder.prettyName.length;
+					if (searchFolderName.length == folder.prettyName.length) rank += 7;  // full match - promote
+					if (matchPos == 0) rank += 3; // promote the rank if folder name starts with this string
+					if (searchFolderName.length<=2 && matchPos!=0) { // doesn't start with single/two letters?
+						// is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred"
+						if (" .-,_+&@".indexOf(folderNameSearched.substr(matchPos-1,1))<0)
+							return;  // skip if not starting with single letter
+					}
+
+					// [Bug 26692] skip if they are flagged for ignoring
+					if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true))
+						return;
+					
+					addMatch();
+				}
+			}        
 		}
 
 		// check if any word in foldername string starts with typed characters
@@ -5319,12 +5314,10 @@ QuickFolders.Interface = {
       return;
     }
 
-		let account = null,
-		    identity = null,
-		    matches = [],
+		let matches = [],
 				parents = [],
         excludedServers = QuickFolders.quickMove.Settings.excludedIds,
-        isLockAccount = QuickFolders.quickMove.Settings.isLockInAccount,
+        isLockInAccount = QuickFolders.quickMove.Settings.isLockInAccount,
         currentFolder = util.CurrentFolder;
 
 		// change: if only 1 character is given, then the name must start with that character!
@@ -5345,12 +5338,10 @@ QuickFolders.Interface = {
 				}
 				let fld = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri);
         if (!fld) continue; // invalid tabs lead to search failing
-        if (excludedServers.includes(fld.server.key))
-          continue;
-        if (isLockAccount &&  fld.server && currentFolder.server && fld.server.key!=currentFolder.server.key)
-          continue;
-				if (checkFolderFlag(fld, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) // [Bug 26692]
-					continue;
+        if (excludedServers.includes(fld.server.key)) continue;
+				// [issue 451] there is no current folder in conversation view, so we cannot lock search to "current folder" in this case
+        if (isLockInAccount &&  fld.server && currentFolder?.server && fld.server.key!=currentFolder.server?.key) continue;
+				if (checkFolderFlag(fld, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) continue; 
 				// avoid duplicates
 				if (!matches.some( function(a) { return (a.uri == folderEntry.uri); })) {
 					matches.push( { name:folderEntry.name, lname:folderNameSearched, uri:folderEntry.uri, rank: rank, type:"quickFolder" } );
@@ -5401,14 +5392,14 @@ QuickFolders.Interface = {
 			menupopup = util.$("QuickFolders-FindPopup");
       if (QuickFolders.quickMove.isActive) {
         menupopup.setAttribute("tag", "quickMove");
-      }
-      else {
+      } else {
         menupopup.removeAttribute("tag");
       }
 
 			//rebuild the popup menu
-			while (menupopup.firstChild)
+			while (menupopup.firstChild) {
 				menupopup.removeChild(menupopup.firstChild);
+			}
 		  if (matches.length) {
 				// restrict results to 25
 				let count = Math.min(matches.length, maxResults);
@@ -5545,10 +5536,11 @@ QuickFolders.Interface = {
     
     // [issue 241] force the last URI if popup not shown
     let forceSingleURI;
-    if(menupopup.state=="closed" && forceFind && matches.length) {
+    if (menupopup.state=="closed" && forceFind && matches.length) {
       forceSingleURI = prefs.getStringPref("quickMove.lastFolderURI");
-      if (!matches.find(e => e.uri == forceSingleURI))
+      if (!matches.find(e => e.uri == forceSingleURI)) {
         forceSingleURI = "";
+			}
     } 
     
     if (!forceSingleURI) {
@@ -5568,24 +5560,22 @@ QuickFolders.Interface = {
 						QuickFolders.quickMove.rememberLastFolder(finalURI, ps);
 						QuickFolders.Interface.tearDownSearchBox();
 					}, 400);
-				}
-				else { // move mails?
+				} else { // move mails?
 					setTimeout(function() {
 						QuickFolders.quickMove.execute(finalURI, parentString);
 						QuickFolders.Interface.tearDownSearchBox();
 					});
 				}
+				return;
       }
-      else {
-        // make it easy to hit return to jump into folder instead:
-        // isSelected = QuickFolders_MySelectFolder(matches[0].uri);
-        setTimeout( function() {
-            let fm = Services.focus;
-            fm.setFocus(menupopup, fm.MOVEFOCUS_FIRST + fm.FLAG_SHOWRING);
-            let fC = menupopup.firstChild;
-            fm.setFocus(fC, fm.FLAG_BYMOUSE + fm.FLAG_SHOWRING);
-          }, 250 );
-      }
+			// make it easy to hit return to jump into folder instead:
+			// isSelected = QuickFolders_MySelectFolder(matches[0].uri);
+			setTimeout( function() {
+					let fm = Services.focus;
+					fm.setFocus(menupopup, fm.MOVEFOCUS_FIRST + fm.FLAG_SHOWRING);
+					let fC = menupopup.firstChild;
+					fm.setFocus(fC, fm.FLAG_BYMOUSE + fm.FLAG_SHOWRING);
+				}, 250 );
 			return; // avoid searchBox.focus()
 		}
 
@@ -5593,8 +5583,7 @@ QuickFolders.Interface = {
 			// success: collapses the search box!
 			this.findFolder(false);
 			this.hideFindPopup();
-		}
-		else {
+		} else {
 			searchBox.focus();
     }
 

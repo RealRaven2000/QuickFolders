@@ -11,10 +11,14 @@
 
 
 {
+  const prefs = QuickFolders.Preferences,
+        util = QuickFolders.Util;
+
+  var globalQuickMoveSettings;
   
   var qmSettings = {
     load: function () {
-      const settings = QuickFolders.quickMove.Settings
+      globalQuickMoveSettings = util.getMail3PaneWindow().QuickFolders.quickMove.Settings;
       // add accounts:
       let myAccounts = util.Accounts,
           accountsbox = document.getElementById('currentFolderCustomize'),
@@ -58,28 +62,28 @@
         accountsbox.removeChild(dummy);
       }
       let chkLock = document.getElementById('chkLockAccounts');
-      chkLock.checked = settings.isLockInAccount;
+      chkLock.checked = globalQuickMoveSettings.isLockInAccount;
       chkLock.addEventListener("click", function(evt) { qmSettings.toggleLockInAccount(chkLock, evt)} );
       chkLock.addEventListener("keypress", function(evt) { qmSettings.toggleLockInAccount(chkLock, evt)} );
       
       let chkSilent = document.getElementById('chkSilent');
-      chkSilent.checked = settings.isSilent;
+      chkSilent.checked = globalQuickMoveSettings.isSilent;
       chkSilent.addEventListener("click", function(evt) { qmSettings.toggleSilent(chkSilent, evt)} );
       chkSilent.addEventListener("keypress", function(evt) { qmSettings.toggleSilent(chkSilent, evt)} );
       
       
       let chkEsc = document.getElementById('chkEscapeClearsList');
-      chkEsc.checked = settings.isClearList;
+      chkEsc.checked = globalQuickMoveSettings.isClearList;
       chkEsc.addEventListener("click", function(evt) { qmSettings.toggleClearList(chkEsc, evt)} );
       chkEsc.addEventListener("keypress", function(evt) { qmSettings.toggleClearList(chkEsc, evt)} );
       
       let chkGoNext = document.getElementById('chkGoNext');
-      chkGoNext.checked = settings.isGoNext;
+      chkGoNext.checked = globalQuickMoveSettings.isGoNext;
       chkGoNext.addEventListener("click", function(evt) { qmSettings.toggleGoNext(chkGoNext, evt)} );
       chkGoNext.addEventListener("keypress", function(evt) { qmSettings.toggleGoNext(chkGoNext, evt)} );
       
       let chkReopen = document.getElementById('chkReopen');
-      chkReopen.checked = settings.isReopen;
+      chkReopen.checked = globalQuickMoveSettings.isReopen;
       chkReopen.addEventListener("click", function(evt) { qmSettings.toggleReopen(chkReopen, evt)} );
       chkReopen.addEventListener("keypress", function(evt) { qmSettings.toggleReopen(chkReopen, evt)} );
       
@@ -95,10 +99,9 @@
     
     },
     
-    toggleAccountExclusion: function toggleAccountExclusion(el, evt) {
+    toggleAccountExclusion: function(el, evt) {
       // check box command handler
-      let isChecked = el.checked,
-          list = QuickFolders.quickMove.Settings.excludedIds,
+      let list = globalQuickMoveSettings.excludedIds,
           isModified = false,
           txtDebug = "";
       if (evt.type == "keypress" && evt.key != " ") return;
@@ -120,7 +123,8 @@
       }
       if (isModified) {
         util.logDebug ('modified!\n' + txtDebug);
-        prefs.setStringPref('quickMove.premium.excludedAccounts',list.join(","));
+        prefs.setStringPref('quickMove.premium.excludedAccounts', list.join(","));
+        globalQuickMoveSettings.excludedIds = list; // write back the list!!
       }
     },
     
@@ -160,13 +164,10 @@
     
     accept: function() {
       // transmit to main window:
-      util.getMail3PaneWindow().QuickFolders.quickMove.Settings.loadExclusions();
+      globalQuickMoveSettings.loadExclusions();
     }
   }
     
-  const prefs = QuickFolders.Preferences,
-        util = QuickFolders.Util;
-
 }    
 
 

@@ -333,7 +333,7 @@ async function main() {
         
       case "updateMainWindow": // we need to add one parameter (minimal) to pass through!
         let isMinimal = (data.minimal) || false;
-        messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", minimal: isMinimal});
+        messenger.NotifyTools.notifyExperiment({event: "updateMainWindow", detail:{ minimal: isMinimal}});
         break;
         
       case "showAboutConfig":
@@ -531,6 +531,25 @@ async function main() {
         addFolderPaneMenu();
         break;
 
+
+      case "openLinkInTab":
+        // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
+        {
+          let baseURI = data.baseURI || data.URL;
+          let found = await browser.tabs.query( { url:baseURI } );
+          if (found.length) {
+            let tab = found[0]; // first result
+            await browser.tabs.update(
+              tab.id, 
+              {active:true, url: data.URL}
+            );
+            return;
+          }
+          browser.tabs.create(
+            { active:true, url: data.URL }
+          );        
+        }
+        break;             
 
     }
   }

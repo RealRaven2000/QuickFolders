@@ -365,7 +365,7 @@ var Register = {
   } ,
   
   premiumInfo: function premiumInfo(event) {
-    QuickFolders.Util.openURL(event,'https://quickfolders.org/premium.html');
+    QuickFolders.Util.openURL('https://quickfolders.org/premium.html', event);
   },
   
   sanitizeName: function sanitizeName(name) {

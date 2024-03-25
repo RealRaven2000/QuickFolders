@@ -1456,7 +1456,7 @@ allowUndo = true)`
     catch(e) { 
       this.logDebug("openBrowserForced (" + linkURI + ") " + e.toString()); 
       // failed to open link in browser, try to open in tab
-      QuickFolders_TabURIopener.openURLInTab(linkURI);
+      QuickFolders.Util.openURLInTab(linkURI);
     }
   },
   
@@ -1522,12 +1522,36 @@ allowUndo = true)`
     }
   },
 
-  openURL: function openURL(evt,URL) { // workaround for a bug in TB3 that causes href's not be followed anymore.
-    if (QuickFolders_TabURIopener.openURLInTab(URL) && null!=evt) {
+  openURL: async function (URL, evt=null) { // workaround for a bug in TB3 that causes href's not be followed anymore.
+    if (await QuickFolders.Util.openURLInTab.call(QuickFolders.Util, URL) && evt) {
       if (evt.preventDefault)  evt.preventDefault();
       if (evt.stopPropagation)  evt.stopPropagation();
     }
   },
+
+	openURLInTab: async function (URL) {
+		try {
+			URL = SmartTemplate4.Util.makeUriPremium(URL);
+
+			// use API. Look Ma, no tabmail!
+			// getBaseURI to check if we already opened the page and need to 
+			// jump to a different anchor.
+			await QuickFolders.Util.notifyTools.notifyBackground(
+				{ 
+					func: "openLinkInTab", 
+					URL: URL, 
+					baseURI: QuickFolders.Util.getBaseURI(URL)
+				}
+			);
+			return true;
+		}
+		catch(e) {
+			QuickFolders.Util.logException('openURLInTab(' + URL + ')', e);
+			return false;
+		}
+	} ,  
+
+
 
   getBundleString: function getBundleString(id, substitions = []) { // moved from local copies in various modules.
     // [mx-l10n]
@@ -1827,10 +1851,10 @@ allowUndo = true)`
     }
   },
   
-  showVersionHistory: function showVersionHistory() {
+  showVersionHistory: function () {
     const util = QuickFolders.Util;
     let version = util.VersionSanitized;
-    util.openURL(null, util.makeUriPremium("https://quickfolders.org/version.html") + "#" + version);
+    util.openURLInTab(util.makeUriPremium("https://quickfolders.org/version.html") + "#" + version);
   } ,
   
   
@@ -1914,7 +1938,7 @@ allowUndo = true)`
             // on very first run, we go to the index page - welcome blablabla
             util.logDebugOptional ("firstrun","setTimeout for content tab (index.html)");
             window.setTimeout(function() {
-              util.openURL(null, "https://quickfolders.org/index.html");
+              util.openURLInTab("https://quickfolders.org/index.html");
             }, 1500); 
           }
         }
@@ -1945,7 +1969,7 @@ allowUndo = true)`
               // display version history - disable by right-clicking label above show history panel
               if (!suppressVersionScreen) {
                 util.logDebugOptional ("firstrun","open tab for version history, QF " + current);
-                window.setTimeout(function(){ util.openURL(null, versionPage); }, 2200);
+                window.setTimeout(function(){ util.openURLInTab(versionPage); }, 2200);
               }
             }
 
@@ -2303,57 +2327,6 @@ Object.defineProperty(QuickFolders.Util, "Accounts",
     return aAccounts;
   }
 });
-
-var QuickFolders_TabURIregexp = {
-  get _thunderbirdRegExp() {
-    delete this._thunderbirdRegExp;
-    return this._thunderbirdRegExp = new RegExp("^https://quickfolders.org/");
-  }
-};
-// open the new content tab for displaying support info, see
-// https://developer.mozilla.org/en/Thunderbird/Content_Tabs
-var QuickFolders_TabURIopener = {
-  openURLInTab: function openURLInTab(URL) {
-    let util = QuickFolders.Util;
-    URL = util.makeUriPremium(URL);
-    try {
-      let sTabMode="",
-          tabmail;
-      tabmail = document.getElementById("tabmail");
-      if (!tabmail) {
-        // Try opening new tabs in an existing 3pane window
-        let mail3PaneWindow = util.getMail3PaneWindow();
-        if (mail3PaneWindow) {
-          tabmail = mail3PaneWindow.document.getElementById("tabmail");
-          mail3PaneWindow.focus();
-        }
-      }
-      if (tabmail) {
-        // find existing tab with URL
-        if (!util.findMailTab(tabmail, URL)) {
-          sTabMode = "contentTab";
-          tabmail.openTab(sTabMode,
-          {contentPage: URL, url: URL, clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);"});
-        }
-      }
-      else
-        window.openDialog(
-          "chrome://messenger/content/", "_blank",
-          "chrome,dialog=no,all", null,
-          { tabType: "contentTab", 
-            tabParams: {
-              contentPage: URL, 
-              url: URL, 
-              clickHandler: "specialTabs.siteClickHandler(event, QuickFolders_TabURIregexp._thunderbirdRegExp);", 
-              id: "QuickFolders_Weblink"
-            } 
-          } 
-        );
-    }
-    catch(e) { return false; }
-    return true;
-  }
-};
 
 
 // the following adds the notifyTools API as a util method to communicate with the background page

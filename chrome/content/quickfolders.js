@@ -410,13 +410,34 @@ END LICENSE BLOCK */
     ## [issue 433] Problems in tab-specific properties panel on Mac (Tb 115)
     ## [issue 439] Thunderbird 122 beta - cannot add new tabs to toolbar
 
-  6.4.1 QuickFolders Pro - WIP    
+  6.4.1 QuickFolders Pro - 10/12/2023
     ## Improvement: activate the correct settings page (license check, Support or help) if the 
     ##   settings dialog or tab is already open
 
+  6.5 QuickFolders Pro - WIP
+    ## Add Alias to register dialog if already set in a license
+    ## Improved Italian Translations thanks to Leopoldo Saggin 
+    ## Localized hard coded English strings (thanks to Leopoldo Saggin for finding these)
+    ## Fixed layout issues in advanced tab settings
+    ## [issue 458] Feature: Mark Newsgroup Read
+    ## [issue 459] Ctrl+Right-click QuickFolders Commands don't work
+    ## [issue 455] Reading list: add current item to list not working 
+    ## [issue 457] Paint Mode - brush icon too big
+    ## Opening support sites in a tab is now using API method
+    ## [issue 451] quickMove error in conversation view (when results are restricted to current mail account)
+    ## [issue 464] Advanced Search Settings - unchecking more multiple Accounts failed to save
+
+
+    
+
+	TO DO next
+	==========
+    ## [issue 423] Color Tabs with unread messages
+    ## [issue ]
+
+
 	Future Work
 	===========
-    ## [issue ]
     ## [issue ]
     ## [issue ]
     ## [issue 354] Add permanent notifications for messages moved.

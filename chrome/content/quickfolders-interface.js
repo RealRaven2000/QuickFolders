@@ -354,7 +354,7 @@ QuickFolders.Interface = {
 		return menupopup;
 	} ,
 
-	createRecentTab: function createRecentTab(passedPopup, isDrag, passedButton) {
+	createRecentTab: function(passedPopup, isDrag, passedButton) {
 		try {
 			QuickFolders.Util.logDebugOptional("recentFolders","createRecentTab( "
 				+ " passedPopup: " + (passedPopup == null ? "null" : passedPopup.id)
@@ -373,12 +373,14 @@ QuickFolders.Interface = {
 				button.setAttribute("tag", "#Recent");
 				button.setAttribute("role", "button");
 				button.id="QuickFolders-Recent";
+				QuickFolders.Interface.addAccessibility(button);
 
 				// biffState = nsMsgBiffState_Unknown = 2
 				this.styleFolderButton(button, 0, 0, 0
 					, "recent" + ((isCurrentFolderButton || QuickFolders.Preferences.isShowRecentTabIcon) ?  " icon" : "")
 					, 0, false, null, null);
 				this.buttonsByOffset[0] = button; // currently, hard code to be the first! ([0] was [offset])
+				
 				let tabColor = QuickFolders.Preferences.recentTabColor;
 				if (tabColor) {
 					this.setButtonColor(button, tabColor);
@@ -499,7 +501,7 @@ QuickFolders.Interface = {
     // mark folder as read and jump to next unread folder
     if (evt.ctrlKey) {
       if (QuickFolders.Util.licenseInfo.status == "Valid" && QuickFolders.Util.licenseInfo.keyType!=2) {
-        QuickFolders.Util.CurrentFolder.markAllMessagesRead(msgWindow);
+        QuickFolders.Util.CurrentFolder.markAllMessagesRead(null);
       } else {
         let featureText = QuickFolders.Util.getBundleString("qfMarkAllRead.next")
         QuickFolders.Util.popupRestrictedFeature("markFolderReadAndSkip", `(${featureText})`);
@@ -833,43 +835,8 @@ QuickFolders.Interface = {
 							}
 						} else {
 							// a11y
-							button.addEventListener("keydown", (event) => {
-								function goNextSibling(dir=+1) {
-									let b = button;
-									do {
-                    b = dir > 0 ? b.nextElementSibling : b.previousElementSibling;
-                  } while (
-                    b &&
-                    (b.tagName !== "toolbarbutton" || !b.folder) // && (b.id && b.id!="QuickFolders-Recent")
-                  );
-									return b;
-								}
-								let sibling;
-								switch (event.key) {
-                  case "ArrowRight":
-                    sibling = goNextSibling(1);
-                    break;
-                  case "ArrowLeft":
-                    sibling = goNextSibling(-1);
-                    break;
-                  case "Enter":
-                    QuickFolders.Interface.onButtonClick(button, event, false);
-                    break;
-                  case "ContextMenu": // Windows Menu key
-                    // Trigger your context menu logic here
-                    console.log("Context menu key pressed!");
-                    break;
-                  case "F2": // Rename action
-                    QuickFolders.Interface.onRenameBookmark(button);
-                    event.preventDefault(); // Prevent any default behavior
-                    break;
-                }
-								if (!sibling) return;
-								event.preventDefault();
-								button.setAttribute("tabindex","-1");
-								sibling.setAttribute("tabindex", "0");
-								sibling.focus();
-							})
+							QuickFolders.Interface.addAccessibility(button);
+
 							button.setAttribute("tabindex", isFirst ? "0" : "-1");
 							button.setAttribute("role","button");
 							countValidTabs++;
@@ -933,6 +900,53 @@ QuickFolders.Interface = {
       let time = util.stopWatch("all","updateFolders");
       console.log(`%cQuickFolders.Interface.updateFolders(rebuildCat = ${rebuildCategories}, minimal = ${minimalUpdate})\n ${countFolders} folders took: ${time}`, profileStyle);
     }
+
+	} ,
+
+	addAccessibility: function(button) {
+		const isRecentButton = (b) => { 
+			return b?.id == "QuickFolders-Recent" 
+		};
+		const goNextSibling = (dir = 1) => {
+			let b = button;
+			while (b) {
+				b = dir > 0 ? b.nextElementSibling : b.previousElementSibling;
+				if (b && b.tagName === "toolbarbutton" && (b.folder || isRecentButton(b))) {
+					return b;
+				}
+			}
+			return null;
+		};
+		
+		button.addEventListener("keydown", (event) => {
+			let sibling;
+			switch (event.key) {
+				case "ArrowRight":
+					sibling = goNextSibling(1);
+					break;
+				case "ArrowLeft":
+					sibling = goNextSibling(-1);
+					break;
+				case "Enter":
+					if (isRecentButton(button)) break;
+					QuickFolders.Interface.onButtonClick(button, event, false);
+					break;
+				case "ContextMenu": // Windows Menu key
+					// Trigger your context menu logic here
+					console.log("Context menu key pressed!");
+					break;
+				case "F2": // Rename action
+				  if (isRecentButton(button)) break;
+					QuickFolders.Interface.onRenameBookmark(button);
+					event.preventDefault(); // Prevent any default behavior
+					break;
+			}
+			if (!sibling) return;
+			event.preventDefault();
+			button.setAttribute("tabindex", "-1");
+			sibling.setAttribute("tabindex", "0");
+			sibling.focus();
+		});	
 
 	} ,
 
@@ -3449,7 +3463,7 @@ QuickFolders.Interface = {
     util.logDebugOptional("interface", "QuickFolders.Interface.onMarkAllRead()");
 		try {
 			let f = folder.QueryInterface(Components.interfaces.nsIMsgFolder);
-      f.markAllMessagesRead(msgWindow); // msgWindow  - global
+      f.markAllMessagesRead(null); 
       if (recursive) {  // [issue 3] Mark messages READ in folder and all its subfolders
         // iterate all folders and mark all children as read:
         for await (let folder of util.allFoldersIterator(false)) {
@@ -3457,7 +3471,7 @@ QuickFolders.Interface = {
           if (folder.getNumUnread(false) && hasAsParent(folder, f)) {
             setTimeout(
               function() { 
-                folder.markAllMessagesRead(msgWindow);  // msgWindow  - global
+                folder.markAllMessagesRead(null);  
               }
             )
           }

@@ -7,6 +7,7 @@
 *   accessibility: quickJump / quickMove prority for QF bookmarks in results & screenreader support. [issue #548]
 *   accessibility: Support adding QuickFolders (bookmark folders) using keyboard. [issue #550]
 *   accessibility: Accessibility option: Remove 'customize icon' command from folder context. [issue #551]
+*   accessibility: Support keyboard navigation of the QuickFolders toolbar [issue #552]
   
 
 **Bug Fixes**

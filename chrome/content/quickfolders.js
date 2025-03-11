@@ -192,9 +192,10 @@ END LICENSE BLOCK */
     ## New option to always display QuickFolders Options in a tab
     ## [issue 540] quickJump feature - Shortcut key to open specified folder in a new TB tab
     ## [issue 542] quickJump - Modifier key [Alt] to open folder in new window 
-    ## [issue 548] a11y: quickJump / quickMove prority for QF bookmarks in results & screenreader support
-    ## [issue 550] a11y: Support adding QuickFolders (bookmark folders) using keyboard
-    ## [issue 551] a11y: Accessibility option: Remove 'customize icon' command from folder context
+    ## [issue 548] accessibility: quickJump / quickMove prority for QF bookmarks in results & screenreader support
+    ## [issue 550] accessibility: Support adding QuickFolders (bookmark folders) using keyboard
+    ## [issue 551] accessibility: new Accessibility option: Remove 'customize icon' command from folder context
+    ## [issue 552] accessibility: Support keyboard navigation of the QuickFolders toolbar
     ## [issue 478] option to disable highlighting tabs with invalid folders 🧹
     ---
     ## [issue 539] No cursive tab on new mails if "display unread tabs as bold" is disabled.
@@ -205,8 +206,6 @@ END LICENSE BLOCK */
     ## Replaced XPCOMUtils.defineLazyGetter => ChromeUtils.defineLazyGetter  (removed in Fx137)
     ## [issue 543] Removed inline event handlers which will be deprecated in Thunderbird 136
     ## [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
-    
-
 
 
 	TO DO next
@@ -216,7 +215,6 @@ END LICENSE BLOCK */
     ## [issue 494] Global Settings tab for find related functions (go next = to delete quick search)
     ## [issue 423] Color Tabs with unread messages
     ## [issue ] convert Tab-Specific Properties to HTML
-    ## force QF settings dialog to stay on top
     ## [issue ]
 
 

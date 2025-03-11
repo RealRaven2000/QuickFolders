@@ -300,6 +300,7 @@ async function onLoad(activatedWhileWindowOpen) {
           />
         <toolbarbutton id="QuickFolders-readingList"
           class="popupButton"
+          tabindex="0"
           tooltiptext="__MSG_quickfolders.readingList.tooltip__"
           label=""
           context="QuickFolders-readingListMenu"

@@ -886,6 +886,10 @@ async function main() {
           browser.tabs.create({ active: true, url: data.URL });
         }
         break;
+
+      case "openBrowserLink": 
+        messenger.windows.openDefaultBrowser(data.url);
+        break;
     }
   }
   

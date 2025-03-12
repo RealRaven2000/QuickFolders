@@ -1417,16 +1417,18 @@ allowUndo = true)`
   } ,
 
   getBaseURI: function baseURI(URL) {
-    let hashPos = URL.indexOf('#'),
-        queryPos = URL.indexOf('?'),
-        baseURL = URL;
+    const hashPos = URL.indexOf('#'),
+      queryPos = URL.indexOf('?');
+    let baseURL = URL;
         
-    if (hashPos>0)
+    if (hashPos>0) {
       baseURL = URL.substr(0, hashPos);
-    else if (queryPos>0)
+    } else if (queryPos>0) {
       baseURL = URL.substr(0, queryPos);
-    if (baseURL.endsWith('/'))
+    }
+    if (baseURL.endsWith('/')) {
       return baseURL.substr(0, baseURL.length-1); // match "x.com" with "x.com/"
+    }
     return baseURL;   
   } ,
   
@@ -1457,24 +1459,6 @@ allowUndo = true)`
     }
     return false;
   } , 
-  
-  // dedicated function for email clients which don't support tabs
-  // and for secured pages (donation page).
-  openBrowserForced: function (linkURI) {
-    const Ci = Components.interfaces;
-    try {
-      this.logDebug("openBrowserForced (" + linkURI + ")");
-      let service = Components.classes["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
-          ioservice = Components.classes["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
-          uri = ioservice.newURI(linkURI, null, null);
-      service.loadURI(uri);
-    }
-    catch(e) { 
-      this.logDebug("openBrowserForced (" + linkURI + ") " + e.toString()); 
-      // failed to open link in browser, try to open in tab
-      QuickFolders.Util.openURLInTab(linkURI);
-    }
-  },
   
   // appends user=pro OR user=proRenew if user has a valid / expired license
   makeUriPremium: function makeUriPremium(URL) {
@@ -1519,23 +1503,14 @@ allowUndo = true)`
   } ,
 
   // use this to follow a href that did not trigger the browser to open (from a XUL file)
-  openLinkInBrowser: function openLinkInBrowser(evt, linkURI) {
-    const Cc = Components.classes,
-          Ci = Components.interfaces,
-          util = QuickFolders.Util;
-    linkURI = util.makeUriPremium(linkURI);
-    try {
-      let service = Cc["@mozilla.org/uriloader/external-protocol-service;1"].getService(Ci.nsIExternalProtocolService),
-          ioservice = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
-      service.loadURI(ioservice.newURI(linkURI, null, null));
-      if (null!=evt) {
-        evt.stopPropagation();
-      }
-    }
-    catch(e) { 
-      this.logDebug("openLinkInBrowser (" + linkURI + ") " + e.toString()); 
-      this.openBrowserForced(linkURI);
-    }
+  openLinkInBrowser: function (evt, linkURI) {
+    QuickFolders.Util.notifyTools.notifyBackground({
+      func: "openBrowserLink",
+      url: linkURI,
+    });
+
+    evt?.stopPropagation();
+    return;
   },
 
   openURL: async function (URL, evt=null) { // workaround for a bug in TB3 that causes href's not be followed anymore.

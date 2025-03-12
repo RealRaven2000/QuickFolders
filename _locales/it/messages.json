@@ -334,7 +334,7 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1} L'ultima edizione di $addonName$ è ora compatibile con Thunderbird fino alla versione 134. La versione Pro offre uno {A-findRelated}strumento di ricerca migliorato{A} per trovare email correlate a quella attualmente visualizzata. Visita il registro completo delle modifiche nel link sottostante per una documentazione dettagliata. {P2}",
+    "message": "{P1} L'ultima versione di $addonName$ è ora compatibile con Thunderbird v138 e ha iniziato il percorso verso una migliore accessibilità per tastiere e screen reader. Per la documentazione dettagliata, consultare il registro delle modifiche completo al link qui sotto. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -346,7 +346,7 @@
     "message": "Poiché tutto il lavoro su QuickFolders e il supporto gratuito sono finanziati esclusivamente dalle vendite di licenze, si prega di considerare l'acquisto di una licenza o il rinnovo della licenza attuale."
   },
   "ongoing-work": {
-    "message": "Le modifiche per convertire $addonName$ nel nuovo modello di programmazione hanno richiesto settimane e sono state costose. Ci sono molte altre modifiche previste per la prossima versione. Con una estensione complessa come questa, il lavoro diventa molto oneroso in termini economici. Per favore aiutaci!",
+    "message": "Per mantenere $addonName$ sincronizzato con le versioni mensili di Thunderbird, dobbiamo controllare costantemente eventuali problemi e caricare versioni adattate. Per favore, aiutaci con questo.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -367,7 +367,7 @@
     "message": "Acquista una licenza."
   },
   "purchase-heading": {
-    "message": "Acquisto di una licenza"
+    "message": "Supporto tramite una licenza"
   },
   "qf.accounts": {
     "message": "Account"
@@ -1963,11 +1963,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Affinché $addonName$ rimanga funzionante e attivo, ti preghiamo di aiutare il progetto:",
+    "message": "Per mantenere $addonName$ funzionante e aggiornato, considera di supportarlo:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

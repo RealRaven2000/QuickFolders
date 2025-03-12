@@ -334,7 +334,7 @@
     "message": "Dernières nouveautés"
   },
   "newsSection": {
-    "message": "{P1} La dernière version de $addonName$ est maintenant compatible avec Thunderbird jusqu'à la version 134. La version Pro dispose d'un {A-findRelated}outil de recherche amélioré{A} pour trouver les e-mails liés à celui actuellement affiché. Veuillez consulter le journal des modifications complet dans le lien ci-dessous pour une documentation détaillée. {P2}",
+    "message": "{P1} La dernière version de $addonName$ est désormais compatible avec Thunderbird v138 et a entamé son chemin vers une meilleure accessibilité pour les claviers et les lecteurs d'écran. Pour une documentation détaillée, veuillez consulter le journal des modifications complet via le lien ci-dessous. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -346,7 +346,7 @@
     "message": "Étant donné que tout le travail sur QuickFolders et le support gratuit sont financés exclusivement par les ventes de licences, veuillez envisager d'acheter une licence ou de renouveler la vôtre."
   },
   "ongoing-work": {
-    "message": "Les modifications pour convertir $addonName$ au nouveau modèle de programmation ont pris des semaines et étaient coûteuses. Il y a beaucoup plus de changements pour la prochaine version 2022. Avec un module complémentaire complexe comme celui-ci, un travail coûteux devient inévitable. Merci de nous aider.",
+    "message": "Pour garder $addonName$ synchronisé avec les mises à jour mensuelles de Thunderbird, nous devons constamment vérifier les problèmes et publier des versions adaptées. Merci de nous aider.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -367,7 +367,7 @@
     "message": "Achetez une licence."
   },
   "purchase-heading": {
-    "message": "Acheter une licence !"
+    "message": "Soutenir via une licence"
   },
   "qf.accounts": {
     "message": "Comptes"
@@ -1952,11 +1952,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Pour que $addonName$ reste fonctionnel et vivant, faites-lui une faveur vitale:",
+    "message": "Jotta $addonName$ pysyisi toimivana ja ajan tasalla, harkitse sen tukemista:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

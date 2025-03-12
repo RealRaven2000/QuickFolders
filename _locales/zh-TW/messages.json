@@ -326,7 +326,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} $addonName$ 的最新版本現已支援 Thunderbird 134 版。Pro 版本提供了一個 {A-findRelated}改進的搜尋工具{A}，可用於查找與當前檢視的郵件相關的郵件。請參考以下連結以檢視完整的變更記錄及詳細文件。 {P2}",
+    "message": "{P1} $addonName$ 最新版本現在已相容於 Thunderbird v138，並開始改善鍵盤和螢幕閱讀器的無障礙支援。請參閱以下連結中的完整變更日誌以獲取詳細資訊。{P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -338,7 +338,7 @@
     "message": "由於QuickFolders的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
   },
   "ongoing-work": {
-    "message": "將 $addonName$ 轉換為新編程模型的更改花費了數週時間，而且成本很高。 下一個2022版本將有更多更改。 有了這樣複雜的附加組件，昂貴的工作就變得不可避免。 請幫助我們。",
+    "message": "為了使 $addonName$ 與 Thunderbird 的每月發布保持同步，我們必須不斷檢查問題並上傳適配版本。請幫助我們完成這項工作。",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -359,7 +359,7 @@
     "message": "購買許可證。"
   },
   "purchase-heading": {
-    "message": "購買許可證！"
+    "message": "透過許可證支持"
   },
   "qf.accounts": {
     "message": "帐目"
@@ -1866,11 +1866,11 @@
     }
   },
   "support-suggestion": {
-    "message": "為了使$addonName$保持功能性和活躍性，請務必這樣做：",
+    "message": "為了讓 $addonName$ 保持功能正常並保持最新，請考慮支持它：",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

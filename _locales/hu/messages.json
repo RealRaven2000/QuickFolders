@@ -294,7 +294,7 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} A $addonName$ legújabb verziója már kompatibilis a Thunderbird 134-as verziójáig. A Pro verzió tartalmaz egy {A-findRelated}fejlesztett keresőeszközt{A}, amely segít megtalálni az aktuálisan megtekintett e-maillel kapcsolatos leveleket. A részletes dokumentációért látogasson el az alábbi linkre a teljes változáslistához. {P2}",
+    "message": "{P1} A $addonName$ legújabb verziója most már kompatibilis a Thunderbird v138-cal, és megkezdte az útját a jobb billentyűzet- és képernyőolvasó-hozzáférhetőség felé. A részletes dokumentációért tekintse meg az alábbi hivatkozásban található teljes változásnaplót. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -306,7 +306,7 @@
     "message": "Mivel a QuickFolders összes munkája és az ingyenes támogatás kizárólag a licenceladásokból finanszírozódik, kérjük, fontolja meg licenc vásárlását vagy a jelenlegi licenc megújítását."
   },
   "ongoing-work": {
-    "message": "A $addonName$ konvertálásának új programozási modellvé történő átalakítása hetekig tartott és költséges volt. Sokkal több változás van a következő 2022-es verzióra. Egy ilyen összetett kiegészítő mellett a drága munka elkerülhetetlenné válik. Kérem, segítsen ebben.",
+    "message": "Ahhoz, hogy a $addonName$ lépést tartson a Thunderbird havi kiadásaival, folyamatosan ellenőriznünk kell a hibákat és feltölteni a módosított verziókat. Kérjük, segíts ebben.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1671,11 +1671,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Annak érdekében, hogy a $addonName$ működőképes és életben maradjon, kérjük, tegye meg ezt a szívességet:",
+    "message": "A(z) $addonName$ működőképességének és naprakészen tartásának érdekében kérlek, fontold meg a támogatását:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

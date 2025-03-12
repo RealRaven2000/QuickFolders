@@ -327,7 +327,7 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Die neueste Version von $addonName$ ist jetzt mit Thunderbird bis Version 134 kompatibel. Die Pro-Version enthält ein {A-findRelated}verbessertes Suchwerkzeug{A}, um E-Mails zu finden, die mit der aktuell angezeigten zusammenhängen. Bitte besuchen Sie das vollständige Änderungsprotokoll im unten stehenden Link für detaillierte Dokumentation. {P2}",
+    "message": "{P1} Die neueste Version von $addonName$ ist jetzt mit Thunderbird v138 kompatibel und hat den Weg zu verbesserter Barrierefreiheit für Tastatur- und Bildschirmleser begonnen. Eine detaillierte Dokumentation finden Sie im vollständigen Änderungsprotokoll unter dem folgenden Link. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -339,7 +339,7 @@
     "message": "Da alle Arbeiten an QuickFolders und der kostenlose Support ausschließlich durch Lizenzverkäufe finanziert werden, bitte denken Sie darüber nach, eine Lizenz zu kaufen oder Ihre aktuelle zu verlängern."
   },
   "ongoing-work": {
-    "message": "Die Änderungen zur Konvertierung von $addonName$ auf das neue Programmiermodell dauerten Wochen und waren kostspielig. Es gibt viele weitere Änderungen für die nächste Version 2022. Bitte helfen Sie uns dabei.",
+    "message": "Um $addonName$ mit den monatlichen Thunderbird-Versionen synchron zu halten, müssen wir ständig auf Fehler prüfen und angepasste Versionen hochladen. Bitte helft uns dabei.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -360,7 +360,7 @@
     "message": "Kaufen Sie eine Lizenz."
   },
   "purchase-heading": {
-    "message": "Lizenz erwerben!"
+    "message": "Unterstützung durch eine Lizenz"
   },
   "qf.accounts": {
     "message": "Konten"
@@ -1909,11 +1909,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Damit $addonName$ weiterhin funktionsfähig und lebendig bleiben kann, tun Sie ihm bitte einen entscheidenden Gefallen:",
+    "message": "Um $addonName$ funktionsfähig und auf dem neuesten Stand zu halten, bitte erwägen Sie, es zu unterstützen:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

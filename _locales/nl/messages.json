@@ -326,7 +326,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1} De nieuwste editie van $addonName$ is nu compatibel met Thunderbird tot en met versie 134. De Pro-versie bevat een {A-findRelated}verbeterde zoektool{A} om e-mails te vinden die gerelateerd zijn aan de momenteel bekeken e-mail. Bezoek de volledige changelog via de onderstaande link voor gedetailleerde documentatie. {P2}",
+    "message": "{P1} De nieuwste versie van $addonName$ is nu compatibel met Thunderbird v138 en is begonnen met het verbeteren van de toegankelijkheid voor toetsenbord en schermlezers. Bekijk het volledige wijzigingslogboek via de onderstaande link voor gedetailleerde documentatie. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -338,7 +338,7 @@
     "message": "Aangezien al het werk aan QuickFolders en de gratis ondersteuning uitsluitend wordt gefinancierd door licentieverkopen, overweeg dan een licentie aan te schaffen of uw huidige licentie te verlengen."
   },
   "ongoing-work": {
-    "message": "De aanpassingen om $addonName$ om te zetten naar het nieuwe programmeermodel duurden weken en waren kostbaar. Er zijn veel meer wijzigingen voor de volgende 2022-versie. Met een complexe add-on als deze wordt duur werk onvermijdelijk. Help ons hier alstublieft mee.",
+    "message": "Om $addonName$ in sync te houden met de maandelijkse releases van Thunderbird, moeten we voortdurend controleren op problemen en aangepaste versies uploaden. Help ons hierbij.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -359,7 +359,7 @@
     "message": "Koop een licentie."
   },
   "purchase-heading": {
-    "message": "Een licentie kopen!"
+    "message": "Ondersteuning via een licentie"
   },
   "qf.alert.pasteFolders.formatErr": {
     "message": "Kon tabbladen niet aanmaken. Zie Extra > Foutconsole voor meer details."
@@ -1913,11 +1913,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Zodat $addonName$ functioneel en levend blijft, doe het alsjeblieft een belangrijke gunst:",
+    "message": "Om $addonName$ functioneel en up-to-date te houden, overweeg dan om het te ondersteunen:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

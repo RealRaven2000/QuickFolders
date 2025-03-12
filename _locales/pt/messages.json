@@ -323,7 +323,7 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1} A versão mais recente do $addonName$ agora é compatível com o Thunderbird até a versão 134. A versão Pro inclui uma {A-findRelated}ferramenta de busca aprimorada{A} para encontrar e-mails relacionados ao que está sendo visualizado. Consulte o link abaixo para o registro completo de alterações e documentação detalhada. {P2}",
+    "message": "{P1} A versão mais recente do $addonName$ agora é compatível com o Thunderbird v138 e iniciou seu caminho para melhorar a acessibilidade para teclados e leitores de tela. Para mais detalhes, consulte o registro completo de alterações no link abaixo. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -335,7 +335,7 @@
     "message": "Como todo o trabalho no QuickFolders e o suporte gratuito são financiados exclusivamente pelas vendas de licenças, considere comprar uma licença ou renovar a sua atual."
   },
   "ongoing-work": {
-    "message": "As alterações para converter $addonName$ para o novo modelo de programação demoraram semanas e custaram caro. Existem muitas outras mudanças para a próxima versão de 2022. Com um complemento complexo como esse, o trabalho caro se torna inevitável. Por favor nos ajude com isso.",
+    "message": "Para manter $addonName$ sincronizado com os lançamentos mensais do Thunderbird, precisamos verificar constantemente problemas e enviar versões adaptadas. Por favor, ajude-nos com isso.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -356,7 +356,7 @@
     "message": "Compre uma licença."
   },
   "purchase-heading": {
-    "message": "Comprando uma licença!"
+    "message": "Apoiar através de uma licença"
   },
   "qf.accounts": {
     "message": "Contas"
@@ -1892,11 +1892,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Para que $addonName$ permaneça funcional e vivo, faça um favor vital:",
+    "message": "Para manter $addonName$ funcional e atualizado, considere apoiá-lo:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

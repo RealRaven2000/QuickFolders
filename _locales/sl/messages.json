@@ -314,7 +314,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1} Najnovejša različica $addonName$ zdaj deluje v Thunderbird do različice 134. Pro različica vključuje {A-findRelated}izboljšano orodje za iskanje{A}, ki omogoča iskanje sporočil, povezanih z izbranim. Za podrobno dokumentacijo obiščite celoten dnevnik sprememb prek spodnje povezave. {P2}",
+    "message": "{P1} Najnovejša različica $addonName$ je zdaj združljiva s Thunderbirdom v138 in se je začela prilagajati za boljšo dostopnost prek tipkovnice in bralnikov zaslona. Za podrobno dokumentacijo si oglejte celoten dnevnik sprememb na spodnji povezavi. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -326,7 +326,7 @@
     "message": "Ker je vsa dela na QuickFolders in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
   },
   "ongoing-work": {
-    "message": "Spremembe pretvorbe $addonName$ v novi programski model so trajale tedne in so bile drage. Za naslednjo različico iz leta 2022 je še veliko sprememb. S takšnim kompleksnim dodatkom postane drago delo neizogibno. Prosim, pomagajte nam pri tem.",
+    "message": "Da bi $addonName$ ostal usklajen z mesečnimi izdajami Thunderbirda, moramo stalno preverjati napake in nalagati prilagojene različice. Prosim, pomagajte nam pri tem.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -347,7 +347,7 @@
     "message": "Nakup licence."
   },
   "purchase-heading": {
-    "message": "Nakup licence!"
+    "message": "Podpora z licenco"
   },
   "qf.accounts": {
     "message": "Računi"
@@ -1862,11 +1862,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Da bo $addonName$ ostal funkcionalen in živ, storite to zelo pomembno:",
+    "message": "Da bi $addonName$ ostal funkcionalen in posodobljen, prosimo, da ga podprete:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

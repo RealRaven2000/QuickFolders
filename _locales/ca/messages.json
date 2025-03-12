@@ -334,7 +334,7 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1} L'última edició de $addonName$ ara és compatible amb Thunderbird fins a la versió 134. La versió Pro inclou una {A-findRelated}eina de cerca millorada{A} per trobar correus relacionats amb el que es mostra actualment. Visiteu el registre complet de canvis al següent enllaç per a documentació detallada. {P2}",
+    "message": "{P1} L’última edició de $addonName$ ara és compatible amb Thunderbird v138 i ha començat el seu camí cap a una millor accessibilitat per a teclats i lectors de pantalla. Per a una documentació detallada, consulteu el registre de canvis complet en l'enllaç següent. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -346,7 +346,7 @@
     "message": "Vzhledem k tomu, že veškerá práce na QuickFolders a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
   },
   "ongoing-work": {
-    "message": "Les modificacions per convertir $addonName$ al nou model de programació van trigar setmanes i van ser costoses. Hi ha molts més canvis per a la propera versió del 2022. Amb un complement complex com aquest, es fa inevitable un treball car. Ajudeu-nos amb això.",
+    "message": "Per mantenir $addonName$ sincronitzat amb les versions mensuals de Thunderbird, hem de comprovar constantment possibles errors i penjar versions adaptades. Si us plau, ajudeu-nos amb això.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1861,11 +1861,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Perquè $addonName$ es mantingui viu i funcional, faci un favor vital:",
+    "message": "Per mantenir $addonName$ funcional i actualitzat, si us plau, considera donar-hi suport:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

@@ -198,11 +198,11 @@ END LICENSE BLOCK */
     ## [issue 552] accessibility: Support keyboard navigation of the QuickFolders toolbar
     ## [issue 478] option to disable highlighting tabs with invalid folders 🧹
     ---
-    ## [issue 539] No cursive tab on new mails if "display unread tabs as bold" is disabled.
+    ## [issue 539] Fixed: No cursive tab on new mails if "display unread tabs as bold" is disabled.
     ## [issue 541] Fixed: CTRL+click Tab popup folder opens 2 Thunderbird tabs
     ## [issue 546] Fixed: can no longer remove customized icon from tab
     ---
-    ## made compatible with Tb 137.*
+    ## made compatible with Tb 138.*
     ## Replaced XPCOMUtils.defineLazyGetter => ChromeUtils.defineLazyGetter  (removed in Fx137)
     ## [issue 543] Removed inline event handlers which will be deprecated in Thunderbird 136
     ## [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule

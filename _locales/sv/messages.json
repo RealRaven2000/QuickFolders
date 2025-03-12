@@ -327,7 +327,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1} Den senaste versionen av $addonName$ kan nu användas med Thunderbird upp till version 134. Pro-versionen innehåller ett {A-findRelated}förbättrat sökverktyg{A} för att hitta e-postmeddelanden relaterade till det som visas. Besök hela ändringsloggen via länken nedan för detaljerad dokumentation. {P2}",
+    "message": "{P1} Den senaste versionen av $addonName$ är nu kompatibel med Thunderbird v138 och har påbörjat förbättringar för tillgänglighet med tangentbord och skärmläsare. För mer information, se den fullständiga ändringsloggen via länken nedan. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -339,7 +339,7 @@
     "message": "Eftersom allt arbete med QuickFolders och gratis support finansieras uteslutande genom licensförsäljning, överväg att köpa en licens eller förnya din nuvarande."
   },
   "ongoing-work": {
-    "message": "Ändringarna för att konvertera $addonName$ till den nya programmeringsmodellen tog veckor och var kostsamma. Det finns många fler ändringar för nästa 2022-version. Med ett komplext tillägg som detta blir dyrt arbete oundvikligt. Snälla hjälp oss med detta.",
+    "message": "För att hålla $addonName$ i synk med Thunderbirds månatliga utgåvor måste vi ständigt kontrollera fel och ladda upp anpassade versioner. Hjälp oss gärna med detta.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -360,7 +360,7 @@
     "message": "Köp en licens."
   },
   "purchase-heading": {
-    "message": "Att köpa en licens!"
+    "message": "Stöd genom en licens"
   },
   "qf.accounts": {
     "message": "Konton"
@@ -1929,11 +1929,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Så att $addonName$ förblir funktionellt och vid liv, gör det en viktig tjänst:",
+    "message": "För att hålla $addonName$ funktionell och uppdaterad, vänligen överväg att stödja den:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

@@ -330,7 +330,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1} Nejnovější verze $addonName$ nyní funguje až do Thunderbird verze 134. Verze Pro obsahuje {A-findRelated}vylepšený nástroj pro hledání{A} e-mailů souvisejících s aktuálně zobrazeným. Navštivte odkaz na celý seznam změn níže a získejte podrobnou dokumentaci. {P2}",
+    "message": "{P1} Nejnovější verze $addonName$ je nyní kompatibilní s Thunderbirdem v138 a zahájila cestu ke zlepšené přístupnosti pro klávesnici a čtečky obrazovky. Podrobnou dokumentaci naleznete v úplném seznamu změn v odkazu níže. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -342,7 +342,7 @@
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat QuickFolders v budoucnu."
   },
   "ongoing-work": {
-    "message": "Změny převodu $addonName$ na nový programovací model trvaly týdny a byly nákladné. Pro příští verzi 2022 existuje mnoho dalších změn. S komplexním doplňkem, jako je tento, se drahá práce stává nevyhnutelnou. Pomozte nám s tím.",
+    "message": "Abychom udrželi $addonName$ v souladu s měsíčními verzemi Thunderbirdu, musíme neustále kontrolovat problémy a nahrávat upravené verze. Prosíme, pomozte nám s tím.",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -363,7 +363,7 @@
     "message": "Kupte si licenci."
   },
   "purchase-heading": {
-    "message": "Nákup licence!"
+    "message": "Podpora prostřednictvím licence"
   },
   "qf.alert.pasteFolders.formatErr": {
     "message": "Nepodařilo se vytvořit karty. Podívejte se na nástroje / chybovou konzolu pro podrobnosti."
@@ -1954,11 +1954,11 @@
     }
   },
   "support-suggestion": {
-    "message": "Aby $addonName$ zůstalo funkční a živé, udělejte to zásadní laskavost:",
+    "message": "Aby $addonName$ zůstal funkční a aktuální, zvažte jeho podporu:",
     "placeholders": {
       "addonName": {
         "content": "$1",
-        "example": "QuickFolders"
+        "example": "quickFilters"
       }
     }
   },

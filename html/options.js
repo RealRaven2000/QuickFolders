@@ -19,12 +19,15 @@ const activateTab = (event) => {
   });
   Array.from(tabs).forEach(button => {
     button.classList.remove("active");
+    button.parentElement.removeAttribute("aria-selected");
   });
+  
 
   const { target: { value: activeTabSheetId = "" } } = event;
   if (activeTabSheetId) {
     document.getElementById(activeTabSheetId).classList.add("active");
     btn.classList.add("active");
+    btn.parentElement.setAttribute("aria-selected", true); // li
     // store last selected tab
     browser.LegacyPrefs.setPref(
       "extensions.quickfolders.lastSelectedOptionsTab",

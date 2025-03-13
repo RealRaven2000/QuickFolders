@@ -225,7 +225,8 @@ label.proFeature[disabled].noIcon input[type="checkbox"] {
 
 /* show that this feature needs at least a standard license
    without that we display a sliding notification */
-label.stdFeature[restricted]:hover {
+label.stdFeature[restricted]:hover,
+label.stdFeature[restricted]:focus {
 	background: url("ico/licensed-feature.svg") no-repeat !important;
   background-position: left center !important;
 }
@@ -392,7 +393,8 @@ label.stdFeature[restricted]:hover {
 }
 
 /* right-click / tooltip support */
-.hasConfigEvent:hover {
+.hasConfigEvent:hover,
+.hasConfigEvent:focus-within {
   background-color: rgba(255,0,0,0.2);
   outline: 1px dotted rgba(85,0,0,0.5);
   border-radius: 3px;

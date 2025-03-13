@@ -148,12 +148,14 @@
                 preference="qfpg-EnableMenuSorting"
                 data-pref-name="extensions.quickfolders.enableMenuAlphaSorting"
                 instantApply="true">__MSG_qf.checkbox.sortMenusAlpha__</label>
-              <label class="hasConfigEvent" title="__MSG_qf.checkbox.hideInSingleMessage.tooltip__"><input type="checkbox"
-                preference="qfpg-HideToolbarSingleMsg"
-                data-pref-name="extensions.quickfolders.toolbar.hideInSingleMessage"
-                instantApply="true">__MSG_qf.checkbox.hideInSingleMessage__
+              <span class="hasConfigEvent hbox">
+                <label title="__MSG_qf.checkbox.hideInSingleMessage.tooltip__"><input type="checkbox"
+                  preference="qfpg-HideToolbarSingleMsg"
+                  data-pref-name="extensions.quickfolders.toolbar.hideInSingleMessage"
+                  instantApply="true">__MSG_qf.checkbox.hideInSingleMessage__
+                </label>
                 <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-              </label>
+              </span>
               <label><input type="checkbox"
                 preference="qfpg-OptionsInTab"
                 data-pref-name="extensions.quickfolders.optionsInTab"
@@ -169,30 +171,39 @@
                 preference="qfpg-ShowToolbarMenuIcon"
                 data-pref-name="extensions.quickfolders.showToolIcon"
                 instantApply="true">__MSG_qf.checkbox.tabMenuIcon__</label>
-              <label class="hasConfigEvent quickMove themeable" title="__MSG_qf.checkbox.showQuickMove.tooltip__">
-                <input type="checkbox" id="chkQuickMove" 
-                  preference="qfpg-ShowQuickMove"
-                  data-pref-name="extensions.quickfolders.showQuickMove" 
-                  instantApply="true">
-                __MSG_qf.checkbox.showQuickMove__<button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-              </label>
-              <label class="hasConfigEvent bookmarks themeable" title="__MSG_qf.checkbox.readingList.tooltip__"><input type="checkbox" 
-                preference="qfpg-ShowBookmarks"
-                data-pref-name="extensions.quickfolders.bookmarks.showButton"
-                instantApply="true">__MSG_qf.checkbox.readingList__<button class="configSettings" aria-label="__MSG_aria.configSettings__"></button></label>
-              <label class="hasConfigEvent recentTab themeable" title="__MSG_configurable.tooltip__"><input type="checkbox" 
+              <span class="hasConfigEvent hbox">
+                <label class="quickMove themeable" title="__MSG_qf.checkbox.showQuickMove.tooltip__">
+                  <input type="checkbox" id="chkQuickMove" 
+                    preference="qfpg-ShowQuickMove"
+                    data-pref-name="extensions.quickfolders.showQuickMove" 
+                    instantApply="true">
+                  __MSG_qf.checkbox.showQuickMove__
+                </label>
+                <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
+              </span>
+              <span class="hasConfigEvent hbox">
+                <label class="bookmarks themeable" title="__MSG_qf.checkbox.readingList.tooltip__"><input type="checkbox" 
+                  preference="qfpg-ShowBookmarks"
+                  data-pref-name="extensions.quickfolders.bookmarks.showButton"
+                  instantApply="true">__MSG_qf.checkbox.readingList__</label>
+                <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
+              </span>
+              <span class="hasConfigEvent hbox">
+              <label class="recentTab themeable" title="__MSG_configurable.tooltip__"><input type="checkbox" 
                 preference="qfpg-ShowRecentTab"
                 data-pref-name="extensions.quickfolders.showRecentTab"
-                instantApply="true">__MSG_qf.checkbox.showRecentTab__<button class="configSettings" aria-label="__MSG_aria.configSettings__"></button></label>
+                instantApply="true">__MSG_qf.checkbox.showRecentTab__</label>
+                <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
+              </span>
             </div>
           </fieldset>
             
           <fieldset orient="vertical" flex="2">
             <legend>__MSG_qf.moveMailStatus.title__</legend>
             
-            <label>__MSG_qf.moveMailStatus.label__</label>
+            <label for="moveMailOptions">__MSG_qf.moveMailStatus.label__</label>
             
-            <select sizetopopup="none" id="moveMailOptions" preference="qfpg-moveMailStatus" disabled="true"
+            <select sizetopopup="none" id="moveMailOptions" preference="qfpg-moveMailStatus"
               data-pref-name="extensions.quickfolders.moveMailStatus.set"
               instantApply="true">
                 <option value="0">__MSG_qf.moveMailStatus.action.none__</option>
@@ -214,7 +225,7 @@
           <fieldset flex="2">
             <legend>__MSG_qf.group.navigation__</legend>
             <div class="hbox align_center">
-              <label tooltiptext="__MSG_qf.label.goNextUnread.tip__">__MSG_qf.label.goNextUnread__</label>
+              <label for="folderCrossing" tooltiptext="__MSG_qf.label.goNextUnread.tip__">__MSG_qf.label.goNextUnread__</label>
               <select sizetopopup="none" id="folderCrossing" preference="qfpg-Thunderbird-Preference-FolderCrossing"
                 data-pref-name="mailnews.nav_crosses_folders"
                 instantApply="true">
@@ -246,23 +257,29 @@
               <label class="navigationBar themeable" title="__MSG_qf.checkbox.singleMessage.currentFolder.tooltip__"><input type="checkbox" class="indent"
                 preference="qfpa-ShowCurrentFolderBar-SingleMessage"
                 data-pref-name="extensions.quickfolders.showCurrentFolderToolbar.messageWindow">__MSG_qf.checkbox.singleMessage.currentFolder.show__</label>
-              <label class="hasConfigEvent recentNavigation themeable" title="__MSG_configurable.tooltip__"><input type="checkbox" 
-                preference="qfpa-ShowRecentButton"
-                data-pref-name="extensions.quickfolders.currentFolderBar.showRecentButton">__MSG_qf.checkbox.showRecentButton__
+              <span class="hasConfigEvent hbox">
+                <label class="recentNavigation themeable" title="__MSG_configurable.tooltip__"><input type="checkbox" 
+                  preference="qfpa-ShowRecentButton"
+                  data-pref-name="extensions.quickfolders.currentFolderBar.showRecentButton">__MSG_qf.checkbox.showRecentButton__
+                </label>
                 <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-              </label>
-              <label class="hasConfigEvent findRelated proFeature themeable" title="__MSG_findRelated.btn.tooltip__"><input type="checkbox" 
-                id="chkFindRelated"
-                preference="qfpa-ShowFindRelatedButton"
-                data-pref-name="extensions.quickfolders.currentFolderBar.showFindRelated">__MSG_findRelated.btn.label__
+              </span>
+              <span class="hasConfigEvent hbox">
+                <label class="findRelated proFeature themeable" title="__MSG_findRelated.btn.tooltip__"><input type="checkbox" 
+                  id="chkFindRelated"
+                  preference="qfpa-ShowFindRelatedButton"
+                  data-pref-name="extensions.quickfolders.currentFolderBar.showFindRelated">__MSG_findRelated.btn.label__
+                </label>
                 <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-              </label>
+              </span>
+              <span class="hasConfigEvent hbox">
+                <label class="msgNavigation themeable" title="__MSG_configurable.tooltip__"><input type="checkbox"
+                  preference="qfpa-ShowMsgNavButton"
+                  data-pref-name="extensions.quickfolders.currentFolderBar.navigation.showButtons">__MSG_qf.checkbox.showMessageNavigation__
+                </label>
+                <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
+              </span>
 
-              <label class="hasConfigEvent msgNavigation themeable" title="__MSG_configurable.tooltip__"><input type="checkbox"
-                preference="qfpa-ShowMsgNavButton"
-                data-pref-name="extensions.quickfolders.currentFolderBar.navigation.showButtons">__MSG_qf.checkbox.showMessageNavigation__
-                <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-              </label>
               <label class="skipFolder stdFeature themeable"><input type="checkbox" 
                      class="indent"
                      preference="qfpa-ShowSkipButton"
@@ -270,11 +287,13 @@
                 >__MSG_quickfolders.toolbar.skip__
               </label>
               
-              <label class="hasConfigEvent folderNavigation themeable" title="__MSG_configurable.tooltip__"><input type="checkbox"
-                preference="qfpa-ShowFolderNavButton"
-                data-pref-name="extensions.quickfolders.currentFolderBar.folderNavigation.showButtons">__MSG_qf.checkbox.showFolderNavigation__
+              <span class="hasConfigEvent hbox">
+                <label class="folderNavigation themeable" title="__MSG_configurable.tooltip__"><input type="checkbox"
+                  preference="qfpa-ShowFolderNavButton"
+                  data-pref-name="extensions.quickfolders.currentFolderBar.folderNavigation.showButtons">__MSG_qf.checkbox.showFolderNavigation__
+                </label>
                 <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-              </label>
+              </span>
               <label class="showFolderMenuButton themeable"><input type="checkbox"
                 preference="qfpa-ShowFolderMenuButton" 
                 data-pref-name="extensions.quickfolders.currentFolderBar.showFolderMenuButton">__MSG_qf.checkbox.showMailFolderCommands__</label>
@@ -309,11 +328,13 @@
                     preference="qfpa-FolderMenu-markAllReadRecursive" data-pref-name="extensions.quickfolders.folderMenu.markAllReadRecursive">__MSG_qf.checkbox.menus.markAllReadRecursive__</label>
                   <label><input type="checkbox" preference="qfpa-FolderMenu-emptyJunk" data-pref-name="extensions.quickfolders.folderMenu.emptyJunk">__MSG_qf.checkbox.menus.emptyJunk__</label>
                   <label><input type="checkbox" preference="qfpa-FolderMenu-emptyTrash" data-pref-name="extensions.quickfolders.folderMenu.emptyTrash">__MSG_qf.checkbox.menus.emptyTrash__</label>
-                  <label class="hasConfigEvent" title="__MSG_configurable.tooltip__"><input type="checkbox" id="qfNewFolder" 
-                    preference="qfpa-FolderMenu-newFolder"
-                    data-pref-name="extensions.quickfolders.folderMenu.dragToNew">__MSG_qf.checkbox.menus.dragToNewFolder__
+                  <span class="hasConfigEvent hbox">
+                    <label title="__MSG_configurable.tooltip__"><input type="checkbox" id="qfNewFolder" 
+                      preference="qfpa-FolderMenu-newFolder"
+                      data-pref-name="extensions.quickfolders.folderMenu.dragToNew">__MSG_qf.checkbox.menus.dragToNewFolder__
+                    </label>
                     <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-                  </label>
+                  </span> 
                 </div>
               </fieldset>
 
@@ -393,11 +414,13 @@
 
           <fieldset class="vbox">
             <legend>__MSG_qf.label.misc__</legend>
-            <label class="hasConfigEvent" title="__MSG_qf.checkbox.displaylabel.tooltip__"><input type="checkbox" 
-              preference="qfpa-ShowQuickFoldersLabel"
-              data-pref-name="extensions.quickfolders.showQuickfoldersLabel">__MSG_qf.checkbox.displaylabel__
+            <span class="hasConfigEvent hbox">
+              <label title="__MSG_qf.checkbox.displaylabel.tooltip__"><input type="checkbox" 
+                preference="qfpa-ShowQuickFoldersLabel"
+                data-pref-name="extensions.quickfolders.showQuickfoldersLabel">__MSG_qf.checkbox.displaylabel__
+              </label>
               <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-            </label>
+            </span>
             <label title="__MSG_qf.checkbox.hideCategoryBox.tooltip__"><input type="checkbox"
               preference="qfpa-CollapseCategory"
               data-pref-name="extensions.quickfolders.collapseCategories">__MSG_qf.checkbox.hideCategoryBox__</label>
@@ -420,12 +443,14 @@
 
         <span class="separator thin"> </span>
         <div class="hbox quickhelp-dbg align_center">
-          <label class="hasConfigEvent" title="__MSG_qf.checkbox.debug.tooltip__"><input type="checkbox" 
-            preference="qfpa-Debug" data-pref-name="extensions.quickfolders.debug">
-            __MSG_qf.checkbox.debug__
+          <span class="hasConfigEvent hbox">
+            <label title="__MSG_qf.checkbox.debug.tooltip__"><input type="checkbox" 
+              preference="qfpa-Debug" data-pref-name="extensions.quickfolders.debug">
+              __MSG_qf.checkbox.debug__
+            </label>
             <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-          </label>
-          <label style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;">__MSG_qf.label.initdelay__</label>
+          </span>
+          <label for="initdelay" style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;">__MSG_qf.label.initdelay__</label>
           <input type="text" id="initdelay" preference="QuickFolders-init-delay" data-pref-name="extensions.quickfolders.initDelay" />
           <button id="copyFolders" tooltiptext="__MSG_qf.copyfolders.tooltip__" class="iconButton">__MSG_qf.copyfolders__</button>
           <button id="pasteFolders" tooltiptext="__MSG_qf.pastefolders.tooltip__"  class="iconButton">__MSG_qf.pastefolders__</button>
@@ -434,18 +459,13 @@
 
       
       <section id="QuickFolders-Options-layout" orient="vertical">
-      <!--
-        <preferences id="prefsLayout">
-        </preferences>
-      -->
-
         <fieldset>
           <legend>__MSG_qf.label.appearance__</legend>
           <div class="vbox">
             <div class="hbox toowide">
               <div class="vbox">
                 <div class="hbox align_center">
-                  <label class="textBoxLabel">__MSG_qf.label.themes__</label>
+                  <label for="QuickFolders-Theme-Selector" class="textBoxLabel">__MSG_qf.label.themes__</label>
                   <select id="QuickFolders-Theme-Selector" 
                     preference="qfpl-Theme"
                     data-pref-type="string"
@@ -530,7 +550,7 @@
           <div class="hbox toowide align_center">
             <label>__MSG_qf.label.ToolbarBackground__
             <input id="toolbar-colorpicker" type="color" palettename="standard" style="vertical-align:middle"
-              elementInfo="Toolbar.background-color" previewLabel="qf-StandardColors"></label>
+              elementInfo="Toolbar.background-color" previewLabel="qf-StandardColors" title="__MSG_aria.colorPicker.background__"></label>
             <label><input type="checkbox" preference="qfpl-TransparentToolbar"
               data-pref-name="extensions.quickfolders.transparentToolbar">__MSG_qf.checkbox.transparent__</label>
             <br class="spacer" flex="1">
@@ -583,9 +603,9 @@
                         tooltiptext="__MSG_qf.label.UncoloredTab.tooltip__"
                         context="QuickFolders-Options-PalettePopup" >__MSG_qf.label.UncoloredTab__</label>
                       <input id="inactive-fontcolorpicker" type="color" palettename="standard"
-                        elementInfo="InactiveTab.color" previewLabel="inactivetabs-label">
+                        elementInfo="InactiveTab.color" previewLabel="inactivetabs-label"  title="__MSG_aria.colorPicker.font__">
                       <input id="inactive-colorpicker" type="color" palettename="standard"
-                        elementInfo="InactiveTab.background-color">
+                        elementInfo="InactiveTab.background-color" title="__MSG_aria.colorPicker.background__">
                       <select id="menuStandardPalette"  preference="qfpl-InactiveTab-PaletteType"
                         data-pref-name="extensions.quickfolders.style.InactiveTab.paletteType">
                         <option value="0">__MSG_qf.palette.twoColors__</option>
@@ -652,9 +672,9 @@
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="ActiveTab"
                     context="QuickFolders-Options-PalettePopup">__MSG_qf.label.ActiveTabColor__</label>
                   <input id="activetab-fontcolorpicker" type="color" palettename="vibrant"
-                    elementInfo="ActiveTab.color" previewLabel="activetabs-label">
+                    elementInfo="ActiveTab.color" previewLabel="activetabs-label"  title="__MSG_aria.colorPicker.font__">
                   <input id="activetab-colorpicker" type="color" palettename="standard"
-                    elementInfo="ActiveTab.background-color" previewLabel="activetabs-label">
+                    elementInfo="ActiveTab.background-color" previewLabel="activetabs-label" title="__MSG_aria.colorPicker.background__">
 
                   <select id="menuActiveTabPalette"  preference="qfpl-ActiveTab-PaletteType"
                     data-pref-name="extensions.quickfolders.style.ActiveTab.paletteType">
@@ -669,9 +689,9 @@
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="HoveredTab"
                     context="QuickFolders-Options-PalettePopup">__MSG_qf.label.HoveredTabColor__</label>
                   <input id="hover-fontcolorpicker" type="color" palettename="standard"
-                    elementInfo="HoveredTab.color" previewLabel="hoveredtabs-label">
+                    elementInfo="HoveredTab.color" previewLabel="hoveredtabs-label"  title="__MSG_aria.colorPicker.font__">
                   <input id="hover-colorpicker" type="color" palettename="standard"
-                    elementInfo="HoveredTab.background-color" previewLabel="hoveredtabs-label">
+                    elementInfo="HoveredTab.background-color" previewLabel="hoveredtabs-label" title="__MSG_aria.colorPicker.background__">
                   <select id="menuHoverPalette"  preference="qfpl-HoveredTab-PaletteType"
                     data-pref-name="extensions.quickfolders.style.HoveredTab.paletteType">
                     <option value="0">__MSG_qf.palette.twoColors__</option>
@@ -685,9 +705,9 @@
                     stylePrefKey="DragOver" context="QuickFolders-Options-PalettePopup"
                     >__MSG_qf.label.DragOverBackground__</label>
                   <input id="dragover-fontcolorpicker" palettename="standard" type="color"
-                    elementInfo="DragTab.color" previewLabel="dragovertabs-label">
+                    elementInfo="DragTab.color" previewLabel="dragovertabs-label" title="__MSG_aria.colorPicker.font__">
                   <input id="dragover-colorpicker" type="color" palettename="standard"
-                    elementInfo="DragTab.background-color" previewLabel="dragovertabs-label">
+                    elementInfo="DragTab.background-color" previewLabel="dragovertabs-label" title="__MSG_aria.colorPicker.background__">
                   <select id="menuDragOverPalette"  preference="qfpl-DragOver-PaletteType"
                     data-pref-name="extensions.quickfolders.style.DragOver.paletteType">
                     <option value="0">__MSG_qf.palette.twoColors__</option>
@@ -884,12 +904,14 @@
                 </label>
               </div>
               <div class="hbox">
-                <label class="hasConfigEvent quickMove themeable proFeature" title="__MSG_qf.checkbox.quickMove.tip__"><input type="checkbox" id="chkQuickMoveHotkey"
-                  preference="qfpp-QuickMoveShortcut" disabled="true"
-                  data-pref-name="extensions.quickfolders.quickMove.useHotkey">
-                  __MSG_qf.checkbox.quickMove__
+                <span class="hasConfigEvent hbox">
+                  <label class="quickMove themeable proFeature" title="__MSG_qf.checkbox.quickMove.tip__"><input type="checkbox" id="chkQuickMoveHotkey"
+                    preference="qfpp-QuickMoveShortcut" disabled="true"
+                    data-pref-name="extensions.quickfolders.quickMove.useHotkey">
+                    __MSG_qf.checkbox.quickMove__
+                  </label>
                   <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
-                </label>
+                </span> 
                 <label><input type="checkbox" 
                   preference="qfpp-QuickMoveShortcutShift" 
                   data-pref-name="extensions.quickfolders.quickMove.Hotkey.Shift">__MSG_qf.checkbox.shift__+

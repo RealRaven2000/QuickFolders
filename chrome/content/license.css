@@ -119,3 +119,28 @@
 	padding:3px;
 	vertical-align: middle;
 }
+
+#licenseDate[readonly] {
+	appearance: none;
+  border: none;
+  background: transparent; 
+
+}
+
+/* [issue 170] allow license extension by clicking on valid date */
+#licenseDate.valid {
+  cursor: pointer;
+}
+
+#licenseDate.valid:hover {
+  text-decoration: underline;
+}
+
+#licenseDateLabel.important {
+	background-color: black;
+	border: 2px solid yellow;
+	border-radius: 3px;
+	color: yellow;
+	font-weight: bold;
+	padding: 0.4em;
+}

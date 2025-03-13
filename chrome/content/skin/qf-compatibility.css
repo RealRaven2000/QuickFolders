@@ -8,7 +8,13 @@
     --selectedcolor: #FFFFFF;
     --activecolor: #a5f7fcd9;
     --configColor: rgba(250,40,80, 0.85);
+    --focus-ring-color: #ffaa00aa;     
   }  
+  
+  .tabs button:hover, .tabs button:focus-within {
+     color-scheme: light; /* force bright icon on active tab */
+  }
+  
 }
 
 @media (prefers-color-scheme: light) {
@@ -19,7 +25,13 @@
     --clickedbackground:var(--selectedbackground);
     --activecolor: #FFFFFF;
     --configColor: rgb(140,0,0);
+    --focus-ring-color: #0044aaaa;
   }
+  
+  .tabs button:hover, .tabs button:focus-within {
+     color-scheme: dark; /* force bright icon on active tab */
+  }
+  
 }
 
 
@@ -143,14 +155,19 @@ button.active::marker {
   fill: var(--selectedcolor) !important; 
 }
 
+#QuickFolders-Options-Tabbox li button:focus {
+  outline: 2px dashed var(--focus-ring-color, #0044aa); /* Adjust the color to fit your theme */
+  outline-offset: 2px; /* Optional, adds space between the element and the outline */
+}
+
 #QuickFolders-Options-Tabbox li button {
   -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
   fill: var(--in-content-icon-color, currentColor);
   stroke: var(--new-highlight, #4874c6) !important;
   margin-block-end: 0; /* align to bottom so we have a colored line, more like a tab strip */
 }
-#QuickFolders-Options-Tabbox li button:not(.active):hover {
-  -moz-context-properties: fill, stroke, stroke-opacity, fill-opacity !important;
+#QuickFolders-Options-Tabbox li button:not(.active):hover,
+#QuickFolders-Options-Tabbox li button:not(.active):focus {
   fill: var(--hovercolor);
   color: var(--hovercolor) !important;
 }
@@ -338,7 +355,7 @@ label.stdFeature[restricted]:hover {
 }
 
 /* Change background color of buttons on hover */
-.tabs button:hover {
+.tabs button:hover, .tabs button:focus {
   background-color: var(--hoverbackground);
 }
 
@@ -352,6 +369,7 @@ label.stdFeature[restricted]:hover {
   background-color: var(--selectedbackground, #33f) !important;
   color: var(--activecolor, #FFFFFF) !important;
   fill: var(--activecolor, #FFFFFF) !important;
+  color-scheme: dark; /* force bright icon on active tab  */
 }
 
 /* Style the tab content */

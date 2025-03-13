@@ -18,7 +18,9 @@
 
 **Miscellanei**
 
-*   Compatibility with Thunderbird 137.*
+*   Compatibility with Thunderbird 138.*
+*   Using wx API function for opening support websites - Tb 135 created an unwanted alert.
 *   Removed inline event handlers which will be deprecated in Thunderbird 136. [issue #543]
 *   Thunderbird 136 retires `ChromeUtils.import` - replace with `importESModule`. [issue #547]
+*   streamlined onboarding / update screens
 

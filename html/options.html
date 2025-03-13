@@ -548,9 +548,10 @@
         <fieldset>
           <legend>__MSG_qf.label.Toolbar__</legend>
           <div class="hbox toowide align_center">
-            <label>__MSG_qf.label.ToolbarBackground__
+            <label for="toolbar-colorpicker" id="toolbarBackgroundLbl">__MSG_qf.label.ToolbarBackground__</label>
             <input id="toolbar-colorpicker" type="color" palettename="standard" style="vertical-align:middle"
-              elementInfo="Toolbar.background-color" previewLabel="qf-StandardColors" title="__MSG_aria.colorPicker.background__"></label>
+              elementInfo="Toolbar.background-color" previewLabel="qf-StandardColors" 
+              title="__MSG_aria.colorPicker.background__" aria-labelledby="toolbarBackgroundLbl">
             <label><input type="checkbox" preference="qfpl-TransparentToolbar"
               data-pref-name="extensions.quickfolders.transparentToolbar">__MSG_qf.checkbox.transparent__</label>
             <br class="spacer" flex="1">
@@ -601,11 +602,13 @@
                     <div class="hbox align_center">
                       <label id="inactivetabs-label" class="qfTabPreview" stylePrefKey="InactiveTab"
                         tooltiptext="__MSG_qf.label.UncoloredTab.tooltip__"
-                        context="QuickFolders-Options-PalettePopup" >__MSG_qf.label.UncoloredTab__</label>
+                        context="QuickFolders-Options-PalettePopup" tabindex="0">__MSG_qf.label.UncoloredTab__</label>
                       <input id="inactive-fontcolorpicker" type="color" palettename="standard"
-                        elementInfo="InactiveTab.color" previewLabel="inactivetabs-label"  title="__MSG_aria.colorPicker.font__">
+                        elementInfo="InactiveTab.color" 
+                        title="__MSG_aria.colorPicker.font__" aria-labelledby="inactivetabs-label">
                       <input id="inactive-colorpicker" type="color" palettename="standard"
-                        elementInfo="InactiveTab.background-color" title="__MSG_aria.colorPicker.background__">
+                        elementInfo="InactiveTab.background-color" 
+                        title="__MSG_aria.colorPicker.background__" aria-labelledby="inactivetabs-label">
                       <select id="menuStandardPalette"  preference="qfpl-InactiveTab-PaletteType"
                         data-pref-name="extensions.quickfolders.style.InactiveTab.paletteType">
                         <option value="0">__MSG_qf.palette.twoColors__</option>
@@ -617,7 +620,7 @@
                     <span class="separator thin"> </span>
                     <div class="hbox align_center">
                       <br class="spacer" flex="1">
-                      <label id="coloredtabs-label"
+                      <label id="coloredtabs-label" tabindex="0"
                         tooltiptext="__MSG_qf.label.ColoredTabPalette.tooltip__" stylePrefKey="ColoredTab"
                         class="textBoxLabel" context="QuickFolders-Options-PalettePopup">__MSG_qf.label.ColoredTabPalette__</label>
                       <select id="menuColoredPalette"  preference="qfpl-ColoredTab-PaletteType"
@@ -668,13 +671,15 @@
 
                 <div id="colorsGrid" class="grid-container">
 
-                  <label id="activetabs-label" value=""
+                  <label id="activetabs-label" tabindex="0"
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="ActiveTab"
                     context="QuickFolders-Options-PalettePopup">__MSG_qf.label.ActiveTabColor__</label>
                   <input id="activetab-fontcolorpicker" type="color" palettename="vibrant"
-                    elementInfo="ActiveTab.color" previewLabel="activetabs-label"  title="__MSG_aria.colorPicker.font__">
+                    elementInfo="ActiveTab.color"  
+                    title="__MSG_aria.colorPicker.font__" aria-labelledby="activetabs-label">
                   <input id="activetab-colorpicker" type="color" palettename="standard"
-                    elementInfo="ActiveTab.background-color" previewLabel="activetabs-label" title="__MSG_aria.colorPicker.background__">
+                    elementInfo="ActiveTab.background-color" 
+                    title="__MSG_aria.colorPicker.background__" aria-labelledby="activetabs-label">
 
                   <select id="menuActiveTabPalette"  preference="qfpl-ActiveTab-PaletteType"
                     data-pref-name="extensions.quickfolders.style.ActiveTab.paletteType">
@@ -685,13 +690,15 @@
                   </select>
 
 
-                  <label id="hoveredtabs-label"
+                  <label id="hoveredtabs-label" tabindex="0"
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="HoveredTab"
                     context="QuickFolders-Options-PalettePopup">__MSG_qf.label.HoveredTabColor__</label>
                   <input id="hover-fontcolorpicker" type="color" palettename="standard"
-                    elementInfo="HoveredTab.color" previewLabel="hoveredtabs-label"  title="__MSG_aria.colorPicker.font__">
+                    elementInfo="HoveredTab.color" 
+                    title="__MSG_aria.colorPicker.font__" aria-labelledby="hoveredtabs-label">
                   <input id="hover-colorpicker" type="color" palettename="standard"
-                    elementInfo="HoveredTab.background-color" previewLabel="hoveredtabs-label" title="__MSG_aria.colorPicker.background__">
+                    elementInfo="HoveredTab.background-color" 
+                    title="__MSG_aria.colorPicker.background__" aria-labelledby="hoveredtabs-label">
                   <select id="menuHoverPalette"  preference="qfpl-HoveredTab-PaletteType"
                     data-pref-name="extensions.quickfolders.style.HoveredTab.paletteType">
                     <option value="0">__MSG_qf.palette.twoColors__</option>
@@ -701,13 +708,15 @@
                   </select>
 
 
-                  <label id="dragovertabs-label" class="qfTabPreview"
+                  <label id="dragovertabs-label" class="qfTabPreview" tabindex="0"
                     stylePrefKey="DragOver" context="QuickFolders-Options-PalettePopup"
                     >__MSG_qf.label.DragOverBackground__</label>
                   <input id="dragover-fontcolorpicker" palettename="standard" type="color"
-                    elementInfo="DragTab.color" previewLabel="dragovertabs-label" title="__MSG_aria.colorPicker.font__">
+                    elementInfo="DragTab.color" 
+                    title="__MSG_aria.colorPicker.font__" aria-labelledby="dragovertabs-label">
                   <input id="dragover-colorpicker" type="color" palettename="standard"
-                    elementInfo="DragTab.background-color" previewLabel="dragovertabs-label" title="__MSG_aria.colorPicker.background__">
+                    elementInfo="DragTab.background-color" 
+                    title="__MSG_aria.colorPicker.background__" aria-labelledby="dragovertabs-label">
                   <select id="menuDragOverPalette"  preference="qfpl-DragOver-PaletteType"
                     data-pref-name="extensions.quickfolders.style.DragOver.paletteType">
                     <option value="0">__MSG_qf.palette.twoColors__</option>
@@ -730,12 +739,14 @@
       </section>
       
       <section id="QuickFolders-Options-findRelated" orient="vertical">
-        <div class="description hbox">__MSG_findRelated.btn.tooltip__ <button class="findRelatedSite" 
+        <div class="description hbox" id="mail-description" aria-labelledby="mail-description">
+          <p style="display:inline;" tabindex="0">__MSG_findRelated.btn.tooltip__</p>
+          <button class="findRelatedSite" 
           title="more info on our support site (English)"></button></div>
         <hr>
         <div class="hbox">
           <div class="vbox">
-            <label class="sectionlegend">Entries</label>
+            <label class="sectionlegend" for="findRelatedList">__MSG_findRelated.entries__</label>
             <select id="findRelatedList" size="6" style="field-sizing: content; max-height: 8em;">
             </select>
           </div>
@@ -758,18 +769,18 @@
             </label>
             <div class="hbox">
               <vbox id="searchSelectedFields">
-                <label class="sectionlegend">__MSG_findRelated.terms.selectedFields__</label>
-                <label><input type="checkbox" class="manual" term="subject"></input> __MSG_findRelated.term.subject__</label>
-                <label><input type="checkbox" class="manual" term="sender"></input> __MSG_findRelated.term.sender__</label>
-                <label><input type="checkbox" class="manual" term="recipients"></input> __MSG_findRelated.term.recipients__</label>
-                <label><input type="checkbox" class="manual" term="body"></input> __MSG_findRelated.term.body__</label>
+                <label class="sectionlegend" id="selectFieldsDesc">__MSG_findRelated.terms.selectedFields__</label>
+                <label><input type="checkbox" class="manual" term="subject" aria-describedby="selectFieldsDesc"></input> __MSG_findRelated.term.subject__</label>
+                <label><input type="checkbox" class="manual" term="sender" aria-describedby="selectFieldsDesc"></input> __MSG_findRelated.term.sender__</label>
+                <label><input type="checkbox" class="manual" term="recipients" aria-describedby="selectFieldsDesc"></input> __MSG_findRelated.term.recipients__</label>
+                <label><input type="checkbox" class="manual" term="body" aria-describedby="selectFieldsDesc"></input> __MSG_findRelated.term.body__</label>
               </vbox>
               <vbox id="searchCriteriaFields">
-                <label class="sectionlegend">__MSG_findRelated.terms.searchCriteriaFields__</label>
-                <label><input type="checkbox" class="manual" term="subject"></input> __MSG_findRelated.term.subject__</label>
-                <label><input type="checkbox" class="manual" term="sender"></input> __MSG_findRelated.term.sender__</label>
-                <label><input type="checkbox" class="manual" term="recipients"></input> __MSG_findRelated.term.recipients__</label>
-                <label><input type="checkbox" class="manual" term="body"></input> __MSG_findRelated.term.body__</label>
+                <label class="sectionlegend" id="searchCritDesc">__MSG_findRelated.terms.searchCriteriaFields__</label>
+                <label><input type="checkbox" class="manual" term="subject" aria-describedby="searchCritDesc"></input> __MSG_findRelated.term.subject__</label>
+                <label><input type="checkbox" class="manual" term="sender" aria-describedby="searchCritDesc"></input> __MSG_findRelated.term.sender__</label>
+                <label><input type="checkbox" class="manual" term="recipients" aria-describedby="searchCritDesc"></input> __MSG_findRelated.term.recipients__</label>
+                <label><input type="checkbox" class="manual" term="body" aria-describedby="searchCritDesc"></input> __MSG_findRelated.term.body__</label>
               </vbox>
             </div>
           </div>
@@ -788,20 +799,27 @@
       <section id="QuickFolders-Options-quickhelp" orient="vertical" class="align_center">
         <div id="quickHelpPane" flex="1"  class="vbox niceFont">
           <div class="vbox" id="quickHelpTextPane">
-            <div class="description">__MSG_qf.description.dragToAdd__</div>
-            <div class="description">__MSG_qf.description.dragToPosition__</div>
-            <div class="description">__MSG_qf.description.dragToPopup__</div>
-            <div class="description">__MSG_qf.description.changeCategory__</div>
-            <div class="description">__MSG_qf.description.rightClickOptions__</div>
+            <h2 id="quickHelpHeading" tabindex="0">__MSG_qf.tab.quickhelp__</h2>
+            <p class="description">__MSG_qf.description.dragToAdd__</p>
+            <p class="description">__MSG_qf.description.dragToPosition__</p>
+            <p class="description">__MSG_qf.description.dragToPopup__</p>
+            <p class="description">__MSG_qf.description.changeCategory__</p>
+            <p class="description">__MSG_qf.description.rightClickOptions__</p>
           </div>
+          <div id="quickHelpNotification" role="alert" aria-live="assertive" 
+               style="position: absolute; opacity: 0.01; visibility: hidden;">
+              __MSG_aria.a11underReview__
+          </div>
+
           <br class="separator thin" />
           <div class="description" id="importantNote">
             __MSG_qf.description.linkNote__
           </div>
           <div class="vbox" height="70">
-            <div id="L0" class="button" tooltiptext="quickfolders.org">
-              <label width="270">__MSG_qf.label.homePage__</label>
-            </div>
+            <a id="L0" class="button" tooltiptext="quickfolders.org" 
+              aria-labelledby="homePageLbl" aria-describedby="importantNote" href="#">
+              <label width="270" id="homePageLbl">__MSG_qf.label.homePage__</label>
+            </a>
           </div>
         </div>
       </section> 
@@ -811,30 +829,33 @@
         <span class="separator thin"> </span>
         <div id="supportgrid" class="grid-container niceFont">
 
-          <div class="description">__MSG_qf.youtube.description__</div>
-          <div id="L1" class="button" tooltiptext="https://www.youtube.com/c/thunderbirddaily">
-            <label>__MSG_qf.youtube.link__</label>
-          </div>
+          <div class="description" id="desc1">__MSG_qf.youtube.description__</div>
+          <a id="L1" class="button" tooltiptext="https://www.youtube.com/c/thunderbirddaily" 
+             aria-labelledby="L1-label" aria-describedby="desc1" href="#">
+            <label id="L1-label">__MSG_qf.youtube.link__</label>
+          </a>
 
-          <div class="niceFont description">__MSG_qf.description.github__</div>
-          <div id="L2" class="button" tooltiptext="github.com/RealRaven2000/QuickFolders/issues">
-            <label>__MSG_qf.label.github__</label>
-          </div>
+          <div class="niceFont description" id="desc2">__MSG_qf.description.github__</div>
+          <a id="L2" class="button" tooltiptext="github.com/RealRaven2000/QuickFolders/issues" 
+            aria-labelledby="L2-label"  aria-describedby="desc2" href="#">
+            <label id="L2-label">__MSG_qf.label.github__</label>
+          </a>
 
-          <div class="niceFont description">__MSG_qf.description.versionhistory__</div>
-          <div id="L3" class="button" tooltiptext="https://quickfolders.org/version.html">
-            <label>__MSG_qf.label.versionhistory__</label>
-          </div>
+          <div class="niceFont description" id="desc3">__MSG_qf.description.versionhistory__</div>
+          <a id="L3" class="button" tooltiptext="https://quickfolders.org/version.html" 
+            aria-labelledby="L3-label" aria-describedby="desc3" href="#">
+            <label id="L3-label">__MSG_qf.label.versionhistory__</label>
+          </a>
 
-          <div class="niceFont description">__MSG_qf.description.languages__</div>
-          <div id="L4" class="button">
-            <label>__MSG_qf.label.languagesLink__</label>
-          </div>
+          <div class="niceFont description" id="desc4">__MSG_qf.description.languages__</div>
+          <a id="L4" class="button" aria-labelledby="L4-label"  aria-describedby="desc4" href="#">
+            <label id="L4-label">__MSG_qf.label.languagesLink__</label>
+          </a>
 
           <div class="niceFont description" id="contactLabel">__MSG_qf.description.contactMe__</div>
-          <div id="L5" class="button">
-            <label>__MSG_qf.label.contactLink__</label>
-          </div>
+          <a id="L5" class="button" aria-labelledby="L5-label"  aria-describedby="contactLabel" href="#">
+            <label id="L5-label">__MSG_qf.label.contactLink__</label>
+          </a>
 
         </div>
       </section>      
@@ -846,10 +867,11 @@
         </preferences>
       -->
 
-        <div class="description">__MSG_qf.label.insertLicense__</description>
+        <label for="txtLicenseKey">__MSG_qf.label.insertLicense__</label>
         <div class="hbox align_center" id="licenseContainer">
-          <textarea id="txtLicenseKey" class="licenseKey" flex="1" multiline="true" rows="4"
-            tooltiptext="__MSG_qf.label.insertLicense.tooltip__"></textarea>
+          <textarea id="txtLicenseKey" class="licenseKey" 
+            flex="1" multiline="true" rows="5"
+            title="__MSG_qf.label.insertLicense.tooltip__"></textarea>
           <div class="vbox">
             <button id="btnPasteLicense">__MSG_qf.button.pasteLicense__</button>
             <button id="btnValidateLicense">__MSG_qf.button.validateLicense__</button>
@@ -859,26 +881,25 @@
         <div class="hbox align_center" id="validationDate" collapsed="true">
           <label id="licenseDateLabel">__MSG_qf.label.licenseValid__</label>
           <br class="spacer" style="width:1em">
-          <label id="licenseDate" value="-" />
+          <input type="text" id="licenseDate" readonly aria-readonly="true" tabindex="0" 
+            aria-describedby="licenseDateLabel" role="representation">
         </div>
         <span id="validationDateSpace" class="separator licenseSeparator" > </span>
-        <div class="hbox" id="validationResults">
-          <div class="vbox">
-            <div id="validationPassed" class="niceFont description" collapsed="true">__MSG_qf.licenseValidation.passed__
-            </div>
-            <div id="validationStandard" class="niceFont description" collapsed="true">
-              __MSG_qf.licenseValidation.standard__</div>
-            <div id="validationFailed" class="niceFont description licenseError" collapsed="true">
-              __MSG_qf.licenseValidation.failed__</div>
-            <div id="validationExpired" class="niceFont description licenseWarning" collapsed="true">
-              __MSG_qf.licenseValidation.expired__</div>
-            <div id="validationInvalidEmail" class="niceFont description licenseWarning" collapsed="true">
-              __MSG_qf.licenseValidation.invalidMail__</div>
-            <div id="validationEmailNoMatch" class="niceFont description licenseWarning" collapsed="true">
-              __MSG_qf.licenseValidation.notMatchedMail__</div>
-            <div id="validationInvalidAddon" class="niceFont description licenseError" collapsed="true">
-              __MSG_qf.licenseValidation.invalidAddon__</div>
+        <div class="vbox" id="validationResults"  aria-live="assertive" role="region" tabindex="0">
+          <div id="validationPassed" class="niceFont description" collapsed="true">__MSG_qf.licenseValidation.passed__
           </div>
+          <div id="validationStandard" class="niceFont description" collapsed="true">
+            __MSG_qf.licenseValidation.standard__</div>
+          <div id="validationFailed" class="niceFont description licenseError" collapsed="true">
+            __MSG_qf.licenseValidation.failed__</div>
+          <div id="validationExpired" class="niceFont description licenseWarning" collapsed="true">
+            __MSG_qf.licenseValidation.expired__</div>
+          <div id="validationInvalidEmail" class="niceFont description licenseWarning" collapsed="true">
+            __MSG_qf.licenseValidation.invalidMail__</div>
+          <div id="validationEmailNoMatch" class="niceFont description licenseWarning" collapsed="true">
+            __MSG_qf.licenseValidation.notMatchedMail__</div>
+          <div id="validationInvalidAddon" class="niceFont description licenseError" collapsed="true">
+            __MSG_qf.licenseValidation.invalidAddon__</div>
           <br class="spacer" flex="1">
         </div>
         <div class="vbox" height="40">

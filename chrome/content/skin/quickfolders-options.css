@@ -253,12 +253,8 @@ label.text-link, label.text-link[visited="true"] {
 #quickHelpPane {
   max-width: 650px;
 }
-#quickHelpTextPane {
-	/*overflow-y: scroll;*/
-	min-height: 16em;
-}
 
-#quickHelpTextPane div.description {
+#quickHelpTextPane p.description {
   margin-bottom: 0.5em;
 }
 

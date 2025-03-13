@@ -139,12 +139,17 @@ for (let colorpicker of document.querySelectorAll("input[type=color]")) {
         QuickFolders.Options.colorPickerTranslucent.call(QuickFolders.Options, colorpicker);
       } );
     }
+    continue;
   }
-  else {
-    colorpicker.addEventListener("input", function() { // was "input"
-      QuickFolders.Options.styleUpdate(name, style, colorpicker.value, colorpicker.getAttribute("previewLabel"));
-    } );
-  }
+
+  colorpicker.addEventListener("input", function() { // was "input"
+    QuickFolders.Options.styleUpdate(
+      name,
+      style,
+      colorpicker.value,
+      colorpicker.getAttribute("previewLabel") || colorpicker.getAttribute("aria-labelledby")
+    );
+  } );
 }
 
 // all dropdowns that end with "paletteType"
@@ -534,27 +539,27 @@ document.getElementById("btnSaveConfig").addEventListener("click", async (event)
      
 document.getElementById("btnLoadConfig").addEventListener("click", async (event) => {
   // legacy code - moved to experiment api (utilities)
-  let config = await messenger.Utilities.loadConfig();  
-  if (config) {
-    const colorpickers = Array.from(document.querySelectorAll("input[type=color]"));      
-    for (let i=0; i<config.length; i++) {
-      let item = config[i];
-      // { key: it.getAttribute("data-pref-name"), val: value, originalId: it.getAttribute("preference") }
-      if (item.key) {
-        await browser.LegacyPrefs.setPref(item.key, item.val);
-      }
-      else if (item.elementInfo) {
-        let colPick = colorpickers.find(e => e.getAttribute("elementInfo") == item.elementInfo);
-        if (colPick) {
-          colPick.value = item.val;
-          let {name, style, label} = QuickFolders.Options.getColorPickerVars(colPick.id);
-          QuickFolders.Options.styleUpdate(name, style, item.val, colPick.getAttribute("previewLabel"));
-        }
+  const config = await messenger.Utilities.loadConfig();  
+  if (!config) { return; }
+  const colorpickers = Array.from(document.querySelectorAll("input[type=color]"));      
+  for (let i=0; i<config.length; i++) {
+    const item = config[i];
+    // { key: it.getAttribute("data-pref-name"), val: value, originalId: it.getAttribute("preference") }
+    if (item.key) {
+      await browser.LegacyPrefs.setPref(item.key, item.val);
+    }
+    else if (item.elementInfo) {
+      let colPick = colorpickers.find(e => e.getAttribute("elementInfo") == item.elementInfo);
+      if (colPick) {
+        colPick.value = item.val;
+        let {name, style, label} = QuickFolders.Options.getColorPickerVars(colPick.id);
+        QuickFolders.Options.styleUpdate(name, style, item.val, 
+          colPick.getAttribute("previewLabel") || colPick.getAttribute("aria-labelledby"));
       }
     }
-    await loadPrefs();
-    QuickFolders.Options.initPreviewTabStyles();
   }
+  await loadPrefs();
+  QuickFolders.Options.initPreviewTabStyles();  
 });
 
 
@@ -575,6 +580,18 @@ themeSelector.addEventListener("change", async (event) => {
   let themeId = event.target.value;
   QuickFolders.Options.selectTheme(window.document, themeId, true); //.bind(QuickFolders.Options);
   // QuickFolders.Options.updateMainWindow();
+});
+
+
+document.getElementById("quickHelpHeading").addEventListener("focus", function () {
+  // Make sure the live region message is announced when the tab is focused
+  const notification = document.getElementById("quickHelpNotification");
+  // Make the notification visible for screen readers
+  notification.style.visibility = "visible";
+
+  setTimeout(function () {
+    notification.style.visibility = "hidden"; // Move it off-screen again after the readout
+  }, 3000); // Keep it visible for the screen reader to announce
 });
 
 

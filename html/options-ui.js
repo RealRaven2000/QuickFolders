@@ -535,32 +535,28 @@ QuickFolders.Options = {
 
     // preparePreviewTab(id, preference, previewId)
     await prefs.setIntPref("style." + stylePref + ".paletteType", paletteType);
-    if (colorPicker) {
-      let preview = this.preparePreviewTab(
-        colorPicker,
-        "style." + stylePref + ".",
-        idPreview,
-        null,
-        paletteType
-      );
-      // we need to force reselect the palette entry of the button
-      // to update font & background color
-      if (isUpdatePanelColor) {
-        let m = getElement("QuickFolders-Options-PalettePopup");
-        if (m) {
-          // if (!m.targetNode)
-          m.targetNode =
-            buttonState == "colored" ? null : getElement(QI.getPreviewButtonId(buttonState));
-          // as we share the same menu between all preview elements, we need to overwrite targetId.
-          let thePicker = getElement(colorPicker);
-          m.setAttribute("targetId", thePicker.getAttribute("previewLabel"));
-          m.setAttribute("stylePrefKey", preview.getAttribute("stylePrefKey"));
-          // retrieve palette index
-          let col = await prefs.getIntPref("style." + stylePref + ".paletteEntry");
-          QI.setTabColorFromMenu(m.firstChild, col.toString()); // simulate a menu item! 155 lines of LEGACY code ...
-        }
-      }
-    }
+    if (!colorPicker) { return; }
+    const preview = this.preparePreviewTab(
+      colorPicker,
+      "style." + stylePref + ".",
+      idPreview,
+      null,
+      paletteType
+    );
+    // we need to force reselect the palette entry of the button
+    // to update font & background color
+    if (!isUpdatePanelColor) { return; }
+    const m = getElement("QuickFolders-Options-PalettePopup");
+    if (!m) { return; }
+    m.targetNode =
+      buttonState == "colored" ? null : getElement(QI.getPreviewButtonId(buttonState));
+    // as we share the same menu between all preview elements, we need to overwrite targetId.
+    const thePicker = getElement(colorPicker);
+    m.setAttribute("targetId", thePicker.getAttribute("aria-labelledby"));
+    m.setAttribute("stylePrefKey", preview.getAttribute("stylePrefKey"));
+    // retrieve palette index
+    const col = await prefs.getIntPref("style." + stylePref + ".paletteEntry");
+    QI.setTabColorFromMenu(m.firstChild, col.toString()); // simulate a menu item! 155 lines of LEGACY code ...    
   },
 
   changeTextPreference: function (txtBox) {
@@ -831,7 +827,7 @@ QuickFolders.Options = {
   },
 
   updateLicenseOptionsUI: async function (silent = false) {
-    let getElement = document.getElementById.bind(document),
+    const getElement = document.getElementById.bind(document),
       validationPassed = getElement("validationPassed"),
       validationStandard = getElement("validationStandard"),
       validationFailed = getElement("validationFailed"),
@@ -867,7 +863,7 @@ QuickFolders.Options = {
           niceDate = decryptedDate;
         }
       }
-      licenseDate.textContent = niceDate; // invalid ??
+      licenseDate.value = niceDate; // invalid ??
       switch (result) {
         case "Valid":
           if (licenseInfo.keyType == 2) {
@@ -879,7 +875,7 @@ QuickFolders.Options = {
             QuickFolders.Options.showValidationMessage(validationPassed, silent);
             getElement("dialogProductTitle").value = "QuickFolders Pro";
           }
-          licenseDate.textContent = niceDate;
+          licenseDate.value = niceDate;
           licenseDateLabel.value = QuickFolders.Util.getBundleString("qf.label.licenseValid");
           // remove animations / red pro icon:
           QuickFolders.Interface.removeAnimations("quickfolders-options.css");
@@ -920,7 +916,7 @@ QuickFolders.Options = {
           licenseDateLabel.value = QuickFolders.Util.getBundleString(
             "qf.licenseValidation.expired"
           );
-          licenseDate.textContent = niceDate;
+          licenseDate.value = niceDate;
           QuickFolders.Options.showValidationMessage(validationExpired, false); // always show
           break;
         case "MailNotConfigured":

@@ -49,20 +49,20 @@ async function onLoad(activatedWhileWindowOpen) {
     <vbox id="titlebar">
       <toolbar
         id="QuickFolders-Toolbar"
+        style="display: flex !important;"
         toolbarname="QuickFolders Toolbar"
         class="toolbar-primary contentTabToolbar quickFoldersToolbar"
         dragdroparea="QuickFolders-FoldersBox"
         customizable="false"
         context="QuickFolders-ToolbarPopup"
-        aria-orientation="horizontal"
-        flex="10">
-        <hbox id="QuickFolders-left" align="center">
+        aria-orientation="horizontal">
+        <div id="QuickFolders-toolPanel" align="center" style="display: inline-flex; align-items: stretch !important;">
           <vbox id="QuickFolders-LabelBox" flex="0">
             <toolbarbutton id="QuickFolders-title-label" 
               label="__MSG_qf.label.quickfolders__" 
               tabindex="0"/>
           </vbox>
-        </hbox>
+        </div>
         
         <popupset id="QuickFolders-QuickMovePopupSet">
           <menupopup id="QuickFolders-quickMoveMenu">
@@ -271,7 +271,7 @@ async function onLoad(activatedWhileWindowOpen) {
   console.log("Adding QuickFolders Search Panel ...");
   WL.injectElements(`
     
-<hbox id="QuickFolders-left" style="align-items: stretch !important;">
+<div id="QuickFolders-toolPanel">
   <vbox id="QuickFolders-Tools-Pane" insertafter="QuickFolders-LabelBox">
     <hbox id="QuickFolders-Category-Box">
       <menulist id="QuickFolders-Category-Selection" 
@@ -340,7 +340,7 @@ async function onLoad(activatedWhileWindowOpen) {
       </popupset>       
     </hbox>
   </vbox>
-</hbox>
+</div>
   `);
 
   // remove category to force selection when loading new version

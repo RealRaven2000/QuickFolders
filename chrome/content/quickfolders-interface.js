@@ -656,10 +656,10 @@ QuickFolders.Interface = {
 
 		try {
       util.logDebug("updateQuickFoldersLabel()");
-      let isRenew =
+      const isRenew =
           QuickFolders.Util.licenseInfo.isValid &&
-          QuickFolders.Util.licenseInfo.licensedDaysLeft <= 10,
-        showLabelBox =
+          QuickFolders.Util.licenseInfo.licensedDaysLeft <= 10;
+      const showLabelBox =
           isRenew ||
           prefs.isShowQuickFoldersLabel ||
           QuickFolders.Util.licenseInfo.isExpired ||
@@ -681,11 +681,10 @@ QuickFolders.Interface = {
         quickFoldersLabel.classList.remove("expired");
         quickFoldersLabel.classList.add("renew");
         quickFoldersLabel.classList.remove("newsflash");
-        let txtRenew = util.getBundleString(
+        quickFoldersLabel.label = util.getBundleString(
           "qf.premium.renew",
           QuickFolders.Util.licenseInfo.licensedDaysLeft
         );
-        quickFoldersLabel.label = txtRenew;
       } else if (prefs.getBoolPref("hasNews")) {
         quickFoldersLabel.classList.add("newsflash");
         quickFoldersLabel.setAttribute(
@@ -695,10 +694,12 @@ QuickFolders.Interface = {
       } else if (QuickFolders.Util.licenseInfo.isExpired && isLicenseNotChecked) {
         quickFoldersLabel.classList.remove("renew");
         quickFoldersLabel.classList.remove("newsflash");
-        let txtExpired = util
-          .getBundleString("qf.premium.renewLicense.tooltip")
-          .replace("{1}", QuickFolders.Util.licenseInfo.expiredDays);
-        quickFoldersLabel.setAttribute("tooltiptext", txtExpired);
+        quickFoldersLabel.setAttribute(
+          "tooltiptext",
+          util
+            .getBundleString("qf.premium.renewLicense.tooltip")
+            .replace("{1}", QuickFolders.Util.licenseInfo.expiredDays)
+        );
       } else {
         quickFoldersLabel.removeAttribute("tooltiptext");
         quickFoldersLabel.classList.remove("renew");
@@ -741,7 +742,7 @@ QuickFolders.Interface = {
 		util.logDebugOptional("interface", "updateFolders(rebuildCategories=" + rebuildCategories + ", minimalUpdate=" + minimalUpdate + ")");
 		this.TimeoutID=0;
 
-		let showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
+		const showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
 
 		this.showElement(this.CogWheelPopupButton, showToolIcon && !this.PaintModeActive);
 		this.showElement(this.ReadingListButton, prefs.isShowReadingList);
@@ -1282,55 +1283,52 @@ QuickFolders.Interface = {
 		}
 	},
 
-	updateCategoryLayout: function updateCategoryLayout() {
+	updateCategoryLayout: function() {
     const prefs = QuickFolders.Preferences,
-					FCat = QuickFolders.FolderCategory,
-					model = QuickFolders.Model;
-		let cat = this.CategoryMenu,
-		    showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
-		if (cat) {
-			// don't show if ALWAYS and NEVER are the only ones that are references by tabs
-			let catArray = model.Categories,
-			    isCustomCat = false;
-			for (let i=0; i<catArray.length; i++) {
-				if (FCat.isSelectableUI(catArray[i])) {
-					isCustomCat = true;
-					break;
+			FCat = QuickFolders.FolderCategory,
+			model = QuickFolders.Model,
+			cat = this.CategoryMenu,
+			showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
+		if (!cat) return;
+
+		// don't show if ALWAYS and NEVER are the only ones that are references by tabs
+		let catArray = model.Categories,
+			isCustomCat = false;
+		for (let i = 0; i < catArray.length; i++) {
+			if (FCat.isSelectableUI(catArray[i])) {
+				isCustomCat = true;
+				break;
+			}
+		}
+		cat.style.display = showToolIcon || isCustomCat ? "inline-flex" : "none";
+		cat.collapsed = !isCustomCat;
+
+		if (this.currentActiveCategories) {
+			if (this.currentActiveCategories == FCat.UNCATEGORIZED) {
+				// [issue 72] Category "_Uncategorized" will show all categories after moving a folder to another
+				this.selectCategory(FCat.UNCATEGORIZED);
+			} else {
+				// [issue 101] If multiple categories are selected, closing QuickFolders settings reverts to "Show All"
+				let cats = this.currentActiveCategories ? this.currentActiveCategories.split("|") : [],
+					newCats = [];
+
+				// remove invalid categories
+				for (let selCat of cats) {
+					if (catArray.includes(selCat)) {
+						newCats.push(selCat);
+					}
+				}
+				if (!newCats.length) {
+					// make sure all tabs are visible in case we delete the last category!
+					this.selectCategory(FCat.ALL, false);
+				} else if (cats.length > newCats.length) {
+					QuickFolders.Interface.selectCategory(newCats.join("|"), false);
 				}
 			}
-			cat.style.display = (showToolIcon || isCustomCat) ? "-moz-inline-box" : "none";
-			cat.collapsed = (!isCustomCat);
-      
-      if (this.currentActiveCategories) {
-        if (this.currentActiveCategories == FCat.UNCATEGORIZED) { // [issue 72] Category "_Uncategorized" will show all categories after moving a folder to another
-          this.selectCategory(FCat.UNCATEGORIZED);
-				} else {
-          // [issue 101] If multiple categories are selected, closing QuickFolders settings reverts to "Show All"
-          let cats = this.currentActiveCategories ? this.currentActiveCategories.split("|") : [],
-              newCats = [];
-          
-          // remove invalid categories
-          for (let selCat of cats) {
-            if (catArray.includes(selCat)) {
-              newCats.push(selCat);
-            }
-          }
-          if (!newCats.length) {
-            // make sure all tabs are visible in case we delete the last category!
-            this.selectCategory(FCat.ALL,false);
-          }
-          else if (cats.length > newCats.length) {
-            QuickFolders.Interface.selectCategory(newCats.join("|"),false);
-          }
-        }
-      }
+		}
 
-			if (prefs.getBoolPref("collapseCategories"))
-				cat.classList.add("autocollapse");
-			else
-				cat.classList.remove ("autocollapse");
-
-	  }
+		if (prefs.getBoolPref("collapseCategories")) cat.classList.add("autocollapse");
+		else cat.classList.remove("autocollapse");
 	} ,
 
 	updateCategories: function updateCategories() {
@@ -2338,7 +2336,7 @@ QuickFolders.Interface = {
 	toggleToolbar: async function (toggleOptions = { button: null, toggle: true, forceVisible: null }) {
 		QuickFolders.Util.logDebugOptional("interface", "toggleToolbar()", toggleOptions);
 		const toolbar = this.Toolbar,
-			// toolbar.style.display = "flex";  // was:   -moz-inline-box 
+			// toolbar.style.display = "flex";
 			isVisible = !(toolbar.collapsed);
 		let makeVisible;
 		if (toggleOptions.forceVisible != null) {

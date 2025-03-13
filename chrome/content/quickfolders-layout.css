@@ -525,11 +525,6 @@ toolbarbutton#QuickFoldersCurrentFolder {
 	padding-bottom: 0 !important;
 }
 
-/*#QuickFolders-Category-Box > menulist,
-#QuickFolders-Category-Box > toolbarbutton {
-	display: -moz-inline-box;
-}*/
-
 .quickfolders-flat #QuickFolders-Category-Selection {
   margin-bottom: 0; /* avoid extra space under toolbarbuttons */
 	margin-top: 0 !important;
@@ -555,17 +550,18 @@ toolbarbutton#QuickFoldersCurrentFolder {
 }
 
 
-#QuickFolders-Category-Selection.autocollapse:not(:hover) {
+#QuickFolders-Category-Selection.autocollapse:not(:hover):not(:focus-within) {
 	background-image: url('skin/ico/balloons.svg');
-  -moz-context-properties: fill, stroke;
+  font-size: 0 !important; /* hides collapsed label but not drop down chevron */
   stroke: var(--new-highlight);
 	background-repeat: no-repeat;
-	background-position: center center;
-	max-width: 20px;
+	background-position: 3px center;
+  min-width: 40px;
+	max-width: 40px;
 }
 
 #QuickFolders-LabelBox {
-	display: -moz-box; /* -moz-inline-box; */
+	display: flex; /* -moz-box; */
 	/* float: left; */
 	border: 0 !important;
 	padding: 0 !important;
@@ -666,7 +662,7 @@ toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
 
 /** FLAT TABS **/
 toolbar.quickfolders-flat {
-	display: -moz-inline-box;
+	display: flex;
 	margin: 0;
 	padding: 0;
 }

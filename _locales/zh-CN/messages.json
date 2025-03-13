@@ -28,6 +28,9 @@
   "accessibility.hideIconMenu": {
     "message": "从文件夹上下文菜单中移除“自定义图标”命令。"
   },
+  "aria.a11underReview": {
+    "message": "我们正在审核和改善此页面的可访问性。我们正在努力使描述的功能更加兼容键盘和屏幕阅读器。感谢您的耐心！"
+  },
   "aria.colorPicker.background": {
     "message": "背景色选择器"
   },
@@ -184,6 +187,9 @@
   },
   "findRelated.btn.tooltip": {
     "message": "根据所选邮件和用户定义的搜索模式查找类似邮件"
+  },
+  "findRelated.entries": {
+    "message": "搜索模式"
   },
   "findRelated.menu.configure": {
     "message": "配置搜索模式…"

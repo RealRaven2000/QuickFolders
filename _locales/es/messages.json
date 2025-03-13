@@ -28,6 +28,9 @@
   "accessibility.hideIconMenu": {
     "message": "Eliminar el comando 'Personalizar icono' del menú contextual de la carpeta."
   },
+  "aria.a11underReview": {
+    "message": "Actualmente estamos revisando y mejorando la accesibilidad de esta página. Estamos trabajando para hacer que la funcionalidad descrita sea más compatible con el teclado y los lectores de pantalla. ¡Gracias por su paciencia!"
+  },
   "aria.colorPicker.background": {
     "message": "selector de color para el fondo"
   },
@@ -180,6 +183,9 @@
   },
   "findRelated.btn.tooltip": {
     "message": "Encuentra correos similares basados en el correo seleccionado y patrones de búsqueda definidos por el usuario"
+  },
+  "findRelated.entries": {
+    "message": "Patrones de búsqueda"
   },
   "findRelated.menu.configure": {
     "message": "Configurar patrones de búsqueda…"

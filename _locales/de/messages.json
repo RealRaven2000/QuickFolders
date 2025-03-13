@@ -28,6 +28,9 @@
   "accessibility.hideIconMenu": {
     "message": "Den Befehl 'Symbol anpassen' aus dem Ordner-Kontextmenü entfernen."
   },
+  "aria.a11underReview": {
+    "message": "Wir überprüfen und verbessern derzeit die Barrierefreiheit dieser Seite. Wir arbeiten daran, die beschriebene Funktionalität benutzerfreundlicher für Tastatur und Bildschirmleser zu gestalten. Vielen Dank für Ihre Geduld!"
+  },
   "aria.colorPicker.background": {
     "message": "Farbauswahl für den Hintergrund"
   },
@@ -182,6 +185,9 @@
   "findRelated.btn.tooltip": {
     "message": "Ähnliche E-Mails basierend auf der ausgewählten E-Mail und benutzerdefinierten Suchmustern finden"
   },
+  "findRelated.entries": {
+    "message": "Suchmuster"
+  },
   "findRelated.menu.configure": {
     "message": "Suchmuster konfigurieren…"
   },
@@ -198,7 +204,7 @@
     "message": "Optionen"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "Die Schaltfläche 'Gehe zur nächsten E-Mail' löscht die aktuelle Suche."
+    "message": "Die Schaltfläche 'Gehe zur nächsten E-Mail' löscht die vorherige Suche."
   },
   "findRelated.searchGroup": {
     "message": "Suchgruppe (0 für vollständige Übereinstimmung):"

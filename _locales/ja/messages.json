@@ -28,6 +28,9 @@
   "accessibility.hideIconMenu": {
     "message": "フォルダーのコンテキストメニューから 'アイコンをカスタマイズ' コマンドを削除する。"
   },
+  "aria.a11underReview": {
+    "message": "現在、このページのアクセシビリティを確認および改善しています。記載された機能をキーボードやスクリーンリーダーにより対応できるように改善しています。ご協力ありがとうございます！"
+  },
   "aria.colorPicker.background": {
     "message": "背景用のカラーピッカー"
   },
@@ -168,6 +171,9 @@
   },
   "findRelated.btn.tooltip": {
     "message": "選択したメールとユーザー定義の検索パターンに基づいて類似メールを検索"
+  },
+  "findRelated.entries": {
+    "message": "検索パターン"
   },
   "findRelated.menu.configure": {
     "message": "検索パターンを設定…"

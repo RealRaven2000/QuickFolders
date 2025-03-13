@@ -28,6 +28,9 @@
   "accessibility.hideIconMenu": {
     "message": "Remove the 'Customize Icon' command from the folder context menu."
   },
+  "aria.a11underReview": {
+    "message" : "We are currently reviewing and improving the accessibility of this page. We are working on making the described functionality more keyboard-friendly and screen reader compatible. Thank you for your patience!."
+  },  
   "aria.colorPicker.background": {
     "message": "color picker for background"
   },
@@ -186,6 +189,9 @@
   "findRelated.btn.tooltip": {
     "message": "Find similar mails based on the selected mail and user-defined search patterns"
   },
+  "findRelated.entries": {
+    "message": "Search Patterns"
+  },
   "findRelated.menu.configure": {
     "message": "Configure search patterns…"
   },
@@ -202,7 +208,7 @@
     "message": "Options"
   },
   "findRelated.options.goNextResetsSearch": {
-    "message": "'Move to Next mail' button clears the search."
+    "message": "'Move to Next mail' button clears the previous search."
   },
   "findRelated.searchGroup": {
     "message": "Search Group (0 for complete match):"
@@ -881,7 +887,7 @@
     "message": "Toolbar Background:"
   },
   "qf.label.UncoloredTab": {
-    "message": "Uncolored Tab"
+    "message": "Default Tab Layout"
   },
   "qf.label.UncoloredTab.tooltip": {
     "message": "Look of (inactive) tabs without a specifically selected color"

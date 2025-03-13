@@ -203,9 +203,11 @@ END LICENSE BLOCK */
     ## [issue 546] Fixed: can no longer remove customized icon from tab
     ---
     ## made compatible with Tb 138.*
+    ## Using wx API function for opening support websites - no more unwanted alert
     ## Replaced XPCOMUtils.defineLazyGetter => ChromeUtils.defineLazyGetter  (removed in Fx137)
     ## [issue 543] Removed inline event handlers which will be deprecated in Thunderbird 136
     ## [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
+    ## [issue 555] Support keyboard navigation / screen readers in QuickFolders settings [WIP]
 
 
 	TO DO next
@@ -638,32 +640,34 @@ var QuickFolders = {
 
 	init: async function (win) {
     const util = QuickFolders.Util,
-		      that = this.isQuickFolders ? this : QuickFolders;
-		let myver = that.Util.Version, 
-		    ApVer, ApName,
-        prefs = that.Preferences; 
-    try { ApVer=that.Util.ApplicationVersion } catch(e){ApVer="?"};
-    try { ApName=that.Util.Application } catch(e){ApName="?"};
+      that = this.isQuickFolders ? this : QuickFolders,
+      prefs = that.Preferences;
 
-		if (prefs && prefs.isDebug)
-			that.LocalErrorLogger("QuickFolders.init() - QuickFolders Version " + myver + "\n" + "Running on " + ApName + " Version " + ApVer);
+    if (prefs?.isDebug) {
+      const myver = that.Util.Version,
+        ApVer = that.Util?.ApplicationVersion || "?",
+        ApName = that.Util?.Application || "?";
+      that.LocalErrorLogger(
+        `QuickFolders.init() - QuickFolders Version ${myver}\n` +
+        `Running on ${ApName} Version ${ApVer}`
+      );
+    }
 
-		that.addTabEventListener();
-		QuickFolders.initKeyListeners(win);
-    
+    that.addTabEventListener();
+    QuickFolders.initKeyListeners(win);
+
     // [issue 208] - wait for folders to be ready to avoid "invalid" tabs - WIP
-    await new Promise(resolve => {
+    await new Promise((resolve) => {
       let { gMailInit } = win;
       if (!gMailInit || !gMailInit.delayedStartupFinished) {
-        util.logDebug("delayedStartupFinished is not set yet - waiting for event to initialize folders...")
+        util.logDebug(
+          "delayedStartupFinished is not set yet - waiting for event to initialize folders..."
+        );
         let obs = (finishedWindow, topic, data) => {
           if (finishedWindow != win) {
             return;
           }
-          Services.obs.removeObserver(
-            obs,
-            "mail-delayed-startup-finished"
-          );
+          Services.obs.removeObserver(obs, "mail-delayed-startup-finished");
           util.logDebug("mail-delayed-startup-finished fired!");
           resolve();
         };
@@ -673,38 +677,35 @@ var QuickFolders = {
       }
     });
 
-		
-		// move out to allow reload / editing feature
-		let folderEntries = prefs.loadFolderEntries();
+    // move out to allow reload / editing feature
+    let folderEntries = prefs.loadFolderEntries();
     // issue 189 - prepare conversion for account specific relative path storage
     QuickFolders.Model.correctFolderEntries(folderEntries);
-		this.initTabsFromEntries(folderEntries);
-		
-		// only load in main window(?)
+    this.initTabsFromEntries(folderEntries);
+
+    // only load in main window(?)
     // [issue 399] needs to be moved to the 3pane document code!!!!!!!!!!!!!!
 
+    // add tab listeners to automatically main toolbar when it is not needed
+    QuickFolders.Interface.initToolbarTabListener();
 
-		// add tab listeners to automatically main toolbar when it is not needed
-		QuickFolders.Interface.initToolbarTabListener();
+    that.Util.logDebug("QuickFolders.init() ends.");
+    // now make it visible!
+    QuickFolders.Interface.Toolbar.style.display = "flex"; // -moz-inline-box
 
-		that.Util.logDebug("QuickFolders.init() ends.");
-		// now make it visible!
-		QuickFolders.Interface.Toolbar.style.display = '-moz-inline-box';
-		
-		if (QuickFolders.Preferences.getBoolPref('contextMenu.hideFilterMode')) {
-			if (QuickFolders.Interface.FilterToggleButton)
-				QuickFolders.Interface.FilterToggleButton.collapsed=true;
-		}
+    if (QuickFolders.Preferences.getBoolPref("contextMenu.hideFilterMode")) {
+      if (QuickFolders.Interface.FilterToggleButton)
+        QuickFolders.Interface.FilterToggleButton.collapsed = true;
+    }
     // QuickFolders.addFolderPaneListener();
-    
+
     // Reading list
     if (QuickFolders.bookmarks) {
       QuickFolders.bookmarks.load();
     }
     QuickFolders.initLicensedUI();
     QuickFolders.Interface.updateMainWindow(false);
-    
-	},
+  },
   
   // all main window elements that change depending on license status (e.g. display "Expired" instead of QuickFolders label)
   initLicensedUI: function initLicensedUI() {
@@ -1370,8 +1371,9 @@ var QuickFolders = {
                 if (otherPopups[i].folder !== targetFolder && otherPopups[i].hidePopup) {
                   otherPopups[i].hidePopup();
                 }
+                continue;
               }
-              else if (targetFolder) { // there is a targetfolder but the other popup doesn't have one (special tab!).
+              if (targetFolder) { // there is a targetfolder but the other popup doesn't have one (special tab!).
                 if (otherPopups[i].hidePopup) {
                   otherPopups[i].hidePopup();
                 } else {
@@ -1457,23 +1459,26 @@ var QuickFolders = {
                 }                  
 							}
 						}
-						else { // special folderbutton: recent
-              if (buttonId == 'QuickFolders-Recent-CurrentFolderTool' || buttonId == 'QuickFolders-Recent') {
-                popupId = 'moveTo_QuickFolders-folder-popup-Recent';
+						if (!targetFolder) {
+              // special folderbutton: recent
+              if (
+                buttonId == "QuickFolders-Recent-CurrentFolderTool" ||
+                buttonId == "QuickFolders-Recent"
+              ) {
+                popupId = "moveTo_QuickFolders-folder-popup-Recent";
                 // [issue 262] avoid "stale" drag-to recent menu
-                menupopup.setAttribute('id', popupId);
+                menupopup.setAttribute("id", popupId);
                 popupset.appendChild(menupopup);
-                if(QuickFolders_globalHidePopupId && QuickFolders_globalHidePopupId !== popupId) {
+                if (QuickFolders_globalHidePopupId && QuickFolders_globalHidePopupId !== popupId) {
                   removeLastPopup(QuickFolders_globalHidePopupId, doc);
                 }
                 QI.createRecentTab(menupopup, true, button);
-              }
-              else {
+              } else {
                 if (prefs.isShowRecentTab) {
-                  removeLastPopup('moveTo_QuickFolders-folder-popup-Recent', doc);
+                  removeLastPopup("moveTo_QuickFolders-folder-popup-Recent", doc);
                 }
               }
-						}
+            }
             if (!popupId) {
               return;
             }
@@ -1586,8 +1591,7 @@ var QuickFolders = {
 				button.classList.remove("dragRIGHT");
 				QuickFolders_globalHidePopupId = "";
 				return;  // don't remove popup when reordering tabs
-			}
-			else {
+			} else {
 				//  the target of the complementary event (the mouseleave target in the case of a mouseenter event). null otherwise.
 				let rt = event.relatedTarget;
 				util.logDebugOptional("dnd", "relatedTarget = " + (rt ? (rt.nodeName + "  " + rt.id) : "null" ) + "\n"
@@ -1690,8 +1694,7 @@ var QuickFolders = {
           if (!util.hasValidLicense()) { // max tab
             maxTabs = QuickFolders.Model.MAX_UNPAID_TABS;
             msg = util.getBundleString("license_restriced.unpaid.maxtabs",[maxTabs]);
-          }
-          else if (util.hasStandardLicense()) {
+          } else if (util.hasStandardLicense()) {
             maxTabs = QuickFolders.Model.MAX_STANDARD_TABS;
             msg = util.getBundleString("license_restriced.standard.maxtabs",[maxTabs]);
           }

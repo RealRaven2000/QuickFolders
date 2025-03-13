@@ -5,6 +5,7 @@
 <!--  tb 78 -->
 <?xml-stylesheet href="chrome://global/skin/xul.css" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css" ?>
+<?xml-stylesheet href="chrome://messenger/skin/variables.css"?>
 <?xml-stylesheet href="chrome://messenger/skin/themeableDialog.css" type="text/css"?>
 <?xml-stylesheet href="chrome://global/content/widgets.css" type="text/css"?>
 
@@ -32,28 +33,27 @@
    __MSG_qf.description.dragexplain__
   </description>
 
-    <hbox class="drag-image">
-      <image src="chrome://quickfolders/content/skin/ico/Drag-Tabs.gif" />
-    </hbox>
+  <hbox class="drag-image">
+    <image src="chrome://quickfolders/content/skin/ico/Drag-Tabs.gif" />
+  </hbox>
 
-    <vbox id="myscrollbox" flex="1">
+  <vbox id="myscrollbox" flex="1">
+    <div class="flex-grid" id="QuickFolders-change-order">
+      <div class="col Label">__MSG_qf.label.testfolder__</div>
+      <div class="col Btn">__MSG_qf.button.up__</div>
+      <div class="col Btn">__MSG_qf.button.down__</div>
+    </div>
     
-      <div class="flex-grid" id="QuickFolders-change-order">
-        <div class="col Label">__MSG_qf.label.testfolder__</div>
-        <div class="col Btn">__MSG_qf.button.up__</div>
-        <div class="col Btn">__MSG_qf.button.down__</div>
-      </div>
-      
-      
-      
-	    <grid flex="1" id="QuickFolders-change-order-grid">
-		   	<columns>
-	    		<column flex="5" />
-	    		<column flex="1" />
-	    		<column flex="1" />
-	    	</columns>
-	    </grid>
+    
+    
+    <grid flex="1" id="QuickFolders-change-order-grid">
+      <columns>
+        <column flex="5" />
+        <column flex="1" />
+        <column flex="1" />
+      </columns>
+    </grid>
 
-      
-    </vbox>
+    
+  </vbox>
 </dialog>

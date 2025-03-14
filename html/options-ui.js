@@ -999,16 +999,28 @@ QuickFolders.Options = {
     return "";
   },
 
+  updateAriaLicenseLabel: function(el) {
+    if (!el) return;
+    const fullKey = el.value.trim();
+    if (!fullKey) {
+      el.setAttribute("aria-label", "license field empty!");
+      return;
+    }    
+    const shortKey = fullKey.split(";")[0]; // Extract only the meaningful part
+    el.setAttribute("aria-label", `License Key: ${shortKey}`);    
+  },
+
   trimLicense: function () {
-    let txtBox = document.getElementById("txtLicenseKey"),
-      strLicense = txtBox.value.toString();
+    const licenseTxt = document.getElementById("txtLicenseKey"),
+      strLicense = licenseTxt.value.toString();
     // Remove line breaks and extra spaces:
     let trimmedLicense = strLicense
       .replace(/\r?\n|\r/g, " ") // replace line breaks with spaces
       .replace(/\s\s+/g, " ") // collapse multiple spaces
       .replace("[at]", "@")
       .trim();
-    txtBox.value = trimmedLicense;
+    licenseTxt.value = trimmedLicense;
+    this.updateAriaLicenseLabel(licenseTxt);
     return trimmedLicense;
   },
 

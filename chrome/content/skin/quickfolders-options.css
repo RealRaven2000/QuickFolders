@@ -428,6 +428,11 @@ hbox.quickhelp-dbg {
 	text-shadow: none !important;
 	transition-property: box-shadow;
 	transition-duration: 0.2s;
+	color: var(--in-content-page-color);
+}
+
+#homePageLbl {
+	cursor: pointer;
 }
 
 #L0 {

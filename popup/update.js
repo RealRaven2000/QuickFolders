@@ -52,7 +52,7 @@ function formatAll(id, arg=null) {
     .replace(/\{P2\}/g, "</p>")
     .replace(/\{A-findRelated\}/g, "<a href='https://quickfolders.org/premium.html#findRelated'>")
     .replace(/\{A\}/g, "</a>")
-    .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1>[issue $1]</a>")
+    .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1 href='#'>[issue $1]</a>")
     .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys
     .replace(/\[(F\d*)\]/g, "<code class='keystroke'>$1</code>") // F10
     .replace(/\[(CTRL|ALT)\]/g, "<code class='keystroke'>$1</code>");  // single keys

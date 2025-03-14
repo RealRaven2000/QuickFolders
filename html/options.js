@@ -36,6 +36,10 @@ const activateTab = (event) => {
   }
 }
 
+const LEGACY_SETTINGS_ROOT = "extensions.quickfolders.";
+function legacyPrefPath(setting) {
+  return LEGACY_SETTINGS_ROOT + setting;
+}
 
 /**
  * Add a handler for communication with other parts of the extension,
@@ -90,7 +94,9 @@ function sanitizeCSS(el) {
 var licenseInfo;
 async function initLicenseInfo() {
   licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
-  document.getElementById("txtLicenseKey").value = licenseInfo.licenseKey;
+  const licenseTxt = document.getElementById("txtLicenseKey");
+  licenseTxt.value = licenseInfo.licenseKey;
+  QuickFolders.Options.updateAriaLicenseLabel(licenseTxt);
   
   if (licenseInfo.licenseKey) {
     await validateLicenseInOptions(true);
@@ -415,18 +421,21 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       filterConfig="quickfolders.findRelated"; retVal=false;
       break;
   }
+  const isDebug = QuickFolders.Preferences.isDebug;
   
   if (filterConfig) {
-    // add right-click event to containing label
-    let eventNode = chk.parentNode.querySelector(".configSettings");
+    // add click event to associated config button
+    let eventNode = chk.parentNode.parentElement.querySelector(".configSettings");
     let eventType;
     if (eventNode) {
       eventType = "click";
     } else {
+      // add right-click event to containing label
       eventNode = chk.parentNode;
       eventType = "contextmenu";
     }
     eventNode.addEventListener(eventType, async(event) =>  {
+      if (isDebug) debugger;
       event.preventDefault();
       event.stopPropagation();
       // 
@@ -640,7 +649,7 @@ async function savePref(event) {
 
 
 async function loadPrefs() {
-  console.log("loadPrefs");
+  QuickFolders.Util.logDebug("loadPrefs() ...");
   // use LegacyPrefs
 	const prefElements = Array.from(document.querySelectorAll("[data-pref-name]"));
 	for (let element of prefElements) {
@@ -825,6 +834,7 @@ async function validateLicenseInOptions(evt = false) {
 } 
 
 async function initButtons() {
+  QuickFolders.Util.logDebug("initButtons...");
   // License Tab
   document.getElementById("btnValidateLicense").addEventListener("click", QuickFolders.Options.validateNewKey);
   document.getElementById("btnPasteLicense").addEventListener("click", QuickFolders.Options.pasteLicense);
@@ -896,10 +906,7 @@ async function initButtons() {
         searchValue = editBox.value.substring(1, endIdx);
         searchFlags = editBox.value.substring(endIdx + 1);
       } else {
-        const isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug"));
-        if (isDebug){
-          console.log(`Invalid search string in find Related - missing 2nd '/' : ${searchFlags}`);
-        } 
+        QuickFolders.Util.logDebug(`Invalid search string in find Related - missing 2nd '/' : ${searchFlags}`);
         searchFlags = searchOptions.pattern.substring(1); // removing beginning '/'
       }
     } 
@@ -917,13 +924,16 @@ async function initButtons() {
 }
 
 async function initToolbarBackground() {
+const colBG = await QuickFolders.Preferences.getStringPref("currentFolderBar.background.selection");
+  QuickFolders.Util.logDebug(`initToolbarBackground: setCurrentToolbarBackground(${colBG})...`);
   QuickFolders.Options.setCurrentToolbarBackground(
-    await QuickFolders.Preferences.getStringPref("currentFolderBar.background.selection"), false);  
+    colBG, false);  
 }
 
 
 
 async function initBling() {
+  QuickFolders.Util.logDebug("initBling...");
   const getElement = document.getElementById.bind(document),
         wd = window.document,
         util = QuickFolders.Util,
@@ -1003,20 +1013,37 @@ async function initBling() {
   
 }
 
-console.log("i18n.updateDocument");
-i18n.updateDocument();
 
-let supportLabel = document.getElementById("contactLabel"),
-    supportString = QuickFolders.Util.getBundleString("qf.description.contactMe", [QuickFolders.Util.ADDON_SUPPORT_MAIL]); // substitution parameter
-supportLabel.textContent = supportString;
+const startup = async () => {
+  QuickFolders.Util.logDebug("Options.js - startup()\nCalling i18n.updateDocunent()...");
+  
+  i18n.updateDocument();
 
-loadPrefs();
-preselectTab();
-initLicenseInfo();
-initVersionPanel();
-initButtons();
+  let supportLabel = document.getElementById("contactLabel"),
+      supportString = QuickFolders.Util.getBundleString("qf.description.contactMe", [QuickFolders.Util.ADDON_SUPPORT_MAIL]); // substitution parameter
+  supportLabel.textContent = supportString;  
 
-initToolbarBackground();
-initBling();
+  await loadPrefs();
+  preselectTab();
+  initVersionPanel();
 
- 
+  try {
+    await initLicenseInfo();
+  } catch (ex) {
+    console.log(ex);
+    setTimeout(
+      async () => {
+        await initLicenseInfo();
+        initButtons();
+      },
+      5000
+    );
+  } finally {
+    initButtons();
+    initToolbarBackground();
+    initBling();
+  }
+
+}
+
+startup();

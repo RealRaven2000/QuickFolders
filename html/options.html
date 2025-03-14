@@ -90,7 +90,7 @@
               <label class="rebuildFolders themeable"><input type="checkbox" 
                 data-pref-name="extensions.quickfolders.useRebuildShortcut"
                 preference="qfpg-RebuildShortcut" instantApply="true">__MSG_qf.checkbox.useRebuildShortcut__
-                <input type="text" id="QuickFolders-Options-RebuildShortcutKey" 
+                <input type="text" autocomplete="off" id="QuickFolders-Options-RebuildShortcutKey" 
                   preference="qfpg-RebuildShortcutKey"
                   data-pref-name="extensions.quickfolders.rebuildShortcutKey" 
                   data-pref-type="string"
@@ -364,7 +364,7 @@
           <legend>__MSG_qf.caption.currentFolderBackground__</legend>
           <div class="vbox" id="currentFolderBackgroundContainer">
             <div class="hbox" flex="1" id="currentFolderStyle">
-              <input type="text" id="currentFolderBackground" preference="qfpa-CurrentFolder-Background"
+              <input type="text" autocomplete="off" id="currentFolderBackground" preference="qfpa-CurrentFolder-Background"
                 data-pref-name="extensions.quickfolders.currentFolderBar.background" />
               <select id="QuickFolders-CurrentFolder-Background-Select">
                   <!-- list order must correspond with BGCHOICE enum -->
@@ -448,10 +448,10 @@
               preference="qfpa-Debug" data-pref-name="extensions.quickfolders.debug">
               __MSG_qf.checkbox.debug__
             </label>
-            <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
+            <button class="configSettings" aria-label="__MSG_aria.configSettings__" title="__MSG_aria.configSettings__"></button>
           </span>
           <label for="initdelay" style="vertical-align:baseline;border: 1px gray dotted;padding:0px 5px;">__MSG_qf.label.initdelay__</label>
-          <input type="text" id="initdelay" preference="QuickFolders-init-delay" data-pref-name="extensions.quickfolders.initDelay" />
+          <input type="text" autocomplete="off" autocomplete="off" id="initdelay" preference="QuickFolders-init-delay" data-pref-name="extensions.quickfolders.initDelay" />
           <button id="copyFolders" tooltiptext="__MSG_qf.copyfolders.tooltip__" class="iconButton">__MSG_qf.copyfolders__</button>
           <button id="pasteFolders" tooltiptext="__MSG_qf.pastefolders.tooltip__"  class="iconButton">__MSG_qf.pastefolders__</button>
         </div>
@@ -757,10 +757,10 @@
           </div>
           <div class="vbox" style="flex-grow:2;">
             <label>
-              __MSG_findRelated.term.menutitle__ <input type="text" id="findRelatedTitle">
+              __MSG_findRelated.term.menutitle__ <input type="text" autocomplete="off" id="findRelatedTitle">
             </label>
             <label>
-              __MSG_findRelated.searchPattern__ <input type="text" id="findRelatedPattern" style="flex-grow: 1;">
+              __MSG_findRelated.searchPattern__ <input type="text" autocomplete="off" id="findRelatedPattern" style="flex-grow: 1;">
               <button class="editRegex" title="test your patterns on regex101.com"></button>
             </label>
             </label>
@@ -919,7 +919,7 @@
                   disabled="true">__MSG_qf.checkbox.quickJump__</label>
                 <label><input type="checkbox" preference="qfpp-QuickJumpShortcutShift" 
                   data-pref-name="extensions.quickfolders.quickJump.Hotkey.Shift" >__MSG_qf.checkbox.shift__+
-                  <input type="text" id="qf-QuickJumpShortcut" preference="qfpp-QuickJumpShortcutKey"
+                  <input type="text" autocomplete="off" id="qf-QuickJumpShortcut" preference="qfpp-QuickJumpShortcutKey"
                     data-pref-name="extensions.quickfolders.quickJump.Hotkey" 
                     class="shortCutKey" disabled="true" maxLength="1" />
                 </label>
@@ -936,7 +936,7 @@
                 <label><input type="checkbox" 
                   preference="qfpp-QuickMoveShortcutShift" 
                   data-pref-name="extensions.quickfolders.quickMove.Hotkey.Shift">__MSG_qf.checkbox.shift__+
-                  <input type="text" id="qf-QuickMoveShortcut" preference="qfpp-QuickMoveShortcutKey"
+                  <input type="text" autocomplete="off" id="qf-QuickMoveShortcut" preference="qfpp-QuickMoveShortcutKey"
                     data-pref-name="extensions.quickfolders.quickMove.Hotkey"
                     class="shortCutKey" maxLength="1" disabled="true" />
                 </label>
@@ -947,7 +947,7 @@
                   data-pref-name="extensions.quickfolders.quickCopy.useHotkey" disabled="true">__MSG_qf.checkbox.quickCopy__</label>
                 <label><input type="checkbox" preference="qfpp-QuickCopyShortcutShift" 
                   data-pref-name="extensions.quickfolders.quickCopy.Hotkey.Shift">__MSG_qf.checkbox.shift__+
-                  <input type="text" id="qf-QuickCopyShortcut" preference="qfpp-QuickCopyShortcutKey"
+                  <input type="text" autocomplete="off" id="qf-QuickCopyShortcut" preference="qfpp-QuickCopyShortcutKey"
                     data-pref-name="extensions.quickfolders.quickCopy.Hotkey"
                     class="shortCutKey" maxLength="1" disabled="true" />
                 </label>
@@ -965,7 +965,7 @@
                   tooltiptext="__MSG_qf.checkbox.skipFolder.tip__" preference="qfpp-skipFolderShortcut"
                   data-pref-name="extensions.quickfolders.skipFolder.useHotkey"
                   disabled="true">__MSG_qf.checkbox.skipFolder__
-                  <input type="text" id="qf-SkipFolderShortcut" preference="qfpp-skipFolderShortcutKey"
+                  <input type="text" autocomplete="off" id="qf-SkipFolderShortcut" preference="qfpp-skipFolderShortcutKey"
                     data-pref-name="extensions.quickfolders.skipFolder.Hotkey"
                     class="shortCutKey" maxLength="1" disabled="true" />
                 </label>

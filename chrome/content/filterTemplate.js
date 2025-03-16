@@ -28,7 +28,11 @@ var FilterTemplate = {
           window.addEventListener('dialogextra1', this.acceptTemplate.bind(this));
           window.addEventListener('dialogextra2', function (event) { 
             QuickFolders.Util.openLinkInBrowser(event,'https://quickfolders.org/donate.html');
-          });		  
+          });
+          let qFiltersLink = document.getElementById("quickFiltersLink");
+          qFiltersLink.addEventListener("click", 
+            QuickFolders.FilterWorker.showQuickFilters
+          );
         }
         catch (ex) {
           util.logException("QuickFolders.FilterWorker.loadTemplate()", ex);

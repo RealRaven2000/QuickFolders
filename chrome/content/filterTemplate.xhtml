@@ -12,7 +12,6 @@
         xmlns:html="http://www.w3.org/1999/xhtml"
         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 >
-<!--	tooltiptextextra2="__MSG_qf.donate.tooltip__" -->
 
 	<script type="application/javascript" src="chrome://quickfolders/content/filterTemplate.js" />
 	<script type="application/javascript" src="chrome://quickfolders/content/quickfolders.js" />
@@ -51,9 +50,7 @@
         </richlistbox>
         <vbox id="quickFiltersPromoBox">
           <description id="getQuickFilters">__MSG_qf.label.getQuickFilters__</description>
-          <label id="quickFiltersLink"
-                 class="para link" 
-                 onclick="QuickFolders.FilterWorker.showQuickFilters(event);">__MSG_qf.label.quickFilters.link__</label>
+          <a id="quickFiltersLink" href="#" class="para link">__MSG_qf.label.quickFilters.link__</a>
           
         </vbox>
       </hbox>
@@ -67,7 +64,7 @@
     </prefpane>
 	<script type="application/javascript" src="chrome://global/content/preferencesBindings.js" />
 	<script>
-	  QuickFolders.FilterWorker.loadPreferences(); /* Tb 66 compatibility. Should be called _before_ DOMcontent Loaded event */
+	  QuickFolders.FilterWorker.loadPreferences();
 	</script>
 </dialog>
 

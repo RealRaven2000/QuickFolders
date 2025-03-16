@@ -1,0 +1,262 @@
+{
+  "_l10nstatus": {
+    "message": "SPLASH"
+  },
+  "active-version-info": {
+    "message": "Momentálne používate {boldStart}verziu $addonVer$ {boldEnd} na Thunderbirde $appVer$.",
+    "placeholders": {
+      "addonVer": {
+        "content": "$1",
+        "example": "Verzia 1.1"
+      },
+      "appVer": {
+        "content": "$2",
+        "example": "78.0b4"
+      }
+    }
+  },
+  "addon-authors-struggle": {
+    "message": "Aby sme naďalej boli užitoční, vývojári add-onov musia teraz financovať zdroje potrebné na opravy a prepisovanie, aby naši používatelia mohli naďalej využívať funkcie, ktoré poskytujeme."
+  },
+  "aria.a11underReview": {
+    "message": "Aktuálne prehodnocujeme a zlepšujeme prístupnosť tejto stránky. Pracujeme na zlepšení funkčnosti pre ovládanie klávesnicou a kompatibilitu so čítačkami obrazovky. Ďakujeme za trpezlivosť!"
+  },
+  "btn-extend-license": {
+    "message": "Chcem predĺžiť svoju licenciu o jeden rok"
+  },
+  "btn-renew-license": {
+    "message": "Chcem obnoviť svoju licenciu"
+  },
+  "btn-want-a-license": {
+    "message": "Vyberte licenciu"
+  },
+  "btn-want-to-donate": {
+    "message": "Chcem prispieť jednorazovým darom."
+  },
+  "cost-of-independence": {
+    "message": "Vývoj softvéru stojí čas a peniaze - na rozdiel od mnohých aplikácií na platformách, add-ony nie sú písané veľkými korporáciami a nie sú žiadnym spôsobom sponzorované Mozillou."
+  },
+  "donate-heading": {
+    "message": "Pomôžte darovaním!"
+  },
+  "heading-installed": {
+    "message": "$addonName$ bol úspešne nainštalovaný",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "heading-updated": {
+    "message": "$addonName$ bol úspešne aktualizovaný",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "intro": {
+    "message": "Ročná licencia pre QuickFolders Pro vám poskytne všetky prémiové funkcie na jeden rok. Umožňuje nám to tiež podporovať a ďalej rozvíjať produkt, aby sa stal ešte úžasnejším."
+  },
+  "license-is-extended": {
+    "message": "Ďakujeme za nedávne predĺženie vašej licencie alebo ak ste prispeli darom. Pretože ste pomohli zabezpečiť budúcnosť tejto aplikácie, môžete toto okno jednoducho zavrieť."
+  },
+  "licenseComparison": {
+    "message": "Ak chcete porovnať funkcie rôznych licencií, {linkStart}prečítajte si tento zoznam{linkEnd}."
+  },
+  "licenseTerms.hide": {
+    "message": "🡇 Pokračovať na výber licencie 🡇"
+  },
+  "licenseTerms.show": {
+    "message": "Zobraziť podmienky licencie"
+  },
+  "licenseTypes": {
+    "message": "QuickFolders ponúka dve licencie, Standard a Pro; tieto sú potrebné na sledovanie zmien na platforme Thunderbird a na financovanie inovácií a opráv aplikácie. Pretože zmeny, ktoré môžu potenciálne spôsobiť problémy s funkčnosťou rozšírenia, sa zavádzajú ročne, licencia bude platná na 1 rok."
+  },
+  "licenseWindow.title": {
+    "message": "Licencia QuickFolders Pro"
+  },
+  "license_restriced.std": {
+    "message": "Štandardná licencia - obmedzená funkcia Pro. Zistite viac…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Neoficiálna verzia - obmedzená funkcia. Zistite viac…"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders potrebuje Pro licenciu na podporu viac ako $maxTabs$ kariet.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders potrebuje licenciu na podporu viac ako $maxTabs$ kariet.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
+  },
+  "mozillas-basic-platform": {
+    "message": "Mozilla poskytuje iba základnú platformu na doručenie nášho softvéru vám, koncovým používateľom. Ak by sme mali požiadať našich používateľov o platbu alebo podporu, nemôžeme to urobiť z addons.thunderbird.net - nie je to 'obchod s aplikáciami' s integrovanými platobnými bránami alebo správou licencií ako iTunes alebo Google Play."
+  },
+  "newsHead": {
+    "message": "Najnovšie novinky"
+  },
+  "newsSection": {
+    "message": "{P1} Najnovšia verzia $addonName$ je teraz kompatibilná s Thunderbirdom v138 a začala svoju cestu k zlepšeniu prístupnosti pre klávesnice a čítačky obrazovky. Pre podrobnú dokumentáciu skontrolujte úplný zoznam zmien v odkaze nižšie. {P2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "newsSection.license": {
+    "message": "Keďže všetka práca na QuickFolders a bezplatná podpora sú financované výhradne z predaja licencií, zvážte prosím zakúpenie licencie alebo obnovenie vašej aktuálnej."
+  },
+  "ongoing-work": {
+    "message": "Aby bol $addonName$ synchronizovaný s mesačnými vydaniami Thunderbirdu, musíme neustále kontrolovať prípadné chyby a nahrávať upravené verzie. Pomôžte nám s tým, keď si vyskúšate funkčnosť a overíte si, že zvyšuje vašu produktivitu!",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "ongoing-work.order": {
+    "message": "Licenciu si môžete kedykoľvek objednať priamo v nastaveniach QuickFolders na stránke Licencia."
+  },
+  "purchase-heading": {
+    "message": "Podpora prostredníctvom licencie"
+  },
+  "renew-your-license": {
+    "message": "Obnovte svoju licenciu."
+  },
+  "special-offer-content": {
+    "message": "Upgradujte svoje funkcie a ušetrite {boldStart}$reduction${boldEnd} pri kúpe {linkStartPro}QuickFolders Pro licencie{linkEnd} do {boldStart}$expirydate${boldEnd}. Alebo si vyberte štandardné funkcie s novou {linkStart}štandardnou licenciou{linkEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-renew": {
+    "message": "Obnovte svoju licenciu teraz a ušetrite {boldStart}$reduction${boldEnd}! Táto špeciálna ponuka bude dostupná do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1",
+        "example": "11. septembra"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade": {
+    "message": "Upgradujte teraz zo štandardnej verzie na Pro a ušetrite {boldStart}$reduction${boldEnd}! Táto špeciálna ponuka bude dostupná do {boldStart}$expirydate${boldEnd}.",
+    "placeholders": {
+      "expirydate": {
+        "content": "$1"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
+    }
+  },
+  "special-offer-upgrade-condition": {
+    "message": "Pri upgrade zo štandardnej verzie získate plnú ročnú licenciu od dátumu nákupu bez ohľadu na dátum vypršania vašej predchádzajúcej licencie."
+  },
+  "special-offer-expiry": {
+    "message": "24. januára"
+  },
+  "special-offer-head": {
+    "message": "Pomôžte udržať $addon$ kompatibilný",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{boldStart}Vážený {name}{boldEnd}, podporte $addon$ kúpou licencie. Kód Thunderbirdu sa neustále vyvíja a potrebujeme {boldStart}vašu pomoc{boldEnd}, aby sme mohli držať krok!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "support-preference": {
+    "message": "Toto je preferovaný spôsob podpory pre $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "support-suggestion": {
+    "message": "Aby sme udržali $addonName$ funkčný a aktuálny, zvážte jeho podporu:",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "quickFilters"
+      }
+    }
+  },
+  "testDrive": {
+    "message": "Štandardná licencia vám poskytne niektoré funkcie, ktoré boli predtým označené ako prémiové, a odstráni obmedzenia nefinancovanej verzie. Financuje údržbu pri nasledujúcej verzii Thunderbirdu a prechod na modernú architektúru rozšírení na báze API."
+  },
+  "thanks-for-installing-intro": {
+    "message": "Ďakujeme za inštaláciu $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "thanks-for-updating-intro": {
+    "message": "Ďakujeme za aktualizáciu $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "update.tooltip": {
+    "message": "Kliknite sem raz a prečítajte si, čo je nové v $addonName$.",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "whats-new-btn": {
+    "message": "Čo je nové?"
+  },
+  "whats-new-head": {
+    "message": "Dôležité zmeny"
+  },
+  "whats-new-intro": {
+    "message": "Prečítajte si podrobný zoznam zmien tu (iba v angličtine):"
+  },
+  "whats-new-list": {
+    "message": "{L1} Pridané {boldStart}Slovenské preklady{boldEnd} pre onboarding a licencovanie; preklad UI môže nasledovať v budúcej aktualizácii.{L2}{P1}{boldStart}Zmeny v prístupnosti{boldEnd}{P2} {P1}Aktuálne tvrdo pracujem na tom, aby som QuickFolders spravil plne prístupným pre klávesnice a čítače obrazovky.{P2}{L1} Podpora navigácie klávesnicou pre panel nástrojov QuickFolders a nastavenia QuickFolders. [problém 552], [problém 555]{L2}{L1} Teraz môžete pridávať kartové záložky QuickFolders cez klávesnicu [problém 550]{L2}{L1} Možnosť priority pre záložky priečinkov vo výsledkoch quickJump a quickMove [problém 548]{L2}{L1} Nová možnosť vždy zobraziť nastavenia QuickFolders na karte.{L2} {L1} Klávesová skratka pre quickJump na otvorenie priečinka v novej karte alebo okne. {L2}"
+  }
+}

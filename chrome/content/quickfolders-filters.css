@@ -12,6 +12,7 @@ menuitem.cmd[tagName="qfFilter"] {
 	padding: 0px 2px;
 	margin: 0;
 	min-height: 20px;
+	color-scheme: dark; /* forces bright icon on active tab */
 }
 
 /* current Folder bar: filter is active */

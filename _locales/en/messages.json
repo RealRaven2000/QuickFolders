@@ -6,7 +6,6 @@
     "message": "Select account:"
   },
   "active-version-info": {
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
@@ -29,8 +28,8 @@
     "message": "Remove the 'Customize Icon' command from the folder context menu."
   },
   "aria.a11underReview": {
-    "message" : "We are currently reviewing and improving the accessibility of this page. We are working on making the described functionality more keyboard-friendly and screen reader compatible. Thank you for your patience!."
-  },  
+    "message": "We are currently reviewing and improving the accessibility of this page. We are working on making the described functionality more keyboard-friendly and screen reader compatible. Thank you for your patience!."
+  },
   "aria.colorPicker.background": {
     "message": "color picker for background"
   },
@@ -364,13 +363,19 @@
     "message": "As all work on QuickFolders and free support are funded exclusively by license sales, please consider buying a license or renewing your current one."
   },
   "ongoing-work": {
-    "message": "To keep $addonName$ in sync with the monthly releases of Thunderbird, we have to constantly check for breakages and upload adapted versions. Please help us with this.",
+    "message": "To keep $addonName$ in sync with the monthly releases of Thunderbird, we have to constantly check for breakages and upload adapted versions. Please help us with this, once you have tried out the functionality and you are sure that it improves your productivity as well!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "You can order a license anytime directly from the QuickFolders settings on the License page."
+  },
+  "preview": {
+    "message": "Preview Mode"
   },
   "pricing.section": {
     "message": "To find out your price, please select one of the following options first. This opens a separate browser window where you may complete the purchase in the web shop."
@@ -2063,7 +2068,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Fixed issue with [Enter] key not triggering quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Repaired issues with keyboard shortcuts and completed Czech translations. {L2} {L1} Improved performance of quickMove / quickJump search results while typing for users with many folders. [issue 463]{L2}{L1} Skip unread and Next / Previous sibling folder now follow tree in lexical order [issue 513]{L2}{L1} QuickFolders toolbar is now displayed when settings tab is opened. [issue 524] {L2}{L1} Added full Czech translation for user interface.{L2}{L1} Fixed: QuickFolders blocked native Thunderbird keystrokes that contain Option (metaKey) on Mac systems. {L2} {L1} Tab-Specific Properties now work again in Thunderbird beta 134. [issue 518]{L2} {L1} Folder names containing single quotes now do not cause errors during navigation anymore.{L2}{L1} QuickFolders now supports creating a subfolder names from quickMove that contain spaces [issue 512].{L2} "
+    "message": "{P1}{boldStart}Accessibility Changes{boldEnd}{P2} {P1}I am currently working hard to make QuickFolders fully accessible to keyboard and screen readers.{P2}{L1} Support keyboard navigation of the QuickFolders toolbar and QuickFolders settings. [issue 552], [issue 555]{L2}{L1} You can now add QuickFolders Tabs through keyboard [issue 550]{L2}{L1} Priority option for bookmarked folders in quickJump and quickMove results [issue 548]{L2}{L1} New option to always display QuickFolders Options in a tab.{L2} {L1} quickJump accelerator key to open Folder in a new tab or window. {L2} {L1} Added Greek and Slovak translations for onboarding and licensing; User interface translation may follow in a future update.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -1522,7 +1522,7 @@ allowUndo = true)`
 
 	openURLInTab: async function (URL) {
 		try {
-			URL = SmartTemplate4.Util.makeUriPremium(URL);
+			URL = QuickFolders.Util.makeUriPremium(URL);
 
 			// use API. Look Ma, no tabmail!
 			// getBaseURI to check if we already opened the page and need to 

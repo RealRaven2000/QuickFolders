@@ -107,15 +107,9 @@ QuickFolders.FilterWorker = {
 		QuickFolders.FilterWorker.FilterMode = active;
 		
     /* Configure Optional buttons on Toolbar */
-		if (QI.CogWheelPopupButton) {
-			QI.CogWheelPopupButton.collapsed = active || !prefs.isShowToolIcon;
-		}
-    if (QI.ReadingListButton) {
-      QI.ReadingListButton.collapsed = !prefs.isShowReadingList;
-		}
-		if (QI.FilterToggleButton){
-			QI.FilterToggleButton.collapsed = !active;
-		}
+		QI.showElement(QI.CogWheelPopupButton, prefs.isShowToolIcon && !active);
+		QI.showElement(QI.ReadingListButton, prefs.isShowReadingList);
+		QI.showElement(QI.FilterToggleButton, active);
 		if (QI.CategoryBox) {
 			QI.CategoryBox.setAttribute('mode', active ? 'filter' : '');
 		}

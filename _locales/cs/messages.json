@@ -360,13 +360,16 @@
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat QuickFolders v budoucnu."
   },
   "ongoing-work": {
-    "message": "Abychom udrželi $addonName$ v souladu s měsíčními verzemi Thunderbirdu, musíme neustále kontrolovat problémy a nahrávat upravené verze. Prosíme, pomozte nám s tím.",
+    "message": "Aby byl $addonName$ v souladu s měsíčními verzemi Thunderbirdu, musíme neustále kontrolovat problémy a nahrávat upravené verze. Pomozte nám s tím, až si funkčnost vyzkoušíte a budete si jisti, že zvyšuje vaši produktivitu!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Licenci si můžete kdykoli objednat přímo v nastavení QuickFolders na stránce Licence."
   },
   "pricing.section": {
     "message": "Chcete-li zjistit svou cenu, vyberte nejprve jednu z následujících možností. Otevře se samostatné okno prohlížeče, kde můžete dokončit nákup v internetovém obchodě."
@@ -2045,7 +2048,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Opraven problém, kdy klávesa [Enter] nespustila quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Opraveny problémy s klávesovými zkratkami a dokončeny české překlady. {L2} {L1} Byl přidán úplný český překlad pro uživatelské rozhraní.{L2}{L1} Zlepšený výkon výsledků vyhledávání quickMove / quickJump při psaní pro uživatele s mnoha složkami. [issue 463]{L2}{L1} Nepřečtené jsou nyní přeskočeny a Následující / Předchozí složka sourozence nyní sleduje strom v lexikografickém pořadí [issue 513]{L2}{L1} Nástrojová lišta QuickFolders je nyní zobrazena při otevření karty nastavení. [issue 524]{L2}{L1} Opraveno: QuickFolders blokoval nativní klávesové zkratky Thunderbird, které obsahují klávesu Option (metaKey) na systémech Mac. {L2}{L1} Vlastnosti specifické pro kartu nyní opět fungují v beta verzi Thunderbird 134. [issue 518]{L2}{L1} Opraveno: Názvy složek obsahující jednoduché uvozovky již nevyvolávají chyby při navigaci.{L2}{L1} QuickFolders nyní podporuje vytváření podsložek, které obsahují mezery v názvu pomocí quickMove [issue 512].{L2}"
+    "message": "{P1}{boldStart}Změny v přístupnosti{boldEnd}{P2} {P1}Aktuálně tvrdě pracuji na tom, aby QuickFolders bylo plně přístupné pro klávesnici a čtečky obrazovky.{P2}{L1} Podpora klávesnicového navigování po panelu nástrojů QuickFolders a nastaveních QuickFolders. [issue 552], [issue 555]{L2}{L1} Nyní můžete přidávat QuickFolders karty pomocí klávesnice [issue 550]{L2}{L1} Možnost prioritní složky pro záložky v výsledcích quickJump a quickMove [issue 548]{L2}{L1} Nová možnost vždy zobrazit možnosti QuickFolders v záložce.{L2} {L1} Klávesová zkratka pro quickJump pro otevření složky v nové záložce nebo okně. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

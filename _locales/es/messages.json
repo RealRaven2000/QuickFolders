@@ -356,13 +356,16 @@
     "message": "Dado que todo el trabajo en QuickFolders y el soporte gratuito están financiados exclusivamente por la venta de licencias, por favor considere comprar una licencia o renovar la actual."
   },
   "ongoing-work": {
-    "message": "Para mantener $addonName$ sincronizado con los lanzamientos mensuales de Thunderbird, debemos revisar constantemente los errores y subir versiones adaptadas. Por favor, ayúdanos con esto.",
+    "message": "Para mantener $addonName$ sincronizado con las versiones mensuales de Thunderbird, debemos revisar constantemente posibles fallos y subir versiones adaptadas. ¡Ayúdanos con esto una vez que hayas probado la funcionalidad y estés seguro de que mejora tu productividad!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Puedes adquirir una licencia en cualquier momento directamente desde la configuración de QuickFolders en la página de licencia."
   },
   "pricing.section": {
     "message": "Para conocer su precio, seleccione primero una de las siguientes opciones. Esto abre una ventana separada del navegador donde puede completar la compra en la tienda web."
@@ -2010,7 +2013,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Solucionado problema con la tecla [Enter] que no activaba quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Reparados problemas con los atajos de teclado y completadas las traducciones al checo. {L2} {L1} Mejorada el rendimiento de los resultados de búsqueda de quickMove / quickJump mientras escribes para usuarios con muchas carpetas. [issue 463]{L2}{L1} Se omiten los no leídos y la carpeta siguiente / anterior de hermanos ahora sigue el árbol en orden lexical [issue 513]{L2}{L1} La barra de herramientas de QuickFolders ahora se muestra cuando se abre la pestaña de configuración. [issue 524]{L2}{L1} Se añadió la traducción completa al checo para la interfaz de usuario.{L2}{L1} Arreglado: QuickFolders bloqueaba las teclas nativas de Thunderbird que contienen la tecla Option (metaKey) en sistemas Mac. {L2}{L1} Las propiedades específicas de la pestaña ahora vuelven a funcionar en la beta de Thunderbird 134. [issue 518]{L2}{L1} Arreglado: Los nombres de carpetas que contienen comillas simples ya no causan errores en la navegación.{L2}{L1} QuickFolders ahora soporta la creación de subcarpetas con espacios en el nombre a través de quickMove [issue 512].{L2}"
+    "message": "{P1}{boldStart}Cambios de accesibilidad{boldEnd}{P2} {P1}Actualmente estoy trabajando duro para hacer que QuickFolders sea completamente accesible para teclados y lectores de pantalla.{P2}{L1} Soporte para la navegación con teclado en la barra de herramientas de QuickFolders y en la configuración de QuickFolders. [issue 552], [issue 555]{L2}{L1} Ahora puedes añadir pestañas de QuickFolders mediante el teclado [issue 550]{L2}{L1} Opción de prioridad para las carpetas marcadas en los resultados de quickJump y quickMove [issue 548]{L2}{L1} Nueva opción para mostrar siempre las opciones de QuickFolders en una pestaña.{L2} {L1} Tecla de acceso rápido quickJump para abrir una carpeta en una nueva pestaña o ventana. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

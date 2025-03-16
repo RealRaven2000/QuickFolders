@@ -360,13 +360,16 @@
     "message": "由于QuickFolders的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
   },
   "ongoing-work": {
-    "message": "为了使 $addonName$ 与 Thunderbird 的每月发布保持同步，我们必须不断检查问题并上传适配版本。请帮助我们完成这项工作。",
+    "message": "为了使$addonName$与Thunderbird的每月发布保持同步，我们必须不断检查是否存在问题，并上传调整后的版本。在您尝试过该功能并确信它可以提高您的工作效率后，请支持我们！",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "您可以随时直接在QuickFolders的设置中的许可证页面订购许可证。"
   },
   "pricing.section": {
     "message": "要了解您的价格，请先选择以下选项之一。 这将打开一个单独的浏览器窗口，您可以在其中完成网上商店的购买。"
@@ -1945,7 +1948,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: 修复了[Enter]键未能触发quickJump / quickMove的问题。 [issue 532]{L2} {L1} 6.9.1: 修复了键盘快捷键的问题，并完成了捷克语翻译。 {L2} {L1} 提高了具有多个文件夹的用户在输入时的 quickMove / quickJump 搜索结果性能。[issue 463]{L2}{L1} 跳过未读项和下一步 / 上一步兄弟文件夹现在按字典顺序跟随树形结构。[issue 513]{L2}{L1} 现在打开设置选项卡时，QuickFolders 工具栏会显示。[issue 524] {L2}{L1} 添加了完整的捷克语用户界面翻译。{L2}{L1} 修复：QuickFolders 阻止了包含 Option (metaKey) 的本地 Thunderbird 快捷键，在 Mac 系统上发生冲突。 {L2}{L1} 选项卡特定属性在 Thunderbird beta 134 中恢复正常工作。[issue 518]{L2}{L1} 现在，包含单引号的文件夹名称不再导致导航错误。 {L2}{L1} QuickFolders 现在支持从 quickMove 创建包含空格的子文件夹名称。[issue 512]{L2}"
+    "message": "{P1}{boldStart}可访问性更改{boldEnd}{P2} {P1}我目前正在努力使QuickFolders完全支持键盘和屏幕阅读器.{P2}{L1} 支持键盘导航QuickFolders工具栏和QuickFolders设置。 [issue 552], [issue 555]{L2}{L1} 现在可以通过键盘添加QuickFolders标签页 [issue 550]{L2}{L1} 快捷方式优先选项，适用于quickJump和quickMove的书签文件夹 [issue 548]{L2}{L1} 新选项，始终在标签中显示QuickFolders选项.{L2} {L1} quickJump快捷键打开文件夹于新标签或窗口中。 {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -356,13 +356,16 @@
     "message": "Aangezien al het werk aan QuickFolders en de gratis ondersteuning uitsluitend wordt gefinancierd door licentieverkopen, overweeg dan een licentie aan te schaffen of uw huidige licentie te verlengen."
   },
   "ongoing-work": {
-    "message": "Om $addonName$ in sync te houden met de maandelijkse releases van Thunderbird, moeten we voortdurend controleren op problemen en aangepaste versies uploaden. Help ons hierbij.",
+    "message": "Om $addonName$ up-to-date te houden met de maandelijkse releases van Thunderbird, moeten we voortdurend controleren op problemen en aangepaste versies uploaden. Help ons hierbij, zodra je de functionaliteit hebt geprobeerd en hebt gemerkt dat het je productiviteit verbetert!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Je kunt op elk moment een licentie bestellen via de instellingen van QuickFolders op de Licentie-pagina."
   },
   "pricing.section": {
     "message": "Selecteer eerst een van de volgende opties om uw prijs te weten te komen. Hierdoor wordt een apart browservenster geopend waar u de aankoop in de webshop kunt afronden."
@@ -2007,7 +2010,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Probleem opgelost waarbij de [Enter]-toets quickJump / quickMove niet activeerde. [issue 532]{L2} {L1} 6.9.1: Problemen met sneltoetsen opgelost en Tsjechische vertalingen voltooid. {L2} {L1} Verbeterde prestaties van quickMove / quickJump-zoekresultaten tijdens het typen voor gebruikers met veel mappen. [issue 463]{L2}{L1} Ongelezen items worden nu overgeslagen en de volgende/vorige sibling-map volgt nu de boomstructuur in lexicale volgorde. [issue 513]{L2}{L1} De werkbalk van QuickFolders wordt nu weergegeven bij het openen van het instellingen-tabblad. [issue 524]{L2}{L1} Volledige Tsjechische vertaling toegevoegd aan de gebruikersinterface. {L2}{L1} Opgelost: QuickFolders blokkeerde native Thunderbird-toetsen die de Option-toets (metaKey) bevatten op Mac-systemen. {L2}{L1} Tabblad-specifieke eigenschappen werken nu opnieuw in Thunderbird beta 134. [issue 518]{L2}{L1} Mapnamen met enkele aanhalingstekens veroorzaken geen fouten meer bij het navigeren. {L2}{L1} QuickFolders ondersteunt nu het maken van submappen via quickMove met spaties in de naam. [issue 512]{L2}"
+    "message": "{P1}{boldStart}Toegankelijkheidswijzigingen{boldEnd}{P2} {P1}Ik werk momenteel hard om QuickFolders volledig toegankelijk te maken voor toetsenborden en schermlezers.{P2}{L1} Ondersteuning voor toetsenbordnavigatie op de QuickFolders werkbalk en QuickFolders instellingen. [issue 552], [issue 555]{L2}{L1} Je kunt nu QuickFolders-tabbladen via het toetsenbord toevoegen [issue 550]{L2}{L1} Prioriteitsoptie voor bladwijzermappen in de quickJump- en quickMove-resultaten [issue 548]{L2}{L1} Nieuwe optie om de QuickFolders-opties altijd in een tabblad weer te geven.{L2} {L1} quickJump sneltoets om een map in een nieuw tabblad of nieuw venster te openen. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

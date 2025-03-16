@@ -305,13 +305,16 @@
     "message": "Vì tất cả công việc trên QuickFolders và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ việc bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
   },
   "ongoing-work": {
-    "message": "Để giữ $addonName$ đồng bộ với các bản phát hành hàng tháng của Thunderbird, chúng tôi phải liên tục kiểm tra lỗi và tải lên các phiên bản được điều chỉnh. Vui lòng giúp chúng tôi với việc này.",
+    "message": "Để giữ cho $addonName$ luôn đồng bộ với các bản phát hành hàng tháng của Thunderbird, chúng tôi phải liên tục kiểm tra các sự cố và tải lên các phiên bản đã điều chỉnh. Vui lòng hỗ trợ chúng tôi sau khi bạn đã thử nghiệm các chức năng và chắc chắn rằng nó cải thiện năng suất của bạn!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Bạn có thể đặt mua giấy phép bất kỳ lúc nào trực tiếp từ cài đặt QuickFolders trên trang Giấy phép."
   },
   "purchase-a-license": {
     "message": "Mua giấy phép."
@@ -1686,7 +1689,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Đã khắc phục sự cố khi phím [Enter] không kích hoạt quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Đã sửa các vấn đề với phím tắt và hoàn thành bản dịch tiếng Séc. {L2} {L1} Cải thiện hiệu suất kết quả tìm kiếm quickMove / quickJump khi đang gõ cho người dùng có nhiều thư mục. [issue 463]{L2}{L1} Bỏ qua thư mục chưa đọc và Next / Previous thư mục anh em giờ theo thứ tự từ điển. [issue 513]{L2}{L1} Thanh công cụ QuickFolders giờ được hiển thị khi tab cài đặt được mở. [issue 524] {L2}{L1} Đã thêm bản dịch đầy đủ tiếng Séc cho giao diện người dùng.{L2}{L1} Đã sửa lỗi: QuickFolders đã chặn các phím tắt mặc định của Thunderbird chứa Option (metaKey) trên hệ thống Mac. {L2}{L1} Các thuộc tính riêng biệt cho tab giờ hoạt động trở lại trong Thunderbird beta 134. [issue 518]{L2}{L1} Tên thư mục chứa dấu nháy đơn giờ không còn gây lỗi khi điều hướng nữa. {L2}{L1} QuickFolders hiện hỗ trợ tạo các thư mục con có tên chứa dấu cách từ quickMove [issue 512].{L2}"
+    "message": "{P1}{boldStart}Thay đổi về khả năng tiếp cận{boldEnd}{P2} {P1}Hiện tôi đang làm việc chăm chỉ để làm cho QuickFolders hoàn toàn khả dụng cho bàn phím và trình đọc màn hình.{P2}{L1} Hỗ trợ điều hướng bằng bàn phím trên thanh công cụ QuickFolders và cài đặt QuickFolders. [issue 552], [issue 555]{L2}{L1} Bạn bây giờ có thể thêm Tab QuickFolders thông qua bàn phím [issue 550]{L2}{L1} Tùy chọn ưu tiên cho các thư mục đã đánh dấu trong kết quả quickJump và quickMove [issue 548]{L2}{L1} Tùy chọn mới để luôn hiển thị Tùy chọn QuickFolders trong một tab.{L2} {L1} phím tắt quickJump để mở Thư mục trong một tab hoặc cửa sổ mới. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -314,13 +314,16 @@
     "message": "Pošto se sav rad na QuickFolders-u i besplatan support finansiraju isključivo kroz prodaju licenci, razmislite o kupovini licence ili obnavljanju trenutne."
   },
   "ongoing-work": {
-    "message": "Да би $addonName$ био усклађен са месечним издањима Thunderbird-а, морамо стално проверавати проблеме и отпремати прилагођене верзије. Молимо вас да нам помогнете у томе.",
+    "message": "Да би $addonName$ био усклађен са месечним издањима Thunderbird-а, морамо стално проверавати могуће проблеме и отпремати прилагођене верзије. Помозите нам у томе након што испробате функционалност и уверите се да побољшава вашу продуктивност!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Лиценцу можете наручити у било ком тренутку директно у подешавањима QuickFolders-а на страници Лиценца."
   },
   "pricing.section": {
     "message": "Да бисте сазнали своју цену, прво изаберите једну од следећих опција. Ово отвара посебан прозор претраживача у којем можете да завршите куповину у веб продавници."
@@ -1831,7 +1834,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Исправљен проблем са тастером [Enter] који није покретао quickJump / quickMove. [issue 532]{L2} 6.9.1: Решени проблеми са пречицама на тастатури и завршени преводи на чешки. {L2} {L1} Poboljšana brzina pretrage rezultata quickMove / quickJump prilikom kucanja za korisnike sa mnogo fascikli. [issue 463]{L2}{L1} Preskočeni nepročitani i dugme Sledeća / Prethodna sestrinska fascikla sada prate stablo u leksikalnom redosledu. [issue 513]{L2}{L1} Traka sa alatkama QuickFolders se sada prikazuje kada je otvorena kartica sa podešavanjima. [issue 524] {L2}{L1} Dodat je kompletan češki prevod za korisnički interfejs.{L2}{L1} Ispravljeno: QuickFolders je blokirao osnovne prečice tastature Thunderbird koje sadrže Option (metaKey) na Mac sistemima. {L2}{L1} Svojstva specifična za karticu sada ponovo funkcionišu u Thunderbird beta 134. [issue 518]{L2}{L1} Imena fascikli koja sadrže jednostruke navodnike sada više ne izazivaju greške prilikom navigacije. {L2}{L1} QuickFolders sada podržava kreiranje podmapa sa imenima koja sadrže razmake iz quickMove [issue 512].{L2}"
+    "message": "{P1}{boldStart}Промене приступачности{boldEnd}{P2} {P1}Тренутно напорно радим на томе да QuickFolders буде потпуно приступачан за тастатуре и читаоце екрана.{P2}{L1} Подршка за навигацију тастатуром по алатној траци QuickFolders и подешавањима QuickFolders. [issue 552], [issue 555]{L2}{L1} Сада можете додавати QuickFolders табове помоћу тастатуре [issue 550]{L2}{L1} Опција приоритета за означене фасцикле у резултатима quickJump и quickMove [issue 548]{L2}{L1} Нова опција да увек приказујете опције QuickFolders у табу.{L2} {L1} тастатурска пречица за quickJump за отварање фасцикле у новом табу или прозору. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

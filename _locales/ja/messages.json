@@ -344,13 +344,16 @@
     "message": "QuickFoldersのすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
   },
   "ongoing-work": {
-    "message": "Thunderbirdの月次リリースと同期させるために、$addonName$ の不具合を常にチェックし、適応したバージョンをアップロードする必要があります。どうかご協力ください。",
+    "message": "Thunderbirdの月次リリースに$addonName$を対応させるため、常に問題をチェックし、適応したバージョンをアップロードする必要があります。この機能を試して、生産性の向上を実感した後に、ご支援をお願いいたします！",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "QuickFoldersの設定内のライセンスページから、いつでもライセンスを購入できます。"
   },
   "pricing.section": {
     "message": "価格を確認するには、まず次のオプションのいずれかを選択してください。 これにより、別のブラウザ ウィンドウが開き、ウェブ ショップでの購入を完了することができます。"
@@ -1899,7 +1902,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: [Enter]キーがquickJump / quickMoveを起動しない問題を修正しました。 [issue 532]{L2} {L1} 6.9.1: キーボードショートカットの問題を修正し、チェコ語の翻訳を完了しました。 {L2}  {L1} 多くのフォルダを持つユーザー向けに、typing中のquickMove / quickJump検索結果のパフォーマンスを改善しました。 [issue 463]{L2}{L1} 未読はスキップされ、次/前の兄弟フォルダがツリー内で辞書順に従うようになりました [issue 513]{L2}{L1} 設定タブを開いた時にQuickFoldersツールバーが表示されるようになりました。 [issue 524]{L2}{L1} ユーザーインターフェースの完全なチェコ語翻訳が追加されました。{L2}{L1} 修正: QuickFoldersは、MacシステムのOption（metaKey）を含むThunderbirdのネイティブキーストロークをブロックしていました。{L2}{L1} タブ固有のプロパティがThunderbird Beta 134で再び機能するようになりました。 [issue 518]{L2}{L1} 修正: シングルクォートを含むフォルダ名は、ナビゲーション中にエラーを引き起こさなくなりました。{L2}{L1} QuickFoldersは、quickMoveからスペースを含む名前でサブフォルダの作成をサポートするようになりました [issue 512]。{L2}"
+    "message": "{P1}{boldStart}アクセシビリティの変更{boldEnd}{P2} {P1}現在、QuickFoldersをキーボードとスクリーンリーダーに完全に対応させるために一生懸命取り組んでいます。{P2}{L1} QuickFoldersツールバーとQuickFolders設定でのキーボードナビゲーションをサポート。 [issue 552], [issue 555]{L2}{L1} キーボードでQuickFoldersタブを追加できるようになりました [issue 550]{L2}{L1} quickJumpおよびquickMoveの結果でブックマークされたフォルダーの優先順位オプション [issue 548]{L2}{L1} QuickFoldersのオプションを常にタブに表示する新しいオプション.{L2} {L1} 新しいタブまたはウィンドウでフォルダーを開くためのquickJumpアクセラレータキー。 {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

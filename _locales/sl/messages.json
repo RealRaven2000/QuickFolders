@@ -344,7 +344,7 @@
     "message": "Ker je vsa dela na QuickFolders in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
   },
   "ongoing-work": {
-    "message": "Da bi $addonName$ ostal usklajen z mesečnimi izdajami Thunderbirda, moramo stalno preverjati napake in nalagati prilagojene različice. Prosim, pomagajte nam pri tem.",
+    "message": "Da bo $addonName$ ostal usklajen z mesečnimi izdajami Thunderbirda, moramo nenehno preverjati morebitne napake in nalagati prilagojene različice. Prosimo, pomagajte nam pri tem, ko preizkusite funkcionalnost in ugotovite, da izboljšuje vašo produktivnost!",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -352,8 +352,8 @@
       }
     }
   },
-  "pricing.section": {
-    "message": "Če želite izvedeti svojo ceno, najprej izberite eno od naslednjih možnosti. S tem se odpre ločeno okno brskalnika, kjer lahko zaključite nakup v spletni trgovini."
+  "ongoing-work.order": {
+    "message": "Licenco lahko kadar koli naročite neposredno v nastavitvah QuickFolders na strani z licenco."
   },
   "pricing.section.hint": {
     "message": "Opomba: Cena se razlikuje glede na model licence, državo, stopnjo DDV, trenutne popuste ali že kupljene licence."
@@ -1956,20 +1956,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Odpravljen problem, ko tipka [Enter] ni aktivirala quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Popravljene težave s tipkovnimi bližnjicami in dokončane prevode v češčino. {L2} {L1} Izboljšana hitrost iskanja rezultatov quickMove / quickJump med tipkanjem za uporabnike z mnogimi mapami. [issue 463]{L2}{L1} Preskočene neprebrane in gumb Naslednja / Prejšnja sestrska mapa sedaj sledijo drevesu v leksikalnem vrstnem redu. [issue 513]{L2}{L1} Orodna vrstica QuickFolders se zdaj prikaže, ko je odprta zavihka z nastavitvami. [issue 524] {L2}{L1} Dodan je popoln češki prevod za uporabniški vmesnik.{L2}{L1} Popravljeno: QuickFolders je blokiral privzete bližnjične tipke Thunderbird, ki vsebujejo Option (metaKey) na Mac sistemih. {L2}{L1} Lastnosti specifične za zavihek zdaj znova delujejo v Thunderbird beta 134. [issue 518]{L2}{L1} Imena map, ki vsebujejo enojne narekovaje, zdaj ne povzročajo napak pri navigaciji. {L2}{L1} QuickFolders zdaj podpira ustvarjanje podmap z imeni, ki vsebujejo presledke, iz quickMove [issue 512].{L2}"
-  },
-  "window-title": {
-    "description": "page title. first placeholder will be replaced with Add-on name",
-    "message": "Dobrodošli v $addonName$",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "windowTitle": {
-    "message": "Napredne lastnosti"
+    "message": "{L1} Pridali sa {boldStart}Slovenské preklady{boldEnd} pre úvod a licenciu. Preklad používateľského rozhrania môže byť pridaný v budúcej aktualizácii.{L2}{P1}{boldStart}Spremembe dostopnosti{boldEnd}{P2} {P1}Trenutno trdo delam, da bi QuickFolders popolnoma podprl tipkovniški dostop in bralnike zaslona.{P2}{L1} Podpora za tipkovniško navigacijo po orodni vrstici QuickFolders in nastavitvah QuickFolders. [issue 552], [issue 555]{L2}{L1} Sedaj lahko dodate QuickFolders zavihek preko tipkovnice [issue 550]{L2}{L1} Možnost prednosti za zaznamkovane mape v rezultatih quickJump in quickMove [issue 548]{L2}{L1} Nova možnost, da vedno prikažete možnosti QuickFolders v zavihku.{L2} {L1} tipkovniška bližnjica za quickJump za odpiranje mape v novem zavihku ali oknu. {L2}"
   },
   "yearlyLicense.premiumFeatures": {
     "message": "QuickFolders Pro vam omogoča poln neomejen dostop do značilnosti Premium."

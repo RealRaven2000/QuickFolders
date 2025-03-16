@@ -353,13 +353,16 @@
     "message": "Ponieważ cała praca nad QuickFolders i darmowe wsparcie są finansowane wyłącznie ze sprzedaży licencji, proszę rozważyć zakup licencji lub przedłużenie obecnej."
   },
   "ongoing-work": {
-    "message": "Aby utrzymać $addonName$ w zgodzie z comiesięcznymi wydaniami Thunderbirda, musimy stale sprawdzać błędy i przesyłać dostosowane wersje. Prosimy, pomóż nam w tym.",
+    "message": "Aby utrzymać $addonName$ w zgodności z comiesięcznymi wydaniami Thunderbirda, musimy stale sprawdzać błędy i publikować dostosowane wersje. Pomóż nam w tym, gdy już wypróbujesz funkcjonalność i upewnisz się, że zwiększa Twoją produktywność!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Licencję możesz zamówić w dowolnym momencie bezpośrednio w ustawieniach QuickFolders na stronie Licencja."
   },
   "pricing.section": {
     "message": "Aby poznać swoją cenę, najpierw wybierz jedną z poniższych opcji. Spowoduje to otwarcie osobnego okna przeglądarki, w którym można dokonać zakupu w sklepie internetowym."
@@ -2004,7 +2007,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Naprawiono problem z klawiszem [Enter], który nie aktywował quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Naprawiono problemy ze skrótami klawiaturowymi i ukończono tłumaczenia na język czeski. {L2} {L1} Poprawiona wydajność wyników wyszukiwania quickMove / quickJump podczas pisania dla użytkowników z wieloma folderami. [issue 463]{L2}{L1} Nieprzeczytane wiadomości są teraz pomijane, a następna / poprzednia siostrzana foldera teraz podąża za porządkiem leksykalnym w drzewie [issue 513]{L2}{L1} Pasek narzędzi QuickFolders jest teraz wyświetlany, gdy zakładka ustawień jest otwarta. [issue 524]{L2}{L1} Dodano pełne tłumaczenie interfejsu użytkownika na język czeski.{L2}{L1} Naprawiono: QuickFolders blokował natywne skróty klawiaturowe Thunderbirda, które zawierają klawisz Opcja (metaKey) w systemach Mac. {L2}{L1} Właściwości specyficzne dla zakładki działają teraz ponownie w wersji beta Thunderbirda 134. [issue 518]{L2}{L1} Naprawiono: Nazwy folderów zawierające pojedyncze cudzysłowy nie powodują już błędów podczas nawigacji.{L2}{L1} QuickFolders teraz obsługuje tworzenie subfolderów z nazwami zawierającymi spacje za pomocą quickMove [issue 512].{L2}"
+    "message": "{P1}{boldStart}Zmiany w dostępności{boldEnd}{P2} {P1}Obecnie pracuję nad tym, aby QuickFolders było w pełni dostępne za pomocą klawiatury i czytników ekranów.{P2}{L1} Obsługa nawigacji za pomocą klawiatury na pasku narzędzi QuickFolders oraz w ustawieniach QuickFolders. [issue 552], [issue 555]{L2}{L1} Teraz możesz dodawać karty QuickFolders za pomocą klawiatury [issue 550]{L2}{L1} Opcja priorytetu dla zakładek w wynikach quickJump i quickMove [issue 548]{L2}{L1} Nowa opcja, aby zawsze wyświetlać opcje QuickFolders na karcie.{L2} {L1} Skrót klawiszowy quickJump do otwierania folderu w nowej karcie lub oknie. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

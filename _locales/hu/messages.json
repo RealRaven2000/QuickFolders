@@ -324,13 +324,16 @@
     "message": "Mivel a QuickFolders összes munkája és az ingyenes támogatás kizárólag a licenceladásokból finanszírozódik, kérjük, fontolja meg licenc vásárlását vagy a jelenlegi licenc megújítását."
   },
   "ongoing-work": {
-    "message": "Ahhoz, hogy a $addonName$ lépést tartson a Thunderbird havi kiadásaival, folyamatosan ellenőriznünk kell a hibákat és feltölteni a módosított verziókat. Kérjük, segíts ebben.",
+    "message": "Ahhoz, hogy a $addonName$ mindig naprakész legyen a Thunderbird havi kiadásaival, folyamatosan ellenőriznünk kell az esetleges hibákat, és frissített verziókat kell feltöltenünk. Kérjük, segíts ebben, miután kipróbáltad a funkciókat, és megbizonyosodtál róla, hogy javítják a termelékenységedet!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Bármikor vásárolhatsz licencet közvetlenül a QuickFolders beállításoknál, a Licenc oldalon."
   },
   "pricing.section": {
     "message": "Az ár megtekintéséhez kérjük, először válassza ki az alábbi lehetőségek egyikét. Ezzel megnyílik egy külön böngésző ablak, ahol a webáruházban vásárolhat."
@@ -1759,7 +1762,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Javítva: a [Enter] billentyű nem aktiválta a quickJump / quickMove funkciókat. [issue 532]{L2} {L1} 6.9.1: Javítva a billentyűparancsokkal kapcsolatos problémák, és befejezve a cseh fordításokat. {L2} {L1} A quickMove / quickJump keresési eredmények teljesítményének javítása gépelés közben azok számára, akik sok mappát használnak. [issue 463]{L2}{L1} A nem olvasott elemek most már kihagyásra kerülnek, és a következő / előző testvérmappa mostantól a fa lexikális sorrendjét követi [issue 513]{L2}{L1} A QuickFolders eszköztár mostantól megjelenik, amikor a beállítások fülre kattintunk. [issue 524]{L2}{L1} Teljes cseh fordítás került hozzáadásra a felhasználói felülethez.{L2}{L1} Javítva: A QuickFolders blokkolta a Thunderbird natív billentyűparancsokat, amelyek tartalmazzák az Option (metaKey) billentyűt Mac rendszereken. {L2}{L1} A lap-specifikus beállítások most ismét működnek a Thunderbird beta 134-es verziójában. [issue 518]{L2}{L1} Javítva: Az egyszeres idézőjeleket tartalmazó mappanevek már nem okoznak hibákat a navigáció során.{L2}{L1} A QuickFolders mostantól támogatja a quickMove segítségével létrehozott almappák nevét, amelyek szóközöket tartalmaznak [issue 512].{L2}"
+    "message": "{P1}{boldStart}Hozzáférhetőségi változások{boldEnd}{P2} {P1}Jelenleg azon dolgozom, hogy a QuickFolders teljes mértékben hozzáférhető legyen billentyűzetek és képernyőolvasók számára.{P2}{L1} Billentyűzetes navigáció támogatása a QuickFolders eszköztáron és a QuickFolders beállításaiban. [issue 552], [issue 555]{L2}{L1} Most már billentyűzettel is hozzáadhatsz QuickFolders lapokat [issue 550]{L2}{L1} Prioritás opció a könyvjelzőként mentett mappák számára quickJump és quickMove eredményekben [issue 548]{L2}{L1} Új opció, hogy mindig egy fülön jelenjenek meg a QuickFolders beállításai.{L2} {L1} quickJump gyorsbillentyű a mappa új fülön vagy ablakban való megnyitásához. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

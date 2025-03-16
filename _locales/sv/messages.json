@@ -357,13 +357,16 @@
     "message": "Eftersom allt arbete med QuickFolders och gratis support finansieras uteslutande genom licensförsäljning, överväg att köpa en licens eller förnya din nuvarande."
   },
   "ongoing-work": {
-    "message": "För att hålla $addonName$ i synk med Thunderbirds månatliga utgåvor måste vi ständigt kontrollera fel och ladda upp anpassade versioner. Hjälp oss gärna med detta.",
+    "message": "För att hålla $addonName$ synkroniserad med de månatliga utgåvorna av Thunderbird måste vi ständigt kontrollera efter förändringar och ladda upp anpassade versioner. Hjälp oss med detta när du har testat funktionerna och är säker på att de förbättrar din produktivitet!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Du kan beställa en licens när som helst direkt från inställningarna för QuickFolders på licenssidan."
   },
   "pricing.section": {
     "message": "För att ta reda på ditt pris, välj ett av följande alternativ först. Detta öppnar ett separat webbläsarfönster där du kan genomföra köpet i webbshoppen."
@@ -2023,7 +2026,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Åtgärdade problem där [Enter]-tangenten inte aktiverade quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Åtgärdade problem med tangentbordsgenvägar och färdigställde tjeckiska översättningar. {L2} {L1} Förbättrad prestanda för quickMove / quickJump sökresultat medan du skriver för användare med många mappar. [issue 463]{L2}{L1} Hoppa över olästa och Nästa / Föregående systermapp följer nu trädet i lexikografisk ordning. [issue 513]{L2}{L1} QuickFolders verktygsfält visas nu när inställningsfliken öppnas. [issue 524] {L2}{L1} Fullständig tjeckisk översättning för användargränssnittet tillagd.{L2}{L1} Fixat: QuickFolders blockerade inbyggda snabbkommandon i Thunderbird som innehåller Option (metaKey) på Mac-system. {L2}{L1} Flikspecifika egenskaper fungerar nu igen i Thunderbird beta 134. [issue 518]{L2}{L1} Mappnamn som innehåller enkla citationstecken orsakar nu inte längre några fel vid navigering. {L2}{L1} QuickFolders stöder nu att skapa undermappar med namn som innehåller mellanslag från quickMove [issue 512].{L2}"
+    "message": "{P1}{boldStart}Tillgänglighetsändringar{boldEnd}{P2} {P1}Jag arbetar för närvarande hårt för att göra QuickFolders helt tillgängligt för tangentbord och skärmläsare.{P2}{L1} Stöd för tangentbordsnavigering på QuickFolders-verktygsfältet och QuickFolders-inställningar. [issue 552], [issue 555]{L2}{L1} Nu kan du lägga till QuickFolders-flikar via tangentbordet [issue 550]{L2}{L1} Prioriteringsalternativ för bokmärkta mappar i quickJump och quickMove resultat [issue 548]{L2}{L1} Nytt alternativ för att alltid visa QuickFolders alternativ i en flik.{L2} {L1} quickJump genvägstangent för att öppna mapp i en ny flik eller fönster. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

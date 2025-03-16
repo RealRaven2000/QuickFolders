@@ -29,8 +29,8 @@
     "message": "Rimuovi il comando 'Personalizza icona' dal menu contestuale della cartella."
   },
   "aria.a11underReview": {
-    "message" : "Stiamo attualmente esaminando e migliorando l'accessibilità di questa pagina. Stiamo lavorando per rendere la funzionalità descritta più compatibile con la tastiera e i lettori di schermo. Grazie per la vostra pazienza!"
-  },  
+    "message": "Stiamo attualmente esaminando e migliorando l'accessibilità di questa pagina. Stiamo lavorando per rendere la funzionalità descritta più compatibile con la tastiera e i lettori di schermo. Grazie per la vostra pazienza!"
+  },
   "aria.colorPicker.background": {
     "message": "selettore colore per lo sfondo"
   },
@@ -364,13 +364,16 @@
     "message": "Poiché tutto il lavoro su QuickFolders e il supporto gratuito sono finanziati esclusivamente dalle vendite di licenze, si prega di considerare l'acquisto di una licenza o il rinnovo della licenza attuale."
   },
   "ongoing-work": {
-    "message": "Per mantenere $addonName$ sincronizzato con le versioni mensili di Thunderbird, dobbiamo controllare costantemente eventuali problemi e caricare versioni adattate. Per favore, aiutaci con questo.",
+    "message": "Per mantenere $addonName$ sincronizzato con le versioni mensili di Thunderbird, dobbiamo controllare costantemente eventuali problemi e caricare versioni adattate. Ti chiediamo di aiutarci in questo, dopo aver provato la funzionalità e aver verificato che migliori la tua produttività!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Puoi acquistare una licenza in qualsiasi momento direttamente dalle impostazioni di QuickFolders nella pagina Licenza."
   },
   "pricing.section": {
     "message": "Per scoprire il costo della licenza, facendo clic sul pulsante sottostante \"Va alla selezione delle Licenze\" compare l'elenco delle opzioni disponibili. Selezionare quella di vostro interesse. Si apre un'altra finestra del browser ove è possibile completare l'acquisto online."
@@ -2057,7 +2060,7 @@
     "message": "Leggi qui (in inglese) l'elenco dettagliato delle modifiche:"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Risolto il problema per cui il tasto [Invio] non attivava quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Risolti i problemi con le scorciatoie da tastiera e completate le traduzioni in ceco. {L2} {L1} Migliorato il rendimento dei risultati di ricerca di quickMove / quickJump durante la digitazione per gli utenti con molte cartelle. [issue 463]{L2}{L1} I messaggi non letti vengono ora saltati e la cartella sorella successiva / precedente segue ora l'ordine lessicale nell'albero [issue 513]{L2}{L1} La barra degli strumenti di QuickFolders viene ora visualizzata quando la scheda delle impostazioni è aperta. [issue 524]{L2}{L1} Aggiunta la traduzione completa in ceco per l'interfaccia utente.{L2}{L1} Corretto: QuickFolders bloccava le scorciatoie da tastiera native di Thunderbird che contengono il tasto Opzione (metaKey) sui sistemi Mac. {L2}{L1} Le proprietà specifiche della scheda ora funzionano di nuovo in Thunderbird beta 134. [issue 518]{L2}{L1} Corretto: I nomi delle cartelle contenenti apostrofi semplici non causano più errori durante la navigazione.{L2}{L1} QuickFolders ora supporta la creazione di sottocartelle con spazi nei nomi tramite quickMove [issue 512].{L2}"
+    "message": "{P1}{boldStart}アクセシビリティの変更{boldEnd}{P2} {P1}現在、QuickFoldersをキーボードとスクリーンリーダーに完全に対応させるために一生懸命取り組んでいます。{P2}{L1} QuickFoldersツールバーとQuickFolders設定でのキーボードナビゲーションをサポート。 [issue 552], [issue 555]{L2}{L1} キーボードでQuickFoldersタブを追加できるようになりました [issue 550]{L2}{L1} quickJumpおよびquickMoveの結果でブックマークされたフォルダーの優先順位オプション [issue 548]{L2}{L1} QuickFoldersのオプションを常にタブに表示する新しいオプション.{L2} {L1} 新しいタブまたはウィンドウでフォルダーを開くためのquickJumpアクセラレータキー。 {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

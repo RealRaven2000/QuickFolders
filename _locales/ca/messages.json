@@ -349,13 +349,16 @@
     "message": "Vzhledem k tomu, že veškerá práce na QuickFolders a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
   },
   "ongoing-work": {
-    "message": "Per mantenir $addonName$ sincronitzat amb les versions mensuals de Thunderbird, hem de comprovar constantment possibles errors i penjar versions adaptades. Si us plau, ajudeu-nos amb això.",
+    "message": "Per mantenir $addonName$ sincronitzat amb les versions mensuals de Thunderbird, hem de revisar constantment possibles errors i carregar versions adaptades. Ajudeu-nos amb això quan hàgiu provat la funcionalitat i esteu segurs que millora la vostra productivitat!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Podeu demanar una llicència en qualsevol moment directament des de la configuració de QuickFolders, a la pàgina de llicència."
   },
   "pricing.section": {
     "message": ""
@@ -1940,7 +1943,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Resolució del problema amb la tecla [Enter] que no activava quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Reparats problemes amb les dreceres de teclat i completades les traduccions al txec. {L2} {L1} Millorada el rendiment dels resultats de cerca de quickMove / quickJump mentre s'escriu per a usuaris amb molts carpetes. [issue 463]{L2}{L1} S'ometen els no llegits i el següent / anterior carpeta germana ara segueix l'ordre lexical de l'arbre [issue 513]{L2}{L1} La barra d'eines de QuickFolders es mostra ara quan es desa la pestanya de configuració oberta. [issue 524]{L2}{L1} Reparat: QuickFolders bloquejava les combinacions de tecles natives de Thunderbird que contenien la tecla d'opció (metaKey) a sistemes Mac. {L2}{L1} Les propietats específiques de la pestanya ara tornen a funcionar a Thunderbird beta 134. [issue 518]{L2}{L1} Reparat: Els noms de carpeta que contenien cometes simples ja no causen errors a la navegació.{L2}{L1} QuickFolders ara permet crear subcarpetes amb espais en els noms des de quickMove [issue 512].{L2}{L1} S'ha afegit la traducció completa al txec per a la interfície d'usuari.{L2}"
+    "message": "{P1}{boldStart}Canvis d'accessibilitat{boldEnd}{P2} {P1}Estic treballant dur per fer que QuickFolders sigui totalment accessible a teclats i lectors de pantalla.{P2}{L1} Suport per a la navegació amb teclat de la barra d'eines de QuickFolders i la configuració de QuickFolders. [issue 552], [issue 555]{L2}{L1} Ara podeu afegir pestanyes de QuickFolders mitjançant teclat [issue 550]{L2}{L1} Opció de prioritat per a les carpetes marcades a les resultats de quickJump i quickMove [issue 548]{L2}{L1} Nova opció per mostrar sempre les opcions de QuickFolders en una pestanya.{L2} {L1} tecla d'accelerador quickJump per obrir la carpeta en una nova pestanya o finestra. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

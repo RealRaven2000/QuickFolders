@@ -357,13 +357,16 @@
     "message": "Da alle Arbeiten an QuickFolders und der kostenlose Support ausschließlich durch Lizenzverkäufe finanziert werden, bitte denken Sie darüber nach, eine Lizenz zu kaufen oder Ihre aktuelle zu verlängern."
   },
   "ongoing-work": {
-    "message": "Um $addonName$ mit den monatlichen Thunderbird-Versionen synchron zu halten, müssen wir ständig auf Fehler prüfen und angepasste Versionen hochladen. Bitte helft uns dabei.",
+    "message": "Um $addonName$ mit den monatlichen Thunderbird-Versionen kompatibel zu halten, müssen wir regelmäßig auf Fehler prüfen und angepasste Versionen hochladen. Bitte unterstützt uns dabei, sobald ihr die Funktionalität ausprobiert habt und sicher seid, dass sie eure Produktivität verbessert!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Eine Lizenz kann jederzeit direkt über die QuickFolders-Einstellungen auf der Lizenz-Seite erworben werden."
   },
   "pricing.section": {
     "message": "Um Ihren Preis zu erfahren, wählen Sie bitte zuerst eine der folgenden Optionen. Dies öffnet ein separates Browserfenster, wo Sie dann im Webshop den Kauf abschließen können."
@@ -1999,7 +2002,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Behoben: [Enter]-Taste löste quickJump / quickMove nicht aus. [issue 532]{L2} {L1} 6.9.1: Probleme mit Tastenkombinationen behoben und tschechische Übersetzungen vervollständigt. {L2} {L1} Verbesserte Performance der quickMove / quickJump-Suchergebnisse beim Tippen für Benutzer mit vielen Ordnern. [issue 463]{L2}{L1} Ungelesene überspringen und Nächster / Vorheriger Schwesterordner folgen jetzt der lexikalischen Reihenfolge. [issue 513]{L2}{L1} Die QuickFolders-Werkzeugleiste wird jetzt mit angezeigt, wenn der Einstellungs-Tab geöffnet ist. [issue 524]{L2}{L1} Vollständige tschechische Übersetzung für die Benutzeroberfläche hinzugefügt.{L2}{L1} Behoben: QuickFolders blockierte native Thunderbird-Tastenkombinationen, die die Optionstaste (metaKey) auf Mac-Systemen enthalten. {L2}{L1} Tab-spezifische Eigenschaften funktionieren nun wieder in Thunderbird Beta 134. [issue 518]{L2}{L1} Behoben: Ordnernamen mit einfachen Anführungszeichen erzeugten Fehler in der Navigation. {L2}{L1} Behoben: Ein Unterordner, der per quickMove erzeugt wird, kann jetzt Leerzeichen im Namen enthalten [issue 512].{L2}"
+    "message": "{P1}{boldStart}Verbesserungen zur Barrierefreiheit{boldEnd}{P2} {P1} Ich arbeite derzeit intensiv daran, QuickFolders vollständig für Tastatur- und Bildschirmleser zugänglich zu machen.{P2}{L1} Unterstützung der Tastaturnavigation der QuickFolders-Toolbar und der QuickFolders-Einstellungen. [issue 552], [issue 555]{L2}{L1} Man kann jetzt QuickFolders-Tabs auch per Tastatur hinzufügen [issue 550]{L2}{L1} Neue Option, die Verzeichnisee mit QuickFolders-Tabs in den quickJump- und quickMove-Ergebnissen priorisiert [issue 548]{L2}{L1} Neue Option, die QuickFolders-Optionen immer in einem Tab anzuzeigen.{L2} {L1} Tastenkürzel für quickJump, um einen Ordner in einem neuen Tab oder Fenster zu öffnen. {L2} {L1} Griechische und Slowakische Übersetzungen für Onboarding und Lizenzierung hinzugefügt; eine Übersetzung der Bedienoberfläche wird in einem zukünftigen Update folgen.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

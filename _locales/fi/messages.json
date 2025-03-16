@@ -3,7 +3,6 @@
     "message": "SPLASH"
   },
   "active-version-info": {
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
     "message": "Käytät nyt  {boldStart} versiota $addonVer$ {boldEnd} Thunderbird $appVer$ lla.",
     "placeholders": {
       "addonVer": {
@@ -161,13 +160,16 @@
     "message": "Koska kaikki työ QuickFoldersin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."
   },
   "ongoing-work": {
-    "message": "Jotta $addonName$ pysyisi ajan tasalla Thunderbirdin kuukausittaisten julkaisujen kanssa, meidän on jatkuvasti tarkistettava virheitä ja ladattava mukautettuja versioita. Auta meitä tässä.",
+    "message": "Jotta $addonName$ pysyy ajan tasalla Thunderbirdin kuukausittaisten julkaisujen kanssa, meidän on jatkuvasti tarkistettava mahdollisia virheitä ja ladattava mukautettuja versioita. Auta meitä tässä, kun olet kokeillut toiminnallisuutta ja todennut sen parantavan tuottavuuttasi!",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Voit tilata lisenssin milloin tahansa suoraan QuickFolders-asetuksista Lisenssi-sivulta."
   },
   "pricing.section": {
     "message": "Saadaksesi selville hintasi, valitse ensin jokin seuraavista vaihtoehdoista. Tämä avaa erillisen selainikkunan, jossa voit suorittaa ostoksen verkkokaupassa."
@@ -332,7 +334,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2: Korjattu ongelma, jossa [Enter]-näppäin ei aktivoinut quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1: Korjattu ongelmat näppäinoikoteiden kanssa ja täydennetty tšekinkieliset käännökset. {L2} {L1} Parannettu quickMove / quickJump -haun suorituskykyä kirjoitettaessa käyttäjille, joilla on paljon kansioita. [issue 463]{L2}{L1} Lukemattomat ohitetaan ja Seuraava / Edellinen sisar-kansio seuraa nyt puuta sanakirjarajauksessa [issue 513]{L2}{L1} QuickFoldersin työkalupalkki näkyy nyt, kun asetuspaneeli on avattu. [issue 524]{L2}{L1} Lisätty täydellinen tsekin käännös käyttöliittymälle.{L2}{L1} Korjattu: QuickFolders esti Thunderbirdin natiivikomentojen, jotka sisältävät Option (metaKey) -näppäimen Mac-järjestelmissä. {L2}{L1} Välilehteen liittyvät asetukset toimivat jälleen Thunderbirdin beta 134:ssä. [issue 518]{L2}{L1} Korjattu: Yksittäisiä lainausmerkkejä sisältävät kansioiden nimet eivät enää aiheuta virheitä navigoinnissa.{L2}{L1} QuickFolders tukee nyt alikansioiden luomista, joiden nimissä on välilyöntejä quickMove:n kautta [issue 512].{L2}"
+    "message": "{P1}{boldStart}Esteettömyysmuutokset{boldEnd}{P2} {P1}Työskentelen parhaillaan sen eteen, että QuickFolders olisi täysin saavutettavissa näppäimistön ja ruudunlukuohjelmien avulla.{P2}{L1} Tukee näppäimistönavigointia QuickFoldersin työkalupalkissa ja QuickFoldersin asetuksissa. [issue 552], [issue 555]{L2}{L1} Voit nyt lisätä QuickFolders-välilehtiä näppäimistöllä [issue 550]{L2}{L1} Etusijavaihtoehto kirjanmerkkikansioille quickJump- ja quickMove-tuloksissa [issue 548]{L2}{L1} Uusi vaihtoehto näyttää QuickFoldersin asetukset aina välilehdessä.{L2} {L1} quickJump-pikanäppäin avaa kansion uuteen välilehteen tai ikkunaan. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

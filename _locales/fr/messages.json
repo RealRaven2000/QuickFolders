@@ -364,13 +364,16 @@
     "message": "Étant donné que tout le travail sur QuickFolders et le support gratuit sont financés exclusivement par les ventes de licences, veuillez envisager d'acheter une licence ou de renouveler la vôtre."
   },
   "ongoing-work": {
-    "message": "Pour garder $addonName$ synchronisé avec les mises à jour mensuelles de Thunderbird, nous devons constamment vérifier les problèmes et publier des versions adaptées. Merci de nous aider.",
+    "message": "Pour garder $addonName$ compatible avec les mises à jour mensuelles de Thunderbird, nous devons constamment vérifier les éventuels problèmes et publier des versions adaptées. Merci de nous aider dans cette tâche une fois que vous avez testé les fonctionnalités et constaté qu'elles améliorent votre productivité !",
     "placeholders": {
       "addonName": {
         "content": "$1",
         "example": "QuickFolders"
       }
     }
+  },
+  "ongoing-work.order": {
+    "message": "Vous pouvez acheter une licence à tout moment directement dans les paramètres de QuickFolders, sur la page Licence."
   },
   "pricing.section": {
     "message": "Pour connaître votre prix, veuillez d'abord sélectionner l'une des options suivantes. Cela ouvre une fenêtre de navigateur séparée dans laquelle vous pouvez finaliser l'achat dans la boutique en ligne."
@@ -2046,7 +2049,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{L1} 6.9.2 : Correction d'un problème où la touche [Entrée] n'activait pas quickJump / quickMove. [issue 532]{L2} {L1} 6.9.1 : Réparation des problèmes de raccourcis clavier et finalisation des traductions en tchèque. {L2} {L1} Amélioration des performances des résultats de recherche quickMove / quickJump lors de la saisie pour les utilisateurs ayant de nombreux dossiers. [issue 463]{L2}{L1} Les messages non lus sont désormais ignorés et le dossier frère suivant / précédent suit désormais l'ordre lexical de l'arbre [issue 513]{L2}{L1} La barre d'outils QuickFolders est maintenant affichée lorsque l'onglet des paramètres est ouvert. [issue 524]{L2}{L1} Traduction complète en tchèque de l'interface utilisateur ajoutée.{L2}{L1} Correction : QuickFolders bloquait les raccourcis clavier natifs de Thunderbird contenant la touche Option (metaKey) sur les systèmes Mac. {L2}{L1} Les propriétés spécifiques à l'onglet fonctionnent à nouveau dans la version bêta 134 de Thunderbird. [issue 518]{L2}{L1} Correction : Les noms de dossiers contenant des apostrophes simples ne génèrent plus d'erreurs lors de la navigation.{L2}{L1} QuickFolders prend désormais en charge la création de sous-dossiers avec des espaces dans les noms via quickMove [issue 512].{L2}"
+    "message": "{P1}{boldStart}Modifications d'accessibilité{boldEnd}{P2} {P1}Je travaille actuellement dur pour rendre QuickFolders complètement accessible aux claviers et lecteurs d'écran.{P2}{L1} Prise en charge de la navigation au clavier sur la barre d'outils QuickFolders et les paramètres de QuickFolders. [issue 552], [issue 555]{L2}{L1} Vous pouvez maintenant ajouter des onglets QuickFolders via le clavier [issue 550]{L2}{L1} Option de priorité pour les dossiers marqués dans les résultats de quickJump et quickMove [issue 548]{L2}{L1} Nouvelle option pour afficher toujours les options de QuickFolders dans un onglet.{L2} {L1} Touche d'accélérateur quickJump pour ouvrir un dossier dans un nouvel onglet ou une nouvelle fenêtre. {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

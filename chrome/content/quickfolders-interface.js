@@ -47,6 +47,7 @@ QuickFolders.Interface = {
 	get PaintButton() { return QuickFolders.Util.$("QuickFolders-paintBucketActive"); },
 	get TitleLabel() { return QuickFolders.Util.$("QuickFolders-title-label"); },
 	get TitleLabelBox() { return QuickFolders.Util.$("QuickFolders-LabelBox"); },
+	get PreviewLabel() { return QuickFolders.Util.$("QuickFolders-PreviewToolbar"); },
 	get FoldersBox() { return QuickFolders.Util.$("QuickFolders-FoldersBox"); },
 	get Toolbar() { return QuickFolders.Util.$("QuickFolders-Toolbar"); },
 	get PalettePopup() { return QuickFolders.Util.$("QuickFolders-PalettePopup");},
@@ -657,16 +658,16 @@ QuickFolders.Interface = {
 		try {
       util.logDebug("updateQuickFoldersLabel()");
       const isRenew =
-          QuickFolders.Util.licenseInfo.isValid &&
-          QuickFolders.Util.licenseInfo.licensedDaysLeft <= 10;
+				QuickFolders.Util.licenseInfo.isValid &&
+				QuickFolders.Util.licenseInfo.licensedDaysLeft <= 10;
       const showLabelBox =
-          isRenew ||
-          prefs.isShowQuickFoldersLabel ||
-          QuickFolders.Util.licenseInfo.isExpired ||
-          0 == QuickFolders.Model.selectedFolders.length,
-        quickFoldersLabel = this.TitleLabel,
-        qfLabelBox = this.TitleLabelBox,
-        isLicenseNotChecked = !wasLicenseViewedInSession();
+				isRenew ||
+				prefs.isShowQuickFoldersLabel ||
+				QuickFolders.Util.licenseInfo.isExpired ||
+				0 == QuickFolders.Model.selectedFolders.length;
+			const quickFoldersLabel = this.TitleLabel,
+				qfLabelBox = this.TitleLabelBox,
+				isLicenseNotChecked = !wasLicenseViewedInSession();
 
       quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
       // force Renew QuickFolders to be visible!
@@ -2339,6 +2340,7 @@ QuickFolders.Interface = {
 			// toolbar.style.display = "flex";
 			isVisible = !(toolbar.collapsed);
 		let makeVisible;
+		QuickFolders.Interface.showElement(this.PreviewLabel, toggleOptions.optionsMode || false);
 		if (toggleOptions.forceVisible != null) {
 			makeVisible = toggleOptions.forceVisible;
 		} else {

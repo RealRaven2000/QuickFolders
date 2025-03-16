@@ -87,6 +87,8 @@ QuickFolders.TabListener = {
             },
             500
           );
+          // hide preview label.
+          QuickFolders.Interface.showElement(QuickFolders.Interface.PreviewLabel, false);
         }
     
 

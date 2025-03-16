@@ -998,7 +998,7 @@ async function main() {
   function onOptionsTabActivated() {
     // tell experiment to make QuickFolders toolbar visible
     if (isDebug) console.log("QuickFolders Options tab is displayed. Sending message to experimental code...");
-    messenger.Utilities.displayMainToolbar(true);
+    messenger.Utilities.displayMainToolbar(true, true);
   }
 
   messenger.tabs.onActivated.addListener(async (activeInfo) => {
@@ -1007,7 +1007,7 @@ async function main() {
     if (!theTab?.url) return;
     if (theTab.url.startsWith(getOptionsPageURL())) {
       onOptionsTabActivated();
-    }
+    } 
   });
 
   const checkTabStatus = async (tabId) => {

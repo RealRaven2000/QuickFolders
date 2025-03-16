@@ -128,10 +128,16 @@
         "type": "function",
         "parameters": [
           {
-            "name": "displayStatus",
+            "name": "visible",
             "type": "boolean",
             "description": "show/hide toolbar visible (for settings tab only)"
-          }          
+          },
+          {
+            "name": "inOptions",
+            "type": "boolean",
+            "optional": true,
+            "description": "if we are in options screen (demo mode)"
+          }
         ]
       },
 

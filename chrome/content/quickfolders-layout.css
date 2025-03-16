@@ -578,6 +578,10 @@ toolbarbutton#QuickFoldersCurrentFolder {
 	line-height: 24px;
 }
 
+#QuickFolders-PreviewToolbar {
+  margin-top: -5px;
+}
+
 /** notifications **/
 @keyframes quickfoldersRenew {
 	to {box-shadow: 0 0 0 10px rgba(100, 100, 100, 0.20);}

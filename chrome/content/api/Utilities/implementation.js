@@ -118,113 +118,119 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
     return {
       Utilities: {
-
-        logDebug (text) {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+        logDebug(text) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           win.QuickFolders.Util.logDebug(text);
         },
-        
-        getUserName : function () {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+
+        getUserName: function () {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           const util = win.QuickFolders.Util;
-          let Accounts = util.Accounts; 
-          for (let a=0; a<Accounts.length; a++) {
+          let Accounts = util.Accounts;
+          for (let a = 0; a < Accounts.length; a++) {
             let account = Accounts[a];
-            if (account.defaultIdentity) 
-            { 
+            if (account.defaultIdentity) {
               let name = account.defaultIdentity.fullName;
               if (name) return name;
             }
-          }    
+          }
           return "user"; // anonymous
         },
-        
-        showVersionHistory: function() {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+
+        showVersionHistory: function () {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           const util = win.QuickFolders.Util;
           util.showVersionHistory();
         },
 
-        showXhtmlPage: function(uri) {
-          let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");  
+        showXhtmlPage: function (uri) {
+          let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane");
           mail3PaneWindow.openDialog(uri);
         },
-        
-        showLicenseDialog: function(referrer) {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+
+        showLicenseDialog: function (referrer) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           win.QuickFolders.Interface.showLicenseDialog(referrer);
         },
-  
+
         // get may only return something, if a value is set
         /* Useful stuff from QF.Preferences */
-        getUserStyle: async function(id, type, defaultTxt) {
+        getUserStyle: async function (id, type, defaultTxt) {
           // lazy workaround for now because messenger is not defined:
           // when calling from options - wo do not have it because we need to load in a "browser" window
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           let retVal = win.QuickFolders.Preferences.getUserStyle(id, type, defaultTxt);
           return retVal;
         },
-        
+
         async storeConfig(config) {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           // see options.copyFolderEntries
           const util = win.QuickFolders.Util,
-                prefs = win.QuickFolders.Preferences,
-                sFolderString = Services.prefs.getStringPref("QuickFolders.folders");
+            prefs = win.QuickFolders.Preferences,
+            sFolderString = Services.prefs.getStringPref("QuickFolders.folders");
           let obj = JSON.parse(sFolderString),
-              storedObj = { 
-                folders: obj,
-                general: [],
-                advanced: [],
-                layout: [],
-                userStyle: []
-              }; // wrap into "folders" subobject, so we can add more settings
-          let isLicense = ( win.QuickFolders.Util.licenseInfo.isExpired ||  win.QuickFolders.Util.licenseInfo.isValidated);
+            storedObj = {
+              folders: obj,
+              general: [],
+              advanced: [],
+              layout: [],
+              userStyle: [],
+            }; // wrap into "folders" subobject, so we can add more settings
+          let isLicense =
+            win.QuickFolders.Util.licenseInfo.isExpired ||
+            win.QuickFolders.Util.licenseInfo.isValidated;
           if (isLicense) {
             storedObj.premium = [];
           }
-          
-          util.logDebug("Storing configuration...")
+
+          util.logDebug("Storing configuration...");
 
           // LEGACY BRANCH - if called from background this will contain the event
           storedObj.general = config.general;
           storedObj.advanced = config.advanced;
           storedObj.layout = config.layout;
           storedObj.userStyle = config.userStyle;
-          
+
           // [issue 115] store selection for background dropdown
-          const bgKey = 'currentFolderBar.background.selection';
+          const bgKey = "currentFolderBar.background.selection";
           let backgroundSelection = prefs.getStringPref(bgKey);
           storedObj.layout.push({
-            key: 'extensions.quickfolders.' + bgKey, 
-            val: backgroundSelection, 
-            originalId: 'qfpa-CurrentFolder-Selection'} 
-          );
+            key: "extensions.quickfolders." + bgKey,
+            val: backgroundSelection,
+            originalId: "qfpa-CurrentFolder-Selection",
+          });
 
-          let prettifiedJson = JSON.stringify(storedObj, null, '  ');
-          await self.fileConfig('save', prettifiedJson, 'QuickFolders-Config');
-          util.logDebug("Configuration stored.")
-        } ,
+          let prettifiedJson = JSON.stringify(storedObj, null, "  ");
+          await self.fileConfig("save", prettifiedJson, "QuickFolders-Config");
+          util.logDebug("Configuration stored.");
+        },
 
         async loadConfig(preferences) {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           const prefs = win.QuickFolders.Preferences,
-                util = win.QuickFolders.Util;
-          
+            util = win.QuickFolders.Util;
+
           function readData(dataString) {
             let changedRecords = [];
-            
+
             try {
               // removes prettyfication:
               let // config = dataString.replace(/\r?\n|\r/, ''),
-                  data = dataString,  // dataString
-                  entries = data.folders,
-                  isLayoutModified = false,
-                  question = util.getBundleString("qf.prompt.restoreFolders");
-              if (prefs.getBoolPref('restoreConfig.tabs')
-                 && Services.prompt.confirm(win, "QuickFolders", question.replace("{0}", entries.length))) {
+                data = dataString, // dataString
+                entries = data.folders,
+                isLayoutModified = false,
+                question = util.getBundleString("qf.prompt.restoreFolders");
+              if (
+                prefs.getBoolPref("restoreConfig.tabs") &&
+                Services.prompt.confirm(
+                  win,
+                  "QuickFolders",
+                  question.replace("{0}", entries.length)
+                )
+              ) {
                 for (let ent of entries) {
-                  if (typeof ent.tabColor ==='undefined' || ent.tabColor ==='undefined') {
+                  if (typeof ent.tabColor === "undefined" || ent.tabColor === "undefined") {
                     ent.tabColor = 0;
                   }
                   // default the name!!
@@ -238,17 +244,16 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                     }
                   }
                 }
-                if (!entries.length)
-                  entries=[];
+                if (!entries.length) entries = [];
                 // the following function calls QI.updateMainWindow() which calls QI.updateFolders()
                 // LEGACY MAIN WINDOW HACK FOR PREVIEW
                 let mainWin = util.getMail3PaneWindow();
                 mainWin.QuickFolders.Model.correctFolderEntries(entries, false);
                 mainWin.QuickFolders.initTabsFromEntries(entries);
                 let invalidCount = 0,
-                    modelEntries = mainWin.QuickFolders.Model.selectedFolders;
+                  modelEntries = mainWin.QuickFolders.Model.selectedFolders;
                 // updateFolders() will append "invalid" property into entry of main model if folder URL cannot be found
-                for (let i=0; i<modelEntries.length; i++) {
+                for (let i = 0; i < modelEntries.length; i++) {
                   if (modelEntries[i].invalid) {
                     invalidCount++;
                   }
@@ -258,155 +263,164 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 question = util.getBundleString("qf.prompt.loadFolders.confirm");
                 if (invalidCount) {
                   let wrn = util.getBundleString("qfInvalidTabCount"),
-                      deleteInvalid = util.getBundleString("qf.menuitem.quickfolders.deleteDeadTabs");
-                  question = wrn.replace("{0}", invalidCount).replace("{1}", deleteInvalid) + "\n" + question;
+                    deleteInvalid = util.getBundleString("qf.menuitem.quickfolders.deleteDeadTabs");
+                  question =
+                    wrn.replace("{0}", invalidCount).replace("{1}", deleteInvalid) +
+                    "\n" +
+                    question;
                 }
                 if (Services.prompt.confirm(win, "QuickFolders", question)) {
                   // store
                   prefs.storeFolderEntries(entries);
                   // notify all windows
                   util.notifyTools.notifyBackground({ func: "updateAllTabs" });
-                }
-                else {
+                } else {
                   // roll back
                   mainWin.QuickFolders.initTabsFromEntries(prefs.loadFolderEntries());
                 }
               }
               // ====================================================================
               // [issue 107] Restoring general / layout Settings only works if option for restoring folders also active
-              if (prefs.getBoolPref('restoreConfig.general') && data.general) {
-                for (let i=0; i<data.general.length; i++) {
+              if (prefs.getBoolPref("restoreConfig.general") && data.general) {
+                for (let i = 0; i < data.general.length; i++) {
                   changedRecords.push(data.general[i]);
                 }
                 isLayoutModified = true;
               }
-              if (prefs.getBoolPref('restoreConfig.layout')) {
+              if (prefs.getBoolPref("restoreConfig.layout")) {
                 if (data.layout) {
-                  for (let i=0; i<data.layout.length; i++) {
+                  for (let i = 0; i < data.layout.length; i++) {
                     changedRecords.push(data.layout[i]);
                   }
                   isLayoutModified = true;
-                  
-                  for (let i=0; i<data.userStyle.length; i++) {
+
+                  for (let i = 0; i < data.userStyle.length; i++) {
                     changedRecords.push(data.userStyle[i]);
                   }
-                  
-                  
                 }
-                
+
                 if (data.advanced) {
-                  for (let i=0; i<data.advanced.length; i++) {
+                  for (let i = 0; i < data.advanced.length; i++) {
                     changedRecords.push(data.advanced[i]);
                   }
                 }
 
                 if (data.premium) {
-                  for (let i=0; i<data.premium.length; i++) {
+                  for (let i = 0; i < data.premium.length; i++) {
                     changedRecords.push(data.premium[i]);
                   }
                 }
                 // load custom colors and restore color pickers
                 // options.styleUpdate('Toolbar', 'background-color', this.value, 'qf-StandardColors')
               }
-              if (isLayoutModified) { // instant visual feedback
+              if (isLayoutModified) {
+                // instant visual feedback
                 //  update the main window layout
                 win.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // replaced QI.updateObserver();
               }
-              
-            }
-            catch (ex) {
+            } catch (ex) {
               util.logException("Error in QuickFolders.Model.readData():\n", ex);
-              Services.prompt.alert(null,"QuickFolders", util.getBundleString("qf.alert.pasteFolders.formatErr"));
-            }
-            finally {
+              Services.prompt.alert(
+                null,
+                "QuickFolders",
+                util.getBundleString("qf.alert.pasteFolders.formatErr")
+              );
+            } finally {
               return changedRecords;
             }
           }
-          
+
           let config = await self.fileConfig("load"); // load does the reading itself?
-          if (config)
-            return readData(config);
-          else
-            return null;
+          if (config) return readData(config);
+          else return null;
         },
 
         // A test function for folder conversion. We need to pass in a nsIMsgFolder
         // Q: where can this function be called from? We need to pass in a nsIMsgFolder
-        getMailFolder: function(folder) {
+        getMailFolder: function (folder) {
           // convert an nsIMsgFolder to a MailFolder.
           // see https://webextension-api.thunderbird.net/en/stable/how-to/experiments.html#using-folder-and-message-types
           return context.extension.folderManager.convert(folder);
         },
 
-        toggleToolbarAction: function(keepState = false) {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+        toggleToolbarAction: function (keepState = false) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           const util = win.QuickFolders.Util;
           let btn = win.document.querySelector("[item-id='ext-quickfolders@curious.be']");
           if (btn) {
             util.logDebug("toggleToolbarAction()");
             console.log(btn);
-            win.QuickFolders.Interface.toggleToolbar({button:btn, toggle:!keepState});
+            win.QuickFolders.Interface.toggleToolbar({ button: btn, toggle: !keepState });
           }
         },
 
         // simplified function to toggle QF toolbar when settings tab is shown
-        displayMainToolbar: function(displayStatus) {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
-          win.QuickFolders.Interface.toggleToolbar({ forceVisible: displayStatus });
+        displayMainToolbar: function (visible, inOptions = false) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
+          win.QuickFolders.Interface.toggleToolbar({ forceVisible: visible, optionsMode : inOptions });
         },
 
-        getFolderIcon: async function(accountId, path = null) {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+        getFolderIcon: async function (accountId, path = null) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           try {
             let retVal = null;
             if (path) {
               let folder = context.extension.folderManager.get(accountId, path);
               if (!folder) return null;
-              retVal = win.QuickFolders.FolderTree.customIcons.find(e => e.folderURI == folder.URI);
-            } else { // this is an account.
-              for (let account of win.QuickFolders.Util.Accounts) { 
+              retVal = win.QuickFolders.FolderTree.customIcons.find(
+                (e) => e.folderURI == folder.URI
+              );
+            } else {
+              // this is an account.
+              for (let account of win.QuickFolders.Util.Accounts) {
                 if (account.key == accountId) {
-                  win.QuickFolders.Util.logDebug(`found account: ${accountId}`, account.incomingServer?.prettyName);
+                  win.QuickFolders.Util.logDebug(
+                    `found account: ${accountId}`,
+                    account.incomingServer?.prettyName
+                  );
                   let rootUri = account.incomingServer?.rootFolder.URI;
-                  retVal = win.QuickFolders.FolderTree.customIcons.find(e => e.folderURI == rootUri);
+                  retVal = win.QuickFolders.FolderTree.customIcons.find(
+                    (e) => e.folderURI == rootUri
+                  );
                   break;
                 }
               }
             }
             return retVal;
-          }
-          catch(ex) {
+          } catch (ex) {
             win.QuickFolders.Util.logException("Utilities.getFolderIcon()", ex);
             return null;
           }
         },
 
-        getFolderUri: async function(accountId, path = null) {
-          const win = Services.wm.getMostRecentWindow("mail:3pane"); 
+        getFolderUri: async function (accountId, path = null) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
           try {
             let retVal = null;
             if (path) {
               let folder = context.extension.folderManager.get(accountId, path);
               if (!folder) return null;
               retVal = folder.URI;
-            } else { // this is an account.
-              for (let account of win.QuickFolders.Util.Accounts) { 
+            } else {
+              // this is an account.
+              for (let account of win.QuickFolders.Util.Accounts) {
                 if (account.key == accountId) {
-                  win.QuickFolders.Util.logDebug(`found account: ${accountId}`, account.incomingServer?.prettyName);
+                  win.QuickFolders.Util.logDebug(
+                    `found account: ${accountId}`,
+                    account.incomingServer?.prettyName
+                  );
                   retVal = account.incomingServer?.rootFolder.URI;
                   break;
                 }
               }
             }
             return retVal;
-          }
-          catch(ex) {
+          } catch (ex) {
             win.QuickFolders.Util.logException("Utilities.getFolderUri()", ex);
             return null;
           }
-        }
-       
-     }
-  }
+        },
+      },
+    };
 };
 }

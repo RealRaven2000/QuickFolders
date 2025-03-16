@@ -8,12 +8,10 @@ END LICENSE BLOCK */
 
 /* shared module for installation and update popups */
 
-const REDUCTION_RENEW = "25%",
-  REDUCTION_PRO = "40%",
+const REDUCTION_RENEW = "20%", // 25
+  REDUCTION_PRO = "33%", // 40
   REDUCTION_UPGRADE = "33%",
-  SALES_DATE = "2025-01-24";
-
-
+  SALES_DATE = "2025-03-30";
 
 addEventListener("click", async (event) => {
   switch (event.target.id) {

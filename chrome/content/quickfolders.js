@@ -1849,7 +1849,7 @@ var QuickFolders = {
       } else if (isDropButton) {  // reordering button positions
         // was "text/unicode"
         const buttonURI = evt.dataTransfer.mozGetDataAt(contentType, 0);
-        const targetURI = DropTarget?.folder || DropTarget.getAttribute("folderURI");
+        const targetURI = DropTarget?.folder.URI || DropTarget.getAttribute("folderURI");
         if (targetURI) {
           QuickFolders.Model.insertAtPosition(buttonURI, targetURI, ""); 
         } else {

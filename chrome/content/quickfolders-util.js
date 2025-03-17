@@ -1504,6 +1504,7 @@ allowUndo = true)`
 
   // use this to follow a href that did not trigger the browser to open (from a XUL file)
   openLinkInBrowser: function (evt, linkURI) {
+    if (QuickFolders.Preferences.isDebug) { debugger; }
     QuickFolders.Util.notifyTools.notifyBackground({
       func: "openBrowserLink",
       url: linkURI,

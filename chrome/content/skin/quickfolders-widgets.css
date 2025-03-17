@@ -31,8 +31,8 @@ menuitem.cmd[tagName="qfRegister"].expired .menu-iconic-icon,
 @keyframes qfDlgPulse {	to {box-shadow: 0 0 0 10px rgba(150, 80, 60, 0.12);}}
 
 /* button[dlgtype=extra2], */
-#btnLicense.expired,
-#btnLicense.register {
+button.expired,
+button.register {
   animation: qfDlgPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
 	box-shadow: 0 0 0 0px rgba(40, 40, 40, 0.0);
 }

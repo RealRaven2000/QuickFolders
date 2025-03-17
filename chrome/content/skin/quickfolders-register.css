@@ -179,3 +179,12 @@ td {
 #licenseTermSwitcher:hover #toggleSwitchLicenseTerms.continue {
   background-color: rgb(175,20,20) !important;
 }
+
+@keyframes qfDlgPulse {	to {box-shadow: 0 0 0 10px rgba(150, 80, 60, 0.25);}}
+
+/* button[dlgtype=extra2], */
+button.expired,
+button.register {
+  animation: qfDlgPulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+	box-shadow: 0 0 0 0px rgba(40, 40, 40, 0.0);
+}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-register.css" title="QuickFolderRegStyles" type="text/css"?>
+<?xml-stylesheet href="chrome://quickfolders/content/skin/quickfolders-register.css?v=2" title="QuickFolderRegStyles" type="text/css"?>
 
 <?xml-stylesheet href="chrome://global/skin/xul.css" type="text/css"?>
 <?xml-stylesheet href="chrome://messenger/skin/input-fields.css" type="text/css" ?>
@@ -41,9 +41,9 @@
 				<label id="haveLicense">__MSG_qf.label.haveLicense__</label>
 				<hbox>
 					<button id="btnEnterCode"
-									label="__MSG_enterLicenseKey.button__"
-									tooltiptext="__MSG_enterLicenseKey.tooltip__"
-									oncommand="QuickFolders.Interface.viewLicense();window.close();" />
+						label="__MSG_enterLicenseKey.button__"
+						tooltiptext="__MSG_enterLicenseKey.tooltip__"
+						/>
 				</hbox>
 			</vbox>
 			
@@ -91,8 +91,7 @@
 				</tr>	
 			</table>
 			<button id="toggleSwitchLicenseTerms"
-						label="__MSG_licenseTerms.show__"
-						oncommand="Register.toggleTerms(this);" />
+				label="__MSG_licenseTerms.show__"/>
 		</vbox>
 	</vbox>
 	
@@ -100,19 +99,15 @@
 	  <vbox>
 			<hbox>
 				<label class="ref" for="mailIdentity">__MSG_account.label__</label>
-				<menulist id="mailIdentity"
-					sizetopopup="none"
-					oncommand="Register.selectIdentity(this);"
-					>
+				<menulist id="mailIdentity" sizetopopup="none">
 					<menupopup>
 					</menupopup>
 				</menulist>
 			</hbox>
 			<hbox>
-				<label control="email" for="email"
-							 class="ref"
-							 value="__MSG_email.label__" 
-							 />
+				<label control="email" for="email" class="ref"
+					value="__MSG_email.label__" 
+					/>
 				<html:input type="text" id="email" aria-autocomplete="none"/>
 			</hbox>
 		</vbox>
@@ -147,8 +142,7 @@
 				<td class="btnLicenseContainer">
 					<button id="btnLicense"
 					  class="register" 
-						label="__MSG_buyProLicense.button__"
-						oncommand="Register.goPro(0);" />
+						label="__MSG_buyProLicense.button__" />
 				</td>
 			</tr>
       
@@ -161,9 +155,7 @@
 				</td>
 				<td class="btnLicenseContainer">
 					<button id="btnStdLicense"
-					  class="register"
-						label="__MSG_buyStandardLicense.button__"
-						oncommand="Register.goPro(2);" />
+						label="__MSG_buyStandardLicense.button__" />
 				</td>
 			</tr>      
       
@@ -176,8 +168,7 @@
 				</td>
 				<td class="btnLicenseContainer">
 					<button id="btnDomainLicense"
-						label="__MSG_buyDomainLicense.button__"
-						oncommand="Register.goPro(1);" />
+						label="__MSG_buyDomainLicense.button__" />
 				</td>
 			</tr>
 		</table>

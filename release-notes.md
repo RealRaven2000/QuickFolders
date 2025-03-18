@@ -4,6 +4,7 @@
 *   New option to always display QuickFolders Options in a tab. 
 *   quickJump feature - Use [CTRL] key to open folder in a new TB tab. [issue #540]
 *   quickJump - Modifier key [Alt] to open folder in new window. [issue #542]
+*   Option to disable highlighting invalid tabs. Some IMAP implementations have problems telling the Add-on that certain folders really exist. You can find this option on Settings / Advanced under the group Updates. [issue #478]
 *   accessibility: quickJump / quickMove prority for QF bookmarks in results & screenreader support. [issue #548]
 *   accessibility: Support adding QuickFolders (bookmark folders) using keyboard. [issue #550]
 *   accessibility: Accessibility option: Remove 'customize icon' command from folder context. [issue #551]
@@ -23,4 +24,5 @@
 *   Removed inline event handlers which will be deprecated in Thunderbird 136. [issue #543]
 *   Thunderbird 136 retires `ChromeUtils.import` - replace with `importESModule`. [issue #547]
 *   streamlined onboarding / update screens
+*   Fixed an issue with dark icons on active options tab for better visibility. [issue #553]
 

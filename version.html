@@ -327,9 +327,8 @@
     <a name="6.10">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.10" 
-			   onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">
-				 Version 6.10 - WIP
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.10">
+				Version 6.10 - 17/03/2025
 		  </a>
       </h4>
 
@@ -451,20 +450,37 @@
 
       <ul>
 				<h4 class="inList">Improvements</h4>
-          <li> New option to always display QuickFolders Options in a tab. </li>
+          <li> 
+						<p>
+							New option to always display QuickFolders Options in a tab. 
+							Activate it in <span style="font-family:'Roboto Condensed', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif; font-size: 0.93em ;font-stretch: condensed; font-weight: bold;">
+								QuickFolders Options <b style="color:#7B1616">»</b> General 
+								<b style="color:#7B1616">»</b> Behavior</span>:
+						</p>
+						<img src="images/options-in-tab.png" alt="open settings in tab" class="screenshot"/>
+						<p> 
+							For context, the QuickFolders toolbar will be displayed in preview mode so you
+							can immediately see any layout changes.
+						</p>
+					</li>
 					<li> 
-						quickJump feature - Use [CTRL] key to open folder in a new TB tab. 
+						quickJump feature - Use <keystroke>CTRL</keystroke> key to open found folder in a new TB tab. 
 						<a href="https://github.com/RealRaven2000/QuickFolders/issues/540">[issue 540]</a>
 					</li>
 					<li> 
-						quickJump - Modifier key [Alt] to open folder in new window. 
+						quickJump - Use <keystroke>ALT</keystroke> key to open found folder in new window. 
 						<a href="https://github.com/RealRaven2000/QuickFolders/issues/542">[issue 542]</a>
 					</li>
 
 				<h4 class="inList">Accessibility Features</h4>
 					<li> 
 						Support keyboard navigation of the QuickFolders toolbar. 
+						Once a QuickFolders tab has focus, use the arrow keys 
+						<keystroke>⯇</keystroke>, <keystroke>⯈</keystroke> to navigate
+						between them. Use <keystroke>Enter</keystroke> to open the associated folder.
+						Use the context <keystroke>MENU</keystroke> key to open commands and subfolders.
 						<a href="https://github.com/RealRaven2000/QuickFolders/issues/552">[issue 552]</a>
+						Known issue in 6.10: Enter on a folder in the subfolders menu doesn't navigate there (WIP).
 					</li>			
 					<li> 
 						Support keyboard navigation / screen readers of QuickFolders settings

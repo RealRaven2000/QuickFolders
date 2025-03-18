@@ -112,6 +112,13 @@
       border-radius: 3px;
       margin: 0 3px;
     }    
+
+    .breadCrumbs {
+			font-family:'Roboto Condensed', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif; 
+			font-size: 0.93em ;
+			font-stretch: condensed;
+			font-weight: bold;
+		}	
         
 		</style>
 
@@ -213,14 +220,14 @@
 </section>			
 
 <section id="tb68">
-      <h4>Thunderbird 68 support has ended on thunderbird.net</h4>
-      <p>
-        Unfortunately thunderbird.net does not accept updates for legacy versions anymore - they only support the new "Mail extension" format and our "mail extension with experimental APIs" which is a workaround for missing advanced features.  
-      </p>
-      <p>
-        From of version <a href="#4.23">4.23 forward</a> you have to install such legacy versions from the 
-        <a href="https://github.com/RealRaven2000/quickfolders/releases">github releases page</a>. 
-      </p>	
+	<h4>Thunderbird 68 support has ended on thunderbird.net</h4>
+	<p>
+		Unfortunately thunderbird.net does not accept updates for legacy versions anymore - they only support the new "Mail extension" format and our "mail extension with experimental APIs" which is a workaround for missing advanced features.  
+	</p>
+	<p>
+		From of version <a href="#4.23">4.23 forward</a> you have to install such legacy versions from the 
+		<a href="https://github.com/RealRaven2000/quickfolders/releases">github releases page</a>. 
+	</p>	
 </section>
       
 <section id="features">
@@ -453,7 +460,7 @@
           <li> 
 						<p>
 							New option to always display QuickFolders Options in a tab. 
-							Activate it in <span style="font-family:'Roboto Condensed', 'Arial Narrow', 'Helvetica Neue', Arial, sans-serif; font-size: 0.93em ;font-stretch: condensed; font-weight: bold;">
+							Activate it in <span class="breadCrumbs">
 								QuickFolders Options <b style="color:#7B1616">»</b> General 
 								<b style="color:#7B1616">»</b> Behavior</span>:
 						</p>
@@ -470,6 +477,14 @@
 					<li> 
 						quickJump - Use <keystroke>ALT</keystroke> key to open found folder in new window. 
 						<a href="https://github.com/RealRaven2000/QuickFolders/issues/542">[issue 542]</a>
+					</li>
+					<li> 
+						Option to disable highlighting invalid tabs. Some IMAP implementations 
+						have problems telling the Add-on that certain folders really exist. 
+						You can find this option on <span class="breadCrumbs">Settings 
+						<b style="color:#7B1616">»</b> Advanced</span> under the group 
+						<span class="breadCrumbs">Updates</span>
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/478">[issue 478]</a>.
 					</li>
 
 				<h4 class="inList">Accessibility Features</h4>

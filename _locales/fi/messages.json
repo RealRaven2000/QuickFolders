@@ -18,11 +18,46 @@
   "addon-authors-struggle": {
     "message": "Jatkaaksemme hyödyllisyyttä meidän lisäosakehittäjien on nyt rahoitettava korjaamiseen ja uudelleenkirjoittamiseen tarvittavat resurssit, jotta käyttäjät voivat edelleen hyötyä tarjoamistamme toiminnoista."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Aseta QuickFolders-kirjanmerkit etusijalle hakutuloksissa."
+  "accessibility.count.unread": {
+    "message": "$count$ lukematonta viestiä",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ lukematta alikansioissa",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ viestiä yhteensä",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ yhteensä alikansioissa",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Poista 'Mukauta kuvaketta' -komento kansion pikavalikosta."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Piilota työkaluvihjeet välilehdillä"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Priorizar los marcadores de QuickFolders en los resultados de búsqueda."
   },
   "aria.a11underReview": {
     "message": "Olemme parhaillaan tarkistamassa ja parantamassa tämän sivun saavutettavuutta. Työskentelemme sen eteen, että kuvattu toiminnallisuus olisi enemmän näppäimistöystävällinen ja yhteensopiva ruudunlukuohjelmien kanssa. Kiitos kärsivällisyydestänne!"

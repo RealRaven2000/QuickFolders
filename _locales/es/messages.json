@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Para seguir siendo útiles, los desarrolladores de complementos ahora debemos financiar los recursos necesarios para corregir y reescribir, de modo que nuestros usuarios puedan seguir beneficiándose de la funcionalidad que ofrecemos."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Priorizar los marcadores de QuickFolders en los resultados de búsqueda."
+  "accessibility.count.unread": {
+    "message": "$count$ mensajes no leídos",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ no leídos en subcarpetas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ mensajes en total",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ en total en subcarpetas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Eliminar el comando 'Personalizar icono' del menú contextual de la carpeta."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Ocultar las descripciones emergentes en las pestañas"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Priorizar los marcadores de QuickFolders en los resultados de búsqueda."
   },
   "aria.a11underReview": {
     "message": "Actualmente estamos revisando y mejorando la accesibilidad de esta página. Estamos trabajando para hacer que la funcionalidad descrita sea más compatible con el teclado y los lectores de pantalla. ¡Gracias por su paciencia!"
@@ -463,7 +498,7 @@
     "message": "Utilice la tecla MAYÚSCULAS para seleccionar más de una categoría en el menú desplegable."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Poner el foco en la lista de mensajes al cambiar de pestaña"
+    "message": "Centrarse en la lista de mensajes al hacer clic en la pestaña"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Ocultar carpetas rápidas en pestañas de mensajes individuales"

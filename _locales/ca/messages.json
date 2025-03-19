@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Per continuar sent útils, els desenvolupadors de complements ara han de finançar els recursos necessaris per corregir i reescriure perquè els nostres usuaris es puguin beneficiar de la funcionalitat que presentem a la taula."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Prioritza els marcadors de QuickFolders als resultats de cerca."
+  "accessibility.count.unread": {
+    "message": "$count$ missatges no llegits",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ no llegits a les subcarpetes",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ missatges en total",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ en total a les subcarpetes",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Elimina l'ordre 'Personalitza la icona' del menú contextual de la carpeta."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Amaga les informacions emergents a les pestanyes"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritza els marcadors de QuickFolders als resultats de cerca."
   },
   "btn-extend-license": {
     "message": "Vull ampliar la llicència un any"
@@ -453,7 +488,7 @@
     "message": "Utilitzeu la tecla MAJÚS per seleccionar més d'una categoria al menú desplegable."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Passar el focus a la llista de missatges al canviar de pestanya"
+    "message": "Centra't en la llista de missatges en fer clic a la pestanya"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Amagueu les carpetes ràpides a les pestanyes d'un sol missatge"
@@ -1840,7 +1875,7 @@
     "message": "Quan actualitzeu des de Standard, obteniu un període de llicència d'un any complet a partir de la data de compra, independentment de la data de caducitat de la vostra llicència anterior."
   },
   "special-offer-expiry": {
-  "message": "30 de març"
+    "message": "30 de març"
   },
   "special-offer-head": {
     "message": "Ajudeu a mantenir $addon$ compatible",

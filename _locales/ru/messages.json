@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Чтобы и дальше оставаться полезными, нам, разработчикам дополнений, теперь необходимо финансировать ресурсы, необходимые для исправления и перезаписи, чтобы наши пользователи могли продолжать пользоваться предоставляемыми нами функциями."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Приоритет закладок QuickFolders в результатах поиска."
+  "accessibility.count.unread": {
+    "message": "$count$ непрочитанных сообщений",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ непрочитанных в подпапках",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ сообщений всего",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ всего в подпапках",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Удалить команду 'Настроить значок' из контекстного меню папки."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Скрыть всплывающие подсказки на вкладках"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Приоритет закладок QuickFolders в результатах поиска."
   },
   "aria.a11underReview": {
     "message": "В настоящее время мы проводим обзор и улучшаем доступность этой страницы. Мы работаем над тем, чтобы описанная функциональность стала более удобной для клавиатуры и совместимой с программами для чтения с экрана. Спасибо за ваше терпение!"
@@ -463,7 +498,7 @@
     "message": "Удерживайте Shift для выбора более чем одной категории из списка."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Переводить фокус на список сообщений после смены закладок"
+    "message": "Фокус на списке сообщений при клике по вкладке"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Скрыть QuickFolders на вкладках отдельных сообщений"

@@ -22,12 +22,48 @@
   "addon-authors-struggle": {
     "message": "Para continuar a ser útil, nós, desenvolvedores de add-ons, agora precisamos financiar os recursos necessários para consertar e reescrever para que nossos usuários possam continuar a se beneficiar da funcionalidade que oferecemos."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Priorizar os favoritos do QuickFolders nos resultados da pesquisa."
+  "accessibility.count.unread": {
+    "message": "$count$ mensagens não lidas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ não lidas em subpastas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ mensagens no total",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ no total em subpastas",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Remover o comando 'Personalizar ícone' do menu de contexto da pasta."
   },
+  "accessibility.hideTooltips": {
+    "message": "Ocultar dicas de ferramenta nas abas"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Priorizar os favoritos do QuickFolders nos resultados da pesquisa."
+  },
+
   "aria.a11underReview": {
     "message": "Atualmente estamos revisando e melhorando a acessibilidade desta página. Estamos trabalhando para tornar a funcionalidade descrita mais compatível com o teclado e os leitores de tela. Obrigado pela sua paciência!"
   },
@@ -457,7 +493,7 @@
     "message": "Use a tecla SHIFT para selecionar mais de uma categoria na lista suspensa."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Foco na lista de mensagens ao mudar de aba"
+    "message": "Focar na lista de mensagens ao clicar na aba"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Ocultar QuickFolders em guias de mensagens únicas."

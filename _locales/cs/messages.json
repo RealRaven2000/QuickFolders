@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Abychom byli i nadále užiteční, musíme nyní vývojáři doplňků financovat prostředky potřebné k opravě a přepsání, aby naši uživatelé mohli nadále těžit z funkcí, které poskytujeme."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Upřednostnit záložky QuickFolders ve výsledcích hledání."
+  "accessibility.count.unread": {
+    "message": "$count$ nepřečtených zpráv",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ nepřečteno v podsložkách",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ celkem zpráv",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ celkem v podsložkách",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Odebrat příkaz 'Přizpůsobit ikonu' z kontextového menu složky."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Skrýt popisky na kartách"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Upřednostnit záložky QuickFolders ve výsledcích hledání."
   },
   "aria.a11underReview": {
     "message": "Aktuálně provádíme revizi a vylepšení přístupnosti této stránky. Pracujeme na tom, aby popsaná funkčnost byla více přístupná pro klávesnici a kompatibilní s čtečkami obrazovky. Děkujeme za vaši trpělivost!"
@@ -464,7 +499,7 @@
     "message": "Použijte klávesu SHIFT pro výběr více než jedné kategorie v rozbalovacím seznamu."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Zaostřit na seznam zpráv při přepínání karet"
+    "message": "Zaměřit se na seznam zpráv při kliknutí na kartu"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Skrýt QuickFolders v záložkách s jednou zprávou"

@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Pour continuer à être utiles, nous, les développeurs de modules complémentaires, devons désormais financer les ressources nécessaires pour corriger et réécrire afin que nos utilisateurs puissent continuer à bénéficier des fonctionnalités que nous fournissons."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Prioriser les favoris QuickFolders dans les résultats de recherche."
+  "accessibility.count.unread": {
+    "message": "$count$ messages non lus",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ non lus dans les sous-dossiers",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ messages au total",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ au total dans les sous-dossiers",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Supprimer la commande 'Personnaliser l'icône' du menu contextuel du dossier."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Masquer les infobulles sur les onglets"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioriser les favoris QuickFolders dans les résultats de recherche."
   },
   "aria.a11underReview": {
     "message": "Nous examinons actuellement et améliorons l'accessibilité de cette page. Nous travaillons à rendre la fonctionnalité décrite plus compatible avec le clavier et les lecteurs d'écran. Merci de votre patience !"
@@ -474,7 +509,7 @@
     "message": "Utiliser la touche Maj pour sélectionner plusieurs catégories dans le menu déroulant."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Focus sur la liste des messages lors du changement d'onglet"
+    "message": "Mettre le focus sur la liste des messages en cliquant sur l'onglet"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Masquer QuickFolders dans les onglets de messages uniques"

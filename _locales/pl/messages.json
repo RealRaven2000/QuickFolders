@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Aby nadal być użytecznym, my, programiści dodatków, musimy teraz finansować zasoby potrzebne do naprawy i przepisywania, aby nasi użytkownicy mogli nadal korzystać z oferowanych przez nas funkcji."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Priorytet dla zakładek QuickFolders w wynikach wyszukiwania."
+  "accessibility.count.unread": {
+    "message": "$count$ nieprzeczytanych wiadomości",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ nieprzeczytanych w podfolderach",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ wiadomości łącznie",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ łącznie w podfolderach",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Usuń polecenie 'Dostosuj ikonę' z menu kontekstowego folderu."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Ukryj podpowiedzi na kartach"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Priorytet dla zakładek QuickFolders w wynikach wyszukiwania."
   },
   "aria.a11underReview": {
     "message": "Obecnie przeglądamy i poprawiamy dostępność tej strony. Pracujemy nad tym, aby opisana funkcjonalność była bardziej przyjazna dla klawiatury i kompatybilna z czytnikami ekranu. Dziękujemy za cierpliwość!"
@@ -460,7 +495,7 @@
     "message": "Używając klawisza Shift będzie można wybrać więcej niż jedną kategorię."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Uaktywniaj listę wiadomości podczas zmiany folderów"
+    "message": "Skup się na liście wiadomości po kliknięciu na kartę"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Ukryj QuickFolders w zakładkach pojedynczych wiadomości"

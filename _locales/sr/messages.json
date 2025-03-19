@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Да би и даље били корисни, програмери додатака сада морамо да финансирамо ресурсе потребне за поправљање и преписивање како би наши корисници могли и даље имати користи од функционалности коју пружамо."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Дај предност QuickFolders обележивачима у резултатима претраге."
+  "accessibility.count.unread": {
+    "message": "$count$ непрочитаних порука",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ непрочитаних у подпапкама",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ укупно порука",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ укупно у подпапкама",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Уклони наредбу 'Прилагоди икону' из контекстног менија фасцикле."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Сакриј савете на картицама"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Дај предност QuickFolders обележивачима у резултатима претраге."
   },
   "aria.a11underReview": {
     "message": "Trenutno pregledamo i poboljšavamo pristupačnost ove stranice. Radimo na tome da funkcionalnost opisana bude više kompatibilna sa tastaturom i čitačima ekrana. Hvala na strpljenju!"
@@ -415,7 +450,7 @@
     "message": "Позадина траке са алаткама тренутне фасцикле"
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Пребаци на списак порука када се мењају језичци"
+    "message": "Фокусирај се на листу порука при клику на картицу"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Сакријте QuickFolders на картицама појединачних порука"

@@ -922,6 +922,11 @@ QuickFolders.Interface = {
 		
 		button.addEventListener("keydown", (event) => {
 			let sibling;
+			QuickFolders.Util.logDebugOptional(
+        "accessibility",
+        `key event: ${event?.key} on [${event?.target.getAttribute("label")}]`,
+        event
+      );
 			switch (event.key) {
         case "ArrowRight":
         case "ArrowDown":
@@ -958,6 +963,11 @@ QuickFolders.Interface = {
 			button.setAttribute("tabindex", "-1");
 			sibling.setAttribute("tabindex", "0");
 			sibling.focus();
+			QuickFolders.Util.logDebugOptional(
+        "accessibility",
+        `focused QF Tab: [${sibling.getAttribute("label")}]`,
+        sibling
+      );			
 		});	
 
 	} ,
@@ -2579,19 +2589,20 @@ QuickFolders.Interface = {
 	// Helper method to create the ariaLabel
 	_createAriaLabel: function(label, isShowUnread, isShowTotals, numUnread, numUnreadInSubFolders, numTotal, numTotalInSubFolders) {
 		let ariaLabel = label;
+		const getBS = QuickFolders.Util.getBundleString;
 		if (isShowUnread) {
-			if (numUnread) ariaLabel += `, ${numUnread} unread messages`;
+			if (numUnread) ariaLabel += `, ${getBS("accessibility.count.unread", numUnread)}`;
 			if (numUnreadInSubFolders > 0) {
-				ariaLabel += `, ${numUnreadInSubFolders} unread in subfolders`;
+				ariaLabel += `, ${getBS("accessibility.count.unread.subfolders", numUnreadInSubFolders)}`;
 			}
 		}
 		if (!isShowTotals) {
       return ariaLabel;
     }
 		if (numTotal > 0 || numTotalInSubFolders > 0) {
-			if (numTotal) ariaLabel += `, ${numTotal} total messages`;
+			if (numTotal) ariaLabel += `, ${getBS("accessibility.count.total", numTotal)}`;
 			if (numTotalInSubFolders > 0) {
-					ariaLabel += `, ${numTotalInSubFolders} total in subfolders`;
+				ariaLabel += `, ${getBS("accessibility.count.total.subfolders", numTotalInSubFolders)}`;
 			}
 		}
 		return ariaLabel;
@@ -3061,7 +3072,11 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
       QI = QuickFolders.Interface,
       isEnterKey = (evt?.type == "keydown" && evt?.key == "Enter");
-		util.logDebugOptional("mouseclicks", "onButtonClick - isMouseClick = " + isMouseClick);
+		util.logDebugOptional(
+      "mouseclicks,accessibility",
+      "onButtonClick()", 
+			{isMouseClick, isEnterKey, evt}
+    );
 		// this may happen when we right-click the menu with CTRL
 		try {
 			let tag = button.tagName || null;
@@ -3126,56 +3141,72 @@ QuickFolders.Interface = {
 				QuickFolders.Util.logHighlight(`Couldn't find folder from  QuickFolders Tab URI: ${URI}`);
 			}
 		}
-		if (button.folder) {
-			// [Bug 26190] - already selected = drill down on second click
-			// [Bug 26389] - Single Mail Tab should always open the folder!
-			if (button.folder === util.CurrentFolder & QI.CurrentTabMode != "mailMessageTab") {
-				if (evt.type=="click" && evt.button==2) { // right click
-					const popupId = button.getAttribute("popupId");
-					if (!popupId) return;
-					// linux avoid this getting triggered twice
-					const activePopup = document.getElementById(popupId);
-					if (!activePopup) return;
-					// show only subfolders, without commands!
-					QuickFolders.Interface.showPopup(button, popupId, evt, true);
-				}
-				if (isEnterKey) {
-					QuickFolders.Util.threadPane.focus(); // keyboard Enter: focus threadPane
-				}
-				return;
-			}
-			
-			// rule out right clicks - we do not want to change folder for these
-			if (evt.type && evt.type=="click" && evt.button!=0) {
-				return; 
-			}
 
-			// interface speed hack: mark the button as selected right away!
-			if (evt.originalTarget && evt.originalTarget.tagName == "menuitem") {
-				return; // [issue 205] if the tag is a menuitem we do not call this code.
-			} 
+		// invalid folder?
+		if (!button.folder) {
+			QuickFolders.Util.logHighlight(
+        "onButtonClick() - no valid folder.\n" + `folderURI=${button.getAttribute("folderURI")}`
+      );
+			if (evt.button == 0) {
+				// left-click only
+				// force select folder on invalid URI - this will suggest to delete the folder.
+				let uri = button.getAttribute("folderURI");
+				if (uri) {
+					QuickFolders_MySelectFolder(uri);
+				}
+			}
+			return;
+		}
 
-			button.setAttribute("tabindex", "0");
-			this.onTabSelected(button);
-			QuickFolders_MySelectFolder(button.folder.URI);
-			evt.preventDefault(); // prevent opening the popup
-			if (isMouseClick) {
-				setTimeout(() => {
-					// add keyboard focus
-					button.focus({ focusVisible: true });
-				}, 0);
-			} 
+
+		// [Bug 26190] - already selected = drill down on second click
+		// [Bug 26389] - Single Mail Tab should always open the folder!
+		if ((button.folder === util.CurrentFolder) && (QI.CurrentTabMode != "mailMessageTab")) {
+			if (evt.type == "click" && evt.button == 2) {
+				// right click
+				const popupId = button.getAttribute("popupId");
+				if (!popupId) return;
+				// linux avoid this getting triggered twice
+				const activePopup = document.getElementById(popupId);
+				if (!activePopup) return;
+				// show only subfolders, without commands!
+				QuickFolders.Interface.showPopup(button, popupId, evt, true);
+			}
 			if (isEnterKey) {
 				QuickFolders.Util.threadPane.focus(); // keyboard Enter: focus threadPane
 			}
 			return;
 		}
-		if (evt.button==0) { // left-click only
-			// force select folder on invalid URI - this will suggest to delete the folder.
-			let uri = button.getAttribute("folderURI");
-			if (uri) {
-				QuickFolders_MySelectFolder(uri);
-			}
+
+		// rule out right clicks - we do not want to change folder for these
+		if (evt.type && evt.type == "click" && evt.button != 0) {
+			return;
+		}
+
+		// interface speed hack: mark the button as selected right away!
+		if (evt.originalTarget && evt.originalTarget.tagName == "menuitem") {
+			return; // [issue 205] if the tag is a menuitem we do not call this code.
+		}
+
+		button.setAttribute("tabindex", "0");
+		this.onTabSelected(button);
+		QuickFolders_MySelectFolder(button.folder.URI);
+		evt.preventDefault(); // prevent opening the popup
+		// see l10n autoFocusPreview: 
+		// if this setting is set user expects to be in thread pane when the click a tab!
+		// => this was done by MySelectFolder 
+		if (isMouseClick && !QuickFolders.Preferences.isFocusPreview) {
+			setTimeout(() => {
+				// add keyboard focus
+				button.focus({ focusVisible: true });
+				QuickFolders.Util.logDebugOptional(
+					"accessibility",
+					`Set focus on QF Tab [${button.getAttribute("label")}] !`
+				);
+			}, 25);
+		}
+		if (isEnterKey) {
+			QuickFolders.Util.threadPane.focus(); // keyboard Enter: focus threadPane
 		}
 	} ,
 
@@ -6475,29 +6506,32 @@ QuickFolders.Interface = {
 
 	setFocusThreadPane: function(isDelay=false) {
 		window.gTabmail?.currentAboutMessage?.document.getElementById("messagepane").focus();
-    let threadTree = this.getThreadTree();
-		if (threadTree) {
-			// find the selected row, focus that.
-			setTimeout(
-				() => {
-					let firstSelectedMailRow = threadTree.table.body.querySelector("[aria-selected=true]");
-					if (firstSelectedMailRow) {
-						QuickFolders.Util.logDebugOptional("folders.select", "focusing first Selected Mail Row.");
-						firstSelectedMailRow.focus();
-					} else {
-						QuickFolders.Util.logDebugOptional("folders.select", "focusing threadTree.");
-						threadTree.table.body.focus();
-					}
-				},
-				isDelay ? 1000 : 0
-			);
-			
+    const threadTree = this.getThreadTree();
+		if (!threadTree) {
+			return;
 		}
+		const debugSwitches = "accessibility,folders.select";;
+		// find the selected row, focus that.
+		setTimeout(
+			() => {
+				const firstSelectedMailRow = threadTree.table.body.querySelector("[aria-selected=true]");
+				if (firstSelectedMailRow) {
+					QuickFolders.Util.logDebugOptional(debugSwitches, "focusing first Selected Mail Row.");
+					firstSelectedMailRow.focus();
+				} else {
+					QuickFolders.Util.logDebugOptional(debugSwitches, "focusing threadTree.");
+					threadTree.table.body.focus();
+				}
+			},
+			isDelay ? 1000 : 0
+		);
   } ,
 
 	setFocusTabs: function() {
 		const QI = QuickFolders.Interface;
 		const fld = GetFirstSelectedMsgFolder();
+		QuickFolders.Util.logDebugOptional("accessibility","setFocusTabs()");
+
 		let button = QI.getButtonByFolder(fld);
 		if (!button) {
 			const idx = (QI.buttonsByOffset[0]?.id == "QuickFolders-Recent") ? 1 : 0;
@@ -6513,6 +6547,10 @@ QuickFolders.Interface = {
 		setTimeout(() => {
 			// add keyboard focus
 			button.focus({ focusVisible: true });
+			QuickFolders.Util.logDebugOptional(
+				"accessibility",
+				`Set focus on QF Tab [${button.getAttribute("label")}] !`
+			);			
 		}, 0);
 	} ,
 

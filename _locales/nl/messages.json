@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Om nuttig te blijven, moeten wij add-on-ontwikkelaars nu de middelen financieren die nodig zijn om te repareren en te herschrijven, zodat onze gebruikers kunnen blijven profiteren van de functionaliteit die we bieden."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Geef QuickFolders-bladwijzers prioriteit in zoekresultaten."
+  "accessibility.count.unread": {
+    "message": "$count$ ongelezen berichten",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ ongelezen in submappen",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ berichten in totaal",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ in totaal in submappen",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Verwijder het commando 'Pictogram aanpassen' uit het contextmenu van de map."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Tooltips op tabbladen verbergen"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Geef QuickFolders-bladwijzers prioriteit in zoekresultaten."
   },
   "aria.a11underReview": {
     "message": "We zijn momenteel bezig met het beoordelen en verbeteren van de toegankelijkheid van deze pagina. We werken eraan om de beschreven functionaliteit meer geschikt te maken voor toetsenbordgebruik en schermlezers. Bedankt voor uw geduld!"
@@ -457,7 +492,7 @@
     "message": "Gebruik de Shift-toets om meer dan één categorie in het vervolgkeuzemenu te selecteren."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Focus op berichtenlijst leggen bij wisselen van tabblad"
+    "message": "Focus op berichtenlijst bij klikken op tabblad"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Verberg QuickFolders in tabbladen met één bericht"

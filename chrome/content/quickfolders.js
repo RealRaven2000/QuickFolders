@@ -2236,19 +2236,12 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
   if (prefs.isFocusPreview && QuickFolders.Interface.getThreadPane()) {
     util.logDebugOptional("folders.select", "setFocusThreadPane()");
     QuickFolders.Interface.setFocusThreadPane();
-    /* [issue 417] Message list scrolls to top when switching folders
-    let doc = QuickFolders.Util.document3pane;
-    if (doc) {
-      doc.commandDispatcher.advanceFocus();
-      doc.commandDispatcher.rewindFocus();
-    }
-    */
   }
   return true;
 }; // MySelectFolder
 
 
-QuickFolders.FolderTreeSelect = function FolderTreeSelect(event) {
+QuickFolders.FolderTreeSelect = (event) => {
   // onSelect in Folder Tree
   let util = QuickFolders.Util,
       logDO = util.logDebugOptional.bind(util),

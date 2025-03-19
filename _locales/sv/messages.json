@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "För att fortsätta vara användbar måste vi tilläggsutvecklare nu finansiera de resurser som behövs för att fixa och skriva om så att våra användare kan dra nytta av den funktionalitet vi tillhandahåller."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Prioritera QuickFolders-bokmärken i sökresultaten."
+  "accessibility.count.unread": {
+    "message": "$count$ olästa meddelanden",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ olästa i undermappar",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ meddelanden totalt",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ totalt i undermappar",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Ta bort kommandot 'Anpassa ikon' från mappens snabbmeny."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Dölj verktygstips på flikar"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritera QuickFolders-bokmärken i sökresultaten."
   },
   "aria.a11underReview": {
     "message": "Vi håller för närvarande på att granska och förbättra tillgängligheten för denna sida. Vi arbetar på att göra den beskrivna funktionaliteten mer kompatibel med tangentbord och skärmläsare. Tack för ditt tålamod!"
@@ -464,7 +499,7 @@
     "message": "Använd SHIFT-tangenten för att välja fler än en kategori i rullgardinslisten."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Fokusera på meddelandelistan när du byter flik"
+    "message": "Fokusera på meddelandelistan vid klick på flik"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Dölj QuickFolders i flikar med enstaka meddelanden"

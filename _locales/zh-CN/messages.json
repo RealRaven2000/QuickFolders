@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "为了继续发挥作用，我们的附加组件开发人员现在需要资助修复和重写所需的资源，以便我们的用户可以继续从我们提供的功能中受益。"
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "在搜索结果中优先显示 QuickFolders 书签。"
+  "accessibility.count.unread": {
+    "message": "$count$ 封未读邮件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "子文件夹中有 $count$ 封未读邮件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "总计 $count$ 封邮件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "子文件夹中总计 $count$ 封邮件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "从文件夹上下文菜单中移除“自定义图标”命令。"
+  },
+  "accessibility.hideTooltips": {
+    "message": "隐藏标签页工具提示"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "在搜索结果中优先显示 QuickFolders 书签。"
   },
   "aria.a11underReview": {
     "message": "我们正在审核和改善此页面的可访问性。我们正在努力使描述的功能更加兼容键盘和屏幕阅读器。感谢您的耐心！"
@@ -461,7 +496,7 @@
     "message": "使用SHIFT键可以在下拉菜单上选择多个类别。"
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "切换导航卡时将窗口焦点置于消息列表"
+    "message": "点击标签页时聚焦到邮件列表"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "在单个消息选项卡中隐藏 QuickFolders"

@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Um weiterhin nützlich zu sein, müssen Add-On-Entwickler nun vermehrt die für die Reparatur und das Umschreiben erforderlichen Mittel aufbringen, damit unsere Benutzer weiterhin von den Funktionen profitieren können, die wir an den Tisch bringen."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "QuickFolders-Lesezeichen bei der Suche zuvorderst anzeigen."
+  "accessibility.count.unread": {
+    "message": "$count$ ungelesene Nachrichten",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ ungelesen in Unterordnern",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ gesamte Nachrichten",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ insgesamt in Unterordnern",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Den Befehl 'Symbol anpassen' aus dem Ordner-Kontextmenü entfernen."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Tooltips auf Tabs ausblenden"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "QuickFolders-Lesezeichen bei der Suche zuvorderst anzeigen."
   },
   "aria.a11underReview": {
     "message": "Wir überprüfen und verbessern derzeit die Barrierefreiheit dieser Seite. Wir arbeiten daran, die beschriebene Funktionalität benutzerfreundlicher für Tastatur und Bildschirmleser zu gestalten. Vielen Dank für Ihre Geduld!"
@@ -464,7 +499,7 @@
     "message": "Mit der UMSCHALT Taste kann man zusätzliche Kategorien aus dem Menü wählen."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Bei Verzeichniswechsel Eingabefokus auf Email-Liste"
+    "message": "Bei Klicken auf Tabs Eingabefokus auf Email-Liste setzen"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "QuickFolders in Einzelnachtrichten-Tabs ausblenden"

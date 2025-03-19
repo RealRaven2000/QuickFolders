@@ -19,11 +19,46 @@
   "addon-authors-struggle": {
     "message": "Để tiếp tục hữu ích, các nhà phát triển Tiện ích bổ sung của chúng tôi hiện cần tài trợ các tài nguyên cần thiết để sửa và viết lại để người dùng của chúng tôi có thể tiếp tục hưởng lợi từ chức năng mà chúng tôi cung cấp."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Ưu tiên dấu trang QuickFolders trong kết quả tìm kiếm."
+  "accessibility.count.unread": {
+    "message": "$count$ thư chưa đọc",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ chưa đọc trong thư mục con",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "Tổng cộng $count$ thư",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "Tổng cộng $count$ trong thư mục con",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Xóa lệnh 'Tùy chỉnh biểu tượng' khỏi menu ngữ cảnh của thư mục."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Ẩn chú thích công cụ trên tab"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Ưu tiên dấu trang QuickFolders trong kết quả tìm kiếm."
   },
   "aria.a11underReview": {
     "message": "Hiện tại chúng tôi đang xem xét và cải thiện khả năng tiếp cận của trang này. Chúng tôi đang làm việc để làm cho các chức năng mô tả trở nên thân thiện hơn với bàn phím và tương thích với các phần mềm đọc màn hình. Cảm ơn bạn đã kiên nhẫn!"
@@ -379,7 +414,7 @@
     "message": "nền của Thanh Công Cụ Thư Mục Hiện Tại"
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Tập trung vào danh sách tin nhắn khi chuyển các thẻ"
+    "message": "Tập trung vào danh sách thư khi nhấp vào tab"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Ẩn QuickFolders trong một tab tin nhắn"

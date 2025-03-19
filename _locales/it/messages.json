@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Per proseguire il lavoro, gli sviluppatori delle estensioni debbono ora disporre di risorse finanziarie necessarie per poterle correggere e/o riscrivere così che gli utenti possano continuare a usufruire delle loro funzionalità."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Dai priorità ai segnalibri di QuickFolders nei risultati di ricerca."
+  "accessibility.count.unread": {
+    "message": "$count$ messaggi non letti",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ non letti nelle sottocartelle",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ messaggi totali",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ totali nelle sottocartelle",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Rimuovi il comando 'Personalizza icona' dal menu contestuale della cartella."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Nascondi i suggerimenti nelle schede"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Dai priorità ai segnalibri di QuickFolders nei risultati di ricerca."
   },
   "aria.a11underReview": {
     "message": "Stiamo attualmente esaminando e migliorando l'accessibilità di questa pagina. Stiamo lavorando per rendere la funzionalità descritta più compatibile con la tastiera e i lettori di schermo. Grazie per la vostra pazienza!"
@@ -471,7 +506,7 @@
     "message": "Utilizzare il tasto Maiusc (Shift) per selezionare più di una categoria dall'elenco a discesa."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Cambiando scheda si porta in primo piano l'elenco dei messaggi"
+    "message": "Focalizza l'elenco dei messaggi quando si fa clic sulla scheda"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Nasconde QuickFolders nelle schede con singoli messaggi"

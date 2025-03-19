@@ -21,11 +21,46 @@
   "addon-authors-struggle": {
     "message": "To continue to be useful, Add-on developers now need to fund the resources needed to fix and rewrite so that our users can keep benefiting from the functionality we bring to the table."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Prioritize QuickFolders bookmarks in search results."
+  "accessibility.count.unread": {
+    "message": "$count$ unread messages",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ unread in subfolders",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ total messages",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ total in subfolders",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Remove the 'Customize Icon' command from the folder context menu."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Hide tooltips on tabs"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritize QuickFolders bookmarks in search results."
   },
   "aria.a11underReview": {
     "message": "We are currently reviewing and improving the accessibility of this page. We are working on making the described functionality more keyboard-friendly and screen reader compatible. Thank you for your patience!."
@@ -470,7 +505,7 @@
     "message": "Use the SHIFT key in order to select more than one category on the dropdown."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Focus on message list when changing tabs"
+    "message": "Focus on message list when clicking on tab"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Hide QuickFolders in single message tabs"

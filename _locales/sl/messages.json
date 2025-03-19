@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Da bomo še naprej koristni, moramo razvijalci dodatkov zdaj financirati vire, potrebne za popravljanje in prepisovanje, tako da bodo lahko naši uporabniki še naprej koristili funkcionalnost, ki jo ponujamo."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Daj prednost zaznamkom QuickFolders v rezultatih iskanja."
+  "accessibility.count.unread": {
+    "message": "$count$ neprebranih sporočil",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ neprebranih v podmapah",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ sporočil skupaj",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ skupaj v podmapah",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Odstrani ukaz 'Prilagodi ikono' iz kontekstnega menija mape."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Skrij orodne namige na zavihkih"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Daj prednost zaznamkom QuickFolders v rezultatih iskanja."
   },
   "aria.a11underReview": {
     "message": "Trenutno pregledamo in izboljšujemo dostopnost te strani. Delamo na tem, da bi bila opisana funkcionalnost bolj združljiva s tipkovnico in bralniki zaslona. Hvala za potrpežljivost!"
@@ -445,7 +480,7 @@
     "message": "Uporabite tipko SHIFT, da v spustnem seznamu izberete več kot eno kategorijo."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Osredotoči se seznam sporočil ob spreminjanju zavihkov"
+    "message": "Osredotoči se na seznam sporočil ob kliku na zavihek"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "Skrij mape QuickFolders na zavihkih posameznih sporočil"

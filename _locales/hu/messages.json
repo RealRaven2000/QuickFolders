@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "Ahhoz, hogy továbbra is hasznosak legyenek, a bővítmények fejlesztőinek most finanszírozniuk kell a javításhoz és átíráshoz szükséges erőforrásokat, hogy felhasználóink továbbra is részesülhessenek az asztalra hozott funkcionalitásból."
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Prioritizáld a QuickFolders könyvjelzőket a keresési eredményekben."
+  "accessibility.count.unread": {
+    "message": "$count$ olvasatlan üzenet",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ olvasatlan az almappákban",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "$count$ üzenet összesen",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ összesen az almappákban",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "Távolítsd el a 'Ikon testreszabása' parancsot a mappa helyi menüjéből."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Eszköztippek elrejtése a lapokon"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritizáld a QuickFolders könyvjelzőket a keresési eredményekben."
   },
   "aria.a11underReview": {
     "message": "Jelenleg felülvizsgáljuk és javítjuk az oldal hozzáférhetőségét. Dolgozunk azon, hogy a leírt funkciók jobban kompatibilisek legyenek a billentyűzettel és a képernyőolvasókkal. Köszönjük türelmét!"
@@ -425,7 +460,7 @@
     "message": "A SHIFT gombbal több kategóriát is kiválaszthat a legördülő menüből."
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "Üzenetlista kijelölése fülek váltásakor"
+    "message": "Fókuszálás az üzenetlistára a fülre kattintáskor"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "A gyorsmappák elrejtése egyetlen üzenet fülén"

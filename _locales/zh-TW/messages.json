@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "為了繼續發揮作用，我們的附加組件開發人員現在需要資助修復和重寫所需的資源，以便我們的用戶可以繼續從我們提供的功能中受益。"
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "在搜尋結果中優先顯示 QuickFolders 書籤。"
+  "accessibility.count.unread": {
+    "message": "$count$ 封未讀郵件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "子資料夾中有 $count$ 封未讀郵件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "總計 $count$ 封郵件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "子資料夾中總計 $count$ 封郵件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "從資料夾的上下文選單中移除「自訂圖示」指令。"
+  },
+  "accessibility.hideTooltips": {
+    "message": "隱藏分頁工具提示"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "在搜尋結果中優先顯示 QuickFolders 書籤。"
   },
   "aria.a11underReview": {
     "message": "我們正在審核和改善此頁面的可訪問性。我們正在努力使描述的功能更兼容鍵盤和螢幕閱讀器。感謝您的耐心！"
@@ -460,7 +495,7 @@
     "message": "按住 Shift 鍵以在下拉式選單中選取多個分類。"
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "當改變標籤時聚焦於信件清單"
+    "message": "點擊標籤頁時聚焦到郵件列表"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "在單個消息選項卡中隱藏 QuickFolders"

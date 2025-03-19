@@ -22,11 +22,46 @@
   "addon-authors-struggle": {
     "message": "引き続き有用であるために、アドオン開発者は、ユーザーが提供する機能の恩恵を受け続けることができるように、修正と書き換えに必要なリソースに資金を提供する必要があります。"
   },
-  "accessibility.prioritizeQFtabs": {
-    "message": "検索結果で QuickFolders のブックマークを優先表示する。"
+  "accessibility.count.unread": {
+    "message": "$count$ 件の未読メッセージ",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "サブフォルダー内の未読: $count$ 件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total": {
+    "message": "合計 $count$ 件のメッセージ",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "サブフォルダー内の合計: $count$ 件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
   },
   "accessibility.hideIconMenu": {
     "message": "フォルダーのコンテキストメニューから 'アイコンをカスタマイズ' コマンドを削除する。"
+  },
+  "accessibility.hideTooltips": {
+    "message": "タブのツールチップを非表示にする"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "検索結果で QuickFolders のブックマークを優先表示する。"
   },
   "aria.a11underReview": {
     "message": "現在、このページのアクセシビリティを確認および改善しています。記載された機能をキーボードやスクリーンリーダーにより対応できるように改善しています。ご協力ありがとうございます！"
@@ -448,7 +483,7 @@
     "message": "ドロップダウン上で SHIFT キーを押して複数のカテゴリを選択します。"
   },
   "qf.checkbox.autoFocusPreview": {
-    "message": "タブの変更時にメッセージリストをフォーカスする"
+    "message": "タブをクリックするとメッセージリストにフォーカス"
   },
   "qf.checkbox.hideInSingleMessage": {
     "message": "単一のメッセージタブでQuickFoldersを非表示にする"

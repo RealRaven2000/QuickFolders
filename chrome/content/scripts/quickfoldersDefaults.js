@@ -164,6 +164,7 @@ pref("extensions.quickfolders.style.ColoredTab.paletteType", 1); // default to n
 
 // pref("extensions.quickfolders.accounts", "[]"); //  json string with accounts matching with folders array
 // Debugging Options
+pref("extensions.quickfolders.debug.accessibility",false);
 pref("extensions.quickfolders.debug.firstrun", false);
 pref("extensions.quickfolders.debug.buttonStyle", false);
 pref("extensions.quickfolders.debug.bookmarks", false);

@@ -188,7 +188,7 @@ END LICENSE BLOCK */
   6.9.2 QuickFolders Pro - 26/01/2025
     ## [issue 532] Return key no longer moves emails when search finds only one folder
 
-  6.10 QuickFolders Pro - WIP
+  6.10 QuickFolders Pro - 17/03/2025
     ## New option to always display QuickFolders Options in a tab
     ## [issue 540] quickJump feature - Shortcut key to open specified folder in a new TB tab
     ## [issue 542] quickJump - Modifier key [Alt] to open folder in new window 
@@ -208,8 +208,13 @@ END LICENSE BLOCK */
     ## [issue 543] Removed inline event handlers which will be deprecated in Thunderbird 136
     ## [issue 547] Thunderbird 136 retires ChromeUtils.import - replace with importESModule
     ## [issue 555] Support keyboard navigation / screen readers in QuickFolders settings [WIP]
+    ## [issue 553] Fixed an issue with dark icons on active options tab for better visibility. 
 
-
+  6.10.1 QuickFolders Pro - WIP
+    ## [issue 553] improve svg icon coloring for tabs, to avoid dark icons on dark backgrounds
+    ##             this is achieved by adding color-scheme rules for palette based colors
+    ## Improved keyboard focus + navigation in QuickFolders Tabs; 
+  
 	TO DO next
 	==========
     ## WIP: command handler for tbkeys-lite! see "shortcut" in qf-background.js
@@ -552,7 +557,7 @@ var QuickFolders = {
           });
         }
         win.addEventListener(
-          "keydown",
+          "keyup",
           (QuickFolders.keyListen = function (e) {
             QuickFolders.Interface.windowKeyPress(e, "down");
           }),
@@ -583,42 +588,39 @@ var QuickFolders = {
 		
     util.logDebug("initTabsFromEntries()");
 		if (folderEntries.length) try {
-			let currentFolder = util.CurrentFolder;
 			that.Model.selectedFolders = folderEntries;
 			QI.updateUserStyles();
 
-			let tabmail = document.getElementById("tabmail"),
-					idx = QuickFolders.tabContainer.tabbox.selectedIndex || 0,
-			    tab = util.getTabInfoByIndex(tabmail, idx);
+			const tabmail = document.getElementById("tabmail"),
+        idx = QuickFolders.tabContainer.tabbox.selectedIndex || 0,
+        tab = util.getTabInfoByIndex(tabmail, idx);
           
-			if (tab) {
-				tabMode = util.getTabMode(tab);
-				// is this a new Thunderbird window?
-				let cats;
-				if (typeof (tab.QuickFoldersCategory) == 'undefined') {
-					let lc = QuickFolders.Preferences.lastActiveCats;
-					// if (currentFolder) {
-						// select first (or all?) category of any tab referencing this folder
-						// if there is an originating window, try to inherit the categories from the last one
-						if (lc) 
-							cats = lc;
-						else
-							cats = QuickFolders.FolderCategory.ALL; // retrieve list!
-					// }
-				} else {
-				  cats = tab.QuickFoldersCategory;
-        }
-				
-				util.logDebug("init: setting categories to " + cats);
-				if (["folder","message","mail3PaneTab"].includes(tabMode)) {
-					// restore categories of first tab; set to "all" if not set
-					QI.currentActiveCategories = cats;
-				}
-			}
-			else {
-				util.logDebug('init: could not retrieve tab / tabMode\n tab=' + tab);
+			if (!tab) {
+        util.logDebug("init: could not retrieve tab / tabMode\n tab=" + tab);
+        return;
       }
-				
+      tabMode = util.getTabMode(tab);
+      // is this a new Thunderbird window?
+      let cats;
+      if (typeof (tab.QuickFoldersCategory) == 'undefined') {
+        let lc = QuickFolders.Preferences.lastActiveCats;
+        // if (currentFolder) {
+          // select first (or all?) category of any tab referencing this folder
+          // if there is an originating window, try to inherit the categories from the last one
+          if (lc) 
+            cats = lc;
+          else
+            cats = QuickFolders.FolderCategory.ALL; // retrieve list!
+        // }
+      } else {
+        cats = tab.QuickFoldersCategory;
+      }
+      
+      util.logDebug("init: setting categories to " + cats);
+      if (["folder","message","mail3PaneTab"].includes(tabMode)) {
+        // restore categories of first tab; set to "all" if not set
+        QI.currentActiveCategories = cats;
+      }	
 		}
 		catch(ex) {
 			util.logException('init: folderEntries', ex);
@@ -631,7 +633,7 @@ var QuickFolders = {
       
       if ((tabMode == "folder" || tabMode == "mail3PaneTab") && QI.currentActiveCategories!=QuickFolders.FolderCategory.INIT) {
         util.logDebugOptional('categories', "forcing selectCategory");
-        let bkCat = QI.currentActiveCategories; // force redraw by deleting it
+        const bkCat = QI.currentActiveCategories; // force redraw by deleting it
         QI._selectedCategories = null;
         QI.selectCategory(bkCat, false);
       }
@@ -2478,19 +2480,16 @@ QuickFolders.FolderListener = {
 				case "FolderLoaded": 
 					try {
             log("events","event: " + eString + " item:" + item.prettyName);
-						if (QI) {
-              // make sure this event is not a "straggler"
-							try {
-								let folders = GetSelectedMsgFolders(),
-										itemFound = util.iterateFolders(folders, item, QI.onTabSelected);
-								if (!itemFound) {
-									log("events", `FolderLoaded - belated on folder ${item.prettyName} - NOT shown in current folder bar!`);
-								}
-							}
-							catch (ex) {
-								// cannot  get selected folders: new windows maybe?
-							}
-              // use shim to avoid foreach warning
+						if (!QI) { return; }
+            // make sure this event is not a "straggler"
+            try {
+              let folders = GetSelectedMsgFolders(),
+                  itemFound = util.iterateFolders(folders, item, QI.onTabSelected);
+              if (!itemFound) {
+                log("events", `FolderLoaded - belated on folder ${item.prettyName} - NOT shown in current folder bar!`);
+              }
+            } catch (ex) {
+              // cannot  get selected folders: new windows maybe?
             }
 					}
 					catch(e) {
@@ -2510,18 +2509,19 @@ QuickFolders.FolderListener = {
 						QuickFolders.Model.moveFolderURI(oldUri, newFolderName);
             QuickFolders.FolderListener.newFolderName = null;
             QuickFolders.FolderListener.oldFolderUri = null;
+            break;
 					}
-					else { // [Bug 26645]  moving folders in IMAP tree - check referential integrity of model
-					  let movedFolder = QuickFolders.FolderListener.lastRemoved || item;
-						if (movedFolder) {
-							// if folder was moved, the prettyName is the same:
-							// if (movedFolder.prettyName == item.prettyName ) { // && item.server.type=='imap'
-								QuickFolders.Model.moveFolderURI(movedFolder.URI, item.URI);
-							// }
-						}
-						QuickFolders.FolderListener.lastRemoved = null;
-						QuickFolders.FolderListener.oldFolderUri = null;
-					}
+					// [Bug 26645]  moving folders in IMAP tree - check referential integrity of model
+          let movedFolder = QuickFolders.FolderListener.lastRemoved || item;
+          if (movedFolder) {
+            // if folder was moved, the prettyName is the same:
+            // if (movedFolder.prettyName == item.prettyName ) { // && item.server.type=='imap'
+              QuickFolders.Model.moveFolderURI(movedFolder.URI, item.URI);
+            // }
+          }
+          QuickFolders.FolderListener.lastRemoved = null;
+          QuickFolders.FolderListener.oldFolderUri = null;
+        
 					break;
         default:
           log("events","event: " + eString);

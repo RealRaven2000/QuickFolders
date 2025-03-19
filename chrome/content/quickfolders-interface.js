@@ -268,7 +268,7 @@ QuickFolders.Interface = {
 		this.TimeoutID=0;
 	},
 
-	createRecentPopup: function createRecentPopup(passedPopup, isDrag, isCreate, popupId) {
+	createRecentPopup: function (passedPopup, isDrag, isCreate, popupId) {
 		let menupopup,
 		    prefs = QuickFolders.Preferences,
         util = QuickFolders.Util;
@@ -840,7 +840,7 @@ QuickFolders.Interface = {
 							QuickFolders.Interface.addAccessibility(button);
 
 							button.setAttribute("tabindex", isFirst ? "0" : "-1");
-							button.setAttribute("role","button");
+							button.setAttribute("role","listitem"); // instead of button
 							countValidTabs++;
 						}
               
@@ -923,27 +923,37 @@ QuickFolders.Interface = {
 		button.addEventListener("keydown", (event) => {
 			let sibling;
 			switch (event.key) {
-				case "ArrowRight":
+        case "ArrowRight":
+        case "ArrowDown":
 					sibling = goNextSibling(1);
-					break;
-				case "ArrowLeft":
-					sibling = goNextSibling(-1);
-					break;
-				case "Enter":
-					if (isRecentButton(button)) break;
-					QuickFolders.Interface.onButtonClick(button, event, false);
-					break;
-				case "ContextMenu": // Windows Menu key
-					// Trigger your context menu logic here
-					console.log("Context menu key pressed!");
-					break;
-				case "F2": // Rename action
-				  if (isRecentButton(button)) break;
-					QuickFolders.Interface.onRenameBookmark(button);
-					event.preventDefault(); // Prevent any default behavior
-					break;
+          break;
+        case "ArrowLeft":
+        case "ArrowUp":
+          sibling = goNextSibling(-1);
+          break;
+        case "Enter":
+          if (isRecentButton(button)) {
+						QuickFolders.Interface.onClickRecent(button, event, true);
+					} else {
+          	QuickFolders.Interface.onButtonClick(button, event, false);
+					}
+          return;
+        case "ContextMenu": // Windows Menu key
+          // Trigger your context menu logic here
+          console.log("Context menu key pressed!");
+          return;
+        case "F2": // Rename action
+          if (isRecentButton(button)) break;
+          QuickFolders.Interface.onRenameBookmark(button);
+          event.preventDefault(); // Prevent any default behavior
+          return;
+				default:
+					return;
+      }
+			// add Shift+cursor for moving
+			if (event.shiftKey) {
+				console.log(`Move QuickFolders Tab ${event.key}`);
 			}
-			if (!sibling) return;
 			event.preventDefault();
 			button.setAttribute("tabindex", "-1");
 			sibling.setAttribute("tabindex", "0");
@@ -1891,11 +1901,11 @@ QuickFolders.Interface = {
 
 		try {
 			// store info in tabInfo, so we can restore it easier later per mail Tab
-			let tabmail = document.getElementById("tabmail");
+			const tabmail = document.getElementById("tabmail");
 			idx = QuickFolders.tabContainer.tabbox.selectedIndex || 0;
 			// let's only store this if this is the first tab...
-			let tab = util.getTabInfoByIndex(tabmail, idx),
-			    tabMode = util.getTabMode(tab);
+			const tab = util.getTabInfoByIndex(tabmail, idx),
+			  tabMode = util.getTabMode(tab);
 			if (tab &&
 			    (["mailMessageTab", "folder", "mail3PaneTab"].includes (tabMode) )) {
 				tab.QuickFoldersCategory = QI.currentActiveCategories; 
@@ -2548,80 +2558,145 @@ QuickFolders.Interface = {
 		return p; // return the popup element
 	} ,
 
-	getButtonLabel: function getButtonLabel(folder, useName, offset, entry, stats) {
+
+	// Helper method to determine if counts should be shown
+	_shouldShowCounts: function(entry, isShowFlag, suppressFlag) {
+		if (entry && entry.flags) {
+			return (entry.flags & suppressFlag) ? false : isShowFlag;
+		}
+		return isShowFlag;
+	},
+
+	// Helper method to add counts to display array
+	_addCountToDisplay: function(displayNumbers, numCount, numSubfolderCount, showSubfolderCount) {
+		const triangleDown = "\u25be".toString();
+		let s = "";
+		if (numCount > 0) s += numCount;
+		if (numSubfolderCount > 0 && showSubfolderCount) s += triangleDown + numSubfolderCount;
+		if (s !== "") displayNumbers.push(s);
+	},
+
+	// Helper method to create the ariaLabel
+	_createAriaLabel: function(label, isShowUnread, isShowTotals, numUnread, numUnreadInSubFolders, numTotal, numTotalInSubFolders) {
+		let ariaLabel = label;
+		if (isShowUnread) {
+			if (numUnread) ariaLabel += `, ${numUnread} unread messages`;
+			if (numUnreadInSubFolders > 0) {
+				ariaLabel += `, ${numUnreadInSubFolders} unread in subfolders`;
+			}
+		}
+		if (!isShowTotals) {
+      return ariaLabel;
+    }
+		if (numTotal > 0 || numTotalInSubFolders > 0) {
+			if (numTotal) ariaLabel += `, ${numTotal} total messages`;
+			if (numTotalInSubFolders > 0) {
+					ariaLabel += `, ${numTotalInSubFolders} total in subfolders`;
+			}
+		}
+		return ariaLabel;
+	},
+
+	getButtonLabel: function (folder, useName, offset, entry, stats) {
 		const prefs = QuickFolders.Preferences,
-					util = QuickFolders.Util,
-					triangleDown = "\u25be".toString();
+			util = QuickFolders.Util;
 
 		try {
-			let isFolderInterface = folder && (typeof folder.getNumUnread!="undefined") && (typeof folder.getTotalMessages!="undefined"),
-			    nU = isFolderInterface ? folder.getNumUnread(false) : 0,
-          numUnread = (nU==-1) ? 0 : nU, // Postbox root folder fix
-			    numUnreadInSubFolders = isFolderInterface ? (folder.getNumUnread(true) - numUnread) : 0,
-			    numTotal = isFolderInterface ? folder.getTotalMessages(false) : 0,
-			    numTotalInSubFolders = isFolderInterface ? (folder.getTotalMessages(true) - numTotal) : 0,
-          isShowTotals = prefs.isShowTotalCount,
-          isShowUnread = prefs.isShowUnreadCount,
-			    displayNumbers = [],
-			    label = "",
-          s = "";
+      const isFolderInterface =
+          folder &&
+          typeof folder.getNumUnread != "undefined" &&
+          typeof folder.getTotalMessages != "undefined",
+        nU = isFolderInterface ? folder.getNumUnread(false) : 0,
+        numUnread = nU == -1 ? 0 : nU, // Postbox root folder fix
+        numUnreadInSubFolders = isFolderInterface ? folder.getNumUnread(true) - numUnread : 0,
+        numTotal = isFolderInterface ? folder.getTotalMessages(false) : 0,
+        numTotalInSubFolders = isFolderInterface ? folder.getTotalMessages(true) - numTotal : 0,
+        displayNumbers = [];
 
-			stats.unreadTotal = numUnread + numUnreadInSubFolders * (prefs.isShowCountInSubFolders ? 1 : 0);
-			stats.unreadSubfolders = numUnreadInSubFolders;
-			stats.totalCount = numTotal + numTotalInSubFolders * (prefs.isShowCountInSubFolders ? 1 : 0);
+      let label = "",
+        s = "",
+        ariaLabel = "";
 
-			// offset=-1 for folders tabs that are NOT on the quickFOlder bar (e.g. current Folder Panel)
-			if (offset>=0) {
-				if(prefs.isShowShortcutNumbers) {
-					let shortCutNumber = prefs.isShowRecentTab ? offset-1 : offset;
-					if(shortCutNumber < 10) {
-						if(shortCutNumber == 9) {
-							label += "0. ";
-						}
-						else {
-							label += (shortCutNumber + 1) + ". ";
-						}
-					}
-				}
-			}
+      stats.unreadTotal =
+        numUnread + numUnreadInSubFolders * (prefs.isShowCountInSubFolders ? 1 : 0);
+      stats.unreadSubfolders = numUnreadInSubFolders;
+      stats.totalCount = numTotal + numTotalInSubFolders * (prefs.isShowCountInSubFolders ? 1 : 0);
 
-			label += (useName && useName.length > 0) ? useName : (folder ? folder.name : "?? " + util.getNameFromURI(entry.uri));
+      // offset=-1 for folders tabs that are NOT on the quickFOlder bar (e.g. current Folder Panel)
+      if (offset >= 0) {
+        if (prefs.isShowShortcutNumbers) {
+          let shortCutNumber = prefs.isShowRecentTab ? offset - 1 : offset;
+          if (shortCutNumber < 10) {
+            label += shortCutNumber == 9 ? "0. " : shortCutNumber + 1 + ". ";
+          }
+        }
+      }
 
-      if (isShowTotals && entry && entry.flags)
-        isShowTotals = (entry.flags & util.ADVANCED_FLAGS.SUPPRESS_COUNTS) ? false : true;
-      if (isShowUnread && entry && entry.flags)
-        isShowUnread = (entry.flags & util.ADVANCED_FLAGS.SUPPRESS_UNREAD) ? false : true;
+      label +=
+        useName && useName.length > 0
+          ? useName
+          : folder
+          ? folder.name
+          : "?? " + util.getNameFromURI(entry.uri);
 
-			util.logDebugOptional("folders",
-				  "unread " + (isShowUnread ? "(displayed)" : "(not displayed)") + ": " + numUnread
-				+ " - total:" + (isShowTotals ? "(displayed)" : "(not displayed)") + ": " + numTotal);
-			if (isShowUnread) {
-				if(numUnread > 0)
-					s = s+numUnread;
-				if(numUnreadInSubFolders > 0 && prefs.isShowCountInSubFolders)
-					s = s + triangleDown + numUnreadInSubFolders+"";
-				if(s!="")
-					displayNumbers.push(s);
-			}
+      // Check and apply flags for totals and unread counts
+      let isShowTotals = this._shouldShowCounts(
+        entry,
+        prefs.isShowTotalCount,
+        util.ADVANCED_FLAGS.SUPPRESS_COUNTS
+      );
+      let isShowUnread = this._shouldShowCounts(
+        entry,
+        prefs.isShowUnreadCount,
+        util.ADVANCED_FLAGS.SUPPRESS_UNREAD
+      );
 
-			if (isShowTotals) {
-				s = "";
-				if(numTotal > 0)
-					s=s+numTotal;
-				if(numTotalInSubFolders > 0 && prefs.isShowCountInSubFolders)
-					s=s + triangleDown + numTotalInSubFolders+"";
-				if(s!="")
-					displayNumbers.push(s);
-			}
+      util.logDebugOptional(
+        "folders",
+        `unread ${isShowUnread ? "(displayed)" : "(not displayed)"}:  ${numUnread}` +
+          ` - total: ${isShowTotals ? "(displayed)" : "(not displayed)"}: ${numTotal}`
+      );
 
-			if (displayNumbers.length) {
-				label += " (" + displayNumbers.join(" / ") + ")";
-			}
-			return label;
-		}
+      // Create numbers for unread and total counts
+      if (isShowUnread) {
+        this._addCountToDisplay(
+          displayNumbers,
+          numUnread,
+          numUnreadInSubFolders,
+          prefs.isShowCountInSubFolders
+        );
+      }
+
+      if (isShowTotals) {
+        this._addCountToDisplay(
+          displayNumbers,
+          numTotal,
+          numTotalInSubFolders,
+          prefs.isShowCountInSubFolders
+        );
+      }
+
+      // Create ariaLabel
+      ariaLabel = this._createAriaLabel(
+        label,
+        isShowUnread,
+        isShowTotals,
+        numUnread,
+        numUnreadInSubFolders,
+        numTotal,
+        numTotalInSubFolders
+      );
+
+      // Combine numbers into the label
+      if (displayNumbers.length) {
+        label += " (" + displayNumbers.join(" / ") + ")";
+      }
+
+      return { label, ariaLabel };
+    }
 		catch(ex) {
 			util.logToConsole("getButtonLabel:" + ex);
-			return "";
+			return { label: "", ariaLabel: "" };
 		}
 	} ,
 
@@ -2632,14 +2707,14 @@ QuickFolders.Interface = {
 
 	addFolderButton: function(folder, entry, offset, theButton, buttonId, fillStyle, isFirst, isMinimal) {
 		const QI = QuickFolders.Interface,
-					util = QuickFolders.Util,
-					prefs = QuickFolders.Preferences,
-					FLAGS = util.FolderFlags;
+			util = QuickFolders.Util,
+			prefs = QuickFolders.Preferences,
+			FLAGS = util.FolderFlags;
 		let tabColor =  (entry && entry.tabColor) ? entry.tabColor : null,
 		    tabIcon = (entry && entry.icon) ? entry.icon : "",
         useName = (entry && entry.name) ? entry.name : "",
 				stats = { unreadTotal:0, unreadSubfolders:0, totalCount:0 },
-		    label = this.getButtonLabel(folder, useName, offset, entry, stats);
+		    {label, ariaLabel} = this.getButtonLabel(folder, useName, offset, entry, stats);
 		const doc = theButton ? theButton.ownerDocument : 
 		            (buttonId == "QuickFoldersCurrentFolder" ? util.document3pane :  document);
 
@@ -2670,6 +2745,7 @@ QuickFolders.Interface = {
 		util.logDebugOptional("interface.tabs", "addFolderButton() label=" + label + ", offset=" + offset + ", col=" + tabColor + ", id=" + buttonId + ", fillStyle=" + fillStyle);
 		let button = theButton || doc.createXULElement("toolbarbutton");
 		button.setAttribute("label", label);
+		button.setAttribute("aria-label", ariaLabel);
 
 		// find out whether this is a special button and add specialFolderType
 		// for (optional) icon display
@@ -2726,7 +2802,8 @@ QuickFolders.Interface = {
 		button.folder = folder;
 
 		if (null == theButton) {
-			button.setAttribute("tooltiptext", util.getFolderTooltip(folder, label));
+			const isToolTip =  !QuickFolders.Preferences.getBoolPref("tooltips.screenReaderSuppress")
+			button.setAttribute("tooltiptext", isToolTip ? util.getFolderTooltip(folder, label) : "");
 			button.addEventListener("click",
 				(event) => {
 					if (event.target === button) { // [issue 541]
@@ -2982,8 +3059,9 @@ QuickFolders.Interface = {
 
 	onButtonClick: function (button, evt, isMouseClick) {
     const util = QuickFolders.Util,
-      QI = QuickFolders.Interface;
-		util.logDebugOptional("mouseclicks","onButtonClick - isMouseClick = " + isMouseClick);
+      QI = QuickFolders.Interface,
+      isEnterKey = (evt?.type == "keydown" && evt?.key == "Enter");
+		util.logDebugOptional("mouseclicks", "onButtonClick - isMouseClick = " + isMouseClick);
 		// this may happen when we right-click the menu with CTRL
 		try {
 			let tag = button.tagName || null;
@@ -3061,6 +3139,9 @@ QuickFolders.Interface = {
 					// show only subfolders, without commands!
 					QuickFolders.Interface.showPopup(button, popupId, evt, true);
 				}
+				if (isEnterKey) {
+					QuickFolders.Util.threadPane.focus(); // keyboard Enter: focus threadPane
+				}
 				return;
 			}
 			
@@ -3074,9 +3155,19 @@ QuickFolders.Interface = {
 				return; // [issue 205] if the tag is a menuitem we do not call this code.
 			} 
 
+			button.setAttribute("tabindex", "0");
 			this.onTabSelected(button);
 			QuickFolders_MySelectFolder(button.folder.URI);
 			evt.preventDefault(); // prevent opening the popup
+			if (isMouseClick) {
+				setTimeout(() => {
+					// add keyboard focus
+					button.focus({ focusVisible: true });
+				}, 0);
+			} 
+			if (isEnterKey) {
+				QuickFolders.Util.threadPane.focus(); // keyboard Enter: focus threadPane
+			}
 			return;
 		}
 		if (evt.button==0) { // left-click only
@@ -6404,6 +6495,27 @@ QuickFolders.Interface = {
 		}
   } ,
 
+	setFocusTabs: function() {
+		const QI = QuickFolders.Interface;
+		const fld = GetFirstSelectedMsgFolder();
+		let button = QI.getButtonByFolder(fld);
+		if (!button) {
+			const idx = (QI.buttonsByOffset[0]?.id == "QuickFolders-Recent") ? 1 : 0;
+			if (idx>=QI.buttonsByOffset.length) { // no eligible buttons
+				return;
+			}
+			button = QI.buttonsByOffset[idx];
+		}
+//		const visibleTabs =  QuickFolders.Model.selectedFolders.filter((f) => this.shouldDisplayFolder(f));
+//		let currentEntry = visibleTabs.find((f) =>  f.uri == fld.URI);
+		if (!button) return;
+		button.setAttribute("tabindex", "0");
+		setTimeout(() => {
+			// add keyboard focus
+			button.focus({ focusVisible: true });
+		}, 0);
+	} ,
+
   getThreadTree: function()  {
     let doc = QuickFolders.Util.document3pane;
 		if (!doc) return null;
@@ -6490,7 +6602,7 @@ QuickFolders.Interface = {
 
 	// passing in forceButton is a speed hack for SeaMonkey:
   // return current folder to save processing time
-	onTabSelected: function onTabSelected(forceButton, forceFolder) {
+	onTabSelected: function (forceButton, forceFolder) {
 		let folder, selectedButton,
         util = QuickFolders.Util,
         QI = QuickFolders.Interface,
@@ -7151,7 +7263,16 @@ QuickFolders.Interface = {
 			let paletteEntry = prefs.getIntPref("style.InactiveTab.paletteEntry");
 			if (tabStyle === prefs.TABS_STRIPED)
 				paletteEntry += "striped";
-			let ruleName = (!isTabsStriped ? ".quickfolders-flat " : "") + paletteClass + ".col" + paletteEntry;
+			const ruleName = (!isTabsStriped ? ".quickfolders-flat " : "") + paletteClass + ".col" + paletteEntry;
+			// force bright icons on dark backgrounds
+			let colorScheme = engine.getElementStyle(ssPalettes, ruleName, "color-scheme") || "inherit";
+      engine.setElementStyle(
+        ss,
+        ".quickfolders-flat ." + noColorClass + ":not(.dragover)",
+        "color-scheme",
+        colorScheme,
+        false
+      );
 			let inactiveGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image");
 			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton." + noColorClass + ":not(.dragover)", "background-image"); // remove "none"
 			// removed "toolbarbutton". qualifier
@@ -7347,8 +7468,7 @@ QuickFolders.Interface = {
 				firstOne = folderEntry;
 			if (found) {
 				// select the QuickFolder
-				QuickFolders_MySelectFolder(folderEntry.uri);
-				return true;
+				if (QuickFolders_MySelectFolder(folderEntry.uri)) { return true; }
 			}
 			if (aFolder == QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false))
 				found=true;
@@ -7375,8 +7495,7 @@ QuickFolders.Interface = {
 				lastOne = folderEntry;
 			if (found) {
 				// select the QuickFolder
-				QuickFolders_MySelectFolder(folderEntry.uri);
-				return true;
+				if (QuickFolders_MySelectFolder(folderEntry.uri)) {return true;}
 			}
 			if (aFolder == QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false))
 				found=true;
@@ -8005,7 +8124,7 @@ QuickFolders.Interface = {
   } ,
 	*/
 
-  toggleFolderTree: function toggleFolderTree() {
+  toggleFolderTree: function () {
     goDoCommand("cmd_toggleFolderPane");
   } ,
 
@@ -8523,7 +8642,6 @@ QuickFolders.Interface = {
     }
     return true;
   }
-  
 
 }; // Interface
 

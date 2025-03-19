@@ -1076,6 +1076,9 @@ async function main() {
       case "toggle-foldertree":
         messenger.NotifyTools.notifyExperiment({event: "toggleFolderTree"});
         break;
+      case "focus-foldersbox":
+        messenger.NotifyTools.notifyExperiment({event: "focusFoldersBox"});
+        break;
       }
   });
 

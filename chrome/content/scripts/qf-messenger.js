@@ -258,7 +258,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
         <vbox id="QuickFolders-Folders-Pane"  flex="1">
           <box id="QuickFolders-FoldersBox" flex="1" class="folderBarContainer"      
-            role="toolbar">
+            role="list">
             <div class="QuickFolders-Empty-Toolbar-Label" crop="end">Initialising QuickFolders…</div>
           </box>
         </vbox>
@@ -578,6 +578,9 @@ async function onLoad(activatedWhileWindowOpen) {
     window.QuickFolders.Util.FirstRun
   );
   mylisteners["toggleFolderTree"] = window.QuickFolders.Interface.toggleFolderTree.bind(
+    window.QuickFolders.Interface
+  );
+  mylisteners["focusFoldersBox"] = window.QuickFolders.Interface.setFocusTabs.bind(
     window.QuickFolders.Interface
   );
 

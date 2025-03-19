@@ -1056,6 +1056,8 @@ async function main() {
       if (isDebug) console.log(`Tab fully loaded with URL: ${finalUrl}`);
 
       if (finalUrl.startsWith(getOptionsPageURL())) {
+        // [issue 557] this can also be triggered by the dialog!! causing toolbar to show in preview mode
+        // so it may affect the main window on the mail tab which we don't want...
         onOptionsTabActivated();
       }
     } catch (error) {

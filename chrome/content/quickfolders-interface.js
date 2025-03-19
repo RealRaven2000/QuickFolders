@@ -2360,7 +2360,6 @@ QuickFolders.Interface = {
 			// toolbar.style.display = "flex";
 			isVisible = !(toolbar.collapsed);
 		let makeVisible;
-		QuickFolders.Interface.showElement(this.PreviewLabel, toggleOptions.optionsMode || false);
 		if (toggleOptions.forceVisible != null) {
 			makeVisible = toggleOptions.forceVisible;
 		} else {
@@ -2385,6 +2384,16 @@ QuickFolders.Interface = {
 			tabmail.currentTabInfo.QuickFolders_ToolbarStatus = status;
 			QuickFolders.Interface.storeToolbarSession(status, tabmail.currentTabInfo);
 		}
+		let isPreviewMode = toggleOptions.optionsMode;
+		if (
+      QuickFolders.Interface.CurrentTabMode &&
+			QuickFolders.Interface.CurrentTabMode.startsWith("mail")
+    ) {
+      // [issue 557]
+      isPreviewMode = false;
+    }
+		QuickFolders.Interface.showElement(this.PreviewLabel, isPreviewMode);
+
 
 		return makeVisible;
 	} ,
@@ -8081,15 +8090,12 @@ QuickFolders.Interface = {
 		// set cursor!
 	} ,
 
-  updateFindBoxMenus: function updateFindBoxMenus(toggle) {
+  updateFindBoxMenus: function (toggle) {
 		const util = QuickFolders.Util;
     try {
 			QuickFolders.Interface.showElement(util.$("QuickFolders-quickMove-showSearch"), !toggle);
 			QuickFolders.Interface.showElement(util.$("QuickFolders-quickMove-hideSearch"), toggle);
-			// util.$("QuickFolders-quickMove-showSearch").collapsed = toggle;
-			// util.$("QuickFolders-quickMove-hideSearch").collapsed = !toggle;
-    }
-    catch (ex) {
+    } catch (ex) {
 			util.logException("Exception during updateFindBoxMenus(" + toggle + ") ", ex);
     }
   } ,
@@ -8102,7 +8108,7 @@ QuickFolders.Interface = {
 		else searchBox.classList.remove("quickMove");
   } ,
 
-  quickMoveButtonClick: function quickMoveButtonClick(evt, el) {
+  quickMoveButtonClick: function (evt, el) {
     const QI = QuickFolders.Interface;
     const searchBox = QI.FindFolderBox;
     if (evt.target.tagName == "menuitem") {

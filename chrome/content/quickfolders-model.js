@@ -535,7 +535,7 @@ QuickFolders.Model = {
   },
   
   // new palette indices
-  updatePalette: function updatePalette() {
+  updatePalette: function () {
     // we only do this ONCE
     if (this.paletteUpdated) 
       return;

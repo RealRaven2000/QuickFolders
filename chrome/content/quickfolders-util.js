@@ -1580,7 +1580,7 @@ allowUndo = true)`
     }
   } ,
 
-  getFolderTooltip: function getFolderTooltip(folder, btnLabel) {
+  getFolderTooltip: function (folder, btnLabel) {
     // tooltip - see also Attributes section of
     // https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
     // and docs for nsIMsgIncomingServer
@@ -1771,7 +1771,7 @@ allowUndo = true)`
     
   } ,
   
-  alertButtonNoFolder: function alertButtonNoFolder(button) {
+  alertButtonNoFolder: function (button) {
     let detail = "";
     if (button) {
       let el = QuickFolders.Model.selectedFolders.find(e => (e.uri == button.getAttribute("folderURI")));

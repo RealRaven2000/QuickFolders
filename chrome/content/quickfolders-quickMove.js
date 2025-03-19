@@ -404,7 +404,8 @@ QuickFolders.quickMove = {
     let moveItems = isActive ? (this.Uris.length + this.folders.length) : 0;
     QI.QuickMoveButton.label = isActive ? moveItems.toString() : '';
     // toggle quickMove searchbox visible
-    util.$('QuickFolders-quickMove-cancel').collapsed = !isActive;
+    QI.showElement(util.$('QuickFolders-quickMove-cancel'), isActive);
+    
     QI.updateFindBoxMenus(isActive);
     QI.toggleMoveModeSearchBox(isActive);
     QI.findFolder(isActive, isActive ? 'quickMove' : null);

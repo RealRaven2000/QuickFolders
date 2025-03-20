@@ -1058,6 +1058,9 @@ async function main() {
       if (finalUrl.startsWith(getOptionsPageURL())) {
         // [issue 557] this can also be triggered by the dialog!! causing toolbar to show in preview mode
         // so it may affect the main window on the mail tab which we don't want...
+        const windows = await browser.windows.getAll();
+        const activeWin = windows.find((e) => e.id == activeTab.windowId);
+        if (activeWin && activeWin.type=="popup") { return; }
         onOptionsTabActivated();
       }
     } catch (error) {

@@ -33,6 +33,7 @@ pref("extensions.quickfolders.quickJump.useHotkey", true);
 pref("extensions.quickfolders.quickJump.Hotkey", 'J');
 pref("extensions.quickfolders.quickJump.Hotkey.Shift", true);
 pref("extensions.quickfolders.accessibility.hideIconMenu", false); // a11y
+pref("extensions.quickfolders.accessibility.subFolderParentEntry", false); // a11y
 pref("extensions.quickfolders.quickMove.priorityTabs", true); // a11y
 pref("extensions.quickfolders.quickMove.createFolderOnTop", false);
 pref("extensions.quickfolders.quickMove.useHotkey", true);

@@ -386,7 +386,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} $addonName$ 最新版本现已兼容 Thunderbird v137，并开始改进键盘和屏幕阅读器的无障碍支持。请访问以下链接查看完整的更改日志以获取详细信息。{P2}",
+    "message": "{P1} 最新版本的 $addonName$ 现在兼容 Thunderbird v137，并已开始改善键盘和屏幕阅读器的可访问性。有关详细文档，请查看下面的完整更改日志链接。 {P2}{P1} 在维护版本 {boldStart}6.10.1{boldEnd} 中，我们还增强了键盘访问工具栏上的书签及其子菜单的功能，并在高级设置中的可访问性部分添加了特定选项。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

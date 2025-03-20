@@ -379,7 +379,7 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1} A versão mais recente do $addonName$ agora é compatível com o Thunderbird v137 e iniciou seu caminho para melhorar a acessibilidade para teclados e leitores de tela. Para mais detalhes, consulte o registro completo de alterações no link abaixo. {P2}",
+    "message": "{P1} A versão mais recente do $addonName$ agora é compatível com o Thunderbird v137 e iniciou o processo de melhoria de acessibilidade para teclados e leitores de tela. Para documentação detalhada, consulte o registro completo de alterações no link abaixo. {P2}{P1} Na versão de manutenção {boldStart}6.10.1{boldEnd}, também adicionamos melhorias no acesso via teclado para a barra de ferramentas com favoritos e seus submenus, além de opções específicas na seção de acessibilidade nas configurações avançadas. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

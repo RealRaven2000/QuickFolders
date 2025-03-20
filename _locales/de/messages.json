@@ -383,7 +383,7 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Die neueste Version von $addonName$ ist jetzt mit Thunderbird v137 kompatibel und hat den Weg zu verbesserter Barrierefreiheit für Tastatur- und Bildschirmleser begonnen. Eine detaillierte Dokumentation finden Sie im vollständigen Änderungsprotokoll unter dem folgenden Link. {P2}",
+    "message": "{P1} Die neueste Ausgabe von $addonName$ ist jetzt mit Thunderbird v137 kompatibel und hat ihren Weg zu verbesserter Barrierefreiheit für Tastaturen und Bildschirmleser begonnen. Für detaillierte Dokumentation lesen Sie bitte das vollständige Änderungsprotokoll im unten stehenden Link. {P2}{P1} In der Wartungsversion {boldStart}6.10.1{boldEnd} haben wir auch den Tastaturzugriff auf die Symbolleiste mit Lesezeichen und deren Untermenüs sowie spezifische Optionen im Abschnitt für Barrierefreiheit in den erweiterten Einstellungen verbessert. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

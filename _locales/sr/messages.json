@@ -340,7 +340,7 @@
     "message": "Најновије вести"
   },
   "newsSection": {
-    "message": "{P1} Најновија верзија $addonName$ сада је компатибилна са Thunderbird v137 и започела је процес побољшања приступачности за тастатуру и читаче екрана. За детаљну документацију, погледајте комплетан дневник измена на линку испод. {P2}",
+    "message": "{P1} Najnovija verzija $addonName$ sada je kompatibilna sa Thunderbird v137 i započela je proces poboljšanja pristupačnosti za tastature i čitače ekrana. Za detaljnu dokumentaciju, pogledajte punu listu izmena u linku ispod. {P2}{P1} U održavanju verzije {boldStart}6.10.1{boldEnd} takođe smo dodali poboljšan pristup tastaturom ka traci sa dugmićima za označene stranice i njihovim podmenijima, kao i specifične opcije u sekciji pristupačnosti u naprednim podešavanjima. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

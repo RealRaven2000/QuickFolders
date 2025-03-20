@@ -350,7 +350,7 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} A $addonName$ legújabb verziója most már kompatibilis a Thunderbird v137-cal, és megkezdte az útját a jobb billentyűzet- és képernyőolvasó-hozzáférhetőség felé. A részletes dokumentációért tekintse meg az alábbi hivatkozásban található teljes változásnaplót. {P2}",
+    "message": "{P1} A legújabb kiadás a $addonName$ most már kompatibilis a Thunderbird v137-tel, és elindította útját a jobb elérhetőség felé, beleértve a billentyűzetek és képernyőolvasók támogatását. Részletes dokumentációért kérjük, tekintse meg a teljes változásnaplót az alábbi linken. {P2}{P1} A karbantartási verzióban {boldStart}6.10.1{boldEnd} szintén hozzáadtuk a billentyűzet-hozzáférés javítását a könyvjelzőket és azok almappáit tartalmazó eszköztárhoz, valamint specifikus lehetőségeket az elérhetőségi szekcióban az fejlett beállításokban. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

@@ -390,7 +390,7 @@
     "message": "Dernières nouveautés"
   },
   "newsSection": {
-    "message": "{P1} La dernière version de $addonName$ est désormais compatible avec Thunderbird v137 et a entamé son chemin vers une meilleure accessibilité pour les claviers et les lecteurs d'écran. Pour une documentation détaillée, veuillez consulter le journal des modifications complet via le lien ci-dessous. {P2}",
+    "message": "{P1} La dernière édition de $addonName$ est maintenant compatible avec Thunderbird v137 et a commencé son chemin vers une meilleure accessibilité pour les claviers et les lecteurs d'écran. Pour une documentation détaillée, veuillez consulter le journal des modifications complet via le lien ci-dessous. {P2}{P1} Dans la version de maintenance {boldStart}6.10.1{boldEnd}, nous avons également ajouté un meilleur accès au clavier à la barre d'outils avec des signets et leurs sous-menus, ainsi que des options spécifiques dans la section d'accessibilité des paramètres avancés. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

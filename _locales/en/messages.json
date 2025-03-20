@@ -389,7 +389,7 @@
     "message": "Latest News"
   },
   "newsSection": {
-    "message": "{P1} The latest edition of $addonName$ is now compatible with Thunderbird v137 and has begun its journey toward improved accessibility for keyboard and screen readers. For detailed documentation, please check the full change log in the link below. {P2}",
+    "message": "{P1} The latest edition of $addonName$ is now compatible with Thunderbird v137 and has begun its journey toward improved accessibility for keyboard and screen readers. For detailed documentation, please check the full change log in the link below. {P2}{P1} In maintenance version {boldStart}6.10.1{boldEnd} we also added improved keyboard access to the toolbar with bookmarks and their subfoldermenus and specific options in the accessibility section in advanced settings. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

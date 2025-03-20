@@ -382,7 +382,7 @@
     "message": "Laatste nieuws"
   },
   "newsSection": {
-    "message": "{P1} De nieuwste versie van $addonName$ is nu compatibel met Thunderbird v137 en is begonnen met het verbeteren van de toegankelijkheid voor toetsenbord en schermlezers. Bekijk het volledige wijzigingslogboek via de onderstaande link voor gedetailleerde documentatie. {P2}",
+    "message": "{P1} De nieuwste versie van $addonName$ is nu compatibel met Thunderbird v137 en is begonnen aan de reis naar verbeterde toegankelijkheid voor toetsenborden en schermlezers. Raadpleeg voor gedetailleerde documentatie het volledige wijzigingslogboek via de onderstaande link. {P2}{P1} In de onderhoudsversie {boldStart}6.10.1{boldEnd} hebben we ook verbeterde toegang via het toetsenbord toegevoegd voor de werkbalk met bladwijzers en hun submenu's, evenals specifieke opties in het toegankelijkheidssectie van de geavanceerde instellingen. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

@@ -382,7 +382,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} $addonName$ 最新版本現在已相容於 Thunderbird v137，並開始改善鍵盤和螢幕閱讀器的無障礙支援。請參閱以下連結中的完整變更日誌以獲取詳細資訊。{P2}",
+    "message": "{P1} 最新版本的 $addonName$ 現在與 Thunderbird v137 相容，並已開始改善鍵盤和螢幕閱讀器的可及性。詳細文檔請參閱下面的完整變更日誌鏈接。 {P2}{P1} 在維護版本 {boldStart}6.10.1{boldEnd} 中，我們還增強了鍵盤對工具列上書籤及其子選單的存取功能，並在進階設置中的可及性區段中新增了特定選項。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

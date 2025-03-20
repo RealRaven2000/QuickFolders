@@ -186,7 +186,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1} $addonName$:n uusin versio on nyt yhteensopiva Thunderbird v137:n kanssa ja on aloittanut matkansa kohti parempaa näppäimistö- ja ruudunlukijakäyttöä. Katso tarkat tiedot täydellisestä muutospäiväkirjasta alla olevasta linkistä. {P2}",
+    "message": "{P1} Tämänhetkinen $addonName$ -versio on nyt yhteensopiva Thunderbird v137:n kanssa ja on alkanut matkan kohti parempaa saavutettavuutta näppäimistöille ja ruudunlukijoille. Yksityiskohtaisen dokumentaation saadaksesi tarkista täydellinen muutoslokit alla olevasta linkistä. {P2}{P1} Huoltoversiossa {boldStart}6.10.1{boldEnd} lisäsimme myös parannetun näppäimistöyhteyden työkalupalkille, jossa on kirjanmerkit ja niiden alivalikot, sekä erityisiä asetuksia saavutettavuusosiossa edistyneissä asetuksissa. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

@@ -383,7 +383,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1} Den senaste versionen av $addonName$ är nu kompatibel med Thunderbird v137 och har påbörjat förbättringar för tillgänglighet med tangentbord och skärmläsare. För mer information, se den fullständiga ändringsloggen via länken nedan. {P2}",
+    "message": "{P1} Den senaste versionen av $addonName$ är nu kompatibel med Thunderbird v137 och har påbörjat sin resa mot förbättrad tillgänglighet för tangentbord och skärmläsare. För detaljerad dokumentation, vänligen se hela ändringsloggen via länken nedan. {P2}{P1} I underhållsversion {boldStart}6.10.1{boldEnd} har vi även lagt till förbättrad tangentbordsåtkomst till verktygsfältet med bokmärken och deras undermenyer, samt specifika alternativ i tillgänglighetssektionen i avancerade inställningar. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

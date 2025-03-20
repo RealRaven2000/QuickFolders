@@ -379,7 +379,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1} Najnowsza wersja $addonName$ jest teraz kompatybilna z Thunderbirdem v137 i rozpoczęła pracę nad poprawą dostępności dla klawiatury i czytników ekranu. Szczegółową dokumentację można znaleźć w pełnym dzienniku zmian pod poniższym linkiem. {P2}",
+    "message": "{P1} Najnowsza wersja $addonName$ jest teraz kompatybilna z Thunderbird v137 i rozpoczęła proces poprawy dostępności dla klawiatur i czytników ekranu. Aby zapoznać się ze szczegółową dokumentacją, sprawdź pełny dziennik zmian w poniższym linku. {P2}{P1} W wersji konserwacyjnej {boldStart}6.10.1{boldEnd} dodaliśmy również ulepszony dostęp do paska narzędzi z zakładkami i ich podmenu za pomocą klawiatury, a także szczególne opcje w sekcji dostępności w zaawansowanych ustawieniach. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

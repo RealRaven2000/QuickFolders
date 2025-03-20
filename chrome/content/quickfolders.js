@@ -214,6 +214,8 @@ END LICENSE BLOCK */
     ## [issue 553] improve svg icon coloring for tabs, to avoid dark icons on dark backgrounds
     ##             this is achieved by adding color-scheme rules for palette based colors
     ## Improved keyboard focus + navigation in QuickFolders Tabs; 
+    ## [issue 558] "Cancel quickMove" feature missing in 6.10
+    ## [issue 557] QuickFolders toolbar unintended "preview mode" bug (when opening options in dialog)
   
 	TO DO next
 	==========

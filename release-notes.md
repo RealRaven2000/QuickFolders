@@ -1,4 +1,15 @@
 
+
+**Maintenance v 6.10.1**
+
+*   Improved svg icon coloring for tabs, to avoid dark icons on dark backgrounds - this is achieved by adding color-scheme rules for palette based colors. [issue #553]
+*   Improved keyboard focus + navigation in QuickFolders Tabs; 
+*   QuickFolders toolbar unintended "preview mode" bug (when opening options in dialog) [issue #557]
+*   Default to showing QuickFolders options in tab instead of dialog 
+*   Select a subfolder from tab popup with [Enter]  [issue #560]
+*   Fixed: "Cancel quickMove" feature missing in 6.10 [issue #558]
+
+
 **Improvements**
 
 *   New option to always display QuickFolders Options in a tab. 

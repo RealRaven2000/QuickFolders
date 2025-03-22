@@ -802,7 +802,7 @@ QuickFolders.Interface = {
 			} else {
 				let rtab = this.createRecentTab(null, false, null);
 				if (rtab) {
-					rtab.setAttribute("tabIndex", 0);
+					rtab.setAttribute("tabindex", 0);
 					rtab.setAttribute("role", "button");
 					this.FoldersBox.appendChild(rtab);
 					offset++;
@@ -5266,7 +5266,7 @@ QuickFolders.Interface = {
 		if (isProfiling) {
 			QuickFolders.Util.stopWatch("reset", "addSubFoldersPopupFromList");
 		}
-		if (!isTopLevel && prefs.getBoolPref("accessibility.subFolderParentEntry")) {
+		if (!options.isRecentFolderList && !isTopLevel && prefs.getBoolPref("accessibility.subFolderParentEntry")) {
 			// add a submenu entry
 			// additional menu item for keyboard accessibility [issue 560]
 			// make menuitem from parent:
@@ -6890,9 +6890,10 @@ QuickFolders.Interface = {
 			} catch (ex) {}
 
       util.logDebugOptional("interface.currentFolderBar", 
-			                      "initCurrentFolderTab(" + (folder ? folder.prettyName : "null") + ")\n"
-                            + "tabMode: " + tabMode + " -  tabIndex: " + tabIdx, tabInfo
-														);
+				`initCurrentFolderTab(${(folder ? folder.prettyName : "null")})\n`
+				+ `tabMode: ${tabMode} -  tabindex: ${tabIdx}`, 
+				tabInfo
+			);
       this.hoistCurrentFolderBar(currentFolderTab, tabInfo);
 
       if (folder) {

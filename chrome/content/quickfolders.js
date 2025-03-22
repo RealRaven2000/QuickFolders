@@ -210,7 +210,7 @@ END LICENSE BLOCK */
     ## [issue 555] Support keyboard navigation / screen readers in QuickFolders settings [WIP]
     ## [issue 553] Fixed an issue with dark icons on active options tab for better visibility. 
 
-  6.10.1 QuickFolders Pro - WIP
+  6.10.1 QuickFolders Pro - 20/03/2026
     ## [issue 553] improve svg icon coloring for tabs, to avoid dark icons on dark backgrounds
     ##             this is achieved by adding color-scheme rules for palette based colors
     ## Improved keyboard focus + navigation in QuickFolders Tabs; 
@@ -218,6 +218,9 @@ END LICENSE BLOCK */
     ## [issue 557] QuickFolders toolbar unintended "preview mode" bug (when opening options in dialog)
     ## Default to showing QuickFolders options in tab instead of dialog
     ## [issue 560] Select a subfolder from tab popup with [Enter]  (WIP)
+
+  6.10.2 QuickFolders Pro - 22/03/2026
+    ## [issue 562] Add Recent folders tab to keyboard flow
   
 	TO DO next
 	==========

@@ -221,6 +221,9 @@ END LICENSE BLOCK */
 
   6.10.2 QuickFolders Pro - 22/03/2026
     ## [issue 562] Add Recent folders tab to keyboard flow
+
+  6.10.3 QuickFolders Pro - 24/03/2026
+    ## Added missing translations for context menu command to add new QuickFolder.
   
 	TO DO next
 	==========

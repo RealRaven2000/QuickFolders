@@ -139,7 +139,7 @@ messenger.runtime.onInstalled.addListener(async (data) => {
       const silentUpdateMap = new Map([
         ["6.8.1", ["6.8.*"]], // Silent updates for 6.8.1 to any 6.8.x (e.g., 6.8.2, 6.8.3, etc.)
         ["6.9.1", ["6.9.2"]], // Silent update minor fix for [issue 532]
-        ["6.10.1", ["6.10.2"]],
+        ["6.10.1", ["6.10.2","6.10.3"]],
       ]);
 
       // Helper function to check if a version matches a pattern

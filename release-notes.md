@@ -1,6 +1,12 @@
 
 
+
+**Maintenance v 6.10.3**
+
+*   Added translations for context menu command to add new QuickFolder.
+
 **Maintenance v 6.10.2**
+
 *   Added keyboard support for recent folders tab [issue #562]
 
 **Maintenance v 6.10.1**

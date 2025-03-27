@@ -224,6 +224,9 @@ END LICENSE BLOCK */
 
   6.10.3 QuickFolders Pro - 24/03/2026
     ## Added missing translations for context menu command to add new QuickFolder.
+
+  6.10.4 QuickFolders Pro - WIP
+    ## [issue 559] - improve scrolling of current folder in tree
   
 	TO DO next
 	==========
@@ -326,15 +329,11 @@ var QuickFolders = {
   keyAbortController: null,
   findFolderNameStackCount: 0,
 	isQuickFolders: true, // to verify this
-	get mailFolderTree() {
-    return document.getElementById('folderTree');
-	},
 	// keyListen: EventListener,
   folderPaneListen: false,
 	_tabContainer: null,
 	get tabContainer() {
 		if (!this._tabContainer) {
-			const util = QuickFolders.Util;
       let d = this.doc || document;
       this._tabContainer = 
         d.getElementById('tabmail').tabContainer || d.getElementById('tabmail-tabs');
@@ -392,7 +391,7 @@ var QuickFolders = {
 
     // iterate all tabs, Tb115
     QuickFolders.Util.logDebug("restore categories from tab session")
-    let tabmail = document.getElementById("tabmail");
+    const tabmail = document.getElementById("tabmail");
     if (tabmail) {
       let tabInfoCount = util.getTabInfoLength(tabmail);
       for (let i = 0; i < tabInfoCount; i++) {
@@ -2015,6 +2014,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
   let i,
     isExistFolderInTab = false,
     tabmail = document.getElementById("tabmail");
+
   if (tabmail) {
     util.logDebugOptional("folders.select", "try to find open tab with folder...");
     for (let info of gTabmail.tabInfo) {
@@ -2053,16 +2053,21 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
     );
     return false; // no valid folder (may be from rename)
   }
+
+  const currentTabMode = QI.CurrentTabMode;
   // new behavior: OPEN NEW TAB
   // if single message is shown, open folder in a new Tab...
-  if (QI.CurrentTabMode == "mailMessageTab" 
-      || QI.CurrentTabMode == "glodaList" 
-      || currentTabInfo?.folder === null) {
+  if (
+    currentTabMode == "mailMessageTab" ||
+    currentTabMode == "glodaList" ||
+    currentTabInfo?.folder === null
+  ) {
     // no URI / folder===null. is this a search result tab? [issue 504]
-        
+
     if (isExistFolderInTab) {
       return true; // avoid closing the single message
     }
+
     if (prefs.getBoolPref("behavior.nonFolderView.openNewTab")) {
       util.logDebugOptional("folders.select", "calling openFolderInNewTab()");
       QI.openFolderInNewTab(msgFolder);
@@ -2076,7 +2081,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
     }
   }
 
-  let Flags = util.FolderFlags,
+  const Flags = util.FolderFlags,
     isRoot = msgFolder.rootFolder.URI == msgFolder.URI;
 
   util.logDebugOptional(
@@ -2086,6 +2091,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
   );
 
   // TB 115 - this will not select the folder if it is not contained in the current view!
+  // John: gTabmail.currentTabInfo.folder is a setter/getter for the current folder
   currentTabInfo.folder = msgFolder;
 
   // ############################
@@ -2097,21 +2103,55 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
   // about3Pane.folderPane
   // let isCompact = gFolderTreeView.toggleCompactMode ? (gFolderTreeView._tree.getAttribute("compact") == "true") : false;
 
-  let about3Pane = tabmail.currentAbout3Pane;
-  const folderPane = about3Pane.folderPane;
+  const folderPane = QuickFolders.Util.folderPane;
+
+  let folderRow;
+  try {
+    folderRow = folderPane.getRowForFolder(folderUri); // msgFolder
+  } catch (ex) {}
+
+  const about3Pane = tabmail.currentAbout3Pane;
   if (folderPane.activeModes) {
     QuickFolders.activeTreeViewModes = folderPane.activeModes; // backup array of view modes.
   }
 
-  let folderRow;
-  try {
-    folderRow = folderPane.getRowForFolder(msgFolder);
-  } catch (ex) {}
   util.logDebugOptional("folders.select", "folderRow = " + folderRow);
   if (!folderRow) {
     // null == folderIndex
     util.ensureNormalFolderView(); // make sure "all" is displayed!
     about3Pane.displayFolder(folderUri);
+    folderRow = folderPane.getRowForFolder(folderUri);
+  }
+
+  // [issue 559]
+  if (
+    folderRow && 
+    currentTabMode == "mail3PaneTab" &&
+    QuickFolders.Preferences.getBoolPref("scrollToCenter")
+  ) {
+    // tabmail.currentTabInfo.chromeBrowser.contentWindow.displayFolder(msgFolder.URI);
+    const folderTree = QuickFolders.Util.folderTree;
+    const row = folderRow;
+    if (!row.getAttribute("aria-expanded")) {
+      row.scrollIntoView({ instant: true, block: "center" }); // this only works if it's not expanded.
+    } else {
+      // Try to get the folder row height
+      let itemHeight = row.querySelector(".container")
+        ? row.querySelector(".container").getBoundingClientRect().height
+        : row.getBoundingClientRect().height; // fallback: full height of folder with kids
+
+      // Get the visible height of folderTree
+      const visibleHeight = folderTree.clientHeight || folderTree.getBoundingClientRect().height;
+
+      // Get the top position of the row relative to folderTree
+      const rowTop = row.offsetTop;
+
+      // Scroll to center the folder, accounting for the header height, or fallback to full row height if needed
+      folderTree.scrollTop = Math.min(
+        rowTop - (visibleHeight - itemHeight) / 2,
+        folderTree.scrollHeight - visibleHeight
+      );
+    }
   }
 
   if (msgFolder.parent) {
@@ -2126,7 +2166,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
     let parentRow = folderPane.getRowForFolder(msgFolder.parent);
     util.logDebugOptional("folders.select", "parent row: ", parentRow); // was parentIndex
     // flags from: mozilla 1.8.0 / mailnews/ base/ public/ nsMsgFolderFlags.h
-    let specialFlags =
+    const specialFlags =
       Flags.MSG_FOLDER_FLAG_INBOX +
       Flags.MSG_FOLDER_FLAG_QUEUE +
       Flags.MSG_FOLDER_FLAG_SENTMAIL +
@@ -2138,8 +2178,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
     if (msgFolder.flags & specialFlags) {
       // is this folder a smartfolder?
       let isSmartView = folderPane.activeModes && folderPane.activeModes.includes("smart");
-
-      if (folderUri.indexOf("nobody@smart") > 0 && !parentRow && !isSmartView) {
+      if (folderUri.includes("nobody@smart") && !parentRow && !isSmartView) {
         util.logDebugOptional(
           "folders.select",
           "smart folder detected, switching treeview mode..."
@@ -2159,50 +2198,19 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
       // a special folder, its parent is a smart folder?
       if (msgFolder.parent.flags & Flags.MSG_FOLDER_FLAG_VIRTUAL || isSmartView) {
         QuickFolders.Util.logTb115("QuickFolders_MySelectFolder(): open special folder!");
-
-        /*
-        if (null === folderRow || parentIndex > folderRow) {
-          // if the parent appears AFTER the folder, then the "real" parent is a smart folder.
-          let smartIndex=0;
-          // we can have "non-folder" items here
-          while (!theTreeView._rowMap[smartIndex]._folder || 
-                 0x0 === (specialFlags & (theTreeView._rowMap[smartIndex]._folder.flags & msgFolder.flags)))
-            smartIndex++;
-          if (!(theTreeView._rowMap[smartIndex]).open) {
-            theTreeView._toggleRow(smartIndex, false);
-          }
-        }
-        */
       } else {
         // all other views:
         if (null !== parentRow) {
           QuickFolders.Util.logTb115(
             `QuickFolders_MySelectFolder(): toggleRow for parent folder: ${parentRow} `
           );
-          /*
-          if (!(theTreeView._rowMap[parentIndex]).open)
-            theTreeView._toggleRow(parentIndex, true); // server
-            */
         } else {
           util.logDebugOptional(
             "folders.select",
-            `Can not make visible: ${msgFolder.URI} - not in current folder view?` 
+            `Can not make visible: ${msgFolder.URI} - not in current folder view?`
           );
         }
       }
-    }
-  }
-
-  if (folderRow != null) {
-    try {
-      util.logDebugOptional(
-        "folders.select",
-        `Selecting folder via treeview.select(${msgFolder.prettyName})..\n${msgFolder.URI}`
-      );
-      // John: gTabmail.currentTabInfo.folder is a setter/getter for the current folder
-      gTabmail.currentTabInfo.folder = msgFolder;
-    } catch (e) {
-      util.logException("Exception selecting via treeview: ", e);
     }
   }
 

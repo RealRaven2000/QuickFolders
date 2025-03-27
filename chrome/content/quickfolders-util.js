@@ -251,6 +251,13 @@ QuickFolders.Util = {
 
   } ,
 
+  get folderTree() {
+    if (!document) return null;
+    const tabmail = document.getElementById("tabmail");
+    if (!tabmail) return null;
+    return tabmail.currentAbout3Pane.document.getElementById("folderTree");
+	},
+
   get threadPane() {
     let doc = this.document3pane;
     if (!doc) {
@@ -906,21 +913,19 @@ QuickFolders.Util = {
       
       // [issue 132] Shift-M opens a new tab after moving the message...
       // if we move the email and are in a single message window, we need to jump to the next unread mail first!
-      let tabmail = document.getElementById("tabmail"),
-          currentTabId = tabmail.currentTabInfo.tabId,  //  currentTabInfo = tabmail.tabInfo[QuickFolders.tabContainer.tabbox.selectedIndex]
-          moveFromSingleMailTab = false;
+      const tabmail = document.getElementById("tabmail"),
+        currentTabId = tabmail.currentTabInfo.tabId;  //  currentTabInfo = tabmail.tabInfo[QuickFolders.tabContainer.tabbox.selectedIndex]
+      let moveFromSingleMailTab = false;
       if (!makeCopy && QuickFolders.Interface.CurrentTabMode == "mailMessageTab") { 
         moveFromSingleMailTab = true;
         // either go to the next mail... or close the tab
         if (QuickFolders.quickMove.Settings.isGoNext) {
           goDoCommand('cmd_nextMsg');
           QuickFolders.Interface.ensureCurrentFolder();
-        }
-        try {
+        } try {
           tabmail.currentTabInfo.browser.focus();
           // document.getElementById('messagepane').focus();
-        }
-        catch(ex) {
+        } catch(ex) {
           console.log(ex);
         }
       }

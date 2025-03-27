@@ -32,7 +32,7 @@ QuickFolders.Model = {
   paletteUpdated: false,
   paletteUpgraded: false,
 
-  addFolder: function addFolder(uri, categories) {
+  addFolder: function (uri, categories) {
     function unpackURI(URL) {
       if (!URL) return URL;
       // remove url(...) from Icon file name for storing in model.entry.icon

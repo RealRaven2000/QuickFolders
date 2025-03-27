@@ -61,7 +61,7 @@ async function onLoad(activatedWhileWindowOpen) {
             <toolbarbutton id="QuickFolders-title-label" 
               label="__MSG_qf.label.quickfolders__" 
               tabindex="0"/>
-            <span id="QuickFolders-PreviewToolbar" visible="false">(__MSG_preview__)</span>
+            <span id="QuickFolders-PreviewToolbar" visible="false" collapsed="true">(__MSG_preview__)</span>
           </vbox>
         </div>
         

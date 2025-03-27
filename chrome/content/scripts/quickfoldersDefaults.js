@@ -53,6 +53,7 @@ pref("extensions.quickfolders.skipFolder.useHotkey", false);
 pref("extensions.quickfolders.skipFolder.Hotkey", 'S');
 pref("extensions.quickfolders.skipFolder.Hotkey.Shift", true);
 pref("extensions.quickfolders.showToolIcon", true);
+pref("extensions.quickfolders.scrollToCenter", true);
 pref("extensions.quickfolders.moveMailStatus.set",0); // [issue 306]
 pref("extensions.quickfolders.moveMailStatus.quickMove",false); // [issue 306]
 pref("extensions.quickfolders.bookmarks.folderLabel", true);

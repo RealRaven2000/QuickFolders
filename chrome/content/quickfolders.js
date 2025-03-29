@@ -226,7 +226,7 @@ END LICENSE BLOCK */
     ## Added missing translations for context menu command to add new QuickFolder.
 
   6.10.4 QuickFolders Pro - WIP
-    ## [issue 559] - improve scrolling of current folder in tree
+    ## [issue 559] - Thunderbird folder tree doesn't scroll to current folder (Tb 115)
   
 	TO DO next
 	==========
@@ -326,6 +326,16 @@ var QuickFolders = {
 	doc: null,
 	win: null,
 	WL: {},
+  _ESM: null,
+  get ESM() {  // Thunderbird 128 or higher
+    if (QuickFolders._ESM == null) {
+      var { AppConstants } = ChromeUtils.importESModule(
+        "resource://gre/modules/AppConstants.sys.mjs"
+      );
+      QuickFolders._ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+    }
+    return QuickFolders._ESM;
+  },
   keyAbortController: null,
   findFolderNameStackCount: 0,
 	isQuickFolders: true, // to verify this
@@ -2123,34 +2133,53 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
     folderRow = folderPane.getRowForFolder(folderUri);
   }
 
-  // [issue 559]
+  // [issue 559] Thunderbird folder tree doesn't scroll to current folder (Tb 115)
   if (
-    folderRow && 
+    folderRow &&
     currentTabMode == "mail3PaneTab" &&
     QuickFolders.Preferences.getBoolPref("scrollToCenter")
   ) {
     // tabmail.currentTabInfo.chromeBrowser.contentWindow.displayFolder(msgFolder.URI);
+    util.logDebugOptional("folders.select", "new scroll code...");
     const folderTree = QuickFolders.Util.folderTree;
     const row = folderRow;
-    if (!row.getAttribute("aria-expanded")) {
+    if (!msgFolder.hasSubFolders || row.classList.contains("collapsed")) {
+      util.logDebugOptional("folders.select", "folder collapsed: standard scrolling!", row);
       row.scrollIntoView({ instant: true, block: "center" }); // this only works if it's not expanded.
     } else {
+      // Get the top position of the row relative to folderTree scrolling element
+      const rowTop = row.offsetTop;
+      // in TB115 the parent div#folderPane
+      // in TB128            ul#folderTree is scrolled
+      const scrollingElement = QuickFolders.ESM ? folderTree : folderTree.parentElement;
+
       // Try to get the folder row height
-      let itemHeight = row.querySelector(".container")
+      const itemHeight = row.querySelector(".container")
         ? row.querySelector(".container").getBoundingClientRect().height
         : row.getBoundingClientRect().height; // fallback: full height of folder with kids
 
-      // Get the visible height of folderTree
-      const visibleHeight = folderTree.clientHeight || folderTree.getBoundingClientRect().height;
+      // Get the visible height of scrolling container
+      const visibleHeight =
+        scrollingElement.clientHeight || scrollingElement.getBoundingClientRect().height;
 
-      // Get the top position of the row relative to folderTree
-      const rowTop = row.offsetTop;
+      const scrollTop = Math.floor(
+        Math.min(
+          rowTop - (visibleHeight - itemHeight) / 4,
+          scrollingElement.scrollHeight - visibleHeight
+        )
+      );
+
+      util.logDebugOptional(
+        "folders.select",
+        `itemHeight: ${itemHeight}\n` +
+          `visibleHeight: ${visibleHeight}\n` +
+          `scrollHeight: ${scrollingElement.scrollHeight}\n` +
+          `rowTop: ${rowTop}\n` +
+          `scrollTop: ${scrollTop}\n`
+      );
 
       // Scroll to center the folder, accounting for the header height, or fallback to full row height if needed
-      folderTree.scrollTop = Math.min(
-        rowTop - (visibleHeight - itemHeight) / 2,
-        folderTree.scrollHeight - visibleHeight
-      );
+      scrollingElement.scrollTop = scrollTop;
     }
   }
 
@@ -2602,9 +2631,7 @@ QuickFolders.CopyListener = {
           let entry = QuickFolders.bookmarks.Entries[i];
           try {
             if (entry.invalid) {
-              var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-              var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-              var { MailUtils } = ESM
+              var { MailUtils } = QuickFolders.ESM
                 ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
                 : ChromeUtils.import("resource:///modules/MailUtils.jsm"); 
 

@@ -15,7 +15,9 @@ var { MailServices } =
     ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
     : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
-
+var { FolderUtils } = QuickFolders_ESM
+  ? ChromeUtils.importESModule("resource:///modules/FolderUtils.sys.mjs")
+  : ChromeUtils.import("resource:///modules/FolderUtils.jsm");
 
 var QuickFolders_ConsoleService = null;
 

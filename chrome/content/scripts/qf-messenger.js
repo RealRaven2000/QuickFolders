@@ -49,6 +49,7 @@ async function onLoad(activatedWhileWindowOpen) {
     <vbox id="titlebar">
       <toolbar
         id="QuickFolders-Toolbar"
+        accesskey=""
         style="display: flex !important;"
         toolbarname="QuickFolders Toolbar"
         class="toolbar-primary contentTabToolbar quickFoldersToolbar"

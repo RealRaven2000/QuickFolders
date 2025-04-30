@@ -7856,11 +7856,9 @@ QuickFolders.Interface = {
         prefs = QuickFolders.Preferences,
         mode = "",
 		    isMailPanel = false; // prefs.getBoolPref("toolbar.onlyShowInMailWindows"); makes no sense as it doesn't work anyway
-    if (prefs.isDebug) {
-      util.logDebugOptional("interface", "onDeckChange("
-        + util.enumProperties(targetTab)  + ")"
-        + "\n" + targetTab.mode ? util.enumProperties(targetTab.mode) : "no mode.");
-		}
+		util.logDebugOptional("interface", 
+			`onDeckChange(targetTab.\n${util.enumProperties(targetTab)})\n` 
+			+ `mode = ${targetTab?.mode?.name}`);
 
 		let toolbar = this.Toolbar;
     mode = util.getTabMode(targetTab);
@@ -7871,8 +7869,7 @@ QuickFolders.Interface = {
 		 	let panelId = targetTab.selectedPanel.id.toString();
 			util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar.id + " - panel: " + panelId);
       // mode = panelId;
-		}
-		else { //tab
+		} else { //tab
 			util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar.id + " - mode: " + mode);
       mode = this.CurrentTabMode;
 		}
@@ -7893,8 +7890,7 @@ QuickFolders.Interface = {
 					isButtonPressed = info.QuickFolders_ToolbarStatus.mainVisibleState;
 				}
 			}
-		}
-		else {
+		} else {
 			isButtonPressed = false;
 		}
 		// default value according to settings
@@ -7902,8 +7898,7 @@ QuickFolders.Interface = {
 			if (isMailPanel ||
 		    isMailSingleMessageTab && !prefs.getBoolPref("toolbar.hideInSingleMessage")) {
 				isButtonPressed = true;
-			}
-			else {
+			} else {
 				isButtonPressed = false;
 			}
 		}
@@ -7936,6 +7931,10 @@ QuickFolders.Interface = {
 		}
 
 		util.logDebugOptional("toolbarHiding", " (mode=" + mode + ")" + action + " QuickFolders Toolbar ");
+    if (isMailPanel || isMailSingleMessageTab) {
+      // make sure to hide "Preview mode"
+      QuickFolders.Interface.showElement(QuickFolders.Interface.PreviewLabel, false);
+    }
 
     // always hide current folder toolbar in single message mode
     // QuickFolders-PreviewToolbarPanel

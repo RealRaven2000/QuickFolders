@@ -421,7 +421,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       filterConfig="quickfolders.findRelated"; retVal=false;
       break;
   }
-  const isDebug = QuickFolders.Preferences.isDebug;
+  const isDebug = await QuickFolders.Preferences.isDebug();
   
   if (filterConfig) {
     // add click event to associated config button

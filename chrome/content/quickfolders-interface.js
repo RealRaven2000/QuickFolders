@@ -938,7 +938,7 @@ QuickFolders.Interface = {
 			switch (event.key) {
         case "ArrowRight":
         case "ArrowDown":
-					sibling = goNextSibling(1);
+          sibling = goNextSibling(1);
           break;
         case "ArrowLeft":
         case "ArrowUp":
@@ -946,10 +946,10 @@ QuickFolders.Interface = {
           break;
         case "Enter":
           if (isRecentButton(button)) {
-						QuickFolders.Interface.onClickRecent(button, event, true);
-					} else {
-          	QuickFolders.Interface.onButtonClick(button, event, false);
-					}
+            QuickFolders.Interface.onClickRecent(button, event, true);
+          } else {
+            QuickFolders.Interface.onButtonClick(button, event, false);
+          }
           return;
         case "ContextMenu": // Windows Menu key
           // Trigger your context menu logic here
@@ -960,8 +960,8 @@ QuickFolders.Interface = {
           QuickFolders.Interface.onRenameBookmark(button);
           event.preventDefault(); // Prevent any default behavior
           return;
-				default:
-					return;
+        default:
+          return;
       }
 			// add Shift+cursor for moving
 			if (event.shiftKey) {
@@ -7852,21 +7852,23 @@ QuickFolders.Interface = {
 
   // Called when we go to a different mail tab in order to show / hide QuickFolders Toolbar accordingly
 	onDeckChange: async function (targetTab) {
-		let util = QuickFolders.Util,
-        prefs = QuickFolders.Preferences,
-        mode = "",
-		    isMailPanel = false; // prefs.getBoolPref("toolbar.onlyShowInMailWindows"); makes no sense as it doesn't work anyway
+		const util = QuickFolders.Util,
+      prefs = QuickFolders.Preferences,
+      toolbar = this.Toolbar;
+
+		let mode = "",
+		  isMailPanel = false; // prefs.getBoolPref("toolbar.onlyShowInMailWindows"); makes no sense as it doesn't work anyway
 		util.logDebugOptional("interface", 
 			`onDeckChange(targetTab.\n${util.enumProperties(targetTab)})\n` 
 			+ `mode = ${targetTab?.mode?.name}`);
 
-		let toolbar = this.Toolbar;
+		
     mode = util.getTabMode(targetTab);
     if (["mail3PaneTab","3pane","folder","glodaList","threadPaneBox"].includes(mode)) {
       isMailPanel = true;
     }
 		if (targetTab && targetTab.selectedPanel) {
-		 	let panelId = targetTab.selectedPanel.id.toString();
+		 	const panelId = targetTab.selectedPanel.id.toString();
 			util.logDebugOptional("toolbarHiding", "onDeckChange - toolbar: " + toolbar.id + " - panel: " + panelId);
       // mode = panelId;
 		} else { //tab
@@ -7877,15 +7879,15 @@ QuickFolders.Interface = {
       isMailPanel = false;
 		}
     util.logDebugOptional("interface", "mode = " + mode + "\nisMailPanel = " + isMailPanel);
-		let isMailSingleMessageTab = (mode == "mailMessageTab") ? true  : false,
-		    action = "",
-				isButtonPressed = null;
+		const isMailSingleMessageTab = (mode == "mailMessageTab") ? true  : false;
+		let action = "",
+			isButtonPressed = null;
 
 		if (isMailPanel || isMailSingleMessageTab) {
 			// session value (caused by user pushing the button previously)
 			let tabmail = document.getElementById("tabmail");
 			if (tabmail && tabmail.currentTabInfo) {
-				let info = tabmail.currentTabInfo;
+				const info = tabmail.currentTabInfo;
 				if (info.QuickFolders_ToolbarStatus) { // only if it is stored for this tab, we set a value
 					isButtonPressed = info.QuickFolders_ToolbarStatus.mainVisibleState;
 				}
@@ -7929,8 +7931,10 @@ QuickFolders.Interface = {
 				}
 			}
 		}
-
-		util.logDebugOptional("toolbarHiding", " (mode=" + mode + ")" + action + " QuickFolders Toolbar ");
+		util.logDebugOptional(
+      "toolbarHiding",
+      ` (mode=${mode}) ${action} QuickFolders Toolbar `
+    );
     if (isMailPanel || isMailSingleMessageTab) {
       // make sure to hide "Preview mode"
       QuickFolders.Interface.showElement(QuickFolders.Interface.PreviewLabel, false);
@@ -8054,7 +8058,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	showPalette: function showPalette(button) {
+	showPalette: function (button) {
 		let context = button.getAttribute("context");
 		QuickFolders.Util.logDebugOptional("interface", "Interface.showPalette(" + button.id + "): context = " + context);
 		this.showPopup(button, context);

@@ -126,15 +126,20 @@ QuickFolders.Util = {
     return elem;
   } ,
   
-  enumProperties: function enumProps(v) {
+  enumProperties: function (v) {
     let txt = '';
     if (!v) return '';
     Object.getOwnPropertyNames(v).forEach(
-      function (prop) {
+      (prop) => {
         let lbl = v[prop];
-        if  (typeof lbl === 'function') 
-          lbl = lbl.toString().substring(0, lbl.toString().indexOf(")")+1);
-        txt += prop + ': ' + lbl + '\n';
+        switch (typeof lbl) {
+          case "function":
+            lbl = lbl.toString().substring(0, lbl.toString().indexOf(")") + 1);
+            break;
+          case "object":
+            return;
+        }
+        txt += "  " + prop + ': ' + lbl + '\n';
       }
     )
     return txt;

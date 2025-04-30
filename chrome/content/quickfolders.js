@@ -227,6 +227,9 @@ END LICENSE BLOCK */
 
   6.10.4 QuickFolders Pro - WIP
     ## [issue 559] - Thunderbird folder tree doesn't scroll to current folder (Tb 115)
+    ## [issue 571] - (Preview Mode) label not removed from QuickFolders toolbar
+    ## Removed (null) behind QF toolbar label in Thunderbird's View menu
+
   
 	TO DO next
 	==========

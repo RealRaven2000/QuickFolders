@@ -393,7 +393,7 @@
     "message": "Ultime notizie"
   },
   "newsSection": {
-    "message": "{P1} L'ultima versione di $addonName$ è ora compatibile con Thunderbird v137 e ha iniziato il suo percorso verso un miglioramento dell'accessibilità per tastiere e lettori di schermo. Per la documentazione dettagliata, consulta il registro completo delle modifiche nel link qui sotto. {P2}{P1} Nella versione di manutenzione {boldStart}6.10.1{boldEnd} abbiamo anche aggiunto un miglior accesso tramite tastiera alla barra degli strumenti con i segnalibri e i relativi sottomenù, insieme a opzioni specifiche nella sezione di accessibilità nelle impostazioni avanzate. {P2}",
+    "message": "{P1} L'ultima versione di $addonName$ è ora compatibile con Thunderbird v139 e ha iniziato il suo percorso verso un miglioramento dell'accessibilità per tastiere e lettori di schermo. {P2}{P1} Nella versione di manutenzione {boldStart}6.10.1{boldEnd} abbiamo anche aggiunto un miglior accesso tramite tastiera alla barra degli strumenti con i segnalibri e i relativi sottomenù, insieme a opzioni specifiche nella sezione di accessibilità nelle impostazioni avanzate. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2107,7 +2107,7 @@
     "message": "Leggi qui (in inglese) l'elenco dettagliato delle modifiche:"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}アクセシビリティの変更{boldEnd}{P2} {P1}現在、QuickFoldersをキーボードとスクリーンリーダーに完全に対応させるために一生懸命取り組んでいます。{P2}{L1} QuickFoldersツールバーとQuickFolders設定でのキーボードナビゲーションをサポート。 [issue 552], [issue 555]{L2}{L1} キーボードでQuickFoldersタブを追加できるようになりました [issue 550]{L2}{L1} quickJumpおよびquickMoveの結果でブックマークされたフォルダーの優先順位オプション [issue 548]{L2}{L1} QuickFoldersのオプションを常にタブに表示する新しいオプション.{L2} {L1} 新しいタブまたはウィンドウでフォルダーを開くためのquickJumpアクセラレータキー。 {L2}"
+    "message": "{P1}QuickFolders è ora compatibile con Thunderbird 139. D'ora in poi, mira a rimanere compatibile con il ciclo di rilascio mensile attuale.{P2}{L1}Migliorato lo scorrimento dell’albero delle cartelle di Thunderbird per raggiungere la cartella corrente. [issue 559]{L2}{L1}L’etichetta (Modalità Anteprima) viene ora sempre rimossa dalla barra degli strumenti di QuickFolders, tranne che nella scheda delle impostazioni. [issue 571]{L2}{L1}Rimosso (null) dietro la voce di menu della barra degli strumenti QuickFolders nel menu Visualizza di Thunderbird.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

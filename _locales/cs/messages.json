@@ -389,7 +389,7 @@
     "message": "Poslední zprávy"
   },
   "newsSection": {
-    "message": "{P1} Nejnovější verze $addonName$ je nyní kompatibilní s Thunderbird v137 a začala svou cestu k vylepšené přístupnosti pro klávesnice a čtečky obrazovky. Pro podrobnou dokumentaci si prosím prohlédněte úplný seznam změn v odkazu níže. {P2}{P1} V údržbové verzi {boldStart}6.10.1{boldEnd} jsme také přidali vylepšený přístup na klávesnici k panelu nástrojů s oblíbenými položkami a jejich podnabídkami a specifické možnosti v sekci přístupnosti v pokročilých nastaveních. {P2}",
+    "message": "{P1} Nejnovější verze $addonName$ je nyní kompatibilní s Thunderbird v139 a začala svou cestu k vylepšené přístupnosti pro klávesnice a čtečky obrazovky. {P2}{P1} V údržbové verzi {boldStart}6.10.1{boldEnd} jsme také přidali vylepšený přístup na klávesnici k panelu nástrojů s oblíbenými položkami a jejich podnabídkami a specifické možnosti v sekci přístupnosti v pokročilých nastaveních. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2094,7 +2094,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Změny v přístupnosti{boldEnd}{P2} {P1}Aktuálně tvrdě pracuji na tom, aby QuickFolders bylo plně přístupné pro klávesnici a čtečky obrazovky.{P2}{L1} Podpora klávesnicového navigování po panelu nástrojů QuickFolders a nastaveních QuickFolders. [issue 552], [issue 555]{L2}{L1} Nyní můžete přidávat QuickFolders karty pomocí klávesnice [issue 550]{L2}{L1} Možnost prioritní složky pro záložky v výsledcích quickJump a quickMove [issue 548]{L2}{L1} Nová možnost vždy zobrazit možnosti QuickFolders v záložce.{L2} {L1} Klávesová zkratka pro quickJump pro otevření složky v nové záložce nebo okně. {L2}"
+    "message": "{P1}QuickFolders je nyní kompatibilní s Thunderbirdem 139. Do budoucna si klade za cíl zůstat kompatibilní s aktuálním měsíčním cyklem vydání.{P2}{L1}Vylepšeno posouvání stromu složek Thunderbirdu na aktuální složku. [issue 559]{L2}{L1}Štítek (Náhledový režim) je nyní vždy odstraněn z panelu nástrojů QuickFolders, kromě záložky nastavení. [issue 571]{L2}{L1}Odstraněno (null) za položkou nabídky panelu nástrojů QuickFolders v nabídce Zobrazit Thunderbirdu.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

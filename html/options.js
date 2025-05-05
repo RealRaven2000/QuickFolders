@@ -421,8 +421,6 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       filterConfig="quickfolders.findRelated"; retVal=false;
       break;
   }
-  const isDebug = await QuickFolders.Preferences.isDebug();
-  
   if (filterConfig) {
     // add click event to associated config button
     let eventNode = chk.parentNode.parentElement.querySelector(".configSettings");
@@ -435,7 +433,6 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       eventType = "contextmenu";
     }
     eventNode.addEventListener(eventType, async(event) =>  {
-      if (isDebug) debugger;
       event.preventDefault();
       event.stopPropagation();
       // 

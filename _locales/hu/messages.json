@@ -353,7 +353,7 @@
     "message": "Legfrissebb hírek"
   },
   "newsSection": {
-    "message": "{P1} A legújabb kiadás a $addonName$ most már kompatibilis a Thunderbird v137-tel, és elindította útját a jobb elérhetőség felé, beleértve a billentyűzetek és képernyőolvasók támogatását. Részletes dokumentációért kérjük, tekintse meg a teljes változásnaplót az alábbi linken. {P2}{P1} A karbantartási verzióban {boldStart}6.10.1{boldEnd} szintén hozzáadtuk a billentyűzet-hozzáférés javítását a könyvjelzőket és azok almappáit tartalmazó eszköztárhoz, valamint specifikus lehetőségeket az elérhetőségi szekcióban az fejlett beállításokban. {P2}",
+    "message": "{P1} A legújabb kiadás a $addonName$ most már kompatibilis a Thunderbird v139-tel, és elindította útját a jobb elérhetőség felé, beleértve a billentyűzetek és képernyőolvasók támogatását. {P2}{P1} A karbantartási verzióban {boldStart}6.10.1{boldEnd} szintén hozzáadtuk a billentyűzet-hozzáférés javítását a könyvjelzőket és azok almappáit tartalmazó eszköztárhoz, valamint specifikus lehetőségeket az elérhetőségi szekcióban az fejlett beállításokban. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1809,7 +1809,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Hozzáférhetőségi változások{boldEnd}{P2} {P1}Jelenleg azon dolgozom, hogy a QuickFolders teljes mértékben hozzáférhető legyen billentyűzetek és képernyőolvasók számára.{P2}{L1} Billentyűzetes navigáció támogatása a QuickFolders eszköztáron és a QuickFolders beállításaiban. [issue 552], [issue 555]{L2}{L1} Most már billentyűzettel is hozzáadhatsz QuickFolders lapokat [issue 550]{L2}{L1} Prioritás opció a könyvjelzőként mentett mappák számára quickJump és quickMove eredményekben [issue 548]{L2}{L1} Új opció, hogy mindig egy fülön jelenjenek meg a QuickFolders beállításai.{L2} {L1} quickJump gyorsbillentyű a mappa új fülön vagy ablakban való megnyitásához. {L2}"
+    "message": "{P1}A QuickFolders mostantól kompatibilis a Thunderbird 139-es verziójával. A jövőben célja, hogy kompatibilis maradjon az aktuális havi kiadási ciklussal.{P2}{L1}Javítottuk a Thunderbird mappafa görgetését, hogy az aktuális mappára ugorjon. [issue 559]{L2}{L1}Az (Előnézeti mód) feliratot mostantól mindig eltávolítjuk a QuickFolders eszköztárról, kivéve a beállítások lapon. [issue 571]{L2}{L1}Eltávolítottuk a (null) értéket a QuickFolders eszköztár menüelemének végéről a Thunderbird Nézet menüjében.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

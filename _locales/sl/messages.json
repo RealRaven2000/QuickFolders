@@ -373,7 +373,7 @@
     "message": "Zadnje novice"
   },
   "newsSection": {
-    "message": "{P1} Zadnja različica $addonName$ je zdaj združljiva s Thunderbirdom v137 in je začela pot k izboljšani dostopnosti za tipkovnice in bralnike zaslona. Za podrobno dokumentacijo preverite celoten dnevnik sprememb v spodnji povezavi. {P2}{P1} V vzdrževalni različici {boldStart}6.10.1{boldEnd} smo prav tako dodali izboljšan dostop do orodne vrstice z zaznamki in njihovimi podmeniji prek tipkovnice ter specifične možnosti v razdelku dostopnosti v naprednih nastavitvah. {P2}",
+    "message": "{P1} Zadnja različica $addonName$ je zdaj združljiva s Thunderbirdom v139 in je začela pot k izboljšani dostopnosti za tipkovnice in bralnike zaslona. {P2}{P1} V vzdrževalni različici {boldStart}6.10.1{boldEnd} smo prav tako dodali izboljšan dostop do orodne vrstice z zaznamki in njihovimi podmeniji prek tipkovnice ter specifične možnosti v razdelku dostopnosti v naprednih nastavitvah. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2000,7 +2000,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{L1} Pridali sa {boldStart}Slovenské preklady{boldEnd} pre úvod a licenciu. Preklad používateľského rozhrania môže byť pridaný v budúcej aktualizácii.{L2}{P1}{boldStart}Spremembe dostopnosti{boldEnd}{P2} {P1}Trenutno trdo delam, da bi QuickFolders popolnoma podprl tipkovniški dostop in bralnike zaslona.{P2}{L1} Podpora za tipkovniško navigacijo po orodni vrstici QuickFolders in nastavitvah QuickFolders. [issue 552], [issue 555]{L2}{L1} Sedaj lahko dodate QuickFolders zavihek preko tipkovnice [issue 550]{L2}{L1} Možnost prednosti za zaznamkovane mape v rezultatih quickJump in quickMove [issue 548]{L2}{L1} Nova možnost, da vedno prikažete možnosti QuickFolders v zavihku.{L2} {L1} tipkovniška bližnjica za quickJump za odpiranje mape v novem zavihku ali oknu. {L2}"
+    "message": "{P1}QuickFolders je zdaj združljiv z Thunderbirdom 139. V prihodnje bo skušal ostati združljiv s trenutnim mesečnim ciklom izdaj.{P2}{L1>Izboljšano pomikanje po drevesu map v Thunderbirdu do trenutne mape. [issue 559]{L2}{L1>Oznaka (Predogledni način) je zdaj vedno odstranjena iz orodne vrstice QuickFolders, razen na zavihku z nastavitvami. [issue 571]{L2}{L1>Odstranjeno (null) za menijsko postavko orodne vrstice QuickFolders v meniju Pogled v Thunderbirdu.{L2}"
   },
   "yearlyLicense.premiumFeatures": {
     "message": "QuickFolders Pro vam omogoča poln neomejen dostop do značilnosti Premium."

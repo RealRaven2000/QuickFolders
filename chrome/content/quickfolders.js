@@ -226,6 +226,7 @@ END LICENSE BLOCK */
     ## Added missing translations for context menu command to add new QuickFolder.
 
   6.10.4 QuickFolders Pro - WIP
+    ## Compatibility with Thunderbird 139.*
     ## [issue 559] - Thunderbird folder tree doesn't scroll to current folder (Tb 115)
     ## [issue 571] - (Preview Mode) label not removed from QuickFolders toolbar
     ## Removed (null) behind QF toolbar label in Thunderbird's View menu

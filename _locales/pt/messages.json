@@ -382,7 +382,7 @@
     "message": "Últimas notícias"
   },
   "newsSection": {
-    "message": "{P1} A versão mais recente do $addonName$ agora é compatível com o Thunderbird v137 e iniciou o processo de melhoria de acessibilidade para teclados e leitores de tela. Para documentação detalhada, consulte o registro completo de alterações no link abaixo. {P2}{P1} Na versão de manutenção {boldStart}6.10.1{boldEnd}, também adicionamos melhorias no acesso via teclado para a barra de ferramentas com favoritos e seus submenus, além de opções específicas na seção de acessibilidade nas configurações avançadas. {P2}",
+    "message": "{P1} A versão mais recente do $addonName$ agora é compatível com o Thunderbird v139 e iniciou o processo de melhoria de acessibilidade para teclados e leitores de tela. {P2}{P1} Na versão de manutenção {boldStart}6.10.1{boldEnd}, também adicionamos melhorias no acesso via teclado para a barra de ferramentas com favoritos e seus submenus, além de opções específicas na seção de acessibilidade nas configurações avançadas. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2036,7 +2036,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Alterações de acessibilidade{boldEnd}{P2} {P1}Estou atualmente trabalhando duro para tornar o QuickFolders totalmente acessível para teclado e leitores de tela.{P2}{L1} Suporte para navegação por teclado na barra de ferramentas do QuickFolders e nas configurações do QuickFolders. [issue 552], [issue 555]{L2}{L1} Agora você pode adicionar abas do QuickFolders via teclado [issue 550]{L2}{L1} Opção de prioridade para pastas favoritas nos resultados do quickJump e quickMove [issue 548]{L2}{L1} Nova opção para sempre exibir as opções do QuickFolders em uma aba.{L2} {L1} tecla de atalho quickJump para abrir a pasta em uma nova aba ou janela. {L2}"
+    "message": "{P1}O QuickFolders é agora compatível com o Thunderbird 139. Daqui em diante, pretende manter a compatibilidade com o atual ciclo mensal de lançamentos.{P2}{L1}Melhorado o deslocamento da árvore de pastas do Thunderbird para rolar até à pasta atual. [issue 559]{L2}{L1>A etiqueta (Modo de Pré-visualização) é agora sempre removida da barra de ferramentas do QuickFolders, exceto no separador de definições. [issue 571]{L2}{L1}Removido (null) atrás do item de menu da barra de ferramentas do QuickFolders no menu Ver do Thunderbird.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

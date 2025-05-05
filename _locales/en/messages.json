@@ -392,7 +392,7 @@
     "message": "Latest News"
   },
   "newsSection": {
-    "message": "{P1} The latest edition of $addonName$ is now compatible with Thunderbird v137 and has begun its journey toward improved accessibility for keyboard and screen readers. For detailed documentation, please check the full change log in the link below. {P2}{P1} In maintenance version {boldStart}6.10.1{boldEnd} we also added improved keyboard access to the toolbar with bookmarks and their subfoldermenus and specific options in the accessibility section in advanced settings. {P2}",
+    "message": "{P1} The latest edition of $addonName$ is now compatible with Thunderbird v139 and will improve accessibility for keyboard and screen readers. For detailed documentation, please check the full change log in the link below. {P2}{P1} In maintenance version {boldStart}6.10.1{boldEnd} we also added improved keyboard access to the toolbar with bookmarks and their subfoldermenus and specific options in the accessibility section in advanced settings. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2109,7 +2109,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Accessibility Changes{boldEnd}{P2} {P1}I am currently working hard to make QuickFolders fully accessible to keyboard and screen readers.{P2}{L1} Support keyboard navigation of the QuickFolders toolbar and QuickFolders settings. [issue 552], [issue 555]{L2}{L1} You can now add QuickFolders Tabs through keyboard [issue 550]{L2}{L1} Priority option for bookmarked folders in quickJump and quickMove results [issue 548]{L2}{L1} New option to always display QuickFolders Options in a tab.{L2} {L1} quickJump accelerator key to open Folder in a new tab or window. {L2} {L1} Added Greek and Slovak translations for onboarding and licensing; User interface translation may follow in a future update.{L2}"
+    "message": "{P1} QuickFolders is now compatible with Thunderbird 139 - going forward it aims to stay compatible with the current monthly release cycle. {P2}{L1} Improved scrolling Thunderbird folder tree to scroll to current folder. [issue 559]{L2}{L1} The label (Preview Mode) is now always removed from the QuickFolders toolbar except for the settings tab. [issue 571] {L2}{L1} Removed the text (null) behind the menu item for the QuickFolders toolbar in Thunderbird's View menu.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

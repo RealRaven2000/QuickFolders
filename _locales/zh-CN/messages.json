@@ -389,7 +389,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 最新版本的 $addonName$ 现在兼容 Thunderbird v137，并已开始改善键盘和屏幕阅读器的可访问性。有关详细文档，请查看下面的完整更改日志链接。 {P2}{P1} 在维护版本 {boldStart}6.10.1{boldEnd} 中，我们还增强了键盘访问工具栏上的书签及其子菜单的功能，并在高级设置中的可访问性部分添加了特定选项。 {P2}",
+    "message": "{P1} 最新版本的 $addonName$ 现在兼容 Thunderbird v139，并已开始改善键盘和屏幕阅读器的可访问性 {P2}{P1} 在维护版本 {boldStart}6.10.1{boldEnd} 中，我们还增强了键盘访问工具栏上的书签及其子菜单的功能，并在高级设置中的可访问性部分添加了特定选项。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1995,7 +1995,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}可访问性更改{boldEnd}{P2} {P1}我目前正在努力使QuickFolders完全支持键盘和屏幕阅读器.{P2}{L1} 支持键盘导航QuickFolders工具栏和QuickFolders设置。 [issue 552], [issue 555]{L2}{L1} 现在可以通过键盘添加QuickFolders标签页 [issue 550]{L2}{L1} 快捷方式优先选项，适用于quickJump和quickMove的书签文件夹 [issue 548]{L2}{L1} 新选项，始终在标签中显示QuickFolders选项.{L2} {L1} quickJump快捷键打开文件夹于新标签或窗口中。 {L2}"
+    "message": "{P1}QuickFolders 现在兼容 Thunderbird 139。未来将致力于保持与当前每月发布周期的兼容性。{P2}{L1>改进了 Thunderbird 文件夹树的滚动行为，可自动滚动到当前文件夹。[issue 559]{L2}{L1>(预览模式) 标签现在始终从 QuickFolders 工具栏中移除，设置选项卡除外。[issue 571]{L2}{L1>移除了 Thunderbird“查看”菜单中 QuickFolders 工具栏菜单项后的 (null)。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

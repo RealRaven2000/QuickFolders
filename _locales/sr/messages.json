@@ -343,7 +343,7 @@
     "message": "Најновије вести"
   },
   "newsSection": {
-    "message": "{P1} Najnovija verzija $addonName$ sada je kompatibilna sa Thunderbird v137 i započela je proces poboljšanja pristupačnosti za tastature i čitače ekrana. Za detaljnu dokumentaciju, pogledajte punu listu izmena u linku ispod. {P2}{P1} U održavanju verzije {boldStart}6.10.1{boldEnd} takođe smo dodali poboljšan pristup tastaturom ka traci sa dugmićima za označene stranice i njihovim podmenijima, kao i specifične opcije u sekciji pristupačnosti u naprednim podešavanjima. {P2}",
+    "message": "{P1} Najnovija verzija $addonName$ sada je kompatibilna sa Thunderbird v139 i započela je proces poboljšanja pristupačnosti za tastature i čitače ekrana. {P2}{P1} U održavanju verzije {boldStart}6.10.1{boldEnd} takođe smo dodali poboljšan pristup tastaturom ka traci sa dugmićima za označene stranice i njihovim podmenijima, kao i specifične opcije u sekciji pristupačnosti u naprednim podešavanjima. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1881,7 +1881,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Промене приступачности{boldEnd}{P2} {P1}Тренутно напорно радим на томе да QuickFolders буде потпуно приступачан за тастатуре и читаоце екрана.{P2}{L1} Подршка за навигацију тастатуром по алатној траци QuickFolders и подешавањима QuickFolders. [issue 552], [issue 555]{L2}{L1} Сада можете додавати QuickFolders табове помоћу тастатуре [issue 550]{L2}{L1} Опција приоритета за означене фасцикле у резултатима quickJump и quickMove [issue 548]{L2}{L1} Нова опција да увек приказујете опције QuickFolders у табу.{L2} {L1} тастатурска пречица за quickJump за отварање фасцикле у новом табу или прозору. {L2}"
+    "message": "{P1}QuickFolders је сада компатибилан са Thunderbird-ом 139. Убудуће има за циљ да остане компатибилан са тренутним месечним циклусом издавања.{P2}{L1>Побољшано померање стабла фасцикли у Thunderbird-у до тренутне фасцикле. [issue 559]{L2}{L1>Ознака (Претходни преглед) сада се увек уклања са траке алатки QuickFolders-а, осим на картици са подешавањима. [issue 571]{L2}{L1>Уклоњен (null) иза ставке менија траке алатки QuickFolders у менију Приказ Thunderbird-а.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

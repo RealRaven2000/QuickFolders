@@ -334,7 +334,7 @@
     "message": "Tin mới nhất"
   },
   "newsSection": {
-    "message": "{P1} Phiên bản mới nhất của $addonName$ hiện tương thích với Thunderbird v137 và đã bắt đầu hành trình cải thiện khả năng tiếp cận cho bàn phím và phần mềm đọc màn hình. Để tham khảo tài liệu chi tiết, vui lòng kiểm tra toàn bộ nhật ký thay đổi qua liên kết bên dưới. {P2}{P1} Trong phiên bản bảo trì {boldStart}6.10.1{boldEnd}, chúng tôi cũng đã thêm khả năng truy cập bàn phím cải thiện cho thanh công cụ với các dấu trang và các menu con của chúng, cũng như các tùy chọn cụ thể trong phần truy cập trong cài đặt nâng cao. {P2}",
+    "message": "{P1} Phiên bản mới nhất của $addonName$ hiện tương thích với Thunderbird v139 và đã bắt đầu hành trình cải thiện khả năng tiếp cận cho bàn phím và phần mềm đọc màn hình. {P2}{P1} Trong phiên bản bảo trì {boldStart}6.10.1{boldEnd}, chúng tôi cũng đã thêm khả năng truy cập bàn phím cải thiện cho thanh công cụ với các dấu trang và các menu con của chúng, cũng như các tùy chọn cụ thể trong phần truy cập trong cài đặt nâng cao. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1733,7 +1733,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Thay đổi về khả năng tiếp cận{boldEnd}{P2} {P1}Hiện tôi đang làm việc chăm chỉ để làm cho QuickFolders hoàn toàn khả dụng cho bàn phím và trình đọc màn hình.{P2}{L1} Hỗ trợ điều hướng bằng bàn phím trên thanh công cụ QuickFolders và cài đặt QuickFolders. [issue 552], [issue 555]{L2}{L1} Bạn bây giờ có thể thêm Tab QuickFolders thông qua bàn phím [issue 550]{L2}{L1} Tùy chọn ưu tiên cho các thư mục đã đánh dấu trong kết quả quickJump và quickMove [issue 548]{L2}{L1} Tùy chọn mới để luôn hiển thị Tùy chọn QuickFolders trong một tab.{L2} {L1} phím tắt quickJump để mở Thư mục trong một tab hoặc cửa sổ mới. {L2}"
+    "message": "{P1}QuickFolders hiện đã tương thích với Thunderbird 139. Trong tương lai, tiện ích sẽ duy trì khả năng tương thích với chu kỳ phát hành hàng tháng hiện tại.{P2}{L1>Cải thiện việc cuộn trong cây thư mục Thunderbird đến thư mục hiện tại. [issue 559]{L2}{L1>Nhãn (Chế độ Xem trước) hiện luôn được loại bỏ khỏi thanh công cụ QuickFolders, trừ trong thẻ cài đặt. [issue 571]{L2}{L1>Đã xóa (null) phía sau mục menu cho thanh công cụ QuickFolders trong menu Xem của Thunderbird.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

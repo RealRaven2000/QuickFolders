@@ -386,7 +386,7 @@
     "message": "Senaste nytt"
   },
   "newsSection": {
-    "message": "{P1} Den senaste versionen av $addonName$ är nu kompatibel med Thunderbird v137 och har påbörjat sin resa mot förbättrad tillgänglighet för tangentbord och skärmläsare. För detaljerad dokumentation, vänligen se hela ändringsloggen via länken nedan. {P2}{P1} I underhållsversion {boldStart}6.10.1{boldEnd} har vi även lagt till förbättrad tangentbordsåtkomst till verktygsfältet med bokmärken och deras undermenyer, samt specifika alternativ i tillgänglighetssektionen i avancerade inställningar. {P2}",
+    "message": "{P1} Den senaste versionen av $addonName$ är nu kompatibel med Thunderbird v139 och har påbörjat sin resa mot förbättrad tillgänglighet för tangentbord och skärmläsare. {P2}{P1} I underhållsversion {boldStart}6.10.1{boldEnd} har vi även lagt till förbättrad tangentbordsåtkomst till verktygsfältet med bokmärken och deras undermenyer, samt specifika alternativ i tillgänglighetssektionen i avancerade inställningar. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2073,7 +2073,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Tillgänglighetsändringar{boldEnd}{P2} {P1}Jag arbetar för närvarande hårt för att göra QuickFolders helt tillgängligt för tangentbord och skärmläsare.{P2}{L1} Stöd för tangentbordsnavigering på QuickFolders-verktygsfältet och QuickFolders-inställningar. [issue 552], [issue 555]{L2}{L1} Nu kan du lägga till QuickFolders-flikar via tangentbordet [issue 550]{L2}{L1} Prioriteringsalternativ för bokmärkta mappar i quickJump och quickMove resultat [issue 548]{L2}{L1} Nytt alternativ för att alltid visa QuickFolders alternativ i en flik.{L2} {L1} quickJump genvägstangent för att öppna mapp i en ny flik eller fönster. {L2}"
+    "message": "{P1}QuickFolders är nu kompatibelt med Thunderbird 139. Framöver är målet att förbli kompatibelt med den aktuella månatliga utgivningscykeln.{P2}{L1>Förbättrad rullning i Thunderbirds mappträd för att hoppa till aktuell mapp. [issue 559]{L2}{L1>Etiketten (Förhandsgranskningsläge) tas nu alltid bort från QuickFolders verktygsfält, utom på inställningsfliken. [issue 571]{L2}{L1>Tagit bort (null) efter menyalternativet för QuickFolders verktygsfält i Thunderbirds Visa-meny.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

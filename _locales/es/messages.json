@@ -385,7 +385,7 @@
     "message": "Últimas noticias"
   },
   "newsSection": {
-    "message": "{P1} La última edición de $addonName$ ahora es compatible con Thunderbird v137 y ha comenzado su camino hacia una mejor accesibilidad para teclados y lectores de pantalla. Para obtener documentación detallada, consulte el registro de cambios completo en el enlace a continuación. {P2}{P1} En la versión de mantenimiento {boldStart}6.10.1{boldEnd} también agregamos un mejor acceso al teclado en la barra de herramientas con marcadores y sus submenús, así como opciones específicas en la sección de accesibilidad de la configuración avanzada. {P2}",
+    "message": "{P1} La última edición de $addonName$ ahora es compatible con Thunderbird v139 y ha comenzado su camino hacia una mejor accesibilidad para teclados y lectores de pantalla.{P2}{P1} En la versión de mantenimiento {boldStart}6.10.1{boldEnd} también agregamos un mejor acceso al teclado en la barra de herramientas con marcadores y sus submenús, así como opciones específicas en la sección de accesibilidad de la configuración avanzada. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2060,8 +2060,8 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Cambios de accesibilidad{boldEnd}{P2} {P1}Actualmente estoy trabajando duro para hacer que QuickFolders sea completamente accesible para teclados y lectores de pantalla.{P2}{L1} Soporte para la navegación con teclado en la barra de herramientas de QuickFolders y en la configuración de QuickFolders. [issue 552], [issue 555]{L2}{L1} Ahora puedes añadir pestañas de QuickFolders mediante el teclado [issue 550]{L2}{L1} Opción de prioridad para las carpetas marcadas en los resultados de quickJump y quickMove [issue 548]{L2}{L1} Nueva opción para mostrar siempre las opciones de QuickFolders en una pestaña.{L2} {L1} Tecla de acceso rápido quickJump para abrir una carpeta en una nueva pestaña o ventana. {L2}"
-  },
+    "message": "{P1}QuickFolders ahora es compatible con Thunderbird 139. A partir de ahora, busca mantenerse compatible con el ciclo mensual de versiones.{P2}{L1}Mejorado el desplazamiento del árbol de carpetas de Thunderbird para ir a la carpeta actual. [issue 559]{L2}{L1}La etiqueta (Modo de vista previa) ahora se elimina siempre de la barra de herramientas de QuickFolders, excepto en la pestaña de configuración. [issue 571]{L2}{L1}Se eliminó (null) detrás del elemento de menú de la barra de herramientas de QuickFolders en el menú Ver de Thunderbird.{L2}"
+  },  
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenido a $addonName$",

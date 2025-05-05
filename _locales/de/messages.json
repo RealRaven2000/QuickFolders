@@ -386,7 +386,7 @@
     "message": "Neuigkeiten"
   },
   "newsSection": {
-    "message": "{P1} Die neueste Ausgabe von $addonName$ ist jetzt mit Thunderbird v137 kompatibel und hat ihren Weg zu verbesserter Barrierefreiheit für Tastaturen und Bildschirmleser begonnen. Für detaillierte Dokumentation lesen Sie bitte das vollständige Änderungsprotokoll im unten stehenden Link. {P2}{P1} In der Wartungsversion {boldStart}6.10.1{boldEnd} haben wir auch den Tastaturzugriff auf die Symbolleiste mit Lesezeichen und deren Untermenüs sowie spezifische Optionen im Abschnitt für Barrierefreiheit in den erweiterten Einstellungen verbessert. {P2}",
+    "message": "{P1} Die neueste Ausgabe von $addonName$ ist jetzt mit Thunderbird v139 kompatibel und hat ihren Weg zu verbesserter Barrierefreiheit für Tastaturen und Bildschirmleser begonnen. {P2}{P1} In der Wartungsversion {boldStart}6.10.1{boldEnd} haben wir auch den Tastaturzugriff auf die Symbolleiste mit Lesezeichen und deren Untermenüs sowie spezifische Optionen im Abschnitt für Barrierefreiheit in den erweiterten Einstellungen verbessert. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2049,7 +2049,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Verbesserungen zur Barrierefreiheit{boldEnd}{P2} {P1} Ich arbeite derzeit intensiv daran, QuickFolders vollständig für Tastatur- und Bildschirmleser zugänglich zu machen.{P2}{L1} Unterstützung der Tastaturnavigation der QuickFolders-Toolbar und der QuickFolders-Einstellungen. [issue 552], [issue 555]{L2}{L1} Man kann jetzt QuickFolders-Tabs auch per Tastatur hinzufügen [issue 550]{L2}{L1} Neue Option, die Verzeichnisee mit QuickFolders-Tabs in den quickJump- und quickMove-Ergebnissen priorisiert [issue 548]{L2}{L1} Neue Option, die QuickFolders-Optionen immer in einem Tab anzuzeigen.{L2} {L1} Tastenkürzel für quickJump, um einen Ordner in einem neuen Tab oder Fenster zu öffnen. {L2} {L1} Griechische und Slowakische Übersetzungen für Onboarding und Lizenzierung hinzugefügt; eine Übersetzung der Bedienoberfläche wird in einem zukünftigen Update folgen.{L2}"
+    "message": "{P1}QuickFolders ist jetzt mit Thunderbird 139 kompatibel. Künftig soll die Kompatibilität mit dem aktuellen monatlichen Veröffentlichungszyklus erhalten bleiben.{P2}{L1}Verbessertes Scrollen im Thunderbird-Ordnerbaum, um zum aktuellen Ordner zu springen. [issue 559]{L2}{L1}Die Beschriftung (Vorschau-Modus) wird jetzt immer von der QuickFolders-Symbolleiste entfernt – außer auf dem Tab Einstellungen. [issue 571]{L2}{L1} Hinter dem Menüeintrag der QuickFolders-Symbolleiste im Ansicht-Menü von Thunderbird wurde der Text (null) entfernt.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

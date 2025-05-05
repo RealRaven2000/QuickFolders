@@ -385,7 +385,7 @@
     "message": "最新消息"
   },
   "newsSection": {
-    "message": "{P1} 最新版本的 $addonName$ 現在與 Thunderbird v137 相容，並已開始改善鍵盤和螢幕閱讀器的可及性。詳細文檔請參閱下面的完整變更日誌鏈接。 {P2}{P1} 在維護版本 {boldStart}6.10.1{boldEnd} 中，我們還增強了鍵盤對工具列上書籤及其子選單的存取功能，並在進階設置中的可及性區段中新增了特定選項。 {P2}",
+    "message": "{P1} 最新版本的 $addonName$ 現在與 Thunderbird v139 相容，並已開始改善鍵盤和螢幕閱讀器的可及性。{P2}{P1} 在維護版本 {boldStart}6.10.1{boldEnd} 中，我們還增強了鍵盤對工具列上書籤及其子選單的存取功能，並在進階設置中的可及性區段中新增了特定選項。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2010,7 +2010,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}無障礙變更{boldEnd}{P2} {P1}我目前正努力使QuickFolders完全支援鍵盤和螢幕閱讀器.{P2}{L1} 支援鍵盤導覽QuickFolders工具列和QuickFolders設定。 [issue 552], [issue 555]{L2}{L1} 現在可以透過鍵盤新增QuickFolders分頁 [issue 550]{L2}{L1} 快捷選項優先級，適用於quickJump和quickMove結果中的書籤資料夾 [issue 548]{L2}{L1} 新選項，始終在分頁中顯示QuickFolders選項.{L2} {L1} quickJump加速鍵，將資料夾開啟於新分頁或視窗中。 {L2}"
+    "message": "{P1}QuickFolders 現已支援 Thunderbird 139，並將致力於與目前的每月發行週期保持相容。{P2}{L1>改進 Thunderbird 資料夾樹的捲動行為，會自動捲動至目前資料夾。[issue 559]{L2}{L1>除了在設定分頁中，(預覽模式) 標籤現已一律從 QuickFolders 工具列中移除。[issue 571]{L2}{L1>已從 Thunderbird 檢視選單中的 QuickFolders 工具列選項移除 (null)。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

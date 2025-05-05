@@ -393,7 +393,7 @@
     "message": "Dernières nouveautés"
   },
   "newsSection": {
-    "message": "{P1} La dernière édition de $addonName$ est maintenant compatible avec Thunderbird v137 et a commencé son chemin vers une meilleure accessibilité pour les claviers et les lecteurs d'écran. Pour une documentation détaillée, veuillez consulter le journal des modifications complet via le lien ci-dessous. {P2}{P1} Dans la version de maintenance {boldStart}6.10.1{boldEnd}, nous avons également ajouté un meilleur accès au clavier à la barre d'outils avec des signets et leurs sous-menus, ainsi que des options spécifiques dans la section d'accessibilité des paramètres avancés. {P2}",
+    "message": "{P1} La dernière édition de $addonName$ est maintenant compatible avec Thunderbird v139 et a commencé son chemin vers une meilleure accessibilité pour les claviers et les lecteurs d'écran.{P2}{P1} Dans la version de maintenance {boldStart}6.10.1{boldEnd}, nous avons également ajouté un meilleur accès au clavier à la barre d'outils avec des signets et leurs sous-menus, ainsi que des options spécifiques dans la section d'accessibilité des paramètres avancés. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2096,7 +2096,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Modifications d'accessibilité{boldEnd}{P2} {P1}Je travaille actuellement dur pour rendre QuickFolders complètement accessible aux claviers et lecteurs d'écran.{P2}{L1} Prise en charge de la navigation au clavier sur la barre d'outils QuickFolders et les paramètres de QuickFolders. [issue 552], [issue 555]{L2}{L1} Vous pouvez maintenant ajouter des onglets QuickFolders via le clavier [issue 550]{L2}{L1} Option de priorité pour les dossiers marqués dans les résultats de quickJump et quickMove [issue 548]{L2}{L1} Nouvelle option pour afficher toujours les options de QuickFolders dans un onglet.{L2} {L1} Touche d'accélérateur quickJump pour ouvrir un dossier dans un nouvel onglet ou une nouvelle fenêtre. {L2}"
+    "message": "{P1}QuickFolders est désormais compatible avec Thunderbird 139. À l'avenir, il vise à rester compatible avec le cycle de publication mensuel actuel.{P2}{L1}Amélioration du défilement de l’arborescence des dossiers de Thunderbird pour atteindre le dossier actuel. [issue 559]{L2}{L1}L’étiquette (Mode Aperçu) est désormais toujours supprimée de la barre d’outils QuickFolders, sauf dans l’onglet des paramètres. [issue 571]{L2}{L1}(null) a été supprimé derrière l’élément de menu de la barre d’outils QuickFolders dans le menu Affichage de Thunderbird.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

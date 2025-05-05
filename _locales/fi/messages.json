@@ -189,7 +189,7 @@
     "message": "Uusimmat uutiset"
   },
   "newsSection": {
-    "message": "{P1} Tämänhetkinen $addonName$ -versio on nyt yhteensopiva Thunderbird v137:n kanssa ja on alkanut matkan kohti parempaa saavutettavuutta näppäimistöille ja ruudunlukijoille. Yksityiskohtaisen dokumentaation saadaksesi tarkista täydellinen muutoslokit alla olevasta linkistä. {P2}{P1} Huoltoversiossa {boldStart}6.10.1{boldEnd} lisäsimme myös parannetun näppäimistöyhteyden työkalupalkille, jossa on kirjanmerkit ja niiden alivalikot, sekä erityisiä asetuksia saavutettavuusosiossa edistyneissä asetuksissa. {P2}",
+    "message": "{P1} Tämänhetkinen $addonName$ -versio on nyt yhteensopiva Thunderbird v139:n kanssa ja on alkanut matkan kohti parempaa saavutettavuutta näppäimistöille ja ruudunlukijoille. {P2}{P1} Huoltoversiossa {boldStart}6.10.1{boldEnd} lisäsimme myös parannetun näppäimistöyhteyden työkalupalkille, jossa on kirjanmerkit ja niiden alivalikot, sekä erityisiä asetuksia saavutettavuusosiossa edistyneissä asetuksissa. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -378,7 +378,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Esteettömyysmuutokset{boldEnd}{P2} {P1}Työskentelen parhaillaan sen eteen, että QuickFolders olisi täysin saavutettavissa näppäimistön ja ruudunlukuohjelmien avulla.{P2}{L1} Tukee näppäimistönavigointia QuickFoldersin työkalupalkissa ja QuickFoldersin asetuksissa. [issue 552], [issue 555]{L2}{L1} Voit nyt lisätä QuickFolders-välilehtiä näppäimistöllä [issue 550]{L2}{L1} Etusijavaihtoehto kirjanmerkkikansioille quickJump- ja quickMove-tuloksissa [issue 548]{L2}{L1} Uusi vaihtoehto näyttää QuickFoldersin asetukset aina välilehdessä.{L2} {L1} quickJump-pikanäppäin avaa kansion uuteen välilehteen tai ikkunaan. {L2}"
+    "message": "{P1}QuickFolders on nyt yhteensopiva Thunderbirdin version 139 kanssa. Jatkossa pyritään säilyttämään yhteensopivuus nykyisen kuukausittaisen julkaisusykliin kanssa.{P2}{L1}Parannettu Thunderbirdin kansiopuussa vierittämistä nykyiseen kansioon. [issue 559]{L2}{L1}(Esikatselutila)-merkintä poistetaan nyt aina QuickFolders-työkalupalkista paitsi asetukset-välilehdellä. [issue 571]{L2}{L1}Poistettu (null) QuickFolders-työkalupalkin valikkokohdan takaa Thunderbirdin Näytä-valikossa.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

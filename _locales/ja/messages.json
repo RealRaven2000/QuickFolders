@@ -373,7 +373,7 @@
     "message": "最新ニュース"
   },
   "newsSection": {
-    "message": "{P1} 最新の $addonName$ バージョンは Thunderbird v137 と互換性があり、キーボードとスクリーンリーダーのアクセシビリティ向上に向けた取り組みが始まりました。詳細なドキュメントについては、以下のリンクで変更履歴を確認してください。 {P2}{P1} メンテナンスバージョン {boldStart}6.10.1{boldEnd} では、ブックマークとそのサブメニューのツールバーへのキーボードアクセス改善や、詳細設定のアクセシビリティセクションに特定のオプションを追加しました。 {P2}",
+    "message": "{P1} 最新の $addonName$ バージョンは Thunderbird v139 と互換性があり、キーボードとスクリーンリーダーのアクセシビリティ向上に向けた取り組みが始まりました。{P2}{P1} メンテナンスバージョン {boldStart}6.10.1{boldEnd} では、ブックマークとそのサブメニューのツールバーへのキーボードアクセス改善や、詳細設定のアクセシビリティセクションに特定のオプションを追加しました。 {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1949,7 +1949,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}アクセシビリティの変更{boldEnd}{P2} {P1}現在、QuickFoldersをキーボードとスクリーンリーダーに完全に対応させるために一生懸命取り組んでいます。{P2}{L1} QuickFoldersツールバーとQuickFolders設定でのキーボードナビゲーションをサポート。 [issue 552], [issue 555]{L2}{L1} キーボードでQuickFoldersタブを追加できるようになりました [issue 550]{L2}{L1} quickJumpおよびquickMoveの結果でブックマークされたフォルダーの優先順位オプション [issue 548]{L2}{L1} QuickFoldersのオプションを常にタブに表示する新しいオプション.{L2} {L1} 新しいタブまたはウィンドウでフォルダーを開くためのquickJumpアクセラレータキー。 {L2}"
+    "message": "{P1}QuickFolders は Thunderbird 139 に対応しました。今後は、現在の月次リリースサイクルに対応し続けることを目指します。{P2}{L1}Thunderbird のフォルダツリーを現在のフォルダまでスクロールする動作を改善しました。 [issue 559]{L2}{L1}「(プレビューモード)」のラベルは、設定タブを除いて QuickFolders ツールバーから常に削除されるようになりました。 [issue 571]{L2}{L1}Thunderbird の表示メニュー内、QuickFolders ツールバーのメニュー項目にあった「(null)」を削除しました。{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

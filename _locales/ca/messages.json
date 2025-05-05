@@ -378,7 +378,7 @@
     "message": "Últimes notícies"
   },
   "newsSection": {
-    "message": "{P1} L'última edició de $addonName$ ja és compatible amb Thunderbird v137 i ha començat el seu camí cap a una millor accessibilitat per a teclats i lectors de pantalles. Per a la documentació detallada, consulteu el registre de canvis complet al següent enllaç. {P2}{P1} En la versió de manteniment {boldStart}6.10.1{boldEnd} també vam afegir una millor accessibilitat al teclat per a la barra d'eines amb marcadors i els seus submenús, així com opcions específiques a la secció d'accessibilitat a les configuracions avançades. {P2}",
+    "message": "{P1} L'última edició de $addonName$ ja és compatible amb Thunderbird v139 i ha començat el seu camí cap a una millor accessibilitat per a teclats i lectors de pantalles. {P2}{P1} En la versió de manteniment {boldStart}6.10.1{boldEnd} també vam afegir una millor accessibilitat al teclat per a la barra d'eines amb marcadors i els seus submenús, així com opcions específiques a la secció d'accessibilitat a les configuracions avançades. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1990,7 +1990,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Canvis d'accessibilitat{boldEnd}{P2} {P1}Estic treballant dur per fer que QuickFolders sigui totalment accessible a teclats i lectors de pantalla.{P2}{L1} Suport per a la navegació amb teclat de la barra d'eines de QuickFolders i la configuració de QuickFolders. [issue 552], [issue 555]{L2}{L1} Ara podeu afegir pestanyes de QuickFolders mitjançant teclat [issue 550]{L2}{L1} Opció de prioritat per a les carpetes marcades a les resultats de quickJump i quickMove [issue 548]{L2}{L1} Nova opció per mostrar sempre les opcions de QuickFolders en una pestanya.{L2} {L1} tecla d'accelerador quickJump per obrir la carpeta en una nova pestanya o finestra. {L2}"
+    "message": "{P1}QuickFolders ara és compatible amb Thunderbird 139. A partir d'ara, pretén mantenir la compatibilitat amb el cicle de llançament mensual actual.{P2}{L1}S'ha millorat el desplaçament de l'arbre de carpetes de Thunderbird per desplaçar-se a la carpeta actual. [issue 559]{L2}{L1}L'etiqueta (Mode de previsualització) ara sempre s'elimina de la barra d'eines de QuickFolders excepte a la pestanya de configuració. [issue 571]{L2}{L1}S'ha eliminat (null) darrere de l'element del menú de la barra d'eines de QuickFolders al menú Visualitza de Thunderbird.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

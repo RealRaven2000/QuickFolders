@@ -382,7 +382,7 @@
     "message": "Najnowsze wiadomości"
   },
   "newsSection": {
-    "message": "{P1} Najnowsza wersja $addonName$ jest teraz kompatybilna z Thunderbird v137 i rozpoczęła proces poprawy dostępności dla klawiatur i czytników ekranu. Aby zapoznać się ze szczegółową dokumentacją, sprawdź pełny dziennik zmian w poniższym linku. {P2}{P1} W wersji konserwacyjnej {boldStart}6.10.1{boldEnd} dodaliśmy również ulepszony dostęp do paska narzędzi z zakładkami i ich podmenu za pomocą klawiatury, a także szczególne opcje w sekcji dostępności w zaawansowanych ustawieniach. {P2}",
+    "message": "{P1} Najnowsza wersja $addonName$ jest teraz kompatybilna z Thunderbird v139 i rozpoczęła proces poprawy dostępności dla klawiatur i czytników ekranu. {P2}{P1} W wersji konserwacyjnej {boldStart}6.10.1{boldEnd} dodaliśmy również ulepszony dostęp do paska narzędzi z zakładkami i ich podmenu za pomocą klawiatury, a także szczególne opcje w sekcji dostępności w zaawansowanych ustawieniach. {P2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2051,7 +2051,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{P1}{boldStart}Zmiany w dostępności{boldEnd}{P2} {P1}Obecnie pracuję nad tym, aby QuickFolders było w pełni dostępne za pomocą klawiatury i czytników ekranów.{P2}{L1} Obsługa nawigacji za pomocą klawiatury na pasku narzędzi QuickFolders oraz w ustawieniach QuickFolders. [issue 552], [issue 555]{L2}{L1} Teraz możesz dodawać karty QuickFolders za pomocą klawiatury [issue 550]{L2}{L1} Opcja priorytetu dla zakładek w wynikach quickJump i quickMove [issue 548]{L2}{L1} Nowa opcja, aby zawsze wyświetlać opcje QuickFolders na karcie.{L2} {L1} Skrót klawiszowy quickJump do otwierania folderu w nowej karcie lub oknie. {L2}"
+    "message": "{P1}QuickFolders jest teraz kompatybilny z Thunderbirdem 139. W przyszłości będzie dążyć do zachowania zgodności z bieżącym miesięcznym cyklem wydawniczym.{P2}{L1}Ulepszono przewijanie drzewa folderów Thunderbirda do bieżącego folderu. [issue 559]{L2}{L1}Etykieta (Tryb podglądu) jest teraz zawsze usuwana z paska narzędzi QuickFolders, z wyjątkiem karty ustawień. [issue 571]{L2}{L1}Usunięto (null) za pozycją menu paska narzędzi QuickFolders w menu Widok Thunderbirda.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

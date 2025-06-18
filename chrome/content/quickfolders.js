@@ -615,7 +615,7 @@ var QuickFolders = {
     }
   },
 	
-	initTabsFromEntries: function initTabsFromEntries(folderEntries) {
+	initTabsFromEntries: function (folderEntries) {
     const util = QuickFolders.Util,
 		      that = this.isQuickFolders ? this : QuickFolders,
 					QI = that.Interface; // main window Interface!
@@ -623,7 +623,7 @@ var QuickFolders = {
     let tabMode = null; 
 		
     util.logDebug("initTabsFromEntries()");
-    if (folderEntries.length) {return;}
+    if (!folderEntries.length) {return;}
 
 		try {
 			that.Model.selectedFolders = folderEntries;

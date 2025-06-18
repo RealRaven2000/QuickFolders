@@ -1249,7 +1249,10 @@
     "message": "Аутоматски склопите поље за претрагу."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Есцапе Кеи брише листу порука."
+    "message": "Тастер Escape уклања све поруке са листе за померање."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Без ове опције можете користити Shift+Escape."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Изаберите све налоге које треба изузети из резултата претраге:"
@@ -1259,6 +1262,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Максималан број резултата претраге"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Увек отвори фасциклу у картици"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Без ове опције користите CTRL+Enter за отварање у новој картици."
   },
   "qf.quickMove.path.format": {
     "message": "Облик приказа:"

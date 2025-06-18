@@ -1390,7 +1390,10 @@
     "message": "Suchfeld automatisch einklappen."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Taste löscht die Nachrichtenliste."
+    "message": "Die Escape-Taste entfernt alle Nachrichten aus der Verschiebe-Liste."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Ohne diese Option können Sie Shift+Escape verwenden."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Selektieren Sie alle Konten, die aus den Suchergebnissen ausgeschlossen werden sollen:"
@@ -1400,6 +1403,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Maximale Anzahl von Suchergebnissen"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Ordner immer in neuem Tab öffnen"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Ohne diese Option erzwingt STRG+Eingabetaste das Öffnen in einem neuen Tab."
   },
   "qf.quickMove.path.format": {
     "message": "Anzeigeformat:"

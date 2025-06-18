@@ -1363,7 +1363,10 @@
     "message": "自动折叠搜索框。"
   },
   "qf.quickMove.escapeClears": {
-    "message": "退出鍵清除消息列表。"
+    "message": "Esc键会清除移动列表中的所有邮件。"
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "如果没有此选项，您可以使用 Shift+Escape。"
   },
   "qf.quickMove.excludeAccounts": {
     "message": "選擇應從搜索結果中排除的任何帳戶："
@@ -1373,6 +1376,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "最大搜索結果數"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "始终在标签页中打开文件夹"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "未启用此选项时，可使用 CTRL+Enter 强制在新标签页中打开。"
   },
   "qf.quickMove.path.format": {
     "message": "显示格式："

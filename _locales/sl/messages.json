@@ -1347,7 +1347,10 @@
     "message": "Samodejno strni iskalno polje."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key izbriše seznam sporočil."
+    "message": "Tipka Escape odstrani vsa sporočila s seznama za premik."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Brez te možnosti lahko uporabite Shift+Escape."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Izberite vse račune, ki jih je treba izključiti iz rezultatov iskanja:"
@@ -1357,6 +1360,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Največje število rezultatov iskanja"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Vedno odpri mapo v zavihku"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Brez te možnosti uporabite CTRL+Enter za prisilno odpiranje novega zavihka."
   },
   "qf.quickMove.path.format": {
     "message": "Oblika prikaza:"

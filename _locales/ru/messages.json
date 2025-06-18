@@ -1407,7 +1407,10 @@
     "message": "Автоматически сворачивать поле поиска."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key очищает список сообщений."
+    "message": "Клавиша Escape удаляет все сообщения из списка перемещения."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Без этой опции вы можете использовать Shift+Escape."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Выберите любые учетные записи, которые следует исключить из результатов поиска:"
@@ -1417,6 +1420,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Максимальное количество результатов поиска"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Всегда открывать папку во вкладке"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Без этой опции используйте CTRL+Enter, чтобы принудительно открыть новую вкладку."
   },
   "qf.quickMove.path.format": {
     "message": "Формат отображения:"

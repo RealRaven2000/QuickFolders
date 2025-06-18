@@ -1398,7 +1398,10 @@
     "message": "Colapsar automáticamente el cuadro de búsqueda."
   },
   "qf.quickMove.escapeClears": {
-    "message": "La tecla Escape borra la lista de mensajes."
+    "message": "La tecla Escape elimina todos los mensajes de la lista de movimiento."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Sin esta opción, puedes usar Shift+Escape para hacerlo."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Seleccione las cuentas que deben excluirse de los resultados de búsqueda:"
@@ -1408,6 +1411,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Número máximo de resultados de búsqueda"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Abrir siempre la carpeta en una pestaña"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Sin esta opción, usa CTRL+Enter para forzar la apertura en una nueva pestaña."
   },
   "qf.quickMove.path.format": {
     "message": "Mostrar formato:"
@@ -2061,7 +2070,7 @@
   },
   "whats-new-list": {
     "message": "{P1}QuickFolders ahora es compatible con Thunderbird 139. A partir de ahora, busca mantenerse compatible con el ciclo mensual de versiones.{P2}{L1}Mejorado el desplazamiento del árbol de carpetas de Thunderbird para ir a la carpeta actual. [issue 559]{L2}{L1}La etiqueta (Modo de vista previa) ahora se elimina siempre de la barra de herramientas de QuickFolders, excepto en la pestaña de configuración. [issue 571]{L2}{L1}Se eliminó (null) detrás del elemento de menú de la barra de herramientas de QuickFolders en el menú Ver de Thunderbird.{L2}"
-  },  
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenido a $addonName$",

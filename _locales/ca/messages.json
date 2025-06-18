@@ -1355,7 +1355,10 @@
     "message": "Col·lapsa automàticament el quadre de cerca."
   },
   "qf.quickMove.escapeClears": {
-    "message": "La tecla d'escapament sempre esborra la llista de missatges."
+    "message": "La tecla Escape elimina tots els missatges de la llista de moviment."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Sense aquesta opció, pots utilitzar Maj+Escape per fer-ho."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Seleccioneu qualsevol compte que s'hagi d'excloure dels resultats de la cerca:"
@@ -1365,6 +1368,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Nombre màxim de resultats de cerca"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Obrir sempre la carpeta en una pestanya"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Sense aquesta opció, utilitza CTRL+Retorn per forçar l'obertura en una pestanya nova."
   },
   "qf.quickMove.path.format": {
     "message": "Format de visualització:"

@@ -1414,7 +1414,10 @@
     "message": "Automaticky sbalit vyhledávací pole."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Klávesa Escape vždy vymaže seznam zpráv."
+    "message": "Klávesa Escape odstraní všechny zprávy ze seznamu přesunu."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Bez této volby můžete použít Shift+Escape."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Vyberte účty, které mají být vyloučeny z výsledků hledání:"
@@ -1424,6 +1427,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Maximální počet výsledků hledání"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Ordner immer in neuem Tab öffnen"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Ohne diese Option erzwingt STRG+Eingabetaste das Öffnen in einem neuen Tab."
   },
   "qf.quickMove.path.format": {
     "message": "Formát zobrazení:"

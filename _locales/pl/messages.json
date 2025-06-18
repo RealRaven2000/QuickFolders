@@ -1392,7 +1392,10 @@
     "message": "Automatycznie zwinąć pole wyszukiwania."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Klawisz Escape czyści listę wiadomości."
+    "message": "Klawisz Escape usuwa wszystkie wiadomości z listy przenoszenia."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Bez tej opcji możesz użyć Shift+Escape."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Wybierz konta, które powinny zostać wykluczone z wyników wyszukiwania:"
@@ -1402,6 +1405,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Maksymalna liczba wyników wyszukiwania"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Zawsze otwieraj folder w karcie"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Bez tej opcji użyj CTRL+Enter, aby wymusić otwarcie nowej karty."
   },
   "qf.quickMove.path.format": {
     "message": "Format wyświetlania:"

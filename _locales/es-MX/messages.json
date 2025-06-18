@@ -1378,7 +1378,10 @@
     "message": "Colapsar automáticamente el cuadro de búsqueda."
   },
   "qf.quickMove.escapeClears": {
-    "message": "La tecla Escape borra la lista de mensajes."
+    "message": "La tecla Escape elimina todos los mensajes de la lista para mover."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Sin esta opción, puedes usar Shift+Escape para hacerlo."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Seleccione las cuentas que deben excluirse de los resultados de búsqueda:"
@@ -1388,6 +1391,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Número máximo de resultados de búsqueda"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Siempre abrir la carpeta en una pestaña"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Sin esta opción, usa CTRL+Enter para forzar la apertura en una nueva pestaña."
   },
   "qf.quickMove.path.format": {
     "message": "Formato de despliegue:"

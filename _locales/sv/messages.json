@@ -1402,7 +1402,10 @@
     "message": "Fäll ihop sökrutan automatiskt."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key rensar meddelandelistan."
+    "message": "Escape-tangenten tar bort alla meddelanden från flyttlistan."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Utan detta alternativ kan du använda Shift+Escape."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Välj vilket konto som ska uteslutas från sökresultaten:"
@@ -1412,6 +1415,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Maximalt antal sökresultat"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Öppna alltid mappen i en flik"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Utan det här alternativet kan du använda CTRL+Enter för att tvinga fram en ny flik."
   },
   "qf.quickMove.path.format": {
     "message": "Visningsformat:"

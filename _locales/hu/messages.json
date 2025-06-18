@@ -1258,7 +1258,10 @@
     "message": "A keresőmező automatikus bezárása."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Az Escape gomb törli az üzenetek listáját."
+    "message": "Az Escape gomb eltávolít minden üzenetet az áthelyezési listáról."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Enélkül az opció nélkül használhatod a Shift+Escape-et."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Válassza ki azokat a fiókokat, amelyeket ki kell zárni a keresési eredmények közül:"
@@ -1268,6 +1271,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "A keresési eredmények maximális száma"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Mappa mindig új lapon nyíljon meg"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "E lehetőség nélkül a CTRL+Enter kombinációval lehet új lapot nyitni."
   },
   "qf.quickMove.silent": {
     "message": "Nincsenek értesítések a levelek áthelyezése után."

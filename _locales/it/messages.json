@@ -1425,7 +1425,10 @@
     "message": "Chiudi automaticamente la casella di ricerca."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Il tasto Esc svuota l'elenco dei messaggi."
+    "message": "Il tasto Escape rimuove tutti i messaggi dalla lista di spostamento."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Senza questa opzione, puoi usare Shift+Escape."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Seleziona gli account da escludere dai risultati della ricerca:"
@@ -1435,6 +1438,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Numero massimo di risultati della ricerca"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Apri sempre la cartella in una scheda"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Senza questa opzione, usa CTRL+Invio per forzare l'apertura in una nuova scheda."
   },
   "qf.quickMove.path.format": {
     "message": "Formato di visualizzazione:"

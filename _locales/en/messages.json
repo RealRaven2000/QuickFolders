@@ -1424,7 +1424,10 @@
     "message": "Automatically collapse search box."
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escape Key always clears messages list."
+    "message": "Escape key removes all messages from the move list."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Without this option, you can use Shift+Escape to do this."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Select any account that should be excluded from the search results:"
@@ -1434,6 +1437,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Maximum number of search results"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Always open folder in a tab"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Without this option, use CTRL+Enter to force opening a new tab."
   },
   "qf.quickMove.path.format": {
     "message": "Display Format:"

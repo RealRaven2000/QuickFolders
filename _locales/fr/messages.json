@@ -1427,7 +1427,10 @@
     "message": "Réduire automatiquement la boîte de recherche."
   },
   "qf.quickMove.escapeClears": {
-    "message": "La touche d'échappement efface la liste des messages."
+    "message": "La touche Échap supprime tous les messages de la liste de déplacement."
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "Sans cette option, vous pouvez utiliser Shift+Échap."
   },
   "qf.quickMove.excludeAccounts": {
     "message": "Sélectionnez les comptes à exclure des résultats de recherche :"
@@ -1437,6 +1440,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "Nombre maximum de résultats de recherche"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "Toujours ouvrir le dossier dans un onglet"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "Sans cette option, utilisez CTRL+Entrée pour forcer l'ouverture dans un nouvel onglet."
   },
   "qf.quickMove.path.format": {
     "message": "Format d'affichage :"

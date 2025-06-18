@@ -1326,7 +1326,10 @@
     "message": "検索ボックスを自動的に折りたたみます。"
   },
   "qf.quickMove.escapeClears": {
-    "message": "Escキーはメッセージリストをクリアします。"
+    "message": "Escキーは移動リストのすべてのメッセージを削除します。"
+  },
+  "qf.quickMove.escapeClears.tip": {
+    "message": "このオプションがない場合は、Shift+Escapeを使用できます。"
   },
   "qf.quickMove.excludeAccounts": {
     "message": "検索結果から除外する必要があるアカウントを選択します。"
@@ -1336,6 +1339,12 @@
   },
   "qf.quickMove.maxResults": {
     "message": "検索結果の最大数"
+  },
+  "qf.quickMove.openInTab": {
+    "message": "常にフォルダーをタブで開く"
+  },
+  "qf.quickMove.openInTab.tip": {
+    "message": "このオプションが無い場合は、CTRL+Enter で新しいタブを強制的に開きます。"
   },
   "qf.quickMove.path.format": {
     "message": "表示形式:"

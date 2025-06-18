@@ -48,7 +48,22 @@
 
   <checkbox id="chkCollapseSearch" label="__MSG_qf.quickMove.collapse__" />
   
-  <checkbox id="chkEscapeClearsList" label="__MSG_qf.quickMove.escapeClears__"/>
+  <hbox class="option-row">
+    <div class="option-tooltip-content">
+      <checkbox id="chkEscapeClearsList" label="__MSG_qf.quickMove.escapeClears__"/>
+      <button class="tooltipBtn" type="button" aria-label="More info"></button>
+      <div class="tooltip-bubble" hidden="true">__MSG_qf.quickMove.escapeClears.tip__</div>    
+    </div>
+  </hbox>
+
+  <hbox class="option-row">
+    <div class="option-tooltip-content">
+      <checkbox id="chkForceOpenInTab" label="__MSG_qf.quickMove.openInTab__"/>
+      <button class="tooltipBtn" type="button" aria-label="More info"></button>
+      <div class="tooltip-bubble" hidden="true">__MSG_qf.quickMove.openInTab.tip__</div>    
+    </div>
+  </hbox>
+
 
   <html:fieldset>
     <html:legend>__MSG_quickMove.singleMessageTabs__</html:legend>

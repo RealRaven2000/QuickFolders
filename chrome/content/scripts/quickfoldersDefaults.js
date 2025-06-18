@@ -284,14 +284,15 @@ pref("extensions.quickfolders.contextMenu.hideFilterMode", false);
 // Pro Features
 pref("extensions.quickfolders.licenseType", 0); // private license, 1-domain
 pref("extensions.quickfolders.premium.categories.multiSelect",false);
-pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  // Bug 26088
-pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); // Bug 25991
-pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); // Bug 25991
+pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  
+pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); 
+pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); 
 pref("extensions.quickfolders.premium.findFolder.disableSpace", false); // optimization?
 pref("extensions.quickfolders.premium.findFolder.autoCollapse", true); // [issue 534]
 pref("extensions.quickfolders.premium.skipUnreadFolder.sort", true);
 pref("extensions.quickfolders.quickMove.premium.silentMode", false);
 pref("extensions.quickfolders.quickMove.premium.escapeClearsList", false); // [issue 134] 
+pref("extensions.quickfolders.quickJump.premium.forceTab", false); // [issue 577] 
 pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");
 pref("extensions.quickfolders.quickMove.premium.lockInAccount", false);
 pref("extensions.quickfolders.quickMove.maxResults", 25);

@@ -24,32 +24,32 @@
       return prefs.getBoolPref("quickMove.premium.lockInAccount");
     },
     get isSilent() {
-      return prefs.getBoolPref('quickMove.premium.silentMode');
+      return prefs.getBoolPref("quickMove.premium.silentMode");
     },
     get isClearList() {
-      return prefs.getBoolPref('quickMove.premium.escapeClearsList');
+      return prefs.getBoolPref("quickMove.premium.escapeClearsList");
+    },
+    get isForceOpenInTab() {
+      return prefs.getBoolPref("quickJump.premium.forceTab");
     },
     get isCollapse() {
       return prefs.getBoolPref("premium.findFolder.autoCollapse");
     },
     get isGoNext() {
-      return prefs.getBoolPref('quickMove.gotoNextMsgAfterMove');
+      return prefs.getBoolPref("quickMove.gotoNextMsgAfterMove");
     },
     get isReopen() {
-      return prefs.getBoolPref('quickMove.reopenMsgTabAfterMove');
+      return prefs.getBoolPref("quickMove.reopenMsgTabAfterMove");
     },
     get isSingleTabAutoClose() {
-      return prefs.getBoolPref('quickMove.singleTab.autoClose');
+      return prefs.getBoolPref("quickMove.singleTab.autoClose");
     },
-    
-    
-    loadExclusions: function loadExclusions() {
-      let excludedList = prefs.getStringPref('quickMove.premium.excludedAccounts');
-      this.excludedIds = excludedList.trim() ? excludedList.split(',') : [];
-    }
-    
 
-  }
+    loadExclusions: function loadExclusions() {
+      let excludedList = prefs.getStringPref("quickMove.premium.excludedAccounts");
+      this.excludedIds = excludedList.trim() ? excludedList.split(",") : [];
+    },
+  };
   
 }
 

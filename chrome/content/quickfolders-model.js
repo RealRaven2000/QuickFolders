@@ -34,7 +34,7 @@ QuickFolders.Model = {
 
   addFolder: function (uri, categories) {
     function unpackURI(URL) {
-      if (!URL) return URL;
+      if (!URL) {return URL;}
       // remove url(...) from Icon file name for storing in model.entry.icon
       return URL.substr(4, URL.length-5);
     }
@@ -55,9 +55,10 @@ QuickFolders.Model = {
 				if (oldCats.indexOf(newCats[i]) == -1) {
 					// list of currently selected categories this entry is not currently part of
 					addCats.push(newCats[i]); 
-				}
-				else
-					isVisible = true; // we already see the tab
+				} else {
+          // we already see the tab
+          isVisible = true;
+        }
 			}
       // adding folder to more categories
       if (addCats.length) {
@@ -77,39 +78,37 @@ QuickFolders.Model = {
 				util.logToConsole (msg); 
 				util.alert(msg); 
 			}
-		
-    }
-    // Create entirely new QF Tab
-    else {
+    } else {
+      // Create entirely new QF Tab
       let folder = this.getMsgFolderFromUri(uri, false),
-          iconURI = null;
+        iconURI = null;
       if (folder && folder.getStringProperty) {
         try {
-          iconURI =  unpackURI(folder.getStringProperty("iconURL"));
-        }
-        catch(ex) {;}
+          iconURI = unpackURI(folder.getStringProperty("iconURL"));
+        } catch { ; }
       }
       // [issue 281]
-      let ac = (MailServices.accounts.FindAccountForServer || MailServices.accounts.findAccountForServer)(folder.server);
+      let ac = (
+        MailServices.accounts.FindAccountForServer || MailServices.accounts.findAccountForServer
+      )(folder.server);
       let account = "";
       if (ac) {
         account = ac.key;
-      }
-      else {
+      } else {
         account = "?account";
       }
 
       this.selectedFolders.push({
         account: account,
         uri: uri,
-        name: (folder==null) ? '' : folder.prettyName,
+        name: folder == null ? "" : folder.prettyName,
         category: categories,
         tabColor: 0,
-        icon: iconURI
+        icon: iconURI,
       });
 
       this.update();
-      util.logDebug ("\nQuickFolders: added Folder URI " + uri + "\nto Categories: " + categories);
+      util.logDebug("\nQuickFolders: added Folder URI " + uri + "\nto Categories: " + categories);
       return true;
     }
 
@@ -117,7 +116,7 @@ QuickFolders.Model = {
   } ,
 
   getFolderEntry: function getFolderEntry(uri) {
-    if (!uri) return null;
+    if (!uri) {return null;}
     for (let i = 0; i < this.selectedFolders.length; i++) {
       if(this.selectedFolders[i].uri == uri) {
         return this.selectedFolders[i];
@@ -127,14 +126,14 @@ QuickFolders.Model = {
   } ,
   
   getButtonEntry: function(button) {
-    if (!button) return null;
+    if (!button) {return null;}
     // support invalid folders:
     const uri = button?.folder?.URI || button.getAttribute("folderURI");
-    if (!uri) return null;
+    if (!uri) {return null;}
     return this.getFolderEntry(uri);
   } ,
 
-  removeFolder: function removeFolder(uri, updateEntries) {
+  removeFolder: function (uri, updateEntries) {
     QuickFolders.Util.logDebug("model.removeFolder");
     for (let i = 0; i < this.selectedFolders.length; i++) {
       if(this.selectedFolders[i].uri == uri) {
@@ -142,8 +141,9 @@ QuickFolders.Model = {
       }
     }
 
-    if (updateEntries)
+    if (updateEntries) {
       this.update();
+    }
   } ,
 
   renameFolder: function (uri, name) {
@@ -158,7 +158,7 @@ QuickFolders.Model = {
 
   // second argument can be a folder name or Uri
   // we test if it contains "://" for URI
-  moveFolderURI: function moveFolderURI(fromUri, newName) {
+  moveFolderURI: function (fromUri, newName) {
     let changeLog = "",
         countUris = 0,
         toUri = newName.indexOf('://')>0
@@ -169,8 +169,7 @@ QuickFolders.Model = {
                                "\nOLD: " + fromUri + 
                                "\nNEW: " + toUri);
       
-    if(!newName || (toUri == fromUri))  
-      return 0;    
+    if(!newName || (toUri == fromUri)) {return 0; }
     // [Bug 260965]
     // we must iterate all entries to check for any tabs that 
     // point to subfolders that might be affected!
@@ -209,25 +208,26 @@ QuickFolders.Model = {
       let fileURL = iconURI.QueryInterface(Components.interfaces.nsIURI);
 			try {
 				QuickFolders.Util.logDebug("Model.setTabIcon(" + entry.name + "," + fileURL.asciiSpec + ")");
-			} catch(ex) {;}
+			} catch {;}
       fileSpec = fileURL.asciiSpec;
     }
     
 		try { // [Bug 26616] - didn't store icons because menuItem.nextSibling was not set
 			if (fileSpec)  {
 				entry.icon = fileSpec; 
-				if (button) 
+				if (button) {
 					QI.applyIcon(button, entry.icon);
-				if (menuItem && menuItem.nextSibling)
-					menuItem.nextSibling.collapsed = false; // uncollapse the menu item for removing icon
-			}
-			else {
-				if (entry.icon) delete entry.icon;
-				if (button)
-					QI.applyIcon(button, '');
+        }
+				if (menuItem && menuItem.nextSibling) {
+          // uncollapse the menu item for removing icon
+          menuItem.nextSibling.collapsed = false;
+        }
+			} else {
+				if (entry.icon) { delete entry.icon; }
+				if (button) { QI.applyIcon(button, ''); }
 			}
 		}
-		catch (ex) {;}
+		catch {;}
       
     // store the icon path
     QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
@@ -235,26 +235,27 @@ QuickFolders.Model = {
 
   setFolderColor: function (uri, tabColor, withUpdate) {
     let entry;
-    if (tabColor == 'undefined') 
-      tabColor=0;
+    if (tabColor == 'undefined') {tabColor=0;}
     QuickFolders.Util.logDebug("Model.setFolderColor("+uri+") = " + tabColor);
 
     if((entry = this.getFolderEntry(uri))) {
       entry.tabColor = tabColor;
 
-      if (withUpdate)
+      if (withUpdate) {
         this.update();
-      else  // only store, no visual update.
+      } else {
+        // only store, no visual update.
         QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
+      } 
     }
   },
 
-  setFolderCategory: function setFolderCategory(uri, name) {
-    let entry;
-
-    if((entry = this.getFolderEntry(uri))) {
-			if (name == QuickFolders.FolderCategory.UNCATEGORIZED)
+  setFolderCategory: function (uri, name) {
+    let entry = this.getFolderEntry(uri);
+    if (entry) {
+			if (name == QuickFolders.FolderCategory.UNCATEGORIZED) {
 				name=null;
+      }
       entry.category = name;
       this.update();
     }
@@ -270,8 +271,9 @@ QuickFolders.Model = {
         }
         entry.separatorBefore = true;
       }
-      else
+      else {
         delete entry.separatorBefore;
+      }
       this.update();
     }
   } ,
@@ -285,9 +287,9 @@ QuickFolders.Model = {
           return;
         }
         entry.breakBefore = true;
-      }
-      else
+      } else {
         delete entry.breakBefore;
+      }
       this.update();
     }
   } ,
@@ -313,8 +315,10 @@ QuickFolders.Model = {
   // get a sorted arrau of Categories from the current Folder Array
   get Categories() {
     let categories = [];
-    if (this.categoriesList.length>0)
-      return this.categoriesList; // return cached version of Categories list
+    if (this.categoriesList.length>0) {
+      // return cached version of Categories list
+      return this.categoriesList;
+    }
 
     // can we add a color per category?
     for (let i = 0; i < this.selectedFolders.length; i++) {
@@ -358,15 +362,14 @@ QuickFolders.Model = {
         // multiple cats
         let cats = folder.category.split('|');
   
-        for (let j=0; j<cats.length; j++)
+        for (let j=0; j<cats.length; j++) {
           if(cats[j] == oldName) {
             cats[j] = newName;
-              matches ++;
+            matches ++;
           }
-        
+        }        
         folder.category = cats.join('|');
       }
-      
     }
     QuickFolders.Util.logDebugOptional("categories","Model.renameFolderCategory()\n"
         + "found and renamed " + matches + " matches.");
@@ -393,8 +396,7 @@ QuickFolders.Model = {
         let str = cats.join('|');   
         if(!str) {
           folder.category = null;
-        }
-        else {
+        } else {
           folder.category = str.replace('||','|'); // remove empty strings.
         }
       }
@@ -402,11 +404,13 @@ QuickFolders.Model = {
     QuickFolders.Util.logDebugOptional("categories","removed folders from category " + category + ":\n"
       + folderList);
 
-    if (!noUpdate) // avoid multiple updates when deleting multiple categories!
+    if (!noUpdate) {
+      // avoid multiple updates when deleting multiple categories!
 			this.update();
+    }
   } ,
   
-  colorName: function colorName(paletteVersion, id) {
+  colorName: function (paletteVersion, id) {
     if (paletteVersion==1) {
       switch(id) {
         case 0: return 'none';
@@ -485,7 +489,7 @@ QuickFolders.Model = {
         needsPatch = true;
         addAccountKey(e);
       }
-      if (!e.uri) continue;
+      if (!e.uri) {continue;}
       // Thunderbird 102 correction: read valid! account attribute, then try to match the folder to the account.
       let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
       if (e.account && !e.account.startsWith("?")) {
@@ -537,8 +541,7 @@ QuickFolders.Model = {
   // new palette indices
   updatePalette: function () {
     // we only do this ONCE
-    if (this.paletteUpdated) 
-      return;
+    if (this.paletteUpdated)  {return;}
 
     let currentPalette = QuickFolders.Preferences.getIntPref("style.palette.version");
     QuickFolders.Util.logDebug('QuickFolders.Model.updatePalette()\nCurrent Palette Version=' + currentPalette);
@@ -553,7 +556,7 @@ QuickFolders.Model = {
           let folderEntry = folderEntries[i],
               tabColor = 0;
           try {tabColor = parseInt(folderEntry.tabColor, 10);}
-          catch(ex) { tabcolor=-1; }
+          catch { tabColor = -1; }
           let old=tabColor;
           if (tabColor>=0) {
             switch(tabColor) {
@@ -607,13 +610,10 @@ QuickFolders.Model = {
       let result;
       try {
         result = prefSvc.getBoolPref(key)
-      }
-      catch(ex) {
+      } catch {
         result = boolDefault;
       }
-      finally {
-        return result;
-      }
+      return result;
     }
     function setPaletteType(key, wasPalette) {
       prefSvc.setIntPref('style.' + key + '.paletteType', wasPalette ? (wasPastel ? 2 : 1) : 0);
@@ -621,8 +621,7 @@ QuickFolders.Model = {
       return key + " usePalette - was " + wasPalette + " ==> " + pType + " (" + QuickFolders.Interface.getPaletteClassToken(pType) + ")";
     }
     
-    if (this.paletteUpgraded)
-      return;
+    if (this.paletteUpgraded) {return;}
     QuickFolders.Util.logDebugOptional ("firstrun", "Upgrading Palette for 3.12...");
     
     let wasPastel = getBoolPref('pastelColors', true),
@@ -651,7 +650,7 @@ QuickFolders.Model = {
   
   // moved from quickfolders-change-order.js
 	insertAtPosition: function(buttonURI, targetURI, toolbarPos) {
-		let folderEntry, folder, iSource, iTarget,
+		let folderEntry, iSource, iTarget,
 		    modelSelection = QuickFolders.Model.selectedFolders;
 
 		switch(toolbarPos) {
@@ -665,23 +664,23 @@ QuickFolders.Model = {
 
 		for (let i = 0; i < modelSelection.length; i++) {
 			folderEntry = QuickFolders.Model.selectedFolders[i];
-			folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false);
+			// folder = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri, false);
 
-			if (toolbarPos=="")
-				if (folderEntry.uri==targetURI) {
-					iTarget = i;
-					if (iSource!=null) break;
-				}
+			if (toolbarPos=="" && folderEntry.uri==targetURI) {
+        iTarget = i;
+        if (iSource!=null) {break;}
+      }
 
 			if (folderEntry.uri==buttonURI) {
 				iSource = i;
-				if (iTarget!=null) break;
+				if (iTarget!=null) {break;}
 			}
 		}
 
 		//button not found: might have been a menu item to add a new button!
-		if (iSource==null && targetURI=="")
+		if (iSource==null && targetURI=="") {
 			return false;
+    }
 
 
 		if (iSource!=iTarget)

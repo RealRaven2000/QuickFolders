@@ -363,7 +363,7 @@ QuickFolders.AdvancedTab = {
 	selectIdentity: function (element) {
     // get selectedItem attributes
     let it = element.selectedItem,
-      email = it.getAttribute('value');
+      _email = it.getAttribute('value');
 	} ,
 	
 	headerClick: function headerClick(event) {

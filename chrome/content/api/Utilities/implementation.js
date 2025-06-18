@@ -9,22 +9,27 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
   async fileConfig(mode, jsonData, fname) {
     const win = Services.wm.getMostRecentWindow("mail:3pane"); 
     const Cc = Components.classes,
-          Ci = Components.interfaces,
-          util = win.QuickFolders.Util,
-          prefs = win.QuickFolders.Preferences,
-          NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
+      Ci = Components.interfaces,
+      util = win.QuickFolders.Util,
+      prefs = win.QuickFolders.Preferences;
     util.popupRestrictedFeature(mode + "_config", "", 2); // save_config, load_config
     
-    let filterText,
-        fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker),
-        fileOpenMode = (mode=='load') ? fp.modeOpen : fp.modeSave;
+    let filterText;
+    const fp = Cc['@mozilla.org/filepicker;1'].createInstance(Ci.nsIFilePicker),
+      fileOpenMode = (mode=='load') ? fp.modeOpen : fp.modeSave;
 
     let dPath = prefs.getStringPref('files.path');
     if (dPath) {
-      let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-      defaultPath.initWithPath(dPath);
-      if (defaultPath.exists()) { // avoid crashes if the folder has been deleted
-        fp.displayDirectory = defaultPath; // nsILocalFile
+      let defaultPath = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+      try {
+        defaultPath.initWithPath(dPath);
+      } catch(ex) {
+        // if path doesn't exist or invalid:
+        util.logException(`initializing Path ${dPath} failed:`, ex);
+        // path should be empty after this.
+      }
+      if (defaultPath.path && defaultPath.exists()) { // avoid crashes if the folder has been deleted
+        fp.displayDirectory = defaultPath; 
         util.logDebug("Setting default path for filepicker: " + dPath);
       } else {
         util.logDebug("fileFilters()\nPath does not exist: " + dPath);
@@ -52,7 +57,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           util.logDebug("Storing Path: " + lastPath);
           prefs.setStringPref('files.path', lastPath);
 
-          //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           try {
             return IOUtils.readJSON(path, { encoding: "utf-8" }); //  returns promise for Uint8Array
           }
@@ -75,7 +79,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           util.logDebug("Storing Path: " + lastPath);
           prefs.setStringPref('files.path', lastPath);
 
-          //localFile = Components.classes["@mozilla.org/file/local;1"].createInstance(Ci.nsILocalFile);
           // if (aResult == Ci.nsIFilePicker.returnReplace)
           try {
             let promiseDelete = await IOUtils.remove(path);

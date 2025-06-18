@@ -24,15 +24,13 @@ QuickFolders.Preferences = {
 	},
 
 	isDebugOption: function(option) { // granular debugging
-		if (!this.isDebug) return false;
+		if (!this.isDebug) {return false;}
     let options = option.split(",");
     for (let o of options) {
       try {
-        if (this.getBoolPref("debug." + o)) return true;
+        if (this.getBoolPref("debug." + o)) {return true;}
       }
-      catch(e) { 
-        
-      }
+      catch { ; }
     }
     return false;
 	},
@@ -43,17 +41,17 @@ QuickFolders.Preferences = {
 
 	storeFolderEntries: function storeFolderEntries(folderEntries) {
 		try {
-			const util = QuickFolders.Util,
-			      PS = Services.prefs;
+			const PS = Services.prefs;
 			let json = JSON.stringify(folderEntries),
 					str = Components.classes["@mozilla.org/supports-string;1"]
 				.createInstance(Components.interfaces.nsISupportsString);
 			str.data = json;
 
-			if (PS.setStringPref)
+			if (PS.setStringPref) {
 				PS.setStringPref("QuickFolders.folders", json);
-			else
+			} else {
 				PS.setComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString, str);
+			}
 		}
 		catch(e) {
 			QuickFolders.Util.logToConsole("storeFolderEntries()" + e);
@@ -61,8 +59,7 @@ QuickFolders.Preferences = {
 	} ,
 
 	loadFolderEntries: function loadFolderEntries() {
-		const setting = "QuickFolders.folders",
-		      util = QuickFolders.Util;
+		const setting = "QuickFolders.folders";
 		if (!Services.prefs.prefHasUserValue(setting)) {
 			return [];
 		}
@@ -72,34 +69,34 @@ QuickFolders.Preferences = {
       // fill the array of accounts:
       
 			let folders = PS.getStringPref(setting);
-			if(folders) {
-				folders = folders.replace(/\r?\n|\r/, ''); // remove all line breaks
-				let entries = JSON.parse(folders);
-				for (let i = 0; i < entries.length; i++) {
-          let e = entries[i];
-          
-					if (typeof e.tabColor ==='undefined' || e.tabColor ==='undefined') {
-						e.tabColor = 0;
-          }
-					// default the name!!
-					if (!e.name) {
-						// retrieve the name from the folder uri (prettyName)
-						let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
-						if (f)
-							e.name = f.prettyName;
-					}
-          // when loading, reset the disabled Validation!
-          if (e.disableValidation) {
-            let swap = entries[i];
-            delete swap.disableValidation;
-            entries[i] = swap;
-            // entries[i].disableValidation = false;
-          }
+			if (!folders) {
+        return [];
+      }
+			folders = folders.replace(/\r?\n|\r/, ''); // remove all line breaks
+			let entries = JSON.parse(folders);
+			for (let i = 0; i < entries.length; i++) {
+				let e = entries[i];
+				
+				if (typeof e.tabColor ==='undefined' || e.tabColor ==='undefined') {
+					e.tabColor = 0;
 				}
-				return entries;
+				// default the name!!
+				if (!e.name) {
+					// retrieve the name from the folder uri (prettyName)
+					let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
+					if (f) {
+						e.name = f.prettyName;
+					}
+				}
+				// when loading, reset the disabled Validation!
+				if (e.disableValidation) {
+					let swap = entries[i];
+					delete swap.disableValidation;
+					entries[i] = swap;
+					// entries[i].disableValidation = false;
+				}
 			}
-			else
-				return [];
+			return entries;
 		}
 		catch(e) {
 			QuickFolders.Util.logToConsole("loadFolderEntries()" + e);
@@ -302,8 +299,7 @@ QuickFolders.Preferences = {
 		  const url = "extensions.quickfolders.textQuickfoldersLabel";
 			let customTitle = Services.prefs.getStringPref(url);
 			return overrideLabel || customTitle;
-		}
-		catch(e) { 
+		} catch { 
       return overrideLabel || 'QuickFolders'; 
     }
 	},
@@ -323,23 +319,27 @@ QuickFolders.Preferences = {
 
 	existsCharPref: function (pref) {
 		try {
-			if(Services.prefs.prefHasUserValue(pref))
+			if(Services.prefs.prefHasUserValue(pref)) {
 				return true;
-			if (Services.prefs.getStringPref(pref))
+			}
+			if (Services.prefs.getStringPref(pref)) {
 				return true;
+			}
 		}
-		catch (e) {return false; }
+		catch {return false; }
 		return false;
 	},
 
 	existsBoolPref: function (pref) {
 		try {
-			if(Services.prefs.prefHasUserValue(pref))
+			if(Services.prefs.prefHasUserValue(pref)) {
 				return true;
-			if (Services.prefs.getBoolPref(pref))
+			}
+			if (Services.prefs.getBoolPref(pref)) {
 				return true;
+			}
 		}
-		catch (e) {return false; }
+		catch {return false; }
 		return false;
 	},
 
@@ -355,12 +355,12 @@ QuickFolders.Preferences = {
         (typeof sDefault == "string") ?
         Services.prefs.getStringPref(sStyleName) :
         Services.prefs.getIntPref(sStyleName);
-			if (localPref || (localPref===0))
+			if (localPref || (localPref===0)) {
 				sReturnValue = localPref;
-			else
+			}	else {
 				sReturnValue = sDefault;
-		}
-    catch(ex) {
+			}
+		} catch {
       sReturnValue = sDefault;
     }
 		/* QuickFolders.Util.logToConsole("getUserStyle("+ sId+ ", " + sType + ", " + sDefault +")\n" +
@@ -391,8 +391,7 @@ QuickFolders.Preferences = {
 	getBoolPrefSilent: function (p) {
 		try {
 			return Services.prefs.getBoolPref(p);
-		}
-		catch(e) {
+		} catch {
 			return false;
 		}
 	},
@@ -429,8 +428,7 @@ QuickFolders.Preferences = {
 	  let ans;
 	  try {
 	    ans = Services.prefs.getBoolPref("extensions.quickfilters." + p);
-		}
-		catch(ex) {
+		} catch {
 		  QuickFolders.Util.logDebug(`getFiltersBoolPref(${p}) didn't retrieve a setting from quickFilters (probably this companion Add-on is not installed).\nDefaulting to ${defaultV}`);
 			ans = defaultV;
 		}
@@ -442,23 +440,21 @@ QuickFolders.Preferences = {
 		    key = "extensions.quickfolders." + p;        
 		  
     try {
-		  const Ci = Components.interfaces, Cc = Components.classes;
 			prefString = Services.prefs.getStringPref(key);
     }
     catch(ex) {
       QuickFolders.Util.logDebug("Could not retrieve string pref: " + p + "\n" + ex.message);
     }
-    finally {
-      return prefString;
-    }
+		return prefString;
 	},
 	
 	setStringPref: function (p, v) {
-		if (Services.prefs.setStringPref)
+		if (Services.prefs.setStringPref) {
 			return Services.prefs.setStringPref("extensions.quickfolders." + p, v);
-		else {
+		} else {
 		  const Ci = Components.interfaces, 
 			      Cc = Components.classes;
+			// eslint-disable-next-line no-debugger
 			if (this.isDebug) { debugger; }
 			var str = Cc["@mozilla.org/supports-string;1"].createInstance(Ci.nsISupportsString);
 			str.data = v;
@@ -476,8 +472,9 @@ QuickFolders.Preferences = {
 
 	setShowCurrentFolderToolbar: function (b, selector) {
 		let tag = "showCurrentFolderToolbar";
-		if (selector)
+		if (selector) {
 			tag = tag + "." + selector;
+		}
 		return Services.prefs.setBoolPref("extensions.quickfolders." + tag, b);
 	},
 
@@ -492,9 +489,7 @@ QuickFolders.Preferences = {
 	setBoolPrefVerbose: function (p, v) {
 		try {
 			return Services.prefs.setBoolPref(p, v);
-		} 
-    catch(e) {
-			let s="Err:" +e;
+		} catch(e) {
 			QuickFolders.Util.logException("setBoolPrefVerbose(" + p + ") failed\n", e);
 			return false;
 		}
@@ -510,7 +505,7 @@ QuickFolders.Preferences = {
 	},
 
 	set CurrentThemeId(t) {
-		return this.setStringPref("style.theme",t);
+		this.setStringPref("style.theme",t);
 	},
   
   get supportsCustomIcon() {
@@ -518,8 +513,8 @@ QuickFolders.Preferences = {
   },
 
 	get supportsFindRelated() {
-		if (!QuickFolders.Util.licenseInfo.isValid) return false;
-		if (QuickFolders.Util.licenseInfo.keyType == 2) return false;
+		if (!QuickFolders.Util.licenseInfo.isValid) {return false;}
+		if (QuickFolders.Util.licenseInfo.keyType == 2) {return false;}
 		return this.getBoolPref("currentFolderBar.showFindRelated");
 	},
 	
@@ -528,7 +523,7 @@ QuickFolders.Preferences = {
 		if (this.getBoolPref("toolbarpalette.showSmallIcons")) {
 			let option = document.getElementById('smallicons');
 			if (option)
-				option.style.setProperty('display','block'); // by default this has been set to 'none' for ages
+				{option.style.setProperty('display','block');} // by default this has been set to 'none' for ages
 		}
 	}
   

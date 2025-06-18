@@ -17,11 +17,10 @@ QuickFolders.AdvancedTab = {
     let e = this.entry;
     // TO DO: check all flags of this entry to see whether it has _any_ advanced settings.
     // in that case return true.
-    if (e.advanced) {
-      if (e.advanced.flags) {
-        if (e.advanced.flags & this.ADVANCED_FLAGS.SUPPRESS_UNREAD)
-          return true;
-      }
+    if (!e.advanced) { return false; }
+    if (!e.advanced.flags) { return false; }
+    if (e.advanced.flags & this.ADVANCED_FLAGS.SUPPRESS_UNREAD) {
+      return true;
     }
     return false;
   } ,
@@ -42,6 +41,7 @@ QuickFolders.AdvancedTab = {
   },
   
   load: async function load() {
+    const Ci = Components.interfaces;
     let dropdownCount = 0;
     // get important state info from background
     await QuickFolders.Util.init();
@@ -86,8 +86,8 @@ QuickFolders.AdvancedTab = {
 		
 		
 		window.addEventListener('dialogaccept', function () { QuickFolders.AdvancedTab.accept(); });
-		window.addEventListener('dialogextra1', function (event) { QuickFolders.AdvancedTab.apply(); });
-		window.addEventListener('dialogextra2', function (event) { QuickFolders.AdvancedTab.defaults(); });
+		window.addEventListener('dialogextra1', function (_event) { QuickFolders.AdvancedTab.apply(); });
+		window.addEventListener('dialogextra2', function (_event) { QuickFolders.AdvancedTab.defaults(); });
 		
     let entry = this.entry || QuickFolders.AdvancedTab.entry,
         elem = document.getElementById.bind(document);
@@ -98,8 +98,7 @@ QuickFolders.AdvancedTab = {
           iUnread = elem('chkSetMailsUnread'),
           iss = elem('chkCustomCSS'),
           ip = elem('chkCustomPalette'),
-					isRecursive = elem('chkComposerSubFolders'),
-					cboIdentity = elem('mailIdentity');
+					isRecursive = elem('chkComposerSubFolders');
       // ignore unread counts
       ig.checked = (entry.flags & ADVANCED_FLAGS.SUPPRESS_UNREAD) && true;
       // ignore all counts
@@ -143,7 +142,7 @@ QuickFolders.AdvancedTab = {
 					// use ac.defaultIdentity ??
 					// populate the dropdown with nsIMsgIdentity details
 					let id = ids[i].QueryInterface(Ci.nsIMsgIdentity);
-					if (!id) continue;
+					if (!id) {continue;}
 					appendIdentity(popup, id, ac);
 				}
 			}
@@ -186,16 +185,17 @@ QuickFolders.AdvancedTab = {
     return true;
   } ,
   
-  accept: function accept() {
+  accept: function () {
     this.apply();
     return true;
   } ,
   
-  apply: function apply() {
+  apply: function () {
 		const util = this.MainQuickFolders.Util,
-		      ADVANCED_FLAGS = util.ADVANCED_FLAGS;
+      ADVANCED_FLAGS = util.ADVANCED_FLAGS;
 		let elem = document.getElementById.bind(document),
-		    entry = this.entry || QuickFolders.AdvancedTab.entry;
+      entry = this.entry || QuickFolders.AdvancedTab.entry,
+      flags = ADVANCED_FLAGS.NONE;
     function addFlag(checkboxId, setFlag) {
       let isFlagged = document.getElementById(checkboxId).checked;
       if (isFlagged) {
@@ -203,10 +203,6 @@ QuickFolders.AdvancedTab = {
       }
       return isFlagged;
     }
-    
-    let f = this.folder || QuickFolders.AdvancedTab.folder,
-        isChange = false,
-        flags = ADVANCED_FLAGS.NONE;
     
     addFlag('chkIgnoreUnread', ADVANCED_FLAGS.SUPPRESS_UNREAD);
     addFlag('chkIgnoreCounts', ADVANCED_FLAGS.SUPPRESS_COUNTS);
@@ -221,23 +217,24 @@ QuickFolders.AdvancedTab = {
     }
     if (addFlag('chkCustomPalette', ADVANCED_FLAGS.CUSTOM_PALETTE)) {
       entry.customPalette = elem('menuCustomTabPalette').value;
-    }
-    else {
+    } else {
       delete entry.customPalette;
     }
     
     // .. add more special properties
     
-    if (flags)
+    if (flags) {
       entry.flags = flags;
-    else {
-      if (entry.flags || entry.flags === 0) try {
-        delete entry.flags; // minimize storage space.
-        delete entry.cssBack;
-        delete entry.cssColor;
-        delete entry.customPalette;
-      } catch(ex) {
-        util.logException('QuickFolders.AdvancedTab.accept()', ex);
+    } else {
+      if (entry.flags || entry.flags === 0) {
+        try {
+          delete entry.flags; // minimize storage space.
+          delete entry.cssBack;
+          delete entry.cssColor;
+          delete entry.customPalette;
+        } catch(ex) {
+          util.logException('QuickFolders.AdvancedTab.accept()', ex);
+        }
       }
     }
 		
@@ -247,20 +244,18 @@ QuickFolders.AdvancedTab = {
 		if (fromId == 'default') {
 			try {
 				delete entry.fromIdentity; // default 'From:' identity 
-			}
-			catch (e) { ; }
-		}
-		else
-			entry.fromIdentity = fromId;
-		
+			} catch  { ; }
+		} else {
+      entry.fromIdentity = fromId;
+    }
+			
 		if (!toAddress) {
 			try {
 				delete entry.toAddress;
-			}
-			catch (e) { ; }
-		}
-		else
-			entry.toAddress = toAddress;
+			} catch  { ; }
+		} else {
+      entry.toAddress = toAddress;
+    }			
 		
     // refresh the model
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: false }); 
@@ -336,7 +331,7 @@ QuickFolders.AdvancedTab = {
 				preview.style.background = document.getElementById('txtBackground').value;
 				preview.style.visibility = document.getElementById('chkCustomCSS').checked ? "visible" : "hidden";
 			}
-		} catch(ex) {;}
+		} catch {;}
 	} ,
 	
 	sanitizeCSS: function (el) {
@@ -365,16 +360,16 @@ QuickFolders.AdvancedTab = {
     document.getElementById('chkCustomPalette').checked = true;
   } ,
   
-	selectIdentity: function selectIdentity(element) {
+	selectIdentity: function (element) {
     // get selectedItem attributes
     let it = element.selectedItem,
-        email = it.getAttribute('value');
+      email = it.getAttribute('value');
 	} ,
 	
 	headerClick: function headerClick(event) {
 		const Cc = Components.classes,
-          Ci = Components.interfaces,
-					util = QuickFolders.Util;
+      Ci = Components.interfaces,
+      util = QuickFolders.Util;
 		let clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
 		event.stopPropagation();
 		switch (event.button) {
@@ -382,15 +377,15 @@ QuickFolders.AdvancedTab = {
 			  break;
 			case 1: // middle button
 			  break;
-			case 2: // right button
+			case 2: { // right button
         let infoTxt = "URI: " + this.folder.URI;
         if (this.entry) {
           infoTxt += `\nTab [${this.entry.name}]`
             + `\nAccount (from tab): ${this.entry.account}`;
         }
 				clipboardhelper.copyString(infoTxt);
-			  util.slideAlert("QuickFolders", "Copied folder Info to clipboard\n" + infoTxt);
-			  break;
+			  util.slideAlert("QuickFolders", "Copied folder Info to clipboard\n" + infoTxt);			 
+      } break;
 		}
 	}
     

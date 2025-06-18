@@ -7,6 +7,11 @@
 
   END LICENSE BLOCK */
 
+/*
+  globals  
+    
+*/
+
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 
@@ -19,9 +24,7 @@ var { FolderUtils } = QuickFolders_ESM
   ? ChromeUtils.importESModule("resource:///modules/FolderUtils.sys.mjs")
   : ChromeUtils.import("resource:///modules/FolderUtils.jsm");
 
-var QuickFolders_ConsoleService = null;
-
-if (!QuickFolders.Filter) QuickFolders.Filter = {};
+if (!QuickFolders.Filter) {QuickFolders.Filter = {};}
 
 //if (!QuickFolders.Util)
 QuickFolders.Util = {
@@ -81,6 +84,7 @@ QuickFolders.Util = {
       }
       // Event forwarder - take event from background script and forward to windows with appropriate listeners
       if (data.event) {
+        // eslint-disable-next-line no-prototype-builtins
         if (!data.hasOwnProperty("window") || data.window.includes(window.document.location.href.toString())) {
           QuickFolders.Util.logDebugOptional("notifications", 
             `onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.${data.event}\n` +
@@ -117,9 +121,10 @@ QuickFolders.Util = {
     let doc = document; // we want the main document
     if (doc.documentElement && doc.documentElement.tagName) {
       if (doc.documentElement.tagName=="prefwindow" || doc.documentElement.tagName=="dialog") {
-          let mail3PaneWindow = QuickFolders.Util.getMail3PaneWindow();
-          if (mail3PaneWindow && mail3PaneWindow.document)
-            doc = mail3PaneWindow.document;
+        const mail3PaneWindow = QuickFolders.Util.getMail3PaneWindow();
+        if (mail3PaneWindow && mail3PaneWindow.document) {
+          doc = mail3PaneWindow.document;
+        }
       }
     }
     let elem = doc.getElementById(id);
@@ -128,7 +133,7 @@ QuickFolders.Util = {
   
   enumProperties: function (v) {
     let txt = '';
-    if (!v) return '';
+    if (!v) {return '';}
     Object.getOwnPropertyNames(v).forEach(
       (prop) => {
         let lbl = v[prop];
@@ -241,8 +246,7 @@ QuickFolders.Util = {
       const tabMail = tabmail || document.getElementById("tabmail"),
       about3Pane = tabMail.currentAbout3Pane;
       return about3Pane.folderPane; 
-    }
-    catch (ex) {
+    } catch {
       return null;
     }
   },
@@ -250,8 +254,7 @@ QuickFolders.Util = {
   get document3pane() {
     try {
       return window.gTabmail.currentTabInfo.chromeBrowser.contentDocument;
-    }
-    catch (ex) {
+    } catch (ex) {
       QuickFolders.Util.logException("get document3pane()", ex);
       return null;
     }
@@ -259,9 +262,9 @@ QuickFolders.Util = {
   } ,
 
   get folderTree() {
-    if (!document) return null;
+    if (!document) {return null;}
     const tabmail = document.getElementById("tabmail");
-    if (!tabmail) return null;
+    if (!tabmail) {return null;}
     return tabmail.currentAbout3Pane.document.getElementById("folderTree");
 	},
 
@@ -285,14 +288,14 @@ QuickFolders.Util = {
   } ,
   
   get PlatformVersion() {
-    if (null==this.mPlatformVer)
+    if (null==this.mPlatformVer){
       try {
         let appInfo = Services.appinfo;
         this.mPlatformVer = parseFloat(appInfo.platformVersion);
-      }
-      catch(ex) {
+      } catch {
         this.mPlatformVer = 1.0; // just a guess
       }
+    }
     return this.mPlatformVer;
   } ,
 
@@ -309,10 +312,11 @@ QuickFolders.Util = {
     QuickFolders.Util.logDebug ("onCloseNotification(" + notificationKey + ")");
     window.setTimeout(function() {
       // Postbox doesn't tidy up after itself?
-      if (!notifyBox)
+      if (!notifyBox) {
         return;
+      }
       let item = notifyBox.getNotificationWithValue(notificationKey);
-      if(item) {
+      if (item) {
         // http://mxr.mozilla.org/mozilla-central/source/toolkit/content/widgets/notification.xml#164
         notifyBox.removeNotification(item, false);   // skipAnimation
       }
@@ -322,12 +326,12 @@ QuickFolders.Util = {
   // goal - take validation out and put it into an async function
   
   hasValidLicense: function hasValidLicense() {
-    if (!QuickFolders.Util.licenseInfo) return false;
+    if (!QuickFolders.Util.licenseInfo) {return false;}
     return QuickFolders.Util.licenseInfo.status == "Valid";
   },
   
   hasStandardLicense: function() {
-    if (!QuickFolders.Util.licenseInfo) return false;
+    if (!QuickFolders.Util.licenseInfo) {return false;}
     return (QuickFolders.Util.licenseInfo.keyType==2);
   },
   
@@ -338,7 +342,7 @@ QuickFolders.Util = {
    * @text - [optional] additional text
    * @level: 0 pro, 1 domain, 2 standard. defaults to pro feature
    */
-  popupRestrictedFeature: async function (featureName, text, level = 0) {
+  popupRestrictedFeature: async function (featureName, text ="", level = 0) {
     let notifyBox;
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences,
@@ -347,13 +351,13 @@ QuickFolders.Util = {
     if (util.hasValidLicense()) {
       switch (level) {
         case 0:  // premium feature
-          if (licenseInfo.keyType == 0 || licenseInfo.keyType == 1) return;
+          if (licenseInfo.keyType == 0 || licenseInfo.keyType == 1) {return;}
           break;
         case 1:  // domain feature (future usage)
-          if (licenseInfo.keyType == 1) return;
+          if (licenseInfo.keyType == 1) {return;}
           break;
         case 2:  // standard feature
-          if (licenseInfo.keyType >= 0) return;
+          if (licenseInfo.keyType >= 0) {return;}
           break;
       }
     }
@@ -366,16 +370,15 @@ QuickFolders.Util = {
       let usage = prefs.getIntPref("premium." + featureName + ".usage");
       usage++;
       prefs.setIntPref("premium." + featureName + ".usage", usage);
-    } catch(e) {;}
+    } catch {;}
     
     if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) {
       notifyBox = specialTabs.msgNotificationBar;
     }
     let title = util.getBundleString(`qf.notification.${levelSelect}.title`),
-        theText = util.getBundleString(`qf.notification.${levelSelect}.text`);
+      theText = util.getBundleString(`qf.notification.${levelSelect}.text`);
     theText = theText.replace ("{1}", "'" + featureName + "'");
-    if (text)
-      theText = theText + '  ' + text;
+    theText = theText + '  ' + text;
     
     
     let regBtn = util.getBundleString("qf.notification.premium.btn.getLicense"),
@@ -405,8 +408,9 @@ QuickFolders.Util = {
       
       if (notifyBox) {
         let item = notifyBox.getNotificationWithValue(notificationKey)
-        if (item)
+        if (item) {
           notifyBox.removeNotification(item, false);
+        }          
       }
     
       util.logDebugOptional("premium", "notifyBox.appendNotification()…");
@@ -454,7 +458,7 @@ QuickFolders.Util = {
       // code should not be called, on SM we would have a sliding notification for now
       // fallback for systems that do not support notification (currently: SeaMonkey)
       util.logDebugOptional("premium", "fallback for systems without notification-box…");
-      let result = Services.prompt.alert(null, title, theText);
+      Services.prompt.alert(null, title, theText);
     }
   } ,
 
@@ -463,8 +467,9 @@ QuickFolders.Util = {
 
     let getContainer = function() {
       let div = QuickFolders.Interface.FoldersBox;
-      if (div)
+      if (div) {
         return div;
+      }
       return QuickFolders.Util.$('qf-options-prefpane');
     }
     
@@ -472,7 +477,7 @@ QuickFolders.Util = {
     
     try {
       let container = getContainer();
-      if (!container) return sColorString;
+      if (!container) {return sColorString;}
       
       if (sColorString.startsWith('rgb')) {
         // rgb colors.
@@ -487,9 +492,9 @@ QuickFolders.Util = {
       theColor = window.getComputedStyle(d,null).color;
       container.removeChild(d);
 
-      if (theColor.search("rgb") == -1)
+      if (theColor.search("rgb") == -1) {
         return theColor; // unchanged
-      else {
+      } else {
         // rgb colors.
         theColor = theColor.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
         let hexColor = "#" + hex(theColor[1]) + hex(theColor[2]) + hex(theColor[3]);
@@ -497,6 +502,7 @@ QuickFolders.Util = {
       }
     }
     catch(ex) { // Bug 26387
+      // eslint-disable-next-line no-debugger
       if (prefs.isDebug) { debugger; }
       this.logException('getSystemColor(' + sColorString + ') failed', ex);
       return "#000000";
@@ -528,18 +534,19 @@ QuickFolders.Util = {
                hexIn.lastIndexOf(',') :   // replace alpha
                hexIn.indexOf(')');        // append alpha
       hex = hexIn.substring(0, li) + ',' +  alpha.toString() +')';
-      if (!isRGBA)
+      if (!isRGBA) {
         hex = hex.replace('rgb','rgba');
+      }
       return hex;
     }
     else {
       try {
-        if (hex.charAt(0) == '#')
+        if (hex.charAt(0) == '#') {
           parseInt(cutHex(hex),16);
-        else
+        } else {
           hex = QuickFolders.Util.getSystemColor(hex);
-      }
-      catch(e) {
+        }
+      } catch {
         hex = QuickFolders.Util.getSystemColor(hex);
       }
     }
@@ -557,13 +564,13 @@ QuickFolders.Util = {
   },
 
   clearChildren: function clearChildren(element, withCategories) {
-    if (!element) return;
+    if (!element) {return;}
     QuickFolders.Util.logDebugOptional ("events","clearChildren(withCategories= " + withCategories + ")");
-    if (withCategories)
+    if (withCategories) {
       while(element.children.length > 0) {
         element.removeChild(element.children[0]);
       }
-    else {
+    } else {
       let nCount=0; // skip removal of category selection box
       while(element.children.length > nCount) {
         if (element.children[nCount].id=='QuickFolders-Category-Box') {
@@ -617,10 +624,10 @@ QuickFolders.Util = {
             let info = util.getTabInfoByIndex(tabmail, i);
             if (info && this.getTabMode(info) == "folder") { 
               util.logDebugOptional ("mailTabs","switching to tab: " + info.title);
-              if (firstFound<0) firstFound = i;
-              if (!folder) 
+              if (firstFound<0) {firstFound = i;}
+              if (!folder) {
                 break;
-              else {
+              } else {
                 let fD = info ? info.folderDisplay : null;
                 if (fD.view && fD.view.displayedFolder && folder.URI == fD.view.displayedFolder.URI) {
                   firstFound = i;
@@ -649,54 +656,46 @@ QuickFolders.Util = {
     return found;
    } ,
 
-  showStatusMessage: function showStatusMessage(s, isTimeout) {
+  showStatusMessage: function (s, isTimeout) {
     try {
-      let win = QuickFolders_getWindow(),
-          sb = QuickFolders_getDocument().getElementById('status-bar'),
-          el, sbt;
-      if (sb) {
-        for (let i = 0; i < sb.children.length; i++)
-        {
-          el = sb.children[i];
-          if (el.nodeType == 1 && el.id == 'statusTextBox') {
-            sbt = el;
-              break;
-          }
-        }
-        // SeaMonkey
-        if (!sbt)
-          sbt = sb;
-        for (let i = 0; i < sbt.children.length; i++)
-        {
-          el = sbt.children[i];
-          if (el.nodeType == 1 && el.id == 'statusText') {
-              el.label = s;
-              if (isTimeout) {
-                // erase my status message after 5 secs
-                win.setTimeout(function() { 
-                    if (el.label == s) // remove my message if it is still there
-                      el.label = "";
-                  }, 
-                  5000);
-              }
-              break;
-          }
-        }
-      }
-      else
+      const win = Services.wm.getMostRecentWindow("mail:3pane"),
+        sb = win.document.getElementById("status-bar");
+      if (!sb) {
         MsgStatusFeedback.showStatusString(s);
-    }
-    catch(ex) {
+        return;
+      }
+      const sbt = sb.querySelector("#statusTextBox");
+      const el = sbt.querySelector("#statusText");
+      el.label = s;
+      if (isTimeout) {
+        // erase my status message after 5 secs
+        win.setTimeout(function() { 
+          if (el.label === s) { 
+            // remove my message if it is still there
+            el.label = "";
+          }
+        }, 
+        5000);
+      }
+    } catch(ex) {
       this.logToConsole("showStatusMessage - " +  ex);
       MsgStatusFeedback.showStatusString(s);
     }
   } ,
 
   getFolderUriFromDropData: function getFolderUriFromDropData(evt, dragSession) {
-    let trans = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+    const Cc = Components.classes;
+    const Ci = Components.interfaces;
+    let trans = Cc["@mozilla.org/widget/transferable;1"].createInstance(
+      Ci.nsITransferable
+    );
     trans.addDataFlavor("text/x-moz-folder");
     trans.addDataFlavor("text/x-moz-newsfolder");
-    if (!dragSession) dragSession = Cc["@mozilla.org/widget/dragservice;1"].getService(Ci.nsIDragService).getCurrentSession(); 
+    if (!dragSession) {
+      dragSession = Cc["@mozilla.org/widget/dragservice;1"]
+        .getService(Ci.nsIDragService)
+        .getCurrentSession();
+    }
 
     // alert ("numDropItems = " + dragSession.numDropItems + ", isDataFlavorSupported=" + dragSession.isDataFlavorSupported("text/x-moz-folder"));
 
@@ -719,8 +718,9 @@ QuickFolders.Util = {
     catch(e) {
       if (evt.dataTransfer.mozGetDataAt) {
         let f = evt.dataTransfer.mozGetDataAt(flavour, 0)
-        if (f && f.URI)
+        if (f && f.URI) {
           return f.URI;
+        }
       }
       this.logToConsole("getTransferData " + e);
     };
@@ -732,31 +732,34 @@ QuickFolders.Util = {
     let msgFolder=null;
 
     let uri = this.getFolderUriFromDropData(evt, dragSession); // older gecko versions.
-    if (!uri)
+    if (!uri) {
       return null;
+    }
     msgFolder = QuickFolders.Model.getMsgFolderFromUri(uri, true).QueryInterface(Components.interfaces.nsIMsgFolder);
 
     return msgFolder;
   } ,
   
   isVirtual: function isVirtual(folder) {
-    if (!folder)
+    if (!folder) { return true;}
+    if (this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL & folder.flags) {
       return true;
-    if (this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL & folder.flags)
-      return true;
+    }
     return (folder?.username == 'nobody') || (folder?.hostname == 'smart mailboxes');
   } ,
 
   // change: let's pass back the messageList that was moved / copied
   moveMessages: async function (targetFolder, messageUris, makeCopy) {
     const Ci = Components.interfaces,
-          util = QuickFolders.Util,
-          mw =  top?.msgWindow || msgWindow; // global
+      Cr = Components.results,
+      util = QuickFolders.Util,
+      mw =  top?.msgWindow || msgWindow;
 
     const isMove = (!makeCopy);
     let step = 0;
-    if (!messageUris) 
+    if (!messageUris) {
       return null;
+    }
     try {
       try {
         util.logDebugOptional('dnd,quickMove,moveCopy', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettyName + ', makeCopy=' + makeCopy);
@@ -857,15 +860,16 @@ QuickFolders.Util = {
             origIds.push(segment.messages[m].msg.messageId);
           }          
 
-          let p = await new Promise((resolve, reject) => {
+          // eslint-disable-next-line no-unused-vars
+          const p = await new Promise((resolve, reject) => {
             // AUTF8String getMessageId()
             // [issue 480] - [Bug 1887047]
             // camelCase methods new since Thunderbird 125
             const param5 = {
               onStartCopy() {},
-              onProgress(progress, progressMax) {},
-              setMessageKey(key) {},
-              getMessageId(messageId) {
+              onProgress(_progress, _progressMax) {},
+              setMessageKey(_key) {},
+              getMessageId(_messageId) {
                 return null;
               },
               onStopCopy(status) {
@@ -877,9 +881,9 @@ QuickFolders.Util = {
               },
 
               OnStartCopy() {},
-              OnProgress(progress, progressMax) {},
-              SetMessageKey(key) {},
-              GetMessageId(messageId) {},
+              OnProgress(_progress, _progressMax) {},
+              SetMessageKey(_key) {},
+              GetMessageId(_messageId) {},
               OnStopCopy(status) {
                 if (status == Cr.NS_OK) {
                   resolve(); // returns to await
@@ -905,7 +909,7 @@ QuickFolders.Util = {
           QuickFolders.CopyListener.onStopCopy(status); 
           
         } catch (ex) {
-          Cu.reportError(ex);
+          Components.utils.reportError(ex);
           throw new ExtensionError(
             `Error ${isMove ? "moving" : "copying"} message: ${ex.message}`
           );
@@ -958,25 +962,26 @@ allowUndo = true)`
       
       // workaround to sync imap server: 
       // if (targetFolder.server.type == "imap") {..}
-      if (!isQuickMove || isQuickMove && isStatusQuickMove) try {
-        if (readStatus) {
-          let isRead;
-          switch (readStatus) {
-            case 1:
-              isRead = false;
-              util.logDebug(`Setting ${messageList.length} messages to Status [unread].`);
-              break;
-            case 2:
-              isRead = true;
-              util.logDebug(`Setting ${messageList.length} messages to Status [read].`);
-              break;
+      if (!isQuickMove || isQuickMove && isStatusQuickMove) {
+        try {
+          if (readStatus) {
+            let isRead;
+            switch (readStatus) {
+              case 1:
+                isRead = false;
+                util.logDebug(`Setting ${messageList.length} messages to Status [unread].`);
+                break;
+              case 2:
+                isRead = true;
+                util.logDebug(`Setting ${messageList.length} messages to Status [read].`);
+                break;
+            }
+            // Problem: in quickMove, array may contain mails from multiple source folders!
+            sourceFolder.markMessagesRead(messageList, isRead);
           }
-          // Problem: in quickMove, array may contain mails from multiple source folders!
-          sourceFolder.markMessagesRead(messageList, isRead);
+        } catch(ex) {
+          util.logException("sync Read status", ex);
         }
-      }
-      catch(ex) {
-        util.logException("sync Read status", ex);
       }
       
       // support move / copy to XXX again
@@ -1015,7 +1020,7 @@ allowUndo = true)`
       // special folders we do not want / need in recent history:
       if (folder.flags & 
             (FLAGS.MSG_FOLDER_FLAG_TRASH | FLAGS.MSG_FOLDER_FLAG_SENTMAIL | FLAGS.MSG_FOLDER_FLAG_QUEUE | 
-             FLAGS.MSG_FOLDER_FLAG_JUNK  | FLAGS.MSG_FOLDER_FLAG_ARCHIVES | FLAGS.MSG_FOLDER_FLAG_DRAFTS)) return;
+             FLAGS.MSG_FOLDER_FLAG_JUNK  | FLAGS.MSG_FOLDER_FLAG_ARCHIVES | FLAGS.MSG_FOLDER_FLAG_DRAFTS)) {return;}
       if (folder.SetMRUTime) {
         folder.SetMRUTime();
       } else {
@@ -1040,20 +1045,20 @@ allowUndo = true)`
           theDate = dt.getDate().toString() + '/' + (dt.getMonth()+1) + ' ' + dt.getHours() + ':' + dt.getMinutes() + ':' + dt.getSeconds();
         }
       }
-      catch(ex) {;}
+      catch {;}
     }
     return theDate;
   } ,
   
   getTabInfoLength: function getTabInfoLength(tabmail) {
-    if (tabmail.tabInfo)
-      return tabmail.tabInfo.length;
-    return 0;
+    if (!tabmail.tabInfo) { return 0; }
+    return tabmail.tabInfo.length;
   } ,
   
   getTabInfoByIndex: function getTabInfoByIndex(tabmail, idx) {
-    if (tabmail.tabInfo && tabmail.tabInfo.length)
+    if (tabmail?.tabInfo?.length) {
       return tabmail.tabInfo[idx];
+    }
     this.logDebug("getTabInfoByIndex("+ tabmail + ", " + idx +") fails: check tabInfo length! = " + tabmail.tabInfo);
     console.log(tabmail);
     return null;
@@ -1114,39 +1119,17 @@ allowUndo = true)`
         base = validateFileName(aIdentifier), // mail/base/content/utilityOverlay.js or mozilla/toolkit/content/contentAreaUtils.js
         suggestion = base + aType;
     while(true) {
-      if (!aExistingNames.has(suggestion))
-        break;
-
+      if (!aExistingNames.has(suggestion)) {break;}
       suggestion = base + suffix + aType;
       suffix++;
     }
 
     return suggestion;
   } ,
-  
-  suggestUniqueFileName_Old: function (aIdentifier, aType, aExistingNames) {
-    let suffix = 1,
-        suggestion,
-        base = identifier,
-        exists;
-    do {
-      exists = false;
-      suggestion = GenerateValidFilename(base, type);
-      for (let i = 0; i < existingNames.length; i++) {
-        if (existingNames[i] == suggestion) {
-          base = identifier + suffix;
-          suffix++;
-          exists = true;
-          break;
-        }
-      }
-    } while (exists);
-    return suggestion;
-  } ,
 
   // Fills the passed in array with the uris of all currently selected messages.
   getSelectedMessages: function(selectedMessageUris) {
-    if (!selectedMessageUris) selectedMessageUris = [];
+    if (!selectedMessageUris) {selectedMessageUris = [];}
     let selectedMessages = [];
     let contentWin = gTabmail.currentTabInfo.chromeBrowser.contentWindow;
     if (contentWin.gMessage) {
@@ -1174,30 +1157,32 @@ allowUndo = true)`
         date,
         maxLen = QuickFolders.Preferences.maxSubjectLength,
         subject = hdr.mime2DecodedSubject.substring(0, maxLen);
-    if (hdr.mime2DecodedSubject.length>maxLen)
+    if (hdr.mime2DecodedSubject.length>maxLen) {
       subject += ("\u2026".toString()); // ellipsis
+    }
     let matches = fromName.match(/([^<]+)\s<(.*)>/);
-    if (matches && matches.length>=2)
+    if (matches && matches.length>=2) {
       fromName = matches[1];
+    }
     try {
       date =(new Date(hdr.date/1000)).toLocaleString();
-    } catch(ex) {date = '';}
-    return fromName + ': ' + (subject ? (subject + ' - ') : '') + date;    
+    } catch { date = ""; }
+    return `${fromName}: ${subject ? subject + " - " : ""}${date}`;
   } ,
   
   threadPaneOnDragStart: function(aEvent) {
     QuickFolders.Util.logDebugOptional ("dnd","threadPaneOnDragStart(" + aEvent.originalTarget.localName
       + (aEvent.isThread ? ",thread=true" : "")
       + ")");
-    if (aEvent.originalTarget.localName != "toolbarbutton")
+    if (aEvent.originalTarget.localName != "toolbarbutton")  {
       return;
+    }      
     
     let messageUris = this.getSelectedMsgUris();
     if (!messageUris) return;
     let ios = Components.classes["@mozilla.org/network/io-service;1"]
               .getService(Components.interfaces.nsIIOService),
-        newUF = (typeof Set !== 'undefined'),
-        fileNames = newUF ? new Set() : [],
+        fileNames = new Set(),
         uniqueFileName = '',
         count = 0;
 
@@ -1214,9 +1199,8 @@ allowUndo = true)`
       aEvent.dataTransfer.mozSetDataAt("text/x-moz-message", message, i);
       let header = MailServices.messageServiceFromURI(message).messageURIToMsgHdr(message),
           subject = header.mime2DecodedSubject;
-      uniqueFileName = newUF ?
-        this.suggestUniqueFileName(subject.substr(0,124), ".eml", fileNames) :
-        this.suggestUniqueFileName_Old(subject.substr(0,124), ".eml", fileNames);
+      uniqueFileName = 
+        this.suggestUniqueFileName(subject.substr(0,124), ".eml", fileNames) ;
       fileNames.add(uniqueFileName);
       try {
         aEvent.dataTransfer.mozSetDataAt("text/x-moz-url", spec, i);
@@ -1423,9 +1407,7 @@ allowUndo = true)`
     catch(ex) {
       this.logException('validateLicense (identity info:)\n' + txt, ex);
     }
-    finally {
-      return txt;
-    }
+    return txt;
   } ,
 
   getBaseURI: function baseURI(URL) {
@@ -1507,15 +1489,13 @@ allowUndo = true)`
         else { URL = URL + "&user=" + uType + anchor; }
       }
     }
-    catch(ex) {
-    }
-    finally {
-      return URL;
-    }
+    catch { ; }
+    return URL;
   } ,
 
   // use this to follow a href that did not trigger the browser to open (from a XUL file)
   openLinkInBrowser: function (evt, linkURI) {
+    // eslint-disable-next-line no-debugger
     if (QuickFolders.Preferences.isDebug) { debugger; }
     QuickFolders.Util.notifyTools.notifyBackground({
       func: "openBrowserLink",
@@ -1555,8 +1535,6 @@ allowUndo = true)`
 		}
 	} ,  
 
-
-
   getBundleString: function getBundleString(id, substitions = []) { // moved from local copies in various modules.
     // [mx-l10n]
     var { ExtensionParent } = ChromeUtils.importESModule(
@@ -1568,9 +1546,8 @@ allowUndo = true)`
     let s = "";
     if (localized) {
       s = localized;
-    }
-    else {
-      s = defaultText;
+    } else {
+      s = "n/a";
       this.logToConsole ("Could not retrieve bundle string: " + id + "");
     }
     return s;
@@ -1624,7 +1601,7 @@ allowUndo = true)`
         if (getPref('serverName')) {
           if (srv) {
             try {srvName = ' [' + srv.hostName + ']';}
-            catch(e) { };
+            catch { ; };
           }
         }
       }
@@ -1636,7 +1613,7 @@ allowUndo = true)`
         try {
           if (folder.rootFolder) {
             try {baseFolder = ' - ' + folder.rootFolder.name;}
-            catch(e) { };
+            catch {;}
           }
           else {
             this.logDebug('getFolderTooltip() - No rootFolder on: ' + folderName + '!');
@@ -1730,8 +1707,6 @@ allowUndo = true)`
       }
       return true; // msgFolder.parent != null;
     }
-    console.log("Invalid folder? doesMailFolderExist() fall through to end.", msgFolder);
-    return false;
   },
   
   doesMailUriExist: function checkUriExists(URI) {
@@ -1776,8 +1751,8 @@ allowUndo = true)`
     }
     
     setTimeout(function() {
-      // note - in a single message window  QuickFolders_globalWin == messageWindow.xhtml
-      let newCSS = QuickFolders_globalWin.QuickFolders.WL.injectCSS(path);
+      // note - in a single message window  - messageWindow.xhtml
+      let newCSS = Services.wm.getMostRecentWindow("mail:3pane").QuickFolders.WL.injectCSS(path);
       newCSS.setAttribute("title", "QuickFolderPlatformStyles");
     },150);
     
@@ -1791,15 +1766,15 @@ allowUndo = true)`
         detail = `QuickFolders Tab: [${el.name}]\n`
             + `account: ${el.account}\n`
             + `URI: ${el.uri}`;
-        let clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+        let clipboardhelper = Components.classes[
+          "@mozilla.org/widget/clipboardhelper;1"
+        ].getService(Components.interfaces.nsIClipboardHelper);
         clipboardhelper.copyString("Invalid Tab:\n" + detail);
         detail += "\nDebug information was copied to clipboard. If you have many invalid tabs, this information will be helpful to support.";
-      }
-      else {
+      } else {
         detail = "button.folderURI = " + button.getAttribute("folderURI");
       }
-    }
-    else {
+    } else {
       detail = button.toString();
     }
     alert("This tab points to an invalid folder.\n" + detail);
@@ -2120,7 +2095,7 @@ allowUndo = true)`
 
     function getServerUri(f) {
       // Extract the server part (e.g., "imap://example.com")
-      const match = f.URI.match(/^([a-zA-Z]+:\/\/[^\/]+)/);
+      const match = f.URI.match(/^([a-zA-Z]+:\/\/[^/]+)/);
       return match ? match[0] : "";
     }
 
@@ -2382,6 +2357,7 @@ allowUndo = true)`
           const listener = {
             OnStartRunningUrl(url) {},
             OnStopRunningUrl(url, aExitCode) {
+              // eslint-disable-next-line no-debugger
               if (isDebug) debugger;
               if (aExitCode == Cr.NS_OK) {
                 resolve();

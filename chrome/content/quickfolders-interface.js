@@ -1671,7 +1671,6 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
           Cc = Components.classes,
           Ci = Components.interfaces,
-					NSIFILE = Ci.nsILocalFile || Ci.nsIFile,
           model = QuickFolders.Model,
           ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
 
@@ -1683,7 +1682,7 @@ QuickFolders.Interface = {
     }
 
     let missingIcons = [],
-        ctRepaired = 0, ctMissing = 0;
+			ctRepaired = 0, ctMissing = 0;
 		util.logDebugOptional("interface", "repairTreeIcons()");
 
 		for (let i = 0; i < model.selectedFolders.length; i++) {
@@ -1696,10 +1695,13 @@ QuickFolders.Interface = {
 			try {
 				folder = model.getMsgFolderFromUri(folderEntry.uri, false);
 				let fileSpec = folderEntry.icon,
-						localFile = // Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-						  Services.io.newURI(fileSpec).QueryInterface(Ci.nsIFileURL).file;
-				localFile.initWithPath(path);
-			  if (!localFile.exists())  {
+					localFile = Services.io.newURI(fileSpec).QueryInterface(Ci.nsIFileURL).file;
+				try {
+					localFile.initWithPath(path);
+				} catch(ex) {
+					util.logException(`initializing Path ${path} failed:`, ex);
+				}				
+			  if (!defaultPath.path || !localFile.exists())  {
           missingIcons.push({path:path, name:this.folderPathLabel(1, folder, 2)} );
           ctMissing++;
           if (folder) {
@@ -3330,7 +3332,6 @@ QuickFolders.Interface = {
 		const Ci = Components.interfaces,
 			Cc = Components.classes,
 			nsIFilePicker = Ci.nsIFilePicker,
-			NSIFILE = Ci.nsILocalFile || Ci.nsIFile,
 			util = QuickFolders.Util,
 			model = QuickFolders.Model,
 			hasLicense = util.hasValidLicense();
@@ -3388,10 +3389,8 @@ QuickFolders.Interface = {
 				if (!fp.file) {
 					return;
 				}
-				const file = fp.file.parent.QueryInterface(NSIFILE);
-				//localFile = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
+				const file = fp.file.parent.QueryInterface(Ci.nsIFile);
 				try {
-					//localFile.initWithPath(path); // get the default path
 					QuickFolders.Preferences.setStringPref("tabIcons.defaultPath", file.path);
 					let iconURL = fp.fileURL;
 					if (folders) {
@@ -3438,11 +3437,18 @@ QuickFolders.Interface = {
 		// needs to be initialized with something that makes sense (UserProfile/QuickFolders)
 
 //Error: NS_ERROR_XPC_BAD_CONVERT_JS: Could not convert JavaScript argument arg 0 [nsIFilePicker.displayDirectory]
-		let localFile = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE),
-		    lastPath = QuickFolders.Preferences.getStringPref("tabIcons.defaultPath");
-		if (lastPath)
-			localFile.initWithPath(lastPath);
-    fp.displayDirectory = localFile; // gLastOpenDirectory.path
+		let localFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile),
+      lastPath = QuickFolders.Preferences.getStringPref("tabIcons.defaultPath");
+		if (lastPath) {
+			try {
+				localFile.initWithPath(lastPath);
+			} catch(ex) {
+				util.logException(`initializing Path ${lastPath} failed:`, ex);	
+			}
+		}
+		if (localFile.path) {
+    	fp.displayDirectory = localFile; // gLastOpenDirectory.path
+		}
 		if (fp.open)
 			fp.open(fpCallback);
 		else { // Postbox
@@ -3754,26 +3760,29 @@ QuickFolders.Interface = {
     }
 	},
 
-	getLocalFileFromNativePathOrUrl: function getLocalFileFromNativePathOrUrl(aPathOrUrl) {
+	getLocalFileFromNativePathOrUrl: function (aPathOrUrl) {
 	  try {
 			const Ci = Components.interfaces,
-						Cc = Components.classes,
-			      NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
+						Cc = Components.classes;
 			if (aPathOrUrl.substring(0,7) == "file://") {
 				// if this is a URL, get the file from that
-				let ioSvc = Cc["@mozilla.org/network/io-service;1"].
-										getService(Ci.nsIIOService);
-
+				let ioSvc = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService);
 				// XXX it's possible that using a null char-set here is bad
-				const fileUrl = ioSvc.newURI(aPathOrUrl, null, null).
-												QueryInterface(Ci.nsIFileURL);
-				return fileUrl.file.clone().QueryInterface(NSIFILE);
+				const fileUrl = ioSvc.newURI(aPathOrUrl, null, null).QueryInterface(Ci.nsIFileURL);
+				return fileUrl.file.clone().QueryInterface(Ci.nsIFile);
 			} else {
-				// if it's a pathname, create the nsILocalFile directly
-				let f = Cc["@mozilla.org/file/local;1"].createInstance(NSIFILE);
-				f.initWithPath(aPathOrUrl);
-				return f;
-			}
+        // if it's a pathname, create the nsIFile directly
+        let f = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+				try {
+          f.initWithPath(aPathOrUrl);
+        } catch (ex) {
+          util.logException(
+            `getLocalFileFromNativePathOrUrl(): initializing Path ${aPathOrUrl} failed:`,
+            ex
+          );
+        }
+        return f;
+      }
 		}
 		catch(ex) {
 		  QuickFolders.Util.slideAlert("Problems opening URL: " + aPathOrUrl, ex);
@@ -3782,8 +3791,7 @@ QuickFolders.Interface = {
 	}	,
 
 	onFolderOpenLocation: function onFolderOpenLocation(element) {
-		const util = QuickFolders.Util,
-		      NSIFILE = Ci.nsILocalFile || Ci.nsIFile;
+		const util = QuickFolders.Util;
     let folder = util.getPopupNode(element).folder;
 		// code from gDownloadViewController.showDownload(folder);
     util.logDebug("onFolderOpenLocation()\nfolder: " + folder.name +"\nPath: " + folder.filePath.path);
@@ -3795,7 +3803,7 @@ QuickFolders.Interface = {
       util.logDebug("onFolderOpenLocation() - localfile.reveal failed: " + e);
 			// If reveal fails for some reason (e.g., it's not implemented on unix or
 			// the file doesn't exist), try using the parent if we have it.
-			let parent = f.parent.QueryInterface(NSIFILE);
+			let parent = f.parent.QueryInterface(Ci.nsIFile);
 			if (!parent) {
         util.logDebug("onFolderOpenLocation() - no folder parent - giving up.");
 				return;
@@ -5646,7 +5654,8 @@ QuickFolders.Interface = {
 			  util.logDebugOptional("interface.findFolder","Enter");
 				const isCtrl = event.ctrlKey || false;
 				const isAlt = event.altKey || false;
-				const options = { forceFind: true, forceTab: isCtrl, forceWin: isAlt };
+				const isForceTab = isCtrl || prefs.getBoolPref("quickJump.premium.forceTab"); // [issue 577]
+				const options = { forceFind: true, forceTab: isForceTab, forceWin: isAlt };
         QI.findFolderName(event.target, options);
         event.preventDefault();
         break;
@@ -5685,8 +5694,10 @@ QuickFolders.Interface = {
 				break;
 			case "Escape":
         event.preventDefault(); // [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
-			  if (isShift || prefs.getBoolPref("quickMove.premium.escapeClearsList") ) // [Bug 26660] SHIFT + ESC resets move list
-					QuickFolders.quickMove.resetList();
+			  if (isShift || prefs.getBoolPref("quickMove.premium.escapeClearsList") ) {
+          //  SHIFT + ESC resets move list
+          QuickFolders.quickMove.resetList();
+        }
 			  QI.findFolder(false,"forceHide");
 			  QI.hideFindPopup();
         QI.updateFindBoxMenus(false);

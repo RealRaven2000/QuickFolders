@@ -9,6 +9,29 @@
   END LICENSE BLOCK 
 */
 
+function toggleTooltip(button) {
+  const row = button.closest(".option-row");
+  if (!row) return;
+
+  const tooltip = row.querySelector(".tooltip-bubble");
+  if (!tooltip) return;
+
+  // Hide all other tooltips first
+  document.querySelectorAll(".tooltip-bubble").forEach((t) => {
+    if (t !== tooltip) t.hidden = true;
+  });
+  document.querySelectorAll(".tooltipBtn").forEach((t) => {
+    t.removeAttribute("tooltipshown");
+  });
+
+  // Toggle this one
+  tooltip.hidden = !tooltip.hidden;
+  if (tooltip.hidden) {
+    button.removeAttribute("tooltipshown");
+  } else {
+    button.setAttribute("tooltipshown", true);
+  }
+}
 
 {
   const prefs = QuickFolders.Preferences,
@@ -93,6 +116,15 @@
         qmSettings.toggleClearList(chkEsc, evt);
       });
 
+      let chkForceOpenInTab = document.getElementById("chkForceOpenInTab");
+      chkForceOpenInTab.checked = globalQuickMoveSettings.isForceOpenInTab;
+      chkForceOpenInTab.addEventListener("click", function (evt) {
+        qmSettings.toggleForceOpenTab(chkForceOpenInTab, evt);
+      });
+      chkForceOpenInTab.addEventListener("keydown", function (evt) {
+        qmSettings.toggleForceOpenTab(chkForceOpenInTab, evt);
+      });
+
       let chkCollapse = document.getElementById("chkCollapseSearch");
       chkCollapse.checked = globalQuickMoveSettings.isCollapse;
       chkCollapse.addEventListener("click", function (evt) {
@@ -124,6 +156,10 @@
       maxResults.value = prefs.getIntPref("quickMove.maxResults");
       maxResults.addEventListener("change", function (evt) {
         qmSettings.changeMaxResults(maxResults);
+      });
+      // set up all tooltip buttons
+      document.querySelectorAll(".option-row .tooltipBtn").forEach((button) => {
+        button.addEventListener("click", () => toggleTooltip(button));
       });
 
       // [mx-l10n]
@@ -179,7 +215,13 @@
     toggleCollapsed: function (el, evt) {
       let isChecked = el.checked;
       if (evt.type == "keydown" && evt.key != " ") return;
-      prefs.setBoolPref("premium.findFolder.autoCollapse", isChecked);
+      prefs.setBoolPref("quickMove.premium.escapeClearsList", isChecked);
+    },
+
+    toggleForceOpenTab: function (el, evt) {
+      let isChecked = el.checked;
+      if (evt.type == "keydown" && evt.key != " ") return;
+      prefs.setBoolPref("quickJump.premium.forceTab", isChecked);
     },
 
     toggleGoNext: function (el, evt) {

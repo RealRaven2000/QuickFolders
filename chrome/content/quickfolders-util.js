@@ -1179,12 +1179,10 @@ allowUndo = true)`
     }      
     
     let messageUris = this.getSelectedMsgUris();
-    if (!messageUris) return;
-    let ios = Components.classes["@mozilla.org/network/io-service;1"]
-              .getService(Components.interfaces.nsIIOService),
-        fileNames = new Set(),
-        uniqueFileName = '',
-        count = 0;
+    if (!messageUris) {return;}
+    let fileNames = new Set(),
+      uniqueFileName = '',
+      count = 0;
 
     // dragging multiple messages to desktop does not
     // currently work, pending core fixes for
@@ -1263,7 +1261,7 @@ allowUndo = true)`
       timePassed = '[' + elapsed + ' ms]   ';
       this.stopWatchtime.set(map,endTime); // remember last time
     }
-    catch(e) {;}
+    catch {;}
     if (cmd=="reset" || cmd=="all") {
       timePassed = "[" + this.stopWatchtime_Summed.get(map) + " ms]";
       this.stopWatchtime_Summed.set(map,0);
@@ -1284,19 +1282,19 @@ allowUndo = true)`
       timePassed = '[' + elapsed + ' ms]   ';
       this.lastTime = endTime; // remember last time
     }
-    catch(e) {;}
+    catch {;}
     return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
   },
   
   // first argument is the option tag
-  logWithOption: function logWithOption(a) {
+  logWithOption: function (_a) {
     arguments[0] =  "QuickFolders "
       +  '{' + arguments[0].toUpperCase() + '} ' 
       + QuickFolders.Util.logTime() + "\n";
     console.log(...arguments);
   },
 
-  logToConsole: function logToConsole(a) {
+  logToConsole: function logToConsole(_a) {
     let msg = "QuickFolders " + QuickFolders.Util.logTime() + "\n";
     console.log(msg, ...arguments);
   },
@@ -1331,22 +1329,22 @@ allowUndo = true)`
       scriptError.init(aMessage, aSourceName, stack, aLineNumber, aColumnNumber, aFlags, aCategory);
       // Services.console.logMessage(scriptError);  => no output!!
       console.warn(aMessage, `aSourceName: ${aSourceName}, line: ${aLineNumber}, copl: ${aColumnNumber}, flg: ${aFlags}`, stack);
-    }
-    catch(ex) {
+    } catch {
       alert('logError failed: ' + aMessage);
     }
   } ,
 
   logException: function logException(aMessage, ex) {
     let stack = ''
-    if (typeof ex.stack!='undefined')
+    if (typeof ex.stack!='undefined') {
       stack= ex.stack.replace("@","\n  ");
+    }
     // let's display a caught exception as a warning.
     let fn = ex.fileName || "?";
     this.logError(aMessage + "\n" + ex.message + "\n", fn, stack, ex.lineNumber, 0, 0x1);
   } ,
 
-  logDebug: function (a) {
+  logDebug: function (_a) {
     if (QuickFolders.Preferences.isDebug) {
       this.logToConsole(...arguments);  /* ...msg */
     }
@@ -1362,7 +1360,7 @@ allowUndo = true)`
   * @optionString {string}: comma delimited options
   * @msg {string}: text to log 
   */   
-  logDebugOptional: function logDebugOptional(optionString, msg) {
+  logDebugOptional: function logDebugOptional(optionString, _msg) {
     let options = optionString.split(',');
     for (let i=0; i<options.length; i++) {
       let option = options[i];
@@ -1377,12 +1375,17 @@ allowUndo = true)`
     try {
       let el=document.commandDispatcher.focusedElement;
       this.logDebug(origin + "- logFocus");
-      if (el==null) {
-        el=document.commandDispatcher.focusedWindow;
-        this.logDebug ( "window focused: " + el.name);
+      if (el == null) {
+        el = document.commandDispatcher.focusedWindow;
+        this.logDebug("window focused: " + el.name);
+      } else {
+        QuickFolders.Util.logDebug(
+          `element focused\nid: ${el.id}\n` +
+          `tag: ${el.tag}\n` + 
+          `class: ${el.class}\n` +
+          `container: ${el.container}`
+        );
       }
-      else
-        QuickFolders.Util.logDebug ( "element focused\nid: " + el.id +" \ntag: " + el.tag +" \nclass: " + el.class + "\ncontainer: " + el.container);
     }
     catch(e) { this.logDebug("logFocus " + e);};
   },
@@ -1395,7 +1398,7 @@ allowUndo = true)`
   },
   
   logIdentity: function logIdentity(id) {  // debug a nsIMsgIdentity 
-    if (!id) return "EMPTY id!"
+    if (!id) {return "EMPTY id!"}
     let txt = '';
     try { // building this incremental in case of problems. I know this is bad for performance, because immutable strings.
       txt += "key: " + id.key + '\n';
@@ -1457,22 +1460,20 @@ allowUndo = true)`
   // appends user=pro OR user=proRenew if user has a valid / expired license
   makeUriPremium: function makeUriPremium(URL) {
     const util = QuickFolders.Util;
-    let isPremiumLicense;
     try {
-      isPremiumLicense = util.hasValidLicense() || QuickFolders.Util.licenseInfo.isExpired;
-    }
-    catch (ex) {
-      return URL;
-    }
+      const isPremiumLicense = util.hasValidLicense() || QuickFolders.Util.licenseInfo.isExpired;
+    } catch { return URL; }
+
     try {
       let uType = "";
-      if (QuickFolders.Util.licenseInfo.isExpired) 
-        uType = "proRenew"
-      else if (util.hasValidLicense()) {
-        if (util.hasStandardLicense())
+      if (QuickFolders.Util.licenseInfo.isExpired)  {
+        uType = "proRenew";
+      } else if (util.hasValidLicense()) {
+        if (util.hasStandardLicense()) {
           uType = "std";
-        else
+        } else {
           uType = "pro";
+        }
       }
       // make sure we can sanitize all pages for our premium users!
       if (   uType
@@ -1508,8 +1509,8 @@ allowUndo = true)`
 
   openURL: async function (URL, evt=null) { // workaround for a bug in TB3 that causes href's not be followed anymore.
     if (await QuickFolders.Util.openURLInTab.call(QuickFolders.Util, URL) && evt) {
-      if (evt.preventDefault)  evt.preventDefault();
-      if (evt.stopPropagation)  evt.stopPropagation();
+      if (evt.preventDefault)  {evt.preventDefault();}
+      if (evt.stopPropagation)  {evt.stopPropagation();}
     }
   },
 
@@ -1535,7 +1536,7 @@ allowUndo = true)`
 		}
 	} ,  
 
-  getBundleString: function getBundleString(id, substitions = []) { // moved from local copies in various modules.
+  getBundleString: function (id, substitions = []) { // moved from local copies in various modules.
     // [mx-l10n]
     var { ExtensionParent } = ChromeUtils.importESModule(
       "resource://gre/modules/ExtensionParent.sys.mjs"
@@ -1618,8 +1619,7 @@ allowUndo = true)`
           else {
             this.logDebug('getFolderTooltip() - No rootFolder on: ' + folderName + '!');
           }
-        }
-        catch(e) { 
+        } catch { 
           this.logDebug('getFolderTooltip() - No rootFolder on: ' + folderName + '!');
         };
       }
@@ -1635,7 +1635,7 @@ allowUndo = true)`
         }
       }
     } // outer try for "foreign" objects, such as localfolders
-    catch(ex) {
+    catch {
       this.logDebug('could not retrieve tooltip data for a folder');
     }
     
@@ -1656,8 +1656,9 @@ allowUndo = true)`
       return callerThis.parentNode.triggerNode;
     } else {
       let theParent = callerThis.parentNode;
-      while (theParent!=null && theParent.tagName!="toolbarbutton")
+      while (theParent!=null && theParent.tagName!="toolbarbutton") {
         theParent = theParent.parentNode;
+      }
       return theParent;
     }
   },
@@ -1673,16 +1674,16 @@ allowUndo = true)`
   // helper function for css value entries - strips off rule part and semicolon (end)
   sanitizeCSSvalue: function sanitizeCSSvalue(val) {
     let colon = val.indexOf(':');
-    if (colon>=0) val = val.substr(colon+1);
+    if (colon>=0) {val = val.substr(colon+1);}
     let semicolon = val.indexOf(';');
-    if (semicolon>0) val = val.substr(0,semicolon);
+    if (semicolon>0) {val = val.substr(0,semicolon);}
     val = val.trim ? val.trim() : val;
     return val;
   } ,
   
   doesMailFolderExist: function checkExists(msgFolder) {
     const FLAGS = QuickFolders.Util.FolderFlags;
-    if (!msgFolder) return false;
+    if (!msgFolder) {return false;}
     if (!msgFolder.filePath)  {
       QuickFolders.Util.logDebug('doesMailFolderExist() msgFolder.filePath missing! - returning false');
       return false;
@@ -1734,7 +1735,7 @@ allowUndo = true)`
     return true;
   } ,
   
-  loadPlatformStylesheet: function loadPlatformStylesheet(win) {
+  loadPlatformStylesheet: function (_win) {
     const util = QuickFolders.Util;
     util.logDebug("Loading platform styles for " + util.HostSystem + "…");
     let path="";
@@ -1784,15 +1785,16 @@ allowUndo = true)`
     let aN = [];
     for (let i = el.childNodes.length-1; i>0; i--) {
       let c = el.childNodes[i];
-      if (!c.getAttribute("id") && !c.getAttribute("name"))
+      if (!c.getAttribute("id") && !c.getAttribute("name")) {
         aN.push(c);
+      }
     }
     return aN;
   } ,
   
   // helper function to get a name from an uri that has no folder
   getNameFromURI: function getNameFromURI(uri) {
-    if (!uri) return "no uri";
+    if (!uri) {return "no uri";}
     const ellipsis = "\u2026".toString();
     let slash = uri.lastIndexOf("/");
     return slash>0 ? ellipsis  + uri.substr(slash) : ellipsis + uri.substr(-16);
@@ -1844,7 +1846,7 @@ allowUndo = true)`
           ssPrefs = Services.prefs.getBranch(prefBranchString); // nsIPrefService
 
       try { debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstrun")); } 
-      catch (e) { debugFirstRun = false; }
+      catch { debugFirstRun = false; }
 
       util.logDebugOptional ("firstrun","QuickFolders.Util.FirstRun.init()");
       if (!ssPrefs) {
@@ -1857,17 +1859,17 @@ allowUndo = true)`
       try {
         util.logDebugOptional ("firstrun","try to get setting: getStringPref(version)");
         try { prev = ssPrefs.getStringPref("version"); }
-        catch (e) {
+        catch (ex) {
           prev = "?";
-          util.logDebugOptional ("firstrun","Could not determine previous version - " + e);
+          util.logDebugOptional ("firstrun","Could not determine previous version - " + ex);
         } ;
 
         util.logDebugOptional ("firstrun","try to get setting: getBoolPref(firstrun)");
-        try { firstrun = ssPrefs.getBoolPref("firstrun"); } catch (e) { firstrun = true; }
+        try { firstrun = ssPrefs.getBoolPref("firstrun"); } catch { firstrun = true; }
 
         // enablefirstruns=false - allows start pages to be turned off for partners
         util.logDebugOptional ("firstrun","try to get setting: getBoolPref(enablefirstruns)");
-        try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch (e) { showFirsts = true; }
+        try { showFirsts = ssPrefs.getBoolPref("enablefirstruns"); } catch { showFirsts = true; }
 
         util.logDebugOptional ("firstrun", "Settings retrieved:"
             + "\nprevious version=" + prev
@@ -2058,8 +2060,9 @@ allowUndo = true)`
           continue;
       }
       if (isQuickJumpOrMove) {
-        if (isLockedInAccount && aFolder.server && aFolder.server.key!=currentServer)
+        if (isLockedInAccount && aFolder.server && aFolder.server.key!=currentServer) {
           continue;
+        }
         if (quickMoveSettings.excludedIds.length) {
           // exclude account
           if (quickMoveSettings.excludedIds.includes(aFolder.server.key)) {
@@ -2119,8 +2122,8 @@ allowUndo = true)`
       if (folder != currentFolder) {
         // we must always include current folder even if it is unread!
         // Only consider folders with unread mails
-        if (folder.flags & unwantedFolders) continue;
-        if (!folder.getNumUnread(false)) continue;
+        if (folder.flags & unwantedFolders) {continue;}
+        if (!folder.getNumUnread(false)) {continue;}
       }
       allFolders.push(folder);
 
@@ -2289,7 +2292,7 @@ allowUndo = true)`
         );
         return; // Stop iteration if aborted
       }
-      if (!isParentMatch(folder, parentString, maxParentLevel, parents)) continue;
+      if (!isParentMatch(folder, parentString, maxParentLevel, parents)) {continue;}
       addMatchingFolder(matches, folder);
     }
   },
@@ -2355,10 +2358,10 @@ allowUndo = true)`
       if (needToCreate) {
         const deferred = new Promise((resolve, reject) => {
           const listener = {
-            OnStartRunningUrl(url) {},
-            OnStopRunningUrl(url, aExitCode) {
+            OnStartRunningUrl(_url) {},
+            OnStopRunningUrl(_url, aExitCode) {
               // eslint-disable-next-line no-debugger
-              if (isDebug) debugger;
+              if (isDebug) {debugger;}
               if (aExitCode == Cr.NS_OK) {
                 resolve();
               } else {
@@ -2381,8 +2384,9 @@ allowUndo = true)`
           // reject.
           logDebug('folder.createStorageIfMissing()...'); 
           folder.createStorageIfMissing(isAsync ? listener : null);
-          if (!isAsync || !needToCreate)
+          if (!isAsync || !needToCreate) {
             resolve();
+          }
         });
         await deferred; 
       
@@ -2434,7 +2438,7 @@ allowUndo = true)`
       { flag: Ci.nsMsgFolderFlags.Junk, name: "Junk" },
       { flag: Ci.nsMsgFolderFlags.Trash, name: "Trash" }
     ]
-    if (!folderName) return null;
+    if (!folderName) {return null;}
     let folderType = folderTypes.find(el=>(el.name==folderName));
     return folderType ? folderType.flag : null;
   },
@@ -2448,7 +2452,7 @@ allowUndo = true)`
 
 	getFileInitArg: function(win) {
 		// [bug 1882701] nsIFilePicker.init() first parameter changed from Tb125
-		if (!win) return null;
+		if (!win) {return null;}
 		if (this.versionGreaterOrEqual(this.ApplicationVersion, "125")) {    
 			return win.browsingContext;
 		}

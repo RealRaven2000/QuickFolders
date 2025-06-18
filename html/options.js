@@ -659,10 +659,9 @@ async function loadPrefs() {
       if (element.getAttribute("type") === "checkbox") {
         element.checked = await browser.LegacyPrefs.getPref(prefName);
         if (element.checked != await browser.LegacyPrefs.getPref(prefName)) {
-          { debugger; }
+          // eslint-disable-next-line no-debugger
+          debugger; 
         }
-
-
       } 
       else if (element.getAttribute("type") === "text" ||
         element.dataset.prefType === "string"

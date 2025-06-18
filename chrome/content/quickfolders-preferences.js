@@ -58,7 +58,7 @@ QuickFolders.Preferences = {
 		}
 	} ,
 
-	loadFolderEntries: function loadFolderEntries() {
+	loadFolderEntries: function() {
 		const setting = "QuickFolders.folders";
 		if (!Services.prefs.prefHasUserValue(setting)) {
 			return [];

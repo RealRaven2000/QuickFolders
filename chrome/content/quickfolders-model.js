@@ -191,17 +191,17 @@ QuickFolders.Model = {
     return countUris;
   } ,
 
-  store: function store() {
+  store: function () {
     QuickFolders.Preferences.storeFolderEntries(QuickFolders.Model.selectedFolders);
   } ,
   
-  update: function update() {
+  update: function () {
     QuickFolders.Util.logDebug("model.update");
     this.store();
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); 
   } ,
 
-  setTabIcon: function setTabIcon(button, entry, iconURI, menuItem) {
+  setTabIcon: function (button, entry, iconURI, menuItem) {
 		const QI = QuickFolders.Interface;
     let fileSpec = '';
     if (iconURI) {
@@ -261,7 +261,7 @@ QuickFolders.Model = {
     }
   } ,
 
-  setTabSeparator: function setTabSeparator(entry, isSpace) {
+  setTabSeparator: function (entry, isSpace) {
     if(entry) {
       // add class "spaced" with .spaced { margin-left: 2em;}
       if (isSpace) {
@@ -278,7 +278,7 @@ QuickFolders.Model = {
     }
   } ,
   
-  setFolderLineBreak: function setFolderLineBreak(entry, isBreak) {
+  setFolderLineBreak: function (entry, isBreak) {
     // insert before: <br xmlns="http://www.w3.org/1999/xhtml" />
     if(entry) {
       if (isBreak) {
@@ -294,7 +294,7 @@ QuickFolders.Model = {
     }
   } ,
 
-  getMsgFolderFromUri:  function getMsgFolderFromUri(uri, checkFolderAttributes) {
+  getMsgFolderFromUri:  function (uri, checkFolderAttributes) {
     const util = QuickFolders.Util;
     let msgfolder = MailUtils.getExistingFolder(uri, checkFolderAttributes);
 		if (msgfolder && !msgfolder.parent && !msgfolder.isServer) {
@@ -308,7 +308,7 @@ QuickFolders.Model = {
   // this means we need to reset categories whenever a folder changing operation is carried out
   // (if a folder is deleted, this might render a category as obsolete;
   //  also whenever categories are added or removed.)
-  resetCategories: function resetCategories() {
+  resetCategories: function () {
     this.categoriesList=[];
   } ,
 
@@ -349,7 +349,7 @@ QuickFolders.Model = {
     return this.categoriesList;
   } ,
 
-  renameFolderCategory: function renameFolderCategory(oldName, newName) {
+  renameFolderCategory: function (oldName, newName) {
     QuickFolders.Util.logDebugOptional("categories","Model.renameFolderCategory()\n"
       + "from: " + oldName 
       + "to: "   + newName);
@@ -377,7 +377,7 @@ QuickFolders.Model = {
     this.update()
   } ,
 
-  deleteFolderCategory: function deleteFolderCategory(category, noUpdate) {
+  deleteFolderCategory: function (category, noUpdate) {
     QuickFolders.Util.logDebugOptional("categories","Model.deleteFolderCategory(" + category + ")");
     let folderList = '';
     for (let i = 0; i < this.selectedFolders.length; i++) {
@@ -605,7 +605,7 @@ QuickFolders.Model = {
   } ,
   
   // new upgrade function to switch over to multiple palettes
-  upgradePalette: function upgradePalette(prefSvc) {
+  upgradePalette: function (prefSvc) {
     function getBoolPref(key, boolDefault) {
       let result;
       try {

@@ -131,8 +131,9 @@ window.addEventListener("load", async () => {
     const features = params.get("addonfeatures");
 
     await browser.runtime.sendMessage({
-      command: "showRegistrationDialog",
-      addonfeatures: features || "",
+      command: "showLicenseDialog",
+      referrer: "quickfolders-message",
+      addonfeatures: features || "", // future use
     });
   });
 

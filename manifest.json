@@ -4,13 +4,13 @@
     "gecko" : {
       "id" : "quickfolders@curious.be",
       "strict_min_version" : "111.0",
-      "strict_max_version" : "139.*"
+      "strict_max_version" : "140.*"
     }
   },
   "author": "Axel Grude",
   "name" : "QuickFolders",
   "description" : "__MSG_extensionDescription__",
-  "version" : "6.10.4",
+  "version" : "6.10.5pre41",
   "default_locale": "en",
   "developer" : {
       "name" : "Axel Grude",
@@ -29,7 +29,8 @@
     "messagesRead",
     "notifications",
     "tabs", 
-    "sessions"
+    "sessions",
+    "storage"
   ],
   "browser_action": {
     "default_icon": {

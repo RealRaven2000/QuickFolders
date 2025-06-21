@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QuickFolders Message</title>
+  <link rel="stylesheet" href="quickfolders-message.css">
+  <link rel="stylesheet" href="../popup/popup.css" type="text/css">
+  <script type="application/javascript" src="../popup/specialoffers.js"></script>
+  <script type="application/javascript" src="../popup/popup.js"></script>
+  <script type="application/javascript" src="quickfolders-message.js"></script>
+  <script type="application/javascript" src="../chrome/content/i18n.js"></script>
+</head>
+<body>
+  <div id="messageCanvas">
+    <h1 id="titleBox" aria-label="QuickFolders">QuickFolders</h1>
+    <div class="messageContents">
+      <div id="innerMessage">This is a message</div>
+    </div>
+    <div id="commands">
+      <button id="ok">__MSG_message.btn.accept__</button>
+      <button id="yes" hidden>__MSG_message.btn.yes__</button>
+      <button id="no" hidden>__MSG_message.btn.no__</button>
+      <button id="cancel" hidden>__MSG_message.btn.cancel__</button>
+      <!-- <span id="licensing" hidden> use .licensing instead -->
+      <button id="btnShowLicenser" class="actionlinks licensing" hidden>__MSG_message.licenseScreen__</button>
+      <button id="btnFeatureCompare" class="actionlinks licensing" hidden>__MSG_message.features__</button>
+      <!-- obsolete.
+      <label id="countDown"></label>
+      -->
+    </div>
+  </div>
+</body>
+</html>

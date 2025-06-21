@@ -7,6 +7,10 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
+/*
+  globals
+    licenseInfo,
+  */
 
 // parts from the old options interface that are specific for the options dialog UI
 // keeping the old namespace so I know which funcitons I can retire when we convert to HTML
@@ -96,7 +100,7 @@ QuickFolders.Options = {
     let // obsolete: title = QuickFolders.Util.getBundleString("qf.prompt.contact.title"),
       text = QuickFolders.Util.getBundleString("qf.prompt.contact.subject"),
       result = window.prompt(text, "");
-    if (!result) return;
+    if (!result) {return;}
 
     let version = await messenger.runtime.getManifest().version,
       subjectline = "[QuickFolders] " + version + " " + result;
@@ -160,11 +164,11 @@ QuickFolders.Options = {
       if (colorPicker) {
         if (colorPickerId == "inactive-colorpicker") {
           if ((await prefs.getIntPref("colorTabStyle")) == prefs.TABS_STRIPED)
-            paletteIndex = "" + paletteIndex + "striped";
+            {paletteIndex = "" + paletteIndex + "striped";}
         } else {
           // do not hide background color for active tab so we can adjust
           // the bottom border color of the toolbar
-          if (colorPickerId != "activetab-colorpicker") colorPicker.collapsed = true;
+          if (colorPickerId != "activetab-colorpicker") {colorPicker.collapsed = true;}
         }
       }
 
@@ -224,11 +228,14 @@ QuickFolders.Options = {
       picker.value,
       cb.checked
     );
-    if (userStyle)
+    if (userStyle) {
       await QuickFolders.Preferences.setUserStyle(userStyle, "background-color", picker.value);
+    }
 
     let prefString = cb.getAttribute("data-pref-name");
-    if (prefString) await QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
+    if (prefString) {
+      await QuickFolders.Preferences.setBoolPrefVerbose(prefString, cb.checked);
+    }
 
     messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: true });
     return true;
@@ -246,10 +253,6 @@ QuickFolders.Options = {
 
   initPreviewTabStyles: function initPreviewTabStyles() {
     let getElement = document.getElementById.bind(document),
-      inactiveTab = getElement("inactivetabs-label"),
-      activeTab = getElement("activetabs-label"),
-      hoverTab = getElement("hoveredtabs-label"),
-      dragTab = getElement("dragovertabs-label"),
       menupopup = getElement("QuickFolders-Options-PalettePopup");
 
     this.preparePreviewTab("inactive-colorpicker", "style.InactiveTab.", "inactivetabs-label");
@@ -269,7 +272,6 @@ QuickFolders.Options = {
     let id = label ? label.id : label.toString(),
       paletteMenuId = this.getButtonMenuId(buttonState),
       paletteMenu = document.getElementById(paletteMenuId);
-    const QI = QuickFolders.Interface;
     QuickFolders.Util.logDebugOptional(
       "interface",
       "Options.showPalette(" + id + ", " + buttonState + ")"
@@ -300,7 +302,6 @@ QuickFolders.Options = {
     console.log("selected color from Palette:", target);
     let colId = target.getAttribute("selectedColor");
     if (colId != null) {
-      let previewTab = target.parent;
       QuickFolders.Interface.setTabColorFromMenu(target, colId);
     }
     QuickFolders.Interface.hidePalette();
@@ -345,7 +346,7 @@ QuickFolders.Options = {
   setColoredTabStyle: async function (styleId, force) {
     const prefs = QuickFolders.Preferences,
       QI = QuickFolders.Interface;
-    if (!force && (await prefs.getIntPref("colorTabStyle")) == styleId) return; // no change!
+    if (!force && (await prefs.getIntPref("colorTabStyle")) == styleId) {return;} // no change!
     await prefs.setIntPref("colorTabStyle", styleId); // 0 striped 1 filled
     // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
     QuickFolders.Options.updateMainWindow(false);
@@ -419,6 +420,7 @@ QuickFolders.Options = {
   setCurrentToolbarBackgroundCustom: async function () {
     const prefs = QuickFolders.Preferences;
     if (await prefs.isDebugOption("options")) {
+      // eslint-disable-next-line no-debugger
       debugger;
     }
     let setting = document.getElementById("currentFolderBackground"),
@@ -481,7 +483,7 @@ QuickFolders.Options = {
       QI = QuickFolders.Interface;
     let getElement = document.getElementById.bind(document);
 
-    if (typeof paletteType === "string") paletteType = parseInt(paletteType); // convert to int
+    if (typeof paletteType === "string") {paletteType = parseInt(paletteType);} // convert to int
 
     let idPreview = null,
       colorPicker = null,
@@ -515,7 +517,7 @@ QuickFolders.Options = {
         colorPicker = "dragover-colorpicker";
         break;
     }
-    if (isStripable && paletteType == 3) isStripable = false;
+    if (isStripable && paletteType == 3) {isStripable = false;}
     if (isUpdatePanelColor) {
       getElement("buttonTransparency").disabled = !isTransparentSupport;
       // do not allow striped style if Night Vision is selected
@@ -596,8 +598,8 @@ QuickFolders.Options = {
         document.querySelector("[preference=qfpg-ShowNewMailOutline]").disabled = !cb.checked;
       }
       
-      if (noUpdate) return true;
-    } catch (ex) {
+      if (noUpdate) {return true;}
+    } catch {
       return true;
     } finally {
       // switch off mutually exclusive checkboxes: (make sure it doesn't trigger recursively!!!)
@@ -605,16 +607,19 @@ QuickFolders.Options = {
         option.checked = false; // fastest option: toggle mutex off in UI, then react:
         await QuickFolders.Options.toggleBoolPreference(option, false);
       }
-      if (noUpdate) return true;
+      // eslint-disable-next-line no-unsafe-finally
+      if (noUpdate) {return true;}
       // UI update last
       switch (prefString) {
         case "extensions.quickfolders.collapseCategories":
           // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCategoryBox" });
           messenger.runtime.sendMessage({ command: "updateCategoryBox" });
+          // eslint-disable-next-line no-unsafe-finally
           return false;
         case "extensions.quickfolders.toolbar.hideInSingleMessage":
           // QuickFolders.Util.notifyTools.notifyBackground({ func: "currentDeckUpdate" });
           messenger.runtime.sendMessage({ command: "currentDeckUpdate" });
+          // eslint-disable-next-line no-unsafe-finally
           return false;
         case "extensions.quickfolders.toolbar.largeIcons":
           // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "true" });
@@ -625,6 +630,7 @@ QuickFolders.Options = {
       if (prefString.includes(".currentFolderBar.") || prefString.includes("toolbar.largeIcons")) {
         // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" });
         messenger.runtime.sendMessage({ command: "updateNavigationBar" });
+        // eslint-disable-next-line no-unsafe-finally
         return true;
       }
       // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" }); // force full update
@@ -664,8 +670,7 @@ QuickFolders.Options = {
   },
 
   selectTheme: function (wd, themeId, isUpdateUI = false) {
-    const util = QuickFolders.Util,
-      QI = QuickFolders.Interface;
+    const util = QuickFolders.Util;
     let myTheme = QuickFolders.Themes.Theme(themeId),
       getElement = wd.getElementById.bind(wd);
     if (myTheme) {
@@ -859,7 +864,7 @@ QuickFolders.Options = {
         try {
           let d = new Date(decryptedDate);
           niceDate = d.toLocaleDateString();
-        } catch (ex) {
+        } catch {
           niceDate = decryptedDate;
         }
       }
@@ -880,7 +885,7 @@ QuickFolders.Options = {
           // remove animations / red pro icon:
           QuickFolders.Interface.removeAnimations("quickfolders-options.css");
           break;
-        case "Invalid":
+        case "Invalid":{
           validationDate.setAttribute("collapsed", true);
           validationDateSpace.setAttribute("collapsed", true);
           let addonName = "";
@@ -911,7 +916,7 @@ QuickFolders.Options = {
             validationInvalidAddon.textContent = txt;
             QuickFolders.Options.showValidationMessage(validationInvalidAddon, silent);
           }
-          break;
+        } break;
         case "Expired":
           licenseDateLabel.value = QuickFolders.Util.getBundleString(
             "qf.licenseValidation.expired"
@@ -969,7 +974,7 @@ QuickFolders.Options = {
   // put appropriate label on the license button and pass back the label text as well
   labelLicenseBtn: function (btnLicense, validStatus) {
     switch (validStatus) {
-      case "extend":
+      case "extend": {
         let txtExtend = QuickFolders.Util.getBundleString(
           "qf.notification.premium.btn.extendLicense"
         );
@@ -980,27 +985,31 @@ QuickFolders.Options = {
           QuickFolders.Util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip")
         );
         return txtExtend;
-      case "renew":
+      }
+      case "renew": {
         let txtRenew = QuickFolders.Util.getBundleString(
           "qf.notification.premium.btn.renewLicense"
         );
         btnLicense.textContent = txtRenew;
         return txtRenew;
-      case "buy":
+      }
+      case "buy": {
         let buyLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.getLicense");
         btnLicense.textContent = buyLabel;
         return buyLabel;
-      case "upgrade":
+      }
+      case "upgrade": {
         let upgradeLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.upgrade");
         btnLicense.textContent = upgradeLabel;
         btnLicense.classList.add("upgrade"); // stop flashing
         return upgradeLabel;
+      }
     }
     return "";
   },
 
   updateAriaLicenseLabel: function(el) {
-    if (!el) return;
+    if (!el) {return;}
     const fullKey = el.value.trim();
     if (!fullKey) {
       el.setAttribute("aria-label", "license field empty!");
@@ -1027,7 +1036,7 @@ QuickFolders.Options = {
   validateNewKey: async function () {
     QuickFolders.Options.trimLicense();
     // do a round trip through the background script.
-    let rv = await messenger.runtime.sendMessage({
+    await messenger.runtime.sendMessage({
       command: "updateLicense",
       key: document.getElementById("txtLicenseKey").value,
     });
@@ -1065,7 +1074,6 @@ QuickFolders.Options = {
         return { name: "Toolbar", style: "background-color", preview: "qf-StandardColors" };
       case "inactive-fontcolorpicker":
         return { name: "InactiveTab", style: "color", preview: "inactivetabs-label" };
-        break;
       case "activetab-fontcolorpicker":
         return { name: "ActiveTab", style: "color", preview: "activetabs-label" };
       case "activetab-colorpicker":
@@ -1092,9 +1100,9 @@ QuickFolders.Options = {
   selectRelatedFields_toCheckboxes: function (sectionId, selectionArray) {
     QuickFolders.Util.logDebug("selected item with:", { sectionId, selectionArray });
     const sec = document.getElementById(sectionId);
-    if (!sec) return;
+    if (!sec) {return;}
     const chkOptions = sec.querySelectorAll("input[type=checkbox]");
-    if (!chkOptions) return;
+    if (!chkOptions) {return;}
     for (const option of chkOptions) {
       const searchType = option.getAttribute("term");
       // "author" => "sender"
@@ -1138,6 +1146,7 @@ QuickFolders.Options = {
   },
   loadFindRelated: async function () {
     const prefs = QuickFolders.Preferences;
+    let findRelatedList;
     // load the different items
     const jsonList = await prefs.getStringPref("findRelated.list");
     try {
@@ -1203,7 +1212,7 @@ QuickFolders.Options = {
   addFindRelated: async function () {
     const listElement = document.getElementById("findRelatedList");
     const idx = listElement.selectedIndex;
-    if (idx < 0) return;
+    if (idx < 0) {return;}
 
     const search = await QuickFolders.Options.readFindRelatedFromUI();
     let findRelatedList = await QuickFolders.Options.loadFindRelated();
@@ -1227,7 +1236,7 @@ QuickFolders.Options = {
     const listElement = document.getElementById("findRelatedList");
     // update element:
     const idx = listElement.selectedIndex;
-    if (idx < 0) return;
+    if (idx < 0) {return;}
     const search = await QuickFolders.Options.readFindRelatedFromUI();
 
     let findRelatedList = await QuickFolders.Options.loadFindRelated();
@@ -1238,12 +1247,13 @@ QuickFolders.Options = {
 
     let theElement = findRelatedList.items[idx];
     for (const key in search) {
+      // eslint-disable-next-line no-prototype-builtins
       if (search.hasOwnProperty(key)) {
         // Check if the property is one of the JSON string fields and convert as needed
         if (key === "searchSelected" || key === "searchCriteria") {
           try {
             theElement[key] = JSON.parse(search[key]) ? search[key] : "[]"; // string: json array
-          } catch (e) {
+          } catch {
             // If it's not a valid JSON string, store it as a simple string
             theElement[key] = search[key];
           }
@@ -1270,7 +1280,7 @@ QuickFolders.Options = {
     const findRelatedList = await QuickFolders.Options.loadFindRelated();
     const listElement = document.getElementById("findRelatedList");
     const idx = listElement.selectedIndex;
-    if (idx < 0) return;
+    if (idx < 0) {return;}
     QuickFolders.Util.logDebug("delete findRelated item:", { listElement });
     const deleted = findRelatedList.items.splice(idx, 1); // returns array of deleted
     listElement.remove(idx);
@@ -1305,13 +1315,13 @@ QuickFolders.Options = {
         QuickFolders.Options.selectFindRelated_listItem(evt);
       });
       QuickFolders.Options.populateFindRelated(related);
-      document.getElementById("addFindRelated").addEventListener("click", (evt) => {
+      document.getElementById("addFindRelated").addEventListener("click", (_evt) => {
         QuickFolders.Options.addFindRelated();
       });
-      document.getElementById("updateFindRelated").addEventListener("click", (evt) => {
+      document.getElementById("updateFindRelated").addEventListener("click", (_evt) => {
         QuickFolders.Options.updateFindRelated();
       });
-      document.getElementById("deleteFindRelated").addEventListener("click", (evt) => {
+      document.getElementById("deleteFindRelated").addEventListener("click", (_evt) => {
         QuickFolders.Options.removeFindRelated();
       });
     }

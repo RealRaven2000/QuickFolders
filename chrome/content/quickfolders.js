@@ -1469,6 +1469,7 @@ var QuickFolders = {
 					
 					let isFlavorMail = types.contains("text/x-moz-message"),  // dragSession.isDataFlavorSupported("text/x-moz-message") 
 					    isFlavorFolder = types.contains("text/x-moz-folder"), // dragSession.isDataFlavorSupported("text/x-moz-folder")
+							// eslint-disable-next-line no-unused-vars
 							_isFlavorUnicode = types.contains("text/unicode") || types.contains("text/plain");   // context menu ??
 							
 

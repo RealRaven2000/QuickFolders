@@ -1,10 +1,14 @@
-// OBSOLETE:
-// pref("extensions.quickfolders@curious.be.description", "chrome://quickfolders/locale/quickfolders.properties");
+/* 
+  globals
+    pref,
+*/
 // Model
 pref("extensions.quickfolders.lastSelectedOptionsTab",0);
 pref("extensions.quickfolders.lastActiveCategories","");
 pref("extensions.quickfolders.validityCheck.onUpdate",true);
+
 // General Prefs
+pref("extensions.quickfolders.lastUpdateMessage", "0");
 pref("extensions.quickfolders.showShortcutNumber", false);
 pref("extensions.quickfolders.showUnreadOnButtons", true);
 pref("extensions.quickfolders.showQuickfoldersLabel", true);
@@ -26,7 +30,6 @@ pref("extensions.quickfolders.showSubfolders", true);
 pref("extensions.quickfolders.disableFolderSwitching", false);
 pref("extensions.quickfolders.showCountInSubFolders", true); // Bug 25864
 pref("extensions.quickfolders.enableMenuAlphaSorting", false);
-// pref("extensions.quickfolders.markAsReadOnMove", false); // see moveMailStatus instead!
 pref("extensions.quickfolders.useRebuildShortcut", false);
 pref("extensions.quickfolders.rebuildShortcutKey", 'F');
 pref("extensions.quickfolders.quickJump.useHotkey", true);

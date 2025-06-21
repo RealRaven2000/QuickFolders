@@ -23,6 +23,7 @@ module.exports = {
     gMessageDisplay: "readonly",
     gTabmail: "readonly",
     IOUtils: "readonly",
+    i18n: "readonly",
     MsgStatusFeedback: "readonly",
     msgWindow: "readonly",
     PathUtils: "readonly",

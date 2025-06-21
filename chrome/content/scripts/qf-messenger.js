@@ -1,3 +1,7 @@
+/*
+  globals
+    WL,
+*/
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
 var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 var { MailServices } =
@@ -24,21 +28,23 @@ Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/qf-scrollmenus.js", window, "UTF-8");
 
 var mylisteners = {};
-var toggleIcon, removeIcon;
+var toggleIcon, removeIcon, addCurrentFolderToQF;
 
+// eslint-disable-next-line no-unused-vars
 async function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.Util.logDebug(
     `============INJECT==========\nqf-messenger.js onLoad(${activatedWhileWindowOpen})`
   );
+  // eslint-disable-next-line no-unused-vars
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
+  // eslint-disable-next-line no-unused-vars
   let layout2 = WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
   // layout.setAttribute("title", "QuickFolderStyles");
 
   // version specific:
   WL.injectCSS("chrome://quickfolders-skins/content/qf-current.css");
 
-  let tb = WL.injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
-
+  WL.injectCSS("chrome://quickfolders/content/quickfolders-thunderbird.css");
   WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-widgets.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
@@ -108,6 +114,11 @@ async function onLoad(activatedWhileWindowOpen) {
               label="Debug"
               >
               <menupopup class="dbgMenu">
+
+                <menuitem id="QuickFolders-ToolbarPopup-dbga"
+                  label="QF News Message"
+                  class="menuitem-iconic"
+                  />
               
                 <menuitem id="QuickFolders-ToolbarPopup-dbg0"
                   label="Lift up Navigation bar"
@@ -368,7 +379,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
     const mainMenuHandlers = {
       // A. popupset#QuickFolders-QuickMovePopupSet
-      "QuickFolders-quickMove-suspend": () => QF.quickMove.toggleSuspendMove(e.target),
+      "QuickFolders-quickMove-suspend": (event) => QF.quickMove.toggleSuspendMove(event.target),
       "QuickFolders-quickMove-cancel": () => QF.quickMove.cancel(),
       "QuickFolders-quickMove-showSearch": () => QF.quickMove.showSearch(),
       "QuickFolders-quickMove-hideSearch": () => QF.quickMove.hideSearch(),
@@ -380,6 +391,15 @@ async function onLoad(activatedWhileWindowOpen) {
       // C. popupset#QuickFolders-MainPopupSet
       // C1. menupopup#QuickFolders-ToolbarPopup
       // C1x: menupopup#dbgMenu
+      "QuickFolders-ToolbarPopup-dbga": () => {
+        let txt = "This is a test message for QuickFolders ESR 140.";
+        QF.Util.notifyTools.notifyBackground({
+          func: "showNewsMessage",
+          msgIds: "newsMsgEsr140",
+          msg: txt,
+          addonfeatures: "RefFeature",
+          features: ["ok", "licensing", "featurecomp"],
+        })},
       "QuickFolders-ToolbarPopup-dbg0": () =>
         QF.Interface.liftNavigationbar(
           window.gTabmail.currentTabInfo.chromeBrowser.contentDocument
@@ -444,7 +464,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
     for (const [id, handler] of Object.entries({ ...mainMenuHandlers, ...oneButtonHandlers })) {
       const element = document.getElementById(id);
-      if (!element) continue;
+      if (!element) {continue;}
       const eventType = eventExceptions[id] || "command"; // Default to "command"
       element.addEventListener(eventType, (e) => {
         e.stopPropagation(); // Prevent bubbling
@@ -477,7 +497,7 @@ async function onLoad(activatedWhileWindowOpen) {
     const qfCatBox = document.getElementById("QuickFolders-Category-Box");
     qfCatBox.addEventListener("dragenter", dragEnterHandler);
     qfCatBox.addEventListener("command", (e) => {
-      if (e.target != qfCatBox) return; // event bubbled!
+      if (e.target != qfCatBox) {return;} // event bubbled!
       QF.Interface.selectCategory(e.target.value, false, e.target, e);
     });
 
@@ -624,6 +644,7 @@ async function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!
 }
 
+// eslint-disable-next-line no-unused-vars
 function onUnload(isAddOnShutDown) {
   let isError = false;
   // Disable the global notify notifications from background.

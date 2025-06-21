@@ -7,6 +7,24 @@ For details, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 
 /* shared module for installation popups */
+/*
+  globals
+    SALES_DATE,
+*/
+
+
+async function getSalesEnd() {
+  const overrideSale = await messenger.LegacyPrefs.getPref(
+    "extensions.quickfolders.debug.saleDate"
+  );
+  if (overrideSale) {
+    return new Date(overrideSale);
+  }
+  let sales_end = new Date(SALES_DATE);
+  return new Date(sales_end.getTime() + 86400000);
+}	
+
+
 
 function hide(id) {
   let el = document.getElementById(id);
@@ -29,13 +47,100 @@ function show(id) {
   return el;
 }
 
+function formatAll(txt) {
+  let localizedMsg = txt;
+  return localizedMsg
+    .replace(/\{boldStart\}/g, "<b>")
+    .replace(/\{boldEnd\}/g, "</b>")
+    .replace(/\{hr\}/g, "<hr>")
+    .replace(/\{italicStart\}/g, "<i>")
+    .replace(/\{italicEnd\}/g, "</i>")
+    .replace(/\{U1\}/g, "<ul>")
+    .replace(/\{U2\}/g, "</ul>")
+    .replace(/\{L1\}/g, "<li>")
+    .replace(/\{L2\}/g, "</li>")
+    .replace(/\{P1(?:\s+([^}]+))?\}/g, (_, attrs) => {
+      // attrs will be undefined if no class specified
+      return attrs ? `<p ${attrs}>` : "<p>";
+    })
+    .replace(
+      /\{ARelease\}/g,
+      "<a href='https://blog.thunderbird.net/2025/03/thunderbird-release-channel-update/'>"
+    )
+    .replace(
+      /\{AcompatCheck\}/g,
+      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-info-sync-compatibility' class='native'>"
+    )
+    .replace(/\{P2\}/g, "</p>")
+    .replace(/\{A2\}/g, "</a>")
+    .replace(/\{br\}/g, "<br>")
+    .replace(/\{A-findRelated\}/g, "<a href='https://quickfolders.org/premium.html#findRelated'>")
+    .replace(/\{A\}/g, "</a>")
+    .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1 href='#'>[issue $1]</a>")
+    .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys
+    .replace(/\[(F\d*)\]/g, "<code class='keystroke'>$1</code>") // F10
+    .replace(/\[(CTRL|ALT)\]/g, "<code class='keystroke'>$1</code>"); // single keys
+};
+
+// eslint-disable-next-line no-unused-vars
+async function insertLocalizedMessage(element, rawMessage) {
+  try {
+    const html = formatAll(rawMessage); // Expand custom tags into HTML
+    const fragment = parseHTMLFragment(html); // Safely parse into a DocumentFragment
+    element.textContent = ""; // Clear existing content
+
+    if (!(await isSale())) {
+      const salesElements = fragment.querySelectorAll(".specialOffer");
+      for (const e of salesElements) {
+        e.remove(); // Safely remove element from fragment
+      }
+    }
+
+    element.appendChild(fragment); // Inject parsed content
+  } catch (ex) {
+    console.error("Failed to parse localized message:", ex);
+    element.textContent = rawMessage; // Fallback: insert raw text only
+  }
+}
+
+// replace unsafe innerHTML injections
+// note: this will add closing tags and other markup ,e.g. <tr> or <table>
+function parseHTMLFragment(htmlString) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(htmlString, "text/html");
+
+  // Spread childNodes to an array to avoid live list mutation issues
+  const nodes = [...doc.body.childNodes];
+  const fragment = document.createDocumentFragment();
+  // appendChild moves nodes from doc.body to fragment (not cloned)
+  nodes.forEach((node) => fragment.appendChild(node));
+  return fragment;
+}
+
+// copy a html structure into [multiple] elements
+// eslint-disable-next-line no-unused-vars
+function updateWithSafeHtml(selector, htmlString) {
+  const elements = document.querySelectorAll(selector);
+  for (const el of elements) {
+    el.textContent = "";
+    el.appendChild(parseHTMLFragment(htmlString));
+  }
+}
+
+async function isSale() {
+  const currentTime = new Date();
+  const endDate = await getSalesEnd(); // uses sales_end
+  const isSale = currentTime < endDate;
+  return isSale;
+}
 
 
+// eslint-disable-next-line no-unused-vars
 async function updateActions() {
   const overrideSale = await messenger.LegacyPrefs.getPref(
     "extensions.quickfolders.debug.saleDate"
   );
-  const endSale = new Date(overrideSale || SALES_DATE), // Next Sale End Date
+  const endSale = new Date(overrideSale || SALES_DATE), // Next Sale End Date - see specialoffers.js
     currentTime = new Date();
   endSale.setDate(endSale.getDate() + 1); // add 1 day to include the last day?
   const isSale = currentTime < endSale;
@@ -106,7 +211,7 @@ async function updateActions() {
         hide("extendLicenseListItem");
         hide("extend");
         let animation = document.getElementById("gimmick");
-        if (animation) animation.parentNode.removeChild(animation);
+        if (animation) {animation.parentNode.removeChild(animation);}
 
         isActionList = false;
       }
@@ -165,6 +270,6 @@ async function updateActions() {
   let { os } = await messenger.runtime.getPlatformInfo(); // mac / win / linux
   wrapper.setAttribute("os", os);
 
-  if (newHeight > maxHeight) newHeight = maxHeight - 15;
+  if (newHeight > maxHeight) {newHeight = maxHeight - 15;}
   browser.windows.update(win.id, { height: newHeight });
 }

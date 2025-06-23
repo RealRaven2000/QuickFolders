@@ -1458,9 +1458,10 @@ allowUndo = true)`
   } , 
   
   // appends user=pro OR user=proRenew if user has a valid / expired license
-  makeUriPremium: function makeUriPremium(URL) {
+  makeUriPremium: function(URL) {
     const util = QuickFolders.Util;
     try {
+      // eslint-disable-next-line no-unused-vars
       const isPremiumLicense = util.hasValidLicense() || QuickFolders.Util.licenseInfo.isExpired;
     } catch { return URL; }
 

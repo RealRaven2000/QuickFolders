@@ -236,6 +236,7 @@ END LICENSE BLOCK */
     ## [issue 581] Saving config file can fail b/c of bad files.path value
     ## [issue 577] new feature: Open folder in Tab as default
     ## [issue 580] Better tooltips in Tab-Specific Properties
+    ## [issue 589] Added command to remove license warning panel
     ## Fixed a problem in find orphaned tabs on unified folders.
     ## repairTreeIcons: removed OS.Path.fromFileURI()
 

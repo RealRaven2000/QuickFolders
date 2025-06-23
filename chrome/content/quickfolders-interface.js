@@ -29,6 +29,7 @@ QuickFolders.Interface = {
 	menuPopupsByOffset: [],
 	//myPopup: null,
 	boundKeyListener: false,
+	hideRenewLabel: false, // [issue 589]
 	RecentPopupId: "QuickFolders-folder-popup-Recent",
 	RecentPopupIdCurrentFolderTool: "QuickFolders-folder-popup-Recent-CurrentFolderTool",
 	_paletteStyleSheet: null,
@@ -675,11 +676,14 @@ QuickFolders.Interface = {
       const isRenew =
 				QuickFolders.Util.licenseInfo.isValid &&
 				QuickFolders.Util.licenseInfo.licensedDaysLeft <= 10;
+			const hasWarnings = QuickFolders.Util.licenseInfo.isExpired || isRenew;
+			const isHideRenewLabel = this.hideRenewLabel;
       const showLabelBox =
-				isRenew ||
-				prefs.isShowQuickFoldersLabel ||
-				QuickFolders.Util.licenseInfo.isExpired ||
-				0 == QuickFolders.Model.selectedFolders.length;
+        (isRenew ||
+          prefs.isShowQuickFoldersLabel ||
+          QuickFolders.Util.licenseInfo.isExpired ||
+          0 == QuickFolders.Model.selectedFolders.length) &&
+        !isHideRenewLabel; // force hide until Tb restarts
 			const quickFoldersLabel = this.TitleLabel,
 				qfLabelBox = this.TitleLabelBox,
 				isLicenseNotChecked = !wasLicenseViewedInSession();
@@ -690,6 +694,15 @@ QuickFolders.Interface = {
       if (QuickFolders.Util.licenseInfo.isExpired) {
         quickFoldersLabel.classList.add("expired");
       }
+
+			const hideRenewMenu = document.getElementById("QuickFolders-ToolbarPopup-hideRenew");
+			if (!isHideRenewLabel && hasWarnings) {
+        // show the menu item to hide QuickFolders (forced by Renew)
+        QuickFolders.Interface.showElement(hideRenewMenu, true);
+      }
+			if (isHideRenewLabel) { // we can hide the menu item
+				QuickFolders.Interface.showElement(hideRenewMenu, false);
+			}
 
       let checkMenu = document.getElementById("QuickFolders-ToolbarPopup-checkLicense");
 			QuickFolders.Interface.showElement(checkMenu, isRenew);

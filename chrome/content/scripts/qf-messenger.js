@@ -185,6 +185,12 @@ async function onLoad(activatedWhileWindowOpen) {
               tagName="qfFindFolder"
               collapsed="true" hidden="true"
               />
+            <menuitem id="QuickFolders-ToolbarPopup-hideRenew"
+              label="__MSG_qf.premium.renew.hide__"
+              class="cmd menuitem-iconic"
+              tagName="qfHideRenewal"
+              hidden="true"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-checkLicense"
               label="__MSG_qf.menuitem.quickfolders.checkLicense__"
               class="cmd menuitem-iconic"
@@ -421,6 +427,10 @@ async function onLoad(activatedWhileWindowOpen) {
 
       // main popup items:
       "QuickFolders-ToolbarPopup-find": () => QF.Interface.findFolder(true, "quickJump"),
+      "QuickFolders-ToolbarPopup-hideRenew": () => {
+        QF.Interface.hideRenewLabel = true;
+        QF.Interface.updateQuickFoldersLabel();
+      },
       "QuickFolders-ToolbarPopup-checkLicense": () => QF.Interface.viewLicense(),
       "QuickFolders-ToolbarPopup-options": () => QF.Interface.viewOptions(-1),
       "QuickFolders-ToolbarPopup-splash": () => QF.Interface.viewSplash(),

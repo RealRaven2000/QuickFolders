@@ -392,11 +392,11 @@ async function onLoad(activatedWhileWindowOpen) {
       // C1. menupopup#QuickFolders-ToolbarPopup
       // C1x: menupopup#dbgMenu
       "QuickFolders-ToolbarPopup-dbga": () => {
-        let txt = "This is a test message for QuickFolders ESR 140.";
         QF.Util.notifyTools.notifyBackground({
           func: "showNewsMessage",
-          msgIds: "newsMsgEsr140",
-          msg: txt,
+          // msgIds: "newsMsgEsr140",
+          mode: "news",
+          // msg:  "This is a test message for QuickFolders ESR 140.",
           addonfeatures: "RefFeature",
           features: ["ok", "licensing", "featurecomp"],
         })},

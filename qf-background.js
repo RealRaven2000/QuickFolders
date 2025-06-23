@@ -117,16 +117,13 @@ messenger.runtime.onInstalled.addListener(async (data) => {
   }
 
   switch (reason) {
-    case "install":
-    {
+    case "install": {
       let url = browser.runtime.getURL("popup/installed.html");
       await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
       displayUpdateMessage();
-    }
-    break;
+    } break;
     // see below
-    case "update":
-    {
+    case "update": {
       let currentLicenseInfo = currentLicense.info;
       if (currentLicenseInfo.status == "Valid") {
         // suppress update popup for users with licenses that have been recently renewed
@@ -191,8 +188,7 @@ messenger.runtime.onInstalled.addListener(async (data) => {
         }
       })();
       displayUpdateMessage();
-    }
-    break;
+    } break;
   // see below
   }    
 
@@ -1183,6 +1179,7 @@ const showQFmessage = async (messageIds, features, message = "", quickfoldersFea
 
 let retryScheduled = false; // session flag to avoid repeat re-scheduling
 const RETRY_MINUTES = 20;
+const LATEST_UPDATEMSG = "6.10.5"; // latest version with update message
 async function displayUpdateMessage() {
   const messageIds = "newsMsgEsr140",
     licenseInfo = currentLicense?.info,
@@ -1203,11 +1200,11 @@ async function displayUpdateMessage() {
     (await messenger.LegacyPrefs.getPref("extensions.quickfolders.lastUpdateMessage")) || "0";
   logDebug(`Last update message version: ${lastMessage}`);
 
-  if (compareVersions(lastMessage, "6.10.5") >= 0) {
-    logDebug("Message already shown for 6.10.5 – skipping.");
+  if (compareVersions(lastMessage, LATEST_UPDATEMSG) >= 0) {
+    logDebug(`Message already shown for ${LATEST_UPDATEMSG} – skipping.`);
     return;
   }
-  logDebug("Preparing message for version 6.10.5");
+  logDebug(`Preparing message for version ${LATEST_UPDATEMSG}`);
   // ------
   let licenseMsgId,
     testStatus = licenseInfo?.status;
@@ -1235,9 +1232,13 @@ async function displayUpdateMessage() {
 
   try {
     const result = await showQFmessage(transmitIds, features, "", "displayUpdateMessage");
-
     if (result) {
-      await messenger.LegacyPrefs.setPref("extensions.quickfolders.lastUpdateMessage", "4.12.2");
+      const manifest = await messenger.runtime.getManifest();
+      const installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
+      await messenger.LegacyPrefs.setPref(
+        "extensions.quickfolders.lastUpdateMessage",
+        installedVersion
+      );
       logDebug("Message shown successfully – version flag saved.");
     } else {
       logDebug("Message display was cancelled or failed (no result).");

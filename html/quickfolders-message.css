@@ -81,7 +81,8 @@ body {
 }
 
 body {
-  background-color: var(--canvas, white);
+  background-color: var(--canvas) !important;
+  color: var(--canvastext) !important;
 }
 
 #innerMessage {
@@ -127,8 +128,10 @@ body {
   overflow: hidden;
 }
 
-body * {
-  background-color: unset;
+/* overwrite rules from popup.css */
+body *:not(button) {
+  background-color: unset !important;
+  color: unset !important;
 }
 body p, #innerMessage {
   background-color: transparent !important;
@@ -155,6 +158,9 @@ html, body {
   z-index: 10;
 }
 
+#commands button.actionlinks {
+  margin-top: 0;
+}
 
 /* use this for pringin html code */
 pre {

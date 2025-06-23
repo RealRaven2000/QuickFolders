@@ -210,7 +210,7 @@ END LICENSE BLOCK */
     ## [issue 555] Support keyboard navigation / screen readers in QuickFolders settings [WIP]
     ## [issue 553] Fixed an issue with dark icons on active options tab for better visibility. 
 
-  6.10.1 QuickFolders Pro - 20/03/2026
+  6.10.1 QuickFolders Pro - 20/03/2025
     ## [issue 553] improve svg icon coloring for tabs, to avoid dark icons on dark backgrounds
     ##             this is achieved by adding color-scheme rules for palette based colors
     ## Improved keyboard focus + navigation in QuickFolders Tabs; 
@@ -219,19 +219,19 @@ END LICENSE BLOCK */
     ## Default to showing QuickFolders options in tab instead of dialog
     ## [issue 560] Select a subfolder from tab popup with [Enter]  (WIP)
 
-  6.10.2 QuickFolders Pro - 22/03/2026
+  6.10.2 QuickFolders Pro - 22/03/2025
     ## [issue 562] Add Recent folders tab to keyboard flow
 
-  6.10.3 QuickFolders Pro - 24/03/2026
+  6.10.3 QuickFolders Pro - 24/03/2025
     ## Added missing translations for context menu command to add new QuickFolder.
 
-  6.10.4 QuickFolders Pro - 05/05/2026
+  6.10.4 QuickFolders Pro - 05/05/2025
     ## Compatibility with Thunderbird 139.*
     ## [issue 559] - Thunderbird folder tree doesn't scroll to current folder (Tb 115)
     ## [issue 571] - (Preview Mode) label not removed from QuickFolders toolbar
     ## Removed (null) behind QF toolbar label in Thunderbird's View menu
 
-  6.11 QuickFolders Pro - WIP
+  6.11 QuickFolders Pro - 24/06/2025
     ## Remove deprecated nsILocalFile
     ## [issue 581] Saving config file can fail b/c of bad files.path value
     ## [issue 577] new feature: Open folder in Tab as default

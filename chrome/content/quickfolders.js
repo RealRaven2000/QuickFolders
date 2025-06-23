@@ -231,7 +231,7 @@ END LICENSE BLOCK */
     ## [issue 571] - (Preview Mode) label not removed from QuickFolders toolbar
     ## Removed (null) behind QF toolbar label in Thunderbird's View menu
 
-  6.10.5 QuickFolders Pro - WIP
+  6.11 QuickFolders Pro - WIP
     ## Remove deprecated nsILocalFile
     ## [issue 581] Saving config file can fail b/c of bad files.path value
     ## [issue 577] new feature: Open folder in Tab as default

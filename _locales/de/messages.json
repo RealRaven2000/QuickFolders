@@ -409,13 +409,7 @@
     "message": "{P1} Vielen Dank, dass Sie QuickFolders mit einer Pro-Lizenz unterstützen – das ermöglicht alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität.{P2}"
   },
   "newsSection": {
-    "message": "{P1} Die neueste Ausgabe von $addonName$ ist jetzt mit Thunderbird v139 kompatibel und hat ihren Weg zu verbesserter Barrierefreiheit für Tastaturen und Bildschirmleser begonnen. {P2}{P1} In der Wartungsversion {boldStart}6.10.1{boldEnd} haben wir auch den Tastaturzugriff auf die Symbolleiste mit Lesezeichen und deren Untermenüs sowie spezifische Optionen im Abschnitt für Barrierefreiheit in den erweiterten Einstellungen verbessert. {P2}",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
+    "message": "{P1}{boldStart} Demnächst im nächsten großen Release {boldEnd}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {ARelease}Erfahren Sie mehr über das neue Release-Modell{A2}.{U1} {L1}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{L2} {L1}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {AcompatCheck}Add-on-Kompatibilitätsprüfung{A2} installieren.{L2} {U2}"
   },
   "newsSection.license": {
     "message": "Da alle Arbeiten an QuickFolders und der kostenlose Support ausschließlich durch Lizenzverkäufe finanziert werden, bitte denken Sie darüber nach, eine Lizenz zu kaufen oder Ihre aktuelle zu verlängern."
@@ -2078,7 +2072,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders ist jetzt mit Thunderbird 139 kompatibel. Künftig soll die Kompatibilität mit dem aktuellen monatlichen Veröffentlichungszyklus erhalten bleiben.{P2}{L1}Verbessertes Scrollen im Thunderbird-Ordnerbaum, um zum aktuellen Ordner zu springen. [issue 559]{L2}{L1}Die Beschriftung (Vorschau-Modus) wird jetzt immer von der QuickFolders-Symbolleiste entfernt – außer auf dem Tab Einstellungen. [issue 571]{L2}{L1} Hinter dem Menüeintrag der QuickFolders-Symbolleiste im Ansicht-Menü von Thunderbird wurde der Text (null) entfernt.{L2}"
+    "message": "{P1} QuickFolders ist jetzt mit Thunderbird 140 kompatibel — und wird weiterhin den aktuellen monatlichen Release-Zyklus unterstützen.{P2}{L1} Neue erweiterte Suchoption: Ordner standardmäßig im Tab öffnen [issue 577]{L2}{L1} Behoben: Speichern der Konfigurationsdatei konnte aufgrund eines ungültigen files.path-Werts fehlschlagen [issue 581]{L2}{L1} Verbesserte Tooltips in den tab-spezifischen Eigenschaften [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

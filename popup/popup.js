@@ -211,7 +211,9 @@ async function updateActions() {
         hide("extendLicenseListItem");
         hide("extend");
         let animation = document.getElementById("gimmick");
-        if (animation) {animation.parentNode.removeChild(animation);}
+        if (animation) {
+          animation.parentNode.removeChild(animation);
+        }
 
         isActionList = false;
       }
@@ -260,6 +262,15 @@ async function updateActions() {
     hide("purchaseHeader");
   }
 
+  // make sure add-on links stay in Thunderbird! (<a class=native>)
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a.native");
+    if (link) {
+      event.preventDefault();
+      browser.tabs.create({ url: link.href });
+    }
+  });
+
   // resize to contents if necessary...
   let win = await browser.windows.getCurrent();
   let wrapper = document.getElementById("innerwrapper"),
@@ -270,6 +281,8 @@ async function updateActions() {
   let { os } = await messenger.runtime.getPlatformInfo(); // mac / win / linux
   wrapper.setAttribute("os", os);
 
-  if (newHeight > maxHeight) {newHeight = maxHeight - 15;}
+  if (newHeight > maxHeight) {
+    newHeight = maxHeight - 15;
+  }
   browser.windows.update(win.id, { height: newHeight });
 }

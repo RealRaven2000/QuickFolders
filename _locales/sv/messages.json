@@ -379,11 +379,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "OK" },
+  "message.btn.cancel": { "message": "Avbryt" },
+  "message.btn.no": { "message": "Nej" },
+  "message.btn.yes": { "message": "Ja" },
+  "message.placeholder": { "message": "Meddelande saknas." },
+  "message.licenseScreen": { "message": "Visa licensalternativ…" },
+  "message.features": { "message": "Jämför funktioner…" },
   "mozillas-basic-platform": {
     "message": "Mozilla tillhandahåller bara en grundläggande plattform för att leverera vår programvara till dig, slutanvändarna. Om vi behöver be våra användare om betalning eller support kan vi inte göra detta från addons.thunderbird.net - det är inte en 'app store' med inbyggda betalväggar eller licenshantering som iTunes eller google play."
   },
   "newsHead": {
     "message": "Senaste nytt"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Kommer i nästa stora version {boldEnd}: Thunderbird kommer snart att be dig välja din föredragna uppdateringsväg — antingen den årliga ESR-versionen eller de snabbare månatliga utgåvorna. {ARelease}Läs mer om den nya utgivningsmodellen{A2}.{U1} {L1}ESR-versionen kommer att stanna på v140, öka endast mindre versionsnummer och inkludera endast säkerhetsfixar och buggfixar, vilket ofta är att föredra i företagsmiljöer.{L2} {L1}Den månatliga utgivningscykeln kommer att leverera nya funktioner och gränssnittsuppdateringar när de utvecklas. Kontrollera om dina nuvarande tillägg stöder denna utgivningsmodell. För att hjälpa till kan du installera {AcompatCheck}Tilläggskompatibilitetskontroll{A2}.{L2} {U2}{P2}{P1} Vi är glada att meddela att QuickFolders är fullt kompatibelt med Thunderbird 140, nästa Extended Support Release (ESR). Detta innebär fortsatt tillförlitlighet och sinnesro under nästa stora supportcykel.{P2}{P1} QuickFolders fortsätter att stödja användare på Thunderbird 115 och senare för närvarande. Under det kommande året, när vi lägger till nya funktioner, kan stödet för Thunderbird 115 fasas ut till förmån för Thunderbird 128 och nyare.{P2}{P1} Vi övervakar kontinuerligt förändringar i Thunderbird för att säkerställa att QuickFolders förblir kompatibelt och tillförlitligt, oavsett vilken uppdateringsväg du väljer.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Alla nya funktioner, buggfixar och långsiktig kompatibilitet möjliggörs tack vare ditt stöd.{P2}{P1 class=specialOffer} För att stödja utvecklingen av QuickFolders kan du förnya din licens till rabatterat pris till och med {salesEnd}.{P2}{P1 class=bottomhint}🡇 Välj ett av alternativen nedan för att läsa mer 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Du kan också stödja framtida kompatibilitet genom en licens.{P2}{P1}Alla nya funktioner, buggfixar och långsiktig kompatibilitet möjliggörs tack vare ditt stöd.{P2}{P1 class=specialOffer}För att stödja utvecklingen av QuickFolders kan du få en Standard- eller Pro-licens till rabatterat pris till och med {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Välj ett av alternativen nedan för att läsa mer 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Tack för att du stödjer QuickFolders med en Standard-licens.{P2}{P1} Oavsett om din licens har gått ut eller fortfarande är aktiv kan du uppgradera till Pro nu till ett bra pris till och med {salesEnd}. Uppgradering efter utgången ger dig ett helt års användning från inköpsdatumet.{P2}{P1 class=bottomhint} 🡇 Välj ett av alternativen nedan för att läsa mer 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Tack för att du stödjer QuickFolders med en Pro-licens — detta möjliggör alla nya funktioner, buggfixar och långsiktig kompatibilitet.{P2}"
   },
   "newsSection": {
     "message": "{P1} Den senaste versionen av $addonName$ är nu kompatibel med Thunderbird v139 och har påbörjat sin resa mot förbättrad tillgänglighet för tangentbord och skärmläsare. {P2}{P1} I underhållsversion {boldStart}6.10.1{boldEnd} har vi även lagt till förbättrad tangentbordsåtkomst till verktygsfältet med bokmärken och deras undermenyer, samt specifika alternativ i tillgänglighetssektionen i avancerade inställningar. {P2}",

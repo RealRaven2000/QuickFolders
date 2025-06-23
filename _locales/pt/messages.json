@@ -375,11 +375,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "OK" },
+  "message.btn.cancel": { "message": "Cancelar" },
+  "message.btn.no": { "message": "Não" },
+  "message.btn.yes": { "message": "Sim" },
+  "message.placeholder": { "message": "Mensagem ausente." },
+  "message.licenseScreen": { "message": "Mostrar opções de licença…" },
+  "message.features": { "message": "Comparar recursos…" },
   "mozillas-basic-platform": {
     "message": "A Mozilla fornece apenas uma plataforma básica para entregar nosso software a vocês, usuários finais. Se precisarmos pedir aos nossos usuários pagamento ou suporte, não podemos fazer isso em addons.thunderbird.net - não é uma 'loja de aplicativos' com paywalls integrados ou gerenciamento de licenças como iTunes ou Google Play."
   },
   "newsHead": {
     "message": "Últimas notícias"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Em breve na próxima grande versão {boldEnd}: O Thunderbird em breve pedirá que você escolha seu caminho de atualização preferido — o ciclo anual ESR ou as versões mensais mais rápidas. {ARelease}Saiba mais sobre o novo modelo de lançamento{A2}.{U1} {L1}A versão ESR permanecerá na v140, aumentando apenas os números de versão secundários e incluindo apenas correções de segurança e bugs, o que geralmente é preferível para ambientes corporativos.{L2} {L1}O ciclo de lançamento mensal trará novos recursos e atualizações de interface à medida que forem desenvolvidos. Verifique se seus complementos atuais suportam esse modelo de lançamento. Para ajudar, você pode instalar o {AcompatCheck}Verificador de Compatibilidade de Complementos{A2}.{L2} {U2}{P2}{P1} Temos o prazer de anunciar que o QuickFolders é totalmente compatível com o Thunderbird 140, o próximo Extended Support Release (ESR). Isso significa confiabilidade contínua e tranquilidade durante o próximo grande ciclo de suporte.{P2}{P1} O QuickFolders continuará a oferecer suporte aos usuários do Thunderbird 115 e superiores por enquanto. Ao longo do próximo ano, à medida que adicionarmos novos recursos, o suporte ao Thunderbird 115 pode ser descontinuado em favor do Thunderbird 128 e mais recentes.{P2}{P1} Monitoramos continuamente as mudanças do Thunderbird para garantir que o QuickFolders permaneça compatível e confiável, independentemente do caminho de atualização escolhido.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Todos os novos recursos, correções de bugs e compatibilidade de longo prazo são possíveis graças ao seu apoio.{P2}{P1 class=specialOffer} Para ajudar a manter o desenvolvimento do QuickFolders, você pode renovar sua licença com desconto até {salesEnd}.{P2}{P1 class=bottomhint}🡇 Escolha uma das opções abaixo para saber mais 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Você também pode apoiar a compatibilidade futura por meio de uma licença.{P2}{P1}Todos os novos recursos, correções de bugs e compatibilidade de longo prazo são possíveis graças ao seu apoio.{P2}{P1 class=specialOffer}Para ajudar a manter o desenvolvimento do QuickFolders, você pode obter uma licença Standard ou Pro com desconto até {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Escolha uma das opções abaixo para saber mais 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Obrigado por apoiar o QuickFolders com uma licença Standard.{P2}{P1} Quer sua licença tenha expirado ou ainda esteja ativa, você pode atualizar para Pro agora com um ótimo desconto até {salesEnd}. Atualizar após a expiração concede um ano completo de uso a partir da data da compra.{P2}{P1 class=bottomhint} 🡇 Escolha uma das opções abaixo para saber mais 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Obrigado por apoiar o QuickFolders com uma licença Pro — isso possibilita todos os novos recursos, correções de bugs e compatibilidade de longo prazo.{P2}"
   },
   "newsSection": {
     "message": "{P1} A versão mais recente do $addonName$ agora é compatível com o Thunderbird v139 e iniciou o processo de melhoria de acessibilidade para teclados e leitores de tela. {P2}{P1} Na versão de manutenção {boldStart}6.10.1{boldEnd}, também adicionamos melhorias no acesso via teclado para a barra de ferramentas com favoritos e seus submenus, além de opções específicas na seção de acessibilidade nas configurações avançadas. {P2}",

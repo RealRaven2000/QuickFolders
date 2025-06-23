@@ -378,11 +378,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "OK" },
+  "message.btn.cancel": { "message": "Annuleren" },
+  "message.btn.no": { "message": "Nee" },
+  "message.btn.yes": { "message": "Ja" },
+  "message.placeholder": { "message": "Bericht ontbreekt." },
+  "message.licenseScreen": { "message": "Licentie-opties weergeven…" },
+  "message.features": { "message": "Vergelijk functies…" },
   "mozillas-basic-platform": {
     "message": "Mozilla biedt alleen een basisplatform om onze software aan u, de eindgebruikers, te leveren. Als we onze gebruikers om betaling of ondersteuning moeten vragen, kunnen we dit niet doen vanaf addons.thunderbird.net - het is geen 'app store' met ingebouwde paywalls of licentiebeheer zoals iTunes of Google Play."
   },
   "newsHead": {
     "message": "Laatste nieuws"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Binnenkort in de volgende grote release {boldEnd}: Thunderbird zal u binnenkort vragen uw voorkeursupdatepad te kiezen — het jaarlijkse ESR-traject of de snellere maandelijkse releases. {ARelease}Lees meer over het nieuwe release-model{A2}.{U1} {L1}De ESR-versie blijft op v140, verhoogt alleen de subversienummers en bevat alleen beveiligings- en bugfixes, wat vaak de voorkeur heeft in zakelijke omgevingen.{L2} {L1}De maandelijkse releasecyclus levert nieuwe functies en interface-updates zodra deze zijn ontwikkeld. Controleer of uw huidige add-ons dit release-model ondersteunen. Om u te helpen kunt u de {AcompatCheck}Add-on Compatibiliteitscontrole{A2} installeren.{L2} {U2}{P2}{P1} We zijn verheugd aan te kondigen dat QuickFolders volledig compatibel is met Thunderbird 140, de volgende Extended Support Release (ESR). Dit betekent voortdurende betrouwbaarheid en gemoedsrust tijdens de volgende grote ondersteuningscyclus.{P2}{P1} QuickFolders blijft voorlopig gebruikers van Thunderbird 115 en hoger ondersteunen. In de loop van het komende jaar, naarmate we nieuwe functies toevoegen, kan de ondersteuning voor Thunderbird 115 worden beëindigd ten gunste van Thunderbird 128 en nieuwer.{P2}{P1} We volgen de wijzigingen in Thunderbird continu om ervoor te zorgen dat QuickFolders compatibel en betrouwbaar blijft, ongeacht het gekozen updatepad.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Alle nieuwe functies, bugfixes en langdurige compatibiliteit zijn mogelijk dankzij uw steun.{P2}{P1 class=specialOffer} Om de ontwikkeling van QuickFolders te ondersteunen, kunt u uw licentie met korting verlengen tot {salesEnd}.{P2}{P1 class=bottomhint}🡇 Kies hieronder een van de opties voor meer informatie 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} U kunt nu ook toekomstige compatibiliteit ondersteunen met een licentie.{P2}{P1}Alle nieuwe functies, bugfixes en langdurige compatibiliteit zijn mogelijk dankzij uw steun.{P2}{P1 class=specialOffer}Om de ontwikkeling van QuickFolders te ondersteunen, kunt u tot {salesEnd} een Standaard- of Pro-licentie met korting krijgen.{P2}{P1 class=bottomhint} 🡇 Kies hieronder een van de opties voor meer informatie 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Bedankt voor uw steun aan QuickFolders met een Standaard-licentie.{P2}{P1} Of uw licentie nu is verlopen of nog actief is, u kunt nu upgraden naar Pro met een mooie korting tot {salesEnd}. Upgraden na afloop geeft u een volledig jaar gebruik vanaf de aankoopdatum.{P2}{P1 class=bottomhint} 🡇 Kies hieronder een van de opties voor meer informatie 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Bedankt voor uw steun aan QuickFolders met een Pro-licentie — dit maakt alle nieuwe functies, bugfixes en langdurige compatibiliteit mogelijk.{P2}"
   },
   "newsSection": {
     "message": "{P1} De nieuwste versie van $addonName$ is nu compatibel met Thunderbird v139 en is begonnen aan de reis naar verbeterde toegankelijkheid voor toetsenborden en schermlezers. {P2}{P1} In de onderhoudsversie {boldStart}6.10.1{boldEnd} hebben we ook verbeterde toegang via het toetsenbord toegevoegd voor de werkbalk met bladwijzers en hun submenu's, evenals specifieke opties in het toegankelijkheidssectie van de geavanceerde instellingen. {P2}",

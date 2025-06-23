@@ -352,6 +352,21 @@
   "newsHead": {
     "message": "Legfrissebb hírek"
   },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Hamarosan a következő nagy kiadásban {boldEnd}: A Thunderbird hamarosan megkéri Önt, hogy válassza ki a kívánt frissítési módot — az éves ESR-ágat vagy a gyorsabb havi kiadásokat. {ARelease}Tudjon meg többet az új kiadási modellről{A2}.{U1} {L1}Az ESR-verzió a v140-en marad, csak a kisebb verziószámokat növeli, és csak biztonsági javításokat és hibajavításokat tartalmaz, ami gyakran előnyösebb vállalati környezetben.{L2} {L1}A havi kiadási ciklus új funkciókat és felületfrissítéseket hoz, amint azok elkészülnek. Ellenőrizze, hogy a jelenlegi kiegészítői támogatják-e ezt a kiadási modellt. Ehhez telepítheti a {AcompatCheck}Kiegészítő kompatibilitás-ellenőrzőt{A2}.{L2} {U2}{P2}{P1} Örömmel jelentjük be, hogy a QuickFolders teljesen kompatibilis a Thunderbird 140-nel, a következő Extended Support Release (ESR) kiadással. Ez folyamatos megbízhatóságot és nyugalmat jelent a következő fő támogatási ciklus során.{P2}{P1} A QuickFolders egyelőre továbbra is támogatja a Thunderbird 115 és újabb verzióit. Az elkövetkező év során, ahogy új funkciókat adunk hozzá, a Thunderbird 115 támogatása megszűnhet a Thunderbird 128 és újabb verziók javára.{P2}{P1} Folyamatosan figyeljük a Thunderbird változásait, hogy a QuickFolders mindig kompatibilis és megbízható maradjon, függetlenül a választott frissítési módtól.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Minden új funkció, hibajavítás és hosszú távú kompatibilitás az Ön támogatásának köszönhető.{P2}{P1 class=specialOffer} A QuickFolders fejlesztésének támogatásához kedvezményesen megújíthatja licencét {salesEnd}-ig.{P2}{P1 class=bottomhint}🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Ön is támogathatja a jövőbeni kompatibilitást licenccel.{P2}{P1}Minden új funkció, hibajavítás és hosszú távú kompatibilitás az Ön támogatásának köszönhető.{P2}{P1 class=specialOffer}A QuickFolders fejlesztésének támogatásához kedvezményesen szerezhet Standard vagy Pro licencet {salesEnd}-ig.{P2}{P1 class=bottomhint} 🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Köszönjük, hogy Standard licenccel támogatja a QuickFolders-t.{P2}{P1} Függetlenül attól, hogy licencje lejárt vagy még aktív, most kedvezményesen frissíthet Pro-ra {salesEnd}-ig. A lejárat utáni frissítés a vásárlás dátumától számított teljes év használatot biztosít.{P2}{P1 class=bottomhint} 🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Köszönjük, hogy Pro licenccel támogatja a QuickFolders-t — ez teszi lehetővé az összes új funkciót, hibajavítást és hosszú távú kompatibilitást.{P2}"
+  },
   "newsSection": {
     "message": "{P1} A legújabb kiadás a $addonName$ most már kompatibilis a Thunderbird v139-tel, és elindította útját a jobb elérhetőség felé, beleértve a billentyűzetek és képernyőolvasók támogatását. {P2}{P1} A karbantartási verzióban {boldStart}6.10.1{boldEnd} szintén hozzáadtuk a billentyűzet-hozzáférés javítását a könyvjelzőket és azok almappáit tartalmazó eszköztárhoz, valamint specifikus lehetőségeket az elérhetőségi szekcióban az fejlett beállításokban. {P2}",
     "placeholders": {

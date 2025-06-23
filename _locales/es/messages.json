@@ -378,11 +378,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "Aceptar" },
+  "message.btn.cancel": { "message": "Cancelar" },
+  "message.btn.no": { "message": "No" },
+  "message.btn.yes": { "message": "Sí" },
+  "message.placeholder": { "message": "Falta el mensaje." },
+  "message.licenseScreen": { "message": "Mostrar opciones de licencia…" },
+  "message.features": { "message": "Comparar funciones…" },
   "mozillas-basic-platform": {
     "message": "Mozilla solo proporciona una plataforma básica para entregar nuestro software a ustedes, los usuarios finales. Si necesitamos pedir a nuestros usuarios un pago o asistencia, no podemos hacerlo desde addons.thunderbird.net; no es una 'tienda de aplicaciones' con muros de pago integrados o administración de licencias como iTunes o Google Play."
   },
   "newsHead": {
     "message": "Últimas noticias"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Próximamente en la próxima gran versión {boldEnd}: Thunderbird pronto le pedirá que elija su ruta de actualización preferida: la vía anual ESR o las versiones mensuales más rápidas. {ARelease}Más información sobre el nuevo modelo de lanzamiento{A2}.{U1} {L1}La versión ESR se mantendrá en v140, aumentando solo los números de versión menores e incluyendo solo correcciones de seguridad y errores, lo que a menudo es preferible para entornos corporativos.{L2} {L1}El ciclo de lanzamiento mensual entregará nuevas funciones y actualizaciones de interfaz a medida que se desarrollen. Por favor, verifique si sus complementos actuales admiten este modelo de lanzamiento. Para ayudar con esto, puede instalar el {AcompatCheck}Comprobador de compatibilidad de complementos{A2}.{L2} {U2}{P2}{P1} Nos complace anunciar que QuickFolders es totalmente compatible con Thunderbird 140, la próxima versión de soporte extendido (ESR). Esto significa confiabilidad continua y tranquilidad durante el próximo ciclo de soporte principal.{P2}{P1} QuickFolders continuará dando soporte a los usuarios de Thunderbird 115 y superiores por ahora. Durante el próximo año, a medida que agreguemos nuevas funciones, el soporte para Thunderbird 115 puede eliminarse en favor de Thunderbird 128 y versiones más nuevas.{P2}{P1} Supervisamos continuamente los cambios de Thunderbird para garantizar que QuickFolders siga siendo compatible y confiable, independientemente de la ruta de actualización que elija.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Todas las nuevas funciones, correcciones de errores y compatibilidad a largo plazo son posibles gracias a su apoyo.{P2}{P1 class=specialOffer} Para ayudar a mantener el desarrollo de QuickFolders, puede renovar su licencia con descuento hasta {salesEnd}.{P2}{P1 class=bottomhint}🡇 Elija una de las opciones a continuación para obtener más información 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Usted también puede apoyar la compatibilidad futura mediante una licencia.{P2}{P1}Todas las nuevas funciones, correcciones de errores y compatibilidad a largo plazo son posibles gracias a su apoyo.{P2}{P1 class=specialOffer}Para ayudar a mantener el desarrollo de QuickFolders, puede obtener una licencia Estándar o Pro con descuento hasta {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Elija una de las opciones a continuación para obtener más información 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Gracias por apoyar QuickFolders con una licencia Estándar.{P2}{P1} Ya sea que su licencia haya expirado o aún esté activa, puede actualizar a Pro ahora con un gran descuento hasta {salesEnd}. Actualizar después de la expiración le otorga un año completo de uso a partir de la fecha de compra.{P2}{P1 class=bottomhint} 🡇 Elija una de las opciones a continuación para obtener más información 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Gracias por apoyar QuickFolders a través de una licencia Pro — esto hace posibles todas las nuevas funciones, correcciones de errores y compatibilidad a largo plazo.{P2}"
   },
   "newsSection": {
     "message": "{P1} La última edición de $addonName$ ahora es compatible con Thunderbird v139 y ha comenzado su camino hacia una mejor accesibilidad para teclados y lectores de pantalla.{P2}{P1} En la versión de mantenimiento {boldStart}6.10.1{boldEnd} también agregamos un mejor acceso al teclado en la barra de herramientas con marcadores y sus submenús, así como opciones específicas en la sección de accesibilidad de la configuración avanzada. {P2}",

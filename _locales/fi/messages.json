@@ -182,11 +182,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "OK" },
+  "message.btn.cancel": { "message": "Peruuta" },
+  "message.btn.no": { "message": "Ei" },
+  "message.btn.yes": { "message": "Kyllä" },
+  "message.placeholder": { "message": "Viesti puuttuu." },
+  "message.licenseScreen": { "message": "Näytä lisenssivaihtoehdot…" },
+  "message.features": { "message": "Vertaile ominaisuuksia…" },
   "mozillas-basic-platform": {
     "message": "Mozilla tarjoaa vain perusalustan ohjelmistojemme toimittamiseksi sinulle, loppukäyttäjille. Jos meidän on pyydettävä käyttäjiltämme maksua tai tukea, emme voi tehdä tätä osoitteesta addons.thunderbird.net - se ei ole '' sovelluskauppa '', jossa on sisäänrakennetut paywallit tai lisenssien hallinta, kuten iTunes tai Google Play."
   },
   "newsHead": {
     "message": "Uusimmat uutiset"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Tulossa seuraavassa suuressa julkaisussa {boldEnd}: Thunderbird pyytää sinua pian valitsemaan päivityspolun — joko vuosittaisen ESR-version tai nopeammat kuukausittaiset julkaisut. {ARelease}Lue lisää uudesta julkaisumallista{A2}.{U1} {L1}ESR-versio pysyy v140:ssä, kasvattaen vain pienempiä versionumeroita ja sisältäen vain tietoturvapäivityksiä ja virheenkorjauksia, mikä on usein suositeltavaa yritysympäristöissä.{L2} {L1}Kuukausittainen julkaisusykli tuo uusia ominaisuuksia ja käyttöliittymäpäivityksiä kehityksen edetessä. Tarkista, tukevatko nykyiset lisäosasi tätä julkaisumallia. Voit asentaa {AcompatCheck}Lisäosan yhteensopivuustarkistuksen{A2} avuksi.{L2} {U2}{P2}{P1} Iloksemme ilmoitamme, että QuickFolders on täysin yhteensopiva Thunderbird 140:n, seuraavan Extended Support Release (ESR) -version kanssa. Tämä tarkoittaa jatkuvaa luotettavuutta ja mielenrauhaa seuraavan suuren tukijakson ajan.{P2}{P1} QuickFolders tukee edelleen Thunderbird 115:n ja uudempien käyttäjiä toistaiseksi. Tulevan vuoden aikana, kun lisäämme uusia ominaisuuksia, tuki Thunderbird 115:lle voidaan lopettaa Thunderbird 128:n ja uudempien hyväksi.{P2}{P1} Seuraamme jatkuvasti Thunderbirdin muutoksia varmistaaksemme, että QuickFolders pysyy yhteensopivana ja luotettavana valitsemastasi päivityspolusta riippumatta.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Kaikki uudet ominaisuudet, virheenkorjaukset ja pitkäaikainen yhteensopivuus ovat mahdollisia tukesi ansiosta.{P2}{P1 class=specialOffer} QuickFoldersin kehityksen tukemiseksi voit uusia lisenssisi alennettuun hintaan {salesEnd} asti.{P2}{P1 class=bottomhint}🡇 Valitse alta yksi vaihtoehdoista saadaksesi lisätietoja 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Voit myös tukea tulevaa yhteensopivuutta lisenssillä.{P2}{P1}Kaikki uudet ominaisuudet, virheenkorjaukset ja pitkäaikainen yhteensopivuus ovat mahdollisia tukesi ansiosta.{P2}{P1 class=specialOffer}QuickFoldersin kehityksen tukemiseksi voit hankkia Standard- tai Pro-lisenssin alennettuun hintaan {salesEnd} asti.{P2}{P1 class=bottomhint} 🡇 Valitse alta yksi vaihtoehdoista saadaksesi lisätietoja 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Kiitos, että tuet QuickFoldersia Standard-lisenssillä.{P2}{P1} Olipa lisenssisi vanhentunut tai edelleen voimassa, voit päivittää Pro-versioon nyt edullisesti {salesEnd} asti. Päivitys vanhentumisen jälkeen antaa sinulle täyden vuoden käyttöoikeuden ostopäivästä alkaen.{P2}{P1 class=bottomhint} 🡇 Valitse alta yksi vaihtoehdoista saadaksesi lisätietoja 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Kiitos, että tuet QuickFoldersia Pro-lisenssillä — tämä mahdollistaa kaikki uudet ominaisuudet, virheenkorjaukset ja pitkäaikaisen yhteensopivuuden.{P2}"
   },
   "newsSection": {
     "message": "{P1} Tämänhetkinen $addonName$ -versio on nyt yhteensopiva Thunderbird v139:n kanssa ja on alkanut matkan kohti parempaa saavutettavuutta näppäimistöille ja ruudunlukijoille. {P2}{P1} Huoltoversiossa {boldStart}6.10.1{boldEnd} lisäsimme myös parannetun näppäimistöyhteyden työkalupalkille, jossa on kirjanmerkit ja niiden alivalikot, sekä erityisiä asetuksia saavutettavuusosiossa edistyneissä asetuksissa. {P2}",

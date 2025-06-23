@@ -375,11 +375,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "OK" },
+  "message.btn.cancel": { "message": "Anuluj" },
+  "message.btn.no": { "message": "Nie" },
+  "message.btn.yes": { "message": "Tak" },
+  "message.placeholder": { "message": "Brak wiadomości." },
+  "message.licenseScreen": { "message": "Pokaż opcje licencji…" },
+  "message.features": { "message": "Porównaj funkcje…" },
   "mozillas-basic-platform": {
     "message": "Mozilla zapewnia jedynie podstawową platformę do dostarczania naszego oprogramowania użytkownikom końcowym. Jeśli musimy poprosić naszych użytkowników o płatność lub wsparcie, nie możemy tego zrobić z addons.thunderbird.net - nie jest to „sklep z aplikacjami” z wbudowanymi paywallami lub zarządzaniem licencjami, jak iTunes czy Google Play."
   },
   "newsHead": {
     "message": "Najnowsze wiadomości"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Już wkrótce w następnej dużej wersji {boldEnd}: Thunderbird wkrótce poprosi Cię o wybór preferowanej ścieżki aktualizacji — rocznej ścieżki ESR lub szybszych wydań miesięcznych. {ARelease}Dowiedz się więcej o nowym modelu wydań{A2}.{U1} {L1}Wersja ESR pozostanie na v140, zwiększając tylko numery wersji pomocniczych i zawierając jedynie poprawki bezpieczeństwa i błędów, co często jest preferowane w środowiskach korporacyjnych.{L2} {L1}Miesięczny cykl wydań dostarczy nowe funkcje i aktualizacje interfejsu w miarę ich opracowywania. Sprawdź, czy Twoje obecne dodatki obsługują ten model wydań. Aby pomóc, możesz zainstalować {AcompatCheck}Kontrolę zgodności dodatków{A2}.{L2} {U2}{P2}{P1} Z przyjemnością informujemy, że QuickFolders jest w pełni kompatybilny z Thunderbirdem 140, następnym wydaniem Extended Support Release (ESR). Oznacza to ciągłą niezawodność i spokój ducha przez cały następny główny cykl wsparcia.{P2}{P1} QuickFolders nadal będzie wspierać użytkowników Thunderbirda 115 i nowszych. W ciągu najbliższego roku, wraz z dodawaniem nowych funkcji, wsparcie dla Thunderbirda 115 może zostać wycofane na rzecz Thunderbirda 128 i nowszych.{P2}{P1} Nieustannie monitorujemy zmiany w Thunderbirdzie, aby zapewnić, że QuickFolders pozostaje kompatybilny i niezawodny, niezależnie od wybranej ścieżki aktualizacji.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Wszystkie nowe funkcje, poprawki błędów i długoterminowa kompatybilność są możliwe dzięki Twojemu wsparciu.{P2}{P1 class=specialOffer} Aby wspierać rozwój QuickFolders, możesz odnowić licencję ze zniżką do {salesEnd}.{P2}{P1 class=bottomhint}🡇 Wybierz jedną z opcji poniżej, aby dowiedzieć się więcej 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Ty także możesz teraz wspierać przyszłą kompatybilność poprzez licencję.{P2}{P1}Wszystkie nowe funkcje, poprawki błędów i długoterminowa kompatybilność są możliwe dzięki Twojemu wsparciu.{P2}{P1 class=specialOffer}Aby wspierać rozwój QuickFolders, możesz uzyskać licencję Standard lub Pro ze zniżką do {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Wybierz jedną z opcji poniżej, aby dowiedzieć się więcej 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Dziękujemy za wsparcie QuickFolders licencją Standard.{P2}{P1} Niezależnie od tego, czy Twoja licencja wygasła, czy jest nadal aktywna, możesz teraz przejść na Pro ze zniżką do {salesEnd}. Aktualizacja po wygaśnięciu daje pełny rok użytkowania od daty zakupu.{P2}{P1 class=bottomhint} 🡇 Wybierz jedną z opcji poniżej, aby dowiedzieć się więcej 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Dziękujemy za wsparcie QuickFolders licencją Pro — to umożliwia wszystkie nowe funkcje, poprawki błędów i długoterminową kompatybilność.{P2}"
   },
   "newsSection": {
     "message": "{P1} Najnowsza wersja $addonName$ jest teraz kompatybilna z Thunderbird v139 i rozpoczęła proces poprawy dostępności dla klawiatur i czytników ekranu. {P2}{P1} W wersji konserwacyjnej {boldStart}6.10.1{boldEnd} dodaliśmy również ulepszony dostęp do paska narzędzi z zakładkami i ich podmenu za pomocą klawiatury, a także szczególne opcje w sekcji dostępności w zaawansowanych ustawieniach. {P2}",

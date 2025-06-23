@@ -327,11 +327,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "OK" },
+  "message.btn.cancel": { "message": "Hủy" },
+  "message.btn.no": { "message": "Không" },
+  "message.btn.yes": { "message": "Có" },
+  "message.placeholder": { "message": "Thiếu tin nhắn." },
+  "message.licenseScreen": { "message": "Hiển thị tùy chọn giấy phép…" },
+  "message.features": { "message": "So sánh tính năng…" },
   "mozillas-basic-platform": {
     "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
   },
   "newsHead": {
     "message": "Tin mới nhất"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Sắp ra mắt trong bản phát hành lớn tiếp theo {boldEnd}: Thunderbird sẽ sớm yêu cầu bạn chọn đường cập nhật ưu tiên — hoặc theo chu kỳ ESR hàng năm hoặc các bản phát hành hàng tháng nhanh hơn. {ARelease}Tìm hiểu thêm về mô hình phát hành mới{A2}.{U1} {L1}Phiên bản ESR sẽ giữ ở v140, chỉ tăng số phiên bản phụ và chỉ bao gồm các bản vá bảo mật và sửa lỗi, điều này thường được ưa chuộng trong môi trường doanh nghiệp.{L2} {L1}Chu kỳ phát hành hàng tháng sẽ cung cấp các tính năng mới và cập nhật giao diện khi chúng được phát triển. Vui lòng kiểm tra xem các tiện ích bổ sung hiện tại của bạn có hỗ trợ mô hình phát hành này không. Để hỗ trợ, bạn có thể cài đặt {AcompatCheck}Kiểm tra Tương thích Tiện ích bổ sung{A2}.{L2} {U2}{P2}{P1} Chúng tôi vui mừng thông báo rằng QuickFolders hoàn toàn tương thích với Thunderbird 140, bản phát hành Extended Support Release (ESR) tiếp theo. Điều này có nghĩa là độ tin cậy liên tục và sự an tâm trong suốt chu kỳ hỗ trợ lớn tiếp theo.{P2}{P1} QuickFolders sẽ tiếp tục hỗ trợ người dùng Thunderbird 115 trở lên trong thời gian tới. Trong năm tới, khi chúng tôi thêm các tính năng mới, hỗ trợ cho Thunderbird 115 có thể bị loại bỏ để ưu tiên cho Thunderbird 128 và các phiên bản mới hơn.{P2}{P1} Chúng tôi liên tục theo dõi các thay đổi của Thunderbird để đảm bảo QuickFolders luôn tương thích và đáng tin cậy, bất kể bạn chọn đường cập nhật nào.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài đều có được nhờ sự hỗ trợ của bạn.{P2}{P1 class=specialOffer} Để hỗ trợ phát triển QuickFolders, bạn có thể gia hạn giấy phép với giá ưu đãi đến {salesEnd}.{P2}{P1 class=bottomhint}🡇 Chọn một trong các tùy chọn bên dưới để tìm hiểu thêm 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Bạn cũng có thể hỗ trợ khả năng tương thích trong tương lai thông qua giấy phép.{P2}{P1}Tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài đều có được nhờ sự hỗ trợ của bạn.{P2}{P1 class=specialOffer}Để hỗ trợ phát triển QuickFolders, bạn có thể nhận giấy phép Standard hoặc Pro với giá ưu đãi đến {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Chọn một trong các tùy chọn bên dưới để tìm hiểu thêm 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Cảm ơn bạn đã hỗ trợ QuickFolders với giấy phép Standard.{P2}{P1} Dù giấy phép của bạn đã hết hạn hay vẫn còn hiệu lực, bạn có thể nâng cấp lên Pro ngay bây giờ với giá ưu đãi đến {salesEnd}. Nâng cấp sau khi hết hạn sẽ cho bạn một năm sử dụng đầy đủ kể từ ngày mua.{P2}{P1 class=bottomhint} 🡇 Chọn một trong các tùy chọn bên dưới để tìm hiểu thêm 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Cảm ơn bạn đã hỗ trợ QuickFolders thông qua giấy phép Pro — điều này giúp tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài trở nên khả thi.{P2}"
   },
   "newsSection": {
     "message": "{P1} Phiên bản mới nhất của $addonName$ hiện tương thích với Thunderbird v139 và đã bắt đầu hành trình cải thiện khả năng tiếp cận cho bàn phím và phần mềm đọc màn hình. {P2}{P1} Trong phiên bản bảo trì {boldStart}6.10.1{boldEnd}, chúng tôi cũng đã thêm khả năng truy cập bàn phím cải thiện cho thanh công cụ với các dấu trang và các menu con của chúng, cũng như các tùy chọn cụ thể trong phần truy cập trong cài đặt nâng cao. {P2}",

@@ -378,11 +378,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "確定" },
+  "message.btn.cancel": { "message": "取消" },
+  "message.btn.no": { "message": "否" },
+  "message.btn.yes": { "message": "是" },
+  "message.placeholder": { "message": "訊息遺失。" },
+  "message.licenseScreen": { "message": "顯示授權選項…" },
+  "message.features": { "message": "比較功能…" },
   "mozillas-basic-platform": {
     "message": "Mozilla僅提供一個基本平台，用於向您（最終用戶）交付我們的軟件。 如果我們需要向我們的用戶付款或提供支持，則不能通過addons.thunderbird.net進行操作-這不是內置付費界面或許可證管理（如iTunes或Google Play）的“應用商店”。"
   },
   "newsHead": {
     "message": "最新消息"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} 即將在下一個重大版本中推出 {boldEnd}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{ARelease}了解新發行模型的更多資訊{A2}.{U1} {L1}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{L2} {L1}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {AcompatCheck}附加元件相容性檢查{A2}。{L2} {U2}{P2}{P1} 我們很高興宣布，QuickFolders 完全相容於 Thunderbird 140，下一個延伸支援版本（ESR）。這代表在下一個主要支援週期中持續的可靠性與安心。{P2}{P1} QuickFolders 目前仍支援 Thunderbird 115 及以上版本的使用者。在接下來的一年中，隨著我們新增新功能，對 Thunderbird 115 的支援可能會逐步淘汰，轉而支援 Thunderbird 128 及更新版本。{P2}{P1} 我們會持續監控 Thunderbird 的變化，以確保 QuickFolders 無論您選擇哪種更新路徑都能保持相容與可靠。{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} 所有新功能、錯誤修正和長期相容性都要感謝您的支持。{P2}{P1 class=specialOffer} 為了支持 QuickFolders 的開發，您可以在 {salesEnd} 前以折扣價續訂您的授權。{P2}{P1 class=bottomhint}🡇 請選擇下方的選項以了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} 您也可以透過授權支持未來的相容性。{P2}{P1}所有新功能、錯誤修正和長期相容性都要感謝您的支持。{P2}{P1 class=specialOffer}為了支持 QuickFolders 的開發，您可以在 {salesEnd} 前以折扣價取得標準版或專業版授權。{P2}{P1 class=bottomhint} 🡇 請選擇下方的選項以了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} 感謝您以標準版授權支持 QuickFolders。{P2}{P1} 無論您的授權已過期還是仍然有效，您都可以在 {salesEnd} 前以優惠價格升級到專業版。過期後升級將自購買日起提供您一整年的使用權。{P2}{P1 class=bottomhint} 🡇 請選擇下方的選項以了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} 感謝您以專業版授權支持 QuickFolders——這讓所有新功能、錯誤修正和長期相容性成為可能。{P2}"
   },
   "newsSection": {
     "message": "{P1} 最新版本的 $addonName$ 現在與 Thunderbird v139 相容，並已開始改善鍵盤和螢幕閱讀器的可及性。{P2}{P1} 在維護版本 {boldStart}6.10.1{boldEnd} 中，我們還增強了鍵盤對工具列上書籤及其子選單的存取功能，並在進階設置中的可及性區段中新增了特定選項。 {P2}",

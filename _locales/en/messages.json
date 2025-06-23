@@ -385,11 +385,31 @@
       }
     }
   },
+  "message.btn.accept": { "message": "OK" },
+  "message.btn.cancel": { "message": "Cancel" },
+  "message.btn.no": { "message": "No" },
+  "message.btn.yes": { "message": "Yes" },
+  "message.placeholder": { "message": "Message missing." },
+  "message.licenseScreen": { "message": "Show License Options…"  },
+  "message.features": { "message": "Compare Features…" },
   "mozillas-basic-platform": {
     "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
   },
-  "newsHead": {
-    "message": "Latest News"
+  "newsHead": { "message": "Latest News" },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Upcoming in the next big release {boldEnd}: Thunderbird will soon ask you to choose your preferred update path — either the annual ESR track or the faster monthly releases. {ARelease}Learn more about the new release model{A2}.{U1} {L1}The ESR version will stay on v140, increasing minor version numbers and including only security fixes and bug patches, which is often preferable for corporate environments.{L2} {L1}The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the {AcompatCheck}Add-on Compatibility Check{A2}.{L2} {U2}{P2}{P1} We're happy to announce that QuickFolders is fully compatible with Thunderbird 140, the next Extended Support Release (ESR). This means ongoing reliability and peace of mind through the next major support cycle.{P2}{P1} QuickFolders continues to support users on Thunderbird 115 and above for now. Over the coming year, as we add new features, support for Thunderbird 115 may be phased out in favor of Thunderbird 128 and newer.{P2}{P1} We continuously monitor Thunderbird changes to ensure QuickFolders remains compatible and reliable, regardless of the release track you choose.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} All new features, bug fixes, and long-term compatibility are made possible through your support.{P2}{P1 class=specialOffer} To help sustain QuickFolders development, you can renew your license at a discount until {salesEnd}.{P2}{P1 class=bottomhint}🡇 Choose one of the options below to learn more 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} You too can now support future compatibility though a license.{P2}{P1}All new features, bug fixes, and long-term compatibility are made possible through your support.{P2}{P1 class=specialOffer}To help sustain QuickFolders development, you can get a Standard or Pro license at a discount until {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Choose one of the options below to learn more 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Thank you for supporting QuickFolders with a Standard license.{P2}{P1} Whether your license has expired or is still active, you can upgrade to Pro now at a great discount until {salesEnd}. Upgrading after expiration grants you a full year of usage starting from your purchase date.{P2}{P1 class=bottomhint} 🡇 Choose one of the options below to learn more 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Thank you for supporting QuickFolders through a Pro license — this makes all new features, bug fixes, and long-term compatibility possible.{P2}"
   },
   "newsSection": {
     "message": "{P1} The latest edition of $addonName$ is now compatible with Thunderbird v139 and will improve accessibility for keyboard and screen readers. For detailed documentation, please check the full change log in the link below. {P2}{P1} In maintenance version {boldStart}6.10.1{boldEnd} we also added improved keyboard access to the toolbar with bookmarks and their subfoldermenus and specific options in the accessibility section in advanced settings. {P2}",

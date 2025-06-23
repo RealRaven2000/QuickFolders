@@ -336,11 +336,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "ОК" },
+  "message.btn.cancel": { "message": "Откажи" },
+  "message.btn.no": { "message": "Не" },
+  "message.btn.yes": { "message": "Да" },
+  "message.placeholder": { "message": "Порука недостаје." },
+  "message.licenseScreen": { "message": "Прикажи опције лиценце…" },
+  "message.features": { "message": "Упореди функције…" },
   "mozillas-basic-platform": {
     "message": "Мозилла пружа само основну платформу за испоруку нашег софтвера вама, крајњим корисницима. Ако треба да затражимо од наших корисника плаћање или подршку, не можемо то да урадимо са addons.thunderbird.net - то није „продавница апликација“ са уграђеним платним зидовима или управљањем лиценцама као што су иТунес или гоогле плаи."
   },
   "newsHead": {
     "message": "Најновије вести"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Ускоро у следећем великом издању {boldEnd}: Thunderbird ће вас ускоро питати да изаберете жељени пут ажурирања — или годишњи ESR или бржа месечна издања. {ARelease}Сазнајте више о новом моделу издавања{A2}.{U1} {L1}ESR верзија ће остати на v140, повећавајући само мање бројеве верзија и укључујући само безбедносне исправке и закрпе за грешке, што је често пожељно у корпоративним окружењима.{L2} {L1}Месечни циклус издавања ће доносити нове функције и ажурирања интерфејса како се буду развијале. Проверите да ли ваши тренутни додаци подржавају овај модел издавања. За помоћ можете инсталирати {AcompatCheck}Проверу компатибилности додатака{A2}.{L2} {U2}{P2}{P1} Са задовољством објављујемо да је QuickFolders у потпуности компатибилан са Thunderbird 140, следећим Extended Support Release (ESR) издањем. Ово значи континуирану поузданост и мир током следећег великог циклуса подршке.{P2}{P1} QuickFolders ће за сада наставити да подржава кориснике Thunderbird 115 и новијих. Током наредне године, како будемо додавали нове функције, подршка за Thunderbird 115 може бити укинута у корист Thunderbird 128 и новијих.{P2}{P1} Континуирано пратимо промене у Thunderbird-у како бисмо осигурали да QuickFolders остане компатибилан и поуздан, без обзира који пут ажурирања изаберете.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Све нове функције, исправке грешака и дугорочна компатибилност су могуће захваљујући вашој подршци.{P2}{P1 class=specialOffer} За подршку развоју QuickFolders-а можете обновити лиценцу са попустом до {salesEnd}.{P2}{P1 class=bottomhint}🡇 Изаберите једну од опција испод за више информација 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} И ви сада можете подржати будућу компатибилност лиценцом.{P2}{P1}Све нове функције, исправке грешака и дугорочна компатибилност су могуће захваљујући вашој подршци.{P2}{P1 class=specialOffer}За подршку развоју QuickFolders-а можете добити Standard или Pro лиценцу са попустом до {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Изаберите једну од опција испод за више информација 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Хвала што подржавате QuickFolders са Standard лиценцом.{P2}{P1} Без обзира да ли је ваша лиценца истекла или је још увек активна, сада можете надоградити на Pro по одличној цени до {salesEnd}. Надоградња након истека даје вам целу годину коришћења од датума куповине.{P2}{P1 class=bottomhint} 🡇 Изаберите једну од опција испод за више информација 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Хвала што подржавате QuickFolders преко Pro лиценце — ово омогућава све нове функције, исправке грешака и дугорочну компатибилност.{P2}"
   },
   "newsSection": {
     "message": "{P1} Najnovija verzija $addonName$ sada je kompatibilna sa Thunderbird v139 i započela je proces poboljšanja pristupačnosti za tastature i čitače ekrana. {P2}{P1} U održavanju verzije {boldStart}6.10.1{boldEnd} takođe smo dodali poboljšan pristup tastaturom ka traci sa dugmićima za označene stranice i njihovim podmenijima, kao i specifične opcije u sekciji pristupačnosti u naprednim podešavanjima. {P2}",

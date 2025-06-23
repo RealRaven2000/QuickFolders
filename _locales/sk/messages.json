@@ -105,11 +105,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "OK" },
+  "message.btn.cancel": { "message": "Zrušiť" },
+  "message.btn.no": { "message": "Nie" },
+  "message.btn.yes": { "message": "Áno" },
+  "message.placeholder": { "message": "Správa chýba." },
+  "message.licenseScreen": { "message": "Zobraziť možnosti licencie…" },
+  "message.features": { "message": "Porovnať funkcie…" },
   "mozillas-basic-platform": {
     "message": "Mozilla poskytuje iba základnú platformu na doručenie nášho softvéru vám, koncovým používateľom. Ak by sme mali požiadať našich používateľov o platbu alebo podporu, nemôžeme to urobiť z addons.thunderbird.net - nie je to 'obchod s aplikáciami' s integrovanými platobnými bránami alebo správou licencií ako iTunes alebo Google Play."
   },
   "newsHead": {
     "message": "Najnovšie novinky"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Už čoskoro v ďalšom veľkom vydaní {boldEnd}: Thunderbird vás čoskoro požiada, aby ste si vybrali preferovanú cestu aktualizácie — buď ročnú ESR vetvu, alebo rýchlejšie mesačné vydania. {ARelease}Zistite viac o novom modeli vydávania{A2}.{U1} {L1}Verzia ESR zostane na v140, zvyšuje iba vedľajšie čísla verzií a obsahuje iba bezpečnostné opravy a opravy chýb, čo je často vhodnejšie pre firemné prostredie.{L2} {L1}Mesačný cyklus vydávania prinesie nové funkcie a aktualizácie rozhrania, ako budú vyvíjané. Skontrolujte, či vaše aktuálne doplnky podporujú tento model vydávania. Na pomoc si môžete nainštalovať {AcompatCheck}Kontrolu kompatibility doplnkov{A2}.{L2} {U2}{P2}{P1} S potešením oznamujeme, že QuickFolders je plne kompatibilný s Thunderbirdom 140, ďalším vydaním Extended Support Release (ESR). To znamená neustálu spoľahlivosť a pokoj počas ďalšieho hlavného cyklu podpory.{P2}{P1} QuickFolders bude zatiaľ naďalej podporovať používateľov Thunderbirdu 115 a novších. Počas nasledujúceho roka, ako pridáme nové funkcie, môže byť podpora pre Thunderbird 115 ukončená v prospech Thunderbirdu 128 a novších.{P2}{P1} Neustále sledujeme zmeny v Thunderbirde, aby sme zaistili, že QuickFolders zostane kompatibilný a spoľahlivý bez ohľadu na zvolenú cestu aktualizácie.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Všetky nové funkcie, opravy chýb a dlhodobá kompatibilita sú možné vďaka vašej podpore.{P2}{P1 class=specialOffer} Na podporu vývoja QuickFolders môžete obnoviť svoju licenciu so zľavou do {salesEnd}.{P2}{P1 class=bottomhint}🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Aj vy teraz môžete podporiť budúcu kompatibilitu prostredníctvom licencie.{P2}{P1}Všetky nové funkcie, opravy chýb a dlhodobá kompatibilita sú možné vďaka vašej podpore.{P2}{P1 class=specialOffer}Na podporu vývoja QuickFolders môžete získať štandardnú alebo Pro licenciu so zľavou do {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Ďakujeme, že podporujete QuickFolders štandardnou licenciou.{P2}{P1} Či už vaša licencia vypršala alebo je stále aktívna, môžete teraz prejsť na Pro so zľavou do {salesEnd}. Aktualizácia po vypršaní platnosti vám poskytne celý rok používania od dátumu nákupu.{P2}{P1 class=bottomhint} 🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Ďakujeme, že podporujete QuickFolders prostredníctvom Pro licencie — to umožňuje všetky nové funkcie, opravy chýb a dlhodobú kompatibilitu.{P2}"
   },
   "newsSection": {
     "message": "{P1} Najnovšia verzia $addonName$ je teraz kompatibilná s Thunderbird v139 a začala svoju cestu k zlepšenej prístupnosti pre klávesnice a čítače obrazovky. {P2}{P1} V údržbovej verzii {boldStart}6.10.1{boldEnd} sme tiež pridali vylepšený prístup cez klávesnicu na panel nástrojov so záložkami a ich podponuky, ako aj špecifické možnosti v sekcii prístupnosti v pokročilých nastaveniach. {P2}",

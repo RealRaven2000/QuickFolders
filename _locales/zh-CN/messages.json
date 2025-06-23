@@ -382,11 +382,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "确定" },
+  "message.btn.cancel": { "message": "取消" },
+  "message.btn.no": { "message": "否" },
+  "message.btn.yes": { "message": "是" },
+  "message.placeholder": { "message": "消息缺失。" },
+  "message.licenseScreen": { "message": "显示许可选项…" },
+  "message.features": { "message": "比较功能…" },
   "mozillas-basic-platform": {
     "message": "Mozilla仅提供了一个向您（最终用户）交付我们软件的基本平台。 如果我们需要向我们的用户付款或提供支持，则不能通过addons.thunderbird.net进行操作-这不是内置付费界面或许可证管理（如iTunes或Google Play）的“应用商店”。"
   },
   "newsHead": {
     "message": "最新消息"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} 即将在下一个重大版本中推出 {boldEnd}：Thunderbird 很快会要求您选择首选的更新路径——年度 ESR 版本或更快的每月发布。{ARelease}了解有关新发布模型的更多信息{A2}.{U1} {L1}ESR 版本将保持在 v140，仅增加次要版本号，并仅包含安全修复和错误修复，这通常更适合企业环境。{L2} {L1}每月发布周期会在开发完成后提供新功能和界面更新。请检查您当前的附加组件是否支持此发布模型。为此，您可以安装 {AcompatCheck}附加组件兼容性检查{A2}。{L2} {U2}{P2}{P1} 我们很高兴地宣布，QuickFolders 完全兼容 Thunderbird 140，即下一个扩展支持版本（ESR）。这意味着在下一个主要支持周期中持续的可靠性和安心。{P2}{P1} QuickFolders 目前仍支持 Thunderbird 115 及以上版本的用户。在接下来的一年中，随着我们添加新功能，对 Thunderbird 115 的支持可能会被淘汰，转而支持 Thunderbird 128 及更新版本。{P2}{P1} 我们会持续监控 Thunderbird 的变化，以确保 QuickFolders 无论您选择哪种更新路径都能保持兼容和可靠。{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} 所有新功能、错误修复和长期兼容性都得益于您的支持。{P2}{P1 class=specialOffer} 为了支持 QuickFolders 的开发，您可以在 {salesEnd} 前以折扣价续订您的许可证。{P2}{P1 class=bottomhint}🡇 请选择下方的选项以了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} 您也可以通过许可证支持未来的兼容性。{P2}{P1}所有新功能、错误修复和长期兼容性都得益于您的支持。{P2}{P1 class=specialOffer}为了支持 QuickFolders 的开发，您可以在 {salesEnd} 前以折扣价获得标准版或专业版许可证。{P2}{P1 class=bottomhint} 🡇 请选择下方的选项以了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} 感谢您通过标准版许可证支持 QuickFolders。{P2}{P1} 无论您的许可证已过期还是仍然有效，您都可以在 {salesEnd} 前以优惠价格升级到专业版。过期后升级将从购买之日起为您提供一整年的使用权。{P2}{P1 class=bottomhint} 🡇 请选择下方的选项以了解更多 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} 感谢您通过专业版许可证支持 QuickFolders——这使所有新功能、错误修复和长期兼容性成为可能。{P2}"
   },
   "newsSection": {
     "message": "{P1} 最新版本的 $addonName$ 现在兼容 Thunderbird v139，并已开始改善键盘和屏幕阅读器的可访问性 {P2}{P1} 在维护版本 {boldStart}6.10.1{boldEnd} 中，我们还增强了键盘访问工具栏上的书签及其子菜单的功能，并在高级设置中的可访问性部分添加了特定选项。 {P2}",

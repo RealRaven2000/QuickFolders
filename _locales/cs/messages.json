@@ -382,11 +382,33 @@
       }
     }
   },
+  "message.btn.accept": { "message": "OK" },
+  "message.btn.cancel": { "message": "Zrušit" },
+  "message.btn.no": { "message": "Ne" },
+  "message.btn.yes": { "message": "Ano" },
+  "message.placeholder": { "message": "Zpráva chybí." },
+  "message.licenseScreen": { "message": "Zobrazit možnosti licence…" },
+  "message.features": { "message": "Porovnat funkce…" },
   "mozillas-basic-platform": {
     "message": "Mozilla poskytuje pouze základní platformu pro doručování našeho softwaru vám, koncovým uživatelům. Pokud potřebujeme požádat naše uživatele o platbu nebo podporu, nemůžeme to udělat z addons.thunderbird.net - nejedná se o „obchod s aplikacemi“ s vestavěnými paywally nebo správou licencí, jako je iTunes nebo Google Play."
   },
   "newsHead": {
     "message": "Poslední zprávy"
+  },
+  "newsMsgEsr140": {
+    "message": "{P1}{boldStart} Demnächst im nächsten großen Release {boldEnd}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {ARelease}Erfahren Sie mehr über das neue Release-Modell{A2}.{U1} {L1}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{L2} {L1}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {AcompatCheck}Add-on-Kompatibilitätsprüfung{A2} installieren.{L2} {U2}{P2}{P1} Wir freuen uns, bekannt zu geben, dass QuickFolders vollständig mit Thunderbird 140, dem nächsten Extended Support Release (ESR), kompatibel ist. Das bedeutet fortlaufende Zuverlässigkeit und Sicherheit im nächsten großen Support-Zyklus.{P2}{P1} QuickFolders unterstützt weiterhin Nutzer von Thunderbird 115 und höher. Im kommenden Jahr kann die Unterstützung für Thunderbird 115 zugunsten von Thunderbird 128 und neuer eingestellt werden, sobald neue Funktionen hinzugefügt werden.{P2}{P1} Wir überwachen kontinuierlich Änderungen in Thunderbird, um sicherzustellen, dass QuickFolders unabhängig vom gewählten Update-Pfad kompatibel und zuverlässig bleibt.{P2}"
+  },
+  "newsMsg.license.expired": {
+    "message": "{P1} Alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität sind nur durch Ihre Unterstützung möglich.{P2}{P1 class=specialOffer} Um die Entwicklung von QuickFolders zu unterstützen, können Sie Ihre Lizenz bis {salesEnd} vergünstigt verlängern.{P2}{P1 class=bottomhint}🡇 Wählen Sie unten eine Option, um mehr zu erfahren 🡇 {P2}"
+  },
+  "newsMsg.license.none": {
+    "message": "{P1} Auch Sie können die zukünftige Kompatibilität jetzt durch eine Lizenz unterstützen.{P2}{P1}Alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität sind nur durch Ihre Unterstützung möglich.{P2}{P1 class=specialOffer}Um die Entwicklung von QuickFolders zu unterstützen, können Sie bis {salesEnd} eine Standard- oder Pro-Lizenz vergünstigt erwerben.{P2}{P1 class=bottomhint} 🡇 Wählen Sie unten eine Option, um mehr zu erfahren 🡇 {P2}"
+  },
+  "newsMsg.license.standard": {
+    "message": "{P1} Vielen Dank, dass Sie QuickFolders mit einer Standard-Lizenz unterstützen.{P2}{P1} Egal, ob Ihre Lizenz abgelaufen oder noch aktiv ist, Sie können jetzt bis {salesEnd} zum Vorteilspreis auf Pro upgraden. Ein Upgrade nach Ablauf gewährt Ihnen ein volles Jahr Nutzung ab Kaufdatum.{P2}{P1 class=bottomhint} 🡇 Wählen Sie unten eine Option, um mehr zu erfahren 🡇 {P2}"
+  },
+  "newsMsg.license.valid": {
+    "message": "{P1} Vielen Dank, dass Sie QuickFolders mit einer Pro-Lizenz unterstützen – das ermöglicht alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität.{P2}"
   },
   "newsSection": {
     "message": "{P1} Nejnovější verze $addonName$ je nyní kompatibilní s Thunderbird v139 a začala svou cestu k vylepšené přístupnosti pro klávesnice a čtečky obrazovky. {P2}{P1} V údržbové verzi {boldStart}6.10.1{boldEnd} jsme také přidali vylepšený přístup na klávesnici k panelu nástrojů s oblíbenými položkami a jejich podnabídkami a specifické možnosti v sekci přístupnosti v pokročilých nastaveních. {P2}",

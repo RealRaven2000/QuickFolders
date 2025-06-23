@@ -334,6 +334,7 @@
 				 Version 6.11 - WIP
 		  </a>
       </h4>
+			<a href="#changes">Jump to list of Changes</a>
 			<p>
 				<b>Upcoming in the next big release:</b> 
 				Thunderbird will soon ask you to choose your preferred update path — either 
@@ -356,77 +357,6 @@
 				class="native">Add-on Compatibility Check</a>.
 			</p>
 
-      <ul>
-				<h4 class="inList">Improvements</h4>
-        <li> new feature: Open folder in Tab as default. 
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/577">[issue 577]</a>
-				</li>  
-				<li> Better tooltips in Tab-Specific Properties. 
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/580">[issue 580]</a>
-				</li>
-      </ul>
-
-      <ul>
-				<h4 class="inList">Bug Fixes</h4>
-        <li> 
-					Fixed: Saving config file can fail b/c of bad 
-					files.path value <a href="https://github.com/RealRaven2000/QuickFolders/issues/581">[issue 581]</a>
-				</li>
-  			<li> 
-					Fixed a problem in find orphaned tabs on unified folders.
-				</li>
-      </ul>
-      <ul>
-				<h4 class="inList">Miscellanei</h4>
-				<li> Remove deprecated <tt>nsILocalFile</tt>. </li>
-				<li> repairTreeIcons: removed <tt>OS.Path.fromFileURI()</tt></li>				
-      </ul>
-    </li>
-
-    <a name="6.10.4">&nbsp;</a>
-    <li>
-      <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.10.4">
-			   Version 6.10.4 - 05/05/2025
-		  </a>
-      </h4>
-      <ul>
-				<h4 class="inList">Improvements</h4>
-				<li> 
-					QuickFolders is now compatible with Thunderbird 139.* - going forward it aims 
-					to stay compatible with the current monthly release cycle. 
-				</li>
-        <li> 
-					Thunderbird folder tree doesn't scroll to current folder (Thunderbird 115) 
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/559">[issue 559]</a>
-				</li>
-        <li> 
-					Removed (null) behind QuickFolders toolbar label in Thunderbird's View menu.
-					This was caused by a missing accesskey attribute.
-				</li>
-      </ul>
-
-      <ul>
-				<h4 class="inList">Bug Fixes</h4>
-        <li> 
-					Removed "Preview Mode" label from QuickFolders toolbar. 
-					This was only supposed to show in the settings tab, some 
-					users exerienced this in the main 3pane window.
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/571">[issue 571]</a>
-				</li>
-      </ul>
-    </li>		
-
-    <a name="6.10">&nbsp;</a>
-    <a name="6.10.1">&nbsp;</a>
-    <a name="6.10.2">&nbsp;</a>
-    <a name="6.10.3">&nbsp;</a>
-    <li>
-      <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.10.3">
-				Version 6.10.3 - 24/03/2025
-		  </a>
-      </h4>
 
       <table class="QuickFoldersProRenew bargain"> 
         <tr>
@@ -543,6 +473,99 @@
           </td>            
         </tr>
       </table>
+
+     	<a name="changes"> </a>
+      <ul>
+				<h4 class="inList">Improvements</h4>
+        <li> new feature: Open folder in Tab as default. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/577">[issue 577]</a>
+				</li>  
+				<li> Better tooltips in Tab-Specific Properties. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/580">[issue 580]</a>
+				</li>
+				<li>
+					<p>
+						Added command to buttons that wants about license expiry date <a href="https://github.com/RealRaven2000/QuickFolders/issues/589">[issue 589]</a>:
+					</p>
+					<p>
+						If the license is expired, you can execute the command from the top
+						of the menu by right-clicking the button.
+					</p>
+					<img src="images/hide-Renewal.png" alt="hide renewal warning" class="screenshot"/>
+					<p>
+						If it's a warning about soon expiring, just click the button to reveal 
+						the attached menu:
+					</p>
+					<img src="images/hide-Extend.png" alt="hide license extension warning" class="screenshot"/>
+					<p>
+						The warning will automatically return when you restart Thunderbird.
+					</p>
+				</li>
+      </ul>
+
+      <ul>
+				<h4 class="inList">Bug Fixes</h4>
+        <li> 
+					Fixed: Saving config file can fail b/c of bad 
+					files.path value <a href="https://github.com/RealRaven2000/QuickFolders/issues/581">[issue 581]</a>
+				</li>
+  			<li> 
+					Fixed a problem in find orphaned tabs on unified folders.
+				</li>
+      </ul>
+      <ul>
+				<h4 class="inList">Miscellanei</h4>
+				<li> Remove deprecated <tt>nsILocalFile</tt>. </li>
+				<li> repairTreeIcons: removed <tt>OS.Path.fromFileURI()</tt></li>				
+      </ul>
+    </li>
+
+    <a name="6.10.4">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.10.4">
+			   Version 6.10.4 - 05/05/2025
+		  </a>
+      </h4>
+      <ul>
+				<h4 class="inList">Improvements</h4>
+				<li> 
+					QuickFolders is now compatible with Thunderbird 139.* - going forward it aims 
+					to stay compatible with the current monthly release cycle. 
+				</li>
+        <li> 
+					Thunderbird folder tree doesn't scroll to current folder (Thunderbird 115) 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/559">[issue 559]</a>
+				</li>
+        <li> 
+					Removed (null) behind QuickFolders toolbar label in Thunderbird's View menu.
+					This was caused by a missing accesskey attribute.
+				</li>
+      </ul>
+
+      <ul>
+				<h4 class="inList">Bug Fixes</h4>
+        <li> 
+					Removed "Preview Mode" label from QuickFolders toolbar. 
+					This was only supposed to show in the settings tab, some 
+					users exerienced this in the main 3pane window.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/571">[issue 571]</a>
+				</li>
+      </ul>
+    </li>		
+
+    <a name="6.10">&nbsp;</a>
+    <a name="6.10.1">&nbsp;</a>
+    <a name="6.10.2">&nbsp;</a>
+    <a name="6.10.3">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.10.3">
+				Version 6.10.3 - 24/03/2025
+		  </a>
+      </h4>
+
+
 
       <ul>
 

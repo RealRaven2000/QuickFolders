@@ -2264,6 +2264,7 @@ QuickFolders.Interface = {
                 let popupId = btn.getAttribute("popupId");
                 if (popupId) {
                   // linux avoid this getting triggered twice
+                  // eslint-disable-next-line no-unused-vars
                   let _activePopup = document.getElementById(popupId);
 
                   if (document.getElementById(popupId)) {
@@ -3893,7 +3894,6 @@ QuickFolders.Interface = {
     // global objects: msgWindow
     QuickFolders.Util.logDebug(`rebuildSummary(${folder.prettyName}) started... `);
     
-		let isCurrent=false;
 		// taken from http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2087
 		if (folder.locked) {
 			folder.throwAlertMsg("operationFailedFolderBusy", msgWindow);
@@ -5250,8 +5250,6 @@ QuickFolders.Interface = {
         return folder.name + " - " + hostString;
       case 2: { // account name - folder path (max[n])
         hostString = folder.rootFolder.name;
-        let f = folder.URI.indexOf("://"),
-					_fullPath = f ? folder.URI.substr(f+3) : folder.URI;
         return hostString + " - " + folderPath(folder,  maxPathItems, false);
 			}
       case 3:
@@ -5269,6 +5267,7 @@ QuickFolders.Interface = {
 		doc) 
 	{
 		options.isUnifiedFolder ??= false; // preset if missing
+		// eslint-disable-next-line no-unused-vars
 		const killDiacritics = (s) =>
       s
         .toLowerCase()
@@ -5716,7 +5715,8 @@ QuickFolders.Interface = {
 			  util.logDebugOptional("interface.findFolder","Enter");
 				const isCtrl = event.ctrlKey || false;
 				const isAlt = event.altKey || false;
-				const isForceTab = isCtrl || prefs.getBoolPref("quickJump.premium.forceTab"); // [issue 577]
+				const forceNewTab = prefs.getBoolPref("quickJump.premium.forceTab");
+				const isForceTab = (isCtrl && !forceNewTab) || (forceNewTab && !isCtrl); // [issue 577]
 				const options = { forceFind: true, forceTab: isForceTab, forceWin: isAlt };
         QI.findFolderName(event.target, options);
         event.preventDefault();
@@ -5784,7 +5784,6 @@ QuickFolders.Interface = {
   // forceFind - enter key has been pressed, so we want the first match to force a jump
 	findFolderName: async function (searchBox, options = { forceFind: false }) {
 		const forceFind = options.forceFind || false;
-		const forceTab = options.forceTab || false;
     // make the abbreviated string for the menu item
     function buildParentString(folder, parentCount) {
 			if (!folder) {return "";}
@@ -5884,7 +5883,7 @@ QuickFolders.Interface = {
         // multi word matching [issue 155]
         if (checkFolderFlag(folder, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) {return;} // add unless already matched:
         let sArray = searchFolderName.split(" "),
-          fArray = folderNameSearched.split(/[\-_@+&. ]+/); // use these as possible word boundaries
+          fArray = folderNameSearched.split(/[-_@+&. ]+/); // use these as possible word boundaries
         while (sArray.length) {
           let search = sArray.shift(),
             foundEl = false;
@@ -5961,7 +5960,7 @@ QuickFolders.Interface = {
       if (!search) {return true;} // ??? should be false?
       let f = folder,
         pLevel = 1,
-        ancestors = search.split(/[\/>]/), // use / for direct children and allow > for skipping folders (test)
+        ancestors = search.split(/[/>]/), // use / for direct children and allow > for skipping folders (test)
         firstParent = null,
         skipParents = searchString.includes(">"); // new syntax for skipping some parents
 
@@ -6010,14 +6009,14 @@ QuickFolders.Interface = {
     }
 
     function addIfMatch(folder, search, parentList) {
-      let ancestors = search.split(/[\/>]/),
+      let ancestors = search.split(/[/>]/),
         maxLevel = ancestors.length,
         f = folder,
         directParent = null;
       while (f && maxLevel) {
         maxLevel--;
         // [issue 135] allow in-string search for children using delimiters: - _ . and space!
-        let folderNameMatches = f.prettyName.toLowerCase().split(/[\-_@+&. ]/);
+        let folderNameMatches = f.prettyName.toLowerCase().split(/[-_@+&. ]/);
         // [issue 148] splitting prevents full name to be matched!
         if (folderNameMatches.length > 1) {
           folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
@@ -6141,7 +6140,7 @@ QuickFolders.Interface = {
         parentString = enteredParent;
         searchFolderName = searchString.substr(parentPos + 1);
         enteredSearch = enteredSearch.substr(parentPos + 1); // original mixed case for subfolder creation; include placeholder for account
-        parentCount = parentString.split(/[\/>]/).length + 1; // original entry for parent
+        parentCount = parentString.split(/[/>]/).length + 1; // original entry for parent
       } else {
         searchFolderName = searchString;
       }
@@ -6506,21 +6505,22 @@ QuickFolders.Interface = {
       return;
     } /**************  quickMove End  **************/
     else {
-			util.logDebugOptional("quickMove","selectFound: quickMove End…", event);
-			if (event.ctrlKey) {
-				const fld = QuickFolders.Model.getMsgFolderFromUri(URI, false);
-				QI.openFolderInNewTab(fld);
-				return;
-			} else if (event.altKey) {
-				const fld = QuickFolders.Model.getMsgFolderFromUri(URI, false);
+      util.logDebugOptional("quickMove", "selectFound: quickMove End…", event);
+      const isForceTab = QuickFolders.Preferences.getBoolPref("quickJump.premium.forceTab"); // [issue 577]
+      if ((isForceTab && !event.ctrlKey) || (event.ctrlKey && !isForceTab)) { // XOR
+        const fld = QuickFolders.Model.getMsgFolderFromUri(URI, false);
+        QI.openFolderInNewTab(fld);
+        return;
+      } else if (event.altKey) {
+        const fld = QuickFolders.Model.getMsgFolderFromUri(URI, false);
         QI.openFolderInNewWindow(fld);
-			} else {
+      } else {
         isSelected = QuickFolders_MySelectFolder(URI, true);
-			}
+      }
       if (isSelected) {
         QuickFolders.quickMove.rememberLastFolder(URI, parentName);
       }
-		}
+    }
 		if (isSelected) {
 			// success: collapses the search box!
       this.findFolder(false);
@@ -6755,7 +6755,6 @@ QuickFolders.Interface = {
         util = QuickFolders.Util,
         idx = QuickFolders.tabContainer.tabbox.selectedIndex,
         tabmail = document.getElementById("tabmail"),
-        tabs = tabmail.tabInfo, 
         info = util.getTabInfoByIndex(tabmail, idx),
         tabMode = util.getTabMode(info);  // tabs[idx]
     // single message mode
@@ -7089,24 +7088,24 @@ QuickFolders.Interface = {
 	} ,
 
 	setButtonColor: function setButtonColor(button, col, dontStripe) {
-		// no more style sheet modification for settings colors.
-		if (!button) {return false;}
-		let folderLabel = button.getAttribute("label"), // fixes disappearing colors on startup bug
-			cssClass = button.className,
-			newclass = "",
-			rClasses=cssClass.split(" ");
-		for (let j=0; j<rClasses.length; j++) {
-			// strip previous style
-			if (rClasses[j].indexOf("col")<0) {
-				newclass+=rClasses[j] + " ";
-			}
-		}
+    // no more style sheet modification for settings colors.
+    if (!button) { return false; }
+    button.getAttribute("label"); // fixes disappearing colors on startup bug
+    const cssClass = button.className;
+    const rClasses = cssClass.split(" ");
+		let newclass = "";
+    for (let j = 0; j < rClasses.length; j++) {
+      // strip previous style
+      if (rClasses[j].indexOf("col") < 0) {
+        newclass += rClasses[j] + " ";
+      }
+    }
 
-		newclass += this.getButtonColorClass(col, dontStripe);
-		button.className = newclass; // .trim()
-		button.setAttribute("colorIndex", col);
-		return true;
-	} ,
+    newclass += this.getButtonColorClass(col, dontStripe);
+    button.className = newclass; // .trim()
+    button.setAttribute("colorIndex", col);
+    return true;
+  } ,
 
 	initElementPaletteClass: function initElementPaletteClass(element, targetElement, isUncolored) {
 		if (!element) {
@@ -7387,17 +7386,17 @@ QuickFolders.Interface = {
 
 	getPaletteClassToken: function getPaletteClassToken(paletteType) {
 		switch (parseInt(paletteType, 10)) {
-		  case -1:
-			  return this.getPaletteClassToken(this.getPaletteClass("InactiveTab")); // default
-			case 0:
-			  return "";  // none
-			case 1:
-			  return " plastic";  // default
-			case 2:
-			  return " pastel";
+      case -1:
+        return this.getPaletteClassToken(this.getPaletteClass("InactiveTab")); // default
+      case 0:
+        return ""; // none
+      case 1:
+        return " plastic"; // default
+      case 2:
+        return " pastel";
       case 3:
         return " night";
-		}
+    }
 		return "";
 	} ,
 
@@ -7405,22 +7404,19 @@ QuickFolders.Interface = {
 	initSelectedFolderStyle: function initSelectedFolderStyle(ss, ssPalettes, _tabStyle) {
 	  if (ssPalettes == null) {ssPalettes = ss;}
 		QuickFolders.Util.logDebugOptional("interface.buttonStyles", "initSelectedFolderStyle()");
-		let engine = QuickFolders.Styles,
-		    colActiveBG = QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight"),
-		    selectedColor = QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText"),
-		    globalPaletteClass = this.getPaletteClassCss("InactiveTab"),
-        paletteClass = this.getPaletteClassCss("ActiveTab"),
-        coloredPaletteClass = this.getPaletteClassCss("ColoredTab");
+		const engine = QuickFolders.Styles,
+			colActiveBG = QuickFolders.Preferences.getUserStyle("ActiveTab","background-color","Highlight"),
+			selectedColor = QuickFolders.Preferences.getUserStyle("ActiveTab","color","HighlightText"),
+			paletteClass = this.getPaletteClassCss("ActiveTab");
 
 		if (QuickFolders.Preferences.getIntPref("style.ActiveTab.paletteType")) {
-			let paletteEntry =  QuickFolders.Preferences.getIntPref("style.ActiveTab.paletteEntry"),
-			    ruleName = ".quickfolders-flat " + paletteClass + ".col" + paletteEntry,
-			    selectedGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image");
+			const paletteEntry =  QuickFolders.Preferences.getIntPref("style.ActiveTab.paletteEntry"),
+				ruleName = ".quickfolders-flat " + paletteClass + ".col" + paletteEntry,
+				selectedGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image");
 			// selectedColor = engine.getElementStyle(ssPalettes, ruleName, "color"); // make this overridable!
 			// we do not want the rule to containg the paletteClass because it has to always work!
 			engine.setElementStyle(ss, ".quickfolders-flat " + ".selected-folder", "background-image", selectedGradient, true);
-		}
-		else { // two colors mode
+		} else { // two colors mode
 			engine.setElementStyle(ss, ".quickfolders-flat " + ".selected-folder", "background-image", "none", true);
 			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton.selected-folder","background-color", colActiveBG, true);
 		}

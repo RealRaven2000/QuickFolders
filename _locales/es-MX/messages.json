@@ -399,7 +399,7 @@
     "message": "{P1} Gracias por apoyar QuickFolders a través de una licencia Pro — esto hace posibles todas las nuevas funciones, correcciones de errores y compatibilidad a largo plazo.{P2}"
   },
   "newsSection": {
-    "message": "{P1} La última edición de $addonName$ ahora es compatible con Thunderbird v139 y ha comenzado su camino hacia una mejor accesibilidad para teclados y lectores de pantalla. {P2}{P1} En la versión de mantenimiento {boldStart}6.10.1{boldEnd} también agregamos un mejor acceso al teclado en la barra de herramientas con marcadores y sus submenús, así como opciones específicas en la sección de accesibilidad de la configuración avanzada. {P2}",
+    "message": "{P1}{boldStart} Próximamente en la siguiente gran versión {boldEnd}: Thunderbird pronto le pedirá que elija su ruta de actualización preferida: la vía anual ESR o las versiones mensuales más rápidas. {ARelease}Más información sobre el nuevo modelo de lanzamiento{A2}.{U1} {L1}La versión ESR se mantendrá en v140, aumentando solo los números de versión menores e incluyendo solo correcciones de seguridad y errores, lo que a menudo es preferible para entornos corporativos.{L2} {L1}El ciclo de lanzamiento mensual entregará nuevas funciones y actualizaciones de interfaz a medida que se desarrollen. Por favor, verifique si sus complementos actuales admiten este modelo de lanzamiento. Para ayudar con esto, puede instalar el {AcompatCheck}Verificador de compatibilidad de complementos{A2}.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",

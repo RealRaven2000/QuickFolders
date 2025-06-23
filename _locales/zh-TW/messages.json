@@ -407,7 +407,7 @@
     "message": "{P1} 感謝您以專業版授權支持 QuickFolders——這讓所有新功能、錯誤修正和長期相容性成為可能。{P2}"
   },
   "newsSection": {
-    "message": "{P1} 最新版本的 $addonName$ 現在與 Thunderbird v139 相容，並已開始改善鍵盤和螢幕閱讀器的可及性。{P2}{P1} 在維護版本 {boldStart}6.10.1{boldEnd} 中，我們還增強了鍵盤對工具列上書籤及其子選單的存取功能，並在進階設置中的可及性區段中新增了特定選項。 {P2}",
+    "message": "{P1}{boldStart} 即將在下一個重大版本中推出 {boldEnd}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{ARelease}了解新發行模型的更多資訊{A2}.{U1} {L1}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{L2} {L1}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {AcompatCheck}附加元件相容性檢查{A2}。{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2038,7 +2038,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders 現已支援 Thunderbird 139，並將致力於與目前的每月發行週期保持相容。{P2}{L1>改進 Thunderbird 資料夾樹的捲動行為，會自動捲動至目前資料夾。[issue 559]{L2}{L1>除了在設定分頁中，(預覽模式) 標籤現已一律從 QuickFolders 工具列中移除。[issue 571]{L2}{L1>已從 Thunderbird 檢視選單中的 QuickFolders 工具列選項移除 (null)。{L2}"
+    "message": "{P1} QuickFolders 現已相容於 Thunderbird 140 — 並將持續支援目前的每月發行週期。{P2}{L1} 新增進階搜尋選項：預設於分頁中開啟資料夾 [issue 577]{L2}{L1} 修正：由於 files.path 值無效，儲存設定檔可能失敗 [issue 581]{L2}{L1} 改善了分頁專屬屬性中的工具提示 [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -365,7 +365,7 @@
     "message": "{P1} Хвала што подржавате QuickFolders преко Pro лиценце — ово омогућава све нове функције, исправке грешака и дугорочну компатибилност.{P2}"
   },
   "newsSection": {
-    "message": "{P1} Najnovija verzija $addonName$ sada je kompatibilna sa Thunderbird v139 i započela je proces poboljšanja pristupačnosti za tastature i čitače ekrana. {P2}{P1} U održavanju verzije {boldStart}6.10.1{boldEnd} takođe smo dodali poboljšan pristup tastaturom ka traci sa dugmićima za označene stranice i njihovim podmenijima, kao i specifične opcije u sekciji pristupačnosti u naprednim podešavanjima. {P2}",
+    "message": "{P1}{boldStart} Ускоро у следећем великом издању {boldEnd}: Thunderbird ће вас ускоро питати да изаберете жељени пут ажурирања — или годишњи ESR или бржа месечна издања. {ARelease}Сазнајте више о новом моделу издавања{A2}.{U1} {L1}ESR верзија ће остати на v140, повећавајући само мање бројеве верзија и укључујући само безбедносне исправке и закрпе за грешке, што је често пожељно у корпоративним окружењима.{L2} {L1}Месечни циклус издавања ће доносити нове функције и ажурирања интерфејса како се буду развијале. Проверите да ли ваши тренутни додаци подржавају овај модел издавања. За помоћ можете инсталирати {AcompatCheck}Проверу компатибилности додатака{A2}.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1909,7 +1909,7 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders је сада компатибилан са Thunderbird-ом 139. Убудуће има за циљ да остане компатибилан са тренутним месечним циклусом издавања.{P2}{L1>Побољшано померање стабла фасцикли у Thunderbird-у до тренутне фасцикле. [issue 559]{L2}{L1>Ознака (Претходни преглед) сада се увек уклања са траке алатки QuickFolders-а, осим на картици са подешавањима. [issue 571]{L2}{L1>Уклоњен (null) иза ставке менија траке алатки QuickFolders у менију Приказ Thunderbird-а.{L2}"
+    "message": "{P1} QuickFolders је сада компатибилан са Thunderbird 140 — и наставиће да подржава тренутни месечни циклус издања.{P2}{L1} Нова напредна опција претраге: Отвори фасциклу у картици као подразумевано [issue 577]{L2}{L1} Исправљено: Чување конфигурационе датотеке је могло да не успе због неисправне вредности files.path [issue 581]{L2}{L1} Побољшани савети у својствима специфичним за картицу [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

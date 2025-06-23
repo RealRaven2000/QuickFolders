@@ -409,7 +409,13 @@
     "message": "{P1} Vielen Dank, dass Sie QuickFolders mit einer Pro-Lizenz unterstützen – das ermöglicht alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität.{P2}"
   },
   "newsSection": {
-    "message": "{P1}{boldStart} Demnächst im nächsten großen Release {boldEnd}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {ARelease}Erfahren Sie mehr über das neue Release-Modell{A2}.{U1} {L1}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{L2} {L1}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {AcompatCheck}Add-on-Kompatibilitätsprüfung{A2} installieren.{L2} {U2}"
+    "message": "{P1}{boldStart} Demnächst im nächsten großen Release {boldEnd}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {ARelease}Erfahren Sie mehr über das neue Release-Modell{A2}.{U1} {L1}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{L2} {L1}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {AcompatCheck}Add-on-Kompatibilitätsprüfung{A2} installieren.{L2} {U2}",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "newsSection.license": {
     "message": "Da alle Arbeiten an QuickFolders und der kostenlose Support ausschließlich durch Lizenzverkäufe finanziert werden, bitte denken Sie darüber nach, eine Lizenz zu kaufen oder Ihre aktuelle zu verlängern."

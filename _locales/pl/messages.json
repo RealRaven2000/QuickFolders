@@ -404,7 +404,7 @@
     "message": "{P1} Dziękujemy za wsparcie QuickFolders licencją Pro — to umożliwia wszystkie nowe funkcje, poprawki błędów i długoterminową kompatybilność.{P2}"
   },
   "newsSection": {
-    "message": "{P1} Najnowsza wersja $addonName$ jest teraz kompatybilna z Thunderbird v139 i rozpoczęła proces poprawy dostępności dla klawiatur i czytników ekranu. {P2}{P1} W wersji konserwacyjnej {boldStart}6.10.1{boldEnd} dodaliśmy również ulepszony dostęp do paska narzędzi z zakładkami i ich podmenu za pomocą klawiatury, a także szczególne opcje w sekcji dostępności w zaawansowanych ustawieniach. {P2}",
+    "message": "{P1}{boldStart} Już wkrótce w następnej dużej wersji {boldEnd}: Thunderbird wkrótce poprosi Cię o wybór preferowanej ścieżki aktualizacji — rocznej ścieżki ESR lub szybszych wydań miesięcznych. {ARelease}Dowiedz się więcej o nowym modelu wydań{A2}.{U1} {L1}Wersja ESR pozostanie na v140, zwiększając tylko numery wersji pomocniczych i zawierając jedynie poprawki bezpieczeństwa i błędów, co często jest preferowane w środowiskach korporacyjnych.{L2} {L1}Miesięczny cykl wydań dostarczy nowe funkcje i aktualizacje interfejsu w miarę ich opracowywania. Sprawdź, czy Twoje obecne dodatki obsługują ten model wydań. Aby pomóc, możesz zainstalować {AcompatCheck}Kontrolę zgodności dodatków{A2}.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2079,7 +2079,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders jest teraz kompatybilny z Thunderbirdem 139. W przyszłości będzie dążyć do zachowania zgodności z bieżącym miesięcznym cyklem wydawniczym.{P2}{L1}Ulepszono przewijanie drzewa folderów Thunderbirda do bieżącego folderu. [issue 559]{L2}{L1}Etykieta (Tryb podglądu) jest teraz zawsze usuwana z paska narzędzi QuickFolders, z wyjątkiem karty ustawień. [issue 571]{L2}{L1}Usunięto (null) za pozycją menu paska narzędzi QuickFolders w menu Widok Thunderbirda.{L2}"
+    "message": "{P1} QuickFolders jest teraz kompatybilny z Thunderbirdem 140 — i będzie nadal wspierać obecny miesięczny cykl wydań.{P2}{L1} Nowa zaawansowana opcja wyszukiwania: Otwórz folder w karcie domyślnie [issue 577]{L2}{L1} Naprawiono: Zapisywanie pliku konfiguracyjnego mogło się nie powieść z powodu nieprawidłowej wartości files.path [issue 581]{L2}{L1} Ulepszone podpowiedzi w Właściwościach specyficznych dla kart [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

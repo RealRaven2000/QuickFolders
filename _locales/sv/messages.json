@@ -408,13 +408,7 @@
     "message": "{P1} Tack för att du stödjer QuickFolders med en Pro-licens — detta möjliggör alla nya funktioner, buggfixar och långsiktig kompatibilitet.{P2}"
   },
   "newsSection": {
-    "message": "{P1} Den senaste versionen av $addonName$ är nu kompatibel med Thunderbird v139 och har påbörjat sin resa mot förbättrad tillgänglighet för tangentbord och skärmläsare. {P2}{P1} I underhållsversion {boldStart}6.10.1{boldEnd} har vi även lagt till förbättrad tangentbordsåtkomst till verktygsfältet med bokmärken och deras undermenyer, samt specifika alternativ i tillgänglighetssektionen i avancerade inställningar. {P2}",
-    "placeholders": {
-      "addonName": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
+    "message": "{P1}{boldStart} Kommer i nästa stora version {boldEnd}: Thunderbird kommer snart att be dig välja din föredragna uppdateringsväg — antingen den årliga ESR-versionen eller de snabbare månatliga utgåvorna. {ARelease}Läs mer om den nya utgivningsmodellen{A2}.{U1} {L1}ESR-versionen kommer att stanna på v140, öka endast mindre versionsnummer och inkludera endast säkerhetsfixar och buggfixar, vilket ofta är att föredra i företagsmiljöer.{L2} {L1}Den månatliga utgivningscykeln kommer att leverera nya funktioner och gränssnittsuppdateringar när de utvecklas. Kontrollera om dina nuvarande tillägg stöder denna utgivningsmodell. För att hjälpa till kan du installera {AcompatCheck}Tilläggskompatibilitetskontroll{A2}.{L2} {U2}"
   },
   "newsSection.license": {
     "message": "Eftersom allt arbete med QuickFolders och gratis support finansieras uteslutande genom licensförsäljning, överväg att köpa en licens eller förnya din nuvarande."
@@ -2101,7 +2095,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders är nu kompatibelt med Thunderbird 139. Framöver är målet att förbli kompatibelt med den aktuella månatliga utgivningscykeln.{P2}{L1>Förbättrad rullning i Thunderbirds mappträd för att hoppa till aktuell mapp. [issue 559]{L2}{L1>Etiketten (Förhandsgranskningsläge) tas nu alltid bort från QuickFolders verktygsfält, utom på inställningsfliken. [issue 571]{L2}{L1>Tagit bort (null) efter menyalternativet för QuickFolders verktygsfält i Thunderbirds Visa-meny.{L2}"
+    "message": "{P1} QuickFolders är nu kompatibelt med Thunderbird 140 — och kommer fortsätta stödja den nuvarande månatliga utgivningscykeln.{P2}{L1} Ny avancerad sökfunktion: Öppna mapp i flik som standard [issue 577]{L2}{L1} Fixat: Spara konfigurationsfil kunde misslyckas på grund av ogiltigt files.path-värde [issue 581]{L2}{L1} Förbättrade verktygstips i flikspecifika egenskaper [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

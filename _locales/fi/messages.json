@@ -211,7 +211,7 @@
     "message": "{P1} Kiitos, että tuet QuickFoldersia Pro-lisenssillä — tämä mahdollistaa kaikki uudet ominaisuudet, virheenkorjaukset ja pitkäaikaisen yhteensopivuuden.{P2}"
   },
   "newsSection": {
-    "message": "{P1} Tämänhetkinen $addonName$ -versio on nyt yhteensopiva Thunderbird v139:n kanssa ja on alkanut matkan kohti parempaa saavutettavuutta näppäimistöille ja ruudunlukijoille. {P2}{P1} Huoltoversiossa {boldStart}6.10.1{boldEnd} lisäsimme myös parannetun näppäimistöyhteyden työkalupalkille, jossa on kirjanmerkit ja niiden alivalikot, sekä erityisiä asetuksia saavutettavuusosiossa edistyneissä asetuksissa. {P2}",
+    "message": "{P1}{boldStart} Tulossa seuraavassa suuressa julkaisussa {boldEnd}: Thunderbird pyytää sinua pian valitsemaan päivityspolun — joko vuosittaisen ESR-version tai nopeammat kuukausittaiset julkaisut. {ARelease}Lue lisää uudesta julkaisumallista{A2}.{U1} {L1}ESR-versio pysyy v140:ssä, kasvattaen vain pienempiä versionumeroita ja sisältäen vain tietoturvapäivityksiä ja virheenkorjauksia, mikä on usein suositeltavaa yritysympäristöissä.{L2} {L1}Kuukausittainen julkaisusykli tuo uusia ominaisuuksia ja käyttöliittymäpäivityksiä kehityksen edetessä. Tarkista, tukevatko nykyiset lisäosasi tätä julkaisumallia. Voit asentaa {AcompatCheck}Lisäosan yhteensopivuustarkistuksen{A2} avuksi.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -400,7 +400,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders on nyt yhteensopiva Thunderbirdin version 139 kanssa. Jatkossa pyritään säilyttämään yhteensopivuus nykyisen kuukausittaisen julkaisusykliin kanssa.{P2}{L1}Parannettu Thunderbirdin kansiopuussa vierittämistä nykyiseen kansioon. [issue 559]{L2}{L1}(Esikatselutila)-merkintä poistetaan nyt aina QuickFolders-työkalupalkista paitsi asetukset-välilehdellä. [issue 571]{L2}{L1}Poistettu (null) QuickFolders-työkalupalkin valikkokohdan takaa Thunderbirdin Näytä-valikossa.{L2}"
+    "message": "{P1} QuickFolders 現已相容於 Thunderbird 140 — 並將持續支援目前的每月發行週期。{P2}{L1} 新增進階搜尋選項：預設於分頁中開啟資料夾 [issue 577]{L2}{L1} 修正：由於 files.path 值無效，儲存設定檔可能失敗 [issue 581]{L2}{L1} 改善了分頁專屬屬性中的工具提示 [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

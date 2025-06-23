@@ -368,7 +368,7 @@
     "message": "{P1} Köszönjük, hogy Pro licenccel támogatja a QuickFolders-t — ez teszi lehetővé az összes új funkciót, hibajavítást és hosszú távú kompatibilitást.{P2}"
   },
   "newsSection": {
-    "message": "{P1} A legújabb kiadás a $addonName$ most már kompatibilis a Thunderbird v139-tel, és elindította útját a jobb elérhetőség felé, beleértve a billentyűzetek és képernyőolvasók támogatását. {P2}{P1} A karbantartási verzióban {boldStart}6.10.1{boldEnd} szintén hozzáadtuk a billentyűzet-hozzáférés javítását a könyvjelzőket és azok almappáit tartalmazó eszköztárhoz, valamint specifikus lehetőségeket az elérhetőségi szekcióban az fejlett beállításokban. {P2}",
+    "message": "{P1}{boldStart} Hamarosan a következő nagy kiadásban {boldEnd}: A Thunderbird hamarosan megkéri Önt, hogy válassza ki a kívánt frissítési módot — az éves ESR-ágat vagy a gyorsabb havi kiadásokat. {ARelease}Tudjon meg többet az új kiadási modellről{A2}.{U1} {L1}Az ESR-verzió a v140-en marad, csak a kisebb verziószámokat növeli, és csak biztonsági javításokat és hibajavításokat tartalmaz, ami gyakran előnyösebb vállalati környezetben.{L2} {L1}A havi kiadási ciklus új funkciókat és felületfrissítéseket hoz, amint azok elkészülnek. Ellenőrizze, hogy a jelenlegi kiegészítői támogatják-e ezt a kiadási modellt. Ehhez telepítheti a {AcompatCheck}Kiegészítő kompatibilitás-ellenőrzőt{A2}.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1830,7 +1830,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{P1}A QuickFolders mostantól kompatibilis a Thunderbird 139-es verziójával. A jövőben célja, hogy kompatibilis maradjon az aktuális havi kiadási ciklussal.{P2}{L1}Javítottuk a Thunderbird mappafa görgetését, hogy az aktuális mappára ugorjon. [issue 559]{L2}{L1}Az (Előnézeti mód) feliratot mostantól mindig eltávolítjuk a QuickFolders eszköztárról, kivéve a beállítások lapon. [issue 571]{L2}{L1}Eltávolítottuk a (null) értéket a QuickFolders eszköztár menüelemének végéről a Thunderbird Nézet menüjében.{L2}"
+    "message": "{P1} A QuickFolders mostantól kompatibilis a Thunderbird 140-nel — és továbbra is támogatja az aktuális havi kiadási ciklust.{P2}{L1} Új speciális keresési opció: Mappa megnyitása alapértelmezés szerint fülön [issue 577]{L2}{L1} Javítva: A konfigurációs fájl mentése sikertelen lehetett érvénytelen files.path érték miatt [issue 581]{L2}{L1} Fejlettebb tooltip-ek a fül-specifikus tulajdonságoknál [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

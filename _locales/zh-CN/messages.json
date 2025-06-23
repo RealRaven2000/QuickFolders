@@ -411,7 +411,7 @@
     "message": "{P1} 感谢您通过专业版许可证支持 QuickFolders——这使所有新功能、错误修复和长期兼容性成为可能。{P2}"
   },
   "newsSection": {
-    "message": "{P1} 最新版本的 $addonName$ 现在兼容 Thunderbird v139，并已开始改善键盘和屏幕阅读器的可访问性 {P2}{P1} 在维护版本 {boldStart}6.10.1{boldEnd} 中，我们还增强了键盘访问工具栏上的书签及其子菜单的功能，并在高级设置中的可访问性部分添加了特定选项。 {P2}",
+    "message": "{P1}{boldStart} 即将在下一个重大版本中推出 {boldEnd}：Thunderbird 很快会要求您选择首选的更新路径——年度 ESR 版本或更快的每月发布。{ARelease}了解有关新发布模型的更多信息{A2}.{U1} {L1}ESR 版本将保持在 v140，仅增加次要版本号，并仅包含安全修复和错误修复，这通常更适合企业环境。{L2} {L1}每月发布周期会在开发完成后提供新功能和界面更新。请检查您当前的附加组件是否支持此发布模型。为此，您可以安装 {AcompatCheck}附加组件兼容性检查{A2}。{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2023,7 +2023,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders 现在兼容 Thunderbird 139。未来将致力于保持与当前每月发布周期的兼容性。{P2}{L1>改进了 Thunderbird 文件夹树的滚动行为，可自动滚动到当前文件夹。[issue 559]{L2}{L1>(预览模式) 标签现在始终从 QuickFolders 工具栏中移除，设置选项卡除外。[issue 571]{L2}{L1>移除了 Thunderbird“查看”菜单中 QuickFolders 工具栏菜单项后的 (null)。{L2}"
+    "message": "{P1} QuickFolders 现已兼容 Thunderbird 140 — 并将继续支持当前的每月发布周期。{P2}{L1} 新增高级搜索选项：默认在标签页中打开文件夹 [issue 577]{L2}{L1} 修复：由于 files.path 值无效，保存配置文件可能失败 [issue 581]{L2}{L1} 改进了标签页专属属性中的工具提示 [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -415,7 +415,7 @@
     "message": "{P1} Grazie per aver supportato QuickFolders tramite una licenza Pro — questo rende possibili tutte le nuove funzionalità, correzioni di bug e compatibilità a lungo termine.{P2}"
   },
   "newsSection": {
-    "message": "{P1} L'ultima versione di $addonName$ è ora compatibile con Thunderbird v139 e ha iniziato il suo percorso verso un miglioramento dell'accessibilità per tastiere e lettori di schermo. {P2}{P1} Nella versione di manutenzione {boldStart}6.10.1{boldEnd} abbiamo anche aggiunto un miglior accesso tramite tastiera alla barra degli strumenti con i segnalibri e i relativi sottomenù, insieme a opzioni specifiche nella sezione di accessibilità nelle impostazioni avanzate. {P2}",
+    "message": "{P1}{boldStart} In arrivo nella prossima grande versione {boldEnd}: Thunderbird presto ti chiederà di scegliere il percorso di aggiornamento preferito — la versione annuale ESR o le versioni mensili più rapide. {ARelease}Scopri di più sul nuovo modello di rilascio{A2}.{U1} {L1}La versione ESR rimarrà sulla v140, aumentando solo i numeri di versione minori e includendo solo correzioni di sicurezza e bug, spesso preferibile per ambienti aziendali.{L2} {L1}Il ciclo di rilascio mensile offrirà nuove funzionalità e aggiornamenti dell'interfaccia man mano che vengono sviluppati. Controlla se i tuoi componenti aggiuntivi attuali supportano questo modello di rilascio. Per aiutarti, puoi installare il {AcompatCheck}Controllo compatibilità componenti aggiuntivi{A2}.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2135,7 +2135,7 @@
     "message": "Leggi qui (in inglese) l'elenco dettagliato delle modifiche:"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders è ora compatibile con Thunderbird 139. D'ora in poi, mira a rimanere compatibile con il ciclo di rilascio mensile attuale.{P2}{L1}Migliorato lo scorrimento dell’albero delle cartelle di Thunderbird per raggiungere la cartella corrente. [issue 559]{L2}{L1}L’etichetta (Modalità Anteprima) viene ora sempre rimossa dalla barra degli strumenti di QuickFolders, tranne che nella scheda delle impostazioni. [issue 571]{L2}{L1}Rimosso (null) dietro la voce di menu della barra degli strumenti QuickFolders nel menu Visualizza di Thunderbird.{L2}"
+    "message": "{P1} QuickFolders è ora compatibile con Thunderbird 140 — e continuerà a supportare l’attuale ciclo di rilascio mensile.{P2}{L1} Nuova opzione di ricerca avanzata: Apri cartella in scheda come predefinito [issue 577]{L2}{L1} Corretto: il salvataggio del file di configurazione poteva fallire a causa di un valore files.path non valido [issue 581]{L2}{L1} Tooltip migliorati nelle Proprietà specifiche delle schede [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

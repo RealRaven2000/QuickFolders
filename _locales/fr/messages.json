@@ -415,7 +415,7 @@
     "message": "{P1} Merci de soutenir QuickFolders avec une licence Pro — cela rend possibles toutes les nouvelles fonctionnalités, corrections de bugs et compatibilité à long terme.{P2}"
   },
   "newsSection": {
-    "message": "{P1} La dernière édition de $addonName$ est maintenant compatible avec Thunderbird v139 et a commencé son chemin vers une meilleure accessibilité pour les claviers et les lecteurs d'écran.{P2}{P1} Dans la version de maintenance {boldStart}6.10.1{boldEnd}, nous avons également ajouté un meilleur accès au clavier à la barre d'outils avec des signets et leurs sous-menus, ainsi que des options spécifiques dans la section d'accessibilité des paramètres avancés. {P2}",
+    "message": "{P1}{boldStart} À venir dans la prochaine grande version {boldEnd} : Thunderbird vous demandera bientôt de choisir votre voie de mise à jour préférée — soit la piste ESR annuelle, soit les versions mensuelles plus rapides. {ARelease}En savoir plus sur le nouveau modèle de publication{A2}.{U1} {L1}La version ESR restera sur la v140, n’augmentant que les numéros de version mineurs et incluant uniquement des correctifs de sécurité et de bugs, ce qui est souvent préférable pour les environnements professionnels.{L2} {L1}Le cycle de publication mensuel apportera de nouvelles fonctionnalités et des mises à jour d’interface au fur et à mesure de leur développement. Veuillez vérifier si vos modules complémentaires actuels prennent en charge ce modèle. Pour vous aider, vous pouvez installer le {AcompatCheck}Vérificateur de compatibilité des modules complémentaires{A2}.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2124,7 +2124,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders est désormais compatible avec Thunderbird 139. À l'avenir, il vise à rester compatible avec le cycle de publication mensuel actuel.{P2}{L1}Amélioration du défilement de l’arborescence des dossiers de Thunderbird pour atteindre le dossier actuel. [issue 559]{L2}{L1}L’étiquette (Mode Aperçu) est désormais toujours supprimée de la barre d’outils QuickFolders, sauf dans l’onglet des paramètres. [issue 571]{L2}{L1}(null) a été supprimé derrière l’élément de menu de la barre d’outils QuickFolders dans le menu Affichage de Thunderbird.{L2}"
+    "message": "{P1} QuickFolders est désormais compatible avec Thunderbird 140 — et continuera de prendre en charge le cycle de publication mensuel actuel.{P2}{L1} Nouvelle option de recherche avancée : Ouvrir le dossier dans un onglet par défaut [issue 577]{L2}{L1} Correction : l’enregistrement du fichier de configuration pouvait échouer à cause d’une valeur files.path invalide [issue 581]{L2}{L1} Info-bulles améliorées dans les propriétés spécifiques aux onglets [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

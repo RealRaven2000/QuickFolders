@@ -395,7 +395,7 @@
     "message": "{P1} Hvala, ker podpirate QuickFolders s Pro licenco — to omogoča vse nove funkcije, popravke napak in dolgoročno združljivost.{P2}"
   },
   "newsSection": {
-    "message": "{P1} Zadnja različica $addonName$ je zdaj združljiva s Thunderbirdom v139 in je začela pot k izboljšani dostopnosti za tipkovnice in bralnike zaslona. {P2}{P1} V vzdrževalni različici {boldStart}6.10.1{boldEnd} smo prav tako dodali izboljšan dostop do orodne vrstice z zaznamki in njihovimi podmeniji prek tipkovnice ter specifične možnosti v razdelku dostopnosti v naprednih nastavitvah. {P2}",
+    "message": "{P1}{boldStart} Kmalu v naslednji veliki izdaji {boldEnd}: Thunderbird vas bo kmalu prosil, da izberete svojo želeno pot posodobitev — letno ESR pot ali hitrejše mesečne izdaje. {ARelease}Več o novem modelu izdaj{A2}.{U1} {L1}ESR različica bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in popravke napak, kar je pogosto bolj primerno za poslovna okolja.{L2} {L1}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo razvite. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaj. Za pomoč lahko namestite {AcompatCheck}Preverjanje združljivosti dodatkov{A2}.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2028,7 +2028,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders je zdaj združljiv z Thunderbirdom 139. V prihodnje bo skušal ostati združljiv s trenutnim mesečnim ciklom izdaj.{P2}{L1>Izboljšano pomikanje po drevesu map v Thunderbirdu do trenutne mape. [issue 559]{L2}{L1>Oznaka (Predogledni način) je zdaj vedno odstranjena iz orodne vrstice QuickFolders, razen na zavihku z nastavitvami. [issue 571]{L2}{L1>Odstranjeno (null) za menijsko postavko orodne vrstice QuickFolders v meniju Pogled v Thunderbirdu.{L2}"
+    "message": "{P1} QuickFolders je zdaj združljiv s Thunderbirdom 140 — in bo še naprej podpiral trenutni mesečni cikel izdaj.{P2}{L1} Nova napredna možnost iskanja: Odpri mapo v zavihku privzeto [issue 577]{L2}{L1} Popravljeno: Shranjevanje konfiguracijske datoteke je lahko spodletelo zaradi neveljavne vrednosti files.path [issue 581]{L2}{L1} Izboljšani namigi v lastnostih, specifičnih za zavihek [issue 580]{L2}"
   },
   "yearlyLicense.premiumFeatures": {
     "message": "QuickFolders Pro vam omogoča poln neomejen dostop do značilnosti Premium."

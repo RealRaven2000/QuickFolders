@@ -407,7 +407,7 @@
     "message": "{P1} Bedankt voor uw steun aan QuickFolders met een Pro-licentie — dit maakt alle nieuwe functies, bugfixes en langdurige compatibiliteit mogelijk.{P2}"
   },
   "newsSection": {
-    "message": "{P1} De nieuwste versie van $addonName$ is nu compatibel met Thunderbird v139 en is begonnen aan de reis naar verbeterde toegankelijkheid voor toetsenborden en schermlezers. {P2}{P1} In de onderhoudsversie {boldStart}6.10.1{boldEnd} hebben we ook verbeterde toegang via het toetsenbord toegevoegd voor de werkbalk met bladwijzers en hun submenu's, evenals specifieke opties in het toegankelijkheidssectie van de geavanceerde instellingen. {P2}",
+    "message": "{P1}{boldStart} Binnenkort in de volgende grote release {boldEnd}: Thunderbird zal u binnenkort vragen uw voorkeursupdatepad te kiezen — het jaarlijkse ESR-traject of de snellere maandelijkse releases. {ARelease}Lees meer over het nieuwe release-model{A2}.{U1} {L1}De ESR-versie blijft op v140, verhoogt alleen de subversienummers en bevat alleen beveiligings- en bugfixes, wat vaak de voorkeur heeft in zakelijke omgevingen.{L2} {L1}De maandelijkse releasecyclus levert nieuwe functies en interface-updates zodra deze zijn ontwikkeld. Controleer of uw huidige add-ons dit release-model ondersteunen. Om u te helpen kunt u de {AcompatCheck}Add-on Compatibiliteitscontrole{A2} installeren.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -2085,7 +2085,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders is nu compatibel met Thunderbird 139. Voortaan is het doel om compatibel te blijven met de huidige maandelijkse releasecyclus.{P2}{L1}Verbeterd scrollen in de mappenboom van Thunderbird om naar de huidige map te gaan. [issue 559]{L2}{L1>Het label (Voorbeeldmodus) wordt nu altijd verwijderd van de QuickFolders-werkbalk, behalve op het tabblad instellingen. [issue 571]{L2}{L1}(null) is verwijderd achter het menu-item van de QuickFolders-werkbalk in het Beeld-menu van Thunderbird.{L2}"
+    "message": "{P1} QuickFolders is nu compatibel met Thunderbird 140 — en blijft de huidige maandelijkse releasecyclus ondersteunen.{P2}{L1} Nieuwe geavanceerde zoekoptie: Map standaard in tabblad openen [issue 577]{L2}{L1} Opgelost: Configuratiebestand opslaan kon mislukken door ongeldige files.path-waarde [issue 581]{L2}{L1} Verbeterde tooltips in tabblad-specifieke eigenschappen [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

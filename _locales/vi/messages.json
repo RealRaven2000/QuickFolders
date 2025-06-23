@@ -356,7 +356,7 @@
     "message": "{P1} Cảm ơn bạn đã hỗ trợ QuickFolders thông qua giấy phép Pro — điều này giúp tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài trở nên khả thi.{P2}"
   },
   "newsSection": {
-    "message": "{P1} Phiên bản mới nhất của $addonName$ hiện tương thích với Thunderbird v139 và đã bắt đầu hành trình cải thiện khả năng tiếp cận cho bàn phím và phần mềm đọc màn hình. {P2}{P1} Trong phiên bản bảo trì {boldStart}6.10.1{boldEnd}, chúng tôi cũng đã thêm khả năng truy cập bàn phím cải thiện cho thanh công cụ với các dấu trang và các menu con của chúng, cũng như các tùy chọn cụ thể trong phần truy cập trong cài đặt nâng cao. {P2}",
+    "message": "{P1}{boldStart} Sắp ra mắt trong bản phát hành lớn tiếp theo {boldEnd}: Thunderbird sẽ sớm yêu cầu bạn chọn đường cập nhật ưu tiên — hoặc theo chu kỳ ESR hàng năm hoặc các bản phát hành hàng tháng nhanh hơn. {ARelease}Tìm hiểu thêm về mô hình phát hành mới{A2}.{U1} {L1}Phiên bản ESR sẽ giữ ở v140, chỉ tăng số phiên bản phụ và chỉ bao gồm các bản vá bảo mật và sửa lỗi, điều này thường được ưa chuộng trong môi trường doanh nghiệp.{L2} {L1}Chu kỳ phát hành hàng tháng sẽ cung cấp các tính năng mới và cập nhật giao diện khi chúng được phát triển. Vui lòng kiểm tra xem các tiện ích bổ sung hiện tại của bạn có hỗ trợ mô hình phát hành này không. Để hỗ trợ, bạn có thể cài đặt {AcompatCheck}Kiểm tra Tương thích Tiện ích bổ sung{A2}.{L2} {U2}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1755,7 +1755,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders hiện đã tương thích với Thunderbird 139. Trong tương lai, tiện ích sẽ duy trì khả năng tương thích với chu kỳ phát hành hàng tháng hiện tại.{P2}{L1>Cải thiện việc cuộn trong cây thư mục Thunderbird đến thư mục hiện tại. [issue 559]{L2}{L1>Nhãn (Chế độ Xem trước) hiện luôn được loại bỏ khỏi thanh công cụ QuickFolders, trừ trong thẻ cài đặt. [issue 571]{L2}{L1>Đã xóa (null) phía sau mục menu cho thanh công cụ QuickFolders trong menu Xem của Thunderbird.{L2}"
+    "message": "{P1} QuickFolders hiện đã tương thích với Thunderbird 140 — và sẽ tiếp tục hỗ trợ chu kỳ phát hành hàng tháng hiện tại.{P2}{L1} Tuỳ chọn tìm kiếm nâng cao mới: Mở thư mục trong Tab theo mặc định [issue 577]{L2}{L1} Đã sửa: Lưu tệp cấu hình có thể thất bại do giá trị files.path không hợp lệ [issue 581]{L2}{L1} Cải thiện chú giải công cụ trong Thuộc tính riêng của Tab [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

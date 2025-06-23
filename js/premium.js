@@ -1,9 +1,9 @@
 
-var sales_name = "EASTER SALE"; // .saleName
-var sales_start_lbl = "March 18th"; // .saleStart
-var sales_end_lbl = "March 30th";  // .saleEnd
-var sales_start = new Date("2025-03-18");
-var sales_end = new Date("2025-03-30");
+var sales_name = "MIDSUMMER SALE"; // .saleName
+var sales_start_lbl = "June 24th"; // .saleStart
+var sales_end_lbl = "July 8th";  // .saleEnd
+var sales_start = new Date("2025-06-24");
+var sales_end = new Date("2025-07-08");
 
 
 /* functions that remove elements depending on the user type (from user=pro querystring ) */

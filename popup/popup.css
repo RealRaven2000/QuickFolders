@@ -294,3 +294,11 @@ h2 {
 h3 {
   font-size: 16pt;
 }
+
+.link-visited {
+  color: #d2691e !important;
+}
+span.link-visited {
+  font-weight: bold;
+  font-size: 0.8em;
+}

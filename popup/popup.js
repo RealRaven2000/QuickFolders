@@ -69,7 +69,7 @@ function formatAll(txt) {
     )
     .replace(
       /\{AcompatCheck\}/g,
-      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-info-sync-compatibility' class='native'>"
+      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-compatibility-check/' class='native'>"
     )
     .replace(/\{P2\}/g, "</p>")
     .replace(/\{A2\}/g, "</a>")
@@ -268,6 +268,15 @@ async function updateActions() {
     if (link) {
       event.preventDefault();
       browser.tabs.create({ url: link.href });
+      link.classList.add("link-visited"); // [issue 592]
+      // Find or create the status span next to the link
+      let status = link.nextElementSibling;
+      if (!status || !status.classList.contains("link-visited")) {
+        status = document.createElement("span");
+        status.className = "link-visited";
+        link.parentNode.insertBefore(status, link.nextSibling);
+      }
+      status.textContent = " " + messenger.i18n.getMessage("message.linkInTab");
     }
   });
 

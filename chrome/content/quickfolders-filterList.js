@@ -7,6 +7,11 @@
 
   END LICENSE BLOCK */
 
+	/* 
+	  globals
+		  getFilter,
+		*/
+
 
 QuickFolders.FilterList = {
 	eventsAreHooked: false,
@@ -14,14 +19,16 @@ QuickFolders.FilterList = {
 	// FILTER LIST DIALOG FUNCTIONS
 	getFilterListElement: function()	{
 		let el = document.getElementById("filterList");
-		if (!el)
+		if (!el) {
 			el = document.getElementById("filterTree");
+		}
 		return el;
 	} ,
 	
 	getSelectedFilterAt: function(list, i) {
-		if (typeof list.selectedItems !== "undefined")
+		if (typeof list.selectedItems !== "undefined") {
 			return list.selectedItems[i]._filter;
+		}
 
 		// SeaMonkey uses a tree view: - we ignore i as we know that there is only 1 item selected, hence i would be selection index 0
 		let start = new Object(),
@@ -34,12 +41,13 @@ QuickFolders.FilterList = {
 	} ,
 	
 	getSelectedCount: function(list) {
-		if (typeof list.selectedItems !== "undefined")
+		if (typeof list.selectedItems !== "undefined") {
 			return list.selectedItems.length;
+		}
 		return list.view.selection.count;
 	} ,
 	
-	onTop : function (evt) {
+	onTop : function (_evt) {
 		let filtersList = this.getFilterList(), // Tb / SM
 		    list = this.getFilterListElement();
 		try {
@@ -57,9 +65,9 @@ QuickFolders.FilterList = {
 					list.view.selection.clearSelection();  // Pb: gFilterTree
 					list.view.selection.select(0); 
 					list.focus();
-				}
-				else
+				} else {
 					this.onFindFilter(true, false);
+				}
 
 				document.getElementById("qf-reorderButtonTop").disabled=true;
 			}

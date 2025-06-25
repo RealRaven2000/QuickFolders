@@ -1179,7 +1179,7 @@ const showQFmessage = async (messageIds, features, message = "", quickfoldersFea
 
 let retryScheduled = false; // session flag to avoid repeat re-scheduling
 const RETRY_MINUTES = 20;
-const LATEST_UPDATEMSG = "6.11"; // latest version with update message
+const LATEST_UPDATEMSG = "6.11.1"; // latest version with update message
 async function displayUpdateMessage() {
   const messageIds = "newsMsgEsr140",
     licenseInfo = currentLicense?.info,

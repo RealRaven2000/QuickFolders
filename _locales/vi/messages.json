@@ -331,9 +331,10 @@
   "message.btn.cancel": { "message": "Hủy" },
   "message.btn.no": { "message": "Không" },
   "message.btn.yes": { "message": "Có" },
+  "message.features": { "message": "So sánh tính năng…" },
   "message.placeholder": { "message": "Thiếu tin nhắn." },
   "message.licenseScreen": { "message": "Hiển thị tùy chọn giấy phép…" },
-  "message.features": { "message": "So sánh tính năng…" },
+  "message.linkInTab": { "message": "(Liên kết đã mở trong Tab)" },
   "mozillas-basic-platform": {
     "message": "Mozilla chỉ cung cấp một nền tảng cơ bản để cung cấp phần mềm của chúng tôi cho bạn, những người dùng cuối. Nếu chúng tôi cần yêu cầu người dùng thanh toán hoặc hỗ trợ, chúng tôi không thể thực hiện việc này từ addons.thunderbird.net - nó không phải là một 'cửa hàng ứng dụng' có tường trả phí tích hợp hoặc quản lý giấy phép như iTunes hoặc google play."
   },
@@ -1754,7 +1755,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders hiện đã tương thích với Thunderbird 140 — và sẽ tiếp tục hỗ trợ chu kỳ phát hành hàng tháng hiện tại.{P2}{L1} Tuỳ chọn tìm kiếm nâng cao mới: Mở thư mục trong Tab theo mặc định [issue 577]{L2}{L1} Đã sửa: Lưu tệp cấu hình có thể thất bại do giá trị files.path không hợp lệ [issue 581]{L2}{L1} Cải thiện chú giải công cụ trong Thuộc tính riêng của Tab [issue 580]{L2}"
+    "message": "{P1} QuickFolders hiện đã tương thích với Thunderbird 140 — và sẽ tiếp tục hỗ trợ chu kỳ phát hành hàng tháng hiện tại.{P2}{L1} Bản phát hành bảo trì 6.11.1 - đã sửa: cửa sổ bật lên thư mục con không hiển thị khi kéo thư vào một tab. [issue 591]{L2} {L1} 6.11.1: Đã cập nhật liên kết đến trình kiểm tra tương thích tiện ích bổ sung chính thức. {L2}{L1} Tuỳ chọn tìm kiếm nâng cao mới: Mở thư mục trong Tab theo mặc định [issue 577]{L2}{L1} Đã sửa: Lưu tệp cấu hình có thể thất bại do giá trị files.path không hợp lệ [issue 581]{L2}{L1} Cải thiện chú giải công cụ trong Thuộc tính riêng của Tab [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

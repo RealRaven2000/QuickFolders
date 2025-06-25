@@ -382,9 +382,10 @@
   "message.btn.cancel": { "message": "Cancelar" },
   "message.btn.no": { "message": "No" },
   "message.btn.yes": { "message": "Sí" },
+  "message.features": { "message": "Comparar funciones…" },
   "message.placeholder": { "message": "Falta el mensaje." },
   "message.licenseScreen": { "message": "Mostrar opciones de licencia…" },
-  "message.features": { "message": "Comparar funciones…" },
+  "message.linkInTab": { "message": "(Enlace abierto en una pestaña)" },
   "mozillas-basic-platform": {
     "message": "Mozilla solo proporciona una plataforma básica para entregar nuestro software a ustedes, los usuarios finales. Si necesitamos pedir a nuestros usuarios un pago o asistencia, no podemos hacerlo desde addons.thunderbird.net; no es una 'tienda de aplicaciones' con muros de pago integrados o administración de licencias como iTunes o Google Play."
   },
@@ -2087,7 +2088,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders ahora es compatible con Thunderbird 140 — y continuará siendo compatible con el ciclo de lanzamientos mensuales actual.{P2}{L1} Nueva opción de búsqueda avanzada: Abrir carpeta en pestaña por defecto [issue 577]{L2}{L1} Corregido: Guardar el archivo de configuración podía fallar debido a un valor inválido en files.path [issue 581]{L2}{L1} Mejoradas las descripciones emergentes en Propiedades específicas de pestañas [issue 580]{L2}"
+    "message": "{P1} QuickFolders ahora es compatible con Thunderbird 140 — y continuará siendo compatible con el ciclo de lanzamientos mensuales actual.{P2}{L1} Versión de mantenimiento 6.11.1 - corregido: la ventana emergente de subcarpetas no se mostraba al arrastrar un correo a una pestaña. [issue 591]{L2} {L1} 6.11.1: Se actualizó el enlace al comprobador oficial de compatibilidad de complementos. {L2}{L1} Nueva opción de búsqueda avanzada: Abrir carpeta en pestaña por defecto [issue 577]{L2}{L1} Corregido: Guardar el archivo de configuración podía fallar debido a un valor inválido en files.path [issue 581]{L2}{L1} Mejoradas las descripciones emergentes en Propiedades específicas de pestañas [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

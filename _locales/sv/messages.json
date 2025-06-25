@@ -383,9 +383,10 @@
   "message.btn.cancel": { "message": "Avbryt" },
   "message.btn.no": { "message": "Nej" },
   "message.btn.yes": { "message": "Ja" },
+  "message.features": { "message": "Jämför funktioner…" },
   "message.placeholder": { "message": "Meddelande saknas." },
   "message.licenseScreen": { "message": "Visa licensalternativ…" },
-  "message.features": { "message": "Jämför funktioner…" },
+  "message.linkInTab": { "message": "(Länk öppnad i flik)" },
   "mozillas-basic-platform": {
     "message": "Mozilla tillhandahåller bara en grundläggande plattform för att leverera vår programvara till dig, slutanvändarna. Om vi behöver be våra användare om betalning eller support kan vi inte göra detta från addons.thunderbird.net - det är inte en 'app store' med inbyggda betalväggar eller licenshantering som iTunes eller google play."
   },
@@ -2094,7 +2095,7 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders är nu kompatibelt med Thunderbird 140 — och kommer fortsätta stödja den nuvarande månatliga utgivningscykeln.{P2}{L1} Ny avancerad sökfunktion: Öppna mapp i flik som standard [issue 577]{L2}{L1} Fixat: Spara konfigurationsfil kunde misslyckas på grund av ogiltigt files.path-värde [issue 581]{L2}{L1} Förbättrade verktygstips i flikspecifika egenskaper [issue 580]{L2}"
+    "message": "{P1} QuickFolders är nu kompatibelt med Thunderbird 140 — och kommer fortsätta stödja den nuvarande månatliga utgivningscykeln.{P2}{L1} 6.11.1 Underhållsutgåva – åtgärdat: popup för undermapp visades inte när man drog e-post till en flik. [issue 591]{L2} {L1} 6.11.1: Uppdaterad länk till officiella tilläggskompatibilitetskontrollen. {L2}{L1} Ny avancerad sökfunktion: Öppna mapp i flik som standard [issue 577]{L2}{L1} Fixat: Spara konfigurationsfil kunde misslyckas på grund av ogiltigt files.path-värde [issue 581]{L2}{L1} Förbättrade verktygstips i flikspecifika egenskaper [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

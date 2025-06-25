@@ -386,9 +386,10 @@
   "message.btn.cancel": { "message": "Zrušit" },
   "message.btn.no": { "message": "Ne" },
   "message.btn.yes": { "message": "Ano" },
+  "message.features": { "message": "Porovnat funkce…" },
   "message.placeholder": { "message": "Zpráva chybí." },
   "message.licenseScreen": { "message": "Zobrazit možnosti licence…" },
-  "message.features": { "message": "Porovnat funkce…" },
+  "message.linkInTab": { "message": "(Odkaz otevřen na kartě)" },
   "mozillas-basic-platform": {
     "message": "Mozilla poskytuje pouze základní platformu pro doručování našeho softwaru vám, koncovým uživatelům. Pokud potřebujeme požádat naše uživatele o platbu nebo podporu, nemůžeme to udělat z addons.thunderbird.net - nejedná se o „obchod s aplikacemi“ s vestavěnými paywally nebo správou licencí, jako je iTunes nebo Google Play."
   },
@@ -2121,7 +2122,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders je nyní kompatibilní s Thunderbirdem 139. Do budoucna si klade za cíl zůstat kompatibilní s aktuálním měsíčním cyklem vydání.{P2}{L1}Vylepšeno posouvání stromu složek Thunderbirdu na aktuální složku. [issue 559]{L2}{L1}Štítek (Náhledový režim) je nyní vždy odstraněn z panelu nástrojů QuickFolders, kromě záložky nastavení. [issue 571]{L2}{L1}Odstraněno (null) za položkou nabídky panelu nástrojů QuickFolders v nabídce Zobrazit Thunderbirdu.{L2}"
+    "message": "{P1}QuickFolders je nyní kompatibilní s Thunderbirdem 139. Do budoucna si klade za cíl zůstat kompatibilní s aktuálním měsíčním cyklem vydání.{P2}{L1} 6.11.1 Údržbové vydání – opraveno: vyskakovací okno podadresáře se nezobrazovalo při přetahování pošty na kartu. [issue 591]{L2} {L1} 6.11.1: Aktualizován odkaz na oficiální kontrolu kompatibility doplňků. {L2}{L1}Vylepšeno posouvání stromu složek Thunderbirdu na aktuální složku. [issue 559]{L2}{L1}Štítek (Náhledový režim) je nyní vždy odstraněn z panelu nástrojů QuickFolders, kromě záložky nastavení. [issue 571]{L2}{L1}Odstraněno (null) za položkou nabídky panelu nástrojů QuickFolders v nabídce Zobrazit Thunderbirdu.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

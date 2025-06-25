@@ -390,9 +390,10 @@
   "message.btn.cancel": { "message": "Annulla" },
   "message.btn.no": { "message": "No" },
   "message.btn.yes": { "message": "Sì" },
+  "message.features": { "message": "Confronta funzionalità…" },
   "message.placeholder": { "message": "Messaggio mancante." },
   "message.licenseScreen": { "message": "Mostra opzioni di licenza…" },
-  "message.features": { "message": "Confronta funzionalità…" },
+  "message.linkInTab": { "message": "(Collegamento aperto in una scheda)" },
   "mozillas-basic-platform": {
     "message": "Mozilla fornisce solo una piattaforma minimale per distribuire il nostro software agli utenti finali. Se vogliamo richiedere ai nostri utenti un pagamento o fornire loro supporto, non possiamo farlo tramite addons.thunderbird.net - questo infatti non è un \"App store\" che integra le funzioni di pagamento o di gestione delle licenze come iTunes o Google Play."
   },
@@ -2134,7 +2135,7 @@
     "message": "Leggi qui (in inglese) l'elenco dettagliato delle modifiche:"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders è ora compatibile con Thunderbird 140 — e continuerà a supportare l’attuale ciclo di rilascio mensile.{P2}{L1} Nuova opzione di ricerca avanzata: Apri cartella in scheda come predefinito [issue 577]{L2}{L1} Corretto: il salvataggio del file di configurazione poteva fallire a causa di un valore files.path non valido [issue 581]{L2}{L1} Tooltip migliorati nelle Proprietà specifiche delle schede [issue 580]{L2}"
+    "message": "{P1} QuickFolders è ora compatibile con Thunderbird 140 — e continuerà a supportare l’attuale ciclo di rilascio mensile.{P2}{L1} 6.11.1 Rilascio di manutenzione - risolto: il popup delle sottocartelle non veniva mostrato trascinando una mail su una scheda. [issue 591]{L2} {L1} 6.11.1: Aggiornato il link al controllo ufficiale di compatibilità dei componenti aggiuntivi. {L2}{L1} Nuova opzione di ricerca avanzata: Apri cartella in scheda come predefinito [issue 577]{L2}{L1} Corretto: il salvataggio del file di configurazione poteva fallire a causa di un valore files.path non valido [issue 581]{L2}{L1} Tooltip migliorati nelle Proprietà specifiche delle schede [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -371,9 +371,10 @@
   "message.btn.cancel": { "message": "Cancel·la" },
   "message.btn.no": { "message": "No" },
   "message.btn.yes": { "message": "Sí" },
+  "message.features": { "message": "Compara característiques…" },
   "message.placeholder": { "message": "Falta el missatge." },
   "message.licenseScreen": { "message": "Mostra opcions de llicència…" },
-  "message.features": { "message": "Compara característiques…" },
+  "message.linkInTab": { "message": "(Enllaç obert en una pestanya)" },
   "mozillas-basic-platform": {
     "message": "Mozilla només proporciona una plataforma bàsica per lliurar-vos el nostre programari als vostres usuaris finals. Si hem de demanar pagament o assistència als nostres usuaris, no podem fer-ho des de addons.thunderbird.net: no és una \"botiga d'aplicacions\" amb taulers de pagament integrats o gestió de llicències com iTunes o Google Play."
   },
@@ -2017,7 +2018,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders ara és compatible amb Thunderbird 139. A partir d'ara, pretén mantenir la compatibilitat amb el cicle de llançament mensual actual.{P2}{L1}S'ha millorat el desplaçament de l'arbre de carpetes de Thunderbird per desplaçar-se a la carpeta actual. [issue 559]{L2}{L1}L'etiqueta (Mode de previsualització) ara sempre s'elimina de la barra d'eines de QuickFolders excepte a la pestanya de configuració. [issue 571]{L2}{L1}S'ha eliminat (null) darrere de l'element del menú de la barra d'eines de QuickFolders al menú Visualitza de Thunderbird.{L2}"
+    "message": "{P1}QuickFolders ara és compatible amb Thunderbird 139. A partir d'ara, pretén mantenir la compatibilitat amb el cicle de llançament mensual actual.{P2}{L1} 6.11.1 Lliurament de manteniment - solucionat: la finestra emergent de subcarpetes no es mostrava en arrossegar un correu a una pestanya. [issue 591]{L2} {L1} 6.11.1: S'ha actualitzat l'enllaç al comprovador oficial de compatibilitat de complements. {L2}{L1}S'ha millorat el desplaçament de l'arbre de carpetes de Thunderbird per desplaçar-se a la carpeta actual. [issue 559]{L2}{L1}L'etiqueta (Mode de previsualització) ara sempre s'elimina de la barra d'eines de QuickFolders excepte a la pestanya de configuració. [issue 571]{L2}{L1}S'ha eliminat (null) darrere de l'element del menú de la barra d'eines de QuickFolders al menú Visualitza de Thunderbird.{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

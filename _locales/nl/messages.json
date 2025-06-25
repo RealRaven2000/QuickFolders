@@ -382,9 +382,10 @@
   "message.btn.cancel": { "message": "Annuleren" },
   "message.btn.no": { "message": "Nee" },
   "message.btn.yes": { "message": "Ja" },
+  "message.features": { "message": "Vergelijk functies…" },
   "message.placeholder": { "message": "Bericht ontbreekt." },
   "message.licenseScreen": { "message": "Licentie-opties weergeven…" },
-  "message.features": { "message": "Vergelijk functies…" },
+  "message.linkInTab": { "message": "(Link geopend in tabblad)" },
   "mozillas-basic-platform": {
     "message": "Mozilla biedt alleen een basisplatform om onze software aan u, de eindgebruikers, te leveren. Als we onze gebruikers om betaling of ondersteuning moeten vragen, kunnen we dit niet doen vanaf addons.thunderbird.net - het is geen 'app store' met ingebouwde paywalls of licentiebeheer zoals iTunes of Google Play."
   },
@@ -2084,7 +2085,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders is nu compatibel met Thunderbird 140 — en blijft de huidige maandelijkse releasecyclus ondersteunen.{P2}{L1} Nieuwe geavanceerde zoekoptie: Map standaard in tabblad openen [issue 577]{L2}{L1} Opgelost: Configuratiebestand opslaan kon mislukken door ongeldige files.path-waarde [issue 581]{L2}{L1} Verbeterde tooltips in tabblad-specifieke eigenschappen [issue 580]{L2}"
+    "message": "{P1} QuickFolders is nu compatibel met Thunderbird 140 — en blijft de huidige maandelijkse releasecyclus ondersteunen.{P2}{L1} 6.11.1 Onderhoudsrelease - opgelost: submap-popup werd niet getoond bij het slepen van e-mail naar een tabblad. [issue 591]{L2} {L1} 6.11.1: De link naar de officiële add-on compatibiliteitscontrole is bijgewerkt. {L2}{L1} Nieuwe geavanceerde zoekoptie: Map standaard in tabblad openen [issue 577]{L2}{L1} Opgelost: Configuratiebestand opslaan kon mislukken door ongeldige files.path-waarde [issue 581]{L2}{L1} Verbeterde tooltips in tabblad-specifieke eigenschappen [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

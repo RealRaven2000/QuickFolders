@@ -383,10 +383,10 @@
   "message.btn.cancel": { "message": "Abbrechen" },
   "message.btn.no": { "message": "Nein" },
   "message.btn.yes": { "message": "Ja" },
+  "message.features": { "message": "Funktionen vergleichen…" },
   "message.placeholder": { "message": "Nachricht fehlt." },
   "message.licenseScreen": { "message": "Lizenzoptionen anzeigen…" },
-  "message.features": { "message": "Funktionen vergleichen…" },
-
+  "message.linkInTab": { "message": "(Link in Tab geöffnet)" },
   "mozillas-basic-platform": {
     "message": "Mozilla bietet nur eine Basis-Plattform, um unsere Software für Sie als Endbenutzer weiterzuleiten. Wenn wir unsere Benutzer um Zahlung oder Support bitten müssen, können wir dies nicht über addons.thunderbird.net tun - es handelt sich nicht um einen App Store mit integrierten Paywalls oder Lizenzverwaltung wie iTunes oder Google Play."
   },
@@ -2077,7 +2077,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders ist jetzt mit Thunderbird 140 kompatibel — und wird weiterhin den aktuellen monatlichen Release-Zyklus unterstützen.{P2}{L1} Neue erweiterte Suchoption: Ordner standardmäßig im Tab öffnen [issue 577]{L2}{L1} Behoben: Speichern der Konfigurationsdatei konnte aufgrund eines ungültigen files.path-Werts fehlschlagen [issue 581]{L2}{L1} Verbesserte Tooltips in den tab-spezifischen Eigenschaften [issue 580]{L2}"
+    "message": "{P1} QuickFolders ist jetzt mit Thunderbird 140 kompatibel — und wird weiterhin den aktuellen monatlichen Release-Zyklus unterstützen.{P2}{L1} 6.11.1 Wartungs-Release – behoben: Unterordner-Popup wurde beim Ziehen von E-Mails auf einen Tab nicht angezeigt. [issue 591]{L2} {L1} 6.11.1: Der Link zum offiziellen Add-on-Kompatibilitätsprüfer wurde aktualisiert. {L2}{L1} Neue erweiterte Suchoption: Ordner standardmäßig im Tab öffnen [issue 577]{L2}{L1} Behoben: Speichern der Konfigurationsdatei konnte aufgrund eines ungültigen files.path-Werts fehlschlagen [issue 581]{L2}{L1} Verbesserte Tooltips in den tab-spezifischen Eigenschaften [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

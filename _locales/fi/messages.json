@@ -186,9 +186,10 @@
   "message.btn.cancel": { "message": "Peruuta" },
   "message.btn.no": { "message": "Ei" },
   "message.btn.yes": { "message": "Kyllä" },
+  "message.features": { "message": "Vertaile ominaisuuksia…" },
   "message.placeholder": { "message": "Viesti puuttuu." },
   "message.licenseScreen": { "message": "Näytä lisenssivaihtoehdot…" },
-  "message.features": { "message": "Vertaile ominaisuuksia…" },
+  "message.linkInTab": { "message": "(Linkki avattu välilehdessä)" },
   "mozillas-basic-platform": {
     "message": "Mozilla tarjoaa vain perusalustan ohjelmistojemme toimittamiseksi sinulle, loppukäyttäjille. Jos meidän on pyydettävä käyttäjiltämme maksua tai tukea, emme voi tehdä tätä osoitteesta addons.thunderbird.net - se ei ole '' sovelluskauppa '', jossa on sisäänrakennetut paywallit tai lisenssien hallinta, kuten iTunes tai Google Play."
   },
@@ -398,7 +399,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders 現已相容於 Thunderbird 140 — 並將持續支援目前的每月發行週期。{P2}{L1} 新增進階搜尋選項：預設於分頁中開啟資料夾 [issue 577]{L2}{L1} 修正：由於 files.path 值無效，儲存設定檔可能失敗 [issue 581]{L2}{L1} 改善了分頁專屬屬性中的工具提示 [issue 580]{L2}"
+    "message": "{P1} QuickFolders on nyt yhteensopiva Thunderbird 140:n kanssa — ja jatkaa nykyisen kuukausittaisen julkaisusyklin tukemista.{P2}{L1} 6.11.1 Ylläpitopäivitys – korjattu: alikansion ponnahdusikkuna ei näkynyt, kun sähköpostia vedettiin välilehteen. [issue 591]{L2} {L1} 6.11.1: Päivitetty linkki viralliseen lisäosan yhteensopivuustarkistimeen. {L2}{L1} Uusi laajennettu hakuvaihtoehto: Avaa kansio oletuksena välilehdessä [issue 577]{L2}{L1} Korjattu: Asetustiedoston tallennus saattoi epäonnistua virheellisen files.path-arvon vuoksi [issue 581]{L2}{L1} Parannetut työkaluvihjeet välilehtikohtaisissa ominaisuuksissa [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

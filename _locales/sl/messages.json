@@ -370,9 +370,10 @@
   "message.btn.cancel": { "message": "Prekliči" },
   "message.btn.no": { "message": "Ne" },
   "message.btn.yes": { "message": "Da" },
+  "message.features": { "message": "Primerjaj funkcije…" },
   "message.placeholder": { "message": "Sporočilo manjka." },
   "message.licenseScreen": { "message": "Prikaži možnosti licence…" },
-  "message.features": { "message": "Primerjaj funkcije…" },
+  "message.linkInTab": { "message": "(Povezava odprta v zavihku)" },
   "mozillas-basic-platform": {
     "message": "Mozilla ponuja samo osnovno platformo za dostavo naše programske opreme vam, končnim uporabnikom. Če moramo uporabnike prositi za plačilo ali podporo, tega ne moremo storiti z addons.thunderbird.net - to ni 'trgovina z aplikacijami' z vgrajenimi plačilnimi zidovi ali upravljanjem licenc, kot sta iTunes ali google play."
   },
@@ -2027,7 +2028,7 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders je zdaj združljiv s Thunderbirdom 140 — in bo še naprej podpiral trenutni mesečni cikel izdaj.{P2}{L1} Nova napredna možnost iskanja: Odpri mapo v zavihku privzeto [issue 577]{L2}{L1} Popravljeno: Shranjevanje konfiguracijske datoteke je lahko spodletelo zaradi neveljavne vrednosti files.path [issue 581]{L2}{L1} Izboljšani namigi v lastnostih, specifičnih za zavihek [issue 580]{L2}"
+    "message": "{P1} QuickFolders je zdaj združljiv s Thunderbirdom 140 — in bo še naprej podpiral trenutni mesečni cikel izdaj.{P2}{L1} 6.11.1 Vzdrževalna izdaja – popravljeno: pojavno okno podmape se ni prikazalo pri vlečenju pošte na zavihek. [issue 591]{L2} {L1} 6.11.1: Posodobljena povezava do uradnega preverjanja združljivosti dodatkov. {L2}{L1} Nova napredna možnost iskanja: Odpri mapo v zavihku privzeto [issue 577]{L2}{L1} Popravljeno: Shranjevanje konfiguracijske datoteke je lahko spodletelo zaradi neveljavne vrednosti files.path [issue 581]{L2}{L1} Izboljšani namigi v lastnostih, specifičnih za zavihek [issue 580]{L2}"
   },
   "yearlyLicense.premiumFeatures": {
     "message": "QuickFolders Pro vam omogoča poln neomejen dostop do značilnosti Premium."

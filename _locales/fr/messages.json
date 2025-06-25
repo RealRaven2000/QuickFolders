@@ -390,9 +390,10 @@
   "message.btn.cancel": { "message": "Annuler" },
   "message.btn.no": { "message": "Non" },
   "message.btn.yes": { "message": "Oui" },
+  "message.features": { "message": "Comparer les fonctionnalités…" },
   "message.placeholder": { "message": "Message manquant." },
   "message.licenseScreen": { "message": "Afficher les options de licence…" },
-  "message.features": { "message": "Comparer les fonctionnalités…" },
+  "message.linkInTab": { "message": "(Lien ouvert dans un onglet)" },
   "mozillas-basic-platform": {
     "message": "Mozilla fournit uniquement une plate-forme de base pour vous fournir nos logiciels, les utilisateurs finaux. Si nous avons besoin de demander à nos utilisateurs un paiement ou de l'aide, nous ne pouvons pas le faire sur addon.thunderbird.net - ce n'est pas un `` magasin d'applications '' avec des paywalls intégrés ou une gestion des licences comme iTunes ou Google Play."
   },
@@ -2123,7 +2124,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders est désormais compatible avec Thunderbird 140 — et continuera de prendre en charge le cycle de publication mensuel actuel.{P2}{L1} Nouvelle option de recherche avancée : Ouvrir le dossier dans un onglet par défaut [issue 577]{L2}{L1} Correction : l’enregistrement du fichier de configuration pouvait échouer à cause d’une valeur files.path invalide [issue 581]{L2}{L1} Info-bulles améliorées dans les propriétés spécifiques aux onglets [issue 580]{L2}"
+    "message": "{P1} QuickFolders est désormais compatible avec Thunderbird 140 — et continuera de prendre en charge le cycle de publication mensuel actuel.{P2}{L1} Version de maintenance 6.11.1 – corrigé : la fenêtre contextuelle des sous-dossiers ne s’affichait pas lors du glisser-déposer d’un mail sur un onglet. [issue 591]{L2} {L1} 6.11.1 : Mise à jour du lien vers le vérificateur officiel de compatibilité des modules complémentaires. {L2}{L1} Nouvelle option de recherche avancée : Ouvrir le dossier dans un onglet par défaut [issue 577]{L2}{L1} Correction : l’enregistrement du fichier de configuration pouvait échouer à cause d’une valeur files.path invalide [issue 581]{L2}{L1} Info-bulles améliorées dans les propriétés spécifiques aux onglets [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

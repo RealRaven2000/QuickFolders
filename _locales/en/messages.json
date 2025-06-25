@@ -389,9 +389,10 @@
   "message.btn.cancel": { "message": "Cancel" },
   "message.btn.no": { "message": "No" },
   "message.btn.yes": { "message": "Yes" },
+  "message.features": { "message": "Compare Features…" },  
   "message.placeholder": { "message": "Message missing." },
-  "message.licenseScreen": { "message": "Show License Options…"  },
-  "message.features": { "message": "Compare Features…" },
+  "message.licenseScreen": { "message": "Show License Options…" },
+  "message.linkInTab": { "message": "(Link opened in tab)" },
   "mozillas-basic-platform": {
     "message": "Mozilla only provides a basic platform for delivering our software to you, the end users. If we need to ask our users for payment or support we cannot do this from addons.thunderbird.net - it is not an 'app store' with built in paywalls or license management like iTunes or google play."
   },
@@ -1392,7 +1393,7 @@
       }
     }
   },
-  "qf.premium.renew.hide": {"message": "Hide license warning until restart"},
+  "qf.premium.renew.hide": { "message": "Hide license warning until restart" },
   "qf.premium.renewLicense.tooltip": {
     "message": "Your license expired {1} days ago"
   },
@@ -2029,7 +2030,7 @@
   "special-offer-upgrade-condition": {
     "message": "When you upgrade from Standard, you get one full year's license term from the purchase date regardless of the expiry date of your previous license."
   },
-  "special-offer-expiry": {"message": "July 8th"},
+  "special-offer-expiry": { "message": "July 8th" },
   "special-offer-head": {
     "message": "Help keep $addon$ compatible",
     "placeholders": {
@@ -2134,7 +2135,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders is now compatible with Thunderbird 140 — and will continue to support the current monthly release cycle.{P2}{L1} New advanced search option: Open folder in Tab as default [issue 577]{L2}{L1} Fixed: Saving config file could fail due to invalid files.path value [issue 581]{L2}{L1} Improved tooltips in Tab-Specific Properties [issue 580]{L2}"
+    "message": "{P1} QuickFolders is now compatible with Thunderbird 140 — and will continue to support the current monthly release cycle.{P2}{L1} 6.11.1 Maintenance Release - fixed: subfolder popup not showing when dragging mail to a tab. [issue 591]{L2} {L1} 6.11.1: Updated the link to the official Add-on compatibility checker. {L2}{L1} New advanced search option: Open folder in Tab as default [issue 577]{L2}{L1} Fixed: Saving config file could fail due to invalid files.path value [issue 581]{L2}{L1} Improved tooltips in Tab-Specific Properties [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

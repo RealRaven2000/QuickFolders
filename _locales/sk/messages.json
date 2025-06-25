@@ -109,9 +109,10 @@
   "message.btn.cancel": { "message": "Zrušiť" },
   "message.btn.no": { "message": "Nie" },
   "message.btn.yes": { "message": "Áno" },
+  "message.features": { "message": "Porovnať funkcie…" },
   "message.placeholder": { "message": "Správa chýba." },
   "message.licenseScreen": { "message": "Zobraziť možnosti licencie…" },
-  "message.features": { "message": "Porovnať funkcie…" },
+  "message.linkInTab": { "message": "(Odkaz otvorený na karte)" },
   "mozillas-basic-platform": {
     "message": "Mozilla poskytuje iba základnú platformu na doručenie nášho softvéru vám, koncovým používateľom. Ak by sme mali požiadať našich používateľov o platbu alebo podporu, nemôžeme to urobiť z addons.thunderbird.net - nie je to 'obchod s aplikáciami' s integrovanými platobnými bránami alebo správou licencií ako iTunes alebo Google Play."
   },
@@ -280,6 +281,6 @@
     "message": "Prečítajte si podrobný zoznam zmien tu (iba v angličtine):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders je teraz kompatibilný s Thunderbirdom 140 — a bude naďalej podporovať aktuálny mesačný cyklus vydávania.{P2}{L1} Nová rozšírená možnosť vyhľadávania: Otvoriť priečinok v karte ako predvolené [issue 577]{L2}{L1} Opravené: Ukladanie konfiguračného súboru mohlo zlyhať kvôli neplatnej hodnote files.path [issue 581]{L2}{L1} Vylepšené popisy v špecifických vlastnostiach kariet [issue 580]{L2}"
+    "message": "{P1} QuickFolders je teraz kompatibilný s Thunderbirdom 140 — a bude naďalej podporovať aktuálny mesačný cyklus vydávania.{P2}{L1} 6.11.1 Údržbové vydanie – opravené: vyskakovacie okno podpriečinka sa nezobrazovalo pri presúvaní pošty na kartu. [issue 591]{L2} {L1} 6.11.1: Aktualizovaný odkaz na oficiálnu kontrolu kompatibility doplnkov. {L2}{L1} Nová rozšírená možnosť vyhľadávania: Otvoriť priečinok v karte ako predvolené [issue 577]{L2}{L1} Opravené: Ukladanie konfiguračného súboru mohlo zlyhať kvôli neplatnej hodnote files.path [issue 581]{L2}{L1} Vylepšené popisy v špecifických vlastnostiach kariet [issue 580]{L2}"
   }
 }

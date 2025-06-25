@@ -386,9 +386,10 @@
   "message.btn.cancel": { "message": "取消" },
   "message.btn.no": { "message": "否" },
   "message.btn.yes": { "message": "是" },
+  "message.features": { "message": "比较功能…" },
   "message.placeholder": { "message": "消息缺失。" },
   "message.licenseScreen": { "message": "显示许可选项…" },
-  "message.features": { "message": "比较功能…" },
+  "message.linkInTab": { "message": "（連結已在分頁中開啟）" },
   "mozillas-basic-platform": {
     "message": "Mozilla仅提供了一个向您（最终用户）交付我们软件的基本平台。 如果我们需要向我们的用户付款或提供支持，则不能通过addons.thunderbird.net进行操作-这不是内置付费界面或许可证管理（如iTunes或Google Play）的“应用商店”。"
   },
@@ -2022,7 +2023,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders 现已兼容 Thunderbird 140 — 并将继续支持当前的每月发布周期。{P2}{L1} 新增高级搜索选项：默认在标签页中打开文件夹 [issue 577]{L2}{L1} 修复：由于 files.path 值无效，保存配置文件可能失败 [issue 581]{L2}{L1} 改进了标签页专属属性中的工具提示 [issue 580]{L2}"
+    "message": "{P1} QuickFolders 现已兼容 Thunderbird 140 — 并将继续支持当前的每月发布周期。{P2}{L1} 6.11.1 维护版本 - 修复：将邮件拖动到标签时未显示子文件夹弹窗。[issue 591]{L2} {L1} 6.11.1：已更新到官方附加组件兼容性检查器的链接。{L2}{L1} 新增高级搜索选项：默认在标签页中打开文件夹 [issue 577]{L2}{L1} 修复：由于 files.path 值无效，保存配置文件可能失败 [issue 581]{L2}{L1} 改进了标签页专属属性中的工具提示 [issue 580]{L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

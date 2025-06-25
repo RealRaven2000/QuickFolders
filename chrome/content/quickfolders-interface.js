@@ -2986,9 +2986,11 @@ QuickFolders.Interface = {
 			QI.addUniqueEventListener(button, "dragstart", (event) =>
         QuickFolders.buttonDragObserver.startDrag(event, true)
       );
+			/*
 			QI.addUniqueEventListener(button, "dragleave", (event) =>
         QuickFolders.buttonDragObserver.dragLeave(event)
       );
+			*/
 			util.logDebugOptional("folders","Folder [" + label + "] added.\n===================================");
 		}
 

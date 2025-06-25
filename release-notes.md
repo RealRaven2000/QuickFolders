@@ -1,4 +1,10 @@
 
+**Maintenance Release 6.11.1**
+
+*   Version 6.11 Not Displaying Sub-Folders on Drag + Drop. [issue #591]
+*   Link to the Add-on Compatibility Check appears to do nothing; also fixed link to point to official Add-on Compatibility Check. [issue #592]
+
+
 **Improvements**
 
 *   new feature: Open folder in Tab as default. [issue #577]

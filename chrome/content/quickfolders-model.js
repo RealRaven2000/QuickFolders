@@ -57,6 +57,7 @@ QuickFolders.Model = {
 					addCats.push(newCats[i]); 
 				} else {
           // we already see the tab
+          // eslint-disable-next-line no-unused-vars
           isVisible = true;
         }
 			}
@@ -101,7 +102,7 @@ QuickFolders.Model = {
       this.selectedFolders.push({
         account: account,
         uri: uri,
-        name: folder == null ? "" : folder.prettyName,
+        name: folder == null ? "" : (folder.prettyName || folder.localizedName),
         category: categories,
         tabColor: 0,
         icon: iconURI,
@@ -515,7 +516,12 @@ QuickFolders.Model = {
             throw new Error(`Reconstructed URL ${newUri} for ${e.uri} of account ${e.account} is invalid`);
           }
           needsPatch = true;
-          console.log(`QuickFolders\nSuccessfully fixed URI for folder ${f.prettyName}:\n%c${newUri}`, "background: blue; color:white;");
+          console.log(
+            `QuickFolders\nSuccessfully fixed URI for folder ${
+              f.prettyName || f.localizedName
+            }:\n%c${newUri}`,
+            "background: blue; color:white;"
+          );
           e.uri = newUri;
           delete e.invalid;
         } catch (ex) {
@@ -718,7 +724,7 @@ QuickFolders.Model = {
       folderAccounts.push (
         {
           key: account.key,
-          name: account.incomingServer.prettyName,
+          name: account.(incomingServer.prettyName || incomingServer.localizedName),
           idName: account.defaultIdentity.fullName,
           serverKey: account.incomingServer.key,
           hostName: account.incomingServer.hostName,

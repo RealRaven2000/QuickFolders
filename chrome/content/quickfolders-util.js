@@ -762,7 +762,9 @@ QuickFolders.Util = {
     }
     try {
       try {
-        util.logDebugOptional('dnd,quickMove,moveCopy', 'QuickFolders.Util.moveMessages: target = ' + targetFolder.prettyName + ', makeCopy=' + makeCopy);
+        util.logDebugOptional('dnd,quickMove,moveCopy', 
+          "QuickFolders.Util.moveMessages: target = " + (targetFolder.prettyName || targetFolder.localizedName) + 
+          ", makeCopy=" + makeCopy);
       } catch(e) { 
         util.alert('QuickFolders.Util.moveMessages:' + e); 
       }
@@ -847,7 +849,9 @@ QuickFolders.Util = {
           isTargetDifferent = true;
         }
         util.logDebugOptional("moveCopy", 
-          `Copying/Moving ${segment.messages.length} messages from ${sourceFolder.prettyName} to ${targetFolder.prettyName} `
+          `Copying/Moving ${segment.messages.length} messages from ${
+            sourceFolder.prettyName || sourceFolder.localizedName} to ${
+            targetFolder.prettyName || targetFolder.localizedName} `
         );
         
         // from https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-messages.js#195
@@ -918,7 +922,7 @@ QuickFolders.Util = {
 
       step = 4;
       if (!isTargetDifferent) {
-        util.slideAlert("QuickFolders", 'Nothing to do: Message is already in folder: ' + targetFolder.prettyName);
+        util.slideAlert("QuickFolders", 'Nothing to do: Message is already in folder: ' + (targetFolder.prettyName || targetFolder.localizedName));
         return null;
       }
       
@@ -949,9 +953,9 @@ QuickFolders.Util = {
         console.log(
         `QuickFolders.Util.moveMessages()
   calling copyMessages (
-sourceFolder = ${sourceFolder.prettyName} ,
+sourceFolder = ${(sourceFolder.prettyName || sourceFolder.localizedName)} ,
 messages = ${messageList} ,
-destinationFolder = ${targetFolder.prettyName} ,
+destinationFolder = ${(targetFolder.prettyName || targetFolder.localizedName)} ,
 isMove = ${isMove} 
 listener = ${QuickFolders.CopyListener} ,
 window = ${mw} ,
@@ -1028,10 +1032,9 @@ allowUndo = true)`
         folder.setStringProperty("MRUTime", ct);
       }
       let time = folder.getStringProperty("MRUTime");
-      util.logDebug("util.touch(" + folder.prettyName + ")\n" + time + '\n' + util.getMruTime(folder));
-    }
-    catch(ex) {
-      util.logException("util.touch failed on " + folder.prettyName, ex);
+      util.logDebug("util.touch(" + (folder.prettyName || folder.localizedName) + ")\n" + time + '\n' + util.getMruTime(folder));
+    } catch(ex) {
+      util.logException("util.touch failed on " + (folder.prettyName || folder.localizedName), ex);
     }
   } ,
   
@@ -1704,7 +1707,12 @@ allowUndo = true)`
         return false;
       }
       if (p.flags & FLAGS.MSG_FOLDER_FLAG_TRASH) {
-        console.log(`Invalid tab: the folder ${msgFolder.prettyName} has been deleted and is currently in the Trash folder.`, msgFolder);
+        console.log(
+          `Invalid tab: the folder ${
+            msgFolder.prettyName || msgFolder.localizedName
+          } has been deleted and is currently in the Trash folder.`,
+          msgFolder
+        );
         return false; // empty folder, in trash
       }
       return true; // msgFolder.parent != null;
@@ -1968,7 +1976,11 @@ allowUndo = true)`
     for (let folder of folders) {
       if (folder == findItem) {
         found = true;
-        util.logDebugOptional('events','iterateFolders()\nfor..of - found the item and calling payload function(null, folder): ' + folder.prettyName);
+        util.logDebugOptional(
+          "events",
+          "iterateFolders()\nfor..of - found the item and calling payload function(null, folder): " +
+            (folder.prettyName || folder.localizedName)
+        );
         fnPayload(null, folder);
         break;
       }
@@ -2106,12 +2118,13 @@ allowUndo = true)`
     // Step 2: Recursive function to build the path based on prettyName
     function buildPath(folder) {
       // Base case: if the folder has no parent, return its own prettyName
+      const name = folder.prettyName || folder.localizedName;
       if (!folder.parent) {
-        return folder.prettyName;
+        return name;
       }
 
       // Recursively build the path from parent folder + / + prettyName
-      return buildPath(folder.parent) + "/" + folder.prettyName;
+      return buildPath(folder.parent) + "/" + name;
     }
 
     util.logDebug("iterating all folders");
@@ -2143,11 +2156,12 @@ allowUndo = true)`
           "Unread folders + account map",
           allFolders.map(
             (a) =>
-              a.parent.prettyName + "/" + a.prettyName + (a == currentFolder ? " [current]" : "")
+              (a.parent.prettyName || a.parent.localizedName) +
+              "/" +
+              (a.prettyName || a.localizedName) +
+              (a === currentFolder ? " [current]" : "")
           ),
-          Array.from(accountMap.entries()).map(
-            (a) => `${a[1]} : ${a[0]}`
-          )
+          Array.from(accountMap.entries()).map((a) => `${a[1]} : ${a[0]}`)
         );
       }
 
@@ -2198,7 +2212,7 @@ allowUndo = true)`
         // get first unread folder (before current folder)
         if (folder.getNumUnread(false) && !(folder.flags & unwantedFolders)) {
           firstUnread = folder; // remember the first unread folder before we hit current folder
-          util.logDebugOptional("navigation", "first unread folder: " + firstUnread.prettyName);
+          util.logDebugOptional("navigation", "first unread folder: " + (firstUnread.prettyName || firstUnread.localizedName));
         }
       }
       if (found) {
@@ -2207,7 +2221,7 @@ allowUndo = true)`
           isUnread = true;
           util.logDebugOptional(
             "navigation",
-            "Arrived in next unread after found current: " + folder.prettyName
+            "Arrived in next unread after found current: " + (folder.prettyName || folder.localizedName)
           );
           break; // if we have skipped the folder in the iterator and it has unread items we are in the next unread folder
         }

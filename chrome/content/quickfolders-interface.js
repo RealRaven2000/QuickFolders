@@ -231,7 +231,7 @@ QuickFolders.Interface = {
 		if (!(QI.TimeoutID)) {
 			try {
 				let nDelay = QuickFolders.Preferences.getIntPref("queuedFolderUpdateDelay");
-        if (item && item.prettyName) {
+        if (item && (item.prettyName || item.localizedName)) {
           let isUpdateVisible = false;
           // if this folder is not displayed, can we bypass the update?
           let folderUri = item.URI;
@@ -253,7 +253,7 @@ QuickFolders.Interface = {
           }
           if (!isUpdateVisible) {return;}
 
-          util.logDebug("setFolderUpdateTimer(item):" + item.prettyName);
+          util.logDebug("setFolderUpdateTimer(item):" + (item.prettyName || item.localizedName));
         }
 				if (!nDelay>0) {nDelay = 500;}
 				//this.TimeoutID = setTimeout(func, nDelay); // changed to closure, according to Michael Buckley's tip:
@@ -620,7 +620,9 @@ QuickFolders.Interface = {
 		folder = await util.getNextUnreadFolder(currentFolder);
 
 		if (folder) {
-			util.logDebug("selecting next unread folder:" + folder.prettyName + "\n" + folder.URI);
+			util.logDebug(`selecting next unread folder: ${folder.prettyName || folder.localizedName}\n${
+				folder.URI
+			}`);
 			// 
 			if (isSingleMessage) {
 				// find first unread message in folder, then intialize the window
@@ -649,7 +651,7 @@ QuickFolders.Interface = {
 
 			if (currentFolder == folder) { // wrap around case
 			  let txt = util.getBundleString("qfNavigationWrapped")
-				util.slideAlert("QuickFolders",  txt.replace("{1}", folder.prettyName));
+				util.slideAlert("QuickFolders",  txt.replace("{1}", folder.prettyName || folder.localizedName));
 			}
 			// find next sibling, of parent, then trigger onGoNextMsg
 			// navigation types of nsMsgNavigationType are defined in nsIMsgDBView.idl
@@ -1678,11 +1680,11 @@ QuickFolders.Interface = {
 					iconURL = folder.getStringProperty("iconURL");
           if (folderIcon || iconURL) {
             affected++;
-            util.logDebug(folder.prettyName + "\nfolderIcon: " + folderIcon + "\niconURL: " + iconURL);
+            util.logDebug((folder.prettyName || folder.localizedName) + "\nfolderIcon: " + folderIcon + "\niconURL: " + iconURL);
           }
           f++;
         } catch { 
-          util.logDebug(folder.prettyName + "\n - getStringProperty() threw error.");
+          util.logDebug((folder.prettyName || folder.localizedName) + "\n - getStringProperty() threw error.");
         }
 				// folder.setForcePropertyEmpty("folderIcon", false); // remove property
 			}
@@ -2502,8 +2504,13 @@ QuickFolders.Interface = {
 				}
 
         evt.stopPropagation();
-        util.logDebugOptional("interface",
-          "addPopupSet(" + popupId + ", " + folder.prettyName + ", " + entry + ", o= " + offset + ", " + button.id ? button.id : button +", noCommands=" + noCommands + ")");
+				util.logDebugOptional(
+					"interface",
+					`addPopupSet(${popupId}, ${folder.prettyName || folder.localizedName}, ${entry}, o= ${offset}, ${
+						button.id ? button.id : button
+					}, noCommands=${noCommands})`
+				);
+										
         QI.addPopupSet( {popupId:popupId, folder:folder, entry:entry, offset:offset, button:button, noCommands:noCommands, event:evt} );
       }
     } else {
@@ -3907,7 +3914,7 @@ QuickFolders.Interface = {
 
 	rebuildSummary: async function rebuildSummary(folder) {
     // global objects: msgWindow
-    QuickFolders.Util.logDebug(`rebuildSummary(${folder.prettyName}) started... `);
+    QuickFolders.Util.logDebug(`rebuildSummary(${(folder.prettyName || folder.localizedName)}) started... `);
     
 		// taken from http://mxr.mozilla.org/comm-central/source/mail/base/content/folderPane.js#2087
 		if (folder.locked) {
@@ -3939,7 +3946,7 @@ QuickFolders.Interface = {
 		}
 		folder.updateFolder(top.msgWindow);
 		// TODO: Reopen closed views.
-		QuickFolders.Util.slideAlert("QuickFolders", this.getUIstring("qfFolderRepairedMsg") + " " + folder.prettyName);
+		QuickFolders.Util.slideAlert("QuickFolders", this.getUIstring("qfFolderRepairedMsg") + " " + (folder.prettyName || folder.localizedName));
 	} ,
 
 	onRepairFolder: function onRepairFolder(element) {
@@ -3975,17 +3982,19 @@ QuickFolders.Interface = {
 		}
 
     util.logDebugOptional("interface", 
-			`QuickFolders.Interface.onCreateInstantFolder(${parentFolder.prettyName},${folderName})`);
+			`QuickFolders.Interface.onCreateInstantFolder(${(parentFolder.prettyName || parentFolder.localizedName)},${folderName})`);
     let title = util.getBundleString("qf.prompt.newFolder.title"),
 			text = util.getBundleString("qf.prompt.newFolder.newChildName") + ":",
 			checkBoxText = util.getBundleString("qf.prompt.newFolder.createQFtab"),
 			input = { value: folderName },
 			check = { value: false },
-			result = Services.prompt.prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
+			result = Services.prompt.prompt(window, title, 
+				text.replace("{0}", parentFolder.prettyName || parentFolder.localizedName), 
+				input, checkBoxText, check);
 
     if (!result) {return;}
     if (!parentFolder.canCreateSubfolders) {
-			throw ("cannot create a subfolder for: " + parentFolder.prettyName);
+			throw ("cannot create a subfolder for: " + (parentFolder.prettyName || parentFolder.localizedName));
 		}
 		let newFolderUri = parentFolder.URI + "/" + input.value // [issue 512] spaces makes move fail. // encodeURI(input.value);
 
@@ -4032,7 +4041,10 @@ QuickFolders.Interface = {
 
 	onSearchMessages: async function (element) {
 		let folder = QuickFolders.Util.getPopupNode(element).folder;
-		QuickFolders.Util.logDebugOptional("interface", "QuickFolders.Interface.onSearchMessages() folder = " + folder.prettyName);
+		QuickFolders.Util.logDebugOptional(
+			"interface",
+			`QuickFolders.Interface.onSearchMessages() folder = ${folder.prettyName || folder.localizedName}`
+		);
 		// Tb:  // gFolderTreeController.searchMessages();
 		// MsgSearchMessages(folder);
 		// let cmdController = top.controllers.getControllerForCommand("cmd_searchMessages");
@@ -4780,7 +4792,7 @@ QuickFolders.Interface = {
 
     if (folder) {
       fi = folder.QueryInterface(Ci.nsIMsgFolder);
-      util.logDebugOptional("popupmenus",`Creating Popup Set for ${fi.prettyName}\nId: ${popupId}\nuri: ${fi.URI}\nflags: ${fi.flags}`);
+      util.logDebugOptional("popupmenus",`Creating Popup Set for ${(fi.prettyName || fi.localizedName)}\nId: ${popupId}\nuri: ${fi.URI}\nflags: ${fi.flags}`);
 
       /* In certain cases, let's append mail folder commands to the root menu */
       if (fi.flags & util.FolderFlags.MSG_FOLDER_FLAG_NEWSGROUP) {
@@ -5151,7 +5163,7 @@ QuickFolders.Interface = {
 		try {
       if (typeof folder.server === "undefined") {return;}
 
-			util.logDebugOptional("dragToNew","addDragToNewFolderItem	" + folder.prettyName
+			util.logDebugOptional("dragToNew","addDragToNewFolderItem	" + (folder.prettyName || folder.localizedName)
 				+ "\ncanCreateSubfolders = " + folder.canCreateSubfolders
 				+ "\nserver.type = " + folder.server.type);
 			if (!folder.canCreateSubfolders) {return;}
@@ -5231,8 +5243,8 @@ QuickFolders.Interface = {
 	} ,
 
   // show a reusable label representing a folder path (for quickMove, quickJump and recent folders).
-  // 0 - just folder.prettyName
-  // 1 - folder.prettyName - Account  (default)
+  // 0 - just (folder.prettyName || folder.localizedName)
+  // 1 - (folder.prettyName || folder.localizedName) - Account  (default)
   // 2 - account - folder path
   // 3 - folder path
   // 4 - folder.URI  [for debugging]
@@ -5244,9 +5256,9 @@ QuickFolders.Interface = {
         if (folder.isServer && !includeServer) {
           return pathComponents;
 				}
-        pathComponents = folder.prettyName
-                       + (pathComponents ? chevron  : "")
-                       + pathComponents;
+        pathComponents = (folder.prettyName || folder.localizedName)
+					+ (pathComponents ? chevron  : "")
+					+ pathComponents;
         if (folder.isServer) {
           break;
 				}
@@ -5324,15 +5336,19 @@ QuickFolders.Interface = {
 			prefs = QuickFolders.Preferences,
 			QI = QuickFolders.Interface,
 			util = QuickFolders.Util;
-		const sortedFolders = options.forceAlphaSort
-      ? [...subfolders].sort((a, b) =>
-          a.prettyName.localeCompare(b.prettyName, undefined, { sensitivity: "base" })
-        )
-      : subfolders;
+			const sortedFolders = options.forceAlphaSort
+        ? [...subfolders].sort((a, b) =>
+            (a.prettyName || a.localizedName).localeCompare(
+              b.prettyName || b.localizedName,
+              undefined,
+              { sensitivity: "base" }
+            )
+          )
+        : subfolders;
 
 		// displayFolderPathDetail (int)
-		// 0 - just folder.prettyName
-		// 1 - folder.prettyName - Account
+		// 0 - just (folder.prettyName || folder.localizedName)
+		// 1 - (folder.prettyName || folder.localizedName) - Account
 		// 2 - account - folder path
 		// 3 - folder path
 		// 4 - folder.URI  [for debugging]
@@ -5589,7 +5605,10 @@ QuickFolders.Interface = {
 	addSubFoldersPopup: function (popupMenu, folder, isDrag, isRecentFolderList = false) {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences;
-		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopup(" + folder.prettyName + ", drag=" + isDrag + ")" );
+					util.logDebugOptional(
+            "popupmenus.subfolders",
+            `addSubFoldersPopup(${folder.prettyName || folder.localizedName}, drag=${isDrag})`
+          );
 		let isDragNew = isDrag && prefs.getBoolPref("folderMenu.dragToNew");
 
 		if (folder.hasSubFolders) {
@@ -5608,7 +5627,9 @@ QuickFolders.Interface = {
 			this.addSubFoldersPopupFromList(subfolders, popupMenu, menuOptions);
       if (isProfiling) {
         let time = util.stopWatch("all","addSubFoldersPopup");
-        let fName = folder ? (folder.prettyName || "[missing folder name]") : "[missing folder]";
+        const fName = folder
+          ? folder.prettyName || folder.localizedName || "[missing folder name]"
+          : "[missing folder]";
         console.log(`%caddSubFoldersPopup(${fName}) - Creating addSubFoldersPopupFromList() took: ${time}`, "background-color: rgb(0,160,40); color:white;");
       }
 		}
@@ -5812,11 +5833,11 @@ QuickFolders.Interface = {
           p = parts[parts.length]; // get right-most part
         while (parts.length && par.parent) {
           if (!pS) {
-            pS = par.prettyName;
+            pS = (par.prettyName || par.localizedName);
           } else {
-            pS = par.prettyName + "/" + pS;
+            pS = (par.prettyName || par.localizedName) + "/" + pS;
           }
-          if (par.prettyName.toLocaleLowerCase().startsWith(p)) {p = parts.pop();}
+          if ((par.prettyName || par.localizedName).toLocaleLowerCase().startsWith(p)) {p = parts.pop();}
           par = par.parent;
         }
         return pS;
@@ -5824,9 +5845,9 @@ QuickFolders.Interface = {
       for (let i = countParents; i > 0; i--) {
         if (!par || par.isServer) {break;} // do not add server here
         if (!pS) {
-          pS = par.prettyName;
+          pS = (par.prettyName || par.localizedName);
         } else {
-          pS = par.prettyName + "/" + pS;
+          pS = (par.prettyName || par.localizedName) + "/" + pS;
         }
         par = par.parent;
       }
@@ -5836,7 +5857,7 @@ QuickFolders.Interface = {
     // [Bug 26692] omit folders with this tab
     function checkFolderFlag(folder, flag, includeParents) {
       if (!folder) {return false;}
-      let fName = folder.prettyName,
+      let fName = (folder.prettyName || folder.localizedName),
         tabEntry = model.getFolderEntry(folder.URI);
       if (tabEntry && tabEntry.flags && tabEntry.flags & flag) {
         util.logDebugOptional(
@@ -5886,7 +5907,7 @@ QuickFolders.Interface = {
       }
 			if (!folder) {return;}
 
-      let folderNameSearched = folder.prettyName.toLocaleLowerCase(),
+      let folderNameSearched = (folder.prettyName || folder.localizedName).toLocaleLowerCase(),
         matchPos = folderNameSearched.indexOf(searchFolderName),
         rank = 0,
         enableMultiWordMatch = !QuickFolders.Preferences.getBoolPref(
@@ -5932,8 +5953,8 @@ QuickFolders.Interface = {
             return a.uri == folder.URI;
           })
         ) {
-          rank = 1; // searchString.length - folder.prettyName.length;
-          if (searchFolderName.length == folder.prettyName.length) {rank += 7;} // full match - promote
+          rank = 1; // searchString.length - (folder.prettyName || folder.localizedName).length;
+          if (searchFolderName.length == (folder.prettyName || folder.localizedName).length) {rank += 7;} // full match - promote
           if (matchPos == 0) {rank += 3;} // promote the rank if folder name starts with this string
           if (searchFolderName.length <= 2 && matchPos != 0) {
             // doesn't start with single/two letters?
@@ -5988,10 +6009,11 @@ QuickFolders.Interface = {
         if (!firstParent) {firstParent = f;}
 
         // [issue 135] allow in-string search for parents using delimiters: _ . and space!
-        let folderNameMatches = f.prettyName.toLowerCase().split(/[-_@+&. ]/);
+				const fName = (f.prettyName || f.localizedName).toLowerCase();
+        let folderNameMatches = fName.split(/[-_@+&. ]/);
         // [issue 148] splitting prevents full name to be matched!
         if (folderNameMatches.length > 1) {
-          folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
+          folderNameMatches.push(fName); // add the full string
         }
         // [issue 199] include folders that are 1 character long!
         let parentHasSpace = ancestors[maxLevel].includes(" ");
@@ -6031,10 +6053,11 @@ QuickFolders.Interface = {
       while (f && maxLevel) {
         maxLevel--;
         // [issue 135] allow in-string search for children using delimiters: - _ . and space!
-        let folderNameMatches = f.prettyName.toLowerCase().split(/[-_@+&. ]/);
+				const fName = (f.prettyName || f.localizedName).toLowerCase();
+        let folderNameMatches = fName.split(/[-_@+&. ]/);
         // [issue 148] splitting prevents full name to be matched!
         if (folderNameMatches.length > 1) {
-          folderNameMatches.push(f.prettyName.toLowerCase()); // add the full string
+          folderNameMatches.push(fName); // add the full string
         }
         if (folderNameMatches.some((a) => a.startsWith(search))) {
           if (!directParent) {directParent = folder;}
@@ -6341,12 +6364,13 @@ QuickFolders.Interface = {
               // rewrite parentString, too
               atom = atom ? atom.parent : f;
               if (atom.isServer) {break;}
+							const aName = atom.prettyName || atom.localizedName;
               if (!parFld) {
-                parFld = atom.prettyName;
-                parentString = atom.prettyName;
+                parFld = aName;
+                parentString = aName;
               } else {
-                parFld = atom.prettyName + " " + CHEVRON + " " + parFld; // prepend ancestor
-                parentString = atom.prettyName + "/" + parentString;
+                parFld = aName + " " + CHEVRON + " " + parFld; // prepend ancestor
+                parentString = aName + "/" + parentString;
               }
               pc--;
             }
@@ -6779,7 +6803,11 @@ QuickFolders.Interface = {
         folder = msg.folder;
       }
       if (folder) {
-        QuickFolders.Util.logDebugOptional("mailTabs", "getCurrentTabMailFolder() returns displayed message folder: " + folder.prettyName);
+        QuickFolders.Util.logDebugOptional(
+          "mailTabs",
+          "getCurrentTabMailFolder() returns displayed message folder: " +
+            (folder.prettyName || folder.localizedName)
+        );
         return folder;
       }
     }
@@ -6789,7 +6817,11 @@ QuickFolders.Interface = {
 		} else {  // Postbox
       folder = GetFirstSelectedMsgFolder();
 		}
-    QuickFolders.Util.logDebugOptional("mailTabs", "getCurrentTabMailFolder() returns: " + (folder ? folder.prettyName : "n/a"));
+    QuickFolders.Util.logDebugOptional(
+      "mailTabs",
+      "getCurrentTabMailFolder() returns: " +
+        (folder ? folder.prettyName || folder.localizedName : "n/a")
+    );
     return folder;
   },
 
@@ -6814,7 +6846,7 @@ QuickFolders.Interface = {
 
       util.logDebugOptional("interface", "onTabSelected("
 			  + (forceButton || "") + ")\n folder = "
-				+ (folder ? folder.prettyName : "<none>"));
+				+ (folder ? (folder.prettyName || folder.localizedName) : "<none>"));
 		}
 		catch (e) {
 		  util.logException("onTabSelected", e);
@@ -6980,7 +7012,7 @@ QuickFolders.Interface = {
 			} catch { ; }
 
       util.logDebugOptional("interface.currentFolderBar", 
-				`initCurrentFolderTab(${(folder ? folder.prettyName : "null")})\n`
+				`initCurrentFolderTab(${(folder ? (folder.prettyName || folder.localizedName) : "null")})\n`
 				+ `tabMode: ${tabMode} -  tabindex: ${tabIdx}`, 
 				tabInfo
 			);
@@ -7730,7 +7762,7 @@ QuickFolders.Interface = {
 		}
     
     let childFolders = parentFolder.subFolders.sort((a, b) => {
-      return a.prettyName.localeCompare(b.prettyName); // [issue 513]
+      return (a.prettyName || a.localizedName).localeCompare((b.prettyName || b.localizedName)); // [issue 513]
     });
     
     // do nothing if this is the only folder:
@@ -7761,7 +7793,7 @@ QuickFolders.Interface = {
 		if (!current || !parentFolder) {return;}
       
     let childFolders = parentFolder.subFolders.sort((a, b) => {
-      return a.prettyName.localeCompare(b.prettyName); // [issue 513]
+      return (a.prettyName || a.localizedName).localeCompare((b.prettyName || b.localizedName)); // [issue 513]
     });
 
     // do nothing if this is the only folder:
@@ -8114,7 +8146,7 @@ QuickFolders.Interface = {
 				whatIsMoved = arrCount==1 ? newFolders[0].prettyName : "[" + arrCount + " folders]";
 
 		sPrompt = sPrompt.replace("{0}", whatIsMoved);
-		sPrompt = sPrompt.replace("{1}", targetFolder.prettyName);
+		sPrompt = sPrompt.replace("{1}", targetFolder.prettyName || targetFolder.localizedName);
 		if (!Services.prompt.confirm(window, "QuickFolders", sPrompt)) {return;}
 
 		try {
@@ -8166,7 +8198,7 @@ QuickFolders.Interface = {
 		}
 		catch(ex) {
 			sPrompt = util.getBundleString("qfCantMoveFolder");
-			sPrompt = sPrompt.replace("{0}", lastFolder.prettyName);
+			sPrompt = sPrompt.replace("{0}", lastFolder.prettyName || lastFolder.localizedName);
 			Services.prompt.alert(null,"QuickFolders", sPrompt + "\n" + ex);
 			util.logException("Exception in movefolder ", ex);
 		}
@@ -8605,7 +8637,7 @@ QuickFolders.Interface = {
             // retrieve the name from the folder uri (prettyName)
             let f = QuickFolders.Model.getMsgFolderFromUri(entries[i].uri, false);
             if (f) {
-              entries[i].name = f.prettyName;
+              entries[i].name = f.prettyName || f.localizedName;
             }
           }
         }
@@ -8675,11 +8707,11 @@ QuickFolders.Interface = {
         Ci.nsIClipboardHelper
       );
       let account = (MailServices.accounts.FindAccountForServer || MailServices.accounts.findAccountForServer)(folder.server).key;
-      let txt = `Folder ${folder.prettyName}\n`
+      let txt = `Folder ${folder.prettyName || folder.localizedName}\n`
         + `On ${account}\n`
         + `URI: ${folder.URI}`;
       clipboardhelper.copyString(txt);
-      let msg = `Folder information for ${folder.prettyName} was copied to clipboard!`;
+      let msg = `Folder information for ${folder.prettyName || folder.localizedName} was copied to clipboard!`;
       console.log(msg + "\n" + txt);
       Services.prompt.alert(null,"QuickFolders",msg);
     }
@@ -8791,7 +8823,7 @@ QuickFolders.Interface = {
           return;
         }
 
-				// .prompt(window, title, text.replace("{0}", parentFolder.prettyName), input, checkBoxText, check);
+				// .prompt(window, title, text.replace("{0}", (parentFolder.prettyName || parentFolder.localizedName)), input, checkBoxText, check);
 				const result = Services.prompt.confirm(
           null,
           QuickFolders.Util.getBundleString("findRelated.prompt.title"),

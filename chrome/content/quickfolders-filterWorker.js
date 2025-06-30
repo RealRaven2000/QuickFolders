@@ -7,6 +7,12 @@
 	For details, please refer to license.txt in the root folder of this extension
 
   END LICENSE BLOCK */
+
+	/* 
+		globals
+			MsgFilterList,
+			Preferences
+	*/
   
 QuickFolders.FilterWorker = {
 
@@ -32,8 +38,9 @@ QuickFolders.FilterWorker = {
     function removeOldNotification(box, active, id) {
       if (!active && box) {
         let item = box.getNotificationWithValue(id);
-        if(item)
+        if(item) {
           box.removeNotification(item, false);
+				}
       }   
     }
     const util = QuickFolders.Util,
@@ -52,8 +59,10 @@ QuickFolders.FilterWorker = {
       }
       if (notifyBox) {
         let item=notifyBox.getNotificationWithValue(notificationKey)
-        if(item)
-          notifyBox.removeNotification(item, false); // second parameter in Postbox(not documented): skipAnimation
+        if(item) {
+          // second parameter in Postbox(not documented): skipAnimation
+          notifyBox.removeNotification(item, false);
+        }
       }
       else {
         util.logToConsole("Sorry - I cannot show notifyBox, cannot find element specialTabs.msgNotificationBar\n" +
@@ -67,8 +76,7 @@ QuickFolders.FilterWorker = {
 				prefs.getBoolPref("filters.showMessage")) 
 			{
 				
-				let title = util.getBundleString("qf.filters.toggleMessage.title"),
-						theText = util.getBundleString("qf.filters.toggleMessage.notificationText"),
+				let theText = util.getBundleString("qf.filters.toggleMessage.notificationText"),
 						dontShow = util.getBundleString("qf.notification.dontShowAgain");
 
 				
@@ -135,8 +143,9 @@ QuickFolders.FilterWorker = {
 				await window.quickFilters.Worker.toggleFilterMode(active);
 				if (!active && notifyBox) {
 					let item = notifyBox.getNotificationWithValue("quickFilters-filter");
-					if(item)
+					if(item) {
 						notifyBox.removeNotification(item, true);
+					}
 				}
 			}
 		}
@@ -161,7 +170,7 @@ QuickFolders.FilterWorker = {
 	    	
     	}
     }
-    catch (ex) {
+    catch {
       ;
     }
   } ,
@@ -169,14 +178,13 @@ QuickFolders.FilterWorker = {
 	getSourceFolder: function getSourceFolder(msg) {
     let accountCount = 0,
         sourceFolder = null,
-        Cc = Components.classes,
-        Ci = Components.interfaces,
         util = QuickFolders.Util,
 				aAccounts = util.Accounts;
 				
 		for (let a=0; a<aAccounts.length; a++) {
-      if (aAccounts[a].defaultIdentity)
+      if (aAccounts[a].defaultIdentity) {
         accountCount++; 
+			}
 		}
 
     // Get inbox from original account key - or use the only account if a SINGLE one exists
@@ -192,13 +200,14 @@ QuickFolders.FilterWorker = {
         if ((ac.key == msg.accountKey) || (accountCount==1 && ac.defaultIdentity)) {
           // account.identities is an nsISupportsArray of nsIMsgIdentity objects
           // account.defaultIdentity is an nsIMsgIdentity
-          if (msg.accountKey)
+          if (msg.accountKey) {
             util.logDebugOptional('filters', "Found account with matching key: " + ac.key);
+					}
           // account.incomingServer is an nsIMsgIncomingServer
           if (ac.incomingServer && ac.incomingServer.canHaveFilters) {
             // ac.defaultIdentity
             sourceFolder = ac.incomingServer.rootFolder;
-            util.logDebugOptional('filters', "rootfolder: " + sourceFolder.prettyName || '(empty)');
+            util.logDebugOptional('filters', "rootfolder: " + (sourceFolder.prettyName || sourceFolder.localizedName) || '(empty)');
           }
           else {
             util.logDebugOptional('filters', "Account - No incoming Server or cannot have filters!");
@@ -266,8 +275,9 @@ QuickFolders.FilterWorker = {
 			return 0;
 		}
 		
-		if (!messageList || !targetFolder || !messageList.length)
+		if (!messageList || !targetFolder || !messageList.length) {
 			return null;
+		}
     
     /* retrieve (first) message detail */
     util.logDebugOptional ("filters","messageList.length = " + messageList.length);
@@ -285,16 +295,18 @@ QuickFolders.FilterWorker = {
         messageHeader = messageDb.getMsgHdrForMessageID(messageId);
       }
       catch(e) {
-        util.alert("cannot access database for folder "+ targetFolder.prettyName + "\n" + e);
+        util.alert("cannot access database for folder "+ (targetFolder.prettyName || targetFolder.localizedName) + "\n" + e);
         return null;
       }
     }
 
-    if (!messageHeader) 
+    if (!messageHeader) {
       return rerun();
+    }
     msg = messageHeader.QueryInterface(Components.interfaces.nsIMsgDBHdr);
-    if (!msg) 
+    if (!msg) {
       return rerun();
+    }
     
     
     if (!sourceFolder) {
@@ -315,23 +327,22 @@ QuickFolders.FilterWorker = {
 			}
 		}
 		else {
-			if (sourceFolder.prettyName) {
-        util.slideAlert("QuickFolders", "Folder (" + sourceFolder.prettyName + ") does not have a server.");
+			if ((sourceFolder.prettyName || sourceFolder.localizedName)) {
+        util.slideAlert("QuickFolders", "Folder (" + (sourceFolder.prettyName || sourceFolder.localizedName) + ") does not have a server.");
       }
 			return false;
 		}
 
-		if (!QuickFolders.FilterWorker.FilterMode)
-			return -2;
+		if (!QuickFolders.FilterWorker.FilterMode) {
+      return -2;
+    }
     /************* MESSAGE PROCESSING  ********/
 		try {
 			if (msg) {
 				let key = msg.messageKey,
-				    threadParent = msg.threadParent,
-				    thread = msg.thread,
             // some of the fields are not filled, so we need to go to the db to get them
             //let msgHdr = targetFolder.msgDatabase.GetMsgHdrForKey(key); // .QueryInterface(Ci.nsIMsgDBHdr);
-				    folderName = targetFolder.prettyName,
+				    folderName = (targetFolder.prettyName || targetFolder.localizedName),
             filterName = folderName,
             emailAddress, ccAddress, bccAddress;
 				
@@ -363,7 +374,7 @@ QuickFolders.FilterWorker = {
 
 				try {
 				util.logDebugOptional ("filters",
-						"createFilterQF(target folder="+ targetFolder.prettyName
+						"createFilterQF(target folder="+ (targetFolder.prettyName || targetFolder.localizedName)
 							+ ", messageId=" + msg.messageId
 							+ ", author=" + msg.mime2DecodedAuthor + "\n"
 							+ ", subject=" + msg.mime2DecodedSubject + "\n"
@@ -373,7 +384,7 @@ QuickFolders.FilterWorker = {
 							+ ", bcc=" + (bccAddress || '') + "\n"
 							+ ", source folder =" + sourceFolder 
 							+ ", parsed email address=" + emailAddress);
-				} catch(ex) {;} 
+				} catch {;} 
 							
 				let previewText = msg.getStringProperty('preview');
 				util.logDebugOptional ("filters", "previewText="+ previewText );
@@ -381,25 +392,24 @@ QuickFolders.FilterWorker = {
 
 				let args;
 				if (emailAddress) {
-					let retVals = { answer: null },
-					    win = window.openDialog('chrome://quickfolders/content/filterTemplate.xhtml',
+					let retVals = { answer: null };
+					window.openDialog('chrome://quickfolders/content/filterTemplate.xhtml',
 						'quickfolders-filterTemplate',
 						'chrome,titlebar,centerscreen,modal,centerscreen,dialog=yes,accept=yes,cancel=yes',
 						retVals).focus();
 					
-					if (!retVals.answer)
+					if (!retVals.answer) {
 						return false;
+					}
 					
-					let searchTerm, searchTerm2, searchTerm3,
-              filtersList, newFilter, emailAddress2,
+					let searchTerm, searchTerm2,
+              filtersList, newFilter,
               // We have to do prefill filter so we are going to launch the
               // filterEditor dialog and prefill that with the emailAddress.
 					    template = this.getCurrentFilterTemplate();
 
           filtersList = sourceFolder.getEditableFilterList(msgWindow);
           newFilter = filtersList.createFilter(folderName);
-
-					emailAddress2 = '';
 
 					switch (template) {
 						// 1st Filter Template: Conversation based on a Person (email from ..., replies to ...)
@@ -416,8 +426,9 @@ QuickFolders.FilterWorker = {
 							newFilter.appendTerm(searchTerm);
 							newFilter.appendTerm(searchTerm2);
               
-							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false))
+							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
 							  filterName += " - " + emailAddress;
+							}
 							break;
 
 						// 2nd Filter Template: Conversation based on a Mailing list (email to fooList@bar.org )
@@ -435,13 +446,14 @@ QuickFolders.FilterWorker = {
                   newFilter.appendTerm(searchTerm2);
                 }
               }
-							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false))
+							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
 								filterName += " - " + emailAddress;
+							}
 
 							break;
 		
 						// 3nd Filter Template: Conversation based on a Subject  (starts with [blabla])
-						case 'topic':
+						case 'topic': {
 							//// TO DO ... improve parsing of subject keywords
 							//createTerm(filter, attrib, op, val)
 							//searchTerm = createTerm(newFilter, Ci.nsMsgSearchAttrib.Subject, Ci.nsMsgSearchOp.Contains, emailAddress);
@@ -454,20 +466,22 @@ QuickFolders.FilterWorker = {
 								str: topicFilter 
 							};
 							newFilter.appendTerm(searchTerm);
-							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false))
+							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
 							  filterName += " - " + topicFilter;
-							break;
+							}
+						}	break;
 							
 						// 4th Filter Template: Based on a Tag
-						case 'tag':
+						case 'tag': {
 							// get the list of known tags
 							let tagArray = MailServices.tags.getAllTags({}), // nsIMsgTagService
 							    tagKeys = {};
 							// remove for..each
               for (let ti=0; ti<tagArray.length; ti++) {
                 let tagInfo = tagArray[ti];
-								if (tagInfo.tag) 
+								if (tagInfo.tag) {
 									tagKeys[tagInfo.key] = true;
+								}
               }
 
 							// extract the tag keys from the msgHdr
@@ -478,16 +492,20 @@ QuickFolders.FilterWorker = {
 							if (label)
 							{
 								let labelKey = "$label" + label;
-								if (msgKeyArray.includes(labelKey))
+								if (msgKeyArray.includes(labelKey)) {
 									msgKeyArray.unshift(labelKey);
+								}
 							}
 							
 							// Rebuild the keywords string with just the keys that are actual tags or
 							// legacy labels and not other keywords like Junk and NonJunk.
 							// Retain their order, though, with the label as oldest element.
-							for (let i = msgKeyArray.length - 1; i >= 0; --i)
-								if (!(msgKeyArray[i] in tagKeys))
-									msgKeyArray.splice(i, 1); // remove non-tag key
+							for (let i = msgKeyArray.length - 1; i >= 0; --i) {
+								if (!(msgKeyArray[i] in tagKeys)) {
+                  // remove non-tag key
+                  msgKeyArray.splice(i, 1);
+                }
+							}
 
 							// -- Now try to match the search term
 							
@@ -498,20 +516,23 @@ QuickFolders.FilterWorker = {
 								if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
                   for (let ti=0; ti<tagArray.length; ti++) {
                     let tagInfo = tagArray[ti];
-                    if (tagInfo.key === msgKeyArray[i]) 
+                    if (tagInfo.key === msgKeyArray[i])  {
                       filterName += ' ' + tagInfo.tag;
+										}
                   }
 								}
 							}
-							break;
+						} break;
 						default:
 							util.alert('Invalid filter template: ' + template);
 							return false;
 					}
 
 					if (QuickFolders.Preferences.getFiltersBoolPref("naming.parentFolder", true)) {
-					  if (targetFolder.parent)
-					    filterName = targetFolder.parent.prettyName + " - " + filterName;
+						const pf = targetFolder?.parent;
+					  if (pf) {
+              filterName = (pf.prettyName || pf.localizedName) + " - " + filterName;
+            }
 					}
 					newFilter.filterName = filterName;
 
@@ -549,18 +570,15 @@ QuickFolders.FilterWorker = {
 				{
 					QuickFolders.FilterWorker.openFilterList(false, sourceFolder);
 				}
-			}
-			else
+			} else {
 				util.logDebugOptional ("filters","no message found to set up filter");
+			}
 
 			return 1;
-		}
-		catch(e) {
-			util.alert("Exception in QuickFolders.FilterWorker.createFilterQF: " + e.message);
+		} catch(ex) {
+			util.alert("Exception in QuickFolders.FilterWorker.createFilterQF: " + ex.message);
 			return -1;
 		}
-		return null;
-
 	} ,
 
   // [legacy] direct call of filter creation - but only applies with quickFilters 5.6 and older
@@ -583,7 +601,8 @@ QuickFolders.FilterWorker = {
 		let delay = isSlow ? 1200 : 300; // wait for the filter dialog to be updated with the new folder if drag to new
     util.logDebugOptional ("filters", "Preparing filter creation with delay: " + delay + "ms...");
 		window.setTimeout(async function() {
-			let filtered = await QuickFolders.FilterWorker.createFilterQF(sourceFolder, targetFolder, messageList, isCopy);
+			const filtered = await QuickFolders.FilterWorker.createFilterQF(sourceFolder, targetFolder, messageList, isCopy);
+			util.logDebugOptional ("filters", "createFilterQF returned: " + filtered);
 		}, delay);
 		
 	},
@@ -604,11 +623,12 @@ QuickFolders.FilterWorker = {
 			for (let i=0; i<myprefs.length; i++) {
 				let it = myprefs.item(i),
 				    p = { id: it.id, name: it.getAttribute('name'), type: it.getAttribute('type') };
-				if (it.getAttribute('instantApply') == "true") p.instantApply = true;
+				if (it.getAttribute('instantApply') == "true") {p.instantApply = true;}
 				prefArray.push(p);
 			}
-			if (Preferences)
-				Preferences.addAll(prefArray);
+			if (Preferences) {
+        Preferences.addAll(prefArray);
+      }
 		}							
 	},
 	

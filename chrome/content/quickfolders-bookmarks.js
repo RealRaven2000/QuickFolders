@@ -345,7 +345,7 @@ QuickFolders.bookmarks = {
         try {
           let label = util.getFriendlyMessageLabel(hdr);
           if (showFolder && sourceFolder) {
-            label = sourceFolder.prettyName + chevron + label;
+            label = (sourceFolder.prettyName || sourceFolder.localizedName) + chevron + label;
           }
           let entry = {
             Uri: newUri,
@@ -556,7 +556,7 @@ QuickFolders.bookmarks = {
                 if (currentURI == "localhost") {
                   currentURI = currentFolder.server.realHostName;
                 }
-                currentLabel = currentFolder.prettyName;
+                currentLabel = (currentFolder.prettyName || currentFolder.localizedName);
               } catch (ex) {
                 util.logException("Could not determine current folder: ", ex);
                 return "";
@@ -677,13 +677,13 @@ QuickFolders.bookmarks = {
       // lets forget about SANITIZING as this completely narrows us down. trust the file instead
       // note the labels are currently created when ADDING a bookmark and then simply stored
       // we need a separate method for regenerating the labels from the info we haVE:
-      // 1 - entry.FolderUri => msgHeader.prettyName  (fallback to "unknown") + chevron
+      // 1 - entry.FolderUri => (msgHeader.prettyName || msgHeader.localizedName)  (fallback to "unknown") + chevron
       // 2 - entry.author
       // 2 - entry.subject.substr()...
       // 3 - entry.date
       //     let label = util.getFriendlyMessageLabel(hdr);
       //     if (showFolder && sourceFolder)
-      //       label = sourceFolder.prettyName + chevron + label;
+      //       label = (sourceFolder.prettyName || sourceFolder.localizedName) + chevron + label;
 
       /*
           Entry = {

@@ -244,6 +244,10 @@ END LICENSE BLOCK */
     ## [issue 591] Version 6.11 Not Displaying Sub-Folders on Drag + Drop
     ## [issue 592] Link to the Add-on Compatibility Check appears to do nothing
     ##             also fixed link to point to official Add-on Compatibility Check
+
+  6.12 QuickFOlders Pro - WIP
+    ## Make compatible with THunderbird 141.
+    ## Removal of nsI
   
 	TO DO next
 	==========
@@ -1238,7 +1242,7 @@ var QuickFolders = {
 				let targetFolder = menuItem.folder.QueryInterface(Ci.nsIMsgFolder);
 
 				if (!targetFolder.canCreateSubfolders) {
-					util.alert("You can not create a subfolder in " + targetFolder.prettyName);
+					util.alert("You can not create a subfolder in " + (targetFolder.prettyName || targetFolder.localizedName));
 					return false;
 				}
 
@@ -1877,7 +1881,7 @@ var QuickFolders = {
               dragSession.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY
             );
             if (QuickFolders.FilterWorker.FilterMode && QuickFolders.FilterWorker.FilterModeLegacy) {
-              lastAction = "createFilterAsync(" + sourceFolder.prettyName + ", " + targetFolder.prettyName + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
+              lastAction = "createFilterAsync(" + (sourceFolder.prettyName || sourceFolder.localizedName) + ", " + (targetFolder.prettyName || targetFolder.localizedName) + ", " + (msgList ? msgList[0] : "no Messages returned!") + ")";
               await QuickFolders.FilterWorker.createFilterAsync(sourceFolder, targetFolder, msgList, false);
             }
           }
@@ -2176,7 +2180,7 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
 
   util.logDebugOptional(
     "folders.select",
-    `folder [${msgFolder.prettyName}] flags = ${msgFolder.flags}` +
+    `folder [${(msgFolder.prettyName || msgFolder.localizedName)}] flags = ${msgFolder.flags}` +
       (isRoot ? "\nThis is a ROOT folder" : "")
   );
 
@@ -2379,7 +2383,7 @@ QuickFolders.FolderTreeSelect = (event) => {
     logDO("events", "FolderTreeSelect: event target = ", event.target);
     if (folders.length) {
       let selFolder = folders[0];
-      logDO("events", "FolderTreeSelect selecting folder  " + selFolder.prettyName);
+      logDO("events", "FolderTreeSelect selecting folder  " + (selFolder.prettyName || selFolder.localizedName));
       QI.onTabSelected(null, selFolder);
     }
   }
@@ -2415,7 +2419,7 @@ QuickFolders.FolderListener = {
       const util = QuickFolders.Util,
             Ci = Components.interfaces;
       let f = item.QueryInterface(Ci.nsIMsgFolder);
-      util.logDebugOptional("listeners.folder", `onFolderAdded\n${f.prettyName}\n${f.URI}`);
+      util.logDebugOptional("listeners.folder", `onFolderAdded\n${(f.prettyName || f.localizedName)}\n${f.URI}`);
       let fld = QuickFolders.Model.getMsgFolderFromUri(f.URI, true);
       if (!parent.flags & util.FolderFlags.MSG_FOLDER_FLAG_TRASH) {
         util.touch(fld || f); // set MRUTime, unless folder was deleted.
@@ -2451,7 +2455,7 @@ QuickFolders.FolderListener = {
         logDebug = util.logDebug.bind(util),
         logDebugOptional = util.logDebugOptional.bind(util),
         logToConsole = util.logToConsole.bind(util);
-			logDebugOptional("listeners.folder", `OnItemRemoved\n${f.prettyName}\nFROM ${fromURI}`);
+			logDebugOptional("listeners.folder", `OnItemRemoved\n${(f.prettyName || f.localizedName)}\nFROM ${fromURI}`);
 			QuickFolders.FolderListener.lastRemoved = f;
 			// check if QuickFolders references this message folder:
 			if (fromURI !== toURI && toURI) {
@@ -2543,10 +2547,10 @@ QuickFolders.FolderListener = {
 					// describe the action that caused the compacting
 					switch (QuickFolders.compactReportCommandType) {
 						case 'compactFolder':
-							message = util.getBundleString("qfCompactedFolder") + " '" + item.prettyName + "'";
+							message = util.getBundleString("qfCompactedFolder") + " '" + (item.prettyName || item.localizedName) + "'";
 							break;
 						case 'emptyJunk':
-							message = util.getBundleString("qfEmptiedJunk") + " '" + item.prettyName + "'";
+							message = util.getBundleString("qfEmptiedJunk") + " '" + (item.prettyName || item.localizedName) + "'";
 							if (!item.URI) {
 								size2 = 0;
               }
@@ -2606,14 +2610,14 @@ QuickFolders.FolderListener = {
         // which uses GetSelectedMsgFolders()
 				case "FolderLoaded": 
 					try {
-            log("events","event: " + eString + " item:" + item.prettyName);
+            log("events","event: " + eString + " item:" + (item.prettyName || item.localizedName));
 						if (!QI) { return; }
             // make sure this event is not a "straggler"
             try {
               let folders = GetSelectedMsgFolders(),
                   itemFound = util.iterateFolders(folders, item, QI.onTabSelected);
               if (!itemFound) {
-                log("events", `FolderLoaded - belated on folder ${item.prettyName} - NOT shown in current folder bar!`);
+                log("events", `FolderLoaded - belated on folder ${(item.prettyName || item.localizedName)} - NOT shown in current folder bar!`);
               }
             } catch {
               // cannot  get selected folders: new windows maybe?
@@ -2642,7 +2646,7 @@ QuickFolders.FolderListener = {
           let movedFolder = QuickFolders.FolderListener.lastRemoved || item;
           if (movedFolder) {
             // if folder was moved, the prettyName is the same:
-            // if (movedFolder.prettyName == item.prettyName ) { // && item.server.type=='imap'
+            // if ((movedFolder.prettyName || movedFolder.localizedName) == (item.prettyName || item.localizedName) ) { // && item.server.type=='imap'
               QuickFolders.Model.moveFolderURI(movedFolder.URI, item.URI);
             // }
           }

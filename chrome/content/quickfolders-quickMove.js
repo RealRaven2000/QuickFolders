@@ -44,7 +44,7 @@ QuickFolders.quickMove = {
     return (this.folders.length > 0)
   },
   
-  onClick: function onClick(button, evt, forceDisplay) {
+  onClick: function onClick(_button, _evt, _forceDisplay) {
     // we need to display a popup menu with a "cancel" item (this will delete the list of mails to be moved.
     // this.QuickMoveButton ...
     if (confirm('Cancel quickMove operation?')) {
@@ -65,12 +65,13 @@ QuickFolders.quickMove = {
     let uri = fld.URI;
     QuickFolders.Util.logDebugOptional("quickMove","addToHistory()", fld);
     if (uri) {
-      if (QuickFolders.quickMove.history[0] == uri) return;
+      if (QuickFolders.quickMove.history[0] == uri) {return;}
       let newLogged = [];
       newLogged.push(uri);
       for (let i=0; i<QuickFolders.quickMove.history.length; i++) {
+        // eslint-disable-next-line curly
         if (QuickFolders.quickMove.history[i] == uri) continue;
-        if (i>QuickFolders.quickMove.MAX_HISTORY) continue;
+        if (i>QuickFolders.quickMove.MAX_HISTORY) {continue;}
         newLogged.push(QuickFolders.quickMove.history[i]); // append the rest
       }
       QuickFolders.quickMove.history = newLogged; // discard old array.#
@@ -86,8 +87,11 @@ QuickFolders.quickMove = {
       if (prefs.isDebugOption('quickMove')) {
         util.logDebugOptional('quickMove',"rememberLastFolder(" + URIorFolder + ", " + parentName + ")")
       }
-      let fld = (URIorFolder.name) ? URIorFolder : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
-          sRememberFolder = (parentName) ? parentName + "/" + fld.prettyName : fld.prettyName;
+      const fld = URIorFolder.name
+          ? URIorFolder
+          : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
+        name = fld.prettyName || fld.localizedName,
+        sRememberFolder = parentName ? parentName + "/" + name : name;
       prefs.setStringPref("quickMove.lastFolderName", sRememberFolder);
       prefs.setStringPref("quickMove.lastFolderURI", fld.URI);
       util.logDebugOptional("quickMove", "Storing: " + sRememberFolder + " - " + fld.URI);
@@ -104,14 +108,15 @@ QuickFolders.quickMove = {
   execute: async function(targetFolderUri, parentName, folder) {
     function showFeedback(actionCount, isCopy) {
       // show notification
-      if (!actionCount) 
+      if (!actionCount) {
         return;
+      }
     
       let msg = 
         isCopy 
         ?  util.getBundleString("quickfoldersQuickCopiedMails")
         :  util.getBundleString("quickfoldersQuickMovedMails");
-      let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", fld.prettyName);
+      let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", (fld.prettyName || fld.localizedName));
 			if (!QuickFolders.quickMove.Settings.isSilent) {
 				util.slideAlert("QuickFolders", notify);
       }
@@ -233,7 +238,7 @@ QuickFolders.quickMove = {
 		finally {
       setTimeout(function(){
         util.touch(fld); // update MRUTime
-        util.logDebugOptional('quickMove', "End of quickMove.execute()\nTimestamp of [" + fld.prettyName + "] = " +  util.getMruTime(fld));
+        util.logDebugOptional('quickMove', "End of quickMove.execute()\nTimestamp of [" + (fld.prettyName || fld.localizedName) + "] = " +  util.getMruTime(fld));
       },
       800);
 		}
@@ -313,13 +318,13 @@ QuickFolders.quickMove = {
     for (let f of foldersArray) {
       if (this.folders.includes(f)) {
         QuickFolders.Util.logDebug(
-          "Omitting folder " + f.prettyname + " as it is already on the list!"
+          "Omitting folder " + (f.prettyName || f.localizedName) + " as it is already on the list!"
         );
         continue;
       }
       this.folders.push(f);
       this.IsCopy.push(isCopy);
-      let label = f.prettyName,
+      let label = (f.prettyName || f.localizedName),
           menuitem = document.createXULElement("menuitem");
       menuitem.setAttribute("label", label);
       menuitem.classList.add(isCopy ? 'folderCopy' : 'folderUri');
@@ -357,8 +362,9 @@ QuickFolders.quickMove = {
         try {
           let label = QuickFolders.Util.getFriendlyMessageLabel(hdr),
               menuitem = document.createXULElement("menuitem");
-          if (showFolder && sourceFolder)
-            label = sourceFolder.prettyName + Chevron + label;
+          if (showFolder && sourceFolder) {
+            label = (sourceFolder.prettyName || sourceFolder.localizedName) + Chevron + label;
+          }
           menuitem.setAttribute("label", label);
           menuitem.className='msgUri menuitem-iconic' + (isCopy ? ' msgCopy' : '');
           QuickFolders.Interface.addUniqueEventListener(menuitem, "command", (event) => {

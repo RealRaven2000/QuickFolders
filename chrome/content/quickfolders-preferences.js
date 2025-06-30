@@ -85,7 +85,7 @@ QuickFolders.Preferences = {
 					// retrieve the name from the folder uri (prettyName)
 					let f = QuickFolders.Model.getMsgFolderFromUri(e.uri, false);
 					if (f) {
-						e.name = f.prettyName;
+						e.name = f.prettyName || f.localizedName;
 					}
 				}
 				// when loading, reset the disabled Validation!

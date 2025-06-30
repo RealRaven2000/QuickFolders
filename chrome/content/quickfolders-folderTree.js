@@ -9,6 +9,10 @@
   END LICENSE BLOCK */
 	
 // we shall use a dictionary for the folder customization (minimum version Thunderbird 19 for JSON support)
+/*
+  globals
+    gFolderTreeView,
+*/
 
 
 QuickFolders.FolderTree = {
@@ -71,7 +75,7 @@ QuickFolders.FolderTree = {
       QuickFolders.Util.logHighlight("folderTree.restoreStyles()",{color:"#FFFFCC",background:"#994C00"});
     }
     // if (prefs.isDebugOption('folderTree.icons')) debugger;
-    if (!this.dictionary) return;
+    if (!this.dictionary) {return;}
     let len = this.dictionary.size;
 	  if (!len)  {
       return logEarlyExit("dictionary empty?"); 
@@ -86,7 +90,7 @@ QuickFolders.FolderTree = {
     util.logDebugOptional('folderTree.icons', 'iterate Dictionary: ' + len + ' items…');
     // should be for..of
     this.dictionary.forEach(
-      function(value, key, map) {
+      function(value, key, _map) {
         iterate(key,value);
       }
     );
@@ -94,13 +98,14 @@ QuickFolders.FolderTree = {
 	
   hasTreeItemFolderIcon: function(folder) {
     let folderIcon = (folder && (typeof folder.getStringProperty != 'undefined')) ? folder.getStringProperty("folderIcon") : '';
-    if (!folder || folderIcon=='' || folderIcon=='noIcon') 
+    if (!folder || folderIcon == "" || folderIcon == "noIcon") {
       return false;
+    }
     return true;
   } ,
 
   hasFolderCustomIcon: function(fld) {
-    if (!fld) return false;
+    if (!fld) {return false;}
     let entry = QuickFolders.FolderTree.customIcons.find(e => e.folderURI == fld.URI);
     if (entry) {
       return true;
@@ -111,7 +116,7 @@ QuickFolders.FolderTree = {
 	// returns whether element has icon or not
 	addFolderIconToElement: function(element, folder) {
     const util = QuickFolders.Util;
-    util.logDebugOptional('folderTree.icons', 'addFolderIconToElement(' + element.tagName + ', ' + folder.prettyName + ')');
+    util.logDebugOptional('folderTree.icons', 'addFolderIconToElement(' + element.tagName + ', ' + (folder.prettyName || folder.localizedName) + ')');
 	  let hasIcon;
 	  try {
 			let folderIcon =  (folder && (typeof folder.getStringProperty != 'undefined')) ? folder.getStringProperty("folderIcon") : '';
@@ -181,7 +186,7 @@ QuickFolders.FolderTree = {
 
 		for await (let folder of util.allFoldersIterator()) { 
 		  iCount++;
-			if (typeof folder.getStringProperty == 'undefined') continue;
+			if (typeof folder.getStringProperty == 'undefined') {continue;}
       try {
         let key = folder.getStringProperty("folderIcon"),
             url = (key  && key!="noIcon") ? folder.getStringProperty("iconURL") : "";
@@ -197,21 +202,28 @@ QuickFolders.FolderTree = {
           );
 
           if (debug) {
-            txtWithIcon += `${iCount.toString()} - ${folder.server.hostName} - ${folder.prettyName}`;
+            txtWithIcon += `${iCount.toString()} - ${folder.server.hostName} - ${(folder.prettyName || folder.localizedName)}`;
             txtWithIcon += `   ${key}: ${url}\n`;
           }
           iIcons++;
         }
         else { // folder w/o icon
-          if (debug) txtList += iCount.toString() + " - " + folder.server.hostName + " - " + folder.prettyName + "\n";
+          if (debug) {
+            txtList +=
+              `${iCount.toString()} - ${folder.server.hostName} - ${(folder.prettyName || folder.localizedName)}\n`;
+          }
           iNoIcon++;
         }
       }
       catch (ex) {
         if (ex.result != 0x80550007) {
-          util.logException(`QuickFolders.FolderTree.loadDictionary() - ${folder.prettyName}`, ex);
-        }
-        else {
+          util.logException(
+            `QuickFolders.FolderTree.loadDictionary() - ${
+              folder.prettyName || folder.localizedName
+            }`,
+            ex
+          );
+        } else {
           // likely thrown by nsIMsgFolder.getStringProperty
           iErrors++;
         }
@@ -242,7 +254,7 @@ QuickFolders.FolderTree = {
 	} ,
 	
 	storeDictionary: function() {
-	  if (!this.dictionary) return;
+	  if (!this.dictionary) {return;}
 		QuickFolders.Util.logDebugOptional("folderTree", "QuickFolders.FolderTree.storeDictionary()");
 	  // let myJson = 
     //    this.ES6 ?
@@ -298,6 +310,7 @@ QuickFolders.FolderTree = {
   },
 
 	debugDictionary: function(withAlert) {
+		// eslint-disable-next-line no-unused-vars
 		function appendKeyValue(key,value,t) {
 			t.txt += '\n' + key + ': ' + value;
 		}
@@ -307,12 +320,12 @@ QuickFolders.FolderTree = {
 			return;
 		}
 	  let txt = "QuickFolders.FolderTree - Dictionary Contents";
-    this.dictionary.forEach( function(value, key, map) {
+    this.dictionary.forEach( function(value, key, _map) {
       txt += '\n' + key + ': ' + value;
     });
 		
 	  util.logDebugOptional('folderTree', txt);
-		if (withAlert) util.alert(txt);
+		if (withAlert) {util.alert(txt);}
 	} ,
 	
 	addItem: function(key, uri) {
@@ -339,6 +352,7 @@ QuickFolders.FolderTree = {
 		    serverKey = folder.server.key,
 		    GUID = serverKey + "_" + names[names.length-2] + "_" + names[names.length-1];
     let rv =  
+      // eslint-disable-next-line no-useless-escape
       prefix + GUID.replace(/[\s\,\?\!\:\.\@\%\[\]\{\}\(\)\|\/\+\&\^]/g,'_');
 
     return rv;
@@ -382,13 +396,17 @@ QuickFolders.FolderTree = {
             parts = fPath.split('/'),
             shortenedPath = fPath;
         if (parts.length>4) { // buid shortened path.
-          const start = parts[0] || parts[1],  // if path starts with /
-                tri = " \u25B9 ";
+          const start = parts[0] || parts[1];  // if path starts with /
           parts.shift(); // remove 1st (empty?) item
-          while (parts.length>3) parts.shift(); // remove first element.
-          shortenedPath = start + "/" + " \u2026 " + "/" + parts.join("/");
+          while (parts.length>3) {parts.shift();} // remove first element.
+          shortenedPath = start + "/ … /" + parts.join("/");
         }
-        util.logDebugOptional("folderTree.icons", "FolderTree.setFolderTreeIcon(" + folder.prettyName + "," + shortenedPath + ")");
+        util.logDebugOptional(
+          "folderTree.icons",
+          `FolderTree.setFolderTreeIcon(${
+            folder.prettyName || folder.localizedName
+          },${shortenedPath})`
+        );
         fileSpec = fileURL.asciiSpec;
         cssUri = "url(" + fileSpec + ")";
       }
@@ -412,7 +430,7 @@ QuickFolders.FolderTree = {
       // make sure this tab still exists
       let doc = docInfo.document;
       // check if tab is illegal (was closed in the meantim)
-      if (!docInfo.tabOrWindow.chromeBrowser) continue;
+      if (!docInfo.tabOrWindow.chromeBrowser) {continue;}
 
       // this needs to be retrieved from the correct document!
       // QI.CurrentFolderTab; // always update current folder toolbar icon?
@@ -427,7 +445,9 @@ QuickFolders.FolderTree = {
       try {
         if (!iconURI) {
           // when do we force this to be executed?
-          util.logDebug("FolderTree.setFolderTreeIcon(" + folder.prettyName + ", empty)");
+          util.logDebug(
+            `FolderTree.setFolderTreeIcon(${folder.prettyName || folder.localizedName}, empty)`
+          );
           util.logDebugOptional('folderTree.icons', 'REMOVING:\n' + selector + ' {\nbackground-image\n}');
           QuickFolders.Styles.removeElementStyle(ss, selector,'background-image');
           folder.setStringProperty("folderIcon", "noIcon");
@@ -503,7 +523,7 @@ QuickFolders.FolderTree = {
     try {
       let result = Services.prompt.confirm(window, "QuickFolders.FolderTree", "Rebuild the tree for IMAP?\n" +
         "This may take a long time, depending on the number of folders on the server."); 
-      if (!result) return;
+      if (!result) {return;}
       util.ensureNormalFolderView();
       let collapsedFolders = [];          
       util.logDebug("refreshTree() starting to iterate all folders which Thunderbird sees...");
@@ -514,7 +534,7 @@ QuickFolders.FolderTree = {
         if (folder.incomingServerType == "imap" && 
             !(folder.flags & ImapNoselect)) {
           iCount++;
-          if (!isExpanded) collapsedFolders.push(folder); // remember folders that are not open, to restore later.
+          if (!isExpanded) {collapsedFolders.push(folder);} // remember folders that are not open, to restore later.
           // let subscribableServer = folder.server.QueryInterface(Ci.nsISubscribableServer); // gSubscribableServer
           try {
             let isSelected = theTreeView.selectFolder(folder, true); // forceSelect
@@ -524,15 +544,23 @@ QuickFolders.FolderTree = {
                 hasSubFolders = folder.hasSubFolders,
                 canCreateSubfolders = folder.canCreateSubfolders;
             //    subCount = hasSubFolders ? countSubfolders(folder) : 0;
-            util.logDebug("[" + folder.prettyName + "] => index = " + rowIndex + ", hasSubFolders = " + hasSubFolders + ", open = " + isExpanded);
+            util.logDebug(
+              `[${
+                folder.prettyName || folder.localizedName
+              }] => index = ${rowIndex}, hasSubFolders = ${hasSubFolders}, open = ${isExpanded}`
+            );
+
             folder.performExpand(msgWindow);
             //let newSubCount = countSubfolders(folder);
             //if (subCount != newSubCount) {
-            //   util.logToConsole("Subfolder count for [" + folder.prettyName + "] has changed from " + subCount + " to " + newSubCount);
+            //   util.logToConsole("Subfolder count for [" + (folder.prettyName || folder.localizedName) + "] has changed from " + subCount + " to " + newSubCount);
             //}
           }
           catch(ex) {
-            util.logException("Couldn't select [" + folder.prettyName + "] - skipping that one!", ex);
+            util.logException(
+              `Couldn't select [${folder.prettyName || folder.localizedName}] - skipping that one!`,
+              ex
+            );
           }
           // if number of subfolders has changed: preserve subscribe state of parent and propagate
           // subscribableServer.unsubscribe(name);

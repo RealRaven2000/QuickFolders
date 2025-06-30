@@ -24,14 +24,15 @@ var CatWin = {
 		catch(e) {QuickFolders.Util.logDebug (e); return null;}
 	} ,  
   
-	init: function init(event) {
+	init: function init(_event) {
     let folder = window.arguments[1];
 		this.folder = folder;
 		this.window = window;
 
 		this.populateCategories();
 		window.setTimeout(function() {
-			this.document.title = this.document.title + ": " + CatWin.folder.prettyName;
+			const name = CatWin.folder.prettyName || CatWin.folder.localizedName;
+			this.document.title = `${this.document.title}: ${name}`;
 		}, 200);
 		
 		// Tb68 - replace broken ondialogaccept
@@ -71,20 +72,25 @@ var CatWin = {
 			if (category!=FC.ALWAYS  && category!=FC.NEVER) {
 				item = listBox.appendItem(category, category);
 				// is the current folder in this category?
-				if (cats && cats.includes(category))
+				if (cats && cats.includes(category)) {
 					listBox.addItemToSelection(item);
+				}
 			}
 		}
 		item = listBox.appendItem(util.getBundleString("qfShowAlways"), FC.ALWAYS);
-		if (cats && cats.includes(FC.ALWAYS))
+		if (cats && cats.includes(FC.ALWAYS)) {
 			listBox.addItemToSelection(item);
+		}
 		item = listBox.appendItem(util.getBundleString("qfShowNever"), FC.NEVER);
-		if (cats && cats.includes(FC.NEVER))
+		if (cats && cats.includes(FC.NEVER)) {
 			listBox.addItemToSelection(item);
+		}
 		// highlight uncategorized if no categories are defined in folder
 		item = listBox.appendItem(util.getBundleString("qfUncategorized"), FC.UNCATEGORIZED);
-		if (!cats) // "" or null
-			listBox.addItemToSelection(item);
+		if (!cats) {
+      // "" or null
+      listBox.addItemToSelection(item);
+    } 
 		// Tb68 glitch: make sure the focus box is on the first selected index, to avoid always highlighting top item:
 		listBox.currentIndex = listBox.selectedIndex;
 	} ,
@@ -123,32 +129,33 @@ var CatWin = {
                 + newCat;
       }
       
-      
-			util.logDebugOptional("categories","set Selected Category for " + this.folder.prettyName + ": " + category + "...");
+      const name = this.folder.prettyName || this.folder.localizedName;
+			util.logDebugOptional("categories",`set Selected Category for ${name}: ${category}...`);
 
 			QuickFolders.Model.setFolderCategory(this.folder.URI, category);
-		}
-		catch(e) {util.logDebug(e); }
+		} catch(e) { util.logDebug(e); }
 	},
 
 	setColor: function setColor(picker) {
 		alert (QuickFolders.Util.getBundleString("qfColorPickingWIP") + picker.color);
 	},
 
-	onSelectionChange: function onSelectionChange(evt) {
+	onSelectionChange: function onSelectionChange(_evt) {
 		const util = QuickFolders.Util,
           FC = QuickFolders.FolderCategory;
 		let i = 0, // just one iterator will do me :)
 		    listBox = this.CategoriesListBox,
         target = null;
-		if(this.semaphorSel)
+		if (this.semaphorSel) {
 			return;
+		}
 		util.logDebugOptional("categories", "onSelectionChange() - listBox.value = " + listBox.value ); // " + evt.type + "
 
 		if (listBox.selectedItems.length) {
 			target = listBox.selectedItems[listBox.selectedItems.length-1]; // evt.originalTarget; // should be the list item
-			if (target)
+			if (target) {
 				util.logDebugOptional("categories", "target  = " + target.value + " - selected = " + target.selected);
+			}
 		}
 		else { // nothing selected.
 			//special case: empty selection => select UNCATEGORIZED
@@ -168,8 +175,9 @@ var CatWin = {
 			return;
 		}
 		// an item was unselected, but there are still others left in selection
-		if (!target || !target.selected)
-			return;
+		if (!target || !target.selected) {
+      return;
+    }
 
 		let category = target.value,
         sel;
@@ -185,8 +193,9 @@ var CatWin = {
 			if (category == "" || category == FC.ALWAYS || category == FC.NEVER || category == FC.UNCATEGORIZED) {  // this.UNCATEGORIZED
 				sel = listBox.getSelectedItem(i);
 				while (sel) {
-					if (sel.value != category)
-						listBox.removeItemFromSelection(sel);
+					if (sel.value != category) {
+            listBox.removeItemFromSelection(sel);
+          }
 					i--;
 					sel = listBox.getSelectedItem(i);
 				}
@@ -195,8 +204,9 @@ var CatWin = {
 				sel = listBox.getSelectedItem(i);
 				while (sel) {
           // Remove from special categories
-					if (sel.value == "" || sel.value == FC.ALWAYS || category == FC.NEVER) 
-						listBox.removeItemFromSelection(sel);
+					if (sel.value == "" || sel.value == FC.ALWAYS || category == FC.NEVER) {
+            listBox.removeItemFromSelection(sel);
+          }
 					i--;
 					sel = listBox.getSelectedItem(i);
 				}
@@ -210,7 +220,7 @@ var CatWin = {
     const model = QuickFolders.Model;
 		let categoryName = this.$('new-category-name').value;
 		
-		if(!categoryName) return; // do nothing to avoid accidentally removing category box if only one category is defined.
+		if(!categoryName) {return;} // do nothing to avoid accidentally removing category box if only one category is defined.
 
     CatWin.setSelectedCategory(categoryName);
 		// model.setFolderCategory(this.folder.URI, categoryName);
@@ -253,15 +263,16 @@ var CatWin = {
 		this.CategoriesListBox.value = newName;
 	} ,
 
-	deleteSelectedCategory: function deleteSelectedCategory(evt) {
+	deleteSelectedCategory: function deleteSelectedCategory(_evt) {
     const util = QuickFolders.Util,
           model = QuickFolders.Model;
 		util.logDebugOptional("categories","deleteSelectedCategory()");
+		// eslint-disable-next-line no-debugger
 		if (QuickFolders.Preferences.isDebugOption("categories")) { debugger; }
 		// improve routine - make sure we can select multiple items
 		let selectedItems = this.CategoriesListBox.selectedItems, // array
 		    selCount = selectedItems.length;
-		if (!selCount) return;
+		if (!selCount) {return;}
 		if (selCount==1)  {
 			let selectedCategory = selectedItems[0].value;
 			if (!QuickFolders.FolderCategory.isSelectableUI(selectedCategory)) {
@@ -271,8 +282,9 @@ var CatWin = {
 		}
 		else {
 			let question = util.getBundleString("qf.prompt.category.deleteMultiple");
-			if(!Services.prompt.confirm(this.window, "QuickFolders", question))
-				return;
+			if (!Services.prompt.confirm(this.window, "QuickFolders", question)) {
+        return;
+      }
 		}
 		
 		for (let i=0; i<selCount; i++) {
@@ -299,8 +311,9 @@ var CatWin = {
 		if (!iCustomCategories) { // we should hide the categories box, but first reset all model eentrues that are set to UNCATEGORIZED / ALWAYS
 			for (let i=0; i<model.selectedFolders.length; i++) {
 				let cat = model.selectedFolders[i].category;
-				if (cat==this.ALWAYS || cat==this.UNCATEGORIZED) 
-					model.selectedFolders[i].category=null;
+				if (cat == this.ALWAYS || cat == this.UNCATEGORIZED) {
+          model.selectedFolders[i].category = null;
+        }
 			}
 		}
 		
@@ -308,7 +321,7 @@ var CatWin = {
     QuickFolders.Util.notifyTools.notifyBackground({ func: "updateCategoryBox" }); // QI.updateCategoryLayout();
 	} ,
 
-	getCategoryColor: function(cat) {
+	getCategoryColor: function(_cat) {
 
 	}  
   

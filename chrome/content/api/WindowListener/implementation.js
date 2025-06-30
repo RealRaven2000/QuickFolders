@@ -2098,7 +2098,7 @@ var WindowListener_115 = class extends ExtensionCommon.ExtensionAPI {
           }
 
           // Remove tabmonitor
-          if (window[this.uniqueRandomID].hasTabMonitor) {
+          if (window[this.uniqueRandomID] && window[this.uniqueRandomID].hasTabMonitor) {
             this.getTabMail(window).unregisterTabMonitor(this.tabMonitor);
             window[this.uniqueRandomID].hasTabMonitor = false;
           }

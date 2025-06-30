@@ -53,6 +53,7 @@ QuickFolders.Interface = {
 	get Toolbar() { return QuickFolders.Util.$("QuickFolders-Toolbar"); },
 	get PalettePopup() { return QuickFolders.Util.$("QuickFolders-PalettePopup");},
 	get FindFolderBox() { return QuickFolders.Util.$("QuickFolders-FindFolder");},
+	get FindFolderWrapper() { return QuickFolders.Util.$("QuickFolders-FindFolder-wrapper");},
   get FindFolderHelp() { return QuickFolders.Util.$("QuickFolders-FindFolder-Help");},
 	
 	// CURRENT FOLDER ELEMENTS
@@ -746,15 +747,37 @@ QuickFolders.Interface = {
 	} ,
 
 	showElement: function(el, visible) {
-		if (!el) {return;}
-		// for a11y we need to hide the element, collapsed still exposes it to keyboard focus!
-		if (visible) {
-			el.removeAttribute("hidden");
-		} else {
-			el.setAttribute("hidden", "true");
-		}			
-		el.collapsed = !visible;
-	},
+    if (!el) {
+      return;
+    }
+    // "http://www.w3.org/1999/xhtml";
+    const isHTML =
+      el?.namespaceURI !== "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul";
+    // for a11y we need to hide the element, collapsed still exposes it to keyboard focus!
+    if (isHTML) {
+      if (!visible) {
+        el.style.display = "none";
+        el.setAttribute("hidden", "true");
+        el.tabIndex = -1;
+        return;
+      }
+      el.style.display = "";
+      el.removeAttribute("hidden");
+      el.tabIndex = 0;
+      return;
+    }
+
+    // XUL elements
+    if (!visible) {
+      el.setAttribute("hidden", "true");
+      el.collapsed = true;
+      el.tabIndex = -1;
+      return;
+    }
+    el.removeAttribute("hidden");
+    el.collapsed = false;
+    el.tabIndex = 0;
+  },
 
 	// added parameter to avoid deleting categories dropdown while selecting from it!
 	// new option: minimalUpdate - only checks labels, does not recreate the whole folder tree
@@ -5806,7 +5829,7 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	hideFindPopup: function hideFindPopup() {
+	hideFindPopup: function () {
 	  let menupopup = document.getElementById("QuickFolders-FindPopup"),
 		    state = menupopup.getAttribute("state"),
         util = QuickFolders.Util;
@@ -5814,7 +5837,9 @@ QuickFolders.Interface = {
 		//if (state == "open" || state == "showing")
     try {
 			menupopup.hidePopup();
-		} catch(ex) { util.logException("hideFindPopup", ex); }
+		} catch(ex) { 
+			util.logException("hideFindPopup", ex); 
+		}
 	} ,
 
   // forceFind - enter key has been pressed, so we want the first match to force a jump
@@ -6628,9 +6653,10 @@ QuickFolders.Interface = {
         displaySearchControls = true;
       }
       const ff = QI.FindFolderBox;
-      // ff.collapsed = !displaySearchControls;
       QI.showElement(ff, displaySearchControls);
       QI.showElement(QI.FindFolderHelp, displaySearchControls);
+			const searchIcon = document.getElementById("QuickFolders-FindFolder-icon");
+      QI.showElement(searchIcon, displaySearchControls);
 
       if (show) {
         if (actionType) {
@@ -8314,8 +8340,14 @@ QuickFolders.Interface = {
   toggleMoveModeSearchBox: function (toggle) {
     QuickFolders.Util.logDebug("toggleMoveModeSearchBox(" + toggle + ")");
     const searchBox = QuickFolders.Interface.FindFolderBox;
-		if (toggle) {searchBox.classList.add("quickMove");}
-		else {searchBox.classList.remove("quickMove");}
+		const wrapper = QuickFolders.Interface.FindFolderWrapper;
+		if (toggle) {
+			searchBox.classList.add("quickMove");
+			wrapper.classList.add("quickMove");
+		} else {
+			searchBox.classList.remove("quickMove");
+			wrapper.classList.remove("quickMove");
+		}
   } ,
 
   quickMoveButtonClick: function (evt, el) {
@@ -8326,9 +8358,9 @@ QuickFolders.Interface = {
       return;
     }
     // Hide search box on left click if it's visible
-    if (searchBox && !searchBox.hasAttribute("hidden") && evt.button == 0) {
+		if (searchBox && searchBox.style.display !== "none" && evt.button === 0) {
       QuickFolders.quickMove.hideSearch(); // hide search box if shown
-			return
+      return;
     }
 
 		if (QuickFolders.quickMove.hasMails) {

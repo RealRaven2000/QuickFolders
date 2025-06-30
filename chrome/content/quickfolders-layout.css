@@ -4,6 +4,22 @@
 /* version specific styling - removed chrome://quickfolders/content/*/
 @import url('quickfolders-mods.css'); 
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --qf-search-icon-color: rgba(180, 180, 180, 0.8);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --qf-search-icon-color: rgba(100, 100, 100, 0.6);
+  }
+}
+
+.quickMove #QuickFolders-FindFolder-icon {
+  --qf-search-icon-color: rgb(255, 226, 9)  !important;
+}
+
 :root {
 	--qf-tabiconsize: 16px;
 	--qf-treeiconsize: 16px;
@@ -25,11 +41,8 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 	background: transparent !important;
 	border-style: none !important;
 	min-height: 16px;
-	/*! height: 16px !important; */
   height: 100% !important; /* [issue 462] */  
 	background-size: 16px 16px !important;
-	/*! padding-top: 0; */
-	/*! padding-bottom: 0; */
 	padding-right: 1px;
 }
 
@@ -137,7 +150,7 @@ toolbarbutton#QuickFolders-readingList:-moz-drag-over,
 toolbarbutton#QuickFolders-quickMove:-moz-drag-over,
 toolbarbutton#QuickFolders-readingList.dragover,
 toolbarbutton#QuickFolders-quickMove.dragover,
-search-textbox#QuickFolders-FindFolder.dragover
+input#QuickFolders-FindFolder.dragover
  {
   border-bottom-style: dotted !important;
   border-radius: 6px !important;
@@ -237,21 +250,49 @@ menupopup.widerMenu menucaption {
 	align-items: stretch;
 }
 
+#QuickFolders-FindFolder-wrapper {
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+  vertical-align: middle;
+}
+
 
 #QuickFolders-FindFolder {
-	/*! margin-bottom: 0px; */
-	/*! margin-top: 0px; */
-	min-height: 20px !important;
-	/*! width: -moz-min-content; */
-  align-self: center;
-  min-width: 50px;
+  appearance: none !important;
 	background-color: var(--lwt-toolbar-field-background-color, hsla(0,0%,100%,.8)) !important;
   color: var(--lwt-toolbar-field-color, black) !important;
+  border-radius: 0 !important;
+	min-height: 22px !important;
+  background-repeat: no-repeat;
+  background-position: 6px center;
+  padding-left: 24px;
+  align-self: center;
+  min-width: 50px;
+  margin: 2px 4px 2px 4px;  
 }
+
+#QuickFolders-FindFolder:focus {
+  border-radius: 4px !important;
+  border-color: var(--toolbar-field-focus-border-color, #3b99fc); 
+  outline-offset: 0;
+  box-shadow: 0 0 0 2px var(--toolbar-field-focus-border-color, #3b99fc); /* glow-like ring */  
+}
+
+
+#QuickFolders-FindFolder-icon {
+  position: absolute;
+  left: 6px;
+  pointer-events: none;
+  color: var(--qf-search-icon-color, gray); /* --toolbarbutton-icon-fill */
+  height: 16px;
+  width: 16px;
+}
+
 
 #QuickFolders-FindFolder.quickMove,
 #QuickFolders-FindFolder.quickMove[type="search"] {
-  appearance:none; /* overwrite the hardcoded backgrounds of moz-binding textbox.xml#search-textbox */
+  appearance: none; /* overwrite the hardcoded backgrounds of moz-binding textbox.xml#search-textbox */
   background: linear-gradient(to bottom, rgba(242,94,94,1) 0%,rgba(206,9,6,1) 43%,rgba(150,30,30,1) 100%) !important;
 	background-color: rgba(229,132,117,1) !important;
 	color: rgb(255,255,255) !important;

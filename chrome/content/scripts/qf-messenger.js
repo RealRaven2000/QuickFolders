@@ -331,13 +331,6 @@ async function onLoad(activatedWhileWindowOpen) {
           context="QuickFolders-quickMoveMenu"
           tabindex="0"
           />
-        <search-textbox id="QuickFolders-FindFolder" 
-          class="searchBox input-sizer"
-          type="search"
-          collapsed="true" hidden="true"
-          placeholder="__MSG_quickfolders.findFolder.placeHolder__"
-          tabindex="0"
-          />
         <toolbarbutton id="QuickFolders-FindFolder-Help"
           class="popupButton"
           label=""
@@ -376,6 +369,63 @@ async function onLoad(activatedWhileWindowOpen) {
       myToolbar.setAttribute("brighttext", true);
     }
 
+    // [issue 596] add quickMove search box
+    // eslint-disable-next-line no-unused-vars
+    const _targetMarkup = `<input
+      id="QuickFolders-FindFolder"
+      class="searchBox input-sizer"
+      type="search"
+      collapsed="true"
+      hidden="true"
+      placeholder="__MSG_quickfolders.findFolder.placeHolder__"
+      tabindex="0"
+    />`;
+
+    // Create HTML namespaces
+    const htmlNS = "http://www.w3.org/1999/xhtml";
+    const svgNS = "http://www.w3.org/2000/svg";
+
+    // Create wrapper
+    const wrapper = document.createElementNS(htmlNS, "span");
+    wrapper.id = "QuickFolders-FindFolder-wrapper";
+
+    // Create SVG magnifier icon
+    const icon = document.createElementNS(svgNS, "svg");
+    icon.setAttribute("id", "QuickFolders-FindFolder-icon");
+    icon.setAttribute("viewBox", "0 0 24 24");
+    icon.setAttribute("width", "16");
+    icon.setAttribute("height", "16");
+    icon.setAttribute("fill", "currentColor"); // will follow text color
+    icon.setAttribute("hidden", "true");
+    const path = document.createElementNS(svgNS, "path");
+    path.setAttribute(
+      "d",
+      "M10 2a8 8 0 105.293 14.707l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"
+    );
+    icon.appendChild(path);
+
+    const findBox = document.createElementNS(htmlNS, "input");
+    findBox.id = "QuickFolders-FindFolder";
+    findBox.type = "search";
+    findBox.style.display = "none";
+    findBox.placeholder = QF.Util.getBundleString("quickfolders.findFolder.placeHolder");
+    findBox.classList.add("searchBox", "input-sizer");
+    findBox.tabIndex = 0;
+
+    // Assemble wrapper
+    wrapper.appendChild(icon);
+    wrapper.appendChild(findBox);
+
+    const panel = document.getElementById("QuickFolders-oneButtonPanel");
+    if (panel) {
+      const refNode = document.getElementById("QuickFolders-FindFolder-Help");
+      if (refNode) {
+        panel.insertBefore(wrapper, refNode);
+      } else {
+        panel.appendChild(wrapper);
+      }
+    }
+
     // toolbar event handlers
     myToolbar.querySelector("#QuickFolders-title-label").addEventListener("command", (e) => {
       QF.Interface.clickTitleLabel(e.target);
@@ -405,7 +455,8 @@ async function onLoad(activatedWhileWindowOpen) {
           // msg:  "This is a test message for QuickFolders ESR 140.",
           addonfeatures: "RefFeature",
           features: ["ok", "licensing", "featurecomp"],
-        })},
+        });
+      },
       "QuickFolders-ToolbarPopup-dbg0": () =>
         QF.Interface.liftNavigationbar(
           window.gTabmail.currentTabInfo.chromeBrowser.contentDocument
@@ -474,7 +525,9 @@ async function onLoad(activatedWhileWindowOpen) {
 
     for (const [id, handler] of Object.entries({ ...mainMenuHandlers, ...oneButtonHandlers })) {
       const element = document.getElementById(id);
-      if (!element) {continue;}
+      if (!element) {
+        continue;
+      }
       const eventType = eventExceptions[id] || "command"; // Default to "command"
       element.addEventListener(eventType, (e) => {
         e.stopPropagation(); // Prevent bubbling
@@ -507,7 +560,9 @@ async function onLoad(activatedWhileWindowOpen) {
     const qfCatBox = document.getElementById("QuickFolders-Category-Box");
     qfCatBox.addEventListener("dragenter", dragEnterHandler);
     qfCatBox.addEventListener("command", (e) => {
-      if (e.target != qfCatBox) {return;} // event bubbled!
+      if (e.target != qfCatBox) {
+        return;
+      } // event bubbled!
       QF.Interface.selectCategory(e.target.value, false, e.target, e);
     });
 

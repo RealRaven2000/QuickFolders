@@ -122,7 +122,7 @@ QuickFolders.quickMove = {
       }
     }
     async function copyList(uris, origins, isCopy) {
-      if (!uris.length) return;
+      if (!uris.length) {return;}
       const isSingleMessageTab = (tabMode == "mailMessageTab");
       actionCount = 0;
 
@@ -248,11 +248,14 @@ QuickFolders.quickMove = {
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
     for (let i = menu.children.length-1; i>0; i--) {
       let item = menu.children[i];
-      if (item.classList.contains('msgUri') || 
-          item.classList.contains('folderUri') || 
-          item.classList.contains('folderCopy') || 
-          item.tagName=='menuseparator')
+      if (
+        item.classList.contains("msgUri") ||
+        item.classList.contains("folderUri") ||
+        item.classList.contains("folderCopy") ||
+        item.tagName == "menuseparator"
+      ) {
         menu.removeChild(item);
+      }
     }    
   },
   
@@ -277,13 +280,13 @@ QuickFolders.quickMove = {
     this.resetList();
   },
   
-  showSearch: function showSearch() {
+  showSearch: function () {
     QuickFolders.Util.logDebugOptional("interface.findFolder,quickMove", "quickMove.showSearch()");
     QuickFolders.Interface.findFolder(true, 'quickMove');
     QuickFolders.Interface.updateFindBoxMenus(true);
   },
   
-  hideSearch: function hideSearch() {
+  hideSearch: function () {
     QuickFolders.Util.logDebugOptional("interface.findFolder,quickMove", "quickMove.hideSearch()");
     QuickFolders.Interface.findFolder(false,"forceHide");
     QuickFolders.Interface.updateFindBoxMenus(false);
@@ -292,7 +295,7 @@ QuickFolders.quickMove = {
   toggleSuspendMove: function(menuitem) {
     if (!menuitem) {
       menuitem = document.getElementById('QuickFolders-quickMove-suspend');
-      if (!menuitem) return;
+      if (!menuitem) {return;}
     }
     this.suspended = !this.suspended;
     menuitem.checked = this.suspended;
@@ -308,13 +311,14 @@ QuickFolders.quickMove = {
     if (!initialCount && this.Uris.length) {
       // clear uris for moving mails
       this.resetMenu();
-      while (this.Uris.length) this.Uris.pop();
+      while (this.Uris.length) {this.Uris.pop();}
     }    
     
     // add folder items to menu
     let menu = QuickFolders.Util.$('QuickFolders-quickMoveMenu');
-    if (!initialCount)
-      menu.appendChild(document.createXULElement('menuseparator'));
+    if (!initialCount) {
+      menu.appendChild(document.createXULElement("menuseparator"));
+    }
     for (let f of foldersArray) {
       if (this.folders.includes(f)) {
         QuickFolders.Util.logDebug(
@@ -344,7 +348,7 @@ QuickFolders.quickMove = {
     // remove any pending folders to move!
     if (this.hasFolders) {
       this.resetMenu();
-      while (this.folders.length) this.folders.pop();
+      while (this.folders.length) {this.folders.pop();}
     }
     if (this.Uris.indexOf(newUri) == -1) { // avoid duplicates!
       const Chevron = ' ' + "\u00BB".toString() + ' ',
@@ -400,7 +404,7 @@ QuickFolders.quickMove = {
     }
   },
   
-  update: function update() {
+  update: function () {
     let isActive = this.hasMails || this.hasFolders, // ? true : false;
         QI = QuickFolders.Interface,
         util = QuickFolders.Util;

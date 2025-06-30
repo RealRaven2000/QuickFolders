@@ -3,7 +3,14 @@ var { ExtensionCommon } = ChromeUtils.importESModule(
   "resource://gre/modules/ExtensionCommon.sys.mjs"
 );
 
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var QF_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+var { MailServices } = QF_ESM
+  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+  : ChromeUtils.import("resource:///modules/MailServices.jsm");
 
+
+// eslint-disable-next-line no-unused-vars
 var Utilities = class extends ExtensionCommon.ExtensionAPI {
   
   async fileConfig(mode, jsonData, fname) {
@@ -52,7 +59,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           // Store last Path
           util.logDebug("File Picker Path: " + path);
           let lastSlash = path.lastIndexOf("/");
-          if (lastSlash < 0) lastSlash = path.lastIndexOf("\\");
+          if (lastSlash < 0) {lastSlash = path.lastIndexOf("\\");}
           let lastPath = path.substr(0, lastSlash);
           util.logDebug("Storing Path: " + lastPath);
           prefs.setStringPref('files.path', lastPath);
@@ -74,21 +81,23 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           // Store last Path
           util.logDebug("File Picker Path: " + path);
           let lastSlash = path.lastIndexOf("/");
-          if (lastSlash < 0) lastSlash = path.lastIndexOf("\\");
+          if (lastSlash < 0) {lastSlash = path.lastIndexOf("\\");}
           let lastPath = path.substr(0, lastSlash);
           util.logDebug("Storing Path: " + lastPath);
           prefs.setStringPref('files.path', lastPath);
 
           // if (aResult == Ci.nsIFilePicker.returnReplace)
           try {
+            // eslint-disable-next-line no-unused-vars
             let promiseDelete = await IOUtils.remove(path);
             util.logDebug ('saveJSON()…');
             // force appending correct file extension!
             if (!path.toLowerCase().endsWith('.json')) {
               path += '.json';
             }
+            // eslint-disable-next-line no-unused-vars
             let promiseWrite = await IOUtils.writeUTF8(path, jsonData);
-            util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
+            // util.logDebug ('successfully saved ' + byteCount + ' bytes to file');
           }
           catch(reason) {
             util.logDebug ('Save failed for reason:' + reason);
@@ -112,6 +121,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {    
     let self = this;
     
+    // eslint-disable-next-line no-unused-vars
     const PrefTypes = {
       [Services.prefs.PREF_STRING] : "string",
       [Services.prefs.PREF_INT] : "number",
@@ -127,14 +137,14 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         getUserName: function () {
-          const win = Services.wm.getMostRecentWindow("mail:3pane");
-          const util = win.QuickFolders.Util;
-          let Accounts = util.Accounts;
+          // const win = Services.wm.getMostRecentWindow("mail:3pane");
+          // const util = win.QuickFolders.Util;
+          const Accounts = MailServices.accounts; // util.Accounts;
           for (let a = 0; a < Accounts.length; a++) {
             let account = Accounts[a];
             if (account.defaultIdentity) {
               let name = account.defaultIdentity.fullName;
-              if (name) return name;
+              if (name) { return name;}
             }
           }
           return "user"; // anonymous
@@ -209,7 +219,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           util.logDebug("Configuration stored.");
         },
 
-        async loadConfig(preferences) {
+        async loadConfig(_preferences) {
           const win = Services.wm.getMostRecentWindow("mail:3pane");
           const prefs = win.QuickFolders.Preferences,
             util = win.QuickFolders.Util;
@@ -241,13 +251,13 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                     // retrieve the name from the folder uri (prettyName)
                     let f = win.QuickFolders.Model.getMsgFolderFromUri(ent.uri, false);
                     if (f) {
-                      ent.name = f.prettyName;
+                      ent.name = (f.prettyName || f.localizedName);
                     } else {
                       ent.name = util.getNameFromURI(ent.uri);
                     }
                   }
                 }
-                if (!entries.length) entries = [];
+                if (!entries.length) {entries = [];}
                 // the following function calls QI.updateMainWindow() which calls QI.updateFolders()
                 // LEGACY MAIN WINDOW HACK FOR PREVIEW
                 let mainWin = util.getMail3PaneWindow();
@@ -328,14 +338,14 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 "QuickFolders",
                 util.getBundleString("qf.alert.pasteFolders.formatErr")
               );
-            } finally {
-              return changedRecords;
             }
+            return changedRecords;
+            
           }
 
           let config = await self.fileConfig("load"); // load does the reading itself?
-          if (config) return readData(config);
-          else return null;
+          if (config) {return readData(config);}
+          else {return null;}
         },
 
         // A test function for folder conversion. We need to pass in a nsIMsgFolder
@@ -369,7 +379,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             let retVal = null;
             if (path) {
               let folder = context.extension.folderManager.get(accountId, path);
-              if (!folder) return null;
+              if (!folder) {return null;}
               retVal = win.QuickFolders.FolderTree.customIcons.find(
                 (e) => e.folderURI == folder.URI
               );
@@ -402,7 +412,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             let retVal = null;
             if (path) {
               let folder = context.extension.folderManager.get(accountId, path);
-              if (!folder) return null;
+              if (!folder) {return null;}
               retVal = folder.URI;
             } else {
               // this is an account.

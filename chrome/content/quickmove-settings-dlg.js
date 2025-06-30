@@ -11,14 +11,14 @@
 
 function toggleTooltip(button) {
   const row = button.closest(".option-row");
-  if (!row) return;
+  if (!row) {return;}
 
   const tooltip = row.querySelector(".tooltip-bubble");
-  if (!tooltip) return;
+  if (!tooltip) {return;}
 
   // Hide all other tooltips first
   document.querySelectorAll(".tooltip-bubble").forEach((t) => {
-    if (t !== tooltip) t.hidden = true;
+    if (t !== tooltip) {t.hidden = true;}
   });
   document.querySelectorAll(".tooltipBtn").forEach((t) => {
     t.removeAttribute("tooltipshown");
@@ -154,7 +154,7 @@ function toggleTooltip(button) {
 
       let maxResults = document.getElementById("maxResults");
       maxResults.value = prefs.getIntPref("quickMove.maxResults");
-      maxResults.addEventListener("change", function (evt) {
+      maxResults.addEventListener("change", function (_evt) {
         qmSettings.changeMaxResults(maxResults);
       });
       // set up all tooltip buttons
@@ -171,7 +171,7 @@ function toggleTooltip(button) {
       let list = globalQuickMoveSettings.excludedIds,
         isModified = false,
         txtDebug = "";
-      if (evt.type == "keydown" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") {return;}
       if (el.id) {
         if (el.checked) {
           if (!list.includes(el.id)) {
@@ -196,43 +196,43 @@ function toggleTooltip(button) {
 
     toggleLockInAccount: function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") {return;}
       prefs.setBoolPref("quickMove.premium.lockInAccount", isChecked);
     },
 
     toggleSilent: function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") {return;}
       prefs.setBoolPref("quickMove.premium.silentMode", isChecked);
     },
 
     toggleClearList: function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") {return;}
       prefs.setBoolPref("quickMove.premium.escapeClearsList", isChecked);
     },
 
     toggleCollapsed: function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") {return;}
       prefs.setBoolPref("quickMove.premium.escapeClearsList", isChecked);
     },
 
     toggleForceOpenTab: function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") {return;}
       prefs.setBoolPref("quickJump.premium.forceTab", isChecked);
     },
 
     toggleGoNext: function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") {return;}
       prefs.setBoolPref("quickMove.gotoNextMsgAfterMove", isChecked);
     },
 
     toggleReopen: function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") return;
+      if (evt.type == "keydown" && evt.key != " ") {return;}
       prefs.setBoolPref("quickMove.reopenMsgTabAfterMove", isChecked);
     },
 

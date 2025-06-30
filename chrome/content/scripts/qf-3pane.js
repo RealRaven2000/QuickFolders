@@ -1,3 +1,8 @@
+/* 
+  globals
+    WL
+*/
+
 
 let windowMode = "";
 
@@ -27,15 +32,15 @@ async function notificationHandler(data) {
   const contentDoc = window.document;
 
   switch (command) {
-    case "updateNavigationBar":
+    case "updateNavigationBar": {
       let tabInfo;
       try {
         tabInfo = contentDoc.defaultView.tabOrWindow.tabNode;
       } catch(ex) {;}      
       window.QuickFolders.Interface.updateNavigationBar(window.document, tabInfo);
-      break;
+    } break;
 
-    case "toggleNavigationBars": // toggles _all_ navigation bars (comes from options window)
+    case "toggleNavigationBars": { // toggles _all_ navigation bars (comes from options window)
       let displayDefault = window.QuickFolders.Preferences.isShowCurrentFolderToolbar(windowMode);
       let isDisplay = isEvent ? displayDefault : 
         (typeof data.display == "boolean" ? data.display : displayDefault) ;
@@ -46,7 +51,7 @@ async function notificationHandler(data) {
           selector: data.selector || windowMode
         }
       );
-      break;
+    } break;
   }
 }
 
@@ -326,7 +331,7 @@ function onUnload(isAddOnShutown) {
   let document3pane = window.document;
   Services.prefs.removeObserver("mail.pane_config.dynamic", viewLayoutObserver);
 
-  threadPane = document3pane.querySelector("#threadPane");
+  const threadPane = document3pane.querySelector("#threadPane");
 				
   function removeBtn(id) {
     let btn = document3pane.getElementById(id);

@@ -6676,7 +6676,13 @@ QuickFolders.Interface = {
         let autofill =
           ff.value == "" && util.hasValidLicense() && prefs.getBoolPref("quickMove.autoFill");
         if (autofill) {
-          ff.value = prefs.getStringPref("quickMove.lastFolderName"); // should [ESC] delete contents?
+					const lastSearch = prefs.getStringPref("quickMove.lastFolderName");
+          ff.value = lastSearch; // should [ESC] delete contents?
+					const clearBtn = ff.parentNode.querySelector("#QuickFolders-FindFolder-clear");
+					if (clearBtn) {
+            // show clear button if non-empty 
+            clearBtn.hidden = !lastSearch;
+          }
           ff.select();
         }
         ff.focus();

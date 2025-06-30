@@ -36,10 +36,11 @@ async function onLoad(activatedWhileWindowOpen) {
     `============INJECT==========\nqf-messenger.js onLoad(${activatedWhileWindowOpen})`
   );
   // eslint-disable-next-line no-unused-vars
-  let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
+  let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css?v=2");
+  // layout.setAttribute("title", "QuickFolderStyles");
   // eslint-disable-next-line no-unused-vars
   let layout2 = WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
-  // layout.setAttribute("title", "QuickFolderStyles");
+  WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-quickMove.css");
 
   // version specific:
   WL.injectCSS("chrome://quickfolders-skins/content/qf-current.css");
@@ -370,16 +371,15 @@ async function onLoad(activatedWhileWindowOpen) {
     }
 
     // [issue 596] add quickMove search box
-    // eslint-disable-next-line no-unused-vars
-    const _targetMarkup = `<input
-      id="QuickFolders-FindFolder"
-      class="searchBox input-sizer"
-      type="search"
-      collapsed="true"
-      hidden="true"
-      placeholder="__MSG_quickfolders.findFolder.placeHolder__"
-      tabindex="0"
-    />`;
+    // const _targetMarkup = `<input
+    //   id="QuickFolders-FindFolder"
+    //   class="searchBox input-sizer"
+    //   type="search"
+    //   collapsed="true"
+    //   hidden="true"
+    //   placeholder="__MSG_quickfolders.findFolder.placeHolder__"
+    //   tabindex="0"
+    // />`;
 
     // Create HTML namespaces
     const htmlNS = "http://www.w3.org/1999/xhtml";
@@ -388,6 +388,10 @@ async function onLoad(activatedWhileWindowOpen) {
     // Create wrapper
     const wrapper = document.createElementNS(htmlNS, "span");
     wrapper.id = "QuickFolders-FindFolder-wrapper";
+    // quickfix 2 styles that will be wrong due to cached styles
+    // (everything will look much better after Tb restarts)
+    wrapper.style.display = "inline-flex";
+    wrapper.style.alignItems = "center";
 
     // Create SVG magnifier icon
     const icon = document.createElementNS(svgNS, "svg");
@@ -404,6 +408,14 @@ async function onLoad(activatedWhileWindowOpen) {
     );
     icon.appendChild(path);
 
+    // Create clear button
+    const clearBtn = document.createElement("button");
+    clearBtn.id = "QuickFolders-FindFolder-clear";
+    clearBtn.className = "clear-button";
+    clearBtn.type = "button";
+    clearBtn.hidden = true;
+    clearBtn.textContent = "✕";
+
     const findBox = document.createElementNS(htmlNS, "input");
     findBox.id = "QuickFolders-FindFolder";
     findBox.type = "search";
@@ -415,6 +427,26 @@ async function onLoad(activatedWhileWindowOpen) {
     // Assemble wrapper
     wrapper.appendChild(icon);
     wrapper.appendChild(findBox);
+    wrapper.appendChild(clearBtn);
+
+    // Update clear button visibility based on input content
+    function updateClearVisibility() {
+      clearBtn.hidden = (!findBox.value || findBox.value.length === 0);
+    }
+
+    findBox.addEventListener("input", () => {
+      // only visible with contents
+      clearBtn.hidden = !findBox.value;
+    });
+    clearBtn.addEventListener("click", (e) => {
+      e.preventDefault(); // Prevent default button behavior
+      e.stopPropagation(); // Prevent event from bubbling
+      findBox.value = ""; // Clear the input
+      // new Event throws in this context?
+      // findBox.dispatchEvent(new Event("input")); 
+      findBox.focus(); // Keep focus in the input
+      updateClearVisibility();
+    });
 
     const panel = document.getElementById("QuickFolders-oneButtonPanel");
     if (panel) {

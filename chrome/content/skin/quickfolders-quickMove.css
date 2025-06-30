@@ -1,0 +1,200 @@
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --qf-search-icon-color: rgba(180, 180, 180, 0.8);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --qf-search-icon-color: rgba(100, 100, 100, 0.6);
+  }
+}
+
+.quickMove #QuickFolders-FindFolder-icon {
+  --qf-search-icon-color: rgb(255, 226, 9)  !important;
+}
+
+
+#QuickFolders-FindFolder-wrapper {
+  align-items: center;
+  display: inline-flex;
+  position: relative;
+  vertical-align: middle;
+}
+
+
+#QuickFolders-FindFolder {
+  appearance: none !important;
+	background-color: var(--lwt-toolbar-field-background-color, hsla(0,0%,100%,.8)) !important;
+  color: var(--lwt-toolbar-field-color, black) !important;
+  border-radius: 0 !important;
+	min-height: 22px !important;
+  background-repeat: no-repeat;
+  background-position: 6px center;
+  padding-left: 24px;
+  align-self: center;
+  min-width: 50px;
+  margin: 2px 4px 2px 4px;  
+}
+
+#QuickFolders-FindFolder:focus {
+  border-radius: 4px !important;
+  border-color: var(--toolbar-field-focus-border-color, #3b99fc); 
+  outline-offset: 0;
+  box-shadow: 0 0 0 2px var(--toolbar-field-focus-border-color, #3b99fc); /* glow-like ring */  
+}
+
+
+#QuickFolders-FindFolder-icon {
+  position: absolute;
+  left: 6px;
+  pointer-events: none;
+  color: var(--qf-search-icon-color, gray); /* --toolbarbutton-icon-fill */
+  height: 16px;
+  width: 16px;
+}
+
+#QuickFolders-FindFolder-clear {
+  align-items: center;
+  display: flex;
+  font-weight: 900;
+  font-size: 0.85em !important;
+  background: transparent;
+  border: none;
+  color: var(--qf-search-icon-color, #666);
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+  right: 6px;
+  min-width: auto;
+  user-select: none;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+  height: 100%;
+}
+
+#QuickFolders-FindFolder-wrapper *[hidden] {
+  display: none;
+}
+
+
+#QuickFolders-FindFolder.quickMove,
+#QuickFolders-FindFolder.quickMove[type="search"] {
+  appearance: none; /* overwrite the hardcoded backgrounds of moz-binding textbox.xml#search-textbox */
+  background: linear-gradient(to bottom, rgba(242,94,94,1) 0%,rgba(206,9,6,1) 43%,rgba(150,30,30,1) 100%) !important;
+	background-color: rgba(229,132,117,1) !important;
+	color: rgb(255,255,255) !important;
+}
+
+/* help button */
+#QuickFolders-FindFolder-Help {
+  list-style-image: url("skin/ico/help-search.svg");
+  -moz-context-properties: fill;
+  fill: #0079ef; /* currentColor; */
+  padding-left: 0;
+  margin-left: -5px;
+}
+
+#QuickFolders-FindFolder-Help > image.toolbarbutton-icon {
+  height:21px;
+  transition: height 0.2s;
+}
+
+#QuickFolders-FindFolder-Help:hover > image.toolbarbutton-icon {
+  height:25px;
+}
+
+#quickMoveHelpOverlay.overlay {
+  position: fixed;
+  inset: 5px 0 0 0;
+  background: rgba(0, 0, 0, 0.25);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 1;           /* was zero */
+  pointer-events: none; /* click through */
+  z-index: 100;         /* folderpane_splitter and threadpane-splitter are 10! */
+}
+
+
+#quickMoveHelp {
+  background: #fff;
+  border: 1px solid rgba(120,120,120,0.9);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(30,30,30,0.4);  
+  background-color: #ffffff;
+}
+
+
+#quickMoveHelp.popup {
+  border-radius: 5px;
+  float: left; /* may be needed, but really I want to shrink-wrap */
+  font-size: 1.1em;
+  margin-right: 20px;
+  max-width: 60%;
+  padding: 5px 16px;
+  pointer-events: all; /* re-activate click on close button */
+  position: relative;
+  transition: all 5s ease-in-out;
+  width: auto;
+  transform: translate3d(0, 0, 0); /* to "integrate" the arrow */
+}
+
+/* arrow on top */
+#quickMoveHelp.popup:after {
+  background: #f00;
+  border-top: 1px solid rgba(120,120,120,0.9);
+  content: "";
+  width: 13px;
+  height: 13px;
+  transform: rotate(-45deg);
+  background: #fff;
+  position: absolute;
+  z-index: -1;
+  top: -7px;
+  left: 3em;
+}
+
+
+#quickMoveHelp.popup .close {
+  color: #333;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0px 6px 4px;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  transition: all 200ms;
+  text-decoration: none;
+}
+
+#quickMoveHelp.popup .close:hover {
+  background-color: rgba(30,30,40,0.85);
+  border-radius: 4px;
+  color: #eeeeee;
+}
+
+
+#quickMoveHelp * {
+  color: rgb(80,80,80);
+  text-align: left;
+  text-shadow: none;
+}
+
+#quickMoveHelp h3 {
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+#quickMoveHelp code {
+  display: inline;
+  padding: 1px 3px;
+  font-family: consolas, Courier, monospace;
+  font-size: 11px;
+  color: rgb(20,20,20);
+  background-color: rgb(210,210,210);
+  border-radius: 2px;
+  margin: 0 3px;
+}
+

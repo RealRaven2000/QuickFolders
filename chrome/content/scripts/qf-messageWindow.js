@@ -1,3 +1,7 @@
+/*
+  globals
+    WL
+*/
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
@@ -14,7 +18,8 @@ var mylisteners = {};
 function onLoad(activatedWhileWindowOpen) {
   let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
   layout.setAttribute("title", "QuickFolderStyles");
-  let layout2 = WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
+  WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
+  WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-quickMove.css");
   
   // version specific:
   WL.injectCSS("chrome://quickfolders-skins/content/qf-current.css");

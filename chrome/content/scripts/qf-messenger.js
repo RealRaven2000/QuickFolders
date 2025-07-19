@@ -395,7 +395,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
     // Create SVG magnifier icon
     const icon = document.createElementNS(svgNS, "svg");
-    icon.setAttribute("id", "QuickFolders-FindFolder-icon");
+    icon.id = "QuickFolders-FindFolder-icon";
     icon.setAttribute("viewBox", "0 0 24 24");
     icon.setAttribute("width", "16");
     icon.setAttribute("height", "16");

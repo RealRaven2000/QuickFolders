@@ -6648,15 +6648,15 @@ QuickFolders.Interface = {
         QuickMove = QuickFolders.quickMove;
     util.logDebugOptional("interface.findFolder,quickMove", "findFolder(" + show + ", " + actionType + ")");
 		try {
-      let displaySearchControls = show;
+      let isDisplay = show;
       if (!QuickFolders.Preferences.getBoolPref("premium.findFolder.autoCollapse") && !actionType) {
-        displaySearchControls = true;
+        isDisplay = true;
       }
       const ff = QI.FindFolderBox;
-      QI.showElement(ff, displaySearchControls);
-      QI.showElement(QI.FindFolderHelp, displaySearchControls);
-			const searchIcon = document.getElementById("QuickFolders-FindFolder-icon");
-      QI.showElement(searchIcon, displaySearchControls);
+      QI.showElement(ff, isDisplay);
+      QI.showElement(QI.FindFolderHelp, isDisplay);
+			QI.showElement(document.getElementById("QuickFolders-FindFolder-icon"), isDisplay);
+      QI.showElement(document.getElementById("QuickFolders-FindFolder-clear"), isDisplay);
 
       if (show) {
         if (actionType) {
@@ -6688,6 +6688,7 @@ QuickFolders.Interface = {
         ff.focus();
         return;
       }
+
       // !show: hide the search box?
       ff.value = ""; // reset search box
       if (QI.CurrentTabMode != "mailMessageTab") {

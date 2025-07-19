@@ -246,8 +246,12 @@ END LICENSE BLOCK */
     ##             also fixed link to point to official Add-on Compatibility Check
 
   6.12 QuickFOlders Pro - WIP
-    ## Make compatible with THunderbird 141.
-    ## Removal of nsI
+    ## Make compatible with Thunderbird 141.
+    ## [issue 595] `nsIMsgFolder.prettyName` removed in Thunderbird 141 
+    ## [issue 596] `search-textbox` removed in Thunderbird 141 
+    ## [issue 598] QuickFolders toolbar not showing in new tab due 
+    ##             to mailTabs.query not ready
+
   
 	TO DO next
 	==========

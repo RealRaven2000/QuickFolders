@@ -88,6 +88,7 @@ pref("extensions.quickfolders.findRelated.lastSearchVal","");
 pref("extensions.quickfolders.findRelated.behavior.goNextResetsSearch", false);
 pref("extensions.quickfolders.findRelated.behavior.selectPrevious", false); // test
 pref("extensions.quickfolders.findRelated.lastIdx",-1); // last selected
+pref("extensions.quickfolders.api.mailTabs.timeout", 5000); // timeout for mailTabs.query() in milliseconds
 
 
 // Current Folder Toolbar

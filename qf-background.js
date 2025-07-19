@@ -539,6 +539,24 @@ async function getFindRelatedStruct() {
     return findRelatedList;   
 }
 
+function timeoutPromise(ms, msg) {
+  return new Promise((_, reject) => setTimeout(() => reject(new Error(msg)), ms));
+}
+
+async function waitForMailTabsReady(timeoutMs = 5000) {
+  try {
+    await Promise.race([
+      browser.mailTabs.getCurrent(),
+      timeoutPromise(timeoutMs, "mailTabs.getCurrent() timed out"),
+    ]);
+  } catch (ex) {
+    console.warn("QuickFolders: mailTabs.getCurrent() failed or timed out", ex);
+  }
+  console.log("QuickFolders: ready to start WindowListener.");
+}
+
+
+
 async function main() {
   const key = await messenger.LegacyPrefs.getPref(legacyPrefPath("LicenseKey"), ""),
     forceSecondaryIdentity =
@@ -553,8 +571,10 @@ async function main() {
 
   // All important stuff has been done.
   // resolve all promises on the stack
-  if (isDebug) {console.log("Finished setting up license startup code");}
-  callbacks.forEach(callback => callback());
+  if (isDebug) {
+    console.log("Finished setting up license startup code");
+  }
+  callbacks.forEach((callback) => callback());
   startupFinished = true;
 
   let msg_commands = [
@@ -577,10 +597,9 @@ async function main() {
     "storeCategories",
     "readToolbarStatus",
     "storeToolbarStatus",
-    "toggleNavigationBars"
+    "toggleNavigationBars",
   ];
 
-  
   async function notificationHandler(data) {
     let command = data.func || data.command;
     switch (command) {
@@ -588,10 +607,12 @@ async function main() {
         util.slideAlert(...data.args);
         break;
 
-      case "splashScreen": {
-        let splashMessage = data.msg || "";
-        showSplash(splashMessage);
-      } break;
+      case "splashScreen":
+        {
+          let splashMessage = data.msg || "";
+          showSplash(splashMessage);
+        }
+        break;
 
       case "splashInstalled":
         showInstalled();
@@ -647,13 +668,16 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({ event: "updateCategoryBox" });
         break;
 
-      case "updateMainWindow": { // we need to add one parameter (minimal) to pass through!
-        let isMinimal = data.minimal || false;
-        messenger.NotifyTools.notifyExperiment({
-          event: "updateMainWindow",
-          detail: { minimal: isMinimal },
-        });
-      } break;
+      case "updateMainWindow":
+        {
+          // we need to add one parameter (minimal) to pass through!
+          let isMinimal = data.minimal || false;
+          messenger.NotifyTools.notifyExperiment({
+            event: "updateMainWindow",
+            detail: { minimal: isMinimal },
+          });
+        }
+        break;
 
       case "showAboutConfig":
         // to do: create an API for this one
@@ -685,73 +709,79 @@ async function main() {
         messenger.NotifyTools.notifyExperiment({ event: "initKeyListeners" });
         break;
 
-      case "openPrefs": {
-        let params = new URLSearchParams();
-        if (data.selectedTab) {
-          params.append("selectedTab", data.selectedTab);
-        }
-        if (data.mode) {
-          params.append("mode", data.mode);
-        }
-
-        // to get the tab - we need the activetab permission
-        // query for url
-        const url = browser.runtime.getURL("/html/options.html") + "*";
-        let oldTabs = await browser.tabs.query({ url }); // destructure first
-        if (oldTabs.length) {
-          // get current windowId
-          let currentWin = await browser.windows.getCurrent();
-          let found = oldTabs.find((w) => w.windowId == currentWin.id);
-          if (!found) {
-            [found] = oldTabs; // destructure first element
-            await browser.windows.update(found.windowId, { focused: true, drawAttention: true });
-          } else {
-            await browser.tabs.update(found.id, { active: true });
+      case "openPrefs":
+        {
+          let params = new URLSearchParams();
+          if (data.selectedTab) {
+            params.append("selectedTab", data.selectedTab);
           }
-          // activate the tab that we need, after the settings page is ready
           if (data.mode) {
-            if (isDebug) {console.log(`Activate preference page: ${data.mode}`);}
-            await browser.runtime.sendMessage({
-              activatePrefsPage: data.mode,
-            });
-          }  
-          return;      
-        } 
-        if (await messenger.LegacyPrefs.getPref(legacyPrefPath("optionsInTab"))) {
-          // await messenger.runtime.openOptionsPage();
-          const myuri = browser.runtime.getURL(`html/options.html?${params.toString()}`);
-          await browser.tabs.create({
-            active: true,
-            url: myuri,
-          });
-          return;
-        } 
-        // open options in a window (old)
-        await messenger.windows.create({
-          height: 720,
-          width: 840,
-          type: "panel",
-          url: `/html/options.html?${params.toString()}`,
-          allowScriptsToClose: true,
-        });
-      } break;
+            params.append("mode", data.mode);
+          }
 
-      case "openAdvancedProps": {
-        let params = new URLSearchParams();
-        const x = parseInt(data.x, 10),
-          y = parseInt(data.y, 10);
-        params.append("folderURI", data.folderURI); // to do: pass folder or url in event
-        params.append("x", x);
-        params.append("y", y);
-        await messenger.windows.create({
-          left: x,
-          top: y,
-          type: "popup",
-          allowScriptsToClose: true,
-          url: `/html/quickfolders-tab-props.html?${params.toString()}`,
-        });
-        // focused: true,
-      } break;
+          // to get the tab - we need the activetab permission
+          // query for url
+          const url = browser.runtime.getURL("/html/options.html") + "*";
+          let oldTabs = await browser.tabs.query({ url }); // destructure first
+          if (oldTabs.length) {
+            // get current windowId
+            let currentWin = await browser.windows.getCurrent();
+            let found = oldTabs.find((w) => w.windowId == currentWin.id);
+            if (!found) {
+              [found] = oldTabs; // destructure first element
+              await browser.windows.update(found.windowId, { focused: true, drawAttention: true });
+            } else {
+              await browser.tabs.update(found.id, { active: true });
+            }
+            // activate the tab that we need, after the settings page is ready
+            if (data.mode) {
+              if (isDebug) {
+                console.log(`Activate preference page: ${data.mode}`);
+              }
+              await browser.runtime.sendMessage({
+                activatePrefsPage: data.mode,
+              });
+            }
+            return;
+          }
+          if (await messenger.LegacyPrefs.getPref(legacyPrefPath("optionsInTab"))) {
+            // await messenger.runtime.openOptionsPage();
+            const myuri = browser.runtime.getURL(`html/options.html?${params.toString()}`);
+            await browser.tabs.create({
+              active: true,
+              url: myuri,
+            });
+            return;
+          }
+          // open options in a window (old)
+          await messenger.windows.create({
+            height: 720,
+            width: 840,
+            type: "panel",
+            url: `/html/options.html?${params.toString()}`,
+            allowScriptsToClose: true,
+          });
+        }
+        break;
+
+      case "openAdvancedProps":
+        {
+          let params = new URLSearchParams();
+          const x = parseInt(data.x, 10),
+            y = parseInt(data.y, 10);
+          params.append("folderURI", data.folderURI); // to do: pass folder or url in event
+          params.append("x", x);
+          params.append("y", y);
+          await messenger.windows.create({
+            left: x,
+            top: y,
+            type: "popup",
+            allowScriptsToClose: true,
+            url: `/html/quickfolders-tab-props.html?${params.toString()}`,
+          });
+          // focused: true,
+        }
+        break;
 
       case "updateLicense": {
         let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(
@@ -858,10 +888,13 @@ async function main() {
         await messenger.sessions.setTabValue(data.tabId, "QuickFolders_ToolbarStatus", data.status);
         break;
 
-      case "filterMailsRegex": { // filter based on current mail!
-        let regexOption = JSON.parse(data.searchOptions);
-        await filterMailsRegex(regexOption, data.tabId);
-      } break;
+      case "filterMailsRegex":
+        {
+          // filter based on current mail!
+          let regexOption = JSON.parse(data.searchOptions);
+          await filterMailsRegex(regexOption, data.tabId);
+        }
+        break;
 
       case "readToolbarStatus": {
         // store toolbar visibilities in tabsession
@@ -873,9 +906,10 @@ async function main() {
         addFolderPaneMenu();
         break;
 
-      case "openLinkInTab": {
-        // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
-        let baseURI = data.baseURI || data.URL;
+      case "openLinkInTab":
+        {
+          // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
+          let baseURI = data.baseURI || data.URL;
           let found = await browser.tabs.query({ url: baseURI });
           if (found.length) {
             let tab = found[0]; // first result
@@ -883,13 +917,14 @@ async function main() {
             return;
           }
           browser.tabs.create({ active: true, url: data.URL });
-      } break;
+        }
+        break;
 
-      case "openBrowserLink": 
+      case "openBrowserLink":
         messenger.windows.openDefaultBrowser(data.url);
         break;
 
-      case "showNewsMessage":{
+      case "showNewsMessage": {
         // [issue 378]
         const message = data.msg,
           messageIds = data.msgIds,
@@ -897,7 +932,7 @@ async function main() {
           referenceFeature = data.addonfeatures || null,
           features = data.features || ["ok"]; // minimum: an ok button. make array mutable
 
-        switch(mode) {
+        switch (mode) {
           case "standard":
             return showQFmessage(messageIds, features, message, referenceFeature);
           case "news":
@@ -908,21 +943,23 @@ async function main() {
       }
     }
   }
-  
+
   // background listener
   messenger.NotifyTools.onNotifyBackground.addListener((data) => {
-    messenger.LegacyPrefs.getPref(legacyPrefPath("debug.notifications")).then(
-      isLog => {
-        if (isLog && data.func) {
-          console.log ("=========================\n" +
-                       "BACKGROUND LISTENER received: " + data.func + "\n" +
-                       "=========================");
-        }
+    messenger.LegacyPrefs.getPref(legacyPrefPath("debug.notifications")).then((isLog) => {
+      if (isLog && data.func) {
+        console.log(
+          "=========================\n" +
+            "BACKGROUND LISTENER received: " +
+            data.func +
+            "\n" +
+            "========================="
+        );
       }
-    );
+    });
     return notificationHandler(data); // returns the promise for notification Handler
   });
-  
+
   // message listener - SELECTIVE!
   // every message listener must have its unique set of messages (if it returns something)
   messenger.runtime.onMessage.addListener((data, sender) => {
@@ -932,53 +969,74 @@ async function main() {
     // Future Work: command handler for tbkeys-lite!
     switch (data.command) {
       case "shortcut":
-        console.log("QuickFolders: Received shortcut:", { data , sender });
+        console.log("QuickFolders: Received shortcut:", { data, sender });
         break;
     }
   });
-  
-  
-  messenger.runtime.onMessageExternal.addListener( async  (message, _sender) =>  
-  {
-    switch(message.command) {
-      case "queryQuickFoldersLicense": 
-        return { 
+
+  messenger.runtime.onMessageExternal.addListener(async (message, _sender) => {
+    switch (message.command) {
+      case "queryQuickFoldersLicense":
+        return {
           status: currentLicense.info.status,
-          keyType: currentLicense.info.keyType
-        }
+          keyType: currentLicense.info.keyType,
+        };
     }
-  });  
-  
-  messenger.WindowListener.registerChromeUrl([ 
-      ["content", "quickfolders", "chrome/content/"],
-      ["content", "quickfolders-skins", "chrome/content/skin/tb91/"]
+  });
+
+  messenger.WindowListener.registerChromeUrl([
+    ["content", "quickfolders", "chrome/content/"],
+    ["content", "quickfolders-skins", "chrome/content/skin/tb91/"],
   ]);
-  
-  
-  messenger.WindowListener.registerWindow("chrome://messenger/content/messenger.xhtml", "chrome/content/scripts/qf-messenger.js");
+
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messenger.xhtml",
+    "chrome/content/scripts/qf-messenger.js"
+  );
   // inject a separate script for current folder toolbar!
   messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
   messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
 
-  messenger.WindowListener.registerWindow("chrome://messenger/content/messengercompose/messengercompose.xhtml", "chrome/content/scripts/qf-composer.js");
-  messenger.WindowListener.registerWindow("chrome://messenger/content/SearchDialog.xhtml", "chrome/content/scripts/qf-searchDialog.js");
-  messenger.WindowListener.registerWindow("chrome://messenger/content/customizeToolbar.xhtml", "chrome/content/scripts/qf-customizetoolbar.js");
-  messenger.WindowListener.registerWindow("chrome://messenger/content/messageWindow.xhtml", "chrome/content/scripts/qf-messageWindow.js");  
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messengercompose/messengercompose.xhtml",
+    "chrome/content/scripts/qf-composer.js"
+  );
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/SearchDialog.xhtml",
+    "chrome/content/scripts/qf-searchDialog.js"
+  );
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/customizeToolbar.xhtml",
+    "chrome/content/scripts/qf-customizetoolbar.js"
+  );
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messageWindow.xhtml",
+    "chrome/content/scripts/qf-messageWindow.js"
+  );
 
-
- /*
-  * Start listening for opened windows. Whenever a window is opened, the registered
-  * JS file is loaded. To prevent namespace collisions, the files are loaded into
-  * an object inside the global window. The name of that object can be specified via
-  * the parameter of startListening(). This object also contains an extension member.
-  */
   // make sure session has loaded all tabs.
-  let [ mailTab ] = await browser.mailTabs.query({});
-  await browser.mailTabs.get(mailTab.id)
-  messenger.WindowListener.startListening(); 
-  
+  const isBetterbird = navigator.userAgent.toLowerCase().includes("betterbird");
+  // [issue 598] 5000ms default
+  const to = await messenger.LegacyPrefs.getPref(legacyPrefPath("api.mailTabs.timeout"));
+  if (isBetterbird) {
+    console.log("%cRunning in Betterbird", "background: black; color: red;");
+  } else {
+    console.log("%cRunning in Thunderbird", "background: black; color: red;", navigator.userAgent);
+  }
+  // let [mailTab] = await browser.mailTabs.query({}); await browser.mailTabs.get(mailTab.id);
+  console.log(`QuickFolders: Waiting ${to}ms for mailTabs to be ready...`);
+  await waitForMailTabsReady(to);
+
+  /*
+   * Start listening for opened windows. Whenever a window is opened, the registered
+   * JS file is loaded. To prevent namespace collisions, the files are loaded into
+   * an object inside the global window. The name of that object can be specified via
+   * the parameter of startListening(). This object also contains an extension member.
+   */
+  messenger.WindowListener.startListening();
+
   // [issue 296] Exchange account validation (supported since TB98)
-  messenger.accounts.onCreated.addListener( async(id, account) => {
+  messenger.accounts.onCreated.addListener(async (id, account) => {
     if (currentLicense.info.status == "MailNotConfigured") {
       // redo license validation!
       if (isDebugLicenser) {
@@ -1018,12 +1076,16 @@ async function main() {
   }
 
   messenger.tabs.onActivated.addListener(async (activeInfo) => {
-    if (isDebug) {console.log(activeInfo);}
+    if (isDebug) {
+      console.log(activeInfo);
+    }
     const theTab = await messenger.tabs.get(activeInfo.tabId);
-    if (!theTab?.url) {return;}
+    if (!theTab?.url) {
+      return;
+    }
     if (theTab.url.startsWith(getOptionsPageURL())) {
       onOptionsTabActivated();
-    } 
+    }
   });
 
   const checkTabStatus = async (tabId) => {
@@ -1032,20 +1094,26 @@ async function main() {
       let hasCompleted = false;
 
       const listener = async (updatedTabId, changeInfo, _tab) => {
-        if (updatedTabId !== tabId) {return;}
+        if (updatedTabId !== tabId) {
+          return;
+        }
 
         // Reload tab details
         const updatedTab = await messenger.tabs.get(tabId);
 
         if (changeInfo.url) {
-          if (isDebug) {console.log(`🔄 Tab URL changed: ${updatedTab.url}`);}
+          if (isDebug) {
+            console.log(`🔄 Tab URL changed: ${updatedTab.url}`);
+          }
           if (updatedTab.url.startsWith(getOptionsPageURL())) {
             hasValidURL = true;
           }
         }
 
         if (changeInfo.status === "complete") {
-          if (isDebug) {console.log(`✅ Tab status changed to complete`);}
+          if (isDebug) {
+            console.log(`✅ Tab status changed to complete`);
+          }
           hasCompleted = true;
         }
 
@@ -1063,58 +1131,58 @@ async function main() {
     });
   };
 
-
-
   messenger.tabs.onCreated.addListener(async (activeTab) => {
     try {
-      if (isDebug) {console.log("onCreated() - Initial tab:", activeTab);}
+      if (isDebug) {
+        console.log("onCreated() - Initial tab:", activeTab);
+      }
 
       // Wait for the URL to be set and tab to complete loading
       const finalUrl = await checkTabStatus(activeTab.id);
-      if (isDebug) {console.log(`Tab fully loaded with URL: ${finalUrl}`);}
+      if (isDebug) {
+        console.log(`Tab fully loaded with URL: ${finalUrl}`);
+      }
 
       if (finalUrl.startsWith(getOptionsPageURL())) {
         // [issue 557] this can also be triggered by the dialog!! causing toolbar to show in preview mode
         // so it may affect the main window on the mail tab which we don't want...
         const windows = await browser.windows.getAll();
         const activeWin = windows.find((e) => e.id == activeTab.windowId);
-        if (activeWin && activeWin.type=="popup") { return; }
+        if (activeWin && activeWin.type == "popup") {
+          return;
+        }
         onOptionsTabActivated();
       }
     } catch (error) {
       console.error("Error in tabs.onCreated listener:", error);
     }
-  });  
+  });
 
   if (isDebug) {
-    console.log ("QuickFolders: add toggle-foldertree command... ");
+    console.log("QuickFolders: add toggle-foldertree command... ");
   }
 
   let toggleFolderLabel = messenger.i18n.getMessage("commands.toggleFolderTree");
-  await messenger.commands.update({name:"toggle-foldertree", description: toggleFolderLabel });   
+  await messenger.commands.update({ name: "toggle-foldertree", description: toggleFolderLabel });
 
   messenger.commands.onCommand.addListener((command) => {
-    if (isDebug) { console.log("command listener received", command); }
+    if (isDebug) {
+      console.log("command listener received", command);
+    }
     switch (command) {
       case "toggle-foldertree":
-        messenger.NotifyTools.notifyExperiment({event: "toggleFolderTree"});
+        messenger.NotifyTools.notifyExperiment({ event: "toggleFolderTree" });
         break;
       case "focus-foldersbox":
-        messenger.NotifyTools.notifyExperiment({event: "focusFoldersBox"});
+        messenger.NotifyTools.notifyExperiment({ event: "focusFoldersBox" });
         break;
-      }
+    }
   });
 
   messenger.browserAction.onClicked.addListener((_tab, _info) => {
     console.log("browserAction.click!");
     messenger.Utilities.toggleToolbarAction(false);
   });
-
-
-
-
-    
-
 } // main
 
 main();

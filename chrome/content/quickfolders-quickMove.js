@@ -80,14 +80,18 @@ QuickFolders.quickMove = {
     }
   },  
 	
-	rememberLastFolder: function rememberLastFolder(URIorFolder, parentName) {
+	rememberLastFolder: function (URIorFolder, parentName) {
 		const prefs = QuickFolders.Preferences,
 		      util = QuickFolders.Util;
     try {
       if (prefs.isDebugOption('quickMove')) {
         util.logDebugOptional('quickMove',"rememberLastFolder(" + URIorFolder + ", " + parentName + ")")
       }
-      const fld = URIorFolder.name
+      if (!URIorFolder) {
+        util.logDebug("rememberLastFolder called with null URIorFolder");
+        return;
+      }
+      const fld = URIorFolder?.name
           ? URIorFolder
           : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
         name = fld.prettyName || fld.localizedName,
@@ -96,8 +100,7 @@ QuickFolders.quickMove = {
       prefs.setStringPref("quickMove.lastFolderURI", fld.URI);
       util.logDebugOptional("quickMove", "Storing: " + sRememberFolder + " - " + fld.URI);
       QuickFolders.quickMove.addToHistory(fld);
-    }
-    catch (ex) {
+    } catch (ex) {
       util.logException("rememberLastFolder( " + URIorFolder + ", " + parentName + ")", ex);
     }
 	},

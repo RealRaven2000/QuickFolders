@@ -1017,10 +1017,14 @@ allowUndo = true)`
   } ,
   
   // Set the MRU time for a folder to make it appear in recent folders list
-  touch: function touch(folder) {
+  touch: function (folder) {
     const util = QuickFolders.Util,
           FLAGS = util.FolderFlags;
     try {
+      if (!folder) {
+        util.logDebug("util.touch called with null folder");
+        return;
+      }
       // special folders we do not want / need in recent history:
       if (folder.flags & 
             (FLAGS.MSG_FOLDER_FLAG_TRASH | FLAGS.MSG_FOLDER_FLAG_SENTMAIL | FLAGS.MSG_FOLDER_FLAG_QUEUE | 

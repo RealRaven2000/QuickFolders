@@ -326,6 +326,37 @@
     </li>
     
     -->
+
+
+    <a name="6.12">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.12" 
+			   onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">
+				 Version 6.12 - 23/07/2025
+		  </a>
+      </h4>
+      <ul>
+				<h4 class="inList">Improvements</h4>
+        <li> Made compatible with Thunderbird 141.* </li>
+        <li> </li>
+        <li> </li>
+      </ul>
+
+      <ul>
+				<h4 class="inList">Bug Fixes</h4>
+        <li>
+					Fixed: `nsIMsgFolder.prettyName` removed in Thunderbird 141 - a critical issue that broke folder tabs and many key features — caused by Thunderbird changing how folder names are accessed internally. <a href="https://github.com/RealRaven2000/QuickFolders/issues/595">[issue 595]</a>
+				</li>
+				<li> 
+					Fixed: Restored quickMove and quickJump after Thunderbird modernized its interface and replaced older search elements. `search-textbox` removed in Thunderbird 141.<a href="https://github.com/RealRaven2000/QuickFolders/issues/596">[issue 596]</a>
+				</li>
+				<li> 
+					QuickFolders toolbar not showing in Betterbird due to mailTabs.query not ready.<a href="https://github.com/RealRaven2000/QuickFolders/issues/598">[issue 598]</a>. There is likely a bug in Betterbird affecting the `mailTabs` extension API, which can affect multiple Add-ons.
+				</li>
+      </ul>
+    </li>
+
     <a name="6.11">&nbsp;</a>
     <a name="6.11.1">&nbsp;</a>
     <li>
@@ -486,7 +517,8 @@
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/591">[issue 591]</a></li>
 				<li> 
 					Updated link to official the Add-on Compatibility Check; 
-					made opening the tab in Thunderbird obvious by adding a label. <a href="https://github.com/RealRaven2000/QuickFolders/issues/592">[issue 592]</a>
+					made opening the tab in Thunderbird obvious by adding a label. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/592">[issue 592]</a>
 				</li>
 
 				<p>
@@ -1576,7 +1608,7 @@
 					</p>
 					<p>
 						In that version, when starting up, QuickFolders automatically backs up custom icons on the folder tree. 
-						Future versions of QuickFolders 6.* may use this data to restore the tree layout 
+						Future versions of QuickFolders 6.x may use this data to restore the tree layout 
 						and load those icons back. So if you have ran 5.17.1 before, then your icon information 
 						likely has been stored into a separate file, so it can be recovered later!
 					</p>

@@ -2077,7 +2077,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders ist jetzt mit Thunderbird 140 kompatibel — und wird weiterhin den aktuellen monatlichen Release-Zyklus unterstützen.{P2}{L1} 6.11.1 Wartungs-Release – behoben: Unterordner-Popup wurde beim Ziehen von E-Mails auf einen Tab nicht angezeigt. [issue 591]{L2} {L1} 6.11.1: Der Link zum offiziellen Add-on-Kompatibilitätsprüfer wurde aktualisiert. {L2}{L1} Neue erweiterte Suchoption: Ordner standardmäßig im Tab öffnen [issue 577]{L2}{L1} Behoben: Speichern der Konfigurationsdatei konnte aufgrund eines ungültigen files.path-Werts fehlschlagen [issue 581]{L2}{L1} Verbesserte Tooltips in den tab-spezifischen Eigenschaften [issue 580]{L2}"
+    "message": "{P1} QuickFolders wurde für Thunderbird 141 aktualisiert und bleibt vollständig kompatibel mit dem monatlichen Release-Zyklus.{P2}{L1} Wichtige Kompatibilitätsaktualisierung für Thunderbird 141.* {L2}{L1} Kritischer Fehler behoben, der Ordner-Tabs und viele Hauptfunktionen lahmlegte – verursacht durch Änderungen beim internen Zugriff auf Ordnernamen. [issue 595] {L2}{L1} quickMove und quickJump wiederhergestellt, nachdem Thunderbird seine Oberfläche modernisierte und ältere Suchelemente ersetzt hat. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

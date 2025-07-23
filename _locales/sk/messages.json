@@ -281,6 +281,6 @@
     "message": "Prečítajte si podrobný zoznam zmien tu (iba v angličtine):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders je teraz kompatibilný s Thunderbirdom 140 — a bude naďalej podporovať aktuálny mesačný cyklus vydávania.{P2}{L1} 6.11.1 Údržbové vydanie – opravené: vyskakovacie okno podpriečinka sa nezobrazovalo pri presúvaní pošty na kartu. [issue 591]{L2} {L1} 6.11.1: Aktualizovaný odkaz na oficiálnu kontrolu kompatibility doplnkov. {L2}{L1} Nová rozšírená možnosť vyhľadávania: Otvoriť priečinok v karte ako predvolené [issue 577]{L2}{L1} Opravené: Ukladanie konfiguračného súboru mohlo zlyhať kvôli neplatnej hodnote files.path [issue 581]{L2}{L1} Vylepšené popisy v špecifických vlastnostiach kariet [issue 580]{L2}"
+    "message": "{P1} QuickFolders bol aktualizovaný pre Thunderbird 141 a zostáva plne kompatibilný s mesačným cyklom vydaní.{P2}{L1} Významná aktualizácia kompatibility pre Thunderbird 141.* {L2}{L1} Opravený kritický problém, ktorý rozbil záložky priečinkov a mnohé hlavné funkcie — kvôli zmene spôsobu interného prístupu k názvom priečinkov. [issue 595] {L2}{L1} quickMove a quickJump boli obnovené po tom, ako Thunderbird modernizoval používateľské rozhranie a nahradil staré vyhľadávacie prvky. [issue 596] {L2}"
   }
 }

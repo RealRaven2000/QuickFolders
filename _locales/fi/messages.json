@@ -399,7 +399,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders on nyt yhteensopiva Thunderbird 140:n kanssa — ja jatkaa nykyisen kuukausittaisen julkaisusyklin tukemista.{P2}{L1} 6.11.1 Ylläpitopäivitys – korjattu: alikansion ponnahdusikkuna ei näkynyt, kun sähköpostia vedettiin välilehteen. [issue 591]{L2} {L1} 6.11.1: Päivitetty linkki viralliseen lisäosan yhteensopivuustarkistimeen. {L2}{L1} Uusi laajennettu hakuvaihtoehto: Avaa kansio oletuksena välilehdessä [issue 577]{L2}{L1} Korjattu: Asetustiedoston tallennus saattoi epäonnistua virheellisen files.path-arvon vuoksi [issue 581]{L2}{L1} Parannetut työkaluvihjeet välilehtikohtaisissa ominaisuuksissa [issue 580]{L2}"
+    "message": "{P1} QuickFolders on päivitetty Thunderbird 141:een ja on täysin yhteensopiva kuukausittaisen julkaisusykli kanssa.{P2}{L1} Merkittävä yhteensopivuuspäivitys Thunderbird 141:lle.* {L2}{L1} Korjattiin kriittinen ongelma, joka rikkoi kansiovälilehdet ja monia keskeisiä toimintoja — johtuen muutoksesta, miten kansioiden nimiin päästään sisäisesti. [issue 595] {L2}{L1} quickMove ja quickJump palautettiin Thunderbirdin modernisoitua käyttöliittymäänsä ja korvattua vanhat hakuelementit. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

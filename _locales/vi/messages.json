@@ -1755,7 +1755,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders hiện đã tương thích với Thunderbird 140 — và sẽ tiếp tục hỗ trợ chu kỳ phát hành hàng tháng hiện tại.{P2}{L1} Bản phát hành bảo trì 6.11.1 - đã sửa: cửa sổ bật lên thư mục con không hiển thị khi kéo thư vào một tab. [issue 591]{L2} {L1} 6.11.1: Đã cập nhật liên kết đến trình kiểm tra tương thích tiện ích bổ sung chính thức. {L2}{L1} Tuỳ chọn tìm kiếm nâng cao mới: Mở thư mục trong Tab theo mặc định [issue 577]{L2}{L1} Đã sửa: Lưu tệp cấu hình có thể thất bại do giá trị files.path không hợp lệ [issue 581]{L2}{L1} Cải thiện chú giải công cụ trong Thuộc tính riêng của Tab [issue 580]{L2}"
+    "message": "{P1} QuickFolders đã được cập nhật cho Thunderbird 141 và vẫn hoàn toàn tương thích với chu kỳ phát hành hàng tháng.{P2}{L1} Cập nhật khả năng tương thích lớn cho Thunderbird 141.* {L2}{L1} Đã sửa lỗi nghiêm trọng làm hỏng các tab thư mục và nhiều tính năng chính — do Thunderbird thay đổi cách truy cập tên thư mục nội bộ. [issue 595] {L2}{L1} Đã khôi phục quickMove và quickJump sau khi Thunderbird hiện đại hóa giao diện và thay thế các thành phần tìm kiếm cũ. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

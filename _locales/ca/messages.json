@@ -2018,7 +2018,7 @@
     "message": "Llegiu el registre de canvis detallat aquí (només en anglès):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders ara és compatible amb Thunderbird 139. A partir d'ara, pretén mantenir la compatibilitat amb el cicle de llançament mensual actual.{P2}{L1} 6.11.1 Lliurament de manteniment - solucionat: la finestra emergent de subcarpetes no es mostrava en arrossegar un correu a una pestanya. [issue 591]{L2} {L1} 6.11.1: S'ha actualitzat l'enllaç al comprovador oficial de compatibilitat de complements. {L2}{L1}S'ha millorat el desplaçament de l'arbre de carpetes de Thunderbird per desplaçar-se a la carpeta actual. [issue 559]{L2}{L1}L'etiqueta (Mode de previsualització) ara sempre s'elimina de la barra d'eines de QuickFolders excepte a la pestanya de configuració. [issue 571]{L2}{L1}S'ha eliminat (null) darrere de l'element del menú de la barra d'eines de QuickFolders al menú Visualitza de Thunderbird.{L2}"
+    "message": "{P1} QuickFolders s'ha actualitzat per a Thunderbird 141 i continua 100 % compatible amb el cicle mensual de versions.{P2}{L1} Actualització important de compatibilitat per al Thunderbird 141.* {L2}{L1} S'ha solucionat un error crític que va afectar les pestanyes de carpetes i moltes funcions clau, a causa d'un canvi en la manera d’accedir als noms de les carpetes. [issue 595] {L2}{L1} S'ha restaurat quickMove i quickJump després que Thunderbird modernitzés la seva interfície i substituís elements antics de cerca. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

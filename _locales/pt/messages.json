@@ -2064,7 +2064,7 @@
     "message": "Leia o registro de alterações detalhado aqui (somente em inglês):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders agora é compatível com o Thunderbird 140 — e continuará a suportar o ciclo de lançamentos mensais atual.{P2}{L1} Versão de manutenção 6.11.1 - corrigido: o pop-up de subpasta não era exibido ao arrastar e-mail para uma aba. [issue 591]{L2} {L1} 6.11.1: Atualizado o link para o verificador oficial de compatibilidade de complementos. {L2}{L1} Nova opção de pesquisa avançada: Abrir pasta em aba como padrão [issue 577]{L2}{L1} Corrigido: Salvar o arquivo de configuração podia falhar devido a um valor inválido em files.path [issue 581]{L2}{L1} Tooltips aprimoradas nas Propriedades Específicas da Aba [issue 580]{L2}"
+    "message": "{P1} QuickFolders foi atualizado para o Thunderbird 141 e continua totalmente compatível com o ciclo mensal de lançamentos.{P2}{L1} Atualização importante de compatibilidade para o Thunderbird 141.* {L2}{L1} Corrigido problema crítico que quebrou abas de pastas e muitas funcionalidades principais — causado por mudanças na forma interna de acessar nomes das pastas. [issue 595] {L2}{L1} quickMove e quickJump foram restaurados após Thunderbird modernizar sua interface e substituir elementos antigos de busca. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -2079,7 +2079,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders jest teraz kompatybilny z Thunderbirdem 140 — i będzie nadal wspierać obecny miesięczny cykl wydań.{P2}{L1} Wydanie konserwacyjne 6.11.1 – naprawiono: okno podrzędnego folderu nie pojawiało się podczas przeciągania wiadomości na kartę. [issue 591]{L2} {L1} 6.11.1: Zaktualizowano link do oficjalnego narzędzia sprawdzania kompatybilności dodatków. {L2}{L1} Nowa zaawansowana opcja wyszukiwania: Otwórz folder w karcie domyślnie [issue 577]{L2}{L1} Naprawiono: Zapisywanie pliku konfiguracyjnego mogło się nie powieść z powodu nieprawidłowej wartości files.path [issue 581]{L2}{L1} Ulepszone podpowiedzi w Właściwościach specyficznych dla kart [issue 580]{L2}"
+    "message": "{P1} QuickFolders został zaktualizowany do Thunderbirda 141 i pozostaje w pełni kompatybilny z miesięcznym cyklem wydań.{P2}{L1} Duża aktualizacja kompatybilności z Thunderbirdem 141.* {L2}{L1} Naprawiono krytyczny błąd, który psuł karty folderów i wiele kluczowych funkcji — spowodowany zmianą sposobu dostępu do nazw folderów wewnętrznie. [issue 595] {L2}{L1} Przywrócono quickMove i quickJump po tym, jak Thunderbird zmodernizował interfejs i zastąpił stare elementy wyszukiwania. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

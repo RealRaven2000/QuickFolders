@@ -2085,7 +2085,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders is nu compatibel met Thunderbird 140 — en blijft de huidige maandelijkse releasecyclus ondersteunen.{P2}{L1} 6.11.1 Onderhoudsrelease - opgelost: submap-popup werd niet getoond bij het slepen van e-mail naar een tabblad. [issue 591]{L2} {L1} 6.11.1: De link naar de officiële add-on compatibiliteitscontrole is bijgewerkt. {L2}{L1} Nieuwe geavanceerde zoekoptie: Map standaard in tabblad openen [issue 577]{L2}{L1} Opgelost: Configuratiebestand opslaan kon mislukken door ongeldige files.path-waarde [issue 581]{L2}{L1} Verbeterde tooltips in tabblad-specifieke eigenschappen [issue 580]{L2}"
+    "message": "{P1} QuickFolders is bijgewerkt voor Thunderbird 141 en blijft volledig compatibel met de maandelijkse releasecyclus.{P2}{L1} Grote compatibiliteitsupdate voor Thunderbird 141.* {L2}{L1} Kritieke fout opgelost die map-tabs en veel belangrijke functies kapot maakte — door een wijziging in de manier waarop mapnamen intern worden benaderd. [issue 595] {L2}{L1} quickMove en quickJump hersteld nadat Thunderbird zijn interface heeft gemoderniseerd en oudere zoekonderdelen heeft vervangen. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

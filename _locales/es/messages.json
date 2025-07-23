@@ -2088,7 +2088,7 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders ahora es compatible con Thunderbird 140 — y continuará siendo compatible con el ciclo de lanzamientos mensuales actual.{P2}{L1} Versión de mantenimiento 6.11.1 - corregido: la ventana emergente de subcarpetas no se mostraba al arrastrar un correo a una pestaña. [issue 591]{L2} {L1} 6.11.1: Se actualizó el enlace al comprobador oficial de compatibilidad de complementos. {L2}{L1} Nueva opción de búsqueda avanzada: Abrir carpeta en pestaña por defecto [issue 577]{L2}{L1} Corregido: Guardar el archivo de configuración podía fallar debido a un valor inválido en files.path [issue 581]{L2}{L1} Mejoradas las descripciones emergentes en Propiedades específicas de pestañas [issue 580]{L2}"
+    "message": "{P1} QuickFolders se ha actualizado para Thunderbird 141 y sigue siendo totalmente compatible con el ciclo mensual de versiones.{P2}{L1} Actualización importante de compatibilidad para Thunderbird 141.* {L2}{L1} Se solucionó un problema crítico que afectaba las pestañas de carpetas y muchas funciones clave, debido a un cambio en el acceso interno a los nombres de carpeta. [issue 595] {L2}{L1} Restauradas las funciones quickMove y quickJump tras la modernización de la interfaz de Thunderbird y la sustitución de elementos de búsqueda antiguos. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

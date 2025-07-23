@@ -1977,7 +1977,7 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders は Thunderbird 140 に対応しました — 今後も最新の月次リリースサイクルをサポートします。{P2}{L1} 6.11.1 メンテナンスリリース - 修正: メールをタブにドラッグしたときにサブフォルダのポップアップが表示されない問題。 [issue 591]{L2} {L1} 6.11.1: 公式アドオン互換性チェッカーへのリンクを更新しました。 {L2}{L1} 新しい高度な検索オプション: デフォルトでフォルダーをタブで開く [issue 577]{L2}{L1} 修正: files.path の値が無効な場合、設定ファイルの保存に失敗することがある [issue 581]{L2}{L1} タブ固有プロパティのツールチップを改善 [issue 580]{L2}"
+    "message": "{P1} QuickFoldersはThunderbird 141に対応して更新され、月次リリースサイクルにも完全対応しています。{P2}{L1} Thunderbird 141対応の大幅な互換性アップデート。* {L2}{L1} フォルダタブや多くの主要機能が動作しなくなる重大な問題を修正しました。これはフォルダ名の内部アクセス方法の変更によるものです。 [issue 595] {L2}{L1} Thunderbirdがインターフェイスをモダン化し、古い検索要素を置き換えたため停止していたquickMoveとquickJumpを復元しました。 [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

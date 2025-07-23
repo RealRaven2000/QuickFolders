@@ -2124,7 +2124,7 @@
     "message": "Lisez le journal des modifications détaillé ici (en anglais uniquement):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders est désormais compatible avec Thunderbird 140 — et continuera de prendre en charge le cycle de publication mensuel actuel.{P2}{L1} Version de maintenance 6.11.1 – corrigé : la fenêtre contextuelle des sous-dossiers ne s’affichait pas lors du glisser-déposer d’un mail sur un onglet. [issue 591]{L2} {L1} 6.11.1 : Mise à jour du lien vers le vérificateur officiel de compatibilité des modules complémentaires. {L2}{L1} Nouvelle option de recherche avancée : Ouvrir le dossier dans un onglet par défaut [issue 577]{L2}{L1} Correction : l’enregistrement du fichier de configuration pouvait échouer à cause d’une valeur files.path invalide [issue 581]{L2}{L1} Info-bulles améliorées dans les propriétés spécifiques aux onglets [issue 580]{L2}"
+    "message": "{P1} QuickFolders a été mis à jour pour Thunderbird 141 et reste pleinement compatible avec le cycle mensuel de mises à jour.{P2}{L1} Mise à jour majeure de compatibilité pour Thunderbird 141.* {L2}{L1} Correction d’un bug critique qui cassait les onglets de dossiers et de nombreuses fonctionnalités clés — dû à un changement dans la manière d’accéder aux noms des dossiers en interne. [issue 595] {L2}{L1} quickMove et quickJump ont été restaurés après que Thunderbird a modernisé son interface et remplacé d’anciens éléments de recherche. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

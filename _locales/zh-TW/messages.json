@@ -2038,7 +2038,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders 現已相容於 Thunderbird 140 — 並將持續支援目前的每月發行週期。{P2}{L1} 6.11.1 維護版本 - 修正：將郵件拖曳到分頁時未顯示子資料夾彈出視窗。[issue 591]{L2} {L1} 6.11.1：已更新官方附加元件相容性檢查器的連結。{L2}{L1} 新增進階搜尋選項：預設於分頁中開啟資料夾 [issue 577]{L2}{L1} 修正：由於 files.path 值無效，儲存設定檔可能失敗 [issue 581]{L2}{L1} 改善了分頁專屬屬性中的工具提示 [issue 580]{L2}"
+    "message": "{P1} QuickFolders 已針對 Thunderbird 141 進行更新，並繼續與其每月釋出週期保持完全相容。{P2}{L1} 針對 Thunderbird 141 的重大相容性更新。* {L2}{L1} 修復了一個關鍵問題，導致資料夾分頁和許多核心功能失效——原因是 Thunderbird 更改了內部存取資料夾名稱的方式。 [issue 595] {L2}{L1} Thunderbird 現代化介面並替換了舊有搜尋元件，已恢復 quickMove 和 quickJump 功能。 [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

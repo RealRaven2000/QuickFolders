@@ -2135,7 +2135,7 @@
     "message": "Leggi qui (in inglese) l'elenco dettagliato delle modifiche:"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders è ora compatibile con Thunderbird 140 — e continuerà a supportare l’attuale ciclo di rilascio mensile.{P2}{L1} 6.11.1 Rilascio di manutenzione - risolto: il popup delle sottocartelle non veniva mostrato trascinando una mail su una scheda. [issue 591]{L2} {L1} 6.11.1: Aggiornato il link al controllo ufficiale di compatibilità dei componenti aggiuntivi. {L2}{L1} Nuova opzione di ricerca avanzata: Apri cartella in scheda come predefinito [issue 577]{L2}{L1} Corretto: il salvataggio del file di configurazione poteva fallire a causa di un valore files.path non valido [issue 581]{L2}{L1} Tooltip migliorati nelle Proprietà specifiche delle schede [issue 580]{L2}"
+    "message": "{P1} QuickFolders è stato aggiornato per Thunderbird 141 e resta pienamente compatibile con il ciclo di rilascio mensile.{P2}{L1} Importante aggiornamento di compatibilità per Thunderbird 141.* {L2}{L1} Risolto un problema critico che ha rotto le schede delle cartelle e molte funzionalità chiave — causato da un cambiamento nel modo in cui i nomi delle cartelle sono accessibili internamente. [issue 595] {L2}{L1} quickMove e quickJump sono stati ripristinati dopo che Thunderbird ha modernizzato la sua interfaccia e sostituito elementi di ricerca obsoleti. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

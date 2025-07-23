@@ -2023,7 +2023,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders 现已兼容 Thunderbird 140 — 并将继续支持当前的每月发布周期。{P2}{L1} 6.11.1 维护版本 - 修复：将邮件拖动到标签时未显示子文件夹弹窗。[issue 591]{L2} {L1} 6.11.1：已更新到官方附加组件兼容性检查器的链接。{L2}{L1} 新增高级搜索选项：默认在标签页中打开文件夹 [issue 577]{L2}{L1} 修复：由于 files.path 值无效，保存配置文件可能失败 [issue 581]{L2}{L1} 改进了标签页专属属性中的工具提示 [issue 580]{L2}"
+    "message": "{P1} QuickFolders 已针对 Thunderbird 141 进行了更新，并继续与其每月发布周期保持完全兼容。{P2}{L1} 针对 Thunderbird 141 的重大兼容性更新。* {L2}{L1} 修复了一个关键问题，该问题导致文件夹选项卡和许多核心功能失效——这是因为 Thunderbird 更改了内部访问文件夹名称的方式。 [issue 595] {L2}{L1} 现代化 Thunderbird 界面后替换了旧的搜索组件，已恢复 quickMove 和 quickJump 功能。 [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

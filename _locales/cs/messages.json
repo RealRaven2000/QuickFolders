@@ -2122,7 +2122,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{P1}QuickFolders je nyní kompatibilní s Thunderbirdem 139. Do budoucna si klade za cíl zůstat kompatibilní s aktuálním měsíčním cyklem vydání.{P2}{L1} 6.11.1 Údržbové vydání – opraveno: vyskakovací okno podadresáře se nezobrazovalo při přetahování pošty na kartu. [issue 591]{L2} {L1} 6.11.1: Aktualizován odkaz na oficiální kontrolu kompatibility doplňků. {L2}{L1}Vylepšeno posouvání stromu složek Thunderbirdu na aktuální složku. [issue 559]{L2}{L1}Štítek (Náhledový režim) je nyní vždy odstraněn z panelu nástrojů QuickFolders, kromě záložky nastavení. [issue 571]{L2}{L1}Odstraněno (null) za položkou nabídky panelu nástrojů QuickFolders v nabídce Zobrazit Thunderbirdu.{L2}"
+    "message": "{P1} QuickFolders byl aktualizován pro Thunderbird 141 a zůstává plně kompatibilní s jeho měsíčním vydávacím cyklem.{P2}{L1} Významná aktualizace kompatibility s Thunderbirdem 141.* {L2}{L1} Opraven kritický problém, který narušoval záložky složek a mnoho důležitých funkcí — způsobil ho způsob, jakým Thunderbird přistupuje k názvům složek. [issue 595] {L2}{L1} Obnovena funkčnost quickMove a quickJump, které přestaly fungovat po modernizaci uživatelského rozhraní Thunderbirdu a odstranění starších vyhledávacích prvků. [issue 596] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

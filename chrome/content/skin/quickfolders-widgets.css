@@ -104,18 +104,18 @@ menuitem.cmd[tagName="qfSplash"] {
 
 
 toolbarbutton#QuickFolders-Options,
-menuitem.cmd[tagName="qfOptions"] .menu-iconic-icon {
+menuitem.cmd[tagName="qfOptions"] {
 	list-style-image: url('ico/settings.svg') !important;
 }
 toolbarbutton#QuickFolders-Options:hover,
-menuitem.cmd[tagName="qfOptions"]:hover .menu-iconic-icon {
+menuitem.cmd[tagName="qfOptions"]:hover {
     fill: var(--new-highlight) !important;
 	stroke: currentColor !important;
 }
 
-menuitem.cmd[tagName="qfPaintBucket"] .menu-iconic-icon,
-#QuickFolders-Toolbar toolbarbutton#QuickFolders-paintBucketActive {
-	list-style-image: url("chrome://mozapps/skin/extensions/category-themes.svg");
+menuitem.cmd[tagName="qfPaintBucket"],
+#QuickFolders-Toolbar toolbarbutton#QuickFolders-paintBucketActive {  
+	list-style-image: url("chrome://mozapps/skin/extensions/category-themes.svg") !important;
 }
 
 #QuickFolders-paintBucketActive image {

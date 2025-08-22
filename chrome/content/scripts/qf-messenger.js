@@ -360,6 +360,18 @@ async function onLoad(activatedWhileWindowOpen) {
   // [issue 279]
   window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.INIT;
 
+  const tbVer = window.QuickFolders.Util.ApplicationVersion;
+  const isPatchMenuIcons = (window.QuickFolders.Util.versionGreaterOrEqual(tbVer, "143"));
+  if (isPatchMenuIcons) {
+    const popup1 = document.getElementById("QuickFolders-quickMoveMenu"); 
+    window.QuickFolders.Interface.attachPopupListener(popup1);
+    const popup2 = document.getElementById("QuickFolders-readingListMenu");
+    window.QuickFolders.Interface.attachPopupListener(popup2);
+    const popup3 = document.getElementById("QuickFolders-ToolbarPopup");
+    window.QuickFolders.Interface.attachPopupListener(popup3);
+  }
+
+
   const myToolbar = document.getElementById("QuickFolders-Toolbar");
   if (myToolbar) {
     const QF = window.QuickFolders;

@@ -109,7 +109,6 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 }
 #QuickFolders-ToolbarPopup-options:not(:hover) image {
   stroke: green !important;
-  /* -moz-context-properties: stroke, fill; */
 }
 
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopupBtn:hover {
@@ -847,6 +846,10 @@ menuitem.mailCmd[tag="qfFolderRepair"],
   fill: currentColor;
 }
 
+#quickFoldersMailFolderCommands {
+	list-style-image : url('chrome://quickfolders/content/skin/ico/thunderbird-mini.svg') !important;	
+}
+
 #QuickFolders-paintBucketActive menuitem,
 #QuickFolders-paintBucketActive menu,
 menuitem.color
@@ -899,6 +902,10 @@ menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-new.dragover {
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
   stroke: var(--green-highlight);
+}
+
+.QuickFolders-folder-popup menuitem[tag="sub"] {
+  list-style-image: url("chrome://quickfolders/content/skin/ico/blank.svg");
 }
 
 menupopup.QuickFolders-folder-popup menuitem.cmd[tag="openNewTab"] {

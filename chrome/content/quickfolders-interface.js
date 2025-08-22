@@ -415,6 +415,7 @@ QuickFolders.Interface = {
       menuchildren.forEach(el => button.removeChild(el))
 
 			button.appendChild(menupopup);
+			QuickFolders.Interface.patchMenuIcons(menupopup);
 
 			if (!isDrag) {
 				// remove last popup menu (if button is reused and not created from fresh!)
@@ -4148,7 +4149,7 @@ QuickFolders.Interface = {
 	//   folder = related folder
 	//   button = parent button
 	//   menupopup = top level menu, passed in for "direct commands" such as mark folder read
-	appendMailFolderCommands: function appendMailFolderCommands(MailCommands, folder, isRootMenu, button, menupopup) {
+	appendMailFolderCommands: function (MailCommands, folder, isRootMenu, button, menupopup) {
 		const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					QI = QuickFolders.Interface,
@@ -4757,6 +4758,40 @@ QuickFolders.Interface = {
     return menuitem;
   } ,
 
+	// inside QuickFolders.Interface
+	patchMenuIcons: function(menupopup) {
+		const emptyIcon = `data:image/svg+xml;base64,${btoa(
+			'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"></svg>'
+		)}`;
+
+		const applyImage = (item) => {
+			const listImg = window.getComputedStyle(item).getPropertyValue("list-style-image");
+			if (listImg && listImg !== "none") {
+				const match = listImg.match(/^url\(["']?(.*?)["']?\)$/);
+				if (match && match.length > 1) {
+					item.setAttribute("image", match[1]);
+				}
+			} else if (item.classList.contains("menu-iconic")) {
+				// preserve layout with empty SVG
+				item.setAttribute("image", emptyIcon);
+			}
+		};
+
+		menupopup.querySelectorAll("menuitem").forEach(applyImage);
+		menupopup.querySelectorAll("menu").forEach(applyImage);
+	},
+
+	attachPopupListener: function(menupopup) {
+		if (!menupopup) { return; }
+
+		menupopup.addEventListener("popupshowing", (_e) => {
+			QuickFolders.Interface.patchMenuIcons(menupopup);
+
+			// recursively attach to any nested menupopups
+			menupopup.querySelectorAll("menupopup").forEach((mp) => QuickFolders.Interface.attachPopupListener(mp));
+		});
+	},
+
 	// noCommands suppress all command menu items + submenus
 	addPopupSet: function (popupSetInfo) {
     let folder = popupSetInfo.folder,
@@ -4990,10 +5025,20 @@ QuickFolders.Interface = {
       console.log(`%cComplete FUNCTION addPopupSet(${pId}) took: %c${time}%c\n===============`, popupSetInfo,
                   "background: blue; color:yellow;", ""); 
     } 
+		
+		try {
+			const tbVer = QuickFolders.Util.ApplicationVersion;
+      if (QuickFolders.Util.versionGreaterOrEqual(tbVer, "143")) {
+				QuickFolders.Util.logDebug("addPopupSet()\nPatching icons...");
+        QuickFolders.Interface.attachPopupListener(menupopup);
+      }
+    } catch (ex) {
+      QuickFolders.Util.logException("Patching icons for Tb 143 failed:", ex);
+    }
 	} ,
 
 	// append a button with mail folder commands (onclick)
-	showCurrentFolderMailContextMenu: function showCurrentFolderMailContextMenu(button) {
+	showCurrentFolderMailContextMenu: function (button) {
 		let menupopup = this.createIconicElement("menupopup", "*", button.ownerDocument),
         util = QuickFolders.Util,
 				QI = QuickFolders.Interface,
@@ -5148,7 +5193,19 @@ QuickFolders.Interface = {
 		let el = doc.createXULElement(tagName);
 		el.setAttribute("xmlns", "http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 		if (!cl) {
-			cl = "mailCmd menuitem-iconic";
+			let iconicType = ""
+			switch(tagName) {
+				case "menuitem":
+					iconicType = "menuitem-iconic";
+					break;
+				case "menu":
+					iconicType = "menu-iconic";
+					break;
+				case "menupopup":
+					iconicType = "";
+					break;
+			}
+			cl = `mailCmd ${iconicType}`.trim();
 		}
 		if (cl != "*") {
 			el.className = cl;
@@ -6183,6 +6240,7 @@ QuickFolders.Interface = {
           searchbutton.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }));
           searchbutton.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowDown" }));
           menupopup.childNodes[0].focus();
+					QuickFolders.Interface.patchMenuIcons(menupopup);
         }
         return;
       }

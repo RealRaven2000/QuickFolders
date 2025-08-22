@@ -8,4 +8,5 @@ For details, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 
 
+// eslint-disable-next-line no-unused-vars
 var QuickFolders = {};

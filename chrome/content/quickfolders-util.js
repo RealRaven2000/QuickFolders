@@ -914,7 +914,7 @@ QuickFolders.Util = {
           
         } catch (ex) {
           Components.utils.reportError(ex);
-          throw new ExtensionError(
+          throw new Error(
             `Error ${isMove ? "moving" : "copying"} message: ${ex.message}`
           );
         }
@@ -1011,7 +1011,7 @@ allowUndo = true)`
       return messageIdList; // we need the first element for further processing
     }
     catch(e) {
-      this.logToConsole('Exception in QuickFolders.Util.moveMessages, step ' + step + ':\n' + e);
+      console.trace(`Exception in QuickFolders.Util.moveMessages, step ${step}:\n${e}`);
     };
     return null;
   } ,

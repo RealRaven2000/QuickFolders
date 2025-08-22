@@ -195,6 +195,11 @@ QuickFolders.quickMove = {
         tabMode = QI.CurrentTabMode,    
         tabmail = document.getElementById("tabmail"),
         currentTab = tabmail.selectedTab;
+
+    if (!fld) {
+      console.trace("QuickFolders.quickMove.execute() - no folder found for URI: " + targetFolderUri);
+      return;
+    }
 				
 		this.rememberLastFolder(fld, parentName);
     

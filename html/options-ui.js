@@ -252,9 +252,6 @@ QuickFolders.Options = {
   },
 
   initPreviewTabStyles: function initPreviewTabStyles() {
-    let getElement = document.getElementById.bind(document),
-      menupopup = getElement("QuickFolders-Options-PalettePopup");
-
     this.preparePreviewTab("inactive-colorpicker", "style.InactiveTab.", "inactivetabs-label");
     this.preparePreviewTab("activetab-colorpicker", "style.ActiveTab.", "activetabs-label");
     this.preparePreviewTab("hover-colorpicker", "style.HoveredTab.", "hoveredtabs-label");
@@ -1047,6 +1044,7 @@ QuickFolders.Options = {
       if (clipText) {
         let txtBox = document.getElementById("txtLicenseKey");
         txtBox.value = clipText;
+        // eslint-disable-next-line no-unused-vars
         let finalLicense = QuickFolders.Options.trimLicense();
         QuickFolders.Options.validateNewKey();
       }

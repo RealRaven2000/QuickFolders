@@ -35,20 +35,12 @@ QuickFolders.FilterWorker = {
 	* @param {bool} start or stop filter mode
 	*/  
 	toggle_FilterMode: async function(active) {
-    function removeOldNotification(box, active, id) {
-      if (!active && box) {
-        let item = box.getNotificationWithValue(id);
-        if(item) {
-          box.removeNotification(item, false);
-				}
-      }   
-    }
     const util = QuickFolders.Util,
-          QI = QuickFolders.Interface,
-          prefs = QuickFolders.Preferences,
-			    notificationKey = "quickfolders-filter";          
+			QI = QuickFolders.Interface,
+			prefs = QuickFolders.Preferences,
+			notificationKey = "quickfolders-filter";          
     let notifyBox,
-				isQuickFilters = typeof window.quickFilters !== 'undefined';
+			isQuickFilters = typeof window.quickFilters !== 'undefined';
         
 		util.logDebugOptional ("filters", "toggle_FilterMode(" + active + ")");
 		
@@ -151,7 +143,7 @@ QuickFolders.FilterWorker = {
 		}
 	},
 	
-  openFilterList: function openFilterList(isRefresh, sourceFolder) {
+  openFilterList: function (isRefresh, sourceFolder) {
     try {
 			let w = Services.wm.getMostRecentWindow('mailnews:filterlist');
 	    
@@ -161,13 +153,9 @@ QuickFolders.FilterWorker = {
 	    if (!w) {
 		    let args = { refresh: isRefresh, folder: sourceFolder };
 		    MsgFilterList(args);
-    	}
-    	else {
+    	} else {
+				w.focus();
 	    	// we must make sure server and sourceFolder are selected!!
-	    	let runFolder = w.document.getElementById('runFiltersFolder');
-	    	let serverMenu = w.document.getElementById('serverMenu');
-	    	let filterList = w.document.getElementById('filterList');
-	    	
     	}
     }
     catch {
@@ -535,13 +523,11 @@ QuickFolders.FilterWorker = {
             }
 					}
 					newFilter.filterName = filterName;
-
  
 					let moveAction = newFilter.createAction();
 					moveAction.type = Components.interfaces.nsMsgFilterAction.MoveToFolder;
 					moveAction.targetFolderUri = targetFolder.URI;
 					newFilter.appendAction(moveAction);
-					
 					
 					// Add to the end
 					util.logDebug("Adding new Filter '" + newFilter.filterName + "' "
@@ -558,18 +544,16 @@ QuickFolders.FilterWorker = {
 
 					// If the user hits ok in the filterEditor dialog we set args.refresh=true
 					// there we check this here in args to show filterList dialog.
-					if ("refresh" in args && args.refresh)
-					{
+					if ("refresh" in args && args.refresh) {
             QuickFolders.FilterWorker.openFilterList(true, sourceFolder);
-					} //else, let's remove the filter (Cancel case)
-					else {
-						filtersList.removeFilterAt(0);
-					}
-				}
-				else  // just launch filterList dialog
-				{
-					QuickFolders.FilterWorker.openFilterList(false, sourceFolder);
-				}
+					} else {
+            // let's remove the filter (Cancel case)
+            filtersList.removeFilterAt(0);
+          }
+				} else {
+          // just launch filterList dialog
+          QuickFolders.FilterWorker.openFilterList(false, sourceFolder);
+        }
 			} else {
 				util.logDebugOptional ("filters","no message found to set up filter");
 			}

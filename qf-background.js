@@ -1015,17 +1015,23 @@ async function main() {
   );
 
   // make sure session has loaded all tabs.
-  const isBetterbird = navigator.userAgent.toLowerCase().includes("betterbird");
   // [issue 598] 5000ms default
   const to = await messenger.LegacyPrefs.getPref(legacyPrefPath("api.mailTabs.timeout"));
-  if (isBetterbird) {
-    console.log("%cRunning in Betterbird", "background: black; color: red;");
-  } else {
-    console.log("%cRunning in Thunderbird", "background: black; color: red;", navigator.userAgent);
-  }
   // let [mailTab] = await browser.mailTabs.query({}); await browser.mailTabs.get(mailTab.id);
-  console.log(`QuickFolders: Waiting ${to}ms for mailTabs to be ready...`);
-  await waitForMailTabsReady(to);
+  if (to>0) {
+    console.log(`QuickFolders: Waiting ${to}ms for mailTabs to be ready...`);
+    await waitForMailTabsReady(to);
+  } else {
+    // [issue 598] used to get stuck in Bb:
+    const isDebug = await isDebugOn();
+    if (isDebug) { console.log("waiting for mailTabs.query()..."); }
+    let [mailTab] = await browser.mailTabs.query({});
+    if (isDebug) {
+      console.log(`Got [mailTab] retreiving current tab[${mailTab.id}]`);
+    }
+    await browser.mailTabs.get(mailTab.id);
+    if (isDebug) { console.log("got tab"); }
+  }
 
   /*
    * Start listening for opened windows. Whenever a window is opened, the registered

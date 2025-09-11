@@ -189,7 +189,13 @@
     "message": "Σας ευχαριστούμε για την αναβάθμιση του $addonName$."
   },
   "update.tooltip": {
-    "message": "Κάντε κλικ εδώ μία φορά για να διαβάσετε τι είναι νέο στο $addonName$."
+    "message": "Κάντε κλικ εδώ για να διαβάσετε τι νέο υπάρχει στο $addonName$. Αυτό θα αφαιρέσει επίσης το σήμα Νέα 🟠",
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "whats-new-btn": {
     "message": "Τι είναι νέο;"

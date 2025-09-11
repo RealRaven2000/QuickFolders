@@ -1087,9 +1087,12 @@ QuickFolders.Interface = {
 		util.logDebugOptional("interface.currentFolderBar", "updateNavigationBar() - " + window.location, doc3pane);
 		try {
       // hide current folder bar if no folder => search results!
-      if (!doc3pane.defaultView.tabOrWindow.folder) {
-        return false;
-      }
+			let win = doc3pane?.defaultView;
+			let folder = win?.tabOrWindow?.folder;
+			if (!folder) {
+				// hide current folder bar if no folder => search results!
+				return false;
+			}
 
       let tabMode = tabInfo
         ? QuickFolders.Util.getTabMode(tabInfo)
@@ -1260,12 +1263,8 @@ QuickFolders.Interface = {
         util.logDebugOptional(
           "interface",
           "Current Folder Bar - Collapsing optional Navigation Elements:\n" +
-            "hideMsgNavigation=" +
-            hideMsgNavigation +
-            "\n" +
-            "hideFolderNavigation=" +
-            hideFolderNavigation +
-            "\n"
+            `hideMsgNavigation=${hideMsgNavigation}\n` +
+            `hideFolderNavigation=${hideFolderNavigation}\n`
         );
 
         for (let n = 0; n < toolbar2.children.length; n++) {
@@ -1275,7 +1274,7 @@ QuickFolders.Interface = {
 						QuickFolders.Interface.showElement(node, !hideMsgNavigation);
           } else if (node.id && node.id.startsWith("QuickFolders-Navigate")) {
             // hide QuickFolders-NavigateUp, QuickFolders-NavigateLeft, QuickFolders-NavigateRight
-						QuickFolders.Interface.showElement(node, !hideMsgNavigation);
+						QuickFolders.Interface.showElement(node, !hideFolderNavigation);
           }
         }
         const skippy = doc3pane.getElementById("quickFoldersSkipFolder");
@@ -1350,7 +1349,11 @@ QuickFolders.Interface = {
 		// let messagePane = document3pane.querySelector("#messagePane");
 		
 		// in "Vertical View" layout, we should inject the toolbar as first element of the threadPane instead:
-		this.updateNavigationBar(contentDoc, tabOrWindow ? tabOrWindow.tabNode : null);
+		try {
+			this.updateNavigationBar(contentDoc, tabOrWindow ? tabOrWindow.tabNode : null);
+		} catch(ex) {
+			console.warn("liftNavigationBar - updateNavigationBar() failed:", ex);
+		}
 		// let isSingleMsgWindow = false;
 		// try {
 		//   isSingleMsgWindow = (window.location.href.endsWith("messageWindow.xhtml"));
@@ -2443,7 +2446,11 @@ QuickFolders.Interface = {
 		} else {
 			makeVisible = toggleOptions.toggle ? !isVisible : isVisible;
 		}
-		toolbar.setAttribute("collapsed", !makeVisible);
+		if (makeVisible) {
+			toolbar.removeAttribute("collapsed"); // [issue 609]
+		} else {
+			toolbar.setAttribute("collapsed", true);
+		}
 		if (toggleOptions.button) {
       const theButton = toggleOptions.button.querySelector("button");
       theButton.classList.add("check-button");
@@ -5029,7 +5036,7 @@ QuickFolders.Interface = {
 		try {
 			const tbVer = QuickFolders.Util.ApplicationVersion;
       if (QuickFolders.Util.versionGreaterOrEqual(tbVer, "143")) {
-				QuickFolders.Util.logDebug("addPopupSet()\nPatching icons...");
+				QuickFolders.Util.logDebugOptional("popupmenus", "addPopupSet()\nPatching icons...");
         QuickFolders.Interface.attachPopupListener(menupopup);
       }
     } catch (ex) {
@@ -7919,7 +7926,7 @@ QuickFolders.Interface = {
    *                           "singleMailTab" - a single message (conversation) tab
    *                           "messageWindow" - a single mail window
    **/
-	displayNavigationToolbar: function(optionsOrEvent) {
+	displayNavigationToolbar: async function(optionsOrEvent) {
     const util = QuickFolders.Util;
     try {
       let win, 
@@ -7987,6 +7994,9 @@ QuickFolders.Interface = {
 			} else {
 				doc = optionsOrEvent.doc;
 			}
+
+			let contentWin = doc.defaultView; //  associated chromeWindow
+
       
       util.logDebugOptional("interface.currentFolderBar", "win=" + win.document.URL + "\ndocument=" + doc ? doc.URL : "n/a");
       if (!doc) {
@@ -7997,30 +8007,51 @@ QuickFolders.Interface = {
         return;
       }
 			// hide current folder bar if no folder => search results!
-			if (!doc.defaultView.tabOrWindow.folder) {
+			if (!contentWin.tabOrWindow.folder) {
         isVisible = false; // search results cannot use this
       }
 
 			let toolbarId = "QuickFolders-PreviewToolbarPanel"; // (selector=="messageWindow") ? "QuickFolders-PreviewToolbarPanel-Single" : 
       let currentFolderBar = doc.getElementById(toolbarId);
-      if (currentFolderBar) {
-        util.logDebugOptional("interface.currentFolderBar", 
-            "|===========================================================|" + "\n" 
-          + "| currentFolderBar.style.display = " + currentFolderBar.style.display  + "\n" 
-          + "|===========================================================|" + "\n" 
-          + "visible = " + isVisible);
-        if (["","singleMailTab","messageWindow"].includes(selector)) {          
-          currentFolderBar.collapsed = !isVisible;
-          currentFolderBar.style.display = isVisible ? "flex" : "none";
-          util.logDebugOptional("interface.currentFolderBar", "Effected display of current folder bar =" + currentFolderBar.style.display);
+
+			if (optionsOrEvent.display && !currentFolderBar) {
+        if (contentWin.QuickFolders_injectCurrentFolderBar) {
+          try {
+            currentFolderBar = await contentWin.QuickFolders_injectCurrentFolderBar(true, true); // activatedWhileWindowOpen=true, manual=true
+            util.logDebugOptional(
+              "interface.currentFolderBar",
+              "Re-injection attempted successfully."
+            );
+          } catch (ex) {
+            util.logException("displayNavigationToolbar reinject attempt failed", ex);
+          }
         }
       }
-      else {
-        util.logDebugOptional("interface.currentFolderBar", 
-            "|====================================================|" + "\n" 
-          + "|  currentFolderBar element could not be retrieved"     + "\n" 
-          + "|====================================================|" + "\n");
-      }
+
+			if (currentFolderBar) {
+				util.logDebugOptional(
+          "interface.currentFolderBar",
+          "|===========================================================|\n" +
+            `| currentFolderBar.style.display = ${currentFolderBar.style.display}\n` +
+            "|===========================================================|" +
+            `\nvisible = ${isVisible}`
+        );
+				if (["", "singleMailTab", "messageWindow"].includes(selector)) {
+					currentFolderBar.collapsed = !isVisible;
+					currentFolderBar.style.display = isVisible ? "flex" : "none";
+					util.logDebugOptional(
+						"interface.currentFolderBar",
+						"Effected display of current folder bar =" + currentFolderBar.style.display
+					);
+				}
+			} else {
+				util.logDebugOptional(
+					"interface.currentFolderBar",
+					"|====================================================|\n" +
+						"|  currentFolderBar element could not be retrieved\n" +
+						"|====================================================|\n"
+				);
+			}
     }
     catch(ex) {
       util.logException("displayNavigationToolbar(" + optionsOrEvent + ")", ex);
@@ -8202,7 +8233,7 @@ QuickFolders.Interface = {
 		await QuickFolders.FilterWorker.toggle_FilterMode(active);
 	} ,
 
-	moveFolders: function moveFolders(fromFolders, isCopy, targetFolder) {
+	moveFolders: function (fromFolders, isCopy, targetFolder) {
 		// [Bug 26517] support multiple folder moves - added "count" and transmitting URIs
 		const util = QuickFolders.Util;
     let arrCount = fromFolders.length;

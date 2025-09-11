@@ -51,7 +51,8 @@ function legacyPrefPath(setting) {
  * 👉 Handle the received message by filtering for a distinct property and select
  *    the appropriate handler
  */
-browser.runtime.onMessage.addListener((message, sender, sendResponse) => {
+browser.runtime.onMessage.addListener((message, sender, _sendResponse) => {
+  // eslint-disable-next-line no-prototype-builtins
   if (message && message.hasOwnProperty("activatePrefsPage")) {
     // If we have a command, return a promise from the command handler.
     return doHandleCommand(message, sender);
@@ -77,9 +78,9 @@ function sanitizeCSS(el) {
   try {
     let val = el.value;
     let colon = val.indexOf(':');
-    if (colon>=0) val = val.substr(colon+1);
+    if (colon>=0) {val = val.substr(colon+1);}
     let semicolon = val.indexOf(';');
-    if (semicolon>0) val = val.substr(0,semicolon);
+    if (semicolon>0) {val = val.substr(0,semicolon);}
     val = val.trim ? val.trim() : val;
     return val;
     // this.updateCSSpreview();
@@ -111,7 +112,7 @@ async function initLicenseInfo() {
   // window.addEventListener("QuickFolders.BackgroundUpdate", validateLicenseInOptions);
   
   messenger.runtime.onMessage.addListener (
-    (data, sender) => {
+    (data, _sender) => {
       if (data.msg=="updatedLicense") {
         licenseInfo = data.licenseInfo;
         QuickFolders.Options.updateLicenseOptionsUI(false); // we may have to switch off silent if we cause this
@@ -245,7 +246,7 @@ for (let colPreview of document.querySelectorAll(".qfTabPreview")) {
       continue;
   }
   if (buttonState) {
-    colPreview.addEventListener("click", (event) => {QuickFolders.Options.showPalette(colPreview, buttonState)});
+    colPreview.addEventListener("click", () => {QuickFolders.Options.showPalette(colPreview, buttonState)});
   }
 }
 
@@ -254,7 +255,7 @@ document.getElementById("QuickFolders-Options-PalettePopup").addEventListener("c
 );
 
 document.getElementById("QuickFolders-Options-layout").addEventListener("click", 
-  (event) => {QuickFolders.Interface.hidePalette()}
+  () => {QuickFolders.Interface.hidePalette()}
 );
 
 
@@ -273,18 +274,18 @@ rb2.addEventListener("change", async (event) => {
   QuickFolders.Options.setColoredTabStyleFromRadioGroup(event.target, true);
 });
 
-document.getElementById("quickMoveAdvanced").addEventListener("click", async (event) => {
+document.getElementById("quickMoveAdvanced").addEventListener("click", async () => {
   QuickFolders.Options.quickMoveAdvancedSettings();
 });
 
 let icSize = document.getElementById("customIconSize");
-icSize.addEventListener("change", async (event) => {
+icSize.addEventListener("change", async () => {
   messenger.runtime.sendMessage({ command:"updateUserStyles" });
 });
 
 /* CSP violation in Tb 125.0b5 */
 let customBackground = document.getElementById("currentFolderBackground");
-customBackground.addEventListener("blur", async (event) => {
+customBackground.addEventListener("blur", async () => {
   customBackground.value = sanitizeCSS(customBackground);
 });
 
@@ -329,14 +330,14 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
     case "style.corners.customizedRadius":
     case "toolbar.largeIcons":
     case "premium.categories.multiSelect":
-      chk.addEventListener("change", (event) => {
+      chk.addEventListener("change", () => {
         QuickFolders.Options.toggleBoolPreference(chk);
       });
       break;
     case "currentFolderBar.skipUnreadFolder":
     case "currentFolderBar.iconcolor.custom": // fall-through
     case "currentFolderBar.background.lightweight":
-      chk.addEventListener("change", async (event) => {
+      chk.addEventListener("change", async () => {
         await QuickFolders.Options.toggleBoolPreference(chk, false);
         QuickFolders.Options.updateNavigationBar();
       });
@@ -344,44 +345,44 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
     case "restoreConfig.tabs":
     case "restoreConfig.general":
     case "restoreConfig.layout":
-      chk.addEventListener("change", async (event) => {
+      chk.addEventListener("change", async () => {
         await QuickFolders.Options.toggleBoolPreference(chk, true);
       });
       break;
     case "showCurrentFolderToolbar":
-      chk.addEventListener("change", (event) => {
+      chk.addEventListener("change", () => {
         QuickFolders.Options.toggleNavigationBars(chk,"");
       });
       break;
     case "showCurrentFolderToolbar.singleMailTab":
-      chk.addEventListener("change", (event) => {
+      chk.addEventListener("change", () => {
         QuickFolders.Options.toggleNavigationBars(chk,"singleMailTab");
       });
       break;
     case "showCurrentFolderToolbar.messageWindow":
-      chk.addEventListener("change", (event) => {
+      chk.addEventListener("change", () => {
         QuickFolders.Options.toggleNavigationBars(chk,"messageWindow");
       });
       break;
     case "transparentToolbar":
-      chk.addEventListener("change", (event) => {
+      chk.addEventListener("change", () => {
         QuickFolders.Options.toggleColorTranslucent(chk,"toolbar-colorpicker", "qf-StandardColors", null);
       });      
       break;
     case "transparentButtons":
-      chk.addEventListener("change", (event) => {
+      chk.addEventListener("change", () => {
         QuickFolders.Options.toggleColorTranslucent(chk,"inactive-colorpicker", "inactivetabs-label", "InactiveTab");
       });      
       break;
     case "buttonShadows":
-      chk.addEventListener("change", (event) => {
+      chk.addEventListener("change", () => {
         QuickFolders.Options.showButtonShadow(chk);
       });      
       break;
   }
   /* RIGHTCLICK HANDLERS */
   // right-click show details from about:config
-  let filterConfig="", readOnly=true, retVal=null;
+  let filterConfig="", retVal=null;
   switch(dataPref) {
     case "showRecentTab":
       filterConfig="quickfolders.recentfolders"; retVal=false;
@@ -393,7 +394,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       filterConfig="quickfolders.currentFolderBar.navigation";
       break;
     case "currentFolderBar.folderNavigation.showButtons":
-      filterConfig="quickfolders.currentFolderBar.navigation";
+      // filterConfig="quickfolders.currentFolderBar.navigation";
       break;
     case "showQuickfoldersLabel":
       filterConfig="extensions.quickfolders.textQuickfoldersLabel"; retVal=false;
@@ -437,14 +438,15 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       event.stopPropagation();
       // 
       switch(filterConfig) {
-        case "quickfolders.findRelated":
+        case "quickfolders.findRelated": {
           const btn = document.querySelector("#QuickFolders-Options-Tabbox button[tabId='findRelated']");
           btn.click();
           break;
+        }
         default:
           await dispatchAboutConfig(filterConfig, true, true);
       }
-      if (null!=retVal) return retVal;
+      if (null!=retVal) {return retVal;}
     });
   }
 }
@@ -466,15 +468,15 @@ async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
 
 // command buttons =============
 
-document.getElementById("copyFolders").addEventListener("click", (event) => {
+document.getElementById("copyFolders").addEventListener("click", () => {
   QuickFolders.Options.copyFolderEntries();
 });
 
-document.getElementById("pasteFolders").addEventListener("click", (event) => {
+document.getElementById("pasteFolders").addEventListener("click", () => {
   QuickFolders.Options.pasteFolderEntries();
 });
 
-document.getElementById("btnSaveConfig").addEventListener("click", async (event) => {
+document.getElementById("btnSaveConfig").addEventListener("click", async () => {
   // legacy code - needs to go via background 
   let storedObj = {
     general : [],
@@ -489,23 +491,24 @@ document.getElementById("btnSaveConfig").addEventListener("click", async (event)
       let p = it.getAttribute("preference");
       if (p.includes("PaletteType") || p.includes("folderPathDetail")) { value = parseInt(it.value,10); }
       else { value = it.value; }
-    }
-    else  switch(it.type) {
-      case "checkbox":
-        value = it.checked;
-        break;
-      case "text": case "color":
-        value = it.value;
-        break;
-      case "number": 
-        value = parseInt(it.value,10);
-        break;
-      case "radio": 
-        if (!it.checked) continue;
-        value = it.value;
-        break;
-      default: 
-        continue;
+    } else { 
+      switch(it.type) {
+        case "checkbox":
+          value = it.checked;
+          break;
+        case "text": case "color":
+          value = it.value;
+          break;
+        case "number": 
+          value = parseInt(it.value,10);
+          break;
+        case "radio": 
+          if (!it.checked) {continue;}
+          value = it.value;
+          break;
+        default: 
+          continue;
+      }
     }
     
     let node = { key: it.getAttribute("data-pref-name"), val: value, originalId: it.getAttribute("preference") };
@@ -521,8 +524,9 @@ document.getElementById("btnSaveConfig").addEventListener("click", async (event)
           storedObj.layout.push(node);
           break;
         case 'qfpp-':  // premium - make sure not to import the License without confirmation!
-          if (isLicense)
+          if (isLicense) {
             storedObj.premium.push(node);
+          }
           break;
         default:
           console.log("Not storing - unknown preference ", node);
@@ -543,7 +547,7 @@ document.getElementById("btnSaveConfig").addEventListener("click", async (event)
   return await messenger.Utilities.storeConfig(storedObj);  
 });
      
-document.getElementById("btnLoadConfig").addEventListener("click", async (event) => {
+document.getElementById("btnLoadConfig").addEventListener("click", async () => {
   // legacy code - moved to experiment api (utilities)
   const config = await messenger.Utilities.loadConfig();  
   if (!config) { return; }
@@ -570,7 +574,7 @@ document.getElementById("btnLoadConfig").addEventListener("click", async (event)
 
 
 
-document.getElementById("btnConfigureTooltips").addEventListener("click", (event) => {
+document.getElementById("btnConfigureTooltips").addEventListener("click", () => {
   // oncommand="options.configureTooltips(this);return true;"
   // this calls:
   // QI.showAboutConfig(btn,           "extensions.quickfolders.tooltips", true, true);
@@ -608,25 +612,19 @@ async function savePref(event) {
 	if (target instanceof HTMLInputElement) {
 		if (target.getAttribute("type") === "checkbox") {
 			await browser.LegacyPrefs.setPref(prefName, target.checked);
-		} 
-    else if (target.getAttribute("type") === "text" ||
+		} else if (target.getAttribute("type") === "text" ||
 			target.dataset.prefType === "string") {
 			await browser.LegacyPrefs.setPref(prefName, target.value);
-		} 
-    else if (target.getAttribute("type") === "number") {
+		} else if (target.getAttribute("type") === "number") {
 			await browser.LegacyPrefs.setPref(prefName, parseInt(target.value, 10));
-		} 
-    else if (target.getAttribute("type") === "radio" && target.checked) {
+		} else if (target.getAttribute("type") === "radio" && target.checked) {
       await browser.LegacyPrefs.setPref(prefName, target.value);
-    }    
-    else if (target.getAttribute("type") === "color") {
+    } else if (target.getAttribute("type") === "color") {
       await browser.LegacyPrefs.setPref(prefName, target.value);
-    }    
-    else {
+    } else {
 			console.error("Received change event for input element with unexpected type", event);
 		}
-	} 
-  else if (target instanceof HTMLSelectElement) {
+	} else if (target instanceof HTMLSelectElement) {
 		if (target.dataset.prefType === "string") {
 			await browser.LegacyPrefs.setPref(prefName, target.value);
 		} 
@@ -634,13 +632,11 @@ async function savePref(event) {
       let v = isNaN(target.value) ? target.value : parseInt(target.value, 10);
 			await browser.LegacyPrefs.setPref(prefName, v);
 		}
-	} 
-  else if (element instanceof HTMLTextAreaElement) {
+	} else if (target instanceof HTMLTextAreaElement) {
     await browser.LegacyPrefs.setPref(prefName, target.value);
+  } else {
+    console.error("Received change event for unexpected element", event);
   }  
-  else {
-		console.error("Received change event for unexpected element", event);
-	}  
 }
 
 
@@ -739,7 +735,7 @@ async function preselectTab(mode=null) {
       selectedTabElement = button;
     }
   });
-  if (!selectedTabElement) return;
+  if (!selectedTabElement) {return;}
   
   console.log(`activating tab:`, selectedTabElement);
   let tabEvent = new Event("click");
@@ -758,11 +754,11 @@ function configExtra2Button() {
 // broken out from validateLicenseInOptions:
 async function configureBuyButton() {
   function replaceCssClass(el,addedClass) {
-    if (!el) return;
+    if (!el) {return;}
     el.classList.add(addedClass);
-    if (addedClass!="paid") el.classList.remove("paid");
-    if (addedClass!="expired")  el.classList.remove("expired");
-    if (addedClass!="free") el.classList.remove("free");
+    if (addedClass!="paid") {el.classList.remove("paid");}
+    if (addedClass!="expired")  {el.classList.remove("expired");}
+    if (addedClass!="free") {el.classList.remove("free");}
   }
 
   let wd = window.document,
@@ -772,7 +768,7 @@ async function configureBuyButton() {
   let result = licenseInfo.status;
   
   switch(result) {
-    case "Valid":
+    case "Valid": {
       let today = new Date(),
           later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
           dateString = later.toISOString().substr(0, 10),
@@ -792,6 +788,7 @@ async function configureBuyButton() {
       replaceCssClass(proTab, "paid");
       replaceCssClass(btnLicense, "paid");
       break;
+    }
     case "Expired":
       QuickFolders.Options.labelLicenseBtn(btnLicense, "renew");
       replaceCssClass(proTab, "expired");
@@ -855,41 +852,41 @@ async function initButtons() {
   }); // contact me
   
   // oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog("options_" + options.currentOptionsTab); window.close(); });">Buy License</button>
-  document.getElementById("btnLicense").addEventListener("click", (event) => { QuickFolders.Interface.showLicenseDialog(); });
-  document.getElementById("btnDefaultRadius").addEventListener("click", (event) => { QuickFolders.Options.setDefaultButtonRadius(); });
-  document.getElementById("defaultColors").addEventListener("click", (event) => { QuickFolders.Options.setDefaultColors(); });
-  document.getElementById("qf-options-header-description").addEventListener("click", (event) => { 
+  document.getElementById("btnLicense").addEventListener("click", () => { QuickFolders.Interface.showLicenseDialog(); });
+  document.getElementById("btnDefaultRadius").addEventListener("click", () => { QuickFolders.Options.setDefaultButtonRadius(); });
+  document.getElementById("defaultColors").addEventListener("click", () => { QuickFolders.Options.setDefaultColors(); });
+  document.getElementById("qf-options-header-description").addEventListener("click", () => { 
     messenger.Utilities.showVersionHistory();
     window.close(); 
   });
-  document.getElementById("qf-options-icon").addEventListener("click", (event) => { QuickFolders.Options.collapseHead(); });
-  document.getElementById("qf-youtube").addEventListener("click", (event) => {
+  document.getElementById("qf-options-icon").addEventListener("click", () => { QuickFolders.Options.collapseHead(); });
+  document.getElementById("qf-youtube").addEventListener("click", () => {
     messenger.windows.openDefaultBrowser("https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A");
   });
-  document.getElementById("applyCurrentBackground").addEventListener("click", (event) => { 
+  document.getElementById("applyCurrentBackground").addEventListener("click", () => { 
     QuickFolders.Options.setCurrentToolbarBackgroundCustom(); 
   });
   document.getElementById("minHeightFix").addEventListener("click", (event) => { 
     // [issue 372] numeral textbox event bubbled up?
-    if (event.target.tagName=="INPUT" || event.target.id=="toolbarMinHeight") return;
+    if (event.target.tagName=="INPUT" || event.target.id=="toolbarMinHeight") {return;}
     QuickFolders.Util.logDebug("minHeightFix event", event);
     QuickFolders.Util.openLinkInTab("https://quickfolders.org/bugzilla/bugs/show_bug.cgi@id=25021"); 
   });
-  document.getElementById("L0").addEventListener("click", (event) => { 
+  document.getElementById("L0").addEventListener("click", () => { 
     QuickFolders.Util.openLinkInTab("https://quickfolders.org/"); 
     window.close(); 
   });
   
-  document.getElementById("tbkeys").addEventListener("click", (event) => { 
+  document.getElementById("tbkeys").addEventListener("click", () => { 
     QuickFolders.Util.openLinkInTab("https://github.com/RealRaven2000/QuickFolders/issues/387#issuecomment-2029756995"); 
     window.close(); 
   });  
 
-  document.querySelector(".findRelatedSite").addEventListener("click", (event) => {
+  document.querySelector(".findRelatedSite").addEventListener("click", () => {
     QuickFolders.Util.openLinkInTab("https://quickfolders.org/premium.html#findRelated");
   });
 
-  document.querySelector(".editRegex").addEventListener("click", async(event) => {
+  document.querySelector(".editRegex").addEventListener("click", async() => {
     const editBox = document.getElementById("findRelatedPattern");
 
     let searchValue = editBox.value, // allow overwriting in debugger for test!
@@ -903,7 +900,7 @@ async function initButtons() {
         searchFlags = editBox.value.substring(endIdx + 1);
       } else {
         QuickFolders.Util.logDebug(`Invalid search string in find Related - missing 2nd '/' : ${searchFlags}`);
-        searchFlags = searchOptions.pattern.substring(1); // removing beginning '/'
+        searchFlags = editBox.value.substring(1); // removing beginning '/'
       }
     } 
 
@@ -980,9 +977,8 @@ async function initBling() {
     for (let index = 0; index<cbo.itemCount; index++) {
       let item = cbo.options.item( index ),
           theme = QuickFolders.Themes.Theme(item.value);
-      if (theme) {
-        if (item.label != theme.name)
-          item.label = theme.name + " - " + item.label
+      if (theme && item.label != theme.name) {
+        item.label = theme.name + " - " + item.label;
       }
     }  
   }

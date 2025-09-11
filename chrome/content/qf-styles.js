@@ -29,10 +29,10 @@ QuickFolders.Styles = {
           if (checkMatch(nestedSS, href)) {
             ssFirstMatch = nestedSS;
             break;
-          }
-          else
+          } else {
             checkNestedSheets(nestedSS);
-          if (ssFirstMatch) break;
+					}
+          if (ssFirstMatch) {break;}
         }
       }
       return (ssFirstMatch) ? true : false;
@@ -49,14 +49,16 @@ QuickFolders.Styles = {
       if (typeof ss.cssRules != 'undefined') {
         if (checkMatch(ss,href))
         {
-          if (!ssFirstMatch)
-            ssFirstMatch = ss;
+          if (!ssFirstMatch) {
+						ssFirstMatch = ss;
+					}
           break;
         }
         if (!ssFirstMatch) {
           // iterate rules to check for nested style sheets
-          if (checkNestedSheets(ss))
-            break;
+          if (checkNestedSheets(ss)) {
+						break;
+					}
         }
       }
 		}
@@ -88,18 +90,22 @@ QuickFolders.Styles = {
 				for (let i=0; i<rulesList.length; i++) {
 					let theRule = rulesList[i];
 					switch (theRule.type) {
-						case theRule.IMPORT_RULE:
-							if (!recurse) // don't allow deep recursion (break circular refs!)
+						case theRule.IMPORT_RULE: {
+							if (!recurse) {
+								// don't allow deep recursion (break circular refs!)
 								continue;
+							} 
 						  let retVal = getRuleFromList(theRule.styleSheet.cssRules, rule, attribute, false);
 							// try to find imported rule (recursive) and return it.
-							if (! (retVal === null))
+							if (!(retVal === null)) {
 							  return (retVal);
-							break;
-					  case theRule.STYLE_RULE:
+							}
+						} break;
+					  case theRule.STYLE_RULE: {
 							let selectors = theRule.selectorText;
-							if (!selectors || !selectors.length)
+							if (!selectors || !selectors.length) {
 								continue;
+							}
 							let selectorArray = selectors.split(',');
               // replaced for..each
               for (let r=0; r<selectorArray.length; r++) {
@@ -121,7 +127,7 @@ QuickFolders.Styles = {
 									}
 								}
 							}
-							break;
+						}	break;
 						default: // other rules: unknown, media, page, font_face, charset 
 						  // don't do anything here
 							break;
@@ -160,7 +166,7 @@ QuickFolders.Styles = {
 			for (let i=0; i<rulesList.length; i++) {
 				let theRule = rulesList[i];
 				switch (theRule.type) {
-					case theRule.IMPORT_RULE:
+					case theRule.IMPORT_RULE: {
 						// try to set imported rule (recursive) and return true.
 						if (!recurse) // don't allow deep recursion (break circular @import refs!)
 							continue;
@@ -170,8 +176,8 @@ QuickFolders.Styles = {
             logDebug('setting CSS rule in ' + styleSheetName);
 						if (setRuleFromList(theRule.styleSheet.cssRules, rule, attribute, value, important, true))
 							return true;
-						break;
-					case theRule.STYLE_RULE:
+					}	break;
+					case theRule.STYLE_RULE: {
 						let selectors = theRule.selectorText;
 						if (!selectors || !selectors.length)
 							continue;
@@ -198,7 +204,7 @@ QuickFolders.Styles = {
 						if (foundRule && value!=null) { // keep searching if exact rule was not found! but remove duplicates.
 							return true; // if rule found, early exit
             }
-						break;
+					} break;
 					default: // other rules: unknown, media, page, font_face, charset 
 						// don't do anything here
 						break;

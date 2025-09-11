@@ -36,7 +36,7 @@ async function notificationHandler(data) {
       let tabInfo;
       try {
         tabInfo = contentDoc.defaultView.tabOrWindow.tabNode;
-      } catch(ex) {;}      
+      } catch {;}      
       window.QuickFolders.Interface.updateNavigationBar(window.document, tabInfo);
     } break;
 
@@ -44,7 +44,7 @@ async function notificationHandler(data) {
       let displayDefault = window.QuickFolders.Preferences.isShowCurrentFolderToolbar(windowMode);
       let isDisplay = isEvent ? displayDefault : 
         (typeof data.display == "boolean" ? data.display : displayDefault) ;
-      window.QuickFolders.Interface.displayNavigationToolbar(
+      await window.QuickFolders.Interface.displayNavigationToolbar(
         {
           display: isDisplay,
           doc: contentDoc,
@@ -58,39 +58,54 @@ async function notificationHandler(data) {
 
 var globalThemehandler;
 
-async function onLoad(activatedWhileWindowOpen) {
+async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false) {
   const WAIT_FOR_3PANE = 1000;
   // const win = window;
-  console.log("qf-3pane.js - onLoad()");
-  if (window.parent && window.parent.document  && window.parent.document.URL == "about:3pane") {
+  const util = window.parent?.QuickFolders?.Util,
+    prefs = window.parent?.QuickFolders?.Preferences;
+  util.logHighlight(
+    "qf-3pane.js - injectCurrentFolderBar()",
+    {
+      color: "lightyellow",
+      background: "#AF3C00",
+    },
+    `\n activatedWhileWindowOpen = ${activatedWhileWindowOpen}\n isManual=${isManual}`
+  );
+
+
+  
+  if (window?.parent?.document?.URL == "about:3pane") {
     // parent document should already be patched!
-    return;
+    console.log("injectCurrentFolderBar() early exit, parent document URL==about:3pane");
+    return null;
   }
+  if (prefs.isDebugOption("interface.currentFolderBar")) { 
+    // eslint-disable-next-line no-debugger
+    debugger;
+  }  
   WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css"); // we need this here.
 
-
   window.QuickFolders = window.parent.QuickFolders;
-  window.QuickFolders.WLM = WL; // closure a separate instace of the WindowListener that works in messagepange
+  window.QuickFolders.WLM = WL; // closure a separate instace of the WindowListener that works in messagepane
   // let's make sure 3Pane is really ready (we might want to attach this to a window.DOMContentLoaded event instead)
-  window.setTimeout( 
-    (win = window) => {
-      console.log("QuickFolders: injecting current folder");
-      const contentDoc = win.document;
-      win.QuickFolders.Util.logDebug(`============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`);
-      let layout = WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
-      let layout2 = WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css");
+  window.setTimeout(async (win = window) => {
+    console.log("QuickFolders: injecting current folder");
+    const contentDoc = win.document;
+    win.QuickFolders.Util.logDebug(
+      `============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`
+    );
+    WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
+    WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css?v=2");
 
-      // current folder bar specific styling
-      let layout3 = WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-navigation.css"); 
-      WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
+    // current folder bar specific styling
+    WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-navigation.css");
+    WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
 
-      // inject palette
-      let tb = WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-palettes.css");
+    // inject palette
+    WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-palettes.css");
 
-
-      //------------------------------------ overlay current folder (navigation bar)
-      let INJECTED_ELEMENTS =
-`<hbox id="QuickFolders-PreviewToolbarPanel" class="QuickFolders-NavigationPanel quickFoldersToolbar">
+    //------------------------------------ overlay current folder (navigation bar)
+    const INJECTED_ELEMENTS = `<hbox id="QuickFolders-PreviewToolbarPanel" class="QuickFolders-NavigationPanel quickFoldersToolbar">
   <span flex="5" id="QF-CurrentLeftSpacer"> </span>
   <toolbar id="QuickFolders-CurrentFolderTools" class="contentTabToolbar quickFoldersToolbar" iconsize="small">
     <toolbarbutton id="QuickFolders-CurrentMail"
@@ -204,41 +219,37 @@ async function onLoad(activatedWhileWindowOpen) {
   <span flex="5" id="QF-CurrentRightSpacer"> </span>
 </hbox>`;
 
-      switch(contentDoc.URL) {
-        case "about:3pane":    // inject into thread pane (bottom)
-          WL.injectElements(`
-          <div id="threadPane">`
-      + INJECTED_ELEMENTS + `   
-          </div>
-          `);
-          windowMode = "";
-          break;
-        case "about:message":      // inject into messagepane (on top)
-          WL.injectElements(`
-          <vbox id="messagepanebox">`
-      + INJECTED_ELEMENTS + `
-          </vbox>
-          `);
-          if (window.parent.document.URL.endsWith("messageWindow.xhtml")) {
-            windowMode = "messageWindow";
-            let ft = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
-            if (ft) { // remove obsolete navigation elements!
-              let navs = ft.querySelectorAll(".qf_navigation");
-              for (let navElement of navs) {
-                navElement.remove();
-              }
+    switch (contentDoc.URL) {
+      case "about:3pane": // inject into thread pane (bottom)
+        WL.injectElements(`<div id="threadPane">${INJECTED_ELEMENTS}</div>`);
+        windowMode = "";
+        break;
+      case "about:message": // inject into messagepane (on top)
+        WL.injectElements(`<vbox id="messagepanebox">${INJECTED_ELEMENTS}</vbox>`);
+        if (window.parent.document.URL.endsWith("messageWindow.xhtml")) {
+          // single message windows get a reduced set of commands:
+          windowMode = "messageWindow";
+          let ft = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
+          if (ft) {
+            // remove obsolete navigation elements!
+            let navs = ft.querySelectorAll(".qf_navigation");
+            for (let navElement of navs) {
+              navElement.remove();
             }
-            let fa = contentDoc.getElementById("QuickFolders-currentFolderFilterActive");
-            if (fa) { fa.remove(); }
-          } else {
-            windowMode = "singleMailTab";
-          } 
-          
-          break;
-      }
-  // when to set windowMode = "messageWindow" ??
+          }
+          let fa = contentDoc.getElementById("QuickFolders-currentFolderFilterActive");
+          if (fa) {
+            fa.remove();
+          }
+        } else {
+          windowMode = "singleMailTab";
+        }
 
-  /*
+        break;
+    }
+    // when to set windowMode = "messageWindow" ??
+
+    /*
   <!-- if conversation view (extension) is active ?? then the browser element multimessage will be visible
       in this case we need to move the toolbar panel into the messagepanebox before multimessage
       <hbox id="QuickFolders-PreviewToolbarPanel-ConversationView" class=QuickFolders-PreviewToolbarPanel insertbefore="multimessage">
@@ -246,87 +257,95 @@ async function onLoad(activatedWhileWindowOpen) {
       </hbox>
   -->
   */
-      // main window: win.parent
+    // main window: win.parent
 
-      // relocate to make it visible (bottom of thread)
-      win.QuickFolders.Interface.liftNavigationbar(contentDoc);    // passes HTMLDocument "about:3pane"
+    // relocate to make it visible (bottom of thread)
+    win.QuickFolders.Interface.liftNavigationbar(contentDoc); // passes HTMLDocument "about:3pane"
 
-      const myToolbar = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
-      if (myToolbar) {
-        // inject brighttext if necessary
-        // for some reason this is not generated automatically
-        // which leads to badly matching icons in the toolbar...
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          myToolbar.setAttribute("brighttext",true);
-        }
+    const myToolbar = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
+    if (myToolbar) {
+      // inject brighttext if necessary
+      // for some reason this is not generated automatically
+      // which leads to badly matching icons in the toolbar...
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        myToolbar.setAttribute("brighttext", true);
       }
+    }
 
-      const themeHandler = {
-        handleEvent(event) {
-          window.QuickFolders.Util.logDebugOptional("interface","3pane themeHandler..");
-          window.QuickFolders.Interface.patchToolbarTheme(event, {
-            win: win,
-            doc: contentDoc,
-            toolbarId: "QuickFolders-CurrentFolderTools"
-          });
-        }
-      }      
-      win.addEventListener("windowlwthemeupdate", themeHandler);
-      globalThemehandler = themeHandler; // keep a reference to unload
+    const themeHandler = {
+      handleEvent(event) {
+        window.QuickFolders.Util.logDebugOptional("interface", "3pane themeHandler..");
+        window.QuickFolders.Interface.patchToolbarTheme(event, {
+          win: win,
+          doc: contentDoc,
+          toolbarId: "QuickFolders-CurrentFolderTools",
+        });
+      },
+    };
+    win.addEventListener("windowlwthemeupdate", themeHandler);
+    globalThemehandler = themeHandler; // keep a reference to unload
+
+    // remember whether toolbar was shown, and make invisible or initialize if necessary
+    // default to folder view
+    const prefs = win.QuickFolders.Preferences;
+    // avoid circular calling:
     
+    if(!isManual) {
+      // this parameter is set when we want to force display and the element was not already injected onLoad:
+      await win.QuickFolders.Interface.displayNavigationToolbar({
+        isFromWindow: true,
+        display: prefs.isShowCurrentFolderToolbar(windowMode),
+        doc: contentDoc,
+        selector: windowMode,
+      });
+    }
+    let tabInfo;
+    try {
+      tabInfo = contentDoc.defaultView.tabOrWindow.tabNode;
+    } catch {;}
+    win.QuickFolders.Interface.updateNavigationBar(contentDoc, tabInfo);
+    // -- now we have the current folder toolbar, tell quickFilters to inject its buttons:
+    window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFilters" });
 
-      // remember whether toolbar was shown, and make invisible or initialize if necessary
-      // default to folder view
-      const prefs = win.QuickFolders.Preferences;
-      win.QuickFolders.Interface.displayNavigationToolbar(
-        {
-          isFromWindow: true,
-          display: prefs.isShowCurrentFolderToolbar(windowMode),
-          doc : contentDoc,
-          selector : windowMode
-        }
-      ); 
-      let tabInfo;
-      try {
-        tabInfo = contentDoc.defaultView.tabOrWindow.tabNode;
-      } catch(ex) {;}
-      win.QuickFolders.Interface.updateNavigationBar(contentDoc, tabInfo);
-      // -- now we have the current folder toolbar, tell quickFilters to inject its buttons:
-      window.QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFilters" });
+    // initialise custom icons in folder tree (only 3pane tabs)
+    if (windowMode == "" && win.QuickFolders.FolderTree) {
+      win.QuickFolders.FolderTree.init(contentDoc, win.tabOrWindow);
+    }
 
-      // initialise custom icons in folder tree (only 3pane tabs)
-      if (windowMode=="" && win.QuickFolders.FolderTree) {
-        win.QuickFolders.FolderTree.init(contentDoc, win.tabOrWindow);
-      }      
-
-
-      // add a listener for switching the view
-      Services.prefs.addObserver("mail.pane_config.dynamic", viewLayoutObserver);
-    
-    },
-    WAIT_FOR_3PANE
-  );
+    // add a listener for switching the view
+    Services.prefs.addObserver("mail.pane_config.dynamic", viewLayoutObserver);
+  }, WAIT_FOR_3PANE);
 
 
-  // the following adds the notifyTools API to communicate with the background page
-  var { ExtensionParent } = ChromeUtils.importESModule(
-    "resource://gre/modules/ExtensionParent.sys.mjs"
-  );  
-  let ext = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
-  Services.scriptloader.loadSubScript(
-    ext.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
-    this,
-    "UTF-8"
-  );
+  if (!window.QuickFolders_notifyToolsLoaded) {
+    // the following adds the notifyTools API to communicate with the background page
+    var { ExtensionParent } = ChromeUtils.importESModule(
+      "resource://gre/modules/ExtensionParent.sys.mjs"
+    );
+    let ext = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
+    Services.scriptloader.loadSubScript(
+      ext.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
+      this,
+      "UTF-8"
+    );
 
-  this.notifyTools.setAddOnId("quickfolders@curious.be");
+    this.notifyTools.setAddOnId("quickfolders@curious.be");
+    this.notifyTools.addListener((data) => {
+      return notificationHandler(data);
+    });
+    window.QuickFolders_notifyToolsLoaded = true;
+  }
 
-  this.notifyTools.addListener((data) => {
-    return notificationHandler(data);
-  });
-
+  const toolbar = window.document.getElementById("QuickFolders-PreviewToolbarPanel") || null;
+  return toolbar; // null if injection failed
 }
 
+// eslint-disable-next-line no-unused-vars
+async function onLoad(activatedWhileWindowOpen) {
+  return injectCurrentFolderBar(activatedWhileWindowOpen);
+}
+
+// eslint-disable-next-line no-unused-vars
 function onUnload(isAddOnShutown) {
   let document3pane = window.document;
   Services.prefs.removeObserver("mail.pane_config.dynamic", viewLayoutObserver);
@@ -350,3 +369,5 @@ function onUnload(isAddOnShutown) {
   window.removeEventListener("windowlwthemeupdate", globalThemehandler);  
   globalThemehandler = null;
 }
+// store a global reference for manual calling:
+window.QuickFolders_injectCurrentFolderBar = injectCurrentFolderBar;

@@ -1,10 +1,27 @@
 /* quickfolders toolbar layout */
 
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
-	background-color: #006EB7 !important; /* blue */
+#QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
+	background-color: #006EB7 !important; 
+  color: white;
 	background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   border-radius: 2px !important;
-	font-weight: normal;
+  padding-inline: 0.3em;
+}
+#QuickFolders-LabelBox {
+  overflow: visible; /* allow the badge to overflow */
+  position: relative; /* keep positioning context if needed */
+}
+
+#QuickFolders-title-label.newsflash::after {
+  content: url("skin/ico/badge-news.svg");  /* Add 🟠 */
+  position: absolute;
+  top: -4px;                 
+  right: -4px;               
+  line-height: 1;
+  display: block;
+  pointer-events: none; /* don’t block clicks */
+  width: calc(0.9em + 1px) !important;
+  width: calc(0.9em + 1px) !important;
 }
 
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
@@ -22,12 +39,12 @@ menuitem.cmd[tag="qfTabAdvanced"][type="checkbox"] .menu-iconic-left {
 }
 
 
-
+/*
 #QuickFolders-LabelBox #QuickFolders-title-label.newsflash {
   padding-left: 1em;
   padding-right: 1em;
 	font-weight: normal !important;
-}
+}*/
 #QuickFolders-LabelBox #QuickFolders-title-label.expired {
   padding-left: 2em;
   padding-right: 2em;
@@ -47,19 +64,11 @@ menuitem.cmd[tag="qfTabAdvanced"][type="checkbox"] .menu-iconic-left {
 	color: rgb(255,255,255) !important;
 }
 
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash label, 
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired label {
 	color: rgb(255,255,255) !important;
   font-size: 1.1em;
 }
 
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash:hover {
-	background-color: #ffd65e !important; /* yellow */
-	background-image: linear-gradient(to bottom, #fff65e 0%,#febf04 100%) !important;
-}
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.newsflash:hover label {
-	color: rgb(60,0,0) !important;
-}
 
 /* increase delay for pulsing shadow to 60mins */
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
@@ -82,7 +91,7 @@ menuitem.cmd[tag="qfTabAdvanced"][type="checkbox"] .menu-iconic-left {
 }
 
 #QuickFolders-Toolbar #QuickFolders-title-label:hover,
-#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired:hover:not(.newsflash) {
+#QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired:hover {
   /* bright green */
 	border-color: rgb(255, 255, 255);
 	background-image: linear-gradient(to bottom, rgb(184, 211, 27) 0%, rgb(122, 166, 18) 50%, rgb(92, 138, 0) 51%, rgb(135, 181, 19) 100%) !important;

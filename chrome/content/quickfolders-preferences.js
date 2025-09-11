@@ -288,10 +288,12 @@ QuickFolders.Preferences = {
 	get TextQuickfoldersLabel() {
     let overrideLabel = "";
     // extend this for delivering the news splash when updated!
+		/*
     if (QuickFolders.Preferences.getBoolPref("hasNews")) {
       overrideLabel = QuickFolders.Util.getBundleString("qf.notification.newsFlash", "QuickFolders");
 		}
-    else if (QuickFolders.Util.licenseInfo.isExpired) {
+    else */
+		if (QuickFolders.Util.licenseInfo.isExpired) {
       overrideLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.renewLicense");
 		}
     

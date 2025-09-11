@@ -246,11 +246,20 @@ END LICENSE BLOCK */
     ##             also fixed link to point to official Add-on Compatibility Check
 
   6.12 QuickFolders Pro - 23/07/2025
-    ## Make compatible with Thunderbird 141.
+    ## Make compatible with Thunderbird 141. (bumped to 142 on ATN)
     ## [issue 595] `nsIMsgFolder.prettyName` removed in Thunderbird 141 
     ## [issue 596] `search-textbox` removed in Thunderbird 141 
     ## [issue 598] QuickFolders toolbar not showing in new tab due 
     ##             to mailTabs.query not ready
+
+  6.12.1 QuickFolders Pro - WIP
+    ## Make compatible with Thunderbird 143.
+    ## [issue 602] Thunderbird 143: menu icons of all popup menus missing / broken
+    ## [issue 606] quickMove with history should move mail, but jumps to folder instead
+    ## [issue 607] Minimize impact of "News Flag" - use a badge icon 🟠 instead
+    ## [issue 608] Intermittently, current folder bar is not displayed on main 3pane (1st) tab
+    ## [issue 609] Thunderbird 143: QuickFolders toolbar not displayed on startup, toggle button not working 
+    ## [issue 610] Bug: folder navigation buttons cannot be removed independently of Message Navigation buttons
 
   
 	TO DO next
@@ -539,7 +548,7 @@ var QuickFolders = {
 
       if (wt === 'mail:messageWindow') {
         util.logDebug("QuickFolders.initSingleMsg() - Calling displayNavigationToolbar()");
-        QuickFolders.Interface.displayNavigationToolbar(
+        await QuickFolders.Interface.displayNavigationToolbar(
           {
             display: prefs.isShowCurrentFolderToolbar("messageWindow"),
             doc : win.gTabmail.currentTabInfo.chromeBrowser.contentWindow,

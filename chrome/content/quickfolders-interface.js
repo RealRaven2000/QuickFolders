@@ -9006,23 +9006,54 @@ QuickFolders.Interface = {
 
   patchToolbarTheme: function(event, toolbarObj) {
     const eventType = event?.type;
+		const THEME_DELAY = 500;
     if (!eventType) {return false;}
-		QuickFolders.Util.logDebugOptional("interface",`patchToolbarTheme(${eventType})`, toolbarObj, event);
+		let tabIndex = null;
+		const docTitle = toolbarObj.doc?.title || toolbarObj.doc?.documentURI || "unknown doc";
+		const tabmail = toolbarObj?.win?.document.getElementById("tabmail");
+		if (tabmail) {
+			tabIndex = Array.from(tabmail.tabInfo).findIndex(
+        (t) => t.chromeWindow === toolbarObj.win
+      );
+		}
 
+		QuickFolders.Util.logDebugOptional(
+      "interface",
+      `patchToolbarTheme(${eventType}) for tab ${tabIndex} - ${docTitle}`,
+      toolbarObj,
+      event
+    );
     switch (eventType) {
+			case "lightweightthemechange": // new experimental
       case "activate":
       case "windowlwthemeupdate":
-      case "toolbarvisibilitychange": { // this.inferFromText(event.type, event.visible);
+      case "toolbarvisibilitychange": {
+        // this.inferFromText(event.type, event.visible);
         const toolbar = toolbarObj.doc.getElementById(toolbarObj.toolbarId);
         if (!toolbar) {
-          QuickFolders.Util.logDebug(`patchToolbarTheme(${eventType})\nDid not find toolbar ${toolbarObj.toolbarId}`);
+          QuickFolders.Util.logDebug(
+            `patchToolbarTheme(${eventType})\nDid not find toolbar ${toolbarObj.toolbarId}`
+          );
           return false;
         }
-        if (toolbarObj.win.matchMedia && toolbarObj.win.matchMedia('(prefers-color-scheme: dark)').matches) {
-          toolbar.setAttribute("brighttext",true);
-        } else {
-          toolbar.removeAttribute("brighttext");
+        if (!toolbarObj.win.matchMedia) {
+          return false;
         }
+
+        // Slight delay to let matchMedia reflect the current theme
+        setTimeout(() => {
+          const isDarkMode = toolbarObj.win.matchMedia("(prefers-color-scheme: dark)").matches;
+          QuickFolders.Util.logDebugOptional(
+            "interface",
+            `patching toolbar ${toolbar.id} to ${isDarkMode ? "dark" : "bright"} mode.\n`
+          );
+          if (isDarkMode) {
+            toolbar.setAttribute("brighttext", true);
+          } else {
+            toolbar.removeAttribute("brighttext");
+          }
+        }, THEME_DELAY);
+
       } break;
       default:
         return false;

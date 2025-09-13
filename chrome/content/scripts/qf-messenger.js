@@ -361,16 +361,15 @@ async function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.INIT;
 
   const tbVer = window.QuickFolders.Util.ApplicationVersion;
-  const isPatchMenuIcons = (window.QuickFolders.Util.versionGreaterOrEqual(tbVer, "143"));
+  const isPatchMenuIcons = window.QuickFolders.Util.versionGreaterOrEqual(tbVer, "143");
   if (isPatchMenuIcons) {
-    const popup1 = document.getElementById("QuickFolders-quickMoveMenu"); 
+    const popup1 = document.getElementById("QuickFolders-quickMoveMenu");
     window.QuickFolders.Interface.attachPopupListener(popup1);
     const popup2 = document.getElementById("QuickFolders-readingListMenu");
     window.QuickFolders.Interface.attachPopupListener(popup2);
     const popup3 = document.getElementById("QuickFolders-ToolbarPopup");
     window.QuickFolders.Interface.attachPopupListener(popup3);
   }
-
 
   const myToolbar = document.getElementById("QuickFolders-Toolbar");
   if (myToolbar) {
@@ -443,7 +442,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
     // Update clear button visibility based on input content
     function updateClearVisibility() {
-      clearBtn.hidden = (!findBox.value || findBox.value.length === 0);
+      clearBtn.hidden = !findBox.value || findBox.value.length === 0;
     }
 
     findBox.addEventListener("input", () => {
@@ -455,7 +454,7 @@ async function onLoad(activatedWhileWindowOpen) {
       e.stopPropagation(); // Prevent event from bubbling
       findBox.value = ""; // Clear the input
       // new Event throws in this context?
-      // findBox.dispatchEvent(new Event("input")); 
+      // findBox.dispatchEvent(new Event("input"));
       findBox.focus(); // Keep focus in the input
       updateClearVisibility();
     });
@@ -629,6 +628,14 @@ async function onLoad(activatedWhileWindowOpen) {
   window.addEventListener("windowlwthemeupdate", themeHandler);
   window.addEventListener("toolbarvisibilitychange", themeHandler);
   window.QuickFolders.themeHandler = themeHandler;
+
+  /* Bridge the gap for theme changes (e.g., system or custom themes) that
+    // don't trigger windowlwthemeupdate.
+    Services.obs.addObserver(() => {
+      const event = { type: "lightweightthemechange" };
+      window.QuickFolders.themeHandler.handleEvent(event);
+    }, "lightweight-theme-changed");
+    */
 
   // [issue 534] leave search box open: allow dragging more maisls for quickMove
   const qm = myToolbar.querySelector("#QuickFolders-FindFolder");

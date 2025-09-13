@@ -252,14 +252,15 @@ END LICENSE BLOCK */
     ## [issue 598] QuickFolders toolbar not showing in new tab due 
     ##             to mailTabs.query not ready
 
-  6.12.1 QuickFolders Pro - WIP
+  6.13 QuickFolders Pro - WIP
     ## Make compatible with Thunderbird 143.
     ## [issue 602] Thunderbird 143: menu icons of all popup menus missing / broken
+    ## [issue 609] Thunderbird 143: QuickFolders toolbar not displayed on startup, toggle button not working 
     ## [issue 606] quickMove with history should move mail, but jumps to folder instead
     ## [issue 607] Minimize impact of "News Flag" - use a badge icon 🟠 instead
     ## [issue 608] Intermittently, current folder bar is not displayed on main 3pane (1st) tab
-    ## [issue 609] Thunderbird 143: QuickFolders toolbar not displayed on startup, toggle button not working 
     ## [issue 610] Bug: folder navigation buttons cannot be removed independently of Message Navigation buttons
+    ## [issue 611] Toolbar button icons sometimes don’t update immediately when changing themes
 
   
 	TO DO next

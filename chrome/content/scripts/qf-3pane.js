@@ -269,6 +269,8 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
       // which leads to badly matching icons in the toolbar...
       if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
         myToolbar.setAttribute("brighttext", true);
+      } else {
+        myToolbar.removeAttribute("brighttext");
       }
     }
 
@@ -285,12 +287,20 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     win.addEventListener("windowlwthemeupdate", themeHandler);
     globalThemehandler = themeHandler; // keep a reference to unload
 
+    /* Bridge the gap for theme changes (e.g., system or custom themes) that
+    // don't trigger windowlwthemeupdate.
+    Services.obs.addObserver(() => {
+      const event = { type: "lightweightthemechange" };
+      window.QuickFolders.themeHandler.handleEvent(event);
+    }, "lightweight-theme-changed");
+    */
+
     // remember whether toolbar was shown, and make invisible or initialize if necessary
     // default to folder view
     const prefs = win.QuickFolders.Preferences;
     // avoid circular calling:
-    
-    if(!isManual) {
+
+    if (!isManual) {
       // this parameter is set when we want to force display and the element was not already injected onLoad:
       await win.QuickFolders.Interface.displayNavigationToolbar({
         isFromWindow: true,

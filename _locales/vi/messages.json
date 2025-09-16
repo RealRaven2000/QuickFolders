@@ -1755,7 +1755,7 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders đã được cập nhật cho Thunderbird 141 và vẫn hoàn toàn tương thích với chu kỳ phát hành hàng tháng.{P2}{L1} Cập nhật khả năng tương thích lớn cho Thunderbird 141.* {L2}{L1} Đã sửa lỗi nghiêm trọng làm hỏng các tab thư mục và nhiều tính năng chính — do Thunderbird thay đổi cách truy cập tên thư mục nội bộ. [issue 595] {L2}{L1} Đã khôi phục quickMove và quickJump sau khi Thunderbird hiện đại hóa giao diện và thay thế các thành phần tìm kiếm cũ. [issue 596] {L2}"
+    "message": "{P1} QuickFolders đã được cập nhật cho Thunderbird 143 và vẫn hoàn toàn tương thích với chu kỳ phát hành hàng tháng hiện tại.{P2}{L1} Đã làm tương thích với Thunderbird 143.* {L2}{L1} Sửa các biểu tượng menu bị thiếu/hỏng trong tất cả menu bật lên của Thunderbird 143 [issue 602] {L2}{L1} Giảm thiểu tác động của \"Cờ tin tức\" — giờ được hiển thị dưới dạng biểu tượng huy hiệu 🟠 [issue 607] {L2}{L1} Thỉnh thoảng, thanh thư mục hiện tại không được hiển thị trên tab chính 3 khung (đầu tiên) [issue 608] {L2}{L1} Biểu tượng nút thanh công cụ đôi khi không cập nhật ngay khi thay đổi chủ đề [issue 611] {L2}{L1} Thanh công cụ QuickFolders giờ được hiển thị chính xác khi khởi động Thunderbird 143, nút chuyển đổi hoạt động [issue 609] {L2}{L1} Các nút điều hướng thư mục giờ có thể được xóa độc lập với các nút điều hướng thư — trước đây bị liên kết sai với cài đặt điều hướng thư [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -399,7 +399,7 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders on päivitetty Thunderbird 141:een ja on täysin yhteensopiva kuukausittaisen julkaisusykli kanssa.{P2}{L1} Merkittävä yhteensopivuuspäivitys Thunderbird 141:lle.* {L2}{L1} Korjattiin kriittinen ongelma, joka rikkoi kansiovälilehdet ja monia keskeisiä toimintoja — johtuen muutoksesta, miten kansioiden nimiin päästään sisäisesti. [issue 595] {L2}{L1} quickMove ja quickJump palautettiin Thunderbirdin modernisoitua käyttöliittymäänsä ja korvattua vanhat hakuelementit. [issue 596] {L2}"
+    "message": "{P1} QuickFolders on päivitetty Thunderbird 143:lle ja on edelleen täysin yhteensopiva nykyisen kuukausittaisen julkaisusyklin kanssa.{P2}{L1} Tehty yhteensopivaksi Thunderbird 143:n kanssa.* {L2}{L1} Korjattu puuttuvat/rikkinäiset valikkokuvakkeet kaikissa Thunderbird 143:n ponnahdusvalikoissa [issue 602] {L2}{L1} Vähennetty \"Uutislipun\" vaikutusta — näytetään nyt merkki-kuvakkeena 🟠 [issue 607] {L2}{L1} Satunnaisesti nykyisen kansion palkkia ei näytetty pää-3-paneelin (ensimmäisessä) välilehdessä [issue 608] {L2}{L1} Työkalurivin painikkeiden kuvakkeet eivät joskus päivity heti teemoja vaihdettaessa [issue 611] {L2}{L1} QuickFolders-työkalurivi näytetään nyt oikein käynnistyksessä Thunderbird 143:ssa, ja vaihtopainike toimii [issue 609] {L2}{L1} Kansionavigointipainikkeet voidaan nyt poistaa riippumattomasti viestien navigointipainikkeista — ne olivat aiemmin virheellisesti linkitetty [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

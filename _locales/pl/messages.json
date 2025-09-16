@@ -2079,7 +2079,7 @@
     "message": "Przeczytaj szczegółowy dziennik zmian tutaj (tylko w języku angielskim):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders został zaktualizowany do Thunderbirda 141 i pozostaje w pełni kompatybilny z miesięcznym cyklem wydań.{P2}{L1} Duża aktualizacja kompatybilności z Thunderbirdem 141.* {L2}{L1} Naprawiono krytyczny błąd, który psuł karty folderów i wiele kluczowych funkcji — spowodowany zmianą sposobu dostępu do nazw folderów wewnętrznie. [issue 595] {L2}{L1} Przywrócono quickMove i quickJump po tym, jak Thunderbird zmodernizował interfejs i zastąpił stare elementy wyszukiwania. [issue 596] {L2}"
+    "message": "{P1} QuickFolders został zaktualizowany do Thunderbirda 143 i pozostaje w pełni kompatybilny z bieżącym miesięcznym cyklem wydań.{P2}{L1} Zapewniono zgodność z Thunderbirdem 143.* {L2}{L1} Naprawiono brakujące/uszkodzone ikony menu we wszystkich menu podręcznych Thunderbirda 143 [issue 602] {L2}{L1} Zminimalizowano wpływ „Flagi wiadomości” — teraz wyświetlana jako ikona odznaki 🟠 [issue 607] {L2}{L1} Sporadycznie pasek bieżącego folderu nie był wyświetlany na głównej karcie 3-panelowej (pierwszej) [issue 608] {L2}{L1} Ikony przycisków paska narzędzi czasami nie aktualizują się natychmiast po zmianie motywów [issue 611] {L2}{L1} Pasek narzędzi QuickFolders jest teraz poprawnie wyświetlany przy uruchamianiu w Thunderbirdzie 143, a przycisk przełączania działa [issue 609] {L2}{L1} Przyciski nawigacji folderów można teraz usuwać niezależnie od przycisków nawigacji wiadomości — wcześniej były błędnie powiązane [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -2085,7 +2085,7 @@
     "message": "Lees hier het gedetailleerde wijzigingslogboek (alleen in het Engels):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders is bijgewerkt voor Thunderbird 141 en blijft volledig compatibel met de maandelijkse releasecyclus.{P2}{L1} Grote compatibiliteitsupdate voor Thunderbird 141.* {L2}{L1} Kritieke fout opgelost die map-tabs en veel belangrijke functies kapot maakte — door een wijziging in de manier waarop mapnamen intern worden benaderd. [issue 595] {L2}{L1} quickMove en quickJump hersteld nadat Thunderbird zijn interface heeft gemoderniseerd en oudere zoekonderdelen heeft vervangen. [issue 596] {L2}"
+    "message": "{P1} QuickFolders is bijgewerkt voor Thunderbird 143 en blijft volledig compatibel met de huidige maandelijkse releasecyclus.{P2}{L1} Compatibel gemaakt met Thunderbird 143.* {L2}{L1} Ontbrekende/kapotte menu-iconen in alle popupmenu’s van Thunderbird 143 opgelost [issue 602] {L2}{L1} Invloed van de \"Nieuwsmarkering\" geminimaliseerd — nu weergegeven als een badgepictogram 🟠 [issue 607] {L2}{L1} Soms werd de huidige mapbalk niet weergegeven op het hoofd-3-paneel (eerste tabblad) [issue 608] {L2}{L1} Knopiconen van de werkbalk werden soms niet direct bijgewerkt bij het wisselen van thema’s [issue 611] {L2}{L1} QuickFolders-werkbalk wordt nu correct weergegeven bij het opstarten in Thunderbird 143, met de werkende schakelknop [issue 609] {L2}{L1} Mapnavigatieknoppen kunnen nu onafhankelijk van de berichtnavigatieknoppen worden verwijderd — eerder waren ze ten onrechte gekoppeld [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

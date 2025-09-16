@@ -2077,7 +2077,7 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders wurde für Thunderbird 141 aktualisiert und bleibt vollständig kompatibel mit dem monatlichen Release-Zyklus.{P2}{L1} Wichtige Kompatibilitätsaktualisierung für Thunderbird 141.* {L2}{L1} Kritischer Fehler behoben, der Ordner-Tabs und viele Hauptfunktionen lahmlegte – verursacht durch Änderungen beim internen Zugriff auf Ordnernamen. [issue 595] {L2}{L1} quickMove und quickJump wiederhergestellt, nachdem Thunderbird seine Oberfläche modernisierte und ältere Suchelemente ersetzt hat. [issue 596] {L2}"
+    "message": "{P1} QuickFolders wurde für Thunderbird 143 aktualisiert und bleibt vollständig kompatibel mit dem aktuellen monatlichen Release-Zyklus.{P2}{L1} Kompatibel gemacht mit Thunderbird 143.* {L2}{L1} Fehlende/defekte Menüsymbole in allen Popup-Menüs von Thunderbird 143 behoben [issue 602] {L2}{L1} Einfluss des „Neuigkeiten-Status“ minimiert — dieser wird nun als Badge-Symbol 🟠 angezeigt [issue 607] {L2}{L1} Gelegentlich wurde die aktuelle Ordnerleiste nicht im Haupt-3-Panel (erster Tab) angezeigt [issue 608] {L2}{L1} Symbolleisten-Symbole aktualisieren sich manchmal nicht sofort beim Wechseln von Themes [issue 611] {L2}{L1} QuickFolders-Symbolleiste wird nun beim Start in Thunderbird 143 korrekt angezeigt, Umschaltknopf funktioniert [issue 609] {L2}{L1} Ordner-Navigationsschaltflächen können jetzt unabhängig von Nachrichten-Navigationsschaltflächen entfernt werden — zuvor waren sie fälschlicherweise durch die gleiche Option verknüpft [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

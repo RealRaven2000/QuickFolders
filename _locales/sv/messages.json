@@ -2095,8 +2095,9 @@
     "message": "Läs den detaljerade ändringsloggen här (endast engelska):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders har uppdaterats för Thunderbird 141 och är fullt kompatibelt med den månatliga utgivningscykeln.{P2}{L1} Större kompatibilitetsuppdatering för Thunderbird 141.* {L2}{L1} Fixade ett kritiskt fel som bröt mappflikar och många nyckelfunktioner – på grund av ändringar i hur interna mappnamn hanteras. [issue 595] {L2}{L1} quickMove och quickJump återställdes efter att Thunderbird moderniserat gränssnittet och ersatt äldre sökelement. [issue 596] {L2}"
+    "message": "{P1} QuickFolders har uppdaterats för Thunderbird 143 och är fortsatt fullt kompatibelt med den nuvarande månatliga utgivningscykeln.{P2}{L1} Gjort kompatibelt med Thunderbird 143.* {L2}{L1} Fasta saknade/felaktiga menyikoner i alla popup-menyer i Thunderbird 143 [issue 602] {L2}{L1} Påverkan av ”Nyhetsflagga” minimerad — visas nu som en badge-ikon 🟠 [issue 607] {L2}{L1} Ibland visades inte den aktuella mappfältet på huvudfliken med 3 rutor (första) [issue 608] {L2}{L1} Ikonerna på verktygsfältsknappar uppdateras ibland inte direkt när man byter tema [issue 611] {L2}{L1} QuickFolders-verktygsfältet visas nu korrekt vid start i Thunderbird 143, växlingsknappen fungerar [issue 609] {L2}{L1} Mappnavigeringsknapparna kan nu tas bort oberoende av meddelandenavigeringsknapparna — de var felaktigt länkade till meddelandenavigeringsinställningarna [issue 610] {L2}"
   },
+
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Välkommen till $addonName$",

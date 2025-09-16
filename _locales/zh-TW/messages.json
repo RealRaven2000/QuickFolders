@@ -2038,7 +2038,7 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders 已針對 Thunderbird 141 進行更新，並繼續與其每月釋出週期保持完全相容。{P2}{L1} 針對 Thunderbird 141 的重大相容性更新。* {L2}{L1} 修復了一個關鍵問題，導致資料夾分頁和許多核心功能失效——原因是 Thunderbird 更改了內部存取資料夾名稱的方式。 [issue 595] {L2}{L1} Thunderbird 現代化介面並替換了舊有搜尋元件，已恢復 quickMove 和 quickJump 功能。 [issue 596] {L2}"
+    "message": "{P1} QuickFolders 已更新以支援 Thunderbird 143，並與目前的每月發行週期保持完全相容。{P2}{L1} 已與 Thunderbird 143 相容。* {L2}{L1} 修復了 Thunderbird 143 所有快顯選單中缺失/損壞的選單圖示 [issue 602] {L2}{L1} 將「新聞標記」的影響降到最低 — 現在顯示為徽章圖示 🟠 [issue 607] {L2}{L1} 偶爾當前資料夾列未顯示在主三窗格（第一個）分頁上 [issue 608] {L2}{L1} 更改佈景主題時，工具列按鈕圖示有時不會立即更新 [issue 611] {L2}{L1} QuickFolders 工具列現在在 Thunderbird 143 啟動時正確顯示，切換按鈕可正常使用 [issue 609] {L2}{L1} 資料夾導覽按鈕現在可以獨立於郵件導覽按鈕移除 — 之前被錯誤地連結到郵件導覽設定 [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

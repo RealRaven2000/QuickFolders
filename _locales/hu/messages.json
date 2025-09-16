@@ -1829,7 +1829,7 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{P1} A QuickFolders frissítve lett a Thunderbird 141-hez, és továbbra is teljes mértékben kompatibilis a havi kiadási ciklussal.{P2}{L1} Jelentős kompatibilitási frissítés a Thunderbird 141-hez.* {L2}{L1} Javítottunk egy kritikus hibát, amely tönkretette a mappafüleket és sok fontos funkciót — ami a mappanevek belső elérésének megváltozása miatt történt. [issue 595] {L2}{L1} Visszaállítottuk a quickMove és quickJump funkciókat, miután a Thunderbird modernizálta a felületét és lecserélte a régi keresőelemeket. [issue 596] {L2}"
+    "message": "{P1} A QuickFolders frissítve lett a Thunderbird 143-hoz, és továbbra is teljes mértékben kompatibilis a jelenlegi havi kiadási ciklussal.{P2}{L1} Kompatibilissé téve a Thunderbird 143-mal.* {L2}{L1} Javítva a hiányzó/törött menüikonok a Thunderbird 143 összes felugró menüjében [issue 602] {L2}{L1} Minimalizáltuk a „Hírzászló” hatását — most jelvény ikonnal jelenik meg 🟠 [issue 607] {L2}{L1} Időnként az aktuális mappasáv nem jelent meg a fő, 3-paneles (első) fülön [issue 608] {L2}{L1} Az eszköztár gombikonjai néha nem frissülnek azonnal téma váltáskor [issue 611] {L2}{L1} A QuickFolders eszköztár most már helyesen jelenik meg induláskor a Thunderbird 143-ban, a váltógomb működik [issue 609] {L2}{L1} A mappanavigációs gombok mostantól függetlenül eltávolíthatók az üzenetnavigációs gomboktól — korábban tévesen összekapcsolódtak [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

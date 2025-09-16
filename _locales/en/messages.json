@@ -2135,7 +2135,7 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders has been updated for Thunderbird 141 and remains fully compatible with the current monthly release cycle.{P2}{L1} Major compatibility update to support changes in Thunderbird 141.* {L2}{L1} Fixed a critical issue that broke folder tabs and many key features — caused by Thunderbird changing how folder names are accessed internally. [issue 595] {L2}{L1} Restored quickMove and quickJump after Thunderbird modernized its interface and replaced older search elements. [issue 596] {L2}"
+    "message": "{P1} QuickFolders has been updated for Thunderbird 143 and remains fully compatible with the current monthly release cycle.{P2}{L1} Made compatible with Thunderbird 143.* {L2}{L1} Fixed missing/broken menu icons in all popup menus of Thunderbird 143 [issue 602] {L2}{L1} Minimized impact of \"News Flag\" — now displayed as a badge icon 🟠 [issue 607] {L2}{L1} Intermittently, current folder bar was not displayed on main 3pane (first) tab [issue 608] {L2}{L1} Toolbar button icons sometimes don’t update immediately when changing themes [issue 611] {L2}{L1} QuickFolders toolbar now correctly displayed on startup in Thunderbird 143, toggle button working [issue 609] {L2}{L1} Folder navigation buttons can now be removed independently of Message Navigation buttons — they were falsely linked to message navigation settings [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

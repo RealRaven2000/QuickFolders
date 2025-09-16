@@ -2023,7 +2023,7 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders 已针对 Thunderbird 141 进行了更新，并继续与其每月发布周期保持完全兼容。{P2}{L1} 针对 Thunderbird 141 的重大兼容性更新。* {L2}{L1} 修复了一个关键问题，该问题导致文件夹选项卡和许多核心功能失效——这是因为 Thunderbird 更改了内部访问文件夹名称的方式。 [issue 595] {L2}{L1} 现代化 Thunderbird 界面后替换了旧的搜索组件，已恢复 quickMove 和 quickJump 功能。 [issue 596] {L2}"
+    "message": "{P1} QuickFolders 已更新以支持 Thunderbird 143，并与当前的每月发布周期保持完全兼容。{P2}{L1} 已与 Thunderbird 143 兼容。* {L2}{L1} 修复了 Thunderbird 143 所有弹出菜单中缺失/损坏的菜单图标 [issue 602] {L2}{L1} 将“新闻标记”的影响降至最低 — 现在显示为徽章图标 🟠 [issue 607] {L2}{L1} 偶尔情况下，当前文件夹栏不会显示在主三窗格（第一个）标签页上 [issue 608] {L2}{L1} 更改主题时，工具栏按钮图标有时不会立即更新 [issue 611] {L2}{L1} QuickFolders 工具栏现在在 Thunderbird 143 启动时正确显示，切换按钮正常工作 [issue 609] {L2}{L1} 文件夹导航按钮现在可以独立于邮件导航按钮删除 — 之前错误地链接到了邮件导航设置 [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

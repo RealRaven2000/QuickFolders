@@ -2122,7 +2122,7 @@
     "message": "Přečtěte si podrobný protokol změn zde (pouze v angličtině):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders byl aktualizován pro Thunderbird 141 a zůstává plně kompatibilní s jeho měsíčním vydávacím cyklem.{P2}{L1} Významná aktualizace kompatibility s Thunderbirdem 141.* {L2}{L1} Opraven kritický problém, který narušoval záložky složek a mnoho důležitých funkcí — způsobil ho způsob, jakým Thunderbird přistupuje k názvům složek. [issue 595] {L2}{L1} Obnovena funkčnost quickMove a quickJump, které přestaly fungovat po modernizaci uživatelského rozhraní Thunderbirdu a odstranění starších vyhledávacích prvků. [issue 596] {L2}"
+    "message": "{P1} QuickFolders byl aktualizován pro Thunderbird 143 a zůstává plně kompatibilní s aktuálním měsíčním cyklem vydání.{P2}{L1} Zajištěna kompatibilita s Thunderbirdem 143.* {L2}{L1} Opravené chybějící/poškozené ikony v nabídce ve všech kontextových nabídkách Thunderbirdu 143 [issue 602] {L2}{L1} Minimalizován dopad „Novinkové vlajky“ — nyní se zobrazuje jako ikona odznaku 🟠 [issue 607] {L2}{L1} Občas se panel aktuální složky nezobrazil na hlavní kartě se 3 panely (první kartě) [issue 608] {L2}{L1} Ikony tlačítek na panelu nástrojů se někdy ihned neaktualizovaly při změně motivů [issue 611] {L2}{L1} Panel nástrojů QuickFolders je nyní správně zobrazen při spuštění v Thunderbirdu 143, přepínací tlačítko funguje [issue 609] {L2}{L1} Tlačítka navigace ve složkách lze nyní odstranit nezávisle na tlačítkách navigace zpráv — dříve byla nesprávně propojena s nastavením navigace zpráv [issue 610] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

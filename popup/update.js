@@ -7,6 +7,8 @@ For details, please refer to license.txt in the root folder of this extension
 END LICENSE BLOCK */
 /*
   globals
+    ariaPoliteUpdate,
+    addAriaHint,
     updateActions: readonly,
     updateSpecialOffersFields: readonly,
     formatAll: readonly,
@@ -147,10 +149,23 @@ addEventListener("load", async (_event) => {
     whatsNewLst.innerHTML = formatAll(messenger.i18n.getMessage("whats-new-list"));
   }
 
-  let newsSection = document.getElementById('newsDetail');
+  // old news section
+  /*
+  const newsSection = document.getElementById("newsDetail");
   if (newsSection) {
     newsSection.innerHTML = formatAll(messenger.i18n.getMessage("newsSection", addonName));
   }
+    */
+
+  const introText = messenger.i18n.getMessage("newsSection.intro");
+  const importantText = messenger.i18n.getMessage("newsSection.important");
+
+  const newsIntro = document.getElementById("newsIntro");
+  ariaPoliteUpdate(newsIntro, formatAll(introText), true);
+
+  const newsImportant = document.getElementById("newsImportant");
+  ariaPoliteUpdate(newsImportant, formatAll(importantText), true);
+
 
   let ongoing = document.getElementById('ongoing-work');
   if (ongoing) {

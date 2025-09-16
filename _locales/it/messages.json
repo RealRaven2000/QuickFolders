@@ -424,6 +424,12 @@
       }
     }
   },
+  "newsSection.intro": {
+    "message": "{P1}Continuiamo a seguire il ciclo di rilascio mensile di Thunderbird per garantire compatibilità e stabilità. Come sempre, questo lavoro è interamente finanziato dalle vendite delle licenze.{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Importante:{boldEnd} Thunderbird continua il suo ciclo di rilascio mensile. {P2}{P1} Alcuni utenti potrebbero aver visto un falso avviso di incompatibilità dopo l’aggiornamento a Thunderbird v142. Ciò è stato causato dalle informazioni di compatibilità memorizzate nella cache di Thunderbird, che a volte non si aggiornano correttamente. La versione precedente di QuickFolders era già pienamente compatibile con la 142. Ho segnalato un bug a Thunderbird per correggere questo problema: [Bugzilla 1986027]{P2}{P1} State tranquilli, QuickFolders supporta pienamente sia il canale mensile che quello ESR (140.*), e potete continuare a lavorare senza interruzioni. {P2}"
+  },
   "newsSection.license": {
     "message": "Poiché tutto il lavoro su QuickFolders e il supporto gratuito sono finanziati esclusivamente dalle vendite di licenze, si prega di considerare l'acquisto di una licenza o il rinnovo della licenza attuale."
   },

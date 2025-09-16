@@ -365,6 +365,12 @@
       }
     }
   },
+  "newsSection.intro": {
+    "message": "{P1}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Quan trọng:{boldEnd} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {P2}{P1} Một số người dùng có thể đã thấy cảnh báo không tương thích giả sau khi nâng cấp lên Thunderbird v142. Điều này do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Phiên bản QuickFolders trước đó đã hoàn toàn tương thích với 142. Tôi đã báo lỗi này với Thunderbird để họ khắc phục: [Bugzilla 1986027]{P2}{P1} Hãy yên tâm rằng QuickFolders hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {P2}"
+  },
   "newsSection.license": {
     "message": "Vì tất cả công việc trên QuickFolders và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ việc bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
   },

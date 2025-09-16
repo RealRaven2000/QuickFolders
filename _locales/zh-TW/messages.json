@@ -416,6 +416,12 @@
       }
     }
   },
+  "newsSection.intro": {
+    "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v142 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。QuickFolders 之前的版本已經完全相容於 142。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，QuickFolders 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {P2}"
+  },
   "newsSection.license": {
     "message": "由於QuickFolders的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
   },

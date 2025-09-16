@@ -404,6 +404,12 @@
       }
     }
   },
+  "newsSection.intro": {
+    "message": "{P1}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird は月次リリースサイクルを継続しています。 {P2}{P1} 一部のユーザーは Thunderbird を v142 に更新した後、誤った非互換性警告を目にしたかもしれません。これは Thunderbird にキャッシュされた互換性情報が正しく更新されないことが原因です。QuickFolders の以前のバージョンはすでに 142 と完全に互換性がありました。この問題を修正するため Thunderbird にバグを報告しました: [Bugzilla 1986027]{P2}{P1} ご安心ください。QuickFolders は月次チャネルと ESR (140.*) の両方を完全にサポートしており、中断することなく作業を続けられます。{P2}"
+  },
   "newsSection.license": {
     "message": "QuickFoldersのすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
   },

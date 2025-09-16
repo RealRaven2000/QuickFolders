@@ -220,6 +220,12 @@
       }
     }
   },
+  "newsSection.intro": {
+    "message": "{P1}Seuraamme edelleen Thunderbirdin kuukausittaista julkaisusykliä varmistaaksemme yhteensopivuuden ja vakauden. Kuten aina, tämä työ rahoitetaan kokonaan lisenssimyynnillä.{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Tärkeää:{boldEnd} Thunderbird jatkaa kuukausittaista julkaisusykliään. {P2}{P1} Jotkut käyttäjät saattoivat nähdä virheellisen yhteensopimattomuusvaroituksen päivitettyään Thunderbirdin versioon 142. Tämä johtui Thunderbirdin välimuistissa olevista yhteensopivuustiedoista, jotka eivät aina päivity oikein. QuickFoldersin edellinen versio oli jo täysin yhteensopiva 142:n kanssa. Tein Thunderbirdille bugiraportin tämän korjaamiseksi: [Bugzilla 1986027]{P2}{P1} Voit olla varma, että QuickFolders tukee täysin sekä kuukausi- että ESR-kanavia (140.*), ja voit jatkaa työskentelyä keskeytyksettä. {P2}"
+  },
   "newsSection.license": {
     "message": "Koska kaikki työ QuickFoldersin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."
   },

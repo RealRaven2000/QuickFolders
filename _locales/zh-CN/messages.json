@@ -420,6 +420,12 @@
       }
     }
   },
+  "newsSection.intro": {
+    "message": "{P1}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 继续其每月发布周期。 {P2}{P1} 一些用户在更新到 Thunderbird v142 后可能看到了错误的不兼容警告。这是由于 Thunderbird 中的兼容性缓存信息有时未能正确刷新。QuickFolders 的上一个版本已经完全兼容 142。我已向 Thunderbird 提交了 Bug 报告以解决此问题: [Bugzilla 1986027]{P2}{P1} 请放心，QuickFolders 完全支持每月版和 ESR (140.*) 渠道，您可以继续不间断地工作。 {P2}"
+  },
   "newsSection.license": {
     "message": "由于QuickFolders的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
   },

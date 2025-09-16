@@ -411,6 +411,12 @@
   "newsSection": {
     "message": "{P1}{boldStart} Kommer i nästa stora version {boldEnd}: Thunderbird kommer snart att be dig välja din föredragna uppdateringsväg — antingen den årliga ESR-versionen eller de snabbare månatliga utgåvorna. {ARelease}Läs mer om den nya utgivningsmodellen{A2}.{U1} {L1}ESR-versionen kommer att stanna på v140, öka endast mindre versionsnummer och inkludera endast säkerhetsfixar och buggfixar, vilket ofta är att föredra i företagsmiljöer.{L2} {L1}Den månatliga utgivningscykeln kommer att leverera nya funktioner och gränssnittsuppdateringar när de utvecklas. Kontrollera om dina nuvarande tillägg stöder denna utgivningsmodell. För att hjälpa till kan du installera {AcompatCheck}Tilläggskompatibilitetskontroll{A2}.{L2} {U2}"
   },
+  "newsSection.intro": {
+    "message": "{P1}Vi följer fortsatt Thunderbirds månatliga utgivningscykel för att säkerställa kompatibilitet och stabilitet. Som alltid finansieras detta arbete helt genom licensförsäljning.{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Важно:{boldEnd} Thunderbird наставља свој месечни циклус издања. {P2}{P1} Неки корисници су можда видели лажно упозорење о некомпатибилности након ажурирања на Thunderbird v142. Ово је узроковано кешираним информацијама о компатибилности у Thunderbirdu, које понекад не освежавају исправно. Претходна верзија QuickFolders-а већ је била потпуно компатибилна са 142. Пријавио сам баг Thunderbird тиму да ово реше: [Bugzilla 1986027]{P2}{P1} Будите сигурни да QuickFolders у потпуности подржава и месечне и ESR (140.*) канале и можете наставити рад без прекида. {P2}"
+  },
   "newsSection.license": {
     "message": "Eftersom allt arbete med QuickFolders och gratis support finansieras uteslutande genom licensförsäljning, överväg att köpa en licens eller förnya din nuvarande."
   },

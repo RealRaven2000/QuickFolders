@@ -295,3 +295,40 @@ async function updateActions() {
   }
   browser.windows.update(win.id, { height: newHeight });
 }
+
+// Updates the element's content without triggering announcements by screen readers
+// eslint-disable-next-line no-unused-vars
+function ariaPoliteUpdate(el, text, isHtml = false) {
+  if (!el) {return;}
+  
+  // Temporarily set the aria-live attribute to "polite"
+  el.setAttribute("aria-live", "polite");
+
+  // Update content based on whether it's HTML or plain text
+  if (isHtml) {
+    el.textContent = ""; // clear existing
+    const fragment = parseHTMLFragment(text);
+    el.appendChild(fragment);
+  } else {
+    el.innerText = text;
+  }
+
+  // Remove the aria-live attribute after the update
+  el.removeAttribute("aria-live");
+}
+
+// eslint-disable-next-line no-unused-vars
+function addAriaHint() {
+  const splashHint = document.getElementById("splash-hint");
+  // Temporarily remove aria-hidden to make the hint accessible for screen readers
+  splashHint.removeAttribute("aria-hidden");
+
+  setTimeout(() => {
+    splashHint.textContent = `${browser.i18n.getMessage("aria.escape")}`;
+
+    // Optionally, re-hide it after a brief time if it's not meant to stay visible
+    setTimeout(() => {
+      splashHint.setAttribute("aria-hidden", "true");
+    }, 3000); // Adjust delay time as needed
+  }, 300); // Slight delay to let the title be read first
+}

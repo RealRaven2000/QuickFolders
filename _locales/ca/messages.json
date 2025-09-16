@@ -409,6 +409,12 @@
       }
     }
   },
+  "newsSection.intro": {
+    "message": "{P1}Continuem seguint el cicle de versions mensuals de Thunderbird per garantir la compatibilitat i l'estabilitat. Com sempre, aquesta feina es finança íntegrament mitjançant la venda de llicències.{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continua amb el seu cicle de llançament mensual. {P2}{P1} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a la v142. Això va ser causat per informació de compatibilitat emmagatzemada en memòria cau a Thunderbird, que de vegades no s'actualitza correctament. La versió anterior de QuickFolders ja era completament compatible amb la 142. He informat d'un error a Thunderbird perquè ho solucionin: [Bugzilla 1986027]{P2}{P1} Tingueu la seguretat que QuickFolders és totalment compatible tant amb els canals mensuals com amb l'ESR (140.*), i podeu continuar treballant sense interrupcions. {P2}"
+  },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že veškerá práce na QuickFolders a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
   },

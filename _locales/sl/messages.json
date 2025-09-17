@@ -404,6 +404,12 @@
       }
     }
   },
+  "newsSection.intro": {
+    "message": "{P1}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird nadaljuje s svojim mesečnim ciklom izdaj. {P2}{P1} Nekateri uporabniki so morda videli napačno opozorilo o nezdružljivosti po posodobitvi na Thunderbird v142. To je bilo povzročeno s predpomnjeno informacijo o združljivosti v Thunderbirdu, ki se včasih ne osveži pravilno. Prejšnja različica QuickFolders je bila že popolnoma združljiva z 142. Napako sem prijavil ekipi Thunderbird, da jo odpravijo: [Bugzilla 1986027]{P2}{P1} Zagotavljamo, da QuickFolders popolnoma podpira tako mesečne kot ESR (140.*) kanale in lahko nadaljujete z delom brez prekinitve. {P2}"
+  },
   "newsSection.license": {
     "message": "Ker je vsa dela na QuickFolders in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
   },

@@ -376,6 +376,12 @@
       }
     }
   },
+  "newsSection.intro": {
+    "message": "{P1}Továbbra is követjük a Thunderbird havi kiadási ciklusát a kompatibilitás és a stabilitás biztosítása érdekében. Ahogy mindig, ez a munka teljes egészében a licenceladásokból finanszírozott.{P2}"
+  },
+  "newsSection.important": {
+    "message": "{P1}{boldStart}Fontos:{boldEnd} A Thunderbird továbbra is a havi kiadási ciklus szerint jelenik meg. {P2}{P1} Néhány felhasználó téves inkompatibilitási figyelmeztetést tapasztalhatott a Thunderbird 142-es verzióra való frissítés után. Ennek oka a Thunderbird gyorsítótárban lévő kompatibilitási információ volt, amely néha nem frissült megfelelően. A QuickFolders előző verziója már teljes mértékben kompatibilis volt a 142-vel. Jeleztem a Thunderbird felé egy hibát ennek javítására: [Bugzilla 1986027]{P2}{P1} Nyugodtan dolgozhat tovább, a QuickFolders teljes mértékben támogatja mind a havi, mind az ESR (140.*) csatornákat.{P2}"
+  },
   "newsSection.license": {
     "message": "Mivel a QuickFolders összes munkája és az ingyenes támogatás kizárólag a licenceladásokból finanszírozódik, kérjük, fontolja meg licenc vásárlását vagy a jelenlegi licenc megújítását."
   },

@@ -321,9 +321,11 @@ async function filterMailsRegex(searchOptions, tabId = null) {
 
   // we need to pass an object that contains obj.text=QuickFilterTextDetail !
   if (tabId) {
+    // triggers false validation message on ATN
     await browser.mailTabs.setQuickFilter(tabId, {text: searchTextProps} );  
   } else {
-    await browser.mailTabs.setQuickFilter( {text: searchTextProps} );  
+    // triggers false validation message on ATN
+    await browser.mailTabs.setQuickFilter({ text: searchTextProps });
   }
   if (behavior.isSelectPrevious) {
     // select currentMessageId then go "up" to the previously received / sent mail

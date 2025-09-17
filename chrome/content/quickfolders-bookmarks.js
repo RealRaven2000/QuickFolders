@@ -620,10 +620,11 @@ QuickFolders.bookmarks = {
           }
         }
       } else {
-      /*     GET CONTEXT FROM CURRENT BROWSER  */
+        /*     GET CONTEXT FROM CURRENT BROWSER  */
         // https://developer.mozilla.org/en-US/Add-ons/SDK/Low-Level_APIs/tabs_utils
         // Fx
-        currentType = "browser";
+        currentType = "browser"; 
+        // gBrowser.selectedTab is not supported flagged by ATN  "This API has not been implemented by Firefox."
         let lB = browser.gBrowser.selectedTab.linkedBrowser;
         // SM:
         let uri = lB.registeredOpenURI || lB.currentURI; // nsIURI

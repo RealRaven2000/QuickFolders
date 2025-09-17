@@ -327,12 +327,73 @@
     
     -->
 
+    <a name="6.13">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.13" 
+			   onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')">
+				 Version 6.13 - 17/09/2024
+		  </a>
+      </h4>
+      <ul>
+				<h4 class="inList">Improvements</h4>
+          <li>
+						Made compatible with Thunderbird 143.*</li> 
+					<li>
+						Fixed missing/broken menu icons in all popup menus of Thunderbird 143 
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/602">[issue 602]</a>
+					</li> 
+					<li>
+						Minimized impact of "News Flag" — this is now displayed as a badge icon 🟠 
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/607">[issue 607]</a>
+						<p>
+							In the old behavior, a text was displayed which took too much screen space:
+							<img src="images/news-quickfolders-old.png" alt="update message" class="screenshot"/>
+						</p>
+						<p>
+							Now we just change the background of the button to blue and add the news dot. 
+							A single click on the button will show the change log and reset the panel.
+							<img src="images/news-quickfolders-badge.png" alt="news badge" class="screenshot"/>
+						</p>
+						
+					</li> 
+					<li>
+						Intermittently, current folder bar was not displayed on main 3pane (first) tab 
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/608">[issue 608]</a>
+					</li> 
+					<li>
+						Toolbar button icons sometimes don’t update immediately when changing themes 
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/611">[issue 611]</a>
+					</li> 
+      </ul>
+
+      <ul>
+				<h4 class="inList">Bug Fixes</h4>
+          <li>
+						QuickFolders toolbar now correctly displayed on startup in Thunderbird 143, 
+						toggle button working <a href="https://github.com/RealRaven2000/QuickFolders/issues/609">[issue 609]</a>
+					</li> 
+				  <li>
+						Folder navigation buttons can now be removed independently of Message 
+						Navigation buttons — they were falsely linked to message navigation settings 
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/610">[issue 610]</a>
+					</li> 
+      </ul>
+
+      <ul>
+				<h4 class="inList">Unconfirmed</h4>
+        <li>
+					quickMove with history should move mail but jumps to folder instead. Observed intermittently; currently investigating <a href="https://github.com/RealRaven2000/QuickFolders/issues/606">[issue 606]</a>
+  			</li> 
+      </ul>
+
+    </li>		
+
 
     <a name="6.12">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.12" 
-			   onclick="alert('This is currently awaiting review by addons.thunderbird.net!\nPlease mail me if you want a preview version for testing.')">
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.12">
 				 Version 6.12 - 23/07/2025
 		  </a>
       </h4>

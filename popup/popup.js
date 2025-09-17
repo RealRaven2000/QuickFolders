@@ -9,7 +9,7 @@ END LICENSE BLOCK */
 /* shared module for installation popups */
 /*
   globals
-    SALES_DATE,
+    SALES_DATE
 */
 
 

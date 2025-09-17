@@ -42,7 +42,8 @@
 #innerwrapper ul,
 #innerwrapper li,
 #innerwrapper span,
-#innerwrapper i {
+#innerwrapper i,
+#innerwrapper div.container {
   background-color: transparent;
 }
 
@@ -152,6 +153,7 @@ canvas[collapsed=true] {
 }
 
 .importantInfo p, 
+.importantInfo div, 
 .importantInfo ul, 
 .importantInfo li,
 .importantInfo i,

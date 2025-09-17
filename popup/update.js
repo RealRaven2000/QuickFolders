@@ -8,10 +8,10 @@ END LICENSE BLOCK */
 /*
   globals
     ariaPoliteUpdate,
-    addAriaHint,
     updateActions: readonly,
     updateSpecialOffersFields: readonly,
     formatAll: readonly,
+    insertHtmlSafely,
 */
 
 // Script for splash screen displayed when updating this Extension
@@ -56,31 +56,32 @@ addEventListener("load", async (_event) => {
     appVer = browserInfo.version,
     remindInDays = 10;
 
-    // internal functions
+  // internal functions
   function hideSelectorItems(cId) {
     let elements = document.querySelectorAll(cId);
     for (let el of elements) {
-      el.setAttribute('collapsed',true);
-    }	    
+      el.setAttribute("collapsed", true);
+    }
   }
   // force replacement for __MSG_xx__ entities
   // using John's helper method (which calls i18n API)
   i18n.updateDocument();
-  
+
   let loc = window.location,
-      hasMsg = loc.search && loc.search.length>1,
-      msg;
-  
+    hasMsg = loc.search && loc.search.length > 1,
+    msg;
+
   if (hasMsg) {
     // retrieve text  from queryString
     let qs = new URLSearchParams(window.location.search);
     msg = qs.get("msg");
     if (!msg) {
       hasMsg = false;
+    } else {
+      console.log("Splash screen - got a message\n" + msg);
     }
-    else {console.log ("Splash screen - got a message\n" + msg);}
   }
-    
+
   let h1 = document.getElementById("heading-updated");
   if (h1) {
     // this api function can do replacements for us
@@ -90,15 +91,15 @@ addEventListener("load", async (_event) => {
       h1.innerText = "License Supported Feature";
     }
   }
-  
+
   if (hasMsg) {
-    document.getElementById("licenseExtended").setAttribute("collapsed",true);
-    document.getElementById("changesList").setAttribute("collapsed",true);
-    document.getElementById("purchaseHeader").setAttribute("collapsed",true);
-    hideSelectorItems('.donations');
+    document.getElementById("licenseExtended").setAttribute("collapsed", true);
+    document.getElementById("changesList").setAttribute("collapsed", true);
+    document.getElementById("purchaseHeader").setAttribute("collapsed", true);
+    hideSelectorItems(".donations");
   }
-  
-  let introMsg = document.getElementById('intro-msg');
+
+  let introMsg = document.getElementById("intro-msg");
   if (introMsg) {
     if (!hasMsg) {
       introMsg.innerText = messenger.i18n.getMessage("thanks-for-updating-intro", addonName);
@@ -106,75 +107,83 @@ addEventListener("load", async (_event) => {
       introMsg.innerText = msg;
     }
   }
-  
-  let verInfo = document.getElementById('active-version-info');
+
+  let verInfo = document.getElementById("active-version-info");
   if (verInfo) {
-    // use the i18n API      
+    // use the i18n API
     // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
     // for multiple replacements, pass an array
     if (hasMsg) {
-      verInfo.setAttribute("collapsed",true);
+      verInfo.setAttribute("collapsed", true);
     } else {
-      verInfo.innerHTML = messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
-        .replace("{boldStart}","<b class='versionnumber'>")
-        .replace("{boldEnd}","</b>");
+      insertHtmlSafely(
+        verInfo,
+        messenger.i18n
+          .getMessage("active-version-info", [addonVer, appVer])
+          .replace("{boldStart}", "<b class='versionnumber'>")
+          .replace("{boldEnd}", "</b>"),
+        true
+      );
     }
   }
-  
-  let timeAndEffort =  document.getElementById('time-and-effort');
+
+  let timeAndEffort = document.getElementById("time-and-effort");
   if (timeAndEffort) {
-    if (hasMsg) {timeAndEffort.setAttribute('collapsed',true);}
-    else {timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);}
-  }    
-  
-  let suggestion = document.getElementById('support-suggestion');
+    if (hasMsg) {
+      timeAndEffort.setAttribute("collapsed", true);
+    } else {
+      timeAndEffort.innerText = messenger.i18n.getMessage("time-and-effort", addonName);
+    }
+  }
+
+  let suggestion = document.getElementById("support-suggestion");
   if (suggestion) {
     suggestion.innerText = messenger.i18n.getMessage("support-suggestion", addonName);
   }
-  
-  let preference = document.getElementById('support-preference');
+
+  let preference = document.getElementById("support-preference");
   if (preference) {
     preference.innerText = messenger.i18n.getMessage("support-preference", addonName);
   }
-  
-  let remind = document.getElementById('label-remind-me');
+
+  let remind = document.getElementById("label-remind-me");
   if (remind) {
     remind.innerText = messenger.i18n.getMessage("label-remind-me", remindInDays);
   }
-  
+
   updateSpecialOffersFields(addonName);
 
-  let whatsNewLst = document.getElementById('whatsNewList');
+  let whatsNewLst = document.getElementById("whatsNewList");
   if (whatsNewLst) {
-    whatsNewLst.innerHTML = formatAll(messenger.i18n.getMessage("whats-new-list"));
+    insertHtmlSafely(whatsNewLst, formatAll(messenger.i18n.getMessage("whats-new-list")), true);
   }
 
-  // old news section
   /*
-  const newsSection = document.getElementById("newsDetail");
-  if (newsSection) {
-    newsSection.innerHTML = formatAll(messenger.i18n.getMessage("newsSection", addonName));
-  }
-    */
+    // old news section
+    const newsSection = document.getElementById("newsDetail");
+    if (newsSection) {
+      insertHtmlSafely(newsSection, formatAll(messenger.i18n.getMessage("newsSection", addonName));
+    }
+  */
 
-  const introText = messenger.i18n.getMessage("newsSection.intro");
-  const importantText = messenger.i18n.getMessage("newsSection.important");
-
-  const newsIntro = document.getElementById("newsIntro");
-  ariaPoliteUpdate(newsIntro, formatAll(introText), true);
+  /*
+    const newsIntro = document.getElementById("newsIntro");
+    const introText = messenger.i18n.getMessage("newsSection.intro");
+    ariaPoliteUpdate(newsIntro, formatAll(introText), true);
+  */
 
   const newsImportant = document.getElementById("newsImportant");
+  const importantText = messenger.i18n.getMessage("newsSection.important");
   ariaPoliteUpdate(newsImportant, formatAll(importantText), true);
 
-
-  let ongoing = document.getElementById('ongoing-work');
+  let ongoing = document.getElementById("ongoing-work");
   if (ongoing) {
     ongoing.innerText = messenger.i18n.getMessage("ongoing-work", addonName);
   }
-  
-  let title = document.getElementById('window-title');
+
+  let title = document.getElementById("window-title");
   title.innerText = messenger.i18n.getMessage("window-title", addonName);
-          
+
   updateActions();
 
   // addAnimation('body');

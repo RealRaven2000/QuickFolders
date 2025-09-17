@@ -5,6 +5,15 @@ Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0)
 For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
+
+/*
+  globals
+    updateActions: readonly,
+    updateSpecialOffersFields: readonly,
+    insertHtmlSafely,
+*/
+
+
 // Script for splash screen displayed when installing this Extension
 
 addEventListener("click", async (event) => {
@@ -26,7 +35,7 @@ addEventListener("click", async (event) => {
 	}
 });  
 
-addEventListener("load", async (event) => {
+addEventListener("load", async () => {
   const manifest = await messenger.runtime.getManifest(),
         browserInfo = await messenger.runtime.getBrowserInfo(),
         addonName = manifest.name, 
@@ -53,9 +62,15 @@ addEventListener("load", async (event) => {
     // use the i18n API      
     // You are now running <b class="versionnumber">version {version}</b> on Thunderbird {appver}.
     // for multiple replacements, pass an array
-    verInfo.innerHTML = messenger.i18n.getMessage("active-version-info", [addonVer, appVer])
-      .replace("{boldStart}","<b class='versionnumber'>")
-      .replace("{boldEnd}","</b>");
+
+    insertHtmlSafely(
+      verInfo,
+      messenger.i18n
+        .getMessage("active-version-info", [addonVer, appVer])
+        .replace("{boldStart}", "<b class='versionnumber'>")
+        .replace("{boldEnd}", "</b>"),
+      true
+    );
   }    
   
   let suggestion = document.getElementById('support-suggestion');

@@ -6,11 +6,18 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
+/*
+  globals
+    insertHtmlSafely
+*/
+
+
 /* shared module for installation and update popups */
 
 const REDUCTION_RENEW = "20%", // 25
   REDUCTION_PRO = "33%", // 40
   REDUCTION_UPGRADE = "33%",
+  // eslint-disable-next-line no-unused-vars
   SALES_DATE = "2025-07-08";
 
 addEventListener("click", async (event) => {
@@ -35,6 +42,7 @@ addEventListener("click", async (event) => {
 });
 
 
+// eslint-disable-next-line no-unused-vars
 async function updateSpecialOffersFields(addonName) {
   let elements = document.querySelectorAll(".specialOfferHead"),
       txtHead = messenger.i18n.getMessage("special-offer-head", addonName),
@@ -50,7 +58,7 @@ async function updateSpecialOffersFields(addonName) {
             .replace(/\{boldEnd\}/g,"</b>")
             .replace("{name}", userName);
   for (let el of elementsSI) {
-    el.innerHTML = txtSI;
+    insertHtmlSafely(el, txtSI, true);
   }
 
   let elementsC = document.querySelectorAll(".featureComparison"),
@@ -58,7 +66,7 @@ async function updateSpecialOffersFields(addonName) {
         .replace(/\{linkStart\}/, "<a id='compLink'>")
         .replace(/\{linkEnd\}/, "</a>");
   for (let el of elementsC) {
-    el.innerHTML = txtComp;
+    insertHtmlSafely(el, txtComp, true);
   }  
 
   let specialOffer = document.getElementById("specialOfferTxt");
@@ -66,33 +74,47 @@ async function updateSpecialOffersFields(addonName) {
   if (specialOffer) {
     let reduction = REDUCTION_PRO;
     // note: expiry day is set in popup.js "endSale" variable
-    specialOffer.innerHTML = messenger.i18n.getMessage("special-offer-content", [expiry, reduction])
-        .replace(/\{boldStart\}/g,"<b>")
-        .replace(/\{boldEnd\}/g,"</b>")
+    insertHtmlSafely(
+      specialOffer,
+      messenger.i18n
+        .getMessage("special-offer-content", [expiry, reduction])
+        .replace(/\{boldStart\}/g, "<b>")
+        .replace(/\{boldEnd\}/g, "</b>")
         .replace(/\{linkStart\}/, "<a id='stdLink'>")
         .replace(/\{linkEnd\}/g, "</a>")
-        .replace(/\{linkStartPro\}/, "<a id='proLink'>");
+        .replace(/\{linkStartPro\}/, "<a id='proLink'>"),
+      true
+    );
   }
   
   let specialRenew = document.getElementById("specialOfferRenewTxt");
   if (specialRenew) {
     let reduction = REDUCTION_RENEW;
     // note: expiry day is set in popup.js "endSale" variable
-    specialRenew.innerHTML = 
-      messenger.i18n.getMessage("special-offer-renew", [expiry, reduction])
-        .replace(/\{boldStart\}/g,"<b>")
-        .replace(/\{boldEnd\}/g,"</b>");
+    insertHtmlSafely(
+      specialRenew,
+      messenger.i18n
+        .getMessage("special-offer-renew", [expiry, reduction])
+        .replace(/\{boldStart\}/g, "<b>")
+        .replace(/\{boldEnd\}/g, "</b>"),
+      true
+    );
   }
   
   
   let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
   if (specialOfferUpgrade) {
     // note: expiry day is set in popup.js "endSale" variable
-    specialOfferUpgrade.innerHTML = messenger.i18n.getMessage("special-offer-upgrade", [expiry, REDUCTION_UPGRADE])
-        .replace(/\{boldStart\}/g,"<b>")
-        .replace(/\{boldEnd\}/g,"</b>")
+    insertHtmlSafely(
+      specialOfferUpgrade,
+      messenger.i18n
+        .getMessage("special-offer-upgrade", [expiry, REDUCTION_UPGRADE])
+        .replace(/\{boldStart\}/g, "<b>")
+        .replace(/\{boldEnd\}/g, "</b>")
         .replace(/\{linkStart\}/, "<a id='stdLink'>")
-        .replace(/\{linkEnd\}/, "</a>");
+        .replace(/\{linkEnd\}/, "</a>"),
+      true
+    );
   }
 
 }

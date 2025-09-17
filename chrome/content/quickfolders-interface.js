@@ -8624,28 +8624,30 @@ QuickFolders.Interface = {
     ul.appendChild(l1);
     
     let l2 = document.createElement("li");
-    let txt = util.getBundleString("quickMove.help.l2a");
-    l2.insertAdjacentHTML("beforeend", txt.replace("{1}","<code>/</code>")); 
+    let txt = util.getBundleString("quickMove.help.l2a").replaceAll("{1}", "<code>/</code>");
+    //l2.insertAdjacentHTML("beforeend", txt); 
+		util.insertHtmlSafely(l2, txt);
     
     l2.appendChild(document.createElement("br"));
     l2.appendChild(document.createTextNode(util.getBundleString("quickMove.help.l2b")));
     ul.appendChild(l2);
     
     let l3 = document.createElement("li");
-    txt = util.getBundleString("quickMove.help.l3a");
-    l3.insertAdjacentHTML("beforeend", txt.replace("{1}","<code>&gt;</code>"));
+    txt = util.getBundleString("quickMove.help.l3a").replaceAll("{1}", "<code>&gt;</code>");
+    // l3.insertAdjacentHTML("beforeend", txt);
+		util.insertHtmlSafely(l3, txt);
     l3.appendChild(document.createElement("br"));
     l3.appendChild(document.createTextNode(util.getBundleString("quickMove.help.l3b")));
     ul.appendChild(l3);
     
     let l4 = document.createElement("li");
-    txt = util.getBundleString("quickMove.help.l4a");
-    l4.insertAdjacentHTML("beforeend", txt.replace("{1}","<code>=</code>"));
+    txt = util.getBundleString("quickMove.help.l4a").replaceAll("{1}", "<code>=</code>");
+		util.insertHtmlSafely(l4, txt);
+    // l4.insertAdjacentHTML("beforeend", txt.replace("{1}","<code>=</code>"));
     ul.appendChild(l4);
 
     box.appendChild(ul);
     
-    // 
     let h2 = document.createElement("h3");
     h2.textContent = util.getBundleString("quickMove.help.head.advanced");
     box.appendChild(h2);

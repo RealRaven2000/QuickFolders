@@ -1,8 +1,8 @@
 
 /* broke out palette piece for custom configurations - removed chrome://quickfolders/content/ */
-@import url('skin/quickfolders-widgets.css');
+@import url("skin/quickfolders-widgets.css");
 /* version specific styling - removed chrome://quickfolders/content/*/
-@import url('quickfolders-mods.css'); 
+@import url("quickfolders-mods.css"); 
 
 :root {
 	--qf-tabiconsize: 16px;
@@ -48,7 +48,7 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 
 #QuickFolders-quickMoveMenu .folderCopy {
   -moz-context-properties: fill, fill-opacity, stroke;
-  list-style-image: url('skin/ico/folder-add.svg') !important;
+  list-style-image: url("skin/ico/folder-add.svg") !important;
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
   stroke: var(--green-highlight);
@@ -729,7 +729,7 @@ menupopup.QuickFolders-folder-popup menuitem.color {
 
 menupopup.QuickFolders-folder-popup menuitem.color,
 menupopup.QuickFolders-folder-popup menu.menu-iconic[tag="qfTabColorMenu"] {
-	list-style-image: url('chrome://mozapps/skin/extensions/category-themes.svg') !important;
+	list-style-image: url("chrome://mozapps/skin/extensions/category-themes.svg") !important;
 }
 
 menupopup.QuickFolders-folder-popup menuitem.color:hover,
@@ -766,16 +766,16 @@ menupopup.QuickFolders-folder-popup menuitem.color:focus
 }
 
 menuitem.cmd[tag="qfRename"], menuitem.mailCmd[tag="qfRename"] {
-    list-style-image: url('chrome://quickfolders/content/skin/ico/rename.gif') !important;
+    list-style-image: url("chrome://quickfolders/content/skin/ico/rename.gif") !important;
 }
 menuitem.cmd[tag="qfCompact"], menuitem.mailCmd[tag="qfCompact"] {
-    list-style-image: url('chrome://quickfolders/content/skin/ico/compact.svg') !important;
+    list-style-image: url("chrome://quickfolders/content/skin/ico/compact.svg") !important;
 }
 menuitem.cmd[tag="qfIconAdd"], menuitem.mailCmd[tag="qfIconAdd"] {
-    list-style-image: url('chrome://quickfolders/content/skin/ico/image.svg') !important;
+    list-style-image: url("chrome://quickfolders/content/skin/ico/image.svg") !important;
 }
 menuitem.cmd[tag="qfIconRemove"], menuitem.mailCmd[tag="qfIconRemove"] {
-    list-style-image: url('chrome://quickfolders/content/skin/ico/picture-remove.svg') !important;
+    list-style-image: url("chrome://quickfolders/content/skin/ico/picture-remove.svg") !important;
 }
 menupopup.QuickFolders-folder-popup menuitem[tag="qfCategory"],
 menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] {
@@ -785,12 +785,12 @@ menuitem.cmd[tag="qfCategory"], menuitem.mailCmd[tag="qfCategory"] {
 }
 menuitem.cmd[tag="qfRemoveCategory"], menuitem.mailCmd[tag="qfRemoveCategory"],
 menuitem.cmd[tag="qfRemove"], menuitem.mailCmd[tag="qfRemove"] {
-  list-style-image: url('skin/ico/delete.svg') !important;
+  list-style-image: url("skin/ico/delete.svg") !important;
 }
 
 menuitem.cmd[tag="qfBreak"],
 menuitem.cmd[tag="qfBreakDel"] {
-    list-style-image: url('chrome://quickfolders/content/skin/ico/line-break.svg') !important;
+    list-style-image: url("chrome://quickfolders/content/skin/ico/line-break.svg") !important;
     -moz-context-properties: fill, stroke, stroke-opacity;
     stroke: red;
     stroke-opacity: 0;
@@ -800,7 +800,7 @@ menuitem.cmd[tag="qfBreakDel"] {
 }
 menuitem.cmd[tag="qfSeparator"],
 menuitem.cmd[tag="qfSeparatorDel"] {
-    list-style-image: url('chrome://quickfolders/content/skin/ico/separator.svg') !important;
+    list-style-image: url("chrome://quickfolders/content/skin/ico/separator.svg") !important;
     -moz-context-properties: fill, stroke, stroke-opacity;
     stroke: red;
     stroke-opacity: 0;
@@ -810,7 +810,7 @@ menuitem.cmd[tag="qfSeparatorDel"] {
 }
 menuitem.mailCmd[tag="qfFolderRepair"],
 #QuickFolders-RepairFolderBtn {
-    list-style-image: url('chrome://quickfolders/content/skin/ico/repairFolder.svg') !important;
+    list-style-image: url("chrome://quickfolders/content/skin/ico/repairFolder.svg") !important;
     stroke: var(--new-highlight) !important;
 }
 
@@ -840,14 +840,14 @@ menuitem.mailCmd[tag="qfFolderRepair"],
 
 #quickFoldersCommands,
 #quickFoldersMailFolderCommands {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/folderCommand.svg');
+	list-style-image : url("chrome://quickfolders/content/skin/ico/folderCommand.svg");
   -moz-context-properties: fill, fill-opacity, stroke !important;
   stroke: var(--new-highlight) !important;
   fill: currentColor;
 }
 
 #quickFoldersMailFolderCommands {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/thunderbird-mini.svg') !important;	
+	list-style-image : url("chrome://quickfolders/content/skin/ico/thunderbird-mini.svg") !important;	
 }
 
 #QuickFolders-paintBucketActive menuitem,
@@ -868,7 +868,7 @@ menupopup.QuickFolders-folder-popup menu.dragover
 
 menupopup.QuickFolders-folder-popup menu.QuickFolders-folder-popup:-moz-drag-over,
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/tb-anchor.png') !important;
+	list-style-image : url("chrome://quickfolders/content/skin/ico/tb-anchor.png") !important;
 }
 
 menupopup.QuickFolders-folder-popup menu.QuickFolders-folder-popup:-moz-drag-over > label,
@@ -879,13 +879,13 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over > label
 
 
 #QuickFolders-currentFolderMailFolderCommands {
-	list-style-image : url('chrome://quickfolders/content/skin/ico/folderCommand.svg');
+	list-style-image : url("chrome://quickfolders/content/skin/ico/folderCommand.svg");
   -moz-context-properties: fill, fill-opacity, stroke !important;
   stroke: var(--new-highlight) !important;
 }
 
 #QF_folderPaneContext-downloadAll {
-  list-style-image: url('chrome://messenger/skin/icons/getmsg.svg');
+  list-style-image: url("chrome://messenger/skin/icons/getmsg.svg");
 }
 
 #QF_folderPaneContext-getMessages {
@@ -893,11 +893,15 @@ menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over > label
   /* url('chrome://messenger/skin/icons/new/compact/cloud-download.svg'); */
 }
 
+#QF_folderPaneContext-markMailFolderAllRead { /* also works in Tb 143 */
+	list-style-image: url("chrome://quickfolders/content/skin/ico/blank.svg");
+}
+
 
 menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-new ,
 menuitem#QF_folderPaneContext-new.dragover,
 menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-new.dragover {
-	list-style-image: url('chrome://quickfolders/content/skin/ico/folder-add.svg') !important;
+	list-style-image: url("chrome://quickfolders/content/skin/ico/folder-add.svg") !important;
   -moz-context-properties: fill, fill-opacity, stroke;
   fill: currentColor;
   fill-opacity: var(--toolbarbutton-icon-fill-opacity);
@@ -909,20 +913,20 @@ menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-new.dragover {
 }
 
 menupopup.QuickFolders-folder-popup menuitem.cmd[tag="openNewTab"] {
-  list-style-image: url('chrome://quickfolders/content/skin/ico/new-tab.svg');
+  list-style-image: url("chrome://quickfolders/content/skin/ico/new-tab.svg");
 }
 
 menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-remove {
-	list-style-image: url('chrome://messenger/skin/icons/delete.svg');
+	list-style-image: url("chrome://messenger/skin/icons/delete.svg");
 }
 
 menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-rename {
   /* to do: convert to svg */
-	list-style-image: url('chrome://quickfolders/content/skin/ico/folder-rename.png');
+	list-style-image: url("chrome://quickfolders/content/skin/ico/folder-rename.png");
 }
 
 menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-properties {
-	list-style-image: url('chrome://quickfolders/content/skin/ico/settings-simple.svg');
+	list-style-image: url("chrome://quickfolders/content/skin/ico/settings-simple.svg");
 }
 
 menupopup.QuickFolders-folder-popup menuitem#quickFolders-openFolderLocation {

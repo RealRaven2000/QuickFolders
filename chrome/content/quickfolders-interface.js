@@ -3746,7 +3746,7 @@ QuickFolders.Interface = {
 		QuickFolders.Interface.onRemoveBookmark(folderButton);
 	} ,
 
-	onRenameFolder: function onRenameFolder(element) {
+	onRenameFolder: function (element) {
 		const util = QuickFolders.Util,
 			folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onRenameFolder()");
@@ -3754,7 +3754,7 @@ QuickFolders.Interface = {
 		folderPane.renameFolder(folder);
 	} ,
 
-	onEmptyTrash: function onEmptyTrash(element) {
+	onEmptyTrash: function (element) {
 		const util = QuickFolders.Util,
 		  folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyTrash()");
@@ -3767,7 +3767,7 @@ QuickFolders.Interface = {
 		QuickFolders.compactReportFolderCompacted = true; // activates up onIntPropertyChanged event listener
 	} ,
 
-	onEmptyJunk: function onEmptyJunk(element) {
+	onEmptyJunk: function(element) {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyJunk()");

@@ -97,8 +97,8 @@ QuickFolders.Options = {
   },
 
   sendMail: async function sendMail(mailto = QuickFolders.Util.ADDON_SUPPORT_MAIL) {
-    let // obsolete: title = QuickFolders.Util.getBundleString("qf.prompt.contact.title"),
-      text = QuickFolders.Util.getBundleString("qf.prompt.contact.subject"),
+    let // obsolete: title = messenger.i18n.getMessage("qf.prompt.contact.title"),
+      text = messenger.i18n.getMessage("qf.prompt.contact.subject"),
       result = window.prompt(text, "");
     if (!result) {return;}
 
@@ -878,7 +878,7 @@ QuickFolders.Options = {
             getElement("dialogProductTitle").value = "QuickFolders Pro";
           }
           licenseDate.value = niceDate;
-          licenseDateLabel.value = QuickFolders.Util.getBundleString("qf.label.licenseValid");
+          licenseDateLabel.value = messenger.i18n.getMessage("qf.label.licenseValid");
           // remove animations / red pro icon:
           QuickFolders.Interface.removeAnimations("quickfolders-options.css");
           break;
@@ -905,19 +905,16 @@ QuickFolders.Options = {
             if (txt.indexOf(addonName) < 0) {
               txt +=
                 " " +
-                QuickFolders.Util.getBundleString("qf.licenseValidation.guessAddon").replace(
-                  "{2}",
-                  addonName
-                );
+                messenger.i18n
+                  .getMessage("qf.licenseValidation.guessAddon")
+                  .replace("{2}", addonName);
             }
             validationInvalidAddon.textContent = txt;
             QuickFolders.Options.showValidationMessage(validationInvalidAddon, silent);
           }
         } break;
         case "Expired":
-          licenseDateLabel.value = QuickFolders.Util.getBundleString(
-            "qf.licenseValidation.expired"
-          );
+          licenseDateLabel.value = messenger.i18n.getMessage("qf.licenseValidation.expired");
           licenseDate.value = niceDate;
           QuickFolders.Options.showValidationMessage(validationExpired, false); // always show
           break;
@@ -972,31 +969,27 @@ QuickFolders.Options = {
   labelLicenseBtn: function (btnLicense, validStatus) {
     switch (validStatus) {
       case "extend": {
-        let txtExtend = QuickFolders.Util.getBundleString(
-          "qf.notification.premium.btn.extendLicense"
-        );
+        let txtExtend = messenger.i18n.getMessage("qf.notification.premium.btn.extendLicense");
         btnLicense.setAttribute("collapsed", false);
         btnLicense.textContent = txtExtend; // text should be extend not renew
         btnLicense.setAttribute(
           "tooltiptext",
-          QuickFolders.Util.getBundleString("qf.notification.premium.btn.extendLicense.tooltip")
+          messenger.i18n.getMessage("qf.notification.premium.btn.extendLicense.tooltip")
         );
         return txtExtend;
       }
       case "renew": {
-        let txtRenew = QuickFolders.Util.getBundleString(
-          "qf.notification.premium.btn.renewLicense"
-        );
+        let txtRenew = messenger.i18n.getMessage("qf.notification.premium.btn.renewLicense");
         btnLicense.textContent = txtRenew;
         return txtRenew;
       }
       case "buy": {
-        let buyLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.getLicense");
+        let buyLabel = messenger.i18n.getMessage("qf.notification.premium.btn.getLicense");
         btnLicense.textContent = buyLabel;
         return buyLabel;
       }
       case "upgrade": {
-        let upgradeLabel = QuickFolders.Util.getBundleString("qf.notification.premium.btn.upgrade");
+        let upgradeLabel = messenger.i18n.getMessage("qf.notification.premium.btn.upgrade");
         btnLicense.textContent = upgradeLabel;
         btnLicense.classList.add("upgrade"); // stop flashing
         return upgradeLabel;

@@ -22,9 +22,9 @@ QuickFolders.Preferences = {
   
   
 	isDebugOption: async function(option) { // granular debugging
-		if(!await this.isDebug()) return false;
+		if(!await this.isDebug()) {return false;}
 		try {return this.getBoolPref("debug." + option);}
-		catch(e) { 
+		catch { 
       return true; // more info is probably better in this case - this is an illegal value after all.
     }
 	},
@@ -38,12 +38,12 @@ QuickFolders.Preferences = {
 
     try {
 			let localPref = await this.getStringPref(sStyleName);
-			if (localPref || (localPref===0))
+			if (localPref || (localPref===0)) {
 				sReturnValue = localPref;
-			else
+			} else {
 				sReturnValue = sDefault;
-		}
-    catch(ex) {
+			}
+		} catch {
       sReturnValue = sDefault;
     }
 		return sReturnValue;
@@ -101,9 +101,7 @@ QuickFolders.Preferences = {
     catch(ex) {
       QuickFolders.Util.logDebug("Could not retrieve string pref: " + p + "\n" + ex.message);
     }
-    finally {
-      return prefString;
-    }
+		return prefString;
 	},
 	
 	setStringPref: async function setStringPref(p, v) {
@@ -132,8 +130,9 @@ QuickFolders.Preferences = {
   
 	setShowCurrentFolderToolbar: async function setShowCurrentFolderToolbar(b, selector) {
 		let tag = "showCurrentFolderToolbar";
-		if (selector)
+		if (selector) {
 			tag = tag + "." + selector;
+		}
     let key = QuickFolders.Preferences.root + tag;
 		return await browser.LegacyPrefs.setPref(key, b);
 	},

@@ -21,7 +21,7 @@ QuickFolders.Util = {
 
     try {
       let container = document.getElementById("qf-options-prefpane");
-      if (!container) return sColorString;
+      if (!container) {return sColorString;}
 
       if (sColorString.startsWith("rgb")) {
         // rgb colors.
@@ -38,8 +38,9 @@ QuickFolders.Util = {
       theColor = window.getComputedStyle(d, null).color;
       container.removeChild(d);
 
-      if (theColor.search("rgb") == -1) return theColor; // unchanged
-      else {
+      if (theColor.search("rgb") == -1) {
+        return theColor; // unchanged
+      } else {
         // rgb colors.
         theColor = theColor.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
         let hexColor = "#" + hex(theColor[1]) + hex(theColor[2]) + hex(theColor[3]);
@@ -76,13 +77,13 @@ QuickFolders.Util = {
         ? hexIn.lastIndexOf(",") // replace alpha
         : hexIn.indexOf(")"); // append alpha
       hex = hexIn.substring(0, li) + "," + alpha.toString() + ")";
-      if (!isRGBA) hex = hex.replace("rgb", "rgba");
+      if (!isRGBA) {hex = hex.replace("rgb", "rgba");}
       return hex;
     } else {
       try {
-        if (hex.charAt(0) == "#") parseInt(cutHex(hex), 16);
-        else hex = QuickFolders.Util.getSystemColor(hex);
-      } catch (e) {
+        if (hex.charAt(0) == "#") {parseInt(cutHex(hex), 16);}
+        else {hex = QuickFolders.Util.getSystemColor(hex);}
+      } catch {
         hex = QuickFolders.Util.getSystemColor(hex);
       }
     }
@@ -112,22 +113,12 @@ QuickFolders.Util = {
       let elapsed = new String(endTime - this.lastTime); // time in milliseconds
       timePassed = "[" + elapsed + " ms]   ";
       this.lastTime = endTime; // remember last time
-    } catch (e) {}
-    return (
-      end.getHours() +
-      ":" +
-      end.getMinutes() +
-      ":" +
-      end.getSeconds() +
-      "." +
-      end.getMilliseconds() +
-      "  " +
-      timePassed
-    );
+    } catch { ; }
+    return `${end.getHours()}:${end.getMinutes()}:${end.getSeconds()}.${end.getMilliseconds()}  ${timePassed}`;
   },
 
   // first argument is the option tag
-  logWithOption: function logWithOption(a) {
+  logWithOption: function (_a) {
     arguments[0] =
       "QuickFolders " +
       "{" +
@@ -138,22 +129,24 @@ QuickFolders.Util = {
     console.log(...arguments);
   },
 
-  logToConsole: function logToConsole(a) {
+  logToConsole: function (_a) {
     let msg = "QuickFolders " + QuickFolders.Util.logTime() + "\n";
     console.log(msg, ...arguments);
   },
 
-  logException: function logException(aMessage, ex) {
-    let stack = "";
-    if (typeof ex.stack != "undefined") stack = ex.stack.replace("@", "\n  ");
-    // let's display a caught exception as a warning.
-    let fn = ex.fileName || "?";
-    // this.logError(aMessage + "\n" + ex.message, fn, stack, ex.lineNumber, 0, 0x1);
+  logException: function (aMessage, ex) {
+    /*
+      let stack = "";
+      if (typeof ex.stack != "undefined") {stack = ex.stack.replace("@", "\n  ");}
+      // let's display a caught exception as a warning.
+      let fn = ex.fileName || "?";
+      // this.logError(aMessage + "\n" + ex.message, fn, stack, ex.lineNumber, 0, 0x1);
+    */
     console.error(aMessage, ex);
   },
 
-  logDebug: async function (a) {
-    if (QuickFolders.Preferences.isDebug) {
+  logDebug: async function (_a) {
+    if (await QuickFolders.Preferences.isDebug()) {
       this.logToConsole(...arguments); /* ...msg */
     }
   },
@@ -172,7 +165,7 @@ QuickFolders.Util = {
    * @optionString {string}: comma delimited options
    * @msg {string}: text to log
    */
-  logDebugOptional: async function (optionString, msg) {
+  logDebugOptional: async function (optionString, _msg) {
     let options = optionString.split(",");
     for (let i = 0; i < options.length; i++) {
       let option = options[i];
@@ -191,7 +184,6 @@ QuickFolders.Util = {
     if (localized) {
       s = localized;
     } else {
-      s = defaultText;
       this.logToConsole("Could not retrieve bundle string: " + id + "");
     }
     return s;

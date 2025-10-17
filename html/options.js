@@ -37,6 +37,7 @@ const activateTab = (event) => {
 }
 
 const LEGACY_SETTINGS_ROOT = "extensions.quickfolders.";
+// eslint-disable-next-line no-unused-vars
 function legacyPrefPath(setting) {
   return LEGACY_SETTINGS_ROOT + setting;
 }
@@ -139,7 +140,7 @@ for (let colorpicker of document.querySelectorAll("input[type=color]")) {
     continue;
   }
   
-  let {name, style, label} = QuickFolders.Options.getColorPickerVars(colorpicker.id);
+  let {name, style} = QuickFolders.Options.getColorPickerVars(colorpicker.id);
   if (!name) {
     if (colorpicker.id == "inactive-colorpicker") {
       colorpicker.addEventListener("input", function() { 
@@ -562,7 +563,7 @@ document.getElementById("btnLoadConfig").addEventListener("click", async () => {
       let colPick = colorpickers.find(e => e.getAttribute("elementInfo") == item.elementInfo);
       if (colPick) {
         colPick.value = item.val;
-        let {name, style, label} = QuickFolders.Options.getColorPickerVars(colPick.id);
+        let {name, style} = QuickFolders.Options.getColorPickerVars(colPick.id);
         QuickFolders.Options.styleUpdate(name, style, item.val, 
           colPick.getAttribute("previewLabel") || colPick.getAttribute("aria-labelledby"));
       }
@@ -747,10 +748,6 @@ async function initVersionPanel() {
   document.getElementById("qf-options-header-description").value = manifest.version;
 }
 
-function configExtra2Button() {
-   // to do - OK / Cancel / donate buttons from legacy code QuickFolders.Options 
-}
-
 // broken out from validateLicenseInOptions:
 async function configureBuyButton() {
   function replaceCssClass(el,addedClass) {
@@ -770,9 +767,11 @@ async function configureBuyButton() {
   switch(result) {
     case "Valid": {
       let today = new Date(),
-          later = new Date(today.setDate(today.getDate()+30)), // pretend it's a month later:
-          dateString = later.toISOString().substr(0, 10),
-          forceExtend = await messenger.LegacyPrefs.getPref("debug.premium.forceShowExtend");
+        later = new Date(today.setDate(today.getDate() + 30)), // pretend it's a month later:
+        dateString = later.toISOString().substr(0, 10),
+        forceExtend = await messenger.LegacyPrefs.getPref(
+          "extensions.quickfolders.debug.premium.forceShowExtend"
+        );
       // if we were a month ahead would this be expired?
       if (licenseInfo.expiryDate < dateString || forceExtend) {
         QuickFolders.Options.labelLicenseBtn(btnLicense, "extend");
@@ -822,7 +821,6 @@ async function validateLicenseInOptions(evt = false) {
   // 4 - update buy / extend button or hide it.
   configureBuyButton();
   
-  configExtra2Button();
   // util.logDebug("validateLicense - result = " + result);
 } 
 
@@ -1012,7 +1010,9 @@ const startup = async () => {
   i18n.updateDocument();
 
   let supportLabel = document.getElementById("contactLabel"),
-      supportString = QuickFolders.Util.getBundleString("qf.description.contactMe", [QuickFolders.Util.ADDON_SUPPORT_MAIL]); // substitution parameter
+    supportString = messenger.i18n.getMessage("qf.description.contactMe", [
+      QuickFolders.Util.ADDON_SUPPORT_MAIL,
+    ]); // substitution parameter
   supportLabel.textContent = supportString;  
 
   await loadPrefs();

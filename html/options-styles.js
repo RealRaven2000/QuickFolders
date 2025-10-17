@@ -18,18 +18,19 @@ QuickFolders.Styles = {
 				for (let i=0; i<rulesList.length; i++) {
 					let theRule = rulesList[i];
 					switch (theRule.type) {
-						case theRule.IMPORT_RULE:
-							if (!recurse) // don't allow deep recursion (break circular refs!)
+						case theRule.IMPORT_RULE: {
+							if (!recurse) {
+								// don't allow deep recursion (break circular refs!)
 								continue;
+							}
 						  let retVal = getRuleFromList(theRule.styleSheet.cssRules, rule, attribute, false);
 							// try to find imported rule (recursive) and return it.
-							if (! (retVal === null))
-							  return (retVal);
+							if (! (retVal === null)) {return (retVal);}
 							break;
-					  case theRule.STYLE_RULE:
+						}
+					  case theRule.STYLE_RULE: {
 							let selectors = theRule.selectorText;
-							if (!selectors || !selectors.length)
-								continue;
+							if (!selectors || !selectors.length) {continue;}
 							let selectorArray = selectors.split(',');
               // replaced for..each
               for (let r=0; r<selectorArray.length; r++) {
@@ -52,6 +53,7 @@ QuickFolders.Styles = {
 								}
 							}
 							break;
+						}
 						default: // other rules: unknown, media, page, font_face, charset 
 						  // don't do anything here
 							break;

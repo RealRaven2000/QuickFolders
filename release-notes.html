@@ -1,6 +1,6 @@
-<b>Release 6.13</b>
+<b>Release 6.13.1</b>
 
-<b>This release improves many UI issues for all version and fixes fundamental breaking problems in the upcoming version Thunderbird 143.</b>
+<b>This release improves many UI issues for all version and fixes fundamental breaking problems in the upcoming version Thunderbird 145.</b>
 
 The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the <a href="https://addons.thunderbird.net/thunderbird/addon/addon-info-sync-compatibility" class="native">Add-on Compatibility Check</a>.
 
@@ -9,12 +9,20 @@ Some users may have seen a false incompatibility warning after updating from Thu
 To get this fixed I raised a bug with Thunderbird: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>.
 
 
-<b>Improvements</b>
+<b>Maintenance Release 6.13.1</h4>
+<li> Made compatible with Thunderbird 145.*
+
+There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version.
+
+I raised a bug with Thunderbird to address this problem: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>. Please vote with us for getting this fixed! </li> 
+<li> Added Norwegian locale. </li>
+
+
+<b>Improvements (6.13) </b>
 
 <ul> 
-  <li>Made compatible with Thunderbird 143.*</li> 
   <li>Fixed missing/broken menu icons in all popup menus of Thunderbird 143 <a href="https://github.com/RealRaven2000/QuickFolders/issues/602">[issue 602]</a></li> 
-  <li>Minimized impact of "News Flag" — now displayed as a badge icon 🟠 <a href="https://github.com/RealRaven2000/QuickFolders/issues/607">[issue 607]</a></li> 
+  <li>Minimized impact of "News Flag" — now displayed as a badge icon <a href="https://github.com/RealRaven2000/QuickFolders/issues/607">[issue 607]</a></li> 
   <li>Intermittently, current folder bar was not displayed on main 3pane (first) tab <a href="https://github.com/RealRaven2000/QuickFolders/issues/608">[issue 608]</a></li> 
   <li>Toolbar button icons sometimes don’t update immediately when changing themes <a href="https://github.com/RealRaven2000/QuickFolders/issues/611">[issue 611]</a></li> 
 </ul>

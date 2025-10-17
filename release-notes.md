@@ -1,5 +1,14 @@
 
-**Improvements**
+**Maintenance Release 6.13.1**
+*   Made compatible with Thunderbird 145.*
+
+    There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version.
+
+    I raised a bug with Thunderbird to address this problem: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>. Please vote with us for getting this fixed!
+*   Added Norwegian locale.
+
+
+**Improvements 6.13**
 
 *   Made compatible with Thunderbird 143
 *   Fixed missing/broken menu icons in all popup menus of Thunderbird 143 [issue #602]

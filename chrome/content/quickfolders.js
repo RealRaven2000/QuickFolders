@@ -252,7 +252,7 @@ END LICENSE BLOCK */
     ## [issue 598] QuickFolders toolbar not showing in new tab due 
     ##             to mailTabs.query not ready
 
-  6.13 QuickFolders Pro - WIP
+  6.13 QuickFolders Pro - 19/09/2025
     ## Make compatible with Thunderbird 143.
     ## [issue 602] Thunderbird 143: menu icons of all popup menus missing / broken
     ## [issue 609] Thunderbird 143: QuickFolders toolbar not displayed on startup, toggle button not working 
@@ -261,6 +261,12 @@ END LICENSE BLOCK */
     ## [issue 608] Intermittently, current folder bar is not displayed on main 3pane (1st) tab
     ## [issue 610] Bug: folder navigation buttons cannot be removed independently of Message Navigation buttons
     ## [issue 611] Toolbar button icons sometimes don’t update immediately when changing themes
+
+  6.13.1 QuickFolders Pro - 
+    ## Made compatible with Thunderbird 145
+    ## [issue 602] More icon compatibility fixes
+    ## [issue 617] Added Norwegian Locale
+    ##
 
   
 	TO DO next
@@ -2580,18 +2586,22 @@ QuickFolders.FolderListener = {
                 "unknown compactReportCommandType: [" + QuickFolders.compactReportCommandType + "]";
 							break;
 					}
-					let originalSize= util.getBundleString("qfCompactedOriginalFolderSize"),
-					    newSize = util.getBundleString("qfCompactedNewFolderSize"),
-					    expunged = util.getBundleString("qfCompactedBytesFreed"),
-					    out = message + " :: "
-						+ (size1 ? (originalSize + ": " + add1000Separators(size1.toString()) + " ::  "
-								   + expunged + ":" + add1000Separators((size1-size2).toString()) + " :: ")
-								 : " ")
-						+ newSize + ": " + add1000Separators(size2.toString()) ;
-					//make sure it displays straight away and overwrite the compacting done message as well.
+					const originalSize= util.getBundleString("qfCompactedOriginalFolderSize"),
+            newSize = util.getBundleString("qfCompactedNewFolderSize"),
+            expunged = util.getBundleString("qfCompactedBytesFreed"),
+            out = message + " :: "
+              + (size1 ? (originalSize + ": " + add1000Separators(size1.toString()) + " ::  "
+                    + expunged + ":" + add1000Separators((size1-size2).toString()) + " :: ")
+                  : " ")
+              + newSize + ": " + add1000Separators(size2.toString()) ;
+					// make sure it displays straight away and overwrite the compacting done message as well.
 
-					setTimeout(function() { 
-            QuickFolders.Util.slideAlert("QuickFolders",out); QuickFolders.Util.logDebug(out); 
+          const isNotification = true; // use this to disable message(s)
+					setTimeout(function() {
+            if (isNotification) {
+              QuickFolders.Util.slideAlert("QuickFolders", out); 
+            }
+            QuickFolders.Util.logDebug(out); 
           }, 250); // display "after compacting"
 
 					QuickFolders.compactLastFolderUri = null;

@@ -76,6 +76,7 @@ function formatAll(txt) {
     .replace(/\{br\}/g, "<br>")
     .replace(/\{A-findRelated\}/g, "<a href='https://quickfolders.org/premium.html#findRelated'>")
     .replace(/\{A\}/g, "</a>")
+    .replace(/\[Bugzilla (\d*)\]/g, "<a class='bugzilla' no='$1' href='#'>[Bugzilla $1]</a>")
     .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1 href='#'>[issue $1]</a>")
     .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>") // single keys
     .replace(/\[(F\d*)\]/g, "<code class='keystroke'>$1</code>") // F10

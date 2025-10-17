@@ -380,7 +380,8 @@
     "message": "{P1}Továbbra is követjük a Thunderbird havi kiadási ciklusát a kompatibilitás és a stabilitás biztosítása érdekében. Ahogy mindig, ez a munka teljes egészében a licenceladásokból finanszírozott.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Fontos:{boldEnd} A Thunderbird továbbra is a havi kiadási ciklus szerint jelenik meg. {P2}{P1} Néhány felhasználó téves inkompatibilitási figyelmeztetést tapasztalhatott a Thunderbird 142-es verzióra való frissítés után. Ennek oka a Thunderbird gyorsítótárban lévő kompatibilitási információ volt, amely néha nem frissült megfelelően. A QuickFolders előző verziója már teljes mértékben kompatibilis volt a 142-vel. Jeleztem a Thunderbird felé egy hibát ennek javítására: [Bugzilla 1986027]{P2}{P1} Nyugodtan dolgozhat tovább, a QuickFolders teljes mértékben támogatja mind a havi, mind az ESR (140.*) csatornákat.{P2}"
+    "message": "{P1}{boldStart}Fontos:{boldEnd} A Thunderbird folytatja havi kiadási ciklusát. {P2}{P1} Néhány felhasználó hamis inkompatibilitási figyelmeztetést láthatott a Thunderbird $appversion$ verzióra való frissítése után. Ennek oka a Thunderbird gyorsítótárban tárolt kompatibilitási információja, amely néha nem frissül megfelelően. Jelentettem egy hibát a Thunderbirdnek: [Bugzilla 1986027]{P2}{P1} Biztos lehet benne, hogy a QuickFolders teljes mértékben támogatja a havi és az ESR (140.*) csatornákat, és folytathatja a munkát megszakítás nélkül. {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "Mivel a QuickFolders összes munkája és az ingyenes támogatás kizárólag a licenceladásokból finanszírozódik, kérjük, fontolja meg licenc vásárlását vagy a jelenlegi licenc megújítását."
@@ -1835,7 +1836,8 @@
     "message": "Olvassa el a részletes változásnaplót itt (csak angolul):"
   },
   "whats-new-list": {
-    "message": "{P1} A QuickFolders frissítve lett a Thunderbird 143-hoz, és továbbra is teljes mértékben kompatibilis a jelenlegi havi kiadási ciklussal.{P2}{L1} Kompatibilissé téve a Thunderbird 143-mal.* {L2}{L1} Javítva a hiányzó/törött menüikonok a Thunderbird 143 összes felugró menüjében [issue 602] {L2}{L1} Minimalizáltuk a „Hírzászló” hatását — most jelvény ikonnal jelenik meg 🟠 [issue 607] {L2}{L1} Időnként az aktuális mappasáv nem jelent meg a fő, 3-paneles (első) fülön [issue 608] {L2}{L1} Az eszköztár gombikonjai néha nem frissülnek azonnal téma váltáskor [issue 611] {L2}{L1} A QuickFolders eszköztár most már helyesen jelenik meg induláskor a Thunderbird 143-ban, a váltógomb működik [issue 609] {L2}{L1} A mappanavigációs gombok mostantól függetlenül eltávolíthatók az üzenetnavigációs gomboktól — korábban tévesen összekapcsolódtak [issue 610] {L2}"
+    "description": "🇭🇺 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

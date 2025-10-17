@@ -421,7 +421,8 @@
     "message": "{P1}Wir folgen weiterhin dem monatlichen Veröffentlichungszyklus von Thunderbird, um Kompatibilität und Stabilität sicherzustellen. Wie immer wird diese Arbeit vollständig durch den Verkauf von Lizenzen finanziert.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Wichtig:{boldEnd} Thunderbird setzt seinen monatlichen Veröffentlichungszyklus fort. {P2}{P1} Einige Benutzer könnten nach dem Update von Thunderbird auf Version 142 eine falsche Warnung über Inkompatibilität gesehen haben. Dies wurde durch zwischengespeicherte Kompatibilitätsinformationen in Thunderbird verursacht, die manchmal nicht korrekt aktualisiert werden. Die vorherige Version von QuickFolders war bereits vollständig mit 142 kompatibel. Ich habe einen Bug bei Thunderbird gemeldet, damit dies behoben wird: [Bugzilla 1986027]{P2}{P1} Seien Sie versichert, QuickFolders unterstützt sowohl die monatlichen als auch die ESR-Kanäle (140.*) vollständig, und Sie können ohne Unterbrechung weiterarbeiten. {P2}"
+    "message": "{P1}{boldStart}Wichtig:{boldEnd} Thunderbird setzt seinen monatlichen Veröffentlichungszyklus fort. {P2}{P1} Einige Benutzer haben möglicherweise nach dem Update von Thunderbird auf $appversion$ eine falsche Inkompatibilitätswarnung gesehen. Dies wurde durch zwischengespeicherte Kompatibilitätsinformationen in Thunderbird verursacht, die manchmal nicht korrekt aktualisiert werden. Ich habe einen Bug bei Thunderbird gemeldet, um dies zu beheben: [Bugzilla 1986027]{P2}{P1} Seien Sie versichert, dass QuickFolders sowohl den monatlichen als auch den ESR (140.*) Kanal vollständig unterstützt, und Sie können ohne Unterbrechung weiterarbeiten. {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "Da alle Arbeiten an QuickFolders und der kostenlose Support ausschließlich durch Lizenzverkäufe finanziert werden, bitte denken Sie darüber nach, eine Lizenz zu kaufen oder Ihre aktuelle zu verlängern."
@@ -2083,7 +2084,8 @@
     "message": "Lesen Sie hier das detaillierte Änderungsprotokoll (nur Englisch):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders wurde für Thunderbird 143 aktualisiert und bleibt vollständig kompatibel mit dem aktuellen monatlichen Release-Zyklus.{P2}{L1} Kompatibel gemacht mit Thunderbird 143.* {L2}{L1} Fehlende/defekte Menüsymbole in allen Popup-Menüs von Thunderbird 143 behoben [issue 602] {L2}{L1} Einfluss des „Neuigkeiten-Status“ minimiert — dieser wird nun als Badge-Symbol 🟠 angezeigt [issue 607] {L2}{L1} Gelegentlich wurde die aktuelle Ordnerleiste nicht im Haupt-3-Panel (erster Tab) angezeigt [issue 608] {L2}{L1} Symbolleisten-Symbole aktualisieren sich manchmal nicht sofort beim Wechseln von Themes [issue 611] {L2}{L1} QuickFolders-Symbolleiste wird nun beim Start in Thunderbird 143 korrekt angezeigt, Umschaltknopf funktioniert [issue 609] {L2}{L1} Ordner-Navigationsschaltflächen können jetzt unabhängig von Nachrichten-Navigationsschaltflächen entfernt werden — zuvor waren sie fälschlicherweise durch die gleiche Option verknüpft [issue 610] {L2}"
+    "description": "🇪🇸 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

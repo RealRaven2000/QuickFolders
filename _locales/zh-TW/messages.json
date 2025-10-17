@@ -420,7 +420,8 @@
     "message": "{P1}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 一些用戶在更新到 Thunderbird v142 後可能看到錯誤的不相容警告。這是由於 Thunderbird 中的快取相容性資訊有時無法正確刷新。QuickFolders 之前的版本已經完全相容於 142。我已向 Thunderbird 提交了 Bug 報告以解決此問題: [Bugzilla 1986027]{P2}{P1} 請放心，QuickFolders 完全支援每月版和 ESR (140.*) 通道，您可以繼續不間斷地工作。 {P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 繼續其每月發布週期。 {P2}{P1} 部分使用者在將 Thunderbird 更新至 $appversion$ 後可能會看到錯誤的相容性警告。這是因 Thunderbird 中的快取相容性資訊有時未能正確更新所造成。我已向 Thunderbird 提交 Bug 報告以修復此問題：[Bugzilla 1986027]{P2}{P1} 請放心，QuickFolders 完全支援每月及 ESR（140.*）通道，您可以繼續工作而不受干擾。 {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "由於QuickFolders的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
@@ -2044,7 +2045,8 @@
     "message": "在此處閱讀詳細的更改日誌（僅英語）："
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders 已更新以支援 Thunderbird 143，並與目前的每月發行週期保持完全相容。{P2}{L1} 已與 Thunderbird 143 相容。* {L2}{L1} 修復了 Thunderbird 143 所有快顯選單中缺失/損壞的選單圖示 [issue 602] {L2}{L1} 將「新聞標記」的影響降到最低 — 現在顯示為徽章圖示 🟠 [issue 607] {L2}{L1} 偶爾當前資料夾列未顯示在主三窗格（第一個）分頁上 [issue 608] {L2}{L1} 更改佈景主題時，工具列按鈕圖示有時不會立即更新 [issue 611] {L2}{L1} QuickFolders 工具列現在在 Thunderbird 143 啟動時正確顯示，切換按鈕可正常使用 [issue 609] {L2}{L1} 資料夾導覽按鈕現在可以獨立於郵件導覽按鈕移除 — 之前被錯誤地連結到郵件導覽設定 [issue 610] {L2}"
+    "description": "🇹🇼 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

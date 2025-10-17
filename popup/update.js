@@ -35,6 +35,15 @@ addEventListener("click", async (event) => {
       messenger.windows.openDefaultBrowser(`https://github.com/RealRaven2000/QuickFolders/issues/${issueId}`);
     }
   }    
+
+  if (event.target.classList.contains("bugzilla")) {
+    let bugId = event.target.getAttribute("no");
+    if (bugId) {
+      messenger.windows.openDefaultBrowser(
+        `https://bugzilla.mozilla.org/show_bug.cgi?id=${bugId}`
+      );
+    }
+  }    
   
   
   if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
@@ -173,7 +182,7 @@ addEventListener("load", async (_event) => {
   */
 
   const newsImportant = document.getElementById("newsImportant");
-  const importantText = messenger.i18n.getMessage("newsSection.important");
+  const importantText = messenger.i18n.getMessage("newsSection.important", [appVer]);
   ariaPoliteUpdate(newsImportant, formatAll(importantText), true);
 
   let ongoing = document.getElementById("ongoing-work");

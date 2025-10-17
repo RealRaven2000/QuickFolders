@@ -408,7 +408,8 @@
     "message": "{P1}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird nadaljuje s svojim mesečnim ciklom izdaj. {P2}{P1} Nekateri uporabniki so morda videli napačno opozorilo o nezdružljivosti po posodobitvi na Thunderbird v142. To je bilo povzročeno s predpomnjeno informacijo o združljivosti v Thunderbirdu, ki se včasih ne osveži pravilno. Prejšnja različica QuickFolders je bila že popolnoma združljiva z 142. Napako sem prijavil ekipi Thunderbird, da jo odpravijo: [Bugzilla 1986027]{P2}{P1} Zagotavljamo, da QuickFolders popolnoma podpira tako mesečne kot ESR (140.*) kanale in lahko nadaljujete z delom brez prekinitve. {P2}"
+    "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird nadaljuje svoj mesečni cikel izdaj. {P2}{P1} Nekateri uporabniki so po posodobitvi Thunderbirda na $appversion$ morda videli napačno opozorilo o nezdružljivosti. To je bilo povzročeno zaradi predpomnjenih informacij o združljivosti v Thunderbirdu, ki se včasih ne osvežijo pravilno. Napako sem prijavil v Thunderbirdu: [Bugzilla 1986027]{P2}{P1} Zagotovite, da QuickFolders popolnoma podpira tako mesečni kot ESR (140.*) kanal in lahko nadaljujete z delom brez prekinitev. {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "Ker je vsa dela na QuickFolders in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
@@ -2034,7 +2035,8 @@
     "message": "Podroben dnevnik sprememb preberite tukaj (samo v angleščini):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders je bil posodobljen za Thunderbird 143 in ostaja popolnoma združljiv z trenutnim mesečnim ciklom izdaje.{P2}{L1} Prilagojeno za Thunderbird 143.* {L2}{L1} Popravljene manjkajoče/poškodovane ikone menija v vseh pojavnih menijih Thunderbirda 143 [issue 602] {L2}{L1} Vpliv »novičarske zastavice« zmanjšan na minimum — zdaj prikazana kot ikona značke 🟠 [issue 607] {L2}{L1} Občasno se vrstica trenutne mape ni prikazala na glavni 3-podokenski (prvi) zavihek [issue 608] {L2}{L1} Ikone gumbov orodne vrstice se včasih ne posodobijo takoj pri spreminjanju tem [issue 611] {L2}{L1} Orodna vrstica QuickFolders je zdaj pravilno prikazana ob zagonu v Thunderbird 143, gumb za preklop deluje [issue 609] {L2}{L1} Gumbi za navigacijo po mapah je zdaj mogoče odstraniti neodvisno od gumbov za navigacijo po sporočilih — prej so bili napačno povezani z nastavitvami navigacije po sporočilih [issue 610] {L2}"
+    "description": "🇸🇮 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "yearlyLicense.premiumFeatures": {
     "message": "QuickFolders Pro vam omogoča poln neomejen dostop do značilnosti Premium."

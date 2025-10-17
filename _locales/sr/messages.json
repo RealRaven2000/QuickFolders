@@ -378,7 +378,8 @@
     "message": "{P1}Настављамо да пратимо месечни циклус издавања Thunderbird-а како бисмо осигурали компатибилност и стабилност. Као и увек, овај рад је у потпуности финансиран од продаје лиценци.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Важно:{boldEnd} Thunderbird наставља свој месечни циклус издања. {P2}{P1} Неки корисници су можда видели лажно упозорење о некомпатибилности након ажурирања на Thunderbird v142. Ово је узроковано кешираним информацијама о компатибилности у Thunderbirdu, које понекад не освежавају исправно. Претходна верзија QuickFolders-а већ је била потпуно компатибилна са 142. Пријавио сам баг Thunderbird тиму да ово реше: [Bugzilla 1986027]{P2}{P1} Будите сигурни да QuickFolders у потпуности подржава и месечне и ESR (140.*) канале и можете наставити рад без прекида. {P2}"
+    "message": "{P1}{boldStart}Важно:{boldEnd} Thunderbird наставља свој месечни циклус издавања. {P2}{P1} Неки корисници су можда видели лажну поруку о некомпатибилности након ажурирања Thunderbirda на $appversion$. То је проузроковано кешираном информацијом о компатибилности у Thunderbirdu, која понекад не освежи исправно. Пријавио сам баг у Thunderbird: [Bugzilla 1986027]{P2}{P1} Будите сигурни да QuickFolders у потпуности подржава како месечни тако и ESR (140.*) канал и можете наставити рад без прекида. {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "Pošto se sav rad na QuickFolders-u i besplatan support finansiraju isključivo kroz prodaju licenci, razmislite o kupovini licence ili obnavljanju trenutne."
@@ -1914,7 +1915,8 @@
     "message": "Детаљни дневник промена прочитајте овде (само на енглеском):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders је ажуриран за Thunderbird 143 и остаје у потпуности компатибилан са тренутним месечним циклусом издања.{P2}{L1} Прилагођен за Thunderbird 143.* {L2}{L1} Исправљене недостајуће/оштећене иконе менија у свим искачућим менијима Thunderbird-а 143 [issue 602] {L2}{L1} Утицај „News Flag“ сведен на минимум — сада се приказује као икона значке 🟠 [issue 607] {L2}{L1} Повремено се трака текуће фасцикле није приказивала на главној 3-панелној (првој) картици [issue 608] {L2}{L1} Иконе дугмади на траци са алаткама понекад се не ажурирају одмах приликом промене тема [issue 611] {L2}{L1} Трака са алаткама QuickFolders се сада исправно приказује при покретању у Thunderbird-у 143, дугме за пребацивање ради [issue 609] {L2}{L1} Дугмад за навигацију фасцикли сада могу бити уклоњена независно од дугмади за навигацију порукама — била су погрешно повезана са подешавањима за навигацију порукама [issue 610] {L2}"
+    "description": "🇷🇸 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

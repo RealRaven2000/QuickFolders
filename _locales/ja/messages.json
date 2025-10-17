@@ -408,7 +408,8 @@
     "message": "{P1}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird は月次リリースサイクルを継続しています。 {P2}{P1} 一部のユーザーは Thunderbird を v142 に更新した後、誤った非互換性警告を目にしたかもしれません。これは Thunderbird にキャッシュされた互換性情報が正しく更新されないことが原因です。QuickFolders の以前のバージョンはすでに 142 と完全に互換性がありました。この問題を修正するため Thunderbird にバグを報告しました: [Bugzilla 1986027]{P2}{P1} ご安心ください。QuickFolders は月次チャネルと ESR (140.*) の両方を完全にサポートしており、中断することなく作業を続けられます。{P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird は毎月のリリースサイクルを継続しています。 {P2}{P1} 一部のユーザーは Thunderbird を $appversion$ に更新した後に誤った互換性警告が表示されることがあります。これは Thunderbird のキャッシュされた互換性情報が正しく更新されない場合があるためです。この件について Thunderbird にバグを報告しました：[Bugzilla 1986027]{P2}{P1} QuickFolders は月次および ESR (140.*) チャンネルの両方を完全にサポートしており、作業を中断することなく続行できます。 {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "QuickFoldersのすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
@@ -1983,7 +1984,8 @@
     "message": "ここで詳細な変更ログを読んでください（英語のみ）："
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders は Thunderbird 143 に対応するよう更新され、現在の毎月のリリースサイクルと完全に互換性があります。{P2}{L1} Thunderbird 143 に対応しました。* {L2}{L1} Thunderbird 143 のすべてのポップアップメニューで欠落/破損していたメニューアイコンを修正 [issue 602] {L2}{L1} 「ニュースフラグ」の影響を最小化 — バッジアイコン 🟠 として表示されるようになりました [issue 607] {L2}{L1} 時々、現在のフォルダーバーがメインの3ペイン（最初のタブ）に表示されない問題を修正 [issue 608] {L2}{L1} テーマを変更した際に、ツールバーボタンのアイコンがすぐに更新されないことがある問題を修正 [issue 611] {L2}{L1} Thunderbird 143 起動時に QuickFolders ツールバーが正しく表示され、切り替えボタンが機能するようになりました [issue 609] {L2}{L1} フォルダーナビゲーションボタンがメッセージナビゲーションボタンとは独立して削除できるようになりました — 以前は誤って連動していました [issue 610] {L2}"
+    "description": "🇯🇵 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

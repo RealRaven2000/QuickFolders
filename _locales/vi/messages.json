@@ -369,7 +369,8 @@
     "message": "{P1}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Quan trọng:{boldEnd} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {P2}{P1} Một số người dùng có thể đã thấy cảnh báo không tương thích giả sau khi nâng cấp lên Thunderbird v142. Điều này do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Phiên bản QuickFolders trước đó đã hoàn toàn tương thích với 142. Tôi đã báo lỗi này với Thunderbird để họ khắc phục: [Bugzilla 1986027]{P2}{P1} Hãy yên tâm rằng QuickFolders hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {P2}"
+    "message": "{P1}{boldStart}Quan trọng:{boldEnd} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {P2}{P1} Một số người dùng có thể đã thấy cảnh báo không tương thích sai sau khi cập nhật Thunderbird lên $appversion$. Nguyên nhân là do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Tôi đã gửi báo cáo lỗi tới Thunderbird để sửa vấn đề này: [Bugzilla 1986027]{P2}{P1} Hãy yên tâm rằng QuickFolders hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "Vì tất cả công việc trên QuickFolders và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ việc bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
@@ -1761,7 +1762,8 @@
     "message": "Đọc nhật ký thay đổi chi tiết tại đây (chỉ bằng tiếng Anh):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders đã được cập nhật cho Thunderbird 143 và vẫn hoàn toàn tương thích với chu kỳ phát hành hàng tháng hiện tại.{P2}{L1} Đã làm tương thích với Thunderbird 143.* {L2}{L1} Sửa các biểu tượng menu bị thiếu/hỏng trong tất cả menu bật lên của Thunderbird 143 [issue 602] {L2}{L1} Giảm thiểu tác động của \"Cờ tin tức\" — giờ được hiển thị dưới dạng biểu tượng huy hiệu 🟠 [issue 607] {L2}{L1} Thỉnh thoảng, thanh thư mục hiện tại không được hiển thị trên tab chính 3 khung (đầu tiên) [issue 608] {L2}{L1} Biểu tượng nút thanh công cụ đôi khi không cập nhật ngay khi thay đổi chủ đề [issue 611] {L2}{L1} Thanh công cụ QuickFolders giờ được hiển thị chính xác khi khởi động Thunderbird 143, nút chuyển đổi hoạt động [issue 609] {L2}{L1} Các nút điều hướng thư mục giờ có thể được xóa độc lập với các nút điều hướng thư — trước đây bị liên kết sai với cài đặt điều hướng thư [issue 610] {L2}"
+    "description": "🇻🇳 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

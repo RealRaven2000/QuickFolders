@@ -425,7 +425,8 @@
     "message": "{P1}We continue to follow Thunderbird’s monthly release cycle to ensure compatibility and stability. As always, this work is entirely financed by license sales.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continues its monthly release cycle. {P2}{P1} Some users may have seen a false incompatibility warning after updating from Thunderbird to v142. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of QuickFolders was already fully compatible with 142. I raised a bug with Thunderbird to fix this: [Bugzilla 1986027]{P2}{P1} Rest assured, QuickFolders fully supports both the monthly and ESR (140.*) channels, and you can continue working without interruption. {P2}"
+    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continues its monthly release cycle. {P2}{P1} Some users may have seen a false incompatibility warning after updating Thunderbird to $appversion$. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. I raised a bug with Thunderbird to fix this: [Bugzilla 1986027]{P2}{P1} Rest assured, QuickFolders fully supports both the monthly and ESR (140.*) channels, and you can continue working without interruption. {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "As all work on QuickFolders and free support are funded exclusively by license sales, please consider buying a license or renewing your current one."
@@ -2141,7 +2142,8 @@
     "message": "Read the detailed change log here (English only):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders has been updated for Thunderbird 143 and remains fully compatible with the current monthly release cycle.{P2}{L1} Made compatible with Thunderbird 143.* {L2}{L1} Fixed missing/broken menu icons in all popup menus of Thunderbird 143 [issue 602] {L2}{L1} Minimized impact of \"News Flag\" — now displayed as a badge icon 🟠 [issue 607] {L2}{L1} Intermittently, current folder bar was not displayed on main 3pane (first) tab [issue 608] {L2}{L1} Toolbar button icons sometimes don’t update immediately when changing themes [issue 611] {L2}{L1} QuickFolders toolbar now correctly displayed on startup in Thunderbird 143, toggle button working [issue 609] {L2}{L1} Folder navigation buttons can now be removed independently of Message Navigation buttons — they were falsely linked to message navigation settings [issue 610] {L2}"
+    "description": "🇬🇧 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

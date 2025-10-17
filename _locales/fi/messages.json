@@ -224,7 +224,8 @@
     "message": "{P1}Seuraamme edelleen Thunderbirdin kuukausittaista julkaisusykliä varmistaaksemme yhteensopivuuden ja vakauden. Kuten aina, tämä työ rahoitetaan kokonaan lisenssimyynnillä.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Tärkeää:{boldEnd} Thunderbird jatkaa kuukausittaista julkaisusykliään. {P2}{P1} Jotkut käyttäjät saattoivat nähdä virheellisen yhteensopimattomuusvaroituksen päivitettyään Thunderbirdin versioon 142. Tämä johtui Thunderbirdin välimuistissa olevista yhteensopivuustiedoista, jotka eivät aina päivity oikein. QuickFoldersin edellinen versio oli jo täysin yhteensopiva 142:n kanssa. Tein Thunderbirdille bugiraportin tämän korjaamiseksi: [Bugzilla 1986027]{P2}{P1} Voit olla varma, että QuickFolders tukee täysin sekä kuukausi- että ESR-kanavia (140.*), ja voit jatkaa työskentelyä keskeytyksettä. {P2}"
+    "message": "{P1}{boldStart}Tärkeää:{boldEnd} Thunderbird jatkaa kuukausittaista julkaisusykliään. {P2}{P1} Jotkut käyttäjät ovat saattaneet nähdä väärän yhteensopimattomuusvaroituksen päivitettyään Thunderbirdin versioon $appversion$. Tämä johtui Thunderbirdin välimuistiin tallennetuista yhteensopivuustiedoista, jotka eivät aina päivity oikein. Olen ilmoittanut bugista Thunderbirdille: [Bugzilla 1986027]{P2}{P1} Vakuutan, että QuickFolders tukee täysin sekä kuukausikanavaa että ESR (140.*), ja voit jatkaa työskentelyä keskeytyksettä. {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "Koska kaikki työ QuickFoldersin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."
@@ -405,7 +406,8 @@
     "message": "Lue yksityiskohtainen muutosloki täältä (vain englanniksi):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders on päivitetty Thunderbird 143:lle ja on edelleen täysin yhteensopiva nykyisen kuukausittaisen julkaisusyklin kanssa.{P2}{L1} Tehty yhteensopivaksi Thunderbird 143:n kanssa.* {L2}{L1} Korjattu puuttuvat/rikkinäiset valikkokuvakkeet kaikissa Thunderbird 143:n ponnahdusvalikoissa [issue 602] {L2}{L1} Vähennetty \"Uutislipun\" vaikutusta — näytetään nyt merkki-kuvakkeena 🟠 [issue 607] {L2}{L1} Satunnaisesti nykyisen kansion palkkia ei näytetty pää-3-paneelin (ensimmäisessä) välilehdessä [issue 608] {L2}{L1} Työkalurivin painikkeiden kuvakkeet eivät joskus päivity heti teemoja vaihdettaessa [issue 611] {L2}{L1} QuickFolders-työkalurivi näytetään nyt oikein käynnistyksessä Thunderbird 143:ssa, ja vaihtopainike toimii [issue 609] {L2}{L1} Kansionavigointipainikkeet voidaan nyt poistaa riippumattomasti viestien navigointipainikkeista — ne olivat aiemmin virheellisesti linkitetty [issue 610] {L2}"
+    "description": "🇫🇮 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

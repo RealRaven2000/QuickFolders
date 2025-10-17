@@ -425,7 +425,8 @@
     "message": "{P1}Vi fortsetter å følge Thunderbirds månedlige utgivelsessyklus for å sikre kompatibilitet og stabilitet. Som alltid finansieres dette arbeidet fullt ut av lisenssalg.{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Viktig:{boldEnd} Thunderbird fortsetter sin månedlige utgivelsessyklus. {P2}{P1} Noen brukere kan ha sett en falsk inkompatibilitetsadvarsel etter oppgradering fra Thunderbird til v142. Dette skyldtes bufret kompatibilitetsinformasjon i Thunderbird, som noen ganger ikke oppdateres korrekt. Forrige versjon av QuickFolders var allerede fullt kompatibel med 142. Jeg har rapportert en feil til Thunderbird for å fikse dette: [Bugzilla 1986027]{P2}{P1} Vær trygg på at QuickFolders fullt ut støtter både den månedlige og ESR (140.*) kanalen, og du kan fortsette å arbeide uten avbrudd. {P2}"
+    "message": "{P1}{boldStart}Viktig:{boldEnd} Thunderbird fortsetter sin månedlige utgivelsessyklus. {P2}{P1} Noen brukere kan ha sett en falsk inkompatibilitetsadvarsel etter oppdatering til Thunderbird $appversion$. Dette skyldtes bufrede kompatibilitetsdata i Thunderbird som noen ganger ikke oppdateres riktig. Jeg har meldt en feil til Thunderbird for å fikse dette: [Bugzilla 1986027]{P2}{P1} Vær trygg på at QuickFolders fullt ut støtter både månedlige og ESR (140.*) kanaler, og du kan fortsette å jobbe uten avbrudd. {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "Siden alt arbeid med QuickFolders og gratis støtte finansieres utelukkende gjennom lisenssalg, vurder å kjøpe eller fornye lisensen din."
@@ -2087,7 +2088,8 @@
     "message": "Les detaljert endringslogg her (kun på engelsk):"
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders er oppdatert for Thunderbird 143 og forblir fullt kompatibel med nåværende månedlige utgivelsessyklus.{P2}{L1} Kompatibel med Thunderbird 143.* {L2}{L1} Fikset manglende/ødelagte menyikoner i alle popup-menyene i Thunderbird 143 [issue 602] {L2}{L1} Minimerte effekten av \"Nyhetsflagg\" — vises nå som et merkeikon 🟠 [issue 607] {L2}{L1} Til tider ble ikke gjeldende mappefelt vist på hoved 3-pane (første) fane [issue 608] {L2}{L1} Verktøylinjeikonene oppdateres noen ganger ikke umiddelbart ved temaendring [issue 611] {L2}{L1} QuickFolders-verktøylinjen vises nå korrekt ved oppstart i Thunderbird 143, veksleknapp fungerer [issue 609] {L2}{L1} Mappe-navigasjonsknapper kan nå fjernes uavhengig av meldingsnavigasjonsknapper — de var feilaktig koblet til meldingsnavigasjonsinnstillinger [issue 610] {L2}"
+    "description": "🇳🇴 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

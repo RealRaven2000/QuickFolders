@@ -424,7 +424,8 @@
     "message": "{P1}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{P2}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 继续其每月发布周期。 {P2}{P1} 一些用户在更新到 Thunderbird v142 后可能看到了错误的不兼容警告。这是由于 Thunderbird 中的兼容性缓存信息有时未能正确刷新。QuickFolders 的上一个版本已经完全兼容 142。我已向 Thunderbird 提交了 Bug 报告以解决此问题: [Bugzilla 1986027]{P2}{P1} 请放心，QuickFolders 完全支持每月版和 ESR (140.*) 渠道，您可以继续不间断地工作。 {P2}"
+    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 继续其每月发布周期。 {P2}{P1} 一些用户在将 Thunderbird 更新到 $appversion$ 后可能看到错误的兼容性警告。这是由于 Thunderbird 中缓存的兼容性信息有时未能正确刷新。我已向 Thunderbird 提交了 Bug 报告以解决此问题：[Bugzilla 1986027]{P2}{P1} 请放心，QuickFolders 完全支持月度和 ESR（140.*）频道，您可以继续工作而不受干扰。 {P2}",
+    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
     "message": "由于QuickFolders的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
@@ -2029,7 +2030,8 @@
     "message": "在此处阅读详细的更改日志（仅英语）："
   },
   "whats-new-list": {
-    "message": "{P1} QuickFolders 已更新以支持 Thunderbird 143，并与当前的每月发布周期保持完全兼容。{P2}{L1} 已与 Thunderbird 143 兼容。* {L2}{L1} 修复了 Thunderbird 143 所有弹出菜单中缺失/损坏的菜单图标 [issue 602] {L2}{L1} 将“新闻标记”的影响降至最低 — 现在显示为徽章图标 🟠 [issue 607] {L2}{L1} 偶尔情况下，当前文件夹栏不会显示在主三窗格（第一个）标签页上 [issue 608] {L2}{L1} 更改主题时，工具栏按钮图标有时不会立即更新 [issue 611] {L2}{L1} QuickFolders 工具栏现在在 Thunderbird 143 启动时正确显示，切换按钮正常工作 [issue 609] {L2}{L1} 文件夹导航按钮现在可以独立于邮件导航按钮删除 — 之前错误地链接到了邮件导航设置 [issue 610] {L2}"
+    "description": "🇨🇳 change log",
+    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

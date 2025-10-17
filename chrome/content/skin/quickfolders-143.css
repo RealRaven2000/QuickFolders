@@ -1,0 +1,36 @@
+
+
+
+/* default icon (empty) avoids placeholder square */
+#QuickFolders-Folders-Pane .menuitem-iconic:not([--menuitem-icon]),
+#QuickFolders-Folders-Pane menu.menu-iconic:not([--menuitem-icon]),
+#QuickFolders-FindPopup .menuitem-iconic:not([--menuitem-icon]),
+#QuickFolders-FindPopup menu.menu-iconic:not([--menuitem-icon]) {
+  --menuitem-icon: url("chrome://quickfolders/content/skin/ico/blank.svg");
+}
+
+
+#QuickFolders-quickMoveMenu .msgUri,
+#QuickFolders-readingListMenu .msgUri {
+	--menuitem-icon: url("chrome://quickfolders/content/skin/ico/message-mail.png");
+}
+#QuickFolders-quickMoveMenu .msgCopy {
+	--menuitem-icon: url("chrome://quickfolders/content/skin/ico/message-copy.png") !important;
+}
+
+#QuickFolders-quickMoveMenu .folderUri {
+  --menuitem-icon: url("chrome://messenger/skin/icons/folder.svg");
+}
+
+#QuickFolders-quickMoveMenu .folderCopy {
+  --menuitem-icon: url("chrome://quickfolders/content/skin/ico/folder-add.svg") !important;
+}
+
+#QuickFolders-quickMoveMenu .msgUri.invalid,
+#QuickFolders-readingListMenu .msgUri.invalid {
+	--menuitem-icon: url("chrome://quickfolders/content/skin/ico/message-invalid.png");
+}
+
+#QuickFolders-FindPopup menuitem.quickFolder.menuitem-iconic {
+  --menuitem-icon: url("chrome://quickfolders/content/skin/ico/folder-tab-small.png") !important;
+}

@@ -758,6 +758,16 @@ async function onLoad(activatedWhileWindowOpen) {
   window.QuickFolders.Util.notifyTools.notifyBackground({ func: "listenersReady" });
 
   window.QuickFolders.initDelayed(WL); // should call updateMainWindow!
+
+  window.QuickFolders.WL = WL;
+  // this requires quickFilters.WL
+  Services.scriptloader.loadSubScript(
+    "chrome://quickfolders/content/quickfolders-ui-fixes.js",
+    window,
+    "UTF-8"
+  );
+
+
 }
 
 // eslint-disable-next-line no-unused-vars

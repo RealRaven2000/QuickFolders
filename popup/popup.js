@@ -9,7 +9,7 @@ END LICENSE BLOCK */
 /* shared module for installation popups */
 /*
   globals
-    SALES_DATE
+    SALE_END_DATE
 */
 
 
@@ -20,7 +20,7 @@ async function getSalesEnd() {
   if (overrideSale) {
     return new Date(overrideSale);
   }
-  let sales_end = new Date(SALES_DATE);
+  let sales_end = new Date(SALE_END_DATE);
   return new Date(sales_end.getTime() + 86400000);
 }	
 
@@ -43,7 +43,7 @@ function hideSelectorItems(cId) {
 function show(id) {
   let el = document.getElementById(id);
   if (!el) { return null; }
-  el.setAttribute("collapsed", false);
+  el.removeAttribute("collapsed");
   return el;
 }
 
@@ -141,7 +141,7 @@ async function updateActions() {
   const overrideSale = await messenger.LegacyPrefs.getPref(
     "extensions.quickfolders.debug.saleDate"
   );
-  const endSale = new Date(overrideSale || SALES_DATE), // Next Sale End Date - see specialoffers.js
+  const endSale = new Date(overrideSale || SALE_END_DATE), // Next Sale End Date - see specialoffers.js
     currentTime = new Date();
   endSale.setDate(endSale.getDate() + 1); // add 1 day to include the last day?
   const isSale = currentTime < endSale;

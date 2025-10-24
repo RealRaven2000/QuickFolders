@@ -18,7 +18,18 @@ const REDUCTION_RENEW = "20%", // 25
   REDUCTION_PRO = "33%", // 40
   REDUCTION_UPGRADE = "33%",
   // eslint-disable-next-line no-unused-vars
-  SALES_DATE = "2025-07-08";
+  SALE_END_DATE = "2025-07-08";
+
+function getSaleEndLabel() {
+  // format date based on user’s locale
+  const now = new Date();
+  const endSale = new Date(SALE_END_DATE);
+  const includeYear = endSale.getFullYear() !== now.getFullYear();
+  const dateOptions = includeYear
+    ? { month: "long", day: "numeric", year: "numeric" }
+    : { month: "long", day: "numeric" };
+  return endSale.toLocaleDateString(messenger.i18n.getUILanguage(), dateOptions);
+}
 
 addEventListener("click", async (event) => {
   switch (event.target.id) {
@@ -69,15 +80,15 @@ async function updateSpecialOffersFields(addonName) {
     insertHtmlSafely(el, txtComp, true);
   }  
 
-  let specialOffer = document.getElementById("specialOfferTxt");
-  let expiry = messenger.i18n.getMessage("special-offer-expiry"); // date of sales end.
+  const specialOffer = document.getElementById("specialOfferTxt");
+  const endSale = getSaleEndLabel(); // localized date of sales end.
   if (specialOffer) {
     let reduction = REDUCTION_PRO;
-    // note: expiry day is set in popup.js "endSale" variable
+    // note: expiry day is set in specialoffers.js "SALES_DATE" variable
     insertHtmlSafely(
       specialOffer,
       messenger.i18n
-        .getMessage("special-offer-content", [expiry, reduction])
+        .getMessage("special-offer-content", [endSale, reduction])
         .replace(/\{boldStart\}/g, "<b>")
         .replace(/\{boldEnd\}/g, "</b>")
         .replace(/\{linkStart\}/, "<a id='stdLink'>")
@@ -87,14 +98,14 @@ async function updateSpecialOffersFields(addonName) {
     );
   }
   
-  let specialRenew = document.getElementById("specialOfferRenewTxt");
+  const specialRenew = document.getElementById("specialOfferRenewTxt");
   if (specialRenew) {
     let reduction = REDUCTION_RENEW;
-    // note: expiry day is set in popup.js "endSale" variable
+    // note: expiry day is set in specialoffers.js "SALES_DATE" variable
     insertHtmlSafely(
       specialRenew,
       messenger.i18n
-        .getMessage("special-offer-renew", [expiry, reduction])
+        .getMessage("special-offer-renew", [endSale, reduction])
         .replace(/\{boldStart\}/g, "<b>")
         .replace(/\{boldEnd\}/g, "</b>"),
       true
@@ -102,13 +113,13 @@ async function updateSpecialOffersFields(addonName) {
   }
   
   
-  let specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
+  const specialOfferUpgrade = document.getElementById("specialOfferUpgradeTxt");
   if (specialOfferUpgrade) {
     // note: expiry day is set in popup.js "endSale" variable
     insertHtmlSafely(
       specialOfferUpgrade,
       messenger.i18n
-        .getMessage("special-offer-upgrade", [expiry, REDUCTION_UPGRADE])
+        .getMessage("special-offer-upgrade", [endSale, REDUCTION_UPGRADE])
         .replace(/\{boldStart\}/g, "<b>")
         .replace(/\{boldEnd\}/g, "</b>")
         .replace(/\{linkStart\}/, "<a id='stdLink'>")

@@ -119,7 +119,14 @@ QuickFolders.FolderTree = {
     util.logDebugOptional('folderTree.icons', 'addFolderIconToElement(' + element.tagName + ', ' + (folder.prettyName || folder.localizedName) + ')');
 	  let hasIcon;
 	  try {
-			let folderIcon =  (folder && (typeof folder.getStringProperty != 'undefined')) ? folder.getStringProperty("folderIcon") : '';
+      let folderIcon = "";
+      try {
+        if (folder && (typeof folder.getStringProperty != 'undefined')) {
+          folderIcon = folder.getStringProperty("folderIcon"); 
+        }
+      } catch {
+        ;
+      }
 			if (!folder || folderIcon=='' || folderIcon=='noIcon') {
 				// element.style.listStyleImage = '';
 				hasIcon = false;

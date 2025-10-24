@@ -114,7 +114,7 @@ var Register = {
       util = QuickFolders.Util;
     // for renewals, referrer is always the old license!
     let referrerTxt = getElement("referrer");
-    if (licenseInfo.status == "Valid") referrerTxt.value = licenseInfo.licenseKey;
+    if (licenseInfo.status == "Valid") {referrerTxt.value = licenseInfo.licenseKey;}
 
     let decryptedDate = licenseInfo.expiryDate;
     const btnProLicense = getElement("btnLicense");
@@ -185,7 +185,7 @@ var Register = {
               );
               btnDomainLicense.classList.add("register");
               break;
-            case 2:
+            case 2: {
               btnProLicense.label = util.getBundleString("qf.notification.premium.btn.upgrade");
               Register.addRegisterEventListener(btnProLicense, 3, true); // upgrade from standard
               btnStdLicense.label = util.getBundleString(
@@ -205,6 +205,7 @@ var Register = {
               }
               btnProLicense.classList.add("register");
               break;
+            }
           }
 
         }
@@ -238,12 +239,14 @@ var Register = {
       case "NotValidated":
         getElement("licenseDateLabel").textContent = " ";
         break;
-      default: // default class=register will animate the button
-        let txt = "License Status: " + licenseInfo.description;
+      default: {
+        // default class=register will animate the button
+        const txt = "License Status: " + licenseInfo.description;
         getElement("licenseDateLabel").textContent = txt;
         util.logToConsole(
-          "Registration Problem\n" + txt + "\nDecrypted part: " + licenseInfo.decryptedPart
+          `Registration Problem\n${txt}\nDecrypted part: ${licenseInfo.decryptedPart}`
         );
+      }
     }
     window.sizeToContent();
   },
@@ -320,7 +323,7 @@ var Register = {
         for (let i = 0; i < idCount; i++) {
           // populate the dropdown with nsIMsgIdentity details
           let id = ids[i].QueryInterface(Ci.nsIMsgIdentity);
-          if (!id) continue;
+          if (!id) {continue;}
           appendIdentity(popup, id, ac);
         }
       } else {
@@ -330,7 +333,7 @@ var Register = {
     // select first item
     idSelector.selectedIndex = 0;
     this.selectIdentity(idSelector);
-    if (prefs.isDebugOption("premium.licenser")) getElement("referrer").collapsed = false;
+    if (prefs.isDebugOption("premium.licenser")) {getElement("referrer").collapsed = false;}
   },
 
   cancel: function cancel() {},
@@ -340,9 +343,6 @@ var Register = {
       util = QuickFolders.Util;
     // redirect to registration site; pass in the feature that brought user here
     // short order process
-    if (util.isDebug) {
-      debugger;
-    }
     let shortOrder,
       featureName = document.getElementById("referrer").value; // hidden field
     if (isRenew || license_type == 3) {
@@ -390,7 +390,7 @@ var Register = {
   },
 
   /* obsolete form submission from code */
-  postForm: function postForm_obsolete(util) {
+  postForm: function postForm_obsolete() {
     let url = "https://sites.fastspring.com/quickfolders/product/quickfolders?action=order",
       oReq;
 
@@ -413,7 +413,7 @@ var Register = {
   sanitizeName: function sanitizeName(name) {
     // remove bracketed stuff: "fred jones (freddy)" => "fred jones"
     let x = name.replace(/ *\([^)]*\) */g, "");
-    if (x.trim) return x.trim();
+    if (x.trim) {return x.trim();}
     return x;
   },
 

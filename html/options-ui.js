@@ -666,6 +666,18 @@ QuickFolders.Options = {
     messenger.runtime.sendMessage({ command: "updateMainWindow", minimal });
   },
 
+  collapseElement: function(el, isHide) {
+    if (typeof el === "string") {
+      el = document.getElementById(el);
+    }
+    if (!el) { return; }
+    if (isHide) {
+      el.setAttribute("collapsed",true);
+    } else {
+      el.removeAttribute("collapsed");
+    }
+  } ,
+
   selectTheme: function (wd, themeId, isUpdateUI = false) {
     const util = QuickFolders.Util;
     let myTheme = QuickFolders.Themes.Theme(themeId),
@@ -683,40 +695,31 @@ QuickFolders.Options = {
         getElement("qf-options-shadow").disabled = !myTheme.supportsFeatures.buttonShadows;
         getElement("button-font-size").disabled = !myTheme.supportsFeatures.supportsFontSize;
         getElement("button-font-size-label").disabled = !myTheme.supportsFeatures.supportsFontSize;
-        getElement("btnHeightTweaks").setAttribute(
-          "collapsed",
+        this.collapseElement("btnHeightTweaks",
           !myTheme.supportsFeatures.supportsHeightTweaks
         );
-        getElement("qf-tweakRadius").setAttribute(
-          "collapsed",
+        this.collapseElement("qf-tweakRadius",
           !myTheme.supportsFeatures.cornerRadius
         );
-        getElement("qf-tweakToolbarBorder").setAttribute(
-          "collapsed",
+        this.collapseElement("qf-tweakToolbarBorder",
           !myTheme.supportsFeatures.toolbarBorder
         );
-        getElement("qf-tweakColors").setAttribute(
-          "collapsed",
+        this.collapseElement("qf-tweakColors",
           !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors)
         );
-        getElement("qf-individualColors").setAttribute(
-          "collapsed",
+        this.collapseElement("qf-individualColors",
           !myTheme.supportsFeatures.individualColors
         );
-        getElement("qf-StandardColors").setAttribute(
-          "collapsed",
+        this.collapseElement("qf-StandardColors",
           !myTheme.supportsFeatures.standardTabColor
         );
-        getElement("buttonTransparency").setAttribute(
-          "collapsed",
+        this.collapseElement("buttonTransparency",
           !myTheme.supportsFeatures.tabTransparency
         );
-        getElement("qf-stateColors").setAttribute(
-          "collapsed",
+        this.collapseElement("qf-stateColors",
           !myTheme.supportsFeatures.stateColors
         );
-        getElement("qf-stateColors-defaultButton").setAttribute(
-          "collapsed",
+        this.collapseElement("qf-stateColors-defaultButton",
           !myTheme.supportsFeatures.stateColors
         );
       } catch (ex) {
@@ -852,8 +855,8 @@ QuickFolders.Options = {
     validationInvalidAddon.setAttribute("collapsed", true);
     validationInvalidEmail.setAttribute("collapsed", true);
     validationEmailNoMatch.setAttribute("collapsed", true);
-    validationDate.setAttribute("collapsed", false);
-    validationDateSpace.setAttribute("collapsed", false);
+    validationDate.removeAttribute("collapsed");
+    validationDateSpace.removeAttribute("collapsed");
     QuickFolders.Options.enablePremiumConfig(false);
     try {
       let niceDate = decryptedDate;
@@ -921,7 +924,7 @@ QuickFolders.Options = {
         case "MailNotConfigured":
           validationDate.setAttribute("collapsed", true);
           validationDateSpace.setAttribute("collapsed", true);
-          validationInvalidEmail.setAttribute("collapsed", false);
+          validationInvalidEmail.removeAttribute("collapsed");
           // if mail was already replaced the string will contain [mail address] in square brackets
           validationInvalidEmail.textContent = validationInvalidEmail.textContent
             .replace(/\[.*\]/, "{1}")
@@ -953,7 +956,7 @@ QuickFolders.Options = {
   // make a validation message visible but also repeat a notification for screen readers.
   showValidationMessage: async function (el, silent = true) {
     if (el.getAttribute("collapsed") != false) {
-      el.setAttribute("collapsed", false);
+      el.removeAttribute("collapsed");
       if (!silent) {
         // TO DO: OS notification
         // QuickFolders.Util.slideAlert (util.ADDON_NAME, el.textContent);
@@ -970,7 +973,7 @@ QuickFolders.Options = {
     switch (validStatus) {
       case "extend": {
         let txtExtend = messenger.i18n.getMessage("qf.notification.premium.btn.extendLicense");
-        btnLicense.setAttribute("collapsed", false);
+        btnLicense.removeAttribute("collapsed");
         btnLicense.textContent = txtExtend; // text should be extend not renew
         btnLicense.setAttribute(
           "tooltiptext",

@@ -6,16 +6,26 @@
 	background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
   border-radius: 2px !important;
   padding-inline: 0.3em;
+  padding-block: 2px !important;
+  flex: 0 1 auto;             /* don't force equal size, but allow shrink/grow */
+  margin-block: 5px !important;
 }
+
 #QuickFolders-LabelBox {
   overflow: visible; /* allow the badge to overflow */
   position: relative; /* keep positioning context if needed */
+  contain: style ; /* enables queries based on element’s width/height */ 
+}
+
+#QuickFolders-title-label {
+  height: auto !important;
+  min-height: 18px; 
 }
 
 #QuickFolders-title-label.newsflash::after {
   content: url("skin/ico/badge-news.svg");  /* Add 🟠 */
   position: absolute;
-  top: -4px;                 
+  top: -1px;                 
   right: -4px;               
   line-height: 1;
   display: block;
@@ -52,6 +62,7 @@ menuitem.cmd[tag="qfTabAdvanced"][type="checkbox"] .menu-iconic-left {
 #QuickFolders-LabelBox #QuickFolders-title-label.renew {
   /* save some space */
 	color: rgb(255,255,255) !important;
+	margin: 3px 4px 2px 7px;
   padding-left: 1em !important;
   padding-right: 1em !important;
   font-size: 1em !important;
@@ -66,7 +77,8 @@ menuitem.cmd[tag="qfTabAdvanced"][type="checkbox"] .menu-iconic-left {
 
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired label {
 	color: rgb(255,255,255) !important;
-  font-size: 1.1em;
+  font-size: 1.05em;
+  padding-block: 1px;
 }
 
 
@@ -74,7 +86,8 @@ menuitem.cmd[tag="qfTabAdvanced"][type="checkbox"] .menu-iconic-left {
 #QuickFolders-Toolbar #QuickFolders-LabelBox #QuickFolders-title-label.expired {
 	animation: quickfoldersRenew 2s 3600s infinite cubic-bezier(0.66, 0, 0, 1);
 	box-shadow: 0 0 0 0 rgba(40, 40, 40, 0.0);
-	margin: 0 4px 1px 7px;
+	margin: 3px 4px 2px 7px;
+	padding-block: 0;
 }
 
 #QuickFolders-Toolbar[brighttext="true"] #QuickFolders-title-label.expired  {

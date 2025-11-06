@@ -32,7 +32,8 @@ var toggleIcon, removeIcon, addCurrentFolderToQF;
 
 // eslint-disable-next-line no-unused-vars
 async function onLoad(activatedWhileWindowOpen) {
-  window.QuickFolders.Util.logDebug(
+  const logDebug = window.QuickFolders.Util.logDebug.bind(window.QuickFolders.Util);
+  logDebug(
     `============INJECT==========\nqf-messenger.js onLoad(${activatedWhileWindowOpen})`
   );
   // eslint-disable-next-line no-unused-vars
@@ -50,7 +51,7 @@ async function onLoad(activatedWhileWindowOpen) {
   WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
   WL.injectCSS("chrome://quickfolders/content/quickfolders-mods.css");
 
-  console.log("Adding QuickFolders toolbar ...");
+  logDebug("Adding QuickFolders toolbar ...");
   WL.injectElements(`
   <toolbox id="navigation-toolbox">
     <vbox id="titlebar">
@@ -288,7 +289,7 @@ async function onLoad(activatedWhileWindowOpen) {
 
   //-----------------------------
   // search panel & mini toolbar in QF toolbar
-  console.log("Adding QuickFolders Search Panel ...");
+  logDebug("Adding QuickFolders Search Panel ...");
   WL.injectElements(`
     
 <div id="QuickFolders-toolPanel">
@@ -396,6 +397,8 @@ async function onLoad(activatedWhileWindowOpen) {
     const htmlNS = "http://www.w3.org/1999/xhtml";
     const svgNS = "http://www.w3.org/2000/svg";
 
+    // [issue 624] add 🔎 and ✕ only up to 141.*
+    const isAddSearchElements = QF.Util.versionGreaterOrEqual("142", QF.Util.Appversion);
     // Create wrapper
     const wrapper = document.createElementNS(htmlNS, "span");
     wrapper.id = "QuickFolders-FindFolder-wrapper";
@@ -405,27 +408,29 @@ async function onLoad(activatedWhileWindowOpen) {
     wrapper.style.alignItems = "center";
 
     // Create SVG magnifier icon
-    const icon = document.createElementNS(svgNS, "svg");
-    icon.id = "QuickFolders-FindFolder-icon";
-    icon.setAttribute("viewBox", "0 0 24 24");
-    icon.setAttribute("width", "16");
-    icon.setAttribute("height", "16");
-    icon.setAttribute("fill", "currentColor"); // will follow text color
-    icon.setAttribute("hidden", "true");
-    const path = document.createElementNS(svgNS, "path");
-    path.setAttribute(
-      "d",
-      "M10 2a8 8 0 105.293 14.707l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"
-    );
-    icon.appendChild(path);
+    const icon = isAddSearchElements ? document.createElementNS(svgNS, "svg") : null;
+    const clearBtn = isAddSearchElements ? document.createElement("button") : null;
 
-    // Create clear button
-    const clearBtn = document.createElement("button");
-    clearBtn.id = "QuickFolders-FindFolder-clear";
-    clearBtn.className = "clear-button";
-    clearBtn.type = "button";
-    clearBtn.hidden = true;
-    clearBtn.textContent = "✕";
+    if (isAddSearchElements) {
+      icon.id = "QuickFolders-FindFolder-icon";
+      icon.setAttribute("viewBox", "0 0 24 24");
+      icon.setAttribute("width", "16");
+      icon.setAttribute("height", "16");
+      icon.setAttribute("fill", "currentColor"); // will follow text color
+      icon.setAttribute("hidden", "true");
+      const path = document.createElementNS(svgNS, "path");
+      path.setAttribute(
+        "d",
+        "M10 2a8 8 0 105.293 14.707l4.707 4.707 1.414-1.414-4.707-4.707A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"
+      );
+      icon.appendChild(path);
+      // Create clear button
+      clearBtn.id = "QuickFolders-FindFolder-clear";
+      clearBtn.className = "clear-button";
+      clearBtn.type = "button";
+      clearBtn.hidden = true;
+      clearBtn.textContent = "✕";
+    }
 
     const findBox = document.createElementNS(htmlNS, "input");
     findBox.id = "QuickFolders-FindFolder";
@@ -436,28 +441,31 @@ async function onLoad(activatedWhileWindowOpen) {
     findBox.tabIndex = 0;
 
     // Assemble wrapper
-    wrapper.appendChild(icon);
-    wrapper.appendChild(findBox);
-    wrapper.appendChild(clearBtn);
-
-    // Update clear button visibility based on input content
-    function updateClearVisibility() {
-      clearBtn.hidden = !findBox.value || findBox.value.length === 0;
+    if (isAddSearchElements) {
+      wrapper.appendChild(icon);
     }
+    wrapper.appendChild(findBox);
+    if (isAddSearchElements) {
+      wrapper.appendChild(clearBtn);
+      // Update clear button visibility based on input content
+      function updateClearVisibility() {
+        clearBtn.hidden = !findBox.value || findBox.value.length === 0;
+      }
 
-    findBox.addEventListener("input", () => {
-      // only visible with contents
-      clearBtn.hidden = !findBox.value;
-    });
-    clearBtn.addEventListener("click", (e) => {
-      e.preventDefault(); // Prevent default button behavior
-      e.stopPropagation(); // Prevent event from bubbling
-      findBox.value = ""; // Clear the input
-      // new Event throws in this context?
-      // findBox.dispatchEvent(new Event("input"));
-      findBox.focus(); // Keep focus in the input
-      updateClearVisibility();
-    });
+      findBox.addEventListener("input", () => {
+        // only visible with contents
+        clearBtn.hidden = !findBox.value;
+      });
+      clearBtn.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevent default button behavior
+        e.stopPropagation(); // Prevent event from bubbling
+        findBox.value = ""; // Clear the input
+        // new Event throws in this context?
+        // findBox.dispatchEvent(new Event("input"));
+        findBox.focus(); // Keep focus in the input
+        updateClearVisibility();
+      });
+    }
 
     const panel = document.getElementById("QuickFolders-oneButtonPanel");
     if (panel) {

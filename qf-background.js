@@ -11,6 +11,9 @@ var currentLicense;
 var startupFinished = false;
 var callbacks = [];
 
+// top-level global flag
+let _isDebug = false;
+
 
 
 // [issue 371] Remove console error “receiving end does not exist”
@@ -26,7 +29,8 @@ function legacyPrefPath(setting) {
   return LEGACY_SETTINGS_ROOT + setting;
 }
 async function isDebugOn() {
-  return (await messenger.LegacyPrefs.getPref(legacyPrefPath("debug"))) || false;
+  _isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug"));
+  return _isDebug || false;
 }
 
 
@@ -77,7 +81,9 @@ function versionEqual(v1, v2) {
 let listenersReadyPromise = new Promise((resolve) => {
   const listenerFunction = (message) => {
     if (message.func === "listenersReady") {
-      console.log("Listeners are ready, resolving the promise...");
+      if (_isDebug) {
+        console.log("[QuickFolders] Listeners are ready, resolving the promise...");
+      } 
       resolve();
       // making sure this is only used once, in case we reinstall multiple times in a session.
       messenger.NotifyTools.onNotifyBackground.removeListener(listenerFunction);
@@ -555,7 +561,9 @@ async function waitForMailTabsReady(timeoutMs = 5000) {
   } catch (ex) {
     console.warn("QuickFolders: mailTabs.getCurrent() failed or timed out", ex);
   }
-  console.log("QuickFolders: ready to start WindowListener.");
+  if (await isDebugOn()) {
+    console.log("QuickFolders: ready to start WindowListener.");
+  }
 }
 
 
@@ -1022,11 +1030,12 @@ async function main() {
   const to = await messenger.LegacyPrefs.getPref(legacyPrefPath("api.mailTabs.timeout"));
   // let [mailTab] = await browser.mailTabs.query({}); await browser.mailTabs.get(mailTab.id);
   if (to>0) {
-    console.log(`QuickFolders: Waiting ${to}ms for mailTabs to be ready...`);
+    if (await isDebug) {
+      console.log(`QuickFolders: Waiting ${to}ms for mailTabs to be ready...`);
+    }
     await waitForMailTabsReady(to);
   } else {
     // [issue 598] used to get stuck in Bb:
-    const isDebug = await isDebugOn();
     if (isDebug) { console.log("waiting for mailTabs.query()..."); }
     let [mailTab] = await browser.mailTabs.query({});
     if (isDebug) {

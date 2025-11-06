@@ -76,7 +76,10 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
   
   if (window?.parent?.document?.URL == "about:3pane") {
     // parent document should already be patched!
-    console.log("injectCurrentFolderBar() early exit, parent document URL==about:3pane");
+    if (prefs.isDebug) {
+      console.log("injectCurrentFolderBar() early exit, parent document URL==about:3pane");
+    }
+    
     return null;
   }
   if (prefs.isDebugOption("interface.currentFolderBar")) { 
@@ -89,12 +92,12 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
   window.QuickFolders.WLM = WL; // closure a separate instace of the WindowListener that works in messagepane
   // let's make sure 3Pane is really ready (we might want to attach this to a window.DOMContentLoaded event instead)
   window.setTimeout(async (win = window) => {
-    console.log("QuickFolders: injecting current folder");
+    util.logDebug("QuickFolders: injecting current folder");
     const contentDoc = win.document;
     win.QuickFolders.Util.logDebug(
       `============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`
     );
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css");
+    WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css?v=6.13.2");
     WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css?v=2");
 
     // current folder bar specific styling

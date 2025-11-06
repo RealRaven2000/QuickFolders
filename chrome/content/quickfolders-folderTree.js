@@ -97,11 +97,23 @@ QuickFolders.FolderTree = {
 	} ,
 	
   hasTreeItemFolderIcon: function(folder) {
-    let folderIcon = (folder && (typeof folder.getStringProperty != 'undefined')) ? folder.getStringProperty("folderIcon") : '';
-    if (!folder || folderIcon == "" || folderIcon == "noIcon") {
+    try {
+      if (!folder) { return false; }
+      // folder.getStringProperty may throw in C++, even if not called as a function!
+      let folderIcon = folder.getStringProperty("folderIcon") || "";
+      if (!folderIcon || folderIcon === "noIcon") {
+        return false;
+      }
+      return true;
+    } catch (ex) {
+      const fName = folder.prettyName || folder.localizedName;
+      QuickFolders.Util.logDebugOptional(
+        "folderTree",
+        `hasTreeItemFolderIcon(${fName}) exception`,
+        ex
+      );
       return false;
     }
-    return true;
   } ,
 
   hasFolderCustomIcon: function(fld) {
@@ -171,7 +183,11 @@ QuickFolders.FolderTree = {
 
 		util.logDebugOptional("folderTree,folderTree.icons", "QuickFolders.FolderTree.loadDictionary()");
 
-    let styleSheet = QuickFolders.Interface.getStyleSheet(doc,  "qf-foldertree.css", "QuickFolderFolderTreeStyles");
+    let styleSheet = QuickFolders.Interface.getStyleSheet(
+      doc,
+      "qf-foldertree.css",
+      "QuickFolderFolderTreeStyles"
+    );
     let fileSpec;
 
     for (let i=0; i<filedIcons.length; i++) {
@@ -193,8 +209,9 @@ QuickFolders.FolderTree = {
 
 		for await (let folder of util.allFoldersIterator()) { 
 		  iCount++;
-			if (typeof folder.getStringProperty == 'undefined') {continue;}
+
       try {
+        if (typeof folder.getStringProperty == 'undefined') {continue;}
         let key = folder.getStringProperty("folderIcon"),
             url = (key  && key!="noIcon") ? folder.getStringProperty("iconURL") : "";
       
@@ -213,26 +230,34 @@ QuickFolders.FolderTree = {
             txtWithIcon += `   ${key}: ${url}\n`;
           }
           iIcons++;
-        }
-        else { // folder w/o icon
+        } else { // folder w/o icon
           if (debug) {
             txtList +=
               `${iCount.toString()} - ${folder.server.hostName} - ${(folder.prettyName || folder.localizedName)}\n`;
           }
           iNoIcon++;
         }
-      }
-      catch (ex) {
-        if (ex.result != 0x80550007) {
-          util.logException(
-            `QuickFolders.FolderTree.loadDictionary() - ${
-              folder.prettyName || folder.localizedName
-            }`,
-            ex
-          );
-        } else {
-          // likely thrown by nsIMsgFolder.getStringProperty
-          iErrors++;
+      } catch (ex) {
+        switch (ex.result) {
+          case 0x80550007: // NS_ERROR_FAILURE
+            util.logException(
+              `QuickFolders.FolderTree.loadDictionary() - ${
+                folder.prettyName || folder.localizedName
+              }`,
+              ex
+            );
+            break;
+          case 0x80550005: // NS_MSG_ERROR_FOLDER_SUMMARY_OUT_OF_DATE
+            util.logDebugOptional(
+              "folderTree",
+              "QuickFolders.FolderTree.loadDictionary()\n" +
+              `Skipping folder (folder summary out of date): ${ folder.prettyName || folder.localizedName }`
+              );
+              iErrors++;
+              break;
+          default:
+            // likely thrown by nsIMsgFolder.getStringProperty
+            iErrors++;
         }
         iNoIcon++;
       }
@@ -516,11 +541,6 @@ QuickFolders.FolderTree = {
       util.stopWatch("start","refreshTree");
     }
     
-    function countSubfolders(parentFolder) {
-      let childFolders = parentFolder.subFolders;
-      return childFolders.length;
-    }
-    
     // disable updating recent folders
     let touch = util.touch; // back up.
     util.touch = function () {
@@ -544,12 +564,11 @@ QuickFolders.FolderTree = {
           if (!isExpanded) {collapsedFolders.push(folder);} // remember folders that are not open, to restore later.
           // let subscribableServer = folder.server.QueryInterface(Ci.nsISubscribableServer); // gSubscribableServer
           try {
-            let isSelected = theTreeView.selectFolder(folder, true); // forceSelect
+            theTreeView.selectFolder(folder, true); // forceSelect
             // FolderPaneSelectionChange() - gFolderDisplay.show will fail if the folder is missing on Imap!
             // FolderDisplayWidget.
             let rowIndex = theTreeView.getIndexOfFolder(folder),
-                hasSubFolders = folder.hasSubFolders,
-                canCreateSubfolders = folder.canCreateSubfolders;
+                hasSubFolders = folder.hasSubFolders;
             //    subCount = hasSubFolders ? countSubfolders(folder) : 0;
             util.logDebug(
               `[${

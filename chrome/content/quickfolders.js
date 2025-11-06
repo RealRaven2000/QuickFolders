@@ -262,11 +262,20 @@ END LICENSE BLOCK */
     ## [issue 610] Bug: folder navigation buttons cannot be removed independently of Message Navigation buttons
     ## [issue 611] Toolbar button icons sometimes don’t update immediately when changing themes
 
-  6.13.1 QuickFolders Pro - 
+  6.13.1 QuickFolders Pro - 19/10/2025
     ## Made compatible with Thunderbird 145
     ## [issue 602] More icon compatibility fixes
     ## [issue 617] Added Norwegian Locale
-    ##
+
+  6.13.2 QuickFolders Pro - WIP
+    ## Made compatible with Thunderbird 146
+    ## [issue 623] Update of folder search text - cursor at wrong position
+    ## [issue 620] Fixed: Recent folders button missing on Current Folder Toolbar
+    ## fixed "rectangle" icons in current folder popups
+    ## fixed > chevron positions on all popup menus
+    ## fixed icons in mail commands popups
+    ## [issue 621] less debug logs polluting error console mostly related to 'loadDictionary'
+    ## [issue 624] Remove duplicate 🔎 and ✕ icons in quickMove search - Tb Release (142+)
 
   
 	TO DO next
@@ -489,7 +498,8 @@ var QuickFolders = {
       let findFolderBox = QI.FindFolderBox; // #QuickFolders-FindFolder
       if (findFolderBox) {
         // note, keypress events are hanler by QuickFolders.Interface.findFolderKeyDown
-        findFolderBox.addEventListener("input", function (event) {
+        findFolderBox.addEventListener("input", async (event) => {
+          const el = event.target;
           if (event && !event.data) {
             switch (event?.inputType) {
               case "deleteContentBackward": // [BACKSPACE] fallthrough
@@ -503,7 +513,10 @@ var QuickFolders = {
                 return;
             }
           }
-          QI.findFolderName(findFolderBox);
+          setTimeout(() => {
+            // [issue 623] use setTimeout to allow cursor position to update
+            QI.findFolderName(el);
+          }, 0);
         });
       } else {
         util.logDebug("element not found: QuickFolders-FindFolder");

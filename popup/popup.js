@@ -195,16 +195,19 @@ async function updateActions() {
       // License Extension
       hide("renewLicenseListItem");
       hide("renew");
+      hide("news-license");
       let gpdays = licenseInfo.licensedDaysLeft;
       if (gpdays < 20) {
         // they may have seen this popup. Only show extend License section if it is < 20 days away
         show("extendLicenseListItem");
+        const renewLicenseText = document.getElementById("renewLicenseText");
+        renewLicenseText.innerText =
+          messenger.i18n.getMessage("qf.premium.renew", [gpdays]);
         show("extend");
         if (isStandard) {
           show("upgrade");
         }
       } else {
-        hide("news-license");
         show("licenseExtended");
         hide("time-and-effort");
         hide("purchaseHeader");

@@ -1,4 +1,4 @@
-<b>Release 6.13.1</b>
+<b>Release 6.14</b>
 
 <b>This release improves many UI issues for all version and fixes fundamental breaking problems in the upcoming version Thunderbird 145.</b>
 
@@ -8,38 +8,24 @@ Some users may have seen a false incompatibility warning after updating from Thu
 
 To get this fixed I raised a bug with Thunderbird: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>.
 
-
-<b>Maintenance Release 6.13.1</h4>
-<li> Made compatible with Thunderbird 145.*
-
-There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version.
-
-I raised a bug with Thunderbird to address this problem: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>. Please vote with us for getting this fixed! </li> 
-<li> Added Norwegian locale. <a href="https://github.com/RealRaven2000/QuickFolders/issues/617">[issue 617]</a></li>
-
-
-<b>Improvements (6.13) </b>
+<b>Improvements</b>
 
 <ul> 
-  <li>Fixed missing/broken menu icons in all popup menus of Thunderbird 143 <a href="https://github.com/RealRaven2000/QuickFolders/issues/602">[issue 602]</a></li> 
-  <li>Minimized impact of "News Flag" — now displayed as a badge icon <a href="https://github.com/RealRaven2000/QuickFolders/issues/607">[issue 607]</a></li> 
-  <li>Intermittently, current folder bar was not displayed on main 3pane (first) tab <a href="https://github.com/RealRaven2000/QuickFolders/issues/608">[issue 608]</a></li> 
-  <li>Toolbar button icons sometimes don’t update immediately when changing themes <a href="https://github.com/RealRaven2000/QuickFolders/issues/611">[issue 611]</a></li> 
+  <li> Made QuickFolders compatible with Thunderbird 146</li>  
+  <li> quickMove: Update cursor position while  typing in folder searchbox <a href="https://github.com/RealRaven2000/QuickFolders/issues/623">[issue 623]</a></li> 
+  <li> Remove duplicate 🔎 and ✕ icons in quickMove search - Tb Release (142+) <a href="https://github.com/RealRaven2000/QuickFolders/issues/624">[issue 624]</a></li> 
+  <li> less logs polluting error console mostly related to 'loadDictionary' <a href="https://github.com/RealRaven2000/QuickFolders/issues/621">[issue 621]</a></li> 
 </ul>
 
 <b>Bug Fixes</b>
 
 <ul> 
-  <li>QuickFolders toolbar now correctly displayed on startup in Thunderbird 143, toggle button working <a href="https://github.com/RealRaven2000/QuickFolders/issues/609">[issue 609]</a></li> 
-  <li>Folder navigation buttons can now be removed independently of Message Navigation buttons — they were falsely linked to message navigation settings <a href="https://github.com/RealRaven2000/QuickFolders/issues/610">[issue 610]</a></li> 
+  <li> Fixed "rectangle" icons in current folder popups</li> 
+  <li> fixed ❯ chevron positions on all popup menus </li> 
+  <li> fixed icons in mail commands popups </li> 
 </ul>
 
-<b>Unconfirmed</b>
 
-<ul> 
-  <li>quickMove with history should move mail but jumps to folder instead. Observed intermittently; currently investigating <a href="https://github.com/RealRaven2000/QuickFolders/issues/606">[issue 606]</a>
-  </li> 
-</ul>
 
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
 Or get the new cheaper <a href="http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=qf-version-page" target="_blank">QuickFolders Standard License</a>. This is the preferred way of funding all the ongoing work and improvements.

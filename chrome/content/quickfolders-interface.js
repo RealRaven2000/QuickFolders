@@ -415,7 +415,7 @@ QuickFolders.Interface = {
       menuchildren.forEach(el => button.removeChild(el))
 
 			button.appendChild(menupopup);
-			QuickFolders.Interface.patchMenuIcons(menupopup);
+			// QuickFolders.Interface.patchMenuIcons(menupopup);
 
 			if (!isDrag) {
 				// remove last popup menu (if button is reused and not created from fresh!)
@@ -1079,7 +1079,11 @@ QuickFolders.Interface = {
 				if (typeof isShownSetting === "string") {
 					collapseSetting = !prefs.getBoolPref(isShownSetting);
 				}
-				element.setAttribute("collapsed", collapseSetting);
+				if (collapseSetting) {
+					element.setAttribute("collapsed", collapseSetting);
+				} else {
+					element.removeAttribute("collapsed"); // [issue 620]
+				}
 			}
 			return element;
 		}
@@ -1137,7 +1141,7 @@ QuickFolders.Interface = {
         "QuickFolders-RepairFolderBtn",
         "currentFolderBar.showRepairFolderButton"
       );
-      if (repairBtn && repairBtn.getAttribute("collapsed") == "false") {
+      if (repairBtn && !repairBtn.getAttribute("collapsed")) {
         repairBtn.setAttribute("tooltiptext", this.getUIstring("qfFolderRepair"));
       }
 
@@ -3776,7 +3780,7 @@ QuickFolders.Interface = {
     this.compactFolder(folder, "emptyJunk");
 	} ,
 
-	onDeleteJunk: function onDeleteJunk(element) {
+	onDeleteJunk: function (element) {
 		const Ci = Components.interfaces
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
@@ -5503,7 +5507,8 @@ QuickFolders.Interface = {
                 ? subfolder.getStringProperty("iconURL")
                 : null;
             if (iconURL) {
-              menuitem.style.setProperty("list-style-image", iconURL, "");
+              menuitem.style.setProperty("list-style-image", iconURL);
+              menuitem.style.setProperty("--menuitem-icon", iconURL, "important");
             }
           } catch (ex) {
             if (ex.result != 0x80550007 && prefs.isDebug) {
@@ -5643,7 +5648,8 @@ QuickFolders.Interface = {
                 ? subfolder.getStringProperty("iconURL")
                 : null;
             if (iconURL) {
-              subMenu.style.setProperty("list-style-image", iconURL, "");
+              subMenu.style.setProperty("list-style-image", iconURL);
+							subMenu.style.setProperty("--menuitem-icon", iconURL, "important");
             }
           } catch  {;}
 
@@ -6247,7 +6253,7 @@ QuickFolders.Interface = {
           searchbutton.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }));
           searchbutton.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowDown" }));
           menupopup.childNodes[0].focus();
-					QuickFolders.Interface.patchMenuIcons(menupopup);
+					// QuickFolders.Interface.patchMenuIcons(menupopup);
         }
         return;
       }

@@ -1085,6 +1085,10 @@ async function main() {
     const optionsPageURL = browser.runtime.getURL("html/options.html");
     return optionsPageURL;
   }
+  function getExtensionRootURL() {
+    const extensionRootURL = browser.runtime.getURL("");
+    return extensionRootURL;
+  }
   function onOptionsTabActivated() {
     // tell experiment to make QuickFolders toolbar visible
     if (isDebug) {
@@ -1118,8 +1122,13 @@ async function main() {
 
         // Reload tab details
         const updatedTab = await messenger.tabs.get(tabId);
+        const isRelevant = changeInfo?.url ? changeInfo.url.startsWith(getExtensionRootURL()) : false;
+
 
         if (changeInfo.url) {
+          if (!isRelevant) {
+            return;
+          }
           if (isDebug) {
             console.log(`🔄 Tab URL changed: ${updatedTab.url}`);
           }
@@ -1129,7 +1138,7 @@ async function main() {
         }
 
         if (changeInfo.status === "complete") {
-          if (isDebug) {
+          if (isDebug && isRelevant) {
             console.log(`✅ Tab status changed to complete`);
           }
           hasCompleted = true;

@@ -148,6 +148,10 @@
                 preference="qfpg-EnableMenuSorting"
                 data-pref-name="extensions.quickfolders.enableMenuAlphaSorting"
                 instantApply="true">__MSG_qf.checkbox.sortMenusAlpha__</label>
+              <label><input type="checkbox" 
+                preference="qfpg-MenuSortReverse"
+                data-pref-name="extensions.quickfolders.alphaSortFoldersReverse"
+                instantApply="true">__MSG_qf.checkbox.sortMenusAlpha.reverse__</label>
               <span class="hasConfigEvent hbox">
                 <label title="__MSG_qf.checkbox.hideInSingleMessage.tooltip__"><input type="checkbox"
                   preference="qfpg-HideToolbarSingleMsg"
@@ -443,6 +447,14 @@
           </fieldset>
 
         </div>
+          <fieldset class="vbox">
+            <legend>Notifications</legend>
+            <label><input type="checkbox"
+              preference="qfpa-notifyCompact"
+              data-pref-name="extensions.quickfolders.notifications.compactComplete">
+              __MSG_qf.notifications.compactFolder__
+            </label>
+          </fieldset>        
 
         <span class="separator thin"> </span>
         <div class="hbox quickhelp-dbg align_center">

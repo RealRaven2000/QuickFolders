@@ -348,7 +348,8 @@ QuickFolders.Interface = {
 
 		FoldersArray = recentFolders;
 
-		let isAlphaSorted =  prefs.getBoolPref("recentfolders.sortAlphabetical");
+		const isAlphaSorted = prefs.getBoolPref("recentfolders.sortAlphabetical");
+		const isSortReversed = prefs.isSortSubfolderMenusReverse;
     if (isProfiling) {
       let time = util.stopWatch("stop","createRecentPopup");
       console.log(`createRecentPopup - Before calling %caddSubFoldersPopupFromList() ${time} ms`, "background-color: rgb(0,160,40); color:white;");
@@ -356,6 +357,7 @@ QuickFolders.Interface = {
 		let options = {
       isDrag: isDrag,
       forceAlphaSort: isAlphaSorted,
+			sortReverse: isSortReversed,
       isRecentFolderList: true,
       isUnifiedFolder : false
     };
@@ -1211,7 +1213,7 @@ QuickFolders.Interface = {
                   ".QuickFolders-NavigationPanel",
                   "background-image",
                   "none"
-                ); // was #QuickFolders-PreviewToolbarPanel
+                );
                 styleEngine.setElementStyle(
                   ss,
                   "toolbar#QuickFolders-CurrentFolderTools",
@@ -5384,100 +5386,108 @@ QuickFolders.Interface = {
 		options = { isDrag: false, forceAlphaSort: false, isRecentFolderList: false }, 
 		doc) 
 	{
-		options.isUnifiedFolder ??= false; // preset if missing
-		// eslint-disable-next-line no-unused-vars
-		const killDiacritics = (s) =>
+    options.isUnifiedFolder ??= false; // preset if missing
+    // eslint-disable-next-line no-unused-vars
+    const killDiacritics = (s) =>
       s
         .toLowerCase()
         .replace(/[\xE0-\xE6\xE8-\xEB\xF2-\xF6\xEC-\xEF\xF9-\xFC\xFF\xDF_:]/gi, (c) => tr[c] ?? c);
-		if (!doc) {
-			doc = popupMenu ? popupMenu.ownerDocument || document : document;
-		}
-		const isTopLevel = popupMenu.getAttribute("toplevel") || false;
-		const tr = {
-				"\xE0": "a",
-				"\xE1": "a",
-				"\xE2": "a",
-				"\xE3": "a",
-				"\xE4": "ae",
-				"\xE5": "ae",
-				"\xE6": "a",
-				"\xE8": "e",
-				"\xE9": "e",
-				"\xEA": "e",
-				"\xEB": "e",
-				"\xF2": "o",
-				"\xF3": "o",
-				"\xF4": "o",
-				"\xF5": "o",
-				"\xF6": "oe",
-				"\xEC": "i",
-				"\xED": "i",
-				"\xEE": "i",
-				"\xEF": "i",
-				"\xF9": "u",
-				"\xFA": "u",
-				"\xFB": "u",
-				"\xFC": "ue",
-				"\xFF": "y",
-				"\xDF": "ss",
-				_: "/",
-				":": ".",
-			},
-			prefs = QuickFolders.Preferences,
-			QI = QuickFolders.Interface,
-			util = QuickFolders.Util;
-			const sortedFolders = options.forceAlphaSort
-        ? [...subfolders].sort((a, b) =>
-            (a.prettyName || a.localizedName).localeCompare(
-              b.prettyName || b.localizedName,
-              undefined,
-              { sensitivity: "base" }
-            )
-          )
-        : subfolders;
+    if (!doc) {
+      doc = popupMenu ? popupMenu.ownerDocument || document : document;
+    }
+    const isTopLevel = popupMenu.getAttribute("toplevel") || false;
+    const tr = {
+        "\xE0": "a",
+        "\xE1": "a",
+        "\xE2": "a",
+        "\xE3": "a",
+        "\xE4": "ae",
+        "\xE5": "ae",
+        "\xE6": "a",
+        "\xE8": "e",
+        "\xE9": "e",
+        "\xEA": "e",
+        "\xEB": "e",
+        "\xF2": "o",
+        "\xF3": "o",
+        "\xF4": "o",
+        "\xF5": "o",
+        "\xF6": "oe",
+        "\xEC": "i",
+        "\xED": "i",
+        "\xEE": "i",
+        "\xEF": "i",
+        "\xF9": "u",
+        "\xFA": "u",
+        "\xFB": "u",
+        "\xFC": "ue",
+        "\xFF": "y",
+        "\xDF": "ss",
+        _: "/",
+        ":": ".",
+      },
+      prefs = QuickFolders.Preferences,
+      QI = QuickFolders.Interface,
+      util = QuickFolders.Util;
+    // [issue 600] options.sortReverse
+    const sortedFolders = options.forceAlphaSort
+      ? [...subfolders].sort((a, b) =>
+				{
+					const answer = (a.prettyName || a.localizedName).localeCompare(
+							b.prettyName || b.localizedName,
+							undefined,
+							{ sensitivity: "base" }
+					);
+					return options.sortReverse ? -answer : answer;
+				})
+      : subfolders;
 
-		// displayFolderPathDetail (int)
-		// 0 - just (folder.prettyName || folder.localizedName)
-		// 1 - (folder.prettyName || folder.localizedName) - Account
-		// 2 - account - folder path
-		// 3 - folder path
-		// 4 - folder.URI  [for debugging]
-		let displayFolderPathDetail = options.isRecentFolderList
-			? prefs.getIntPref("recentfolders.folderPathDetail")
-			: 0;
-	  const maxPathItems = prefs.getIntPref("recentfolders.maxPathItems");
-		const isTreeIcons = prefs.getBoolPref("folderTree.icons");
-		const isDisableSubfolders =
-			options.isRecentFolderList && !prefs.getBoolPref("recentfolders.subfolders");
-		let addedTopFolder = null;
+    // displayFolderPathDetail (int)
+    // 0 - just (folder.prettyName || folder.localizedName)
+    // 1 - (folder.prettyName || folder.localizedName) - Account
+    // 2 - account - folder path
+    // 3 - folder path
+    // 4 - folder.URI  [for debugging]
+    let displayFolderPathDetail = options.isRecentFolderList
+      ? prefs.getIntPref("recentfolders.folderPathDetail")
+      : 0;
+    const maxPathItems = prefs.getIntPref("recentfolders.maxPathItems");
+    const isTreeIcons = prefs.getBoolPref("folderTree.icons");
+    const isDisableSubfolders =
+      options.isRecentFolderList && !prefs.getBoolPref("recentfolders.subfolders");
+    let addedTopFolder = null;
 
-		util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopupFromList(..)");
-		const isProfiling = false; //  prefs.isDebugOption("folderTree.icons");
-		if (isProfiling) {
-			QuickFolders.Util.stopWatch("reset", "addSubFoldersPopupFromList");
-		}
-		if (!options.isRecentFolderList && !isTopLevel && prefs.getBoolPref("accessibility.subFolderParentEntry")) {
-			// add a submenu entry
-			// additional menu item for keyboard accessibility [issue 560]
-			// make menuitem from parent:
-			if (sortedFolders.length) {
+    util.logDebugOptional("popupmenus.subfolders", "addSubFoldersPopupFromList(..)");
+    const isProfiling = false; //  prefs.isDebugOption("folderTree.icons");
+    if (isProfiling) {
+      QuickFolders.Util.stopWatch("reset", "addSubFoldersPopupFromList");
+    }
+    if (
+      !options.isRecentFolderList &&
+      !isTopLevel &&
+      prefs.getBoolPref("accessibility.subFolderParentEntry")
+    ) {
+      // add a submenu entry
+      // additional menu item for keyboard accessibility [issue 560]
+      // make menuitem from parent:
+      if (sortedFolders.length) {
         addedTopFolder = sortedFolders[0]?.parent;
       }
-			
-			let menuitem = this.createIconicElement("menuitem", "*", doc);
-			menuitem.setAttribute("label", popupMenu.getAttribute("label"));
 
-		}
-		let loopFolders = addedTopFolder ? [addedTopFolder, ...sortedFolders] : sortedFolders;
-		let idx=0;
-		for (const subfolder of loopFolders) {
-			try {
+      let menuitem = this.createIconicElement("menuitem", "*", doc);
+      menuitem.setAttribute("label", popupMenu.getAttribute("label"));
+    }
+    let loopFolders = addedTopFolder ? [addedTopFolder, ...sortedFolders] : sortedFolders;
+    let idx = 0;
+    for (const subfolder of loopFolders) {
+      try {
         this.debugPopupItems++;
         let menuitem = this.createIconicElement("menuitem", "*", doc),
           menuLabel,
           maxDetail = 4;
-        if (displayFolderPathDetail > maxDetail) {displayFolderPathDetail = maxDetail;}
+        if (displayFolderPathDetail > maxDetail) {
+          displayFolderPathDetail = maxDetail;
+        }
 
         if (isProfiling) {
           QuickFolders.Util.stopWatch("start", "addSubFoldersPopupFromList");
@@ -5636,7 +5646,9 @@ QuickFolders.Interface = {
           // workaround for Phoenity - add the drop handler for buttons here
           // this.setEventAttribute(subMenu, "ondrop", "nsDragAndDrop.drop(event,QuickFolders.buttonDragObserver);");
 
-          if (subfolder.hasNewMessages) {subMenu.setAttribute("biffState-NewMail", "true");}
+          if (subfolder.hasNewMessages) {
+            subMenu.setAttribute("biffState-NewMail", "true");
+          }
 
           subMenu.folder = subfolder;
           try {
@@ -5649,9 +5661,9 @@ QuickFolders.Interface = {
                 : null;
             if (iconURL) {
               subMenu.style.setProperty("list-style-image", iconURL);
-							subMenu.style.setProperty("--menuitem-icon", iconURL, "important");
+              subMenu.style.setProperty("--menuitem-icon", iconURL, "important");
             }
-          } catch  {;}
+          } catch {;}
 
           QI.addUniqueEventListener(subMenu, "dragenter", (event) =>
             QuickFolders.popupDragObserver.dragEnter(event)
@@ -5684,15 +5696,15 @@ QuickFolders.Interface = {
           subPopup.removeChild(menuitem);
         }
       } catch (ex) {
-				util.logException("Exception in addSubFoldersPopupFromList: ", ex);
-				// done = true;
-			}
-		}
-		if (isProfiling) {
-			let time = QuickFolders.Util.stopWatch("all", "addSubFoldersPopupFromList");
-			console.log(`Setting icons in addSubFoldersPopupFromList altogether took: ${time}`);
-		}
-	} ,
+        util.logException("Exception in addSubFoldersPopupFromList: ", ex);
+        // done = true;
+      }
+    }
+    if (isProfiling) {
+      let time = QuickFolders.Util.stopWatch("all", "addSubFoldersPopupFromList");
+      console.log(`Setting icons in addSubFoldersPopupFromList altogether took: ${time}`);
+    }
+  } ,
 
 	// add all subfolders (1st level, non recursive) of folder to popupMenu
 	addSubFoldersPopup: function (popupMenu, folder, isDrag, isRecentFolderList = false) {
@@ -5715,7 +5727,8 @@ QuickFolders.Interface = {
 			const menuOptions = {
         isDrag: isDrag,
         forceAlphaSort: prefs.isSortSubfolderMenus,
-        isRecentFolderList: isRecentFolderList
+        isRecentFolderList: isRecentFolderList,
+        sortReverse: prefs.isSortSubfolderMenusReverse,
       };
 			this.addSubFoldersPopupFromList(subfolders, popupMenu, menuOptions);
       if (isProfiling) {
@@ -8021,6 +8034,18 @@ QuickFolders.Interface = {
       let currentFolderBar = doc.getElementById(toolbarId);
 
 			if (optionsOrEvent.display && !currentFolderBar) {
+
+				if (!contentWin.QuickFolders_injectCurrentFolderBar) {
+					let cw = gTabmail.currentTabInfo.chromeBrowser.contentWindow;
+					if (cw && cw) {
+						// optionally inject script again, depending on your loader API
+						messenger.WindowListener.loadScript(cw, "chrome/content/scripts/qf-3pane.js");
+						contentWin = cw; // point to the newly loaded window
+					}
+				}
+
+
+
         if (contentWin.QuickFolders_injectCurrentFolderBar) {
           try {
             currentFolderBar = await contentWin.QuickFolders_injectCurrentFolderBar(true, true); // activatedWhileWindowOpen=true, manual=true

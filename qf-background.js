@@ -1005,7 +1005,7 @@ async function main() {
     "chrome/content/scripts/qf-messenger.js"
   );
   // inject a separate script for current folder toolbar!
-  messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
+  const is3pane = messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
   messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
 
   messenger.WindowListener.registerWindow(

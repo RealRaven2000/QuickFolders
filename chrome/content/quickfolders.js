@@ -267,15 +267,17 @@ END LICENSE BLOCK */
     ## [issue 602] More icon compatibility fixes
     ## [issue 617] Added Norwegian Locale
 
-  6.13.2 QuickFolders Pro - WIP
-    ## Made compatible with Thunderbird 146
-    ## [issue 623] Update of folder search text - cursor at wrong position
+  6.14 QuickFolders Pro - WIP
+    ## Made compatible with Thunderbird 148
+    ## [issue 600] Added option to reverse alphabetic sorting of subfolder menus
+    ## [issue 623] quickMove: Update cursor position while  typing in folder searchbox
+    ## [issue 624] Remove duplicate 🔎 and ✕ icons in quickMove search - Tb Release (142+)
     ## [issue 620] Fixed: Recent folders button missing on Current Folder Toolbar
     ## fixed "rectangle" icons in current folder popups
     ## fixed > chevron positions on all popup menus
     ## fixed icons in mail commands popups
     ## [issue 621] less debug logs polluting error console mostly related to 'loadDictionary'
-    ## [issue 624] Remove duplicate 🔎 and ✕ icons in quickMove search - Tb Release (142+)
+    ## [issue 626] Add an option to disable folder notifications after folder compaction (e.g. empty trash)
 
   
 	TO DO next
@@ -2529,9 +2531,12 @@ QuickFolders.FolderListener = {
   },
 
   onFolderIntPropertyChanged: function(item, property, oldValue, newValue) {
-		function add1000Separators( sValue ) {
+		function add1000Separators( aValue ) {
+      let sValue = aValue.toString();
 			let sRegExp = new RegExp('(-?[0-9]+)([0-9]{3})');
-			while(sRegExp.test(sValue.toString())) { sValue = sValue.replace(sRegExp, '$1,$2'); }
+			while(sRegExp.test(sValue.toString())) { 
+        sValue = sValue.replace(sRegExp, '$1,$2'); 
+      }
 			return sValue;
 		}
 		try {
@@ -2567,60 +2572,80 @@ QuickFolders.FolderListener = {
       }
 
 			if (QuickFolders.compactReportFolderCompacted && prop === "FolderSize") {
-				try {
-					QuickFolders.compactReportFolderCompacted = false;
-					let size1 = QuickFolders.compactLastFolderSize,
-					    size2 = item.sizeOnDisk,
-					    message = "";
-					if (item.URI && QuickFolders.compactLastFolderUri !== item.URI) {
-						// should we reset it, in case the real message got lost ?
-						return;
-					}
+        try {
+          QuickFolders.compactReportFolderCompacted = false;
+          if (
+            !QuickFolders.Preferences.getBoolPref(
+              "extensions.quickfolders.notifications.compactComplete"
+            )
+          ) {
+            QuickFolders.compactReportCommandType = "";
+            return; // notifications disabled
+          }
 
-					// describe the action that caused the compacting
-					switch (QuickFolders.compactReportCommandType) {
-						case 'compactFolder':
-							message = util.getBundleString("qfCompactedFolder") + " '" + (item.prettyName || item.localizedName) + "'";
-							break;
-						case 'emptyJunk':
-							message = util.getBundleString("qfEmptiedJunk") + " '" + (item.prettyName || item.localizedName) + "'";
-							if (!item.URI) {
-								size2 = 0;
+          let size1 = QuickFolders.compactLastFolderSize,
+            size2 = item.sizeOnDisk,
+            message = "";
+          if (item.URI && QuickFolders.compactLastFolderUri !== item.URI) {
+            // should we reset it, in case the real message got lost ?
+            return;
+          }
+
+          // describe the action that caused the compacting
+          switch (QuickFolders.compactReportCommandType) {
+            case "compactFolder":
+              message =
+                util.getBundleString("qfCompactedFolder") +
+                " '" +
+                (item.prettyName || item.localizedName) +
+                "'";
+              break;
+            case "emptyJunk":
+              message =
+                util.getBundleString("qfEmptiedJunk") +
+                " '" +
+                (item.prettyName || item.localizedName) +
+                "'";
+              if (!item.URI) {
+                size2 = 0;
               }
-							break;
-						case 'emptyTrash':
-							message = util.getBundleString("qfEmptiedTrash");
-							if (!item.URI) {
-								size2 = 0;
+              break;
+            case "emptyTrash":
+              message = util.getBundleString("qfEmptiedTrash");
+              if (!item.URI) {
+                size2 = 0;
               }
-							break;
-						default:
-							message =
-                "unknown compactReportCommandType: [" + QuickFolders.compactReportCommandType + "]";
-							break;
-					}
-					const originalSize= util.getBundleString("qfCompactedOriginalFolderSize"),
+              break;
+            default:
+              message =
+                `unknown compactReportCommandType: [${
+                  QuickFolders.compactReportCommandType
+                }]`;
+              break;
+          }
+          const originalSize = util.getBundleString("qfCompactedOriginalFolderSize"),
             newSize = util.getBundleString("qfCompactedNewFolderSize"),
             expunged = util.getBundleString("qfCompactedBytesFreed"),
-            out = message + " :: "
-              + (size1 ? (originalSize + ": " + add1000Separators(size1.toString()) + " ::  "
-                    + expunged + ":" + add1000Separators((size1-size2).toString()) + " :: ")
-                  : " ")
-              + newSize + ": " + add1000Separators(size2.toString()) ;
-					// make sure it displays straight away and overwrite the compacting done message as well.
+            out =
+              `${message} :: ` +
+              (size1
+                ? `${originalSize}: ${add1000Separators(size1)}::  ` +
+                  `${expunged}:${add1000Separators((size1 - size2))} :: `
+                : " ") +
+              `${newSize}: ${add1000Separators(size2)}`;
+          // make sure it displays straight away and overwrite the compacting done message as well.
 
           const isNotification = true; // use this to disable message(s)
-					setTimeout(function() {
+          setTimeout(function () {
             if (isNotification) {
-              QuickFolders.Util.slideAlert("QuickFolders", out); 
+              QuickFolders.Util.slideAlert("QuickFolders", out);
             }
-            QuickFolders.Util.logDebug(out); 
+            QuickFolders.Util.logDebug(out);
           }, 250); // display "after compacting"
 
-					QuickFolders.compactLastFolderUri = null;
-					QuickFolders.compactLastFolderSize = 0;
-          
-				} catch {;};
+          QuickFolders.compactLastFolderUri = null;
+          QuickFolders.compactLastFolderSize = 0;
+        } catch {;};
 			}
 		}
 		catch(e) {this.ELog("Exception in Item onFolderIntPropertyChanged - TotalUnreadMessages: " + e);};    

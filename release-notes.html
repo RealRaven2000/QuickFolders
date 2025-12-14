@@ -1,28 +1,34 @@
 <b>Release 6.14</b>
 
-<b>This release improves many UI issues for all version and fixes fundamental breaking problems in the upcoming version Thunderbird 145.</b>
-
 The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the <a href="https://addons.thunderbird.net/thunderbird/addon/addon-info-sync-compatibility" class="native">Add-on Compatibility Check</a>.
 
-Some users may have seen a false incompatibility warning after updating from Thunderbird to v142. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of SmartTemplates was already fully compatible with 142. 
+Some users may have seen a false incompatibility warning after updating from Thunderbird to v146. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. The previous version of QuickFolders was already fully compatible with 146. 
 
 To get this fixed I raised a bug with Thunderbird: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>.
 
 <b>Improvements</b>
 
 <ul> 
-  <li> Made QuickFolders compatible with Thunderbird 146</li>  
-  <li> quickMove: Update cursor position while  typing in folder searchbox <a href="https://github.com/RealRaven2000/QuickFolders/issues/623">[issue 623]</a></li> 
+  <li> Made QuickFolders compatible with Thunderbird 148</li>  
+  <li> Added option to reverse alphabetic sorting of subfolder menus <a href="https://github.com/RealRaven2000/QuickFolders/issues/600">[issue 600]</a>. You can find this option on QuickFolders Options => General => Behavior.</li>
+  <li> quickMove: Update cursor position while typing in folder search box <a href="https://github.com/RealRaven2000/QuickFolders/issues/623">[issue 623]</a></li> 
   <li> Remove duplicate 🔎 and ✕ icons in quickMove search - Tb Release (142+) <a href="https://github.com/RealRaven2000/QuickFolders/issues/624">[issue 624]</a></li> 
-  <li> less logs polluting error console mostly related to 'loadDictionary' <a href="https://github.com/RealRaven2000/QuickFolders/issues/621">[issue 621]</a></li> 
+  <li> Added option to disable folder notifications after folder compaction (e.g., empty Trash) <a href="https://github.com/RealRaven2000/QuickFolders/issues/626">[issue 626]</a></li>
 </ul>
 
 <b>Bug Fixes</b>
 
 <ul> 
+  <li> Fixed: Recent folders button missing on Current Folder Toolbar <a href="https://github.com/RealRaven2000/QuickFolders/issues/620">[issue 620]</a></li>
   <li> Fixed "rectangle" icons in current folder popups</li> 
-  <li> fixed ❯ chevron positions on all popup menus </li> 
-  <li> fixed icons in mail commands popups </li> 
+  <li> Fixed ❯ chevron positions on all popup menus</li> 
+  <li> Fixed icons in mail commands popups</li> 
+</ul>
+
+<b>Miscellaneous</b>
+
+<ul>
+  <li> Reduced debug logs in error console mostly related to 'loadDictionary' <a href="https://github.com/RealRaven2000/QuickFolders/issues/621">[issue 621]</a></li>
 </ul>
 
 

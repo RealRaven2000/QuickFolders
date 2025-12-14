@@ -22,8 +22,8 @@ var Register = {
       let htmlFragment =
         "<label class='para' id='featureComparison'>" +
         QuickFolders.Util.getBundleString("licenseComparison")
-          .replace(/\{linkStart\}/, "<a id='compLink' class='link'>")
-          .replace(/\{linkEnd\}/, "</a>") +
+          .replace(/\{link\}/g, "<a id='compLink' class='link'>")
+          .replace(/\{\/link\}/g, "</a>") +
         "</label>";
       let e = featureComparison.ownerGlobal.MozXULElement.parseXULToFragment(htmlFragment);
 

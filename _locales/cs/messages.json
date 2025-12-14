@@ -6,8 +6,7 @@
     "message": "Vyberte účet:"
   },
   "active-version-info": {
-    "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Nyní používáte {boldStart} verzi $addonVer$ {boldEnd} na Thunderbirdu $appVer$.",
+    "message": "Nyní používáte {b} verzi $addonVer$ {/b} na Thunderbirdu $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -344,7 +343,7 @@
     "message": "Děkujeme, že jste nedávno prodloužili licenci nebo jste darovali. Jelikož jste pomohli doložit tento doplněk do budoucna, můžete toto okno jednoduše zavřít."
   },
   "licenseComparison": {
-    "message": "Chcete -li porovnat funkce různých verzí, {linkStart}přečtěte si tento seznam{linkEnd}."
+    "message": "Chcete -li porovnat funkce různých verzí, {link}přečtěte si tento seznam{/link}."
   },
   "licenseTerms.hide": {
     "message": "🡇 Pokračovat výběrem licence 🡇"
@@ -397,22 +396,22 @@
     "message": "Poslední zprávy"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Demnächst im nächsten großen Release {boldEnd}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {ARelease}Erfahren Sie mehr über das neue Release-Modell{A2}.{U1} {L1}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{L2} {L1}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {AcompatCheck}Add-on-Kompatibilitätsprüfung{A2} installieren.{L2} {U2}{P2}{P1} Wir freuen uns, bekannt zu geben, dass QuickFolders vollständig mit Thunderbird 140, dem nächsten Extended Support Release (ESR), kompatibel ist. Das bedeutet fortlaufende Zuverlässigkeit und Sicherheit im nächsten großen Support-Zyklus.{P2}{P1} QuickFolders unterstützt weiterhin Nutzer von Thunderbird 115 und höher. Im kommenden Jahr kann die Unterstützung für Thunderbird 115 zugunsten von Thunderbird 128 und neuer eingestellt werden, sobald neue Funktionen hinzugefügt werden.{P2}{P1} Wir überwachen kontinuierlich Änderungen in Thunderbird, um sicherzustellen, dass QuickFolders unabhängig vom gewählten Update-Pfad kompatibel und zuverlässig bleibt.{P2}"
+    "message": "{P}{b}Brzy v příštím velkém vydání{/b}: Thunderbird vás brzy požádá, abyste si vybrali preferovanou cestu aktualizace – buď roční větev ESR, nebo rychlejší měsíční verze. {ARelease}Zjistěte více o novém modelu vydávání{A2}.{U} {L}Verze ESR zůstává u v140, zvyšuje pouze čísla minor verzí a obsahuje výhradně bezpečnostní a opravné aktualizace, což je často preferováno firmami.{/L} {L}Měsíční cyklus vydávání přináší nové funkce a aktualizace rozhraní ihned po jejich vývoji. Zkontrolujte, zda vaše aktuální doplňky tento model podporují. Pro podporu můžete nainstalovat {AcompatCheck}Kontrolu kompatibility doplňků{A2}.{ /L} {/U}{/P}{P} S potěšením oznamujeme, že QuickFolders je plně kompatibilní s Thunderbird 140, nadcházejícím Extended Support Release (ESR). To znamená kontinuální spolehlivost a bezpečnost v příštím velkém podpůrném cyklu.{/P}{P} QuickFolders bude i nadále podporovat uživatele Thunderbirdu 115 a vyšší. V příštím roce může být podpora pro Thunderbird 115 ukončena ve prospěch Thunderbirdu 128 a novějších verzí, jakmile budou přidány nové funkce.{/P}{P} Neustále sledujeme změny v Thunderbirdu, abychom zajistili, že QuickFolders zůstane kompatibilní a spolehlivý bez ohledu na zvolenou cestu aktualizace.{/P}"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität sind nur durch Ihre Unterstützung möglich.{P2}{P1 class=specialOffer} Um die Entwicklung von QuickFolders zu unterstützen, können Sie Ihre Lizenz bis {salesEnd} vergünstigt verlängern.{P2}{P1 class=bottomhint}🡇 Wählen Sie unten eine Option, um mehr zu erfahren 🡇 {P2}"
+    "message": "{P} Všechny nové funkce, opravy chyb a dlouhodobá kompatibilita jsou možné pouze díky vaší podpoře.{/P}{P class=specialOffer} Chcete-li podpořit vývoj QuickFolders, můžete svou licenci prodloužit se slevou do {salesEnd}.{ /P}{P class=bottomhint}🡇 Vyberte níže možnost pro více informací 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} Auch Sie können die zukünftige Kompatibilität jetzt durch eine Lizenz unterstützen.{P2}{P1}Alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität sind nur durch Ihre Unterstützung möglich.{P2}{P1 class=specialOffer}Um die Entwicklung von QuickFolders zu unterstützen, können Sie bis {salesEnd} eine Standard- oder Pro-Lizenz vergünstigt erwerben.{P2}{P1 class=bottomhint} 🡇 Wählen Sie unten eine Option, um mehr zu erfahren 🡇 {P2}"
+    "message": "{P} I vy nyní můžete podpořit budoucí kompatibilitu zakoupením licence.{/P}{P} Všechny nové funkce, opravy chyb a dlouhodobá kompatibilita jsou možné pouze díky vaší podpoře.{/P}{P class=specialOffer} Chcete-li podpořit vývoj QuickFolders, můžete do {salesEnd} zakoupit Standardní nebo Pro licenci se slevou.{/P}{P class=bottomhint} 🡇 Vyberte níže možnost pro více informací 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Vielen Dank, dass Sie QuickFolders mit einer Standard-Lizenz unterstützen.{P2}{P1} Egal, ob Ihre Lizenz abgelaufen oder noch aktiv ist, Sie können jetzt bis {salesEnd} zum Vorteilspreis auf Pro upgraden. Ein Upgrade nach Ablauf gewährt Ihnen ein volles Jahr Nutzung ab Kaufdatum.{P2}{P1 class=bottomhint} 🡇 Wählen Sie unten eine Option, um mehr zu erfahren 🡇 {P2}"
+    "message": "{P} Děkujeme, že podporujete QuickFolders Standardní licencí.{/P}{P} Ať už je vaše licence vypršená nebo stále aktivní, můžete nyní do {salesEnd} provést upgrade na Pro za výhodnou cenu. Upgrade po vypršení licence vám poskytne plný rok používání od data zakoupení.{/P}{P class=bottomhint} 🡇 Vyberte níže možnost pro více informací 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Vielen Dank, dass Sie QuickFolders mit einer Pro-Lizenz unterstützen – das ermöglicht alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität.{P2}"
+    "message": "{P} Děkujeme, že podporujete QuickFolders Pro licencí – to umožňuje přístup ke všem novým funkcím, opravám chyb a dlouhodobé kompatibilitě.{/P}"
   },
   "newsSection": {
-    "message": "{P1}{boldStart} Již brzy ve velkém vydání {boldEnd}: Thunderbird vás brzy požádá, abyste si vybrali preferovanou cestu aktualizací — buď roční ESR, nebo rychlejší měsíční vydání. {ARelease}Zjistěte více o novém modelu vydání{A2}.{U1} {L1}Verze ESR zůstane na v140, bude zvyšovat pouze vedlejší čísla verzí a bude obsahovat pouze bezpečnostní opravy a opravy chyb, což je často vhodnější pro firemní prostředí.{L2} {L1}Měsíční cyklus vydání přinese nové funkce a aktualizace rozhraní, jakmile budou vyvinuty. Zkontrolujte, zda vaše aktuální doplňky podporují tento model vydání. Pro pomoc si můžete nainstalovat {AcompatCheck}Kontrolu kompatibility doplňků{A2}.{L2} {U2}",
+    "message": "{P}{b} Již brzy ve velkém vydání {/b}: Thunderbird vás brzy požádá, abyste si vybrali preferovanou cestu aktualizací — buď roční ESR, nebo rychlejší měsíční vydání. {ARelease}Zjistěte více o novém modelu vydání{A2}.{U} {L}Verze ESR zůstane na v140, bude zvyšovat pouze vedlejší čísla verzí a bude obsahovat pouze bezpečnostní opravy a opravy chyb, což je často vhodnější pro firemní prostředí.{/L} {L}Měsíční cyklus vydání přinese nové funkce a aktualizace rozhraní, jakmile budou vyvinuty. Zkontrolujte, zda vaše aktuální doplňky podporují tento model vydání. Pro pomoc si můžete nainstalovat {AcompatCheck}Kontrolu kompatibility doplňků{A2}.{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -421,10 +420,10 @@
     }
   },
   "newsSection.intro": {
-    "message": "{P1}Stále sledujeme měsíční cyklus vydávání Thunderbird, abychom zajistili kompatibilitu a stabilitu. Tato práce je jako vždy plně financována z prodeje licencí.{P2}"
+    "message": "{P}Stále sledujeme měsíční cyklus vydávání Thunderbird, abychom zajistili kompatibilitu a stabilitu. Tato práce je jako vždy plně financována z prodeje licencí.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Důležité:{boldEnd} Thunderbird pokračuje ve svém měsíčním vydavatelském cyklu. {P2}{P1} Někteří uživatelé mohli po aktualizaci Thunderbirdu na $appversion$ vidět falešné upozornění o nekompatibilitě. Toto bylo způsobeno uloženými informacemi o kompatibilitě, které se někdy nepodaří správně obnovit. Nahlásil jsem to jako bug do Thunderbirdu: [Bugzilla 1986027]{P2}{P1} Buďte si jisti, že QuickFolders plně podporuje jak měsíční, tak ESR (140.*) kanály a můžete pokračovat v práci bez přerušení. {P2}",
+    "message": "{P}{b}Důležité:{/b} Thunderbird pokračuje ve svém měsíčním vydavatelském cyklu. {/P}{P} Někteří uživatelé mohli po aktualizaci Thunderbirdu na $appversion$ vidět falešné upozornění o nekompatibilitě. Toto bylo způsobeno uloženými informacemi o kompatibilitě, které se někdy nepodaří správně obnovit. Nahlásil jsem to jako bug do Thunderbirdu: [Bugzilla 1986027]{/P}{P} Buďte si jisti, že QuickFolders plně podporuje jak měsíční, tak ESR (140.*) kanály a můžete pokračovat v práci bez přerušení. {/P}",
     "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
@@ -716,6 +715,9 @@
   },
   "qf.checkbox.sortMenusAlpha": {
     "message": "Vynutit abecední řazení nabídek s podsložkami."
+  },
+  "qf.checkbox.sortMenusAlpha.reverse": {
+    "message": "Obrácené řazení."
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
     "message": "Použijte tuto možnost pouze tehdy, pokud váš e-mailový klient neřadí podsložky správně."
@@ -1308,6 +1310,9 @@
   },
   "qf.notification.standard.title": {
     "message": "Funkce podle licence"
+  },
+  "qf.notifications.compactFolder": {
+    "message": "Upozornit po vykomprimování složky"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Individuální vzhled barev záložek"
@@ -1906,88 +1911,88 @@
     "message": "Chcete zastavit zobrazování historie verzí po aktualizacích?"
   },
   "quickMove.help.head": {
-    "message": "Help for {1}"
+    "message": "Nápověda pro {1}"
   },
   "quickMove.help.head.advanced": {
-    "message": "Advanced Features"
+    "message": "Pokročilé funkce"
   },
   "quickMove.help.l1a": {
-    "message": "Type the start of a folder name or words in it, delimited by space."
+    "message": "Zadejte začátek názvu složky nebo slova v něm, oddělená mezerou."
   },
   "quickMove.help.l1b": {
-    "message": "The following characters are regarded as word boundaries and don't need to be typed:"
+    "message": "Následující znaky se považují za hranice slov a nemusí být zadány:"
   },
   "quickMove.help.l2a": {
-    "message": "Type {1} for entering grandparent/parent/searched folder."
+    "message": "Zadejte {1} pro přechod do nadřazené/rodičovské/hledané složky."
   },
   "quickMove.help.l2b": {
-    "message": "The first 2 letters of any parent are usually sufficient. You can also create new subfolders with this syntax."
+    "message": "Obvykle stačí první 2 písmena jakéhokoliv rodiče. Nové podsložky lze také vytvořit tímto zápisem."
   },
   "quickMove.help.l3a": {
-    "message": "Type {1} for skipping any folders in between."
+    "message": "Zadejte {1} pro přeskočení jakýchkoliv složek mezi nimi."
   },
   "quickMove.help.l3b": {
-    "message": "This is useful for deeper, more complicated or unknown folder hierarchies."
+    "message": "Toto je užitečné pro hlubší, složitější nebo neznámé hierarchie složek."
   },
   "quickMove.help.l4a": {
-    "message": "Type {1} to get a list of folders that were entered most recently. The number of results depends on your license level."
+    "message": "Zadejte {1} pro získání seznamu složek, do kterých bylo nedávno přistupováno. Počet výsledků závisí na úrovni vaší licence."
   },
   "quickMove.help.advanced": {
-    "message": "More advanced functions such as keyboard shortcuts to go to a folder / moving mail or excluding folders from search results can be configured on the QuickFolders Pro tab. To access these and other premium features, get a Pro license and support the future of QuickFolders."
+    "message": "Pokročilejší funkce, jako klávesové zkratky pro přechod do složky / přesun e-mailů nebo vyloučení složek z výsledků vyhledávání, lze nastavit na záložce QuickFolders Pro. Pro přístup k těmto a dalším prémiovým funkcím získáte licenci Pro a podpoříte budoucnost QuickFolders."
   },
   "quickMove.singleMessage.goNext": {
-    "message": "Display next mail after moving current one"
+    "message": "Zobrazit další e-mail po přesunu aktuálního"
   },
   "quickMove.singleMessage.reopenTab": {
-    "message": "Reopen original mail after it was moved"
+    "message": "Znovu otevřít původní e-mail po jeho přesunu"
   },
   "quickMove.singleMessageTabs": {
-    "message": "Single Message Tab"
+    "message": "Záložka jednotlivého e-mailu"
   },
   "quickfolders.findFolder.placeHolder": {
-    "message": "folder name"
+    "message": "název složky"
   },
   "quickfolders.findFolder.help": {
-    "message": "help with search"
+    "message": "nápověda k vyhledávání"
   },
   "quickfolders.quickMove.menu.cancel": {
-    "message": "Cancel quickMove"
+    "message": "Zrušit quickMove"
   },
   "quickfolders.quickMove.menu.hideSearch": {
-    "message": "Hide Folder Name box"
+    "message": "Skrýt pole názvu složky"
   },
   "quickfolders.quickMove.menu.showSearch": {
-    "message": "Show Folder Name box"
+    "message": "Zobrazit pole názvu složky"
   },
   "quickfolders.quickMove.menu.suspend": {
-    "message": "Jump to folder (don't move mails)"
+    "message": "Přejít do složky (nepřesouvat e-maily)"
   },
   "quickfolders.readingList.addCurrent": {
-    "message": "Add current Item"
+    "message": "Přidat aktuální položku"
   },
   "quickfolders.readingList.clear": {
-    "message": "Clear Reading List"
+    "message": "Vymazat seznam ke čtení"
   },
   "quickfolders.readingList.tooltip": {
-    "message": "Reading List"
+    "message": "Seznam ke čtení"
   },
   "quickfolders.toolbar.newsubfolder": {
-    "message": "New Subfolder…"
+    "message": "Nová podsložka…"
   },
   "quickfolders.toolbar.skip": {
-    "message": "Skip unread mails"
+    "message": "Přeskočit nepřečtené e-maily"
   },
   "quickfoldersQuickCopiedMails": {
-    "message": "Mail copied to folder {2};{1} mails copied to folder {2}"
+    "message": "E-mail zkopírován do složky {2};{1} e-mailů zkopírováno do složky {2}"
   },
   "quickfoldersQuickMovedMails": {
-    "message": "Mail moved to folder {2};{1} mails moved to folder {2}"
+    "message": "E-mail přesunut do složky {2};{1} e-mailů přesunuto do složky {2}"
   },
   "renew-your-license": {
     "message": "Obnovte si licenci."
   },
   "special-offer-content": {
-    "message": "Vylepšete si funkce a ušetřete {boldStart}$reduction${boldEnd} při koupi {linkStartPro}QuickFolders Pro licence{linkEnd} do {boldStart}$expirydate${boldEnd}. Nebo si vyberte standardní funkce s novou {linkStart}Standardní licencí{linkEnd}.",
+    "message": "Vylepšete si funkce a ušetřete {b}$reduction${/b} při koupi {link pro}QuickFolders Pro licence{/link} do {b}$expirydate${/b}. Nebo si vyberte standardní funkce s novou {link}Standardní licencí{/link}.",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -1999,7 +2004,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Obnovte si nyní licenci a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart} $expirydate$ {boldEnd}.",
+    "message": "Obnovte si nyní licenci a ušetřete {b}$reduction${/b}! Tato speciální nabídka bude k dispozici do {b} $expirydate$ {/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -2012,7 +2017,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Upgradujte nyní z QuickFolders Standard na Pro a ušetřete {boldStart}$reduction${boldEnd}! Tato speciální nabídka bude k dispozici do {boldStart}$expirydate${boldEnd}.",
+    "message": "Upgradujte nyní z QuickFolders Standard na Pro a ušetřete {b}$reduction${/b}! Tato speciální nabídka bude k dispozici do {b}$expirydate${/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -2037,7 +2042,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Vážený {name} {boldEnd}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {boldStart} vaši pomoc {boldEnd}, abychom udrželi krok!",
+    "message": "{b} Vážený {name} {/b}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {b} vaši pomoc {/b}, abychom udrželi krok!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -2129,7 +2134,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇿 change log",
-    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
+    "message": "{L} QuickFolders je nyní kompatibilní s Thunderbirdem 148 {/L}{L} Přidána nová možnost obráceného abecedního řazení podnabídek složek [issue 600] {/L}{L} quickMove: kurzor se nyní správně aktualizuje při psaní do vyhledávacího pole složek [issue 623] {/L}{L} Opraveno: chybějící tlačítko nedávných složek na panelu nástrojů aktuálního průzkumníka [issue 620] {/L}{L} Opraveny různé vizuální problémy ikon a vyskakovacích nabídek {/L}{L} Odstraněny duplicitní ikony 🔎 a ✕ ve vyhledávání quickMove (Thunderbird 142+) [issue 624] {/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

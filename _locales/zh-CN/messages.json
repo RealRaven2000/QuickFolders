@@ -7,7 +7,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "您现在在Thunderbird $appVer$上运行{boldStart}版本 $addonVer$ {boldEnd}。",
+    "message": "您现在在Thunderbird $appVer$上运行{b}版本 $addonVer$ {/b}。",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -344,7 +344,7 @@
     "message": "感谢您最近延长许可证或捐赠。 当您帮助将来对该插件进行验证时，只需关闭此窗口即可。"
   },
   "licenseComparison": {
-    "message": "要比较不同版本的功能，请{linkStart}阅读此列表{linkEnd}。"
+    "message": "要比较不同版本的功能，请{link}阅读此列表{/link}。"
   },
   "licenseTerms.hide": {
     "message": "🡇 继续选择许可证 🡇"
@@ -397,22 +397,22 @@
     "message": "最新消息"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} 即将在下一个重大版本中推出 {boldEnd}：Thunderbird 很快会要求您选择首选的更新路径——年度 ESR 版本或更快的每月发布。{ARelease}了解有关新发布模型的更多信息{A2}.{U1} {L1}ESR 版本将保持在 v140，仅增加次要版本号，并仅包含安全修复和错误修复，这通常更适合企业环境。{L2} {L1}每月发布周期会在开发完成后提供新功能和界面更新。请检查您当前的附加组件是否支持此发布模型。为此，您可以安装 {AcompatCheck}附加组件兼容性检查{A2}。{L2} {U2}{P2}{P1} 我们很高兴地宣布，QuickFolders 完全兼容 Thunderbird 140，即下一个扩展支持版本（ESR）。这意味着在下一个主要支持周期中持续的可靠性和安心。{P2}{P1} QuickFolders 目前仍支持 Thunderbird 115 及以上版本的用户。在接下来的一年中，随着我们添加新功能，对 Thunderbird 115 的支持可能会被淘汰，转而支持 Thunderbird 128 及更新版本。{P2}{P1} 我们会持续监控 Thunderbird 的变化，以确保 QuickFolders 无论您选择哪种更新路径都能保持兼容和可靠。{P2}"
+    "message": "{P}{b} 即将在下一个重大版本中推出 {/b}：Thunderbird 很快会要求您选择首选的更新路径——年度 ESR 版本或更快的每月发布。{ARelease}了解有关新发布模型的更多信息{A2}.{U} {L}ESR 版本将保持在 v140，仅增加次要版本号，并仅包含安全修复和错误修复，这通常更适合企业环境。{/L} {L}每月发布周期会在开发完成后提供新功能和界面更新。请检查您当前的附加组件是否支持此发布模型。为此，您可以安装 {AcompatCheck}附加组件兼容性检查{A2}。{/L} {/U}{/P}{P} 我们很高兴地宣布，QuickFolders 完全兼容 Thunderbird 140，即下一个扩展支持版本（ESR）。这意味着在下一个主要支持周期中持续的可靠性和安心。{/P}{P} QuickFolders 目前仍支持 Thunderbird 115 及以上版本的用户。在接下来的一年中，随着我们添加新功能，对 Thunderbird 115 的支持可能会被淘汰，转而支持 Thunderbird 128 及更新版本。{/P}{P} 我们会持续监控 Thunderbird 的变化，以确保 QuickFolders 无论您选择哪种更新路径都能保持兼容和可靠。{/P}"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} 所有新功能、错误修复和长期兼容性都得益于您的支持。{P2}{P1 class=specialOffer} 为了支持 QuickFolders 的开发，您可以在 {salesEnd} 前以折扣价续订您的许可证。{P2}{P1 class=bottomhint}🡇 请选择下方的选项以了解更多 🡇 {P2}"
+    "message": "{P} 所有新功能、错误修复和长期兼容性都得益于您的支持。{/P}{P class=specialOffer} 为了支持 QuickFolders 的开发，您可以在 {salesEnd} 前以折扣价续订您的许可证。{/P}{P class=bottomhint}🡇 请选择下方的选项以了解更多 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} 您也可以通过许可证支持未来的兼容性。{P2}{P1}所有新功能、错误修复和长期兼容性都得益于您的支持。{P2}{P1 class=specialOffer}为了支持 QuickFolders 的开发，您可以在 {salesEnd} 前以折扣价获得标准版或专业版许可证。{P2}{P1 class=bottomhint} 🡇 请选择下方的选项以了解更多 🡇 {P2}"
+    "message": "{P} 您也可以通过许可证支持未来的兼容性。{/P}{P}所有新功能、错误修复和长期兼容性都得益于您的支持。{/P}{P class=specialOffer}为了支持 QuickFolders 的开发，您可以在 {salesEnd} 前以折扣价获得标准版或专业版许可证。{/P}{P class=bottomhint} 🡇 请选择下方的选项以了解更多 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} 感谢您通过标准版许可证支持 QuickFolders。{P2}{P1} 无论您的许可证已过期还是仍然有效，您都可以在 {salesEnd} 前以优惠价格升级到专业版。过期后升级将从购买之日起为您提供一整年的使用权。{P2}{P1 class=bottomhint} 🡇 请选择下方的选项以了解更多 🡇 {P2}"
+    "message": "{P} 感谢您通过标准版许可证支持 QuickFolders。{/P}{P} 无论您的许可证已过期还是仍然有效，您都可以在 {salesEnd} 前以优惠价格升级到专业版。过期后升级将从购买之日起为您提供一整年的使用权。{/P}{P class=bottomhint} 🡇 请选择下方的选项以了解更多 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} 感谢您通过专业版许可证支持 QuickFolders——这使所有新功能、错误修复和长期兼容性成为可能。{P2}"
+    "message": "{P} 感谢您通过专业版许可证支持 QuickFolders——这使所有新功能、错误修复和长期兼容性成为可能。{/P}"
   },
   "newsSection": {
-    "message": "{P1}{boldStart} 即将在下一个重大版本中推出 {boldEnd}：Thunderbird 很快会要求您选择首选的更新路径——年度 ESR 版本或更快的每月发布。{ARelease}了解有关新发布模型的更多信息{A2}.{U1} {L1}ESR 版本将保持在 v140，仅增加次要版本号，并仅包含安全修复和错误修复，这通常更适合企业环境。{L2} {L1}每月发布周期会在开发完成后提供新功能和界面更新。请检查您当前的附加组件是否支持此发布模型。为此，您可以安装 {AcompatCheck}附加组件兼容性检查{A2}。{L2} {U2}",
+    "message": "{P}{b} 即将在下一个重大版本中推出 {/b}：Thunderbird 很快会要求您选择首选的更新路径——年度 ESR 版本或更快的每月发布。{ARelease}了解有关新发布模型的更多信息{A2}.{U} {L}ESR 版本将保持在 v140，仅增加次要版本号，并仅包含安全修复和错误修复，这通常更适合企业环境。{/L} {L}每月发布周期会在开发完成后提供新功能和界面更新。请检查您当前的附加组件是否支持此发布模型。为此，您可以安装 {AcompatCheck}附加组件兼容性检查{A2}。{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -421,10 +421,10 @@
     }
   },
   "newsSection.intro": {
-    "message": "{P1}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{P2}"
+    "message": "{P}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}重要:{boldEnd} Thunderbird 继续其每月发布周期。 {P2}{P1} 一些用户在将 Thunderbird 更新到 $appversion$ 后可能看到错误的兼容性警告。这是由于 Thunderbird 中缓存的兼容性信息有时未能正确刷新。我已向 Thunderbird 提交了 Bug 报告以解决此问题：[Bugzilla 1986027]{P2}{P1} 请放心，QuickFolders 完全支持月度和 ESR（140.*）频道，您可以继续工作而不受干扰。 {P2}",
+    "message": "{P}{b}重要:{/b} Thunderbird 继续其每月发布周期。 {/P}{P} 一些用户在将 Thunderbird 更新到 $appversion$ 后可能看到错误的兼容性警告。这是由于 Thunderbird 中缓存的兼容性信息有时未能正确刷新。我已向 Thunderbird 提交了 Bug 报告以解决此问题：[Bugzilla 1986027]{/P}{P} 请放心，QuickFolders 完全支持月度和 ESR（140.*）频道，您可以继续工作而不受干扰。 {/P}",
     "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
@@ -710,6 +710,9 @@
   },
   "qf.checkbox.sortMenusAlpha": {
     "message": "强制按字母顺序排序目录与子文件夹"
+  },
+  "qf.checkbox.sortMenusAlpha.reverse": {
+    "message": "反向排序。"
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
     "message": "仅适用于邮件客户端没有正确排序子文件夹时"
@@ -1263,6 +1266,9 @@
   },
   "qf.notification.standard.title": {
     "message": "标准功能"
+  },
+  "qf.notifications.compactFolder": {
+    "message": "文件夹压缩完成后通知"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "导航卡独立的颜色外观"
@@ -1885,7 +1891,7 @@
     "message": "续订您的许可证。"
   },
   "special-offer-content": {
-    "message": "升级功能并节省 {boldStart}$reduction${boldEnd}，购买 {linkStartPro}QuickFolders Pro 许可证{linkEnd}，有效期至 {boldStart}$expirydate${boldEnd}。或选择新 {linkStart}标准许可证{linkEnd}，使用标准功能。",
+    "message": "升级功能并节省 {b}$reduction${/b}，购买 {link pro}QuickFolders Pro 许可证{/link}，有效期至 {b}$expirydate${/b}。或选择新 {link}标准许可证{/link}，使用标准功能。",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -1897,7 +1903,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "立即续订您的许可证并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
+    "message": "立即续订您的许可证并节省 {b}$reduction${/b}！ 此特别优惠将持续到 {b}$expirydate${/b}。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1910,7 +1916,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "立即从 QuickFolders Standard 升级到 Pro 并节省 {boldStart}$reduction${boldEnd}！ 此特别优惠将持续到 {boldStart}$expirydate${boldEnd}。",
+    "message": "立即从 QuickFolders Standard 升级到 Pro 并节省 {b}$reduction${/b}！ 此特别优惠将持续到 {b}$expirydate${/b}。",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1935,7 +1941,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}亲爱的{name}{boldEnd}，请通过获得许可来支持 $addon$。 Thunderbird 代码不断发展，我们需要{boldStart}您的帮助{boldEnd}来跟上！",
+    "message": "{b}亲爱的{name}{/b}，请通过获得许可来支持 $addon$。 Thunderbird 代码不断发展，我们需要{b}您的帮助{/b}来跟上！",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -2030,7 +2036,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
+    "message": "{L} QuickFolders 现已兼容 Thunderbird 148 {/L}{L} 新增选项以反转子文件夹菜单的字母顺序 [issue 600] {/L}{L} quickMove：在文件夹搜索框中输入时，光标现在可正确更新 [issue 623] {/L}{L} 修复：当前文件夹工具栏上缺少最近使用的文件夹按钮 [issue 620] {/L}{L} 修复各种图标和弹出菜单显示问题 {/L}{L} 删除 quickMove 搜索中重复的 🔎 和 ✕ 图标 (Thunderbird 142+) [issue 624] {/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

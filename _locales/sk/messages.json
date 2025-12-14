@@ -3,7 +3,7 @@
     "message": "SPLASH"
   },
   "active-version-info": {
-    "message": "Momentálne používate {boldStart}verziu $addonVer$ {boldEnd} na Thunderbirde $appVer$.",
+    "message": "Momentálne používate {b}verziu $addonVer$ {/b} na Thunderbirde $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -67,7 +67,7 @@
     "message": "Ďakujeme za nedávne predĺženie vašej licencie alebo ak ste prispeli darom. Pretože ste pomohli zabezpečiť budúcnosť tejto aplikácie, môžete toto okno jednoducho zavrieť."
   },
   "licenseComparison": {
-    "message": "Ak chcete porovnať funkcie rôznych licencií, {linkStart}prečítajte si tento zoznam{linkEnd}."
+    "message": "Ak chcete porovnať funkcie rôznych licencií, {link}prečítajte si tento zoznam{/link}."
   },
   "licenseTerms.hide": {
     "message": "🡇 Pokračovať na výber licencie 🡇"
@@ -120,22 +120,22 @@
     "message": "Najnovšie novinky"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Už čoskoro v ďalšom veľkom vydaní {boldEnd}: Thunderbird vás čoskoro požiada, aby ste si vybrali preferovanú cestu aktualizácie — buď ročnú ESR vetvu, alebo rýchlejšie mesačné vydania. {ARelease}Zistite viac o novom modeli vydávania{A2}.{U1} {L1}Verzia ESR zostane na v140, zvyšuje iba vedľajšie čísla verzií a obsahuje iba bezpečnostné opravy a opravy chýb, čo je často vhodnejšie pre firemné prostredie.{L2} {L1}Mesačný cyklus vydávania prinesie nové funkcie a aktualizácie rozhrania, ako budú vyvíjané. Skontrolujte, či vaše aktuálne doplnky podporujú tento model vydávania. Na pomoc si môžete nainštalovať {AcompatCheck}Kontrolu kompatibility doplnkov{A2}.{L2} {U2}{P2}{P1} S potešením oznamujeme, že QuickFolders je plne kompatibilný s Thunderbirdom 140, ďalším vydaním Extended Support Release (ESR). To znamená neustálu spoľahlivosť a pokoj počas ďalšieho hlavného cyklu podpory.{P2}{P1} QuickFolders bude zatiaľ naďalej podporovať používateľov Thunderbirdu 115 a novších. Počas nasledujúceho roka, ako pridáme nové funkcie, môže byť podpora pre Thunderbird 115 ukončená v prospech Thunderbirdu 128 a novších.{P2}{P1} Neustále sledujeme zmeny v Thunderbirde, aby sme zaistili, že QuickFolders zostane kompatibilný a spoľahlivý bez ohľadu na zvolenú cestu aktualizácie.{P2}"
+    "message": "{P}{b} Už čoskoro v ďalšom veľkom vydaní {/b}: Thunderbird vás čoskoro požiada, aby ste si vybrali preferovanú cestu aktualizácie — buď ročnú ESR vetvu, alebo rýchlejšie mesačné vydania. {ARelease}Zistite viac o novom modeli vydávania{A2}.{U} {L}Verzia ESR zostane na v140, zvyšuje iba vedľajšie čísla verzií a obsahuje iba bezpečnostné opravy a opravy chýb, čo je často vhodnejšie pre firemné prostredie.{/L} {L}Mesačný cyklus vydávania prinesie nové funkcie a aktualizácie rozhrania, ako budú vyvíjané. Skontrolujte, či vaše aktuálne doplnky podporujú tento model vydávania. Na pomoc si môžete nainštalovať {AcompatCheck}Kontrolu kompatibility doplnkov{A2}.{/L} {/U}{/P}{P} S potešením oznamujeme, že QuickFolders je plne kompatibilný s Thunderbirdom 140, ďalším vydaním Extended Support Release (ESR). To znamená neustálu spoľahlivosť a pokoj počas ďalšieho hlavného cyklu podpory.{/P}{P} QuickFolders bude zatiaľ naďalej podporovať používateľov Thunderbirdu 115 a novších. Počas nasledujúceho roka, ako pridáme nové funkcie, môže byť podpora pre Thunderbird 115 ukončená v prospech Thunderbirdu 128 a novších.{/P}{P} Neustále sledujeme zmeny v Thunderbirde, aby sme zaistili, že QuickFolders zostane kompatibilný a spoľahlivý bez ohľadu na zvolenú cestu aktualizácie.{/P}"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Všetky nové funkcie, opravy chýb a dlhodobá kompatibilita sú možné vďaka vašej podpore.{P2}{P1 class=specialOffer} Na podporu vývoja QuickFolders môžete obnoviť svoju licenciu so zľavou do {salesEnd}.{P2}{P1 class=bottomhint}🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {P2}"
+    "message": "{P} Všetky nové funkcie, opravy chýb a dlhodobá kompatibilita sú možné vďaka vašej podpore.{/P}{P class=specialOffer} Na podporu vývoja QuickFolders môžete obnoviť svoju licenciu so zľavou do {salesEnd}.{/P}{P class=bottomhint}🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} Aj vy teraz môžete podporiť budúcu kompatibilitu prostredníctvom licencie.{P2}{P1}Všetky nové funkcie, opravy chýb a dlhodobá kompatibilita sú možné vďaka vašej podpore.{P2}{P1 class=specialOffer}Na podporu vývoja QuickFolders môžete získať štandardnú alebo Pro licenciu so zľavou do {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {P2}"
+    "message": "{P} Aj vy teraz môžete podporiť budúcu kompatibilitu prostredníctvom licencie.{/P}{P}Všetky nové funkcie, opravy chýb a dlhodobá kompatibilita sú možné vďaka vašej podpore.{/P}{P class=specialOffer}Na podporu vývoja QuickFolders môžete získať štandardnú alebo Pro licenciu so zľavou do {salesEnd}.{/P}{P class=bottomhint} 🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Ďakujeme, že podporujete QuickFolders štandardnou licenciou.{P2}{P1} Či už vaša licencia vypršala alebo je stále aktívna, môžete teraz prejsť na Pro so zľavou do {salesEnd}. Aktualizácia po vypršaní platnosti vám poskytne celý rok používania od dátumu nákupu.{P2}{P1 class=bottomhint} 🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {P2}"
+    "message": "{P} Ďakujeme, že podporujete QuickFolders štandardnou licenciou.{/P}{P} Či už vaša licencia vypršala alebo je stále aktívna, môžete teraz prejsť na Pro so zľavou do {salesEnd}. Aktualizácia po vypršaní platnosti vám poskytne celý rok používania od dátumu nákupu.{/P}{P class=bottomhint} 🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Ďakujeme, že podporujete QuickFolders prostredníctvom Pro licencie — to umožňuje všetky nové funkcie, opravy chýb a dlhodobú kompatibilitu.{P2}"
+    "message": "{P} Ďakujeme, že podporujete QuickFolders prostredníctvom Pro licencie — to umožňuje všetky nové funkcie, opravy chýb a dlhodobú kompatibilitu.{/P}"
   },
   "newsSection": {
-    "message": "{P1}{boldStart} Už čoskoro v ďalšom veľkom vydaní {boldEnd}: Thunderbird vás čoskoro požiada, aby ste si vybrali preferovanú cestu aktualizácie — buď ročnú ESR vetvu, alebo rýchlejšie mesačné vydania. {ARelease}Zistite viac o novom modeli vydávania{A2}.{U1} {L1}Verzia ESR zostane na v140, zvyšuje iba vedľajšie čísla verzií a obsahuje iba bezpečnostné opravy a opravy chýb, čo je často vhodnejšie pre firemné prostredie.{L2} {L1}Mesačný cyklus vydávania prinesie nové funkcie a aktualizácie rozhrania, ako budú vyvíjané. Skontrolujte, či vaše aktuálne doplnky podporujú tento model vydávania. Na pomoc si môžete nainštalovať {AcompatCheck}Kontrolu kompatibility doplnkov{A2}.{L2} {U2}",
+    "message": "{P}{b} Už čoskoro v ďalšom veľkom vydaní {/b}: Thunderbird vás čoskoro požiada, aby ste si vybrali preferovanú cestu aktualizácie — buď ročnú ESR vetvu, alebo rýchlejšie mesačné vydania. {ARelease}Zistite viac o novom modeli vydávania{A2}.{U} {L}Verzia ESR zostane na v140, zvyšuje iba vedľajšie čísla verzií a obsahuje iba bezpečnostné opravy a opravy chýb, čo je často vhodnejšie pre firemné prostredie.{/L} {L}Mesačný cyklus vydávania prinesie nové funkcie a aktualizácie rozhrania, ako budú vyvíjané. Skontrolujte, či vaše aktuálne doplnky podporujú tento model vydávania. Na pomoc si môžete nainštalovať {AcompatCheck}Kontrolu kompatibility doplnkov{A2}.{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -144,10 +144,10 @@
     }
   },
   "newsSection.intro": {
-    "message": "{P1}Naďalej sledujeme mesačný cyklus vydávania Thunderbirdu, aby sme zabezpečili kompatibilitu a stabilitu. Ako vždy, táto práca je úplne financovaná predajom licencií.{P2}"
+    "message": "{P}Naďalej sledujeme mesačný cyklus vydávania Thunderbirdu, aby sme zabezpečili kompatibilitu a stabilitu. Ako vždy, táto práca je úplne financovaná predajom licencií.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Dôležité:{boldEnd} Thunderbird pokračuje vo svojom mesačnom vydavateľskom cykle. {P2}{P1} Niektorí používatelia mohli po aktualizácii Thunderbirdu na $appversion$ vidieť falošné upozornenie o nekompatibilite. Toto bolo spôsobené uloženými informáciami o kompatibilite, ktoré sa niekedy nepodarí správne obnoviť. Nahlásil som to ako bug do Thunderbirdu: [Bugzilla 1986027]{P2}{P1} Buďte si istí, že QuickFolders plne podporuje mesačné aj ESR (140.*) kanály a môžete pokračovať v práci bez prerušenia. {P2}",
+    "message": "{P}{b}Dôležité:{/b} Thunderbird pokračuje vo svojom mesačnom vydavateľskom cykle. {/P}{P} Niektorí používatelia mohli po aktualizácii Thunderbirdu na $appversion$ vidieť falošné upozornenie o nekompatibilite. Toto bolo spôsobené uloženými informáciami o kompatibilite, ktoré sa niekedy nepodarí správne obnoviť. Nahlásil som to ako bug do Thunderbirdu: [Bugzilla 1986027]{/P}{P} Buďte si istí, že QuickFolders plne podporuje mesačné aj ESR (140.*) kanály a môžete pokračovať v práci bez prerušenia. {/P}",
     "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
@@ -172,7 +172,7 @@
     "message": "Obnovte svoju licenciu."
   },
   "special-offer-content": {
-    "message": "Upgradujte svoje funkcie a ušetrite {boldStart}$reduction${boldEnd} pri kúpe {linkStartPro}QuickFolders Pro licencie{linkEnd} do {boldStart}$expirydate${boldEnd}. Alebo si vyberte štandardné funkcie s novou {linkStart}štandardnou licenciou{linkEnd}.",
+    "message": "Upgradujte svoje funkcie a ušetrite {b}$reduction${/b} pri kúpe {link pro}QuickFolders Pro licencie{/link} do {b}$expirydate${/b}. Alebo si vyberte štandardné funkcie s novou {link}štandardnou licenciou{/link}.",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -184,7 +184,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Obnovte svoju licenciu teraz a ušetrite {boldStart}$reduction${boldEnd}! Táto špeciálna ponuka bude dostupná do {boldStart}$expirydate${boldEnd}.",
+    "message": "Obnovte svoju licenciu teraz a ušetrite {b}$reduction${/b}! Táto špeciálna ponuka bude dostupná do {b}$expirydate${/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -197,7 +197,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Upgradujte teraz zo štandardnej verzie na Pro a ušetrite {boldStart}$reduction${boldEnd}! Táto špeciálna ponuka bude dostupná do {boldStart}$expirydate${boldEnd}.",
+    "message": "Upgradujte teraz zo štandardnej verzie na Pro a ušetrite {b}$reduction${/b}! Táto špeciálna ponuka bude dostupná do {b}$expirydate${/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -221,7 +221,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Vážený {name}{boldEnd}, podporte $addon$ kúpou licencie. Kód Thunderbirdu sa neustále vyvíja a potrebujeme {boldStart}vašu pomoc{boldEnd}, aby sme mohli držať krok!",
+    "message": "{b}Vážený {name}{/b}, podporte $addon$ kúpou licencie. Kód Thunderbirdu sa neustále vyvíja a potrebujeme {b}vašu pomoc{/b}, aby sme mohli držať krok!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -287,7 +287,7 @@
     "message": "Prečítajte si podrobný zoznam zmien tu (iba v angličtine):"
   },
   "whats-new-list": {
-    "description": "🇸🇰 change log",
-    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
+    "description": "🇸🇮 change log",
+    "message": "{L} QuickFolders je zdaj združljiv s Thunderbird 148 {/L}{L} Dodana nova možnost za obratno abecedno razvrščanje podmenijev map [issue 600] {/L}{L} quickMove: kazalec se zdaj pravilno posodobi med tipkanjem v iskalno polje map [issue 623] {/L}{L} Popravljeno: gumb za nedavne mape, ki je manjkal na orodni vrstici trenutne mape [issue 620] {/L}{L} Popravljene različne vizualne težave ikon in pojavnimi meniji {/L}{L} Odstranjene podvojene ikone 🔎 in ✕ v iskanju quickMove (Thunderbird 142+) [issue 624] {/L}"
   }
 }

@@ -4,7 +4,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Bạn hiện đang chạy phiên bản {boldStart} $addonVer$ {boldEnd} trên Thunderbird $appVer$.",
+    "message": "Bạn hiện đang chạy phiên bản {b} $addonVer$ {/b} trên Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -292,7 +292,7 @@
     "message": "Cảm ơn bạn đã gia hạn giấy phép gần đây hoặc nếu bạn đã đóng góp. Vì bạn đã giúp chứng minh Tiện ích bổ sung này trong tương lai, bạn có thể chỉ cần đóng cửa sổ này."
   },
   "licenseComparison": {
-    "message": "Để so sánh các tính năng của các phiên bản khác nhau, hãy {linkStart}đọc danh sách này{linkEnd}."
+    "message": "Để so sánh các tính năng của các phiên bản khác nhau, hãy {link}đọc danh sách này{/link}."
   },
   "licenseTerms.hide": {
     "message": "🡇 Tiếp tục lựa chọn Giấy phép 🡇"
@@ -342,22 +342,22 @@
     "message": "Tin mới nhất"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Sắp ra mắt trong bản phát hành lớn tiếp theo {boldEnd}: Thunderbird sẽ sớm yêu cầu bạn chọn đường cập nhật ưu tiên — hoặc theo chu kỳ ESR hàng năm hoặc các bản phát hành hàng tháng nhanh hơn. {ARelease}Tìm hiểu thêm về mô hình phát hành mới{A2}.{U1} {L1}Phiên bản ESR sẽ giữ ở v140, chỉ tăng số phiên bản phụ và chỉ bao gồm các bản vá bảo mật và sửa lỗi, điều này thường được ưa chuộng trong môi trường doanh nghiệp.{L2} {L1}Chu kỳ phát hành hàng tháng sẽ cung cấp các tính năng mới và cập nhật giao diện khi chúng được phát triển. Vui lòng kiểm tra xem các tiện ích bổ sung hiện tại của bạn có hỗ trợ mô hình phát hành này không. Để hỗ trợ, bạn có thể cài đặt {AcompatCheck}Kiểm tra Tương thích Tiện ích bổ sung{A2}.{L2} {U2}{P2}{P1} Chúng tôi vui mừng thông báo rằng QuickFolders hoàn toàn tương thích với Thunderbird 140, bản phát hành Extended Support Release (ESR) tiếp theo. Điều này có nghĩa là độ tin cậy liên tục và sự an tâm trong suốt chu kỳ hỗ trợ lớn tiếp theo.{P2}{P1} QuickFolders sẽ tiếp tục hỗ trợ người dùng Thunderbird 115 trở lên trong thời gian tới. Trong năm tới, khi chúng tôi thêm các tính năng mới, hỗ trợ cho Thunderbird 115 có thể bị loại bỏ để ưu tiên cho Thunderbird 128 và các phiên bản mới hơn.{P2}{P1} Chúng tôi liên tục theo dõi các thay đổi của Thunderbird để đảm bảo QuickFolders luôn tương thích và đáng tin cậy, bất kể bạn chọn đường cập nhật nào.{P2}"
+    "message": "{P}{b} Sắp ra mắt trong bản phát hành lớn tiếp theo {/b}: Thunderbird sẽ sớm yêu cầu bạn chọn đường cập nhật ưu tiên — hoặc theo chu kỳ ESR hàng năm hoặc các bản phát hành hàng tháng nhanh hơn. {ARelease}Tìm hiểu thêm về mô hình phát hành mới{A2}.{U} {L}Phiên bản ESR sẽ giữ ở v140, chỉ tăng số phiên bản phụ và chỉ bao gồm các bản vá bảo mật và sửa lỗi, điều này thường được ưa chuộng trong môi trường doanh nghiệp.{/L} {L}Chu kỳ phát hành hàng tháng sẽ cung cấp các tính năng mới và cập nhật giao diện khi chúng được phát triển. Vui lòng kiểm tra xem các tiện ích bổ sung hiện tại của bạn có hỗ trợ mô hình phát hành này không. Để hỗ trợ, bạn có thể cài đặt {AcompatCheck}Kiểm tra Tương thích Tiện ích bổ sung{A2}.{/L} {/U}{/P}{P} Chúng tôi vui mừng thông báo rằng QuickFolders hoàn toàn tương thích với Thunderbird 140, bản phát hành Extended Support Release (ESR) tiếp theo. Điều này có nghĩa là độ tin cậy liên tục và sự an tâm trong suốt chu kỳ hỗ trợ lớn tiếp theo.{/P}{P} QuickFolders sẽ tiếp tục hỗ trợ người dùng Thunderbird 115 trở lên trong thời gian tới. Trong năm tới, khi chúng tôi thêm các tính năng mới, hỗ trợ cho Thunderbird 115 có thể bị loại bỏ để ưu tiên cho Thunderbird 128 và các phiên bản mới hơn.{/P}{P} Chúng tôi liên tục theo dõi các thay đổi của Thunderbird để đảm bảo QuickFolders luôn tương thích và đáng tin cậy, bất kể bạn chọn đường cập nhật nào.{/P}"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài đều có được nhờ sự hỗ trợ của bạn.{P2}{P1 class=specialOffer} Để hỗ trợ phát triển QuickFolders, bạn có thể gia hạn giấy phép với giá ưu đãi đến {salesEnd}.{P2}{P1 class=bottomhint}🡇 Chọn một trong các tùy chọn bên dưới để tìm hiểu thêm 🡇 {P2}"
+    "message": "{P} Tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài đều có được nhờ sự hỗ trợ của bạn.{/P}{P class=specialOffer} Để hỗ trợ phát triển QuickFolders, bạn có thể gia hạn giấy phép với giá ưu đãi đến {salesEnd}.{/P}{P class=bottomhint}🡇 Chọn một trong các tùy chọn bên dưới để tìm hiểu thêm 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} Bạn cũng có thể hỗ trợ khả năng tương thích trong tương lai thông qua giấy phép.{P2}{P1}Tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài đều có được nhờ sự hỗ trợ của bạn.{P2}{P1 class=specialOffer}Để hỗ trợ phát triển QuickFolders, bạn có thể nhận giấy phép Standard hoặc Pro với giá ưu đãi đến {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Chọn một trong các tùy chọn bên dưới để tìm hiểu thêm 🡇 {P2}"
+    "message": "{P} Bạn cũng có thể hỗ trợ khả năng tương thích trong tương lai thông qua giấy phép.{/P}{P}Tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài đều có được nhờ sự hỗ trợ của bạn.{/P}{P class=specialOffer}Để hỗ trợ phát triển QuickFolders, bạn có thể nhận giấy phép Standard hoặc Pro với giá ưu đãi đến {salesEnd}.{/P}{P class=bottomhint} 🡇 Chọn một trong các tùy chọn bên dưới để tìm hiểu thêm 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Cảm ơn bạn đã hỗ trợ QuickFolders với giấy phép Standard.{P2}{P1} Dù giấy phép của bạn đã hết hạn hay vẫn còn hiệu lực, bạn có thể nâng cấp lên Pro ngay bây giờ với giá ưu đãi đến {salesEnd}. Nâng cấp sau khi hết hạn sẽ cho bạn một năm sử dụng đầy đủ kể từ ngày mua.{P2}{P1 class=bottomhint} 🡇 Chọn một trong các tùy chọn bên dưới để tìm hiểu thêm 🡇 {P2}"
+    "message": "{P} Cảm ơn bạn đã hỗ trợ QuickFolders với giấy phép Standard.{/P}{P} Dù giấy phép của bạn đã hết hạn hay vẫn còn hiệu lực, bạn có thể nâng cấp lên Pro ngay bây giờ với giá ưu đãi đến {salesEnd}. Nâng cấp sau khi hết hạn sẽ cho bạn một năm sử dụng đầy đủ kể từ ngày mua.{/P}{P class=bottomhint} 🡇 Chọn một trong các tùy chọn bên dưới để tìm hiểu thêm 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Cảm ơn bạn đã hỗ trợ QuickFolders thông qua giấy phép Pro — điều này giúp tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài trở nên khả thi.{P2}"
+    "message": "{P} Cảm ơn bạn đã hỗ trợ QuickFolders thông qua giấy phép Pro — điều này giúp tất cả các tính năng mới, sửa lỗi và khả năng tương thích lâu dài trở nên khả thi.{/P}"
   },
   "newsSection": {
-    "message": "{P1}{boldStart} Sắp ra mắt trong bản phát hành lớn tiếp theo {boldEnd}: Thunderbird sẽ sớm yêu cầu bạn chọn đường cập nhật ưu tiên — hoặc theo chu kỳ ESR hàng năm hoặc các bản phát hành hàng tháng nhanh hơn. {ARelease}Tìm hiểu thêm về mô hình phát hành mới{A2}.{U1} {L1}Phiên bản ESR sẽ giữ ở v140, chỉ tăng số phiên bản phụ và chỉ bao gồm các bản vá bảo mật và sửa lỗi, điều này thường được ưa chuộng trong môi trường doanh nghiệp.{L2} {L1}Chu kỳ phát hành hàng tháng sẽ cung cấp các tính năng mới và cập nhật giao diện khi chúng được phát triển. Vui lòng kiểm tra xem các tiện ích bổ sung hiện tại của bạn có hỗ trợ mô hình phát hành này không. Để hỗ trợ, bạn có thể cài đặt {AcompatCheck}Kiểm tra Tương thích Tiện ích bổ sung{A2}.{L2} {U2}",
+    "message": "{P}{b} Sắp ra mắt trong bản phát hành lớn tiếp theo {/b}: Thunderbird sẽ sớm yêu cầu bạn chọn đường cập nhật ưu tiên — hoặc theo chu kỳ ESR hàng năm hoặc các bản phát hành hàng tháng nhanh hơn. {ARelease}Tìm hiểu thêm về mô hình phát hành mới{A2}.{U} {L}Phiên bản ESR sẽ giữ ở v140, chỉ tăng số phiên bản phụ và chỉ bao gồm các bản vá bảo mật và sửa lỗi, điều này thường được ưa chuộng trong môi trường doanh nghiệp.{/L} {L}Chu kỳ phát hành hàng tháng sẽ cung cấp các tính năng mới và cập nhật giao diện khi chúng được phát triển. Vui lòng kiểm tra xem các tiện ích bổ sung hiện tại của bạn có hỗ trợ mô hình phát hành này không. Để hỗ trợ, bạn có thể cài đặt {AcompatCheck}Kiểm tra Tương thích Tiện ích bổ sung{A2}.{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -366,10 +366,10 @@
     }
   },
   "newsSection.intro": {
-    "message": "{P1}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{P2}"
+    "message": "{P}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Quan trọng:{boldEnd} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {P2}{P1} Một số người dùng có thể đã thấy cảnh báo không tương thích sai sau khi cập nhật Thunderbird lên $appversion$. Nguyên nhân là do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Tôi đã gửi báo cáo lỗi tới Thunderbird để sửa vấn đề này: [Bugzilla 1986027]{P2}{P1} Hãy yên tâm rằng QuickFolders hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {P2}",
+    "message": "{P}{b}Quan trọng:{/b} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {/P}{P} Một số người dùng có thể đã thấy cảnh báo không tương thích sai sau khi cập nhật Thunderbird lên $appversion$. Nguyên nhân là do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Tôi đã gửi báo cáo lỗi tới Thunderbird để sửa vấn đề này: [Bugzilla 1986027]{/P}{P} Hãy yên tâm rằng QuickFolders hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {/P}",
     "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
@@ -601,6 +601,9 @@
   },
   "qf.checkbox.sortMenusAlpha": {
     "message": "Bắt buộc sắp xếp các thư mục con trên trình đơn theo thứ tự bảng chữ cái."
+  },
+  "qf.checkbox.sortMenusAlpha.reverse": {
+    "message": "Sắp xếp ngược."
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
     "message": "Chỉ sử dụng tùy chọn này nếu hộp thư khách hàng không sắp xếp các thư mục con theo đúng thứ tự."
@@ -1094,6 +1097,9 @@
   },
   "qf.notification.standard.title": {
     "message": "Tính năng tiêu chuẩn"
+  },
+  "qf.notifications.compactFolder": {
+    "message": "Thông báo sau khi nén thư mục"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Màu riêng của từng thẻ"
@@ -1620,7 +1626,7 @@
     "message": "Gia hạn giấy phép của bạn."
   },
   "special-offer-content": {
-    "message": "Nâng cấp tính năng của bạn và tiết kiệm {boldStart}$reduction${boldEnd} khi mua giấy phép {linkStartPro}QuickFolders Pro{linkEnd} đến {boldStart}$expirydate${boldEnd}. Hoặc chọn các chức năng tiêu chuẩn với giấy phép {linkStart}Tiêu chuẩn{linkEnd} mới.",
+    "message": "Nâng cấp tính năng của bạn và tiết kiệm {b}$reduction${/b} khi mua giấy phép {link pro}QuickFolders Pro{/link} đến {b}$expirydate${/b}. Hoặc chọn các chức năng tiêu chuẩn với giấy phép {link}Tiêu chuẩn{/link} mới.",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -1632,7 +1638,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Gia hạn Giấy phép của bạn ngay bây giờ và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart} $expirydate$ {boldEnd}.",
+    "message": "Gia hạn Giấy phép của bạn ngay bây giờ và tiết kiệm {b}$reduction${/b}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {b} $expirydate$ {/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1645,7 +1651,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Nâng cấp ngay từ QuickFolders Standard lên Pro và tiết kiệm {boldStart}$reduction${boldEnd}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {boldStart}$expirydate${boldEnd}.",
+    "message": "Nâng cấp ngay từ QuickFolders Standard lên Pro và tiết kiệm {b}$reduction${/b}! Ưu đãi đặc biệt này sẽ có sẵn cho đến {b}$expirydate${/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1670,7 +1676,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kính gửi {name} {boldEnd}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép. Mã Thunderbird liên tục phát triển và chúng tôi cần {boldStart} sự trợ giúp của bạn {boldEnd} để theo kịp!",
+    "message": "{b} Kính gửi {name} {/b}, vui lòng hỗ trợ $addon$ thông qua việc nhận giấy phép. Mã Thunderbird liên tục phát triển và chúng tôi cần {b} sự trợ giúp của bạn {/b} để theo kịp!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1762,7 +1768,7 @@
   },
   "whats-new-list": {
     "description": "🇻🇳 change log",
-    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
+    "message": "{L} QuickFolders hiện tương thích với Thunderbird 148 {/L}{L} Thêm tùy chọn mới để đảo ngược sắp xếp chữ cái cho các menu thư mục con [issue 600] {/L}{L} quickMove: Con trỏ bây giờ cập nhật đúng khi gõ vào ô tìm kiếm thư mục [issue 623] {/L}{L} Đã sửa: nút Thư mục gần đây bị thiếu trên Thanh công cụ Thư mục hiện tại [issue 620] {/L}{L} Đã sửa nhiều vấn đề hiển thị biểu tượng và menu pop-up {/L}{L} Đã loại bỏ các biểu tượng 🔎 và ✕ trùng lặp trong tìm kiếm quickMove (Thunderbird 142+) [issue 624] {/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

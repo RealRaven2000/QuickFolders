@@ -7,7 +7,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Most a (z) $addonVer$ {boldEnd} verziót futtatja a Thunderbird $appVer$ alkalmazáson.",
+    "message": "Most a (z) $addonVer$ {/b} verziót futtatja a Thunderbird $appVer$ alkalmazáson.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -311,7 +311,7 @@
     "message": "Köszönjük, hogy nemrég meghosszabbította licencét, vagy ha adományozott. Mivel segített a kiegészítő későbbi bizonyításában, egyszerűen bezárhatja ezt az ablakot."
   },
   "licenseComparison": {
-    "message": "A különböző verziók jellemzőinek összehasonlításához {linkStart} olvassa el ezt a listát {linkEnd}."
+    "message": "A különböző verziók jellemzőinek összehasonlításához {link} olvassa el ezt a listát {/link}."
   },
   "licenseTerms.hide": {
     "message": "🡇 Folytatás a licenckiválasztással 🡇"
@@ -353,22 +353,22 @@
     "message": "Legfrissebb hírek"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Hamarosan a következő nagy kiadásban {boldEnd}: A Thunderbird hamarosan megkéri Önt, hogy válassza ki a kívánt frissítési módot — az éves ESR-ágat vagy a gyorsabb havi kiadásokat. {ARelease}Tudjon meg többet az új kiadási modellről{A2}.{U1} {L1}Az ESR-verzió a v140-en marad, csak a kisebb verziószámokat növeli, és csak biztonsági javításokat és hibajavításokat tartalmaz, ami gyakran előnyösebb vállalati környezetben.{L2} {L1}A havi kiadási ciklus új funkciókat és felületfrissítéseket hoz, amint azok elkészülnek. Ellenőrizze, hogy a jelenlegi kiegészítői támogatják-e ezt a kiadási modellt. Ehhez telepítheti a {AcompatCheck}Kiegészítő kompatibilitás-ellenőrzőt{A2}.{L2} {U2}{P2}{P1} Örömmel jelentjük be, hogy a QuickFolders teljesen kompatibilis a Thunderbird 140-nel, a következő Extended Support Release (ESR) kiadással. Ez folyamatos megbízhatóságot és nyugalmat jelent a következő fő támogatási ciklus során.{P2}{P1} A QuickFolders egyelőre továbbra is támogatja a Thunderbird 115 és újabb verzióit. Az elkövetkező év során, ahogy új funkciókat adunk hozzá, a Thunderbird 115 támogatása megszűnhet a Thunderbird 128 és újabb verziók javára.{P2}{P1} Folyamatosan figyeljük a Thunderbird változásait, hogy a QuickFolders mindig kompatibilis és megbízható maradjon, függetlenül a választott frissítési módtól.{P2}"
+    "message": "{P}{b} Hamarosan a következő nagy kiadásban {/b}: A Thunderbird hamarosan megkéri Önt, hogy válassza ki a kívánt frissítési módot — az éves ESR-ágat vagy a gyorsabb havi kiadásokat. {ARelease}Tudjon meg többet az új kiadási modellről{A2}.{U} {L}Az ESR-verzió a v140-en marad, csak a kisebb verziószámokat növeli, és csak biztonsági javításokat és hibajavításokat tartalmaz, ami gyakran előnyösebb vállalati környezetben.{/L} {L}A havi kiadási ciklus új funkciókat és felületfrissítéseket hoz, amint azok elkészülnek. Ellenőrizze, hogy a jelenlegi kiegészítői támogatják-e ezt a kiadási modellt. Ehhez telepítheti a {AcompatCheck}Kiegészítő kompatibilitás-ellenőrzőt{A2}.{/L} {/U}{/P}{P} Örömmel jelentjük be, hogy a QuickFolders teljesen kompatibilis a Thunderbird 140-nel, a következő Extended Support Release (ESR) kiadással. Ez folyamatos megbízhatóságot és nyugalmat jelent a következő fő támogatási ciklus során.{/P}{P} A QuickFolders egyelőre továbbra is támogatja a Thunderbird 115 és újabb verzióit. Az elkövetkező év során, ahogy új funkciókat adunk hozzá, a Thunderbird 115 támogatása megszűnhet a Thunderbird 128 és újabb verziók javára.{/P}{P} Folyamatosan figyeljük a Thunderbird változásait, hogy a QuickFolders mindig kompatibilis és megbízható maradjon, függetlenül a választott frissítési módtól.{/P}"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Minden új funkció, hibajavítás és hosszú távú kompatibilitás az Ön támogatásának köszönhető.{P2}{P1 class=specialOffer} A QuickFolders fejlesztésének támogatásához kedvezményesen megújíthatja licencét {salesEnd}-ig.{P2}{P1 class=bottomhint}🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {P2}"
+    "message": "{P} Minden új funkció, hibajavítás és hosszú távú kompatibilitás az Ön támogatásának köszönhető.{/P}{P class=specialOffer} A QuickFolders fejlesztésének támogatásához kedvezményesen megújíthatja licencét {salesEnd}-ig.{/P}{P class=bottomhint}🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} Ön is támogathatja a jövőbeni kompatibilitást licenccel.{P2}{P1}Minden új funkció, hibajavítás és hosszú távú kompatibilitás az Ön támogatásának köszönhető.{P2}{P1 class=specialOffer}A QuickFolders fejlesztésének támogatásához kedvezményesen szerezhet Standard vagy Pro licencet {salesEnd}-ig.{P2}{P1 class=bottomhint} 🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {P2}"
+    "message": "{P} Ön is támogathatja a jövőbeni kompatibilitást licenccel.{/P}{P}Minden új funkció, hibajavítás és hosszú távú kompatibilitás az Ön támogatásának köszönhető.{/P}{P class=specialOffer}A QuickFolders fejlesztésének támogatásához kedvezményesen szerezhet Standard vagy Pro licencet {salesEnd}-ig.{/P}{P class=bottomhint} 🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Köszönjük, hogy Standard licenccel támogatja a QuickFolders-t.{P2}{P1} Függetlenül attól, hogy licencje lejárt vagy még aktív, most kedvezményesen frissíthet Pro-ra {salesEnd}-ig. A lejárat utáni frissítés a vásárlás dátumától számított teljes év használatot biztosít.{P2}{P1 class=bottomhint} 🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {P2}"
+    "message": "{P} Köszönjük, hogy Standard licenccel támogatja a QuickFolders-t.{/P}{P} Függetlenül attól, hogy licencje lejárt vagy még aktív, most kedvezményesen frissíthet Pro-ra {salesEnd}-ig. A lejárat utáni frissítés a vásárlás dátumától számított teljes év használatot biztosít.{/P}{P class=bottomhint} 🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Köszönjük, hogy Pro licenccel támogatja a QuickFolders-t — ez teszi lehetővé az összes új funkciót, hibajavítást és hosszú távú kompatibilitást.{P2}"
+    "message": "{P} Köszönjük, hogy Pro licenccel támogatja a QuickFolders-t — ez teszi lehetővé az összes új funkciót, hibajavítást és hosszú távú kompatibilitást.{/P}"
   },
   "newsSection": {
-    "message": "{P1}{boldStart} Hamarosan a következő nagy kiadásban {boldEnd}: A Thunderbird hamarosan megkéri Önt, hogy válassza ki a kívánt frissítési módot — az éves ESR-ágat vagy a gyorsabb havi kiadásokat. {ARelease}Tudjon meg többet az új kiadási modellről{A2}.{U1} {L1}Az ESR-verzió a v140-en marad, csak a kisebb verziószámokat növeli, és csak biztonsági javításokat és hibajavításokat tartalmaz, ami gyakran előnyösebb vállalati környezetben.{L2} {L1}A havi kiadási ciklus új funkciókat és felületfrissítéseket hoz, amint azok elkészülnek. Ellenőrizze, hogy a jelenlegi kiegészítői támogatják-e ezt a kiadási modellt. Ehhez telepítheti a {AcompatCheck}Kiegészítő kompatibilitás-ellenőrzőt{A2}.{L2} {U2}",
+    "message": "{P}{b} Hamarosan a következő nagy kiadásban {/b}: A Thunderbird hamarosan megkéri Önt, hogy válassza ki a kívánt frissítési módot — az éves ESR-ágat vagy a gyorsabb havi kiadásokat. {ARelease}Tudjon meg többet az új kiadási modellről{A2}.{U} {L}Az ESR-verzió a v140-en marad, csak a kisebb verziószámokat növeli, és csak biztonsági javításokat és hibajavításokat tartalmaz, ami gyakran előnyösebb vállalati környezetben.{/L} {L}A havi kiadási ciklus új funkciókat és felületfrissítéseket hoz, amint azok elkészülnek. Ellenőrizze, hogy a jelenlegi kiegészítői támogatják-e ezt a kiadási modellt. Ehhez telepítheti a {AcompatCheck}Kiegészítő kompatibilitás-ellenőrzőt{A2}.{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -377,10 +377,10 @@
     }
   },
   "newsSection.intro": {
-    "message": "{P1}Továbbra is követjük a Thunderbird havi kiadási ciklusát a kompatibilitás és a stabilitás biztosítása érdekében. Ahogy mindig, ez a munka teljes egészében a licenceladásokból finanszírozott.{P2}"
+    "message": "{P}Továbbra is követjük a Thunderbird havi kiadási ciklusát a kompatibilitás és a stabilitás biztosítása érdekében. Ahogy mindig, ez a munka teljes egészében a licenceladásokból finanszírozott.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Fontos:{boldEnd} A Thunderbird folytatja havi kiadási ciklusát. {P2}{P1} Néhány felhasználó hamis inkompatibilitási figyelmeztetést láthatott a Thunderbird $appversion$ verzióra való frissítése után. Ennek oka a Thunderbird gyorsítótárban tárolt kompatibilitási információja, amely néha nem frissül megfelelően. Jelentettem egy hibát a Thunderbirdnek: [Bugzilla 1986027]{P2}{P1} Biztos lehet benne, hogy a QuickFolders teljes mértékben támogatja a havi és az ESR (140.*) csatornákat, és folytathatja a munkát megszakítás nélkül. {P2}",
+    "message": "{P}{b}Fontos:{/b} A Thunderbird folytatja havi kiadási ciklusát. {/P}{P} Néhány felhasználó hamis inkompatibilitási figyelmeztetést láthatott a Thunderbird $appversion$ verzióra való frissítése után. Ennek oka a Thunderbird gyorsítótárban tárolt kompatibilitási információja, amely néha nem frissül megfelelően. Jelentettem egy hibát a Thunderbirdnek: [Bugzilla 1986027]{/P}{P} Biztos lehet benne, hogy a QuickFolders teljes mértékben támogatja a havi és az ESR (140.*) csatornákat, és folytathatja a munkát megszakítás nélkül. {/P}",
     "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
@@ -639,6 +639,9 @@
   },
   "qf.checkbox.sortMenusAlpha": {
     "message": "Almappák felsorolása ABC sorrendben a menüben"
+  },
+  "qf.checkbox.sortMenusAlpha.reverse": {
+    "message": "Fordított rendezés."
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
     "message": "Csak akkor használja ezt a funkciót, ha az e-mail kliense nem megfelelő sorrendben jeleníti meg az almappákat."
@@ -1184,6 +1187,9 @@
   "qf.notification.standard.title": {
     "message": "Standard funkció"
   },
+  "qf.notifications.compactFolder": {
+    "message": "Értesítés a mappa tömörítése után"
+  },
   "qf.options.LayoutColorAppearance": {
     "message": "Egyéni fül szín megjelenítés"
   },
@@ -1697,7 +1703,7 @@
     "message": "Újítsa meg a licencét."
   },
   "special-offer-content": {
-    "message": "Bővítse funkcióit, és takarítson meg {boldStart}$reduction${boldEnd} egy {linkStartPro}QuickFolders Pro licenc megvásárlásával{linkEnd} {boldStart}$expirydate${boldEnd} előtt. Vagy válassza az új {linkStart}Standard Licencet{linkEnd} a standard funkciókkal.",
+    "message": "Bővítse funkcióit, és takarítson meg {b}$reduction${/b} egy {link pro}QuickFolders Pro licenc megvásárlásával{/link} {b}$expirydate${/b} előtt. Vagy válassza az új {link}Standard Licencet{/link} a standard funkciókkal.",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -1709,7 +1715,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Újítsa meg most a licencét, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
+    "message": "Újítsa meg most a licencét, és takarítson meg {b}$reduction${/b}! Ez a különleges ajánlat {b}$expirydate${/b} -ig érhető el.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1722,7 +1728,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Frissítsen most a QuickFolders Standard -ról a Pro -ra, és takarítson meg {boldStart}$reduction${boldEnd}! Ez a különleges ajánlat {boldStart}$expirydate${boldEnd} -ig érhető el.",
+    "message": "Frissítsen most a QuickFolders Standard -ról a Pro -ra, és takarítson meg {b}$reduction${/b}! Ez a különleges ajánlat {b}$expirydate${/b} -ig érhető el.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1747,7 +1753,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Kedves {name} {boldEnd}! Kérjük, támogassa a $addon$ -ot egy licenc megszerzésével. A Thunderbird kód folyamatosan fejlődik, és {boldStart} segítségére van szükségünk {boldEnd}, hogy lépést tarthassunk!",
+    "message": "{b} Kedves {name} {/b}! Kérjük, támogassa a $addon$ -ot egy licenc megszerzésével. A Thunderbird kód folyamatosan fejlődik, és {b} segítségére van szükségünk {/b}, hogy lépést tarthassunk!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -1836,7 +1842,7 @@
   },
   "whats-new-list": {
     "description": "🇭🇺 change log",
-    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
+    "message": "{L} A QuickFolders mostantól kompatibilis a Thunderbird 148-cal {/L}{L} Új opció hozzáadva az almappák menüinek ábécérendjének megfordítására [issue 600] {/L}{L} quickMove: A kurzor most már helyesen frissül a mappakereső mezőbe gépelés közben [issue 623] {/L}{L} Javítva: Hiányzó legutóbbi mappák gomb a jelenlegi mappa eszköztárán [issue 620] {/L}{L} Különböző ikon- és felugró menü megjelenítési problémák javítva {/L}{L} Duplikált 🔎 és ✕ ikonok eltávolítva a quickMove keresésből (Thunderbird 142+) [issue 624] {/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

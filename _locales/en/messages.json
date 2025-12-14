@@ -6,7 +6,7 @@
     "message": "Select account:"
   },
   "active-version-info": {
-    "message": "You are now running {boldStart} version $addonVer$ {boldEnd} on Thunderbird $appVer$.",
+    "message": "You are now running {b} version $addonVer$ {/b} on Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -201,7 +201,7 @@
     "message": "Enter the License Key code sent to you via Email."
   },
   "extend-your-license": {
-    "message": "Consider extending your license by a year."
+    "message": "Please consider extending your license by a year."
   },
   "extensionDescription": {
     "description": "Description of the extension.",
@@ -347,7 +347,7 @@
     "message": "Thank you for recently extending your license or if you have donated. As you have helped to future proof this Add-on, you can simply close this window."
   },
   "licenseComparison": {
-    "message": "To compare the features of the different licenses, {linkStart}read this list{linkEnd}."
+    "message": "To compare the features of the different licenses, {link}read this list{/link}."
   },
   "licenseTerms.hide": {
     "message": "🡇 Continue to License Selection 🡇"
@@ -398,22 +398,22 @@
   },
   "newsHead": { "message": "Latest News" },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Upcoming in the next big release {boldEnd}: Thunderbird will soon ask you to choose your preferred update path — either the annual ESR track or the faster monthly releases. {ARelease}Learn more about the new release model{A2}.{U1} {L1}The ESR version will stay on v140, increasing minor version numbers and including only security fixes and bug patches, which is often preferable for corporate environments.{L2} {L1}The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the {AcompatCheck}Add-on Compatibility Check{A2}.{L2} {U2}{P2}{P1} We're happy to announce that QuickFolders is fully compatible with Thunderbird 140, the next Extended Support Release (ESR). This means ongoing reliability and peace of mind through the next major support cycle.{P2}{P1} QuickFolders continues to support users on Thunderbird 115 and above for now. Over the coming year, as we add new features, support for Thunderbird 115 may be phased out in favor of Thunderbird 128 and newer.{P2}{P1} We continuously monitor Thunderbird changes to ensure QuickFolders remains compatible and reliable, regardless of the release track you choose.{P2}"
+    "message": "{P}{b} Upcoming in the next big release {/b}: Thunderbird will soon ask you to choose your preferred update path — either the annual ESR track or the faster monthly releases. {ARelease}Learn more about the new release model{A2}.{U} {L}The ESR version will stay on v140, increasing minor version numbers and including only security fixes and bug patches, which is often preferable for corporate environments.{/L} {L}The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the {AcompatCheck}Add-on Compatibility Check{A2}.{/L} {/U}{/P}{P} We're happy to announce that QuickFolders is fully compatible with Thunderbird 140, the next Extended Support Release (ESR). This means ongoing reliability and peace of mind through the next major support cycle.{/P}{P} QuickFolders continues to support users on Thunderbird 115 and above for now. Over the coming year, as we add new features, support for Thunderbird 115 may be phased out in favor of Thunderbird 128 and newer.{/P}{P} We continuously monitor Thunderbird changes to ensure QuickFolders remains compatible and reliable, regardless of the release track you choose.{/P}"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} All new features, bug fixes, and long-term compatibility are made possible through your support.{P2}{P1 class=specialOffer} To help sustain QuickFolders development, you can renew your license at a discount until {salesEnd}.{P2}{P1 class=bottomhint}🡇 Choose one of the options below to learn more 🡇 {P2}"
+    "message": "{P} All new features, bug fixes, and long-term compatibility are made possible through your support.{/P}{P class=specialOffer} To help sustain QuickFolders development, you can renew your license at a discount until {salesEnd}.{/P}{P class=bottomhint}🡇 Choose one of the options below to learn more 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} You too can now support future compatibility though a license.{P2}{P1}All new features, bug fixes, and long-term compatibility are made possible through your support.{P2}{P1 class=specialOffer}To help sustain QuickFolders development, you can get a Standard or Pro license at a discount until {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Choose one of the options below to learn more 🡇 {P2}"
+    "message": "{P} You too can now support future compatibility though a license.{/P}{P}All new features, bug fixes, and long-term compatibility are made possible through your support.{/P}{P class=specialOffer}To help sustain QuickFolders development, you can get a Standard or Pro license at a discount until {salesEnd}.{/P}{P class=bottomhint} 🡇 Choose one of the options below to learn more 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Thank you for supporting QuickFolders with a Standard license.{P2}{P1} Whether your license has expired or is still active, you can upgrade to Pro now at a great discount until {salesEnd}. Upgrading after expiration grants you a full year of usage starting from your purchase date.{P2}{P1 class=bottomhint} 🡇 Choose one of the options below to learn more 🡇 {P2}"
+    "message": "{P} Thank you for supporting QuickFolders with a Standard license.{/P}{P} Whether your license has expired or is still active, you can upgrade to Pro now at a great discount until {salesEnd}. Upgrading after expiration grants you a full year of usage starting from your purchase date.{/P}{P class=bottomhint} 🡇 Choose one of the options below to learn more 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Thank you for supporting QuickFolders through a Pro license — this makes all new features, bug fixes, and long-term compatibility possible.{P2}"
+    "message": "{P} Thank you for supporting QuickFolders through a Pro license — this makes all new features, bug fixes, and long-term compatibility possible.{/P}"
   },
   "newsSection": {
-    "message": "{P1}{boldStart} Upcoming in the next big release {boldEnd}: Thunderbird will soon ask you to choose your preferred update path — either the annual ESR track or the faster monthly releases. {ARelease}Learn more about the new release model{A2}.{U1} {L1}The ESR version will stay on v140, increasing minor version numbers and including only security fixes and bug patches, which is often preferable for corporate environments.{L2} {L1}The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the {AcompatCheck}Add-on Compatibility Check{A2}.{L2} {U2}",
+    "message": "{P}{b} Upcoming in the next big release {/b}: Thunderbird will soon ask you to choose your preferred update path — either the annual ESR track or the faster monthly releases. {ARelease}Learn more about the new release model{A2}.{U} {L}The ESR version will stay on v140, increasing minor version numbers and including only security fixes and bug patches, which is often preferable for corporate environments.{/L} {L}The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the {AcompatCheck}Add-on Compatibility Check{A2}.{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -422,11 +422,10 @@
     }
   },
   "newsSection.intro": {
-    "message": "{P1}We continue to follow Thunderbird’s monthly release cycle to ensure compatibility and stability. As always, this work is entirely financed by license sales.{P2}"
+    "message": "{P}We continue to follow Thunderbird’s monthly release cycle to ensure compatibility and stability. As always, this work is entirely financed by license sales.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continues its monthly release cycle. {P2}{P1} Some users may have seen a false incompatibility warning after updating Thunderbird to $appversion$. This was caused by cached compatibility information in Thunderbird, which sometimes fails to refresh correctly. I raised a bug with Thunderbird to fix this: [Bugzilla 1986027]{P2}{P1} Rest assured, QuickFolders fully supports both the monthly and ESR (140.*) channels, and you can continue working without interruption. {P2}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}{b}Important:{/b} Some users may still see a false incompatibility warning in Thunderbird due to cached compatibility info. {/P}{P} To address this I’ve raised a bug with Thunderbird: [Bugzilla 1986027]{/P}{P} QuickFolders continues to fully support both monthly and ESR (140.*) releases by testing with daily builds and raising the maximum supported application version ahead of time. {/P}"
   },
   "newsSection.license": {
     "message": "As all work on QuickFolders and free support are funded exclusively by license sales, please consider buying a license or renewing your current one."
@@ -720,6 +719,9 @@
   },
   "qf.checkbox.sortMenusAlpha": {
     "message": "Force alphabetic sorting of menus with subfolders."
+  },
+  "qf.checkbox.sortMenusAlpha.reverse": {
+    "message": "Reverse Sorting."
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
     "message": "Only use this option if your mail client doesn't sort the subfolders correctly."
@@ -1315,6 +1317,9 @@
   },
   "qf.notification.standard.title": {
     "message": "Licensed Feature"
+  },
+  "qf.notifications.compactFolder": {
+    "message": "Notify after folder has been compacted"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Individual Tab Color Appearance"
@@ -1998,7 +2003,7 @@
     "message": "Renew your license."
   },
   "special-offer-content": {
-    "message": "Upgrade your features and save {boldStart}$reduction${boldEnd} when buying a {linkStartPro}QuickFolders Pro license{linkEnd} until {boldStart}$expirydate${boldEnd}. Or choose the standard functions with the new {linkStart}Standard License{linkEnd}.",
+    "message": "Upgrade your features and save {b}$reduction${/b} when buying a {link pro}QuickFolders Pro license{/link} until {b}$expirydate${/b}. Or choose the standard functions with the new {link}Standard License{/link}.",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -2010,7 +2015,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renew your License now and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Renew your License now and save {b}$reduction${/b}! This special offer will be available until {b}$expirydate${/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -2023,7 +2028,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Upgrade now from QuickFolders Standard to Pro and save {boldStart}$reduction${boldEnd}! This special offer will be available until {boldStart}$expirydate${boldEnd}.",
+    "message": "Upgrade now from QuickFolders Standard to Pro and save {b}$reduction${/b}! This special offer will be available until {b}$expirydate${/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -2047,7 +2052,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart}Dear {name}{boldEnd}, please support $addon$ through getting a license. The Thunderbird code continuously evolves and we need {boldStart}your help{boldEnd} to keep up!",
+    "message": "{b}Dear {name}{/b}, please support $addon$ through getting a license. The Thunderbird code continuously evolves and we need {b}your help{/b} to keep up!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -2142,7 +2147,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
+    "message": "{L} Made QuickFolders compatible with Thunderbird 148 {/L}{L} Added a new option to reverse alphabetic sorting of subfolder menus [issue 600] {/L}{L} quickMove: Cursor now updates correctly while typing in the folder search box [issue 623] {/L}{L} Fixed: Recent folders button missing on the Current Folder Toolbar [issue 620] {/L}{L} Fixed various icon and popup menu display issues {/L}{L} Removed duplicate 🔎 and ✕ icons in quickMove search (Thunderbird 142+) [issue 624] {/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

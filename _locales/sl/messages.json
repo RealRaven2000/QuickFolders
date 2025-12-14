@@ -7,7 +7,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Zdaj izvajate {boldStart} različico $addonVer$ {boldEnd} na Thunderbird $appVer$.",
+    "message": "Zdaj izvajate {b} različico $addonVer$ {/b} na Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -328,7 +328,7 @@
     "message": "Zahvaljujemo se vam za nedavno podaljšanje licence ali če ste prispevali. Ker ste pomagali pri prihodnjem preverjanju tega dodatka, lahko preprosto zaprete to okno."
   },
   "licenseComparison": {
-    "message": "Če želite primerjati funkcije različnih različic,{linkStart} preberite ta seznam{linkEdin}."
+    "message": "Če želite primerjati funkcije različnih različic,{link} preberite ta seznam{linkEdin}."
   },
   "licenseTerms.hide": {
     "message": "🡇 Nadaljuj z izbiro licence 🡇"
@@ -381,22 +381,22 @@
     "message": "Zadnje novice"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Kmalu v naslednji veliki izdaji {boldEnd}: Thunderbird vas bo kmalu prosil, da izberete svojo želeno pot posodobitev — letno ESR pot ali hitrejše mesečne izdaje. {ARelease}Več o novem modelu izdaj{A2}.{U1} {L1}ESR različica bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in popravke napak, kar je pogosto bolj primerno za poslovna okolja.{L2} {L1}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo razvite. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaj. Za pomoč lahko namestite {AcompatCheck}Preverjanje združljivosti dodatkov{A2}.{L2} {U2}{P2}{P1} Z veseljem sporočamo, da je QuickFolders popolnoma združljiv s Thunderbirdom 140, naslednjo izdajo Extended Support Release (ESR). To pomeni stalno zanesljivost in brezskrbnost skozi naslednji glavni cikel podpore.{P2}{P1} QuickFolders bo za zdaj še naprej podpiral uporabnike Thunderbirda 115 in novejših. V prihodnjem letu, ko bomo dodajali nove funkcije, se lahko podpora za Thunderbird 115 ukine v korist Thunderbirda 128 in novejših.{P2}{P1} Neprestano spremljamo spremembe v Thunderbirdu, da zagotovimo, da QuickFolders ostane združljiv in zanesljiv, ne glede na izbrano pot posodobitev.{P2}"
+    "message": "{P}{b} Kmalu v naslednji veliki izdaji {/b}: Thunderbird vas bo kmalu prosil, da izberete svojo želeno pot posodobitev — letno ESR pot ali hitrejše mesečne izdaje. {ARelease}Več o novem modelu izdaj{A2}.{U} {L}ESR različica bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in popravke napak, kar je pogosto bolj primerno za poslovna okolja.{/L} {L}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo razvite. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaj. Za pomoč lahko namestite {AcompatCheck}Preverjanje združljivosti dodatkov{A2}.{/L} {/U}{/P}{P} Z veseljem sporočamo, da je QuickFolders popolnoma združljiv s Thunderbirdom 140, naslednjo izdajo Extended Support Release (ESR). To pomeni stalno zanesljivost in brezskrbnost skozi naslednji glavni cikel podpore.{/P}{P} QuickFolders bo za zdaj še naprej podpiral uporabnike Thunderbirda 115 in novejših. V prihodnjem letu, ko bomo dodajali nove funkcije, se lahko podpora za Thunderbird 115 ukine v korist Thunderbirda 128 in novejših.{/P}{P} Neprestano spremljamo spremembe v Thunderbirdu, da zagotovimo, da QuickFolders ostane združljiv in zanesljiv, ne glede na izbrano pot posodobitev.{/P}"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Vse nove funkcije, popravki napak in dolgoročna združljivost so možni zaradi vaše podpore.{P2}{P1 class=specialOffer} Za podporo razvoju QuickFolders lahko svojo licenco obnovite s popustom do {salesEnd}.{P2}{P1 class=bottomhint}🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {P2}"
+    "message": "{P} Vse nove funkcije, popravki napak in dolgoročna združljivost so možni zaradi vaše podpore.{/P}{P class=specialOffer} Za podporo razvoju QuickFolders lahko svojo licenco obnovite s popustom do {salesEnd}.{/P}{P class=bottomhint}🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} Tudi vi lahko zdaj podprete prihodnjo združljivost z licenco.{P2}{P1}Vse nove funkcije, popravki napak in dolgoročna združljivost so možni zaradi vaše podpore.{P2}{P1 class=specialOffer}Za podporo razvoju QuickFolders lahko pridobite Standardno ali Pro licenco s popustom do {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {P2}"
+    "message": "{P} Tudi vi lahko zdaj podprete prihodnjo združljivost z licenco.{/P}{P}Vse nove funkcije, popravki napak in dolgoročna združljivost so možni zaradi vaše podpore.{/P}{P class=specialOffer}Za podporo razvoju QuickFolders lahko pridobite Standardno ali Pro licenco s popustom do {salesEnd}.{/P}{P class=bottomhint} 🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Hvala, ker podpirate QuickFolders s Standardno licenco.{P2}{P1} Ne glede na to, ali je vaša licenca potekla ali je še vedno aktivna, lahko zdaj nadgradite na Pro s popustom do {salesEnd}. Nadgradnja po poteku vam omogoča celo leto uporabe od datuma nakupa.{P2}{P1 class=bottomhint} 🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {P2}"
+    "message": "{P} Hvala, ker podpirate QuickFolders s Standardno licenco.{/P}{P} Ne glede na to, ali je vaša licenca potekla ali je še vedno aktivna, lahko zdaj nadgradite na Pro s popustom do {salesEnd}. Nadgradnja po poteku vam omogoča celo leto uporabe od datuma nakupa.{/P}{P class=bottomhint} 🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Hvala, ker podpirate QuickFolders s Pro licenco — to omogoča vse nove funkcije, popravke napak in dolgoročno združljivost.{P2}"
+    "message": "{P} Hvala, ker podpirate QuickFolders s Pro licenco — to omogoča vse nove funkcije, popravke napak in dolgoročno združljivost.{/P}"
   },
   "newsSection": {
-    "message": "{P1}{boldStart} Kmalu v naslednji veliki izdaji {boldEnd}: Thunderbird vas bo kmalu prosil, da izberete svojo želeno pot posodobitev — letno ESR pot ali hitrejše mesečne izdaje. {ARelease}Več o novem modelu izdaj{A2}.{U1} {L1}ESR različica bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in popravke napak, kar je pogosto bolj primerno za poslovna okolja.{L2} {L1}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo razvite. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaj. Za pomoč lahko namestite {AcompatCheck}Preverjanje združljivosti dodatkov{A2}.{L2} {U2}",
+    "message": "{P}{b} Kmalu v naslednji veliki izdaji {/b}: Thunderbird vas bo kmalu prosil, da izberete svojo želeno pot posodobitev — letno ESR pot ali hitrejše mesečne izdaje. {ARelease}Več o novem modelu izdaj{A2}.{U} {L}ESR različica bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in popravke napak, kar je pogosto bolj primerno za poslovna okolja.{/L} {L}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo razvite. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaj. Za pomoč lahko namestite {AcompatCheck}Preverjanje združljivosti dodatkov{A2}.{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -405,10 +405,10 @@
     }
   },
   "newsSection.intro": {
-    "message": "{P1}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{P2}"
+    "message": "{P}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Pomembno:{boldEnd} Thunderbird nadaljuje svoj mesečni cikel izdaj. {P2}{P1} Nekateri uporabniki so po posodobitvi Thunderbirda na $appversion$ morda videli napačno opozorilo o nezdružljivosti. To je bilo povzročeno zaradi predpomnjenih informacij o združljivosti v Thunderbirdu, ki se včasih ne osvežijo pravilno. Napako sem prijavil v Thunderbirdu: [Bugzilla 1986027]{P2}{P1} Zagotovite, da QuickFolders popolnoma podpira tako mesečni kot ESR (140.*) kanal in lahko nadaljujete z delom brez prekinitev. {P2}",
+    "message": "{P}{b}Pomembno:{/b} Thunderbird nadaljuje svoj mesečni cikel izdaj. {/P}{P} Nekateri uporabniki so po posodobitvi Thunderbirda na $appversion$ morda videli napačno opozorilo o nezdružljivosti. To je bilo povzročeno zaradi predpomnjenih informacij o združljivosti v Thunderbirdu, ki se včasih ne osvežijo pravilno. Napako sem prijavil v Thunderbirdu: [Bugzilla 1986027]{/P}{P} Zagotovite, da QuickFolders popolnoma podpira tako mesečni kot ESR (140.*) kanal in lahko nadaljujete z delom brez prekinitev. {/P}",
     "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
@@ -691,6 +691,9 @@
   },
   "qf.checkbox.sortMenusAlpha": {
     "message": "Vsili razvrščanje menijev s podmapami po abecedi"
+  },
+  "qf.checkbox.sortMenusAlpha.reverse": {
+    "message": "Obrnjeno razvrščanje."
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
     "message": "To možnost uporabite samo, če poštni odjemalec ne razvršča podmap pravilno."
@@ -1253,6 +1256,9 @@
   },
   "qf.notification.standard.title": {
     "message": "Standardna funkcija"
+  },
+  "qf.notifications.compactFolder": {
+    "message": "Obvesti po stiskanju mape"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Videz barve posameznega zavihka"
@@ -1890,7 +1896,7 @@
     "message": "Obnovite licenco."
   },
   "special-offer-content": {
-    "message": "Nadgradite svoje funkcije in prihranite {boldStart}$reduction${boldEnd}, ko kupite {linkStartPro}licenco QuickFolders Pro{linkEnd} do {boldStart}$expirydate${boldEnd}. Ali izberite standardne funkcije z novo {linkStart}Standardno licenco{linkEnd}.",
+    "message": "Nadgradite svoje funkcije in prihranite {b}$reduction${/b}, ko kupite {link pro}licenco QuickFolders Pro{/link} do {b}$expirydate${/b}. Ali izberite standardne funkcije z novo {link}Standardno licenco{/link}.",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -1902,7 +1908,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Podaljšajte licenco zdaj in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart} $expirydate$ {boldEnd}.",
+    "message": "Podaljšajte licenco zdaj in prihranite {b}$reduction${/b}! Ta posebna ponudba bo na voljo do {b} $expirydate$ {/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1915,7 +1921,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Nadgradite zdaj iz QuickFolders Standard na Pro in prihranite {boldStart}$reduction${boldEnd}! Ta posebna ponudba bo na voljo do {boldStart}$expirydate${boldEnd}.",
+    "message": "Nadgradite zdaj iz QuickFolders Standard na Pro in prihranite {b}$reduction${/b}! Ta posebna ponudba bo na voljo do {b}$expirydate${/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1940,7 +1946,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Spoštovani {name} {boldEnd}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {boldStart} vašo pomoč {boldEnd}!",
+    "message": "{b} Spoštovani {name} {/b}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {b} vašo pomoč {/b}!",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -2035,7 +2041,7 @@
   },
   "whats-new-list": {
     "description": "🇸🇮 change log",
-    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
+    "message": "{L} QuickFolders je zdaj združljiv s Thunderbird 148 {/L}{L} Dodana nova možnost za obratno abecedno razvrščanje podmenijev map [issue 600] {/L}{L} quickMove: kazalec se zdaj pravilno posodobi med tipkanjem v iskalno polje map [issue 623] {/L}{L} Popravljeno: gumb za nedavne mape, ki je manjkal na orodni vrstici trenutne mape [issue 620] {/L}{L} Popravljene različne vizualne težave ikon in pojavnimi meniji {/L}{L} Odstranjene podvojene ikone 🔎 in ✕ v iskanju quickMove (Thunderbird 142+) [issue 624] {/L}"
   },
   "yearlyLicense.premiumFeatures": {
     "message": "QuickFolders Pro vam omogoča poln neomejen dostop do značilnosti Premium."

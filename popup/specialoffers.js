@@ -18,7 +18,7 @@ const REDUCTION_RENEW = "20%", // 25
   REDUCTION_PRO = "33%", // 40
   REDUCTION_UPGRADE = "33%",
   // eslint-disable-next-line no-unused-vars
-  SALE_END_DATE = "2025-07-08";
+  SALE_END_DATE = "2025-12-26";
 
 function getSaleEndLabel() {
   // format date based on user’s locale
@@ -65,17 +65,19 @@ async function updateSpecialOffersFields(addonName) {
 
   let elementsSI = document.querySelectorAll(".specialOfferIntro"),
     txtSI = messenger.i18n.getMessage('special-offer-intro', addonName)
-            .replace(/\{boldStart\}/g,"<b>")
-            .replace(/\{boldEnd\}/g,"</b>")
+            .replace(/\{bold\}/g,"<b>")
+            .replace(/\{\/bold\}/g,"</b>")
             .replace("{name}", userName);
   for (let el of elementsSI) {
     insertHtmlSafely(el, txtSI, true);
   }
 
   let elementsC = document.querySelectorAll(".featureComparison"),
-      txtComp = messenger.i18n.getMessage("licenseComparison")
-        .replace(/\{linkStart\}/, "<a id='compLink'>")
-        .replace(/\{linkEnd\}/, "</a>");
+    txtComp = messenger.i18n
+      .getMessage("licenseComparison")
+      .replace(/\{link\}/g, "<a id='compLink'>")
+      .replace(/\{link pro\}/g, "<a id='proLink'>")
+      .replace(/\{\/link\}/g, "</a>");
   for (let el of elementsC) {
     insertHtmlSafely(el, txtComp, true);
   }  
@@ -89,11 +91,11 @@ async function updateSpecialOffersFields(addonName) {
       specialOffer,
       messenger.i18n
         .getMessage("special-offer-content", [endSale, reduction])
-        .replace(/\{boldStart\}/g, "<b>")
-        .replace(/\{boldEnd\}/g, "</b>")
-        .replace(/\{linkStart\}/, "<a id='stdLink'>")
-        .replace(/\{linkEnd\}/g, "</a>")
-        .replace(/\{linkStartPro\}/, "<a id='proLink'>"),
+        .replace(/\{bold\}/g, "<b>")
+        .replace(/\{\/bold\}/g, "</b>")
+        .replace(/\{link\}/g, "<a id='stdLink'>")
+        .replace(/\{\/link\}/g, "</a>")
+        .replace(/\{link pro}/g, "<a id='proLink'>"),
       true
     );
   }
@@ -106,8 +108,8 @@ async function updateSpecialOffersFields(addonName) {
       specialRenew,
       messenger.i18n
         .getMessage("special-offer-renew", [endSale, reduction])
-        .replace(/\{boldStart\}/g, "<b>")
-        .replace(/\{boldEnd\}/g, "</b>"),
+        .replace(/\{bold\}/g, "<b>")
+        .replace(/\{\/bold\}/g, "</b>"),
       true
     );
   }
@@ -120,10 +122,10 @@ async function updateSpecialOffersFields(addonName) {
       specialOfferUpgrade,
       messenger.i18n
         .getMessage("special-offer-upgrade", [endSale, REDUCTION_UPGRADE])
-        .replace(/\{boldStart\}/g, "<b>")
-        .replace(/\{boldEnd\}/g, "</b>")
-        .replace(/\{linkStart\}/, "<a id='stdLink'>")
-        .replace(/\{linkEnd\}/, "</a>"),
+        .replace(/\{bold\}/g, "<b>")
+        .replace(/\{\/bold\}/g, "</b>")
+        .replace(/\{link\}/g, "<a id='stdLink'>")
+        .replace(/\{\/link\}/g, "</a>"),
       true
     );
   }

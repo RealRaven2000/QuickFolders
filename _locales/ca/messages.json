@@ -7,7 +7,7 @@
   },
   "active-version-info": {
     "description": "The boldStart and boldEnd parts will be replaced with html tags",
-    "message": "Ara esteu executant la {boldStart} versió $addonVer$ {boldEnd} a Thunderbird $appVer$.",
+    "message": "Ara esteu executant la {b} versió $addonVer$ {/b} a Thunderbird $appVer$.",
     "placeholders": {
       "addonVer": {
         "content": "$1",
@@ -329,7 +329,7 @@
     "message": "Gràcies per ampliar recentment la llicència o si heu donat. Com heu ajudat a provar aquest complement en un futur, només podeu tancar aquesta finestra."
   },
   "licenseComparison": {
-    "message": "Per comparar les funcions de les diferents versions, {linkStart} llegiu aquesta llista {linkEnd}."
+    "message": "Per comparar les funcions de les diferents versions, {link} llegiu aquesta llista {/link}."
   },
   "licenseTerms.hide": {
     "message": "🡇 Continua amb la selecció de la llicència 🡇"
@@ -386,22 +386,22 @@
     "message": "Últimes notícies"
   },
   "newsMsgEsr140": {
-    "message": "{P1}{boldStart} Pròximament a la propera gran versió {boldEnd}: Thunderbird aviat us demanarà que trieu el vostre camí d’actualització preferit: la via anual ESR o les versions mensuals més ràpides. {ARelease}Més informació sobre el nou model de llançament{A2}.{U1} {L1}La versió ESR es mantindrà a la v140, augmentant només els números de versió menors i incloent només correccions de seguretat i errors, cosa que sovint és preferible per a entorns corporatius.{L2} {L1}El cicle de llançament mensual oferirà noves funcions i actualitzacions d’interfície a mesura que es desenvolupin. Comproveu si els vostres complements actuals admeten aquest model de llançament. Per ajudar-vos, podeu instal·lar el {AcompatCheck}Comprovador de compatibilitat de complements{A2}.{L2} {U2}{P2}{P1} Ens complau anunciar que QuickFolders és totalment compatible amb Thunderbird 140, la propera versió de Suport Estès (ESR). Això significa fiabilitat contínua i tranquil·litat durant el proper cicle de suport principal.{P2}{P1} QuickFolders continuarà donant suport als usuaris de Thunderbird 115 i superiors per ara. Durant l’any vinent, a mesura que afegim noves funcions, el suport per a Thunderbird 115 pot ser eliminat a favor de Thunderbird 128 i versions més noves.{P2}{P1} Supervisem contínuament els canvis de Thunderbird per garantir que QuickFolders segueixi sent compatible i fiable, independentment del camí d’actualització que trieu.{P2}"
+    "message": "{P}{b} Pròximament a la propera gran versió {/b}: Thunderbird aviat us demanarà que trieu el vostre camí d’actualització preferit: la via anual ESR o les versions mensuals més ràpides. {ARelease}Més informació sobre el nou model de llançament{A2}.{U} {L}La versió ESR es mantindrà a la v140, augmentant només els números de versió menors i incloent només correccions de seguretat i errors, cosa que sovint és preferible per a entorns corporatius.{/L} {L}El cicle de llançament mensual oferirà noves funcions i actualitzacions d’interfície a mesura que es desenvolupin. Comproveu si els vostres complements actuals admeten aquest model de llançament. Per ajudar-vos, podeu instal·lar el {AcompatCheck}Comprovador de compatibilitat de complements{A2}.{/L} {/U}{/P}{P} Ens complau anunciar que QuickFolders és totalment compatible amb Thunderbird 140, la propera versió de Suport Estès (ESR). Això significa fiabilitat contínua i tranquil·litat durant el proper cicle de suport principal.{/P}{P} QuickFolders continuarà donant suport als usuaris de Thunderbird 115 i superiors per ara. Durant l’any vinent, a mesura que afegim noves funcions, el suport per a Thunderbird 115 pot ser eliminat a favor de Thunderbird 128 i versions més noves.{/P}{P} Supervisem contínuament els canvis de Thunderbird per garantir que QuickFolders segueixi sent compatible i fiable, independentment del camí d’actualització que trieu.{/P}"
   },
   "newsMsg.license.expired": {
-    "message": "{P1} Totes les noves funcions, correccions d’errors i compatibilitat a llarg termini són possibles gràcies al vostre suport.{P2}{P1 class=specialOffer} Per ajudar a mantenir el desenvolupament de QuickFolders, podeu renovar la vostra llicència amb descompte fins a {salesEnd}.{P2}{P1 class=bottomhint}🡇 Trieu una de les opcions següents per obtenir més informació 🡇 {P2}"
+    "message": "{P} Totes les noves funcions, correccions d’errors i compatibilitat a llarg termini són possibles gràcies al vostre suport.{/P}{P class=specialOffer} Per ajudar a mantenir el desenvolupament de QuickFolders, podeu renovar la vostra llicència amb descompte fins a {salesEnd}.{/P}{P class=bottomhint}🡇 Trieu una de les opcions següents per obtenir més informació 🡇 {/P}"
   },
   "newsMsg.license.none": {
-    "message": "{P1} Ara també podeu donar suport a la compatibilitat futura mitjançant una llicència.{P2}{P1}Totes les noves funcions, correccions d’errors i compatibilitat a llarg termini són possibles gràcies al vostre suport.{P2}{P1 class=specialOffer}Per ajudar a mantenir el desenvolupament de QuickFolders, podeu obtenir una llicència Estàndard o Pro amb descompte fins a {salesEnd}.{P2}{P1 class=bottomhint} 🡇 Trieu una de les opcions següents per obtenir més informació 🡇 {P2}"
+    "message": "{P} Ara també podeu donar suport a la compatibilitat futura mitjançant una llicència.{/P}{P}Totes les noves funcions, correccions d’errors i compatibilitat a llarg termini són possibles gràcies al vostre suport.{/P}{P class=specialOffer}Per ajudar a mantenir el desenvolupament de QuickFolders, podeu obtenir una llicència Estàndard o Pro amb descompte fins a {salesEnd}.{/P}{P class=bottomhint} 🡇 Trieu una de les opcions següents per obtenir més informació 🡇 {/P}"
   },
   "newsMsg.license.standard": {
-    "message": "{P1} Gràcies per donar suport a QuickFolders amb una llicència Estàndard.{P2}{P1} Tant si la vostra llicència ha caducat com si encara està activa, podeu actualitzar a Pro ara amb un gran descompte fins a {salesEnd}. Actualitzar després de la caducitat us concedeix un any complet d’ús a partir de la data de compra.{P2}{P1 class=bottomhint} 🡇 Trieu una de les opcions següents per obtenir més informació 🡇 {P2}"
+    "message": "{P} Gràcies per donar suport a QuickFolders amb una llicència Estàndard.{/P}{P} Tant si la vostra llicència ha caducat com si encara està activa, podeu actualitzar a Pro ara amb un gran descompte fins a {salesEnd}. Actualitzar després de la caducitat us concedeix un any complet d’ús a partir de la data de compra.{/P}{P class=bottomhint} 🡇 Trieu una de les opcions següents per obtenir més informació 🡇 {/P}"
   },
   "newsMsg.license.valid": {
-    "message": "{P1} Gràcies per donar suport a QuickFolders mitjançant una llicència Pro — això fa possibles totes les noves funcions, correccions d’errors i compatibilitat a llarg termini.{P2}"
+    "message": "{P} Gràcies per donar suport a QuickFolders mitjançant una llicència Pro — això fa possibles totes les noves funcions, correccions d’errors i compatibilitat a llarg termini.{/P}"
   },
   "newsSection": {
-    "message": "{P1}{boldStart} Pròximament a la propera gran versió {boldEnd}: Thunderbird aviat us demanarà que trieu el vostre camí d’actualització preferit: la via anual ESR o les versions mensuals més ràpides. {ARelease}Més informació sobre el nou model de llançament{A2}.{U1} {L1}La versió ESR es mantindrà a la v140, augmentant només els números de versió menors i incloent només correccions de seguretat i errors, cosa que sovint és preferible per a entorns corporatius.{L2} {L1}El cicle de llançament mensual oferirà noves funcions i actualitzacions d’interfície a mesura que es desenvolupin. Comproveu si els vostres complements actuals admeten aquest model de llançament. Per ajudar-vos, podeu instal·lar el {AcompatCheck}Comprovador de compatibilitat de complements{A2}.{L2} {U2}",
+    "message": "{P}{b} Pròximament a la propera gran versió {/b}: Thunderbird aviat us demanarà que trieu el vostre camí d’actualització preferit: la via anual ESR o les versions mensuals més ràpides. {ARelease}Més informació sobre el nou model de llançament{A2}.{U} {L}La versió ESR es mantindrà a la v140, augmentant només els números de versió menors i incloent només correccions de seguretat i errors, cosa que sovint és preferible per a entorns corporatius.{/L} {L}El cicle de llançament mensual oferirà noves funcions i actualitzacions d’interfície a mesura que es desenvolupin. Comproveu si els vostres complements actuals admeten aquest model de llançament. Per ajudar-vos, podeu instal·lar el {AcompatCheck}Comprovador de compatibilitat de complements{A2}.{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -410,10 +410,10 @@
     }
   },
   "newsSection.intro": {
-    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continua el seu cicle de llançaments mensual. {P2}{P1} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a $appversion$. Això va ser causat per informació de compatibilitat en memòria cau a Thunderbird, que de vegades no es refresca correctament. He creat un bug a Thunderbird per solucionar-ho: [Bugzilla 1986027]{P2}{P1} Tingueu la seguretat que QuickFolders suporta completament tant els canals mensuals com ESR (140.*), i podeu continuar treballant sense interrupcions. {P2}"
+    "message": "{P}{b}Important:{/b} Thunderbird continua el seu cicle de llançaments mensual. {/P}{P} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a $appversion$. Això va ser causat per informació de compatibilitat en memòria cau a Thunderbird, que de vegades no es refresca correctament. He creat un bug a Thunderbird per solucionar-ho: [Bugzilla 1986027]{/P}{P} Tingueu la seguretat que QuickFolders suporta completament tant els canals mensuals com ESR (140.*), i podeu continuar treballant sense interrupcions. {/P}"
   },
   "newsSection.important": {
-    "message": "{P1}{boldStart}Important:{boldEnd} Thunderbird continua amb el seu cicle de llançament mensual. {P2}{P1} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a la v142. Això va ser causat per informació de compatibilitat emmagatzemada en memòria cau a Thunderbird, que de vegades no s'actualitza correctament. La versió anterior de QuickFolders ja era completament compatible amb la 142. He informat d'un error a Thunderbird perquè ho solucionin: [Bugzilla 1986027]{P2}{P1} Tingueu la seguretat que QuickFolders és totalment compatible tant amb els canals mensuals com amb l'ESR (140.*), i podeu continuar treballant sense interrupcions. {P2}",
+    "message": "{P}{b}Important:{/b} Thunderbird continua amb el seu cicle de llançament mensual. {/P}{P} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a la v142. Això va ser causat per informació de compatibilitat emmagatzemada en memòria cau a Thunderbird, que de vegades no s'actualitza correctament. La versió anterior de QuickFolders ja era completament compatible amb la 142. He informat d'un error a Thunderbird perquè ho solucionin: [Bugzilla 1986027]{/P}{P} Tingueu la seguretat que QuickFolders és totalment compatible tant amb els canals mensuals com amb l'ESR (140.*), i podeu continuar treballant sense interrupcions. {/P}",
     "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
   },
   "newsSection.license": {
@@ -708,6 +708,9 @@
   },
   "qf.checkbox.sortMenusAlpha": {
     "message": "Força la ordenació alfabètica dels menus amb les subcarpetes."
+  },
+  "qf.checkbox.sortMenusAlpha.reverse": {
+    "message": "Orden inversa."
   },
   "qf.checkbox.sortMenusAlpha.tooltip": {
     "message": "Utilitzeu aquesta opció, nomes si el vostre client de correu no ordena correctament les subcarpetes."
@@ -1249,6 +1252,9 @@
   },
   "qf.notification.standard.title": {
     "message": "Funció estàndard"
+  },
+  "qf.notifications.compactFolder": {
+    "message": "Notificar després de compactar la carpeta"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Colors Individuals de les Pestanyes"
@@ -1880,7 +1886,7 @@
     "message": "Renoveu la llicència."
   },
   "special-offer-content": {
-    "message": "Millora les teves funcions i estalvia {boldStart}$reduction${boldEnd} en comprar una llicència {linkStartPro}QuickFolders Pro{linkEnd} fins al {boldStart}$expirydate${boldEnd}. O tria les funcions estàndard amb la nova {linkStart}Llicència Estàndard{linkEnd}.",
+    "message": "Millora les teves funcions i estalvia {b}$reduction${/b} en comprar una llicència {link pro}QuickFolders Pro{/link} fins al {b}$expirydate${/b}. O tria les funcions estàndard amb la nova {link}Llicència Estàndard{/link}.",
     "placeholders": {
       "expirydate": {
         "content": "$1"
@@ -1892,7 +1898,7 @@
     }
   },
   "special-offer-renew": {
-    "message": "Renoveu la llicència ara i estalvieu reducció de {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart} $expirydate$ {boldEnd}.",
+    "message": "Renoveu la llicència ara i estalvieu reducció de {b}$reduction${/b}. Aquesta oferta especial estarà disponible fins al dia {b} $expirydate$ {/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1905,7 +1911,7 @@
     }
   },
   "special-offer-upgrade": {
-    "message": "Actualitzeu ara de QuickFolders Standard a Pro i estalvieu {boldStart}$reduction${boldEnd}. Aquesta oferta especial estarà disponible fins al dia {boldStart}$expirydate${boldEnd}.",
+    "message": "Actualitzeu ara de QuickFolders Standard a Pro i estalvieu {b}$reduction${/b}. Aquesta oferta especial estarà disponible fins al dia {b}$expirydate${/b}.",
     "placeholders": {
       "expirydate": {
         "content": "$1",
@@ -1930,7 +1936,7 @@
     }
   },
   "special-offer-intro": {
-    "message": "{boldStart} Benvolgut {name} {boldEnd}, donem suport a $addon$ mitjançant l'obtenció d'una llicència. El codi Thunderbird evoluciona contínuament i necessitem {boldStart} la vostra ajuda {boldEnd} per estar al dia.",
+    "message": "{b} Benvolgut {name} {/b}, donem suport a $addon$ mitjançant l'obtenció d'una llicència. El codi Thunderbird evoluciona contínuament i necessitem {b} la vostra ajuda {/b} per estar al dia.",
     "placeholders": {
       "addon": {
         "content": "$1",
@@ -2019,7 +2025,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇦 change log",
-    "message": "{P1} There is a bug on thunderbird.net that may not be propagated to some users when we increase max version compatibility; this can lead to a false report of the Add-on appearing as incompatible with the current version. {P2}{P1 class='important'}I raised a bug with Thunderbird to fix this: [Bugzilla 1986027] {P2}{L1} Made compatible with Thunderbird 145.* {L2}{L1} Added Norwegian Locale [issue 617] {L2}"
+    "message": "{L} QuickFolders ara és compatible amb Thunderbird 148 {/L}{L} S'ha afegit una nova opció per invertir l'ordre alfabètic dels submenús de carpetes [issue 600] {/L}{L} quickMove: el cursor ara s'actualitza correctament mentre s'escriu al camp de cerca de carpetes [issue 623] {/L}{L} S'ha corregit: el botó de carpetes recents que faltava a la barra d'eines de la carpeta actual [issue 620] {/L}{L} S'han corregit diversos problemes visuals d'icones i menús emergents {/L}{L} S'han eliminat els símbols duplicats 🔎 i ✕ a la cerca quickMove (Thunderbird 142+) [issue 624] {/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

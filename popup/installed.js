@@ -67,8 +67,8 @@ addEventListener("load", async () => {
       verInfo,
       messenger.i18n
         .getMessage("active-version-info", [addonVer, appVer])
-        .replace("{boldStart}", "<b class='versionnumber'>")
-        .replace("{boldEnd}", "</b>"),
+        .replace("{b}", "<b class='versionnumber'>")
+        .replace("{/b}", "</b>"),
       true
     );
   }    

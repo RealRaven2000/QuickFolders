@@ -30,6 +30,7 @@ pref("extensions.quickfolders.showSubfolders", true);
 pref("extensions.quickfolders.disableFolderSwitching", false);
 pref("extensions.quickfolders.showCountInSubFolders", true); // Bug 25864
 pref("extensions.quickfolders.enableMenuAlphaSorting", false);
+pref("extensions.quickfolders.alphaSortFoldersReverse", false);
 pref("extensions.quickfolders.useRebuildShortcut", false);
 pref("extensions.quickfolders.rebuildShortcutKey", 'F');
 pref("extensions.quickfolders.quickJump.useHotkey", true);
@@ -236,6 +237,8 @@ pref("extensions.quickfolders.debug.updateFolders", false);
 
 pref("extensions.quickfolders.toolbarpalette.showSmallIcons", false); // unhide "small icons" in toolbar palette
 
+pref("extensions.quickfolders.notifications.compactComplete", true); // notify when folder compacting is complete
+
 // New Folder Item
 pref("extensions.quickfolders.dragToCreateFolder.pop3", true);
 pref("extensions.quickfolders.dragToCreateFolder.imap", true);
@@ -301,6 +304,7 @@ pref("extensions.quickfolders.quickMove.premium.excludedAccounts", "");
 pref("extensions.quickfolders.quickMove.premium.lockInAccount", false);
 pref("extensions.quickfolders.quickMove.maxResults", 25);
 pref("extensions.quickfolders.quickMove.singleTab.autoClose",false); // [issue 375] close single msg tab after moving mails
+
 
 /* popupRestrictedFeature( ) counts how often these features are used */
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);

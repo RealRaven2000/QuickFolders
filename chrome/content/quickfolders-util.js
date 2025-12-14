@@ -295,6 +295,14 @@ QuickFolders.Util = {
     return doc.querySelector("#threadPane");
   },
 
+  get messagePane() {
+    // retrieve the current message pane document
+    if (!window.gTabmail?.currentAboutMessage) {
+      return null;
+    }
+    return window.gTabmail?.currentAboutMessage.document;
+  },
+
   getMail3PaneWindow: function getMail3PaneWindow() {
     let win3pane = Services.wm.getMostRecentWindow("mail:3pane");
     return win3pane;
@@ -401,7 +409,7 @@ QuickFolders.Util = {
       let usage = prefs.getIntPref("premium." + featureName + ".usage");
       usage++;
       prefs.setIntPref("premium." + featureName + ".usage", usage);
-    } catch {;}
+    } catch { ; }
 
     if (typeof specialTabs == "object" && specialTabs.msgNotificationBar) {
       notifyBox = specialTabs.msgNotificationBar;
@@ -1128,7 +1136,7 @@ allowUndo = true)`
     }
   },
 
-  getMruTime: function(fld) {
+  getMruTime: function (fld) {
     let theDate = "no date";
     if (typeof fld.getStringProperty != "undefined") {
       try {
@@ -1136,11 +1144,11 @@ allowUndo = true)`
         if (mru) {
           let dt = new Date(Number(mru) * 1000);
           theDate =
-            `${dt.getDate().toString()}/${(dt.getMonth() + 1)}` +
+            `${dt.getDate().toString()}/${dt.getMonth() + 1}` +
             " " +
             `${dt.getHours()}:${dt.getMinutes()}:${dt.getSeconds()}`;
         }
-      } catch {;}
+      } catch { ; }
     }
     return theDate;
   },
@@ -1157,9 +1165,7 @@ allowUndo = true)`
       return tabmail.tabInfo[idx];
     }
     this.logDebug(
-      `getTabInfoByIndex(${tabmail}, ${idx}) fails: check tabInfo length! = ${
-        tabmail.tabInfo
-      }`
+      `getTabInfoByIndex(${tabmail}, ${idx}) fails: check tabInfo length! = ${tabmail.tabInfo}`
     );
     console.log(tabmail);
     return null;
@@ -1282,7 +1288,9 @@ allowUndo = true)`
   threadPaneOnDragStart: function (aEvent) {
     QuickFolders.Util.logDebugOptional(
       "dnd",
-      `threadPaneOnDragStart(${aEvent.originalTarget.localName}${(aEvent.isThread ? ", thread=true" : "")})`
+      `threadPaneOnDragStart(${aEvent.originalTarget.localName}${
+        aEvent.isThread ? ", thread=true" : ""
+      })`
     );
     if (aEvent.originalTarget.localName != "toolbarbutton") {
       return;
@@ -1374,7 +1382,7 @@ allowUndo = true)`
       }
       timePassed = "[" + elapsed + " ms]   ";
       this.stopWatchtime.set(map, endTime); // remember last time
-    } catch {;}
+    } catch { ; }
     if (cmd == "reset" || cmd == "all") {
       timePassed = "[" + this.stopWatchtime_Summed.get(map) + " ms]";
       this.stopWatchtime_Summed.set(map, 0);
@@ -1395,7 +1403,7 @@ allowUndo = true)`
       let elapsed = new String(endTime - this.lastTime); // time in milliseconds
       timePassed = "[" + elapsed + " ms]   ";
       this.lastTime = endTime; // remember last time
-    } catch {;}
+    } catch { ; }
     return (
       `${end.getHours()}:${end.getMinutes()}:${end.getSeconds()}.${end.getMilliseconds()}  ` +
       timePassed
@@ -1404,8 +1412,7 @@ allowUndo = true)`
 
   // first argument is the option tag
   logWithOption: function (_a) {
-    arguments[0] =
-      `QuickFolders {${arguments[0].toUpperCase()}} ${QuickFolders.Util.logTime()}\n`;
+    arguments[0] = `QuickFolders {${arguments[0].toUpperCase()}} ${QuickFolders.Util.logTime()}\n`;
     console.log(...arguments);
   },
 
@@ -1487,7 +1494,7 @@ allowUndo = true)`
    * @optionString {string}: comma delimited options
    * @msg {string}: text to log
    */
-  logDebugOptional: function logDebugOptional(optionString, _msg) {
+  logDebugOptional: function (optionString, _msg) {
     let options = optionString.split(",");
     for (let i = 0; i < options.length; i++) {
       let option = options[i];
@@ -1498,7 +1505,7 @@ allowUndo = true)`
     }
   },
 
-  logFocus: function logFocus(origin) {
+  logFocus: function (origin) {
     try {
       let el = document.commandDispatcher.focusedElement;
       this.logDebug(origin + "- logFocus");
@@ -1515,6 +1522,29 @@ allowUndo = true)`
       }
     } catch (e) {
       this.logDebug("logFocus " + e);
+    }
+  },
+
+  logParents: function (elem, maxParents = Infinity) {
+    let n = elem;
+    let count = 0;
+
+    while (n && count < maxParents) {
+      try {
+        console.log(
+          `${n.tagName || n.nodeName} id=${n.id || "(no id)"} doc=${
+            n.ownerDocument?.URL || "(no doc)"
+          }`
+        );
+      } catch {
+        console.log(`${n.tagName || n.nodeName} id=${n.id || "(no id)"} doc=(error accessing doc)`);
+      }
+      n = n.parentNode;
+      count++;
+    }
+
+    if (n) {
+      console.log(`...stopped after ${maxParents} parent(s)`);
     }
   },
 
@@ -1623,7 +1653,7 @@ allowUndo = true)`
           URL = URL + "&user=" + uType + anchor;
         }
       }
-    } catch {;}
+    } catch { ; }
     return URL;
   },
 
@@ -1744,7 +1774,7 @@ allowUndo = true)`
           if (srv) {
             try {
               srvName = " [" + srv.hostName + "]";
-            } catch {;}
+            } catch { ; }
           }
         }
       } catch (ex) {
@@ -1756,7 +1786,7 @@ allowUndo = true)`
           if (folder.rootFolder) {
             try {
               baseFolder = " - " + folder.rootFolder.name;
-            } catch {;}
+            } catch { ; }
           } else {
             this.logDebug("getFolderTooltip() - No rootFolder on: " + folderName + "!");
           }
@@ -2050,7 +2080,7 @@ allowUndo = true)`
             `current version=${current}\n` +
             `firstrun=${firstrun}\n` +
             `showfirstruns=${showFirsts}` +
-            `debugFirstRun=${debugFirstRun}`            
+            `debugFirstRun=${debugFirstRun}`
         );
       } catch (e) {
         util.alert(
@@ -2077,7 +2107,7 @@ allowUndo = true)`
           util.logDebugOptional(
             "firstrun",
             `Can't store current version: ${current}\n` +
-              `previous: ${prev.toString()}\n`+ 
+              `previous: ${prev.toString()}\n` +
               `current!='?' = ${(current != "?").toString()}\n` +
               `prev!=current = ${(prev != current).toString()}`
           );

@@ -1,5 +1,6 @@
 import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
+const RESTRICT_UPDATEMSG = "6.11.1"; // latest version with additional forced update message - use this to restrict noise one maintenance updates
 
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 const ADDQUICKFOLDER_ID = "addQuickFolderTab";
@@ -167,7 +168,7 @@ messenger.runtime.onInstalled.addListener(async (data) => {
         try {
           await listenersReadyPromise; // we want to make sure all listeners are set up and ready to receive events.
           // set a flag which will be cleared by clicking the [QuickFolders] button once
-          let origVer = await messenger.LegacyPrefs.getPref(legacyPrefPath("version"), "0");
+          let origVer = data?.previousVersion || "0";
           // get pure version number
           // remove prerelease + any trailing "." that might be before pre
           let installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
@@ -1274,7 +1275,6 @@ const showQFmessage = async (messageIds, features, message = "", quickfoldersFea
 
 let retryScheduled = false; // session flag to avoid repeat re-scheduling
 const RETRY_MINUTES = 20;
-const LATEST_UPDATEMSG = "6.11.1"; // latest version with update message
 async function displayUpdateMessage() {
   const messageIds = "newsMsgEsr140",
     licenseInfo = currentLicense?.info,
@@ -1295,11 +1295,13 @@ async function displayUpdateMessage() {
     (await messenger.LegacyPrefs.getPref("extensions.quickfolders.lastUpdateMessage")) || "0";
   logDebug(`Last update message version: ${lastMessage}`);
 
-  if (compareVersions(lastMessage, LATEST_UPDATEMSG) >= 0) {
-    logDebug(`Message already shown for ${LATEST_UPDATEMSG} – skipping.`);
+  const isShowSpecialUpdateMsg = compareVersions(lastMessage, RESTRICT_UPDATEMSG) <= 0;
+
+  if (!isShowSpecialUpdateMsg) {
+    logDebug(`Message already shown for ${RESTRICT_UPDATEMSG} – skipping.`);
     return;
   }
-  logDebug(`Preparing message for version ${LATEST_UPDATEMSG}`);
+  logDebug(`Preparing special upgrade message for version ${RESTRICT_UPDATEMSG}`);
   // ------
   let licenseMsgId,
     testStatus = licenseInfo?.status;

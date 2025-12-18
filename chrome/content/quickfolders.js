@@ -267,7 +267,7 @@ END LICENSE BLOCK */
     ## [issue 602] More icon compatibility fixes
     ## [issue 617] Added Norwegian Locale
 
-  6.14 QuickFolders Pro - WIP
+  6.14 QuickFolders Pro - 15/12/2025
     ## Made compatible with Thunderbird 148
     ## [issue 600] Added option to reverse alphabetic sorting of subfolder menus
     ## [issue 623] quickMove: Update cursor position while  typing in folder searchbox
@@ -279,6 +279,9 @@ END LICENSE BLOCK */
     ## [issue 621] less debug logs polluting error console mostly related to 'loadDictionary'
     ## [issue 626] Add an option to disable folder notifications after folder compaction (e.g. empty trash)
 
+  6.14.1 QuickFolders Pro - 18/12/2025
+    ## renamed to RESTRICT_UPDATEMSG
+    ## Fixed an issue with setting the "has news" flag: these were omitted since 6.11.1.
   
 	TO DO next
 	==========
@@ -288,7 +291,6 @@ END LICENSE BLOCK */
     ## [issue 423] Color Tabs with unread messages
     ## [issue ] convert Tab-Specific Properties to HTML
     ## [issue ]
-
 
 	Future Work
 	===========

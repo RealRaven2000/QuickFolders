@@ -1,4 +1,9 @@
 
+**Maintenance changes 6.14.2**
+
+*    Fixed message replacement and disabled update message 140.
+*    Updated translations - added missing settings label for 'Notifications'
+
 **Maintenance changes 6.14.1**
 
 *    6.14.1 Fixed an issue with setting the "has news" flag: these were omitted since 6.11.1.

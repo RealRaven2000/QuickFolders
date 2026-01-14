@@ -62,12 +62,15 @@ async function updateSpecialOffersFields(addonName) {
   for (let el of elements) {
     el.textContent = txtHead;
   }	           
-
+  
   let elementsSI = document.querySelectorAll(".specialOfferIntro"),
-    txtSI = messenger.i18n.getMessage('special-offer-intro', addonName)
-            .replace(/\{bold\}/g,"<b>")
-            .replace(/\{\/bold\}/g,"</b>")
-            .replace("{name}", userName);
+    txtSI = messenger.i18n
+      .getMessage("special-offer-intro", addonName)
+      .replace(/\{bold\}/g, "<b>")
+      .replace(/\{\/bold\}/g, "</b>")
+      .replace(/\{b\}/g, "<b>")
+      .replace(/\{\/b\}/g, "</b>")
+      .replace("{name}", userName);
   for (let el of elementsSI) {
     insertHtmlSafely(el, txtSI, true);
   }
@@ -93,6 +96,8 @@ async function updateSpecialOffersFields(addonName) {
         .getMessage("special-offer-content", [endSale, reduction])
         .replace(/\{bold\}/g, "<b>")
         .replace(/\{\/bold\}/g, "</b>")
+        .replace(/\{b\}/g, "<b>")
+        .replace(/\{\/b\}/g, "</b>")
         .replace(/\{link\}/g, "<a id='stdLink'>")
         .replace(/\{\/link\}/g, "</a>")
         .replace(/\{link pro}/g, "<a id='proLink'>"),
@@ -109,7 +114,9 @@ async function updateSpecialOffersFields(addonName) {
       messenger.i18n
         .getMessage("special-offer-renew", [endSale, reduction])
         .replace(/\{bold\}/g, "<b>")
-        .replace(/\{\/bold\}/g, "</b>"),
+        .replace(/\{\/bold\}/g, "</b>")
+        .replace(/\{b\}/g, "<b>")
+        .replace(/\{\/b\}/g, "</b>"),
       true
     );
   }
@@ -124,6 +131,8 @@ async function updateSpecialOffersFields(addonName) {
         .getMessage("special-offer-upgrade", [endSale, REDUCTION_UPGRADE])
         .replace(/\{bold\}/g, "<b>")
         .replace(/\{\/bold\}/g, "</b>")
+        .replace(/\{b\}/g, "<b>")
+        .replace(/\{\/b\}/g, "</b>")
         .replace(/\{link\}/g, "<a id='stdLink'>")
         .replace(/\{\/link\}/g, "</a>"),
       true

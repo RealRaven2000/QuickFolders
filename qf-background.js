@@ -1,6 +1,6 @@
 import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
-const RESTRICT_UPDATEMSG = "6.11.1"; // latest version with additional forced update message - use this to restrict noise one maintenance updates
+const RESTRICT_UPDATEMSG = "10.0"; // latest version forcing additional update message - use this to restrict noise one maintenance updates
 
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 const ADDQUICKFOLDER_ID = "addQuickFolderTab";
@@ -147,6 +147,7 @@ messenger.runtime.onInstalled.addListener(async (data) => {
         ["6.9.1", ["6.9.2"]], // Silent update minor fix for [issue 532]
         ["6.10.1", ["6.10.2", "6.10.3", "6.10.4"]],
         ["6.13", ["6.13.1"]],
+        ["6.14.1", ["6.13.2"]],
       ]);
 
       // Helper function to check if a version matches a pattern
@@ -1006,7 +1007,7 @@ async function main() {
     "chrome/content/scripts/qf-messenger.js"
   );
   // inject a separate script for current folder toolbar!
-  const is3pane = messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
+  messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
   messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
 
   messenger.WindowListener.registerWindow(

@@ -2822,18 +2822,9 @@ allowUndo = true)`
 };  // QuickFolders.Util
 
 
-
-
-
 Object.defineProperty(QuickFolders.Util, "Accounts",
 { get: function() {
-    let acMgr = MailServices.accounts,
-        aAccounts = [];
-        
-    for (let ac of acMgr.accounts) {
-      aAccounts.push(ac);
-    };
-    return aAccounts;
+    return Array.from(MailServices.accounts.accounts);
   }
 });
 

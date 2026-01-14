@@ -1299,6 +1299,9 @@
   "qf.notification.standard.title": {
     "message": "Característica estándar"
   },
+  "qf.notifications": {
+    "message": "Notificaciones"
+  },
   "qf.notifications.compactFolder": {
     "message": "Notificar después de compactar la carpeta"
   },
@@ -2100,9 +2103,9 @@
     "message": "Lea el registro de cambios detallado aquí (solo en inglés):"
   },
   "whats-new-list": {
-  "description": "🇪🇸 change log",
-  "message": "{L} QuickFolders ahora es compatible con Thunderbird 148 {/L}{L} Se añadió una nueva opción para invertir el orden alfabético de los submenús de carpetas [issue 600] {/L}{L} quickMove: el cursor ahora se actualiza correctamente al escribir en el campo de búsqueda de carpetas [issue 623] {/L}{L} Corregido: faltaba el botón de carpetas recientes en la barra de herramientas de la carpeta actual [issue 620] {/L}{L} Corregidos varios problemas visuales de iconos y menús emergentes {/L}{L} Eliminados los iconos duplicados 🔎 y ✕ en la búsqueda quickMove (Thunderbird 142+) [issue 624] {/L}"
-},
+    "description": "🇪🇸 change log",
+    "message": "{L} QuickFolders ahora es compatible con Thunderbird 148 {/L}{L} Se añadió una nueva opción para invertir el orden alfabético de los submenús de carpetas [issue 600] {/L}{L} quickMove: el cursor ahora se actualiza correctamente al escribir en el campo de búsqueda de carpetas [issue 623] {/L}{L} Corregido: faltaba el botón de carpetas recientes en la barra de herramientas de la carpeta actual [issue 620] {/L}{L} Corregidos varios problemas visuales de iconos y menús emergentes {/L}{L} Eliminados los iconos duplicados 🔎 y ✕ en la búsqueda quickMove (Thunderbird 142+) [issue 624] {/L}"
+  },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Bienvenido a $addonName$",

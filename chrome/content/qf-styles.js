@@ -152,35 +152,41 @@ QuickFolders.Styles = {
     let visitedStyleSheetList = [];
     visitedStyleSheetList.push(ss.href);
     function logDebug(text) {
-      if (debug) 
+      if (debug) {
         util.logDebug(text);
-      else
+      } else {
         util.logDebugOptional("css.Detail", text);
+      }
     }
     
 		function setRuleFromList(rulesList, rule, attribute, value, important, recurse) {
-			let found = false,
-			    foundRule = false,
-			    st; // new style rule
+			let foundRule = false,
+				st; // new style rule
 			
 			for (let i=0; i<rulesList.length; i++) {
 				let theRule = rulesList[i];
 				switch (theRule.type) {
 					case theRule.IMPORT_RULE: {
 						// try to set imported rule (recursive) and return true.
-						if (!recurse) // don't allow deep recursion (break circular @import refs!)
+						if (!recurse) {
+							// don't allow deep recursion (break circular @import refs!)
 							continue;
+						}
             let styleSheetName = theRule.styleSheet.href;
-            if (visitedStyleSheetList.includes(styleSheetName)) // don't parse the same sheet twice :)
+            if (visitedStyleSheetList.includes(styleSheetName)) {
+							// don't parse the same sheet twice :)
               continue;
+						}	
             logDebug('setting CSS rule in ' + styleSheetName);
-						if (setRuleFromList(theRule.styleSheet.cssRules, rule, attribute, value, important, true))
+						if (setRuleFromList(theRule.styleSheet.cssRules, rule, attribute, value, important, true)) {
 							return true;
+						}
 					}	break;
 					case theRule.STYLE_RULE: {
 						let selectors = theRule.selectorText;
-						if (!selectors || !selectors.length)
+						if (!selectors || !selectors.length) {
 							continue;
+						}
 
 						if (rule == selectors) {
               // theRule = CSSStyleRule interface
@@ -223,8 +229,9 @@ QuickFolders.Styles = {
 				logDebug("failed loading stylesheet, empty parameter.")
 				return false;
 			}
-			if (typeof ss.cssRules == 'undefined')
+			if (typeof ss.cssRules == 'undefined') {
 				return false;
+			}
 
       let action = value ? 'Setting' : 'Removing',
           actionResult = value ? ('\nto ' + value) : '';
@@ -240,7 +247,9 @@ QuickFolders.Styles = {
       for (let a=0; a<attributes.length; a++) {
         let at = attributes[a];
         // reset recursion list
-        while (visitedStyleSheetList.length>1) visitedStyleSheetList.pop();
+        while (visitedStyleSheetList.length>1) {
+					visitedStyleSheetList.pop();
+				}
         let isSet = setRuleFromList(rulesList, rule, at, value, important, true);
         if (!isSet) {
           // not found:

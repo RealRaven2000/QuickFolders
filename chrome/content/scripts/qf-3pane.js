@@ -72,21 +72,19 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     `\n activatedWhileWindowOpen = ${activatedWhileWindowOpen}\n isManual=${isManual}`
   );
 
-
-  
   if (window?.parent?.document?.URL == "about:3pane") {
     // parent document should already be patched!
     if (prefs.isDebug) {
       console.log("injectCurrentFolderBar() early exit, parent document URL==about:3pane");
     }
-    
     return null;
   }
   if (prefs.isDebugOption("interface.currentFolderBar")) { 
     // eslint-disable-next-line no-debugger
     debugger;
   }  
-  WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css"); // we need this here.
+  let sheet = WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css");
+  sheet.setAttribute("title", "QuickFoldersFolderTreeGlobalStyles"); 
 
   window.QuickFolders = window.parent.QuickFolders;
   window.QuickFolders.WLM = WL; // closure a separate instace of the WindowListener that works in messagepane

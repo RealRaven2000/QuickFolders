@@ -47,11 +47,36 @@ function show(id) {
   return el;
 }
 
+function replaceNested(text) {
+  let result = text;
+  const maxLoops = 5; // prevent infinite recursion
+
+  for (let i = 0; i < maxLoops; i++) {
+    let changed = false;
+
+    result = result.replace(/\{\+([\w.]+)\}/g, (_, id) => {
+      // replace is streaming results from 1st capturing group:
+      // (fullMatch, group1, index, originalString)
+      const replacement = messenger.i18n.getMessage(id) || `{+${id}}`;
+      if (replacement !== `{+${id}}`) {
+        changed = true;
+      }
+      return replacement;
+    });
+
+    if (!changed) {
+      break;
+    }
+  }
+
+  return result;
+}
+
 function formatAll(txt) {
   if (!txt) {
     return "";
   }
-  let localizedMsg = txt
+  let localizedMsg = replaceNested(txt)
     .replace(/\{bold\}/g, "<b>")
     .replace(/\{\/bold\}/g, "</b>")
     .replace(/\{b\}/g, "<b>")

@@ -7105,14 +7105,22 @@ QuickFolders.Interface = {
 
 	/* INITIALIZES CURRENT FOLDER TAB AND ELEMENTS OF NAVIGATION TOOLBAR, BASED ON SELECTED FOLDER */
 	initCurrentFolderTab: function (currentFolderTab, folder, selectedButton, tabInfo) {
-    function disableNavigation(isDisabled) {
-      doc.getElementById("QuickFolders-NavigateUp").disabled = isDisabled;
-      doc.getElementById("QuickFolders-NavigateLeft").disabled = isDisabled;
-      doc.getElementById("QuickFolders-NavigateRight").disabled = isDisabled;
-      let ic = doc.getElementById("QuickFolders-RemoveIcon");
-      if (ic) {ic.disabled = isDisabled;}
-      ic = doc.getElementById("QuickFolders-SelectIcon");
-      if (ic) {ic.disabled = isDisabled;}
+		function disable(doc, el, isDisabled) {
+      // [issue 630]
+      if (typeof el == "string") {
+        el = doc.getElementById(el);
+      }
+      if (el) {
+        el.disabled = isDisabled;
+      }
+    }
+    function disableNavigation(doc, isDisabled) {
+			if (!doc) {return;}
+			disable(doc, "QuickFolders-NavigateUp", isDisabled);
+			disable(doc, "NavigateLeft-NavigateLeft", isDisabled);
+			disable(doc, "NavigateLeft-NavigateRight", isDisabled);
+			disable(doc, "QuickFolders-RemoveIcon", isDisabled);
+			disable(doc, "QuickFolders-SelectIcon", isDisabled);
     }
 		if (!currentFolderTab) {return;}
     const util = QuickFolders.Util,
@@ -7161,7 +7169,7 @@ QuickFolders.Interface = {
 						QuickFolders.Interface.showElement(CurrentFolderSelectIconBtn, !hasIcon); // hide select icon for tidier experience.
           }
         }
-        disableNavigation(false);
+        disableNavigation(doc, false);
         currentFolderTab.setAttribute("tooltiptext", util.getFolderTooltip(folder));
       } else {
         // search mode: get title of tab after a short delay
@@ -7178,7 +7186,7 @@ QuickFolders.Interface = {
           currentFolderTab.style.MozImageRegion = "rect(0px, 16px, 16px, 0px)";
         }
         // disable navigation buttons
-        disableNavigation(true);
+        disableNavigation(doc, true);
         currentFolderTab.setAttribute("tooltiptext", "");
       }
 

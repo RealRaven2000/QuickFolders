@@ -7,3 +7,7 @@
 #folderPaneContext menuitem#context-quickFoldersIcon[tag="qfIconAdd"] { 
   list-style-image : url('chrome://messenger/skin/icons/image.svg') !important;
 }
+
+#folderTree .icon {
+  background-size: contain;
+}

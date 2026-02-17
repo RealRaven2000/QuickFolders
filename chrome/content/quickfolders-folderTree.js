@@ -19,6 +19,7 @@ QuickFolders.FolderTree = {
   dictionary: null,
   customIcons: [], // new array
   documents: [],
+  hasContentIcons: false,
   init: function (doc, tabOrWindow) {
     // you need to restart QuickFolders to bypass
     let isEnabled = QuickFolders.Preferences.getBoolPref("folderTree.icons");
@@ -31,6 +32,19 @@ QuickFolders.FolderTree = {
       // now we need to iterate all Folders and find matches in our dictionary,
       // then inject the style rules for the icons...
       QuickFolders.FolderTree.documents.push({ document: doc, tabOrWindow: tabOrWindow });
+
+      let folderIcon = doc.querySelector("#folderTree li > .container > .icon");
+      if (folderIcon) {
+        let computedStyle = doc.defaultView.getComputedStyle(folderIcon);
+        const styleMap = new Map(
+          Array.from(computedStyle).map((prop) => [prop, computedStyle.getPropertyValue(prop)]),
+        );
+        const contentValue = styleMap.get("content");
+        if (contentValue && (contentValue.startsWith("url") || contentValue.endsWith('svg")'))) {
+          QuickFolders.FolderTree.hasContentIcons = true;
+        }
+      }
+
       this.loadDictionary(doc);
     } catch (ex) {
       QuickFolders.Util.logException("QuickFolders.FolderTree.init()", ex);
@@ -560,6 +574,16 @@ QuickFolders.FolderTree = {
 
         // overwrite messenger/skin/folderPane.css
         QuickFolders.Styles.setElementStyle(ss, selector, "background-image", cssUri, true);
+        if (QuickFolders.FolderTree.hasContentIcons) {
+          // overwrite the folder icon in modern versions of Tb 148+
+          QuickFolders.Styles.setElementStyle(
+            ss,
+            selector,
+            "content",
+            "url(\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'></svg>\")",
+            true,
+          );
+        }
         // let key = folder.getStringProperty("folderIcon"); // "folderIcon_" + selector ??
         if (existingItem) {
           existingItem.cssKey = iconGUID;

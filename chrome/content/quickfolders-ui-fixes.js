@@ -20,9 +20,8 @@
   if (!willy) {
     Util.logHighlight(
       "Can't polyfill menu items, no WindowListener in:",
-      "pink",
-      "rgb(40,0,0)",
-      `window location= ${window.location.href}`
+      { color: "pink", background: "rgb(40,0,0)" },
+      `window location= ${window.location.href}`,
     );
     return;
   }

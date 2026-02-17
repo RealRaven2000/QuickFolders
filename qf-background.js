@@ -1,6 +1,6 @@
 import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
-const RESTRICT_UPDATEMSG = "10.0"; // latest version forcing additional update message - use this to restrict noise one maintenance updates
+const RESTRICT_UPDATEMSG = "6.14.2"; // latest version forcing additional update message - use this to restrict noise one maintenance updates
 
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 const ADDQUICKFOLDER_ID = "addQuickFolderTab";

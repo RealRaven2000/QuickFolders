@@ -282,6 +282,17 @@ END LICENSE BLOCK */
   6.14.1 QuickFolders Pro - 18/12/2025
     ## renamed to RESTRICT_UPDATEMSG
     ## Fixed an issue with setting the "has news" flag: these were omitted since 6.11.1.
+    
+  6.14.2 QuickFolders Pro - 21/12/2025
+    ## Made compatible with Thunderbird 149
+    ## Added missing translations and disabled a superflous update message. silent update for users of 6.14.1
+
+  6.14.3 QuickFolders Pro - WIP
+    ## [issue 619] automatically resize icons in folder tree to avoid cropping
+    ## [issue 630] misc: removed unnecessary console errors from quickfolders-util.js
+    ## [issue 639] 3 menu items from QuickFolders Commands submeny do not work
+
+  
   
 	TO DO next
 	==========
@@ -2177,10 +2188,11 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
     );
   }
 
-  if (!msgFolder) {
-    util.logDebugOptional(
-      "folders.select",
-      "No valid folder found for this Uri - maybe caused by a pending rename on IMAP Server."
+  if (folderUri && !msgFolder) {
+    util.logHighlight(
+      "No valid folder found for this Uri\nThis maybe caused by a pending rename on IMAP Server",
+      { color: "yellow", background: "rgb(40,0,120)", isDebug: false },
+      `Uri= ${folderUri}`,
     );
     return false; // no valid folder (may be from rename)
   }

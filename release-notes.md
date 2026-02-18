@@ -1,7 +1,7 @@
 
 **Maintenance changes 6.14.2**
 
-*    Fixed message replacement and disabled update message 140.
+*    Fixed message replacement and disabled update message `newsMsgEsr140`.
 *    Updated translations - added missing settings label for 'Notifications'
 
 **Maintenance changes 6.14.1**

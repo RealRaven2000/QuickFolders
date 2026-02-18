@@ -80,7 +80,7 @@ QuickFolders.Util = {
         QuickFolders.Util.licenseInfo = data.licenseInfo;
         QuickFolders.Util.logDebugOptional(
           "notifications",
-          "onBackgroundUpdates - dispatching licenseInfo "
+          "onBackgroundUpdates - dispatching licenseInfo ",
         );
         const event = new CustomEvent("QuickFolders.BackgroundUpdate");
         window.dispatchEvent(event);
@@ -96,7 +96,7 @@ QuickFolders.Util = {
           QuickFolders.Util.logDebugOptional(
             "notifications",
             `onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.${data.event}\n` +
-              `into ${window.document.location.href.toString()}`
+              `into ${window.document.location.href.toString()}`,
           );
           let event;
           let n = { ...data }; // shallow copy using spread syntax
@@ -409,7 +409,7 @@ QuickFolders.Util = {
       let usage = prefs.getIntPref("premium." + featureName + ".usage");
       usage++;
       prefs.setIntPref("premium." + featureName + ".usage", usage);
-    } catch { ; }
+    } catch {}
 
     if (typeof specialTabs == "object" && specialTabs.msgNotificationBar) {
       notifyBox = specialTabs.msgNotificationBar;
@@ -460,7 +460,7 @@ QuickFolders.Util = {
           priority: notifyBox.PRIORITY_INFO_HIGH,
           label: theText,
         },
-        nbox_buttons // no buttons
+        nbox_buttons, // no buttons
       );
 
       let containerSelector; //
@@ -480,7 +480,7 @@ QuickFolders.Util = {
         linkEl.setAttribute("href", "chrome://quickfolders-skins/content/qf-notifications.css");
         newNotification.shadowRoot.insertBefore(
           linkEl,
-          newNotification.shadowRoot.firstChild.nextSibling
+          newNotification.shadowRoot.firstChild.nextSibling,
         );
 
         let container = newNotification.shadowRoot.querySelector(containerSelector);
@@ -526,7 +526,7 @@ QuickFolders.Util = {
       if (sColorString.startsWith("rgb")) {
         // rgb colors.
         let components = sColorString.match(
-            /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
+            /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/,
           ),
           hexColor = "#" + hex(components[1]) + hex(components[2]) + hex(components[3]); // ignore transparency
         return hexColor;
@@ -617,7 +617,7 @@ QuickFolders.Util = {
     }
     QuickFolders.Util.logDebugOptional(
       "events",
-      "clearChildren(withCategories= " + withCategories + ")"
+      "clearChildren(withCategories= " + withCategories + ")",
     );
     if (withCategories) {
       while (element.children.length > 0) {
@@ -706,7 +706,7 @@ QuickFolders.Util = {
             if (info && util.getTabMode(info) != "mailMessageTab") {
               util.logDebugOptional(
                 "mailTabs",
-                "Could not find folder tab - switching to msg tab: " + info.title
+                "Could not find folder tab - switching to msg tab: " + info.title,
               );
               tabmail.switchToTab(i);
               break;
@@ -794,7 +794,7 @@ QuickFolders.Util = {
       return null;
     }
     msgFolder = QuickFolders.Model.getMsgFolderFromUri(uri, true).QueryInterface(
-      Components.interfaces.nsIMsgFolder
+      Components.interfaces.nsIMsgFolder,
     );
 
     return msgFolder;
@@ -829,7 +829,7 @@ QuickFolders.Util = {
           "QuickFolders.Util.moveMessages: target = " +
             (targetFolder.prettyName || targetFolder.localizedName) +
             ", makeCopy=" +
-            makeCopy
+            makeCopy,
         );
       } catch (e) {
         util.alert("QuickFolders.Util.moveMessages:" + e);
@@ -840,8 +840,8 @@ QuickFolders.Util = {
           "QuickFolders moveMessages()",
           util.getBundleString(
             "qfAlertDropFolderVirtual",
-            "you can not drop messages to a search folder"
-          )
+            "you can not drop messages to a search folder",
+          ),
         );
         return null;
       }
@@ -905,7 +905,7 @@ QuickFolders.Util = {
                 " to folder " +
                 targetFolder.URI +
                 "\n" +
-                "Reading List item marked as invalid."
+                "Reading List item marked as invalid.",
             );
             entry.FolderUri = targetFolder.URI;
             entry.invalid = true;
@@ -930,7 +930,7 @@ QuickFolders.Util = {
           "moveCopy",
           `Copying/Moving ${segment.messages.length} messages from ${
             sourceFolder.prettyName || sourceFolder.localizedName
-          } to ${targetFolder.prettyName || targetFolder.localizedName} `
+          } to ${targetFolder.prettyName || targetFolder.localizedName} `,
         );
 
         // from https://searchfox.org/comm-central/source/mail/components/extensions/parent/ext-messages.js#195
@@ -982,7 +982,7 @@ QuickFolders.Util = {
               isMove && sourceFolder.canDeleteMessages,
               param5,
               mw, // msgWindow
-              true // allowUndo
+              true, // allowUndo
             );
           });
           // we get here only after success!
@@ -1001,7 +1001,7 @@ QuickFolders.Util = {
         util.slideAlert(
           "QuickFolders",
           "Nothing to do: Message is already in folder: " +
-            (targetFolder.prettyName || targetFolder.localizedName)
+            (targetFolder.prettyName || targetFolder.localizedName),
         );
         return null;
       }
@@ -1040,7 +1040,7 @@ destinationFolder = ${targetFolder.prettyName || targetFolder.localizedName} ,
 isMove = ${isMove} 
 listener = ${QuickFolders.CopyListener} ,
 window = ${mw} ,
-allowUndo = true)`
+allowUndo = true)`,
         );
       }
       let currentTab = tabmail.selectedTab;
@@ -1129,7 +1129,7 @@ allowUndo = true)`
           ")\n" +
           time +
           "\n" +
-          util.getMruTime(folder)
+          util.getMruTime(folder),
       );
     } catch (ex) {
       util.logException("util.touch failed on " + (folder.prettyName || folder.localizedName), ex);
@@ -1148,7 +1148,7 @@ allowUndo = true)`
             " " +
             `${dt.getHours()}:${dt.getMinutes()}:${dt.getSeconds()}`;
         }
-      } catch { ; }
+      } catch {}
     }
     return theDate;
   },
@@ -1165,7 +1165,7 @@ allowUndo = true)`
       return tabmail.tabInfo[idx];
     }
     this.logDebug(
-      `getTabInfoByIndex(${tabmail}, ${idx}) fails: check tabInfo length! = ${tabmail.tabInfo}`
+      `getTabInfoByIndex(${tabmail}, ${idx}) fails: check tabInfo length! = ${tabmail.tabInfo}`,
     );
     console.log(tabmail);
     return null;
@@ -1196,7 +1196,7 @@ allowUndo = true)`
       }
       try {
         aFolder = QuickFolders.Model.getMsgFolderFromUri(currentURI, true).QueryInterface(
-          Components.interfaces.nsIMsgFolder
+          Components.interfaces.nsIMsgFolder,
         ); // inPB case this is just the URI, not the folder itself??
       } catch (ex) {
         util.logException(ex, "QuickFolders.Util.CurrentFolder (getter) failed.");
@@ -1290,7 +1290,7 @@ allowUndo = true)`
       "dnd",
       `threadPaneOnDragStart(${aEvent.originalTarget.localName}${
         aEvent.isThread ? ", thread=true" : ""
-      })`
+      })`,
     );
     if (aEvent.originalTarget.localName != "toolbarbutton") {
       return;
@@ -1324,7 +1324,7 @@ allowUndo = true)`
         aEvent.dataTransfer.mozSetDataAt(
           "application/x-moz-file-promise-url",
           spec + "&fileName=" + uniqueFileName,
-          i
+          i,
         );
         aEvent.dataTransfer.mozSetDataAt("application/x-moz-file-promise", null, i);
         count++;
@@ -1339,7 +1339,7 @@ allowUndo = true)`
     aEvent.dataTransfer.addElement(aEvent.originalTarget);
     QuickFolders.Util.logDebugOptional(
       "dnd",
-      `threadPaneOnDragStart() ends: ${count} messages prepared:${summary}`
+      `threadPaneOnDragStart() ends: ${count} messages prepared:${summary}`,
     );
   },
 
@@ -1382,7 +1382,7 @@ allowUndo = true)`
       }
       timePassed = "[" + elapsed + " ms]   ";
       this.stopWatchtime.set(map, endTime); // remember last time
-    } catch { ; }
+    } catch {}
     if (cmd == "reset" || cmd == "all") {
       timePassed = "[" + this.stopWatchtime_Summed.get(map) + " ms]";
       this.stopWatchtime_Summed.set(map, 0);
@@ -1403,7 +1403,7 @@ allowUndo = true)`
       let elapsed = new String(endTime - this.lastTime); // time in milliseconds
       timePassed = "[" + elapsed + " ms]   ";
       this.lastTime = endTime; // remember last time
-    } catch { ; }
+    } catch {}
     return (
       `${end.getHours()}:${end.getMinutes()}:${end.getSeconds()}.${end.getMilliseconds()}  ` +
       timePassed
@@ -1426,12 +1426,16 @@ allowUndo = true)`
     console.log(
       `%c[issue 351] TB115 - to do: %c${txt}`,
       "color:blue;",
-      "background: blue; color:yellow;"
+      "background: blue; color:yellow;",
     );
   },
 
   // optional logging for important points in flow.
-  logHighlight: function (txt, options = { color: "white", background: "rgb(80,0,0)", isDebug: true }, ...args) {
+  logHighlight: function (
+    txt,
+    options = { color: "white", background: "rgb(80,0,0)", isDebug: true },
+    ...args
+  ) {
     if (typeof options == "string") {
       args.unshift(options); // insert as top = add as first additional args element
       options = { color: "white", background: "rgb(80,0,0)" }; // set color again
@@ -1440,7 +1444,7 @@ allowUndo = true)`
       console.log(
         `QuickFolders %c${txt}`,
         `color: ${options.color}; background: ${options.background}`,
-        ...args
+        ...args,
       );
     }
   },
@@ -1453,7 +1457,7 @@ allowUndo = true)`
   logError: function (aMessage, aSourceName, stack, aLineNumber, aColumnNumber, aFlags) {
     let aCategory = "",
       scriptError = Components.classes["@mozilla.org/scripterror;1"].createInstance(
-        Components.interfaces.nsIScriptError
+        Components.interfaces.nsIScriptError,
       );
     try {
       scriptError.init(aMessage, aSourceName, stack, aLineNumber, aColumnNumber, aFlags, aCategory);
@@ -1461,7 +1465,7 @@ allowUndo = true)`
       console.warn(
         aMessage,
         `aSourceName: ${aSourceName}, line: ${aLineNumber}, copl: ${aColumnNumber}, flg: ${aFlags}`,
-        stack
+        stack,
       );
     } catch {
       alert("logError failed: " + aMessage);
@@ -1517,7 +1521,7 @@ allowUndo = true)`
           `element focused\nid: ${el.id}\n` +
             `tag: ${el.tag}\n` +
             `class: ${el.class}\n` +
-            `container: ${el.container}`
+            `container: ${el.container}`,
         );
       }
     } catch (e) {
@@ -1534,7 +1538,7 @@ allowUndo = true)`
         console.log(
           `${n.tagName || n.nodeName} id=${n.id || "(no id)"} doc=${
             n.ownerDocument?.URL || "(no doc)"
-          }`
+          }`,
         );
       } catch {
         console.log(`${n.tagName || n.nodeName} id=${n.id || "(no id)"} doc=(error accessing doc)`);
@@ -1653,7 +1657,7 @@ allowUndo = true)`
           URL = URL + "&user=" + uType + anchor;
         }
       }
-    } catch { ; }
+    } catch {}
     return URL;
   },
 
@@ -1707,7 +1711,7 @@ allowUndo = true)`
     // moved from local copies in various modules.
     // [mx-l10n]
     var { ExtensionParent } = ChromeUtils.importESModule(
-      "resource://gre/modules/ExtensionParent.sys.mjs"
+      "resource://gre/modules/ExtensionParent.sys.mjs",
     );
     let extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
     let localized = extension.localeData.localizeMessage(id, substitions);
@@ -1726,7 +1730,7 @@ allowUndo = true)`
     Services.scriptloader.loadSubScript(
       QuickFolders.Util.extension.rootURI.resolve("chrome/content/i18n.js"),
       window,
-      "UTF-8"
+      "UTF-8",
     );
     window.i18n.updateDocument({ extension: QuickFolders.Util.extension });
     if (buttons) {
@@ -1774,7 +1778,7 @@ allowUndo = true)`
           if (srv) {
             try {
               srvName = " [" + srv.hostName + "]";
-            } catch { ; }
+            } catch {}
           }
         }
       } catch (ex) {
@@ -1786,7 +1790,7 @@ allowUndo = true)`
           if (folder.rootFolder) {
             try {
               baseFolder = " - " + folder.rootFolder.name;
-            } catch { ; }
+            } catch {}
           } else {
             this.logDebug("getFolderTooltip() - No rootFolder on: " + folderName + "!");
           }
@@ -1864,7 +1868,7 @@ allowUndo = true)`
     }
     if (!msgFolder.filePath) {
       QuickFolders.Util.logDebug(
-        "doesMailFolderExist() msgFolder.filePath missing! - returning false"
+        "doesMailFolderExist() msgFolder.filePath missing! - returning false",
       );
       return false;
     }
@@ -1886,7 +1890,7 @@ allowUndo = true)`
           `Invalid tab: the folder ${
             msgFolder.prettyName || msgFolder.localizedName
           } has been deleted and is currently in the Trash folder.`,
-          msgFolder
+          msgFolder,
         );
         return false; // empty folder, in trash
       }
@@ -1924,16 +1928,16 @@ allowUndo = true)`
     let path = "";
     switch (util.HostSystem) {
       case "linux":
-        (path = "chrome://quickfolders/content/skin/unix/qf-platform.css"),
-          "QuickFolderPlatformStyles";
+        ((path = "chrome://quickfolders/content/skin/unix/qf-platform.css"),
+          "QuickFolderPlatformStyles");
         break;
       case "winnt":
-        (path = "chrome://quickfolders/content/skin/win/qf-platform.css"),
-          "QuickFolderPlatformStyles";
+        ((path = "chrome://quickfolders/content/skin/win/qf-platform.css"),
+          "QuickFolderPlatformStyles");
         break;
       case "darwin":
-        (path = "chrome://quickfolders/content/skin/mac/qf-platform.css"),
-          "QuickFolderPlatformStyles";
+        ((path = "chrome://quickfolders/content/skin/mac/qf-platform.css"),
+          "QuickFolderPlatformStyles");
         break;
     }
 
@@ -1948,7 +1952,7 @@ allowUndo = true)`
     let detail = "";
     if (button) {
       let el = QuickFolders.Model.selectedFolders.find(
-        (e) => e.uri == button.getAttribute("folderURI")
+        (e) => e.uri == button.getAttribute("folderURI"),
       );
       if (el) {
         detail = `QuickFolders Tab: [${el.name}]\n` + `account: ${el.account}\n` + `URI: ${el.uri}`;
@@ -2002,7 +2006,7 @@ allowUndo = true)`
           let srv = account.incomingServer.QueryInterface(Ci.nsIMsgIncomingServer);
           QuickFolders.Util.logDebugOptional(
             "filters",
-            "checking account for filter changes: " + srv.prettyName
+            "checking account for filter changes: " + srv.prettyName,
           );
           // 2. getFilterList
           let filterList = srv.getFilterList(msgWindow).QueryInterface(Ci.nsIMsgFilterList);
@@ -2080,7 +2084,7 @@ allowUndo = true)`
             `current version=${current}\n` +
             `firstrun=${firstrun}\n` +
             `showfirstruns=${showFirsts}` +
-            `debugFirstRun=${debugFirstRun}`
+            `debugFirstRun=${debugFirstRun}`,
         );
       } catch (e) {
         util.alert(
@@ -2089,7 +2093,7 @@ allowUndo = true)`
             `prev: ${prev}\n` +
             `firstrun: ${firstrun}\n` +
             `showFirstRuns: ${showFirsts}\n` +
-            `debugFirstRun: ${debugFirstRun}`
+            `debugFirstRun: ${debugFirstRun}`,
         );
       } finally {
         util.logDebugOptional("firstrun", "finally - firstrun=" + firstrun);
@@ -2109,7 +2113,7 @@ allowUndo = true)`
             `Can't store current version: ${current}\n` +
               `previous: ${prev.toString()}\n` +
               `current!='?' = ${(current != "?").toString()}\n` +
-              `prev!=current = ${(prev != current).toString()}`
+              `prev!=current = ${(prev != current).toString()}`,
           );
         }
         // NOTE: showfirst-check is INSIDE both code-blocks, because prefs need to be set no matter what.
@@ -2132,7 +2136,7 @@ allowUndo = true)`
           // UPDATE CASE
           // this section does not get loaded if it's a fresh install.
           suppressVersionScreen = prefs.getBoolPrefSilent(
-            "extensions.quickfolders.hideVersionOnUpdate"
+            "extensions.quickfolders.hideVersionOnUpdate",
           );
 
           // SILENT UPDATES
@@ -2148,7 +2152,7 @@ allowUndo = true)`
             let sUpgradeMessage =
               util.getBundleString(
                 "qfAlertUpgradeSuccess",
-                "QuickFolders was successfully upgraded to version:"
+                "QuickFolders was successfully upgraded to version:",
               ) +
               " " +
               current;
@@ -2186,7 +2190,7 @@ allowUndo = true)`
         util.logDebugOptional(
           "events",
           "iterateFolders()\nfor..of - found the item and calling payload function(null, folder): " +
-            (folder.prettyName || folder.localizedName)
+            (folder.prettyName || folder.localizedName),
         );
         fnPayload(null, folder);
         break;
@@ -2259,7 +2263,7 @@ allowUndo = true)`
       if (abortSignal?.aborted) {
         util.logDebugOptional(
           "interface.findFolder",
-          `Util.allFoldersIterator() aborted due to keystroke after ${fCount} folders`
+          `Util.allFoldersIterator() aborted due to keystroke after ${fCount} folders`,
         );
         return; // Stop iteration if aborted
       }
@@ -2374,9 +2378,9 @@ allowUndo = true)`
               (a.parent.prettyName || a.parent.localizedName) +
               "/" +
               (a.prettyName || a.localizedName) +
-              (a === currentFolder ? " [current]" : "")
+              (a === currentFolder ? " [current]" : ""),
           ),
-          Array.from(accountMap.entries()).map((a) => `${a[1]} : ${a[0]}`)
+          Array.from(accountMap.entries()).map((a) => `${a[1]} : ${a[0]}`),
         );
       }
 
@@ -2429,7 +2433,7 @@ allowUndo = true)`
           firstUnread = folder; // remember the first unread folder before we hit current folder
           util.logDebugOptional(
             "navigation",
-            "first unread folder: " + (firstUnread.prettyName || firstUnread.localizedName)
+            "first unread folder: " + (firstUnread.prettyName || firstUnread.localizedName),
           );
         }
       }
@@ -2440,7 +2444,7 @@ allowUndo = true)`
           util.logDebugOptional(
             "navigation",
             "Arrived in next unread after found current: " +
-              (folder.prettyName || folder.localizedName)
+              (folder.prettyName || folder.localizedName),
           );
           break; // if we have skipped the folder in the iterator and it has unread items we are in the next unread folder
         }
@@ -2459,7 +2463,7 @@ allowUndo = true)`
       util.logDebug(
         "Could not find another unread folder after:" + lastFolder
           ? lastFolder.URI
-          : currentFolder.URI
+          : currentFolder.URI,
       );
       return currentFolder;
     }
@@ -2487,7 +2491,7 @@ allowUndo = true)`
       let recentFolders = FolderUtils.getMostRecentFolders(
         MailServices.accounts.allFolders,
         MAXRECENT,
-        "MRUTime"
+        "MRUTime",
       );
 
       items = recentFolders;
@@ -2519,18 +2523,18 @@ allowUndo = true)`
     parents,
     addMatchingFolder,
     matches,
-    abortSignal
+    abortSignal,
   ) {
     const util = QuickFolders.Util;
     util.logDebugOptional(
       "interface.findFolder",
-      `allFoldersMatch(isFiling:${isFiling}, parentString:${parentString}, maxParentLevel:${maxParentLevel})`
+      `allFoldersMatch(isFiling:${isFiling}, parentString:${parentString}, maxParentLevel:${maxParentLevel})`,
     );
     for await (let folder of util.allFoldersIterator(isFiling, true, abortSignal)) {
       if (abortSignal?.aborted) {
         util.logDebugOptional(
           "interface.findFolder",
-          "Util.allFoldersMatch() aborted due to keystroke"
+          "Util.allFoldersMatch() aborted due to keystroke",
         );
         return; // Stop iteration if aborted
       }
@@ -2715,7 +2719,7 @@ allowUndo = true)`
 
     const sanitizedHTML = parserUtils.sanitize(
       htmlString,
-      parserUtils.SanitizerAllowStyle | parserUtils.SanitizerAllowImages
+      parserUtils.SanitizerAllowStyle | parserUtils.SanitizerAllowImages,
     );
 
     return sanitizedHTML;
@@ -2818,6 +2822,94 @@ allowUndo = true)`
       }
     }
     return true;
+  },
+
+  /**
+   * Extracts the last color stop from a CSS gradient.
+   *
+   * @param {HTMLElement|CSSStyleDeclaration} elementOrStyle - The DOM element or computed style to inspect.
+   * @param {string} [fallbackColor=""] - Optional. Used if no gradient is found; defaults to empty string.
+   * @returns {string} The last color stop in the gradient, or the fallback color if none found.
+   *   (e.g., "rgb(...)", "rgba(...)", "#FFF", "#AA11BBCC").
+   *   Returns fallbackColor or empty string if no gradient or color stop could be determined.
+   *
+   * @example
+   * // Using a DOM element
+   * const el = document.querySelector(".my-tab");
+   * const color = QuickFolders.Util.getGradientsLastColor(el, "#FFF");
+   *
+   * @example
+   * // Using a gradient string directly
+   * const gradient = "linear-gradient(to bottom, rgba(255,0,0,1) 0%, rgba(0,0,255,1) 100%)";
+   * const color = QuickFolders.Util.getGradientsLastColor(gradient);
+   */
+  getGradientsLastColor: function (styleValueOrElement, fallbackColor = "") {
+    let resultBackgroundColor = "";
+    let background = "";
+    if (!styleValueOrElement) {
+      return "";
+    }
+
+    if (typeof styleValueOrElement === "string") {
+      background = styleValueOrElement;
+    } else {
+      const styles =
+        styleValueOrElement instanceof CSSStyleDeclaration
+          ? styleValueOrElement
+          : styleValueOrElement.ownerDocument.defaultView.getComputedStyle(styleValueOrElement);
+
+      // 1. get the background-image value
+      background = styles.backgroundImage;
+      fallbackColor = fallbackColor || styles.backgroundColor; // to be tested
+    }
+
+    // 2. if no gradient, return backgroundColor
+    if (!background || background === "none") {
+      return fallbackColor || "";
+    }
+
+    // try to match last rgb(), rgba(), or hex color// remove linear-gradient(...) wrapper
+    let inner = background.replace(/^linear-gradient\(([\s\S]*)\)$/, "$1");
+    let stops = inner.match(/(?:rgba?\([^)]+\)|#[0-9a-fA-F]{3,8})(?:\s+[0-9.%]+)?/g) || [];
+
+    const GRADIENT_STOP_INDEX = new Map([
+      ["to bottom", 1],
+      ["to right", 1],
+      ["to top", 0],
+      ["to left", 0],
+      ["to top left", 0],
+      ["to top right", 0],
+      ["to bottom left", 1],
+      ["to bottom right", 1],
+    ]);
+    const typeMatch = background.match(/^(\w+-gradient)\((.*)\)$/);
+
+    // check if first param is a direction
+    let direction =
+      [...GRADIENT_STOP_INDEX].find(([key, _index]) => inner.startsWith(key))?.[1] ?? null;
+    if (typeMatch && direction !=null) {
+      stops.shift(); // only keep values
+    }
+
+    // default: pick last stop
+    let colorStopIndex = 0;
+    switch (direction) {
+      case 0:
+        colorStopIndex = 0;
+        break;
+      case 1: // fall through
+      default:
+        colorStopIndex = stops.length - 1;
+        break;
+    }
+    // extract color from stop (strip position if any)
+    if (stops[colorStopIndex]) {
+      let lastStop = stops[colorStopIndex].match(/(rgba?\([^)]+\)|#[0-9a-fA-F]{3,8})/);
+      if (lastStop) {
+        resultBackgroundColor = lastStop[1];
+      }
+    }
+    return resultBackgroundColor;
   },
 };  // QuickFolders.Util
 

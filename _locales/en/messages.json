@@ -582,6 +582,12 @@
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Also outline the name (best with dark / colored backgrounds)"
   },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "For colored tabs: override Active Tab color"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "If a tab has its own color, use it for the active tab instead of the global Active Tab color. This will also recolor the bottom line of the tab area."
+  },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Drag to new Subfolder"
   },

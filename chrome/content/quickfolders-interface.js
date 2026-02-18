@@ -33,7 +33,6 @@ QuickFolders.Interface = {
 	RecentPopupId: "QuickFolders-folder-popup-Recent",
 	RecentPopupIdCurrentFolderTool: "QuickFolders-folder-popup-Recent-CurrentFolderTool",
 	_paletteStyleSheet: null,
-	_paletteStyleSheetOfOptions: null,
 	isCommandListeners: QuickFolders.Preferences.getBoolPref("debug.popupmenus.isCommandListeners"), // [false] remove these later
 	isOncommandAttributes: QuickFolders.Preferences.getBoolPref("debug.popupmenus.isOnCommandAttr"), // [false] remove these later
 	_verticalMenuOffset: QuickFolders.Preferences.getIntPref("debug.popupmenus.verticalOffset"),
@@ -133,34 +132,13 @@ QuickFolders.Interface = {
 
 	get PaletteStyleSheet() {
 		const util = QuickFolders.Util;
-	  let isOptionsScreen = (document.location.href.toString() == "chrome://quickfolders/content/options.xhtml");
-
-		if (isOptionsScreen) {
-			if (this._paletteStyleSheetOfOptions) {
-				return this._paletteStyleSheetOfOptions;
-			}
-		}
-		else {
-			if (this._paletteStyleSheet) {
-				return this._paletteStyleSheet;
-			}
+		if (this._paletteStyleSheet) {
+			return this._paletteStyleSheet;
 		}
 		let ss = "content/skin/quickfolders-palettes.css";
-
 		this._paletteStyleSheet = "chrome://quickfolders/" + ss;
-		if (!this._paletteStyleSheetOfOptions)  {
-      this._paletteStyleSheetOfOptions = this._paletteStyleSheet; // "chrome://quickfolders/content/skin/quickfolders-options.css";  // this._paletteStyleSheet;
-    }
 		util.logDebugOptional("css,css.Detail","My Palette Stylesheet = " + ss);
-
-		// now let's return the correct thing.
-		if (isOptionsScreen) {
-			if (this._paletteStyleSheetOfOptions) {
-				return this._paletteStyleSheetOfOptions;
-			}
-		}
 		return this._paletteStyleSheet;
-
 	} ,
 
 	getUIstring: function (id, substitions) {
@@ -6920,8 +6898,67 @@ QuickFolders.Interface = {
   lastTabSelected: null,
   styleSelectedTab: function (selectedButton) {
 		if(!(selectedButton))  {return;}
-    if (selectedButton.classList.contains("selected-folder")) {return;}
-    selectedButton.classList.add("selected-folder");
+	  // already selected, no changes needed
+		if (selectedButton.classList.contains("selected-folder")) {
+			return;
+		}
+		const isActiveCustomColor = QuickFolders.Preferences.getBoolPref("style.activeTabCustomColor");
+		// can we see if the tab has a custom color, and in this case avoid styling it with the active tab rules?
+		let isCustomColor = false;
+		// const buttonStyle = selectedButton.ownerDocument?.defaultView.getComputedStyle(selectedButton);
+		const classes = [...selectedButton.classList];
+		const customColor = classes.find((c) => /^col[1-9]\d*/.test(c)) || null;
+		if (isActiveCustomColor) {
+			if (customColor) {
+        QuickFolders.Util.logDebugOptional(
+          "css",
+          `Tab ${selectedButton.querySelector("label").value} has custom color: ${customColor}`,
+        );
+        isCustomColor = true;
+      }
+		}
+		const folderPane = selectedButton.closest("#QuickFolders-Folders-Pane");
+		if (isCustomColor) {
+      /*
+			build a rule name in the format of ".themename .effectivePalette.paletteIndex"
+			e.g: .quickfolders-flat .plastic.col5
+			*/
+      const ThemeNames = Object.values(QuickFolders.Themes.themes).map(
+        (theme) => theme.cssToolbarClassName,
+      );
+      const theme = [...selectedButton.parentElement.classList].find((n) => ThemeNames.includes(n));
+      // {plastic, pastel, night}
+      const effectivePalette = classes.find((n) => QuickFolders.Themes.palettes.includes(n));
+      // paletteIndex ={col1..20, col0}
+      const paletteIndex = customColor?.replace(/striped$/, "") || "col0";
+      // retrieve the matching filled color gradient
+      const ruleName = `.${theme} .${effectivePalette}.${paletteIndex}`;
+      const ssPalettes = QuickFolders.Interface.getStyleSheet(
+        selectedButton.ownerDocument,
+        QuickFolders.Interface.PaletteStyleSheet,
+        "QuickFolderPalettes",
+      );
+      const bgImage = QuickFolders.Styles.getElementStyle(ssPalettes, ruleName, "background-image");
+      const forcedBackgroundColor = QuickFolders.Util.getGradientsLastColor(bgImage);
+      // const forcedBackgroundColor = QuickFolders.Util.getGradientsLastColor(buttonStyle, "");
+      selectedButton.classList.add("forceCustomColor");
+			if (customColor && paletteIndex && paletteIndex !== "col0") {
+        selectedButton.classList.replace(customColor, paletteIndex);
+      }
+      if (folderPane && forcedBackgroundColor) {
+        folderPane.style.setProperty("border-bottom-color", forcedBackgroundColor, "important");
+        QuickFolders.Util.logDebugOptional(
+          "css",
+          `Forcing color ${forcedBackgroundColor} to folder pane bottom`,
+        );
+      } else {
+        folderPane.style.removeProperty("border-bottom-color");
+      }
+    } else {
+			folderPane.style.removeProperty("border-bottom-color");
+		}
+
+		selectedButton.classList.add("selected-folder");
     selectedButton.checked = true;
     selectedButton.setAttribute("selected", true); // real tabs
   } ,
@@ -7022,7 +7059,7 @@ QuickFolders.Interface = {
 				button.className = button.className.replace(/(col[0-9]+)/,"$1striped");
 			}
 
-			button.className = button.className.replace(/\s*selected-folder/,"");
+			button.classList.remove("selected-folder", "forceCustomColor");
 			// button.className = button.className.replace(/(cActive[0-9]+)/,""); // remove active coloring
 			// remove "selected" attribute of tab look
 			if (button.hasAttribute("selected")) { button.removeAttribute("selected"); }
@@ -7056,7 +7093,10 @@ QuickFolders.Interface = {
 		/* ACTIVE TAB STYLING */
     QuickFolders.Interface.styleSelectedTab(selectedButton);
 
-		QI.initCurrentFolderTab(QI.CurrentFolderTab, folder, selectedButton);
+		const currentTab = QI.CurrentFolderTab;
+		if (currentTab) {
+			QI.initCurrentFolderTab(QI.CurrentFolderTab, folder, selectedButton);
+		}
     if (!prefs.supportsCustomIcon) {
       let ic = util.$("context-quickFoldersIcon");
       if (ic) {ic.collapsed = true;}
@@ -7603,17 +7643,49 @@ QuickFolders.Interface = {
 		if (QuickFolders.Preferences.getIntPref("style.ActiveTab.paletteType")) {
 			const paletteEntry =  QuickFolders.Preferences.getIntPref("style.ActiveTab.paletteEntry"),
 				ruleName = ".quickfolders-flat " + paletteClass + ".col" + paletteEntry,
-				selectedGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image");
+				selectedGradient = engine.getElementStyle(ssPalettes, ruleName, "background-image"),
+				colorScheme = engine.getElementStyle(ssPalettes, ruleName, "color-scheme"); 
 			// selectedColor = engine.getElementStyle(ssPalettes, ruleName, "color"); // make this overridable!
 			// we do not want the rule to containg the paletteClass because it has to always work!
-			engine.setElementStyle(ss, ".quickfolders-flat " + ".selected-folder", "background-image", selectedGradient, true);
+			engine.setElementStyle(
+        ss,
+        ".quickfolders-flat .selected-folder:not(.forceCustomColor)",
+        "background-image",
+        selectedGradient,
+        true,
+      );
+			if (colorScheme) {
+        engine.setElementStyle(
+          ss,
+          ".quickfolders-flat .selected-folder:not(.forceCustomColor)",
+          "color-scheme",
+          colorScheme,
+          true,
+        );
+			}
 		} else { // two colors mode
-			engine.setElementStyle(ss, ".quickfolders-flat " + ".selected-folder", "background-image", "none", true);
+			engine.setElementStyle(
+        ss,
+        ".quickfolders-flat .selected-folder:not(.forceCustomColor)",
+        "background-image",
+        "none",
+        true,
+      );
 			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton.selected-folder","background-color", colActiveBG, true);
 		}
     // style label and image (to also overwrite theme color for svg icons)
-    engine.removeElementStyle(ss, ".quickfolders-flat .selected-folder > *:not(menupopup)", "color");  
-    engine.setElementStyle(ss, ".quickfolders-flat .selected-folder > *:not(menupopup)", "color", selectedColor,true);
+    engine.removeElementStyle(
+      ss,
+      ".quickfolders-flat .selected-folder:not(.forceCustomColor) > *:not(menupopup)",
+      "color",
+    );  
+    engine.setElementStyle(
+      ss,
+      ".quickfolders-flat .selected-folder:not(.forceCustomColor) > *:not(menupopup)",
+      "color",
+      selectedColor,
+      true,
+    );
 	} ,
 
 	// INACTIVE STATE (DEFAULT)

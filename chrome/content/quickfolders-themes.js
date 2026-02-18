@@ -152,6 +152,8 @@ QuickFolders.Themes = {
     /* end of themes list */
   },
 
+  palettes: ["plastic", "pastel", "night"],
+
   Theme: function (id) {
     return Object.values(this.themes).find((obj) => obj.Id === id) || this.themes["Flat"];
   },

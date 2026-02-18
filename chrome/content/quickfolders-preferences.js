@@ -323,7 +323,7 @@ QuickFolders.Preferences = {
     // 1 - filled
     if (this.CurrentThemeId === "nativeTabs") {
       // force striped for native tabs!
-      return 0;
+      return this.TABS_STRIPED;
     }
     const result = this.getIntPref("colorTabStyle");
     return result;

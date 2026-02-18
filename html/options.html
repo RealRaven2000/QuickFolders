@@ -704,6 +704,12 @@
                     <option value="3">__MSG_qf.palette.night__</option>
                   </select>
 
+                  <div style="grid-column: 1 / -1; padding-left: 6px;">
+                    <label title="__MSG_qf.checkbox.layout.activeCustomColor.tooltip__"><input type="checkbox"
+                      preference="qfpl-CustomColorActive"
+                      data-pref-name="extensions.quickfolders.style.activeTabCustomColor">__MSG_qf.checkbox.layout.activeCustomColor__</label>
+                  </div>
+
 
                   <label id="hoveredtabs-label" tabindex="0"
                     tooltiptext="__MSG_qf.label.setcolors__" class="qfTabPreview" stylePrefKey="HoveredTab"
@@ -740,9 +746,10 @@
                     <option value="3">__MSG_qf.palette.night__</option>
                   </select>
 
-
                 </div>
+                
                 <span class="separator thin"> </span>
+                
                 <div class="hbox" id="qf-stateColors-defaultButton" pack="end">
                   <button id="defaultColors">__MSG_qf.button.defaultcolors__</button>
                 </div>

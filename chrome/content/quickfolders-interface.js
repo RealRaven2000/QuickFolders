@@ -7698,136 +7698,291 @@ QuickFolders.Interface = {
 
 	// Get all blingable elements and make them look user defined.
 	updateUserStyles: function () {
+		function getResolvedVar(element, varName) {
+			if (!element){
+				return null;
+			}
+			const val = window.getComputedStyle(element).getPropertyValue(varName).trim();
+			return val || null;
+		}
+
     const util = QuickFolders.Util,
 		      prefs = QuickFolders.Preferences,
 					styleEngine = QuickFolders.Styles;
 		try {
-			util.logDebugOptional ("interface","updateUserStyles() " + window.location);
-			// get MAIN STYLE SHEET
-			let ss = this.getStyleSheet(document, "quickfolders-layout.css", "QuickFolderStyles");
+      util.logDebugOptional("interface", "updateUserStyles() " + window.location);
+      // get MAIN STYLE SHEET
+      let ss = this.getStyleSheet(document, "quickfolders-layout.css", "QuickFolderStyles");
 
-			if (!ss) {return false;}
+      if (!ss) {
+        return false;
+      }
 
-			// get PALETTE STYLE SHEET
-			let ssPalettes = this.getStyleSheet(document, QuickFolders.Interface.PaletteStyleSheet, "QuickFolderPalettes");
+      // get PALETTE STYLE SHEET
+      let ssPalettes = this.getStyleSheet(
+        document,
+        QuickFolders.Interface.PaletteStyleSheet,
+        "QuickFolderPalettes",
+      );
       ssPalettes = ssPalettes ? ssPalettes : ss; // if this fails, use main style sheet.
-			let theme = prefs.CurrentTheme,
-			    tabStyle = prefs.ColoredTabStyle;
+      let theme = prefs.CurrentTheme,
+        tabStyle = prefs.ColoredTabStyle;
 
-			if (prefs.isCssTransitions) {
-				styleEngine.setElementStyle(ss, ".quickfolders-flat toolbarbutton", "transition-duration", "1s, 1s, 2s, 1s");
-				styleEngine.setElementStyle(ss, ".quickfolders-flat toolbarbutton", "transition-property", "color, background-color, border-radius, box-shadow");
-			}
-			else {
-				styleEngine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton", "transition-duration");
-				styleEngine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton", "transition-property");
-			}
+      if (prefs.isCssTransitions) {
+        styleEngine.setElementStyle(
+          ss,
+          ".quickfolders-flat toolbarbutton",
+          "transition-duration",
+          "1s, 1s, 2s, 1s",
+        );
+        styleEngine.setElementStyle(
+          ss,
+          ".quickfolders-flat toolbarbutton",
+          "transition-property",
+          "color, background-color, border-radius, box-shadow",
+        );
+      } else {
+        styleEngine.removeElementStyle(
+          ss,
+          ".quickfolders-flat toolbarbutton",
+          "transition-duration",
+        );
+        styleEngine.removeElementStyle(
+          ss,
+          ".quickfolders-flat toolbarbutton",
+          "transition-property",
+        );
+      }
 
-			// =================
-			// FONT COLORS
-			let theColorString = prefs.getUserStyle("InactiveTab","color","black"),
-			    colActiveBG = prefs.getUserStyle("ActiveTab","background-color","Highlight"),
-					btnSelector = ".quickfolders-flat toolbarbutton";
+      // =================
+      // FONT COLORS
+      let theColorString = prefs.getUserStyle("InactiveTab", "color", "black"),
+        colActiveBG = prefs.getUserStyle("ActiveTab", "background-color", "Highlight"),
+        btnSelector = ".quickfolders-flat toolbarbutton";
 
-			if (tabStyle != prefs.TABS_STRIPED)  {
-				styleEngine.setElementStyle(ss, btnSelector
-				  + "[background-image].selected-folder","border-bottom-color", colActiveBG, true);
-			}
-			QuickFolders.Interface.updateSharedToolbarStyles(ss);
+      if (tabStyle != prefs.TABS_STRIPED) {
+        styleEngine.setElementStyle(
+          ss,
+          btnSelector + "[background-image].selected-folder",
+          "border-bottom-color",
+          colActiveBG,
+          true,
+        );
+      }
+      QuickFolders.Interface.updateSharedToolbarStyles(ss);
 
-			// =================
-			// CUSTOM RADIUS
-			let topRadius = "4px",
-			    bottomRadius = "0px";
-			if (prefs.getBoolPref("style.corners.customizedRadius")) {
-				topRadius =  prefs.getIntPref("style.corners.customizedTopRadiusN") + "px";
-				bottomRadius = prefs.getIntPref("style.corners.customizedBottomRadiusN") + "px";
-			}
+      // =================
+      // CUSTOM RADIUS
+      let topRadius = "4px",
+        bottomRadius = "0px";
+      if (prefs.getBoolPref("style.corners.customizedRadius")) {
+        topRadius = prefs.getIntPref("style.corners.customizedTopRadiusN") + "px";
+        bottomRadius = prefs.getIntPref("style.corners.customizedBottomRadiusN") + "px";
+      }
 
-			styleEngine.setElementStyle(ss, btnSelector, "border-top-left-radius", topRadius, true);
-			styleEngine.setElementStyle(ss, btnSelector, "border-top-right-radius", topRadius, true);
-			styleEngine.setElementStyle(ss, btnSelector, "border-bottom-left-radius", bottomRadius, true);
-			styleEngine.setElementStyle(ss, btnSelector, "border-bottom-right-radius", bottomRadius, true);
+      styleEngine.setElementStyle(ss, btnSelector, "border-top-left-radius", topRadius, true);
+      styleEngine.setElementStyle(ss, btnSelector, "border-top-right-radius", topRadius, true);
+      styleEngine.setElementStyle(ss, btnSelector, "border-bottom-left-radius", bottomRadius, true);
+      styleEngine.setElementStyle(
+        ss,
+        btnSelector,
+        "border-bottom-right-radius",
+        bottomRadius,
+        true,
+      );
 
-			// QuickFolders Toolbar only
-			let btnInToolbarSelector = ".quickfolders-flat .folderBarContainer toolbarbutton",
-			    buttonHeight = prefs.getIntPref("style.button.minHeight") + "px",
-			    topPadding =  prefs.getIntPref("style.button.paddingTop") + "px";
-			styleEngine.setElementStyle(ss, btnInToolbarSelector, "min-height", buttonHeight, true);
-			styleEngine.setElementStyle(ss, btnInToolbarSelector, "padding-top", topPadding, true);
+      // QuickFolders Toolbar only
+      let btnInToolbarSelector = ".quickfolders-flat .folderBarContainer toolbarbutton",
+        buttonHeight = prefs.getIntPref("style.button.minHeight") + "px",
+        topPadding = prefs.getIntPref("style.button.paddingTop") + "px";
+      styleEngine.setElementStyle(ss, btnInToolbarSelector, "min-height", buttonHeight, true);
+      styleEngine.setElementStyle(ss, btnInToolbarSelector, "padding-top", topPadding, true);
 
+      // ==================
+      // BORDERS & SHADOWS
+      // for full colored tabs color the border as well!
+      // but should only apply if background image is set!!
+      let SHADOW = "box-shadow";
+      if (prefs.getBoolPref("buttonShadows")) {
+        styleEngine.setElementStyle(
+          ss,
+          ".quickfolders-flat .folderBarContainer toolbarbutton",
+          SHADOW,
+          "1px -1px 3px -1px rgba(0,0,0,0.3)",
+          true,
+        );
+        styleEngine.setElementStyle(
+          ss,
+          ".quickfolders-flat .folderBarContainer toolbarbutton.selected-folder",
+          SHADOW,
+          "0px 0px 2px -1px rgba(0,0,0,0.9)",
+          true,
+        );
+        styleEngine.setElementStyle(
+          ss,
+          ".quickfolders-flat .folderBarContainer toolbarbutton:hover",
+          SHADOW,
+          "0px 0px 2px -1px rgba(0,0,0,0.9)",
+          true,
+        );
+      } else {
+        styleEngine.removeElementStyle(
+          ss,
+          ".quickfolders-flat .folderBarContainer toolbarbutton",
+          SHADOW,
+        );
+        styleEngine.removeElementStyle(
+          ss,
+          ".quickfolders-flat .folderBarContainer toolbarbutton.selected-folder",
+          SHADOW,
+        );
+        styleEngine.removeElementStyle(
+          ss,
+          ".quickfolders-flat .folderBarContainer toolbarbutton:hover",
+          SHADOW,
+        );
+      }
 
-			// ==================
-			// BORDERS & SHADOWS
-			// for full colored tabs color the border as well!
-			// but should only apply if background image is set!!
-			let SHADOW = "box-shadow";
-			if (prefs.getBoolPref("buttonShadows")) {
-				styleEngine.setElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton", SHADOW, "1px -1px 3px -1px rgba(0,0,0,0.3)", true);
-				styleEngine.setElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton.selected-folder", SHADOW, "0px 0px 2px -1px rgba(0,0,0,0.9)", true);
-				styleEngine.setElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton:hover", SHADOW, "0px 0px 2px -1px rgba(0,0,0,0.9)", true);
-			}
-			else {
-				styleEngine.removeElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton", SHADOW);
-				styleEngine.removeElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton.selected-folder", SHADOW);
-				styleEngine.removeElementStyle(ss, ".quickfolders-flat .folderBarContainer toolbarbutton:hover", SHADOW);
-			}
+      styleEngine.setElementStyle(
+        ss,
+        ".quickfolders-flat toolbarbutton[background-image].selected-folder",
+        "border-bottom-color",
+        colActiveBG,
+        true,
+      );
+      styleEngine.setElementStyle(
+        ss,
+        "#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane",
+        "border-bottom-color",
+        colActiveBG,
+        true,
+      ); // only in main toolbar!
 
-			styleEngine.setElementStyle(ss, ".quickfolders-flat toolbarbutton[background-image].selected-folder","border-bottom-color", colActiveBG, true);
-			styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane","border-bottom-color", colActiveBG, true); // only in main toolbar!
+      let theInit = "";
+      try {
+        theInit = "SelectedFolderStyle";
+        this.initSelectedFolderStyle(ss, ssPalettes, tabStyle);
+        theInit = "DefaultStyle";
+        this.initDefaultStyle(ss, ssPalettes, tabStyle);
+        theInit = "HoverStyle";
+        this.initHoverStyle(ss, ssPalettes, this.PaintModeActive);
+        theInit = "DragOverStyle";
+        this.initDragOverStyle(ss, ssPalettes);
+      } catch (ex) {
+        util.logException("Quickfolders.updateUserStyles - init" + theInit + " failed.", ex);
+      }
 
-			let theInit = "";
-			try {
-			  theInit = "SelectedFolderStyle";
-				this.initSelectedFolderStyle(ss, ssPalettes, tabStyle);
-			  theInit = "DefaultStyle";
-				this.initDefaultStyle(ss, ssPalettes, tabStyle);
-			  theInit = "HoverStyle";
-				this.initHoverStyle(ss, ssPalettes, this.PaintModeActive);
-			  theInit = "DragOverStyle";
-				this.initDragOverStyle(ss, ssPalettes);
-			}
-			catch (ex) {
-			  util.logException("Quickfolders.updateUserStyles - init" + theInit + " failed.", ex);
-			}
-
-			// TOOLBAR
-			theColorString = prefs.getUserStyle("Toolbar","background-color","ButtonFace");
-			if (prefs.getBoolPref("transparentToolbar")) {
-				theColorString = "transparent";
-			}
-			styleEngine.setElementStyle(ss, ".toolbar","background-color", theColorString,true);
+      // TOOLBAR
+      theColorString = prefs.getUserStyle("Toolbar", "background-color", "ButtonFace");
+      if (prefs.getBoolPref("transparentToolbar")) {
+        theColorString = "transparent";
+      }
+      styleEngine.setElementStyle(ss, ".toolbar", "background-color", theColorString, true);
 
       // restrict to toolbar only (so as not to affect the panel in currentFolder bar!)
-			styleEngine.setElementStyle(ss, "toolbar." + theme.cssToolbarClassName, "background-color", theColorString,true);
-      let tbBottom = prefs.getUserStyle("Toolbar","bottomLineWidth", 3) + "px";
-      styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane", "border-bottom-width", tbBottom, true);
+      styleEngine.setElementStyle(
+        ss,
+        "toolbar." + theme.cssToolbarClassName,
+        "background-color",
+        theColorString,
+        true,
+      );
+      let tbBottom = prefs.getUserStyle("Toolbar", "bottomLineWidth", 3) + "px";
+      styleEngine.setElementStyle(
+        ss,
+        "#QuickFolders-Toolbar.quickfolders-flat #QuickFolders-Folders-Pane",
+        "border-bottom-width",
+        tbBottom,
+        true,
+      );
 
-			// this.updateNavigationBar(); // not working here in Tb 115!
+      // this.updateNavigationBar(); // not working here in Tb 115!
 
       // change to numeric
-			let minToolbarHeight = prefs.getStringPref("toolbar.minHeight");
+      let minToolbarHeight = prefs.getStringPref("toolbar.minHeight");
       if (minToolbarHeight) {
         let mT = parseInt(minToolbarHeight);
-        styleEngine.setElementStyle(ss, "#QuickFolders-Toolbar", "min-height", mT.toString()+"px", false);
+        styleEngine.setElementStyle(
+          ss,
+          "#QuickFolders-Toolbar",
+          "min-height",
+          mT.toString() + "px",
+          false,
+        );
       }
 
       // main toolbar position
       // let ordinalGroup = prefs.getIntPref("toolbar.ordinalPosition") || 0;
       // styleEngine.setElementStyle(ss,"#QuickFolders-Toolbar", "-moz-box-ordinal-group", ordinalGroup.toString());
 
-			util.logDebugOptional ("css","updateUserStyles(): success");
-      
-      util.$("QuickFolders-Tools-Pane").setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 191]
-			util.$("QuickFolders-Toolbar").setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 407]
+      util.logDebugOptional("css", "updateUserStyles(): success");
 
-			util.$("QuickFolders-Category-Selection").style.fontSize= `${prefs.ButtonFontSize || 12}px`; // [issue 461]
-			util.$("QuickFolders-FindFolder").style.fontSize= `${prefs.ButtonFontSize || 12}px`; // [issue 461]
-			
-			let customIconSize = QuickFolders.Preferences.getIntPref("toolbar.customIconSize");
-			styleEngine.setElementStyle(ss,":root", "--qf-tabiconsize", `${customIconSize}px`);
-			return true;
-		}
+      util
+        .$("QuickFolders-Tools-Pane")
+        .setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 191]
+      util
+        .$("QuickFolders-Toolbar")
+        .setAttribute("iconsize", prefs.getBoolPref("toolbar.largeIcons") ? "large" : "small"); // [issue 407]
+
+      util.$("QuickFolders-Category-Selection").style.fontSize = `${prefs.ButtonFontSize || 12}px`; // [issue 461]
+      util.$("QuickFolders-FindFolder").style.fontSize = `${prefs.ButtonFontSize || 12}px`; // [issue 461]
+
+      let customIconSize = QuickFolders.Preferences.getIntPref("toolbar.customIconSize");
+      styleEngine.setElementStyle(ss, ":root", "--qf-tabiconsize", `${customIconSize}px`);
+
+      // 2. Read resolved values
+			const toolbox = document.querySelector("toolbox#navigation-toolbox");
+
+			if (prefs.CurrentThemeId == QuickFolders.Themes.themes.Buttons.Id) {
+        const accentBG =
+          getResolvedVar(toolbox, "--button-primary-background-color") ||
+          getResolvedVar(toolbox, "--selected-item-color");
+
+        if (accentBG) {
+          styleEngine.setElementStyle(ss, ":root", "--qf-primary-background-color", `${accentBG}`);
+        }
+        const accentFG = getResolvedVar(toolbox, "--button-primary-text-color") || "#ffffff";
+        if (accentFG) {
+          styleEngine.setElementStyle(ss, ":root", "--qf-primary-text-color", accentFG);
+        }
+        const accentHover = getResolvedVar(toolbox, "--button-primary-hover-background-color");
+        if (accentHover) {
+          styleEngine.setElementStyle(
+            ss,
+            ":root",
+            "--qf-primary-hover-background-color",
+            accentHover,
+          );
+        }
+      }
+			if (prefs.CurrentThemeId == QuickFolders.Themes.themes.NativeTabs.Id) {
+        const selectedTab = document.querySelector("#tabs-toolbar tab[selected]");
+        const selectedTabStyle = window.getComputedStyle(selectedTab);
+				/*
+				const selectedTabBackground = document.querySelector(
+          "#tabs-toolbar tab .tab-background[selected='true']",
+        );
+				if (selectedTabBackground) {
+					const accentBG = window.getComputedStyle(selectedTabBackground).backgroundImage;
+					if (accentBG) {
+						styleEngine.setElementStyle(ss, ":root", "--qf-selected-tab-background-color", accentBG);
+					}
+        }
+				const selectedTabLine = selectedTab.querySelector(".tab-line[selected=true]");
+				if (selectedTabLine) {
+					let overstrokeColor = window.getComputedStyle(selectedTabLine).backgroundColor;
+          styleEngine.setElementStyle(ss, ":root", "--qf-selected-tab-gradient", overstrokeColor);
+				}
+					*/
+				const accentCol = selectedTabStyle.color;
+				if (accentCol) {
+					styleEngine.setElementStyle(ss, ":root", "--qf-selected-tab-color", accentCol);
+				}
+      }
+
+
+      return true;
+    }
 		catch(e) {
 			util.logException("Quickfolders.updateUserStyles failed ", e);
 			return false;

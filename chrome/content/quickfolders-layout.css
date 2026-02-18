@@ -3,11 +3,38 @@
 @import url("skin/quickfolders-widgets.css");
 /* version specific styling - removed chrome://quickfolders/content/*/
 @import url("quickfolders-mods.css"); 
+@import url("chrome://messenger/skin/shared/variables.css");
 
 :root {
 	--qf-tabiconsize: 16px;
 	--qf-treeiconsize: 16px;
-} 
+  --qf-primary-background-color: #006EB7;
+  --qf-primary-text-color: white;
+  --qf-primary-hover-background-color: #006EB7;
+	/* test colors: */
+	--qf-selected-tab-color: rgba(0,0,0,0.9);
+	--qf-translucent-background: rgba(255, 255, 255, 0.7);
+	--qf-selected-tab-background-color: var(--lwt-selected-tab-background-color, var(--qf-translucent-background));
+	--qf-selected-tab-gradient: linear-gradient(to bottom, 
+			var(--qf-selected-tab-color) 0%, 
+			var(--qf-selected-tab-color) 21%, 
+			rgba(0,0,0,0) 21%, 
+			rgba(0,0,0,0) 100%
+	);
+	--qf-unselected-tab-gradient: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+		--qf-selected-tab-color: rgba(255,255,255,0.85);
+    --qf-selected-tab-background-color: rgba(0, 0, 0, 0.8);
+		--qf-translucent-background: rgba(0, 0, 0, 0.7)
+  }
+}
 
 /* fix chevron alignment Tb 140+ */
 .QuickFolders-folder-popup > menu::after,
@@ -533,16 +560,71 @@ toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
 *********************************/
 
 /* NATIVE TABS */
-.quickfolders-realTabs toolbarbutton
-{
-	appearance: tab;
+.quickfolders-realTabs toolbarbutton {
+	appearance: none;
+	background-image: none; 
+	background-color: var(--button-background-color);
+	color: var(--button-text-color);
 }
 
-/* NATIVE BUTTONS */
-.quickfolders-realbuttons toolbarbutton
-{
-	appearance: button !important;
+.quickfolders-realTabs #QuickFolders-FoldersBox > toolbarbutton {
 	height: auto !important;
+	padding-block: 0.1em;
+	padding-inline: 0.3em;
+	margin: 1px;
+}
+
+.quickfolders-realTabs toolbarbutton:not(.selected-folder) {
+	background-color: rgba(0,0,0,0);
+	/* remove coloring */
+  background-image: var(--qf-unselected-tab-gradient) !important; 
+}
+
+
+.quickfolders-realTabs toolbarbutton.selected-folder {
+	background-color: var(--qf-selected-tab-background-color) !important;
+	color: var(--qf-selected-tab-color) !important;
+	box-shadow: 0 2px 8px -5px var(--color-black);
+}
+.quickfolders-realTabs toolbarbutton.selected-folder.col0,
+.quickfolders-realTabs toolbarbutton.selected-folder.col0striped {
+	/* default overstroke */
+	background-image: var(--qf-selected-tab-gradient) !important;
+}
+/* squeeze the background gradient */
+.quickfolders-realTabs toolbarbutton.selected-folder[class^="col"]:not([class*="striped"]) {
+	background-repeat: repeat-x;
+  background-position: top 2px 1px 1px;
+  background-size: 100% 22%;
+}
+
+
+/* NATIVE BUTTONS */
+.quickfolders-realbuttons toolbarbutton { /* WAS	appearance: button !important; */
+	appearance: none;
+	height: auto !important;
+	background-color: var(--button-background-color);
+	color: var(--button-text-color);
+}
+
+.quickfolders-realbuttons toolbarbutton.selected-folder {
+	background-color: var(--qf-primary-background-color);
+	border-color: var(--button-primary-border-color);
+  color: var(--qf-primary-text-color) !important;
+	color-scheme: dark; /* force bright icons on colored background */
+}
+
+.quickfolders-realbuttons toolbarbutton.selected-folder:hover {
+	background-color: var(--qf-primary-hover-background-color) !important;
+}
+
+.quickfolders-realbuttons  #QuickFolders-FoldersBox > toolbarbutton {
+	background-image: none; /* no stripes */
+	border: 1px solid rgba(80,80,80,0.5) !important;
+	border-radius: 0.2em;
+  margin: 1px;
+	padding-block: 0.1em;
+	padding-inline: 0.3em;
 }
 
 /* main toolbar */

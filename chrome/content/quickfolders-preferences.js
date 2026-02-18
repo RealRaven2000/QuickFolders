@@ -319,9 +319,14 @@ QuickFolders.Preferences = {
   },
 
   get ColoredTabStyle() {
-    // 0 - filled
-    // 1 - striped
-    return this.getIntPref("colorTabStyle");
+    // 0 - striped
+    // 1 - filled
+    if (this.CurrentThemeId === "nativeTabs") {
+      // force striped for native tabs!
+      return 0;
+    }
+    const result = this.getIntPref("colorTabStyle");
+    return result;
   },
 
   TABS_STRIPED: 0,

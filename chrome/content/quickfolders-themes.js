@@ -59,7 +59,7 @@ QuickFolders.Themes = {
     NativeTabs: {
       name: "Native Tabs",
       Id: "nativeTabs",
-      author: "Your OS ;)",
+      author: "Axel Grude",
       cssToolbarClassName: "quickfolders-realTabs",
       supportsFeatures: {
         stateColors: false,

@@ -6901,7 +6901,14 @@ QuickFolders.Interface = {
 
   lastTabSelected: null,
   styleSelectedTab: function (selectedButton) {
-		if(!(selectedButton))  {return;}
+		if(!(selectedButton))  {
+      // no visible button - reset bottom bar color
+      const folderPane = document.querySelector("#QuickFolders-Folders-Pane");
+      if (folderPane) {
+        folderPane.style.removeProperty("border-bottom-color");
+      }
+      return;
+    }
 	  // already selected, no changes needed
 		if (selectedButton.classList.contains("selected-folder")) {
 			return;

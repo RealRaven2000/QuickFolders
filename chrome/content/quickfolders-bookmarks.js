@@ -338,14 +338,14 @@ QuickFolders.bookmarks = {
 
     if (this.indexOfEntry(newUri) == -1) {
       // avoid duplicates!
-      let chevron = " " + "\u00BB".toString() + " ",
+      const SEPARATOR = " » ",
         showFolder = prefs.getBoolPref("bookmarks.folderLabel"),
         hdr = MailServices.messageServiceFromURI(newUri).messageURIToMsgHdr(newUri);
       if (hdr) {
         try {
           let label = util.getFriendlyMessageLabel(hdr);
           if (showFolder && sourceFolder) {
-            label = (sourceFolder.prettyName || sourceFolder.localizedName) + chevron + label;
+            label = (sourceFolder.prettyName || sourceFolder.localizedName) + SEPARATOR + label;
           }
           let entry = {
             Uri: newUri,

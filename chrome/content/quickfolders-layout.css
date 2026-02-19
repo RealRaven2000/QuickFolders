@@ -670,7 +670,7 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 }
 
 .quickfolders-flat toolbarbutton.dragover {
-	background-image: none !important;
+	background-image: none;
 }
 
 .quickfolders-flat .folderBarContainer toolbarbutton:hover
@@ -695,18 +695,38 @@ toolbar.quickfolders-flat #QuickFolders-Folders-Pane {
 
 /** DRAG TOOLBARBUTTONS **/
 
-#QuickFolders-FoldersBox.folderBarContainer toolbarbutton.dragRIGHT.dragover,
-#QuickFolders-FoldersBox.folderBarContainer toolbarbutton.dragRIGHT.pastel.dragover,
-#QuickFolders-FoldersBox.folderBarContainer toolbarbutton[label].dragRIGHT.dragover,
-#QuickFolders-FoldersBox.folderBarContainer toolbarbutton[label].dragRIGHT.pastel.dragover
-{
-	background-image: url("skin/ico/dropRight.gif") !important;
-	background-position: right center !important;
-	background-repeat: no-repeat !important;
+toolbarbutton.dragover {
+  position:relative;
 }
 
-#QuickFolders-FoldersBox toolbarbutton.dragLEFT.dragover {
-	list-style-image: url("skin/ico/dropLeft.gif") !important;
+toolbarbutton.dragRIGHT.dragover::after,
+toolbarbutton.dragLEFT.dragover::after {
+		color: black; 
+    position: absolute;
+	  font-weight: bold;
+	  font-size: 1.2em;
+    width: 16px; /* icon width */
+    height: 16px; /* icon height */
+		text-shadow: 
+			1px 1px 0 white,
+			-1px 1px 0 white,
+			1px -1px 0 white,
+			-1px -1px 0 white;
+		text-align: right;
+}
+
+toolbarbutton.dragRIGHT.dragover::after {
+	  content: "▶";
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+toolbarbutton.dragLEFT.dragover::after {
+	  content: "◀";
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 

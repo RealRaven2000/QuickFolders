@@ -1806,7 +1806,7 @@ allowUndo = true)`,
       if (getPref("parentFolder")) {
         let parent = folder.parent;
         if (parent && !parent.isServer) {
-          tooltip += parent.name + "/";
+          tooltip += parent.name + " » ";
         }
       }
     } catch {

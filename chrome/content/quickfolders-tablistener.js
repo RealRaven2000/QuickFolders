@@ -15,7 +15,7 @@ QuickFolders.TabListener = {
         const util = QuickFolders.Util,
           QI = QuickFolders.Interface,
           tabmail = document.getElementById("tabmail");
-        util.logDebugOptional("listeners.tabmail,categories", "TabListener.select() - ");
+        util.logDebugOptional("listeners.tabmail,categories", `TabListener.select()`);
         let info = tabmail.currentTabInfo;
         if (!info) {
           return;

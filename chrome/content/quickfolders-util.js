@@ -409,7 +409,7 @@ QuickFolders.Util = {
       let usage = prefs.getIntPref("premium." + featureName + ".usage");
       usage++;
       prefs.setIntPref("premium." + featureName + ".usage", usage);
-    } catch {}
+    } catch {;}
 
     if (typeof specialTabs == "object" && specialTabs.msgNotificationBar) {
       notifyBox = specialTabs.msgNotificationBar;
@@ -1148,7 +1148,7 @@ allowUndo = true)`,
             " " +
             `${dt.getHours()}:${dt.getMinutes()}:${dt.getSeconds()}`;
         }
-      } catch {}
+      } catch {;}
     }
     return theDate;
   },
@@ -1382,7 +1382,7 @@ allowUndo = true)`,
       }
       timePassed = "[" + elapsed + " ms]   ";
       this.stopWatchtime.set(map, endTime); // remember last time
-    } catch {}
+    } catch {;}
     if (cmd == "reset" || cmd == "all") {
       timePassed = "[" + this.stopWatchtime_Summed.get(map) + " ms]";
       this.stopWatchtime_Summed.set(map, 0);
@@ -1403,7 +1403,7 @@ allowUndo = true)`,
       let elapsed = new String(endTime - this.lastTime); // time in milliseconds
       timePassed = "[" + elapsed + " ms]   ";
       this.lastTime = endTime; // remember last time
-    } catch {}
+    } catch {;}
     return (
       `${end.getHours()}:${end.getMinutes()}:${end.getSeconds()}.${end.getMilliseconds()}  ` +
       timePassed
@@ -1657,7 +1657,7 @@ allowUndo = true)`,
           URL = URL + "&user=" + uType + anchor;
         }
       }
-    } catch {}
+    } catch {;}
     return URL;
   },
 
@@ -1747,12 +1747,12 @@ allowUndo = true)`,
     // tooltip - see also Attributes section of
     // https://developer.mozilla.org/en/XPCOM_Interface_Reference/nsIMsgFolder#getUriForMsg.28.29
     // and docs for nsIMsgIncomingServer
-    let getPref = function (arg) {
-        return QuickFolders.Preferences.getBoolPref("tooltips." + arg);
-      },
-      sVirtual =
-        folder && folder.flags & this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL ? " (virtual)" : "",
-      baseFolder = "",
+    const getPref = (arg) => {
+      return QuickFolders.Preferences.getBoolPref("tooltips." + arg);
+    };
+    const sVirtual =
+      folder && folder.flags & this.FolderFlags.MSG_FOLDER_FLAG_VIRTUAL ? " (virtual)" : "";
+    let baseFolder = "",
       srvName = "",
       tooltip = "",
       folderName = "",
@@ -1778,7 +1778,7 @@ allowUndo = true)`,
           if (srv) {
             try {
               srvName = " [" + srv.hostName + "]";
-            } catch {}
+            } catch {;}
           }
         }
       } catch (ex) {
@@ -1790,7 +1790,7 @@ allowUndo = true)`,
           if (folder.rootFolder) {
             try {
               baseFolder = " - " + folder.rootFolder.name;
-            } catch {}
+            } catch {;}
           } else {
             this.logDebug("getFolderTooltip() - No rootFolder on: " + folderName + "!");
           }

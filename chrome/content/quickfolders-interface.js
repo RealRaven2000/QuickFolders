@@ -5341,14 +5341,14 @@ QuickFolders.Interface = {
   // 4 - folder.URI  [for debugging]
   folderPathLabel : function (detailType, folder, maxPathItems, isUnified = false) {
     function folderPath(folder, maxAtoms, includeServer) {
-      let pathComponents = "",
-          chevron = " " + "\u00BB".toString() + " ";
+      let pathComponents = "";
+      const SEPARATOR = " » ";
       while (folder && maxAtoms) {
         if (folder.isServer && !includeServer) {
           return pathComponents;
 				}
         pathComponents = (folder.prettyName || folder.localizedName)
-					+ (pathComponents ? chevron  : "")
+					+ (pathComponents ? SEPARATOR  : "")
 					+ pathComponents;
         if (folder.isServer) {
           break;
@@ -6215,7 +6215,7 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
       model = QuickFolders.Model,
       prefs = QuickFolders.Preferences,
-      CHEVRON = "\u00BB".toString(),
+      SEPARATOR = " » ",
       maxResults = prefs.getIntPref("quickMove.maxResults"),
       isFiling = QuickFolders.quickMove.isActive;
 
@@ -6476,7 +6476,7 @@ QuickFolders.Interface = {
                 parFld = aName;
                 parentString = aName;
               } else {
-                parFld = aName + " " + CHEVRON + " " + parFld; // prepend ancestor
+                parFld = aName + SEPARATOR  + parFld; // prepend ancestor
                 parentString = aName + "/" + parentString;
               }
               pc--;
@@ -6882,9 +6882,13 @@ QuickFolders.Interface = {
   } ,
 
 	viewChangeOrder: function () {
-		window.openDialog("chrome://quickfolders/content/change-order.xhtml","quickfolders-change-order",
-						  "chrome,titlebar,centerscreen,resizable,dependent", QuickFolders); // dependent = modeless
-	} ,
+    window.openDialog(
+      "chrome://quickfolders/content/change-order.xhtml",
+      "quickfolders-change-order",
+      "chrome,titlebar,centerscreen,resizable,dependent",
+      QuickFolders,
+    ); // dependent = modeless
+  } ,
   
   // use msg for displaying license restrictions 
   viewSplash: function(msg="") {
@@ -7576,8 +7580,7 @@ QuickFolders.Interface = {
 			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton.dragover", "background-image", dragOverGradient, true);
 			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass + ".dragover","color", dragOverColor, true);
 			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass + '[buttonover="true"]',"color", dragOverColor, true);
-		}
-		else {
+		} else {
 			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton.dragover", "background-image", "none", true);
 			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton.dragover","color", dragOverColor,true);
 		}

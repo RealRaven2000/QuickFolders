@@ -26,10 +26,44 @@ var ChangeOrder = {
 	} ,
   
   load: function() {
-		this.window = window;
-		this.showFolders();
-    window.sizeToContent();
-    window.resizeTo(window.outerWidth, window.parent.innerHeight * 0.8);
+    this.window = window;
+    this.showFolders();
+
+		const scroll = document.getElementById("myscrollbox");
+		const description = document.getElementById("Explain-Drag");
+		const header = document.getElementById("qf-header");
+		scroll.style.maxHeight = "390px";
+
+		const getPanelHeight = () => {
+			const p = document?.documentElement?.getButton("accept").parentElement;
+			if (p) {
+				const r = p.getClientRects();
+				if (r?.length) {
+					return r[0].height;
+				}
+			}
+			return 0;
+		};
+
+    const resizeScroll = () => {
+			let dHeight = parseInt(description.getBoundingClientRect().height, 10);
+			let hHeight = parseInt(header.getBoundingClientRect().height, 10);
+			let availableHeight = parseInt(window.innerHeight) - dHeight - hHeight - getPanelHeight() - 92; 
+      scroll.style.maxHeight = availableHeight + "px";
+      scroll.style.height = availableHeight + "px";
+			console.log(
+        `Resizing scrollbox: window height = ${window.innerHeight}, description height = ${dHeight}, header height = ${hHeight}, available height = ${availableHeight}\n` +
+				`Scrollbox height = ${scroll.style.height}`,
+      );
+    };
+
+    // delay initial sizing until layout is ready
+    setTimeout(() => {
+      window.addEventListener("resize", resizeScroll);
+			resizeScroll();
+    }, 2000);
+
+    
   } ,  
   
 

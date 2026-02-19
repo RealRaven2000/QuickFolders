@@ -1,3 +1,7 @@
+dialog {
+  height: auto; 
+  min-height: 450px; 
+}
 
 hbox#qf-header:before {
 	content: url("chrome://quickfolders/content/skin/ico/QuickFolders_32.svg");
@@ -32,69 +36,78 @@ description#Explain-Drag {
 }
 
 vbox#myscrollbox {
+  flex: 1;
   overflow-x: auto;
-  max-height: 650px;
   max-width: 1200px;
   min-width: unset;
-  background-color: #FFF;
-  color: black;
-  padding: 2px;
   border: 1px solid black;
-  width: min-content;
+  min-width: min-content;
+  max-width: 455px;
+  padding: 0 2em; 
 }
 
-
-
+/* 1fr → label takes remaining space. */
 .flex-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.col.Label {
-  flex: 0 50%;
-}
-.col.Btn {
-  flex: 0 10%;
-}
-
-
-
-
-grid#QuickFolders-change-order-grid {
   display: grid;
-  max-height:1000px !important;
+  grid-template-columns: 1fr auto auto; /* label | up button | down button */
+  align-items: center;                  /* vertical center of row */
+  column-gap: 4px;
+  row-gap: 2px;
 }
 
+.col.Label {
+  flex: 5 1 0;  /* grow=5, shrink=1, basis=0 */
+}
+
+.col.Btn {
+  flex: 1 1 0;  /* grow=1, shrink=1, basis=0 */
+}
+
+#myscrollbox,
+#QuickFolders-change-order {
+  background-color: var(--field-background-color, light-dark(#f0f0f0, #18181b));
+  color: var(--field-text-color, light-dark(#18181b, #f4f4f5));
+}
 hbox.drag-image {
   margin-bottom: 20px;
 }
 
-#QuickFolders-change-order-grid button {
-  appearance: none;
-  border: 1px solid darkgray !important;
-  border-radius: 3px;
-  padding-left: 1.5em;
-  padding-bottom: 0.1em;
-}
-#QuickFolders-change-order-grid button:hover {
-  color: -moz-dialogtext;
-}
 button * {
   margin: auto;
   text-align: center;
 }
 
-button.order-button-up {
-  max-height: 1.9em !important;
-  list-style-image: url("chrome://quickfolders/content/skin/ico/dropUp.gif") !important;
-}
+button.order-button-up,
 button.order-button-down {
-  max-height: 1.9em !important;
-  list-style-image: url("chrome://quickfolders/content/skin/ico/dropDown.gif") !important;
+  display: flex;        /* make the button itself a flex container */
+  flex-direction: column;
+  align-items: center;  
+
+  border: 1px solid darkgray;
+  border-radius: 3px;
+  height: 1.8em;             /* same as height */
+  list-style: none !important;
+
+  max-width: unset;
+  min-width: 3em;
+  font-size: 1em;
+  
 }
 
-rows#QuickFolders-change-order-grid-rows row
-{
-  line-height: 1.8em !important;
+button.order-button-up::before, button.order-button-down::before {
+  display: flex;
+  font-size: 1.1em;
+  align-items: center;
+  color: var(--button-text-color, light-dark(#18181b, #f4f4f5));
+}
+
+button.order-button-up::before {
+  content: "▲";
+  margin-right: 0.2em;
+}
+
+button.order-button-down::before {
+  content: "▼";
+  margin-right: 0.2em;
 }
 

@@ -359,7 +359,7 @@ QuickFolders.quickMove = {
       while (this.folders.length) {this.folders.pop();}
     }
     if (this.Uris.indexOf(newUri) == -1) { // avoid duplicates!
-      const Chevron = ' ' + "\u00BB".toString() + ' ',
+      const SEPARATOR = " » ",
             showFolder = QuickFolders.Preferences.getBoolPref('quickMove.folderLabel'); 
       this.Uris.push(newUri);
       this.IsCopy.push(isCopy);
@@ -375,7 +375,7 @@ QuickFolders.quickMove = {
           let label = QuickFolders.Util.getFriendlyMessageLabel(hdr),
               menuitem = document.createXULElement("menuitem");
           if (showFolder && sourceFolder) {
-            label = (sourceFolder.prettyName || sourceFolder.localizedName) + Chevron + label;
+            label = (sourceFolder.prettyName || sourceFolder.localizedName) + SEPARATOR + label;
           }
           menuitem.setAttribute("label", label);
           menuitem.className='msgUri menuitem-iconic' + (isCopy ? ' msgCopy' : '');

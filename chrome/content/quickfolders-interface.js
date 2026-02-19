@@ -7765,13 +7765,29 @@ QuickFolders.Interface = {
 
 		// Coloring all striped tabbed buttons that have individual colors
     let coloredPaletteClass = this.getPaletteClassCss("ColoredTab");
+
 		if (isTabsStriped) { // paletteClass = plastic, pastel, "", apple
 			// fallback for uncolored current folder (striped style)
+      const inactiveButtonSelector =
+        ".quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder,#QuickFolders-title-label," +
+        ".forceCustomColor)";
 			engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton#QuickFoldersCurrentFolder.col0" + paletteClass,"color", inactiveColor, false);
       // avoid for current folder button as it always will be completely colored
       // #issue 7 these rules didn't work due to a syntax error
-      engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder):not(#QuickFolders-title-label)" + coloredPaletteClass,"color", inactiveColor, false);
-      engine.setElementStyle(ss, ".quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder):not(#QuickFolders-title-label)" + paletteClass,"color", inactiveColor, false);
+      engine.setElementStyle(
+        ss,
+        inactiveButtonSelector + coloredPaletteClass,
+        "color",
+        inactiveColor,
+        false,
+      );
+      engine.setElementStyle(
+        ss,
+        inactiveButtonSelector + paletteClass,
+        "color",
+        inactiveColor,
+        false,
+      );
 		} else {
 			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass,"color");
 			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton" + coloredPaletteClass,"color");

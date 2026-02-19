@@ -7448,7 +7448,7 @@ QuickFolders.Interface = {
 		QuickFolders.Model.setFolderColor(
       theFolder?.URI || button.getAttribute("folderURI"), // support invalid folders.
       col,
-      false
+      true
     ); // store color in folder string
 	} ,
 

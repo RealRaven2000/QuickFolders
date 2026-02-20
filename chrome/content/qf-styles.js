@@ -95,65 +95,49 @@ QuickFolders.Styles = {
         return S ? S.replace(/^\s+/, "") : "";
       };
       try {
-        let match = false;
-        for (let i = 0; i < rulesList.length; i++) {
-          let theRule = rulesList[i];
-          switch (theRule.type) {
-            case theRule.IMPORT_RULE:
-              {
-                if (!recurse) {
-                  // don't allow deep recursion (break circular refs!)
-                  continue;
-                }
-                let retVal = getRuleFromList(theRule.styleSheet.cssRules, rule, attribute, false);
-                // try to find imported rule (recursive) and return it.
-                if (!(retVal === null)) {
-                  return retVal;
-                }
-              }
-              break;
-            case theRule.STYLE_RULE:
-              {
-                let selectors = theRule.selectorText;
-                if (!selectors || !selectors.length) {
-                  continue;
-                }
-                let selectorArray = selectors.split(",");
-                // replaced for..each
-                for (let r = 0; r < selectorArray.length; r++) {
-                  if (rule == leftTrim(selectorArray[r])) {
-                    match = true;
-                    break;
-                  }
-                }
-                if (match) {
-                  let st = theRule.style; // CSSStyleDeclaration
-                  util.logDebugOptional(
-                    "css.Detail",
-                    "found relevant style: " +
-                      theRule.selectorText +
-                      " searching rule " +
-                      attribute,
-                  );
+        for (let theRule of rulesList) {
+					if (theRule.type == theRule.IMPORT_RULE) {
+						if (!recurse) {
+							// don't allow deep recursion (break circular refs!)
+							continue;
+						}
+						let retVal = getRuleFromList(theRule.styleSheet.cssRules, rule, attribute, false);
+						// try to find imported rule (recursive) and return it.
+						if (!(retVal === null)) {
+							return retVal;
+						}
+						continue;
+					}
+					if (theRule.type != theRule.STYLE_RULE) {
+						// other rules: unknown, media, page, font_face, charset
+						// don't do anything here
+						continue;
+					}
 
-                  //iterate rules!
-                  for (let k = 0; k < st.length; k++) {
-                    if (attribute == st.item(k)) {
-                      let val = st.getPropertyValue(attribute);
-                      util.logDebugOptional(
-                        "css.Detail",
-                        "attribute Found:\n" + attribute + " : " + val,
-                      );
-                      return val;
-                    }
-                  }
-                }
+					// style rules only.
+
+					const selectors = theRule.selectorText;
+					if (!selectors?.length) {
+						continue;
+					}
+					let selectorArray = selectors.split(",");
+					const match = selectorArray.some((s) => rule === leftTrim(s));
+					if (match) {
+						let st = theRule.style; // CSSStyleDeclaration
+						util.logDebugOptional(
+							"css.Detail",
+							`found relevant style: ${theRule.selectorText} searching rule ${attribute}`,
+						);
+
+						// Iterate rules!
+						for (const prop of st) {
+              if (attribute == prop) {
+                let val = st.getPropertyValue(attribute);
+                util.logDebugOptional("css.Detail", `attribute Found:\n${attribute} : ${val}`);
+                return val;
               }
-              break;
-            default: // other rules: unknown, media, page, font_face, charset
-              // don't do anything here
-              break;
-          }
+            }
+					}
         }
         return null; // not found
       } catch (e) {
@@ -181,77 +165,64 @@ QuickFolders.Styles = {
     }
 
     function setRuleFromList(rulesList, rule, attribute, value, important, recurse) {
+      // selector normalization: remove leading/trailing spaces and reduce multiple spaces to single
+      const normalize = (s) => s?.replace(/\s+/g, " ").trim();
       let foundRule = false,
         st; // new style rule
 
-      for (let theRule of rulesList) {
-        switch (theRule.type) {
-          case theRule.IMPORT_RULE:
-            {
-              // try to set imported rule (recursive) and return true.
-              if (!recurse) {
-                // don't allow deep recursion (break circular @import refs!)
-                continue;
-              }
-              let styleSheetName = theRule.styleSheet.href;
-              if (visitedStyleSheetList.includes(styleSheetName)) {
-                // don't parse the same sheet twice :)
-                continue;
-              }
-              logDebug("setting CSS rule in " + styleSheetName);
-              if (
-                setRuleFromList(
-                  theRule.styleSheet.cssRules,
-                  rule,
-                  attribute,
-                  value,
-                  important,
-                  true,
-                )
-              ) {
-                return true;
-              }
-            }
-            break;
-          case theRule.STYLE_RULE:
-            {
-              let selectors = theRule.selectorText;
-              if (!selectors || !selectors.length) {
-                continue;
-              }
+      for (const theRule of rulesList) {
+        if (theRule.type == theRule.IMPORT_RULE) {
+          // try to set imported rule (recursive) and return true.
+          if (!recurse) {
+            // don't allow deep recursion (break circular @import refs!)
+            continue;
+          }
+          let styleSheetName = theRule.styleSheet.href;
+          if (visitedStyleSheetList.includes(styleSheetName)) {
+            // don't parse the same sheet twice :)
+            continue;
+          }
+          logDebug("setting CSS rule in " + styleSheetName);
+          if (
+            setRuleFromList(theRule.styleSheet.cssRules, rule, attribute, value, important, true)
+          ) {
+            return true;
+          }
+          continue;
+        }
+        if (theRule.type != theRule.STYLE_RULE) {
+          // other rules: unknown, media, page, font_face, charset
+          // don't do anything here
+          continue;
+        }
+        const selectors = theRule.selectorText;
+        if (!selectors || !selectors.length) {
+          continue;
+        }
 
-              if (rule == selectors) {
-                // theRule = CSSStyleRule interface
-                st = theRule.style; // CSSStyleDeclaration
-                logDebug(
-                  "Found relevant selector: " +
-                    theRule.selectorText +
-                    "\n" +
-                    "  ... searching rule:    " +
-                    attribute,
-                );
+        if (normalize(rule) == normalize(selectors)) {
+          // theRule = CSSStyleRule interface
+          st = theRule.style; // CSSStyleDeclaration
+          logDebug(
+            `Found relevant selector: ${theRule.selectorText}\n` +
+              `  ... searching rule:    ${attribute}`,
+          );
 
-                // if rule already exists, let's take a shortcut here
-                let origProperty = st.getPropertyValue(attribute);
-                if (origProperty) {
-                  foundRule = true;
-                  st.removeProperty(attribute);
-                  st.setProperty(attribute, value, important ? "important" : "");
-                } else {
-                  // if (origProperty=="");
-                  // st.setProperty(attribute, value, ((important) ?	"important" : ""));
-                  foundRule = false;
-                }
-              }
-              if (foundRule && value != null) {
-                // keep searching if exact rule was not found! but remove duplicates.
-                return true; // if rule found, early exit
-              }
-            }
-            break;
-          default: // other rules: unknown, media, page, font_face, charset
-            // don't do anything here
-            break;
+          // if rule already exists, let's take a shortcut here
+          const origProperty = st.getPropertyValue(attribute);
+          if (origProperty) {
+            foundRule = true;
+            st.removeProperty(attribute);
+            st.setProperty(attribute, value, important ? "important" : "");
+          } else {
+            // if (origProperty=="");
+            // st.setProperty(attribute, value, ((important) ?	"important" : ""));
+            foundRule = false;
+          }
+        }
+        if (foundRule && value != null) {
+          // keep searching if exact rule was not found! but remove duplicates.
+          return true; // if rule found, early exit
         }
       }
       return foundRule; // was rule found?

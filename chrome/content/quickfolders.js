@@ -287,10 +287,17 @@ END LICENSE BLOCK */
     ## Made compatible with Thunderbird 149
     ## Added missing translations and disabled a superflous update message. silent update for users of 6.14.1
 
-  6.14.3 QuickFolders Pro - WIP
+  6.15 QuickFolders Pro - WIP
     ## [issue 619] automatically resize icons in folder tree to avoid cropping
+    ## [issue 639] 3 menu items from QuickFolders Commands submenu do not work
+    ## [issue 633] Duplicate custom icons in folder tree - Thunderbird 148
+    ## [issue 646] Flat Style Improvement: use the color of custom colored tab for active folder
+    ## [issue 647] Fixed broken xhtml dialog "Change order of tabs"
+    ## [issue 648] New Pro feature: show account name of current folder instead of QuickFolders label
+    ## [issue 643] Redesigned  the themes "Native Tabs" and "Pushbuttons" with a fresh layout
+    ## [issue 650] Improve selecting / changing QuickFolders themes by removing overwritten layout rules
+
     ## [issue 630] misc: removed unnecessary console errors from quickfolders-util.js
-    ## [issue 639] 3 menu items from QuickFolders Commands submeny do not work
 
   
   

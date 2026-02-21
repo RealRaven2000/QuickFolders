@@ -21,6 +21,7 @@ async function getSalesEnd() {
     return new Date(overrideSale);
   }
   let sales_end = new Date(SALE_END_DATE);
+  // add 1 day to include the last day of the sale (until 23:59:59)
   return new Date(sales_end.getTime() + 86400000);
 }	
 

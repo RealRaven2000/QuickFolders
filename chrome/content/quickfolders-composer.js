@@ -6,11 +6,19 @@
 
   END LICENSE BLOCK */
 
+
+	/* 
+		globals
+			gMsgCompose,
+			CompFields2Recipients,
+			LoadIdentity
+	*/
+
 // adding getter for main instance as a property
 
 Object.defineProperty(QuickFolders, "MainQuickFolders", 
 { get : function QF_getMainInstance() {
-	if (QuickFolders.ComposerMainInstance) return QuickFolders.ComposerMainInstance;
+	if (QuickFolders.ComposerMainInstance) {return QuickFolders.ComposerMainInstance;}
 	let mail3PaneWindow = Services.wm.getMostRecentWindow("mail:3pane"),
 			QF = mail3PaneWindow.QuickFolders;
 	QuickFolders.ComposerMainInstance = QF;
@@ -31,7 +39,7 @@ var { MailServices } =
 	// -------------------------------------------------------------------
 	// A handler to change headers in composer
 	// -------------------------------------------------------------------
-QuickFolders.notifyComposeBodyReady = function(evt) {
+QuickFolders.notifyComposeBodyReady = function(_evt) {
 	const Ci = Components.interfaces,
 	      dbg = 'QuickFolders.notifyComposeBodyReady()',
 	      util = QuickFolders.MainQuickFolders.Util,
@@ -83,13 +91,13 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
 						case 'set':
 							targetString = argument; 
 							break;
-						case 'prefix':
+						case 'prefix': {
 							let replyPrefix = targetString.lastIndexOf(':'),
 									testSubject = targetString;
 							if (replyPrefix>0) { // caveat: won't work well if subject also contains a ':'
 								// cut off Re: Fwd: etc.
 								testSubject = targetString.substr(0, replyPrefix).trim();
-								if (testSubject.indexOf(argument)>=0) break; // keyword is (anywhere) before colon?
+								if (testSubject.indexOf(argument)>=0) {break;} // keyword is (anywhere) before colon?
 								// cut off string after last prefix to restore original subject
 								testSubject = targetString.substr(replyPrefix+1).trim(); // where we can check at the start...
 							}
@@ -98,12 +106,16 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
 								targetString = argument + targetString; 
 							}
 							break;
+						}
 						case 'append':
+							{
 							// problem - if there are encoding breaks, will this comparison fail?
 							let argPos = targetString.toLowerCase().trim().lastIndexOf(argument.toLowerCase().trim()); // avoid duplication
-							if (argPos < 0 || argPos < targetString.length-argument.length ) 
-								targetString = targetString + argument; 
+							if (argPos < 0 || argPos < targetString.length - argument.length) {
+                targetString = targetString + argument;
+              } 
 							break;
+							}
 					}
 					break;
 				case 'address': // address field
@@ -117,10 +129,12 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
 							break;
 						case 'append': // append an address field (if not contained already)
 													 // also omit in Cc if already in To and vice versa
-							if (hdr=='cc' && ComposeFields.to.toLowerCase().indexOf(argument.toLowerCase())>=0)
+							if (hdr=='cc' && ComposeFields.to.toLowerCase().indexOf(argument.toLowerCase())>=0) {
 								break;
-							if (hdr=='to' && ComposeFields.cc.toLowerCase().indexOf(argument.toLowerCase())>=0)
+							}
+							if (hdr=='to' && ComposeFields.cc.toLowerCase().indexOf(argument.toLowerCase())>=0) {
 								break;
+							}
 							
 							if (targetString.toLowerCase().indexOf(argument.toLowerCase())<0) {
 								targetString = targetString + ', ' + argument; 
@@ -170,9 +184,12 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
 		const ADVANCED_FLAGS = util.ADVANCED_FLAGS,
           msgComposeType = Ci.nsIMsgCompType;
 		
-		if (!folder.URI) return;
-		if (preferences.isDebugOption('composer')) { debugger; }
-    
+		if (!folder.URI) {return;}
+		if (preferences.isDebugOption('composer')) {
+			// eslint-disable-next-line no-debugger
+			debugger; 
+		}
+		
 		let entry = QuickFolders.MainQuickFolders.Model.getFolderEntry(folder.URI);
     try {
       if (entry) {
@@ -192,15 +209,14 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
              || gMsgCompose.type == msgComposeType.ReplyToSender
              || gMsgCompose.type == msgComposeType.ReplyToGroup
              || gMsgCompose.type == msgComposeType.ReplyToSenderAndGroup
-             || gMsgCompose.type == msgComposeType.ReplyToList)
+             || gMsgCompose.type == msgComposeType.ReplyToList) {
               util.logDebugOptional('composer', "not overwriting to address: this is a reply case");
-            else {
+						} else {
               if (gMsgCompose.type == msgComposeType.New && gMsgCompose.compFields.to) {
                 // [issue 110] "Tab-specific Properties" overwrites To Address when selecting to from AB
                 util.logDebugOptional('composer', "New mail: not overwriting to address - " + gMsgCompose.compFields.to + "\n"
                   + "this was probably set by clicking Write from AB.");
-              }
-              else {
+              } else {
                 options.toAddress = entry.toAddress;
                 let dbg = txt.replace('{1}', entry.toAddress);
                 util.logDebugOptional('composer', dbg.replace('{2}',"toAddress"));
@@ -228,8 +244,9 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
     }
     
 		// no need to recurse if both are set (child folders override parents)
-		if (folder.parent && (!options.toAddress || !options.identity))
+		if (folder.parent && (!options.toAddress || !options.identity)) {
 			setMailHeaders(folder.parent, options, false);
+		}
 	}
 	
 	// check for advanced properties (rules) for overriding To: or Identity (From:)
@@ -239,7 +256,6 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
 				  identity: null,
 					toAddress: ''
 				};
-		if (preferences.isDebugOption('composer')) { debugger; }
 		
 		// we need to check all parent folders for entries as well.
 		if (currentFolder && currentFolder.URI) {
@@ -249,11 +265,12 @@ QuickFolders.notifyComposeBodyReady = function(evt) {
 			return;
 		}
 		
-		if (options.toAddress)
+		if (options.toAddress) {
 			modifyHeader('to', 'set', options.toAddress);
+		}
 		if (options.identity) {
 			let identity = options.identity,
-			    address = identity.fullName + " <" + identity.email +">";
+			    _address = identity.fullName + " <" + identity.email +">";
 			// modifyHeader('from', 'set', address);
 			if (gMsgCompose.identity.key != identity.key) {
 				gMsgCompose.identity = identity;
@@ -281,7 +298,7 @@ QuickFolders.composer = {
 	startup: async () => {
 		const util = QuickFolders.Util,
 		      logOptions = {color:"yellow", background:"rgb(0,0,130)"};
-		util.logHighlight("quickfolders-composer.js - startup",logOptions);
+		util.logHighlight("quickfolders-composer.js - startup", logOptions);
 		
 		// block running code until editor is ready:
 		await new Promise(resolve => {

@@ -33,7 +33,6 @@ QuickFolders.Interface = {
     // get parent button of color sub(sub)(sub)menu
     let parent = menuitem,
       prefs = QuickFolders.Preferences,
-      QI = QuickFolders.Interface,
       util = QuickFolders.Util,
       ssPalettes;
     while (!parent.folder && parent.parentNode) {
@@ -193,16 +192,21 @@ QuickFolders.Interface = {
   },
 
   applyTabStyle: function applyTabStyle(el, styleId) {
-    if (!el) return;
+    if (!el) {
+      return;
+    }
     let prefs = QuickFolders.Preferences;
-    if (styleId != prefs.TABS_STRIPED) el.className = el.className.replace(/\s*striped/, "");
-    if (styleId == prefs.TABS_STRIPED && el.className.indexOf("striped") < 0)
+    if (styleId != prefs.TABS_STRIPED) {
+      el.className = el.className.replace(/\s*striped/, "");
+    }
+    if (styleId == prefs.TABS_STRIPED && el.className.indexOf("striped") < 0) {
       el.className = el.className.replace(/(col[0-9]+)/, "$1striped");
+    }
   },
 
   // remove animated icons for pro version
   // at the moment this directly manipulates the style sheet, so we are going to do this via notification
-  removeAnimations: async function (styleSheetName) {
+  removeAnimations: async function (_styleSheetName) {
     // needs to be done from the back end!!
   },
 
@@ -218,7 +222,6 @@ QuickFolders.Interface = {
       menuRect = menupopup.getBoundingClientRect(),
       labelTop = parseInt(parentRect.top),
       height = parseInt(menuRect.height),
-      newTop = labelTop - height,
       viewPort = document.getElementsByTagName("body")[0].getBoundingClientRect();
     menupopup.style.top = (labelTop - height).toString() + "px";
     if (parentRect.left + menuRect.width > viewPort.width) {
@@ -238,10 +241,7 @@ QuickFolders.Interface = {
 
   // forceOnCommand use the "old" way of oncommand attribute for QF options dialog
   buildPaletteMenu: async function (currentColor, existingPopupMenu) {
-    const Themes = QuickFolders.Themes.themes,
-      util = QuickFolders.Util,
-      prefs = QuickFolders.Preferences,
-      QI = QuickFolders.Interface;
+    const util = QuickFolders.Util;
 
     // each menuitem used a single click event to set the color from the menu item
     // QuickFolders.Interface.setTabColorFromMenu(this, '" + jCol + "')"

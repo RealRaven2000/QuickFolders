@@ -26,6 +26,7 @@
     rgba(255, 255, 255, 0.5) 0%,
     rgba(255, 255, 255, 0.3) 100%
   );
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -591,6 +592,88 @@ toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
 	/* default overstroke */
 	background-image: var(--qf-selected-tab-gradient) !important;
 }
+/* individual colors */
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col1, .col1striped) {
+  background-image: var(--QF-col1-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col2, .col2striped) {
+  background-image: var(--QF-col2-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col3, .col3striped) {
+  background-image: var(--QF-col3-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col4, .col4striped) {
+  background-image: var(--QF-col4-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col5, .col5striped) {
+  background-image: var(--QF-col5-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col6, .col6striped) {
+  background-image: var(--QF-col6-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col7, .col7striped) {
+  background-image: var(--QF-col7-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col8, .col8striped) {
+  background-image: var(--QF-col8-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col9, .col9striped) {
+  background-image: var(--QF-col9-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col10, .col10striped) {
+  background-image: var(--QF-col10-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col11, .col11striped) {
+  background-image: var(--QF-col11-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col12, .col12striped) {
+  background-image: var(--QF-col12-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col13, .col13striped) {
+  background-image: var(--QF-col13-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col14, .col14striped) {
+  background-image: var(--QF-col14-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col15, .col15striped) {
+  background-image: var(--QF-col15-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col16, .col16striped) {
+  background-image: var(--QF-col16-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col17, .col17striped) {
+  background-image: var(--QF-col17-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col18, .col18striped) {
+  background-image: var(--QF-col18-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col19, .col19striped) {
+  background-image: var(--QF-col19-flatstripe) !important;
+}
+
+.quickfolders-realTabs toolbarbutton.selected-folder:is(.col20, .col20striped) {
+  background-image: var(--QF-col20-flatstripe) !important;
+}
+
+
 /* squeeze the background gradient */
 .quickfolders-realTabs toolbarbutton.selected-folder[class^="col"]:not([class*="striped"]) {
 	background-repeat: repeat-x;

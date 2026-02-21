@@ -662,7 +662,7 @@ QuickFolders.Options = {
     messenger.runtime.sendMessage({ command: "updateNavigationBar" });
   },
 
-  updateMainWindow: function updateMainWindow(minimal = false) {
+  updateMainWindow: function (minimal = false) {
     messenger.runtime.sendMessage({ command: "updateMainWindow", minimal });
   },
 
@@ -678,7 +678,7 @@ QuickFolders.Options = {
     }
   } ,
 
-  selectTheme: function (wd, themeId, isUpdateUI = false) {
+  selectTheme: async function (wd, themeId, dataPrefName=null, isUpdateUI = false) {
     const util = QuickFolders.Util;
     let myTheme = QuickFolders.Themes.Theme(themeId),
       getElement = wd.getElementById.bind(wd);
@@ -686,6 +686,22 @@ QuickFolders.Options = {
       try {
         getElement("QuickFolders-Theme-Selector").value = themeId;
         getElement("Quickfolders-Theme-Author").textContent = myTheme.author;
+;
+        const lastTheme = await messenger.runtime.sendMessage({ command: "getLastLoadedTheme" });
+        const themeChanged = lastTheme !== themeId;
+
+        // reset previously modified styles to their default values from the style sheet.
+        if (themeChanged) {
+          await messenger.runtime.sendMessage({
+            command: "stageThemeChange",
+            themeId,
+          });
+        } else {
+          util.logDebug(`selectTheme(): '${themeId}' already active – skipping reset only`);
+        }
+        if (dataPrefName){
+          await browser.LegacyPrefs.setPref(dataPrefName, themeId);
+        }
 
         // textContent wraps, value doesnt
         let themeDescription =
@@ -695,33 +711,18 @@ QuickFolders.Options = {
         getElement("qf-options-shadow").disabled = !myTheme.supportsFeatures.buttonShadows;
         getElement("button-font-size").disabled = !myTheme.supportsFeatures.supportsFontSize;
         getElement("button-font-size-label").disabled = !myTheme.supportsFeatures.supportsFontSize;
-        this.collapseElement("btnHeightTweaks",
-          !myTheme.supportsFeatures.supportsHeightTweaks
+        this.collapseElement("btnHeightTweaks", !myTheme.supportsFeatures.supportsHeightTweaks);
+        this.collapseElement("qf-tweakRadius", !myTheme.supportsFeatures.cornerRadius);
+        this.collapseElement("qf-tweakToolbarBorder", !myTheme.supportsFeatures.toolbarBorder);
+        this.collapseElement(
+          "qf-tweakColors",
+          !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors),
         );
-        this.collapseElement("qf-tweakRadius",
-          !myTheme.supportsFeatures.cornerRadius
-        );
-        this.collapseElement("qf-tweakToolbarBorder",
-          !myTheme.supportsFeatures.toolbarBorder
-        );
-        this.collapseElement("qf-tweakColors",
-          !(myTheme.supportsFeatures.stateColors || myTheme.supportsFeatures.individualColors)
-        );
-        this.collapseElement("qf-individualColors",
-          !myTheme.supportsFeatures.individualColors
-        );
-        this.collapseElement("qf-StandardColors",
-          !myTheme.supportsFeatures.standardTabColor
-        );
-        this.collapseElement("buttonTransparency",
-          !myTheme.supportsFeatures.tabTransparency
-        );
-        this.collapseElement("qf-stateColors",
-          !myTheme.supportsFeatures.stateColors
-        );
-        this.collapseElement("qf-stateColors-defaultButton",
-          !myTheme.supportsFeatures.stateColors
-        );
+        this.collapseElement("qf-individualColors", !myTheme.supportsFeatures.individualColors);
+        this.collapseElement("qf-StandardColors", !myTheme.supportsFeatures.standardTabColor);
+        this.collapseElement("buttonTransparency", !myTheme.supportsFeatures.tabTransparency);
+        this.collapseElement("qf-stateColors", !myTheme.supportsFeatures.stateColors);
+        this.collapseElement("qf-stateColors-defaultButton", !myTheme.supportsFeatures.stateColors);
       } catch (ex) {
         util.logException("Exception during QuickFolders.Options.selectTheme: ", ex);
       }
@@ -737,6 +738,10 @@ QuickFolders.Options = {
           command: "updateNavigationBar",
         }); /* update style of current folder tab! */
       }
+      await messenger.runtime.sendMessage({ 
+        command: "storeLoadedTheme", themeId: themeId 
+      });
+
     }
     return myTheme;
   },

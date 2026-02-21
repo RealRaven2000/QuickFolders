@@ -589,7 +589,10 @@ document.getElementById("btnConfigureTooltips").addEventListener("click", () => 
 let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
 themeSelector.addEventListener("change", async (event) => {
   let themeId = event.target.value;
-  QuickFolders.Options.selectTheme(window.document, themeId, true); //.bind(QuickFolders.Options);
+  // 1️⃣ Update UI and reset styles in privileged context:
+  // 2️⃣ persist the new theme ID in legacy prefs within selectTheme, before notifying the 
+  //    main window to update the theme.
+  QuickFolders.Options.selectTheme(window.document, themeId, event.target.dataset.prefName, true);
   // QuickFolders.Options.updateMainWindow();
 });
 
@@ -695,6 +698,10 @@ async function loadPrefs() {
 		}
     
     // Wire up individual event handlers
+    if (prefName === "extensions.quickfolders.style.theme") {
+      // we handle "QuickFolders-Theme-Selector" separately, so skip adding a generic change listener here
+      continue;
+    }
     element.addEventListener("change", savePref);
     
 	}  

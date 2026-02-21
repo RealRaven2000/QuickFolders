@@ -1500,21 +1500,16 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
           prefs = QuickFolders.Preferences;
 
-    util.logDebug("updateMainWindow()...");
+    util.logDebug(`updateMainWindow()... Theme: ${prefs.CurrentThemeId}`);
 		// eslint-disable-next-line no-debugger
 		if (prefs.isDebugOption("interface.update")) { debugger; }
 		logCSS("============================\n" + "updateMainWindow…");
-		let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
-
-		// update the theme type - based on theme selection in options window, if this is open, else use the id from preferences
-		prefs.CurrentThemeId = themeSelector ? themeSelector.value : prefs.CurrentThemeId;
     
     // refresh main windows
     if (!minimal || "false" == minimal) {
       logCSS("updateMainWindow: update Folders UI…");
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateFoldersUI" }); // updates both folders - updateFolders(true, false) - and user styles
-    }
-    else {
+    } else {
       logCSS("updateMainWindow: update User Styles…");
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateUserStyles" }); // updates only user styles
     }
@@ -7766,7 +7761,7 @@ QuickFolders.Interface = {
 		// Coloring all striped tabbed buttons that have individual colors
     let coloredPaletteClass = this.getPaletteClassCss("ColoredTab");
 
-		if (isTabsStriped) { // paletteClass = plastic, pastel, "", apple
+		if (isTabsStriped) { // paletteClass = plastic + pastel only
 			// fallback for uncolored current folder (striped style)
       const inactiveButtonSelector =
         ".quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder,#QuickFolders-title-label," +
@@ -7789,8 +7784,8 @@ QuickFolders.Interface = {
         false,
       );
 		} else {
-			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass,"color");
-			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton" + coloredPaletteClass,"color");
+			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton" + paletteClass, "color");
+			engine.removeElementStyle(ss, ".quickfolders-flat toolbarbutton" + coloredPaletteClass, "color");
 		}
 	} ,
 
@@ -7808,7 +7803,7 @@ QuickFolders.Interface = {
 		      prefs = QuickFolders.Preferences,
 					styleEngine = QuickFolders.Styles;
 		try {
-      util.logDebugOptional("interface", "updateUserStyles() " + window.location);
+      util.logDebugOptional("interface", `updateUserStyles() ${window.location}\nTheme: ${prefs.CurrentThemeId}`);
       // get MAIN STYLE SHEET
       let ss = this.getStyleSheet(document, "quickfolders-layout.css", "QuickFolderStyles");
 
@@ -8086,6 +8081,34 @@ QuickFolders.Interface = {
 			return false;
 		};
 	} ,
+
+  prepareThemeChange: async function(newThemeId) {
+    const util = QuickFolders.Util;
+    try {
+      util.logDebugOptional("interface", "prepareThemeChange() - start");
+      if (newThemeId === QuickFolders.Styles.loadedTheme) {
+        return true;
+      }
+      // remove all styles to avoid conflicts with new theme
+      let ss = QuickFolders.Styles.getMyStyleSheet(
+        document,
+        "quickfolders-layout.css",
+        "QuickFolderStyles",
+      );
+      if (ss) {
+        QuickFolders.Styles.resetTheme(ss);
+        // once we are done, the client is safe to
+        // load the new theme and call updateUserStyles() to apply it.
+        // it will then also set a new QuickFolders.Styles.loadedTheme
+        // and store the new theme id in preferences. (QuickFolders.Preferences.CurrentThemeId setter)
+        return true;
+      }   
+      return false;
+    } catch (e) {
+      util.logException("QuickFolders.Interface.prepareThemeChange failed: ", e);
+      return false;
+    }
+  } ,
 
 	goUpFolder: function () {
 		let aFolder = QuickFolders.Util.CurrentFolder;

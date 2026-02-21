@@ -611,6 +611,9 @@ async function main() {
     "readToolbarStatus",
     "storeToolbarStatus",
     "toggleNavigationBars",
+    "getLastLoadedTheme",
+    "storeLoadedTheme",
+    "stageThemeChange",
   ];
 
   async function notificationHandler(data) {
@@ -798,10 +801,10 @@ async function main() {
 
       case "updateLicense": {
         let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(
-            legacyPrefPath("licenser.forceSecondaryIdentity")
+            legacyPrefPath("licenser.forceSecondaryIdentity"),
           ),
           isDebugLicenser = await messenger.LegacyPrefs.getPref(
-            legacyPrefPath("debug.premium.licenser")
+            legacyPrefPath("debug.premium.licenser"),
           );
 
         // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
@@ -814,7 +817,7 @@ async function main() {
         // Update background license.
         await messenger.LegacyPrefs.setPref(
           legacyPrefPath("LicenseKey"),
-          newLicense.info.licenseKey
+          newLicense.info.licenseKey,
         );
         currentLicense = newLicense;
 
@@ -887,7 +890,7 @@ async function main() {
         await messenger.sessions.setTabValue(
           data.tabId,
           "QuickFolders_Categories",
-          data.categories
+          data.categories,
         );
         break;
 
@@ -954,6 +957,17 @@ async function main() {
             return "unknown";
         }
       }
+      case "getLastLoadedTheme": {
+        const t = messenger.Utilities.getActiveThemeId();
+        console.log("QuickFolders: Active Theme ID = " + t);
+        return t;
+      }
+      case "storeLoadedTheme":
+        console.log(`QuickFolders: Storing Theme ID = ${data.themeId}`);
+        return await messenger.Utilities.commitActiveThemeId(data.themeId);
+      case "stageThemeChange":
+        console.log(`QuickFolders: Staging Theme Change for ID = ${data.themeId}`);
+        return await messenger.Utilities.stageThemeChange(data.themeId);
     }
   }
 

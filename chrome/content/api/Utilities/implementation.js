@@ -144,7 +144,9 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             let account = Accounts[a];
             if (account.defaultIdentity) {
               let name = account.defaultIdentity.fullName;
-              if (name) { return name;}
+              if (name) {
+                return name;
+              }
             }
           }
           return "user"; // anonymous
@@ -239,7 +241,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 Services.prompt.confirm(
                   win,
                   "QuickFolders",
-                  question.replace("{0}", entries.length)
+                  question.replace("{0}", entries.length),
                 )
               ) {
                 for (let ent of entries) {
@@ -251,13 +253,15 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                     // retrieve the name from the folder uri (prettyName)
                     let f = win.QuickFolders.Model.getMsgFolderFromUri(ent.uri, false);
                     if (f) {
-                      ent.name = (f.prettyName || f.localizedName);
+                      ent.name = f.prettyName || f.localizedName;
                     } else {
                       ent.name = util.getNameFromURI(ent.uri);
                     }
                   }
                 }
-                if (!entries.length) {entries = [];}
+                if (!entries.length) {
+                  entries = [];
+                }
                 // the following function calls QI.updateMainWindow() which calls QI.updateFolders()
                 // LEGACY MAIN WINDOW HACK FOR PREVIEW
                 let mainWin = util.getMail3PaneWindow();
@@ -336,16 +340,18 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
               Services.prompt.alert(
                 null,
                 "QuickFolders",
-                util.getBundleString("qf.alert.pasteFolders.formatErr")
+                util.getBundleString("qf.alert.pasteFolders.formatErr"),
               );
             }
             return changedRecords;
-            
           }
 
           let config = await self.fileConfig("load"); // load does the reading itself?
-          if (config) {return readData(config);}
-          else {return null;}
+          if (config) {
+            return readData(config);
+          } else {
+            return null;
+          }
         },
 
         // A test function for folder conversion. We need to pass in a nsIMsgFolder
@@ -370,7 +376,10 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         // simplified function to toggle QF toolbar when settings tab is shown
         displayMainToolbar: function (visible, inOptions = false) {
           const win = Services.wm.getMostRecentWindow("mail:3pane");
-          win.QuickFolders.Interface.toggleToolbar({ forceVisible: visible, optionsMode : inOptions });
+          win.QuickFolders.Interface.toggleToolbar({
+            forceVisible: visible,
+            optionsMode: inOptions,
+          });
         },
 
         getFolderIcon: async function (accountId, path = null) {
@@ -379,9 +388,11 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             let retVal = null;
             if (path) {
               let folder = context.extension.folderManager.get(accountId, path);
-              if (!folder) {return null;}
+              if (!folder) {
+                return null;
+              }
               retVal = win.QuickFolders.FolderTree.customIcons.find(
-                (e) => e.folderURI == folder.URI
+                (e) => e.folderURI == folder.URI,
               );
             } else {
               // this is an account.
@@ -389,11 +400,11 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 if (account.key == accountId) {
                   win.QuickFolders.Util.logDebug(
                     `found account: ${accountId}`,
-                    account.incomingServer?.prettyName
+                    account.incomingServer?.prettyName,
                   );
                   let rootUri = account.incomingServer?.rootFolder.URI;
                   retVal = win.QuickFolders.FolderTree.customIcons.find(
-                    (e) => e.folderURI == rootUri
+                    (e) => e.folderURI == rootUri,
                   );
                   break;
                 }
@@ -412,7 +423,9 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             let retVal = null;
             if (path) {
               let folder = context.extension.folderManager.get(accountId, path);
-              if (!folder) {return null;}
+              if (!folder) {
+                return null;
+              }
               retVal = folder.URI;
             } else {
               // this is an account.
@@ -420,7 +433,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 if (account.key == accountId) {
                   win.QuickFolders.Util.logDebug(
                     `found account: ${accountId}`,
-                    account.incomingServer?.prettyName
+                    account.incomingServer?.prettyName,
                   );
                   retVal = account.incomingServer?.rootFolder.URI;
                   break;
@@ -433,7 +446,30 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
             return null;
           }
         },
-      },
+
+        getActiveThemeId: function () {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
+          return win.QuickFolders.Preferences.CurrentThemeId; 
+        },
+
+        commitActiveThemeId: async function (themeId) {
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
+          if (!win?.QuickFolders?.Styles) {
+            console.error("QuickFolders.Styles not found in main window!");
+            return;
+          }
+          win.QuickFolders.Styles.loadedTheme = themeId;
+        },
+
+        stageThemeChange: async function (themeId) {
+          // call this before applying a new theme
+          // to reset all styles to their default values,
+          // using QuickFolders.Styles.resetTheme(styleSheet)
+          const win = Services.wm.getMostRecentWindow("mail:3pane");
+          // this will reset styles!
+          win.QuickFolders.Interface.prepareThemeChange(themeId);
+        }
+      }
     };
-};
+  }
 }

@@ -1,7 +1,7 @@
 [
   {
     "namespace": "Utilities",
-    "functions": [ 
+    "functions": [
       {
         "name": "logDebug",
         "type": "function",
@@ -43,8 +43,8 @@
         "name": "showVersionHistory",
         "type": "function",
         "parameters": []
-      },      
-      
+      },
+
       {
         "name": "getUserName",
         "type": "function",
@@ -64,17 +64,15 @@
             "additionalProperties": true
           }
         ]
-        
       },
-      
+
       {
         "name": "loadConfig",
         "type": "function",
         "async": true,
         "parameters": []
       },
-      
-      
+
       {
         "name": "getUserStyle",
         "type": "function",
@@ -119,7 +117,7 @@
             "name": "keepState",
             "type": "boolean",
             "description": "keep toggle status, and patch only"
-          }          
+          }
         ]
       },
 
@@ -179,10 +177,43 @@
             "description": "path of the API folder"
           }
         ]
+      },
+
+      {
+        "name": "getActiveThemeId",
+        "type": "function",
+        "async": false,
+        "description": "returns currently active theme id",
+        "parameters": []
+      },
+
+      {
+        "name": "commitActiveThemeId",
+        "type": "function",
+        "async": true,
+        "description": "Set QuickFolders.Styles.loadedTheme to the currently active theme id, so we know what we reset next time.",
+        "parameters": [
+          {
+            "name": "themeId",
+            "type": "string",
+            "description": "the theme id to persist"
+          }
+        ]
+      },
+
+      {
+        "name": "stageThemeChange",
+        "type": "function",
+        "async": true,
+        "description": "prepare theme change",
+        "parameters": [
+          {
+            "name": "themeId",
+            "type": "string",
+            "description": "the theme id to stage"
+          }
+        ]
       }
-
-
-      
-   ]
+    ]
   }
 ]

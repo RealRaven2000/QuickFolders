@@ -180,6 +180,7 @@ pref("extensions.quickfolders.debug.composer", false);
 pref("extensions.quickfolders.debug.css", false);
 pref("extensions.quickfolders.debug.css.Detail", false);
 pref("extensions.quickfolders.debug.css.AddRule", false);
+pref("extensions.quickfolders.debug.css.styles.restoreRules", false);
 pref("extensions.quickfolders.debug.css.styleSheets", false);
 pref("extensions.quickfolders.debug.css.palette.styleSheets", false);
 pref("extensions.quickfolders.debug.css.palette", false);

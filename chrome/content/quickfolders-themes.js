@@ -30,6 +30,7 @@ QuickFolders.Themes = {
         cornerRadius: true,
         borderToggle: false,
         tabTransparency: true,
+        supportStripedTabs: true,
       },
     },
 
@@ -53,6 +54,7 @@ QuickFolders.Themes = {
         cornerRadius: false,
         borderToggle: false,
         tabTransparency: false,
+        supportStripedTabs: true,
       },
     },
 
@@ -76,6 +78,7 @@ QuickFolders.Themes = {
         cornerRadius: false,
         borderToggle: false,
         tabTransparency: false,
+        supportStripedTabs: false,
       },
     },
 

@@ -7075,6 +7075,9 @@ QuickFolders.Interface = {
 		    newItalic = prefs.isItalicsNewMail,
 				tabStyle = prefs.ColoredTabStyle; // filled or striped
 
+    const allowStripes =
+      QuickFolders.Preferences.CurrentTheme?.supportsFeatures?.supportStripedTabs || false;
+
 		for (let i = 0; i < QI.buttonsByOffset.length; i++) {
 			let button = QI.buttonsByOffset[i];
 			// filled style, remove striped style
@@ -7083,9 +7086,9 @@ QuickFolders.Interface = {
 			}
 
 			// striped style: make sure everyting is striped
-			if ((tabStyle == prefs.TABS_STRIPED) && (button.className.indexOf("striped")<0)) {
-				button.className = button.className.replace(/(col[0-9]+)/,"$1striped");
-			}
+			if (allowStripes && (tabStyle == prefs.TABS_STRIPED) && button.className.indexOf("striped") < 0) {
+        button.className = button.className.replace(/(col[0-9]+)/, "$1striped");
+      }
 
 			button.classList.remove("selected-folder", "forceCustomColor");
 			// button.className = button.className.replace(/(cActive[0-9]+)/,""); // remove active coloring
@@ -7326,12 +7329,17 @@ QuickFolders.Interface = {
     QuickFolders.Model.update();
   },
 
-	getButtonColorClass: function (col, noStripe) {
+	getButtonColorClass: function (col, disableStriped) {
 		//let sColFolder = (tabStyle == 0) ? "chrome://quickfolders/content/skin/striped" : "chrome://quickfolders/content/skin/cols";
-		let tabStyle = QuickFolders.Preferences.ColoredTabStyle;
+		const tabStyle = QuickFolders.Preferences.ColoredTabStyle;
+    const theme = QuickFolders.Preferences.CurrentTheme;
+    const currentThemeSupportsStriped = theme?.supportsFeatures?.supportStripedTabs || false;
+    if (!currentThemeSupportsStriped) {
+      disableStriped = true;
+    }
 
-		return "col"+col+
-				((tabStyle == QuickFolders.Preferences.TABS_STRIPED && !noStripe) ? "striped" : "");
+		return "col" + col +
+				((tabStyle == QuickFolders.Preferences.TABS_STRIPED && !disableStriped) ? "striped" : "");
 	} ,
 
 	getButtonColor: function (button) {
@@ -7727,10 +7735,19 @@ QuickFolders.Interface = {
         inactiveGradientColor = null,
 		    inactiveBackground = util.getSystemColor(prefs.getUserStyle("InactiveTab","background-color","ButtonFace")),
 		    inactiveColor = util.getSystemColor(prefs.getUserStyle("InactiveTab","color","black")),
-		    paletteClass = this.getPaletteClassCss("InactiveTab"),
+		    paletteClass = this.getPaletteClassCss("InactiveTab");
+
     // only plastic & pastel support striped style:
-        isTabsStriped = (tabStyle == prefs.TABS_STRIPED) && prefs.getIntPref("style.InactiveTab.paletteType")<3,
-		    noColorClass = (isTabsStriped) ? "col0striped" : "col0";
+    const theme = QuickFolders.Preferences.CurrentTheme;
+    const currentThemeSupportsStriped = theme?.supportsFeatures?.supportStripedTabs || false;
+    const areTabsStriped =
+      currentThemeSupportsStriped &&
+      tabStyle == prefs.TABS_STRIPED &&
+      prefs.getIntPref("style.InactiveTab.paletteType") < 3;
+		const noColorClass = (areTabsStriped) ? "col0striped" : "col0";
+    const tabLine = document.querySelector(".tabmail-tab[selected=true] .tab-line");
+    const activeTabLineColor = tabLine ? getComputedStyle(tabLine).backgroundColor : "var(--tabline-color)";
+    engine.setElementStyle(ss, ":root", "--qf-tabline-color", activeTabLineColor);
 
 		// transparent buttons: means translucent background! :))
 		if (prefs.getBoolPref("transparentButtons")) {
@@ -7745,7 +7762,7 @@ QuickFolders.Interface = {
 		if (prefs.getIntPref("style.InactiveTab.paletteType")>0) {
 			let paletteEntry = prefs.getIntPref("style.InactiveTab.paletteEntry");
 			if (tabStyle === prefs.TABS_STRIPED) {paletteEntry += "striped";}
-			const ruleName = (!isTabsStriped ? ".quickfolders-flat " : "") + paletteClass + ".col" + paletteEntry;
+			const ruleName = (!areTabsStriped ? ".quickfolders-flat " : "") + paletteClass + ".col" + paletteEntry;
 			// force bright icons on dark backgrounds
 			let colorScheme = engine.getElementStyle(ssPalettes, ruleName, "color-scheme") || "inherit";
       engine.setElementStyle(
@@ -7783,7 +7800,7 @@ QuickFolders.Interface = {
 		// Coloring all striped tabbed buttons that have individual colors
     let coloredPaletteClass = this.getPaletteClassCss("ColoredTab");
 
-		if (isTabsStriped) { // paletteClass = plastic + pastel only
+		if (areTabsStriped) { // paletteClass = plastic + pastel only
 			// fallback for uncolored current folder (striped style)
       const inactiveButtonSelector =
         ".quickfolders-flat toolbarbutton:not(#QuickFoldersCurrentFolder,#QuickFolders-title-label," +

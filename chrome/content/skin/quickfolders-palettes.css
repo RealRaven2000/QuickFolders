@@ -20,26 +20,27 @@
   --QF-col19-gradient: linear-gradient(to bottom, rgba(127,127,127,1) 0%,rgba(89,89,89,1) 47%,rgba(66,66,66,1) 50%,rgba(79,79,79,1) 100%);
   --QF-col20-gradient: linear-gradient(to bottom, rgba(66,66,66,0.8) 0%,rgba(51,51,51,0.9) 50%,rgba(19,19,19,1) 100%);
 
-  --QF-col1-flatstripe:  linear-gradient(to bottom, rgb(5,171,224) 0%, rgb(5,171,224) 21%, transparent 21%, transparent 100%);
-  --QF-col2-flatstripe:  linear-gradient(to bottom, rgb(0,53,118) 0%, rgb(0,53,118) 21%, transparent 21%, transparent 100%);
-  --QF-col3-flatstripe:  linear-gradient(to bottom, rgb(0,1,86) 0%, rgb(0,1,86) 21%, transparent 21%, transparent 100%);
-  --QF-col4-flatstripe:  linear-gradient(to bottom, rgb(8,79,89) 0%, rgb(8,79,89) 21%, transparent 21%, transparent 100%);
-  --QF-col5-flatstripe:  linear-gradient(to bottom, rgb(5,108,117) 0%, rgb(5,108,117) 21%, transparent 21%, transparent 100%);
-  --QF-col6-flatstripe:  linear-gradient(to bottom, rgb(145,186,42) 0%, rgb(145,186,42) 21%, transparent 21%, transparent 100%);
-  --QF-col7-flatstripe:  linear-gradient(to bottom, rgb(0,224,22) 0%, rgb(0,224,22) 21%, transparent 21%, transparent 100%);
-  --QF-col8-flatstripe:  linear-gradient(to bottom, rgb(206,221,35) 0%, rgb(206,221,35) 21%, transparent 21%, transparent 100%);
-  --QF-col9-flatstripe:  linear-gradient(to bottom, rgb(255,255,127) 0%, rgb(255,255,127) 21%, transparent 21%, transparent 100%);
-  --QF-col10-flatstripe: linear-gradient(to bottom, rgb(255,193,5) 0%, rgb(255,193,5) 21%, transparent 21%, transparent 100%);
-  --QF-col11-flatstripe: linear-gradient(to bottom, rgb(240,96,0) 0%, rgb(240,96,0) 21%, transparent 21%, transparent 100%);
-  --QF-col12-flatstripe: linear-gradient(to bottom, rgb(117,23,0) 0%, rgb(117,23,0) 21%, transparent 21%, transparent 100%);
-  --QF-col13-flatstripe: linear-gradient(to bottom, rgb(122,32,18) 0%, rgb(122,32,18) 21%, transparent 21%, transparent 100%);
-  --QF-col14-flatstripe: linear-gradient(to bottom, rgb(109,5,76) 0%, rgb(109,5,76) 21%, transparent 21%, transparent 100%);
-  --QF-col15-flatstripe: linear-gradient(to bottom, rgb(255,58,196) 0%, rgb(255,58,196) 21%, transparent 21%, transparent 100%);
-  --QF-col16-flatstripe: linear-gradient(to bottom, rgb(234,234,234) 0%, rgb(234,234,234) 21%, transparent 21%, transparent 100%);
-  --QF-col17-flatstripe: linear-gradient(to bottom, rgb(190,190,190) 0%, rgb(190,190,190) 21%, transparent 21%, transparent 100%);
-  --QF-col18-flatstripe: linear-gradient(to bottom, rgb(142,142,142) 0%, rgb(142,142,142) 21%, transparent 21%, transparent 100%);
-  --QF-col19-flatstripe: linear-gradient(to bottom, rgb(79,79,79) 0%, rgb(79,79,79) 21%, transparent 21%, transparent 100%);
-  --QF-col20-flatstripe: linear-gradient(to bottom, rgb(19,19,19) 0%, rgb(19,19,19) 21%, transparent 21%, transparent 100%);
+	/* realtabs - get a transparent line at the top then a colored line, similar to Thunderbird tabs */
+	--QF-col1-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(5,171,224) 8%, rgb(5,171,224) 21%, transparent 21%, transparent 100%);
+	--QF-col2-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(0,53,118) 8%, rgb(0,53,118) 21%, transparent 21%, transparent 100%);
+	--QF-col3-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(0,1,86) 8%, rgb(0,1,86) 21%, transparent 21%, transparent 100%);
+	--QF-col4-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(8,79,89) 8%, rgb(8,79,89) 21%, transparent 21%, transparent 100%);
+	--QF-col5-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(5,108,117) 8%, rgb(5,108,117) 21%, transparent 21%, transparent 100%);
+	--QF-col6-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(145,186,42) 8%, rgb(145,186,42) 21%, transparent 21%, transparent 100%);
+	--QF-col7-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(0,224,22) 8%, rgb(0,224,22) 21%, transparent 21%, transparent 100%);
+	--QF-col8-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(206,221,35) 8%, rgb(206,221,35) 21%, transparent 21%, transparent 100%);
+	--QF-col9-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(255,255,127) 8%, rgb(255,255,127) 21%, transparent 21%, transparent 100%);
+	--QF-col10-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(255,193,5) 8%, rgb(255,193,5) 21%, transparent 21%, transparent 100%);
+	--QF-col11-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(240,96,0) 8%, rgb(240,96,0) 21%, transparent 21%, transparent 100%);
+	--QF-col12-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(117,23,0) 8%, rgb(117,23,0) 21%, transparent 21%, transparent 100%);
+	--QF-col13-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(122,32,18) 8%, rgb(122,32,18) 21%, transparent 21%, transparent 100%);
+	--QF-col14-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(109,5,76) 8%, rgb(109,5,76) 21%, transparent 21%, transparent 100%);
+	--QF-col15-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(255,58,196) 8%, rgb(255,58,196) 21%, transparent 21%, transparent 100%);
+	--QF-col16-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(234,234,234) 8%, rgb(234,234,234) 21%, transparent 21%, transparent 100%);
+	--QF-col17-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(190,190,190) 8%, rgb(190,190,190) 21%, transparent 21%, transparent 100%);
+	--QF-col18-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(142,142,142) 8%, rgb(142,142,142) 21%, transparent 21%, transparent 100%);
+	--QF-col19-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(79,79,79) 8%, rgb(79,79,79) 21%, transparent 21%, transparent 100%);
+	--QF-col20-flatstripe: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 8%, rgb(19,19,19) 8%, rgb(19,19,19) 21%, transparent 21%, transparent 100%);
 }
 
 @media (prefers-color-scheme: dark) {

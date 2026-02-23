@@ -16,16 +16,26 @@
 	--qf-translucent-background: rgba(255, 255, 255, 0.7);
 	--qf-selected-tab-background-color: var(--lwt-selected-tab-background-color, var(--qf-translucent-background));
 	/* use the modern tabline (windows accent) color of Tb 147 */
+	--qf-tabline-color: var(--tabline-color, var(--lwt-text-color)); 
+	/* in Tb148: 
+	--selected-item-color: var(--sidebar-highlight-background-color, AccentColor);
+  --tabline-color: var(--selected-item-color);
+	I guess we need to get computed style are runtime from the active Thunderbird Tab to be compatible with older and later versions!
+	*/
 	--qf-selected-tab-gradient: linear-gradient(to bottom, 
-			var(--tabline-color,--qf-selected-tab-color) 0%, 
-			var(--tabline-color,--qf-selected-tab-color) 21%, 
+			rgba(0,0,0,0) 0%,
+			rgba(0,0,0,0) 8%,
+			var(--qf-tabline-color,--qf-selected-tab-color) 8%, 
+			var(--qf-tabline-color,--qf-selected-tab-color) 21%, 
 			rgba(0,0,0,0) 21%, 
 			rgba(0,0,0,0) 100%
 	);
 	/* from .tabmail-tab:hover .tabline:not([selected=true]) in tabmail.css */
 	--qf-realtabline-hover-gradient: 
 		linear-gradient(to bottom, 
-			light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.15)) 0%,
+			rgba(0,0,0,0) 0%,
+			rgba(0,0,0,0) 8%,
+			light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.15)) 8%,
 			light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.15)) 21%,
 			rgba(0,0,0,0) 21%, 
 			rgba(0,0,0,0) 100%
@@ -587,6 +597,9 @@ toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
 	padding-block: 0.1em;
 	padding-inline: 0.3em;
 	margin: 1px;
+	border-top-left-radius: 0.4em;
+	border-top-right-radius: 0.4em;
+	background-clip: padding-box !important; /* XUL ignores this for my gradient stripe :( */
 }
 
 .quickfolders-realTabs toolbarbutton:not(.selected-folder) {
@@ -605,6 +618,7 @@ toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
 	color: var(--qf-selected-tab-color) !important;
 	box-shadow: 0 2px 8px -5px var(--color-black);
 }
+
 .quickfolders-realTabs toolbarbutton.selected-folder.col0,
 .quickfolders-realTabs toolbarbutton.selected-folder.col0striped {
 	/* default overstroke */

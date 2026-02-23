@@ -15,25 +15,39 @@
 	--qf-selected-tab-color: rgba(0,0,0,0.9);
 	--qf-translucent-background: rgba(255, 255, 255, 0.7);
 	--qf-selected-tab-background-color: var(--lwt-selected-tab-background-color, var(--qf-translucent-background));
+	/* use the modern tabline (windows accent) color of Tb 147 */
 	--qf-selected-tab-gradient: linear-gradient(to bottom, 
-			var(--qf-selected-tab-color) 0%, 
-			var(--qf-selected-tab-color) 21%, 
+			var(--tabline-color,--qf-selected-tab-color) 0%, 
+			var(--tabline-color,--qf-selected-tab-color) 21%, 
 			rgba(0,0,0,0) 21%, 
 			rgba(0,0,0,0) 100%
 	);
+	/* from .tabmail-tab:hover .tabline:not([selected=true]) in tabmail.css */
+	--qf-realtabline-hover-gradient: 
+		linear-gradient(to bottom, 
+			light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.15)) 0%,
+			light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.15)) 21%,
+			rgba(0,0,0,0) 21%, 
+			rgba(0,0,0,0) 100%
+	);
+		
 	--qf-unselected-tab-gradient: linear-gradient(
     to bottom,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0.3) 100%
+    rgba(219, 219, 220, 1) 0%,
+    rgba(219, 219, 220, 0.8) 100%
   );
-
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
 		--qf-selected-tab-color: rgba(255,255,255,0.85);
     --qf-selected-tab-background-color: rgba(0, 0, 0, 0.8);
-		--qf-translucent-background: rgba(0, 0, 0, 0.7)
+		--qf-translucent-background: rgba(0, 0, 0, 0.7);
+		--qf-unselected-tab-gradient: linear-gradient(
+      to bottom,
+			rgba(59, 59, 61, 0.8) 0%,
+			rgba(59, 59, 61, 1) 100%
+		);
   }
 }
 
@@ -578,7 +592,11 @@ toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
 .quickfolders-realTabs toolbarbutton:not(.selected-folder) {
 	background-color: rgba(0,0,0,0);
 	/* remove coloring */
-  background-image: var(--qf-unselected-tab-gradient) !important; 
+  background-image: var(--qf-unselected-tab-gradient); 
+}
+
+.quickfolders-realTabs toolbarbutton:not(.selected-folder):hover {
+	background-image: var(--qf-realtabline-hover-gradient) !important;
 }
 
 
@@ -596,6 +614,7 @@ toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
 .quickfolders-realTabs toolbarbutton.selected-folder:is(.col1, .col1striped) {
   background-image: var(--QF-col1-flatstripe) !important;
 }
+
 
 .quickfolders-realTabs toolbarbutton.selected-folder:is(.col2, .col2striped) {
   background-image: var(--QF-col2-flatstripe) !important;

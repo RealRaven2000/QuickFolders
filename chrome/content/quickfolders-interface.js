@@ -2466,7 +2466,17 @@ QuickFolders.Interface = {
     }
 		QuickFolders.Util.logDebugOptional("interface", `showElement(PreviewLabel, ${isPreviewMode})`);
 		QuickFolders.Interface.showElement(this.PreviewLabel, isPreviewMode);
-		return makeVisible;
+    if (isPreviewMode) {
+      toolbar.setAttribute("preview", true);
+      toolbar.setAttribute("data-preview-mode", "true");
+      // find the currently selected folder to cache it:
+      let currentTab = toolbar.querySelector("toolbarbutton.selected-folder");
+      let selectedFolder = currentTab?.folder;
+      if (selectedFolder) {
+        toolbar.setAttribute("data-last-selected-uri", selectedFolder.URI);
+      }
+    }
+    return makeVisible;
 	} ,
 
 	endsWith: function (sURI, sFolder) {
@@ -3157,7 +3167,6 @@ QuickFolders.Interface = {
 			if (l) {
 				l.style.removeProperty("color");
 			}
-				
 		}
   },
 
@@ -7021,7 +7030,20 @@ QuickFolders.Interface = {
       } else if (forceFolder) {
         folder = forceFolder;
       } else {
-        folder = QI.getCurrentTabMailFolder();
+        let toolbar = QI.Toolbar;
+        if (toolbar?.getAttribute("data-preview-mode") === "true") {
+          const cachedUri = toolbar.getAttribute("data-last-selected-uri");
+          if (cachedUri) {
+            const btns = Array.from(toolbar.querySelectorAll("toolbarbutton"));
+            const target = btns.find((b) => b.folder?.URI === cachedUri);
+            if (target) {
+              folder = target.folder; // override with cached folder
+              target.classList.add("selected-folder"); // apply visual highlight
+            }
+          }
+        } else {
+          folder = QI.getCurrentTabMailFolder();
+        }
       }
 
       util.logDebugOptional("interface", "onTabSelected("

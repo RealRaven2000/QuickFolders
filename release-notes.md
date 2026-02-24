@@ -1,29 +1,21 @@
+**Release 6.15**
 
-**Maintenance changes 6.14.2**
+QuickFolders has been fully modernized for 2026, with a refreshed user interface, improved usability, and enhanced theme support — making your folder management faster, cleaner, and more intuitive than ever. Try the new **Thunderbird Tabs** theme for a fresh, minimalist experience.
 
-*    Fixed message replacement and disabled update message `newsMsgEsr140`.
-*    Updated translations - added missing settings label for 'Notifications'
+**Improvements**
 
-**Maintenance changes 6.14.1**
+* Flat Style improvement: the active folder now highlights with the user-assigned tab color (if set). You can revert to the original behavior in theme settings [issue #646]  
+* Redesigned themes: Native Tabs and Pushbuttons refreshed with a new layout [issue #643]  
+* Improved theme handling: switching themes now resets layout rules for full fidelity [issue #650]  
+* New Pro feature: show the account name of the current folder instead of the QuickFolders label [issue #648]  
+* Custom icons in the folder tree are now automatically resized and no longer cropped when too large [issue #619]  
 
-*    6.14.1 Fixed an issue with setting the "has news" flag: these were omitted since 6.11.1.
+**Bug Fixes**
 
-**Improvements 6.14**
+* Fixed duplicate custom icons in the folder tree on Thunderbird 148 [issue #633]  
+* Fixed non-working menu items in the QuickFolders Commands submenu [issue #639]  
+* Fixed broken XHTML dialog "Change order of tabs" [issue #647]  
 
-*    Made compatible with Thunderbird 148  
-*    Added option to reverse alphabetic sorting of subfolder menus [issue #600]  
-*    quickMove: Update cursor position while typing in folder search box [issue #623]  
-*    Remove duplicate 🔎 and ✕ icons in quickMove search - Tb Release (142+) [issue #624]  
-*    Added option to disable folder notifications after folder compaction (e.g., empty Trash) [issue #626]  
+**Miscellaneous**
 
-**Bug Fixes 6.14**
-
-*    Fixed: Recent folders button missing on Current Folder Toolbar [issue #620]  
-*    Fixed "rectangle" icons in current folder popups  
-*    Fixed ❯ chevron positions on all popup menus  
-*    Fixed icons in mail commands popups  
-
-**Miscellaneous 6.14**
-
-*    Reduced debug logs in error console mostly related to 'loadDictionary' [issue #621]  
-
+* Removed unnecessary console errors from quickfolders-util.js

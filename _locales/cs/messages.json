@@ -423,8 +423,7 @@
     "message": "{P}Stále sledujeme měsíční cyklus vydávání Thunderbird, abychom zajistili kompatibilitu a stabilitu. Tato práce je jako vždy plně financována z prodeje licencí.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Důležité:{/b} Thunderbird pokračuje ve svém měsíčním vydavatelském cyklu. {/P}{P} Někteří uživatelé mohli po aktualizaci Thunderbirdu na $appversion$ vidět falešné upozornění o nekompatibilitě. Toto bylo způsobeno uloženými informacemi o kompatibilitě, které se někdy nepodaří správně obnovit. Nahlásil jsem to jako bug do Thunderbirdu: [Bugzilla 1986027]{/P}{P} Buďte si jisti, že QuickFolders plně podporuje jak měsíční, tak ESR (140.*) kanály a můžete pokračovat v práci bez přerušení. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders byl kompletně modernizován pro rok 2026, s přepracovaným uživatelským rozhraním, lepší použitelností a vylepšenou podporou motivů — vaše správa složek je nyní rychlejší, čistší a intuitivnější než kdy dříve. Vyzkoušejte nový motiv {b}{+qf.themes.nativeTabs.label}{/b} pro svěží a minimalistický zážitek. {/P}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat QuickFolders v budoucnu."
@@ -577,6 +576,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Také orámovat název (nejlépe s tmavými/barenými pozadími)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Pro barevné karty: přepsat barvu aktivní karty"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Pokud má karta vlastní barvu, použije se pro aktivní kartu místo globální barvy aktivní karty. To ovlivní barvu spodní čáry panelu nástrojů QuickFolders."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Přetáhnout do nové podsložky"
@@ -1312,7 +1317,7 @@
     "message": "Funkce podle licence"
   },
   "qf.notifications": {
-    "message": "Notifikace"
+    "message": "Oznámení"
   },
   "qf.notifications.compactFolder": {
     "message": "Upozornit po vykomprimování složky"
@@ -1531,13 +1536,13 @@
     "message": "Plochý styl"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Rozvržení připomíná karty vašeho OS - méně možností barevného přizpůsobení, ale lépe zapadne a sladí se s motivy vašeho e-mailového klienta."
+    "message": "Přepracováno v roce 2026 tak, aby odpovídalo kartám Thunderbirdu — používá stejnou barvu zvýraznění, podporuje tmavý/světlý režim, zachovává vlastní barvy karet a přidává jemný akcent barvy zaměření na aktivní kartu pro elegantní, nenápadný vzhled."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Nativní karty"
+    "message": "Karty Thunderbirdu"
   },
   "qf.themes.realButtons.description": {
-    "message": "Tlačítka - vypadají jako standardní tlačítka v dialogových oknech"
+    "message": "Minimalistická tlačítka s mírným zaoblením a obrysy, zvýrazňující aktivní tlačítko primární akcentovou barvou Thunderbirdu — konzistentně používanou v dialozích i hlavních tlačítkách rozhraní — pro jemný, elegantní dojem."
   },
   "qf.themes.realButtons.label": {
     "message": "Tlačítka"

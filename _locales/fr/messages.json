@@ -428,8 +428,7 @@
     "message": "{P}Nous continuons à suivre le cycle de publication mensuel de Thunderbird afin d’assurer la compatibilité et la stabilité. Comme toujours, ce travail est entièrement financé par la vente de licences.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Important:{/b} Thunderbird poursuit son cycle de publication mensuel. {/P}{P} Certains utilisateurs ont peut-être vu un faux avertissement d’incompatibilité après la mise à jour de Thunderbird vers $appversion$. Cela était dû aux informations de compatibilité mises en cache dans Thunderbird, qui ne se rafraîchissent pas toujours correctement. J’ai signalé un bug à Thunderbird pour corriger cela : [Bugzilla 1986027]{/P}{P} Soyez assuré que QuickFolders prend en charge à la fois les canaux mensuels et ESR (140.*), et vous pouvez continuer à travailler sans interruption. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders a été entièrement modernisé pour 2026, avec une interface utilisateur repensée, une meilleure ergonomie et un support amélioré des thèmes — rendant la gestion des dossiers plus rapide, plus claire et plus intuitive que jamais. Essayez le nouveau thème {b}{+qf.themes.nativeTabs.label}{/b} pour une expérience fraîche et minimaliste. {/P}"
   },
   "newsSection.license": {
     "message": "Étant donné que tout le travail sur QuickFolders et le support gratuit sont financés exclusivement par les ventes de licences, veuillez envisager d'acheter une licence ou de renouveler la vôtre."
@@ -588,6 +587,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Encadrer également le nom (de préférence avec des arrière-plans sombres / colorés)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Pour les onglets colorés : remplacer la couleur de l’onglet actif"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Si un onglet possède sa propre couleur, utilisez-la pour l’onglet actif au lieu de la couleur globale de l’onglet actif. Cela affectera la couleur de la ligne inférieure de la barre d’outils QuickFolders."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Glisser vers un nouveau sous-dossier"
@@ -1545,13 +1550,13 @@
     "message": "Style plat"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "La disposition ressemble aux onglets de votre OS - moins d'options de colorisation mais mieux intégré et adapté aux thèmes de votre client de messagerie."
+    "message": "Redessiné en 2026 pour correspondre aux onglets de Thunderbird — utilise la même couleur de surbrillance, prend en charge les modes clair/sombre, conserve vos couleurs d’onglets personnalisées et ajoute un léger accent de couleur de focus sur l’onglet actif pour une touche élégante et discrète."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Onglets natifs"
+    "message": "Onglets Thunderbird"
   },
   "qf.themes.realButtons.description": {
-    "message": "Boutons poussoirs - ils ressemblent à des boutons standards des fenêtres de dialogues"
+    "message": "Boutons minimalistes avec un léger arrondi et des contours, mettant en évidence le bouton actif avec la couleur d’accent principale de Thunderbird — utilisée de manière cohérente dans les boîtes de dialogue et les boutons principaux de l’interface — pour une touche subtile et élégante."
   },
   "qf.themes.realButtons.label": {
     "message": "Boutons poussoirs"

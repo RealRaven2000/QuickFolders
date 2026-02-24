@@ -412,8 +412,7 @@
     "message": "{P}Nous continuons à suivre le cycle de publication mensuel de Thunderbird afin d’assurer la compatibilité et la stabilité. Comme toujours, ce travail est entièrement financé par la vente de licences.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Importante:{/b} Thunderbird continúa su ciclo de lanzamientos mensual. {/P}{P} Algunos usuarios pueden haber visto una advertencia de incompatibilidad falsa tras actualizar Thunderbird a $appversion$. Esto fue causado por información de compatibilidad en caché que a veces no se refresca correctamente. He reportado un bug en Thunderbird para solucionarlo: [Bugzilla 1986027]{/P}{P} QuickFolders soporta completamente los canales mensual y ESR (140.*), y pueden continuar trabajando sin interrupciones. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders ha sido completamente modernizado para 2026, con una interfaz de usuario renovada, mejor usabilidad y soporte mejorado de temas — haciendo que la gestión de carpetas sea más rápida, limpia e intuitiva que nunca. Prueba el nuevo tema {b}{+qf.themes.nativeTabs.label}{/b} para una experiencia fresca y minimalista. {/P}"
   },
   "newsSection.license": {
     "message": "Como todo el trabajo en QuickFolders y el soporte gratuito se financian exclusivamente con las ventas de licencias, por favor considere comprar una licencia o renovar la actual."
@@ -569,6 +568,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "También resaltar el nombre (mejor con fondos oscuros / de colores)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Para pestañas con color: sobrescribir el color de la pestaña activa"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Si una pestaña tiene su propio color, úsalo para la pestaña activa en lugar del color global de la pestaña activa. Esto afectará el color de la línea inferior de la barra de herramientas de QuickFolders."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Arrastrar a una nueva subcarpeta"
@@ -1493,13 +1498,13 @@
     "message": "Estilo plano"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Diseño se asemeja a las pestañas de su sistema operativo - menos opciones de color, pero puede verse más integrado y en sintonía con los temas de su programa de correo."
+    "message": "Rediseñado en 2026 para coincidir con las pestañas de Thunderbird: usa el mismo color de resaltado, admite modo oscuro/claro, conserva tus colores personalizados de pestañas y agrega un sutil acento de color de enfoque en la pestaña activa para un toque elegante y discreto."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Pestañas nativas"
+    "message": "Pestañas de Thunderbird"
   },
   "qf.themes.realButtons.description": {
-    "message": "Botones de presión - Estos botones se ven como los botones estándar de los diálogos en windows"
+    "message": "Botones minimalistas con ligero redondeo y contornos, resaltando el botón activo con el color de acento principal de Thunderbird — usado de manera consistente en diálogos y botones principales de la interfaz — para un toque sutil y elegante."
   },
   "qf.themes.realButtons.label": {
     "message": "Botones de presión"

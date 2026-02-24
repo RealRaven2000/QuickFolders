@@ -224,8 +224,7 @@
     "message": "{P}Seuraamme edelleen Thunderbirdin kuukausittaista julkaisusykliä varmistaaksemme yhteensopivuuden ja vakauden. Kuten aina, tämä työ rahoitetaan kokonaan lisenssimyynnillä.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Tärkeää:{/b} Thunderbird jatkaa kuukausittaista julkaisusykliään. {/P}{P} Jotkut käyttäjät ovat saattaneet nähdä väärän yhteensopimattomuusvaroituksen päivitettyään Thunderbirdin versioon $appversion$. Tämä johtui Thunderbirdin välimuistiin tallennetuista yhteensopivuustiedoista, jotka eivät aina päivity oikein. Olen ilmoittanut bugista Thunderbirdille: [Bugzilla 1986027]{/P}{P} Vakuutan, että QuickFolders tukee täysin sekä kuukausikanavaa että ESR (140.*), ja voit jatkaa työskentelyä keskeytyksettä. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders on täysin modernisoitu vuodelle 2026, uudistetulla käyttöliittymällä, parannetulla käytettävyydellä ja laajennetulla teematueksi — mikä tekee kansioiden hallinnasta nopeampaa, selkeämpää ja intuitiivisempaa kuin koskaan. Kokeile uutta {b}{+qf.themes.nativeTabs.label}{/b}-teemaa raikkaan, minimalistisen kokemuksen saamiseksi. {/P}"
   },
   "newsSection.license": {
     "message": "Koska kaikki työ QuickFoldersin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."

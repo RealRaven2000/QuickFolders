@@ -425,8 +425,7 @@
     "message": "{P}Vi fortsetter å følge Thunderbirds månedlige utgivelsessyklus for å sikre kompatibilitet og stabilitet. Som alltid finansieres dette arbeidet fullt ut av lisenssalg.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Viktig:{/b} Thunderbird fortsetter sin månedlige utgivelsessyklus. {/P}{P} Noen brukere kan ha sett en falsk inkompatibilitetsadvarsel etter oppdatering til Thunderbird $appversion$. Dette skyldtes bufrede kompatibilitetsdata i Thunderbird som noen ganger ikke oppdateres riktig. Jeg har meldt en feil til Thunderbird for å fikse dette: [Bugzilla 1986027]{/P}{P} Vær trygg på at QuickFolders fullt ut støtter både månedlige og ESR (140.*) kanaler, og du kan fortsette å jobbe uten avbrudd. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders er fullstendig modernisert for 2026, med et oppdatert brukergrensesnitt, forbedret brukervennlighet og utvidet temastøtte — slik at mappehåndtering blir raskere, ryddigere og mer intuitiv enn noensinne. Prøv det nye {b}{+qf.themes.nativeTabs.label}{/b}-temaet for en frisk, minimalistisk opplevelse. {/P}"
   },
   "newsSection.license": {
     "message": "Siden alt arbeid med QuickFolders og gratis støtte finansieres utelukkende gjennom lisenssalg, vurder å kjøpe eller fornye lisensen din."
@@ -582,6 +581,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Også marker navnet (best med mørk/farget bakgrunn)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "For fargede faner: overstyr fargen på aktiv fane"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Hvis en fane har sin egen farge, bruk den for den aktive fanen i stedet for den globale fargen for aktiv fane. Dette vil påvirke fargen på den nederste linjen i QuickFolders-verktøylinjen."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Dra til ny undermappe"
@@ -1540,13 +1545,13 @@
     "message": "Flat stil"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Utseendet ligner OS-fanene dine - færre fargevalg, men kan se mer integrert ut med Mail Client-temaene."
+    "message": "Omstrukturert i 2026 for å samsvare med Thunderbird-faner — bruker samme uthevingsfarge, støtter mørk/lys modus, beholder dine egendefinerte fargefaner og legger til en subtil fokusfarge-aksent på den aktive fanen for et elegant og diskret uttrykk."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Native faner"
+    "message": "Thunderbird-faner"
   },
   "qf.themes.realButtons.description": {
-    "message": "Trykknapper - ser ut som standard knapper i dialogvinduer"
+    "message": "Minimalistiske trykknapper med lett avrunding og konturer, som fremhever den aktive knappen med Thunderbirds primære aksentfarge — brukt konsekvent i dialoger og hovedknapper i brukergrensesnittet — for et subtilt og elegant preg."
   },
   "qf.themes.realButtons.label": {
     "message": "Trykknapper"

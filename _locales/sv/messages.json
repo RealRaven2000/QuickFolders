@@ -421,8 +421,7 @@
     "message": "{P}Vi följer fortsatt Thunderbirds månatliga utgivningscykel för att säkerställa kompatibilitet och stabilitet. Som alltid finansieras detta arbete helt genom licensförsäljning.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Viktigt:{/b} Thunderbird fortsätter sin månatliga utgivningscykel. {/P}{P} Vissa användare kan ha sett en falsk inkompatibilitetsvarning efter uppdatering av Thunderbird till $appversion$. Detta orsakades av cachad kompatibilitetsinformation i Thunderbird som ibland inte uppdateras korrekt. Jag har rapporterat en bugg till Thunderbird för att fixa detta: [Bugzilla 1986027]{/P}{P} Var säker på att QuickFolders fullt ut stöder både månatliga och ESR (140.*) kanaler, och du kan fortsätta arbeta utan avbrott. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders har moderniserats helt för 2026, med ett uppdaterat användargränssnitt, förbättrad användbarhet och utökad temastöd — vilket gör att hantering av mappar är snabbare, renare och mer intuitivt än någonsin. Prova det nya {b}{+qf.themes.nativeTabs.label}{/b}-temat för en fräsch, minimalistisk upplevelse. {/P}"
   },
   "newsSection.license": {
     "message": "Eftersom allt arbete med QuickFolders och gratis support finansieras uteslutande genom licensförsäljning, överväg att köpa en licens eller förnya din nuvarande."
@@ -578,6 +577,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Markera även namnet (bäst med mörka / färgade bakgrunder)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "För färgade flikar: åsidosätt färgen för aktiv flik"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Om en flik har sin egen färg används den för den aktiva fliken istället för den globala färgen för aktiv flik. Detta påverkar färgen på den nedre linjen i QuickFolders verktygsfält."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Dra till ny undermapp"
@@ -1515,13 +1520,13 @@
     "message": "Platt stil"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layouten liknar flikarna i ditt OS - färre färgalternativ, men kan se mer integrerad ut och smälta in i dina e-postprogramsteman."
+    "message": "Omgestaltad 2026 för att matcha Thunderbirds flikar — använder samma markeringsfärg, stöder ljust/mörkt läge, behåller dina anpassade flikfärger och lägger till en subtil fokusfärgsaccent på den aktiva fliken för en elegant, diskret känsla."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Ursprungliga flikar"
+    "message": "Thunderbird-flikar"
   },
   "qf.themes.realButtons.description": {
-    "message": "Tryckknappar - ser ut som standardknappar i dialogfönster"
+    "message": "Minimalistiska tryckknappar med lätt rundning och konturer, som markerar den aktiva knappen med Thunderbirds primära accentfärg — konsekvent använd i dialoger och huvudknappar i gränssnittet — för en subtil, elegant känsla."
   },
   "qf.themes.realButtons.label": {
     "message": "Tryckknappar"

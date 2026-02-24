@@ -369,8 +369,7 @@
     "message": "{P}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Quan trọng:{/b} Thunderbird tiếp tục chu kỳ phát hành hàng tháng. {/P}{P} Một số người dùng có thể đã thấy cảnh báo không tương thích sai sau khi cập nhật Thunderbird lên $appversion$. Nguyên nhân là do thông tin tương thích được lưu trong bộ nhớ đệm của Thunderbird, đôi khi không được làm mới đúng cách. Tôi đã gửi báo cáo lỗi tới Thunderbird để sửa vấn đề này: [Bugzilla 1986027]{/P}{P} Hãy yên tâm rằng QuickFolders hoàn toàn hỗ trợ cả kênh hàng tháng và ESR (140.*), và bạn có thể tiếp tục làm việc mà không bị gián đoạn. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders đã được hiện đại hóa hoàn toàn cho năm 2026, với giao diện người dùng được làm mới, khả năng sử dụng cải thiện và hỗ trợ theme nâng cao — giúp việc quản lý thư mục nhanh hơn, gọn gàng hơn và trực quan hơn bao giờ hết. Hãy thử theme mới {b}{+qf.themes.nativeTabs.label}{/b} để có trải nghiệm tươi mới và tối giản. {/P}"
   },
   "newsSection.license": {
     "message": "Vì tất cả công việc trên QuickFolders và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ việc bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép hiện tại của bạn."
@@ -484,6 +483,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Cũng làm nổi bật tên (tốt nhất với nền tối / có màu)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "För färgade flikar: åsidosätt färgen för aktiv flik"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Om en flik har sin egen färg används den för den aktiva fliken istället för den globala färgen för aktiv flik. Detta påverkar färgen på den nedre linjen i QuickFolders verktygsfält."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Kéo vào một thư mục con mới"
@@ -1249,11 +1254,14 @@
   "qf.themes.flatTabs.label": {
     "message": "Phong cách phẳng"
   },
+  "qf.themes.nativeTabs.description": {
+    "message": "Được thiết kế lại vào năm 2026 để phù hợp với các thẻ của Thunderbird — sử dụng cùng màu làm nổi bật, hỗ trợ chế độ sáng/tối, giữ nguyên màu thẻ tùy chỉnh và thêm một điểm nhấn màu lấy nét tinh tế trên thẻ đang hoạt động để tạo cảm giác thanh lịch, kín đáo."
+  },
   "qf.themes.nativeTabs.label": {
-    "message": "Các thẻ gốc"
+    "message": "Thẻ Thunderbird"
   },
   "qf.themes.realButtons.description": {
-    "message": "Nút ấn - các nút có phong cách như trên các hộp thoại chuẩn"
+    "message": "Các nút bấm tối giản với bo tròn nhẹ và đường viền, làm nổi bật nút đang hoạt động bằng màu nhấn chính của Thunderbird — được sử dụng nhất quán trong các hộp thoại và nút giao diện chính — mang lại cảm giác tinh tế và thanh lịch."
   },
   "qf.themes.realButtons.label": {
     "message": "Nút ấn"

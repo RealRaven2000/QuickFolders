@@ -408,8 +408,7 @@
     "message": "{P}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Pomembno:{/b} Thunderbird nadaljuje svoj mesečni cikel izdaj. {/P}{P} Nekateri uporabniki so po posodobitvi Thunderbirda na $appversion$ morda videli napačno opozorilo o nezdružljivosti. To je bilo povzročeno zaradi predpomnjenih informacij o združljivosti v Thunderbirdu, ki se včasih ne osvežijo pravilno. Napako sem prijavil v Thunderbirdu: [Bugzilla 1986027]{/P}{P} Zagotovite, da QuickFolders popolnoma podpira tako mesečni kot ESR (140.*) kanal in lahko nadaljujete z delom brez prekinitev. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders je bil popolnoma moderniziran za leto 2026, z osveženim uporabniškim vmesnikom, izboljšano uporabnostjo in razširjeno podporo tem — upravljanje map je zdaj hitrejše, bolj pregledno in bolj intuitivno kot kdajkoli prej. Preizkusite novo temo {b}{+qf.themes.nativeTabs.label}{/b} za svežo, minimalistično izkušnjo. {/P}"
   },
   "newsSection.license": {
     "message": "Ker je vsa dela na QuickFolders in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
@@ -556,6 +555,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Prav tako obkroži ime (najboljše s temnimi / barvnimi ozadji)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Za obarvane zavihke: prepiši barvo aktivnega zavihka"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Če ima zavihek svojo barvo, jo uporabi za aktivni zavihek namesto globalne barve aktivnega zavihka. To bo vplivalo na barvo spodnje črte orodne vrstice QuickFolders."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Povleci v novo podmapo"
@@ -1463,13 +1468,13 @@
     "message": "Ploski slog"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Razporeditev je podobna zavihkom vašega OS-a - manj možnosti za obarvanje, vendar je morda videti bolj vgrajena in usklajena s temami vašega poštnega odjemalca."
+    "message": "Prenovljeno leta 2026, da se ujema z zavihki Thunderbirda — uporablja enako barvo poudarka, podpira svetli/temni način, ohranja prilagojene barve zavihkov in doda subtilen barvni poudarek fokusa na aktivnem zavihku za eleganten, neopazen videz."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Izvirni zavihki"
+    "message": "Zavihki Thunderbirda"
   },
   "qf.themes.realButtons.description": {
-    "message": "Potisni gumbi - ti so videti kot običajni gumbi v pogovornih oknih"
+    "message": "Minimalistični gumbi z rahlo zaobljenimi robovi in obrobami, ki poudarijo aktivni gumb z glavno poudarjeno barvo Thunderbirda — dosledno uporabljeno v pogovornih oknih in glavnih gumbih vmesnika — za subtilen, eleganten učinek."
   },
   "qf.themes.realButtons.label": {
     "message": "Potisni gumbi"

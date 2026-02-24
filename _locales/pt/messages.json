@@ -417,8 +417,7 @@
     "message": "{P}Continuamos a seguir o ciclo de lançamentos mensais do Thunderbird para garantir compatibilidade e estabilidade. Como sempre, este trabalho é totalmente financiado pelas vendas de licenças.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Importante:{/b} O Thunderbird continua o seu ciclo de lançamentos mensal. {/P}{P} Alguns utilizadores podem ter visto um aviso falso de incompatibilidade após atualizar o Thunderbird para $appversion$. Isto foi causado por informações de compatibilidade em cache no Thunderbird, que por vezes não se actualizam correctamente. Reportei um bug ao Thunderbird para resolver isto: [Bugzilla 1986027]{/P}{P} Tenha a certeza de que o QuickFolders suporta totalmente tanto os canais mensais como o ESR (140.*), e pode continuar a trabalhar sem interrupções. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}O QuickFolders foi totalmente modernizado para 2026, com uma interface renovada, melhor usabilidade e suporte aprimorado a temas — tornando a gestão de pastas mais rápida, limpa e intuitiva do que nunca. Experimente o novo tema {b}{+qf.themes.nativeTabs.label}{/b} para uma experiência fresca e minimalista. {/P}"
   },
   "newsSection.license": {
     "message": "Como todo o trabalho no QuickFolders e o suporte gratuito são financiados exclusivamente pelas vendas de licenças, considere comprar uma licença ou renovar a sua atual."
@@ -571,6 +570,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Também destaque o nome (melhor com fundos escuros / coloridos)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Para separadores coloridos: substituir a cor do separador ativo"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Se um separador tiver a sua própria cor, utilize-a para o separador ativo em vez da cor global do separador ativo. Isto afetará a cor da linha inferior da barra de ferramentas do QuickFolders."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Arrastar para nova subpasta"
@@ -1496,13 +1501,13 @@
     "message": "Estilo plano"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "O esquema lembra as abas de seu sistema operacional - menos opções de cores, mas com aparência mais integrada e em sincronia com seus temas do cliente de email."
+    "message": "Redesenhado em 2026 para corresponder aos separadores do Thunderbird — utiliza a mesma cor de destaque, suporta modo claro/escuro, mantém as cores personalizadas dos separadores e adiciona um subtil acento de cor de foco no separador ativo para um toque elegante e discreto."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Abas nativas"
+    "message": "Separadores do Thunderbird"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pushbuttons - se parecem com botões comuns em janelas de diálogo"
+    "message": "Botões minimalistas com ligeiro arredondamento e contornos, destacando o botão ativo com a cor de destaque principal do Thunderbird — utilizada de forma consistente em diálogos e botões principais da interface — para um toque subtil e elegante."
   },
   "qf.toolbar.quickfolders.toolbar": {
     "message": "Barra de ferramentas do QuickFolders"

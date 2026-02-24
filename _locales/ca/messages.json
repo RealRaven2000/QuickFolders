@@ -413,8 +413,7 @@
     "message": "{P}{b}Important:{/b} Thunderbird continua el seu cicle de llançaments mensual. {/P}{P} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a $appversion$. Això va ser causat per informació de compatibilitat en memòria cau a Thunderbird, que de vegades no es refresca correctament. He creat un bug a Thunderbird per solucionar-ho: [Bugzilla 1986027]{/P}{P} Tingueu la seguretat que QuickFolders suporta completament tant els canals mensuals com ESR (140.*), i podeu continuar treballant sense interrupcions. {/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Important:{/b} Thunderbird continua amb el seu cicle de llançament mensual. {/P}{P} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a la v142. Això va ser causat per informació de compatibilitat emmagatzemada en memòria cau a Thunderbird, que de vegades no s'actualitza correctament. La versió anterior de QuickFolders ja era completament compatible amb la 142. He informat d'un error a Thunderbird perquè ho solucionin: [Bugzilla 1986027]{/P}{P} Tingueu la seguretat que QuickFolders és totalment compatible tant amb els canals mensuals com amb l'ESR (140.*), i podeu continuar treballant sense interrupcions. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders s'ha modernitzat completament per al 2026, amb una interfície d'usuari renovada, millor usabilitat i suport millorat de temes — fent que la gestió de carpetes sigui més ràpida, neta i intuïtiva que mai. Prova el nou tema {b}{+qf.themes.nativeTabs.label}{/b} per a una experiència fresca i minimalista. {/P}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že veškerá práce na QuickFolders a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
@@ -567,6 +566,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "També ressalta el nom (millor amb fons foscos o de colors)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Per a les pestanyes de color: substituir el color de la pestanya activa"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Si una pestanya té el seu propi color, utilitza'l per a la pestanya activa en lloc del color global de la pestanya activa. Això afectarà el color de la línia inferior de la barra d'eines de QuickFolders."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Arrosegar a nova Subcarpeta"
@@ -1473,13 +1478,13 @@
     "message": "Estil Pla"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Disseny semblant a les pestanyes del seu SO - menys opcions de colors, però es veu més integrat amb el tema del seu Client de Correu."
+    "message": "Redissenyat el 2026 per coincidir amb les pestanyes de Thunderbird — utilitza el mateix color de ressaltat, admet el mode fosc/clar, manté els teus colors personalitzats de pestanyes i afegeix un subtil accent de color de focus a la pestanya activa per a un toc elegant i discret."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Pestanyes Natives"
+    "message": "Pestanyes de Thunderbird"
   },
   "qf.themes.realButtons.description": {
-    "message": "Botons - són com els botons standard de les finestres de windows"
+    "message": "Botons minimalistes amb lleugera arrodoniment i contorns, ressaltant el botó actiu amb el color d’accent principal de Thunderbird — utilitzat de manera coherent als diàlegs i als botons principals de la interfície — per a un toc subtil i elegant."
   },
   "qf.themes.realButtons.label": {
     "message": "Botons"

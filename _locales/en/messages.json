@@ -425,7 +425,7 @@
     "message": "{P}We continue to follow Thunderbird’s monthly release cycle to ensure compatibility and stability. As always, this work is entirely financed by license sales.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Important:{/b} Some users may still see a false incompatibility warning in Thunderbird due to cached compatibility info. {/P}{P} To address this I’ve raised a bug with Thunderbird: [Bugzilla 1986027]{/P}{P} QuickFolders continues to fully support both monthly and ESR (140.*) releases by testing with daily builds and raising the maximum supported application version ahead of time. {/P}"
+    "message": "{P}QuickFolders has been fully modernized for 2026, with a refreshed user interface, improved usability, and enhanced theme support — making your folder management faster, cleaner, and more intuitive than ever. Try the new {b}{+qf.themes.nativeTabs.label}{/b} theme for a fresh, minimalist experience. {/P}"
   },
   "newsSection.license": {
     "message": "As all work on QuickFolders and free support are funded exclusively by license sales, please consider buying a license or renewing your current one."
@@ -586,7 +586,7 @@
     "message": "For colored tabs: override Active Tab color"
   },
   "qf.checkbox.layout.activeCustomColor.tooltip": {
-    "message": "If a tab has its own color, use it for the active tab instead of the global Active Tab color. This will also recolor the bottom line of the tab area."
+    "message": "If a tab has its own color, use it for the active tab instead of the global Active Tab color. This will affect the color of the bottom line of the QuickFolders toolbar."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Drag to new Subfolder"
@@ -1545,13 +1545,13 @@
     "message": "Flat Style"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layout resembles the tabs of your OS - less coloring options but may look more integrated and in sync with your Mail Client Themes."
+    "message": "Redesigned in 2026 to match Thunderbird tabs—uses the same highlight color, supports dark/light mode, keeps your custom tab colors, and adds a subtle focus color accent on the active tab for an elegant, unobtrusive touch."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Native Tabs"
+    "message": "Thunderbird Tabs"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pushbuttons - these look like standard buttons on dialog windows"
+    "message": "Minimalist pushbuttons with slight rounding and outlines, highlighting the active button with Thunderbird’s primary accent color—used consistently across dialogs and main UI buttons—for a subtle, elegant touch."
   },
   "qf.themes.realButtons.label": {
     "message": "Pushbuttons"
@@ -2156,7 +2156,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L} Made QuickFolders compatible with Thunderbird 148 {/L}{L} Added a new option to reverse alphabetic sorting of subfolder menus [issue 600] {/L}{L} quickMove: Cursor now updates correctly while typing in the folder search box [issue 623] {/L}{L} Fixed: Recent folders button missing on the Current Folder Toolbar [issue 620] {/L}{L} Fixed various icon and popup menu display issues {/L}{L} Removed duplicate 🔎 and ✕ icons in quickMove search (Thunderbird 142+) [issue 624] {/L}"
+    "message": "{L} Flat Style improvement: the active folder now highlights with the user-assigned tab color (if set) [issue 646]. You can revert to the original behavior in theme settings. {/L}{L} Redesigned themes: Native Tabs and Pushbuttons refreshed with a new layout [issue 643] {/L}{L} Improved theme handling: switching themes now resets layout rules for full fidelity [issue 650] {/L}{L} New Pro feature: show the account name of the current folder instead of the QuickFolders label [issue 648] {/L}{L} Custom icons in the folder tree are now automatically resized and no longer cropped when too large [issue 619] {/L}{L} Fixed duplicate custom icons in the folder tree on Thunderbird 148 [issue 633] {/L}{L} Fixed non-working menu items in the QuickFolders Commands submenu [issue 639] {/L}{L} Fixed broken XHTML dialog \"Change order of tabs\" [issue 647] {/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -421,8 +421,7 @@
     "message": "{P}Wir folgen weiterhin dem monatlichen Veröffentlichungszyklus von Thunderbird, um Kompatibilität und Stabilität sicherzustellen. Wie immer wird diese Arbeit vollständig durch den Verkauf von Lizenzen finanziert.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Wichtig:{/b} Thunderbird setzt seinen monatlichen Veröffentlichungszyklus fort. {/P}{P} Einige Benutzer haben möglicherweise nach dem Update von Thunderbird auf $appversion$ eine falsche Inkompatibilitätswarnung gesehen. Dies wurde durch zwischengespeicherte Kompatibilitätsinformationen in Thunderbird verursacht, die manchmal nicht korrekt aktualisiert werden. Ich habe einen Bug bei Thunderbird gemeldet, um dies zu beheben: [Bugzilla 1986027]{/P}{P} Seien Sie versichert, dass QuickFolders sowohl den monatlichen als auch den ESR (140.*) Kanal vollständig unterstützt, und Sie können ohne Unterbrechung weiterarbeiten. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders wurde für 2026 komplett modernisiert, mit einer überarbeiteten Benutzeroberfläche, verbesserter Bedienbarkeit und erweiterter Theme-Unterstützung — damit wird Ihre Ordnerverwaltung schneller, sauberer und intuitiver als je zuvor. Probieren Sie das neue {b}{+qf.themes.nativeTabs.label}{/b}-Theme für ein frisches, minimalistisches Erlebnis. {/P}"
   },
   "newsSection.license": {
     "message": "Da alle Arbeiten an QuickFolders und der kostenlose Support ausschließlich durch Lizenzverkäufe finanziert werden, bitte denken Sie darüber nach, eine Lizenz zu kaufen oder Ihre aktuelle zu verlängern."
@@ -578,6 +577,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Auch den Namen umreißen (am besten mit dunklem / farbigem Hintergrund)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Für farbige Tabs: Farbe des aktiven Tabs überschreiben"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Wenn ein Tab eine eigene Farbe hat, wird diese für den aktiven Tab anstelle der globalen Farbe für aktive Tabs verwendet. Dies beeinflusst die Farbe der unteren Linie der QuickFolders-Symbolleiste."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Drag+Drop in Neues Verzeichnis"
@@ -1499,10 +1504,13 @@
     "message": "Moderner Tabbed look - schaut am besten aus unter Windows und Linux."
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layout ähnelt den Tabs des Betriebssystems - weniger Einstellmöglichkeit, aber sieht unter Umständen besser integriert aus."
+    "message": "2026 neu gestaltet, um den Thunderbird-Tabs zu entsprechen — verwendet dieselbe Hervorhebungsfarbe, unterstützt den Hell-/Dunkelmodus, behält benutzerdefinierte Tab-Farben bei und fügt dem aktiven Tab einen dezenten Fokusfarbakzent für eine elegante, unaufdringliche Note hinzu."
+  },
+  "qf.themes.nativeTabs.label": {
+    "message": "Thunderbird-Tabs"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pushbuttons - diese sehen aus wie normale Schaltflächen auf Dialogfenstern"
+    "message": "Minimalistische Drucktasten mit leichter Rundung und Konturen, die die aktive Schaltfläche mit der primären Akzentfarbe von Thunderbird hervorheben — einheitlich in Dialogen und Haupt-UI-Schaltflächen verwendet — für eine dezente, elegante Note."
   },
   "qf.themes.realButtons.label": {
     "message": "Standard Schaltflächen"

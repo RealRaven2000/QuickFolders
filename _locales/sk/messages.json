@@ -147,8 +147,7 @@
     "message": "{P}Naďalej sledujeme mesačný cyklus vydávania Thunderbirdu, aby sme zabezpečili kompatibilitu a stabilitu. Ako vždy, táto práca je úplne financovaná predajom licencií.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Dôležité:{/b} Thunderbird pokračuje vo svojom mesačnom vydavateľskom cykle. {/P}{P} Niektorí používatelia mohli po aktualizácii Thunderbirdu na $appversion$ vidieť falošné upozornenie o nekompatibilite. Toto bolo spôsobené uloženými informáciami o kompatibilite, ktoré sa niekedy nepodarí správne obnoviť. Nahlásil som to ako bug do Thunderbirdu: [Bugzilla 1986027]{/P}{P} Buďte si istí, že QuickFolders plne podporuje mesačné aj ESR (140.*) kanály a môžete pokračovať v práci bez prerušenia. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders bol kompletne modernizovaný pre rok 2026, s prepracovaným používateľským rozhraním, lepšou použiteľnosťou a rozšírenou podporou tém — správa priečinkov je teraz rýchlejšia, prehľadnejšia a intuitívnejšia ako kedykoľvek predtým. Vyskúšajte nový motív {b}{+qf.themes.nativeTabs.label}{/b} pre svieži, minimalistický zážitok. {/P}"
   },
   "newsSection.license": {
     "message": "Keďže všetka práca na QuickFolders a bezplatná podpora sú financované výhradne z predaja licencií, zvážte prosím zakúpenie licencie alebo obnovenie vašej aktuálnej."

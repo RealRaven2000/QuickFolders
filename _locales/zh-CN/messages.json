@@ -424,8 +424,7 @@
     "message": "{P}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}重要:{/b} Thunderbird 继续其每月发布周期。 {/P}{P} 一些用户在将 Thunderbird 更新到 $appversion$ 后可能看到错误的兼容性警告。这是由于 Thunderbird 中缓存的兼容性信息有时未能正确刷新。我已向 Thunderbird 提交了 Bug 报告以解决此问题：[Bugzilla 1986027]{/P}{P} 请放心，QuickFolders 完全支持月度和 ESR（140.*）频道，您可以继续工作而不受干扰。 {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders 已经为 2026 年进行了全面现代化，界面焕然一新，可用性提升，并增强了主题支持 — 让您的文件夹管理比以往更快、更清晰、更直观。试试新的 {b}{+qf.themes.nativeTabs.label}{/b} 主题，获得清爽、极简的体验。 {/P}"
   },
   "newsSection.license": {
     "message": "由于QuickFolders的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
@@ -572,6 +571,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "同时勾勒名称（最适合深色/彩色背景）"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Đối với thẻ có màu: ghi đè màu thẻ đang hoạt động"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Nếu một thẻ có màu riêng, hãy sử dụng màu đó cho thẻ đang hoạt động thay vì màu toàn cục của thẻ đang hoạt động. Điều này sẽ ảnh hưởng đến màu của đường viền dưới thanh công cụ QuickFolders."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "拖动到新子文件夹"
@@ -1479,10 +1484,13 @@
     "message": "平坦风格"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "类似操作系统的选项卡 - 颜色参数较少但与邮件客户端的界面较为一体化。"
+    "message": "于 2026 年重新设计以匹配 Thunderbird 标签页——使用相同的高亮颜色，支持深色/浅色模式，保留自定义标签颜色，并在活动标签页上添加细微的焦点颜色强调，呈现优雅而不张扬的效果。"
   },
   "qf.themes.nativeTabs.label": {
-    "message": "标签风格"
+    "message": "Thunderbird 标签页"
+  },
+  "qf.themes.realButtons.description": {
+    "message": "极简风格的按钮，具有轻微圆角和轮廓，使用 Thunderbird 的主要强调色突出显示活动按钮——在对话框和主界面按钮中保持一致——带来细腻而优雅的效果。"
   },
   "qf.themes.realButtons.label": {
     "message": "按钮"

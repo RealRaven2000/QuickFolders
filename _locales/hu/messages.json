@@ -380,8 +380,7 @@
     "message": "{P}Továbbra is követjük a Thunderbird havi kiadási ciklusát a kompatibilitás és a stabilitás biztosítása érdekében. Ahogy mindig, ez a munka teljes egészében a licenceladásokból finanszírozott.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Fontos:{/b} A Thunderbird folytatja havi kiadási ciklusát. {/P}{P} Néhány felhasználó hamis inkompatibilitási figyelmeztetést láthatott a Thunderbird $appversion$ verzióra való frissítése után. Ennek oka a Thunderbird gyorsítótárban tárolt kompatibilitási információja, amely néha nem frissül megfelelően. Jelentettem egy hibát a Thunderbirdnek: [Bugzilla 1986027]{/P}{P} Biztos lehet benne, hogy a QuickFolders teljes mértékben támogatja a havi és az ESR (140.*) csatornákat, és folytathatja a munkát megszakítás nélkül. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}A QuickFolders teljesen modernizálva lett 2026-ra, megújult felhasználói felülettel, javított használhatósággal és továbbfejlesztett téma-támogatással — így a mappakezelés gyorsabb, tisztább és intuitívabb, mint valaha. Próbáld ki az új {b}{+qf.themes.nativeTabs.label}{/b} témát egy friss, minimalista élményért. {/P}"
   },
   "newsSection.license": {
     "message": "Mivel a QuickFolders összes munkája és az ingyenes támogatás kizárólag a licenceladásokból finanszírozódik, kérjük, fontolja meg licenc vásárlását vagy a jelenlegi licenc megújítását."
@@ -528,6 +527,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Emelje ki a nevet is (legjobb sötét / színes háttérrel)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Színes lapoknál: az aktív lap színének felülírása"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Ha egy lapnak saját színe van, azt használja az aktív laphoz a globális aktív lapszín helyett. Ez hatással lesz a QuickFolders eszköztár alsó vonalának színére."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Húzza az új almappába"
@@ -1359,13 +1364,13 @@
     "message": "Modern kinézet - teljesen testre szabható. Nagyszerűen mutat Windowson és Linuxon."
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Ez a kinézet az operációs rendszer témájához hasonlít - kevesebb színezési beállítás, de jobban integráltnak tűnik és szinkronban van az e-mail kliens témájával."
+    "message": "2026-ban újratervezve, hogy illeszkedjen a Thunderbird lapjaihoz — ugyanazt a kiemelőszínt használja, támogatja a világos/sötét módot, megtartja az egyéni lapszíneket, és finom fókuszszín-akcentust ad az aktív laphoz az elegáns, visszafogott megjelenés érdekében."
+  },
+  "qf.themes.nativeTabs.label": {
+    "message": "Thunderbird lapok"
   },
   "qf.themes.realButtons.description": {
-    "message": "Nyomógombok - úgy néznek ki, mint a szabványos gombok a dialógusablakokon"
-  },
-  "qf.themes.realButtons.label": {
-    "message": "Nyomógombok"
+    "message": "Minimalista nyomógombok enyhe lekerekítéssel és körvonallal, amelyek az aktív gombot a Thunderbird elsődleges hangsúlyszínével emelik ki — következetesen használva a párbeszédablakokban és a fő felhasználói felületen — a finom, elegáns hatásért."
   },
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders eszköztár"

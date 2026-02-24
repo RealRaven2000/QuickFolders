@@ -417,8 +417,7 @@
     "message": "{P}Wciąż podążamy za miesięcznym cyklem wydań Thunderbirda, aby zapewnić kompatybilność i stabilność. Jak zawsze, prace te są w całości finansowane ze sprzedaży licencji.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Ważne:{/b} Thunderbird kontynuuje swój miesięczny cykl wydań. {/P}{P} Niektórzy użytkownicy mogli zobaczyć fałszywe ostrzeżenie o niekompatybilności po aktualizacji Thunderbirda do $appversion$. Było to spowodowane przechowywanymi w pamięci podręcznej informacjami o kompatybilności, które czasami nie odświeżają się poprawnie. Zgłosiłem błąd do Thunderbirda, aby to naprawić: [Bugzilla 1986027]{/P}{P} Zapewniam, że QuickFolders w pełni obsługuje zarówno kanały miesięczne, jak i ESR (140.*), i możesz kontynuować pracę bez przerw. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders został całkowicie zmodernizowany na rok 2026, z odświeżonym interfejsem, poprawioną użytecznością i rozszerzonym wsparciem motywów — dzięki czemu zarządzanie folderami jest szybsze, bardziej przejrzyste i intuicyjne niż kiedykolwiek. Wypróbuj nowy motyw {b}{+qf.themes.nativeTabs.label}{/b} dla świeżego, minimalistycznego doświadczenia. {/P}"
   },
   "newsSection.license": {
     "message": "Ponieważ cała praca nad QuickFolders i darmowe wsparcie są finansowane wyłącznie ze sprzedaży licencji, proszę rozważyć zakup licencji lub przedłużenie obecnej."
@@ -574,6 +573,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Obrysuj również nazwę (najlepiej na ciemnym / kolorowym tle)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Dla kolorowych kart: zastąp kolor aktywnej karty"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Jeśli karta ma własny kolor, użyj go dla aktywnej karty zamiast globalnego koloru aktywnej karty. Wpłynie to na kolor dolnej linii paska narzędzi QuickFolders."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Przeciągnij do nowego subfolderu"
@@ -1499,13 +1504,13 @@
     "message": "Nowoczesny wygląd kart – konfigurowalny. Wygląda świetnie w systemach Windows i Linux"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Układ przypomina zakładki systemu operacyjnego - mniej opcji kolorowania, ale może wyglądać jako bardziej zintegrowany i współgrający ze schematami twojego programu pocztowego."
+    "message": "Przeprojektowane w 2026 roku, aby pasowały do kart Thunderbirda — używają tego samego koloru podświetlenia, obsługują tryb jasny/ciemny, zachowują niestandardowe kolory kart i dodają subtelny akcent koloru fokusu na aktywnej karcie dla eleganckiego, nienachalnego efektu."
+  },
+  "qf.themes.nativeTabs.label": {
+    "message": "Karty Thunderbirda"
   },
   "qf.themes.realButtons.description": {
-    "message": "Przyciski - wyglądają jak standardowe przyciski okien dialogowych"
-  },
-  "qf.toolbar.quickfolders.toolbar": {
-    "message": "Pasek QuickFolders"
+    "message": "Minimalistyczne przyciski z lekkim zaokrągleniem i obrysami, podkreślające aktywny przycisk podstawowym kolorem akcentu Thunderbirda — stosowanym konsekwentnie w oknach dialogowych i głównych przyciskach interfejsu — dla subtelnego, eleganckiego efektu."
   },
   "qf.toolbarIcon.customSize": {
     "message": "Niestandardowy rozmiar ikony"

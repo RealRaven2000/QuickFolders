@@ -420,8 +420,7 @@
     "message": "{P}Wij volgen nog steeds de maandelijkse uitgiftecyclus van Thunderbird om compatibiliteit en stabiliteit te garanderen. Zoals altijd wordt dit werk volledig gefinancierd door licentieverkoop.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Belangrijk:{/b} Thunderbird zet zijn maandelijkse releasecyclus voort. {/P}{P} Sommige gebruikers hebben mogelijk een valse incompatibiliteitswaarschuwing gezien na het updaten van Thunderbird naar $appversion$. Dit werd veroorzaakt door in Thunderbird gecachte compatibiliteitsinformatie die soms niet correct wordt ververst. Ik heb een bug gemeld bij Thunderbird om dit op te lossen: [Bugzilla 1986027]{/P}{P} Wees gerust, QuickFolders ondersteunt zowel het maandelijkse als het ESR (140.*) kanaal volledig, en u kunt zonder onderbreking blijven werken. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders is volledig gemoderniseerd voor 2026, met een vernieuwde gebruikersinterface, verbeterde gebruiksvriendelijkheid en uitgebreide themasteun — waardoor je mappenbeheer sneller, overzichtelijker en intuïtiever is dan ooit. Probeer het nieuwe {b}{+qf.themes.nativeTabs.label}{/b}-thema voor een frisse, minimalistische ervaring. {/P}"
   },
   "newsSection.license": {
     "message": "Aangezien al het werk aan QuickFolders en de gratis ondersteuning uitsluitend wordt gefinancierd door licentieverkopen, overweeg dan een licentie aan te schaffen of uw huidige licentie te verlengen."
@@ -571,6 +570,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Omlijn ook de naam (het beste met donkere / gekleurde achtergronden)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Voor gekleurde tabbladen: kleur van actief tabblad overschrijven"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Als een tabblad een eigen kleur heeft, gebruik deze voor het actieve tabblad in plaats van de globale kleur voor actieve tabbladen. Dit beïnvloedt de kleur van de onderste lijn van de QuickFolders-werkbalk."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Naar nieuwe submap slepen"
@@ -1496,13 +1501,13 @@
     "message": "Vlakke stijl"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "De opmaak lijkt op de tabbladen van uw OS - minder kleuropties, maar kan meer geïntegreerd en synchroon lijken met de thema’s van uw e-mailprogramma."
+    "message": "In 2026 opnieuw ontworpen om aan te sluiten bij Thunderbird-tabbladen — gebruikt dezelfde markeringskleur, ondersteunt donker/licht-modus, behoudt je aangepaste tabbladkleuren en voegt een subtiel focuskleuraccent toe aan het actieve tabblad voor een elegante, onopvallende uitstraling."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Ingebouwde tabbladen"
+    "message": "Thunderbird-tabbladen"
   },
   "qf.themes.realButtons.description": {
-    "message": "Drukknoppen - deze lijken op standaardknoppen in dialoogvensters"
+    "message": "Minimalistische drukknoppen met lichte afronding en omlijning, waarbij de actieve knop wordt gemarkeerd met de primaire accentkleur van Thunderbird — consistent gebruikt in dialoogvensters en hoofd-UI-knoppen — voor een subtiele, elegante uitstraling."
   },
   "qf.themes.realButtons.label": {
     "message": "Drukknoppen"

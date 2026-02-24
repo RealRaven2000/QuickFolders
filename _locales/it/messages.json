@@ -428,8 +428,7 @@
     "message": "{P}Continuiamo a seguire il ciclo di rilascio mensile di Thunderbird per garantire compatibilità e stabilità. Come sempre, questo lavoro è interamente finanziato dalle vendite delle licenze.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}Importante:{/b} Thunderbird continua il suo ciclo di rilascio mensile. {/P}{P} Alcuni utenti potrebbero aver visto un falso avviso di incompatibilità dopo aver aggiornato Thunderbird a $appversion$. Ciò è stato causato da informazioni di compatibilità memorizzate nella cache in Thunderbird, che a volte non si aggiornano correttamente. Ho aperto un bug su Thunderbird per risolvere questo problema: [Bugzilla 1986027]{/P}{P} State tranquilli: QuickFolders supporta completamente sia i canali mensili sia ESR (140.*), e potete continuare a lavorare senza interruzioni. {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFolders è stato completamente modernizzato per il 2026, con un’interfaccia utente rinnovata, migliore usabilità e supporto tematico avanzato — rendendo la gestione delle cartelle più veloce, pulita e intuitiva che mai. Prova il nuovo tema {b}{+qf.themes.nativeTabs.label}{/b} per un’esperienza fresca e minimalista. {/P}"
   },
   "newsSection.license": {
     "message": "Poiché tutto il lavoro su QuickFolders e il supporto gratuito sono finanziati esclusivamente dalle vendite di licenze, si prega di considerare l'acquisto di una licenza o il rinnovo della licenza attuale."
@@ -585,6 +584,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "Evidenzia anche il nome (meglio con sfondi scuri / colorati)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "Per le schede colorate: sovrascrivi il colore della scheda attiva"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "Se una scheda ha un proprio colore, usalo per la scheda attiva invece del colore globale della scheda attiva. Questo influirà sul colore della linea inferiore della barra degli strumenti di QuickFolders."
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "Trascina nella nuova sottocartella"
@@ -1543,13 +1548,13 @@
     "message": "Stile uniforme"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "Layout simile a quello delle schede del proprio OS - Meno opzioni di colorazione ma l'aspetto è più integrato e in sintonia con i temi del programma di posta elettronica."
+    "message": "Ridisegnato nel 2026 per adattarsi alle schede di Thunderbird — utilizza lo stesso colore di evidenziazione, supporta la modalità chiara/scura, mantiene i colori personalizzati delle schede e aggiunge un sottile accento di colore di messa a fuoco sulla scheda attiva per un tocco elegante e discreto."
   },
   "qf.themes.nativeTabs.label": {
-    "message": "Schede native"
+    "message": "Schede di Thunderbird"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pulsanti - Stesso aspetto dei pulsanti presenti nelle finestre di dialogo"
+    "message": "Pulsanti minimalisti con una leggera arrotondatura e contorni, che evidenziano il pulsante attivo con il colore di accento principale di Thunderbird — utilizzato in modo coerente nelle finestre di dialogo e nei pulsanti principali dell’interfaccia — per un tocco sottile ed elegante."
   },
   "qf.themes.realButtons.label": {
     "message": "Pulsanti"

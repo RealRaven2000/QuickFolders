@@ -8,9 +8,9 @@
 :root {
 	--qf-tabiconsize: 16px;
 	--qf-treeiconsize: 16px;
-  --qf-primary-background-color: #006EB7;
-  --qf-primary-text-color: white;
-  --qf-primary-hover-background-color: #006EB7;
+  --qf-primary-background-color: var(--button-primary-background-color, #006EB7);
+  --qf-primary-text-color: var(--button-primary-text-color, white);
+  --qf-primary-hover-background-color: var(--button-primary-hover-background-color, #006EB7);
 	/* test colors: */
 	--qf-selected-tab-color: rgba(0,0,0,0.9);
 	--qf-translucent-background: rgba(255, 255, 255, 0.7);

@@ -408,8 +408,7 @@
     "message": "{P}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{/P}"
   },
   "newsSection.important": {
-    "message": "{P}{b}重要:{/b} Thunderbird は毎月のリリースサイクルを継続しています。 {/P}{P} 一部のユーザーは Thunderbird を $appversion$ に更新した後に誤った互換性警告が表示されることがあります。これは Thunderbird のキャッシュされた互換性情報が正しく更新されない場合があるためです。この件について Thunderbird にバグを報告しました：[Bugzilla 1986027]{/P}{P} QuickFolders は月次および ESR (140.*) チャンネルの両方を完全にサポートしており、作業を中断することなく続行できます。 {/P}",
-    "placeholders": { "appversion": { "content": "$1", "example": "145.0.1" } }
+    "message": "{P}QuickFoldersは2026年向けに完全にモダナイズされ、刷新されたユーザーインターフェース、使いやすさの向上、テーマサポートの強化を実現しました — フォルダ管理がこれまでよりも速く、わかりやすく、直感的になっています。新しい {b}{+qf.themes.nativeTabs.label}{/b} テーマを試して、フレッシュでミニマルな体験をお楽しみください。 {/P}"
   },
   "newsSection.license": {
     "message": "QuickFoldersのすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
@@ -559,6 +558,12 @@
   },
   "qf.checkbox.highlightNewMail.outline": {
     "message": "名前もアウトライン表示 (暗い背景や色付き背景に最適)"
+  },
+  "qf.checkbox.layout.activeCustomColor": {
+    "message": "色付きタブの場合: アクティブタブの色を上書き"
+  },
+  "qf.checkbox.layout.activeCustomColor.tooltip": {
+    "message": "タブに独自の色がある場合、グローバルなアクティブタブの色の代わりにそれを使用します。これは QuickFolders ツールバー下部のラインの色に影響します。"
   },
   "qf.checkbox.menus.dragToNewFolder": {
     "message": "新しいサブフォルダにドラッグする"
@@ -1438,13 +1443,13 @@
     "message": "フラットスタイル"
   },
   "qf.themes.nativeTabs.description": {
-    "message": "OS のタブに似せたレイアウト - 色オプションは少ないですが、メールクライアントのテーマと同じような外観にします。"
+    "message": "Thunderbird のタブに合わせて 2026 年に再設計 — 同じハイライトカラーを使用し、ダーク／ライトモードをサポートし、カスタムタブカラーを保持しつつ、アクティブなタブに控えめなフォーカスカラーのアクセントを追加して、上品で目立たない仕上がりにしています。"
   },
   "qf.themes.nativeTabs.label": {
-    "message": "ネイティブのタブ"
+    "message": "Thunderbird タブ"
   },
   "qf.themes.realButtons.description": {
-    "message": "Pushbuttons - ダイアログウィンドウの標準のボタンのような外観。"
+    "message": "わずかに角を丸めたアウトライン付きのミニマルなプッシュボタンで、アクティブなボタンを Thunderbird の主要アクセントカラーで強調表示します — ダイアログやメイン UI のボタン全体で一貫して使用され、控えめで洗練された印象を与えます。"
   },
   "qf.toolbar.quickfolders.toolbar": {
     "message": "QuickFolders ツールバー"

@@ -547,6 +547,87 @@ document.getElementById("btnSaveConfig").addEventListener("click", async () => {
   
   return await messenger.Utilities.storeConfig(storedObj);  
 });
+
+function setMinPositiveListeners() {
+  function updateLastValue(input) {
+    input.dataset.lastValue = input.value;
+  }
+
+  document.querySelectorAll('input[type="number"][data-min-positive-value]').forEach((input) => {
+    const minPositive = parseInt(input.dataset.minPositiveValue, 10);
+    input.dataset.lastValue = input.value;
+
+
+    /**
+     * delta = +1 increment, -1 decrement, 0 for manual typing/change
+     */
+    function fixValue(delta = 0) {
+      let val = parseInt(input.value, 10) || 0;
+      let last = parseInt(input.dataset.lastValue, 10) || 0;
+
+      if (delta !== 0) {
+        val += delta;
+
+        // Correct toxic range after stepping
+        if (val > 0 && val < minPositive) {
+          val = delta > 0 ? minPositive : 0;
+        }
+      } else {
+        // Manual input / blur
+        if (val > 0 && val < minPositive) {
+          // Decide direction based on lastValue
+            if (last < val) {
+              // user was trying to go up
+              val = minPositive;
+            } else {
+              // user was trying to go down
+              val = 0;
+            }
+        }
+      }
+
+      if (val < 0) {
+        val = 0;
+      }
+
+      input.value = val;
+      input.dataset.lastValue = val; // always update cache
+    }
+
+    // Typing / manual typing or spin button clicks
+    input.addEventListener("change", () => {
+      fixValue(0);
+      updateLastValue(input);
+    });
+
+
+    input.addEventListener("blur", () => {
+      fixValue(0); // clamp invalid values
+      updateLastValue(input); // update cache
+    });
+
+    // Keyboard arrows
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowUp") {
+        e.preventDefault();
+        fixValue(1);
+        updateLastValue(input);
+      }
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        fixValue(-1);
+        updateLastValue(input);
+      }
+    });
+
+    // Mouse wheel
+    input.addEventListener("wheel", (e) => {
+      e.preventDefault();
+      fixValue(e.deltaY < 0 ? 1 : -1);
+      updateLastValue(input);
+    });
+  });
+}
      
 document.getElementById("btnLoadConfig").addEventListener("click", async () => {
   // legacy code - moved to experiment api (utilities)
@@ -1039,6 +1120,7 @@ const startup = async () => {
     );
   } finally {
     initButtons();
+    setMinPositiveListeners();
     initToolbarBackground();
     initBling();
   }

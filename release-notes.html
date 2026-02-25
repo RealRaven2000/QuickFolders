@@ -6,9 +6,19 @@ QuickFolders has been fully modernized for 2026, with a refreshed user interface
 
 <ul>
   <li>Flat Style improvement: the active folder now highlights with the user-assigned tab color (if set). You can revert to the original behavior in theme settings <a href="https://github.com/RealRaven2000/QuickFolders/issues/646">[issue 646]</a></li>
-  <li>Redesigned themes: Native Tabs and Pushbuttons refreshed with a new layout <a href="https://github.com/RealRaven2000/QuickFolders/issues/643">[issue 643]</a></li>
-  <li>Improved theme handling: switching themes now resets layout rules for full fidelity <a href="https://github.com/RealRaven2000/QuickFolders/issues/650">[issue 650]</a></li>
-  <li>New Pro feature: show the account name of the current folder instead of the QuickFolders label <a href="https://github.com/RealRaven2000/QuickFolders/issues/648">[issue 648]</a></li>
+  <li>Redesigned themes: Native Tabs and Pushbuttons refreshed with new layouts <a href="https://github.com/RealRaven2000/QuickFolders/issues/643">[issue 643]</a>
+  
+  After -moz-appearance layouts were deprecated many Thunderbird versions ago, we needed to come up with our own style rules that integrate well with modern versions of Thunderbird. Accordingly, <i>Native Tabs</i> was renamed to <i>Thunderbird Tabs</i>. 
+
+	While supporting dark / light themes it uses the same highlight color for the active tab as Thunderbird.
+
+  The minimalis <i>Pushbuttons</i> theme  uses slight rounding and outlines, highlighting the active button with Thunderbird’s primary accent color for a subtle, elegant touch.
+  </li>
+  <li>Improved theme handling: switching themes now resets layout rules for full fidelity <a href="https://github.com/RealRaven2000/QuickFolders/issues/650">[issue 650]</a>
+  
+  Previously "stuck" CSS rules made switching between themes unpredicatble addEventListener would often require restarting Thunderbird to see their real effect.</li>
+  <li>New Pro feature: show the account name of the current folder instead of the QuickFolders label <a href="https://github.com/RealRaven2000/QuickFolders/issues/648">[issue 648]</a>.
+  This can be configured in advanced settings under Miscellaneous</li>
   <li>Custom icons in the folder tree are now automatically resized and no longer cropped when too large <a href="https://github.com/RealRaven2000/QuickFolders/issues/619">[issue 619]</a></li>
 </ul>
 

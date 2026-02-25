@@ -553,9 +553,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Kliknij koło ustawień, aby uzyskać zaawansowane opcje debugowania"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Wyświetlaj nazwę QuickFolders na pasku folderów"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Włącz przemiany CSS"
   },
@@ -1942,6 +1939,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Pomiń nieprzeczytane e-maile"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Własny tekst etykiety"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Wyświetlaj nazwę QuickFolders na pasku folderów"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Pokaż serwer poczty bieżącego folderu"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Separator tekstu"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Wiadomość skopiowana do folderu {2};{1} wiadomości skopiowanych do folderu (2)"

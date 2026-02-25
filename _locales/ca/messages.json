@@ -546,9 +546,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Fes clic a la roda de configuració per a opcions avançades de depuració"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Mostra 'QuickFolders' a la barra d'eines"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Activa transicions CSS"
   },
@@ -1854,6 +1851,12 @@
   "quickMove.singleMessageTabs": {
     "message": "Pestanya Missatge únic"
   },
+  "quickfoldersLabel.customText": {
+    "message": "Text personalitzat de l’etiqueta"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Mostra 'QuickFolders' a la barra d'eines"
+  },
   "quickfolders.findFolder.placeHolder": {
     "message": "nom de la carpeta"
   },
@@ -1883,6 +1886,12 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Ometre els correus electrònics no llegits"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Mostra el servidor de correu de la carpeta actual"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Delimitador de text"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Correu copiat a la carpeta {2};{1} correus copiats a la carpeta {2}"

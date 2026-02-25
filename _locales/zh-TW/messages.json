@@ -553,9 +553,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "點擊設定齒輪以獲取高級除錯選項"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "在工具列顯示「Quick Folders」的標籤"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "開啟CSS transitions"
   },
@@ -1901,6 +1898,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "跳過未讀郵件"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "自定义标签文本"
+  },
+  "quickfoldersLabel.display": {
+    "message": "在工具列顯示「Quick Folders」的標籤"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "顯示目前資料夾的郵件伺服器"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "文字分隔符"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "信件複製到資料夾{2};{1}信件複製到資料夾{2}"

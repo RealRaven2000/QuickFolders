@@ -500,3 +500,63 @@ button.helpLink {
 select:not([size], [multiple]) {
   --logical-padding: 4px;
 }
+
+.configSettingsAnchor {
+  position: relative;
+  display: inline-block;
+}
+
+.config-panel {
+  background-color: var(--background-color-canvas);
+  border: 1px solid var(--field-border-color,light-dark(#f0f0f0, #18181b));
+  border-radius:  calc(var(--button-border-radius, 3px) * 2);
+  box-shadow: 0 4px 10px light-dark(rgba(0, 0, 0, 0.25), rgba(255, 135, 120, 0.25));
+  position: absolute;
+  margin-bottom: 0.4em;
+
+  padding: 0.8em;
+
+  width: fit-content; 
+  min-width: max-content; 
+  white-space: nowrap;
+
+  z-index: 1000;
+  
+  
+  /* Transition for smooth horizontal movement */  
+  left: 0;          
+  bottom: 100%;     
+  right: auto;                
+  transform: translateX(0);
+  transition: transform 0.25s ease-in-out;  
+}
+
+@media (max-width: 60em) {
+  .config-panel {
+    transform: translateX(-50%); /* center relative to button */
+  }
+}
+
+
+@media (max-width: 40em) {
+  .config-panel {
+    transform: translateX(-60%); /* shift to stay inside column */
+  }
+}
+
+.nobreak {
+  text-wrap: nowrap;
+}
+
+.delimiter {
+  max-width: 3em;
+}
+
+.config-panel[hidden] {
+  display: none;
+}
+
+button.configSettingsPopup {
+  /* empty for now — future-safe hook */
+  fill: yellowgreen; /* NOP */
+}

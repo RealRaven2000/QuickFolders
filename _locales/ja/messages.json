@@ -538,9 +538,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "詳細なデバッグオプションを表示するには設定ホイールをクリックしてください"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "ツールバーに 'QuickFolders' ラベルを表示する"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "CSS トランジションを有効にする"
   },
@@ -1842,6 +1839,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "未読メールをスキップ"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "カスタムラベルテキスト"
+  },
+  "quickfoldersLabel.display": {
+    "message": "ツールバーに 'QuickFolders' ラベルを表示する"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "現在のフォルダのメールサーバーを表示"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "テキスト区切り文字"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "{1} 通のメールを {2} フォルダへコピーしました"

@@ -557,9 +557,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Klicken Sie auf das Zahnrad für erweiterte Debug-Optionen"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "'QuickFolders' Titel in Werkzeugleiste anzeigen"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "CSS Transitionen zeigen"
   },
@@ -1948,6 +1945,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Ungelesene Mails überspringen"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Benutzerdefinierte Beschriftung"
+  },
+  "quickfoldersLabel.display": {
+    "message": "'QuickFolders' Titel in Werkzeugleiste anzeigen"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Mailserver des aktuellen Ordners anzeigen"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Texttrennzeichen"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Email in das Verzeichnis {2} kopiert;{1} Emails in das Verzeichnis {2} kopiert"

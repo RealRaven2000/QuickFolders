@@ -469,9 +469,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Nhấp vào bánh xe cài đặt để xem các tùy chọn gỡ lỗi nâng cao"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Hiển thị 'QuickFolders' trên thanh công cụ"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Cho phép chuyển tiếp CSS"
   },
@@ -1624,6 +1621,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Bỏ qua thư chưa đọc"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Văn bản nhãn tùy chỉnh"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Hiển thị 'QuickFolders' trên thanh công cụ"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Hiển thị máy chủ thư của thư mục hiện tại"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Dấu phân tách văn bản"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Thư đã được sao chép vào thư mục {2}; {1} thư đã được sao chép vào thư mục {2}"

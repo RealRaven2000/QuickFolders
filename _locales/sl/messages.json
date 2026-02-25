@@ -535,9 +535,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Kliknite na kolesce za nastavitve za napredne možnosti razhroščevanja"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Prikaži oznako 'QuickFolders' v orodni vrstici"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Omogoči prehode CSS"
   },
@@ -1891,6 +1888,18 @@
   },
   "quickfolders.toolbar.newsubfolder": {
     "message": "Nova podmapa…"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Besedilo po meri za oznako"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Prikaži oznako 'QuickFolders' v orodni vrstici"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Prikaži poštni strežnik trenutne mape"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Ločilo besedila"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Pošta kopirana v mapo {2};{1} sporočil kopiranih v mapo {2}"

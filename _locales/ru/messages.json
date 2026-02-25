@@ -556,9 +556,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Нажмите на значок настроек для доступа к расширенным параметрам отладки"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Показывать текст в панели инструментов"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Разрешить CSS-трансформации"
   },
@@ -1981,6 +1978,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Пропустить непрочитанные письма"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Пользовательский текст ярлыка"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Показывать текст в панели инструментов"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Показать почтовый сервер текущей папки"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Разделитель текста"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Письмо скопировано в папку {2};{1} письма скопированы в папку {2}"

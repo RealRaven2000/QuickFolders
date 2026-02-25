@@ -2695,12 +2695,20 @@ QuickFolders.FolderListener = {
 					try {
             log("events","event: " + eString + " item:" + (item.prettyName || item.localizedName));
 						if (!QI) { return; }
+            const isDisplayServer = QuickFolders.Preferences.getBoolPref("textQuickfoldersLabel.displayServer");
+            if (isDisplayServer) {
+              QI.updateQuickFoldersLabel();
+            }
+
             // make sure this event is not a "straggler"
             try {
               let folders = GetSelectedMsgFolders(),
-                  itemFound = util.iterateFolders(folders, item, QI.onTabSelected);
+                itemFound = util.iterateFolders(folders, item, QI.onTabSelected);
               if (!itemFound) {
-                log("events", `FolderLoaded - belated on folder ${(item.prettyName || item.localizedName)} - NOT shown in current folder bar!`);
+                log(
+                  "events",
+                  `FolderLoaded - belated on folder ${item.prettyName || item.localizedName} - NOT shown in current folder bar!`,
+                );
               }
             } catch {
               // cannot  get selected folders: new windows maybe?

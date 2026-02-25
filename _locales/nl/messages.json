@@ -550,9 +550,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Klik op het instellingenwiel voor geavanceerde debugopties"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Het label ‘QuickFolders’ in de werkbalk weergeven"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "CSS-overgangen inschakelen"
   },
@@ -1948,6 +1945,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Ongelezen e-mails overslaan"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Aangepaste labeltekst"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Het label ‘QuickFolders’ in de werkbalk weergeven"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Toon mailserver van de huidige map"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Tekstscheidingsteken"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Bericht gekopieerd naar map {2};{1} berichten gekopieerd naar map {2}"

@@ -561,9 +561,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Click the settings wheel for advanced debug options"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Display the 'QuickFolders' label in the toolbar"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Enable CSS transitions"
   },
@@ -2001,6 +1998,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Skip unread mails"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Custom label text"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Display the 'QuickFolders' label in the toolbar"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Display mail server of the current folder"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Text delimiter"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Mail copied to folder {2};{1} mails copied to folder {2}"

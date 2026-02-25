@@ -551,9 +551,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "点击设置齿轮以获取高级调试选项"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "在工具栏显示「目录导航」标签"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "启用 CSS 过渡"
   },
@@ -1892,6 +1889,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "跳过未读邮件"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "自定义标签文本"
+  },
+  "quickfoldersLabel.display": {
+    "message": "在工具栏显示「目录导航」标签"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "顯示目前資料夾的郵件伺服器"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "文字分隔符"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "邮件已复制到文件夹 {2}；{1} 封邮件已复制到文件夹 {2}"

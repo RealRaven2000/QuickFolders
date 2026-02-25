@@ -672,7 +672,23 @@ QuickFolders.Interface = {
 				qfLabelBox = this.TitleLabelBox,
 				isLicenseNotChecked = !wasLicenseViewedInSession();
 
-      quickFoldersLabel.label = prefs.TextQuickfoldersLabel;
+      const isDisplayServer = prefs.getBoolPref("textQuickfoldersLabel.displayServer");
+      const displayedServerDelimiter = prefs.getStringPref("textQuickfoldersLabel.delimiter");
+
+      let displayedLabelText = prefs.TextQuickfoldersLabel || "";
+
+      if (isDisplayServer) {
+        const f = util.CurrentFolder;
+        if (displayedLabelText?.length && f?.server) {
+          displayedLabelText += displayedServerDelimiter;
+        }
+        if (f?.server) {
+          displayedLabelText += f.server.prettyName;
+        }
+      }
+
+
+      quickFoldersLabel.label = displayedLabelText;
       // force Renew QuickFolders to be visible!
       QuickFolders.Interface.showElement(quickFoldersLabel, showLabelBox);
       if (QuickFolders.Util.licenseInfo.isExpired) {
@@ -7044,6 +7060,7 @@ QuickFolders.Interface = {
         } else {
           folder = QI.getCurrentTabMailFolder();
         }
+        QI.updateQuickFoldersLabel();
       }
 
       util.logDebugOptional("interface", "onTabSelected("

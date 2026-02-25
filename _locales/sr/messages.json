@@ -505,9 +505,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Кликните на точак за подешавања за напредне опције отклањања грешака"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Прикажи натпис „QuickFolders” на траци са алаткама"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Омогући CSS прелазе"
   },
@@ -1777,6 +1774,18 @@
   },
   "quickfolders.toolbar.newsubfolder": {
     "message": "Нова подфасцикла…"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Прилагођени текст ознаке"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Прикажи натпис „QuickFolders” на траци са алаткама"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Прикажи поштански сервер текућег фолдера"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Разделник текста"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Порука је копирана у фасциклу {2};{1} порука је копирано у фасциклу {2}"

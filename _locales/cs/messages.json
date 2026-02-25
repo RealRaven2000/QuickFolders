@@ -556,9 +556,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Klikněte na ikonu nastavení pro pokročilé možnosti ladění"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Zobrazit štítek 'QuickFolders' na panelu nástrojů"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Povolit CSS přechody"
   },
@@ -1989,6 +1986,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Přeskočit nepřečtené e-maily"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Vlastní text štítku"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Zobrazit štítek 'QuickFolders' na panelu nástrojů"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Zobrazit poštovní server aktuální složky"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Oddělovač textu"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "E-mail zkopírován do složky {2};{1} e-mailů zkopírováno do složky {2}"

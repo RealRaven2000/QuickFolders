@@ -561,9 +561,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Klikk på innstillingshjulet for avanserte feilsøkingsalternativer"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Vis 'QuickFolders'-etikett i verktøylinjen"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Aktiver CSS-overganger"
   },
@@ -2001,6 +1998,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Hopp over uleste e-poster"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Aangepaste labeltekst"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Vis 'QuickFolders'-etikett i verktøylinjen"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Vis e-postserveren for gjeldende mappe"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Tekstavgrenser"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "E-post kopiert til mappe {2};{1} e-poster kopiert til mappe {2}"

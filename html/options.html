@@ -424,9 +424,42 @@
             <span class="hasConfigEvent hbox">
               <label><input type="checkbox" 
                 preference="qfpa-ShowQuickFoldersLabel"
-                data-pref-name="extensions.quickfolders.showQuickfoldersLabel">__MSG_qf.checkbox.displaylabel__
+                data-pref-name="extensions.quickfolders.showQuickfoldersLabel">__MSG_quickfoldersLabel.display__
               </label>
-              <button class="configSettings" aria-label="__MSG_aria.configSettings__"></button>
+              <span class="configSettingsAnchor">
+                <button class="configSettings configSettingsPopup"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                        aria-label="__MSG_aria.configSettings__">
+                </button>
+
+                <div class="config-panel" hidden>
+
+                  <label>
+                    __MSG_quickfoldersLabel.customText__:
+                    <input type="text"
+                      preference="qfpa-ShowQuickFoldersLabel-customText"
+                      data-pref-name="extensions.quickfolders.textQuickfoldersLabel">
+                  </label>
+                  
+
+                  <label>
+                    <input type="checkbox"
+                      preference="qfpa-ShowQuickFoldersLabel-displayServer"
+                      data-pref-name="extensions.quickfolders.textQuickfoldersLabel.displayServer">
+                    __MSG_quickfoldersLabel.displayMailServer__
+                  </label>
+
+                  <label class="nobreak">
+                    __MSG_quickfoldersLabel.textDelimiter__:
+                    <input type="text" class="delimiter"
+                      preference="qfpa-ShowQuickFoldersLabel-delimiter"
+                      data-pref-name="extensions.quickfolders.textQuickfoldersLabel.delimiter"
+                      value=": ">
+                  </label>
+                </div>
+              </span>
+
             </span>
             <label title="__MSG_qf.checkbox.hideCategoryBox.tooltip__"><input type="checkbox"
               preference="qfpa-CollapseCategory"

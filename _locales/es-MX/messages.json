@@ -548,9 +548,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Haz clic en el engranaje de configuración para opciones avanzadas de depuración"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Muestra la etiqueta 'QuickFolders' en la barra"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Activar transiciones CSS."
   },
@@ -1927,6 +1924,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Saltar correos no leídos"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Texto personalizado de la etiqueta"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Muestra la etiqueta 'QuickFolders' en la barra"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Mostrar servidor de correo de la carpeta actual"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Delimitador de texto"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Correo copiado a la carpeta {2};{1} mensajes copiados a la carpeta {2}"

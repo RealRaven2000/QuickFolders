@@ -557,9 +557,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Klicka på inställningshjulet för avancerade felsökningsalternativ"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "Visa 'QuickFolders'-etiketten i verktygsfältet"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "Aktivera CSS-övergångar"
   },
@@ -1964,6 +1961,18 @@
   },
   "quickfolders.toolbar.skip": {
     "message": "Hoppa över olästa e-postmeddelanden"
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Egen etiketttext"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Visa 'QuickFolders'-etiketten i verktygsfältet"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Visa e-postserver för aktuell mapp"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Textavgränsare"
   },
   "quickfoldersQuickCopiedMails": {
     "message": "Meddelandet har kopierats till mappen {2};{1} meddelanden har kopierats till mappen {2}"

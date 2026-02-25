@@ -12,6 +12,8 @@ pref("extensions.quickfolders.lastUpdateMessage", "0");
 pref("extensions.quickfolders.showShortcutNumber", false);
 pref("extensions.quickfolders.showUnreadOnButtons", true);
 pref("extensions.quickfolders.showQuickfoldersLabel", true);
+pref("extensions.quickfolders.textQuickfoldersLabel.displayServer", false);
+pref("extensions.quickfolders.textQuickfoldersLabel.delimiter", ": "); 
 pref("extensions.quickfolders.textQuickfoldersLabel","QuickFolders");
 pref("extensions.quickfolders.showUnreadFoldersBold", true);
 pref("extensions.quickfolders.useNavigateShortcuts", true);

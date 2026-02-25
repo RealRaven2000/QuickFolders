@@ -426,7 +426,15 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
   if (filterConfig) {
     // add click event to associated config button
     let eventNode = chk.parentNode.parentElement.querySelector(".configSettings");
-    let eventType;
+    let usePopupPanel = false;
+    let eventType = "click";
+    const popupBtn = chk.parentNode.parentElement.querySelector(".configSettingsPopup");
+
+    if (popupBtn) {
+      eventNode = popupBtn;
+      usePopupPanel = true;
+    }
+
     if (eventNode) {
       eventType = "click";
     } else {
@@ -437,6 +445,16 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
     eventNode.addEventListener(eventType, async(event) =>  {
       event.preventDefault();
       event.stopPropagation();
+
+      if (usePopupPanel) {
+        const anchor = eventNode.closest(".configSettingsAnchor");
+        const panel = anchor?.querySelector(".config-panel");
+
+        if (panel) {
+          panel.hidden = !panel.hidden;
+        }
+        return;
+      }      
       // 
       switch(filterConfig) {
         case "quickfolders.findRelated": {

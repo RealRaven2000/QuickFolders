@@ -507,9 +507,6 @@
   "qf.checkbox.debug.tooltip": {
     "message": "Kattintson a beállításkerékre a speciális hibakeresési lehetőségekhez"
   },
-  "qf.checkbox.displaylabel": {
-    "message": "'QuickFolders' címke megjelenítése az eszköztáron"
-  },
   "qf.checkbox.enableTransitions": {
     "message": "CSS átmenetek engedélyezése"
   },
@@ -1664,6 +1661,18 @@
   },
   "qfUpdatedThemesEngineMsg": {
     "message": "Egy új téma lett telepítve a QuickFolders-hez. Kérem válasszon ki egy elemet a legördülő menüből, és kattintson az [Ok] gombra."
+  },
+  "quickfoldersLabel.customText": {
+    "message": "Egyéni felirat szöveg"
+  },
+  "quickfoldersLabel.display": {
+    "message": "'QuickFolders' címke megjelenítése az eszköztáron"
+  },
+  "quickfoldersLabel.displayMailServer": {
+    "message": "Az aktuális mappa levelezőszerverének megjelenítése"
+  },
+  "quickfoldersLabel.textDelimiter": {
+    "message": "Szövegelválasztó"
   },
   "quickMove.help.head": {
     "message": "Segítség a következőhöz: {1}"

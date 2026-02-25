@@ -319,15 +319,16 @@ ul li ul li {
 	color: #fff;
 }
 
-.attribution { border: dotted #bbb 1px; font-size:small; font-color: #666; border-radius: 1em; padding: 1em; margin-top: 2em; }
+.attribution { border: dotted #bbb 1px; font-size:small; color: #666; border-radius: 1em; padding: 1em; margin-top: 2em; }
 
 
 code {
-	background: linear-gradient(to bottom,  rgba(246,248,249,0.65) 0%,rgba(155,160,160,0.67) 31%,rgba(174,179,183,0.69) 69%,rgba(245,247,249,0.7) 100%);
-  border-radius: 0.3em; 
+	background: linear-gradient(to bottom, rgba(162, 163, 163, 0.773) 0%, rgba(114, 117, 117, 0.614) 100%);
+  border-radius: 0.1em; 
+  border-color: rgba(150,150,150,0.3) !important;
   border: 1px solid #bbb;
   display: inline; 
-  font-family: Consolas, 'Courier New', Geneva, sans-serif;
+  font-family: "Fira Code", "Cascadia Code", "JetBrains Mono", Menlo, Consolas, "Courier New", monospace;
 	font-size: 0.8em;
 	text-align: left;
   margin: 2px 4px;  
@@ -355,14 +356,9 @@ code.regex {
 	background-position: right 1em bottom 1.5em;
 	background-repeat: no-repeat;
 	background-size: 100px;
-	
-/*	position: fixed;
-	z-index:1000; */
+
 }
 
-#content {
-	/* margin-top:50px; */
-}
 
 #main-content-no-nav {
 	background: rgb(254, 254, 254);

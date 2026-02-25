@@ -8,7 +8,7 @@
     <meta content="text/css" http-equiv="Content-Style-Type" />
     <link rel="stylesheet" href="css/gecko4.css?v=1" type="text/css">
     <link rel="stylesheet" href="css/project_nav.css?v=3" type="text/css">
-    <link rel="stylesheet" href="css/project.css?v=30" type="text/css">
+    <link rel="stylesheet" href="css/project.css\?v=32" type="text/css">
     <link rel="stylesheet" href="css/infoBox.css" type="text/css">
     <link rel="stylesheet" href="css/media.css?v=3" type="text/css">   
     <link rel="stylesheet" href="css/footer.css" type="text/css">
@@ -337,26 +337,28 @@
 						Flat Style improvement: the active folder now highlights with the user-assigned 
 						tab color (if one is set). <a href="https://github.com/RealRaven2000/QuickFolders/issues/646">[issue 646]</a>
 						You can revert to the original behavior in theme settings under Active Tab Color:<br>
-						<img class="screenshot" src="images/custom-active-color-override.png" 
+						<img class="screenshot" 
+								 src="images/custom-active-color-override.png" 
+								 style="width: 650px"
 						     alt="custom active background color">
 					</li>
 					<li>
 						Redesigned themes: Native Tabs and Pushbuttons refreshed with new layouts 
 						<a href="https://github.com/RealRaven2000/QuickFolders/issues/643">[issue 643]</a>.
 						<p>
-							Since <code>-moz-appearance</code> layouts were deprecated many Thunderbird versions ago, 
+							Since <code class="config">-moz-appearance</code> layouts were deprecated many Thunderbird versions ago, 
 							we needed to come up with our own style rules that integrate well with modern versions of 
 							Thunderbird. Accordingly, <i>Native Tabs</i> was renamed to <i>Thunderbird Tabs</i>. <br>
 							While supporting dark / light themes it uses the same highlight color for the active tab 
 							as Thunderbird:
 						</p>
-							<img class="screenshot" src="images/theme-tb-tabs.png" alt="Thunderbird tabs theme">
+							<img class="screenshot" src="images/theme-tb-tabs.png" alt="Thunderbird tabs theme" style="width: 500px">
 						<p>
 							The minimalis <i>Pushbuttons</i> theme  uses slight rounding and outlines, 
 							highlighting the active button with Thunderbird’s primary accent color
 							for a subtle, elegant touch.
 						</p>
-						<img class="screenshot" src="images/theme-pushbuttons.png" alt="Pushbuttons theme">
+						<img class="screenshot" src="images/theme-pushbuttons.png" alt="Pushbuttons theme" style="width: 400px">
 					</li>
 					<li>
 						Improved theme handling: switching themes now resets layout rules for full fidelity 
@@ -806,8 +808,8 @@
       </ul>
       <ul>
 				<h4 class="inList">Miscellanei</h4>
-				<li> Remove deprecated <tt>nsILocalFile</tt>. </li>
-				<li> repairTreeIcons: removed <tt>OS.Path.fromFileURI()</tt></li>				
+				<li> Remove deprecated <code>nsILocalFile</code>. </li>
+				<li> repairTreeIcons: removed <code>OS.Path.fromFileURI()</code></li>				
       </ul>
     </li>
 
@@ -1023,7 +1025,7 @@
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/543">[issue 543]</a>
 				</li>
 				<li> 
-					Thunderbird 136 retires <tt>ChromeUtils.import</tt> - replace with <tt>importESModule</tt>. 
+					Thunderbird 136 retires <code>ChromeUtils.import</code> - replace with <code>importESModule</code>. 
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/547">[issue 547]</a>
 				</li>
 				<li> streamlined onboarding / update screens. </li>
@@ -1320,7 +1322,8 @@
 					<li> 
 						Currently the verification of QuickFolders licenses fails when the license is bound to an 
 						exchange account when it is accessed using the Owl Protocol. 
-						This is due to a bug in the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
+						This is due to a bug in the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> 
+						Webextensions API - which doesn't include them when using <code>accounts.list()</code> - 
 						which we hope will be fixed very soon. 
 						See: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/482">[issue 482]</a>
 						<p>
@@ -1360,7 +1363,7 @@
 					This apparently worked well when tested - we also  should now not display the 
 					context menu in the  folder pane popup when multiple folders are selected. 
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/475">[issue 475]</a>
-					(To do: check background function <tt>addFolderPaneMenu()</tt>)
+					(To do: check background function <code>addFolderPaneMenu()</code>)
 				</li>
 				<li> 
 					Optimized licenser (omits folders while listing accounts)
@@ -1388,7 +1391,8 @@
 				<li> 
 					Currently the verification of QuickFolders licenses fails when the license is bound to an 
 					exchange account when it is accessed using the Owl Protocol. 
-					This is due to a bug in the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> Webextensions API - which doesn't include them when using <tt>accounts.list()</tt> - 
+					This is due to a bug in the <a href="https://webextension-api.thunderbird.net/en/128-esr-mv2/accounts.html#accounts-api">extensions.accounts</a> 
+					Webextensions API - which doesn't include them when using <code>accounts.list()</code> - 
 					which we hope will be fixed very soon. 
 					See: <a href="https://github.com/RealRaven2000/SmartTemplates/issues/482">[issue 482]</a>
 					<p>
@@ -1775,11 +1779,11 @@
 					Redesigned menu icons and fixed a number of issues in the options screen - 
 					icons had  some problems changing to dark themes. If you experience missing 
 					colors in QuickFolders settings, you can enable the about:config setting 
-					<tt> svg.context-properties.content.enabled = true </tt>
+					<code class="config"> svg.context-properties.content.enabled = true </code>
 				</li>
 				<li>
 					Added internal configuration Option to close tab after mail is moved from single message view. 
-					To activate the new option, set <tt>extensions.quickfolders.quickMove.singleTab.autoClose</tt>
+					To activate the new option, set <code class="config">extensions.quickfolders.quickMove.singleTab.autoClose</code>
 					in configuration database.  <a href="https://github.com/RealRaven2000/QuickFolders/issues/375">[issue 375]</a>
 				</li>
 				<li>
@@ -2019,7 +2023,7 @@
 					Redesigned menu icons and fixed a number of issues in the options screen - icons had 
 					some problems changing to dark themes.
 					If you experience missing colors in QuickFolders settings, you can enable the about:config 
-					setting <tt> svg.context-properties.content.enabled = true </tt>
+					setting <code class="config"> svg.context-properties.content.enabled = true </code>
 				</li>
 				<li>
 					Automatically back up the custom folder icons for future restauration in Thunderbird 115.
@@ -2606,7 +2610,7 @@
 					</p>
 					<p> 
 						One can still restore the old behavior (of showing subfolders) by setting the config setting
-						<tt>extensions.quickfolders.recentfolders.subfolders = true</tt>.
+						<code class="config">extensions.quickfolders.recentfolders.subfolders = true</code>.
 						To do this you can open QuickFolders <i>General Settings</i> and right-click the 
 						<i>Recent Folder Tabs</i> checkbox:<br>
 
@@ -3353,7 +3357,7 @@
 					<a target="_blank" href="https://github.com/RealRaven2000/QuickFolders/issues/79">[issue 79]</a>
 					Fixed: Drag over color + Dropmarkers when reordering Tabs not working<br>
 					<img src="images/drag-dropmarkers.png" alt="dragover state repaired" /><br>
-					This was caused by an experimental style selector [<tt>-moz-drag-over</tt>] which has been now removed by Mozilla 
+					This was caused by an experimental style selector [<code>-moz-drag-over</code>] which has been now removed by Mozilla 
 					due to little take-up of the HTML community. I had to rewrite these parts using pure JavaScript.
 				</li>
 				<li> 

@@ -369,10 +369,13 @@ hbox.quickhelp-dbg {
 
 
 #validationResults .description {
-  max-width:50em;
+  max-width: var(--license-results-width, 50em);
 }
 #validationResults:hover {
   background-color: rgba(255, 255, 255, 0.7);
+}
+#validationResults > div {
+  white-space: pre-wrap; /* preserve \n and wrap text */
 }
 
 #validationPassed {

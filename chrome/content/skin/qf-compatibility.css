@@ -222,6 +222,10 @@ label.proFeature[disabled] {
 label.proFeature[disabled].noIcon input[type="checkbox"] {
   margin-left: 22px;
 }
+label.proFeature[disabled].text {
+  padding-left: 22px;
+}
+
 
 /* show that this feature needs at least a standard license
    without that we display a sliding notification */

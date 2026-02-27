@@ -1127,8 +1127,26 @@
   "qf.label.versionhistory": {
     "message": "Read Version History…"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "Switch to Free version?\nYour license key will be kept on this computer so you can renew it later at the discounted renewal price."
+  },
+  "qf.licenseBackup.recover": {
+    "message": "Recover license key"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "You can restore your previous license to get cheaper renewal conditions."
+  },
+  "qf.licenseBackup.restored": {
+    "message": "Your key was safely restored. Even though it expired, you can get a fresh key for a discount."
+  },
+  "qf.licenseBackup.switch": {
+    "message": "Switch to Free version"
+  },
   "qf.licenseValidation.expired": {
     "message": "The license key you entered is expired. Please press the button below to renew your license."
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "Alternatively, you can switch to the Basic version for now — you can still restore your license later."
   },
   "qf.licenseValidation.failed": {
     "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."

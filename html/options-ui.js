@@ -46,7 +46,7 @@ QuickFolders.Options = {
     }
   },
 
-  setDefaultButtonRadius: async function setDefaultButtonRadius() {
+  setDefaultButtonRadius: async function () {
     const prefs = QuickFolders.Preferences;
     document.getElementById("QuickFolders-Options-CustomTopRadius").value = "4";
     document.getElementById("QuickFolders-Options-CustomBottomRadius").value = "0";
@@ -55,7 +55,7 @@ QuickFolders.Options = {
     messenger.runtime.sendMessage({ command: "updateUserStyles" });
   },
 
-  setDefaultColors: function setDefaultColors() {
+  setDefaultColors: function () {
     let util = QuickFolders.Util,
       highlightColor = util.getSystemColor("Highlight"),
       highlightTextColor = util.getSystemColor("HighlightText"),
@@ -96,7 +96,7 @@ QuickFolders.Options = {
     return true;
   },
 
-  sendMail: async function sendMail(mailto = QuickFolders.Util.ADDON_SUPPORT_MAIL) {
+  sendMail: async function (mailto = QuickFolders.Util.ADDON_SUPPORT_MAIL) {
     let // obsolete: title = messenger.i18n.getMessage("qf.prompt.contact.title"),
       text = messenger.i18n.getMessage("qf.prompt.contact.subject"),
       result = window.prompt(text, "");
@@ -195,11 +195,11 @@ QuickFolders.Options = {
     this.styleUpdate("InactiveTab", "background-color", picker.value);
   },
 
-  getTransparent: function getTransparent(color, transparent) {
+  getTransparent: function (color, transparent) {
     return QuickFolders.Util.getRGBA(color, transparent ? 0.25 : 1.0);
   },
 
-  styleUpdate: async function styleUpdate(elementName, elementStyle, styleValue, label) {
+  styleUpdate: async function (elementName, elementStyle, styleValue, label) {
     let util = QuickFolders.Util;
     util.logDebug("styleUpdate(" + elementName + ")...");
     util.logDebugOptional(
@@ -222,7 +222,7 @@ QuickFolders.Options = {
     return true; // return updateResult;
   },
 
-  toggleColorTranslucent: async function toggleColorTranslucent(cb, pickerId, label, userStyle) {
+  toggleColorTranslucent: async function (cb, pickerId, label, userStyle) {
     let picker = document.getElementById(pickerId);
     document.getElementById(label).style.backgroundColor = QuickFolders.Options.getTransparent(
       picker.value,
@@ -241,7 +241,7 @@ QuickFolders.Options = {
     return true;
   },
 
-  showButtonShadow: function showButtonShadow(chk) {
+  showButtonShadow: function (chk) {
     let isShadow = chk.checked;
     let el = document.getElementById("inactivetabs-label"),
       myStyle = isShadow ? "1px -1px 3px -1px rgba(0,0,0,0.7)" : "none";
@@ -251,7 +251,7 @@ QuickFolders.Options = {
     return true;
   },
 
-  initPreviewTabStyles: function initPreviewTabStyles() {
+  initPreviewTabStyles: function () {
     this.preparePreviewTab("inactive-colorpicker", "style.InactiveTab.", "inactivetabs-label");
     this.preparePreviewTab("activetab-colorpicker", "style.ActiveTab.", "activetabs-label");
     this.preparePreviewTab("hover-colorpicker", "style.HoveredTab.", "hoveredtabs-label");
@@ -265,7 +265,7 @@ QuickFolders.Options = {
    *  @buttonState        'standard', 'active', 'hovered', 'dragOver'
    *  {paletteMenuId}     'menuStandardPalette', 'menuActivePalette', 'menuHoverPalette', 'menuDragOverPalette'
    */
-  showPalette: async function showPalette(label, buttonState) {
+  showPalette: async function (label, buttonState) {
     let id = label ? label.id : label.toString(),
       paletteMenuId = this.getButtonMenuId(buttonState),
       paletteMenu = document.getElementById(paletteMenuId);
@@ -354,7 +354,7 @@ QuickFolders.Options = {
 
   // change background color for current folder bar
   // 5 choices [string]: default, dark, custom, translucent, lightweight
-  setCurrentToolbarBackground: async function setCurrentToolbarBackground(choice, withUpdate) {
+  setCurrentToolbarBackground: async function (choice, withUpdate) {
     const util = QuickFolders.Util,
       prefs = QuickFolders.Preferences;
     let isCustomStyle = false;
@@ -432,7 +432,7 @@ QuickFolders.Options = {
     }
   },
 
-  getButtonStatePrefId: function getButtonStatePrefId(buttonState) {
+  getButtonStatePrefId: function (buttonState) {
     switch (buttonState) {
       case "colored":
         return "ColoredTab";
@@ -449,7 +449,7 @@ QuickFolders.Options = {
     }
   },
 
-  getButtonMenuId: function getButtonMenuId(buttonState) {
+  getButtonMenuId: function (buttonState) {
     switch (buttonState) {
       case "colored":
         return "menuColoredPalette";
@@ -474,7 +474,7 @@ QuickFolders.Options = {
    * @paletteType:   0 none, 1 plastic, 2 pastel, 3 night ....
    * @isUpdatePanelColor:  when switching palette type from dropdown, update color on button -> UI
    */
-  toggleUsePalette: async function toggleUsePalette(buttonState, paletteType, isUpdatePanelColor) {
+  toggleUsePalette: async function (buttonState, paletteType, isUpdatePanelColor) {
     //let isChecked = checkbox.checked;
     const prefs = QuickFolders.Preferences,
       QI = QuickFolders.Interface;
@@ -658,7 +658,7 @@ QuickFolders.Options = {
     }
   },
 
-  updateNavigationBar: function updateNavigationBar() {
+  updateNavigationBar: function () {
     messenger.runtime.sendMessage({ command: "updateNavigationBar" });
   },
 
@@ -764,6 +764,7 @@ QuickFolders.Options = {
         el.setAttribute("disabled", true);
       }
     }
+    // use enablePremiumConfig() to explicitely toggle input access by id
   },
 
   initStandardFeatureLabels: function (hasLicense) {
@@ -779,7 +780,7 @@ QuickFolders.Options = {
   enablePremiumConfig: function (isEnabled) {
     const elements = [
       "premiumConfig",
-      "chkQuickJumpHotkey",
+      "chkQFLabelDelimiter",
       "chkQuickJumpHotkey",
       "chkQuickMoveHotkey",
       "chkQuickCopyHotkey",
@@ -795,6 +796,9 @@ QuickFolders.Options = {
       "chkCategories",
       "moveMailOptions",
       "moveMailOptions-quickMove",
+      "chkFindRelated",
+      "qfInsertSeparator",
+      "qfInsertLineBreak",
       "chkFindRelated",
     ];
     // 1. disabled input element
@@ -847,11 +851,15 @@ QuickFolders.Options = {
       validationEmailNoMatch = getElement("validationEmailNoMatch"),
       validationDate = getElement("validationDate"),
       validationDateSpace = getElement("validationDateSpace"),
+      validationKeyBackedUp = getElement("validationKeyBackedUp"),
+      btnSwitchToFree = getElement("btnSwitchToFree"),
+      btnRecover = getElement("btnRecoverLicense"),
       licenseDate = getElement("licenseDate"),
       licenseDateLabel = getElement("licenseDateLabel"),
       decryptedMail = licenseInfo.email,
       decryptedDate = licenseInfo.expiryDate,
       result = licenseInfo.status;
+    
 
     validationStandard.setAttribute("collapsed", true);
     validationPassed.setAttribute("collapsed", true);
@@ -860,8 +868,11 @@ QuickFolders.Options = {
     validationInvalidAddon.setAttribute("collapsed", true);
     validationInvalidEmail.setAttribute("collapsed", true);
     validationEmailNoMatch.setAttribute("collapsed", true);
+    validationKeyBackedUp.setAttribute("collapsed", true);
     validationDate.removeAttribute("collapsed");
     validationDateSpace.removeAttribute("collapsed");
+    btnRecover.hidden = true;
+    btnSwitchToFree.hidden = true;
     QuickFolders.Options.enablePremiumConfig(false);
     try {
       let niceDate = decryptedDate;
@@ -921,10 +932,23 @@ QuickFolders.Options = {
             QuickFolders.Options.showValidationMessage(validationInvalidAddon, silent);
           }
         } break;
-        case "Expired":
-          licenseDateLabel.value = messenger.i18n.getMessage("qf.licenseValidation.expired");
+        case "Expired": {
+          let expiredMsg = messenger.i18n.getMessage("qf.licenseValidation.expired");
           licenseDate.value = niceDate;
+          const expiryDate = new Date(licenseInfo.expiryDate);
+          // add 28 days
+          const graceThreshold = new Date(expiryDate.getTime() + 28 * 24 * 60 * 60 * 1000);
+
+          // Show Switch to Free button only if 28+ days after expiry
+          if (Date.now() >= graceThreshold.getTime()) {
+            const freeHint = messenger.i18n.getMessage("qf.licenseValidation.expired.freeHint");
+            expiredMsg += "\n" + freeHint;
+            btnSwitchToFree.hidden = false;
+          }
+          validationExpired.textContent = expiredMsg;
+
           QuickFolders.Options.showValidationMessage(validationExpired, false); // always show
+        }
           break;
         case "MailNotConfigured":
           validationDate.setAttribute("collapsed", true);
@@ -941,7 +965,7 @@ QuickFolders.Options = {
           QuickFolders.Options.showValidationMessage(validationFailed, true);
           QuickFolders.Options.showValidationMessage(validationEmailNoMatch, silent);
           break;
-        case "Empty":
+        case "Empty": 
           validationDate.setAttribute("collapsed", true);
           validationDateSpace.setAttribute("collapsed", true);
           break;
@@ -949,6 +973,10 @@ QuickFolders.Options = {
           Services.prompt.alert(null, "QuickFolders", "Unknown license status: " + result);
           break;
       }
+      if (result=="Empty") {
+        QuickFolders.Options.initLicenseBackupUI();
+      }
+
     } catch (ex) {
       QuickFolders.Util.logException(
         "Error in QuickFolders.Options.updateLicenseOptionsUI():\n",
@@ -956,6 +984,23 @@ QuickFolders.Options = {
       );
     }
     return result;
+  },
+
+  initLicenseBackupUI: async function () {
+    const getElement = document.getElementById.bind(document),
+          validationKeyBackedUp = getElement("validationKeyBackedUp"),
+          btnRecover = getElement("btnRecoverLicense");
+
+    btnRecover.hidden = true;
+    validationKeyBackedUp.setAttribute("collapsed", true);
+
+    const lastKey = await browser.LegacyPrefs.getPref(
+      "extensions.quickfolders.LicenseKey.backup"
+    );
+    if (lastKey?.length > 3) {
+      validationKeyBackedUp.removeAttribute("collapsed");
+      btnRecover.hidden = false;
+    }
   },
 
   // make a validation message visible but also repeat a notification for screen readers.

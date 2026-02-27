@@ -271,6 +271,7 @@
               <span class="hasConfigEvent hbox">
                 <label class="findRelated proFeature themeable" title="__MSG_findRelated.btn.tooltip__"><input type="checkbox" 
                   id="chkFindRelated"
+                  disabled="true"
                   preference="qfpa-ShowFindRelatedButton"
                   data-pref-name="extensions.quickfolders.currentFolderBar.showFindRelated">__MSG_findRelated.btn.label__
                 </label>
@@ -344,10 +345,16 @@
                 <div class="vbox">
                   <label><input type="checkbox" id="qfHideQFcommandsUnlessCTRL"
                     preference="qfpa-CommandMenu-CTRL" data-pref-name="extensions.quickfolders.commandMenu.CTRL">__MSG_qf.label.menus.hideQFunlessCTRL__</label>
-                  <label class="proFeature noIcon"><input type="checkbox" id="qfInsertSeparator"
+                  <label class="proFeature noIcon"><input type="checkbox" 
+                    id="qfInsertSeparator"
+                    disabled="true"
                     preference="qfpa-CommandMenu-Separator" data-pref-name="extensions.quickfolders.commandMenu.separator">__MSG_qf.label.menus.separator__</label>
-                  <label class="proFeature noIcon"><input type="checkbox" id="qfInsertLineBreak"
-                    preference="qfpa-CommandMenu-LineBreak" data-pref-name="extensions.quickfolders.commandMenu.lineBreak">__MSG_qf.label.menus.lineBreak__</label>
+                  <label class="proFeature noIcon">
+                    <input type="checkbox" 
+                    id="qfInsertLineBreak"
+                    disabled="true"
+                    preference="qfpa-CommandMenu-LineBreak" 
+                    data-pref-name="extensions.quickfolders.commandMenu.lineBreak">__MSG_qf.label.menus.lineBreak__</label>
                   <label><input type="checkbox" id="qfCustomizeIcon"
                     preference="qfpa-CommandMenu-Icons" data-pref-name="extensions.quickfolders.commandMenu.icon">__MSG_qf.label.menus.customIcon__</label>
                   <label><input type="checkbox" id="qfMenuHelp" preference="qfpa-CommandMenu-Help" data-pref-name="extensions.quickfolders.commandMenu.help">__MSG_qf.label.menus.help__</label>
@@ -443,16 +450,19 @@
                   </label>
                   
 
-                  <label>
+                  <label class="proFeature noIcon">
                     <input type="checkbox"
+                      class="proFeature"
                       preference="qfpa-ShowQuickFoldersLabel-displayServer"
                       data-pref-name="extensions.quickfolders.textQuickfoldersLabel.displayServer">
                     __MSG_quickfoldersLabel.displayMailServer__
                   </label>
 
-                  <label class="nobreak">
+                  <label class="nobreak proFeature text">
                     __MSG_quickfoldersLabel.textDelimiter__:
-                    <input type="text" class="delimiter"
+                    <input type="text" 
+                      id="chkQFLabelDelimiter"
+                      class="delimiter proFeature"
                       preference="qfpa-ShowQuickFoldersLabel-delimiter"
                       data-pref-name="extensions.quickfolders.textQuickfoldersLabel.delimiter"
                       value=": ">
@@ -951,6 +961,10 @@
             __MSG_qf.licenseValidation.failed__</div>
           <div id="validationExpired" class="niceFont description licenseWarning" collapsed="true">
             __MSG_qf.licenseValidation.expired__</div>
+          <div id="validationRestored" class="niceFont description" collapsed="true">
+            __MSG_qf.licenseBackup.restored__</div>
+          <div id="validationKeyBackedUp" class="niceFont description" collapsed="true">
+            __MSG_qf.licenseBackup.recoverable__</div>
           <div id="validationInvalidEmail" class="niceFont description licenseWarning" collapsed="true">
             __MSG_qf.licenseValidation.invalidMail__</div>
           <div id="validationEmailNoMatch" class="niceFont description licenseWarning" collapsed="true">
@@ -962,6 +976,8 @@
         <div class="vbox" height="40">
           <box class="btnLicenseContainer">
             <button class="register" id="btnLicense">Buy License</button>
+            <button class="register" id="btnSwitchToFree" hidden>__MSG_qf.licenseBackup.switch__</button>
+            <button class="register" id="btnRecoverLicense" hidden>__MSG_qf.licenseBackup.recover__</button>
           </box>
         </div>
         <span class="separator" flex="1" > </span>

@@ -1,3 +1,7 @@
+:root {
+	--license-results-width: 50em;
+}
+
 /* special style for license button */
 #QuickFolders-Options-goPro #btnLicense {
   max-width: 30em;
@@ -21,6 +25,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+	max-width: var(--license-results-width, 50em);
 }
 
 #btnStdLicense label,
@@ -53,29 +58,46 @@
 	padding: 0.2em;
 }
 
-#btnStdLicense, #btnLicense, #btnDomainLicense {
+
+
+#btnStdLicense, #btnLicense, #btnDomainLicense, #btnSwitchToFree, #btnRecoverLicense {
 	appearance: none;
 	background-color: rgb(7, 97, 48) !important;
 	background: linear-gradient(to bottom, rgba(184,211,27,1) 0%,rgba(122,166,18,1) 50%,rgba(92,138,0,1) 51%,rgba(135,181,19,1) 100%) !important;
 	border: 1px solid #fff;
 	border-radius: 0.4em;
-/*	box-shadow: 3px 3px 4px -1px rgba(0, 0, 0, 0.5); */
 	color: #FFFFFF !important;
 	font-weight: bold;
 	transition-property: box-shadow, margin;
 	transition-duration: 0.75s, 0.2s;
 }
 
+
 #btnStdLicense:hover,
 #btnLicense:hover,
-#btnDomainLicense:hover
+#btnDomainLicense:hover,
+ #btnSwitchToFree:hover
 {
-	margin: 4px 0px 0px 4px !important;
+	margin: 4px 0px 0px 4px;
 	box-shadow: 2px 2px 2px -1px rgba(0, 0, 0, 0.8);
 	background: rgb(254,222,178);
 	background: linear-gradient(to bottom, rgba(191,210,85,1) 0%, rgba(142,185,42,1) 50%, rgba(114,170,0,1) 51%, rgba(158,203,45,1) 100%) !important;
 	box-shadow: 1px 1px 4px -1px rgba(0, 0, 0, 0.7);
 }
+
+#btnSwitchToFree, #btnRecoverLicense {
+  background-color: rgba(180,150,20,1) !important; 
+  background-color: rgb(18, 110, 66) !important; /* slightly more teal */
+    background: linear-gradient(to bottom, rgba(220,200,50,1) 0%, rgba(180,150,20,1) 50%, rgba(140,110,10,1) 51%, rgba(190,160,30,1) 100%
+  ) !important;
+	margin-left: 2em !important;
+}
+
+#btnSwitchToFree:hover, #btnRecoverLicense:hover {
+	margin-left: 2em !important;
+}
+
+
 
 #btnStdLicense {
 	background: linear-gradient(to bottom, #f4ad6b 0%,#fca72f 22%,#f76d04 51%,#ec9d26 100%) !important;

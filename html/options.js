@@ -864,45 +864,47 @@ async function configureBuyButton() {
     if (addedClass!="free") {el.classList.remove("free");}
   }
 
-  let wd = window.document,
-      getElement = wd.getElementById.bind(wd),
-      btnLicense = getElement("btnLicense"),
-      proTab = getElement("QuickFolders-Pro");
+  const wd = window.document,
+    getElement = wd.getElementById.bind(wd),
+    btnLicense = getElement("btnLicense"),
+    proTab = getElement("QuickFolders-Pro");
   let result = licenseInfo.status;
   
-  switch(result) {
+  
+  switch (result) {
     case "Valid": {
       let today = new Date(),
         later = new Date(today.setDate(today.getDate() + 30)), // pretend it's a month later:
-        dateString = later.toISOString().substr(0, 10),
+        dateString = later.toISOString().substring(0, 10),
         forceExtend = await messenger.LegacyPrefs.getPref(
-          "extensions.quickfolders.debug.premium.forceShowExtend"
+          "extensions.quickfolders.debug.premium.forceShowExtend",
         );
       // if we were a month ahead would this be expired?
       if (licenseInfo.expiryDate < dateString || forceExtend) {
         QuickFolders.Options.labelLicenseBtn(btnLicense, "extend");
       } else {
-        if (licenseInfo.keyType==2) { // standard license
+        if (licenseInfo.keyType == 2) {
+          // standard license
           btnLicense.classList.add("upgrade"); // removes "pulsing" animation
-          btnLicense.setAttribute("collapsed",false);
+          btnLicense.setAttribute("collapsed", false);
           QuickFolders.Options.labelLicenseBtn(btnLicense, "upgrade");
         } else {
-          btnLicense.setAttribute("collapsed",true);
+          btnLicense.setAttribute("collapsed", true);
         }
       }
       replaceCssClass(proTab, "paid");
       replaceCssClass(btnLicense, "paid");
       break;
     }
-    case "Expired":
+    case "Expired": 
       QuickFolders.Options.labelLicenseBtn(btnLicense, "renew");
       replaceCssClass(proTab, "expired");
       replaceCssClass(btnLicense, "expired");
-      btnLicense.setAttribute("collapsed",false);
+      btnLicense.setAttribute("collapsed", false);
       break;
     default:
       QuickFolders.Options.labelLicenseBtn(btnLicense, "buy");
-      btnLicense.setAttribute("collapsed",false);
+      btnLicense.setAttribute("collapsed", false);
       replaceCssClass(btnLicense, "register");
       replaceCssClass(proTab, "free");
   }
@@ -1017,6 +1019,39 @@ async function initButtons() {
     QuickFolders.Util.openLinkInTab(targetUrl);
   });
 
+  const btnSwitchToFree = document.querySelector("#btnSwitchToFree");
+  btnSwitchToFree.addEventListener("click", async () => {
+    // 1. Hide the button
+    btnSwitchToFree.hidden = true;
+
+    // 2. Backup the expired license
+    await messenger.LegacyPrefs.setPref(
+      "extensions.quickfolders.LicenseKey.backup",
+      licenseInfo.licenseKey,
+    );
+
+    document.getElementById("txtLicenseKey").value = "";
+
+    // 3. Remove current license
+    await QuickFolders.Options.validateNewKey();
+
+    // 4. Refresh any dependent UI (buttons / toolbar labels)
+    configureBuyButton();
+
+    // 5. Update UI - Shows message: "You can restore your previous license to get cheaper renewal conditions."
+    QuickFolders.Options.updateLicenseOptionsUI();
+  });
+
+  const btnRecover = document.getElementById("btnRecoverLicense");
+  btnRecover.addEventListener("click", async () => {
+    const lastKey = await browser.LegacyPrefs.getPref(
+      "extensions.quickfolders.LicenseKey.backup",
+    );
+    document.getElementById("txtLicenseKey").value = lastKey;
+    await QuickFolders.Options.validateNewKey();
+    QuickFolders.Options.updateLicenseOptionsUI();
+  });
+
 
 }
 
@@ -1127,6 +1162,7 @@ const startup = async () => {
 
   try {
     await initLicenseInfo();
+    await QuickFolders.Options.initLicenseBackupUI();
   } catch (ex) {
     console.log(ex);
     setTimeout(

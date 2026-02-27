@@ -1111,8 +1111,26 @@
   "qf.label.versionhistory": {
     "message": "Versionsgeschichte lesen…"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "Auf Basisversion umschalten?\nIhr Lizenzschlüssel wird auf diesem Computer gespeichert, sodass Sie ihn später zum vergünstigten Erneuerungspreis wiederherstellen können."
+  },
+  "qf.licenseBackup.recover": {
+    "message": "Lizenzschlüssel wiederherstellen"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "Sie können Ihren vorherigen Lizenzschlüssel wiederherstellen, um günstiger zu erneuern."
+  },
+  "qf.licenseBackup.restored": {
+    "message": "Ihr Schlüssel wurde sicher wiederhergestellt. Auch wenn er abgelaufen ist, können Sie einen neuen Schlüssel zum vergünstigten Preis erhalten."
+  },
+  "qf.licenseBackup.switch": {
+    "message": "Auf Basisversion umschalten"
+  },
   "qf.licenseValidation.expired": {
-    "message": "Der eingegebene  Lizenzschlüssel ist abgelaufen. Zum Erneuern betätigen Sie bitte die Schaltfläche unten."
+    "message": "Der von Ihnen eingegebene Lizenzschlüssel ist abgelaufen. Bitte drücken Sie die untenstehende Schaltfläche, um Ihre Lizenz zu erneuern."
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "Alternativ können Sie vorerst die Basisversion verwenden — Sie können Ihre Lizenz jederzeit wiederherstellen."
   },
   "qf.licenseValidation.failed": {
     "message": "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab."

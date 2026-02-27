@@ -322,6 +322,7 @@ pref("extensions.quickfolders.premium.tabSeparator.usage", 0);
 pref("extensions.quickfolders.licenser.forceSecondaryIdentity",false);
 pref("extensions.quickfolders.license.gracePeriodDate",""); // for future use.
 pref("extensions.quickfolders.LicenseKey", "");
+pref("extensions.quickfolders.LicenseKey.backup", "");
 pref("extensions.quickfolders.menuMessageList.maxSubjectLength", 40);
 /** obsolete **/
 

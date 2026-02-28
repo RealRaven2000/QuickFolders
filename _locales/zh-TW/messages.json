@@ -393,7 +393,7 @@
     "message": "最新消息"
   },
   "newsMsgEsr140": {
-    "message": "{P}{b} 即將在下一個重大版本中推出 {/b}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{ARelease}了解新發行模型的更多資訊{A2}.{U} {L}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{/L} {L}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {AcompatCheck}附加元件相容性檢查{A2}。{/L} {/U}{/P}{P} 我們很高興宣布，QuickFolders 完全相容於 Thunderbird 140，下一個延伸支援版本（ESR）。這代表在下一個主要支援週期中持續的可靠性與安心。{/P}{P} QuickFolders 目前仍支援 Thunderbird 115 及以上版本的使用者。在接下來的一年中，隨著我們新增新功能，對 Thunderbird 115 的支援可能會逐步淘汰，轉而支援 Thunderbird 128 及更新版本。{/P}{P} 我們會持續監控 Thunderbird 的變化，以確保 QuickFolders 無論您選擇哪種更新路徑都能保持相容與可靠。{/P}"
+    "message": "{P}{b} 即將在下一個重大版本中推出 {/b}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{a release}了解新發行模型的更多資訊{/a}.{U} {L}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{/L} {L}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {a compatCheck}附加元件相容性檢查{/a}。{/L} {/U}{/P}{P} 我們很高興宣布，QuickFolders 完全相容於 Thunderbird 140，下一個延伸支援版本（ESR）。這代表在下一個主要支援週期中持續的可靠性與安心。{/P}{P} QuickFolders 目前仍支援 Thunderbird 115 及以上版本的使用者。在接下來的一年中，隨著我們新增新功能，對 Thunderbird 115 的支援可能會逐步淘汰，轉而支援 Thunderbird 128 及更新版本。{/P}{P} 我們會持續監控 Thunderbird 的變化，以確保 QuickFolders 無論您選擇哪種更新路徑都能保持相容與可靠。{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} 所有新功能、錯誤修正和長期相容性都要感謝您的支持。{/P}{P class=specialOffer} 為了支持 QuickFolders 的開發，您可以在 {salesEnd} 前以折扣價續訂您的授權。{/P}{P class=bottomhint}🡇 請選擇下方的選項以了解更多 🡇 {/P}"
@@ -408,7 +408,7 @@
     "message": "{P} 感謝您以專業版授權支持 QuickFolders——這讓所有新功能、錯誤修正和長期相容性成為可能。{/P}"
   },
   "newsSection": {
-    "message": "{P}{b} 即將在下一個重大版本中推出 {/b}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{ARelease}了解新發行模型的更多資訊{A2}.{U} {L}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{/L} {L}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {AcompatCheck}附加元件相容性檢查{A2}。{/L} {/U}",
+    "message": "{P}{b} 即將在下一個重大版本中推出 {/b}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{a release}了解新發行模型的更多資訊{/a}.{U} {L}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{/L} {L}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {a compatCheck}附加元件相容性檢查{/a}。{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",

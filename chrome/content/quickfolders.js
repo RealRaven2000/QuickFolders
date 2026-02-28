@@ -296,6 +296,7 @@ END LICENSE BLOCK */
     ## [issue 648] New Pro feature: show account name of current folder instead of QuickFolders label
     ## [issue 643] Redesigned  the themes "Native Tabs" and "Pushbuttons" with a fresh layout
     ## [issue 650] Improve selecting / changing QuickFolders themes by removing overwritten layout rules
+    ## [issue 652] Added “Switch to Free version” option and license backup / recovery after key expiry
 
     ## [issue 630] misc: removed unnecessary console errors from quickfolders-util.js
 

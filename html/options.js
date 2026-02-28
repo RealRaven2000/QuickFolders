@@ -7,6 +7,12 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
+/*
+  globals
+    formatAll,
+    insertHtmlSafely
+*/
+
 
 
 // add event listeners for tabs
@@ -1021,6 +1027,32 @@ async function initButtons() {
 
   const btnSwitchToFree = document.querySelector("#btnSwitchToFree");
   btnSwitchToFree.addEventListener("click", async () => {
+    const dialog = document.getElementById("confirmationDialog");
+    const message = document.getElementById("confirmMessage");
+
+    function awaitDialogClose(dialog) {
+      return new Promise((resolve) => {
+        dialog.addEventListener("close", () => resolve(dialog.returnValue), { once: true });
+      });
+    }
+
+    // set your localized message
+    const html = formatAll(messenger.i18n.getMessage("qf.licenseBackup.confirmation"));
+    if (insertHtmlSafely(message, html, true)) {
+      message.querySelector(".features").addEventListener("click", () => {
+        messenger.windows.openDefaultBrowser(
+          "https://quickfolders.org/premium.html#featureComparison",
+        );
+      });
+    }
+
+    // show modal and wait for user choice
+    dialog.showModal();
+    const choice = await awaitDialogClose(dialog);
+    if (choice !== "ok") {
+      return;
+    }
+
     // 1. Hide the button
     btnSwitchToFree.hidden = true;
 

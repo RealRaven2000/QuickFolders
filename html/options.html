@@ -1109,6 +1109,16 @@
     <hr class="thin spacer" flex="1">
   </div>
 
+  <dialog id="confirmationDialog">
+    <form method="dialog">
+      <div id="confirmMessage"></div>
+      <menu>
+        <button value="cancel">__MSG_message.btn.cancel__</button>
+        <button id="confirmOk" value="ok">__MSG_message.btn.accept__</button>
+      </menu>
+    </form>
+  </dialog>
+
 
   <script src="../chrome/content/i18n.js"></script>
   <script src="options-qf.js"></script>
@@ -1119,6 +1129,8 @@
   <script src="options-ui.js"></script>
   <script src="options-styles.js"></script>
   <script src="options.js"></script>
+  <script src="../popup/popup-util.js"></script>
+  
 
 </body>
 

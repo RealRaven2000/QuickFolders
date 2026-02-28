@@ -988,8 +988,9 @@ QuickFolders.Options = {
 
   initLicenseBackupUI: async function () {
     const getElement = document.getElementById.bind(document),
-          validationKeyBackedUp = getElement("validationKeyBackedUp"),
-          btnRecover = getElement("btnRecoverLicense");
+      validationKeyBackedUp = getElement("validationKeyBackedUp"),
+      btnRecover = getElement("btnRecoverLicense"),
+      txtLicense = getElement("txtLicenseKey");
 
     btnRecover.hidden = true;
     validationKeyBackedUp.setAttribute("collapsed", true);
@@ -997,7 +998,7 @@ QuickFolders.Options = {
     const lastKey = await browser.LegacyPrefs.getPref(
       "extensions.quickfolders.LicenseKey.backup"
     );
-    if (lastKey?.length > 3) {
+    if (lastKey?.length > 3 && !txtLicense.value) {
       validationKeyBackedUp.removeAttribute("collapsed");
       btnRecover.hidden = false;
     }

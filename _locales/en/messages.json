@@ -398,7 +398,7 @@
   },
   "newsHead": { "message": "Latest News" },
   "newsMsgEsr140": {
-    "message": "{P}{b} Upcoming in the next big release {/b}: Thunderbird will soon ask you to choose your preferred update path — either the annual ESR track or the faster monthly releases. {ARelease}Learn more about the new release model{A2}.{U} {L}The ESR version will stay on v140, increasing minor version numbers and including only security fixes and bug patches, which is often preferable for corporate environments.{/L} {L}The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the {AcompatCheck}Add-on Compatibility Check{A2}.{/L} {/U}{/P}{P} We're happy to announce that QuickFolders is fully compatible with Thunderbird 140, the next Extended Support Release (ESR). This means ongoing reliability and peace of mind through the next major support cycle.{/P}{P} QuickFolders continues to support users on Thunderbird 115 and above for now. Over the coming year, as we add new features, support for Thunderbird 115 may be phased out in favor of Thunderbird 128 and newer.{/P}{P} We continuously monitor Thunderbird changes to ensure QuickFolders remains compatible and reliable, regardless of the release track you choose.{/P}"
+    "message": "{P}{b} Upcoming in the next big release {/b}: Thunderbird will soon ask you to choose your preferred update path — either the annual ESR track or the faster monthly releases. {a release}Learn more about the new release model{/a}.{U} {L}The ESR version will stay on v140, increasing minor version numbers and including only security fixes and bug patches, which is often preferable for corporate environments.{/L} {L}The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the {a compatCheck}Add-on Compatibility Check{/a}.{/L} {/U}{/P}{P} We're happy to announce that QuickFolders is fully compatible with Thunderbird 140, the next Extended Support Release (ESR). This means ongoing reliability and peace of mind through the next major support cycle.{/P}{P} QuickFolders continues to support users on Thunderbird 115 and above for now. Over the coming year, as we add new features, support for Thunderbird 115 may be phased out in favor of Thunderbird 128 and newer.{/P}{P} We continuously monitor Thunderbird changes to ensure QuickFolders remains compatible and reliable, regardless of the release track you choose.{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} All new features, bug fixes, and long-term compatibility are made possible through your support.{/P}{P class=specialOffer} To help sustain QuickFolders development, you can renew your license at a discount until {salesEnd}.{/P}{P class=bottomhint}🡇 Choose one of the options below to learn more 🡇 {/P}"
@@ -413,7 +413,7 @@
     "message": "{P} Thank you for supporting QuickFolders through a Pro license — this makes all new features, bug fixes, and long-term compatibility possible.{/P}"
   },
   "newsSection": {
-    "message": "{P}{b} Upcoming in the next big release {/b}: Thunderbird will soon ask you to choose your preferred update path — either the annual ESR track or the faster monthly releases. {ARelease}Learn more about the new release model{A2}.{U} {L}The ESR version will stay on v140, increasing minor version numbers and including only security fixes and bug patches, which is often preferable for corporate environments.{/L} {L}The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the {AcompatCheck}Add-on Compatibility Check{A2}.{/L} {/U}",
+    "message": "{P}{b} Upcoming in the next big release {/b}: Thunderbird will soon ask you to choose your preferred update path — either the annual ESR track or the faster monthly releases. {a release}Learn more about the new release model{/a}.{U} {L}The ESR version will stay on v140, increasing minor version numbers and including only security fixes and bug patches, which is often preferable for corporate environments.{/L} {L}The monthly release cycle will deliver new features and interface updates as they’re developed. Please check whether your current add-ons support this release model. To help with this, you can install the {a compatCheck}Add-on Compatibility Check{/a}.{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1128,7 +1128,7 @@
     "message": "Read Version History…"
   },
   "qf.licenseBackup.confirmation": {
-    "message": "Switch to Free version?\nYour license key will be kept on this computer so you can renew it later at the discounted renewal price."
+    "message": "{P}Switch to Basic version?{br}Your license key will be kept on this computer so you can renew it later at the discounted {b}renewal price{/b}.{/P}{P}Thank you for having supported QuickFolders — licenses make independent software development possible and help keep the project going. Even when expired, you can renew your license or upgrade from a Standard license anytime to use the {a class=features}Pro Features{/a} for a full year.{/P}"
   },
   "qf.licenseBackup.recover": {
     "message": "Recover license key"
@@ -1140,13 +1140,13 @@
     "message": "Your key was safely restored. Even though it expired, you can get a fresh key for a discount."
   },
   "qf.licenseBackup.switch": {
-    "message": "Switch to Free version"
+    "message": "Switch to Basic version"
   },
   "qf.licenseValidation.expired": {
     "message": "The license key you entered is expired. Please press the button below to renew your license."
   },
   "qf.licenseValidation.expired.freeHint": {
-    "message": "Alternatively, you can switch to the Basic version for now — you can still restore your license later."
+    "message": "Alternatively, you can use the Basic version for now — you can still restore your license later."
   },
   "qf.licenseValidation.failed": {
     "message": "The license key you entered is not valid. Check your email from FastSpring for instructions. If you still have problems, please contact me from the Support tab."

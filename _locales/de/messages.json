@@ -394,7 +394,7 @@
     "message": "Neuigkeiten"
   },
   "newsMsgEsr140": {
-    "message": "{P}{b} Demnächst im nächsten großen Release {/b}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {ARelease}Erfahren Sie mehr über das neue Release-Modell{A2}.{U} {L}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{/L} {L}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {AcompatCheck}Add-on-Kompatibilitätsprüfung{A2} installieren.{/L} {/U}{/P}{P} Wir freuen uns, bekannt zu geben, dass QuickFolders vollständig mit Thunderbird 140, dem nächsten Extended Support Release (ESR), kompatibel ist. Das bedeutet fortlaufende Zuverlässigkeit und Sicherheit im nächsten großen Support-Zyklus.{/P}{P} QuickFolders unterstützt weiterhin Nutzer von Thunderbird 115 und höher. Im kommenden Jahr kann die Unterstützung für Thunderbird 115 zugunsten von Thunderbird 128 und neuer eingestellt werden, sobald neue Funktionen hinzugefügt werden.{/P}{P} Wir überwachen kontinuierlich Änderungen in Thunderbird, um sicherzustellen, dass QuickFolders unabhängig vom gewählten Update-Pfad kompatibel und zuverlässig bleibt.{/P}"
+    "message": "{P}{b} Demnächst im nächsten großen Release {/b}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {a release}Erfahren Sie mehr über das neue Release-Modell{/a}.{U} {L}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{/L} {L}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {a compatCheck}Add-on-Kompatibilitätsprüfung{/a} installieren.{/L} {/U}{/P}{P} Wir freuen uns, bekannt zu geben, dass QuickFolders vollständig mit Thunderbird 140, dem nächsten Extended Support Release (ESR), kompatibel ist. Das bedeutet fortlaufende Zuverlässigkeit und Sicherheit im nächsten großen Support-Zyklus.{/P}{P} QuickFolders unterstützt weiterhin Nutzer von Thunderbird 115 und höher. Im kommenden Jahr kann die Unterstützung für Thunderbird 115 zugunsten von Thunderbird 128 und neuer eingestellt werden, sobald neue Funktionen hinzugefügt werden.{/P}{P} Wir überwachen kontinuierlich Änderungen in Thunderbird, um sicherzustellen, dass QuickFolders unabhängig vom gewählten Update-Pfad kompatibel und zuverlässig bleibt.{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} Alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität sind nur durch Ihre Unterstützung möglich.{/P}{P class=specialOffer} Um die Entwicklung von QuickFolders zu unterstützen, können Sie Ihre Lizenz bis {salesEnd} vergünstigt verlängern.{/P}{P class=bottomhint}🡇 Wählen Sie unten eine Option, um mehr zu erfahren 🡇 {/P}"
@@ -409,7 +409,7 @@
     "message": "{P} Vielen Dank, dass Sie QuickFolders mit einer Pro-Lizenz unterstützen – das ermöglicht alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität.{/P}"
   },
   "newsSection": {
-    "message": "{P}{b} Demnächst im nächsten großen Release {/b}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {ARelease}Erfahren Sie mehr über das neue Release-Modell{A2}.{U} {L}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{/L} {L}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {AcompatCheck}Add-on-Kompatibilitätsprüfung{A2} installieren.{/L} {/U}",
+    "message": "{P}{b} Demnächst im nächsten großen Release {/b}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {a release}Erfahren Sie mehr über das neue Release-Modell{/a}.{U} {L}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{/L} {L}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {a compatCheck}Add-on-Kompatibilitätsprüfung{/a} installieren.{/L} {/U}",
     "placeholders": {
       "addonName": {
         "content": "$1",
@@ -1112,25 +1112,25 @@
     "message": "Versionsgeschichte lesen…"
   },
   "qf.licenseBackup.confirmation": {
-    "message": "Auf Basisversion umschalten?\nIhr Lizenzschlüssel wird auf diesem Computer gespeichert, sodass Sie ihn später zum vergünstigten Erneuerungspreis wiederherstellen können."
+    "message": "{P}Auf Basisversion umschalten?{br}Ihr Lizenzschlüssel wird auf diesem Computer gespeichert, sodass Sie ihn später zum reduzierten {b}Erneuerungspreis{/b} wieder aktivieren können.{/P}{P}Vielen Dank, dass Sie QuickFolders unterstützt haben — Lizenzen ermöglichen unabhängige Softwareentwicklung und halten das Projekt am Laufen. Selbst wenn der Schlüssel abgelaufen ist, können Sie Ihre Lizenz jederzeit erneuern oder von einer Standardlizenz auf die {a class=features}Pro Features{/a} upgraden und diese ein Jahr lang nutzen.{/P}"
   },
   "qf.licenseBackup.recover": {
     "message": "Lizenzschlüssel wiederherstellen"
   },
   "qf.licenseBackup.recoverable": {
-    "message": "Sie können Ihren vorherigen Lizenzschlüssel wiederherstellen, um günstiger zu erneuern."
+    "message": "Sie können Ihre vorherige Lizenz wiederherstellen, um von günstigeren Erneuerungsbedingungen zu profitieren."
   },
   "qf.licenseBackup.restored": {
-    "message": "Ihr Schlüssel wurde sicher wiederhergestellt. Auch wenn er abgelaufen ist, können Sie einen neuen Schlüssel zum vergünstigten Preis erhalten."
+    "message": "Ihr Schlüssel wurde erfolgreich wiederhergestellt. Auch wenn er abgelaufen war, können Sie einen neuen Schlüssel zu einem Rabatt erhalten."
   },
   "qf.licenseBackup.switch": {
     "message": "Auf Basisversion umschalten"
   },
   "qf.licenseValidation.expired": {
-    "message": "Der von Ihnen eingegebene Lizenzschlüssel ist abgelaufen. Bitte drücken Sie die untenstehende Schaltfläche, um Ihre Lizenz zu erneuern."
+    "message": "Der eingegebene Lizenzschlüssel ist abgelaufen. Bitte drücken Sie die Schaltfläche unten, um Ihre Lizenz zu erneuern."
   },
   "qf.licenseValidation.expired.freeHint": {
-    "message": "Alternativ können Sie vorerst die Basisversion verwenden — Sie können Ihre Lizenz jederzeit wiederherstellen."
+    "message": "Alternativ können Sie vorerst die Basisversion nutzen — Ihre Lizenz lässt sich jederzeit wiederherstellen."
   },
   "qf.licenseValidation.failed": {
     "message": "Der eingegebene Lizenzschlüssel ist ungültig. Bitte folgen Sie den Instruktionen Ihrer Bestätigungs Email von FastSpring. Falls Sie Probleme mit dem Validierungsprozess haben, kontaktieren Sie mich bitte über den Support tab."

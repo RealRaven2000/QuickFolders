@@ -18,7 +18,7 @@ var sanitizeHTML = (htmlString) => {
 // eslint-disable-next-line no-unused-vars
 var insertHtmlSafely = (container, html, clear = false) => {
   if (!container || !html) {
-    return null;
+    return;
   }
   if (clear) { 
     container.textContent = "";
@@ -117,69 +117,3 @@ var insertHtmlSafely = (container, html, clear = false) => {
   }
   return true;
 };
-
-function replaceNested(text) {
-  let result = text;
-  const maxLoops = 5; // prevent infinite recursion
-
-  for (let i = 0; i < maxLoops; i++) {
-    let changed = false;
-
-    result = result.replace(/\{\+([\w.]+)\}/g, (_, id) => {
-      // replace is streaming results from 1st capturing group:
-      // (fullMatch, group1, index, originalString)
-      const replacement = messenger.i18n.getMessage(id) || `{+${id}}`;
-      if (replacement !== `{+${id}}`) {
-        changed = true;
-      }
-      return replacement;
-    });
-
-    if (!changed) {
-      break;
-    }
-  }
-
-  return result;
-}
-
-// eslint-disable-next-line no-unused-vars
-function formatAll(txt) {
-  if (!txt) {
-    return "";
-  }
-  /* when replacing a href, start with the special cases first! */
-  let localizedMsg = replaceNested(txt)
-    .replace(
-      /\{a release\}/g,
-      "<a href='https://blog.thunderbird.net/2025/03/thunderbird-release-channel-update/'>",
-    )
-    .replace(
-      /\{a compatCheck\}/g,
-      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-compatibility-check/' class='native'>",
-    )
-    .replace(/\{bold\}/g, "<b>")
-    .replace(/\{\/bold\}/g, "</b>")
-    .replace(/\{b\}/g, "<b>")
-    .replace(/\{\/b\}/g, "</b>")
-    .replace(/\{italic\}/g, "<i>")
-    .replace(/\{\/italic\}/g, "</i>")
-    .replace(/\{emph\}/g, "<span class='important'>")
-    .replace(/\{\/emph\}/g, "</span>")
-    .replace(/\{hr\}/g, "<hr>")
-    .replace(/\{U\}/gi, "<ul>")
-    .replace(/\{\/U\}/gi, "</ul>")
-    .replace(/\{L(?:\s+([^}]+))?\}/gi, (_, attrs) => (attrs ? `<li ${attrs}>` : "<li>"))
-    .replace(/\{\/L\}/gi, "</li>")
-    .replace(/\{P(?:\s+([^}]+))?\}/g, (_, attrs) => (attrs ? `<p ${attrs}>` : "<p>"))
-    .replace(/\{\/P\}/gi, "</p>")
-    .replace(/\{a ([^}]+?)\}/g, "<a $1>")
-    .replace(/\{\/a\}/gi, "</a>")
-    .replace(/\{br\}/gi, "<br>")
-    .replace(/\[Bugzilla (\d*)\]/g, "<a class='bugzilla' no='$1' href='#'>[Bugzilla $1]</a>")
-    .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1 href='#'>[issue $1]</a>")
-    .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>")
-    .replace(/\[(F\d*)\]/g, "<code class='keystroke'>$1</code>")
-    .replace(/\[(CTRL|ALT)\]/g, "<code class='keystroke'>$1</code>");
-  return localizedMsg;
-}

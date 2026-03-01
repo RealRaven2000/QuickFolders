@@ -1071,8 +1071,26 @@
   "qf.label.versionhistory": {
     "message": "Beri zgodovino različic …"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "{P}Preklopiti na Osnovno različico?{br}Vaš licenčni ključ bo shranjen v tem računalniku, da ga boste lahko pozneje obnovili po {b}znižani ceni podaljšanja{/b}.{/P}{P}Hvala za podporo QuickFolders — licence omogočajo neodvisen razvoj programske opreme in pomagajo ohranjati projekt. Tudi po poteku lahko licenco kadar koli obnovite ali nadgradite s Standardne licence ter uporabljate {a class=features}Pro funkcije{/a} celo leto.{/P}"
+  },
+  "qf.licenseBackup.recover": {
+    "message": "Obnovi licenčni ključ"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "Prejšnjo licenco lahko obnovite in pridobite ugodnejše pogoje podaljšanja."
+  },
+  "qf.licenseBackup.restored": {
+    "message": "Ključ je bil uspešno obnovljen. Čeprav je potekel, lahko pridobite nov ključ s popustom."
+  },
+  "qf.licenseBackup.switch": {
+    "message": "Preklopi na Osnovno različico"
+  },
   "qf.licenseValidation.expired": {
-    "message": "Vneseni licenčni ključ je potekel. Pritisnite spodnji gumb, da obnovite svoje dovoljenje."
+    "message": "Vneseni licenčni ključ je potekel. Pritisnite spodnji gumb za obnovitev licence."
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "Lahko pa začasno uporabljate Osnovno različico — licenco lahko obnovite pozneje."
   },
   "qf.licenseValidation.failed": {
     "message": "Vneseni licenčni ključ je neveljaven. Preverite svojo pošto od FastSpringa za navodila. Če imate še vedno težave, navežite stik z mano preko zavihka Podpora."

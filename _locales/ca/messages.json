@@ -1097,8 +1097,26 @@
   "qf.label.versionhistory": {
     "message": "Historial de Versions…"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "{P}Canviar a la versió bàsica?{br}La vostra clau de llicència es conservarà en aquest ordinador perquè la pugueu renovar més endavant al {b}preu de renovació amb descompte{/b}.{/P}{P}Gràcies per haver donat suport a QuickFolders — les llicències fan possible el desenvolupament de programari independent i ajuden a mantenir viu el projecte. Fins i tot quan ha caducat, podeu renovar la llicència o actualitzar des d’una llicència Estàndard en qualsevol moment per utilitzar les {a class=features}Funcions Pro{/a} durant un any complet.{/P}"
+  },
+  "qf.licenseBackup.recover": {
+    "message": "Recuperar la clau de llicència"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "Podeu restaurar la vostra llicència anterior per obtenir condicions de renovació més econòmiques."
+  },
+  "qf.licenseBackup.restored": {
+    "message": "La vostra clau s’ha restaurat correctament. Tot i que havia caducat, podeu obtenir una clau nova amb descompte."
+  },
+  "qf.licenseBackup.switch": {
+    "message": "Canviar a la versió bàsica"
+  },
   "qf.licenseValidation.expired": {
-    "message": "La clau de llicència que heu entrat ja ha expirat. Polseu el següent botó per renovar-la."
+    "message": "La clau de llicència que heu introduït ha caducat. Premeu el botó següent per renovar la llicència."
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "Alternativament, podeu utilitzar la versió bàsica de moment — encara podreu restaurar la llicència més endavant."
   },
   "qf.licenseValidation.failed": {
     "message": "La clau de llicència que heu entrat no és vàlida. Comproveu el vostre email de FastSpring per obtenir més instruccions. Si continueu tenint problemes, contacteu amb mi des de la pestanya Suport."

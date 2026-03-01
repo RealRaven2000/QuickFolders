@@ -1108,8 +1108,26 @@
   "qf.label.versionhistory": {
     "message": "查看历史版本…"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "{P}切换到基础版本？{br}您的许可证密钥将保存在此计算机上，以便您稍后可以以{b}折扣续费{/b}。{/P}{P}感谢您支持 QuickFolders — 许可证让独立软件开发成为可能，并帮助保持项目持续运行。即使许可证已过期，您仍然可以随时续订或从标准许可证升级，以使用 {a class=features}专业功能{/a} 一整年。{/P}"
+  },
+  "qf.licenseBackup.recover": {
+    "message": "恢复许可证密钥"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "您可以恢复之前的许可证以获得更优惠的续费条件。"
+  },
+  "qf.licenseBackup.restored": {
+    "message": "您的密钥已安全恢复。即使已过期，您仍可获得折扣新密钥。"
+  },
+  "qf.licenseBackup.switch": {
+    "message": "切换到基础版本"
+  },
   "qf.licenseValidation.expired": {
-    "message": "您输入的许可证密钥已过期。 请按下面的按钮续订您的许可证。"
+    "message": "您输入的许可证密钥已过期。请按下面的按钮续订许可证。"
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "或者，您现在可以使用基础版本 — 之后仍可恢复许可证。"
   },
   "qf.licenseValidation.failed": {
     "message": "您输入的许可证密钥无效。 查看来自FastSpring的电子邮件以获取说明。 如果仍有问题，请通过“支持”标签与我联系。"

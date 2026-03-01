@@ -1122,8 +1122,26 @@
   "qf.label.versionhistory": {
     "message": "Přečíst historii verzí…"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "{P}Přepnout na základní verzi?{br}Váš licenční klíč zůstane uložen na tomto počítači, takže jej můžete později obnovit za zvýhodněnou {b}obnovovací cenu{/b}.{/P}{P}Děkujeme, že jste podpořili QuickFolders — licence umožňují nezávislý vývoj softwaru a pomáhají udržet projekt při životě. I po vypršení platnosti můžete kdykoli obnovit svou licenci nebo upgradovat ze standardní licence a používat {a class=features}Pro funkce{/a} po celý rok.{/P}"
+  },
+  "qf.licenseBackup.recover": {
+    "message": "Obnovit licenční klíč"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "Můžete obnovit svou předchozí licenci a získat výhodnější podmínky obnovení."
+  },
+  "qf.licenseBackup.restored": {
+    "message": "Váš licenční klíč byl úspěšně obnoven. I když jeho platnost vypršela, můžete jej obnovit se slevou."
+  },
+  "qf.licenseBackup.switch": {
+    "message": "Přepnout na základní verzi"
+  },
   "qf.licenseValidation.expired": {
-    "message": "Zadaný licenční klíč již vypršel. Stiskněte tlačítko níže pro obnovení licence."
+    "message": "Zadaný licenční klíč vypršel. Klikněte prosím na tlačítko níže pro obnovení licence."
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "Případně můžete zatím používat základní verzi — licenci lze kdykoli později obnovit."
   },
   "qf.licenseValidation.failed": {
     "message": "Zadaný licenční klíč není platný. Zkontrolujte svůj e-mail od FastSpring pro pokyny. Pokud problém přetrvává, kontaktujte mě z karty Podpora."

@@ -1111,8 +1111,26 @@
   "qf.label.versionhistory": {
     "message": "Leer historia de versiones…"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "{P}¿Cambiar a la versión Básica?{br}Tu clave de licencia se conservará en este equipo para que puedas renovarla más adelante con el {b}precio de renovación con descuento{/b}.{/P}{P}Gracias por haber apoyado a QuickFolders — las licencias hacen posible el desarrollo de software independiente y ayudan a mantener vivo el proyecto. Incluso cuando esté vencida, puedes renovar tu licencia o actualizar desde una licencia Estándar en cualquier momento para usar las {a class=features}Funciones Pro{/a} durante un año completo.{/P}"
+  },
+  "qf.licenseBackup.recover": {
+    "message": "Recuperar clave de licencia"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "Puedes restaurar tu licencia anterior para obtener mejores condiciones de renovación."
+  },
+  "qf.licenseBackup.restored": {
+    "message": "Tu clave se restauró correctamente. Aunque estaba vencida, puedes obtener una clave nueva con descuento."
+  },
+  "qf.licenseBackup.switch": {
+    "message": "Cambiar a la versión Básica"
+  },
   "qf.licenseValidation.expired": {
-    "message": "La clave de licencia que ingresó ya expiro. Por favor presione el botón de abajo para renovarla."
+    "message": "La clave de licencia que ingresaste está vencida. Presiona el botón de abajo para renovar tu licencia."
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "Como alternativa, puedes usar la versión Básica por ahora — todavía podrás restaurar tu licencia más adelante."
   },
   "qf.licenseValidation.failed": {
     "message": "La clave de licencia que ingresó no es válida. Verifique su correo recibido de Fastspring para instrucciones. Si continúa con problemas, por favor contácteme usando la pestaña de soporte."

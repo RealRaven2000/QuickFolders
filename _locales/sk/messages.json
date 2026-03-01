@@ -167,6 +167,27 @@
   "purchase-heading": {
     "message": "Podpora prostredníctvom licencie"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "{P}Prepnúť na Základnú verziu?{br}Licenčný kľúč zostane uložený v tomto počítači, takže ho môžete neskôr obnoviť za {b}zvýhodnenú cenu obnovenia{/b}.{/P}{P}Ďakujeme za podporu QuickFolders — licencie umožňujú nezávislý vývoj softvéru a pomáhajú udržať projekt v chode. Aj po vypršaní platnosti môžete licenciu kedykoľvek obnoviť alebo inovovať zo štandardnej licencie a používať {a class=features}Pro funkcie{/a} počas celého roka.{/P}"
+  },
+  "qf.licenseBackup.recover": {
+    "message": "Obnoviť licenčný kľúč"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "Môžete obnoviť predchádzajúcu licenciu a získať výhodnejšie podmienky obnovenia."
+  },
+  "qf.licenseBackup.restored": {
+    "message": "Kľúč bol úspešne obnovený. Aj keď vypršal, môžete získať nový kľúč so zľavou."
+  },
+  "qf.licenseBackup.switch": {
+    "message": "Prepnúť na Základnú verziu"
+  },
+  "qf.licenseValidation.expired": {
+    "message": "Zadaný licenčný kľúč vypršal. Stlačte tlačidlo nižšie na obnovenie licencie."
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "Prípadne môžete dočasne používať Základnú verziu — licenciu môžete obnoviť neskôr."
+  },
   "renew-your-license": {
     "message": "Obnovte svoju licenciu."
   },

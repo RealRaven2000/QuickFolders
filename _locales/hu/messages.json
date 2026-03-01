@@ -1010,8 +1010,26 @@
   "qf.label.versionhistory": {
     "message": "Verziótörténet"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "{P}Átváltás az Alapverzióra?{br}A licenckulcs megmarad ezen a számítógépen, így később megújíthatja a {b}kedvezményes megújítási áron{/b}.{/P}{P}Köszönjük, hogy támogatta a QuickFolders fejlesztését — a licencek lehetővé teszik a független szoftverfejlesztést és hozzájárulnak a projekt fennmaradásához. Lejárat után is bármikor megújíthatja licencét, vagy frissíthet Standard licencről, hogy egy teljes évig használhassa a {a class=features}Pro funkciókat{/a}.{/P}"
+  },
+  "qf.licenseBackup.recover": {
+    "message": "Licenckulcs visszaállítása"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "Visszaállíthatja korábbi licencét a kedvezőbb megújítási feltételekért."
+  },
+  "qf.licenseBackup.restored": {
+    "message": "A kulcs sikeresen vissza lett állítva. Bár lejárt, kedvezménnyel új kulcsot szerezhet."
+  },
+  "qf.licenseBackup.switch": {
+    "message": "Átváltás az Alapverzióra"
+  },
   "qf.licenseValidation.expired": {
-    "message": "A megadott licenckulcs lejárt. Kérjük, nyomja meg az alábbi gombot a licenc megújításához."
+    "message": "A megadott licenckulcs lejárt. Kérjük, kattintson az alábbi gombra a megújításhoz."
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "Alternatívaként ideiglenesen használhatja az Alapverziót — a licenc később visszaállítható."
   },
   "qf.licenseValidation.failed": {
     "message": "A megadott licenckulcs érvénytelen. Ellenőrizze a FastSpring e-mailjét az utasításokért. Ha továbbra is problémái vannak, vegye fel a kapcsolatot a Támogatás fülön keresztül."

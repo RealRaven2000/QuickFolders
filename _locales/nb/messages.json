@@ -1127,8 +1127,26 @@
   "qf.label.versionhistory": {
     "message": "Les versjonshistorikk…"
   },
+  "qf.licenseBackup.confirmation": {
+    "message": "{P}Bytte til Basisversjon?{br}Lisensnøkkelen vil bli lagret på denne datamaskinen slik at du kan fornye den senere til {b}rabattert fornyelsespris{/b}.{/P}{P}Takk for at du har støttet QuickFolders — lisenser muliggjør uavhengig programvareutvikling og bidrar til å holde prosjektet i gang. Selv etter utløp kan du når som helst fornye lisensen eller oppgradere fra en Standard-lisens for å bruke {a class=features}Pro-funksjonene{/a} i et helt år.{/P}"
+  },
+  "qf.licenseBackup.recover": {
+    "message": "Gjenopprett lisensnøkkel"
+  },
+  "qf.licenseBackup.recoverable": {
+    "message": "Du kan gjenopprette den tidligere lisensen for bedre fornyelsesvilkår."
+  },
+  "qf.licenseBackup.restored": {
+    "message": "Nøkkelen ble gjenopprettet. Selv om den var utløpt, kan du få en ny nøkkel med rabatt."
+  },
+  "qf.licenseBackup.switch": {
+    "message": "Bytt til Basisversjon"
+  },
   "qf.licenseValidation.expired": {
-    "message": "Lisensnøkkelen du skrev inn er utløpt. Trykk knappen nedenfor for å fornye lisensen."
+    "message": "Lisensnøkkelen du skrev inn er utløpt. Trykk på knappen nedenfor for å fornye lisensen."
+  },
+  "qf.licenseValidation.expired.freeHint": {
+    "message": "Alternativt kan du bruke Basisversjonen foreløpig — du kan gjenopprette lisensen senere."
   },
   "qf.licenseValidation.failed": {
     "message": "Lisensnøkkelen du skrev inn er ugyldig. Sjekk e-posten fra FastSpring for instruksjoner. Hvis du fortsatt har problemer, kontakt meg fra Support-fanen."

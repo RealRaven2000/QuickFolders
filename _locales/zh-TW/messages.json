@@ -2084,7 +2084,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L} QuickFolders 現已相容 Thunderbird 148 {/L}{L} 新增選項以反轉子資料夾選單的字母順序 [issue 600] {/L}{L} quickMove：在資料夾搜尋框中輸入時，游標現在可正確更新 [issue 623] {/L}{L} 修復：目前資料夾工具列上缺少最近使用的資料夾按鈕 [issue 620] {/L}{L} 修復各種圖示及彈出選單顯示問題 {/L}{L} 移除 quickMove 搜尋中重複的 🔎 與 ✕ 圖示 (Thunderbird 142+) [issue 624] {/L}"
+    "message": "{L} Flat 樣式改進：目前的資料夾現在會以使用者指定的分頁顏色進行標示（若已設定）[issue 646]。您可以在主題設定中還原原始行為。 {/L}{L} 主題重新設計：Native Tabs 與 Pushbuttons 採用全新版面配置 [issue 643] {/L}{L} 改進的主題處理：切換主題時現在會重設版面規則，以確保完整的視覺一致性 [issue 650] {/L}{L} 全新 Pro 功能：顯示目前資料夾的帳戶名稱，而非 QuickFolders 標籤 [issue 648] {/L}{L} 資料夾樹中的自訂圖示現在會自動調整大小，過大時不再被裁切 [issue 619] {/L}{L} 已修正：Thunderbird 148 中資料夾樹的重複自訂圖示 [issue 633] {/L}{L} 已修正：QuickFolders 指令子選單中無法運作的選單項目 [issue 639] {/L}{L} 已修正：損壞的 XHTML 對話框「變更分頁順序」 [issue 647] {/L}{L} 在授權過期後，您現在可以暫時切換至基本版本而不會遺失授權。授權金鑰會安全地儲存在本機，並可隨時還原，讓您日後能以折扣價格續約。這也會從 QuickFolders 工具列中移除紅色的 {b}{+qf.notification.premium.btn.renewLicense}{/b} 面板，直到您決定再次授權為止。 [issue 652]{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

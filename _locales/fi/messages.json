@@ -260,25 +260,25 @@
     "message": "Tukeminen lisenssillä"
   },
   "qf.licenseBackup.confirmation": {
-    "message": "{P}¿Cambiar a la versión Básica?{br}Tu clave de licencia se conservará en este equipo para que puedas renovarla más adelante con el {b}precio de renovación con descuento{/b}.{/P}{P}Gracias por haber apoyado a QuickFolders — las licencias hacen posible el desarrollo de software independiente y ayudan a mantener vivo el proyecto. Incluso cuando esté vencida, puedes renovar tu licencia o actualizar desde una licencia Estándar en cualquier momento para usar las {a class=features}Funciones Pro{/a} durante un año completo.{/P}"
+    "message": "{P}Vaihdetaanko Perusversioon?{br}Lisenssiavaimesi säilytetään tällä tietokoneella, jotta voit uusia sen myöhemmin {b}alennettuun uusintahintaan{/b}.{/P}{P}Kiitos, että olet tukenut QuickFoldersia — lisenssit mahdollistavat riippumattoman ohjelmistokehityksen ja auttavat pitämään projektin käynnissä. Vaikka lisenssi olisi vanhentunut, voit uusia sen tai päivittää Standard-lisenssistä milloin tahansa käyttääksesi {a class=features}Pro-ominaisuuksia{/a} kokonaisen vuoden ajan.{/P}"
   },
   "qf.licenseBackup.recover": {
-    "message": "Recuperar clave de licencia"
+    "message": "Palauta lisenssiavain"
   },
   "qf.licenseBackup.recoverable": {
-    "message": "Puedes restaurar tu licencia anterior para obtener mejores condiciones de renovación."
+    "message": "Voit palauttaa aiemman lisenssisi saadaksesi edullisemmat uusintaehtoja."
   },
   "qf.licenseBackup.restored": {
-    "message": "Tu clave se restauró correctamente. Aunque estaba vencida, puedes obtener una clave nueva con descuento."
+    "message": "Avaimesi palautettiin onnistuneesti. Vaikka se oli vanhentunut, voit hankkia uuden avaimen alennuksella."
   },
   "qf.licenseBackup.switch": {
-    "message": "Cambiar a la versión Básica"
+    "message": "Vaihda Perusversioon"
   },
   "qf.licenseValidation.expired": {
-    "message": "La clave de licencia que ingresaste está vencida. Presiona el botón de abajo para renovar tu licencia."
+    "message": "Syöttämäsi lisenssiavain on vanhentunut. Uusi lisenssisi painamalla alla olevaa painiketta."
   },
   "qf.licenseValidation.expired.freeHint": {
-    "message": "Como alternativa, puedes usar la versión Básica por ahora — todavía podrás restaurar tu licencia más adelante."
+    "message": "Vaihtoehtoisesti voit toistaiseksi käyttää Perusversiota — voit palauttaa lisenssisi myöhemmin."
   },
   "qf.menuitem.quickfolders.splash": {
     "message": "Viimeisimmät päivitykset…"
@@ -426,7 +426,7 @@
   },
   "whats-new-list": {
     "description": "🇫🇮 change log",
-    "message": "{L} QuickFolders on nyt yhteensopiva Thunderbird 148 kanssa {/L}{L} Lisätty uusi vaihtoehto kansiovalikkojen aakkosjärjestyksen kääntämiseen [issue 600] {/L}{L} quickMove: Kohdistin päivittyy nyt oikein kirjoitettaessa kanssihakukenttään [issue 623] {/L}{L} Korjattu: Puuttuva viimeksi käytettyjen kansioiden painike nykyisen kansion työkalurivillä [issue 620] {/L}{L} Korjattu useita kuvake- ja ponnahdusvalikkovirheitä {/L}{L} Poistettu päällekkäiset 🔎 ja ✕ symbolit quickMove-haussa (Thunderbird 142+) [issue 624] {/L}"
+    "message": "{L}Flat-tyylin parannus: aktiivinen kansio korostetaan nyt käyttäjän määrittämällä välilehden värillä (jos asetettu) [issue 646]. Voit palauttaa alkuperäisen toiminnan teemojen asetuksista. {/L}{L}Uudistetut teemat: Native Tabs ja Pushbuttons päivitetty uudella ulkoasulla [issue 643]{/L}{L}Teemojen käsittelyn parannus: teemaa vaihtaessa asettelusäännöt nollataan täydellisen tarkkuuden varmistamiseksi [issue 650]{/L}{L}Uusi Pro-ominaisuus: näytä nykyisen kansion tilin nimi QuickFolders-tunnuksen sijaan [issue 648]{/L}{L>Kustomoidut kuvakkeet kansiorakenteessa skaalautuvat nyt automaattisesti eikä niitä rajata liian suurina [issue 619]{/L}{L}Korjattu duplikaattikuvakkeet kansiorakenteessa Thunderbird 148:ssa [issue 633]{/L}{L}Korjattu toimimattomat valikkokohteet QuickFolders-komentojen alivalikossa [issue 639]{/L}{L}Korjattu rikkoutunut XHTML-valintaikkuna \"Vaihda välilehtien järjestystä\" [issue 647]{/L}{L}Lisenssin vanhennuttua voit nyt väliaikaisesti siirtyä Basic-versioon menettämättä lisenssiäsi. Lisenssiavain tallennetaan turvallisesti paikallisesti ja voidaan palauttaa milloin tahansa, mikä mahdollistaa uusimisen alennettuun hintaan myöhemmin. Tämä myös poistaa punaisen {b}{+qf.notification.premium.btn.renewLicense}{/b}-paneelin QuickFolders-työkaluriviltä, kunnes päätät lisensoida uudelleen. [issue 652]{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -2025,7 +2025,7 @@
   },
   "whats-new-list": {
     "description": "🇯🇵 change log",
-    "message": "{L} QuickFolders は Thunderbird 148 と互換性があります {/L}{L} サブフォルダメニューのアルファベット順を逆にする新しいオプションを追加 [issue 600] {/L}{L} quickMove: フォルダ検索ボックスで入力中にカーソルが正しく更新されるようになりました [issue 623] {/L}{L} 修正: 現在のフォルダツールバーに最近使用したフォルダボタンがなかった [issue 620] {/L}{L} アイコンやポップアップメニューの表示に関する問題を修正 {/L}{L} quickMove 検索で重複する 🔎 と ✕ のアイコンを削除 (Thunderbird 142+) [issue 624] {/L}"
+    "message": "{L}フラットスタイルの改善: アクティブフォルダがユーザー設定のタブ色で強調表示されるようになりました（設定されている場合） [issue 646]。テーマ設定で元の動作に戻すことも可能です。 {/L}{L}テーマの再設計: Native Tabs と Pushbuttons が新しいレイアウトで刷新されました [issue 643]{/L}{L}テーマ処理の改善: テーマ切り替え時にレイアウトルールがリセットされ、完全な忠実度が保証されます [issue 650]{/L}{L}新しい Pro 機能: 現在のフォルダのアカウント名を QuickFolders ラベルの代わりに表示 [issue 648]{/L}{L}フォルダーツリー内のカスタムアイコンが自動的にリサイズされ、サイズが大きすぎる場合に切り取られなくなりました [issue 619]{/L}{L}Thunderbird 148 でフォルダーツリー内の重複カスタムアイコンを修正 [issue 633]{/L}{L}QuickFolders コマンドサブメニューの動作しないメニュー項目を修正 [issue 639]{/L}{L}壊れた XHTML ダイアログ「タブの順序を変更」を修正 [issue 647]{/L}{L}ライセンスの有効期限が切れた後、ライセンスを失うことなく一時的に Basic バージョンに切り替え可能になりました。ライセンスキーは安全にローカルにバックアップされ、いつでも復元可能で、後で割引価格で更新できます。また、QuickFolders ツールバーの赤い {b}{+qf.notification.premium.btn.renewLicense}{/b} パネルも、再ライセンスするまで非表示になります。 [issue 652]{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

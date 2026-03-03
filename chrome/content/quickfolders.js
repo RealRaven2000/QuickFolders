@@ -288,6 +288,8 @@ END LICENSE BLOCK */
     ## Added missing translations and disabled a superflous update message. silent update for users of 6.14.1
 
   6.15 QuickFolders Pro - WIP
+    ## [issue 652] Added “Switch to Free version” option and license backup / recovery after key expiry
+
     ## [issue 619] automatically resize icons in folder tree to avoid cropping
     ## [issue 639] 3 menu items from QuickFolders Commands submenu do not work
     ## [issue 633] Duplicate custom icons in folder tree - Thunderbird 148
@@ -296,7 +298,7 @@ END LICENSE BLOCK */
     ## [issue 648] New Pro feature: show account name of current folder instead of QuickFolders label
     ## [issue 643] Redesigned  the themes "Native Tabs" and "Pushbuttons" with a fresh layout
     ## [issue 650] Improve selecting / changing QuickFolders themes by removing overwritten layout rules
-    ## [issue 652] Added “Switch to Free version” option and license backup / recovery after key expiry
+    ## [issue 651] Removed custom folder icon reappears after relaunch
 
     ## [issue 630] misc: removed unnecessary console errors from quickfolders-util.js
 

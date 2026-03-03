@@ -550,17 +550,29 @@ QuickFolders.FolderTree = {
         if (!iconURI) {
           // when do we force this to be executed?
           util.logDebug(
-            `FolderTree.setFolderTreeIcon(${folder.prettyName || folder.localizedName}, empty)`
+            `FolderTree.setFolderTreeIcon(${folder.prettyName || folder.localizedName}, empty)`,
           );
           util.logDebugOptional(
             "folderTree.icons",
-            `REMOVING:\n${selector} {\nbackground-image\n}`
+            `REMOVING:\n${selector} {\nbackground-image\n}`,
           );
           QuickFolders.Styles.removeElementStyle(ss, selector, "background-image");
           folder.setStringProperty("folderIcon", "noIcon");
           folder.setStringProperty("iconURL", "");
-          folder.setForcePropertyEmpty("folderIcon", false); // remove property
-          return;
+          if (typeof folder.setForcePropertyEmpty === "function") {
+            folder.setForcePropertyEmpty("folderIcon", false); // remove property
+          }
+          if (QuickFolders.FolderTree.hasContentIcons) {
+            // Tb 148+ from about3Pane.css - restore the default icon (yellow folder)
+            QuickFolders.Styles.setElementStyle(
+              ss,
+              selector,
+              "content",
+              "var(--icon-folder)",
+              true,
+            );
+          }
+          return true; // something changed! [issue 651]
         }
         // folder.setStringProperty("folderIcon", propName);
         util.logDebugOptional(

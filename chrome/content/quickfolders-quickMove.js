@@ -13,8 +13,6 @@
     QuickFolders_ESM
       ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
       : ChromeUtils.import("resource:///modules/MailServices.jsm");
-      
-  var { PluralForm } = ChromeUtils.importESModule("resource://gre/modules/PluralForm.sys.mjs");
 
 // drop target which defers a move to a quickJump operation
 QuickFolders.quickMove = {
@@ -109,20 +107,29 @@ QuickFolders.quickMove = {
 	// parentName = optional parameter for remembering for autofill - 
 	// only pass this when search was done in the format parent/folder
   execute: async function(targetFolderUri, parentName, folder) {
-    function showFeedback(actionCount, isCopy) {
+    async function showFeedback(actionCount, isCopy) {
       // show notification
       if (!actionCount) {
         return;
       }
-    
-      let msg = 
-        isCopy 
-        ?  util.getBundleString("quickfoldersQuickCopiedMails")
-        :  util.getBundleString("quickfoldersQuickMovedMails");
-      let notify = PluralForm.get(actionCount, msg).replace("{1}", actionCount).replace("{2}", (fld.prettyName || fld.localizedName));
-			if (!QuickFolders.quickMove.Settings.isSilent) {
-				util.slideAlert("QuickFolders", notify);
+      if (QuickFolders.quickMove.Settings.isSilent) {
+        return;
       }
+
+      const msg = isCopy
+        ? util.getBundleString("quickfoldersQuickCopiedMails")
+        : util.getBundleString("quickfoldersQuickMovedMails");
+
+      const notification = await QuickFolders.Util.notifyTools.notifyBackground({
+        func: "pluralForm",
+        msg: msg,
+        count: actionCount,
+      });
+      let notify = notification
+        .replace("{1}", actionCount)
+        .replace("{2}", fld.prettyName || fld.localizedName);
+
+      util.slideAlert("QuickFolders", notify);
     }
     async function copyList(uris, origins, isCopy) {
       if (!uris.length) {return;}

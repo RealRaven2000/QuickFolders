@@ -608,6 +608,7 @@ async function main() {
     "updateUserStyles",
     "readCategories",
     "storeCategories",
+    "pluralForm",
     "readToolbarStatus",
     "storeToolbarStatus",
     "toggleNavigationBars",
@@ -898,6 +899,15 @@ async function main() {
         // read category from tabsession
         let cats = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_Categories");
         return cats;
+      }
+
+      case "pluralForm" : {
+        // Bug 1935334 - Remove usage of PluralForm.sys.mjs from Thunderbird code
+        const pluralForm = new Intl.PluralRules(navigator.language); // use current locale
+        const form = pluralForm.select(data.count); // "one" or "other"
+        let forms = data.msg.split(";");
+        let str = (form === "one") ? forms[0] : forms[1]; 
+        return str;
       }
 
       case "storeToolbarStatus": // store toolbar visibilities in tabsession

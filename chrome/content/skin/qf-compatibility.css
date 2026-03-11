@@ -433,7 +433,7 @@ input[type=color] {
   box-shadow: 5px 5px 5px rgba(40,40,40,0.4);
   top: 300px;
   /* not sure what var is correct for dialog backgrounds in themed dialogs.. */  
-  background-color: var(--in-content-table-background);
+  background-color: var(--background-color-canvas, --in-content-table-background);
   padding: 5px;
 }
 
@@ -446,7 +446,6 @@ input[type=color] {
 	grid-template-rows: repeat(6, auto);    
   grid-gap: 2px;
   /* justify-content: space-between; */
-  color: #444;
 }
 
 #paletteGrid div {

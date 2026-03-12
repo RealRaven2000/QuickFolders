@@ -3,9 +3,12 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <style>
+   :root {
+      --fill-opacity: context-fill-opacity;
+   }  
    @media (prefers-color-scheme: light) {
     :root {
-        --basiccolor: rgb(20,20,20);
+        --basiccolor: context-fill rgb(110, 109, 21);
         --fill: var(--basiccolor);
         --hands: var(--basiccolor);
         --stroke: color-mix(in srgb, var(--basiccolor); 20%, transparent);
@@ -23,7 +26,7 @@
   </style> 
 
   <path 
-    style="fill:var(--fill);"
+    style="fill:var(--fill);fill-opacity: var(--fill-opacity)"
     d="M8 0a8 8 0 100 16A8 8 0 008 0zm0 14A6 6 0 118 2a6 6 0 010 12z"/>
   <path 
     style="fill:var(--hands);"

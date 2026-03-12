@@ -3,25 +3,28 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <style>
+    :root {
+      --fill-opacity: context-fill-opacity;
+    }
+  
    @media (prefers-color-scheme: light) {
       :root {
-         --basiccolor: rgb(20,20,20);
+         --basiccolor: context-fill rgb(20,20,20);
          --fill: var(--basiccolor);
-         --fill-opacity: var(--toolbarbutton-icon-fill-opacity,0.9);
          --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
-        --wrench: #0022AA;
+         --wrench: #0022AA;
       }
    }
 
    @media (prefers-color-scheme: dark) {
       :root {
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-fill rgb(251,251,254);
         --fill: var(--basiccolor);
         --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
         --wrench: #0044FF;
       }
    }
   </style>  
-  <path style="fill:var(--fill);" d="M5 4l1 1H2V4zm4 9H2V6h11v3l2 2V6a2 2 0 00-2-2H7.85L6.38 2.54A1.93 1.93 0 005.02 2H2a2 2 0 00-2 2v9c0 1.1.9 2 2 2h9"/>
+  <path style="fill:var(--fill);fill-opacity:var(--fill-opacity);" d="M5 4l1 1H2V4zm4 9H2V6h11v3l2 2V6a2 2 0 00-2-2H7.85L6.38 2.54A1.93 1.93 0 005.02 2H2a2 2 0 00-2 2v9c0 1.1.9 2 2 2h9"/>
   <path style="fill:var(--wrench);" d="M6.38 7.6l1.7 1.71c.82.9 2.13-.4 1.24-1.22l-1.7-1.71c.39-.2.82-.27 1.25-.31 2.43-.22 3.81 1.8 2.55 4.08l4.36 4.39c.76.67-.66 2.09-1.34 1.35l-4.4-4.37c-2.12.99-4.13-.27-3.97-2.65 0-.44.1-.87.3-1.26z"/>
 </svg>

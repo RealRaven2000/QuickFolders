@@ -108,26 +108,28 @@
          inkscape:locked="false" />
    </sodipodi:namedview>
    <style>
+      :root {
+         --fill-opacity: context-fill-opacity;
+      }
       @media (prefers-color-scheme: light) {
          :root {
-            --basiccolor: rgb(20,20,20);
+            --basiccolor: context-fill rgb(20,20,20);
             --fill: var(--basiccolor);
             --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent); 
          }
       }
       @media (prefers-color-scheme: dark) {
          :root {
-         --basiccolor: rgb(251,251,254);
+         --basiccolor:  context-fill rgb(251,251,254);
          --fill: var(--basiccolor);
          --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
          }
       }
    </style>  
    <path
-     fill-opacity="context-fill-opacity" 
      d="M 0,3 H 16 L 16.018014,5.3056396 15,5.308057 V 10 c 0,1.050198 -1.249153,2 -2,2 H 3 C 2.2491527,12 1,11.0502 1,10 V 5.308057 L 0.01232239,5.305637 Z"
      id="toolbar"
-     style="fill:var(--fill);stroke-width:1.5;stroke:var(--stroke);"
+     style="fill:var(--fill);stroke-width:1.5;stroke:var(--stroke);fill-opacity:var(--fill-opacity);"
      sodipodi:nodetypes="ccccssssccc"
      inkscape:label="toolbar" />
    <path

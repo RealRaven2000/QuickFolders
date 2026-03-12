@@ -3,23 +3,25 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" fill="context-fill" fill-opacity="context-fill-opacity" viewBox="0 0 16 16">
   <style>
+   :root {
+     --fill-opacity: context-fill-opacity;
+   }
+
    path {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-fill rgb(20,20,20);
       --fill: var(--basiccolor);
-      --fill-opacity: 0.9;
       --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);      
    }
 
    @media (prefers-color-scheme: dark) {
       path {
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-fill rgb(251,251,254);
         --fill:  var(--basiccolor);
-        --fill-opacity: 0.8;
         --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);      
       }
    }
   </style>  
   <path 
-    style="fill:var(--fill);stroke:var(--stroke);fill-opacity:var(--fill-opacity);"
+    style="fill:context-fill var(--fill);stroke:context-stroke var(--stroke);fill-opacity:var(--fill-opacity);"
     d="M7.379 14.207l-5.5-5.5A3 3 0 0 1 1 6.586V1h5.586a3 3 0 0 1 2.121.879l5.5 5.5a3 3 0 0 1 0 4.242l-2.586 2.586a3 3 0 0 1-4.242 0zm1.414-1.414a1 1 0 0 0 1.414 0l2.586-2.586a1 1 0 0 0 0-1.414l-5.5-5.5A1 1 0 0 0 6.586 3H3v3.586a1 1 0 0 0 .293.707l5.5 5.5zM5 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
 </svg>

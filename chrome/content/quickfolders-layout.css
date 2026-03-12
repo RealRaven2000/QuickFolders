@@ -168,10 +168,10 @@ toolbar .folderBarContainer toolbarbutton[disabled="true"] > label {
 /* tools menu button */
 #QuickFolders-Toolbar toolbarbutton#QuickFolders-mainPopupBtn {
 	list-style-image: url("skin/ico/settings.svg");
-  /* fill: var(--toolbarbutton-icon-fill, currentColor);
-  fill-opacity: var(--toolbarbutton-icon-fill-opacity); */
 	stroke: var(--new-highlight, yellow); /* the tab in front of the wheel */
+	-moz-context-properties: fill; /* make sure currentColor from the theme goes into settings button! */
 }
+
 #QuickFolders-mainPopupBtn image, #QuickFolders-quickMove image, #filterActive image { 
 	height:16px !important; 
 }
@@ -553,6 +553,8 @@ toolbarbutton#QuickFoldersCurrentFolder {
 
 .quickfolders-toolbarbuttons toolbarbutton {
 	appearance: toolbarbutton !important;
+	border-radius: var(--button-border-radius, 3px);
+
 }
 
 .quickfolders-pills toolbarbutton {

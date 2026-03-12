@@ -3,21 +3,25 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16">
   <style>
+    :root {
+      --fill-opacity: context-fill-opacity;
+    }
+
     path {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-fill rgb(20,20,20);
       --fill: var(--basiccolor);
-      --new-highlight: #0488d5;
+      --new-highlight: #9d1604;
     }
     @media (prefers-color-scheme: dark) {
       path {
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-fill rgb(251,251,254);
         --fill: var(--basiccolor);
-        --new-highlight: #0aa5ff;
+        --new-highlight: #fa026e;
       }
     }
   </style>  
   <path 
-    style="fill:var(--fill);"
+    style="fill:var(--fill);fill-opacity:var(--fill-opacity);"
     d="M8 1c-1.79 0-3.58.68-4.95 2.05l2.12 2.12a4.02 4.02 0 015.67 0l2.12-2.12A6.98 6.98 0 008.01.99zm-2.83 9.83l-2.12 2.12a7 7 0 009.9 0l-2.12-2.12a4 4 0 01-5.66 0z"/>
   <path 
     style="fill:var(--new-highlight);"

@@ -109,7 +109,6 @@ menuitem.cmd[tagName="qfOptions"] {
 }
 toolbarbutton#QuickFolders-Options:hover,
 menuitem.cmd[tagName="qfOptions"]:hover {
-    fill: var(--new-highlight) !important;
 	stroke: currentColor !important;
 }
 

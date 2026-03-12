@@ -422,7 +422,8 @@ input[type=color] {
 
 /* where can we get these system colors from? */
 #qf-flat-toolbar {
-  background-color: var(--toolbar-bgcolor);
+  background-color: var(--layout-background-1,--toolbar-bgcolor);
+  color: var(--lwt-text-color,--toolbar-color);
 }
 
 /* replacement for the popup menu showing color choices */

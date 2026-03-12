@@ -3,18 +3,19 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <style>
+   :root {
+      --fill-opacity: context-fill-opacity;
+   }
    path {
-      --basiccolor: var(--in-content-page-color,rgb(20,20,20));
+      --basiccolor: context-fill var(--in-content-page-color,rgb(20,20,20));
       --fill: var(--basiccolor);
-      --fill-opacity: 0.9;
       --highlight: var(--new-highlight,#0488d5);
    }
 
    @media (prefers-color-scheme: dark) {
       path {
-        --basiccolor: var(--in-content-page-color,rgb(251,251,254));
+        --basiccolor: context-fill var(--in-content-page-color,rgb(251,251,254));
         --fill: var(--basiccolor);
-        --fill-opacity: 0.8;
         --highlight: var(--new-highlight,#0aa5ff);
       }
    }

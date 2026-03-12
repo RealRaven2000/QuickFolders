@@ -4,20 +4,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
   <style>
     :root {
-      --basiccolor: var(--in-content-page-color,rgb(20,20,20));
+      --fill-opacity: context-fill-opacity;
+    }
+    :root {
+      --maincolor: context-fill;
+      --basiccolor: var(--maincolor,rgb(20,20,20));
       --fill: var(--basiccolor);
-      --fill-opacity: 0.9;
       --highlight: #0488d5;
       --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --basiccolor: var(--in-content-page-color,rgb(251,251,254));
+        --maincolor: context-fill;
+        --basiccolor: var(--maincolor,rgb(251,251,254));
         --fill: var(--basiccolor);
-        --fill-opacity: 0.8;
         --highlight: #0aa5ff;
-        --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
       }
       *:hover path {
         --highlight: blue;

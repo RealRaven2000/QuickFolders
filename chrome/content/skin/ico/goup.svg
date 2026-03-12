@@ -5,7 +5,7 @@
   <style>
    @media (prefers-color-scheme: light) {
     :root {
-        --basiccolor: var(--in-content-page-color,rgb(20,20,20));
+        --basiccolor: context-fill var(--in-content-page-color,rgb(20,20,20));
         --fill: var(--basiccolor);
         --stroke: color-mix(in srgb, var(--basiccolor); 20%, transparent);
     }
@@ -13,7 +13,7 @@
 
    @media (prefers-color-scheme: dark) {
       :root {
-        --basiccolor: var(--in-content-page-color,rgb(251,251,254));
+        --basiccolor: context-fill var(--in-content-page-color,rgb(251,251,254));
         --fill: var(--basiccolor);
         --stroke: color-mix(in srgb, var(--basiccolor); 20%, transparent);
       }

@@ -3,16 +3,18 @@
    - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
   <style>
+   :root {
+      --fill-opacity: context-fill-opacity;
+   }
    path {
-      --basiccolor: rgb(20,20,20);
+      --basiccolor: context-fill  rgb(20,20,20);
       --fill: var(--basiccolor);
-      --fill-opacity: var(--toolbarbutton-icon-fill-opacity,0.9);
       --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
    }
 
    @media (prefers-color-scheme: dark) {
       path {
-        --basiccolor: rgb(251,251,254);
+        --basiccolor: context-fill rgb(251,251,254);
         --fill: var(--basiccolor);
       }
       *:hover path {

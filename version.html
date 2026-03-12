@@ -367,6 +367,41 @@
 					would often require restarting Thunderbird to see their real effect.
 				</li>
 				<li>
+					<p>
+						Toolbar Icons now reflect the main theme colors, also when the theme changes the color 
+						of menu text. Before we had hard coded values for bright and dark themes.
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/655">[issue 655]</a>
+					</p>
+					<img class="screenshot" src="images/theme-icons-issue-655-problem.png" alt="inconsistent icon colors">
+					<p>
+						Instead, QuickFolders now uses the proper color and opacity derived from theme context. 
+						Note the three icons on the right are injected by quickFilters and will be fixed
+						by a patch there independently.
+					</p>
+					<img class="screenshot" src="images/theme-icons-issue-655-fixed.png" alt="consistent icon colors">
+					<p>
+						Mixed colors with theme "Green over solid black":
+					</p>
+					<div style="display:flex; flex-wrap:wrap; gap:12px;">
+						<div style="flex:1 1 566px; min-width:510px;">
+							<div>Before: some icons have hard coded colors</div>
+							<img class="screenshot"
+									src="images/theme-icons-issue-655-menu.png"
+									alt="popup menus"
+									style="max-width:100%; height:auto;">
+						</div>
+
+						<div style="flex:1 1 532px; min-width:480px;">
+							<div>After: icons use the menu color</div>
+							<img class="screenshot"
+									src="images/theme-icons-issue-655-menu-fixed.png"
+									alt="popup menus"
+									style="max-width:100%; height:auto;">
+						</div>
+					</div>
+
+				</li>
+				<li>
 					New Pro feature: show the account name of the current folder instead of the QuickFolders label 
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/648">[issue 648]</a>.
 					This can be configured in advanced settings under Miscellaneous:<br>

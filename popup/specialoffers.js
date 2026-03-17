@@ -18,7 +18,7 @@ const REDUCTION_RENEW = "20%", // 25
   REDUCTION_PRO = "33%", // 40
   REDUCTION_UPGRADE = "33%",
   // eslint-disable-next-line no-unused-vars
-  SALE_END_DATE = "2025-12-26";
+  SALE_END_DATE = "2026-04-08";
 
 function getSaleEndLabel() {
   // format date based on user’s locale

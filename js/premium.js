@@ -1,7 +1,7 @@
 
-const sales_name = "X-MAS SALE"; // .saleName
-const SALE_START_DATE = "2025-12-15";
-const SALE_END_DATE = "2025-12-26"; 
+const sales_name = "EASTER SALE"; // .saleName
+const SALE_START_DATE = "2026-03-19";
+const SALE_END_DATE = "2026-04-08"; 
 
 
 

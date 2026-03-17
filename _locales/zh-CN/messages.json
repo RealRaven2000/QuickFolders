@@ -2072,7 +2072,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L} Flat 样式改进：活动文件夹现在会使用用户指定的标签颜色进行高亮显示（如果已设置）[issue 646]。您可以在主题设置中恢复原有行为。 {/L}{L} 主题重新设计：Native Tabs 和 Pushbuttons 采用了全新的布局 [issue 643] {/L}{L} 主题处理改进：切换主题时将重置布局规则，以确保完整的视觉一致性 [issue 650] {/L}{L} 全新 Pro 功能：显示当前文件夹的账户名称，而不是 QuickFolders 标签 [issue 648] {/L}{L} 文件夹树中的自定义图标现在会自动调整大小，过大时不再被裁剪 [issue 619] {/L}{L} 已修复：Thunderbird 148 中文件夹树中的重复自定义图标 [issue 633] {/L}{L} 已修复：QuickFolders 命令子菜单中无法使用的菜单项 [issue 639] {/L}{L} 已修复：损坏的 XHTML 对话框“更改标签顺序” [issue 647] {/L}{L} 在许可证过期后，您现在可以临时切换到基础版本而不会丢失许可证。许可证密钥会安全地保存在本地，并可随时恢复，从而允许您稍后以折扣价格续订。这也会从 QuickFolders 工具栏中移除红色的 {b}{+qf.notification.premium.btn.renewLicense}{/b} 面板，直到您决定再次购买许可证。 [issue 652]{/L}"
+    "message": "{L}Flat Style 改进：如果设置了用户指定的标签颜色，当前文件夹现在会以该颜色高亮显示。您可以在主题设置中恢复原始行为 [issue 646]。{/L}{L}重新设计的主题：Native Tabs 和 Pushbuttons 具有新布局 [issue 643]。{/L}{L}改进主题处理：切换主题现在会重置布局规则以确保完整显示 [issue 650]，并且工具栏图标现在遵循主题的主要颜色以保持一致外观 [issue 655]。{/L}{L}新的 Pro 功能：显示当前文件夹的帐户名称，而不是 QuickFolders 标签 [issue 648]。{/L}{L}现在可以在文件夹树中使用大图片作为自定义图标而不被裁剪，它们将自动调整大小 [issue 619]。{/L}{L}修复 Thunderbird 148 中文件夹树中重复的自定义图标 [issue 633]。{/L}{L}修复 QuickFolders Commands 子菜单中不起作用的菜单项 [issue 639]。{/L}{L}修复损坏的 XHTML 对话框 \"Change order of tabs\" [issue 647]。{/L}{L}许可证到期后，现在可以临时切换到 Basic 版本而不会丢失许可证。您的许可证密钥已安全地本地备份，并可随时恢复，从而允许您以后以折扣价格续订。这也会移除 QuickFolders 工具栏上的红色面板 {b}{+qf.notification.premium.btn.renewLicense}{/b}，直到您决定重新购买许可 [issue 652]。{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

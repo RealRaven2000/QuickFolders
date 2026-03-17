@@ -331,6 +331,7 @@ label.stdFeature[restricted]:focus {
   stroke-opacity: 1;
 }
 .newTab {
+  -moz-context-properties: fill, fill-opacity, stroke;
   background: url("ico/new-tab.svg") no-repeat;
 	padding-left: 18px;  
 }

@@ -12,7 +12,7 @@
          --basiccolor: context-fill rgb(20,20,20);
          --fill: var(--basiccolor);
          --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
-         --wrench: #0022AA;
+         --wrench: #064fa2;
       }
    }
 
@@ -21,7 +21,7 @@
         --basiccolor: context-fill rgb(251,251,254);
         --fill: var(--basiccolor);
         --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
-        --wrench: #0044FF;
+        --wrench: #9748a8;
       }
    }
   </style>  

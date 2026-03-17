@@ -5,16 +5,14 @@
    }
     @media (prefers-color-scheme: light) {
       :root {
-        --basiccolor: context-fill rgb(20,20,20);
-        --fill: var(--basiccolor);
-        --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);      
+        --fill: context-fill rgb(20,20,20);
+        --stroke: color-mix(in srgb,var(--fill) 20%,transparent);      
       }
     }
    @media (prefers-color-scheme: dark) {
       :root {
-        --basiccolor: context-fill  rgb(251,251,254);
-        --fill: var(--basiccolor);
-        --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);      
+        --fill: context-fill rgb(251,251,254);
+        --stroke: color-mix(in srgb,var(--fill) 20%,transparent);      
       }
   }
   </style>  

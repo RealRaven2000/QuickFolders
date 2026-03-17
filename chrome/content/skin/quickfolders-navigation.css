@@ -136,7 +136,8 @@ toolbar#QuickFolders-CurrentFolderTools[iconsize="large"] {
 
 #quickfolders_curious_be-menuitem-_removeQuickFoldersIcon,
 #quickfolders_curious_be-menuitem-_toggleQuickFoldersIcon {
-  -moz-context-properties: fill;
+	fill: var(--lwt-text-color,--QuickFolders-icon);
+  -moz-context-properties: fill, fill-opacity;
 }
 
 #quickfolders_curious_be-menuitem-_removeQuickFoldersIcon hbox,

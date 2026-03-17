@@ -5,27 +5,31 @@
   <style>
    :root {
       --fill-opacity: context-fill-opacity;
+      --fill: context-fill; /* fallback for TB before 120 */
+      --fill: context-fill light-dark(rgb(20,20,20), rgb(251,251,254));
+      --stroke: context-stroke; /* fallback for TB before 120 */
+      --stroke: color-mix(in srgb, var(--fill) 20%, transparent);
    }
    @media (prefers-color-scheme: light) {
       :root {
-         --basiccolor: context-fill rgb(20,20,20);
-         --fill: var(--basiccolor);
-         --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
-         --plus:rgb(2, 57, 105);
+         --plus: rgb(3, 162, 3);
       }
    }
 
    @media (prefers-color-scheme: dark) {
       :root {
-        --basiccolor: context-fill rgb(251,251,254);
-        --fill: var(--basiccolor);
-        --stroke: color-mix(in srgb,var(--basiccolor) 20%,transparent);
-        --plus:rgb(255, 213, 0);
+        --plus: rgb(255, 213, 0);
       }
    }
   </style>  
 
+  <!-- Tab shape -->
   <path 
-  style="fill:var(--fill);fill-opacity:var(--fill-opacity);" 
-  d="M11 11V9a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v6H1a1 1 0 0 0 0 2h7v-1a1 1 0 0 1 1-1zm4.5 1H13V9.5a.5.5 0 0 0-1 0V12H9.5a.5.5 0 0 0 0 1H12v2.5a.5.5 0 0 0 1 0V13h2.5a.5.5 0 0 0 0-1z"/>
+    style="fill:var(--fill);fill-opacity:var(--fill-opacity);stroke:var(--stroke);" 
+    d="M11 11V9a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v6H1a1 1 0 0 0 0 2h7v-1a1 1 0 0 1 1-1z"/>
+
+  <!-- Plus icon -->
+  <path 
+    style="fill:var(--plus);" 
+    d="M12 9.5v2h-2v1h2v2h1v-2h2v-1h-2v-2h-1z"/>
 </svg>

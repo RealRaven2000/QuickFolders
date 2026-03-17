@@ -289,7 +289,7 @@ END LICENSE BLOCK */
 
   6.15 QuickFolders Pro - WIP
     ## [issue 652] Added “Switch to Free version” option and license backup / recovery after key expiry
-
+    ## [issue 655] Toolbar Icons should reflect the main theme color
     ## [issue 619] automatically resize icons in folder tree to avoid cropping
     ## [issue 639] 3 menu items from QuickFolders Commands submenu do not work
     ## [issue 633] Duplicate custom icons in folder tree - Thunderbird 148
@@ -299,6 +299,8 @@ END LICENSE BLOCK */
     ## [issue 643] Redesigned  the themes "Native Tabs" and "Pushbuttons" with a fresh layout
     ## [issue 650] Improve selecting / changing QuickFolders themes by removing overwritten layout rules
     ## [issue 651] Removed custom folder icon reappears after relaunch
+    ## [issue 653] Bug 1935334 - Remove usage of PluralForm.sys.mjs from Thunderbird code 
+    ## [issue 654] Changes in Advanced search setting ("quickMove Advanced Settings") are not stored
 
     ## [issue 630] misc: removed unnecessary console errors from quickfolders-util.js
 

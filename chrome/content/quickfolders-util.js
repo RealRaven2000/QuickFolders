@@ -325,7 +325,7 @@ QuickFolders.Util = {
     return this.mPlatformVer;
   },
 
-  slideAlert: function slideAlert(title, text, icon) {
+  slideAlert: function (title, text, icon) {
     /*  omit mx method until permissions issue is solved: */
     QuickFolders.Util.notifyTools.notifyBackground({
       func: "slideAlert",

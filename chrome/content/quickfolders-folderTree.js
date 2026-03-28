@@ -357,45 +357,48 @@ QuickFolders.FolderTree = {
   },
 
   storeTreeIcons: async function () {
-    let folderIcons = QuickFolders.FolderTree.customIcons;
-    if (folderIcons.length) {
-      let jsonData = JSON.stringify(folderIcons, null, "  ");
-      let profileDir = PathUtils.profileDir,
+    let folderIcons = QuickFolders.FolderTree.customIcons || [];
+    let jsonData = JSON.stringify(folderIcons, null, "  ");
+
+    let profileDir = PathUtils.profileDir,
         path = PathUtils.join(profileDir, "extensions", "quickFolders-FolderTree.json");
 
-      try {
-        await IOUtils.writeUTF8(path, jsonData);
-        console.log(`Backed up ${folderIcons.length} folder tree icons to ${path}`);
-      } catch (ex) {
-        QuickFolders.Util.logException("Saving Folder Tree icons failed", ex);
-      }
-    } else {
-      console.log("QuickFolders.FolderTree: nothing to back up.");
+    try {
+      await IOUtils.writeUTF8(path, jsonData);
+      console.log(`Backed up ${folderIcons.length} folder tree icons to ${path}`);
+    } catch (ex) {
+      QuickFolders.Util.logException("Saving Folder Tree icons failed", ex);
     }
   },
 
   loadTreeIcons: async function () {
     let profileDir = PathUtils.profileDir,
       path = PathUtils.join(profileDir, "extensions", "quickFolders-FolderTree.json");
+    /* Returns an Array of items:
+    [
+      {
+        folderURI: folder.URI,
+        cssKey: key,
+        iconURL: url,
+      }                  
+    ]
+    */
 
     try {
       let allIcons = await IOUtils.readJSON(path);
-      /* Array of items:
-      [
-        {
-          folderURI: folder.URI,
-          cssKey: key,
-          iconURL: url,
-        }                  
-      ]
-      */
+
+      if (!Array.isArray(allIcons)) {
+        throw new Error("Invalid folder tree icon data (not an array)");
+      }
+
       QuickFolders.Util.logDebugOptional(
         "folderTree.icons",
-        `loadTreeIcons: read ${allIcons.length} Icons.`
+        `loadTreeIcons: read ${allIcons.length} Icons.`,
       );
+
       return allIcons;
     } catch (reason) {
-      QuickFolders.Util.logDebug(`read() - Failure: ${reason}`);
+      QuickFolders.Util.logDebug(`loadTreeIcons() - Failure: ${reason}`);
       return [];
     }
   },

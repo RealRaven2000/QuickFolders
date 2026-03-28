@@ -132,37 +132,29 @@ menuitem.cmd[tagName="qfPaintBucket"],
 	appearance: none !important;
 	-moz-context-properties: fill, fill-opacity, stroke, stroke-opacity !important;
 	list-style-image: url('ico/navigation-mode.svg');
-	margin-left: -2px;
-	margin-right: -2px;
-	min-width: 12px; /* fix Nautipolis etc */
-	padding: 0 !important;
-	width: 12px !important;
-	min-height: 20px;
+	margin-inline: -6px;
+	min-width: 10px;
+	padding-inline: 3px !important;
+	width: 20px !important;
 	height: 100%;
 	fill: currentColor;
 	fill-opacity: var(--toolbarbutton-icon-fill-opacity);
 	stroke: var(--green-highlight);
 	stroke-opacity: 1;
-	/*! -moz-box-align: bottom; */
-	/*! vertical-align: bottom; */
 	bottom: 1px;
-	/*! position: absolute; */
-}
-/* lets make the background invisible! */
-#quickFoldersNavToggle[checked="true"] {
-  stroke: white;
-  stroke-opacity: 1;
-	background-image: none !important;
-	background-color: transparent;
-	background-size: 12px 16px !important;
-	background-repeat: no-repeat;
 }
 
-#quickFoldersNavToggle image {
+#quickFoldersNavToggle[checked] {
+  stroke: rgba(128,128,128,0.5) !important;
+  stroke-opacity: 0.5;
+}
+
+#quickFoldersNavToggle .toolbarbutton-icon {
 	height: 2rem;
   margin: 0;
 	min-height: 16px;
 }
+
 
 #quickFoldersPreviousUnread {
 	list-style-image: url("chrome://messenger/skin/icons/previousmsg.svg");

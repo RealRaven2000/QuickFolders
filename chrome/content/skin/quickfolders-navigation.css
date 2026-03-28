@@ -25,13 +25,18 @@
 	flex-direction: row;
 	justify-content: center;
 	background-color: var(--layout-background-1,--toolbar-bgcolor);
-  color: var(--lwt-text-color, --lwt-toolbar-field-color);
+  color: var(--toolbar-color, --button-text-color);
 	margin-bottom: -3px;
 	overflow-y: visible !important;
 	overflow-x: clip;
 	padding-top: 0 !important;
 	padding-bottom: 1px;
 	width: 100%;
+}
+
+.QuickFolders-NavigationPanel toolbarbutton.icon:hover {
+	color: var(--toolbar-color, --button-text-color);
+	fill-opacity: 1.0 !important;
 }
 
 #QuickFoldersCurrentFolder {
@@ -84,7 +89,7 @@ toolbar#QuickFolders-CurrentFolderTools {
 	appearance: none !important;
   -moz-context-properties: fill, fill-opacity, stroke, stroke-opacity;
   fill: currentColor;
-  fill-opacity: 0.7;
+  fill-opacity: 0.85;
 	margin: 0 1px !important;
   stroke: transparent;
 }

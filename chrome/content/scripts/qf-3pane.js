@@ -95,7 +95,7 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     win.QuickFolders.Util.logDebug(
       `============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`
     );
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css?v=6.13.2");
+    WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css?v=6.15.1");
     WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css?v=2");
 
     // current folder bar specific styling

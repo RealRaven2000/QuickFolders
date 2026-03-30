@@ -287,7 +287,7 @@ END LICENSE BLOCK */
     ## Made compatible with Thunderbird 149
     ## Added missing translations and disabled a superflous update message. silent update for users of 6.14.1
 
-  6.15.1 QuickFolders Pro - WIP
+  6.15 QuickFolders Pro - 22/03/2026
     ## [issue 652] Added “Switch to Free version” option and license backup / recovery after key expiry
     ## [issue 655] Toolbar Icons should reflect the main theme color
     ## [issue 619] automatically resize icons in folder tree to avoid cropping
@@ -303,6 +303,10 @@ END LICENSE BLOCK */
     ## [issue 654] Changes in Advanced search setting ("quickMove Advanced Settings") are not stored
 
     ## [issue 630] misc: removed unnecessary console errors from quickfolders-util.js
+
+  6.15.1 QuickFolders Pro - WIP
+    ## [issue 657] Thunderbird 149 - toggle navigation button remains green
+    ## [issue 651] Fixed: Last removed custom folder icon reappears after relaunch (Tb 149)
 
   
   

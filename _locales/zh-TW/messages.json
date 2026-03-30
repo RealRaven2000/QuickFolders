@@ -2084,7 +2084,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L}Flat Style 改進：如果設置了用戶指定的標籤顏色，當前資料夾現在會以該顏色高亮顯示。您可以在主題設置中恢復原始行為 [issue 646]。{/L}{L}重新設計的主題：Native Tabs 和 Pushbuttons 具有新佈局 [issue 643]。{/L}{L}改進主題處理：切換主題現在會重置佈局規則以確保完整顯示 [issue 650]，並且工具欄圖示現在遵循主題的主要顏色以保持一致外觀 [issue 655]。{/L}{L}新的 Pro 功能：顯示當前資料夾的帳戶名稱，而不是 QuickFolders 標籤 [issue 648]。{/L}{L}現在可以在資料夾樹中使用大圖片作為自訂圖示而不被裁剪，它們將自動調整大小 [issue 619]。{/L}{L}修復 Thunderbird 148 中資料夾樹的重複自訂圖示 [issue 633]。{/L}{L}修復 QuickFolders Commands 子選單中無法使用的功能表項目 [issue 639]。{/L}{L}修復損壞的 XHTML 對話框 \"Change order of tabs\" [issue 647]。{/L}{L}授權到期後，現在可以暫時切換到 Basic 版本而不會丟失授權。您的授權金鑰已安全地在本地備份，可隨時還原，讓您稍後以折扣價續訂。這也會移除 QuickFolders 工具列上的紅色面板 {b}{+qf.notification.premium.btn.renewLicense}{/b}，直到您決定重新授權 [issue 652]。{/L}"
+    "message": "{L}已啟用對 Thunderbird 151 的支援。{/L}{L}已修正：導覽按鈕在切換後可能仍維持高亮（綠色）（Thunderbird 149）[issue 657]。{/L}{L}已修正：最後移除的自訂資料夾圖示在重新啟動 Thunderbird 後可能重新出現（Thunderbird 149）[issue 651]。{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

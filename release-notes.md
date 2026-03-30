@@ -2,7 +2,12 @@
 
 QuickFolders has been fully modernized for 2026, with a refreshed user interface, improved usability, and enhanced theme support — making your folder management faster, cleaner, and more intuitive than ever. Try the new **Thunderbird Tabs** theme for a fresh, minimalist experience.
 
-**Improvements**
+**Maintenance Release 6.15.1**
+*  *Fixed in v6.15.1: Navigation button could remain highlighted (green) after toggling (Thunderbird 149)  [issue #657]
+*  Fixed in v6.15.1: Previously removed custom folder icon could reappear after restarting Thunderbird [issue #651]
+
+
+**Improvements (6.15)**
 
 * Flat Style improvement: the active folder now highlights with the user-assigned tab color (if set). You can revert to the original behavior in theme settings [issue #646]  
 * Redesigned themes: Native Tabs and Pushbuttons refreshed with a new layout [issue #643]  
@@ -12,7 +17,7 @@ QuickFolders has been fully modernized for 2026, with a refreshed user interface
 * Custom icons in the folder tree are now automatically resized and no longer cropped when too large [issue #619]  
 * Added an option to temporarily switch to the Basic version after license expiry without losing your license. The license key is backed up locally and can be restored later [issue #652]  
 
-**Bug Fixes**
+**Bug Fixes (6.15)**
 
 * Fixed duplicate custom icons in the folder tree on Thunderbird 148 [issue #633]  
 * Fixed non-working menu items in the QuickFolders Commands submenu [issue #639]  
@@ -20,7 +25,7 @@ QuickFolders has been fully modernized for 2026, with a refreshed user interface
 * Fixed: Removed custom folder icon reappeared after restarting Thunderbird [issue #651]  
 * Fixed: Changes in Advanced search settings ("quickMove Advanced Settings") were not stored [issue #654]  
 
-**Miscellaneous**
+**Miscellaneous (6.15)**
 
 * Removed usage of PluralForm.sys.mjs to align with Thunderbird code changes [issue #653]  
 * Removed unnecessary console errors from quickfolders-util.js  

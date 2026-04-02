@@ -2530,18 +2530,26 @@ allowUndo = true)`,
       "interface.findFolder",
       `allFoldersMatch(isFiling:${isFiling}, parentString:${parentString}, maxParentLevel:${maxParentLevel})`,
     );
-    for await (let folder of util.allFoldersIterator(isFiling, true, abortSignal)) {
-      if (abortSignal?.aborted) {
-        util.logDebugOptional(
-          "interface.findFolder",
-          "Util.allFoldersMatch() aborted due to keystroke",
-        );
-        return; // Stop iteration if aborted
+    try {
+      for await (let folder of util.allFoldersIterator(isFiling, true, abortSignal)) {
+        if (abortSignal?.aborted) {
+          util.logDebugOptional(
+            "interface.findFolder",
+            "Util.allFoldersMatch() aborted due to keystroke",
+          );
+          return; // Stop iteration if aborted
+        }
+        if (!isParentMatch(folder, parentString, maxParentLevel, parents)) {
+          continue;
+        }
+        addMatchingFolder(matches, folder);
       }
-      if (!isParentMatch(folder, parentString, maxParentLevel, parents)) {
-        continue;
-      }
-      addMatchingFolder(matches, folder);
+    } catch(ex) {
+      if (ex.name === "AbortError") {
+        util.logDebugOptional("interface.findFolder", "Iterator aborted via exception");
+        return;
+      }      
+      util.logException("Exception in allFoldersMatch: ", ex);
     }
   },
 

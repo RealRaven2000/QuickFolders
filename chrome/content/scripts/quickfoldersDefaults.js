@@ -242,13 +242,19 @@ pref("extensions.quickfolders.toolbarpalette.showSmallIcons", false); // unhide 
 
 pref("extensions.quickfolders.notifications.compactComplete", true); // notify when folder compacting is complete
 
+pref("extensions.quickfolders.drag.popupDelay", 250);
+pref("extensions.quickfolders.drag.moveTolerance", 3);
+
 // New Folder Item
+pref("extensions.quickfolders.dragToCreateFolder.owl", true);
 pref("extensions.quickfolders.dragToCreateFolder.pop3", true);
 pref("extensions.quickfolders.dragToCreateFolder.imap", true);
 pref("extensions.quickfolders.dragToCreateFolder.imap.delay", 400); // only relevant to Postbox
 pref("extensions.quickfolders.dragToCreateFolder.local", true);
 pref("extensions.quickfolders.dragToCreateFolder.menutop", false);
 pref("extensions.quickfolders.newFolderCallback.encodeURI",false);
+
+
 
 // Recent Folder Item
 pref("extensions.quickfolders.recentfolders.itemCount", 12);

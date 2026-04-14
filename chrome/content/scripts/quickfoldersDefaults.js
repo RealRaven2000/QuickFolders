@@ -8,6 +8,7 @@ pref("extensions.quickfolders.lastActiveCategories","");
 pref("extensions.quickfolders.validityCheck.onUpdate",true);
 
 // General Prefs
+pref("extensions.quickfolders.focusSearchFromMenu", false); // [issue 658]
 pref("extensions.quickfolders.lastUpdateMessage", "0");
 pref("extensions.quickfolders.showShortcutNumber", false);
 pref("extensions.quickfolders.showUnreadOnButtons", true);
@@ -203,6 +204,7 @@ pref("extensions.quickfolders.debug.interface", false);
 pref("extensions.quickfolders.debug.interface.buttonStyles", false);
 pref("extensions.quickfolders.debug.interface.currentFolderBar", false);
 pref("extensions.quickfolders.debug.interface.findFolder", false);
+pref("extensions.quickfolders.debug.interface.findFolder.focus", false);
 pref("extensions.quickfolders.debug.interface.findFolder.menus", false);
 pref("extensions.quickfolders.debug.interface.findFolder.keyDelay", 0);
 pref("extensions.quickfolders.debug.listeners.folder", false);
@@ -300,6 +302,7 @@ pref("extensions.quickfolders.contextMenu.hideFilterMode", false);
 // Pro Features
 pref("extensions.quickfolders.licenseType", 0); // private license, 1-domain
 pref("extensions.quickfolders.premium.categories.multiSelect",false);
+pref("extensions.quickfolders.premium.findFolder.focusFixTimeout", 200); // [issue 658] - counteract focus stealing on macOS
 pref("extensions.quickfolders.premium.findFolder.maxParentLevel", 2);  
 pref("extensions.quickfolders.premium.findFolder.maxPathItems", 3); 
 pref("extensions.quickfolders.premium.findFolder.folderPathDetail", 2); 

@@ -2,13 +2,7 @@
   globals
     WL,
 */
-var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-var { MailServices } =
-  QuickFolders_ESM
-    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-    : ChromeUtils.import("resource:///modules/MailServices.jsm");
-
+var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
 
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
 window.QuickFolders.WL = WL; // this will be used wherever Add-on version is needed.
@@ -774,8 +768,6 @@ async function onLoad(activatedWhileWindowOpen) {
     window,
     "UTF-8"
   );
-
-
 }
 
 // eslint-disable-next-line no-unused-vars

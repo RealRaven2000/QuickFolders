@@ -3,12 +3,7 @@ var { ExtensionCommon } = ChromeUtils.importESModule(
   "resource://gre/modules/ExtensionCommon.sys.mjs"
 );
 
-var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-var QF_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-var { MailServices } = QF_ESM
-  ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-  : ChromeUtils.import("resource:///modules/MailServices.jsm");
-
+var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
 
 // eslint-disable-next-line no-unused-vars
 var Utilities = class extends ExtensionCommon.ExtensionAPI {

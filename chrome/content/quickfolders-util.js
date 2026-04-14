@@ -12,9 +12,17 @@
     
 */
 
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
 
-var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
-var { FolderUtils } = ChromeUtils.importESModule("resource:///modules/FolderUtils.sys.mjs");
+var { MailServices } =
+  QuickFolders_ESM
+    ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+    : ChromeUtils.import("resource:///modules/MailServices.jsm");
+
+var { FolderUtils } = QuickFolders_ESM
+  ? ChromeUtils.importESModule("resource:///modules/FolderUtils.sys.mjs")
+  : ChromeUtils.import("resource:///modules/FolderUtils.jsm");
 
 if (!QuickFolders.Filter) {QuickFolders.Filter = {};}
 
@@ -2614,7 +2622,9 @@ allowUndo = true)`,
               if (aExitCode == Cr.NS_OK) {
                 resolve();
               } else {
-                const { ImapUtils } = ChromeUtils.importESModule("resource:///modules/ImapUtils.sys.mjs");
+                const { ImapUtils } = QuickFolders_ESM
+                  ? ChromeUtils.importESModule("resource:///modules/ImapUtils.sys.mjs")
+                  : ChromeUtils.import("resource:///modules/ImapUtils.jsm");
                 const hexCode = `0x${aExitCode.toString(16).toUpperCase()}`;
                 let txtDetail = hexCode;
                 if (aExitCode == ImapUtils.NS_MSG_ERROR_IMAP_COMMAND_FAILED) {

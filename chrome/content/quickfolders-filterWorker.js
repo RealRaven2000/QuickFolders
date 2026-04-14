@@ -213,7 +213,13 @@ QuickFolders.FilterWorker = {
 	createFilterQF: async function(sourceFolder, targetFolder, messageList, isCopy) {
 		let msg,
         util = QuickFolders.Util;
-		var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
+		var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+		var ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+
+		var { MailServices } =
+			 ESM
+				? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+				: ChromeUtils.import("resource:///modules/MailServices.jsm");
 
 		function getMailKeyword(subject) {
 			let topicFilter = subject,

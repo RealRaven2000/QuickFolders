@@ -7,8 +7,18 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 //QuickFolders.Util.logDebug('Defining QuickFolders.bookmarks...');
-var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
-var { MailUtils } = ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs"); 
+var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
+var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+var { MailServices } =
+   QuickFolders_ESM
+      ? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
+      : ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { MailUtils } = 
+   QuickFolders_ESM
+      ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
+      : ChromeUtils.import("resource:///modules/MailUtils.jsm"); 
+
+
 
 
 

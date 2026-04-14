@@ -309,9 +309,7 @@ END LICENSE BLOCK */
     ## [issue 657] Thunderbird 149 - toggle navigation button remains green
     ## [issue 651] Fixed: Last removed custom folder icon reappears after relaunch (Tb 149)
 
-  6.16 QuickFolders Pro - WIP
-    ## [issue 664] Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs
-    ## [issue 660] v6.15 Registration dialog: Unstyled buttons to Extend / Renew license
+  6.15.2 QuickFolders Pro - WIP
     ## [issue 658] quickJump searchbox losing focus - Mac OS Tahoe 26.4
     ## [issue 659] Drag & Drop in subfolders menu broken - MacOS Tahoe 26.4
   
@@ -413,6 +411,17 @@ var QuickFolders = {
   doc: null,
   win: null,
   WL: {},
+  _ESM: null,
+  get ESM() {
+    // Thunderbird 128 or higher
+    if (QuickFolders._ESM == null) {
+      var { AppConstants } = ChromeUtils.importESModule(
+        "resource://gre/modules/AppConstants.sys.mjs",
+      );
+      QuickFolders._ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
+    }
+    return QuickFolders._ESM;
+  },
   keyAbortController: null,
   findFolderNameStackCount: 0,
   isQuickFolders: true, // to verify this
@@ -702,15 +711,6 @@ var QuickFolders = {
         }),
         true,
       );
-      if (QuickFolders.Preferences.getBoolPref("focusSearchFromMenu")) {
-        win.addEventListener(
-          "keydown",
-          (QuickFolders.keyListen2 = function (e) {
-            QuickFolders.Interface.windowMenuKeyPress(e);
-          }),
-          true,
-        );
-      }
       QuickFolders.Interface.boundKeyListener = true;
     }
   },
@@ -723,12 +723,7 @@ var QuickFolders = {
           background: "#AF3C00",
         });
       }
-      win.removeEventListener("keyup", QuickFolders.keyListen);
-      delete QuickFolders.keyListen;
-    }
-    if (QuickFolders.keyListen2) {
-      win.removeEventListener("keydown", QuickFolders.keyListen2);
-      delete QuickFolders.keyListen2;
+      win.removeEventListener("keydown", QuickFolders.keyListen);
     }
   },
 
@@ -1846,6 +1841,7 @@ var QuickFolders = {
                 Object.assign(state, { timer:null, popup: null, button: null});
               }
             }, delay);
+            // if (popupId==QuickFolders_globalHidePopupId) QuickFolders_globalHidePopupId=""; // avoid hiding "itself". QuickFolders_globalHidePopupId is not cleared if previous drag cancelled.
           } catch (e) {
             util.logException("Exception creating folder popup: ", e);
           }
@@ -1858,7 +1854,7 @@ var QuickFolders = {
     // deal with old folder popups
     dragLeave: function (event, dragSession) {
       const util = QuickFolders.Util;
-      util.logDebug("buttonDragObserver.dragLeave! active element:", document.activeElement);
+      util.logDebug("buttonDragObserver.dragLeave!");
       if (!dragSession) {
         dragSession = Components.classes["@mozilla.org/widget/dragservice;1"]
           .getService(Components.interfaces.nsIDragService)
@@ -2514,8 +2510,9 @@ function QuickFolders_MySelectFolder(folderUri, highlightTabFirst = false) {
     } else {
       // Get the top position of the row relative to folderTree scrolling element
       const rowTop = row.offsetTop;
+      // in TB115 the parent div#folderPane
       // in TB128            ul#folderTree is scrolled
-      const scrollingElement = folderTree;
+      const scrollingElement = QuickFolders.ESM ? folderTree : folderTree.parentElement;
 
       // Try to get the folder row height
       const itemHeight = row.querySelector(".container")
@@ -3034,7 +3031,10 @@ QuickFolders.CopyListener = {
           let entry = QuickFolders.bookmarks.Entries[i];
           try {
             if (entry.invalid) {
-              var { MailUtils } = ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs"); 
+              var { MailUtils } = QuickFolders.ESM
+                ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
+                : ChromeUtils.import("resource:///modules/MailUtils.jsm"); 
+
               // [issue 265] try to fix the bookmark URI
               if (entry.messageId) {
                 let msg = MailUtils.getMsgHdrForMsgId(entry.messageId);

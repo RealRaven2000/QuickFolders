@@ -310,6 +310,7 @@ END LICENSE BLOCK */
     ## [issue 651] Fixed: Last removed custom folder icon reappears after relaunch (Tb 149)
 
   6.16 QuickFolders Pro - WIP
+    ## new Github Default branch ESR140
     ## [issue 664] Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs
     ## [issue 660] v6.15 Registration dialog: Unstyled buttons to Extend / Renew license
     ## [issue 658] quickJump searchbox losing focus - Mac OS Tahoe 26.4

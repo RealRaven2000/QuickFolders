@@ -10,13 +10,7 @@
 /* import-globals-from folderDisplay.js */ 
 //  we need gFolderDisplay.navigate !!!!
 
-var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
-var QuickFolders_ESM = parseInt(AppConstants.MOZ_APP_VERSION, 10) >= 128;
-
-var { MailServices } =
-	QuickFolders_ESM
-		? ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs")
-		: ChromeUtils.import("resource:///modules/MailServices.jsm");
+var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
 
 
 QuickFolders.Interface = {
@@ -2421,6 +2415,53 @@ QuickFolders.Interface = {
     }
   } ,
 
+  // test code to fix focus issues in quickMove search box [issue 658]
+  windowMenuKeyPress: function (e) {
+    const util = QuickFolders.Util,
+      prefs = QuickFolders.Preferences,
+      eventTarget = e.target;
+
+    const isFocusFix = prefs.getBoolPref("focusSearchFromMenu");
+    if (!isFocusFix) {
+      return;
+    }
+    // shortcuts should only work in thread tree, folder tree and email preview (exclude conversations as it might be in edit mode)
+    const tag = eventTarget?.tagName?.toLowerCase() || "";
+    if (tag == "input" && eventTarget?.id === "QuickFolders-FindFolder") {
+      util.logDebugOptional("interface.findFolder.focus", "key event in quickMove search", e);
+      return;
+    } 
+    if (eventTarget?.id === "QuickFolders-FindPopup") {
+      // eslint-disable-next-line no-debugger
+      console.log("======POPUP GOT KEY EVENT==========");
+    }
+    const isTextInput = e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
+    if (!isTextInput) {
+      return;
+    }
+    const searchBox = document.getElementById("QuickFolders-FindFolder");
+    if (searchBox?._qfPopupOpen) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const start = searchBox.selectionStart ?? searchBox.value.length;
+      const end = searchBox.selectionEnd ?? start;
+
+      searchBox.value = searchBox.value.slice(0, start) + e.key + searchBox.value.slice(end);
+
+      const pos = start + 1;
+      searchBox.setSelectionRange(pos, pos);
+
+      const inputEvent = new InputEvent("input", {
+        bubbles: true,
+        data: e.key,
+        inputType: "insertText",
+      });
+
+      searchBox.dispatchEvent(inputEvent);
+    }
+  },
+
 	getButtonByFolder: function(folder) {
 		for (let i = 0; i < this.buttonsByOffset.length; i++) {
 			let button = this.buttonsByOffset[i];
@@ -3348,10 +3389,7 @@ QuickFolders.Interface = {
 	// tooltip = &contextOpenContainingFolder.label;
 	openContainingFolder: function (msg) {
 	  if (!msg) {return;}
-		const { MailUtils } = QuickFolders.ESM
-      ? ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs")
-      : ChromeUtils.import("resource:///modules/MailUtils.jsm"); 
-	
+		const { MailUtils } = ChromeUtils.importESModule("resource:///modules/MailUtils.sys.mjs"); 	
 		MailUtils.displayMessageInFolderTab(msg);
 	} ,
 
@@ -3641,11 +3679,7 @@ QuickFolders.Interface = {
 			}
 			// the window may correct its x position if cropped by screen's right edge
 
-			const propsDlg = //  "quickfolders-advanced-tab-props-new.xhtml"
-			  QuickFolders_ESM
-          ? "quickfolders-advanced-tab-props-new.xhtml"
-          : "quickfolders-advanced-tab-props.xhtml";
-
+			const propsDlg = "quickfolders-advanced-tab-props-new.xhtml";
 			let win = window.openDialog(
         `chrome://quickfolders/content/${propsDlg}`,
         "quickfolders-advanced",
@@ -5892,29 +5926,41 @@ QuickFolders.Interface = {
 					util.logDebugOptional("interface.findFolder","no popup children, early exit");
 				  return; // no children = no results!
 		    }
+        if (menupopup._qfFocusHandler) {
+          util.logDebugOptional("interface.findFolder","remove existing focus handler");
+          menupopup.removeEventListener("focus", menupopup._qfFocusHandler); 
+          delete menupopup._qfFocusHandler;
+        }
 				menupopup.removeAttribute("ignorekeys");
 				let palette = document.getElementById("QuickFolders-Palette");
 				if (palette) {
-					util.logDebugOptional("interface.findFolder","1. show Popup…");
+          util.logDebugOptional("interface.findFolder", "1. show Popup…");
           // remove and add the popup to register ignorekeys removal
           menupopup = palette.appendChild(palette.removeChild(menupopup));
-					let searchBox = QI.FindFolderBox;
-          menupopup.openPopup(searchBox,"after_start", 0, -1, true, false);
-					// menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
+          let searchBox = QI.FindFolderBox;
+          menupopup.qfPopupTimer = performance.now(); // to prevent immediate reopening of the menu after closing it (Tb bug)
+          menupopup.openPopup(searchBox, "after_start", 0, -1, true, false);
+          // menupopup.showPopup(searchBox, 0, -1,"context","bottomleft","topleft");
 
-					if (event.preventDefault) {event.preventDefault();}
-					if (event.stopPropagation) {event.stopPropagation();}
+          if (event.preventDefault) {
+            event.preventDefault();
+          }
+          if (event.stopPropagation) {
+            event.stopPropagation();
+          }
 
-					setTimeout( function() {
-						util.logDebugOptional("interface.findFolder","creating Keyboard Events…");
-						if (menupopup.dispatchEvent(event)) { // event was not cancelled with preventDefault()
-							util.logDebugOptional("interface.findFolder","keydown event was dispatched.");
-						}
-						if (menupopup.dispatchEvent(makeEvent("keyup", event))) { // event was not cancelled with preventDefault()
-							util.logDebugOptional("interface.findFolder","keyup event was dispatched.");
+          setTimeout(function () {
+            util.logDebugOptional("interface.findFolder", "creating Keyboard Events…");
+            if (menupopup.dispatchEvent(event)) {
+              // event was not cancelled with preventDefault()
+              util.logDebugOptional("interface.findFolder", "keydown event was dispatched.");
             }
-					});
-				} // palette
+            if (menupopup.dispatchEvent(makeEvent("keyup", event))) {
+              // event was not cancelled with preventDefault()
+              util.logDebugOptional("interface.findFolder", "keyup event was dispatched.");
+            }
+          });
+        } // palette
 			} break;
 			case "Escape":
         event.preventDefault(); // [issue 41] Esc key to cancel quickMove also clears Cmd-Shift-K search box
@@ -6210,6 +6256,12 @@ QuickFolders.Interface = {
         "interface.findFolder",
         `payLoad: finalURI=${finalURI} options=${JSON.stringify(options)}`,
       );
+      const menupopup = document.getElementById("QuickFolders-FindPopup");
+      if (menupopup?._qfFocusHandler) {
+        menupopup.removeEventListener("focus", menupopup._qfFocusHandler);
+        delete menupopup._qfFocusHandler;
+      }
+      
       if (!QuickFolders.quickMove.isActive) {
 				const targetFolder = QuickFolders.Model.getMsgFolderFromUri(finalURI);
         // go to folder
@@ -6238,17 +6290,27 @@ QuickFolders.Interface = {
       });
     }
 
-    const util = QuickFolders.Util,
+    function getFocusTime(menupopup) {  
+      if (!menupopup?.qfPopupTimer) {
+        return "(no timer)";
+      }
+      const passed = performance.now() - menupopup.qfPopupTimer;
+      return `${passed.toFixed(1)}ms`;
+    }
+
+   const util = QuickFolders.Util,
       model = QuickFolders.Model,
       prefs = QuickFolders.Preferences,
       SEPARATOR = " » ",
       maxResults = prefs.getIntPref("quickMove.maxResults"),
+      TIDYFOCUSFIX_DELAY = prefs.getIntPref("premium.findFolder.focusFixTimeout"),
       isFiling = QuickFolders.quickMove.isActive;
+
+    let enteredSearch = searchBox.value;
 
     // ABORT the previous search if it exists
     if (QuickFolders.keyAbortController) {
-      QuickFolders.keyAbortController.abort();
-      util.logDebugOptional("interface.findFolder", "Previous search aborted");
+      QuickFolders.keyAbortController.abort(`Aborting previous search. Current="${enteredSearch}"`);
     }
     // Create a new AbortController for the current search operation
     QuickFolders.keyAbortController = new AbortController();
@@ -6256,10 +6318,12 @@ QuickFolders.Interface = {
     // Increment the global stack counter (this is to avoid unneccessarily aborting a
     // non existing controller after the last search has been over for a while)
     QuickFolders.findFolderNameStackCount++;
-		util.logDebugOptional("interface.findFolder",`after new AbortController() find stack=${QuickFolders.findFolderNameStackCount}`);
+		util.logDebugOptional(
+      "interface.findFolder",
+      `after new AbortController() find stack=${QuickFolders.findFolderNameStackCount}`,
+    );
 
     let isSelected = false,
-      enteredSearch = searchBox.value,
       parentCount, // (global) number of parents in a search expression containing "/" - used by the addMatchingFolder callback!
       searchString = enteredSearch.toLocaleLowerCase().trim(),
       searchFolderName = "",
@@ -6269,7 +6333,9 @@ QuickFolders.Interface = {
 		util.logDebug("findFolder (" + searchString + ")");
 
     try {
-      if (!searchString) {return;}
+      if (!searchString) {
+        return;
+      }
       if (searchString === "=") {
         // recent folder token
         // QuickFolders.Interface.onClickRecent(searchBox, null, true); PROTOTYPE
@@ -6280,7 +6346,7 @@ QuickFolders.Interface = {
           null,
           isDrag,
           false,
-          "QuickFolders-FindFolder-popup-Recent"
+          "QuickFolders-FindFolder-popup-Recent",
         );
         let searchbutton = document.getElementById("QuickFolders-quickMove");
         if (menupopup.childElementCount > 0) {
@@ -6290,7 +6356,7 @@ QuickFolders.Interface = {
           searchbutton.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowDown" }));
           searchbutton.dispatchEvent(new KeyboardEvent("keyup", { key: "ArrowDown" }));
           menupopup.childNodes[0].focus();
-					// QuickFolders.Interface.patchMenuIcons(menupopup);
+          // QuickFolders.Interface.patchMenuIcons(menupopup);
         }
         return;
       }
@@ -6301,6 +6367,67 @@ QuickFolders.Interface = {
         isLockInAccount = QuickFolders.quickMove.Settings.isLockInAccount,
         currentFolder = util.CurrentFolder;
       const menupopup = util.$("QuickFolders-FindPopup");
+
+      // [issue 658] - counteract focus stealing on macOS
+      if (menupopup._qfFocusHandler) {
+        menupopup.removeEventListener("focus", menupopup._qfFocusHandler);
+      }
+
+      menupopup._qfFocusHandler = () => {
+        util.logDebugOptional(
+          "interface.findFolder.focus",
+          `got focus event: after ${getFocusTime(menupopup)}`,
+        );
+
+        if (signal.aborted) {
+          util.logDebugOptional("interface.findFolder.focus", `focus() - search aborted`, signal);
+          return;
+        }
+        const active = document.activeElement;
+        const popupHasFocus = menupopup.contains(active);
+        util.logDebugOptional(
+          "interface.findFolder.focus",
+          `popupHasFocus=${popupHasFocus}.\n`,
+          active,
+        );
+        /*
+          if (active!=searchBox) {
+            util.logDebugOptional("interface.findFolder.focus","focus() reclaiming focus…");
+            searchBox.focus();
+          }
+        */
+      };
+
+      menupopup.addEventListener("focus", menupopup._qfFocusHandler, { once: true });
+      if (!menupopup._qfPopupShownHandler) {
+        menupopup._qfPopupShownHandler = () => {
+          const handler = menupopup._qfFocusHandler;
+          util.logDebugOptional(
+            "interface.findFolder.focus",
+            `popup shown: after ${getFocusTime(menupopup)}`,
+          );
+          searchBox._qfPopupOpen = true;
+
+          if (!handler) {
+            return;
+          }
+          util.logDebugOptional("interface.findFolder.focus", "popupshown!", {
+            delay: TIDYFOCUSFIX_DELAY,
+          });
+
+          setTimeout(() => {
+            if (menupopup._qfFocusHandler === handler) {
+              menupopup.removeEventListener("focus", handler);
+              menupopup._qfFocusHandler = null;
+            }
+          }, TIDYFOCUSFIX_DELAY);
+        };
+        menupopup.addEventListener("popupshown", menupopup._qfPopupShownHandler);
+        menupopup.addEventListener("popuphidden", () => {
+          searchBox._qfPopupOpen = false;
+        });        
+      }
+
 
       // SLASH command - list child folders !
       let parentPos = Math.max(searchString.lastIndexOf("/"), searchString.lastIndexOf(">"));
@@ -6323,10 +6450,10 @@ QuickFolders.Interface = {
           return payLoad(finalURI, options);
         }
       }
-			
-			// [issue 548] priority for tabs, start with rank 20
-			const a11y = QuickFolders.Preferences.getBoolPref("quickMove.priorityTabs"),
-			  tabStartupPriority = a11y ? 20 : 0;
+
+      // [issue 548] priority for tabs, start with rank 20
+      const a11y = QuickFolders.Preferences.getBoolPref("quickMove.priorityTabs"),
+        tabStartupPriority = a11y ? 20 : 0;
 
       // change: if only 1 character is given, then the name must start with that character!
       // first, search QuickFolders
@@ -6337,25 +6464,38 @@ QuickFolders.Interface = {
           matchPos = folderNameSearched.indexOf(searchString);
         if (matchPos >= 0) {
           let rank = tabStartupPriority; // searchString.length - folderEntry.name.length; // the more characters of the string match, the higher the rank!
-          if (searchString.length == folderEntry.name.length) {rank += 4;} // full match - promote
-          if (matchPos == 0) {rank += 2;} // promote the rank if folder name starts with this string
+          if (searchString.length == folderEntry.name.length) {
+            rank += 4;
+          } // full match - promote
+          if (matchPos == 0) {
+            rank += 2;
+          } // promote the rank if folder name starts with this string
           if (searchString.length <= 2 && matchPos != 0) {
             // doesn't start with single/two letters?
             // is it the start of a new word? e.g. searching 'F' should match "x-fred" "x fred" "x.fred" "x,fred" ":fred" "(fred" "@fred"
-            if (" .-,_:@([".indexOf(folderNameSearched.substr(matchPos - 1, 1)) < 0) {continue;} // skip if not starting with single letter
+            if (" .-,_:@([".indexOf(folderNameSearched.substr(matchPos - 1, 1)) < 0) {
+              continue;
+            } // skip if not starting with single letter
           }
           let fld = QuickFolders.Model.getMsgFolderFromUri(folderEntry.uri);
-          if (!fld) {continue;} // invalid tabs lead to search failing
-          if (excludedServers.includes(fld.server.key)) {continue;}
+          if (!fld) {
+            continue;
+          } // invalid tabs lead to search failing
+          if (excludedServers.includes(fld.server.key)) {
+            continue;
+          }
           // [issue 451] there is no current folder in conversation view, so we cannot lock search to "current folder" in this case
           if (
             isLockInAccount &&
             fld.server &&
             currentFolder?.server &&
             fld.server.key != currentFolder.server?.key
-          )
-            {continue;}
-          if (checkFolderFlag(fld, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) {continue;}
+          ) {
+            continue;
+          }
+          if (checkFolderFlag(fld, util.ADVANCED_FLAGS.IGNORE_QUICKJUMP, true)) {
+            continue;
+          }
           // avoid duplicates
           if (
             !matches.some(function (a) {
@@ -6379,7 +6519,9 @@ QuickFolders.Interface = {
       let maxParentLevel = searchFolderName.length
         ? prefs.getIntPref("premium.findFolder.maxParentLevel")
         : 1;
-      if (parentPos > 0) {maxParentLevel = 1;} // no subfolders when SLASH is entered
+      if (parentPos > 0) {
+        maxParentLevel = 1;
+      } // no subfolders when SLASH is entered
 
       await util.allFoldersMatch(
         isFiling,
@@ -6389,18 +6531,18 @@ QuickFolders.Interface = {
         parents,
         addMatchingFolder,
         matches,
-        signal // pass the abort signal
+        signal, // pass the abort signal
       );
       if (signal.aborted) {
         setTimeout(() => {
           util.logDebugOptional(
             "interface.findFolder",
-            `Search aborted during main match`,
+            `Search aborted during main match [${searchString}]`,
             matches,
           );
         });
         return;
-      } 
+      }
       util.logDebugOptional("interface.findFolder", `Got ${matches.length} matches.`);
 
       // no parent matches - Add one for a folder without children.
@@ -6408,56 +6550,60 @@ QuickFolders.Interface = {
         for await (let folder of util.allFoldersIterator(isFiling, true, signal)) {
           addIfMatch(folder, matches.parentString || parentString, parents);
           if (signal.aborted) {
-            setTimeout(() => {    
+            setTimeout(() => {
               util.logDebugOptional(
                 "interface.findFolder",
                 `Search aborted during parent match ${folder?.localizedName}`,
                 matches,
-            );
+              );
             });
             return;
-          }      
+          }
         }
       }
       util.logDebugOptional(
         "interface.findFolder.menus",
-        `built list: ${matches.length} matches found. Building menu…`
+        `built list: ${matches.length} matches found. Building menu…`,
       );
 
       // rebuild popup
       let txtDebugMenu = "";
-			matches.sort(function (a, b) {
-				if (b.rank - a.rank == 0) {return b.lname - a.lname;} // Alphabetic
-				return b.rank - a.rank;
-			});
+      matches.sort(function (a, b) {
+        if (b.rank - a.rank == 0) {
+          return b.lname - a.lname;
+        } // Alphabetic
+        return b.rank - a.rank;
+      });
 
-			if (QuickFolders.quickMove.isActive) {
-				menupopup.setAttribute("tag", "quickMove");
-			} else {
-				menupopup.removeAttribute("tag");
-			}
+      if (QuickFolders.quickMove.isActive) {
+        menupopup.setAttribute("tag", "quickMove");
+      } else {
+        menupopup.removeAttribute("tag");
+      }
 
-			//rebuild the popup menu
-			while (menupopup.firstChild) {
-				menupopup.removeChild(menupopup.firstChild);
-			}
-			if (matches.length) {
-				// restrict results to 25
-				let count = Math.min(matches.length, maxResults);
-				for (let j = 0; j < count; j++) {
-					let menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument);
-					// menuitem.className="color menuitem-iconic";
-					menuitem.setAttribute("label", matches[j].name);
-					menuitem.setAttribute("value", matches[j].uri);
-					if (matches[j].type == "quickFolder") {
-						menuitem.className = "quickFolder menuitem-iconic";
-					} else {menuitem.className = "menuitem-iconic";}
-					if (matches[j].parentString) {
-						menuitem.setAttribute("parentString", matches[j].parentString);
-					}
-					menupopup.appendChild(menuitem);
-				}
-			}
+      //rebuild the popup menu
+      while (menupopup.firstChild) {
+        menupopup.removeChild(menupopup.firstChild);
+      }
+      if (matches.length) {
+        // restrict results to 25
+        let count = Math.min(matches.length, maxResults);
+        for (let j = 0; j < count; j++) {
+          let menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument);
+          // menuitem.className="color menuitem-iconic";
+          menuitem.setAttribute("label", matches[j].name);
+          menuitem.setAttribute("value", matches[j].uri);
+          if (matches[j].type == "quickFolder") {
+            menuitem.className = "quickFolder menuitem-iconic";
+          } else {
+            menuitem.className = "menuitem-iconic";
+          }
+          if (matches[j].parentString) {
+            menuitem.setAttribute("parentString", matches[j].parentString);
+          }
+          menupopup.appendChild(menuitem);
+        }
+      }
       util.logDebugOptional("interface.findFolder.menus", "built menu.");
 
       // special commands: if slash was entered, allow creating subfolders.
@@ -6473,7 +6619,7 @@ QuickFolders.Interface = {
             // [Bug 26692]
             util.logDebugOptional(
               "quickMove",
-              `Omitting tab "${folderEntry.name}" - flags = ${folderEntry.flags}`
+              `Omitting tab "${folderEntry.name}" - flags = ${folderEntry.flags}`,
             );
             continue;
           }
@@ -6497,7 +6643,9 @@ QuickFolders.Interface = {
             let f = parents.pop();
 
             // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
-            if (util.doesMailUriExist(f.URI + "/" + enteredSearch.replace(">", "/"))) {continue;}
+            if (util.doesMailUriExist(f.URI + "/" + enteredSearch.replace(">", "/"))) {
+              continue;
+            }
             // [Bug 26565] if (1) fully matching name entered do not offer creating a folder. Case Sensitive!
             if (
               matches.length &&
@@ -6516,13 +6664,15 @@ QuickFolders.Interface = {
             while (pc > 0) {
               // rewrite parentString, too
               atom = atom ? atom.parent : f;
-              if (atom.isServer) {break;}
-							const aName = atom.prettyName || atom.localizedName;
+              if (atom.isServer) {
+                break;
+              }
+              const aName = atom.prettyName || atom.localizedName;
               if (!parFld) {
                 parFld = aName;
                 parentString = aName;
               } else {
-                parFld = aName + SEPARATOR  + parFld; // prepend ancestor
+                parFld = aName + SEPARATOR + parFld; // prepend ancestor
                 parentString = aName + "/" + parentString;
               }
               pc--;
@@ -6532,8 +6682,7 @@ QuickFolders.Interface = {
               .replace("{1}", enteredSearch);
             menuitem.setAttribute("label", theLabel);
             if (prefs.isDebugOption("quickMove")) {
-              txtDebugMenu =
-                `${txtDebugMenu}menuItem: ${theLabel.padEnd(20, " ")} - parentString: ${parentString}\n`;
+              txtDebugMenu = `${txtDebugMenu}menuItem: ${theLabel.padEnd(20, " ")} - parentString: ${parentString}\n`;
             }
 
             menuitem.setAttribute("parentString", parentString); // remember parent string in menu item (easiest)
@@ -6544,7 +6693,7 @@ QuickFolders.Interface = {
                 const fld = await QuickFolders.Interface.onCreateInstantFolder(f, enteredSearch);
                 return false;
               },
-              false
+              false,
             );
             menuitem.className = "menuitem-iconic deferred"; // use "deferred" to avoid selectFound handler
             try {
@@ -6552,13 +6701,15 @@ QuickFolders.Interface = {
                 f.setStringProperty("isQuickFolder", ""); // remove this temporary property
                 menuitem.classList.add("quickFolder");
               }
-            } catch {;}
+            } catch { ; }
 
             if (menupopup.firstChild && isInsertNewFolderTop) {
               menupopup.insertBefore(menuitem, menupopup.firstChild);
-						} else { menupopup.appendChild(menuitem); }
+            } else {
+              menupopup.appendChild(menuitem);
+            }
           }
-				}
+        }
 
         if (!menupopup.childElementCount) {
           const menuitem = this.createIconicElement("menuitem", "*", searchBox.ownerDocument),
@@ -6576,12 +6727,15 @@ QuickFolders.Interface = {
         // remove dummy!
         for (let i = menupopup.children.length - 1; i > 0; i--) {
           let item = menupopup.children[i];
-          if (item.getAttribute("tag") == "dummy") {menupopup.removeChild(item);}
+          if (item.getAttribute("tag") == "dummy") {
+            menupopup.removeChild(item);
+          }
         }
       }
       util.logDebugOptional("interface.findFolder.menus", "showPopup:");
 
       menupopup.setAttribute("ignorekeys", "true");
+      
 
       // [issue 241] force the last URI if popup not shown
       let forceSingleURI;
@@ -6593,13 +6747,14 @@ QuickFolders.Interface = {
       }
 
       if (!forceSingleURI) {
+        menupopup.qfPopupTimer = performance.now();
         menupopup.openPopup(searchBox, "after_start", 0, -1, true, false); // ,evt
       }
 
       if (matches.length == 1 || (matches.length > 0 && forceFind)) {
         util.logDebugOptional(
           "quickMove",
-          forceFind ? "Enter key forces match" : "single match found…"
+          forceFind ? "Enter key forces match" : "single match found…",
         );
         if (wordStartMatch(matches[0].lname, searchFolderName) && forceFind) {
           let finalURI = forceSingleURI || matches[0].uri;
@@ -6613,7 +6768,7 @@ QuickFolders.Interface = {
           let fC = menupopup.firstChild;
           fm.setFocus(fC, fm.FLAG_BYMOUSE + fm.FLAG_SHOWRING);
         }, 250);
-        return; // avoid searchBox.focus()
+        return; // avoid searchBox geting focus
       }
 
       if (isSelected) {
@@ -6622,9 +6777,10 @@ QuickFolders.Interface = {
         this.hideFindPopup();
       } else {
         // test: [issue 658]
-        requestAnimationFrame(() => {
-          searchBox.focus();
-        });
+        util.logDebugOptional(
+          "interface.findFolder",
+          `Focusing search box during  ${QuickFolders.findFolderNameStackCount}. find stack…`,
+        );
         // searchBox.focus();
       }
     } catch (ex) {
@@ -8068,8 +8224,6 @@ QuickFolders.Interface = {
         tbBottom,
         true,
       );
-
-      // this.updateNavigationBar(); // not working here in Tb 115!
 
       // change to numeric
       let minToolbarHeight = prefs.getStringPref("toolbar.minHeight");

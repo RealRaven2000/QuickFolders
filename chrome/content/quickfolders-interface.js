@@ -2532,6 +2532,9 @@ QuickFolders.Interface = {
       if (selectedFolder) {
         toolbar.setAttribute("data-last-selected-uri", selectedFolder.URI);
       }
+    } else {
+      toolbar.removeAttribute("preview");
+      toolbar.removeAttribute("data-preview-mode");
     }
     return makeVisible;
 	} ,

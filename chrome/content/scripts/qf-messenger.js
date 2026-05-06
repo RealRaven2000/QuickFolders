@@ -495,7 +495,6 @@ async function onLoad(activatedWhileWindowOpen) {
       "QuickFolders-ToolbarPopup-dbga": () => {
         QF.Util.notifyTools.notifyBackground({
           func: "showNewsMessage",
-          // msgIds: "newsMsgEsr140",
           mode: "news",
           // msg:  "This is a test message for QuickFolders ESR 140.",
           addonfeatures: "RefFeature",

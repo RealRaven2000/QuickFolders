@@ -892,12 +892,8 @@ QuickFolders.Util = {
           if (entry.FolderUri != targetFolder.URI) {
             bookmarks.dirty = true;
             util.logDebug(
-              "Moving Mail from " +
-                entry.Uri +
-                " to folder " +
-                targetFolder.URI +
-                "\n" +
-                "Reading List item marked as invalid.",
+              `Moving Mail from ${entry.Uri} to folder ${targetFolder.URI} \n` +
+              "Reading List item marked as invalid.",
             );
             entry.FolderUri = targetFolder.URI;
             entry.invalid = true;

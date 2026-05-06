@@ -253,43 +253,54 @@ QuickFolders.FolderTree = {
         if (typeof folder.getStringProperty == "undefined") {
           continue;
         }
-        let key = folder.getStringProperty("folderIcon"),
+        let key = "";
+        let url = "";
+
+        try {
+          key = folder.getStringProperty("folderIcon");
           url = key && key != "noIcon" ? folder.getStringProperty("iconURL") : "";
-
-        if (key && key != "noIcon" && url) {
-          this.addItem(key, url);
-          allIcons.push({
-            folderURI: folder.URI,
-            cssKey: key,
-            iconURL: url,
-          });
-
-          if (debug) {
-            txtWithIcon += `${iCount.toString()} - ${folder.server.hostName} - ${
-              folder.prettyName || folder.localizedName
-            }`;
-            txtWithIcon += `   ${key}: ${url}\n`;
+        } catch (ex) {
+          if (ex.result != 0x80550007) {
+            // NS_ERROR_FAILURE - can be ignored, because getStringProperty throws if the property is not found
+            throw ex;
           }
-          iIcons++;
-        } else {
+          if (debug) {
+            util.logException(
+              `QuickFolders.FolderTree.loadDictionary() - ${
+                folder?.prettyName || folder.localizedName
+              }`,
+              ex,
+            );
+          }
+        }
+
+        if (!key || !url || key == "noIcon") {
           // folder w/o icon
           if (debug) {
             txtList += `${iCount.toString()} - ${folder.server.hostName} - ${
-              folder.prettyName || folder.localizedName
+              folder?.prettyName || folder.localizedName
             }\n`;
           }
           iNoIcon++;
+          continue;
         }
+
+        this.addItem(key, url);
+        allIcons.push({
+          folderURI: folder.URI,
+          cssKey: key,
+          iconURL: url,
+        });
+
+        if (debug) {
+          txtWithIcon += `${iCount.toString()} - ${folder.server.hostName} - ${
+            folder.prettyName || folder.localizedName
+          }`;
+          txtWithIcon += `   ${key}: ${url}\n`;
+        }
+        iIcons++;
       } catch (ex) {
         switch (ex.result) {
-          case 0x80550007: // NS_ERROR_FAILURE
-            util.logException(
-              `QuickFolders.FolderTree.loadDictionary() - ${
-                folder.prettyName || folder.localizedName
-              }`,
-              ex
-            );
-            break;
           case 0x80550005: // NS_MSG_ERROR_FOLDER_SUMMARY_OUT_OF_DATE
             util.logDebugOptional(
               "folderTree",
@@ -309,11 +320,7 @@ QuickFolders.FolderTree = {
     }
     util.logDebugOptional(
       "folderTree",
-      "Total Number of Folders:" +
-        iCount +
-        "\nFolders with Icon:" +
-        iIcons +
-        `\nErrors thrown by Tb: ${iErrors}`
+      `Total Number of Folders:${iCount}\nFolders with Icon:${iIcons}\nUnexpected Errors thrown by Tb: ${iErrors}`
     );
     util.logDebugOptional("folderTree", `${iNoIcon} Folders without Icon\n`, txtList);
     util.logDebugOptional("folderTree", `${iIcons} Folders WITH Icon\n`, txtWithIcon);

@@ -3,6 +3,55 @@
     WL
 */
 
+const QFInjector = {
+  injectCSS(win, url) {
+    const WL = win.WL;
+
+    if (WL?.injectCSS) {
+      return WL.injectCSS(url);
+    }
+
+    const doc = win.document;
+
+    const link = doc.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+
+    doc.head.appendChild(link);
+    return link;
+  },
+
+  injectElements(xulString) {
+    const win = window;
+    const WL = win.WL;
+    const debug = false;
+
+    // Primary: real WL path
+    if (WL?.injectElements) {
+      return WL.injectElements(xulString, [], debug);
+    }
+
+    // Fallback: minimal safe DOM injection
+    const doc = win.document;
+    try {
+      const frag = window.MozXULElement.parseXULToFragment(xulString);
+
+      const node = frag.firstElementChild;
+      if (!node) {
+        console.warn("injectElements: empty XUL fragment");
+        return null;
+      }
+
+      doc.documentElement.appendChild(node);
+      return node;
+    } catch (e) {
+      console.error("injectElements: XUL parse failed", e);
+      return null;
+    }
+  },
+};
+
 
 let windowMode = "";
 
@@ -83,7 +132,7 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     // eslint-disable-next-line no-debugger
     debugger;
   }  
-  let sheet = WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css");
+  let sheet = QFInjector.injectCSS(window, "chrome://quickfolders/content/qf-foldertree.css");
   sheet.setAttribute("title", "QuickFoldersFolderTreeGlobalStyles"); 
 
   window.QuickFolders = window.parent.QuickFolders;
@@ -95,15 +144,15 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     win.QuickFolders.Util.logDebug(
       `============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`
     );
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css?v=6.15.1");
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css?v=2");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/quickfolders-layout.css?v=6.15.1");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/quickfolders-tools.css?v=2");
 
     // current folder bar specific styling
-    WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-navigation.css");
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/skin/quickfolders-navigation.css");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/quickfolders-filters.css");
 
     // inject palette
-    WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-palettes.css");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/skin/quickfolders-palettes.css");
 
     //------------------------------------ overlay current folder (navigation bar)
     const INJECTED_ELEMENTS = `<hbox id="QuickFolders-PreviewToolbarPanel" class="QuickFolders-NavigationPanel quickFoldersToolbar">
@@ -222,11 +271,11 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
 
     switch (contentDoc.URL) {
       case "about:3pane": // inject into thread pane (bottom)
-        WL.injectElements(`<div id="threadPane">${INJECTED_ELEMENTS}</div>`);
+        QFInjector.injectElements(`<div id="threadPane">${INJECTED_ELEMENTS}</div>`);
         windowMode = "";
         break;
       case "about:message": // inject into messagepane (on top)
-        WL.injectElements(`<vbox id="messagepanebox">${INJECTED_ELEMENTS}</vbox>`);
+        QFInjector.injectElements(`<vbox id="messagepanebox">${INJECTED_ELEMENTS}</vbox>`);
         if (window.parent.document.URL.endsWith("messageWindow.xhtml")) {
           // single message windows get a reduced set of commands:
           windowMode = "messageWindow";

@@ -1,6 +1,6 @@
 import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
-const RESTRICT_UPDATEMSG = "6.14.2"; // latest version forcing additional update message - use this to restrict noise one maintenance updates
+const RESTRICT_UPDATEMSG = "6.16"; // latest version forcing additional update message - use this to restrict noise one maintenance updates
 
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 const ADDQUICKFOLDER_ID = "addQuickFolderTab";
@@ -567,6 +567,7 @@ async function waitForMailTabsReady(timeoutMs = 5000) {
     console.log("QuickFolders: ready to start WindowListener.");
   }
 }
+
 
 
 
@@ -1301,7 +1302,7 @@ const showQFmessage = async (messageIds, features, message = "", quickfoldersFea
 let retryScheduled = false; // session flag to avoid repeat re-scheduling
 const RETRY_MINUTES = 20;
 async function displayUpdateMessage() {
-  const messageIds = "newsMsgEsr140",
+  const messageIds = "newsMsgEsr153",
     licenseInfo = currentLicense?.info,
     isDebug = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug"),
     hasProLicense = [0, 1].includes(licenseInfo?.keyType); // 0 Pro or none depending on status, 2 std

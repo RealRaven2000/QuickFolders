@@ -2079,7 +2079,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L}已启用对 Thunderbird 151 的支持。{/L}{L}已修复：导航按钮在切换后可能仍保持高亮（绿色）（Thunderbird 149）[issue 657]。{/L}{L}已修复：最后删除的自定义文件夹图标在重启 Thunderbird 后可能重新出现（Thunderbird 149）[issue 651]。{/L}"
+    "message": "{L}新增对 Thunderbird 152 的兼容性支持。{/L}{L}将最低支持的 Thunderbird 版本设为 140，以避免过时 API 的问题。{/L}{L}修复：quickJump 搜索框在 macOS Tahoe 26.4 中可能失去焦点 [issue 658]。{/L}{L}修复：macOS Tahoe 26.4 中子文件夹菜单的拖放功能问题 [issue 659]。{/L}{L}修复：设置窗口可能导致当前文件夹标签卡住 [issue 666]。{/L}{L}修复：v6.15 注册对话框中未样式化按钮（扩展 / 续订许可证）[issue 660]。{/L}{L}创建了与 ESR140 对齐的新的 GitHub 默认分支。{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

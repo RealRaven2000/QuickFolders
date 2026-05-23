@@ -2154,7 +2154,7 @@
   },
   "whats-new-list": {
     "description": "🇸🇪 change log",
-    "message": "{L}Stöd för Thunderbird 151 har aktiverats.{/L}{L}Fixat: Navigationsknappen kunde förbli markerad (grön) efter växling (Thunderbird 149) [issue 657].{/L}{L}Fixat: Senast borttagna anpassade mappikon kunde återkomma efter omstart av Thunderbird (Thunderbird 149) [issue 651].{/L}"
+    "message": "{L}Lagt till kompatibilitet med Thunderbird 152.{/L}{L}Minsta stödda Thunderbird-version satt till 140 för att undvika problem med föråldrade API:er.{/L}{L}Fixat: quickJump-sökfältet kunde tappa fokus i macOS Tahoe 26.4 [issue 658].{/L}{L}Fixat: Drag & Drop i undermenyn för mappar i macOS Tahoe 26.4 [issue 659].{/L}{L}Fixat: inställningsfönstret kunde lämna aktuell mappetikett i ett låst tillstånd [issue 666].{/L}{L}Fixat: ostylade knappar i v6.15 registreringsdialog (Utöka / Förnya licens) [issue 660].{/L}{L}Skapade en ny GitHub-standardgren anpassad till ESR140.{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

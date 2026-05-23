@@ -1811,7 +1811,7 @@
   },
   "whats-new-list": {
     "description": "🇻🇳 change log",
-    "message": "{L}Đã bật hỗ trợ cho Thunderbird 151.{/L}{L}Đã sửa: Nút điều hướng có thể vẫn được tô sáng (màu xanh) sau khi chuyển đổi (Thunderbird 149) [issue 657].{/L}{L}Đã sửa: Biểu tượng thư mục tùy chỉnh bị xóa gần nhất có thể xuất hiện lại sau khi khởi động lại Thunderbird (Thunderbird 149) [issue 651].{/L}"
+    "message": "{L}Thêm khả năng tương thích với Thunderbird 152.{/L}{L}Đặt phiên bản Thunderbird tối thiểu được hỗ trợ là 140 để tránh các vấn đề với API lỗi thời.{/L}{L}Sửa: ô tìm kiếm quickJump có thể mất tiêu điểm trên macOS Tahoe 26.4 [issue 658].{/L}{L}Sửa: kéo và thả trong menu thư mục con trên macOS Tahoe 26.4 [issue 659].{/L}{L}Sửa: cửa sổ cài đặt có thể để lại nhãn thư mục hiện tại ở trạng thái bị kẹt [issue 666].{/L}{L}Sửa: các nút không được định kiểu trong hộp thoại đăng ký v6.15 (Mở rộng / Gia hạn giấy phép) [issue 660].{/L}{L}Tạo nhánh GitHub mặc định mới phù hợp với ESR140.{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

@@ -315,6 +315,6 @@
   },
   "whats-new-list": {
     "description": "🇸🇰 change log",
-    "message": "{L}Podpora pre Thunderbird 151 bola povolená.{/L}{L}Opravené: Navigačné tlačidlo mohlo zostať zvýraznené (zelené) po prepnutí (Thunderbird 149) [issue 657].{/L}{L}Opravené: Posledná odstránená vlastná ikona priečinka sa mohla znovu objaviť po reštarte Thunderbirdu (Thunderbird 149) [issue 651].{/L}"
+    "message": "{L}Pridaná kompatibilita s Thunderbirdom 152.{/L}{L}Nastavená minimálna podporovaná verzia Thunderbirdu na 140, aby sa predišlo problémom so zastaranými API.{/L}{L}Oprava: vyhľadávacie pole quickJump mohlo stratiť fokus na macOS Tahoe 26.4 [issue 658].{/L}{L}Oprava: Drag & Drop v menu podsložiek na macOS Tahoe 26.4 [issue 659].{/L}{L}Oprava: okno nastavení mohlo ponechať štítok aktuálneho priečinka v zaseknutom stave [issue 666].{/L}{L}Oprava: neštýlované tlačidlá v registračnom dialógu v6.15 (Rozšíriť / Obnoviť licenciu) [issue 660].{/L}{L}Vytvorená nová predvolená vetva GitHubu zosúladená s ESR140.{/L}"
   }
 }

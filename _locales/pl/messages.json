@@ -2132,7 +2132,7 @@
   },
   "whats-new-list": {
     "description": "🇵🇱 change log",
-    "message": "{L}Włączono obsługę Thunderbird 151.{/L}{L}Naprawiono: Przycisk nawigacji mógł pozostawać podświetlony (na zielono) po przełączeniu (Thunderbird 149) [issue 657].{/L}{L}Naprawiono: Ostatnio usunięta niestandardowa ikona folderu mogła pojawić się ponownie po ponownym uruchomieniu Thunderbirda (Thunderbird 149) [issue 651].{/L}"
+    "message": "{L}Dodano kompatybilność z Thunderbird 152.{/L}{L}Ustawiono minimalną obsługiwaną wersję Thunderbirda na 140, aby uniknąć problemów z przestarzałymi API.{/L}{L}Naprawiono: pole wyszukiwania quickJump mogło tracić fokus w macOS Tahoe 26.4 [issue 658].{/L}{L}Naprawiono: Drag & Drop w menu podfolderów w macOS Tahoe 26.4 [issue 659].{/L}{L}Naprawiono: okno ustawień mogło pozostawiać etykietę bieżącego folderu w stanie zablokowanym [issue 666].{/L}{L}Naprawiono: niesformatowane przyciski w oknie rejestracji v6.15 (Rozszerz / Odnów licencję) [issue 660].{/L}{L}Utworzono nową domyślną gałąź GitHub zgodną z ESR140.{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

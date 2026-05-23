@@ -2135,7 +2135,7 @@
   },
   "whats-new-list": {
     "description": "🇩🇪 change log",
-    "message": "{L}Unterstützung für Thunderbird 151 aktiviert.{/L}{L}Behoben: Navigationsschaltfläche blieb nach dem Umschalten hervorgehoben (grün) (Thunderbird 149) [issue 657].{/L}{L}Behoben: Zuletzt entfernte benutzerdefinierte Ordnersymbol konnte nach einem Neustart von Thunderbird wieder erscheinen (Thunderbird 149) [issue 651].{/L}"
+    "message": "{L}Kompatibilität mit Thunderbird 152 hinzugefügt.{/L}{L}Minimale unterstützte Thunderbird-Version auf 140 gesetzt, um Probleme mit veralteten APIs zu vermeiden.{/L}{L}Behoben: quickJump-Suchfeld konnte auf macOS Tahoe 26.4 den Fokus verlieren [issue 658].{/L}{L}Behoben: Drag & Drop im Unterordner-Menü auf macOS Tahoe 26.4 [issue 659].{/L}{L}Behoben: Einstellungsfenster konnte die Beschriftung des aktuellen Ordners in einem blockierten Zustand hinterlassen [issue 666].{/L}{L}Behoben: ungestylte Buttons im Registrierungsdialog v6.15 (Lizenz erweitern / verlängern) [issue 660].{/L}{L}Neuer GitHub-Default-Branch erstellt, ausgerichtet auf ESR140.{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

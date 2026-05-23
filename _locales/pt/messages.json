@@ -2117,7 +2117,7 @@
   },
   "whats-new-list": {
     "description": "🇵🇹 change log",
-    "message": "{L}Compatibilidade com o Thunderbird 151 ativada.{/L}{L}Corrigido: O botão de navegação podia permanecer realçado (verde) após alternar (Thunderbird 149) [issue 657].{/L}{L}Corrigido: O último ícone de pasta personalizado removido podia reaparecer após reiniciar o Thunderbird (Thunderbird 149) [issue 651].{/L}"
+    "message": "{L}Adicionada compatibilidade com Thunderbird 152.{/L}{L}Versão mínima suportada do Thunderbird definida como 140 para evitar problemas com APIs obsoletas.{/L}{L}Corrigido: o campo de pesquisa quickJump podia perder o foco no macOS Tahoe 26.4 [issue 658].{/L}{L}Corrigido: Drag & Drop no menu de subpastas no macOS Tahoe 26.4 [issue 659].{/L}{L}Corrigido: a janela de definições podia deixar o rótulo da pasta atual num estado bloqueado [issue 666].{/L}{L}Corrigido: botões sem estilo no diálogo de registo v6.15 (Expandir / Renovar licença) [issue 660].{/L}{L}Criado um novo branch padrão do GitHub alinhado com ESR140.{/L}"
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

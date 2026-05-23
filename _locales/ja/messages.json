@@ -383,6 +383,13 @@
   "newsMsgEsr140": {
     "message": "{P}{b} 次回の大型リリースで予定されています {/b}: Thunderbirdはまもなく、年次ESRトラックまたはより速い月次リリースのいずれかの更新パスを選択するよう求めます。 {a release}新しいリリースモデルについて詳しくはこちら{/a}.{U} {L}ESRバージョンはv140のままで、マイナーバージョン番号のみが増加し、セキュリティ修正とバグ修正のみが含まれます。これは企業環境で好まれることが多いです。{/L} {L}月次リリースサイクルでは、新機能やインターフェースの更新が開発され次第提供されます。現在のアドオンがこのリリースモデルに対応しているかご確認ください。これを支援するために、{a compatCheck}アドオン互換性チェック{/a}をインストールできます。{/L} {/U}{/P}{P} QuickFoldersはThunderbird 140（次期Extended Support Release（ESR））に完全対応していることをお知らせします。これにより、次の主要なサポートサイクルを通じて継続的な信頼性と安心が得られます。{/P}{P} QuickFoldersは当面、Thunderbird 115以降のユーザーもサポートし続けます。今後1年の間に新機能を追加するにつれ、Thunderbird 115のサポートはThunderbird 128以降に移行する可能性があります。{/P}{P} QuickFoldersが選択したリリーストラックに関係なく、常に互換性と信頼性を維持できるようThunderbirdの変更を継続的に監視しています。{/P}"
   },
+  "newsMsgEsr153": {
+    "message": "{P}{b} Thunderbirdに重要な変更があります {/b}: Thunderbird 153以降、{+extensionName}のような実験的アドオンはRelease版ではサポートされなくなります。Thunderbirdは実験的な拡張機構への依存を減らすため、{a apiwork}WebExtension APIを積極的に拡張しています{/a}。{emph}バージョン153{/emph}以降、レガシーアドオンには{+newsMsgEsr153.ESR}（ESR）が必要になります。<ul><li>ESRチャンネルは、高度または実験的なアドオンを利用するユーザーに推奨される選択肢です。</li><li>Releaseチャンネルは、安定して完全にサポートされたWebExtensionアドオンに集中します。</li><li>Betaチャンネルは、ESRリリース前のテストおよび互換性確認に引き続き利用できます。</li></ul></P>{P}{+extensionName}はThunderbird ESRで引き続き完全にサポートされ、技術的に可能な範囲でRelease版でも積極的に保守されています.{/P}{P}Thunderbirdの変更を継続的に監視し、すべての対応バージョンでの互換性と安定した体験を確保しています.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (Thunderbird拡張サポートリリース)"
+  },
   "newsMsg.license.expired": {
     "message": "{P} すべての新機能、バグ修正、長期的な互換性は、皆様のご支援によって実現しています。{/P}{P class=specialOffer} QuickFoldersの開発を支援するため、{salesEnd}まで割引価格でライセンスを更新できます。{/P}{P class=bottomhint}🡇 詳細は下記のいずれかのオプションを選択してください 🡇 {/P}"
   },
@@ -408,7 +415,7 @@
     "message": "{P}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{/P}"
   },
   "newsSection.important": {
-    "message": "{P}QuickFoldersは2026年向けに完全にモダナイズされ、刷新されたユーザーインターフェース、使いやすさの向上、テーマサポートの強化を実現しました — フォルダ管理がこれまでよりも速く、わかりやすく、直感的になっています。新しい {b}{+qf.themes.nativeTabs.label}{/b} テーマを試して、フレッシュでミニマルな体験をお楽しみください。 {/P}"
+    "message": "{P}Thunderbird 153以降、{b}特権アドオンはThunderbird ESRでのみインストール可能になります{/b}（153.*）。通常のReleaseチャンネル（毎月メジャーバージョンが上がる）では、開発者ツール経由で引き続きテストできますが、Thunderbirdを閉じると削除されます。そのため、利用可能になり次第Thunderbird 153 ESRへの移行を推奨します。この変更が有効になると、Thunderbirdは追加情報およびインストール手順を提供します。{/P}{P}Beta版もテスト目的でサポートされており、アドオンは再起動後も保持されます。ただし、本番のメールプロファイルでの使用は推奨されません。リリース直前でもリグレッションや互換性問題が発生する可能性があります。{/P}"
   },
   "newsSection.license": {
     "message": "QuickFoldersのすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"

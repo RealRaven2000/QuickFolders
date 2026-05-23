@@ -400,6 +400,13 @@
   "newsMsgEsr140": {
     "message": "{P}{b} Kommende i neste store utgivelse {/b}: Thunderbird vil snart be deg velge foretrukket oppdateringsvei — enten den årlige ESR-sporet eller de raskere månedlige utgivelsene. {a release}Les mer om den nye utgivelsesmodellen{/a}.{U} {L}ESR-versjonen forblir på v140, øker mindre versjonsnummer og inkluderer kun sikkerhetsoppdateringer og feilrettinger, noe som ofte er å foretrekke for bedriftsmiljøer.{/L} {L}Den månedlige utgivelsessyklusen vil levere nye funksjoner og grensesnittoppdateringer etter hvert som de utvikles. Sjekk om dine nåværende tillegg støtter denne utgivelsesmodellen. For å hjelpe med dette kan du installere {a compatCheck}Add-on Compatibility Check{/a}.{/L} {/U}{/P}{P} Vi er glade for å kunngjøre at QuickFolders er fullt kompatibel med Thunderbird 140, neste Extended Support Release (ESR). Dette sikrer pålitelighet og ro i sinnet gjennom neste store støttesyklus.{/P}{P} QuickFolders fortsetter å støtte brukere på Thunderbird 115 og nyere foreløpig. I løpet av det kommende året, etter hvert som vi legger til nye funksjoner, kan støtten for Thunderbird 115 fases ut til fordel for Thunderbird 128 og nyere.{/P}{P} Vi overvåker kontinuerlig endringer i Thunderbird for å sikre at QuickFolders forblir kompatibel og pålitelig, uavhengig av hvilket utgivelsesspor du velger.{/P}"
   },
+  "newsMsgEsr153": {
+    "message": "{P}{b} En viktig endring kommer i Thunderbird {/b}: Fra Thunderbird 153 vil eksperimentelle tillegg som {+extensionName} ikke lenger støttes i Release-versjoner. Thunderbird {a apiwork}utvider aktivt WebExtension-API-ene{/a} for å redusere avhengigheten av eksperimentelle utvidelsesmekanismer. Fra {emph}versjon 153{/emph} krever eldre tillegg bruk av {+newsMsgEsr153.ESR} (ESR).<ul><li>ESR-kanalen er fortsatt det anbefalte valget for brukere som er avhengige av avanserte eller eksperimentelle tillegg.</li><li>Release-kanalen fokuserer på stabile og fullt støttede WebExtension-tillegg.</li><li>Beta-kanalen kan fortsatt brukes til testing og kompatibilitetssjekk før ESR-utgivelser.</li></ul></P>{P}{+extensionName} er fortsatt fullt støttet i Thunderbird ESR og vedlikeholdes aktivt i Release-versjoner der det er teknisk mulig.{/P}{P}Vi fortsetter å overvåke endringer i Thunderbird nøye for å sikre kompatibilitet og en stabil opplevelse på tvers av alle støttede versjoner.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (Thunderbirds utvidede støtteversjon)"
+  },
   "newsMsg.license.expired": {
     "message": "{P} Alle nye funksjoner, feilrettinger og langsiktig kompatibilitet gjøres mulig gjennom din støtte.{/P}{P class=specialOffer} For å opprettholde utviklingen av QuickFolders, kan du fornye lisensen din med rabatt til {salesEnd}.{/P}{P class=bottomhint}🡇 Velg et av alternativene nedenfor for å lære mer 🡇 {/P}"
   },
@@ -425,7 +432,7 @@
     "message": "{P}Vi fortsetter å følge Thunderbirds månedlige utgivelsessyklus for å sikre kompatibilitet og stabilitet. Som alltid finansieres dette arbeidet fullt ut av lisenssalg.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}QuickFolders er fullstendig modernisert for 2026, med et oppdatert brukergrensesnitt, forbedret brukervennlighet og utvidet temastøtte — slik at mappehåndtering blir raskere, ryddigere og mer intuitiv enn noensinne. Prøv det nye {b}{+qf.themes.nativeTabs.label}{/b}-temaet for en frisk, minimalistisk opplevelse. {/P}"
+    "message": "{P}Fra Thunderbird 153 kan {b}privilegerte tillegg bare installeres i Thunderbird ESR{/b} (153.*). I den vanlige Release-kanalen (som øker hovedversjonsnummeret hver måned) kan de fortsatt testes via utviklerverktøy, men Thunderbird fjerner dem igjen ved lukking. Derfor anbefaler vi å bytte til Thunderbird 153 ESR så snart den blir tilgjengelig. Thunderbird vil gi ytterligere informasjon og installasjonsinstruksjoner når denne endringen trer i kraft.{/P}{P}Beta-versjoner støttes også for testing og gjør det mulig at tillegg forblir installert mellom omstarter. Det anbefales imidlertid ikke å bruke dem med hovedprofilen i produksjon, siden regresjoner og kompatibilitetsproblemer fortsatt kan oppstå selv nær utgivelse.{/P}"
   },
   "newsSection.license": {
     "message": "Siden alt arbeid med QuickFolders og gratis støtte finansieres utelukkende gjennom lisenssalg, vurder å kjøpe eller fornye lisensen din."

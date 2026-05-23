@@ -1,3 +1,13 @@
+:root {
+  --color-emphasis: #9b0050;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-emphasis: #fadd05;
+  }
+}
+
+
 .testversion {
   box-shadow: inset 0 0 10px #000000;
   padding: 1em;
@@ -166,6 +176,11 @@ canvas[collapsed=true] {
 .importantInfo li b {
   color: yellow !important;
   background-color: transparent;
+}
+
+span.important {
+  color: var(--color-emphasis) !important;
+  font-style: italic;
 }
 
 #newsSection.announcement {

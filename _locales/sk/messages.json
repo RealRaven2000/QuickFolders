@@ -122,6 +122,13 @@
   "newsMsgEsr140": {
     "message": "{P}{b} Už čoskoro v ďalšom veľkom vydaní {/b}: Thunderbird vás čoskoro požiada, aby ste si vybrali preferovanú cestu aktualizácie — buď ročnú ESR vetvu, alebo rýchlejšie mesačné vydania. {a release}Zistite viac o novom modeli vydávania{/a}.{U} {L}Verzia ESR zostane na v140, zvyšuje iba vedľajšie čísla verzií a obsahuje iba bezpečnostné opravy a opravy chýb, čo je často vhodnejšie pre firemné prostredie.{/L} {L}Mesačný cyklus vydávania prinesie nové funkcie a aktualizácie rozhrania, ako budú vyvíjané. Skontrolujte, či vaše aktuálne doplnky podporujú tento model vydávania. Na pomoc si môžete nainštalovať {a compatCheck}Kontrolu kompatibility doplnkov{/a}.{/L} {/U}{/P}{P} S potešením oznamujeme, že QuickFolders je plne kompatibilný s Thunderbirdom 140, ďalším vydaním Extended Support Release (ESR). To znamená neustálu spoľahlivosť a pokoj počas ďalšieho hlavného cyklu podpory.{/P}{P} QuickFolders bude zatiaľ naďalej podporovať používateľov Thunderbirdu 115 a novších. Počas nasledujúceho roka, ako pridáme nové funkcie, môže byť podpora pre Thunderbird 115 ukončená v prospech Thunderbirdu 128 a novších.{/P}{P} Neustále sledujeme zmeny v Thunderbirde, aby sme zaistili, že QuickFolders zostane kompatibilný a spoľahlivý bez ohľadu na zvolenú cestu aktualizácie.{/P}"
   },
+  "newsMsgEsr153": {
+    "message": "{P}{b} Do Thunderbirdu prichádza významná zmena {/b}: Od Thunderbird 153 už nebudú experimentálne doplnky ako {+extensionName} podporované vo verziách Release. Thunderbird aktívne {a apiwork}rozširuje WebExtension API{/a}, aby znížil závislosť od experimentálnych mechanizmov rozšírení. Od {emph}verzie 153{/emph} vyžadujú staršie doplnky použitie {+newsMsgEsr153.ESR} (ESR).<ul><li>Kanál ESR zostáva odporúčanou voľbou pre používateľov, ktorí používajú pokročilé alebo experimentálne doplnky.</li><li>Kanál Release sa zameriava na stabilné, plne podporované WebExtension doplnky.</li><li>Kanál Beta možno naďalej používať na testovanie a kontrolu kompatibility pred vydaniami ESR.</li></ul></P>{P}{+extensionName} zostáva plne podporovaný v Thunderbirde ESR a aktívne udržiavaný vo verziách Release, kde je to technicky možné.{/P}{P}Naďalej pozorne sledujeme zmeny v Thunderbirde, aby sme zabezpečili kompatibilitu a stabilné fungovanie vo všetkých podporovaných verziách.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (rozšírené vydanie podpory Thunderbirdu)"
+  },
   "newsMsg.license.expired": {
     "message": "{P} Všetky nové funkcie, opravy chýb a dlhodobá kompatibilita sú možné vďaka vašej podpore.{/P}{P class=specialOffer} Na podporu vývoja QuickFolders môžete obnoviť svoju licenciu so zľavou do {salesEnd}.{/P}{P class=bottomhint}🡇 Vyberte jednu z možností nižšie pre viac informácií 🡇 {/P}"
   },
@@ -147,7 +154,7 @@
     "message": "{P}Naďalej sledujeme mesačný cyklus vydávania Thunderbirdu, aby sme zabezpečili kompatibilitu a stabilitu. Ako vždy, táto práca je úplne financovaná predajom licencií.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}QuickFolders bol kompletne modernizovaný pre rok 2026, s prepracovaným používateľským rozhraním, lepšou použiteľnosťou a rozšírenou podporou tém — správa priečinkov je teraz rýchlejšia, prehľadnejšia a intuitívnejšia ako kedykoľvek predtým. Vyskúšajte nový motív {b}{+qf.themes.nativeTabs.label}{/b} pre svieži, minimalistický zážitok. {/P}"
+    "message": "{P}Od Thunderbird 153 bude možné {b}privilegované doplnky inštalovať iba na Thunderbird ESR{/b} (153.*). V bežnom kanáli Release (ktorý každý mesiac zvyšuje hlavné číslo verzie) ich možno stále testovať cez vývojárske nástroje, ale Thunderbird ich pri zatvorení odstráni. Preto odporúčame prechod na Thunderbird 153 ESR, hneď ako bude dostupný. Thunderbird poskytne ďalšie informácie a pokyny na inštaláciu, keď táto zmena nadobudne účinnosť.{/P}{P}Beta verzie sú tiež podporované na testovanie a umožňujú, aby doplnky zostali nainštalované aj po reštarte. Neodporúča sa však používať ich s hlavným produkčným profilom, pretože aj tesne pred vydaním sa môžu vyskytnúť regresie a problémy s kompatibilitou.{/P}"
   },
   "newsSection.license": {
     "message": "Keďže všetka práca na QuickFolders a bezplatná podpora sú financované výhradne z predaja licencií, zvážte prosím zakúpenie licencie alebo obnovenie vašej aktuálnej."

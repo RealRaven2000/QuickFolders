@@ -150,13 +150,19 @@ function formatAll(txt) {
   }
   /* when replacing a href, start with the special cases first! */
   let localizedMsg = replaceNested(txt)
+    // "switchtorelease" article link to be replaced with future announcement of compatibility for experimental Add-ons (RC only)
+    // future: add "switchtoESR" link (once official announcement is made)
     .replace(
-      /\{a release\}/g,
+      /\{a switchtorelease\}/g,
       "<a href='https://blog.thunderbird.net/2025/03/thunderbird-release-channel-update/'>",
     )
     .replace(
       /\{a compatCheck\}/g,
       "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-compatibility-check/' class='native'>",
+    )
+    .replace(
+      /\{a apiwork\}/g,
+      "<a href='https://blog.thunderbird.net/2026/03/thunderbird-monthly-development-digest-march-2026/'>",
     )
     .replace(/\{bold\}/g, "<b>")
     .replace(/\{\/bold\}/g, "</b>")

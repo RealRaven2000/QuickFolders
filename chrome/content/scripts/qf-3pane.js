@@ -1,7 +1,63 @@
 /* 
   globals
-    WL
 */
+
+const QFInjector = {
+  injectCSS(win, url) {
+    const WL = win.WL;
+
+    if (WL?.injectCSS) {
+      return WL.injectCSS(url);
+    }
+
+    const doc = win.document;
+
+    const link = doc.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = url;
+
+    doc.head.appendChild(link);
+    return link;
+  },
+
+  injectElements(xulString) {
+    function localize(entity) {
+      let msg = entity.slice("__MSG_".length, -2);
+      return extension.localeData.localizeMessage(msg);
+    }    
+    const WL = window.WL;
+    const debug = false;
+    var { ExtensionParent } = ChromeUtils.importESModule(
+      "resource://gre/modules/ExtensionParent.sys.mjs",
+    );    
+    const extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
+
+    // Primary: real WL path
+    if (WL?.injectElements) {
+      return WL.injectElements(xulString, [], debug);
+    }
+
+    // Fallback: minimal safe DOM injection
+    const doc = window.document;
+    try {
+      let localizedXulString = xulString.replace(/__MSG_(.*?)__/g, localize);
+      const frag = window.MozXULElement.parseXULToFragment(localizedXulString);
+
+      const node = frag.firstElementChild;
+      if (!node) {
+        console.warn("injectElements: empty XUL fragment");
+        return null;
+      }
+
+      doc.documentElement.appendChild(node);
+      return node;
+    } catch (e) {
+      console.error("injectElements: XUL parse failed", e);
+      return null;
+    }
+  },
+};
 
 
 let windowMode = "";
@@ -83,11 +139,11 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     // eslint-disable-next-line no-debugger
     debugger;
   }  
-  let sheet = WL.injectCSS("chrome://quickfolders/content/qf-foldertree.css");
+  let sheet = QFInjector.injectCSS(window, "chrome://quickfolders/content/qf-foldertree.css");
   sheet.setAttribute("title", "QuickFoldersFolderTreeGlobalStyles"); 
 
   window.QuickFolders = window.parent.QuickFolders;
-  window.QuickFolders.WLM = WL; // closure a separate instace of the WindowListener that works in messagepane
+
   // let's make sure 3Pane is really ready (we might want to attach this to a window.DOMContentLoaded event instead)
   window.setTimeout(async (win = window) => {
     util.logDebug("QuickFolders: injecting current folder");
@@ -95,15 +151,15 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     win.QuickFolders.Util.logDebug(
       `============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`
     );
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-layout.css?v=6.15.1");
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-tools.css?v=2");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/quickfolders-layout.css?v=6.15.1");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/quickfolders-tools.css?v=2");
 
     // current folder bar specific styling
-    WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-navigation.css");
-    WL.injectCSS("chrome://quickfolders/content/quickfolders-filters.css");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/skin/quickfolders-navigation.css");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/quickfolders-filters.css");
 
     // inject palette
-    WL.injectCSS("chrome://quickfolders/content/skin/quickfolders-palettes.css");
+    QFInjector.injectCSS(window, "chrome://quickfolders/content/skin/quickfolders-palettes.css");
 
     //------------------------------------ overlay current folder (navigation bar)
     const INJECTED_ELEMENTS = `<hbox id="QuickFolders-PreviewToolbarPanel" class="QuickFolders-NavigationPanel quickFoldersToolbar">
@@ -222,11 +278,14 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
 
     switch (contentDoc.URL) {
       case "about:3pane": // inject into thread pane (bottom)
-        WL.injectElements(`<div id="threadPane">${INJECTED_ELEMENTS}</div>`);
-        windowMode = "";
+        { 
+          const el = QFInjector.injectElements(`<div id="threadPane">${INJECTED_ELEMENTS}</div>`);
+          windowMode = "";
+          util.logDebug("about:3pane - injected", el);
+        }
         break;
       case "about:message": // inject into messagepane (on top)
-        WL.injectElements(`<vbox id="messagepanebox">${INJECTED_ELEMENTS}</vbox>`);
+        QFInjector.injectElements(`<vbox id="messagepanebox">${INJECTED_ELEMENTS}</vbox>`);
         if (window.parent.document.URL.endsWith("messageWindow.xhtml")) {
           // single message windows get a reduced set of commands:
           windowMode = "messageWindow";

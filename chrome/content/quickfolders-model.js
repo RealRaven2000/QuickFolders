@@ -513,6 +513,7 @@ QuickFolders.Model = {
           e.uri = newUri;
           delete e.invalid;
         } catch (ex) {
+          e.invalid = true;
           console.log(`QuickFolders\n%c${ex.message}`, "background: rgb(120,0,0); color:white;");
         }
       } else {

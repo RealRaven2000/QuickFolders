@@ -208,17 +208,6 @@
 		all new features, bug fixes, and long-term compatibility possible.
 	</p>
 
-</section>			
-
-<section id="tb68">
-	<h4>Thunderbird 68 support has ended on thunderbird.net</h4>
-	<p>
-		Unfortunately thunderbird.net does not accept updates for legacy versions anymore - they only support the new "Mail extension" format and our "mail extension with experimental APIs" which is a workaround for missing advanced features.  
-	</p>
-	<p>
-		From of version <a href="#4.23">4.23 forward</a> you have to install such legacy versions from the 
-		<a href="https://github.com/RealRaven2000/quickfolders/releases">github releases page</a>. 
-	</p>	
 </section>
       
 <section id="features">
@@ -334,8 +323,7 @@
       </h4>
       <ul>
 				<h4 class="inList">Improvements</h4>
-
-
+				<li>Added compatibility for Thunderbird 152.</li>
         <li> New Github Default branch ESR140 </li>
         <li> 
 					Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs. 
@@ -362,7 +350,10 @@
 					You can set the config setting <tt>widget.macos.native-anchored-menus = false</tt> 
 					to work around this issue in the meantime.
 				</li>
-        <li> </li>
+        <li> 
+					Settings window could leave current folder label in a stuck state 
+					<a href="https://github.com/RealRaven2000/SmartTemplates/issues/666">[issue 666]</a>
+				</li>
       </ul>
     </li>
 

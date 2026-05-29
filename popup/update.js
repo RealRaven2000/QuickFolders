@@ -167,9 +167,10 @@ addEventListener("load", async (_event) => {
     insertHtmlSafely(whatsNewLst, formatAll(messenger.i18n.getMessage("whats-new-list")), true);
   }
 
+  const newsSection = document.getElementById("newsSection");
+
   /*
     // old news section
-    const newsSection = document.getElementById("newsDetail");
     if (newsSection) {
       insertHtmlSafely(newsSection, formatAll(messenger.i18n.getMessage("newsSection", addonName));
     }
@@ -181,9 +182,14 @@ addEventListener("load", async (_event) => {
     ariaPoliteUpdate(newsIntro, formatAll(introText), true);
   */
 
+  const SHOW_NEWS_SECTION = true; // hide news section, nothing to tell here.
   const newsImportant = document.getElementById("newsImportant");
-  const importantText = messenger.i18n.getMessage("newsSection.important", [appVer]);
-  ariaPoliteUpdate(newsImportant, formatAll(importantText), true);
+  if (SHOW_NEWS_SECTION) {
+    const importantText = messenger.i18n.getMessage("newsSection.important", [appVer]);
+    ariaPoliteUpdate(newsImportant, formatAll(importantText), true);
+  } else {
+    newsSection.setAttribute("collapsed", true);
+  }
 
   let ongoing = document.getElementById("ongoing-work");
   if (ongoing) {

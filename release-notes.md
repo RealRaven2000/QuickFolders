@@ -1,8 +1,10 @@
-**Release 6.16**
+**Release 6.16.1**
 
-This release prepares QuickFolders for upcoming Thunderbird platform changes. Starting with Thunderbird 153, legacy and privileged add-ons will require the ESR channel. Users on the regular release track may need to switch to Thunderbird ESR 153 to continue using full functionality.
+This release updates QuickFolders to reflect recent changes in Thunderbird’s add-on platform planning. A previously announced restriction affecting Experiment APIs on the Release channel has been postponed to a future ESR cycle (currently targeted for 2027).
 
-We strongly recommend ensuring you are on a supported ESR version if you rely on advanced QuickFolders features.
+No action is required at this time. QuickFolders continues to work on both Release and ESR versions of Thunderbird where supported.
+
+Users who rely on advanced or experimental functionality may prefer the ESR channel for a more stable environment with fewer platform changes. The best point in time to migrate your existing profile from Release to ESR is when Thunderbird 153 will be published in July 2026.
 
 
 **Improvements**

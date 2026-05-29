@@ -395,12 +395,15 @@
   "newsMsgEsr140": {
     "message": "{P}{b} 即將在下一個重大版本中推出 {/b}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{a release}了解新發行模型的更多資訊{/a}.{U} {L}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{/L} {L}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {a compatCheck}附加元件相容性檢查{/a}。{/L} {/U}{/P}{P} 我們很高興宣布，QuickFolders 完全相容於 Thunderbird 140，下一個延伸支援版本（ESR）。這代表在下一個主要支援週期中持續的可靠性與安心。{/P}{P} QuickFolders 目前仍支援 Thunderbird 115 及以上版本的使用者。在接下來的一年中，隨著我們新增新功能，對 Thunderbird 115 的支援可能會逐步淘汰，轉而支援 Thunderbird 128 及更新版本。{/P}{P} 我們會持續監控 Thunderbird 的變化，以確保 QuickFolders 無論您選擇哪種更新路徑都能保持相容與可靠。{/P}"
   },
-  "newsMsgEsr153": {
+  "newsMsgEsrFuture": {
     "message": "{P}{b} Thunderbird 即將發生一項重要變更 {/b}: 自 Thunderbird 153 起，像 {+extensionName} 這類實驗性附加元件將不再在 Release 版本中受到支援。Thunderbird 正在積極{a apiwork}擴展 WebExtension API{/a}，以減少對實驗性擴充機制的依賴。自{emph}153 版本{/emph}起，舊式附加元件需要使用 {+newsMsgEsr153.ESR}（ESR）。<ul><li>ESR 版本仍然是依賴進階或實驗性附加元件使用者的建議選擇。</li><li>Release 版本專注於穩定、完整支援的 WebExtension 附加元件。</li><li>Beta 版本仍可用於在 ESR 發佈前進行測試與相容性驗證。</li></ul></P>{P}{+extensionName} 在 Thunderbird ESR 中仍然完全受到支援，並在技術可行的情況下持續維護 Release 版本支援。</P>{P}我們將持續密切關注 Thunderbird 的變更，以確保在所有受支援版本中維持相容性與穩定體驗。</P>"
   },
   "newsMsgEsr153.ESR": {
     "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
     "message": "Thunderbird Extended Support Release (Thunderbird 延長支援版本)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Thunderbird附加元件支援的即將變更{/b}: 先前公告的Release頻道實驗性附加元件相關變更已延後至下一個ESR週期（ESR 2027）。這段額外時間將用於改善API覆蓋範圍，並與附加元件社群共同完善過渡流程。{/P}{P}目前不需要任何操作。{+extensionName}在支援的情況下，仍可於Release與ESR版本的Thunderbird中正常運作。{/P}{P}我們將持續關注平台變更，並在未來需要遷移時提供指引。{/P}{P}雖然不強制切換至ESR頻道，但部分高度依賴實驗性功能的使用者可能會偏好該環境，因其變更較少且API較穩定，而實驗性介面更容易受到平台內部變動影響。{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} 所有新功能、錯誤修正和長期相容性都要感謝您的支持。{/P}{P class=specialOffer} 為了支持 QuickFolders 的開發，您可以在 {salesEnd} 前以折扣價續訂您的授權。{/P}{P class=bottomhint}🡇 請選擇下方的選項以了解更多 🡇 {/P}"
@@ -427,7 +430,7 @@
     "message": "{P}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{/P}"
   },
   "newsSection.important": {
-    "message": "{P}自 Thunderbird 153 起，{b}具特權的附加元件只能安裝在 Thunderbird ESR{/b}（153.*）中。在一般 Release 版本通道（每月提升主版本號）中，仍可透過開發者工具進行測試，但 Thunderbird 會在關閉時將其移除。因此建議在 Thunderbird 153 ESR 可用後立即切換。此變更生效後，Thunderbird 將提供更多資訊與安裝說明。{/P}{P}Beta 版本也支援測試，並允許附加元件在重新啟動後仍然保留。但不建議在主要生產郵件設定檔中使用，因為即使接近正式發布仍可能出現回歸與相容性問題。{/P}"
+    "message": "{P}一項旨在限制Release頻道中Experiment API使用的計畫性變更已延後至下一個ESR週期（目前預計為2027年）。{/P}{P}目前不需要任何操作。{+extensionName}在支援的情況下，仍可於Release與ESR版本的Thunderbird中正常運作，儘管隨著平台發展，實驗性介面可能會有所變動。{/P}"
   },
   "newsSection.license": {
     "message": "由於QuickFolders的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"

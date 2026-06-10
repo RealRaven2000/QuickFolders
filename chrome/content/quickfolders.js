@@ -309,7 +309,7 @@ END LICENSE BLOCK */
     ## [issue 657] Thunderbird 149 - toggle navigation button remains green
     ## [issue 651] Fixed: Last removed custom folder icon reappears after relaunch (Tb 149)
 
-  6.16 QuickFolders Pro - WIP
+  6.16.1 QuickFolders Pro - 29/05/2026
     ## Made compatible with Thunderbird 152
     ## [issue 664] Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs
     ## [issue 660] v6.15 Registration dialog: Unstyled buttons to Extend / Renew license
@@ -318,6 +318,9 @@ END LICENSE BLOCK */
     ## [issue 666] After opening QuickFolders Settings, current folder can get "stuck" 
     ## new Github Default branch ESR140, THunderbird 140 and later will be supported with new features going forward
   
+  6.16.2 QuickFolders Pro - 10/06/2026
+    ## [issue 673] serious regression in v6.16.1 - messages window content area truncated at the top.
+    ##             this was caused by alternative xhtml injector
   
 	TO DO next
 	==========
@@ -2137,13 +2140,11 @@ var QuickFolders = {
               QuickFolders.FilterWorker.FilterModeLegacy
             ) {
               lastAction =
-                "createFilterAsync(" +
-                (sourceFolder.prettyName || sourceFolder.localizedName) +
-                ", " +
-                (targetFolder.prettyName || targetFolder.localizedName) +
-                ", " +
-                (msgList ? msgList[0] : "no Messages returned!") +
-                ")";
+                `createFilterAsync(${
+                (sourceFolder.prettyName || sourceFolder.localizedName) }, ${
+                (targetFolder.prettyName || targetFolder.localizedName)}, ${
+                (msgList ? msgList[0] : "no Messages returned!")
+              })`;
               await QuickFolders.FilterWorker.createFilterAsync(
                 sourceFolder,
                 targetFolder,

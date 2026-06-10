@@ -2137,7 +2137,13 @@
   },
   "whats-new-list": {
     "description": "🇳🇴 change log",
-    "message": "{L}Lagt til kompatibilitet med Thunderbird 152.{/L}{L}Minste støttede Thunderbird-versjon satt til 140 for å unngå problemer med utdaterte API-er.{/L}{L}Fikset: quickJump-søkefeltet kunne miste fokus i macOS Tahoe 26.4 [issue 658].{/L}{L}Fikset: Dra og slipp i undermenyen for mapper i macOS Tahoe 26.4 [issue 659].{/L}{L}Fikset: innstillingsvinduet kunne etterlate gjeldende mappetikett i en fastlåst tilstand [issue 666].{/L}{L}Fikset: ustylte knapper i v6.15 registreringsdialog (Utvid / Forny lisens) [issue 660].{/L}{L}Opprettet en ny standard GitHub-branch tilpasset ESR140.{/L}"
+    "message": "{L}{b class=maintenance}6.16.2{/b} Vi har rettet et alvorlig problem der innholdsområdet i meldingsvinduet ble kuttet av øverst [issue 673]. Du må kanskje starte Thunderbird på nytt for at denne løsningen skal fungere fullt ut.{/L}{L}Lagt til kompatibilitet med Thunderbird 152.{/L}{L}Minste støttede Thunderbird-versjon satt til 140 for å unngå problemer med utdaterte API-er.{/L}{L}Fikset: quickJump-søkefeltet kunne miste fokus i macOS Tahoe 26.4 [issue 658].{/L}{L}Fikset: Dra og slipp i undermenyen for mapper i macOS Tahoe 26.4 [issue 659].{/L}{L}Fikset: innstillingsvinduet kunne etterlate gjeldende mappetikett i en fastlåst tilstand [issue 666].{/L}{L}Fikset: ustylte knapper i v6.15 registreringsdialog (Utvid / Forny lisens) [issue 660].{/L}{L}Opprettet en ny standard GitHub-branch tilpasset ESR140.{/L}"
+  },
+  "whats-new-maintenance": {
+    "message": "Vedlikeholdsoppdatering $ver$. Denne spesifikke rettelsen ble lagt til siden forrige utgivelse.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

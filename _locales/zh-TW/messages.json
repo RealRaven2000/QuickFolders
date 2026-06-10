@@ -2094,7 +2094,13 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L}新增支援 Thunderbird 152 相容性。{/L}{L}將最低支援的 Thunderbird 版本設為 140，以避免過時 API 問題。{/L}{L}修正：quickJump 搜尋框在 macOS Tahoe 26.4 可能失去焦點 [issue 658]。{/L}{L}修正：macOS Tahoe 26.4 子資料夾選單的拖放功能問題 [issue 659]。{/L}{L}修正：設定視窗可能使目前資料夾標籤卡住 [issue 666]。{/L}{L}修正：v6.15 註冊對話框中的未樣式按鈕（擴充 / 更新授權）[issue 660]。{/L}{L}建立了與 ESR140 對齊的 GitHub 預設分支。{/L}"
+    "message": "{L}{b class=maintenance}6.16.2{/b} 我們修復了 v6.16.1 中的一個嚴重回歸問題：郵件視窗的內容區域在上方被截斷 [issue 673]。可能需要重新啟動 Thunderbird 才能使此修復完全生效.{/L}{L}已新增對 Thunderbird 152 的相容性.{/L}{L}將最低支援的 Thunderbird 版本設為 140，以避免過時 API 問題。{/L}{L}修正：quickJump 搜尋框在 macOS Tahoe 26.4 可能失去焦點 [issue 658]。{/L}{L}修正：macOS Tahoe 26.4 子資料夾選單的拖放功能問題 [issue 659]。{/L}{L}修正：設定視窗可能使目前資料夾標籤卡住 [issue 666]。{/L}{L}修正：v6.15 註冊對話框中的未樣式按鈕（擴充 / 更新授權）[issue 660]。{/L}{L}建立了與 ESR140 對齊的 GitHub 預設分支。{/L}"
+  },
+  "whats-new-maintenance": {
+    "message": "維護更新 $ver$。此特定修正已包含在上一個版本之後的更新中。",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

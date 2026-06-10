@@ -1,3 +1,7 @@
+**Release 6.16.2**
+
+We fixed a serious regression in v6.12.1 where the messages window content area was cut off at the top [issue #673]. You may have to restart Thunderbird to see this fix fully working.
+
 **Release 6.16.1**
 
 This release updates QuickFolders to reflect recent changes in Thunderbird’s add-on platform planning. A previously announced restriction affecting Experiment APIs on the Release channel has been postponed to a future ESR cycle (currently targeted for 2027).

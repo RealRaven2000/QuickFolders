@@ -2035,7 +2035,13 @@
   },
   "whats-new-list": {
     "description": "🇯🇵 change log",
-    "message": "{L}Thunderbird 152との互換性を追加しました。{/L}{L}非推奨APIの問題を回避するため、最小サポートThunderbirdバージョンを140に設定しました。{/L}{L}修正: quickJump検索ボックスがmacOS Tahoe 26.4でフォーカスを失う可能性がありました [issue 658].{/L}{L}修正: macOS Tahoe 26.4でサブフォルダメニューのドラッグ＆ドロップが機能しない問題 [issue 659].{/L}{L}修正: 設定ウィンドウで現在フォルダのラベルがスタック状態になる問題 [issue 666].{/L}{L}修正: v6.15登録ダイアログのスタイル未適用ボタン（ライセンス延長 / 更新） [issue 660].{/L}{L}ESR140に合わせた新しいGitHubデフォルトブランチを作成しました。{/L}"
+    "message": "{L}{b class=maintenance}6.16.2{/b} v6.16.1で発生した重大なリグレッションを修正しました。メッセージウィンドウのコンテンツ領域が上部で切れてしまう問題です [issue 673]。この修正を完全に適用するには Thunderbird の再起動が必要な場合があります.{/L}{L}Thunderbird 152 との互換性を追加しました.{/L}修正: quickJump検索ボックスがmacOS Tahoe 26.4でフォーカスを失う可能性がありました [issue 658].{/L}{L}修正: macOS Tahoe 26.4でサブフォルダメニューのドラッグ＆ドロップが機能しない問題 [issue 659].{/L}{L}修正: 設定ウィンドウで現在フォルダのラベルがスタック状態になる問題 [issue 666].{/L}{L}修正: v6.15登録ダイアログのスタイル未適用ボタン（ライセンス延長 / 更新） [issue 660].{/L}{L}ESR140に合わせた新しいGitHubデフォルトブランチを作成しました。{/L}"
+  },
+  "whats-new-maintenance": {
+    "message": "メンテナンス更新 $ver$。この特定の修正は前回のリリース以降に追加されました。",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

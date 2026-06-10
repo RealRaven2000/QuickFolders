@@ -2179,7 +2179,13 @@
   },
   "whats-new-list": {
     "description": "🇨🇿 change log",
-    "message": "{L}Přidána kompatibilita s Thunderbirdem 152.{/L}{L}Nastavena minimální podporovaná verze Thunderbirdu na 140, aby se předešlo problémům s zastaralými API.{/L}{L}Oprava: vyhledávací pole quickJump mohlo ztratit fokus na macOS Tahoe 26.4 [issue 658].{/L}{L}Oprava: Drag & Drop v menu podsložek na macOS Tahoe 26.4 [issue 659].{/L}{L}Oprava: okno nastavení mohlo ponechat štítek aktuální složky v zaseknutém stavu [issue 666].{/L}{L}Oprava: neostylovaná tlačítka v registračním dialogu v6.15 (Rozšířit / Obnovit licenci) [issue 660].{/L}{L}Vytvořena nová výchozí větev GitHubu sladěná s ESR140.{/L}"
+    "message": "{L}{b class=maintenance}6.16.2{/b} Opravili jsme závažnou regresi ve verzi v6.16.1, kdy byla oblast obsahu okna zpráv oříznuta nahoře [issue 673]. Možná budete muset restartovat Thunderbird, aby tato oprava plně fungovala.{/L}{L}Přidána kompatibilita s Thunderbirdem 152.{/L}{L}Nastavena minimální podporovaná verze Thunderbirdu na 140, aby se předešlo problémům s zastaralými API.{/L}{L}Oprava: vyhledávací pole quickJump mohlo ztratit fokus na macOS Tahoe 26.4 [issue 658].{/L}{L}Oprava: Drag & Drop v menu podsložek na macOS Tahoe 26.4 [issue 659].{/L}{L}Oprava: okno nastavení mohlo ponechat štítek aktuální složky v zaseknutém stavu [issue 666].{/L}{L}Oprava: neostylovaná tlačítka v registračním dialogu v6.15 (Rozšířit / Obnovit licenci) [issue 660].{/L}{L}Vytvořena nová výchozí větev GitHubu sladěná s ESR140.{/L}"
+  },
+  "whats-new-maintenance": {
+    "message": "Údržbová aktualizace $ver$. Tato konkrétní oprava byla přidána od předchozí verze.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

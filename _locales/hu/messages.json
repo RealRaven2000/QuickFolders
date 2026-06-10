@@ -1887,7 +1887,13 @@
   },
   "whats-new-list": {
     "description": "🇭🇺 change log",
-    "message": "{L}Thunderbird 152 kompatibilitás hozzáadva.{/L}{L}A minimálisan támogatott Thunderbird verzió 140-re állítva az elavult API-k miatti problémák elkerülésére.{/L}{L}Javítva: a quickJump keresőmező elveszíthette a fókuszt macOS Tahoe 26.4 alatt [issue 658].{/L}{L}Javítva: húzd és ejtsd működés a mappaalmappák menüben macOS Tahoe 26.4 alatt [issue 659].{/L}{L}Javítva: a beállítások ablak az aktuális mappa címkéjét beragadt állapotban hagyhatta [issue 666].{/L}{L}Javítva: formázatlan gombok a v6.15 regisztrációs párbeszédablakban (Licenc bővítése / megújítása) [issue 660].{/L}{L}Új GitHub alapértelmezett ág létrehozva, ESR140-hez igazítva.{/L}"
+    "message": "{L}{b class=maintenance}6.16.2{/b} Kijavítottunk egy súlyos hibát, amelynél az üzenetablak tartalmi területe felül le volt vágva [issue 673]. Előfordulhat, hogy újra kell indítania a Thunderbirdöt, hogy a javítás teljesen érvényesüljön.{/L}{L}Thunderbird 152 kompatibilitás hozzáadva.{/L}{L}A minimálisan támogatott Thunderbird verzió 140-re állítva az elavult API-k miatti problémák elkerülésére.{/L}{L}Javítva: a quickJump keresőmező elveszíthette a fókuszt macOS Tahoe 26.4 alatt [issue 658].{/L}{L}Javítva: húzd és ejtsd működés a mappaalmappák menüben macOS Tahoe 26.4 alatt [issue 659].{/L}{L}Javítva: a beállítások ablak az aktuális mappa címkéjét beragadt állapotban hagyhatta [issue 666].{/L}{L}Javítva: formázatlan gombok a v6.15 regisztrációs párbeszédablakban (Licenc bővítése / megújítása) [issue 660].{/L}{L}Új GitHub alapértelmezett ág létrehozva, ESR140-hez igazítva.{/L}"
+  },
+  "whats-new-maintenance": {
+    "message": "Karbantartási frissítés $ver$. Ez a konkrét javítás az előző kiadás óta került hozzáadásra.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

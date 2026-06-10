@@ -2135,7 +2135,13 @@
   },
   "whats-new-list": {
     "description": "🇵🇱 change log",
-    "message": "{L}Dodano kompatybilność z Thunderbird 152.{/L}{L}Ustawiono minimalną obsługiwaną wersję Thunderbirda na 140, aby uniknąć problemów z przestarzałymi API.{/L}{L}Naprawiono: pole wyszukiwania quickJump mogło tracić fokus w macOS Tahoe 26.4 [issue 658].{/L}{L}Naprawiono: Drag & Drop w menu podfolderów w macOS Tahoe 26.4 [issue 659].{/L}{L}Naprawiono: okno ustawień mogło pozostawiać etykietę bieżącego folderu w stanie zablokowanym [issue 666].{/L}{L}Naprawiono: niesformatowane przyciski w oknie rejestracji v6.15 (Rozszerz / Odnów licencję) [issue 660].{/L}{L}Utworzono nową domyślną gałąź GitHub zgodną z ESR140.{/L}"
+    "message": "{L}{b class=maintenance}6.16.2{/b} Naprawiliśmy poważną regresję w wersji v6.16.1, w której obszar treści okna wiadomości był u góry ucinany [issue 673]. Może być konieczne ponowne uruchomienie Thunderbirda, aby ta poprawka zadziałała w pełni.{/L}{L}Dodano zgodność z Thunderbird 152.{/L}{L}Ustawiono minimalną obsługiwaną wersję Thunderbirda na 140, aby uniknąć problemów z przestarzałymi API.{/L}{L}Naprawiono: pole wyszukiwania quickJump mogło tracić fokus w macOS Tahoe 26.4 [issue 658].{/L}{L}Naprawiono: Drag & Drop w menu podfolderów w macOS Tahoe 26.4 [issue 659].{/L}{L}Naprawiono: okno ustawień mogło pozostawiać etykietę bieżącego folderu w stanie zablokowanym [issue 666].{/L}{L}Naprawiono: niesformatowane przyciski w oknie rejestracji v6.15 (Rozszerz / Odnów licencję) [issue 660].{/L}{L}Utworzono nową domyślną gałąź GitHub zgodną z ESR140.{/L}"
+  },
+  "whats-new-maintenance": {
+    "message": "Aktualizacja konserwacyjna $ver$. Ta konkretna poprawka została dodana od poprzedniej wersji.",
+    "placeholders": {
+      "ver": { "content": "$1", "example": "6.12.3" }
+    }
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",

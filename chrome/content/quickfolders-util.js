@@ -260,11 +260,25 @@ QuickFolders.Util = {
 
   get document3pane() {
     try {
-      return window.gTabmail.currentTabInfo.chromeBrowser.contentDocument;
+      const tabInfo = window.gTabmail.currentTabInfo;
+      return tabInfo?.chromeBrowser?.contentDocument;
     } catch (ex) {
       QuickFolders.Util.logException("get document3pane()", ex);
       return null;
     }
+  },
+
+  get window3pane() {
+    const doc3 = this.document3pane;
+    if (!doc3) {
+      return null;
+    }
+    const win = doc3?.documentGlobal || doc3?.defaultView || doc3?.ownerGlobal;
+
+    if (!win) {
+      throw new Error("3pane window not accessible from document context");
+    }
+    return win;
   },
 
   get folderTree() {

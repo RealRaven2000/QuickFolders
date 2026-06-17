@@ -526,25 +526,28 @@ QuickFolders.Interface = {
 
 	resetQuickFilter: function() {
 		// [issue 494] check if quickFilterBar needs to be reset?
-		const doc3 = QuickFolders.Util.document3pane;
-		if (!doc3) {return;}
-
-		const quickFilterBar = doc3?.ownerGlobal?.quickFilterBar;
+		const win3 = QuickFolders.Util.window3pane;
+    QuickFolders.Util.logDebug("resetQuickFilter() for 3pane window:", win3);
+		if (!win3) {return;}
+    const quickFilterBar = win3?.quickFilterBar;
 		const filterer = quickFilterBar?._filterer;
 		
 		if (filterer && filterer.visible && filterer?.filterValues?.text) {
 			// compare to last findRelated value
 			const currentSearchText = filterer?.filterValues.text;
 			const lastSearchString = QuickFolders.Preferences.getStringPref("findRelated.lastSearchVal");
-			if (currentSearchText?.text == lastSearchString) {
-				// reset search (and consume last searchval?)
-				if (filterer.userHitEscape()) {
-					quickFilterBar.updateSearch();
-					quickFilterBar.reflectFiltererState();
-				}
-				QuickFolders.Preferences.setStringPref("findRelated.lastSearchVal");
-			}
-		}
+			if (currentSearchText?.text != lastSearchString) {
+        QuickFolders.Util.logDebug("search text edited manually - no reset!");
+        return;
+      }
+      if (filterer.userHitEscape()) {
+        quickFilterBar.updateSearch();
+        quickFilterBar.reflectFiltererState();
+      }
+      QuickFolders.Preferences.setStringPref("findRelated.lastSearchVal");
+		} else {
+      QuickFolders.Util.logDebug("no QuickFilter reset necessary");
+    }
 	},
 
 	onGoNextMsg: async function (button) {

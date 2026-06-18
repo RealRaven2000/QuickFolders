@@ -1,6 +1,7 @@
 import * as util from "./scripts/qf-util.mjs.js";
 import {Licenser} from "./scripts/Licenser.mjs.js";
-const RESTRICT_UPDATEMSG = "6.16.1"; // latest version forcing additional update message - use this to restrict noise one maintenance updates
+// bump this up to current version to create additional QuickFolders NEWS messages
+const LATEST_UPDATEMSG = "6.16.1"; 
 
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 const ADDQUICKFOLDER_ID = "addQuickFolderTab";
@@ -1033,6 +1034,8 @@ async function main() {
   );
   // inject a separate script for current folder toolbar!
   messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
+
+
   messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
 
   messenger.WindowListener.registerWindow(
@@ -1321,13 +1324,13 @@ async function displayUpdateMessage() {
     (await messenger.LegacyPrefs.getPref("extensions.quickfolders.lastUpdateMessage")) || "0";
   logDebug(`Last update message version: ${lastMessage}`);
 
-  const isShowSpecialUpdateMsg = compareVersions(lastMessage, RESTRICT_UPDATEMSG) <= 0;
+  const isShowSpecialUpdateMsg = compareVersions(lastMessage, LATEST_UPDATEMSG) < 0;
 
   if (!isShowSpecialUpdateMsg) {
-    logDebug(`Message already shown for ${RESTRICT_UPDATEMSG} – skipping.`);
+    logDebug(`Message already shown for ${LATEST_UPDATEMSG} – skipping.`);
     return;
   }
-  logDebug(`Preparing special upgrade message for version ${RESTRICT_UPDATEMSG}`);
+  logDebug(`Preparing special upgrade message for version ${LATEST_UPDATEMSG}`);
   // ------
   let licenseMsgId,
     testStatus = licenseInfo?.status;

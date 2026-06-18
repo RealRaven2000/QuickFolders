@@ -321,7 +321,9 @@ END LICENSE BLOCK */
   6.16.2 QuickFolders Pro - 10/06/2026
     ## [issue 673] serious regression in v6.16.1 - messages window content area truncated at the top.
     ##             this was caused by alternative xhtml injector
-  
+
+  6.16.3 QuickFolders Pro - WIP
+    ## [issue 676] Thunderbird 152 - Go to next [unread] mail doesn't reset QuickFilters search
 	TO DO next
 	==========
     ## WIP: command handler for tbkeys-lite! see "shortcut" in qf-background.js

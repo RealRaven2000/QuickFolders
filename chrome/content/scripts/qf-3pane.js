@@ -32,7 +32,7 @@ const QFInjector = {
     const debug = prefs?.isDebug;
 
     if (debug) {
-      console.log("QF injector path:", {
+      console.log("QuickFolders injector path:", {
         hasWL: !!WL,
         globalThis: globalThis.WL,
         hasInject: !!WL?.injectElements,

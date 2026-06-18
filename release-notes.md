@@ -1,3 +1,9 @@
+**Release 6.16.3**
+
+- Fixed: Thunderbird 152 had a regression not resetting the quick search field when clicking go to next unread mail after using the 'Find related mails' function. [issue #676]
+- Set max version to 153.* for supporting the upcoming  ESR channel.
+
+
 **Release 6.16.2**
 
 We fixed a serious regression in v6.12.1 where the messages window content area was cut off at the top [issue #673]. You may have to restart Thunderbird to see this fix fully working.

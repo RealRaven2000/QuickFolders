@@ -43,6 +43,7 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
+// eslint-disable-next-line no-redeclare
 /* global Services, ExtensionCommon */
 
 "use strict";
@@ -52,6 +53,7 @@ var { ExtensionUtils } = ChromeUtils.importESModule(
 );
 var { ExtensionError } = ExtensionUtils;
 
+// eslint-disable-next-line no-unused-vars
 var LegacyPrefs = class extends ExtensionCommon.ExtensionAPI {
   getAPI(context) {
 
@@ -202,17 +204,14 @@ var LegacyPrefs = class extends ExtensionCommon.ExtensionAPI {
             case Services.prefs.PREF_STRING:
               Services.prefs.setStringPref(aName, aValue);
               return true;
-              break;
 
             case Services.prefs.PREF_INT:
               Services.prefs.setIntPref(aName, aValue);
               return true;
-              break;
 
             case Services.prefs.PREF_BOOL:
               Services.prefs.setBoolPref(aName, aValue);
               return true;
-              break;
 
             default:
               console.error(

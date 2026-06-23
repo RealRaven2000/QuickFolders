@@ -236,7 +236,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 Services.prompt.confirm(
                   win,
                   "QuickFolders",
-                  question.replace("{0}", entries.length),
+                  question.replace("{0}", entries.length)
                 )
               ) {
                 for (let ent of entries) {
@@ -335,7 +335,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
               Services.prompt.alert(
                 null,
                 "QuickFolders",
-                util.getBundleString("qf.alert.pasteFolders.formatErr"),
+                util.getBundleString("qf.alert.pasteFolders.formatErr")
               );
             }
             return changedRecords;
@@ -387,7 +387,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 return null;
               }
               retVal = win.QuickFolders.FolderTree.customIcons.find(
-                (e) => e.folderURI == folder.URI,
+                (e) => e.folderURI == folder.URI
               );
             } else {
               // this is an account.
@@ -395,11 +395,11 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 if (account.key == accountId) {
                   win.QuickFolders.Util.logDebug(
                     `found account: ${accountId}`,
-                    account.incomingServer?.prettyName,
+                    account.incomingServer?.prettyName
                   );
                   let rootUri = account.incomingServer?.rootFolder.URI;
                   retVal = win.QuickFolders.FolderTree.customIcons.find(
-                    (e) => e.folderURI == rootUri,
+                    (e) => e.folderURI == rootUri
                   );
                   break;
                 }
@@ -428,7 +428,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                 if (account.key == accountId) {
                   win.QuickFolders.Util.logDebug(
                     `found account: ${accountId}`,
-                    account.incomingServer?.prettyName,
+                    account.incomingServer?.prettyName
                   );
                   retVal = account.incomingServer?.rootFolder.URI;
                   break;
@@ -444,7 +444,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
         getActiveThemeId: function () {
           const win = Services.wm.getMostRecentWindow("mail:3pane");
-          return win.QuickFolders.Preferences.CurrentThemeId; 
+          return win.QuickFolders.Preferences.CurrentThemeId;
         },
 
         commitActiveThemeId: async function (themeId) {

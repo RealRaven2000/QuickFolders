@@ -351,10 +351,6 @@ QuickFolders.AdvancedTab = {
     }
   } ,
   
-  updatePalette: function updatePalette() {
-    // alert ('palette update');
-  } ,
-  
   selectPalette: function selectPalette(el, paletteId) {
     this.entry.customPalette = paletteId;
     document.getElementById('chkCustomPalette').checked = true;

@@ -414,7 +414,7 @@ QuickFolders.Util = {
       // log setting extensions.quickfolders.proNotify.<featureName>
       let usage = prefs.getIntPref("premium." + featureName + ".usage");
       usage++;
-      prefs.setIntPref("premium." + featureName + ".usage", usage);
+      await prefs.setIntPref("premium." + featureName + ".usage", usage);
     } catch {;}
 
     if (typeof specialTabs == "object" && specialTabs.msgNotificationBar) {
@@ -1074,7 +1074,7 @@ allowUndo = true)`,
       // support move / copy to XXX again
       try {
         Services.prefs.setCharPref("mail.last_msg_movecopy_target_uri", targetFolder.URI);
-        Services.prefs.setBoolPref("mail.last_msg_movecopy_was_move", isMove);
+        await Services.prefs.setBoolPref("mail.last_msg_movecopy_was_move", isMove);
       } catch (ex) {
         util.logException("Setting 'move to folder X again' failed", ex);
       }
@@ -2033,32 +2033,30 @@ allowUndo = true)`,
   FirstRun: {
     init: async function () {
       const util = QuickFolders.Util,
-        prefs = QuickFolders.Preferences;
+        preferences = QuickFolders.Preferences;
+      // make sure the settings cache can be read / written to:
+      await preferences.ensureReady();
       let prev = -1,
         firstrun = true,
         showFirsts = true,
-        debugFirstRun = false,
-        prefBranchString = "extensions.quickfolders.",
-        ssPrefs = Services.prefs.getBranch(prefBranchString); // nsIPrefService
+        debugFirstRun = false;
+        // prefBranchString = "extensions.quickfolders.",
+        // ssPrefs = Services.prefs.getBranch(prefBranchString); // nsIPrefService
 
       try {
-        debugFirstRun = Boolean(ssPrefs.getBoolPref("debug.firstrun"));
+        debugFirstRun = Boolean(preferences.getBoolPref("debug.firstrun"));
       } catch {
         debugFirstRun = false;
       }
 
       util.logDebugOptional("firstrun", "QuickFolders.Util.FirstRun.init()");
-      if (!ssPrefs) {
-        util.logDebugOptional("firstrun", "Could not retrieve prefbranch for " + prefBranchString);
-      }
-
       let current = util.Version;
       util.logDebug("Current QuickFolders Version: " + current);
 
       try {
         util.logDebugOptional("firstrun", "try to get setting: getStringPref(version)");
         try {
-          prev = ssPrefs.getStringPref("version");
+          prev = preferences.getStringPref("version");
         } catch (ex) {
           prev = "?";
           util.logDebugOptional("firstrun", "Could not determine previous version - " + ex);
@@ -2066,7 +2064,7 @@ allowUndo = true)`,
 
         util.logDebugOptional("firstrun", "try to get setting: getBoolPref(firstrun)");
         try {
-          firstrun = ssPrefs.getBoolPref("firstrun");
+          firstrun = preferences.getBoolPref("firstrun");
         } catch {
           firstrun = true;
         }
@@ -2074,7 +2072,7 @@ allowUndo = true)`,
         // enablefirstruns=false - allows start pages to be turned off for partners
         util.logDebugOptional("firstrun", "try to get setting: getBoolPref(enablefirstruns)");
         try {
-          showFirsts = ssPrefs.getBoolPref("enablefirstruns");
+          showFirsts = preferences.getBoolPref("enablefirstruns");
         } catch {
           showFirsts = true;
         }
@@ -2108,7 +2106,7 @@ allowUndo = true)`,
         // STORE CURRENT VERSION NUMBER!
         if (prev != pureVersion && current != "?") {
           util.logDebugOptional("firstrun", "Store current version " + current);
-          ssPrefs.setStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
+          await preferences.setStringPref("version", pureVersion); // store sanitized version! (no more alert on pre-Releases + betas!)
         } else {
           util.logDebugOptional(
             "firstrun",
@@ -2122,7 +2120,7 @@ allowUndo = true)`,
         if (firstrun) {
           // FIRST TIME INSTALL
           util.logDebugOptional("firstrun", "set firstrun=false");
-          ssPrefs.setBoolPref("firstrun", false);
+          await preferences.setBoolPref("firstrun", false);
 
           if (showFirsts) {
             // on very first run, we go to the index page - welcome blablabla
@@ -2137,8 +2135,8 @@ allowUndo = true)`,
               util.makeUriPremium("https://quickfolders.org/version.html") + "#" + pureVersion;
           // UPDATE CASE
           // this section does not get loaded if it's a fresh install.
-          suppressVersionScreen = prefs.getBoolPrefSilent(
-            "extensions.quickfolders.hideVersionOnUpdate",
+          suppressVersionScreen = preferences.getBoolPrefSilent(
+            "hideVersionOnUpdate"
           );
 
           // SILENT UPDATES

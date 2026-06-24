@@ -24,8 +24,8 @@ QuickFolders.FilterWorker = {
 	SelectedValue: '',
 	
 	// FILTER WIZARD FUNCTIONS ...
-	showMessage: function showMessage(show) {
-		QuickFolders.Preferences.setBoolPref("filters.showMessage", show);
+	showMessage: async function (show) {
+		await QuickFolders.Preferences.setBoolPref("filters.showMessage", show);
 	} ,
 	
   /** 

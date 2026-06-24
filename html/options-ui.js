@@ -700,7 +700,7 @@ QuickFolders.Options = {
           util.logDebug(`selectTheme(): '${themeId}' already active – skipping reset only`);
         }
         if (dataPrefName){
-          await browser.LegacyPrefs.setPref(dataPrefName, themeId);
+          await QuickFolders.Preferences.setStringPref(dataPrefName, themeId);
         }
 
         // textContent wraps, value doesnt
@@ -970,7 +970,7 @@ QuickFolders.Options = {
           validationDateSpace.setAttribute("collapsed", true);
           break;
         default:
-          Services.prompt.alert(null, "QuickFolders", "Unknown license status: " + result);
+          alert(`QuickFolders - Unknown license status: ${result}`);
           break;
       }
       if (result=="Empty") {
@@ -995,8 +995,8 @@ QuickFolders.Options = {
     btnRecover.hidden = true;
     validationKeyBackedUp.setAttribute("collapsed", true);
 
-    const lastKey = await browser.LegacyPrefs.getPref(
-      "extensions.quickfolders.LicenseKey.backup"
+    const lastKey = QuickFolders.Preferences.getStringPref(
+      "LicenseKey.backup"
     );
     if (lastKey?.length > 3 && !txtLicense.value) {
       validationKeyBackedUp.removeAttribute("collapsed");

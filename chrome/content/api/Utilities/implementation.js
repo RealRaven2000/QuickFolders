@@ -463,8 +463,17 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           const win = Services.wm.getMostRecentWindow("mail:3pane");
           // this will reset styles!
           win.QuickFolders.Interface.prepareThemeChange(themeId);
-        }
-      }
+        },
+
+        updatePreferencesCache: (data) => {
+          const enumerator = Services.wm.getEnumerator("mail:3pane");
+          while (enumerator.hasMoreElements()) {
+            const win = enumerator.getNext();
+            win.QuickFolders.Preferences.cache.updateFromBackend(data);
+          }
+          return true;
+        },
+      },
     };
   }
 }

@@ -12,13 +12,17 @@
 //export  {QuickFolders.Preferences};
 
 QuickFolders.Preferences = {
+  TABS_STRIPED: 0,
+  TABS_FILLED: 1,
+
   get isDebug() {
     return this.getBoolPref("debug");
   },
 
-  set lastActiveCats(c) {
-    this.setStringPref("lastActiveCategories", c);
+  setLastActiveCats: async function (c) {
+    await this.setStringPref("lastActiveCategories", c);
   },
+
   get lastActiveCats() {
     return this.getStringPref("lastActiveCategories");
   },
@@ -34,50 +38,28 @@ QuickFolders.Preferences = {
         if (this.getBoolPref("debug." + o)) {
           return true;
         }
-      } catch {;}
+      } catch (ex) {
+        console.log(`invalid debug option: ${option}`, ex);
+      }
     }
     return false;
   },
 
-  setDebugOption: function setDebugOption(option, val) {
-    this.setBoolPref("debug." + option, val);
+  setDebugOption: async function (option, val) {
+    return await this.setBoolPref("debug." + option, val);
   },
 
-  storeFolderEntries: function storeFolderEntries(folderEntries) {
+  storeFolderEntries: async function (folderEntries) {
     try {
-      const PS = Services.prefs;
-      let json = JSON.stringify(folderEntries),
-        str = Components.classes["@mozilla.org/supports-string;1"].createInstance(
-          Components.interfaces.nsISupportsString
-        );
-      str.data = json;
-
-      if (PS.setStringPref) {
-        PS.setStringPref("QuickFolders.folders", json);
-      } else {
-        PS.setComplexValue("QuickFolders.folders", Components.interfaces.nsISupportsString, str);
-      }
+      return await QuickFolders.Preferences.cache.storeModel(folderEntries);
     } catch (e) {
-      QuickFolders.Util.logToConsole("storeFolderEntries()" + e);
+      QuickFolders.Util.logToConsole("storeFolderEntries() " + e);
     }
   },
 
   loadFolderEntries: function () {
-    const setting = "QuickFolders.folders";
-    if (!Services.prefs.prefHasUserValue(setting)) {
-      return [];
-    }
-
     try {
-      const PS = Services.prefs;
-      // fill the array of accounts:
-
-      let folders = PS.getStringPref(setting);
-      if (!folders) {
-        return [];
-      }
-      folders = folders.replace(/\r?\n|\r/, ""); // remove all line breaks
-      let entries = JSON.parse(folders);
+      let entries = QuickFolders.Preferences.cache.loadModel();
       for (let i = 0; i < entries.length; i++) {
         let e = entries[i];
 
@@ -306,8 +288,8 @@ QuickFolders.Preferences = {
 
     try {
       // to support UNICODE: https://developer.mozilla.org/pl/Fragmenty_kodu/Preferencje
-      const url = "extensions.quickfolders.textQuickfoldersLabel";
-      let customTitle = Services.prefs.getStringPref(url);
+      const url = "textQuickfoldersLabel";
+      let customTitle = this.getStringPref(url);
       return overrideLabel || customTitle;
     } catch {
       return overrideLabel || "QuickFolders";
@@ -329,84 +311,36 @@ QuickFolders.Preferences = {
     return result;
   },
 
-  TABS_STRIPED: 0,
-  TABS_FILLED: 1,
-
-  existsCharPref: function (pref) {
-    try {
-      if (Services.prefs.prefHasUserValue(pref)) {
-        return true;
-      }
-      if (Services.prefs.getStringPref(pref)) {
-        return true;
-      }
-    } catch {
-      return false;
-    }
-    return false;
-  },
-
-  existsBoolPref: function (pref) {
-    try {
-      if (Services.prefs.prefHasUserValue(pref)) {
-        return true;
-      }
-      if (Services.prefs.getBoolPref(pref)) {
-        return true;
-      }
-    } catch {
-      return false;
-    }
-    return false;
-  },
-
   getUserStyle: function (sId, sType, sDefault) {
     // note: storing color as string in order to store OS specific colors like Menu, Highlight
     // usage: getUserStyle("ActiveTab","background-color","HighLight")
     // usage: getUserStyle("ActiveTab","color", "HighlightText")
-    let sStyleName = "extensions.quickfolders.style." + sId + "." + sType,
+    let sStyleName = "style." + sId + "." + sType,
       sReturnValue = "";
 
     try {
       let localPref =
-        typeof sDefault == "string"
-          ? Services.prefs.getStringPref(sStyleName)
-          : Services.prefs.getIntPref(sStyleName);
+        typeof sDefault == "string" ? this.getStringPref(sStyleName) : this.getIntPref(sStyleName);
       if (localPref || localPref === 0) {
         sReturnValue = localPref;
       } else {
         sReturnValue = sDefault;
       }
-    } catch {
+    } catch (ex) {
+      console.warn(`getUserStyle($sId) not found!`, ex);
       sReturnValue = sDefault;
     }
-    /* QuickFolders.Util.logToConsole("getUserStyle("+ sId+ ", " + sType + ", " + sDefault +")\n" +
-				"Style Name: " + sStyleName + "\n" +
-				"Value: " + sReturnValue) */
     return sReturnValue;
   },
 
-  setUserStyle: function (sId, sType, sValue) {
-    let sStyleName = "extensions.quickfolders.style." + sId + "." + sType;
-    Services.prefs.setStringPref(sStyleName, sValue);
-  },
-
-  getIntPreference: function (p) {
-    try {
-      return Services.prefs.getIntPref(p);
-    } catch (ex) {
-      QuickFolders.Util.logException("getIntPref(" + p + ") failed\n", ex);
-      return 0;
-    }
-  },
-
-  setIntPreference: function (p, v) {
-    return Services.prefs.setIntPref(p, v);
+  setUserStyle: async function (sId, sType, sValue) {
+    let sStyleName = "style." + sId + "." + sType;
+    await this.setStringPref(sStyleName, sValue);
   },
 
   getBoolPrefSilent: function (p) {
     try {
-      return Services.prefs.getBoolPref(p);
+      return this.getBoolPref(p);
     } catch {
       return false;
     }
@@ -414,31 +348,55 @@ QuickFolders.Preferences = {
 
   getBoolPrefVerbose: function (p) {
     try {
-      return Services.prefs.getBoolPref(p);
+      return this.getBoolPref(p);
     } catch (e) {
       QuickFolders.Util.logException("getBoolPrefVerbose(" + p + ") failed\n", e);
       return false;
     }
   },
 
-  getBoolPref: function (p) {
-    let ans;
-    try {
-      ans = Services.prefs.getBoolPref("extensions.quickfolders." + p);
-    } catch (ex) {
-      QuickFolders.Util.logException("getBoolPref(" + p + ") failed\n", ex);
-      throw ex;
-    }
-    return ans;
+  getBoolPref(p) {
+    return QuickFolders.Preferences.cache.getValue(p);
   },
 
-  setBoolPref: function (p, v) {
-    return Services.prefs.setBoolPref("extensions.quickfolders." + p, v);
+  async setBoolPref(p, v) {
+    return QuickFolders.Preferences.cache.setValue(p, v);
+  },
+
+  async setPrefsGroup(prefs) {
+    try {
+      if (!prefs || typeof prefs !== "object") {
+        return false;
+      }
+      const clean = {};
+      for (const [key, value] of Object.entries(prefs)) {
+        if (key.startsWith("debug")) {
+          console.error("setPrefsGroup: debug key rejected", key);
+          continue;
+        }
+        clean[key] = value;
+      }
+
+      if (!Object.keys(clean).length) {
+        return true;
+      }
+      await QuickFolders.Util.notifyTools.notifyBackground({
+        func: "setCachedPrefSet",
+        prefs: clean,
+      });
+
+      return true;
+    } catch (e) {
+      console.error("setPrefsGroup failed:", e);
+      return false;
+    }
   },
 
   // reading prefs across extensions will be forbidden, check:
   // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessageExternal
   getFiltersBoolPref: function (p, defaultV) {
+    // TO DO: convert this to get the setting from quickFilters directly
+    //        as we cannot assume that quickFilters stores in Legacy Prefs anymore
     let ans;
     try {
       ans = Services.prefs.getBoolPref("extensions.quickfilters." + p);
@@ -451,48 +409,28 @@ QuickFolders.Preferences = {
     return ans;
   },
 
-  getStringPref: function (p) {
-    let prefString = "",
-      key = "extensions.quickfolders." + p;
-
-    try {
-      prefString = Services.prefs.getStringPref(key);
-    } catch (ex) {
-      QuickFolders.Util.logDebug("Could not retrieve string pref: " + p + "\n" + ex.message);
-    }
-    return prefString;
+  getStringPref(p) {
+    return QuickFolders.Preferences.cache.getValue(p);
   },
 
-  setStringPref: function (p, v) {
-    if (Services.prefs.setStringPref) {
-      return Services.prefs.setStringPref("extensions.quickfolders." + p, v);
-    } else {
-      const Ci = Components.interfaces,
-        Cc = Components.classes;
-      if (this.isDebug) {
-        // eslint-disable-next-line no-debugger
-        debugger;
-      }
-      var str = Cc["@mozilla.org/supports-string;1"].createInstance(Ci.nsISupportsString);
-      str.data = v;
-      Services.prefs.setComplexValue("extensions.quickfolders." + p, Ci.nsISupportsString, str);
-    }
+  async setStringPref(p, v) {
+    return QuickFolders.Preferences.cache.setValue(p, v);
   },
 
   getIntPref: function getIntPref(p) {
-    return QuickFolders.Preferences.getIntPreference("extensions.quickfolders." + p);
+    return QuickFolders.Preferences.cache.getValue(p);
   },
 
-  setIntPref: function setIntPref(p, v) {
-    return this.setIntPreference("extensions.quickfolders." + p, v);
+  async setIntPref(p, v) {
+    return QuickFolders.Preferences.cache.setValue(p, v);
   },
 
-  setShowCurrentFolderToolbar: function (b, selector) {
+  setShowCurrentFolderToolbar: async function (b, selector) {
     let tag = "showCurrentFolderToolbar";
     if (selector) {
       tag = tag + "." + selector;
     }
-    return Services.prefs.setBoolPref("extensions.quickfolders." + tag, b);
+    return await this.setBoolPref("extensions.quickfolders." + tag, b);
   },
 
   isShowCurrentFolderToolbar: function (selector) {
@@ -503,15 +441,6 @@ QuickFolders.Preferences = {
     return QuickFolders.Preferences.getBoolPref(tag, false);
   },
 
-  setBoolPrefVerbose: function (p, v) {
-    try {
-      return Services.prefs.setBoolPref(p, v);
-    } catch (e) {
-      QuickFolders.Util.logException("setBoolPrefVerbose(" + p + ") failed\n", e);
-      return false;
-    }
-  },
-
   get CurrentTheme() {
     let id = this.CurrentThemeId;
     return QuickFolders.Themes.Theme(id);
@@ -519,10 +448,6 @@ QuickFolders.Preferences = {
 
   get CurrentThemeId() {
     return this.getStringPref("style.theme");
-  },
-
-  set CurrentThemeId(t) {
-    this.setStringPref("style.theme", t);
   },
 
   get supportsCustomIcon() {
@@ -539,13 +464,106 @@ QuickFolders.Preferences = {
     return this.getBoolPref("currentFolderBar.showFindRelated");
   },
 
-  unhideSmallIcons() {
-    // option: make "small icons" option visible again in customize toolbar palette
-    if (this.getBoolPref("toolbarpalette.showSmallIcons")) {
-      let option = document.getElementById("smallicons");
-      if (option) {
-        option.style.setProperty("display", "block");
-      } // by default this has been set to 'none' for ages
-    }
+  ensureReady: async function () {
+    await QuickFolders.Preferences.cache.awaitReady;
   },
 };
+
+QuickFolders.Preferences.cache = (() => {
+  const cache = {
+    _data: {},
+    _model: { folders: []},
+    _resolveReady: null,
+    awaitReady: null /* init-only gate; NOT a lock for updates */,
+    getValue: (k) => cache._data[k],
+
+    setValue: async (k, v) => {
+      cache._data[k] = v;
+      let varType = "undefined";
+      switch (typeof v) {
+        case "number":
+          varType = "int";
+          break;
+        case "boolean":
+          varType = "bool";
+          break;
+        case "string":
+          varType = "string";
+          break;
+      }
+      try {
+        await QuickFolders.Util.notifyTools.notifyBackground({
+          func: "setCachedPref",
+          kind: varType,
+          key: k,
+          value: v,
+        });
+      } catch (ex) {
+        console.error("Pref sync failed:", k, ex);
+      }
+    },
+
+    setValueSet: async (prefs) => {
+      // optimized functino for multiple changes.
+      if (!prefs || typeof prefs !== "object") {
+        return;
+      }
+      // 1. update local cache immediately
+      Object.assign(cache._data, prefs);
+      try {
+        await QuickFolders.Util.notifyTools.notifyBackground({
+          func: "setCachedPrefSet",
+          prefs
+        });
+      } catch (ex) {
+        console.error("Pref set batch sync failed:", ex);
+      }
+    },
+
+    init: async () => {
+      // create an async blocker.
+      cache.awaitReady = new Promise((resolve) => {
+        // blocks all external callers until we're done here
+        cache._resolveReady = resolve;
+      });
+
+      try {
+        console.log("Preferences Cache - notifyTools:", QuickFolders.Util?.notifyTools);
+        const {prefs, model} = await QuickFolders.Util.notifyTools.notifyBackground({
+          func: "requestPrefCache",
+        });
+        cache._model.folders = [...(model?.folders || [])];
+        console.log("Received preferences Cache:", prefs);
+        console.log("Received model / folders:", cache._model);
+        
+        // remove all old data
+        Object.keys(cache._data).forEach((k) => delete cache._data[k]);
+        Object.assign(cache._data, prefs);
+        // fill cache._data from backend snapshot
+      } catch (ex) {
+        console.error("requestPrefCache failed:", ex);
+      }
+      cache._resolveReady();
+    },
+
+    updateFromBackend: (data) => {
+      // copies all enumerable own properties
+      Object.assign(cache._data, data);
+    },
+    async storeModel(model) {
+      cache._model.folders = Array.isArray(model) ? model : [];
+      await QuickFolders.Util.notifyTools.notifyBackground({
+        func: "setCachedModel",
+        folders: cache._model.folders,
+      });
+    },
+    loadModel() {
+      return [...(cache._model.folders || [])];
+    }
+
+  };
+
+  return cache;  
+})();
+
+QuickFolders.Preferences.cache.init();

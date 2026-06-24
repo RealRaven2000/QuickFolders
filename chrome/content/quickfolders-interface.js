@@ -423,7 +423,7 @@ QuickFolders.Interface = {
 
 	},
 
-	onClickRecent: function (button, evt, forceDisplay) {
+	onClickRecent: async function (button, evt, forceDisplay) {
 		const QI = QuickFolders.Interface,
 		      prefs = QuickFolders.Preferences;
 		// refresh the recent menu on right click
@@ -436,7 +436,7 @@ QuickFolders.Interface = {
 			if (!color) {color = 0;}
 			this.setButtonColor(button, color);
 			this.initElementPaletteClass(button);
-			QuickFolders.Preferences.setIntPref( "recentfolders.color",  color)
+			await QuickFolders.Preferences.setIntPref( "recentfolders.color",  color)
 			return;
 		}
 		// Thunderbird 52 fix for [Bug 26592] - recent folder clicks not working
@@ -524,7 +524,7 @@ QuickFolders.Interface = {
     }
 	} ,
 
-	resetQuickFilter: function() {
+	resetQuickFilter:async function() {
 		// [issue 494] check if quickFilterBar needs to be reset?
 		const win3 = QuickFolders.Util.window3pane;
     QuickFolders.Util.logDebug("resetQuickFilter() for 3pane window:", win3);
@@ -544,7 +544,7 @@ QuickFolders.Interface = {
         quickFilterBar.updateSearch();
         quickFilterBar.reflectFiltererState();
       }
-      QuickFolders.Preferences.setStringPref("findRelated.lastSearchVal");
+      await QuickFolders.Preferences.setStringPref("findRelated.lastSearchVal");
 		} else {
       QuickFolders.Util.logDebug("no QuickFilter reset necessary");
     }
@@ -568,7 +568,7 @@ QuickFolders.Interface = {
 		}
 		const isResetSearch = QuickFolders.Preferences.getBoolPref("findRelated.behavior.goNextResetsSearch");
 		if (isResetSearch) {
-			QuickFolders.Interface.resetQuickFilter();
+			await QuickFolders.Interface.resetQuickFilter();
 		}
 		if (button.previousSibling.checked) {
 			goDoCommand("cmd_nextMsg");
@@ -1689,18 +1689,19 @@ QuickFolders.Interface = {
 		}
 	} ,
 
-	testTreeIcons: function() {
+	testTreeIcons: async function() {
     const util = QuickFolders.Util,
 					prefs = QuickFolders.Preferences;
 		util.logDebug("testTreeIcons()…");
 		try {
 			const winType = "global:console";
-			prefs.setBoolPref("debug.folderTree.icons",true);
+			await prefs.setBoolPref("debug.folderTree.icons",true);
 			toOpenWindowByType(winType, "chrome://console2/content/console2.xhtml");  //TODO chrome://console2/content/console2.xhtml does not exist??
 			// let win = Services.wm.getMostRecentWindow(winType);
 			// win.clearConsole();
-		}
-		catch(e) {util.logException("testTreeIcons - ", e);}
+		} catch(e) {
+      util.logException("testTreeIcons - ", e);
+    }
 
 		setTimeout( async () => {
 			const separator = "==============================\n";
@@ -1865,7 +1866,7 @@ QuickFolders.Interface = {
 			}
 			util.logDebugOptional("categories",`set currentActiveCategories()\n${txtDebug}`);
 			if (v!=null) {
-				QuickFolders.Preferences.lastActiveCats = v; // store in pref
+				QuickFolders.Preferences.setLastActiveCats(v); // store in pref - ASYNC!
       }
 		}
 		catch (ex) {
@@ -3542,7 +3543,7 @@ QuickFolders.Interface = {
     const fp = Cc["@mozilla.org/filepicker;1"].createInstance(nsIFilePicker);
 
 		// callback, careful, no "this"
-    let fpCallback = function fpCallback_done(aResult) {
+    let fpCallback = async function fpCallback_done(aResult) {
       if (aResult !== nsIFilePicker.returnOK) {
 				return;
 			}
@@ -3552,7 +3553,7 @@ QuickFolders.Interface = {
 				}
 				const file = fp.file.parent.QueryInterface(Ci.nsIFile);
 				try {
-					QuickFolders.Preferences.setStringPref("tabIcons.defaultPath", file.path);
+					await QuickFolders.Preferences.setStringPref("tabIcons.defaultPath", file.path);
 					let iconURL = fp.fileURL;
 					if (folders) {
 						for (let i=0; i<folders.length; i++) {
@@ -9148,10 +9149,10 @@ QuickFolders.Interface = {
     goDoCommand("cmd_toggleFolderPane");
   } ,
 
-	clickTitleLabel: function(btn) {
+	clickTitleLabel: async function(btn) {
     if (QuickFolders.Preferences.getBoolPref("hasNews")) {
       QuickFolders.Interface.viewSplash();
-      QuickFolders.Preferences.setBoolPref("hasNews", false); // reset
+      await QuickFolders.Preferences.setBoolPref("hasNews", false); // reset
       // send a notification to update all windows!
       QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" }); 
 			return;
@@ -9556,24 +9557,14 @@ QuickFolders.Interface = {
 				for (let m of choices) {
           m.checked = parseInt(m.getAttribute("idx"), 10) == currentIndex;
         }
-				QuickFolders.Preferences.setIntPref("findRelated.lastIdx", currentIndex);
-
-				QuickFolders.Preferences.setStringPref(
-          "findRelated.pattern",
-          findRelItem.getAttribute("pattern")
-        );
-				QuickFolders.Preferences.setStringPref(
-          "findRelated.searchSelected",
-          findRelItem.getAttribute("searchSelected")
-        );
-				QuickFolders.Preferences.setStringPref(
-          "findRelated.searchCriteria",
-          findRelItem.getAttribute("searchCriteria")
-        );
-				QuickFolders.Preferences.setIntPref(
-          "findRelated.group",
-          parseInt(findRelItem.getAttribute("group"))
-        );
+        // persist a batch of changes
+        await QuickFolders.Preferences.setPrefsGroup({
+          "findRelated.lastIdx": currentIndex,
+          "findRelated.pattern": findRelItem.getAttribute("pattern"),
+          "findRelated.searchSelected": findRelItem.getAttribute("searchSelected"),
+          "findRelated.searchCriteria": findRelItem.getAttribute("searchCriteria"),
+          "findRelated.group": parseInt(findRelItem.getAttribute("group")),
+        });        
       }
       regexOption.pattern = QuickFolders.Preferences.getStringPref("findRelated.pattern");
 			if (!regexOption.pattern) {

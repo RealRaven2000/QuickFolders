@@ -53,7 +53,7 @@ QuickFolders.quickMove = {
     }
   },
   
-  addToHistory: function(fld) {
+  addToHistory: async function(fld) {
     let uri = fld.URI;
     QuickFolders.Util.logDebugOptional("quickMove","addToHistory()", fld);
     if (uri) {
@@ -68,16 +68,19 @@ QuickFolders.quickMove = {
       }
       QuickFolders.quickMove.history = newLogged; // discard old array.#
       let stored = JSON.stringify(newLogged);
-      QuickFolders.Preferences.setStringPref("quickMove.history", stored);
+      // now async
+      await QuickFolders.Preferences.setStringPref("quickMove.history", stored);
     }
   },  
 	
-	rememberLastFolder: function (URIorFolder, parentName) {
-		const prefs = QuickFolders.Preferences,
-		      util = QuickFolders.Util;
+	rememberLastFolder: async function (URIorFolder, parentName) {
+		const util = QuickFolders.Util;
     try {
-      if (prefs.isDebugOption('quickMove')) {
-        util.logDebugOptional('quickMove',"rememberLastFolder(" + URIorFolder + ", " + parentName + ")")
+      if (QuickFolders.Preferences.isDebugOption("quickMove")) {
+        util.logDebugOptional(
+          "quickMove",
+          "rememberLastFolder(" + URIorFolder + ", " + parentName + ")"
+        );
       }
       if (!URIorFolder) {
         util.logDebug("rememberLastFolder called with null URIorFolder");
@@ -88,8 +91,10 @@ QuickFolders.quickMove = {
           : QuickFolders.Model.getMsgFolderFromUri(URIorFolder),
         name = fld.prettyName || fld.localizedName,
         sRememberFolder = parentName ? parentName + "/" + name : name;
-      prefs.setStringPref("quickMove.lastFolderName", sRememberFolder);
-      prefs.setStringPref("quickMove.lastFolderURI", fld.URI);
+      await QuickFolders.Preferences.setPrefsGroup({
+        "quickMove.lastFolderName": sRememberFolder,
+        "quickMove.lastFolderURI": fld.URI,
+      });
       util.logDebugOptional("quickMove", "Storing: " + sRememberFolder + " - " + fld.URI);
       QuickFolders.quickMove.addToHistory(fld);
     } catch (ex) {

@@ -113,13 +113,13 @@ function getMail(license) {
 }
 
 export class Licenser {
-  constructor(LicenseKey, options = {}) {
+  constructor(LicenseKey, settings = {}) {
     // the constructor ONLY sets the Licensekey, it does not set date etc.
     this.reset();    
-    this.ForceSecondaryIdentity = options.hasOwnProperty("forceSecondaryIdentity")
-      ? options.forceSecondaryIdentity
+    this.ForceSecondaryIdentity = Object.hasOwn(settings, "forceSecondaryIdentity")
+      ? settings.forceSecondaryIdentity
       : false;
-    this.debug = options.debug || false;
+    this.debug = settings.debug || false;
       
     this.LicenseKey = LicenseKey;
     this.key_type = crypto.getKeyType(LicenseKey);
@@ -209,10 +209,10 @@ export class Licenser {
   // for future use (standard license / trial periods)
 	async graceDate() {
 		let graceDate = "", isResetDate = false;
+    const { settings } = await browser.storage.local.get({ settings: {} });
 		try {
-			graceDate = Services.prefs.getStringPref("license.gracePeriodDate");
-		}
-		catch(ex) { 
+      graceDate = settings["license.gracePeriodDate"];
+		} catch  { 
 			isResetDate = true; 
 		}
 		let today = new Date().toISOString().substr(0, 10); // e.g. "2019-07-18"
@@ -232,7 +232,7 @@ export class Licenser {
 		}
 		if (isResetDate) {
       /* TO DO!! */
-      await messenger.LegacyPrefs.setPref("extensions.quickfolders.license.gracePeriodDate", graceDate);
+      graceDate = settings["license.gracePeriodDate"];
     }
 		// log("Returning Grace Period Date: " + graceDate);
 		return graceDate;
@@ -249,10 +249,10 @@ export class Licenser {
       }
       else {
         try {
-          graceDate = 
-            await messenger.LegacyPrefs.getPref("extensions.quickfolders.license.gracePeriodDate");
+          const { settings } = await browser.storage.local.get({ settings: {} });
+          graceDate = settings["license.gracePeriodDate"];
         }
-        catch (e) {graceDate = ""}
+        catch  {graceDate = ""}
       }
 			if (!graceDate) graceDate = await this.graceDate(); // create the date
 		}

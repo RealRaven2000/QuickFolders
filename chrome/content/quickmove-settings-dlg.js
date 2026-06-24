@@ -166,13 +166,15 @@ function toggleTooltip(button) {
       QuickFolders.Util.localize(window);
     },
 
-    toggleAccountExclusion: function (el, evt) {
+    toggleAccountExclusion: async function (el, evt) {
       // check box command handler
       let list = globalQuickMoveSettings.excludedIds,
         isModified = false,
         txtDebug = "";
       const toggle = !el.checked;
-      if (evt.type == "keydown" && evt.key != " ") {return;}
+      if (evt.type == "keydown" && evt.key != " ") {
+        return;
+      }
       if (el.id) {
         if (toggle) {
           if (!list.includes(el.id)) {
@@ -190,55 +192,69 @@ function toggleTooltip(button) {
       }
       if (isModified) {
         util.logDebug("modified!\n" + txtDebug);
-        prefs.setStringPref("quickMove.premium.excludedAccounts", list.join(","));
+        await prefs.setStringPref("quickMove.premium.excludedAccounts", list.join(","));
         globalQuickMoveSettings.excludedIds = list; // write back the list!!
       }
     },
 
-    toggleLockInAccount: function (el, evt) {
+    toggleLockInAccount: async function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") {return;}
-      prefs.setBoolPref("quickMove.premium.lockInAccount", !isChecked);
+      if (evt.type == "keydown" && evt.key != " ") {
+        return;
+      }
+      await prefs.setBoolPref("quickMove.premium.lockInAccount", !isChecked);
     },
 
-    toggleSilent: function (el, evt) {
+    toggleSilent: async function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") {return;}
-      prefs.setBoolPref("quickMove.premium.silentMode", !isChecked);
+      if (evt.type == "keydown" && evt.key != " ") {
+        return;
+      }
+      await prefs.setBoolPref("quickMove.premium.silentMode", !isChecked);
     },
 
-    toggleClearList: function (el, evt) {
+    toggleClearList: async function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") {return;}
-      prefs.setBoolPref("quickMove.premium.escapeClearsList", !isChecked);
+      if (evt.type == "keydown" && evt.key != " ") {
+        return;
+      }
+      await prefs.setBoolPref("quickMove.premium.escapeClearsList", !isChecked);
     },
 
-    toggleCollapsed: function (el, evt) {
+    toggleCollapsed: async function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") {return;}
-      prefs.setBoolPref("quickMove.premium.escapeClearsList", !isChecked);
+      if (evt.type == "keydown" && evt.key != " ") {
+        return;
+      }
+      await prefs.setBoolPref("quickMove.premium.escapeClearsList", !isChecked);
     },
 
-    toggleForceOpenTab: function (el, evt) {
+    toggleForceOpenTab: async function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") {return;}
-      prefs.setBoolPref("quickJump.premium.forceTab", !isChecked);
+      if (evt.type == "keydown" && evt.key != " ") {
+        return;
+      }
+      await prefs.setBoolPref("quickJump.premium.forceTab", !isChecked);
     },
 
-    toggleGoNext: function (el, evt) {
+    toggleGoNext: async function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") {return;}
-      prefs.setBoolPref("quickMove.gotoNextMsgAfterMove", !isChecked);
+      if (evt.type == "keydown" && evt.key != " ") {
+        return;
+      }
+      await prefs.setBoolPref("quickMove.gotoNextMsgAfterMove", !isChecked);
     },
 
-    toggleReopen: function (el, evt) {
+    toggleReopen: async function (el, evt) {
       let isChecked = el.checked;
-      if (evt.type == "keydown" && evt.key != " ") {return;}
-      prefs.setBoolPref("quickMove.reopenMsgTabAfterMove", !isChecked);
+      if (evt.type == "keydown" && evt.key != " ") {
+        return;
+      }
+      await prefs.setBoolPref("quickMove.reopenMsgTabAfterMove", !isChecked);
     },
 
-    changeMaxResults: function (el) {
-      prefs.setIntPref("quickMove.maxResults", el.value);
+    changeMaxResults: async function (el) {
+      await prefs.setIntPref("quickMove.maxResults", el.value);
     },
 
     accept: function () {

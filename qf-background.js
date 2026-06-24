@@ -693,10 +693,6 @@ async function main() {
     "chrome/content/scripts/qf-searchDialog.js"
   );
   messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/customizeToolbar.xhtml",
-    "chrome/content/scripts/qf-customizetoolbar.js"
-  );
-  messenger.WindowListener.registerWindow(
     "chrome://messenger/content/messageWindow.xhtml",
     "chrome/content/scripts/qf-messageWindow.js"
   );

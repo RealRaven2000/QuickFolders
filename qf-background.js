@@ -5,7 +5,7 @@ import { Licenser } from "./scripts/Licenser.mjs.js";
 import * as webExtensionStorageEditor from "./scripts/webExtensionStorageEditor.mjs";
 
 // bump this up to current version to create additional QuickFolders NEWS messages
-const LATEST_UPDATEMSG = "6.16.1"; 
+const LATEST_UPDATEMSG = "6.16.1";
 
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 const ADDQUICKFOLDER_ID = "addQuickFolderTab";
@@ -20,15 +20,13 @@ var callbacks = [];
 // top-level global flag
 let _isDebug = false;
 
-
-
 // [issue 371] Remove console error “receiving end does not exist”
 function logReceptionError(x) {
   if (x.message.includes("Receiving end does not exist.")) {
     // no need to log - quickFilters is not installed or disabled.
-  } else { 
-    console.log(x); 
-  }  
+  } else {
+    console.log(x);
+  }
 }
 
 function legacyPrefPath(setting) {
@@ -38,17 +36,14 @@ async function isDebugOn() {
   return Preferences.isDebug() || false;
 }
 
-
-
-  /* startupFinished: There is a general race condition between onInstall and our main() startup:
-   * - onInstall needs to be registered upfront (otherwise we might miss it)
-   * - but onInstall needs to wait with its execution until our main function has
-   *   finished the init routine
-   * -> emit a custom event once we are done and let onInstall await that
-   */
+/* startupFinished: There is a general race condition between onInstall and our main() startup:
+ * - onInstall needs to be registered upfront (otherwise we might miss it)
+ * - but onInstall needs to wait with its execution until our main function has
+ *   finished the init routine
+ * -> emit a custom event once we are done and let onInstall await that
+ */
 
 messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
-
 
 function compareVersions(v1, v2) {
   const v1Parts = v1.split(".").map(Number);
@@ -60,8 +55,12 @@ function compareVersions(v1, v2) {
     const part1 = v1Parts[i] || 0; // Default to 0 if segment is missing
     const part2 = v2Parts[i] || 0;
 
-    if (part1 > part2) {return 1;} // v1 > v2
-    if (part1 < part2) {return -1;} // v1 < v2
+    if (part1 > part2) {
+      return 1;
+    } // v1 > v2
+    if (part1 < part2) {
+      return -1;
+    } // v1 < v2
   }
 
   return 0; // v1 == v2
@@ -81,23 +80,21 @@ function versionEqual(v1, v2) {
   return compareVersions(v1, v2) === 0;
 }
 
-
 // special listener to be ready for sending up the firstRun message:
 let listenersReadyPromise = new Promise((resolve) => {
   const listenerFunction = (message) => {
     if (message.func === "listenersReady") {
       if (_isDebug) {
         console.log("[QuickFolders] Listeners are ready, resolving the promise...");
-      } 
+      }
       resolve();
       // making sure this is only used once, in case we reinstall multiple times in a session.
       messenger.NotifyTools.onNotifyBackground.removeListener(listenerFunction);
     }
-  }
+  };
 
   messenger.NotifyTools.onNotifyBackground.addListener(listenerFunction);
 });
-
 
 messenger.runtime.onInstalled.addListener(async (data) => {
   await prefsReady;
@@ -113,11 +110,13 @@ messenger.runtime.onInstalled.addListener(async (data) => {
       installed_ver: manifest.version,
     });
   }
-  
+
   // Wait until the main startup routine has finished!
   await new Promise((resolve) => {
     if (startupFinished) {
-      if (isDebug) {console.log("QuickFolders - startup code finished.");}
+      if (isDebug) {
+        console.log("QuickFolders - startup code finished.");
+      }
       // Looks like we missed the one send by main()
       resolve();
     }
@@ -129,57 +128,54 @@ messenger.runtime.onInstalled.addListener(async (data) => {
   }
 
   switch (reason) {
-    case "install": {
-      let url = browser.runtime.getURL("popup/installed.html");
-      await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
-      displayUpdateMessage();
-    } break;
+    case "install":
+      {
+        let url = browser.runtime.getURL("popup/installed.html");
+        await browser.windows.create({ url, type: "popup", width: 910, height: 750 });
+        displayUpdateMessage();
+      }
+      break;
     // see below
-    case "update": {
-      let currentLicenseInfo = currentLicense.info;
-      if (currentLicenseInfo.status == "Valid") {
-        // suppress update popup for users with licenses that have been recently renewed
-        let gpdays = currentLicenseInfo.licensedDaysLeft,
-          isLicensed = currentLicenseInfo.status == "Valid";
-        if (isLicensed) {
-          if (isDebug) {console.log("QuickFolders License - " + gpdays + " Days left.");}
+    case "update":
+      {
+        let currentLicenseInfo = currentLicense.info;
+        if (currentLicenseInfo.status == "Valid") {
+          // suppress update popup for users with licenses that have been recently renewed
+          let gpdays = currentLicenseInfo.licensedDaysLeft,
+            isLicensed = currentLicenseInfo.status == "Valid";
+          if (isLicensed) {
+            if (isDebug) {
+              console.log("QuickFolders License - " + gpdays + " Days left.");
+            }
+          }
         }
-      }
 
-      // Define a Map of silent update rules with wildcards
-      const silentUpdateMap = new Map([
-        ["6.8.1", ["6.8.*"]], // Silent updates for 6.8.1 to any 6.8.x (e.g., 6.8.2, 6.8.3, etc.)
-        ["6.9.1", ["6.9.2"]], // Silent update minor fix for [issue 532]
-        ["6.10.1", ["6.10.2", "6.10.3", "6.10.4"]],
-        ["6.13", ["6.13.1"]],
-        ["6.14.1", ["6.13.2"]],
-      ]);
+        // Define a Map of silent update rules with wildcards
+        const silentUpdateMap = new Map([
+          ["6.8.1", ["6.8.*"]], // Silent updates for 6.8.1 to any 6.8.x (e.g., 6.8.2, 6.8.3, etc.)
+          ["6.9.1", ["6.9.2"]], // Silent update minor fix for [issue 532]
+          ["6.10.1", ["6.10.2", "6.10.3", "6.10.4"]],
+          ["6.13", ["6.13.1"]],
+          ["6.14.1", ["6.13.2"]],
+        ]);
 
-      // Helper function to check if a version matches a pattern
-      function versionMatches(version, pattern) {
-        const regex = new RegExp(`^${pattern.replace(/\*/g, "\\d+")}$`);
-        return regex.test(version);
-      }
+        // Helper function to check if a version matches a pattern
+        function versionMatches(version, pattern) {
+          const regex = new RegExp(`^${pattern.replace(/\*/g, "\\d+")}$`);
+          return regex.test(version);
+        }
 
-      // Function to check if an update is silent
-      function isSilentUpdate(fromVersion, toVersion) {
-        const patterns = silentUpdateMap.get(fromVersion);
-        if (!patterns) {return false;} // No silent updates defined for this `fromVersion`
-
-        // Check if `toVersion` matches any pattern in the list
-        return patterns.some((pattern) => versionMatches(toVersion, pattern));
-      }
+        // Function to check if an update is silent
+        function isSilentUpdate(fromVersion, toVersion) {
+          const patterns = silentUpdateMap.get(fromVersion);
+          if (!patterns) {
+            return false;
+          } // No silent updates defined for this `fromVersion`
 
           // Check if `toVersion` matches any pattern in the list
           return patterns.some((pattern) => versionMatches(toVersion, pattern));
         }
 
-          if (isDebug) {
-            console.log(`QuickFolders Update - from ${origVer} to ${installedVersion}\n`, {
-              upgraded: isUpgrade,
-              silenced: isSilent,
-            });
-          }
         (async () => {
           try {
             await listenersReadyPromise; // we want to make sure all listeners are set up and ready to receive events.
@@ -221,43 +217,56 @@ messenger.runtime.onInstalled.addListener(async (data) => {
   }
 
   if (isDebug) {
-    console.log ("QuickFolders: messenger.runtime.onInstalled finished!")
+    console.log("QuickFolders: messenger.runtime.onInstalled finished!");
   }
 });
 
 // display splash screen
-function showSplash(msg="") {
-  // alternatively display this info in a tab with browser.tabs.create(...)  
+function showSplash(msg = "") {
+  // alternatively display this info in a tab with browser.tabs.create(...)
   let url = browser.runtime.getURL("popup/update.html");
-  if (msg) {url+= "?msg=" + encodeURI(msg);}
+  if (msg) {
+    url += "?msg=" + encodeURI(msg);
+  }
   let screenH = window.screen.height,
-      windowHeight = (screenH > 870) ? 870 : screenH;
-      
-  browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
+    windowHeight = screenH > 870 ? 870 : screenH;
+
+  browser.windows.create({
+    url,
+    type: "popup",
+    width: 1000,
+    height: windowHeight,
+    allowScriptsToClose: true,
+  });
 }
 
 function showInstalled() {
   let url = browser.runtime.getURL("popup/installed.html");
-  browser.windows.create({ url, type: "popup", width: 910, height: 800, allowScriptsToClose: true });
-} 
+  browser.windows.create({
+    url,
+    type: "popup",
+    width: 910,
+    height: 800,
+    allowScriptsToClose: true,
+  });
+}
 
 async function filterMailsRegex(searchOptions, tabId = null) {
   const DEFAULT_BEHAVIOR = {
-    isSelectPrevious: await messenger.LegacyPrefs.getPref(
-      legacyPrefPath("findRelated.behavior.selectPrevious")
-    )
-  }
-  
-  const group = searchOptions.group;   // 0 for full match
+    isSelectPrevious: Preferences.getPref("findRelated.behavior.selectPrevious"),
+  };
+
+  const group = searchOptions.group; // 0 for full match
   const searchSelected = searchOptions.searchSelected;
-  const searchCriteria =  searchOptions.searchCriteria;  // if fields is null, do not change this!
+  const searchCriteria = searchOptions.searchCriteria; // if fields is null, do not change this!
   let searchValue = searchOptions.pattern, // allow overwriting in debugger for test!
     searchFlags = "";
   const behavior = searchOptions.behavior || DEFAULT_BEHAVIOR;
 
   if (searchValue.charAt(0) == "/") {
     let endIdx = searchValue.lastIndexOf("/");
-    if (endIdx) { // must be>0! otherwise 2nd slash is missing!!
+    if (endIdx) {
+      // must be>0! otherwise 2nd slash is missing!!
       searchValue = searchOptions.pattern.substring(1, endIdx);
       searchFlags = searchOptions.pattern.substring(endIdx + 1);
     } else {
@@ -267,24 +276,27 @@ async function filterMailsRegex(searchOptions, tabId = null) {
       }
       searchFlags = searchOptions.pattern.substring(1); // removing beginning '/'
     }
-  } 
-  
+  }
+
   if (!searchFlags) {
     searchFlags = "gm";
   }
 
   const regex = new RegExp(searchValue, searchFlags);
-  let results, searchVal = "";
+  let results,
+    searchVal = "";
 
   // context.extension.tabManager.getWrapper(tabInfo).id
   if (!tabId) {
     const currentTab = await messenger.tabs.getCurrent();
-    if (!currentTab) {return;}
+    if (!currentTab) {
+      return;
+    }
     tabId = currentTab.id;
   }
   const selectedMessages = await messenger.mailTabs.getSelectedMessages(tabId);
   if (selectedMessages.messages.length == 0) {
-    // do nothing? 
+    // do nothing?
     // or reset search.
     return;
   }
@@ -305,7 +317,7 @@ async function filterMailsRegex(searchOptions, tabId = null) {
       searchVal = results[group];
     }
   }
-  
+
   if (!searchVal && searchSelected.includes("sender")) {
     results = regex.exec(message.author);
     if (results?.length > group) {
@@ -342,24 +354,26 @@ async function filterMailsRegex(searchOptions, tabId = null) {
   }
   if (searchCriteria.includes("body")) {
     searchTextProps.body = true;
-  }  
+  }
   searchTextProps.text = searchVal;
 
   // we need to pass an object that contains obj.text=QuickFilterTextDetail !
   if (tabId) {
     // triggers false validation message on ATN
-    await browser.mailTabs.setQuickFilter(tabId, {text: searchTextProps} );  
+    await browser.mailTabs.setQuickFilter(tabId, { text: searchTextProps });
   } else {
     // triggers false validation message on ATN
     await browser.mailTabs.setQuickFilter({ text: searchTextProps });
   }
   if (behavior.isSelectPrevious) {
     // select currentMessageId then go "up" to the previously received / sent mail
-    const options = {color:"white", background:"rgb(80,0,0)"};
+    const options = { color: "white", background: "rgb(80,0,0)" };
     const txt = "filterMailsRegex";
-    console.log(`QuickFolders %c${txt}`, 
-      `color: ${options.color}; background: ${options.background}`, 
-      `TO DO: select previous message from id: ${currentMessageHdrId}`);
+    console.log(
+      `QuickFolders %c${txt}`,
+      `color: ${options.color}; background: ${options.background}`,
+      `TO DO: select previous message from id: ${currentMessageHdrId}`
+    );
   }
 }
 
@@ -668,7 +682,6 @@ async function main() {
   // inject a separate script for current folder toolbar!
   messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
 
-
   messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
 
   messenger.WindowListener.registerWindow(
@@ -699,13 +712,17 @@ async function main() {
     await waitForMailTabsReady(to);
   } else {
     // [issue 598] used to get stuck in Bb:
-    if (isDebug) { console.log("waiting for mailTabs.query()..."); }
+    if (isDebug) {
+      console.log("waiting for mailTabs.query()...");
+    }
     let [mailTab] = await browser.mailTabs.query({});
     if (isDebug) {
       console.log(`Got [mailTab] retreiving current tab[${mailTab.id}]`);
     }
     await browser.mailTabs.get(mailTab.id);
-    if (isDebug) { console.log("got tab"); }
+    if (isDebug) {
+      console.log("got tab");
+    }
   }
 
   /*
@@ -785,8 +802,9 @@ async function main() {
 
         // Reload tab details
         const updatedTab = await messenger.tabs.get(tabId);
-        const isRelevant = changeInfo?.url ? changeInfo.url.startsWith(getExtensionRootURL()) : false;
-
+        const isRelevant = changeInfo?.url
+          ? changeInfo.url.startsWith(getExtensionRootURL())
+          : false;
 
         if (changeInfo.url) {
           if (!isRelevant) {
@@ -1300,9 +1318,7 @@ const showQFmessage = async (messageIds, features, message = "", quickfoldersFea
   if (quickfoldersFeatures) {
     url.searchParams.set(
       "addonfeatures",
-      Array.isArray(quickfoldersFeatures)
-        ? quickfoldersFeatures.join(",")
-        : quickfoldersFeatures
+      Array.isArray(quickfoldersFeatures) ? quickfoldersFeatures.join(",") : quickfoldersFeatures
     );
   }
   url.searchParams.set("features", features.join(","));

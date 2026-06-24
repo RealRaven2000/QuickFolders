@@ -240,8 +240,6 @@ pref("extensions.quickfolders.debug.advancedTabProperties.forcePopup",false);// 
 pref("extensions.quickfolders.debug.toolbarHiding", false);
 pref("extensions.quickfolders.debug.updateFolders", false);
 
-pref("extensions.quickfolders.toolbarpalette.showSmallIcons", false); // unhide "small icons" in toolbar palette
-
 pref("extensions.quickfolders.notifications.compactComplete", true); // notify when folder compacting is complete
 
 pref("extensions.quickfolders.drag.popupDelay", 250);

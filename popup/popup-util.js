@@ -1,21 +1,4 @@
 // eslint-disable-next-line no-unused-vars
-var sanitizeHTML = (htmlString) => {
-  const Cc = Components.classes;
-  const Ci = Components.interfaces;
-  if (!htmlString) {
-    return "";
-  }
-  const parserUtils = Cc["@mozilla.org/parserutils;1"].getService(Ci.nsIParserUtils);
-
-  const sanitizedHTML = parserUtils.sanitize(
-    htmlString,
-    parserUtils.SanitizerAllowStyle | parserUtils.SanitizerAllowImages
-  );
-
-  return sanitizedHTML;
-};
-
-// eslint-disable-next-line no-unused-vars
 var insertHtmlSafely = (container, html, clear = false) => {
   if (!container || !html) {
     return null;

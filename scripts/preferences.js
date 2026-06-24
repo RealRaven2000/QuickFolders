@@ -1,5 +1,5 @@
 export const Preferences = {
-  CURRENT_VERSION: 0.4,
+  CURRENT_VERSION: 0.51,
   Defaults: {
     // Model
     lastSelectedOptionsTab: 0,
@@ -161,8 +161,7 @@ export const Preferences = {
     "style.InactiveTab.paletteEntry": 20,
     "style.InactiveTab.paletteType": 0,
     "style.ColoredTab.paletteType": 1,
-    "style.activeTabCustomColor": true, // TOOLBAR PALETTE
-    "toolbarpalette.showSmallIcons": false,
+    "style.activeTabCustomColor": true,
     // NOTIFICATIONS
     "notifications.compactComplete": true,
     // DRAG SYSTEM
@@ -221,14 +220,14 @@ export const Preferences = {
     "contextMenu.hideFilterMode": false,
     // LICENSE / PREMIUM
     licenseType: 0,
-    "debug.premium.categories.multiSelect": false,
-    "debug.premium.findFolder.focusFixTimeout": 200,
-    "debug.premium.findFolder.maxParentLevel": 2,
-    "debug.premium.findFolder.maxPathItems": 3,
-    "debug.premium.findFolder.folderPathDetail": 2,
-    "debug.premium.findFolder.disableSpace": false,
-    "debug.premium.findFolder.autoCollapse": true,
-    "debug.premium.skipUnreadFolder.sort": true,
+    "premium.categories.multiSelect": false,
+    "premium.findFolder.focusFixTimeout": 200,
+    "premium.findFolder.maxParentLevel": 2,
+    "premium.findFolder.maxPathItems": 3,
+    "premium.findFolder.folderPathDetail": 2,
+    "premium.findFolder.disableSpace": false,
+    "premium.findFolder.autoCollapse": true,
+    "premium.skipUnreadFolder.sort": true,
     "quickMove.premium.silentMode": false,
     "quickMove.premium.escapeClearsList": false,
     "quickJump.premium.forceTab": false,
@@ -237,15 +236,15 @@ export const Preferences = {
     "quickMove.maxResults": 25,
     "quickMove.singleTab.autoClose": false,
     // PREMIUM USAGE COUNTERS
-    "debug.premium.advancedTabProperties.usage": 0,
-    "debug.premium.bookmarks.usage": 0,
-    "debug.premium.findFolder.usage": 0,
-    "debug.premium.lineBreaks.usage": 0,
-    "debug.premium.pasteFolderEntries.usage": 0,
-    "debug.premium.quickMove.usage": 0,
-    "debug.premium.skipUnreadFolder.usage": 0,
-    "debug.premium.tabIcons.usage": 0,
-    "debug.premium.tabSeparator.usage": 0,
+    "premium.advancedTabProperties.usage": 0,
+    "premium.bookmarks.usage": 0,
+    "premium.findFolder.usage": 0,
+    "premium.lineBreaks.usage": 0,
+    "premium.pasteFolderEntries.usage": 0,
+    "premium.quickMove.usage": 0,
+    "premium.skipUnreadFolder.usage": 0,
+    "premium.tabIcons.usage": 0,
+    "premium.tabSeparator.usage": 0,
     // LICENSING
     "licenser.forceSecondaryIdentity": false,
     "license.gracePeriodDate": "",

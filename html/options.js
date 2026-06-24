@@ -404,7 +404,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       filterConfig="recentfolders"; retVal=false;
       break;
     case "currentFolderBar.showRecentButton":
-      filterConfig="recentfolders"; retVal=false;
+      filterConfig="recentfolders."; retVal=false;
       break;
     case "currentFolderBar.navigation.showButtons":
       filterConfig="currentFolderBar.navigation";
@@ -420,7 +420,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       filterConfig="debug"; retVal=false;
       break;
     case "toolbar.hideInSingleMessage":
-      filterConfig="toolbar"; retVal=true;
+      filterConfig="toolbar."; retVal=true;
       break;
     case "showQuickMove":
       filterConfig="premium.findFolder.max"; retVal=false;

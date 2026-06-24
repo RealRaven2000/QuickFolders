@@ -1335,24 +1335,27 @@ const showQFmessage = async (messageIds, features, message = "", quickfoldersFea
   // we need to return "ok" when ok is pushed
   // we need to return "cancel" (provided the feature is requested) when "cancel" button or ESC key is pushed
   return new Promise((resolve) => {
-    const listener = async (message, sender) => {
-      if (sender.tab && sender.tab.id === tabId && message.command === "quickfolders-message") {
-        browser.runtime.onMessage.removeListener(listener);
-        resolve(message.result);
-
+    const listener = (message, sender) => {
+      const handler = async () => {
         if (winRet.id) {
           try {
             await messenger.windows.remove(winRet.id);
-            // eslint-disable-next-line no-unused-vars
           } catch (_e) {
             // Window already closed, ignore
           }
         }
+      };
+      if (sender.tab && sender.tab.id === tabId && message.command === "quickfolders-message") {
+        browser.runtime.onMessage.removeListener(listener);
+        resolve(message.result);
+        return handler();
       }
+      return false;
     };
 
     browser.runtime.onMessage.addListener(listener);
   });
+
 };
 
 let retryScheduled = false; // session flag to avoid repeat re-scheduling

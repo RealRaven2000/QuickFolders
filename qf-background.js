@@ -1,7 +1,11 @@
+import { Preferences } from "./scripts/preferences.js";
 import * as util from "./scripts/qf-util.mjs.js";
-import {Licenser} from "./scripts/Licenser.mjs.js";
+import { Licenser } from "./scripts/Licenser.mjs.js";
+// very nice config editor by John B:
+import * as webExtensionStorageEditor from "./scripts/webExtensionStorageEditor.mjs";
+
 // bump this up to current version to create additional QuickFolders NEWS messages
-const LATEST_UPDATEMSG = "6.16.1"; 
+const LATEST_UPDATEMSG = "6.16.1";
 
 const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 const ADDQUICKFOLDER_ID = "addQuickFolderTab";
@@ -16,36 +20,30 @@ var callbacks = [];
 // top-level global flag
 let _isDebug = false;
 
-
-
 // [issue 371] Remove console error “receiving end does not exist”
 function logReceptionError(x) {
   if (x.message.includes("Receiving end does not exist.")) {
     // no need to log - quickFilters is not installed or disabled.
-  } else { 
-    console.log(x); 
-  }  
+  } else {
+    console.log(x);
+  }
 }
 
 function legacyPrefPath(setting) {
   return LEGACY_SETTINGS_ROOT + setting;
 }
 async function isDebugOn() {
-  _isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug"));
-  return _isDebug || false;
+  return Preferences.isDebug() || false;
 }
 
-
-
-  /* startupFinished: There is a general race condition between onInstall and our main() startup:
-   * - onInstall needs to be registered upfront (otherwise we might miss it)
-   * - but onInstall needs to wait with its execution until our main function has
-   *   finished the init routine
-   * -> emit a custom event once we are done and let onInstall await that
-   */
+/* startupFinished: There is a general race condition between onInstall and our main() startup:
+ * - onInstall needs to be registered upfront (otherwise we might miss it)
+ * - but onInstall needs to wait with its execution until our main function has
+ *   finished the init routine
+ * -> emit a custom event once we are done and let onInstall await that
+ */
 
 messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
-
 
 function compareVersions(v1, v2) {
   const v1Parts = v1.split(".").map(Number);
@@ -57,8 +55,12 @@ function compareVersions(v1, v2) {
     const part1 = v1Parts[i] || 0; // Default to 0 if segment is missing
     const part2 = v2Parts[i] || 0;
 
-    if (part1 > part2) {return 1;} // v1 > v2
-    if (part1 < part2) {return -1;} // v1 < v2
+    if (part1 > part2) {
+      return 1;
+    } // v1 > v2
+    if (part1 < part2) {
+      return -1;
+    } // v1 < v2
   }
 
   return 0; // v1 == v2
@@ -78,25 +80,24 @@ function versionEqual(v1, v2) {
   return compareVersions(v1, v2) === 0;
 }
 
-
 // special listener to be ready for sending up the firstRun message:
 let listenersReadyPromise = new Promise((resolve) => {
   const listenerFunction = (message) => {
     if (message.func === "listenersReady") {
       if (_isDebug) {
         console.log("[QuickFolders] Listeners are ready, resolving the promise...");
-      } 
+      }
       resolve();
       // making sure this is only used once, in case we reinstall multiple times in a session.
       messenger.NotifyTools.onNotifyBackground.removeListener(listenerFunction);
     }
-  }
+  };
 
   messenger.NotifyTools.onNotifyBackground.addListener(listenerFunction);
 });
 
-
 messenger.runtime.onInstalled.addListener(async (data) => {
+  await prefsReady;
   let { reason, previousVersion, temporary } = data;
   const isDebug = await isDebugOn();
   const manifest = await messenger.runtime.getManifest();
@@ -109,11 +110,13 @@ messenger.runtime.onInstalled.addListener(async (data) => {
       installed_ver: manifest.version,
     });
   }
-  
+
   // Wait until the main startup routine has finished!
   await new Promise((resolve) => {
     if (startupFinished) {
-      if (isDebug) {console.log("QuickFolders - startup code finished.");}
+      if (isDebug) {
+        console.log("QuickFolders - startup code finished.");
+      }
       // Looks like we missed the one send by main()
       resolve();
     }
@@ -125,149 +128,175 @@ messenger.runtime.onInstalled.addListener(async (data) => {
   }
 
   switch (reason) {
-    case "install": {
-      let url = browser.runtime.getURL("popup/installed.html");
-      await browser.windows.create({ url, type: "popup", width: 910, height: 750, });
-      displayUpdateMessage();
-    } break;
+    case "install":
+      {
+        let url = browser.runtime.getURL("popup/installed.html");
+        await browser.windows.create({ url, type: "popup", width: 910, height: 750 });
+        displayUpdateMessage();
+      }
+      break;
     // see below
-    case "update": {
-      let currentLicenseInfo = currentLicense.info;
-      if (currentLicenseInfo.status == "Valid") {
-        // suppress update popup for users with licenses that have been recently renewed
-        let gpdays = currentLicenseInfo.licensedDaysLeft,
-          isLicensed = currentLicenseInfo.status == "Valid";
-        if (isLicensed) {
-          if (isDebug) {console.log("QuickFolders License - " + gpdays + " Days left.");}
+    case "update":
+      {
+        let currentLicenseInfo = currentLicense.info;
+        if (currentLicenseInfo.status == "Valid") {
+          // suppress update popup for users with licenses that have been recently renewed
+          let gpdays = currentLicenseInfo.licensedDaysLeft,
+            isLicensed = currentLicenseInfo.status == "Valid";
+          if (isLicensed) {
+            if (isDebug) {
+              console.log("QuickFolders License - " + gpdays + " Days left.");
+            }
+          }
         }
-      }
 
-      // Define a Map of silent update rules with wildcards
-      const silentUpdateMap = new Map([
-        ["6.8.1", ["6.8.*"]], // Silent updates for 6.8.1 to any 6.8.x (e.g., 6.8.2, 6.8.3, etc.)
-        ["6.9.1", ["6.9.2"]], // Silent update minor fix for [issue 532]
-        ["6.10.1", ["6.10.2", "6.10.3", "6.10.4"]],
-        ["6.13", ["6.13.1"]],
-        ["6.14.1", ["6.13.2"]],
-      ]);
+        // Define a Map of silent update rules with wildcards
+        const silentUpdateMap = new Map([
+          ["6.8.1", ["6.8.*"]], // Silent updates for 6.8.1 to any 6.8.x (e.g., 6.8.2, 6.8.3, etc.)
+          ["6.9.1", ["6.9.2"]], // Silent update minor fix for [issue 532]
+          ["6.10.1", ["6.10.2", "6.10.3", "6.10.4"]],
+          ["6.13", ["6.13.1"]],
+          ["6.14.1", ["6.13.2"]],
+        ]);
 
-      // Helper function to check if a version matches a pattern
-      function versionMatches(version, pattern) {
-        const regex = new RegExp(`^${pattern.replace(/\*/g, "\\d+")}$`);
-        return regex.test(version);
-      }
-
-      // Function to check if an update is silent
-      function isSilentUpdate(fromVersion, toVersion) {
-        const patterns = silentUpdateMap.get(fromVersion);
-        if (!patterns) {return false;} // No silent updates defined for this `fromVersion`
-
-        // Check if `toVersion` matches any pattern in the list
-        return patterns.some((pattern) => versionMatches(toVersion, pattern));
-      }
-
-      (async () => {
-        try {
-          await listenersReadyPromise; // we want to make sure all listeners are set up and ready to receive events.
-          // set a flag which will be cleared by clicking the [QuickFolders] button once
-          let origVer = data?.previousVersion || "0";
-          // get pure version number
-          // remove prerelease + any trailing "." that might be before pre
-          let installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
-          const isUpgrade = versionGreater(installedVersion, origVer),
-            isSilent = isSilentUpdate(origVer, installedVersion);
-
-          if (isDebug) {
-            console.log(`QuickFolders Update - from ${origVer} to ${installedVersion}\n`, {
-              upgraded: isUpgrade,
-              silenced: isSilent,
-            });
-          }
-
-          if (isUpgrade && !isSilent) {
-            messenger.LegacyPrefs.setPref(legacyPrefPath("hasNews"), true);
-          }
-
-          messenger.NotifyTools.notifyExperiment({ event: "updateQuickFoldersLabel" });
-          if (isDebug) {
-            console.log("%cQF notifying experiment: firstRun", "background: black; color: yellow;");
-          }
-          messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
-        } catch (error) {
-          console.error("Error during QuickFolders onInstalled listener:", error);
+        // Helper function to check if a version matches a pattern
+        function versionMatches(version, pattern) {
+          const regex = new RegExp(`^${pattern.replace(/\*/g, "\\d+")}$`);
+          return regex.test(version);
         }
-      })();
-      displayUpdateMessage();
-    } break;
-  // see below
-  }    
 
+        // Function to check if an update is silent
+        function isSilentUpdate(fromVersion, toVersion) {
+          const patterns = silentUpdateMap.get(fromVersion);
+          if (!patterns) {
+            return false;
+          } // No silent updates defined for this `fromVersion`
+
+          // Check if `toVersion` matches any pattern in the list
+          return patterns.some((pattern) => versionMatches(toVersion, pattern));
+        }
+
+        (async () => {
+          try {
+            await listenersReadyPromise; // we want to make sure all listeners are set up and ready to receive events.
+            // set a flag which will be cleared by clicking the [QuickFolders] button once
+            let origVer = data?.previousVersion || "0";
+            // get pure version number
+            // remove prerelease + any trailing "." that might be before pre
+            let installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
+            const isUpgrade = versionGreater(installedVersion, origVer),
+              isSilent = isSilentUpdate(origVer, installedVersion);
+
+            if (isDebug) {
+              console.log(`QuickFolders Update - from ${origVer} to ${installedVersion}\n`, {
+                upgraded: isUpgrade,
+                silenced: isSilent,
+              });
+            }
+
+            if (isUpgrade && !isSilent) {
+              await Preferences.set("hasNews", true);
+            }
+
+            messenger.NotifyTools.notifyExperiment({ event: "updateQuickFoldersLabel" });
+            if (isDebug) {
+              console.log(
+                "%cQF notifying experiment: firstRun",
+                "background: black; color: yellow;"
+              );
+            }
+            messenger.NotifyTools.notifyExperiment({ event: "firstRun" });
+          } catch (error) {
+            console.error("Error during QuickFolders onInstalled listener:", error);
+          }
+        })();
+        displayUpdateMessage();
+      }
+      break;
+    // see below
+  }
 
   if (isDebug) {
-    console.log ("QuickFolders: messenger.runtime.onInstalled finished!")
+    console.log("QuickFolders: messenger.runtime.onInstalled finished!");
   }
 });
 
 // display splash screen
-function showSplash(msg="") {
-  // alternatively display this info in a tab with browser.tabs.create(...)  
+function showSplash(msg = "") {
+  // alternatively display this info in a tab with browser.tabs.create(...)
   let url = browser.runtime.getURL("popup/update.html");
-  if (msg) {url+= "?msg=" + encodeURI(msg);}
+  if (msg) {
+    url += "?msg=" + encodeURI(msg);
+  }
   let screenH = window.screen.height,
-      windowHeight = (screenH > 870) ? 870 : screenH;
-      
-  browser.windows.create({ url, type: "popup", width: 1000, height: windowHeight, allowScriptsToClose: true,});
+    windowHeight = screenH > 870 ? 870 : screenH;
+
+  browser.windows.create({
+    url,
+    type: "popup",
+    width: 1000,
+    height: windowHeight,
+    allowScriptsToClose: true,
+  });
 }
 
 function showInstalled() {
   let url = browser.runtime.getURL("popup/installed.html");
-  browser.windows.create({ url, type: "popup", width: 910, height: 800, allowScriptsToClose: true });
-} 
+  browser.windows.create({
+    url,
+    type: "popup",
+    width: 910,
+    height: 800,
+    allowScriptsToClose: true,
+  });
+}
 
 async function filterMailsRegex(searchOptions, tabId = null) {
   const DEFAULT_BEHAVIOR = {
-    isSelectPrevious: await messenger.LegacyPrefs.getPref(
-      legacyPrefPath("findRelated.behavior.selectPrevious")
-    )
-  }
-  
-  const group = searchOptions.group;   // 0 for full match
+    isSelectPrevious: Preferences.getPref("findRelated.behavior.selectPrevious"),
+  };
+
+  const group = searchOptions.group; // 0 for full match
   const searchSelected = searchOptions.searchSelected;
-  const searchCriteria =  searchOptions.searchCriteria;  // if fields is null, do not change this!
+  const searchCriteria = searchOptions.searchCriteria; // if fields is null, do not change this!
   let searchValue = searchOptions.pattern, // allow overwriting in debugger for test!
     searchFlags = "";
   const behavior = searchOptions.behavior || DEFAULT_BEHAVIOR;
 
   if (searchValue.charAt(0) == "/") {
     let endIdx = searchValue.lastIndexOf("/");
-    if (endIdx) { // must be>0! otherwise 2nd slash is missing!!
+    if (endIdx) {
+      // must be>0! otherwise 2nd slash is missing!!
       searchValue = searchOptions.pattern.substring(1, endIdx);
       searchFlags = searchOptions.pattern.substring(endIdx + 1);
     } else {
-      const isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug"));
-      if (isDebug){
+      const isDebug = Preferences.get("debug") || false;
+      if (isDebug) {
         console.log(`Invalid search string in find Related - missing 2nd '/' : ${searchFlags}`);
-      } 
+      }
       searchFlags = searchOptions.pattern.substring(1); // removing beginning '/'
     }
-  } 
-  
+  }
+
   if (!searchFlags) {
     searchFlags = "gm";
   }
 
   const regex = new RegExp(searchValue, searchFlags);
-  let results, searchVal = "";
+  let results,
+    searchVal = "";
 
   // context.extension.tabManager.getWrapper(tabInfo).id
   if (!tabId) {
     const currentTab = await messenger.tabs.getCurrent();
-    if (!currentTab) {return;}
+    if (!currentTab) {
+      return;
+    }
     tabId = currentTab.id;
   }
   const selectedMessages = await messenger.mailTabs.getSelectedMessages(tabId);
   if (selectedMessages.messages.length == 0) {
-    // do nothing? 
+    // do nothing?
     // or reset search.
     return;
   }
@@ -288,7 +317,7 @@ async function filterMailsRegex(searchOptions, tabId = null) {
       searchVal = results[group];
     }
   }
-  
+
   if (!searchVal && searchSelected.includes("sender")) {
     results = regex.exec(message.author);
     if (results?.length > group) {
@@ -304,16 +333,15 @@ async function filterMailsRegex(searchOptions, tabId = null) {
         searchVal = results[group];
       }
     }
-  }  
+  }
 
   if (searchVal) {
     // Remember last extracted search term, so we can use this for a search reset
     // when user clicks "next unread message"
     // we MUST reset this whenever use changes to a different folder!!!
     // folder listener?
-    messenger.LegacyPrefs.setPref(legacyPrefPath("findRelated.lastSearchVal"), searchVal);
+    await Preferences.set("findRelated.lastSearchVal", searchVal);
   }
-  
 
   if (searchCriteria.includes("subject")) {
     searchTextProps.subject = true;
@@ -326,34 +354,36 @@ async function filterMailsRegex(searchOptions, tabId = null) {
   }
   if (searchCriteria.includes("body")) {
     searchTextProps.body = true;
-  }  
+  }
   searchTextProps.text = searchVal;
 
   // we need to pass an object that contains obj.text=QuickFilterTextDetail !
   if (tabId) {
     // triggers false validation message on ATN
-    await browser.mailTabs.setQuickFilter(tabId, {text: searchTextProps} );  
+    await browser.mailTabs.setQuickFilter(tabId, { text: searchTextProps });
   } else {
     // triggers false validation message on ATN
     await browser.mailTabs.setQuickFilter({ text: searchTextProps });
   }
   if (behavior.isSelectPrevious) {
     // select currentMessageId then go "up" to the previously received / sent mail
-    const options = {color:"white", background:"rgb(80,0,0)"};
+    const options = { color: "white", background: "rgb(80,0,0)" };
     const txt = "filterMailsRegex";
-    console.log(`QuickFolders %c${txt}`, 
-      `color: ${options.color}; background: ${options.background}`, 
-      `TO DO: select previous message from id: ${currentMessageHdrId}`);
+    console.log(
+      `QuickFolders %c${txt}`,
+      `color: ${options.color}; background: ${options.background}`,
+      `TO DO: select previous message from id: ${currentMessageHdrId}`
+    );
   }
 }
 
 // future function for icon support  [issue 399]
 async function addFolderPaneMenu() {
   // replaces code from QuickFolders.Interface.folderPanePopup()
-  const isDebug = await messenger.LegacyPrefs.getPref(legacyPrefPath("debug.tbmenus")),
+  const isDebug = Preferences.get("debug.tbmenus"),
     txtAddIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.customizeIcon"),
     txtRemoveIcon = messenger.i18n.getMessage("qf.foldercontextmenu.quickfolders.removeIcon"),
-    isShowIconMenu = !(await messenger.LegacyPrefs.getPref(legacyPrefPath("accessibility.hideIconMenu")));
+    isShowIconMenu = !(Preferences.get("accessibility.hideIconMenu"));
   if (isDebug) {
     console.log("QuickFolders: addFolderPaneMenu()");
   }
@@ -445,7 +475,7 @@ async function addFolderPaneMenu() {
   };
   const idRemove = await messenger.menus.create(removeProps);
   messenger.menus.onShown.addListener(async (info, _tab) => {
-    const isShowIconMenus =  !(await messenger.LegacyPrefs.getPref(legacyPrefPath("accessibility.hideIconMenu")));
+    const isShowIconMenus = !(Preferences.get("accessibility.hideIconMenu"));
     const selectedFolder = info?.selectedFolder || null;
     const selectedAccount = info?.selectedAccount || null;
     const isServer = selectedAccount ? true : false;
@@ -518,37 +548,31 @@ async function addFolderPaneMenu() {
 }
 
 async function getFindRelatedStruct() {
-    const jsonList = await messenger.LegacyPrefs.getPref(
-      legacyPrefPath("findRelated.list")
-    );
-    let findRelatedList;
-    try {
-      findRelatedList = JSON.parse(jsonList || "{}");
-    } catch (ex) {
-      console.log("Exception during getFindRelatedStruct(): ", { jsonList }, ex);
-      findRelatedList = {};
+  const jsonList = Preferences.get("findRelated.list");
+  let findRelatedList;
+  try {
+    findRelatedList = JSON.parse(jsonList || "{}");
+  } catch (ex) {
+    console.log("Exception during getFindRelatedStruct(): ", { jsonList }, ex);
+    findRelatedList = {};
+  }
+  if (!findRelatedList?.items) {
+    // use for the first time
+    findRelatedList = findRelatedList || {};
+    findRelatedList.items = [];
+    // import current / first item
+    findRelatedList.items.push({
+      title: "last search",
+      pattern: Preferences.get("findRelated.pattern"),
+      group: (Preferences.get("findRelated.group")) || 0,
+      searchSelected: Preferences.get("findRelated.searchSelected"), // containing an array of options
+      searchCriteria: Preferences.get("findRelated.searchCriteria"), // containing an array of options
+    });
+    if (isDebugOn()) {
+      console.log("getFindRelatedStruct retrieved:", { findRelatedList });
     }
-    if (!findRelatedList?.items) {
-      // use for the first time
-      findRelatedList = findRelatedList || {};
-      findRelatedList.items = [];
-      // import current / first item
-      findRelatedList.items.push({
-        title: "last search",
-        pattern: await messenger.LegacyPrefs.getPref(legacyPrefPath("findRelated.pattern")),
-        group: await messenger.LegacyPrefs.getPref(legacyPrefPath("findRelated.group")) || 0,
-        searchSelected: await messenger.LegacyPrefs.getPref(
-          legacyPrefPath("findRelated.searchSelected")
-        ), // containing an array of options
-        searchCriteria: await messenger.LegacyPrefs.getPref(
-          legacyPrefPath("findRelated.searchCriteria")
-        ), // containing an array of options
-      });
-      if (isDebugOn()) { 
-        console.log("getFindRelatedStruct retrieved:", { findRelatedList });
-      }
-    }
-    return findRelatedList;   
+  }
+  return findRelatedList;
 }
 
 function timeoutPromise(ms, msg) {
@@ -570,16 +594,404 @@ async function waitForMailTabsReady(timeoutMs = 5000) {
 }
 
 
+async function notificationHandler(data) {
+  await prefsReady;
+  let command = data.func || data.command;
+  switch (command) {
+    case "slideAlert":
+      util.slideAlert(...data.args);
+      break;
 
+    case "splashScreen":
+      {
+        let splashMessage = data.msg || "";
+        showSplash(splashMessage);
+      }
+      break;
+
+    case "splashInstalled":
+      showInstalled();
+      break;
+
+    case "getLicenseInfo":
+      return currentLicense.info;
+
+    case "getFindRelatedList": {
+      let relatedArr = await getFindRelatedStruct();
+      return JSON.stringify(relatedArr);
+    }
+
+    case "getPlatformInfo":
+      return messenger.runtime.getPlatformInfo();
+
+    case "getBrowserInfo":
+      return messenger.runtime.getBrowserInfo();
+
+    case "getAddonInfo":
+      return messenger.management.getSelf();
+
+    case "updateQuickFoldersLabel":
+      // Broadcast main windows to run updateQuickFoldersLabel
+      messenger.NotifyTools.notifyExperiment({ event: "updateQuickFoldersLabel" });
+      break;
+
+    case "updateUserStyles":
+      // Broadcast main windows to update their styles (and maybe single message windows???)
+      messenger.NotifyTools.notifyExperiment({ event: "updateUserStyles" });
+      break;
+
+    case "updateFoldersUI": // replace observer
+      messenger.NotifyTools.notifyExperiment({ event: "updateFoldersUI" });
+      break;
+
+    case "updateAllTabs":
+      // only update tabs, without styles - reads the tabs from the store to support:
+      //   adding / renaming / deleting / re-categorizing / re-ordering
+      //   across all Windows instances.
+      messenger.NotifyTools.notifyExperiment({ event: "updateAllTabs" });
+      break;
+
+    case "updateNavigationBar":
+      await messenger.NotifyTools.notifyExperiment({ event: "updateNavigationBar" });
+      break;
+
+    case "toggleNavigationBars": // toggles _all_ navigation bars (from options window)
+      messenger.NotifyTools.notifyExperiment({ event: "toggleNavigationBars" });
+      break;
+
+    case "updateCategoryBox":
+      messenger.NotifyTools.notifyExperiment({ event: "updateCategoryBox" });
+      break;
+
+    case "updateMainWindow":
+      {
+        // we need to add one parameter (minimal) to pass through!
+        let isMinimal = data.minimal || false;
+        messenger.NotifyTools.notifyExperiment({
+          event: "updateMainWindow",
+          detail: { minimal: isMinimal },
+        });
+      }
+      break;
+
+    case "showAboutConfig":
+      // to do: create an API for this one
+      messenger.NotifyTools.notifyExperiment({
+        event: "showAboutConfig",
+        element: null,
+        filter: data.filter,
+        readOnly: data.readOnly,
+        updateUI: data.updateUI || false,
+      });
+      break;
+
+    case "showLicenseDialog":
+      messenger.NotifyTools.notifyExperiment({
+        event: "showLicenseDialog",
+        referrer: data.referrer,
+      });
+      break;
+
+    case "legacyAdvancedSearch":
+      messenger.NotifyTools.notifyExperiment({ event: "legacyAdvancedSearch" });
+      break;
+
+    case "currentDeckUpdate":
+      messenger.NotifyTools.notifyExperiment({ event: "currentDeckUpdate" });
+      break;
+
+    case "initKeyListeners":
+      messenger.NotifyTools.notifyExperiment({ event: "initKeyListeners" });
+      break;
+
+    case "openPrefs":
+      {
+        let params = new URLSearchParams();
+        if (data.selectedTab) {
+          params.append("selectedTab", data.selectedTab);
+        }
+        if (data.mode) {
+          params.append("mode", data.mode);
+        }
+
+        // to get the tab - we need the activetab permission
+        // query for url
+        const url = browser.runtime.getURL("/html/options.html") + "*";
+        let oldTabs = await browser.tabs.query({ url }); // destructure first
+        if (oldTabs.length) {
+          // get current windowId
+          let currentWin = await browser.windows.getCurrent();
+          let found = oldTabs.find((w) => w.windowId == currentWin.id);
+          if (!found) {
+            [found] = oldTabs; // destructure first element
+            await browser.windows.update(found.windowId, { focused: true, drawAttention: true });
+          } else {
+            await browser.tabs.update(found.id, { active: true });
+          }
+          // activate the tab that we need, after the settings page is ready
+          if (data.mode) {
+            if (await isDebugOn()) {
+              console.log(`Activate preference page: ${data.mode}`);
+            }
+            await browser.runtime.sendMessage({
+              activatePrefsPage: data.mode,
+            });
+          }
+          return;
+        }
+        if (Preferences.get("optionsInTab")) {
+          // await messenger.runtime.openOptionsPage();
+          const myuri = browser.runtime.getURL(`html/options.html?${params.toString()}`);
+          await browser.tabs.create({
+            active: true,
+            url: myuri,
+          });
+          return;
+        }
+        // open options in a window (old)
+        await messenger.windows.create({
+          height: 720,
+          width: 840,
+          type: "panel",
+          url: `/html/options.html?${params.toString()}`,
+          allowScriptsToClose: true,
+        });
+      }
+      break;
+
+    case "openAdvancedProps":
+      {
+        let params = new URLSearchParams();
+        const x = parseInt(data.x, 10),
+          y = parseInt(data.y, 10);
+        params.append("folderURI", data.folderURI); // to do: pass folder or url in event
+        params.append("x", x);
+        params.append("y", y);
+        await messenger.windows.create({
+          left: x,
+          top: y,
+          type: "popup",
+          allowScriptsToClose: true,
+          url: `/html/quickfolders-tab-props.html?${params.toString()}`,
+        });
+        // focused: true,
+      }
+      break;
+
+    case "updateLicense": {
+      let forceSecondaryIdentity = Preferences.get("licenser.forceSecondaryIdentity"),
+        isDebugLicenser = Preferences.get("debug.premium.licenser");
+
+      // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
+      let newLicense = new Licenser(data.key, { forceSecondaryIdentity, debug: isDebugLicenser });
+      await newLicense.validate();
+      // Check new license and accept if ok.
+      // You may return values here, which will be send back to the caller.
+      // return false;
+
+      // Update background license.
+      await Preferences.set("LicenseKey", newLicense.info.licenseKey);
+      currentLicense = newLicense;
+
+      // 1. Broadcast into Experiment
+      messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
+
+      // 2. notify options.html (new, using message API)
+      let message = {
+        msg: "updatedLicense",
+        licenseInfo: currentLicense.info,
+      };
+      messenger.runtime.sendMessage(message);
+
+      messenger.NotifyTools.notifyExperiment({ event: "updateAllTabs" });
+      // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
+      messenger.runtime
+        .sendMessage(QUICKFILTERS_APPNAME, {
+          command: "updateQuickFoldersLicense",
+          license: { status: currentLicense.info.status, keyType: currentLicense.info.keyType },
+        })
+        .catch(logReceptionError);
+      // }
+      return true;
+    }
+
+    case "updateLicenseTimer":
+      await currentLicense.updateLicenseDates();
+
+      messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
+      messenger.NotifyTools.notifyExperiment({ event: "updateMainWindow", minimal: false });
+      break;
+
+    case "createSubfolder": // [issue 234]
+      // if folderName is not given - create a popup window
+
+      return browser.folders.create(data.parentPath, data.folderName || "test1"); // like await but returns
+
+    case "copyFolderEntries":
+      messenger.NotifyTools.notifyExperiment({ event: "copyFolderEntriesToClipboard" });
+      break;
+    case "pasteFolderEntries":
+      messenger.NotifyTools.notifyExperiment({ event: "pasteFolderEntriesFromClipboard" });
+      break;
+
+    case "updateQuickFilters":
+      {
+        let licenseStatus = currentLicense.info.status,
+          licenseType = currentLicense.info.keyType;
+        // require management permission to check if qF is installed
+        // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
+        messenger.runtime
+          .sendMessage(QUICKFILTERS_APPNAME, {
+            command: "injectButtonsQFNavigationBar",
+            license: { status: licenseStatus, keyType: licenseType },
+          })
+          .catch(logReceptionError);
+        // }
+      }
+      break;
+
+    case "searchMessages": // test
+      messenger.messages.list(data.folder);
+      break;
+
+    case "initActionButton": // initialize toggle toolbar button
+      messenger.Utilities.toggleToolbarAction(true); // patch action button (toolbar toggle)
+      break;
+
+    case "storeCategories": // store category in session
+      await messenger.sessions.setTabValue(data.tabId, "QuickFolders_Categories", data.categories);
+      break;
+
+    case "readCategories": {
+      // read category from tabsession
+      let cats = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_Categories");
+      return cats;
+    }
+
+    case "pluralForm": {
+      // Bug 1935334 - Remove usage of PluralForm.sys.mjs from Thunderbird code
+      const pluralForm = new Intl.PluralRules(navigator.language); // use current locale
+      const form = pluralForm.select(data.count); // "one" or "other"
+      let forms = data.msg.split(";");
+      let str = form === "one" ? forms[0] : forms[1];
+      return str;
+    }
+
+    case "storeToolbarStatus": // store toolbar visibilities in tabsession
+      await messenger.sessions.setTabValue(data.tabId, "QuickFolders_ToolbarStatus", data.status);
+      break;
+
+    case "filterMailsRegex":
+      {
+        // filter based on current mail!
+        let regexOption = JSON.parse(data.searchOptions);
+        await filterMailsRegex(regexOption, data.tabId);
+      }
+      break;
+
+    case "readToolbarStatus": {
+      // store toolbar visibilities in tabsession
+      let status = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_ToolbarStatus");
+      return status;
+    }
+
+    case "addFolderPaneMenu":
+      addFolderPaneMenu();
+      break;
+
+    case "openLinkInTab":
+      {
+        // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
+        let baseURI = data.baseURI || data.URL;
+        let found = await browser.tabs.query({ url: baseURI });
+        if (found.length) {
+          let tab = found[0]; // first result
+          await browser.tabs.update(tab.id, { active: true, url: data.URL });
+          return;
+        }
+        browser.tabs.create({ active: true, url: data.URL });
+      }
+      break;
+
+    case "openBrowserLink":
+      messenger.windows.openDefaultBrowser(data.url);
+      break;
+
+    case "showNewsMessage": {
+      // [issue 378]
+      const message = data.msg,
+        messageIds = data.msgIds,
+        mode = data.mode || "standard",
+        referenceFeature = data.addonfeatures || null,
+        features = data.features || ["ok"]; // minimum: an ok button. make array mutable
+
+      switch (mode) {
+        case "standard":
+          return showQFmessage(messageIds, features, message, referenceFeature);
+        case "news":
+          return displayUpdateMessage();
+        default:
+          return "unknown";
+      }
+    }
+    case "getLastLoadedTheme": {
+      const t = messenger.Utilities.getActiveThemeId();
+      console.log("QuickFolders: Active Theme ID = " + t);
+      return t;
+    }
+    case "storeLoadedTheme":
+      console.log(`QuickFolders: Storing Theme ID = ${data.themeId}`);
+      return await messenger.Utilities.commitActiveThemeId(data.themeId);
+    case "stageThemeChange":
+      console.log(`QuickFolders: Staging Theme Change for ID = ${data.themeId}`);
+      return await messenger.Utilities.stageThemeChange(data.themeId);
+
+    // [issue 677] local storage!
+    case "setCachedPref":
+      await Preferences.set(data.key, data.value);
+      return true;
+    case "setCachedPrefSet":
+      await Preferences.setMultiple(data.prefs);
+      return true;
+    case "setCachedModel":
+      return await Preferences.setModelFolders(data.folders || []);
+    case "requestPrefCache":
+      // sends cached data back to QuickFolders.Preferences.cache.updateFromBackend(data)
+      return {
+        prefs: Preferences._data,
+        model: {
+          folders: [...Preferences._model.folders],
+        },
+      };
+  }
+}
+
+// background listener
+function registerNotifyListener() {
+  messenger.NotifyTools.onNotifyBackground.addListener((data) => {
+    const isLog = Preferences.get("debug.notifications") || false;
+    if (isLog && data.func) {
+      console.log(
+        "=========================\n" +
+          "BACKGROUND LISTENER received: " +
+          data.func +
+          "\n" +
+          "========================="
+      );
+    }
+
+    return notificationHandler(data);
+  });
+}
 
 async function main() {
-  const key = await messenger.LegacyPrefs.getPref(legacyPrefPath("LicenseKey"), ""),
+  await prefsReady;
+  const key = Preferences.get("LicenseKey") || "",
     forceSecondaryIdentity =
-      (await messenger.LegacyPrefs.getPref(legacyPrefPath("licenser.forceSecondaryIdentity"))) ||
-      false,
+      (Preferences.get("licenser.forceSecondaryIdentity")) || false,
     isDebug = await isDebugOn(),
     isDebugLicenser =
-      (await messenger.LegacyPrefs.getPref(legacyPrefPath("debug.premium.licenser"))) || false;
+      (Preferences.get("debug.premium.licenser")) || false;
 
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();
@@ -619,390 +1031,11 @@ async function main() {
     "stageThemeChange",
   ];
 
-  async function notificationHandler(data) {
-    let command = data.func || data.command;
-    switch (command) {
-      case "slideAlert":
-        util.slideAlert(...data.args);
-        break;
-
-      case "splashScreen":
-        {
-          let splashMessage = data.msg || "";
-          showSplash(splashMessage);
-        }
-        break;
-
-      case "splashInstalled":
-        showInstalled();
-        break;
-
-      case "getLicenseInfo":
-        return currentLicense.info;
-
-      case "getFindRelatedList": {
-        let relatedArr = await getFindRelatedStruct();
-        return JSON.stringify(relatedArr);
-      }
-
-      case "getPlatformInfo":
-        return messenger.runtime.getPlatformInfo();
-
-      case "getBrowserInfo":
-        return messenger.runtime.getBrowserInfo();
-
-      case "getAddonInfo":
-        return messenger.management.getSelf();
-
-      case "updateQuickFoldersLabel":
-        // Broadcast main windows to run updateQuickFoldersLabel
-        messenger.NotifyTools.notifyExperiment({ event: "updateQuickFoldersLabel" });
-        break;
-
-      case "updateUserStyles":
-        // Broadcast main windows to update their styles (and maybe single message windows???)
-        messenger.NotifyTools.notifyExperiment({ event: "updateUserStyles" });
-        break;
-
-      case "updateFoldersUI": // replace observer
-        messenger.NotifyTools.notifyExperiment({ event: "updateFoldersUI" });
-        break;
-
-      case "updateAllTabs":
-        // only update tabs, without styles - reads the tabs from the store to support:
-        //   adding / renaming / deleting / re-categorizing / re-ordering
-        //   across all Windows instances.
-        messenger.NotifyTools.notifyExperiment({ event: "updateAllTabs" });
-        break;
-
-      case "updateNavigationBar":
-        await messenger.NotifyTools.notifyExperiment({ event: "updateNavigationBar" });
-        break;
-
-      case "toggleNavigationBars": // toggles _all_ navigation bars (from options window)
-        messenger.NotifyTools.notifyExperiment({ event: "toggleNavigationBars" });
-        break;
-
-      case "updateCategoryBox":
-        messenger.NotifyTools.notifyExperiment({ event: "updateCategoryBox" });
-        break;
-
-      case "updateMainWindow":
-        {
-          // we need to add one parameter (minimal) to pass through!
-          let isMinimal = data.minimal || false;
-          messenger.NotifyTools.notifyExperiment({
-            event: "updateMainWindow",
-            detail: { minimal: isMinimal },
-          });
-        }
-        break;
-
-      case "showAboutConfig":
-        // to do: create an API for this one
-        messenger.NotifyTools.notifyExperiment({
-          event: "showAboutConfig",
-          element: null,
-          filter: data.filter,
-          readOnly: data.readOnly,
-          updateUI: data.updateUI || false,
-        });
-        break;
-
-      case "showLicenseDialog":
-        messenger.NotifyTools.notifyExperiment({
-          event: "showLicenseDialog",
-          referrer: data.referrer,
-        });
-        break;
-
-      case "legacyAdvancedSearch":
-        messenger.NotifyTools.notifyExperiment({ event: "legacyAdvancedSearch" });
-        break;
-
-      case "currentDeckUpdate":
-        messenger.NotifyTools.notifyExperiment({ event: "currentDeckUpdate" });
-        break;
-
-      case "initKeyListeners":
-        messenger.NotifyTools.notifyExperiment({ event: "initKeyListeners" });
-        break;
-
-      case "openPrefs":
-        {
-          let params = new URLSearchParams();
-          if (data.selectedTab) {
-            params.append("selectedTab", data.selectedTab);
-          }
-          if (data.mode) {
-            params.append("mode", data.mode);
-          }
-
-          // to get the tab - we need the activetab permission
-          // query for url
-          const url = browser.runtime.getURL("/html/options.html") + "*";
-          let oldTabs = await browser.tabs.query({ url }); // destructure first
-          if (oldTabs.length) {
-            // get current windowId
-            let currentWin = await browser.windows.getCurrent();
-            let found = oldTabs.find((w) => w.windowId == currentWin.id);
-            if (!found) {
-              [found] = oldTabs; // destructure first element
-              await browser.windows.update(found.windowId, { focused: true, drawAttention: true });
-            } else {
-              await browser.tabs.update(found.id, { active: true });
-            }
-            // activate the tab that we need, after the settings page is ready
-            if (data.mode) {
-              if (isDebug) {
-                console.log(`Activate preference page: ${data.mode}`);
-              }
-              await browser.runtime.sendMessage({
-                activatePrefsPage: data.mode,
-              });
-            }
-            return;
-          }
-          if (await messenger.LegacyPrefs.getPref(legacyPrefPath("optionsInTab"))) {
-            // await messenger.runtime.openOptionsPage();
-            const myuri = browser.runtime.getURL(`html/options.html?${params.toString()}`);
-            await browser.tabs.create({
-              active: true,
-              url: myuri,
-            });
-            return;
-          }
-          // open options in a window (old)
-          await messenger.windows.create({
-            height: 720,
-            width: 840,
-            type: "panel",
-            url: `/html/options.html?${params.toString()}`,
-            allowScriptsToClose: true,
-          });
-        }
-        break;
-
-      case "openAdvancedProps":
-        {
-          let params = new URLSearchParams();
-          const x = parseInt(data.x, 10),
-            y = parseInt(data.y, 10);
-          params.append("folderURI", data.folderURI); // to do: pass folder or url in event
-          params.append("x", x);
-          params.append("y", y);
-          await messenger.windows.create({
-            left: x,
-            top: y,
-            type: "popup",
-            allowScriptsToClose: true,
-            url: `/html/quickfolders-tab-props.html?${params.toString()}`,
-          });
-          // focused: true,
-        }
-        break;
-
-      case "updateLicense": {
-        let forceSecondaryIdentity = await messenger.LegacyPrefs.getPref(
-            legacyPrefPath("licenser.forceSecondaryIdentity"),
-          ),
-          isDebugLicenser = await messenger.LegacyPrefs.getPref(
-            legacyPrefPath("debug.premium.licenser"),
-          );
-
-        // we create a new Licenser object for overwriting, this will also ensure that key_type can be changed.
-        let newLicense = new Licenser(data.key, { forceSecondaryIdentity, debug: isDebugLicenser });
-        await newLicense.validate();
-        // Check new license and accept if ok.
-        // You may return values here, which will be send back to the caller.
-        // return false;
-
-        // Update background license.
-        await messenger.LegacyPrefs.setPref(
-          legacyPrefPath("LicenseKey"),
-          newLicense.info.licenseKey,
-        );
-        currentLicense = newLicense;
-
-        // 1. Broadcast into Experiment
-        messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
-
-        // 2. notify options.html (new, using message API)
-        let message = {
-          msg: "updatedLicense",
-          licenseInfo: currentLicense.info,
-        };
-        messenger.runtime.sendMessage(message);
-
-        messenger.NotifyTools.notifyExperiment({ event: "updateAllTabs" });
-        // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
-        messenger.runtime
-          .sendMessage(QUICKFILTERS_APPNAME, {
-            command: "updateQuickFoldersLicense",
-            license: { status: currentLicense.info.status, keyType: currentLicense.info.keyType },
-          })
-          .catch(logReceptionError);
-        // }
-        return true;
-      }
-
-      case "updateLicenseTimer":
-        await currentLicense.updateLicenseDates();
-
-        messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
-        messenger.NotifyTools.notifyExperiment({ event: "updateMainWindow", minimal: false });
-        break;
-
-      case "createSubfolder": // [issue 234]
-        // if folderName is not given - create a popup window
-
-        return browser.folders.create(data.parentPath, data.folderName || "test1"); // like await but returns
-
-      case "copyFolderEntries":
-        messenger.NotifyTools.notifyExperiment({ event: "copyFolderEntriesToClipboard" });
-        break;
-      case "pasteFolderEntries":
-        messenger.NotifyTools.notifyExperiment({ event: "pasteFolderEntriesFromClipboard" });
-        break;
-
-      case "updateQuickFilters":
-        {
-          let licenseStatus = currentLicense.info.status,
-            licenseType = currentLicense.info.keyType;
-          // require management permission to check if qF is installed
-          // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
-          messenger.runtime
-            .sendMessage(QUICKFILTERS_APPNAME, {
-              command: "injectButtonsQFNavigationBar",
-              license: { status: licenseStatus, keyType: licenseType },
-            })
-            .catch(logReceptionError);
-          // }
-        }
-        break;
-
-      case "searchMessages": // test
-        messenger.messages.list(data.folder);
-        break;
-
-      case "initActionButton": // initialize toggle toolbar button
-        messenger.Utilities.toggleToolbarAction(true); // patch action button (toolbar toggle)
-        break;
-
-      case "storeCategories": // store category in session
-        await messenger.sessions.setTabValue(
-          data.tabId,
-          "QuickFolders_Categories",
-          data.categories,
-        );
-        break;
-
-      case "readCategories": {
-        // read category from tabsession
-        let cats = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_Categories");
-        return cats;
-      }
-
-      case "pluralForm" : {
-        // Bug 1935334 - Remove usage of PluralForm.sys.mjs from Thunderbird code
-        const pluralForm = new Intl.PluralRules(navigator.language); // use current locale
-        const form = pluralForm.select(data.count); // "one" or "other"
-        let forms = data.msg.split(";");
-        let str = (form === "one") ? forms[0] : forms[1]; 
-        return str;
-      }
-
-      case "storeToolbarStatus": // store toolbar visibilities in tabsession
-        await messenger.sessions.setTabValue(data.tabId, "QuickFolders_ToolbarStatus", data.status);
-        break;
-
-      case "filterMailsRegex":
-        {
-          // filter based on current mail!
-          let regexOption = JSON.parse(data.searchOptions);
-          await filterMailsRegex(regexOption, data.tabId);
-        }
-        break;
-
-      case "readToolbarStatus": {
-        // store toolbar visibilities in tabsession
-        let status = await messenger.sessions.getTabValue(data.tabId, "QuickFolders_ToolbarStatus");
-        return status;
-      }
-
-      case "addFolderPaneMenu":
-        addFolderPaneMenu();
-        break;
-
-      case "openLinkInTab":
-        {
-          // https://webextension-api.thunderbird.net/en/stable/tabs.html#query-queryinfo
-          let baseURI = data.baseURI || data.URL;
-          let found = await browser.tabs.query({ url: baseURI });
-          if (found.length) {
-            let tab = found[0]; // first result
-            await browser.tabs.update(tab.id, { active: true, url: data.URL });
-            return;
-          }
-          browser.tabs.create({ active: true, url: data.URL });
-        }
-        break;
-
-      case "openBrowserLink":
-        messenger.windows.openDefaultBrowser(data.url);
-        break;
-
-      case "showNewsMessage": {
-        // [issue 378]
-        const message = data.msg,
-          messageIds = data.msgIds,
-          mode = data.mode || "standard",
-          referenceFeature = data.addonfeatures || null,
-          features = data.features || ["ok"]; // minimum: an ok button. make array mutable
-
-        switch (mode) {
-          case "standard":
-            return showQFmessage(messageIds, features, message, referenceFeature);
-          case "news":
-            return displayUpdateMessage();
-          default:
-            return "unknown";
-        }
-      }
-      case "getLastLoadedTheme": {
-        const t = messenger.Utilities.getActiveThemeId();
-        console.log("QuickFolders: Active Theme ID = " + t);
-        return t;
-      }
-      case "storeLoadedTheme":
-        console.log(`QuickFolders: Storing Theme ID = ${data.themeId}`);
-        return await messenger.Utilities.commitActiveThemeId(data.themeId);
-      case "stageThemeChange":
-        console.log(`QuickFolders: Staging Theme Change for ID = ${data.themeId}`);
-        return await messenger.Utilities.stageThemeChange(data.themeId);
-    }
-  }
-
-  // background listener
-  messenger.NotifyTools.onNotifyBackground.addListener((data) => {
-    messenger.LegacyPrefs.getPref(legacyPrefPath("debug.notifications")).then((isLog) => {
-      if (isLog && data.func) {
-        console.log(
-          "=========================\n" +
-            "BACKGROUND LISTENER received: " +
-            data.func +
-            "\n" +
-            "========================="
-        );
-      }
-    });
-    return notificationHandler(data); // returns the promise for notification Handler
-  });
 
   // message listener - SELECTIVE!
   // every message listener must have its unique set of messages (if it returns something)
   messenger.runtime.onMessage.addListener((data, sender) => {
-    if (msg_commands.includes(data.command)) {
+    if (msg_commands.includes(data?.command)) {
       return notificationHandler(data, sender); // the result of this is a Promise
     }
     // Future Work: command handler for tbkeys-lite!
@@ -1014,7 +1047,7 @@ async function main() {
   });
 
   messenger.runtime.onMessageExternal.addListener(async (message, _sender) => {
-    switch (message.command) {
+    switch (message?.command) {
       case "queryQuickFoldersLicense":
         return {
           status: currentLicense.info.status,
@@ -1035,7 +1068,6 @@ async function main() {
   // inject a separate script for current folder toolbar!
   messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
 
-
   messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
 
   messenger.WindowListener.registerWindow(
@@ -1047,32 +1079,32 @@ async function main() {
     "chrome/content/scripts/qf-searchDialog.js"
   );
   messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/customizeToolbar.xhtml",
-    "chrome/content/scripts/qf-customizetoolbar.js"
-  );
-  messenger.WindowListener.registerWindow(
     "chrome://messenger/content/messageWindow.xhtml",
     "chrome/content/scripts/qf-messageWindow.js"
   );
 
   // make sure session has loaded all tabs.
   // [issue 598] 5000ms default
-  const to = await messenger.LegacyPrefs.getPref(legacyPrefPath("api.mailTabs.timeout"));
+  const to = Preferences.get("api.mailTabs.timeout");
   // let [mailTab] = await browser.mailTabs.query({}); await browser.mailTabs.get(mailTab.id);
-  if (to>0) {
+  if (to > 0) {
     if (await isDebug) {
       console.log(`QuickFolders: Waiting ${to}ms for mailTabs to be ready...`);
     }
     await waitForMailTabsReady(to);
   } else {
     // [issue 598] used to get stuck in Bb:
-    if (isDebug) { console.log("waiting for mailTabs.query()..."); }
+    if (isDebug) {
+      console.log("waiting for mailTabs.query()...");
+    }
     let [mailTab] = await browser.mailTabs.query({});
     if (isDebug) {
       console.log(`Got [mailTab] retreiving current tab[${mailTab.id}]`);
     }
     await browser.mailTabs.get(mailTab.id);
-    if (isDebug) { console.log("got tab"); }
+    if (isDebug) {
+      console.log("got tab");
+    }
   }
 
   /*
@@ -1152,8 +1184,9 @@ async function main() {
 
         // Reload tab details
         const updatedTab = await messenger.tabs.get(tabId);
-        const isRelevant = changeInfo?.url ? changeInfo.url.startsWith(getExtensionRootURL()) : false;
-
+        const isRelevant = changeInfo?.url
+          ? changeInfo.url.startsWith(getExtensionRootURL())
+          : false;
 
         if (changeInfo.url) {
           if (!isRelevant) {
@@ -1242,8 +1275,9 @@ async function main() {
   });
 } // main
 
+registerNotifyListener();
+const prefsReady = Preferences.init(); // pending
 main();
-
 
 const MESSAGE_STORAGE_KEY = "QuickFolders_Message_Key";
 const showQFmessage = async (messageIds, features, message = "", quickfoldersFeatures = null) => {
@@ -1259,9 +1293,7 @@ const showQFmessage = async (messageIds, features, message = "", quickfoldersFea
   if (quickfoldersFeatures) {
     url.searchParams.set(
       "addonfeatures",
-      Array.isArray(quickfoldersFeatures)
-        ? quickfoldersFeatures.join(",")
-        : quickfoldersFeatures
+      Array.isArray(quickfoldersFeatures) ? quickfoldersFeatures.join(",") : quickfoldersFeatures
     );
   }
   url.searchParams.set("features", features.join(","));
@@ -1307,7 +1339,7 @@ const RETRY_MINUTES = 20;
 async function displayUpdateMessage() {
   const messageIds = "newsMsgEsr2026",
     licenseInfo = currentLicense?.info,
-    isDebug = await messenger.LegacyPrefs.getPref("extensions.quickfolders.debug"),
+    isDebug = Preferences.get("debug"),
     hasProLicense = [0, 1].includes(licenseInfo?.keyType); // 0 Pro or none depending on status, 2 std
 
   const logDebug = (...args) => {
@@ -1320,8 +1352,7 @@ async function displayUpdateMessage() {
   let features = ["ok", "licensing", "featurecomp"];
 
   // reflects last addon version installed with a msg.
-  let lastMessage =
-    (await messenger.LegacyPrefs.getPref("extensions.quickfolders.lastUpdateMessage")) || "0";
+  let lastMessage = Preferences.get("extensions.quickfolders.lastUpdateMessage") || "0";
   logDebug(`Last update message version: ${lastMessage}`);
 
   const isShowSpecialUpdateMsg = compareVersions(lastMessage, LATEST_UPDATEMSG) < 0;
@@ -1361,7 +1392,7 @@ async function displayUpdateMessage() {
     if (result) {
       const manifest = await messenger.runtime.getManifest();
       const installedVersion = manifest.version.replace(/pre.*/, "").replace(/\.$/, "");
-      await messenger.LegacyPrefs.setPref(
+      await Preferences.set(
         "extensions.quickfolders.lastUpdateMessage",
         installedVersion
       );
@@ -1381,10 +1412,13 @@ async function displayUpdateMessage() {
     }
     retryScheduled = true;
     logDebug("Scheduling one-time retry in 20 minutes…");
-    setTimeout(() => {
-      displayUpdateMessage().catch((e) =>
-        console.error("Retry of displayUpdateMessage() failed:", e)
-      );
-    }, RETRY_MINUTES * 60 * 1000); // 20 minutes
+    setTimeout(
+      () => {
+        displayUpdateMessage().catch((e) =>
+          console.error("Retry of displayUpdateMessage() failed:", e)
+        );
+      },
+      RETRY_MINUTES * 60 * 1000
+    ); // 20 minutes
   }
 }

@@ -219,7 +219,7 @@ QuickFolders.Model = {
 		catch {;}
       
     // store the icon path
-    QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
+    this.store();
   } ,
 
   setFolderColor: function (uri, tabColor, withUpdate) {
@@ -234,7 +234,7 @@ QuickFolders.Model = {
         this.update();
       } else {
         // only store, no visual update.
-        QuickFolders.Preferences.storeFolderEntries(this.selectedFolders);
+        this.store();
       } 
     }
   },
@@ -533,115 +533,6 @@ QuickFolders.Model = {
     }
   },
   
-  // new palette indices
-  updatePalette: function () {
-    // we only do this ONCE
-    if (this.paletteUpdated)  {return;}
-
-    let currentPalette = QuickFolders.Preferences.getIntPref("style.palette.version");
-    QuickFolders.Util.logDebug('QuickFolders.Model.updatePalette()\nCurrent Palette Version=' + currentPalette);
-    if (currentPalette < 1) {
-      let folderEntries = QuickFolders.Preferences.loadFolderEntries();
-  
-      if (folderEntries.length > 0) {
-        QuickFolders.Util.logDebug("Updating Palettes from version:" + currentPalette);
-        let updateString='';
-        for (let i = 0; i < folderEntries.length; i++) {
-        
-          let folderEntry = folderEntries[i],
-              tabColor = 0;
-          try {tabColor = parseInt(folderEntry.tabColor, 10);}
-          catch { tabColor = -1; }
-          let old=tabColor;
-          if (tabColor>=0) {
-            switch(tabColor) {
-              case  1: tabColor = 10; break;
-              case  2: tabColor =  7; break;
-              case  3: tabColor = 11; break;
-              case  4: tabColor =  6; break;
-              case  5: tabColor =  2; break;
-              case  6: tabColor = 14; break;
-              case  7: tabColor =  5; break;
-              case  8: tabColor = 15; break;
-              case  9: tabColor = 13; break;
-              case 10: tabColor = 12; break;
-              case 11: tabColor =  1; break;
-              case 12: tabColor =  9; break;
-              case 13: tabColor =  4; break;
-              case 14: tabColor = 17; break;
-              case 15: tabColor = 18; break;
-              case 16: tabColor = 19; break;
-              case 17: tabColor =  8; break;
-              case 18: tabColor =  3; break;
-              case 19: tabColor = 20; break;
-              case 20: tabColor = 16; break;
-            }
-            updateString += i.toString() + '. changing palette entry for ' + folderEntry.name 
-                            + ' from ' + old 
-                            + ' to ' + tabColor 
-                            + ' = ' + this.colorName(1, tabColor) + '\n';
-            folderEntries[i].tabColor = tabColor;
-            
-          }
-        }
-        QuickFolders.Util.logDebug(updateString);
-        QuickFolders.Model.selectedFolders = folderEntries;
-
-        QuickFolders.Util.logDebug('Palette updated!');
-        this.paletteUpdated = true;
-
-        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); 
-        QuickFolders.Preferences.storeFolderEntries(folderEntries);
-  
-      }
-      QuickFolders.Preferences.setIntPref("style.palette.version", 1);
-  
-    }
-  } ,
-  
-  // new upgrade function to switch over to multiple palettes
-  upgradePalette: function (prefSvc) {
-    function getBoolPref(key, boolDefault) {
-      let result;
-      try {
-        result = prefSvc.getBoolPref(key)
-      } catch {
-        result = boolDefault;
-      }
-      return result;
-    }
-    function setPaletteType(key, wasPalette) {
-      prefSvc.setIntPref('style.' + key + '.paletteType', wasPalette ? (wasPastel ? 2 : 1) : 0);
-      let pType = prefSvc.getIntPref('style.' + key + '.paletteType');
-      return key + " usePalette - was " + wasPalette + " ==> " + pType + " (" + QuickFolders.Interface.getPaletteClassToken(pType) + ")";
-    }
-    
-    if (this.paletteUpgraded) {return;}
-    QuickFolders.Util.logDebugOptional ("firstrun", "Upgrading Palette for 3.12...");
-    
-    let wasPastel = getBoolPref('pastelColors', true),
-        wasInactivePalette = getBoolPref('style.InactiveTab.usePalette',false),
-        wasActivePalette = getBoolPref('style.ActiveTab.usePalette',true),
-        wasHoveredPalette = getBoolPref('style.HoveredTab.usePalette',false),
-        wasDragOverPalette = getBoolPref('style.DragOver.usePalette',false);
-    
-    // default to no palette
-    let s1 = setPaletteType('InactiveTab', wasInactivePalette),
-        s2 = setPaletteType('ColoredTab', true), // this must use palette always, by definition!
-        // default to "like Inactive Tab"
-        s3 = setPaletteType('ActiveTab', wasActivePalette),
-        s4 = setPaletteType('HoveredTab', wasHoveredPalette),
-        s5 = setPaletteType('DragOver', wasDragOverPalette);
-    
-    QuickFolders.Util.logDebugOptional ("firstrun", "New Palette types selected:\n"
-      + '(uncolored) ' + s1 + "\n"
-      + s2 + "\n"
-      + s3 + "\n"
-      + s4 + "\n"
-      + s5 + "\n");
-      
-    this.paletteUpgraded = true;
-  } ,
   
   // moved from quickfolders-change-order.js
 	insertAtPosition: function(buttonURI, targetURI, toolbarPos) {

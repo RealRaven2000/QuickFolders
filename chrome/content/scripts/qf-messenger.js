@@ -6,10 +6,14 @@ var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServi
 
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
 window.QuickFolders.WL = WL; // this will be used wherever Add-on version is needed.
+Services.scriptloader.loadSubScript(
+  "chrome://quickfolders/content/quickfolders-util.js",
+  window,
+  "UTF-8"
+);
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-filterWorker.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-interface.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-quickMove.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickmove-settings.js", window, "UTF-8");
@@ -26,6 +30,8 @@ var toggleIcon, removeIcon, addCurrentFolderToQF;
 
 // eslint-disable-next-line no-unused-vars
 async function onLoad(activatedWhileWindowOpen) {
+  await window.QuickFolders.Preferences.cache.awaitReady;
+
   const logDebug = window.QuickFolders.Util.logDebug.bind(window.QuickFolders.Util);
   logDebug(
     `============INJECT==========\nqf-messenger.js onLoad(${activatedWhileWindowOpen})`
@@ -505,8 +511,8 @@ async function onLoad(activatedWhileWindowOpen) {
         QF.Interface.liftNavigationbar(
           window.gTabmail.currentTabInfo.chromeBrowser.contentDocument
         ),
-      "QuickFolders-ToolbarPopup-dbg1": () => {
-        QF.Preferences.setBoolPref("hasNews", true);
+      "QuickFolders-ToolbarPopup-dbg1": async () => {
+        await QF.Preferences.setBoolPref("hasNews", true);
         QF.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" });
       },
       "QuickFolders-ToolbarPopup-dbg2": () => QF.Interface.viewInstalled(),

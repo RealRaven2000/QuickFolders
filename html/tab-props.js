@@ -63,10 +63,11 @@ QuickFolders.AdvancedTab = {
 				preview.style.background = document.getElementById('txtBackground').value;
 				preview.style.visibility = document.getElementById('chkCustomCSS').checked ? "visible" : "hidden";
 			}
-		} catch(ex) {;}
+		} catch {;}
 	} ,  
 
 	headerClick: function(event) {
+    /* TO CONVERT TO API!!
 		const Cc = Components.classes,
           Ci = Components.interfaces,
 					util = QuickFolders.Util;
@@ -77,7 +78,8 @@ QuickFolders.AdvancedTab = {
 			  break;
 			case 1: // middle button
 			  break;
-			case 2: // right button
+			case 2: // right button 
+      {
         let infoTxt = "URI: " + this.folder.URI;
         if (this.entry) {
           infoTxt += `\nTab [${this.entry.name}]`
@@ -86,7 +88,9 @@ QuickFolders.AdvancedTab = {
 				clipboardhelper.copyString(infoTxt);
 			  util.slideAlert("QuickFolders", "Copied folder Info to clipboard\n" + infoTxt);
 			  break;
+      }
 		}
+    */
 	} , 
 
   pickColor: function(color) {

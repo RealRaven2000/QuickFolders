@@ -15,9 +15,8 @@ END LICENSE BLOCK */
 
 
 async function getSalesEnd() {
-  const overrideSale = await messenger.LegacyPrefs.getPref(
-    "extensions.quickfolders.debug.saleDate"
-  );
+  const { settings } = await browser.storage.local.get({ settings: {} });
+  const overrideSale = settings["debug.saleDate"];
   if (overrideSale) {
     return new Date(overrideSale);
   }
@@ -104,9 +103,8 @@ async function isSale() {
 
 // eslint-disable-next-line no-unused-vars
 async function updateActions() {
-  const overrideSale = await messenger.LegacyPrefs.getPref(
-    "extensions.quickfolders.debug.saleDate"
-  );
+  const { settings } = await browser.storage.local.get({ settings: {} });
+  const overrideSale = settings["debug.saleDate"];
   const endSale = new Date(overrideSale || SALE_END_DATE), // Next Sale End Date - see specialoffers.js
     currentTime = new Date();
   endSale.setDate(endSale.getDate() + 1); // add 1 day to include the last day?

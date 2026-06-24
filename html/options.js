@@ -14,7 +14,6 @@ END LICENSE BLOCK */
 */
 
 
-
 // add event listeners for tabs
 const activateTab = (event) => {
   const tabSheets = document.querySelectorAll(".tabcontent-container section"),
@@ -35,8 +34,8 @@ const activateTab = (event) => {
     btn.classList.add("active");
     btn.parentElement.setAttribute("aria-selected", true); // li
     // store last selected tab
-    browser.LegacyPrefs.setPref(
-      "extensions.quickfolders.lastSelectedOptionsTab",
+    QuickFolders.Preferences.setIntPref(
+      "lastSelectedOptionsTab",
       btn.getAttribute("tabId")
     );
   }
@@ -101,12 +100,19 @@ function sanitizeCSS(el) {
 
 var licenseInfo;
 async function initLicenseInfo() {
-  licenseInfo = await messenger.runtime.sendMessage({command:"getLicenseInfo"});
+  licenseInfo = await browser.runtime.sendMessage({command:"getLicenseInfo"});
+  if (!licenseInfo) {
+    console.warn("initLicenseInfo() - getLicenseInfo: no response from background");
+    return;
+  }
   const licenseTxt = document.getElementById("txtLicenseKey");
-  licenseTxt.value = licenseInfo.licenseKey;
-  QuickFolders.Options.updateAriaLicenseLabel(licenseTxt);
+  const lKey = licenseInfo?.licenseKey || "";
+  licenseTxt.value = lKey;
+  if (lKey) {
+    QuickFolders.Options.updateAriaLicenseLabel(licenseTxt);
+  }
   
-  if (licenseInfo.licenseKey) {
+  if (lKey) {
     await validateLicenseInOptions(true);
     QuickFolders.Options.initStandardFeatureLabels(licenseInfo.isValid); // any license key.
   } else {
@@ -135,12 +141,14 @@ for (let button of document.querySelectorAll("#QuickFolders-Options-Tabbox butto
   button.addEventListener("click", activateTab);
 }
 
-
 for (let colorpicker of document.querySelectorAll("input[type=color]")) {
   if (colorpicker.id == "currentfolder-icons-colorpicker") {
     colorpicker.addEventListener("input", async (event) => { 
       // change color in prefs in real time.
-      await messenger.LegacyPrefs.setPref("extensions.quickfolders.currentFolderBar.iconcolor", event.target.value);
+      await QuickFolders.Preferences.setPref(
+        "currentFolderBar.iconcolor",
+        event.target.value
+      );
       QuickFolders.Options.updateNavigationBar();
     });
     continue;
@@ -287,7 +295,7 @@ document.getElementById("quickMoveAdvanced").addEventListener("click", async () 
 
 let icSize = document.getElementById("customIconSize");
 icSize.addEventListener("change", async () => {
-  messenger.runtime.sendMessage({ command:"updateUserStyles" });
+  browser.runtime.sendMessage({ command:"updateUserStyles" });
 });
 
 /* CSP violation in Tb 125.0b5 */
@@ -482,11 +490,11 @@ QuickFolders.Options.configureRelatedTab();
 async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
   // we put the notification listener into quickfolders-tablistener.js - should only happen in ONE main window!
   // el - cannot be cloned! let's throw it away and get target of the event
-  messenger.runtime.sendMessage({ 
-    command: "showAboutConfig", 
+  browser.runtime.sendMessage({
+    command: "showAboutConfig",
     filter: filter,
     readOnly: readOnly,
-    updateUI: updateUI
+    updateUI: updateUI,
   });
 }
 
@@ -662,9 +670,8 @@ document.getElementById("btnLoadConfig").addEventListener("click", async () => {
     const item = config[i];
     // { key: it.getAttribute("data-pref-name"), val: value, originalId: it.getAttribute("preference") }
     if (item.key) {
-      await browser.LegacyPrefs.setPref(item.key, item.val);
-    }
-    else if (item.elementInfo) {
+      await QuickFolders.Preferences.setStringPref(item.key, item.val);
+    } else if (item.elementInfo) {
       let colPick = colorpickers.find(e => e.getAttribute("elementInfo") == item.elementInfo);
       if (colPick) {
         colPick.value = item.val;
@@ -695,8 +702,8 @@ let themeSelector = document.getElementById("QuickFolders-Theme-Selector");
 themeSelector.addEventListener("change", async (event) => {
   let themeId = event.target.value;
   // 1️⃣ Update UI and reset styles in privileged context:
-  // 2️⃣ persist the new theme ID in legacy prefs within selectTheme, before notifying the 
-  //    main window to update the theme.
+  // 2️⃣ persist the new theme ID in legacy prefs within selectTheme, before notifying the
+  //    main window to update the theme. "style.theme"
   QuickFolders.Options.selectTheme(window.document, themeId, event.target.dataset.prefName, true);
   // QuickFolders.Options.updateMainWindow();
 });
@@ -720,104 +727,97 @@ async function savePref(event) {
   
 	if (target instanceof HTMLInputElement) {
 		if (target.getAttribute("type") === "checkbox") {
-			await browser.LegacyPrefs.setPref(prefName, target.checked);
+			await QuickFolders.Preferences.setBoolPref(prefName, target.checked);
 		} else if (target.getAttribute("type") === "text" ||
 			target.dataset.prefType === "string") {
-			await browser.LegacyPrefs.setPref(prefName, target.value);
+			await QuickFolders.Preferences.setStringPref(prefName, target.value);
 		} else if (target.getAttribute("type") === "number") {
-			await browser.LegacyPrefs.setPref(prefName, parseInt(target.value, 10));
+			await QuickFolders.Preferences.setIntPref(prefName, parseInt(target.value, 10));
 		} else if (target.getAttribute("type") === "radio" && target.checked) {
-      await browser.LegacyPrefs.setPref(prefName, target.value);
+      await QuickFolders.Preferences.setStringPref(prefName, target.value);
     } else if (target.getAttribute("type") === "color") {
-      await browser.LegacyPrefs.setPref(prefName, target.value);
+      await QuickFolders.Preferences.setStringPref(prefName, target.value);
     } else {
 			console.error("Received change event for input element with unexpected type", event);
 		}
 	} else if (target instanceof HTMLSelectElement) {
 		if (target.dataset.prefType === "string") {
-			await browser.LegacyPrefs.setPref(prefName, target.value);
+			await QuickFolders.Preferences.setStringPref(prefName, target.value);
 		} 
     else {
       let v = isNaN(target.value) ? target.value : parseInt(target.value, 10);
-			await browser.LegacyPrefs.setPref(prefName, v);
+			await QuickFolders.Preferences.setIntPref(prefName, prefName, v);
 		}
 	} else if (target instanceof HTMLTextAreaElement) {
-    await browser.LegacyPrefs.setPref(prefName, target.value);
+    await QuickFolders.Preferences.setStringPref(prefName, target.value);
   } else {
     console.error("Received change event for unexpected element", event);
   }  
 }
 
 
-
 async function loadPrefs() {
   QuickFolders.Util.logDebug("loadPrefs() ...");
-  // use LegacyPrefs
-	const prefElements = Array.from(document.querySelectorAll("[data-pref-name]"));
-	for (let element of prefElements) {
-		let prefName = element.dataset.prefName;
-		if (!prefName) {
-			console.error("Preference element has unexpected data-pref attribute", element);
-			continue;
-		}
-		if (element instanceof HTMLInputElement) {
-      if (element.getAttribute("type") === "checkbox") {
-        element.checked = await browser.LegacyPrefs.getPref(prefName);
-        if (element.checked != await browser.LegacyPrefs.getPref(prefName)) {
-          // eslint-disable-next-line no-debugger
-          debugger; 
-        }
-      } 
-      else if (element.getAttribute("type") === "text" ||
-        element.dataset.prefType === "string"
-      ) {
-        element.value = await browser.LegacyPrefs.getPref(prefName);
-      } 
-      else if (element.getAttribute("type") === "number") {
-        element.value = (await browser.LegacyPrefs.getPref(prefName)).toString();
-      } 
-      else if (element.getAttribute("type") === "radio") {
-        let radioVal = (await browser.LegacyPrefs.getPref(prefName)).toString();
-        if (element.value === radioVal) {
-          element.checked = true;
-        }
+  const prefElements = Array.from(document.querySelectorAll("[data-pref-name]"));
+  try {
+    for (let element of prefElements) {
+      let prefName = element.dataset.prefName;
+      if (!prefName) {
+        console.error("Preference element has unexpected data-pref attribute", element);
+        continue;
       }
-      else if (element.getAttribute("type") === "color") {
-        element.value = await browser.LegacyPrefs.getPref(prefName);
-      }    
-      else {
-        console.error("Input element has unexpected type", element);
+
+      if (element instanceof HTMLInputElement) {
+        if (element.type === "checkbox") {
+          element.checked = QuickFolders.Preferences.getBoolPref(prefName);
+        } else if (element.type === "text" || element.dataset.prefType === "string") {
+          element.value = QuickFolders.Preferences.getStringPref(prefName);
+        } else if (element.type === "number") {
+          const n = QuickFolders.Preferences.getIntPref(prefName);
+          element.value = n?.toString() || "0";
+        } else if (element.type === "radio") {
+          const t =QuickFolders.Preferences.getStringPref(prefName)
+          let radioVal = t || "" ;
+          if (element.value === radioVal) {
+            element.checked = true;
+          }
+        } else if (element.type === "color") {
+          element.value = QuickFolders.Preferences.getStringPref(prefName);
+        } else {
+          console.error("Input element has unexpected type", element);
+        }
+      } else if (element instanceof HTMLSelectElement) {
+        if (element.dataset.prefType === "string") {
+          element.value = QuickFolders.Preferences.getStringPref(prefName);
+        } else {
+          const n = QuickFolders.Preferences.getIntPref(prefName) || 0;
+          element.value = n.toString();
+        }
+      } else if (element instanceof HTMLTextAreaElement) {
+        element.value = QuickFolders.Preferences.getStringPref(prefName);
+      } else {
+        console.error("Unexpected preference element", element);
       }
-		} 
-    else if (element instanceof HTMLSelectElement) {
-			if (element.dataset.prefType === "string") {
-				element.value = await browser.LegacyPrefs.getPref(prefName);
-			} else {
-				element.value = (await browser.LegacyPrefs.getPref(prefName)).toString();
-			}
-		} else if (element instanceof HTMLTextAreaElement) {
-      element.value = await browser.LegacyPrefs.getPref(prefName);
+
+      if (prefName === "extensions.quickfolders.style.theme") {
+        continue;
+      }
+
+      element.addEventListener("change", savePref);
     }
-    else {
-			console.error("Unexpected preference element", element);
-		}
-    
-    // Wire up individual event handlers
-    if (prefName === "extensions.quickfolders.style.theme") {
-      // we handle "QuickFolders-Theme-Selector" separately, so skip adding a generic change listener here
-      continue;
-    }
-    element.addEventListener("change", savePref);
-    
-	}  
+  } catch (ex) {
+    console.error("loadPrefs()", ex);
+  }
 }
 
 // preselect the correct tab.
 // force a mode "helpOnly" "supportOnly" "licenseKey"
 // change selectedTab from numeral to string!!
 async function preselectTab(mode=null) {
-  let selectOptionsPane = await browser.LegacyPrefs.getPref("extensions.quickfolders.lastSelectedOptionsTab") || "",
-      selectedTabElement = document.getElementById("QuickFolders-General"); //default = first tab
+  let selectOptionsPane =
+      QuickFolders.Preferences.getStringPref("lastSelectedOptionsTab") ||
+      "",
+    selectedTabElement = document.getElementById("QuickFolders-General"); //default = first tab
   let optionParams = new URLSearchParams(document.location.search);
   let selTab = optionParams ? optionParams.get("selectedTab") : ""; 
   if (!mode) {
@@ -882,9 +882,7 @@ async function configureBuyButton() {
       let today = new Date(),
         later = new Date(today.setDate(today.getDate() + 30)), // pretend it's a month later:
         dateString = later.toISOString().substring(0, 10),
-        forceExtend = await messenger.LegacyPrefs.getPref(
-          "extensions.quickfolders.debug.premium.forceShowExtend",
-        );
+        forceExtend = QuickFolders.Preferences.getBoolPref("debug.premium.forceShowExtend");
       // if we were a month ahead would this be expired?
       if (licenseInfo.expiryDate < dateString || forceExtend) {
         QuickFolders.Options.labelLicenseBtn(btnLicense, "extend");
@@ -930,7 +928,7 @@ async function validateLicenseInOptions(evt = false) {
   // this the updating the first button on the toolbar via the main instance
   // we use the quickfolders label to show if License needs renewal!
   // use notify tools for updating the [QuickFolders] label 
-  messenger.runtime.sendMessage({ command:"updateQuickFoldersLabel" });
+  browser.runtime.sendMessage({ command: "updateQuickFoldersLabel" });
   
   // 4 - update buy / extend button or hide it.
   configureBuyButton();
@@ -1057,9 +1055,9 @@ async function initButtons() {
     btnSwitchToFree.hidden = true;
 
     // 2. Backup the expired license
-    await messenger.LegacyPrefs.setPref(
-      "extensions.quickfolders.LicenseKey.backup",
-      licenseInfo.licenseKey,
+    await QuickFolders.Preferences.setStringPref(
+      "LicenseKey.backup",
+      licenseInfo.licenseKey
     );
 
     document.getElementById("txtLicenseKey").value = "";
@@ -1076,8 +1074,8 @@ async function initButtons() {
 
   const btnRecover = document.getElementById("btnRecoverLicense");
   btnRecover.addEventListener("click", async () => {
-    const lastKey = await browser.LegacyPrefs.getPref(
-      "extensions.quickfolders.LicenseKey.backup",
+    const lastKey = QuickFolders.Preferences.getStringPref(
+      "LicenseKey.backup"
     );
     document.getElementById("txtLicenseKey").value = lastKey;
     await QuickFolders.Options.validateNewKey();
@@ -1088,7 +1086,7 @@ async function initButtons() {
 }
 
 async function initToolbarBackground() {
-const colBG = await QuickFolders.Preferences.getStringPref("currentFolderBar.background.selection");
+const colBG = QuickFolders.Preferences.getStringPref("currentFolderBar.background.selection");
   QuickFolders.Util.logDebug(`initToolbarBackground: setCurrentToolbarBackground(${colBG})...`);
   QuickFolders.Options.setCurrentToolbarBackground(
     colBG, false);  
@@ -1177,6 +1175,19 @@ async function initBling() {
 }
 
 
+async function initLicenseInfoWithRetry() {
+  try {
+    await initLicenseInfo();
+    if (licenseInfo) {
+      await QuickFolders.Options.initLicenseBackupUI();
+    } else {
+      throw("no licenseInfo from background!")
+    }
+  } catch (ex) {
+    console.error("License system broken (expected in current state)", ex);
+  }
+}
+
 const startup = async () => {
   QuickFolders.Util.logDebug("Options.js - startup()\nCalling i18n.updateDocunent()...");
   
@@ -1189,20 +1200,22 @@ const startup = async () => {
   supportLabel.textContent = supportString;  
 
   await loadPrefs();
+  // block for cache load!
+  await QuickFolders.Preferences.ensureReady();
   preselectTab();
   initVersionPanel();
 
   try {
-    await initLicenseInfo();
+    await initLicenseInfoWithRetry();
     await QuickFolders.Options.initLicenseBackupUI();
   } catch (ex) {
-    console.log(ex);
+    console.warn("initLicenseInfo failed, retrying in 10s", ex);
     setTimeout(
       async () => {
         await initLicenseInfo();
         initButtons();
       },
-      5000
+      10000
     );
   } finally {
     initButtons();

@@ -61,9 +61,7 @@ export class Barrett {
     }
 
     BarrettMu_powMod(x, y) {
-			
-      let isLog = true; //use LegacyPrefs API messenger.LegacyPrefs.getPref(); QuickFolders.Preferences.isDebugOption('premium.rsa');
-      
+      let isLog = true; 
       BigIntModule.logDebug('BarrettMu_powMod()');
       BigIntModule.init();
       let result = new BigIntModule.BigInt();

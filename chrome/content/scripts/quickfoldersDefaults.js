@@ -168,8 +168,8 @@ pref("extensions.quickfolders.style.HoveredTab.paletteType", 1);
 pref("extensions.quickfolders.style.InactiveTab.color", "buttontext");
 pref("extensions.quickfolders.style.InactiveTab.background-color", "buttonface");
 pref("extensions.quickfolders.style.InactiveTab.paletteEntry", 20);
-pref("extensions.quickfolders.style.InactiveTab.paletteType", 0); // InactiveTab = "uncolored tab" default to none, but is set on upgradePalette
-pref("extensions.quickfolders.style.ColoredTab.paletteType", 1); // default to none, but is set on upgradePalette
+pref("extensions.quickfolders.style.InactiveTab.paletteType", 0);
+pref("extensions.quickfolders.style.ColoredTab.paletteType", 1);
 pref("extensions.quickfolders.style.activeTabCustomColor", true); // [issue 646]
 
 // pref("extensions.quickfolders.accounts", "[]"); //  json string with accounts matching with folders array

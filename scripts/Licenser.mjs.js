@@ -39,8 +39,8 @@ async function testCountFolders(includeFolders = false, debug = false){
 
   if (includeFolders) {
     function countSubFolders(f) {
-      if (!f) return 0;
-      if (!f.subFolders || !f.subFolders.length) return 1;
+      if (!f) {return 0;}
+      if (!f.subFolders || !f.subFolders.length) {return 1;}
       try {
         return f.subFolders.reduce(
           (n, fld) => {
@@ -49,7 +49,7 @@ async function testCountFolders(includeFolders = false, debug = false){
           },  1
         )
       }
-      catch(ex) {
+      catch  {
         console.log("exception in " + f.name)
         return 0;
       }
@@ -60,6 +60,7 @@ async function testCountFolders(includeFolders = false, debug = false){
             if (typeof m + csf == "undefined") {
               // this is a test function, having the debugger statement here is ok
               // as this function is not usually or easily executed by any user
+              // eslint-disable-next-line no-debugger
               debugger;
             }
             return m + csf;
@@ -113,13 +114,13 @@ function getMail(license) {
 }
 
 export class Licenser {
-  constructor(LicenseKey, options = {}) {
+  constructor(LicenseKey, settings = {}) {
     // the constructor ONLY sets the Licensekey, it does not set date etc.
     this.reset();    
-    this.ForceSecondaryIdentity = options.hasOwnProperty("forceSecondaryIdentity")
-      ? options.forceSecondaryIdentity
+    this.ForceSecondaryIdentity = Object.hasOwn(settings, "forceSecondaryIdentity")
+      ? settings.forceSecondaryIdentity
       : false;
-    this.debug = options.debug || false;
+    this.debug = settings.debug || false;
       
     this.LicenseKey = LicenseKey;
     this.key_type = crypto.getKeyType(LicenseKey);
@@ -209,18 +210,17 @@ export class Licenser {
   // for future use (standard license / trial periods)
 	async graceDate() {
 		let graceDate = "", isResetDate = false;
+    const { settings } = await browser.storage.local.get({ settings: {} });
 		try {
-			graceDate = Services.prefs.getStringPref("license.gracePeriodDate");
-		}
-		catch(ex) { 
+      graceDate = settings["license.gracePeriodDate"];
+		} catch  { 
 			isResetDate = true; 
 		}
 		let today = new Date().toISOString().substr(0, 10); // e.g. "2019-07-18"
 		if (!graceDate || graceDate>today) {
 			graceDate = today; // cannot be in the future
 			isResetDate = true;
-		}
-		else {
+		} else {
 			// if a license exists & is expired long ago, use the last day of expiration date.
 			if (this.ValidationStatus == LicenseStates.Expired) {
 				if (graceDate < this.getDecryptedDate()) {
@@ -232,7 +232,7 @@ export class Licenser {
 		}
 		if (isResetDate) {
       /* TO DO!! */
-      await messenger.LegacyPrefs.setPref("extensions.quickfolders.license.gracePeriodDate", graceDate);
+      graceDate = settings["license.gracePeriodDate"];
     }
 		// log("Returning Grace Period Date: " + graceDate);
 		return graceDate;
@@ -249,14 +249,13 @@ export class Licenser {
       }
       else {
         try {
-          graceDate = 
-            await messenger.LegacyPrefs.getPref("extensions.quickfolders.license.gracePeriodDate");
+          const { settings } = await browser.storage.local.get({ settings: {} });
+          graceDate = settings["license.gracePeriodDate"];
         }
-        catch (e) {graceDate = ""}
+        catch  {graceDate = ""}
       }
-			if (!graceDate) graceDate = await this.graceDate(); // create the date
-		}
-		catch(ex) { 
+			if (!graceDate) {graceDate = await this.graceDate();} // create the date
+		} catch  { 
 		  // if it's not there, set it now!
 			graceDate = await this.graceDate(); 
 		}
@@ -274,14 +273,16 @@ export class Licenser {
         case 0: // pro license
         case 2: // standard license
           return (idMail.toLowerCase() == licenseMail);
-        case 1: // domain matching 
+        case 1: { // domain matching 
           // only allow one *
-          if ((licenseMail.match(/\*/g)||[]).length != 1)
-              return false;
+          if ((licenseMail.match(/\*/g)||[]).length != 1) {
+            return false;
+          }
           // replace * => .*
           let r = new RegExp(licenseMail.replace("*",".*"));
           let t = r.test(idMail);
           return t;
+        }
       }
     }
     catch (ex) {
@@ -573,7 +574,7 @@ export class Licenser {
       timePassed = '[' + elapsed + ' ms]	 ';
       this.lastTime = endTime; // remember last time
     }
-    catch(e) {;}
+    catch {;}
     return end.getHours() + ':' + end.getMinutes() + ':' + end.getSeconds() + '.' + end.getMilliseconds() + '  ' + timePassed;
   }  
 }

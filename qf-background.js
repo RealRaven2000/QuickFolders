@@ -593,6 +593,297 @@ async function waitForMailTabsReady(timeoutMs = 5000) {
   }
 }
 
+async function main() {
+  await prefsReady;
+  const key = Preferences.get("LicenseKey") || "",
+    forceSecondaryIdentity =
+      (Preferences.get("licenser.forceSecondaryIdentity")) || false,
+    isDebug = await isDebugOn(),
+    isDebugLicenser =
+      (Preferences.get("debug.premium.licenser")) || false;
+
+  currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
+  await currentLicense.validate();
+
+  // All important stuff has been done.
+  // resolve all promises on the stack
+  if (isDebug) {
+    console.log("Finished setting up license startup code");
+  }
+  callbacks.forEach((callback) => callback());
+  startupFinished = true;
+
+  let msg_commands = [
+    "currentDeckUpdate",
+    "getLicenseInfo",
+    "copyFolderEntries",
+    "pasteFolderEntries",
+    "legacyAdvancedSearch", // new global one!
+    "showAboutConfig", // new global one!
+    "showLicenseDialog", // new global one!
+    "slideAlert",
+    "updateCategoryBox",
+    "updateFoldersUI",
+    "updateLicense",
+    "updateMainWindow",
+    "updateNavigationBar",
+    "updateQuickFoldersLabel",
+    "updateUserStyles",
+    "readCategories",
+    "storeCategories",
+    "pluralForm",
+    "readToolbarStatus",
+    "storeToolbarStatus",
+    "toggleNavigationBars",
+    "getLastLoadedTheme",
+    "storeLoadedTheme",
+    "stageThemeChange",
+  ];
+
+
+  // message listener - SELECTIVE!
+  // every message listener must have its unique set of messages (if it returns something)
+  messenger.runtime.onMessage.addListener((data, sender) => {
+    if (msg_commands.includes(data?.command)) {
+      return notificationHandler(data, sender); // the result of this is a Promise
+    }
+    // Future Work: command handler for tbkeys-lite!
+    switch (data.command) {
+      case "shortcut":
+        console.log("QuickFolders: Received shortcut:", { data, sender });
+        break;
+    }
+  });
+
+  messenger.runtime.onMessageExternal.addListener(async (message, _sender) => {
+    switch (message?.command) {
+      case "queryQuickFoldersLicense":
+        return {
+          status: currentLicense.info.status,
+          keyType: currentLicense.info.keyType,
+        };
+    }
+  });
+
+  messenger.WindowListener.registerChromeUrl([
+    ["content", "quickfolders", "chrome/content/"],
+    ["content", "quickfolders-skins", "chrome/content/skin/tb91/"],
+  ]);
+
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messenger.xhtml",
+    "chrome/content/scripts/qf-messenger.js"
+  );
+  // inject a separate script for current folder toolbar!
+  messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
+
+  messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
+
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messengercompose/messengercompose.xhtml",
+    "chrome/content/scripts/qf-composer.js"
+  );
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/SearchDialog.xhtml",
+    "chrome/content/scripts/qf-searchDialog.js"
+  );
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messageWindow.xhtml",
+    "chrome/content/scripts/qf-messageWindow.js"
+  );
+
+  // make sure session has loaded all tabs.
+  // [issue 598] 5000ms default
+  const to = Preferences.get("api.mailTabs.timeout");
+  // let [mailTab] = await browser.mailTabs.query({}); await browser.mailTabs.get(mailTab.id);
+  if (to > 0) {
+    if (await isDebug) {
+      console.log(`QuickFolders: Waiting ${to}ms for mailTabs to be ready...`);
+    }
+    await waitForMailTabsReady(to);
+  } else {
+    // [issue 598] used to get stuck in Bb:
+    if (isDebug) {
+      console.log("waiting for mailTabs.query()...");
+    }
+    let [mailTab] = await browser.mailTabs.query({});
+    if (isDebug) {
+      console.log(`Got [mailTab] retreiving current tab[${mailTab.id}]`);
+    }
+    await browser.mailTabs.get(mailTab.id);
+    if (isDebug) {
+      console.log("got tab");
+    }
+  }
+
+  /*
+   * Start listening for opened windows. Whenever a window is opened, the registered
+   * JS file is loaded. To prevent namespace collisions, the files are loaded into
+   * an object inside the global window. The name of that object can be specified via
+   * the parameter of startListening(). This object also contains an extension member.
+   */
+  messenger.WindowListener.startListening();
+
+  // [issue 296] Exchange account validation (supported since TB98)
+  messenger.accounts.onCreated.addListener(async (id, account) => {
+    if (currentLicense.info.status == "MailNotConfigured") {
+      // redo license validation!
+      if (isDebugLicenser) {
+        console.log("Account added, redoing license validation", id, account);
+      } // test
+      currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
+      await currentLicense.validate();
+      if (currentLicense.info.status != "MailNotConfigured") {
+        if (isDebugLicenser) {
+          console.log(
+            "notify experiment code of new license status: " + currentLicense.info.status
+          );
+        }
+        messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
+        messenger.NotifyTools.notifyExperiment({ event: "updateMainWindow", minimal: false });
+      }
+      if (isDebugLicenser) {
+        console.log("QF license info:", currentLicense.info);
+      } // test
+    } else {
+      if (isDebugLicenser) {
+        console.log("QF license state after adding account:", currentLicense.info);
+      }
+    }
+  });
+
+  function getOptionsPageURL() {
+    const optionsPageURL = browser.runtime.getURL("html/options.html");
+    return optionsPageURL;
+  }
+  function getExtensionRootURL() {
+    const extensionRootURL = browser.runtime.getURL("");
+    return extensionRootURL;
+  }
+  function onOptionsTabActivated() {
+    // tell experiment to make QuickFolders toolbar visible
+    if (isDebug) {
+      console.log("QuickFolders Options tab is displayed. Sending message to experimental code...");
+    }
+    messenger.Utilities.displayMainToolbar(true, true);
+  }
+
+  messenger.tabs.onActivated.addListener(async (activeInfo) => {
+    if (isDebug) {
+      console.log(activeInfo);
+    }
+    const theTab = await messenger.tabs.get(activeInfo.tabId);
+    if (!theTab?.url) {
+      return;
+    }
+    if (theTab.url.startsWith(getOptionsPageURL())) {
+      onOptionsTabActivated();
+    }
+  });
+
+  const checkTabStatus = async (tabId) => {
+    return new Promise((resolve) => {
+      let hasValidURL = false;
+      let hasCompleted = false;
+
+      const listener = async (updatedTabId, changeInfo, _tab) => {
+        if (updatedTabId !== tabId) {
+          return;
+        }
+
+        // Reload tab details
+        const updatedTab = await messenger.tabs.get(tabId);
+        const isRelevant = changeInfo?.url
+          ? changeInfo.url.startsWith(getExtensionRootURL())
+          : false;
+
+        if (changeInfo.url) {
+          if (!isRelevant) {
+            return;
+          }
+          if (isDebug) {
+            console.log(`🔄 Tab URL changed: ${updatedTab.url}`);
+          }
+          if (updatedTab.url.startsWith(getOptionsPageURL())) {
+            hasValidURL = true;
+          }
+        }
+
+        if (changeInfo.status === "complete") {
+          if (isDebug && isRelevant) {
+            console.log(`✅ Tab status changed to complete`);
+          }
+          hasCompleted = true;
+        }
+
+        // Resolve only when both conditions are met
+        if (hasValidURL && hasCompleted) {
+          if (isDebug) {
+            console.log(`🎯 Resolving promise for Tab ${tabId}: ${updatedTab.url}`);
+          }
+          messenger.tabs.onUpdated.removeListener(listener);
+          resolve(updatedTab.url); // return the full URL
+        }
+      };
+
+      messenger.tabs.onUpdated.addListener(listener);
+    });
+  };
+
+  messenger.tabs.onCreated.addListener(async (activeTab) => {
+    try {
+      if (isDebug) {
+        console.log("onCreated() - Initial tab:", activeTab);
+      }
+
+      // Wait for the URL to be set and tab to complete loading
+      const finalUrl = await checkTabStatus(activeTab.id);
+      if (isDebug) {
+        console.log(`Tab fully loaded with URL: ${finalUrl}`);
+      }
+
+      if (finalUrl.startsWith(getOptionsPageURL())) {
+        // [issue 557] this can also be triggered by the dialog!! causing toolbar to show in preview mode
+        // so it may affect the main window on the mail tab which we don't want...
+        const windows = await browser.windows.getAll();
+        const activeWin = windows.find((e) => e.id == activeTab.windowId);
+        if (activeWin && activeWin.type == "popup") {
+          return;
+        }
+        onOptionsTabActivated();
+      }
+    } catch (error) {
+      console.error("Error in tabs.onCreated listener:", error);
+    }
+  });
+
+  if (isDebug) {
+    console.log("QuickFolders: add toggle-foldertree command... ");
+  }
+
+  let toggleFolderLabel = messenger.i18n.getMessage("commands.toggleFolderTree");
+  await messenger.commands.update({ name: "toggle-foldertree", description: toggleFolderLabel });
+
+  messenger.commands.onCommand.addListener((command) => {
+    if (isDebug) {
+      console.log("command listener received", command);
+    }
+    switch (command) {
+      case "toggle-foldertree":
+        messenger.NotifyTools.notifyExperiment({ event: "toggleFolderTree" });
+        break;
+      case "focus-foldersbox":
+        messenger.NotifyTools.notifyExperiment({ event: "focusFoldersBox" });
+        break;
+    }
+  });
+
+  messenger.browserAction.onClicked.addListener((_tab, _info) => {
+    console.log("browserAction.click!");
+    messenger.Utilities.toggleToolbarAction(false);
+  });
+} // main
+
 
 async function notificationHandler(data) {
   await prefsReady;
@@ -984,296 +1275,6 @@ function registerNotifyListener() {
   });
 }
 
-async function main() {
-  await prefsReady;
-  const key = Preferences.get("LicenseKey") || "",
-    forceSecondaryIdentity =
-      (Preferences.get("licenser.forceSecondaryIdentity")) || false,
-    isDebug = await isDebugOn(),
-    isDebugLicenser =
-      (Preferences.get("debug.premium.licenser")) || false;
-
-  currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
-  await currentLicense.validate();
-
-  // All important stuff has been done.
-  // resolve all promises on the stack
-  if (isDebug) {
-    console.log("Finished setting up license startup code");
-  }
-  callbacks.forEach((callback) => callback());
-  startupFinished = true;
-
-  let msg_commands = [
-    "currentDeckUpdate",
-    "getLicenseInfo",
-    "copyFolderEntries",
-    "pasteFolderEntries",
-    "legacyAdvancedSearch", // new global one!
-    "showAboutConfig", // new global one!
-    "showLicenseDialog", // new global one!
-    "slideAlert",
-    "updateCategoryBox",
-    "updateFoldersUI",
-    "updateLicense",
-    "updateMainWindow",
-    "updateNavigationBar",
-    "updateQuickFoldersLabel",
-    "updateUserStyles",
-    "readCategories",
-    "storeCategories",
-    "pluralForm",
-    "readToolbarStatus",
-    "storeToolbarStatus",
-    "toggleNavigationBars",
-    "getLastLoadedTheme",
-    "storeLoadedTheme",
-    "stageThemeChange",
-  ];
-
-
-  // message listener - SELECTIVE!
-  // every message listener must have its unique set of messages (if it returns something)
-  messenger.runtime.onMessage.addListener((data, sender) => {
-    if (msg_commands.includes(data?.command)) {
-      return notificationHandler(data, sender); // the result of this is a Promise
-    }
-    // Future Work: command handler for tbkeys-lite!
-    switch (data.command) {
-      case "shortcut":
-        console.log("QuickFolders: Received shortcut:", { data, sender });
-        break;
-    }
-  });
-
-  messenger.runtime.onMessageExternal.addListener(async (message, _sender) => {
-    switch (message?.command) {
-      case "queryQuickFoldersLicense":
-        return {
-          status: currentLicense.info.status,
-          keyType: currentLicense.info.keyType,
-        };
-    }
-  });
-
-  messenger.WindowListener.registerChromeUrl([
-    ["content", "quickfolders", "chrome/content/"],
-    ["content", "quickfolders-skins", "chrome/content/skin/tb91/"],
-  ]);
-
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/messenger.xhtml",
-    "chrome/content/scripts/qf-messenger.js"
-  );
-  // inject a separate script for current folder toolbar!
-  messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
-
-  messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
-
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/messengercompose/messengercompose.xhtml",
-    "chrome/content/scripts/qf-composer.js"
-  );
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/SearchDialog.xhtml",
-    "chrome/content/scripts/qf-searchDialog.js"
-  );
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/messageWindow.xhtml",
-    "chrome/content/scripts/qf-messageWindow.js"
-  );
-
-  // make sure session has loaded all tabs.
-  // [issue 598] 5000ms default
-  const to = Preferences.get("api.mailTabs.timeout");
-  // let [mailTab] = await browser.mailTabs.query({}); await browser.mailTabs.get(mailTab.id);
-  if (to > 0) {
-    if (await isDebug) {
-      console.log(`QuickFolders: Waiting ${to}ms for mailTabs to be ready...`);
-    }
-    await waitForMailTabsReady(to);
-  } else {
-    // [issue 598] used to get stuck in Bb:
-    if (isDebug) {
-      console.log("waiting for mailTabs.query()...");
-    }
-    let [mailTab] = await browser.mailTabs.query({});
-    if (isDebug) {
-      console.log(`Got [mailTab] retreiving current tab[${mailTab.id}]`);
-    }
-    await browser.mailTabs.get(mailTab.id);
-    if (isDebug) {
-      console.log("got tab");
-    }
-  }
-
-  /*
-   * Start listening for opened windows. Whenever a window is opened, the registered
-   * JS file is loaded. To prevent namespace collisions, the files are loaded into
-   * an object inside the global window. The name of that object can be specified via
-   * the parameter of startListening(). This object also contains an extension member.
-   */
-  messenger.WindowListener.startListening();
-
-  // [issue 296] Exchange account validation (supported since TB98)
-  messenger.accounts.onCreated.addListener(async (id, account) => {
-    if (currentLicense.info.status == "MailNotConfigured") {
-      // redo license validation!
-      if (isDebugLicenser) {
-        console.log("Account added, redoing license validation", id, account);
-      } // test
-      currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
-      await currentLicense.validate();
-      if (currentLicense.info.status != "MailNotConfigured") {
-        if (isDebugLicenser) {
-          console.log(
-            "notify experiment code of new license status: " + currentLicense.info.status
-          );
-        }
-        messenger.NotifyTools.notifyExperiment({ licenseInfo: currentLicense.info });
-        messenger.NotifyTools.notifyExperiment({ event: "updateMainWindow", minimal: false });
-      }
-      if (isDebugLicenser) {
-        console.log("QF license info:", currentLicense.info);
-      } // test
-    } else {
-      if (isDebugLicenser) {
-        console.log("QF license state after adding account:", currentLicense.info);
-      }
-    }
-  });
-
-  function getOptionsPageURL() {
-    const optionsPageURL = browser.runtime.getURL("html/options.html");
-    return optionsPageURL;
-  }
-  function getExtensionRootURL() {
-    const extensionRootURL = browser.runtime.getURL("");
-    return extensionRootURL;
-  }
-  function onOptionsTabActivated() {
-    // tell experiment to make QuickFolders toolbar visible
-    if (isDebug) {
-      console.log("QuickFolders Options tab is displayed. Sending message to experimental code...");
-    }
-    messenger.Utilities.displayMainToolbar(true, true);
-  }
-
-  messenger.tabs.onActivated.addListener(async (activeInfo) => {
-    if (isDebug) {
-      console.log(activeInfo);
-    }
-    const theTab = await messenger.tabs.get(activeInfo.tabId);
-    if (!theTab?.url) {
-      return;
-    }
-    if (theTab.url.startsWith(getOptionsPageURL())) {
-      onOptionsTabActivated();
-    }
-  });
-
-  const checkTabStatus = async (tabId) => {
-    return new Promise((resolve) => {
-      let hasValidURL = false;
-      let hasCompleted = false;
-
-      const listener = async (updatedTabId, changeInfo, _tab) => {
-        if (updatedTabId !== tabId) {
-          return;
-        }
-
-        // Reload tab details
-        const updatedTab = await messenger.tabs.get(tabId);
-        const isRelevant = changeInfo?.url
-          ? changeInfo.url.startsWith(getExtensionRootURL())
-          : false;
-
-        if (changeInfo.url) {
-          if (!isRelevant) {
-            return;
-          }
-          if (isDebug) {
-            console.log(`🔄 Tab URL changed: ${updatedTab.url}`);
-          }
-          if (updatedTab.url.startsWith(getOptionsPageURL())) {
-            hasValidURL = true;
-          }
-        }
-
-        if (changeInfo.status === "complete") {
-          if (isDebug && isRelevant) {
-            console.log(`✅ Tab status changed to complete`);
-          }
-          hasCompleted = true;
-        }
-
-        // Resolve only when both conditions are met
-        if (hasValidURL && hasCompleted) {
-          if (isDebug) {
-            console.log(`🎯 Resolving promise for Tab ${tabId}: ${updatedTab.url}`);
-          }
-          messenger.tabs.onUpdated.removeListener(listener);
-          resolve(updatedTab.url); // return the full URL
-        }
-      };
-
-      messenger.tabs.onUpdated.addListener(listener);
-    });
-  };
-
-  messenger.tabs.onCreated.addListener(async (activeTab) => {
-    try {
-      if (isDebug) {
-        console.log("onCreated() - Initial tab:", activeTab);
-      }
-
-      // Wait for the URL to be set and tab to complete loading
-      const finalUrl = await checkTabStatus(activeTab.id);
-      if (isDebug) {
-        console.log(`Tab fully loaded with URL: ${finalUrl}`);
-      }
-
-      if (finalUrl.startsWith(getOptionsPageURL())) {
-        // [issue 557] this can also be triggered by the dialog!! causing toolbar to show in preview mode
-        // so it may affect the main window on the mail tab which we don't want...
-        const windows = await browser.windows.getAll();
-        const activeWin = windows.find((e) => e.id == activeTab.windowId);
-        if (activeWin && activeWin.type == "popup") {
-          return;
-        }
-        onOptionsTabActivated();
-      }
-    } catch (error) {
-      console.error("Error in tabs.onCreated listener:", error);
-    }
-  });
-
-  if (isDebug) {
-    console.log("QuickFolders: add toggle-foldertree command... ");
-  }
-
-  let toggleFolderLabel = messenger.i18n.getMessage("commands.toggleFolderTree");
-  await messenger.commands.update({ name: "toggle-foldertree", description: toggleFolderLabel });
-
-  messenger.commands.onCommand.addListener((command) => {
-    if (isDebug) {
-      console.log("command listener received", command);
-    }
-    switch (command) {
-      case "toggle-foldertree":
-        messenger.NotifyTools.notifyExperiment({ event: "toggleFolderTree" });
-        break;
-      case "focus-foldersbox":
-        messenger.NotifyTools.notifyExperiment({ event: "focusFoldersBox" });
-        break;
-    }
-  });
-
-  messenger.browserAction.onClicked.addListener((_tab, _info) => {
-    console.log("browserAction.click!");
-    messenger.Utilities.toggleToolbarAction(false);
-  });
-} // main
 
 registerNotifyListener();
 const prefsReady = Preferences.init(); // pending

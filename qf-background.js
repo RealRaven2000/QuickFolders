@@ -638,6 +638,11 @@ async function main() {
     "getLastLoadedTheme",
     "storeLoadedTheme",
     "stageThemeChange",
+    "setCachedPref",
+    "setCachedPrefSet",
+    "setCachedModel",
+    "requestPrefCache",
+    "openStorageEditor"
   ];
 
 
@@ -887,6 +892,13 @@ async function main() {
 
 async function notificationHandler(data) {
   await prefsReady;
+  if (Preferences.isDebug("notifications")) {
+    console.log(
+      `%cNotification handler of ${browser.runtime.getURL("")}`,
+      `color: rgb(248, 190, 103); background: rgb(76, 0, 38)`,
+      data
+    );
+  }
   let command = data.func || data.command;
   switch (command) {
     case "slideAlert":
@@ -1254,6 +1266,14 @@ async function notificationHandler(data) {
           folders: [...Preferences._model.folders],
         },
       };
+    case "openStorageEditor":
+      webExtensionStorageEditor.open({
+        storageArea: "local",
+        baseFilter: data.filter,
+        type: "popup",
+        showTopLevelKey: false,
+      });
+      break;
   }
 }
 

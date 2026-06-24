@@ -101,6 +101,7 @@ function sanitizeCSS(el) {
 var licenseInfo;
 async function initLicenseInfo() {
   licenseInfo = await browser.runtime.sendMessage({command:"getLicenseInfo"});
+  console.log("getLicenseInfo returned ", licenseInfo);
   if (!licenseInfo) {
     console.warn("initLicenseInfo() - getLicenseInfo: no response from background");
     return;
@@ -400,41 +401,41 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
   let filterConfig="", retVal=null;
   switch(dataPref) {
     case "showRecentTab":
-      filterConfig="quickfolders.recentfolders"; retVal=false;
+      filterConfig="recentfolders"; retVal=false;
       break;
     case "currentFolderBar.showRecentButton":
-      filterConfig="extensions.quickfolders.recentfolders"; retVal=false;
+      filterConfig="recentfolders"; retVal=false;
       break;
     case "currentFolderBar.navigation.showButtons":
-      filterConfig="quickfolders.currentFolderBar.navigation";
+      filterConfig="currentFolderBar.navigation";
       break;
     case "currentFolderBar.folderNavigation.showButtons":
-      // filterConfig="quickfolders.currentFolderBar.navigation";
+      // filterConfig="currentFolderBar.navigation";
       break;
     case "showQuickfoldersLabel":
-      filterConfig="extensions.quickfolders.textQuickfoldersLabel"; retVal=false;
+      filterConfig="textQuickfoldersLabel"; retVal=false;
       break;
     case "debug":
       // + options.toggleBoolPreference(chk,true); beforehand!
-      filterConfig="quickfolders.debug"; retVal=false;
+      filterConfig="debug"; retVal=false;
       break;
     case "toolbar.hideInSingleMessage":
-      filterConfig="quickfolders.toolbar"; retVal=true;
+      filterConfig="toolbar"; retVal=true;
       break;
     case "showQuickMove":
-      filterConfig="quickfolders.premium.findFolder.max"; retVal=false;
+      filterConfig="premium.findFolder.max"; retVal=false;
       break;
     case "bookmarks.showButton":
-      filterConfig="quickfolders.bookmarks"; retVal=false;
+      filterConfig="bookmarks"; retVal=false;
       break;
     case "folderMenu.dragToNew":
-      filterConfig="extensions.quickfolders.dragToCreateFolder"; retVal=false;
+      filterConfig="dragToCreateFolder"; retVal=false;
       break;
     case "quickMove.useHotkey":
-      filterConfig="quickfolders.quickMove"; retVal=false;
+      filterConfig="quickMove"; retVal=false;
       break;
     case "currentFolderBar.showFindRelated":
-      filterConfig="quickfolders.findRelated"; retVal=false;
+      filterConfig="findRelated"; retVal=false;
       break;
   }
   if (filterConfig) {
@@ -471,7 +472,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       }      
       // 
       switch(filterConfig) {
-        case "quickfolders.findRelated": {
+        case "findRelated": {
           const btn = document.querySelector("#QuickFolders-Options-Tabbox button[tabId='findRelated']");
           btn.click();
           break;
@@ -490,12 +491,17 @@ QuickFolders.Options.configureRelatedTab();
 async function dispatchAboutConfig(filter, readOnly, updateUI=false) {
   // we put the notification listener into quickfolders-tablistener.js - should only happen in ONE main window!
   // el - cannot be cloned! let's throw it away and get target of the event
+  /*
   browser.runtime.sendMessage({
     command: "showAboutConfig",
     filter: filter,
     readOnly: readOnly,
     updateUI: updateUI,
-  });
+  }); */
+  await messenger.runtime.sendMessage({
+    command: "openStorageEditor",
+    filter: filter,
+  });  
 }
 
 
@@ -691,7 +697,7 @@ document.getElementById("btnConfigureTooltips").addEventListener("click", () => 
   // oncommand="options.configureTooltips(this);return true;"
   // this calls:
   // QI.showAboutConfig(btn,           "extensions.quickfolders.tooltips", true, true);
-  dispatchAboutConfig("extensions.quickfolders.tooltips", true, true)
+  dispatchAboutConfig("tooltips", true, true)
   return true;
 });
 
@@ -799,7 +805,7 @@ async function loadPrefs() {
         console.error("Unexpected preference element", element);
       }
 
-      if (prefName === "extensions.quickfolders.style.theme") {
+      if (prefName === "style.theme") {
         continue;
       }
 
@@ -1086,10 +1092,9 @@ async function initButtons() {
 }
 
 async function initToolbarBackground() {
-const colBG = QuickFolders.Preferences.getStringPref("currentFolderBar.background.selection");
+  const colBG = QuickFolders.Preferences.getStringPref("currentFolderBar.background.selection");
   QuickFolders.Util.logDebug(`initToolbarBackground: setCurrentToolbarBackground(${colBG})...`);
-  QuickFolders.Options.setCurrentToolbarBackground(
-    colBG, false);  
+  QuickFolders.Options.setCurrentToolbarBackground(colBG, false);  
 }
 
 
@@ -1199,9 +1204,9 @@ const startup = async () => {
     ]); // substitution parameter
   supportLabel.textContent = supportString;  
 
-  await loadPrefs();
   // block for cache load!
   await QuickFolders.Preferences.ensureReady();
+  await loadPrefs();
   preselectTab();
   initVersionPanel();
 

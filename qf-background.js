@@ -194,9 +194,9 @@ messenger.runtime.onInstalled.addListener(async (data) => {
               });
             }
 
-          if (isUpgrade && !isSilent) {
-            messenger.LegacyPrefs.setPref(legacyPrefPath("hasNews"), true);
-          }
+            if (isUpgrade && !isSilent) {
+              await Preferences.set("hasNews", true);
+            }
 
             messenger.NotifyTools.notifyExperiment({ event: "updateQuickFoldersLabel" });
             if (isDebug) {

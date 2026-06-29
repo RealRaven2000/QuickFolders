@@ -3,9 +3,9 @@
     WL
 */
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders.js", window, "UTF-8");
+Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
-Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-util.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-interface.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-quickMove.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickmove-settings.js", window, "UTF-8");
@@ -52,7 +52,8 @@ function onUnload(isAddOnShutDown) {
 
 
 window.document.addEventListener('DOMContentLoaded', 
-  () => {
+  async () => {
+    await window.QuickFolders.Preferences.cache.awaitReady;
     window.QuickFolders.initSingleMsg(WL);
   }, 
   { once: true }

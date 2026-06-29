@@ -1,5 +1,5 @@
 export const Preferences = {
-  CURRENT_VERSION: 0.51,
+  CURRENT_VERSION: 0.52,
   Defaults: {
     // Model
     lastSelectedOptionsTab: 0,
@@ -380,7 +380,7 @@ export const Preferences = {
 
     Preferences._ready = true;
 
-    function applyChanges(target, changesObj, updates) {
+    function applyChanges(target, changesObj, updates, defaults) {
       // the structure is changes.settings.oldValue.key  [changes.debug.oldValue.key]
       // and              changes.settings.newValue.key  [changes.debug.newValue.key]
       const oldV = changesObj.oldValue || {};
@@ -389,7 +389,11 @@ export const Preferences = {
       for (const [key, val] of Object.entries(oldV)) {
         if (newV[key] === undefined) {
           delete target[key];
-          delete updates[key];
+          if (Object.prototype.hasOwnProperty.call(defaults, key)) {
+            updates[key] = defaults[key];
+          } else {
+            delete updates[key];
+          }
           continue;
         }
 
@@ -415,10 +419,10 @@ export const Preferences = {
         }
         const updates = {};
         if (changes.settings) {
-          applyChanges(Preferences._data, changes.settings, updates);
+          applyChanges(Preferences._data, changes.settings, updates, Preferences.Defaults);
         }
         if (changes.debug) {
-          applyChanges(Preferences._debugData, changes.debug, updates);
+          applyChanges(Preferences._debugData, changes.debug, updates, Preferences.DebugDefaults);
         }
         if (!Object.keys(updates).length) {
           return;
@@ -632,11 +636,15 @@ export const Preferences = {
       })
       .filter((e) => e !== null);
 
-    for (const key of [
+    const migrationKeys = [
       ...Object.keys(this.Defaults),
       ...Object.keys(this.DebugDefaults),
       ...specialValues,
-    ]) {
+     ]
+      .filter((key, index, arr) => arr.indexOf(key) === index)
+      .sort();
+
+    for (const key of migrationKeys) {
       const legacyKey = legacy_root + key;
 
       try {
@@ -649,7 +657,9 @@ export const Preferences = {
         const normalized = this._normalizeType(key, value);
 
         // ---- DEBUG SPLIT ----
-        if (key === "debug") {
+        // Legacy pref named "debug" becomes debugActive in the new debug object.
+        // There is never a legacy "debugActive" key, but this keeps the branch explicit.
+        if (key === "debug" || key === "debugActive") {
           migratedDebug.debugActive = normalized;
           continue;
         }

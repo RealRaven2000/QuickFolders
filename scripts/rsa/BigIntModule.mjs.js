@@ -36,9 +36,9 @@ export var BigIntModule = {
     
     logDebug: function logDebug(txt) {
       // from RSA.log
-      // quickFilters.Util.logDebugOptional('premium.rsa', txt);
-      if (this.isDebug)
+      if (this.isDebug) {
         console.log(txt);
+      }
     },
     
     reset: function reset() {
@@ -46,7 +46,7 @@ export var BigIntModule = {
     },
     
     init: function init(MaxDigits) {
-      if (this.initialised) return;
+      if (this.initialised) {return;}
       this.logDebug('BigInt.init(' + MaxDigits + ')');
       this.bitsPerDigit = this.biRadixBits;
       this.biRadix = 1 << 16; // = 2^16 = 65536

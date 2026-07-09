@@ -390,23 +390,6 @@ var Register = {
     window.close();
   },
 
-  /* obsolete form submission from code */
-  postForm: function postForm_obsolete() {
-    let url = "https://sites.fastspring.com/quickfolders/product/quickfolders?action=order",
-      oReq;
-
-    const XMLHttpRequest = Components.Constructor(
-      "@mozilla.org/xmlextras/xmlhttprequest;1",
-      "nsIXMLHttpRequest"
-    );
-    oReq = new XMLHttpRequest();
-    // oReq.onload = reqListener;
-    let formData = new FormData();
-    formData.append("submit", "purchase");
-    oReq.open("POST", url, true);
-    oReq.send(formData);
-  },
-
   premiumInfo: function premiumInfo(event) {
     QuickFolders.Util.openURL("https://quickfolders.org/premium.html", event);
   },

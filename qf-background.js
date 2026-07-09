@@ -7,10 +7,27 @@ import * as webExtensionStorageEditor from "./scripts/webExtensionStorageEditor.
 // bump this up to current version to create additional QuickFolders NEWS messages
 const LATEST_UPDATEMSG = "6.16.1";
 
-const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
+const QUICKFILTERS_ADDON_ID = "quickFilters@axelg.com";
 const ADDQUICKFOLDER_ID = "addQuickFolderTab";
 const TOGGLEICON_ID = "toggleQuickFoldersIcon";
 const REMOVEICON_ID = "removeQuickFoldersIcon";
+const QUICKFOLDERS_EXTERNAL_COMMANDS = [
+  {
+    functionName: "listExternalCommands",
+    description: "Returns the supported QuickFolders external commands.",
+    parameters: [],
+  },
+  {
+    functionName: "setAssistantMode",
+    description: "Sets QuickFolders assistant mode active state.",
+    parameters: [{ name: "active", description: "Boolean target state for assistant mode." }],
+  },
+  {
+    functionName: "setCurrentFolderFilterButton",
+    description: "Sets the current-folder filter button active state.",
+    parameters: [{ name: "active", description: "Boolean target state for the filter button." }],
+  },
+];
 
 var currentLicense;
 var startupFinished = false;
@@ -31,6 +48,254 @@ function logReceptionError(x) {
 async function isDebugOn() {
   return Preferences.isDebug() || false;
 }
+
+const ExternalMessageApi = {
+  _quickFiltersCapabilities: null,
+  async _queryQuickFiltersCapabilities() {
+    try {
+      const result = await messenger.runtime.sendMessage(QUICKFILTERS_ADDON_ID, {
+        command: "listExternalCommands",
+      });
+      const commands = Array.isArray(result?.commands)
+        ? result.commands
+            .map((entry) => entry?.functionName)
+            .filter((name) => typeof name === "string" && name.trim())
+        : [];
+
+      this._quickFiltersCapabilities = {
+        ok: true,
+        commands,
+        timestamp: Date.now(),
+      };
+      return this._quickFiltersCapabilities;
+    } catch {
+      this._quickFiltersCapabilities = {
+        ok: false,
+        commands: [],
+        timestamp: Date.now(),
+      };
+      return this._quickFiltersCapabilities;
+    }
+  },
+  async _hasQuickFiltersCommand(commandName) {
+    if (!this._quickFiltersCapabilities) {
+      await this._queryQuickFiltersCapabilities();
+    }
+
+    if (!this._quickFiltersCapabilities?.ok) {
+      return false;
+    }
+
+    return this._quickFiltersCapabilities.commands.includes(commandName);
+  },
+  async sendToQuickFilters(command, payload = {}, options = {}) {
+    const requireCapability = options?.requireCapability !== false;
+    const supported = await this._hasQuickFiltersCommand(command);
+
+    if (!supported) {
+      if (this._quickFiltersCapabilities?.ok) {
+        console.warn(
+          `[QuickFolders] quickFilters does not expose external command "${command}".`,
+          this._quickFiltersCapabilities.commands
+        );
+      }
+
+      if (requireCapability || this._quickFiltersCapabilities?.ok) {
+        return {
+          ok: false,
+          unavailable: true,
+          error: `${command} is not supported by quickFilters`,
+        };
+      }
+    }
+
+    try {
+      const result = await messenger.runtime.sendMessage(QUICKFILTERS_ADDON_ID, {
+        command,
+        ...payload,
+      });
+
+      if (typeof result === "object" && result) {
+        return result;
+      }
+
+      return {
+        ok: true,
+      };
+    } catch (ex) {
+      return {
+        ok: false,
+        unavailable: true,
+        error: ex?.message || `Failed to call quickFilters command: ${command}`,
+      };
+    }
+  },
+
+  getCatalog() {
+    return QUICKFOLDERS_EXTERNAL_COMMANDS;
+  },
+
+  getSupportedCommands() {
+    return this.getCatalog().map((command) => command.functionName);
+  },
+
+  hasCommand(commandName) {
+    return this.getSupportedCommands().includes(commandName);
+  },
+
+  success(extra = {}) {
+    return { ok: true, ...extra };
+  },
+
+  unavailable(error, extra = {}) {
+    return { ok: false, unavailable: true, error, ...extra };
+  },
+
+  error(error, extra = {}) {
+    return { ok: false, error, ...extra };
+  },
+
+  normalizeCommand(command) {
+    if (command === "setCurrentFolderFilterActive") {
+      return "setCurrentFolderFilterButton";
+    }
+    return command;
+  },
+
+  async dispatch(message, _sender) {
+    const command = this.normalizeCommand(message?.command);
+    const debug = await isDebugOn();
+
+    if (debug) {
+      console.log("QuickFolders external command received:", {
+        command,
+        payload: message,
+      });
+    }
+
+    try {
+      switch (command) {
+        case "listExternalCommands":
+          return this.success({ commands: this.getCatalog() });
+
+        case "queryQuickFoldersLicense":
+          return this.success({
+            license: {
+              status: currentLicense.info.status,
+              keyType: currentLicense.info.keyType,
+            },
+            status: currentLicense.info.status,
+            keyType: currentLicense.info.keyType,
+          });
+
+        case "setAssistantMode":
+          return this.setAssistantMode(message);
+
+        case "setCurrentFolderFilterButton":
+          return this.setCurrentFolderFilterButton(message);
+
+        default:
+          return this.unavailable(`Unsupported external command: ${message?.command || ""}`);
+      }
+    } catch (error) {
+      return this.error(error?.message || String(error));
+    }
+  },
+
+  async setAssistantMode(message) {
+    const active = message?.active;
+    const debug = await isDebugOn();
+
+    if (typeof active !== "boolean") {
+      if (debug) {
+        console.log("QuickFolders external command validation failed:", {
+          command: "setAssistantMode",
+          reason: "active must be boolean",
+          payload: message,
+        });
+      }
+      return this.error("active must be a boolean");
+    }
+
+    const applied = await messenger.NotifyTools.notifyExperiment({
+      event: "setAssistantModeFallback",
+      active,
+    });
+
+    if (!applied || typeof applied !== "object") {
+      if (debug) {
+        console.log("QuickFolders external command unavailable:", {
+          command: "setAssistantMode",
+          active,
+          reason: "No QuickFolders window listener responded",
+        });
+      }
+      return this.unavailable("QuickFolders interface unavailable.");
+    }
+
+    if (debug) {
+      console.log("QuickFolders external command applied:", {
+        command: "setAssistantMode",
+        active,
+        response: applied,
+      });
+    }
+
+    if (applied.ok === false) {
+      return applied;
+    }
+
+    return this.success({ active, changed: !!applied.changed });
+  },
+
+  async setCurrentFolderFilterButton(message) {
+    return this._notifyCurrentFolderButton(message?.active);
+  },
+
+  async _notifyCurrentFolderButton(active) {
+    const debug = await isDebugOn();
+
+    if (typeof active !== "boolean") {
+      if (debug) {
+        console.log("QuickFolders external command validation failed:", {
+          command: "setCurrentFolderFilterButton",
+          reason: "active must be boolean",
+          payload: { active },
+        });
+      }
+      return this.error("active must be a boolean");
+    }
+
+    const applied = await messenger.NotifyTools.notifyExperiment({
+      event: "setCurrentFolderFilterButton",
+      active,
+    });
+
+    if (!applied || typeof applied !== "object") {
+      if (debug) {
+        console.log("QuickFolders external command unavailable:", {
+          command: "setCurrentFolderFilterButton",
+          reason: "No QuickFolders window listener responded",
+        });
+      }
+      return this.unavailable("QuickFolders interface unavailable.");
+    }
+
+    if (debug) {
+      console.log("QuickFolders external command applied:", {
+        command: "setCurrentFolderFilterButton",
+        active,
+        response: applied,
+      });
+    }
+
+    if (applied.ok === false) {
+      return applied;
+    }
+
+    return this.success({ active, changed: !!applied.changed });
+  },
+};
 
 /* startupFinished: There is a general race condition between onInstall and our main() startup:
  * - onInstall needs to be registered upfront (otherwise we might miss it)
@@ -657,13 +922,7 @@ async function main() {
   });
 
   messenger.runtime.onMessageExternal.addListener(async (message, _sender) => {
-    switch (message?.command) {
-      case "queryQuickFoldersLicense":
-        return {
-          status: currentLicense.info.status,
-          keyType: currentLicense.info.keyType,
-        };
-    }
+    return ExternalMessageApi.dispatch(message, _sender);
   });
 
   messenger.WindowListener.registerChromeUrl([
@@ -929,6 +1188,65 @@ async function notificationHandler(data) {
     case "getAddonInfo":
       return messenger.management.getSelf();
 
+    case "getQuickFiltersPref": {
+      const key = data.key;
+      if (typeof key !== "string" || !key.trim()) {
+        return { ok: false, error: "key must be a non-empty string" };
+      }
+      const result = await ExternalMessageApi.sendToQuickFilters("getPref", { key });
+      if (typeof result === "boolean") {
+        return result;
+      }
+      if (typeof result?.value === "boolean") {
+        return result.value;
+      }
+      return result;
+    }
+
+    case "hasQuickFilters": {
+      const result = await ExternalMessageApi._queryQuickFiltersCapabilities();
+      return !!result?.ok;
+    }
+
+    case "isAssistantActive": {
+      const result = await ExternalMessageApi.sendToQuickFilters("isAssistantActive", {});
+      if (typeof result === "boolean") {
+        return result;
+      }
+      if (typeof result?.active === "boolean") {
+        return result.active;
+      }
+      if (typeof result?.value === "boolean") {
+        return result.value;
+      }
+      return result;
+    }
+
+    case "forwardAssistantMode": {
+      return await ExternalMessageApi.sendToQuickFilters(
+        "setAssistantMode",
+        {
+          active: !!data.active,
+        },
+        { requireCapability: false },
+      );
+    }
+
+    case "createFilterAsync": {
+      const result = await ExternalMessageApi.sendToQuickFilters(
+        "createFilter",
+        {
+          sourceFolderUri: data.sourceFolderUri || null,
+          targetFolderUri: data.targetFolderUri || null,
+          messageList: Array.isArray(data.messageList) ? data.messageList : [],
+          isCopy: !!data.isCopy,
+          isSlow: !!data.isSlow,
+        },
+        { requireCapability: false },
+      );
+      return result;
+    }
+
     case "updateQuickFoldersLabel":
       // Broadcast main windows to run updateQuickFoldersLabel
       messenger.NotifyTools.notifyExperiment({ event: "updateQuickFoldersLabel" });
@@ -1103,9 +1421,9 @@ async function notificationHandler(data) {
       messenger.runtime.sendMessage(message);
 
       messenger.NotifyTools.notifyExperiment({ event: "updateAllTabs" });
-      // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
+      // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_ADDON_ID) ) {
       messenger.runtime
-        .sendMessage(QUICKFILTERS_APPNAME, {
+        .sendMessage(QUICKFILTERS_ADDON_ID, {
           command: "updateQuickFoldersLicense",
           license: { status: currentLicense.info.status, keyType: currentLicense.info.keyType },
         })

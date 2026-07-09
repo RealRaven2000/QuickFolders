@@ -141,8 +141,7 @@ QuickFolders.quickMove = {
       // should return an array of message ids...
       if (messageIdList) {
         // ...which we should match before deleting our URIs?
-        // use new flag FilterModeLegacy to avoid multiple assistant triggers.
-        if (QuickFolders.FilterWorker.FilterMode && QuickFolders.FilterWorker.FilterModeLegacy) {
+    		if (QuickFolders.FilterWorker.AssistantActive) {
           let sourceFolder = origins.length ? origins[0] : null;
           for (let i = 0; i < origins.length; i++) {
             if (sourceFolder != origins[i]) {

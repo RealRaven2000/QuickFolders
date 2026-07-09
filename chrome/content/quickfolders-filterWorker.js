@@ -17,8 +17,15 @@
 QuickFolders.FilterWorker = {
 
   bundle: null,
-	FilterMode: false,
-  FilterModeLegacy: false,
+	AssistantActive: false,
+	get FilterMode() {
+		console.warn("[QuickFolders] {get} FilterWorker.FilterMode is deprecated. Use FilterWorker.AssistantActive instead.");
+		return this.AssistantActive;
+	},
+	set FilterMode(active) {
+		console.warn("[QuickFolders] {set}FilterWorker.FilterMode is deprecated. Use FilterWorker.AssistantActive instead.");
+		this.AssistantActive = !!active;
+	},
 	reRunCount: 0,  // avoid endless loop
 	TemplateSelected: null,
 	SelectedValue: '',
@@ -27,6 +34,50 @@ QuickFolders.FilterWorker = {
 	showMessage: async function (show) {
 		await QuickFolders.Preferences.setBoolPref("filters.showMessage", show);
 	} ,
+
+	// Resolve assistant activity via quickFilters bridge first, then fall back
+	// to QuickFolders local state when quickFilters is unavailable.
+	isAssistantActive: async function() {
+		const util = QuickFolders.Util;
+		if (util.notifyTools?.notifyBackground) {
+			try {
+				const response = await util.notifyTools.notifyBackground({
+					func: "isAssistantActive",
+				});
+				if (typeof response === "boolean") {
+					return response;
+				}
+				if (typeof response?.active === "boolean") {
+					return response.active;
+				}
+			} catch (ex) {
+				util.logDebugOptional("filters", "isAssistantActive() bridge lookup failed", ex);
+			}
+		}
+
+		return !!QuickFolders.FilterWorker.AssistantActive;
+	},
+
+	hasQuickFilters: async function() {
+		const util = QuickFolders.Util;
+		if (util.notifyTools?.notifyBackground) {
+			try {
+				const response = await util.notifyTools.notifyBackground({
+					func: "hasQuickFilters",
+				});
+				if (typeof response === "boolean") {
+					return response;
+				}
+				if (typeof response?.available === "boolean") {
+					return response.available;
+				}
+			} catch (ex) {
+				util.logDebugOptional("filters", "hasQuickFilters() bridge lookup failed", ex);
+			}
+		}
+    // fallback to checking for the quickFilters object in the window context
+		return typeof window.quickFilters !== 'undefined';
+	},
 	
   /** 
 	* toggles the filter mode so that dragging emails will
@@ -40,12 +91,11 @@ QuickFolders.FilterWorker = {
 			prefs = QuickFolders.Preferences,
 			notificationKey = "quickfolders-filter";          
     let notifyBox,
-			isQuickFilters = typeof window.quickFilters !== 'undefined';
+			isQuickFilters = await QuickFolders.FilterWorker.hasQuickFilters();
         
 		util.logDebugOptional ("filters", "toggle_FilterMode(" + active + ")");
 		
 		if (!isQuickFilters) { // if quickFilters is installed, we omit all notifications and leave it to that Add-on to handle
-      QuickFolders.FilterWorker.FilterModeLegacy = true;
       if (typeof specialTabs == 'object' && specialTabs.msgNotificationBar) { 
         notifyBox = specialTabs.msgNotificationBar;
       }
@@ -63,7 +113,7 @@ QuickFolders.FilterWorker = {
 			
 			if (active 
 				&& 
-				!QuickFolders.FilterWorker.FilterMode 
+				!QuickFolders.FilterWorker.AssistantActive 
 				&&
 				prefs.getBoolPref("filters.showMessage")) 
 			{
@@ -94,17 +144,9 @@ QuickFolders.FilterWorker = {
 					);
 				}
 			}
-		} else {
-      if (typeof window.quickFilters.isNewAssistantMode == 'undefined') {
-        QuickFolders.FilterWorker.FilterModeLegacy = true;
-      } else {
-        // setting this flag to false - avoids calling createFilter explicitely and leaves it to the 
-        // new MsgFolderListener.msgsMoveCopyCompleted handler...
-        QuickFolders.FilterWorker.FilterModeLegacy = !(window.quickFilters.isNewAssistantMode);
-      }      
-    }
+		}
 
-		QuickFolders.FilterWorker.FilterMode = active;
+		QuickFolders.FilterWorker.AssistantActive = active;
 		
     /* Configure Optional buttons on Toolbar */
 		QI.showElement(QI.CogWheelPopupButton, prefs.isShowToolIcon && !active);
@@ -131,16 +173,36 @@ QuickFolders.FilterWorker = {
 			
 		// sync with quickFilters
 		if (isQuickFilters) {
-			if (active != window.quickFilters.Worker.FilterMode) {
-				await window.quickFilters.Worker.toggleFilterMode(active);
-				if (!active && notifyBox) {
-					let item = notifyBox.getNotificationWithValue("quickFilters-filter");
-					if(item) {
-						notifyBox.removeNotification(item, true);
-					}
-				}
-			}
-		}
+      let handledByQuickFiltersListener = false;
+
+      // [issue 680] notify quickFilters listener in background script to set the filter mode
+      if (util.notifyTools?.notifyBackground) {
+        try {
+          const notifyResult = await util.notifyTools.notifyBackground({
+            func: "forwardAssistantMode",
+            active,
+            noFallback: true,
+          });
+          handledByQuickFiltersListener =
+            !!notifyResult && notifyResult.ok !== false && !notifyResult.unavailable;
+        } catch (ex) {
+          util.logException("toggle_FilterMode() notifyTools forwardAssistantMode failed.", ex);
+        }
+      }
+
+      // legacy side effect path
+      const assistantActive = await QuickFolders.FilterWorker.isAssistantActive();
+      // handledByQuickFiltersListener should be set by its new ExternalMessageApi [issue 373]
+      if (!handledByQuickFiltersListener && active != assistantActive) {
+        await window.quickFilters.Worker.toggleFilterMode(active);
+        if (!active && notifyBox) {
+          let item = notifyBox.getNotificationWithValue("quickFilters-filter");
+          if (item) {
+            notifyBox.removeNotification(item, true);
+          }
+        }
+      }
+    }
 	},
 	
   openFilterList: function (isRefresh, sourceFolder) {
@@ -315,7 +377,7 @@ QuickFolders.FilterWorker = {
 			return false;
 		}
 
-		if (!QuickFolders.FilterWorker.FilterMode) {
+		if (!QuickFolders.FilterWorker.AssistantActive) {
       return -2;
     }
     /************* MESSAGE PROCESSING  ********/
@@ -408,7 +470,7 @@ QuickFolders.FilterWorker = {
 							newFilter.appendTerm(searchTerm);
 							newFilter.appendTerm(searchTerm2);
               
-							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
+							if (await QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
 							  filterName += " - " + emailAddress;
 							}
 							break;
@@ -428,7 +490,7 @@ QuickFolders.FilterWorker = {
                   newFilter.appendTerm(searchTerm2);
                 }
               }
-							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
+							if (await QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
 								filterName += " - " + emailAddress;
 							}
 
@@ -448,7 +510,7 @@ QuickFolders.FilterWorker = {
 								str: topicFilter 
 							};
 							newFilter.appendTerm(searchTerm);
-							if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
+							if (await QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
 							  filterName += " - " + topicFilter;
 							}
 						}	break;
@@ -495,7 +557,7 @@ QuickFolders.FilterWorker = {
 							for (let i = msgKeyArray.length - 1; i >= 0; --i) {
 								searchTerm = createTerm(newFilter, Components.interfaces.nsMsgSearchAttrib.Keywords, Components.interfaces.nsMsgSearchOp.Contains, msgKeyArray[i]);
 								newFilter.appendTerm(searchTerm);
-								if (QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
+								if (await QuickFolders.Preferences.getFiltersBoolPref("naming.keyWord", false)) {
                   for (let ti=0; ti<tagArray.length; ti++) {
                     let tagInfo = tagArray[ti];
                     if (tagInfo.key === msgKeyArray[i])  {
@@ -510,7 +572,7 @@ QuickFolders.FilterWorker = {
 							return false;
 					}
 
-					if (QuickFolders.Preferences.getFiltersBoolPref("naming.parentFolder", true)) {
+					if (await QuickFolders.Preferences.getFiltersBoolPref("naming.parentFolder", true)) {
 						const pf = targetFolder?.parent;
 					  if (pf) {
               filterName = (pf.prettyName || pf.localizedName) + " - " + filterName;
@@ -559,12 +621,61 @@ QuickFolders.FilterWorker = {
 		}
 	} ,
 
-  // [legacy] direct call of filter creation - but only applies with quickFilters 5.6 and older
-  // where isNewAssistantMode is not defined (or false)
-  // going forward this will be handled by quickFilters.MsgFolderListener.msgsMoveCopyCompleted instead.
+	// Bridge-first call into quickFilters for modern assistant flow.
+	// Keep direct window object access as final fallback only.
 	createFilterAsync: async function (sourceFolder, targetFolder, messageList, isCopy, isSlow) {
     let util = QuickFolders.Util;
     util.logDebugOptional ("filters", "createFilterAsync()");
+		const asSerializableId = (entry) => {
+			if (typeof entry === "string" || typeof entry === "number") {
+				return entry;
+			}
+			if (!entry || typeof entry !== "object") {
+				return null;
+			}
+			if (typeof entry.messageId === "string" || typeof entry.messageId === "number") {
+				return entry.messageId;
+			}
+			if (typeof entry.id === "string" || typeof entry.id === "number") {
+				return entry.id;
+			}
+			console.warn("createFilterAsync() - messageList entry is not serializable:", entry);
+			return null;
+		};
+		const hasMessageList = Array.isArray(messageList);
+		const serializableMessageList = hasMessageList ? messageList.map(asSerializableId) : null;
+		const canBridgeMessageList =
+			hasMessageList &&
+			serializableMessageList.every((entry) => entry !== null && entry !== undefined);
+
+		// 1) Bridge-first path: ask background to forward to quickFilters.
+		if (util.notifyTools?.notifyBackground && canBridgeMessageList) {
+			try {
+				const bridgeResult = await util.notifyTools.notifyBackground({
+					func: "createFilterAsync",
+					sourceFolderUri: sourceFolder?.URI || null,
+					targetFolderUri: targetFolder?.URI || null,
+					messageList: serializableMessageList,
+					isCopy: !!isCopy,
+					isSlow: !!isSlow,
+				});
+
+				if (bridgeResult?.ok !== false && !bridgeResult?.unavailable) {
+					util.logDebugOptional("filters", "createFilterAsync() handled by quickFilters bridge.");
+					return;
+				}
+			} catch (ex) {
+				util.logException("createFilterAsync() bridge call failed.", ex);
+			}
+		}
+		else if (util.notifyTools?.notifyBackground && hasMessageList) {
+			util.logDebugOptional(
+				"filters",
+				"createFilterAsync() skipping bridge: messageList contains non-serializable entries.",
+			);
+		}
+
+		// 2) Legacy side effect path (final fallback only)
 		if (QuickFolders.win.quickFilters && QuickFolders.win.quickFilters.Worker) {
       try {
         util.logDebugOptional ("filters", "redirecting to quickFilters createFilterAsync()...");

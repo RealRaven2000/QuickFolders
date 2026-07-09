@@ -148,9 +148,22 @@ QuickFolders.TabListener = {
   },
 };
 
-QuickFolders.onGlobalQFCommand = (data) => {
+// global QuickFolders command handler
+QuickFolders.onGlobalQFCommand = async (data) => {
   if (data.event) {
     switch (data.event) {
+      case "setAssistantModeFallback": {
+        // legacy assistant from QuickFolders, if quickFilters Add-on not installed  / active
+        const active = data.active;
+        if (typeof active !== "boolean") {
+          return { ok: false, error: "active must be a boolean" };
+        }
+    		const changed = QuickFolders.FilterWorker.AssistantActive !== active;
+        if (changed) {
+          await QuickFolders.Interface.toggle_FilterMode(active);
+        }
+        return { ok: true, active, changed };
+      }
       case "showAboutConfig":
         QuickFolders.Interface.showAboutConfig(
           data.element,

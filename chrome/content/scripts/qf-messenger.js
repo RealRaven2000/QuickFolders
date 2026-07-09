@@ -536,7 +536,7 @@ async function onLoad(activatedWhileWindowOpen) {
       "QuickFolders-ToolbarPopup-options": () => QF.Interface.viewOptions(-1),
       "QuickFolders-ToolbarPopup-splash": () => QF.Interface.viewSplash(),
       "QuickFolders-ToolbarPopup-filterMode": () =>
-        QF.Interface.toggle_FilterMode(!QF.FilterWorker.FilterMode),
+        QF.Interface.toggle_FilterMode(!QF.FilterWorker.AssistantActive),
       "QuickFolders-ToolbarPopup-paintBucket": () => QF.Interface.togglePaintMode("toggle"),
       "QuickFolders-ToolbarPopup-changeOrder": () => QF.Interface.viewChangeOrder(),
       "QuickFolders-ToolbarPopup-support": () => QF.Interface.viewSupport(),

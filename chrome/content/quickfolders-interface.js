@@ -799,7 +799,7 @@ QuickFolders.Interface = {
     );
 		this.TimeoutID=0;
 
-		const showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
+    const showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.AssistantActive;
 
 		this.showElement(this.CogWheelPopupButton, showToolIcon && !this.PaintModeActive);
 		this.showElement(this.ReadingListButton, prefs.isShowReadingList);
@@ -1384,7 +1384,7 @@ QuickFolders.Interface = {
 			FCat = QuickFolders.FolderCategory,
 			model = QuickFolders.Model,
 			cat = this.CategoryMenu,
-			showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.FilterMode;
+      showToolIcon = prefs.isShowToolIcon && !QuickFolders.FilterWorker.AssistantActive;
 		if (!cat) {return;}
 
 		// don't show if ALWAYS and NEVER are the only ones that are references by tabs

@@ -182,7 +182,66 @@ async function notificationHandler(data) {
         }
       );
     } break;
+
+    case "setCurrentFolderFilterButton":
+      return setCurrentFolderButtonState(data.active, command);
+
+    case "setCurrentFolderFilterActive":
+      return setCurrentFolderButtonState(data.active, command);
   }
+}
+
+function externalResult(ok, extra = {}) {
+  return { ok, ...extra };
+}
+
+async function setCurrentFolderButtonState(active, commandName) {
+  const prefs = window.parent?.QuickFolders?.Preferences;
+  const normalizedActive = !!active;
+  const button = window.QuickFolders?.Interface?.CurrentFolderFilterToggleButton;
+
+  if (prefs?.isDebug) {
+    console.log("QuickFolders external command received:", {
+      command: commandName,
+      active: normalizedActive,
+      buttonPresent: !!button,
+    });
+  }
+
+  if (!button) {
+    return externalResult(false, {
+      unavailable: true,
+      error: "QuickFolders current-folder filter button unavailable.",
+    });
+  }
+
+  const currentMode = button.getAttribute("mode") === "filter";
+  if (currentMode === normalizedActive) {
+    if (prefs?.isDebug) {
+      console.log("QuickFolders external command applied:", {
+        command: commandName,
+        active: normalizedActive,
+        changed: false,
+      });
+    }
+    return externalResult(true, { active: normalizedActive, changed: false });
+  }
+
+  if (normalizedActive) {
+    button.setAttribute("mode", "filter");
+  } else {
+    button.removeAttribute("mode");
+  }
+
+  if (prefs?.isDebug) {
+    console.log("QuickFolders external command applied:", {
+      command: commandName,
+      active: normalizedActive,
+      changed: true,
+    });
+  }
+
+  return externalResult(true, { active: normalizedActive, changed: true });
 }
 
 
@@ -334,7 +393,7 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     <toolbarbutton id="QuickFolders-currentFolderFilterActive"
       class="icon"
       tooltiptext="__MSG_qf.tooltip.filterStart__"
-      oncommand="QuickFolders.Interface.toggle_FilterMode(!QuickFolders.FilterWorker.FilterMode);" />
+      oncommand="QuickFolders.Interface.toggle_FilterMode(!QuickFolders.FilterWorker.AssistantActive);" />
     <toolbarbutton id="QuickFolders-Options"
       class="icon"
       tooltiptext="__MSG_qf.menuitem.quickfolders.options__"

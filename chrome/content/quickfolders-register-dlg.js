@@ -25,7 +25,8 @@ var Register = {
           .replace(/\{link\}/g, "<a id='compLink' class='link'>")
           .replace(/\{\/link\}/g, "</a>") +
         "</label>";
-      const global = featureComparison?.documentGlobal || featureComparison?.ownerGlobal;
+      const global =
+        featureComparison?.documentGlobal || featureComparison?.ownerDocument?.defaultView;
       let e = global.MozXULElement.parseXULToFragment(htmlFragment);
 
       featureComparison.parentElement.insertBefore(e, featureComparison);

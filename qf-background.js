@@ -11,7 +11,6 @@ const QUICKFILTERS_APPNAME = "quickFilters@axelg.com";
 const ADDQUICKFOLDER_ID = "addQuickFolderTab";
 const TOGGLEICON_ID = "toggleQuickFoldersIcon";
 const REMOVEICON_ID = "removeQuickFoldersIcon";
-const LEGACY_SETTINGS_ROOT = "extensions.quickfolders.";
 
 var currentLicense;
 var startupFinished = false;
@@ -29,9 +28,6 @@ function logReceptionError(x) {
   }
 }
 
-function legacyPrefPath(setting) {
-  return LEGACY_SETTINGS_ROOT + setting;
-}
 async function isDebugOn() {
   return Preferences.isDebug() || false;
 }
@@ -253,7 +249,7 @@ function showInstalled() {
 
 async function filterMailsRegex(searchOptions, tabId = null) {
   const DEFAULT_BEHAVIOR = {
-    isSelectPrevious: Preferences.getPref("findRelated.behavior.selectPrevious"),
+    isSelectPrevious: Preferences.get("findRelated.behavior.selectPrevious"),
   };
 
   const group = searchOptions.group; // 0 for full match
@@ -1142,9 +1138,9 @@ async function notificationHandler(data) {
         let licenseStatus = currentLicense.info.status,
           licenseType = currentLicense.info.keyType;
         // require management permission to check if qF is installed
-        // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_APPNAME) ) {
+        // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_ADDON_ID) ) {
         messenger.runtime
-          .sendMessage(QUICKFILTERS_APPNAME, {
+          .sendMessage(QUICKFILTERS_ADDON_ID, {
             command: "injectButtonsQFNavigationBar",
             license: { status: licenseStatus, keyType: licenseType },
           })
@@ -1340,7 +1336,7 @@ const showQFmessage = async (messageIds, features, message = "", quickfoldersFea
         if (winRet.id) {
           try {
             await messenger.windows.remove(winRet.id);
-          } catch (_e) {
+          } catch {
             // Window already closed, ignore
           }
         }

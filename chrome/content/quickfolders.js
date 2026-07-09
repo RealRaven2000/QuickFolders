@@ -322,8 +322,17 @@ END LICENSE BLOCK */
     ## [issue 673] serious regression in v6.16.1 - messages window content area truncated at the top.
     ##             this was caused by alternative xhtml injector
 
-  6.16.3 QuickFolders Pro - WIP
+  6.16.3 QuickFolders Pro - 18/06/2026
     ## [issue 676] Thunderbird 152 - Go to next [unread] mail doesn't reset QuickFilters search
+
+  6.17 QuickFolders Pro - WIP
+    ## [issue 677] Convert storage from legacy preferences (about:config) to local storage (API compatible)
+    ## [issue 680]Remove legacy quickFilters integration via window.quickFilters side-effect
+ 
+
+
+
+
 	TO DO next
 	==========
     ## WIP: command handler for tbkeys-lite! see "shortcut" in qf-background.js
@@ -597,13 +606,12 @@ var QuickFolders = {
       }
 
       // [issue 397] Filter Assistant Auto-start not working with quickMove function
-      if (prefs.getFiltersBoolPref("autoStart", false) && typeof window.quickFilters == "object") {
-        // quickFilters started before QF and automatically started assistant mode
-        // but didn't toggle the QuickFolders assistant mode!
-        if (!QuickFolders.FilterWorker.FilterMode) {
-          if (window.quickFilters.Util.AssistantActive) {
-            await QuickFolders.FilterWorker.toggle_FilterMode(true);
-          }
+      // Keep this quickFilters-agnostic: preference is bridged via getFiltersBoolPref().
+      const autoStart = await prefs.getFiltersBoolPref("autoStart", false);
+      if (autoStart && !QuickFolders.FilterWorker.AssistantActive) {
+        const assistantActive = await QuickFolders.FilterWorker.isAssistantActive();
+        if (assistantActive) {
+          await QuickFolders.FilterWorker.toggle_FilterMode(true);
         }
       }
 
@@ -1351,7 +1359,7 @@ var QuickFolders = {
             isThread;
         util.logDebugOptional("dragToNew", step);
 
-        if (QFFW.FilterMode) {
+    		if (QFFW.AssistantActive) {
           sourceFolder = model.getMsgFolderFromUri(sourceURI, true);
           let virtual = util.isVirtual(sourceFolder);
           if (!sourceFolder || virtual) {
@@ -1364,7 +1372,7 @@ var QuickFolders = {
         let msgList = await util.moveMessages(newFolder, messageUriList, isCopy);
 
         // have the filter created with a delay so that filters can adapt to the new folder!!
-        if (QFFW.FilterMode && QFFW.FilterModeLegacy) {
+    		if (QFFW.AssistantActive) {
           // if user has quickFilters installed, use that instead!!
           await QFFW.createFilterAsync(sourceFolder, newFolder, msgList, isCopy, true);
         }
@@ -2137,10 +2145,7 @@ var QuickFolders = {
               messageUris,
               dragSession.dragAction === Ci.nsIDragService.DRAGDROP_ACTION_COPY,
             );
-            if (
-              QuickFolders.FilterWorker.FilterMode &&
-              QuickFolders.FilterWorker.FilterModeLegacy
-            ) {
+            if (QuickFolders.FilterWorker.AssistantActive) {
               lastAction =
                 `createFilterAsync(${
                 (sourceFolder.prettyName || sourceFolder.localizedName) }, ${

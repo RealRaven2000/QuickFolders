@@ -273,7 +273,7 @@ QuickFolders.Util = {
     if (!doc3) {
       return null;
     }
-    const win = doc3?.documentGlobal || doc3?.defaultView || doc3?.ownerGlobal;
+    const win = doc3?.documentGlobal || doc3?.defaultView;
 
     if (!win) {
       throw new Error("3pane window not accessible from document context");

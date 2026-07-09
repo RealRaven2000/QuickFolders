@@ -394,19 +394,31 @@ QuickFolders.Preferences = {
 
   // reading prefs across extensions will be forbidden, check:
   // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/runtime/onMessageExternal
-  getFiltersBoolPref: function (p, defaultV) {
-    // TO DO: convert this to get the setting from quickFilters directly
-    //        as we cannot assume that quickFilters stores in Legacy Prefs anymore
-    let ans;
+  async getFiltersBoolPref(p, defaultV) {
+    // Use quickFilters external bridge first, then fall back to legacy prefs.
     try {
-      ans = Services.prefs.getBoolPref("extensions.quickfilters." + p);
+      const response = await QuickFolders.Util.notifyTools.notifyBackground({
+        func: "getQuickFiltersPref",
+        key: p,
+      });
+      if (typeof response === "boolean") {
+        return response;
+      }
+      if (typeof response?.value === "boolean") {
+        return response.value;
+      }
+    } catch {
+      // fall back to legacy pref branch below
+    }
+
+    try {
+      return Services.prefs.getBoolPref("extensions.quickfilters." + p);
     } catch {
       QuickFolders.Util.logDebug(
         `getFiltersBoolPref(${p}) didn't retrieve a setting from quickFilters (probably this companion Add-on is not installed).\nDefaulting to ${defaultV}`
       );
-      ans = defaultV;
+      return defaultV;
     }
-    return ans;
   },
 
   getStringPref(p) {
@@ -418,7 +430,9 @@ QuickFolders.Preferences = {
   },
 
   getIntPref: function getIntPref(p) {
-    return QuickFolders.Preferences.cache.getValue(p);
+    const value = QuickFolders.Preferences.cache.getValue(p);
+    const numeric = parseInt(value, 10);
+    return Number.isFinite(numeric) ? numeric : 0;
   },
 
   async setIntPref(p, v) {

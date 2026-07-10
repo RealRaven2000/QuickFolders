@@ -1587,12 +1587,22 @@ async function notificationHandler(data) {
       return await Preferences.setModelFolders(data.folders || []);
     case "requestPrefCache":
       // sends cached data back to QuickFolders.Preferences.cache.updateFromBackend(data)
-      return {
-        prefs: Preferences._data,
-        model: {
-          folders: [...Preferences._model.folders],
-        },
-      };
+      {
+        // merge debug settings into prefs, mapping debugActive → "debug" for frontend compatibility
+        const debugDataForCache = {};
+        for (const [k, v] of Object.entries(Preferences._debugData || {})) {
+          debugDataForCache[k === "debugActive" ? "debug" : k] = v;
+        }
+        return {
+          prefs: {
+            ...Preferences._data,
+            ...debugDataForCache,
+          },
+          model: {
+            folders: [...Preferences._model.folders],
+          },
+        };
+      }
     case "openStorageEditor":
       webExtensionStorageEditor.open({
         storageArea: "local",

@@ -166,14 +166,18 @@ var PrefCache = {
     this._data.debug = debug.debug ?? debug;
   },
   get: function (key) {
-    if (key.startsWith("debug.")) {
-      return this._data.debug?.[key];
+    if (key.startsWith("debug")) {
+      // frontend key "debug" maps to "debugActive" in _debugData
+      const storageKey = key === "debug" ? "debugActive" : key;
+      return this._data.debug?.[storageKey];
     }
     return this._data.settings?.[key];
   },
   set: async function (key, val) {
-    if (key.startsWith("debug.")) {
-      this._data.debug[key] = val;
+    if (key.startsWith("debug")) {
+      // frontend key "debug" maps to "debugActive" in storage
+      const storageKey = key === "debug" ? "debugActive" : key;
+      this._data.debug[storageKey] = val;
       return browser.storage.local.set({
         debug: this._data.debug,
       });

@@ -313,6 +313,7 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
   }
   let dataPref = chk.getAttribute("data-pref-name").replace("extensions.quickfolders.","");
   switch (dataPref) {
+    case "debug":
     case "showShortcutNumber":
     case "showUnreadFoldersBold":
     case "showFoldersWithMessagesItalic":
@@ -399,43 +400,53 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
   /* RIGHTCLICK HANDLERS */
   // right-click show details from about:config
   let filterConfig="", retVal=null;
-  switch(dataPref) {
+  switch (dataPref) {
     case "showRecentTab":
-      filterConfig="recentfolders"; retVal=false;
+      filterConfig = "recentfolders";
+      retVal = false;
       break;
     case "currentFolderBar.showRecentButton":
-      filterConfig="recentfolders."; retVal=false;
+      filterConfig = "recentfolders.";
+      retVal = false;
       break;
     case "currentFolderBar.navigation.showButtons":
-      filterConfig="currentFolderBar.navigation";
+      filterConfig = "currentFolderBar.navigation";
       break;
     case "currentFolderBar.folderNavigation.showButtons":
       // filterConfig="currentFolderBar.navigation";
       break;
     case "showQuickfoldersLabel":
-      filterConfig="textQuickfoldersLabel"; retVal=false;
+      filterConfig = "textQuickfoldersLabel";
+      retVal = false;
       break;
     case "debug":
       // + options.toggleBoolPreference(chk,true); beforehand!
-      filterConfig="debug"; retVal=false;
+      filterConfig = "debug";
+      retVal = false;
       break;
     case "toolbar.hideInSingleMessage":
-      filterConfig="toolbar."; retVal=true;
+      filterConfig = "toolbar.";
+      retVal = true;
       break;
     case "showQuickMove":
-      filterConfig="premium.findFolder.max"; retVal=false;
+      filterConfig = "premium.findFolder.max";
+      retVal = false;
       break;
     case "bookmarks.showButton":
-      filterConfig="bookmarks"; retVal=false;
+      filterConfig = "bookmarks";
+      retVal = false;
       break;
     case "folderMenu.dragToNew":
-      filterConfig="dragToCreateFolder"; retVal=false;
+      filterConfig = "dragToCreateFolder";
+      retVal = false;
       break;
     case "quickMove.useHotkey":
-      filterConfig="quickMove"; retVal=false;
+      filterConfig = "quickMove";
+      retVal = false;
       break;
     case "currentFolderBar.showFindRelated":
-      filterConfig="findRelated"; retVal=false;
+      filterConfig = "findRelated";
+      retVal = false;
       break;
   }
   if (filterConfig) {

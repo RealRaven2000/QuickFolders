@@ -1453,8 +1453,12 @@ async function notificationHandler(data) {
 
     case "updateQuickFilters":
       {
+        const isDbg = await isDebugOn();
         let licenseStatus = currentLicense.info.status,
           licenseType = currentLicense.info.keyType;
+        if (isDbg) {
+          console.log("[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters", { licenseStatus, licenseType });
+        }
         // require management permission to check if qF is installed
         // if ( (await messenger.management.getAll()).find(({ id }) => id === QUICKFILTERS_ADDON_ID) ) {
         messenger.runtime
@@ -1462,7 +1466,16 @@ async function notificationHandler(data) {
             command: "injectButtonsQFNavigationBar",
             license: { status: licenseStatus, keyType: licenseType },
           })
-          .catch(logReceptionError);
+          .then((result) => {
+            if (isDbg) {
+              console.log("[QF background] injectButtonsQFNavigationBar response:", result);
+            }
+          })
+          .catch((ex) => {
+            if (!ex?.message?.includes("Receiving end does not exist.")) {
+              console.warn("[QF background] injectButtonsQFNavigationBar failed:", ex?.message || ex);
+            }
+          });
         // }
       }
       break;

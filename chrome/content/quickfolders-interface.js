@@ -1323,7 +1323,18 @@ QuickFolders.Interface = {
 		let containerSelector;
 		let threadPane;
 		let viewMode;
+    const debug3pane = QuickFolders.Preferences.isDebugOption("3pane");
 
+		if (debug3pane) {
+      console.log(
+        `[QF liftNavBar] navigationContainer: ${
+          navigationContainer
+            ? `FOUND, parent: #${navigationContainer.parentElement?.id || "?"}`
+            : "NULL — panel missing from DOM"
+        }`,
+        `content URL: ${contentDoc.URL}`
+      );
+    }
 
 		switch(contentDoc.URL) {
 			case "about:3pane": {
@@ -1336,6 +1347,13 @@ QuickFolders.Interface = {
 				} else if (clist.contains("layout-wide")) {
 					viewMode="wide";
 				}
+				if (debug3pane) {
+          const paneCount = contentDoc.querySelectorAll("#threadPane").length;
+          console.log(
+            `[QF liftNavBar] about:3pane — viewMode=${viewMode}, #threadPane count=${paneCount}, querySelector→parent=#${threadPane.parentElement?.id || threadPane.parentElement?.tagName || "?"}`
+          );
+        }
+        QuickFolders.Util.logDebugOptional("3pane", `liftNavigationbar() - viewMode=${viewMode}`, threadPane);
 				// interestingly layout is global, and not per tab.
 				// we need to create an event when this is switched.
 				switch (viewMode) {
@@ -1348,6 +1366,9 @@ QuickFolders.Interface = {
 						// BREAKS its functionality!
 						threadPane.prepend(navigationContainer);
 						break;
+				}
+				if (QuickFolders.Preferences.isDebug) {
+					console.log(`[QF liftNavBar] after move — panel parent: #${navigationContainer?.parentElement?.id || '?'}, panel===in threadPane: ${navigationContainer?.parentElement === threadPane}`);
 				}
 			} break;
 			case "about:message":
@@ -7378,7 +7399,7 @@ QuickFolders.Interface = {
         tabMode = tabInfo ? util.getTabMode(tabInfo) : this.CurrentTabMode,
         rect0 = currentFolderTab.getBoundingClientRect();
     // move current folder BAR up if necessary!
-    util.logDebugOptional("interface.currentFolderBar", `hoistCurrentFolderBar(tabMode: ${tabMode})`);
+    util.logDebugOptional("interface.currentFolderBar,3pane", `hoistCurrentFolderBar(tabMode: ${tabMode})`);
 
     if (!rect0.width && ["message", "folder", "3pane", "mail3PaneTab"].includes(tabMode))
     {

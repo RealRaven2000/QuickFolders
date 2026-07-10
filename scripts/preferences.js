@@ -281,7 +281,7 @@ export const Preferences = {
     "debug.folderTree.icons": false,
     "debug.folders": false,
     "debug.folders.select": false,
-    "debug.": false,
+    "debug.3pane": false,
     "debug.identities": false,
     "debug.interface": false,
     "debug.interface.buttonStyles": false,
@@ -464,6 +464,11 @@ export const Preferences = {
         }
         if (changes.debug) {
           applyChanges(Preferences._debugData, changes.debug, updates, Preferences.DebugDefaults);
+          // remap debugActive → "debug" for frontend cache key compatibility
+          if ("debugActive" in updates) {
+            updates["debug"] = updates["debugActive"];
+            delete updates["debugActive"];
+          }
         }
         if (!Object.keys(updates).length) {
           return;
@@ -542,12 +547,14 @@ export const Preferences = {
     Preferences._ensureReady({ reason: "set", key: name });
 
     if (name.startsWith("debug")) {
-      if (Preferences._debugData[name] === value) {
+      // frontend "debug" maps to the storage key "debugActive" in _debugData
+      const storageKey = name === "debug" ? "debugActive" : name;
+      if (Preferences._debugData[storageKey] === value) {
         return;
       }
-      Preferences._debugData[name] = value;
+      Preferences._debugData[storageKey] = value;
       const { debug } = await browser.storage.local.get({ debug: {} });
-      debug[name] = value;
+      debug[storageKey] = value;
       await browser.storage.local.set({ debug });
       return;
     }

@@ -2,14 +2,21 @@
  * This file is provided by the addon-developer-support repository at
  * https://github.com/thundernest/addon-developer-support
  *
- * Version 1.62
+ * Version 1.64
  *
- * Author: John Bieling (john@thunderbird.net)
+ * Authors (in alphabetical order by surname):
+ *   John Bieling (john@thunderbird.net)
+ *   Axel Grude (axel.grude@gmail.com)
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
+
+
+/*
+  1.64 removed dependencies on anything before Thunderbird 140
+*/
 
 // Import some things we need.
 var { AppConstants } = ChromeUtils.importESModule("resource://gre/modules/AppConstants.sys.mjs");
@@ -536,17 +543,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
 
         // Add helper function to inject CSS to WLDATA object
         window[this.uniqueRandomID].WL.injectCSS = function (cssFile) {
-          let element;
-          let v = parseInt(Services.appinfo.version.split(".").shift());
-
-          // using createElementNS in TB78 delays the insert process and hides any security violation errors
-          if (v > 68) {
-            element = window.document.createElement("link");
-          } else {
-            let ns = window.document.documentElement.lookupNamespaceURI("html");
-            element = window.document.createElementNS(ns, "link");
-          }
-
+          let element = window.document.createElement("link");
           element.setAttribute("wlapi_autoinjected", uniqueRandomID);
           element.setAttribute("rel", "stylesheet");
           element.setAttribute("href", cssFile);

@@ -255,6 +255,7 @@ export const Preferences = {
   },
   DebugDefaults: {
     debugActive: false, // was "debug"
+    "debug.3pane": false,
     "debug.assistant": false,
     "debug.assistant.ui": false,
     "debug.accessibility": false,
@@ -281,7 +282,6 @@ export const Preferences = {
     "debug.folderTree.icons": false,
     "debug.folders": false,
     "debug.folders.select": false,
-    "debug.3pane": false,
     "debug.identities": false,
     "debug.interface": false,
     "debug.interface.buttonStyles": false,

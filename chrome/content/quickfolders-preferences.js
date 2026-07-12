@@ -484,6 +484,13 @@ QuickFolders.Preferences = {
 };
 
 QuickFolders.Preferences.cache = (() => {
+  const debugCache = false;
+  const logDebug = (...args) => {
+    if (!debugCache) {
+      return;
+    }
+    console.log("Preferences Cache:", ...args);
+  };
   const cache = {
     _data: {},
     _model: { folders: []},
@@ -542,13 +549,13 @@ QuickFolders.Preferences.cache = (() => {
       });
 
       try {
-        console.log("Preferences Cache - notifyTools:", QuickFolders.Util?.notifyTools);
+        logDebug(" - notifyTools:", QuickFolders.Util?.notifyTools);
         const {prefs, model} = await QuickFolders.Util.notifyTools.notifyBackground({
           func: "requestPrefCache",
         });
         cache._model.folders = [...(model?.folders || [])];
-        console.log("Received preferences Cache:", prefs);
-        console.log("Received model / folders:", cache._model);
+        logDebug("Received preferences:", prefs);
+        logDebug("Received model / folders:", cache._model);
         
         // remove all old data
         Object.keys(cache._data).forEach((k) => delete cache._data[k]);

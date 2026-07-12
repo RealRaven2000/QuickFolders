@@ -2189,7 +2189,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L}{b class=maintenance}6.16.3{/b} Fixed: Thunderbird 152 had a regression not resetting the quick search field when clicking go to next unread mail after using the '{+findRelated.btn.label}' function. [issue 676]{/L}{L}{b class=maintenance}6.16.2{/b} We fixed a serious regression in v6.16.1 where the messages  window content area was cut off at the top [issue 673]. You may have to restart Thunderbird to see this fix fully working.{/L}{L}Added compatibility for Thunderbird 152.{/L}{L}Set minimum supported Thunderbird version to 140 to avoid deprecated API issues.{/L}{L}Fixed: quickJump search box can lose focus on macOS Tahoe 26.4 [issue 658].{/L}{L}Fixed: Drag & Drop in subfolders menu on macOS Tahoe 26.4 [issue 659].{/L}{L}Fixed: Settings window could leave current folder label in a stuck state [issue 666].{/L}{L}Fixed: Unstyled buttons in v6.15 registration dialog (Extend / Renew license) [issue 660].{/L}{L}Created a new GitHub default branch aligned with ESR140.{/L}"
+    "message": "{L}{+extensionName} is now compatible with Thunderbird 154.{/L}{L}Removed legacy quickFilters integration via window.quickFilters side-effect [issue 680].{/L}{L}Converted storage from legacy preferences (about:config) to local storage API [issue 677].{/L}{L}Simplified WindowListener by removing pre Thunderbird 140 compatibility code.{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",

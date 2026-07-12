@@ -25,7 +25,7 @@ Object.defineProperty(QuickFolders, "MainQuickFolders",
 	return mail3PaneWindow.QuickFolders;
 } } );
 
-var { MailServices } =ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
+var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
 
 
 	// -------------------------------------------------------------------

@@ -45,7 +45,7 @@ const QFInjector = {
         background: "#05588b",
         fontWeight: "bold",
       };
-      util.logHighlight("[QuickFolders 3pane]", format, ...args);
+      util.logHighlight("[QuickFolders Navigation Bar]", format, ...args);
     };
 
     if (debug) {
@@ -60,7 +60,9 @@ const QFInjector = {
     var { ExtensionParent } = ChromeUtils.importESModule(
       "resource://gre/modules/ExtensionParent.sys.mjs"
     );
+    logDebug("WL after ExtensionParent import", typeof WL);
     const extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
+    logDebug("WL after getExtension", typeof WL);
 
     // Primary: real WL path
     if (WL?.injectElements) {
@@ -78,7 +80,7 @@ const QFInjector = {
         );
       }
 
-      return null;
+      return true; // WL path does not return the injected element, so we return true to indicate success
     }
 
     // Fallback: minimal safe DOM injection
@@ -91,7 +93,7 @@ const QFInjector = {
       const root = frag.firstElementChild;
       if (!root) {
         console.warn("injectElements: empty XUL fragment");
-        return null;
+        return false;
       }
       logDebug(
         `QFInjector.injectElements (fallback): root id=${root.id}, children=${root.childElementCount}`
@@ -132,8 +134,7 @@ const QFInjector = {
           } else {
             ref.parentNode.insertBefore(frag, ref);
           }
-
-          return target;
+          return true;
         }
       }
 
@@ -149,7 +150,7 @@ const QFInjector = {
           `QFInjector.injectElements: CASE 2 - appending new <${root.tagName} id="${root.id}"> to documentElement`
         );
         doc.documentElement.appendChild(root);
-        return root;
+        return true;
       }
       // CASE 1: WL-style injection (existing node → recurse only)
       logDebug(
@@ -174,10 +175,10 @@ const QFInjector = {
         target.append(c);
       });
 
-      return root;
+      return true;
     } catch (e) {
       console.error("injectElements: XUL parse failed", e);
-      return null;
+      return false;
     }
   },
 
@@ -373,7 +374,7 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     const debug = prefs?.isDebug;
     const isDebug3pane = prefs.isDebugOption("3pane");
 
-    const logDebug3pane = (...args) => {
+    const logDebugNavBar = (...args) => {
       if (!isDebug3pane) { return; }
       if (!debug) { return;}
       const format = {
@@ -381,8 +382,14 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
         background: "#05588b",
         fontWeight: "bold",
       };
-      util.logHighlight("[QuickFolders 3pane]", format, ...args);
+      util.logHighlight("[QuickFolders Navigation Bar]", format, ...args);
     };
+    const checkDuplicateThreadPanes = (label) => {
+      const panes = contentDoc.querySelectorAll("#threadPane");
+      if (panes.length !== 1) {
+        logDebugNavBar(`${label}: unexpected number of #threadPane elements: ${panes.length}`);
+      }
+    }
     
     win.QuickFolders.Util.logDebug(
       `============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`
@@ -512,154 +519,62 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
   <span flex="5" id="QF-CurrentRightSpacer"> </span>
 </hbox>`;
 
+
     switch (contentDoc.URL) {
       case "about:3pane": // inject into thread pane (bottom)
         {
-          if (isDebug3pane) {
-            // contentDoc.getElementById("threadPane");
-            const existingPane = await QFInjector.waitForElement(contentDoc, "#threadPane", 15000, logDebug3pane);
-            logDebug3pane(
-              `[QuickFolders 3pane] about:3pane PRE-inject: threadPane ${existingPane ? `EXISTS (childCount=${existingPane.childElementCount})` : "NOT FOUND"}`
+          const existingPane = await QFInjector.waitForElement(
+            contentDoc,
+            "#threadPane",
+            15000,
+            logDebugNavBar
+          );
+          logDebugNavBar(
+            `[QuickFolders 3pane] about:3pane PRE-inject: threadPane ${existingPane ? `EXISTS (childCount=${existingPane.childElementCount})` : "NOT FOUND"}`
+          );
+          if (existingPane) {
+            logDebugNavBar(
+              "[QuickFolders 3pane] about:3pane threadPane children:",
+              [...existingPane.children]
+                .map((c) => `${c.tagName}#${c.id || "(no id)"}`)
+                .join(", ")
             );
-            if (existingPane) {
-              logDebug3pane(
-                "[QuickFolders 3pane] about:3pane threadPane children:",
-                [...existingPane.children]
-                  .map((c) => `${c.tagName}#${c.id || "(no id)"}`)
-                  .join(", ")
-              );
-            }
           }
-          const el = QFInjector.injectElements(`<div id="threadPane">${INJECTED_ELEMENTS}</div>`);
+          const result = QFInjector.injectElements(`<div id="threadPane">${INJECTED_ELEMENTS}</div>`);
           windowMode = "";
-          logDebug3pane("about:3pane - injected", el);
-
-          // helper: walk up and return id chain (used in repair logging)
-          function ancestorChain(node) {
-            const parts = [];
-            let cur = node;
-            while (cur && cur !== contentDoc.documentElement) {
-              parts.push(cur.id ? `${cur.tagName}#${cur.id}` : cur.tagName);
-              cur = cur.parentElement;
-            }
-            return parts.join(' > ');
-          }
-
-          // Always runs: detect duplicate #threadPane elements, move QF panel to the
-          // native one, and remove the stray container if it is empty afterwards.
-          function repairDuplicateThreadPanes(label) {
-            const allPanes = [...contentDoc.querySelectorAll("#threadPane")];
-            if (allPanes.length <= 1) {
-              if (allPanes.length === 0) {
-                if (isDebug3pane) {
-                  logDebug3pane(` ${label}: #threadPane NOT FOUND in DOM`);
-                }
-                return;
-              }
-              // Single pane: check whether it looks like a stray overlay-created pane.
-              // QFInjector CASE 2 appends to documentElement, so a stray pane's parent is <html>.
-              const pane = allPanes[0];
-              const isDirectChildOfRoot = pane.parentElement === contentDoc.documentElement;
-              const hasOnlyQFPanel =
-                pane.childElementCount === 1 &&
-                !!pane.querySelector("#QuickFolders-PreviewToolbarPanel");
-              if (isDebug3pane) {
-                if (isDirectChildOfRoot || hasOnlyQFPanel) {
-                  logDebug3pane(
-                    ` ${label}: WARN — single #threadPane looks like QF stray` +
-                      ` (parent=${pane.parentElement?.tagName || "none"}, childCount=${pane.childElementCount},` +
-                      ` hasOnlyQFPanel=${hasOnlyQFPanel}) — native TB pane may not exist yet`
-                  );
-                } else {
-                  logDebug3pane(
-                    ` ${label}: #threadPane count OK (1),` +
-                      ` parent=${pane.parentElement?.id || pane.parentElement?.tagName || "unknown"}`
-                  );
-                }
-              }
-              return;
-            }
-            // Multiple panes: identify the native one (parent != documentElement) and the stray one (parent == documentElement).
-            if (isDebug3pane) {
-              logDebug3pane(
-                `${label}: unexpected #threadPane count=${allPanes.length} — attempting repair...`
-              );
-              allPanes.forEach((pane, i) => {
-                const hasPanel = !!pane.querySelector("#QuickFolders-PreviewToolbarPanel");
-                logDebug3pane(
-                  `  [${i}] ancestors: ${ancestorChain(pane)} | hasQFPanel: ${hasPanel} | childCount: ${pane.childElementCount}`
-                );
-              });
-            }
-            const qfPanel = contentDoc.getElementById("QuickFolders-PreviewToolbarPanel");
-            if (!qfPanel) {
-              return;
-            }
-            // The stray pane is a direct child of documentElement (created by QFInjector CASE 2).
-            // The native TB pane has a proper parent inside the layout (e.g. #paneLayout).
-            // Do NOT use qfPanel containment — WL correctly injects into the native pane,
-            // so "contains qfPanel" would misidentify it as the stray.
-            const strayPane = allPanes.find((p) => p.parentElement === contentDoc.documentElement);
-            const nativePanes = allPanes.filter(
-              (p) => p.parentElement !== contentDoc.documentElement
-            );
-            if (nativePanes.length !== 1 || !strayPane) {
-              logDebug3pane(`${label}: repair — could not uniquely identify panes`);
-              return;
-            }
-            const nativePane = nativePanes[0];
-
-            logDebug3pane(
-              ` ${label}: repair — moving #QuickFolders-PreviewToolbarPanel into native #threadPane (parent: ${nativePane.parentElement?.id || nativePane.parentElement?.tagName}, was in: ${qfPanel.parentElement?.id || '?'})`
-            );
-            nativePane.appendChild(qfPanel);
-            if (strayPane.childElementCount === 0) {
-              logDebug3pane(` ${label}: repair — stray #threadPane is now empty, removing...`);
-              strayPane.remove();
-            } else {
-              const children = [...strayPane.children]
-                .map((el) => `${el.tagName}${el.id ? "#" + el.id : ""}`)
-                .join(", ");
-
-              logDebug3pane(
-                ` ${label}: repair — stray #threadPane still has ${strayPane.childElementCount} child(ren), leaving in place:` +
-                  ` [${children}]`
-              );
-            }
-          }
-
-          repairDuplicateThreadPanes('POST-inject (immediate)');
-          // delayed re-check catches duplicates that appear after TB finishes its own DOM setup
-          window.setTimeout(() => repairDuplicateThreadPanes('POST-inject (delayed 2s)'), 2000);
-
-          if (isDebug3pane) {
-            const panel = contentDoc.getElementById('QuickFolders-PreviewToolbarPanel');
-            const postPane = contentDoc.getElementById('threadPane');
-            logDebug3pane(` about:3pane POST-repair: threadPane ${postPane ? `EXISTS (childCount=${postPane.childElementCount})` : 'NOT FOUND'}, panel parent: ${panel?.parentElement?.id || '(none)'}`);
-          }
+          logDebugNavBar(`about:3pane - injection result: ${result}`, result);
+          checkDuplicateThreadPanes("POST-inject");
         }
         break;
       case "about:message": // inject into messagepane (on top)
-        QFInjector.injectElements(`<vbox id="messagepanebox">${INJECTED_ELEMENTS}</vbox>`);
-        if (window.parent.document.URL.endsWith("messageWindow.xhtml")) {
-          // single message windows get a reduced set of commands:
-          windowMode = "messageWindow";
-          let ft = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
-          if (ft) {
-            // remove obsolete navigation elements!
-            let navs = ft.querySelectorAll(".qf_navigation");
-            for (let navElement of navs) {
-              navElement.remove();
+        {
+          const msgPane = await QFInjector.waitForElement(contentDoc,"#messagepanebox", 1500, logDebugNavBar);
+          if (!msgPane) {
+            logDebugNavBar("[QuickFolders about:message] before injecting Current Folder Toolbar: #messagepanebox not found");
+          }
+          const result = QFInjector.injectElements(
+            `<vbox id="messagepanebox">${INJECTED_ELEMENTS}</vbox>`
+          );
+          logDebugNavBar(`about:message - injection result: ${result}`, result);
+          if (window.parent.document.URL.endsWith("messageWindow.xhtml")) {
+            // single message windows get a reduced set of commands:
+            windowMode = "messageWindow";
+            let ft = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
+            if (ft) {
+              // remove obsolete navigation elements!
+              let navs = ft.querySelectorAll(".qf_navigation");
+              for (let navElement of navs) {
+                navElement.remove();
+              }
             }
+            let fa = contentDoc.getElementById("QuickFolders-currentFolderFilterActive");
+            if (fa) {
+              fa.remove();
+            }
+          } else {
+            windowMode = "singleMailTab";
           }
-          let fa = contentDoc.getElementById("QuickFolders-currentFolderFilterActive");
-          if (fa) {
-            fa.remove();
-          }
-        } else {
-          windowMode = "singleMailTab";
         }
-
         break;
     }
     // when to set windowMode = "messageWindow" ??

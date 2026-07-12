@@ -168,6 +168,10 @@ b.maintenance {
   text-decoration: underline;
 }
 
+a.issue {
+  white-space: nowrap;
+}
+
 .importantInfo a.issue:hover {
   background-color: lightyellow;
   color:rgba(115, 3, 85, 0.9);

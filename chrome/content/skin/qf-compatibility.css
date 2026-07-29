@@ -175,6 +175,7 @@ button.active::marker {
 #QuickFolders-Options-Tabbox li button:active:hover {
   fill: var(--activecolor);
   color: var(--activecolor) !important;
+  background-color: var(--button-active-background-color, rgb(0, 79, 132)) !important;
 }
 
 #QuickFolders-Panels {

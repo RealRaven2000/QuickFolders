@@ -74,6 +74,26 @@ QuickFolders.Preferences = {
             e.name = f.prettyName || f.localizedName;
           }
         }
+        if (Object.prototype.hasOwnProperty.call(e, "separatorBefore")) {
+          if (e.separatorBefore === true) {
+            e.separatorBefore = 1;
+          } else if (e.separatorBefore === false) {
+            delete e.separatorBefore;
+          } else if (typeof e.separatorBefore === "string") {
+            const parsed = Number(e.separatorBefore);
+            if (Number.isFinite(parsed) && parsed > 0) {
+              e.separatorBefore = parsed;
+            } else {
+              delete e.separatorBefore;
+            }
+          } else if (typeof e.separatorBefore === "number") {
+            if (e.separatorBefore > 0) {
+              // keep the existing numeric value as-is
+            } else {
+              delete e.separatorBefore;
+            }
+          }
+        }
         // when loading, reset the disabled Validation!
         if (e.disableValidation) {
           let swap = entries[i];
@@ -298,6 +318,12 @@ QuickFolders.Preferences = {
 
   get maxSubjectLength() {
     return this.getIntPref("menuMessageList.maxSubjectLength");
+  },
+
+  get separatorWidthUnit() {
+    const raw = this.getStringPref("separatorWidthUnit");
+    const numeric = parseFloat(raw);
+    return Number.isFinite(numeric) ? numeric : 1.2;
   },
 
   get ColoredTabStyle() {

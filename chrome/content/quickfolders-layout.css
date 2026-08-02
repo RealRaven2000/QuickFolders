@@ -1094,7 +1094,8 @@ menuitem.cmd[tag="qfBreakDel"] {
     stroke-opacity: 1;
 }
 menuitem.cmd[tag="qfSeparator"],
-menuitem.cmd[tag="qfSeparatorDel"] {
+menuitem.cmd[tag="qfSeparatorDel"],
+menuitem.cmd[tag="qfAdjustSeparator"] {
     list-style-image: url("chrome://quickfolders/content/skin/ico/separator.svg") !important;
     -moz-context-properties: fill, stroke, stroke-opacity;
     stroke: red;

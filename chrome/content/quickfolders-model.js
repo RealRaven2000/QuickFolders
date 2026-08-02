@@ -252,15 +252,26 @@ QuickFolders.Model = {
 
   setTabSeparator: function (entry, isSpace) {
     if(entry) {
-      // add class "spaced" with .spaced { margin-left: 2em;}
-      if (isSpace) {
+      let separatorValue = 0;
+      const parsedValue =
+        typeof isSpace === "number"
+          ? isSpace
+          : typeof isSpace === "string"
+            ? Number(isSpace)
+            : isSpace
+              ? 1
+              : 0;
+      if (Number.isFinite(parsedValue) && parsedValue > 0) {
+        separatorValue = parsedValue;
+      }
+
+      if (separatorValue > 0) {
         if (!QuickFolders.Util.hasValidLicense() || QuickFolders.Util.hasStandardLicense()) {
           QuickFolders.Util.popupRestrictedFeature("tabSeparator");
           return;
         }
-        entry.separatorBefore = true;
-      }
-      else {
+        entry.separatorBefore = separatorValue;
+      } else {
         delete entry.separatorBefore;
       }
       this.update();

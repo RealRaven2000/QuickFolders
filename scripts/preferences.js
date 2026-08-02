@@ -201,6 +201,7 @@ export const Preferences = {
     // COMMAND MENU
     "commandMenu.options": true,
     "commandMenu.separator": true,
+    "separatorWidthUnit": 0.8,
     "commandMenu.CTRL": false,
     "commandMenu.lineBreak": true,
     "commandMenu.icon": false,

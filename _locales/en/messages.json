@@ -1880,6 +1880,14 @@
   "qfRemoveSeparator": {
     "message": "Remove Separator"
   },
+  "qfAdjustSeparator": {
+    "message": "Adjust separator width ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfRenameBookmark": {
     "message": "Rename tab…"
   },

@@ -763,7 +763,7 @@ async function savePref(event) {
 		} 
     else {
       let v = isNaN(target.value) ? target.value : parseInt(target.value, 10);
-			await QuickFolders.Preferences.setIntPref(prefName, prefName, v);
+			await QuickFolders.Preferences.setIntPref(prefName, v);
 		}
 	} else if (target instanceof HTMLTextAreaElement) {
     await QuickFolders.Preferences.setStringPref(prefName, target.value);

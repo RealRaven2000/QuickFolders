@@ -151,19 +151,32 @@ var PrefCache = {
     settings: {},
     debug: {},
   },
+  async syncFromStorage() {
+    const storage = await browser.storage.local.get({ settings: {}, debug: {} });
+    this._data.settings = storage.settings ?? {};
+    this._data.debug = storage.debug ?? {};
+  },
   init: async function () {
-		const debug = await browser.storage.local.get("debug");
-    const isDebug = debug.debugActive || false;
+    await this.syncFromStorage();
+    const isDebug = this._data.debug?.debugActive || false;
     if (isDebug) {
-      console.log("debug:", debug);
+      console.log("debug:", this._data.debug);
     }
-    const settings = await browser.storage.local.get("settings");
     if (isDebug) {
-      console.log("settings:", settings);
+      console.log("settings:", this._data.settings);
     }
 
-    this._data.settings = settings.settings ?? settings;
-    this._data.debug = debug.debug ?? debug;
+    browser.storage.onChanged.addListener((changes, area) => {
+      if (area !== "local") {
+        return;
+      }
+      if (changes.settings) {
+        this._data.settings = changes.settings.newValue ?? {};
+      }
+      if (changes.debug) {
+        this._data.debug = changes.debug.newValue ?? {};
+      }
+    });
   },
   get: function (key) {
     if (key.startsWith("debug")) {
@@ -174,16 +187,26 @@ var PrefCache = {
     return this._data.settings?.[key];
   },
   set: async function (key, val) {
+    await this.syncFromStorage();
     if (key.startsWith("debug")) {
       // frontend key "debug" maps to "debugActive" in storage
       const storageKey = key === "debug" ? "debugActive" : key;
-      this._data.debug[storageKey] = val;
+      const nextDebug = {
+        ...(this._data.debug ?? {}),
+        [storageKey]: val,
+      };
+      this._data.debug = nextDebug;
       return browser.storage.local.set({
-        debug: this._data.debug,
+        debug: nextDebug,
       });
-    }    
-    this._data.settings[key] = val;
-    return browser.storage.local.set({ settings: this._data.settings });
+    }
+
+    const nextSettings = {
+      ...(this._data.settings ?? {}),
+      [key]: val,
+    };
+    this._data.settings = nextSettings;
+    return browser.storage.local.set({ settings: nextSettings });
   },
   isDebug: function () {
     return !!this._data.debug?.debugActive;

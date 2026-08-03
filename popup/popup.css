@@ -87,6 +87,13 @@ code.keystroke {
   background-color: rgb(80,75,60) !important;
 }
 
+code:not(.keystroke) {
+  display: inline-block;
+  font-family: Consolas, 'Courier New', Geneva, sans-serif;
+  font-size: 10pt !important;
+  padding: 2px 4px;
+}
+
 
 .actionlinks {
   margin-top: 2em;

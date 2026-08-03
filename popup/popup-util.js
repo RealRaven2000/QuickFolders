@@ -203,6 +203,7 @@ function formatAll(txt) {
     .replace(/\[issue (\d*)\]/g, "<a class=issue no=$1 href='#'>[issue $1]</a>")
     .replace(/\[(.)\]/g, "<code class='keystroke'>$1</code>")
     .replace(/\[(F\d*)\]/g, "<code class='keystroke'>$1</code>")
-    .replace(/\[(CTRL|ALT)\]/g, "<code class='keystroke'>$1</code>");
+    .replace(/\[(CTRL|ALT)\]/g, "<code class='keystroke'>$1</code>")
+    .replace(/\{code\}(.*?)\{\/code\}/g, "<code>$1</code>");
   return localizedMsg;
 }

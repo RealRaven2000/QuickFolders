@@ -676,7 +676,7 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     );
 
     this.notifyTools.setAddOnId("quickfolders@curious.be");
-    this.notifyTools.addListener((data) => {
+    this.notifyListenerId = this.notifyTools.addListener((data) => {
       return notificationHandler(data);
     });
     window.QuickFolders_notifyToolsLoaded = true;
@@ -723,6 +723,7 @@ function onUnload(isAddOnShutown) {
   removeBtn('quickfilters-current-searchfilterbutton');
 
   window.removeEventListener("windowlwthemeupdate", globalThemehandler);  
+  this.notifyTools.removeListener(this.notifyListenerId);
   globalThemehandler = null;
 }
 // store a global reference for manual calling:

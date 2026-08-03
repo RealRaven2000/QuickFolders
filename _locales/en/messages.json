@@ -2197,7 +2197,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L}{+extensionName} is now compatible with Thunderbird 154.{/L}{L}Removed legacy quickFilters integration via window.quickFilters side-effect [issue 680].{/L}{L}Converted storage from legacy preferences (about:config) to local storage API [issue 677].{/L}{L}Simplified WindowListener by removing pre Thunderbird 140 compatibility code.{/L}"
+    "message": "{L} {+extensionName} is now compatible with Thunderbird 154.{/L}{L} Converted storage from legacy preferences ({code}about:config{/code}) to local storage API [issue 677]. This guards against future removal of legacy preference access for add-ons. {br}{emph}Note:{/emph} settings can now be reset to defaults by uninstalling the add-on — back up your settings first using {b}{+qf.storeConfig}{/b} under {italic}{+qf.backupAndRestore}{/italic} on the {italic}{+qf.tab.gopro}{/italic} page.{/L}{L} Made width of tab separators adjustable. [issue 686]{/L}{L} Improved compatibility with future Thunderbird versions by removing direct access to the quickFilters add-on object [issue 680].{/L}{L} Fixed: messages window content area truncated at the top [issue 673] — caused when quickFilters injected its buttons into the current folder bar. {emph}Requires quickFilters 6.13.1 or later.{/emph}{/L}{L} Fixed: quickMove [=] shortcut to open recent folders menu [issue 687].{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This particular fix was added since the previous release.",

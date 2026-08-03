@@ -5,41 +5,29 @@ No immediate action is required. QuickFolders continues to work on both Release 
 
 Users who rely on advanced or experimental functionality may prefer the ESR channel for a more stable environment with fewer platform changes. The recommended migration point from Release to ESR is Thunderbird 153, expected in July 2026.
 
-<b>Release 6.16.3 - Maintenance update</b>
-<ul>
-  <li>Set max version to 153.* for supporting the upcoming  ESR channel.</li>
-  <li>Fixed: Thunderbird 152 had a regression not resetting the quick search field when clicking go to next unread mail after using the 'Find related mails' function. <a href="https://github.com/RealRaven2000/QuickFolders/issues/676">[issue 676]</a></li>
+<b>Improvements</b>
 
+<ul>
+  <li>QuickFolders is now compatible with Thunderbird 154.</li>
+  <li>Made width of tab separators adjustable. <a href="https://github.com/RealRaven2000/QuickFolders/issues/686">[issue 686]</a></li>
+  <li>Improved compatibility with future Thunderbird versions by removing direct access to the QuickFolders add-on object. <a href="https://github.com/RealRaven2000/QuickFolders/issues/680">[issue 680]</a></li>
+  <li>Converted storage from legacy preferences (<tok>about:config</tok>) to local storage API. <a href="https://github.com/RealRaven2000/QuickFolders/issues/677">[issue 677]</a> 
+    
+  Settings can now be reset to defaults by uninstalling the add-on — back up your settings first using <b>Store Configuration</b> under <b>Backup and Restore</b>.</li>
 </ul>
 
-
-<b>Release 6.16.2 - Maintenance update</b>
-
-We fixed a serious regression in v6.12.1 where the messages  window content area was cut off at the top. You may have to restart Thunderbird to see this fix fully working. <a href="https://github.com/RealRaven2000/QuickFolders/issues/673">[issue 673]</a>
-
-
-<b>Improvements - 6.12.1</b>
+<b>Bug Fixes</b>
 
 <ul>
-  <li>Set minimum supported Thunderbird version to 140 to avoid issues with deprecated APIs and align with modern Thunderbird releases <a href="https://github.com/RealRaven2000/QuickFolders/issues/664">[issue 664]</a>.</li>
-  <li>Added compatibility for Thunderbird 152.</li>
-</ul>
-
-<b>Bug Fixes - 6.12.1</b>
-
-<ul>
-  <li>quickJump search box could lose focus on macOS Tahoe 26.4 <a href="https://github.com/RealRaven2000/QuickFolders/issues/658">[issue 658]</a>.</li>
-  <li>Drag & Drop in subfolders menu broken on macOS Tahoe 26.4 <a href="https://github.com/RealRaven2000/QuickFolders/issues/659">[issue 659]</a>.</li>
-  <li>Settings window could leave current folder label in a stuck state <a href="https://github.com/RealRaven2000/QuickFolders/issues/666">[issue 666]</a>.</li>
-  <li>Unstyled buttons in v6.15 registration dialog (Extend / Renew license) <a href="https://github.com/RealRaven2000/QuickFolders/issues/660">[issue 660]</a>.</li>
+  <li>Fixed: messages window content area truncated at the top. <a href="https://github.com/RealRaven2000/QuickFolders/issues/673">[issue 673]</a></li>
+  <li>Fixed: quickMove shortcut to open recent folders menu. <a href="https://github.com/RealRaven2000/QuickFolders/issues/687">[issue 687]</a></li>
 </ul>
 
 <b>Miscellaneous</b>
 
 <ul>
-  <li>Created new GitHub default branch aligned with ESR140 for upcoming Thunderbird 140+ development track.</li>
+  <li> Simplified WindowListener by removing pre 140 compatibility code.</li>
 </ul>
-
 
 
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.

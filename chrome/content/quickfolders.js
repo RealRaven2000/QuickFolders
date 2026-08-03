@@ -326,11 +326,13 @@ END LICENSE BLOCK */
     ## [issue 676] Thunderbird 152 - Go to next [unread] mail doesn't reset QuickFilters search
 
   6.17 QuickFolders Pro - WIP
-    ## [issue 677] Convert storage from legacy preferences (about:config) to local storage (API compatible)
-    ## [issue 680]Remove legacy quickFilters integration via window.quickFilters side-effect
- 
-
-
+    ## Compatibility with Thunderbird 154
+    ## [issue 677] Converted storage from legacy preferences (about:config) to local storage (API compatible)
+    ## [issue 686] Adjustable width of tab separators 
+    ## [issue 680] Removed legacy quickFilters integration via window.quickFilters side-effect
+    ## [issue 673] Fixed: serious regression in v6.16.1 - messages window content area truncated at the top.
+    ## Simplified WindowListener by removing pre 140 compatibility code
+    ## [issue 687] WIP: quickMove "=" shortcut to open recent folders menu no longer working
 
 
 	TO DO next

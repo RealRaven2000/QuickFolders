@@ -343,8 +343,11 @@ QuickFolders.Interface = {
       isUnifiedFolder : false
     };
 		this.addSubFoldersPopupFromList(FoldersArray, menupopup, options, doc);
-		util.logDebugOptional("recentFolders","=============================\n"
-			+ "createRecentPopup Finished!");
+		util.logDebugOptional(
+      "recentFolders,popupmenus",
+      "=============================\n" +
+        `createRecentPopup Finished! folders=${FoldersArray.length}, child nodes=${menupopup.children.length}, popupId=${popupId}`
+    );
       
     if (isProfiling) {
       let time = util.stopWatch("all","createRecentPopup");
@@ -2734,7 +2737,35 @@ QuickFolders.Interface = {
 			p.targetNode = button;
 
 			let verticalOffset = QI.verticalMenuOffset; 
+      const debugFormat = { color: "rgb(245, 255, 167)", background: "rgb(9, 107, 19)" };
+      const isDebug = QuickFolders.Preferences.isDebugOption("popupmenus");
+      if (isDebug) {
+        const r = button.getBoundingClientRect();
+        const win = button?.ownerDocument?.defaultView;
+        const w = win?.innerWidth ?? "?";
+        const h = win?.innerHeight ?? "?";
+
+        util.logHighlight(
+          "popupmenus",
+          debugFormat,
+          " ==== POPUP GEOMETRY ====\n" +
+            `anchor ${button.id}: x=${r.x}, y=${r.y}, w=${r.width}, h=${r.height}\n` +
+            `right=${r.right}, bottom=${r.bottom}, window=${w}x${h}\n` +
+            `hidden=${button.hidden}, collapsed=${button.collapsed}\n` +
+            `vertical offset=${verticalOffset}`
+        );
+      }
 			p.openPopup(button, "after_start", 0, verticalOffset, true, false, evt);
+      if (isDebug) {
+        setTimeout(() => {
+          let pr = p.getBoundingClientRect();
+          util.logHighlight(
+            "popupmenus",
+            debugFormat,
+            `POPUP AFTER OPEN: x=${pr.x}, y=${pr.y}, w=${pr.width}, h=${pr.height}, state=${p.state}`
+          );
+        }, 50);
+      }
 		}
 
     // Alt+Down highlight the first folder
@@ -8042,7 +8073,7 @@ QuickFolders.Interface = {
         prefs = QuickFolders.Preferences,
         inactiveGradientColor = null,
 		    inactiveBackground = util.getSystemColor(prefs.getUserStyle("InactiveTab","background-color","ButtonFace")),
-		    inactiveColor = util.getSystemColor(prefs.getUserStyle("InactiveTab","color","black")),
+		    inactiveColor = util.getSystemColor(prefs.getUserStyle("InactiveTab","color","buttontext")),
 		    paletteClass = this.getPaletteClassCss("InactiveTab");
 
     // only plastic & pastel support striped style:
@@ -8196,7 +8227,7 @@ QuickFolders.Interface = {
 
       // =================
       // FONT COLORS
-      let theColorString = prefs.getUserStyle("InactiveTab", "color", "black"),
+      let theColorString = prefs.getUserStyle("InactiveTab", "color", "buttontext"),
         colActiveBG = prefs.getUserStyle("ActiveTab", "background-color", "Highlight"),
         btnSelector = ".quickfolders-flat toolbarbutton";
 
@@ -9386,9 +9417,7 @@ QuickFolders.Interface = {
     
     let w = mediator.getMostRecentWindow(name), win;
     if (clickedElement) {
-      win = (clickedElement && clickedElement.ownerDocument && clickedElement.ownerDocument.defaultView)
-          ? clickedElement.ownerDocument.defaultView 
-          : window; // parent window
+      win = clickedElement?.ownerDocument?.defaultView || window; // parent window
     }
     else {
       // how to get last options.html window?

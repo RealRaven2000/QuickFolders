@@ -903,7 +903,8 @@ async function main() {
     "setCachedPrefSet",
     "setCachedModel",
     "requestPrefCache",
-    "openStorageEditor"
+    "openStorageEditor",
+    "deleteUserStyle"
   ];
 
 
@@ -1583,6 +1584,32 @@ async function notificationHandler(data) {
     case "setCachedPrefSet":
       await Preferences.setMultiple(data.prefs);
       return true;
+
+    case "deleteUserStyle":
+      {
+        const isDebug = Preferences.get("debug.css");
+        const logDebug = (...args) => {
+          if (!isDebug) { return; }
+          console.log("[CSS]", ...args);
+        };
+        logDebug("deleteUserStyle message received:", data);
+        
+        const styleKey = "style." + data.styleId + "." + data.styleType;
+        logDebug("Deleting preference:", styleKey);
+
+        const { settings } = await browser.storage.local.get({ settings: {} });
+        logDebug("Before delete - preference exists?", styleKey in settings);
+
+        delete settings[styleKey];
+        logDebug("After delete - preference exists?", styleKey in settings);
+        
+        await browser.storage.local.set({ settings });
+        // Also update the in-memory cache
+        delete Preferences._data[styleKey];
+        logDebug("Preference deletion complete");
+        return true;
+      }
+
     case "setCachedModel":
       return await Preferences.setModelFolders(data.folders || []);
     case "requestPrefCache":

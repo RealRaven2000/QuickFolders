@@ -56,11 +56,26 @@ QuickFolders.Options = {
   },
 
   setDefaultColors: function () {
-    let util = QuickFolders.Util,
-      highlightColor = util.getSystemColor("Highlight"),
-      highlightTextColor = util.getSystemColor("HighlightText"),
-      buttonfaceColor = util.getSystemColor("buttonface"),
-      buttontextColor = util.getSystemColor("buttontext"),
+    let util = QuickFolders.Util;
+    const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    
+    // Fallback colors based on theme preference; system colors are unreliable in modern Thunderbird
+    const fallbacks = isDarkMode ? {
+      highlight: "#0060E0",
+      highlightText: "#FFFFFF",
+      buttonface: "#2B2B2B",
+      buttontext: "#F0F0F0"
+    } : {
+      highlight: "#0078D4",
+      highlightText: "#FFFFFF",
+      buttonface: "#F0F0F0",
+      buttontext: "#000000"
+    };
+
+    let highlightColor = util.getSystemColor("Highlight") || fallbacks.highlight,
+      highlightTextColor = util.getSystemColor("HighlightText") || fallbacks.highlightText,
+      buttonfaceColor = util.getSystemColor("buttonface") || fallbacks.buttonface,
+      buttontextColor = util.getSystemColor("buttontext") || fallbacks.buttontext,
       getElement = document.getElementById.bind(document);
 
     // helper function as we don't use pref listeners here
@@ -258,6 +273,127 @@ QuickFolders.Options = {
     this.preparePreviewTab("dragover-colorpicker", "style.DragOver.", "dragovertabs-label");
   },
 
+  getPreviewElementIdForTabState: function (tabState) {
+    switch (tabState) {
+      case "InactiveTab":
+        return "inactivetabs-label";
+      case "ActiveTab":
+        return "activetabs-label";
+      case "HoveredTab":
+        return "hoveredtabs-label";
+      case "DragOver":
+        return "dragovertabs-label";
+      default:
+        return null;
+    }
+  },
+
+  updateColorPickersForPalette: async function (tabState, paletteEntryElement) {
+    const isDebug = QuickFolders.Preferences.PrefCache.get("debug.css");
+    const logDebug = (...args) => { 
+      if (!isDebug) { return; }
+      console.log("[CSS]", ...args);
+    };
+    
+    if (!paletteEntryElement) {
+      logDebug("No palette entry element provided");
+      return null;
+    }
+
+    // Extract styles from the clicked palette entry element (which has CSS colors applied)
+    const computed = window.getComputedStyle(paletteEntryElement);
+    const bgColor = computed.backgroundColor;
+    const fontColor = computed.color;
+
+    logDebug("Extracting from clicked palette entry:", paletteEntryElement);
+    logDebug("Extracted colors from palette entry:", { bgColor, fontColor });
+
+    // Map tab state to color picker IDs
+    let bgPickerId, fontColorPickerId;
+    switch (tabState) {
+      case "InactiveTab":
+        bgPickerId = "inactive-colorpicker";
+        fontColorPickerId = "inactive-fontcolorpicker";
+        break;
+      case "ActiveTab":
+        bgPickerId = "activetab-colorpicker";
+        fontColorPickerId = "activetab-fontcolorpicker";
+        break;
+      case "HoveredTab":
+        bgPickerId = "hover-colorpicker";
+        fontColorPickerId = "hover-fontcolorpicker";
+        break;
+      case "DragOver":
+        bgPickerId = "dragover-colorpicker";
+        fontColorPickerId = "dragover-fontcolorpicker";
+        break;
+      default:
+        return null;
+    }
+
+    let hexBgColor = null;
+    let hexFontColor = null;
+
+    // Update font color picker
+    const fontColorPicker = document.getElementById(fontColorPickerId);
+    if (fontColorPicker && fontColor) {
+      hexFontColor = this.rgbToHex(fontColor);
+      logDebug("Setting font color picker to:", hexFontColor, "from:", fontColor);
+      fontColorPicker.value = hexFontColor;
+      fontColorPicker.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    // Update background color picker
+    const bgColorPicker = document.getElementById(bgPickerId);
+    if (bgColorPicker && bgColor) {
+      if (bgColor.includes("rgb")) {
+        hexBgColor = this.rgbToHex(bgColor);
+      } else if (bgColor.includes("gradient")) {
+        hexBgColor = this.extractGradientEndColor(computed.backgroundImage);
+      } else {
+        hexBgColor = bgColor;
+      }
+      logDebug("Setting background color picker to:", hexBgColor, "from:", bgColor);
+      bgColorPicker.value = hexBgColor;
+      bgColorPicker.dispatchEvent(new Event("input", { bubbles: true }));
+    }
+
+    logDebug("Returning extracted colors:", { fontColor: hexFontColor, bgColor: hexBgColor });
+    return { fontColor: hexFontColor, bgColor: hexBgColor };
+  },
+
+  rgbToHex: function (rgb) {
+    // Handle rgba and rgb formats
+    const match = rgb.match(/\d+/g);
+    if (!match || match.length < 3) {
+      return rgb;
+    }
+    const [r, g, b] = match.slice(0, 3);
+    return "#" + [r, g, b].map(x => {
+      const hex = parseInt(x).toString(16);
+      return hex.length === 1 ? "0" + hex : hex;
+    }).join("").toUpperCase();
+  },
+
+  extractGradientEndColor: function (gradientStr) {
+    // Extract the last color from a CSS gradient
+    // Format: linear-gradient(direction, color1 pos1, color2 pos2, ...)
+    if (!gradientStr || gradientStr === "none") {
+      return "#000000";
+    }
+    
+    const colorMatches = gradientStr.match(/(#[0-9A-Fa-f]{6}|rgb[a]?\([^)]+\))/g);
+    if (colorMatches && colorMatches.length > 0) {
+      // Return the last color point of the gradient
+      const lastColor = colorMatches[colorMatches.length - 1];
+      if (lastColor.includes("rgb")) {
+        return this.rgbToHex(lastColor);
+      }
+      return lastColor;
+    }
+    return "#000000";
+  },
+
   /*********************
    *  showPalette()
    *  open palette popup for specific buttons state
@@ -294,12 +430,49 @@ QuickFolders.Options = {
     QuickFolders.Interface.showPalette(label);
   },
 
-  selectColorFromPalette: function (event) {
+  selectColorFromPalette: async function (event) {
+    const isDebug = QuickFolders.Preferences.PrefCache.get("debug.css");
+    const logDebug = (...args) => {
+      if (!isDebug) { return; }
+      console.log("[CSS]", ...args);
+    };
+    
     let target = event.target;
-    console.log("selected color from Palette:", target);
+    logDebug("selected color from Palette:", target);
     let colId = target.getAttribute("selectedColor");
+    logDebug("colId:", colId);
     if (colId != null) {
-      QuickFolders.Interface.setTabColorFromMenu(target, colId);
+      // Check if this is from the Options dialog (has buttonState attribute)
+      let popupMenu = target.closest('[buttonState]');
+      logDebug("popupMenu:", popupMenu);
+      if (popupMenu) {
+        // Options dialog palette selection - set the palette entry preference
+        let buttonState = popupMenu.getAttribute("buttonState");
+        let prefId = this.getButtonStatePrefId(buttonState);
+        logDebug("Setting palette entry for", prefId, "to", colId);
+        await QuickFolders.Preferences.setIntPref("style." + prefId + ".paletteEntry", colId);
+        // Extract the palette colors
+        const extractedColors = await this.updateColorPickersForPalette(prefId, target);
+        logDebug("Extracted colors:", extractedColors);
+        // Save the palette colors to storage BEFORE refreshing preview (so it reads new values)
+        if (extractedColors) {
+          if (extractedColors.fontColor) {
+            logDebug("Saving palette font color to storage:", extractedColors.fontColor);
+            await QuickFolders.Preferences.setStringPref("style." + prefId + ".color", extractedColors.fontColor);
+          }
+          if (extractedColors.bgColor) {
+            logDebug("Saving palette background color to storage:", extractedColors.bgColor);
+            await QuickFolders.Preferences.setStringPref("style." + prefId + ".background-color", extractedColors.bgColor);
+          }
+        }
+        // Now refresh the preview with the saved colors
+        logDebug("Calling showPalettePreview(true)");
+        await this.showPalettePreview(true);
+        logDebug("showPalettePreview completed");
+      } else {
+        // Main window folder coloring - use the original function
+        QuickFolders.Interface.setTabColorFromMenu(target, colId);
+      }
     }
     QuickFolders.Interface.hidePalette();
   },

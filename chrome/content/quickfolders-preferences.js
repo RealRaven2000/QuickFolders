@@ -341,22 +341,16 @@ QuickFolders.Preferences = {
     // note: storing color as string in order to store OS specific colors like Menu, Highlight
     // usage: getUserStyle("ActiveTab","background-color","HighLight")
     // usage: getUserStyle("ActiveTab","color", "HighlightText")
-    let sStyleName = "style." + sId + "." + sType,
-      sReturnValue = "";
+    // Fixed: Always use getStringPref since Storage API stores everything as strings
+    let sStyleName = "style." + sId + "." + sType;
 
     try {
-      let localPref =
-        typeof sDefault == "string" ? this.getStringPref(sStyleName) : this.getIntPref(sStyleName);
-      if (localPref || localPref === 0) {
-        sReturnValue = localPref;
-      } else {
-        sReturnValue = sDefault;
-      }
+      let localPref = this.getStringPref(sStyleName);
+      return (localPref != null) ? localPref : sDefault;
     } catch (ex) {
-      console.warn(`getUserStyle($sId) not found!`, ex);
-      sReturnValue = sDefault;
+      console.warn(`getUserStyle(${sId}) not found!`, ex);
+      return sDefault;
     }
-    return sReturnValue;
   },
 
   setUserStyle: async function (sId, sType, sValue) {

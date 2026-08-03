@@ -1834,6 +1834,14 @@
   "qfRemoveSeparator": {
     "message": "Separator entfernen"
   },
+  "qfAdjustSeparator": {
+    "message": "Separatorbreite anpassen ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfRenameBookmark": {
     "message": "Umbenennen…"
   },

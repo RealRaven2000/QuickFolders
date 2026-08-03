@@ -1661,6 +1661,14 @@
   "qf.youtube.tbdaily": {
     "message": "Visit Thunderbird Daily - YouTube Channel for tips and tutorials for using QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Adjust separator width ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Folder String copied to Clipboard!"
   },
@@ -1879,14 +1887,6 @@
   },
   "qfRemoveSeparator": {
     "message": "Remove Separator"
-  },
-  "qfAdjustSeparator": {
-    "message": "Adjust separator width ($currentWidth$)",
-    "placeholders": {
-      "currentWidth": {
-        "content": "$1"
-      }
-    }
   },
   "qfRenameBookmark": {
     "message": "Rename tab…"

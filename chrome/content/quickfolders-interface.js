@@ -27,6 +27,9 @@ QuickFolders.Interface = {
 	RecentPopupId: "QuickFolders-folder-popup-Recent",
 	RecentPopupIdCurrentFolderTool: "QuickFolders-folder-popup-Recent-CurrentFolderTool",
 	_paletteStyleSheet: null,
+	get separatorWidthUnit() {
+		return QuickFolders.Preferences.separatorWidthUnit;
+	},
 	isCommandListeners: QuickFolders.Preferences.getBoolPref("debug.popupmenus.isCommandListeners"), // [false] remove these later
 	isOncommandAttributes: QuickFolders.Preferences.getBoolPref("debug.popupmenus.isOnCommandAttr"), // [false] remove these later
 	_verticalMenuOffset: QuickFolders.Preferences.getIntPref("debug.popupmenus.verticalOffset"),
@@ -3075,20 +3078,32 @@ QuickFolders.Interface = {
     }
 
 		if (!theButton) {
-		  // line break?
-			if (entry && entry.breakBefore && !isFirst) { // no line break if this is the first button on a line
-			  // without explicitely adding this namespace, the break doesnt show up!
-			  let LF = doc.createElement("div");
-				LF.classList.add("break");
-			  this.FoldersBox.appendChild(LF);
-			}
+      // line break?
+      if (entry && entry.breakBefore && !isFirst) {
+        // no line break if this is the first button on a line
+        // without explicitely adding this namespace, the break doesnt show up!
+        let LF = doc.createElement("div");
+        LF.classList.add("break");
+        this.FoldersBox.appendChild(LF);
+      }
 
-			if (entry && entry.separatorBefore  && !isFirst) {  // no separator if this is the first button on a line
-			  let sep = this.createIconicElement("toolbarseparator","*");
-			  this.FoldersBox.appendChild(sep);
-			}
-			this.FoldersBox.appendChild(button);
-			if (folder || entry.uri) {
+      // no separator if this is the first button on a line
+      if (entry && Number(entry.separatorBefore) > 0 && !isFirst) {
+        // [issue 686] wider adjustable separators
+        let sepWidth = Number(entry.separatorBefore) || 1;
+        let separator = this.createIconicElement("toolbarseparator", "*");
+        // the subtract is to compensate for the default padding of 1px on each side of the separator
+        const DefaultCorrection = 0.0625; // 1/16th of an em
+        // the 0.5 is because the separator is half the width of the button. this should center any vertical line.
+        let sepMargin = Math.max(
+          0,
+          0.5 * sepWidth * QuickFolders.Interface.separatorWidthUnit - DefaultCorrection
+        );
+        separator.style.setProperty("margin-inline", `${sepMargin}em`, "important");
+        this.FoldersBox.appendChild(separator);
+      }
+      this.FoldersBox.appendChild(button);
+      if (folder || entry.uri) {
         // these are defined in mail/base/content/folderPane.js
         const observer = QuickFolders.buttonDragObserver;
         QI.addUniqueEventListener(button, "dragenter", (event) => observer.dragEnter(event));
@@ -3096,8 +3111,8 @@ QuickFolders.Interface = {
         QI.addUniqueEventListener(button, "drop", (event) => observer.drop(event));
         QI.addUniqueEventListener(button, "dragleave", (event) => observer.dragLeave(event));
       }
-			// button.setAttribute("flex",100);
-		}
+      // button.setAttribute("flex",100);
+    }
     // we do this after appendChild, because labelElement needs to be generated in DOM
     this.addCustomStyles(button, entry);
 
@@ -3639,8 +3654,31 @@ QuickFolders.Interface = {
 
 	onSeparatorToggle: function (element) {
 		let folderButton = QuickFolders.Util.getPopupNode(element),
+		    entry = QuickFolders.Model.getButtonEntry(folderButton),
+		    hasSeparator = Number(entry?.separatorBefore) > 0;
+    QuickFolders.Model.setTabSeparator(entry, hasSeparator ? 0 : 1);
+	} ,
+
+	onAdjustSeparator: function (element) {
+		let folderButton = QuickFolders.Util.getPopupNode(element),
 		    entry = QuickFolders.Model.getButtonEntry(folderButton);
-    QuickFolders.Model.setTabSeparator (entry, !entry.separatorBefore);
+		if (!entry) {
+			return;
+		}
+		let currentWidth = Number(entry.separatorBefore) > 0 ? Number(entry.separatorBefore) : 1;
+		let input = window.prompt(
+			QuickFolders.Interface.getUIstring("qfAdjustSeparator", String(currentWidth)),
+			String(currentWidth)
+		);
+		if (input === null) {
+			return;
+		}
+		let parsed = parseFloat(input);
+		if (Number.isNaN(parsed) || parsed <= 0) {
+			QuickFolders.Model.setTabSeparator(entry, 0);
+			return;
+		}
+		QuickFolders.Model.setTabSeparator(entry, parsed);
 	} ,
 
 	onRenameBookmark: function(element) {
@@ -4542,14 +4580,23 @@ QuickFolders.Interface = {
     }
 
     if (prefs.getBoolPref("commandMenu.separator")) {
-      let tag = entry.separatorBefore ? "qfSeparatorDel" : "qfSeparator";
+      let hasSeparator = Number(entry.separatorBefore) > 0;
+      let currentWidth = hasSeparator ? String(entry.separatorBefore) : "1";
+      let tag = hasSeparator ? "qfSeparatorDel" : "qfSeparator";
       menuitem = this.createIconicElement("menuitem", "cmd menuitem-iconic", doc);
       menuitem.setAttribute("tag", tag);
-      let lbString = entry.separatorBefore
+      let lbString = hasSeparator
         ? this.getUIstring("qfRemoveSeparator")
         : this.getUIstring("qfInsertSeparator");
       menuitem.setAttribute("label", lbString);
       QFcommandPopup.appendChild(menuitem);
+
+      if (hasSeparator) {
+        menuitem = this.createIconicElement("menuitem", "cmd menuitem-iconic", doc);
+        menuitem.setAttribute("tag", "qfAdjustSeparator");
+        menuitem.setAttribute("label", this.getUIstring("qfAdjustSeparator", currentWidth));
+        QFcommandPopup.appendChild(menuitem);
+      }
     }
 
     QFcommandPopup.appendChild(this.createIconicElement("menuseparator", "*", doc));
@@ -4731,6 +4778,9 @@ QuickFolders.Interface = {
 					  break;
 					case "qfSeparatorDel": case "qfSeparator":
 						QI.onSeparatorToggle(menuitem);
+						break;
+					case "qfAdjustSeparator":
+						QI.onAdjustSeparator(menuitem);
 						break;
 					case "qfIconAdd":
 						QI.onSelectIcon(menuitem, evt);

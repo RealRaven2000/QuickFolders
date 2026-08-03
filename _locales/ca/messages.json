@@ -1598,6 +1598,14 @@
   "qf.youtube.tbdaily": {
     "message": "Visiteu Thunderbird Daily - Canal de YouTube per obtenir consells i tutorials per utilitzar QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Ajusta l'amplada del separador ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Nom de la carpeta copiat al Portaretalls!"
   },

@@ -1618,6 +1618,14 @@
   "qf.youtube.tbdaily": {
     "message": "Odwiedź Thunderbird Daily – kanał YouTube, by zapoznać się z podpowiedziami i praktycznymi wskazówkami jak używać QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Dostosuj szerokość separatora ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Konfiguracja folderów została skopiowana do schowka!"
   },
@@ -1830,14 +1838,6 @@
   },
   "qfRemoveSeparator": {
     "message": "Usuń separator"
-  },
-  "qfAdjustSeparator": {
-    "message": "Dostosuj szerokość separatora ($currentWidth$)",
-    "placeholders": {
-      "currentWidth": {
-        "content": "$1"
-      }
-    }
   },
   "qfRenameBookmark": {
     "message": "Zmień nazwę zakładki"

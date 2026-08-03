@@ -1668,6 +1668,14 @@
   "qf.youtube.tbdaily": {
     "message": "Per avere suggerimenti e per una guida introduttiva a QuickFolders, visitare il canale YouTube \"Thunderbird Daily\"."
   },
+  "qfAdjustSeparator": {
+    "message": "Regolare la larghezza del separatore ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Nomi di tutte le schede QF copiati negli appunti"
   },

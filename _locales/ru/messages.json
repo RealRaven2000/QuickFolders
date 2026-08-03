@@ -1648,6 +1648,14 @@
   "qf.youtube.tbdaily": {
     "message": "Посетите Thunderbird Daily - канал на YouTube с советами и пособиями по использованию QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Настроить ширину разделителя ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Имя папки скопировано в буфер обмена"
   },

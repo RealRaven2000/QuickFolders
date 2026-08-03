@@ -1604,6 +1604,14 @@
   "qf.youtube.tbdaily": {
     "message": "访问 Thunderbird Daily - YouTube 频道，获取使用 QuickFolders 的提示和教程"
   },
+  "qfAdjustSeparator": {
+    "message": "调整分隔符宽度 ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "文件夹代码串已复制到剪贴板中！"
   },
@@ -2082,7 +2090,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L} {+extensionName} 现在与 Thunderbird 154 兼容。{/L}{L} 存储从旧版首选项 ({code}about:config{/code}) 转换为本地存储 API [issue 677]。这防止了未来删除附加组件的旧版首选项访问权限。{br}{emph}注意:{/emph} 现在可以通过卸载附加组件将设置重置为默认值 — 首先使用 {b}{+qf.storeConfig}{/b} 下的 {italic}{+qf.backupAndRestore}{/italic} 在 {italic}{+qf.tab.gopro}{/italic} 页面上备份您的设置。{/L}{L} 制表符分隔符的宽度现在是可调的。[issue 686]{/L}{L} 通过删除对 quickFilters 附加组件对象的直接访问，改进了与未来 Thunderbird 版本的兼容性 [issue 680]。{/L}{L} 已修复：消息窗口内容区域在顶部被截断 [issue 673] — 当 quickFilters 将其按钮注入当前文件夹栏时引起。{emph}需要 quickFilters 6.13.1 或更高版本。{/emph}{/L}{L} 已修复：quickMove [=] 快捷键打开最近使用的文件夹菜单 [issue 687]。{/L}" 
+    "message": "{L} {+extensionName} 现在与 Thunderbird 154 兼容。{/L}{L} 存储从旧版首选项 ({code}about:config{/code}) 转换为本地存储 API [issue 677]。这防止了未来删除附加组件的旧版首选项访问权限。{br}{emph}注意:{/emph} 现在可以通过卸载附加组件将设置重置为默认值 — 首先使用 {b}{+qf.storeConfig}{/b} 下的 {italic}{+qf.backupAndRestore}{/italic} 在 {italic}{+qf.tab.gopro}{/italic} 页面上备份您的设置。{/L}{L} 制表符分隔符的宽度现在是可调的。[issue 686]{/L}{L} 通过删除对 quickFilters 附加组件对象的直接访问，改进了与未来 Thunderbird 版本的兼容性 [issue 680]。{/L}{L} 已修复：消息窗口内容区域在顶部被截断 [issue 673] — 当 quickFilters 将其按钮注入当前文件夹栏时引起。{emph}需要 quickFilters 6.13.1 或更高版本。{/emph}{/L}{L} 已修复：quickMove [=] 快捷键打开最近使用的文件夹菜单 [issue 687]。{/L}"
   },
   "whats-new-maintenance": {
     "message": "维护更新 $ver$。此特定修复已包含在上一版本之后的更新中。",

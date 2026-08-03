@@ -1369,6 +1369,14 @@
   "qf.youtube.tbdaily": {
     "message": "Truy cập Thunderbird Daily - Kênh YouTube để biết các mẹo và hướng dẫn sử dụng QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Điều chỉnh chiều rộng của dấu phân cách ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Tên thư mục đã được sao chép vào bộ nhớ!"
   },

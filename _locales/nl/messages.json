@@ -1621,6 +1621,14 @@
   "qf.youtube.tbdaily": {
     "message": "Bezoek Thunderbird Daily - YouTube-kanaal voor tips en tutorials voor het gebruik van QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Pas de scheidingslijnbreedte aan ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Mapstring naar klembord gekopieerd!"
   },

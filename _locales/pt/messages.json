@@ -1618,6 +1618,14 @@
   "qf.youtube.tbdaily": {
     "message": "Visite o Diário Thunderbird - Canal do YouTube de dicas e tutoriais de uso do QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Ajustar a largura do separador ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Texto da pasta copiado para a área de transferência!"
   },

@@ -1457,9 +1457,6 @@
   "qf.tooltip.threadIcon": {
     "message": "Jelenlegi beszélgetés - húzza egy QuickFolders fülre a beszélgetés áthelyezéséhez"
   },
-  "qfAlertCopyString": {
-    "message": "A mappa neve másolva a vágólapra!"
-  },
   "qfAdjustSeparator": {
     "message": "Szeparátor szélességének beállítása ($currentWidth$)",
     "placeholders": {
@@ -1467,6 +1464,9 @@
         "content": "$1"
       }
     }
+  },
+  "qfAlertCopyString": {
+    "message": "A mappa neve másolva a vágólapra!"
   },
   "qfAlertDropFolderVirtual": {
     "message": "Nem másolhat üzenetet virtuális mappába!"
@@ -1895,7 +1895,7 @@
   },
   "whats-new-list": {
     "description": "🇭🇺 change log",
-    "message": "{L} {+extensionName} most már kompatibilis a Thunderbird 154-gyel.{/L}{L} Tárhelyet konvertálva az örökölt preferenciákból ({code}about:config{/code}) helyi tárolási API-ra [issue 677]. Ez megvéd az örökölt preferenciaelérés jövőbeli eltávolítása ellen a kiegészítéseknek. {br}{emph}Megjegyzés:{/emph} a beállítások most alapértelmezésre állíthatók vissza a kiegészítés eltávolításával — először készítsen biztonsági másolatot beállításairól a {b}{+qf.storeConfig}{/b} segítségével a {italic}{+qf.backupAndRestore}{/italic} alatt a(z) {italic}{+qf.tab.gopro}{/italic} oldalon.{/L}{L} A lapelválasztók szélessége mostantól beállítható. [issue 686]{/L}{L} Jobb kompatibilitas a Thunderbird jövőbeli verzióival a quickFilters kiegészítés objektumához való közvetlen hozzáférés eltávolításával [issue 680].{/L}{L} Kijavítva: üzenetablak tartalmi területe felül levágva [issue 673] — okozza, amikor a quickFilters gombja az aktuális mappasorba kerül. {emph}A quickFilters 6.13.1 vagy újabb verzióját igényli.{/emph}{/L}{L} Kijavítva: quickMove [=] gyorsbillentyű a legutóbbi mappák menüjének megnyitásához [issue 687].{/L}" 
+    "message": "{L} {+extensionName} most már kompatibilis a Thunderbird 154-gyel.{/L}{L} Tárhelyet konvertálva az örökölt preferenciákból ({code}about:config{/code}) helyi tárolási API-ra [issue 677]. Ez megvéd az örökölt preferenciaelérés jövőbeli eltávolítása ellen a kiegészítéseknek. {br}{emph}Megjegyzés:{/emph} a beállítások most alapértelmezésre állíthatók vissza a kiegészítés eltávolításával — először készítsen biztonsági másolatot beállításairól a {b}{+qf.storeConfig}{/b} segítségével a {italic}{+qf.backupAndRestore}{/italic} alatt a(z) {italic}{+qf.tab.gopro}{/italic} oldalon.{/L}{L} A lapelválasztók szélessége mostantól beállítható. [issue 686]{/L}{L} Jobb kompatibilitas a Thunderbird jövőbeli verzióival a quickFilters kiegészítés objektumához való közvetlen hozzáférés eltávolításával [issue 680].{/L}{L} Kijavítva: üzenetablak tartalmi területe felül levágva [issue 673] — okozza, amikor a quickFilters gombja az aktuális mappasorba kerül. {emph}A quickFilters 6.13.1 vagy újabb verzióját igényli.{/emph}{/L}{L} Kijavítva: quickMove [=] gyorsbillentyű a legutóbbi mappák menüjének megnyitásához [issue 687].{/L}"
   },
   "whats-new-maintenance": {
     "message": "Karbantartási frissítés $ver$. Ez a konkrét javítás az előző kiadás óta került hozzáadásra.",

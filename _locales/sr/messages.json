@@ -1462,6 +1462,14 @@
   "qf.tooltip.threadIcon": {
     "message": "Тренутна тема - превуците QuickFolders језичак да бисте преместили разговоре"
   },
+  "qfAdjustSeparator": {
+    "message": "Прилагодите ширину разделитеља ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Ниска фасцикле је копирана у оставу!"
   },

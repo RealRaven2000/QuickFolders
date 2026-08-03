@@ -1665,6 +1665,14 @@
   "qf.youtube.tbdaily": {
     "message": "Besøk Thunderbird Daily - YouTube-kanal for tips og veiledning om QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Juster separatorbredde ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Mappestreng kopiert til utklippstavle!"
   },

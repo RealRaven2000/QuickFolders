@@ -1656,6 +1656,14 @@
   "qf.youtube.tbdaily": {
     "message": "Navštivte Thunderbird Daily - YouTube kanál pro tipy a návody na používání QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Upravit šířku oddělovače ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Řetězec složky byl zkopírován do schránky!"
   },

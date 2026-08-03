@@ -1612,6 +1612,14 @@
   "qf.youtube.tbdaily": {
     "message": "參觀 Thunderbird Daily - 在 YouTube 頻道上介紹使用 QuickFolders 的技巧跟說明"
   },
+  "qfAdjustSeparator": {
+    "message": "調整分隔符寬度 ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "資料夾設定已複製到剪貼簿！"
   },

@@ -1573,6 +1573,14 @@
   "qf.youtube.tbdaily": {
     "message": "Obiščite kanal na Youtubu Thunderbird Daily glede nasvetov in vodnikov za uporabo dodatka QuickFolders"
   },
+  "qfAdjustSeparator": {
+    "message": "Prilagodite širino ločila ($currentWidth$)",
+    "placeholders": {
+      "currentWidth": {
+        "content": "$1"
+      }
+    }
+  },
   "qfAlertCopyString": {
     "message": "Niz mape kopiran na odložišče!"
   },

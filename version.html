@@ -274,15 +274,15 @@
 <section id="changelog">
 
 
-		<h3>Version Details</h3>
+	<h3>Version Details</h3>
 
-		<p class=note>
-		All dates are displayed in UK format: dd/mm/yyyy - you can request any version that is marked as 
-		not released or any old version listed; just send me a personal email from the quickfolders options 
-		dialog » on the Support tab - [(<a href="#Contact">Jump to Screen Shot</a>)].
-		</p>
+	<p class=note>
+	All dates are displayed in UK format: dd/mm/yyyy - you can request any version that is marked as 
+	not released or any old version listed; just send me a personal email from the quickfolders options 
+	dialog » on the Support tab - [(<a href="#Contact">Jump to Screen Shot</a>)].
+	</p>
 
-		<ul id="version-history">
+	<ul id="version-history">
 
 			
 				<!--
@@ -310,7 +310,64 @@
     </li>
     
     -->
-<a name="latest">&nbsp;</a>
+		<a name="latest">&nbsp;</a>
+
+		<a name="6.17">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.17"
+				 onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')"
+			>
+				 Version 6.17 - WIP
+		  </a>
+      </h4>
+
+      <ul>
+				<h4 class="inList">Improvements</h4>
+        <li>
+					QuickFolders is now compatible with Thunderbird 154.
+				</li>
+        <li>
+					Made width of tab separators adjustable.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/686">[issue 686]</a>
+					<p>
+						Use the new menu item adjust separator width to set a multiplier (default = 1) 
+						representing the relative width of the separator:
+					</p>
+					<img src="images/adjust-separator-width.png" alt="adjust separator width" class="screenshot"/>
+				</li>
+        <li>
+					Improved compatibility with future Thunderbird versions by removing direct access 
+					to the QuickFolders add-on object.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/680">[issue 680]</a>
+				</li>
+        <li>
+					Converted storage from legacy preferences (<tok>about:config</tok>) to local storage API.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/677">[issue 677]</a>
+					Settings can now be reset to defaults by uninstalling the add-on — back up your settings 
+					first using <b>Store Configuration</b> under <b>Backup and Restore</b>.
+				</li>
+			</ul>
+
+      <ul>
+				<h4 class="inList">Bug Fixes</h4>
+        <li>
+					Fixed: messages window content area truncated at the top.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/673">[issue 673]</a>
+				</li>
+        <li>
+					Fixed: quickMove shortcut to open recent folders menu.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/687">[issue 687]</a>
+				</li>
+			</ul>
+
+      <ul>
+				<h4 class="inList">Miscellaneous</h4>
+        <li>
+					Simplified WindowListener by removing pre 140 compatibility code.
+				</li>
+			</ul>			
+    </li>
 
 
     <a name="6.16">&nbsp;</a>

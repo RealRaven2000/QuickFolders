@@ -8640,7 +8640,11 @@ QuickFolders.Interface = {
         `\n No WindowListener - loading script: ${chromeUrl}\n Into window doc URL: ${win.document.URL}`,
       );      
 
-      return Services.scriptloader.loadSubScript(chromeUrl, win);
+      // return Services.scriptloader.loadSubScript(chromeUrl, win);
+      return Services.scriptloader.loadSubScriptWithOptions(chromeUrl, {
+        target: win,
+        allowUnsafeURL: true,
+      });
     }
 
 

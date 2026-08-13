@@ -669,10 +669,13 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
       "resource://gre/modules/ExtensionParent.sys.mjs"
     );
     let ext = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
-    Services.scriptloader.loadSubScript(
-      ext.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
-      this,
-      "UTF-8"
+    const chromeURI = ext.rootURI.resolve("chrome/content/scripts/notifyTools.js");
+    Services.scriptloader.loadSubScriptWithOptions(
+      chromeURI,
+      {
+        target: this,
+        allowUnsafeURL: true,
+      }
     );
 
     this.notifyTools.setAddOnId("quickfolders@curious.be");

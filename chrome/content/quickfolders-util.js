@@ -1729,11 +1729,14 @@ allowUndo = true)`,
   },
 
   localize: function (window, buttons = null) {
-    Services.scriptloader.loadSubScript(
+    Services.scriptloader.loadSubScriptWithOptions(
       QuickFolders.Util.extension.rootURI.resolve("chrome/content/i18n.js"),
-      window,
-      "UTF-8",
+      {
+        target: window,
+        allowUnsafeURL: true,
+      }
     );
+
     window.i18n.updateDocument({ extension: QuickFolders.Util.extension });
     if (buttons) {
       let dialog = document.getElementsByTagName("dialog")[0];
@@ -2935,10 +2938,12 @@ try {
   );
 
   QuickFolders.Util.extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
-  Services.scriptloader.loadSubScript(
+  Services.scriptloader.loadSubScriptWithOptions(
     QuickFolders.Util.extension.rootURI.resolve("chrome/content/scripts/notifyTools.js"),
-    QuickFolders.Util,
-    "UTF-8"
+    {
+      target: QuickFolders.Util,
+      allowUnsafeURL: true,
+    }
   );
 
 } catch(ex) {

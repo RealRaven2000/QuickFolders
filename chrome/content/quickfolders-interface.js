@@ -8628,7 +8628,7 @@ QuickFolders.Interface = {
         if (win?.WL?.loadScript) {
           return win.WL.loadScript(url);
         }
-      } catch {;}
+      } catch { ; }
 
       const chromeUrl = QuickFolders.Util.extension.rootURI.resolve(url);
       util.logHighlight(
@@ -8637,8 +8637,8 @@ QuickFolders.Interface = {
           color: "lightyellow",
           background: "#AF3C00",
         },
-        `\n No WindowListener - loading script: ${chromeUrl}\n Into window doc URL: ${win.document.URL}`,
-      );      
+        `\n No WindowListener - loading script: ${chromeUrl}\n Into window doc URL: ${win.document.URL}`
+      );
 
       // return Services.scriptloader.loadSubScript(chromeUrl, win);
       return Services.scriptloader.loadSubScriptWithOptions(chromeUrl, {

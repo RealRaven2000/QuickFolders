@@ -536,8 +536,7 @@ QuickFolders.Interface = {
   },
 
   onClickRecent: async function (button, evt, forceDisplay) {
-    const QI = QuickFolders.Interface,
-      prefs = QuickFolders.Preferences;
+    const QI = QuickFolders.Interface;
     // refresh the recent menu on right click
     if (evt) {
       evt.stopPropagation();
@@ -558,9 +557,6 @@ QuickFolders.Interface = {
     // Thunderbird 52 fix for [Bug 26592] - recent folder clicks not working
     if (button && (button.tagName == "menuitem" || button.tagName == "menupopup")) {
       // eslint-disable-next-line no-debugger
-      if (prefs.isDebugOption("popupmenus")) {
-        debugger;
-      }
 
       const menuitem = button;
       if (menuitem.folder) {
@@ -717,7 +713,6 @@ QuickFolders.Interface = {
   // exit unread folder skip to next...
   onSkipFolder: async function (_button, isSingleMessage = false) {
     const util = QuickFolders.Util,
-      prefs = QuickFolders.Preferences,
       Ci = Components.interfaces;
     let currentFolder = QuickFolders.Util.CurrentFolder,
       folder;
@@ -727,10 +722,6 @@ QuickFolders.Interface = {
       util.popupRestrictedFeature("skipUnreadFolder", txt, 2);
     }
 
-    // eslint-disable-next-line no-debugger
-    if (prefs.isDebugOption("navigation")) {
-      debugger;
-    }
     folder = await util.getNextUnreadFolder(currentFolder);
 
     if (folder) {
@@ -1630,7 +1621,7 @@ QuickFolders.Interface = {
     }
   },
 
-  updateCategories: function updateCategories() {
+  updateCategories: function () {
     const util = QuickFolders.Util,
       model = QuickFolders.Model,
       prefs = QuickFolders.Preferences,
@@ -1644,10 +1635,6 @@ QuickFolders.Interface = {
       menuList = this.CategoryMenu,
       menuPopup = menuList.menupopup;
     util.logDebug(`updateCategories() - [${lCatCount} Categories]`);
-    // eslint-disable-next-line no-debugger
-    if (prefs.isDebugOption("categories")) {
-      debugger;
-    }
 
     try {
       if (lCatCount > 0 && menuList && menuPopup) {
@@ -1830,7 +1817,7 @@ QuickFolders.Interface = {
 
       try {
         folder = model.getMsgFolderFromUri(folderEntry.uri, false);
-      } catch {}
+      } catch {;}
       if (!folder || !util.doesMailFolderExist(folder)) {
         countOrphans++;
       }
@@ -2307,7 +2294,7 @@ QuickFolders.Interface = {
             `  nodeName: ${eventTarget.nodeName || "null"}\n` +
             `  tagName: ${eventTarget.tagName || "none"}`
         );
-      } catch {}
+      } catch {;}
     }
     function logKey(event) {
       if (!prefs.isDebugOption("events.keyboard")) {
@@ -2391,7 +2378,7 @@ QuickFolders.Interface = {
               }`
             );
             util.showStatusMessage("QuickFolders tabs were rebuilt", true);
-          } catch {}
+          } catch {;}
         }
       }
     }
@@ -3843,7 +3830,7 @@ QuickFolders.Interface = {
     // this.updateFolders(true); already done!
     try {
       util.showStatusMessage(msg, true);
-    } catch {}
+    } catch {;}
   },
 
   onRemoveIcon: function (element, event) {
@@ -4018,8 +4005,8 @@ QuickFolders.Interface = {
           }
           // update current folder icon in currentfolder toolbar
           // do this in addFolderButton!! - this is used for styling everything even the current folder panel
-        } catch {}
-      } catch {}
+        } catch {;}
+      } catch {;}
     };
 
     fp.init(util.getFileInitArg(window), "Select an icon file", nsIFilePicker.modeOpen);
@@ -4937,7 +4924,7 @@ QuickFolders.Interface = {
         menuitem.setAttribute("accesskey", this.getUIstring("qfDeleteFolderAccess"));
         MailCommands.appendChild(menuitem);
       }
-    } catch {}
+    } catch {;}
 
     // RenameFolder
     if (folder.canRename) {
@@ -5210,14 +5197,9 @@ QuickFolders.Interface = {
   },
 
   clickHandler: function (evt, element) {
-    const prefs = QuickFolders.Preferences,
-      util = QuickFolders.Util,
+    const util = QuickFolders.Util,
       QI = QuickFolders.Interface;
     let msg = evt.type + " event from popup - QI.clickHandler()";
-    // eslint-disable-next-line no-debugger
-    if (prefs.isDebugOption("popupmenus")) {
-      debugger;
-    }
     if (evt.target) {
       let isTagHandler = true,
         isIdHandler = true,
@@ -5980,7 +5962,7 @@ QuickFolders.Interface = {
               );
               return;
             }
-          } catch {}
+          } catch {;}
       }
 
       // [issue 420] create "new subfolder" item from scratch...
@@ -6363,7 +6345,7 @@ QuickFolders.Interface = {
               subMenu.style.setProperty("list-style-image", iconURL);
               subMenu.style.setProperty("--menuitem-icon", iconURL, "important");
             }
-          } catch {}
+          } catch {;}
 
           QI.addUniqueEventListener(subMenu, "dragenter", (event) =>
             QuickFolders.popupDragObserver.dragEnter(event)
@@ -6510,10 +6492,6 @@ QuickFolders.Interface = {
       "interface,popupmenus",
       `onSelectParentFolder: ${folderUri}`
     );
-    // eslint-disable-next-line no-debugger
-    if (QuickFolders.Preferences.isDebugOption("folders.select")) {
-      debugger;
-    }
     this.onSelectSubFolder(folderUri, evt);
     evt.stopPropagation(); // avoid oncommand bubbling up!
     QuickFolders.Interface.collapseParentMenus(evt.target);
@@ -7429,7 +7407,7 @@ QuickFolders.Interface = {
                 f.setStringProperty("isQuickFolder", ""); // remove this temporary property
                 menuitem.classList.add("quickFolder");
               }
-            } catch {}
+            } catch {;}
 
             if (menupopup.firstChild && isInsertNewFolderTop) {
               menupopup.insertBefore(menuitem, menupopup.firstChild);
@@ -8182,7 +8160,7 @@ QuickFolders.Interface = {
         if (tabMode) {
           tabIdx = tabInfo.parentElement.parentElement.selectedIndex;
         }
-      } catch {}
+      } catch {;}
 
       util.logDebugOptional(
         "interface.currentFolderBar",
@@ -9540,7 +9518,7 @@ QuickFolders.Interface = {
         if (win?.WL?.loadScript) {
           return win.WL.loadScript(url);
         }
-      } catch {}
+      } catch {;}
 
       const chromeUrl = QuickFolders.Util.extension.rootURI.resolve(url);
       util.logHighlight(
@@ -10767,3 +10745,5 @@ QuickFolders.Interface = {
     return true;
   },
 }; // Interface
+
+

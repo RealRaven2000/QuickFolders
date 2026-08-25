@@ -7,15 +7,20 @@
 
   END LICENSE BLOCK */
 
-/* import-globals-from folderDisplay.js */
+/* import-globals-from folderDisplay.js */ 
 //  we need gFolderDisplay.navigate !!!!
 
 var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
-var { FolderCommands } = ChromeUtils.importESModule(
-  "chrome://messenger/content/FolderCommands.mjs"
-);
 
 QuickFolders.Interface = {
+  get FolderCommands() {
+    try {
+      return QuickFolders.Util.window3pane?.FolderCommands ?? null;
+    } catch {
+      // Thunderbird 153 and older do not have this
+      return null;
+    }
+  },
   PaintModeActive: false,
   TimeoutID: 0,
   LastTimeoutID: 0,
@@ -1730,10 +1735,6 @@ QuickFolders.Interface = {
       prefs = QuickFolders.Preferences;
 
     util.logDebug(`updateMainWindow()... Theme: ${prefs.CurrentThemeId}`);
-    // eslint-disable-next-line no-debugger
-    if (prefs.isDebugOption("interface.update")) {
-      debugger;
-    }
     logCSS("============================\n" + "updateMainWindow…");
 
     // refresh main windows
@@ -4262,8 +4263,9 @@ QuickFolders.Interface = {
       parent = folderButton.folder.parent;
 
     util.logDebugOptional("interface", "QuickFolders.Interface.onDeleteFolder()");
-    if (FolderCommands?.deleteFolder) {
-      FolderCommands.deleteFolder(folderButton.folder);
+    const folderCommands = QuickFolders.Interface.FolderCommands;
+    if (folderCommands?.deleteFolder) {
+      folderCommands.deleteFolder(folderButton.folder);
     } else {
       // legacy (pre 153)
       util.folderPane.deleteFolder(folderButton.folder);
@@ -4281,8 +4283,9 @@ QuickFolders.Interface = {
     const util = QuickFolders.Util,
       folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onRenameFolder()");
-    if (FolderCommands?.renameFolder) {
-      FolderCommands.renameFolder(folder);
+    const folderCommands = QuickFolders.Interface.FolderCommands;
+    if (folderCommands?.renameFolder) {
+      folderCommands.renameFolder(folder);
       return;
     }
     // legacy (pre 153)
@@ -4296,8 +4299,9 @@ QuickFolders.Interface = {
     QuickFolders.compactLastFolderSize = folder.sizeOnDisk;
     QuickFolders.compactLastFolderUri = folder.URI;
     QuickFolders.compactReportCommandType = "emptyTrash";
-    if (FolderCommands?.emptyTrash) {
-      FolderCommands.emptyTrash(folder);
+    const folderCommands = QuickFolders.Interface.FolderCommands;
+    if (folderCommands?.emptyTrash) {
+      folderCommands.emptyTrash(folder);
       QuickFolders.compactReportFolderCompacted = true; // activates up onIntPropertyChanged event listener
       return;
     }
@@ -4310,8 +4314,9 @@ QuickFolders.Interface = {
     let util = QuickFolders.Util,
       folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyJunk()");
-    if (FolderCommands?.emptyJunk) {
-      FolderCommands.emptyJunk(folder);
+    const folderCommands = QuickFolders.Interface.FolderCommands;
+    if (folderCommands?.emptyJunk) {
+      folderCommands.emptyJunk(folder);
       this.compactFolder(folder, "emptyJunk");
       return;
     }
@@ -4353,8 +4358,9 @@ QuickFolders.Interface = {
     let util = QuickFolders.Util,
       folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEditVirtualFolder()");
-    if (FolderCommands?.editFolder) {
-      FolderCommands.editFolder(folder);
+    const folderCommands = QuickFolders.Interface.FolderCommands;
+    if (folderCommands?.editFolder) {
+      folderCommands.editFolder(folder);
       return;
     }
     // legacy (pre 153)
@@ -4371,8 +4377,9 @@ QuickFolders.Interface = {
       util.alertButtonNoFolder(btn);
       return;
     }
-    if (FolderCommands?.editFolder) {
-      FolderCommands.editFolder(folder);
+    const folderCommands = QuickFolders.Interface.FolderCommands;
+    if (folderCommands?.editFolder) {
+      folderCommands.editFolder(folder);
       return;
     }
     // legacy (pre 153)

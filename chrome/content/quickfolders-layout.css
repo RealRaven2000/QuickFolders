@@ -1226,6 +1226,13 @@ menupopup.QuickFolders-folder-popup menuitem#QF_folderPaneContext-new.dragover {
   --menuitem-icon: url("chrome://quickfolders/content/skin/ico/blank.svg") !important;
 }
 
+menupopup.QuickFolders-folder-popup #QF_folderPaneContext-emptyJunk {
+	-moz-context-properties: fill, fill-opacity, stroke;
+	fill: currentColor;
+	list-style-image: url("skin/ico/junk.svg") !important;	
+  --menuitem-icon: url("skin/ico/junk.svg") !important;	
+}
+
 menupopup.QuickFolders-folder-popup menuitem.cmd[tag="openNewTab"] {
 	-moz-context-properties: fill, fill-opacity, stroke;
 	fill: currentColor;

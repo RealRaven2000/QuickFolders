@@ -11,7 +11,7 @@
 //  we need gFolderDisplay.navigate !!!!
 
 var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
-
+var { FolderCommands } = ChromeUtils.importESModule("chrome://messenger/content/FolderCommands.mjs");
 
 QuickFolders.Interface = {
 	PaintModeActive: false,
@@ -3888,8 +3888,12 @@ QuickFolders.Interface = {
 				parent = folderButton.folder.parent;
 
     util.logDebugOptional("interface", "QuickFolders.Interface.onDeleteFolder()");
-		const folderPane = util.folderPane;
-		folderPane.deleteFolder(folderButton.folder);
+    if (FolderCommands?.deleteFolder) {
+      FolderCommands.deleteFolder(folderButton.folder);
+    } else {
+      // legacy (pre 153)
+      util.folderPane.deleteFolder(folderButton.folder);
+    }
 		if (parent) {
 			QuickFolders_MySelectFolder(parent.URI);
 		}
@@ -3900,12 +3904,16 @@ QuickFolders.Interface = {
 	} ,
 
 	onRenameFolder: function (element) {
-		const util = QuickFolders.Util,
-			folder = util.getPopupNode(element).folder;
+    const util = QuickFolders.Util,
+      folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onRenameFolder()");
-    const folderPane = util.folderPane;
-		folderPane.renameFolder(folder);
-	} ,
+    if (FolderCommands?.renameFolder) {
+      FolderCommands.renameFolder(folder);
+      return;
+    }
+    // legacy (pre 153)
+    util.folderPane.renameFolder(folder);
+  } ,
 
 	onEmptyTrash: function (element) {
 		const util = QuickFolders.Util,
@@ -3914,20 +3922,29 @@ QuickFolders.Interface = {
 		QuickFolders.compactLastFolderSize = folder.sizeOnDisk;
 		QuickFolders.compactLastFolderUri = folder.URI;
 		QuickFolders.compactReportCommandType = "emptyTrash";
-    const folderPane = util.folderPane;
-		folderPane.emptyTrash(folder);
-    
+    if (FolderCommands?.emptyTrash) {
+      FolderCommands.emptyTrash(folder);
+      QuickFolders.compactReportFolderCompacted = true; // activates up onIntPropertyChanged event listener
+      return;
+    }
+    // legacy (pre 153)
+    util.folderPane.emptyTrash(folder);
 		QuickFolders.compactReportFolderCompacted = true; // activates up onIntPropertyChanged event listener
 	} ,
 
 	onEmptyJunk: function(element) {
-		let util = QuickFolders.Util,
-        folder = util.getPopupNode(element).folder;
+    let util = QuickFolders.Util,
+      folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEmptyJunk()");
-		const folderPane = util.folderPane;
-		folderPane.emptyJunk(folder);
+    if (FolderCommands?.emptyJunk) {
+      FolderCommands.emptyJunk(folder);
+      this.compactFolder(folder, "emptyJunk");
+      return;
+    }
+    // legacy (pre 153)
+    util.folderPane.emptyJunk(folder);
     this.compactFolder(folder, "emptyJunk");
-	} ,
+  } ,
 
 	onDeleteJunk: function (element) {
 		const Ci = Components.interfaces
@@ -3968,6 +3985,11 @@ QuickFolders.Interface = {
 		let util = QuickFolders.Util,
         folder = util.getPopupNode(element).folder;
     util.logDebugOptional("interface", "QuickFolders.Interface.onEditVirtualFolder()");
+    if (FolderCommands?.editFolder) {
+      FolderCommands.editFolder(folder);
+      return;
+    }
+    // legacy (pre 153)
 		util.folderPane.editVirtualFolder(folder);
 	} ,
 
@@ -3981,6 +4003,11 @@ QuickFolders.Interface = {
 			util.alertButtonNoFolder(btn);
 			return;
 		}
+    if(FolderCommands?.editFolder) {
+      FolderCommands.editFolder(folder);
+      return;
+    }
+    // legacy (pre 153)
 		util.folderPane.editFolder(folder);
 	} ,
 

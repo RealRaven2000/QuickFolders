@@ -1,3 +1,6 @@
+# Transfer instructions for agent:
+Follow the guide in storage-conversion-to-browser.md to convert [addon-name] to browser.storage.local. The add-on uses WindowListener framework with namespace [AddonName] and extension ID [id@example.com]. All steps in the guide apply - create storage facade, update preferences cache, remove NotifyTools handlers, and test multi-window sync.
+
 # Converting Legacy Preferences to browser.storage.local
 
 ## Overview

@@ -2947,8 +2947,8 @@ QuickFolders.Interface = {
       } // CTRL KEY HELD
 
       if (!p) {
-        // eslint-disable-next-line no-debugger
         if (DEBUG_ME) {
+          // eslint-disable-next-line no-debugger
           debugger;
         }
         return;
@@ -2959,8 +2959,8 @@ QuickFolders.Interface = {
         // find all menu items with class "dbgMenu" and uncollapse them
         let nodes = p.children;
         if (!nodes) {
-          // eslint-disable-next-line no-debugger
           if (DEBUG_ME) {
+            // eslint-disable-next-line no-debugger
             debugger;
           }
           //	return;

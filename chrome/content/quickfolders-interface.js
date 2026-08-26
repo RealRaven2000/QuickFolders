@@ -665,7 +665,7 @@ QuickFolders.Interface = {
         quickFilterBar.updateSearch();
         quickFilterBar.reflectFiltererState();
       }
-      await QuickFolders.Preferences.setStringPref("findRelated.lastSearchVal");
+      await QuickFolders.Preferences.setStringPref("findRelated.lastSearchVal", "");
     } else {
       QuickFolders.Util.logDebug("no QuickFilter reset necessary");
     }

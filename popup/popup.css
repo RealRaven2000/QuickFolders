@@ -1,10 +1,5 @@
 :root {
-  --color-emphasis: #9b0050;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-emphasis: #fadd05;
-  }
+  --color-emphasis: #ff69b4;
 }
 
 

@@ -731,9 +731,9 @@ QuickFolders.Options = {
     QI.setTabColorFromMenu(m.firstChild, col.toString()); // simulate a menu item! 155 lines of LEGACY code ...    
   },
 
-  changeTextPreference: function (txtBox) {
+  changeTextPreference: async function (txtBox) {
     let prefString = txtBox.getAttribute("data-pref-name");
-    QuickFolders.Preferences.setIntPreference(prefString, txtBox.value);
+    await QuickFolders.Preferences.setIntPreference(prefString, txtBox.value);
 
     // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateMainWindow", minimal: "false" });
     messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: false });

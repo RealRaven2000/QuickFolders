@@ -232,7 +232,7 @@ for (let el of document.querySelectorAll("input[type=number]")) {
     case "toolbarMinHeight":
     case "leftSpacer":
     case "rightSpacer":
-      el.addEventListener("change", async (event) => {
+      el.addEventListener("input", async (event) => {
         event.preventDefault();
         event.stopPropagation();
         QuickFolders.Options.changeTextPreference(el);

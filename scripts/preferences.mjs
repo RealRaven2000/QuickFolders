@@ -547,6 +547,17 @@ export const Preferences = {
   async set(name, value) {
     Preferences._ensureReady({ reason: "set", key: name });
 
+    if (value === undefined) {
+      const defaultValue = Preferences.Defaults[name] ?? Preferences.DebugDefaults[name];
+      if (defaultValue !== undefined) {
+        console.warn(`Preferences.set("${name}", undefined) - using default value. Missing value argument?`);
+        value = defaultValue;
+      } else {
+        console.error(`Preferences.set("${name}", undefined) - no default found. Rejecting.`);
+        throw new Error(`Cannot set preference "${name}" to undefined`);
+      }
+    }
+
     if (name.startsWith("debug")) {
       // frontend "debug" maps to the storage key "debugActive" in _debugData
       const storageKey = name === "debug" ? "debugActive" : name;

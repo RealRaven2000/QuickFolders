@@ -379,7 +379,7 @@
     "message": "{P}Chúng tôi tiếp tục theo dõi chu kỳ phát hành hàng tháng của Thunderbird để đảm bảo tính tương thích và ổn định. Như mọi khi, công việc này hoàn toàn được tài trợ bởi doanh số bán giấy phép.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}Một thay đổi được lên kế hoạch nhằm hạn chế việc sử dụng API Experiment trên kênh Release đã được hoãn đến chu kỳ ESR tiếp theo (dự kiến năm 2027).{/P}{P}Hiện tại không cần thực hiện bất kỳ hành động nào. Các tiện ích như {b}{+extensionName}{/b} vẫn tiếp tục hoạt động trên cả phiên bản Release và ESR của Thunderbird khi được hỗ trợ, mặc dù các giao diện thử nghiệm có thể thay đổi khi nền tảng phát triển.{/P}"
+    "message": "{P}Một thay đổi đã lên kế hoạch để hạn chế việc sử dụng API Experiment trên kênh Release đã được hoãn sang chu kỳ ESR tương lai (hiện đang hướng tới năm 2027).{/P}{P}{b}{+extensionName}{/b} tiếp tục hoạt động trên cả các phiên bản Release và ESR của Thunderbird.{/P}{P}Quan trọng đối với người dùng kênh Release ({emph}154 trở lên{/emph}): Với chu kỳ phát hành 2 tuần mới của Thunderbird, có nguy cơ cao xảy ra các lỗi không mong muốn như [issue 690]. Mặc dù tôi thường xuyên kiểm tra {+extensionName} với các bản dựng hàng ngày, các bản sửa lỗi kịp thời phụ thuộc vào {b}báo cáo sớm{/b} từ người dùng Release. Vui lòng theo dõi {a href='https://github.com/RealRaven2000/QuickFolders/issues'}trình theo dõi vấn đề{/a} và báo cáo lỗi nhanh chóng để duy trì khả năng tương thích.{/P}"
   },
   "newsSection.license": {
     "message": "Vì tất cả công việc trên QuickFolders và hỗ trợ miễn phí đều được tài trợ hoàn toàn từ việc bán giấy phép, vui lòng cân nhắc mua giấy phép hoặc gia hạn giấy phép hiện tại của bạn."

@@ -427,7 +427,7 @@
     "message": "{P}Wciąż podążamy za miesięcznym cyklem wydań Thunderbirda, aby zapewnić kompatybilność i stabilność. Jak zawsze, prace te są w całości finansowane ze sprzedaży licencji.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}Planowana zmiana mająca na celu ograniczenie użycia API Experiment w kanale Release została odłożona do następnego cyklu ESR (obecnie planowanego na 2027 rok).{/P}{P}Obecnie nie są wymagane żadne działania. Dodatki takie jak {b}{+extensionName}{/b} nadal działają zarówno w wersjach Release, jak i ESR Thunderbirda, gdzie są obsługiwane, choć interfejsy eksperymentalne mogą się zmieniać wraz z rozwojem platformy.{/P}"
+    "message": "{P}Planowana zmiana ograniczająca użycie API Experiment w kanale Release została przełożona na przyszły cykl ESR (obecnie przewidziana na 2027).{/P}{P}{b}{+extensionName}{/b} nadal działa zarówno w wersjach Release, jak i ESR Thunderbirda.{/P}{P}Ważne dla użytkowników kanału Release ({emph}154 i późniejsze{/emph}): Wraz z nowym 2-tygodniowym cyklem wydawniczym Thunderbirda występuje podwyższone ryzyko nieoczekiwanych błędów, takich jak [issue 690]. Chęc regularnie testuję {+extensionName} z codziennymi wersjami, terminowe poprawki zależą od {b}wczesnego zgłaszania{/b} przez użytkowników Release. Proszę śledzić {a href='https://github.com/RealRaven2000/QuickFolders/issues'}tracker problemów{/a} i zgłaszać błędy szybko, aby utrzymać kompatybilność.{/P}"
   },
   "newsSection.license": {
     "message": "Ponieważ cała praca nad QuickFolders i darmowe wsparcie są finansowane wyłącznie ze sprzedaży licencji, proszę rozważyć zakup licencji lub przedłużenie obecnej."

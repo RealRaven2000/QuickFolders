@@ -157,7 +157,7 @@
     "message": "{P}Naďalej sledujeme mesačný cyklus vydávania Thunderbirdu, aby sme zabezpečili kompatibilitu a stabilitu. Ako vždy, táto práca je úplne financovaná predajom licencií.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}Plánovaná zmena na obmedzenie používania Experiment API v kanáli Release bola odložená na ďalší ESR cyklus (aktuálne plánovaný na rok 2027).{/P}{P}V súčasnosti nie je potrebná žiadna akcia. Doplnky ako {b}{+extensionName}{/b} naďalej fungujú vo verziách Release aj ESR Thunderbirdu, kde sú podporované, hoci experimentálne rozhrania sa môžu v priebehu vývoja platformy meniť.{/P}"
+    "message": "{P}Plánovaná zmena obmedzujúca použitie Experiment API na Release kanáli bola odložená na budúci ESR cyklus (momentálne cielená na rok 2027).{/P}{P}{b}{+extensionName}{/b} nadálej funguje v Release aj ESR verziách Thunderbirdu.{/P}{P}Dôležité pre používateľov Release kanála ({emph}154 a novšie{/emph}): S novým 2-týždňovým cyklom vydávania Thunderbirdu existuje zvýšené riziko neočakávaných chýb ako [issue 690]. Hoci pravidelně testujem {+extensionName} s denneými buildmi, včasné opravy závisia od {b}včasného hlásenia{/b} od používateľov Release kanála. Prosím, sledujte {a href='https://github.com/RealRaven2000/QuickFolders/issues'}issue tracker{/a} a nahláste chyby rýchlo, aby ste pomohli udržať kompatibilitu.{/P}"
   },
   "newsSection.license": {
     "message": "Keďže všetka práca na QuickFolders a bezplatná podpora sú financované výhradne z predaja licencií, zvážte prosím zakúpenie licencie alebo obnovenie vašej aktuálnej."

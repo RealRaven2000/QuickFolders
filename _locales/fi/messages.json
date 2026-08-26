@@ -234,7 +234,7 @@
     "message": "{P}Seuraamme edelleen Thunderbirdin kuukausittaista julkaisusykliä varmistaaksemme yhteensopivuuden ja vakauden. Kuten aina, tämä työ rahoitetaan kokonaan lisenssimyynnillä.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}Suunniteltu muutos, joka rajoittaa Experiment API -rajapintojen käyttöä Release-kanavalla, on siirretty seuraavaan ESR-sykliin (arvioitu vuodelle 2027).{/P}{P}Tällä hetkellä ei tarvita toimenpiteitä. Lisäosat kuten {b}{+extensionName}{/b} toimivat edelleen sekä Release- että ESR-versioissa Thunderbirdistä, missä niitä tuetaan, vaikka kokeelliset rajapinnat voivat muuttua alustan kehittyessä.{/P}"
+    "message": "{P}Suunniteltu muutos Experiment-sovellusliittymien käytön rajoittamiseksi Release-kanavalla on siirretty tulevaan ESR-sykliin (tällä hetkellä tavoitteena vuosi 2027).{/P}{P}{b}{+extensionName}{/b} toimii edelleen sekä Release- että ESR-versioissa Thunderbirdistä.{/P}{P}Tärkeää Release-kanavan käyttäjille ({emph}154 ja uudemmat{/emph}): Thunderbirdin uuden 2 viikon julkaisusyklin myötä on kohonnut riski odottamattomille virheille kuten [issue 690]. Vaikka testaan säännöllisesti {+extensionName}-laajennusta päivittäisillä käännöksillä, oikea-aikaiset korjaukset riippuvat Release-käyttäjien {b}varhaisesta raportoinnista{/b}. Seuraa {a href='https://github.com/RealRaven2000/QuickFolders/issues'}ongelmien seurantaa{/a} ja ilmoita virheistä pikaisesti yhteensopivuuden ylläpitämiseksi.{/P}"
   },
   "newsSection.license": {
     "message": "Koska kaikki työ QuickFoldersin parissa ja ilmainen tuki rahoitetaan yksinomaan lisenssimyynnillä, harkitse lisenssin ostamista tai nykyisen uusimista."

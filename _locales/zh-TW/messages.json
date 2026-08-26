@@ -430,7 +430,7 @@
     "message": "{P}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{/P}"
   },
   "newsSection.important": {
-    "message": "{P}一項旨在限制Release頻道中Experiment API使用的計畫性變更已延後至下一個ESR週期（目前預計為2027年）。{/P}{P}目前不需要任何操作。{+extensionName}在支援的情況下，仍可於Release與ESR版本的Thunderbird中正常運作，儘管隨著平台發展，實驗性介面可能會有所變動。{/P}"
+    "message": "{P}原定限制在Release頻道上使用實驗API的變更已延後至未來的ESR週期（目前目標為2027年）。{/P}{P}{b}{+extensionName}{/b}繼續在Thunderbird的Release和ESR版本上運作。{/P}{P}對Release頻道使用者很重要（{emph}154及更高版本{/emph}）：隨著Thunderbird新的2週發布週期，出現如[issue 690]等意外故障的風險增加。雖然我定期使用每日建置測試{+extensionName}，但及時修復取決於Release使用者的{b}早期回報{/b}。請關注{a href='https://github.com/RealRaven2000/QuickFolders/issues'}問題追蹤器{/a}並迅速回報任何錯誤以維持相容性。{/P}"
   },
   "newsSection.license": {
     "message": "由於QuickFolders的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"

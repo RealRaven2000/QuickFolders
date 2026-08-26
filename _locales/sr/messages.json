@@ -388,7 +388,7 @@
     "message": "{P}Настављамо да пратимо месечни циклус издавања Thunderbird-а како бисмо осигурали компатибилност и стабилност. Као и увек, овај рад је у потпуности финансиран од продаје лиценци.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}Планирана промена за ограничавање употребе Experiment API-ја у Release каналу одложена је до следећег ESR циклуса (тренутно планираног за 2027).{/P}{P}Тренутно није потребна никаква акција. Додаци као {b}{+extensionName}{/b} и даље раде и у Release и у ESR верзијама Thunderbird-а где су подржани, иако се експериментални интерфејси могу мењати како се платформа развија.{/P}"
+    "message": "{P}Планирана промена којом се ограничава употреба Experiment API-ја на Release каналу одложена је за будући ESR циклус (тренутно планирано за 2027. годину).{/P}{P}{b}{+extensionName}{/b} наставља да ради и на Release и на ESR верзијама Thunderbird-а.{/P}{P}Важно за кориснике Release канала ({emph}154 и касније{/emph}): Са новим 2-недељним циклусом издавања Thunderbird-а, постоји повећан ризик од неочекиваних грешака као што је [issue 690]. Иако редовно тестирам {+extensionName} са дневним верзијама, правовремене исправке зависе од {b}раног пријављивања{/b} корисника Release канала. Молимо вас, пратите {a href='https://github.com/RealRaven2000/QuickFolders/issues'}пратилац проблема{/a} и брзо пријавите грешке како бисте помогли одржавању компатибилности.{/P}"
   },
   "newsSection.license": {
     "message": "Pošto se sav rad na QuickFolders-u i besplatan support finansiraju isključivo kroz prodaju licenci, razmislite o kupovini licence ili obnavljanju trenutne."

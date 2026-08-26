@@ -427,7 +427,7 @@
     "message": "{P}Continuamos a seguir o ciclo de lançamentos mensais do Thunderbird para garantir compatibilidade e estabilidade. Como sempre, este trabalho é totalmente financiado pelas vendas de licenças.{/P}"
   },
   "newsSection.important": {
-    "message": "{P}Uma alteração planeada para limitar o uso das APIs Experiment no canal Release foi adiada para o próximo ciclo ESR (atualmente previsto para 2027).{/P}{P}Neste momento não é necessária qualquer ação. Extensões como {b}{+extensionName}{/b} continuam a funcionar tanto nas versões Release como ESR do Thunderbird onde forem suportadas, embora as interfaces experimentais possam mudar à medida que a plataforma evolui.{/P}"
+    "message": "{P}Uma mudança planeada para limitar o uso de APIs Experiment no canal Release foi adiada para um futuro ciclo ESR (atualmente previsto para 2027).{/P}{P}{b}{+extensionName}{/b} continua a funcionar tanto nas versões Release como ESR do Thunderbird.{/P}{P}Importante para utilizadores do canal Release ({emph}154 e posteriores{/emph}): Com o novo ciclo de lançamento de 2 semanas do Thunderbird, existe um risco elevado de erros inesperados como [issue 690]. Embora eu teste regularmente {+extensionName} com compilações diárias, correções atempadas dependem de {b}relatórios precoces{/b} dos utilizadores Release. Por favor, siga o {a href='https://github.com/RealRaven2000/QuickFolders/issues'}rastreador de problemas{/a} e reporte quaisquer erros prontamente para manter a compatibilidade.{/P}"
   },
   "newsSection.license": {
     "message": "Como todo o trabalho no QuickFolders e o suporte gratuito são financiados exclusivamente pelas vendas de licenças, considere comprar uma licença ou renovar a sua atual."

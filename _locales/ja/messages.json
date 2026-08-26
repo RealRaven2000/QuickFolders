@@ -418,7 +418,7 @@
     "message": "{P}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{/P}"
   },
   "newsSection.important": {
-    "message": "{P}ReleaseチャンネルにおけるExperiment APIの使用を制限する予定の変更は、次のESRサイクル（2027年予定）まで延期されました。{/P}{P}現時点では対応は不要です。{+extensionName}は、サポートされている限りRelease版およびESR版のThunderbirdで引き続き動作しますが、プラットフォームの進化に伴い実験的インターフェースは変更される可能性があります。{/P}"
+    "message": "{P}ReleaseチャンネルでのExperiment APIの使用を制限する計画された変更は、将来のESRサイクル（現在2027年を目標）に延期されました。{/P}{P}{b}{+extensionName}{/b}はThunderbirdのRelease版とESR版の両方で引き続き動作します。{/P}{P}Releaseチャンネルユーザーへの重要なお知らせ（{emph}154以降{/emph}）：Thunderbirdの新2週間リリースサイクルにより、[issue 690]のような予期しない不具合のリスクが高まっています。私は{+extensionName}を毎日のビルドで定期的にテストしていますが、タイムリーな修正はReleaseユーザーからの{b}早期報告{/b}に依存しています。{a href='https://github.com/RealRaven2000/QuickFolders/issues'}課題トラッカー{/a}をフォローし、不具合を迅速に報告して互換性を維持してください。{/P}"
   },
   "newsSection.license": {
     "message": "QuickFoldersのすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"

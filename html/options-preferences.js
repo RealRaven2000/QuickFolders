@@ -153,10 +153,12 @@ var PrefCache = {
   },
   async syncFromStorage() {
     const storage = await browser.storage.local.get({ settings: {}, debug: {} });
+    // console.log("syncFromStorage", storage);
     this._data.settings = storage.settings ?? {};
     this._data.debug = storage.debug ?? {};
   },
   init: async function () {
+    // console.log("PrefCache.init");
     await this.syncFromStorage();
     const isDebug = this._data.debug?.debugActive || false;
     if (isDebug) {

@@ -100,6 +100,7 @@ function sanitizeCSS(el) {
 
 var licenseInfo;
 async function initLicenseInfo() {
+  
   licenseInfo = await browser.runtime.sendMessage({command:"getLicenseInfo"});
   console.log("getLicenseInfo returned ", licenseInfo);
   if (!licenseInfo) {
@@ -1205,6 +1206,9 @@ async function initLicenseInfoWithRetry() {
 }
 
 const startup = async () => {
+  const qfUtils = await import("../scripts/qf-util.mjs.js");
+  await qfUtils.waitForSessionReady();
+
   QuickFolders.Util.logDebug("Options.js - startup()\nCalling i18n.updateDocunent()...");
   
   i18n.updateDocument();
@@ -1216,7 +1220,9 @@ const startup = async () => {
   supportLabel.textContent = supportString;  
 
   // block for cache load!
+  console.log("Options- startup() - calling QuickFolders.Preferences.ensureReady()...");
   await QuickFolders.Preferences.ensureReady();
+  console.log("loadPrefs...");
   await loadPrefs();
   preselectTab();
   initVersionPanel();

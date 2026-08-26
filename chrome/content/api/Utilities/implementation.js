@@ -466,10 +466,15 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         updatePreferencesCache: (data) => {
-          const enumerator = Services.wm.getEnumerator("mail:3pane");
-          while (enumerator.hasMoreElements()) {
-            const win = enumerator.getNext();
-            win.QuickFolders.Preferences.cache.updateFromBackend(data);
+          const windowTypes = ["mail:3pane", "msgcompose", "mail:messageWindow"];
+          for (const type of windowTypes) {
+            const enumerator = Services.wm.getEnumerator(type);
+            while (enumerator.hasMoreElements()) {
+              const win = enumerator.getNext();
+              if (win.QuickFolders?.Preferences?.cache?.updateFromBackend) {
+                win.QuickFolders.Preferences.cache.updateFromBackend(data);
+              }
+            }
           }
           return true;
         },

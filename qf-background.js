@@ -1,4 +1,4 @@
-import { Preferences } from "./scripts/preferences.js";
+import { Preferences } from "./scripts/preferences.mjs";
 import * as util from "./scripts/qf-util.mjs.js";
 import { Licenser } from "./scripts/Licenser.mjs.js";
 // very nice config editor by John B:
@@ -596,13 +596,15 @@ async function filterMailsRegex(searchOptions, tabId = null) {
     }
   }
 
+  const oldSearchVal = await Preferences.get("findRelated.lastSearchVal");
   if (searchVal) {
     // Remember last extracted search term, so we can use this for a search reset
     // when user clicks "next unread message"
     // we MUST reset this whenever use changes to a different folder!!!
     // folder listener?
     await Preferences.set("findRelated.lastSearchVal", searchVal);
-  }
+    // Note: storage.onChanged automatically broadcasts this update to all windows
+  } 
 
   if (searchCriteria.includes("subject")) {
     searchTextProps.subject = true;
@@ -857,11 +859,8 @@ async function waitForMailTabsReady(timeoutMs = 5000) {
 async function main() {
   await prefsReady;
   const key = Preferences.get("LicenseKey") || "",
-    forceSecondaryIdentity =
-      (Preferences.get("licenser.forceSecondaryIdentity")) || false,
     isDebug = await isDebugOn(),
     isDebugLicenser =
-      (Preferences.get("debug.premium.licenser")) || false;
 
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();
@@ -899,14 +898,9 @@ async function main() {
     "getLastLoadedTheme",
     "storeLoadedTheme",
     "stageThemeChange",
-    "setCachedPref",
-    "setCachedPrefSet",
-    "setCachedModel",
-    "requestPrefCache",
     "openStorageEditor",
-    "deleteUserStyle"
+    "deleteUserStyle",
   ];
-
 
   // message listener - SELECTIVE!
   // every message listener must have its unique set of messages (if it returns something)
@@ -926,6 +920,7 @@ async function main() {
     return ExternalMessageApi.dispatch(message, _sender);
   });
 
+  // will be deprecated, Tb will use moz-src:/// which is relative to core
   messenger.WindowListener.registerChromeUrl([
     ["content", "quickfolders", "chrome/content/"],
     ["content", "quickfolders-skins", "chrome/content/skin/tb91/"],
@@ -1143,6 +1138,9 @@ async function main() {
     console.log("browserAction.click!");
     messenger.Utilities.toggleToolbarAction(false);
   });
+
+  // Session Ready signal:
+  await browser.storage.session.set({ "quickfolders.sessionReady": true });
 } // main
 
 
@@ -1576,15 +1574,6 @@ async function notificationHandler(data) {
     case "stageThemeChange":
       console.log(`QuickFolders: Staging Theme Change for ID = ${data.themeId}`);
       return await messenger.Utilities.stageThemeChange(data.themeId);
-
-    // [issue 677] local storage!
-    case "setCachedPref":
-      await Preferences.set(data.key, data.value);
-      return true;
-    case "setCachedPrefSet":
-      await Preferences.setMultiple(data.prefs);
-      return true;
-
     case "deleteUserStyle":
       {
         const isDebug = Preferences.get("debug.css");
@@ -1608,27 +1597,6 @@ async function notificationHandler(data) {
         delete Preferences._data[styleKey];
         logDebug("Preference deletion complete");
         return true;
-      }
-
-    case "setCachedModel":
-      return await Preferences.setModelFolders(data.folders || []);
-    case "requestPrefCache":
-      // sends cached data back to QuickFolders.Preferences.cache.updateFromBackend(data)
-      {
-        // merge debug settings into prefs, mapping debugActive → "debug" for frontend compatibility
-        const debugDataForCache = {};
-        for (const [k, v] of Object.entries(Preferences._debugData || {})) {
-          debugDataForCache[k === "debugActive" ? "debug" : k] = v;
-        }
-        return {
-          prefs: {
-            ...Preferences._data,
-            ...debugDataForCache,
-          },
-          model: {
-            folders: [...Preferences._model.folders],
-          },
-        };
       }
     case "openStorageEditor":
       webExtensionStorageEditor.open({
@@ -1658,11 +1626,6 @@ function registerNotifyListener() {
     return notificationHandler(data);
   });
 }
-
-
-registerNotifyListener();
-const prefsReady = Preferences.init(); // pending
-main();
 
 const MESSAGE_STORAGE_KEY = "QuickFolders_Message_Key";
 const showQFmessage = async (messageIds, features, message = "", quickfoldersFeatures = null) => {
@@ -1810,3 +1773,9 @@ async function displayUpdateMessage() {
     ); // 20 minutes
   }
 }
+
+registerNotifyListener();
+const prefsReady = Preferences.init(); // pending
+main();
+
+

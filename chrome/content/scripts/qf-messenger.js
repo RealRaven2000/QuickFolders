@@ -11,6 +11,7 @@ Services.scriptloader.loadSubScript(
   window,
   "UTF-8"
 );
+Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-storage.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-preferences.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-themes.js", window, "UTF-8");
 Services.scriptloader.loadSubScript("chrome://quickfolders/content/quickfolders-filterWorker.js", window, "UTF-8");

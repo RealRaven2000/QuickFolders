@@ -519,43 +519,50 @@ QuickFolders.Preferences.cache = (() => {
     getValue: (k) => cache._data[k],
 
     setValue: async (k, v) => {
-      cache._data[k] = v;
-      let varType = "undefined";
-      switch (typeof v) {
-        case "number":
-          varType = "int";
-          break;
-        case "boolean":
-          varType = "bool";
-          break;
-        case "string":
-          varType = "string";
-          break;
+      if (v === undefined) {
+        console.error(`setValue("${k}", undefined) - Cannot determine type. Missing value argument?`);
+        throw new Error(`Cannot set preference "${k}" to undefined`);
       }
+      cache._data[k] = v;
       try {
-        await QuickFolders.Util.notifyTools.notifyBackground({
-          func: "setCachedPref",
-          kind: varType,
-          key: k,
-          value: v,
-        });
+        const isDebug = k === "debug" || k.startsWith("debug.");
+        const storageKey = isDebug ? "debug" : "settings";
+        const dataKey = k === "debug" ? "debugActive" : k;
+        const current = await QuickFolders.Storage.get({ [storageKey]: {} });
+        current[storageKey][dataKey] = v;
+        await QuickFolders.Storage.set(current);
       } catch (ex) {
         console.error("Pref sync failed:", k, ex);
       }
     },
 
     setValueSet: async (prefs) => {
-      // optimized functino for multiple changes.
+      // optimized function for multiple changes.
       if (!prefs || typeof prefs !== "object") {
         return;
       }
       // 1. update local cache immediately
       Object.assign(cache._data, prefs);
       try {
-        await QuickFolders.Util.notifyTools.notifyBackground({
-          func: "setCachedPrefSet",
-          prefs
-        });
+        const settingsChanges = {};
+        const debugChanges = {};
+        for (const [k, v] of Object.entries(prefs)) {
+          if (k === "debug") {
+            debugChanges.debugActive = v;
+          } else if (k.startsWith("debug.")) {
+            debugChanges[k] = v;
+          } else {
+            settingsChanges[k] = v;
+          }
+        }
+        const current = await QuickFolders.Storage.get({ settings: {}, debug: {} });
+        if (Object.keys(settingsChanges).length) {
+          Object.assign(current.settings, settingsChanges);
+        }
+        if (Object.keys(debugChanges).length) {
+          Object.assign(current.debug, debugChanges);
+        }
+        await QuickFolders.Storage.set(current);
       } catch (ex) {
         console.error("Pref set batch sync failed:", ex);
       }
@@ -569,20 +576,24 @@ QuickFolders.Preferences.cache = (() => {
       });
 
       try {
-        logDebug(" - notifyTools:", QuickFolders.Util?.notifyTools);
-        const {prefs, model} = await QuickFolders.Util.notifyTools.notifyBackground({
-          func: "requestPrefCache",
-        });
-        cache._model.folders = [...(model?.folders || [])];
+        logDebug(" - QuickFolders.Storage:", QuickFolders.Storage);
+        const data = await QuickFolders.Storage.get({ settings: {}, debug: {}, model: { folders: [] } });
+        
+        // merge settings and debug into flat cache
+        const prefs = { ...data.settings };
+        for (const [k, v] of Object.entries(data.debug)) {
+          prefs[k === "debugActive" ? "debug" : k] = v;
+        }
+        
+        cache._model.folders = [...(data.model?.folders || [])];
         logDebug("Received preferences:", prefs);
         logDebug("Received model / folders:", cache._model);
         
         // remove all old data
         Object.keys(cache._data).forEach((k) => delete cache._data[k]);
         Object.assign(cache._data, prefs);
-        // fill cache._data from backend snapshot
       } catch (ex) {
-        console.error("requestPrefCache failed:", ex);
+        console.error("Cache init failed:", ex);
       }
       cache._resolveReady();
     },
@@ -593,9 +604,8 @@ QuickFolders.Preferences.cache = (() => {
     },
     async storeModel(model) {
       cache._model.folders = Array.isArray(model) ? model : [];
-      await QuickFolders.Util.notifyTools.notifyBackground({
-        func: "setCachedModel",
-        folders: cache._model.folders,
+      await QuickFolders.Storage.set({
+        model: { folders: cache._model.folders }
       });
     },
     loadModel() {

@@ -859,8 +859,9 @@ async function waitForMailTabsReady(timeoutMs = 5000) {
 async function main() {
   await prefsReady;
   const key = Preferences.get("LicenseKey") || "",
+    forceSecondaryIdentity = Preferences.get("licenser.forceSecondaryIdentity") || false,
     isDebug = await isDebugOn(),
-    isDebugLicenser =
+    isDebugLicenser = Preferences.get("debug.premium.licenser") || false;
 
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();

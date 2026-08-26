@@ -318,14 +318,31 @@
       <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.17"
 				 onclick="alert('This is still Work in Progress!\nPlease mail me if you want a preview version for testing.')"
 			>
-				 Version 6.17 - WIP
+				 Version 6.17 - 27/08/2026
 		  </a>
       </h4>
+
+      <div class="announcement">
+        <p>
+					A planned change to limit the use of Experiment APIs on the Release 
+					channel has been postponed to a future ESR cycle (currently targeted for 2027).
+				</p>
+        <p>
+					<b>QuickFolders</b> continues to work on both Release and ESR versions of 
+					Thunderbird.
+				</p>
+        <p>
+					Important for Release channel users (<em>154 and later</em>): 
+					With Thunderbird's new 2-week release cycle, there is an elevated risk
+					of unexpected breakages like <a href="https://github.com/RealRaven2000/QuickFolders/issues/690">[issue 690]</a>. While I regularly test QuickFolders against daily builds, timely fixes depend on <b>early reporting</b> from Release users. Please follow the <a href="https://github.com/RealRaven2000/QuickFolders/issues">issue 
+					tracker</a> and report any regressions promptly to help maintain compatibility.
+				</p>
+      </div>
 
       <ul>
 				<h4 class="inList">Improvements</h4>
         <li>
-					QuickFolders is now compatible with Thunderbird 154.
+					QuickFolders is now compatible with Thunderbird 155.
 				</li>
         <li>
 					Made width of tab separators adjustable.
@@ -356,8 +373,23 @@
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/673">[issue 673]</a>
 				</li>
         <li>
-					Fixed: quickMove shortcut to open recent folders menu.
-					<a href="https://github.com/RealRaven2000/QuickFolders/issues/687">[issue 687]</a>
+					Fixed: Tab Category Selector not rendering.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/692">[issue 692]</a>
+				</li>
+        <li>
+					Fixed: Find related mails doesn't stay in current folder when desired.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/694">[issue 694]</a>
+				</li>
+        <li>
+					Fixed: Empty Junk and other context menu items stopped working in Thunderbird 153.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/695">[issue 695]</a>
+				</li>
+        <li>
+					Force unsafe URL loading to enable Thunderbird 155 compatibility.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/690">[issue 690]</a>
+					According to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1974213">Bug 1974213</a>, 
+					Add-on Subscripts cannot be loaded anymore with the simple <tok>scriptloader.loadSubScript</tok> 
+					method - making them fail in Thunderbird 155.
 				</li>
 			</ul>
 
@@ -365,6 +397,10 @@
 				<h4 class="inList">Miscellaneous</h4>
         <li>
 					Simplified WindowListener by removing pre 140 compatibility code.
+				</li>
+        <li>
+					WIP: quickMove shortcut to open recent folders menu.
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/687">[issue 687]</a>
 				</li>
 			</ul>			
     </li>

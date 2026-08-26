@@ -2102,7 +2102,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L} {+extensionName} 現在與 Thunderbird 154 相容。{/L}{L} 存放區已從舊版偏好設定 ({code}about:config{/code}) 轉換為本機存放區 API [issue 677]。這可防止未來移除附加元件的舊版偏好設定存取權。{br}{emph}注意:{/emph} 現在可以卸載附加元件，將設定重設為預設值 — 首先使用 {italic}{+qf.tab.gopro}{/italic} 頁面上 {italic}{+qf.backupAndRestore}{/italic} 下的 {b}{+qf.storeConfig}{/b} 備份您的設定。{/L}{L} 標籤分隔符的宽度現在可調整。[issue 686]{/L}{L} 通過移除對 quickFilters 附加元件物件的直接存取，改善與未來 Thunderbird 版本的相容性 [issue 680]。{/L}{L} 已修正：訊息視窗內容區域在頂部被截斷 [issue 673] — 當 quickFilters 將其按鈕注入目前的資料夾列時發生。{emph}需要 quickFilters 6.13.1 或更新版本。{/emph}{/L}{L} 已修正：quickMove [=] 快捷鍵以開啟最近資料夾選單 [issue 687]。{/L}"
+    "message": "{L} {+extensionName} 現在相容 Thunderbird 155。{/L}{L} 存放區已從舊版偏好設定 ({code}about:config{/code}) 轉換為本機存放區 API [issue 677]。這可防止將來移除附加元件的舊版偏好設定存取權。{br}{emph}注意:{/emph} 現在可以卸載附加元件，將設定重設為預設值 — 首先使用 {italic}{+qf.tab.gopro}{/italic} 頁面上 {italic}{+qf.backupAndRestore}{/italic} 下的 {b}{+qf.storeConfig}{/b} 備份您的設定。{/L}{L} 標籤分隔符的寬度現在可調整。[issue 686]{/L}{L} 已修正：尋找相關郵件在需要時不會停留在目前資料夾 [issue 694]。{/L}{L} 已修正：清空垃圾郵件和其他情境選單項目在 Thunderbird 153 中停止工作 [issue 695]。{/L}{L} 已修正：訊息視窗內容區域頂部被截斷 [issue 673] — 當 quickFilters 將其按鈕注入目前資料夾欄時引起。{emph}需要 quickFilters 6.13.1 或更高版本。{/emph}{/L}{hr}{L} 強制載入不安全的 URL 以啟用 Thunderbird 155 相容性 [issue 690]。根據 [Bugzilla 1974213]，附加元件指令碼不能再使用簡單的 {code}scriptloader.loadSubScript{/code} 方法載入 - 導致它們在 Thunderbird 155 中失敗。{/L}{L} 現代化 quickFilters 整合以使用背景通訊而不是直接程式碼存取副作用 [issue 680]。{/L}"
   },
   "whats-new-maintenance": {
     "message": "維護更新 $ver$。此特定修正已包含在上一個版本之後的更新中。",

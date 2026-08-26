@@ -1,17 +1,16 @@
 
-This release updates QuickFolders to reflect recent changes in Thunderbird’s add-on platform planning. A previously announced restriction affecting Experiment APIs on the Release channel has been postponed to a later ESR cycle (currently targeted for 2027).
+This release updates QuickFolders for compatibility with Thunderbird 154 and 155. Thunderbird 155 introduced breaking changes that would prevent legacy add-ons using script injection via WindowListener from working. <a href="https://github.com/RealRaven2000/QuickFolders/issues/690">[issue 690]</a>
 
-No immediate action is required. QuickFolders continues to work on both Release and ESR versions of Thunderbird where supported.
 
-Users who rely on advanced or experimental functionality may prefer the ESR channel for a more stable environment with fewer platform changes. The recommended migration point from Release to ESR is Thunderbird 153, expected in July 2026.
+Additional regressions are expected within the Thunderbird release branch and will be addressed as they occur. Users who rely on advanced or experimental functionality may prefer the ESR channel for a more stable environment with fewer platform changes.
 
 <b>Improvements</b>
 
 <ul>
-  <li>QuickFolders is now compatible with Thunderbird 154.</li>
-  <li>Made width of tab separators adjustable. <a href="https://github.com/RealRaven2000/QuickFolders/issues/686">[issue 686]</a></li>
-  <li>Improved compatibility with future Thunderbird versions by removing direct access to the QuickFolders add-on object. <a href="https://github.com/RealRaven2000/QuickFolders/issues/680">[issue 680]</a></li>
-  <li>Converted storage from legacy preferences (<tok>about:config</tok>) to local storage API. <a href="https://github.com/RealRaven2000/QuickFolders/issues/677">[issue 677]</a> 
+  <li> QuickFolders is now compatible with Thunderbird 155.</li>
+  <li> Width of individual tab separators is now adjustable - via QuickFolders commands submenu. <a href="https://github.com/RealRaven2000/QuickFolders/issues/686">[issue 686]</a></li>
+  <li> Modernized quickFilters integration to use background communications instead of direct code access side-effect. <a href="https://github.com/RealRaven2000/QuickFolders/issues/680">[issue 680]</a></li>
+  <li> Converted storage from legacy preferences (<tok>about:config</tok>) to local storage API. <a href="https://github.com/RealRaven2000/QuickFolders/issues/677">[issue 677]</a> 
     
   Settings can now be reset to defaults by uninstalling the add-on — back up your settings first using <b>Store Configuration</b> under <b>Backup and Restore</b>.</li>
 </ul>
@@ -19,15 +18,18 @@ Users who rely on advanced or experimental functionality may prefer the ESR chan
 <b>Bug Fixes</b>
 
 <ul>
-  <li>Fixed: messages window content area truncated at the top. <a href="https://github.com/RealRaven2000/QuickFolders/issues/673">[issue 673]</a></li>
-  <li>Fixed: quickMove shortcut to open recent folders menu. <a href="https://github.com/RealRaven2000/QuickFolders/issues/687">[issue 687]</a></li>
+  <li> Fixed: messages window content area truncated at the top. <a href="https://github.com/RealRaven2000/QuickFolders/issues/673">[issue 673]</a></li>
+  <li> Fixed: Tab Category Selector not rendering. <a href="https://github.com/RealRaven2000/QuickFolders/issues/692">[issue 692]</a></li>
+  <li> Fixed: Find related mails doesn't stay in current folder when desired. <a href="https://github.com/RealRaven2000/QuickFolders/issues/694">[issue 694]</a></li>
+  <li> Fixed: Empty Junk and other context menu items stopped working in Thunderbird 153. <a href="https://github.com/RealRaven2000/QuickFolders/issues/695">[issue 695]</a></li>
+  <li> Force unsafe URL loading to enable Thunderbird 155 compatibility. According to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1974213">Bug 1974213</a>, Subscripts cannot be loaded anymore with the simple Add-on scriptloader.loadSubScript method - making them fail in Thunderbird 155. <a href="https://github.com/RealRaven2000/QuickFolders/issues/690">[issue 690]</a></li>
 </ul>
 
 <b>Miscellaneous</b>
 
 <ul>
   <li> Simplified WindowListener by removing pre 140 compatibility code.</li>
-</ul>
+  <li> WIP: quickMove shortcut to open recent folders menu. <a href="https://github.com/RealRaven2000/QuickFolders/issues/687">[issue 687]</a></li></ul>
 
 
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.

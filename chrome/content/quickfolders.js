@@ -326,13 +326,17 @@ END LICENSE BLOCK */
     ## [issue 676] Thunderbird 152 - Go to next [unread] mail doesn't reset QuickFilters search
 
   6.17 QuickFolders Pro - WIP
-    ## Compatibility with Thunderbird 154
+    ## Compatibility with Thunderbird 155
     ## [issue 677] Converted storage from legacy preferences (about:config) to local storage (API compatible)
     ## [issue 686] Adjustable width of tab separators 
     ## [issue 680] Removed legacy quickFilters integration via window.quickFilters side-effect
     ## [issue 673] Fixed: serious regression in v6.16.1 - messages window content area truncated at the top.
     ## Simplified WindowListener by removing pre 140 compatibility code
     ## [issue 687] WIP: quickMove "=" shortcut to open recent folders menu no longer working
+    ## [issue 690] Force unsafe URL loading to enable TB155 compatibility (see Bug 1974213) - #386
+    ## [issue 692] Tab Category Selector is not rendering
+    ## [issue 694] Find related mails doesn't stay in current folder when desired
+    ## [issue 695] Tb 153: Empty Junk and other context menu items stopped working
 
 
 	TO DO next
@@ -2276,25 +2280,6 @@ var QuickFolders = {
       }
     },
   },
-
-  /*
-  addFolderPaneListener: function addFolderPaneListener() {
-    if (!this.folderPaneListen) {
-      let menu = document.getElementById('folderPaneContext');
-      if (menu) {
-        menu.addEventListener("popupshowing", QuickFolders.Interface.folderPanePopup, false);
-      }
-    }
-    this.folderPaneListen= true;
-  },
-  
-  removeFolderPaneListener: function() {
-    let menu = document.getElementById('folderPaneContext');
-    if (menu) {
-      menu.removeEventListener("popupshowing", QuickFolders.Interface.folderPanePopup);
-    }
-  },
-  */
 
   TabEventListeners: {},
 

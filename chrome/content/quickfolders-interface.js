@@ -1589,6 +1589,10 @@ QuickFolders.Interface = {
     }
     cat.style.display = showToolIcon || isCustomCat ? "inline-flex" : "none";
     cat.collapsed = !isCustomCat;
+    if (isCustomCat) {
+      // [issue 692]
+      cat.removeAttribute("hidden");
+    }
 
     if (this.currentActiveCategories) {
       if (this.currentActiveCategories == FCat.UNCATEGORIZED) {

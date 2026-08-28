@@ -12,7 +12,10 @@ QuickFolders.Styles = {
 
   getMyStyleSheet: function (doc, Name, Title) {
     function checkMatch(sheet, href) {
-      return (Title && sheet.title == Title) || (href && href.includes(Name));
+      return (
+        (href && href.includes(Name)) ||
+        (Title && sheet?.title?.toLowerCase() == Title.toLowerCase())
+      );
     }
     function makeDebugEntry(cnt, ss, href) {
       return cnt + ". " + href + (ss.title ? " [" + ss.title + "]" : "") + "\n";

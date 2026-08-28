@@ -38,8 +38,8 @@ function getThunderbirdVersion() {
   }
 }
 var WindowListener = class extends ExtensionCommon.ExtensionAPI {
-  log(msg) {
-    if (this.debug) console.log("WindowListener API: " + msg);
+  log(...msg) {
+    if (this.debug) console.log("WindowListener API: ", ...msg);
   }
 
   /**
@@ -73,7 +73,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
           e.stopPropagation();
           let WL = {};
           WL.context = this.context;
-          console.log("WL handleEvent (options) context:", WL.context);
+          self.log("[handleEvent (options)] context:", WL.context);
           WL.extension = this.extension;
           WL.messenger = this.getMessenger(this.context);
           let w = Services.wm.getMostRecentWindow("mail:3pane");
@@ -418,7 +418,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
           let window = context.extension.windowManager.get(windowId, context).window;
           let WL = {};
           WL.context = this.context;
-          console.log("WL openOptionsDialog context:", WL.context);
+          self.log("[openOptionsDialog context]", WL.context);
           WL.extension = self.extension;
           WL.messenger = self.getMessenger(self.context);
           window.openDialog(
@@ -436,7 +436,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
             let startupJS = {};
             startupJS.WL = {};
             startupJS.WL.context = self.context;
-            console.log("WL startupJS context:", startupJS.WL.context);            
+            self.log("[startListening startupJS context]", startupJS.WL.context);
             startupJS.WL.extension = self.extension;
             startupJS.WL.messenger = self.getMessenger(self.context);
             try {
@@ -667,7 +667,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
                 insertBeforeElement.parentNode.insertBefore(elements[i], insertBeforeElement);
               } else if (elements[i].id && window.document.getElementById(elements[i].id)) {
                 // existing container match, dive into recursivly
-                if (debug)
+                if (debug) 
                   console.log(
                     elements[i].tagName +
                       "#" +

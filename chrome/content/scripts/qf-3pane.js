@@ -725,8 +725,10 @@ function onUnload(isAddOnShutown) {
   removeBtn('quickfilters-current-msg-runbutton');
   removeBtn('quickfilters-current-searchfilterbutton');
 
-  window.removeEventListener("windowlwthemeupdate", globalThemehandler);  
-  this.notifyTools.removeListener(this.notifyListenerId);
+  window.removeEventListener("windowlwthemeupdate", globalThemehandler);
+  if (this.notifyTools) {
+    this.notifyTools.removeListener(this.notifyListenerId);
+  }
   globalThemehandler = null;
 }
 // store a global reference for manual calling:

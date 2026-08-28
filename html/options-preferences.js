@@ -28,7 +28,7 @@ QuickFolders.Preferences = {
     return PrefCache.isDebug(option);
   },
 
-  getUserStyle: async function getUserStyle(sId, sType, sDefault) {
+  getUserStyle: async function (sId, sType, sDefault) {
     // note: storing color as string in order to store OS specific colors like Menu, Highlight
     // usage: getUserStyle("ActiveTab","background-color","HighLight")
     // usage: getUserStyle("ActiveTab","color", "HighlightText")
@@ -48,7 +48,7 @@ QuickFolders.Preferences = {
     return sReturnValue;
   },
 
-  setUserStyle: async function setUserStyle(sId, sType, sValue) {
+  setUserStyle: async function (sId, sType, sValue) {
     let sStyleName = "style." + sId + "." + sType;
     await this.setStringPref(sStyleName, sValue);
   },

@@ -9,7 +9,7 @@
 
 ///// tab listener watches tabmail (mail tabs)
 QuickFolders.TabListener = {
-  selectTab: function (_evt) {
+  selectTab: async function (_evt) {
     try {
       if (QuickFolders) {
         const util = QuickFolders.Util,
@@ -36,6 +36,7 @@ QuickFolders.TabListener = {
             console.log("{LISTENERS.TABMAIL}\nMissing QuickFoldersCategory in tabInfo:", info);
           }
 
+          await QuickFolders.Preferences.ensureReady(); // wait for cache before reading prefs
           let lastCats = QuickFolders.Preferences.getStringPref("lastActiveCategories"); // last one looked at
           if (lastCats) {
             console.log(`{LISTENERS.TABMAIL} select category ${lastCats}`);

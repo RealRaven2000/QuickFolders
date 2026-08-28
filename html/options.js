@@ -528,53 +528,63 @@ document.getElementById("pasteFolders").addEventListener("click", () => {
 });
 
 document.getElementById("btnSaveConfig").addEventListener("click", async () => {
-  // legacy code - needs to go via background 
+  // legacy code - needs to go via background
   let storedObj = {
-    general : [],
+    general: [],
     advanced: [],
     layout: [],
-    userStyle: []
-  }
-  let isLicense = (licenseInfo.isExpired || licenseInfo.isValidated)
+    userStyle: [],
+  };
+  let isLicense = licenseInfo.isExpired || licenseInfo.isValidated;
   for (let it of document.querySelectorAll("[data-pref-name]")) {
     let value;
     if (it.tagName == "SELECT") {
       let p = it.getAttribute("preference");
-      if (p.includes("PaletteType") || p.includes("folderPathDetail")) { value = parseInt(it.value,10); }
-      else { value = it.value; }
-    } else { 
-      switch(it.type) {
+      if (p.includes("PaletteType") || p.includes("folderPathDetail")) {
+        value = parseInt(it.value, 10);
+      } else {
+        value = it.value;
+      }
+    } else {
+      switch (it.type) {
         case "checkbox":
           value = it.checked;
           break;
-        case "text": case "color":
+        case "text":
+        case "color":
           value = it.value;
           break;
-        case "number": 
-          value = parseInt(it.value,10);
+        case "number":
+          value = parseInt(it.value, 10);
           break;
-        case "radio": 
-          if (!it.checked) {continue;}
+        case "radio":
+          if (!it.checked) {
+            continue;
+          }
           value = it.value;
           break;
-        default: 
+        default:
           continue;
       }
     }
-    
-    let node = { key: it.getAttribute("data-pref-name"), val: value, originalId: it.getAttribute("preference") };
-    if(node.originalId) {
-      switch (node.originalId.substr(0,5)) {
-        case 'qfpg-':  // general
+
+    let node = {
+      key: it.getAttribute("data-pref-name"),
+      val: value,
+      originalId: it.getAttribute("preference"),
+    };
+    if (node.originalId) {
+      switch (node.originalId.substr(0, 5)) {
+        case "qfpg-": // general
           storedObj.general.push(node);
           break;
-        case 'qfpa-':  // advanced
+        case "qfpa-": // advanced
           storedObj.advanced.push(node);
           break;
-        case 'qfpl-':  // layout
+        case "qfpl-": // layout
           storedObj.layout.push(node);
           break;
-        case 'qfpp-':  // premium - make sure not to import the License without confirmation!
+        case "qfpp-": // premium - make sure not to import the License without confirmation!
           if (isLicense) {
             storedObj.premium.push(node);
           }
@@ -582,20 +592,19 @@ document.getElementById("btnSaveConfig").addEventListener("click", async () => {
         default:
           console.log("Not storing - unknown preference ", node);
       }
-    }
-    else {
+    } else {
       console.log(node);
     }
   }  
   
   let elements = document.querySelectorAll("[type=color]"); //getElementsByTagName('html:input');
-  for (let i=0; i<elements.length; i++) {
+  for (let i = 0; i < elements.length; i++) {
     let element = elements[i];
     let node = { elementInfo: element.getAttribute("elementInfo"), val: element.value };
     storedObj.userStyle.push(node);
-  }  
-  
-  return await messenger.Utilities.storeConfig(storedObj);  
+  }
+
+  return await messenger.Utilities.storeConfig(storedObj);
 });
 
 function setMinPositiveListeners() {
@@ -696,7 +705,7 @@ document.getElementById("btnLoadConfig").addEventListener("click", async () => {
         let {name, style} = QuickFolders.Options.getColorPickerVars(colPick.id);
         QuickFolders.Options.styleUpdate(name, style, item.val, 
           colPick.getAttribute("previewLabel") || colPick.getAttribute("aria-labelledby"));
-      }
+      } 
     }
   }
   await loadPrefs();

@@ -595,8 +595,31 @@ document.getElementById("btnSaveConfig").addEventListener("click", async () => {
     } else {
       console.log(node);
     }
-  }  
-  
+  }
+
+  // add missing style.*.paletteEntry - store settings without binding!
+  /* 
+    const buttonStates = ["DragOver", "InactiveTab", "ActiveTab", "ColoredTab", "HoveredTab"];
+    style.InactiveTab.paletteType;
+    style.DragOver.paletteType;
+    style.ActiveTab.paletteType;
+    style.ColoredTab.paletteType;
+    style.HoveredTab.paletteType;
+  */
+  let previewTabs = document.querySelectorAll(".qfTabPreview");
+  for (const previewTab of previewTabs) {
+    const buttonState = previewTab.getAttribute("stylePrefKey");
+    if (!buttonState)  { continue; }
+    let stylePref = `style.${buttonState}.paletteEntry`;
+
+    let node = {
+      elementInfo: previewTab.id, // element not bound - it has no "value"!
+      key: stylePref,
+      val: await QuickFolders.Preferences.getIntPref(stylePref),
+    };
+    storedObj.layout.push(node);
+  }
+
   let elements = document.querySelectorAll("[type=color]"); //getElementsByTagName('html:input');
   for (let i = 0; i < elements.length; i++) {
     let element = elements[i];
@@ -698,7 +721,9 @@ document.getElementById("btnLoadConfig").addEventListener("click", async () => {
     // { key: it.getAttribute("data-pref-name"), val: value, originalId: it.getAttribute("preference") }
     if (item.key) {
       await QuickFolders.Preferences.setStringPref(item.key, item.val);
-    } else if (item.elementInfo) {
+      continue;
+    } 
+    if (item.elementInfo) {
       let colPick = colorpickers.find(e => e.getAttribute("elementInfo") == item.elementInfo);
       if (colPick) {
         colPick.value = item.val;

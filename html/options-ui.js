@@ -214,9 +214,14 @@ QuickFolders.Options = {
     return QuickFolders.Util.getRGBA(color, transparent ? 0.25 : 1.0);
   },
 
+  // UI reflects value of style, then persists to storage
   styleUpdate: async function (elementName, elementStyle, styleValue, label) {
     let util = QuickFolders.Util;
     util.logDebug("styleUpdate(" + elementName + ")...");
+    if (!elementName) {
+      util.logDebug("styleUpdate() EARLY EXIT - no elementName!");
+      return false;
+    }
     util.logDebugOptional(
       "interface.buttonStyles",
       "styleUpdate(" + elementName + ", " + elementStyle + ", " + styleValue + ")"
@@ -1288,6 +1293,8 @@ QuickFolders.Options = {
 
   getColorPickerVars: function (colPickId) {
     switch (colPickId) {
+      case "currentfolder-icons-colorpicker":
+        return { name: "CurrentFolderIcons", style: "color", preview: null };
       case "toolbar-colorpicker":
         return { name: "Toolbar", style: "background-color", preview: "qf-StandardColors" };
       case "inactive-fontcolorpicker":

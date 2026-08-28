@@ -53,7 +53,7 @@ QuickFolders.Interface = {
             stylePref = "style." + styleKey + ".",
             userStyleKey = styleKey == "DragOver" ? "DragTab" : styleKey; // fix naming inconsistency
           if (stylePref) {
-            prefs.setIntPref(stylePref + "paletteEntry", col);
+            await prefs.setIntPref(stylePref + "paletteEntry", col);
           }
 
           // special rule: if this is the Active Tab Color, let's also determine the active BG (bottom pixel of gradient!)

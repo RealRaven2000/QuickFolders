@@ -305,9 +305,22 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                     changedRecords.push(data.layout[i]);
                   }
                   isLayoutModified = true;
+                }
 
+                if (data.userStyle) {
                   for (let i = 0; i < data.userStyle.length; i++) {
-                    changedRecords.push(data.userStyle[i]);
+                    const eli = data.userStyle[i].elementInfo;
+                    if (!data.userStyle[i]?.val && 0!==(data.userStyle[i]?.val)) {
+                      continue;
+                    }
+                    const record = {
+                      key: `style.${eli}`,
+                      val: data.userStyle[i]?.val,
+                    };
+                    if (data.userStyle[i].elementInfo) {
+                      record.elementInfo = data.userStyle[i].elementInfo;
+                    }
+                    changedRecords.push(record);
                   }
                 }
 

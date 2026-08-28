@@ -239,6 +239,7 @@ pref("extensions.quickfolders.debug.saleDate","");
 pref("extensions.quickfolders.debug.advancedTabProperties.forcePopup",false);// force popup mode in LInux + Mac
 pref("extensions.quickfolders.debug.toolbarHiding", false);
 pref("extensions.quickfolders.debug.updateFolders", false);
+pref("extensions.quickfolders.debug.storage.cache", false); // debnug the new storage migration
 
 pref("extensions.quickfolders.notifications.compactComplete", true); // notify when folder compacting is complete
 

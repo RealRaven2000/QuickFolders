@@ -366,16 +366,41 @@ export const Preferences = {
     }
   },
   async init() {
-    // a flat object. e.g. stored["refreshHeaders.wait"] = 150;
-    let {
-      settings = {},
-      debug = {},
-      model = { folders: [] },
-    } = await browser.storage.local.get({
-      settings: {},
-      debug: {},
-      model: { folders: [] },
-    });
+    // [issue 697] Retry logic for IndexedDB startup failures
+    const maxRetries = 6;
+    const delays = [100, 500, 1000, 2000, 4000, 10000]; // exponential backoff
+    let settings = {};
+    let debug = {};
+    let model = { folders: [] };
+
+    for (let attempt = 0; attempt < maxRetries; attempt++) {
+      try {
+        // a flat object. e.g. stored["refreshHeaders.wait"] = 150;
+        const result = await browser.storage.local.get({
+          settings: {},
+          debug: {},
+          model: { folders: [] },
+        });
+        settings = result.settings || {};
+        debug = result.debug || {};
+        model = result.model || { folders: [] };
+
+        if (attempt > 0) {
+          console.log(`[Preferences.init] Storage ready after ${attempt + 1} attempts`);
+        }
+        break; // Success - exit retry loop
+      } catch (ex) {
+        if (attempt < maxRetries - 1) {
+          const delay = delays[attempt];
+          console.warn(`[Preferences.init] Storage not ready (attempt ${attempt + 1}/${maxRetries}): ${ex.message}. Retrying in ${delay}ms...`);
+          await new Promise(resolve => setTimeout(resolve, delay));
+        } else {
+          console.error(`[Preferences.init] Failed after ${maxRetries} attempts:`, ex);
+          throw ex; // Final attempt failed
+        }
+      }
+    }
+
     const version = settings.settingsVersion ?? 0;
     Preferences._model = model;
 
@@ -452,7 +477,7 @@ export const Preferences = {
     // live sync all changes to cache. do not include model / folders
     messenger.storage.onChanged.addListener((changes, area) => {
       try {
-        console.log("Preferences onChanged:", changes);
+        console.debug("QF Preferences onChanged:", changes);
         if (area !== "local") {
           return;
         }
@@ -645,8 +670,8 @@ export const Preferences = {
 
     const migratedOptions = {};
     const migratedDebug = {};
-    // these stored entities have no defaults:
-    const specialValues = ["LicenseKey.backup", "debug"];
+    // legacy prefs that need special handling (renamed or no default):
+    const specialValues = ["debug"];
 
     // Folders migration: stuff into _model.folders:
     let rawFolders;

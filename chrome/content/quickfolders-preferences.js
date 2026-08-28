@@ -400,10 +400,8 @@ QuickFolders.Preferences = {
       if (!Object.keys(clean).length) {
         return true;
       }
-      await QuickFolders.Util.notifyTools.notifyBackground({
-        func: "setCachedPrefSet",
-        prefs: clean,
-      });
+      // Use cache.setValueSet instead of notifyBackground (regression fix for [issue 696])
+      await QuickFolders.Preferences.cache.setValueSet(clean);
 
       return true;
     } catch (e) {
@@ -499,17 +497,26 @@ QuickFolders.Preferences = {
   },
 
   ensureReady: async function () {
+    // awaitReady is a Promise object
     await QuickFolders.Preferences.cache.awaitReady;
   },
 };
 
 QuickFolders.Preferences.cache = (() => {
-  const debugCache = false;
+  const debugCache = (() => {
+    try {
+      return Services.prefs.getBoolPref("extensions.quickfolders.debug.storage.cache");
+    } catch {
+      console.error("Failed to read debug storage cache preference [debug.storage.cache]");
+      // something goes wrong - then we debug!
+      return true;
+    }
+  })();
   const logDebug = (...args) => {
     if (!debugCache) {
       return;
     }
-    console.log("Preferences Cache:", ...args);
+    console.log("QF Preferences Cache:", ...args);
   };
   const cache = {
     _data: {},
@@ -519,6 +526,7 @@ QuickFolders.Preferences.cache = (() => {
     getValue: (k) => cache._data[k],
 
     setValue: async (k, v) => {
+      logDebug(`setValue("${k}") = "${v}" ${!cache.awaitReady ? ". Cache not ready!" : ""}`);
       if (v === undefined) {
         console.error(`setValue("${k}", undefined) - Cannot determine type. Missing value argument?`);
         throw new Error(`Cannot set preference "${k}" to undefined`);
@@ -531,8 +539,10 @@ QuickFolders.Preferences.cache = (() => {
         const current = await QuickFolders.Storage.get({ [storageKey]: {} });
         current[storageKey][dataKey] = v;
         await QuickFolders.Storage.set(current);
+        logDebug(`setValue("${k}") completed`);
       } catch (ex) {
-        console.error("Pref sync failed:", k, ex);
+        console.error(`[#697] Pref sync failed for "${k}":`, ex);
+        logDebug(`setValue("${k}") FAILED:`, ex.message);
       }
     },
 
@@ -570,14 +580,19 @@ QuickFolders.Preferences.cache = (() => {
 
     init: async () => {
       // create an async blocker.
+      console.log("[#697] Cache init starting at", new Date().toISOString());
       cache.awaitReady = new Promise((resolve) => {
         // blocks all external callers until we're done here
         cache._resolveReady = resolve;
       });
 
       try {
+        logDebug("Cache init: calling Storage.get()");
         logDebug(" - QuickFolders.Storage:", QuickFolders.Storage);
         const data = await QuickFolders.Storage.get({ settings: {}, debug: {}, model: { folders: [] } });
+        logDebug("Cache init: Storage.get() returned successfully. Initializing folders model...");
+        cache._model.folders = [...(data.model?.folders || [])];
+        logDebug("Received model / folders:", cache._model);
         
         // merge settings and debug into flat cache
         const prefs = { ...data.settings };
@@ -585,17 +600,19 @@ QuickFolders.Preferences.cache = (() => {
           prefs[k === "debugActive" ? "debug" : k] = v;
         }
         
-        cache._model.folders = [...(data.model?.folders || [])];
         logDebug("Received preferences:", prefs);
-        logDebug("Received model / folders:", cache._model);
         
         // remove all old data
         Object.keys(cache._data).forEach((k) => delete cache._data[k]);
         Object.assign(cache._data, prefs);
+        logDebug("Cache initialization successful");
       } catch (ex) {
-        console.error("Cache init failed:", ex);
+        console.error("[#697] Cache init failed:", ex);
+        logDebug("Cache init FAILED:", ex.message, ex.stack);
       }
       cache._resolveReady();
+      logDebug("Cache is now ready - awaitReady promise resolved");
+      console.log("[#697] Cache init completed at", new Date().toISOString());
     },
 
     updateFromBackend: (data) => {
@@ -617,4 +634,5 @@ QuickFolders.Preferences.cache = (() => {
   return cache;  
 })();
 
+console.log("[#697] About to call cache.init() at", new Date().toISOString());
 QuickFolders.Preferences.cache.init();

@@ -613,13 +613,15 @@ var QuickFolders = {
 
       // [issue 397] Filter Assistant Auto-start not working with quickMove function
       // Keep this quickFilters-agnostic: preference is bridged via getFiltersBoolPref().
-      const autoStart = await prefs.getFiltersBoolPref("autoStart", false);
-      if (autoStart && !QuickFolders.FilterWorker.AssistantActive) {
-        const assistantActive = await QuickFolders.FilterWorker.isAssistantActive();
-        if (assistantActive) {
-          await QuickFolders.FilterWorker.toggle_FilterMode(true);
+      win.setTimeout(async () => {
+        const autoStart = await prefs.getFiltersBoolPref("autoStart", false);
+        if (autoStart && !QuickFolders.FilterWorker.AssistantActive) {
+          const assistantActive = await QuickFolders.FilterWorker.isAssistantActive();
+          if (assistantActive) {
+            await QuickFolders.FilterWorker.toggle_FilterMode(true);
+          }
         }
-      }
+      }, 10000);
 
       this.initDone = true;
     }
@@ -3071,4 +3073,3 @@ QuickFolders.CopyListener = {
 QuickFolders.LocalErrorLogger = function(msg) {
 	Services.console.logStringMessage("QuickFolders: " + msg);
 }
-

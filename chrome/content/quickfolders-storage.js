@@ -105,6 +105,33 @@ QuickFolders.Storage = new (class LocalStorage {
     }
   }
 
+  async getWithRetry(keys = null, timeout = 5000) {
+    const delays = [250, 1000, 5000, 8000];
+    for (let attempt = 0; ; attempt++) {
+      let timeoutId;
+      try {
+        return await Promise.race([
+          this.get(keys),
+          new Promise((_, reject) => {
+            timeoutId = setTimeout(
+              () => reject(new Error(`Storage.get() timed out after ${timeout}ms`)),
+              timeout,
+            );
+          }),
+        ]);
+      } catch (ex) {
+        if (attempt >= delays.length) {
+          throw ex;
+        }
+        this._storage = null;
+        this._call = null;
+        await new Promise((resolve) => setTimeout(resolve, delays[attempt]));
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    }
+  }
+
   async set(items) {
     this.logDebug("set() START - keys:", Object.keys(items));
     try {

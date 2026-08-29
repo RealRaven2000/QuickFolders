@@ -589,7 +589,13 @@ QuickFolders.Preferences.cache = (() => {
       try {
         logDebug("Cache init: calling Storage.get()");
         logDebug(" - QuickFolders.Storage:", QuickFolders.Storage);
-        const data = await QuickFolders.Storage.get({ settings: {}, debug: {}, model: { folders: [] } });
+        // Storage.get() can fail on Thunderbird startup!
+        // this method tries to avoid that
+        const data = await QuickFolders.Storage.getWithRetry({
+          settings: {},
+          debug: {},
+          model: { folders: [] },
+        });
         logDebug("Cache init: Storage.get() returned successfully. Initializing folders model...");
         cache._model.folders = [...(data.model?.folders || [])];
         logDebug("Received model / folders:", cache._model);

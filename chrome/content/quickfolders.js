@@ -325,7 +325,7 @@ END LICENSE BLOCK */
   6.16.3 QuickFolders Pro - 18/06/2026
     ## [issue 676] Thunderbird 152 - Go to next [unread] mail doesn't reset QuickFilters search
 
-  6.17 QuickFolders Pro - WIP
+  6.17 QuickFolders Pro - 26/08/2026
     ## Compatibility with Thunderbird 155
     ## [issue 677] Converted storage from legacy preferences (about:config) to local storage (API compatible)
     ## [issue 686] Adjustable width of tab separators 
@@ -337,6 +337,13 @@ END LICENSE BLOCK */
     ## [issue 692] Tab Category Selector is not rendering
     ## [issue 694] Find related mails doesn't stay in current folder when desired
     ## [issue 695] Tb 153: Empty Junk and other context menu items stopped working
+
+  6.17.1 QuickFolders Pro - WIP 
+    ## [issue 696] quickMove shows stale folder name
+    ## [issue 697] QuickFolders 6.17 - stuck "initialising QuickFolders" on some systems in Tb 154.
+    ## [issue 698] Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files.
+
+
 
 
 	TO DO next

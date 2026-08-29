@@ -1,3 +1,8 @@
+**Maintenance Release 6.17.1**
+*   Fixed: QuickFolders stuck 'initialising QuickFolders' on some systems in Tb 154. [issue #697]
+*   Fixed: quickMove shows stale folder name. [issue #696]
+*   Fixed: Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files. [issue #698]
+
 **Improvements**
 
 *   QuickFolders is now compatible with Thunderbird 155.

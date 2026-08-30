@@ -1,6 +1,8 @@
-Important for Release channel users (**154 and later**): With Thunderbird's new 2-week release cycle, there is an elevated risk of unexpected breakages like [issue 690]. While I regularly test {+extensionName} against daily builds, timely fixes depend on **early reporting** from Release users. Please follow the <a href='https://github.com/RealRaven2000/QuickFolders/issues'>issue tracker</a> and report any regressions promptly to help maintain compatibility.
+Important for Release channel users (**154 and later**): With Thunderbird's new 2-week release cycle, there is an elevated risk of unexpected breakages like [issue #690]. While I regularly test QuickFolders against daily builds, timely fixes depend on **early reporting** from Release users. Please follow the <a href='https://github.com/RealRaven2000/QuickFolders/issues'>issue tracker</a> and report any regressions promptly to help maintain compatibility.
 
 Additional regressions are expected within the Thunderbird release branch and will be addressed as they occur. Users who rely on advanced or experimental functionality may prefer the ESR channel for a more stable environment with fewer platform changes.
+
+Read the full version <a href="https://github.com/RealRaven2000/QuickFolders/
 
 
 **Maintenance Release 6.17.1**

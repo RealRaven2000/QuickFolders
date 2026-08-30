@@ -447,6 +447,11 @@ h3.QuickFoldersStdUser {
 	color: white !important;
 }
 
+.psa.announcement {
+  background: linear-gradient(55deg, rgba(6, 6, 112, 0.9) 0%, rgba(115, 3, 85, 0.9) 100%) !important;
+	box-shadow: none !important;
+}
+
 .bargain a[href], 
 .psa a[href], 
 .bargain a[href]:visited, 

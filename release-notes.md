@@ -9,14 +9,14 @@ Additional regressions are expected within the Thunderbird release branch and wi
 *   Fixed: quickMove shows stale folder name. [issue #696]
 *   Fixed: Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files. [issue #698]
 
-**Improvements**
+**Improvements (6.17)**
 
 *   QuickFolders is now compatible with Thunderbird 155.
 *   A custom width can now be configured for individual tab separators - via QuickFolders commands submenu. [issue #686]
 *   Modernized quickFilters integration to use background communications instead of direct code access side-effect. [issue #680]
 *   Converted storage from legacy preferences (about:config) to local storage API. [issue #677] Settings can now be reset to defaults by uninstalling the add-on — back up your settings first using **Store Configuration** under **Backup and Restore**.
 
-**Bug Fixes**
+**Bug Fixes (6.17)**
 
 *   Fixed: messages window content area truncated at the top. [issue #673]
 *   Fixed: Tab Category Selector not rendering. [issue #692]

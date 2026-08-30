@@ -16,8 +16,21 @@ QuickFolders.Storage = new (class LocalStorage {
       "resource://gre/modules/ExtensionParent.sys.mjs"
     );
     const extension = ExtensionParent.GlobalManager.getExtension(extensionId);
+    if (!extension) {
+      throw new Error(`QuickFolders extension context not found: ${extensionId}`);
+    }
     this.uniqueRandomID = "AddOnNS" + extension.instanceId;
-    this._context = window[this.uniqueRandomID].WL.context;
+    
+    // Standalone chrome dialogs are not WindowListener-injected.
+    // Temporarily obtain the extension API from their injected opener.
+    // Remove when dialogs become WebExtension HTML pages.
+    const hostWindow = window[this.uniqueRandomID]?.WL ? window : window.opener;
+    const WL = hostWindow?.[this.uniqueRandomID]?.WL;
+    if (!WL) {
+      throw new Error("QuickFolders WindowListener context unavailable");
+    }
+
+    this._context = WL.context;
     // Read debug flag once at initialization!
     try {
       this._debugCache = Services.prefs.getBoolPref("extensions.quickfolders.debug.storage.cache");

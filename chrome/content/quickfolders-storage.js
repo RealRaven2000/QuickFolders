@@ -20,7 +20,7 @@ QuickFolders.Storage = new (class LocalStorage {
       throw new Error(`QuickFolders extension context not found: ${extensionId}`);
     }
     this.uniqueRandomID = "AddOnNS" + extension.instanceId;
-    
+
     // Standalone chrome dialogs are not WindowListener-injected.
     // Temporarily obtain the extension API from their injected opener.
     // Remove when dialogs become WebExtension HTML pages.
@@ -45,9 +45,10 @@ QuickFolders.Storage = new (class LocalStorage {
   }
 
   logDebug(...args) {
-    if (this._debugCache) {
-      console.log(`[QF Storage] [${this.getTimestamp()}]`, ...args);
+    if (!this._debugCache) {
+      return;
     }
+    console.log(`[QF Storage] [${this.getTimestamp()}]`, ...args);
   }
 
   async _init() {
@@ -69,10 +70,9 @@ QuickFolders.Storage = new (class LocalStorage {
           (method) =>
           (...args) =>
             this._storage.local.callMethodInParentProcess(method, args);
-        
+
         // Test that storage is actually accessible with a minimal call
-        await this._call("get")(null);
-        
+        await this._call("get")("dummy"); // becomes await browser.storage.local.get("dummy");
         this.logDebug(`_init() SUCCESS after ${attempt + 1} attempt(s)`);
         return;
       } catch (ex) {
@@ -82,8 +82,6 @@ QuickFolders.Storage = new (class LocalStorage {
         const isIndexedDBError = 
           ex.message?.includes("database") ||
           ex.message?.includes("IndexedDB") ||
-          ex.message?.includes("operation failed") ||
-          ex.message?.includes("not covered by any other error") ||
           ex.name === "UnknownError";
         
         if (isLastAttempt) {
@@ -97,9 +95,13 @@ QuickFolders.Storage = new (class LocalStorage {
         
         // Startup issue - retry with backoff
         const delay = delays[attempt];
-        const errorType = isIndexedDBError ? "IndexedDB issue detected" : "Storage initialization failed";
-        this.logDebug(`_init() ${errorType} (${ex.message}), retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`);
-        await new Promise(resolve => setTimeout(resolve, delay));
+        const errorType = isIndexedDBError
+          ? "IndexedDB issue detected"
+          : "Storage initialization failed";
+        this.logDebug(
+          `_init() ${errorType} (${ex.message}), retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`
+        );
+        await new Promise((resolve) => setTimeout(resolve, delay));
       }
     }
   }
@@ -117,7 +119,7 @@ QuickFolders.Storage = new (class LocalStorage {
       throw ex;
     }
   }
-
+  
   async getWithRetry(keys = null, timeout = 5000) {
     const delays = [250, 1000, 5000, 8000];
     for (let attempt = 0; ; attempt++) {
@@ -128,7 +130,7 @@ QuickFolders.Storage = new (class LocalStorage {
           new Promise((_, reject) => {
             timeoutId = setTimeout(
               () => reject(new Error(`Storage.get() timed out after ${timeout}ms`)),
-              timeout,
+              timeout
             );
           }),
         ]);

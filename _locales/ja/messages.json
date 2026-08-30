@@ -418,7 +418,7 @@
     "message": "{P}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{/P}"
   },
   "newsSection.important": {
-    "message": "{P}ReleaseチャンネルでのExperiment APIの使用を制限する計画された変更は、将来のESRサイクル（現在2027年を目標）に延期されました。{/P}{P}{b}{+extensionName}{/b}はThunderbirdのRelease版とESR版の両方で引き続き動作します。{/P}{P}Releaseチャンネルユーザーへの重要なお知らせ（{emph}154以降{/emph}）：Thunderbirdの新2週間リリースサイクルにより、[issue 690]のような予期しない不具合のリスクが高まっています。私は{+extensionName}を毎日のビルドで定期的にテストしていますが、タイムリーな修正はReleaseユーザーからの{b}早期報告{/b}に依存しています。{a href='https://github.com/RealRaven2000/QuickFolders/issues'}課題トラッカー{/a}をフォローし、不具合を迅速に報告して互換性を維持してください。{/P}"
+    "message": "{P}Releaseチャンネルユーザーへの重要なお知らせ（{emph}154以降{/emph}）：Thunderbirdの新2週間リリースサイクルにより、[issue 690]のような予期しない不具合のリスクが高まっています。私は{+extensionName}を毎日のビルドで定期的にテストしていますが、タイムリーな修正はReleaseユーザーからの{b}早期報告{/b}に依存しています。{a href='https://github.com/RealRaven2000/QuickFolders/issues'}課題トラッカー{/a}をフォローし、不具合を迅速に報告して互換性を維持してください。{/P}"
   },
   "newsSection.license": {
     "message": "QuickFoldersのすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
@@ -2043,7 +2043,7 @@
   },
   "whats-new-list": {
     "description": "🇯🇵 change log",
-    "message": "{L} {+extensionName}はThunderbird 155と互換性があります。{/L}{L} {b class=maintenance}6.17.1{/b} 修正: Thunderbird 154を使用する一部のシステムで、QuickFoldersが「QuickFoldersを初期化しています…」のまま停止することがありました。[issue 697]{/L}{L} {b class=maintenance}6.17.1{/b} 修正: quickMoveに古いフォルダー名が表示されていました。[issue 696]{/L}{L} ストレージをレガシー設定({code}about:config{/code})からローカルストレージAPIに変換[issue 677]。これにより、アドオンのレガシー設定へのアクセスが将来削除されることから保護されます。{br}{emph}注:{/emph} 設定はアドオンをアンインストールすることでデフォルトにリセットできるようになりました。最初に{b}{+qf.storeConfig}{/b}を使用して設定をバックアップしてください({italic}{+qf.backupAndRestore}{/italic}下の{italic}{+qf.tab.gopro}{/italic}ページ)。{/L}{L} タブセパレーターの幅が調整可能になりました。[issue 686]{/L}{L} 修正: 関連メールの検索で、必要に応じて現在のフォルダに留まらない [issue 694]。{/L}{L} 修正: 迷惑メールを空にする およびその他のコンテキストメニュー項目がThunderbird 153で動作しなくなった [issue 695]。{/L}{L} 修正: メッセージウィンドウのコンテンツ領域が上部で切り取られています[issue 673] — quickFiltersがそのボタンを現在のフォルダバーに挿入した場合に発生します。{emph}quickFilters 6.13.1以降が必要です。{/emph}{/L}{hr}{L} Thunderbird 155の互換性を有効にするため、安全でないURLの読み込みを強制 [issue 690]。[Bugzilla 1974213]によると、アドオンスクリプトは単純な{code}scriptloader.loadSubScript{/code}メソッドでは読み込めなくなり、Thunderbird 155で失敗します。{/L}{L} quickFilters統合を近代化し、直接コードアクセスの副作用の代わりにバックグラウンド通信を使用 [issue 680]。{/L}" 
+    "message": "{L} {+extensionName}はThunderbird 155と互換性があります。{/L}{L} {b class=maintenance}6.17.1{/b} 修正: Thunderbird 154を使用する一部のシステムで、QuickFoldersが「QuickFoldersを初期化しています…」のまま停止することがありました。[issue 697]{/L}{L} {b class=maintenance}6.17.1{/b} 修正: 更新リファラーが{code}undefined{/code}に設定され、現在のライセンスがまだ期限切れでない場合に更新日が正しく計算されないことがありました。[issue 699]{/L}{L} {b class=maintenance}6.17.1{/b} 修正: quickMoveに古いフォルダー名が表示されていました。[issue 696]{/L}{L} {b class=maintenance}6.17.1{/b} 修正: 6.17へのアップグレード後にタブの色が失われることがありました。設定ファイルで、タブの状態ごとのパレット項目を保存および復元できるようになりました。[issue 698]{/L}{hr}{P class=sectionhead}バージョン6.17の主な変更点{/P}{L} ストレージをレガシー設定({code}about:config{/code})からローカルストレージAPIに変換[issue 677]。これにより、アドオンのレガシー設定へのアクセスが将来削除されることから保護されます。{br}{emph}注:{/emph} 設定はアドオンをアンインストールすることでデフォルトにリセットできるようになりました。最初に{b}{+qf.storeConfig}{/b}を使用して設定をバックアップしてください({italic}{+qf.backupAndRestore}{/italic}下の{italic}{+qf.tab.gopro}{/italic}ページ)。{/L}{L} Thunderbird 155との互換性を確保するため、URLの読み込みが安全でないモードで強制されるようになりました。[issue 690] [Bugzilla 1974213]によると、アドオンスクリプトは単純な{code}scriptloader.loadSubScript{/code}メソッドでは読み込めなくなり、Thunderbird 155で失敗します。{/L}{L} タブ区切りにカスタム幅を設定できるようになりました。[issue 686]{/L}" 
   },
   "whats-new-maintenance": {
     "message": "メンテナンス更新 $ver$。この特定の修正は前回のリリース以降に追加されました。",

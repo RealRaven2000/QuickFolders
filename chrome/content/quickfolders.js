@@ -328,7 +328,7 @@ END LICENSE BLOCK */
   6.17 QuickFolders Pro - 26/08/2026
     ## Compatibility with Thunderbird 155
     ## [issue 677] Converted storage from legacy preferences (about:config) to local storage (API compatible)
-    ## [issue 686] Adjustable width of tab separators 
+    ## [issue 686] Adjustable, individual width of tab separators 
     ## [issue 680] Removed legacy quickFilters integration via window.quickFilters side-effect
     ## [issue 673] Fixed: serious regression in v6.16.1 - messages window content area truncated at the top.
     ## Simplified WindowListener by removing pre 140 compatibility code
@@ -342,6 +342,7 @@ END LICENSE BLOCK */
     ## [issue 696] quickMove shows stale folder name
     ## [issue 697] QuickFolders 6.17 - stuck "initialising QuickFolders" on some systems in Tb 154.
     ## [issue 698] Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files.
+    ## [issue 699] Referrer is undefined when renewing license
 
 
 

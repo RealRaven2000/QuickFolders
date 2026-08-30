@@ -434,7 +434,7 @@
     "message": "{P}我们持续跟进 Thunderbird 的每月更新周期，以确保兼容性和稳定性。与往常一样，这项工作完全依赖于许可证销售资助。{/P}"
   },
   "newsSection.important": {
-    "message": "{P}原计划限制在Release频道上使用实验API的更改已推迟到未来的ESR周期（目前目标是2027年）。{/P}{P}{b}{+extensionName}{/b}继续在Thunderbird的Release和ESR版本上工作。{/P}{P}对Release频道用户很重要（{emph}154及更高版本{/emph}）：随着Thunderbird新的2周发布周期，出现如[issue 690]等意外故障的风险增加。尽管我定期使用每日构建测试{+extensionName}，但及时修复取决于Release用户的{b}早期报告{/b}。请关注{a href='https://github.com/RealRaven2000/QuickFolders/issues'}问题跟踪器{/a}并迅速报告任何错误以维持兼容性。{/P}"
+    "message": "{P}对Release频道用户很重要（{emph}154及更高版本{/emph}）：随着Thunderbird新的2周发布周期，出现如[issue 690]等意外故障的风险增加。尽管我定期使用每日构建测试{+extensionName}，但及时修复取决于Release用户的{b}早期报告{/b}。请关注{a href='https://github.com/RealRaven2000/QuickFolders/issues'}问题跟踪器{/a}并迅速报告任何错误以维持兼容性。{/P}"
   },
   "newsSection.license": {
     "message": "由于QuickFolders的所有工作和免费支持完全通过许可证销售资助，请考虑购买许可证或续订当前许可证。"
@@ -2090,7 +2090,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L} {+extensionName} 现在与 Thunderbird 155 兼容。{/L}{L} {b class=maintenance}6.17.1{/b} 已修复：在某些使用 Thunderbird 154 的系统上，QuickFolders 可能会一直停留在“正在初始化 QuickFolders…”。[issue 697]{/L}{L} {b class=maintenance}6.17.1{/b} 已修复：quickMove 显示了过时的文件夹名称。[issue 696]{/L}{L} 已将存储从旧版首选项 ({code}about:config{/code}) 转换为本地存储 API [issue 677]。这可以防止将来删除附加组件的旧版首选项访问。{br}{emph}注意:{/emph} 现在可以通过卸载附加组件将设置重置为默认值 — 请先使用 {italic}{+qf.tab.gopro}{/italic} 页面上 {italic}{+qf.backupAndRestore}{/italic} 下的 {b}{+qf.storeConfig}{/b} 备份您的设置。{/L}{L} 标签分隔符的宽度现在可以调整。[issue 686]{/L}{L} 已修复：查找相关邮件在需要时不会停留在当前文件夹 [issue 694]。{/L}{L} 已修复：清空垃圾邮件和其他上下文菜单项在 Thunderbird 153 中停止工作 [issue 695]。{/L}{L} 已修复：消息窗口内容区域顶部被截断 [issue 673] — 当 quickFilters 将其按钮注入当前文件夹栏时引起。{emph}需要 quickFilters 6.13.1 或更高版本。{/emph}{/L}{hr}{L} 强制加载不安全的 URL 以启用 Thunderbird 155 兼容性 [issue 690]。根据 [Bugzilla 1974213]，附加组件脚本不能再使用简单的 {code}scriptloader.loadSubScript{/code} 方法加载 - 导致它们在 Thunderbird 155 中失败。{/L}{L} 现代化 quickFilters 集成以使用后台通信而不是直接代码访问副作用 [issue 680]。{/L}"
+    "message": "{L} {+extensionName} 现在与 Thunderbird 155 兼容。{/L}{L} {b class=maintenance}6.17.1{/b} 已修复：在某些使用 Thunderbird 154 的系统上，QuickFolders 可能会一直停留在“正在初始化 QuickFolders…”。[issue 697]{/L}{L} {b class=maintenance}6.17.1{/b} 已修复：续订来源被设为 {code}undefined{/code}，如果当前许可证尚未到期，可能会导致续订日期计算错误。[issue 699]{/L}{L} {b class=maintenance}6.17.1{/b} 已修复：quickMove 显示了过时的文件夹名称。[issue 696]{/L}{L} {b class=maintenance}6.17.1{/b} 已修复：升级到 6.17 后，标签页颜色可能会丢失。配置文件现在会为每种标签页状态保存和恢复调色板条目。[issue 698]{/L}{hr}{P class=sectionhead}6.17 版精选亮点{/P}{L} 已将存储从旧版首选项 ({code}about:config{/code}) 转换为本地存储 API [issue 677]。这可以防止将来删除附加组件的旧版首选项访问。{br}{emph}注意:{/emph} 现在可以通过卸载附加组件将设置重置为默认值 — 请先使用 {italic}{+qf.tab.gopro}{/italic} 页面上 {italic}{+qf.backupAndRestore}{/italic} 下的 {b}{+qf.storeConfig}{/b} 备份您的设置。{/L}{L} 为确保与 Thunderbird 155 兼容，现在会强制以不安全模式加载 URL。[issue 690] 根据 [Bugzilla 1974213]，附加组件脚本已无法再使用简单的 {code}scriptloader.loadSubScript{/code} 方法加载，导致它们在 Thunderbird 155 中失败。{/L}{L} 现在可以为标签页分隔符设置自定义宽度。[issue 686]{/L}"
   },
   "whats-new-maintenance": {
     "message": "维护更新 $ver$。此特定修复已包含在上一版本之后的更新中。",

@@ -195,6 +195,11 @@ a.issue {
   background-color: transparent;
 }
 
+p.sectionhead {
+  font-weight: bold;
+  margin-block: 0.3em;
+}
+
 span.important {
   color: var(--color-emphasis) !important;
   font-style: italic;

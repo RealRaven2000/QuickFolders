@@ -1,12 +1,13 @@
 **Maintenance Release 6.17.1**
-*   Fixed: QuickFolders stuck 'initialising QuickFolders' on some systems in Tb 154. [issue #697]
+*   Fixed: QuickFolders could become stuck at 'initialising QuickFolders' in the toolbar on some systems with Thunderbird 154. [issue #697]
+*   Fixed: The renewal referrer was set to `undefined`, which could result in an incorrect renewal date when the current license had not yet expired. [issue #699]
 *   Fixed: quickMove shows stale folder name. [issue #696]
 *   Fixed: Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files. [issue #698]
 
 **Improvements**
 
 *   QuickFolders is now compatible with Thunderbird 155.
-*   Width of individual tab separators is now adjustable - via QuickFolders commands submenu. [issue #686]
+*   A custom width can now be configured for tab separators - via QuickFolders commands submenu. [issue #686]
 *   Modernized quickFilters integration to use background communications instead of direct code access side-effect. [issue #680]
 *   Converted storage from legacy preferences (about:config) to local storage API. [issue #677] Settings can now be reset to defaults by uninstalling the add-on — back up your settings first using **Store Configuration** under **Backup and Restore**.
 
@@ -16,7 +17,7 @@
 *   Fixed: Tab Category Selector not rendering. [issue #692]
 *   Fixed: Find related mails doesn't stay in current folder when desired. [issue #694]
 *   Fixed: Empty Junk and other context menu items stopped working in Thunderbird 153. [issue #695]
-*   Force unsafe URL loading to enable Thunderbird 155 compatibility. [issue #690] According to [Bug 1974213](https://bugzilla.mozilla.org/show_bug.cgi?id=1974213), Add-on Subscripts cannot be loaded anymore with the simple `scriptloader.loadSubScript` method - making them fail in Thunderbird 155.
+*   To ensure compatibility with Thunderbird 155, URL loading is now forced in unsafe mode.  [issue #690] According to [Bug 1974213](https://bugzilla.mozilla.org/show_bug.cgi?id=1974213), Add-on Subscripts cannot be loaded anymore with the simple `scriptloader.loadSubScript` method - making them fail in Thunderbird 155.
 
 **Miscellaneous**
 

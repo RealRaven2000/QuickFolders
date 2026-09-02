@@ -6,7 +6,7 @@
 @import url("chrome://messenger/skin/shared/variables.css");
 
 :root {
-  /* broken theming colors in Tb 150+ */
+  /* broken theming colors in Tb 150+ 
   --color-gray-05: #fafafa;
   --color-gray-10: #f4f4f5;
   --color-gray-30: #d4d4d8;
@@ -24,13 +24,14 @@
   --button-hover-background-color:  light-dark(rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
   --button-hover-background-color: light-dark(var(--layout-background-2), var(--layout-background-4));
   --button-hover-border: 1px solid  light-dark(rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.6));
-  --button-active-background-color: var(--button-primary-active-background-color, light-dark(rgba(4, 53, 105, 0.9), rgba(2, 152, 233, 0.905)));
-  --button-active-color: var(--activecolor, light-dark(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.9))) !important;
+	--button-active-background-color: var(--button-primary-active-background-color, light-dark(rgba(4, 53, 105, 0.9), rgba(2, 152, 233, 0.905)));
+	--button-active-color: var(--activecolor, light-dark(rgba(255, 255, 255, 0.9), rgba(0, 0, 0, 0.9))) !important;
 	
   --button-border-size: 1px; 
 
   --button-border-color: light-dark(var(--layout-border-1), var(--layout-border-2));
   --button-border: var(--button-border-size) solid var(--button-border-color);
+	*/
 }
 
 :root {

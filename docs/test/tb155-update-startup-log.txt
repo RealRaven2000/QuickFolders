@@ -1,0 +1,402 @@
+1788327638251	addons.xpi	WARN	Checking C:\Program Files\Mozilla Thunderbird\distribution\extensions for addons
+1788327638268	addons.xpi-utils	WARN	Add-on PrintingToolsNG@cleidigh.kokkini.net is not compatible with application version.
+1788327638268	addons.xpi-utils	WARN	Add-on {a300a000-5e21-4ee0-a115-9ec8f4eaa92b} is not compatible with application version.
+1788327638268	addons.xpi-utils	WARN	Add-on filtaquilla@mesquilla.com is not compatible with application version.
+1788327638269	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+1788327638269	addons.xpi-utils	WARN	Add-on {8845E3B3-E8FB-40E2-95E9-EC40294818C4} is not compatible with application version.
+1788327643092	addons.xpi-utils	WARN	Add-on PrintingToolsNG@cleidigh.kokkini.net is not compatible with application version.
+1788327643092	addons.xpi-utils	WARN	Add-on {a300a000-5e21-4ee0-a115-9ec8f4eaa92b} is not compatible with application version.
+1788327643092	addons.xpi-utils	WARN	Add-on filtaquilla@mesquilla.com is not compatible with application version.
+1788327643092	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+1788327643092	addons.xpi-utils	WARN	Add-on {8845E3B3-E8FB-40E2-95E9-EC40294818C4} is not compatible with application version.
+1788327643201	addons.webextension.{61A64500-335C-418D-8FCB-E072A9ABF3DA}	WARN	Loading extension '{61A64500-335C-418D-8FCB-E072A9ABF3DA}': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+Trying to load untrusted URI.: moz-extension://2c861bf9-b9d3-45d8-a5ce-2ce5b2150ad4/debug/cs2c_debug.js Extension.sys.mjs:4295
+1788327643567	addons.xpi	WARN	Exception running bootstrap method startup on copysent2current@ggbs.de: Trying to load untrusted URI.: moz-extension://2c861bf9-b9d3-45d8-a5ce-2ce5b2150ad4/debug/cs2c_debug.js
+[gdataUI] Future modules will load with version 128.5.12 gdataUI.sys.mjs:27:11
+module is not a constructor ExtensionCommon.sys.mjs:1679:15
+Calendar manager initialised calendars before loadCalendarComponent ran on the first 3pane window. This should not happen. calendar-chrome-startup.js:40:13
+InvalidAccessError: WebExtensionPolicy.browsingContextGroupId getter: browsingContextGroupId only available for active policies in the parent process Extension.sys.mjs:3609:5
+1788327646544	addons.update-checker	WARN	onUpdateCheckComplete failed to parse update manifest for copysent2current@ggbs.de: SyntaxError: JSON.parse: expected ',' or ']' after array element at line 36 column 9 of the JSON data(resource://gre/modules/addons/AddonUpdateChecker.sys.mjs:330:23) JS Stack trace: onLoad@AddonUpdateChecker.sys.mjs:330:23
+UpdateParser/<@AddonUpdateChecker.sys.mjs:274:54
+Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user’s experience. For more help https://xhr.spec.whatwg.org/#sync-warning utils.js:45:7
+Object { Util: {…}, Preferences: {…}, extractSignature: extractSignature(), insertTemplate: insertTemplate(), readSignatureFile: readSignatureFile(), resetDocument: resetDocument(), Parser: Parser(), composer: {}, Sig: {}, prefs: {…}, … }
+ 
+Object { composers: Map(0) }
+st-background.js:17:9
+SmartTemplates Background started st-util.mjs.js:39:13
+WebExtensions: TypeError: tab.chromeBrowser.contentWindow.displayFolder is not a function
+    set chrome://messenger/content/mailTabs.js:168
+    maybeSelectLastFolder jar:file:///E:/Mail/dd9jwla2n.axel/extensions/owl@beonex.com.xpi!/webapi/webaccount/webaccount.js:516
+    runAsync jar:file:///E:/Mail/dd9jwla2n.axel/extensions/owl@beonex.com.xpi!/webapi/webaccount/webaccount.js:111
+webaccount.js:113
+1788327647594	addons.xpi-utils	WARN	Add-on PrintingToolsNG@cleidigh.kokkini.net is not compatible with application version.
+1788327647594	addons.xpi-utils	WARN	Add-on {a300a000-5e21-4ee0-a115-9ec8f4eaa92b} is not compatible with application version.
+1788327647594	addons.xpi-utils	WARN	Add-on filtaquilla@mesquilla.com is not compatible with application version.
+1788327647594	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+1788327647594	addons.xpi-utils	WARN	Add-on {8845E3B3-E8FB-40E2-95E9-EC40294818C4} is not compatible with application version.
+1788327647598	addons.xpi-utils	WARN	Add-on PrintingToolsNG@cleidigh.kokkini.net is not compatible with application version.
+1788327647598	addons.xpi-utils	WARN	Add-on {a300a000-5e21-4ee0-a115-9ec8f4eaa92b} is not compatible with application version.
+1788327647598	addons.xpi-utils	WARN	Add-on filtaquilla@mesquilla.com is not compatible with application version.
+1788327647598	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+1788327647598	addons.xpi-utils	WARN	Add-on {8845E3B3-E8FB-40E2-95E9-EC40294818C4} is not compatible with application version.
+Finished setting up license startup code qFi-background.js:1173:13
+Startup resolved qFi-background.js:1179:13
+quickFilters adding the message context menu item Create Filter from Message… ... 
+Object { contexts: (1) […], onclick: onclick(), icons: {…}, enabled: true, id: "createFromMailContext", title: "Create Filter from Message…" }
+qFi-background.js:1546:13
+Startup has finished qFi-background.js:53:13
+quickFilters - currentLicense 
+Object { ValidationStatus: 1, RealLicense: "QI-axel.grude@gmail.com:2027-03-12", ExpiredDays: 0, LicensedDaysLeft: 191, decryptedDate: "2027-03-12", decryptedMail: "axel.grude@gmail.com", ForceSecondaryIdentity: true, debug: false, LicenseKey: "QI-axel.grude@gmail.com:2027-03-12;01d79ca1a2b749bb46adcb5bab3e79212d344ed7c2d9138615c8702fbad7c403 01494d1477e5fd409cca1e066425fe397550cd6e13d6c28985ba0d9f8add3faa", key_type: 0 }
+qFi-background.js:54:13
+WebExtensions: quickFilters exp API: Utilities.getAPI() called implementation.js:14
+WebExtensions: quickFilters logDebug (early): startup listeners, ready to call updatequickFiltersLabel
+startup result: unblock startup for quickFilters in main() implementation.js:32
+WebExtensions: quickFilters logDebug (early): runtime startup / installation listeners
+Result: unblock startup for quickFilters in main()
+onInstalled Reason: browser_update implementation.js:32
+WebExtensions: quickFilters: messenger.onLoad() qFi-messenger.js:29
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 32, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+SmartTemplates Storage context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 32, unloaded: false, extension: {…}, manifestVersion: 2, … }
+smartTemplate-storage.js:43:13
+Preferences onChanged: 
+Object {  }
+preferences.mjs:280:17
+WebExtensions: quickFilters: pref cache ready qFi-messenger.js:31
+quickFilters [logTime init]
+ injected style sheets: 
+<link wlapi_autoinjected="AddOnNS9" rel="stylesheet" href="chrome://quickfilters/co…nt/skin/quickFilters.css">
+ 
+<link wlapi_autoinjected="AddOnNS9" rel="stylesheet" href="chrome://quickfilters/co…ilters-toolbar.css?v=6.9">
+ 
+<link wlapi_autoinjected="AddOnNS9" rel="stylesheet" href="chrome://quickfilters/co…s-actionButton.css?v=6.9">
+qFilters-utils.js:921:13
+quickFilters 6:40:49.172  [2 ms]   
+ Polyfills loading in window: chrome://messenger/content/messenger.xhtml qFilters-utils.js:921:13
+Manually calling notifyTools.enable() is no longer needed. notifyTools.js:145:13
+quickFilters: addToolMenuListener() qFi-background.js:277:13
+quickFilters adding the tools menu item Start Filter Assistant ... 
+Object { contexts: (1) […], checked: false, onclick: onclick(), icons: {…}, enabled: true, id: "toggleFilterTools", title: "Start Filter Assistant" }
+qFi-background.js:303:13
+quickFilters: addFolderPaneListener() qFi-background.js:125:13
+quickFilters adding the folder tree context menu item Run filters ... 
+Object { contexts: (1) […], onclick: onclick(), icons: {…}, enabled: true, id: "runFiltersFolderPane", title: "Run filters" }
+qFi-background.js:173:13
+quickFilters adding the other folder tree context menu item Find Filters… ... 
+Object { contexts: (1) […], onclick: onclick(), icons: {…}, enabled: true, id: "findFiltersFolder", title: "Find Filters…" }
+qFi-background.js:230:13
+Preferences onChanged: 
+Object { settings: {…}, debug: {…}, accounts: {…} }
+preferences.mjs:280:17
+Accounts data updated: 
+Object {  }
+preferences.mjs:302:19
+ quickFilters.Init()  
+Object { assistantActive: false, browserInfo: {…} }
+qFilters-utils.js:1016:13
+ qFi-messenger onLoad triggered, selected tab mode: mail3PaneTab  
+Object { first: true, mode: {…}, busy: false, canClose: false, thinking: false, favIconUrl: "chrome://messenger/skin/icons/new/compact/folder.svg", _ext: {…}, selected: Getter, tabId: 0, tabNode: tab.tabmail-tab, … }
+qFilters-utils.js:1016:13
+patchMailPane()... qFilters-utils.js:1016:13
+qFi-messenger after patchMailPane 
+Object { first: true, mode: {…}, busy: false, canClose: false, thinking: false, favIconUrl: "chrome://messenger/skin/icons/new/compact/folder.svg", _ext: {…}, selected: Getter, tabId: 0, tabNode: tab.tabmail-tab, … }
+qFilters-utils.js:1016:13
+quickFilters 6:40:49.321  [149 ms]   
+ patchFolderTree 
+Object { first: true, mode: {…}, busy: false, canClose: false, thinking: false, favIconUrl: "chrome://messenger/skin/icons/new/compact/folder.svg", _ext: {…}, selected: Getter, tabId: 0, tabNode: tab.tabmail-tab, … }
+qFilters-utils.js:921:13
+quickFilters 6:40:49.321  [0 ms]   
+ Version() getter. addonInfo: 
+Object { id: "quickFilters@axelg.com", name: "quickFilters", description: "Quickly generate mail filters on the fly, by dragging and dropping mails and analyzing their attributes.", version: "6.13.3", mayDisable: true, enabled: true, optionsUrl: "moz-extension://b49f1e26-5659-41a4-b7e9-d7b7dfea5d63/html/quickfilters-settings.html", installType: "normal", type: "extension", permissions: (7) […], … }
+qFilters-utils.js:921:13
+quickFilters 6:40:49.331  [10 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 32, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 32, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 32, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 32, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 32, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 32, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+QuickFolders: mailTabs.getCurrent() failed or timed out Error: mailTabs.getCurrent() timed out
+    timeoutPromise moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/qf-background.js:842
+qf-background.js:852:13
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 33, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+[#697] About to call cache.init() at 2026-09-02T05:40:57.092Z quickfolders-preferences.js:643:9
+[#697] Cache init starting at 2026-09-02T05:40:57.092Z quickfolders-preferences.js:583:15
+contentscript: set content-script.js:91:15
+contentscript: set content-script.js:91:15
+contentscript: set content-script.js:91:15
+contentscript: set content-script.js:91:15
+contentscript: set content-script.js:91:15
+contentscript: set content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+[#697] Cache init completed at 2026-09-02T05:40:57.287Z quickfolders-preferences.js:621:15
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 33, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 33, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 33, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 33, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 33, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 33, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+Preferences updates: 
+Object { lastActiveCategories: "" }
+preferences.mjs:503:17
+WebExtensions: 
+<li class="extension-action" item-id="ext-quickfolders@curious.be" is="customizable-element" style='--webextension-icon: ima…32.svg") 2x\n        );' aria-pressed="true">
+implementation.js:379
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 33, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 32, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 33, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+quickFilters 6:40:59.820  [10489 ms]   
+ =================quickFilters==============
+   checkFirstRun() - attempt 1 qFilters-utils.js:921:13
+quickFilters 6:40:59.820  [0 ms]   
+ Version() getter. addonInfo: 
+Object { id: "quickFilters@axelg.com", name: "quickFilters", description: "Quickly generate mail filters on the fly, by dragging and dropping mails and analyzing their attributes.", version: "6.13.3", mayDisable: true, enabled: true, optionsUrl: "moz-extension://b49f1e26-5659-41a4-b7e9-d7b7dfea5d63/html/quickfilters-settings.html", installType: "normal", type: "extension", permissions: (7) […], … }
+qFilters-utils.js:921:13
+quickFilters 6:40:59.820  [0 ms]   
+ firstRun = false  - currentVersion = 6.13.3  - installed = 6.13.3 qFilters-utils.js:921:13
+quickFilters 6:40:59.821  [1 ms]   
+ store installedVersion: 6.13.3 qFilters-utils.js:921:13
+quickFilters 6:40:59.821  [0 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+QuickFolders [logTime init]
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:40:59.903  [64 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:40:59.915  [12 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:40:59.925  [10 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:40:59.944  [19 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:40:59.954  [10 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:40:59.997  [43 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:41:0.14  [17 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:41:0.245  [231 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:41:0.249  [4 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:41:0.328  [79 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 6:41:0.333  [5 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:37:10
+quickFilters 6:41:1.258  [1437 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:37:10
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:37:10
+quickFilters 6:41:1.294  [36 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:37:10
+quickFilters 6:41:1.323  [29 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+quickFilters 6:41:1.327  [4 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+Preferences updates: 
+Object { lastActiveCategories: "Daily" }
+preferences.mjs:503:17
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:37:10
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:37:10
+quickFilters 6:41:1.361  [34 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+quickFilters 6:41:1.375  [14 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+WebExtensions: qFi-3pane.js - onLoad() qFi-3pane.js:433
+WebExtensions: quickFilters injector path: 
+Object { hasWL: true, globalThis: undefined, hasInject: true, url: "about:3pane" }
+qFi-3pane.js:74
+WebExtensions: Using WindowListener:injectElements qFi-3pane.js:90
+WebExtensions: Injecting into root document: implementation.js:720
+[quickFilters 3pane] injectQuickFoldersNavigationBarElements() - waiting for threadPane qFilters-utils.js:1016:13
+[quickFilters 3pane] waitForElement: found #threadPane immediately qFilters-utils.js:1016:13
+[quickFilters 3pane] inject Elements container... qFilters-utils.js:1016:13
+[quickFilters 3pane] Injection path: WindowListener (WL) qFilters-utils.js:1016:13
+WebExtensions: 
+Array [ div#threadPane ]
+implementation.js:600
+WebExtensions: div#threadPane is an existing container, injecting into threadPane implementation.js:671
+WebExtensions: 
+Array [ hbox#quickFilters-injected ]
+implementation.js:600
+WebExtensions: hbox#quickFilters-injected: append to threadPane implementation.js:711
+[quickFilters 3pane] WL.injectElements done - panel in DOM: false, panel parent: (none) qFilters-utils.js:1016:13
+[quickFilters 3pane] inject buttons... qFilters-utils.js:1016:13
+QuickFolders 6:41:2.549  [2216 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:3pane
+quickfolders-util.js:1423:13
+QuickFolders 6:41:2.557  [8 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:3pane
+quickfolders-util.js:1423:13
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:37:10
+quickFilters 6:41:3.701  [2326 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+1788327665238	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing locales: An unexpected property was found in the WebExtension manifest.
+1788327665238	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1788327665255	addons.webextension.{61A64500-335C-418D-8FCB-E072A9ABF3DA}	WARN	Loading extension '{61A64500-335C-418D-8FCB-E072A9ABF3DA}': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1788327665270	addons.webextension.filtaquilla@mesquilla.com	WARN	Loading extension 'filtaquilla@mesquilla.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+ExtensionError: can't access property "length", msgs is undefined ExtensionUtils.sys.mjs:46:5
+patchMailPane()... qFilters-utils.js:1016:13
+TypeError: can't access property "topChromeWindow", browser.browsingContext is null
+    getTabForBrowser chrome://messenger/content/parent/ext-mail.js:509
+    statusListener chrome://messenger/content/parent/ext-tabs.js:368
+    onStateChange chrome://extensions/content/parent/ext-tabs-base.js:1689
+    callListeners chrome://messenger/content/mailWindow.js:1080
+    callListeners chrome://messenger/content/mailWindow.js:1123
+    onStateChange chrome://messenger/content/mailWindow.js:1139
+    closeTab chrome://messenger/content/tabmail.js:1101
+    remove chrome://messenger/content/parent/ext-tabs.js:577
+    result resource://gre/modules/ExtensionParent.sys.mjs:1316
+    withCallContextData resource://gre/modules/ExtensionParent.sys.mjs:750
+    result resource://gre/modules/ExtensionParent.sys.mjs:1315
+    withPendingBrowser resource://gre/modules/ExtensionParent.sys.mjs:760
+    result resource://gre/modules/ExtensionParent.sys.mjs:1314
+    callAndLog resource://gre/modules/ExtensionParent.sys.mjs:1265
+    recvAPICall resource://gre/modules/ExtensionParent.sys.mjs:1313
+mailWindow.js:1082:19
+TypeError: can't access property "topChromeWindow", browser.browsingContext is null
+    getTabForBrowser chrome://messenger/content/parent/ext-mail.js:509
+    statusListener chrome://messenger/content/parent/ext-tabs.js:368
+    onStateChange chrome://extensions/content/parent/ext-tabs-base.js:1689
+    callListeners chrome://messenger/content/mailWindow.js:1080
+    callListeners chrome://messenger/content/mailWindow.js:1123
+    onStateChange chrome://messenger/content/mailWindow.js:1139
+    closeTab chrome://messenger/content/tabmail.js:1101
+    remove chrome://messenger/content/parent/ext-tabs.js:577
+    result resource://gre/modules/ExtensionParent.sys.mjs:1316
+    withCallContextData resource://gre/modules/ExtensionParent.sys.mjs:750
+    result resource://gre/modules/ExtensionParent.sys.mjs:1315
+    withPendingBrowser resource://gre/modules/ExtensionParent.sys.mjs:760
+    result resource://gre/modules/ExtensionParent.sys.mjs:1314
+    callAndLog resource://gre/modules/ExtensionParent.sys.mjs:1265
+    recvAPICall resource://gre/modules/ExtensionParent.sys.mjs:1313
+mailWindow.js:1082:19
+Error: negotiate failed with HTTP 405 
+    ListenForEventsOffice365 moz-extension://4da57fdf-a3a3-4ca2-ad48-42b8203b2c26/owa/owa.js:487
+owa.js:561:13
+quickFilters 6:41:11.268  [7567 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 6:41:11.295  [27 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 6:41:11.323  [28 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 6:41:11.337  [14 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 6:41:11.369  [32 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 6:41:11.402  [33 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 6:41:19.822  [8420 ms]   
+ toggleCurrentFolderButtons(retries=2) qFilters-utils.js:921:13
+Key event not available on some keyboard layouts: key=“r” modifiers=“accel,alt” id=“” messenger.xhtml
+Missing resource in locale de: devtools/client/toolbox.ftl
+Missing resource in locale it: devtools/client/toolbox.ftl

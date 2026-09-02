@@ -1,0 +1,99 @@
+1788339676477	addons.xpi	WARN	Checking C:\Program Files\Mozilla Thunderbird\distribution\extensions for addons
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x80520015, resultName NS_ERROR_FILE_ACCESS_DENIED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file ActorsParent.cpp:5869
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x80520015, resultName NS_ERROR_FILE_ACCESS_DENIED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file ActorsParent.cpp:5935
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x80520015, resultName NS_ERROR_FILE_ACCESS_DENIED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file ActorsParent.cpp:12643
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file ActorsParent.cpp:12673
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file ActorsParent.cpp:12561
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file dom\quota\ActorsParent.cpp:4591
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file dom\quota\ActorsParent.cpp:4666
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file dom\quota\ActorsParent.cpp:4670
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file dom\quota\ActorsParent.cpp:4673
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file dom\quota\ActorsParent.cpp:4309
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage, storage-origin https://www.youtube.com', file dom\quota\ActorsParent.cpp:4309
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage', file dom\quota\ActorsParent.cpp:4329
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage', file dom\quota\ActorsParent.cpp:4412
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage', file dom\quota\ActorsParent.cpp:4418
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage', file dom\quota\ActorsParent.cpp:4422
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage', file dom\quota\ActorsParent.cpp:4425
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage', file dom\quota\ActorsParent.cpp:3222
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage', file dom\quota\ActorsParent.cpp:3225
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage', file dom\quota\ActorsParent.cpp:7435
+QM_TRY failure (ERROR): 'Unavailable failed with resultCode 0x8000FFFF, resultName NS_ERROR_UNEXPECTED, context dom::quota::FirstInitializationAttempt::TemporaryStorage', file dom\quota\ActorsParent.cpp:7474
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[2.0.5] Error retrieving auth state from storage: Error: An unexpected error occurred background.mjs:87:39
+[2.0.5] Error retrieving auth state from storage: Error: An unexpected error occurred background.mjs:87:39
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 1/6): An unexpected error occurred. Retrying in 100ms... preferences.js:248:19
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 1/6): An unexpected error occurred. Retrying in 100ms... preferences.mjs:395:19
+module is not a constructor ExtensionCommon.sys.mjs:1679:15
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 2/6): An unexpected error occurred. Retrying in 500ms... preferences.js:248:19
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 2/6): An unexpected error occurred. Retrying in 500ms... preferences.mjs:395:19
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 3/6): An unexpected error occurred. Retrying in 1000ms... preferences.js:248:19
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 3/6): An unexpected error occurred. Retrying in 1000ms... preferences.mjs:395:19
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 4/6): An unexpected error occurred. Retrying in 2000ms... preferences.js:248:19
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 4/6): An unexpected error occurred. Retrying in 2000ms... preferences.mjs:395:19
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 5/6): An unexpected error occurred. Retrying in 4000ms... preferences.js:248:19
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Storage not ready (attempt 5/6): An unexpected error occurred. Retrying in 4000ms... preferences.mjs:395:19
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Failed after 6 attempts: Error: An unexpected error occurred preferences.js:251:19
+Uncaught (in promise) Error: An unexpected error occurred undefined
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[Preferences.init] Failed after 6 attempts: Error: An unexpected error occurred preferences.mjs:398:19
+Uncaught (in promise) Error: An unexpected error occurred undefined
+1788339737662	Toolkit.Telemetry	ERROR	TelemetryStorage::_purgeOldPings - Unable to remove C:\Users\Niko\AppData\Roaming\Thunderbird\Profiles\niko\datareporting\archived\2024-12: NotAllowedError: Could not remove `C:\Users\Niko\AppData\Roaming\Thunderbird\Profiles\niko\datareporting\archived\2024-12' (NS_ERROR_FILE_ACCESS_DENIED) No traceback available Log.sys.mjs:722
+1788339737663	Toolkit.Telemetry	ERROR	TelemetryStorage::_purgeOldPings - Unable to remove C:\Users\Niko\AppData\Roaming\Thunderbird\Profiles\niko\datareporting\archived\2025-01: NotAllowedError: Could not remove `C:\Users\Niko\AppData\Roaming\Thunderbird\Profiles\niko\datareporting\archived\2025-01' (NS_ERROR_FILE_ACCESS_DENIED) No traceback available Log.sys.mjs:722
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[2.0.5] Error retrieving auth state from storage: Error: An unexpected error occurred background.mjs:87:39
+Sicherheitsfehler: Inhalt auf moz-nullprincipal:{82828c95-c333-4970-9756-88bd0fb6f068} darf mailbox:///C:/Users/Niko/AppData/Roaming/Thunderbird/Profiles/niko/Mail/Local%20Folders/Inbox?number=55&header=quotebody&part=1.2.2&type=image/png&filename=thunderbird_blog2.png nicht laden oder verlinken.
+Tastenereignis ist in manchen Tastaturlayouts nicht verfügbar: Taste="r" Modifikatoren="accel,alt" ID="" messengercompose.xhtml
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[2.0.5] Error retrieving auth state from storage: Error: An unexpected error occurred background.mjs:87:39
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[2.0.5] Error retrieving auth state from storage: Error: An unexpected error occurred background.mjs:87:39
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[2.0.5] Error retrieving auth state from storage: Error: An unexpected error occurred background.mjs:87:39
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[2.0.5] Error retrieving auth state from storage: Error: An unexpected error occurred
+    getLoginState moz-extension://0c0efb0a-1180-49bc-b2bf-933c1bc49c00/background.mjs:23676
+    checkLoginStateOnInterval moz-extension://0c0efb0a-1180-49bc-b2bf-933c1bc49c00/background.mjs:23712
+background.mjs:87:39
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[2.0.5] Error retrieving auth state from storage: Error: An unexpected error occurred
+    getLoginState moz-extension://0c0efb0a-1180-49bc-b2bf-933c1bc49c00/background.mjs:23676
+    checkLoginStateOnInterval moz-extension://0c0efb0a-1180-49bc-b2bf-933c1bc49c00/background.mjs:23712
+background.mjs:87:39
+IndexedDB UnknownErr in DirectoryLockFailed: \builds\worker\checkouts\gecko\dom\indexedDB\ActorsParent.cpp:15497
+UnknownError: The operation failed for reasons unrelated to the database itself and not covered by any other error code. ExtensionStorageIDB.sys.mjs:1003
+[2.0.5] Error retrieving auth state from storage: Error: An unexpected error occurred
+    getLoginState moz-extension://0c0efb0a-1180-49bc-b2bf-933c1bc49c00/background.mjs:23676
+    checkLoginStateOnInterval moz-extension://0c0efb0a-1180-49bc-b2bf-933c1bc49c00/background.mjs:23712
+background.mjs:87:39

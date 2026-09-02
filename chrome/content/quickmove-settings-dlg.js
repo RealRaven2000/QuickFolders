@@ -40,7 +40,8 @@ function toggleTooltip(button) {
   var globalQuickMoveSettings;
   
   var qmSettings = {
-    load: function () {
+    load: async function () {
+      await prefs.ensureReady();
       globalQuickMoveSettings = util.getMail3PaneWindow().QuickFolders.quickMove.Settings;
       // add accounts:
       let myAccounts = util.Accounts,

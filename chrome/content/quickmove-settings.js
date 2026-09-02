@@ -46,7 +46,7 @@
     },
 
     loadExclusions: function loadExclusions() {
-      let excludedList = prefs.getStringPref("quickMove.premium.excludedAccounts");
+      let excludedList = prefs.getStringPref("quickMove.premium.excludedAccounts") || "";
       this.excludedIds = excludedList.trim() ? excludedList.split(",") : [];
     },
   };

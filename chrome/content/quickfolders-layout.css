@@ -1172,6 +1172,7 @@ menupopup.QuickFolders-folder-popup menu.dragover
 menupopup.QuickFolders-folder-popup menu.QuickFolders-folder-popup:-moz-drag-over,
 menupopup.QuickFolders-folder-popup menuitem:-moz-drag-over {
 	list-style-image : url("chrome://quickfolders/content/skin/ico/tb-anchor.png") !important;
+	--menuitem-icon: url("chrome://quickfolders/content/skin/ico/tb-anchor.png") !important;
 }
 
 menupopup.QuickFolders-folder-popup menu.QuickFolders-folder-popup:-moz-drag-over > label,

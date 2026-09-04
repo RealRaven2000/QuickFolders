@@ -96,7 +96,7 @@ QuickFolders.quickMove = {
         "quickMove.lastFolderURI": fld.URI,
       });
       util.logDebugOptional("quickMove", "Storing: " + sRememberFolder + " - " + fld.URI);
-      QuickFolders.quickMove.addToHistory(fld);
+      await QuickFolders.quickMove.addToHistory(fld);
     } catch (ex) {
       util.logException("rememberLastFolder( " + URIorFolder + ", " + parentName + ")", ex);
     }
@@ -206,7 +206,7 @@ QuickFolders.quickMove = {
       return;
     }
 				
-		this.rememberLastFolder(fld, parentName);
+		await this.rememberLastFolder(fld, parentName);
     
     let hasMove = (this.IsCopy.includes(false)); // are any message moved, close in case this is a single message tab
     if (tabMode == "mailMessageTab" && hasMove) {

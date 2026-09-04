@@ -9918,17 +9918,18 @@ QuickFolders.Interface = {
       sPrompt = isCopy[0]
         ? util.getBundleString("qfConfirmCopyFolder")
         : util.getBundleString("qfConfirmMoveFolder"),
-      whatIsMoved = arrCount == 1 ? newFolders[0].prettyName : `[${arrCount} folders]`;
+      whatIsMoved = arrCount == 1
+        ? newFolders[0].localizedName || newFolders[0].prettyName
+        : `[${arrCount} folders]`;
 
     sPrompt = sPrompt.replace("{0}", whatIsMoved);
-    sPrompt = sPrompt.replace("{1}", targetFolder.prettyName || targetFolder.localizedName);
+    sPrompt = sPrompt.replace("{1}", targetFolder.localizedName || targetFolder.prettyName);
     if (!Services.prompt.confirm(window, "QuickFolders", sPrompt)) {
       return;
     }
 
     try {
-      let toCount = arrCount || 1,
-        countChanges = 0;
+      let toCount = arrCount || 1;
       for (let i = 0; i < toCount; i++) {
         // break up into single actions!
         let folders = new Array(),
@@ -9954,27 +9955,61 @@ QuickFolders.Interface = {
           isMove = false;
         } // force copy
 
-        /** **/
-        QuickFolders.Util.logDebug("Calling copyFolder() on ", targetFolder);
+        // Snapshot names and URIs before the asynchronous operation changes folders.
+        const copyDetails = {
+          sourceName: fld.localizedName || fld.prettyName,
+          sourceURI: fromURI,
+          targetName: targetFolder.localizedName || targetFolder.prettyName,
+          targetURI: targetFolder.URI,
+          isMove,
+        };
+        listener = {
+          QueryInterface: ChromeUtils.generateQI(["nsIMsgCopyServiceListener"]),
+          onStartCopy() {
+            util.logDebug("Folder copy listener: onStartCopy", copyDetails);
+          },
+          onProgress(_progress, _progressMax) {},
+          setMessageKey(_key) {},
+          getMessageId() { return null; },
+          onStopCopy(status) {
+            const result = {
+              ...copyDetails,
+              status,
+              statusHex: "0x" + (status >>> 0).toString(16).padStart(8, "0"),
+              success: Components.isSuccessCode(status),
+            };
+            if (result.success) {
+              util.logDebug("Folder copy listener: onStopCopy", result);
+              if (isMove) {
+                try {
+                  const encName = fromURI.substring(fromURI.lastIndexOf("/")),
+                    newURI = copyDetails.targetURI + encName;
+                  const countChanges = QuickFolders.Model.moveFolderURI(fromURI, newURI);
+                  if (countChanges) {
+                    util.notifyTools.notifyBackground({ func: "updateAllTabs" });
+                  }
+                  setTimeout(function () {
+                    util.validateFilterTargets(fromURI, newURI);
+                  }, 1000);
+                } catch (ex) {
+                  util.logException("Updating folder references after move", ex);
+                }
+              }
+            } else {
+              console.error("QuickFolders folder copy listener: onStopCopy failed", result);
+            }
+          },
+          // Compatibility with older Thunderbird copy-listener method names.
+          OnStartCopy() { this.onStartCopy(); },
+          OnProgress(progress, progressMax) { this.onProgress(progress, progressMax); },
+          SetMessageKey(key) { this.setMessageKey(key); },
+          GetMessageId() { return this.getMessageId(); },
+          OnStopCopy(status) { this.onStopCopy(status); },
+        };
+        util.logDebug("Calling copyFolder()", copyDetails);
         for (let f = 0; f < folders.length; f++) {
           MailServices.copy.copyFolder(folders[f], targetFolder, isMove, listener, null);
         }
-        // in case it has a Tab, fix the uri
-        //  see also OnItemRemoved
-        // get encoded folder Name:
-        if (isMove) {
-          let slash = fromURI.lastIndexOf("/"),
-            encName = fromURI.substring(slash),
-            newURI = targetFolder.URI + encName;
-          countChanges += QuickFolders.Model.moveFolderURI(fromURI, newURI);
-          // Filter Validation!
-          setTimeout(function () {
-            QuickFolders.Util.validateFilterTargets(fromURI, newURI);
-          }, 1000);
-        }
-      }
-      if (countChanges) {
-        QuickFolders.Util.notifyTools.notifyBackground({ func: "updateAllTabs" }); // this.updateFolders(true, true);
       }
     } catch (ex) {
       sPrompt = util.getBundleString("qfCantMoveFolder");
@@ -10749,5 +10784,3 @@ QuickFolders.Interface = {
     return true;
   },
 }; // Interface
-
-

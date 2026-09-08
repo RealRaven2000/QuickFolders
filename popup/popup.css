@@ -48,6 +48,7 @@
 #innerwrapper li,
 #innerwrapper span,
 #innerwrapper i,
+#innerwrapper h3,
 #innerwrapper div.container {
   background-color: transparent;
 }
@@ -337,6 +338,13 @@ h2 {
 
 h3 {
   font-size: 16pt;
+  text-align: left !important;
+  color: rgb(60, 100, 160) !important;
+  text-shadow:
+    -1px 0 0 white,
+    1px 0 0 white,
+    0 -1px 0 white,
+    0 1px 0 white;
 }
 
 .link-visited {

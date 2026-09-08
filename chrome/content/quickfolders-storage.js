@@ -125,6 +125,16 @@ QuickFolders.Storage = new (class LocalStorage {
     for (let attempt = 0; ; attempt++) {
       let timeoutId;
       try {
+        if (
+          Services.prefs.getBoolPref(
+            "extensions.quickfolders.debug.storage.forceStartupFailure",
+            false
+          )
+        ) {
+          const error = new Error("Synthetic storage startup failure for issue #706 diagnostics");
+          error.name = "UnknownError";
+          throw error;
+        }
         return await Promise.race([
           this.get(keys),
           new Promise((_, reject) => {
@@ -171,4 +181,3 @@ QuickFolders.Storage = new (class LocalStorage {
     return this._call("clear")();
   }
 })("quickfolders@curious.be");
-

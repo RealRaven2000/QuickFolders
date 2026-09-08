@@ -370,7 +370,10 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     util.logDebug("QuickFolders: injecting current folder");
     const contentDoc = win.document;
     const prefs = win.QuickFolders.Preferences;
-    await prefs.ensureReady();
+    const prefsResult = await prefs.ensureReady();
+    if (!prefsResult?.ok) {
+      return;
+    }
     const debug = prefs?.isDebug;
     const isDebug3pane = prefs.isDebugOption("3pane");
 

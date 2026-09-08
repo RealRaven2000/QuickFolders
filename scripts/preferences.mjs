@@ -283,6 +283,7 @@ export const Preferences = {
     "debug.folderTree.icons": false,
     "debug.folders": false,
     "debug.folders.select": false,
+    "debug.getOrCreateFolder": false,
     "debug.identities": false,
     "debug.interface": false,
     "debug.interface.buttonStyles": false,
@@ -334,14 +335,14 @@ export const Preferences = {
     let hasDebugSeed = false;
 
     for (const [key, value] of Object.entries(Preferences.Defaults)) {
-      if (typeof settings[key] === "undefined") {
+      if (typeof settings[key] === "undefined" || (settings[key] === null && value !== null)) {
         settings[key] = value;
         hasSettingsSeed = true;
       }
     }
 
     for (const [key, value] of Object.entries(Preferences.DebugDefaults)) {
-      if (typeof debug[key] === "undefined") {
+      if (typeof debug[key] === "undefined" || (debug[key] === null && value !== null)) {
         debug[key] = value;
         hasDebugSeed = true;
       }
@@ -366,6 +367,16 @@ export const Preferences = {
     }
   },
   async init() {
+    await StorageStartupDiagnostics.begin();
+    try {
+      await this._init();
+      return StorageStartupDiagnostics.ready();
+    } catch (ex) {
+      return StorageStartupDiagnostics.failed(ex);
+    }
+  },
+
+  async _init() {
     // [issue 697] Retry logic for IndexedDB startup failures
     const maxRetries = 6;
     const delays = [100, 500, 1000, 2000, 4000, 10000]; // exponential backoff
@@ -375,6 +386,7 @@ export const Preferences = {
 
     for (let attempt = 0; attempt < maxRetries; attempt++) {
       try {
+        StorageStartupDiagnostics.recordAttempt();
         // a flat object. e.g. stored["refreshHeaders.wait"] = 150;
         const result = await browser.storage.local.get({
           settings: {},
@@ -677,7 +689,7 @@ export const Preferences = {
     let rawFolders;
 
     try {
-      rawFolders = await messenger.LegacyPrefs.getPref(model_root);
+      rawFolders = await messenger.LegacyPrefs.getUserPref(model_root);
     } catch (e) {
       console.warn("QuickFolders.folders not found during migration", e);
       rawFolders = [];
@@ -745,9 +757,12 @@ export const Preferences = {
       const legacyKey = legacy_root + key;
 
       try {
-        const value = await messenger.LegacyPrefs.getPref(legacyKey);
+        const value = await messenger.LegacyPrefs.getUserPref(legacyKey);
 
-        if (value === undefined) {
+        // getUserPref() returns null when there is no user-set legacy value.
+        // Leave null or undefined values absent so the new storage defaults
+        // are seeded below instead of persisting missing values.
+        if (value === null || value === undefined) {
           continue;
         }
 
@@ -780,6 +795,139 @@ export const Preferences = {
       },
       debug: migratedDebug,
       folders,
+    };
+  },
+};
+
+// [issue 706] Keep storage startup diagnostics independent from the preference
+// data so a broken storage backend cannot prevent reporting its own failure.
+export const StorageStartupDiagnostics = {
+  TEST_PREF: "extensions.quickfolders.debug.storage.forceStartupFailure",
+  state: "idle",
+  error: null,
+  attempts: 0,
+  startedAt: 0,
+  notificationShown: false,
+  forceFailure: false,
+  browserMajorVersion: null,
+
+  async begin() {
+    this.state = "starting";
+    this.error = null;
+    this.attempts = 0;
+    this.startedAt = Date.now();
+    try {
+      const browserInfo = await messenger.runtime.getBrowserInfo();
+      this.browserMajorVersion = Number.parseInt(browserInfo.version, 10) || null;
+    } catch (ex) {
+      this.browserMajorVersion = null;
+      console.debug("Could not determine the Thunderbird version:", ex);
+    }
+    try {
+      this.forceFailure =
+        (await messenger.LegacyPrefs.getPref(this.TEST_PREF, false)) === true;
+      if (this.forceFailure) {
+        console.warn(
+          `[QuickFolders TEST] Forcing storage startup failure because ${this.TEST_PREF} is true. ` +
+            "Reset this preference to false and restart Thunderbird after testing."
+        );
+      }
+    } catch (ex) {
+      this.forceFailure = false;
+      console.warn("Could not read the storage diagnostic test preference:", ex);
+    }
+    this.setToolbarLabel("Initialising QuickFolders… checking extension storage.");
+  },
+
+  setToolbarLabel(text) {
+    try {
+      messenger.Utilities.setToolbarLabel(text);
+    } catch (ex) {
+      console.debug("QuickFolders startup label is not available yet:", ex);
+    }
+  },
+
+  recordAttempt(maxAttempts = 6) {
+    this.attempts++;
+    this.setToolbarLabel(
+      `Initialising QuickFolders… storage attempt ${this.attempts} of ${maxAttempts}.`
+    );
+    if (this.forceFailure) {
+      const error = new Error(
+        `Synthetic storage startup failure enabled by ${this.TEST_PREF}`
+      );
+      error.name = "UnknownError";
+      throw error;
+    }
+  },
+
+  ready() {
+    this.state = "ready";
+    return { ok: true, state: this.state, attempts: this.attempts };
+  },
+
+  async failed(error) {
+    this.state = "failed";
+    this.error = error;
+    const elapsed = Date.now() - this.startedAt;
+    const errorName = error?.name || "UnknownError";
+    const errorMessage = error?.message || String(error);
+    const consoleFilterInstructions =
+      this.browserMajorVersion >= 154
+        ? "3. Enable both [Browser] and [Content] to see the relevant messages.\n4. Use \"Copy All Messages\" and send the text log, referencing QuickFolders issue #706."
+        : '3. Use "Copy All Messages" and send the text log, referencing QuickFolders issue #706.';
+    const consoleFilterHint =
+      this.browserMajorVersion >= 154 ? " Enable [Browser] and [Content]." : "";
+    const toolbarLabel =
+      `QuickFolders storage failed to initialize. Check the Error Console (Ctrl+Shift+J).${consoleFilterHint}`;
+    this.setToolbarLabel(toolbarLabel);
+
+    console.error(
+      `[QuickFolders] Thunderbird extension storage could not be opened.
+
+QuickFolders tried to access storage.local ${this.attempts} times over ${elapsed}ms, but every attempt failed.
+This may indicate that Thunderbird's IndexedDB / quota storage is unavailable or damaged. See issue 706 on Github for more detail on this:
+
+https://github.com/RealRaven2000/QuickFolders/issues/706
+
+Please:
+1. Restart Thunderbird once.
+2. If the problem remains, open Tools > Developer Tools > Error Console (Ctrl+Shift+J).
+${consoleFilterInstructions}
+
+Do not uninstall QuickFolders or manually delete profile storage before making a backup.
+
+Technical error: ${errorName}: ${errorMessage}`,
+      error
+    );
+
+    if (!this.notificationShown) {
+      this.notificationShown = true;
+      try {
+        await messenger.notifications.create({
+          type: "basic",
+          iconUrl: messenger.runtime.getURL("chrome/content/skin/ico/QuickFolders_32.svg"),
+          title: "QuickFolders storage error",
+          message:
+            "QuickFolders could not access Thunderbird's extension storage. " +
+            `Recovery instructions were written to the Error Console (Ctrl+Shift+J).${consoleFilterHint}`,
+        });
+      } catch (notificationError) {
+        console.warn(
+          "[QuickFolders #706] Could not display the storage error notification:",
+          notificationError
+        );
+      }
+    }
+
+    return {
+      ok: false,
+      state: this.state,
+      attempts: this.attempts,
+      elapsed,
+      errorName,
+      errorMessage,
+      toolbarLabel,
     };
   },
 };

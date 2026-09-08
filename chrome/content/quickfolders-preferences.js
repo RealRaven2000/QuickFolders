@@ -498,7 +498,7 @@ QuickFolders.Preferences = {
 
   ensureReady: async function () {
     // awaitReady is a Promise object
-    await QuickFolders.Preferences.cache.awaitReady;
+    return QuickFolders.Preferences.cache.awaitReady;
   },
 };
 
@@ -586,6 +586,7 @@ QuickFolders.Preferences.cache = (() => {
         cache._resolveReady = resolve;
       });
 
+      let result = { ok: true };
       try {
         logDebug("Cache init: calling Storage.get()");
         logDebug(" - QuickFolders.Storage:", QuickFolders.Storage);
@@ -613,10 +614,16 @@ QuickFolders.Preferences.cache = (() => {
         Object.assign(cache._data, prefs);
         logDebug("Cache initialization successful");
       } catch (ex) {
+        result = { ok: false, error: ex?.message || String(ex) };
         console.error("[#697] Cache init failed:", ex);
         logDebug("Cache init FAILED:", ex.message, ex.stack);
+        const startupLabel = document.querySelector(".QuickFolders-Empty-Toolbar-Label");
+        if (startupLabel) {
+          startupLabel.textContent =
+            "QuickFolders storage failed to initialize. Check the Error Console (Ctrl+Shift+J).";
+        }
       }
-      cache._resolveReady();
+      cache._resolveReady(result);
       logDebug("Cache is now ready - awaitReady promise resolved");
       console.log("[#697] Cache init completed at", new Date().toISOString());
     },

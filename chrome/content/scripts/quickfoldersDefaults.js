@@ -2,6 +2,19 @@
   globals
     pref,
 */
+
+// Active legacy preferences used before storage.local is available.
+pref("extensions.quickfolders.debug.storage.cache", false); // log storage migration and cache startup
+pref("extensions.quickfolders.debug.storage.forceStartupFailure", false); // test issue #706 diagnostics
+
+/*
+ * Obsolete legacy defaults retained as migration reference.
+ * Runtime defaults now live in scripts/preferences.mjs. Existing user values
+ * remain readable through LegacyPrefs even though these defaults are inactive.
+ * TO DO: provide UI to tidy up the old Preferences later
+ *
+ * ...
+
 // Model
 pref("extensions.quickfolders.lastSelectedOptionsTab",0);
 pref("extensions.quickfolders.lastActiveCategories","");
@@ -239,7 +252,6 @@ pref("extensions.quickfolders.debug.saleDate","");
 pref("extensions.quickfolders.debug.advancedTabProperties.forcePopup",false);// force popup mode in LInux + Mac
 pref("extensions.quickfolders.debug.toolbarHiding", false);
 pref("extensions.quickfolders.debug.updateFolders", false);
-pref("extensions.quickfolders.debug.storage.cache", false); // debnug the new storage migration
 
 pref("extensions.quickfolders.notifications.compactComplete", true); // notify when folder compacting is complete
 
@@ -263,7 +275,7 @@ pref("extensions.quickfolders.recentfolders.showLabel", true);
 pref("extensions.quickfolders.recentfolders.sortAlphabetical", false);
 pref("extensions.quickfolders.recentfolders.color", 10);
 pref("extensions.quickfolders.recentfolders.showIcon", true);
-pref("extensions.quickfolders.recentfolders.folderPathDetail", 3); /* fld path only */
+pref("extensions.quickfolders.recentfolders.folderPathDetail", 3); // fld path only
 pref("extensions.quickfolders.recentfolders.maxPathItems", 3);
 pref("extensions.quickfolders.recentfolders.showTimeStamp", false);
 pref("extensions.quickfolders.recentfolders.subfolders", false); // simplify recent folders
@@ -288,7 +300,7 @@ pref("extensions.quickfolders.commandMenu.icon", false);
 pref("extensions.quickfolders.tabIcons.defaultPath","");
 pref("extensions.quickfolders.commandMenu.support", true);
 pref("extensions.quickfolders.commandMenu.help", true);
-pref("extensions.quickfolders.hasNews", false); /* splash screen status after update */
+pref("extensions.quickfolders.hasNews", false); // splash screen status after update
 pref("extensions.quickfolders.hideVersionOnUpdate", true);
 pref("extensions.quickfolders.folderTree.icons", true);
 pref("extensions.quickfolders.folderTree.icons.injectCSS", true);
@@ -317,7 +329,7 @@ pref("extensions.quickfolders.quickMove.maxResults", 25);
 pref("extensions.quickfolders.quickMove.singleTab.autoClose",false); // [issue 375] close single msg tab after moving mails
 
 
-/* popupRestrictedFeature( ) counts how often these features are used */
+// popupRestrictedFeature( ) counts how often these features are used
 pref("extensions.quickfolders.premium.advancedTabProperties.usage", 0);
 pref("extensions.quickfolders.premium.bookmarks.usage", 0);
 pref("extensions.quickfolders.premium.findFolder.usage", 0);
@@ -332,5 +344,8 @@ pref("extensions.quickfolders.license.gracePeriodDate",""); // for future use.
 pref("extensions.quickfolders.LicenseKey", "");
 pref("extensions.quickfolders.LicenseKey.backup", "");
 pref("extensions.quickfolders.menuMessageList.maxSubjectLength", 40);
-/** obsolete **/
 
+
+ * ...
+ * obsolete
+ */

@@ -31,8 +31,6 @@ var toggleIcon, removeIcon, addCurrentFolderToQF;
 
 // eslint-disable-next-line no-unused-vars
 async function onLoad(activatedWhileWindowOpen) {
-  await window.QuickFolders.Preferences.cache.awaitReady;
-
   const logDebug = window.QuickFolders.Util.logDebug.bind(window.QuickFolders.Util);
   logDebug(
     `============INJECT==========\nqf-messenger.js onLoad(${activatedWhileWindowOpen})`
@@ -287,6 +285,22 @@ async function onLoad(activatedWhileWindowOpen) {
     </vbox>
   </toolbox>
   `);
+
+  // The static toolbar is safe to show while storage starts. Do not inject or
+  // initialize any functional UI until both preference caches are available.
+  const cacheResult = await window.QuickFolders.Preferences.cache.awaitReady;
+  const backgroundResult = await window.QuickFolders.Util.notifyTools.notifyBackground({
+    func: "getStorageStartupStatus",
+  });
+  if (!cacheResult?.ok || !backgroundResult?.ok) {
+    const startupLabel = document.querySelector("div.QuickFolders-Empty-Toolbar-Label");
+    if (startupLabel) {
+      startupLabel.textContent =
+        backgroundResult?.toolbarLabel ||
+        "QuickFolders storage failed to initialize. Check the Error Console (Ctrl+Shift+J).";
+    }
+    return;
+  }
 
   //-----------------------------
   // search panel & mini toolbar in QF toolbar

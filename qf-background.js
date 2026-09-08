@@ -856,8 +856,42 @@ async function waitForMailTabsReady(timeoutMs = 5000) {
   }
 }
 
+function startWindowInjection() {
+  // will be deprecated, Tb will use moz-src:/// which is relative to core
+  messenger.WindowListener.registerChromeUrl([
+    ["content", "quickfolders", "chrome/content/"],
+    ["content", "quickfolders-skins", "chrome/content/skin/tb91/"],
+  ]);
+
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messenger.xhtml",
+    "chrome/content/scripts/qf-messenger.js"
+  );
+  messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
+  messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messengercompose/messengercompose.xhtml",
+    "chrome/content/scripts/qf-composer.js"
+  );
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/SearchDialog.xhtml",
+    "chrome/content/scripts/qf-searchDialog.js"
+  );
+  messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/messageWindow.xhtml",
+    "chrome/content/scripts/qf-messageWindow.js"
+  );
+  messenger.WindowListener.startListening();
+}
+
 async function main() {
-  await prefsReady;
+  // The injected script creates only the static toolbar before it verifies the
+  // frontend and background storage startup results.
+  startWindowInjection();
+  const prefsResult = await prefsReady;
+  if (!prefsResult.ok) {
+    return;
+  }
   const key = Preferences.get("LicenseKey") || "",
     forceSecondaryIdentity = Preferences.get("licenser.forceSecondaryIdentity") || false,
     isDebug = await isDebugOn(),
@@ -921,34 +955,6 @@ async function main() {
     return ExternalMessageApi.dispatch(message, _sender);
   });
 
-  // will be deprecated, Tb will use moz-src:/// which is relative to core
-  messenger.WindowListener.registerChromeUrl([
-    ["content", "quickfolders", "chrome/content/"],
-    ["content", "quickfolders-skins", "chrome/content/skin/tb91/"],
-  ]);
-
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/messenger.xhtml",
-    "chrome/content/scripts/qf-messenger.js"
-  );
-  // inject a separate script for current folder toolbar!
-  messenger.WindowListener.registerWindow("about:3pane", "chrome/content/scripts/qf-3pane.js");
-
-  messenger.WindowListener.registerWindow("about:message", "chrome/content/scripts/qf-3pane.js");
-
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/messengercompose/messengercompose.xhtml",
-    "chrome/content/scripts/qf-composer.js"
-  );
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/SearchDialog.xhtml",
-    "chrome/content/scripts/qf-searchDialog.js"
-  );
-  messenger.WindowListener.registerWindow(
-    "chrome://messenger/content/messageWindow.xhtml",
-    "chrome/content/scripts/qf-messageWindow.js"
-  );
-
   // make sure session has loaded all tabs.
   // [issue 598] 5000ms default
   const to = Preferences.get("api.mailTabs.timeout");
@@ -979,8 +985,6 @@ async function main() {
    * an object inside the global window. The name of that object can be specified via
    * the parameter of startListening(). This object also contains an extension member.
    */
-  messenger.WindowListener.startListening();
-
   // [issue 296] Exchange account validation (supported since TB98)
   messenger.accounts.onCreated.addListener(async (id, account) => {
     if (currentLicense.info.status == "MailNotConfigured") {
@@ -1146,7 +1150,29 @@ async function main() {
 
 
 async function notificationHandler(data) {
-  await prefsReady;
+  const prefsResult = await prefsReady;
+  if ((data.func || data.command) === "getStorageStartupStatus") {
+    return prefsResult;
+  }
+  if (!prefsResult.ok) {
+    // Window scripts can start independently of background preference startup.
+    // Return harmless license data instead of triggering secondary exceptions.
+    if ((data.func || data.command) === "getLicenseInfo") {
+      return {
+        status: "NotValidated",
+        keyType: 0,
+        isValid: false,
+        isExpired: false,
+        isValidated: false,
+        isLicenseViewed: false,
+      };
+    }
+    return {
+      ok: false,
+      storageUnavailable: true,
+      error: prefsResult.errorMessage,
+    };
+  }
   if (Preferences.isDebug("notifications")) {
     console.log(
       `%cNotification handler of ${browser.runtime.getURL("")}`,
@@ -1612,8 +1638,11 @@ async function notificationHandler(data) {
 
 // background listener
 function registerNotifyListener() {
-  messenger.NotifyTools.onNotifyBackground.addListener((data) => {
-    const isLog = Preferences.get("debug.notifications") || false;
+  messenger.NotifyTools.onNotifyBackground.addListener(async (data) => {
+    const prefsResult = await prefsReady;
+    const isLog = prefsResult.ok
+      ? Preferences.get("debug.notifications") || false
+      : false;
     if (isLog && data.func) {
       console.log(
         "=========================\n" +
@@ -1775,8 +1804,6 @@ async function displayUpdateMessage() {
   }
 }
 
-registerNotifyListener();
 const prefsReady = Preferences.init(); // pending
+registerNotifyListener();
 main();
-
-

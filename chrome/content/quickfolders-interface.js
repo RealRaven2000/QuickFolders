@@ -815,6 +815,13 @@ QuickFolders.Interface = {
         }
       }
 
+      // An empty migrated custom label can otherwise leave a visible but blank
+      // toolbar button. The showQuickfoldersLabel preference still controls
+      // whether the button itself is displayed.
+      if (!displayedLabelText?.trim()) {
+        displayedLabelText = "QuickFolders";
+      }
+
       quickFoldersLabel.label = displayedLabelText;
       // force Renew QuickFolders to be visible!
       QuickFolders.Interface.showElement(quickFoldersLabel, showLabelBox);

@@ -101,6 +101,7 @@ code:not(.keystroke) {
   color: white;
   padding: 5px 8px;
   cursor: pointer;
+  border-radius: 0.2em;
 }
 
 
@@ -114,6 +115,7 @@ code:not(.keystroke) {
 .actionlinks a:hover,
 #specialOfferTxt a:hover {
   background-image: linear-gradient(to bottom, #6d0019 0%,#8f0222 34%,#e20425 100%);
+  outline: 1px solid rgb(255, 200, 200);
 }
 
 .actionlinks a:active {
@@ -162,16 +164,18 @@ b.maintenance {
 .importantInfo a {
   background-color: transparent;
   border-radius: 4px;
-  color: lightyellow;
+  color: orange !important;
   cursor: pointer;
-  padding: 0.1em 0.4em;
+  display: inline;
   margin-left: -0.3em;
   margin-right: -0.3em;
+  padding: 0.1em 0.4em;
   text-decoration: underline;
+  white-space: nowrap;
 }
 
 a.issue {
-  white-space: nowrap;
+  white-space: nowrap !important;
 }
 
 .importantInfo a.issue:hover {

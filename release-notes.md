@@ -2,8 +2,16 @@ Important for Release channel users (**154 and later**): With Thunderbird's new 
 
 Additional regressions are expected within the Thunderbird release branch and will be addressed as they occur. Users who rely on advanced or experimental functionality may prefer the ESR channel for a more stable environment with fewer platform changes.
 
-Read the full version <a href="https://github.com/RealRaven2000/QuickFolders/
+Read the full [version history](https://quickfolders.org/version.html#6.17.2).
 
+**Maintenance Release 6.17.2**
+
+*   Compatibility with Thunderbird 157.
+*   Fixed: The Advanced search settings dialog showed localization placeholders instead of translated text. [issue #705]
+*   Fixed: QuickFolders styling affected the background color of activated buttons in Thunderbird's Quick Filter toolbar. [issue #700]
+*   Improved the drag-over indicator when dragging to subfolder menus. [issue #703]
+*   Improved stability when moving folders. [issue #702]
+*   Added diagnostics and a user notification when Thunderbird's extension storage remains unavailable after startup retries. [issue #706]
 
 **Maintenance Release 6.17.1**
 *   Fixed: QuickFolders could become stuck at 'initialising QuickFolders' in the toolbar on some systems with Thunderbird 154. [issue #697]

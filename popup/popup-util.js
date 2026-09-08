@@ -194,6 +194,8 @@ function formatAll(txt) {
     .replace(/\{\/U\}/gi, "</ul>")
     .replace(/\{L(?:\s+([^}]+))?\}/gi, (_, attrs) => (attrs ? `<li ${attrs}>` : "<li>"))
     .replace(/\{\/L\}/gi, "</li>")
+    .replace(/\{h3\}/g, "<h3>")
+    .replace(/\{\/h3\}/g, "</h3>")
     .replace(/\{P(?:\s+([^}]+))?\}/g, (_, attrs) => (attrs ? `<p ${attrs}>` : "<p>"))
     .replace(/\{\/P\}/gi, "</p>")
     .replace(/\{a ([^}]+?)\}/g, "<a $1>")

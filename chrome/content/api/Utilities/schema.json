@@ -16,6 +16,19 @@
       },
 
       {
+        "name": "setToolbarLabel",
+        "type": "function",
+        "description": "Updates the QuickFolders startup label in open main windows.",
+        "parameters": [
+          {
+            "name": "text",
+            "type": "string",
+            "description": "Text displayed in the center of the QuickFolders toolbar."
+          }
+        ]
+      },
+
+      {
         "name": "showXhtmlPage",
         "type": "function",
         "parameters": [

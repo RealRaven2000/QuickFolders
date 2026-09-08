@@ -147,6 +147,20 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           return "user"; // anonymous
         },
 
+        setToolbarLabel(text) {
+          const windows = Services.wm.getEnumerator("mail:3pane");
+          let updated = 0;
+          while (windows.hasMoreElements()) {
+            const win = windows.getNext();
+            const labels = win.document.querySelectorAll("div.QuickFolders-Empty-Toolbar-Label");
+            for (const label of labels) {
+              label.textContent = text;
+              updated++;
+            }
+          }
+          return updated;
+        },
+
         showVersionHistory: function () {
           const win = Services.wm.getMostRecentWindow("mail:3pane");
           const util = win.QuickFolders.Util;

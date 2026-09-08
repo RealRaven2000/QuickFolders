@@ -6,35 +6,39 @@ Read the full [version history](https://quickfolders.org/version.html#6.17.2).
 
 **Maintenance Release 6.17.2**
 
-*   Compatibility with Thunderbird 157.
-*   Fixed: The Advanced search settings dialog showed localization placeholders instead of translated text. [issue #705]
-*   Fixed: QuickFolders styling affected the background color of activated buttons in Thunderbird's Quick Filter toolbar. [issue #700]
-*   Improved the drag-over indicator when dragging to subfolder menus. [issue #703]
-*   Improved stability when moving folders. [issue #702]
-*   Added diagnostics and a user notification when Thunderbird's extension storage remains unavailable after startup retries. [issue #706]
+- Compatibility with Thunderbird 157.
+- Fixed startup handling when Thunderbird's extension storage is unavailable, showing clear diagnostic instructions instead of leaving QuickFolders partially initialized. The toolbar placeholder now reports storage initialization progress and directs users to the Error Console if startup fails. We also corrected missing default values during legacy preference migration.
+
+    Obsolete defaults are no longer registered in legacy preferences; only existing preferences that the user has explicitly set remain, reducing clutter in Thunderbird's Config Editor. [issue #706]
+- Fixed: The Advanced search settings dialog showed localization placeholders instead of translated text. [issue #705]
+- Fixed: QuickFolders styling affected the background color of activated buttons in Thunderbird's Quick Filter toolbar. [issue #700]
+- Improved the drag-over indicator when dragging to subfolder menus. [issue #703]
+- Fixed: The folder move confirmation could show *undefined* instead of the folder name. [issue #702]
+
+
 
 **Maintenance Release 6.17.1**
-*   Fixed: QuickFolders could become stuck at 'initialising QuickFolders' in the toolbar on some systems with Thunderbird 154. [issue #697]
-*   Fixed: The renewal referrer was set to `undefined`, which could result in an incorrect renewal date when the current license had not yet expired. [issue #699]
-*   Fixed: quickMove shows stale folder name. [issue #696]
-*   Fixed: Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files. [issue #698]
+- Fixed: QuickFolders could become stuck at 'initialising QuickFolders' in the toolbar on some systems with Thunderbird 154. [issue #697]
+- Fixed: The renewal referrer was set to `undefined`, which could result in an incorrect renewal date when the current license had not yet expired. [issue #699]
+- Fixed: quickMove shows stale folder name. [issue #696]
+- Fixed: Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files. [issue #698]
 
 **Improvements (6.17)**
 
-*   QuickFolders is now compatible with Thunderbird 155.
-*   A custom width can now be configured for individual tab separators - via QuickFolders commands submenu. [issue #686]
-*   Modernized quickFilters integration to use background communications instead of direct code access side-effect. [issue #680]
-*   Converted storage from legacy preferences (about:config) to local storage API. [issue #677] Settings can now be reset to defaults by uninstalling the add-on — back up your settings first using **Store Configuration** under **Backup and Restore**.
+- QuickFolders is now compatible with Thunderbird 155.
+- A custom width can now be configured for individual tab separators - via QuickFolders commands submenu. [issue #686]
+- Modernized quickFilters integration to use background communications instead of direct code access side-effect. [issue #680]
+- Converted storage from legacy preferences (about:config) to local storage API. [issue #677] Settings can now be reset to defaults by uninstalling the add-on — back up your settings first using **Store Configuration** under **Backup and Restore**.
 
 **Bug Fixes (6.17)**
 
-*   Fixed: messages window content area truncated at the top. [issue #673]
-*   Fixed: Tab Category Selector not rendering. [issue #692]
-*   Fixed: Find related mails doesn't stay in current folder when desired. [issue #694]
-*   Fixed: Empty Junk and other context menu items stopped working in Thunderbird 153. [issue #695]
-*   To ensure compatibility with Thunderbird 155, URL loading is now forced in unsafe mode.  [issue #690] According to [Bug 1974213](https://bugzilla.mozilla.org/show_bug.cgi?id=1974213), Add-on Subscripts cannot be loaded anymore with the simple `scriptloader.loadSubScript` method - making them fail in Thunderbird 155.
+- Fixed: messages window content area truncated at the top. [issue #673]
+- Fixed: Tab Category Selector not rendering. [issue #692]
+- Fixed: Find related mails doesn't stay in current folder when desired. [issue #694]
+- Fixed: Empty Junk and other context menu items stopped working in Thunderbird 153. [issue #695]
+- To ensure compatibility with Thunderbird 155, URL loading is now forced in unsafe mode.  [issue #690] According to [Bug 1974213](https://bugzilla.mozilla.org/show_bug.cgi?id=1974213), Add-on Subscripts cannot be loaded anymore with the simple `scriptloader.loadSubScript` method - making them fail in Thunderbird 155.
 
 **Miscellaneous**
 
-*   Simplified WindowListener by removing pre 140 compatibility code.
-*   WIP: quickMove shortcut to open recent folders menu. [issue #687]
+- Simplified WindowListener by removing pre 140 compatibility code.
+- WIP: quickMove shortcut to open recent folders menu. [issue #687]

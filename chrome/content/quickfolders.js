@@ -349,8 +349,8 @@ END LICENSE BLOCK */
     ## [issue 705] Advanced search settings dialog showed localization placeholders instead of translated text.
     ## [issue 700] QuickFolders affects standard Quick filter toolbar background color for activated buttons. 
     ## [issue 703] improve dragover state when dragging to subfolder menus
-    ## [issue 702] improved stability when moving folders
-    ## [issue 706] Added diagnostics when Thunderbird extension storage remains unavailable after startup retries.
+    ## [issue 702] Fixed an undefined folder name in the move confirmation.
+    ## [issue 706] Fixed partial initialization when Thunderbird extension storage is unavailable, added clear diagnostics, corrected missing defaults during legacy preference migration, and stopped registering obsolete legacy defaults while retaining user-set values for migration.
 
 
 

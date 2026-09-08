@@ -7,20 +7,22 @@ Read the full version <a href="https://quickfolders.org/version.html#6.17.2">her
 
 <b>Maintenance Release 6.17.2</b>
 <ul>
-<li>Compatibility with Thunderbird 157.</li>
-<li>Fixed: The Advanced search settings dialog showed localization placeholders instead of translated text. <a href="https://github.com/RealRaven2000/QuickFolders/issues/705">[issue 705]</a></li>
-<li>Fixed: QuickFolders styling affected the background color of activated buttons in Thunderbird's Quick Filter toolbar. <a href="https://github.com/RealRaven2000/QuickFolders/issues/700">[issue 700]</a></li>
-<li>Improved the drag-over indicator when dragging to subfolder menus. <a href="https://github.com/RealRaven2000/QuickFolders/issues/703">[issue 703]</a></li>
-<li>Improved stability when moving folders. <a href="https://github.com/RealRaven2000/QuickFolders/issues/702">[issue 702]</a></li>
-<li>Added diagnostics and a user notification when Thunderbird's extension storage remains unavailable after startup retries. <a href="https://github.com/RealRaven2000/QuickFolders/issues/706">[issue 706]</a></li>
+<li> Compatibility with Thunderbird 157.</li>
+<li> Fixed startup handling when Thunderbird's extension storage is unavailable, showing clear diagnostic instructions instead of leaving QuickFolders partially initialized. We also corrected missing default values during legacy preference migration. 
+  
+Obsolete defaults are no longer registered in legacy preferences; only existing preferences that the user has explicitly set remain, reducing clutter in Thunderbird's Config Editor. <a href="https://github.com/RealRaven2000/QuickFolders/issues/706">[issue 706]</a></li>
+<li> Fixed: The Advanced search settings dialog showed localization placeholders instead of translated text. <a href="https://github.com/RealRaven2000/QuickFolders/issues/705">[issue 705]</a></li>
+<li> Fixed: QuickFolders styling affected the background color of activated buttons in Thunderbird's Quick Filter toolbar. <a href="https://github.com/RealRaven2000/QuickFolders/issues/700">[issue 700]</a></li>
+<li> Improved the drag-over indicator when dragging to subfolder menus. <a href="https://github.com/RealRaven2000/QuickFolders/issues/703">[issue 703]</a></li>
+<li> Fixed: The folder move confirmation could show <i>undefined</i> instead of the folder name. <a href="https://github.com/RealRaven2000/QuickFolders/issues/702">[issue 702]</a></li>
 </ul>
 
 <b>Maintenance Release 6.17.1</b>
 <ul>
-<li>Fixed: QuickFolders stuck 'initialising QuickFolders' on some systems in Tb 154. <a href="https://github.com/RealRaven2000/QuickFolders/issues/697">[issue 697]</a></li>
-<li>Fixed: Referrer is undefined when renewing license. <a href="https://github.com/RealRaven2000/QuickFolders/issues/699">[issue 699]</a>. This could lead to renewal dates not being calculated correctly if the current license hasn't expired yet.</li>
-<li>Fixed: quickMove shows stale folder name. <a href="https://github.com/RealRaven2000/QuickFolders/issues/696">[issue 696]</a></li>
-<li>Fixed: Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files. <a href="https://github.com/RealRaven2000/QuickFolders/issues/698">[issue 698]</a></li> 
+<li> Fixed: QuickFolders stuck 'initialising QuickFolders' on some systems in Tb 154. <a href="https://github.com/RealRaven2000/QuickFolders/issues/697">[issue 697]</a></li>
+<li> Fixed: Referrer is undefined when renewing license. <a href="https://github.com/RealRaven2000/QuickFolders/issues/699">[issue 699]</a>. This could lead to renewal dates not being calculated correctly if the current license hasn't expired yet.</li>
+<li> Fixed: quickMove shows stale folder name. <a href="https://github.com/RealRaven2000/QuickFolders/issues/696">[issue 696]</a></li>
+<li> Fixed: Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files. <a href="https://github.com/RealRaven2000/QuickFolders/issues/698">[issue 698]</a></li> 
 </ul>
 
 

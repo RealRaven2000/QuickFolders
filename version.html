@@ -175,38 +175,25 @@
 		For Thunderbird 68, <a href="version-68.html#latestlegacy">click here</a>.
 	 </p>	
 	<a name="news" > </a>
-	<h3>Latest News (17/09/2025) - Thunderbird 140 Compatibility</h3>
+	<h3>Latest News (07/09/2026) - Thunderbird 155 Compatibility</h3>
     <p>
-      QuickFolders is <b>fully compatible</b> with Thunderbird 142. 
-      In rare cases there may be problems when updating from older versions of Thunderbird.<br>
-      If you get a message that says otherwise after updating from earlier versions (T128 or Tb141) or 
-      <b>if QuickFolders cannot be enabled</b> using 
-      the blue slider, then simply remove it and reinstall it via 
-			"Find more Add-ons" on the Extensions tab of Add-ons Manager:
-    </p>
-
-    <p>
-      Some users may have seen a false incompatibility warning after updating 
-      from Thunderbird to v143. This was caused by cached compatibility information 
-      in Thunderbird, which sometimes fails to refresh correctly. 
+      The project is trying to adapt to the new fast paced 2-weeks release cycle which may mean 
+      quick fixes need to  be reviewed more frequently. Should you need a version that is 
+      currently stuck awaiting review, we usually release a tagged release directly on our GitHub repository:
+      <a href="https://github.com/RealRaven2000/QuickFolders/releases/">QuickFolders Releases on Github</a>.
     </p>
     <p>
-      To get this fixed I raised a bug with Thunderbird: 
-      <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1986027">[Bugzilla 1986027]</a>.
+      We successfully moved QuickFolders to use extension storage for its settings and account templates,
+      which is another step towards full mail extension compatibility and away from being a legacy "experimental"
+      add-on. 
     </p>
-	<p> 
-		QuickFolders continues to support users on Thunderbird 115 and above for now. 
-		Over the coming year, as we add new features, support for Thunderbird 115 
-		may be phased out in favor of Thunderbird 128 and newer.
-	</p>
-	<p> 
-		We continuously monitor Thunderbird changes to ensure QuickFolders remains 
-		compatible and reliable, regardless of the release track you choose.
-	</p>
-	<p> 
-		Thank you for supporting QuickFolders through a Pro license — this makes 
-		all new features, bug fixes, and long-term compatibility possible.
-	</p>
+    <p>
+      This also means that QuickFolders settings can now be reset by removing the Add-on.
+    </p>		
+		<p> 
+			Thank you for supporting QuickFolders through a Pro license — this makes 
+			all new features, bug fixes, and long-term compatibility possible.
+		</p>
 
 </section>
       
@@ -312,7 +299,7 @@
     -->
 		<a name="latest">&nbsp;</a>
 
-		<a name="6.17">&nbsp;</a> <a name="6.17.1">&nbsp;</a>
+		<a name="6.17">&nbsp;</a> <a name="6.17.1">&nbsp;</a> <a name="6.17.2">&nbsp;</a>
     <li>
       <h4>
       <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.17"
@@ -321,8 +308,47 @@
 		  </a>
       </h4>
 
+      <ul>
+        <h4 class="inList">Maintenance version 6.17.2 (WIP)</h4>
+				<li>
+					Compatibility with Thunderbird 157.
+				</li>
+				<li>
+					Fixed startup handling when Thunderbird's extension storage is unavailable, showing clear
+					diagnostic instructions instead of leaving QuickFolders partially initialized. We also
+					corrected missing default values during legacy preference migration.
+					<p>
+						While QuickFolders starts up it will now update the label on the main toolbar as follows:<br>
+						<img src="images/quickfolders-toolbar-init-update-01.png" alt="QuickFolders Toolbar Label Update" class="screenshot"/>
+					</p>
+
+					<p>
+						Obsolete defaults are no longer registered in legacy preferences; only existing preferences
+						that the user has explicitly set remain, reducing clutter in Thunderbird's Config Editor.
+						<a href="https://github.com/RealRaven2000/QuickFolders/issues/706">[issue 706]</a>
+					</p>
+				</li>
+				<li>
+					Fixed: The Advanced search settings dialog showed localization placeholders instead 
+					of translated text. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/705">[issue 705]</a>
+				</li>
+				<li>
+					Fixed: QuickFolders styling affected the background color of activated buttons in
+				  Thunderbird's Quick Filter toolbar. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/700">[issue 700]</a>
+				</li>
+				<li>
+					Fixed: The folder move confirmation could show <i>undefined</i> instead of the folder name. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/702">[issue 702]</a>
+				</li>
+				<li>
+					Improved the drag-over indicator when dragging to subfolder menus. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/703">[issue 703]</a>
+				</li>
+      </ul>
 			<ul>
-				<h4 class="inList">Maintenance version 6.17.1 (WIP)</h4>
+			<h4 class="inList">Maintenance version 6.17.1 (WIP)</h4>
 				<li>
 					Fixed: QuickFolders stuck 'initialising QuickFolders' on some systems in Thunderbird 154. 
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/697">[issue 697]</a>]

@@ -169,15 +169,15 @@ function formatAll(txt) {
     // future: add "switchtoESR" link (once official announcement is made)
     .replace(
       /\{a switchtorelease\}/g,
-      "<a href='https://blog.thunderbird.net/2025/03/thunderbird-release-channel-update/'>",
+      "<a href='https://blog.thunderbird.net/2025/03/thunderbird-release-channel-update/'>"
     )
     .replace(
       /\{a compatCheck\}/g,
-      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-compatibility-check/' class='native'>",
+      "<a href='https://addons.thunderbird.net/thunderbird/addon/addon-compatibility-check/' class='native'>"
     )
     .replace(
       /\{a apiwork\}/g,
-      "<a href='https://blog.thunderbird.net/2026/03/thunderbird-monthly-development-digest-march-2026/'>",
+      "<a href='https://blog.thunderbird.net/2026/03/thunderbird-monthly-development-digest-march-2026/'>"
     )
     .replace(/\{bold\}/g, "<b>")
     .replace(/\{\/bold\}/g, "</b>")

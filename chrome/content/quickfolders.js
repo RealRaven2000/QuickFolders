@@ -338,12 +338,19 @@ END LICENSE BLOCK */
     ## [issue 694] Find related mails doesn't stay in current folder when desired
     ## [issue 695] Tb 153: Empty Junk and other context menu items stopped working
 
-  6.17.1 QuickFolders Pro - WIP 
+  6.17.1 QuickFolders Pro - 01/09/2026
     ## [issue 696] quickMove shows stale folder name
     ## [issue 697] QuickFolders 6.17 - stuck "initialising QuickFolders" on some systems in Tb 154.
     ## [issue 698] Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files.
     ## [issue 699] Referrer is undefined when renewing license
-
+ 
+  6.17.2 QuickFolders Pro - WIP 
+    ## Compatibility with Thunderbird 157
+    ## [issue 705] Advanced search settings dialog showed localization placeholders instead of translated text.
+    ## [issue 700] QuickFolders affects standard Quick filter toolbar background color for activated buttons. 
+    ## [issue 703] improve dragover state when dragging to subfolder menus
+    ## [issue 702] improved stability when moving folders
+    ## [issue 706] Added diagnostics when Thunderbird extension storage remains unavailable after startup retries.
 
 
 

@@ -953,7 +953,13 @@ async function main() {
     }
   });
 
-  messenger.runtime.onMessageExternal.addListener(async (message, _sender) => {
+  messenger.runtime.onMessageExternal.addListener((message, _sender) => {
+    const command = ExternalMessageApi.normalizeCommand(message?.command);
+    // Only claim responses for supported commands, including the legacy license query.
+    if (!ExternalMessageApi.hasCommand(command) && command !== "queryQuickFoldersLicense") {
+      return false;
+    }
+    // returns a Promise
     return ExternalMessageApi.dispatch(message, _sender);
   });
 

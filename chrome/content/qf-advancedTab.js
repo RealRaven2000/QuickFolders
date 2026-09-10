@@ -362,11 +362,8 @@ QuickFolders.AdvancedTab = {
       _email = it.getAttribute('value');
 	} ,
 	
-	headerClick: function headerClick(event) {
-		const Cc = Components.classes,
-      Ci = Components.interfaces,
-      util = QuickFolders.Util;
-		let clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(Ci.nsIClipboardHelper);
+	headerClick: async function headerClick(event) {
+		const util = QuickFolders.Util;
 		event.stopPropagation();
 		switch (event.button) {
 			case 0: // default = left button
@@ -379,7 +376,7 @@ QuickFolders.AdvancedTab = {
           infoTxt += `\nTab [${this.entry.name}]`
             + `\nAccount (from tab): ${this.entry.account}`;
         }
-				clipboardhelper.copyString(infoTxt);
+				if (!(await util.writeClipboardText(infoTxt))) {return;}
 			  util.slideAlert("QuickFolders", "Copied folder Info to clipboard\n" + infoTxt);			 
       } break;
 		}

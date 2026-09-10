@@ -912,6 +912,8 @@ async function main() {
     "currentDeckUpdate",
     "getLicenseInfo",
     "copyFolderEntries",
+    "writeClipboardText",
+    "storeFolderEntries",
     "pasteFolderEntries",
     "legacyAdvancedSearch", // new global one!
     "showAboutConfig", // new global one!
@@ -1469,6 +1471,29 @@ async function notificationHandler(data) {
       // if folderName is not given - create a popup window
 
       return browser.folders.create(data.parentPath, data.folderName || "test1"); // like await but returns
+
+    case "writeClipboardText":
+      try {
+        if (typeof data.text !== "string") {
+          throw new TypeError("Clipboard text must be a string.");
+        }
+        await navigator.clipboard.writeText(data.text);
+        return { ok: true };
+      } catch (error) {
+        return { ok: false, error: error.message || String(error) };
+      }
+
+    case "storeFolderEntries": {
+      if (!Array.isArray(data.entries)) {
+        return { ok: false, error: "Invalid folder configuration." };
+      }
+      const original = Preferences._model.folders;
+      if (!(await Preferences.setModelFolders(data.entries))) {
+        Preferences._model.folders = original;
+        return { ok: false, error: "Could not save folder configuration." };
+      }
+      return { ok: true };
+    }
 
     case "copyFolderEntries":
       messenger.NotifyTools.notifyExperiment({ event: "copyFolderEntriesToClipboard" });

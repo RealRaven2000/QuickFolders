@@ -1283,12 +1283,69 @@ QuickFolders.Options = {
     messenger.runtime.sendMessage({ command: "legacyAdvancedSearch" });
   },
 
-  copyFolderEntries: function () {
-    messenger.runtime.sendMessage({ command: "copyFolderEntries" });
+  copyFolderEntries: async function () {
+    try {
+      const { model } = await messenger.storage.local.get("model");
+      if (!Array.isArray(model?.folders)) {
+        throw new Error("Folder configuration is unavailable.");
+      }
+      await navigator.clipboard.writeText(JSON.stringify(model.folders, null, "  "));
+      alert(`${messenger.i18n.getMessage("qfAlertCopyString")} [${model.folders.length} tabs]`);
+    } catch (error) {
+      console.error("QuickFolders: Could not copy folder configuration", error);
+      alert(`QuickFolders: ${error.message || error}`);
+    }
   },
 
-  pasteFolderEntries: function () {
-    messenger.runtime.sendMessage({ command: "pasteFolderEntries" });
+  pasteFolderEntries: async function () {
+    if (QuickFolders.Options.folderPasteState) {return;}
+    const state = { windowId: null, original: null, started: false };
+    QuickFolders.Options.folderPasteState = state;
+    const button = document.getElementById("pasteFolders");
+    button.disabled = true;
+    try {
+      state.windowId = (await messenger.windows.getCurrent()).id;
+      const result = await messenger.Utilities.folderPaste("begin", state.windowId);
+      if (!result.allowed) {return;}
+      state.started = true;
+      state.original = result.original;
+      let entries;
+      try {
+        entries = JSON.parse(await navigator.clipboard.readText());
+        if (!Array.isArray(entries) || entries.some(entry =>
+          !entry || typeof entry !== "object" || Array.isArray(entry) ||
+          typeof entry.uri !== "string" || !entry.uri ||
+          (entry.account !== undefined && typeof entry.account !== "string")
+        )) {
+          throw new Error("Invalid folder configuration.");
+        }
+      } catch (error) {
+        console.error("QuickFolders: Could not read folder configuration", error);
+        alert(messenger.i18n.getMessage("qf.alert.pasteFolders.formatErr"));
+        return;
+      }
+      entries = await messenger.Utilities.folderPaste("preview", state.windowId, entries);
+      if (!confirm(messenger.i18n.getMessage("qf.prompt.pasteFolders.confirm").replace("{0}", entries.length))) {
+        return;
+      }
+      // Persist only after accepting the preview; finish refreshes the window caches and toolbars.
+      const saved = await messenger.runtime.sendMessage({ command: "storeFolderEntries", entries });
+      if (!saved?.ok) {throw new Error(saved?.error || "Could not save folder configuration.");}
+      await messenger.Utilities.folderPaste("finish", state.windowId, entries);
+      state.started = false;
+    } catch (error) {
+      console.error("QuickFolders: Could not paste folder configuration", error);
+      alert(`QuickFolders: ${error.message || error}`);
+    } finally {
+      try {
+        if (state.started) {
+          await messenger.Utilities.folderPaste("cancel", state.windowId, state.original);
+        }
+      } finally {
+        QuickFolders.Options.folderPasteState = null;
+        button.disabled = false;
+      }
+    }
   },
 
   getColorPickerVars: function (colPickId) {

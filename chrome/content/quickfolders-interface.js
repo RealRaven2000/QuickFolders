@@ -10506,7 +10506,7 @@ QuickFolders.Interface = {
           entries = [];
         }
         util.getMail3PaneWindow().QuickFolders.initTabsFromEntries(entries);
-        question = util.getBundleString("qf.prompt.pasteFolders.confirm");
+        question = util.getBundleString("qf.prompt.pasteFolders.confirm").replace("{0}", entries.length);
         if (Services.prompt.confirm(window, "QuickFolders", question)) {
           // store
           prefs.storeFolderEntries(entries);
@@ -10527,49 +10527,24 @@ QuickFolders.Interface = {
     }
   },
 
-  copyFolderEntriesToClipboard: function () {
-    // originally this was located in QF.options.copyFolderEntries
-    // debug function for checking users folder string (about:config has trouble with editing JSON strings)
-    const Cc = Components.classes,
-      Ci = Components.interfaces,
-      util = QuickFolders.Util;
-
+  copyFolderEntriesToClipboard: async function () {
     try {
-      let clipboardhelper = Cc["@mozilla.org/widget/clipboardhelper;1"].getService(
-          Ci.nsIClipboardHelper
-        ),
-        sFolderString = Services.prefs.getStringPref("QuickFolders.folders");
-
-      util.logToConsole("Folder String: " & sFolderString);
-      try {
-        // format the json
-        let prettyFolders = JSON.stringify(JSON.parse(sFolderString), null, "  ");
-        clipboardhelper.copyString(prettyFolders);
-      } catch (e) {
-        util.logException("Error prettifying folder string:\n", e);
-        clipboardhelper.copyString(sFolderString);
+      const folders = QuickFolders.Preferences.cache.loadModel();
+      if (!Array.isArray(folders)) {
+        throw new Error("Folder configuration is unavailable.");
       }
-      let out = util.getBundleString("qfAlertCopyString"),
-        mail3PaneWindow = util.getMail3PaneWindow();
-
-      if (mail3PaneWindow && mail3PaneWindow.QuickFolders) {
-        out += ` [${mail3PaneWindow.QuickFolders.Model.selectedFolders.length} tabs]`;
+      if (await QuickFolders.Util.writeClipboardText(JSON.stringify(folders, null, "  "))) {
+        Services.prompt.alert(null, "QuickFolders",
+          QuickFolders.Util.getBundleString("qfAlertCopyString") + " [" + folders.length + " tabs]");
       }
-      //alert(out);
-      Services.prompt.alert(null, "QuickFolders", out);
-    } catch (e) {
-      //alert(e);
-      Services.prompt.alert(null, "QuickFolders", e);
+    } catch (error) {
+      Services.prompt.alert(null, "QuickFolders", error.message || String(error));
     }
   },
 
-  copyCurrentFolderInfo: function () {
-    const Ci = Components.interfaces;
+  copyCurrentFolderInfo: async function () {
     try {
       let folder = QuickFolders.Util.CurrentFolder;
-      let clipboardhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(
-        Ci.nsIClipboardHelper
-      );
       let account = (
         MailServices.accounts.FindAccountForServer || MailServices.accounts.findAccountForServer
       )(folder.server).key;
@@ -10577,7 +10552,7 @@ QuickFolders.Interface = {
         `Folder ${folder.prettyName || folder.localizedName}\n` +
         `On ${account}\n` +
         `URI: ${folder.URI}`;
-      clipboardhelper.copyString(txt);
+      if (!(await QuickFolders.Util.writeClipboardText(txt))) {return;}
       let msg = `Folder information for ${folder.prettyName || folder.localizedName} was copied to clipboard!`;
       console.log(msg + "\n" + txt);
       Services.prompt.alert(null, "QuickFolders", msg);

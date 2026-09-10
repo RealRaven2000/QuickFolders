@@ -115,6 +115,35 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
   
   getAPI(context) {    
     let self = this;
+    const folderPasteSessions = new Map();
+    const cloneFolders = entries => JSON.parse(JSON.stringify(entries));
+    const renderFolderPreview = (win, entries, inOptions = true) => {
+      const qf = win.QuickFolders;
+      qf.Model.selectedFolders = cloneFolders(entries);
+      qf.Interface.updateFoldersUI();
+      if (inOptions) {
+        qf.Interface.toggleToolbar({ forceVisible: true, optionsMode: true });
+      }
+    };
+    const cancelFolderPaste = (windowId, inOptions = true) => {
+      const session = folderPasteSessions.get(windowId);
+      if (!session) {return;}
+      try {
+        if (!session.win.closed && session.previewed) {
+          renderFolderPreview(session.win, session.original, inOptions);
+        }
+      } finally {
+        delete session.win.QuickFolders._folderPastePreviewOwner;
+        folderPasteSessions.delete(windowId);
+      }
+    };
+    context.callOnClose({
+      close() {
+        for (const windowId of folderPasteSessions.keys()) {
+          cancelFolderPaste(windowId, false);
+        }
+      },
+    });
     
     // eslint-disable-next-line no-unused-vars
     const PrefTypes = {
@@ -126,6 +155,65 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
 
     return {
       Utilities: {
+        async folderPaste(action, windowId, entries) {
+          if (action === "begin") {
+            const settingsWindow = context.extension.windowManager.get(windowId, context).window;
+            const win = settingsWindow.QuickFolders?.Model
+              ? settingsWindow : Services.wm.getMostRecentWindow("mail:3pane");
+            if (!win) {throw new Error("QuickFolders toolbar is unavailable.");}
+            const qf = win.QuickFolders;
+            if (!qf?.Model) {throw new Error("QuickFolders toolbar is unavailable.");}
+            if (qf._folderPastePreviewOwner) {
+              throw new Error("A folder preview is already active in this window.");
+            }
+            qf.Util.popupRestrictedFeature("pasteFolderEntries", "", 2);
+            if (!qf.Util.hasValidLicense()) {return { allowed: false };}
+            const original = cloneFolders(qf.Model.selectedFolders);
+            folderPasteSessions.set(windowId, { win, original, previewed: false });
+            qf._folderPastePreviewOwner = context;
+            return { allowed: true, original: cloneFolders(original) };
+          }
+          if (action === "cancel") {
+            cancelFolderPaste(windowId);
+            return true;
+          }
+          const session = folderPasteSessions.get(windowId);
+          if (!session) {throw new Error("Folder preview is no longer active.");}
+          if (action === "preview") {
+            const qf = session.win.QuickFolders;
+            const folders = cloneFolders(entries);
+            qf.Model.correctFolderEntries(folders, false);
+            for (const entry of folders) {
+              if (entry.tabColor === undefined || entry.tabColor === "undefined") {
+                entry.tabColor = 0;
+              }
+              if (!entry.name) {
+                const folder = qf.Model.getMsgFolderFromUri(entry.uri, false);
+                if (folder) {entry.name = folder.prettyName || folder.localizedName;}
+              }
+            }
+            session.previewed = true;
+            renderFolderPreview(session.win, folders);
+            // Let the forced-visible toolbar paint before Settings asks for confirmation.
+            await new Promise(resolve => session.win.requestAnimationFrame(() =>
+              session.win.setTimeout(resolve, 0)));
+            return cloneFolders(session.win.QuickFolders.Model.selectedFolders);
+          }
+          if (action === "finish") {
+            if (!Array.isArray(entries)) {throw new Error("Folder configuration is unavailable.");}
+            // Persistence has succeeded. Closing Settings must no longer restore the old preview.
+            delete session.win.QuickFolders._folderPastePreviewOwner;
+            folderPasteSessions.delete(windowId);
+            for (const win of Services.wm.getEnumerator("mail:3pane")) {
+              if (!win.QuickFolders?.Preferences?.cache) {continue;}
+              win.QuickFolders.Preferences.cache._model.folders = cloneFolders(entries);
+              renderFolderPreview(win, entries, win === session.win);
+            }
+            return true;
+          }
+          throw new Error("Unknown folder paste action.");
+        },
+
         logDebug(text) {
           const win = Services.wm.getMostRecentWindow("mail:3pane");
           win.QuickFolders.Util.logDebug(text);

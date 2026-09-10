@@ -3,6 +3,17 @@
     "namespace": "Utilities",
     "functions": [
       {
+        "name": "folderPaste",
+        "type": "function",
+        "async": true,
+        "description": "Bridge for Settings folder preview, normalization, rollback and toolbar refresh.",
+        "parameters": [
+          { "name": "action", "type": "string", "enum": ["begin", "preview", "cancel", "finish"] },
+          { "name": "windowId", "type": "integer" },
+          { "name": "entries", "type": "array", "optional": true, "items": { "type": "object", "additionalProperties": true } }
+        ]
+      },
+      {
         "name": "logDebug",
         "type": "function",
         "async": true,

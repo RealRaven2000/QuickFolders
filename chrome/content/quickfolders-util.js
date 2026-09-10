@@ -1953,7 +1953,24 @@ allowUndo = true)`,
     }, 150);
   },
 
-  alertButtonNoFolder: function (button) {
+  writeClipboardText: async function (text) {
+    try {
+      const result = await QuickFolders.Util.notifyTools.notifyBackground({
+        func: "writeClipboardText",
+        text,
+      });
+      if (!result?.ok) {
+        throw new Error(result?.error || "Clipboard write failed.");
+      }
+      return true;
+    } catch (error) {
+      QuickFolders.Util.logException("Could not copy text to clipboard", error);
+      Services.prompt.alert(null, "QuickFolders", error.message || String(error));
+      return false;
+    }
+  },
+
+  alertButtonNoFolder: async function (button) {
     let detail = "";
     if (button) {
       let el = QuickFolders.Model.selectedFolders.find(
@@ -1961,12 +1978,10 @@ allowUndo = true)`,
       );
       if (el) {
         detail = `QuickFolders Tab: [${el.name}]\n` + `account: ${el.account}\n` + `URI: ${el.uri}`;
-        let clipboardhelper = Components.classes[
-          "@mozilla.org/widget/clipboardhelper;1"
-        ].getService(Components.interfaces.nsIClipboardHelper);
-        clipboardhelper.copyString("Invalid Tab:\n" + detail);
-        detail +=
-          "\nDebug information was copied to clipboard. If you have many invalid tabs, this information will be helpful to support.";
+        if (await QuickFolders.Util.writeClipboardText("Invalid Tab:\n" + detail)) {
+          detail +=
+            "\nDebug information was copied to clipboard. If you have many invalid tabs, this information will be helpful to support.";
+        }
       } else {
         detail = "button.folderURI = " + button.getAttribute("folderURI");
       }

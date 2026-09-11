@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<title>storage.local from Chrome Code</title>
+
+<style>
+  :root {
+    --paper: #f5f6f8;
+    --surface: #ffffff;
+    --ink: #171c23;
+    --muted: #5c6673;
+    --line: #dde1e7;
+    --line-soft: #e8ebef;
+    --accent: #1d4e89;
+    --accent-soft: #e9f0f8;
+    --legacy: #856430;
+    --legacy-soft: #f3ecdd;
+    --code-bg: #ffffff;
+    --code-line: #e4e8ed;
+    --tok-str: #2c6a4c;
+    --tok-key: #1d4e89;
+    --shadow: 0 1px 2px rgba(23, 28, 35, .05), 0 8px 24px -16px rgba(23, 28, 35, .25);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #10141a;
+      --surface: #171d25;
+      --ink: #e3e8ee;
+      --muted: #98a2b0;
+      --line: #262e39;
+      --line-soft: #1f262f;
+      --accent: #82b4e6;
+      --accent-soft: #16222f;
+      --legacy: #d8b06c;
+      --legacy-soft: #241e13;
+      --code-bg: #131920;
+      --code-line: #222a34;
+      --tok-str: #8ec9a7;
+      --tok-key: #9fc4e8;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -16px rgba(0, 0, 0, .6);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #10141a;
+    --surface: #171d25;
+    --ink: #e3e8ee;
+    --muted: #98a2b0;
+    --line: #262e39;
+    --line-soft: #1f262f;
+    --accent: #82b4e6;
+    --accent-soft: #16222f;
+    --legacy: #d8b06c;
+    --legacy-soft: #241e13;
+    --code-bg: #131920;
+    --code-line: #222a34;
+    --tok-str: #8ec9a7;
+    --tok-key: #9fc4e8;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px -16px rgba(0, 0, 0, .6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 47rem;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.25rem;
+  }
+
+  /* ---- masthead ---- */
+
+  .masthead {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .eyebrow {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .72rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  h1 {
+    font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: clamp(2.1rem, 5.5vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -.015em;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  h1 code {
+    font-family: inherit;
+    font-style: italic;
+    background: none;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    color: inherit;
+  }
+
+  .standfirst {
+    font-size: 1.14rem;
+    color: var(--muted);
+    max-width: 34rem;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  /* ---- receipts ---- */
+
+  .receipts {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    box-shadow: var(--shadow);
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .9rem;
+  }
+
+  .receipts p {
+    margin: 0;
+    font-size: .95rem;
+    color: var(--muted);
+  }
+
+  .receipts strong { color: var(--ink); font-weight: 600; }
+
+  .filelist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .82rem;
+    color: var(--ink);
+    overflow-x: auto;
+  }
+
+  .filelist li { white-space: nowrap; }
+
+  .filelist li::before {
+    content: "";
+    display: inline-block;
+    width: .45rem;
+    height: .45rem;
+    margin-right: .7rem;
+    vertical-align: .1em;
+    background: var(--accent);
+    border-radius: 1px;
+  }
+
+  /* ---- sections ---- */
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  h2 {
+    font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    font-size: 1.65rem;
+    line-height: 1.25;
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+
+  h3 {
+    font-size: 1.02rem;
+    font-weight: 650;
+    margin: 0;
+    letter-spacing: -.005em;
+  }
+
+  p { margin: 0; text-wrap: pretty; }
+
+  a {
+    color: var(--accent);
+    text-underline-offset: .18em;
+    text-decoration-thickness: 1px;
+  }
+
+  a:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  p code, li code, td code {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .855em;
+    background: var(--accent-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: 3px;
+    padding: .08em .34em;
+    white-space: nowrap;
+  }
+
+  /* ---- backend cards ---- */
+
+  .backends {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1rem;
+  }
+
+  .backend {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--tone);
+    border-radius: 3px;
+    padding: 1.15rem 1.25rem 1.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: .55rem;
+    box-shadow: var(--shadow);
+  }
+
+  .backend--idb { --tone: var(--accent); }
+  .backend--json { --tone: var(--legacy); }
+
+  .backend .tag {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--tone);
+    font-weight: 600;
+  }
+
+  .backend .name {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .92rem;
+    font-weight: 600;
+    overflow-wrap: break-word;
+  }
+
+  .backend p { font-size: .93rem; color: var(--muted); }
+
+  .backend .path {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .78rem;
+    color: var(--muted);
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: .2rem;
+  }
+
+  /* ---- code ---- */
+
+  .code {
+    background: var(--code-bg);
+    border: 1px solid var(--code-line);
+    border-radius: 3px;
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+  }
+
+  .code pre {
+    margin: 0;
+    padding: 1.15rem 1.25rem;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .82rem;
+    line-height: 1.65;
+    tab-size: 2;
+  }
+
+  .code .c { color: var(--muted); font-style: italic; }
+  .code .s { color: var(--tok-str); }
+  .code .k { color: var(--tok-key); }
+
+  .caption {
+    font-size: .84rem;
+    color: var(--muted);
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  /* ---- hazards ---- */
+
+  .hazards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    counter-reset: hazard;
+  }
+
+  .hazard {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: 0 1rem;
+    align-items: start;
+  }
+
+  .hazard::before {
+    counter-increment: hazard;
+    content: counter(hazard);
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--legacy);
+    background: var(--legacy-soft);
+    border-radius: 3px;
+    text-align: center;
+    padding: .2rem 0;
+    line-height: 1.5;
+  }
+
+  .hazard .body {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+  }
+
+  .hazard p { font-size: .97rem; }
+
+  /* ---- footer ---- */
+
+  footer {
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+    font-size: .88rem;
+    color: var(--muted);
+  }
+
+  @media (max-width: 34rem) {
+    body { font-size: 16px; }
+    .wrap { padding: 2.5rem 1.1rem 4rem; gap: 2.5rem; }
+    .hazard { grid-template-columns: 1fr; gap: .6rem; }
+    .hazard::before { width: 2.2rem; }
+  }
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Thunderbird&nbsp;/ Experiment APIs</p>
+    <h1><code>storage.local</code> from chrome code</h1>
+    <p class="standfirst">How a parent-side Experiment API reads and writes its own extension's
+      <code>browser.storage.local</code> directly, without a round-trip to the background script.</p>
+  </header>
+
+  <div class="receipts">
+    <p><strong>Every signature here was checked against a real Thunderbird release build</strong> by
+      unpacking <code>omni.ja</code>. Nothing is quoted from memory or from documentation.</p>
+    <ul class="filelist">
+      <li>modules/ExtensionStorage.sys.mjs</li>
+      <li>modules/ExtensionStorageIDB.sys.mjs</li>
+      <li>modules/IndexedDB.sys.mjs</li>
+      <li>chrome/toolkit/content/extensions/parent/ext-storage.js</li>
+    </ul>
+  </div>
+
+  <section>
+    <h2>The problem</h2>
+    <p>An Experiment API runs on the privileged (parent) side. Its background script owns
+      configuration in <code>browser.storage.local</code>. Reaching that same data from chrome code,
+      without a message round-trip to the background script, means talking to the storage backend
+      directly.</p>
+  </section>
+
+  <section>
+    <h2>Two backends</h2>
+    <p><code>storage.local</code> has two backends, and the trap is that most snippets found online
+      only use one.</p>
+
+    <div class="backends">
+      <div class="backend backend--json">
+        <span class="tag">Legacy</span>
+        <span class="name">ExtensionStorage</span>
+        <span class="path">modules/ExtensionStorage.sys.mjs</span>
+        <p>A JSON file at <code>browser-extension-data/&lt;id&gt;/storage.js</code>.</p>
+      </div>
+      <div class="backend backend--idb">
+        <span class="tag">Current</span>
+        <span class="name">ExtensionStorageIDB</span>
+        <span class="path">modules/ExtensionStorageIDB.sys.mjs</span>
+        <p>IndexedDB under a reserved user-context principal. Every extension has been migrated to
+          this for years.</p>
+      </div>
+    </div>
+
+    <p>Reading via <code>ExtensionStorage.get(id, keys)</code> alone silently returns nothing for a
+      migrated add-on. The correct entry point is the one the platform's own parent implementation
+      uses: <code>ExtensionStorageIDB.selectBackend({ extension })</code>. It both reports which
+      backend is live and performs the one-time JSON&rarr;IDB migration before it resolves.</p>
+  </section>
+
+  <section>
+    <h2>The core</h2>
+    <div class="code">
+<pre><span class="k">var</span> { ExtensionStorage } = ChromeUtils.importESModule(
+  <span class="s">"resource://gre/modules/ExtensionStorage.sys.mjs"</span>);
+<span class="k">var</span> { ExtensionStorageIDB } = ChromeUtils.importESModule(
+  <span class="s">"resource://gre/modules/ExtensionStorageIDB.sys.mjs"</span>);
+
+<span class="k">async function</span> openStore(extension) {
+  <span class="k">const</span> { backendEnabled } = <span class="k">await</span> ExtensionStorageIDB.selectBackend({ extension });
+  <span class="k">if</span> (!backendEnabled) {
+    <span class="k">return null</span>;                                   <span class="c">// still on the JSON file</span>
+  }
+  <span class="k">return</span> ExtensionStorageIDB.open(
+    ExtensionStorageIDB.getStoragePrincipal(extension),
+    extension.hasPermission(<span class="s">"unlimitedStorage"</span>),    <span class="c">// -&gt; persistent quota</span>
+  );
+}
+
+<span class="c">// read</span>
+<span class="k">const</span> db = <span class="k">await</span> openStore(context.extension);
+<span class="k">const</span> data = db
+  ? <span class="k">await</span> db.get({ accounts: [] })                 <span class="c">// object arg supplies defaults</span>
+  : <span class="k">await</span> ExtensionStorage.get(context.extension.id, { accounts: [] });
+
+<span class="c">// write - note the notifyListeners call</span>
+<span class="k">const</span> changes = <span class="k">await</span> db.set({ accounts });
+<span class="k">if</span> (changes) {
+  ExtensionStorageIDB.notifyListeners(context.extension.id, changes);
+}</pre>
+    </div>
+    <p class="caption">db exposes get, set, remove, clear, getKeys, getBytesInUse, isEmpty.</p>
+  </section>
+
+  <section>
+    <h2>Four things that bite</h2>
+
+    <div class="hazards">
+
+      <div class="hazard">
+        <div class="body">
+          <h3><code>notifyListeners</code> is yours to call.</h3>
+          <p>The IDB backend returns a <code>changes</code> object but fires nothing. Skip that call
+            and the background script's <code>browser.storage.onChanged</code> never sees the write
+            &mdash; a silent divergence between the two sides. The JSON backend is the opposite:
+            <code>ExtensionStorage.set</code> notifies internally, so do not double-notify on that
+            path.</p>
+          <p>The change values passed in are raw rather than <code>StructuredCloneHolder</code>-wrapped.
+            That is fine: <code>ExtensionStorage.deserializeForContext</code> falls back to
+            <code>Cu.cloneInto</code> for anything that is not a holder, so the background receives
+            proper <code>oldValue</code> / <code>newValue</code>.</p>
+        </div>
+      </div>
+
+      <div class="hazard">
+        <div class="body">
+          <h3>Do not hand-roll the principal.</h3>
+          <p><code>getStoragePrincipal(extension)</code> is
+            <code>extension.createPrincipal(extension.baseURI, { userContextId: WEBEXT_STORAGE_USER_CONTEXT_ID })</code>.
+            That reserved user context is precisely what keeps the store unreachable from the
+            extension's own page code. Construct it any other way and you open an empty, different
+            database.</p>
+        </div>
+      </div>
+
+      <div class="hazard">
+        <div class="body">
+          <h3><code>selectBackend</code> must be awaited before the first <code>open</code>.</h3>
+          <p>It is what runs <code>migrateJSONFileData</code>. Open the IDB directly on a
+            not-yet-migrated profile and you read an empty store while the real data still sits in the
+            JSON file. It caches per <code>extension</code> in a <code>WeakMap</code>, so calling it
+            on every access is cheap.</p>
+        </div>
+      </div>
+
+      <div class="hazard">
+        <div class="body">
+          <h3><code>openForPrincipal</code> does not pool connections.</h3>
+          <p>Each <code>open()</code> is a fresh <code>IDBDatabase</code>. Caching one connection for
+            the life of the experiment is worth it for a sync loop &mdash; but then it must be closed
+            from <code>onShutdown()</code>, or a connection is left behind on add-on reload.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Getting the extension object</h2>
+    <p>Inside an experiment it is <code>context.extension</code>. From unrelated privileged code:</p>
+    <div class="code">
+<pre><span class="k">const</span> extension = WebExtensionPolicy.getByID(<span class="s">"addon@example.net"</span>).extension;</pre>
+    </div>
+  </section>
+
+  <section>
+    <h2>Scope</h2>
+    <p>This reaches <code>storage.local</code> only. <code>storage.session</code> is a different
+      module (<code>extensionStorageSession</code>) and <code>storage.sync</code> is different
+      again.</p>
+  </section>
+
+  <section>
+    <h2>Full helper class</h2>
+    <p>A complete drop-in file, wrapping both backends behind one interface.</p>
+    <div class="code">
+<pre><span class="c">/*
+ * Direct access to an extension's browser.storage.local from privileged code.
+ *
+ * Usage from any parent-side experiment implementation:
+ *
+ *   const store = new LocalStorage(context.extension);
+ *   const { accounts } = await store.get({ accounts: [] });
+ *   await store.set({ accounts });
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ */</span>
+
+<span class="s">"use strict"</span>;
+
+<span class="k">var</span> { ExtensionStorage } = ChromeUtils.importESModule(
+  <span class="s">"resource://gre/modules/ExtensionStorage.sys.mjs"</span>,
+);
+<span class="k">var</span> { ExtensionStorageIDB } = ChromeUtils.importESModule(
+  <span class="s">"resource://gre/modules/ExtensionStorageIDB.sys.mjs"</span>,
+);
+
+<span class="k">class</span> LocalStorage {
+  #extension;
+  #db = <span class="k">null</span>;
+
+  constructor(extension) {
+    <span class="k">this</span>.#extension = extension;
+  }
+
+  <span class="c">/**
+   * The IndexedDB backend, or null if this extension is still on the JSON file
+   * backend. Awaiting selectBackend() also performs the one-time migration of
+   * existing JSON data into IndexedDB.
+   */</span>
+  <span class="k">async</span> #backend() {
+    <span class="k">if</span> (<span class="k">this</span>.#db) {
+      <span class="k">return this</span>.#db;
+    }
+    <span class="k">const</span> extension = <span class="k">this</span>.#extension;
+    <span class="k">const</span> { backendEnabled } = <span class="k">await</span> ExtensionStorageIDB.selectBackend({
+      extension,
+    });
+    <span class="k">if</span> (!backendEnabled) {
+      <span class="k">return null</span>;
+    }
+    <span class="k">this</span>.#db = <span class="k">await</span> ExtensionStorageIDB.open(
+      ExtensionStorageIDB.getStoragePrincipal(extension),
+      extension.hasPermission(<span class="s">"unlimitedStorage"</span>),
+    );
+    <span class="k">return this</span>.#db;
+  }
+
+  <span class="k">async</span> #call(method, ...args) {
+    <span class="k">const</span> db = <span class="k">await this</span>.#backend();
+    <span class="k">if</span> (!db) {
+      <span class="c">// The JSON file backend notifies storage.onChanged listeners itself.</span>
+      <span class="k">return</span> ExtensionStorage[method](<span class="k">this</span>.#extension.id, ...args);
+    }
+    <span class="k">try</span> {
+      <span class="k">const</span> changes = <span class="k">await</span> db[method](...args);
+      <span class="k">if</span> (changes) {
+        ExtensionStorageIDB.notifyListeners(<span class="k">this</span>.#extension.id, changes);
+      }
+      <span class="k">return</span> changes;
+    } <span class="k">catch</span> (error) {
+      <span class="k">throw</span> ExtensionStorageIDB.normalizeStorageError({
+        error,
+        extensionId: <span class="k">this</span>.#extension.id,
+        storageMethod: method,
+      });
+    }
+  }
+
+  <span class="c">/**
+   * @param {string|string[]|object|null} [keys] - a key, a list of keys, or an
+   *   object whose values are used as defaults for missing keys.
+   * @returns {Promise&lt;object&gt;}
+   */</span>
+  <span class="k">async</span> get(keys = <span class="k">null</span>) {
+    <span class="k">const</span> db = <span class="k">await this</span>.#backend();
+    <span class="k">return</span> db ? db.get(keys) : ExtensionStorage.get(<span class="k">this</span>.#extension.id, keys);
+  }
+
+  <span class="k">async</span> getKeys() {
+    <span class="k">const</span> db = <span class="k">await this</span>.#backend();
+    <span class="k">return</span> db ? db.getKeys() : ExtensionStorage.getKeys(<span class="k">this</span>.#extension.id);
+  }
+
+  <span class="k">async</span> set(items) {
+    <span class="k">await this</span>.#call(<span class="s">"set"</span>, items);
+  }
+
+  <span class="k">async</span> remove(keys) {
+    <span class="k">await this</span>.#call(<span class="s">"remove"</span>, keys);
+  }
+
+  <span class="k">async</span> clear() {
+    <span class="k">await this</span>.#call(<span class="s">"clear"</span>);
+  }
+
+  <span class="c">/** Must be called from the experiment's onShutdown(). */</span>
+  close() {
+    <span class="k">this</span>.#db?.close();
+    <span class="k">this</span>.#db = <span class="k">null</span>;
+  }
+}</pre>
+    </div>
+  </section>
+
+  <footer>
+    Signatures verified against a Thunderbird release build. Behaviour of internal modules is not
+    covered by any stability guarantee &mdash; re-check after a major version bump.
+  </footer>
+
+</div>
+</body>
+</html>

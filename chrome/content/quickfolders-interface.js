@@ -1266,34 +1266,42 @@ QuickFolders.Interface = {
       doc3pane
     );
     try {
-      // hide current folder bar if no folder => search results!
-      let win = doc3pane?.defaultView;
-      let folder = win?.tabOrWindow?.folder;
-      if (!folder) {
-        // hide current folder bar if no folder => search results!
-        return false;
+      if (!doc3pane || doc3pane.target) {
+        // Background updates arrive as events in the outer window. Update
+        // every existing toolbar, including tabs behind the settings tab.
+        const tabmail = document.getElementById("tabmail");
+        const targets = tabmail
+          ? tabmail.tabInfo.map((info) => ({ doc: info.chromeBrowser?.contentDocument, info }))
+          : [...document.querySelectorAll("browser")].map((browser) => ({
+              doc: browser.contentDocument,
+              info: null,
+            }));
+        let updated = false;
+        for (const target of targets) {
+          if (!target.doc?.getElementById("QuickFolders-CurrentFolderTools")) {
+            continue;
+          }
+          updated = this.updateNavigationBar(target.doc, target.info) || updated;
+        }
+        return updated;
       }
 
-      let tabMode = tabInfo
-        ? QuickFolders.Util.getTabMode(tabInfo)
-        : QuickFolders.Interface.CurrentTabMode;
-      if (!doc3pane || doc3pane.target) {
-        // if called from background, this will be an event
-        if (!["mail:3pane", "mail3PaneTab", "mailMessageTab"].includes(tabMode)) {
-          // no curent folder tab here!
-          util.logDebugOptional(
-            "interface.currentFolderBar",
-            `Early Exit: no current folder bar in tab mode ${tabMode} !`
-          );
-          return false;
-        }
-        doc3pane = QuickFolders.Util.document3pane; // wrong, but hack for now to use 1st folder tab
-        util.logDebugOptional(
-          "interface.currentFolderBar",
-          "Fallback to global document3pane!",
-          doc3pane
-        );
+      // Only inspect folder state after resolving an actual toolbar document.
+      let win = doc3pane.defaultView;
+      let folder = win?.tabOrWindow?.folder;
+
+      util.logDebugOptional("interface.currentFolderBar", `3pane type = ${doc3pane?.type}` +
+        `, URL= ${doc3pane?.URL}, win = ${win}` +
+        `, tabOrWindow= ${doc3pane?.defaultView?.tabOrWindow}` +
+        `, folder name= ${folder?.localizedName}`
+      );
+
+      if (!folder) {
+        return false;
       }
+      let tabMode = tabInfo
+        ? util.getTabMode(tabInfo)
+        : QuickFolders.Interface.CurrentTabMode;
 
       collapseConfigItem("QuickFolders-Close", "currentFolderBar.showClose");
       collapseConfigItem(

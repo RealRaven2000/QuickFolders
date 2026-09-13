@@ -4,6 +4,14 @@ Additional regressions are expected within the Thunderbird release branch and wi
 
 Read the full [version history](https://quickfolders.org/version.html#6.17.2).
 
+**Emergency Maintenance Release 6.17.3**
+
+- Fixed a startup regression introduced in 6.17.2 that could incorrectly apply free-license restrictions to licensed users, leaving tabs black and disabled after the first 10. QuickFolders now waits for storage and license validation before initializing the toolbar, and refreshes tabs when a valid or expired license update arrives. A passive toolbar shell displays storage and license progress during this wait. The fix has been confirmed by four user reports. [Issue #711](https://github.com/RealRaven2000/QuickFolders/issues/711).
+
+- Fixed external messaging so unrecognized messages do not claim a response and prevent other listeners from responding.
+- Migrated clipboard copying to the WebExtension Clipboard API, using the `clipboardWrite` permission. Copying the folder configuration now reads the current stored model instead of the obsolete legacy preference. Moved clipboard paste into Settings with an immediate toolbar preview and a single localized keep-or-rollback confirmation. An in-memory snapshot restores the original tabs on cancellation or when Settings closes. The compose permission remains necessary for the support email action in Settings.
+- Fixed current folder bar display and update issues when selecting buttons from advanced settings [issue 712]
+
 **Maintenance Release 6.17.2**
 
 - Compatibility with Thunderbird 157.

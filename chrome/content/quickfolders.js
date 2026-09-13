@@ -356,7 +356,9 @@ END LICENSE BLOCK */
     ## [issue 711] Fixed startup applying unpaid tab restrictions before license validation completed. Initialize storage, validate the license, then initialize the UI; refresh tabs after valid or expired license updates.
     ## Fixed external messaging listeners claiming responses to unrecognized messages.
     ## [issue 710] Convert to mx APIs and simplify copy tabs to / paste tabs from clipboard
-
+    ## Fixed: No live update of current folder bar elements from advanced settings tab
+    ## [issue 712] Current Folder bar missing on first tab intermittently after Thunderbird Start (WIP)
+ 
 
 
 	TO DO next

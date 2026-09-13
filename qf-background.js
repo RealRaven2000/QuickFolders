@@ -30,8 +30,11 @@ const QUICKFOLDERS_EXTERNAL_COMMANDS = [
 ];
 
 var currentLicense;
-var startupFinished = false;
-var callbacks = [];
+// Shared result for consumers that must wait for storage and license validation.
+var completeStartup;
+var startupReady = new Promise((resolve) => {
+  completeStartup = resolve;
+});
 
 // top-level global flag
 let _isDebug = false;
@@ -297,11 +300,11 @@ const ExternalMessageApi = {
   },
 };
 
-/* startupFinished: There is a general race condition between onInstall and our main() startup:
+/* There is a general race condition between onInstall and our main() startup:
  * - onInstall needs to be registered upfront (otherwise we might miss it)
  * - but onInstall needs to wait with its execution until our main function has
  *   finished the init routine
- * -> emit a custom event once we are done and let onInstall await that
+ * -> await the shared startup result; stop if storage or license validation fails
  */
 
 messenger.WindowListener.registerDefaultPrefs("chrome/content/scripts/quickfoldersDefaults.js");
@@ -358,7 +361,10 @@ let listenersReadyPromise = new Promise((resolve) => {
 });
 
 messenger.runtime.onInstalled.addListener(async (data) => {
-  await prefsReady;
+  const startupResult = await startupReady;
+  if (!startupResult.ok) {
+    return;
+  }
   let { reason, previousVersion, temporary } = data;
   const isDebug = await isDebugOn();
   const manifest = await messenger.runtime.getManifest();
@@ -372,17 +378,6 @@ messenger.runtime.onInstalled.addListener(async (data) => {
     });
   }
 
-  // Wait until the main startup routine has finished!
-  await new Promise((resolve) => {
-    if (startupFinished) {
-      if (isDebug) {
-        console.log("QuickFolders - startup code finished.");
-      }
-      // Looks like we missed the one send by main()
-      resolve();
-    }
-    callbacks.push(resolve);
-  });
   if (isDebug) {
     console.log("Startup has finished");
     console.log("QuickFolders - currentLicense", currentLicense);
@@ -418,6 +413,7 @@ messenger.runtime.onInstalled.addListener(async (data) => {
           ["6.10.1", ["6.10.2", "6.10.3", "6.10.4"]],
           ["6.13", ["6.13.1"]],
           ["6.14.1", ["6.13.2"]],
+          ["6.17.2", ["6.17.3"]], // Silent emergency startup fix for [issue 711]
         ]);
 
         // Helper function to check if a version matches a pattern
@@ -885,11 +881,10 @@ function startWindowInjection() {
 }
 
 async function main() {
-  // The injected script creates only the static toolbar before it verifies the
-  // frontend and background storage startup results.
-  startWindowInjection();
+  // 1. Storage must be ready before reading the license key and preferences.
   const prefsResult = await prefsReady;
   if (!prefsResult.ok) {
+    completeStartup(prefsResult);
     return;
   }
   const key = Preferences.get("LicenseKey") || "",
@@ -897,16 +892,18 @@ async function main() {
     isDebug = await isDebugOn(),
     isDebugLicenser = Preferences.get("debug.premium.licenser") || false;
 
+  // 2. Finish license validation before any window UI can request its status.
+  // Empty, invalid and expired licenses are completed results, not startup errors.
   currentLicense = new Licenser(key, { forceSecondaryIdentity, debug: isDebugLicenser });
   await currentLicense.validate();
 
-  // All important stuff has been done.
-  // resolve all promises on the stack
   if (isDebug) {
     console.log("Finished setting up license startup code");
   }
-  callbacks.forEach((callback) => callback());
-  startupFinished = true;
+  completeStartup({ ok: true });
+
+  // 3. Initialize the UI only after storage and license validation have completed.
+  startWindowInjection();
 
   let msg_commands = [
     "currentDeckUpdate",
@@ -1205,8 +1202,14 @@ async function notificationHandler(data) {
       showInstalled();
       break;
 
-    case "getLicenseInfo":
+    case "getLicenseInfo": {
+      // Also protect callers outside the normal window initialization sequence.
+      const startupResult = await startupReady;
+      if (!startupResult.ok) {
+        throw new Error(startupResult.errorMessage || "QuickFolders startup failed");
+      }
       return currentLicense.info;
+    }
 
     case "getFindRelatedList": {
       let relatedArr = await getFindRelatedStruct();
@@ -1837,4 +1840,9 @@ async function displayUpdateMessage() {
 
 const prefsReady = Preferences.init(); // pending
 registerNotifyListener();
-main();
+main().catch((error) => {
+  // Release startup consumers on exceptions as well as successful validation.
+  // Resolving again after startup succeeded has no effect on the shared Promise.
+  completeStartup({ ok: false, errorMessage: error?.message || String(error) });
+  console.error("QuickFolders background initialization failed:", error);
+});

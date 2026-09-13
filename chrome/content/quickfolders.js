@@ -344,13 +344,18 @@ END LICENSE BLOCK */
     ## [issue 698] Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files.
     ## [issue 699] Referrer is undefined when renewing license
  
-  6.17.2 QuickFolders Pro - WIP 
+  6.17.2 QuickFolders Pro - 09/09/2026 
     ## Compatibility with Thunderbird 157
     ## [issue 705] Advanced search settings dialog showed localization placeholders instead of translated text.
     ## [issue 700] QuickFolders affects standard Quick filter toolbar background color for activated buttons. 
     ## [issue 703] improve dragover state when dragging to subfolder menus
     ## [issue 702] Fixed an undefined folder name in the move confirmation.
     ## [issue 706] Fixed partial initialization when Thunderbird extension storage is unavailable, added clear diagnostics, corrected missing defaults during legacy preference migration, and stopped registering obsolete legacy defaults while retaining user-set values for migration.
+
+  6.17.3 QuickFolders Pro - WIP 
+    ## [issue 711] Fixed startup applying unpaid tab restrictions before license validation completed. Initialize storage, validate the license, then initialize the UI; refresh tabs after valid or expired license updates.
+    ## Fixed external messaging listeners claiming responses to unrecognized messages.
+    ## [issue 710] Convert to mx APIs and simplify copy tabs to / paste tabs from clipboard
 
 
 
@@ -909,7 +914,7 @@ var QuickFolders = {
   },
 
   // all main window elements that change depending on license status (e.g. display "Expired" instead of QuickFolders label)
-  initLicensedUI: function initLicensedUI() {
+  initLicensedUI: function initLicensedUI(event) {
     let State = QuickFolders.Util.licenseInfo.status,
       hasLicense = QuickFolders.Util.hasValidLicense();
     QuickFolders.Util.logDebug(
@@ -947,6 +952,14 @@ var QuickFolders = {
       }
     }
     QuickFolders.Interface.updateQuickFoldersLabel.call(QuickFolders.Interface); // this is also called when udpating the main toolbar with QI.updateFolders()
+    if (
+      event?.type == "QuickFolders.BackgroundUpdate" &&
+      (hasLicense || State == "Expired")
+    ) {
+      // Rebuild buttons to clear restrictions left by an earlier license state.
+      // Each window handles its own license update; avoid another broadcast.
+      QuickFolders.Interface.updateFoldersUI();
+    }
   },
 
   sayHello: function sayHello() {

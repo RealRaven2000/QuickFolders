@@ -802,7 +802,10 @@ QuickFolders.Options = {
           break;
       }
       // broadcast change of current folder bar for all interested windows.
-      if (prefString.includes(".currentFolderBar.") || prefString.includes("toolbar.largeIcons")) {
+      if (
+        prefString.replace(/^extensions\.quickfolders\./, "").startsWith("currentFolderBar.") ||
+        prefString.includes("toolbar.largeIcons")
+      ) {
         // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" });
         messenger.runtime.sendMessage({ command: "updateNavigationBar" });
         // eslint-disable-next-line no-unsafe-finally

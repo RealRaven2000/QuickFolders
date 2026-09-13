@@ -2102,10 +2102,10 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L} {+extensionName} 現在與 Thunderbird 157 相容。{/L}{L} {b class=maintenance}6.17.2{/b} 修正了 Thunderbird 的擴充儲存空間不可用時的啟動處理。工具列現在會報告初始化進度並提供診斷說明，而不是讓 QuickFolders 部分初始化。我們也修正了舊版首選項遷移期間缺少的預設值，並停止註冊過時的舊版預設值，同時保留使用者設定值。 [issue 706]{/L}{L} {b class=maintenance}6.17.2{/b} 已修正：進階搜尋設定顯示在地化佔位符而不是翻譯文字。 [issue 705]{/L}{L} {b class=maintenance}6.17.2{/b} 修復：QuickFolders 樣式影響 Thunderbird 快速過濾工具列中啟動按鈕的背景顏色。 [issue 700]{/L}{L} {b class=maintenance}6.17.2{/b} 改進了拖曳到子資料夾選單時的拖曳指示器。 [issue 703]{/L}{L} {b class=maintenance}6.17.2{/b} 修復：資料夾移動確認可能會顯示 {code}不明確的{/code} 而不是資料夾名稱。 [issue 702]{/L}{hr}{h3} 先前的維護版本 6.17.1 (01/09/2026){/h3}{L} 已修正：續訂引薦來源網址設定為 {code}不明確的{/code}，這可能會導致當前許可證尚未過期時續約日期不正確。 [issue 699]{/L}{L} 修復：升級到 6.17 後選項卡顏色可能會遺失。設定檔現在保存和還原每個選項卡狀態的調色板條目。 [issue 698]{/L}{hr}{h3} 原始版本 6.17 (26/08/2026) {/h3}{L} 從舊的首選項轉換的儲存（{code}關於：配置{/code}) 到本機儲存 API。 [issue 677] {br}{emph}筆記：{/emph} 現在可以透過卸載附加元件將設定重設為預設值 - 首先使用備份您的設置 {b}{+qf.storeConfig}{/b} 在下面 {italic}{+qf.backupAndRestore}{/italic} 於 {italic}{+qf.tab.gopro}{/italic} 頁。{/L}{L} 現在可以為製表符分隔符號配置自訂寬度。 [issue 686]{/L}"
+    "message": "{L} {b class=maintenance}6.17.3{/b} 透過剪貼簿匯出和匯入現在使用原生 API。 [issue 710]{/L}{L} {b class=maintenance}6.17.3{/b} 修正了啟動時的時序問題，此問題可能導致持有授權的使用者看到黑色且無法使用的分頁。現在會先完成儲存空間準備和授權驗證，再初始化工具列。 [issue 711]{/L}{hr}{h3} 先前的維護版本 6.17.2 (2026/09/09){/h3}{L} 修正了儲存、在地化和版面配置方面的問題。 [issue 706], [issue 705], [issue 700], [issue 702]{/L}{hr}{h3} 先前的維護版本 6.17.1 (2026/09/01){/h3}{L} 修正了授權續訂日期錯誤和升級後分頁顏色遺失的問題。 [issue 699], [issue 698]{/L}{hr}{h3} 原始版本 6.17 (26/08/2026) {/h3}{L} 從舊的首選項轉換的儲存（{code}關於：配置{/code}) 到本機儲存 API。 [issue 677] {br}{emph}筆記：{/emph} 現在可以透過卸載附加元件將設定重設為預設值 - 首先使用備份您的設置 {b}{+qf.storeConfig}{/b} 在下面 {italic}{+qf.backupAndRestore}{/italic} 於 {italic}{+qf.tab.gopro}{/italic} 頁。{/L}{L} 現在可以為製表符分隔符號配置自訂寬度。 [issue 686]{/L}"
   },
   "whats-new-maintenance": {
-    "message": "維護更新 $ver$。此特定修正已包含在上一個版本之後的更新中。",
+    "message": "維護更新 $ver$。此版本修正了上一版本引入、需要緊急處理的回歸問題。",
     "placeholders": {
       "ver": { "content": "$1", "example": "6.12.3" }
     }

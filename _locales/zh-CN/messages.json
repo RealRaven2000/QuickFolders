@@ -2090,10 +2090,10 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L} {+extensionName} 现在与 Thunderbird 157 兼容。{/L}{L} {b class=maintenance}6.17.2{/b} 修复了 Thunderbird 的扩展存储不可用时的启动处理。工具栏现在报告初始化进度并提供诊断说明，而不是让 QuickFolders 部分初始化。我们还纠正了旧版首选项迁移期间缺失的默认值，并停止注册过时的旧版默认值，同时保留用户设置值。 [issue 706]{/L}{L} {b class=maintenance}6.17.2{/b} 已修复：高级搜索设置显示本地化占位符而不是翻译文本。 [issue 705]{/L}{L} {b class=maintenance}6.17.2{/b} 修复：QuickFolders 样式影响 Thunderbird 快速过滤工具栏中激活按钮的背景颜色。 [issue 700]{/L}{L} {b class=maintenance}6.17.2{/b} 改进了拖动到子文件夹菜单时的拖动指示器。 [issue 703]{/L}{L} {b class=maintenance}6.17.2{/b} 修复：文件夹移动确认可能会显示 {code}不明确的{/code} 而不是文件夹名称。 [issue 702]{/L}{hr}{h3} 先前的维护版本 6.17.1 (01/09/2026){/h3}{L} 已修复：续订引荐来源网址设置为 {code}不明确的{/code}，这可能会导致当前许可证尚未过期时续订日期不正确。 [issue 699]{/L}{L} 修复：升级到 6.17 后选项卡颜色可能会丢失。配置文件现在保存和恢复每个选项卡状态的调色板条目。 [issue 698]{/L}{hr}{h3} 原始版本 6.17 (26/08/2026) {/h3}{L} 从旧的首选项转换的存储（{code}关于：配置{/code}) 到本地存储 API。 [issue 677] {br}{emph}笔记：{/emph} 现在可以通过卸载附加组件将设置重置为默认值 - 首先使用备份您的设置 {b}{+qf.storeConfig}{/b} 在下面 {italic}{+qf.backupAndRestore}{/italic} 于 {italic}{+qf.tab.gopro}{/italic} 页。{/L}{L} 现在可以为制表符分隔符配置自定义宽度。 [issue 686]{/L}"
+    "message": "{L} {b class=maintenance}6.17.3{/b} 通过剪贴板导出和导入现在使用原生 API。 [issue 710]{/L}{L} {b class=maintenance}6.17.3{/b} 修复了启动时的时序问题，该问题可能导致持有许可证的用户看到黑色且不可用的标签页。现在会先完成存储准备和许可证验证，再初始化工具栏。 [issue 711]{/L}{hr}{h3} 之前的维护版本 6.17.2 (2026/09/09){/h3}{L} 修复了存储、本地化和布局方面的问题。 [issue 706], [issue 705], [issue 700], [issue 702]{/L}{hr}{h3} 之前的维护版本 6.17.1 (2026/09/01){/h3}{L} 修复了许可证续订日期错误和升级后标签页颜色丢失的问题。 [issue 699], [issue 698]{/L}{hr}{h3} 原始版本 6.17 (26/08/2026) {/h3}{L} 从旧的首选项转换的存储（{code}关于：配置{/code}) 到本地存储 API。 [issue 677] {br}{emph}笔记：{/emph} 现在可以通过卸载附加组件将设置重置为默认值 - 首先使用备份您的设置 {b}{+qf.storeConfig}{/b} 在下面 {italic}{+qf.backupAndRestore}{/italic} 于 {italic}{+qf.tab.gopro}{/italic} 页。{/L}{L} 现在可以为制表符分隔符配置自定义宽度。 [issue 686]{/L}"
   },
   "whats-new-maintenance": {
-    "message": "维护更新 $ver$。此特定修复已包含在上一版本之后的更新中。",
+    "message": "维护更新 $ver$。此版本修复了上一版本引入、需要紧急处理的回归问题。",
     "placeholders": {
       "ver": { "content": "$1", "example": "6.12.3" }
     }

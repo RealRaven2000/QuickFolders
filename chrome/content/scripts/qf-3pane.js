@@ -4,8 +4,37 @@
 */
 
 const QFInjector = {
+  getWL(win) {
+    // WL belongs to the add-on's injection scope, not normally to the window.
+    // Verify both ownership and target: another add-on or a parent window's
+    // helpers would inject into the wrong scope/document.
+    const isLocal = (api) =>
+      api?.extension?.id === "quickfolders@curious.be" &&
+      api.scopeName &&
+      win[api.scopeName]?.window === win &&
+      win[api.scopeName]?.WL === api;
+    if (typeof WL !== "undefined" && isLocal(WL)) {
+      return WL;
+    }
+    if (isLocal(win.WL)) {
+      return win.WL;
+    }
+    // Manual script loading has no lexical WL. Find this add-on's scope in
+    // the target window without inspecting unrelated window properties.
+    for (const name of Object.getOwnPropertyNames(win)) {
+      if (!name.startsWith("AddOnNS")) {
+        continue;
+      }
+      const api = win[name]?.WL;
+      if (isLocal(api)) {
+        return api;
+      }
+    }
+    return null;
+  },
+
   injectCSS(win, url) {
-    const WL = win.WL;
+    const WL = this.getWL(win);
 
     if (WL?.injectCSS) {
       return WL.injectCSS(url);
@@ -23,11 +52,11 @@ const QFInjector = {
   },
 
   injectElements(xulString) {
+    const WL = this.getWL(window);
     function localize(entity) {
       let msg = entity.slice("__MSG_".length, -2);
       return extension.localeData.localizeMessage(msg);
     }
-    // const WL = window.WL;
     const prefs = window.parent?.QuickFolders?.Preferences;
     const util = window.parent?.QuickFolders?.Util;
     const debug = prefs?.isDebug;
@@ -51,7 +80,7 @@ const QFInjector = {
     if (debug) {
       console.log("QuickFolders injector path:", {
         hasWL: !!WL,
-        globalThis: globalThis.WL,
+        scopeName: WL?.scopeName || null,
         hasInject: !!WL?.injectElements,
         url: window.location.href,
       });
@@ -252,9 +281,21 @@ async function notificationHandler(data) {
   switch (command) {
     case "updateNavigationBar": {
       let tabInfo;
+      let tabInfoError;
       try {
         tabInfo = contentDoc.defaultView.tabOrWindow.tabNode;
-      } catch {;}      
+      } catch (ex) {
+        tabInfoError = ex;
+      }
+      if (!tabInfo) {
+        console.warn("[QuickFolders qf-3pane] updateNavigationBar: tabInfo unavailable", {
+          documentURL: contentDoc.URL,
+          scopeName: QFInjector.getWL(window)?.scopeName || null,
+          hasTabOrWindow: !!contentDoc.defaultView?.tabOrWindow,
+          hasToolbar: !!contentDoc.getElementById("QuickFolders-CurrentFolderTools"),
+          error: tabInfoError,
+        });
+      }
       window.QuickFolders.Interface.updateNavigationBar(window.document, tabInfo);
     } break;
 

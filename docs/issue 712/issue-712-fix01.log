@@ -1,0 +1,1022 @@
+1789288314823	addons.xpi	WARN	Checking C:\Program Files\Mozilla Thunderbird\distribution\extensions for addons
+[gdataUI] Future modules will load with version 128.5.12 gdataUI.sys.mjs:27:11
+Calendar manager initialised calendars before loadCalendarComponent ran on the first 3pane window. This should not happen. calendar-chrome-startup.js:40:13
+1789288323132	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+1789288323183	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+This page is in Quirks Mode. Page layout may be impacted. For Standards Mode use “<!DOCTYPE html>”. background.html
+Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user’s experience. For more help https://xhr.spec.whatwg.org/#sync-warning utils.js:45:7
+Object { Util: {…}, Preferences: {…}, extractSignature: extractSignature(), insertTemplate: insertTemplate(), readSignatureFile: readSignatureFile(), resetDocument: resetDocument(), Parser: Parser(), composer: {}, Sig: {}, prefs: {…}, … }
+ 
+Object { composers: Map(0) }
+st-background.js:17:9
+SmartTemplates Background started st-util.mjs.js:39:13
+module is not a constructor ExtensionCommon.sys.mjs:1679:15
+uncaught exception: Trying to load untrusted URI.: jar:file:///E:/Mail/dd9jwla2n.axel/extensions/%7Ba300a000-5e21-4ee0-a115-9ec8f4eaa92b%7D.xpi!/defaults/preferences/removedupes.js
+uncaught exception: Object { message }
+Finished setting up license startup code qFi-background.js:1184:13
+Startup resolved qFi-background.js:1190:13
+quickFilters adding the message context menu item Create Filter from Message… ... 
+Object { contexts: (1) […], onclick: onclick(), icons: {…}, enabled: true, id: "createFromMailContext", title: "Create Filter from Message…" }
+qFi-background.js:1557:13
+Finished setting up license startup code qf-background.js:901:13
+QuickFolders: Waiting 5000ms for mailTabs to be ready... qf-background.js:969:15
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+uncaught exception: Object { message }
+WebExtensions: quickFilters: messenger.onLoad() qFi-messenger.js:29
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: quickFilters: pref cache ready qFi-messenger.js:31
+quickFilters [logTime init]
+ injected style sheets: 
+<link wlapi_autoinjected="AddOnNS10" rel="stylesheet" href="chrome://quickfilters/co…nt/skin/quickFilters.css">
+ 
+<link wlapi_autoinjected="AddOnNS10" rel="stylesheet" href="chrome://quickfilters/co…ilters-toolbar.css?v=6.9">
+ 
+<link wlapi_autoinjected="AddOnNS10" rel="stylesheet" href="chrome://quickfilters/co…s-actionButton.css?v=6.9">
+qFilters-utils.js:921:13
+quickFilters 9:32:9.560  [1 ms]   
+ Polyfills loading in window: chrome://messenger/content/messenger.xhtml qFilters-utils.js:921:13
+Manually calling notifyTools.enable() is no longer needed. notifyTools.js:145:13
+quickFilters: addToolMenuListener() qFi-background.js:278:13
+quickFilters adding the tools menu item Start Filter Assistant ... 
+Object { contexts: (1) […], checked: false, onclick: onclick(), icons: {…}, enabled: true, id: "toggleFilterTools", title: "Start Filter Assistant" }
+qFi-background.js:304:13
+Preferences onChanged: 
+Object { settings: {…}, debug: {…}, accounts: {…} }
+preferences.mjs:317:17
+Accounts data updated: 
+Object {  }
+preferences.mjs:340:19
+uncaught exception: Object { message }
+quickFilters: addFolderPaneListener() qFi-background.js:126:13
+quickFilters adding the folder tree context menu item Run filters ... 
+Object { contexts: (1) […], onclick: onclick(), icons: {…}, enabled: true, id: "runFiltersFolderPane", title: "Run filters" }
+qFi-background.js:174:13
+quickFilters adding the other folder tree context menu item Find Filters… ... 
+Object { contexts: (1) […], onclick: onclick(), icons: {…}, enabled: true, id: "findFiltersFolder", title: "Find Filters…" }
+qFi-background.js:231:13
+uncaught exception: Object { message }
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\pour-1.wav
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\maybe-one-day-584.ogg
+uncaught exception: Object { message }
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\hold-your-horses-468.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\scratch-389.ogg
+uncaught exception: Object { message }
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\your-turn-491.ogg
+QuickFolders: mailTabs.getCurrent() failed or timed out Error: mailTabs.getCurrent() timed out
+    timeoutPromise moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/qf-background.js:838
+qf-background.js:848:13
+QuickFolders: ready to start WindowListener. qf-background.js:851:13
+QuickFolders: add toggle-foldertree command... qf-background.js:1127:13
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\knob-458.ogg
+ quickFilters.Init()  
+Object { assistantActive: false, browserInfo: {…} }
+qFilters-utils.js:1016:13
+ qFi-messenger onLoad triggered, selected tab mode: mail3PaneTab  
+Object { first: true, mode: {…}, busy: false, canClose: false, thinking: false, favIconUrl: "chrome://messenger/skin/icons/new/compact/inbox.svg", _ext: {…}, selected: Getter, tabId: 0, tabNode: tab.tabmail-tab, … }
+qFilters-utils.js:1016:13
+patchMailPane()... qFilters-utils.js:1016:13
+qFi-messenger after patchMailPane 
+Object { first: true, mode: {…}, busy: false, canClose: false, thinking: false, favIconUrl: "chrome://messenger/skin/icons/new/compact/inbox.svg", _ext: {…}, selected: Getter, tabId: 0, tabNode: tab.tabmail-tab, … }
+qFilters-utils.js:1016:13
+quickFilters 9:32:13.532  [3972 ms]   
+ patchFolderTree 
+Object { first: true, mode: {…}, busy: false, canClose: false, thinking: false, favIconUrl: "chrome://messenger/skin/icons/new/compact/inbox.svg", _ext: {…}, selected: Getter, tabId: 0, tabNode: tab.tabmail-tab, … }
+qFilters-utils.js:921:13
+quickFilters 9:32:13.532  [0 ms]   
+ Version() getter. addonInfo: 
+Object { id: "quickFilters@axelg.com", name: "quickFilters", description: "Quickly generate mail filters on the fly, by dragging and dropping mails and analyzing their attributes.", version: "6.13.4pre3", mayDisable: true, enabled: true, optionsUrl: "moz-extension://b49f1e26-5659-41a4-b7e9-d7b7dfea5d63/html/quickfilters-settings.html", installType: "normal", type: "extension", permissions: (7) […], … }
+qFilters-utils.js:921:13
+quickFilters 9:32:13.644  [112 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+QuickFolders [logTime init]
+ Adding QuickFolders Search Panel ... quickfolders-util.js:1423:13
+QuickFolders 9:32:15.663  [3 ms]   
+ Adding Folder Listener... quickfolders-util.js:1423:13
+A resource is blocked by OpaqueResponseBlocking, please check browser console for details. gen_204
+The resource at “https://www.youtube.com/gen_204?a” was blocked by OpaqueResponseBlocking. Reason: “nosniff is true and mimeType is an opaque-blocklisted MIME type or its essence is 'text/plain'”. YouTube
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+contentscript: set content-script.js:91:15
+contentscript: set content-script.js:91:15
+uncaught exception: Object { message }
+Preferences updates: 
+Object { lastActiveCategories: "" }
+preferences.mjs:515:17
+contentscript: MUA info content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+contentscript: set content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+QuickFolders 9:32:16.796  [1133 ms]   
+ restore categories from tab session quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+QuickFolders 9:32:16.797  [1 ms]   
+ QuickFolders UI patching in window: chrome://messenger/content/messenger.xhtml quickfolders-util.js:1423:13
+QuickFolders 9:32:16.797  [0 ms]   
+ injecting quickfolders-143.css ... quickfolders-util.js:1423:13
+contentscript: set content-script.js:91:15
+uncaught exception: Object { message }
+WebExtensions: 
+<li class="extension-action" item-id="ext-quickfolders@curious.be" is="customizable-element" style='--webextension-icon: ima…32.svg") 2x\n        );'>
+implementation.js:481
+QuickFolders 9:32:16.813  [16 ms]   
+ toggleToolbarAction() quickfolders-util.js:1423:13
+contentscript: MUA info content-script.js:91:15
+uncaught exception: Object { message }
+QuickFolders 9:32:16.866  [53 ms]   
+ readTabCategorySession - for tabId[1] returned Daily quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+uncaught exception: Object { message }
+QuickFolders 9:32:16.892  [26 ms]   
+ readTabToolbarSession - for tabId[1] returned {"mainVisibleState":true} quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+uncaught exception: Object { message }
+QuickFolders 9:32:16.947  [55 ms]   
+ readTabCategorySession - for tabId[2] returned undefined quickfolders-util.js:1423:13
+QuickFolders 9:32:16.948  [1 ms]   
+ no session info for tab category… quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+uncaught exception: Object { message }
+QuickFolders 9:32:16.978  [30 ms]   
+ readTabToolbarSession - for tabId[2] returned undefined quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+uncaught exception: Object { message }
+QuickFolders 9:32:17.715  [737 ms]   
+ readTabCategorySession - for tabId[3] returned undefined quickfolders-util.js:1423:13
+QuickFolders 9:32:17.715  [0 ms]   
+ no session info for tab category… quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+QuickFolders 9:32:18.465  [750 ms]   
+ readTabToolbarSession - for tabId[3] returned undefined quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+QuickFolders 9:32:18.529  [64 ms]   
+ readTabCategorySession - for tabId[4] returned undefined quickfolders-util.js:1423:13
+QuickFolders 9:32:18.529  [0 ms]   
+ no session info for tab category… quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+QuickFolders 9:32:18.530  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+QuickFolders 9:32:18.879  [349 ms]   
+ readTabToolbarSession - for tabId[4] returned undefined quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+QuickFolders 9:32:18.949  [70 ms]   
+ readTabCategorySession - for tabId[5] returned undefined quickfolders-util.js:1423:13
+QuickFolders 9:32:18.949  [0 ms]   
+ no session info for tab category… quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+QuickFolders 9:32:19.171  [222 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1446:15
+QuickFolders 9:32:19.536  [365 ms]   
+ readTabToolbarSession - for tabId[5] returned undefined quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+QuickFolders 9:32:19.628  [92 ms]   
+ readTabCategorySession - for tabId[6] returned undefined quickfolders-util.js:1423:13
+QuickFolders 9:32:19.628  [0 ms]   
+ no session info for tab category… quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+QuickFolders 9:32:19.635  [7 ms]   
+ readTabToolbarSession - for tabId[6] returned undefined quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 38, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 39, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: injectCurrentFolderBar() early exit, parent document URL==about:3pane qf-3pane.js:384
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1446:15
+QuickFolders 9:32:19.847  [212 ms]   
+ readTabCategorySession - for tabId[7] returned Business quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+QuickFolders 9:32:19.854  [7 ms]   
+ readTabToolbarSession - for tabId[7] returned {"mainVisibleState":true} quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+QuickFolders 9:32:19.899  [45 ms]   
+ readTabCategorySession - for tabId[8] returned undefined quickfolders-util.js:1423:13
+QuickFolders 9:32:19.899  [0 ms]   
+ no session info for tab category… quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+QuickFolders 9:32:19.920  [21 ms]   
+ readTabToolbarSession - for tabId[8] returned undefined quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+QuickFolders 9:32:19.936  [16 ms]   
+ readTabCategorySession - for tabId[9] returned undefined quickfolders-util.js:1423:13
+QuickFolders 9:32:19.937  [1 ms]   
+ no session info for tab category… quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+QuickFolders 9:32:19.944  [7 ms]   
+ readTabToolbarSession - for tabId[9] returned undefined quickfolders-util.js:1423:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1446:15
+QuickFolders 9:32:19.947  [3 ms]   
+ readTabCategorySession - for tabId[10] returned undefined quickfolders-util.js:1423:13
+QuickFolders 9:32:19.947  [0 ms]   
+ no session info for tab category… quickfolders-util.js:1423:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1446:15
+Missing resource in locale de: devtools/client/toolbox.ftl
+QuickFolders 9:32:19.979  [32 ms]   
+ readTabToolbarSession - for tabId[10] returned undefined quickfolders-util.js:1423:13
+QuickFolders 9:32:19.980  [1 ms]   
+ initDocAndWindow()
+QuickFolders_globalDoc = chrome://messenger/content/messenger.xhtml quickfolders-util.js:1423:13
+QuickFolders 9:32:19.980  [0 ms]   
+ initDelayed ==== correct window: chrome://messenger/content/messenger.xhtml - Inbox - my gmail - Mozilla Thunderbird
+wait 250 msec until init()… quickfolders-util.js:1423:13
+QuickFolders 9:32:19.980  [0 ms]   
+ Adding Search Input event handler… quickfolders-util.js:1423:13
+Missing resource in locale it: devtools/client/toolbox.ftl
+Loading failed for the module with source “moz-extension://57f9d295-6286-4524-87ae-1f8f3ffca86a/modules/bridge.mjs”. background.js
+quickFilters 9:32:20.363  [6719 ms]   
+ =================quickFilters==============
+   checkFirstRun() - attempt 1 qFilters-utils.js:921:13
+quickFilters 9:32:20.364  [1 ms]   
+ Version() getter. addonInfo: 
+Object { id: "quickFilters@axelg.com", name: "quickFilters", description: "Quickly generate mail filters on the fly, by dragging and dropping mails and analyzing their attributes.", version: "6.13.4pre3", mayDisable: true, enabled: true, optionsUrl: "moz-extension://b49f1e26-5659-41a4-b7e9-d7b7dfea5d63/html/quickfilters-settings.html", installType: "normal", type: "extension", permissions: (7) […], … }
+qFilters-utils.js:921:13
+quickFilters 9:32:20.364  [0 ms]   
+ firstRun = false  - currentVersion = 6.13.4pre3  - installed = 6.13.4 qFilters-utils.js:921:13
+quickFilters 9:32:20.364  [0 ms]   
+ store installedVersion: 6.13.4 qFilters-utils.js:921:13
+QuickFolders 9:32:20.364  [384 ms]   
+ Version() getter. addonInfo: 
+Object { id: "quickfolders@curious.be", name: "QuickFolders", description: "Bookmark your favorite mail folders in Thunderbird.", version: "6.17.3pre5", mayDisable: true, enabled: true, optionsUrl: "moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/html/options.html", installType: "normal", type: "extension", permissions: (11) […], … }
+quickfolders-util.js:1423:13
+QuickFolders: QuickFolders.init() - QuickFolders Version 6.17.3pre5
+Running on Thunderbird Version 155.0
+QuickFolders Adding shortcut key listener. quickfolders-util.js:1446:15
+QuickFolders 9:32:20.367  [3 ms]   
+ initTabsFromEntries() quickfolders-util.js:1423:13
+QuickFolders 9:32:20.426  [59 ms]   
+ init: setting categories to Daily quickfolders-util.js:1423:13
+QuickFolders 9:32:20.427  [1 ms]   
+ updateFolders(rebuildCategories: false, minimal: false) - Number of Folders = 254 quickfolders-util.js:1423:13
+QuickFolders 9:32:20.427  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+QuickFolders 9:32:20.440  [13 ms]   
+ 32 of 254 tabs rebuilt [minimalUpdate=false]. quickfolders-util.js:1423:13
+QuickFolders 9:32:20.440  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+QuickFolders 9:32:20.442  [2 ms]   
+ QuickFolders.init() ends. quickfolders-util.js:1423:13
+QuickFolders 9:32:20.442  [0 ms]   
+ bookmarks.load… quickfolders-util.js:1423:13
+QuickFolders 9:32:20.442  [0 ms]   
+ initLicensedUI - hasLicense = true
+ licenseInfo: 
+Object { status: "Valid", description: "Valid", licensedDaysLeft: 65, expiredDays: 0, expiryDate: "2026-11-17", email: "axel.grude@gmail.com", licenseKey: "QF-axel.grude@gmail.com:2026-11-17;2035e10abd68e9fb662fa5ed8f3c251aa1ce71c73578441a148309391779818c 19000f1fdd4dbb7863acdee702dc0fc0a3030a00654cc0ffb722a4750073a0a9", decryptedPart: "QF-axel.grude@gmail.com:2026-11-17", keyType: 0, isValid: true, … }
+quickfolders-util.js:1423:13
+QuickFolders 9:32:20.442  [0 ms]   
+ License found - removing Animations()… quickfolders-util.js:1423:13
+QuickFolders 9:32:20.446  [4 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+QuickFolders 9:32:20.446  [0 ms]   
+ updateMainWindow()... Theme: flatTabs quickfolders-util.js:1423:13
+QuickFolders 9:32:20.446  [0 ms]   
+ bookmarks.load… quickfolders-util.js:1423:13
+QuickFolders 9:32:20.447  [1 ms]   
+ bookmarks.load complete. quickfolders-util.js:1423:13
+QuickFolders 9:32:20.569  [122 ms]   
+ updateMainWindow()... Theme: flatTabs quickfolders-util.js:1423:13
+QuickFolders 9:32:20.569  [0 ms]   
+ bookmarks.load… quickfolders-util.js:1423:13
+QuickFolders 9:32:20.569  [0 ms]   
+ bookmarks.load complete. quickfolders-util.js:1423:13
+QuickFolders 9:32:20.571  [2 ms]   
+ updateFoldersUI()... quickfolders-util.js:1423:13
+QuickFolders 9:32:20.571  [0 ms]   
+ updateFolders(rebuildCategories: true, minimal: false) - Number of Folders = 254 quickfolders-util.js:1423:13
+QuickFolders 9:32:20.572  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+QuickFolders 9:32:20.573  [1 ms]   
+ updateCategories() - [19 Categories] quickfolders-util.js:1423:13
+QuickFolders 9:32:20.591  [18 ms]   
+ 32 of 254 tabs rebuilt [minimalUpdate=false]. quickfolders-util.js:1423:13
+QuickFolders 9:32:20.591  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+QuickFolders 9:32:20.720  [129 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:81
+QuickFolders 9:32:20.721  [1 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:20.727  [6 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1497:15
+QuickFolders 9:32:20.734  [7 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:20.787  [53 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1418:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders 9:32:20.789  [2 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 9:32:21.123  [334 ms]   
+ updateFoldersUI()... quickfolders-util.js:1423:13
+QuickFolders 9:32:21.123  [0 ms]   
+ updateFolders(rebuildCategories: true, minimal: false) - Number of Folders = 254 quickfolders-util.js:1423:13
+QuickFolders 9:32:21.125  [2 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+QuickFolders 9:32:21.126  [1 ms]   
+ updateCategories() - [19 Categories] quickfolders-util.js:1423:13
+QuickFolders 9:32:21.138  [12 ms]   
+ 32 of 254 tabs rebuilt [minimalUpdate=false]. quickfolders-util.js:1423:13
+QuickFolders 9:32:21.138  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+QuickFolders 9:32:21.251  [113 ms]   
+ readStringFile() - Success quickfolders-util.js:1423:13
+QuickFolders 9:32:21.252  [1 ms]   
+ parsed 2 entries quickfolders-util.js:1423:13
+QuickFolders 9:32:21.252  [0 ms]   
+ bookmarks.resetList() quickfolders-util.js:1423:13
+QuickFolders 9:32:21.252  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = false quickfolders-util.js:1423:13
+QuickFolders 9:32:21.252  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = true quickfolders-util.js:1423:13
+QuickFolders 9:32:21.252  [0 ms]   
+ readStringFile() - Success quickfolders-util.js:1423:13
+QuickFolders 9:32:21.252  [0 ms]   
+ parsed 2 entries quickfolders-util.js:1423:13
+QuickFolders 9:32:21.253  [1 ms]   
+ bookmarks.resetList() quickfolders-util.js:1423:13
+QuickFolders 9:32:21.253  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = false quickfolders-util.js:1423:13
+QuickFolders 9:32:21.253  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = true quickfolders-util.js:1423:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:81
+QuickFolders 9:32:21.285  [32 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+QuickFolders 9:32:21.285  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:21.289  [4 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1497:15
+QuickFolders 9:32:21.294  [5 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:21.297  [3 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1418:13
+QuickFolders 9:32:21.298  [1 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 9:32:21.349  [51 ms]   
+ readStringFile() - Success quickfolders-util.js:1423:13
+QuickFolders 9:32:21.350  [1 ms]   
+ parsed 2 entries quickfolders-util.js:1423:13
+QuickFolders 9:32:21.350  [0 ms]   
+ bookmarks.resetList() quickfolders-util.js:1423:13
+QuickFolders 9:32:21.350  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = false quickfolders-util.js:1423:13
+QuickFolders 9:32:21.350  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = true quickfolders-util.js:1423:13
+QuickFolders 9:32:21.372  [22 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+QuickFolders 9:32:21.372  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:81
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:21.378  [6 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1497:15
+QuickFolders 9:32:21.381  [3 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:21.384  [3 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1418:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders 9:32:21.386  [2 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 9:32:21.451  [65 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:81
+QuickFolders 9:32:21.452  [1 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:21.456  [4 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1497:15
+QuickFolders 9:32:21.459  [3 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:21.462  [3 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1418:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders 9:32:21.465  [3 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 9:32:21.497  [32 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+QuickFolders 9:32:21.498  [1 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:81
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:21.504  [6 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1497:15
+QuickFolders 9:32:21.508  [4 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:21.512  [4 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1418:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders 9:32:21.514  [2 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 9:32:21.566  [52 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+QuickFolders 9:32:21.566  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:81
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:21.571  [5 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1497:15
+QuickFolders 9:32:21.575  [4 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:21.577  [2 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1418:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders 9:32:21.580  [3 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+Preferences updates: 
+Object { lastActiveCategories: "Daily" }
+preferences.mjs:515:17
+QuickFolders 9:32:21.607  [27 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+QuickFolders 9:32:21.607  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:81
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:21.614  [7 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1497:15
+QuickFolders 9:32:21.618  [4 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:21.621  [3 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1418:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders 9:32:21.624  [3 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 9:32:21.666  [42 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+QuickFolders 9:32:21.666  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:81
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:21.671  [5 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1497:15
+QuickFolders 9:32:21.677  [6 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:21.680  [3 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1418:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders 9:32:21.683  [3 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders 9:32:21.707  [24 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+QuickFolders 9:32:21.707  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:81
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:21.712  [5 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1497:15
+QuickFolders 9:32:21.715  [3 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:21.717  [2 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1418:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders 9:32:21.719  [2 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:message
+quickfolders-util.js:1423:13
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+quickFilters 9:32:22.201  [1837 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+quickFilters 9:32:22.222  [21 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+quickFilters 9:32:22.240  [18 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+quickFilters 9:32:22.275  [35 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+quickFilters 9:32:22.282  [7 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+quickFilters 9:32:22.283  [1 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+quickFilters 9:32:22.283  [0 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+quickFilters 9:32:22.284  [1 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+quickFilters 9:32:22.415  [131 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+QuickFolders 9:32:22.765  [1046 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+onCreated() - Initial tab: 
+Object { id: 12, index: 10, windowId: 1, highlighted: true, active: true, status: "complete", width: 1349, height: 870, groupId: -1, splitViewId: -1, … }
+qf-background.js:1102:17
+Object { tabId: 12, windowId: 1, previousTabId: 1 }
+qf-background.js:1039:15
+WebExtensions: qFi-3pane.js - onLoad() qFi-3pane.js:433
+[quickFilters 3pane] injectQuickFoldersNavigationBarElements() - waiting for threadPane qFilters-utils.js:1016:13
+WebExtensions: quickFilters injector path: 
+Object { hasWL: true, globalThis: undefined, hasInject: true, url: "about:3pane" }
+qFi-3pane.js:74
+[quickFilters 3pane] waitForElement: found #threadPane immediately qFilters-utils.js:1016:13
+[quickFilters 3pane] inject Elements container... qFilters-utils.js:1016:13
+WebExtensions: Using WindowListener:injectElements qFi-3pane.js:90
+WebExtensions: Injecting into root document: implementation.js:720
+[quickFilters 3pane] Injection path: WindowListener (WL) qFilters-utils.js:1016:13
+WebExtensions: 
+Array [ div#threadPane ]
+implementation.js:600
+WebExtensions: div#threadPane is an existing container, injecting into threadPane implementation.js:671
+WebExtensions: 
+Array [ hbox#quickFilters-injected ]
+implementation.js:600
+WebExtensions: hbox#quickFilters-injected: append to threadPane implementation.js:711
+[quickFilters 3pane] WL.injectElements done - panel in DOM: false, panel parent: (none) qFilters-utils.js:1016:13
+[quickFilters 3pane] inject buttons... qFilters-utils.js:1016:13
+QuickFolders 9:32:23.306  [541 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1423:13
+QuickFolders 9:32:23.306  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1423:13
+QuickFolders [QuickFolders Navigation Bar] [QuickFolders 3pane] about:3pane PRE-inject: threadPane EXISTS (childCount=11) quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] [QuickFolders 3pane] about:3pane threadPane children: div#threadPaneHeaderBar, template#searchBarTemplate, div#quick-filter-bar, xul:menupopup#quickFilterButtonsContext, tree-view#threadTree, template#threadPaneApplyColumnMenu, template#threadPaneApplyViewMenu, template#threadPaneRowTemplate, template#threadPaneCardTemplate, div#threadPaneNotificationBox, hbox#quickFilters-injected quickfolders-util.js:1446:15
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:3pane" }
+qf-3pane.js:81
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1446:15
+WebExtensions: 
+Array [ div#threadPane ]
+implementation.js:600
+WebExtensions: div#threadPane is an existing container, injecting into threadPane implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to threadPane implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: threadPane quickfolders-util.js:1446:15
+QuickFolders [QuickFolders Navigation Bar] about:3pane - injection result: true true quickfolders-util.js:1446:15
+QuickFolders 9:32:23.311  [5 ms]   
+ liftNavigationbar() quickfolders-util.js:1423:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #threadPane content URL: about:3pane quickfolders-interface.js:1497:15
+[QF liftNavBar] about:3pane — viewMode=classic, #threadPane count=1, querySelector→parent=#paneLayout quickfolders-interface.js:1521:21
+QuickFolders {3PANE} 9:32:23.311  [0 ms]   
+ liftNavigationbar() - viewMode=classic 
+<div id="threadPane" style="height: 252px !important;">
+quickfolders-util.js:1418:13
+[QF liftNavBar] after move — panel parent: #threadPane, panel===in threadPane: true quickfolders-interface.js:1544:21
+QuickFolders 9:32:23.314  [3 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:3pane
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:23.318  [4 ms]   
+ hoistCurrentFolderBar(tabMode: mail3PaneTab) quickfolders-util.js:1418:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="") = true — bar will be SHOWN qf-3pane.js:668
+QuickFolders 9:32:23.321  [3 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:3pane
+quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:23.764  [443 ms]   
+ hoistCurrentFolderBar(tabMode: contentTab) quickfolders-util.js:1418:13
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1520:19
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+quickFilters 9:32:24.357  [1942 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1531:23
+quickFilters 9:32:25.118  [761 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+1789288345754	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing locales: An unexpected property was found in the WebExtension manifest.
+1789288345754	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1789288345858	addons.webextension.{61A64500-335C-418D-8FCB-E072A9ABF3DA}	WARN	Loading extension '{61A64500-335C-418D-8FCB-E072A9ABF3DA}': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1789288346160	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1789288346168	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+ExtensionError: can't access property "length", msgs is undefined ExtensionUtils.sys.mjs:46:5
+Error: can't access property "length", msgs is undefined undefined
+patchMailPane()... qFilters-utils.js:1016:13
+QuickFolders 9:32:27.659  [3895 ms]   
+ Folder Select Timer prepared - ID: 156 quickfolders-util.js:1423:13
+TypeError: can't access property "topChromeWindow", browser.browsingContext is null
+    getTabForBrowser chrome://messenger/content/parent/ext-mail.js:509
+    statusListener chrome://messenger/content/parent/ext-tabs.js:368
+    onStateChange chrome://extensions/content/parent/ext-tabs-base.js:1689
+    callListeners chrome://messenger/content/mailWindow.js:1080
+    callListeners chrome://messenger/content/mailWindow.js:1123
+    onStateChange chrome://messenger/content/mailWindow.js:1139
+    closeTab chrome://messenger/content/tabmail.js:1101
+    remove chrome://messenger/content/parent/ext-tabs.js:577
+    result resource://gre/modules/ExtensionParent.sys.mjs:1316
+    withCallContextData resource://gre/modules/ExtensionParent.sys.mjs:750
+    result resource://gre/modules/ExtensionParent.sys.mjs:1315
+    withPendingBrowser resource://gre/modules/ExtensionParent.sys.mjs:760
+    result resource://gre/modules/ExtensionParent.sys.mjs:1314
+    callAndLog resource://gre/modules/ExtensionParent.sys.mjs:1265
+    recvAPICall resource://gre/modules/ExtensionParent.sys.mjs:1313
+mailWindow.js:1082:19
+TypeError: can't access property "topChromeWindow", browser.browsingContext is null
+    getTabForBrowser chrome://messenger/content/parent/ext-mail.js:509
+    statusListener chrome://messenger/content/parent/ext-tabs.js:368
+    onStateChange chrome://extensions/content/parent/ext-tabs-base.js:1689
+    callListeners chrome://messenger/content/mailWindow.js:1080
+    callListeners chrome://messenger/content/mailWindow.js:1123
+    onStateChange chrome://messenger/content/mailWindow.js:1139
+    closeTab chrome://messenger/content/tabmail.js:1101
+    remove chrome://messenger/content/parent/ext-tabs.js:577
+    result resource://gre/modules/ExtensionParent.sys.mjs:1316
+    withCallContextData resource://gre/modules/ExtensionParent.sys.mjs:750
+    result resource://gre/modules/ExtensionParent.sys.mjs:1315
+    withPendingBrowser resource://gre/modules/ExtensionParent.sys.mjs:760
+    result resource://gre/modules/ExtensionParent.sys.mjs:1314
+    callAndLog resource://gre/modules/ExtensionParent.sys.mjs:1265
+    recvAPICall resource://gre/modules/ExtensionParent.sys.mjs:1313
+mailWindow.js:1082:19
+Object { tabId: 1, windowId: 1, previousTabId: undefined }
+qf-background.js:1039:15
+QuickFolders 9:32:27.789  [130 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1423:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 9:32:27.793  [4 ms]   
+ hoistCurrentFolderBar(tabMode: mail3PaneTab) quickfolders-util.js:1418:13
+Error: negotiate failed with HTTP 405 
+    ListenForEventsOffice365 moz-extension://4da57fdf-a3a3-4ca2-ad48-42b8203b2c26/owa/owa.js:487
+owa.js:561:13
+quickFilters 9:32:32.202  [7084 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 9:32:32.227  [25 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 9:32:32.241  [14 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 9:32:32.277  [36 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 9:32:32.322  [45 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 9:32:32.324  [2 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 9:32:32.325  [1 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 9:32:32.326  [1 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 9:32:32.420  [94 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13

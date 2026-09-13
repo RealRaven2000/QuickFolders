@@ -1,0 +1,97 @@
+Preferences updates: 
+Object { "currentFolderBar.showClose": true }
+preferences.mjs:515:17
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { command: "updateNavigationBar" }
+qf-background.js:1182:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.726  [9477 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.727  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.740  [13 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.741  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.748  [7 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.749  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.755  [6 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.756  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.764  [8 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.765  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.771  [6 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.772  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.778  [6 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:3pane
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.779  [1 ms]   
+ 3pane type = undefined, URL= about:3pane, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {NOTIFICATIONS} 10:21:3.790  [11 ms]   
+ onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.updateNavigationBar
+into chrome://messenger/content/messenger.xhtml quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.790  [0 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+QuickFolders.BackgroundUpdate.updateNavigationBar { target: ChromeWindow chrome://messenger/content/messenger.xhtml, isTrusted: true, srcElement: ChromeWindow chrome://messenger/content/messenger.xhtml, currentTarget: ChromeWindow chrome://messenger/content/messenger.xhtml, eventPhase: 2, bubbles: false, cancelable: false, returnValue: true, defaultPrevented: false, composed: false, … }
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.793  [3 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:3pane
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.794  [1 ms]   
+ 3pane type = undefined, URL= about:3pane, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.802  [8 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.803  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.808  [5 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.809  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.816  [7 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.817  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.822  [5 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.822  [0 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.831  [9 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.831  [0 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.838  [7 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:21:3.838  [0 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object] quickfolders-util.js:1418:13

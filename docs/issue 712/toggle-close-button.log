@@ -1,0 +1,55 @@
+Preferences updates: 
+Object { "currentFolderBar.showClose": true }
+preferences.mjs:515:17
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { command: "updateNavigationBar" }
+qf-background.js:1182:13
+QuickFolders {NOTIFICATIONS} 10:39:11.675  [6384 ms]   
+ onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.updateNavigationBar
+into chrome://messenger/content/messenger.xhtml quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.676  [1 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+QuickFolders.BackgroundUpdate.updateNavigationBar { target: ChromeWindow chrome://messenger/content/messenger.xhtml, isTrusted: true, srcElement: ChromeWindow chrome://messenger/content/messenger.xhtml, currentTarget: ChromeWindow chrome://messenger/content/messenger.xhtml, eventPhase: 2, bubbles: false, cancelable: false, returnValue: true, defaultPrevented: false, composed: false, … }
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.679  [3 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:3pane
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.679  [0 ms]   
+ 3pane type = undefined, URL= about:3pane, win = [object Window], tabOrWindow= [object Object], folder name= Inbox quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.690  [11 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.691  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= Christopher Leidigh quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.696  [5 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.697  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= Inbox quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.703  [6 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.704  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= YouTube quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.709  [5 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.710  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= Roberto quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.716  [6 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.716  [0 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= filtaQuilla quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.723  [7 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1418:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 10:39:11.725  [2 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= Support quickfolders-util.js:1418:13

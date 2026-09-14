@@ -175,7 +175,11 @@
 		For Thunderbird 68, <a href="version-68.html#latestlegacy">click here</a>.
 	 </p>	
 	<a name="news" > </a>
-	<h3>Latest News (07/09/2026) - Thunderbird 155 Compatibility</h3>
+	<h3>Latest News (13/09/2026) - QuickFolders 6.17.3</h3>
+    <p>
+      The emergency maintenance release fixes a startup regression that could disable features
+      despite a valid license. See the <a href="#6.17.3">6.17.3 release notes</a> below.
+    </p>
     <p>
       The project is trying to adapt to the new fast paced 2-weeks release cycle which may mean 
       quick fixes need to  be reviewed more frequently. Should you need a version that is 
@@ -299,17 +303,43 @@
     -->
 		<a name="latest">&nbsp;</a>
 
-		<a name="6.17">&nbsp;</a> <a name="6.17.1">&nbsp;</a> <a name="6.17.2">&nbsp;</a>
+		<a name="6.17">&nbsp;</a> <a name="6.17.1">&nbsp;</a> <a name="6.17.2">&nbsp;</a> <a name="6.17.3">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.17"
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.17.3"
 			>
-				 Version 6.17 - 27/08/2026
+				 Version 6.17.3 - 13/09/2026
 		  </a>
       </h4>
 
       <ul>
-        <h4 class="inList">Maintenance version 6.17.2 (WIP)</h4>
+        <h4 class="inList">Emergency Maintenance Release 6.17.3 - 13/09/2026</h4>
+        <li>
+          Fixed a startup regression introduced in 6.17.2 that could leave licensed
+          users with black, disabled tabs after the first 10. Storage and license validation
+          now complete before the toolbar initializes, and tabs refresh when a valid or expired
+          license update arrives.
+          <a href="https://github.com/RealRaven2000/QuickFolders/issues/711">[issue 711]</a>
+        </li>
+        <li>
+          Updated clipboard export and import. Copying the folder configuration
+          now uses the current stored model and the native clipboard API. Paste is available
+          in Settings, with a toolbar preview and a confirmation to keep changes or restore
+          the original tabs. Closing Settings without confirming also restores the original tabs.
+          <a href="https://github.com/RealRaven2000/QuickFolders/issues/710">[issue 710]</a>
+        </li>
+        <li>
+          Fixed Current Folder Bar display and live button updates from Advanced settings.
+          <a href="https://github.com/RealRaven2000/QuickFolders/issues/712">[issue 712]</a>
+        </li>
+        <li>
+          Fixed external messaging so unrecognized messages no longer prevent
+          other listeners from responding.
+        </li>
+      </ul>
+
+      <ul>
+        <h4 class="inList">Previous Maintenance Release 6.17.2 - 09/09/2026</h4>
 				<li>
 					Compatibility with Thunderbird 157.
 				</li>
@@ -318,7 +348,7 @@
 					diagnostic instructions instead of leaving QuickFolders partially initialized. We also
 					corrected missing default values during legacy preference migration.
 					<p>
-						While QuickFolders starts up it will now update the label on the main toolbar as follows:<br>
+						In version 6.17.2, storage startup progress was displayed on the main toolbar as follows:<br>
 						<img src="images/quickfolders-toolbar-init-update-01.png" alt="QuickFolders Toolbar Label Update" class="screenshot"/>
 					</p>
 
@@ -348,7 +378,7 @@
 				</li>
       </ul>
 			<ul>
-			<h4 class="inList">Maintenance version 6.17.1 (WIP)</h4>
+			<h4 class="inList">Previous Maintenance Release 6.17.1 - 01/09/2026</h4>
 				<li>
 					Fixed: QuickFolders stuck 'initialising QuickFolders' on some systems in Thunderbird 154. 
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/697">[issue 697]</a>]
@@ -373,6 +403,8 @@
 				</li> 
 			</ul>
 
+
+      <h4 class="inList">Original Release 6.17 - 27/08/2026</h4>
 
       <div class="psa announcement">
         <p>

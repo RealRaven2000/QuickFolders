@@ -66,7 +66,13 @@ QuickFolders.Util = {
 
   // Utils is used to keep contact with the background and will request the current state of
   // some values during init and will update them if the background does a broadcast.
-  async init() {
+  init() {
+    // Parent and child documents share this Util instance. Initialize once so
+    // every consumer waits for the same license data and notification listener.
+    return this._initPromise || (this._initPromise = this._init());
+  },
+
+  async _init() {
     const onBackgroundUpdates = (data) => {
       if (data.licenseInfo) {
         QuickFolders.Util.licenseInfo = data.licenseInfo;
@@ -108,6 +114,9 @@ QuickFolders.Util = {
     QuickFolders.Util.licenseInfo = await QuickFolders.Util.notifyTools.notifyBackground({
       func: "getLicenseInfo",
     });
+    if (!QuickFolders.Util.licenseInfo || QuickFolders.Util.licenseInfo.isValidated === false) {
+      throw new Error("QuickFolders license information is unavailable because startup failed.");
+    }
     QuickFolders.Util.platformInfo = await QuickFolders.Util.notifyTools.notifyBackground({
       func: "getPlatformInfo",
     });

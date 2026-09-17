@@ -372,6 +372,23 @@ async function onLoad(activatedWhileWindowOpen) {
 </div>
   `);
 
+  // The static toolbar remains available for startup diagnostics. Wait for
+  // completed license validation before attaching handlers or populating tabs.
+  try {
+    await window.QuickFolders.Util.init();
+  } catch (error) {
+    window.QuickFolders.Util.logException("Main window startup failed [Util.init()]", error);
+    const startupLabel = document.querySelector("div.QuickFolders-Empty-Toolbar-Label");
+    if (startupLabel) {
+      startupLabel.textContent =
+        "QuickFolders startup failed. Check the Error Console (Ctrl+Shift+J).";
+    }
+    return;
+  }
+  if (window.closed || WL.context.unloaded) {
+    return;
+  }
+
   // remove category to force selection when loading new version
   // [issue 279]
   window.QuickFolders.Interface.currentActiveCategories = window.QuickFolders.FolderCategory.INIT;
@@ -709,7 +726,6 @@ async function onLoad(activatedWhileWindowOpen) {
       QuickFolders.patchFolderTree(tabInfo);
     });
 
-  await window.QuickFolders.Util.init();
   if (window.QuickFolders.Util.versionGreaterOrEqual(window.QuickFolders.Util.Appversion, "102")) {
     WL.injectCSS("chrome://quickfolders/content/skin/qf-102.css");
   }

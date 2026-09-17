@@ -902,8 +902,7 @@ async function main() {
   }
   completeStartup({ ok: true });
 
-  // 3. Initialize the UI only after storage and license validation have completed.
-  startWindowInjection();
+  // Window consumers waiting in Util.init() can now initialize functional UI.
 
   let msg_commands = [
     "currentDeckUpdate",
@@ -1206,7 +1205,12 @@ async function notificationHandler(data) {
       // Also protect callers outside the normal window initialization sequence.
       const startupResult = await startupReady;
       if (!startupResult.ok) {
-        throw new Error(startupResult.errorMessage || "QuickFolders startup failed");
+        // NotifyTools resolves replies; do not strand callers with a rejected listener.
+        return {
+          status: "NotValidated",
+          isValidated: false,
+          error: startupResult.errorMessage || "QuickFolders startup failed",
+        };
       }
       return currentLicense.info;
     }
@@ -1840,6 +1844,9 @@ async function displayUpdateMessage() {
 
 const prefsReady = Preferences.init(); // pending
 registerNotifyListener();
+// Only qf-messenger's static toolbar may appear before readiness. Its functional
+// initialization and qf-3pane's toolbar injection wait for the license result.
+startWindowInjection();
 main().catch((error) => {
   // Release startup consumers on exceptions as well as successful validation.
   // Resolving again after startup succeeded has no effect on the shared Promise.

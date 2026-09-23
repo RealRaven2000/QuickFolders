@@ -70,10 +70,6 @@ QuickFolders.Storage = new (class LocalStorage {
           (method) =>
           (...args) =>
             this._storage.local.callMethodInParentProcess(method, args);
-
-        // Test that storage is actually accessible with a minimal call
-        await this._call("get")("dummy"); // becomes await browser.storage.local.get("dummy");
-        this.logDebug(`_init() SUCCESS after ${attempt + 1} attempt(s)`);
         return;
       } catch (ex) {
         const isLastAttempt = attempt === maxRetries - 1;
@@ -110,7 +106,7 @@ QuickFolders.Storage = new (class LocalStorage {
     this.logDebug("get() START - keys:", keys);
     try {
       await this._init();
-      const rv = await this._call("get")(keys);
+      const rv = await this._call("get")(keys); // calls mx API?
       this.logDebug("get() SUCCESS - returned keys:", Object.keys(rv));
       return rv;
     } catch (ex) {

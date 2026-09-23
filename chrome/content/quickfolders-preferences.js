@@ -537,8 +537,13 @@ QuickFolders.Preferences.cache = (() => {
         const storageKey = isDebug ? "debug" : "settings";
         const dataKey = k === "debug" ? "debugActive" : k;
         const current = await QuickFolders.Storage.get({ [storageKey]: {} });
+        // map the storage key to a synchronous cache
+        // cache._current[storageKey][dataKey] = v;
+
         current[storageKey][dataKey] = v;
         await QuickFolders.Storage.set(current);
+        // directly write to Storage...  
+        // QuickFolders.Storage.set( { [storageKey]: current[storageKey] } );
         logDebug(`setValue("${k}") completed`);
       } catch (ex) {
         console.error(`[#697] Pref sync failed for "${k}":`, ex);

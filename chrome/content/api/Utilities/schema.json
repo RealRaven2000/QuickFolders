@@ -241,6 +241,20 @@
 
       {
         "type": "function",
+        "name": "testStorage",
+        "async": true,
+        "description": "tests the storage by setting a test preference",
+        "parameters": [
+          {
+            "name": "val",
+            "type": "boolean",
+            "description": "the value to set for the test preference"
+          }
+        ]
+      },
+
+      {
+        "type": "function",
         "name": "updatePreferencesCache",
         "description": "updates any data changes to the experimental pref cache",
         "parameters": [

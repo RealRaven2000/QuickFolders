@@ -349,6 +349,22 @@ async function notificationHandler(data) {
           error: tabInfoError,
         });
       }
+
+      // test readyness
+      const toolbar = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
+      const sheet = window.QuickFolders.Styles.getMyStyleSheet(
+        contentDoc,
+        "quickfolders-layout.css",
+        "QuickFolderStyles"
+      );
+      if (!toolbar || !sheet) {
+        console.warn("[QuickFolders qf-3pane] - Navigation update arrived before readiness", {
+          hasToolbar: !!toolbar,
+          hasLayoutSheet: !!sheet,
+        });
+        return;
+      }
+
       window.QuickFolders.Interface.updateNavigationBar(window.document, tabInfo);
     } break;
 

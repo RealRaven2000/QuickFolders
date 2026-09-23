@@ -214,6 +214,16 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           throw new Error("Unknown folder paste action.");
         },
 
+        testStorage(val) {
+          for (const win of Services.wm.getEnumerator("mail:3pane")) {
+            if (!win.QuickFolders?.Preferences?.cache) {
+              continue;
+            }
+            win.QuickFolders.Preferences.setBoolPref("testStorage", val);
+            break;
+          }          
+        },
+
         logDebug(text) {
           const win = Services.wm.getMostRecentWindow("mail:3pane");
           win.QuickFolders.Util.logDebug(text);

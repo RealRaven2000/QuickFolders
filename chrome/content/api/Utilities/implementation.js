@@ -279,11 +279,12 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           const win = Services.wm.getMostRecentWindow("mail:3pane");
           // see options.copyFolderEntries
           const util = win.QuickFolders.Util,
-            prefs = win.QuickFolders.Preferences,
-            sFolderString = Services.prefs.getStringPref("QuickFolders.folders");
-          let obj = JSON.parse(sFolderString),
-            storedObj = {
-              folders: obj,
+            prefs = win.QuickFolders.Preferences;
+          if (!Array.isArray(config.folders)) {
+            throw new Error("Folder configuration is unavailable.");
+          }
+          let storedObj = {
+              folders: config.folders,
               general: [],
               advanced: [],
               layout: [],
@@ -323,7 +324,7 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           const prefs = win.QuickFolders.Preferences,
             util = win.QuickFolders.Util;
 
-          function readData(dataString) {
+          async function readData(dataString) {
             let changedRecords = [];
 
             try {
@@ -384,10 +385,18 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
                     question;
                 }
                 if (Services.prompt.confirm(win, "QuickFolders", question)) {
-                  // store
-                  prefs.storeFolderEntries(entries);
-                  // notify all windows
-                  util.notifyTools.notifyBackground({ func: "updateAllTabs" });
+                  // Persist before updating caches or reporting a successful restore.
+                  try {
+                    await win.QuickFolders.Storage.set({ model: { folders: entries } });
+                  } catch (error) {
+                    mainWin.QuickFolders.initTabsFromEntries(prefs.loadFolderEntries());
+                    throw error;
+                  }
+                  for (const target of Services.wm.getEnumerator("mail:3pane")) {
+                    if (!target.QuickFolders?.Preferences?.cache) {continue;}
+                    target.QuickFolders.Preferences.cache._model.folders = cloneFolders(entries);
+                    target.QuickFolders.Interface.updateAllTabs();
+                  }
                 } else {
                   // roll back
                   mainWin.QuickFolders.initTabsFromEntries(prefs.loadFolderEntries());

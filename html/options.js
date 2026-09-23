@@ -627,7 +627,18 @@ document.getElementById("btnSaveConfig").addEventListener("click", async () => {
     storedObj.userStyle.push(node);
   }
 
-  return await messenger.Utilities.storeConfig(storedObj);
+  try {
+    // Export the saved model through MX storage, not the obsolete legacy preference.
+    const { model } = await messenger.storage.local.get("model");
+    if (!Array.isArray(model?.folders)) {
+      throw new Error("Folder configuration is unavailable.");
+    }
+    storedObj.folders = model.folders;
+    return await messenger.Utilities.storeConfig(storedObj);
+  } catch (error) {
+    console.error("QuickFolders: Could not save configuration", error);
+    alert(`QuickFolders: ${error.message || error}`);
+  }
 });
 
 function setMinPositiveListeners() {

@@ -8482,32 +8482,31 @@ QuickFolders.Interface = {
   },
 
   ensureStyleSheetLoaded: function (doc, Name, Title) {
-    const Cc = Components.classes,
-      Ci = Components.interfaces,
-      util = QuickFolders.Util;
+    const util = QuickFolders.Util;
     try {
       util.logDebugOptional("css", `ensureStyleSheetLoaded(Name: ${Name}, Title: ${Title})`);
-
-      QuickFolders.Styles.getMyStyleSheet(doc, Name, Title); // just to log something in console window
-
-      let sss = Cc["@mozilla.org/content/style-sheet-service;1"].getService(
-          Ci.nsIStyleSheetService
-        ),
-        ios = Cc["@mozilla.org/network/io-service;1"].getService(Ci.nsIIOService),
-        fileUri =
-          Name.length && Name.indexOf("chrome://") < 0
-            ? "chrome://quickfolders/content/" + Name
-            : Name,
-        uri = ios.newURI(fileUri, null, null);
-      let sheetRegistered = sss.sheetRegistered(uri, sss.USER_SHEET);
-      if (!sheetRegistered) {
-        util.logDebugOptional(
-          "css",
-          `=============================================================\n` +
-            `style sheet not registered - now loading: ${uri}`
-        );
-        sss.loadAndRegisterSheet(uri, sss.USER_SHEET);
+      if (QuickFolders.Styles.getMyStyleSheet(doc, Name, Title)) {
+        return;
       }
+      // Document UI sheets must never be registered globally as USER_SHEET.
+      // The injecting caller is responsible for waiting for stylesheet loading.
+      console.warn("QuickFolders stylesheet lookup failed", {
+        requestedSheet: Name,
+        requestedTitle: Title,
+        document: doc,
+        documentType: typeof doc,
+        documentURL: doc?.URL,
+        documentURI: doc?.documentURI,
+        documentTitle: doc?.title,
+        readyState: doc?.readyState,
+        windowURL: doc?.defaultView?.location?.href,
+        callerWindowURL: window.location.href,
+        stylesheets: Array.from(doc?.styleSheets || [], (sheet) => ({
+          href: sheet.href,
+          title: sheet.title,
+          disabled: sheet.disabled,
+        })),
+      });
     } catch (e) {
       // removed alert - loading the platform specific code seems to be a problem on some systems
       util.logException("QuickFolders.Interface.ensureStyleSheetLoaded failed: ", e);

@@ -51,6 +51,59 @@ const QFInjector = {
     return link;
   },
 
+  pendingStyleLoads: new Set(),
+
+  // Both injection paths return a link. Keep readiness local to this document.
+  loadStyleSheets(win, urls) {
+    return new Promise((resolve) => {
+      const cleanups = [];
+      let remaining = urls.length;
+      let settled = false;
+      const finish = (ok) => {
+        if (settled) { return; }
+        settled = true;
+        cleanups.forEach((cleanup) => cleanup());
+        this.pendingStyleLoads.delete(cancel);
+        resolve(ok);
+      };
+      const cancel = () => finish(false);
+      this.pendingStyleLoads.add(cancel);
+      win.addEventListener("unload", cancel, { once: true });
+      cleanups.push(() => win.removeEventListener("unload", cancel));
+      if (win.closed || !remaining) {
+        finish(!win.closed);
+        return;
+      }
+      try {
+        for (const url of urls) {
+          const link = this.injectCSS(win, url);
+          let loaded = false;
+          const onLoad = () => {
+            if (loaded || settled) { return; }
+            loaded = true;
+            win.QuickFolders.Util.logDebugOptional("css", "Navigation stylesheet ready: " + url);
+            if (--remaining === 0) { finish(true); }
+          };
+          const onError = () => {
+            console.warn("QuickFolders navigation stylesheet failed to load", url);
+            finish(false);
+          };
+          link.addEventListener("load", onLoad, { once: true });
+          link.addEventListener("error", onError, { once: true });
+          cleanups.push(() => {
+            link.removeEventListener("load", onLoad);
+            link.removeEventListener("error", onError);
+          });
+          // Also cover a cached sheet already available on return from injection.
+          if (link.sheet) { onLoad(); }
+        }
+      } catch (error) {
+        console.warn("QuickFolders navigation stylesheet injection failed", error);
+        finish(false);
+      }
+    });
+  },
+
   injectElements(xulString) {
     const WL = this.getWL(window);
     function localize(entity) {
@@ -415,6 +468,17 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     if (!prefsResult?.ok) {
       return;
     }
+    // Storage readiness alone does not mean the parent's license data is ready.
+    // Do not inject Current Folder Bar markup until both have completed.
+    try {
+      await util.init();
+    } catch (error) {
+      util.logException("3pane initialization failed", error);
+      return;
+    }
+    if (win.closed) {
+      return;
+    }
     const debug = prefs?.isDebug;
     const isDebug3pane = prefs.isDebugOption("3pane");
 
@@ -438,15 +502,17 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     win.QuickFolders.Util.logDebug(
       `============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`
     );
-    QFInjector.injectCSS(window, "chrome://quickfolders/content/quickfolders-layout.css?v=6.15.1");
-    QFInjector.injectCSS(window, "chrome://quickfolders/content/quickfolders-tools.css?v=2");
-
-    // current folder bar specific styling
-    QFInjector.injectCSS(window, "chrome://quickfolders/content/skin/quickfolders-navigation.css");
-    QFInjector.injectCSS(window, "chrome://quickfolders/content/quickfolders-filters.css");
-
-    // inject palette
-    QFInjector.injectCSS(window, "chrome://quickfolders/content/skin/quickfolders-palettes.css");
+    const stylesReady = await QFInjector.loadStyleSheets(win, [
+      "chrome://quickfolders/content/quickfolders-layout.css?v=6.15.1",
+      "chrome://quickfolders/content/quickfolders-tools.css?v=2",
+      "chrome://quickfolders/content/skin/quickfolders-navigation.css",
+      "chrome://quickfolders/content/quickfolders-filters.css",
+      "chrome://quickfolders/content/skin/quickfolders-palettes.css",
+    ]);
+    if (!stylesReady || win.closed) {
+      return;
+    }
+    util.logDebugOptional("css", "Navigation stylesheets ready; initializing current folder bar");
 
     //------------------------------------ overlay current folder (navigation bar)
     const INJECTED_ELEMENTS = `<hbox id="QuickFolders-PreviewToolbarPanel" class="QuickFolders-NavigationPanel quickFoldersToolbar">
@@ -743,6 +809,9 @@ async function onLoad(activatedWhileWindowOpen) {
 
 // eslint-disable-next-line no-unused-vars
 function onUnload(isAddOnShutown) {
+  for (const cancel of QFInjector.pendingStyleLoads) {
+    cancel();
+  }
   let document3pane = window.document;
   Services.prefs.removeObserver("mail.pane_config.dynamic", viewLayoutObserver);
 

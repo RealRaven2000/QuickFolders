@@ -371,7 +371,7 @@
         <fieldset class="hbox" id="grpCurrentFolderBackground">
           <legend>__MSG_qf.caption.currentFolderBackground__</legend>
           <div class="vbox" id="currentFolderBackgroundContainer">
-            <div class="hbox" flex="1" id="currentFolderStyle">
+            <div class="hbox align_center" flex="1" id="currentFolderStyle">
               <input type="text" autocomplete="off" id="currentFolderBackground" preference="qfpa-CurrentFolder-Background"
                 data-pref-name="currentFolderBar.background" />
               <select id="QuickFolders-CurrentFolder-Background-Select">
@@ -1123,6 +1123,7 @@
   <script src="../chrome/content/i18n.js"></script>
   <script src="options-qf.js"></script>
   <script src="options-themes.js"></script>
+  <!--  try to load preferences.mjs dynamically using import! -->
   <script src="options-preferences.js"></script>
   <script src="options-interface.js"></script>
   <script src="options-util.js"></script>

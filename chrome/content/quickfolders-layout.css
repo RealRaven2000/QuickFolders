@@ -90,25 +90,6 @@
   }
 }
 
-/* GENERIC UI CONTROLS */
-
-button {
-  border: var(--button-border);
-}
-
-button:hover {
-  border: var(--button-hover-border) !important;
-  background-color: var(--button-hover-background-color) !important;
-}
-
-button:active {
-  background-color: var(--button-active-background-color) !important;;
-  color: var(--button-active-color) !important;
-  border: var(--button-hover-border);
-}
-
-
-
 /* fix chevron alignment Tb 140+ */
 .QuickFolders-folder-popup > menu::after,
 .QuickFolders-folder-popup menupopup > menu::after { 
@@ -626,8 +607,9 @@ toolbar.quickFoldersToolbar[iconsize="large"] toolbarbutton.icon .toolbarbutton-
 }
 */
 
-toolbar.quickFoldersToolbar toolbarbutton.icon .toolbarbutton-icon {
-  height: var(--qf-tabiconsize,16px);
+toolbar.quickFoldersToolbar toolbarbutton .toolbarbutton-icon {
+  height: var(--qf-tabiconsize, 16px);
+	max-height: var(--qf-tabiconsize, 16px);
 }
 
 /*********************************

@@ -1,3 +1,25 @@
+@import url("chrome://messenger/skin/shared/layout.css");
+
+:root {
+  --qf-tabbutton-active-background-color: light-dark(rgb(60, 160, 255), rgb(0, 79, 132));
+  --input-text-min-height: 26px;
+  --qf-min-block-height: 26px;  
+	--qf-button-hover-background-color:
+    var(--button-hover-background-color, light-dark(#e2e6ea, #45454d));
+
+  /* broken theming colors in Tb 150+ */
+  --color-gray-05: #fafafa;
+  --color-gray-10: #f4f4f5;
+  --color-gray-20: #e4e4e7;
+  --color-gray-20: light-dark(#ededf0, rgba(249, 249, 250, 0.05));  /* ??? */
+  --color-gray-40: #a1a1aa;
+  --color-gray-50: #71717a;
+  --color-gray-60: #52525b;
+  --color-gray-70: #3f3f46;
+  --color-gray-80: #27272a;
+  --color-gray-90: #18181b;
+
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -34,6 +56,23 @@
   
 }
 
+/* GENERIC UI CONTROLS */
+button {
+  border: var(--button-border);
+  font-weight: normal;
+}
+
+button:hover,
+select:not([size], [multiple]):enabled:hover {
+  background-color: var(--qf-button-hover-background-color) !important; 
+  border: var(--button-hover-border) !important;
+}
+
+button:active {
+  background-color: var(--qf-button-hover-background-color) !important;;
+  color: var(--button-active-color) !important;
+  border: var(--button-hover-border);
+}
 
 
 /* horizontal alignment */
@@ -49,7 +88,6 @@ fieldset.multiCol {
 
 
 /* dropdowns are just too big */
-button, 
 #moveMailOptions, #folderCrossing,
 select[data-pref-name$=".paletteType"] {
   font-size: 0.9em;
@@ -79,9 +117,10 @@ html|input[type="color"] {
   width: 10px;
 }
 
-.hbox.align_center {
+.hbox.align_center, .hbox[align=center] {
   align-items: center;
 }
+
 
 
 fieldset {
@@ -170,12 +209,13 @@ button.active::marker {
 #QuickFolders-Options-Tabbox li button:not(.active):focus {
   fill: var(--hovercolor);
   color: var(--hovercolor) !important;
+  background-color: var(--qf-tabbutton-active-background-color, rgb(0, 79, 132)) !important;
 }
 
 #QuickFolders-Options-Tabbox li button:active:hover {
   fill: var(--activecolor);
   color: var(--activecolor) !important;
-  background-color: var(--button-active-background-color, rgb(0, 79, 132)) !important;
+  background-color: var(--qf-tabbutton-active-background-color, rgb(0, 79, 132)) !important;
 }
 
 #QuickFolders-Panels {
@@ -185,6 +225,7 @@ button.active::marker {
 
 
 .tabs button {
+  background-color: light-dark(var(--color-gray-20), var(--color-gray-60));
   background-position: 5px center;
   background-repeat: no-repeat;
   padding-left: 25px;
@@ -407,15 +448,17 @@ label.stdFeature[restricted]:focus {
 }
 
 input[type=number] {
-  text-align: right;
-  min-height: 22px;
+  text-align: start;
+  min-height: 24px;
+  border-radius: 3px;
+  padding-block: 0;
+  padding-inline-end: 0;
 }
+
 
 input[type=color] {
   min-height: 26px;
 }
-
-
 
 .pixelAppendix {
   margin-right: 5px;
@@ -565,4 +608,30 @@ select:not([size], [multiple]) {
 button.configSettingsPopup {
   /* empty for now — future-safe hook */
   fill: yellowgreen; /* NOP */
+}
+
+/* Tb 157 fixes */
+select:not([multiple]):not([size]),
+select[size="1"]:not([multiple]),
+.navigateable button,
+button.configSettings,
+button.category-icon {
+  min-block-size: var(--qf-min-block-height) !important;
+  min-height: var(--qf-min-block-height) !important;
+  padding-block: 0;
+  align-self: center;
+}
+
+input:where([type="email"], [type="tel"], [type="text"], [type="password"], [type="url"], [type="number"]),
+.qf-options-prefpane textarea {
+  border-radius: 3px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+input[type="text"] {
+  min-block-size: var(--qf-min-block-height) !important;
+  min-height: var(--qf-min-block-height) !important;
+  padding-block: 0;
+  align-self: center;
 }

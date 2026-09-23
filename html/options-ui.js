@@ -806,6 +806,9 @@ QuickFolders.Options = {
         prefString.replace(/^extensions\.quickfolders\./, "").startsWith("currentFolderBar.") ||
         prefString.includes("toolbar.largeIcons")
       ) {
+        if ("toolbar.largeIcons" === prefString) {
+          browser.runtime.sendMessage({ command: "updateUserStyles" });
+        }
         // QuickFolders.Util.notifyTools.notifyBackground({ func: "updateNavigationBar" });
         messenger.runtime.sendMessage({ command: "updateNavigationBar" });
         // eslint-disable-next-line no-unsafe-finally

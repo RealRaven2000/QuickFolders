@@ -1,0 +1,500 @@
+1789649360638	addons.xpi	WARN	Checking C:\Program Files\Mozilla Thunderbird ESR 140\distribution\extensions for addons
+1789649361277	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+Window.fullScreen attribute is deprecated and will be removed in the future. messenger.js:935:9
+1789649361872	addons.xpi-utils	WARN	Add-on tbsync@jobisoft.de is not compatible with application version.
+1789649361872	addons.xpi-utils	WARN	Add-on google-4-tbsync@marcozanon.com is not compatible with application version.
+1789649361872	addons.xpi-utils	WARN	Add-on eas4tbsync@jobisoft.de is not compatible with application version.
+1789649363864	addons.xpi-utils	WARN	Add-on tbsync@jobisoft.de is not compatible with application version.
+1789649363864	addons.xpi-utils	WARN	Add-on google-4-tbsync@marcozanon.com is not compatible with application version.
+1789649363864	addons.xpi-utils	WARN	Add-on eas4tbsync@jobisoft.de is not compatible with application version.
+Object { Util: {…}, Preferences: {…}, extractSignature: extractSignature(), insertTemplate: insertTemplate(), readSignatureFile: readSignatureFile(), resetDocument: resetDocument(), Parser: Parser(), composer: {}, Sig: {}, prefs: {…}, … }
+ 
+Object { composers: Map(0) }
+st-background.js:17:9
+SmartTemplates Background started st-util.mjs.js:39:13
+module is not a constructor ExtensionCommon.sys.mjs:1679:15
+Creating FiltaQuilla menus... filtaquilla-background.js:842:15
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\applause.ogg
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 15, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+[#697] About to call cache.init() at 2026-09-17T12:49:25.705Z quickfolders-preferences.js:650:9
+[#697] Cache init starting at 2026-09-17T12:49:25.705Z quickfolders-preferences.js:583:15
+QF Preferences Cache: Cache init: calling Storage.get() quickfolders-preferences.js:519:13
+QF Preferences Cache:  - QuickFolders.Storage: 
+Object { uniqueRandomID: "AddOnNS4", _context: {…}, _debugCache: true, _storage: {…}, _call: _call() }
+quickfolders-preferences.js:519:13
+[QF Storage] [17896493657.0s] get() START - keys: 
+Object { settings: {}, debug: {}, model: {…} }
+quickfolders-storage.js:51:13
+Finished setting up license startup code qf-background.js:901:13
+waiting for mailTabs.query()... qf-background.js:974:15
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\duogourd.ogg
+Menus created. filtaquilla-background.js:927:15
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\Freedom.ogg
+[QF Storage] [17896493659.0s] _init() SUCCESS after 1 attempt(s) quickfolders-storage.js:51:13
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\nightingale.ogg
+1789649366080	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1789649366091	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1789649366158	addons.webextension.mailmindr@arndissler.net	WARN	Loading extension 'mailmindr@arndissler.net': Reading manifest: Warning processing commands.mailmindr_set_follow_up.suggested_key.chromeos: Unknown platform name
+1789649366159	addons.webextension.mailmindr@arndissler.net	WARN	Loading extension 'mailmindr@arndissler.net': Reading manifest: Warning processing commands.mailmindr_open_list.suggested_key.chromeos: Unknown platform name
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 15, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\squishbeat.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\TheBrightestStar.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\squeak.wav
+[QF Storage] [17896493662.6s] get() SUCCESS - returned keys: 
+Array(3) [ "settings", "debug", "model" ]
+quickfolders-storage.js:51:13
+QF Preferences Cache: Cache init: Storage.get() returned successfully. Initializing folders model... quickfolders-preferences.js:519:13
+QF Preferences Cache: Received model / folders: 
+Object { folders: (53) […] }
+quickfolders-preferences.js:519:13
+QF Preferences Cache: Received preferences: 
+Object { "accessibility.hideIconMenu": false, "accessibility.subFolderParentEntry": false, alphaSortFoldersReverse: false, "api.mailTabs.timeout": 0, autoFocusPreview: true, autoValidateFolders: true, "behavior.nonFolderView.openNewTab": true, "bookmarks.folderLabel": true, "bookmarks.maxEntries": 0, "bookmarks.openMethod": "currentTab", … }
+quickfolders-preferences.js:519:13
+QF Preferences Cache: Cache initialization successful quickfolders-preferences.js:519:13
+QF Preferences Cache: Cache is now ready - awaitReady promise resolved quickfolders-preferences.js:519:13
+[#697] Cache init completed at 2026-09-17T12:49:26.262Z quickfolders-preferences.js:628:15
+1789649366297	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1789649366300	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1789649366314	addons.webextension.mailmindr@arndissler.net	WARN	Loading extension 'mailmindr@arndissler.net': Reading manifest: Warning processing commands.mailmindr_set_follow_up.suggested_key.chromeos: Unknown platform name
+1789649366314	addons.webextension.mailmindr@arndissler.net	WARN	Loading extension 'mailmindr@arndissler.net': Reading manifest: Warning processing commands.mailmindr_open_list.suggested_key.chromeos: Unknown platform name
+WebExtensions: quickFilters exp API: Utilities.getAPI() called implementation.js:14
+WebExtensions: quickFilters logDebug (early): startup listeners, ready to call updatequickFiltersLabel
+startup result: unblock startup for quickFilters in main() implementation.js:32
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\notify-1.wav
+QuickFolders [logTime init]
+ Adding QuickFolders Search Panel ... quickfolders-util.js:1432:13
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 17, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\pour-1.wav
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 15, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: injectCurrentFolderBar() early exit, parent document URL==about:3pane qf-3pane.js:396
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1455:15
+WebExtensions: quickFilters: messenger.onLoad() qFi-messenger.js:29
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\maybe-one-day-584.ogg
+Preferences onChanged: 
+Object {  }
+preferences.mjs:317:17
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\hold-your-horses-468.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\scratch-389.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\your-turn-491.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\knob-458.ogg
+Preferences onChanged: 
+Object { settings: {…}, debug: {…}, accounts: {…} }
+preferences.mjs:317:17
+Accounts data updated: 
+Object {  }
+preferences.mjs:340:19
+WebExtensions: quickFilters: pref cache ready qFi-messenger.js:31
+Manually calling notifyTools.enable() is no longer needed. notifyTools.js:145:13
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\worthwhile-438.ogg
+QF Preferences Cache: setValue("lastActiveCategories") = "" quickfolders-preferences.js:519:13
+[QF Storage] [17896493665.9s] get() START - keys: 
+Object { settings: {} }
+quickfolders-storage.js:51:13
+QuickFolders 13:49:26.594  [214 ms]   
+ Adding Folder Listener... quickfolders-util.js:1432:13
+QuickFolders 13:49:26.595  [1 ms]   
+ restore categories from tab session quickfolders-util.js:1432:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1455:15
+QuickFolders 13:49:26.596  [1 ms]   
+ QuickFolders UI patching in window: chrome://messenger/content/messenger.xhtml quickfolders-util.js:1432:13
+QuickFolders 13:49:26.596  [0 ms]   
+ injecting quickfolders-143.css ... quickfolders-util.js:1432:13
+FiltaQuilla (toneQuillaPlay module)
+File already exists: C:\Users\axelg\AppData\Roaming\Thunderbird\Profiles\9n5sagfw.esr140\extensions\filtaquilla\scissors-423.ogg
+WebExtensions: 
+<li class="extension-action" item-id="ext-quickfolders@curious.be" tabindex="-1" is="customizable-element" style='--webextension-icon: ima…32.svg") 2x\n        );' aria-pressed="true">
+implementation.js:481
+QuickFolders 13:49:26.629  [33 ms]   
+ toggleToolbarAction() quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:26.629  [0 ms]   
+ toggleToolbar() 
+Object { button: li.extension-action, toggle: false }
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE} 13:49:26.630  [1 ms]   
+ showElement(PreviewLabel, false) quickfolders-util.js:1427:13
+[QF Storage] [17896493666.4s] get() SUCCESS - returned keys: 
+Array [ "settings" ]
+quickfolders-storage.js:51:13
+[QF Storage] [17896493666.4s] set() START - keys: 
+Array [ "settings" ]
+quickfolders-storage.js:51:13
+QuickFolders 13:49:26.648  [18 ms]   
+ readTabCategorySession - for tabId[1] returned Dev quickfolders-util.js:1432:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1455:15
+QuickFolders 13:49:26.695  [47 ms]   
+ readTabToolbarSession - for tabId[1] returned {"mainVisibleState":true} quickfolders-util.js:1432:13
+QuickFolders 13:49:26.695  [0 ms]   
+ initDocAndWindow()
+QuickFolders_globalDoc = chrome://messenger/content/messenger.xhtml quickfolders-util.js:1432:13
+QuickFolders 13:49:26.695  [0 ms]   
+ initDelayed ==== correct window: chrome://messenger/content/messenger.xhtml - three - thunderbirddaily@gmail.com - Mozilla Thunderbird
+wait 750 msec until init()… quickfolders-util.js:1432:13
+QuickFolders 13:49:26.695  [0 ms]   
+ Adding Search Input event handler… quickfolders-util.js:1432:13
+[QF Storage] [17896493667.0s] set() SUCCESS quickfolders-storage.js:51:13
+QF Preferences Cache: setValue("lastActiveCategories") completed quickfolders-preferences.js:519:13
+Preferences updates: 
+Object { lastActiveCategories: "" }
+preferences.mjs:515:17
+QuickFolders {INTERFACE} 13:49:26.749  [54 ms]   
+ onTabSelected()
+ folder = three quickfolders-util.js:1427:13
+Got [mailTab] retreiving current tab[1] qf-background.js:978:15
+got tab qf-background.js:982:15
+QuickFolders: add toggle-foldertree command... qf-background.js:1126:13
+WebExtensions: qFi-3pane.js - onLoad() qFi-3pane.js:433
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 17, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+1789649367178	addons.webextension.mailmindr@arndissler.net	WARN	Loading extension 'mailmindr@arndissler.net': Reading manifest: Warning processing commands.mailmindr_set_follow_up.suggested_key.chromeos: Unknown platform name
+1789649367178	addons.webextension.mailmindr@arndissler.net	WARN	Loading extension 'mailmindr@arndissler.net': Reading manifest: Warning processing commands.mailmindr_open_list.suggested_key.chromeos: Unknown platform name
+1789649367207	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1789649367210	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+QuickFolders 13:49:27.212  [463 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1432:13
+QuickFolders 13:49:27.212  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1432:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS4", hasInject: true, url: "about:3pane" }
+qf-3pane.js:81
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:99
+WebExtensions: Injecting into root document: implementation.js:720
+WebExtensions: 
+Array [ div#threadPane ]
+implementation.js:600
+WebExtensions: div#threadPane is an existing container, injecting into threadPane implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to threadPane implementation.js:711
+QuickFolders 13:49:27.217  [5 ms]   
+ liftNavigationbar() quickfolders-util.js:1432:13
+[QF liftNavBar] after move — panel parent: #threadPane, panel===in threadPane: true quickfolders-interface.js:1552:21
+QuickFolders {CSS} 13:49:27.221  [4 ms]   
+ Can not find style sheet: quickfolders-layout.css - QuickFolderStyles in 
+ (chrome://messenger/content/messenger.xhtml)
+ doc.title       = three - thunderbirddaily@gmail.com
+ doc.documentURI = chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders {CSS} 13:49:27.221  [0 ms]   
+ ensureStyleSheetLoaded(Name: quickfolders-layout.css, Title: QuickFolderStyles) quickfolders-util.js:1427:13
+QuickFolders {CSS} 13:49:27.221  [0 ms]   
+ Can not find style sheet: quickfolders-layout.css - QuickFolderStyles in 
+ (chrome://messenger/content/messenger.xhtml)
+ doc.title       = three - thunderbirddaily@gmail.com
+ doc.documentURI = chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders stylesheet lookup failed 
+Object { requestedSheet: "quickfolders-layout.css", requestedTitle: "QuickFolderStyles", document: HTMLDocument about:3pane, documentType: "object", documentURL: "about:3pane", documentURI: "about:3pane", documentTitle: "three - thunderbirddaily@gmail.com", readyState: "complete", windowURL: "about:3pane", callerWindowURL: "chrome://messenger/content/messenger.xhtml", … }
+quickfolders-interface.js:8517:15
+QuickFolders {CSS} 13:49:27.222  [1 ms]   
+ Can not find style sheet: quickfolders-layout.css - QuickFolderStyles in 
+ (chrome://messenger/content/messenger.xhtml)
+ doc.title       = three - thunderbirddaily@gmail.com
+ doc.documentURI = chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders 13:49:27.222  [0 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:3pane
+quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.222  [0 ms]   
+ Current Folder Bar - Collapsing optional Navigation Elements:
+hideMsgNavigation=false
+hideFolderNavigation=true
+quickfolders-util.js:1427:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="") = true — bar will be SHOWN qf-3pane.js:691
+QuickFolders {CSS} 13:49:27.226  [4 ms]   
+ Can not find style sheet: quickfolders-layout.css - QuickFolderStyles in 
+ (chrome://messenger/content/messenger.xhtml)
+ doc.title       = three - thunderbirddaily@gmail.com
+ doc.documentURI = chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+
+QuickFolders stylesheet lookup failed 
+Object { requestedSheet: "quickfolders-layout.css", requestedTitle: "QuickFolderStyles", document: HTMLDocument about:3pane, documentType: "object", documentURL: "about:3pane", documentURI: "about:3pane", documentTitle: "three - thunderbirddaily@gmail.com", readyState: "complete", windowURL: "about:3pane", callerWindowURL: "chrome://messenger/content/messenger.xhtml", … }
+callerWindowURL: "chrome://messenger/content/messenger.xhtml"
+document: HTMLDocument about:3pane
+documentTitle: "three - thunderbirddaily@gmail.com"
+documentType: "object"
+documentURI: "about:3pane"
+documentURL: "about:3pane"
+readyState: "complete"
+requestedSheet: "quickfolders-layout.css"
+requestedTitle: "QuickFolderStyles"
+stylesheets: Array(15) [ {…}, {…}, {…}, … ]
+0: Object { href: "chrome://messenger/skin/messenger.css", title: null, disabled: false }
+1: Object { href: "chrome://messenger/skin/contextMenu.css", title: null, disabled: false }
+​​2: Object { href: "chrome://messenger/skin/icons.css", title: null, disabled: false }
+​​3: Object { href: "chrome://messenger/skin/containers.css", title: null, disabled: false }
+​​4: Object { href: "chrome://messenger/skin/colors.css", title: null, disabled: false }
+​​5: Object { href: "chrome://messenger/skin/folderColors.css", title: null, disabled: false }
+​​6: Object { href: "chrome://messenger/skin/folderMenus.css", title: null, disabled: false }
+​​7: Object { href: "chrome://messenger/skin/shared/quickFilterBar.css", title: null, disabled: false }
+​​8: Object { href: "chrome://messenger/skin/shared/tree-listbox.css", title: null, disabled: false }
+​​9: Object { href: "chrome://messenger/skin/searchBox.css", title: null, disabled: false }
+​​10: Object { href: "chrome://messenger/skin/about3Pane.css", title: null, disabled: false }
+​​11: Object { href: null, title: null, disabled: false }
+​​12: Object { href: "chrome://quickfolders/content/qf-foldertree.css", title: "QuickFoldersFolderTreeGlobalStyles", disabled: false }
+​​13: Object { href: "chrome://quickfilters/content/skin/quickFilters.css?v=2", title: null, disabled: false }
+​​14: Object { href: "chrome://quickfilters/content/skin/quickFilters-toolbar.css?v=6.9", title: null, disabled: false }
+​​length: 15
+​​<prototype>: Array []
+​​<global>: ChromeWindow chrome://messenger/content/messenger.xhtml
+windowURL: "about:3pane"
+<prototype>: Object { … }​
+<global>: ChromeWindow chrome://messenger/content/messenger.xhtml
+quickfolders-interface.js:8517:15
+QuickFolders {CSS} 13:49:27.227  [1 ms]   
+ Can not find style sheet: quickfolders-layout.css - QuickFolderStyles in 
+ (chrome://messenger/content/messenger.xhtml)
+ doc.title       = three - thunderbirddaily@gmail.com
+ doc.documentURI = chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders stylesheet lookup failed 
+Object { requestedSheet: "quickfolders-layout.css", requestedTitle: "QuickFolderStyles", document: HTMLDocument about:3pane, documentType: "object", documentURL: "about:3pane", documentURI: "about:3pane", documentTitle: "three - thunderbirddaily@gmail.com", readyState: "complete", windowURL: "about:3pane", callerWindowURL: "chrome://messenger/content/messenger.xhtml", … }
+quickfolders-interface.js:8517:15
+QuickFolders {CSS} 13:49:27.227  [0 ms]   
+ Can not find style sheet: quickfolders-layout.css - QuickFolderStyles in 
+ (chrome://messenger/content/messenger.xhtml)
+ doc.title       = three - thunderbirddaily@gmail.com
+ doc.documentURI = chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders 13:49:27.227  [0 ms]   
+ ensureStyleSheetLoaded() - missing style sheet 'quickfolders-layout.css' - not found
+ not attempting any style modifications. 
+HTMLDocument about:3pane
+quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.227  [0 ms]   
+ Current Folder Bar - Collapsing optional Navigation Elements:
+hideMsgNavigation=false
+hideFolderNavigation=true
+quickfolders-util.js:1427:13
+QuickFolders 13:49:27.480  [253 ms]   
+ Version() getter. addonInfo: 
+Object { id: "quickfolders@curious.be", name: "QuickFolders", description: "Bookmark your favorite mail folders in Thunderbird.", version: "6.17.4pre6", mayDisable: true, enabled: true, optionsUrl: "moz-extension://8b124c65-a6f9-4661-8a4e-b8852b9052c8/html/options.html", installType: "normal", type: "extension", permissions: (11) […], … }
+quickfolders-util.js:1432:13
+QuickFolders: QuickFolders.init() - QuickFolders Version 6.17.4pre6
+Running on Thunderbird Version 153.3.0
+QuickFolders Adding shortcut key listener. quickfolders-util.js:1455:15
+QuickFolders
+Reconstructed URL imap://thunderbirddaily67%40gmail.com@imap.gmail.com/Software/emsisoft for imap://thunderbirddaily67%40gmail.com@imap.gmail.com/Software/emsisoft of account account1 is invalid quickfolders-model.js:528:19
+QuickFolders
+Reconstructed URL mailbox://nobody@Local%20Folders/%20%20%20%20space%20test for mailbox://nobody@Local%20Folders/%20%20%20%20space%20test of account account2 is invalid quickfolders-model.js:528:19
+QuickFolders 13:49:27.481  [1 ms]   
+ initTabsFromEntries() quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.481  [0 ms]   
+ updateUserStyles() chrome://messenger/content/messenger.xhtml
+Theme: flatTabs quickfolders-util.js:1427:13
+QuickFolders {CSS,CSS.DETAIL} 13:49:27.485  [4 ms]   
+ My Palette Stylesheet = content/skin/quickfolders-palettes.css quickfolders-util.js:1427:13
+QuickFolders {CSS} 13:49:27.535  [50 ms]   
+ updateUserStyles(): success quickfolders-util.js:1427:13
+QuickFolders 13:49:27.536  [1 ms]   
+ init: setting categories to Dev quickfolders-util.js:1432:13
+QF Preferences Cache: setValue("lastActiveCategories") = "Dev" quickfolders-preferences.js:519:13
+[QF Storage] [17896493675.4s] get() START - keys: 
+Object { settings: {} }
+quickfolders-storage.js:51:13
+QF Preferences Cache: setValue("lastActiveCategories") = "Dev" quickfolders-preferences.js:519:13
+[QF Storage] [17896493675.4s] get() START - keys: 
+Object { settings: {} }
+quickfolders-storage.js:51:13
+QuickFolders {INTERFACE} 13:49:27.536  [0 ms]   
+ updateFolders(rebuildCategories=false, minimalUpdate=false) quickfolders-util.js:1427:13
+QuickFolders 13:49:27.536  [0 ms]   
+ updateFolders(rebuildCategories: false, minimal: false) - Number of Folders = 53 quickfolders-util.js:1432:13
+QuickFolders 13:49:27.536  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 13:49:27.547  [11 ms]   
+ 24 of 53 tabs rebuilt [minimalUpdate=false]. quickfolders-util.js:1432:13
+QuickFolders 13:49:27.548  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.548  [0 ms]   
+ onTabSelected()
+ folder = three quickfolders-util.js:1427:13
+QuickFolders {INTERFACE} 13:49:27.608  [60 ms]   
+ onDeckChange(targetTab.
+  first: true
+  busy: false
+  canClose: false
+  thinking: false
+  favIconUrl: chrome://messenger/skin/icons/new/compact/folder.svg
+  selected: true
+  tabId: 0
+  title: three - thunderbirddaily@gmail.com
+  QuickFoldersCategory: Dev
+)
+mode = mail3PaneTab quickfolders-util.js:1427:13
+QuickFolders {INTERFACE} 13:49:27.608  [0 ms]   
+ mode = mail3PaneTab
+isMailPanel = true quickfolders-util.js:1427:13
+QuickFolders 13:49:27.609  [1 ms]   
+ QuickFolders.init() ends. quickfolders-util.js:1432:13
+QuickFolders 13:49:27.609  [0 ms]   
+ bookmarks.load… quickfolders-util.js:1432:13
+QuickFolders 13:49:27.609  [0 ms]   
+ initLicensedUI - hasLicense = true
+ licenseInfo: 
+Object { status: "Valid", description: "Valid", licensedDaysLeft: 214, expiredDays: 0, expiryDate: "2027-04-19", email: "thunderbirddaily@gmail.com", licenseKey: "QF-thunderbirddaily@gmail.com:2027-04-19;127bb40961025ece5d1ca720fbbea87767de806bf68871410a271d17551106c9 093878c837558cc2e2a832be81ab91c24fd2fd4a4088ea97589cc75c12a7c2b2", decryptedPart: "QF-thunderbirddaily@gmail.com:2027-04-19", keyType: 0, isValid: true, … }
+quickfolders-util.js:1432:13
+QuickFolders 13:49:27.609  [0 ms]   
+ License found - removing Animations()… quickfolders-util.js:1432:13
+QuickFolders 13:49:27.612  [3 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 13:49:27.612  [0 ms]   
+ updateMainWindow()... Theme: flatTabs quickfolders-util.js:1432:13
+QuickFolders {CSS} 13:49:27.612  [0 ms]   
+ ============================
+updateMainWindow… quickfolders-util.js:1427:13
+QuickFolders {CSS} 13:49:27.612  [0 ms]   
+ updateMainWindow: update Folders UI… quickfolders-util.js:1427:13
+QuickFolders 13:49:27.612  [0 ms]   
+ bookmarks.load… quickfolders-util.js:1432:13
+QuickFolders 13:49:27.612  [0 ms]   
+ bookmarks.load complete. quickfolders-util.js:1432:13
+QuickFolders 13:49:27.649  [37 ms]   
+ updateMainWindow()... Theme: flatTabs quickfolders-util.js:1432:13
+QuickFolders {CSS} 13:49:27.650  [1 ms]   
+ ============================
+updateMainWindow… quickfolders-util.js:1427:13
+QuickFolders {CSS} 13:49:27.650  [0 ms]   
+ updateMainWindow: update Folders UI… quickfolders-util.js:1427:13
+QuickFolders 13:49:27.650  [0 ms]   
+ bookmarks.load… quickfolders-util.js:1432:13
+QuickFolders 13:49:27.650  [0 ms]   
+ bookmarks.load complete. quickfolders-util.js:1432:13
+QuickFolders 13:49:27.680  [30 ms]   
+ updateFoldersUI()... quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.680  [0 ms]   
+ updateFolders(rebuildCategories=true, minimalUpdate=false) quickfolders-util.js:1427:13
+QuickFolders 13:49:27.680  [0 ms]   
+ updateFolders(rebuildCategories: true, minimal: false) - Number of Folders = 53 quickfolders-util.js:1432:13
+QuickFolders 13:49:27.681  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.681  [0 ms]   
+ updateCategories() quickfolders-util.js:1427:13
+QuickFolders 13:49:27.681  [0 ms]   
+ updateCategories() - [4 Categories] quickfolders-util.js:1432:13
+QuickFolders 13:49:27.693  [12 ms]   
+ 24 of 53 tabs rebuilt [minimalUpdate=false]. quickfolders-util.js:1432:13
+QuickFolders 13:49:27.693  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.693  [0 ms]   
+ onTabSelected()
+ folder = three quickfolders-util.js:1427:13
+QuickFolders {INTERFACE} 13:49:27.701  [8 ms]   
+ updateUserStyles() chrome://messenger/content/messenger.xhtml
+Theme: flatTabs quickfolders-util.js:1427:13
+QuickFolders {CSS} 13:49:27.748  [47 ms]   
+ updateUserStyles(): success quickfolders-util.js:1427:13
+QuickFolders 13:49:27.813  [65 ms]   
+ updateFoldersUI()... quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.813  [0 ms]   
+ updateFolders(rebuildCategories=true, minimalUpdate=false) quickfolders-util.js:1427:13
+QuickFolders 13:49:27.813  [0 ms]   
+ updateFolders(rebuildCategories: true, minimal: false) - Number of Folders = 53 quickfolders-util.js:1432:13
+QuickFolders 13:49:27.814  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.814  [0 ms]   
+ updateCategories() quickfolders-util.js:1427:13
+QuickFolders 13:49:27.814  [0 ms]   
+ updateCategories() - [4 Categories] quickfolders-util.js:1432:13
+QuickFolders 13:49:27.823  [9 ms]   
+ 24 of 53 tabs rebuilt [minimalUpdate=false]. quickfolders-util.js:1432:13
+QuickFolders 13:49:27.824  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders {INTERFACE} 13:49:27.824  [0 ms]   
+ onTabSelected()
+ folder = three quickfolders-util.js:1427:13
+QuickFolders {INTERFACE} 13:49:27.833  [9 ms]   
+ updateUserStyles() chrome://messenger/content/messenger.xhtml
+Theme: flatTabs quickfolders-util.js:1427:13
+QuickFolders {CSS} 13:49:27.879  [46 ms]   
+ updateUserStyles(): success quickfolders-util.js:1427:13
+QuickFolders 13:49:27.928  [49 ms]   
+ readStringFile() - Success quickfolders-util.js:1432:13
+QuickFolders 13:49:27.928  [0 ms]   
+ parsed 1 entries quickfolders-util.js:1432:13
+QuickFolders 13:49:27.928  [0 ms]   
+ bookmarks.resetList() quickfolders-util.js:1432:13
+QuickFolders 13:49:27.928  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = false quickfolders-util.js:1432:13
+QuickFolders 13:49:27.928  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = true quickfolders-util.js:1432:13
+QuickFolders 13:49:27.928  [0 ms]   
+ readStringFile() - Success quickfolders-util.js:1432:13
+QuickFolders 13:49:27.928  [0 ms]   
+ parsed 1 entries quickfolders-util.js:1432:13
+QuickFolders 13:49:27.928  [0 ms]   
+ bookmarks.resetList() quickfolders-util.js:1432:13
+QuickFolders 13:49:27.929  [1 ms]   
+ QuickFolders.bookmarks.update()
+isActive = false quickfolders-util.js:1432:13
+QuickFolders 13:49:27.929  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = true quickfolders-util.js:1432:13
+[QF Storage] [17896493679.3s] get() SUCCESS - returned keys: 
+Array [ "settings" ]
+quickfolders-storage.js:51:13
+[QF Storage] [17896493679.3s] set() START - keys: 
+Array [ "settings" ]
+quickfolders-storage.js:51:13
+[QF Storage] [17896493679.3s] get() SUCCESS - returned keys: 
+Array [ "settings" ]
+quickfolders-storage.js:51:13
+[QF Storage] [17896493679.3s] set() START - keys: 
+Array [ "settings" ]
+quickfolders-storage.js:51:13
+QuickFolders 13:49:27.943  [14 ms]   
+ readStringFile() - Success quickfolders-util.js:1432:13
+QuickFolders 13:49:27.943  [0 ms]   
+ parsed 1 entries quickfolders-util.js:1432:13
+QuickFolders 13:49:27.943  [0 ms]   
+ bookmarks.resetList() quickfolders-util.js:1432:13
+QuickFolders 13:49:27.943  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = false quickfolders-util.js:1432:13
+QuickFolders 13:49:27.944  [1 ms]   
+ QuickFolders.bookmarks.update()
+isActive = true quickfolders-util.js:1432:13
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1524:19
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1535:23
+[QF Storage] [17896493680.5s] set() SUCCESS quickfolders-storage.js:51:13
+QF Preferences Cache: setValue("lastActiveCategories") completed quickfolders-preferences.js:519:13
+Preferences updates: 
+Object { lastActiveCategories: "Dev" }
+preferences.mjs:515:17
+[QF Storage] [17896493680.7s] set() SUCCESS quickfolders-storage.js:51:13
+QF Preferences Cache: setValue("lastActiveCategories") completed quickfolders-preferences.js:519:13
+Key event not available on some keyboard layouts: key=“r” modifiers=“accel,alt” id=“” messenger.xhtml
+QuickFolders {INTERFACE} 13:49:29.900  [1956 ms]   
+ onTabSelected()
+ folder = three quickfolders-util.js:1427:13
+Missing resource in locale de: devtools/client/toolbox.ftl
+Missing resource in locale nl: devtools/client/toolbox.ftl
+This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features! index.html

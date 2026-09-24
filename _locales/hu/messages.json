@@ -1,4 +1,7 @@
 {
+  "message.browserLaunchFailed": { "message": "{p} Nem sikerült megnyitni az alapértelmezett webböngészőt. Az alábbi címet kimásolhatja, és beillesztheti a böngésző címsorába. {/p} A hibáról további részleteket a JavaScript hibakonzoljában talál." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Böngészőhiba" },
+  "message.browserLaunchFailed.url": { "message": "Webcím (Ctrl+C a másoláshoz):" },
   "_l10nstatus": {
     "message": "Splash+UI"
   },

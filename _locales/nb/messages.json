@@ -385,6 +385,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Kunne ikke åpne standardnettleseren. Du kan kopiere adressen nedenfor og lime den inn i adressefeltet i nettleseren. {/p} Du finner flere detaljer om feilen i JavaScript-feilkonsollen." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Nettleserfeil" },
+  "message.browserLaunchFailed.url": { "message": "Nettadresse (Ctrl+C for å kopiere):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Avbryt" },
   "message.btn.no": { "message": "Nei" },

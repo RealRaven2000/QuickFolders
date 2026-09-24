@@ -327,6 +327,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Không thể mở trình duyệt web mặc định của bạn. Bạn có thể sao chép địa chỉ bên dưới và dán vào thanh địa chỉ của trình duyệt. {/p} Bạn có thể xem thêm chi tiết về lỗi trong bảng điều khiển lỗi JavaScript." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Lỗi trình duyệt" },
+  "message.browserLaunchFailed.url": { "message": "Địa chỉ web (Ctrl+C để sao chép):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Hủy" },
   "message.btn.no": { "message": "Không" },

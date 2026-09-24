@@ -379,6 +379,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Ihr Standardbrowser konnte nicht geöffnet werden. Sie können die folgende Adresse kopieren und in die Adressleiste Ihres Browsers einfügen. {/p} Weitere Einzelheiten zum Fehler finden Sie in der JavaScript-Fehlerkonsole." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Browserfehler" },
+  "message.browserLaunchFailed.url": { "message": "Webadresse (Strg+C zum Kopieren):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Abbrechen" },
   "message.btn.no": { "message": "Nein" },

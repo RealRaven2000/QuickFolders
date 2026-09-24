@@ -378,6 +378,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} 無法開啟您的預設瀏覽器。您可以複製下方網址並貼到瀏覽器的網址列中。 {/p} 如需此錯誤的詳細資訊，請查看 JavaScript 錯誤主控台。" },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — 瀏覽器錯誤" },
+  "message.browserLaunchFailed.url": { "message": "網址（按 Ctrl+C 複製）：" },
   "message.btn.accept": { "message": "確定" },
   "message.btn.cancel": { "message": "取消" },
   "message.btn.no": { "message": "否" },

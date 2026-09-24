@@ -182,6 +182,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Oletusselainta ei voitu avata. Voit kopioida alla olevan osoitteen ja liittää sen selaimen osoiteriville. {/p} Lisätietoja virheestä löytyy JavaScript-virhekonsolista." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Selainvirhe" },
+  "message.browserLaunchFailed.url": { "message": "Verkko-osoite (kopioi painamalla Ctrl+C):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Peruuta" },
   "message.btn.no": { "message": "Ei" },

@@ -933,6 +933,7 @@ async function main() {
     "stageThemeChange",
     "openStorageEditor",
     "deleteUserStyle",
+    "showNewsMessage",
   ];
 
   // message listener - SELECTIVE!
@@ -1608,7 +1609,16 @@ async function notificationHandler(data) {
       break;
 
     case "openBrowserLink":
-      messenger.windows.openDefaultBrowser(data.url);
+      try {
+        if (Preferences.isDebug("test.browserLaunchFailure")) {
+          throw new Error("Simulated browser launch failure for testing purposes.");
+        }
+        await messenger.windows.openDefaultBrowser(data.url);
+      } catch (ex) {
+        console.error("QuickFolders - Failed to open external link:", data.url, ex);
+        await showQFmessage("message.browserLaunchFailed", ["ok"], "", null, data.url);
+        return false;
+      }
       break;
 
     case "showNewsMessage": {
@@ -1616,12 +1626,13 @@ async function notificationHandler(data) {
       const message = data.msg,
         messageIds = data.msgIds,
         mode = data.mode || "standard",
+        dataUrl = data.url || null,
         referenceFeature = data.addonfeatures || null,
         features = data.features || ["ok"]; // minimum: an ok button. make array mutable
 
       switch (mode) {
         case "standard":
-          return showQFmessage(messageIds, features, message, referenceFeature);
+          return showQFmessage(messageIds, features, message, referenceFeature, dataUrl);
         case "news":
           return displayUpdateMessage();
         default:
@@ -1696,8 +1707,12 @@ function registerNotifyListener() {
 }
 
 const MESSAGE_STORAGE_KEY = "QuickFolders_Message_Key";
-const showQFmessage = async (messageIds, features, message = "", quickfoldersFeatures = null) => {
+const showQFmessage = async (messageIds, features, message = "", quickfoldersFeatures = null, failedBrowserUrl = null) => {
   const url = new URL(browser.runtime.getURL("/html/quickfolders-message.html"));
+  if (failedBrowserUrl !== null) {
+    // Keep each dialog's URL separate from shared message storage and formatted HTML.
+    url.searchParams.set("failedBrowserUrl", failedBrowserUrl);
+  }
   if (message) {
     // Store message globally
     await browser.storage.local.set({ [MESSAGE_STORAGE_KEY]: message });

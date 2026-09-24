@@ -375,6 +375,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Não foi possível abrir o navegador padrão. Você pode copiar o endereço abaixo e colá-lo na barra de endereços do navegador. {/p} Mais detalhes sobre o erro estão disponíveis no console de erros do JavaScript." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Erro do navegador" },
+  "message.browserLaunchFailed.url": { "message": "Endereço web (Ctrl+C para copiar):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Cancelar" },
   "message.btn.no": { "message": "Não" },

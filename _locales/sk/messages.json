@@ -105,6 +105,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Predvolený webový prehliadač sa nepodarilo otvoriť. Adresu uvedenú nižšie môžete skopírovať a vložiť do panela s adresou v prehliadači. {/p} Ďalšie podrobnosti o chybe nájdete v chybovej konzole JavaScriptu." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Chyba prehliadača" },
+  "message.browserLaunchFailed.url": { "message": "Webová adresa (Ctrl+C na kopírovanie):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Zrušiť" },
   "message.btn.no": { "message": "Nie" },

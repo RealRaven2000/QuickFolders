@@ -386,6 +386,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Impossibile aprire il browser web predefinito. È possibile copiare l’indirizzo qui sotto e incollarlo nella barra degli indirizzi del browser. {/p} Ulteriori dettagli sull’errore sono disponibili nella console degli errori JavaScript." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Errore del browser" },
+  "message.browserLaunchFailed.url": { "message": "Indirizzo web (Ctrl+C per copiare):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Annulla" },
   "message.btn.no": { "message": "No" },

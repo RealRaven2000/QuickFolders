@@ -10,7 +10,9 @@
 
 /*
  globals
-   insertLocalizedMessage
+   insertLocalizedMessage,
+   insertHtmlSafely,
+   formatAll
   */
 
 function showButtons(buttonList) {
@@ -58,6 +60,7 @@ window.addEventListener("load", async () => {
   const MESSAGE_STORAGE_KEY = "QuickFolders_Message_Key";
   const params = getQueryParams();
   const features = (params.features || "ok").split(","); // fallback to "ok"
+  let ids;
 
   /**** Passed Message or message id(s) to retrieve from l10n ****/
   // retrieve an arbitrary message text from storagem
@@ -65,7 +68,7 @@ window.addEventListener("load", async () => {
   let message = await getStoredMessage(MESSAGE_STORAGE_KEY, !!params.msg_storage);
   if (params.msgId) {
     // allow multiple ids as a comma separated string of localized message ids
-    const ids =
+    ids =
       typeof params.msgId === "string" && params.msgId.includes(",")
         ? params.msgId.split(",").map((s) => s.trim())
         : [params.msgId];
@@ -91,6 +94,28 @@ window.addEventListener("load", async () => {
 
   i18n.updateDocument();
   showButtons(buttonsList);
+
+  if (params.failedBrowserUrl !== undefined) {
+    if (ids.includes("message.browserLaunchFailed")) {
+      const html = `<div>${formatAll(message)}</div>`;
+      insertHtmlSafely(messageContainer, html, true);
+    };
+
+    const title = messenger.i18n.getMessage("message.browserLaunchFailed.title");
+    document.title = title;
+    document.getElementById("titleBox").textContent = title;
+    const label = document.createElement("label");
+    label.textContent = messenger.i18n.getMessage("message.browserLaunchFailed.url");
+    const field = document.createElement("textarea");
+    field.id = "failedBrowserUrl";
+    field.readOnly = true;
+    field.rows = 3;
+    field.value = params.failedBrowserUrl;
+    label.htmlFor = field.id;
+    messageContainer.append(label, field);
+    field.addEventListener("focus", () => field.select());
+    field.focus();
+  }
 
   // Show buttons according to features
   const buttons = {

@@ -366,6 +366,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Privzetega spletnega brskalnika ni bilo mogoče odpreti. Spodnji naslov lahko kopirate in prilepite v naslovno vrstico brskalnika. {/p} Več podrobnosti o napaki najdete v konzoli za napake JavaScript." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Napaka brskalnika" },
+  "message.browserLaunchFailed.url": { "message": "Spletni naslov (Ctrl+C za kopiranje):" },
   "message.btn.accept": { "message": "V redu" },
   "message.btn.cancel": { "message": "Prekliči" },
   "message.btn.no": { "message": "Ne" },

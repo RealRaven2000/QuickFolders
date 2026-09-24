@@ -201,7 +201,7 @@ export const Preferences = {
     // COMMAND MENU
     "commandMenu.options": true,
     "commandMenu.separator": true,
-    "separatorWidthUnit": 0.8,
+    separatorWidthUnit: 0.8,
     "commandMenu.CTRL": false,
     "commandMenu.lineBreak": true,
     "commandMenu.icon": false,
@@ -322,6 +322,7 @@ export const Preferences = {
     "debug.recentFolders.detail": false,
     "debug.saleDate": "",
     "debug.advancedTabProperties.forcePopup": false,
+    "debug.test.browserLaunchFailure": false,
     "debug.toolbarHiding": false,
     "debug.updateFolders": false,
   },
@@ -404,8 +405,10 @@ export const Preferences = {
       } catch (ex) {
         if (attempt < maxRetries - 1) {
           const delay = delays[attempt];
-          console.warn(`[Preferences.init] Storage not ready (attempt ${attempt + 1}/${maxRetries}): ${ex.message}. Retrying in ${delay}ms...`);
-          await new Promise(resolve => setTimeout(resolve, delay));
+          console.warn(
+            `[Preferences.init] Storage not ready (attempt ${attempt + 1}/${maxRetries}): ${ex.message}. Retrying in ${delay}ms...`
+          );
+          await new Promise((resolve) => setTimeout(resolve, delay));
         } else {
           console.error(`[Preferences.init] Failed after ${maxRetries} attempts:`, ex);
           throw ex; // Final attempt failed
@@ -587,7 +590,9 @@ export const Preferences = {
     if (value === undefined) {
       const defaultValue = Preferences.Defaults[name] ?? Preferences.DebugDefaults[name];
       if (defaultValue !== undefined) {
-        console.warn(`Preferences.set("${name}", undefined) - using default value. Missing value argument?`);
+        console.warn(
+          `Preferences.set("${name}", undefined) - using default value. Missing value argument?`
+        );
         value = defaultValue;
       } else {
         console.error(`Preferences.set("${name}", undefined) - no default found. Rejecting.`);
@@ -850,7 +855,7 @@ export const StorageStartupDiagnostics = {
   recordAttempt(maxAttempts = 6) {
     this.attempts++;
     this.setToolbarLabel(
-      `Initialising QuickFolders… storage attempt ${this.attempts} of ${maxAttempts}.`
+      `Initialising QuickFolders storage… (attempt ${this.attempts} of ${maxAttempts}).`
     );
     if (this.forceFailure) {
       const error = new Error(

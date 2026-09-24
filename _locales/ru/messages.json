@@ -381,6 +381,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Не удалось открыть браузер по умолчанию. Вы можете скопировать адрес ниже и вставить его в адресную строку браузера. {/p} Дополнительные сведения об ошибке можно найти в консоли ошибок JavaScript." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Ошибка браузера" },
+  "message.browserLaunchFailed.url": { "message": "Веб-адрес (Ctrl+C для копирования):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Отмена" },
   "message.btn.no": { "message": "Нет" },

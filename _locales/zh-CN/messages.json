@@ -382,6 +382,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} 无法打开您的默认浏览器。您可以复制下方地址并将其粘贴到浏览器的地址栏中。 {/p} 有关此错误的更多详细信息，请查看 JavaScript 错误控制台。" },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — 浏览器错误" },
+  "message.browserLaunchFailed.url": { "message": "网址（按 Ctrl+C 复制）：" },
   "message.btn.accept": { "message": "确定" },
   "message.btn.cancel": { "message": "取消" },
   "message.btn.no": { "message": "否" },

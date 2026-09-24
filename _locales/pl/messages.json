@@ -375,6 +375,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Nie udało się otworzyć domyślnej przeglądarki internetowej. Możesz skopiować poniższy adres i wkleić go w pasku adresu przeglądarki. {/p} Więcej szczegółów dotyczących błędu znajdziesz w konsoli błędów JavaScript." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Błąd przeglądarki" },
+  "message.browserLaunchFailed.url": { "message": "Adres internetowy (Ctrl+C, aby skopiować):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Anuluj" },
   "message.btn.no": { "message": "Nie" },

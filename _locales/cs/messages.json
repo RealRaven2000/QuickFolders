@@ -381,6 +381,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Výchozí webový prohlížeč se nepodařilo otevřít. Níže uvedenou adresu můžete zkopírovat a vložit do adresního řádku prohlížeče. {/p} Další podrobnosti o chybě najdete v chybové konzoli JavaScriptu." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Chyba prohlížeče" },
+  "message.browserLaunchFailed.url": { "message": "Webová adresa (Ctrl+C pro zkopírování):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Zrušit" },
   "message.btn.no": { "message": "Ne" },

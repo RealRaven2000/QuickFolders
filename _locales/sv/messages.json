@@ -379,6 +379,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Det gick inte att öppna din standardwebbläsare. Du kan kopiera adressen nedan och klistra in den i webbläsarens adressfält. {/p} Mer information om felet finns i JavaScript-felkonsolen." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Webbläsarfel" },
+  "message.browserLaunchFailed.url": { "message": "Webbadress (Ctrl+C för att kopiera):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Avbryt" },
   "message.btn.no": { "message": "Nej" },

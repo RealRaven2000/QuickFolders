@@ -98,6 +98,18 @@ body {
 	display: block;
 	line-height: 1.2em;
 }
+
+#failedBrowserUrl {
+  box-sizing: border-box;
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  font-family: Consolas,monaco,monospace !important;
+  min-height: 8em;
+  resize: vertical;
+  width: 100%;
+}
+
 #innerMessage p {
 	/*! text-align: justify; */
 	/* color: rgb(2,2,2) !important; */ /* leave text color to theme! */

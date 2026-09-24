@@ -386,6 +386,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Impossible d’ouvrir votre navigateur web par défaut. Vous pouvez copier l’adresse ci-dessous et la coller dans la barre d’adresse de votre navigateur. {/p} Vous trouverez plus de détails sur l’erreur dans la console d’erreurs JavaScript." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Erreur du navigateur" },
+  "message.browserLaunchFailed.url": { "message": "Adresse web (Ctrl+C pour copier) :" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Annuler" },
   "message.btn.no": { "message": "Non" },

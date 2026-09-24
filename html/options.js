@@ -97,6 +97,24 @@ function sanitizeCSS(el) {
   }
 }
 
+async function openExternalBrowser(url) {
+  try {
+    if (QuickFolders.Preferences.getBoolPref("debug.test.browserLaunchFailure")) {
+      throw new Error("Simulated browser launch failure for testing purposes.");
+    }
+    await messenger.windows.openDefaultBrowser(url);
+  } catch (ex) {
+    console.error("QuickFolders - Failed to open external link:", url, ex);
+    await messenger.runtime.sendMessage({
+      command: "showNewsMessage",
+      msgIds: "message.browserLaunchFailed",
+      features: ["ok"],
+      url: url,
+    });
+    return false;
+  }
+
+}
 
 var licenseInfo;
 async function initLicenseInfo() {
@@ -369,33 +387,51 @@ for (let chk of document.querySelectorAll("input[type=checkbox]")) {
       break;
     case "showCurrentFolderToolbar":
       chk.addEventListener("change", () => {
-        QuickFolders.Options.toggleNavigationBars(chk,"");
+        QuickFolders.Options.toggleNavigationBars(chk, "");
       });
       break;
     case "showCurrentFolderToolbar.singleMailTab":
       chk.addEventListener("change", () => {
-        QuickFolders.Options.toggleNavigationBars(chk,"singleMailTab");
+        QuickFolders.Options.toggleNavigationBars(chk, "singleMailTab");
       });
       break;
     case "showCurrentFolderToolbar.messageWindow":
       chk.addEventListener("change", () => {
-        QuickFolders.Options.toggleNavigationBars(chk,"messageWindow");
+        QuickFolders.Options.toggleNavigationBars(chk, "messageWindow");
       });
       break;
     case "transparentToolbar":
       chk.addEventListener("change", () => {
-        QuickFolders.Options.toggleColorTranslucent(chk,"toolbar-colorpicker", "qf-StandardColors", null);
-      });      
+        QuickFolders.Options.toggleColorTranslucent(
+          chk,
+          "toolbar-colorpicker",
+          "qf-StandardColors",
+          null
+        );
+      });
       break;
     case "transparentButtons":
       chk.addEventListener("change", () => {
-        QuickFolders.Options.toggleColorTranslucent(chk,"inactive-colorpicker", "inactivetabs-label", "InactiveTab");
-      });      
+        QuickFolders.Options.toggleColorTranslucent(
+          chk,
+          "inactive-colorpicker",
+          "inactivetabs-label",
+          "InactiveTab"
+        );
+      });
       break;
     case "buttonShadows":
       chk.addEventListener("change", () => {
         QuickFolders.Options.showButtonShadow(chk);
-      });      
+      });
+      break;
+    case "validityCheck.onUpdate":
+      chk.addEventListener("change", () => {
+        // wait until setting is persisted
+        setTimeout(() => {
+          messenger.runtime.sendMessage({ command: "updateMainWindow", minimal: true });
+        }, 1200);
+      });
       break;
   }
   /* RIGHTCLICK HANDLERS */
@@ -1008,17 +1044,17 @@ async function initButtons() {
   // Support Tab
   document.getElementById("L1").addEventListener("click", function () {
     // messenger.windows.openDefaultBrowser("https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A");
-    messenger.windows.openDefaultBrowser("https://www.youtube.com/playlist?list=PLApv7QYQO9nR_ySMlAYd_wlhei-MRND89");
+    openExternalBrowser("https://www.youtube.com/playlist?list=PLApv7QYQO9nR_ySMlAYd_wlhei-MRND89");
   }); // YouTube
   document.getElementById("L2").addEventListener("click", function () {
-    messenger.windows.openDefaultBrowser("https://github.com/RealRaven2000/QuickFolders/issues");
+    openExternalBrowser("https://github.com/RealRaven2000/QuickFolders/issues");
   }); // report bugs
   document.getElementById("L3").addEventListener("click", function () {
     messenger.Utilities.showVersionHistory();
     window.close();
   }); // version history
   document.getElementById("L4").addEventListener("click", function () {
-    messenger.windows.openDefaultBrowser("https://github.com/RealRaven2000/QuickFolders/tree/ESR91/_locales");
+    openExternalBrowser("https://github.com/RealRaven2000/QuickFolders/tree/ESR91/_locales");
   }); // localization
   document.getElementById("L5").addEventListener("click", function () {
     QuickFolders.Options.sendMail();
@@ -1034,7 +1070,7 @@ async function initButtons() {
   });
   document.getElementById("qf-options-icon").addEventListener("click", () => { QuickFolders.Options.collapseHead(); });
   document.getElementById("qf-youtube").addEventListener("click", () => {
-    messenger.windows.openDefaultBrowser("https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A");
+    openExternalBrowser("https://www.youtube.com/channel/UCCiqw9IULdRxig5e-fcPo6A");
   });
   document.getElementById("applyCurrentBackground").addEventListener("click", () => { 
     QuickFolders.Options.setCurrentToolbarBackgroundCustom(); 
@@ -1101,9 +1137,7 @@ async function initButtons() {
     const html = formatAll(messenger.i18n.getMessage("qf.licenseBackup.confirmation"));
     if (insertHtmlSafely(message, html, true)) {
       message.querySelector(".features").addEventListener("click", () => {
-        messenger.windows.openDefaultBrowser(
-          "https://quickfolders.org/premium.html#featureComparison",
-        );
+        openExternalBrowser("https://quickfolders.org/premium.html#featureComparison");
       });
     }
 

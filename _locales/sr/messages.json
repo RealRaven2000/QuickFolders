@@ -336,6 +336,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Није могуће отворити подразумевани веб-прегледач. Можете копирати адресу испод и налепити је у траку за адресу у прегледачу. {/p} Више детаља о грешци можете пронаћи у JavaScript конзоли за грешке." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Грешка прегледача" },
+  "message.browserLaunchFailed.url": { "message": "Веб-адреса (Ctrl+C за копирање):" },
   "message.btn.accept": { "message": "ОК" },
   "message.btn.cancel": { "message": "Откажи" },
   "message.btn.no": { "message": "Не" },

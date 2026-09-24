@@ -366,6 +366,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} 既定のウェブブラウザーを開けませんでした。以下のアドレスをコピーして、ブラウザーのアドレスバーに貼り付けてください。 {/p} エラーの詳細は JavaScript エラーコンソールで確認できます。" },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — ブラウザーエラー" },
+  "message.browserLaunchFailed.url": { "message": "ウェブアドレス（Ctrl+C でコピー）:" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "キャンセル" },
   "message.btn.no": { "message": "いいえ" },

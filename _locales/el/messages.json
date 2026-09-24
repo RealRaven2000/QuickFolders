@@ -105,6 +105,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Δεν ήταν δυνατό το άνοιγμα του προεπιλεγμένου προγράμματος περιήγησης. Μπορείτε να αντιγράψετε την παρακάτω διεύθυνση και να την επικολλήσετε στη γραμμή διευθύνσεων του προγράμματος περιήγησής σας. {/p} Περισσότερες λεπτομέρειες για το σφάλμα θα βρείτε στην κονσόλα σφαλμάτων JavaScript." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Σφάλμα περιήγησης" },
+  "message.browserLaunchFailed.url": { "message": "Διεύθυνση ιστού (Ctrl+C για αντιγραφή):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Ακύρωση" },
   "message.btn.no": { "message": "Όχι" },

@@ -378,6 +378,9 @@
       }
     }
   },
+  "message.browserLaunchFailed": { "message": "{p} Uw standaardbrowser kon niet worden geopend. U kunt het onderstaande adres kopiëren en in de adresbalk van uw browser plakken. {/p} Meer informatie over de fout vindt u in de JavaScript-foutconsole." },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Browserfout" },
+  "message.browserLaunchFailed.url": { "message": "Webadres (Ctrl+C om te kopiëren):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Annuleren" },
   "message.btn.no": { "message": "Nee" },

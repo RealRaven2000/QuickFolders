@@ -385,6 +385,11 @@
       }
     }
   },
+  "message.browserLaunchFailed": {
+    "message": "{p} We could not open your default web browser. You can copy the address below and paste it into your browser's address bar. {/p} More detail about the error can be found in the JavaScript error console."
+  },
+  "message.browserLaunchFailed.title": { "message": "QuickFolders — Browser Error" },
+  "message.browserLaunchFailed.url": { "message": "Web address (Ctrl+C to copy):" },
   "message.btn.accept": { "message": "OK" },
   "message.btn.cancel": { "message": "Cancel" },
   "message.btn.no": { "message": "No" },

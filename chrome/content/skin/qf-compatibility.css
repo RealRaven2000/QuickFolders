@@ -6,6 +6,11 @@
   --qf-min-block-height: 26px;  
 	--qf-button-hover-background-color:
     var(--button-hover-background-color, light-dark(#e2e6ea, #45454d));
+	--qf-button-primary-hover-background-color:
+    var(--button-primary-hover-background-color, color-mix(in srgb, var(--selected-item-color) 80%, black));
+	--qf-button-primary-background-color:
+    var(--button-primary-background-color, light-dark(rgb(72, 130, 10), #45454d));
+  --qf-button-hover-border: var(--button-hover-border, 1px solid light-dark(#384755, #60606c));
 
   /* broken theming colors in Tb 150+ */
   --color-gray-05: #fafafa;
@@ -65,13 +70,13 @@ button {
 button:hover,
 select:not([size], [multiple]):enabled:hover {
   background-color: var(--qf-button-hover-background-color) !important; 
-  border: var(--button-hover-border) !important;
+  border: var(--qf-button-hover-border) !important;
 }
 
 button:active {
   background-color: var(--qf-button-hover-background-color) !important;;
   color: var(--button-active-color) !important;
-  border: var(--button-hover-border);
+  border: var(--qf-button-hover-border);
 }
 
 
@@ -103,6 +108,7 @@ html|input[type="color"] {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-inline: 0.25em;
 }
 .vbox.centered {
   justify-content: center;
@@ -122,14 +128,18 @@ html|input[type="color"] {
 }
 
 
-
 fieldset {
   margin: 0.5em;
-  padding: 0 0.2em 0.2em;
+  padding: 0.2em 0.5em 0.5em;
+  border-color: var(--border-color) !important;
+  border-width: 1px !important;
+  border-style: solid !important;
 }
 
 fieldset legend {
-  margin-top: 0.3em;
+  font-weight: bold;
+  margin-top: 0.2em;
+  margin-bottom: 0.3em;
   font-size: 1em;
   padding-left: 4px;
   padding-right: 4px;
@@ -610,12 +620,13 @@ button.configSettingsPopup {
   fill: yellowgreen; /* NOP */
 }
 
-/* Tb 157 fixes */
+/* Tb 156+ fixes */
 select:not([multiple]):not([size]),
 select[size="1"]:not([multiple]),
 .navigateable button,
 button.configSettings,
-button.category-icon {
+button.category-icon,
+fieldset button {
   min-block-size: var(--qf-min-block-height) !important;
   min-height: var(--qf-min-block-height) !important;
   padding-block: 0;

@@ -1,3 +1,5 @@
+import * as util from "./qf-util.mjs.js";
+
 export const Preferences = {
   CURRENT_VERSION: 0.54,
   Defaults: {
@@ -327,10 +329,9 @@ export const Preferences = {
     "debug.updateFolders": false,
   },
 
-  _data: {},
-  _debugData: {},
   _model: { folders: [] },
   _ready: false,
+  // OBSOLETE FUNCTION (To DELETE later)
   async _seedMissingDefaultsToStorage(settings, debug) {
     let hasSettingsSeed = false;
     let hasDebugSeed = false;
@@ -367,17 +368,22 @@ export const Preferences = {
       Object.assign(debug, sortedDebug);
     }
   },
-  async init() {
+  async init(migrate = false) {
     await StorageStartupDiagnostics.begin();
     try {
-      await this._init();
+      await this._init(migrate);
       return StorageStartupDiagnostics.ready();
     } catch (ex) {
       return StorageStartupDiagnostics.failed(ex);
     }
   },
 
-  async _init() {
+  async _init(migrate = false) {
+    if (!migrate) {
+      // gate against background thread init
+      await util.waitForSessionReady();
+    }
+
     // [issue 697] Retry logic for IndexedDB startup failures
     const maxRetries = 6;
     const delays = [100, 500, 1000, 2000, 4000, 10000]; // exponential backoff
@@ -419,7 +425,7 @@ export const Preferences = {
     const version = settings.settingsVersion ?? 0;
     Preferences._model = model;
 
-    if (version < Preferences.CURRENT_VERSION) {
+    if (migrate && version < Preferences.CURRENT_VERSION) {
       const {
         settings: mOptions,
         debug: mDebug,
@@ -449,14 +455,13 @@ export const Preferences = {
 
     // Seed missing defaults into persisted storage even when no legacy migration runs.
     // This ensures new keys appear in storage editors and can be toggled directly.
-    await Preferences._seedMissingDefaultsToStorage(settings, debug);
+    // OBSOLETE!
+    // await Preferences._seedMissingDefaultsToStorage(settings, debug);
 
-    Preferences._data = {
-      ...Preferences.Defaults,
+    Preferences._userData = {
       ...settings,
     };
-    Preferences._debugData = {
-      ...Preferences.DebugDefaults,
+    Preferences._userDebugData = {
       ...debug,
     };
 
@@ -501,10 +506,15 @@ export const Preferences = {
         }
         const updates = {};
         if (changes.settings) {
-          applyChanges(Preferences._data, changes.settings, updates, Preferences.Defaults);
+          applyChanges(Preferences._userData, changes.settings, updates, Preferences.Defaults);
         }
         if (changes.debug) {
-          applyChanges(Preferences._debugData, changes.debug, updates, Preferences.DebugDefaults);
+          applyChanges(
+            Preferences._userDebugData,
+            changes.debug,
+            updates,
+            Preferences.DebugDefaults
+          );
           // remap debugActive → "debug" for frontend cache key compatibility
           if ("debugActive" in updates) {
             updates["debug"] = updates["debugActive"];
@@ -531,95 +541,91 @@ export const Preferences = {
     }
   },
 
-  get(name) {
-    Preferences._ensureReady({ reason: "get", key: name });
-    if (name === "debug") {
-      return Preferences._debugData.debugActive ?? false;
-    }
-    if (name.startsWith("debug")) {
-      return Preferences._debugData[name] ?? Preferences.DebugDefaults[name];
-    }
-    return Preferences._data[name] ?? Preferences.Defaults[name];
+  get _data() {
+    return {
+      ...Preferences.Defaults,
+      ...Preferences._userData,
+    };
+  },
+
+  get _debugData() {
+    return {
+      ...Preferences.DebugDefaults,
+      ...Preferences._userDebugData,
+    };
   },
 
   isDebug(key) {
     Preferences._ensureReady({ reason: "isDebug", key });
     // global switch
     if (!key) {
-      return Preferences._debugData.debugActive ?? false;
+      return Preferences._userDebugData.debugActive ?? Preferences.DebugDefaults.debugActive;
     }
     // specific flag
-    return (
-      Preferences._debugData[`debug.${key}`] ?? Preferences.DebugDefaults[`debug.${key}`] ?? false
-    );
+    return Preferences._userDebugData[`debug.${key}`] ?? Preferences.DebugDefaults[`debug.${key}`];
+  },
+
+  get(name) {
+    Preferences._ensureReady({ reason: "get", key: name });
+    if (name === "debug") {
+      return Preferences._userDebugData.debugActive ?? Preferences.DebugDefaults.debugActive;
+    }
+    if (name.startsWith("debug")) {
+      return Preferences._userDebugData[name] ?? Preferences.DebugDefaults[name];
+    }
+    return Preferences._userData[name] ?? Preferences.Defaults[name];
   },
 
   async setMultiple(prefs) {
     if (!prefs || typeof prefs !== "object") {
       return;
     }
-    const settingsPatch = {};
     for (const [name, value] of Object.entries(prefs)) {
       if (name.startsWith("debug")) {
         console.error("setMultiple: debug key rejected", name);
         continue;
       }
-      if (this._data[name] === value) {
+      if (this._userData[name] === value) {
         continue;
       }
-      this._data[name] = value;
-      settingsPatch[name] = value;
+      this._userData[name] = value;
     }
-
-    const keys = Object.keys(settingsPatch);
-    if (!keys.length) {
-      return;
-    }
-
-    await browser.storage.local.set({
-      settings: {
-        ...this._data,
-        ...settingsPatch,
-      },
-    });
+    await browser.storage.local.set({ settings: Preferences._userData });
   },
 
   async set(name, value) {
     Preferences._ensureReady({ reason: "set", key: name });
 
     if (value === undefined) {
-      const defaultValue = Preferences.Defaults[name] ?? Preferences.DebugDefaults[name];
-      if (defaultValue !== undefined) {
-        console.warn(
-          `Preferences.set("${name}", undefined) - using default value. Missing value argument?`
-        );
-        value = defaultValue;
+      // delete the user setting
+      if (name.startsWith("debug")) {
+        delete Preferences._userDebugData[name];
+        // we only store the (complete) user data
+        await browser.storage.local.set({ debug: Preferences._userDebugData });
       } else {
-        console.error(`Preferences.set("${name}", undefined) - no default found. Rejecting.`);
-        throw new Error(`Cannot set preference "${name}" to undefined`);
+        delete Preferences._userData[name];
+        await browser.storage.local.set({ settings: Preferences._userData });
       }
+      return;
     }
 
     if (name.startsWith("debug")) {
       // frontend "debug" maps to the storage key "debugActive" in _debugData
       const storageKey = name === "debug" ? "debugActive" : name;
-      if (Preferences._debugData[storageKey] === value) {
+      if (Preferences._userDebugData[storageKey] === value) {
         return;
       }
-      Preferences._debugData[storageKey] = value;
-      const { debug } = await browser.storage.local.get({ debug: {} });
-      debug[storageKey] = value;
-      await browser.storage.local.set({ debug });
+      // debug prefs
+      Preferences._userDebugData[storageKey] = value;
+      await browser.storage.local.set({ debug: Preferences._userDebugData });
       return;
     }
 
-    if (Preferences._data[name] === value) {
+    if (Preferences._userData[name] === value) {
       return;
     }
-    Preferences._data[name] = value;
-    const { settings } = await browser.storage.local.get({ settings: {} });
-    settings[name] = value;
-    await browser.storage.local.set({ settings });
+    Preferences._userData[name] = value;
+    await browser.storage.local.set({ settings: Preferences._userData });
   },
 
   async setModelFolders(folders) {
@@ -829,8 +835,7 @@ export const StorageStartupDiagnostics = {
       console.debug("Could not determine the Thunderbird version:", ex);
     }
     try {
-      this.forceFailure =
-        (await messenger.LegacyPrefs.getPref(this.TEST_PREF, false)) === true;
+      this.forceFailure = (await messenger.LegacyPrefs.getPref(this.TEST_PREF, false)) === true;
       if (this.forceFailure) {
         console.warn(
           `[QuickFolders TEST] Forcing storage startup failure because ${this.TEST_PREF} is true. ` +
@@ -858,9 +863,7 @@ export const StorageStartupDiagnostics = {
       `Initialising QuickFolders storage… (attempt ${this.attempts} of ${maxAttempts}).`
     );
     if (this.forceFailure) {
-      const error = new Error(
-        `Synthetic storage startup failure enabled by ${this.TEST_PREF}`
-      );
+      const error = new Error(`Synthetic storage startup failure enabled by ${this.TEST_PREF}`);
       error.name = "UnknownError";
       throw error;
     }
@@ -879,12 +882,11 @@ export const StorageStartupDiagnostics = {
     const errorMessage = error?.message || String(error);
     const consoleFilterInstructions =
       this.browserMajorVersion >= 154
-        ? "3. Enable both [Browser] and [Content] to see the relevant messages.\n4. Use \"Copy All Messages\" and send the text log, referencing QuickFolders issue #706."
+        ? '3. Enable both [Browser] and [Content] to see the relevant messages.\n4. Use "Copy All Messages" and send the text log, referencing QuickFolders issue #706.'
         : '3. Use "Copy All Messages" and send the text log, referencing QuickFolders issue #706.';
     const consoleFilterHint =
       this.browserMajorVersion >= 154 ? " Enable [Browser] and [Content]." : "";
-    const toolbarLabel =
-      `QuickFolders storage failed to initialize. Check the Error Console (Ctrl+Shift+J).${consoleFilterHint}`;
+    const toolbarLabel = `QuickFolders storage failed to initialize. Check the Error Console (Ctrl+Shift+J).${consoleFilterHint}`;
     this.setToolbarLabel(toolbarLabel);
 
     console.error(

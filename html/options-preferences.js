@@ -10,6 +10,8 @@ END LICENSE BLOCK */
 // preference functions specific to options.html
 // keeping the old namespace so I know which funcitons I can retire when we convert to HTML
 
+
+
 QuickFolders.Preferences = {
   TABS_STRIPED: 0,
   TABS_FILLED: 1,
@@ -158,6 +160,10 @@ var PrefCache = {
     this._data.debug = storage.debug ?? {};
   },
   init: async function () {
+    const { Preferences } = await import("../scripts/preferences.mjs");
+    await Preferences._init(false);  
+
+
     // console.log("PrefCache.init");
     await this.syncFromStorage();
     const isDebug = this._data.debug?.debugActive || false;

@@ -1857,7 +1857,7 @@ async function displayUpdateMessage() {
   }
 }
 
-const prefsReady = Preferences.init(); // pending
+const prefsReady = Preferences.init(true); // pending
 registerNotifyListener();
 // Only qf-messenger's static toolbar may appear before readiness. Its functional
 // initialization and qf-3pane's toolbar injection wait for the license result.

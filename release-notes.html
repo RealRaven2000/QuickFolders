@@ -5,62 +5,15 @@ Additional regressions are expected within the Thunderbird release branch and wi
 Read the full version <a href="https://quickfolders.org/version.html#6.17.3">here</a>.
 
 
-<b>Emergency Maintenance Release 6.17.3</b>
+<b>Release 6.18 (WIP)</b>
 <ul>
-<li> Fixed a startup regression introduced in 6.17.2 that could incorrectly apply free-license restrictions to licensed users, leaving tabs black and disabled after the first 10. QuickFolders now waits for storage and license validation before initializing the toolbar, and refreshes tabs when a valid or expired license update arrives. The fix has been confirmed by four user reports. <a href="https://github.com/RealRaven2000/QuickFolders/issues/711">[issue 711]</a>.</li>
-<li> Fixed external messaging so unrecognized messages do not claim a response and prevent other listeners from responding.</li>
-<li> Migrated clipboard copying to the WebExtension Clipboard API, using the clipboardWrite permission. Copying the folder configuration now reads the current stored model instead of the obsolete legacy preference. Moved clipboard paste into Settings with an immediate toolbar preview and a single localized keep-or-rollback confirmation. An in-memory snapshot restores the original tabs on cancellation or when Settings closes. The compose permission remains necessary for the support email action in Settings.</li>
-<li> Fixed current folder bar display and update issues when selecting buttons from advanced settings <a href="https://github.com/RealRaven2000/QuickFolders/issues/712">[issue 712]</a>.</li>
+<li> If launching the external browser fails, QuickFolders now shows the attempted URL in a selectable field so it can be copied into a browser manually. <a href="https://github.com/RealRaven2000/QuickFolders/issues/713">[issue 713]</a>.</li>
+<li> Fixed Save Configuration failing to open the save dialog after migration to local storage. Backups now read the saved folder model instead of the obsolete legacy preference. Loading a configuration waits for folder storage to finish and refreshes folder caches in all main windows. <a href="https://github.com/RealRaven2000/QuickFolders/issues/717">[issue 717]</a>.</li>
+<li> Avoided global stylesheet registration via nsIStyleSheetService.sheetRegistered(uri, sss.USER_SHEET). <a href="https://github.com/RealRaven2000/QuickFolders/issues/715">[issue 715]</a>.</li>
+<li> Hardened startup handling and added startup progress to the toolbar placeholder. <a href="https://github.com/RealRaven2000/QuickFolders/issues/716">[issue 716]</a>.</li>
+<li> Fixed transparent backgrounds on default buttons when hovering in Thunderbird 156. <a href="https://github.com/RealRaven2000/QuickFolders/issues/718">[issue 718]</a>.</li>
+<li> Fixed various layout regressions in Thunderbird 157. This mainly affects theme compatibility ans spacing in the settings window.</li>
 </ul>
-
-<b>Maintenance Release 6.17.2</b>
-<ul>
-<li> Compatibility with Thunderbird 157.</li>
-<li> Fixed startup handling when Thunderbird's extension storage is unavailable, showing clear diagnostic instructions instead of leaving QuickFolders partially initialized. We also corrected missing default values during legacy preference migration. 
-  
-Obsolete defaults are no longer registered in legacy preferences; only existing preferences that the user has explicitly set remain, reducing clutter in Thunderbird's Config Editor. <a href="https://github.com/RealRaven2000/QuickFolders/issues/706">[issue 706]</a></li>
-<li> Fixed: The Advanced search settings dialog showed localization placeholders instead of translated text. <a href="https://github.com/RealRaven2000/QuickFolders/issues/705">[issue 705]</a></li>
-<li> Fixed: QuickFolders styling affected the background color of activated buttons in Thunderbird's Quick Filter toolbar. <a href="https://github.com/RealRaven2000/QuickFolders/issues/700">[issue 700]</a></li>
-<li> Improved the drag-over indicator when dragging to subfolder menus. <a href="https://github.com/RealRaven2000/QuickFolders/issues/703">[issue 703]</a></li>
-<li> Fixed: The folder move confirmation could show <i>undefined</i> instead of the folder name. <a href="https://github.com/RealRaven2000/QuickFolders/issues/702">[issue 702]</a></li>
-</ul>
-
-<b>Maintenance Release 6.17.1</b>
-<ul>
-<li> Fixed: QuickFolders stuck 'initialising QuickFolders' on some systems in Tb 154. <a href="https://github.com/RealRaven2000/QuickFolders/issues/697">[issue 697]</a></li>
-<li> Fixed: Referrer is undefined when renewing license. <a href="https://github.com/RealRaven2000/QuickFolders/issues/699">[issue 699]</a>. This could lead to renewal dates not being calculated correctly if the current license hasn't expired yet.</li>
-<li> Fixed: quickMove shows stale folder name. <a href="https://github.com/RealRaven2000/QuickFolders/issues/696">[issue 696]</a></li>
-<li> Fixed: Tabs lose color after upgrade to v6.17. Now supports saving / restoring palette entry per status in config files. <a href="https://github.com/RealRaven2000/QuickFolders/issues/698">[issue 698]</a></li> 
-</ul>
-
-
-<b>Improvements (6.17)</b>
-
-<ul>
-  <li> QuickFolders is now compatible with Thunderbird 155.</li>
-  <li> Width of individual tab separators is now adjustable - via QuickFolders commands submenu. <a href="https://github.com/RealRaven2000/QuickFolders/issues/686">[issue 686]</a></li>
-  <li> Modernized quickFilters integration to use background communications instead of direct code access side-effect. <a href="https://github.com/RealRaven2000/QuickFolders/issues/680">[issue 680]</a></li>
-  <li> Converted storage from legacy preferences (<tok>about:config</tok>) to local storage API. <a href="https://github.com/RealRaven2000/QuickFolders/issues/677">[issue 677]</a> 
-    
-  Settings can now be reset to defaults by uninstalling the add-on — back up your settings first using <b>Store Configuration</b> under <b>Backup and Restore</b>.</li>
-</ul>
-
-<b>Bug Fixes (6.17)</b>
-
-<ul>
-  <li> Fixed: messages window content area truncated at the top. <a href="https://github.com/RealRaven2000/QuickFolders/issues/673">[issue 673]</a></li>
-  <li> Fixed: Tab Category Selector not rendering. <a href="https://github.com/RealRaven2000/QuickFolders/issues/692">[issue 692]</a></li>
-  <li> Fixed: Find related mails doesn't stay in current folder when desired. <a href="https://github.com/RealRaven2000/QuickFolders/issues/694">[issue 694]</a></li>
-  <li> Fixed: Empty Junk and other context menu items stopped working in Thunderbird 153. <a href="https://github.com/RealRaven2000/QuickFolders/issues/695">[issue 695]</a></li>
-  <li> To ensure compatibility with Thunderbird 155, URL loading is now forced in unsafe mode.  According to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1974213">Bug 1974213</a>, Subscripts cannot be loaded anymore with the simple scriptloader.loadSubScript method - making them fail in Thunderbird 155. <a href="https://github.com/RealRaven2000/QuickFolders/issues/690">[issue 690]</a></li>
-</ul>
-
-<b>Miscellaneous (6.17)</b>
-
-<ul>
-  <li> Simplified WindowListener by removing pre 140 compatibility code.</li>
-  <li> WIP: quickMove shortcut to open recent folders menu. <a href="https://github.com/RealRaven2000/QuickFolders/issues/687">[issue 687]</a></li></ul>
-
 
 To support QuickFolders, please <a href="http://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.
 Or get the new cheaper <a href="http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=qf-version-page" target="_blank">QuickFolders Standard License</a>. This is the preferred way of funding all the ongoing work and improvements.

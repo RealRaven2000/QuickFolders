@@ -215,7 +215,9 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
         },
 
         testStorage(val) {
+          // check whether Preference cache is online
           for (const win of Services.wm.getEnumerator("mail:3pane")) {
+            // find the first window with a valid Preference cache
             if (!win.QuickFolders?.Preferences?.cache) {
               continue;
             }

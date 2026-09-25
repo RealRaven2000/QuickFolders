@@ -309,6 +309,8 @@ END LICENSE BLOCK */
     ## [issue 657] Thunderbird 149 - toggle navigation button remains green
     ## [issue 651] Fixed: Last removed custom folder icon reappears after relaunch (Tb 149)
 
+=== NEW HEAD BRANCH ESR140 FOR THUNDERBIRD 140 and later ===  
+
   6.16.1 QuickFolders Pro - 29/05/2026
     ## Made compatible with Thunderbird 152
     ## [issue 664] Set Minimum Version to Thunderbird 140 to avoid problems with deprecated APIs
@@ -352,13 +354,20 @@ END LICENSE BLOCK */
     ## [issue 702] Fixed an undefined folder name in the move confirmation.
     ## [issue 706] Fixed partial initialization when Thunderbird extension storage is unavailable, added clear diagnostics, corrected missing defaults during legacy preference migration, and stopped registering obsolete legacy defaults while retaining user-set values for migration.
 
-  6.17.3 QuickFolders Pro - WIP 
+  6.17.3 QuickFolders Pro - 13/09/2026
     ## [issue 711] Fixed startup applying unpaid tab restrictions before license validation completed. Initialize storage, validate the license, then initialize the UI; refresh tabs after valid or expired license updates.
     ## Fixed external messaging listeners claiming responses to unrecognized messages.
     ## [issue 710] Convert to mx APIs and simplify copy tabs to / paste tabs from clipboard
     ## Fixed: No live update of current folder bar elements from advanced settings tab
     ## [issue 712] Current Folder bar missing on first tab intermittently after Thunderbird Start (WIP)
- 
+
+  6.18 QuickFolders Pro - WIP 
+    ## [issue 715] Avoid registering global style sheet via nsIStyleSheetService.sheetRegistered(uri, sss.USER_SHEET)
+    ## [issue 716] Startup Hardening - show startup progress in the toolbar placeholder.
+    ## [issue 717] Fixed: Save Configuration fails to open the save dialog after storage migration
+    ## [issue 718] Thunderbird 156 - default button have transparent backgrounds on hover
+    ## [issue 713] Renewing license fails if default browser is not configured - display the URL instead
+    ## Fixed various layout regressions in Thunderbird 157
 
 
 	TO DO next

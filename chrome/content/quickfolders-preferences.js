@@ -171,7 +171,7 @@ QuickFolders.Preferences = {
   },
 
   get QuickJumpShortcutKey() {
-    return this.getStringPref("quickJump.Hotkey");
+    return this.getStringPref("quickJump.Hotkey") || "";
   },
 
   get isQuickJumpShift() {
@@ -183,7 +183,7 @@ QuickFolders.Preferences = {
   },
 
   get QuickMoveShortcutKey() {
-    return this.getStringPref("quickMove.Hotkey");
+    return this.getStringPref("quickMove.Hotkey") || "";
   },
 
   get isQuickMoveShift() {
@@ -195,7 +195,7 @@ QuickFolders.Preferences = {
   },
 
   get QuickCopyShortcutKey() {
-    return this.getStringPref("quickCopy.Hotkey");
+    return this.getStringPref("quickCopy.Hotkey") || "";
   },
 
   get isQuickCopyShift() {
@@ -207,7 +207,7 @@ QuickFolders.Preferences = {
   },
 
   get SkipFolderShortcutKey() {
-    return this.getStringPref("skipFolder.Hotkey");
+    return this.getStringPref("skipFolder.Hotkey") || "";
   },
 
   get isUseKeyboardShortcutsCTRL() {

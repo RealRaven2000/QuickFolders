@@ -11,4 +11,4 @@ Read the full [version history](https://quickfolders.org/version.html#6.18).
 - Avoided global stylesheet registration via nsIStyleSheetService.sheetRegistered(uri, sss.USER_SHEET). [Issue #715].
 - Hardened startup handling and added startup progress to the toolbar placeholder. [Issue #716].
 - Fixed transparent backgrounds on default buttons when hovering in Thunderbird 156. [Issue #718].
-- Fixed various layout regressions in Thunderbird 157: This mainly affects theme compatibility ans spacing in the settings window.
+- Fixed various layout regressions in Thunderbird 157: This mainly affects theme compatibility and spacing in the settings window.

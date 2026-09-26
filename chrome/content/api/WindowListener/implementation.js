@@ -501,6 +501,31 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
   }
 
   async _loadIntoWindow(window, isAddonActivation) {
+    const trace = (stage, error) => {
+      if (window?.location?.href !== "about:3pane" ||
+          !Services.prefs.getBoolPref("extensions.quickfolders.debug", false)) {
+        return;
+      }
+      try {
+        const tabs = Array.from(window?.top?.document.getElementById("tabmail")?.tabInfo || []);
+        const tabIndex = tabs.findIndex((tab) => tab.chromeBrowser?.contentWindow === window);
+        console.log("[QuickFolders startup] WindowListener " + stage + " " + JSON.stringify({
+          extensionId: this.extension.id,
+          scope: this.uniqueRandomID,
+          url: window?.location?.href,
+          readyState: window?.document?.readyState,
+          tabIndex,
+          firstTab: tabIndex < 0 ? null : tabIndex === 0,
+          isAddonActivation,
+          contextUnloaded: this.context?.unloaded,
+          error: error ? String(error) : undefined,
+          stack: error?.stack,
+        }));
+      } catch (ex) {
+        console.warn("[QuickFolders startup] WindowListener trace failed: " + stage, String(ex));
+      }
+    };
+    trace("load requested");
     const fullyLoaded = async (window) => {
       for (let i = 0; i < 20; i++) {
         await this.sleep(250); // was 50
@@ -520,11 +545,12 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
     try {
       await fullyLoaded(window);
     } catch (ex) {
-      // console.warn("WL._loadIntoWindow - error:", window?.location?.href, ex);
+      trace("readiness failed; skipping window", ex);
       return;
     }
 
     if (!window || window.hasOwnProperty(this.uniqueRandomID)) {
+      trace("skipped: missing window or existing scope");
       // console.log("WL._loadIntoWindow already processed:", window?.location.href)
       return;
     }
@@ -741,14 +767,19 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
         // Add messenger object to WLDATA object
         window[this.uniqueRandomID].WL.messenger = this.getMessenger(this.context);
         window[this.uniqueRandomID].WL.context = this.context;
-        console.log("WL handleEvent (loadIntoWindow) context:", window[this.uniqueRandomID].WL.context);
+        trace("loading registered script");
         // Load script into add-on scope
         this.loadSubScript(
           this.registeredWindows[window.location.href],
           window[this.uniqueRandomID]
         );
-        window[this.uniqueRandomID].onLoad(isAddonActivation);
+        // Observe asynchronous failures as well as synchronous script errors.
+        Promise.resolve(window[this.uniqueRandomID].onLoad(isAddonActivation)).catch((error) => {
+          trace("onLoad rejected", error);
+          Components.utils.reportError(error);
+        });
       } catch (e) {
+        trace("script load / onLoad failed", e);
         Components.utils.reportError(e);
       }
     }

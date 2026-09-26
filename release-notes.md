@@ -2,7 +2,7 @@ Important for Release channel users (**154 and later**): With Thunderbird's new 
 
 Additional regressions are expected within the Thunderbird release branch and will be addressed as they occur. Users who rely on advanced or experimental functionality may prefer the ESR channel for a more stable environment with fewer platform changes.
 
-Read the full [version history](https://quickfolders.org/version.html#6.17.3).
+Read the full [version history](https://quickfolders.org/version.html#6.18).
 
 **Release 6.18**
 - Compatibility with Thunderbird 158

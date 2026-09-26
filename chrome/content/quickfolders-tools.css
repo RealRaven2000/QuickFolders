@@ -4,11 +4,11 @@
 	background-color: #006EB7 !important; 
   color: white;
 	background-image: linear-gradient(to bottom, #0380bf 0%,#006eb7 100%) !important;
-  border-radius: 2px !important;
+  /*! border-radius: 2px !important; */
   padding-inline: 0.3em;
-  padding-block: 2px !important;
+  /*! padding-block: 2px !important; */
   flex: 0 1 auto;             /* don't force equal size, but allow shrink/grow */
-  margin-block: 5px !important;
+  /* margin-block: 5px !important; */
 }
 
 #QuickFolders-LabelBox {
@@ -20,6 +20,7 @@
 #QuickFolders-title-label {
   height: auto !important;
   min-height: 18px; 
+  margin-inline: 2px;
 }
 
 #QuickFolders-title-label.newsflash::after {

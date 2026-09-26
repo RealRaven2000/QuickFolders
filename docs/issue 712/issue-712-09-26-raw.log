@@ -1,0 +1,3621 @@
+1790417607789	addons.xpi	WARN	Checking C:\Program Files\Mozilla Thunderbird\distribution\extensions for addons
+[gdataUI] Future modules will load with version 128.5.12 gdataUI.sys.mjs:27:11
+1790417652634	addons.xpi-utils	WARN	Add-on {2bc419d0-6cf3-11da-8494-000a95be0946} is not compatible with application version.
+1790417652635	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+1790417652641	addons.xpi-utils	WARN	Add-on {2bc419d0-6cf3-11da-8494-000a95be0946} is not compatible with application version.
+1790417652642	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+Missing resource in locale de: branding/brand.ftl
+Missing resource in locale it: branding/brand.ftl
+This page is in Quirks Mode. Page layout may be impacted. For Standards Mode use “<!DOCTYPE html>”. background.html
+Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user’s experience. For more help https://xhr.spec.whatwg.org/#sync-warning utils.js:45:7
+Object { Util: {…}, Preferences: {…}, extractSignature: extractSignature(), insertTemplate: insertTemplate(), readSignatureFile: readSignatureFile(), resetDocument: resetDocument(), Parser: Parser(), composer: {}, Sig: {}, prefs: {…}, … }
+ 
+Object { composers: Map(0) }
+st-background.js:17:9
+SmartTemplates Background started st-util.mjs.js:39:13
+WebExtensions: TypeError: can't access property "URI", folder is null
+    set chrome://messenger/content/mailTabs.js:168
+    maybeSelectLastFolder jar:file:///E:/Mail/dd9jwla2n.axel/extensions/owl@beonex.com.xpi!/webapi/webaccount/webaccount.js:517
+    runAsync jar:file:///E:/Mail/dd9jwla2n.axel/extensions/owl@beonex.com.xpi!/webapi/webaccount/webaccount.js:112
+webaccount.js:114
+uncaught exception: Trying to load untrusted URI.: jar:file:///E:/Mail/dd9jwla2n.axel/extensions/%7Ba300a000-5e21-4ee0-a115-9ec8f4eaa92b%7D.xpi!/defaults/preferences/removedupes.js
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set [], checkedLastError: false, _lastError: null, contextId: 38, unloaded: true, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+1790417662216	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing locales: An unexpected property was found in the WebExtension manifest.
+1790417662216	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1790417662224	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing locales: An unexpected property was found in the WebExtension manifest.
+1790417662224	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+Creating FiltaQuilla menus... filtaquilla-background.js:842:15
+Finished setting up license startup code qFi-background.js:1184:13
+Startup resolved qFi-background.js:1190:13
+quickFilters adding the message context menu item Create Filter from Message… ... 
+Object { contexts: (1) […], onclick: onclick(), icons: {…}, enabled: true, id: "createFromMailContext", title: "Create Filter from Message…" }
+qFi-background.js:1557:13
+Preferences onChanged: 
+Object { settings: {…} }
+preferences.mjs:317:17
+Preferences updates: 
+Object { "license.gracePeriodDate": "2026-09-26" }
+preferences.mjs:346:17
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\applause.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\duogourd.ogg
+1790417662991	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417663002	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417663145	addons.webextension.{61A64500-335C-418D-8FCB-E072A9ABF3DA}	WARN	Loading extension '{61A64500-335C-418D-8FCB-E072A9ABF3DA}': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417663157	addons.webextension.smarttemplate4@thunderbird.extension	WARN	Loading extension 'smarttemplate4@thunderbird.extension': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417663213	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing locales: An unexpected property was found in the WebExtension manifest.
+1790417663213	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1790417663215	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing locales: An unexpected property was found in the WebExtension manifest.
+1790417663215	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+uncaught exception: Object { message }
+Menus created. filtaquilla-background.js:927:15
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 37, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\Freedom.ogg
+WebExtensions: quickFilters: messenger.onLoad() qFi-messenger.js:29
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\nightingale.ogg
+1790417663957	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417663964	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417663984	addons.webextension.smarttemplate4@thunderbird.extension	WARN	Loading extension 'smarttemplate4@thunderbird.extension': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417663995	addons.webextension.{61A64500-335C-418D-8FCB-E072A9ABF3DA}	WARN	Loading extension '{61A64500-335C-418D-8FCB-E072A9ABF3DA}': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+WebExtensions: quickFilters exp API: Utilities.getAPI() called implementation.js:14
+uncaught exception: Object { message }
+Preferences onChanged: 
+Object {  }
+preferences.mjs:317:17
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\squishbeat.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\TheBrightestStar.ogg
+uncaught exception: Object { message }
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\squeak.wav
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\notify-1.wav
+WebExtensions: quickFilters: pref cache ready qFi-messenger.js:31
+quickFilters: addToolMenuListener() qFi-background.js:278:13
+quickFilters adding the tools menu item Start Filter Assistant ... 
+Object { contexts: (1) […], checked: false, onclick: onclick(), icons: {…}, enabled: true, id: "toggleFilterTools", title: "Start Filter Assistant" }
+qFi-background.js:304:13
+Preferences onChanged: 
+Object { settings: {…}, debug: {…}, accounts: {…} }
+preferences.mjs:317:17
+uncaught exception: Object { message }
+Accounts data updated: 
+Object {  }
+preferences.mjs:340:19
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\pour-1.wav
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set [], checkedLastError: false, _lastError: null, contextId: 38, unloaded: true, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 37, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\maybe-one-day-584.ogg
+quickFilters: addFolderPaneListener() qFi-background.js:126:13
+quickFilters adding the folder tree context menu item Run filters ... 
+Object { contexts: (1) […], onclick: onclick(), icons: {…}, enabled: true, id: "runFiltersFolderPane", title: "Run filters" }
+qFi-background.js:174:13
+quickFilters adding the other folder tree context menu item Find Filters… ... 
+Object { contexts: (1) […], onclick: onclick(), icons: {…}, enabled: true, id: "findFiltersFolder", title: "Find Filters…" }
+qFi-background.js:231:13
+uncaught exception: Object { message }
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\hold-your-horses-468.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\scratch-389.ogg
+WebExtensions: 
+<li class="extension-action" item-id="ext-quickfolders@curious.be" is="customizable-element" style='--webextension-icon: ima…32.svg") 2x\n        );' aria-pressed="false" hidden>
+implementation.js:500
+uncaught exception: Object { message }
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\your-turn-491.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\knob-458.ogg
+uncaught exception: Object { message }
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\worthwhile-438.ogg
+FiltaQuilla (toneQuillaPlay module)
+File already exists: E:\Mail\dd9jwla2n.axel\extensions\filtaquilla\scissors-423.ogg
+uncaught exception: Object { message }
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set [], checkedLastError: false, _lastError: null, contextId: 38, unloaded: true, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(13), checkedLastError: false, _lastError: null, contextId: 37, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:762
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:762
+uncaught exception: Object { message }
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+uncaught exception: Object { message }
+uncaught exception: Object { message }
+QuickFolders: QuickFolders.init() - QuickFolders Version 6.17.4pre26
+Running on Thunderbird Version 156.0
+contentscript: set content-script.js:91:15
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+uncaught exception: Object { message }
+contentscript: MUA info content-script.js:91:15
+QuickFolders 11:14:36.421  [619 ms]   
+ util.touch(Inbox)
+1790417676
+26/9 11:14:36 quickfolders-util.js:1432:13
+QuickFolders 11:14:36.424  [3 ms]   
+ setFolderUpdateTimer(item): Inbox quickfolders-util.js:1432:13
+QuickFolders 11:14:36.425  [1 ms]   
+ Folder Tab Select Timer ID: 119 quickfolders-util.js:1432:13
+QuickFolders 11:14:36.425  [0 ms]   
+ Setting Update Timer (after timer 0 expired), new Timer: 119 quickfolders-util.js:1432:13
+QuickFolders 11:14:36.429  [4 ms]   
+ util.touch(Inbox)
+1790417676
+26/9 11:14:36 quickfolders-util.js:1432:13
+uncaught exception: Object { message }
+QuickFolders 11:14:36.800  [371 ms]   
+ util.touch(Inbox)
+1790417676
+26/9 11:14:36 quickfolders-util.js:1432:13
+QuickFolders 11:14:36.803  [3 ms]   
+ util.touch(Inbox)
+1790417676
+26/9 11:14:36 quickfolders-util.js:1432:13
+uncaught exception: Object { message }
+QuickFolders 11:14:37.247  [444 ms]   
+ util.touch(Zoneedit)
+1790417677
+26/9 11:14:37 quickfolders-util.js:1432:13
+QuickFolders 11:14:37.264  [17 ms]   
+ util.touch(Zoneedit)
+1790417677
+26/9 11:14:37 quickfolders-util.js:1432:13
+QuickFolders 11:14:46.168  [8904 ms]   
+ util.touch(Produce Like a Pro)
+1790417686
+26/9 11:14:46 quickfolders-util.js:1432:13
+QuickFolders 11:14:46.171  [3 ms]   
+ util.touch(Produce Like a Pro)
+1790417686
+26/9 11:14:46 quickfolders-util.js:1432:13
+contentscript: set content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+QuickFolders 11:14:48.11  [1840 ms]   
+ util.touch(Licenses)
+1790417688
+26/9 11:14:48 quickfolders-util.js:1432:13
+QuickFolders 11:14:48.19  [8 ms]   
+ util.touch(Licenses)
+1790417688
+26/9 11:14:48 quickfolders-util.js:1432:13
+QuickFolders 11:14:49.852  [1833 ms]   
+ util.touch(BandsInTown)
+1790417689
+26/9 11:14:49 quickfolders-util.js:1432:13
+QuickFolders 11:14:49.855  [3 ms]   
+ util.touch(BandsInTown)
+1790417689
+26/9 11:14:49 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.300  [445 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.307  [7 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.524  [217 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.528  [4 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.595  [67 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.598  [3 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.628  [30 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.631  [3 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.843  [212 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.850  [7 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.943  [93 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:50.947  [4 ms]   
+ util.touch(Github)
+1790417690
+26/9 11:14:50 quickfolders-util.js:1432:13
+QuickFolders 11:14:51.148  [201 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+QuickFolders 11:14:51.152  [4 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+QuickFolders 11:14:51.182  [30 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+QuickFolders 11:14:51.185  [3 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+Loading failed for the module with source “moz-extension://57f9d295-6286-4524-87ae-1f8f3ffca86a/modules/bridge.mjs”. background.js
+QuickFolders 11:14:51.527  [342 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+QuickFolders 11:14:51.531  [4 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+QuickFolders 11:14:51.568  [37 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+QuickFolders 11:14:51.574  [6 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+QuickFolders 11:14:51.799  [225 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+QuickFolders 11:14:51.803  [4 ms]   
+ util.touch(Github)
+1790417691
+26/9 11:14:51 quickfolders-util.js:1432:13
+QuickFolders 11:14:52.30  [227 ms]   
+ util.touch(Github)
+1790417692
+26/9 11:14:52 quickfolders-util.js:1432:13
+QuickFolders 11:14:52.34  [4 ms]   
+ util.touch(Github)
+1790417692
+26/9 11:14:52 quickfolders-util.js:1432:13
+QuickFolders 11:14:52.337  [303 ms]   
+ util.touch(Github)
+1790417692
+26/9 11:14:52 quickfolders-util.js:1432:13
+QuickFolders 11:14:52.341  [4 ms]   
+ util.touch(Github)
+1790417692
+26/9 11:14:52 quickfolders-util.js:1432:13
+QuickFolders 11:14:52.419  [78 ms]   
+ util.touch(Github)
+1790417692
+26/9 11:14:52 quickfolders-util.js:1432:13
+QuickFolders 11:14:52.423  [4 ms]   
+ util.touch(Github)
+1790417692
+26/9 11:14:52 quickfolders-util.js:1432:13
+QuickFolders 11:14:53.632  [1209 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:14:54.889  [1257 ms]   
+ util.touch(Github)
+1790417694
+26/9 11:14:54 quickfolders-util.js:1432:13
+QuickFolders 11:14:54.893  [4 ms]   
+ util.touch(Github)
+1790417694
+26/9 11:14:54 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.0  [107 ms]   
+ util.touch(Github)
+1790417694
+26/9 11:14:54 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.10  [10 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.285  [275 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.288  [3 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.358  [70 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.362  [4 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.572  [210 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.578  [6 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.605  [27 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.609  [4 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.861  [252 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.867  [6 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.929  [62 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:55.932  [3 ms]   
+ util.touch(Github)
+1790417695
+26/9 11:14:55 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.161  [229 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.165  [4 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.191  [26 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.195  [4 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.212  [17 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.223  [11 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:14:56.223  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:14:56.223  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+quickFilters 11:14:56.319  [20245 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 11:14:56.320  [1 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 11:14:56.321  [1 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+QuickFolders 11:14:56.348  [125 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.355  [7 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:14:56.355  [0 ms]   
+ Folder Tab Select Timer ID: 123 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.355  [0 ms]   
+ Setting Update Timer (after timer 119 expired), new Timer: 123 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.356  [1 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.374  [18 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.378  [4 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.739  [361 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.744  [5 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.791  [47 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.795  [4 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.926  [131 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.932  [6 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:14:56.932  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:14:56.932  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:14:56.981  [49 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.983  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:14:56.983  [0 ms]   
+ Folder Tab Select Timer ID: 124 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.983  [0 ms]   
+ Setting Update Timer (after timer 123 expired), new Timer: 124 quickfolders-util.js:1432:13
+QuickFolders 11:14:56.984  [1 ms]   
+ util.touch(Github)
+1790417696
+26/9 11:14:56 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.58  [74 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.61  [3 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.162  [101 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.172  [10 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.203  [31 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.206  [3 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.501  [295 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.504  [3 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.554  [50 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.557  [3 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.569  [12 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.574  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:14:57.575  [1 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:14:57.575  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:14:57.717  [142 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.720  [3 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:14:57.720  [0 ms]   
+ Folder Tab Select Timer ID: 125 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.720  [0 ms]   
+ Setting Update Timer (after timer 124 expired), new Timer: 125 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.721  [1 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.753  [32 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:57.757  [4 ms]   
+ util.touch(Github)
+1790417697
+26/9 11:14:57 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.67  [310 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.76  [9 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.169  [93 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.171  [2 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.226  [55 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.233  [7 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:14:58.233  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:14:58.234  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:14:58.391  [157 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.392  [1 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:14:58.393  [1 ms]   
+ Folder Tab Select Timer ID: 126 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.393  [0 ms]   
+ Setting Update Timer (after timer 125 expired), new Timer: 126 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.394  [1 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.413  [19 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.416  [3 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.591  [175 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.593  [2 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.622  [29 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.626  [4 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.810  [184 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.822  [12 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.847  [25 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.850  [3 ms]   
+ util.touch(Github)
+1790417698
+26/9 11:14:58 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.911  [61 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:14:58.919  [8 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:14:58.919  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:14:58.920  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+1790417699020	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing locales: An unexpected property was found in the WebExtension manifest.
+1790417699020	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+QuickFolders 11:14:59.75  [155 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.79  [4 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:14:59.79  [0 ms]   
+ Folder Tab Select Timer ID: 127 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.79  [0 ms]   
+ Setting Update Timer (after timer 126 expired), new Timer: 127 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.80  [1 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+1790417699106	addons.webextension.{61A64500-335C-418D-8FCB-E072A9ABF3DA}	WARN	Loading extension '{61A64500-335C-418D-8FCB-E072A9ABF3DA}': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417699176	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417699189	addons.webextension.smarttemplate4@thunderbird.extension	WARN	Loading extension 'smarttemplate4@thunderbird.extension': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417699197	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+QuickFolders 11:14:59.209  [129 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.213  [4 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.394  [181 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.405  [11 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.438  [33 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.442  [4 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.635  [193 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.643  [8 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:14:59.643  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:14:59.643  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:14:59.735  [92 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.737  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:14:59.738  [1 ms]   
+ Folder Tab Select Timer ID: 128 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.738  [0 ms]   
+ Setting Update Timer (after timer 127 expired), new Timer: 128 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.740  [2 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.782  [42 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.786  [4 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.981  [195 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:14:59.987  [6 ms]   
+ util.touch(Github)
+1790417699
+26/9 11:14:59 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.16  [29 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.20  [4 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.201  [181 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.205  [4 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.241  [36 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.244  [3 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.256  [12 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.261  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:0.261  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:0.262  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:0.416  [154 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.421  [5 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:0.421  [0 ms]   
+ Folder Tab Select Timer ID: 129 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.421  [0 ms]   
+ Setting Update Timer (after timer 128 expired), new Timer: 129 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.422  [1 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.439  [17 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.442  [3 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.674  [232 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.683  [9 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.707  [24 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.711  [4 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.869  [158 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.872  [3 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.918  [46 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.921  [3 ms]   
+ util.touch(Github)
+1790417700
+26/9 11:15:0 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.945  [24 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:0.952  [7 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:0.953  [1 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:0.953  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:1.73  [120 ms]   
+ util.touch(Licenses)
+1790417701
+26/9 11:15:1 quickfolders-util.js:1432:13
+QuickFolders 11:15:1.75  [2 ms]   
+ setFolderUpdateTimer(item): Licenses quickfolders-util.js:1432:13
+QuickFolders 11:15:1.75  [0 ms]   
+ Folder Tab Select Timer ID: 130 quickfolders-util.js:1432:13
+QuickFolders 11:15:1.75  [0 ms]   
+ Setting Update Timer (after timer 129 expired), new Timer: 130 quickfolders-util.js:1432:13
+QuickFolders 11:15:1.80  [5 ms]   
+ util.touch(Licenses)
+1790417701
+26/9 11:15:1 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.55  [975 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.60  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:2.60  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:2.60  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:2.136  [76 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.137  [1 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:2.137  [0 ms]   
+ Folder Tab Select Timer ID: 131 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.137  [0 ms]   
+ Setting Update Timer (after timer 130 expired), new Timer: 131 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.138  [1 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.151  [13 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.154  [3 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.318  [164 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.321  [3 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.338  [17 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.341  [3 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.501  [160 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.503  [2 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.513  [10 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.516  [3 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.643  [127 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.650  [7 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:2.650  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:2.651  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:2.710  [59 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.712  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:2.712  [0 ms]   
+ Folder Tab Select Timer ID: 132 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.712  [0 ms]   
+ Setting Update Timer (after timer 131 expired), new Timer: 132 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.716  [4 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.737  [21 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.739  [2 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.923  [184 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.927  [4 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.942  [15 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:2.945  [3 ms]   
+ util.touch(Github)
+1790417702
+26/9 11:15:2 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.225  [280 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.229  [4 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:3.229  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:3.230  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:3.411  [181 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.413  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:3.413  [0 ms]   
+ Folder Tab Select Timer ID: 133 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.413  [0 ms]   
+ Setting Update Timer (after timer 132 expired), new Timer: 133 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.414  [1 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.428  [14 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.431  [3 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.593  [162 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.596  [3 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.610  [14 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.613  [3 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.941  [328 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.951  [10 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:3.952  [1 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:3.952  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:3.992  [40 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.993  [1 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:3.994  [1 ms]   
+ Folder Tab Select Timer ID: 134 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.994  [0 ms]   
+ Setting Update Timer (after timer 133 expired), new Timer: 134 quickfolders-util.js:1432:13
+QuickFolders 11:15:3.994  [0 ms]   
+ util.touch(Github)
+1790417703
+26/9 11:15:3 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.10  [16 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.13  [3 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.544  [531 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.552  [8 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:4.552  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:4.552  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:4.608  [56 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.610  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:4.610  [0 ms]   
+ Folder Tab Select Timer ID: 135 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.610  [0 ms]   
+ Setting Update Timer (after timer 134 expired), new Timer: 135 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.611  [1 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.628  [17 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.631  [3 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.785  [154 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.788  [3 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.798  [10 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:4.801  [3 ms]   
+ util.touch(Github)
+1790417704
+26/9 11:15:4 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.39  [238 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.42  [3 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.58  [16 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.62  [4 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.111  [49 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.116  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:5.116  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:5.116  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:5.247  [131 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.249  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:5.249  [0 ms]   
+ Folder Tab Select Timer ID: 136 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.249  [0 ms]   
+ Setting Update Timer (after timer 135 expired), new Timer: 136 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.250  [1 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.262  [12 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.265  [3 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.428  [163 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.431  [3 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.448  [17 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.453  [5 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.689  [236 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.692  [3 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.708  [16 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.711  [3 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.761  [50 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.765  [4 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:5.765  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:5.765  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:5.869  [104 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.873  [4 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:5.873  [0 ms]   
+ Folder Tab Select Timer ID: 137 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.873  [0 ms]   
+ Setting Update Timer (after timer 136 expired), new Timer: 137 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.874  [1 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.892  [18 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:5.894  [2 ms]   
+ util.touch(Github)
+1790417705
+26/9 11:15:5 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.69  [175 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.72  [3 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.97  [25 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.100  [3 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.284  [184 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.287  [3 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.298  [11 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.302  [4 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.378  [76 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.385  [7 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:6.385  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:6.386  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:6.472  [86 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.474  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:6.474  [0 ms]   
+ Folder Tab Select Timer ID: 138 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.474  [0 ms]   
+ Setting Update Timer (after timer 137 expired), new Timer: 138 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.475  [1 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.488  [13 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.491  [3 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.873  [382 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.889  [16 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.927  [38 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:6.930  [3 ms]   
+ util.touch(Github)
+1790417706
+26/9 11:15:6 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.12  [82 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.39  [27 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:7.39  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:7.39  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:7.161  [122 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.167  [6 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:7.167  [0 ms]   
+ Folder Tab Select Timer ID: 139 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.167  [0 ms]   
+ Setting Update Timer (after timer 138 expired), new Timer: 139 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.170  [3 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.210  [40 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.214  [4 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.379  [165 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.383  [4 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.440  [57 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.445  [5 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.584  [139 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.594  [10 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.633  [39 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.642  [9 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.707  [65 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.715  [8 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:7.716  [1 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:7.716  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:7.802  [86 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.804  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:7.805  [1 ms]   
+ Folder Tab Select Timer ID: 140 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.805  [0 ms]   
+ Setting Update Timer (after timer 139 expired), new Timer: 140 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.806  [1 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.831  [25 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:7.833  [2 ms]   
+ util.touch(Github)
+1790417707
+26/9 11:15:7 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.39  [206 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.43  [4 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.57  [14 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.60  [3 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.218  [158 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.223  [5 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.234  [11 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.238  [4 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.305  [67 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.311  [6 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:8.311  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:8.311  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:8.422  [111 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.424  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:8.424  [0 ms]   
+ Folder Tab Select Timer ID: 141 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.424  [0 ms]   
+ Setting Update Timer (after timer 140 expired), new Timer: 141 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.425  [1 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.445  [20 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.449  [4 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.595  [146 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.599  [4 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.621  [22 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.626  [5 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.806  [180 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.809  [3 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.822  [13 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.824  [2 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.946  [122 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:8.953  [7 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:8.953  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:8.953  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:8.998  [45 ms]   
+ util.touch(Github)
+1790417708
+26/9 11:15:8 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.0  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:9.0  [0 ms]   
+ Folder Tab Select Timer ID: 142 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.0  [0 ms]   
+ Setting Update Timer (after timer 141 expired), new Timer: 142 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.1  [1 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.17  [16 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.22  [5 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.210  [188 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.213  [3 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.226  [13 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.228  [2 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.392  [164 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.395  [3 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.407  [12 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.410  [3 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.501  [91 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.508  [7 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:9.508  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:9.509  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:9.610  [101 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.630  [20 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:9.630  [0 ms]   
+ Folder Tab Select Timer ID: 143 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.630  [0 ms]   
+ Setting Update Timer (after timer 142 expired), new Timer: 143 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.631  [1 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.643  [12 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.646  [3 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.819  [173 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.823  [4 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.835  [12 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.838  [3 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:9.998  [160 ms]   
+ util.touch(Github)
+1790417709
+26/9 11:15:9 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.1  [3 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.12  [11 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.14  [2 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.131  [117 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.136  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:10.136  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:10.137  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:10.182  [45 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.184  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:10.185  [1 ms]   
+ Folder Tab Select Timer ID: 144 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.185  [0 ms]   
+ Setting Update Timer (after timer 143 expired), new Timer: 144 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.186  [1 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.199  [13 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.203  [4 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.360  [157 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.364  [4 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.376  [12 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.379  [3 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.533  [154 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.535  [2 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.547  [12 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.550  [3 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.687  [137 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.693  [6 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:10.693  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:10.693  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:10.729  [36 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.731  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:10.731  [0 ms]   
+ Folder Tab Select Timer ID: 145 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.731  [0 ms]   
+ Setting Update Timer (after timer 144 expired), new Timer: 145 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.732  [1 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.745  [13 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.748  [3 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.899  [151 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.901  [2 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.912  [11 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:10.915  [3 ms]   
+ util.touch(Github)
+1790417710
+26/9 11:15:10 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.75  [160 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.78  [3 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.90  [12 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.92  [2 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.245  [153 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.248  [3 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.259  [11 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.262  [3 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.278  [16 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.283  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:11.283  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:11.283  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:11.430  [147 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.432  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:11.432  [0 ms]   
+ Folder Tab Select Timer ID: 146 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.432  [0 ms]   
+ Setting Update Timer (after timer 145 expired), new Timer: 146 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.433  [1 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.446  [13 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.448  [2 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.611  [163 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.613  [2 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.624  [11 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.626  [2 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.787  [161 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.791  [4 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.802  [11 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.805  [3 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.933  [128 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.938  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:11.938  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:11.938  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:11.979  [41 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.982  [3 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:11.982  [0 ms]   
+ Folder Tab Select Timer ID: 147 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.982  [0 ms]   
+ Setting Update Timer (after timer 146 expired), new Timer: 147 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.983  [1 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.996  [13 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:11.999  [3 ms]   
+ util.touch(Github)
+1790417711
+26/9 11:15:11 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.158  [159 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.160  [2 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.174  [14 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.177  [3 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.354  [177 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.358  [4 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.369  [11 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.372  [3 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.483  [111 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.487  [4 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:12.487  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:12.487  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:12.561  [74 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.563  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:12.563  [0 ms]   
+ Folder Tab Select Timer ID: 148 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.563  [0 ms]   
+ Setting Update Timer (after timer 147 expired), new Timer: 148 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.564  [1 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.578  [14 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.580  [2 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.743  [163 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.746  [3 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.759  [13 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.762  [3 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.924  [162 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.927  [3 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.937  [10 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:12.940  [3 ms]   
+ util.touch(Github)
+1790417712
+26/9 11:15:12 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.75  [135 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.79  [4 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:13.79  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:13.80  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:13.111  [31 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.113  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:13.113  [0 ms]   
+ Folder Tab Select Timer ID: 149 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.113  [0 ms]   
+ Setting Update Timer (after timer 148 expired), new Timer: 149 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.114  [1 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.125  [11 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.128  [3 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.306  [178 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.309  [3 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.321  [12 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.324  [3 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.476  [152 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.478  [2 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.491  [13 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.494  [3 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.613  [119 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.617  [4 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:13.617  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:13.617  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:13.654  [37 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.656  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:13.656  [0 ms]   
+ Folder Tab Select Timer ID: 150 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.656  [0 ms]   
+ Setting Update Timer (after timer 149 expired), new Timer: 150 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.658  [2 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.669  [11 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.672  [3 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.838  [166 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.842  [4 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.854  [12 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:13.856  [2 ms]   
+ util.touch(Github)
+1790417713
+26/9 11:15:13 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.21  [165 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.24  [3 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.35  [11 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.38  [3 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.156  [118 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.161  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:14.161  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:14.161  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:14.196  [35 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.198  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:14.198  [0 ms]   
+ Folder Tab Select Timer ID: 151 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.198  [0 ms]   
+ Setting Update Timer (after timer 150 expired), new Timer: 151 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.199  [1 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.211  [12 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.215  [4 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.386  [171 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.389  [3 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.400  [11 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.402  [2 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.699  [297 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.703  [4 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:14.703  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:14.704  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:14.831  [127 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.833  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:14.833  [0 ms]   
+ Folder Tab Select Timer ID: 152 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.833  [0 ms]   
+ Setting Update Timer (after timer 151 expired), new Timer: 152 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.834  [1 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.844  [10 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:14.847  [3 ms]   
+ util.touch(Github)
+1790417714
+26/9 11:15:14 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.69  [222 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.72  [3 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.86  [14 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.89  [3 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.378  [289 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.382  [4 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:15.382  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:15.382  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:15.412  [30 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.413  [1 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:15.413  [0 ms]   
+ Folder Tab Select Timer ID: 153 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.414  [1 ms]   
+ Setting Update Timer (after timer 152 expired), new Timer: 153 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.415  [1 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.426  [11 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.429  [3 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.626  [197 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.629  [3 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.640  [11 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.644  [4 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.823  [179 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.827  [4 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.841  [14 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.844  [3 ms]   
+ util.touch(Github)
+1790417715
+26/9 11:15:15 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.915  [71 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:15.920  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:15.921  [1 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:15.921  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+quickFilters 11:15:16.322  [20001 ms]   
+ toggleCurrentFolderButtons(retries=2) qFilters-utils.js:921:13
+quickFilters 11:15:16.322  [0 ms]   
+ toggleCurrentFolderButtons(retries=2) qFilters-utils.js:921:13
+quickFilters 11:15:16.323  [1 ms]   
+ toggleCurrentFolderButtons(retries=2) qFilters-utils.js:921:13
+QuickFolders 11:15:16.399  [478 ms]   
+ util.touch(Inbox)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.401  [2 ms]   
+ setFolderUpdateTimer(item): Inbox quickfolders-util.js:1432:13
+QuickFolders 11:15:16.401  [0 ms]   
+ Folder Tab Select Timer ID: 157 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.401  [0 ms]   
+ Setting Update Timer (after timer 153 expired), new Timer: 157 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.402  [1 ms]   
+ util.touch(Inbox)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.410  [8 ms]   
+ util.touch(Inbox)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.413  [3 ms]   
+ util.touch(Inbox)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.615  [202 ms]   
+ util.touch(Github)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.618  [3 ms]   
+ util.touch(Github)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.637  [19 ms]   
+ util.touch(Github)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.640  [3 ms]   
+ util.touch(Github)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.917  [277 ms]   
+ util.touch(Github)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.920  [3 ms]   
+ util.touch(Github)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.939  [19 ms]   
+ util.touch(Github)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.943  [4 ms]   
+ util.touch(Github)
+1790417716
+26/9 11:15:16 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.965  [22 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:16.972  [7 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:16.972  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:16.972  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:17.136  [164 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.138  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:17.138  [0 ms]   
+ Folder Tab Select Timer ID: 158 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.138  [0 ms]   
+ Setting Update Timer (after timer 157 expired), new Timer: 158 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.139  [1 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.152  [13 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.155  [3 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.428  [273 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.431  [3 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.440  [9 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.442  [2 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.640  [198 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.647  [7 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:17.647  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:17.647  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:17.686  [39 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.689  [3 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:17.689  [0 ms]   
+ Folder Tab Select Timer ID: 159 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.689  [0 ms]   
+ Setting Update Timer (after timer 158 expired), new Timer: 159 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.690  [1 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.703  [13 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.706  [3 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.987  [281 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:17.990  [3 ms]   
+ util.touch(Github)
+1790417717
+26/9 11:15:17 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.4  [14 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.7  [3 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.202  [195 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.205  [3 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.215  [10 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.220  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:18.220  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:18.220  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:18.222  [2 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.225  [3 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.420  [195 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.422  [2 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:18.422  [0 ms]   
+ Folder Tab Select Timer ID: 160 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.422  [0 ms]   
+ Setting Update Timer (after timer 159 expired), new Timer: 160 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.424  [2 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.436  [12 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.439  [3 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.610  [171 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.614  [4 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.633  [19 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.636  [3 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.835  [199 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.838  [3 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.860  [22 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.864  [4 ms]   
+ util.touch(Github)
+1790417718
+26/9 11:15:18 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.923  [59 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:18.931  [8 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:18.931  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:18.931  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:19.28  [97 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.31  [3 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:19.31  [0 ms]   
+ Folder Tab Select Timer ID: 161 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.31  [0 ms]   
+ Setting Update Timer (after timer 160 expired), new Timer: 161 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.32  [1 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.43  [11 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.46  [3 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.226  [180 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.229  [3 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.246  [17 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.250  [4 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.406  [156 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.409  [3 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.421  [12 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.423  [2 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.568  [145 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.573  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:19.574  [1 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:19.574  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:19.623  [49 ms]   
+ util.touch(Inbox)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.625  [2 ms]   
+ setFolderUpdateTimer(item): Inbox quickfolders-util.js:1432:13
+QuickFolders 11:15:19.625  [0 ms]   
+ Folder Tab Select Timer ID: 162 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.625  [0 ms]   
+ Setting Update Timer (after timer 161 expired), new Timer: 162 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.626  [1 ms]   
+ util.touch(Inbox)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.635  [9 ms]   
+ util.touch(Inbox)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.637  [2 ms]   
+ util.touch(Inbox)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.796  [159 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.799  [3 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.812  [13 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:19.815  [3 ms]   
+ util.touch(Github)
+1790417719
+26/9 11:15:19 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.185  [370 ms]   
+ util.touch(Substack)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.188  [3 ms]   
+ util.touch(Substack)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.201  [13 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.206  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:20.206  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:20.206  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:20.370  [164 ms]   
+ util.touch(Github)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.371  [1 ms]   
+ setFolderUpdateTimer(item): Github quickfolders-util.js:1432:13
+QuickFolders 11:15:20.371  [0 ms]   
+ Folder Tab Select Timer ID: 163 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.371  [0 ms]   
+ Setting Update Timer (after timer 162 expired), new Timer: 163 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.372  [1 ms]   
+ util.touch(Github)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.383  [11 ms]   
+ util.touch(Github)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.386  [3 ms]   
+ util.touch(Github)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.550  [164 ms]   
+ util.touch(Github)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.552  [2 ms]   
+ util.touch(Github)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.564  [12 ms]   
+ util.touch(Github)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.567  [3 ms]   
+ util.touch(Github)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.732  [165 ms]   
+ util.touch(Licenses)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.740  [8 ms]   
+ util.touch(Licenses)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.872  [132 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.877  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:20.877  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:20.877  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:20.984  [107 ms]   
+ util.touch(Save Europe)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.986  [2 ms]   
+ setFolderUpdateTimer(item): Save Europe quickfolders-util.js:1432:13
+QuickFolders 11:15:20.986  [0 ms]   
+ Folder Tab Select Timer ID: 164 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.986  [0 ms]   
+ Setting Update Timer (after timer 163 expired), new Timer: 164 quickfolders-util.js:1432:13
+QuickFolders 11:15:20.987  [1 ms]   
+ util.touch(Save Europe)
+1790417720
+26/9 11:15:20 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.212  [225 ms]   
+ util.touch(Inbox)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.216  [4 ms]   
+ util.touch(Inbox)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.250  [34 ms]   
+ util.touch(Inbox)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.252  [2 ms]   
+ util.touch(Inbox)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.424  [172 ms]   
+ util.touch(Inbox)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.427  [3 ms]   
+ util.touch(Inbox)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.436  [9 ms]   
+ util.touch(Inbox)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.440  [4 ms]   
+ util.touch(Inbox)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.486  [46 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.492  [6 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:21.492  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:21.492  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:21.618  [126 ms]   
+ util.touch(facebook)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.620  [2 ms]   
+ setFolderUpdateTimer(item): facebook quickfolders-util.js:1432:13
+QuickFolders 11:15:21.620  [0 ms]   
+ Folder Tab Select Timer ID: 165 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.620  [0 ms]   
+ Setting Update Timer (after timer 164 expired), new Timer: 165 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.622  [2 ms]   
+ util.touch(facebook)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.855  [233 ms]   
+ util.touch(softube)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:21.857  [2 ms]   
+ util.touch(softube)
+1790417721
+26/9 11:15:21 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.183  [326 ms]   
+ util.touch(issues)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.185  [2 ms]   
+ util.touch(issues)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.275  [90 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.283  [8 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:22.283  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:22.283  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:22.307  [24 ms]   
+ util.touch(Github)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.310  [3 ms]   
+ util.touch(Github)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.343  [33 ms]   
+ setFolderUpdateTimer(item): Inbox quickfolders-util.js:1432:13
+QuickFolders 11:15:22.343  [0 ms]   
+ Folder Tab Select Timer ID: 167 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.343  [0 ms]   
+ Setting Update Timer (after timer 165 expired), new Timer: 167 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.358  [15 ms]   
+ util.touch(Amazon)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.361  [3 ms]   
+ util.touch(Amazon)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+Unable to build summary file for Shopping/did.ie (error 0x8055000A).
+Repairing the folder may fix this issue. ..\..\..\..\..\..\checkouts\gecko\comm\mailnews\local\src\nsLocalMailFolder.cpp:250
+QuickFolders 11:15:22.492  [131 ms]   
+ util.touch(flare)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.494  [2 ms]   
+ util.touch(flare)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+NS_MSG_FOLDER_BUSY: Component returned failure code: 0x8055000a (NS_MSG_FOLDER_BUSY) [nsIMsgFolder.updateFolder] ExtensionMessages.sys.mjs:1599:17
+QuickFolders 11:15:22.530  [36 ms]   
+ util.touch(sonible)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.532  [2 ms]   
+ util.touch(sonible)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.592  [60 ms]   
+ util.touch(XLN)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.595  [3 ms]   
+ util.touch(XLN)
+1790417722
+26/9 11:15:22 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.862  [267 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:22.867  [5 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:22.867  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:22.867  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:35.631  [12764 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+Key event not available on some keyboard layouts: key=“s” modifiers=“accel,alt” id=“” messenger.xhtml
+Key event not available on some keyboard layouts: key=“n” modifiers=“accel,alt” id=“” messenger.xhtml
+Key event not available on some keyboard layouts: key=“o” modifiers=“accel,alt” id=“” messenger.xhtml
+Key event not available on some keyboard layouts: key=“r” modifiers=“accel,alt” id=“” messenger.xhtml
+QuickFolders 11:15:36.579  [948 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features! 3pane
+QuickFolders 11:15:36.697  [118 ms]   
+ setFolderUpdateTimer(item): issues quickfolders-util.js:1432:13
+QuickFolders 11:15:36.697  [0 ms]   
+ Folder Tab Select Timer ID: 174 quickfolders-util.js:1432:13
+QuickFolders 11:15:36.697  [0 ms]   
+ Setting Update Timer (after timer 167 expired), new Timer: 174 quickfolders-util.js:1432:13
+QuickFolders 11:15:37.642  [945 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:15:37.648  [6 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:15:37.648  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:15:37.648  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:44.212  [6564 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:44.481  [269 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+quickFilters 11:15:46.331  [30008 ms]   
+ toggleCurrentFolderButtons(retries=3) qFilters-utils.js:921:13
+quickFilters 11:15:46.331  [0 ms]   
+ toggleCurrentFolderButtons(retries=3) qFilters-utils.js:921:13
+quickFilters 11:15:46.332  [1 ms]   
+ toggleCurrentFolderButtons(retries=3) qFilters-utils.js:921:13
+QuickFolders 11:15:47.446  [2965 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:47.497  [51 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:49.363  [1866 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:15:49.629  [266 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+1790417759916	addons.xpi-utils	WARN	Add-on {2bc419d0-6cf3-11da-8494-000a95be0946} is not compatible with application version.
+1790417759917	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+1790417759959	addons.xpi-utils	WARN	Add-on {2bc419d0-6cf3-11da-8494-000a95be0946} is not compatible with application version.
+NS_ERROR_NOT_AVAILABLE
+1790417760004	addons.xpi-utils	WARN	Add-on lookout@s3_fix_version is not compatible with application version.
+services.settings: BackendError: Backend error: Error: HTTP 400 Invalid parameters: Invalid request parameter (_since in querystring: The value should be integer between double quotes.)
+    APIError resource://services-settings/RemoteSettingsClient.sys.mjs:90
+    BackendError resource://services-settings/RemoteSettingsClient.sys.mjs:115
+    _adjustedError resource://services-settings/RemoteSettingsClient.sys.mjs:992
+    maybeSync resource://services-settings/RemoteSettingsClient.sys.mjs:886
+Caused by: Error: HTTP 400 Invalid parameters: Invalid request parameter (_since in querystring: The value should be integer between double quotes.)
+    processResponse resource://services-common/kinto-http-client.sys.mjs:601
+remote-settings.sys.mjs:551
+BackendError: Backend error: Error: HTTP 400 Invalid parameters: Invalid request parameter (_since in querystring: The value should be integer between double quotes.)
+    APIError resource://services-settings/RemoteSettingsClient.sys.mjs:90
+    BackendError resource://services-settings/RemoteSettingsClient.sys.mjs:115
+    _adjustedError resource://services-settings/RemoteSettingsClient.sys.mjs:992
+    maybeSync resource://services-settings/RemoteSettingsClient.sys.mjs:886
+Caused by: Error: HTTP 400 Invalid parameters: Invalid request parameter (_since in querystring: The value should be integer between double quotes.)
+    processResponse resource://services-common/kinto-http-client.sys.mjs:601
+RemoteSettingsComponents.sys.mjs:20:15
+1790417761010	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing locales: An unexpected property was found in the WebExtension manifest.
+1790417761010	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1790417761267	addons.webextension.{61A64500-335C-418D-8FCB-E072A9ABF3DA}	WARN	Loading extension '{61A64500-335C-418D-8FCB-E072A9ABF3DA}': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417761286	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417761292	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790417761303	addons.webextension.smarttemplate4@thunderbird.extension	WARN	Loading extension 'smarttemplate4@thunderbird.extension': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+uncaught exception: Object { message }
+quickFilters 11:16:26.349  [40017 ms]   
+ toggleCurrentFolderButtons(retries=4) qFilters-utils.js:921:13
+quickFilters 11:16:26.350  [1 ms]   
+ toggleCurrentFolderButtons(retries=4) qFilters-utils.js:921:13
+quickFilters 11:16:26.351  [1 ms]   
+ toggleCurrentFolderButtons(retries=4) qFilters-utils.js:921:13
+quickFilters 11:17:16.359  [50008 ms]   
+ toggleCurrentFolderButtons(retries=5) qFilters-utils.js:921:13
+toggleCurrentFolderButtons() - giving up after 5 tries without any QF toolbar. quickFilters.js:1186:19
+quickFilters 11:17:16.361  [2 ms]   
+ toggleCurrentFolderButtons(retries=5) qFilters-utils.js:921:13
+toggleCurrentFolderButtons() - giving up after 5 tries without any QF toolbar. quickFilters.js:1186:19
+quickFilters 11:17:16.363  [2 ms]   
+ toggleCurrentFolderButtons(retries=5) qFilters-utils.js:921:13
+toggleCurrentFolderButtons() - giving up after 5 tries without any QF toolbar. quickFilters.js:1186:19
+contentscript: set content-script.js:91:15
+contentscript: MUA info content-script.js:91:15
+QuickFolders 11:23:29.797  [460168 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+1790418478849	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418478968	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418478972	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+QuickFolders Removing shortcut key listener. quickfolders-util.js:1455:15
+QuickFolders onUnload executed without throwing errors quickfolders-util.js:1455:15
+1790418480218	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing locales: An unexpected property was found in the WebExtension manifest.
+1790418480219	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1790418480250	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480255	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480263	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480268	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480271	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480273	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480282	addons.webextension.{61A64500-335C-418D-8FCB-E072A9ABF3DA}	WARN	Loading extension '{61A64500-335C-418D-8FCB-E072A9ABF3DA}': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480299	addons.webextension.quickFilters@axelg.com	WARN	Loading extension 'quickFilters@axelg.com': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480303	addons.webextension.smarttemplate4@thunderbird.extension	WARN	Loading extension 'smarttemplate4@thunderbird.extension': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480306	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480309	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+1790418480381	addons.webextension.quickfolders@curious.be	WARN	Loading extension 'quickfolders@curious.be': Reading manifest: Warning processing version: version must be a version string consisting of at most 4 integers of at most 9 digits without leading zeros, and separated with dots
+Finished setting up license startup code qf-background.js:901:13
+QuickFolders: Waiting 5000ms for mailTabs to be ready... qf-background.js:969:15
+QuickFolders onInstalled: 
+Object { reason: "update", previousVersion: "6.17.4pre26", temporary: false, installed_ver: "6.18pre46" }
+qf-background.js:373:13
+Startup has finished qf-background.js:382:13
+QuickFolders - currentLicense 
+Object { ValidationStatus: 1, RealLicense: "QF-axel.grude@gmail.com:2026-11-17", ExpiredDays: 0, LicensedDaysLeft: 52, decryptedDate: "2026-11-17", decryptedMail: "axel.grude@gmail.com", lastTime: 1790418480575, ForceSecondaryIdentity: true, debug: false, LicenseKey: "QF-axel.grude@gmail.com:2026-11-17;2035e10abd68e9fb662fa5ed8f3c251aa1ce71c73578441a148309391779818c 19000f1fdd4dbb7863acdee702dc0fc0a3030a00654cc0ffb722a4750073a0a9", … }
+qf-background.js:383:13
+QuickFolders License - 52 Days left. qf-background.js:404:23
+QF displayUpdateMessage()
+ Last update message version: 6.17 qf-background.js:1783:13
+QF displayUpdateMessage()
+ Message already shown for 6.16.1 – skipping. qf-background.js:1783:13
+QuickFolders: messenger.runtime.onInstalled finished! qf-background.js:477:13
+QuickFolders: ready to start WindowListener. qf-background.js:851:13
+QuickFolders: add toggle-foldertree command... qf-background.js:1127:13
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 79, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+QuickFolders There is still a reference to QuickFolders! Removing old key listener… quickfolders.js:458:11
+[#697] About to call cache.init() at 2026-09-26T10:28:00.800Z quickfolders-preferences.js:655:9
+[#697] Cache init starting at 2026-09-26T10:28:00.801Z quickfolders-preferences.js:588:15
+[#697] Cache init completed at 2026-09-26T10:28:00.875Z quickfolders-preferences.js:633:15
+=========================
+BACKGROUND LISTENER received: getStorageStartupStatus
+========================= qf-background.js:1696:15
+QuickFolders [logTime init]
+ Adding QuickFolders Search Panel ... quickfolders-util.js:1432:13
+=========================
+BACKGROUND LISTENER received: getLicenseInfo
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "getLicenseInfo" }
+qf-background.js:1182:13
+=========================
+BACKGROUND LISTENER received: getPlatformInfo
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "getPlatformInfo" }
+qf-background.js:1182:13
+=========================
+BACKGROUND LISTENER received: getBrowserInfo
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "getBrowserInfo" }
+qf-background.js:1182:13
+=========================
+BACKGROUND LISTENER received: getAddonInfo
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "getAddonInfo" }
+qf-background.js:1182:13
+QuickFolders {NOTIFICATIONS} 11:28:0.945  [24 ms]   
+ 
+Object { platformInfo: {…}, browserInfo: {…}, addonInfo: {…} }
+quickfolders-util.js:1427:13
+QuickFolders 11:28:0.946  [1 ms]   
+ Adding Folder Listener... quickfolders-util.js:1432:13
+=========================
+BACKGROUND LISTENER received: addFolderPaneMenu
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "addFolderPaneMenu" }
+qf-background.js:1182:13
+QuickFolders 11:28:0.947  [1 ms]   
+ restore categories from tab session quickfolders-util.js:1432:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1455:15
+QuickFolders 11:28:0.948  [1 ms]   
+ QuickFolders UI patching in window: chrome://messenger/content/messenger.xhtml quickfolders-util.js:1432:13
+QuickFolders 11:28:0.948  [0 ms]   
+ injecting quickfolders-143.css ... quickfolders-util.js:1432:13
+=========================
+BACKGROUND LISTENER received: initActionButton
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "initActionButton" }
+qf-background.js:1182:13
+QuickFolders Update - from 6.17.4pre26 to 6.18
+ 
+Object { upgraded: true, silenced: false }
+qf-background.js:448:23
+QF notifying experiment: firstRun qf-background.js:460:23
+=========================
+BACKGROUND LISTENER received: listenersReady
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "listenersReady" }
+qf-background.js:1182:13
+=========================
+BACKGROUND LISTENER received: readCategories
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "readCategories", tabId: 1 }
+qf-background.js:1182:13
+QuickFolders {NOTIFICATIONS} 11:28:0.969  [21 ms]   
+ onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.updateQuickFoldersLabel
+into chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders 11:28:0.969  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders {NOTIFICATIONS} 11:28:0.969  [0 ms]   
+ onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.firstRun
+into chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders 11:28:0.970  [1 ms]   
+ Version() getter. addonInfo: 
+Object { id: "quickfolders@curious.be", name: "QuickFolders", description: "Bookmark your favorite mail folders in Thunderbird.", version: "6.18pre46", mayDisable: true, enabled: true, optionsUrl: "moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/html/options.html", installType: "normal", type: "extension", permissions: (11) […], … }
+quickfolders-util.js:1432:13
+QuickFolders 11:28:0.970  [0 ms]   
+ Current QuickFolders Version: 6.18pre46 quickfolders-util.js:1432:13
+QuickFolders 11:28:0.970  [0 ms]   
+ Version() getter. addonInfo: 
+Object { id: "quickfolders@curious.be", name: "QuickFolders", description: "Bookmark your favorite mail folders in Thunderbird.", version: "6.18pre46", mayDisable: true, enabled: true, optionsUrl: "moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/html/options.html", installType: "normal", type: "extension", permissions: (11) […], … }
+quickfolders-util.js:1432:13
+QuickFolders 11:28:0.971  [1 ms]   
+ readTabCategorySession - for tabId[1] returned Daily quickfolders-util.js:1432:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1455:15
+=========================
+BACKGROUND LISTENER received: readToolbarStatus
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "readToolbarStatus", tabId: 1 }
+qf-background.js:1182:13
+QuickFolders 11:28:0.976  [5 ms]   
+ readTabToolbarSession - for tabId[1] returned {"mainVisibleState":true} quickfolders-util.js:1432:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1455:15
+Preferences updates: 
+Object { lastActiveCategories: "" }
+preferences.mjs:518:17
+Preferences updates: 
+Object { lastActiveCategories: "Daily", version: "6.18" }
+preferences.mjs:518:17
+=========================
+BACKGROUND LISTENER received: readCategories
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "readCategories", tabId: 2 }
+qf-background.js:1182:13
+QuickFolders 11:28:1.4  [28 ms]   
+ readTabCategorySession - for tabId[2] returned undefined quickfolders-util.js:1432:13
+QuickFolders 11:28:1.4  [0 ms]   
+ no session info for tab category… quickfolders-util.js:1432:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1455:15
+=========================
+BACKGROUND LISTENER received: readToolbarStatus
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "readToolbarStatus", tabId: 2 }
+qf-background.js:1182:13
+QuickFolders 11:28:1.5  [1 ms]   
+ readTabToolbarSession - for tabId[2] returned undefined quickfolders-util.js:1432:13
+QuickFolders readTabCategorySession() quickfolders-util.js:1455:15
+=========================
+BACKGROUND LISTENER received: readCategories
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "readCategories", tabId: 3 }
+qf-background.js:1182:13
+QuickFolders 11:28:1.7  [2 ms]   
+ readTabCategorySession - for tabId[3] returned Daily quickfolders-util.js:1432:13
+QuickFolders readTabToolbarSession() quickfolders-util.js:1455:15
+=========================
+BACKGROUND LISTENER received: readToolbarStatus
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "readToolbarStatus", tabId: 3 }
+qf-background.js:1182:13
+QuickFolders 11:28:1.8  [1 ms]   
+ readTabToolbarSession - for tabId[3] returned {"mainVisibleState":true} quickfolders-util.js:1432:13
+QuickFolders 11:28:1.8  [0 ms]   
+ initDocAndWindow()
+QuickFolders_globalDoc = chrome://messenger/content/messenger.xhtml quickfolders-util.js:1432:13
+QuickFolders 11:28:1.8  [0 ms]   
+ initDelayed ==== correct window: chrome://messenger/content/messenger.xhtml - Add-ons Manager - Mozilla Thunderbird
+wait 250 msec until init()… quickfolders-util.js:1432:13
+QuickFolders 11:28:1.8  [0 ms]   
+ Adding Search Input event handler… quickfolders-util.js:1432:13
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 79, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1455:15
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 79, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 79, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1455:15
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1455:15
+uncaught exception: Object { message }
+QuickFolders 11:28:1.258  [250 ms]   
+ Version() getter. addonInfo: 
+Object { id: "quickfolders@curious.be", name: "QuickFolders", description: "Bookmark your favorite mail folders in Thunderbird.", version: "6.18pre46", mayDisable: true, enabled: true, optionsUrl: "moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/html/options.html", installType: "normal", type: "extension", permissions: (11) […], … }
+quickfolders-util.js:1432:13
+QuickFolders: QuickFolders.init() - QuickFolders Version 6.18pre46
+Running on Thunderbird Version 156.0
+QuickFolders Adding shortcut key listener. quickfolders-util.js:1455:15
+QuickFolders
+Failed to reconstruct URL for owl://axelongcraftstudios.com@outlook.office.com/Inbox of account account35 - account type N/A quickfolders-model.js:528:19
+QuickFolders 11:28:1.261  [3 ms]   
+ initTabsFromEntries() quickfolders-util.js:1432:13
+QuickFolders 11:28:1.316  [55 ms]   
+ init: setting categories to Daily quickfolders-util.js:1432:13
+=========================
+BACKGROUND LISTENER received: updateMainWindow
+========================= qf-background.js:1696:15
+QuickFolders 11:28:1.316  [0 ms]   
+ QuickFolders.init() ends. quickfolders-util.js:1432:13
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "updateMainWindow", minimal: false }
+qf-background.js:1182:13
+QuickFolders 11:28:1.317  [1 ms]   
+ bookmarks.load… quickfolders-util.js:1432:13
+QuickFolders 11:28:1.317  [0 ms]   
+ initLicensedUI - hasLicense = true
+ licenseInfo: 
+Object { status: "Valid", description: "Valid", licensedDaysLeft: 52, expiredDays: 0, expiryDate: "2026-11-17", email: "axel.grude@gmail.com", licenseKey: "QF-axel.grude@gmail.com:2026-11-17;2035e10abd68e9fb662fa5ed8f3c251aa1ce71c73578441a148309391779818c 19000f1fdd4dbb7863acdee702dc0fc0a3030a00654cc0ffb722a4750073a0a9", decryptedPart: "QF-axel.grude@gmail.com:2026-11-17", keyType: 0, isValid: true, … }
+quickfolders-util.js:1432:13
+QuickFolders 11:28:1.317  [0 ms]   
+ License found - removing Animations()… quickfolders-util.js:1432:13
+QuickFolders 11:28:1.320  [3 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:28:1.320  [0 ms]   
+ updateMainWindow()... Theme: flatTabs quickfolders-util.js:1432:13
+QuickFolders 11:28:1.320  [0 ms]   
+ bookmarks.load… quickfolders-util.js:1432:13
+QuickFolders 11:28:1.321  [1 ms]   
+ bookmarks.load complete. quickfolders-util.js:1432:13
+=========================
+BACKGROUND LISTENER received: updateFoldersUI
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "updateFoldersUI" }
+qf-background.js:1182:13
+WebExtensions: WL handleEvent (loadIntoWindow) context: 
+Object { isTopContext: true, viewType: "background", envType: "addon_parent", onClose: Set(12), checkedLastError: false, _lastError: null, contextId: 79, unloaded: false, extension: {…}, manifestVersion: 2, … }
+implementation.js:744
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1455:15
+WebExtensions: injectCurrentFolderBar() early exit, parent document URL==about:3pane qf-3pane.js:465
+QuickFolders {NOTIFICATIONS} 11:28:1.371  [50 ms]   
+ onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.updateMainWindow
+into chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders 11:28:1.372  [1 ms]   
+ updateMainWindow()... Theme: flatTabs quickfolders-util.js:1432:13
+QuickFolders 11:28:1.372  [0 ms]   
+ bookmarks.load… quickfolders-util.js:1432:13
+=========================
+BACKGROUND LISTENER received: updateFoldersUI
+========================= qf-background.js:1696:15
+QuickFolders 11:28:1.372  [0 ms]   
+ bookmarks.load complete. quickfolders-util.js:1432:13
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "updateFoldersUI" }
+qf-background.js:1182:13
+QuickFolders {NOTIFICATIONS} 11:28:1.373  [1 ms]   
+ onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.updateFoldersUI
+into chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders 11:28:1.373  [0 ms]   
+ updateFoldersUI()... quickfolders-util.js:1432:13
+QuickFolders 11:28:1.373  [0 ms]   
+ updateFolders(rebuildCategories: true, minimal: false) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:28:1.373  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:28:1.374  [1 ms]   
+ updateCategories() - [19 Categories] quickfolders-util.js:1432:13
+QuickFolders 11:28:1.383  [9 ms]   
+ Error in addFolderButton: folder parameter is empty!
+Entry: SC Inbox quickfolders-util.js:1432:13
+QuickFolders 11:28:1.441  [58 ms]   
+ 252 of 253 tabs rebuilt [minimalUpdate=false]. quickfolders-util.js:1432:13
+QuickFolders 11:28:1.441  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:28:1.441  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders {NOTIFICATIONS} 11:28:1.586  [145 ms]   
+ onBackgroundUpdates - dispatching custom event QuickFolders.BackgroundUpdate.updateFoldersUI
+into chrome://messenger/content/messenger.xhtml quickfolders-util.js:1427:13
+QuickFolders 11:28:1.586  [0 ms]   
+ updateFoldersUI()... quickfolders-util.js:1432:13
+QuickFolders 11:28:1.586  [0 ms]   
+ updateFolders(rebuildCategories: true, minimal: false) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:28:1.591  [5 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:28:1.591  [0 ms]   
+ updateCategories() - [19 Categories] quickfolders-util.js:1432:13
+QuickFolders 11:28:1.598  [7 ms]   
+ Error in addFolderButton: folder parameter is empty!
+Entry: SC Inbox quickfolders-util.js:1432:13
+QuickFolders 11:28:1.656  [58 ms]   
+ 252 of 253 tabs rebuilt [minimalUpdate=false]. quickfolders-util.js:1432:13
+QuickFolders 11:28:1.656  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:28:1.656  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:28:1.737  [81 ms]   
+ readStringFile() - Success quickfolders-util.js:1432:13
+QuickFolders 11:28:1.737  [0 ms]   
+ parsed 2 entries quickfolders-util.js:1432:13
+QuickFolders 11:28:1.737  [0 ms]   
+ bookmarks.resetList() quickfolders-util.js:1432:13
+QuickFolders 11:28:1.738  [1 ms]   
+ QuickFolders.bookmarks.update()
+isActive = false quickfolders-util.js:1432:13
+QuickFolders 11:28:1.738  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = true quickfolders-util.js:1432:13
+QuickFolders 11:28:1.740  [2 ms]   
+ readStringFile() - Success quickfolders-util.js:1432:13
+QuickFolders 11:28:1.740  [0 ms]   
+ parsed 2 entries quickfolders-util.js:1432:13
+QuickFolders 11:28:1.740  [0 ms]   
+ bookmarks.resetList() quickfolders-util.js:1432:13
+QuickFolders 11:28:1.741  [1 ms]   
+ QuickFolders.bookmarks.update()
+isActive = false quickfolders-util.js:1432:13
+QuickFolders 11:28:1.741  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = true quickfolders-util.js:1432:13
+QuickFolders 11:28:1.979  [238 ms]   
+ readStringFile() - Success quickfolders-util.js:1432:13
+QuickFolders 11:28:1.979  [0 ms]   
+ parsed 2 entries quickfolders-util.js:1432:13
+QuickFolders 11:28:1.979  [0 ms]   
+ bookmarks.resetList() quickfolders-util.js:1432:13
+QuickFolders 11:28:1.980  [1 ms]   
+ QuickFolders.bookmarks.update()
+isActive = false quickfolders-util.js:1432:13
+QuickFolders 11:28:1.980  [0 ms]   
+ QuickFolders.bookmarks.update()
+isActive = true quickfolders-util.js:1432:13
+QuickFolders 11:28:2.208  [228 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1432:13
+QuickFolders 11:28:2.208  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1432:13
+QuickFolders 11:28:2.209  [1 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1432:13
+QuickFolders 11:28:2.209  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1432:13
+QuickFolders 11:28:2.211  [2 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1432:13
+QuickFolders 11:28:2.211  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1432:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS78", hasInject: true, url: "about:3pane" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] [QuickFolders 3pane] about:3pane PRE-inject: threadPane EXISTS (childCount=10) quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] [QuickFolders 3pane] about:3pane threadPane children: div#threadPaneHeaderBar, template#searchBarTemplate, div#quick-filter-bar, xul:menupopup#quickFilterButtonsContext, tree-view#threadTree, template#threadPaneApplyColumnMenu, template#threadPaneApplyViewMenu, template#threadPaneRowTemplate, template#threadPaneCardTemplate, div#threadPaneNotificationBox quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1455:15
+WebExtensions: 
+Array [ div#threadPane ]
+implementation.js:600
+WebExtensions: div#threadPane is an existing container, injecting into threadPane implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to threadPane implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: threadPane quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] about:3pane - injection result: true true quickfolders-util.js:1455:15
+QuickFolders 11:28:2.594  [383 ms]   
+ liftNavigationbar() quickfolders-util.js:1432:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #threadPane content URL: about:3pane quickfolders-interface.js:1505:15
+[QF liftNavBar] about:3pane — viewMode=classic, #threadPane count=1, querySelector→parent=#paneLayout quickfolders-interface.js:1529:21
+QuickFolders {3PANE} 11:28:2.594  [0 ms]   
+ liftNavigationbar() - viewMode=classic 
+<div id="threadPane" style="height: 285px !important;">
+quickfolders-util.js:1427:13
+[QF liftNavBar] after move — panel parent: #threadPane, panel===in threadPane: true quickfolders-interface.js:1552:21
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.595  [1 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:3pane
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.595  [0 ms]   
+ 3pane type = undefined, URL= about:3pane, win = [object Window], tabOrWindow= [object Object], folder name= issues quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.604  [9 ms]   
+ initCurrentFolderTab(issues)
+tabMode: mail3PaneTab -  tabindex: 3 
+<tab class="tabmail-tab" is="tabmail-tab" crop="end" context="tabContextMenu" linkedpanel="mail3PaneTab1" label="issues - Mail BASE" type="undefined" selected visuallyselected>
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 11:28:2.722  [118 ms]   
+ hoistCurrentFolderBar(tabMode: mail3PaneTab) quickfolders-util.js:1427:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="") = true — bar will be SHOWN qf-3pane.js:762
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.723  [1 ms]   
+ displayNavigationToolbar(visible=true, selector=) quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.723  [0 ms]   
+ win=chrome://messenger/content/messenger.xhtml
+document=about:3pane quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.723  [0 ms]   
+ |===========================================================|
+| currentFolderBar.style.display = 
+|===========================================================|
+visible = true quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.723  [0 ms]   
+ Effected display of current folder bar = flex quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.723  [0 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:3pane
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.723  [0 ms]   
+ 3pane type = undefined, URL= about:3pane, win = [object Window], tabOrWindow= [object Object], folder name= issues quickfolders-util.js:1427:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS78", hasInject: true, url: "about:message" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1455:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1455:15
+QuickFolders 11:28:2.758  [35 ms]   
+ liftNavigationbar() quickfolders-util.js:1432:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1505:15
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.758  [0 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.758  [0 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= Support quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.764  [6 ms]   
+ initCurrentFolderTab(Support)
+tabMode: mailMessageTab -  tabindex: 3 
+<tab class="tabmail-tab" validate="never" is="tabmail-tab" context="tabContextMenu" linkedpanel="mailMessageTab2" label="Re: [quickFilters] Re: Favor and RC mayhem" type="undefined">
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 11:28:2.772  [8 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1427:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:762
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.773  [1 ms]   
+ displayNavigationToolbar(visible=true, selector=singleMailTab) quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.773  [0 ms]   
+ win=chrome://messenger/content/messenger.xhtml
+document=about:message quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.773  [0 ms]   
+ |===========================================================|
+| currentFolderBar.style.display = 
+|===========================================================|
+visible = true quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.773  [0 ms]   
+ Effected display of current folder bar = flex quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.773  [0 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.774  [1 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= Support quickfolders-util.js:1427:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS78", hasInject: true, url: "about:message" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1455:15
+WebExtensions: 
+Array [ vbox#messagepanebox ]
+implementation.js:600
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: 
+Array [ hbox#QuickFolders-PreviewToolbarPanel.QuickFolders-NavigationPanel.quickFoldersToolbar ]
+implementation.js:600
+WebExtensions: hbox#QuickFolders-PreviewToolbarPanel: append to messagepanebox implementation.js:711
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1455:15
+QuickFolders 11:28:2.781  [7 ms]   
+ liftNavigationbar() quickfolders-util.js:1432:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #messagepanebox content URL: about:message quickfolders-interface.js:1505:15
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.781  [0 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.781  [0 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= Roberto quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.787  [6 ms]   
+ initCurrentFolderTab(Roberto)
+tabMode: mailMessageTab -  tabindex: 3 
+<tab class="tabmail-tab" validate="never" is="tabmail-tab" context="tabContextMenu" linkedpanel="mailMessageTab1" label="Re: [FiltaQuilla]" type="undefined">
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 11:28:2.794  [7 ms]   
+ hoistCurrentFolderBar(tabMode: mailMessageTab) quickfolders-util.js:1427:13
+WebExtensions: [QuickFolders 3pane] displayNavigationToolbar: isShowCurrentFolderToolbar(windowMode="singleMailTab") = true — bar will be SHOWN qf-3pane.js:762
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.795  [1 ms]   
+ displayNavigationToolbar(visible=true, selector=singleMailTab) quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.795  [0 ms]   
+ win=chrome://messenger/content/messenger.xhtml
+document=about:message quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.795  [0 ms]   
+ |===========================================================|
+| currentFolderBar.style.display = 
+|===========================================================|
+visible = true quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.795  [0 ms]   
+ Effected display of current folder bar = flex quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.795  [0 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:message
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.795  [0 ms]   
+ 3pane type = undefined, URL= about:message, win = [object Window], tabOrWindow= [object Object], folder name= Roberto quickfolders-util.js:1427:13
+=========================
+BACKGROUND LISTENER received: storeToolbarStatus
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "storeToolbarStatus", tabId: 1, status: '{"mainVisibleState":true}' }
+qf-background.js:1182:13
+patchMailPane()... qFilters-utils.js:1016:13
+QuickFolders 11:28:2.848  [53 ms]   
+ updateFolders(rebuildCategories: false, minimal: false) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:28:2.853  [5 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:28:2.855  [2 ms]   
+ Error in addFolderButton: folder parameter is empty!
+Entry: SC Inbox quickfolders-util.js:1432:13
+QuickFolders 11:28:2.860  [5 ms]   
+ 28 of 253 tabs rebuilt [minimalUpdate=false]. quickfolders-util.js:1432:13
+QuickFolders 11:28:2.860  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:28:2.861  [1 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:28:2.861  [0 ms]   
+ initCurrentFolderTab(issues)
+tabMode: mail3PaneTab -  tabindex: n/a undefined quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 11:28:2.868  [7 ms]   
+ hoistCurrentFolderBar(tabMode: mail3PaneTab) quickfolders-util.js:1427:13
+=========================
+BACKGROUND LISTENER received: storeCategories
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "storeCategories", tabId: 1, categories: "Daily" }
+qf-background.js:1182:13
+Object { tabId: 1, windowId: 1, previousTabId: 4 }
+qf-background.js:1039:15
+=========================
+BACKGROUND LISTENER received: updateQuickFilters
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "updateQuickFilters" }
+qf-background.js:1182:13
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1525:19
+=========================
+BACKGROUND LISTENER received: updateQuickFilters
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "updateQuickFilters" }
+qf-background.js:1182:13
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1525:19
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+=========================
+BACKGROUND LISTENER received: updateQuickFilters
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "updateQuickFilters" }
+qf-background.js:1182:13
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1525:19
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+quickFilters 11:28:3.938  [647575 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+quickFilters 11:28:3.938  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 0) — triggering bar update qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1536:23
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+quickFilters 11:28:3.946  [8 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+quickFilters 11:28:3.946  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 0) — triggering bar update qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1536:23
+quickFilters 11:28:3.962  [16 ms]   
+ toggleCurrentFolderButtons(retries=0) qFilters-utils.js:921:13
+quickFilters 11:28:3.963  [1 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 0) — triggering bar update qFilters-utils.js:921:13
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1536:23
+=========================
+BACKGROUND LISTENER received: slideAlert
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "slideAlert", args: (3) […] }
+qf-background.js:1182:13
+quickFilters 11:28:5.965  [2002 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 11:28:5.965  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 1) — triggering bar update qFilters-utils.js:921:13
+quickFilters 11:28:5.974  [9 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 11:28:5.974  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 1) — triggering bar update qFilters-utils.js:921:13
+quickFilters 11:28:5.980  [6 ms]   
+ toggleCurrentFolderButtons(retries=1) qFilters-utils.js:921:13
+quickFilters 11:28:5.980  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 1) — triggering bar update qFilters-utils.js:921:13
+quickFilters 11:28:7.968  [1988 ms]   
+ toggleCurrentFolderButtons(retries=2) qFilters-utils.js:921:13
+quickFilters 11:28:7.968  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 2) — triggering bar update qFilters-utils.js:921:13
+quickFilters 11:28:7.976  [8 ms]   
+ toggleCurrentFolderButtons(retries=2) qFilters-utils.js:921:13
+quickFilters 11:28:7.976  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 2) — triggering bar update qFilters-utils.js:921:13
+quickFilters 11:28:7.981  [5 ms]   
+ toggleCurrentFolderButtons(retries=2) qFilters-utils.js:921:13
+quickFilters 11:28:7.981  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 2) — triggering bar update qFilters-utils.js:921:13
+quickFilters 11:28:10.8  [2027 ms]   
+ toggleCurrentFolderButtons(retries=3) qFilters-utils.js:921:13
+quickFilters 11:28:10.9  [1 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 3) — triggering bar update qFilters-utils.js:921:13
+quickFilters 11:28:10.9  [0 ms]   
+ toggleCurrentFolderButtons(retries=3) qFilters-utils.js:921:13
+quickFilters 11:28:10.9  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 3) — triggering bar update qFilters-utils.js:921:13
+quickFilters 11:28:10.9  [0 ms]   
+ toggleCurrentFolderButtons(retries=3) qFilters-utils.js:921:13
+quickFilters 11:28:10.9  [0 ms]   
+ toggleCurrentFolderButtons: toolbar present but no buttons found (retry 3) — triggering bar update qFilters-utils.js:921:13
+Key event not available on some keyboard layouts: key=“s” modifiers=“accel,alt” id=“” messenger.xhtml
+Key event not available on some keyboard layouts: key=“n” modifiers=“accel,alt” id=“” messenger.xhtml
+Key event not available on some keyboard layouts: key=“o” modifiers=“accel,alt” id=“” messenger.xhtml
+=========================
+BACKGROUND LISTENER received: getQuickFiltersPref
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "getQuickFiltersPref", key: "autoStart" }
+qf-background.js:1182:13
+Missing resource in locale de: devtools/client/toolbox.ftl
+Missing resource in locale it: devtools/client/toolbox.ftl
+quickFilters 11:28:12.88  [2079 ms]   
+ toggleCurrentFolderButtons(retries=4) qFilters-utils.js:921:13
+quickFilters 11:28:12.88  [0 ms]   
+ toggleCurrentFolderButtons: giving up re-injection after 4 retries — toolbar present but buttons never appeared qFilters-utils.js:921:13
+quickFilters 11:28:12.89  [1 ms]   
+ toggleCurrentFolderButtons(retries=4) qFilters-utils.js:921:13
+quickFilters 11:28:12.89  [0 ms]   
+ toggleCurrentFolderButtons: giving up re-injection after 4 retries — toolbar present but buttons never appeared qFilters-utils.js:921:13
+quickFilters 11:28:12.89  [0 ms]   
+ toggleCurrentFolderButtons(retries=4) qFilters-utils.js:921:13
+quickFilters 11:28:12.89  [0 ms]   
+ toggleCurrentFolderButtons: giving up re-injection after 4 retries — toolbar present but buttons never appeared qFilters-utils.js:921:13
+This site appears to use a scroll-linked positioning effect. This may not work well with asynchronous panning; see https://firefox-source-docs.mozilla.org/performance/scroll-linked_effects.html for further details and to join the discussion on related tools and features! index.html
+QuickFolders 11:33:32.198  [329330 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders 11:33:34.291  [2093 ms]   
+ util.touch(Support)
+1790418814
+26/9 11:33:34 quickfolders-util.js:1432:13
+QuickFolders 11:33:34.293  [2 ms]   
+ setFolderUpdateTimer(item): Support quickfolders-util.js:1432:13
+QuickFolders 11:33:34.293  [0 ms]   
+ Folder Tab Select Timer ID: 805 quickfolders-util.js:1432:13
+QuickFolders 11:33:34.293  [0 ms]   
+ Setting Update Timer (after timer 0 expired), new Timer: 805 quickfolders-util.js:1432:13
+QuickFolders 11:33:34.295  [2 ms]   
+ util.touch(Support)
+1790418814
+26/9 11:33:34 quickfolders-util.js:1432:13
+QuickFolders 11:33:34.802  [507 ms]   
+ updateFolders(rebuildCategories: false, minimal: true) - Number of Folders = 253 quickfolders-util.js:1432:13
+QuickFolders 11:33:34.809  [7 ms]   
+ 28 of 253 tabs refreshed on toolbar [minimalUpdate]. quickfolders-util.js:1432:13
+QuickFolders 11:33:34.809  [0 ms]   
+ 1 invalid tabs where found!
+ Please check with 'Remove Invalid tabs' from the QuickFolders tools menu. quickfolders-util.js:1432:13
+QuickFolders 11:33:34.809  [0 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 11:33:34.811  [2 ms]   
+ initCurrentFolderTab(issues)
+tabMode: mail3PaneTab -  tabindex: n/a undefined quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 11:33:34.871  [60 ms]   
+ hoistCurrentFolderBar(tabMode: mail3PaneTab) quickfolders-util.js:1427:13
+QuickFolders 11:38:31.18  [296147 ms]   
+ updateQuickFoldersLabel() quickfolders-util.js:1432:13
+<Provider> does not support changing `store` on the fly. It is most likely that you see this error because you updated to Redux 2.x and React Redux 2.x which no longer hot reload reducers automatically. See https://github.com/reactjs/react-redux/releases/tag/v2.0.0 for the migration instructions. react-redux.js:881:13

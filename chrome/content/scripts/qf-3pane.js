@@ -4,6 +4,37 @@
 */
 
 const QFInjector = {
+  trace(stage, details = {}) {
+    if (window.document.URL !== "about:3pane" ||
+        !Services.prefs.getBoolPref("extensions.quickfolders.debug", false)) {
+      return;
+    }
+    // Snapshot primitives: console objects can otherwise show later window state.
+    // Read the legacy debug switch before the preference cache is ready.
+    try {
+      const tabmail = window.top.document.getElementById("tabmail");
+      const tabs = Array.from(tabmail?.tabInfo || []);
+      const tabIndex = tabs.findIndex((tab) => tab.chromeBrowser?.contentWindow === window);
+      const panel = window.document.getElementById("QuickFolders-PreviewToolbarPanel");
+      console.log("[QuickFolders startup] " + stage + " " + JSON.stringify({
+        scope: this.getWL(window)?.scopeName || null,
+        url: window.document.URL,
+        readyState: window.document.readyState,
+        tabIndex,
+        firstTab: tabIndex < 0 ? null : tabIndex === 0,
+        hasParentQuickFolders: !!window.parent?.QuickFolders,
+        hasThreadPane: !!window.document.getElementById("threadPane"),
+        hasPanel: !!panel,
+        panelParent: panel?.parentElement?.id || null,
+        display: panel?.style.display ?? null,
+        collapsed: panel?.getAttribute("collapsed") ?? null,
+        ...details,
+      }));
+    } catch (error) {
+      console.warn("[QuickFolders startup] trace failed: " + stage, String(error));
+    }
+  },
+
   getWL(win) {
     // WL belongs to the add-on's injection scope, not normally to the window.
     // Verify both ownership and target: another add-on or a parent window's
@@ -303,6 +334,7 @@ const QFInjector = {
   },
 };
 
+QFInjector.trace("qf-3pane.js script evaluated");
 
 let windowMode = "";
 
@@ -446,6 +478,7 @@ async function setCurrentFolderButtonState(active, commandName) {
 var globalThemehandler;
 
 async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false) {
+  QFInjector.trace("injectCurrentFolderBar entered", { activatedWhileWindowOpen, isManual });
   const WAIT_FOR_3PANE = 1000;
   // const win = window;
   const util = window.parent?.QuickFolders?.Util,
@@ -460,6 +493,7 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
   );
 
   if (window?.parent?.document?.URL == "about:3pane") {
+    QFInjector.trace("skipped embedded message pane: parent owns bar");
     // parent document should already be patched!
     if (prefs.isDebug) {
       console.log("injectCurrentFolderBar() early exit, parent document URL==about:3pane");
@@ -477,22 +511,30 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
 
   // let's make sure 3Pane is really ready (we might want to attach this to a window.DOMContentLoaded event instead)
   window.setTimeout(async (win = window) => {
+    let stage = "preferences readiness";
+    try {
+    QFInjector.trace(stage);
     util.logDebug("QuickFolders: injecting current folder");
     const contentDoc = win.document;
     const prefs = win.QuickFolders.Preferences;
     const prefsResult = await prefs.ensureReady();
     if (!prefsResult?.ok) {
+      QFInjector.trace("preferences readiness failed");
       return;
     }
     // Storage readiness alone does not mean the parent's license data is ready.
     // Do not inject Current Folder Bar markup until both have completed.
     try {
+      stage = "utility/license readiness";
+      QFInjector.trace(stage);
       await util.init();
     } catch (error) {
+      QFInjector.trace("initialization failed", { stage, error: String(error), stack: error?.stack });
       util.logException("3pane initialization failed", error);
       return;
     }
     if (win.closed) {
+      QFInjector.trace("stopped: window closed");
       return;
     }
     const debug = prefs?.isDebug;
@@ -518,6 +560,8 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     win.QuickFolders.Util.logDebug(
       `============INJECT==========\nqf-3pane.js onLoad(${activatedWhileWindowOpen})`
     );
+    stage = "stylesheet readiness";
+    QFInjector.trace(stage);
     const stylesReady = await QFInjector.loadStyleSheets(win, [
       "chrome://quickfolders/content/quickfolders-layout.css?v=6.15.1",
       "chrome://quickfolders/content/quickfolders-tools.css?v=2",
@@ -526,8 +570,11 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
       "chrome://quickfolders/content/skin/quickfolders-palettes.css",
     ]);
     if (!stylesReady || win.closed) {
+      QFInjector.trace("stylesheet readiness stopped", { stylesReady, closed: win.closed });
       return;
     }
+    stage = "markup injection / container readiness";
+    QFInjector.trace(stage);
     util.logDebugOptional("css", "Navigation stylesheets ready; initializing current folder bar");
 
     //------------------------------------ overlay current folder (navigation bar)
@@ -716,6 +763,8 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
     // main window: win.parent
 
     // relocate to make it visible (bottom of thread)
+    stage = "positioning and visibility";
+    QFInjector.trace(stage);
     win.QuickFolders.Interface.liftNavigationbar(contentDoc); // passes HTMLDocument "about:3pane"
 
     const myToolbar = contentDoc.getElementById("QuickFolders-CurrentFolderTools");
@@ -768,6 +817,8 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
         selector: windowMode,
       });
     }
+    QFInjector.trace("visibility applied", { windowMode });
+    stage = "navigation and folder-tree initialization";
     let tabInfo;
     try {
       tabInfo = contentDoc.defaultView.tabOrWindow.tabNode;
@@ -786,6 +837,11 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
 
     // add a listener for switching the view
     Services.prefs.addObserver("mail.pane_config.dynamic", viewLayoutObserver);
+    QFInjector.trace("initialization complete");
+    } catch (error) {
+      QFInjector.trace("initialization failed", { stage, error: String(error), stack: error?.stack });
+      throw error;
+    }
   }, WAIT_FOR_3PANE);
 
 
@@ -817,10 +873,16 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
 
 // eslint-disable-next-line no-unused-vars
 async function onLoad(activatedWhileWindowOpen) {
-  if (typeof window.hasDOMContentLoaded === "object") {
-    await window.hasDOMContentLoaded;
-  }  
-  return injectCurrentFolderBar(activatedWhileWindowOpen);
+  try {
+    if (typeof window.hasDOMContentLoaded === "object") {
+      QFInjector.trace("waiting for hasDOMContentLoaded");
+      await window.hasDOMContentLoaded;
+    }
+    return await injectCurrentFolderBar(activatedWhileWindowOpen);
+  } catch (error) {
+    QFInjector.trace("onLoad failed", { error: String(error), stack: error?.stack });
+    throw error;
+  }
 }
 
 // eslint-disable-next-line no-unused-vars

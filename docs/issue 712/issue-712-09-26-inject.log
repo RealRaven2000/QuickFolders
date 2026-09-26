@@ -1,0 +1,120 @@
+1790417662216	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1790417662224	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1790417663213	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1790417663215	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS11", hasInject: true, url: "about:message" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+1790417699020	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1790417761010	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+1790418480219	addons.webextension.{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}	WARN	Loading extension '{a300a000-5e21-4ee0-a115-9ec8f4eaa92b}': Reading manifest: Warning processing chrome_injectors: An unexpected property was found in the WebExtension manifest.
+QuickFolders 11:28:0.948  [0 ms]   
+ injecting quickfolders-143.css ... quickfolders-util.js:1432:13
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1455:15
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1455:15
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1455:15
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=false quickfolders-util.js:1455:15
+WebExtensions: injectCurrentFolderBar() early exit, parent document URL==about:3pane qf-3pane.js:465
+QuickFolders 11:28:2.208  [228 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1432:13
+QuickFolders 11:28:2.208  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1432:13
+QuickFolders 11:28:2.209  [1 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1432:13
+QuickFolders 11:28:2.209  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1432:13
+QuickFolders 11:28:2.211  [2 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1432:13
+QuickFolders 11:28:2.211  [0 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1432:13
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS78", hasInject: true, url: "about:3pane" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] [QuickFolders 3pane] about:3pane PRE-inject: threadPane EXISTS (childCount=10) quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1455:15
+WebExtensions: div#threadPane is an existing container, injecting into threadPane implementation.js:671
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: threadPane quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] about:3pane - injection result: true true quickfolders-util.js:1455:15
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS78", hasInject: true, url: "about:message" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1455:15
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1455:15
+WebExtensions: QuickFolders injector path: 
+Object { hasWL: true, scopeName: "AddOnNS78", hasInject: true, url: "about:message" }
+qf-3pane.js:134
+WebExtensions: Using WindowListener:injectElements qf-3pane.js:152
+WebExtensions: Injecting into root document: implementation.js:720
+QuickFolders [QuickFolders Navigation Bar] Injection path: WindowListener (WL) quickfolders-util.js:1455:15
+WebExtensions: vbox#messagepanebox is an existing container, injecting into messagepanebox implementation.js:671
+QuickFolders [QuickFolders Navigation Bar] WL.injectElements done - panel in DOM: true, panel parent: messagepanebox quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] about:message - injection result: true true quickfolders-util.js:1455:15
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1525:19
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1525:19
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1525:19
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1536:23
+quickFilters received external message 'injectButtonsQFNavigationBar' 
+Object { command: "injectButtonsQFNavigationBar", license: {…} }
+ 
+Object { status: "Valid", keyType: 0 }
+qi-util.mjs.js:41:10
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1536:23
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1536:23
+quickFilters 11:28:12.88  [0 ms]   
+ toggleCurrentFolderButtons: giving up re-injection after 4 retries — toolbar present but buttons never appeared qFilters-utils.js:921:13
+quickFilters 11:28:12.89  [0 ms]   
+ toggleCurrentFolderButtons: giving up re-injection after 4 retries — toolbar present but buttons never appeared qFilters-utils.js:921:13
+quickFilters 11:28:12.89  [0 ms]   
+ toggleCurrentFolderButtons: giving up re-injection after 4 retries — toolbar present but buttons never appeared qFilters-utils.js:921:13

@@ -2105,7 +2105,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L} {b class=maintenance}6.17.3{/b} 透過剪貼簿匯出和匯入現在使用原生 API。 [issue 710]{/L}{L} {b class=maintenance}6.17.3{/b} 修正了啟動時的時序問題，此問題可能導致持有授權的使用者看到黑色且無法使用的分頁。現在會先完成儲存空間準備和授權驗證，再初始化工具列。 [issue 711]{/L}{hr}{h3} 先前的維護版本 6.17.2 (2026/09/09){/h3}{L} 修正了儲存、在地化和版面配置方面的問題。 [issue 706], [issue 705], [issue 700], [issue 702]{/L}{hr}{h3} 先前的維護版本 6.17.1 (2026/09/01){/h3}{L} 修正了授權續訂日期錯誤和升級後分頁顏色遺失的問題。 [issue 699], [issue 698]{/L}{hr}{h3} 原始版本 6.17 (26/08/2026) {/h3}{L} 從舊的首選項轉換的儲存（{code}關於：配置{/code}) 到本機儲存 API。 [issue 677] {br}{emph}筆記：{/emph} 現在可以透過卸載附加元件將設定重設為預設值 - 首先使用備份您的設置 {b}{+qf.storeConfig}{/b} 在下面 {italic}{+qf.backupAndRestore}{/italic} 於 {italic}{+qf.tab.gopro}{/italic} 頁。{/L}{L} 現在可以為製表符分隔符號配置自訂寬度。 [issue 686]{/L}"
+    "message": "{L} {b}{+extensionName}{/b} 現已標記為相容於 Thunderbird 158。{/L}{L} 修正了儲存設定備份的問題，並改善了在所有已開啟視窗中還原設定的功能。 [issue 717]{/L}{L} 提高了啟動的可靠性，並在 QuickFolders 工具列中記錄啟動步驟。 [issue 716]{/L}{L} 修正了設定視窗中的佈景主題相容性和版面配置問題。{/L}{L} 修正了 Thunderbird 156 中滑鼠停留在按鈕上時背景透明的問題。 [issue 718]{/L}{L} 當連結無法在瀏覽器中開啟時，現在可以手動複製其 URL。 [issue 713]{/L}{L} 移除了全域註冊的樣式表。 [issue 715]{/L}"
   },
   "whats-new-maintenance": {
     "message": "維護更新 $ver$。此版本修正了上一版本引入、需要緊急處理的回歸問題。",

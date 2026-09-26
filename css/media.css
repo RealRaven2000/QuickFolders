@@ -1,5 +1,5 @@
 
-@media only screen (max-width: 1400px) {
+@media only screen and (max-width: 1400px) {
   #main-content-no-nav {
     margin-left:  120px !important;
     margin-right: 120px !important;

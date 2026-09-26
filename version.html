@@ -303,6 +303,52 @@
     -->
 		<a name="latest">&nbsp;</a>
 
+    <a name="6.18">&nbsp;</a>
+    <li>
+      <h4>
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.18" 
+			   onclick="alert('Version currently awaiting review!\nPlease mail me if you want a preview version for testing.')">
+				 Version 6.18 - 26/09/2026
+		  </a>
+      </h4>
+      <ul>
+				<h4 class="inList">Improvements</h4>
+        <li>
+					Compatibility with Thunderbird 158
+				</li>
+				<li> 
+					Avoided global stylesheet registration via nsIStyleSheetService.sheetRegistered(uri, sss.USER_SHEET). 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/715">[issue 715]</a>.
+				</li>
+				<li> 
+					If launching the external browser fails, QuickFolders now shows the attempted URL in a selectable 
+					field so it can be copied into a browser manually. <a href="https://github.com/RealRaven2000/QuickFolders/issues/713">[issue 713]</a>.
+				</li>
+				<li> 
+					Hardened startup handling and added startup progress to the toolbar placeholder. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/716">[issue 716]</a>.
+				</li>
+      </ul>
+
+      <ul>
+				<h4 class="inList">Bug Fixes</h4>
+				<li> 
+					Fixed Save Configuration failing to open the save dialog after migration to local storage. Backups now 
+					read the saved folder model instead of the obsolete legacy preference. Loading a configuration waits for 
+					folder storage to finish and refreshes folder caches in all main windows. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/717">[issue 717]</a>.
+				</li>
+				<li> 
+					Fixed transparent backgrounds on default buttons when hovering in Thunderbird 156. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/718">[issue 718]</a>.
+				</li>
+				<li> 
+					Fixed various layout regressions in Thunderbird 157. This mainly affects theme compatibility 
+					and spacing in the settings window.
+				</li>
+      </ul>
+    </li>		
+
 		<a name="6.17">&nbsp;</a> <a name="6.17.1">&nbsp;</a> <a name="6.17.2">&nbsp;</a> <a name="6.17.3">&nbsp;</a>
     <li>
       <h4>

@@ -1,0 +1,85 @@
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 12:35:18.300  [128749 ms]   
+ displayNavigationToolbar(visible=true, selector=) quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 12:35:18.301  [1 ms]   
+ win=chrome://messenger/content/messenger.xhtml
+document=about:3pane quickfolders-util.js:1427:13
+QuickFolders displayNavigationToolbar() 
+ No WindowListener - loading script: jar:file:///E:/Mail/dd9jwla2n.axel/extensions/quickfolders@curious.be.xpi!/chrome/content/scripts/qf-3pane.js
+ Into window doc URL: about:3pane quickfolders-util.js:1455:15
+[QuickFolders startup] qf-3pane.js script evaluated {"scope":null,"url":"about:3pane","readyState":"complete","tabIndex":0,"firstTab":true,"hasParentQuickFolders":true,"hasThreadPane":true,"hasPanel":false,"panelParent":null,"display":null,"collapsed":null} qf-3pane.js:19:15
+[QuickFolders startup] injectCurrentFolderBar entered {"scope":null,"url":"about:3pane","readyState":"complete","tabIndex":0,"firstTab":true,"hasParentQuickFolders":true,"hasThreadPane":true,"hasPanel":false,"panelParent":null,"display":null,"collapsed":null,"activatedWhileWindowOpen":true,"isManual":true} qf-3pane.js:19:15
+QuickFolders qf-3pane.js - injectCurrentFolderBar() 
+ activatedWhileWindowOpen = true
+ isManual=true quickfolders-util.js:1455:15
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 12:35:18.335  [34 ms]   
+ Re-injection attempted successfully. quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 12:35:18.335  [0 ms]   
+ |====================================================|
+|  currentFolderBar element could not be retrieved
+|====================================================|
+quickfolders-util.js:1427:13
+[QuickFolders startup] preferences readiness {"scope":null,"url":"about:3pane","readyState":"complete","tabIndex":0,"firstTab":true,"hasParentQuickFolders":true,"hasThreadPane":true,"hasPanel":false,"panelParent":null,"display":null,"collapsed":null} qf-3pane.js:19:15
+QuickFolders 12:35:19.382  [1047 ms]   
+ QuickFolders: injecting current folder quickfolders-util.js:1432:13
+[QuickFolders startup] utility/license readiness {"scope":null,"url":"about:3pane","readyState":"complete","tabIndex":0,"firstTab":true,"hasParentQuickFolders":true,"hasThreadPane":true,"hasPanel":false,"panelParent":null,"display":null,"collapsed":null} qf-3pane.js:19:15
+QuickFolders 12:35:19.384  [2 ms]   
+ ============INJECT==========
+qf-3pane.js onLoad(true) quickfolders-util.js:1432:13
+[QuickFolders startup] stylesheet readiness {"scope":null,"url":"about:3pane","readyState":"complete","tabIndex":0,"firstTab":true,"hasParentQuickFolders":true,"hasThreadPane":true,"hasPanel":false,"panelParent":null,"display":null,"collapsed":null} qf-3pane.js:19:15
+[QuickFolders startup] markup injection / container readiness {"scope":null,"url":"about:3pane","readyState":"complete","tabIndex":0,"firstTab":true,"hasParentQuickFolders":true,"hasThreadPane":true,"hasPanel":false,"panelParent":null,"display":null,"collapsed":null} qf-3pane.js:19:15
+QuickFolders [QuickFolders Navigation Bar] [QuickFolders 3pane] about:3pane PRE-inject: threadPane EXISTS (childCount=10) quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] [QuickFolders 3pane] about:3pane threadPane children: div#threadPaneHeaderBar, template#searchBarTemplate, div#quick-filter-bar, xul:menupopup#quickFilterButtonsContext, tree-view#threadTree, template#threadPaneApplyColumnMenu, template#threadPaneApplyViewMenu, template#threadPaneRowTemplate, template#threadPaneCardTemplate, div#threadPaneNotificationBox quickfolders-util.js:1455:15
+QuickFolders injector path: 
+Object { hasWL: false, scopeName: null, hasInject: false, url: "about:3pane" }
+qf-3pane.js:165:15
+QuickFolders [QuickFolders Navigation Bar] WL after ExtensionParent import object quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] WL after getExtension object quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] Injection path: QFInjector fallback (no WL) quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] QFInjector.injectElements (fallback): root id=threadPane, children=1 quickfolders-util.js:1455:15
+Object { type: 1, name: "hbox", isNode: 1 }
+qf-3pane.js:219:19
+QuickFolders [QuickFolders Navigation Bar] QFInjector.injectElements: target lookup id="threadPane" → FOUND (div, childCount=10) quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] QFInjector.injectElements: CASE 1 - merging 1 child(ren) into existing #threadPane quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] QFInjector.injectElements: appending <hbox id="QuickFolders-PreviewToolbarPanel"> to #threadPane quickfolders-util.js:1455:15
+QuickFolders [QuickFolders Navigation Bar] about:3pane - injection result: true true quickfolders-util.js:1455:15
+[QuickFolders startup] positioning and visibility {"scope":null,"url":"about:3pane","readyState":"complete","tabIndex":0,"firstTab":true,"hasParentQuickFolders":true,"hasThreadPane":true,"hasPanel":true,"panelParent":"threadPane","display":"","collapsed":null} qf-3pane.js:19:15
+QuickFolders 12:35:20.51  [667 ms]   
+ liftNavigationbar() quickfolders-util.js:1432:13
+[QF liftNavBar] navigationContainer: FOUND, parent: #threadPane content URL: about:3pane quickfolders-interface.js:1505:15
+[QF liftNavBar] about:3pane — viewMode=classic, #threadPane count=1, querySelector→parent=#paneLayout quickfolders-interface.js:1529:21
+QuickFolders {3PANE} 12:35:20.51  [0 ms]   
+ liftNavigationbar() - viewMode=classic 
+<div id="threadPane" style="height: 283.4px !important;">
+quickfolders-util.js:1427:13
+[QF liftNavBar] after move — panel parent: #threadPane, panel===in threadPane: true quickfolders-interface.js:1552:21
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 12:35:20.52  [1 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:3pane
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 12:35:20.53  [1 ms]   
+ 3pane type = undefined, URL= about:3pane, win = [object Window], tabOrWindow= [object Object], folder name= Licenses quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 12:35:20.68  [15 ms]   
+ initCurrentFolderTab(Licenses)
+tabMode: mail3PaneTab -  tabindex: 0 
+<tab class="tabmail-tab" is="tabmail-tab" crop="end" context="tabContextMenu" linkedpanel="mail3PaneTab1" label="Licenses - Mail BASE" type="undefined" selected visuallyselected>
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR,3PANE} 12:35:20.185  [117 ms]   
+ hoistCurrentFolderBar(tabMode: mail3PaneTab) quickfolders-util.js:1427:13
+[QuickFolders startup] visibility applied {"scope":null,"url":"about:3pane","readyState":"complete","tabIndex":0,"firstTab":true,"hasParentQuickFolders":true,"hasThreadPane":true,"hasPanel":true,"panelParent":"threadPane","display":"","collapsed":null,"windowMode":""} qf-3pane.js:19:15
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 12:35:20.187  [2 ms]   
+ updateNavigationBar() - chrome://messenger/content/messenger.xhtml 
+HTMLDocument about:3pane
+quickfolders-util.js:1427:13
+QuickFolders {INTERFACE.CURRENTFOLDERBAR} 12:35:20.187  [0 ms]   
+ 3pane type = undefined, URL= about:3pane, win = [object Window], tabOrWindow= [object Object], folder name= Licenses quickfolders-util.js:1427:13
+[QuickFolders startup] initialization complete {"scope":null,"url":"about:3pane","readyState":"complete","tabIndex":0,"firstTab":true,"hasParentQuickFolders":true,"hasThreadPane":true,"hasPanel":true,"panelParent":"threadPane","display":"","collapsed":null} qf-3pane.js:19:15
+=========================
+BACKGROUND LISTENER received: updateQuickFilters
+========================= qf-background.js:1696:15
+Notification handler of moz-extension://3898ae4d-7307-4e8f-bab7-613f45545d7f/ 
+Object { func: "updateQuickFilters" }
+qf-background.js:1182:13
+[QF background] updateQuickFilters received — sending injectButtonsQFNavigationBar to quickFilters 
+Object { licenseStatus: "Valid", licenseType: 0 }
+qf-background.js:1525:19
+[QF background] injectButtonsQFNavigationBar response: undefined qf-background.js:1536:23

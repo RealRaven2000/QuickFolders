@@ -231,6 +231,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
     this.resourceData = null;
     this.openWindows = [];
     this.debug = context.extension.addonData.temporarilyInstalled;
+    this.startupTrace = null;
 
     const aomStartup = Cc["@mozilla.org/addons/addon-manager-startup;1"].getService(
       Ci.amIAddonManagerStartup
@@ -429,6 +430,11 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
           );
         },
 
+        initLog(startupTrace = null) {
+          // Optional caller-owned legacy preference and startup logging configuration.
+          self.startupTrace = startupTrace;
+        },
+
         async startListening() {
           // load the registered startup script, if one has been registered
           // (mail3:pane may not have been fully loaded yet)
@@ -501,15 +507,21 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
   }
 
   async _loadIntoWindow(window, isAddonActivation) {
+    const readinessStarted = Date.now();
+    let readinessChecks = 0;
     const trace = (stage, error) => {
-      if (window?.location?.href !== "about:3pane" ||
-          !Services.prefs.getBoolPref("extensions.quickfolders.debug", false)) {
+      const options = this.startupTrace;
+      if (!options) {
         return;
       }
       try {
+        if ((options.windowUrls && !options.windowUrls.includes(window?.location?.href)) ||
+            !Services.prefs.getBoolPref(options.preference, false)) {
+          return;
+        }
         const tabs = Array.from(window?.top?.document.getElementById("tabmail")?.tabInfo || []);
         const tabIndex = tabs.findIndex((tab) => tab.chromeBrowser?.contentWindow === window);
-        console.log("[QuickFolders startup] WindowListener " + stage + " " + JSON.stringify({
+        console.log((options.logPrefix || "WindowListener") + " " + stage + " " + JSON.stringify({
           extensionId: this.extension.id,
           scope: this.uniqueRandomID,
           url: window?.location?.href,
@@ -518,24 +530,33 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
           firstTab: tabIndex < 0 ? null : tabIndex === 0,
           isAddonActivation,
           contextUnloaded: this.context?.unloaded,
+          elapsedMs: Date.now() - readinessStarted,
+          readinessChecks,
           error: error ? String(error) : undefined,
           stack: error?.stack,
         }));
       } catch (ex) {
-        console.warn("[QuickFolders startup] WindowListener trace failed: " + stage, String(ex));
+        console.warn((options.logPrefix || "WindowListener") + " trace failed: " + stage, String(ex));
       }
     };
     trace("load requested");
     const fullyLoaded = async (window) => {
-      for (let i = 0; i < 20; i++) {
-        await this.sleep(250); // was 50
-        // To do: build a listener for window.document.readyState == "complete"
-        // so we don't need this loop
+      const intervals = [250, 500, 1000, 1500, 2000];
+      const maxWaitMs = 60000;
+      while (Date.now() - readinessStarted < maxWaitMs) {
+        const remainingMs = maxWaitMs - (Date.now() - readinessStarted);
+        await this.sleep(Math.max(1, Math.min(
+          intervals[Math.min(readinessChecks, intervals.length - 1)],
+          remainingMs
+        )));
+        readinessChecks++;
+        // Check readiness even if a busy main thread delivered the timer late.
         if (
           window &&
           window.location.href != "about:blank" &&
           window.document.readyState == "complete"
         ) {
+          trace("readiness complete");
           return;
         }
       }

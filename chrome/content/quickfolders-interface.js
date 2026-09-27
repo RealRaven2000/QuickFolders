@@ -9665,10 +9665,15 @@ QuickFolders.Interface = {
         if (contentWin.QuickFolders_injectCurrentFolderBar) {
           try {
             currentFolderBar = await contentWin.QuickFolders_injectCurrentFolderBar(true, true); // activatedWhileWindowOpen=true, manual=true
-            util.logDebugOptional(
+            if (doc.URL === "about:3pane" &&
+                Services.prefs.getBoolPref("extensions.quickfolders.debug", false)) {
+              util.logDebugOptional(
               "interface.currentFolderBar",
-              "Re-injection attempted successfully."
-            );
+              currentFolderBar
+                ? "Toolbar ready: injection returned an existing panel."
+                : "Injection scheduled; toolbar is not ready yet."
+              );
+            }
           } catch (ex) {
             util.logException("displayNavigationToolbar reinject attempt failed", ex);
           }
@@ -9686,6 +9691,14 @@ QuickFolders.Interface = {
         if (["", "singleMailTab", "messageWindow"].includes(selector)) {
           currentFolderBar.collapsed = !isVisible;
           currentFolderBar.style.display = isVisible ? "flex" : "none";
+          if (doc.URL === "about:3pane" &&
+              Services.prefs.getBoolPref("extensions.quickfolders.debug", false)) {
+            console.log("[QuickFolders startup] visibility applied " + JSON.stringify({
+              url: doc.URL,
+              display: currentFolderBar.style.display,
+              collapsed: currentFolderBar.collapsed,
+            }));
+          }
           util.logDebugOptional(
             "interface.currentFolderBar",
             `Effected display of current folder bar = ${currentFolderBar.style.display}`

@@ -877,6 +877,11 @@ function startWindowInjection() {
     "chrome://messenger/content/messageWindow.xhtml",
     "chrome/content/scripts/qf-messageWindow.js"
   );
+  messenger.WindowListener.initLog({
+    preference: "extensions.quickfolders.debug",
+    logPrefix: "[QuickFolders startup] WindowListener",
+    windowUrls: ["about:3pane"],
+  });
   messenger.WindowListener.startListening();
 }
 

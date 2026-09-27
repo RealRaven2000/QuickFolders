@@ -135,7 +135,7 @@ const QFInjector = {
     });
   },
 
-  injectElements(xulString) {
+  injectElements(xulString, isManual = false) {
     const WL = this.getWL(window);
     function localize(entity) {
       let msg = entity.slice("__MSG_".length, -2);
@@ -161,21 +161,16 @@ const QFInjector = {
       util.logHighlight("[QuickFolders Navigation Bar]", format, ...args);
     };
 
-    if (debug) {
-      console.log("QuickFolders injector path:", {
-        hasWL: !!WL,
-        scopeName: WL?.scopeName || null,
-        hasInject: !!WL?.injectElements,
-        url: window.location.href,
-      });
-    }
+    this.trace("injector", {
+      hasWL: !!WL,
+      hasInjectElements: typeof WL?.injectElements === "function",
+      mode: isManual ? "manual" : "automatic",
+    });
 
     var { ExtensionParent } = ChromeUtils.importESModule(
       "resource://gre/modules/ExtensionParent.sys.mjs"
     );
-    logDebug("WL after ExtensionParent import", typeof WL);
     const extension = ExtensionParent.GlobalManager.getExtension("quickfolders@curious.be");
-    logDebug("WL after getExtension", typeof WL);
 
     // Primary: real WL path
     if (WL?.injectElements) {
@@ -197,7 +192,9 @@ const QFInjector = {
     }
 
     // Fallback: minimal safe DOM injection
-    logDebug("Injection path: QFInjector fallback (no WL)");
+    this.trace(WL
+      ? "QuickFolders WindowListener scope lacks injectElements; using direct DOM injection"
+      : "No matching QuickFolders WindowListener scope; using direct DOM injection");
 
     const doc = window.document;
     try {
@@ -713,7 +710,7 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
                 .join(", ")
             );
           }
-          const result = QFInjector.injectElements(`<div id="threadPane">${INJECTED_ELEMENTS}</div>`);
+          const result = QFInjector.injectElements(`<div id="threadPane">${INJECTED_ELEMENTS}</div>`, isManual);
           windowMode = "";
           logDebugNavBar(`about:3pane - injection result: ${result}`, result);
           checkDuplicateThreadPanes("POST-inject");
@@ -726,7 +723,7 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
             logDebugNavBar("[QuickFolders about:message] before injecting Current Folder Toolbar: #messagepanebox not found");
           }
           const result = QFInjector.injectElements(
-            `<vbox id="messagepanebox">${INJECTED_ELEMENTS}</vbox>`
+            `<vbox id="messagepanebox">${INJECTED_ELEMENTS}</vbox>`, isManual
           );
           logDebugNavBar(`about:message - injection result: ${result}`, result);
           if (window.parent.document.URL.endsWith("messageWindow.xhtml")) {
@@ -817,7 +814,9 @@ async function injectCurrentFolderBar(activatedWhileWindowOpen, isManual = false
         selector: windowMode,
       });
     }
-    QFInjector.trace("visibility applied", { windowMode });
+    if (isManual) {
+      QFInjector.trace("visibility skipped: manual caller must apply visibility", { windowMode });
+    }
     stage = "navigation and folder-tree initialization";
     let tabInfo;
     try {

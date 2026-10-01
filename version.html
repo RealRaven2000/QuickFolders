@@ -304,18 +304,27 @@
 		<a name="latest">&nbsp;</a>
 
     <a name="6.18">&nbsp;</a>
+    <a name="6.18.1">&nbsp;</a>
     <li>
       <h4>
       <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.18" 
 			   onclick="alert('Version currently awaiting review!\nPlease mail me if you want a preview version for testing.')">
-				 Version 6.18 - 26/09/2026
+				 Version 6.18.1 - 01/10/2026
 		  </a>
       </h4>
       <ul>
-				<h4 class="inList">Improvements</h4>
+				<h4 class="inList">Maintenance Version 6.18.1</h4>
         <li>
-					Compatibility with Thunderbird 158
+					Compatibility with Thunderbird 159
 				</li>
+				<li>
+					 Fixed the Current Folder toolbar missing after a slow 
+					 Thunderbird startup by waiting longer for the folder view to finish loading. 
+					 <a href="https://github.com/RealRaven2000/QuickFolders/issues/712">[issue 712]</a>
+				</li>
+
+
+				<h4 class="inList">Improvements</h4>
 				<li> 
 					Avoided global stylesheet registration via nsIStyleSheetService.sheetRegistered(uri, sss.USER_SHEET). 
 					<a href="https://github.com/RealRaven2000/QuickFolders/issues/715">[issue 715]</a>.

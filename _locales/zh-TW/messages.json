@@ -2105,7 +2105,7 @@
   },
   "whats-new-list": {
     "description": "🇹🇼 change log",
-    "message": "{L} {b}{+extensionName}{/b} 現已標記為相容於 Thunderbird 158。{/L}{L} 修正了儲存設定備份的問題，並改善了在所有已開啟視窗中還原設定的功能。 [issue 717]{/L}{L} 提高了啟動的可靠性，並在 QuickFolders 工具列中記錄啟動步驟。 [issue 716]{/L}{L} 修正了設定視窗中的佈景主題相容性和版面配置問題。{/L}{L} 修正了 Thunderbird 156 中滑鼠停留在按鈕上時背景透明的問題。 [issue 718]{/L}{L} 當連結無法在瀏覽器中開啟時，現在可以手動複製其 URL。 [issue 713]{/L}{L} 移除了全域註冊的樣式表。 [issue 715]{/L}"
+    "message": "{L} {b}{+extensionName}{/b} 現已相容於 Thunderbird 159。{/L}{L} {b class=maintenance}6.18.1{/b} 延長等待資料夾檢視載入完成的時間，修正 Thunderbird 啟動緩慢時目前資料夾工具列未顯示的問題。 [issue 712]{/L}{L} 修正了儲存設定備份的問題，並改善了在所有已開啟視窗中還原設定的功能。 [issue 717]{/L}{L} 提高了啟動的可靠性，並在 QuickFolders 工具列中記錄啟動步驟。 [issue 716]{/L}{L} 修正了設定視窗中的佈景主題相容性和版面配置問題。{/L}{L} 修正了 Thunderbird 156 中滑鼠停留在按鈕上時背景透明的問題。 [issue 718]{/L}{L} 當連結無法在瀏覽器中開啟時，現在可以手動複製其 URL。 [issue 713]{/L}{L} 移除了全域註冊的樣式表。 [issue 715]{/L}"
   },
   "whats-new-maintenance": {
     "message": "維護更新 $ver$。此版本修正了上一版本引入、需要緊急處理的回歸問題。",

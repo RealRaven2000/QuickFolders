@@ -2202,7 +2202,7 @@
   },
   "whats-new-list": {
     "description": "🇬🇧 change log",
-    "message": "{L} {b}{+extensionName}{/b} is now marked as compatible with Thunderbird 158.{/L}{L} Fixed saving configuration backups and improved restoring settings across open windows. [issue 717]{/L}{L} Improved startup reliability and log startup steps in the QuickFolders toolbar. [issue 716]{/L}{L} Fixed theme compatibility and layout in settings window.{/L}{L} Fixed transparent button backgrounds when hovering in Thunderbird 156. [issue 718]{/L}{L} When a browser link fails to open, its URL can now be copied manually. [issue 713]{/L}{L} Removed global registration stylesheet. [issue 715]{/L}"
+    "message": "{L} {b}{+extensionName}{/b} is now compatible with Thunderbird 159.{/L}{L} {b class=maintenance}6.18.1{/b} Fixed the Current Folder toolbar missing after a slow Thunderbird startup by waiting longer for the folder view to finish loading. [issue 712]{/L}{L} Fixed saving configuration backups and improved restoring settings across open windows. [issue 717]{/L}{L} Improved startup reliability and log startup steps in the QuickFolders toolbar. [issue 716]{/L}{L} Fixed theme compatibility and layout in settings window.{/L}{L} Fixed transparent button backgrounds when hovering in Thunderbird 156. [issue 718]{/L}{L} When a browser link fails to open, its URL can now be copied manually. [issue 713]{/L}{L} Removed global registration stylesheet. [issue 715]{/L}"
   },
   "whats-new-maintenance": {
     "message": "Maintenance Update $ver$. This release addresses urgent regressions following the previous release.",

@@ -2093,7 +2093,7 @@
   },
   "whats-new-list": {
     "description": "🇨🇳 change log",
-    "message": "{L} {b}{+extensionName}{/b} 现已标记为兼容 Thunderbird 158。{/L}{L} 修复了配置备份的保存问题，并改进了在所有已打开窗口中恢复设置的功能。 [issue 717]{/L}{L} 提高了启动的可靠性，并在 QuickFolders 工具栏中记录启动步骤。 [issue 716]{/L}{L} 修复了设置窗口中的主题兼容性和布局问题。{/L}{L} 修复了 Thunderbird 156 中鼠标悬停时按钮背景透明的问题。 [issue 718]{/L}{L} 当链接无法在浏览器中打开时，现在可以手动复制其 URL。 [issue 713]{/L}{L} 移除了全局注册的样式表。 [issue 715]{/L}"
+    "message": "{L} {b}{+extensionName}{/b} 现已兼容 Thunderbird 159。{/L}{L} {b class=maintenance}6.18.1{/b} 延长了等待文件夹视图加载完成的时间，修复了 Thunderbird 启动缓慢时当前文件夹工具栏不显示的问题。 [issue 712]{/L}{L} 修复了配置备份的保存问题，并改进了在所有已打开窗口中恢复设置的功能。 [issue 717]{/L}{L} 提高了启动的可靠性，并在 QuickFolders 工具栏中记录启动步骤。 [issue 716]{/L}{L} 修复了设置窗口中的主题兼容性和布局问题。{/L}{L} 修复了 Thunderbird 156 中鼠标悬停时按钮背景透明的问题。 [issue 718]{/L}{L} 当链接无法在浏览器中打开时，现在可以手动复制其 URL。 [issue 713]{/L}{L} 移除了全局注册的样式表。 [issue 715]{/L}"
   },
   "whats-new-maintenance": {
     "message": "维护更新 $ver$。此版本修复了上一版本引入、需要紧急处理的回归问题。",

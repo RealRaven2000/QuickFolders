@@ -2,7 +2,7 @@
  * This file is provided by the addon-developer-support repository at
  * https://github.com/thundernest/addon-developer-support
  *
- * Version 1.65
+ * Version 1.67
  *
  * Authors (in alphabetical order by surname):
  *   John Bieling (john@thunderbird.net)
@@ -15,8 +15,10 @@
 
 
 /*
+  1.68 fix options dialog logging; configurable startup tracing, longer readiness wait,
+       and reporting of asynchronous onLoad failures
   1.66 add WL.context for all windows
-  1.65 force unsafe URL loading to enable compatibility after TB155 
+  1.65 force unsafe URL loading to enable compatibility after TB 155 
   1.64 removed dependencies on anything before Thunderbird 140
 */
 
@@ -73,7 +75,7 @@ var WindowListener = class extends ExtensionCommon.ExtensionAPI {
           e.stopPropagation();
           let WL = {};
           WL.context = this.context;
-          self.log("[handleEvent (options)] context:", WL.context);
+          this.log("[handleEvent (options)] context:", WL.context);
           WL.extension = this.extension;
           WL.messenger = this.getMessenger(this.context);
           let w = Services.wm.getMostRecentWindow("mail:3pane");

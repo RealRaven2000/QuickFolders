@@ -4,6 +4,13 @@ Additional regressions are expected within the Thunderbird release branch and wi
 
 Read the full [version history](https://quickfolders.org/version.html#6.18.1).
 
+**Maintenance Release 6.18.2 **
+
+- QuickFolders is now compatible with Thunderbird 160.
+- Fixed message drag-and-drop after Thunderbird 159 removed `messenger.msgHdrFromURI()`. Both message-header lookups now use `MailServices.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri)`. This preserves source-folder detection when dragging messages onto QuickFolders targets, including from search results, and when creating a folder from dragged messages with the quickFilters Assistant active, including from virtual folders. #720.
+- Changed the ColorZilla and license purchase links flagged during ATN review to use HTTPS.
+- Removed the bundled thunderbird.svg logo file as requested during ATN review. Retained the simplified thunderbird-mini.svg icon to identify the popup menu containing Thunderbird commands.
+
 **Maintenance Release 6.18.1**
 
 - Compatibility with Thunderbird 159

@@ -8,7 +8,8 @@ The Program - the QuickFolders Add-on (distributed as a XPI file) and all files 
 Premium Feature - a feature or function of the software which is protected by the mechanism outlined below
 QuickFolders Pro - Refers to the registered version of QuickFolders
 
-All contents of The Program are subject to the Creative Commons Attribution-NoDerivatives (CC BY-ND 4.0) 
+Except for third-party material identified below or carrying its own license notice,
+all contents of The Program are subject to the Creative Commons Attribution-NoDerivatives (CC BY-ND 4.0) 
 (the "License"); you may not use the file except in compliance with
 the License. You may obtain a copy of the complete License at
 http://creativecommons.org/licenses/by-nd/4.0/legalcode
@@ -51,6 +52,26 @@ Creative Commons (CC BY-ND 4.0) License for more details.
 
 
 ATTRIBUTIONS
+
+THUNDERBIRD / MOZILLA SVG INTERFACE ICONS
+QuickFolders includes SVG interface icons from the Thunderbird / Mozilla projects,
+including adaptations for QuickFolders. Files carrying a Mozilla Public License
+notice remain subject to the Mozilla Public License, version 2.0 (MPL 2.0),
+rather than QuickFolders' CC BY-ND license. Their individual notices are retained.
+License: https://www.mozilla.org/MPL/2.0/
+Thunderbird source: https://searchfox.org/comm-central/source/
+File inventory: chrome/content/skin/ico/icons-licenses.txt
+
+THUNDERBIRD EARLYBIRD ARTWORK
+chrome/content/skin/thunderbird-earlybird.png: Mozilla Thunderbird Earlybird
+channel artwork, credited to Mozilla. Historical source: Mozilla's Thunderbird
+channel identity style guide (2013):
+http://www.mozilla.org/en-US/styleguide/identity/thunderbird/channels/
+Thunderbird and its logo are trademarks of the Mozilla Foundation in the U.S.
+and other countries. QuickFolders is an independent add-on and is not officially
+affiliated with or endorsed by Mozilla or Thunderbird.
+This credit does not grant trademark permission or place the artwork under
+QuickFolders' CC BY-ND license.
 
 QuickFolders includes work by:
 Axel Grude: Current developer - most coding and ideas since QF 1.0

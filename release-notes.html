@@ -10,7 +10,7 @@ Read the full version <a href="https://quickfolders.org/version.html#6.18.1">her
 <li> QuickFolders is now compatible with Thunderbird 160.</li>
 <li> Fixed message drag-and-drop after Thunderbird 159 removed <tt>messenger.msgHdrFromURI()</tt>. Both message-header lookups now use <tt>MailServices.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri)</tt>. This preserves source-folder detection when dragging messages onto QuickFolders targets, including from search results, and when creating a folder from dragged messages with the quickFilters Assistant active, including from virtual folders. <a href="https://github.com/RealRaven2000/QuickFolders/issues/720">[issue 720]</a>.</li>
 <li> Changed the ColorZilla and license purchase links flagged during ATN review to use HTTPS.</li>
-<li> Removed the bundled thunderbird.svg logo file as requested during ATN review. Retained the simplified thunderbird-mini.svg icon to identify the popup menu containing Thunderbird commands.</li>
+<li> Removed the bundled thunderbird.svg logo file as requested during ATN review. Replaced the older menu logo with Thunderbird's MPL-licensed TB-symbolic.svg to identify the popup menu containing Thunderbird commands.</li>
 </ul>
 
 <strong>Recent history: 6.18.1</strong>
@@ -31,15 +31,4 @@ Or get the new cheaper <a href="https://sites.fastspring.com/quickfolders/produc
 Read the new <a href="https://quickfolders.org/premium.html#featureComparison">comparison chart</a> to see which functions you get depending on your license.
 
 You can also <a href="https://quickfolders.org/donate.html#donate">donate from here</a>.
-
-
------
-
-Note for Add-on reviewers
-
-
-As requested, I have removed the bundled thunderbird.svg logo file. The popup menu retains the bundled, simplified thunderbird-mini.svg to indicate that it exposes Thunderbird commands.
-
-The bundled thunderbird-earlybird.png (which is shonw on the support page in settings) originates from Mozilla’s 2013 Thunderbird channel style guide. Could you confirm whether retaining it is permitted and whether attribution is required? If removal is required, I’m happy to remove it in the following version.
-
 

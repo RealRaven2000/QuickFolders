@@ -310,7 +310,10 @@ QuickFolders.AdvancedTab = {
   } ,
   
   getCssGradient: function getCssGradient(evt) {
-    this.MainQuickFolders.Util.openLinkInBrowser(evt,'http://www.colorzilla.com/gradient-editor');
+    this.MainQuickFolders.Util.openLinkInBrowser(
+      evt,
+      "https://www.colorzilla.com/gradient-editor/"
+    );
   } ,
   
   getCssColor: function getCssColor(evt) {

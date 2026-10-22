@@ -1,0 +1,108 @@
+ICON LICENSES AND ATTRIBUTIONS
+
+SVG interface icons carrying MPL notices
+Source for Thunderbird-derived icons: https://searchfox.org/comm-central/
+License: Mozilla Public License, v. 2.0 (https://www.mozilla.org/MPL/2.0/)
+The following SVG files retain their MPL attribution blocks, including files
+adapted for QuickFolders. Their MPL terms remain applicable independently of
+QuickFolders' CC BY-ND license.
+
+archive.svg
+bug.svg
+clean.svg
+close.svg
+cloud-download.svg
+compact.svg
+delete.svg
+file-item.svg
+filter-add.svg
+filter-del.svg
+folder-add.svg
+folderCommand.svg
+goback.svg
+goforward.svg
+goup.svg
+help.svg
+history.svg
+inbox.svg
+info.svg
+junk.svg
+line-break.svg
+move.svg
+navigation-mode.svg
+new-tab.svg
+newsgroup.svg
+next-conversation.svg
+order.svg
+outbox.svg
+pencil.svg
+picture-remove.svg
+quick-copy.svg
+repair.svg
+repairFolder.svg
+search-folder.svg
+sent.svg
+separator.svg
+settings-simple.svg
+settings.svg
+skip-folder.svg
+smiley.svg
+synchronize.svg
+tag.svg
+tb-filter.svg
+template.svg
+toolbar.svg
+wildcard_filters.svg
+wrench.svg
+
+Thunderbird symbolic menu icon
+File: TB-symbolic.svg
+Source: https://searchfox.org/comm-central/source/mail/branding/thunderbird/TB-symbolic.svg
+Raw source: https://raw.githubusercontent.com/mozilla/releases-comm-central/HEAD/mail/branding/thunderbird/TB-symbolic.svg
+License: Mozilla Public License, v. 2.0 (https://www.mozilla.org/MPL/2.0/)
+Modification: added fill="context-fill" so the monochrome icon follows the menu text color.
+The original MPL notice and path geometry are retained. This license does not
+grant trademark permission or imply endorsement by Mozilla or Thunderbird.
+
+Provenance under investigation
+balloons.svg retains an MPL 2.0 notice. Its authorship and source are being
+checked: it may have been created for QuickFolders by Axel Grude or Paenglab,
+possibly starting from another MPL icon. The notice alone does not establish
+Mozilla authorship. Its existing license notice is unchanged.
+
+Fugue icons
+Author: Yusuke Kamiyamane
+Source: https://p.yusukekamiyamane.com/
+License: Creative Commons Attribution 3.0 (CC BY 3.0)
+https://creativecommons.org/licenses/by/3.0/
+The following files are Fugue icons or adaptations/composites based on Fugue
+icons, as credited in the root license.txt. Their Creative Commons terms are
+independent of QuickFolders' CC BY-ND license.
+
+fugue-arrow-bottom.png
+fugue-arrow-down.png
+fugue-arrow-top.png
+fugue-arrow-up.png
+fugue-balloonRemove.png
+fugue-paint-bucket.png
+fugue-paint-cursor.png
+fugue-picture-remove.png
+fugue-picture.png
+fugue-previous.png
+fugue-up.png
+
+Thunderbird Earlybird artwork (in the parent skin folder)
+File: ../thunderbird-earlybird.png
+Credit: Mozilla Thunderbird Earlybird channel artwork.
+Historical source: Mozilla Thunderbird channel identity style guide (2013):
+http://www.mozilla.org/en-US/styleguide/identity/thunderbird/channels/
+Thunderbird and its logo are trademarks of the Mozilla Foundation in the U.S.
+and other countries. QuickFolders is an independent add-on and is not officially
+affiliated with or endorsed by Mozilla or Thunderbird.
+This attribution does not establish an artwork license or trademark permission,
+and does not place the artwork under QuickFolders' CC BY-ND license.
+
+Other artwork
+This list identifies the SVG files with existing MPL notices; it is not a
+completed provenance audit of every icon. For other third-party artwork and
+QuickFolders licensing, see license.txt at the root of the add-on.

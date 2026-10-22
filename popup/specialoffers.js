@@ -44,7 +44,7 @@ addEventListener("click", async (event) => {
       window.close(); // not allowed by content script!
       break;
     case "stdLink":
-      messenger.windows.openDefaultBrowser("http://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=splashScreen-standard");
+      messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=splashScreen-standard");
       break;
     case "proLink":
       messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=splashScreen-standard");

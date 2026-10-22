@@ -175,7 +175,7 @@
 		For Thunderbird 68, <a href="version-68.html#latestlegacy">click here</a>.
 	 </p>	
 	<a name="news" > </a>
-	<h3>Latest News (13/09/2026) - QuickFolders 6.17.3</h3>
+	<h3>Latest News (07/10/2026) - QuickFolders 6.18.1</h3>
     <p>
       The emergency maintenance release fixes a startup regression that could disable features
       despite a valid license. See the <a href="#6.17.3">6.17.3 release notes</a> below.
@@ -305,18 +305,37 @@
 
     <a name="6.18">&nbsp;</a>
     <a name="6.18.1">&nbsp;</a>
+    <a name="6.18.2">&nbsp;</a>
     <li>
       <h4>
-      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.18" 
-			   onclick="alert('Version currently awaiting review!\nPlease mail me if you want a preview version for testing.')">
+      <a href="https://addons.thunderbird.net/thunderbird/addon/quickfolders-tabbed-folders/versions/6.18.1">
 				 Version 6.18.1 - 01/10/2026
 		  </a>
       </h4>
       <ul>
-				<h4 class="inList">Maintenance Version 6.18.1</h4>
+				<h4 class="inList">Maintenance Version 6.18.2</h4>
         <li>
-					Compatibility with Thunderbird 159
+					QuickFolders is now compatible with Thunderbird 160.
 				</li>
+				<li> 
+					Fixed message drag-and-drop after Thunderbird 159 removed 
+					<code>messenger.msgHdrFromURI()</code>. Both message-header lookups now 
+					use <code>MailServices</code>. This preserves source-folder detection when dragging 
+					messages onto QuickFolders targets, including from search results, 
+					and when creating a folder from dragged messages with the quickFilters 
+					Assistant active, including from virtual folders. 
+					<a href="https://github.com/RealRaven2000/QuickFolders/issues/720">[issue 720]</a>.
+				</li>
+				<li> 
+					Changed the ColorZilla and license purchase links flagged 
+					during ATN review to use HTTPS.
+				</li>
+				<li> 
+					Replaced Thunderbird logo artwork with generic folder-command and help 
+					icons, and removed the bundled Thunderbird logo files as requested during ATN review.
+				</li>
+
+				<h4 class="inList">Maintenance Version 6.18.1</h4>
 				<li>
 					 Fixed the Current Folder toolbar missing after a slow 
 					 Thunderbird startup by waiting longer for the folder view to finish loading. 

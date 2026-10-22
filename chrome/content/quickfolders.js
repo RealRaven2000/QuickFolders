@@ -7,6 +7,8 @@ For details, please refer to license.txt in the root folder of this extension
 
 END LICENSE BLOCK */
 
+var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServices.sys.mjs");
+
 /*===============
   Project History
   ===============
@@ -361,13 +363,19 @@ END LICENSE BLOCK */
     ## Fixed: No live update of current folder bar elements from advanced settings tab
     ## [issue 712] Current Folder bar missing on first tab intermittently after Thunderbird Start (WIP)
 
-  6.18 QuickFolders Pro - WIP 
+  6.18.1 QuickFolders Pro - 07/10/2026 
     ## [issue 715] Avoid registering global style sheet via nsIStyleSheetService.sheetRegistered(uri, sss.USER_SHEET)
     ## [issue 716] Startup Hardening - show startup progress in the toolbar placeholder.
-    ## [issue 717] Fixed: Save Configuration fails to open the save dialog after storage migration
+    ## [issue 717] Fixed: Save Configuration fails to open the sareleaseve dialog after storage migration
     ## [issue 718] Thunderbird 156 - default button have transparent backgrounds on hover
     ## [issue 713] Renewing license fails if default browser is not configured - display the URL instead
     ## Fixed various layout regressions in Thunderbird 157
+
+  6.18.2 QuickFolders Pro - 22/10/2026
+    ## [issue 720] Replace deprecated messenger.msgHdrFromURI (otherwise dragging messages fails)
+    ## Fixed colorzilla link to be secure
+    ## Removed thunderbird as external icon for branding
+  
 
 
 	TO DO next
@@ -1410,8 +1418,9 @@ var QuickFolders = {
           sourceFolder = model.getMsgFolderFromUri(sourceURI, true);
           let virtual = util.isVirtual(sourceFolder);
           if (!sourceFolder || virtual) {
-            let msgHdr = messenger.msgHdrFromURI(
-              QuickFolders.popupDragObserver.newFolderMsgUris[0].toString(),
+            let messageUri = QuickFolders.popupDragObserver.newFolderMsgUris[0].toString();
+            let msgHdr = MailServices.messageServiceFromURI(messageUri).messageURIToMsgHdr(
+              messageUri,
             );
             sourceFolder = msgHdr.folder;
           }
@@ -2135,7 +2144,8 @@ var QuickFolders = {
         // note: get CurrentFolder fails when we are in a search results window!!
         // [Bug 25204] => fixed in 3.10
 
-        let msgHdr = messenger.msgHdrFromURI(messageUris[0].toString());
+        let messageUri = messageUris[0].toString();
+        let msgHdr = MailServices.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri);
         sourceFolder = msgHdr.folder;
         //let virtual = util.isVirtual(sourceFolder);
         if (!sourceFolder) {

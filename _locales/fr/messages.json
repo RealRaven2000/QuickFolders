@@ -569,7 +569,7 @@
     "message": "Bouton de fermeture"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Afficher la barre d'outils"
+    "message": "Afficher au démarrage"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "intégrer avec le thème léger"
@@ -1214,6 +1214,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Afficher les outils du dossier courant"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Masquer les outils du dossier courant"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "A"

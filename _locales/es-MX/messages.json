@@ -550,7 +550,7 @@
     "message": "Botón de cerrar"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Muestra la barra de herramientas"
+    "message": "Mostrar al iniciar"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrar con el tema ligero"
@@ -1183,6 +1183,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Mostrar herramientas de la carpeta actual"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Ocultar herramientas de la carpeta actual"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "M"

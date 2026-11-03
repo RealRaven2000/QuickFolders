@@ -266,6 +266,12 @@ async function onLoad(activatedWhileWindowOpen) {
               class="cmd menuitem-iconic"
               tagName="qfPreviewToolbar" 
               />
+            <menuitem id="QuickFolders-ToolbarPopup-hidePreviewToolbar"
+              label="__MSG_qf.menuitem.quickfolders.hidePreviewToolbar__"
+              tagName="qfHidePreviewToolbar"
+              class="cmd menuitem-iconic"
+              hidden="true"
+              />
             <menuitem id="QuickFolders-ToolbarPopup-register"
               label="__MSG_qf.menuitem.quickfolders.register__"
               class="cmd menuitem-iconic free"
@@ -582,6 +588,8 @@ async function onLoad(activatedWhileWindowOpen) {
       "QuickFolders-ToolbarPopup-tidy": () => QF.Interface.tidyDeadFolders(),
       "QuickFolders-ToolbarPopup-displayPreviewToolbar": () =>
         QF.Interface.displayNavigationToolbar({ display: true }),
+      "QuickFolders-ToolbarPopup-hidePreviewToolbar": () =>
+        QF.Interface.displayNavigationToolbar({ display: false }),
       "QuickFolders-ToolbarPopup-register": () => QF.Interface.showLicenseDialog("mainPopup"),
     };
 

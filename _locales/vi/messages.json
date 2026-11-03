@@ -474,7 +474,7 @@
     "message": "Nút Đóng"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Hiển thị Thanh Công Cụ"
+    "message": "Hiển thị khi khởi động"
   },
   "qf.checkbox.debug": {
     "message": "Chế độ sửa lỗi"
@@ -1005,6 +1005,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Hiển thị các công cụ cho thư mục hiện tại"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Ẩn các công cụ cho thư mục hiện tại"
   },
   "qf.menuitem.quickfolders.filters": {
     "message": "Tạo Bộ Lọc Tin Nhắn…"

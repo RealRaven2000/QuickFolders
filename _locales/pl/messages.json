@@ -555,7 +555,7 @@
     "message": "Przycisk zamykania"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Wyświetlaj pasek narzędzi"
+    "message": "Wyświetlaj przy uruchamianiu"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integracja z lekkim motywem"
@@ -1188,6 +1188,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Wyświetl pasek narzędzi"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Ukryj pasek narzędzi"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "N"

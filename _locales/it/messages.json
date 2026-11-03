@@ -566,7 +566,7 @@
     "message": "Pulsante di chiusura"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Visualizza la barra di navigazione"
+    "message": "Visualizza all’avvio"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrato in un tema \"leggero\""
@@ -1211,6 +1211,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Visualizza barra di navigazione per la scheda corrente"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Nascondi barra di navigazione per la scheda corrente"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "C"

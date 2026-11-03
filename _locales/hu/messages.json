@@ -512,7 +512,7 @@
     "message": "Bezárás gomb"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Eszköztár megjelenítése"
+    "message": "Megjelenítés indításkor"
   },
   "qf.checkbox.debug": {
     "message": "Debug mód"
@@ -1091,6 +1091,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Jelenlegi mappa eszközök megjelenítése"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Jelenlegi mappa eszközök elrejtése"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "J"

@@ -558,7 +558,7 @@
     "message": "Tlačítko Zavřít"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Zobrazit panel nástrojů"
+    "message": "Zobrazit při spuštění"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrovat s lehkým tématem"
@@ -1203,6 +1203,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Zobrazit nástroje aktuální složky"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Skrýt nástroje aktuální složky"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "Z"

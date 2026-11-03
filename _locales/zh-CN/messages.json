@@ -556,7 +556,7 @@
     "message": "关闭按钮"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "显示工具栏"
+    "message": "启动时显示"
   },
   "qf.checkbox.debug": {
     "message": "调试模式"
@@ -1183,6 +1183,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "显示文件夹工具栏(D)"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "隐藏文件夹工具栏"
   },
   "qf.menuitem.quickfolders.filters": {
     "message": "创建消息过滤器..."

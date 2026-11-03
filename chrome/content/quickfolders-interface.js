@@ -2969,6 +2969,18 @@ QuickFolders.Interface = {
         return;
       }
 
+      if (popupId == "QuickFolders-ToolbarPopup") {
+        // Read the active tab's actual toolbar state, not its startup preference.
+        const toolbarDocument = ["mailMessageTab", "mail3PaneTab"].includes(QI.CurrentTabMode)
+          ? util.document3pane
+          : document;
+        const toolbar = toolbarDocument?.getElementById("QuickFolders-PreviewToolbarPanel");
+        const visible = !!toolbar && !toolbar.collapsed && !toolbar.hidden &&
+          toolbar.ownerDocument.defaultView.getComputedStyle(toolbar).display != "none";
+        p.querySelector("#QuickFolders-ToolbarPopup-displayPreviewToolbar").hidden = visible;
+        p.querySelector("#QuickFolders-ToolbarPopup-hidePreviewToolbar").hidden = !visible;
+      }
+
       // debug menu items (only visible if SHIFT held during click.)
       if (popupId == "QuickFolders-ToolbarPopup" && evt) {
         // find all menu items with class "dbgMenu" and uncollapse them

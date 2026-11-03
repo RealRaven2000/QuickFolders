@@ -558,7 +558,7 @@
     "message": "Закрывающая кнопка"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Показывать панель инструментов"
+    "message": "Показывать при запуске"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "интегрировать с легкой темой"
@@ -1197,6 +1197,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Показать инструменты текущей папки"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Скрыть инструменты текущей папки"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "к"

@@ -563,7 +563,7 @@
     "message": "Lukk-knapp"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Vis verktøylinjen"
+    "message": "Vis ved oppstart"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrer med lett tema"
@@ -1208,6 +1208,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Vis verktøy for gjeldende mappe"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Skjul verktøy for gjeldende mappe"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "V"

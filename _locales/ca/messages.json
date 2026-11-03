@@ -548,7 +548,7 @@
     "message": "Botó de Tancar"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Mostra la Barra d'Eines"
+    "message": "Mostra en iniciar"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrar-se amb un tema lleuger"
@@ -1169,6 +1169,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Mostra Eines de la Carpeta Actual"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Amaga Eines de la Carpeta Actual"
   },
   "qf.menuitem.quickfolders.filters": {
     "message": "Crear Filtres de Missatge…"

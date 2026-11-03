@@ -559,7 +559,7 @@
     "message": "Stängknapp"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Visa verktygsfältet"
+    "message": "Visa vid start"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrera med lättviktstema"
@@ -1195,6 +1195,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Visa verktyg för aktuell mapp"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Dölj verktyg för aktuell mapp"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "V"

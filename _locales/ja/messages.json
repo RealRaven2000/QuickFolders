@@ -543,7 +543,7 @@
     "message": "閉じるボタン"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "ツールバーを表示"
+    "message": "起動時に表示"
   },
   "qf.checkbox.debug": {
     "message": "デバッグモード"
@@ -1149,6 +1149,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "フォルダツールを表示"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "フォルダツールを非表示"
   },
   "qf.menuitem.quickfolders.filters": {
     "message": "メッセージフィルタを作成…"

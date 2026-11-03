@@ -191,3 +191,13 @@ input[type="color"] {
 
 
 
+
+menuitem.cmd[tagName="qfHidePreviewToolbar"] {
+  list-style-image: url('ico/navigation-bar-hide.svg') !important;
+}
+
+menuitem.cmd[tagName="qfPreviewToolbar"],
+menuitem.cmd[tagName="qfHidePreviewToolbar"] {
+  fill: currentColor;
+  -moz-context-properties: fill, fill-opacity;
+}

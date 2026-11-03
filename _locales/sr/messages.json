@@ -510,7 +510,7 @@
     "message": "Дугме за затварање"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Прикажи тренутну траку са алаткама"
+    "message": "Прикажи при покретању"
   },
   "qf.checkbox.debug": {
     "message": "Начин приказивања грешака"
@@ -1080,6 +1080,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Прикажи алатке за тренутну фасциклу"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Сакриј алатке за тренутну фасциклу"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "А"

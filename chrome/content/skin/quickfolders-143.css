@@ -34,3 +34,10 @@
 #QuickFolders-FindPopup menuitem.quickFolder.menuitem-iconic {
   --menuitem-icon: url("chrome://quickfolders/content/skin/ico/folder-tab-small.png") !important;
 }
+menuitem.cmd[tagName="qfPreviewToolbar"] {
+  --menuitem-icon: url("chrome://quickfolders/content/skin/ico/navigation-bar.svg") !important;
+}
+
+menuitem.cmd[tagName="qfHidePreviewToolbar"] {
+  --menuitem-icon: url("chrome://quickfolders/content/skin/ico/navigation-bar-hide.svg") !important;
+}

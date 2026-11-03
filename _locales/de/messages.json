@@ -559,7 +559,7 @@
     "message": "Schliessen Schaltfläche"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Werkzeugleiste anzeigen"
+    "message": "Beim Start anzeigen"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "Mit lightweight Theme integrieren"
@@ -1192,6 +1192,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Aktiv-Verzeichnis-Werkzeuge anzeigen"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Aktiv-Verzeichnis-Werkzeuge ausblenden"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "V"

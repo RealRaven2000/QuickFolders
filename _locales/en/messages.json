@@ -565,7 +565,7 @@
     "message": "Close Button"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Display the Toolbar"
+    "message": "Display on Startup"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrate with lightweight theme"
@@ -1206,6 +1206,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Display Current Folder Tools"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Hide Current Folder Tools"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "D"

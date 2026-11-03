@@ -552,7 +552,7 @@
     "message": "Botão de fechar"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Exibir a barra de ferramentas"
+    "message": "Exibir ao iniciar"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrar com tema leve"
@@ -1185,6 +1185,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Exibir ferramentas da pasta atual"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Ocultar ferramentas da pasta atual"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "E"

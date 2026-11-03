@@ -552,7 +552,7 @@
     "message": "Knop Sluiten"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "Werkbalk weergeven"
+    "message": "Weergeven bij opstarten"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integreren met lichtgewicht thema"
@@ -1176,6 +1176,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Hulpmiddelen voor huidige map weergeven"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Hulpmiddelen voor huidige map verbergen"
   },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "d"

@@ -555,7 +555,7 @@
     "message": "關閉按鈕"
   },
   "qf.checkbox.currentFolder.show": {
-    "message": "顯示工具列"
+    "message": "啟動時顯示"
   },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "整合輕量佈景主題"
@@ -1188,6 +1188,9 @@
   },
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "顯示現在資料夾的工具"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "隱藏現在資料夾的工具"
   },
   "qf.menuitem.quickfolders.filters": {
     "message": "建立信件過濾器…"

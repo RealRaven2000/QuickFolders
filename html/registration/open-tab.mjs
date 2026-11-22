@@ -4,7 +4,6 @@
  * All normal registration entry points should use this helper, directly from
  * background code or through the openRegistrationTab runtime request. Legacy
  * chrome callers use the existing background bridge for the same operation.
- * The emergency legacy menu intentionally opens register.xhtml instead.
  *
  * Build the page URL with runtime.getURL() here so installed extensions use a
  * moz-extension: URL rather than a privileged chrome: or jar: package URL.
@@ -36,7 +35,7 @@
  *   source page if opening fails. Success confirms tab creation/navigation,
  *   not completion of page loading or checkout.
  */
-export async function openRegistrationTab(api, { feature = "", intent = "" } = {}) {
+export async function openRegistrationTab(api, { feature = "", intent = "", requiredEdition = "" } = {}) {
   const baseURL = api.runtime.getURL("html/registration/registration.html");
   const destination = new URL(baseURL);
   if (typeof feature === "string" && feature) {
@@ -44,6 +43,9 @@ export async function openRegistrationTab(api, { feature = "", intent = "" } = {
   }
   if (intent === "extend") {
     destination.searchParams.set("intent", intent);
+  }
+  if (requiredEdition === "pro" || requiredEdition === "standard") {
+    destination.searchParams.set("required", requiredEdition);
   }
   const url = destination.href;
   const [existing] = await api.tabs.query({ url: baseURL + "*" });

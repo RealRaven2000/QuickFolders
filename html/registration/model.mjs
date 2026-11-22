@@ -4,10 +4,13 @@ export function licenseEdition(license) {
   return editionsByKey[license.keyType] || null;
 }
 
-export function deriveActions(license, config, { intent = "" } = {}) {
+export function deriveActions(license, config, { intent = "", requiredEdition = "" } = {}) {
   const current = licenseEdition(license);
   const recognized = ["Valid", "Expired"].includes(license.status) && current;
   return config.editions.map((edition) => {
+    if (requiredEdition === "pro" && edition === "standard") {
+      return { edition, kind: "buy", route: null, available: false, hidden: true };
+    }
     let kind = "buy";
     let route = config.products[edition].buy;
     let available = true;

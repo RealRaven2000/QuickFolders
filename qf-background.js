@@ -2,6 +2,7 @@ import { Preferences } from "./scripts/preferences.mjs";
 import * as util from "./scripts/qf-util.mjs.js";
 import { Licenser } from "./scripts/Licenser.mjs.js";
 import { openRegistrationTab } from "./html/registration/open-tab.mjs";
+import { resolveFeatureRequirement } from "./scripts/feature-licensing.mjs";
 // very nice config editor by John B:
 import * as webExtensionStorageEditor from "./scripts/webExtensionStorageEditor.mjs";
 
@@ -1148,7 +1149,11 @@ async function notificationHandler(data) {
   let command = data.func || data.command;
   switch (command) {
     case "openRegistrationTab":
-      return openRegistrationTab(messenger, { feature: data.feature, intent: data.intent });
+      return openRegistrationTab(messenger, {
+        feature: data.feature,
+        intent: data.intent,
+        requiredEdition: resolveFeatureRequirement(data.feature, data.requiredEdition),
+      });
     case "getRegistrationPreferences":
       return { forceSecondaryIdentity: !!Preferences.get("licenser.forceSecondaryIdentity") };
     case "slideAlert":
@@ -1305,13 +1310,6 @@ async function notificationHandler(data) {
         filter: data.filter,
         readOnly: data.readOnly,
         updateUI: data.updateUI || false,
-      });
-      break;
-
-    case "showLicenseDialog":
-      messenger.NotifyTools.notifyExperiment({
-        event: "showLicenseDialog",
-        referrer: data.referrer,
       });
       break;
 
@@ -1832,7 +1830,6 @@ const msg_commands = [
   "pasteFolderEntries",
   "legacyAdvancedSearch", // new global one!
   "showAboutConfig", // new global one!
-  "showLicenseDialog", // new global one!
   "openRegistrationTab",
   "getRegistrationPreferences",
   "openPrefs",

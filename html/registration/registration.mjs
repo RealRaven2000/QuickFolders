@@ -1,5 +1,6 @@
 /* globals formatAll, parseHTMLFragment, formatLocalizedMarkdown */
 import { registrationConfig } from "./config.mjs";
+import { resolveFeatureRequirement } from "../../scripts/feature-licensing.mjs";
 import { buildDomainSeatsURL, contactFromIdentity, deriveActions, identityOptionLabels, licenseEdition } from "./model.mjs";
 import { openCheckout } from "./checkout.mjs";
 import { loadRegistrationData, openLicenseSettings } from "./adapter.mjs";
@@ -122,7 +123,9 @@ function renderLicense() {
     recognized && formatted
       ? message(license.status === "Expired" ? "date.expired" : "date.valid", [formatted])
       : message("date.none");
-  actions = deriveActions(license, registrationConfig, { intent: params.get("intent") });
+  const requiredEdition = resolveFeatureRequirement(params.get("feature"), params.get("required"));
+  actions = deriveActions(license, registrationConfig, { intent: params.get("intent"), requiredEdition });
+  byId("selection-intro").textContent = message(requiredEdition === "pro" ? "subtitle" : "selection.intro");
   const expiredStandard = recognized && edition === "standard" && license.status === "Expired";
   const validStandard = recognized && edition === "standard" && license.status === "Valid";
   selection.classList.toggle("standard-upgrade-tip", !!(expiredStandard || validStandard));

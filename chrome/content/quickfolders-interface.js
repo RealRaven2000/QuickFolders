@@ -10301,30 +10301,6 @@ QuickFolders.Interface = {
     }
   },
 
-  showLicenseDialog: function showLicenseDialog(featureName) {
-    let params = {
-      inn: {
-        referrer: featureName,
-        instance: QuickFolders, // Why? should this be the main interface? make obsolete!
-      },
-      out: null,
-    };
-    let win = window;
-    if (win.closed) {
-      // notifications caused by a close parent window will fail!
-      win = QuickFolders.Util.getMail3PaneWindow();
-    }
-    win
-      .openDialog(
-        "chrome://quickfolders/content/register.xhtml",
-        "quickfolders-register",
-        "chrome,titlebar,centerscreen,resizable,alwaysRaised,instantApply",
-        QuickFolders,
-        params
-      )
-      .focus();
-  },
-
   // build a help panel for the quickMove panel
   quickMoveHelp: function (_el) {
     function createSyntaxNode(txt) {

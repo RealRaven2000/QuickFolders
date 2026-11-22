@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 import { deriveActions, buildCheckoutURL, buildDomainSeatsURL } from "../html/registration/model.mjs";
 import { registrationConfig as config } from "../html/registration/config.mjs";
 import { loadRegistrationData } from "../html/registration/adapter.mjs";
+import { resolveFeatureRequirement } from "../scripts/feature-licensing.mjs";
 
 const license = (status, keyType, licenseKey = "QF;user+test@example.com&key") => ({ status, keyType, licenseKey, licensedDaysLeft: 90 });
 const contact = { firstName: "Alex", lastName: "Morgan", email: "alex@example.com" };
@@ -12,6 +13,25 @@ test("Standard extension requires proximity or explicit intent", () => {
   assert.equal(deriveActions(state, config)[0].hidden, true);
   assert.equal(deriveActions(state, config, { intent: "extend" })[0].kind, "extend");
   assert.equal(deriveActions(state, config)[1].kind, "upgrade");
+});
+
+test("Pro-only feature offers Pro and Domain but hides Standard", () => {
+  const state = { status: "Empty", licenseKey: "" };
+  const actions = deriveActions(state, config, { requiredEdition: "pro" });
+  assert.equal(actions[0].hidden, true);
+  assert.equal(actions[0].available, false);
+  assert.equal(actions[1].hidden, false);
+  assert.equal(actions[2].hidden, false);
+  assert.equal(deriveActions(state, config)[0].hidden, false);
+});
+
+test("feature matrix uses contextual requirements for variable limits", () => {
+  assert.equal(resolveFeatureRequirement("lineBreaks"), "pro");
+  assert.equal(resolveFeatureRequirement("pasteFolderEntries"), "standard");
+  assert.equal(resolveFeatureRequirement("lineBreaks", "standard"), "standard");
+  assert.equal(resolveFeatureRequirement("tabs>10", "pro"), "pro");
+  assert.equal(resolveFeatureRequirement("tabs>10", "standard"), "standard");
+  assert.equal(resolveFeatureRequirement("toString"), "");
 });
 
 test("expired Standard renews the Standard product and offers Pro upgrade", () => {

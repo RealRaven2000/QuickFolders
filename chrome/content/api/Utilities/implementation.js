@@ -272,11 +272,6 @@ var Utilities = class extends ExtensionCommon.ExtensionAPI {
           mail3PaneWindow.openDialog(uri);
         },
 
-        showLicenseDialog: function (referrer) {
-          const win = Services.wm.getMostRecentWindow("mail:3pane");
-          win.QuickFolders.Interface.showLicenseDialog(referrer);
-        },
-
         // get may only return something, if a value is set
         /* Useful stuff from QF.Preferences */
         getUserStyle: async function (id, type, defaultTxt) {

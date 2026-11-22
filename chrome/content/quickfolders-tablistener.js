@@ -173,9 +173,6 @@ QuickFolders.onGlobalQFCommand = async (data) => {
           data.updateUI,
         );
         break;
-      case "showLicenseDialog":
-        QuickFolders.Interface.showLicenseDialog(data.referrer);
-        break;
       case "legacyAdvancedSearch":
         {
           let params = { inn: { mode: "allOptions", instance: QuickFolders }, out: null };

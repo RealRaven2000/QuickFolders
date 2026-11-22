@@ -136,7 +136,26 @@ Observed: expired Domain showed the expired badge and Renew License; clicking it
 | 42 | [x] | Checkout opens in the external browser, leaves registration open and retains edited contact details. |
 | 43 | [x] | With an expired license, click the QuickFolders toolbar’s **Renew License** label. The new registration tab opens with feature mainLabelRenewal and the expired license’s renewal choices. |
 | 44 | [x] | Leave registration open with a valid license and restart Thunderbird. The restored tab loads the current license status and account identities, prefills contact details and retains the requested extension intent. |
+| 45 | [ ] | Trigger a restricted-feature notification (for example, a tab limit or separator without Pro), then click its license action. Registration opens with the feature name; checkout uses that feature when no license is stored and the existing key otherwise. |
+| 46 | [ ] | Open a general message with a license action and click it. Registration opens with `addonfeatures` when supplied, or `quickfolders-message` otherwise. |
 
 Step 43: expired Pro opened the new tab with `mainLabelRenewal` and showed Pro renewal and Domain purchase.
 
 Navigation observations: Enter license key passed. Failure handling was not tested. The update splash renewal opened registration with `landing-update` and the expected Domain renewal route and existing license referrer. The update splash Extend action previously passed its highlight check.
+
+## Restricted-feature notifications and shop attribution
+
+Use a test profile with **no stored license key** for steps 47–53. The notification appears only when the feature is restricted and the notification box is available. If a feature is unavailable in the test profile, leave its step unchecked and record what happened. Click the notification’s license action, then select a product and inspect the URL in the browser; no purchase is needed. URL encoding may represent `>` as `%3E`. Do not record personal details or keys.
+
+| # | Tested | Step |
+| --- | --- | --- |
+| 47 | [ ] | With no license, attempt to insert a separator before a QuickFolders tab. Click the notification’s license action. Registration opens with `feature=tabSeparator`; a new-license checkout URL contains `referrer=tabSeparator`. |
+| 48 | [ ] | With no license, attempt to insert a line break before a tab. Click the notification’s license action. Registration opens with `feature=lineBreaks` and `required=pro`, offers Pro and Domain without Standard, and checkout contains `referrer=lineBreaks`. |
+| 49 | [ ] | With no license, open a tab’s advanced properties. Click the restricted-feature notification’s license action. Registration opens with `feature=advancedTabProperties`; checkout contains `referrer=advancedTabProperties`. |
+| 50 | [ ] | With no license, reach the unpaid tab limit and attempt to add another tab. If the feature notification appears, use its license action and check that the registration feature and checkout referrer both contain `tabs>` followed by the actual limit. A splash may also open. |
+| 51 | [ ] | With no license, trigger a restricted tab-icon notification, if available. Click its license action and check `feature=tabIcons` in registration and `referrer=tabIcons` at checkout. |
+| 52 | [ ] | Trigger two different restricted-feature notifications in succession, opening registration from each. The existing registration tab is reused with the latest feature, and a checkout URL uses that latest feature rather than the earlier one. |
+| 53 | [ ] | Open a restricted-feature notification, edit the registration contact fields and start a purchase. The checkout URL includes the edited contact values and the feature referrer; registration remains open. |
+| 54 | [ ] | With a valid Standard or expired license stored, trigger a restricted-feature notification and use its license action. Registration receives the feature, but checkout uses the existing license key as referrer. Do not record the key. |
+| 55 | [ ] | With a valid Pro license, attempt a Pro feature covered by that license. No restricted-feature purchase notification should appear. |
+| 56 | [ ] | With no license, trigger a Standard-level feature notification (for example, skip unread folder). Registration still offers Standard, Pro and Domain, and checkout carries the feature referrer. |

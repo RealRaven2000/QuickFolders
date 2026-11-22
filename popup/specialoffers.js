@@ -36,7 +36,6 @@ addEventListener("click", async (event) => {
     case "bargainIcon":
       // to get the bargain, go straight to offer!
       messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=splashScreen-bargainIcon");
-      // messenger.Utilities.showLicenseDialog("splashScreen-bargainIcon");
       break;
     case "bargainRenewIcon":
     case "bargainUpgradeIcon":

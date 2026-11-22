@@ -1061,7 +1061,9 @@ async function initButtons() {
   }); // contact me
   
   // oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog("options_" + options.currentOptionsTab); window.close(); });">Buy License</button>
-  document.getElementById("btnLicense").addEventListener("click", () => { QuickFolders.Interface.showLicenseDialog(); });
+  document.getElementById("btnLicense").addEventListener("click", () => {
+    QuickFolders.Interface.showLicenseDialog();
+  });
   const licenseDate = document.getElementById("licenseDate");
   const showEarlyExtension = () => {
     if (licenseInfo?.status !== "Valid") { return; }

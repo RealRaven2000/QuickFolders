@@ -453,8 +453,17 @@ QuickFolders.Util = {
           label: regBtn,
           accessKey: hotKey,
           callback: function () {
-            // was util.getMail3PaneWindow().QuickFolders.Util.Licenser.showDialog
-            QuickFolders.Interface.showLicenseDialog(featureName);
+            let requiredEdition = "";
+            if (level === 0) {
+              requiredEdition = "pro";
+            } else if (level === 2) {
+              requiredEdition = "standard";
+            }
+            util.notifyTools.notifyBackground({
+              func: "openRegistrationTab",
+              feature: featureName,
+              requiredEdition,
+            });
           },
           popup: null,
         },

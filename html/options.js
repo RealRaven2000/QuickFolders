@@ -1062,6 +1062,20 @@ async function initButtons() {
   
   // oncommand="setTimeout(function() { QuickFolders.Interface.showLicenseDialog("options_" + options.currentOptionsTab); window.close(); });">Buy License</button>
   document.getElementById("btnLicense").addEventListener("click", () => { QuickFolders.Interface.showLicenseDialog(); });
+  const licenseDate = document.getElementById("licenseDate");
+  const showEarlyExtension = () => {
+    if (licenseInfo?.status !== "Valid") { return; }
+    const button = document.getElementById("btnLicense");
+    button.classList.remove("upgrade");
+    QuickFolders.Options.labelLicenseBtn(button, "extend");
+  };
+  licenseDate.addEventListener("click", showEarlyExtension);
+  licenseDate.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      showEarlyExtension();
+    }
+  });
   document.getElementById("btnDefaultRadius").addEventListener("click", () => { QuickFolders.Options.setDefaultButtonRadius(); });
   document.getElementById("defaultColors").addEventListener("click", () => { QuickFolders.Options.setDefaultColors(); });
   document.getElementById("qf-options-header-description").addEventListener("click", () => { 

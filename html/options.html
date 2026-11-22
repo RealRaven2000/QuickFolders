@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-widgets.css">
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-widgets64.css">
   <link rel="stylesheet" href="../chrome/content/skin/quickfolders-layout.css">
+  <link rel="stylesheet" href="registration/settings-license.css">
   <!-- this is OS specific and needs to be modified! -->
   <link rel="stylesheet" href="../chrome/content/skin/tb91/qf-options.css">
   
@@ -71,10 +72,10 @@
       -->
 
 
-        <fieldset class="hbox multiCol">
+        <fieldset class="hbox multiCol keyboard-shortcuts">
           <legend>__MSG_qf.label.keyboard__</legend>
+          <label class="keynote">__MSG_keyshortcuts.news__ <button class="helpLink" id="tbkeys"></button></label>
           <div class="vbox">
-            <label class="keynote">__MSG_keyshortcuts.news__ <button class="helpLink" id="tbkeys"></button></label>
             <label><input type="checkbox" 
               data-pref-name="useKeyboardShortcuts"
               preference="qfpg-UseKeyboardShortcuts">__MSG_qf.checkbox.usekeyboardshortcuts__</label>
@@ -135,7 +136,7 @@
           </div>
         </fieldset>
 
-        <div class="hbox">
+        <div class="hbox general-behavior-groups">
           <fieldset orient="vertical" flex="1">
             <legend>__MSG_qf.label.behavior__</legend>
             <div class="vbox">
@@ -201,11 +202,12 @@
               </span>
             </div>
           </fieldset>
-            
+        </div>
+        <div class="hbox general-secondary-groups">
           <fieldset orient="vertical" flex="2">
             <legend>__MSG_qf.moveMailStatus.title__</legend>
             
-            <label for="moveMailOptions">__MSG_qf.moveMailStatus.label__</label>
+            <label for="moveMailOptions" class="proFeature text">__MSG_qf.moveMailStatus.label__</label>
             
             <select sizetopopup="none" id="moveMailOptions" preference="qfpg-moveMailStatus"
               data-pref-name="moveMailStatus.set"
@@ -223,9 +225,6 @@
                 data-pref-name="moveMailStatus.quickMove">__MSG_qf.moveMailStatus.quickMove__</label>
               
           </fieldset>
-          
-        </div>
-        <div class="hbox">
           <fieldset flex="2">
             <legend>__MSG_qf.group.navigation__</legend>
             <div class="hbox align_center">
@@ -950,8 +949,10 @@
           <br class="spacer" style="width:1em">
           <input type="text" id="licenseDate" readonly aria-readonly="true" tabindex="0" 
             aria-describedby="licenseDateLabel" role="representation">
+          <span id="licenseExpiryWarning" role="status" hidden></span>
         </div>
         <span id="validationDateSpace" class="separator licenseSeparator" > </span>
+        <div class="license-status-action">
         <div class="vbox" id="validationResults"  aria-live="assertive" role="region" tabindex="0">
           <div id="validationPassed" class="niceFont description" collapsed="true">__MSG_qf.licenseValidation.passed__
           </div>
@@ -979,6 +980,7 @@
             <button class="license" id="btnSwitchToFree" hidden>__MSG_qf.licenseBackup.switch__</button>
             <button class="license" id="btnRecoverLicense" hidden>__MSG_qf.licenseBackup.recover__</button>
           </box>
+        </div>
         </div>
         <span class="separator" flex="1" > </span>
         <div class="hbox">

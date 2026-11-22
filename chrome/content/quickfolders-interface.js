@@ -10267,7 +10267,10 @@ QuickFolders.Interface = {
         QuickFolders.Util.licenseInfo.isLicenseViewed = true; // session variable to mark license stuff as "seen".
         QuickFolders.Util.notifyTools.notifyBackground({ func: "updateQuickFoldersLabel" });
       }
-      QuickFolders.Interface.showLicenseDialog("mainLabelRenewal");
+      QuickFolders.Util.notifyTools.notifyBackground({
+        func: "openRegistrationTab",
+        feature: "mainLabelRenewal",
+      });
       return;
     }
     // get context Menu as normal

@@ -1,6 +1,7 @@
 import { Preferences } from "./scripts/preferences.mjs";
 import * as util from "./scripts/qf-util.mjs.js";
 import { Licenser } from "./scripts/Licenser.mjs.js";
+import { openRegistrationTab } from "./html/registration/open-tab.mjs";
 // very nice config editor by John B:
 import * as webExtensionStorageEditor from "./scripts/webExtensionStorageEditor.mjs";
 
@@ -909,52 +910,6 @@ async function main() {
 
   // Window consumers waiting in Util.init() can now initialize functional UI.
 
-  let msg_commands = [
-    "currentDeckUpdate",
-    "getLicenseInfo",
-    "copyFolderEntries",
-    "writeClipboardText",
-    "storeFolderEntries",
-    "pasteFolderEntries",
-    "legacyAdvancedSearch", // new global one!
-    "showAboutConfig", // new global one!
-    "showLicenseDialog", // new global one!
-    "slideAlert",
-    "updateCategoryBox",
-    "updateFoldersUI",
-    "updateLicense",
-    "updateMainWindow",
-    "updateNavigationBar",
-    "updateQuickFoldersLabel",
-    "updateUserStyles",
-    "readCategories",
-    "storeCategories",
-    "pluralForm",
-    "readToolbarStatus",
-    "storeToolbarStatus",
-    "toggleNavigationBars",
-    "getLastLoadedTheme",
-    "storeLoadedTheme",
-    "stageThemeChange",
-    "openStorageEditor",
-    "deleteUserStyle",
-    "showNewsMessage",
-  ];
-
-  // message listener - SELECTIVE!
-  // every message listener must have its unique set of messages (if it returns something)
-  messenger.runtime.onMessage.addListener((data, sender) => {
-    if (msg_commands.includes(data?.command)) {
-      return notificationHandler(data, sender); // the result of this is a Promise
-    }
-    // Future Work: command handler for tbkeys-lite!
-    switch (data.command) {
-      case "shortcut":
-        console.log("QuickFolders: Received shortcut:", { data, sender });
-        break;
-    }
-  });
-
   messenger.runtime.onMessageExternal.addListener((message, _sender) => {
     const command = ExternalMessageApi.normalizeCommand(message?.command);
     // Only claim responses for supported commands, including the legacy license query.
@@ -1192,6 +1147,10 @@ async function notificationHandler(data) {
   }
   let command = data.func || data.command;
   switch (command) {
+    case "openRegistrationTab":
+      return openRegistrationTab(messenger, { feature: data.feature, intent: data.intent });
+    case "getRegistrationPreferences":
+      return { forceSecondaryIdentity: !!Preferences.get("licenser.forceSecondaryIdentity") };
     case "slideAlert":
       util.slideAlert(...data.args);
       break;
@@ -1401,16 +1360,15 @@ async function notificationHandler(data) {
               activatePrefsPage: data.mode,
             });
           }
-          return;
+          return found;
         }
-        if (Preferences.get("optionsInTab")) {
+        if (Preferences.get("optionsInTab") || data.mode === "licenseKey") {
           // await messenger.runtime.openOptionsPage();
           const myuri = browser.runtime.getURL(`html/options.html?${params.toString()}`);
-          await browser.tabs.create({
+          return browser.tabs.create({
             active: true,
             url: myuri,
           });
-          return;
         }
         // open options in a window (old)
         await messenger.windows.create({
@@ -1863,6 +1821,56 @@ async function displayUpdateMessage() {
 }
 
 const prefsReady = Preferences.init(); // pending
+
+// Register before license validation so restored extension tabs can wait for startup.
+const msg_commands = [
+  "currentDeckUpdate",
+  "getLicenseInfo",
+  "copyFolderEntries",
+  "writeClipboardText",
+  "storeFolderEntries",
+  "pasteFolderEntries",
+  "legacyAdvancedSearch", // new global one!
+  "showAboutConfig", // new global one!
+  "showLicenseDialog", // new global one!
+  "openRegistrationTab",
+  "getRegistrationPreferences",
+  "openPrefs",
+  "slideAlert",
+  "updateCategoryBox",
+  "updateFoldersUI",
+  "updateLicense",
+  "updateMainWindow",
+  "updateNavigationBar",
+  "updateQuickFoldersLabel",
+  "updateUserStyles",
+  "readCategories",
+  "storeCategories",
+  "pluralForm",
+  "readToolbarStatus",
+  "storeToolbarStatus",
+  "toggleNavigationBars",
+  "getLastLoadedTheme",
+  "storeLoadedTheme",
+  "stageThemeChange",
+  "openStorageEditor",
+  "deleteUserStyle",
+  "showNewsMessage",
+];
+
+// message listener - SELECTIVE!
+// every message listener must have its unique set of messages (if it returns something)
+messenger.runtime.onMessage.addListener((data, sender) => {
+  if (msg_commands.includes(data?.command)) {
+    return notificationHandler(data, sender); // the result of this is a Promise
+  }
+  // Future Work: command handler for tbkeys-lite!
+  switch (data.command) {
+    case "shortcut":
+      console.log("QuickFolders: Received shortcut:", { data, sender });
+      break;
+  }
+});
 registerNotifyListener();
 // Only qf-messenger's static toolbar may appear before readiness. Its functional
 // initialization and qf-3pane's toolbar injection wait for the license result.

@@ -17,17 +17,14 @@ END LICENSE BLOCK */
 // Script for splash screen displayed when installing this Extension
 
 addEventListener("click", async (event) => {
-	if (event.target.id.startsWith("register")) {
-    messenger.Utilities.showLicenseDialog("splashScreen");
-    // messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=landing-update");
-	}
-	if (
+  if (
+    event.target.id.startsWith("register") ||
     event.target.id.startsWith("extend") ||
     event.target.id.startsWith("renew") ||
     event.target.id.startsWith("upgrade")
   ) {
-    messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
-    window.close();
+    event.preventDefault();
+    await openSplashRegistration(event.target.id.startsWith("extend") ? "extend" : "");
   }
 
 	if (event.target.id.startsWith("donate")) {

@@ -18,9 +18,11 @@ END LICENSE BLOCK */
 
 
 addEventListener("click", async (event) => {
-	if (event.target.id.startsWith("register")) {
-    messenger.Utilities.showLicenseDialog("splashScreen");
-	}
+  if (["register", "extend", "renew", "upgrade"].some((prefix) => event.target.id.startsWith(prefix))) {
+    event.preventDefault();
+    await openSplashRegistration(event.target.id.startsWith("extend") ? "extend" : "");
+    return;
+  }
   switch (event.target.id) {
     case "compLink":
       messenger.windows.openDefaultBrowser("https://quickfolders.org/premium.html#featureComparison");
@@ -46,11 +48,6 @@ addEventListener("click", async (event) => {
   }    
   
   
-  if (event.target.id.startsWith("extend") || event.target.id.startsWith("renew")) {
-    messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
-    window.close(); // not allowed by content script!
-  }
-
 	if (event.target.id.startsWith("donate")) {
     messenger.windows.openDefaultBrowser("https://quickfolders.org/donate.html#donate");
 	}

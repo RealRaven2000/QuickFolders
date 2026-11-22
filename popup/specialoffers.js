@@ -40,8 +40,7 @@ addEventListener("click", async (event) => {
       break;
     case "bargainRenewIcon":
     case "bargainUpgradeIcon":
-      messenger.Utilities.showXhtmlPage("chrome://quickfolders/content/register.xhtml");
-      window.close(); // not allowed by content script!
+      await openSplashRegistration();
       break;
     case "stdLink":
       messenger.windows.openDefaultBrowser("https://sites.fastspring.com/quickfolders/product/quickfoldersstandard?referrer=splashScreen-standard");

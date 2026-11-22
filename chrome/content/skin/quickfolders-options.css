@@ -383,13 +383,6 @@ hbox.quickhelp-dbg {
 }
 
 
-/* improve visibility on dark themes */
-#QuickFolders-Options-support {
-	background-image: url("chrome://quickfolders/content/skin/thunderbird-earlybird.png") !important;
-	background-repeat: no-repeat;
-}
-
-
 #supportgrid {
   margin-left: 1.5em;
   margin-right: 1.5em;

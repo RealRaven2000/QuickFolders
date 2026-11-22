@@ -2,6 +2,50 @@
   "_l10nstatus": {
     "message": "SPLASH+UI"
   },
+  "accessibility.count.total": {
+    "message": "$count$ gesamte Nachrichten",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ insgesamt in Unterordnern",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ ungelesene Nachrichten",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ ungelesen in Unterordnern",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Den Befehl 'Symbol anpassen' aus dem Ordner-Kontextmenü entfernen."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Tooltips auf Tabs ausblenden"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "QuickFolders-Lesezeichen bei der Suche zuvorderst anzeigen."
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "Eltern-Verzeichnis als separates Element in Untermenüs anzeigen"
+  },
   "account.label": {
     "message": "Konto wählen:"
   },
@@ -21,50 +65,6 @@
   },
   "addon-authors-struggle": {
     "message": "Um weiterhin nützlich zu sein, müssen Add-On-Entwickler nun vermehrt die für die Reparatur und das Umschreiben erforderlichen Mittel aufbringen, damit unsere Benutzer weiterhin von den Funktionen profitieren können, die wir an den Tisch bringen."
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ ungelesene Nachrichten",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "$count$ ungelesen in Unterordnern",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "$count$ gesamte Nachrichten",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "$count$ insgesamt in Unterordnern",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "Den Befehl 'Symbol anpassen' aus dem Ordner-Kontextmenü entfernen."
-  },
-  "accessibility.hideTooltips": {
-    "message": "Tooltips auf Tabs ausblenden"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "QuickFolders-Lesezeichen bei der Suche zuvorderst anzeigen."
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "Eltern-Verzeichnis als separates Element in Untermenüs anzeigen"
   },
   "aria.a11underReview": {
     "message": "Wir überprüfen und verbessern derzeit die Barrierefreiheit dieser Seite. Wir arbeiten daran, die beschriebene Funktionalität benutzerfreundlicher für Tastatur und Bildschirmleser zu gestalten. Vielen Dank für Ihre Geduld!"
@@ -156,6 +156,9 @@
   "commands.toggleFolderTree": {
     "message": "Verzeichnisbaum ein / ausblenden"
   },
+  "configurable.tooltip": {
+    "message": "Klicken Sie auf das Konfigurationsrad für weitere Einstellungen"
+  },
   "cost-of-independence": {
     "message": "Softwareentwicklung kostet Zeit und Geld - im Gegensatz zu vielen Plattform-Apps werden Add-Ons weder von großen Unternehmen geschrieben noch in irgendeiner Weise von Mozilla gesponsert."
   },
@@ -208,8 +211,11 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "Tabs für die wichtigsten Mail Verzeichnisse in Thunderbird."
   },
-  "firstName.label": {
-    "message": "Vorname:"
+  "findRelated.btn.label": {
+    "message": "Verwandte E-Mails finden"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Ähnliche E-Mails basierend auf der ausgewählten E-Mail und benutzerdefinierten Suchmustern finden"
   },
   "findRelated.btnAdd": {
     "message": "Hinzufügen"
@@ -220,20 +226,17 @@
   "findRelated.btnUpdate": {
     "message": "Aktualisieren"
   },
-  "findRelated.btn.label": {
-    "message": "Verwandte E-Mails finden"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "Ähnliche E-Mails basierend auf der ausgewählten E-Mail und benutzerdefinierten Suchmustern finden"
-  },
   "findRelated.entries": {
     "message": "Suchmuster"
   },
   "findRelated.menu.configure": {
     "message": "Suchmuster konfigurieren…"
   },
-  "findRelated.prompt.title": {
-    "message": "Verwandte E-Mails finden: Mustersuche"
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Die Schaltfläche 'Gehe zur nächsten E-Mail' löscht die vorherige Suche."
+  },
+  "findRelated.options.title": {
+    "message": "Optionen"
   },
   "findRelated.prompt.enterPattern": {
     "message": "Um diese Funktion zu nutzen, richten Sie bitte mindestens ein Suchmuster ein."
@@ -241,11 +244,8 @@
   "findRelated.prompt.selectPattern": {
     "message": "Wählen Sie ein Suchmuster über Rechtsklick auf [Ähnliche Mails finden] aus. Dies führt die Suche aus und speichert deren Einstellungen für das nächste Mal, wenn Sie die Schaltfläche verwenden."
   },
-  "findRelated.options.title": {
-    "message": "Optionen"
-  },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "Die Schaltfläche 'Gehe zur nächsten E-Mail' löscht die vorherige Suche."
+  "findRelated.prompt.title": {
+    "message": "Verwandte E-Mails finden: Mustersuche"
   },
   "findRelated.searchGroup": {
     "message": "Suchgruppe (0 für vollständige Übereinstimmung):"
@@ -253,26 +253,29 @@
   "findRelated.searchPattern": {
     "message": "Suchmuster:"
   },
+  "findRelated.term.body": {
+    "message": "Text"
+  },
   "findRelated.term.menutitle": {
     "message": "Titel:"
-  },
-  "findRelated.term.subject": {
-    "message": "Betreff"
-  },
-  "findRelated.term.sender": {
-    "message": "Absender"
   },
   "findRelated.term.recipients": {
     "message": "Empfänger"
   },
-  "findRelated.term.body": {
-    "message": "Text"
+  "findRelated.term.sender": {
+    "message": "Absender"
+  },
+  "findRelated.term.subject": {
+    "message": "Betreff"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Was in verwandten Mails durchsucht werden soll:"
   },
   "findRelated.terms.selectedFields": {
     "message": "Suchzeichenfolge abrufen von:"
   },
-  "findRelated.terms.searchCriteriaFields": {
-    "message": "Was in verwandten Mails durchsucht werden soll:"
+  "firstName.label": {
+    "message": "Vorname:"
   },
   "freeLicense": {
     "message": "Falls Sie in letzter Zeit dem QuickFolders Projekt gespendet oder mit Arbeit beigetragen haben, z.B. durch Übersetzung oder Softwarepatches, können Sie für eine Gratislizenz qualifiziert sein. Kontaktieren Sie mich einfach vom 'Support' Reiter im QuickFolders Optionen Dialog."
@@ -318,6 +321,9 @@
   "intro": {
     "message": "Eine Jahreslizenz für QuickFolders Pro gibt Ihnen Zugriff auf alle Premium Funktionen für ein Jahr. Dies ermöglicht es mir dieses Produkt weiter zu unterstützen und zu verbessern. Mit Ihrer Hilfe bleibt QuickFolders weiter fantastisch!"
   },
+  "keyshortcuts.news": {
+    "message": "Derzeit verwendet Thunderbird diese als integrierte Tastenkombinationen, aber Sie können sie mithilfe des Add-ons tbkeys lite freigeben. Klicken Sie auf die (?)-Schaltfläche für weitere Informationen:"
+  },
   "label-remind-me": {
     "message": "Erinnern Sie mich noch einmal in $countDays$ Tagen.",
     "placeholders": {
@@ -327,14 +333,35 @@
       }
     }
   },
-  "keyshortcuts.news": {
-    "message": "Derzeit verwendet Thunderbird diese als integrierte Tastenkombinationen, aber Sie können sie mithilfe des Add-ons tbkeys lite freigeben. Klicken Sie auf die (?)-Schaltfläche für weitere Informationen:"
-  },
   "lastName.label": {
     "message": "Nachname:"
   },
   "lblCustomPalette": {
     "message": "Individuelle Palette:"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders benötigt eine Pro-Lizenz, um mehr als $maxTabs$ Registerkarten zu unterstützen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "Standardlizenz - eingeschränkte Pro-Funktion. Mehr Info…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Nicht lizenzierte Version - eingeschränkte Funktion. Mehr Info…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders benötigt eine Lizenz, um mehr als $maxTabs$ Registerkarten zu unterstützen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -355,59 +382,44 @@
   "licenseWindow.title": {
     "message": "QuickFolders Pro Lizenz"
   },
-  "license_restriced.std": {
-    "message": "Standardlizenz - eingeschränkte Pro-Funktion. Mehr Info…"
+  "message.browserLaunchFailed": {
+    "message": "{p} Ihr Standardbrowser konnte nicht geöffnet werden. Sie können die folgende Adresse kopieren und in die Adressleiste Ihres Browsers einfügen. {/p} Weitere Einzelheiten zum Fehler finden Sie in der JavaScript-Fehlerkonsole."
   },
-  "license_restriced.unpaid": {
-    "message": "Nicht lizenzierte Version - eingeschränkte Funktion. Mehr Info…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — Browserfehler"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders benötigt eine Pro-Lizenz, um mehr als $maxTabs$ Registerkarten zu unterstützen.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "Webadresse (Strg+C zum Kopieren):"
   },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders benötigt eine Lizenz, um mehr als $maxTabs$ Registerkarten zu unterstützen.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.btn.accept": {
+    "message": "OK"
   },
-  "message.browserLaunchFailed": { "message": "{p} Ihr Standardbrowser konnte nicht geöffnet werden. Sie können die folgende Adresse kopieren und in die Adressleiste Ihres Browsers einfügen. {/p} Weitere Einzelheiten zum Fehler finden Sie in der JavaScript-Fehlerkonsole." },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — Browserfehler" },
-  "message.browserLaunchFailed.url": { "message": "Webadresse (Strg+C zum Kopieren):" },
-  "message.btn.accept": { "message": "OK" },
-  "message.btn.cancel": { "message": "Abbrechen" },
-  "message.btn.no": { "message": "Nein" },
-  "message.btn.yes": { "message": "Ja" },
-  "message.features": { "message": "Funktionen vergleichen…" },
-  "message.placeholder": { "message": "Nachricht fehlt." },
-  "message.licenseScreen": { "message": "Lizenzoptionen anzeigen…" },
-  "message.linkInTab": { "message": "(Link in Tab geöffnet)" },
+  "message.btn.cancel": {
+    "message": "Abbrechen"
+  },
+  "message.btn.no": {
+    "message": "Nein"
+  },
+  "message.btn.yes": {
+    "message": "Ja"
+  },
+  "message.features": {
+    "message": "Funktionen vergleichen…"
+  },
+  "message.licenseScreen": {
+    "message": "Lizenzoptionen anzeigen…"
+  },
+  "message.linkInTab": {
+    "message": "(Link in Tab geöffnet)"
+  },
+  "message.placeholder": {
+    "message": "Nachricht fehlt."
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla bietet nur eine Basis-Plattform, um unsere Software für Sie als Endbenutzer weiterzuleiten. Wenn wir unsere Benutzer um Zahlung oder Support bitten müssen, können wir dies nicht über addons.thunderbird.net tun - es handelt sich nicht um einen App Store mit integrierten Paywalls oder Lizenzverwaltung wie iTunes oder Google Play."
   },
   "newsHead": {
     "message": "Neuigkeiten"
-  },
-  "newsMsgEsr140": {
-    "message": "{P}{b} Demnächst im nächsten großen Release {/b}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {a release}Erfahren Sie mehr über das neue Release-Modell{/a}.{U} {L}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{/L} {L}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {a compatCheck}Add-on-Kompatibilitätsprüfung{/a} installieren.{/L} {/U}{/P}{P} Wir freuen uns, bekannt zu geben, dass QuickFolders vollständig mit Thunderbird 140, dem nächsten Extended Support Release (ESR), kompatibel ist. Das bedeutet fortlaufende Zuverlässigkeit und Sicherheit im nächsten großen Support-Zyklus.{/P}{P} QuickFolders unterstützt weiterhin Nutzer von Thunderbird 115 und höher. Im kommenden Jahr kann die Unterstützung für Thunderbird 115 zugunsten von Thunderbird 128 und neuer eingestellt werden, sobald neue Funktionen hinzugefügt werden.{/P}{P} Wir überwachen kontinuierlich Änderungen in Thunderbird, um sicherzustellen, dass QuickFolders unabhängig vom gewählten Update-Pfad kompatibel und zuverlässig bleibt.{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} Eine wesentliche Änderung für Thunderbird steht bevor {/b}: Ab Thunderbird 153 werden experimentelle Add-ons wie {+extensionName} in Release-Versionen nicht mehr unterstützt. Thunderbird ist dabei, {a apiwork}die WebExtension-APIs aktiv auszubauen{/a}, um die Abhängigkeit von experimentellen Erweiterungsmechanismen zu reduzieren. Ab {emph}Version 153{/emph} erfordern Legacy-Add-ons die {+newsMsgEsr153.ESR} (ESR).<ul><li>Der ESR-Zweig bleibt die empfohlene Option für Nutzer, die auf erweiterte oder experimentelle Add-ons angewiesen sind.</li><li>Der Release-Kanal konzentriert sich auf stabile, vollständig unterstützte WebExtension-Add-ons.</li><li>Der Beta-Kanal kann weiterhin für Tests und Kompatibilitätsprüfungen vor ESR-Releases genutzt werden.</li></ul></P>{P}{+extensionName} bleibt auf Thunderbird ESR vollständig unterstützt und wird auf unterstützten Release-Versionen weiterhin aktiv gepflegt, sofern dies technisch möglich ist.{/P}{P}Wir beobachten Änderungen an Thunderbird weiterhin genau, um Kompatibilität und eine stabile Nutzung über alle unterstützten Versionen hinweg sicherzustellen.{/P}"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (erweiterte Support-Version von Thunderbird)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Bevorstehende Änderungen bei der Thunderbird-Add-on-Unterstützung{/b}: Eine zuvor angekündigte Änderung für experimentelle Add-ons im Release-Kanal wurde auf den nächsten ESR-Zyklus verschoben (ESR 2027). Diese zusätzliche Zeit wird genutzt, um die API-Abdeckung zu verbessern und den Übergang gemeinsam mit der Add-on-Community weiter auszuarbeiten.{/P}{P}Derzeit ist keine Aktion erforderlich. {+extensionName} funktioniert weiterhin sowohl in Release- als auch ESR-Versionen von Thunderbird, sofern unterstützt.{/P}{P}Wir beobachten die Plattformänderungen weiterhin und geben Hinweise, falls zu einem späteren Zeitpunkt eine Migration erforderlich wird.{/P}{P}Auch wenn ein Wechsel auf den ESR-Kanal nicht erforderlich ist, bevorzugen einige Nutzer mit starkem Fokus auf experimentelle Funktionen diesen möglicherweise, da dort weniger Änderungen erfolgen und die APIs stabiler sind, da experimentelle Schnittstellen stärker von internen Plattformänderungen betroffen sein können.{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} Alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität sind nur durch Ihre Unterstützung möglich.{/P}{P class=specialOffer} Um die Entwicklung von QuickFolders zu unterstützen, können Sie Ihre Lizenz bis {salesEnd} vergünstigt verlängern.{/P}{P class=bottomhint}🡇 Wählen Sie unten eine Option, um mehr zu erfahren 🡇 {/P}"
@@ -421,6 +433,19 @@
   "newsMsg.license.valid": {
     "message": "{P} Vielen Dank, dass Sie QuickFolders mit einer Pro-Lizenz unterstützen – das ermöglicht alle neuen Funktionen, Fehlerbehebungen und langfristige Kompatibilität.{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b} Demnächst im nächsten großen Release {/b}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {a release}Erfahren Sie mehr über das neue Release-Modell{/a}.{U} {L}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{/L} {L}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {a compatCheck}Add-on-Kompatibilitätsprüfung{/a} installieren.{/L} {/U}{/P}{P} Wir freuen uns, bekannt zu geben, dass QuickFolders vollständig mit Thunderbird 140, dem nächsten Extended Support Release (ESR), kompatibel ist. Das bedeutet fortlaufende Zuverlässigkeit und Sicherheit im nächsten großen Support-Zyklus.{/P}{P} QuickFolders unterstützt weiterhin Nutzer von Thunderbird 115 und höher. Im kommenden Jahr kann die Unterstützung für Thunderbird 115 zugunsten von Thunderbird 128 und neuer eingestellt werden, sobald neue Funktionen hinzugefügt werden.{/P}{P} Wir überwachen kontinuierlich Änderungen in Thunderbird, um sicherzustellen, dass QuickFolders unabhängig vom gewählten Update-Pfad kompatibel und zuverlässig bleibt.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (erweiterte Support-Version von Thunderbird)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Bevorstehende Änderungen bei der Thunderbird-Add-on-Unterstützung{/b}: Eine zuvor angekündigte Änderung für experimentelle Add-ons im Release-Kanal wurde auf den nächsten ESR-Zyklus verschoben (ESR 2027). Diese zusätzliche Zeit wird genutzt, um die API-Abdeckung zu verbessern und den Übergang gemeinsam mit der Add-on-Community weiter auszuarbeiten.{/P}{P}Derzeit ist keine Aktion erforderlich. {+extensionName} funktioniert weiterhin sowohl in Release- als auch ESR-Versionen von Thunderbird, sofern unterstützt.{/P}{P}Wir beobachten die Plattformänderungen weiterhin und geben Hinweise, falls zu einem späteren Zeitpunkt eine Migration erforderlich wird.{/P}{P}Auch wenn ein Wechsel auf den ESR-Kanal nicht erforderlich ist, bevorzugen einige Nutzer mit starkem Fokus auf experimentelle Funktionen diesen möglicherweise, da dort weniger Änderungen erfolgen und die APIs stabiler sind, da experimentelle Schnittstellen stärker von internen Plattformänderungen betroffen sein können.{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} Eine wesentliche Änderung für Thunderbird steht bevor {/b}: Ab Thunderbird 153 werden experimentelle Add-ons wie {+extensionName} in Release-Versionen nicht mehr unterstützt. Thunderbird ist dabei, {a apiwork}die WebExtension-APIs aktiv auszubauen{/a}, um die Abhängigkeit von experimentellen Erweiterungsmechanismen zu reduzieren. Ab {emph}Version 153{/emph} erfordern Legacy-Add-ons die {+newsMsgEsr153.ESR} (ESR).<ul><li>Der ESR-Zweig bleibt die empfohlene Option für Nutzer, die auf erweiterte oder experimentelle Add-ons angewiesen sind.</li><li>Der Release-Kanal konzentriert sich auf stabile, vollständig unterstützte WebExtension-Add-ons.</li><li>Der Beta-Kanal kann weiterhin für Tests und Kompatibilitätsprüfungen vor ESR-Releases genutzt werden.</li></ul></P>{P}{+extensionName} bleibt auf Thunderbird ESR vollständig unterstützt und wird auf unterstützten Release-Versionen weiterhin aktiv gepflegt, sofern dies technisch möglich ist.{/P}{P}Wir beobachten Änderungen an Thunderbird weiterhin genau, um Kompatibilität und eine stabile Nutzung über alle unterstützten Versionen hinweg sicherzustellen.{/P}"
+  },
   "newsSection": {
     "message": "{P}{b} Demnächst im nächsten großen Release {/b}: Thunderbird wird Sie bald bitten, Ihren bevorzugten Update-Pfad zu wählen – entweder den jährlichen ESR-Zweig oder die schnelleren monatlichen Versionen. {a release}Erfahren Sie mehr über das neue Release-Modell{/a}.{U} {L}Die ESR-Version bleibt bei v140, erhöht nur die Nebenversionsnummern und enthält ausschließlich Sicherheits- und Fehlerbehebungen, was oft für Unternehmen bevorzugt wird.{/L} {L}Der monatliche Veröffentlichungszyklus bringt neue Funktionen und Interface-Updates, sobald sie entwickelt werden. Bitte prüfen Sie, ob Ihre aktuellen Add-ons dieses Modell unterstützen. Zur Unterstützung können Sie die {a compatCheck}Add-on-Kompatibilitätsprüfung{/a} installieren.{/L} {/U}",
     "placeholders": {
@@ -430,11 +455,11 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}Wir folgen weiterhin dem monatlichen Veröffentlichungszyklus von Thunderbird, um Kompatibilität und Stabilität sicherzustellen. Wie immer wird diese Arbeit vollständig durch den Verkauf von Lizenzen finanziert.{/P}"
-  },
   "newsSection.important": {
     "message": "{P}Wichtig für Nutzer des Release-Kanals ({emph}154 und später{/emph}): Mit dem neuen 2-Wochen-Veröffentlichungszyklus von Thunderbird besteht ein erhöhtes Risiko unerwarteter Fehlfunktionen wie [issue 690]. Während ich {+extensionName} regelmäßig tägliche Builds teste, hängen zeitnahe Korrekturen von {b}frühzeitiger Meldung{/b} durch Release-Nutzer ab. Bitte folgen Sie dem {a href='https://github.com/RealRaven2000/QuickFolders/issues'}Issue-Tracker{/a} und melden Sie Fehler umgehend, um die Kompatibilität aufrechtzuerhalten.{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}Wir folgen weiterhin dem monatlichen Veröffentlichungszyklus von Thunderbird, um Kompatibilität und Stabilität sicherzustellen. Wie immer wird diese Arbeit vollständig durch den Verkauf von Lizenzen finanziert.{/P}"
   },
   "newsSection.license": {
     "message": "Da alle Arbeiten an QuickFolders und der kostenlose Support ausschließlich durch Lizenzverkäufe finanziert werden, bitte denken Sie darüber nach, eine Lizenz zu kaufen oder Ihre aktuelle zu verlängern."
@@ -472,9 +497,6 @@
   "qf.accounts": {
     "message": "Konten"
   },
-  "qf.alert.pasteFolders.formatErr": {
-    "message": "Konnte Tabs nicht erzeugen. Mehr Informationen in Extras / Fehlerkonsole."
-  },
   "qf.alert.bookmarks.unsupportedType": {
     "message": "Derzeit nicht unterstützter Lesezeichen-Typ: $bookmarkType$ {NewLine}Wählen Sie mindestens eine Nachricht aus oder ziehen Sie E-Mails einfach über die Schaltfläche",
     "placeholders": {
@@ -482,6 +504,9 @@
         "content": "$1"
       }
     }
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Konnte Tabs nicht erzeugen. Mehr Informationen in Extras / Fehlerkonsole."
   },
   "qf.backupAndRestore": {
     "message": "Datensicherung / Wiederherstellen"
@@ -549,20 +574,14 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Bei Klicken auf Tabs Eingabefokus auf Email-Liste setzen"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "QuickFolders in Einzelnachtrichten-Tabs ausblenden"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Versteckt die QuickFolders-Leiste wenn eine einzelne Mail im Tab angezeigt wird."
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Schliessen Schaltfläche"
   },
-  "qf.checkbox.currentFolder.show": {
-    "message": "Beim Start anzeigen"
-  },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "Mit lightweight Theme integrieren"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "Beim Start anzeigen"
   },
   "qf.checkbox.debug": {
     "message": "Debug Modus"
@@ -581,6 +600,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "Verkleinert das Kategorien-Menü um Platz zu sparen."
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "QuickFolders in Einzelnachtrichten-Tabs ausblenden"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Versteckt die QuickFolders-Leiste wenn eine einzelne Mail im Tab angezeigt wird."
   },
   "qf.checkbox.highlightNewMail": {
     "message": "Verzeichnisse mit neuer Post hervorheben"
@@ -633,14 +658,14 @@
   "qf.checkbox.quickMove": {
     "message": "quickMove - Verschiebe Mails in beliebiges Ziel mit:"
   },
-  "qf.checkbox.quickMove.tip": {
-    "message": "Schnelltaste um Emails per Eingabe des Verzeichnisnamen in einen beliebigen Ordner zu verschieben."
-  },
   "qf.checkbox.quickmove.autofill": {
     "message": "Letztes benutztes Verzeichnis einfügen"
   },
   "qf.checkbox.quickmove.autofill.tip": {
     "message": "Das zuletzt angesprungene Verzeichnis wird eingefügt. Drücken Sie [Return] zum bestätigen, oder überschreiben Sie ihn für andere Zielverzeichnisse."
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Schnelltaste um Emails per Eingabe des Verzeichnisnamen in einen beliebigen Ordner zu verschieben."
   },
   "qf.checkbox.readingList": {
     "message": "Leseliste"
@@ -699,8 +724,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Zuletzt verwendete Ordner Tab"
   },
-  "configurable.tooltip": {
-    "message": "Klicken Sie auf das Konfigurationsrad für weitere Einstellungen"
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Tastaturkürzel auf den Tabs anzeigen"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Unterverzeichnisse in Kontext Menüs"
@@ -713,9 +738,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "Anzahl der ungelesenen Mails anzeigen"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "Tastaturkürzel auf den Tabs anzeigen"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "…auch im eigenen Mail Fenster"
@@ -759,6 +781,12 @@
   "qf.checkbox.transparent": {
     "message": "Transparent"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Tastaturkürzel aktivieren (Alt + 1 bis Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Strg statt Alt"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "ALT-Links / ALT-Rechts für voriges / nächstes Tab"
   },
@@ -767,12 +795,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "Tabs erneuern mit Strg + Alt +"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Tastaturkürzel aktivieren (Alt + 1 bis Alt + 9)"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Strg statt Alt"
   },
   "qf.continueFilter.label": {
     "message": "Filter erzeugen…"
@@ -783,8 +805,11 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopiert die komplette Verzeichniskonfiguration in die Zwischenablage"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird-Theme"
+  "qf.currentfolder.leftSpacer": {
+    "message": "Abstand links:"
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "Abstand rechts:"
   },
   "qf.currentFolderBackground.custom": {
     "message": "Benutzerdefiniert"
@@ -795,17 +820,11 @@
   "qf.currentFolderBackground.default": {
     "message": "Silber"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird-Theme"
+  },
   "qf.currentFolderBackground.translucent": {
     "message": "Milchglas"
-  },
-  "qf.currentfolder.leftSpacer": {
-    "message": "Abstand links:"
-  },
-  "qf.currentfolder.rightSpacer": {
-    "message": "Abstand rechts:"
-  },
-  "qf.description.github": {
-    "message": "Für alle offiziellen Änderungsvorschläge und Fehlermeldungen bitte github verwenden."
   },
   "qf.description.categoryusage": {
     "message": "Sie können dieses Verzeichnis einer Kategorie zuteilen (z.B. 'Arbeit', 'Privat', usw.)."
@@ -824,6 +843,9 @@
   "qf.description.donate": {
     "message": "Falls Sie QuickFolders so sehr lieben wie wir, und die weitere Software-Entwicklung unterstützen wollen, können Sie uns hier eine Spende hinterlassen:"
   },
+  "qf.description.dragexplain": {
+    "message": "Tabs können auch mit der Maus verschoben werden!"
+  },
   "qf.description.dragToAdd": {
     "message": "Ziehen Sie ihre Mail Verzeichnisse auf eine leere Fläche der QuickFolders Werkzeugleiste. Dies erzeugt einen neuen Tab, der wie eine Verknüpfung funktioniert. Ziehen Sie Mails auf die Tabs um sie in diese Verzeichnisse zu verschieben (oder Kopieren, mit CTRL / Apple Taste). Tab anklicken um das Verzeichnis zu öffnen."
   },
@@ -833,14 +855,14 @@
   "qf.description.dragToPosition": {
     "message": "Ziehen sie die Tabs seitlich um die Reihenfolge zu verändern. Ein Rechtsklick öffnet das Tab-Menü; hier kann man die Unterverzeichnisse anklicken. 'Umbenennen' ändert den Titel des Tabs. 'Tab löschen' entfernt den Tab (nicht das Mail-Verzeichnis)."
   },
-  "qf.description.dragexplain": {
-    "message": "Tabs können auch mit der Maus verschoben werden!"
-  },
   "qf.description.editcategory": {
     "message": "Wählen Sie eine existierende Kategorie oder benennen eine neue"
   },
   "qf.description.experimentalItems": {
     "message": "Die folgenden Einstellungen sind experimentell - werden in den nächsten Versionen verbessert."
+  },
+  "qf.description.github": {
+    "message": "Für alle offiziellen Änderungsvorschläge und Fehlermeldungen bitte github verwenden."
   },
   "qf.description.languages": {
     "message": "QuickFolders unterstützt Lokalisierung - helfen Sie mit Ihrer Übersetzung auf github:"
@@ -941,41 +963,11 @@
   "qf.group.navigation": {
     "message": "Mail Navigations Verhalten"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "Farbe aktives Tab:"
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "Palette für individuelle Farben:"
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palette für Tabs mit individuell gewählter Farbe"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "Drag und Drop:"
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "Farbe Hovered Tab:"
-  },
-  "qf.label.Toolbar": {
-    "message": "Tableiste"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "Höhe der Unterlinie:"
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "Höhe der der Linie unter den Tabs. Die Farbe kann mit der Schaltfläche hierunter eingestellt werden."
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "Hintergrundsfarbe:"
-  },
-  "qf.label.UncoloredTab": {
-    "message": "Normale Tab Farbe:"
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "Aussehen inaktiver Tabs ohne individuelle Farbe"
-  },
   "qf.label.accessibility": {
     "message": "Barrierefreiheit"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Farbe aktives Tab:"
   },
   "qf.label.appearance": {
     "message": "Aussehen"
@@ -983,14 +975,17 @@
   "qf.label.behavior": {
     "message": "Verhalten bei Aktionen"
   },
-  "qf.label.github": {
-    "message": "Bug melden oder Neues Feature vorschlagen…"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Schriftgrösse (0 für Standardwert):"
   },
   "qf.label.cancel": {
     "message": "Abbrechen"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Palette für individuelle Farben:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Palette für Tabs mit individuell gewählter Farbe"
   },
   "qf.label.colors": {
     "message": "Farben"
@@ -1010,6 +1005,9 @@
   "qf.label.dragFolderLabel": {
     "message": "Verzeichnisse mit Maus hierher ziehen. Die Tabs anklicken um das Verzeichnis zu öffnen, Mails draufziehen zum Verschieben/Kopieren."
   },
+  "qf.label.DragOverBackground": {
+    "message": "Drag und Drop:"
+  },
   "qf.label.existingcategories": {
     "message": "Vorhandene Kategorien:"
   },
@@ -1025,6 +1023,9 @@
   "qf.label.getQuickFilters": {
     "message": "Für eine verbesserte Version mit mehr Funktionen zum erzeugen und managen von Filtern installieren Sie bitte mein Add-on quickFilters!"
   },
+  "qf.label.github": {
+    "message": "Bug melden oder Neues Feature vorschlagen…"
+  },
   "qf.label.goNextUnread": {
     "message": "Gehe zur nächsten ungelesenen Nachricht:"
   },
@@ -1036,6 +1037,9 @@
   },
   "qf.label.homePage": {
     "message": "Mehr Infos, Doku (Englisch) und Forum auf der neuen QuickFolders Homepage (quickfolders.org)…"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Farbe Hovered Tab:"
   },
   "qf.label.initdelay": {
     "message": "[ms] init Verzögerung {1000=standard}:"
@@ -1121,6 +1125,24 @@
   "qf.label.testfolder2": {
     "message": "Test Verzeichnis"
   },
+  "qf.label.Toolbar": {
+    "message": "Tableiste"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Höhe der Unterlinie:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "Höhe der der Linie unter den Tabs. Die Farbe kann mit der Schaltfläche hierunter eingestellt werden."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Hintergrundsfarbe:"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Normale Tab Farbe:"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Aussehen inaktiver Tabs ohne individuelle Farbe"
+  },
   "qf.label.versionhistory": {
     "message": "Versionsgeschichte lesen…"
   },
@@ -1193,9 +1215,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Aktiv-Verzeichnis-Werkzeuge anzeigen"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "Aktiv-Verzeichnis-Werkzeuge ausblenden"
-  },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "V"
   },
@@ -1210,6 +1229,9 @@
   },
   "qf.menuitem.quickfolders.help": {
     "message": "QuickFolders Hilfe…"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Aktiv-Verzeichnis-Werkzeuge ausblenden"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "QuickFolders Einstellungen…"
@@ -1241,11 +1263,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "Keine Aktion"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "Mail als ungelesen markieren"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "Mail als gelesen markieren"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Mail als ungelesen markieren"
   },
   "qf.moveMailStatus.label": {
     "message": "Beim Verschieben von E-Mails in einen QuickFolder:"
@@ -1330,6 +1352,9 @@
   "qf.notifications.compactFolder": {
     "message": "Benachrichtigen, nachdem der Ordner komprimiert wurde"
   },
+  "qf.options.label.themeAuthor": {
+    "message": "Autor des Themes:"
+  },
   "qf.options.LayoutColorAppearance": {
     "message": "Individuelle Tab-Farben"
   },
@@ -1339,20 +1364,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "(gestreift)"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "Autor des Themes:"
-  },
   "qf.options.theme.pastelColors": {
     "message": "Pastel Farben"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "Unten:"
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Oben:"
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "Abgerundete Ecken"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "Oben:"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "Ränder immer anzeigen"
@@ -1384,12 +1406,6 @@
   "qf.pathFormat.AccountAndPath": {
     "message": "Konto - Verzeichnispfad"
   },
-  "qf.pathFormat.PathOnly": {
-    "message": "Verzeichnispfad"
-  },
-  "qf.pathFormat.URI": {
-    "message": "Verzeichnis URI"
-  },
   "qf.pathFormat.folderAndAccount": {
     "message": "Verzeichnisname - Konto"
   },
@@ -1399,8 +1415,14 @@
   "qf.pathFormat.maxDepth": {
     "message": "Maximale Pfad Tiefe:"
   },
+  "qf.pathFormat.PathOnly": {
+    "message": "Verzeichnispfad"
+  },
   "qf.pathFormat.tooltip": {
     "message": "Die maximale Anzahl von Verzeichnissen im angezeigten Pfad"
+  },
+  "qf.pathFormat.URI": {
+    "message": "Verzeichnis URI"
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders Einstellungen"
@@ -1413,7 +1435,9 @@
       }
     }
   },
-  "qf.premium.renew.hide": { "message": "Lizenzwarnung bis zum Neustart ausblenden" },
+  "qf.premium.renew.hide": {
+    "message": "Lizenzwarnung bis zum Neustart ausblenden"
+  },
   "qf.premium.renewLicense.tooltip": {
     "message": "Ihre Lizenz lief ab vor {1} Tagen"
   },
@@ -1564,9 +1588,6 @@
   "qf.toolbarTopPadding": {
     "message": "Oberer Abstand"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "Kürzlich benutzte Verzeichnisse"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "Diese Werkzeugleiste schließen"
   },
@@ -1576,11 +1597,11 @@
   "qf.tooltip.emailIcon": {
     "message": "Aktuelle Email - auf einen QuickFolders Tab ziehen um die Email zu verschieben"
   },
-  "qf.tooltip.filterStart": {
-    "message": "Den Filter Lernmodus starten. Dafür Emails auf die QuickFolders Reiter ziehen."
-  },
   "qf.tooltip.filters": {
     "message": "Stoppt den Filter Lernmodus."
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Den Filter Lernmodus starten. Dafür Emails auf die QuickFolders Reiter ziehen."
   },
   "qf.tooltip.folderUp": {
     "message": "Ins Elternverzeichnis wechseln"
@@ -1606,20 +1627,23 @@
   "qf.tooltip.quickMove": {
     "message": "Emails hierhin ziehen und dann Zielordner eingeben (quickMove); oder klicken um in den Ordner zu springen (quickJump)."
   },
+  "qf.tooltip.RecentFolders": {
+    "message": "Kürzlich benutzte Verzeichnisse"
+  },
   "qf.tooltip.skipUnreadFolder": {
     "message": "In den nächsten ungelesenen Ordner springen"
   },
   "qf.tooltip.threadIcon": {
     "message": "Aktuelles Thema - auf einen QuickFolders Tab ziehen um den Themenbaum zu verschieben"
   },
-  "qf.update.title": {
-    "message": "Aktualisierung / Updates"
-  },
   "qf.update.hideVersionHistory": {
     "message": "Seite mit Versionsverlauf nicht anzeigen"
   },
   "qf.update.markInvalidTabs": {
     "message": "Ungültige Tabs markieren 🧹"
+  },
+  "qf.update.title": {
+    "message": "Aktualisierung / Updates"
   },
   "qf.youtube.description": {
     "message": "Für detaillierte Videos über Thunderbird Add-ons und die Nutzung von QuickFolders besuchen Sie meinen YouTube Kanal Thunderbird Daily."
@@ -1659,12 +1683,6 @@
   "qfCommandPopup": {
     "message": "QuickFolders Befehle"
   },
-  "qfCompactFolder": {
-    "message": "Komprimieren"
-  },
-  "qfCompactFolderAccess": {
-    "message": "p"
-  },
   "qfCompacted": {
     "message": "Erfolgreich kompaktifiziert:"
   },
@@ -1679,6 +1697,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "Ursprüngliche Größe"
+  },
+  "qfCompactFolder": {
+    "message": "Komprimieren"
+  },
+  "qfCompactFolderAccess": {
+    "message": "p"
   },
   "qfConfirmCopyFolder": {
     "message": "Das Verzeichnis {0} nach {1} kopieren?"
@@ -1779,6 +1803,9 @@
   "qfMarkAllRead": {
     "message": "Verzeichnis als gelesen markieren"
   },
+  "qfMarkAllRead.next": {
+    "message": "Ordner als gelesen markieren und zum nächsten ungelesenen Ordner springen"
+  },
   "qfMarkAllReadAccess": {
     "message": "m"
   },
@@ -1787,9 +1814,6 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Verzeichnis + Unterverzeichnisse als gelesen markieren"
-  },
-  "qfMarkAllRead.next": {
-    "message": "Ordner als gelesen markieren und zum nächsten ungelesenen Ordner springen"
   },
   "qfMenuColor": {
     "message": "Farbe"
@@ -1919,45 +1943,6 @@
   "qfVersionDisableOnUpdate": {
     "message": "Das Versionslog nach Updates nicht mehr anzeigen?"
   },
-  "quickMove.help.head": {
-    "message": "Hilfe für {1}"
-  },
-  "quickMove.help.head.advanced": {
-    "message": "Erweiterte Funktionen"
-  },
-  "quickMove.help.l1a": {
-    "message": "Tippen Sie den Anfang eines Ordnernamens, oder enthaltene Wörter getrennt durch Leerzeichen."
-  },
-  "quickMove.help.l1b": {
-    "message": "Die folgenden Zeichen gelten als Wortgrenzen und müssen nicht eingegeben werden:"
-  },
-  "quickMove.help.l2a": {
-    "message": "Geben Sie {1} ein, um das Großeltern-/Eltern-/gesuchte Verzeichnis einzugeben."
-  },
-  "quickMove.help.l2b": {
-    "message": "Die ersten 2 Buchstaben eines Elternverzeichnisses sind in der Regel ausreichend. Sie können mit dieser Syntax auch neue Unterordner erstellen."
-  },
-  "quickMove.help.l3a": {
-    "message": "Verwenden Sie {1}, um alle Ordner dazwischen zu überspringen."
-  },
-  "quickMove.help.l3b": {
-    "message": "Dies ist nützlich für tiefere, kompliziertere oder unbekannte Ordnerhierarchien."
-  },
-  "quickMove.help.l4a": {
-    "message": "Drücken Sie {1}, um eine Liste der zuletzt eingegebenen Ordner zu erhalten. Die Anzahl der Ergebnisse hängt von Ihrer Lizenzstufe ab."
-  },
-  "quickMove.help.advanced": {
-    "message": "Auf der Registerkarte QuickFolders Pro können erweiterte Funktionen wie Tastaturkürzel zum Aufrufen eines Ordners / Verschieben von E-Mails oder das Ausschließen von Ordnern aus den Suchergebnissen konfiguriert werden. Um auf diese und andere Premium-Funktionen zuzugreifen, erwerben Sie eine Pro-Lizenz und unterstützen Sie die Zukunft von QuickFolders."
-  },
-  "quickMove.singleMessage.goNext": {
-    "message": "Nach Verschieben der aktuellen Nachricht die nächste E-Mail öffnen"
-  },
-  "quickMove.singleMessage.reopenTab": {
-    "message": "Die ursprüngliche Mail erneut öffnen, nachdem sie verschoben wurde"
-  },
-  "quickMove.singleMessageTabs": {
-    "message": "Mail Tab"
-  },
   "quickfolders.findFolder.placeHolder": {
     "message": "Verzeichnisname"
   },
@@ -2006,6 +1991,413 @@
   "quickfoldersQuickMovedMails": {
     "message": "Email in das Verzeichnis {2} verschoben;{1} Emails in das Verzeichnis {2} verschoben"
   },
+  "quickMove.help.advanced": {
+    "message": "Auf der Registerkarte QuickFolders Pro können erweiterte Funktionen wie Tastaturkürzel zum Aufrufen eines Ordners / Verschieben von E-Mails oder das Ausschließen von Ordnern aus den Suchergebnissen konfiguriert werden. Um auf diese und andere Premium-Funktionen zuzugreifen, erwerben Sie eine Pro-Lizenz und unterstützen Sie die Zukunft von QuickFolders."
+  },
+  "quickMove.help.head": {
+    "message": "Hilfe für {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "Erweiterte Funktionen"
+  },
+  "quickMove.help.l1a": {
+    "message": "Tippen Sie den Anfang eines Ordnernamens, oder enthaltene Wörter getrennt durch Leerzeichen."
+  },
+  "quickMove.help.l1b": {
+    "message": "Die folgenden Zeichen gelten als Wortgrenzen und müssen nicht eingegeben werden:"
+  },
+  "quickMove.help.l2a": {
+    "message": "Geben Sie {1} ein, um das Großeltern-/Eltern-/gesuchte Verzeichnis einzugeben."
+  },
+  "quickMove.help.l2b": {
+    "message": "Die ersten 2 Buchstaben eines Elternverzeichnisses sind in der Regel ausreichend. Sie können mit dieser Syntax auch neue Unterordner erstellen."
+  },
+  "quickMove.help.l3a": {
+    "message": "Verwenden Sie {1}, um alle Ordner dazwischen zu überspringen."
+  },
+  "quickMove.help.l3b": {
+    "message": "Dies ist nützlich für tiefere, kompliziertere oder unbekannte Ordnerhierarchien."
+  },
+  "quickMove.help.l4a": {
+    "message": "Drücken Sie {1}, um eine Liste der zuletzt eingegebenen Ordner zu erhalten. Die Anzahl der Ergebnisse hängt von Ihrer Lizenzstufe ab."
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Nach Verschieben der aktuellen Nachricht die nächste E-Mail öffnen"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Die ursprüngliche Mail erneut öffnen, nachdem sie verschoben wurde"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Mail Tab"
+  },
+  "registration.account": {
+    "description": "Adapted from legacy registration entity: account.label.",
+    "message": "E-Mail-Konto"
+  },
+  "registration.action.buy": {
+    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
+    "message": "$1 kaufen"
+  },
+  "registration.action.buyDomain": {
+    "message": "Domänenlizenz erwerben"
+  },
+  "registration.action.current": {
+    "message": "Aktuelle Edition"
+  },
+  "registration.action.extend": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.",
+    "message": "Lizenz verlängern"
+  },
+  "registration.action.renew": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.renewLicense.",
+    "message": "Lizenz erneuern"
+  },
+  "registration.action.upgrade": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
+    "message": "Upgrade auf Pro"
+  },
+  "registration.annual": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
+    "message": "Jahreslizenzen"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Kaufhinweis schließen"
+  },
+  "registration.checkout.error": {
+    "message": "Der Shop konnte nicht geöffnet werden. Bitte versuchen Sie es erneut."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Um Ihre Erneuerungs- oder Upgrade-Vorteile zu behalten, fahren Sie mit dem von dieser Seite aus geöffneten Produkt fort.{/bold} Wenn Sie eine {i}andere Lizenz{/i} wählen möchten, beginnen Sie einfach wieder hier."
+  },
+  "registration.checkout.note": {
+    "description": "Adapted from legacy registration entity: pricing.section.hint.",
+    "message": "Preise, Steuern und verfügbare Rabatte werden im Shop angezeigt."
+  },
+  "registration.checkout.opened": {
+    "message": "Der Shop wurde in Ihrem Browser geöffnet. Sie können diesen Tab geöffnet lassen."
+  },
+  "registration.checkout.preview": {
+    "message": "Testvorschau: $1 für $2. Es wurde kein Shop geöffnet."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Dieser Upgrade-Kaufweg muss bestätigt werden, bevor der Kauf freigeschaltet werden kann. Es wurde kein Shop geöffnet."
+  },
+  "registration.compare": {
+    "description": "Adapted from legacy registration entity: licenseComparison.",
+    "message": "Standard und Pro vergleichen"
+  },
+  "registration.contact.heading": {
+    "message": "Für wen ist diese Lizenz?"
+  },
+  "registration.contact.note": {
+    "message": "Diese Angaben werden beim Kauf im Shop vorausgefüllt. Sie können sie hier bearbeiten."
+  },
+  "registration.date.expired": {
+    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
+    "message": "Ihre Lizenz ist am $1 abgelaufen."
+  },
+  "registration.date.none": {
+    "message": "Wählen Sie unten eine Lizenz oder geben Sie Ihren vorhandenen Schlüssel ein."
+  },
+  "registration.date.valid": {
+    "description": "Adapted from legacy registration entity: label.licenseValid.",
+    "message": "Ihre Lizenz ist gültig bis $1."
+  },
+  "registration.development": {
+    "message": "Registrierungstest"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro ist eine separate persönliche Lizenz, keine Erneuerung Ihrer Domänenlizenz. Ihre Domänenlizenz gilt im Rahmen der erworbenen Plätze auf Installationen mit einem E-Mail-Konto Ihrer registrierten Firmendomäne. Eine separate Pro-Lizenz kann eine Installation zu Hause abdecken, auf der Sie dieses Konto nicht verwenden können. Wählen Sie im Bereich Domäne „Lizenz erneuern“, um Ihr Team weiter abzudecken."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Weitere Benutzer hinzufügen"
+  },
+  "registration.domain.seatsNote": {
+    "message": "– für Ihre bestehende Domänenlizenz."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Benötigen Sie mehr Plätze?"
+  },
+  "registration.edition.domain": {
+    "message": "Domäne"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "description": "Adapted from legacy registration entity: email.label.",
+    "message": "E-Mail-Adresse"
+  },
+  "registration.email.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Hier gelten andere Regeln: Die eingerichtete E-Mail-Adresse muss zur lizenzierten Domäne gehören."
+  },
+  "registration.email.domain.heading": {
+    "message": "Domänenlizenzen"
+  },
+  "registration.email.help": {
+    "message": "Informationen zu lizenzierten E-Mail-Adressen"
+  },
+  "registration.email.help.close": {
+    "message": "E-Mail-Hilfe schließen"
+  },
+  "registration.email.help.heading": {
+    "message": "Ihre E-Mail-Adresse ist Ihre Lizenz"
+  },
+  "registration.email.hint": {
+    "message": "Ihre persönliche Lizenz gilt auf mehreren Geräten."
+  },
+  "registration.email.personal": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Ihre Lizenz ist an diese E-Mail-Adresse gebunden. Sie können sie auf mehreren Geräten verwenden. Richten Sie diese Adresse auf jedem Gerät in Thunderbird als {bold}Standardidentität{/bold} eines Kontos ein."
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard- und Pro-Lizenzen"
+  },
+  "registration.email.rules": {
+    "message": "Regeln zur lizenzierten E-Mail-Adresse"
+  },
+  "registration.enterKey": {
+    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
+    "message": "Lizenzschlüssel eingeben…"
+  },
+  "registration.eyebrow": {
+    "message": "Ihre Lizenz"
+  },
+  "registration.firstName": {
+    "description": "Adapted from legacy registration entity: firstName.label.",
+    "message": "Vorname"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Beispieldaten: Beim Kauf wird nur eine Vorschau geöffnet."
+  },
+  "registration.footer": {
+    "message": "Für Thunderbird gemacht. Von Ihnen unterstützt."
+  },
+  "registration.heading": {
+    "message": "Ihre Ordner. Weniger Aufwand."
+  },
+  "registration.identity.empty": {
+    "message": "Angaben manuell eingeben"
+  },
+  "registration.identity.none": {
+    "message": "Keine geeigneten E-Mail-Konten gefunden. Sie können Ihre Kontaktdaten manuell eingeben."
+  },
+  "registration.lastName": {
+    "description": "Adapted from legacy registration entity: lastName.label.",
+    "message": "Nachname"
+  },
+  "registration.learnMore": {
+    "message": "Mehr erfahren…"
+  },
+  "registration.legacy.menu": {
+    "message": "Bisherige Lizenzregistrierung"
+  },
+  "registration.license.domain": {
+    "message": "Domänenlizenz"
+  },
+  "registration.license.edition": {
+    "message": "$1-Lizenz"
+  },
+  "registration.license.expiresIn": {
+    "message": "Lizenz läuft in $1 Tagen ab"
+  },
+  "registration.license.none": {
+    "message": "Keine Lizenz eingerichtet"
+  },
+  "registration.load.error": {
+    "message": "Ihre Lizenz oder Konten konnten nicht geladen werden. Laden Sie diesen Tab neu, um es erneut zu versuchen."
+  },
+  "registration.navigation": {
+    "message": "Lizenznavigation"
+  },
+  "registration.options": {
+    "message": "Lizenzoptionen"
+  },
+  "registration.plan.domain.description": {
+    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
+    "message": "Pro-Funktionen für Benutzer Ihrer lizenzierten Domäne im Rahmen der erworbenen Plätze."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Für Ihr Team"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Für eine gemeinsame Domäne"
+  },
+  "registration.plan.pro.description": {
+    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
+    "message": "Organisieren und finden Sie Nachrichten jeden Tag schneller."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Alle Funktionen"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Für Ihre eigenen E-Mails"
+  },
+  "registration.plan.standard.description": {
+    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
+    "message": "Halten Sie Ihre Lieblingsordner immer griffbereit."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Das Wichtigste für jeden Tag"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Für Ihre eigenen E-Mails"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Domänenlizenzen{/bold}{br}Domänenlizenzen werden {bold}manuell geprüft und ausgestellt{/bold}. Eine Erneuerung verlängert das bestehende Ablaufdatum um ein Jahr, auch wenn die Lizenz bereits abgelaufen ist. Dies fördert eine rechtzeitige Erneuerung; die endgültige Laufzeit wird bei der Prüfung bestätigt."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Erneuerungs- und Upgrade-Vorteile hängen von den Lizenzinformationen ab, die an den Shop übergeben werden. Wenn Sie im Shop das Produkt wechseln oder Sicherheitssoftware diese Informationen entfernt, kann der Shop Ihre bestehende Berechtigung möglicherweise nicht berücksichtigen."
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Steigen Sie auf Pro um und zahlen Sie **nur die Differenz** zwischen dem Standard- und dem Pro-Preis – Sie erhalten ein volles Jahr ab dem Zahlungstag, auch wenn Ihre Standard-Lizenz bereits abgelaufen ist."
+  },
+  "registration.renewal.hint": {
+    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
+    "message": "Die Erneuerung oder Verlängerung Ihrer Lizenz kostet in der Regel weniger als eine neue Lizenz."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Persönliche Lizenzen{/bold}{br}Eine neue Lizenz gilt ein Jahr ab Zahlung. Bei der Erneuerung oder Verlängerung derselben Edition erhalten Sie ein volles Jahr ab Zahlung oder ein Jahr über Ihr bisheriges Ablaufdatum hinaus – je nachdem, was Ihnen mehr Zeit gibt."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Bestehende Lizenz{/bold}{br}Ihre aktuelle Lizenz wird an den Shop übergeben, damit das neue Ablaufdatum berechnet werden kann."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Steigen Sie auf Pro um und zahlen Sie **nur die Differenz** zwischen dem Standard- und dem Pro-Preis. Sie erhalten ein volles Jahr ab dem Zahlungstag."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Upgrades von Standard auf Pro{/bold}{br}Ihre Pro-Lizenz gilt ein Jahr ab Zahlung des Upgrades. Verbleibende Zeit Ihrer Standard-Lizenz verlängert diesen Zeitraum nicht."
+  },
+  "registration.selection.heading": {
+    "message": "Über den Posteingang hinaus."
+  },
+  "registration.selection.intro": {
+    "message": "Wählen Sie Standard für grundlegende Funktionen, Pro für alle Funktionen oder Domäne für Benutzer in Ihrer Organisation."
+  },
+  "registration.selection.label": {
+    "message": "Lizenzauswahl"
+  },
+  "registration.settings.error": {
+    "message": "Die Lizenzeinstellungen konnten nicht geöffnet werden. Bitte versuchen Sie es erneut."
+  },
+  "registration.showLess": {
+    "message": "Weniger anzeigen"
+  },
+  "registration.status.Empty": {
+    "message": "Gratisversion"
+  },
+  "registration.status.Expired": {
+    "message": "Abgelaufen"
+  },
+  "registration.status.Invalid": {
+    "message": "Ungültige Lizenz"
+  },
+  "registration.status.MailDifferent": {
+    "message": "Lizenz-E-Mail stimmt nicht überein"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Lizenzierte Adresse nicht eingerichtet"
+  },
+  "registration.status.NotValidated": {
+    "message": "Nicht geprüft"
+  },
+  "registration.status.Unknown": {
+    "message": "Lizenz nicht verfügbar"
+  },
+  "registration.status.Valid": {
+    "message": "Gültig"
+  },
+  "registration.subtitle": {
+    "message": "Wählen Sie die passende Lizenz für Ihre Arbeitsweise."
+  },
+  "registration.terms.annual": {
+    "message": "Eine Lizenz gilt ein Jahr. Erneuern Sie eine abgelaufene Lizenz oder verlängern Sie eine gültige, um Ihre gewählte Edition weiterzuverwenden."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Ein Jahr nach dem anderen"
+  },
+  "registration.terms.back": {
+    "message": "Lizenzauswahl"
+  },
+  "registration.terms.checkout": {
+    "description": "Adapted from legacy registration entity: pricing.section.",
+    "message": "Wählen Sie eine Lizenz, um zum Shop zu gelangen. Der Preis hängt von Edition, Land, Steuern und möglichen Rabatten ab."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Kauf in Ihrem Browser"
+  },
+  "registration.terms.domain": {
+    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
+    "message": "Eine Domänenlizenz gilt für Benutzer mit E-Mail-Adressen der lizenzierten Domäne, bis zur Anzahl der erworbenen Plätze."
+  },
+  "registration.terms.draft": {
+    "message": "Vorläufige Lizenzbedingungen: Einzelheiten zur Testphase und zum Funktionsumfang nach Lizenzablauf werden vor der Veröffentlichung geprüft."
+  },
+  "registration.terms.edition": {
+    "message": "Standard und Pro bieten unterschiedliche Funktionsumfänge. Vergleichen Sie die Editionen, um die passende zu finden."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Wählen Sie Ihre Edition"
+  },
+  "registration.terms.email": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
+    "message": "Eine persönliche Lizenz ist an Ihre E-Mail-Adresse gebunden. Sie können sie in mehreren Thunderbird-Installationen verwenden, wenn die lizenzierte Adresse in jeder Installation als **Standardidentität** eines Kontos eingerichtet ist."
+  },
+  "registration.terms.email.heading": {
+    "message": "Ihre E-Mail-Adresse, Ihre Lizenz"
+  },
+  "registration.terms.heading": {
+    "message": "So funktioniert Ihre Lizenz."
+  },
+  "registration.terms.hide": {
+    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
+    "message": "🡇 Weiter zur Lizenzauswahl 🡇"
+  },
+  "registration.terms.intro": {
+    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
+    "message": "{+extensionName} hält seit Jahren mit Thunderbird Schritt. Lizenzen finanzieren die laufende Entwicklung, neue Funktionen und Kompatibilitätsupdates. Jede Lizenz gilt ein Jahr und unterstützt die Arbeit, die nötig ist, um mit Thunderbird Schritt zu halten."
+  },
+  "registration.terms.label": {
+    "message": "Lizenzbedingungen"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Lizenzen werden **nicht automatisch erneuert**. {+extensionName} erinnert Sie vor Ablauf Ihrer Lizenz."
+  },
+  "registration.terms.otherAccounts": {
+    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
+    "message": "Die lizenzierten Funktionen stehen auch allen Ihren anderen E-Mail-Konten in Thunderbird zur Verfügung. Dafür sind keine separaten Lizenzen nötig."
+  },
+  "registration.terms.referrer": {
+    "message": "Wenn Sie bereits eine Lizenz haben, wird sie zur Prüfung Ihrer Berechtigung an den Shop übergeben."
+  },
+  "registration.terms.savings": {
+    "message": "**Starten Sie mit Pro und sparen Sie in den Folgejahren.** Die Erneuerung oder Verlängerung Ihrer Pro-Lizenz kostet deutlich weniger als eine neue Lizenz."
+  },
+  "registration.terms.show": {
+    "description": "Adapted from legacy registration entity: licenseTerms.show.",
+    "message": "Lizenzbedingungen anzeigen 🡇"
+  },
+  "registration.terms.support": {
+    "description": "Adapted from legacy registration entity: licenseTypes.",
+    "message": "Ihre Unterstützung hilft, Entwicklung, Kompatibilitätsupdates und Fehlerbehebungen zu finanzieren."
+  },
+  "registration.test.menu": {
+    "message": "Registrierung zum Webshop"
+  },
+  "registration.test.note": {
+    "message": "Der Shop öffnet sich in Ihrem Browser."
+  },
+  "registration.title": {
+    "description": "Adapted from legacy registration entity: licenseWindow.title.",
+    "message": "{+extensionName} · Ihre Lizenz"
+  },
   "renew-your-license": {
     "message": "Erneuern Sie Ihre Lizenz."
   },
@@ -2021,7 +2413,24 @@
       }
     }
   },
-
+  "special-offer-head": {
+    "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b}Liebe(r) {name}{/b}, bitte unterstützen Sie $addon$ durch den Erwerb einer Lizenz. Der Thunderbird-Code entwickelt sich ständig weiter und wir brauchen {b}Ihre Hilfe{/b}, um Schritt zu halten!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
   "special-offer-renew": {
     "message": "Erneuern Sie jetzt Ihre Lizenz und sparen Sie {b}$reduction${/b}! Dieses Sonderangebot ist bis zum {b}$expirydate${/b} erhältlich.",
     "placeholders": {
@@ -2050,24 +2459,6 @@
   },
   "special-offer-upgrade-condition": {
     "message": "Wenn Sie von Standard upgraden, erhalten Sie eine einjährige Lizenzlaufzeit ab Kaufdatum, unabhängig vom Ablaufdatum Ihrer vorherigen Lizenz."
-  },
-  "special-offer-head": {
-    "message": "Helfen Sie mit, $addon$ kompatibel zu halten",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{b}Liebe(r) {name}{/b}, bitte unterstützen Sie $addon$ durch den Erwerb einer Lizenz. Der Thunderbird-Code entwickelt sich ständig weiter und wir brauchen {b}Ihre Hilfe{/b}, um Schritt zu halten!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
   },
   "support-preference": {
     "message": "Dies ist die bevorzugte Methode zur Unterstützung von $addonName$.",
@@ -2157,7 +2548,10 @@
   "whats-new-maintenance": {
     "message": "Wartungsupdate $ver$. Diese Version behebt dringende Regressionen der vorherigen Version.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "window-title": {

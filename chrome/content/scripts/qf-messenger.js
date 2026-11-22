@@ -116,6 +116,10 @@ async function onLoad(activatedWhileWindowOpen) {
               >
               <menupopup class="dbgMenu">
 
+                <menuitem id="QuickFolders-ToolbarPopup-registration-test"
+                  label="New registration tab"
+                  />
+
                 <menuitem id="QuickFolders-ToolbarPopup-dbga"
                   label="QF News Message"
                   class="menuitem-iconic"
@@ -536,6 +540,8 @@ async function onLoad(activatedWhileWindowOpen) {
       // C. popupset#QuickFolders-MainPopupSet
       // C1. menupopup#QuickFolders-ToolbarPopup
       // C1x: menupopup#dbgMenu
+      "QuickFolders-ToolbarPopup-registration-test": () =>
+        QF.Util.notifyTools.notifyBackground({ func: "openRegistrationTab" }),
       "QuickFolders-ToolbarPopup-dbga": () => {
         QF.Util.notifyTools.notifyBackground({
           func: "showNewsMessage",
@@ -590,7 +596,8 @@ async function onLoad(activatedWhileWindowOpen) {
         QF.Interface.displayNavigationToolbar({ display: true }),
       "QuickFolders-ToolbarPopup-hidePreviewToolbar": () =>
         QF.Interface.displayNavigationToolbar({ display: false }),
-      "QuickFolders-ToolbarPopup-register": () => QF.Interface.showLicenseDialog("mainPopup"),
+      "QuickFolders-ToolbarPopup-register": () =>
+        QF.Util.notifyTools.notifyBackground({ func: "openRegistrationTab", feature: "mainPopup" }),
     };
 
     // D. #QuickFolders-oneButtonPanel

@@ -1043,6 +1043,28 @@ QuickFolders.Options = {
       decryptedMail = licenseInfo.email,
       decryptedDate = licenseInfo.expiryDate,
       result = licenseInfo.status;
+
+    const expiryWarning = getElement("licenseExpiryWarning");
+    const showExpiryWarning = result === "Valid" && licenseInfo.licensedDaysLeft < 15;
+    expiryWarning.hidden = !showExpiryWarning && result !== "Expired";
+    if (result === "Expired") {
+      expiryWarning.textContent = messenger.i18n.getMessage("registration.status.Expired");
+    } else if (showExpiryWarning) {
+      expiryWarning.textContent = messenger.i18n.getMessage(
+        "registration.license.expiresIn", [String(licenseInfo.licensedDaysLeft)]
+      );
+    } else {
+      expiryWarning.textContent = "";
+    }
+
+    licenseDate.classList.toggle("extend-trigger", result === "Valid");
+    if (result === "Valid") {
+      licenseDate.setAttribute("role", "button");
+      licenseDate.title = messenger.i18n.getMessage("qf.notification.premium.btn.extendLicense");
+    } else {
+      licenseDate.removeAttribute("role");
+      licenseDate.removeAttribute("title");
+    }
     
 
     validationStandard.setAttribute("collapsed", true);
@@ -1081,7 +1103,7 @@ QuickFolders.Options = {
             getElement("dialogProductTitle").value = "QuickFolders Pro";
           }
           licenseDate.value = niceDate;
-          licenseDateLabel.value = messenger.i18n.getMessage("qf.label.licenseValid");
+          licenseDateLabel.textContent = messenger.i18n.getMessage("qf.label.licenseValid");
           // remove animations / red pro icon:
           QuickFolders.Interface.removeAnimations("quickfolders-options.css");
           break;
@@ -1103,15 +1125,11 @@ QuickFolders.Options = {
               QuickFolders.Options.showValidationMessage(validationFailed, silent);
           }
           if (addonName) {
-            let txt = validationInvalidAddon.textContent;
-            txt = txt.replace("{0}", "QuickFolders").replace("{1}", "QF"); // keys for {0} start with {1}
-            if (txt.indexOf(addonName) < 0) {
-              txt +=
-                " " +
-                messenger.i18n
-                  .getMessage("qf.licenseValidation.guessAddon")
-                  .replace("{2}", addonName);
-            }
+            let txt = messenger.i18n.getMessage("qf.licenseValidation.invalidAddon")
+              .replace("{0}", "QuickFolders").replace("{1}", "QF");
+            txt += " " + messenger.i18n
+              .getMessage("qf.licenseValidation.guessAddon")
+              .replace("{2}", addonName);
             validationInvalidAddon.textContent = txt;
             QuickFolders.Options.showValidationMessage(validationInvalidAddon, silent);
           }
@@ -1119,6 +1137,7 @@ QuickFolders.Options = {
         case "Expired": {
           let expiredMsg = messenger.i18n.getMessage("qf.licenseValidation.expired");
           licenseDate.value = niceDate;
+          licenseDateLabel.textContent = messenger.i18n.getMessage("qf.register.licenseValid.expired");
           const expiryDate = new Date(licenseInfo.expiryDate);
           // add 28 days
           const graceThreshold = new Date(expiryDate.getTime() + 28 * 24 * 60 * 60 * 1000);
@@ -1205,6 +1224,7 @@ QuickFolders.Options = {
 
   // put appropriate label on the license button and pass back the label text as well
   labelLicenseBtn: function (btnLicense, validStatus) {
+    btnLicense.dataset.licenseAction = validStatus;
     switch (validStatus) {
       case "extend": {
         let txtExtend = messenger.i18n.getMessage("qf.notification.premium.btn.extendLicense");

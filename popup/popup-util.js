@@ -1,3 +1,17 @@
+// Open the registration tab before closing the install/update splash.
+async function openSplashRegistration(intent = "") {
+  const feature = location.pathname.endsWith("installed.html") ? "landing-install" : "landing-update";
+  try {
+    const tab = await messenger.runtime.sendMessage({ command: "openRegistrationTab", feature, intent });
+    if (!Number.isInteger(tab?.id)) {
+      throw new Error("Registration tab did not open");
+    }
+    window.close();
+  } catch (error) {
+    console.error("QuickFolders: Unable to open registration", error);
+  }
+}
+
 // eslint-disable-next-line no-unused-vars
 var insertHtmlSafely = (container, html, clear = false) => {
   if (!container || !html) {

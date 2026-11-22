@@ -245,13 +245,13 @@ html[data-preview-theme="dark"] .terms-grid p.license-detail-highlight { backgro
               >
               <p class="eyebrow" id="step-label" aria-current="page">LICENSE SELECTION</p>
             </nav>
-            <h2 id="view-title">A year of easier filing.</h2>
+            <h2 id="view-title">Rise above the inbox.</h2>
           </div>
           <span class="annual-note" data-l10n-id="yearlyLicense.title">Annual licenses</span>
         </div>
         <div id="selection-panel" aria-labelledby="view-title">
           <p class="intro">
-            Choose Standard for everyday email, Pro for all features, or Domain for your team.
+            Choose Standard for essential features, Pro for all features, or Domain for users in your organization.
           </p>
           <fieldset class="contact">
             <legend>Who is this license for?</legend>
@@ -400,7 +400,7 @@ html[data-preview-theme="dark"] .terms-grid p.license-detail-highlight { backgro
               <p class="plan-kicker">FOR YOUR TEAM</p>
               <h3>Domain</h3>
               <p data-l10n-id="buyDomainLicense.instruct">
-                All features for your whole team, under one license.
+                Pro features for users on your licensed domain, within your purchased seats.
               </p>
               <div class="plan-bottom">
                 <span>For a shared domain</span
@@ -448,7 +448,7 @@ html[data-preview-theme="dark"] .terms-grid p.license-detail-highlight { backgro
             id="renewal-hint"
             data-l10n-id="notification.premium.btn.extendLicense.tooltip"
           >
-            Renewing or extending your license adds another year and typically costs less than
+            Renewing or extending your license typically costs less than
             buying a new license.
           </p>
           <p class="checkout-note" data-l10n-id="pricing.section.hint">
@@ -519,7 +519,7 @@ html[data-preview-theme="dark"] .terms-grid p.license-detail-highlight { backgro
                 >
               </p>
               <p data-l10n-id="domainLicense.instruct">
-                A Domain license covers users with matching addresses under the licensed domain.
+                A Domain license covers users with email addresses on the licensed domain, up to the number of seats purchased.
               </p>
             </article>
             <article>
@@ -561,7 +561,7 @@ html[data-preview-theme="dark"] .terms-grid p.license-detail-highlight { backgro
                 country, tax, and any applicable discounts.
               </p>
               <p>
-                Renewals and upgrades pass your previous license to the shop for eligibility checks.
+                If you have an existing license, it is passed to the shop for eligibility checks.
               </p>
             </article>
           </div>
@@ -675,7 +675,7 @@ html[data-preview-theme="dark"] .terms-grid p.license-detail-highlight { backgro
     toggle.dataset.l10nId = showingTerms ? "licenseTerms.hide" : "licenseTerms.show";
     workspace.classList.toggle("terms-open", showingTerms);
     document.getElementById("step-label").textContent = showingTerms ? "LICENSE TERMS" : "LICENSE SELECTION";
-    document.getElementById("view-title").textContent = showingTerms ? "How your license works." : "A year of easier filing.";
+    document.getElementById("view-title").textContent = showingTerms ? "How your license works." : "Rise above the inbox.";
     toggle.replaceChildren(document.createTextNode(showingTerms ? "🡇 Continue to License Selection 🡇" : "Show license terms 🡇"));
     replaceLabelGlyphs(toggle);
     feedback.hidden = true;
@@ -721,7 +721,7 @@ html[data-preview-theme="dark"] .terms-grid p.license-detail-highlight { backgro
       preview.className = "checkout-preview-note";
       preview.textContent = "Prototype preview only. No shop was opened.";
       const confirmation = document.createElement("p");
-      confirmation.textContent = "In the finished page, checkout would open in your browser.";
+      confirmation.textContent = "In the finished page, checkout opens in your browser.";
       const guidance = document.createElement("p");
       const emphasis = document.createElement("strong");
       emphasis.textContent = "To keep your renewal or upgrade benefits, continue with the product opened from this page.";
@@ -806,7 +806,7 @@ html[data-preview-theme="dark"] .terms-grid p.license-detail-highlight { backgro
     document.getElementById("checkout-notice").hidden = true;
     document.getElementById("feedback").hidden = true;
     const hint = document.getElementById("renewal-hint");
-    hint.textContent = "Renewing or extending your license adds another year and typically costs less than buying a new license.";
+    hint.textContent = "Renewing or extending your license typically costs less than buying a new license.";
     const standardUpgradeTip = !buying && currentIndex === 0;
     document.getElementById("selection-panel").classList.toggle("standard-upgrade-tip", standardUpgradeTip);
     if (standardUpgradeTip) {

@@ -1,0 +1,420 @@
+﻿/* License status and actions in QuickFolders HTML Settings. */
+#qf-options-prefpane {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  font-size: 14px;
+}
+
+@media (min-width: 48rem) {
+  html:root {
+    background: light-dark(#edf2fa, #111722);
+  }
+
+  body {
+    box-sizing: border-box;
+    width: calc(100% - 32px);
+    max-width: 80rem;
+    margin: 8px auto;
+    padding: 8px 12px 16px;
+    background: var(--in-content-page-background, light-dark(#fff, #191919));
+    border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+    border-radius: 10px;
+  }
+}
+
+#qf-options-prefpane #QuickFolders-Panels label,
+#qf-options-prefpane #QuickFolders-Panels legend,
+#qf-options-prefpane #QuickFolders-Panels .niceFont {
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#qf-options-prefpane #supportgrid {
+  grid-template-columns: minmax(0, 1fr) minmax(200px, 250px);
+  grid-template-rows: auto;
+  align-items: center;
+  gap: 16px 24px;
+  margin: 16px;
+  font: inherit;
+}
+
+#qf-options-prefpane #supportgrid .description,
+#qf-options-prefpane #supportgrid .button label {
+  font: inherit;
+  line-height: 1.5;
+}
+
+#qf-options-prefpane #supportgrid .button {
+  box-sizing: border-box;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto;
+  min-height: 48px;
+}
+
+@media (max-width: 40rem) {
+  #qf-options-prefpane #supportgrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  #qf-options-prefpane #supportgrid .button {
+    margin-bottom: 12px;
+  }
+}
+
+#QuickFolders-Options-general .keyboard-shortcuts {
+  flex-wrap: wrap;
+}
+
+#QuickFolders-Options-general .keyboard-shortcuts > .keynote {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+#QuickFolders-Options-general .keyboard-shortcuts > .vbox {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+#QuickFolders-Options-general .general-behavior-groups,
+#QuickFolders-Options-general .general-secondary-groups {
+  flex-wrap: wrap;
+}
+
+#QuickFolders-Options-general .general-behavior-groups > fieldset,
+#QuickFolders-Options-general .general-secondary-groups > fieldset {
+  box-sizing: border-box;
+  flex: 1 1 calc(50% - 1em);
+  min-width: 0;
+}
+
+#QuickFolders-Options-general .general-secondary-groups fieldset > .hbox {
+  flex-wrap: wrap;
+  gap: 4px 8px;
+}
+
+#QuickFolders-Options-Tabbox ul {
+  flex-wrap: wrap;
+  overflow: visible;
+  row-gap: 6px;
+}
+
+#QuickFolders-Options-Tabbox li {
+  flex: 0 0 auto;
+}
+
+#QuickFolders-Options-Tabbox li button {
+  white-space: nowrap;
+}
+
+#qf-options-prefpane #QuickFolders-Panels #Quickfolders-Theme-Author-Label,
+#qf-options-prefpane #QuickFolders-Panels #Quickfolders-Theme-Author,
+#qf-options-prefpane #QuickFolders-Panels #Quickfolders-Theme-Description {
+  color: var(--in-content-deemphasized-text, GrayText);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+#Quickfolders-Theme-Author-Label {
+  margin-inline-end: 0.3em;
+}
+
+@media (max-width: 47.999rem) {
+  #QuickFolders-Options-Tabbox li button {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 60rem) {
+  #QuickFolders-Options-general > fieldset.multiCol,
+  #QuickFolders-Options-general > .hbox {
+    flex-direction: column;
+    align-items: stretch;
+    row-gap: 12px;
+  }
+
+  #QuickFolders-Options-general > fieldset.multiCol > .vbox,
+  #QuickFolders-Options-general > .hbox > fieldset {
+    box-sizing: border-box;
+    min-width: 0;
+  }
+}
+
+#QuickFolders-Options-goPro {
+  --license-notice-background: #fff7e6;
+  --license-notice-color: #72511f;
+  --license-notice-border: #dfbd7f;
+  --license-error-background: #fff0f1;
+  --license-error-color: #923341;
+  --license-error-border: #dba1aa;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#QuickFolders-Options-goPro label,
+#QuickFolders-Options-goPro legend,
+#QuickFolders-Options-goPro .niceFont {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+#QuickFolders-Options-goPro #licenseContainer {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  min-width: 0;
+}
+
+#QuickFolders-Options-goPro #licenseContainer > .vbox {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+#QuickFolders-Options-goPro button:not(#btnLicense):not(.configSettings) {
+  box-sizing: border-box;
+  margin: 3px;
+  padding: 7px 14px;
+  border: 1px solid #9299a3;
+  border-radius: 5px;
+  font: inherit;
+  font-weight: 600;
+}
+
+#QuickFolders-Options-goPro #licenseContainer button {
+  margin: 0;
+}
+
+#QuickFolders-Options-goPro button:not(#btnLicense):not(.configSettings):focus-visible {
+  outline: 2px solid #087bd8;
+  outline-offset: 2px;
+}
+
+#qf-options-prefpane .hasConfigEvent {
+  align-items: center;
+  width: fit-content;
+  max-width: 100%;
+  gap: 8px;
+}
+
+#qf-options-prefpane .hasConfigEvent > label {
+  min-width: 0;
+}
+
+#qf-options-prefpane .hasConfigEvent > .configSettings {
+  flex: none;
+}
+
+#QuickFolders-Options-goPro #validationDate {
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  align-items: center;
+}
+
+#QuickFolders-Options-goPro #validationDate .spacer,
+#QuickFolders-Options-goPro #validationDateSpace {
+  display: none;
+}
+
+#QuickFolders-Options-goPro #licenseDate {
+  appearance: none;
+  box-sizing: content-box;
+  width: 18ch;
+  min-width: 0;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+}
+
+#QuickFolders-Options-goPro #licenseDate.extend-trigger {
+  cursor: pointer;
+}
+
+#QuickFolders-Options-goPro #licenseDate.extend-trigger:hover {
+  text-decoration: underline;
+}
+
+#QuickFolders-Options-goPro #licenseDate.extend-trigger:focus-visible {
+  outline: 2px solid #087bd8;
+  outline-offset: 2px;
+}
+
+#QuickFolders-Options-goPro #licenseExpiryWarning {
+  border-radius: 20px;
+  padding: 4px 9px;
+  background: linear-gradient(#d85b00, #a43e00);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+#QuickFolders-Options-goPro #licenseExpiryWarning[hidden] {
+  display: none;
+}
+
+#QuickFolders-Options-goPro .license-status-action {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  min-width: 0;
+  margin-block: 24px;
+}
+
+#QuickFolders-Options-goPro #validationResults,
+#QuickFolders-Options-goPro #validationResults:hover {
+  background: transparent;
+  flex: 999 1 360px;
+  min-width: 0;
+  margin: 0;
+  gap: 8px;
+}
+
+#QuickFolders-Options-goPro #validationResults .niceFont {
+  box-sizing: border-box;
+  max-width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+#QuickFolders-Options-goPro #validationResults #validationStandard,
+#QuickFolders-Options-goPro #validationResults #validationPassed {
+  color: light-dark(#007800, #8bd88b);
+  text-align: start;
+  white-space: normal;
+  padding: 0;
+  margin: 0;
+}
+
+#QuickFolders-Options-goPro #validationResults > .spacer {
+  display: none;
+}
+
+#QuickFolders-Options-goPro #validationResults .licenseWarning,
+#QuickFolders-Options-goPro #validationResults .licenseError {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-inline-start-width: 3px;
+}
+
+#QuickFolders-Options-goPro #validationResults #validationFailed,
+#QuickFolders-Options-goPro #validationResults #validationInvalidAddon {
+  white-space: normal;
+  text-align: start;
+}
+
+#QuickFolders-Options-goPro #validationResults .licenseWarning {
+  border: 1px solid var(--license-notice-border);
+  border-inline-start-width: 3px;
+  background: var(--license-notice-background) !important;
+  color: var(--license-notice-color) !important;
+}
+
+#QuickFolders-Options-goPro #validationResults .licenseError {
+  border: 1px solid var(--license-error-border);
+  border-inline-start-width: 3px;
+  background: var(--license-error-background) !important;
+  color: var(--license-error-color) !important;
+}
+
+#QuickFolders-Options-goPro .license-status-action > .vbox:not(#validationResults) {
+  flex: 1 0 auto;
+  min-width: max-content;
+  justify-content: center;
+}
+
+#QuickFolders-Options-goPro .btnLicenseContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#QuickFolders-Options-goPro #btnLicense:not([collapsed="true"]) {
+  box-sizing: border-box;
+  width: max-content;
+  min-width: 150px;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 10px 20px;
+  border: 1px solid #709b08;
+  border-radius: 7px;
+  background: linear-gradient(to bottom, #a8d51c, #89b509 48%, #78a300) !important;
+  color: #fff !important;
+  text-shadow: 0 1px 1px #385300;
+  font: inherit;
+  font-size: inherit;
+  font-weight: 600;
+}
+
+#QuickFolders-Options-goPro #btnLicense:focus-visible {
+  outline: 2px solid #087bd8;
+  outline-offset: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+  #QuickFolders-Options-goPro {
+    --license-notice-background: #382f20;
+    --license-notice-color: #f1d39e;
+    --license-notice-border: #80673d;
+    --license-error-background: #3e252c;
+    --license-error-color: #ffc1cb;
+    --license-error-border: #8e535f;
+  }
+}
+
+#QuickFolders-Options-goPro #txtLicenseKey {
+  box-sizing: border-box;
+  min-width: 0;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#QuickFolders-Options-goPro > .hbox {
+  flex-wrap: wrap;
+}
+
+@media (max-height: 800px) {
+  #QuickFolders-Options-goPro .license-status-action {
+    margin-block: 12px;
+    row-gap: 8px;
+  }
+}
+
+@media (max-width: 520px) {
+  #QuickFolders-Options-goPro #licenseContainer {
+    flex-wrap: wrap;
+  }
+
+  #QuickFolders-Options-goPro #licenseContainer > .vbox {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+#QuickFolders-Options-goPro .license-status-action > .vbox:has(#btnLicense[collapsed="true"]):has(#btnSwitchToFree[hidden]):has(#btnRecoverLicense[hidden]) {
+  display: none;
+}

@@ -334,12 +334,29 @@ QuickFolders.Interface = {
   },
 
   // show License dialog from Options dialog:
-  showLicenseDialog: function () {
-    let optionSelected = "options_" + QuickFolders.Options.currentOptionsTab;
-    messenger.runtime.sendMessage({
-      command: "showLicenseDialog",
-      referrer: optionSelected,
-    });
-    window.close();
+  showLicenseDialog: async function () {
+    const button = document.getElementById("btnLicense");
+    button.disabled = true;
+    try {
+      const sourceTab = await messenger.tabs.getCurrent();
+      const destination = await messenger.runtime.sendMessage({
+        command: "openRegistrationTab",
+        feature: "options_" + QuickFolders.Options.currentOptionsTab,
+        intent: button.dataset.licenseAction === "extend" ? "extend" : "",
+      });
+      if (!Number.isInteger(destination?.id)) {
+        throw new Error("Registration tab did not open");
+      }
+      if (Number.isInteger(sourceTab?.id)) {
+        if (sourceTab.id !== destination.id) {
+          await messenger.tabs.remove(sourceTab.id);
+        }
+      } else {
+        window.close();
+      }
+    } catch (error) {
+      console.error("QuickFolders: Unable to open registration", error);
+      button.disabled = false;
+    }
   },
 };

@@ -2,6 +2,50 @@
   "_l10nstatus": {
     "message": "SPLASH+UI"
   },
+  "accessibility.count.total": {
+    "message": "總計 $count$ 封郵件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "子資料夾中總計 $count$ 封郵件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ 封未讀郵件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "子資料夾中有 $count$ 封未讀郵件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "從資料夾的上下文選單中移除「自訂圖示」指令。"
+  },
+  "accessibility.hideTooltips": {
+    "message": "隱藏分頁工具提示"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "在搜尋結果中優先顯示 QuickFolders 書籤。"
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "在子選單中顯示父資料夾的獨立項目"
+  },
   "account.label": {
     "message": "選擇一個帳號："
   },
@@ -21,50 +65,6 @@
   },
   "addon-authors-struggle": {
     "message": "為了繼續發揮作用，我們的附加組件開發人員現在需要資助修復和重寫所需的資源，以便我們的用戶可以繼續從我們提供的功能中受益。"
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ 封未讀郵件",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "子資料夾中有 $count$ 封未讀郵件",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "總計 $count$ 封郵件",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "子資料夾中總計 $count$ 封郵件",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "從資料夾的上下文選單中移除「自訂圖示」指令。"
-  },
-  "accessibility.hideTooltips": {
-    "message": "隱藏分頁工具提示"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "在搜尋結果中優先顯示 QuickFolders 書籤。"
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "在子選單中顯示父資料夾的獨立項目"
   },
   "aria.a11underReview": {
     "message": "我們正在審核和改善此頁面的可訪問性。我們正在努力使描述的功能更兼容鍵盤和螢幕閱讀器。感謝您的耐心！"
@@ -156,6 +156,9 @@
   "commands.toggleFolderTree": {
     "message": "切換文件夾樹可見性"
   },
+  "configurable.tooltip": {
+    "message": "點擊設置齒輪以獲取更多配置選項"
+  },
   "cost-of-independence": {
     "message": "軟件開發花費時間和金錢-與許多平台應用程序不同，附加組件不是由大公司編寫的，也不是由Mozilla以任何方式贊助的。"
   },
@@ -207,8 +210,11 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "在Thunderbird中將你喜愛的信件資料夾標記起來。"
   },
-  "firstName.label": {
-    "message": "名："
+  "findRelated.btn.label": {
+    "message": "查找相關郵件"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "根據所選郵件和用戶定義的搜索模式查找類似郵件"
   },
   "findRelated.btnAdd": {
     "message": "新增"
@@ -219,20 +225,17 @@
   "findRelated.btnUpdate": {
     "message": "更新"
   },
-  "findRelated.btn.label": {
-    "message": "查找相關郵件"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "根據所選郵件和用戶定義的搜索模式查找類似郵件"
-  },
   "findRelated.entries": {
     "message": "搜尋模式"
   },
   "findRelated.menu.configure": {
     "message": "設定搜尋模式…"
   },
-  "findRelated.prompt.title": {
-    "message": "查找相關郵件：模式搜索"
+  "findRelated.options.goNextResetsSearch": {
+    "message": "'前往下一封郵件'按鈕會清除當前搜尋。"
+  },
+  "findRelated.options.title": {
+    "message": "選項"
   },
   "findRelated.prompt.enterPattern": {
     "message": "要使用此功能，您只需設定至少一個搜尋模式。"
@@ -240,11 +243,8 @@
   "findRelated.prompt.selectPattern": {
     "message": "右鍵點擊 [查找相關郵件] 以選擇搜尋模式。這將執行搜尋並保存其設置，以便下次點擊按鈕時使用。"
   },
-  "findRelated.options.title": {
-    "message": "選項"
-  },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "'前往下一封郵件'按鈕會清除當前搜尋。"
+  "findRelated.prompt.title": {
+    "message": "查找相關郵件：模式搜索"
   },
   "findRelated.searchGroup": {
     "message": "搜尋群組（完全符合為0）："
@@ -252,26 +252,29 @@
   "findRelated.searchPattern": {
     "message": "搜尋模式："
   },
+  "findRelated.term.body": {
+    "message": "內容"
+  },
   "findRelated.term.menutitle": {
     "message": "標題："
-  },
-  "findRelated.term.subject": {
-    "message": "主旨"
-  },
-  "findRelated.term.sender": {
-    "message": "寄件者"
   },
   "findRelated.term.recipients": {
     "message": "收件者"
   },
-  "findRelated.term.body": {
-    "message": "內容"
+  "findRelated.term.sender": {
+    "message": "寄件者"
+  },
+  "findRelated.term.subject": {
+    "message": "主旨"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "在related 邮件中搜尋什麼："
   },
   "findRelated.terms.selectedFields": {
     "message": "從以下項目取得搜尋字串："
   },
-  "findRelated.terms.searchCriteriaFields": {
-    "message": "在related 邮件中搜尋什麼："
+  "firstName.label": {
+    "message": "名："
   },
   "freeLicense": {
     "message": "如果您最近贊助QuickFolders計畫或分擔一些工作，像是翻譯或撰寫修補程式，您將可以獲得一個免費的購買證明金鑰。請從QuickFolders選項中的支援分頁跟我聯絡。"
@@ -317,6 +320,9 @@
   "intro": {
     "message": "購買一年份的QuickFolders專業版，可以提供您所有特殊功能的一年使用期間。這也支持我們能夠進一步地改善產品的功能。"
   },
+  "keyshortcuts.news": {
+    "message": "目前，Thunderbird 使用這些作為內建快速鍵，但您可以使用附加元件 tbkeys lite 來釋放它們。按一下 (?) 按鈕以取得更多資訊："
+  },
   "label-remind-me": {
     "message": "在$countDays$天后再次提醒我。",
     "placeholders": {
@@ -326,14 +332,35 @@
       }
     }
   },
-  "keyshortcuts.news": {
-    "message": "目前，Thunderbird 使用這些作為內建快速鍵，但您可以使用附加元件 tbkeys lite 來釋放它們。按一下 (?) 按鈕以取得更多資訊："
-  },
   "lastName.label": {
     "message": "姓："
   },
   "lblCustomPalette": {
     "message": "自訂調色盤："
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders 需要 Pro 許可證才能支持多個 $maxTabs$ 選項卡。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "標准許可證 - 受限 Pro 功能。 了解更多…"
+  },
+  "license_restriced.unpaid": {
+    "message": "未授權版本 - 受限功能。 了解更多…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders 需要一個許可證來支持多個 $maxTabs$ 選項卡。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -354,59 +381,44 @@
   "licenseWindow.title": {
     "message": "QuickFolders 專業版購買證明"
   },
-  "license_restriced.std": {
-    "message": "標准許可證 - 受限 Pro 功能。 了解更多…"
+  "message.browserLaunchFailed": {
+    "message": "{p} 無法開啟您的預設瀏覽器。您可以複製下方網址並貼到瀏覽器的網址列中。 {/p} 如需此錯誤的詳細資訊，請查看 JavaScript 錯誤主控台。"
   },
-  "license_restriced.unpaid": {
-    "message": "未授權版本 - 受限功能。 了解更多…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — 瀏覽器錯誤"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders 需要 Pro 許可證才能支持多個 $maxTabs$ 選項卡。",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "網址（按 Ctrl+C 複製）："
   },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders 需要一個許可證來支持多個 $maxTabs$ 選項卡。",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.btn.accept": {
+    "message": "確定"
   },
-  "message.browserLaunchFailed": { "message": "{p} 無法開啟您的預設瀏覽器。您可以複製下方網址並貼到瀏覽器的網址列中。 {/p} 如需此錯誤的詳細資訊，請查看 JavaScript 錯誤主控台。" },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — 瀏覽器錯誤" },
-  "message.browserLaunchFailed.url": { "message": "網址（按 Ctrl+C 複製）：" },
-  "message.btn.accept": { "message": "確定" },
-  "message.btn.cancel": { "message": "取消" },
-  "message.btn.no": { "message": "否" },
-  "message.btn.yes": { "message": "是" },
-  "message.features": { "message": "比較功能…" },
-  "message.placeholder": { "message": "訊息遺失。" },
-  "message.licenseScreen": { "message": "顯示授權選項…" },
-  "message.linkInTab": { "message": "（連結已在分頁中開啟）" },
+  "message.btn.cancel": {
+    "message": "取消"
+  },
+  "message.btn.no": {
+    "message": "否"
+  },
+  "message.btn.yes": {
+    "message": "是"
+  },
+  "message.features": {
+    "message": "比較功能…"
+  },
+  "message.licenseScreen": {
+    "message": "顯示授權選項…"
+  },
+  "message.linkInTab": {
+    "message": "（連結已在分頁中開啟）"
+  },
+  "message.placeholder": {
+    "message": "訊息遺失。"
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla僅提供一個基本平台，用於向您（最終用戶）交付我們的軟件。 如果我們需要向我們的用戶付款或提供支持，則不能通過addons.thunderbird.net進行操作-這不是內置付費界面或許可證管理（如iTunes或Google Play）的“應用商店”。"
   },
   "newsHead": {
     "message": "最新消息"
-  },
-  "newsMsgEsr140": {
-    "message": "{P}{b} 即將在下一個重大版本中推出 {/b}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{a release}了解新發行模型的更多資訊{/a}.{U} {L}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{/L} {L}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {a compatCheck}附加元件相容性檢查{/a}。{/L} {/U}{/P}{P} 我們很高興宣布，QuickFolders 完全相容於 Thunderbird 140，下一個延伸支援版本（ESR）。這代表在下一個主要支援週期中持續的可靠性與安心。{/P}{P} QuickFolders 目前仍支援 Thunderbird 115 及以上版本的使用者。在接下來的一年中，隨著我們新增新功能，對 Thunderbird 115 的支援可能會逐步淘汰，轉而支援 Thunderbird 128 及更新版本。{/P}{P} 我們會持續監控 Thunderbird 的變化，以確保 QuickFolders 無論您選擇哪種更新路徑都能保持相容與可靠。{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} Thunderbird 即將發生一項重要變更 {/b}: 自 Thunderbird 153 起，像 {+extensionName} 這類實驗性附加元件將不再在 Release 版本中受到支援。Thunderbird 正在積極{a apiwork}擴展 WebExtension API{/a}，以減少對實驗性擴充機制的依賴。自{emph}153 版本{/emph}起，舊式附加元件需要使用 {+newsMsgEsr153.ESR}（ESR）。<ul><li>ESR 版本仍然是依賴進階或實驗性附加元件使用者的建議選擇。</li><li>Release 版本專注於穩定、完整支援的 WebExtension 附加元件。</li><li>Beta 版本仍可用於在 ESR 發佈前進行測試與相容性驗證。</li></ul></P>{P}{+extensionName} 在 Thunderbird ESR 中仍然完全受到支援，並在技術可行的情況下持續維護 Release 版本支援。</P>{P}我們將持續密切關注 Thunderbird 的變更，以確保在所有受支援版本中維持相容性與穩定體驗。</P>"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (Thunderbird 延長支援版本)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Thunderbird附加元件支援的即將變更{/b}: 先前公告的Release頻道實驗性附加元件相關變更已延後至下一個ESR週期（ESR 2027）。這段額外時間將用於改善API覆蓋範圍，並與附加元件社群共同完善過渡流程。{/P}{P}目前不需要任何操作。{+extensionName}在支援的情況下，仍可於Release與ESR版本的Thunderbird中正常運作。{/P}{P}我們將持續關注平台變更，並在未來需要遷移時提供指引。{/P}{P}雖然不強制切換至ESR頻道，但部分高度依賴實驗性功能的使用者可能會偏好該環境，因其變更較少且API較穩定，而實驗性介面更容易受到平台內部變動影響。{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} 所有新功能、錯誤修正和長期相容性都要感謝您的支持。{/P}{P class=specialOffer} 為了支持 QuickFolders 的開發，您可以在 {salesEnd} 前以折扣價續訂您的授權。{/P}{P class=bottomhint}🡇 請選擇下方的選項以了解更多 🡇 {/P}"
@@ -420,6 +432,19 @@
   "newsMsg.license.valid": {
     "message": "{P} 感謝您以專業版授權支持 QuickFolders——這讓所有新功能、錯誤修正和長期相容性成為可能。{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b} 即將在下一個重大版本中推出 {/b}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{a release}了解新發行模型的更多資訊{/a}.{U} {L}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{/L} {L}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {a compatCheck}附加元件相容性檢查{/a}。{/L} {/U}{/P}{P} 我們很高興宣布，QuickFolders 完全相容於 Thunderbird 140，下一個延伸支援版本（ESR）。這代表在下一個主要支援週期中持續的可靠性與安心。{/P}{P} QuickFolders 目前仍支援 Thunderbird 115 及以上版本的使用者。在接下來的一年中，隨著我們新增新功能，對 Thunderbird 115 的支援可能會逐步淘汰，轉而支援 Thunderbird 128 及更新版本。{/P}{P} 我們會持續監控 Thunderbird 的變化，以確保 QuickFolders 無論您選擇哪種更新路徑都能保持相容與可靠。{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (Thunderbird 延長支援版本)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Thunderbird附加元件支援的即將變更{/b}: 先前公告的Release頻道實驗性附加元件相關變更已延後至下一個ESR週期（ESR 2027）。這段額外時間將用於改善API覆蓋範圍，並與附加元件社群共同完善過渡流程。{/P}{P}目前不需要任何操作。{+extensionName}在支援的情況下，仍可於Release與ESR版本的Thunderbird中正常運作。{/P}{P}我們將持續關注平台變更，並在未來需要遷移時提供指引。{/P}{P}雖然不強制切換至ESR頻道，但部分高度依賴實驗性功能的使用者可能會偏好該環境，因其變更較少且API較穩定，而實驗性介面更容易受到平台內部變動影響。{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} Thunderbird 即將發生一項重要變更 {/b}: 自 Thunderbird 153 起，像 {+extensionName} 這類實驗性附加元件將不再在 Release 版本中受到支援。Thunderbird 正在積極{a apiwork}擴展 WebExtension API{/a}，以減少對實驗性擴充機制的依賴。自{emph}153 版本{/emph}起，舊式附加元件需要使用 {+newsMsgEsr153.ESR}（ESR）。<ul><li>ESR 版本仍然是依賴進階或實驗性附加元件使用者的建議選擇。</li><li>Release 版本專注於穩定、完整支援的 WebExtension 附加元件。</li><li>Beta 版本仍可用於在 ESR 發佈前進行測試與相容性驗證。</li></ul></P>{P}{+extensionName} 在 Thunderbird ESR 中仍然完全受到支援，並在技術可行的情況下持續維護 Release 版本支援。</P>{P}我們將持續密切關注 Thunderbird 的變更，以確保在所有受支援版本中維持相容性與穩定體驗。</P>"
+  },
   "newsSection": {
     "message": "{P}{b} 即將在下一個重大版本中推出 {/b}：Thunderbird 很快會要求您選擇偏好的更新路徑——年度 ESR 軌道或更快的每月發行。{a release}了解新發行模型的更多資訊{/a}.{U} {L}ESR 版本將維持在 v140，只增加次要版本號，僅包含安全修正和錯誤修正，這通常較適合企業環境。{/L} {L}每月發行週期會在開發完成後提供新功能和介面更新。請檢查您目前的附加元件是否支援此發行模型。為此，您可以安裝 {a compatCheck}附加元件相容性檢查{/a}。{/L} {/U}",
     "placeholders": {
@@ -429,11 +454,11 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{/P}"
-  },
   "newsSection.important": {
     "message": "{P}對Release頻道使用者很重要（{emph}154及更高版本{/emph}）：隨著Thunderbird新的2週發布週期，出現如[issue 690]等意外故障的風險增加。雖然我定期使用每日建置測試{+extensionName}，但及時修復取決於Release使用者的{b}早期回報{/b}。請關注{a href='https://github.com/RealRaven2000/QuickFolders/issues'}問題追蹤器{/a}並迅速回報任何錯誤以維持相容性。{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}我們持續配合 Thunderbird 的每月發行週期，以確保相容性與穩定性。如同以往，這項工作完全由授權銷售所得資助。{/P}"
   },
   "newsSection.license": {
     "message": "由於QuickFolders的所有工作和免費支援完全通過許可證銷售資助，請考慮購買許可證或續訂當前許可證。"
@@ -471,9 +496,6 @@
   "qf.accounts": {
     "message": "帐目"
   },
-  "qf.alert.pasteFolders.formatErr": {
-    "message": "無法建立分頁。檢視工具/錯誤主控台來瞭解更多細節。"
-  },
   "qf.alert.bookmarks.unsupportedType": {
     "message": "目前不支援的書籤類型：$bookmarkType$ {NewLine}至少選擇一封訊息，或將郵件拖曳到按鈕上",
     "placeholders": {
@@ -481,6 +503,9 @@
         "content": "$1"
       }
     }
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "無法建立分頁。檢視工具/錯誤主控台來瞭解更多細節。"
   },
   "qf.backupAndRestore": {
     "message": "備份 / 還原"
@@ -545,20 +570,14 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "點擊標籤頁時聚焦到郵件列表"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "在單個消息選項卡中隱藏 QuickFolders"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "在顯示單個消息的選項卡中刪除 QuickFolders 工具欄。"
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "關閉按鈕"
   },
-  "qf.checkbox.currentFolder.show": {
-    "message": "啟動時顯示"
-  },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "整合輕量佈景主題"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "啟動時顯示"
   },
   "qf.checkbox.debug": {
     "message": "除錯模式"
@@ -577,6 +596,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "縮小分類選單來降低佔用空間"
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "在單個消息選項卡中隱藏 QuickFolders"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "在顯示單個消息的選項卡中刪除 QuickFolders 工具欄。"
   },
   "qf.checkbox.highlightNewMail": {
     "message": "有新郵件時資料夾高亮度顯示"
@@ -629,14 +654,14 @@
   "qf.checkbox.quickMove": {
     "message": "quickMove - 使用快捷鍵來將信件移動到任何資料夾："
   },
-  "qf.checkbox.quickMove.tip": {
-    "message": "透過資料夾名稱的quickMove按鈕捷徑來快速地來拖曳信件到任何資料夾"
-  },
   "qf.checkbox.quickmove.autofill": {
     "message": "插入最後執行資料夾名稱"
   },
   "qf.checkbox.quickmove.autofill.tip": {
     "message": "將插入最後成功使用的資料夾。按Enter來使用，或簡單打字來選擇其他目的地。"
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "透過資料夾名稱的quickMove按鈕捷徑來快速地來拖曳信件到任何資料夾"
   },
   "qf.checkbox.readingList": {
     "message": "閱讀清單"
@@ -692,8 +717,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "最近的文件夾選項卡"
   },
-  "configurable.tooltip": {
-    "message": "點擊設置齒輪以獲取更多配置選項"
+  "qf.checkbox.showshortcutnumber": {
+    "message": "在資料夾標籤上顯示快捷鍵數字"
   },
   "qf.checkbox.showSubfolders": {
     "message": "在彈出式選單中顯示子資料夾"
@@ -706,9 +731,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "在資料夾標籤上顯示未讀郵件的數目"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "在資料夾標籤上顯示快捷鍵數字"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "…也在單一信件視窗"
@@ -752,6 +774,12 @@
   "qf.checkbox.transparent": {
     "message": "透明"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "使用鍵盤快捷鍵（Alt+1到Alt+9）"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "使用Ctrl鍵取代Alt鍵"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "ALT-方向左鍵 / ALT-方向右鍵 來移至 前一個 / 下一個 頁籤"
   },
@@ -760,12 +788,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "以捷徑重新建立頁籤：Ctrl + Alt +"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "使用鍵盤快捷鍵（Alt+1到Alt+9）"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "使用Ctrl鍵取代Alt鍵"
   },
   "qf.continueFilter.label": {
     "message": "建立過濾器…"
@@ -776,8 +798,11 @@
   "qf.copyfolders.tooltip": {
     "message": "複製資料夾設定於剪貼簿中"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird 主題"
+  "qf.currentfolder.leftSpacer": {
+    "message": "左邊間隔："
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "右邊間隔："
   },
   "qf.currentFolderBackground.custom": {
     "message": "自訂"
@@ -788,17 +813,11 @@
   "qf.currentFolderBackground.default": {
     "message": "銀"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird 主題"
+  },
   "qf.currentFolderBackground.translucent": {
     "message": "半透明"
-  },
-  "qf.currentfolder.leftSpacer": {
-    "message": "左邊間隔："
-  },
-  "qf.currentfolder.rightSpacer": {
-    "message": "右邊間隔："
-  },
-  "qf.description.github": {
-    "message": "請使用github來提供特色需求與錯誤回報"
   },
   "qf.description.categoryusage": {
     "message": "你能將此標籤放進分類裡（像是工作、私人等）。"
@@ -817,6 +836,9 @@
   "qf.description.donate": {
     "message": "如果你非常喜愛QuickFolders，您可以藉由小額捐助支持它的開發。"
   },
+  "qf.description.dragexplain": {
+    "message": "標籤也能藉由拖曳來改變位置！拖曳頂部的標籤來放到某個前或後的位置。"
+  },
   "qf.description.dragToAdd": {
     "message": "拖曳信件資料夾到新工具列上能產生一個快捷資料夾（就像是捷徑一樣）。拖曳信件至快捷資料夾上，能將它們移動至相對應的資料夾上（或經由設定來複製過去）。點選快捷資料夾能移至該信件資料夾。"
   },
@@ -826,14 +848,14 @@
   "qf.description.dragToPosition": {
     "message": "側面地拖曳快捷資料夾能移動它們的位置。在快捷資料夾上以滑鼠右鍵點選能顯示選單；藉由點選你能移動至子資料夾；更改標籤名稱；更改快捷資料夾的顏色；刪除標籤；刪除快捷資料夾（並不會移除信件資料夾）。"
   },
-  "qf.description.dragexplain": {
-    "message": "標籤也能藉由拖曳來改變位置！拖曳頂部的標籤來放到某個前或後的位置。"
-  },
   "qf.description.editcategory": {
     "message": "藉由在其上點選兩次來選擇一個存在的分類，或在下面選擇一個新分類。"
   },
   "qf.description.experimentalItems": {
     "message": "下面的選項是測試中的，它們希望在接下來的改版中能正式運作！"
+  },
+  "qf.description.github": {
+    "message": "請使用github來提供特色需求與錯誤回報"
   },
   "qf.description.languages": {
     "message": "QuickFolders支援在地語言 - 你能在github上協助翻譯成你的語言："
@@ -934,41 +956,11 @@
   "qf.group.navigation": {
     "message": "訊息瀏覽"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "使用中標籤顏色："
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "上色分頁的調色盤："
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "特定顏色分頁調色盤"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "拖曳的標籤顏色："
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "停留的標籤顏色："
-  },
-  "qf.label.Toolbar": {
-    "message": "工具列"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "底線寬度："
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "在分頁下方的線寬度。使用下方的「使用中分頁顏色點選器」來改變它的顏色。"
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "工具列背景："
-  },
-  "qf.label.UncoloredTab": {
-    "message": "未上色的分頁"
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "未特別選定顏色的（未作用中）分頁外觀"
-  },
   "qf.label.accessibility": {
     "message": "無障礙"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "使用中標籤顏色："
   },
   "qf.label.appearance": {
     "message": "外觀"
@@ -976,14 +968,17 @@
   "qf.label.behavior": {
     "message": "特性"
   },
-  "qf.label.github": {
-    "message": "以 github 回報錯誤與新的特色需求"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "按鈕字型大小（0為預設值）："
   },
   "qf.label.cancel": {
     "message": "取消"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "上色分頁的調色盤："
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "特定顏色分頁調色盤"
   },
   "qf.label.colors": {
     "message": "顏色"
@@ -1003,6 +998,9 @@
   "qf.label.dragFolderLabel": {
     "message": "拖曳資料夾來這裡讓其變成標籤。點選標籤能移至這個資料夾，拖曳信件於此能移動/複製它們。"
   },
+  "qf.label.DragOverBackground": {
+    "message": "拖曳的標籤顏色："
+  },
   "qf.label.existingcategories": {
     "message": "已設定的分類："
   },
@@ -1018,6 +1016,9 @@
   "qf.label.getQuickFilters": {
     "message": "想建立更多有著完善與增強功能的過濾器，請安裝我另外一個擴充套件quickFilters！"
   },
+  "qf.label.github": {
+    "message": "以 github 回報錯誤與新的特色需求"
+  },
   "qf.label.goNextUnread": {
     "message": "跳至下一封未讀E-mail:"
   },
@@ -1029,6 +1030,9 @@
   },
   "qf.label.homePage": {
     "message": "詳細的資訊於quickfolders.org網站上的QuickFolders頁面都找得到…"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "停留的標籤顏色："
   },
   "qf.label.initdelay": {
     "message": "初始延遲（1000是預設值）[毫秒]："
@@ -1123,6 +1127,24 @@
   "qf.label.themes": {
     "message": "佈景主題："
   },
+  "qf.label.Toolbar": {
+    "message": "工具列"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "底線寬度："
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "在分頁下方的線寬度。使用下方的「使用中分頁顏色點選器」來改變它的顏色。"
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "工具列背景："
+  },
+  "qf.label.UncoloredTab": {
+    "message": "未上色的分頁"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "未特別選定顏色的（未作用中）分頁外觀"
+  },
   "qf.label.versionhistory": {
     "message": "閱讀版本歷史"
   },
@@ -1189,9 +1211,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "顯示現在資料夾的工具"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "隱藏現在資料夾的工具"
-  },
   "qf.menuitem.quickfolders.filters": {
     "message": "建立信件過濾器…"
   },
@@ -1200,6 +1219,9 @@
   },
   "qf.menuitem.quickfolders.help": {
     "message": "QuickFolders說明…"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "隱藏現在資料夾的工具"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "QuickFolders選項…"
@@ -1225,11 +1247,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "沒做什麼"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "將郵件標記為未讀"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "將郵件標記為已讀"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "將郵件標記為未讀"
   },
   "qf.moveMailStatus.label": {
     "message": "將郵件移動到 QuickFolder 時："
@@ -1308,9 +1330,14 @@
   "qf.notification.standard.title": {
     "message": "標準功能"
   },
-  "qf.notifications": { "message": "通知" },
+  "qf.notifications": {
+    "message": "通知"
+  },
   "qf.notifications.compactFolder": {
     "message": "文件夾壓縮完成後通知"
+  },
+  "qf.options.label.themeAuthor": {
+    "message": "佈景主題作者："
   },
   "qf.options.LayoutColorAppearance": {
     "message": "個別標籤顏色樣式"
@@ -1321,20 +1348,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "條紋樣式"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "佈景主題作者："
-  },
   "qf.options.theme.pastelColors": {
     "message": "淡雅的色彩"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "下："
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "上："
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "自訂角度"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "上："
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "總是顯示邊界"
@@ -1363,12 +1387,6 @@
   "qf.pathFormat.AccountAndPath": {
     "message": "帳號 - 資料夾路徑"
   },
-  "qf.pathFormat.PathOnly": {
-    "message": "資料夾路徑"
-  },
-  "qf.pathFormat.URI": {
-    "message": "資料夾 URI"
-  },
   "qf.pathFormat.folderAndAccount": {
     "message": "資料夾名稱 - 信件帳號"
   },
@@ -1378,8 +1396,14 @@
   "qf.pathFormat.maxDepth": {
     "message": "最大路徑深度："
   },
+  "qf.pathFormat.PathOnly": {
+    "message": "資料夾路徑"
+  },
   "qf.pathFormat.tooltip": {
     "message": "在資料夾路徑中所顯示的最大資料夾數目："
+  },
+  "qf.pathFormat.URI": {
+    "message": "資料夾 URI"
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders選項"
@@ -1392,7 +1416,9 @@
       }
     }
   },
-  "qf.premium.renew.hide": { "message": "隱藏授權警告直到重新啟動" },
+  "qf.premium.renew.hide": {
+    "message": "隱藏授權警告直到重新啟動"
+  },
   "qf.premium.renewLicense.tooltip": {
     "message": "您的購買憑證在{1}天前到期"
   },
@@ -1552,9 +1578,6 @@
   "qf.toolbarTopPadding": {
     "message": "頂部填充"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "最近使用的資料夾"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "關閉這個工具列"
   },
@@ -1564,11 +1587,11 @@
   "qf.tooltip.emailIcon": {
     "message": "現在的E-mail - 拖曳至QuickFolders分頁來移動信件"
   },
-  "qf.tooltip.filterStart": {
-    "message": "開啟過濾器教學。拖曳郵件到QuickFolder上，來建立一個新的篩選規則。"
-  },
   "qf.tooltip.filters": {
     "message": "停止建立過濾器"
+  },
+  "qf.tooltip.filterStart": {
+    "message": "開啟過濾器教學。拖曳郵件到QuickFolder上，來建立一個新的篩選規則。"
   },
   "qf.tooltip.folderUp": {
     "message": "移動到上一層的資料夾"
@@ -1594,20 +1617,23 @@
   "qf.tooltip.quickMove": {
     "message": "quickMove：拖曳E-mail並且輸入資料夾的名稱"
   },
+  "qf.tooltip.RecentFolders": {
+    "message": "最近使用的資料夾"
+  },
   "qf.tooltip.skipUnreadFolder": {
     "message": "忽略下一個未讀目錄"
   },
   "qf.tooltip.threadIcon": {
     "message": "現在的主題郵件串 - 拖曳至QuickFolders分頁來移動對話串"
   },
-  "qf.update.title": {
-    "message": "更新"
-  },
   "qf.update.hideVersionHistory": {
     "message": "不要打開帶有版本歷史記錄的選項卡"
   },
   "qf.update.markInvalidTabs": {
     "message": "突出顯示無效標籤頁 🧹"
+  },
+  "qf.update.title": {
+    "message": "更新"
   },
   "qf.youtube.description": {
     "message": "關於 Thunderbird Add-ons 的詳細影片，以及如何使用 QuickFolders ，請前往觀賞我的 YouTube 頻道 Thunderbird Daily 。"
@@ -1647,12 +1673,6 @@
   "qfCommandPopup": {
     "message": "QuickFolders指令"
   },
-  "qfCompactFolder": {
-    "message": "壓縮資料夾"
-  },
-  "qfCompactFolderAccess": {
-    "message": "F"
-  },
   "qfCompacted": {
     "message": "壓縮的："
   },
@@ -1667,6 +1687,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "原來大小"
+  },
+  "qfCompactFolder": {
+    "message": "壓縮資料夾"
+  },
+  "qfCompactFolderAccess": {
+    "message": "F"
   },
   "qfConfirmCopyFolder": {
     "message": "真的将文件夹{0}复制到{1}吗？"
@@ -1734,7 +1760,6 @@
   "qfGetMail": {
     "message": "获取消息"
   },
-
   "qfInsertLineBreak": {
     "message": "插入斷行符號"
   },
@@ -1747,14 +1772,14 @@
   "qfMarkAllRead": {
     "message": "將資料夾標記為已讀"
   },
+  "qfMarkAllRead.next": {
+    "message": "將文件夾標記為已讀並跳轉到下一個未讀文件夾"
+  },
   "qfMarkAllReadNews": {
     "message": "將所有新聞標記為已讀"
   },
   "qfMarkAllReadRecursive": {
     "message": "標記 資料夾 + 子資料夾 為已讀"
-  },
-  "qfMarkAllRead.next": {
-    "message": "將文件夾標記為已讀並跳轉到下一個未讀文件夾"
   },
   "qfMenuColor": {
     "message": "顏色"
@@ -1872,45 +1897,6 @@
   "qfVersionDisableOnUpdate": {
     "message": "在更新之後停止顯示版本記錄？"
   },
-  "quickMove.help.head": {
-    "message": "{1} 的幫助"
-  },
-  "quickMove.help.head.advanced": {
-    "message": "高級功能"
-  },
-  "quickMove.help.l1a": {
-    "message": "鍵入文件夾名稱的開頭或其中的單詞，以空格分隔。"
-  },
-  "quickMove.help.l1b": {
-    "message": "以下字符被視為單詞邊界，不需要鍵入："
-  },
-  "quickMove.help.l2a": {
-    "message": "輸入 {1} 以輸入祖父/父/搜索文件夾。"
-  },
-  "quickMove.help.l2b": {
-    "message": "任何父文件夾的前 2 個字母通常就足夠了。 您還可以使用此語法創建新的子文件夾。"
-  },
-  "quickMove.help.l3a": {
-    "message": "鍵入 {1} 以跳過其間的任何文件夾。"
-  },
-  "quickMove.help.l3b": {
-    "message": "這對於更深、更複雜或未知的文件夾層次結構很有用。"
-  },
-  "quickMove.help.l4a": {
-    "message": "鍵入 {1} 以獲取最近輸入的文件夾列表。 結果的數量取決於您的許可證級別。"
-  },
-  "quickMove.help.advanced": {
-    "message": "可以在 QuickFolders Pro 選項卡上配置更高級的功能，例如轉到文件夾/移動郵件的鍵盤快捷鍵或從搜索結果中排除文件夾。 要訪問這些和其他高級功能，請獲取 Pro 許可證並支持 QuickFolders 的未來。"
-  },
-  "quickMove.singleMessage.goNext": {
-    "message": "在移动当前一封邮件后显示下一封邮件"
-  },
-  "quickMove.singleMessage.reopenTab": {
-    "message": "移动原始邮件后，请重新打开"
-  },
-  "quickMove.singleMessageTabs": {
-    "message": "单个消息选项卡"
-  },
   "quickfolders.findFolder.placeHolder": {
     "message": "資料夾名稱"
   },
@@ -1959,6 +1945,384 @@
   "quickfoldersQuickMovedMails": {
     "message": "信件移動到資料夾{2};{1}信件移動到資料夾{2}"
   },
+  "quickMove.help.advanced": {
+    "message": "可以在 QuickFolders Pro 選項卡上配置更高級的功能，例如轉到文件夾/移動郵件的鍵盤快捷鍵或從搜索結果中排除文件夾。 要訪問這些和其他高級功能，請獲取 Pro 許可證並支持 QuickFolders 的未來。"
+  },
+  "quickMove.help.head": {
+    "message": "{1} 的幫助"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "高級功能"
+  },
+  "quickMove.help.l1a": {
+    "message": "鍵入文件夾名稱的開頭或其中的單詞，以空格分隔。"
+  },
+  "quickMove.help.l1b": {
+    "message": "以下字符被視為單詞邊界，不需要鍵入："
+  },
+  "quickMove.help.l2a": {
+    "message": "輸入 {1} 以輸入祖父/父/搜索文件夾。"
+  },
+  "quickMove.help.l2b": {
+    "message": "任何父文件夾的前 2 個字母通常就足夠了。 您還可以使用此語法創建新的子文件夾。"
+  },
+  "quickMove.help.l3a": {
+    "message": "鍵入 {1} 以跳過其間的任何文件夾。"
+  },
+  "quickMove.help.l3b": {
+    "message": "這對於更深、更複雜或未知的文件夾層次結構很有用。"
+  },
+  "quickMove.help.l4a": {
+    "message": "鍵入 {1} 以獲取最近輸入的文件夾列表。 結果的數量取決於您的許可證級別。"
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "在移动当前一封邮件后显示下一封邮件"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "移动原始邮件后，请重新打开"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "单个消息选项卡"
+  },
+  "registration.account": {
+    "message": "郵件帳號"
+  },
+  "registration.action.buy": {
+    "message": "購買 $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "購買網域授權"
+  },
+  "registration.action.current": {
+    "message": "目前版本"
+  },
+  "registration.action.extend": {
+    "message": "延長授權"
+  },
+  "registration.action.renew": {
+    "message": "續購授權"
+  },
+  "registration.action.upgrade": {
+    "message": "升級至 Pro"
+  },
+  "registration.annual": {
+    "message": "年度授權"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "關閉購買通知"
+  },
+  "registration.checkout.error": {
+    "message": "無法開啟商店。請再試一次。"
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}為保留續購或升級優惠，請繼續購買從此頁面開啟的產品。{/bold}若要選擇{i}其他授權{/i}，請從這裡重新開始。"
+  },
+  "registration.checkout.note": {
+    "message": "價格、稅金與可用折扣將顯示於商店中。"
+  },
+  "registration.checkout.opened": {
+    "message": "已在瀏覽器中開啟商店。您可以保留此分頁。"
+  },
+  "registration.checkout.preview": {
+    "message": "測試預覽：$2 的 $1。未開啟商店。"
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "此升級途徑需要確認後才能啟用購買。未開啟商店。"
+  },
+  "registration.compare": {
+    "message": "比較 Standard 與 Pro"
+  },
+  "registration.contact.heading": {
+    "message": "此授權供誰使用？"
+  },
+  "registration.contact.note": {
+    "message": "這些資料將在結帳時自動填入。您可以在此修改。"
+  },
+  "registration.date.expired": {
+    "message": "您的授權已於 $1 到期。"
+  },
+  "registration.date.none": {
+    "message": "請在下方選擇授權，或輸入現有金鑰。"
+  },
+  "registration.date.valid": {
+    "message": "您的授權有效期限至 $1。"
+  },
+  "registration.development": {
+    "message": "註冊測試"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro 是獨立的個人授權，不是網域授權的續購。網域授權適用於已設定您所註冊公司網域郵件帳號的安裝環境，人數不超過已購買的名額。若家中的安裝環境無法使用該帳號，可以另行使用 Pro 授權。若要繼續保障團隊使用，請在「網域」面板中選擇「續購授權」。"
+  },
+  "registration.domain.seatsLink": {
+    "message": "新增使用者"
+  },
+  "registration.domain.seatsNote": {
+    "message": "至您現有的網域授權。"
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "需要更多名額？"
+  },
+  "registration.edition.domain": {
+    "message": "網域"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "message": "電子郵件地址"
+  },
+  "registration.email.domain": {
+    "message": "適用規則不同：設定的郵件地址必須屬於已授權的網域。"
+  },
+  "registration.email.domain.heading": {
+    "message": "網域授權"
+  },
+  "registration.email.help": {
+    "message": "關於授權綁定的郵件地址"
+  },
+  "registration.email.help.close": {
+    "message": "關閉郵件地址說明"
+  },
+  "registration.email.help.heading": {
+    "message": "您的郵件地址就是您的授權"
+  },
+  "registration.email.hint": {
+    "message": "個人授權可在多部裝置上使用。"
+  },
+  "registration.email.personal": {
+    "message": "授權與此郵件地址綁定。您可以在多部裝置上使用。請在每部裝置的 Thunderbird 中，將此地址設為帳號的{bold}預設身分{/bold}。"
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard 與 Pro 授權"
+  },
+  "registration.email.rules": {
+    "message": "授權郵件地址規則"
+  },
+  "registration.enterKey": {
+    "message": "輸入授權金鑰…"
+  },
+  "registration.eyebrow": {
+    "message": "您的授權"
+  },
+  "registration.firstName": {
+    "message": "名字"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "模擬資料：購買操作只會開啟預覽。"
+  },
+  "registration.footer": {
+    "message": "為 Thunderbird 打造。由您支持。"
+  },
+  "registration.heading": {
+    "message": "整理資料夾，更省心。"
+  },
+  "registration.identity.empty": {
+    "message": "手動輸入資料"
+  },
+  "registration.identity.none": {
+    "message": "找不到符合條件的郵件帳號。您可以手動輸入聯絡資料。"
+  },
+  "registration.lastName": {
+    "message": "姓氏"
+  },
+  "registration.learnMore": {
+    "message": "瞭解更多…"
+  },
+  "registration.legacy.menu": {
+    "message": "舊版授權註冊"
+  },
+  "registration.license.domain": {
+    "message": "網域授權"
+  },
+  "registration.license.edition": {
+    "message": "$1 授權"
+  },
+  "registration.license.expiresIn": {
+    "message": "許可證在 $1 天后到期"
+  },
+  "registration.license.none": {
+    "message": "尚未設定授權"
+  },
+  "registration.load.error": {
+    "message": "無法載入授權或帳號。請重新載入此分頁再試一次。"
+  },
+  "registration.navigation": {
+    "message": "授權導覽"
+  },
+  "registration.options": {
+    "message": "授權選項"
+  },
+  "registration.plan.domain.description": {
+    "message": "在購買的席位數量內，為授權網域的使用者提供 Pro 功能。"
+  },
+  "registration.plan.domain.kicker": {
+    "message": "適合您的團隊"
+  },
+  "registration.plan.domain.scope": {
+    "message": "適用於共用網域"
+  },
+  "registration.plan.pro.description": {
+    "message": "每天更快整理及尋找郵件。"
+  },
+  "registration.plan.pro.kicker": {
+    "message": "所有功能"
+  },
+  "registration.plan.pro.scope": {
+    "message": "適用於您自己的郵件"
+  },
+  "registration.plan.standard.description": {
+    "message": "讓常用資料夾隨手可及。"
+  },
+  "registration.plan.standard.kicker": {
+    "message": "日常必備功能"
+  },
+  "registration.plan.standard.scope": {
+    "message": "適用於您自己的郵件"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}網域授權{/bold}{br}網域授權{bold}由人工審核並核發{/bold}。續購會在現有到期日上增加一年，即使授權已過期也是如此。這鼓勵及時續購；最終期限將在審核時確認。"
+  },
+  "registration.renewal.entitlements": {
+    "message": "續購與升級優惠取決於傳送給商店的授權資料。在商店中切換產品，或安全軟體移除這些資料，都可能導致商店無法套用您現有的權益。"
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "升級至 Pro，**只需支付 Standard 與 Pro 的差價**——即使您的 Standard 授權已過期，我們仍會從付款當天起提供完整的一年。"
+  },
+  "registration.renewal.hint": {
+    "message": "續訂或延長授權通常比購買新授權更便宜。"
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}個人授權{/bold}{br}新授權從付款起有效一年。續購或延長同一版本時，將從付款起算一年，或在目前到期日上增加一年，以有效期限較長者為準。"
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}現有授權{/bold}{br}您目前的授權將傳送給商店，以計算新的到期日。"
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "升級至 Pro，**只需支付 Standard 與 Pro 的差價**。您將從付款當天起享有完整的一年。"
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}從 Standard 升級至 Pro{/bold}{br}Pro 授權自升級付款日起有效一年。Standard 授權的剩餘時間不會延長此期限。"
+  },
+  "registration.selection.heading": {
+    "message": "少花時間翻找。"
+  },
+  "registration.selection.intro": {
+    "message": "選擇 Standard 使用基本功能、Pro 使用全部功能，或選擇 Domain 供組織使用者使用。"
+  },
+  "registration.selection.label": {
+    "message": "選擇授權"
+  },
+  "registration.settings.error": {
+    "message": "無法開啟授權設定。請再試一次。"
+  },
+  "registration.showLess": {
+    "message": "顯示較少"
+  },
+  "registration.status.Empty": {
+    "message": "免費版"
+  },
+  "registration.status.Expired": {
+    "message": "已到期"
+  },
+  "registration.status.Invalid": {
+    "message": "無效的授權"
+  },
+  "registration.status.MailDifferent": {
+    "message": "授權郵件地址不符"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "尚未設定授權郵件地址"
+  },
+  "registration.status.NotValidated": {
+    "message": "尚未驗證"
+  },
+  "registration.status.Unknown": {
+    "message": "授權無法使用"
+  },
+  "registration.status.Valid": {
+    "message": "有效"
+  },
+  "registration.subtitle": {
+    "message": "選擇適合您工作方式的授權。"
+  },
+  "registration.terms.annual": {
+    "message": "授權有效期限為一年。續購已到期的授權或延長目前授權，即可繼續使用所選版本。"
+  },
+  "registration.terms.annual.heading": {
+    "message": "每次一年"
+  },
+  "registration.terms.back": {
+    "message": "選擇授權"
+  },
+  "registration.terms.checkout": {
+    "message": "選擇授權以前往商店。價格取決於版本、國家、稅金與適用折扣。"
+  },
+  "registration.terms.checkout.heading": {
+    "message": "在瀏覽器中結帳"
+  },
+  "registration.terms.domain": {
+    "message": "Domain 授權涵蓋使用授權網域電子郵件地址的使用者，人數不超過購買的席位數量。"
+  },
+  "registration.terms.draft": {
+    "message": "條款草案：試用與到期後功能的詳細行為將在發布前審核。"
+  },
+  "registration.terms.edition": {
+    "message": "Standard 與 Pro 提供不同等級的功能。請比較版本，找出適合您的選擇。"
+  },
+  "registration.terms.edition.heading": {
+    "message": "選擇您的版本"
+  },
+  "registration.terms.email": {
+    "message": "個人授權與您的郵件地址綁定。只要在每個 Thunderbird 安裝環境中，將該地址設為帳號的**預設身分**，即可在多個安裝環境中使用。"
+  },
+  "registration.terms.email.heading": {
+    "message": "您的郵件，您的授權"
+  },
+  "registration.terms.heading": {
+    "message": "授權如何運作。"
+  },
+  "registration.terms.hide": {
+    "message": "🡇 繼續選擇授權 🡇"
+  },
+  "registration.terms.intro": {
+    "message": "{+extensionName} 多年來持續跟進 Thunderbird 的發展。授權支持持續開發、新功能和相容性更新。每份授權有效一年，協助支持這些工作。"
+  },
+  "registration.terms.label": {
+    "message": "授權條款"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "授權**不會自動續購**。{+extensionName} 會在授權到期前提醒您。"
+  },
+  "registration.terms.otherAccounts": {
+    "message": "已授權的功能同樣適用於您在 Thunderbird 中的所有其他郵件帳號，不需要另外購買授權。"
+  },
+  "registration.terms.referrer": {
+    "message": "若您已有授權，將傳送至商店以確認您的資格。"
+  },
+  "registration.terms.savings": {
+    "message": "**從 Pro 開始，之後每年更省錢。**續購或延長 Pro 授權遠比購買新授權便宜。"
+  },
+  "registration.terms.show": {
+    "message": "顯示授權條款 🡇"
+  },
+  "registration.terms.support": {
+    "message": "您的支持協助資助開發、相容性更新與問題修正。"
+  },
+  "registration.test.menu": {
+    "message": "前往網路商店註冊"
+  },
+  "registration.test.note": {
+    "message": "結帳將在瀏覽器中開啟。"
+  },
+  "registration.title": {
+    "message": "{+extensionName} · 您的授權"
+  },
   "renew-your-license": {
     "message": "續訂您的許可證。"
   },
@@ -1971,6 +2335,24 @@
       "reduction": {
         "content": "$2",
         "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "幫助保持 $addon$ 兼容",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b}親愛的{name}{/b}，請通過獲得許可來支持 $addon$。 Thunderbird 代碼不斷發展，我們需要{b}您的幫助{/b}來跟上！",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
       }
     }
   },
@@ -2002,24 +2384,6 @@
   },
   "special-offer-upgrade-condition": {
     "message": "从 Standard 升级后，您将获得自购买之日起一整年的许可期限，无论您之前的许可的到期日期如何。"
-  },
-  "special-offer-head": {
-    "message": "幫助保持 $addon$ 兼容",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{b}親愛的{name}{/b}，請通過獲得許可來支持 $addon$。 Thunderbird 代碼不斷發展，我們需要{b}您的幫助{/b}來跟上！",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
   },
   "support-preference": {
     "message": "這是支持$addonName$的首選方式。",
@@ -2113,7 +2477,10 @@
   "whats-new-maintenance": {
     "message": "維護更新 $ver$。此版本修正了上一版本引入、需要緊急處理的回歸問題。",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "window-title": {

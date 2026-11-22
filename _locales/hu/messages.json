@@ -1,9 +1,50 @@
 {
-  "message.browserLaunchFailed": { "message": "{p} Nem sikerült megnyitni az alapértelmezett webböngészőt. Az alábbi címet kimásolhatja, és beillesztheti a böngésző címsorába. {/p} A hibáról további részleteket a JavaScript hibakonzoljában talál." },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — Böngészőhiba" },
-  "message.browserLaunchFailed.url": { "message": "Webcím (Ctrl+C a másoláshoz):" },
   "_l10nstatus": {
     "message": "Splash+UI"
+  },
+  "accessibility.count.total": {
+    "message": "$count$ üzenet összesen",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ összesen az almappákban",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ olvasatlan üzenet",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ olvasatlan az almappákban",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Távolítsd el a 'Ikon testreszabása' parancsot a mappa helyi menüjéből."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Eszköztippek elrejtése a lapokon"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritizáld a QuickFolders könyvjelzőket a keresési eredményekben."
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "Külön elem megjelenítése a szülőmappához az almenüben"
   },
   "account.label": {
     "message": "Válassza ki a fiókot:"
@@ -24,50 +65,6 @@
   },
   "addon-authors-struggle": {
     "message": "Ahhoz, hogy továbbra is hasznosak legyenek, a bővítmények fejlesztőinek most finanszírozniuk kell a javításhoz és átíráshoz szükséges erőforrásokat, hogy felhasználóink továbbra is részesülhessenek az asztalra hozott funkcionalitásból."
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ olvasatlan üzenet",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "$count$ olvasatlan az almappákban",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "$count$ üzenet összesen",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "$count$ összesen az almappákban",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "Távolítsd el a 'Ikon testreszabása' parancsot a mappa helyi menüjéből."
-  },
-  "accessibility.hideTooltips": {
-    "message": "Eszköztippek elrejtése a lapokon"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Prioritizáld a QuickFolders könyvjelzőket a keresési eredményekben."
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "Külön elem megjelenítése a szülőmappához az almenüben"
   },
   "aria.a11underReview": {
     "message": "Jelenleg felülvizsgáljuk és javítjuk az oldal hozzáférhetőségét. Dolgozunk azon, hogy a leírt funkciók jobban kompatibilisek legyenek a billentyűzettel és a képernyőolvasókkal. Köszönjük türelmét!"
@@ -156,6 +153,9 @@
   "commands.toggleFolderTree": {
     "message": "Kapcsolja be a mappafa láthatóságát"
   },
+  "configurable.tooltip": {
+    "message": "További beállítási lehetőségekhez kattintson a konfigurációs kerékre"
+  },
   "cost-of-independence": {
     "message": "A szoftverfejlesztés időbe és pénzbe kerül - sok platformalkalmazással ellentétben a bővítményeket nem nagyvállalatok írják, és semmilyen módon nem szponzorálják őket a Mozilla."
   },
@@ -193,8 +193,11 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "Könyvjelzőzze a kedvenc mappáit a Thunderbirdben!"
   },
-  "firstName.label": {
-    "message": "Keresztnév:"
+  "findRelated.btn.label": {
+    "message": "Kapcsolódó e-mailek keresése"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Kapcsolódó e-mailek keresése a kijelölt e-mail és a felhasználó által meghatározott keresési minták alapján"
   },
   "findRelated.btnAdd": {
     "message": "Hozzáadás"
@@ -205,20 +208,17 @@
   "findRelated.btnUpdate": {
     "message": "Frissítés"
   },
-  "findRelated.btn.label": {
-    "message": "Kapcsolódó e-mailek keresése"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "Kapcsolódó e-mailek keresése a kijelölt e-mail és a felhasználó által meghatározott keresési minták alapján"
-  },
   "findRelated.entries": {
     "message": "Keresési minták"
   },
   "findRelated.menu.configure": {
     "message": "Keresési minták beállítása…"
   },
-  "findRelated.prompt.title": {
-    "message": "Kapcsolódó e-mailek keresése: Minta keresés"
+  "findRelated.options.goNextResetsSearch": {
+    "message": "'Ugrás a következő e-mailre' gomb törli a jelenlegi keresést."
+  },
+  "findRelated.options.title": {
+    "message": "Beállítások"
   },
   "findRelated.prompt.enterPattern": {
     "message": "A funkció használatához legalább egy keresési mintát kell beállítani."
@@ -226,11 +226,8 @@
   "findRelated.prompt.selectPattern": {
     "message": "Kattintson a jobb gombbal [Kapcsolódó levelek keresése] lehetőségre a keresési minta kiválasztásához. Ez végrehajtja a keresést, és elmenti annak beállításait a következő alkalomra, amikor rákattint a gombra."
   },
-  "findRelated.options.title": {
-    "message": "Beállítások"
-  },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "'Ugrás a következő e-mailre' gomb törli a jelenlegi keresést."
+  "findRelated.prompt.title": {
+    "message": "Kapcsolódó e-mailek keresése: Minta keresés"
   },
   "findRelated.searchGroup": {
     "message": "Keresési csoport (0 a teljes egyezéshez):"
@@ -238,26 +235,29 @@
   "findRelated.searchPattern": {
     "message": "Keresési minta:"
   },
+  "findRelated.term.body": {
+    "message": "Törzs"
+  },
   "findRelated.term.menutitle": {
     "message": "Cím:"
-  },
-  "findRelated.term.subject": {
-    "message": "Téma"
-  },
-  "findRelated.term.sender": {
-    "message": "Feladó"
   },
   "findRelated.term.recipients": {
     "message": "Címzettek"
   },
-  "findRelated.term.body": {
-    "message": "Törzs"
+  "findRelated.term.sender": {
+    "message": "Feladó"
+  },
+  "findRelated.term.subject": {
+    "message": "Téma"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Mit keresünk a kapcsolódó e-mailekben:"
   },
   "findRelated.terms.selectedFields": {
     "message": "Keresési karakterlánc lekérése innen:"
   },
-  "findRelated.terms.searchCriteriaFields": {
-    "message": "Mit keresünk a kapcsolódó e-mailekben:"
+  "firstName.label": {
+    "message": "Keresztnév:"
   },
   "fromAddress.tooltip": {
     "message": "Alapértelmezett identitás az e-mailek írása során"
@@ -291,6 +291,9 @@
   "intro": {
     "message": "A QuickFolders Pro éves licensze minden prémium funkciót megad egy évre. Ez lehetővé teszi számunkra, hogy támogassuk és tovább termesszük a terméket, és még fantasztikusabbá alakítsuk."
   },
+  "keyshortcuts.news": {
+    "message": "Jelenleg a Thunderbird beépített gyorsbillentyűként használja ezeket, de felszabadíthatja őket a tbkeys lite bővítménnyel. További információkért kattintson a (?) gombra:"
+  },
   "label-remind-me": {
     "message": "Emlékezzen újra $countDays$ nap múlva.",
     "placeholders": {
@@ -300,14 +303,35 @@
       }
     }
   },
-  "keyshortcuts.news": {
-    "message": "Jelenleg a Thunderbird beépített gyorsbillentyűként használja ezeket, de felszabadíthatja őket a tbkeys lite bővítménnyel. További információkért kattintson a (?) gombra:"
-  },
   "lastName.label": {
     "message": "Vezetéknév:"
   },
   "lblCustomPalette": {
     "message": "Egyéni paletta:"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "A QuickFolders Pro licencre van szüksége, hogy több mint $maxTabs$ lapot támogathasson.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "Standard License - korlátozott Pro funkció. Tudj meg többet…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Engedély nélküli verzió - korlátozott funkció. Tudj meg többet…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "A QuickFolders licencre van szüksége, hogy több mint $ maxTabs $ lapot támogathasson.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -328,45 +352,17 @@
   "licenseWindow.title": {
     "message": "QuickFolders Pro licenc"
   },
-  "license_restriced.std": {
-    "message": "Standard License - korlátozott Pro funkció. Tudj meg többet…"
+  "message.browserLaunchFailed": {
+    "message": "{p} Nem sikerült megnyitni az alapértelmezett webböngészőt. Az alábbi címet kimásolhatja, és beillesztheti a böngésző címsorába. {/p} A hibáról további részleteket a JavaScript hibakonzoljában talál."
   },
-  "license_restriced.unpaid": {
-    "message": "Engedély nélküli verzió - korlátozott funkció. Tudj meg többet…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — Böngészőhiba"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "A QuickFolders Pro licencre van szüksége, hogy több mint $maxTabs$ lapot támogathasson.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
-  },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "A QuickFolders licencre van szüksége, hogy több mint $ maxTabs $ lapot támogathasson.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "Webcím (Ctrl+C a másoláshoz):"
   },
   "newsHead": {
     "message": "Legfrissebb hírek"
-  },
-  "newsMsgEsr140": {
-    "message": "{P}{b} Hamarosan a következő nagy kiadásban {/b}: A Thunderbird hamarosan megkéri Önt, hogy válassza ki a kívánt frissítési módot — az éves ESR-ágat vagy a gyorsabb havi kiadásokat. {a release}Tudjon meg többet az új kiadási modellről{/a}.{U} {L}Az ESR-verzió a v140-en marad, csak a kisebb verziószámokat növeli, és csak biztonsági javításokat és hibajavításokat tartalmaz, ami gyakran előnyösebb vállalati környezetben.{/L} {L}A havi kiadási ciklus új funkciókat és felületfrissítéseket hoz, amint azok elkészülnek. Ellenőrizze, hogy a jelenlegi kiegészítői támogatják-e ezt a kiadási modellt. Ehhez telepítheti a {a compatCheck}Kiegészítő kompatibilitás-ellenőrzőt{/a}.{/L} {/U}{/P}{P} Örömmel jelentjük be, hogy a QuickFolders teljesen kompatibilis a Thunderbird 140-nel, a következő Extended Support Release (ESR) kiadással. Ez folyamatos megbízhatóságot és nyugalmat jelent a következő fő támogatási ciklus során.{/P}{P} A QuickFolders egyelőre továbbra is támogatja a Thunderbird 115 és újabb verzióit. Az elkövetkező év során, ahogy új funkciókat adunk hozzá, a Thunderbird 115 támogatása megszűnhet a Thunderbird 128 és újabb verziók javára.{/P}{P} Folyamatosan figyeljük a Thunderbird változásait, hogy a QuickFolders mindig kompatibilis és megbízható maradjon, függetlenül a választott frissítési módtól.{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} Fontos változás érkezik a Thunderbirdben {/b}: A Thunderbird 153-tól kezdődően a kísérleti kiegészítők, mint például a {+extensionName}, már nem lesznek támogatottak a Release verziókban. A Thunderbird aktívan {a apiwork}bővíti a WebExtension API-kat{/a}, hogy csökkentse a kísérleti bővítménymechanizmusoktól való függőséget. A {emph}153-as verziótól{/emph} kezdve az örökölt kiegészítők használatához a {+newsMsgEsr153.ESR} (ESR) szükséges.<ul><li>Az ESR csatorna továbbra is az ajánlott választás azoknak a felhasználóknak, akik fejlett vagy kísérleti kiegészítőkre támaszkodnak.</li><li>A Release csatorna a stabil, teljes mértékben támogatott WebExtension kiegészítőkre fókuszál.</li><li>A Beta csatorna továbbra is használható tesztelésre és kompatibilitás-ellenőrzésre az ESR kiadások előtt.</li></ul></P>{P}{+extensionName} továbbra is teljes mértékben támogatott Thunderbird ESR-en, és aktívan karbantartott a Release verziókban, ahol ez technikailag lehetséges.{/P}{P}Továbbra is figyelemmel kísérjük a Thunderbird változásait, hogy biztosítsuk a kompatibilitást és a stabil működést minden támogatott verzióban.{/P}"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (Thunderbird kiterjesztett támogatási kiadása)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Közelgő változások a Thunderbird bővítmény-támogatásában{/b}: Egy korábban bejelentett, a Release csatornán futó kísérleti bővítményeket érintő változtatást a következő ESR ciklusra halasztották (ESR 2027). Ezt a plusz időt az API-k bővítésére és a közösséggel közös átmenet finomítására használják.{/P}{P}Jelenleg nincs szükség semmilyen intézkedésre. A {+extensionName} továbbra is működik a Thunderbird Release és ESR verzióiban, ahol támogatott.{/P}{P}Továbbra is figyeljük a platform változásait, és útmutatást adunk, ha a jövőben migráció válik szükségessé.{/P}{P}Bár az ESR csatornára váltás nem kötelező, egyes felhasználók, akik erősen támaszkodnak kísérleti funkciókra, előnyben részesíthetik a stabilabb környezet és a ritkább változások miatt, mivel a kísérleti felületeket jobban érinthetik a platform belső változásai.{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} Minden új funkció, hibajavítás és hosszú távú kompatibilitás az Ön támogatásának köszönhető.{/P}{P class=specialOffer} A QuickFolders fejlesztésének támogatásához kedvezményesen megújíthatja licencét {salesEnd}-ig.{/P}{P class=bottomhint}🡇 Válasszon az alábbi lehetőségek közül további információkért 🡇 {/P}"
@@ -380,6 +376,19 @@
   "newsMsg.license.valid": {
     "message": "{P} Köszönjük, hogy Pro licenccel támogatja a QuickFolders-t — ez teszi lehetővé az összes új funkciót, hibajavítást és hosszú távú kompatibilitást.{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b} Hamarosan a következő nagy kiadásban {/b}: A Thunderbird hamarosan megkéri Önt, hogy válassza ki a kívánt frissítési módot — az éves ESR-ágat vagy a gyorsabb havi kiadásokat. {a release}Tudjon meg többet az új kiadási modellről{/a}.{U} {L}Az ESR-verzió a v140-en marad, csak a kisebb verziószámokat növeli, és csak biztonsági javításokat és hibajavításokat tartalmaz, ami gyakran előnyösebb vállalati környezetben.{/L} {L}A havi kiadási ciklus új funkciókat és felületfrissítéseket hoz, amint azok elkészülnek. Ellenőrizze, hogy a jelenlegi kiegészítői támogatják-e ezt a kiadási modellt. Ehhez telepítheti a {a compatCheck}Kiegészítő kompatibilitás-ellenőrzőt{/a}.{/L} {/U}{/P}{P} Örömmel jelentjük be, hogy a QuickFolders teljesen kompatibilis a Thunderbird 140-nel, a következő Extended Support Release (ESR) kiadással. Ez folyamatos megbízhatóságot és nyugalmat jelent a következő fő támogatási ciklus során.{/P}{P} A QuickFolders egyelőre továbbra is támogatja a Thunderbird 115 és újabb verzióit. Az elkövetkező év során, ahogy új funkciókat adunk hozzá, a Thunderbird 115 támogatása megszűnhet a Thunderbird 128 és újabb verziók javára.{/P}{P} Folyamatosan figyeljük a Thunderbird változásait, hogy a QuickFolders mindig kompatibilis és megbízható maradjon, függetlenül a választott frissítési módtól.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (Thunderbird kiterjesztett támogatási kiadása)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Közelgő változások a Thunderbird bővítmény-támogatásában{/b}: Egy korábban bejelentett, a Release csatornán futó kísérleti bővítményeket érintő változtatást a következő ESR ciklusra halasztották (ESR 2027). Ezt a plusz időt az API-k bővítésére és a közösséggel közös átmenet finomítására használják.{/P}{P}Jelenleg nincs szükség semmilyen intézkedésre. A {+extensionName} továbbra is működik a Thunderbird Release és ESR verzióiban, ahol támogatott.{/P}{P}Továbbra is figyeljük a platform változásait, és útmutatást adunk, ha a jövőben migráció válik szükségessé.{/P}{P}Bár az ESR csatornára váltás nem kötelező, egyes felhasználók, akik erősen támaszkodnak kísérleti funkciókra, előnyben részesíthetik a stabilabb környezet és a ritkább változások miatt, mivel a kísérleti felületeket jobban érinthetik a platform belső változásai.{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} Fontos változás érkezik a Thunderbirdben {/b}: A Thunderbird 153-tól kezdődően a kísérleti kiegészítők, mint például a {+extensionName}, már nem lesznek támogatottak a Release verziókban. A Thunderbird aktívan {a apiwork}bővíti a WebExtension API-kat{/a}, hogy csökkentse a kísérleti bővítménymechanizmusoktól való függőséget. A {emph}153-as verziótól{/emph} kezdve az örökölt kiegészítők használatához a {+newsMsgEsr153.ESR} (ESR) szükséges.<ul><li>Az ESR csatorna továbbra is az ajánlott választás azoknak a felhasználóknak, akik fejlett vagy kísérleti kiegészítőkre támaszkodnak.</li><li>A Release csatorna a stabil, teljes mértékben támogatott WebExtension kiegészítőkre fókuszál.</li><li>A Beta csatorna továbbra is használható tesztelésre és kompatibilitás-ellenőrzésre az ESR kiadások előtt.</li></ul></P>{P}{+extensionName} továbbra is teljes mértékben támogatott Thunderbird ESR-en, és aktívan karbantartott a Release verziókban, ahol ez technikailag lehetséges.{/P}{P}Továbbra is figyelemmel kísérjük a Thunderbird változásait, hogy biztosítsuk a kompatibilitást és a stabil működést minden támogatott verzióban.{/P}"
+  },
   "newsSection": {
     "message": "{P}{b} Hamarosan a következő nagy kiadásban {/b}: A Thunderbird hamarosan megkéri Önt, hogy válassza ki a kívánt frissítési módot — az éves ESR-ágat vagy a gyorsabb havi kiadásokat. {a release}Tudjon meg többet az új kiadási modellről{/a}.{U} {L}Az ESR-verzió a v140-en marad, csak a kisebb verziószámokat növeli, és csak biztonsági javításokat és hibajavításokat tartalmaz, ami gyakran előnyösebb vállalati környezetben.{/L} {L}A havi kiadási ciklus új funkciókat és felületfrissítéseket hoz, amint azok elkészülnek. Ellenőrizze, hogy a jelenlegi kiegészítői támogatják-e ezt a kiadási modellt. Ehhez telepítheti a {a compatCheck}Kiegészítő kompatibilitás-ellenőrzőt{/a}.{/L} {/U}",
     "placeholders": {
@@ -389,11 +398,11 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}Továbbra is követjük a Thunderbird havi kiadási ciklusát a kompatibilitás és a stabilitás biztosítása érdekében. Ahogy mindig, ez a munka teljes egészében a licenceladásokból finanszírozott.{/P}"
-  },
   "newsSection.important": {
     "message": "{P}Fontos a Release csatorna felhasználói számára ({emph}154 és későbbi{/emph}): A Thunderbird új 2 hetes kiadási ciklusával megnövekedett a kockázata a váratlan hibáknak, mint például [issue 690]. Bár rendszeresen tesztelem a {+extensionName} kiterjesztést a napi build-ekkel, az időben történő javítások a Release felhasználók {b}korai jelentéseitől{/b} függnek. Kérem, kövesse a {a href='https://github.com/RealRaven2000/QuickFolders/issues'}hibakövetőt{/a} és azonnal jelentse a hibákat a kompatibilitás fenntartása érdekében.{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}Továbbra is követjük a Thunderbird havi kiadási ciklusát a kompatibilitás és a stabilitás biztosítása érdekében. Ahogy mindig, ez a munka teljes egészében a licenceladásokból finanszírozott.{/P}"
   },
   "newsSection.license": {
     "message": "Mivel a QuickFolders összes munkája és az ingyenes támogatás kizárólag a licenceladásokból finanszírozódik, kérjük, fontolja meg licenc vásárlását vagy a jelenlegi licenc megújítását."
@@ -502,12 +511,6 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Fókuszálás az üzenetlistára a fülre kattintáskor"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "A gyorsmappák elrejtése egyetlen üzenet fülén"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Eltávolítja a QuickFolders eszköztárat olyan füleken, amelyek egyetlen üzenetet jelenítenek meg."
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Bezárás gomb"
   },
@@ -531,6 +534,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "Minimalizálja a Kategóriák menüt, hogy kevesebb helyet foglaljon el."
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "A gyorsmappák elrejtése egyetlen üzenet fülén"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Eltávolítja a QuickFolders eszköztárat olyan füleken, amelyek egyetlen üzenetet jelenítenek meg."
   },
   "qf.checkbox.highlightNewMail": {
     "message": "Új üzeneteket tartalmazó mappák kiemelése"
@@ -619,8 +628,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Legutóbbi mappák lap"
   },
-  "configurable.tooltip": {
-    "message": "További beállítási lehetőségekhez kattintson a konfigurációs kerékre"
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Gyorsgomb sorszám megjelenítése a mappák címkéjén"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Fülek kiterjesztése a felugró ablakokban"
@@ -633,9 +642,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "Az olvasatlan üzenetek számának megjelenítése a mappán"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "Gyorsgomb sorszám megjelenítése a mappák címkéjén"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "… az üzenetablakokban is"
@@ -679,6 +685,12 @@
   "qf.checkbox.transparent": {
     "message": "átlátszó"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Gyorsbillentyűk használata (Alt +1 -től Alt+9 -ig)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Alt helyett Ctrl használata"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "Alt+Jobbra / Alt+Balra az előző / következő fülhöz"
   },
@@ -687,12 +699,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "Fülek újraépítése a Ctrl + Alt + billentyűkombinációval"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Gyorsbillentyűk használata (Alt +1 -től Alt+9 -ig)"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Alt helyett Ctrl használata"
   },
   "qf.continueFilter.label": {
     "message": "Szűrő létrehozása…"
@@ -706,14 +712,11 @@
   "qf.copyfolders.tooltip": {
     "message": "Mappák beállításainak másolása a vágólapra"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird Téma"
-  },
   "qf.currentFolderBackground.default": {
     "message": "ezüst"
   },
-  "qf.description.github": {
-    "message": "Bugok jelentéséhez és új funkciók javaslásához kérem használja a github"
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird Téma"
   },
   "qf.description.categoryusage": {
     "message": "A könyvjelzőjét hozzáadhatja egy kategóriához (pl. 'Munka', 'Személyes', stb.)."
@@ -732,6 +735,9 @@
   "qf.description.donate": {
     "message": "Ha annyira kedveli a QuickFolderst, mint mi, kérem támogassa a fejlesztését, adományozva egy kisebb összeget a QuickFolders további fejlesztéséért."
   },
+  "qf.description.dragexplain": {
+    "message": "A füleket a pozíció megváltoztatásához is húzhatja! Dobjon egyet a másik tetejére, hogy beszúrja előtte / utána."
+  },
   "qf.description.dragToAdd": {
     "message": "Új gyorsmappa (hivatkozásként működik) létrehozásához húzza az üzenetmappát az eszköztár üres részére. Húzza az üzeneteket a gyorsmappára, hogy a megfelelő mappába mozgassa őket (vagy másolja módosító billentyűvel). Kattintson a gyorsmappára a főmappa megnyitásához."
   },
@@ -741,14 +747,14 @@
   "qf.description.dragToPosition": {
     "message": "Húzza a gyorsmappákat oldalra a helyzetük megváltoztatásához. Kattintson jobb gombbal a környezeti menü eléréséhez; kijelöléssel az almappába ugorhat. A 'könyvjelző' átnevezése megváltoztatja a gyorsmappa nevét. A 'könyvjelző eltávolítása' törli a gyorsmappát (kivéve, ha ez a főmappa)."
   },
-  "qf.description.dragexplain": {
-    "message": "A füleket a pozíció megváltoztatásához is húzhatja! Dobjon egyet a másik tetejére, hogy beszúrja előtte / utána."
-  },
   "qf.description.editcategory": {
     "message": "Létező kategóriát kijelölheti dupla kattintással, alant új kategóriát hozhat létre:"
   },
   "qf.description.experimentalItems": {
     "message": "A következő elemek fejlesztésben vannak, remélhetőleg a következő változatban működni fognak!"
+  },
+  "qf.description.github": {
+    "message": "Bugok jelentéséhez és új funkciók javaslásához kérem használja a github"
   },
   "qf.description.languages": {
     "message": "QuickFolders támogatja a lokalizációt - segíthet, ha lefordítja a saját nyelvére a github:"
@@ -846,41 +852,11 @@
   "qf.group.navigation": {
     "message": "Üzenet navigáció"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "Aktív fül színe:"
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "Paletta színes lapokhoz:"
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Paletta a felhasználó által meghatározott színű lapokhoz"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "Ráhúzott fül színe:"
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "Fókuszban lévő fül színe"
-  },
-  "qf.label.Toolbar": {
-    "message": "Eszköztár"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "Alsó sor szélessége:"
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "A fülek alatti vonal szélessége. Színét az alábbi Aktív lap színválasztóval módosíthatja."
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "Eszköztár háttérszíne:"
-  },
-  "qf.label.UncoloredTab": {
-    "message": "Színtelen fül"
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "Az (inaktív) fülek megjelenése a felhasználó által kiválasztott szín nélkül"
-  },
   "qf.label.accessibility": {
     "message": "Akadálymentesség"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Aktív fül színe:"
   },
   "qf.label.appearance": {
     "message": "Megjelenés"
@@ -888,14 +864,17 @@
   "qf.label.behavior": {
     "message": "Viselkedés"
   },
-  "qf.label.github": {
-    "message": "Bug jelentése / Új funkció javaslása a github"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Gomb betűmérete (alapértelmezés szerint 0):"
   },
   "qf.label.cancel": {
     "message": "Mégse"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Paletta színes lapokhoz:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Paletta a felhasználó által meghatározott színű lapokhoz"
   },
   "qf.label.colors": {
     "message": "Színek"
@@ -915,6 +894,9 @@
   "qf.label.dragFolderLabel": {
     "message": "Húzza a mappát ide könyvjelzőzéshez. Kattintson a könyvjelzőre a mappára ugráshoz, húzza rá üzeneteket a mappába való mozgatáshoz."
   },
+  "qf.label.DragOverBackground": {
+    "message": "Ráhúzott fül színe:"
+  },
   "qf.label.existingcategories": {
     "message": "Létező kategóriák:"
   },
@@ -930,6 +912,9 @@
   "qf.label.getQuickFilters": {
     "message": "A szűrők létrehozásának jobb és hatékonyabb módja érdekében telepítse a quickFilters bővítményemet!"
   },
+  "qf.label.github": {
+    "message": "Bug jelentése / Új funkció javaslása a github"
+  },
   "qf.label.goNextUnread": {
     "message": "Ugrás a következő olvasatlan e-mailre:"
   },
@@ -941,6 +926,9 @@
   },
   "qf.label.homePage": {
     "message": "További információ az új QuickFolders honlapon a quickfolders.org -on..."
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Fókuszban lévő fül színe"
   },
   "qf.label.initdelay": {
     "message": "[ms] kezdési késleltetés (1000 az alapértelmezett):"
@@ -1020,6 +1008,24 @@
   "qf.label.themes": {
     "message": "Témák:"
   },
+  "qf.label.Toolbar": {
+    "message": "Eszköztár"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Alsó sor szélessége:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "A fülek alatti vonal szélessége. Színét az alábbi Aktív lap színválasztóval módosíthatja."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Eszköztár háttérszíne:"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Színtelen fül"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Az (inaktív) fülek megjelenése a felhasználó által kiválasztott szín nélkül"
+  },
   "qf.label.versionhistory": {
     "message": "Verziótörténet"
   },
@@ -1092,9 +1098,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Jelenlegi mappa eszközök megjelenítése"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "Jelenlegi mappa eszközök elrejtése"
-  },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "J"
   },
@@ -1115,6 +1118,9 @@
   },
   "qf.menuitem.quickfolders.helpAccess": {
     "message": "Q"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Jelenlegi mappa eszközök elrejtése"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "QuickFolders beállítások…"
@@ -1146,11 +1152,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "Ne csinálj semmit"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "E-mail megjelölése olvasatlanként"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "E-mail megjelölése olvasottként"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "E-mail megjelölése olvasatlanként"
   },
   "qf.moveMailStatus.label": {
     "message": "Amikor leveleket helyez át egy QuickFolderbe:"
@@ -1229,6 +1235,9 @@
   "qf.notifications.compactFolder": {
     "message": "Értesítés a mappa tömörítése után"
   },
+  "qf.options.label.themeAuthor": {
+    "message": "Téma szerzője:"
+  },
   "qf.options.LayoutColorAppearance": {
     "message": "Egyéni fül szín megjelenítés"
   },
@@ -1238,20 +1247,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "(csíkos stílus)"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "Téma szerzője:"
-  },
   "qf.options.theme.pastelColors": {
     "message": "Pasztell színek"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "Alsó:"
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Felső:"
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "Egyedi corner radius"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "Felső:"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "Mindig jelenítse meg a szegélyeket"
@@ -1282,7 +1288,9 @@
       }
     }
   },
-  "qf.premium.renew.hide": { "message": "Licenc figyelmeztetés elrejtése újraindításig" },
+  "qf.premium.renew.hide": {
+    "message": "Licenc figyelmeztetés elrejtése újraindításig"
+  },
   "qf.premium.renewLicense.tooltip": {
     "message": "A licenced {1} napja lejárt"
   },
@@ -1418,9 +1426,6 @@
   "qf.toolbarTopPadding": {
     "message": "Felső kitöltés"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "Előző mappák"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "Eszköztár bezárása"
   },
@@ -1430,11 +1435,11 @@
   "qf.tooltip.emailIcon": {
     "message": "Aktuális email - húzza egy QuickFolders fülre a mail áthelyezéséhez"
   },
-  "qf.tooltip.filterStart": {
-    "message": "Szűrő tanuló mód aktív. Az e-mail áthúzása egy gyorsmappára új szűrőket generál."
-  },
   "qf.tooltip.filters": {
     "message": "Ne készítsen szűrőket."
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Szűrő tanuló mód aktív. Az e-mail áthúzása egy gyorsmappára új szűrőket generál."
   },
   "qf.tooltip.folderUp": {
     "message": "Ugrás a szülő mappába"
@@ -1459,6 +1464,9 @@
   },
   "qf.tooltip.quickMove": {
     "message": "quickMove: drag an email here then enter folder name"
+  },
+  "qf.tooltip.RecentFolders": {
+    "message": "Előző mappák"
   },
   "qf.tooltip.threadIcon": {
     "message": "Jelenlegi beszélgetés - húzza egy QuickFolders fülre a beszélgetés áthelyezéséhez"
@@ -1492,12 +1500,6 @@
   "qfCommandPopup": {
     "message": "QuickFolders parancsok"
   },
-  "qfCompactFolder": {
-    "message": "Tömörített mappa"
-  },
-  "qfCompactFolderAccess": {
-    "message": "T"
-  },
   "qfCompacted": {
     "message": "Tömörített:"
   },
@@ -1512,6 +1514,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "Eredeti méret"
+  },
+  "qfCompactFolder": {
+    "message": "Tömörített mappa"
+  },
+  "qfCompactFolderAccess": {
+    "message": "T"
   },
   "qfConfirmCopyFolder": {
     "message": "Valóban másolja a {0} mappát a {1} mappába?"
@@ -1606,6 +1614,9 @@
   "qfMarkAllRead": {
     "message": "Mappa olvasottnak jelölése"
   },
+  "qfMarkAllRead.next": {
+    "message": "Jelölje meg a mappát Olvasottként, és ugorjon a következő olvasatlan mappára"
+  },
   "qfMarkAllReadAccess": {
     "message": "o"
   },
@@ -1614,9 +1625,6 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Mappa + almappák megjelölése olvasottként"
-  },
-  "qfMarkAllRead.next": {
-    "message": "Jelölje meg a mappát Olvasottként, és ugorjon a következő olvasatlan mappára"
   },
   "qfMenuColor": {
     "message": "Szín"
@@ -1704,6 +1712,9 @@
   "qfUpdatedThemesEngineMsg": {
     "message": "Egy új téma lett telepítve a QuickFolders-hez. Kérem válasszon ki egy elemet a legördülő menüből, és kattintson az [Ok] gombra."
   },
+  "quickfolders.toolbar.newsubfolder": {
+    "message": "Új almappa…"
+  },
   "quickfoldersLabel.customText": {
     "message": "Egyéni felirat szöveg"
   },
@@ -1715,6 +1726,9 @@
   },
   "quickfoldersLabel.textDelimiter": {
     "message": "Szövegelválasztó"
+  },
+  "quickMove.help.advanced": {
+    "message": "A QuickFolders Pro fülön konfigurálhatók olyan fejlettebb funkciók, mint például egy mappa eléréséhez szükséges gyorsbillentyűk / levelek áthelyezése vagy a mappák kizárása a keresési eredményekből. Ezen és egyéb prémium funkciók eléréséhez szerezzen be egy Pro licencet, és támogassa a QuickFolders jövőjét."
   },
   "quickMove.help.head": {
     "message": "Segítség a következőhöz: {1}"
@@ -1743,9 +1757,6 @@
   "quickMove.help.l4a": {
     "message": "Írja be az {1} parancsot a legutóbb bevitt mappák listájának megtekintéséhez. Az eredmények száma a licenc szintjétől függ."
   },
-  "quickMove.help.advanced": {
-    "message": "A QuickFolders Pro fülön konfigurálhatók olyan fejlettebb funkciók, mint például egy mappa eléréséhez szükséges gyorsbillentyűk / levelek áthelyezése vagy a mappák kizárása a keresési eredményekből. Ezen és egyéb prémium funkciók eléréséhez szerezzen be egy Pro licencet, és támogassa a QuickFolders jövőjét."
-  },
   "quickMove.singleMessage.goNext": {
     "message": "A következő levél megjelenítése az aktuális áthelyezése után"
   },
@@ -1755,8 +1766,344 @@
   "quickMove.singleMessageTabs": {
     "message": "Egyetlen üzenet fül"
   },
-  "quickfolders.toolbar.newsubfolder": {
-    "message": "Új almappa…"
+  "registration.account": {
+    "message": "E-mail-fiók"
+  },
+  "registration.action.buy": {
+    "message": "$1 vásárlása"
+  },
+  "registration.action.buyDomain": {
+    "message": "Tartományi licenc vásárlása"
+  },
+  "registration.action.current": {
+    "message": "Jelenlegi kiadás"
+  },
+  "registration.action.extend": {
+    "message": "Licenc meghosszabbítása"
+  },
+  "registration.action.renew": {
+    "message": "Licenc megújítása"
+  },
+  "registration.action.upgrade": {
+    "message": "Frissítés Pro verzióra"
+  },
+  "registration.annual": {
+    "message": "Éves licencek"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Vásárlási értesítés bezárása"
+  },
+  "registration.checkout.error": {
+    "message": "Az áruház nem nyitható meg. Próbálja újra."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}A megújítási vagy frissítési kedvezmények megőrzéséhez folytassa az ezen az oldalon megnyitott termékkel.{/bold} {i}Másik licenc{/i} választásához kezdje újra innen."
+  },
+  "registration.checkout.note": {
+    "message": "Az árak, adók és kedvezmények az áruházban láthatók."
+  },
+  "registration.checkout.opened": {
+    "message": "Az áruház megnyílt a böngészőben. Ezt a lapot nyitva hagyhatja."
+  },
+  "registration.checkout.preview": {
+    "message": "Tesztelőnézet: $1 – $2. Az áruház nem nyílt meg."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Ezt a frissítési útvonalat vásárlás előtt meg kell erősíteni. Az áruház nem nyílt meg."
+  },
+  "registration.compare": {
+    "message": "Standard és Pro összehasonlítása"
+  },
+  "registration.contact.heading": {
+    "message": "Kinek szól ez a licenc?"
+  },
+  "registration.contact.note": {
+    "message": "Ezek az adatok előre kitöltik a vásárlást. Itt szerkesztheti őket."
+  },
+  "registration.date.expired": {
+    "message": "A licence ekkor lejárt: $1."
+  },
+  "registration.date.none": {
+    "message": "Válasszon licencet alább, vagy adja meg meglévő kulcsát."
+  },
+  "registration.date.valid": {
+    "message": "A licence eddig érvényes: $1."
+  },
+  "registration.development": {
+    "message": "Regisztrációs teszt"
+  },
+  "registration.domain.proWarning": {
+    "message": "A Pro külön személyes licenc, nem a tartományi licenc megújítása. Tartományi licence a megvásárolt helyeken belül azokra a telepítésekre érvényes, amelyeken a bejegyzett vállalati tartományhoz tartozó fiók van beállítva. Külön Pro licenc használható otthoni telepítéshez, ahol ez a fiók nem állítható be. A csapat további lefedettségéhez válassza a Licenc megújítása lehetőséget a Tartomány panelen."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Felhasználók hozzáadása"
+  },
+  "registration.domain.seatsNote": {
+    "message": "a meglévő tartományi licenchez."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Több helyre van szüksége?"
+  },
+  "registration.edition.domain": {
+    "message": "Tartomány"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "message": "E-mail-cím"
+  },
+  "registration.email.domain": {
+    "message": "Más szabályok érvényesek: a beállított e-mail-címnek a licencelt tartományhoz kell tartoznia."
+  },
+  "registration.email.domain.heading": {
+    "message": "Tartományi licencek"
+  },
+  "registration.email.help": {
+    "message": "Tudnivalók a licencelt e-mail-címekről"
+  },
+  "registration.email.help.close": {
+    "message": "E-mail súgó bezárása"
+  },
+  "registration.email.help.heading": {
+    "message": "Az e-mail-címe a licence"
+  },
+  "registration.email.hint": {
+    "message": "A személyes licenc több eszközön használható."
+  },
+  "registration.email.personal": {
+    "message": "A licenc ehhez az e-mail-címhez kötődik. Több eszközön is használhatja. Állítsa be ezt a címet egy fiók {bold}alapértelmezett identitásaként{/bold} a Thunderbirdben minden eszközön."
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard és Pro licencek"
+  },
+  "registration.email.rules": {
+    "message": "A licencelt e-mail-címek szabályai"
+  },
+  "registration.enterKey": {
+    "message": "Licenckulcs megadása…"
+  },
+  "registration.eyebrow": {
+    "message": "Az Ön licence"
+  },
+  "registration.firstName": {
+    "message": "Keresztnév"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Tesztadatok: a vásárlás csak előnézetet nyit."
+  },
+  "registration.footer": {
+    "message": "Thunderbirdhöz készült. Az Ön támogatásával."
+  },
+  "registration.heading": {
+    "message": "Mappái. Kevesebb munka."
+  },
+  "registration.identity.empty": {
+    "message": "Adatok megadása kézzel"
+  },
+  "registration.identity.none": {
+    "message": "Nem található megfelelő e-mail-fiók. Az adatok kézzel is megadhatók."
+  },
+  "registration.lastName": {
+    "message": "Vezetéknév"
+  },
+  "registration.learnMore": {
+    "message": "További tudnivalók…"
+  },
+  "registration.legacy.menu": {
+    "message": "Korábbi licencregisztráció"
+  },
+  "registration.license.domain": {
+    "message": "Tartományi licenc"
+  },
+  "registration.license.edition": {
+    "message": "$1 licenc"
+  },
+  "registration.license.expiresIn": {
+    "message": "Az engedély $1 napon belül lejár"
+  },
+  "registration.license.none": {
+    "message": "Nincs beállított licenc"
+  },
+  "registration.load.error": {
+    "message": "A licenc vagy a fiókok nem tölthetők be. Próbálja újratölteni a lapot."
+  },
+  "registration.navigation": {
+    "message": "Licencnavigáció"
+  },
+  "registration.options": {
+    "message": "Licenclehetőségek"
+  },
+  "registration.plan.domain.description": {
+    "message": "Pro funkciók a licencelt tartomány felhasználóinak, a megvásárolt helyek számáig."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Csapatának"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Közös tartományhoz"
+  },
+  "registration.plan.pro.description": {
+    "message": "Rendezze és találja meg üzeneteit minden nap gyorsabban."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Minden funkció"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Saját e-mailhez"
+  },
+  "registration.plan.standard.description": {
+    "message": "Tartsa kedvenc mappáit mindig kéznél."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "A mindennapi alapok"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Saját e-mailhez"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Tartományi licencek{/bold}{br}A tartományi licenceket {bold}kézzel ellenőrizzük és állítjuk ki{/bold}. A megújítás egy évvel meghosszabbítja a meglévő lejárati dátumot akkor is, ha a licenc már lejárt. Ez az időben történő megújítást ösztönzi; a végleges időtartamot az ellenőrzés során erősítjük meg."
+  },
+  "registration.renewal.entitlements": {
+    "message": "A megújítási és frissítési kedvezmények az áruháznak átadott licencadatoktól függenek. Ha másik termékre vált, vagy a biztonsági szoftver eltávolítja ezeket az adatokat, az áruház esetleg nem tudja érvényesíteni jogosultságát."
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Váltson Pro verzióra, és csak a Standard és Pro árak **különbözetét** fizesse ki. A fizetés napjától teljes évet kap, akkor is, ha Standard licence már lejárt."
+  },
+  "registration.renewal.hint": {
+    "message": "A licenc megújítása vagy meghosszabbítása általában olcsóbb, mint új licenc vásárlása."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Személyes licencek{/bold}{br}Az új licenc a fizetéstől számított egy évig érvényes. Ugyanazon kiadás megújításakor vagy meghosszabbításakor a fizetéstől számított teljes évet vagy a meglévő lejárat után egy évet kap, attól függően, melyik biztosít több időt."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Meglévő licenc{/bold}{br}A jelenlegi licencet az új lejárati dátum kiszámításához átadjuk az áruháznak."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Váltson Pro verzióra, és csak a Standard és Pro árak **különbözetét** fizesse ki. A fizetés napjától teljes évet kap."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Standard → Pro frissítés{/bold}{br}A Pro licenc a frissítés kifizetésétől számított egy évig érvényes. A Standard licenc hátralévő ideje nem hosszabbítja meg ezt az időszakot."
+  },
+  "registration.selection.heading": {
+    "message": "Töltsön kevesebb időt keresgéléssel."
+  },
+  "registration.selection.intro": {
+    "message": "Válassza a Standard verziót az alapvető, a Pro verziót az összes funkcióhoz, vagy a tartományi licencet szervezete felhasználóinak."
+  },
+  "registration.selection.label": {
+    "message": "Licenc kiválasztása"
+  },
+  "registration.settings.error": {
+    "message": "A licencbeállítások nem nyithatók meg. Próbálja újra."
+  },
+  "registration.showLess": {
+    "message": "Kevesebb megjelenítése"
+  },
+  "registration.status.Empty": {
+    "message": "Ingyenes kiadás"
+  },
+  "registration.status.Expired": {
+    "message": "Lejárt"
+  },
+  "registration.status.Invalid": {
+    "message": "Érvénytelen licenc"
+  },
+  "registration.status.MailDifferent": {
+    "message": "A licenc e-mail-címe nem egyezik"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "A licencelt cím nincs beállítva"
+  },
+  "registration.status.NotValidated": {
+    "message": "Nincs ellenőrizve"
+  },
+  "registration.status.Unknown": {
+    "message": "A licenc nem érhető el"
+  },
+  "registration.status.Valid": {
+    "message": "Érvényes"
+  },
+  "registration.subtitle": {
+    "message": "Válassza ki a munkájához megfelelő licencet."
+  },
+  "registration.terms.annual": {
+    "message": "A licenc egy évre szól. A választott kiadás további használatához újítsa meg a lejárt licencet vagy hosszabbítsa meg az érvényeset."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Egyszerre egy év"
+  },
+  "registration.terms.back": {
+    "message": "Licenc kiválasztása"
+  },
+  "registration.terms.checkout": {
+    "message": "Válasszon licencet az áruház megnyitásához. Az ár a kiadástól, országtól, adótól és kedvezményektől függ."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Vásárlás a böngészőben"
+  },
+  "registration.terms.domain": {
+    "message": "A tartományi licenc a licencelt tartomány e-mail-címével rendelkező felhasználókat fedezi, a megvásárolt helyek számáig."
+  },
+  "registration.terms.draft": {
+    "message": "Tervezet: a próbaidő és a lejárat utáni működés részleteit kiadás előtt ellenőrizzük."
+  },
+  "registration.terms.edition": {
+    "message": "A Standard és a Pro eltérő funkciókat kínál. Hasonlítsa össze a kiadásokat a megfelelő kiválasztásához."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Válasszon kiadást"
+  },
+  "registration.terms.email": {
+    "message": "A személyes licenc az e-mail-címéhez kötődik. Több Thunderbird-telepítésen használhatja, ha a licencelt cím minden telepítésen egy fiók **alapértelmezett identitása**."
+  },
+  "registration.terms.email.heading": {
+    "message": "Az e-mail-címe, az Ön licence"
+  },
+  "registration.terms.heading": {
+    "message": "A licenc működése."
+  },
+  "registration.terms.hide": {
+    "message": "🡇 Tovább a licenc kiválasztásához 🡇"
+  },
+  "registration.terms.intro": {
+    "message": "A {+extensionName} évek óta követi a Thunderbird fejlődését. A licencek finanszírozzák a folyamatos fejlesztést, az új funkciókat és a kompatibilitási frissítéseket. Minden licenc egy évig érvényes, és támogatja ezt a munkát."
+  },
+  "registration.terms.label": {
+    "message": "Licencfeltételek"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "A licencek **nem újulnak meg automatikusan**. A {+extensionName} emlékezteti a lejárat előtt."
+  },
+  "registration.terms.otherAccounts": {
+    "message": "A licencelt funkciók a Thunderbird összes többi e-mail-fiókjával is működnek. Nem szükséges külön licenc."
+  },
+  "registration.terms.referrer": {
+    "message": "Ha már rendelkezik licenccel, azt a jogosultság ellenőrzéséhez elküldjük az áruháznak."
+  },
+  "registration.terms.savings": {
+    "message": "**Kezdje Pro verzióval, majd takarítson meg a következő években.** A Pro licenc megújítása vagy meghosszabbítása lényegesen olcsóbb, mint egy új vásárlása."
+  },
+  "registration.terms.show": {
+    "message": "Licencfeltételek megjelenítése 🡇"
+  },
+  "registration.terms.support": {
+    "message": "Támogatása segíti a fejlesztést, a kompatibilitási frissítéseket és a hibajavításokat."
+  },
+  "registration.test.menu": {
+    "message": "Regisztráció a webáruházban"
+  },
+  "registration.test.note": {
+    "message": "Az áruház a böngészőben nyílik meg."
+  },
+  "registration.title": {
+    "message": "{+extensionName} · Az Ön licence"
   },
   "renew-your-license": {
     "message": "Újítsa meg a licencét."
@@ -1770,6 +2117,24 @@
       "reduction": {
         "content": "$2",
         "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b} Kedves {name} {/b}! Kérjük, támogassa a $addon$ -ot egy licenc megszerzésével. A Thunderbird kód folyamatosan fejlődik, és {b} segítségére van szükségünk {/b}, hogy lépést tarthassunk!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
       }
     }
   },
@@ -1801,24 +2166,6 @@
   },
   "special-offer-upgrade-condition": {
     "message": "A Standard verzióra való frissítéskor a vásárlás dátumától számítva egy teljes év licencidőt kap, függetlenül az előző licenc lejárati dátumától."
-  },
-  "special-offer-head": {
-    "message": "Segítsen a $addon$ kompatibilitásának megőrzésében",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{b} Kedves {name} {/b}! Kérjük, támogassa a $addon$ -ot egy licenc megszerzésével. A Thunderbird kód folyamatosan fejlődik, és {b} segítségére van szükségünk {/b}, hogy lépést tarthassunk!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
   },
   "support-preference": {
     "message": "A $addonName$ támogatásának ez a preferált módja.",
@@ -1906,7 +2253,10 @@
   "whats-new-maintenance": {
     "message": "Karbantartási frissítés: $ver$. Ez a kiadás az előző verzió sürgős regressziós hibáit javítja.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "window-title": {

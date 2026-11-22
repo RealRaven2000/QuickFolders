@@ -2,6 +2,50 @@
   "_l10nstatus": {
     "message": "SPLASH+UI"
   },
+  "accessibility.count.total": {
+    "message": "合計 $count$ 件のメッセージ",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "サブフォルダー内の合計: $count$ 件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ 件の未読メッセージ",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "サブフォルダー内の未読: $count$ 件",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "フォルダーのコンテキストメニューから 'アイコンをカスタマイズ' コマンドを削除する。"
+  },
+  "accessibility.hideTooltips": {
+    "message": "タブのツールチップを非表示にする"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "検索結果で QuickFolders のブックマークを優先表示する。"
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "サブメニューに親フォルダの別個のアイテムを表示"
+  },
   "account.label": {
     "message": "アカウント選択:"
   },
@@ -21,50 +65,6 @@
   },
   "addon-authors-struggle": {
     "message": "引き続き有用であるために、アドオン開発者は、ユーザーが提供する機能の恩恵を受け続けることができるように、修正と書き換えに必要なリソースに資金を提供する必要があります。"
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ 件の未読メッセージ",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "サブフォルダー内の未読: $count$ 件",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "合計 $count$ 件のメッセージ",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "サブフォルダー内の合計: $count$ 件",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "フォルダーのコンテキストメニューから 'アイコンをカスタマイズ' コマンドを削除する。"
-  },
-  "accessibility.hideTooltips": {
-    "message": "タブのツールチップを非表示にする"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "検索結果で QuickFolders のブックマークを優先表示する。"
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "サブメニューに親フォルダの別個のアイテムを表示"
   },
   "aria.a11underReview": {
     "message": "現在、このページのアクセシビリティを確認および改善しています。記載された機能をキーボードやスクリーンリーダーにより対応できるように改善しています。ご協力ありがとうございます！"
@@ -144,6 +144,9 @@
   "commands.toggleFolderTree": {
     "message": "フォルダーツリーの表示/非表示を切り替えます"
   },
+  "configurable.tooltip": {
+    "message": "設定ホイールをクリックして、さらに構成オプションを表示します"
+  },
   "cost-of-independence": {
     "message": "ソフトウェア開発には時間とお金がかかります - 多くのプラットフォームアプリとは異なり、アドオンは大企業によって作成されているわけではなく、Mozilla による支援もありません。"
   },
@@ -195,8 +198,11 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "Thunderbird のメールフォルダをブックマークに追加します。"
   },
-  "firstName.label": {
-    "message": "名:"
+  "findRelated.btn.label": {
+    "message": "関連メールを探す"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "選択したメールとユーザー定義の検索パターンに基づいて類似メールを検索"
   },
   "findRelated.btnAdd": {
     "message": "追加"
@@ -207,20 +213,17 @@
   "findRelated.btnUpdate": {
     "message": "更新"
   },
-  "findRelated.btn.label": {
-    "message": "関連メールを探す"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "選択したメールとユーザー定義の検索パターンに基づいて類似メールを検索"
-  },
   "findRelated.entries": {
     "message": "検索パターン"
   },
   "findRelated.menu.configure": {
     "message": "検索パターンを設定…"
   },
-  "findRelated.prompt.title": {
-    "message": "関連メールを探す: パターン検索"
+  "findRelated.options.goNextResetsSearch": {
+    "message": "'次のメールへ移動'ボタンは現在の検索をクリアします。"
+  },
+  "findRelated.options.title": {
+    "message": "オプション"
   },
   "findRelated.prompt.enterPattern": {
     "message": "この機能を使用するには、少なくとも1つの検索パターンを設定する必要があります。"
@@ -228,11 +231,8 @@
   "findRelated.prompt.selectPattern": {
     "message": "[関連するメールを検索]を右クリックして検索パターンを選択します。これにより検索が実行され、次回ボタンをクリックしたときの設定が保存されます。"
   },
-  "findRelated.options.title": {
-    "message": "オプション"
-  },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "'次のメールへ移動'ボタンは現在の検索をクリアします。"
+  "findRelated.prompt.title": {
+    "message": "関連メールを探す: パターン検索"
   },
   "findRelated.searchGroup": {
     "message": "検索グループ（完全一致は0）："
@@ -240,26 +240,29 @@
   "findRelated.searchPattern": {
     "message": "検索パターン："
   },
+  "findRelated.term.body": {
+    "message": "本文"
+  },
   "findRelated.term.menutitle": {
     "message": "タイトル："
-  },
-  "findRelated.term.subject": {
-    "message": "件名"
-  },
-  "findRelated.term.sender": {
-    "message": "送信者"
   },
   "findRelated.term.recipients": {
     "message": "受信者"
   },
-  "findRelated.term.body": {
-    "message": "本文"
+  "findRelated.term.sender": {
+    "message": "送信者"
+  },
+  "findRelated.term.subject": {
+    "message": "件名"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "関連メールで検索する内容："
   },
   "findRelated.terms.selectedFields": {
     "message": "検索文字列を取得する場所："
   },
-  "findRelated.terms.searchCriteriaFields": {
-    "message": "関連メールで検索する内容："
+  "firstName.label": {
+    "message": "名:"
   },
   "freeLicense": {
     "message": "QuickFolders プロジェクトに最近ご寄付いただいた方や開発に貢献 (翻訳やパッチ提供) していただいている方は、無料ライセンスキーの取得資格があります。QuickFolders オプションのサポートタブからお問い合わせください。"
@@ -305,6 +308,9 @@
   "intro": {
     "message": "QuickFolders Pro の年間ライセンスは、すべての有料機能を 1 年間使用できるようにします。これは、製品開発のサポートと改善の助けになります。"
   },
+  "keyshortcuts.news": {
+    "message": "現在、Thunderbird はこれらを組み込みショートカットとして使用していますが、アドオン tbkeys lite を使用してそれらを解放することができます。詳細については (?) ボタンをクリックしてください："
+  },
   "label-remind-me": {
     "message": "$countDays$ 日後にもう一度表示します。",
     "placeholders": {
@@ -314,14 +320,35 @@
       }
     }
   },
-  "keyshortcuts.news": {
-    "message": "現在、Thunderbird はこれらを組み込みショートカットとして使用していますが、アドオン tbkeys lite を使用してそれらを解放することができます。詳細については (?) ボタンをクリックしてください："
-  },
   "lastName.label": {
     "message": "姓:"
   },
   "lblCustomPalette": {
     "message": "カスタムパレット:"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFoldersには、$maxTabs$を超えるタブをサポートするためのProライセンスが必要です。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "標準ライセンス-制限付きのPro機能。 詳細はこちら…"
+  },
+  "license_restriced.unpaid": {
+    "message": "ライセンスのないバージョン-制限された機能。 詳細はこちら…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFoldersには、$maxTabs$を超えるタブをサポートするためのライセンスが必要です。",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -342,59 +369,44 @@
   "licenseWindow.title": {
     "message": "QuickFolders Pro ライセンス"
   },
-  "license_restriced.std": {
-    "message": "標準ライセンス-制限付きのPro機能。 詳細はこちら…"
+  "message.browserLaunchFailed": {
+    "message": "{p} 既定のウェブブラウザーを開けませんでした。以下のアドレスをコピーして、ブラウザーのアドレスバーに貼り付けてください。 {/p} エラーの詳細は JavaScript エラーコンソールで確認できます。"
   },
-  "license_restriced.unpaid": {
-    "message": "ライセンスのないバージョン-制限された機能。 詳細はこちら…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — ブラウザーエラー"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "QuickFoldersには、$maxTabs$を超えるタブをサポートするためのProライセンスが必要です。",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "ウェブアドレス（Ctrl+C でコピー）:"
   },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFoldersには、$maxTabs$を超えるタブをサポートするためのライセンスが必要です。",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.btn.accept": {
+    "message": "OK"
   },
-  "message.browserLaunchFailed": { "message": "{p} 既定のウェブブラウザーを開けませんでした。以下のアドレスをコピーして、ブラウザーのアドレスバーに貼り付けてください。 {/p} エラーの詳細は JavaScript エラーコンソールで確認できます。" },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — ブラウザーエラー" },
-  "message.browserLaunchFailed.url": { "message": "ウェブアドレス（Ctrl+C でコピー）:" },
-  "message.btn.accept": { "message": "OK" },
-  "message.btn.cancel": { "message": "キャンセル" },
-  "message.btn.no": { "message": "いいえ" },
-  "message.btn.yes": { "message": "はい" },
-  "message.features": { "message": "機能を比較…" },
-  "message.placeholder": { "message": "メッセージがありません。" },
-  "message.licenseScreen": { "message": "ライセンスオプションを表示…" },
-  "message.linkInTab": { "message": "（リンクがタブで開かれました）" },
+  "message.btn.cancel": {
+    "message": "キャンセル"
+  },
+  "message.btn.no": {
+    "message": "いいえ"
+  },
+  "message.btn.yes": {
+    "message": "はい"
+  },
+  "message.features": {
+    "message": "機能を比較…"
+  },
+  "message.licenseScreen": {
+    "message": "ライセンスオプションを表示…"
+  },
+  "message.linkInTab": {
+    "message": "（リンクがタブで開かれました）"
+  },
+  "message.placeholder": {
+    "message": "メッセージがありません。"
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla は、エンドユーザーであるあなたにソフトウェアを提供するための基本的なプラットフォームのみを提供します。ユーザーに支払いやサポートを依頼する必要がある場合、addons.thunderbird.net からこれを行うことはできません。これは、アプリ内決済機能や、iTunes や Google Play のようなライセンス管理が組み込まれた「アプリストア」ではありません。"
   },
   "newsHead": {
     "message": "最新ニュース"
-  },
-  "newsMsgEsr140": {
-    "message": "{P}{b} 次回の大型リリースで予定されています {/b}: Thunderbirdはまもなく、年次ESRトラックまたはより速い月次リリースのいずれかの更新パスを選択するよう求めます。 {a release}新しいリリースモデルについて詳しくはこちら{/a}.{U} {L}ESRバージョンはv140のままで、マイナーバージョン番号のみが増加し、セキュリティ修正とバグ修正のみが含まれます。これは企業環境で好まれることが多いです。{/L} {L}月次リリースサイクルでは、新機能やインターフェースの更新が開発され次第提供されます。現在のアドオンがこのリリースモデルに対応しているかご確認ください。これを支援するために、{a compatCheck}アドオン互換性チェック{/a}をインストールできます。{/L} {/U}{/P}{P} QuickFoldersはThunderbird 140（次期Extended Support Release（ESR））に完全対応していることをお知らせします。これにより、次の主要なサポートサイクルを通じて継続的な信頼性と安心が得られます。{/P}{P} QuickFoldersは当面、Thunderbird 115以降のユーザーもサポートし続けます。今後1年の間に新機能を追加するにつれ、Thunderbird 115のサポートはThunderbird 128以降に移行する可能性があります。{/P}{P} QuickFoldersが選択したリリーストラックに関係なく、常に互換性と信頼性を維持できるようThunderbirdの変更を継続的に監視しています。{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} Thunderbirdに重要な変更があります {/b}: Thunderbird 153以降、{+extensionName}のような実験的アドオンはRelease版ではサポートされなくなります。Thunderbirdは実験的な拡張機構への依存を減らすため、{a apiwork}WebExtension APIを積極的に拡張しています{/a}。{emph}バージョン153{/emph}以降、レガシーアドオンには{+newsMsgEsr153.ESR}（ESR）が必要になります。<ul><li>ESRチャンネルは、高度または実験的なアドオンを利用するユーザーに推奨される選択肢です。</li><li>Releaseチャンネルは、安定して完全にサポートされたWebExtensionアドオンに集中します。</li><li>Betaチャンネルは、ESRリリース前のテストおよび互換性確認に引き続き利用できます。</li></ul></P>{P}{+extensionName}はThunderbird ESRで引き続き完全にサポートされ、技術的に可能な範囲でRelease版でも積極的に保守されています.{/P}{P}Thunderbirdの変更を継続的に監視し、すべての対応バージョンでの互換性と安定した体験を確保しています.{/P}"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (Thunderbird拡張サポートリリース)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Thunderbirdアドオンサポートに関する今後の変更{/b}: 以前に発表されていた、Releaseチャンネルにおける実験的アドオンへの変更は、次のESRサイクル（ESR 2027）まで延期されました。この追加期間は、APIの拡充とアドオンコミュニティとの移行調整に使用されます。{/P}{P}現時点では対応は不要です。{+extensionName}は、サポートされている限りRelease版およびESR版のThunderbirdで引き続き動作します。{/P}{P}今後もプラットフォームの変更を監視し、必要に応じて移行が必要となる場合には案内を行います。{/P}{P}ESRチャンネルへの移行は必須ではありませんが、実験的機能に強く依存するユーザーは、変更が少なくAPIがより安定している環境としてESRを選択する場合があります。実験的なインターフェースはプラットフォーム内部の変更の影響を受けやすいためです。{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} すべての新機能、バグ修正、長期的な互換性は、皆様のご支援によって実現しています。{/P}{P class=specialOffer} QuickFoldersの開発を支援するため、{salesEnd}まで割引価格でライセンスを更新できます。{/P}{P class=bottomhint}🡇 詳細は下記のいずれかのオプションを選択してください 🡇 {/P}"
@@ -408,6 +420,19 @@
   "newsMsg.license.valid": {
     "message": "{P} ProライセンスでQuickFoldersをご支援いただきありがとうございます — これにより、すべての新機能、バグ修正、長期的な互換性が可能になります。{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b} 次回の大型リリースで予定されています {/b}: Thunderbirdはまもなく、年次ESRトラックまたはより速い月次リリースのいずれかの更新パスを選択するよう求めます。 {a release}新しいリリースモデルについて詳しくはこちら{/a}.{U} {L}ESRバージョンはv140のままで、マイナーバージョン番号のみが増加し、セキュリティ修正とバグ修正のみが含まれます。これは企業環境で好まれることが多いです。{/L} {L}月次リリースサイクルでは、新機能やインターフェースの更新が開発され次第提供されます。現在のアドオンがこのリリースモデルに対応しているかご確認ください。これを支援するために、{a compatCheck}アドオン互換性チェック{/a}をインストールできます。{/L} {/U}{/P}{P} QuickFoldersはThunderbird 140（次期Extended Support Release（ESR））に完全対応していることをお知らせします。これにより、次の主要なサポートサイクルを通じて継続的な信頼性と安心が得られます。{/P}{P} QuickFoldersは当面、Thunderbird 115以降のユーザーもサポートし続けます。今後1年の間に新機能を追加するにつれ、Thunderbird 115のサポートはThunderbird 128以降に移行する可能性があります。{/P}{P} QuickFoldersが選択したリリーストラックに関係なく、常に互換性と信頼性を維持できるようThunderbirdの変更を継続的に監視しています。{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (Thunderbird拡張サポートリリース)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Thunderbirdアドオンサポートに関する今後の変更{/b}: 以前に発表されていた、Releaseチャンネルにおける実験的アドオンへの変更は、次のESRサイクル（ESR 2027）まで延期されました。この追加期間は、APIの拡充とアドオンコミュニティとの移行調整に使用されます。{/P}{P}現時点では対応は不要です。{+extensionName}は、サポートされている限りRelease版およびESR版のThunderbirdで引き続き動作します。{/P}{P}今後もプラットフォームの変更を監視し、必要に応じて移行が必要となる場合には案内を行います。{/P}{P}ESRチャンネルへの移行は必須ではありませんが、実験的機能に強く依存するユーザーは、変更が少なくAPIがより安定している環境としてESRを選択する場合があります。実験的なインターフェースはプラットフォーム内部の変更の影響を受けやすいためです。{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} Thunderbirdに重要な変更があります {/b}: Thunderbird 153以降、{+extensionName}のような実験的アドオンはRelease版ではサポートされなくなります。Thunderbirdは実験的な拡張機構への依存を減らすため、{a apiwork}WebExtension APIを積極的に拡張しています{/a}。{emph}バージョン153{/emph}以降、レガシーアドオンには{+newsMsgEsr153.ESR}（ESR）が必要になります。<ul><li>ESRチャンネルは、高度または実験的なアドオンを利用するユーザーに推奨される選択肢です。</li><li>Releaseチャンネルは、安定して完全にサポートされたWebExtensionアドオンに集中します。</li><li>Betaチャンネルは、ESRリリース前のテストおよび互換性確認に引き続き利用できます。</li></ul></P>{P}{+extensionName}はThunderbird ESRで引き続き完全にサポートされ、技術的に可能な範囲でRelease版でも積極的に保守されています.{/P}{P}Thunderbirdの変更を継続的に監視し、すべての対応バージョンでの互換性と安定した体験を確保しています.{/P}"
+  },
   "newsSection": {
     "message": "{P}{b} 次回の大型リリースで予定されています {/b}: Thunderbirdはまもなく、年次ESRトラックまたはより速い月次リリースのいずれかの更新パスを選択するよう求めます。 {a release}新しいリリースモデルについて詳しくはこちら{/a}.{U} {L}ESRバージョンはv140のままで、マイナーバージョン番号のみが増加し、セキュリティ修正とバグ修正のみが含まれます。これは企業環境で好まれることが多いです。{/L} {L}月次リリースサイクルでは、新機能やインターフェースの更新が開発され次第提供されます。現在のアドオンがこのリリースモデルに対応しているかご確認ください。これを支援するために、{a compatCheck}アドオン互換性チェック{/a}をインストールできます。{/L} {/U}",
     "placeholders": {
@@ -417,11 +442,11 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{/P}"
-  },
   "newsSection.important": {
     "message": "{P}Releaseチャンネルユーザーへの重要なお知らせ（{emph}154以降{/emph}）：Thunderbirdの新2週間リリースサイクルにより、[issue 690]のような予期しない不具合のリスクが高まっています。私は{+extensionName}を毎日のビルドで定期的にテストしていますが、タイムリーな修正はReleaseユーザーからの{b}早期報告{/b}に依存しています。{a href='https://github.com/RealRaven2000/QuickFolders/issues'}課題トラッカー{/a}をフォローし、不具合を迅速に報告して互換性を維持してください。{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}Thunderbird の月次リリース サイクルに引き続き対応し、互換性と安定性を確保しています。なお、この作業はすべてライセンスの販売によって賄われています。{/P}"
   },
   "newsSection.license": {
     "message": "QuickFoldersのすべての作業と無料サポートはライセンス販売のみによって資金提供されていますので、ライセンスを購入するか、現在のライセンスを更新することを検討してください。"
@@ -459,9 +484,6 @@
   "qf.accounts": {
     "message": "アカウント"
   },
-  "qf.alert.pasteFolders.formatErr": {
-    "message": "タブを作成できませんでした。詳細は [ツール] > [エラーコンソール] を見てください。"
-  },
   "qf.alert.bookmarks.unsupportedType": {
     "message": "現在未対応のブックマークタイプ：$bookmarkType$ {NewLine}メッセージを少なくとも1つ選択するか、単にボタンの上にメールをドラッグしてください",
     "placeholders": {
@@ -469,6 +491,9 @@
         "content": "$1"
       }
     }
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "タブを作成できませんでした。詳細は [ツール] > [エラーコンソール] を見てください。"
   },
   "qf.backupAndRestore": {
     "message": "復元する"
@@ -533,12 +558,6 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "タブをクリックするとメッセージリストにフォーカス"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "単一のメッセージタブでQuickFoldersを非表示にする"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "単一のメッセージを表示するタブのQuickFoldersツールバーを削除します。"
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "閉じるボタン"
   },
@@ -562,6 +581,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "カテゴリメニューを折りたたんで最小化します。"
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "単一のメッセージタブでQuickFoldersを非表示にする"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "単一のメッセージを表示するタブのQuickFoldersツールバーを削除します。"
   },
   "qf.checkbox.highlightNewMail": {
     "message": "新着メールのあるフォルダを強調する"
@@ -614,14 +639,14 @@
   "qf.checkbox.quickMove": {
     "message": "quickMove - 次のショートカットキーでメールを任意のフォルダへ移動します:"
   },
-  "qf.checkbox.quickMove.tip": {
-    "message": "quickMove ボタンは、このボタンにメールをドラッグすると任意の名前エントリにメールを移動できるショートカットです。"
-  },
   "qf.checkbox.quickmove.autofill": {
     "message": "最後に実行したフォルダ名を挿入"
   },
   "qf.checkbox.quickmove.autofill.tip": {
     "message": "最後に使用したフォルダが挿入されます。Enter キーを押して使用するか、他のフォルダを入力してください。"
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "quickMove ボタンは、このボタンにメールをドラッグすると任意の名前エントリにメールを移動できるショートカットです。"
   },
   "qf.checkbox.readingList": {
     "message": "後で読むリスト"
@@ -677,8 +702,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "[最近のフォルダ]タブ"
   },
-  "configurable.tooltip": {
-    "message": "設定ホイールをクリックして、さらに構成オプションを表示します"
+  "qf.checkbox.showshortcutnumber": {
+    "message": "フォルダのラベルにショートカット番号を表示する"
   },
   "qf.checkbox.showSubfolders": {
     "message": "ポップアップメニューにサブフォルダを展開する"
@@ -691,9 +716,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "フォルダボタンに未読メッセージ数を表示する"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "フォルダのラベルにショートカット番号を表示する"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "… 単体のメッセージウィンドウにも表示"
@@ -728,6 +750,12 @@
   "qf.checkbox.transparent": {
     "message": "透過"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "キーボードショートカットを使用する (Alt+1 から Alt+9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "キーボードショートカットに Ctrl キーを使用する"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "Alt+← / Alt+→ キーで前のタブ / 次のタブへ移動する"
   },
@@ -736,12 +764,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "タブ再構築のショートカットキー: Ctrl+Alt+"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "キーボードショートカットを使用する (Alt+1 から Alt+9)"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "キーボードショートカットに Ctrl キーを使用する"
   },
   "qf.continueFilter.label": {
     "message": "フィルタ作成…"
@@ -752,9 +774,6 @@
   "qf.copyfolders.tooltip": {
     "message": "フォルダへのパス文字列をクリップボードにコピーします。"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird のテーマ"
-  },
   "qf.currentFolderBackground.custom": {
     "message": "カスタム"
   },
@@ -764,11 +783,11 @@
   "qf.currentFolderBackground.default": {
     "message": "銀"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird のテーマ"
+  },
   "qf.currentFolderBackground.translucent": {
     "message": "半透明"
-  },
-  "qf.description.github": {
-    "message": "すべての要望とバグ報告は github へお願いします"
   },
   "qf.description.categoryusage": {
     "message": "このブックマークをカテゴリに追加します (例:'仕事', 'プライベート', ...)。"
@@ -787,6 +806,9 @@
   "qf.description.donate": {
     "message": "QuickFolders の開発をサポートしたいときは、こちらで寄付を受け付けています:"
   },
+  "qf.description.dragexplain": {
+    "message": "ブックマークの位置は、ツールバー上でドラッグして変更することもできます。"
+  },
   "qf.description.dragToAdd": {
     "message": "新しいクイックフォルダ (ショートカット) を作成するには、メールフォルダをツールバー上の空いたところにドラッグします。メッセージをクイックフォルダ上にドラッグするとメッセージを移動します (Ctrl キーを押しながらドラッグでコピー)。メールフォルダを開くにはクイックフォルダをクリックします。"
   },
@@ -796,14 +818,14 @@
   "qf.description.dragToPosition": {
     "message": "クイックフォルダの位置を変更するには、フォルダを横にドラッグします。クイックフォルダを右クリックするとコンテキストメニューが表示され、サブフォルダを開くことができます。'ブックマークの名前を変更' はクイックフォルダのラベルを変更します。'ブックマークを削除' はクイックフォルダを削除します (実際のメールフォルダは削除しません)。"
   },
-  "qf.description.dragexplain": {
-    "message": "ブックマークの位置は、ツールバー上でドラッグして変更することもできます。"
-  },
   "qf.description.editcategory": {
     "message": "既存のカテゴリをダブルクリックして選択するか、新しいカテゴリを追加してください。"
   },
   "qf.description.experimentalItems": {
     "message": "以下の項目は実験段階です。将来のリリースで動作する予定です！"
+  },
+  "qf.description.github": {
+    "message": "すべての要望とバグ報告は github へお願いします"
   },
   "qf.description.languages": {
     "message": "QuickFolders は他の言語にも対応しています。あなたの言語を追加するには github で翻訳を追加してください:"
@@ -901,41 +923,11 @@
   "qf.group.navigation": {
     "message": "メッセージナビゲーション"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "アクティブなタブの色:"
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "色付きタブのパレット:"
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "タブに特定の色を設定するパレットです"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "タブのドラッグ中の色:"
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "ポイントしたタブの色:"
-  },
-  "qf.label.Toolbar": {
-    "message": "ツールバー"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "下線の幅:"
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "タブの下線の幅です。アクティブカラーピッカで色を変更してください。"
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "ツールバーの背景色:"
-  },
-  "qf.label.UncoloredTab": {
-    "message": "色無しのタブ"
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "タブに特定の色を設定しません"
-  },
   "qf.label.accessibility": {
     "message": "アクセシビリティ"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "アクティブなタブの色:"
   },
   "qf.label.appearance": {
     "message": "外観"
@@ -943,14 +935,17 @@
   "qf.label.behavior": {
     "message": "動作"
   },
-  "qf.label.github": {
-    "message": "github でバグ報告または新しい機能を要望する…"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "ボタンのフォントサイズ (既定値は 0):"
   },
   "qf.label.cancel": {
     "message": "キャンセル"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "色付きタブのパレット:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "タブに特定の色を設定するパレットです"
   },
   "qf.label.colors": {
     "message": "配色"
@@ -970,6 +965,9 @@
   "qf.label.dragFolderLabel": {
     "message": "フォルダをここにドラッグして追加してください。追加したブックマークをクリックするとフォルダを開き、メッセージをドラッグするとそこに移動/コピーします。"
   },
+  "qf.label.DragOverBackground": {
+    "message": "タブのドラッグ中の色:"
+  },
   "qf.label.existingcategories": {
     "message": "既存のカテゴリ:"
   },
@@ -985,6 +983,9 @@
   "qf.label.getQuickFilters": {
     "message": "機能が強化されたフィルタ作成には quickFilters 拡張をインストールしてください！"
   },
+  "qf.label.github": {
+    "message": "github でバグ報告または新しい機能を要望する…"
+  },
   "qf.label.goNextUnread": {
     "message": "次の未読メールへ移動:"
   },
@@ -996,6 +997,9 @@
   },
   "qf.label.homePage": {
     "message": "詳しい情報は quickfolders.org の QuickFolders ホームページにあります。"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "ポイントしたタブの色:"
   },
   "qf.label.initdelay": {
     "message": "[ms] 初期遅延時間 {標準は 1000}:"
@@ -1087,6 +1091,24 @@
   "qf.label.themes": {
     "message": "テーマ:"
   },
+  "qf.label.Toolbar": {
+    "message": "ツールバー"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "下線の幅:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "タブの下線の幅です。アクティブカラーピッカで色を変更してください。"
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "ツールバーの背景色:"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "色無しのタブ"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "タブに特定の色を設定しません"
+  },
   "qf.label.versionhistory": {
     "message": "バージョン履歴を見る…"
   },
@@ -1150,9 +1172,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "フォルダツールを表示"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "フォルダツールを非表示"
-  },
   "qf.menuitem.quickfolders.filters": {
     "message": "メッセージフィルタを作成…"
   },
@@ -1161,6 +1180,9 @@
   },
   "qf.menuitem.quickfolders.help": {
     "message": "QuickFolders ヘルプ…"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "フォルダツールを非表示"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "QuickFolders オプション…"
@@ -1186,11 +1208,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "何もしない"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "メールを未読にする"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "メールを既読にする"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "メールを未読にする"
   },
   "qf.moveMailStatus.label": {
     "message": "メールを QuickFolder に移動する場合:"
@@ -1275,6 +1297,9 @@
   "qf.notifications.compactFolder": {
     "message": "フォルダーの圧縮後に通知する"
   },
+  "qf.options.label.themeAuthor": {
+    "message": "テーマの作者:"
+  },
   "qf.options.LayoutColorAppearance": {
     "message": "タブのスタイル"
   },
@@ -1284,20 +1309,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "(ストライプ)"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "テーマの作者:"
-  },
   "qf.options.theme.pastelColors": {
     "message": "パステルカラー"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "下部:"
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "上部:"
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "カスタムの角丸"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "上部:"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "常に境界線を表示する"
@@ -1326,12 +1348,6 @@
   "qf.pathFormat.AccountAndPath": {
     "message": "アカウント - フォルダのパス"
   },
-  "qf.pathFormat.PathOnly": {
-    "message": "フォルダのパス"
-  },
-  "qf.pathFormat.URI": {
-    "message": "フォルダの URI"
-  },
   "qf.pathFormat.folderAndAccount": {
     "message": "フォルダ名 - メールアカウント"
   },
@@ -1341,8 +1357,14 @@
   "qf.pathFormat.maxDepth": {
     "message": "パス最大深さ:"
   },
+  "qf.pathFormat.PathOnly": {
+    "message": "フォルダのパス"
+  },
   "qf.pathFormat.tooltip": {
     "message": "フォルダパスに表示されるフォルダの最大数です。"
+  },
+  "qf.pathFormat.URI": {
+    "message": "フォルダの URI"
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders オプション"
@@ -1355,7 +1377,9 @@
       }
     }
   },
-  "qf.premium.renew.hide": { "message": "再起動までライセンス警告を非表示" },
+  "qf.premium.renew.hide": {
+    "message": "再起動までライセンス警告を非表示"
+  },
   "qf.premium.renewLicense.tooltip": {
     "message": "ライセンスの有効期限が {1} 日前に切れています"
   },
@@ -1500,9 +1524,6 @@
   "qf.toolbarTopPadding": {
     "message": "上の余白"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "最近開いたフォルダ"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "このツールバーを閉じます"
   },
@@ -1512,11 +1533,11 @@
   "qf.tooltip.emailIcon": {
     "message": "現在のメール - メールを QuickFolders タブへドラッグして移動できます"
   },
-  "qf.tooltip.filterStart": {
-    "message": "フィルタ学習を開始します。メールを QuickFolder 上にドラッグすると新しいフィルタを作成します。"
-  },
   "qf.tooltip.filters": {
     "message": "フィルタの作成を中止します"
+  },
+  "qf.tooltip.filterStart": {
+    "message": "フィルタ学習を開始します。メールを QuickFolder 上にドラッグすると新しいフィルタを作成します。"
   },
   "qf.tooltip.folderUp": {
     "message": "親フォルダへ移動"
@@ -1542,20 +1563,23 @@
   "qf.tooltip.quickMove": {
     "message": "quickMove: ここにメールをドラッグしてフォルダ名を入力してください"
   },
+  "qf.tooltip.RecentFolders": {
+    "message": "最近開いたフォルダ"
+  },
   "qf.tooltip.skipUnreadFolder": {
     "message": "次の未読フォルダへスキップします"
   },
   "qf.tooltip.threadIcon": {
     "message": "現在のスレッド - スレッドを QuickFolders タブへドラッグして移動できます"
   },
-  "qf.update.title": {
-    "message": "アップデート"
-  },
   "qf.update.hideVersionHistory": {
     "message": "バージョン履歴のあるタブを開かない"
   },
   "qf.update.markInvalidTabs": {
     "message": "無効なタブを強調表示 🧹"
+  },
+  "qf.update.title": {
+    "message": "アップデート"
   },
   "qf.youtube.description": {
     "message": "Thunderbird アドオンと QuickFolders の使い方についての説明動画は、私の YouTube チャンネル、Thunderbird Daily でご覧ください。"
@@ -1595,12 +1619,6 @@
   "qfCommandPopup": {
     "message": "QuickFolders コマンド"
   },
-  "qfCompactFolder": {
-    "message": "フォルダを最適化"
-  },
-  "qfCompactFolderAccess": {
-    "message": "F"
-  },
   "qfCompacted": {
     "message": "最適化:"
   },
@@ -1615,6 +1633,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "元のサイズ"
+  },
+  "qfCompactFolder": {
+    "message": "フォルダを最適化"
+  },
+  "qfCompactFolderAccess": {
+    "message": "F"
   },
   "qfConfirmCopyFolder": {
     "message": "本当にフォルダ{0}を{1}にコピーしますか？"
@@ -1691,14 +1715,14 @@
   "qfMarkAllRead": {
     "message": "フォルダを既読にする"
   },
+  "qfMarkAllRead.next": {
+    "message": "フォルダを既読としてマークし、次の未読フォルダにジャンプ"
+  },
   "qfMarkAllReadNews": {
     "message": "すべてのニュースを既読にする"
   },
   "qfMarkAllReadRecursive": {
     "message": "フォルダー + サブフォルダーに既読のマークを付ける"
-  },
-  "qfMarkAllRead.next": {
-    "message": "フォルダを既読としてマークし、次の未読フォルダにジャンプ"
   },
   "qfMenuColor": {
     "message": "色番号"
@@ -1813,45 +1837,6 @@
   "qfVersionDisableOnUpdate": {
     "message": "更新後のバージョン履歴の表示を止めますか？"
   },
-  "quickMove.help.head": {
-    "message": "{1}のヘルプ"
-  },
-  "quickMove.help.head.advanced": {
-    "message": "高度な機能"
-  },
-  "quickMove.help.l1a": {
-    "message": "スペースで区切って、フォルダー名またはフォルダー内の単語の先頭を入力します。"
-  },
-  "quickMove.help.l1b": {
-    "message": "次の文字は単語の境界と見なされ、入力する必要はありません。"
-  },
-  "quickMove.help.l2a": {
-    "message": "祖父母/親/検索されたフォルダに入るには{1}と入力します。"
-  },
-  "quickMove.help.l2b": {
-    "message": "通常、親フォルダの最初の2文字で十分です。 この構文で新しいサブフォルダーを作成することもできます。"
-  },
-  "quickMove.help.l3a": {
-    "message": "間にあるフォルダをスキップするには、{1}と入力します。"
-  },
-  "quickMove.help.l3b": {
-    "message": "これは、より深く、より複雑な、または未知のフォルダー階層に役立ちます。"
-  },
-  "quickMove.help.l4a": {
-    "message": "{1}と入力して、最後に入力されたフォルダーのリストを取得します。 結果の数は、ライセンスレベルによって異なります。"
-  },
-  "quickMove.help.advanced": {
-    "message": "フォルダーに移動したり、メールを移動したり、検索結果からフォルダーを除外したりするためのキーボードショートカットなどのより高度な機能は、QuickFoldersProタブで構成できます。 これらおよびその他のプレミアム機能にアクセスするには、Proライセンスを取得し、QuickFoldersの将来をサポートしてください。"
-  },
-  "quickMove.singleMessage.goNext": {
-    "message": "現在のメールを移動した後、次のメールを表示する"
-  },
-  "quickMove.singleMessage.reopenTab": {
-    "message": "移動後、元のメールを再度開く"
-  },
-  "quickMove.singleMessageTabs": {
-    "message": "単一のメッセージタブ"
-  },
   "quickfolders.findFolder.placeHolder": {
     "message": "フォルダ名"
   },
@@ -1900,6 +1885,384 @@
   "quickfoldersQuickMovedMails": {
     "message": "{1} 通のメールを {2} フォルダへ移動しました"
   },
+  "quickMove.help.advanced": {
+    "message": "フォルダーに移動したり、メールを移動したり、検索結果からフォルダーを除外したりするためのキーボードショートカットなどのより高度な機能は、QuickFoldersProタブで構成できます。 これらおよびその他のプレミアム機能にアクセスするには、Proライセンスを取得し、QuickFoldersの将来をサポートしてください。"
+  },
+  "quickMove.help.head": {
+    "message": "{1}のヘルプ"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "高度な機能"
+  },
+  "quickMove.help.l1a": {
+    "message": "スペースで区切って、フォルダー名またはフォルダー内の単語の先頭を入力します。"
+  },
+  "quickMove.help.l1b": {
+    "message": "次の文字は単語の境界と見なされ、入力する必要はありません。"
+  },
+  "quickMove.help.l2a": {
+    "message": "祖父母/親/検索されたフォルダに入るには{1}と入力します。"
+  },
+  "quickMove.help.l2b": {
+    "message": "通常、親フォルダの最初の2文字で十分です。 この構文で新しいサブフォルダーを作成することもできます。"
+  },
+  "quickMove.help.l3a": {
+    "message": "間にあるフォルダをスキップするには、{1}と入力します。"
+  },
+  "quickMove.help.l3b": {
+    "message": "これは、より深く、より複雑な、または未知のフォルダー階層に役立ちます。"
+  },
+  "quickMove.help.l4a": {
+    "message": "{1}と入力して、最後に入力されたフォルダーのリストを取得します。 結果の数は、ライセンスレベルによって異なります。"
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "現在のメールを移動した後、次のメールを表示する"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "移動後、元のメールを再度開く"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "単一のメッセージタブ"
+  },
+  "registration.account": {
+    "message": "メールアカウント"
+  },
+  "registration.action.buy": {
+    "message": "$1 を購入"
+  },
+  "registration.action.buyDomain": {
+    "message": "ドメインライセンスを購入"
+  },
+  "registration.action.current": {
+    "message": "現在のエディション"
+  },
+  "registration.action.extend": {
+    "message": "ライセンスを延長"
+  },
+  "registration.action.renew": {
+    "message": "ライセンスを更新"
+  },
+  "registration.action.upgrade": {
+    "message": "Pro にアップグレード"
+  },
+  "registration.annual": {
+    "message": "年間ライセンス"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "購入通知を閉じる"
+  },
+  "registration.checkout.error": {
+    "message": "ショップを開けませんでした。もう一度お試しください。"
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}更新やアップグレードの特典を維持するため、このページから開いた商品で手続きを続けてください。{/bold}{i}別のライセンス{/i}を選ぶ場合は、ここからやり直してください。"
+  },
+  "registration.checkout.note": {
+    "message": "価格、税金、利用可能な割引はショップに表示されます。"
+  },
+  "registration.checkout.opened": {
+    "message": "ブラウザーでショップを開きました。このタブは開いたままにできます。"
+  },
+  "registration.checkout.preview": {
+    "message": "テストプレビュー：$2 の $1。ショップは開いていません。"
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "このアップグレード経路は確認が必要なため、購入手続きを有効にできません。ショップは開いていません。"
+  },
+  "registration.compare": {
+    "message": "Standard と Pro を比較"
+  },
+  "registration.contact.heading": {
+    "message": "どなたが使用するライセンスですか？"
+  },
+  "registration.contact.note": {
+    "message": "これらの情報は購入時に自動入力されます。ここで編集できます。"
+  },
+  "registration.date.expired": {
+    "message": "ライセンスは $1 に期限切れになりました。"
+  },
+  "registration.date.none": {
+    "message": "以下でライセンスを選ぶか、お持ちのキーを入力してください。"
+  },
+  "registration.date.valid": {
+    "message": "ライセンスは $1 まで有効です。"
+  },
+  "registration.development": {
+    "message": "登録テスト"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro は別個の個人用ライセンスであり、ドメインライセンスの更新ではありません。ドメインライセンスは、登録済みの会社ドメインのメールアカウントが設定された環境を、購入済みのユーザー数の範囲で対象とします。そのアカウントを使えない自宅の環境には、別途 Pro ライセンスを使用できます。チームの利用を継続するには、ドメイン欄の「ライセンスを更新」を選んでください。"
+  },
+  "registration.domain.seatsLink": {
+    "message": "ユーザーを追加"
+  },
+  "registration.domain.seatsNote": {
+    "message": "して、現在のドメインライセンスの利用人数を増やせます。"
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "利用人数を増やしますか？"
+  },
+  "registration.edition.domain": {
+    "message": "ドメイン"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "message": "メールアドレス"
+  },
+  "registration.email.domain": {
+    "message": "異なるルールが適用されます。設定するメールアドレスは、ライセンス対象のドメインに属している必要があります。"
+  },
+  "registration.email.domain.heading": {
+    "message": "ドメインライセンス"
+  },
+  "registration.email.help": {
+    "message": "ライセンス対象のメールアドレスについて"
+  },
+  "registration.email.help.close": {
+    "message": "メールアドレスのヘルプを閉じる"
+  },
+  "registration.email.help.heading": {
+    "message": "メールアドレスがライセンスになります"
+  },
+  "registration.email.hint": {
+    "message": "個人用ライセンスは複数の端末で使用できます。"
+  },
+  "registration.email.personal": {
+    "message": "ライセンスはこのメールアドレスに紐付けられています。複数の端末で使用できます。各端末の Thunderbird で、このアドレスをアカウントの{bold}既定の差出人情報{/bold}に設定してください。"
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard と Pro のライセンス"
+  },
+  "registration.email.rules": {
+    "message": "ライセンス対象アドレスのルール"
+  },
+  "registration.enterKey": {
+    "message": "ライセンスキーを入力…"
+  },
+  "registration.eyebrow": {
+    "message": "お使いのライセンス"
+  },
+  "registration.firstName": {
+    "message": "名"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "テスト用データ：購入操作ではプレビューのみ開きます。"
+  },
+  "registration.footer": {
+    "message": "Thunderbird のために。皆様の支援で。"
+  },
+  "registration.heading": {
+    "message": "フォルダー整理をもっと手軽に。"
+  },
+  "registration.identity.empty": {
+    "message": "情報を手動で入力"
+  },
+  "registration.identity.none": {
+    "message": "対象のメールアカウントが見つかりません。連絡先情報を手動で入力できます。"
+  },
+  "registration.lastName": {
+    "message": "姓"
+  },
+  "registration.learnMore": {
+    "message": "詳細…"
+  },
+  "registration.legacy.menu": {
+    "message": "旧ライセンス登録"
+  },
+  "registration.license.domain": {
+    "message": "ドメインライセンス"
+  },
+  "registration.license.edition": {
+    "message": "$1 ライセンス"
+  },
+  "registration.license.expiresIn": {
+    "message": "ライセンスは $1 日後に期限切れになります"
+  },
+  "registration.license.none": {
+    "message": "ライセンスが設定されていません"
+  },
+  "registration.load.error": {
+    "message": "ライセンスまたはアカウントを読み込めませんでした。このタブを再読み込みしてください。"
+  },
+  "registration.navigation": {
+    "message": "ライセンスのナビゲーション"
+  },
+  "registration.options": {
+    "message": "ライセンスの選択肢"
+  },
+  "registration.plan.domain.description": {
+    "message": "ライセンス対象ドメインのユーザーが、購入した席数の範囲で Pro 機能を利用できます。"
+  },
+  "registration.plan.domain.kicker": {
+    "message": "チーム向け"
+  },
+  "registration.plan.domain.scope": {
+    "message": "共通のドメイン向け"
+  },
+  "registration.plan.pro.description": {
+    "message": "毎日のメッセージ整理と検索をもっと速く。"
+  },
+  "registration.plan.pro.kicker": {
+    "message": "すべての機能"
+  },
+  "registration.plan.pro.scope": {
+    "message": "ご自身のメール向け"
+  },
+  "registration.plan.standard.description": {
+    "message": "お気に入りのフォルダーをいつでも手元に。"
+  },
+  "registration.plan.standard.kicker": {
+    "message": "日常に必要な機能"
+  },
+  "registration.plan.standard.scope": {
+    "message": "ご自身のメール向け"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}ドメインライセンス{/bold}{br}ドメインライセンスは{bold}手動で審査・発行されます{/bold}。更新すると、ライセンスがすでに期限切れの場合も、現在の有効期限に1年が追加されます。早めの更新を促すための仕組みで、最終的な有効期間は審査時に確認されます。"
+  },
+  "registration.renewal.entitlements": {
+    "message": "更新やアップグレードの特典は、ショップに渡されるライセンス情報に基づきます。ショップで商品を変更したり、セキュリティソフトがこの情報を削除したりすると、既存の権利が反映されない場合があります。"
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Pro へのアップグレードでは、Standard と Pro の価格の**差額だけ**をお支払いください。Standard ライセンスの期限がすでに切れていても、お支払日から丸1年間ご利用いただけます。"
+  },
+  "registration.renewal.hint": {
+    "message": "ライセンスの更新や延長は通常、新規購入よりお得です。"
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}個人用ライセンス{/bold}{br}新しいライセンスは支払いから 1 年間有効です。同じエディションを更新または延長すると、支払いから 1 年間、または現在の有効期限から 1 年間のうち、長い方の期間が適用されます。"
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}既存のライセンス{/bold}{br}新しい有効期限を計算するため、現在のライセンスがショップに渡されます。"
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Pro へのアップグレードでは、Standard と Pro の価格の**差額だけ**をお支払いください。お支払日から丸1年間ご利用いただけます。"
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Standard から Pro へのアップグレード{/bold}{br}Pro ライセンスはアップグレードの支払い日から 1 年間有効です。Standard ライセンスの残り期間は加算されません。"
+  },
+  "registration.selection.heading": {
+    "message": "探す時間をもっと短く。"
+  },
+  "registration.selection.intro": {
+    "message": "基本機能には Standard、すべての機能には Pro、組織のユーザーには Domain をお選びください。"
+  },
+  "registration.selection.label": {
+    "message": "ライセンスの選択"
+  },
+  "registration.settings.error": {
+    "message": "ライセンス設定を開けませんでした。もう一度お試しください。"
+  },
+  "registration.showLess": {
+    "message": "折りたたむ"
+  },
+  "registration.status.Empty": {
+    "message": "無料エディション"
+  },
+  "registration.status.Expired": {
+    "message": "期限切れ"
+  },
+  "registration.status.Invalid": {
+    "message": "無効なライセンス"
+  },
+  "registration.status.MailDifferent": {
+    "message": "ライセンスのメールアドレスが一致しません"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "ライセンス対象アドレスが未設定"
+  },
+  "registration.status.NotValidated": {
+    "message": "未検証"
+  },
+  "registration.status.Unknown": {
+    "message": "ライセンスを取得できません"
+  },
+  "registration.status.Valid": {
+    "message": "有効"
+  },
+  "registration.subtitle": {
+    "message": "使い方に合ったライセンスをお選びください。"
+  },
+  "registration.terms.annual": {
+    "message": "ライセンスの有効期間は 1 年です。期限切れのライセンスを更新、または有効なライセンスを延長して、選んだエディションを引き続き使用できます。"
+  },
+  "registration.terms.annual.heading": {
+    "message": "1 年ずつ"
+  },
+  "registration.terms.back": {
+    "message": "ライセンスの選択"
+  },
+  "registration.terms.checkout": {
+    "message": "ライセンスを選ぶとショップへ進みます。価格はエディション、国、税金、適用される割引によって異なります。"
+  },
+  "registration.terms.checkout.heading": {
+    "message": "ブラウザーで購入"
+  },
+  "registration.terms.domain": {
+    "message": "Domain ライセンスは、対象ドメインのメールアドレスを持つユーザーを購入した席数まで対象とします。"
+  },
+  "registration.terms.draft": {
+    "message": "規約の草案：試用と期限切れ後の機能動作の詳細は、リリース前に確認します。"
+  },
+  "registration.terms.edition": {
+    "message": "Standard と Pro は利用できる機能が異なります。エディションを比較してお選びください。"
+  },
+  "registration.terms.edition.heading": {
+    "message": "エディションを選択"
+  },
+  "registration.terms.email": {
+    "message": "個人用ライセンスはメールアドレスに紐付けられています。各 Thunderbird 環境で、ライセンス対象アドレスがアカウントの**既定の差出人情報**として設定されていれば、複数の環境で使用できます。"
+  },
+  "registration.terms.email.heading": {
+    "message": "あなたのメール、あなたのライセンス"
+  },
+  "registration.terms.heading": {
+    "message": "ライセンスの仕組み。"
+  },
+  "registration.terms.hide": {
+    "message": "🡇 ライセンスの選択に進む 🡇"
+  },
+  "registration.terms.intro": {
+    "message": "{+extensionName} は長年 Thunderbird の進化に対応してきました。ライセンスは継続的な開発、新機能、互換性の更新を支えます。各ライセンスは1年間有効で、この取り組みを支援します。"
+  },
+  "registration.terms.label": {
+    "message": "ライセンス規約"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "ライセンスは**自動更新されません**。有効期限が近づくと {+extensionName} がお知らせします。"
+  },
+  "registration.terms.otherAccounts": {
+    "message": "ライセンス対象の機能は、Thunderbird の他のすべてのメールアカウントでも使えます。別のライセンスは不要です。"
+  },
+  "registration.terms.referrer": {
+    "message": "既存のライセンスがある場合、適用条件を確認するためショップに送信されます。"
+  },
+  "registration.terms.savings": {
+    "message": "**Pro で始めて、翌年からお得に。**Pro ライセンスの更新や延長は、新規購入よりも大幅に安くなります。"
+  },
+  "registration.terms.show": {
+    "message": "ライセンス規約を表示 🡇"
+  },
+  "registration.terms.support": {
+    "message": "皆様の支援が、開発、互換性の更新、修正を支えます。"
+  },
+  "registration.test.menu": {
+    "message": "ウェブショップでライセンス登録"
+  },
+  "registration.test.note": {
+    "message": "購入手続きはブラウザーで開きます。"
+  },
+  "registration.title": {
+    "message": "{+extensionName} · お使いのライセンス"
+  },
   "renew-your-license": {
     "message": "ライセンスを更新する。"
   },
@@ -1912,6 +2275,24 @@
       "reduction": {
         "content": "$2",
         "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "$addon$の互換性を維持するのに役立ちます",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b}親愛なる{name} {/b}、ライセンスを取得して $addon$ をサポートしてください。 Thunderbirdのコードは絶えず進化しており、それに追いつくために{b}あなたの助け{/b}が必要です！",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
       }
     }
   },
@@ -1943,24 +2324,6 @@
   },
   "special-offer-upgrade-condition": {
     "message": "Standardからアップグレードすると、以前のライセンスの有効期限に関係なく、購入日から1年間のライセンス期間が与えられます。"
-  },
-  "special-offer-head": {
-    "message": "$addon$の互換性を維持するのに役立ちます",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{b}親愛なる{name} {/b}、ライセンスを取得して $addon$ をサポートしてください。 Thunderbirdのコードは絶えず進化しており、それに追いつくために{b}あなたの助け{/b}が必要です！",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
   },
   "support-preference": {
     "message": "これは、$addonName$ をサポートするために推奨される方法です。",
@@ -2054,7 +2417,10 @@
   "whats-new-maintenance": {
     "message": "メンテナンス更新 $ver$。直前のリリースで発生した、緊急対応が必要な不具合を修正するリリースです。",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "window-title": {

@@ -2031,11 +2031,9 @@
     "message": "Mail Tab"
   },
   "registration.account": {
-    "description": "Adapted from legacy registration entity: account.label.",
     "message": "E-Mail-Konto"
   },
   "registration.action.buy": {
-    "description": "Adapted from legacy registration entities: buyStandardLicense.button, buyPremiumLicense.button, buyDomainLicense.button. $1 is the localized edition name. Original entities remain in use by legacy UI.",
     "message": "$1 kaufen"
   },
   "registration.action.buyDomain": {
@@ -2045,19 +2043,15 @@
     "message": "Aktuelle Edition"
   },
   "registration.action.extend": {
-    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.",
     "message": "Lizenz verlängern"
   },
   "registration.action.renew": {
-    "description": "Adapted from legacy registration entity: notification.premium.btn.renewLicense.",
     "message": "Lizenz erneuern"
   },
   "registration.action.upgrade": {
-    "description": "Adapted from legacy registration entity: notification.premium.btn.upgrade.",
     "message": "Upgrade auf Pro"
   },
   "registration.annual": {
-    "description": "Adapted from legacy registration entity: yearlyLicense.title.",
     "message": "Jahreslizenzen"
   },
   "registration.brand": {
@@ -2073,7 +2067,6 @@
     "message": "{bold}Um Ihre Erneuerungs- oder Upgrade-Vorteile zu behalten, fahren Sie mit dem von dieser Seite aus geöffneten Produkt fort.{/bold} Wenn Sie eine {i}andere Lizenz{/i} wählen möchten, beginnen Sie einfach wieder hier."
   },
   "registration.checkout.note": {
-    "description": "Adapted from legacy registration entity: pricing.section.hint.",
     "message": "Preise, Steuern und verfügbare Rabatte werden im Shop angezeigt."
   },
   "registration.checkout.opened": {
@@ -2086,7 +2079,6 @@
     "message": "Dieser Upgrade-Kaufweg muss bestätigt werden, bevor der Kauf freigeschaltet werden kann. Es wurde kein Shop geöffnet."
   },
   "registration.compare": {
-    "description": "Adapted from legacy registration entity: licenseComparison.",
     "message": "Standard und Pro vergleichen"
   },
   "registration.contact.heading": {
@@ -2096,14 +2088,12 @@
     "message": "Diese Angaben werden beim Kauf im Shop vorausgefüllt. Sie können sie hier bearbeiten."
   },
   "registration.date.expired": {
-    "description": "Adapted from legacy registration entity: licenseValidation.expiredDate.",
     "message": "Ihre Lizenz ist am $1 abgelaufen."
   },
   "registration.date.none": {
     "message": "Wählen Sie unten eine Lizenz oder geben Sie Ihren vorhandenen Schlüssel ein."
   },
   "registration.date.valid": {
-    "description": "Adapted from legacy registration entity: label.licenseValid.",
     "message": "Ihre Lizenz ist gültig bis $1."
   },
   "registration.development": {
@@ -2131,11 +2121,9 @@
     "message": "Standard"
   },
   "registration.email": {
-    "description": "Adapted from legacy registration entity: email.label.",
     "message": "E-Mail-Adresse"
   },
   "registration.email.domain": {
-    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
     "message": "Hier gelten andere Regeln: Die eingerichtete E-Mail-Adresse muss zur lizenzierten Domäne gehören."
   },
   "registration.email.domain.heading": {
@@ -2154,7 +2142,6 @@
     "message": "Ihre persönliche Lizenz gilt auf mehreren Geräten."
   },
   "registration.email.personal": {
-    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
     "message": "Ihre Lizenz ist an diese E-Mail-Adresse gebunden. Sie können sie auf mehreren Geräten verwenden. Richten Sie diese Adresse auf jedem Gerät in Thunderbird als {bold}Standardidentität{/bold} eines Kontos ein."
   },
   "registration.email.personal.heading": {
@@ -2164,14 +2151,12 @@
     "message": "Regeln zur lizenzierten E-Mail-Adresse"
   },
   "registration.enterKey": {
-    "description": "Adapted from legacy registration entity: enterLicenseKey.button.",
     "message": "Lizenzschlüssel eingeben…"
   },
   "registration.eyebrow": {
     "message": "Ihre Lizenz"
   },
   "registration.firstName": {
-    "description": "Adapted from legacy registration entity: firstName.label.",
     "message": "Vorname"
   },
   "registration.fixture.checkoutNote": {
@@ -2190,7 +2175,6 @@
     "message": "Keine geeigneten E-Mail-Konten gefunden. Sie können Ihre Kontaktdaten manuell eingeben."
   },
   "registration.lastName": {
-    "description": "Adapted from legacy registration entity: lastName.label.",
     "message": "Nachname"
   },
   "registration.learnMore": {
@@ -2221,7 +2205,6 @@
     "message": "Lizenzoptionen"
   },
   "registration.plan.domain.description": {
-    "description": "Adapted from legacy registration entity: buyDomainLicense.instruct.",
     "message": "Pro-Funktionen für Benutzer Ihrer lizenzierten Domäne im Rahmen der erworbenen Plätze."
   },
   "registration.plan.domain.kicker": {
@@ -2231,7 +2214,6 @@
     "message": "Für eine gemeinsame Domäne"
   },
   "registration.plan.pro.description": {
-    "description": "Adapted from legacy registration entity: buyPremiumLicense.instruct. Translate ?put email to work? by meaning: making email more useful and productive.",
     "message": "Organisieren und finden Sie Nachrichten jeden Tag schneller."
   },
   "registration.plan.pro.kicker": {
@@ -2241,7 +2223,6 @@
     "message": "Für Ihre eigenen E-Mails"
   },
   "registration.plan.standard.description": {
-    "description": "Adapted from legacy registration entity: buyStandardLicense.instruct.",
     "message": "Halten Sie Ihre Lieblingsordner immer griffbereit."
   },
   "registration.plan.standard.kicker": {
@@ -2260,7 +2241,6 @@
     "message": "Steigen Sie auf Pro um und zahlen Sie **nur die Differenz** zwischen dem Standard- und dem Pro-Preis – Sie erhalten ein volles Jahr ab dem Zahlungstag, auch wenn Ihre Standard-Lizenz bereits abgelaufen ist."
   },
   "registration.renewal.hint": {
-    "description": "Adapted from legacy registration entity: notification.premium.btn.extendLicense.tooltip.",
     "message": "Die Erneuerung oder Verlängerung Ihrer Lizenz kostet in der Regel weniger als eine neue Lizenz."
   },
   "registration.renewal.personal": {
@@ -2327,14 +2307,12 @@
     "message": "Lizenzauswahl"
   },
   "registration.terms.checkout": {
-    "description": "Adapted from legacy registration entity: pricing.section.",
     "message": "Wählen Sie eine Lizenz, um zum Shop zu gelangen. Der Preis hängt von Edition, Land, Steuern und möglichen Rabatten ab."
   },
   "registration.terms.checkout.heading": {
     "message": "Kauf in Ihrem Browser"
   },
   "registration.terms.domain": {
-    "description": "Adapted from legacy registration entity: domainLicense.instruct.",
     "message": "Eine Domänenlizenz gilt für Benutzer mit E-Mail-Adressen der lizenzierten Domäne, bis zur Anzahl der erworbenen Plätze."
   },
   "registration.terms.draft": {
@@ -2347,7 +2325,6 @@
     "message": "Wählen Sie Ihre Edition"
   },
   "registration.terms.email": {
-    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm.",
     "message": "Eine persönliche Lizenz ist an Ihre E-Mail-Adresse gebunden. Sie können sie in mehreren Thunderbird-Installationen verwenden, wenn die lizenzierte Adresse in jeder Installation als **Standardidentität** eines Kontos eingerichtet ist."
   },
   "registration.terms.email.heading": {
@@ -2357,11 +2334,9 @@
     "message": "So funktioniert Ihre Lizenz."
   },
   "registration.terms.hide": {
-    "description": "Adapted from legacy registration entity: licenseTerms.hide.",
     "message": "🡇 Weiter zur Lizenzauswahl 🡇"
   },
   "registration.terms.intro": {
-    "description": "Adapted from legacy registration entity: licenseTypes. $1 is the first-release year from add-on metadata; {+extensionName} resolves the existing add-on name entity.",
     "message": "{+extensionName} hält seit Jahren mit Thunderbird Schritt. Lizenzen finanzieren die laufende Entwicklung, neue Funktionen und Kompatibilitätsupdates. Jede Lizenz gilt ein Jahr und unterstützt die Arbeit, die nötig ist, um mit Thunderbird Schritt zu halten."
   },
   "registration.terms.label": {
@@ -2371,7 +2346,6 @@
     "message": "Lizenzen werden **nicht automatisch erneuert**. {+extensionName} erinnert Sie vor Ablauf Ihrer Lizenz."
   },
   "registration.terms.otherAccounts": {
-    "description": "Adapted from legacy registration entity: yearlyLicense.usageTerm1.",
     "message": "Die lizenzierten Funktionen stehen auch allen Ihren anderen E-Mail-Konten in Thunderbird zur Verfügung. Dafür sind keine separaten Lizenzen nötig."
   },
   "registration.terms.referrer": {
@@ -2381,11 +2355,9 @@
     "message": "**Starten Sie mit Pro und sparen Sie in den Folgejahren.** Die Erneuerung oder Verlängerung Ihrer Pro-Lizenz kostet deutlich weniger als eine neue Lizenz."
   },
   "registration.terms.show": {
-    "description": "Adapted from legacy registration entity: licenseTerms.show.",
     "message": "Lizenzbedingungen anzeigen 🡇"
   },
   "registration.terms.support": {
-    "description": "Adapted from legacy registration entity: licenseTypes.",
     "message": "Ihre Unterstützung hilft, Entwicklung, Kompatibilitätsupdates und Fehlerbehebungen zu finanzieren."
   },
   "registration.test.menu": {
@@ -2395,7 +2367,6 @@
     "message": "Der Shop öffnet sich in Ihrem Browser."
   },
   "registration.title": {
-    "description": "Adapted from legacy registration entity: licenseWindow.title.",
     "message": "{+extensionName} · Ihre Lizenz"
   },
   "renew-your-license": {

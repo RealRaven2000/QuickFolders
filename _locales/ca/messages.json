@@ -2,6 +2,50 @@
   "_l10nstatus": {
     "message": "SPLASH+UI"
   },
+  "accessibility.count.total": {
+    "message": "$count$ missatges en total",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ en total a les subcarpetes",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ missatges no llegits",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ no llegits a les subcarpetes",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Elimina l'ordre 'Personalitza la icona' del menú contextual de la carpeta."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Amaga les informacions emergents a les pestanyes"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioritza els marcadors de QuickFolders als resultats de cerca."
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "Mostra un element separat per la carpeta superior al submenú"
+  },
   "account.label": {
     "message": "Trieu un compte:"
   },
@@ -21,50 +65,6 @@
   },
   "addon-authors-struggle": {
     "message": "Per continuar sent útils, els desenvolupadors de complements ara han de finançar els recursos necessaris per corregir i reescriure perquè els nostres usuaris es puguin beneficiar de la funcionalitat que presentem a la taula."
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ missatges no llegits",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "$count$ no llegits a les subcarpetes",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "$count$ missatges en total",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "$count$ en total a les subcarpetes",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "Elimina l'ordre 'Personalitza la icona' del menú contextual de la carpeta."
-  },
-  "accessibility.hideTooltips": {
-    "message": "Amaga les informacions emergents a les pestanyes"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Prioritza els marcadors de QuickFolders als resultats de cerca."
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "Mostra un element separat per la carpeta superior al submenú"
   },
   "btn-extend-license": {
     "message": "Vull ampliar la llicència un any"
@@ -141,6 +141,9 @@
   "commands.toggleFolderTree": {
     "message": "Commuta la visibilitat de l'arbre de carpetes"
   },
+  "configurable.tooltip": {
+    "message": "Feu clic a la roda de configuració per a més opcions de configuració"
+  },
   "cost-of-independence": {
     "message": "El desenvolupament de programari costa temps i diners: a diferència de moltes aplicacions de plataformes, els complements no són escrits per grans empreses, ni Mozilla els patrocina de cap manera."
   },
@@ -196,8 +199,11 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "Marqueu vostres carpetes de correu preferides al Thunderbird."
   },
-  "firstName.label": {
-    "message": "Nom:"
+  "findRelated.btn.label": {
+    "message": "Cercar correus relacionats"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Cerca correus similars basats en el correu seleccionat i en patrons de cerca definits per l'usuari"
   },
   "findRelated.btnAdd": {
     "message": "Afegir"
@@ -208,32 +214,26 @@
   "findRelated.btnUpdate": {
     "message": "Actualitzar"
   },
-  "findRelated.btn.label": {
-    "message": "Cercar correus relacionats"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "Cerca correus similars basats en el correu seleccionat i en patrons de cerca definits per l'usuari"
+  "findRelated.entries": {
+    "message": "Patrons de cerca"
   },
   "findRelated.menu.configure": {
     "message": "Configura els patrons de cerca…"
   },
-  "findRelated.prompt.title": {
-    "message": "Cercar correus relacionats: Cerca per patró"
-  },
-  "findRelated.prompt.enterPattern": {
-    "message": "Per utilitzar aquesta funció, només cal que configureu almenys un patró de cerca."
-  },
-  "findRelated.entries": {
-    "message": "Patrons de cerca"
-  },
-  "findRelated.prompt.selectPattern": {
-    "message": "Feu clic dret sobre [Trobar correus relacionats] per seleccionar un patró de cerca. Això executa la cerca i desa la seva configuració per a la propera vegada que feu clic al botó."
+  "findRelated.options.goNextResetsSearch": {
+    "message": "El botó 'Mou a l'email següent' esborra la cerca actual."
   },
   "findRelated.options.title": {
     "message": "Opcions"
   },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "El botó 'Mou a l'email següent' esborra la cerca actual."
+  "findRelated.prompt.enterPattern": {
+    "message": "Per utilitzar aquesta funció, només cal que configureu almenys un patró de cerca."
+  },
+  "findRelated.prompt.selectPattern": {
+    "message": "Feu clic dret sobre [Trobar correus relacionats] per seleccionar un patró de cerca. Això executa la cerca i desa la seva configuració per a la propera vegada que feu clic al botó."
+  },
+  "findRelated.prompt.title": {
+    "message": "Cercar correus relacionats: Cerca per patró"
   },
   "findRelated.searchGroup": {
     "message": "Grup de cerca (0 per coincidència completa):"
@@ -241,26 +241,29 @@
   "findRelated.searchPattern": {
     "message": "Patró de cerca:"
   },
+  "findRelated.term.body": {
+    "message": "Cos"
+  },
   "findRelated.term.menutitle": {
     "message": "Títol:"
-  },
-  "findRelated.term.subject": {
-    "message": "Assumpte"
-  },
-  "findRelated.term.sender": {
-    "message": "Remitent"
   },
   "findRelated.term.recipients": {
     "message": "Destinatari(s)"
   },
-  "findRelated.term.body": {
-    "message": "Cos"
+  "findRelated.term.sender": {
+    "message": "Remitent"
+  },
+  "findRelated.term.subject": {
+    "message": "Assumpte"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Què cercar a les correus relacionats:"
   },
   "findRelated.terms.selectedFields": {
     "message": "Obtenir cadena de cerca de:"
   },
-  "findRelated.terms.searchCriteriaFields": {
-    "message": "Què cercar a les correus relacionats:"
+  "firstName.label": {
+    "message": "Nom:"
   },
   "freeLicense": {
     "message": "Si recentment heu fet una donació al projecte QuickFolders o heu fet una contribució amb la vostra feina, com ara traduïnt, podrieu demanar una llicència gratuita. Contacteu amb mi des de la pestanya de Suport, a les opcions de QuickFolders."
@@ -306,6 +309,9 @@
   "intro": {
     "message": "La llicència anual de QuickFolders Pro, us dona accés a totes les característiques premium durant un any. També ens permet donar suport i fer crèixer el producte més enllà i convertir-lo en una cosa encara més impressionant."
   },
+  "keyshortcuts.news": {
+    "message": "Actualment, Thunderbird utilitza aquestes tecles com a dreceres integrades, però les pots alliberar utilitzant l'add-on tbkeys lite. Fes clic al botó (?) per obtenir més informació:"
+  },
   "label-remind-me": {
     "message": "Torna'm a recordar d'aquí a $countDays$ dies.",
     "placeholders": {
@@ -315,14 +321,35 @@
       }
     }
   },
-  "keyshortcuts.news": {
-    "message": "Actualment, Thunderbird utilitza aquestes tecles com a dreceres integrades, però les pots alliberar utilitzant l'add-on tbkeys lite. Fes clic al botó (?) per obtenir més informació:"
-  },
   "lastName.label": {
     "message": "Cognoms:"
   },
   "lblCustomPalette": {
     "message": "Paleta personalitzada:"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders necessita una llicència Pro per admetre més de $maxTabs$ pestanyes.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "Funció Pro amb llicència estàndard restringida. Descobrir més…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Versió sense llicència: funció restringida. Descobrir més…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders necessita una llicència per admetre més de $maxTabs$ pestanyes.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -343,63 +370,44 @@
   "licenseWindow.title": {
     "message": "Llicència QuickFolders Pro"
   },
-  "license_restriced.std": {
-    "message": "Funció Pro amb llicència estàndard restringida. Descobrir més…"
+  "message.browserLaunchFailed": {
+    "message": "{p} No hem pogut obrir el navegador web predeterminat. Podeu copiar l'adreça següent i enganxar-la a la barra d'adreces del navegador. {/p} Trobareu més detalls sobre l'error a la consola d'errors de JavaScript."
   },
-  "license_restriced.unpaid": {
-    "message": "Versió sense llicència: funció restringida. Descobrir més…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — Error del navegador"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders necessita una llicència Pro per admetre més de $maxTabs$ pestanyes.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "Adreça web (Ctrl+C per copiar):"
   },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders necessita una llicència per admetre més de $maxTabs$ pestanyes.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.btn.accept": {
+    "message": "D'acord"
   },
-  "message.browserLaunchFailed": { "message": "{p} No hem pogut obrir el navegador web predeterminat. Podeu copiar l'adreça següent i enganxar-la a la barra d'adreces del navegador. {/p} Trobareu més detalls sobre l'error a la consola d'errors de JavaScript." },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — Error del navegador" },
-  "message.browserLaunchFailed.url": { "message": "Adreça web (Ctrl+C per copiar):" },
-  "message.btn.accept": { "message": "D'acord" },
-  "message.btn.cancel": { "message": "Cancel·la" },
-  "message.btn.no": { "message": "No" },
-  "message.btn.yes": { "message": "Sí" },
-  "message.features": { "message": "Compara característiques…" },
-  "message.placeholder": { "message": "Falta el missatge." },
-  "message.licenseScreen": { "message": "Mostra opcions de llicència…" },
-  "message.linkInTab": { "message": "(Enllaç obert en una pestanya)" },
+  "message.btn.cancel": {
+    "message": "Cancel·la"
+  },
+  "message.btn.no": {
+    "message": "No"
+  },
+  "message.btn.yes": {
+    "message": "Sí"
+  },
+  "message.features": {
+    "message": "Compara característiques…"
+  },
+  "message.licenseScreen": {
+    "message": "Mostra opcions de llicència…"
+  },
+  "message.linkInTab": {
+    "message": "(Enllaç obert en una pestanya)"
+  },
+  "message.placeholder": {
+    "message": "Falta el missatge."
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla només proporciona una plataforma bàsica per lliurar-vos el nostre programari als vostres usuaris finals. Si hem de demanar pagament o assistència als nostres usuaris, no podem fer-ho des de addons.thunderbird.net: no és una \"botiga d'aplicacions\" amb taulers de pagament integrats o gestió de llicències com iTunes o Google Play."
   },
-  "notificationTitle": {
-    "description": "Title of the click notification.",
-    "message": "Feu clic a notificació"
-  },
   "newsHead": {
     "message": "Últimes notícies"
-  },
-  "newsMsgEsr140": {
-    "message": "{P}{b} Pròximament a la propera gran versió {/b}: Thunderbird aviat us demanarà que trieu el vostre camí d’actualització preferit: la via anual ESR o les versions mensuals més ràpides. {a release}Més informació sobre el nou model de llançament{/a}.{U} {L}La versió ESR es mantindrà a la v140, augmentant només els números de versió menors i incloent només correccions de seguretat i errors, cosa que sovint és preferible per a entorns corporatius.{/L} {L}El cicle de llançament mensual oferirà noves funcions i actualitzacions d’interfície a mesura que es desenvolupin. Comproveu si els vostres complements actuals admeten aquest model de llançament. Per ajudar-vos, podeu instal·lar el {a compatCheck}Comprovador de compatibilitat de complements{/a}.{/L} {/U}{/P}{P} Ens complau anunciar que QuickFolders és totalment compatible amb Thunderbird 140, la propera versió de Suport Estès (ESR). Això significa fiabilitat contínua i tranquil·litat durant el proper cicle de suport principal.{/P}{P} QuickFolders continuarà donant suport als usuaris de Thunderbird 115 i superiors per ara. Durant l’any vinent, a mesura que afegim noves funcions, el suport per a Thunderbird 115 pot ser eliminat a favor de Thunderbird 128 i versions més noves.{/P}{P} Supervisem contínuament els canvis de Thunderbird per garantir que QuickFolders segueixi sent compatible i fiable, independentment del camí d’actualització que trieu.{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} S’acosta un canvi important a Thunderbird {/b}: A partir de Thunderbird 153, els complements experimentals com {+extensionName} ja no seran compatibles a les versions Release. Thunderbird està {a apiwork}ampliant activament les API de WebExtension{/a} per reduir la dependència de mecanismes d’extensions experimentals. A partir de la {emph}versió 153{/emph}, els complements heretats requereixen el {+newsMsgEsr153.ESR} (ESR).<ul><li>El canal ESR continua sent l’opció recomanada per a usuaris que depenen de complements avançats o experimentals.</li><li>El canal Release se centra en complements WebExtension estables i completament compatibles.</li><li>El canal Beta es pot continuar utilitzant per a proves i verificacions de compatibilitat abans de les versions ESR.</li></ul></P>{P}{+extensionName} continua sent completament compatible amb Thunderbird ESR i es manté activament en les versions Release compatibles sempre que sigui possible des del punt de vista tècnic.{/P}{P}Continuem monitoritzant de prop els canvis a Thunderbird per garantir la compatibilitat i una experiència estable a totes les versions compatibles.{/P}"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (versió de suport estès de Thunderbird)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Proper canvi en el suport dels complements de Thunderbird{/b}: Un canvi anunciat anteriorment que afectava els complements experimentals al canal Release s’ha ajornat fins al següent cicle ESR (ESR 2027). Aquest temps addicional s’utilitzarà per millorar la cobertura de les API i refinar la transició amb la comunitat de complements.{/P}{P}En aquest moment no cal cap acció. {+extensionName} continua funcionant tant a Release com a ESR de Thunderbird on sigui compatible.{/P}{P}Continuarem supervisant els canvis de la plataforma i proporcionarem indicacions si en algun moment és necessari fer una migració.{/P}{P}Encara que no és obligatori canviar al canal ESR, alguns usuaris que depenen molt de funcionalitats experimentals poden preferir-lo per entorns amb menys canvis i APIs més estables, ja que les interfícies experimentals poden veure’s més afectades pels canvis interns de la plataforma.{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} Totes les noves funcions, correccions d’errors i compatibilitat a llarg termini són possibles gràcies al vostre suport.{/P}{P class=specialOffer} Per ajudar a mantenir el desenvolupament de QuickFolders, podeu renovar la vostra llicència amb descompte fins a {salesEnd}.{/P}{P class=bottomhint}🡇 Trieu una de les opcions següents per obtenir més informació 🡇 {/P}"
@@ -413,6 +421,19 @@
   "newsMsg.license.valid": {
     "message": "{P} Gràcies per donar suport a QuickFolders mitjançant una llicència Pro — això fa possibles totes les noves funcions, correccions d’errors i compatibilitat a llarg termini.{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b} Pròximament a la propera gran versió {/b}: Thunderbird aviat us demanarà que trieu el vostre camí d’actualització preferit: la via anual ESR o les versions mensuals més ràpides. {a release}Més informació sobre el nou model de llançament{/a}.{U} {L}La versió ESR es mantindrà a la v140, augmentant només els números de versió menors i incloent només correccions de seguretat i errors, cosa que sovint és preferible per a entorns corporatius.{/L} {L}El cicle de llançament mensual oferirà noves funcions i actualitzacions d’interfície a mesura que es desenvolupin. Comproveu si els vostres complements actuals admeten aquest model de llançament. Per ajudar-vos, podeu instal·lar el {a compatCheck}Comprovador de compatibilitat de complements{/a}.{/L} {/U}{/P}{P} Ens complau anunciar que QuickFolders és totalment compatible amb Thunderbird 140, la propera versió de Suport Estès (ESR). Això significa fiabilitat contínua i tranquil·litat durant el proper cicle de suport principal.{/P}{P} QuickFolders continuarà donant suport als usuaris de Thunderbird 115 i superiors per ara. Durant l’any vinent, a mesura que afegim noves funcions, el suport per a Thunderbird 115 pot ser eliminat a favor de Thunderbird 128 i versions més noves.{/P}{P} Supervisem contínuament els canvis de Thunderbird per garantir que QuickFolders segueixi sent compatible i fiable, independentment del camí d’actualització que trieu.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (versió de suport estès de Thunderbird)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Proper canvi en el suport dels complements de Thunderbird{/b}: Un canvi anunciat anteriorment que afectava els complements experimentals al canal Release s’ha ajornat fins al següent cicle ESR (ESR 2027). Aquest temps addicional s’utilitzarà per millorar la cobertura de les API i refinar la transició amb la comunitat de complements.{/P}{P}En aquest moment no cal cap acció. {+extensionName} continua funcionant tant a Release com a ESR de Thunderbird on sigui compatible.{/P}{P}Continuarem supervisant els canvis de la plataforma i proporcionarem indicacions si en algun moment és necessari fer una migració.{/P}{P}Encara que no és obligatori canviar al canal ESR, alguns usuaris que depenen molt de funcionalitats experimentals poden preferir-lo per entorns amb menys canvis i APIs més estables, ja que les interfícies experimentals poden veure’s més afectades pels canvis interns de la plataforma.{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} S’acosta un canvi important a Thunderbird {/b}: A partir de Thunderbird 153, els complements experimentals com {+extensionName} ja no seran compatibles a les versions Release. Thunderbird està {a apiwork}ampliant activament les API de WebExtension{/a} per reduir la dependència de mecanismes d’extensions experimentals. A partir de la {emph}versió 153{/emph}, els complements heretats requereixen el {+newsMsgEsr153.ESR} (ESR).<ul><li>El canal ESR continua sent l’opció recomanada per a usuaris que depenen de complements avançats o experimentals.</li><li>El canal Release se centra en complements WebExtension estables i completament compatibles.</li><li>El canal Beta es pot continuar utilitzant per a proves i verificacions de compatibilitat abans de les versions ESR.</li></ul></P>{P}{+extensionName} continua sent completament compatible amb Thunderbird ESR i es manté activament en les versions Release compatibles sempre que sigui possible des del punt de vista tècnic.{/P}{P}Continuem monitoritzant de prop els canvis a Thunderbird per garantir la compatibilitat i una experiència estable a totes les versions compatibles.{/P}"
+  },
   "newsSection": {
     "message": "{P}{b} Pròximament a la propera gran versió {/b}: Thunderbird aviat us demanarà que trieu el vostre camí d’actualització preferit: la via anual ESR o les versions mensuals més ràpides. {a release}Més informació sobre el nou model de llançament{/a}.{U} {L}La versió ESR es mantindrà a la v140, augmentant només els números de versió menors i incloent només correccions de seguretat i errors, cosa que sovint és preferible per a entorns corporatius.{/L} {L}El cicle de llançament mensual oferirà noves funcions i actualitzacions d’interfície a mesura que es desenvolupin. Comproveu si els vostres complements actuals admeten aquest model de llançament. Per ajudar-vos, podeu instal·lar el {a compatCheck}Comprovador de compatibilitat de complements{/a}.{/L} {/U}",
     "placeholders": {
@@ -422,14 +443,18 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}{b}Important:{/b} Thunderbird continua el seu cicle de llançaments mensual. {/P}{P} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a $appversion$. Això va ser causat per informació de compatibilitat en memòria cau a Thunderbird, que de vegades no es refresca correctament. He creat un bug a Thunderbird per solucionar-ho: [Bugzilla 1986027]{/P}{P} Tingueu la seguretat que QuickFolders suporta completament tant els canals mensuals com ESR (140.*), i podeu continuar treballant sense interrupcions. {/P}"
-  },
   "newsSection.important": {
     "message": "{P}Important per als usuaris del canal de llançament ({emph}154 i posteriors{/emph}): Amb el nou cicle de llançament de 2 setmanes de Thunderbird, hi ha un risc elevat d'errors inesperats com [issue 690]. Tot i que provo regularment {+extensionName} amb les compilacions diàries, les correccions oportunes depenen de l'{b}informe primerenc{/b} dels usuaris de llançament. Seguiu el {a href='https://github.com/RealRaven2000/QuickFolders/issues'}rastrejador de problemes{/a} i informeu de qualsevol error ràpidament per mantenir la compatibilitat.{/P}"
   },
+  "newsSection.intro": {
+    "message": "{P}{b}Important:{/b} Thunderbird continua el seu cicle de llançaments mensual. {/P}{P} Alguns usuaris poden haver vist un avís fals d'incompatibilitat després d'actualitzar Thunderbird a $appversion$. Això va ser causat per informació de compatibilitat en memòria cau a Thunderbird, que de vegades no es refresca correctament. He creat un bug a Thunderbird per solucionar-ho: [Bugzilla 1986027]{/P}{P} Tingueu la seguretat que QuickFolders suporta completament tant els canals mensuals com ESR (140.*), i podeu continuar treballant sense interrupcions. {/P}"
+  },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že veškerá práce na QuickFolders a bezplatná podpora jsou financovány výhradně z prodeje licencí, prosím zvažte koupi licence nebo prodloužení vaší stávající."
+  },
+  "notificationTitle": {
+    "description": "Title of the click notification.",
+    "message": "Feu clic a notificació"
   },
   "ongoing-work": {
     "message": "Per mantenir $addonName$ sincronitzat amb les versions mensuals de Thunderbird, hem de revisar constantment possibles errors i carregar versions adaptades. Ajudeu-nos amb això quan hàgiu provat la funcionalitat i esteu segurs que millora la vostra productivitat!",
@@ -464,9 +489,6 @@
   "qf.accounts": {
     "message": "Comptes"
   },
-  "qf.alert.pasteFolders.formatErr": {
-    "message": "No s'han pogut crear les pestanyes. Vegeu eines/consola d'errors per a més detalls."
-  },
   "qf.alert.bookmarks.unsupportedType": {
     "message": "Tipus de marcador actualment no compatible: $bookmarkType$ {NewLine}Seleccioneu almenys un missatge o simplement arrossegueu els correus electrònics sobre el botó",
     "placeholders": {
@@ -474,6 +496,9 @@
         "content": "$1"
       }
     }
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "No s'han pogut crear les pestanyes. Vegeu eines/consola d'errors per a més detalls."
   },
   "qf.backupAndRestore": {
     "message": "Còpia de seguretat / restauració"
@@ -538,20 +563,14 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Centra't en la llista de missatges en fer clic a la pestanya"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "Amagueu les carpetes ràpides a les pestanyes d'un sol missatge"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Elimina la barra d'eines QuickFolders de les pestanyes que mostren un sol missatge."
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Botó de Tancar"
   },
-  "qf.checkbox.currentFolder.show": {
-    "message": "Mostra en iniciar"
-  },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrar-se amb un tema lleuger"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "Mostra en iniciar"
   },
   "qf.checkbox.debug": {
     "message": "Mode de Depuració"
@@ -570,6 +589,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "Minimitza el menú Categories per ocupar menys espai."
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Amagueu les carpetes ràpides a les pestanyes d'un sol missatge"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Elimina la barra d'eines QuickFolders de les pestanyes que mostren un sol missatge."
   },
   "qf.checkbox.highlightNewMail": {
     "message": "Ressalta carpetes amb correu nou"
@@ -622,14 +647,14 @@
   "qf.checkbox.quickMove": {
     "message": "quickMove: mou el correu a qualsevol carpeta amb la drecera:"
   },
-  "qf.checkbox.quickMove.tip": {
-    "message": "Drecera per arrossegar correus electrònics al botó Mou ràpid per a l'arxiu més ràpid a qualsevol carpeta mitjançant l'entrada de nom."
-  },
   "qf.checkbox.quickmove.autofill": {
     "message": "Insereix el nom de l'última carpeta executada"
   },
   "qf.checkbox.quickmove.autofill.tip": {
     "message": "S'insereix l'última carpeta utilitzada correctament. Premeu Retorn per utilitzar-lo o simplement escriviu-lo per a altres destinacions."
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Drecera per arrossegar correus electrònics al botó Mou ràpid per a l'arxiu més ràpid a qualsevol carpeta mitjançant l'entrada de nom."
   },
   "qf.checkbox.readingList": {
     "message": "Llista de lectura"
@@ -688,8 +713,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Pestanya Carpetes recents"
   },
-  "configurable.tooltip": {
-    "message": "Feu clic a la roda de configuració per a més opcions de configuració"
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Mostra el número de drecera a les etiquetes de les carpetes"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Expandir subcarpetes al menú emergent"
@@ -702,9 +727,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "Mostra el nombre de missatges per llegir al botó de la carpeta"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "Mostra el número de drecera a les etiquetes de les carpetes"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "… i també a la Finestra de Missatge"
@@ -742,6 +764,12 @@
   "qf.checkbox.tabMenuIcon.tooltip": {
     "message": "Aquest menú també pot obrir-se amb un clic al botó dret a la mateixa barra d'eines"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Utilitzar dreceres de teclat (Alt +1 fins a Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Utilitzar Ctrl enlloc de Alt"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "ALT-Esquerra/ALT-Dreta per a l'anterior/següent Pestanya"
   },
@@ -750,12 +778,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "Regenera Pestanyes amb: Ctrl + Alt +"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Utilitzar dreceres de teclat (Alt +1 fins a Alt + 9)"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Utilitzar Ctrl enlloc de Alt"
   },
   "qf.continueFilter.label": {
     "message": "Crea Filtre…"
@@ -766,8 +788,11 @@
   "qf.copyfolders.tooltip": {
     "message": "Copia la cadena de configuració de les carpetes al portapapers"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Tema Thunderbird"
+  "qf.currentfolder.leftSpacer": {
+    "message": "Separador esquerre:"
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "Separador dret:"
   },
   "qf.currentFolderBackground.custom": {
     "message": "personalitzat"
@@ -778,17 +803,11 @@
   "qf.currentFolderBackground.default": {
     "message": "plata"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Tema Thunderbird"
+  },
   "qf.currentFolderBackground.translucent": {
     "message": "translúcid"
-  },
-  "qf.currentfolder.leftSpacer": {
-    "message": "Separador esquerre:"
-  },
-  "qf.currentfolder.rightSpacer": {
-    "message": "Separador dret:"
-  },
-  "qf.description.github": {
-    "message": "Utilitzeu el github per a totes les peticions oficial de noves característiques i informes de fallades."
   },
   "qf.description.categoryusage": {
     "message": "Podeu assignar una categoria a aquest preferit (ex.'Feina;','Privat',…)."
@@ -807,6 +826,9 @@
   "qf.description.donate": {
     "message": "Si us ha encantat QuickFolders i voleu donar suport al seu desenvolupament, podeu donar algun diner per al futur desenvolupament de QuickFolders"
   },
+  "qf.description.dragexplain": {
+    "message": "Podeu arrossegar els preferits per canviar-los de posició! Deixeu-lo anar a sobre d'un altre per insertar-lo abans/després."
+  },
   "qf.description.dragToAdd": {
     "message": "Arrossegueu carpetes de correu a una àrea buida d'una nova barra d'eines, per a crear una nova QuickFolder (funciona com un àlies). Arrossegueu missatges a sobre d'una QuickFolder per moure'ls a la carpeta corresponent (o copiar-los amb la tecla modificadora). Cliqueu la QuickFolder per anar a la carpeta de correu."
   },
@@ -816,14 +838,14 @@
   "qf.description.dragToPosition": {
     "message": "Arrossegueu les QuickFolders cap als costats per canviar-les de posició. Feu clic amb el botó dret per al menú contextual; podeu anar a les subcarpetes, seleccionant-les. 'Reanomenar Marcador' canvia l'etiqueta de la QuickFolder. 'Esborrar Marcador' esborra la QuickFolder (no la carpeta de correu)."
   },
-  "qf.description.dragexplain": {
-    "message": "Podeu arrossegar els preferits per canviar-los de posició! Deixeu-lo anar a sobre d'un altre per insertar-lo abans/després."
-  },
   "qf.description.editcategory": {
     "message": "Seleccioneu una categoria existent fent-hi doble-clic, o afegiu-ne una de nova."
   },
   "qf.description.experimentalItems": {
     "message": "Les següents opcions estan en període experimental, esperem que estiguin totalment funcionals a la següent versió!!"
+  },
+  "qf.description.github": {
+    "message": "Utilitzeu el github per a totes les peticions oficial de noves característiques i informes de fallades."
   },
   "qf.description.languages": {
     "message": "QuickFolders suporta traduccións a múltiples idiomes - podeu ajudar afegint una traducció al vostre llenguatge a Babelzilla:"
@@ -924,41 +946,11 @@
   "qf.group.navigation": {
     "message": "Navegació de missatges"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "Color de la Pestanya Activa:"
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "Paleta per a Pestanyes amb Color:"
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Paleta per a Pestanyes amb color seleccionat"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "Color a l'arrossegar a sobre:"
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "Color de la pestanya flotant:"
-  },
-  "qf.label.Toolbar": {
-    "message": "Barra d'eines"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "Amplada de la línia inferior:"
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "L'amplada de la línia sota les pestanyes. Canvieu-ne el color amb el selector de color de la pestanya activa a continuació."
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "Fons de la barra d'eines"
-  },
-  "qf.label.UncoloredTab": {
-    "message": "Pestanya sense color assignat."
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "Vista de Pestanyes (inactives) sense color seleccionat"
-  },
   "qf.label.accessibility": {
     "message": "Accessibilitat"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Color de la Pestanya Activa:"
   },
   "qf.label.appearance": {
     "message": "Aparença"
@@ -966,14 +958,17 @@
   "qf.label.behavior": {
     "message": "Aparença"
   },
-  "qf.label.github": {
-    "message": "Informeu d'una fallada / Demaneu una nova característica amb el Bugzilla"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Mida de lletra del botó (0 per defecte):"
   },
   "qf.label.cancel": {
     "message": "Cancel·lar"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Paleta per a Pestanyes amb Color:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Paleta per a Pestanyes amb color seleccionat"
   },
   "qf.label.contactLink": {
     "message": "Contacteu-me (Anglès o Alemany)…"
@@ -990,6 +985,9 @@
   "qf.label.dragFolderLabel": {
     "message": "Amolleu les carpetes aquí per afegir-les a preferits. Cliqueu el preferit per anar a la carpeta, amolleu missatges a sobre per moure'ls/copiar-los aquí."
   },
+  "qf.label.DragOverBackground": {
+    "message": "Color a l'arrossegar a sobre:"
+  },
   "qf.label.existingcategories": {
     "message": "Categories existents:"
   },
@@ -1005,6 +1003,9 @@
   "qf.label.getQuickFilters": {
     "message": "Per a una millor i més potent manera de crear Filtres, instaleu-vos la meva extensió quickFilters!"
   },
+  "qf.label.github": {
+    "message": "Informeu d'una fallada / Demaneu una nova característica amb el Bugzilla"
+  },
   "qf.label.goNextUnread": {
     "message": "Aneu al següent correu electrònic no llegit:"
   },
@@ -1016,6 +1017,9 @@
   },
   "qf.label.homePage": {
     "message": "Informació detallada a la nova pàgina de QuickFolders a quickfolders.org…"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Color de la pestanya flotant:"
   },
   "qf.label.initdelay": {
     "message": "[ms] retard a l'inici {1000 es l'estàndard}:"
@@ -1107,6 +1111,24 @@
   "qf.label.themes": {
     "message": "Temes:"
   },
+  "qf.label.Toolbar": {
+    "message": "Barra d'eines"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Amplada de la línia inferior:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "L'amplada de la línia sota les pestanyes. Canvieu-ne el color amb el selector de color de la pestanya activa a continuació."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Fons de la barra d'eines"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Pestanya sense color assignat."
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Vista de Pestanyes (inactives) sense color seleccionat"
+  },
   "qf.label.versionhistory": {
     "message": "Historial de Versions…"
   },
@@ -1170,9 +1192,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Mostra Eines de la Carpeta Actual"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "Amaga Eines de la Carpeta Actual"
-  },
   "qf.menuitem.quickfolders.filters": {
     "message": "Crear Filtres de Missatge…"
   },
@@ -1181,6 +1200,9 @@
   },
   "qf.menuitem.quickfolders.help": {
     "message": "Ajuda de QuickFolders…"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Amaga Eines de la Carpeta Actual"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "Opcions de QuickFolders"
@@ -1206,11 +1228,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "No fer res"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "Marca el correu com a no llegit"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "Marca el correu com a llegit"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Marca el correu com a no llegit"
   },
   "qf.moveMailStatus.label": {
     "message": "Quan es mou el correu a una QuickFolder:"
@@ -1295,6 +1317,9 @@
   "qf.notifications.compactFolder": {
     "message": "Notificar després de compactar la carpeta"
   },
+  "qf.options.label.themeAuthor": {
+    "message": "Autor del Tema:"
+  },
   "qf.options.LayoutColorAppearance": {
     "message": "Colors Individuals de les Pestanyes"
   },
@@ -1304,20 +1329,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "(estil ratllat)"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "Autor del Tema:"
-  },
   "qf.options.theme.pastelColors": {
     "message": "Colors Pastel"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "A baix:"
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "A dalt:"
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "Radi de les cantonades Personalitzat"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "A dalt:"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "Mostra Sempre els Costats"
@@ -1349,12 +1371,6 @@
   "qf.pathFormat.AccountAndPath": {
     "message": "Compte - Camí de la carpeta"
   },
-  "qf.pathFormat.PathOnly": {
-    "message": "Ruta de la carpeta"
-  },
-  "qf.pathFormat.URI": {
-    "message": "URI de la carpeta"
-  },
   "qf.pathFormat.folderAndAccount": {
     "message": "Nom de la carpeta - compte de correu"
   },
@@ -1364,8 +1380,14 @@
   "qf.pathFormat.maxDepth": {
     "message": "Profunditat màxima del camí:"
   },
+  "qf.pathFormat.PathOnly": {
+    "message": "Ruta de la carpeta"
+  },
   "qf.pathFormat.tooltip": {
     "message": "Nombre màxim de carpetes que es mostren al camí de la carpeta."
+  },
+  "qf.pathFormat.URI": {
+    "message": "URI de la carpeta"
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Opcions de QuickFolders"
@@ -1378,7 +1400,9 @@
       }
     }
   },
-  "qf.premium.renew.hide": { "message": "Amaga l’avís de llicència fins al reinici" },
+  "qf.premium.renew.hide": {
+    "message": "Amaga l’avís de llicència fins al reinici"
+  },
   "qf.premium.renewLicense.tooltip": {
     "message": "La vostra llicència va caducar fa {1} dies"
   },
@@ -1538,9 +1562,6 @@
   "qf.toolbarTopPadding": {
     "message": "Espai superior"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "Carpetes Recents"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "Tanca aquesta barra d'eines"
   },
@@ -1550,11 +1571,11 @@
   "qf.tooltip.emailIcon": {
     "message": "Email Actual - arrosega cap a una pestanya de QuickFolders per moure el Correu"
   },
-  "qf.tooltip.filterStart": {
-    "message": "Activar aprenentatge de filtres. Arrossegant correus a QuickFoldres crea nous Filtres."
-  },
   "qf.tooltip.filters": {
     "message": "Atura la creació de filtres."
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Activar aprenentatge de filtres. Arrossegant correus a QuickFoldres crea nous Filtres."
   },
   "qf.tooltip.folderUp": {
     "message": "Anar a la Carpeta Superior"
@@ -1580,20 +1601,23 @@
   "qf.tooltip.quickMove": {
     "message": "quickMove: arrossegueu un correu aquí"
   },
+  "qf.tooltip.RecentFolders": {
+    "message": "Carpetes Recents"
+  },
   "qf.tooltip.skipUnreadFolder": {
     "message": "Ves a la carpeta següent sense llegir"
   },
   "qf.tooltip.threadIcon": {
     "message": "Conversa Actual - arrossega cap a una pestanaya de QuickFolders per moure la Conversa"
   },
-  "qf.update.title": {
-    "message": "Actualitzacions"
-  },
   "qf.update.hideVersionHistory": {
     "message": "No obriu la pestanya amb l'historial de versions"
   },
   "qf.update.markInvalidTabs": {
     "message": "Ressalta les pestanyes no vàlides 🧹"
+  },
+  "qf.update.title": {
+    "message": "Actualitzacions"
   },
   "qf.youtube.description": {
     "message": "Per obtenir vídeos detallats sobre els complements de Thunderbird i com utilitzar QuickFolders, visiteu el meu canal de YouTube Thunderbird Daily."
@@ -1633,12 +1657,6 @@
   "qfCommandPopup": {
     "message": "Accions de QuickFolders"
   },
-  "qfCompactFolder": {
-    "message": "Compactar Carpeta"
-  },
-  "qfCompactFolderAccess": {
-    "message": "F"
-  },
   "qfCompacted": {
     "message": "Compactat:"
   },
@@ -1653,6 +1671,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "Mida original"
+  },
+  "qfCompactFolder": {
+    "message": "Compactar Carpeta"
+  },
+  "qfCompactFolderAccess": {
+    "message": "F"
   },
   "qfConfirmCopyFolder": {
     "message": "Voleu copiar la carpeta {0} a {1}?"
@@ -1732,14 +1756,14 @@
   "qfMarkAllRead": {
     "message": "Marca la Carpeta com a LLegida"
   },
+  "qfMarkAllRead.next": {
+    "message": "Marqueu la carpeta com a llegida i aneu a la següent carpeta no llegida"
+  },
   "qfMarkAllReadNews": {
     "message": "Marcar totes les notícies com llegides"
   },
   "qfMarkAllReadRecursive": {
     "message": "Marca carpeta + subcarpetes com a llegit"
-  },
-  "qfMarkAllRead.next": {
-    "message": "Marqueu la carpeta com a llegida i aneu a la següent carpeta no llegida"
   },
   "qfMenuTabColorDisabledInTheme": {
     "message": "Seleccioneu un tema diferent per activar el color…"
@@ -1854,51 +1878,6 @@
   "qfVersionDisableOnUpdate": {
     "message": "No mostrar més l'historial de versions després de les actualitzacions?"
   },
-  "quickMove.help.head": {
-    "message": "Ajuda per a {1}"
-  },
-  "quickMove.help.head.advanced": {
-    "message": "Funcions avançades"
-  },
-  "quickMove.help.l1a": {
-    "message": "Escriviu l'inici d'un nom de carpeta o de paraules, delimitades per l'espai."
-  },
-  "quickMove.help.l1b": {
-    "message": "Els caràcters següents es consideren límits de paraules i no cal que els escriviu:"
-  },
-  "quickMove.help.l2a": {
-    "message": "Escriviu {1} per introduir la carpeta de avis/pares/cercats."
-  },
-  "quickMove.help.l2b": {
-    "message": "Les dues primeres lletres de qualsevol pare solen ser suficients. També podeu crear subcarpetes noves amb aquesta sintaxi."
-  },
-  "quickMove.help.l3a": {
-    "message": "Escriviu {1} per ometre cap carpeta entremig."
-  },
-  "quickMove.help.l3b": {
-    "message": "Això és útil per a jerarquies de carpetes més profundes, més complicades o desconegudes."
-  },
-  "quickMove.help.l4a": {
-    "message": "Escriviu {1} per obtenir una llista de les carpetes que s'han introduït més recentment. El nombre de resultats depèn del vostre nivell de llicència."
-  },
-  "quickMove.help.advanced": {
-    "message": "A la pestanya QuickFolders Pro es poden configurar funcions més avançades, com ara dreceres de teclat per anar a una carpeta / moure correu o excloure carpetes dels resultats de cerca. Per accedir a aquestes i altres funcions premium, obtingueu una llicència Pro i doneu suport al futur de QuickFolders."
-  },
-  "quickMove.singleMessage.goNext": {
-    "message": "Mostra el següent missatge després de moure'n l'actual"
-  },
-  "quickMove.singleMessage.reopenTab": {
-    "message": "Torneu a obrir el correu original després de traslladar-lo"
-  },
-  "quickMove.singleMessageTabs": {
-    "message": "Pestanya Missatge únic"
-  },
-  "quickfoldersLabel.customText": {
-    "message": "Text personalitzat de l’etiqueta"
-  },
-  "quickfoldersLabel.display": {
-    "message": "Mostra 'QuickFolders' a la barra d'eines"
-  },
   "quickfolders.findFolder.placeHolder": {
     "message": "nom de la carpeta"
   },
@@ -1929,6 +1908,12 @@
   "quickfolders.toolbar.skip": {
     "message": "Ometre els correus electrònics no llegits"
   },
+  "quickfoldersLabel.customText": {
+    "message": "Text personalitzat de l’etiqueta"
+  },
+  "quickfoldersLabel.display": {
+    "message": "Mostra 'QuickFolders' a la barra d'eines"
+  },
   "quickfoldersLabel.displayMailServer": {
     "message": "Mostra el servidor de correu de la carpeta actual"
   },
@@ -1940,6 +1925,384 @@
   },
   "quickfoldersQuickMovedMails": {
     "message": "Correu mogut a la carpeta {2};{1} correus moguts a la carpeta {2}"
+  },
+  "quickMove.help.advanced": {
+    "message": "A la pestanya QuickFolders Pro es poden configurar funcions més avançades, com ara dreceres de teclat per anar a una carpeta / moure correu o excloure carpetes dels resultats de cerca. Per accedir a aquestes i altres funcions premium, obtingueu una llicència Pro i doneu suport al futur de QuickFolders."
+  },
+  "quickMove.help.head": {
+    "message": "Ajuda per a {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "Funcions avançades"
+  },
+  "quickMove.help.l1a": {
+    "message": "Escriviu l'inici d'un nom de carpeta o de paraules, delimitades per l'espai."
+  },
+  "quickMove.help.l1b": {
+    "message": "Els caràcters següents es consideren límits de paraules i no cal que els escriviu:"
+  },
+  "quickMove.help.l2a": {
+    "message": "Escriviu {1} per introduir la carpeta de avis/pares/cercats."
+  },
+  "quickMove.help.l2b": {
+    "message": "Les dues primeres lletres de qualsevol pare solen ser suficients. També podeu crear subcarpetes noves amb aquesta sintaxi."
+  },
+  "quickMove.help.l3a": {
+    "message": "Escriviu {1} per ometre cap carpeta entremig."
+  },
+  "quickMove.help.l3b": {
+    "message": "Això és útil per a jerarquies de carpetes més profundes, més complicades o desconegudes."
+  },
+  "quickMove.help.l4a": {
+    "message": "Escriviu {1} per obtenir una llista de les carpetes que s'han introduït més recentment. El nombre de resultats depèn del vostre nivell de llicència."
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Mostra el següent missatge després de moure'n l'actual"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Torneu a obrir el correu original després de traslladar-lo"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Pestanya Missatge únic"
+  },
+  "registration.account": {
+    "message": "Compte de correu"
+  },
+  "registration.action.buy": {
+    "message": "Compra $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Compra una llicència de domini"
+  },
+  "registration.action.current": {
+    "message": "Edició actual"
+  },
+  "registration.action.extend": {
+    "message": "Amplia la llicència"
+  },
+  "registration.action.renew": {
+    "message": "Renova la llicència"
+  },
+  "registration.action.upgrade": {
+    "message": "Actualitza a Pro"
+  },
+  "registration.annual": {
+    "message": "Llicències anuals"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Tanca l’avís de compra"
+  },
+  "registration.checkout.error": {
+    "message": "No s’ha pogut obrir la botiga. Torna-ho a provar."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Per conservar els avantatges de renovació o actualització, continua amb el producte obert des d’aquesta pàgina.{/bold} Per triar una {i}llicència diferent{/i}, torna a començar aquí."
+  },
+  "registration.checkout.note": {
+    "message": "Els preus, impostos i descomptes disponibles es mostren a la botiga."
+  },
+  "registration.checkout.opened": {
+    "message": "La botiga s’ha obert al navegador. Pots mantenir aquesta pestanya oberta."
+  },
+  "registration.checkout.preview": {
+    "message": "Previsualització de prova: $1 per a $2. No s’ha obert cap botiga."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Aquesta via d’actualització requereix confirmació abans d’habilitar la compra. No s’ha obert cap botiga."
+  },
+  "registration.compare": {
+    "message": "Compara Standard i Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Per a qui és aquesta llicència?"
+  },
+  "registration.contact.note": {
+    "message": "Aquestes dades s’emplenaran a la compra. Les pots editar aquí."
+  },
+  "registration.date.expired": {
+    "message": "La llicència va caducar el $1."
+  },
+  "registration.date.none": {
+    "message": "Tria una llicència a sota o introdueix la clau existent."
+  },
+  "registration.date.valid": {
+    "message": "La llicència és vàlida fins al $1."
+  },
+  "registration.development": {
+    "message": "Prova de registre"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro és una llicència personal independent, no una renovació de domini. La llicència de domini et cobreix en instal·lacions amb un compte de correu del domini empresarial registrat, dins del nombre de places adquirides. Una llicència Pro independent pot cobrir una instal·lació domèstica on no puguis utilitzar aquest compte. Per mantenir la cobertura de l’equip, tria Renova la llicència al tauler Domini."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Afegeix usuaris"
+  },
+  "registration.domain.seatsNote": {
+    "message": "a la llicència de domini existent."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Necessites més places?"
+  },
+  "registration.edition.domain": {
+    "message": "Domini"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "message": "Adreça electrònica"
+  },
+  "registration.email.domain": {
+    "message": "S’hi apliquen altres regles: l’adreça configurada ha de pertànyer al domini amb llicència."
+  },
+  "registration.email.domain.heading": {
+    "message": "Llicències de domini"
+  },
+  "registration.email.help": {
+    "message": "Sobre les adreces amb llicència"
+  },
+  "registration.email.help.close": {
+    "message": "Tanca l’ajuda del correu"
+  },
+  "registration.email.help.heading": {
+    "message": "El teu correu és la teva llicència"
+  },
+  "registration.email.hint": {
+    "message": "La llicència personal funciona en diversos dispositius."
+  },
+  "registration.email.personal": {
+    "message": "La llicència està vinculada a aquesta adreça electrònica. La pots utilitzar en diversos dispositius. Configura aquesta adreça com a {bold}identitat per defecte{/bold} d’un compte del Thunderbird a cada dispositiu."
+  },
+  "registration.email.personal.heading": {
+    "message": "Llicències Standard i Pro"
+  },
+  "registration.email.rules": {
+    "message": "Regles de l’adreça amb llicència"
+  },
+  "registration.enterKey": {
+    "message": "Introdueix la clau de llicència…"
+  },
+  "registration.eyebrow": {
+    "message": "La teva llicència"
+  },
+  "registration.firstName": {
+    "message": "Nom"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Dades fictícies: la compra només obre una previsualització."
+  },
+  "registration.footer": {
+    "message": "Creat per al Thunderbird. Amb el teu suport."
+  },
+  "registration.heading": {
+    "message": "Les vostres carpetes. Menys esforç."
+  },
+  "registration.identity.empty": {
+    "message": "Introdueix les dades manualment"
+  },
+  "registration.identity.none": {
+    "message": "No s’han trobat comptes aptes. Pots introduir les dades de contacte manualment."
+  },
+  "registration.lastName": {
+    "message": "Cognoms"
+  },
+  "registration.learnMore": {
+    "message": "Més informació…"
+  },
+  "registration.legacy.menu": {
+    "message": "Registre de llicència antic"
+  },
+  "registration.license.domain": {
+    "message": "Llicència de domini"
+  },
+  "registration.license.edition": {
+    "message": "Llicència $1"
+  },
+  "registration.license.expiresIn": {
+    "message": "La llicència caduca en $1 dies"
+  },
+  "registration.license.none": {
+    "message": "Cap llicència configurada"
+  },
+  "registration.load.error": {
+    "message": "No s’han pogut carregar la llicència o els comptes. Recarrega aquesta pestanya per tornar-ho a provar."
+  },
+  "registration.navigation": {
+    "message": "Navegació de llicències"
+  },
+  "registration.options": {
+    "message": "Opcions de llicència"
+  },
+  "registration.plan.domain.description": {
+    "message": "Funcions Pro per als usuaris del domini amb llicència, dins del nombre de places adquirides."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Per al teu equip"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Per a un domini compartit"
+  },
+  "registration.plan.pro.description": {
+    "message": "Organitzeu i trobeu els missatges més ràpid cada dia."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Totes les funcions"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Per al teu correu"
+  },
+  "registration.plan.standard.description": {
+    "message": "Tingueu les carpetes preferides sempre a mà."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "L’essencial de cada dia"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Per al teu correu"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Llicències de domini{/bold}{br}Les llicències de domini es {bold}revisen i emeten manualment{/bold}. La renovació afegeix un any a la data de caducitat existent, encara que la llicència ja hagi caducat. Això fomenta la renovació puntual; el termini definitiu es confirma durant la revisió."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Els avantatges de renovació i actualització depenen de les dades de llicència enviades a la botiga. Canviar de producte a la botiga o un programa de seguretat que elimini aquestes dades pot impedir l’aplicació dels drets existents."
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Actualitzeu a Pro i pagueu **només la diferència** entre els preus de Standard i Pro: us donem un any complet des del dia del pagament, encara que la llicència Standard ja hagi caducat."
+  },
+  "registration.renewal.hint": {
+    "message": "Renovar o ampliar la llicència sol costar menys que comprar-ne una de nova."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Llicències personals{/bold}{br}Una llicència nova dura un any des del pagament. En renovar o ampliar la mateixa edició, reps un any des del pagament o un any després de la caducitat actual, segons què et doni més temps."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Llicència existent{/bold}{br}La llicència actual s’envia a la botiga per calcular la nova data de caducitat."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Actualitzeu a Pro i pagueu **només la diferència** entre els preus de Standard i Pro. Obtindreu un any complet des del dia del pagament."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Actualitzacions de Standard a Pro{/bold}{br}La llicència Pro dura un any des del pagament de l’actualització. El temps restant de la llicència Standard no amplia aquest període."
+  },
+  "registration.selection.heading": {
+    "message": "Dediqueu menys temps a buscar."
+  },
+  "registration.selection.intro": {
+    "message": "Trieu Standard per a les funcions essencials, Pro per a totes les funcions o Domini per als usuaris de la vostra organització."
+  },
+  "registration.selection.label": {
+    "message": "Selecció de llicència"
+  },
+  "registration.settings.error": {
+    "message": "No s’ha pogut obrir la configuració de llicències. Torna-ho a provar."
+  },
+  "registration.showLess": {
+    "message": "Mostra’n menys"
+  },
+  "registration.status.Empty": {
+    "message": "Edició gratuïta"
+  },
+  "registration.status.Expired": {
+    "message": "Caducada"
+  },
+  "registration.status.Invalid": {
+    "message": "Llicència no vàlida"
+  },
+  "registration.status.MailDifferent": {
+    "message": "El correu de la llicència no coincideix"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Adreça amb llicència no configurada"
+  },
+  "registration.status.NotValidated": {
+    "message": "Sense validar"
+  },
+  "registration.status.Unknown": {
+    "message": "Llicència no disponible"
+  },
+  "registration.status.Valid": {
+    "message": "Vàlida"
+  },
+  "registration.subtitle": {
+    "message": "Tria la llicència adequada per a la teva manera de treballar."
+  },
+  "registration.terms.annual": {
+    "message": "Una llicència cobreix un any. Renova una llicència caducada o amplia’n una de vigent per continuar amb l’edició escollida."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Un any cada vegada"
+  },
+  "registration.terms.back": {
+    "message": "Selecció de llicència"
+  },
+  "registration.terms.checkout": {
+    "message": "Selecciona una llicència per anar a la botiga. El preu depèn de l’edició, el país, els impostos i els descomptes aplicables."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Compra al navegador"
+  },
+  "registration.terms.domain": {
+    "message": "Una llicència de Domini cobreix els usuaris amb adreces del domini autoritzat, fins al nombre de places adquirides."
+  },
+  "registration.terms.draft": {
+    "message": "Condicions provisionals: els detalls de les proves i les funcions després de la caducitat es revisaran abans de publicar."
+  },
+  "registration.terms.edition": {
+    "message": "Standard i Pro ofereixen nivells de funcionalitat diferents. Compara les edicions per trobar la més adequada."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Tria la teva edició"
+  },
+  "registration.terms.email": {
+    "message": "Una llicència personal està vinculada a la teva adreça electrònica. La pots utilitzar en diverses instal·lacions del Thunderbird si l’adreça amb llicència està configurada com a **identitat per defecte** d’un compte en cadascuna."
+  },
+  "registration.terms.email.heading": {
+    "message": "El teu correu, la teva llicència"
+  },
+  "registration.terms.heading": {
+    "message": "Com funciona la teva llicència."
+  },
+  "registration.terms.hide": {
+    "message": "🡇 Continua a la selecció de llicència 🡇"
+  },
+  "registration.terms.intro": {
+    "message": "{+extensionName} segueix els canvis del Thunderbird des de fa anys. Les llicències financen el desenvolupament continu, les noves funcions i les actualitzacions de compatibilitat. Cada llicència dura un any i dona suport a aquesta feina."
+  },
+  "registration.terms.label": {
+    "message": "Condicions de llicència"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Les llicències **no es renoven automàticament**. {+extensionName} t’avisarà abans que caduqui la llicència."
+  },
+  "registration.terms.otherAccounts": {
+    "message": "Les funcions amb llicència també funcionen amb tots els altres comptes del Thunderbird. No calen llicències addicionals."
+  },
+  "registration.terms.referrer": {
+    "message": "Si ja teniu una llicència, s’envia a la botiga per comprovar els vostres drets."
+  },
+  "registration.terms.savings": {
+    "message": "**Comença amb Pro i estalvia els anys següents.** Renovar o ampliar la llicència Pro costa molt menys que comprar-ne una de nova."
+  },
+  "registration.terms.show": {
+    "message": "Mostra les condicions de llicència 🡇"
+  },
+  "registration.terms.support": {
+    "message": "El teu suport ajuda a finançar el desenvolupament, les actualitzacions de compatibilitat i les correccions."
+  },
+  "registration.test.menu": {
+    "message": "Registre a la botiga web"
+  },
+  "registration.test.note": {
+    "message": "La compra s’obre al navegador."
+  },
+  "registration.title": {
+    "message": "{+extensionName} · La teva llicència"
   },
   "renew-your-license": {
     "message": "Renoveu la llicència."
@@ -1953,6 +2316,24 @@
       "reduction": {
         "content": "$2",
         "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Ajudeu a mantenir $addon$ compatible",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b} Benvolgut {name} {/b}, donem suport a $addon$ mitjançant l'obtenció d'una llicència. El codi Thunderbird evoluciona contínuament i necessitem {b} la vostra ajuda {/b} per estar al dia.",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
       }
     }
   },
@@ -1984,24 +2365,6 @@
   },
   "special-offer-upgrade-condition": {
     "message": "Quan actualitzeu des de Standard, obteniu un període de llicència d'un any complet a partir de la data de compra, independentment de la data de caducitat de la vostra llicència anterior."
-  },
-  "special-offer-head": {
-    "message": "Ajudeu a mantenir $addon$ compatible",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{b} Benvolgut {name} {/b}, donem suport a $addon$ mitjançant l'obtenció d'una llicència. El codi Thunderbird evoluciona contínuament i necessitem {b} la vostra ajuda {/b} per estar al dia.",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
   },
   "support-preference": {
     "message": "Aquesta és la forma preferida de donar suport a $addonName$.",
@@ -2089,7 +2452,10 @@
   "whats-new-maintenance": {
     "message": "Actualització de manteniment $ver$. Aquesta versió corregeix regressions urgents de la versió anterior.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "window-title": {

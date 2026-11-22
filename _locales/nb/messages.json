@@ -2,6 +2,50 @@
   "_l10nstatus": {
     "message": "SPLASH+UI"
   },
+  "accessibility.count.total": {
+    "message": "$count$ totalt antall meldinger",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ totalt i undermapper",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ uleste meldinger",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ uleste i undermapper",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Fjern 'Tilpass ikon'-kommandoen fra mappens kontekstmeny."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Skjul verktøytips på faner"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Prioriter QuickFolders-bokmerker i søkeresultater."
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "Vis eget element for overordnet mappe i undermeny"
+  },
   "account.label": {
     "message": "Velg konto:"
   },
@@ -20,50 +64,6 @@
   },
   "addon-authors-struggle": {
     "message": "For å fortsette å være nyttige må utvidelsesutviklere nå finansiere ressursene som trengs for å fikse og omskrive slik at brukerne våre fortsatt kan dra nytte av funksjonaliteten vi tilbyr."
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ uleste meldinger",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "$count$ uleste i undermapper",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "$count$ totalt antall meldinger",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "$count$ totalt i undermapper",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "Fjern 'Tilpass ikon'-kommandoen fra mappens kontekstmeny."
-  },
-  "accessibility.hideTooltips": {
-    "message": "Skjul verktøytips på faner"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Prioriter QuickFolders-bokmerker i søkeresultater."
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "Vis eget element for overordnet mappe i undermeny"
   },
   "aria.a11underReview": {
     "message": "Vi vurderer og forbedrer tilgjengeligheten på denne siden. Vi jobber med å gjøre funksjonaliteten mer tastaturvennlig og kompatibel med skjermlesere. Takk for tålmodigheten din!"
@@ -155,6 +155,9 @@
   "commands.toggleFolderTree": {
     "message": "Veksle visning av mappetre"
   },
+  "configurable.tooltip": {
+    "message": "Klikk på konfigurasjonshjulet for flere innstillinger"
+  },
   "cost-of-independence": {
     "message": "Programvareutvikling koster tid og penger – i motsetning til mange plattformapper skrives ikke utvidelser av store selskaper, og de sponses heller ikke på noen måte av Mozilla."
   },
@@ -214,6 +217,12 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "Bokmerk favorittmappene dine i Thunderbird."
   },
+  "findRelated.btn.label": {
+    "message": "Finn relaterte e-poster"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Finn lignende e-poster basert på valgt e-post og brukerdefinerte søkemønstre"
+  },
   "findRelated.btnAdd": {
     "message": "Legg til"
   },
@@ -223,20 +232,17 @@
   "findRelated.btnUpdate": {
     "message": "Oppdater"
   },
-  "findRelated.btn.label": {
-    "message": "Finn relaterte e-poster"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "Finn lignende e-poster basert på valgt e-post og brukerdefinerte søkemønstre"
-  },
   "findRelated.entries": {
     "message": "Søkemønstre"
   },
   "findRelated.menu.configure": {
     "message": "Konfigurer søkemønstre…"
   },
-  "findRelated.prompt.title": {
-    "message": "Finn relaterte e-poster: Søkemønster"
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Knappen 'Gå til neste e-post' tilbakestiller forrige søk."
+  },
+  "findRelated.options.title": {
+    "message": "Valg"
   },
   "findRelated.prompt.enterPattern": {
     "message": "For å bruke denne funksjonen, opprett minst ett søkemønster."
@@ -244,11 +250,8 @@
   "findRelated.prompt.selectPattern": {
     "message": "Høyreklikk [Finn relaterte e-poster] for å velge et søkemønster. Dette kjører søket og lagrer innstillingene til neste gang du klikker på knappen."
   },
-  "findRelated.options.title": {
-    "message": "Valg"
-  },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "Knappen 'Gå til neste e-post' tilbakestiller forrige søk."
+  "findRelated.prompt.title": {
+    "message": "Finn relaterte e-poster: Søkemønster"
   },
   "findRelated.searchGroup": {
     "message": "Søkegruppe (0 for full match):"
@@ -256,26 +259,26 @@
   "findRelated.searchPattern": {
     "message": "Søkemønster:"
   },
+  "findRelated.term.body": {
+    "message": "Innhold"
+  },
   "findRelated.term.menutitle": {
     "message": "Tittel:"
-  },
-  "findRelated.term.subject": {
-    "message": "Emne"
-  },
-  "findRelated.term.sender": {
-    "message": "Avsender"
   },
   "findRelated.term.recipients": {
     "message": "Mottakere"
   },
-  "findRelated.term.body": {
-    "message": "Innhold"
+  "findRelated.term.sender": {
+    "message": "Avsender"
   },
-  "findRelated.terms.selectedFields": {
-    "message": "Hent søketekst fra:"
+  "findRelated.term.subject": {
+    "message": "Emne"
   },
   "findRelated.terms.searchCriteriaFields": {
     "message": "Hvor søke i relaterte e-poster:"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Hent søketekst fra:"
   },
   "firstName.label": {
     "message": "Fornavn:"
@@ -324,6 +327,9 @@
   "intro": {
     "message": "En årlig lisens for QuickFolders Pro gir deg alle premium-funksjonene i ett år. Den gjør det også mulig for oss å støtte og videreutvikle produktet og gjøre det enda bedre."
   },
+  "keyshortcuts.news": {
+    "message": "For øyeblikket bruker Thunderbird disse som innebygde hurtigtaster, men du kan frigjøre dem med Add-on tbkeys lite. Klikk på (?) for mer informasjon:"
+  },
   "label-remind-me": {
     "message": "Minne meg om dette igjen om $countDays$ dager.",
     "placeholders": {
@@ -333,14 +339,35 @@
       }
     }
   },
-  "keyshortcuts.news": {
-    "message": "For øyeblikket bruker Thunderbird disse som innebygde hurtigtaster, men du kan frigjøre dem med Add-on tbkeys lite. Klikk på (?) for mer informasjon:"
-  },
   "lastName.label": {
     "message": "Etternavn:"
   },
   "lblCustomPalette": {
     "message": "Egendefinert palett:"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders trenger en Pro-lisens for å støtte mer enn $maxTabs$ faner.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "Standardlisens - begrenset Pro-funksjon. Les mer…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Ulisensiert versjon - begrenset funksjon. Les mer…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders trenger en lisens for å støtte mer enn $maxTabs$ faner.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -361,57 +388,44 @@
   "licenseWindow.title": {
     "message": "QuickFolders Pro-lisens"
   },
-  "license_restriced.std": {
-    "message": "Standardlisens - begrenset Pro-funksjon. Les mer…"
+  "message.browserLaunchFailed": {
+    "message": "{p} Kunne ikke åpne standardnettleseren. Du kan kopiere adressen nedenfor og lime den inn i adressefeltet i nettleseren. {/p} Du finner flere detaljer om feilen i JavaScript-feilkonsollen."
   },
-  "license_restriced.unpaid": {
-    "message": "Ulisensiert versjon - begrenset funksjon. Les mer…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — Nettleserfeil"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders trenger en Pro-lisens for å støtte mer enn $maxTabs$ faner.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "Nettadresse (Ctrl+C for å kopiere):"
   },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders trenger en lisens for å støtte mer enn $maxTabs$ faner.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.btn.accept": {
+    "message": "OK"
   },
-  "message.browserLaunchFailed": { "message": "{p} Kunne ikke åpne standardnettleseren. Du kan kopiere adressen nedenfor og lime den inn i adressefeltet i nettleseren. {/p} Du finner flere detaljer om feilen i JavaScript-feilkonsollen." },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — Nettleserfeil" },
-  "message.browserLaunchFailed.url": { "message": "Nettadresse (Ctrl+C for å kopiere):" },
-  "message.btn.accept": { "message": "OK" },
-  "message.btn.cancel": { "message": "Avbryt" },
-  "message.btn.no": { "message": "Nei" },
-  "message.btn.yes": { "message": "Ja" },
-  "message.features": { "message": "Sammenlign funksjoner…" },
-  "message.placeholder": { "message": "Melding mangler." },
-  "message.licenseScreen": { "message": "Vis lisensalternativer…" },
-  "message.linkInTab": { "message": "(Lenke åpnet i fane)" },
+  "message.btn.cancel": {
+    "message": "Avbryt"
+  },
+  "message.btn.no": {
+    "message": "Nei"
+  },
+  "message.btn.yes": {
+    "message": "Ja"
+  },
+  "message.features": {
+    "message": "Sammenlign funksjoner…"
+  },
+  "message.licenseScreen": {
+    "message": "Vis lisensalternativer…"
+  },
+  "message.linkInTab": {
+    "message": "(Lenke åpnet i fane)"
+  },
+  "message.placeholder": {
+    "message": "Melding mangler."
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla gir bare en grunnleggende plattform for levering av programvaren til deg som sluttbruker. Hvis vi må be brukerne om betaling eller støtte, kan vi ikke gjøre dette fra addons.thunderbird.net – det er ikke en 'app-butikk' med innebygde betalings- eller lisenssystemer som iTunes eller Google Play."
   },
-  "newsHead": { "message": "Siste nytt" },
-  "newsMsgEsr140": {
-    "message": "{P}{b} Kommende i neste store utgivelse {/b}: Thunderbird vil snart be deg velge foretrukket oppdateringsvei — enten den årlige ESR-sporet eller de raskere månedlige utgivelsene. {a release}Les mer om den nye utgivelsesmodellen{/a}.{U} {L}ESR-versjonen forblir på v140, øker mindre versjonsnummer og inkluderer kun sikkerhetsoppdateringer og feilrettinger, noe som ofte er å foretrekke for bedriftsmiljøer.{/L} {L}Den månedlige utgivelsessyklusen vil levere nye funksjoner og grensesnittoppdateringer etter hvert som de utvikles. Sjekk om dine nåværende tillegg støtter denne utgivelsesmodellen. For å hjelpe med dette kan du installere {a compatCheck}Add-on Compatibility Check{/a}.{/L} {/U}{/P}{P} Vi er glade for å kunngjøre at QuickFolders er fullt kompatibel med Thunderbird 140, neste Extended Support Release (ESR). Dette sikrer pålitelighet og ro i sinnet gjennom neste store støttesyklus.{/P}{P} QuickFolders fortsetter å støtte brukere på Thunderbird 115 og nyere foreløpig. I løpet av det kommende året, etter hvert som vi legger til nye funksjoner, kan støtten for Thunderbird 115 fases ut til fordel for Thunderbird 128 og nyere.{/P}{P} Vi overvåker kontinuerlig endringer i Thunderbird for å sikre at QuickFolders forblir kompatibel og pålitelig, uavhengig av hvilket utgivelsesspor du velger.{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} En viktig endring kommer i Thunderbird {/b}: Fra Thunderbird 153 vil eksperimentelle tillegg som {+extensionName} ikke lenger støttes i Release-versjoner. Thunderbird {a apiwork}utvider aktivt WebExtension-API-ene{/a} for å redusere avhengigheten av eksperimentelle utvidelsesmekanismer. Fra {emph}versjon 153{/emph} krever eldre tillegg bruk av {+newsMsgEsr153.ESR} (ESR).<ul><li>ESR-kanalen er fortsatt det anbefalte valget for brukere som er avhengige av avanserte eller eksperimentelle tillegg.</li><li>Release-kanalen fokuserer på stabile og fullt støttede WebExtension-tillegg.</li><li>Beta-kanalen kan fortsatt brukes til testing og kompatibilitetssjekk før ESR-utgivelser.</li></ul></P>{P}{+extensionName} er fortsatt fullt støttet i Thunderbird ESR og vedlikeholdes aktivt i Release-versjoner der det er teknisk mulig.{/P}{P}Vi fortsetter å overvåke endringer i Thunderbird nøye for å sikre kompatibilitet og en stabil opplevelse på tvers av alle støttede versjoner.{/P}"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (Thunderbirds utvidede støtteversjon)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Kommende endringer i støtte for Thunderbird-tillegg{/b}: En tidligere annonsert endring som påvirker eksperimentelle tillegg i Release-kanalen er utsatt til neste ESR-syklus (ESR 2027). Denne ekstra tiden vil brukes til å forbedre API-dekningen og videreutvikle overgangen sammen med tilleggsfellesskapet.{/P}{P}Det kreves ingen handling for øyeblikket. {+extensionName} fungerer fortsatt på både Release- og ESR-versjoner av Thunderbird der det støttes.{/P}{P}Vi vil fortsette å overvåke plattformendringer og gi veiledning dersom en migrering blir nødvendig i fremtiden.{/P}{P}Selv om det ikke er obligatorisk å bytte til ESR-kanalen, kan enkelte brukere som er sterkt avhengige av eksperimentelle funksjoner foretrekke dette på grunn av et mer stabilt miljø og færre endringer, ettersom eksperimentelle grensesnitt kan være mer utsatt for interne plattformendringer.{/P}"
+  "newsHead": {
+    "message": "Siste nytt"
   },
   "newsMsg.license.expired": {
     "message": "{P} Alle nye funksjoner, feilrettinger og langsiktig kompatibilitet gjøres mulig gjennom din støtte.{/P}{P class=specialOffer} For å opprettholde utviklingen av QuickFolders, kan du fornye lisensen din med rabatt til {salesEnd}.{/P}{P class=bottomhint}🡇 Velg et av alternativene nedenfor for å lære mer 🡇 {/P}"
@@ -425,6 +439,19 @@
   "newsMsg.license.valid": {
     "message": "{P} Takk for at du støtter QuickFolders med en Pro-lisens — dette gjør alle nye funksjoner, feilrettinger og langsiktig kompatibilitet mulig.{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b} Kommende i neste store utgivelse {/b}: Thunderbird vil snart be deg velge foretrukket oppdateringsvei — enten den årlige ESR-sporet eller de raskere månedlige utgivelsene. {a release}Les mer om den nye utgivelsesmodellen{/a}.{U} {L}ESR-versjonen forblir på v140, øker mindre versjonsnummer og inkluderer kun sikkerhetsoppdateringer og feilrettinger, noe som ofte er å foretrekke for bedriftsmiljøer.{/L} {L}Den månedlige utgivelsessyklusen vil levere nye funksjoner og grensesnittoppdateringer etter hvert som de utvikles. Sjekk om dine nåværende tillegg støtter denne utgivelsesmodellen. For å hjelpe med dette kan du installere {a compatCheck}Add-on Compatibility Check{/a}.{/L} {/U}{/P}{P} Vi er glade for å kunngjøre at QuickFolders er fullt kompatibel med Thunderbird 140, neste Extended Support Release (ESR). Dette sikrer pålitelighet og ro i sinnet gjennom neste store støttesyklus.{/P}{P} QuickFolders fortsetter å støtte brukere på Thunderbird 115 og nyere foreløpig. I løpet av det kommende året, etter hvert som vi legger til nye funksjoner, kan støtten for Thunderbird 115 fases ut til fordel for Thunderbird 128 og nyere.{/P}{P} Vi overvåker kontinuerlig endringer i Thunderbird for å sikre at QuickFolders forblir kompatibel og pålitelig, uavhengig av hvilket utgivelsesspor du velger.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (Thunderbirds utvidede støtteversjon)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Kommende endringer i støtte for Thunderbird-tillegg{/b}: En tidligere annonsert endring som påvirker eksperimentelle tillegg i Release-kanalen er utsatt til neste ESR-syklus (ESR 2027). Denne ekstra tiden vil brukes til å forbedre API-dekningen og videreutvikle overgangen sammen med tilleggsfellesskapet.{/P}{P}Det kreves ingen handling for øyeblikket. {+extensionName} fungerer fortsatt på både Release- og ESR-versjoner av Thunderbird der det støttes.{/P}{P}Vi vil fortsette å overvåke plattformendringer og gi veiledning dersom en migrering blir nødvendig i fremtiden.{/P}{P}Selv om det ikke er obligatorisk å bytte til ESR-kanalen, kan enkelte brukere som er sterkt avhengige av eksperimentelle funksjoner foretrekke dette på grunn av et mer stabilt miljø og færre endringer, ettersom eksperimentelle grensesnitt kan være mer utsatt for interne plattformendringer.{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} En viktig endring kommer i Thunderbird {/b}: Fra Thunderbird 153 vil eksperimentelle tillegg som {+extensionName} ikke lenger støttes i Release-versjoner. Thunderbird {a apiwork}utvider aktivt WebExtension-API-ene{/a} for å redusere avhengigheten av eksperimentelle utvidelsesmekanismer. Fra {emph}versjon 153{/emph} krever eldre tillegg bruk av {+newsMsgEsr153.ESR} (ESR).<ul><li>ESR-kanalen er fortsatt det anbefalte valget for brukere som er avhengige av avanserte eller eksperimentelle tillegg.</li><li>Release-kanalen fokuserer på stabile og fullt støttede WebExtension-tillegg.</li><li>Beta-kanalen kan fortsatt brukes til testing og kompatibilitetssjekk før ESR-utgivelser.</li></ul></P>{P}{+extensionName} er fortsatt fullt støttet i Thunderbird ESR og vedlikeholdes aktivt i Release-versjoner der det er teknisk mulig.{/P}{P}Vi fortsetter å overvåke endringer i Thunderbird nøye for å sikre kompatibilitet og en stabil opplevelse på tvers av alle støttede versjoner.{/P}"
+  },
   "newsSection": {
     "message": "{P}{b} Kommende i neste store utgivelse {/b}: Thunderbird vil snart be deg velge foretrukket oppdateringsvei — enten den årlige ESR-sporet eller de raskere månedlige utgivelsene. {a release}Les mer om den nye utgivelsesmodellen{/a}.{U} {L}ESR-versjonen forblir på v140, øker mindre versjonsnummer og inkluderer kun sikkerhetsoppdateringer og feilrettinger, noe som ofte er å foretrekke for bedriftsmiljøer.{/L} {L}Den månedlige utgivelsessyklusen vil levere nye funksjoner og grensesnittoppdateringer etter hvert som de utvikles. Sjekk om dine nåværende tillegg støtter denne utgivelsesmodellen. For å hjelpe med dette kan du installere {a compatCheck}Add-on Compatibility Check{/a}.{/L} {/U}",
     "placeholders": {
@@ -434,11 +461,11 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}Vi fortsetter å følge Thunderbirds månedlige utgivelsessyklus for å sikre kompatibilitet og stabilitet. Som alltid finansieres dette arbeidet fullt ut av lisenssalg.{/P}"
-  },
   "newsSection.important": {
     "message": "{P}Viktig for Release-kanalbrukere ({emph}154 og senere{/emph}): Med Thunderbirds nye 2-ukers utgivelsessyklus er det en økt risiko for uventede feil som [issue 690]. Mens jeg regelmessig tester {+extensionName} mot daglige bygg, avhenger rettidige rettelser av {b}tidlig rapportering{/b} fra Release-brukere. Vennligst følg {a href='https://github.com/RealRaven2000/QuickFolders/issues'}problemsporeren{/a} og rapporter feil raskt for å opprettholde kompatibilitet.{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}Vi fortsetter å følge Thunderbirds månedlige utgivelsessyklus for å sikre kompatibilitet og stabilitet. Som alltid finansieres dette arbeidet fullt ut av lisenssalg.{/P}"
   },
   "newsSection.license": {
     "message": "Siden alt arbeid med QuickFolders og gratis støtte finansieres utelukkende gjennom lisenssalg, vurder å kjøpe eller fornye lisensen din."
@@ -476,9 +503,6 @@
   "qf.accounts": {
     "message": "Kontoer"
   },
-  "qf.alert.pasteFolders.formatErr": {
-    "message": "Kunne ikke opprette faner. Se verktøy / feilkonsoll for mer detaljer."
-  },
   "qf.alert.bookmarks.unsupportedType": {
     "message": "Foreløpig ikke støttet bokmerketype: $bookmarkType$ {NewLine}Velg minst en melding eller dra bare e-poster over knappen",
     "placeholders": {
@@ -486,6 +510,9 @@
         "content": "$1"
       }
     }
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Kunne ikke opprette faner. Se verktøy / feilkonsoll for mer detaljer."
   },
   "qf.backupAndRestore": {
     "message": "Sikkerhetskopiering / Gjenoppretting"
@@ -553,20 +580,14 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Fokuser på meldingslisten når du klikker på fanen"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "Skjul QuickFolders i enkeltmeldingsfaner"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Fjerner QuickFolders-verktøylinjen i faner som viser en enkelt melding."
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Lukk-knapp"
   },
-  "qf.checkbox.currentFolder.show": {
-    "message": "Vis ved oppstart"
-  },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrer med lett tema"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "Vis ved oppstart"
   },
   "qf.checkbox.debug": {
     "message": "Feilsøkingsmodus"
@@ -585,6 +606,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "Minimerer kategorimenyen for å ta opp mindre plass."
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Skjul QuickFolders i enkeltmeldingsfaner"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Fjerner QuickFolders-verktøylinjen i faner som viser en enkelt melding."
   },
   "qf.checkbox.highlightNewMail": {
     "message": "Fremhev mapper med ny post"
@@ -637,14 +664,14 @@
   "qf.checkbox.quickMove": {
     "message": "quickMove - Flytt e-post til hvilken som helst mappe med snarvei:"
   },
-  "qf.checkbox.quickMove.tip": {
-    "message": "Snarvei for å dra e-poster til quickMove-knappen for raskest mulig arkivering til hvilken som helst mappe via navnefelt."
-  },
   "qf.checkbox.quickmove.autofill": {
     "message": "Sett inn sist brukte mappenavn"
   },
   "qf.checkbox.quickmove.autofill.tip": {
     "message": "Den sist brukte mappen settes inn. Trykk Enter for å bruke den, eller skriv over for å velge en annen destinasjon."
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Snarvei for å dra e-poster til quickMove-knappen for raskest mulig arkivering til hvilken som helst mappe via navnefelt."
   },
   "qf.checkbox.readingList": {
     "message": "Leseliste"
@@ -703,6 +730,9 @@
   "qf.checkbox.showRecentTab": {
     "message": "Fane for nylige mapper"
   },
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Vis snarveinummer på mappenavn"
+  },
   "qf.checkbox.showSubfolders": {
     "message": "Utvid undermapper i popup-menyene"
   },
@@ -714,9 +744,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "Vis antall uleste meldinger"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "Vis snarveinummer på mappenavn"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "…også i enkeltmeldingsvinduer"
@@ -760,6 +787,12 @@
   "qf.checkbox.transparent": {
     "message": "gjennomsiktig"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Bruk tastatursnarveier (Alt + 1 til Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Bruk Ctrl i stedet for Alt"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "ALT-venstre / ALT-høyre for forrige / neste fane"
   },
@@ -768,15 +801,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "Bygg opp faner på nytt med snarvei: Ctrl + Alt +"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Bruk tastatursnarveier (Alt + 1 til Alt + 9)"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Bruk Ctrl i stedet for Alt"
-  },
-  "configurable.tooltip": {
-    "message": "Klikk på konfigurasjonshjulet for flere innstillinger"
   },
   "qf.continueFilter.label": {
     "message": "Opprett filter…"
@@ -790,8 +814,11 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopier QuickFolders-faneoppsettet til utklippstavlen"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird-tema"
+  "qf.currentfolder.leftSpacer": {
+    "message": "Venstre avstand"
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "Høyre avstand"
   },
   "qf.currentFolderBackground.custom": {
     "message": "egendefinert"
@@ -802,17 +829,11 @@
   "qf.currentFolderBackground.default": {
     "message": "sølv"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird-tema"
+  },
   "qf.currentFolderBackground.translucent": {
     "message": "halvgjennomsiktig"
-  },
-  "qf.currentfolder.leftSpacer": {
-    "message": "Venstre avstand"
-  },
-  "qf.currentfolder.rightSpacer": {
-    "message": "Høyre avstand"
-  },
-  "qf.description.github": {
-    "message": "Bruk GitHub for alle offisielle funksjonsforespørsler og bug-rapporter"
   },
   "qf.description.categoryusage": {
     "message": "Du kan plassere denne fanen i en kategori (f.eks. 'Arbeid', 'Privat', …)."
@@ -831,6 +852,9 @@
   "qf.description.donate": {
     "message": "Hvis du elsker QuickFolders like mye som vi gjør og ønsker å støtte utviklingen, kan du donere et beløp til videre utvikling av QuickFolders."
   },
+  "qf.description.dragexplain": {
+    "message": "Faner kan også dras for å endre posisjon! Slipp en fane på en annen for å sette den før/etter den."
+  },
   "qf.description.dragToAdd": {
     "message": "Dra e-postmapper til et tomt område på verktøylinjen for å opprette en ny QuickFolder (fungerer som snarvei/alias). Dra meldinger til QuickFolder for å flytte dem til tilhørende mappe (eller kopier med modifikatortast). Klikk QuickFolder for å hoppe til mappen."
   },
@@ -840,14 +864,14 @@
   "qf.description.dragToPosition": {
     "message": "Dra QuickFolders sidelengs for å endre rekkefølge. Høyreklikk QuickFolder for kontekstmeny; velg for å hoppe til undermapper. 'Endre navn på fane' endrer etiketten til QuickFolder. 'Fjern fane' sletter QuickFolder (ikke postmappen)."
   },
-  "qf.description.dragexplain": {
-    "message": "Faner kan også dras for å endre posisjon! Slipp en fane på en annen for å sette den før/etter den."
-  },
   "qf.description.editcategory": {
     "message": "Velg en eksisterende kategori ved å dobbeltklikke på den, eller legg til en ny kategori nedenfor."
   },
   "qf.description.experimentalItems": {
     "message": "Følgende elementer er eksperimentelle og vil forhåpentligvis fungere i neste utgivelse!!"
+  },
+  "qf.description.github": {
+    "message": "Bruk GitHub for alle offisielle funksjonsforespørsler og bug-rapporter"
   },
   "qf.description.languages": {
     "message": "QuickFolders støtter lokalisering – du kan bidra ved å legge til oversettelse på GitHub:"
@@ -948,41 +972,11 @@
   "qf.group.navigation": {
     "message": "Meldingsnavigasjon"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "Farge på aktiv fane:"
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "Palett for fargede faner:"
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palett for faner med brukertildelt farge"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "Farge ved dra-over:"
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "Farge ved markering av fane:"
-  },
-  "qf.label.Toolbar": {
-    "message": "Verktøylinje"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "Bredde på bunnlinje:"
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "Bredden på linjen under fanene. Endre farge med fargevelgeren for aktiv fane nedenfor."
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "Bakgrunn for verktøylinje:"
-  },
-  "qf.label.UncoloredTab": {
-    "message": "Standard faneoppsett"
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "Utseende for (inaktive) faner uten spesifikk farge"
-  },
   "qf.label.accessibility": {
     "message": "Tilgjengelighet"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Farge på aktiv fane:"
   },
   "qf.label.appearance": {
     "message": "Utseende"
@@ -990,14 +984,17 @@
   "qf.label.behavior": {
     "message": "Oppførsel"
   },
-  "qf.label.github": {
-    "message": "Rapporter feil / Be om funksjon…"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Knappens skriftstørrelse (0 for standard):"
   },
   "qf.label.cancel": {
     "message": "Avbryt"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Palett for fargede faner:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Palett for faner med brukertildelt farge"
   },
   "qf.label.colors": {
     "message": "Farger"
@@ -1017,6 +1014,9 @@
   "qf.label.dragFolderLabel": {
     "message": "Dra mapper hit for å opprette en fane. Klikk fanen for å gå til mappen, dra meldinger for å flytte/kopiere dem dit."
   },
+  "qf.label.DragOverBackground": {
+    "message": "Farge ved dra-over:"
+  },
   "qf.label.existingcategories": {
     "message": "Eksisterende kategorier:"
   },
@@ -1032,6 +1032,9 @@
   "qf.label.getQuickFilters": {
     "message": "For en forbedret og kraftigere måte å opprette filtre, installer min utvidelse quickFilters!"
   },
+  "qf.label.github": {
+    "message": "Rapporter feil / Be om funksjon…"
+  },
   "qf.label.goNextUnread": {
     "message": "Gå til neste uleste e-post:"
   },
@@ -1043,6 +1046,9 @@
   },
   "qf.label.homePage": {
     "message": "Finn detaljert informasjon på QuickFolders-hjemmesiden på quickfolders.org…"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Farge ved markering av fane:"
   },
   "qf.label.initdelay": {
     "message": "[ms] init-forsinkelse {1000 er standard}:"
@@ -1137,6 +1143,24 @@
   "qf.label.themes": {
     "message": "Temaer:"
   },
+  "qf.label.Toolbar": {
+    "message": "Verktøylinje"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Bredde på bunnlinje:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "Bredden på linjen under fanene. Endre farge med fargevelgeren for aktiv fane nedenfor."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Bakgrunn for verktøylinje:"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Standard faneoppsett"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Utseende for (inaktive) faner uten spesifikk farge"
+  },
   "qf.label.versionhistory": {
     "message": "Les versjonshistorikk…"
   },
@@ -1209,9 +1233,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Vis verktøy for gjeldende mappe"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "Skjul verktøy for gjeldende mappe"
-  },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "V"
   },
@@ -1232,6 +1253,9 @@
   },
   "qf.menuitem.quickfolders.helpAccess": {
     "message": "H"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Skjul verktøy for gjeldende mappe"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "QuickFolders-alternativer…"
@@ -1269,11 +1293,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "Gjør ingenting"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "Merk e-post som ulest"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "Merk e-post som lest"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Merk e-post som ulest"
   },
   "qf.moveMailStatus.label": {
     "message": "Når du flytter e-post til en QuickFolder:"
@@ -1355,9 +1379,14 @@
   "qf.notification.standard.title": {
     "message": "Lisensiert funksjon"
   },
-  "qf.notifications": { "message": "Varslinger" },
+  "qf.notifications": {
+    "message": "Varslinger"
+  },
   "qf.notifications.compactFolder": {
     "message": "Varsle etter at mappen er komprimert"
+  },
+  "qf.options.label.themeAuthor": {
+    "message": "Tema-forfatter:"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Individuell fane-fargeoppsett"
@@ -1368,20 +1397,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "(stripet stil)"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "Tema-forfatter:"
-  },
   "qf.options.theme.pastelColors": {
     "message": "Pastellfarger"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "Bunn:"
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Topp:"
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "Egendefinert hjørneradius"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "Topp:"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "Alltid vis grenser"
@@ -1413,12 +1439,6 @@
   "qf.pathFormat.AccountAndPath": {
     "message": "Konto - mappesti"
   },
-  "qf.pathFormat.PathOnly": {
-    "message": "Mappesti"
-  },
-  "qf.pathFormat.URI": {
-    "message": "Mappe-URI"
-  },
   "qf.pathFormat.folderAndAccount": {
     "message": "Mappenavn - e-postkonto"
   },
@@ -1428,8 +1448,14 @@
   "qf.pathFormat.maxDepth": {
     "message": "Maksimal stidybde:"
   },
+  "qf.pathFormat.PathOnly": {
+    "message": "Mappesti"
+  },
   "qf.pathFormat.tooltip": {
     "message": "Maks antall mapper som vises i mappesti."
+  },
+  "qf.pathFormat.URI": {
+    "message": "Mappe-URI"
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders-alternativer"
@@ -1605,9 +1631,6 @@
   "qf.toolbarTopPadding": {
     "message": "Øvre polstring"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "Nylige mapper"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "Lukk denne verktøylinjen"
   },
@@ -1617,11 +1640,11 @@
   "qf.tooltip.emailIcon": {
     "message": "Gjeldende e-post - dra til en QuickFolders-fane for å flytte e-posten"
   },
-  "qf.tooltip.filterStart": {
-    "message": "Aktiver filteropplæring. Dra e-poster til en QuickFolder for å lage nye filter."
-  },
   "qf.tooltip.filters": {
     "message": "Stopp oppretting av filter."
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Aktiver filteropplæring. Dra e-poster til en QuickFolder for å lage nye filter."
   },
   "qf.tooltip.folderUp": {
     "message": "Gå til overordnet mappe"
@@ -1647,20 +1670,23 @@
   "qf.tooltip.quickMove": {
     "message": "Dra en e-post hit og skriv inn målmappen (quickMove); eller klikk for å hoppe til mappen (quickJump)."
   },
+  "qf.tooltip.RecentFolders": {
+    "message": "Nylige mapper"
+  },
   "qf.tooltip.skipUnreadFolder": {
     "message": "Hopp til neste uleste mappe"
   },
   "qf.tooltip.threadIcon": {
     "message": "Gjeldende tråd - dra til en QuickFolders-fane for å flytte samtale"
   },
-  "qf.update.title": {
-    "message": "Oppdateringer"
-  },
   "qf.update.hideVersionHistory": {
     "message": "Åpne ikke fane med versjonshistorikk"
   },
   "qf.update.markInvalidTabs": {
     "message": "Marker ugyldige faner 🧹"
+  },
+  "qf.update.title": {
+    "message": "Oppdateringer"
   },
   "qf.youtube.description": {
     "message": "For detaljerte videoer om Thunderbird-tillegg og bruk av QuickFolders, besøk min YouTube-kanal Thunderbird Daily."
@@ -1703,12 +1729,6 @@
   "qfCommandPopup": {
     "message": "QuickFolders-kommandoer"
   },
-  "qfCompactFolder": {
-    "message": "Komprimer mappe"
-  },
-  "qfCompactFolderAccess": {
-    "message": "K"
-  },
   "qfCompacted": {
     "message": "Komprimert:"
   },
@@ -1723,6 +1743,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "Opprinnelig størrelse"
+  },
+  "qfCompactFolder": {
+    "message": "Komprimer mappe"
+  },
+  "qfCompactFolderAccess": {
+    "message": "K"
   },
   "qfConfirmCopyFolder": {
     "message": "Vil du virkelig kopiere mappe {0} til {1}?"
@@ -1826,6 +1852,9 @@
   "qfMarkAllRead": {
     "message": "Merk mappe som lest"
   },
+  "qfMarkAllRead.next": {
+    "message": "Merk mappe som lest og hopp til neste uleste mappe"
+  },
   "qfMarkAllReadAccess": {
     "message": "M"
   },
@@ -1834,9 +1863,6 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Merk mappe + undermapper som lest"
-  },
-  "qfMarkAllRead.next": {
-    "message": "Merk mappe som lest og hopp til neste uleste mappe"
   },
   "qfMenuColor": {
     "message": "Farge"
@@ -1969,50 +1995,11 @@
   "qfVersionDisableOnUpdate": {
     "message": "Stopp visning av versjonshistorikk etter oppdateringer?"
   },
-  "quickMove.help.head": {
-    "message": "Hjelp for {1}"
-  },
-  "quickMove.help.head.advanced": {
-    "message": "Avanserte funksjoner"
-  },
-  "quickMove.help.l1a": {
-    "message": "Skriv starten på mappenavnet eller ord i det, separert med mellomrom."
-  },
-  "quickMove.help.l1b": {
-    "message": "Følgende tegn regnes som ordgrenser og trenger ikke å skrives:"
-  },
-  "quickMove.help.l2a": {
-    "message": "Skriv {1} for å gå til besteforelder/overordnet/søkt mappe."
-  },
-  "quickMove.help.l2b": {
-    "message": "De første 2 bokstavene i en hvilken som helst overordnet mappe er vanligvis nok. Du kan også lage nye undermapper med denne syntaksen."
-  },
-  "quickMove.help.l3a": {
-    "message": "Skriv {1} for å hoppe over mellomliggende mapper."
-  },
-  "quickMove.help.l3b": {
-    "message": "Dette er nyttig for dypere, mer kompliserte eller ukjente mappestrukturer."
-  },
-  "quickMove.help.l4a": {
-    "message": "Skriv {1} for å få en liste over mapper som ble brukt sist. Antall resultater avhenger av lisensen din."
-  },
-  "quickMove.help.advanced": {
-    "message": "Mer avanserte funksjoner som hurtigtaster for å gå til en mappe / flytte e-post eller ekskludere mapper fra søkeresultater kan konfigureres på QuickFolders Pro-fanen. For å få tilgang til disse og andre premium-funksjoner, skaff en Pro-lisens og støtt fremtiden for QuickFolders."
-  },
-  "quickMove.singleMessage.goNext": {
-    "message": "Vis neste e-post etter at gjeldende er flyttet"
-  },
-  "quickMove.singleMessage.reopenTab": {
-    "message": "Åpne original e-post etter at den ble flyttet"
-  },
-  "quickMove.singleMessageTabs": {
-    "message": "Enkel e-post-fane"
+  "quickfolders.findFolder.help": {
+    "message": "hjelp med søk"
   },
   "quickfolders.findFolder.placeHolder": {
     "message": "mappenavn"
-  },
-  "quickfolders.findFolder.help": {
-    "message": "hjelp med søk"
   },
   "quickfolders.quickMove.menu.cancel": {
     "message": "Avbryt quickMove"
@@ -2059,63 +2046,492 @@
   "quickfoldersQuickMovedMails": {
     "message": "E-post flyttet til mappe {2};{1} e-poster flyttet til mappe {2}"
   },
+  "quickMove.help.advanced": {
+    "message": "Mer avanserte funksjoner som hurtigtaster for å gå til en mappe / flytte e-post eller ekskludere mapper fra søkeresultater kan konfigureres på QuickFolders Pro-fanen. For å få tilgang til disse og andre premium-funksjoner, skaff en Pro-lisens og støtt fremtiden for QuickFolders."
+  },
+  "quickMove.help.head": {
+    "message": "Hjelp for {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "Avanserte funksjoner"
+  },
+  "quickMove.help.l1a": {
+    "message": "Skriv starten på mappenavnet eller ord i det, separert med mellomrom."
+  },
+  "quickMove.help.l1b": {
+    "message": "Følgende tegn regnes som ordgrenser og trenger ikke å skrives:"
+  },
+  "quickMove.help.l2a": {
+    "message": "Skriv {1} for å gå til besteforelder/overordnet/søkt mappe."
+  },
+  "quickMove.help.l2b": {
+    "message": "De første 2 bokstavene i en hvilken som helst overordnet mappe er vanligvis nok. Du kan også lage nye undermapper med denne syntaksen."
+  },
+  "quickMove.help.l3a": {
+    "message": "Skriv {1} for å hoppe over mellomliggende mapper."
+  },
+  "quickMove.help.l3b": {
+    "message": "Dette er nyttig for dypere, mer kompliserte eller ukjente mappestrukturer."
+  },
+  "quickMove.help.l4a": {
+    "message": "Skriv {1} for å få en liste over mapper som ble brukt sist. Antall resultater avhenger av lisensen din."
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Vis neste e-post etter at gjeldende er flyttet"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Åpne original e-post etter at den ble flyttet"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Enkel e-post-fane"
+  },
+  "registration.account": {
+    "message": "E-postkonto"
+  },
+  "registration.action.buy": {
+    "message": "Kjøp $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Kjøp domenelisens"
+  },
+  "registration.action.current": {
+    "message": "Nåværende utgave"
+  },
+  "registration.action.extend": {
+    "message": "Forleng lisensen"
+  },
+  "registration.action.renew": {
+    "message": "Forny lisensen"
+  },
+  "registration.action.upgrade": {
+    "message": "Oppgrader til Pro"
+  },
+  "registration.annual": {
+    "message": "Årlige lisenser"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Lukk kjøpsmeldingen"
+  },
+  "registration.checkout.error": {
+    "message": "Kunne ikke åpne butikken. Prøv igjen."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}For å beholde fordelene ved fornyelse eller oppgradering, fortsett med produktet som ble åpnet fra denne siden.{/bold} For å velge en {i}annen lisens{/i}, start herfra igjen."
+  },
+  "registration.checkout.note": {
+    "message": "Priser, avgifter og tilgjengelige rabatter vises i butikken."
+  },
+  "registration.checkout.opened": {
+    "message": "Butikken er åpnet i nettleseren. Du kan beholde denne fanen åpen."
+  },
+  "registration.checkout.preview": {
+    "message": "Testforhåndsvisning: $1 for $2. Ingen butikk ble åpnet."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Denne oppgraderingsveien må bekreftes før kjøp. Ingen butikk ble åpnet."
+  },
+  "registration.compare": {
+    "message": "Sammenlign Standard og Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Hvem er lisensen for?"
+  },
+  "registration.contact.note": {
+    "message": "Disse opplysningene forhåndsutfylles i butikken. Du kan redigere dem her."
+  },
+  "registration.date.expired": {
+    "message": "Lisensen din utløp $1."
+  },
+  "registration.date.none": {
+    "message": "Velg en lisens nedenfor eller skriv inn din eksisterende nøkkel."
+  },
+  "registration.date.valid": {
+    "message": "Lisensen din er gyldig til $1."
+  },
+  "registration.development": {
+    "message": "Registreringstest"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro er en separat personlig lisens, ikke en fornyelse av domenelisensen. Domenelisensen dekker installasjoner med en e-postkonto på ditt registrerte bedriftsdomene innenfor antallet kjøpte plasser. En separat Pro-lisens kan dekke en hjemmeinstallasjon der kontoen ikke kan brukes. For å fortsette teamets dekning, velg Forny lisensen i Domene-panelet."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Legg til brukere"
+  },
+  "registration.domain.seatsNote": {
+    "message": "til din eksisterende domenelisens."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Trenger du flere plasser?"
+  },
+  "registration.edition.domain": {
+    "message": "Domene"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "message": "E-postadresse"
+  },
+  "registration.email.domain": {
+    "message": "Andre regler gjelder: Den konfigurerte e-postadressen må tilhøre det lisensierte domenet."
+  },
+  "registration.email.domain.heading": {
+    "message": "Domenelisenser"
+  },
+  "registration.email.help": {
+    "message": "Om lisensierte e-postadresser"
+  },
+  "registration.email.help.close": {
+    "message": "Lukk e-posthjelpen"
+  },
+  "registration.email.help.heading": {
+    "message": "E-postadressen er lisensen din"
+  },
+  "registration.email.hint": {
+    "message": "Din personlige lisens virker på flere enheter."
+  },
+  "registration.email.personal": {
+    "message": "Lisensen er knyttet til denne e-postadressen. Du kan bruke den på flere enheter. Konfigurer adressen som en kontos {bold}standardidentitet{/bold} i Thunderbird på hver enhet."
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard- og Pro-lisenser"
+  },
+  "registration.email.rules": {
+    "message": "Regler for lisensierte e-postadresser"
+  },
+  "registration.enterKey": {
+    "message": "Skriv inn lisensnøkkel…"
+  },
+  "registration.eyebrow": {
+    "message": "Din lisens"
+  },
+  "registration.firstName": {
+    "message": "Fornavn"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Testdata: kjøp åpner bare en forhåndsvisning."
+  },
+  "registration.footer": {
+    "message": "Laget for Thunderbird. Støttet av deg."
+  },
+  "registration.heading": {
+    "message": "Mappene dine. Mindre arbeid."
+  },
+  "registration.identity.empty": {
+    "message": "Skriv inn opplysninger manuelt"
+  },
+  "registration.identity.none": {
+    "message": "Fant ingen egnede e-postkontoer. Du kan skrive inn kontaktopplysningene manuelt."
+  },
+  "registration.lastName": {
+    "message": "Etternavn"
+  },
+  "registration.learnMore": {
+    "message": "Les mer…"
+  },
+  "registration.legacy.menu": {
+    "message": "Tidligere lisensregistrering"
+  },
+  "registration.license.domain": {
+    "message": "Domenelisens"
+  },
+  "registration.license.edition": {
+    "message": "$1-lisens"
+  },
+  "registration.license.expiresIn": {
+    "message": "Lisens utløper om $1 dager"
+  },
+  "registration.license.none": {
+    "message": "Ingen lisens konfigurert"
+  },
+  "registration.load.error": {
+    "message": "Kunne ikke laste lisensen eller kontoene. Last fanen på nytt."
+  },
+  "registration.navigation": {
+    "message": "Lisensnavigasjon"
+  },
+  "registration.options": {
+    "message": "Lisensvalg"
+  },
+  "registration.plan.domain.description": {
+    "message": "Pro-funksjoner for brukere på det lisensierte domenet, innenfor antallet kjøpte plasser."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "For teamet ditt"
+  },
+  "registration.plan.domain.scope": {
+    "message": "For et delt domene"
+  },
+  "registration.plan.pro.description": {
+    "message": "Organiser og finn meldinger raskere hver dag."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Alle funksjoner"
+  },
+  "registration.plan.pro.scope": {
+    "message": "For din egen e-post"
+  },
+  "registration.plan.standard.description": {
+    "message": "Ha favorittmappene dine lett tilgjengelig."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Det viktigste i hverdagen"
+  },
+  "registration.plan.standard.scope": {
+    "message": "For din egen e-post"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Domenelisenser{/bold}{br}Domenelisenser {bold}kontrolleres og utstedes manuelt{/bold}. Fornyelse legger ett år til eksisterende utløpsdato, også når lisensen er utløpt. Dette oppmuntrer til rettidig fornyelse; endelig varighet bekreftes ved gjennomgang."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Fordeler ved fornyelse og oppgradering avhenger av lisensinformasjonen som sendes til butikken. Hvis du bytter produkt i butikken eller sikkerhetsprogramvare fjerner informasjonen, kan butikken mislykkes med å bruke rettighetene dine."
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Oppgrader til Pro og betal **bare forskjellen** mellom Standard- og Pro-prisen. Du får et helt år fra betalingsdagen, selv om Standard-lisensen er utløpt."
+  },
+  "registration.renewal.hint": {
+    "message": "Å fornye eller forlenge lisensen koster vanligvis mindre enn å kjøpe en ny."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Personlige lisenser{/bold}{br}En ny lisens varer ett år fra betaling. Ved fornyelse eller forlengelse av samme utgave får du et helt år fra betaling eller ett år etter eksisterende utløpsdato, avhengig av hva som gir mest tid."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Eksisterende lisens{/bold}{br}Din nåværende lisens sendes til butikken slik at ny utløpsdato kan beregnes."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Oppgrader til Pro og betal **bare forskjellen** mellom Standard- og Pro-prisen. Du får et helt år fra betalingsdagen."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Standard → Pro-oppgradering{/bold}{br}Pro-lisensen varer ett år fra betalingen for oppgraderingen. Gjenstående tid på Standard-lisensen forlenger ikke perioden."
+  },
+  "registration.selection.heading": {
+    "message": "Bruk mindre tid på å lete."
+  },
+  "registration.selection.intro": {
+    "message": "Velg Standard for grunnleggende funksjoner, Pro for alle funksjoner eller Domene for brukere i organisasjonen."
+  },
+  "registration.selection.label": {
+    "message": "Velg lisens"
+  },
+  "registration.settings.error": {
+    "message": "Kunne ikke åpne lisensinnstillingene. Prøv igjen."
+  },
+  "registration.showLess": {
+    "message": "Vis mindre"
+  },
+  "registration.status.Empty": {
+    "message": "Gratisutgave"
+  },
+  "registration.status.Expired": {
+    "message": "Utløpt"
+  },
+  "registration.status.Invalid": {
+    "message": "Ugyldig lisens"
+  },
+  "registration.status.MailDifferent": {
+    "message": "Lisensens e-postadresse samsvarer ikke"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Den lisensierte adressen er ikke konfigurert"
+  },
+  "registration.status.NotValidated": {
+    "message": "Ikke kontrollert"
+  },
+  "registration.status.Unknown": {
+    "message": "Lisensen er utilgjengelig"
+  },
+  "registration.status.Valid": {
+    "message": "Gyldig"
+  },
+  "registration.subtitle": {
+    "message": "Velg riktig lisens for arbeidsflyten din."
+  },
+  "registration.terms.annual": {
+    "message": "En lisens varer ett år. Forny en utløpt lisens eller forleng en gyldig lisens for å fortsette med valgt utgave."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Ett år om gangen"
+  },
+  "registration.terms.back": {
+    "message": "Velg lisens"
+  },
+  "registration.terms.checkout": {
+    "message": "Velg en lisens for å gå til butikken. Prisen avhenger av utgave, land, avgifter og eventuelle rabatter."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Kjøp i nettleseren"
+  },
+  "registration.terms.domain": {
+    "message": "En domenelisens dekker brukere med e-postadresser på det lisensierte domenet, opptil antallet kjøpte plasser."
+  },
+  "registration.terms.draft": {
+    "message": "Utkast: Detaljer om prøveperiode og funksjoner etter utløp gjennomgås før utgivelse."
+  },
+  "registration.terms.edition": {
+    "message": "Standard og Pro tilbyr ulike funksjoner. Sammenlign utgavene for å finne den som passer."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Velg utgave"
+  },
+  "registration.terms.email": {
+    "message": "En personlig lisens er knyttet til e-postadressen din. Du kan bruke den på flere Thunderbird-installasjoner når adressen er konfigurert som **standardidentitet** for en konto på hver installasjon."
+  },
+  "registration.terms.email.heading": {
+    "message": "Din e-postadresse, din lisens"
+  },
+  "registration.terms.heading": {
+    "message": "Slik fungerer lisensen."
+  },
+  "registration.terms.hide": {
+    "message": "🡇 Fortsett til lisensvalg 🡇"
+  },
+  "registration.terms.intro": {
+    "message": "{+extensionName} har fulgt Thunderbird i mange år. Lisenser finansierer videre utvikling, nye funksjoner og kompatibilitetsoppdateringer. Hver lisens varer ett år og støtter dette arbeidet."
+  },
+  "registration.terms.label": {
+    "message": "Lisensvilkår"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Lisenser **fornyes ikke automatisk**. {+extensionName} minner deg på før lisensen utløper."
+  },
+  "registration.terms.otherAccounts": {
+    "message": "De lisensierte funksjonene fungerer også med alle dine andre e-postkontoer i Thunderbird. Ingen separate lisenser er nødvendig."
+  },
+  "registration.terms.referrer": {
+    "message": "Hvis du allerede har en lisens, sendes den til butikken for å kontrollere rettighetene dine."
+  },
+  "registration.terms.savings": {
+    "message": "**Start med Pro og spar i årene som kommer.** Å fornye eller forlenge Pro-lisensen koster betydelig mindre enn å kjøpe en ny."
+  },
+  "registration.terms.show": {
+    "message": "Vis lisensvilkår 🡇"
+  },
+  "registration.terms.support": {
+    "message": "Din støtte finansierer utvikling, kompatibilitetsoppdateringer og feilrettinger."
+  },
+  "registration.test.menu": {
+    "message": "Registrering til nettbutikken"
+  },
+  "registration.test.note": {
+    "message": "Kjøpet åpnes i nettleseren."
+  },
+  "registration.title": {
+    "message": "{+extensionName} · Din lisens"
+  },
   "renew-your-license": {
     "message": "Forny lisensen din."
   },
   "special-offer-content": {
     "message": "Oppgrader funksjonene dine og spar {b}$reduction${/b} når du kjøper en {link pro}QuickFolders Pro-lisens{/link} innen {b}$expirydate${/b}. Eller velg standardfunksjonene med den nye {link}Standard-lisensen{/link}.",
     "placeholders": {
-      "expirydate": { "content": "$1" },
-      "reduction": { "content": "$2", "example": "30%" }
+      "expirydate": {
+        "content": "$1"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Hjelp med å holde $addon$ kompatibel",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b}Kjære {name}{/b}, vennligst støtt $addon$ ved å skaffe en lisens. Thunderbird-koden utvikler seg kontinuerlig, og vi trenger {b}din hjelp{/b} for å holde tritt!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
     }
   },
   "special-offer-renew": {
     "message": "Forny lisensen nå og spar {b}$reduction${/b}! Dette spesialtilbudet er gyldig til {b}$expirydate${/b}.",
     "placeholders": {
-      "expirydate": { "content": "$1", "example": "11. september" },
-      "reduction": { "content": "$2", "example": "50%" }
+      "expirydate": {
+        "content": "$1",
+        "example": "11. september"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
     }
   },
   "special-offer-upgrade": {
     "message": "Oppgrader nå fra QuickFolders Standard til Pro og spar {b}$reduction${/b}! Dette spesialtilbudet er gyldig til {b}$expirydate${/b}.",
     "placeholders": {
-      "expirydate": { "content": "$1" },
-      "reduction": { "content": "$2", "example": "50%" }
+      "expirydate": {
+        "content": "$1"
+      },
+      "reduction": {
+        "content": "$2",
+        "example": "50%"
+      }
     }
   },
   "special-offer-upgrade-condition": {
     "message": "Når du oppgraderer fra Standard, får du ett helt års lisensperiode fra kjøpsdatoen uavhengig av utløpsdatoen på din tidligere lisens."
   },
-  "special-offer-head": {
-    "message": "Hjelp med å holde $addon$ kompatibel",
-    "placeholders": { "addon": { "content": "$1", "example": "QuickFolders" } }
-  },
-  "special-offer-intro": {
-    "message": "{b}Kjære {name}{/b}, vennligst støtt $addon$ ved å skaffe en lisens. Thunderbird-koden utvikler seg kontinuerlig, og vi trenger {b}din hjelp{/b} for å holde tritt!",
-    "placeholders": { "addon": { "content": "$1", "example": "QuickFolders" } }
-  },
   "support-preference": {
     "message": "Dette er den foretrukne måten å støtte $addonName$ på.",
-    "placeholders": { "addonName": { "content": "$1", "example": "QuickFolders" } }
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "support-suggestion": {
     "message": "For å holde $addonName$ funksjonell og oppdatert, vennligst vurder å støtte det:",
-    "placeholders": { "addonName": { "content": "$1", "example": "quickFilters" } }
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "quickFilters"
+      }
+    }
   },
   "testDrive": {
     "message": "Standard-lisensen gir deg noen funksjoner som tidligere var premium og fjerner begrensningene i den ufinansierte versjonen. Den finansierer vedlikeholdet med neste Thunderbird-versjon og overgangen til moderne API-basert e-postutvidelsesarkitektur."
   },
   "thanks-for-installing-intro": {
     "message": "Takk for at du installerte $addonName$.",
-    "placeholders": { "addonName": { "content": "$1", "example": "QuickFolders" } }
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "thanks-for-updating-intro": {
     "message": "Takk for at du oppdaterte $addonName$.",
-    "placeholders": { "addonName": { "content": "$1", "example": "QuickFolders" } }
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "time-and-effort": {
     "message": "$addonName$ krever kontinuerlige endringer for å forbli kompatibel med Mozilla-plattformen. Jeg jobber konstant med å beholde så mye funksjonalitet som mulig for fremtidige Thunderbird-versjoner.",
-    "placeholders": { "addonName": { "content": "$1", "example": "QuickFolders" } }
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "toAddress": {
     "message": "Til:"
@@ -2129,7 +2545,12 @@
   },
   "update.tooltip": {
     "message": "Klikk her for å lese hva som er nytt i $addonName$. Dette vil også fjerne nyhetsmerket 🟠",
-    "placeholders": { "addonName": { "content": "$1", "example": "QuickFolders" } }
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "updates.title": {
     "message": "Oppdateringer"
@@ -2156,13 +2577,21 @@
   "whats-new-maintenance": {
     "message": "Vedlikeholdsoppdatering $ver$. Denne versjonen retter alvorlige regresjoner fra den forrige versjonen.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "window-title": {
     "description": "page title. first placeholder will be replaced with Add-on name",
     "message": "Velkommen til $addonName$",
-    "placeholders": { "addonName": { "content": "$1", "example": "QuickFolders" } }
+    "placeholders": {
+      "addonName": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
   },
   "windowTitle": {
     "message": "Avanserte egenskaper"

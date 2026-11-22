@@ -2,6 +2,50 @@
   "_l10nstatus": {
     "message": "SPLASH+UI"
   },
+  "accessibility.count.total": {
+    "message": "$count$ сообщений всего",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ всего в подпапках",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ непрочитанных сообщений",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ непрочитанных в подпапках",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Удалить команду 'Настроить значок' из контекстного меню папки."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Скрыть всплывающие подсказки на вкладках"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Приоритет закладок QuickFolders в результатах поиска."
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "Показать отдельный элемент для родительской папки в подменю"
+  },
   "account.label": {
     "message": "Учётная запись:"
   },
@@ -21,50 +65,6 @@
   },
   "addon-authors-struggle": {
     "message": "Чтобы и дальше оставаться полезными, нам, разработчикам дополнений, теперь необходимо финансировать ресурсы, необходимые для исправления и перезаписи, чтобы наши пользователи могли продолжать пользоваться предоставляемыми нами функциями."
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ непрочитанных сообщений",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "$count$ непрочитанных в подпапках",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "$count$ сообщений всего",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "$count$ всего в подпапках",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "Удалить команду 'Настроить значок' из контекстного меню папки."
-  },
-  "accessibility.hideTooltips": {
-    "message": "Скрыть всплывающие подсказки на вкладках"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Приоритет закладок QuickFolders в результатах поиска."
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "Показать отдельный элемент для родительской папки в подменю"
   },
   "aria.a11underReview": {
     "message": "В настоящее время мы проводим обзор и улучшаем доступность этой страницы. Мы работаем над тем, чтобы описанная функциональность стала более удобной для клавиатуры и совместимой с программами для чтения с экрана. Спасибо за ваше терпение!"
@@ -156,6 +156,9 @@
   "commands.toggleFolderTree": {
     "message": "Переключить видимость дерева папок"
   },
+  "configurable.tooltip": {
+    "message": "Щелкните на значок настроек для дополнительных параметров"
+  },
   "cost-of-independence": {
     "message": "Разработка программного обеспечения требует времени и денег - в отличие от многих приложений на платформе, надстройки не разрабатываются крупными корпорациями и никоим образом не спонсируются Mozilla."
   },
@@ -207,8 +210,11 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "Создайте закладки для ваших любимых папок в Thunderbird."
   },
-  "firstName.label": {
-    "message": "Имя:"
+  "findRelated.btn.label": {
+    "message": "Найти связанные письма"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Найдите похожие письма на основе выбранного письма и пользовательских шаблонов поиска"
   },
   "findRelated.btnAdd": {
     "message": "Добавить"
@@ -219,20 +225,17 @@
   "findRelated.btnUpdate": {
     "message": "Обновить"
   },
-  "findRelated.btn.label": {
-    "message": "Найти связанные письма"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "Найдите похожие письма на основе выбранного письма и пользовательских шаблонов поиска"
-  },
   "findRelated.entries": {
     "message": "Шаблоны поиска"
   },
   "findRelated.menu.configure": {
     "message": "Настроить шаблоны поиска…"
   },
-  "findRelated.prompt.title": {
-    "message": "Найти связанные письма: Поиск по шаблону"
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Кнопка 'Перейти к следующему письму' очищает текущий поиск."
+  },
+  "findRelated.options.title": {
+    "message": "Параметры"
   },
   "findRelated.prompt.enterPattern": {
     "message": "Чтобы использовать эту функцию, достаточно настроить хотя бы один шаблон поиска."
@@ -240,11 +243,8 @@
   "findRelated.prompt.selectPattern": {
     "message": "Щелкните правой кнопкой мыши на [Найти связанные письма], чтобы выбрать шаблон поиска. Это выполнит поиск и сохранит его настройки для следующего раза, когда вы нажмете кнопку."
   },
-  "findRelated.options.title": {
-    "message": "Параметры"
-  },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "Кнопка 'Перейти к следующему письму' очищает текущий поиск."
+  "findRelated.prompt.title": {
+    "message": "Найти связанные письма: Поиск по шаблону"
   },
   "findRelated.searchGroup": {
     "message": "Группа поиска (0 для полного совпадения):"
@@ -252,26 +252,29 @@
   "findRelated.searchPattern": {
     "message": "Шаблон поиска:"
   },
+  "findRelated.term.body": {
+    "message": "Текст"
+  },
   "findRelated.term.menutitle": {
     "message": "Заголовок:"
-  },
-  "findRelated.term.subject": {
-    "message": "Тема"
-  },
-  "findRelated.term.sender": {
-    "message": "Отправитель"
   },
   "findRelated.term.recipients": {
     "message": "Получатели"
   },
-  "findRelated.term.body": {
-    "message": "Текст"
+  "findRelated.term.sender": {
+    "message": "Отправитель"
+  },
+  "findRelated.term.subject": {
+    "message": "Тема"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Что искать в связанных письмах:"
   },
   "findRelated.terms.selectedFields": {
     "message": "Извлечь строку поиска из:"
   },
-  "findRelated.terms.searchCriteriaFields": {
-    "message": "Что искать в связанных письмах:"
+  "firstName.label": {
+    "message": "Имя:"
   },
   "freeLicense": {
     "message": "Если вы недавно поддержали проект или помогли переводом или исправлением, возможно вам положен бесплатный лицензионный ключ.  Свяжитесь со мной, контактные данные можно найти в настройках."
@@ -317,6 +320,9 @@
   "intro": {
     "message": "Годовая лицензия позволяет использовать премиум-функции один год. У нас же появляется возможность поддерживать и расширять продукт, делая его более значимым."
   },
+  "keyshortcuts.news": {
+    "message": "В настоящее время Thunderbird использует их в качестве встроенных быстрых клавиш, но вы можете освободить их, используя дополнение tbkeys lite. Нажмите на (?) кнопку для получения дополнительной информации:"
+  },
   "label-remind-me": {
     "message": "Напомнить мне снова через $countDays$ дн.",
     "placeholders": {
@@ -326,14 +332,35 @@
       }
     }
   },
-  "keyshortcuts.news": {
-    "message": "В настоящее время Thunderbird использует их в качестве встроенных быстрых клавиш, но вы можете освободить их, используя дополнение tbkeys lite. Нажмите на (?) кнопку для получения дополнительной информации:"
-  },
   "lastName.label": {
     "message": "Фамилия:"
   },
   "lblCustomPalette": {
     "message": "Настроить палитру:"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders нужна лицензия Pro для поддержки более чем $maxTabs$ вкладок.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "Стандартная лицензия - ограниченная функция Pro. Узнать больше…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Нелицензионная версия - ограниченная функция. Узнать больше…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders нужна лицензия для поддержки более чем $maxTabs$ вкладок.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -341,9 +368,6 @@
   },
   "licenseComparison": {
     "message": "Чтобы сравнить функции разных версий, {link}прочтите этот список{/link}."
-  },
-  "newsHead": {
-    "message": "Последние новости"
   },
   "licenseTerms.hide": {
     "message": "🡇 Продолжить выбор лицензии 🡇"
@@ -357,56 +381,44 @@
   "licenseWindow.title": {
     "message": "Лицензия QuickFolders Pro"
   },
-  "license_restriced.std": {
-    "message": "Стандартная лицензия - ограниченная функция Pro. Узнать больше…"
+  "message.browserLaunchFailed": {
+    "message": "{p} Не удалось открыть браузер по умолчанию. Вы можете скопировать адрес ниже и вставить его в адресную строку браузера. {/p} Дополнительные сведения об ошибке можно найти в консоли ошибок JavaScript."
   },
-  "license_restriced.unpaid": {
-    "message": "Нелицензионная версия - ограниченная функция. Узнать больше…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — Ошибка браузера"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders нужна лицензия Pro для поддержки более чем $maxTabs$ вкладок.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "Веб-адрес (Ctrl+C для копирования):"
   },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders нужна лицензия для поддержки более чем $maxTabs$ вкладок.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.btn.accept": {
+    "message": "OK"
   },
-  "message.browserLaunchFailed": { "message": "{p} Не удалось открыть браузер по умолчанию. Вы можете скопировать адрес ниже и вставить его в адресную строку браузера. {/p} Дополнительные сведения об ошибке можно найти в консоли ошибок JavaScript." },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — Ошибка браузера" },
-  "message.browserLaunchFailed.url": { "message": "Веб-адрес (Ctrl+C для копирования):" },
-  "message.btn.accept": { "message": "OK" },
-  "message.btn.cancel": { "message": "Отмена" },
-  "message.btn.no": { "message": "Нет" },
-  "message.btn.yes": { "message": "Да" },
-  "message.features": { "message": "Сравнить функции…" },
-  "message.placeholder": { "message": "Сообщение отсутствует." },
-  "message.licenseScreen": { "message": "Показать параметры лицензии…" },
-  "message.linkInTab": { "message": "(Ссылка открыта во вкладке)" },
+  "message.btn.cancel": {
+    "message": "Отмена"
+  },
+  "message.btn.no": {
+    "message": "Нет"
+  },
+  "message.btn.yes": {
+    "message": "Да"
+  },
+  "message.features": {
+    "message": "Сравнить функции…"
+  },
+  "message.licenseScreen": {
+    "message": "Показать параметры лицензии…"
+  },
+  "message.linkInTab": {
+    "message": "(Ссылка открыта во вкладке)"
+  },
+  "message.placeholder": {
+    "message": "Сообщение отсутствует."
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla предоставляет только базовую платформу для доставки нашего программного обеспечения вам, конечным пользователям. Если нам нужно запросить у наших пользователей оплату или поддержку, мы не сможем сделать это через addons.thunderbird.net - это не «магазин приложений» со встроенными платными доступом или управлением лицензиями, такими как iTunes или Google Play."
   },
-  "newsMsgEsr140": {
-    "message": "{P}{b} В следующем крупном выпуске {/b}: Thunderbird вскоре попросит вас выбрать предпочитаемый путь обновления — либо ежегодный ESR, либо более быстрые ежемесячные релизы. {a release}Узнайте больше о новой модели релизов{/a}.{U} {L}Версия ESR останется на v140, увеличивая только номера минорных версий и включая только исправления безопасности и багов, что часто предпочтительнее для корпоративных сред.{/L} {L}Ежемесячный цикл релизов будет предоставлять новые функции и обновления интерфейса по мере их разработки. Пожалуйста, проверьте, поддерживают ли ваши текущие дополнения эту модель релизов. Для этого вы можете установить {a compatCheck}Проверку совместимости дополнений{/a}.{/L} {/U}{/P}{P} Мы рады сообщить, что QuickFolders полностью совместим с Thunderbird 140, следующим выпуском Extended Support Release (ESR). Это означает постоянную надежность и спокойствие на протяжении следующего основного цикла поддержки.{/P}{P} QuickFolders продолжит поддерживать пользователей Thunderbird 115 и выше. В течение следующего года, по мере добавления новых функций, поддержка Thunderbird 115 может быть прекращена в пользу Thunderbird 128 и новее.{/P}{P} Мы постоянно следим за изменениями в Thunderbird, чтобы гарантировать, что QuickFolders остается совместимым и надежным, независимо от выбранного вами пути обновления.{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} В Thunderbird грядёт важное изменение {/b}: Начиная с Thunderbird 153, экспериментальные дополнения, такие как {+extensionName}, больше не будут поддерживаться в версиях Release. Thunderbird активно {a apiwork}расширяет API WebExtension{/a}, чтобы снизить зависимость от экспериментальных механизмов расширений. Начиная с {emph}версии 153{/emph}, устаревшие дополнения требуют использования {+newsMsgEsr153.ESR} (ESR).<ul><li>Канал ESR остаётся рекомендуемым вариантом для пользователей, которым нужны расширенные или экспериментальные дополнения.</li><li>Канал Release ориентирован на стабильные, полностью поддерживаемые расширения WebExtension.</li><li>Канал Beta по-прежнему можно использовать для тестирования и проверки совместимости перед релизами ESR.</li></ul></P>{P}{+extensionName} по-прежнему полностью поддерживается в Thunderbird ESR и активно поддерживается в Release-версиях, где это технически возможно.{/P}{P}Мы продолжаем внимательно следить за изменениями в Thunderbird, чтобы обеспечить совместимость и стабильную работу во всех поддерживаемых версиях.{/P}"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (расширенная версия поддержки Thunderbird)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Предстоящие изменения в поддержке дополнений Thunderbird{/b}: Ранее объявленное изменение, затрагивающее экспериментальные дополнения в канале Release, было отложено до следующего цикла ESR (ESR 2027). Это дополнительное время будет использовано для расширения API и доработки перехода совместно с сообществом разработчиков дополнений.{/P}{P}На данный момент никаких действий не требуется. {+extensionName} продолжает работать как в Release-, так и в ESR-версиях Thunderbird, где это поддерживается.{/P}{P}Мы продолжим следить за изменениями платформы и предоставим рекомендации, если в будущем потребуется миграция.{/P}{P}Хотя переход на канал ESR не является обязательным, некоторые пользователи, активно использующие экспериментальные функции, могут предпочесть его из-за более стабильной среды и менее частых изменений, поскольку экспериментальные интерфейсы более чувствительны к внутренним изменениям платформы.{/P}"
+  "newsHead": {
+    "message": "Последние новости"
   },
   "newsMsg.license.expired": {
     "message": "{P} Все новые функции, исправления ошибок и долгосрочная совместимость возможны благодаря вашей поддержке.{/P}{P class=specialOffer} Чтобы поддержать развитие QuickFolders, вы можете продлить лицензию со скидкой до {salesEnd}.{/P}{P class=bottomhint}🡇 Выберите один из вариантов ниже, чтобы узнать больше 🡇 {/P}"
@@ -420,6 +432,19 @@
   "newsMsg.license.valid": {
     "message": "{P} Спасибо за поддержку QuickFolders с помощью Pro-лицензии — это делает возможными все новые функции, исправления ошибок и долгосрочную совместимость.{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b} В следующем крупном выпуске {/b}: Thunderbird вскоре попросит вас выбрать предпочитаемый путь обновления — либо ежегодный ESR, либо более быстрые ежемесячные релизы. {a release}Узнайте больше о новой модели релизов{/a}.{U} {L}Версия ESR останется на v140, увеличивая только номера минорных версий и включая только исправления безопасности и багов, что часто предпочтительнее для корпоративных сред.{/L} {L}Ежемесячный цикл релизов будет предоставлять новые функции и обновления интерфейса по мере их разработки. Пожалуйста, проверьте, поддерживают ли ваши текущие дополнения эту модель релизов. Для этого вы можете установить {a compatCheck}Проверку совместимости дополнений{/a}.{/L} {/U}{/P}{P} Мы рады сообщить, что QuickFolders полностью совместим с Thunderbird 140, следующим выпуском Extended Support Release (ESR). Это означает постоянную надежность и спокойствие на протяжении следующего основного цикла поддержки.{/P}{P} QuickFolders продолжит поддерживать пользователей Thunderbird 115 и выше. В течение следующего года, по мере добавления новых функций, поддержка Thunderbird 115 может быть прекращена в пользу Thunderbird 128 и новее.{/P}{P} Мы постоянно следим за изменениями в Thunderbird, чтобы гарантировать, что QuickFolders остается совместимым и надежным, независимо от выбранного вами пути обновления.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (расширенная версия поддержки Thunderbird)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Предстоящие изменения в поддержке дополнений Thunderbird{/b}: Ранее объявленное изменение, затрагивающее экспериментальные дополнения в канале Release, было отложено до следующего цикла ESR (ESR 2027). Это дополнительное время будет использовано для расширения API и доработки перехода совместно с сообществом разработчиков дополнений.{/P}{P}На данный момент никаких действий не требуется. {+extensionName} продолжает работать как в Release-, так и в ESR-версиях Thunderbird, где это поддерживается.{/P}{P}Мы продолжим следить за изменениями платформы и предоставим рекомендации, если в будущем потребуется миграция.{/P}{P}Хотя переход на канал ESR не является обязательным, некоторые пользователи, активно использующие экспериментальные функции, могут предпочесть его из-за более стабильной среды и менее частых изменений, поскольку экспериментальные интерфейсы более чувствительны к внутренним изменениям платформы.{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} В Thunderbird грядёт важное изменение {/b}: Начиная с Thunderbird 153, экспериментальные дополнения, такие как {+extensionName}, больше не будут поддерживаться в версиях Release. Thunderbird активно {a apiwork}расширяет API WebExtension{/a}, чтобы снизить зависимость от экспериментальных механизмов расширений. Начиная с {emph}версии 153{/emph}, устаревшие дополнения требуют использования {+newsMsgEsr153.ESR} (ESR).<ul><li>Канал ESR остаётся рекомендуемым вариантом для пользователей, которым нужны расширенные или экспериментальные дополнения.</li><li>Канал Release ориентирован на стабильные, полностью поддерживаемые расширения WebExtension.</li><li>Канал Beta по-прежнему можно использовать для тестирования и проверки совместимости перед релизами ESR.</li></ul></P>{P}{+extensionName} по-прежнему полностью поддерживается в Thunderbird ESR и активно поддерживается в Release-версиях, где это технически возможно.{/P}{P}Мы продолжаем внимательно следить за изменениями в Thunderbird, чтобы обеспечить совместимость и стабильную работу во всех поддерживаемых версиях.{/P}"
+  },
   "newsSection": {
     "message": "{P}{b} В следующем крупном выпуске {/b}: Thunderbird вскоре попросит вас выбрать предпочитаемый путь обновления — либо ежегодный ESR, либо более быстрые ежемесячные релизы. {a release}Узнайте больше о новой модели релизов{/a}.{U} {L}Версия ESR останется на v140, увеличивая только номера минорных версий и включая только исправления безопасности и багов, что часто предпочтительнее для корпоративных сред.{/L} {L}Ежемесячный цикл релизов будет предоставлять новые функции и обновления интерфейса по мере их разработки. Пожалуйста, проверьте, поддерживают ли ваши текущие дополнения эту модель релизов. Для этого вы можете установить {a compatCheck}Проверку совместимости дополнений{/a}.{/L} {/U}",
     "placeholders": {
@@ -429,11 +454,11 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}Continuamos a seguir o ciclo de lançamentos mensais do Thunderbird para garantir compatibilidade e estabilidade. Como sempre, este trabalho é totalmente financiado pelas vendas de licenças.{/P}"
-  },
   "newsSection.important": {
     "message": "{P}Важно для пользователей канала Release ({emph}154 и позже{/emph}): С новым 2-недельным циклом выпуска Thunderbird существует повышенный риск неожиданных ошибок, таких как [issue 690]. Хотя я регулярно тестирую {+extensionName} на ежедневных сборках, своевременные исправления зависят от {b}раннего сообщения{/b} пользователями Release. Пожалуйста, следите за {a href='https://github.com/RealRaven2000/QuickFolders/issues'}трекером проблем{/a} и оперативно сообщайте об ошибках для поддержания совместимости.{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}Continuamos a seguir o ciclo de lançamentos mensais do Thunderbird para garantir compatibilidade e estabilidade. Como sempre, este trabalho é totalmente financiado pelas vendas de licenças.{/P}"
   },
   "newsSection.license": {
     "message": "Поскольку вся работа над QuickFolders и бесплатная поддержка финансируются исключительно за счет продажи лицензий, пожалуйста, подумайте о покупке лицензии или продлении текущей."
@@ -471,9 +496,6 @@
   "qf.accounts": {
     "message": "учетные записи"
   },
-  "qf.alert.pasteFolders.formatErr": {
-    "message": "Не удалось создать закладки. См. «Инструменты» → «Консоль ошибок» для подробной информации."
-  },
   "qf.alert.bookmarks.unsupportedType": {
     "message": "Текущий не поддерживаемый тип закладки: $bookmarkType$ {NewLine}Выберите хотя бы одно сообщение или просто перетащите письма на кнопку",
     "placeholders": {
@@ -481,6 +503,9 @@
         "content": "$1"
       }
     }
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Не удалось создать закладки. См. «Инструменты» → «Консоль ошибок» для подробной информации."
   },
   "qf.backupAndRestore": {
     "message": "Восстановления резервной копии"
@@ -548,20 +573,14 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Фокус на списке сообщений при клике по вкладке"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "Скрыть QuickFolders на вкладках отдельных сообщений"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Удаляет панель инструментов QuickFolders на вкладках, отображающих одно сообщение."
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Закрывающая кнопка"
   },
-  "qf.checkbox.currentFolder.show": {
-    "message": "Показывать при запуске"
-  },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "интегрировать с легкой темой"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "Показывать при запуске"
   },
   "qf.checkbox.debug": {
     "message": "Режим отладки"
@@ -580,6 +599,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "Свернуть меню категорий, чтобы оно занимало меньше места"
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Скрыть QuickFolders на вкладках отдельных сообщений"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Удаляет панель инструментов QuickFolders на вкладках, отображающих одно сообщение."
   },
   "qf.checkbox.highlightNewMail": {
     "message": "Подсвечивать папки с новыми сообщениями"
@@ -632,14 +657,14 @@
   "qf.checkbox.quickMove": {
     "message": "quickMove - перемещение сообщений в любую папку по нажатию"
   },
-  "qf.checkbox.quickMove.tip": {
-    "message": "Сочетания клавиш кнопки quickMove для быстрого перемещения сообщений в папку по имени."
-  },
   "qf.checkbox.quickmove.autofill": {
     "message": "Вставить имя последней папки"
   },
   "qf.checkbox.quickmove.autofill.tip": {
     "message": "Будет вставлено имя последней успешно использованной папки. Нажмите Enter, чтобы использовать его, или введите имя другой папки."
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Сочетания клавиш кнопки quickMove для быстрого перемещения сообщений в папку по имени."
   },
   "qf.checkbox.readingList": {
     "message": "Список для чтения"
@@ -695,8 +720,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Вкладка «Последние папки»"
   },
-  "configurable.tooltip": {
-    "message": "Щелкните на значок настроек для дополнительных параметров"
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Показывать номер сокращения на закладках"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Раскрывать папки из этой папке в меню"
@@ -709,9 +734,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "Показывать в закладке количество не прочтенных сообщений"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "Показывать номер сокращения на закладках"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "…также и в новом окне с сообщением"
@@ -755,6 +777,12 @@
   "qf.checkbox.transparent": {
     "message": "прозрачный"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Использовать клавиатурные сокращения (от Alt + 1 до Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Использовать Ctrl вместо Alt"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "Alt-влево/Alt-вправо для предыдущей/следующей закладки"
   },
@@ -763,12 +791,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "Обновить все закладки: Ctrl + Alt +"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Использовать клавиатурные сокращения (от Alt + 1 до Alt + 9)"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Использовать Ctrl вместо Alt"
   },
   "qf.continueFilter.label": {
     "message": "Создать фильтр…"
@@ -782,8 +804,11 @@
   "qf.copyfolders.tooltip": {
     "message": "Копировать настройки в буфер обмена"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Тема Thunderbird"
+  "qf.currentfolder.leftSpacer": {
+    "message": "Левая распорка:"
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "Правая распорка:"
   },
   "qf.currentFolderBackground.custom": {
     "message": "собственный"
@@ -794,17 +819,11 @@
   "qf.currentFolderBackground.default": {
     "message": "серебро"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Тема Thunderbird"
+  },
   "qf.currentFolderBackground.translucent": {
     "message": "просвечивающий"
-  },
-  "qf.currentfolder.leftSpacer": {
-    "message": "Левая распорка:"
-  },
-  "qf.currentfolder.rightSpacer": {
-    "message": "Правая распорка:"
-  },
-  "qf.description.github": {
-    "message": "Пожалуйста пользуйтесь github для сообщений об ошибках и запросов о новых возможностях"
   },
   "qf.description.categoryusage": {
     "message": "Можно присвоить закладке категорию('Работа','Личное')"
@@ -823,6 +842,9 @@
   "qf.description.donate": {
     "message": "Если QuickFolders вам нравится также, как и нам, вы можете поддержать деньгами дальнейшее развитие."
   },
+  "qf.description.dragexplain": {
+    "message": "Можно изменить порядок закладок перетаскиванием. Попробуйте положить одну на другую."
+  },
   "qf.description.dragToAdd": {
     "message": "Для создания новых закладок перетаскивайте папки на свободное место в новой панели инструментов. Для перемещения сообщений перетаскивайте их на закладки (удерживайте Ctrl для копирования). Нажмите на закладку, чтобы переместится в папку."
   },
@@ -832,14 +854,14 @@
   "qf.description.dragToPosition": {
     "message": "Перетаскивайте закладки в пределах панели инструментов для изменения их положения. В контекстном меню (нажатие правой кнопкой мышки) закладки вы можете переместится в папки, находящиеся в этой папке, переименовать или удалить закладку(но не папку)."
   },
-  "qf.description.dragexplain": {
-    "message": "Можно изменить порядок закладок перетаскиванием. Попробуйте положить одну на другую."
-  },
   "qf.description.editcategory": {
     "message": "Выберите существующую категорию с помощью двойного щелчка или добавьте новую ниже."
   },
   "qf.description.experimentalItems": {
     "message": "Последующие функции - экспериментальные, надеюсь они будут работать в следующей версии!!"
+  },
+  "qf.description.github": {
+    "message": "Пожалуйста пользуйтесь github для сообщений об ошибках и запросов о новых возможностях"
   },
   "qf.description.languages": {
     "message": "Вы можете помочь, добавив перевод на свой язык на github:"
@@ -940,41 +962,11 @@
   "qf.group.navigation": {
     "message": "Навигация по сообщениям"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "Цвет активной закладки"
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "Палитра цветных закладок:"
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Палитра закладок с предопределенным цветом"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "Цвет закладки под переносимой"
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "Цвет закладки под мышкой"
-  },
-  "qf.label.Toolbar": {
-    "message": "Панель инструментов"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "Ширина линии внизу:"
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "Ширина линии под закладками. Цвет меняется цветом активной закладки чуть ниже."
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "Фоновый цвет панели инструментов"
-  },
-  "qf.label.UncoloredTab": {
-    "message": "Бесцветные закладки"
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "Вид (неактивных) закладок без предопределенного цвета"
-  },
   "qf.label.accessibility": {
     "message": "Доступность"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Цвет активной закладки"
   },
   "qf.label.appearance": {
     "message": "Внешний вид"
@@ -982,14 +974,17 @@
   "qf.label.behavior": {
     "message": "Поведение"
   },
-  "qf.label.github": {
-    "message": "Сообщить об ошибке/Запрос новых возможностей на github…"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Размер шрифта кнопки (0 - значение по умолчанию):"
   },
   "qf.label.cancel": {
     "message": "Отмена"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Палитра цветных закладок:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Палитра закладок с предопределенным цветом"
   },
   "qf.label.colors": {
     "message": "Цвета"
@@ -1009,6 +1004,9 @@
   "qf.label.dragFolderLabel": {
     "message": "Для создания закладки перетащите папку сюда. Нажмите на закладку для перехода в папку, перетащите сообщения на закладку для перемещения/копирования их в соответствующую папку."
   },
+  "qf.label.DragOverBackground": {
+    "message": "Цвет закладки под переносимой"
+  },
   "qf.label.existingcategories": {
     "message": "Существующие категории:"
   },
@@ -1024,6 +1022,9 @@
   "qf.label.getQuickFilters": {
     "message": "Установите моё расширение quickFilters для более утончённого создания фильтров!"
   },
+  "qf.label.github": {
+    "message": "Сообщить об ошибке/Запрос новых возможностей на github…"
+  },
   "qf.label.goNextUnread": {
     "message": "Переходя к следующему непрочитанному сообщению:"
   },
@@ -1035,6 +1036,9 @@
   },
   "qf.label.homePage": {
     "message": "Подробная информация на странице QuickFolders на quickfolders.org…"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Цвет закладки под мышкой"
   },
   "qf.label.initdelay": {
     "message": "Начальная задержка, мс (1000 мс по умолчанию)"
@@ -1126,6 +1130,24 @@
   "qf.label.themes": {
     "message": "Темы:"
   },
+  "qf.label.Toolbar": {
+    "message": "Панель инструментов"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Ширина линии внизу:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "Ширина линии под закладками. Цвет меняется цветом активной закладки чуть ниже."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Фоновый цвет панели инструментов"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Бесцветные закладки"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Вид (неактивных) закладок без предопределенного цвета"
+  },
   "qf.label.versionhistory": {
     "message": "Смотреть историю изменений…"
   },
@@ -1198,9 +1220,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Показать инструменты текущей папки"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "Скрыть инструменты текущей папки"
-  },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "к"
   },
@@ -1221,6 +1240,9 @@
   },
   "qf.menuitem.quickfolders.helpAccess": {
     "message": "С"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Скрыть инструменты текущей папки"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "Настройки QuickFolders"
@@ -1258,11 +1280,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "Ничего не делать"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "Отметить почту как непрочитанную"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "Отметить почту как прочитанную"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Отметить почту как непрочитанную"
   },
   "qf.moveMailStatus.label": {
     "message": "При перемещении почты в QuickFolder:"
@@ -1344,9 +1366,14 @@
   "qf.notification.standard.title": {
     "message": "Стандартная функция"
   },
-  "qf.notifications": { "message": "Уведомления" },
+  "qf.notifications": {
+    "message": "Уведомления"
+  },
   "qf.notifications.compactFolder": {
     "message": "Уведомлять после сжатия папки"
+  },
+  "qf.options.label.themeAuthor": {
+    "message": "Автор темы:"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Индивидуальный вид закладок"
@@ -1357,20 +1384,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "(полосатый стиль)"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "Автор темы:"
-  },
   "qf.options.theme.pastelColors": {
     "message": "Пастельные цвета"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "Низ:"
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Верх:"
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "Радиус угла"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "Верх:"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "Всегда показывать рамку"
@@ -1399,12 +1423,6 @@
   "qf.pathFormat.AccountAndPath": {
     "message": "Учётная запись - Путь к папке"
   },
-  "qf.pathFormat.PathOnly": {
-    "message": "Путь к папке"
-  },
-  "qf.pathFormat.URI": {
-    "message": "URI-папки"
-  },
   "qf.pathFormat.folderAndAccount": {
     "message": "Имя папки - Учётная запись"
   },
@@ -1414,8 +1432,14 @@
   "qf.pathFormat.maxDepth": {
     "message": "Максимальная глубина пути:"
   },
+  "qf.pathFormat.PathOnly": {
+    "message": "Путь к папке"
+  },
   "qf.pathFormat.tooltip": {
     "message": "Максимальное количество имен папок показываемых в пути к папке."
+  },
+  "qf.pathFormat.URI": {
+    "message": "URI-папки"
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Настройки QuickFolders"
@@ -1428,7 +1452,9 @@
       }
     }
   },
-  "qf.premium.renew.hide": { "message": "Скрыть предупреждение о лицензии до перезапуска" },
+  "qf.premium.renew.hide": {
+    "message": "Скрыть предупреждение о лицензии до перезапуска"
+  },
   "qf.premium.renewLicense.tooltip": {
     "message": "Ваша лицензия истекла уже {1} дней"
   },
@@ -1588,9 +1614,6 @@
   "qf.toolbarTopPadding": {
     "message": "Верхний отступ"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "Последние папки"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "Закрыть эту панель инструментов"
   },
@@ -1600,11 +1623,11 @@
   "qf.tooltip.emailIcon": {
     "message": "Текущее сообщение - перетащите на закладку QuickFolders для перемещения."
   },
-  "qf.tooltip.filterStart": {
-    "message": "Активирует создание фильтров. Перетаскивание сообщений в QuickFolder создаёт новые фильтры."
-  },
   "qf.tooltip.filters": {
     "message": "Прекратить создавать фильтры сообщений."
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Активирует создание фильтров. Перетаскивание сообщений в QuickFolder создаёт новые фильтры."
   },
   "qf.tooltip.folderUp": {
     "message": "Перейти к вышестоящей папке"
@@ -1630,20 +1653,23 @@
   "qf.tooltip.quickMove": {
     "message": "Быстрое перемещение: перенесите сообщения сюда, затем введите название папки."
   },
+  "qf.tooltip.RecentFolders": {
+    "message": "Последние папки"
+  },
   "qf.tooltip.skipUnreadFolder": {
     "message": "К следующей непрочитанной папке"
   },
   "qf.tooltip.threadIcon": {
     "message": "Текущее обсуждение - перетащите на закладку QuickFolders для перемещения."
   },
-  "qf.update.title": {
-    "message": "Обновления"
-  },
   "qf.update.hideVersionHistory": {
     "message": "Не открывать вкладку с историей версий"
   },
   "qf.update.markInvalidTabs": {
     "message": "Выделить недопустимые вкладки 🧹"
+  },
+  "qf.update.title": {
+    "message": "Обновления"
   },
   "qf.youtube.description": {
     "message": "Для подробных видео о дополнениях Thunderbird и как использовать QuickFolders посетите мой канал на YouTube Thunderbird Daily."
@@ -1686,12 +1712,6 @@
   "qfCommandPopup": {
     "message": "Команды для закладок"
   },
-  "qfCompactFolder": {
-    "message": "Сжать папку"
-  },
-  "qfCompactFolderAccess": {
-    "message": "С"
-  },
   "qfCompacted": {
     "message": "Сжато:"
   },
@@ -1706,6 +1726,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "Старый размер"
+  },
+  "qfCompactFolder": {
+    "message": "Сжать папку"
+  },
+  "qfCompactFolderAccess": {
+    "message": "С"
   },
   "qfConfirmCopyFolder": {
     "message": "Действительно скопировать папку {0} в {1}?"
@@ -1809,6 +1835,9 @@
   "qfMarkAllRead": {
     "message": "Отметить папку как прочитанную"
   },
+  "qfMarkAllRead.next": {
+    "message": "Пометить папку как прочитанную и перейти к следующей непрочитанной папке"
+  },
   "qfMarkAllReadAccess": {
     "message": "ч"
   },
@@ -1817,9 +1846,6 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Отметить папку и подпапки как прочитанные"
-  },
-  "qfMarkAllRead.next": {
-    "message": "Пометить папку как прочитанную и перейти к следующей непрочитанной папке"
   },
   "qfMenuColor": {
     "message": "Цвет"
@@ -1952,45 +1978,6 @@
   "qfVersionDisableOnUpdate": {
     "message": "Не показывать историю изменений после обновлений?"
   },
-  "quickMove.help.head": {
-    "message": "Помощь для {1}"
-  },
-  "quickMove.help.head.advanced": {
-    "message": "Расширенные возможности"
-  },
-  "quickMove.help.l1a": {
-    "message": "Введите начало имени папки или слова в нем, разделенные пробелом."
-  },
-  "quickMove.help.l1b": {
-    "message": "Следующие символы считаются границами слов и их не нужно вводить:"
-  },
-  "quickMove.help.l2a": {
-    "message": "Введите {1} для входа в папку дедушки и дедушки/родительскую/искомую папку."
-  },
-  "quickMove.help.l2b": {
-    "message": "Обычно достаточно первых двух букв любой родительской папки. Вы также можете создавать новые подпапки с помощью этого синтаксиса."
-  },
-  "quickMove.help.l3a": {
-    "message": "Введите {1} для пропуска любых папок между ними."
-  },
-  "quickMove.help.l3b": {
-    "message": "Это полезно для более глубоких, более сложных или неизвестных иерархий папок."
-  },
-  "quickMove.help.l4a": {
-    "message": "Введите {1}, чтобы получить список папок, которые открывались последними. Количество результатов зависит от уровня вашей лицензии."
-  },
-  "quickMove.help.advanced": {
-    "message": "Более продвинутые функции, такие как сочетания клавиш для перехода к папке / перемещения почты или исключения папок из результатов поиска, можно настроить на вкладке QuickFolders Pro. Чтобы получить доступ к этим и другим премиум-функциям, получите лицензию Pro и поддержите будущее QuickFolders."
-  },
-  "quickMove.singleMessage.goNext": {
-    "message": "Показать следующее письмо после перемещения текущего"
-  },
-  "quickMove.singleMessage.reopenTab": {
-    "message": "Повторно открыть исходное письмо после того, как оно было перемещено"
-  },
-  "quickMove.singleMessageTabs": {
-    "message": "Вкладка отдельного сообщения"
-  },
   "quickfolders.findFolder.placeHolder": {
     "message": "имя папки"
   },
@@ -2039,6 +2026,384 @@
   "quickfoldersQuickMovedMails": {
     "message": "Письмо перемещено в папку {2};{1} письма перемещены в папку {2}"
   },
+  "quickMove.help.advanced": {
+    "message": "Более продвинутые функции, такие как сочетания клавиш для перехода к папке / перемещения почты или исключения папок из результатов поиска, можно настроить на вкладке QuickFolders Pro. Чтобы получить доступ к этим и другим премиум-функциям, получите лицензию Pro и поддержите будущее QuickFolders."
+  },
+  "quickMove.help.head": {
+    "message": "Помощь для {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "Расширенные возможности"
+  },
+  "quickMove.help.l1a": {
+    "message": "Введите начало имени папки или слова в нем, разделенные пробелом."
+  },
+  "quickMove.help.l1b": {
+    "message": "Следующие символы считаются границами слов и их не нужно вводить:"
+  },
+  "quickMove.help.l2a": {
+    "message": "Введите {1} для входа в папку дедушки и дедушки/родительскую/искомую папку."
+  },
+  "quickMove.help.l2b": {
+    "message": "Обычно достаточно первых двух букв любой родительской папки. Вы также можете создавать новые подпапки с помощью этого синтаксиса."
+  },
+  "quickMove.help.l3a": {
+    "message": "Введите {1} для пропуска любых папок между ними."
+  },
+  "quickMove.help.l3b": {
+    "message": "Это полезно для более глубоких, более сложных или неизвестных иерархий папок."
+  },
+  "quickMove.help.l4a": {
+    "message": "Введите {1}, чтобы получить список папок, которые открывались последними. Количество результатов зависит от уровня вашей лицензии."
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Показать следующее письмо после перемещения текущего"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Повторно открыть исходное письмо после того, как оно было перемещено"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Вкладка отдельного сообщения"
+  },
+  "registration.account": {
+    "message": "Почтовая учётная запись"
+  },
+  "registration.action.buy": {
+    "message": "Купить $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Купить доменную лицензию"
+  },
+  "registration.action.current": {
+    "message": "Текущая редакция"
+  },
+  "registration.action.extend": {
+    "message": "Продлить лицензию"
+  },
+  "registration.action.renew": {
+    "message": "Возобновить лицензию"
+  },
+  "registration.action.upgrade": {
+    "message": "Перейти на Pro"
+  },
+  "registration.annual": {
+    "message": "Годовые лицензии"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Закрыть уведомление о покупке"
+  },
+  "registration.checkout.error": {
+    "message": "Не удалось открыть магазин. Повторите попытку."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Чтобы сохранить преимущества продления или перехода, продолжайте с товаром, открытым с этой страницы.{/bold} Для выбора {i}другой лицензии{/i} начните отсюда заново."
+  },
+  "registration.checkout.note": {
+    "message": "Цены, налоги и доступные скидки указаны в магазине."
+  },
+  "registration.checkout.opened": {
+    "message": "Магазин открыт в браузере. Эту вкладку можно оставить открытой."
+  },
+  "registration.checkout.preview": {
+    "message": "Тестовый просмотр: $1 для $2. Магазин не открывался."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Этот способ перехода требует подтверждения перед включением покупки. Магазин не открывался."
+  },
+  "registration.compare": {
+    "message": "Сравнить Standard и Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Для кого эта лицензия?"
+  },
+  "registration.contact.note": {
+    "message": "Эти данные будут подставлены при покупке. Здесь их можно изменить."
+  },
+  "registration.date.expired": {
+    "message": "Срок вашей лицензии истёк $1."
+  },
+  "registration.date.none": {
+    "message": "Выберите лицензию ниже или введите имеющийся ключ."
+  },
+  "registration.date.valid": {
+    "message": "Ваша лицензия действует до $1."
+  },
+  "registration.development": {
+    "message": "Проверка регистрации"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro — отдельная персональная лицензия, а не продление доменной. Доменная лицензия распространяется на установки с почтовой учётной записью в зарегистрированном домене компании в пределах купленного числа мест. Отдельная лицензия Pro может покрывать домашнюю установку, где нельзя использовать эту учётную запись. Чтобы сохранить лицензию для команды, выберите «Возобновить лицензию» на панели «Домен»."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Добавить пользователей"
+  },
+  "registration.domain.seatsNote": {
+    "message": "к имеющейся доменной лицензии."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Нужны дополнительные места?"
+  },
+  "registration.edition.domain": {
+    "message": "Домен"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "message": "Адрес электронной почты"
+  },
+  "registration.email.domain": {
+    "message": "Действуют другие правила: настроенный адрес должен принадлежать лицензированному домену."
+  },
+  "registration.email.domain.heading": {
+    "message": "Доменные лицензии"
+  },
+  "registration.email.help": {
+    "message": "О лицензированных адресах"
+  },
+  "registration.email.help.close": {
+    "message": "Закрыть справку об адресах"
+  },
+  "registration.email.help.heading": {
+    "message": "Ваш адрес — ваша лицензия"
+  },
+  "registration.email.hint": {
+    "message": "Персональная лицензия работает на нескольких устройствах."
+  },
+  "registration.email.personal": {
+    "message": "Лицензия привязана к этому адресу. Её можно использовать на нескольких устройствах. На каждом устройстве настройте этот адрес как {bold}основную личность{/bold} учётной записи Thunderbird."
+  },
+  "registration.email.personal.heading": {
+    "message": "Лицензии Standard и Pro"
+  },
+  "registration.email.rules": {
+    "message": "Правила лицензированного адреса"
+  },
+  "registration.enterKey": {
+    "message": "Ввести лицензионный ключ…"
+  },
+  "registration.eyebrow": {
+    "message": "Ваша лицензия"
+  },
+  "registration.firstName": {
+    "message": "Имя"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Тестовые данные: покупка открывает только предварительный просмотр."
+  },
+  "registration.footer": {
+    "message": "Создано для Thunderbird. При вашей поддержке."
+  },
+  "registration.heading": {
+    "message": "Ваши папки. Меньше усилий."
+  },
+  "registration.identity.empty": {
+    "message": "Ввести данные вручную"
+  },
+  "registration.identity.none": {
+    "message": "Подходящие почтовые учётные записи не найдены. Контактные данные можно ввести вручную."
+  },
+  "registration.lastName": {
+    "message": "Фамилия"
+  },
+  "registration.learnMore": {
+    "message": "Подробнее…"
+  },
+  "registration.legacy.menu": {
+    "message": "Прежняя регистрация лицензии"
+  },
+  "registration.license.domain": {
+    "message": "Доменная лицензия"
+  },
+  "registration.license.edition": {
+    "message": "Лицензия $1"
+  },
+  "registration.license.expiresIn": {
+    "message": "Срок действия лицензии истекает через $1 дн."
+  },
+  "registration.license.none": {
+    "message": "Лицензия не настроена"
+  },
+  "registration.load.error": {
+    "message": "Не удалось загрузить лицензию или учётные записи. Перезагрузите вкладку для повторной попытки."
+  },
+  "registration.navigation": {
+    "message": "Навигация по лицензиям"
+  },
+  "registration.options": {
+    "message": "Варианты лицензий"
+  },
+  "registration.plan.domain.description": {
+    "message": "Функции Pro для пользователей лицензированного домена в пределах числа приобретённых мест."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Для вашей команды"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Для общего домена"
+  },
+  "registration.plan.pro.description": {
+    "message": "Каждый день быстрее упорядочивайте и находите сообщения."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Все функции"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Для вашей почты"
+  },
+  "registration.plan.standard.description": {
+    "message": "Держите избранные папки под рукой."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Всё необходимое на каждый день"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Для вашей почты"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Доменные лицензии{/bold}{br}Доменные лицензии {bold}проверяются и выдаются вручную{/bold}. Продление добавляет год к текущей дате окончания, даже если срок лицензии уже истёк. Это побуждает продлевать лицензию вовремя; окончательный срок подтверждается при проверке."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Преимущества продления и перехода зависят от данных лицензии, переданных магазину. Смена товара в магазине или удаление этих данных защитным ПО может помешать учесть ваши имеющиеся права."
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Перейдите на Pro и заплатите **только разницу** между ценами Standard и Pro — вы получите полный год со дня оплаты, даже если срок действия лицензии Standard уже истёк."
+  },
+  "registration.renewal.hint": {
+    "message": "Продление или обновление лицензии обычно дешевле покупки новой."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Персональные лицензии{/bold}{br}Новая лицензия действует год с момента оплаты. При возобновлении или продлении той же редакции вы получаете полный год с момента оплаты или год после текущей даты окончания — в зависимости от того, что даёт больше времени."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Имеющаяся лицензия{/bold}{br}Текущая лицензия передаётся магазину для расчёта новой даты окончания."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Перейдите на Pro и заплатите **только разницу** между ценами Standard и Pro. Вы получите полный год со дня оплаты."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Переход со Standard на Pro{/bold}{br}Лицензия Pro действует год с даты оплаты перехода. Оставшееся время лицензии Standard не увеличивает этот срок."
+  },
+  "registration.selection.heading": {
+    "message": "Меньше времени на поиски."
+  },
+  "registration.selection.intro": {
+    "message": "Выберите Standard для основных функций, Pro для всех функций или Domain для пользователей вашей организации."
+  },
+  "registration.selection.label": {
+    "message": "Выбор лицензии"
+  },
+  "registration.settings.error": {
+    "message": "Не удалось открыть настройки лицензии. Повторите попытку."
+  },
+  "registration.showLess": {
+    "message": "Показать меньше"
+  },
+  "registration.status.Empty": {
+    "message": "Бесплатная редакция"
+  },
+  "registration.status.Expired": {
+    "message": "Истекла"
+  },
+  "registration.status.Invalid": {
+    "message": "Недействительная лицензия"
+  },
+  "registration.status.MailDifferent": {
+    "message": "Адрес лицензии не совпадает"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Лицензированный адрес не настроен"
+  },
+  "registration.status.NotValidated": {
+    "message": "Не проверена"
+  },
+  "registration.status.Unknown": {
+    "message": "Лицензия недоступна"
+  },
+  "registration.status.Valid": {
+    "message": "Действительна"
+  },
+  "registration.subtitle": {
+    "message": "Выберите лицензию для своего рабочего процесса."
+  },
+  "registration.terms.annual": {
+    "message": "Лицензия действует год. Возобновите истёкшую лицензию или продлите действующую, чтобы продолжить работу с выбранной редакцией."
+  },
+  "registration.terms.annual.heading": {
+    "message": "По одному году"
+  },
+  "registration.terms.back": {
+    "message": "Выбор лицензии"
+  },
+  "registration.terms.checkout": {
+    "message": "Выберите лицензию для перехода в магазин. Цена зависит от редакции, страны, налогов и применимых скидок."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Покупка в браузере"
+  },
+  "registration.terms.domain": {
+    "message": "Доменная лицензия распространяется на пользователей с адресами лицензированного домена в пределах числа приобретённых мест."
+  },
+  "registration.terms.draft": {
+    "message": "Проект условий: подробности пробного использования и функций после истечения лицензии будут проверены до выпуска."
+  },
+  "registration.terms.edition": {
+    "message": "Standard и Pro предлагают разные наборы функций. Сравните редакции и выберите подходящую."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Выберите редакцию"
+  },
+  "registration.terms.email": {
+    "message": "Персональная лицензия привязана к вашему адресу. Её можно использовать в нескольких установках Thunderbird, если лицензированный адрес настроен как **основная личность** учётной записи в каждой установке."
+  },
+  "registration.terms.email.heading": {
+    "message": "Ваша почта, ваша лицензия"
+  },
+  "registration.terms.heading": {
+    "message": "Как работает ваша лицензия."
+  },
+  "registration.terms.hide": {
+    "message": "🡇 Перейти к выбору лицензии 🡇"
+  },
+  "registration.terms.intro": {
+    "message": "{+extensionName} уже много лет развивается вместе с Thunderbird. Лицензии финансируют разработку, новые функции и обновления совместимости. Каждая лицензия действует год и поддерживает эту работу."
+  },
+  "registration.terms.label": {
+    "message": "Условия лицензии"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Лицензии **не продлеваются автоматически**. {+extensionName} напомнит вам до окончания срока лицензии."
+  },
+  "registration.terms.otherAccounts": {
+    "message": "Лицензированные функции также работают со всеми другими почтовыми учётными записями Thunderbird. Отдельные лицензии не нужны."
+  },
+  "registration.terms.referrer": {
+    "message": "Если у вас уже есть лицензия, она передаётся в магазин для проверки ваших прав."
+  },
+  "registration.terms.savings": {
+    "message": "**Начните с Pro и экономьте в следующие годы.** Возобновление или продление лицензии Pro стоит существенно меньше покупки новой."
+  },
+  "registration.terms.show": {
+    "message": "Показать условия лицензии 🡇"
+  },
+  "registration.terms.support": {
+    "message": "Ваша поддержка финансирует разработку, обновления совместимости и исправления."
+  },
+  "registration.test.menu": {
+    "message": "Регистрация в интернет-магазине"
+  },
+  "registration.test.note": {
+    "message": "Покупка открывается в браузере."
+  },
+  "registration.title": {
+    "message": "{+extensionName} · Ваша лицензия"
+  },
   "renew-your-license": {
     "message": "Продлите лицензию."
   },
@@ -2052,6 +2417,24 @@
       "reduction": {
         "content": "$2",
         "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Помогите сохранить совместимость с $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b} Уважаемый {name} {/b}, пожалуйста, поддержите $ addon $, получив лицензию. Код Thunderbird постоянно развивается, и нам нужна {b} ваша помощь {/b}, чтобы не отставать!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
       }
     }
   },
@@ -2083,24 +2466,6 @@
   },
   "special-offer-upgrade-condition": {
     "message": "При обновлении со стандартной версии вы получаете срок действия лицензии на один полный год с даты покупки, независимо от даты истечения срока действия вашей предыдущей лицензии."
-  },
-  "special-offer-head": {
-    "message": "Помогите сохранить совместимость с $addon$",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{b} Уважаемый {name} {/b}, пожалуйста, поддержите $ addon $, получив лицензию. Код Thunderbird постоянно развивается, и нам нужна {b} ваша помощь {/b}, чтобы не отставать!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
   },
   "support-preference": {
     "message": "Это предпочтительный способ поддержки $addonName$.",
@@ -2194,7 +2559,10 @@
   "whats-new-maintenance": {
     "message": "Корректирующее обновление $ver$. Этот выпуск содержит срочные исправления регрессий, появившихся в предыдущей версии.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "window-title": {

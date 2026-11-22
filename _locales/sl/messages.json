@@ -2,6 +2,50 @@
   "_l10nstatus": {
     "message": "SPLASH+UI"
   },
+  "accessibility.count.total": {
+    "message": "$count$ sporočil skupaj",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ skupaj v podmapah",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ neprebranih sporočil",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ neprebranih v podmapah",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Odstrani ukaz 'Prilagodi ikono' iz kontekstnega menija mape."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Skrij orodne namige na zavihkih"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Daj prednost zaznamkom QuickFolders v rezultatih iskanja."
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "Pokaži ločen element za nadrejeno mapo v podmeniju"
+  },
   "account.label": {
     "message": "Izberite račun:"
   },
@@ -21,50 +65,6 @@
   },
   "addon-authors-struggle": {
     "message": "Da bomo še naprej koristni, moramo razvijalci dodatkov zdaj financirati vire, potrebne za popravljanje in prepisovanje, tako da bodo lahko naši uporabniki še naprej koristili funkcionalnost, ki jo ponujamo."
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ neprebranih sporočil",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "$count$ neprebranih v podmapah",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "$count$ sporočil skupaj",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "$count$ skupaj v podmapah",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "Odstrani ukaz 'Prilagodi ikono' iz kontekstnega menija mape."
-  },
-  "accessibility.hideTooltips": {
-    "message": "Skrij orodne namige na zavihkih"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Daj prednost zaznamkom QuickFolders v rezultatih iskanja."
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "Pokaži ločen element za nadrejeno mapo v podmeniju"
   },
   "aria.a11underReview": {
     "message": "Trenutno pregledamo in izboljšujemo dostopnost te strani. Delamo na tem, da bi bila opisana funkcionalnost bolj združljiva s tipkovnico in bralniki zaslona. Hvala za potrpežljivost!"
@@ -144,6 +144,9 @@
   "commands.toggleFolderTree": {
     "message": "Preklopi vidnost drevesa map"
   },
+  "configurable.tooltip": {
+    "message": "Kliknite na kolesce za več možnosti konfiguracije"
+  },
   "cost-of-independence": {
     "message": "Razvoj programske opreme stane čas in denar - v nasprotju s številnimi platformnimi aplikacijami dodatkov ne pišejo velike korporacije niti jih Mozilla na noben način ne sponzorira."
   },
@@ -195,8 +198,11 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "Svoje priljubljene poštne mape v Thunderbirdu dodajte med zaznamke."
   },
-  "firstName.label": {
-    "message": "Ime:"
+  "findRelated.btn.label": {
+    "message": "Najdi povezane e-pošte"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Poišči podobna e-poštna sporočila na podlagi izbranega sporočila in vzorcev iskanja, ki jih določi uporabnik"
   },
   "findRelated.btnAdd": {
     "message": "Добавить"
@@ -207,20 +213,17 @@
   "findRelated.btnUpdate": {
     "message": "Обновить"
   },
-  "findRelated.btn.label": {
-    "message": "Najdi povezane e-pošte"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "Poišči podobna e-poštna sporočila na podlagi izbranega sporočila in vzorcev iskanja, ki jih določi uporabnik"
-  },
   "findRelated.entries": {
     "message": "Iskalni vzorci"
   },
   "findRelated.menu.configure": {
     "message": "Nastavi iskalne vzorce…"
   },
-  "findRelated.prompt.title": {
-    "message": "Najdi povezane e-pošte: Iskanje po vzorcu"
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Gumb 'Premakni na naslednji e-poštni naslov' izbriše trenutno iskanje."
+  },
+  "findRelated.options.title": {
+    "message": "Параметры"
   },
   "findRelated.prompt.enterPattern": {
     "message": "Za uporabo te funkcije je dovolj, da nastavite vsaj en iskalni vzorec."
@@ -228,11 +231,8 @@
   "findRelated.prompt.selectPattern": {
     "message": "Kliknite desno na [Poišči povezane e-pošte], da izberete iskalni vzorec. To bo izvedlo iskanje in shranilo nastavitve za naslednjič, ko kliknete gumb."
   },
-  "findRelated.options.title": {
-    "message": "Параметры"
-  },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "Gumb 'Premakni na naslednji e-poštni naslov' izbriše trenutno iskanje."
+  "findRelated.prompt.title": {
+    "message": "Najdi povezane e-pošte: Iskanje po vzorcu"
   },
   "findRelated.searchGroup": {
     "message": "Группа поиска (0 для полного совпадения):"
@@ -240,26 +240,29 @@
   "findRelated.searchPattern": {
     "message": "Шаблон поиска:"
   },
+  "findRelated.term.body": {
+    "message": "Текст"
+  },
   "findRelated.term.menutitle": {
     "message": "Заголовок:"
-  },
-  "findRelated.term.subject": {
-    "message": "Тема"
-  },
-  "findRelated.term.sender": {
-    "message": "Отправитель"
   },
   "findRelated.term.recipients": {
     "message": "Получатели"
   },
-  "findRelated.term.body": {
-    "message": "Текст"
+  "findRelated.term.sender": {
+    "message": "Отправитель"
+  },
+  "findRelated.term.subject": {
+    "message": "Тема"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Что искать в связанных письмах:"
   },
   "findRelated.terms.selectedFields": {
     "message": "Извлечь строку поиска из:"
   },
-  "findRelated.terms.searchCriteriaFields": {
-    "message": "Что искать в связанных письмах:"
+  "firstName.label": {
+    "message": "Ime:"
   },
   "freeLicense": {
     "message": "V primeru, da ste nedavno prispevali k projektu QuickFolders ali ste sodelovali pri razvoju, kot je prevajanje ali pisanje popravkov, ste morda upravičeni do brezplačnega ključa za dovoljenje. Navežite stik z mano iz zavihka za podporo v možnostih QuickFolders."
@@ -305,6 +308,9 @@
   "intro": {
     "message": "Letno dovoljenje razširitve QuickFolders Pro vam omogoča vse značilnosti Premium za eno leto. Omogoča nam tudi podporo in nadaljnji razvoj izdelka, in njegovo spreobrnitev v nekaj bolj čudovitega."
   },
+  "keyshortcuts.news": {
+    "message": "Trenutno Thunderbird uporablja te kot vgrajene bližnjice, vendar jih lahko sprostite z dodatkom tbkeys lite. Kliknite na (?) gumb za več informacij:"
+  },
   "label-remind-me": {
     "message": "Ponovno me opomni čez $countDays$ dni.",
     "placeholders": {
@@ -314,14 +320,35 @@
       }
     }
   },
-  "keyshortcuts.news": {
-    "message": "Trenutno Thunderbird uporablja te kot vgrajene bližnjice, vendar jih lahko sprostite z dodatkom tbkeys lite. Kliknite na (?) gumb za več informacij:"
-  },
   "lastName.label": {
     "message": "Priimek:"
   },
   "lblCustomPalette": {
     "message": "Paleta po meri:"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders potrebuje licenco Pro za podporo več kot zavihkom $maxTabs$.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "Standardna licenca - omejena funkcija Pro. Izvedi več…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Različica brez licence - omejena funkcija. Izvedi več…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders potrebuje licenco za podporo več kot zavihkom $maxTabs$.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -342,59 +369,44 @@
   "licenseWindow.title": {
     "message": "Dovoljenje QuickFolders Pro"
   },
-  "license_restriced.std": {
-    "message": "Standardna licenca - omejena funkcija Pro. Izvedi več…"
+  "message.browserLaunchFailed": {
+    "message": "{p} Privzetega spletnega brskalnika ni bilo mogoče odpreti. Spodnji naslov lahko kopirate in prilepite v naslovno vrstico brskalnika. {/p} Več podrobnosti o napaki najdete v konzoli za napake JavaScript."
   },
-  "license_restriced.unpaid": {
-    "message": "Različica brez licence - omejena funkcija. Izvedi več…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — Napaka brskalnika"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders potrebuje licenco Pro za podporo več kot zavihkom $maxTabs$.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "Spletni naslov (Ctrl+C za kopiranje):"
   },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders potrebuje licenco za podporo več kot zavihkom $maxTabs$.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.btn.accept": {
+    "message": "V redu"
   },
-  "message.browserLaunchFailed": { "message": "{p} Privzetega spletnega brskalnika ni bilo mogoče odpreti. Spodnji naslov lahko kopirate in prilepite v naslovno vrstico brskalnika. {/p} Več podrobnosti o napaki najdete v konzoli za napake JavaScript." },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — Napaka brskalnika" },
-  "message.browserLaunchFailed.url": { "message": "Spletni naslov (Ctrl+C za kopiranje):" },
-  "message.btn.accept": { "message": "V redu" },
-  "message.btn.cancel": { "message": "Prekliči" },
-  "message.btn.no": { "message": "Ne" },
-  "message.btn.yes": { "message": "Da" },
-  "message.features": { "message": "Primerjaj funkcije…" },
-  "message.placeholder": { "message": "Sporočilo manjka." },
-  "message.licenseScreen": { "message": "Prikaži možnosti licence…" },
-  "message.linkInTab": { "message": "(Povezava odprta v zavihku)" },
+  "message.btn.cancel": {
+    "message": "Prekliči"
+  },
+  "message.btn.no": {
+    "message": "Ne"
+  },
+  "message.btn.yes": {
+    "message": "Da"
+  },
+  "message.features": {
+    "message": "Primerjaj funkcije…"
+  },
+  "message.licenseScreen": {
+    "message": "Prikaži možnosti licence…"
+  },
+  "message.linkInTab": {
+    "message": "(Povezava odprta v zavihku)"
+  },
+  "message.placeholder": {
+    "message": "Sporočilo manjka."
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla ponuja samo osnovno platformo za dostavo naše programske opreme vam, končnim uporabnikom. Če moramo uporabnike prositi za plačilo ali podporo, tega ne moremo storiti z addons.thunderbird.net - to ni 'trgovina z aplikacijami' z vgrajenimi plačilnimi zidovi ali upravljanjem licenc, kot sta iTunes ali google play."
   },
   "newsHead": {
     "message": "Zadnje novice"
-  },
-  "newsMsgEsr140": {
-    "message": "{P}{b} Kmalu v naslednji veliki izdaji {/b}: Thunderbird vas bo kmalu prosil, da izberete svojo želeno pot posodobitev — letno ESR pot ali hitrejše mesečne izdaje. {a release}Več o novem modelu izdaj{/a}.{U} {L}ESR različica bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in popravke napak, kar je pogosto bolj primerno za poslovna okolja.{/L} {L}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo razvite. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaj. Za pomoč lahko namestite {a compatCheck}Preverjanje združljivosti dodatkov{/a}.{/L} {/U}{/P}{P} Z veseljem sporočamo, da je QuickFolders popolnoma združljiv s Thunderbirdom 140, naslednjo izdajo Extended Support Release (ESR). To pomeni stalno zanesljivost in brezskrbnost skozi naslednji glavni cikel podpore.{/P}{P} QuickFolders bo za zdaj še naprej podpiral uporabnike Thunderbirda 115 in novejših. V prihodnjem letu, ko bomo dodajali nove funkcije, se lahko podpora za Thunderbird 115 ukine v korist Thunderbirda 128 in novejših.{/P}{P} Neprestano spremljamo spremembe v Thunderbirdu, da zagotovimo, da QuickFolders ostane združljiv in zanesljiv, ne glede na izbrano pot posodobitev.{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} V Thunderbird prihaja pomembna sprememba {/b}: Od Thunderbird 153 naprej eksperimentalni dodatki, kot je {+extensionName}, ne bodo več podprti v različicah Release. Thunderbird aktivno {a apiwork}razširja API-je WebExtension{/a}, da zmanjša odvisnost od eksperimentalnih mehanizmov razširitev. Od {emph}različice 153{/emph} naprej starejši dodatki zahtevajo uporabo {+newsMsgEsr153.ESR} (ESR).<ul><li>ESR kanal ostaja priporočena izbira za uporabnike, ki uporabljajo napredne ali eksperimentalne dodatke.</li><li>Release kanal se osredotoča na stabilne, popolnoma podprte dodatke WebExtension.</li><li>Beta kanal se lahko še vedno uporablja za testiranje in preverjanje združljivosti pred izdajami ESR.</li></ul></P>{P}{+extensionName} ostaja v celoti podprt v Thunderbird ESR in se aktivno vzdržuje v različicah Release, kjer je to tehnično mogoče.{/P}{P}Še naprej pozorno spremljamo spremembe v Thunderbirdu, da zagotovimo združljivost in stabilno delovanje v vseh podprtih različicah.{/P}"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (razširjena izdaja podpore Thunderbirda)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Prihajajoče spremembe v podpori dodatkov Thunderbird{/b}: Predhodno napovedana sprememba, ki je vplivala na eksperimentalne dodatke v kanalu Release, je bila prestavljena na naslednji ESR cikel (ESR 2027). Ta dodaten čas bo uporabljen za izboljšanje pokritosti API-jev in za izpopolnitev prehoda skupaj s skupnostjo dodatkov.{/P}{P}Trenutno ni potrebnih nobenih ukrepov. {+extensionName} še naprej deluje tako v Release kot ESR različicah Thunderbirda, kjer je podprto.{/P}{P}Še naprej bomo spremljali spremembe platforme in podali navodila, če bo v prihodnosti potrebna migracija.{/P}{P}Čeprav prehod na ESR kanal ni obvezen, ga lahko nekateri uporabniki, ki se močno zanašajo na eksperimentalne funkcije, raje izberejo zaradi stabilnejšega okolja in manj pogostih sprememb, saj so eksperimentalni vmesniki bolj občutljivi na notranje spremembe platforme.{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} Vse nove funkcije, popravki napak in dolgoročna združljivost so možni zaradi vaše podpore.{/P}{P class=specialOffer} Za podporo razvoju QuickFolders lahko svojo licenco obnovite s popustom do {salesEnd}.{/P}{P class=bottomhint}🡇 Izberite eno od spodnjih možnosti za več informacij 🡇 {/P}"
@@ -408,6 +420,19 @@
   "newsMsg.license.valid": {
     "message": "{P} Hvala, ker podpirate QuickFolders s Pro licenco — to omogoča vse nove funkcije, popravke napak in dolgoročno združljivost.{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b} Kmalu v naslednji veliki izdaji {/b}: Thunderbird vas bo kmalu prosil, da izberete svojo želeno pot posodobitev — letno ESR pot ali hitrejše mesečne izdaje. {a release}Več o novem modelu izdaj{/a}.{U} {L}ESR različica bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in popravke napak, kar je pogosto bolj primerno za poslovna okolja.{/L} {L}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo razvite. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaj. Za pomoč lahko namestite {a compatCheck}Preverjanje združljivosti dodatkov{/a}.{/L} {/U}{/P}{P} Z veseljem sporočamo, da je QuickFolders popolnoma združljiv s Thunderbirdom 140, naslednjo izdajo Extended Support Release (ESR). To pomeni stalno zanesljivost in brezskrbnost skozi naslednji glavni cikel podpore.{/P}{P} QuickFolders bo za zdaj še naprej podpiral uporabnike Thunderbirda 115 in novejših. V prihodnjem letu, ko bomo dodajali nove funkcije, se lahko podpora za Thunderbird 115 ukine v korist Thunderbirda 128 in novejših.{/P}{P} Neprestano spremljamo spremembe v Thunderbirdu, da zagotovimo, da QuickFolders ostane združljiv in zanesljiv, ne glede na izbrano pot posodobitev.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (razširjena izdaja podpore Thunderbirda)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Prihajajoče spremembe v podpori dodatkov Thunderbird{/b}: Predhodno napovedana sprememba, ki je vplivala na eksperimentalne dodatke v kanalu Release, je bila prestavljena na naslednji ESR cikel (ESR 2027). Ta dodaten čas bo uporabljen za izboljšanje pokritosti API-jev in za izpopolnitev prehoda skupaj s skupnostjo dodatkov.{/P}{P}Trenutno ni potrebnih nobenih ukrepov. {+extensionName} še naprej deluje tako v Release kot ESR različicah Thunderbirda, kjer je podprto.{/P}{P}Še naprej bomo spremljali spremembe platforme in podali navodila, če bo v prihodnosti potrebna migracija.{/P}{P}Čeprav prehod na ESR kanal ni obvezen, ga lahko nekateri uporabniki, ki se močno zanašajo na eksperimentalne funkcije, raje izberejo zaradi stabilnejšega okolja in manj pogostih sprememb, saj so eksperimentalni vmesniki bolj občutljivi na notranje spremembe platforme.{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} V Thunderbird prihaja pomembna sprememba {/b}: Od Thunderbird 153 naprej eksperimentalni dodatki, kot je {+extensionName}, ne bodo več podprti v različicah Release. Thunderbird aktivno {a apiwork}razširja API-je WebExtension{/a}, da zmanjša odvisnost od eksperimentalnih mehanizmov razširitev. Od {emph}različice 153{/emph} naprej starejši dodatki zahtevajo uporabo {+newsMsgEsr153.ESR} (ESR).<ul><li>ESR kanal ostaja priporočena izbira za uporabnike, ki uporabljajo napredne ali eksperimentalne dodatke.</li><li>Release kanal se osredotoča na stabilne, popolnoma podprte dodatke WebExtension.</li><li>Beta kanal se lahko še vedno uporablja za testiranje in preverjanje združljivosti pred izdajami ESR.</li></ul></P>{P}{+extensionName} ostaja v celoti podprt v Thunderbird ESR in se aktivno vzdržuje v različicah Release, kjer je to tehnično mogoče.{/P}{P}Še naprej pozorno spremljamo spremembe v Thunderbirdu, da zagotovimo združljivost in stabilno delovanje v vseh podprtih različicah.{/P}"
+  },
   "newsSection": {
     "message": "{P}{b} Kmalu v naslednji veliki izdaji {/b}: Thunderbird vas bo kmalu prosil, da izberete svojo želeno pot posodobitev — letno ESR pot ali hitrejše mesečne izdaje. {a release}Več o novem modelu izdaj{/a}.{U} {L}ESR različica bo ostala na v140, povečevala bo le manjše številke različic in vključevala le varnostne popravke in popravke napak, kar je pogosto bolj primerno za poslovna okolja.{/L} {L}Mesečni cikel izdaj bo prinašal nove funkcije in posodobitve vmesnika, ko bodo razvite. Preverite, ali vaši trenutni dodatki podpirajo ta model izdaj. Za pomoč lahko namestite {a compatCheck}Preverjanje združljivosti dodatkov{/a}.{/L} {/U}",
     "placeholders": {
@@ -417,11 +442,11 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{/P}"
-  },
   "newsSection.important": {
     "message": "{P}Pomembno za uporabnike Release kanala ({emph}154 in pozneje{/emph}): Z novim 2-tedenske ciklom izdaj Thunderbirda obstaja povečano tveganje nepričakovanih napak, kot je [issue 690]. Čeprav redno testiram {+extensionName} z dnevnimi gradnjami, pravočasne popravke so odvisni od {b}zgodnjega poročanja{/b} uporabnikov Release kanala. Prosimo, spremljajte {a href='https://github.com/RealRaven2000/QuickFolders/issues'}sledilnik težav{/a} in hitro poročajte o napakah za vzdrževanje združljivosti.{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}Še naprej sledimo mesečnemu ciklu izdaje Thunderbirda, da zagotovimo združljivost in stabilnost. Kot vedno je to delo v celoti financirano s prodajo licenc.{/P}"
   },
   "newsSection.license": {
     "message": "Ker je vsa dela na QuickFolders in brezplačna podpora financirana izključno z nakupi licenc, razmislite o nakupu licence ali podaljšanju trenutne."
@@ -453,9 +478,6 @@
   "qf.accounts": {
     "message": "Računi"
   },
-  "qf.alert.pasteFolders.formatErr": {
-    "message": "Zavihkov ni bilo mogoče ustvariti. Za več podrobnosti glejte konzolo orodja/konzolo za napake."
-  },
   "qf.alert.bookmarks.unsupportedType": {
     "message": "Trenutno nesprejeti tip zaznamka: $bookmarkType$ {NewLine}Izberite vsaj eno sporočilo ali preprosto povlecite e-pošto na gumb",
     "placeholders": {
@@ -463,6 +485,9 @@
         "content": "$1"
       }
     }
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Zavihkov ni bilo mogoče ustvariti. Za več podrobnosti glejte konzolo orodja/konzolo za napake."
   },
   "qf.backupAndRestore": {
     "message": "Varnostno kopiranje / obnovitev"
@@ -530,12 +555,6 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Osredotoči se na seznam sporočil ob kliku na zavihek"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "Skrij mape QuickFolders na zavihkih posameznih sporočil"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Odstrani orodno vrstico QuickFolders na zavihkih, ki prikazujejo eno sporočilo."
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Gumb Zapri"
   },
@@ -559,6 +578,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "Strne meni kategorij, da prihrani prostor."
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Skrij mape QuickFolders na zavihkih posameznih sporočil"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Odstrani orodno vrstico QuickFolders na zavihkih, ki prikazujejo eno sporočilo."
   },
   "qf.checkbox.highlightNewMail": {
     "message": "Označi mape z novo pošto"
@@ -611,11 +636,11 @@
   "qf.checkbox.quickMove": {
     "message": "Hitri premik - Premaknite pošto v katerokoli mapo z bližnjico:"
   },
-  "qf.checkbox.quickMove.tip": {
-    "message": "Bližnjica za vlečenje pošte na gumb za hitri premik za najhitrejše izpolnjevanje v katerokoli mapo preko imenskega vnosa."
-  },
   "qf.checkbox.quickmove.autofill": {
     "message": "Vstavi ime iskane zadnje mape"
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Bližnjica za vlečenje pošte na gumb za hitri premik za najhitrejše izpolnjevanje v katerokoli mapo preko imenskega vnosa."
   },
   "qf.checkbox.readingList": {
     "message": "Bralni seznam"
@@ -671,8 +696,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Zavihek Nedavne mapep"
   },
-  "configurable.tooltip": {
-    "message": "Kliknite na kolesce za več možnosti konfiguracije"
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Prikaži številko bližnjice na oznakah map"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Razširi podmape v pojavnih menijih"
@@ -685,9 +710,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "Prikaži število neprebranih sporočil"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "Prikaži številko bližnjice na oznakah map"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "… tudi v oknih posameznih sporočil"
@@ -722,6 +744,12 @@
   "qf.checkbox.transparent": {
     "message": "Prosojno"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Uporabi tipkovne bližnjice (Alt + 1 do Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Uporabi Ctrl namesto Alt"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "ALT-Levo / ALT-Desno za prejšnji / naslednji zavihek"
   },
@@ -730,12 +758,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "Obnovi zavihke z bližnjico: Ctrl + Alt +"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Uporabi tipkovne bližnjice (Alt + 1 do Alt + 9)"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Uporabi Ctrl namesto Alt"
   },
   "qf.continueFilter.label": {
     "message": "Ustvari filter …"
@@ -749,9 +771,6 @@
   "qf.copyfolders.tooltip": {
     "message": "Kopira nastavitveni niz map na odložišče"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Tema Thunderbird"
-  },
   "qf.currentFolderBackground.custom": {
     "message": "Po meri"
   },
@@ -761,11 +780,11 @@
   "qf.currentFolderBackground.default": {
     "message": "Srebro"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Tema Thunderbird"
+  },
   "qf.currentFolderBackground.translucent": {
     "message": "Prosojno"
-  },
-  "qf.description.github": {
-    "message": "Uporabite github za vse uradne zahteve po značilnostih in poročilih o hroščih"
   },
   "qf.description.categoryusage": {
     "message": "Temu zavihku lahko dodelite kategorijo ('Služba', 'Zasebno' …)."
@@ -784,6 +803,9 @@
   "qf.description.donate": {
     "message": "Če vam je QuickFolders všeč toliko, kot nam in bi radi podprli njegov razvoj, lahko prispevate nekaj denarja za nadaljnji razvoj razširitve."
   },
+  "qf.description.dragexplain": {
+    "message": "Zavihke lahko tudi povlečete, da spremenite položaj! Spustite enega na vrh drugega, da ga vstavite pred/za zavihek."
+  },
   "qf.description.dragToAdd": {
     "message": "Povlecite poštne mape v prazen prostor nove orodne vrstice, da ustvarite novo hitro mapo (deluje kot bližnjice/vzdevki). Povlecite sporočila v hitro mapo, da jih premaknete v pripadajočo mapo (ali Kopirajte s spremenilno tipko). Kliknite na hitro mapo, da se pomaknete v poštno mapo."
   },
@@ -793,14 +815,14 @@
   "qf.description.dragToPosition": {
     "message": "Povlecite hitre mape na stran, da spremenite njihov položaj. Kliknite z desnim miškinim gumbom za vsebinski meni; z izbiro se lahko pomaknete v podmape. 'Preimenuj mapo' spremeni oznako hitre mape. 'Odstrani mapo' izbriše hitre mape (ne poštne mape)."
   },
-  "qf.description.dragexplain": {
-    "message": "Zavihke lahko tudi povlečete, da spremenite položaj! Spustite enega na vrh drugega, da ga vstavite pred/za zavihek."
-  },
   "qf.description.editcategory": {
     "message": "Izberite obstoječo kategorijo tako, da nanjo dvokliknete ali spodaj dodate novo."
   },
   "qf.description.experimentalItems": {
     "message": "Naslednji predmeti so preskusni, upajmo, da bodo delovali v naslednji izdaji!!"
+  },
+  "qf.description.github": {
+    "message": "Uporabite github za vse uradne zahteve po značilnostih in poročilih o hroščih"
   },
   "qf.description.languages": {
     "message": "QuickFolders podpira lokalizacijo - pomagate lahko z dodajanjem prevoda v svoj jezik na github:"
@@ -895,41 +917,11 @@
   "qf.group.navigation": {
     "message": "Krmarjenje po sporočilih"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "Barva dejavnega zavihka:"
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "Paleta za obarvane zavihke:"
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Paleta za zavihke z določeno barvo"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "Barva vlečenja preko drugih:"
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "Barva zavihka ob prehodu z miško:"
-  },
-  "qf.label.Toolbar": {
-    "message": "Orodna vrstica"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "Širina spodnje črte:"
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "Širina črte pod zavihki. Spremenite njeno barvo s spodnjim izbirnikom barve dejavnega zavihka."
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "Ozadje orodne vrstice:"
-  },
-  "qf.label.UncoloredTab": {
-    "message": "Brezbarvni zavihek"
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "Videz (nedejavnih) zavihkov brez izbrane barve"
-  },
   "qf.label.accessibility": {
     "message": "Dostopnost"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Barva dejavnega zavihka:"
   },
   "qf.label.appearance": {
     "message": "Videz"
@@ -937,14 +929,17 @@
   "qf.label.behavior": {
     "message": "Vedenje"
   },
-  "qf.label.github": {
-    "message": "Prijavi hrošča / zahtevaj značilnost …"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Velikost pisave gumbov (0 za privzeto):"
   },
   "qf.label.cancel": {
     "message": "Prekliči"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Paleta za obarvane zavihke:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Paleta za zavihke z določeno barvo"
   },
   "qf.label.colors": {
     "message": "Barve"
@@ -964,6 +959,9 @@
   "qf.label.dragFolderLabel": {
     "message": "Sem povlecite mape, da ustvarite zavihek. Kliknite na zavihek, da greste v mapo, povlecite sporočila, da jih tja premaknete/kopirate."
   },
+  "qf.label.DragOverBackground": {
+    "message": "Barva vlečenja preko drugih:"
+  },
   "qf.label.existingcategories": {
     "message": "Obstoječe kategorije:"
   },
@@ -979,6 +977,9 @@
   "qf.label.getQuickFilters": {
     "message": "Za izboljšan in zmogljivejši način ustvarjanja filtrov namestite mojo razširitev quickFilters!"
   },
+  "qf.label.github": {
+    "message": "Prijavi hrošča / zahtevaj značilnost …"
+  },
   "qf.label.goNextUnread": {
     "message": "Pojdi na naslednje neprebrano sporočilo:"
   },
@@ -990,6 +991,9 @@
   },
   "qf.label.homePage": {
     "message": "Poiščite podrobne podatke na domači strani razširitve QuickFolders na quickfolders.org…"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Barva zavihka ob prehodu z miško:"
   },
   "qf.label.initdelay": {
     "message": "[ms] zakasnitev vzp. {običajno je 1000}:"
@@ -1081,6 +1085,24 @@
   "qf.label.themes": {
     "message": "Teme:"
   },
+  "qf.label.Toolbar": {
+    "message": "Orodna vrstica"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Širina spodnje črte:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "Širina črte pod zavihki. Spremenite njeno barvo s spodnjim izbirnikom barve dejavnega zavihka."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Ozadje orodne vrstice:"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Brezbarvni zavihek"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Videz (nedejavnih) zavihkov brez izbrane barve"
+  },
   "qf.label.versionhistory": {
     "message": "Beri zgodovino različic …"
   },
@@ -1153,9 +1175,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Prikaži orodja trenutne mape"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "Skrij orodja trenutne mape"
-  },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "r"
   },
@@ -1176,6 +1195,9 @@
   },
   "qf.menuitem.quickfolders.helpAccess": {
     "message": "P"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Skrij orodja trenutne mape"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "Možnosti QuickFolders …"
@@ -1213,11 +1235,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "Delati nič"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "Označi pošto kot neprebrano"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "Označi pošto kot prebrano"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Označi pošto kot neprebrano"
   },
   "qf.moveMailStatus.label": {
     "message": "Pri premikanju pošte v QuickFolder:"
@@ -1293,9 +1315,14 @@
   "qf.notification.standard.title": {
     "message": "Standardna funkcija"
   },
-  "qf.notifications": { "message": "Obvestila" },
+  "qf.notifications": {
+    "message": "Obvestila"
+  },
   "qf.notifications.compactFolder": {
     "message": "Obvesti po stiskanju mape"
+  },
+  "qf.options.label.themeAuthor": {
+    "message": "Avtor teme:"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Videz barve posameznega zavihka"
@@ -1306,20 +1333,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "(odstranjen slog)"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "Avtor teme:"
-  },
   "qf.options.theme.pastelColors": {
     "message": "Pastelne barve"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "Spodaj:"
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Zgoraj:"
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "Polmer kota po meri"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "Zgoraj:"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "Vedno prikaži obrobe"
@@ -1348,12 +1372,6 @@
   "qf.pathFormat.AccountAndPath": {
     "message": "Račun - pot mape"
   },
-  "qf.pathFormat.PathOnly": {
-    "message": "Pot mape"
-  },
-  "qf.pathFormat.URI": {
-    "message": "URI mape"
-  },
   "qf.pathFormat.folderAndAccount": {
     "message": "Ime mape - poštni račun"
   },
@@ -1363,8 +1381,14 @@
   "qf.pathFormat.maxDepth": {
     "message": "Največja globina poti:"
   },
+  "qf.pathFormat.PathOnly": {
+    "message": "Pot mape"
+  },
   "qf.pathFormat.tooltip": {
     "message": "Največje število map prikazanih v poti mape."
+  },
+  "qf.pathFormat.URI": {
+    "message": "URI mape"
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Možnosti QuickFolders"
@@ -1377,7 +1401,9 @@
       }
     }
   },
-  "qf.premium.renew.hide": { "message": "Skrij opozorilo o licenci do ponovnega zagona" },
+  "qf.premium.renew.hide": {
+    "message": "Skrij opozorilo o licenci do ponovnega zagona"
+  },
   "qf.premium.renewLicense.tooltip": {
     "message": "Vaše dovoljenje je poteklo pred {1}-imi dnevi"
   },
@@ -1528,9 +1554,6 @@
   "qf.toolbarTopPadding": {
     "message": "Vrhnji rob"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "Nedavne mape"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "Zapri to orodno vrstico"
   },
@@ -1540,11 +1563,11 @@
   "qf.tooltip.emailIcon": {
     "message": "Trenutna pošta - povlecite na zavihek hitrih map, da premaknete pošto"
   },
-  "qf.tooltip.filterStart": {
-    "message": "Omogoči učenje filtrov. Vlečenje e-pošte na hitro mapo ustvari nove filtre."
-  },
   "qf.tooltip.filters": {
     "message": "Ustavi ustvarjanje filtrov."
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Omogoči učenje filtrov. Vlečenje e-pošte na hitro mapo ustvari nove filtre."
   },
   "qf.tooltip.folderUp": {
     "message": "Pojdi v nadrejeno mapo"
@@ -1569,6 +1592,9 @@
   },
   "qf.tooltip.quickMove": {
     "message": "Povlecite e-pošto sem in potem vnesite ime ciljne mape (hitri premik); ali kliknite za skok v mapo (hitri skok)."
+  },
+  "qf.tooltip.RecentFolders": {
+    "message": "Nedavne mape"
   },
   "qf.tooltip.skipUnreadFolder": {
     "message": "Preskoči na naslednjo neprebrano mapo"
@@ -1608,12 +1634,6 @@
   "qfCommandPopup": {
     "message": "Ukazi QuickFolders"
   },
-  "qfCompactFolder": {
-    "message": "Strni mapo"
-  },
-  "qfCompactFolderAccess": {
-    "message": "S"
-  },
   "qfCompacted": {
     "message": "Strnjeno:"
   },
@@ -1628,6 +1648,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "Izvirna velikost"
+  },
+  "qfCompactFolder": {
+    "message": "Strni mapo"
+  },
+  "qfCompactFolderAccess": {
+    "message": "S"
   },
   "qfConfirmCopyFolder": {
     "message": "Ali res želite kopirati mapo {0} v {1}?"
@@ -1731,11 +1757,11 @@
   "qfMarkAllRead": {
     "message": "Označi mapo kot prebrano"
   },
-  "qfMarkAllReadAccess": {
-    "message": "O"
-  },
   "qfMarkAllRead.next": {
     "message": "Označite mapo kot prebrano in skočite na naslednjo neprebrano mapo"
+  },
+  "qfMarkAllReadAccess": {
+    "message": "O"
   },
   "qfMarkAllReadNews": {
     "message": "Označi sve vesti kao pročitane"
@@ -1865,45 +1891,6 @@
   "qfVersionDisableOnUpdate": {
     "message": "Ustavi prikaz zgodovine različic po posodobitvah?"
   },
-  "quickMove.help.head": {
-    "message": "Pomoč za {1}"
-  },
-  "quickMove.help.head.advanced": {
-    "message": "Napredne funkcije"
-  },
-  "quickMove.help.l1a": {
-    "message": "Vnesite začetek imena mape ali besed v njej, ločenih s presledkom."
-  },
-  "quickMove.help.l1b": {
-    "message": "Naslednji znaki so meje besed in jih ni treba vnašati:"
-  },
-  "quickMove.help.l2a": {
-    "message": "Vnesite {1} za vnos mape starih staršev/staršev/iskane strani."
-  },
-  "quickMove.help.l2b": {
-    "message": "Običajno zadoščata prvi dve črki katere koli nadrejene mape. S to sintakso lahko ustvarite tudi nove podmape."
-  },
-  "quickMove.help.l3a": {
-    "message": "Vnesite {1}, če želite preskočiti mape vmes."
-  },
-  "quickMove.help.l3b": {
-    "message": "To je uporabno za globlje, bolj zapletene ali neznane hierarhije map."
-  },
-  "quickMove.help.l4a": {
-    "message": "Vnesite {1}, da dobite seznam map, ki so bile nazadnje vnesene. Število rezultatov je odvisno od vaše licence."
-  },
-  "quickMove.help.advanced": {
-    "message": "Naprednejše funkcije, kot so bližnjice na tipkovnici za prehod v mapo / premikanje pošte ali izključitev map iz rezultatov iskanja, lahko nastavite na zavihku QuickFolders Pro. Če želite dostopati do teh in drugih premium funkcij, pridobite licenco Pro in podprite prihodnost QuickFolders."
-  },
-  "quickMove.singleMessage.goNext": {
-    "message": "Prikaže naslednje sporočilo po premikanju trenutnega"
-  },
-  "quickMove.singleMessage.reopenTab": {
-    "message": "Po premiku znova odprite izvirno pošto"
-  },
-  "quickMove.singleMessageTabs": {
-    "message": "Zavihek posameznega sporočila"
-  },
   "quickfolders.findFolder.placeHolder": {
     "message": "ime mape"
   },
@@ -1949,6 +1936,384 @@
   "quickfoldersQuickMovedMails": {
     "message": "Pošta premaknjena v mapo {2};{1} sporočil kopiranih v mapo {2}"
   },
+  "quickMove.help.advanced": {
+    "message": "Naprednejše funkcije, kot so bližnjice na tipkovnici za prehod v mapo / premikanje pošte ali izključitev map iz rezultatov iskanja, lahko nastavite na zavihku QuickFolders Pro. Če želite dostopati do teh in drugih premium funkcij, pridobite licenco Pro in podprite prihodnost QuickFolders."
+  },
+  "quickMove.help.head": {
+    "message": "Pomoč za {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "Napredne funkcije"
+  },
+  "quickMove.help.l1a": {
+    "message": "Vnesite začetek imena mape ali besed v njej, ločenih s presledkom."
+  },
+  "quickMove.help.l1b": {
+    "message": "Naslednji znaki so meje besed in jih ni treba vnašati:"
+  },
+  "quickMove.help.l2a": {
+    "message": "Vnesite {1} za vnos mape starih staršev/staršev/iskane strani."
+  },
+  "quickMove.help.l2b": {
+    "message": "Običajno zadoščata prvi dve črki katere koli nadrejene mape. S to sintakso lahko ustvarite tudi nove podmape."
+  },
+  "quickMove.help.l3a": {
+    "message": "Vnesite {1}, če želite preskočiti mape vmes."
+  },
+  "quickMove.help.l3b": {
+    "message": "To je uporabno za globlje, bolj zapletene ali neznane hierarhije map."
+  },
+  "quickMove.help.l4a": {
+    "message": "Vnesite {1}, da dobite seznam map, ki so bile nazadnje vnesene. Število rezultatov je odvisno od vaše licence."
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Prikaže naslednje sporočilo po premikanju trenutnega"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Po premiku znova odprite izvirno pošto"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Zavihek posameznega sporočila"
+  },
+  "registration.account": {
+    "message": "Poštni račun"
+  },
+  "registration.action.buy": {
+    "message": "Kupi $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Kupi domensko licenco"
+  },
+  "registration.action.current": {
+    "message": "Trenutna izdaja"
+  },
+  "registration.action.extend": {
+    "message": "Podaljšaj licenco"
+  },
+  "registration.action.renew": {
+    "message": "Obnovi licenco"
+  },
+  "registration.action.upgrade": {
+    "message": "Nadgradi na Pro"
+  },
+  "registration.annual": {
+    "message": "Letne licence"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Zapri obvestilo o nakupu"
+  },
+  "registration.checkout.error": {
+    "message": "Trgovine ni mogoče odpreti. Poskusite znova."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Za ohranitev ugodnosti obnove ali nadgradnje nadaljujte z izdelkom, odprtim s te strani.{/bold} Za izbiro {i}druge licence{/i} začnite znova tukaj."
+  },
+  "registration.checkout.note": {
+    "message": "Cene, davki in razpoložljivi popusti so prikazani v trgovini."
+  },
+  "registration.checkout.opened": {
+    "message": "Trgovina se je odprla v brskalniku. Ta zavihek lahko pustite odprt."
+  },
+  "registration.checkout.preview": {
+    "message": "Preizkusni predogled: $1 za $2. Trgovina ni bila odprta."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Ta pot nadgradnje zahteva potrditev pred omogočanjem nakupa. Trgovina ni bila odprta."
+  },
+  "registration.compare": {
+    "message": "Primerjaj Standard in Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Komu je namenjena ta licenca?"
+  },
+  "registration.contact.note": {
+    "message": "Ti podatki bodo vnaprej izpolnjeni ob nakupu. Tukaj jih lahko uredite."
+  },
+  "registration.date.expired": {
+    "message": "Vaša licenca je potekla $1."
+  },
+  "registration.date.none": {
+    "message": "Spodaj izberite licenco ali vnesite obstoječi ključ."
+  },
+  "registration.date.valid": {
+    "message": "Vaša licenca velja do $1."
+  },
+  "registration.development": {
+    "message": "Preizkus registracije"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro je ločena osebna licenca, ne obnova domenske licence. Domenska licenca pokriva namestitve s poštnim računom na registrirani domeni podjetja v okviru kupljenega števila uporabnikov. Ločena licenca Pro lahko pokrije domačo namestitev, kjer tega računa ne morete uporabljati. Za nadaljnjo pokritost ekipe izberite Obnovi licenco v podoknu Domena."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Dodaj uporabnike"
+  },
+  "registration.domain.seatsNote": {
+    "message": "v obstoječo domensko licenco."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Potrebujete več mest?"
+  },
+  "registration.edition.domain": {
+    "message": "Domena"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "message": "E-poštni naslov"
+  },
+  "registration.email.domain": {
+    "message": "Veljajo druga pravila: nastavljeni naslov mora pripadati licencirani domeni."
+  },
+  "registration.email.domain.heading": {
+    "message": "Domenske licence"
+  },
+  "registration.email.help": {
+    "message": "O licenciranih e-poštnih naslovih"
+  },
+  "registration.email.help.close": {
+    "message": "Zapri pomoč za naslove"
+  },
+  "registration.email.help.heading": {
+    "message": "Vaš e-poštni naslov je vaša licenca"
+  },
+  "registration.email.hint": {
+    "message": "Osebna licenca deluje na več napravah."
+  },
+  "registration.email.personal": {
+    "message": "Licenca je vezana na ta e-poštni naslov. Uporabljate jo lahko na več napravah. Ta naslov nastavite kot {bold}privzeto identiteto{/bold} računa Thunderbird na vsaki napravi."
+  },
+  "registration.email.personal.heading": {
+    "message": "Licence Standard in Pro"
+  },
+  "registration.email.rules": {
+    "message": "Pravila licenciranega naslova"
+  },
+  "registration.enterKey": {
+    "message": "Vnesi licenčni ključ…"
+  },
+  "registration.eyebrow": {
+    "message": "Vaša licenca"
+  },
+  "registration.firstName": {
+    "message": "Ime"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Izmišljeni podatki: nakup odpre samo predogled."
+  },
+  "registration.footer": {
+    "message": "Ustvarjeno za Thunderbird. Z vašo podporo."
+  },
+  "registration.heading": {
+    "message": "Vaše mape. Manj truda."
+  },
+  "registration.identity.empty": {
+    "message": "Ročni vnos podatkov"
+  },
+  "registration.identity.none": {
+    "message": "Ustreznih poštnih računov ni bilo mogoče najti. Kontaktne podatke lahko vnesete ročno."
+  },
+  "registration.lastName": {
+    "message": "Priimek"
+  },
+  "registration.learnMore": {
+    "message": "Več informacij…"
+  },
+  "registration.legacy.menu": {
+    "message": "Prejšnja registracija licence"
+  },
+  "registration.license.domain": {
+    "message": "Domenska licenca"
+  },
+  "registration.license.edition": {
+    "message": "Licenca $1"
+  },
+  "registration.license.expiresIn": {
+    "message": "Licenca poteče čez $1 dni"
+  },
+  "registration.license.none": {
+    "message": "Licenca ni nastavljena"
+  },
+  "registration.load.error": {
+    "message": "Licence ali računov ni mogoče naložiti. Znova naložite ta zavihek."
+  },
+  "registration.navigation": {
+    "message": "Krmarjenje po licencah"
+  },
+  "registration.options": {
+    "message": "Možnosti licence"
+  },
+  "registration.plan.domain.description": {
+    "message": "Funkcije Pro za uporabnike licencirane domene v okviru kupljenih mest."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Za vašo ekipo"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Za skupno domeno"
+  },
+  "registration.plan.pro.description": {
+    "message": "Vsak dan hitreje organizirajte in poiščite sporočila."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Vse funkcije"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Za vašo e-pošto"
+  },
+  "registration.plan.standard.description": {
+    "message": "Priljubljene mape naj bodo vedno pri roki."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Osnove za vsak dan"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Za vašo e-pošto"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Domenske licence{/bold}{br}Domenske licence se {bold}pregledajo in izdajo ročno{/bold}. Obnova doda eno leto obstoječemu datumu poteka, tudi če je licenca že potekla. To spodbuja pravočasno obnovo; končno obdobje se potrdi med pregledom."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Ugodnosti obnove in nadgradnje so odvisne od podatkov licence, poslanih trgovini. Menjava izdelka v trgovini ali varnostna programska oprema, ki te podatke odstrani, lahko prepreči upoštevanje obstoječih pravic."
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Nadgradite na Pro in plačajte **samo razliko** med cenama Standard in Pro — dobite celo leto od dneva plačila, tudi če je licenca Standard že potekla."
+  },
+  "registration.renewal.hint": {
+    "message": "Obnova ali podaljšanje licence običajno stane manj kot nakup nove."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Osebne licence{/bold}{br}Nova licenca velja eno leto od plačila. Pri obnovi ali podaljšanju iste izdaje dobite celo leto od plačila ali leto po trenutnem datumu poteka, kar vam zagotovi več časa."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Obstoječa licenca{/bold}{br}Trenutna licenca se pošlje trgovini za izračun novega datuma poteka."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Nadgradite na Pro in plačajte **samo razliko** med cenama Standard in Pro. Dobite celo leto od dneva plačila."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Nadgradnje iz Standard v Pro{/bold}{br}Licenca Pro velja eno leto od plačila nadgradnje. Preostali čas licence Standard tega obdobja ne podaljša."
+  },
+  "registration.selection.heading": {
+    "message": "Manj časa za iskanje."
+  },
+  "registration.selection.intro": {
+    "message": "Izberite Standard za osnovne funkcije, Pro za vse funkcije ali Domeno za uporabnike organizacije."
+  },
+  "registration.selection.label": {
+    "message": "Izbira licence"
+  },
+  "registration.settings.error": {
+    "message": "Nastavitev licence ni mogoče odpreti. Poskusite znova."
+  },
+  "registration.showLess": {
+    "message": "Pokaži manj"
+  },
+  "registration.status.Empty": {
+    "message": "Brezplačna izdaja"
+  },
+  "registration.status.Expired": {
+    "message": "Potekla"
+  },
+  "registration.status.Invalid": {
+    "message": "Neveljavna licenca"
+  },
+  "registration.status.MailDifferent": {
+    "message": "E-poštni naslov licence se ne ujema"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Licencirani naslov ni nastavljen"
+  },
+  "registration.status.NotValidated": {
+    "message": "Ni potrjena"
+  },
+  "registration.status.Unknown": {
+    "message": "Licenca ni na voljo"
+  },
+  "registration.status.Valid": {
+    "message": "Veljavna"
+  },
+  "registration.subtitle": {
+    "message": "Izberite pravo licenco za svoj način dela."
+  },
+  "registration.terms.annual": {
+    "message": "Licenca velja eno leto. Obnovite poteklo licenco ali podaljšajte trenutno za nadaljnjo uporabo izbrane izdaje."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Po eno leto"
+  },
+  "registration.terms.back": {
+    "message": "Izbira licence"
+  },
+  "registration.terms.checkout": {
+    "message": "Izberite licenco za nadaljevanje v trgovino. Cena je odvisna od izdaje, države, davkov in veljavnih popustov."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Nakup v brskalniku"
+  },
+  "registration.terms.domain": {
+    "message": "Domenska licenca zajema uporabnike z naslovi v licencirani domeni do števila kupljenih mest."
+  },
+  "registration.terms.draft": {
+    "message": "Osnutek pogojev: podrobnosti preizkusov in funkcij po poteku bodo pregledane pred izdajo."
+  },
+  "registration.terms.edition": {
+    "message": "Standard in Pro ponujata različne ravni funkcionalnosti. Primerjajte izdaji in izberite ustrezno."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Izberite izdajo"
+  },
+  "registration.terms.email": {
+    "message": "Osebna licenca je vezana na vaš e-poštni naslov. Uporabljate jo lahko v več namestitvah Thunderbirda, če je licencirani naslov v vsaki nastavljen kot **privzeta identiteta** računa."
+  },
+  "registration.terms.email.heading": {
+    "message": "Vaša e-pošta, vaša licenca"
+  },
+  "registration.terms.heading": {
+    "message": "Kako deluje vaša licenca."
+  },
+  "registration.terms.hide": {
+    "message": "🡇 Nadaljuj na izbiro licence 🡇"
+  },
+  "registration.terms.intro": {
+    "message": "{+extensionName} že leta sledi Thunderbirdu. Licence financirajo nadaljnji razvoj, nove funkcije in posodobitve združljivosti. Vsaka licenca velja eno leto in podpira to delo."
+  },
+  "registration.terms.label": {
+    "message": "Licenčni pogoji"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Licence **se ne obnavljajo samodejno**. {+extensionName} vas opomni pred potekom licence."
+  },
+  "registration.terms.otherAccounts": {
+    "message": "Licencirane funkcije delujejo tudi z vsemi drugimi poštnimi računi v Thunderbirdu. Ločene licence niso potrebne."
+  },
+  "registration.terms.referrer": {
+    "message": "Če že imate licenco, se ta pošlje trgovini za preverjanje upravičenosti."
+  },
+  "registration.terms.savings": {
+    "message": "**Začnite s Pro in prihranite v naslednjih letih.** Obnova ali podaljšanje licence Pro stane občutno manj kot nakup nove."
+  },
+  "registration.terms.show": {
+    "message": "Pokaži licenčne pogoje 🡇"
+  },
+  "registration.terms.support": {
+    "message": "Vaša podpora pomaga financirati razvoj, posodobitve združljivosti in popravke."
+  },
+  "registration.test.menu": {
+    "message": "Registracija v spletni trgovini"
+  },
+  "registration.test.note": {
+    "message": "Nakup se odpre v brskalniku."
+  },
+  "registration.title": {
+    "message": "{+extensionName} · Vaša licenca"
+  },
   "renew-your-license": {
     "message": "Obnovite licenco."
   },
@@ -1961,6 +2326,24 @@
       "reduction": {
         "content": "$2",
         "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Pomagajte ohraniti združljivost $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b} Spoštovani {name} {/b}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {b} vašo pomoč {/b}!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
       }
     }
   },
@@ -1992,24 +2375,6 @@
   },
   "special-offer-upgrade-condition": {
     "message": "Ko nadgradite s standardnega, prejmete eno celoletno licenčno obdobje od datuma nakupa, ne glede na datum poteka vaše prejšnje licence."
-  },
-  "special-offer-head": {
-    "message": "Pomagajte ohraniti združljivost $addon$",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{b} Spoštovani {name} {/b}, podprite $addon$ z pridobitvijo licence. Koda Thunderbird se nenehno razvija in za nadaljevanje potrebujemo {b} vašo pomoč {/b}!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
   },
   "support-preference": {
     "message": "To je najprimernejši način podpore $addonName$.",
@@ -2103,7 +2468,10 @@
   "whats-new-maintenance": {
     "message": "Vzdrževalna posodobitev $ver$. Ta izdaja odpravlja nujne regresijske napake iz prejšnje izdaje.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "yearlyLicense.premiumFeatures": {

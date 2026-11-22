@@ -2,6 +2,50 @@
   "_l10nstatus": {
     "message": "SPLASH+UI"
   },
+  "accessibility.count.total": {
+    "message": "$count$ celkem zpráv",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ celkem v podsložkách",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ nepřečtených zpráv",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ nepřečteno v podsložkách",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Odebrat příkaz 'Přizpůsobit ikonu' z kontextového menu složky."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Skrýt popisky na kartách"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Upřednostnit záložky QuickFolders ve výsledcích hledání."
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "Zobrazit samostatnou položku pro nadřazenou složku v podmenu"
+  },
   "account.label": {
     "message": "Vyberte účet:"
   },
@@ -20,50 +64,6 @@
   },
   "addon-authors-struggle": {
     "message": "Abychom byli i nadále užiteční, musíme nyní vývojáři doplňků financovat prostředky potřebné k opravě a přepsání, aby naši uživatelé mohli nadále těžit z funkcí, které poskytujeme."
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ nepřečtených zpráv",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "$count$ nepřečteno v podsložkách",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "$count$ celkem zpráv",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "$count$ celkem v podsložkách",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "Odebrat příkaz 'Přizpůsobit ikonu' z kontextového menu složky."
-  },
-  "accessibility.hideTooltips": {
-    "message": "Skrýt popisky na kartách"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Upřednostnit záložky QuickFolders ve výsledcích hledání."
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "Zobrazit samostatnou položku pro nadřazenou složku v podmenu"
   },
   "aria.a11underReview": {
     "message": "Aktuálně provádíme revizi a vylepšení přístupnosti této stránky. Pracujeme na tom, aby popsaná funkčnost byla více přístupná pro klávesnici a kompatibilní s čtečkami obrazovky. Děkujeme za vaši trpělivost!"
@@ -155,6 +155,9 @@
   "commands.toggleFolderTree": {
     "message": "Přepnout viditelnost stromu složek"
   },
+  "configurable.tooltip": {
+    "message": "Klikněte na ozubené kolečko pro další možnosti konfigurace"
+  },
   "cost-of-independence": {
     "message": "Vývoj softwaru stojí čas a peníze - na rozdíl od mnoha aplikací na platformě nejsou doplňky napsány velkými korporacemi, ani nejsou žádným způsobem sponzorovány společností Mozilla."
   },
@@ -212,6 +215,12 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "Uložte své oblíbené e-mailové složky v Thunderbirdu."
   },
+  "findRelated.btn.label": {
+    "message": "Najít související e-maily"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Hledejte podobné e-maily na základě vybraného e-mailu a uživatelem definovaných vyhledávacích vzorcích"
+  },
   "findRelated.btnAdd": {
     "message": "Přidat"
   },
@@ -221,20 +230,17 @@
   "findRelated.btnUpdate": {
     "message": "Aktualizovat"
   },
-  "findRelated.btn.label": {
-    "message": "Najít související e-maily"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "Hledejte podobné e-maily na základě vybraného e-mailu a uživatelem definovaných vyhledávacích vzorcích"
-  },
   "findRelated.entries": {
     "message": "Vyhledávací vzory"
   },
   "findRelated.menu.configure": {
     "message": "Nastavit vyhledávací vzory…"
   },
-  "findRelated.prompt.title": {
-    "message": "Najít související e-maily: Vyhledávání podle vzoru"
+  "findRelated.options.goNextResetsSearch": {
+    "message": "Tlačítko 'Přejít na další e-mail' vymaže vyhledávání."
+  },
+  "findRelated.options.title": {
+    "message": "Možnosti"
   },
   "findRelated.prompt.enterPattern": {
     "message": "Pro použití této funkce nastavte alespoň jeden vyhledávací vzor."
@@ -242,11 +248,8 @@
   "findRelated.prompt.selectPattern": {
     "message": "Klikněte pravým tlačítkem na [Najít související e-maily] pro výběr vyhledávacího vzoru. To spustí vyhledávání a uloží jeho nastavení pro příště."
   },
-  "findRelated.options.title": {
-    "message": "Možnosti"
-  },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "Tlačítko 'Přejít na další e-mail' vymaže vyhledávání."
+  "findRelated.prompt.title": {
+    "message": "Najít související e-maily: Vyhledávání podle vzoru"
   },
   "findRelated.searchGroup": {
     "message": "Skupina vyhledávání (0 pro úplnou shodu):"
@@ -254,26 +257,26 @@
   "findRelated.searchPattern": {
     "message": "Vyhledávací vzor:"
   },
+  "findRelated.term.body": {
+    "message": "Tělo"
+  },
   "findRelated.term.menutitle": {
     "message": "Název:"
-  },
-  "findRelated.term.subject": {
-    "message": "Předmět"
-  },
-  "findRelated.term.sender": {
-    "message": "Odesílatel"
   },
   "findRelated.term.recipients": {
     "message": "Příjemci"
   },
-  "findRelated.term.body": {
-    "message": "Tělo"
+  "findRelated.term.sender": {
+    "message": "Odesílatel"
   },
-  "findRelated.terms.selectedFields": {
-    "message": "Získejte vyhledávací řetězec z:"
+  "findRelated.term.subject": {
+    "message": "Předmět"
   },
   "findRelated.terms.searchCriteriaFields": {
     "message": "Co hledat v souvisejících e-mailech:"
+  },
+  "findRelated.terms.selectedFields": {
+    "message": "Získejte vyhledávací řetězec z:"
   },
   "firstName.label": {
     "message": "Jméno:"
@@ -323,9 +326,6 @@
   "keyshortcuts.news": {
     "message": "Aktuálně Thunderbird používá tyto zkratky jako vestavěné, ale můžete je uvolnit pomocí doplňku tbkeys lite. Klikněte na (?) pro více informací:"
   },
-  "lastName.label": {
-    "message": "Příjmení:"
-  },
   "label-remind-me": {
     "message": "Připomenout znovu za $countDays$ dní.",
     "placeholders": {
@@ -335,8 +335,35 @@
       }
     }
   },
+  "lastName.label": {
+    "message": "Příjmení:"
+  },
   "lblCustomPalette": {
     "message": "Vlastní paleta:"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders potřebuje licenci Pro na podporu více než $maxTabs$ karet.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "Standardní licence - omezená funkce Pro. Zjistit více…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Nelicencovaná verze - omezená funkce. Zjistit více…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders potřebuje licenci k podpoře více než $maxTabs$ karet.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -357,59 +384,44 @@
   "licenseWindow.title": {
     "message": "Licence QuickFolders Pro"
   },
-  "license_restriced.std": {
-    "message": "Standardní licence - omezená funkce Pro. Zjistit více…"
+  "message.browserLaunchFailed": {
+    "message": "{p} Výchozí webový prohlížeč se nepodařilo otevřít. Níže uvedenou adresu můžete zkopírovat a vložit do adresního řádku prohlížeče. {/p} Další podrobnosti o chybě najdete v chybové konzoli JavaScriptu."
   },
-  "license_restriced.unpaid": {
-    "message": "Nelicencovaná verze - omezená funkce. Zjistit více…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — Chyba prohlížeče"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders potřebuje licenci Pro na podporu více než $maxTabs$ karet.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "Webová adresa (Ctrl+C pro zkopírování):"
   },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders potřebuje licenci k podpoře více než $maxTabs$ karet.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.btn.accept": {
+    "message": "OK"
   },
-  "message.browserLaunchFailed": { "message": "{p} Výchozí webový prohlížeč se nepodařilo otevřít. Níže uvedenou adresu můžete zkopírovat a vložit do adresního řádku prohlížeče. {/p} Další podrobnosti o chybě najdete v chybové konzoli JavaScriptu." },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — Chyba prohlížeče" },
-  "message.browserLaunchFailed.url": { "message": "Webová adresa (Ctrl+C pro zkopírování):" },
-  "message.btn.accept": { "message": "OK" },
-  "message.btn.cancel": { "message": "Zrušit" },
-  "message.btn.no": { "message": "Ne" },
-  "message.btn.yes": { "message": "Ano" },
-  "message.features": { "message": "Porovnat funkce…" },
-  "message.placeholder": { "message": "Zpráva chybí." },
-  "message.licenseScreen": { "message": "Zobrazit možnosti licence…" },
-  "message.linkInTab": { "message": "(Odkaz otevřen na kartě)" },
+  "message.btn.cancel": {
+    "message": "Zrušit"
+  },
+  "message.btn.no": {
+    "message": "Ne"
+  },
+  "message.btn.yes": {
+    "message": "Ano"
+  },
+  "message.features": {
+    "message": "Porovnat funkce…"
+  },
+  "message.licenseScreen": {
+    "message": "Zobrazit možnosti licence…"
+  },
+  "message.linkInTab": {
+    "message": "(Odkaz otevřen na kartě)"
+  },
+  "message.placeholder": {
+    "message": "Zpráva chybí."
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla poskytuje pouze základní platformu pro doručování našeho softwaru vám, koncovým uživatelům. Pokud potřebujeme požádat naše uživatele o platbu nebo podporu, nemůžeme to udělat z addons.thunderbird.net - nejedná se o „obchod s aplikacemi“ s vestavěnými paywally nebo správou licencí, jako je iTunes nebo Google Play."
   },
   "newsHead": {
     "message": "Poslední zprávy"
-  },
-  "newsMsgEsr140": {
-    "message": "{P}{b}Brzy v příštím velkém vydání{/b}: Thunderbird vás brzy požádá, abyste si vybrali preferovanou cestu aktualizace – buď roční větev ESR, nebo rychlejší měsíční verze. {a release}Zjistěte více o novém modelu vydávání{/a}.{U} {L}Verze ESR zůstává u v140, zvyšuje pouze čísla minor verzí a obsahuje výhradně bezpečnostní a opravné aktualizace, což je často preferováno firmami.{/L} {L}Měsíční cyklus vydávání přináší nové funkce a aktualizace rozhraní ihned po jejich vývoji. Zkontrolujte, zda vaše aktuální doplňky tento model podporují. Pro podporu můžete nainstalovat {a compatCheck}Kontrolu kompatibility doplňků{/a}.{ /L} {/U}{/P}{P} S potěšením oznamujeme, že QuickFolders je plně kompatibilní s Thunderbird 140, nadcházejícím Extended Support Release (ESR). To znamená kontinuální spolehlivost a bezpečnost v příštím velkém podpůrném cyklu.{/P}{P} QuickFolders bude i nadále podporovat uživatele Thunderbirdu 115 a vyšší. V příštím roce může být podpora pro Thunderbird 115 ukončena ve prospěch Thunderbirdu 128 a novějších verzí, jakmile budou přidány nové funkce.{/P}{P} Neustále sledujeme změny v Thunderbirdu, abychom zajistili, že QuickFolders zůstane kompatibilní a spolehlivý bez ohledu na zvolenou cestu aktualizace.{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} K Thunderbirdu přichází významná změna {/b}: Od Thunderbirdu 153 nebudou experimentální doplňky jako {+extensionName} nadále podporovány ve verzích Release. Thunderbird aktivně {a apiwork}rozšiřuje rozhraní WebExtension API{/a}, aby snížil závislost na experimentálních mechanismech rozšíření. Od {emph}verze 153{/emph} vyžadují legacy doplňky použití {+newsMsgEsr153.ESR} (ESR).<ul><li>Kanál ESR zůstává doporučenou volbou pro uživatele, kteří spoléhají na pokročilé nebo experimentální doplňky.</li><li>Kanál Release se zaměřuje na stabilní, plně podporované doplňky WebExtension.</li><li>Kanál Beta lze nadále používat pro testování a kontrolu kompatibility před vydáním ESR.</li></ul></P>{P}{+extensionName} zůstává plně podporován v Thunderbirdu ESR a je aktivně udržován i ve verzích Release, kde je to technicky možné.{/P}{P}Změny v Thunderbirdu nadále pečlivě sledujeme, abychom zajistili kompatibilitu a stabilní fungování napříč podporovanými verzemi.{/P}"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (rozšířená verze podpory Thunderbirdu)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Připravované změny v podpoře doplňků Thunderbird{/b}: Dříve oznámená změna týkající se experimentálních doplňků na kanálu Release byla odložena na další cyklus ESR (ESR 2027). Tento dodatečný čas bude využit ke zlepšení pokrytí API a doladění přechodu s komunitou doplňků.{/P}{P}V tuto chvíli není nutná žádná akce. {+extensionName} nadále funguje jak na Release, tak na ESR verzích Thunderbirdu, kde je podporován.{/P}{P}Budeme i nadále sledovat změny platformy a poskytneme doporučení, pokud a kdy bude nutná migrace.{/P}{P}Přestože přechod na ESR není povinný, někteří uživatelé, kteří spoléhají na experimentální funkce, jej mohou preferovat pro prostředí s menší mírou změn a stabilnějšími API, protože experimentální rozhraní mohou být více ovlivněna interními změnami platformy.{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} Všechny nové funkce, opravy chyb a dlouhodobá kompatibilita jsou možné pouze díky vaší podpoře.{/P}{P class=specialOffer} Chcete-li podpořit vývoj QuickFolders, můžete svou licenci prodloužit se slevou do {salesEnd}.{ /P}{P class=bottomhint}🡇 Vyberte níže možnost pro více informací 🡇 {/P}"
@@ -423,6 +435,19 @@
   "newsMsg.license.valid": {
     "message": "{P} Děkujeme, že podporujete QuickFolders Pro licencí – to umožňuje přístup ke všem novým funkcím, opravám chyb a dlouhodobé kompatibilitě.{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b}Brzy v příštím velkém vydání{/b}: Thunderbird vás brzy požádá, abyste si vybrali preferovanou cestu aktualizace – buď roční větev ESR, nebo rychlejší měsíční verze. {a release}Zjistěte více o novém modelu vydávání{/a}.{U} {L}Verze ESR zůstává u v140, zvyšuje pouze čísla minor verzí a obsahuje výhradně bezpečnostní a opravné aktualizace, což je často preferováno firmami.{/L} {L}Měsíční cyklus vydávání přináší nové funkce a aktualizace rozhraní ihned po jejich vývoji. Zkontrolujte, zda vaše aktuální doplňky tento model podporují. Pro podporu můžete nainstalovat {a compatCheck}Kontrolu kompatibility doplňků{/a}.{ /L} {/U}{/P}{P} S potěšením oznamujeme, že QuickFolders je plně kompatibilní s Thunderbird 140, nadcházejícím Extended Support Release (ESR). To znamená kontinuální spolehlivost a bezpečnost v příštím velkém podpůrném cyklu.{/P}{P} QuickFolders bude i nadále podporovat uživatele Thunderbirdu 115 a vyšší. V příštím roce může být podpora pro Thunderbird 115 ukončena ve prospěch Thunderbirdu 128 a novějších verzí, jakmile budou přidány nové funkce.{/P}{P} Neustále sledujeme změny v Thunderbirdu, abychom zajistili, že QuickFolders zůstane kompatibilní a spolehlivý bez ohledu na zvolenou cestu aktualizace.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (rozšířená verze podpory Thunderbirdu)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Připravované změny v podpoře doplňků Thunderbird{/b}: Dříve oznámená změna týkající se experimentálních doplňků na kanálu Release byla odložena na další cyklus ESR (ESR 2027). Tento dodatečný čas bude využit ke zlepšení pokrytí API a doladění přechodu s komunitou doplňků.{/P}{P}V tuto chvíli není nutná žádná akce. {+extensionName} nadále funguje jak na Release, tak na ESR verzích Thunderbirdu, kde je podporován.{/P}{P}Budeme i nadále sledovat změny platformy a poskytneme doporučení, pokud a kdy bude nutná migrace.{/P}{P}Přestože přechod na ESR není povinný, někteří uživatelé, kteří spoléhají na experimentální funkce, jej mohou preferovat pro prostředí s menší mírou změn a stabilnějšími API, protože experimentální rozhraní mohou být více ovlivněna interními změnami platformy.{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} K Thunderbirdu přichází významná změna {/b}: Od Thunderbirdu 153 nebudou experimentální doplňky jako {+extensionName} nadále podporovány ve verzích Release. Thunderbird aktivně {a apiwork}rozšiřuje rozhraní WebExtension API{/a}, aby snížil závislost na experimentálních mechanismech rozšíření. Od {emph}verze 153{/emph} vyžadují legacy doplňky použití {+newsMsgEsr153.ESR} (ESR).<ul><li>Kanál ESR zůstává doporučenou volbou pro uživatele, kteří spoléhají na pokročilé nebo experimentální doplňky.</li><li>Kanál Release se zaměřuje na stabilní, plně podporované doplňky WebExtension.</li><li>Kanál Beta lze nadále používat pro testování a kontrolu kompatibility před vydáním ESR.</li></ul></P>{P}{+extensionName} zůstává plně podporován v Thunderbirdu ESR a je aktivně udržován i ve verzích Release, kde je to technicky možné.{/P}{P}Změny v Thunderbirdu nadále pečlivě sledujeme, abychom zajistili kompatibilitu a stabilní fungování napříč podporovanými verzemi.{/P}"
+  },
   "newsSection": {
     "message": "{P}{b} Již brzy ve velkém vydání {/b}: Thunderbird vás brzy požádá, abyste si vybrali preferovanou cestu aktualizací — buď roční ESR, nebo rychlejší měsíční vydání. {a release}Zjistěte více o novém modelu vydání{/a}.{U} {L}Verze ESR zůstane na v140, bude zvyšovat pouze vedlejší čísla verzí a bude obsahovat pouze bezpečnostní opravy a opravy chyb, což je často vhodnější pro firemní prostředí.{/L} {L}Měsíční cyklus vydání přinese nové funkce a aktualizace rozhraní, jakmile budou vyvinuty. Zkontrolujte, zda vaše aktuální doplňky podporují tento model vydání. Pro pomoc si můžete nainstalovat {a compatCheck}Kontrolu kompatibility doplňků{/a}.{/L} {/U}",
     "placeholders": {
@@ -432,11 +457,11 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}Stále sledujeme měsíční cyklus vydávání Thunderbird, abychom zajistili kompatibilitu a stabilitu. Tato práce je jako vždy plně financována z prodeje licencí.{/P}"
-  },
   "newsSection.important": {
     "message": "{P}Důležité pro uživatele Release kanálu ({emph}154 a novější{/emph}): S novým 2týdenním cyklem vydání Thunderbirdu existuje zvýšené riziko neočekávaných chyb jako [issue 690]. Zatímco pravidelně testuji {+extensionName} s denními buildy, včasné opravy závisí na {b}včasném hlášení{/b} od uživatelů Release kanálu. Sledujte prosím {a href='https://github.com/RealRaven2000/QuickFolders/issues'}issue tracker{/a} a nahlašujte chyby rychle, abyste pomohli udržet kompatibilitu.{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}Stále sledujeme měsíční cyklus vydávání Thunderbird, abychom zajistili kompatibilitu a stabilitu. Tato práce je jako vždy plně financována z prodeje licencí.{/P}"
   },
   "newsSection.license": {
     "message": "Vzhledem k tomu, že tato práce je financována výhradně z prodeje licencí, zvažte prosím zakoupení licence nebo obnovení předchozí licence, pokud máte zájem používat QuickFolders v budoucnu."
@@ -471,9 +496,6 @@
   "purchase-heading": {
     "message": "Podpora prostřednictvím licence"
   },
-  "qf.alert.pasteFolders.formatErr": {
-    "message": "Nepodařilo se vytvořit karty. Podívejte se na nástroje / chybovou konzolu pro podrobnosti."
-  },
   "qf.alert.bookmarks.unsupportedType": {
     "message": "Momentálně nepodporovaný typ záložky: $bookmarkType$ {NewLine}Vyberte alespoň jednu zprávu nebo jednoduše přetáhněte e-maily na tlačítko",
     "placeholders": {
@@ -481,6 +503,9 @@
         "content": "$1"
       }
     }
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Nepodařilo se vytvořit karty. Podívejte se na nástroje / chybovou konzolu pro podrobnosti."
   },
   "qf.backupAndRestore": {
     "message": "Zálohování / Obnovení"
@@ -548,20 +573,14 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Zaměřit se na seznam zpráv při kliknutí na kartu"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "Skrýt QuickFolders v záložkách s jednou zprávou"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Odstraní panel QuickFolders v záložkách, které zobrazují jednu zprávu."
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Tlačítko Zavřít"
   },
-  "qf.checkbox.currentFolder.show": {
-    "message": "Zobrazit při spuštění"
-  },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integrovat s lehkým tématem"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "Zobrazit při spuštění"
   },
   "qf.checkbox.debug": {
     "message": "Režim ladění"
@@ -580,6 +599,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "Minimalizuje menu kategorií, aby zabíralo méně místa."
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Skrýt QuickFolders v záložkách s jednou zprávou"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Odstraní panel QuickFolders v záložkách, které zobrazují jednu zprávu."
   },
   "qf.checkbox.highlightNewMail": {
     "message": "Zvýraznit složky s novou poštou"
@@ -632,14 +657,14 @@
   "qf.checkbox.quickMove": {
     "message": "quickMove - Přesunout poštu do jakékoli složky pomocí zkratky:"
   },
-  "qf.checkbox.quickMove.tip": {
-    "message": "Zkratka pro přetahování e-mailů na tlačítko quickMove pro nejrychlejší zařazení do libovolné složky pomocí zadání názvu."
-  },
   "qf.checkbox.quickmove.autofill": {
     "message": "Vložit název poslední úspěšně použité složky"
   },
   "qf.checkbox.quickmove.autofill.tip": {
     "message": "Poslední složka úspěšně použitá bude vložena. Stiskněte Enter pro její použití nebo ji jednoduše přepište pro jiný cíl."
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Zkratka pro přetahování e-mailů na tlačítko quickMove pro nejrychlejší zařazení do libovolné složky pomocí zadání názvu."
   },
   "qf.checkbox.readingList": {
     "message": "Seznam k přečtení"
@@ -698,6 +723,9 @@
   "qf.checkbox.showRecentTab": {
     "message": "Záložka 'Nedávné složky'"
   },
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Zobrazit číslo klávesové zkratky na štítcích složek"
+  },
   "qf.checkbox.showSubfolders": {
     "message": "Rozbalit podsložky v kontextových nabídkách"
   },
@@ -709,9 +737,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "Zobrazit počet nepřečtených zpráv"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "Zobrazit číslo klávesové zkratky na štítcích složek"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "…také v oknech pro jednotlivé zprávy"
@@ -755,6 +780,12 @@
   "qf.checkbox.transparent": {
     "message": "průhledný"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Použít klávesové zkratky (Alt + 1 až Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Použít Ctrl místo Alt"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "ALT-Šipka vlevo / ALT-Šipka vpravo pro předchozí / další záložku"
   },
@@ -763,15 +794,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "Obnovit záložky zkratkou: Ctrl + Alt +"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Použít klávesové zkratky (Alt + 1 až Alt + 9)"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Použít Ctrl místo Alt"
-  },
-  "configurable.tooltip": {
-    "message": "Klikněte na ozubené kolečko pro další možnosti konfigurace"
   },
   "qf.continueFilter.label": {
     "message": "Vytvořit filtr…"
@@ -785,8 +807,11 @@
   "qf.copyfolders.tooltip": {
     "message": "Zkopírujte konfiguraci karet QuickFolders do schránky"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird motiv"
+  "qf.currentfolder.leftSpacer": {
+    "message": "Levý odsazovač:"
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "Pravý odsazovač:"
   },
   "qf.currentFolderBackground.custom": {
     "message": "vlastní"
@@ -797,17 +822,11 @@
   "qf.currentFolderBackground.default": {
     "message": "stříbrný"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird motiv"
+  },
   "qf.currentFolderBackground.translucent": {
     "message": "průhledný"
-  },
-  "qf.currentfolder.leftSpacer": {
-    "message": "Levý odsazovač:"
-  },
-  "qf.currentfolder.rightSpacer": {
-    "message": "Pravý odsazovač:"
-  },
-  "qf.description.github": {
-    "message": "Pro oficiální požadavky na funkce a hlášení chyb prosím využijte GitHub"
   },
   "qf.description.categoryusage": {
     "message": "Tuto kartu můžete zařadit do kategorie (např. 'Práce', 'Soukromé', …)."
@@ -826,6 +845,9 @@
   "qf.description.donate": {
     "message": "Pokud máte QuickFolders rádi stejně jako my a chtěli byste podpořit jeho vývoj, můžete přispět na další vývoj QuickFolders."
   },
+  "qf.description.dragexplain": {
+    "message": "Karty lze také přetahovat pro změnu pozic! Pusťte kartu na jinou pro vložení před / za ni."
+  },
   "qf.description.dragToAdd": {
     "message": "Přetáhněte složky e-mailů na prázdnou oblast nové lišty a vytvořte novou rychlou složku (funguje jako zástupce/alias). Přetáhněte zprávy na rychlou složku pro přesun do odpovídající složky (nebo kopírujte s klávesou modifikátoru). Klikněte na rychlou složku pro přechod do složky e-mailů."
   },
@@ -835,14 +857,14 @@
   "qf.description.dragToPosition": {
     "message": "Přetahujte rychlé složky do stran pro změnu jejich pozic. Klikněte pravým tlačítkem na rychlou složku pro kontextové menu; výběrem přejdete do podřízených složek. 'Přejmenovat kartu' změní popisek rychlé složky. 'Odstranit kartu' smaže rychlou složku (ne složku e-mailů)."
   },
-  "qf.description.dragexplain": {
-    "message": "Karty lze také přetahovat pro změnu pozic! Pusťte kartu na jinou pro vložení před / za ni."
-  },
   "qf.description.editcategory": {
     "message": "Vyberte existující kategorii dvojklikem na ni, nebo přidejte novou kategorii níže."
   },
   "qf.description.experimentalItems": {
     "message": "Následující položky jsou experimentální, doufáme, že budou fungovat v příštím vydání!"
+  },
+  "qf.description.github": {
+    "message": "Pro oficiální požadavky na funkce a hlášení chyb prosím využijte GitHub"
   },
   "qf.description.languages": {
     "message": "QuickFolders podporuje lokalizaci - můžete pomoci přidáním překladu do vašeho jazyka na GitHubu:"
@@ -943,41 +965,11 @@
   "qf.group.navigation": {
     "message": "Navigace zpráv"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "Barva aktivní karty:"
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "Paleta barevných karet:"
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Paleta pro karty s uživatelsky přiřazenou barvou"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "Barva při přetažení:"
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "Barva zvýrazněné karty:"
-  },
-  "qf.label.Toolbar": {
-    "message": "Panel nástrojů"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "Šířka spodní čáry:"
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "Šířka čáry pod kartami. Změňte její barvu výběrem barvy aktivní karty níže."
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "Pozadí panelu nástrojů:"
-  },
-  "qf.label.UncoloredTab": {
-    "message": "Nepotištěná karta"
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "Vzhled (neaktivních) karet bez konkrétně zvolené barvy"
-  },
   "qf.label.accessibility": {
     "message": "Přístupnost"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Barva aktivní karty:"
   },
   "qf.label.appearance": {
     "message": "Vzhled"
@@ -985,14 +977,17 @@
   "qf.label.behavior": {
     "message": "Chování"
   },
-  "qf.label.github": {
-    "message": "Nahlásit chybu / Požádat o funkci…"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Velikost písma tlačítek (0 pro výchozí):"
   },
   "qf.label.cancel": {
     "message": "Zrušit"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Paleta barevných karet:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Paleta pro karty s uživatelsky přiřazenou barvou"
   },
   "qf.label.colors": {
     "message": "Barvy"
@@ -1012,6 +1007,9 @@
   "qf.label.dragFolderLabel": {
     "message": "Přetáhněte složky sem pro vytvoření karty. Klikněte na kartu pro otevření složky, přetáhněte zprávy pro jejich přesun/kopírování."
   },
+  "qf.label.DragOverBackground": {
+    "message": "Barva při přetažení:"
+  },
   "qf.label.existingcategories": {
     "message": "Existující kategorie:"
   },
@@ -1027,6 +1025,9 @@
   "qf.label.getQuickFilters": {
     "message": "Pro vylepšený a výkonnější způsob vytváření filtrů nainstalujte moje rozšíření quickFilters!"
   },
+  "qf.label.github": {
+    "message": "Nahlásit chybu / Požádat o funkci…"
+  },
   "qf.label.goNextUnread": {
     "message": "Přejít na další nepřečtený e-mail:"
   },
@@ -1038,6 +1039,9 @@
   },
   "qf.label.homePage": {
     "message": "Najděte podrobné informace na stránce QuickFolders na quickfolders.org…"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Barva zvýrazněné karty:"
   },
   "qf.label.initdelay": {
     "message": "[ms] zpoždění inicializace {1000 je standardní}:"
@@ -1132,6 +1136,24 @@
   "qf.label.themes": {
     "message": "Témata:"
   },
+  "qf.label.Toolbar": {
+    "message": "Panel nástrojů"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Šířka spodní čáry:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "Šířka čáry pod kartami. Změňte její barvu výběrem barvy aktivní karty níže."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Pozadí panelu nástrojů:"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Nepotištěná karta"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Vzhled (neaktivních) karet bez konkrétně zvolené barvy"
+  },
   "qf.label.versionhistory": {
     "message": "Přečíst historii verzí…"
   },
@@ -1204,9 +1226,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Zobrazit nástroje aktuální složky"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "Skrýt nástroje aktuální složky"
-  },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "Z"
   },
@@ -1227,6 +1246,9 @@
   },
   "qf.menuitem.quickfolders.helpAccess": {
     "message": "H"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Skrýt nástroje aktuální složky"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "Možnosti QuickFolders…"
@@ -1264,11 +1286,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "Nedělat nic"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "Označit zprávu jako neotevřenou"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "Označit zprávu jako přečtenou"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "Označit zprávu jako neotevřenou"
   },
   "qf.moveMailStatus.label": {
     "message": "Při přesunu zprávy do QuickFolderu:"
@@ -1353,6 +1375,9 @@
   "qf.notifications.compactFolder": {
     "message": "Upozornit po vykomprimování složky"
   },
+  "qf.options.label.themeAuthor": {
+    "message": "Autor motivu:"
+  },
   "qf.options.LayoutColorAppearance": {
     "message": "Individuální vzhled barev záložek"
   },
@@ -1362,20 +1387,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "(pruhovaný styl)"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "Autor motivu:"
-  },
   "qf.options.theme.pastelColors": {
     "message": "Pastelové barvy"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "Spodní:"
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Horní:"
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "Vlastní zaoblení rohů"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "Horní:"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "Vždy zobrazovat okraje"
@@ -1407,12 +1429,6 @@
   "qf.pathFormat.AccountAndPath": {
     "message": "Účet - Cesta k složce"
   },
-  "qf.pathFormat.PathOnly": {
-    "message": "Pouze cesta ke složce"
-  },
-  "qf.pathFormat.URI": {
-    "message": "URI složky"
-  },
   "qf.pathFormat.folderAndAccount": {
     "message": "Název složky - Poštovní účet"
   },
@@ -1422,8 +1438,14 @@
   "qf.pathFormat.maxDepth": {
     "message": "Maximální hloubka cesty:"
   },
+  "qf.pathFormat.PathOnly": {
+    "message": "Pouze cesta ke složce"
+  },
   "qf.pathFormat.tooltip": {
     "message": "Maximální počet složek zobrazených v cestě k složce."
+  },
+  "qf.pathFormat.URI": {
+    "message": "URI složky"
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "Možnosti QuickFolders"
@@ -1436,7 +1458,9 @@
       }
     }
   },
-  "qf.premium.renew.hide": { "message": "Skrýt upozornění na licenci do restartu" },
+  "qf.premium.renew.hide": {
+    "message": "Skrýt upozornění na licenci do restartu"
+  },
   "qf.premium.renewLicense.tooltip": {
     "message": "Vaše licence vypršela před {1} dny"
   },
@@ -1596,9 +1620,6 @@
   "qf.toolbarTopPadding": {
     "message": "Horní odsazení"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "Nedávné složky"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "Zavřít tuto nástrojovou lištu"
   },
@@ -1608,11 +1629,11 @@
   "qf.tooltip.emailIcon": {
     "message": "Aktuální e-mail - přetáhněte na kartu QuickFolders pro přesunutí zprávy"
   },
-  "qf.tooltip.filterStart": {
-    "message": "Aktivovat učení filtrů. Přetažením e-mailů na kartu QuickFolder vytvoříte nové filtry."
-  },
   "qf.tooltip.filters": {
     "message": "Přestat vytvářet filtry."
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Aktivovat učení filtrů. Přetažením e-mailů na kartu QuickFolder vytvoříte nové filtry."
   },
   "qf.tooltip.folderUp": {
     "message": "Přejít do nadřazené složky"
@@ -1638,20 +1659,23 @@
   "qf.tooltip.quickMove": {
     "message": "Přetáhněte e-mail sem a poté zadejte název cílové složky (quickMove); nebo klikněte pro přechod do složky (quickJump)."
   },
+  "qf.tooltip.RecentFolders": {
+    "message": "Nedávné složky"
+  },
   "qf.tooltip.skipUnreadFolder": {
     "message": "Přeskočit na další složku s nepřečtenými zprávami"
   },
   "qf.tooltip.threadIcon": {
     "message": "Aktuální vlákno - přetáhněte na kartu QuickFolders pro přesunutí konverzace"
   },
-  "qf.update.title": {
-    "message": "Aktualizace"
-  },
   "qf.update.hideVersionHistory": {
     "message": "Neotevírat kartu s historií verzí"
   },
   "qf.update.markInvalidTabs": {
     "message": "Zvýraznit neplatné karty 🧹"
+  },
+  "qf.update.title": {
+    "message": "Aktualizace"
   },
   "qf.youtube.description": {
     "message": "Pro podrobné videonávody o doplňcích pro Thunderbird a používání QuickFolders navštivte můj YouTube kanál Thunderbird Daily."
@@ -1694,12 +1718,6 @@
   "qfCommandPopup": {
     "message": "Příkazy QuickFolders"
   },
-  "qfCompactFolder": {
-    "message": "Sbalit složku"
-  },
-  "qfCompactFolderAccess": {
-    "message": "C"
-  },
   "qfCompacted": {
     "message": "Sbaleno:"
   },
@@ -1714,6 +1732,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "Původní velikost"
+  },
+  "qfCompactFolder": {
+    "message": "Sbalit složku"
+  },
+  "qfCompactFolderAccess": {
+    "message": "C"
   },
   "qfConfirmCopyFolder": {
     "message": "Opravu chcete zkopírovat složku {0} do {1}?"
@@ -1814,6 +1838,9 @@
   "qfMarkAllRead": {
     "message": "Označit složku jako přečtenou"
   },
+  "qfMarkAllRead.next": {
+    "message": "Označit složku jako přečtenou a přejít na další nečtenou složku"
+  },
   "qfMarkAllReadAccess": {
     "message": "M"
   },
@@ -1822,9 +1849,6 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Označit složku + podadresáře jako přečtené"
-  },
-  "qfMarkAllRead.next": {
-    "message": "Označit složku jako přečtenou a přejít na další nečtenou složku"
   },
   "qfMenuColor": {
     "message": "Barva"
@@ -1957,50 +1981,11 @@
   "qfVersionDisableOnUpdate": {
     "message": "Chcete zastavit zobrazování historie verzí po aktualizacích?"
   },
-  "quickMove.help.head": {
-    "message": "Nápověda pro {1}"
-  },
-  "quickMove.help.head.advanced": {
-    "message": "Pokročilé funkce"
-  },
-  "quickMove.help.l1a": {
-    "message": "Zadejte začátek názvu složky nebo slova v něm, oddělená mezerou."
-  },
-  "quickMove.help.l1b": {
-    "message": "Následující znaky se považují za hranice slov a nemusí být zadány:"
-  },
-  "quickMove.help.l2a": {
-    "message": "Zadejte {1} pro přechod do nadřazené/rodičovské/hledané složky."
-  },
-  "quickMove.help.l2b": {
-    "message": "Obvykle stačí první 2 písmena jakéhokoliv rodiče. Nové podsložky lze také vytvořit tímto zápisem."
-  },
-  "quickMove.help.l3a": {
-    "message": "Zadejte {1} pro přeskočení jakýchkoliv složek mezi nimi."
-  },
-  "quickMove.help.l3b": {
-    "message": "Toto je užitečné pro hlubší, složitější nebo neznámé hierarchie složek."
-  },
-  "quickMove.help.l4a": {
-    "message": "Zadejte {1} pro získání seznamu složek, do kterých bylo nedávno přistupováno. Počet výsledků závisí na úrovni vaší licence."
-  },
-  "quickMove.help.advanced": {
-    "message": "Pokročilejší funkce, jako klávesové zkratky pro přechod do složky / přesun e-mailů nebo vyloučení složek z výsledků vyhledávání, lze nastavit na záložce QuickFolders Pro. Pro přístup k těmto a dalším prémiovým funkcím získáte licenci Pro a podpoříte budoucnost QuickFolders."
-  },
-  "quickMove.singleMessage.goNext": {
-    "message": "Zobrazit další e-mail po přesunu aktuálního"
-  },
-  "quickMove.singleMessage.reopenTab": {
-    "message": "Znovu otevřít původní e-mail po jeho přesunu"
-  },
-  "quickMove.singleMessageTabs": {
-    "message": "Záložka jednotlivého e-mailu"
+  "quickfolders.findFolder.help": {
+    "message": "nápověda k vyhledávání"
   },
   "quickfolders.findFolder.placeHolder": {
     "message": "název složky"
-  },
-  "quickfolders.findFolder.help": {
-    "message": "nápověda k vyhledávání"
   },
   "quickfolders.quickMove.menu.cancel": {
     "message": "Zrušit quickMove"
@@ -2047,6 +2032,384 @@
   "quickfoldersQuickMovedMails": {
     "message": "E-mail přesunut do složky {2};{1} e-mailů přesunuto do složky {2}"
   },
+  "quickMove.help.advanced": {
+    "message": "Pokročilejší funkce, jako klávesové zkratky pro přechod do složky / přesun e-mailů nebo vyloučení složek z výsledků vyhledávání, lze nastavit na záložce QuickFolders Pro. Pro přístup k těmto a dalším prémiovým funkcím získáte licenci Pro a podpoříte budoucnost QuickFolders."
+  },
+  "quickMove.help.head": {
+    "message": "Nápověda pro {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "Pokročilé funkce"
+  },
+  "quickMove.help.l1a": {
+    "message": "Zadejte začátek názvu složky nebo slova v něm, oddělená mezerou."
+  },
+  "quickMove.help.l1b": {
+    "message": "Následující znaky se považují za hranice slov a nemusí být zadány:"
+  },
+  "quickMove.help.l2a": {
+    "message": "Zadejte {1} pro přechod do nadřazené/rodičovské/hledané složky."
+  },
+  "quickMove.help.l2b": {
+    "message": "Obvykle stačí první 2 písmena jakéhokoliv rodiče. Nové podsložky lze také vytvořit tímto zápisem."
+  },
+  "quickMove.help.l3a": {
+    "message": "Zadejte {1} pro přeskočení jakýchkoliv složek mezi nimi."
+  },
+  "quickMove.help.l3b": {
+    "message": "Toto je užitečné pro hlubší, složitější nebo neznámé hierarchie složek."
+  },
+  "quickMove.help.l4a": {
+    "message": "Zadejte {1} pro získání seznamu složek, do kterých bylo nedávno přistupováno. Počet výsledků závisí na úrovni vaší licence."
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Zobrazit další e-mail po přesunu aktuálního"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Znovu otevřít původní e-mail po jeho přesunu"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Záložka jednotlivého e-mailu"
+  },
+  "registration.account": {
+    "message": "Poštovní účet"
+  },
+  "registration.action.buy": {
+    "message": "Koupit $1"
+  },
+  "registration.action.buyDomain": {
+    "message": "Koupit doménovou licenci"
+  },
+  "registration.action.current": {
+    "message": "Současná edice"
+  },
+  "registration.action.extend": {
+    "message": "Prodloužit licenci"
+  },
+  "registration.action.renew": {
+    "message": "Obnovit licenci"
+  },
+  "registration.action.upgrade": {
+    "message": "Přejít na Pro"
+  },
+  "registration.annual": {
+    "message": "Roční licence"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Zavřít oznámení o nákupu"
+  },
+  "registration.checkout.error": {
+    "message": "Obchod nelze otevřít. Zkuste to znovu."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Pro zachování výhod obnovení nebo upgradu pokračujte s produktem otevřeným z této stránky.{/bold} Chcete-li {i}jinou licenci{/i}, začněte znovu zde."
+  },
+  "registration.checkout.note": {
+    "message": "Ceny, daně a dostupné slevy jsou uvedeny v obchodě."
+  },
+  "registration.checkout.opened": {
+    "message": "Obchod se otevřel v prohlížeči. Tuto kartu můžete nechat otevřenou."
+  },
+  "registration.checkout.preview": {
+    "message": "Testovací náhled: $1 pro $2. Obchod nebyl otevřen."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Tato cesta upgradu vyžaduje potvrzení před povolením nákupu. Obchod nebyl otevřen."
+  },
+  "registration.compare": {
+    "message": "Porovnat Standard a Pro"
+  },
+  "registration.contact.heading": {
+    "message": "Pro koho je tato licence?"
+  },
+  "registration.contact.note": {
+    "message": "Tyto údaje předvyplní objednávku. Zde je můžete upravit."
+  },
+  "registration.date.expired": {
+    "message": "Platnost vaší licence skončila $1."
+  },
+  "registration.date.none": {
+    "message": "Vyberte licenci níže nebo zadejte stávající klíč."
+  },
+  "registration.date.valid": {
+    "message": "Vaše licence platí do $1."
+  },
+  "registration.development": {
+    "message": "Test registrace"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro je samostatná osobní licence, nikoli obnovení doménové licence. Doménová licence vás pokrývá na instalacích s poštovním účtem registrované firemní domény v rámci zakoupeného počtu uživatelů. Samostatná licence Pro může pokrýt domácí instalaci, kde tento účet nemůžete používat. Pro pokračování licence týmu zvolte Obnovit licenci v panelu Doména."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Přidat uživatele"
+  },
+  "registration.domain.seatsNote": {
+    "message": "ke stávající doménové licenci."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Potřebujete více míst?"
+  },
+  "registration.edition.domain": {
+    "message": "Doména"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "message": "E-mailová adresa"
+  },
+  "registration.email.domain": {
+    "message": "Platí jiná pravidla: nastavená adresa musí patřit k licencované doméně."
+  },
+  "registration.email.domain.heading": {
+    "message": "Doménové licence"
+  },
+  "registration.email.help": {
+    "message": "O licencovaných e-mailových adresách"
+  },
+  "registration.email.help.close": {
+    "message": "Zavřít nápovědu k adresám"
+  },
+  "registration.email.help.heading": {
+    "message": "Váš e-mail je vaše licence"
+  },
+  "registration.email.hint": {
+    "message": "Osobní licence funguje na více zařízeních."
+  },
+  "registration.email.personal": {
+    "message": "Licence je vázána na tuto e-mailovou adresu. Můžete ji používat na více zařízeních. Na každém zařízení nastavte tuto adresu jako {bold}výchozí identitu{/bold} účtu v Thunderbirdu."
+  },
+  "registration.email.personal.heading": {
+    "message": "Licence Standard a Pro"
+  },
+  "registration.email.rules": {
+    "message": "Pravidla licencované adresy"
+  },
+  "registration.enterKey": {
+    "message": "Zadat licenční klíč…"
+  },
+  "registration.eyebrow": {
+    "message": "Vaše licence"
+  },
+  "registration.firstName": {
+    "message": "Jméno"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Testovací údaje: nákup otevře pouze náhled."
+  },
+  "registration.footer": {
+    "message": "Vytvořeno pro Thunderbird. Podporováno vámi."
+  },
+  "registration.heading": {
+    "message": "Vaše složky. Méně námahy."
+  },
+  "registration.identity.empty": {
+    "message": "Zadat údaje ručně"
+  },
+  "registration.identity.none": {
+    "message": "Nebyly nalezeny vhodné účty. Kontaktní údaje můžete zadat ručně."
+  },
+  "registration.lastName": {
+    "message": "Příjmení"
+  },
+  "registration.learnMore": {
+    "message": "Další informace…"
+  },
+  "registration.legacy.menu": {
+    "message": "Původní registrace licence"
+  },
+  "registration.license.domain": {
+    "message": "Doménová licence"
+  },
+  "registration.license.edition": {
+    "message": "Licence $1"
+  },
+  "registration.license.expiresIn": {
+    "message": "Platnost licence vyprší za $1 dní"
+  },
+  "registration.license.none": {
+    "message": "Licence není nastavena"
+  },
+  "registration.load.error": {
+    "message": "Licenci nebo účty nelze načíst. Zkuste kartu znovu načíst."
+  },
+  "registration.navigation": {
+    "message": "Navigace licencí"
+  },
+  "registration.options": {
+    "message": "Možnosti licence"
+  },
+  "registration.plan.domain.description": {
+    "message": "Funkce Pro pro uživatele licencované domény v rámci zakoupeného počtu míst."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Pro váš tým"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Pro společnou doménu"
+  },
+  "registration.plan.pro.description": {
+    "message": "Uspořádejte a najděte zprávy každý den rychleji."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Všechny funkce"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Pro váš vlastní e-mail"
+  },
+  "registration.plan.standard.description": {
+    "message": "Mějte oblíbené složky vždy po ruce."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Každodenní základ"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Pro váš vlastní e-mail"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Doménové licence{/bold}{br}Doménové licence se {bold}ručně kontrolují a vystavují{/bold}. Obnovení přidá jeden rok ke stávajícímu datu konce platnosti, i když licence již vypršela. To podporuje včasné obnovení; konečná doba platnosti se potvrdí při kontrole."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Výhody obnovení a upgradu závisejí na údajích licence předaných obchodu. Změna produktu v obchodě nebo odstranění těchto údajů bezpečnostním softwarem může zabránit uplatnění vašich stávajících nároků."
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Přejděte na Pro a zaplaťte **pouze rozdíl** mezi cenami Standard a Pro – získáte celý rok ode dne zaplacení, i když vaše licence Standard již vypršela."
+  },
+  "registration.renewal.hint": {
+    "message": "Obnovení nebo prodloužení licence obvykle stojí méně než nákup nové."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Osobní licence{/bold}{br}Nová licence platí jeden rok od zaplacení. Při obnovení nebo prodloužení stejné edice získáte celý rok od zaplacení nebo rok po současném konci platnosti, podle toho, co vám poskytne více času."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Stávající licence{/bold}{br}Vaše současná licence se předá obchodu pro výpočet nového data konce platnosti."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Přejděte na Pro a zaplaťte **pouze rozdíl** mezi cenami Standard a Pro. Získáte celý rok ode dne zaplacení."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Upgrade ze Standard na Pro{/bold}{br}Licence Pro platí jeden rok od zaplacení upgradu. Zbývající doba licence Standard toto období neprodlužuje."
+  },
+  "registration.selection.heading": {
+    "message": "Méně času stráveného hledáním."
+  },
+  "registration.selection.intro": {
+    "message": "Zvolte Standard pro základní funkce, Pro pro všechny funkce nebo Doménu pro uživatele vaší organizace."
+  },
+  "registration.selection.label": {
+    "message": "Výběr licence"
+  },
+  "registration.settings.error": {
+    "message": "Nastavení licence nelze otevřít. Zkuste to znovu."
+  },
+  "registration.showLess": {
+    "message": "Zobrazit méně"
+  },
+  "registration.status.Empty": {
+    "message": "Bezplatná edice"
+  },
+  "registration.status.Expired": {
+    "message": "Platnost skončila"
+  },
+  "registration.status.Invalid": {
+    "message": "Neplatná licence"
+  },
+  "registration.status.MailDifferent": {
+    "message": "E-mail licence nesouhlasí"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Licencovaná adresa není nastavena"
+  },
+  "registration.status.NotValidated": {
+    "message": "Neověřeno"
+  },
+  "registration.status.Unknown": {
+    "message": "Licence není dostupná"
+  },
+  "registration.status.Valid": {
+    "message": "Platná"
+  },
+  "registration.subtitle": {
+    "message": "Vyberte správnou licenci pro svůj způsob práce."
+  },
+  "registration.terms.annual": {
+    "message": "Licence pokrývá jeden rok. Obnovte licenci s ukončenou platností nebo prodlužte současnou a pokračujte s vybranou edicí."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Vždy na jeden rok"
+  },
+  "registration.terms.back": {
+    "message": "Výběr licence"
+  },
+  "registration.terms.checkout": {
+    "message": "Vyberte licenci a přejděte do obchodu. Cena závisí na edici, zemi, daních a příslušných slevách."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Nákup v prohlížeči"
+  },
+  "registration.terms.domain": {
+    "message": "Doménová licence pokrývá uživatele s adresami v licencované doméně až do počtu zakoupených míst."
+  },
+  "registration.terms.draft": {
+    "message": "Návrh podmínek: podrobnosti zkoušení a funkcí po skončení platnosti budou před vydáním zkontrolovány."
+  },
+  "registration.terms.edition": {
+    "message": "Standard a Pro nabízejí různé úrovně funkcí. Porovnejte edice a vyberte vhodnou."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Vyberte svou edici"
+  },
+  "registration.terms.email": {
+    "message": "Osobní licence je vázána na vaši e-mailovou adresu. Lze ji používat ve více instalacích Thunderbirdu, pokud je licencovaná adresa v každé nastavena jako **výchozí identita** účtu."
+  },
+  "registration.terms.email.heading": {
+    "message": "Váš e-mail, vaše licence"
+  },
+  "registration.terms.heading": {
+    "message": "Jak vaše licence funguje."
+  },
+  "registration.terms.hide": {
+    "message": "🡇 Pokračovat k výběru licence 🡇"
+  },
+  "registration.terms.intro": {
+    "message": "{+extensionName} drží s Thunderbirdem krok již léta. Licence financují průběžný vývoj, nové funkce a aktualizace kompatibility. Každá licence platí jeden rok a podporuje tuto práci."
+  },
+  "registration.terms.label": {
+    "message": "Licenční podmínky"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Licence **se neobnovují automaticky**. {+extensionName} vás před koncem platnosti upozorní."
+  },
+  "registration.terms.otherAccounts": {
+    "message": "Licencované funkce fungují i se všemi ostatními poštovními účty v Thunderbirdu. Další licence nejsou potřeba."
+  },
+  "registration.terms.referrer": {
+    "message": "Pokud již licenci máte, odešle se do obchodu k ověření vašich nároků."
+  },
+  "registration.terms.savings": {
+    "message": "**Začněte s Pro a šetřete v dalších letech.** Obnovení nebo prodloužení licence Pro stojí výrazně méně než nová licence."
+  },
+  "registration.terms.show": {
+    "message": "Zobrazit licenční podmínky 🡇"
+  },
+  "registration.terms.support": {
+    "message": "Vaše podpora financuje vývoj, aktualizace kompatibility a opravy."
+  },
+  "registration.test.menu": {
+    "message": "Registrace do internetového obchodu"
+  },
+  "registration.test.note": {
+    "message": "Nákup se otevře v prohlížeči."
+  },
+  "registration.title": {
+    "message": "{+extensionName} · Vaše licence"
+  },
   "renew-your-license": {
     "message": "Obnovte si licenci."
   },
@@ -2059,6 +2422,24 @@
       "reduction": {
         "content": "$2",
         "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Pomozte zachovat kompatibilitu $addon$",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b} Vážený {name} {/b}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {b} vaši pomoc {/b}, abychom udrželi krok!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
       }
     }
   },
@@ -2090,24 +2471,6 @@
   },
   "special-offer-upgrade-condition": {
     "message": "Když upgradujete ze Standardu, získáte licenční období na jeden celý rok od data nákupu bez ohledu na datum vypršení platnosti vaší předchozí licence."
-  },
-  "special-offer-head": {
-    "message": "Pomozte zachovat kompatibilitu $addon$",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{b} Vážený {name} {/b}, podpořte prosím $addon$ získáním licence. Kód Thunderbirdu se neustále vyvíjí a my potřebujeme {b} vaši pomoc {/b}, abychom udrželi krok!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
   },
   "support-preference": {
     "message": "Toto je upřednostňovaný způsob podpory $addonName$.",
@@ -2198,7 +2561,10 @@
   "whats-new-maintenance": {
     "message": "Údržbová aktualizace $ver$. Tato verze řeší naléhavé regresní chyby z předchozí verze.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "window-title": {

@@ -2,6 +2,50 @@
   "_l10nstatus": {
     "message": "SPLASH+UI"
   },
+  "accessibility.count.total": {
+    "message": "$count$ berichten in totaal",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.total.subfolders": {
+    "message": "$count$ in totaal in submappen",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread": {
+    "message": "$count$ ongelezen berichten",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.count.unread.subfolders": {
+    "message": "$count$ ongelezen in submappen",
+    "placeholders": {
+      "count": {
+        "content": "$1"
+      }
+    }
+  },
+  "accessibility.hideIconMenu": {
+    "message": "Verwijder het commando 'Pictogram aanpassen' uit het contextmenu van de map."
+  },
+  "accessibility.hideTooltips": {
+    "message": "Tooltips op tabbladen verbergen"
+  },
+  "accessibility.prioritizeQFtabs": {
+    "message": "Geef QuickFolders-bladwijzers prioriteit in zoekresultaten."
+  },
+  "accessibility.subFolderParentEntry": {
+    "message": "Toon apart item voor bovenliggende map in submenu"
+  },
   "account.label": {
     "message": "Selecteer account:"
   },
@@ -21,50 +65,6 @@
   },
   "addon-authors-struggle": {
     "message": "Om nuttig te blijven, moeten wij add-on-ontwikkelaars nu de middelen financieren die nodig zijn om te repareren en te herschrijven, zodat onze gebruikers kunnen blijven profiteren van de functionaliteit die we bieden."
-  },
-  "accessibility.count.unread": {
-    "message": "$count$ ongelezen berichten",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.unread.subfolders": {
-    "message": "$count$ ongelezen in submappen",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total": {
-    "message": "$count$ berichten in totaal",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.count.total.subfolders": {
-    "message": "$count$ in totaal in submappen",
-    "placeholders": {
-      "count": {
-        "content": "$1"
-      }
-    }
-  },
-  "accessibility.hideIconMenu": {
-    "message": "Verwijder het commando 'Pictogram aanpassen' uit het contextmenu van de map."
-  },
-  "accessibility.hideTooltips": {
-    "message": "Tooltips op tabbladen verbergen"
-  },
-  "accessibility.prioritizeQFtabs": {
-    "message": "Geef QuickFolders-bladwijzers prioriteit in zoekresultaten."
-  },
-  "accessibility.subFolderParentEntry": {
-    "message": "Toon apart item voor bovenliggende map in submenu"
   },
   "aria.a11underReview": {
     "message": "We zijn momenteel bezig met het beoordelen en verbeteren van de toegankelijkheid van deze pagina. We werken eraan om de beschreven functionaliteit meer geschikt te maken voor toetsenbordgebruik en schermlezers. Bedankt voor uw geduld!"
@@ -156,6 +156,9 @@
   "commands.toggleFolderTree": {
     "message": "Schakel de zichtbaarheid van de mappenboom in"
   },
+  "configurable.tooltip": {
+    "message": "Klik op het configuratiewiel voor meer configuratie-opties"
+  },
   "cost-of-independence": {
     "message": "Softwareontwikkeling kost tijd en geld - in tegenstelling tot veel platform-apps worden add-ons niet geschreven door grote bedrijven en worden ze op geen enkele manier gesponsord door Mozilla."
   },
@@ -207,8 +210,11 @@
   "extensions.quickfolders@curious.be.description": {
     "message": "Maak bladwijzers voor uw favoriete e-mailmappen in Thunderbird."
   },
-  "firstName.label": {
-    "message": "Voornaam:"
+  "findRelated.btn.label": {
+    "message": "Zoek gerelateerde e-mails"
+  },
+  "findRelated.btn.tooltip": {
+    "message": "Vind vergelijkbare e-mails op basis van de geselecteerde e-mail en door de gebruiker gedefinieerde zoekpatronen"
   },
   "findRelated.btnAdd": {
     "message": "Toevoegen"
@@ -219,20 +225,17 @@
   "findRelated.btnUpdate": {
     "message": "Bijwerken"
   },
-  "findRelated.btn.label": {
-    "message": "Zoek gerelateerde e-mails"
-  },
-  "findRelated.btn.tooltip": {
-    "message": "Vind vergelijkbare e-mails op basis van de geselecteerde e-mail en door de gebruiker gedefinieerde zoekpatronen"
-  },
   "findRelated.entries": {
     "message": "Zoekpatronen"
   },
   "findRelated.menu.configure": {
     "message": "Zoekpatronen configureren…"
   },
-  "findRelated.prompt.title": {
-    "message": "Zoek gerelateerde e-mails: Patroon zoeken"
+  "findRelated.options.goNextResetsSearch": {
+    "message": "De knop 'Ga naar volgende e-mail' wist de huidige zoekopdracht."
+  },
+  "findRelated.options.title": {
+    "message": "Opties"
   },
   "findRelated.prompt.enterPattern": {
     "message": "Om deze functie te gebruiken, hoef je slechts één zoekpatroon in te stellen."
@@ -240,11 +243,8 @@
   "findRelated.prompt.selectPattern": {
     "message": "Klik met de rechtermuisknop op [Vind verwante e-mails] om een zoekpatroon te selecteren. Dit voert de zoekopdracht uit en slaat de instellingen op voor de volgende keer dat je de knop klikt."
   },
-  "findRelated.options.title": {
-    "message": "Opties"
-  },
-  "findRelated.options.goNextResetsSearch": {
-    "message": "De knop 'Ga naar volgende e-mail' wist de huidige zoekopdracht."
+  "findRelated.prompt.title": {
+    "message": "Zoek gerelateerde e-mails: Patroon zoeken"
   },
   "findRelated.searchGroup": {
     "message": "Zoekgroep (0 voor volledige overeenkomst):"
@@ -252,26 +252,29 @@
   "findRelated.searchPattern": {
     "message": "Zoekpatroon:"
   },
+  "findRelated.term.body": {
+    "message": "Tekst"
+  },
   "findRelated.term.menutitle": {
     "message": "Titel:"
-  },
-  "findRelated.term.subject": {
-    "message": "Onderwerp"
-  },
-  "findRelated.term.sender": {
-    "message": "Afzender"
   },
   "findRelated.term.recipients": {
     "message": "Ontvangers"
   },
-  "findRelated.term.body": {
-    "message": "Tekst"
+  "findRelated.term.sender": {
+    "message": "Afzender"
+  },
+  "findRelated.term.subject": {
+    "message": "Onderwerp"
+  },
+  "findRelated.terms.searchCriteriaFields": {
+    "message": "Waarnaar te zoeken in gerelateerde e-mails:"
   },
   "findRelated.terms.selectedFields": {
     "message": "Haal zoektekst op van:"
   },
-  "findRelated.terms.searchCriteriaFields": {
-    "message": "Waarnaar te zoeken in gerelateerde e-mails:"
+  "firstName.label": {
+    "message": "Voornaam:"
   },
   "freeLicense": {
     "message": "Als u onlangs aan het QuickFolders-project hebt gedoneerd of een bijdrage hebt geleverd, zoals vertalen of patches schrijven, komt u mogelijk in aanmerking voor een gratis licentiesleutel. Neem contact met mij op via het tabblad Ondersteuning in de QuickFolders-opties."
@@ -317,6 +320,9 @@
   "intro": {
     "message": "Een jaarlicentie voor QuickFolders Pro geeft u een jaar lang alle premiumfuncties. Hierdoor kunnen we het product tevens verder ondersteunen en laten groeien en omzetten naar iets wat nog geweldiger is."
   },
+  "keyshortcuts.news": {
+    "message": "Momenteel gebruikt Thunderbird deze als ingebouwde sneltoetsen, maar je kunt ze vrijmaken met de Add-on tbkeys lite. Klik op de (?) knop voor meer informatie:"
+  },
   "label-remind-me": {
     "message": "Herinner me er over $countDays$ dagen opnieuw aan.",
     "placeholders": {
@@ -326,14 +332,35 @@
       }
     }
   },
-  "keyshortcuts.news": {
-    "message": "Momenteel gebruikt Thunderbird deze als ingebouwde sneltoetsen, maar je kunt ze vrijmaken met de Add-on tbkeys lite. Klik op de (?) knop voor meer informatie:"
-  },
   "lastName.label": {
     "message": "Achternaam:"
   },
   "lblCustomPalette": {
     "message": "Aangepast palet:"
+  },
+  "license_restriced.standard.maxtabs": {
+    "message": "QuickFolders heeft een Pro-licentie nodig om meer dan $maxTabs$ tabbladen te ondersteunen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "25"
+      }
+    }
+  },
+  "license_restriced.std": {
+    "message": "Standaardlicentie - beperkte Pro-functie. Meer te weten komen…"
+  },
+  "license_restriced.unpaid": {
+    "message": "Versie zonder licentie - beperkte functie. Meer te weten komen…"
+  },
+  "license_restriced.unpaid.maxtabs": {
+    "message": "QuickFolders heeft een licentie nodig om meer dan $maxTabs$ tabbladen te ondersteunen.",
+    "placeholders": {
+      "maxTabs": {
+        "content": "$1",
+        "example": "10"
+      }
+    }
   },
   "license-is-extended": {
     "description": "Shown if license expires more than a year from now",
@@ -354,59 +381,44 @@
   "licenseWindow.title": {
     "message": "QuickFolders Pro-licentie"
   },
-  "license_restriced.std": {
-    "message": "Standaardlicentie - beperkte Pro-functie. Meer te weten komen…"
+  "message.browserLaunchFailed": {
+    "message": "{p} Uw standaardbrowser kon niet worden geopend. U kunt het onderstaande adres kopiëren en in de adresbalk van uw browser plakken. {/p} Meer informatie over de fout vindt u in de JavaScript-foutconsole."
   },
-  "license_restriced.unpaid": {
-    "message": "Versie zonder licentie - beperkte functie. Meer te weten komen…"
+  "message.browserLaunchFailed.title": {
+    "message": "QuickFolders — Browserfout"
   },
-  "license_restriced.standard.maxtabs": {
-    "message": "QuickFolders heeft een Pro-licentie nodig om meer dan $maxTabs$ tabbladen te ondersteunen.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "25"
-      }
-    }
+  "message.browserLaunchFailed.url": {
+    "message": "Webadres (Ctrl+C om te kopiëren):"
   },
-  "license_restriced.unpaid.maxtabs": {
-    "message": "QuickFolders heeft een licentie nodig om meer dan $maxTabs$ tabbladen te ondersteunen.",
-    "placeholders": {
-      "maxTabs": {
-        "content": "$1",
-        "example": "10"
-      }
-    }
+  "message.btn.accept": {
+    "message": "OK"
   },
-  "message.browserLaunchFailed": { "message": "{p} Uw standaardbrowser kon niet worden geopend. U kunt het onderstaande adres kopiëren en in de adresbalk van uw browser plakken. {/p} Meer informatie over de fout vindt u in de JavaScript-foutconsole." },
-  "message.browserLaunchFailed.title": { "message": "QuickFolders — Browserfout" },
-  "message.browserLaunchFailed.url": { "message": "Webadres (Ctrl+C om te kopiëren):" },
-  "message.btn.accept": { "message": "OK" },
-  "message.btn.cancel": { "message": "Annuleren" },
-  "message.btn.no": { "message": "Nee" },
-  "message.btn.yes": { "message": "Ja" },
-  "message.features": { "message": "Vergelijk functies…" },
-  "message.placeholder": { "message": "Bericht ontbreekt." },
-  "message.licenseScreen": { "message": "Licentie-opties weergeven…" },
-  "message.linkInTab": { "message": "(Link geopend in tabblad)" },
+  "message.btn.cancel": {
+    "message": "Annuleren"
+  },
+  "message.btn.no": {
+    "message": "Nee"
+  },
+  "message.btn.yes": {
+    "message": "Ja"
+  },
+  "message.features": {
+    "message": "Vergelijk functies…"
+  },
+  "message.licenseScreen": {
+    "message": "Licentie-opties weergeven…"
+  },
+  "message.linkInTab": {
+    "message": "(Link geopend in tabblad)"
+  },
+  "message.placeholder": {
+    "message": "Bericht ontbreekt."
+  },
   "mozillas-basic-platform": {
     "message": "Mozilla biedt alleen een basisplatform om onze software aan u, de eindgebruikers, te leveren. Als we onze gebruikers om betaling of ondersteuning moeten vragen, kunnen we dit niet doen vanaf addons.thunderbird.net - het is geen 'app store' met ingebouwde paywalls of licentiebeheer zoals iTunes of Google Play."
   },
   "newsHead": {
     "message": "Laatste nieuws"
-  },
-  "newsMsgEsr140": {
-    "message": "{P}{b} Binnenkort in de volgende grote release {/b}: Thunderbird zal u binnenkort vragen uw voorkeursupdatepad te kiezen — het jaarlijkse ESR-traject of de snellere maandelijkse releases. {a release}Lees meer over het nieuwe release-model{/a}.{U} {L}De ESR-versie blijft op v140, verhoogt alleen de subversienummers en bevat alleen beveiligings- en bugfixes, wat vaak de voorkeur heeft in zakelijke omgevingen.{/L} {L}De maandelijkse releasecyclus levert nieuwe functies en interface-updates zodra deze zijn ontwikkeld. Controleer of uw huidige add-ons dit release-model ondersteunen. Om u te helpen kunt u de {a compatCheck}Add-on Compatibiliteitscontrole{/a} installeren.{/L} {/U}{/P}{P} We zijn verheugd aan te kondigen dat QuickFolders volledig compatibel is met Thunderbird 140, de volgende Extended Support Release (ESR). Dit betekent voortdurende betrouwbaarheid en gemoedsrust tijdens de volgende grote ondersteuningscyclus.{/P}{P} QuickFolders blijft voorlopig gebruikers van Thunderbird 115 en hoger ondersteunen. In de loop van het komende jaar, naarmate we nieuwe functies toevoegen, kan de ondersteuning voor Thunderbird 115 worden beëindigd ten gunste van Thunderbird 128 en nieuwer.{/P}{P} We volgen de wijzigingen in Thunderbird continu om ervoor te zorgen dat QuickFolders compatibel en betrouwbaar blijft, ongeacht het gekozen updatepad.{/P}"
-  },
-  "newsMsgEsrFuture": {
-    "message": "{P}{b} Er komt een belangrijke wijziging in Thunderbird {/b}: Vanaf Thunderbird 153 worden experimentele add-ons zoals {+extensionName} niet langer ondersteund in Release-versies. Thunderbird {a apiwork}breidt actief de WebExtension-API’s uit{/a} om de afhankelijkheid van experimentele uitbreidingsmechanismen te verminderen. Vanaf {emph}versie 153{/emph} vereisen legacy add-ons het gebruik van {+newsMsgEsr153.ESR} (ESR).<ul><li>Het ESR-kanaal blijft de aanbevolen optie voor gebruikers die afhankelijk zijn van geavanceerde of experimentele add-ons.</li><li>Het Release-kanaal richt zich op stabiele, volledig ondersteunde WebExtension-add-ons.</li><li>Het Beta-kanaal kan nog steeds worden gebruikt voor tests en compatibiliteitscontroles vóór ESR-releases.</li></ul></P>{P}{+extensionName} blijft volledig ondersteund in Thunderbird ESR en wordt actief onderhouden in Release-versies waar technisch mogelijk.{/P}{P}We blijven de wijzigingen in Thunderbird nauwlettend volgen om compatibiliteit en een stabiele ervaring in alle ondersteunde versies te garanderen.{/P}"
-  },
-  "newsMsgEsr153.ESR": {
-    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
-    "message": "Thunderbird Extended Support Release (Thunderbird-uitgebreide ondersteuningsrelease)"
-  },
-  "newsMsgEsr2026": {
-    "message": "{P}{b}Aankomende wijzigingen in Thunderbird add-on-ondersteuning{/b}: Een eerder aangekondigde wijziging voor experimentele add-ons op het Release-kanaal is uitgesteld naar de volgende ESR-cyclus (ESR 2027). Deze extra tijd wordt gebruikt om de API-dekking te verbeteren en de overgang samen met de add-on-community verder te verfijnen.{/P}{P}Op dit moment is geen actie vereist. {+extensionName} blijft werken op zowel Release- als ESR-versies van Thunderbird waar dit wordt ondersteund.{/P}{P}We blijven de platformwijzigingen volgen en geven richtlijnen als in de toekomst een migratie nodig wordt.{/P}{P}Hoewel overstappen naar het ESR-kanaal niet verplicht is, kunnen sommige gebruikers die sterk afhankelijk zijn van experimentele functionaliteit dit prefereren vanwege de stabielere omgeving en minder frequente wijzigingen, omdat experimentele interfaces gevoeliger kunnen zijn voor interne platformwijzigingen.{/P}"
   },
   "newsMsg.license.expired": {
     "message": "{P} Alle nieuwe functies, bugfixes en langdurige compatibiliteit zijn mogelijk dankzij uw steun.{/P}{P class=specialOffer} Om de ontwikkeling van QuickFolders te ondersteunen, kunt u uw licentie met korting verlengen tot {salesEnd}.{/P}{P class=bottomhint}🡇 Kies hieronder een van de opties voor meer informatie 🡇 {/P}"
@@ -420,6 +432,19 @@
   "newsMsg.license.valid": {
     "message": "{P} Bedankt voor uw steun aan QuickFolders met een Pro-licentie — dit maakt alle nieuwe functies, bugfixes en langdurige compatibiliteit mogelijk.{/P}"
   },
+  "newsMsgEsr140": {
+    "message": "{P}{b} Binnenkort in de volgende grote release {/b}: Thunderbird zal u binnenkort vragen uw voorkeursupdatepad te kiezen — het jaarlijkse ESR-traject of de snellere maandelijkse releases. {a release}Lees meer over het nieuwe release-model{/a}.{U} {L}De ESR-versie blijft op v140, verhoogt alleen de subversienummers en bevat alleen beveiligings- en bugfixes, wat vaak de voorkeur heeft in zakelijke omgevingen.{/L} {L}De maandelijkse releasecyclus levert nieuwe functies en interface-updates zodra deze zijn ontwikkeld. Controleer of uw huidige add-ons dit release-model ondersteunen. Om u te helpen kunt u de {a compatCheck}Add-on Compatibiliteitscontrole{/a} installeren.{/L} {/U}{/P}{P} We zijn verheugd aan te kondigen dat QuickFolders volledig compatibel is met Thunderbird 140, de volgende Extended Support Release (ESR). Dit betekent voortdurende betrouwbaarheid en gemoedsrust tijdens de volgende grote ondersteuningscyclus.{/P}{P} QuickFolders blijft voorlopig gebruikers van Thunderbird 115 en hoger ondersteunen. In de loop van het komende jaar, naarmate we nieuwe functies toevoegen, kan de ondersteuning voor Thunderbird 115 worden beëindigd ten gunste van Thunderbird 128 en nieuwer.{/P}{P} We volgen de wijzigingen in Thunderbird continu om ervoor te zorgen dat QuickFolders compatibel en betrouwbaar blijft, ongeacht het gekozen updatepad.{/P}"
+  },
+  "newsMsgEsr153.ESR": {
+    "description": "the following entity has an English term followed by a translation of the term in parentheses. Please translate only the part within the parentheses.",
+    "message": "Thunderbird Extended Support Release (Thunderbird-uitgebreide ondersteuningsrelease)"
+  },
+  "newsMsgEsr2026": {
+    "message": "{P}{b}Aankomende wijzigingen in Thunderbird add-on-ondersteuning{/b}: Een eerder aangekondigde wijziging voor experimentele add-ons op het Release-kanaal is uitgesteld naar de volgende ESR-cyclus (ESR 2027). Deze extra tijd wordt gebruikt om de API-dekking te verbeteren en de overgang samen met de add-on-community verder te verfijnen.{/P}{P}Op dit moment is geen actie vereist. {+extensionName} blijft werken op zowel Release- als ESR-versies van Thunderbird waar dit wordt ondersteund.{/P}{P}We blijven de platformwijzigingen volgen en geven richtlijnen als in de toekomst een migratie nodig wordt.{/P}{P}Hoewel overstappen naar het ESR-kanaal niet verplicht is, kunnen sommige gebruikers die sterk afhankelijk zijn van experimentele functionaliteit dit prefereren vanwege de stabielere omgeving en minder frequente wijzigingen, omdat experimentele interfaces gevoeliger kunnen zijn voor interne platformwijzigingen.{/P}"
+  },
+  "newsMsgEsrFuture": {
+    "message": "{P}{b} Er komt een belangrijke wijziging in Thunderbird {/b}: Vanaf Thunderbird 153 worden experimentele add-ons zoals {+extensionName} niet langer ondersteund in Release-versies. Thunderbird {a apiwork}breidt actief de WebExtension-API’s uit{/a} om de afhankelijkheid van experimentele uitbreidingsmechanismen te verminderen. Vanaf {emph}versie 153{/emph} vereisen legacy add-ons het gebruik van {+newsMsgEsr153.ESR} (ESR).<ul><li>Het ESR-kanaal blijft de aanbevolen optie voor gebruikers die afhankelijk zijn van geavanceerde of experimentele add-ons.</li><li>Het Release-kanaal richt zich op stabiele, volledig ondersteunde WebExtension-add-ons.</li><li>Het Beta-kanaal kan nog steeds worden gebruikt voor tests en compatibiliteitscontroles vóór ESR-releases.</li></ul></P>{P}{+extensionName} blijft volledig ondersteund in Thunderbird ESR en wordt actief onderhouden in Release-versies waar technisch mogelijk.{/P}{P}We blijven de wijzigingen in Thunderbird nauwlettend volgen om compatibiliteit en een stabiele ervaring in alle ondersteunde versies te garanderen.{/P}"
+  },
   "newsSection": {
     "message": "{P}{b} Binnenkort in de volgende grote release {/b}: Thunderbird zal u binnenkort vragen uw voorkeursupdatepad te kiezen — het jaarlijkse ESR-traject of de snellere maandelijkse releases. {a release}Lees meer over het nieuwe release-model{/a}.{U} {L}De ESR-versie blijft op v140, verhoogt alleen de subversienummers en bevat alleen beveiligings- en bugfixes, wat vaak de voorkeur heeft in zakelijke omgevingen.{/L} {L}De maandelijkse releasecyclus levert nieuwe functies en interface-updates zodra deze zijn ontwikkeld. Controleer of uw huidige add-ons dit release-model ondersteunen. Om u te helpen kunt u de {a compatCheck}Add-on Compatibiliteitscontrole{/a} installeren.{/L} {/U}",
     "placeholders": {
@@ -429,11 +454,11 @@
       }
     }
   },
-  "newsSection.intro": {
-    "message": "{P}Wij volgen nog steeds de maandelijkse uitgiftecyclus van Thunderbird om compatibiliteit en stabiliteit te garanderen. Zoals altijd wordt dit werk volledig gefinancierd door licentieverkoop.{/P}"
-  },
   "newsSection.important": {
     "message": "{P}Belangrijk voor gebruikers van het Release-kanaal ({emph}154 en later{/emph}): Met Thunderbird's nieuwe 2-wekelijkse releasecyclus is er een verhoogd risico op onverwachte storingen zoals [issue 690]. Hoewel ik {+extensionName} regelmatig test met dagelijkse builds, zijn tijdige oplossingen afhankelijk van {b}vroege melding{/b} door Release-gebruikers. Volg de {a href='https://github.com/RealRaven2000/QuickFolders/issues'}issue tracker{/a} en meld fouten snel om de compatibiliteit te behouden.{/P}"
+  },
+  "newsSection.intro": {
+    "message": "{P}Wij volgen nog steeds de maandelijkse uitgiftecyclus van Thunderbird om compatibiliteit en stabiliteit te garanderen. Zoals altijd wordt dit werk volledig gefinancierd door licentieverkoop.{/P}"
   },
   "newsSection.license": {
     "message": "Aangezien al het werk aan QuickFolders en de gratis ondersteuning uitsluitend wordt gefinancierd door licentieverkopen, overweeg dan een licentie aan te schaffen of uw huidige licentie te verlengen."
@@ -468,9 +493,6 @@
   "purchase-heading": {
     "message": "Ondersteuning via een licentie"
   },
-  "qf.alert.pasteFolders.formatErr": {
-    "message": "Kon tabbladen niet aanmaken. Zie Extra > Foutconsole voor meer details."
-  },
   "qf.alert.bookmarks.unsupportedType": {
     "message": "Momenteel niet-ondersteund bladwijzertype: $bookmarkType$ {NewLine}Selecteer minstens één bericht of sleep gewoon e-mails over de knop",
     "placeholders": {
@@ -478,6 +500,9 @@
         "content": "$1"
       }
     }
+  },
+  "qf.alert.pasteFolders.formatErr": {
+    "message": "Kon tabbladen niet aanmaken. Zie Extra > Foutconsole voor meer details."
   },
   "qf.backupAndRestore": {
     "message": "Back-up / Herstel"
@@ -542,20 +567,14 @@
   "qf.checkbox.autoFocusPreview": {
     "message": "Focus op berichtenlijst bij klikken op tabblad"
   },
-  "qf.checkbox.hideInSingleMessage": {
-    "message": "Verberg QuickFolders in tabbladen met één bericht"
-  },
-  "qf.checkbox.hideInSingleMessage.tooltip": {
-    "message": "Verwijdert de QuickFolders-werkbalk in tabbladen die een enkel bericht tonen."
-  },
   "qf.checkbox.currentFolder.closeButton": {
     "message": "Knop Sluiten"
   },
-  "qf.checkbox.currentFolder.show": {
-    "message": "Weergeven bij opstarten"
-  },
   "qf.checkbox.currentfolder.lightweight": {
     "message": "integreren met lichtgewicht thema"
+  },
+  "qf.checkbox.currentFolder.show": {
+    "message": "Weergeven bij opstarten"
   },
   "qf.checkbox.debug": {
     "message": "Foutopsporingsmodus"
@@ -574,6 +593,12 @@
   },
   "qf.checkbox.hideCategoryBox.tooltip": {
     "message": "Minimaliseert het menu van categorieën om minder plaats in te nemen."
+  },
+  "qf.checkbox.hideInSingleMessage": {
+    "message": "Verberg QuickFolders in tabbladen met één bericht"
+  },
+  "qf.checkbox.hideInSingleMessage.tooltip": {
+    "message": "Verwijdert de QuickFolders-werkbalk in tabbladen die een enkel bericht tonen."
   },
   "qf.checkbox.highlightNewMail": {
     "message": "Mappen met nieuwe berichten accentueren"
@@ -623,14 +648,14 @@
   "qf.checkbox.quickMove": {
     "message": "quickMove - e-mail naar een map verplaatsen met sneltoets:"
   },
-  "qf.checkbox.quickMove.tip": {
-    "message": "Sneltoets voor het verslepen van de e-mailberichten naar de knop quickMove voor het snelste opslaan in een map via invoer van naam."
-  },
   "qf.checkbox.quickmove.autofill": {
     "message": "Naam van laatst gebruikte map invoegen"
   },
   "qf.checkbox.quickmove.autofill.tip": {
     "message": "De laatste met succes gebruikte map wordt ingevoegd. Druk op Enter om deze te gebruiken, of typ iets anders voor andere bestemmingen."
+  },
+  "qf.checkbox.quickMove.tip": {
+    "message": "Sneltoets voor het verslepen van de e-mailberichten naar de knop quickMove voor het snelste opslaan in een map via invoer van naam."
   },
   "qf.checkbox.readingList": {
     "message": "Leeslijst"
@@ -686,8 +711,8 @@
   "qf.checkbox.showRecentTab": {
     "message": "Tabblad Recente mappen"
   },
-  "configurable.tooltip": {
-    "message": "Klik op het configuratiewiel voor meer configuratie-opties"
+  "qf.checkbox.showshortcutnumber": {
+    "message": "Sneltoetsnummer op maplabels weergeven"
   },
   "qf.checkbox.showSubfolders": {
     "message": "Submappen uitvouwen in pop-upmenu’s"
@@ -700,9 +725,6 @@
   },
   "qf.checkbox.showUnreadMessageCount": {
     "message": "Aantal ongelezen berichten op de mapknop weergeven"
-  },
-  "qf.checkbox.showshortcutnumber": {
-    "message": "Sneltoetsnummer op maplabels weergeven"
   },
   "qf.checkbox.singleMessage.currentFolder.show": {
     "message": "…ook in losse berichtvensters"
@@ -746,6 +768,12 @@
   "qf.checkbox.transparent": {
     "message": "transparant"
   },
+  "qf.checkbox.usekeyboardshortcuts": {
+    "message": "Sneltoetsen gebruiken (Alt + 1 t/m Alt + 9)"
+  },
+  "qf.checkbox.usekeyboardshortcutsCTRL": {
+    "message": "Ctrl in plaats van Alt gebruiken"
+  },
   "qf.checkbox.useNavigationShortcuts": {
     "message": "Alt+Links / Alt+Rechts voor vorige / volgende tabblad"
   },
@@ -754,12 +782,6 @@
   },
   "qf.checkbox.useRebuildShortcut": {
     "message": "Tabbladen opnieuw opbouwen met sneltoets: Ctrl + Alt +"
-  },
-  "qf.checkbox.usekeyboardshortcuts": {
-    "message": "Sneltoetsen gebruiken (Alt + 1 t/m Alt + 9)"
-  },
-  "qf.checkbox.usekeyboardshortcutsCTRL": {
-    "message": "Ctrl in plaats van Alt gebruiken"
   },
   "qf.continueFilter.label": {
     "message": "Filter maken…"
@@ -770,8 +792,11 @@
   "qf.copyfolders.tooltip": {
     "message": "De configuratie van QuickFolders-tabbladen naar het klembord kopiëren"
   },
-  "qf.currentFolderBackground.lightweight": {
-    "message": "Thunderbird-thema"
+  "qf.currentfolder.leftSpacer": {
+    "message": "Inspringing links:"
+  },
+  "qf.currentfolder.rightSpacer": {
+    "message": "Inspringing rechts:"
   },
   "qf.currentFolderBackground.custom": {
     "message": "aangepast"
@@ -782,17 +807,11 @@
   "qf.currentFolderBackground.default": {
     "message": "zilver"
   },
+  "qf.currentFolderBackground.lightweight": {
+    "message": "Thunderbird-thema"
+  },
   "qf.currentFolderBackground.translucent": {
     "message": "doorschijnend"
-  },
-  "qf.currentfolder.leftSpacer": {
-    "message": "Inspringing links:"
-  },
-  "qf.currentfolder.rightSpacer": {
-    "message": "Inspringing rechts:"
-  },
-  "qf.description.github": {
-    "message": "Gebruik github voor alle officiële functieaanvragen en bugrapporten"
   },
   "qf.description.categoryusage": {
     "message": "U kunt dit tabblad in een categorie zetten (bv. ‘Werk’, ‘Privé’, …)."
@@ -811,6 +830,9 @@
   "qf.description.donate": {
     "message": "Als QuickFolders u net zo bevalt als ons en de ontwikkeling ervan wilt steunen, kunt u wat geld doneren voor de verdere ontwikkeling van QuickFolders."
   },
+  "qf.description.dragexplain": {
+    "message": "U kunt de tabbladen ook verslepen! Versleep het tabblad naar een ander om het ervoor of erna te plaatsen."
+  },
   "qf.description.dragToAdd": {
     "message": "Sleep e-mailmappen over een lege ruimte van de werkbalk om een nieuwe QuickFolder aan te maken (werkt als een snelkoppeling/alias). Sleep berichten naar de QuickFolder om ze naar de bijbehorende map te verplaatsen (of te kopiëren m.b.v. de modifier-toets). Klik op de QuickFolder om naar de bijhorende map te navigeren."
   },
@@ -820,14 +842,14 @@
   "qf.description.dragToPosition": {
     "message": "Sleep QuickFolders zijwaarts om hun posities te wijzigen. Klik met rechts op de QuickFolder om het contextmenu te openen; via selectie kunt u naar submappen springen. ‘Tabblad hernoemen’ wijzigt het label van de QuickFolder. ‘Tabblad verwijderen’ verwijdert de QuickFolder (niet de echte e-mailmap)."
   },
-  "qf.description.dragexplain": {
-    "message": "U kunt de tabbladen ook verslepen! Versleep het tabblad naar een ander om het ervoor of erna te plaatsen."
-  },
   "qf.description.editcategory": {
     "message": "Selecteer een bestaande categorie door erop te dubbelklikken, of voeg hieronder een nieuwe categorie toe."
   },
   "qf.description.experimentalItems": {
     "message": "De volgende items zijn experimenteel; hopelijk werken ze in de volgende versie!!"
+  },
+  "qf.description.github": {
+    "message": "Gebruik github voor alle officiële functieaanvragen en bugrapporten"
   },
   "qf.description.languages": {
     "message": "QuickFolders ondersteunt vertalingen - u kunt ons helpen door een vertaling toe te voegen op github:"
@@ -928,41 +950,11 @@
   "qf.group.navigation": {
     "message": "Berichtnavigatie"
   },
-  "qf.label.ActiveTabColor": {
-    "message": "Actief tabblad:"
-  },
-  "qf.label.ColoredTabPalette": {
-    "message": "Palet voor gekleurde tabbladen:"
-  },
-  "qf.label.ColoredTabPalette.tooltip": {
-    "message": "Palet voor tabbladen met een specifieke kleur"
-  },
-  "qf.label.DragOverBackground": {
-    "message": "Slepen:"
-  },
-  "qf.label.HoveredTabColor": {
-    "message": "Aangewezen tabblad:"
-  },
-  "qf.label.Toolbar": {
-    "message": "Werkbalk"
-  },
-  "qf.label.Toolbar.bottomLine": {
-    "message": "Breedte van onderste regel:"
-  },
-  "qf.label.Toolbar.bottomLine.tip": {
-    "message": "De breedte van de regel onder tabbladen. Wijzig de kleur met de Actieve Tabbladkleurkiezer hieronder."
-  },
-  "qf.label.ToolbarBackground": {
-    "message": "Werkbalkachtergrond:"
-  },
-  "qf.label.UncoloredTab": {
-    "message": "Ongekleurd tabblad"
-  },
-  "qf.label.UncoloredTab.tooltip": {
-    "message": "Weergave van (inactieve) tabbladen zonder een specifiek geselecteerde kleur"
-  },
   "qf.label.accessibility": {
     "message": "Toegankelijkheid"
+  },
+  "qf.label.ActiveTabColor": {
+    "message": "Actief tabblad:"
   },
   "qf.label.appearance": {
     "message": "Vormgeving"
@@ -970,14 +962,17 @@
   "qf.label.behavior": {
     "message": "Gedrag"
   },
-  "qf.label.github": {
-    "message": "Een bug melden / functie aanvragen…"
-  },
   "qf.label.buttonFontSizeNumeric": {
     "message": "Lettertypegrootte voor knoppen (0 voor standaard):"
   },
   "qf.label.cancel": {
     "message": "Annuleren"
+  },
+  "qf.label.ColoredTabPalette": {
+    "message": "Palet voor gekleurde tabbladen:"
+  },
+  "qf.label.ColoredTabPalette.tooltip": {
+    "message": "Palet voor tabbladen met een specifieke kleur"
   },
   "qf.label.colors": {
     "message": "Kleuren"
@@ -997,6 +992,9 @@
   "qf.label.dragFolderLabel": {
     "message": "Sleep mappen hiernaartoe om een tabblad te maken. Klik op het tabblad om naar de map te gaan, sleep berichten om ze te verplaatsen/kopiëren."
   },
+  "qf.label.DragOverBackground": {
+    "message": "Slepen:"
+  },
   "qf.label.existingcategories": {
     "message": "Bestaande categorieën:"
   },
@@ -1005,6 +1003,9 @@
   },
   "qf.label.getQuickFilters": {
     "message": "Installeer mijn extensie quickFilters voor een betere en krachtigere manier om filters te maken!"
+  },
+  "qf.label.github": {
+    "message": "Een bug melden / functie aanvragen…"
   },
   "qf.label.goNextUnread": {
     "message": "Naar volgende ongelezen e-mailbericht:"
@@ -1017,6 +1018,9 @@
   },
   "qf.label.homePage": {
     "message": "Gedetailleerde informatie op de nieuwe QuickFolders-startpagina op quickfolders.org…"
+  },
+  "qf.label.HoveredTabColor": {
+    "message": "Aangewezen tabblad:"
   },
   "qf.label.initdelay": {
     "message": "[ms] init delay {1000 is standaard}:"
@@ -1105,6 +1109,24 @@
   "qf.label.themes": {
     "message": "Thema’s:"
   },
+  "qf.label.Toolbar": {
+    "message": "Werkbalk"
+  },
+  "qf.label.Toolbar.bottomLine": {
+    "message": "Breedte van onderste regel:"
+  },
+  "qf.label.Toolbar.bottomLine.tip": {
+    "message": "De breedte van de regel onder tabbladen. Wijzig de kleur met de Actieve Tabbladkleurkiezer hieronder."
+  },
+  "qf.label.ToolbarBackground": {
+    "message": "Werkbalkachtergrond:"
+  },
+  "qf.label.UncoloredTab": {
+    "message": "Ongekleurd tabblad"
+  },
+  "qf.label.UncoloredTab.tooltip": {
+    "message": "Weergave van (inactieve) tabbladen zonder een specifiek geselecteerde kleur"
+  },
   "qf.label.versionhistory": {
     "message": "Versiegeschiedenis lezen…"
   },
@@ -1177,9 +1199,6 @@
   "qf.menuitem.quickfolders.displayPreviewToolbar": {
     "message": "Hulpmiddelen voor huidige map weergeven"
   },
-  "qf.menuitem.quickfolders.hidePreviewToolbar": {
-    "message": "Hulpmiddelen voor huidige map verbergen"
-  },
   "qf.menuitem.quickfolders.displayPreviewToolbarAccessKey": {
     "message": "d"
   },
@@ -1200,6 +1219,9 @@
   },
   "qf.menuitem.quickfolders.helpAccess": {
     "message": "h"
+  },
+  "qf.menuitem.quickfolders.hidePreviewToolbar": {
+    "message": "Hulpmiddelen voor huidige map verbergen"
   },
   "qf.menuitem.quickfolders.options": {
     "message": "QuickFolders-opties…"
@@ -1237,11 +1259,11 @@
   "qf.moveMailStatus.action.none": {
     "message": "Niets doen"
   },
-  "qf.moveMailStatus.action.unread": {
-    "message": "E-mail markeren als ongelezen"
-  },
   "qf.moveMailStatus.action.read": {
     "message": "E-mail markeren als gelezen"
+  },
+  "qf.moveMailStatus.action.unread": {
+    "message": "E-mail markeren als ongelezen"
   },
   "qf.moveMailStatus.label": {
     "message": "Bij het verplaatsen van e-mail naar een QuickFolder:"
@@ -1320,9 +1342,14 @@
   "qf.notification.standard.title": {
     "message": "Standaardfunctie"
   },
-  "qf.notifications": { "message": "Notificaties" },
+  "qf.notifications": {
+    "message": "Notificaties"
+  },
   "qf.notifications.compactFolder": {
     "message": "Melding na het comprimeren van de map"
+  },
+  "qf.options.label.themeAuthor": {
+    "message": "Themaschrijver:"
   },
   "qf.options.LayoutColorAppearance": {
     "message": "Individuele tabbladkleurweergave"
@@ -1333,20 +1360,17 @@
   "qf.options.LayoutColorAppearanceStriped": {
     "message": "(gestreepte stijl)"
   },
-  "qf.options.label.themeAuthor": {
-    "message": "Themaschrijver:"
-  },
   "qf.options.theme.pastelColors": {
     "message": "Pastelkleuren"
   },
   "qf.options.themes.customCornerRadius.Bottom.label": {
     "message": "Onderzijde:"
   },
-  "qf.options.themes.customCornerRadius.Top.label": {
-    "message": "Bovenzijde:"
-  },
   "qf.options.themes.customCornerRadius.checkbox": {
     "message": "Aangepaste hoekradius"
+  },
+  "qf.options.themes.customCornerRadius.Top.label": {
+    "message": "Bovenzijde:"
   },
   "qf.options.themes.showBorders.checkbox": {
     "message": "Randen altijd weergeven"
@@ -1375,12 +1399,6 @@
   "qf.pathFormat.AccountAndPath": {
     "message": "Account - Mappad"
   },
-  "qf.pathFormat.PathOnly": {
-    "message": "Mappad"
-  },
-  "qf.pathFormat.URI": {
-    "message": "Map-URI"
-  },
   "qf.pathFormat.folderAndAccount": {
     "message": "Mapnaam - E-mailaccount"
   },
@@ -1390,8 +1408,14 @@
   "qf.pathFormat.maxDepth": {
     "message": "Maximale paddiepte:"
   },
+  "qf.pathFormat.PathOnly": {
+    "message": "Mappad"
+  },
   "qf.pathFormat.tooltip": {
     "message": "Maximale aantal mappen in mappad."
+  },
+  "qf.pathFormat.URI": {
+    "message": "Map-URI"
   },
   "qf.prefwindow.quickfolders.options": {
     "message": "QuickFolders-opties"
@@ -1404,7 +1428,9 @@
       }
     }
   },
-  "qf.premium.renew.hide": { "message": "Licentiewaarschuwing verbergen tot herstart" },
+  "qf.premium.renew.hide": {
+    "message": "Licentiewaarschuwing verbergen tot herstart"
+  },
   "qf.premium.renewLicense.tooltip": {
     "message": "Uw licentie is {1} dagen geleden verlopen"
   },
@@ -1561,9 +1587,6 @@
   "qf.toolbarTopPadding": {
     "message": "Bovenste opvulling"
   },
-  "qf.tooltip.RecentFolders": {
-    "message": "Recente mappen"
-  },
   "qf.tooltip.closeToolbar": {
     "message": "Deze werkbalk sluiten"
   },
@@ -1573,11 +1596,11 @@
   "qf.tooltip.emailIcon": {
     "message": "Huidig e-mailbericht - sleep naar een QuickFolders-tabblad om het e-mailbericht te verplaatsen"
   },
-  "qf.tooltip.filterStart": {
-    "message": "Filterleren activeren. Slepen van e-mailberichten naar een QuickFolder maakt nieuwe filters aan."
-  },
   "qf.tooltip.filters": {
     "message": "Aanmaken van filters stoppen."
+  },
+  "qf.tooltip.filterStart": {
+    "message": "Filterleren activeren. Slepen van e-mailberichten naar een QuickFolder maakt nieuwe filters aan."
   },
   "qf.tooltip.folderUp": {
     "message": "Naar bovenliggende map"
@@ -1603,20 +1626,23 @@
   "qf.tooltip.quickMove": {
     "message": "snelVerplaatsen: sleep een e-mailbericht hiernaartoe en voer daarna de mapnaam in"
   },
+  "qf.tooltip.RecentFolders": {
+    "message": "Recente mappen"
+  },
   "qf.tooltip.skipUnreadFolder": {
     "message": "Naar volgende ongelezen map springen"
   },
   "qf.tooltip.threadIcon": {
     "message": "Huidige conversatie - sleep naar een QuickFolders-tabblad om conversatie te verplaatsen"
   },
-  "qf.update.title": {
-    "message": "Updates"
-  },
   "qf.update.hideVersionHistory": {
     "message": "Tabblad met versiegeschiedenis niet openen"
   },
   "qf.update.markInvalidTabs": {
     "message": "Ongeldige tabbladen markeren 🧹"
+  },
+  "qf.update.title": {
+    "message": "Updates"
   },
   "qf.youtube.description": {
     "message": "Bezoek voor gedetailleerde video’s over Thunderbird-add-ons en hoe u QuickFolders kunt gebruiken mijn YouTube-kanaal ‘Thunderbird Daily’."
@@ -1656,12 +1682,6 @@
   "qfCommandPopup": {
     "message": "QuickFolders-opdrachten"
   },
-  "qfCompactFolder": {
-    "message": "Map comprimeren"
-  },
-  "qfCompactFolderAccess": {
-    "message": "c"
-  },
   "qfCompacted": {
     "message": "Gecomprimeerd:"
   },
@@ -1676,6 +1696,12 @@
   },
   "qfCompactedOriginalFolderSize": {
     "message": "Originele grootte"
+  },
+  "qfCompactFolder": {
+    "message": "Map comprimeren"
+  },
+  "qfCompactFolderAccess": {
+    "message": "c"
   },
   "qfConfirmCopyFolder": {
     "message": "Werkelijk map {0} kopiëren naar {1}?"
@@ -1779,6 +1805,9 @@
   "qfMarkAllRead": {
     "message": "Map als gelezen markeren"
   },
+  "qfMarkAllRead.next": {
+    "message": "Markeer de map als gelezen en spring naar de volgende ongelezen map"
+  },
   "qfMarkAllReadAccess": {
     "message": "m"
   },
@@ -1787,9 +1816,6 @@
   },
   "qfMarkAllReadRecursive": {
     "message": "Map + submappen als gelezen markeren"
-  },
-  "qfMarkAllRead.next": {
-    "message": "Markeer de map als gelezen en spring naar de volgende ongelezen map"
   },
   "qfMenuColor": {
     "message": "Kleur"
@@ -1919,45 +1945,6 @@
   "qfVersionDisableOnUpdate": {
     "message": "Versiegeschiedenis niet meer weergeven na updates?"
   },
-  "quickMove.help.head": {
-    "message": "Hulp voor {1}"
-  },
-  "quickMove.help.head.advanced": {
-    "message": "Geavanceerde functies"
-  },
-  "quickMove.help.l1a": {
-    "message": "Typ het begin van een mapnaam of woorden erin, gescheiden door spatie."
-  },
-  "quickMove.help.l1b": {
-    "message": "De volgende tekens worden beschouwd als woordgrenzen en hoeven niet te worden getypt:"
-  },
-  "quickMove.help.l2a": {
-    "message": "Typ {1} voor het invoeren van de grootouder/ouder/gezochte map."
-  },
-  "quickMove.help.l2b": {
-    "message": "De eerste 2 letters van een bovenliggende map zijn meestal voldoende. U kunt met deze syntaxis ook nieuwe submappen maken."
-  },
-  "quickMove.help.l3a": {
-    "message": "Typ {1} om tussenliggende mappen over te slaan."
-  },
-  "quickMove.help.l3b": {
-    "message": "Dit is handig voor diepere, meer gecompliceerde of onbekende mappenhiërarchieën."
-  },
-  "quickMove.help.l4a": {
-    "message": "Typ {1} om een lijst met mappen te krijgen die het meest recent zijn ingevoerd. Het aantal resultaten is afhankelijk van uw licentieniveau."
-  },
-  "quickMove.help.advanced": {
-    "message": "Meer geavanceerde functies zoals sneltoetsen om naar een map te gaan / e-mail te verplaatsen of mappen uit te sluiten van zoekresultaten kunnen worden geconfigureerd op het tabblad QuickFolders Pro. Om toegang te krijgen tot deze en andere premiumfuncties, moet u een Pro-licentie aanschaffen en de toekomst van QuickFolders ondersteunen."
-  },
-  "quickMove.singleMessage.goNext": {
-    "message": "Geef de volgende e-mail weer nadat u de huidige hebt verplaatst"
-  },
-  "quickMove.singleMessage.reopenTab": {
-    "message": "Open de originele e-mail opnieuw nadat deze is verplaatst"
-  },
-  "quickMove.singleMessageTabs": {
-    "message": "Tabblad Eén bericht"
-  },
   "quickfolders.findFolder.placeHolder": {
     "message": "mapnaam"
   },
@@ -2006,6 +1993,384 @@
   "quickfoldersQuickMovedMails": {
     "message": "Bericht verplaatst naar map {2};{1} berichten verplaatst naar map {2}"
   },
+  "quickMove.help.advanced": {
+    "message": "Meer geavanceerde functies zoals sneltoetsen om naar een map te gaan / e-mail te verplaatsen of mappen uit te sluiten van zoekresultaten kunnen worden geconfigureerd op het tabblad QuickFolders Pro. Om toegang te krijgen tot deze en andere premiumfuncties, moet u een Pro-licentie aanschaffen en de toekomst van QuickFolders ondersteunen."
+  },
+  "quickMove.help.head": {
+    "message": "Hulp voor {1}"
+  },
+  "quickMove.help.head.advanced": {
+    "message": "Geavanceerde functies"
+  },
+  "quickMove.help.l1a": {
+    "message": "Typ het begin van een mapnaam of woorden erin, gescheiden door spatie."
+  },
+  "quickMove.help.l1b": {
+    "message": "De volgende tekens worden beschouwd als woordgrenzen en hoeven niet te worden getypt:"
+  },
+  "quickMove.help.l2a": {
+    "message": "Typ {1} voor het invoeren van de grootouder/ouder/gezochte map."
+  },
+  "quickMove.help.l2b": {
+    "message": "De eerste 2 letters van een bovenliggende map zijn meestal voldoende. U kunt met deze syntaxis ook nieuwe submappen maken."
+  },
+  "quickMove.help.l3a": {
+    "message": "Typ {1} om tussenliggende mappen over te slaan."
+  },
+  "quickMove.help.l3b": {
+    "message": "Dit is handig voor diepere, meer gecompliceerde of onbekende mappenhiërarchieën."
+  },
+  "quickMove.help.l4a": {
+    "message": "Typ {1} om een lijst met mappen te krijgen die het meest recent zijn ingevoerd. Het aantal resultaten is afhankelijk van uw licentieniveau."
+  },
+  "quickMove.singleMessage.goNext": {
+    "message": "Geef de volgende e-mail weer nadat u de huidige hebt verplaatst"
+  },
+  "quickMove.singleMessage.reopenTab": {
+    "message": "Open de originele e-mail opnieuw nadat deze is verplaatst"
+  },
+  "quickMove.singleMessageTabs": {
+    "message": "Tabblad Eén bericht"
+  },
+  "registration.account": {
+    "message": "E-mailaccount"
+  },
+  "registration.action.buy": {
+    "message": "$1 kopen"
+  },
+  "registration.action.buyDomain": {
+    "message": "Domeinlicentie kopen"
+  },
+  "registration.action.current": {
+    "message": "Huidige editie"
+  },
+  "registration.action.extend": {
+    "message": "Licentie verlengen"
+  },
+  "registration.action.renew": {
+    "message": "Licentie vernieuwen"
+  },
+  "registration.action.upgrade": {
+    "message": "Upgraden naar Pro"
+  },
+  "registration.annual": {
+    "message": "Jaarlicenties"
+  },
+  "registration.brand": {
+    "message": "{+extensionName}"
+  },
+  "registration.checkout.dismiss": {
+    "message": "Winkelmelding sluiten"
+  },
+  "registration.checkout.error": {
+    "message": "De winkel kan niet worden geopend. Probeer het opnieuw."
+  },
+  "registration.checkout.guidance": {
+    "message": "{bold}Ga verder met het product dat vanaf deze pagina is geopend om uw verlengings- of upgradevoordelen te behouden.{/bold} Wilt u een {i}andere licentie{/i}, begin dan opnieuw vanaf hier."
+  },
+  "registration.checkout.note": {
+    "message": "Prijzen, belastingen en beschikbare kortingen staan in de winkel."
+  },
+  "registration.checkout.opened": {
+    "message": "De winkel is geopend in uw browser. U kunt dit tabblad openlaten."
+  },
+  "registration.checkout.preview": {
+    "message": "Testvoorbeeld: $1 voor $2. Er is geen winkel geopend."
+  },
+  "registration.checkout.unconfirmed": {
+    "message": "Deze upgraderoute moet worden bevestigd voordat bestellen mogelijk is. Er is geen winkel geopend."
+  },
+  "registration.compare": {
+    "message": "Standard en Pro vergelijken"
+  },
+  "registration.contact.heading": {
+    "message": "Voor wie is deze licentie?"
+  },
+  "registration.contact.note": {
+    "message": "Deze gegevens worden bij het afrekenen ingevuld. U kunt ze hier wijzigen."
+  },
+  "registration.date.expired": {
+    "message": "Uw licentie is verlopen op $1."
+  },
+  "registration.date.none": {
+    "message": "Kies hieronder een licentie of voer uw bestaande sleutel in."
+  },
+  "registration.date.valid": {
+    "message": "Uw licentie is geldig tot $1."
+  },
+  "registration.development": {
+    "message": "Registratietest"
+  },
+  "registration.domain.proWarning": {
+    "message": "Pro is een aparte persoonlijke licentie, geen vernieuwing van een domeinlicentie. Uw domeinlicentie dekt installaties met een e-mailaccount op uw geregistreerde bedrijfsdomein, binnen het gekochte aantal gebruikers. Een aparte Pro-licentie kan een thuisinstallatie dekken waarop u dat account niet kunt gebruiken. Kies Licentie vernieuwen in het paneel Domein om de dekking van uw team voort te zetten."
+  },
+  "registration.domain.seatsLink": {
+    "message": "Gebruikers toevoegen"
+  },
+  "registration.domain.seatsNote": {
+    "message": "aan uw bestaande domeinlicentie."
+  },
+  "registration.domain.seatsQuestion": {
+    "message": "Meer gebruikersplaatsen nodig?"
+  },
+  "registration.edition.domain": {
+    "message": "Domein"
+  },
+  "registration.edition.pro": {
+    "message": "Pro"
+  },
+  "registration.edition.standard": {
+    "message": "Standard"
+  },
+  "registration.email": {
+    "message": "E-mailadres"
+  },
+  "registration.email.domain": {
+    "message": "Er gelden andere regels: het ingestelde e-mailadres moet bij het gelicentieerde domein horen."
+  },
+  "registration.email.domain.heading": {
+    "message": "Domeinlicenties"
+  },
+  "registration.email.help": {
+    "message": "Over gelicentieerde e-mailadressen"
+  },
+  "registration.email.help.close": {
+    "message": "E-mailhulp sluiten"
+  },
+  "registration.email.help.heading": {
+    "message": "Uw e-mailadres is uw licentie"
+  },
+  "registration.email.hint": {
+    "message": "Uw persoonlijke licentie werkt op meerdere apparaten."
+  },
+  "registration.email.personal": {
+    "message": "Uw licentie is gekoppeld aan dit e-mailadres. U kunt deze op meerdere apparaten gebruiken. Stel dit adres op elk apparaat in als de {bold}standaardidentiteit{/bold} van een Thunderbird-account."
+  },
+  "registration.email.personal.heading": {
+    "message": "Standard- en Pro-licenties"
+  },
+  "registration.email.rules": {
+    "message": "Regels voor het gelicentieerde e-mailadres"
+  },
+  "registration.enterKey": {
+    "message": "Licentiesleutel invoeren…"
+  },
+  "registration.eyebrow": {
+    "message": "Uw licentie"
+  },
+  "registration.firstName": {
+    "message": "Voornaam"
+  },
+  "registration.fixture.checkoutNote": {
+    "message": "Fictieve gegevens: bestellen opent alleen een voorbeeld."
+  },
+  "registration.footer": {
+    "message": "Gemaakt voor Thunderbird. Gesteund door u."
+  },
+  "registration.heading": {
+    "message": "Uw mappen. Minder moeite."
+  },
+  "registration.identity.empty": {
+    "message": "Gegevens handmatig invoeren"
+  },
+  "registration.identity.none": {
+    "message": "Geen geschikte e-mailaccounts gevonden. U kunt uw contactgegevens handmatig invoeren."
+  },
+  "registration.lastName": {
+    "message": "Achternaam"
+  },
+  "registration.learnMore": {
+    "message": "Meer informatie…"
+  },
+  "registration.legacy.menu": {
+    "message": "Oude licentieregistratie"
+  },
+  "registration.license.domain": {
+    "message": "Domeinlicentie"
+  },
+  "registration.license.edition": {
+    "message": "$1-licentie"
+  },
+  "registration.license.expiresIn": {
+    "message": "Licentie verloopt over $1 dagen"
+  },
+  "registration.license.none": {
+    "message": "Geen licentie ingesteld"
+  },
+  "registration.load.error": {
+    "message": "Uw licentie of accounts kunnen niet worden geladen. Herlaad dit tabblad om het opnieuw te proberen."
+  },
+  "registration.navigation": {
+    "message": "Licentienavigatie"
+  },
+  "registration.options": {
+    "message": "Licentieopties"
+  },
+  "registration.plan.domain.description": {
+    "message": "Pro-functies voor gebruikers van uw gelicentieerde domein, binnen het aantal aangeschafte plaatsen."
+  },
+  "registration.plan.domain.kicker": {
+    "message": "Voor uw team"
+  },
+  "registration.plan.domain.scope": {
+    "message": "Voor een gedeeld domein"
+  },
+  "registration.plan.pro.description": {
+    "message": "Orden en vind berichten elke dag sneller."
+  },
+  "registration.plan.pro.kicker": {
+    "message": "Alle functies"
+  },
+  "registration.plan.pro.scope": {
+    "message": "Voor uw eigen e-mail"
+  },
+  "registration.plan.standard.description": {
+    "message": "Houd uw favoriete mappen binnen handbereik."
+  },
+  "registration.plan.standard.kicker": {
+    "message": "Dagelijkse basisfuncties"
+  },
+  "registration.plan.standard.scope": {
+    "message": "Voor uw eigen e-mail"
+  },
+  "registration.renewal.domain": {
+    "message": "{bold}Domeinlicenties{/bold}{br}Domeinlicenties worden {bold}handmatig beoordeeld en uitgegeven{/bold}. Bij verlenging wordt één jaar toegevoegd aan uw bestaande vervaldatum, ook als de licentie al is verlopen. Dit stimuleert tijdige verlenging; de definitieve looptijd wordt tijdens de beoordeling bevestigd."
+  },
+  "registration.renewal.entitlements": {
+    "message": "Voordelen voor vernieuwing en upgrades hangen af van de licentiegegevens die naar de winkel worden gestuurd. Een ander product kiezen in de winkel, of beveiligingssoftware die deze gegevens verwijdert, kan verhinderen dat uw bestaande rechten worden toegepast."
+  },
+  "registration.renewal.expiredStandardHint": {
+    "message": "Upgrade naar Pro en betaal **alleen het verschil** tussen de Standard- en Pro-prijzen. U krijgt een volledig jaar vanaf de dag van betaling, ook als uw Standard-licentie al is verlopen."
+  },
+  "registration.renewal.hint": {
+    "message": "Uw licentie vernieuwen of verlengen kost meestal minder dan een nieuwe kopen."
+  },
+  "registration.renewal.personal": {
+    "message": "{bold}Persoonlijke licenties{/bold}{br}Een nieuwe licentie loopt één jaar vanaf betaling. Bij vernieuwen of verlengen van dezelfde editie krijgt u een volledig jaar vanaf betaling of één jaar na uw huidige vervaldatum, afhankelijk van wat u meer tijd geeft."
+  },
+  "registration.renewal.previous": {
+    "message": "{bold}Bestaande licentie{/bold}{br}Uw huidige licentie wordt naar de winkel gestuurd om de nieuwe vervaldatum te berekenen."
+  },
+  "registration.renewal.standardUpgradeHint": {
+    "message": "Upgrade naar Pro en betaal **alleen het verschil** tussen de Standard- en Pro-prijzen. U krijgt een volledig jaar vanaf de dag van betaling."
+  },
+  "registration.renewal.upgrade": {
+    "message": "{bold}Upgrades van Standard naar Pro{/bold}{br}Uw Pro-licentie loopt één jaar vanaf de betaling van de upgrade. Resterende tijd op uw Standard-licentie verlengt die periode niet."
+  },
+  "registration.selection.heading": {
+    "message": "Minder tijd kwijt aan zoeken."
+  },
+  "registration.selection.intro": {
+    "message": "Kies Standard voor essentiële functies, Pro voor alle functies of Domain voor gebruikers in uw organisatie."
+  },
+  "registration.selection.label": {
+    "message": "Licentiekeuze"
+  },
+  "registration.settings.error": {
+    "message": "De licentie-instellingen kunnen niet worden geopend. Probeer het opnieuw."
+  },
+  "registration.showLess": {
+    "message": "Minder tonen"
+  },
+  "registration.status.Empty": {
+    "message": "Gratis editie"
+  },
+  "registration.status.Expired": {
+    "message": "Verlopen"
+  },
+  "registration.status.Invalid": {
+    "message": "Ongeldige licentie"
+  },
+  "registration.status.MailDifferent": {
+    "message": "E-mailadres van licentie komt niet overeen"
+  },
+  "registration.status.MailNotConfigured": {
+    "message": "Gelicentieerd adres niet ingesteld"
+  },
+  "registration.status.NotValidated": {
+    "message": "Niet gevalideerd"
+  },
+  "registration.status.Unknown": {
+    "message": "Licentie niet beschikbaar"
+  },
+  "registration.status.Valid": {
+    "message": "Geldig"
+  },
+  "registration.subtitle": {
+    "message": "Kies de juiste licentie voor uw manier van werken."
+  },
+  "registration.terms.annual": {
+    "message": "Een licentie dekt één jaar. Vernieuw een verlopen licentie of verleng een huidige om uw gekozen editie te blijven gebruiken."
+  },
+  "registration.terms.annual.heading": {
+    "message": "Eén jaar tegelijk"
+  },
+  "registration.terms.back": {
+    "message": "Licentiekeuze"
+  },
+  "registration.terms.checkout": {
+    "message": "Selecteer een licentie om naar de winkel te gaan. Uw prijs hangt af van de editie, het land, belastingen en toepasselijke kortingen."
+  },
+  "registration.terms.checkout.heading": {
+    "message": "Afrekenen in uw browser"
+  },
+  "registration.terms.domain": {
+    "message": "Een Domain-licentie geldt voor gebruikers met adressen op het gelicentieerde domein, tot het aantal aangeschafte plaatsen."
+  },
+  "registration.terms.draft": {
+    "message": "Voorlopige voorwaarden: details over proefgebruik en functies na afloop worden vóór publicatie beoordeeld."
+  },
+  "registration.terms.edition": {
+    "message": "Standard en Pro bieden verschillende functieniveaus. Vergelijk de edities om de juiste te vinden."
+  },
+  "registration.terms.edition.heading": {
+    "message": "Kies uw editie"
+  },
+  "registration.terms.email": {
+    "message": "Een persoonlijke licentie is gekoppeld aan uw e-mailadres. U kunt deze in meerdere Thunderbird-installaties gebruiken als het gelicentieerde adres in elke installatie is ingesteld als de **standaardidentiteit** van een account."
+  },
+  "registration.terms.email.heading": {
+    "message": "Uw e-mailadres, uw licentie"
+  },
+  "registration.terms.heading": {
+    "message": "Zo werkt uw licentie."
+  },
+  "registration.terms.hide": {
+    "message": "🡇 Verder naar licentiekeuze 🡇"
+  },
+  "registration.terms.intro": {
+    "message": "{+extensionName} houdt Thunderbird al jaren bij. Licenties financieren verdere ontwikkeling, nieuwe functies en compatibiliteitsupdates. Elke licentie duurt één jaar en ondersteunt dit werk."
+  },
+  "registration.terms.label": {
+    "message": "Licentievoorwaarden"
+  },
+  "registration.terms.manualRenewal": {
+    "message": "Licenties **worden niet automatisch vernieuwd**. {+extensionName} herinnert u eraan voordat uw licentie verloopt."
+  },
+  "registration.terms.otherAccounts": {
+    "message": "De gelicentieerde functies werken ook met al uw andere Thunderbird-accounts. Aparte licenties zijn niet nodig."
+  },
+  "registration.terms.referrer": {
+    "message": "Als u al een licentie hebt, wordt deze naar de winkel gestuurd om uw rechten te controleren."
+  },
+  "registration.terms.savings": {
+    "message": "**Begin met Pro en bespaar in de volgende jaren.** Uw Pro-licentie vernieuwen of verlengen kost aanzienlijk minder dan een nieuwe kopen."
+  },
+  "registration.terms.show": {
+    "message": "Licentievoorwaarden tonen 🡇"
+  },
+  "registration.terms.support": {
+    "message": "Uw steun helpt ontwikkeling, compatibiliteitsupdates en reparaties te financieren."
+  },
+  "registration.test.menu": {
+    "message": "Registreren via de webwinkel"
+  },
+  "registration.test.note": {
+    "message": "Afrekenen opent in uw browser."
+  },
+  "registration.title": {
+    "message": "{+extensionName} · Uw licentie"
+  },
   "renew-your-license": {
     "message": "Verleng uw licentie."
   },
@@ -2018,6 +2383,24 @@
       "reduction": {
         "content": "$2",
         "example": "30%"
+      }
+    }
+  },
+  "special-offer-head": {
+    "message": "Help $addon$ compatibel te houden",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
+      }
+    }
+  },
+  "special-offer-intro": {
+    "message": "{b}Beste {name}{/b}, steun alstublieft $addon$ door een licentie aan te schaffen. De Thunderbird-code evolueert voortdurend en we hebben {b}uw hulp{/b} nodig om bij te blijven!",
+    "placeholders": {
+      "addon": {
+        "content": "$1",
+        "example": "QuickFolders"
       }
     }
   },
@@ -2049,24 +2432,6 @@
   },
   "special-offer-upgrade-condition": {
     "message": "Wanneer u upgradet van Standard, krijgt u een licentietermijn van één jaar vanaf de aankoopdatum, ongeacht de vervaldatum van uw vorige licentie."
-  },
-  "special-offer-head": {
-    "message": "Help $addon$ compatibel te houden",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
-  },
-  "special-offer-intro": {
-    "message": "{b}Beste {name}{/b}, steun alstublieft $addon$ door een licentie aan te schaffen. De Thunderbird-code evolueert voortdurend en we hebben {b}uw hulp{/b} nodig om bij te blijven!",
-    "placeholders": {
-      "addon": {
-        "content": "$1",
-        "example": "QuickFolders"
-      }
-    }
   },
   "support-preference": {
     "message": "Dit is de beste manier om $addonName$ te ondersteunen.",
@@ -2160,7 +2525,10 @@
   "whats-new-maintenance": {
     "message": "Onderhoudsupdate $ver$. Deze versie verhelpt dringende regressies uit de vorige versie.",
     "placeholders": {
-      "ver": { "content": "$1", "example": "6.12.3" }
+      "ver": {
+        "content": "$1",
+        "example": "6.12.3"
+      }
     }
   },
   "window-title": {

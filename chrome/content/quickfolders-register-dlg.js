@@ -343,13 +343,10 @@ var Register = {
   goPro: function (license_type, isRenew = false) {
     const prefs = QuickFolders.Preferences,
       util = QuickFolders.Util;
-    // redirect to registration site; pass in the feature that brought user here
-    // short order process
+    // The shop has one referrer parameter: an existing license takes precedence
+    // over the feature that brought the user here.
     let shortOrder,
-      featureName = document.getElementById("referrer").value; // hidden field
-    if (isRenew || license_type == 3) {
-      featureName = encodeURI(prefs.getStringPref("LicenseKey"));
-    }
+      featureName = prefs.getStringPref("LicenseKey") || document.getElementById("referrer").value;
     switch (license_type) {
       case 0: // pro license
         if (isRenew) {
@@ -382,7 +379,7 @@ var Register = {
     const firstName = document.getElementById("firstName").value,
       lastName = document.getElementById("lastName").value,
       email = document.getElementById("email").value,
-      addQuery = featureName ? `&referrer=${featureName}` : "",
+      addQuery = featureName ? `&referrer=${encodeURIComponent(featureName)}` : "",
       url =
         `${shortOrder}?contact_fname=${firstName}${addQuery}` +
         `&contact_lname=${lastName}` +

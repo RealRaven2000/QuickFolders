@@ -157,8 +157,7 @@ window.addEventListener("load", async () => {
 
     await browser.runtime.sendMessage({
       command: "showLicenseDialog",
-      referrer: "quickfolders-message",
-      addonfeatures: features || "", // future use
+      referrer: features || "quickfolders-message",
     });
   });
 

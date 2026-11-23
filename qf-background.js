@@ -876,6 +876,10 @@ function startWindowInjection() {
     "chrome/content/scripts/qf-searchDialog.js"
   );
   messenger.WindowListener.registerWindow(
+    "chrome://messenger/content/searchDialog.xhtml",
+    "chrome/content/scripts/qf-searchDialog.js"
+  );
+  messenger.WindowListener.registerWindow(
     "chrome://messenger/content/messageWindow.xhtml",
     "chrome/content/scripts/qf-messageWindow.js"
   );

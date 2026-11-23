@@ -4676,8 +4676,11 @@ QuickFolders.Interface = {
     // cmdController?.doCommand("cmd_searchMessages", folder); // why is folder parameter not transmitted??
     // QuickFolders.Util.logTb115("onSearchMessages()");
 
+    const dialogURL = QuickFolders.Util.versionGreaterOrEqual("160.0")
+      ? "chrome://messenger/content/searchDialog.xhtml"
+      : "chrome://messenger/content/SearchDialog.xhtml";
     top.openDialog(
-      "chrome://messenger/content/SearchDialog.xhtml",
+      dialogURL,
       "_blank",
       "chrome,resizable,status,centerscreen,dialog=no",
       { folder }

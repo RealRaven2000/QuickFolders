@@ -73,4 +73,4 @@ QuickFolders.SearchDialog = {
     
   }
   
-}
+}

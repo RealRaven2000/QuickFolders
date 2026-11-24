@@ -5,24 +5,11 @@ Additional regressions are expected within the Thunderbird release branch and wi
 Read the full version <a href="https://quickfolders.org/version.html#6.18.1">here</a>.
 
 
-<strong>Maintenance Release 6.18.2</strong>
 <ul>
-<li> QuickFolders is now compatible with Thunderbird 160.</li>
-<li> Fixed message drag-and-drop after Thunderbird 159 removed <tt>messenger.msgHdrFromURI()</tt>. Both message-header lookups now use <tt>MailServices.messageServiceFromURI(messageUri).messageURIToMsgHdr(messageUri)</tt>. This preserves source-folder detection when dragging messages onto QuickFolders targets, including from search results, and when creating a folder from dragged messages with the quickFilters Assistant active, including from virtual folders. <a href="https://github.com/RealRaven2000/QuickFolders/issues/720">[issue 720]</a>.</li>
-<li> Changed the ColorZilla and license purchase links flagged during ATN review to use HTTPS.</li>
-<li> Removed the bundled thunderbird.svg logo file as requested during ATN review. Replaced the older menu logo with Thunderbird's MPL-licensed TB-symbolic.svg to identify the popup menu containing Thunderbird commands.</li>
-</ul>
-
-<strong>Recent history: 6.18.1</strong>
-<ul>
-<li> Compatibility with Thunderbird 159</li>
-<li> Fixed the Current Folder toolbar missing after a slow Thunderbird startup by waiting longer for the folder view to finish loading. <a href="https://github.com/RealRaven2000/QuickFolders/issues/712">[issue 712]</a>.</li>
-<li> If launching the external browser fails, QuickFolders now shows the attempted URL in a selectable field so it can be copied into a browser manually. <a href="https://github.com/RealRaven2000/QuickFolders/issues/713">[issue 713]</a>.</li>
-<li> Fixed Save Configuration failing to open the save dialog after migration to local storage. Backups now read the saved folder model instead of the obsolete legacy preference. Loading a configuration waits for folder storage to finish and refreshes folder caches in all main windows. <a href="https://github.com/RealRaven2000/QuickFolders/issues/717">[issue 717]</a>.</li>
-<li> Avoided global stylesheet registration via nsIStyleSheetService.sheetRegistered(uri, sss.USER_SHEET). <a href="https://github.com/RealRaven2000/QuickFolders/issues/715">[issue 715]</a>.</li>
-<li> Hardened startup handling and added startup progress to the toolbar placeholder. <a href="https://github.com/RealRaven2000/QuickFolders/issues/716">[issue 716]</a>.</li>
-<li> Fixed transparent backgrounds on default buttons when hovering in Thunderbird 156. <a href="https://github.com/RealRaven2000/QuickFolders/issues/718">[issue 718]</a>.</li>
-<li> Fixed various layout regressions in Thunderbird 157. This mainly affects theme compatibility and spacing in the settings window.</li>
+<li> Fixed Current Folder Toolbar visibility controls: the main-menu command now toggles show/hide, and the Advanced setting clearly controls startup visibility while applying changes immediately. <a href="https://github.com/RealRaven2000/QuickFolders/issues/722">[issue 722]</a>.</li>
+<li> Replaced the legacy registration dialog with a new HTML license tab. <a href="https://github.com/RealRaven2000/QuickFolders/issues/723">[issue 723]</a>.</li>
+<li> Removed outdated Thunderbird imagery to address branding requirements.</li>
+<li> Fixed the Search Messages folder command opening an empty window in Thunderbird 160. <a href="https://github.com/RealRaven2000/QuickFolders/issues/724">[issue 724]</a>.</li>
 </ul>
 
 To support QuickFolders, please <a href="https://sites.fastspring.com/quickfolders/product/quickfolders?referrer=atn-version-page">buy a QuickFolders Pro license</a> here.

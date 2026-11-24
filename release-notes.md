@@ -6,6 +6,7 @@ Read the full [version history](https://quickfolders.org/version.html#6.18.1).
 
 **Release 6.19**
 
+- Compatibility with Tb 162 (To do: fix layout regressions caused by missing system styles in Tb162)
 - Replaced the legacy registration dialog with a new HTML license tab. #723
 - Fixed the Search Messages folder command opening an empty window in Thunderbird 160. #724
 - Fixed Current Folder Toolbar visibility controls: the main-menu command now toggles show/hide, and the Advanced setting clearly controls startup visibility while applying changes immediately. #722

@@ -376,6 +376,16 @@ var { MailServices } = ChromeUtils.importESModule("resource:///modules/MailServi
     ## Fixed colorzilla link to be secure
     ## Removed thunderbird as external icon for branding
   
+  6.19 QuickFolders Pro - WIP
+    ## [issue 723] Replaced the legacy registration workflow with an HTML license tab 
+       - Support purchases, renewals, extensions and upgrades with license or feature attribution at checkout.
+       - Show appropriate license choices for restricted features and include the domain when adding seats.
+       - Restore license status and account details when reopening a registration tab after Thunderbird restarts.
+       - Improve license status messages, expiry indicators and Settings layout; localize the registration workflow.
+    ## Removed Thunderbird icon because of branding issues
+    ## [issue 724] Fixed contextual Search Messages opening an empty window in Thunderbird 160.
+    ## [issue 722] Keep Current Folder Toolbar visibility controls synchronized. Make the main-menu command a show/hide toggle, and clarify that the Advanced setting controls startup visibility while applying changes immediately.
+
 
 
 	TO DO next

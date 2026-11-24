@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 80rem;
   margin-inline: auto;
-  font-size: 14px;
+  font-size: inherit;
 }
 
 @media (min-width: 48rem) {
@@ -28,7 +28,7 @@
 #qf-options-prefpane #QuickFolders-Panels legend,
 #qf-options-prefpane #QuickFolders-Panels .niceFont {
   font-family: inherit;
-  font-size: 14px;
+  font-size: inherit;
   line-height: 1.5;
 }
 
@@ -155,7 +155,7 @@
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
-  font-size: 14px;
+  font-size: inherit;
   line-height: 1.5;
 }
 

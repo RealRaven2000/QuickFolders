@@ -1,6 +1,8 @@
 @import url("chrome://messenger/skin/shared/layout.css");
 
 :root {
+  /* Thunderbird 162 common-shared.css applies this root font size globally. */
+  font-size: var(--font-size-root, 15px);
   --qf-tabbutton-active-background-color: light-dark(rgb(60, 160, 255), rgb(0, 79, 132));
   --input-text-min-height: 26px;
   --qf-min-block-height: 26px;  
@@ -160,7 +162,7 @@ html|legend {
 /* General elements */
 #qf-options-prefpane label {
   line-height: 1.3em;
-  font-size: 0.85em;
+  font-size: inherit;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -406,6 +408,14 @@ label.stdFeature[restricted]:focus {
 .tabs button {
   appearance: none;
   border-radius: 0.5em 0.5em 0 0;
+}
+
+/* Thunderbird 162: common-shared.css button spacing is not reliable here.
+   Reuse this scoped override pattern in the other add-ons if needed. */
+#QuickFolders-Options-Tabbox button[isTab] {
+  margin: 0 0.2em;
+  padding: 6px 12px 6px 25px;
+  font-size: 1em;
 }
 
 /* Change background color of buttons on hover */
